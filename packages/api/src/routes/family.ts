@@ -75,6 +75,17 @@ familyRoutes.post("/", async (c) => {
   const user = c.get("user");
   const { name } = await c.req.json<{ name: string }>();
 
+  // Child accounts cannot create families
+  const db = getDb(c.env.DB);
+  const userRow = await db
+    .select({ managedBy: schema.users.managedBy })
+    .from(schema.users)
+    .where(eq(schema.users.id, user.id))
+    .limit(1);
+  if (userRow.length > 0 && userRow[0].managedBy) {
+    return c.json({ error: "Child accounts cannot create families" }, 403);
+  }
+
   if (!name || name.trim().length === 0) {
     return c.json({ error: "Family name is required" }, 400);
   }

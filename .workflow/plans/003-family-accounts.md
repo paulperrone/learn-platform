@@ -13,9 +13,9 @@ Add family/team accounts using Better-Auth's organization plugin. A parent creat
 
 ## Progress
 
-**Completed:** Phase 1, Phase 2, Phase 3
+**Completed:** Phase 1, Phase 2, Phase 3, Phase 4
 **In Progress:** —
-**Next:** Phase 4
+**Next:** Phase 5
 
 ---
 
@@ -57,12 +57,12 @@ Add family/team accounts using Better-Auth's organization plugin. A parent creat
 
 ---
 
-## Phase 4: Child Experience Guards
+## Phase 4: Child Experience Guards ✓
 **Goal:** Age-appropriate UX restrictions for child accounts
 
-1. [ ] [IMP] Restrict child account self-modification: children can't change email, delete account, or manage family. Simplified settings page for children.
-2. [ ] [IMP] Add simplified child navigation: hide family management, billing, and admin sections. Focus on learning, progress, and explore views.
-3. [ ] [TST] Verify: child login shows simplified UI, cannot access parent-only routes, learning experience is unchanged
+1. [x] [IMP] Restrict child account self-modification: children can't change email, delete account, or manage family. Simplified settings page for children.
+2. [x] [IMP] Add simplified child navigation: hide family management, billing, and admin sections. Focus on learning, progress, and explore views.
+3. [x] [TST] Verify: child login shows simplified UI, cannot access parent-only routes, learning experience is unchanged
 
 **Validation:** Child accounts have a clean, focused learning experience. Parent-only features are hidden and API-enforced (not just UI-hidden).
 

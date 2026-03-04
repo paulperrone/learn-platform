@@ -14,12 +14,14 @@ export function useAuth() {
   const user = computed(() => session.value?.data?.user ?? null);
   const isPending = computed(() => session.value?.isPending ?? true);
   const isAuthenticated = computed(() => !!user.value);
+  const isChild = computed(() => !!(user.value as Record<string, unknown> | null)?.managedBy);
 
   return {
     session,
     user,
     isPending,
     isAuthenticated,
+    isChild,
 
     signUp: (email: string, password: string, name: string, birthYear?: number) =>
       authClient.signUp.email({

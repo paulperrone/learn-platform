@@ -4,7 +4,7 @@ import { useAuth } from "./composables/useAuth";
 import ToastContainer from "./components/ToastContainer.vue";
 
 const router = useRouter();
-const { isAuthenticated, user, signOut } = useAuth();
+const { isAuthenticated, isChild, user, signOut } = useAuth();
 
 async function handleLogout() {
   await signOut();
@@ -21,7 +21,7 @@ async function handleLogout() {
           <RouterLink to="/learn" class="text-gray-600 hover:text-gray-900">Study</RouterLink>
           <RouterLink to="/progress" class="text-gray-600 hover:text-gray-900">Progress</RouterLink>
           <RouterLink to="/explore" class="text-gray-600 hover:text-gray-900">Explore</RouterLink>
-          <RouterLink to="/family" class="text-gray-600 hover:text-gray-900">Family</RouterLink>
+          <RouterLink v-if="!isChild" to="/family" class="text-gray-600 hover:text-gray-900">Family</RouterLink>
           <div class="ml-auto flex items-center gap-4">
             <span class="text-sm text-gray-500">{{ user?.name }}</span>
             <button

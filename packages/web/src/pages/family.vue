@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import { ref, onMounted, computed } from "vue";
 import { useApi, withErrorToast, ApiError } from "@/composables/useApi";
+import { useAuth } from "@/composables/useAuth";
 import { useToast } from "@/composables/useToast";
+
+const { isChild: isChildAccount } = useAuth();
 
 const api = useApi();
 const toast = useToast();
@@ -120,7 +123,18 @@ onMounted(loadFamily);
       <span>Loading...</span>
     </div>
 
-    <!-- No Family: Setup Flow -->
+    <!-- No Family: Child account without family -->
+    <div v-else-if="!hasFamily && isChildAccount" class="flex min-h-[50vh] items-center justify-center">
+      <div class="text-center max-w-sm">
+        <h1 class="text-2xl font-bold text-gray-900 mb-2">No Family Yet</h1>
+        <p class="text-sm text-gray-500 mb-4">Your parent hasn't added you to a family yet. In the meantime, keep learning!</p>
+        <RouterLink to="/learn" class="inline-block bg-blue-600 text-white px-6 py-2.5 rounded-lg text-sm font-medium hover:bg-blue-700">
+          Start Learning
+        </RouterLink>
+      </div>
+    </div>
+
+    <!-- No Family: Setup Flow (parents only) -->
     <div v-else-if="!hasFamily" class="flex min-h-[50vh] items-center justify-center">
       <div class="w-full max-w-md space-y-6">
         <div class="text-center">
