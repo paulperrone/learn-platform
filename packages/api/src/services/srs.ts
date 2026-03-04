@@ -16,6 +16,7 @@ function cardFromRow(row: UserTopicRow): Card {
     difficulty: row.difficulty,
     elapsed_days: 0,
     scheduled_days: 0,
+    learning_steps: 0,
     reps: row.reps,
     lapses: row.lapses,
     state: row.state as State,

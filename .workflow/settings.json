@@ -1,0 +1,15 @@
+{
+  "version": "1.0",
+  "memvid": {
+    "enabled": true,
+    "path": "memory/project.mv2"
+  },
+  "providers": {
+    "claude-code": {
+      "symlink": ".claude"
+    },
+    "opencode": {
+      "context_file": "AGENTS.md"
+    }
+  }
+}

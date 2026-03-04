@@ -4,3 +4,13 @@ dist/
 .dev.vars
 *.local
 .DS_Store
+
+# Workflow
+CLAUDE.local.md
+.workflow/*.local
+.workflow/memory/*.mv2
+.workflow/task/
+
+# Provider symlinks (regenerable)
+.claude
+CLAUDE.md
