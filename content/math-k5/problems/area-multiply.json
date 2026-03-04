@@ -1,0 +1,47 @@
+[
+  {
+    "id": "area-multiply-p1",
+    "topicId": "area-multiply",
+    "difficulty": "easy",
+    "question": "A rectangle is 4 cm long and 3 cm wide. What is its area?",
+    "answer": "12 square cm",
+    "hints": ["Area of a rectangle = length × width.", "4 × 3 = ?"],
+    "solution": "Area = 4 × 3 = 12 square cm."
+  },
+  {
+    "id": "area-multiply-p2",
+    "topicId": "area-multiply",
+    "difficulty": "easy",
+    "question": "A square has sides of 5 inches. What is its area?",
+    "answer": "25 square inches",
+    "hints": ["A square is a rectangle where length = width.", "5 × 5 = ?"],
+    "solution": "Area = 5 × 5 = 25 square inches."
+  },
+  {
+    "id": "area-multiply-p3",
+    "topicId": "area-multiply",
+    "difficulty": "medium",
+    "question": "A garden is 8 feet long and 6 feet wide. What is the area of the garden?",
+    "answer": "48 square feet",
+    "hints": ["Area = length × width.", "8 × 6 = ?"],
+    "solution": "Area = 8 × 6 = 48 square feet."
+  },
+  {
+    "id": "area-multiply-p4",
+    "topicId": "area-multiply",
+    "difficulty": "medium",
+    "question": "A rectangle has an area of 36 square meters. Its length is 9 meters. What is its width?",
+    "answer": "4 meters",
+    "hints": ["Area = length × width, so width = area ÷ length.", "36 ÷ 9 = ?"],
+    "solution": "Width = 36 ÷ 9 = 4 meters."
+  },
+  {
+    "id": "area-multiply-p5",
+    "topicId": "area-multiply",
+    "difficulty": "hard",
+    "question": "A room is 9 feet long and 7 feet wide. New carpet costs $2 per square foot. How much will it cost to carpet the room?",
+    "answer": "$126",
+    "hints": ["First find the area: 9 × 7.", "Then multiply the area by $2."],
+    "solution": "Area = 9 × 7 = 63 square feet. Cost = 63 × $2 = $126."
+  }
+]

@@ -1,0 +1,52 @@
+[
+  {
+    "id": "multiply-fraction-by-whole-ex1",
+    "topicId": "multiply-fraction-by-whole",
+    "title": "Multiplying a Whole Number by a Fraction: 3 × 2/5",
+    "steps": [
+      {
+        "subgoalLabel": "Understand what the multiplication means",
+        "instruction": "3 × 2/5 means three groups of 2/5.",
+        "work": "2/5 + 2/5 + 2/5",
+        "explanation": "Multiplying by a whole number is the same as repeated addition of the fraction."
+      },
+      {
+        "subgoalLabel": "Multiply numerator by the whole number",
+        "instruction": "Multiply the whole number (3) by the numerator (2). Keep the denominator.",
+        "work": "3 × 2 = 6. Denominator stays 5. Result: 6/5.",
+        "explanation": "Only the numerator changes because we are taking more pieces of the same size."
+      },
+      {
+        "subgoalLabel": "Convert to a mixed number if needed",
+        "instruction": "Is 6/5 an improper fraction? If so, convert it.",
+        "work": "6 ÷ 5 = 1 R1. So 6/5 = 1 1/5.",
+        "explanation": "Since the numerator is larger than the denominator, we can write it as a mixed number."
+      }
+    ]
+  },
+  {
+    "id": "multiply-fraction-by-whole-ex2",
+    "topicId": "multiply-fraction-by-whole",
+    "title": "Multiplying a Fraction by a Whole Number: 4 × 3/4",
+    "steps": [
+      {
+        "subgoalLabel": "Multiply",
+        "instruction": "Multiply the whole number by the numerator.",
+        "work": "4 × 3 = 12. Keep denominator 4. Result: 12/4.",
+        "explanation": "We are taking 4 groups of 3 fourths, which gives us 12 fourths."
+      },
+      {
+        "subgoalLabel": "Simplify",
+        "instruction": "Simplify 12/4.",
+        "work": "12 ÷ 4 = 3. So 12/4 = 3.",
+        "explanation": "12 fourths equals exactly 3 wholes. When the numerator is divisible by the denominator, the result is a whole number."
+      },
+      {
+        "subgoalLabel": "State the answer",
+        "instruction": "Write the final answer.",
+        "work": "4 × 3/4 = 3",
+        "explanation": "Four groups of three-fourths makes exactly 3 wholes."
+      }
+    ]
+  }
+]

@@ -1,0 +1,47 @@
+[
+  {
+    "id": "subtract-within-100-fluent-p1",
+    "topicId": "subtract-within-100-fluent",
+    "difficulty": "easy",
+    "question": "What is 67 − 23?",
+    "answer": "44",
+    "hints": ["Subtract the tens: 60 − 20 = 40. Then subtract the ones: 7 − 3 = 4."],
+    "solution": "67 − 23 = 44. Tens: 60 − 20 = 40. Ones: 7 − 3 = 4. Total: 40 + 4 = 44."
+  },
+  {
+    "id": "subtract-within-100-fluent-p2",
+    "topicId": "subtract-within-100-fluent",
+    "difficulty": "easy",
+    "question": "What is 85 − 42?",
+    "answer": "43",
+    "hints": ["Break it apart: 80 − 40 = 40 and 5 − 2 = 3."],
+    "solution": "85 − 42 = 43. Tens: 80 − 40 = 40. Ones: 5 − 2 = 3. Total: 40 + 3 = 43."
+  },
+  {
+    "id": "subtract-within-100-fluent-p3",
+    "topicId": "subtract-within-100-fluent",
+    "difficulty": "medium",
+    "question": "What is 73 − 28?",
+    "answer": "45",
+    "hints": ["You can't subtract 8 from 3 easily, so regroup.", "Borrow 1 ten: 73 = 60 + 13. Now subtract 28."],
+    "solution": "73 − 28 = 45. Regroup: 73 = 60 + 13. Ones: 13 − 8 = 5. Tens: 60 − 20 = 40. Total: 45."
+  },
+  {
+    "id": "subtract-within-100-fluent-p4",
+    "topicId": "subtract-within-100-fluent",
+    "difficulty": "medium",
+    "question": "Tom had 62 baseball cards and gave away 37. How many does he have left?",
+    "answer": "25",
+    "hints": ["Find 62 − 37.", "Try counting up from 37 to 62."],
+    "solution": "62 − 37 = 25. Count up: 37 + 3 = 40, 40 + 22 = 62. Total added: 3 + 22 = 25."
+  },
+  {
+    "id": "subtract-within-100-fluent-p5",
+    "topicId": "subtract-within-100-fluent",
+    "difficulty": "hard",
+    "question": "What is 90 − 46?",
+    "answer": "44",
+    "hints": ["Since 90 is a round number, try counting up from 46.", "46 + 4 = 50, then 50 + 40 = 90."],
+    "solution": "90 − 46 = 44. Count up: 46 + 4 = 50, 50 + 40 = 90. Total: 4 + 40 = 44."
+  }
+]

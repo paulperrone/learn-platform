@@ -1,0 +1,58 @@
+[
+  {
+    "id": "tell-time-minute-ex1",
+    "topicId": "tell-time-minute",
+    "title": "Reading Time to the Exact Minute",
+    "steps": [
+      {
+        "subgoalLabel": "Read the hour hand",
+        "instruction": "The hour hand (short hand) is between 4 and 5. What hour is it?",
+        "work": "The hour is 4.",
+        "explanation": "When the hour hand is between two numbers, use the smaller number."
+      },
+      {
+        "subgoalLabel": "Read the minute hand",
+        "instruction": "The minute hand (long hand) points to 9. Count by 5s from 12.",
+        "work": "12→5, 1→10, 2→15, 3→20, 4→25, 5→30, 6→35, 7→40, 8→45",
+        "explanation": "Each number on the clock = 5 minutes. The 9 = 45 minutes."
+      },
+      {
+        "subgoalLabel": "Write the time",
+        "instruction": "Combine the hour and minutes.",
+        "work": "The time is 4:45.",
+        "explanation": "4:45 means 4 hours and 45 minutes. You could also say 'quarter to 5.'"
+      }
+    ]
+  },
+  {
+    "id": "tell-time-minute-ex2",
+    "topicId": "tell-time-minute",
+    "title": "Finding Elapsed Time",
+    "steps": [
+      {
+        "subgoalLabel": "Identify start and end times",
+        "instruction": "Lunch starts at 11:40 and ends at 12:15. How long is lunch?",
+        "work": "Start: 11:40, End: 12:15",
+        "explanation": "Elapsed time is the amount of time that passes between two times."
+      },
+      {
+        "subgoalLabel": "Count to the next hour",
+        "instruction": "From 11:40, how many minutes to 12:00?",
+        "work": "11:40 to 12:00 = 20 minutes",
+        "explanation": "60 − 40 = 20 minutes to reach the next hour."
+      },
+      {
+        "subgoalLabel": "Count from the hour to the end time",
+        "instruction": "From 12:00 to 12:15 is how many minutes?",
+        "work": "12:00 to 12:15 = 15 minutes",
+        "explanation": "Just read the minutes directly."
+      },
+      {
+        "subgoalLabel": "Add the parts",
+        "instruction": "Total elapsed time = 20 + 15.",
+        "work": "20 + 15 = 35 minutes",
+        "explanation": "Lunch is 35 minutes long."
+      }
+    ]
+  }
+]

@@ -1,0 +1,47 @@
+[
+  {
+    "id": "perimeter-p1",
+    "topicId": "perimeter",
+    "difficulty": "easy",
+    "question": "A square has sides that are each 5 cm long. What is its perimeter?",
+    "answer": "20 cm",
+    "hints": ["A square has 4 equal sides.", "Add all four sides: 5 + 5 + 5 + 5."],
+    "solution": "Perimeter = 5 + 5 + 5 + 5 = 20 cm. (Or 4 × 5 = 20 cm.)"
+  },
+  {
+    "id": "perimeter-p2",
+    "topicId": "perimeter",
+    "difficulty": "easy",
+    "question": "A rectangle is 6 inches long and 3 inches wide. What is its perimeter?",
+    "answer": "18 inches",
+    "hints": ["A rectangle has 2 long sides and 2 short sides.", "6 + 3 + 6 + 3 = ?"],
+    "solution": "Perimeter = 6 + 3 + 6 + 3 = 18 inches."
+  },
+  {
+    "id": "perimeter-p3",
+    "topicId": "perimeter",
+    "difficulty": "medium",
+    "question": "A triangle has sides of 7 cm, 8 cm, and 10 cm. What is its perimeter?",
+    "answer": "25 cm",
+    "hints": ["Perimeter = sum of all sides.", "7 + 8 + 10 = ?"],
+    "solution": "Perimeter = 7 + 8 + 10 = 25 cm."
+  },
+  {
+    "id": "perimeter-p4",
+    "topicId": "perimeter",
+    "difficulty": "medium",
+    "question": "A rectangle has a perimeter of 24 feet. Its length is 8 feet. What is its width?",
+    "answer": "4 feet",
+    "hints": ["Perimeter = 2 × length + 2 × width.", "24 = 2 × 8 + 2 × width. So 24 = 16 + 2 × width."],
+    "solution": "24 = 2(8) + 2w. 24 = 16 + 2w. 2w = 8. w = 4 feet."
+  },
+  {
+    "id": "perimeter-p5",
+    "topicId": "perimeter",
+    "difficulty": "hard",
+    "question": "An L-shaped garden has these side lengths in meters: 10, 4, 6, 3, 4, 7. What is the perimeter?",
+    "answer": "34 meters",
+    "hints": ["Add all the sides together.", "10 + 4 + 6 + 3 + 4 + 7 = ?"],
+    "solution": "Perimeter = 10 + 4 + 6 + 3 + 4 + 7 = 34 meters. Add all outer sides."
+  }
+]

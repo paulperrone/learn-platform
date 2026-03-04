@@ -1,0 +1,64 @@
+[
+  {
+    "id": "add-subtract-fractions-unlike-ex1",
+    "topicId": "add-subtract-fractions-unlike",
+    "title": "Adding Fractions with Unlike Denominators: 1/3 + 1/5",
+    "steps": [
+      {
+        "subgoalLabel": "Find the least common denominator",
+        "instruction": "Find the LCD of 3 and 5.",
+        "work": "Multiples of 3: 3, 6, 9, 12, 15. Multiples of 5: 5, 10, 15. LCD = 15.",
+        "explanation": "The LCD is the smallest number both denominators divide into evenly."
+      },
+      {
+        "subgoalLabel": "Convert both fractions",
+        "instruction": "Rewrite each fraction with denominator 15.",
+        "work": "1/3 = 5/15 (× 5/5). 1/5 = 3/15 (× 3/3).",
+        "explanation": "Multiply numerator and denominator by the same number to create equivalent fractions."
+      },
+      {
+        "subgoalLabel": "Add the fractions",
+        "instruction": "Now add the numerators.",
+        "work": "5/15 + 3/15 = 8/15.",
+        "explanation": "With the same denominator, just add the numerators."
+      },
+      {
+        "subgoalLabel": "Simplify if possible",
+        "instruction": "Can 8/15 be simplified?",
+        "work": "GCF of 8 and 15 is 1. Already in simplest form. Answer: 8/15.",
+        "explanation": "8 and 15 share no common factors besides 1, so 8/15 is the final answer."
+      }
+    ]
+  },
+  {
+    "id": "add-subtract-fractions-unlike-ex2",
+    "topicId": "add-subtract-fractions-unlike",
+    "title": "Subtracting Fractions with Unlike Denominators: 7/8 − 1/3",
+    "steps": [
+      {
+        "subgoalLabel": "Find the LCD",
+        "instruction": "Find the LCD of 8 and 3.",
+        "work": "8 × 3 = 24. LCD = 24 (since 8 and 3 share no common factors).",
+        "explanation": "When the denominators have no common factors, the LCD is their product."
+      },
+      {
+        "subgoalLabel": "Convert both fractions",
+        "instruction": "Rewrite with denominator 24.",
+        "work": "7/8 = 21/24 (× 3/3). 1/3 = 8/24 (× 8/8).",
+        "explanation": "Each fraction is converted to an equivalent fraction with denominator 24."
+      },
+      {
+        "subgoalLabel": "Subtract",
+        "instruction": "Subtract the numerators.",
+        "work": "21/24 − 8/24 = 13/24.",
+        "explanation": "Same denominator, so we subtract the numerators directly."
+      },
+      {
+        "subgoalLabel": "Simplify",
+        "instruction": "Check if 13/24 can be simplified.",
+        "work": "13 is prime and does not divide 24. Answer: 13/24.",
+        "explanation": "Since 13 is prime and not a factor of 24, the fraction is already in simplest form."
+      }
+    ]
+  }
+]

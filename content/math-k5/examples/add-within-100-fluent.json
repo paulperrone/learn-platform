@@ -1,0 +1,64 @@
+[
+  {
+    "id": "add-within-100-fluent-ex1",
+    "topicId": "add-within-100-fluent",
+    "title": "Adding 36 + 48 Using Place Value",
+    "steps": [
+      {
+        "subgoalLabel": "Break apart by place value",
+        "instruction": "Split each number into tens and ones.",
+        "work": "36 = 30 + 6, 48 = 40 + 8",
+        "explanation": "Breaking numbers into tens and ones makes them easier to add."
+      },
+      {
+        "subgoalLabel": "Add the ones",
+        "instruction": "Add the ones digits: 6 + 8.",
+        "work": "6 + 8 = 14 (1 ten and 4 ones)",
+        "explanation": "When the ones add up to more than 9, we regroup 10 ones as 1 ten."
+      },
+      {
+        "subgoalLabel": "Add the tens",
+        "instruction": "Add the tens plus any regrouped ten: 30 + 40 + 10.",
+        "work": "30 + 40 + 10 = 80",
+        "explanation": "Don't forget the extra ten from regrouping the ones."
+      },
+      {
+        "subgoalLabel": "Combine",
+        "instruction": "Put the tens and ones together.",
+        "work": "80 + 4 = 84, so 36 + 48 = 84",
+        "explanation": "80 tens plus 4 ones gives us 84."
+      }
+    ]
+  },
+  {
+    "id": "add-within-100-fluent-ex2",
+    "topicId": "add-within-100-fluent",
+    "title": "Adding 57 + 26 by Making a Friendly Number",
+    "steps": [
+      {
+        "subgoalLabel": "Find a nearby friendly number",
+        "instruction": "A friendly number is easy to add with, like a multiple of 10. Round 57 up to 60.",
+        "work": "57 + 3 = 60",
+        "explanation": "60 is a friendly number because it ends in 0, making it easy to add."
+      },
+      {
+        "subgoalLabel": "Adjust the other number",
+        "instruction": "Since we added 3 to 57, we subtract 3 from 26 to keep the total the same.",
+        "work": "26 − 3 = 23",
+        "explanation": "If we add extra to one number, we must take the same amount from the other."
+      },
+      {
+        "subgoalLabel": "Add the friendly numbers",
+        "instruction": "Now add 60 + 23.",
+        "work": "60 + 23 = 83",
+        "explanation": "60 + 20 = 80, then 80 + 3 = 83. Much easier!"
+      },
+      {
+        "subgoalLabel": "Write the answer",
+        "instruction": "State the final answer.",
+        "work": "57 + 26 = 83",
+        "explanation": "By making a friendly number, we found that 57 + 26 = 83."
+      }
+    ]
+  }
+]

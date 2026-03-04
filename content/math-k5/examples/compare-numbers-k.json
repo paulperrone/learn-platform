@@ -1,0 +1,52 @@
+[
+  {
+    "id": "compare-numbers-k-ex1",
+    "topicId": "compare-numbers-k",
+    "title": "Comparing Two Groups of Objects",
+    "steps": [
+      {
+        "subgoalLabel": "Count each group",
+        "instruction": "To compare, first count each group. Group A: 🐱🐱🐱🐱🐱 Group B: 🐱🐱🐱",
+        "work": "Group A: 5 cats. Group B: 3 cats.",
+        "explanation": "We need to know how many are in each group before we can compare."
+      },
+      {
+        "subgoalLabel": "Compare the numbers",
+        "instruction": "Which number is bigger: 5 or 3?",
+        "work": "5 is bigger than 3.",
+        "explanation": "When we count, 5 comes after 3, so 5 is the bigger number."
+      },
+      {
+        "subgoalLabel": "Say which has more",
+        "instruction": "The group with the bigger number has more.",
+        "work": "Group A has more because 5 is more than 3.",
+        "explanation": "5 > 3, so Group A (5 cats) has more than Group B (3 cats)."
+      }
+    ]
+  },
+  {
+    "id": "compare-numbers-k-ex2",
+    "topicId": "compare-numbers-k",
+    "title": "Matching to See If Groups Are Equal",
+    "steps": [
+      {
+        "subgoalLabel": "Line up the objects",
+        "instruction": "Place objects from each group side by side. Group A: 🔵🔵🔵🔵 Group B: 🔴🔴🔴🔴",
+        "work": "🔵↔🔴, 🔵↔🔴, 🔵↔🔴, 🔵↔🔴",
+        "explanation": "Matching objects one-to-one helps us see if the groups are the same size."
+      },
+      {
+        "subgoalLabel": "Check for leftovers",
+        "instruction": "Are there any objects without a match?",
+        "work": "No leftovers! Every blue has a red match.",
+        "explanation": "If nothing is left over, the groups have the same number."
+      },
+      {
+        "subgoalLabel": "State the result",
+        "instruction": "Since every object has a match, the groups are equal.",
+        "work": "4 = 4. The groups are equal.",
+        "explanation": "Both groups have 4 objects. When two groups have the same count, we say they are equal."
+      }
+    ]
+  }
+]

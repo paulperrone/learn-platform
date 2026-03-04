@@ -1,0 +1,52 @@
+[
+  {
+    "id": "compare-fractions-3-ex1",
+    "topicId": "compare-fractions-3",
+    "title": "Comparing Fractions with the Same Denominator",
+    "steps": [
+      {
+        "subgoalLabel": "Check the denominators",
+        "instruction": "Compare 3/8 and 5/8. Are the denominators the same?",
+        "work": "Both have denominator 8. Yes, they're the same!",
+        "explanation": "When denominators match, the pieces are the same size."
+      },
+      {
+        "subgoalLabel": "Compare the numerators",
+        "instruction": "Since the pieces are the same size, more pieces means a larger fraction.",
+        "work": "3 vs. 5: 5 > 3",
+        "explanation": "5 eighths is more than 3 eighths."
+      },
+      {
+        "subgoalLabel": "Write the comparison",
+        "instruction": "Use the greater-than or less-than symbol.",
+        "work": "3/8 < 5/8",
+        "explanation": "5/8 is the greater fraction because it has more equal-sized pieces."
+      }
+    ]
+  },
+  {
+    "id": "compare-fractions-3-ex2",
+    "topicId": "compare-fractions-3",
+    "title": "Comparing Fractions with the Same Numerator",
+    "steps": [
+      {
+        "subgoalLabel": "Check the numerators",
+        "instruction": "Compare 1/3 and 1/5. Are the numerators the same?",
+        "work": "Both have numerator 1. Yes!",
+        "explanation": "When numerators match, we're taking the same number of pieces."
+      },
+      {
+        "subgoalLabel": "Think about piece size",
+        "instruction": "Which has bigger pieces: thirds or fifths?",
+        "work": "Dividing into 3 parts makes bigger pieces than dividing into 5 parts.",
+        "explanation": "Fewer equal parts means each part is bigger. A third of a pizza is bigger than a fifth."
+      },
+      {
+        "subgoalLabel": "Write the comparison",
+        "instruction": "The fraction with bigger pieces is greater.",
+        "work": "1/3 > 1/5",
+        "explanation": "Same number of pieces, but thirds are bigger than fifths, so 1/3 > 1/5."
+      }
+    ]
+  }
+]

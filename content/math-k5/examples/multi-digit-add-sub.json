@@ -1,0 +1,64 @@
+[
+  {
+    "id": "multi-digit-add-sub-ex1",
+    "topicId": "multi-digit-add-sub",
+    "title": "Adding 586 + 347 with Regrouping",
+    "steps": [
+      {
+        "subgoalLabel": "Add the ones",
+        "instruction": "6 + 7 = ?",
+        "work": "6 + 7 = 13. Write 3, carry 1 ten.",
+        "explanation": "13 ones = 1 ten and 3 ones."
+      },
+      {
+        "subgoalLabel": "Add the tens",
+        "instruction": "8 + 4 + 1 (carried) = ?",
+        "work": "8 + 4 + 1 = 13. Write 3, carry 1 hundred.",
+        "explanation": "13 tens = 1 hundred and 3 tens."
+      },
+      {
+        "subgoalLabel": "Add the hundreds",
+        "instruction": "5 + 3 + 1 (carried) = ?",
+        "work": "5 + 3 + 1 = 9",
+        "explanation": "9 hundreds."
+      },
+      {
+        "subgoalLabel": "Write the answer",
+        "instruction": "Combine all digits.",
+        "work": "586 + 347 = 933",
+        "explanation": "9 hundreds, 3 tens, 3 ones = 933."
+      }
+    ]
+  },
+  {
+    "id": "multi-digit-add-sub-ex2",
+    "topicId": "multi-digit-add-sub",
+    "title": "Subtracting 602 − 375 with Regrouping",
+    "steps": [
+      {
+        "subgoalLabel": "Check ones: can we subtract?",
+        "instruction": "2 − 5: can we do this?",
+        "work": "2 < 5, need to regroup. But tens digit is 0!",
+        "explanation": "We need to borrow, but there are no tens to borrow from."
+      },
+      {
+        "subgoalLabel": "Regroup from hundreds",
+        "instruction": "Borrow 1 hundred to make 10 tens. Then borrow 1 ten to make 12 ones.",
+        "work": "602 = 500 + 90 + 12",
+        "explanation": "6 hundreds becomes 5 hundreds + 10 tens. Then 10 tens becomes 9 tens + 12 ones."
+      },
+      {
+        "subgoalLabel": "Subtract each place",
+        "instruction": "Now subtract: ones, tens, hundreds.",
+        "work": "Ones: 12 − 5 = 7. Tens: 9 − 7 = 2. Hundreds: 5 − 3 = 2.",
+        "explanation": "After regrouping, each place can be subtracted."
+      },
+      {
+        "subgoalLabel": "Write the answer",
+        "instruction": "Combine the digits.",
+        "work": "602 − 375 = 227",
+        "explanation": "2 hundreds, 2 tens, 7 ones = 227."
+      }
+    ]
+  }
+]

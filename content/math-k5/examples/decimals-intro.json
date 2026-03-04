@@ -1,0 +1,52 @@
+[
+  {
+    "id": "decimals-intro-ex1",
+    "topicId": "decimals-intro",
+    "title": "Converting Fractions with Denominator 10 to Decimals",
+    "steps": [
+      {
+        "subgoalLabel": "Identify the denominator",
+        "instruction": "Look at the fraction 9/10. The denominator is 10.",
+        "work": "Denominator = 10 → tenths place (one digit after the decimal).",
+        "explanation": "Fractions with denominator 10 are written with one decimal place."
+      },
+      {
+        "subgoalLabel": "Place the numerator",
+        "instruction": "Put the numerator 9 in the tenths place.",
+        "work": "9/10 = 0.9",
+        "explanation": "The 9 goes right after the decimal point because it represents 9 tenths."
+      },
+      {
+        "subgoalLabel": "Read the decimal",
+        "instruction": "Read 0.9 aloud.",
+        "work": "0.9 is read as 'zero point nine' or 'nine tenths.'",
+        "explanation": "Both ways of reading it are correct. The decimal and fraction represent the same amount."
+      }
+    ]
+  },
+  {
+    "id": "decimals-intro-ex2",
+    "topicId": "decimals-intro",
+    "title": "Converting a Fraction with Denominator 100 to a Decimal: 63/100",
+    "steps": [
+      {
+        "subgoalLabel": "Identify the denominator",
+        "instruction": "The denominator is 100, which means hundredths.",
+        "work": "Denominator = 100 → hundredths place (two digits after the decimal).",
+        "explanation": "Hundredths need two decimal places to be represented."
+      },
+      {
+        "subgoalLabel": "Place the digits",
+        "instruction": "Write the numerator 63 in the tenths and hundredths places.",
+        "work": "63/100 = 0.63. The 6 is in the tenths place, the 3 is in the hundredths place.",
+        "explanation": "63 hundredths = 6 tenths and 3 hundredths."
+      },
+      {
+        "subgoalLabel": "Handle a special case",
+        "instruction": "What if the numerator is less than 10, like 7/100?",
+        "work": "7/100 = 0.07. A zero goes in the tenths place as a placeholder.",
+        "explanation": "We need two decimal places for hundredths, so we use a 0 in the tenths place when the numerator is a single digit."
+      }
+    ]
+  }
+]

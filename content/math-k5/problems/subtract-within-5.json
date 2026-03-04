@@ -1,0 +1,47 @@
+[
+  {
+    "id": "subtract-within-5-p1",
+    "topicId": "subtract-within-5",
+    "difficulty": "easy",
+    "question": "You have 3 cookies 🍪🍪🍪. You eat 1. How many cookies are left?",
+    "answer": "2",
+    "hints": ["Take away 1 cookie. Count what is left."],
+    "solution": "3 - 1 = 2. You had 3 cookies, ate 1, so 2 cookies are left."
+  },
+  {
+    "id": "subtract-within-5-p2",
+    "topicId": "subtract-within-5",
+    "difficulty": "easy",
+    "question": "What is 2 - 1?",
+    "answer": "1",
+    "hints": ["Hold up 2 fingers. Put 1 down. How many are still up?"],
+    "solution": "2 - 1 = 1. Two take away one is one."
+  },
+  {
+    "id": "subtract-within-5-p3",
+    "topicId": "subtract-within-5",
+    "difficulty": "medium",
+    "question": "What is 4 - 2?",
+    "answer": "2",
+    "hints": ["Hold up 4 fingers. Put 2 down. Count the rest."],
+    "solution": "4 - 2 = 2. Four take away two is two."
+  },
+  {
+    "id": "subtract-within-5-p4",
+    "topicId": "subtract-within-5",
+    "difficulty": "medium",
+    "question": "You have 5 balloons 🎈🎈🎈🎈🎈. Two pop! How many are left?",
+    "answer": "3",
+    "hints": ["Start with 5 and take away 2."],
+    "solution": "5 - 2 = 3. You had 5 balloons, 2 popped, so 3 balloons are left."
+  },
+  {
+    "id": "subtract-within-5-p5",
+    "topicId": "subtract-within-5",
+    "difficulty": "hard",
+    "question": "What is 5 - 4?",
+    "answer": "1",
+    "hints": ["Hold up 5 fingers. Put down 4. How many are left?", "Almost all of them are taken away!"],
+    "solution": "5 - 4 = 1. Five take away four leaves just one."
+  }
+]

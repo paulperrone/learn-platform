@@ -1,0 +1,52 @@
+[
+  {
+    "id": "subtract-within-20-ex1",
+    "topicId": "subtract-within-20",
+    "title": "Subtracting 15 - 8 by Getting to 10",
+    "steps": [
+      {
+        "subgoalLabel": "Subtract to reach 10",
+        "instruction": "15 has 5 ones. First subtract 5 to get to 10.",
+        "work": "15 - 5 = 10",
+        "explanation": "Getting to 10 first makes the rest of the subtraction easier."
+      },
+      {
+        "subgoalLabel": "Figure out how much more to subtract",
+        "instruction": "We subtracted 5 so far, but we need to subtract 8 total. How many more?",
+        "work": "8 - 5 = 3. We still need to subtract 3 more.",
+        "explanation": "We broke 8 into 5 + 3. We used the 5 already, so 3 is left."
+      },
+      {
+        "subgoalLabel": "Finish subtracting",
+        "instruction": "Subtract the remaining 3 from 10.",
+        "work": "10 - 3 = 7. So 15 - 8 = 7.",
+        "explanation": "15 - 8 = 7. By going through 10, we made the problem easier: 15 - 5 = 10, then 10 - 3 = 7."
+      }
+    ]
+  },
+  {
+    "id": "subtract-within-20-ex2",
+    "topicId": "subtract-within-20",
+    "title": "Subtracting 13 - 7 by Thinking Addition",
+    "steps": [
+      {
+        "subgoalLabel": "Rewrite as addition",
+        "instruction": "Instead of 13 - 7 = ___, think: 7 + ___ = 13.",
+        "work": "7 + ? = 13",
+        "explanation": "Subtraction and addition are opposites. Finding the missing addend is the same as subtracting."
+      },
+      {
+        "subgoalLabel": "Count up from 7 to 13",
+        "instruction": "Start at 7 and count up to 13. Keep track of how many you count.",
+        "work": "7 → 8 → 9 → 10 → 11 → 12 → 13. That is 6 counts.",
+        "explanation": "We counted up 6 times to get from 7 to 13."
+      },
+      {
+        "subgoalLabel": "Write the answer",
+        "instruction": "The number of counts is the answer.",
+        "work": "13 - 7 = 6",
+        "explanation": "Since 7 + 6 = 13, we know 13 - 7 = 6. Thinking addition is a powerful strategy!"
+      }
+    ]
+  }
+]

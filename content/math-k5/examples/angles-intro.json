@@ -1,0 +1,52 @@
+[
+  {
+    "id": "angles-intro-ex1",
+    "topicId": "angles-intro",
+    "title": "Classifying Angles: Acute, Right, and Obtuse",
+    "steps": [
+      {
+        "subgoalLabel": "Learn the three types",
+        "instruction": "There are three main types of angles based on their measurement.",
+        "work": "Acute: less than 90°. Right: exactly 90°. Obtuse: between 90° and 180°.",
+        "explanation": "The key benchmark is 90°. Angles are classified by how they compare to 90°."
+      },
+      {
+        "subgoalLabel": "Classify an example angle",
+        "instruction": "An angle measures 120°. Compare it to 90°.",
+        "work": "120° > 90° and 120° < 180°. It is an obtuse angle.",
+        "explanation": "Since 120 is greater than 90 but less than 180, the angle opens wider than a right angle."
+      },
+      {
+        "subgoalLabel": "Practice with another angle",
+        "instruction": "An angle measures 45°. Classify it.",
+        "work": "45° < 90°. It is an acute angle.",
+        "explanation": "Acute angles are 'sharp' — they are smaller than the corner of a square."
+      }
+    ]
+  },
+  {
+    "id": "angles-intro-ex2",
+    "topicId": "angles-intro",
+    "title": "Finding a Missing Angle on a Straight Line",
+    "steps": [
+      {
+        "subgoalLabel": "Recall the straight angle fact",
+        "instruction": "Angles on a straight line add up to 180°.",
+        "work": "Angle A + Angle B = 180°.",
+        "explanation": "A straight line forms a 180° angle. Any angles that make up that line must sum to 180°."
+      },
+      {
+        "subgoalLabel": "Set up the equation",
+        "instruction": "If Angle A = 72°, find Angle B.",
+        "work": "72° + Angle B = 180°.",
+        "explanation": "We substitute the known angle and solve for the unknown."
+      },
+      {
+        "subgoalLabel": "Solve",
+        "instruction": "Subtract 72° from both sides.",
+        "work": "Angle B = 180° − 72° = 108°.",
+        "explanation": "The missing angle is 108°, which is obtuse."
+      }
+    ]
+  }
+]

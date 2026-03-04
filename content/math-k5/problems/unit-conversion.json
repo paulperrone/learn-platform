@@ -1,0 +1,47 @@
+[
+  {
+    "id": "unit-conversion-p1",
+    "topicId": "unit-conversion",
+    "difficulty": "easy",
+    "question": "How many inches are in 3 feet?",
+    "answer": "36",
+    "hints": ["There are 12 inches in 1 foot.", "Multiply: 3 × 12."],
+    "solution": "1 foot = 12 inches. 3 feet = 3 × 12 = 36 inches."
+  },
+  {
+    "id": "unit-conversion-p2",
+    "topicId": "unit-conversion",
+    "difficulty": "easy",
+    "question": "Convert 5,000 grams to kilograms.",
+    "answer": "5 kg",
+    "hints": ["1 kilogram = 1,000 grams.", "Divide: 5,000 ÷ 1,000."],
+    "solution": "5,000 g ÷ 1,000 = 5 kg."
+  },
+  {
+    "id": "unit-conversion-p3",
+    "topicId": "unit-conversion",
+    "difficulty": "medium",
+    "question": "Convert 2.5 miles to feet. (1 mile = 5,280 feet)",
+    "answer": "13200",
+    "hints": ["Multiply: 2.5 × 5,280.", "2 × 5,280 = 10,560. 0.5 × 5,280 = 2,640. Add them."],
+    "solution": "2.5 × 5,280 = 13,200 feet."
+  },
+  {
+    "id": "unit-conversion-p4",
+    "topicId": "unit-conversion",
+    "difficulty": "medium",
+    "question": "How many cups are in 3 quarts? (1 quart = 4 cups)",
+    "answer": "12",
+    "hints": ["Multiply: 3 × 4 cups per quart."],
+    "solution": "3 quarts × 4 cups/quart = 12 cups."
+  },
+  {
+    "id": "unit-conversion-p5",
+    "topicId": "unit-conversion",
+    "difficulty": "hard",
+    "question": "A recipe calls for 48 ounces of juice. You have 2 quarts. Do you have enough? (1 quart = 32 ounces)",
+    "answer": "yes, 16 ounces extra",
+    "hints": ["Convert 2 quarts to ounces: 2 × 32.", "Compare 64 ounces to 48 ounces."],
+    "solution": "2 quarts = 2 × 32 = 64 ounces. 64 > 48, so yes, you have enough. Extra: 64 − 48 = 16 ounces."
+  }
+]

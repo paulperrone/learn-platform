@@ -1,0 +1,52 @@
+[
+  {
+    "id": "shapes-2d-k-ex1",
+    "topicId": "shapes-2d-k",
+    "title": "Identifying a Triangle by Its Sides and Corners",
+    "steps": [
+      {
+        "subgoalLabel": "Count the sides",
+        "instruction": "Look at the shape. Trace each straight side with your finger.",
+        "work": "Side 1, Side 2, Side 3. The shape has 3 sides.",
+        "explanation": "Sides are the straight edges of a shape. We count each one."
+      },
+      {
+        "subgoalLabel": "Count the corners",
+        "instruction": "Corners are where two sides meet. Count them.",
+        "work": "Corner 1, Corner 2, Corner 3. The shape has 3 corners.",
+        "explanation": "Each place where two sides come together is a corner (also called a vertex)."
+      },
+      {
+        "subgoalLabel": "Name the shape",
+        "instruction": "A shape with 3 sides and 3 corners is called a...",
+        "work": "Triangle! 3 sides + 3 corners = triangle.",
+        "explanation": "The prefix 'tri' means three. A triangle always has 3 straight sides and 3 corners."
+      }
+    ]
+  },
+  {
+    "id": "shapes-2d-k-ex2",
+    "topicId": "shapes-2d-k",
+    "title": "Telling Apart a Square and a Rectangle",
+    "steps": [
+      {
+        "subgoalLabel": "Find what is the same",
+        "instruction": "Both a square and a rectangle have 4 sides and 4 corners.",
+        "work": "Square: 4 sides, 4 corners. Rectangle: 4 sides, 4 corners.",
+        "explanation": "Squares and rectangles are alike because they both have 4 sides and 4 corners."
+      },
+      {
+        "subgoalLabel": "Find what is different",
+        "instruction": "Look at the sides. Are they all the same length?",
+        "work": "Square: all 4 sides are the same length. Rectangle: 2 sides are long, 2 sides are short.",
+        "explanation": "A square has equal sides. A rectangle has 2 longer sides and 2 shorter sides."
+      },
+      {
+        "subgoalLabel": "Remember the rule",
+        "instruction": "A square is actually a special rectangle!",
+        "work": "All squares are rectangles, but not all rectangles are squares.",
+        "explanation": "A square is a rectangle where all sides happen to be the same length."
+      }
+    ]
+  }
+]

@@ -1,0 +1,47 @@
+[
+  {
+    "id": "line-plots-p1",
+    "topicId": "line-plots",
+    "difficulty": "easy",
+    "question": "A line plot shows the lengths of caterpillars: 1/4 in (2 Xs), 1/2 in (4 Xs), 3/4 in (3 Xs), 1 in (1 X). How many caterpillars were measured?",
+    "answer": "10",
+    "hints": ["Count all the Xs on the line plot.", "2 + 4 + 3 + 1 = ?"],
+    "solution": "Total caterpillars: 2 + 4 + 3 + 1 = 10."
+  },
+  {
+    "id": "line-plots-p2",
+    "topicId": "line-plots",
+    "difficulty": "easy",
+    "question": "Using the same line plot (1/4 in: 2, 1/2 in: 4, 3/4 in: 3, 1 in: 1), which length was most common?",
+    "answer": "1/2 inch",
+    "hints": ["The most common value has the most Xs above it."],
+    "solution": "1/2 inch has 4 Xs, which is more than any other length. It is the most common (the mode)."
+  },
+  {
+    "id": "line-plots-p3",
+    "topicId": "line-plots",
+    "difficulty": "medium",
+    "question": "Five students measured plant growth in inches: 1/8, 3/8, 3/8, 1/4, 5/8. What is the difference between the longest and shortest growth?",
+    "answer": "1/2",
+    "hints": ["Longest: 5/8. Shortest: 1/8.", "Subtract: 5/8 − 1/8."],
+    "solution": "Longest = 5/8, Shortest = 1/8. Difference: 5/8 − 1/8 = 4/8 = 1/2 inch."
+  },
+  {
+    "id": "line-plots-p4",
+    "topicId": "line-plots",
+    "difficulty": "medium",
+    "question": "A line plot shows the amount of water (in cups) students drank: 1/4 (3 Xs), 1/2 (5 Xs), 3/4 (2 Xs). What is the total amount of water all the students drank?",
+    "answer": "4 3/4 cups",
+    "hints": ["Multiply each value by its count, then add: 3 × 1/4 + 5 × 1/2 + 2 × 3/4.", "Convert to fourths: 3/4 + 10/4 + 6/4."],
+    "solution": "3 × 1/4 = 3/4. 5 × 1/2 = 10/4. 2 × 3/4 = 6/4. Total: 3/4 + 10/4 + 6/4 = 19/4 = 4 3/4 cups."
+  },
+  {
+    "id": "line-plots-p5",
+    "topicId": "line-plots",
+    "difficulty": "hard",
+    "question": "Eight students recorded how long (in hours) they read: 1/4, 1/2, 1/4, 3/4, 1/2, 1, 1/2, 3/4. Create a frequency count for the line plot and find the total hours read by all students.",
+    "answer": "4 1/2 hours",
+    "hints": ["Organize: 1/4 appears 2 times, 1/2 appears 3 times, 3/4 appears 2 times, 1 appears 1 time.", "Total: 2(1/4) + 3(1/2) + 2(3/4) + 1(1)."],
+    "solution": "2 × 1/4 = 1/2. 3 × 1/2 = 3/2. 2 × 3/4 = 3/2. 1 × 1 = 1. Total: 1/2 + 3/2 + 3/2 + 1 = 1/2 + 3/2 + 3/2 + 2/2 = 9/2 = 4 1/2 hours."
+  }
+]

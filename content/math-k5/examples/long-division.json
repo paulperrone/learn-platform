@@ -1,0 +1,70 @@
+[
+  {
+    "id": "long-division-ex1",
+    "topicId": "long-division",
+    "title": "Long Division with No Remainder: 936 ÷ 4",
+    "steps": [
+      {
+        "subgoalLabel": "Divide the first digit(s)",
+        "instruction": "Look at the first digit. Can 4 go into 9?",
+        "work": "9 ÷ 4 = 2 with remainder 1. Write 2 above the 9.",
+        "explanation": "4 × 2 = 8, which is the largest multiple of 4 that fits into 9. The remainder is 9 − 8 = 1."
+      },
+      {
+        "subgoalLabel": "Subtract and bring down",
+        "instruction": "Subtract 8 from 9, then bring down the next digit (3).",
+        "work": "9 − 8 = 1. Bring down 3 → 13.",
+        "explanation": "After subtracting, we combine the remainder with the next digit to form the new number to divide."
+      },
+      {
+        "subgoalLabel": "Divide the new number",
+        "instruction": "How many times does 4 go into 13?",
+        "work": "13 ÷ 4 = 3 R1. Write 3 above the 3. Subtract: 13 − 12 = 1. Bring down 6 → 16.",
+        "explanation": "4 × 3 = 12. Remainder is 1. Bring down the 6 to make 16."
+      },
+      {
+        "subgoalLabel": "Divide the last number",
+        "instruction": "How many times does 4 go into 16?",
+        "work": "16 ÷ 4 = 4. Write 4 above the 6. Subtract: 16 − 16 = 0.",
+        "explanation": "4 goes into 16 exactly 4 times with no remainder, so we are done."
+      },
+      {
+        "subgoalLabel": "Write the final answer",
+        "instruction": "Read the digits above the division bar.",
+        "work": "936 ÷ 4 = 234",
+        "explanation": "The quotient is 234. We can check: 234 × 4 = 936."
+      }
+    ]
+  },
+  {
+    "id": "long-division-ex2",
+    "topicId": "long-division",
+    "title": "Long Division with a Remainder: 1,457 ÷ 6",
+    "steps": [
+      {
+        "subgoalLabel": "Divide the leading digits",
+        "instruction": "6 doesn't go into 1, so look at the first two digits: 14.",
+        "work": "14 ÷ 6 = 2 R2. Write 2 above the 4.",
+        "explanation": "When the divisor is larger than the first digit, we use the first two digits together."
+      },
+      {
+        "subgoalLabel": "Continue dividing",
+        "instruction": "Subtract and bring down the next digit.",
+        "work": "14 − 12 = 2. Bring down 5 → 25. 25 ÷ 6 = 4 R1. Write 4.",
+        "explanation": "6 × 4 = 24, remainder 1."
+      },
+      {
+        "subgoalLabel": "Divide the last group",
+        "instruction": "Subtract and bring down the final digit.",
+        "work": "25 − 24 = 1. Bring down 7 → 17. 17 ÷ 6 = 2 R5. Write 2.",
+        "explanation": "6 × 2 = 12, remainder 5. There are no more digits to bring down."
+      },
+      {
+        "subgoalLabel": "State the answer with remainder",
+        "instruction": "Write the quotient and remainder.",
+        "work": "1,457 ÷ 6 = 242 R5",
+        "explanation": "The answer is 242 remainder 5. Check: 242 × 6 = 1,452, and 1,452 + 5 = 1,457."
+      }
+    ]
+  }
+]

@@ -1,0 +1,58 @@
+[
+  {
+    "id": "money-coins-bills-ex1",
+    "topicId": "money-coins-bills",
+    "title": "Counting a Mix of Coins",
+    "steps": [
+      {
+        "subgoalLabel": "Know the coin values",
+        "instruction": "Remember how much each coin is worth.",
+        "work": "Quarter = 25¢, Dime = 10¢, Nickel = 5¢, Penny = 1¢",
+        "explanation": "Knowing coin values is the first step to counting money."
+      },
+      {
+        "subgoalLabel": "Start with the largest coins",
+        "instruction": "You have 1 quarter, 2 dimes, and 3 pennies. Start with the quarter.",
+        "work": "25¢",
+        "explanation": "Starting with the biggest value makes counting easier."
+      },
+      {
+        "subgoalLabel": "Add the dimes",
+        "instruction": "Count on by 10s for each dime.",
+        "work": "25 + 10 = 35, 35 + 10 = 45",
+        "explanation": "Each dime adds 10 cents."
+      },
+      {
+        "subgoalLabel": "Add the pennies",
+        "instruction": "Count on by 1s for each penny.",
+        "work": "45 + 1 = 46, 46 + 1 = 47, 47 + 1 = 48",
+        "explanation": "Each penny adds 1 cent. Total: 48 cents."
+      }
+    ]
+  },
+  {
+    "id": "money-coins-bills-ex2",
+    "topicId": "money-coins-bills",
+    "title": "Making Change from a Dollar",
+    "steps": [
+      {
+        "subgoalLabel": "Identify the cost and payment",
+        "instruction": "A sticker costs 63 cents. You pay with $1.00.",
+        "work": "Cost: 63¢. Paid: 100¢.",
+        "explanation": "One dollar equals 100 cents."
+      },
+      {
+        "subgoalLabel": "Count up from the cost",
+        "instruction": "Start at 63¢ and count up to 100¢.",
+        "work": "63 + 2 = 65 (2 pennies), 65 + 10 = 75 (1 dime), 75 + 25 = 100 (1 quarter)",
+        "explanation": "Count up using coins to make it easier."
+      },
+      {
+        "subgoalLabel": "Find the total change",
+        "instruction": "Add up all the coins you counted.",
+        "work": "2 + 10 + 25 = 37 cents change",
+        "explanation": "The change is 37 cents: 1 quarter, 1 dime, and 2 pennies."
+      }
+    ]
+  }
+]

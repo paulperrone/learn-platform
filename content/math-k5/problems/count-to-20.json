@@ -1,0 +1,47 @@
+[
+  {
+    "id": "count-to-20-p1",
+    "topicId": "count-to-20",
+    "difficulty": "easy",
+    "question": "Count the bananas: 🍌🍌🍌🍌🍌🍌🍌🍌🍌🍌🍌. How many bananas are there?",
+    "answer": "11",
+    "hints": ["Point to each banana and count one by one."],
+    "solution": "There are 11 bananas. Count: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11."
+  },
+  {
+    "id": "count-to-20-p2",
+    "topicId": "count-to-20",
+    "difficulty": "easy",
+    "question": "What number comes right after 12?",
+    "answer": "13",
+    "hints": ["Count: 10, 11, 12, ... what comes next?"],
+    "solution": "The number that comes right after 12 is 13."
+  },
+  {
+    "id": "count-to-20-p3",
+    "topicId": "count-to-20",
+    "difficulty": "medium",
+    "question": "Count the fish: 🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟. How many fish are there?",
+    "answer": "15",
+    "hints": ["Try counting in groups of 5.", "Count: 1 through 5, then 6 through 10, then keep going."],
+    "solution": "There are 15 fish. Count: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15."
+  },
+  {
+    "id": "count-to-20-p4",
+    "topicId": "count-to-20",
+    "difficulty": "medium",
+    "question": "What number comes right before 20?",
+    "answer": "19",
+    "hints": ["Count up: 17, 18, ... what comes just before 20?"],
+    "solution": "The number right before 20 is 19. The sequence goes 18, 19, 20."
+  },
+  {
+    "id": "count-to-20-p5",
+    "topicId": "count-to-20",
+    "difficulty": "hard",
+    "question": "Count the butterflies: 🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋. How many butterflies are there?",
+    "answer": "18",
+    "hints": ["Count in groups of 5 to keep track.", "First count 10, then count the rest."],
+    "solution": "There are 18 butterflies. Count 10 first, then count 8 more: 10 + 8 = 18."
+  }
+]

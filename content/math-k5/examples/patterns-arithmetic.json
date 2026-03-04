@@ -1,0 +1,58 @@
+[
+  {
+    "id": "patterns-arithmetic-ex1",
+    "topicId": "patterns-arithmetic",
+    "title": "Finding Patterns in the 5s Multiplication Table",
+    "steps": [
+      {
+        "subgoalLabel": "List the multiples",
+        "instruction": "Write the first several multiples of 5.",
+        "work": "5, 10, 15, 20, 25, 30, 35, 40, 45, 50",
+        "explanation": "These are 5 × 1, 5 × 2, 5 × 3, and so on."
+      },
+      {
+        "subgoalLabel": "Look at the ones digit",
+        "instruction": "What pattern do you see in the ones digit?",
+        "work": "5, 0, 5, 0, 5, 0, 5, 0, 5, 0",
+        "explanation": "The ones digit alternates between 5 and 0."
+      },
+      {
+        "subgoalLabel": "State the rule",
+        "instruction": "Describe the pattern.",
+        "work": "All multiples of 5 end in 0 or 5.",
+        "explanation": "This pattern helps you quickly check if a number is a multiple of 5."
+      }
+    ]
+  },
+  {
+    "id": "patterns-arithmetic-ex2",
+    "topicId": "patterns-arithmetic",
+    "title": "Finding the Pattern in Addition: Odds and Evens",
+    "steps": [
+      {
+        "subgoalLabel": "Add two even numbers",
+        "instruction": "Try: 4 + 6, 2 + 8, 10 + 12.",
+        "work": "4 + 6 = 10, 2 + 8 = 10, 10 + 12 = 22",
+        "explanation": "All the sums are even numbers."
+      },
+      {
+        "subgoalLabel": "Add two odd numbers",
+        "instruction": "Try: 3 + 5, 7 + 9, 1 + 11.",
+        "work": "3 + 5 = 8, 7 + 9 = 16, 1 + 11 = 12",
+        "explanation": "All the sums are even too!"
+      },
+      {
+        "subgoalLabel": "Add one odd and one even",
+        "instruction": "Try: 3 + 4, 5 + 6, 7 + 2.",
+        "work": "3 + 4 = 7, 5 + 6 = 11, 7 + 2 = 9",
+        "explanation": "Now the sums are odd!"
+      },
+      {
+        "subgoalLabel": "State the pattern",
+        "instruction": "Summarize what you found.",
+        "work": "Even + Even = Even. Odd + Odd = Even. Odd + Even = Odd.",
+        "explanation": "This pattern always works, no matter how big the numbers are."
+      }
+    ]
+  }
+]

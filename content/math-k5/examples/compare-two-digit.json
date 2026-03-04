@@ -1,0 +1,46 @@
+[
+  {
+    "id": "compare-two-digit-ex1",
+    "topicId": "compare-two-digit",
+    "title": "Comparing 54 and 37",
+    "steps": [
+      {
+        "subgoalLabel": "Compare the tens first",
+        "instruction": "Look at the tens digit of each number. 54 has 5 tens. 37 has 3 tens.",
+        "work": "5 tens vs. 3 tens. 5 > 3.",
+        "explanation": "Always compare tens first. The number with more tens is greater."
+      },
+      {
+        "subgoalLabel": "Make the decision",
+        "instruction": "Since 5 tens is more than 3 tens, we already know the answer.",
+        "work": "54 > 37",
+        "explanation": "We don't even need to look at the ones because 5 tens is already more than 3 tens. 54 is greater than 37."
+      }
+    ]
+  },
+  {
+    "id": "compare-two-digit-ex2",
+    "topicId": "compare-two-digit",
+    "title": "Comparing 62 and 68 (Same Tens)",
+    "steps": [
+      {
+        "subgoalLabel": "Compare the tens",
+        "instruction": "Both numbers have the same tens digit. 62 has 6 tens. 68 has 6 tens.",
+        "work": "6 tens = 6 tens. The tens are the same!",
+        "explanation": "When the tens are equal, we cannot decide yet. We need to look at the ones."
+      },
+      {
+        "subgoalLabel": "Compare the ones",
+        "instruction": "Now look at the ones. 62 has 2 ones. 68 has 8 ones.",
+        "work": "2 ones vs. 8 ones. 2 < 8.",
+        "explanation": "8 ones is more than 2 ones."
+      },
+      {
+        "subgoalLabel": "Write the comparison",
+        "instruction": "The number with more ones is greater (since tens were equal).",
+        "work": "62 < 68",
+        "explanation": "62 is less than 68. When tens are the same, the ones decide which number is bigger."
+      }
+    ]
+  }
+]

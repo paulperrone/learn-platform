@@ -1,0 +1,52 @@
+[
+  {
+    "id": "divide-within-100-ex1",
+    "topicId": "divide-within-100",
+    "title": "Dividing 35 ÷ 7 Using Multiplication",
+    "steps": [
+      {
+        "subgoalLabel": "Think multiplication",
+        "instruction": "Division is the opposite of multiplication. Ask: 7 × ? = 35.",
+        "work": "7 × ? = 35",
+        "explanation": "If you know your times tables, you can use them to divide."
+      },
+      {
+        "subgoalLabel": "Find the missing factor",
+        "instruction": "What number times 7 equals 35?",
+        "work": "7 × 5 = 35",
+        "explanation": "Skip count by 7: 7, 14, 21, 28, 35. That's 5 sevens."
+      },
+      {
+        "subgoalLabel": "Write the division",
+        "instruction": "State the answer.",
+        "work": "35 ÷ 7 = 5",
+        "explanation": "Since 7 × 5 = 35, we know 35 ÷ 7 = 5."
+      }
+    ]
+  },
+  {
+    "id": "divide-within-100-ex2",
+    "topicId": "divide-within-100",
+    "title": "Dividing 54 ÷ 6 by Making Equal Groups",
+    "steps": [
+      {
+        "subgoalLabel": "Understand what division means",
+        "instruction": "54 ÷ 6 asks: how many groups of 6 are in 54?",
+        "work": "How many 6s make 54?",
+        "explanation": "Division tells us how many equal groups we can make."
+      },
+      {
+        "subgoalLabel": "Count groups of 6",
+        "instruction": "Skip count by 6 until you reach 54.",
+        "work": "6, 12, 18, 24, 30, 36, 42, 48, 54 — that's 9 jumps",
+        "explanation": "We jumped by 6 a total of 9 times to reach 54."
+      },
+      {
+        "subgoalLabel": "Write the answer",
+        "instruction": "State the division fact.",
+        "work": "54 ÷ 6 = 9",
+        "explanation": "There are 9 groups of 6 in 54. Check: 6 × 9 = 54."
+      }
+    ]
+  }
+]

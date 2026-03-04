@@ -1,0 +1,47 @@
+[
+  {
+    "id": "place-value-decimals-p1",
+    "topicId": "place-value-decimals",
+    "difficulty": "easy",
+    "question": "What is the value of the digit 4 in 0.348?",
+    "answer": "4 hundredths or 0.04",
+    "hints": ["The digits after the decimal point are tenths, hundredths, thousandths from left to right.", "The 4 is the second digit after the decimal point."],
+    "solution": "In 0.348, the 3 is in the tenths place, the 4 is in the hundredths place, and the 8 is in the thousandths place. The value of 4 is 4 hundredths, or 0.04."
+  },
+  {
+    "id": "place-value-decimals-p2",
+    "topicId": "place-value-decimals",
+    "difficulty": "easy",
+    "question": "Write the number that has 5 ones, 2 tenths, and 7 thousandths.",
+    "answer": "5.207",
+    "hints": ["The tenths digit is 2, the hundredths digit is 0 (none mentioned), and the thousandths digit is 7."],
+    "solution": "5 ones = 5. 2 tenths = 0.2. 0 hundredths = 0.00. 7 thousandths = 0.007. Total: 5.207."
+  },
+  {
+    "id": "place-value-decimals-p3",
+    "topicId": "place-value-decimals",
+    "difficulty": "medium",
+    "question": "Write 0.060 in expanded form using fractions.",
+    "answer": "6/100",
+    "hints": ["The 6 is in the hundredths place. The zeros in the tenths and thousandths places mean no tenths and no thousandths."],
+    "solution": "0.060 = 0/10 + 6/100 + 0/1000 = 6/100. The trailing zero does not change the value."
+  },
+  {
+    "id": "place-value-decimals-p4",
+    "topicId": "place-value-decimals",
+    "difficulty": "medium",
+    "question": "Order these numbers from least to greatest: 0.52, 0.502, 0.520, 0.052.",
+    "answer": "0.052, 0.502, 0.52, 0.520",
+    "hints": ["Compare the tenths place first, then hundredths, then thousandths.", "Note that 0.52 and 0.520 have the same value."],
+    "solution": "0.052 (5 hundredths), 0.502 (5 tenths and 2 thousandths), 0.52 = 0.520 (5 tenths and 2 hundredths). Order: 0.052, 0.502, 0.52, 0.520. Note: 0.52 and 0.520 are equal."
+  },
+  {
+    "id": "place-value-decimals-p5",
+    "topicId": "place-value-decimals",
+    "difficulty": "hard",
+    "question": "The number 3.756 is rounded to the nearest hundredth. What is the result? Explain why.",
+    "answer": "3.76",
+    "hints": ["Look at the thousandths digit (6). Is it 5 or greater?", "If the digit to the right is 5 or more, round up."],
+    "solution": "The hundredths digit is 5. The thousandths digit is 6, which is 5 or greater, so we round up. 3.756 rounded to the nearest hundredth is 3.76."
+  }
+]

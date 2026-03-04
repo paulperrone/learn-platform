@@ -1,0 +1,52 @@
+[
+  {
+    "id": "add-within-5-ex1",
+    "topicId": "add-within-5",
+    "title": "Adding 2 + 3 with Fingers",
+    "steps": [
+      {
+        "subgoalLabel": "Show the first number",
+        "instruction": "Hold up fingers for the first number.",
+        "work": "Hold up 2 fingers on one hand. ✌️",
+        "explanation": "We start by showing the first number with our fingers."
+      },
+      {
+        "subgoalLabel": "Show the second number",
+        "instruction": "On your other hand, hold up fingers for the second number.",
+        "work": "Hold up 3 fingers on the other hand. 🤟",
+        "explanation": "Now both hands show the numbers we want to add."
+      },
+      {
+        "subgoalLabel": "Count all fingers",
+        "instruction": "Count all the fingers that are up.",
+        "work": "1, 2, 3, 4, 5. Total = 5!",
+        "explanation": "2 + 3 = 5. We counted all the raised fingers to find the total."
+      }
+    ]
+  },
+  {
+    "id": "add-within-5-ex2",
+    "topicId": "add-within-5",
+    "title": "Adding 3 + 1 by Counting On",
+    "steps": [
+      {
+        "subgoalLabel": "Start with the first number",
+        "instruction": "Instead of counting from 1, start at the bigger number.",
+        "work": "Start at 3.",
+        "explanation": "Counting on means we don't have to count the first group. We already know it is 3."
+      },
+      {
+        "subgoalLabel": "Count on the second number",
+        "instruction": "From 3, count up 1 more.",
+        "work": "3 → 4",
+        "explanation": "We counted 1 more from 3 and landed on 4."
+      },
+      {
+        "subgoalLabel": "Write the answer",
+        "instruction": "Write the addition sentence with the answer.",
+        "work": "3 + 1 = 4",
+        "explanation": "Three plus one equals four. Counting on is faster than counting everything from the start."
+      }
+    ]
+  }
+]

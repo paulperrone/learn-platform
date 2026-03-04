@@ -1,0 +1,47 @@
+[
+  {
+    "id": "decimals-intro-p1",
+    "topicId": "decimals-intro",
+    "difficulty": "easy",
+    "question": "Write 3/10 as a decimal.",
+    "answer": "0.3",
+    "hints": ["A fraction with denominator 10 goes in the tenths place, one digit after the decimal point."],
+    "solution": "3/10 = 0.3. The 3 goes in the tenths place."
+  },
+  {
+    "id": "decimals-intro-p2",
+    "topicId": "decimals-intro",
+    "difficulty": "easy",
+    "question": "Write 0.7 as a fraction.",
+    "answer": "7/10",
+    "hints": ["The digit 7 is in the tenths place, so the denominator is 10."],
+    "solution": "0.7 = 7/10. One digit after the decimal means tenths."
+  },
+  {
+    "id": "decimals-intro-p3",
+    "topicId": "decimals-intro",
+    "difficulty": "medium",
+    "question": "Write 47/100 as a decimal.",
+    "answer": "0.47",
+    "hints": ["A fraction with denominator 100 uses two decimal places (hundredths)."],
+    "solution": "47/100 = 0.47. The 4 is in the tenths place and the 7 is in the hundredths place."
+  },
+  {
+    "id": "decimals-intro-p4",
+    "topicId": "decimals-intro",
+    "difficulty": "medium",
+    "question": "Write 0.05 as a fraction.",
+    "answer": "5/100",
+    "hints": ["The 5 is in the hundredths place. How many hundredths is that?"],
+    "solution": "0.05 = 5/100. The zero in the tenths place means 0 tenths and 5 hundredths."
+  },
+  {
+    "id": "decimals-intro-p5",
+    "topicId": "decimals-intro",
+    "difficulty": "hard",
+    "question": "Which is greater: 0.4 or 0.38? Explain your reasoning.",
+    "answer": "0.4",
+    "hints": ["Write 0.4 as 0.40 so both numbers have the same number of decimal places.", "Compare 40 hundredths to 38 hundredths."],
+    "solution": "0.4 = 0.40 = 40/100. 0.38 = 38/100. Since 40 > 38, 0.4 > 0.38."
+  }
+]

@@ -1,0 +1,47 @@
+[
+  {
+    "id": "classify-2d-shapes-p1",
+    "topicId": "classify-2d-shapes",
+    "difficulty": "easy",
+    "question": "A triangle has all three sides the same length. What type of triangle is it?",
+    "answer": "equilateral",
+    "hints": ["Think about the prefix 'equi-' which means equal.", "'Lateral' means side."],
+    "solution": "A triangle with all three sides equal is called an equilateral triangle. It also has all angles equal (60° each)."
+  },
+  {
+    "id": "classify-2d-shapes-p2",
+    "topicId": "classify-2d-shapes",
+    "difficulty": "easy",
+    "question": "A quadrilateral has four right angles and four equal sides. What shape is it?",
+    "answer": "square",
+    "hints": ["It has right angles like a rectangle and equal sides like a rhombus."],
+    "solution": "A square has four right angles and four equal sides. It is both a rectangle and a rhombus."
+  },
+  {
+    "id": "classify-2d-shapes-p3",
+    "topicId": "classify-2d-shapes",
+    "difficulty": "medium",
+    "question": "True or false: All squares are rectangles, but not all rectangles are squares.",
+    "answer": "true",
+    "hints": ["A rectangle needs 4 right angles and opposite sides equal. Does a square have those?", "Does every rectangle have 4 equal sides?"],
+    "solution": "True. A square meets all rectangle requirements (4 right angles, opposite sides equal) plus has all sides equal. A rectangle does not need all four sides equal, so it is not always a square."
+  },
+  {
+    "id": "classify-2d-shapes-p4",
+    "topicId": "classify-2d-shapes",
+    "difficulty": "medium",
+    "question": "A quadrilateral has exactly one pair of parallel sides. What is this shape called?",
+    "answer": "trapezoid",
+    "hints": ["It is not a parallelogram because it only has ONE pair of parallel sides."],
+    "solution": "A quadrilateral with exactly one pair of parallel sides is called a trapezoid."
+  },
+  {
+    "id": "classify-2d-shapes-p5",
+    "topicId": "classify-2d-shapes",
+    "difficulty": "hard",
+    "question": "A triangle has sides measuring 5 cm, 5 cm, and 7 cm. One angle is 90°. Is this possible? Why or why not?",
+    "answer": "no",
+    "hints": ["If a triangle has a 90° angle, it is a right triangle. Check with the Pythagorean theorem.", "For a right triangle: 5² + 5² should equal 7²."],
+    "solution": "No. If it were a right triangle: 5² + 5² = 25 + 25 = 50, but 7² = 49. Since 50 ≠ 49, these sides cannot form a right triangle. (The triangle does exist, but it does not contain a 90° angle.)"
+  }
+]

@@ -1,0 +1,47 @@
+[
+  {
+    "id": "compare-fractions-3-p1",
+    "topicId": "compare-fractions-3",
+    "difficulty": "easy",
+    "question": "Which is greater: 2/4 or 3/4?",
+    "answer": "3/4",
+    "hints": ["The denominators are the same. Compare the numerators.", "More pieces of the same size means a larger fraction."],
+    "solution": "3/4 > 2/4. Same denominator, so compare numerators: 3 > 2."
+  },
+  {
+    "id": "compare-fractions-3-p2",
+    "topicId": "compare-fractions-3",
+    "difficulty": "easy",
+    "question": "Which is greater: 5/8 or 3/8?",
+    "answer": "5/8",
+    "hints": ["Same denominator (8). Which numerator is bigger?"],
+    "solution": "5/8 > 3/8. Same-sized pieces (eighths), so more pieces (5) is greater."
+  },
+  {
+    "id": "compare-fractions-3-p3",
+    "topicId": "compare-fractions-3",
+    "difficulty": "medium",
+    "question": "Which is greater: 1/3 or 1/6?",
+    "answer": "1/3",
+    "hints": ["Same numerator (1). Compare the denominators.", "Fewer pieces means each piece is bigger."],
+    "solution": "1/3 > 1/6. Same numerator, so the smaller denominator means bigger pieces."
+  },
+  {
+    "id": "compare-fractions-3-p4",
+    "topicId": "compare-fractions-3",
+    "difficulty": "medium",
+    "question": "Compare 4/6 and 2/6. Use >, <, or =.",
+    "answer": "4/6 > 2/6",
+    "hints": ["Same denominator. Compare numerators."],
+    "solution": "4/6 > 2/6. Both are sixths, so 4 sixths is more than 2 sixths."
+  },
+  {
+    "id": "compare-fractions-3-p5",
+    "topicId": "compare-fractions-3",
+    "difficulty": "hard",
+    "question": "Put these fractions in order from least to greatest: 1/8, 1/2, 1/4.",
+    "answer": "1/8, 1/4, 1/2",
+    "hints": ["All have the same numerator (1).", "Bigger denominator = smaller pieces = smaller fraction."],
+    "solution": "1/8 < 1/4 < 1/2. Same numerator, so larger denominator means smaller fraction. Order: 1/8, 1/4, 1/2."
+  }
+]

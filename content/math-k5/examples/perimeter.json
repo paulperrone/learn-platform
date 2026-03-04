@@ -1,0 +1,58 @@
+[
+  {
+    "id": "perimeter-ex1",
+    "topicId": "perimeter",
+    "title": "Finding the Perimeter of a Rectangle",
+    "steps": [
+      {
+        "subgoalLabel": "Understand perimeter",
+        "instruction": "Perimeter is the distance around the outside of a shape.",
+        "work": "A rectangle is 9 cm long and 4 cm wide.",
+        "explanation": "Imagine walking around the edge — the total distance is the perimeter."
+      },
+      {
+        "subgoalLabel": "Identify all sides",
+        "instruction": "A rectangle has 2 lengths and 2 widths.",
+        "work": "Sides: 9, 4, 9, 4",
+        "explanation": "Opposite sides of a rectangle are equal."
+      },
+      {
+        "subgoalLabel": "Add all sides",
+        "instruction": "Add the four side lengths.",
+        "work": "9 + 4 + 9 + 4 = 26 cm",
+        "explanation": "The perimeter of this rectangle is 26 cm."
+      }
+    ]
+  },
+  {
+    "id": "perimeter-ex2",
+    "topicId": "perimeter",
+    "title": "Finding a Missing Side from Perimeter",
+    "steps": [
+      {
+        "subgoalLabel": "Read the problem",
+        "instruction": "A rectangle has a perimeter of 20 inches. The length is 7 inches. Find the width.",
+        "work": "Perimeter = 20. Length = 7. Width = ?",
+        "explanation": "We know the total distance around and one dimension."
+      },
+      {
+        "subgoalLabel": "Add the known sides",
+        "instruction": "Two sides are length 7. Add them: 7 + 7 = 14.",
+        "work": "Two lengths = 7 + 7 = 14 inches",
+        "explanation": "A rectangle has two sides of each measurement."
+      },
+      {
+        "subgoalLabel": "Find the remaining distance",
+        "instruction": "Subtract the known sides from the perimeter.",
+        "work": "20 − 14 = 6 inches left for the two widths.",
+        "explanation": "The remaining perimeter is shared by the two width sides."
+      },
+      {
+        "subgoalLabel": "Find one width",
+        "instruction": "Divide by 2 since both widths are equal.",
+        "work": "6 ÷ 2 = 3 inches. The width is 3 inches.",
+        "explanation": "Check: 7 + 3 + 7 + 3 = 20 inches. Correct!"
+      }
+    ]
+  }
+]

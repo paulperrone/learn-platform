@@ -1,0 +1,47 @@
+[
+  {
+    "id": "multiply-multi-digit-p1",
+    "topicId": "multiply-multi-digit",
+    "difficulty": "easy",
+    "question": "What is 234 × 12?",
+    "answer": "2808",
+    "hints": ["Use partial products: 234 × 2 and 234 × 10.", "234 × 2 = 468. 234 × 10 = 2,340. Add them."],
+    "solution": "234 × 12: 234 × 2 = 468. 234 × 10 = 2,340. Add: 468 + 2,340 = 2,808."
+  },
+  {
+    "id": "multiply-multi-digit-p2",
+    "topicId": "multiply-multi-digit",
+    "difficulty": "easy",
+    "question": "What is 410 × 30?",
+    "answer": "12300",
+    "hints": ["Multiply 41 × 3 = 123, then add two zeros."],
+    "solution": "410 × 30: 41 × 3 = 123. Add two zeros (one from each factor): 12,300."
+  },
+  {
+    "id": "multiply-multi-digit-p3",
+    "topicId": "multiply-multi-digit",
+    "difficulty": "medium",
+    "question": "What is 583 × 47?",
+    "answer": "27401",
+    "hints": ["Partial products: 583 × 7 and 583 × 40.", "583 × 7 = 4,081. 583 × 40 = 23,320."],
+    "solution": "583 × 47: 583 × 7 = 4,081. 583 × 40 = 23,320. Add: 4,081 + 23,320 = 27,401."
+  },
+  {
+    "id": "multiply-multi-digit-p4",
+    "topicId": "multiply-multi-digit",
+    "difficulty": "medium",
+    "question": "What is 1,205 × 36?",
+    "answer": "43380",
+    "hints": ["Break into 1,205 × 6 and 1,205 × 30.", "1,205 × 6 = 7,230. 1,205 × 30 = 36,150."],
+    "solution": "1,205 × 36: 1,205 × 6 = 7,230. 1,205 × 30 = 36,150. Add: 7,230 + 36,150 = 43,380."
+  },
+  {
+    "id": "multiply-multi-digit-p5",
+    "topicId": "multiply-multi-digit",
+    "difficulty": "hard",
+    "question": "A warehouse stores 256 boxes on each of 78 pallets. How many boxes are in the warehouse?",
+    "answer": "19968",
+    "hints": ["Multiply 256 × 78.", "256 × 8 = 2,048. 256 × 70 = 17,920."],
+    "solution": "256 × 78: 256 × 8 = 2,048. 256 × 70 = 17,920. Add: 2,048 + 17,920 = 19,968 boxes."
+  }
+]

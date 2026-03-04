@@ -1,0 +1,64 @@
+[
+  {
+    "id": "multiply-multi-digit-ex1",
+    "topicId": "multiply-multi-digit",
+    "title": "Standard Algorithm: 347 × 23",
+    "steps": [
+      {
+        "subgoalLabel": "Multiply by the ones digit",
+        "instruction": "Multiply 347 by 3 (the ones digit of 23).",
+        "work": "7 × 3 = 21, write 1 carry 2. 4 × 3 = 12 + 2 = 14, write 4 carry 1. 3 × 3 = 9 + 1 = 10. First partial product: 1,041.",
+        "explanation": "Work right to left, carrying as needed, just like single-digit multiplication."
+      },
+      {
+        "subgoalLabel": "Multiply by the tens digit",
+        "instruction": "Multiply 347 by 2 (the tens digit of 23, representing 20).",
+        "work": "347 × 20: 7 × 2 = 14, write 4 carry 1. 4 × 2 = 8 + 1 = 9. 3 × 2 = 6. Second partial product: 6,940.",
+        "explanation": "Since we are multiplying by the tens digit, the partial product is shifted left (a 0 in the ones place)."
+      },
+      {
+        "subgoalLabel": "Add the partial products",
+        "instruction": "Add 1,041 and 6,940.",
+        "work": "1,041 + 6,940 = 7,981.",
+        "explanation": "The sum of all partial products gives the final answer."
+      },
+      {
+        "subgoalLabel": "State the answer",
+        "instruction": "Write the complete multiplication.",
+        "work": "347 × 23 = 7,981",
+        "explanation": "We can estimate to check: 350 × 20 = 7,000, which is close to 7,981."
+      }
+    ]
+  },
+  {
+    "id": "multiply-multi-digit-ex2",
+    "topicId": "multiply-multi-digit",
+    "title": "Multiplying with Zeros: 2,050 × 14",
+    "steps": [
+      {
+        "subgoalLabel": "Multiply by the ones digit",
+        "instruction": "Multiply 2,050 by 4.",
+        "work": "0 × 4 = 0. 5 × 4 = 20, write 0 carry 2. 0 × 4 = 0 + 2 = 2. 2 × 4 = 8. First partial product: 8,200.",
+        "explanation": "Zeros in the middle of the number are just multiplied normally — they stay zero (unless there is a carry)."
+      },
+      {
+        "subgoalLabel": "Multiply by the tens digit",
+        "instruction": "Multiply 2,050 by 10.",
+        "work": "2,050 × 10 = 20,500.",
+        "explanation": "Multiplying by 10 simply adds a zero to the end."
+      },
+      {
+        "subgoalLabel": "Add partial products",
+        "instruction": "Add 8,200 + 20,500.",
+        "work": "8,200 + 20,500 = 28,700.",
+        "explanation": "The final answer is the sum of both partial products."
+      },
+      {
+        "subgoalLabel": "Verify with estimation",
+        "instruction": "Estimate to check: 2,000 × 14 = 28,000.",
+        "work": "28,700 is close to 28,000. The answer is reasonable.",
+        "explanation": "Estimation helps catch major errors in multiplication."
+      }
+    ]
+  }
+]

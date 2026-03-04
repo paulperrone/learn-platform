@@ -111,9 +111,13 @@ function main() {
   console.log(`Using database: ${dbPath}`);
   const db = new Database(dbPath);
 
-  // Clear existing data for this subject
-  db.exec("DELETE FROM encompassings WHERE parent_topic_id IN (SELECT id FROM topics WHERE subject_id = ?)".replace("?", `'${graph.subjectId}'`));
-  db.exec("DELETE FROM prerequisites WHERE from_topic_id IN (SELECT id FROM topics WHERE subject_id = ?)".replace("?", `'${graph.subjectId}'`));
+  // Clear existing data for this subject (order matters for foreign keys)
+  db.exec(`DELETE FROM review_log WHERE topic_id IN (SELECT id FROM topics WHERE subject_id = '${graph.subjectId}')`);
+  db.exec(`DELETE FROM user_topic_state WHERE topic_id IN (SELECT id FROM topics WHERE subject_id = '${graph.subjectId}')`);
+  db.exec(`DELETE FROM encompassings WHERE parent_topic_id IN (SELECT id FROM topics WHERE subject_id = '${graph.subjectId}')`);
+  db.exec(`DELETE FROM encompassings WHERE child_topic_id IN (SELECT id FROM topics WHERE subject_id = '${graph.subjectId}')`);
+  db.exec(`DELETE FROM prerequisites WHERE from_topic_id IN (SELECT id FROM topics WHERE subject_id = '${graph.subjectId}')`);
+  db.exec(`DELETE FROM prerequisites WHERE to_topic_id IN (SELECT id FROM topics WHERE subject_id = '${graph.subjectId}')`);
   db.exec(`DELETE FROM topics WHERE subject_id = '${graph.subjectId}'`);
   db.exec(`DELETE FROM subjects WHERE id = '${graph.subjectId}'`);
 

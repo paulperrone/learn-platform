@@ -1,0 +1,47 @@
+[
+  {
+    "id": "angles-intro-p1",
+    "topicId": "angles-intro",
+    "difficulty": "easy",
+    "question": "What type of angle measures exactly 90 degrees?",
+    "answer": "right angle",
+    "hints": ["Think about the corner of a square or a piece of paper."],
+    "solution": "A 90-degree angle is called a right angle. It looks like the corner of a square."
+  },
+  {
+    "id": "angles-intro-p2",
+    "topicId": "angles-intro",
+    "difficulty": "easy",
+    "question": "Is an angle that measures 55° acute, right, or obtuse?",
+    "answer": "acute",
+    "hints": ["Acute angles are less than 90°. Obtuse angles are greater than 90°."],
+    "solution": "55° is less than 90°, so it is an acute angle."
+  },
+  {
+    "id": "angles-intro-p3",
+    "topicId": "angles-intro",
+    "difficulty": "medium",
+    "question": "An angle measures 135°. Is it acute, right, or obtuse?",
+    "answer": "obtuse",
+    "hints": ["Compare 135° to 90°. Is it more or less?"],
+    "solution": "135° is greater than 90° but less than 180°, so it is an obtuse angle."
+  },
+  {
+    "id": "angles-intro-p4",
+    "topicId": "angles-intro",
+    "difficulty": "medium",
+    "question": "Two angles together form a straight line (180°). One angle is 65°. What is the other angle?",
+    "answer": "115",
+    "hints": ["Angles on a straight line add up to 180°.", "Subtract: 180 − 65 = ?"],
+    "solution": "180° − 65° = 115°. The other angle is 115°."
+  },
+  {
+    "id": "angles-intro-p5",
+    "topicId": "angles-intro",
+    "difficulty": "hard",
+    "question": "A right angle is divided into two smaller angles. One measures 32°. What does the other measure? What type of angle is each smaller angle?",
+    "answer": "58",
+    "hints": ["A right angle is 90°. The two smaller angles must add up to 90°.", "Both smaller angles must be less than 90°."],
+    "solution": "90° − 32° = 58°. Both 32° and 58° are acute angles (less than 90°)."
+  }
+]

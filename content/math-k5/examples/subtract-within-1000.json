@@ -1,0 +1,70 @@
+[
+  {
+    "id": "subtract-within-1000-ex1",
+    "topicId": "subtract-within-1000",
+    "title": "Subtracting 614 − 378 with Regrouping",
+    "steps": [
+      {
+        "subgoalLabel": "Check ones place",
+        "instruction": "Can we subtract 8 from 4?",
+        "work": "4 < 8, so we need to regroup.",
+        "explanation": "When the ones digit on top is smaller, borrow from the tens."
+      },
+      {
+        "subgoalLabel": "Regroup tens to ones",
+        "instruction": "Borrow 1 ten from the 1 in the tens place.",
+        "work": "614 = 600 + 0 + 14. But wait — 0 tens means we need to borrow from hundreds first.",
+        "explanation": "The tens digit is 1. After borrowing, it becomes 0 tens and 14 ones."
+      },
+      {
+        "subgoalLabel": "Subtract ones",
+        "instruction": "14 − 8.",
+        "work": "14 − 8 = 6",
+        "explanation": "Now we have enough ones to subtract."
+      },
+      {
+        "subgoalLabel": "Subtract tens",
+        "instruction": "0 − 7 doesn't work, so regroup from hundreds. 600 = 500 + 100. Now: 10 − 7.",
+        "work": "10 − 7 = 3",
+        "explanation": "After borrowing 1 hundred as 10 tens, we can subtract."
+      },
+      {
+        "subgoalLabel": "Subtract hundreds and combine",
+        "instruction": "5 − 3 = 2 hundreds. Combine all digits.",
+        "work": "614 − 378 = 236",
+        "explanation": "2 hundreds, 3 tens, 6 ones = 236."
+      }
+    ]
+  },
+  {
+    "id": "subtract-within-1000-ex2",
+    "topicId": "subtract-within-1000",
+    "title": "Subtracting 500 − 183 by Counting Up",
+    "steps": [
+      {
+        "subgoalLabel": "Start at the smaller number",
+        "instruction": "Begin at 183 and count up to 500.",
+        "work": "Start: 183",
+        "explanation": "Instead of subtracting, we find the distance from 183 to 500."
+      },
+      {
+        "subgoalLabel": "Jump to the next friendly number",
+        "instruction": "Jump from 183 to 200.",
+        "work": "183 + 17 = 200",
+        "explanation": "200 is a round number that's easy to work with."
+      },
+      {
+        "subgoalLabel": "Jump to the target",
+        "instruction": "Jump from 200 to 500.",
+        "work": "200 + 300 = 500",
+        "explanation": "From 200 to 500 is exactly 300."
+      },
+      {
+        "subgoalLabel": "Add up the jumps",
+        "instruction": "Total distance: 17 + 300.",
+        "work": "17 + 300 = 317, so 500 − 183 = 317",
+        "explanation": "The total distance from 183 to 500 is 317."
+      }
+    ]
+  }
+]

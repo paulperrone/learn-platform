@@ -1,0 +1,47 @@
+[
+  {
+    "id": "bar-graphs-picture-graphs-p1",
+    "topicId": "bar-graphs-picture-graphs",
+    "difficulty": "easy",
+    "question": "A bar graph shows: Red = 5, Blue = 8, Green = 3. Which color got the most votes?",
+    "answer": "Blue",
+    "hints": ["Look for the tallest bar.", "Compare: 5, 8, 3. Which is the biggest?"],
+    "solution": "Blue got the most votes with 8. The tallest bar represents the most."
+  },
+  {
+    "id": "bar-graphs-picture-graphs-p2",
+    "topicId": "bar-graphs-picture-graphs",
+    "difficulty": "easy",
+    "question": "A picture graph shows each picture equals 1 pet. Dogs: 6 pictures, Cats: 4 pictures. How many more dogs than cats?",
+    "answer": "2",
+    "hints": ["Subtract: 6 − 4."],
+    "solution": "6 − 4 = 2. There are 2 more dogs than cats."
+  },
+  {
+    "id": "bar-graphs-picture-graphs-p3",
+    "topicId": "bar-graphs-picture-graphs",
+    "difficulty": "medium",
+    "question": "A picture graph uses a key where each picture = 2 students. The row for 'Soccer' shows 5 pictures. How many students chose soccer?",
+    "answer": "10",
+    "hints": ["Each picture = 2 students.", "5 pictures × 2 students = ?"],
+    "solution": "5 pictures × 2 students each = 10 students chose soccer."
+  },
+  {
+    "id": "bar-graphs-picture-graphs-p4",
+    "topicId": "bar-graphs-picture-graphs",
+    "difficulty": "medium",
+    "question": "A bar graph shows: Vanilla = 12, Chocolate = 15, Strawberry = 9. How many total ice cream votes?",
+    "answer": "36",
+    "hints": ["Add all the bars together.", "12 + 15 + 9 = ?"],
+    "solution": "12 + 15 + 9 = 36 total votes."
+  },
+  {
+    "id": "bar-graphs-picture-graphs-p5",
+    "topicId": "bar-graphs-picture-graphs",
+    "difficulty": "hard",
+    "question": "A picture graph uses a key where each picture = 5 books. The library shows: Fiction = 7 pictures, Nonfiction = 4 pictures, Comics = 3 pictures. How many more fiction books than comics?",
+    "answer": "20",
+    "hints": ["Fiction: 7 × 5 = 35 books. Comics: 3 × 5 = 15 books.", "35 − 15 = ?"],
+    "solution": "Fiction: 7 × 5 = 35. Comics: 3 × 5 = 15. Difference: 35 − 15 = 20 more fiction books."
+  }
+]

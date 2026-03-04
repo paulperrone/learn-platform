@@ -13,19 +13,19 @@ Take the locally-working MVP to a deployed, testable state. Generate full conten
 
 ## Progress
 
-**Completed:** None yet
+**Completed:** Phase 1
 **In Progress:** —
-**Next:** Phase 1
+**Next:** Phase 2
 
 ---
 
-## Phase 1: Content Generation
+## Phase 1: Content Generation ✓
 **Goal:** All 71 topics have validated problem banks and worked examples
 
-1. [ ] [TRF] Generate problem banks for all 68 remaining topics using Claude Code
-2. [ ] [TRF] Generate worked examples for all 70 remaining topics using Claude Code
-3. [ ] [VAL] Run validate-content.ts — 0 errors, all 71 topics have problems and examples
-4. [ ] [TRF] Re-import full content into local D1 and verify via API
+1. [x] [TRF] Generate problem banks for all 68 remaining topics using Claude Code
+2. [x] [TRF] Generate worked examples for all 70 remaining topics using Claude Code
+3. [x] [VAL] Run validate-content.ts — 0 errors, all 71 topics have problems and examples
+4. [x] [TRF] Re-import full content into local D1 and verify via API
 
 **Validation:** `npx tsx tools/validate-content.ts` reports 0 missing topics for problems and examples. `npx tsx tools/import-content.ts` succeeds. API returns problems/examples for a sample of topics across grade levels.
 

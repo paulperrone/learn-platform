@@ -1,0 +1,47 @@
+[
+  {
+    "id": "area-intro-p1",
+    "topicId": "area-intro",
+    "difficulty": "easy",
+    "question": "A rectangle is covered with unit squares. It has 2 rows with 3 squares in each row. What is the area?",
+    "answer": "6 square units",
+    "hints": ["Count all the unit squares.", "2 rows × 3 squares = ?"],
+    "solution": "Area = 2 × 3 = 6 square units."
+  },
+  {
+    "id": "area-intro-p2",
+    "topicId": "area-intro",
+    "difficulty": "easy",
+    "question": "Count the unit squares: a shape has 8 unit squares covering it. What is its area?",
+    "answer": "8 square units",
+    "hints": ["Each unit square = 1 square unit of area."],
+    "solution": "The area is 8 square units. Each unit square counts as 1."
+  },
+  {
+    "id": "area-intro-p3",
+    "topicId": "area-intro",
+    "difficulty": "medium",
+    "question": "A rectangle has 4 rows with 5 unit squares in each row. What is its area?",
+    "answer": "20 square units",
+    "hints": ["Count the total unit squares: 4 rows of 5."],
+    "solution": "Area = 4 × 5 = 20 square units."
+  },
+  {
+    "id": "area-intro-p4",
+    "topicId": "area-intro",
+    "difficulty": "medium",
+    "question": "Two shapes are side by side. Shape A has 12 square units. Shape B has 9 square units. Which shape has the greater area, and by how much?",
+    "answer": "Shape A, by 3 square units",
+    "hints": ["Compare the areas: 12 vs 9.", "Subtract to find the difference."],
+    "solution": "Shape A (12 sq units) > Shape B (9 sq units). Difference: 12 − 9 = 3 square units."
+  },
+  {
+    "id": "area-intro-p5",
+    "topicId": "area-intro",
+    "difficulty": "hard",
+    "question": "An L-shaped figure is made of two rectangles. One is 3 by 4 and the other is 2 by 3. What is the total area?",
+    "answer": "18 square units",
+    "hints": ["Find the area of each rectangle separately.", "3 × 4 = 12 and 2 × 3 = 6."],
+    "solution": "Rectangle 1: 3 × 4 = 12. Rectangle 2: 2 × 3 = 6. Total: 12 + 6 = 18 square units."
+  }
+]

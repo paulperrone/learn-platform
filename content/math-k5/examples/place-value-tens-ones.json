@@ -1,0 +1,52 @@
+[
+  {
+    "id": "place-value-tens-ones-ex1",
+    "topicId": "place-value-tens-ones",
+    "title": "Breaking 36 into Tens and Ones",
+    "steps": [
+      {
+        "subgoalLabel": "Find the tens digit",
+        "instruction": "In a two-digit number, the left digit is the tens. What is the tens digit of 36?",
+        "work": "36 → the tens digit is 3.",
+        "explanation": "The digit on the left tells us how many groups of ten. 3 means 3 tens."
+      },
+      {
+        "subgoalLabel": "Find the ones digit",
+        "instruction": "The right digit is the ones. What is the ones digit of 36?",
+        "work": "36 → the ones digit is 6.",
+        "explanation": "The digit on the right tells us how many ones (leftovers that don't make a full ten)."
+      },
+      {
+        "subgoalLabel": "Write it out",
+        "instruction": "Show 36 as tens and ones.",
+        "work": "36 = 3 tens + 6 ones = 30 + 6",
+        "explanation": "36 is made of 30 (3 groups of ten) plus 6 extra ones."
+      }
+    ]
+  },
+  {
+    "id": "place-value-tens-ones-ex2",
+    "topicId": "place-value-tens-ones",
+    "title": "Building a Number from Tens and Ones",
+    "steps": [
+      {
+        "subgoalLabel": "Start with the tens",
+        "instruction": "We have 5 tens. How much is that?",
+        "work": "5 tens = 50",
+        "explanation": "Each ten is worth 10. So 5 tens = 5 x 10 = 50."
+      },
+      {
+        "subgoalLabel": "Add the ones",
+        "instruction": "We also have 2 ones. Add them to the tens.",
+        "work": "50 + 2 = 52",
+        "explanation": "The ones are added after the tens. 2 ones is just 2."
+      },
+      {
+        "subgoalLabel": "Write the number",
+        "instruction": "Put the tens digit and ones digit together.",
+        "work": "5 tens and 2 ones = 52",
+        "explanation": "The 5 goes in the tens place and the 2 goes in the ones place, giving us 52."
+      }
+    ]
+  }
+]

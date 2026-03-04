@@ -1,0 +1,52 @@
+[
+  {
+    "id": "division-word-problems-ex1",
+    "topicId": "division-word-problems",
+    "title": "Equal Sharing: 24 Cookies Among 6 Friends",
+    "steps": [
+      {
+        "subgoalLabel": "Identify the type of division",
+        "instruction": "Is this sharing (how many in each group) or grouping (how many groups)?",
+        "work": "24 cookies shared among 6 friends = sharing (how many each?)",
+        "explanation": "'Shared equally among' tells us each friend gets the same number."
+      },
+      {
+        "subgoalLabel": "Write the division",
+        "instruction": "Total ÷ number of groups = size of each group.",
+        "work": "24 ÷ 6 = ?",
+        "explanation": "We divide the total (24) by the number of friends (6)."
+      },
+      {
+        "subgoalLabel": "Use multiplication to solve",
+        "instruction": "Think: 6 × ? = 24.",
+        "work": "6 × 4 = 24, so 24 ÷ 6 = 4",
+        "explanation": "Each friend gets 4 cookies."
+      }
+    ]
+  },
+  {
+    "id": "division-word-problems-ex2",
+    "topicId": "division-word-problems",
+    "title": "Equal Grouping: Packing Oranges in Bags",
+    "steps": [
+      {
+        "subgoalLabel": "Identify the type of division",
+        "instruction": "You have 30 oranges and put 5 in each bag. How many bags do you need?",
+        "work": "30 oranges, 5 per bag = grouping (how many bags?)",
+        "explanation": "'Put 5 in each' tells us the group size. We need to find how many groups."
+      },
+      {
+        "subgoalLabel": "Write the division",
+        "instruction": "Total ÷ group size = number of groups.",
+        "work": "30 ÷ 5 = ?",
+        "explanation": "We divide the total (30) by the group size (5)."
+      },
+      {
+        "subgoalLabel": "Solve",
+        "instruction": "Think: 5 × ? = 30.",
+        "work": "5 × 6 = 30, so 30 ÷ 5 = 6",
+        "explanation": "You need 6 bags. Check: 6 bags × 5 oranges = 30 oranges."
+      }
+    ]
+  }
+]

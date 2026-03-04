@@ -1,0 +1,52 @@
+[
+  {
+    "id": "equivalent-fractions-4-ex1",
+    "topicId": "equivalent-fractions-4",
+    "title": "Making an Equivalent Fraction by Multiplying: 2/3 = ?/12",
+    "steps": [
+      {
+        "subgoalLabel": "Find the multiplier",
+        "instruction": "What number do you multiply the denominator by to get the target denominator?",
+        "work": "3 × ? = 12 → 3 × 4 = 12. The multiplier is 4.",
+        "explanation": "To keep the fraction equivalent, we must multiply both the numerator and denominator by the same number."
+      },
+      {
+        "subgoalLabel": "Multiply the numerator",
+        "instruction": "Multiply the numerator by the same number.",
+        "work": "2 × 4 = 8.",
+        "explanation": "Whatever we do to the bottom, we must do to the top."
+      },
+      {
+        "subgoalLabel": "Write the equivalent fraction",
+        "instruction": "Put the new numerator over the new denominator.",
+        "work": "2/3 = 8/12",
+        "explanation": "We multiplied both parts by 4, so the fraction has the same value — just more pieces of a smaller size."
+      }
+    ]
+  },
+  {
+    "id": "equivalent-fractions-4-ex2",
+    "topicId": "equivalent-fractions-4",
+    "title": "Simplifying a Fraction by Dividing: 8/12 in Lowest Terms",
+    "steps": [
+      {
+        "subgoalLabel": "Find the greatest common factor (GCF)",
+        "instruction": "List factors of 8 and 12 and find the largest one they share.",
+        "work": "Factors of 8: 1, 2, 4, 8. Factors of 12: 1, 2, 3, 4, 6, 12. GCF = 4.",
+        "explanation": "The GCF is the biggest number that divides evenly into both the numerator and denominator."
+      },
+      {
+        "subgoalLabel": "Divide both parts by the GCF",
+        "instruction": "Divide the numerator and denominator by 4.",
+        "work": "8 ÷ 4 = 2, 12 ÷ 4 = 3.",
+        "explanation": "Dividing both by the same number keeps the fraction equivalent."
+      },
+      {
+        "subgoalLabel": "Write the simplified fraction",
+        "instruction": "State the fraction in lowest terms.",
+        "work": "8/12 = 2/3",
+        "explanation": "2/3 is in lowest terms because the only common factor of 2 and 3 is 1."
+      }
+    ]
+  }
+]

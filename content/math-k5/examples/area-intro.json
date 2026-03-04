@@ -1,0 +1,52 @@
+[
+  {
+    "id": "area-intro-ex1",
+    "topicId": "area-intro",
+    "title": "Finding Area by Counting Unit Squares",
+    "steps": [
+      {
+        "subgoalLabel": "Understand area",
+        "instruction": "Area measures how much surface a shape covers. We measure it in square units.",
+        "work": "Each small square = 1 square unit.",
+        "explanation": "Area answers the question: how many unit squares fit inside?"
+      },
+      {
+        "subgoalLabel": "Count the squares",
+        "instruction": "A rectangle is covered with unit squares: 3 rows, 5 in each row.",
+        "work": "Row 1: 5, Row 2: 5, Row 3: 5",
+        "explanation": "Count each row systematically to avoid missing any."
+      },
+      {
+        "subgoalLabel": "Find the total",
+        "instruction": "Add up all the squares.",
+        "work": "5 + 5 + 5 = 15 square units",
+        "explanation": "The area of this rectangle is 15 square units."
+      }
+    ]
+  },
+  {
+    "id": "area-intro-ex2",
+    "topicId": "area-intro",
+    "title": "Area of an Irregular Shape by Counting",
+    "steps": [
+      {
+        "subgoalLabel": "Look at the shape",
+        "instruction": "The shape is not a perfect rectangle, but it's still covered with unit squares.",
+        "work": "The shape looks like a plus sign (+), made of unit squares.",
+        "explanation": "Even non-rectangular shapes have area. Just count all the unit squares."
+      },
+      {
+        "subgoalLabel": "Count carefully",
+        "instruction": "Count every unit square inside the shape, row by row.",
+        "work": "Top: 1, Middle row: 3, Bottom: 1. Total: 1 + 3 + 1 = 5",
+        "explanation": "Go row by row so you don't miss any or count any twice."
+      },
+      {
+        "subgoalLabel": "State the area",
+        "instruction": "Write the area with units.",
+        "work": "Area = 5 square units",
+        "explanation": "Always include 'square units' when stating area."
+      }
+    ]
+  }
+]

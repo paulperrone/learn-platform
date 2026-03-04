@@ -1,0 +1,58 @@
+[
+  {
+    "id": "decimal-operations-ex1",
+    "topicId": "decimal-operations",
+    "title": "Adding Decimals: 4.73 + 2.58",
+    "steps": [
+      {
+        "subgoalLabel": "Line up the decimal points",
+        "instruction": "Write the numbers vertically with decimal points aligned.",
+        "work": "  4.73\n+ 2.58\n------",
+        "explanation": "Aligning decimal points ensures we add tenths to tenths, hundredths to hundredths, etc."
+      },
+      {
+        "subgoalLabel": "Add from right to left",
+        "instruction": "Add hundredths: 3 + 8 = 11. Write 1, carry 1. Add tenths: 7 + 5 + 1 = 13. Write 3, carry 1. Add ones: 4 + 2 + 1 = 7.",
+        "work": "4.73 + 2.58 = 7.31",
+        "explanation": "Carry just like whole number addition. The decimal point goes straight down into the answer."
+      },
+      {
+        "subgoalLabel": "Check the answer",
+        "instruction": "Estimate: 5 + 3 = 8. Our answer 7.31 is reasonable.",
+        "work": "4.73 + 2.58 = 7.31",
+        "explanation": "A quick estimate helps verify the answer makes sense."
+      }
+    ]
+  },
+  {
+    "id": "decimal-operations-ex2",
+    "topicId": "decimal-operations",
+    "title": "Multiplying Decimals: 1.5 × 0.4",
+    "steps": [
+      {
+        "subgoalLabel": "Ignore the decimals and multiply",
+        "instruction": "Multiply 15 × 4 as whole numbers.",
+        "work": "15 × 4 = 60.",
+        "explanation": "First, compute the product without worrying about decimal placement."
+      },
+      {
+        "subgoalLabel": "Count total decimal places",
+        "instruction": "Count the decimal places in both factors.",
+        "work": "1.5 has 1 decimal place. 0.4 has 1 decimal place. Total: 2 decimal places.",
+        "explanation": "The product must have the same total number of decimal places as the factors combined."
+      },
+      {
+        "subgoalLabel": "Place the decimal point",
+        "instruction": "Starting from the right of 60, move the decimal 2 places left.",
+        "work": "60 → 0.60 = 0.6.",
+        "explanation": "Two decimal places in 60 gives us 0.60, which simplifies to 0.6."
+      },
+      {
+        "subgoalLabel": "Verify",
+        "instruction": "Check: 1.5 × 0.4. Think of it as one and a half groups of 0.4.",
+        "work": "1 × 0.4 = 0.4. 0.5 × 0.4 = 0.2. Total: 0.4 + 0.2 = 0.6.",
+        "explanation": "Breaking the problem apart confirms our answer of 0.6."
+      }
+    ]
+  }
+]

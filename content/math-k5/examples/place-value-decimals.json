@@ -1,0 +1,58 @@
+[
+  {
+    "id": "place-value-decimals-ex1",
+    "topicId": "place-value-decimals",
+    "title": "Understanding Place Value in 4.639",
+    "steps": [
+      {
+        "subgoalLabel": "Identify each place value",
+        "instruction": "Name the place of each digit in 4.639.",
+        "work": "4 = ones. 6 = tenths. 3 = hundredths. 9 = thousandths.",
+        "explanation": "Moving right from the decimal point: tenths (1/10), hundredths (1/100), thousandths (1/1000)."
+      },
+      {
+        "subgoalLabel": "Find the value of each digit",
+        "instruction": "Write the value that each digit represents.",
+        "work": "4 = 4. 6 = 0.6 (or 6/10). 3 = 0.03 (or 3/100). 9 = 0.009 (or 9/1000).",
+        "explanation": "Each place is 10 times smaller than the one to its left."
+      },
+      {
+        "subgoalLabel": "Write in expanded form",
+        "instruction": "Write 4.639 as a sum of its place values.",
+        "work": "4.639 = 4 + 0.6 + 0.03 + 0.009",
+        "explanation": "Expanded form shows the value of each digit separately."
+      }
+    ]
+  },
+  {
+    "id": "place-value-decimals-ex2",
+    "topicId": "place-value-decimals",
+    "title": "Comparing Decimals: 0.45 vs 0.405",
+    "steps": [
+      {
+        "subgoalLabel": "Line up by place value",
+        "instruction": "Write both numbers with the same number of decimal places.",
+        "work": "0.450 and 0.405.",
+        "explanation": "Adding a trailing zero to 0.45 makes it easier to compare digit by digit."
+      },
+      {
+        "subgoalLabel": "Compare tenths",
+        "instruction": "Look at the tenths digit of each number.",
+        "work": "Both have 4 in the tenths place. They are equal so far.",
+        "explanation": "Start comparing from the leftmost place value after the decimal."
+      },
+      {
+        "subgoalLabel": "Compare hundredths",
+        "instruction": "Look at the hundredths digit.",
+        "work": "0.450 has 5 hundredths. 0.405 has 0 hundredths. Since 5 > 0, 0.450 > 0.405.",
+        "explanation": "The first place where the digits differ determines which number is greater."
+      },
+      {
+        "subgoalLabel": "State the result",
+        "instruction": "Write the comparison.",
+        "work": "0.45 > 0.405",
+        "explanation": "Even though 0.405 has more digits, 0.45 is larger because it has more hundredths."
+      }
+    ]
+  }
+]

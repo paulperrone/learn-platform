@@ -9,6 +9,7 @@ Gotchas, insights, and tacit knowledge. Append-only.
 - D1 foreign keys are enforced — test users must exist in `users` table before creating `user_topic_state` rows
 - Drizzle ORM version must match better-auth peer dependency (>=0.41.0 as of better-auth 1.5.x)
 - `pnpm approve-builds` is interactive — add native deps to `pnpm.onlyBuiltDependencies` in root package.json instead
+- import-content.ts must delete from `review_log` and `user_topic_state` before deleting topics — FK constraints on `topic_id`
 
 ---
 
@@ -27,3 +28,12 @@ The `tools/import-content.ts` script uses better-sqlite3 to write directly to th
 ## 2026-03-03: Tailwind CSS v4 uses @tailwindcss/vite plugin
 
 No `tailwind.config.js` needed. Import via `@import "tailwindcss"` in CSS. Plugin added in vite.config.ts.
+
+## 2026-03-04: import-content.ts FK delete order must cover all referencing tables
+
+**Source:** User session
+**Area:** D1 / SQLite FK constraints
+
+The original import script only deleted from `encompassings` and `prerequisites` before deleting topics. But `review_log` and `user_topic_state` also have FK references to `topics.id`. The full delete order must be: review_log → user_topic_state → encompassings → prerequisites → topics → subjects.
+
+**Context:** Fails on re-import after any user activity has created review_log or user_topic_state rows.

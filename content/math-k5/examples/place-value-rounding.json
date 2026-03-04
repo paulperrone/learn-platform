@@ -1,0 +1,52 @@
+[
+  {
+    "id": "place-value-rounding-ex1",
+    "topicId": "place-value-rounding",
+    "title": "Rounding 67 to the Nearest Ten",
+    "steps": [
+      {
+        "subgoalLabel": "Find the two nearest tens",
+        "instruction": "What tens is 67 between?",
+        "work": "67 is between 60 and 70.",
+        "explanation": "When rounding to the nearest ten, find the two multiples of 10 the number falls between."
+      },
+      {
+        "subgoalLabel": "Look at the ones digit",
+        "instruction": "The ones digit decides which way to round.",
+        "work": "The ones digit is 7.",
+        "explanation": "If the ones digit is 5 or more, round up. If less than 5, round down."
+      },
+      {
+        "subgoalLabel": "Round",
+        "instruction": "7 is 5 or more, so round up.",
+        "work": "67 rounds to 70.",
+        "explanation": "67 is closer to 70 than to 60, so we round up to 70."
+      }
+    ]
+  },
+  {
+    "id": "place-value-rounding-ex2",
+    "topicId": "place-value-rounding",
+    "title": "Rounding 538 to the Nearest Hundred",
+    "steps": [
+      {
+        "subgoalLabel": "Find the two nearest hundreds",
+        "instruction": "What hundreds is 538 between?",
+        "work": "538 is between 500 and 600.",
+        "explanation": "When rounding to the nearest hundred, find the two multiples of 100."
+      },
+      {
+        "subgoalLabel": "Look at the tens digit",
+        "instruction": "When rounding to hundreds, the tens digit decides.",
+        "work": "The tens digit is 3.",
+        "explanation": "If the tens digit is 5 or more, round up. Less than 5, round down."
+      },
+      {
+        "subgoalLabel": "Round",
+        "instruction": "3 is less than 5, so round down.",
+        "work": "538 rounds to 500.",
+        "explanation": "538 is closer to 500 than to 600."
+      }
+    ]
+  }
+]

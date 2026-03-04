@@ -1,0 +1,52 @@
+[
+  {
+    "id": "area-multiply-ex1",
+    "topicId": "area-multiply",
+    "title": "Finding Area by Multiplying Side Lengths",
+    "steps": [
+      {
+        "subgoalLabel": "Identify length and width",
+        "instruction": "A rectangle is 7 cm long and 4 cm wide.",
+        "work": "Length = 7 cm, Width = 4 cm",
+        "explanation": "Length and width are the two dimensions of a rectangle."
+      },
+      {
+        "subgoalLabel": "Apply the formula",
+        "instruction": "Area = length × width.",
+        "work": "Area = 7 × 4 = 28",
+        "explanation": "Multiplying gives us the number of unit squares that fit inside."
+      },
+      {
+        "subgoalLabel": "Include the units",
+        "instruction": "Area is measured in square units.",
+        "work": "Area = 28 square cm",
+        "explanation": "Since we measured in cm, the area is in square centimeters (sq cm)."
+      }
+    ]
+  },
+  {
+    "id": "area-multiply-ex2",
+    "topicId": "area-multiply",
+    "title": "Finding a Missing Side Length from Area",
+    "steps": [
+      {
+        "subgoalLabel": "Read the problem",
+        "instruction": "A rectangle has an area of 42 square inches and a length of 7 inches. Find the width.",
+        "work": "Area = 42, Length = 7, Width = ?",
+        "explanation": "We know two of the three values in Area = length × width."
+      },
+      {
+        "subgoalLabel": "Use division",
+        "instruction": "Width = Area ÷ Length.",
+        "work": "Width = 42 ÷ 7 = 6 inches",
+        "explanation": "Division is the opposite of multiplication. If 7 × ? = 42, then ? = 42 ÷ 7."
+      },
+      {
+        "subgoalLabel": "Check the answer",
+        "instruction": "Verify: length × width = area.",
+        "work": "7 × 6 = 42 square inches. Correct!",
+        "explanation": "Always check by multiplying back to confirm."
+      }
+    ]
+  }
+]

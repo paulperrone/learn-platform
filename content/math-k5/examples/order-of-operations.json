@@ -1,0 +1,64 @@
+[
+  {
+    "id": "order-of-operations-ex1",
+    "topicId": "order-of-operations",
+    "title": "Using PEMDAS: 6 + 2 × (4 − 1)",
+    "steps": [
+      {
+        "subgoalLabel": "Recall the order",
+        "instruction": "PEMDAS: Parentheses, Exponents, Multiplication/Division (left to right), Addition/Subtraction (left to right).",
+        "work": "P → E → MD → AS",
+        "explanation": "This is the order we follow when evaluating expressions with multiple operations."
+      },
+      {
+        "subgoalLabel": "Parentheses first",
+        "instruction": "Evaluate inside the parentheses.",
+        "work": "4 − 1 = 3. Expression becomes: 6 + 2 × 3.",
+        "explanation": "Always start with what is inside parentheses."
+      },
+      {
+        "subgoalLabel": "Multiplication before addition",
+        "instruction": "Multiply 2 × 3 before adding.",
+        "work": "2 × 3 = 6. Expression becomes: 6 + 6.",
+        "explanation": "Multiplication comes before addition in the order of operations."
+      },
+      {
+        "subgoalLabel": "Add",
+        "instruction": "Perform the final addition.",
+        "work": "6 + 6 = 12.",
+        "explanation": "The final answer is 12."
+      }
+    ]
+  },
+  {
+    "id": "order-of-operations-ex2",
+    "topicId": "order-of-operations",
+    "title": "PEMDAS with Exponents: 20 − 2³ + 4 × 3",
+    "steps": [
+      {
+        "subgoalLabel": "Handle exponents",
+        "instruction": "Evaluate 2³ first.",
+        "work": "2³ = 2 × 2 × 2 = 8. Expression becomes: 20 − 8 + 4 × 3.",
+        "explanation": "Exponents come right after parentheses in the order."
+      },
+      {
+        "subgoalLabel": "Multiplication next",
+        "instruction": "Multiply 4 × 3.",
+        "work": "4 × 3 = 12. Expression becomes: 20 − 8 + 12.",
+        "explanation": "Multiplication is handled before addition and subtraction."
+      },
+      {
+        "subgoalLabel": "Addition and subtraction left to right",
+        "instruction": "Work left to right: subtract, then add.",
+        "work": "20 − 8 = 12. Then 12 + 12 = 24.",
+        "explanation": "Addition and subtraction have equal priority, so we go left to right."
+      },
+      {
+        "subgoalLabel": "State the answer",
+        "instruction": "The final answer is 24.",
+        "work": "20 − 2³ + 4 × 3 = 24.",
+        "explanation": "By following PEMDAS carefully, we get 24."
+      }
+    ]
+  }
+]

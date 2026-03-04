@@ -1,0 +1,58 @@
+[
+  {
+    "id": "add-within-1000-ex1",
+    "topicId": "add-within-1000",
+    "title": "Adding 364 + 278 with Regrouping",
+    "steps": [
+      {
+        "subgoalLabel": "Add the ones",
+        "instruction": "Add the ones digits: 4 + 8.",
+        "work": "4 + 8 = 12. Write 2 in the ones place, carry 1 ten.",
+        "explanation": "12 ones = 1 ten and 2 ones. We regroup by carrying the 1 ten."
+      },
+      {
+        "subgoalLabel": "Add the tens",
+        "instruction": "Add the tens digits plus the carried ten: 6 + 7 + 1.",
+        "work": "6 + 7 + 1 = 14. Write 4 in the tens place, carry 1 hundred.",
+        "explanation": "14 tens = 1 hundred and 4 tens. Carry the 1 to the hundreds place."
+      },
+      {
+        "subgoalLabel": "Add the hundreds",
+        "instruction": "Add the hundreds digits plus the carried hundred: 3 + 2 + 1.",
+        "work": "3 + 2 + 1 = 6",
+        "explanation": "6 hundreds. No more regrouping needed."
+      },
+      {
+        "subgoalLabel": "Write the answer",
+        "instruction": "Combine all the digits.",
+        "work": "364 + 278 = 642",
+        "explanation": "6 hundreds, 4 tens, 2 ones = 642."
+      }
+    ]
+  },
+  {
+    "id": "add-within-1000-ex2",
+    "topicId": "add-within-1000",
+    "title": "Adding 450 + 375 Using Place Value",
+    "steps": [
+      {
+        "subgoalLabel": "Break apart by place value",
+        "instruction": "Expand each number into hundreds, tens, and ones.",
+        "work": "450 = 400 + 50 + 0, 375 = 300 + 70 + 5",
+        "explanation": "Expanding helps us add each place separately."
+      },
+      {
+        "subgoalLabel": "Add each place",
+        "instruction": "Add hundreds, tens, and ones separately.",
+        "work": "Hundreds: 400 + 300 = 700. Tens: 50 + 70 = 120. Ones: 0 + 5 = 5.",
+        "explanation": "50 + 70 = 120, which gives us an extra hundred to regroup."
+      },
+      {
+        "subgoalLabel": "Combine the totals",
+        "instruction": "Add: 700 + 120 + 5.",
+        "work": "700 + 120 = 820, 820 + 5 = 825",
+        "explanation": "450 + 375 = 825."
+      }
+    ]
+  }
+]

@@ -1,0 +1,52 @@
+[
+  {
+    "id": "compare-fractions-4-ex1",
+    "topicId": "compare-fractions-4",
+    "title": "Comparing 3/4 and 2/3 Using Common Denominators",
+    "steps": [
+      {
+        "subgoalLabel": "Find a common denominator",
+        "instruction": "Find the least common multiple of the two denominators, 4 and 3.",
+        "work": "Multiples of 4: 4, 8, 12, 16... Multiples of 3: 3, 6, 9, 12... LCD = 12.",
+        "explanation": "We need the same denominator so we can compare the numerators directly."
+      },
+      {
+        "subgoalLabel": "Convert both fractions",
+        "instruction": "Rewrite each fraction with the denominator 12.",
+        "work": "3/4 = 9/12 (multiply by 3/3). 2/3 = 8/12 (multiply by 4/4).",
+        "explanation": "Multiplying numerator and denominator by the same number creates an equivalent fraction."
+      },
+      {
+        "subgoalLabel": "Compare the numerators",
+        "instruction": "Now that the denominators are equal, compare the numerators.",
+        "work": "9/12 vs. 8/12. Since 9 > 8, we have 3/4 > 2/3.",
+        "explanation": "With the same denominator, the fraction with the larger numerator is greater."
+      }
+    ]
+  },
+  {
+    "id": "compare-fractions-4-ex2",
+    "topicId": "compare-fractions-4",
+    "title": "Comparing 4/5 and 7/10 Using Common Denominators",
+    "steps": [
+      {
+        "subgoalLabel": "Find a common denominator",
+        "instruction": "What is the LCD of 5 and 10?",
+        "work": "10 is a multiple of 5, so LCD = 10.",
+        "explanation": "When one denominator is a multiple of the other, use the larger one as the common denominator."
+      },
+      {
+        "subgoalLabel": "Convert the fraction that needs changing",
+        "instruction": "Convert 4/5 to tenths. 7/10 already has denominator 10.",
+        "work": "4/5 = 8/10 (multiply by 2/2).",
+        "explanation": "Only one fraction needs converting since the other already has the common denominator."
+      },
+      {
+        "subgoalLabel": "Compare and state the result",
+        "instruction": "Compare 8/10 and 7/10.",
+        "work": "8/10 > 7/10, so 4/5 > 7/10.",
+        "explanation": "8 tenths is more than 7 tenths, so 4/5 is the larger fraction."
+      }
+    ]
+  }
+]

@@ -1,0 +1,47 @@
+[
+  {
+    "id": "line-symmetry-p1",
+    "topicId": "line-symmetry",
+    "difficulty": "easy",
+    "question": "Does a square have line symmetry? If yes, how many lines of symmetry does it have?",
+    "answer": "4",
+    "hints": ["Think about folding a square in half. How many different ways can you fold it so both halves match?"],
+    "solution": "A square has 4 lines of symmetry: 2 through opposite sides (horizontal and vertical) and 2 through opposite corners (diagonals)."
+  },
+  {
+    "id": "line-symmetry-p2",
+    "topicId": "line-symmetry",
+    "difficulty": "easy",
+    "question": "How many lines of symmetry does a circle have?",
+    "answer": "infinite",
+    "hints": ["A circle can be folded in half along any diameter."],
+    "solution": "A circle has infinitely many lines of symmetry. Any line through the center divides it into two matching halves."
+  },
+  {
+    "id": "line-symmetry-p3",
+    "topicId": "line-symmetry",
+    "difficulty": "medium",
+    "question": "How many lines of symmetry does an equilateral triangle have?",
+    "answer": "3",
+    "hints": ["An equilateral triangle has all sides and angles equal.", "Each line of symmetry goes from a vertex to the midpoint of the opposite side."],
+    "solution": "An equilateral triangle has 3 lines of symmetry, one from each vertex to the midpoint of the opposite side."
+  },
+  {
+    "id": "line-symmetry-p4",
+    "topicId": "line-symmetry",
+    "difficulty": "medium",
+    "question": "How many lines of symmetry does a rectangle (that is not a square) have?",
+    "answer": "2",
+    "hints": ["A rectangle can be folded in half horizontally and vertically, but not diagonally."],
+    "solution": "A non-square rectangle has 2 lines of symmetry: one horizontal and one vertical, each connecting midpoints of opposite sides."
+  },
+  {
+    "id": "line-symmetry-p5",
+    "topicId": "line-symmetry",
+    "difficulty": "hard",
+    "question": "The letter 'A' has one line of symmetry. Is it vertical, horizontal, or diagonal? Does the letter 'B' have the same type of line of symmetry?",
+    "answer": "A has vertical; B has horizontal",
+    "hints": ["Imagine folding the letter A in half. Which fold makes both sides match?", "Now try the same with the letter B."],
+    "solution": "The letter A has a vertical line of symmetry (fold left to right). The letter B has a horizontal line of symmetry (fold top to bottom). They have different types."
+  }
+]

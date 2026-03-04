@@ -1,0 +1,47 @@
+[
+  {
+    "id": "subtract-within-10-p1",
+    "topicId": "subtract-within-10",
+    "difficulty": "easy",
+    "question": "What is 6 - 1?",
+    "answer": "5",
+    "hints": ["Start at 6 and count back 1."],
+    "solution": "6 - 1 = 5. Six take away one is five."
+  },
+  {
+    "id": "subtract-within-10-p2",
+    "topicId": "subtract-within-10",
+    "difficulty": "easy",
+    "question": "You have 7 grapes 🍇🍇🍇🍇🍇🍇🍇. You eat 2. How many are left?",
+    "answer": "5",
+    "hints": ["Start with 7 and take away 2."],
+    "solution": "7 - 2 = 5. You had 7 grapes, ate 2, so 5 are left."
+  },
+  {
+    "id": "subtract-within-10-p3",
+    "topicId": "subtract-within-10",
+    "difficulty": "medium",
+    "question": "What is 9 - 4?",
+    "answer": "5",
+    "hints": ["Start at 9 and count back 4: 8, 7, 6, ..."],
+    "solution": "9 - 4 = 5. Count back from 9: 8, 7, 6, 5."
+  },
+  {
+    "id": "subtract-within-10-p4",
+    "topicId": "subtract-within-10",
+    "difficulty": "medium",
+    "question": "There are 8 birds on a fence. 3 fly away. How many birds are still on the fence?",
+    "answer": "5",
+    "hints": ["Start with 8 birds. Take away the 3 that flew away."],
+    "solution": "8 - 3 = 5. There were 8 birds, 3 flew away, so 5 birds are left."
+  },
+  {
+    "id": "subtract-within-10-p5",
+    "topicId": "subtract-within-10",
+    "difficulty": "hard",
+    "question": "What is 10 - 7?",
+    "answer": "3",
+    "hints": ["Think: 7 + ___ = 10.", "Count up from 7: 8, 9, 10. How many did you count?"],
+    "solution": "10 - 7 = 3. We can think: 7 + 3 = 10, so 10 - 7 = 3."
+  }
+]

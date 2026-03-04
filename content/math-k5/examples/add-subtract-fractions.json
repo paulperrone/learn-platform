@@ -1,0 +1,52 @@
+[
+  {
+    "id": "add-subtract-fractions-ex1",
+    "topicId": "add-subtract-fractions",
+    "title": "Adding Fractions with the Same Denominator: 2/7 + 3/7",
+    "steps": [
+      {
+        "subgoalLabel": "Check the denominators",
+        "instruction": "Are the denominators the same?",
+        "work": "Both fractions have denominator 7. Yes, they match.",
+        "explanation": "When denominators are the same, we can add the fractions directly."
+      },
+      {
+        "subgoalLabel": "Add the numerators",
+        "instruction": "Add the top numbers and keep the bottom number.",
+        "work": "2 + 3 = 5. The denominator stays 7.",
+        "explanation": "We are combining 2 sevenths and 3 sevenths to get 5 sevenths."
+      },
+      {
+        "subgoalLabel": "Write the answer",
+        "instruction": "Write the result and check if it can be simplified.",
+        "work": "2/7 + 3/7 = 5/7. The GCF of 5 and 7 is 1, so it is already simplified.",
+        "explanation": "Always check if the answer can be reduced to lowest terms."
+      }
+    ]
+  },
+  {
+    "id": "add-subtract-fractions-ex2",
+    "topicId": "add-subtract-fractions",
+    "title": "Subtracting Fractions and Simplifying: 5/6 − 1/6",
+    "steps": [
+      {
+        "subgoalLabel": "Subtract the numerators",
+        "instruction": "The denominators are the same (6), so subtract the numerators.",
+        "work": "5 − 1 = 4. Result: 4/6.",
+        "explanation": "Subtracting works just like adding — operate on the numerators, keep the denominator."
+      },
+      {
+        "subgoalLabel": "Simplify the fraction",
+        "instruction": "Can 4/6 be reduced? Find the GCF of 4 and 6.",
+        "work": "GCF of 4 and 6 is 2. Divide both by 2: 4 ÷ 2 = 2, 6 ÷ 2 = 3.",
+        "explanation": "Dividing numerator and denominator by the same number gives an equivalent, simpler fraction."
+      },
+      {
+        "subgoalLabel": "State the final answer",
+        "instruction": "Write the simplified result.",
+        "work": "5/6 − 1/6 = 4/6 = 2/3",
+        "explanation": "The answer is 2/3. Always present your answer in simplest form."
+      }
+    ]
+  }
+]

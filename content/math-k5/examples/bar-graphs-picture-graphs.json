@@ -1,0 +1,52 @@
+[
+  {
+    "id": "bar-graphs-picture-graphs-ex1",
+    "topicId": "bar-graphs-picture-graphs",
+    "title": "Reading a Bar Graph: Favorite Fruits",
+    "steps": [
+      {
+        "subgoalLabel": "Read the labels",
+        "instruction": "A bar graph shows favorite fruits. The categories are: Apples, Bananas, Grapes. The scale goes from 0 to 10.",
+        "work": "Categories: Apples, Bananas, Grapes. Scale: 0 to 10.",
+        "explanation": "Bar graphs have categories (what we're comparing) and a scale (the numbers)."
+      },
+      {
+        "subgoalLabel": "Read each bar",
+        "instruction": "Look at how high each bar reaches.",
+        "work": "Apples: bar reaches 7. Bananas: bar reaches 4. Grapes: bar reaches 6.",
+        "explanation": "Line up the top of each bar with the scale to read its value."
+      },
+      {
+        "subgoalLabel": "Answer questions",
+        "instruction": "Which fruit is most popular? How many more chose apples than bananas?",
+        "work": "Most popular: Apples (7). Difference: 7 − 4 = 3 more chose apples.",
+        "explanation": "Bar graphs make it easy to compare by looking at bar heights."
+      }
+    ]
+  },
+  {
+    "id": "bar-graphs-picture-graphs-ex2",
+    "topicId": "bar-graphs-picture-graphs",
+    "title": "Reading a Picture Graph with a Key",
+    "steps": [
+      {
+        "subgoalLabel": "Read the key",
+        "instruction": "A picture graph about pets has a key: each paw print = 2 pets.",
+        "work": "Key: 1 picture = 2 pets",
+        "explanation": "The key tells you what each picture is worth. Not always 1!"
+      },
+      {
+        "subgoalLabel": "Count pictures and multiply",
+        "instruction": "Dogs: 4 pictures. Cats: 3 pictures. Fish: 5 pictures.",
+        "work": "Dogs: 4 × 2 = 8. Cats: 3 × 2 = 6. Fish: 5 × 2 = 10.",
+        "explanation": "Multiply the number of pictures by the value in the key."
+      },
+      {
+        "subgoalLabel": "Find the total",
+        "instruction": "How many pets in all?",
+        "work": "8 + 6 + 10 = 24 pets total",
+        "explanation": "Add all the values to find the total across all categories."
+      }
+    ]
+  }
+]
