@@ -46,3 +46,19 @@ Architectural and design decisions with reasoning. Append-only.
 
 **Alternatives rejected:**
 - Durable Objects: More complex setup, per-object billing, overkill for small state blobs that are already being persisted to D1 for summary stats
+
+---
+
+### 2026-03-04: Vanilla Tailwind CSS over Nuxt UI component library
+
+**Decision:** Remove Nuxt UI dependency. Use vanilla HTML + Tailwind CSS v4 utility classes for all UI. Use Headless UI for accessible primitives (modals, dropdowns) only when needed.
+
+**Why:**
+- Nuxt UI was installed but never imported — all existing UI is already vanilla Tailwind
+- Full control over markup gives Claude Code's frontend-design skill maximum creative freedom
+- Tailwind v4 (container queries, @starting-style transitions, CSS-first config) is powerful enough without a component library abstraction
+- Smaller bundle — no unused component library runtime
+- The platform's UI surface (buttons, inputs, cards, sliders, progress) is straightforward to build well with Tailwind
+
+**Alternatives rejected:**
+- Keep Nuxt UI: Adds ~57 components of unused overhead, constrains markup structure, and limits design flexibility for no benefit since it was never adopted
