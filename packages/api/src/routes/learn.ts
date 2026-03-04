@@ -1,20 +1,36 @@
 import { Hono } from "hono";
 import type { Env } from "../index.js";
+import { getDb } from "../db/index.js";
+import { createSessionService } from "../services/session.js";
 
 export const learnRoutes = new Hono<Env>();
 
 learnRoutes.post("/sessions", async (c) => {
-  return c.json({ session: null, message: "Not implemented" }, 501);
+  const db = getDb(c.env.DB);
+  const session = createSessionService(db);
+  const { userId } = await c.req.json<{ userId: string }>();
+  const result = await session.startSession(userId);
+  return c.json(result);
 });
 
 learnRoutes.get("/sessions/:id", async (c) => {
-  return c.json({ session: null, message: "Not implemented" }, 501);
-});
-
-learnRoutes.post("/sessions/:id/next", async (c) => {
-  return c.json({ message: "Not implemented" }, 501);
+  const db = getDb(c.env.DB);
+  const session = createSessionService(db);
+  const result = await session.getSession(c.req.param("id"));
+  if (!result) return c.json({ error: "Session not found" }, 404);
+  return c.json(result);
 });
 
 learnRoutes.post("/sessions/:id/respond", async (c) => {
-  return c.json({ message: "Not implemented" }, 501);
+  const db = getDb(c.env.DB);
+  const session = createSessionService(db);
+  const body = await c.req.json<{
+    answer?: string;
+    correct?: boolean;
+    confidence?: number;
+    responseMs: number;
+    selfExplanation?: string;
+  }>();
+  const result = await session.respond(c.req.param("id"), body);
+  return c.json(result);
 });
