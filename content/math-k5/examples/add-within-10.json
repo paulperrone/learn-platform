@@ -1,0 +1,46 @@
+[
+  {
+    "id": "add-within-10-ex1",
+    "topicId": "add-within-10",
+    "title": "Adding 6 + 3 by Counting On",
+    "steps": [
+      {
+        "subgoalLabel": "Start with the bigger number",
+        "instruction": "When adding, start with the bigger number to count less.",
+        "work": "6 is bigger than 3, so we start at 6.",
+        "explanation": "Starting with the bigger number means we only need to count on 3 instead of 6."
+      },
+      {
+        "subgoalLabel": "Count on",
+        "instruction": "Starting at 6, count up 3 more.",
+        "work": "6 → 7 → 8 → 9",
+        "explanation": "Each count adds one more. After counting 3 times from 6, we reach 9."
+      },
+      {
+        "subgoalLabel": "Write the answer",
+        "instruction": "Write the complete addition sentence.",
+        "work": "6 + 3 = 9",
+        "explanation": "We found that 6 plus 3 equals 9."
+      }
+    ]
+  },
+  {
+    "id": "add-within-10-ex2",
+    "topicId": "add-within-10",
+    "title": "Making 10: Adding 7 + 3",
+    "steps": [
+      {
+        "subgoalLabel": "Recognize a 'make 10' pair",
+        "instruction": "Some numbers add up to exactly 10. These are called 'make 10' pairs.",
+        "work": "7 + 3 = ?",
+        "explanation": "Knowing which pairs make 10 helps us add quickly: 1+9, 2+8, 3+7, 4+6, 5+5."
+      },
+      {
+        "subgoalLabel": "Use the fact",
+        "instruction": "Since 7 and 3 are a make-10 pair, we know the answer immediately.",
+        "work": "7 + 3 = 10",
+        "explanation": "7 + 3 = 10. Memorizing make-10 pairs speeds up addition."
+      }
+    ]
+  }
+]

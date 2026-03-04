@@ -1,0 +1,47 @@
+[
+  {
+    "id": "add-within-10-p1",
+    "topicId": "add-within-10",
+    "difficulty": "easy",
+    "question": "What is 3 + 2?",
+    "answer": "5",
+    "hints": ["Start at 3 and count up 2 more: 4, 5."],
+    "solution": "3 + 2 = 5."
+  },
+  {
+    "id": "add-within-10-p2",
+    "topicId": "add-within-10",
+    "difficulty": "easy",
+    "question": "What is 4 + 3?",
+    "answer": "7",
+    "hints": ["Start at 4 and count up 3: 5, 6, 7."],
+    "solution": "4 + 3 = 7."
+  },
+  {
+    "id": "add-within-10-p3",
+    "topicId": "add-within-10",
+    "difficulty": "medium",
+    "question": "What is 5 + 4?",
+    "answer": "9",
+    "hints": ["5 + 5 = 10, so 5 + 4 must be one less."],
+    "solution": "5 + 4 = 9. Think: 5 + 5 = 10, so 5 + 4 = 9."
+  },
+  {
+    "id": "add-within-10-p4",
+    "topicId": "add-within-10",
+    "difficulty": "medium",
+    "question": "You have 6 stickers and get 3 more. How many stickers do you have?",
+    "answer": "9",
+    "hints": ["Start at 6 and count up 3 more."],
+    "solution": "6 + 3 = 9 stickers."
+  },
+  {
+    "id": "add-within-10-p5",
+    "topicId": "add-within-10",
+    "difficulty": "hard",
+    "question": "What is 7 + 3?",
+    "answer": "10",
+    "hints": ["7 needs 3 more to make 10."],
+    "solution": "7 + 3 = 10. Seven plus three makes ten."
+  }
+]
