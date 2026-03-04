@@ -25,10 +25,10 @@ migrations_dir = "packages/api/src/db/migrations"
 [env.production]
 
 [env.production.vars]
-BETTER_AUTH_URL = "https://learn.perrone.dev"
+BETTER_AUTH_URL = "https://learn-platform-api-production.papetest.workers.dev"
 
 [[env.production.d1_databases]]
 binding = "DB"
 database_name = "learn-db"
-database_id = "REPLACE_WITH_REMOTE_DB_ID"
+database_id = "ba02fdb9-6c56-4722-89d6-f07eccd44479"
 migrations_dir = "packages/api/src/db/migrations"

@@ -38,7 +38,6 @@ Provider-agnostic workflow system. Works with Claude Code, OpenCode, Codex, Droi
 | `plans/completed/` | Finished epics |
 | `plans/archived/` | Superseded specs, canceled epics |
 | `task/` | Execution state |
-| `memory/` | Memvid semantic index |
 | `skills/` | Repo-specific agent skills |
 | `commands/` | Repo-specific workflow commands |
 

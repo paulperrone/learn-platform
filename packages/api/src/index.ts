@@ -25,14 +25,18 @@ app.use("*", logger());
 app.use(
   "*",
   cors({
-    origin: ["http://localhost:5173", "https://learn.perrone.dev"],
+    origin: [
+      "http://localhost:5173",
+      "https://learn.perrone.dev",
+      "https://learn-platform-api-production.papetest.workers.dev",
+    ],
     credentials: true,
   })
 );
 
 app.get("/", (c) => c.json({ status: "ok", service: "learn-platform-api" }));
 
-app.route("/auth", authRoutes);
+app.route("/api/auth", authRoutes);
 app.route("/api/graph", graphRoutes);
 app.route("/api/learn", learnRoutes);
 app.route("/api/review", reviewRoutes);
