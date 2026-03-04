@@ -1,0 +1,131 @@
+// === API Types ===
+
+export type Subject = {
+  id: string;
+  name: string;
+  description: string;
+  gradeRange: string;
+  topicCount: number;
+};
+
+export type Topic = {
+  id: string;
+  subjectId: string;
+  name: string;
+  description: string;
+  depth: number;
+  gradeLevel: number;
+  standardCode: string | null;
+};
+
+export type Prerequisite = {
+  fromTopicId: string;
+  toTopicId: string;
+  strength: number; // 0-1: how essential is this prereq
+};
+
+export type Encompassing = {
+  parentTopicId: string;
+  childTopicId: string;
+  weight: number; // 0-1: how much practicing parent helps child
+};
+
+// === User Types ===
+
+export type UserTopicState = {
+  userId: string;
+  topicId: string;
+  stability: number;
+  difficulty: number;
+  due: string;
+  state: number; // FSRS state enum
+  reps: number;
+  lapses: number;
+  mastered: boolean;
+  frontier: boolean;
+  confidenceAccuracy: number | null;
+  lastReview: string | null;
+};
+
+export type ReviewLog = {
+  id: string;
+  userId: string;
+  topicId: string;
+  rating: number;
+  confidence: number | null;
+  correct: boolean;
+  responseMs: number;
+  phase: SessionPhase;
+  createdAt: string;
+};
+
+export type SessionPhase =
+  | "pretest"
+  | "instruction"
+  | "guided"
+  | "independent"
+  | "review"
+  | "remediation";
+
+export type Session = {
+  id: string;
+  userId: string;
+  startedAt: string;
+  endedAt: string | null;
+  topicsAttempted: number;
+  topicsMastered: number;
+  reviewsCompleted: number;
+  averageAccuracy: number | null;
+};
+
+export type LLMUsage = {
+  id: string;
+  userId: string;
+  model: string;
+  inputTokens: number;
+  outputTokens: number;
+  costCents: number;
+  purpose: string;
+  createdAt: string;
+};
+
+// === API Request/Response Types ===
+
+export type FrontierResponse = {
+  topics: Topic[];
+  totalMastered: number;
+  totalTopics: number;
+};
+
+export type SessionMix = {
+  reviewTopics: { topicId: string; due: string }[];
+  newTopics: { topicId: string; depth: number }[];
+};
+
+export type ProblemDifficulty = "easy" | "medium" | "hard";
+
+export type Problem = {
+  id: string;
+  topicId: string;
+  difficulty: ProblemDifficulty;
+  question: string;
+  answer: string;
+  hints: string[];
+  solution: string;
+};
+
+export type WorkedExample = {
+  id: string;
+  topicId: string;
+  title: string;
+  steps: WorkedExampleStep[];
+};
+
+export type WorkedExampleStep = {
+  subgoalLabel: string;
+  instruction: string;
+  work: string;
+  explanation: string;
+};
+
+export type ConfidenceRating = 1 | 2 | 3 | 4 | 5;

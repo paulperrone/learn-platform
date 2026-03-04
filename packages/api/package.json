@@ -1,0 +1,26 @@
+{
+  "name": "@learn/api",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev src/index.ts",
+    "build": "wrangler deploy --dry-run --outdir dist",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "wrangler d1 migrations apply learn-db --local",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@learn/shared": "workspace:*",
+    "better-auth": "^1.2.7",
+    "drizzle-orm": "^0.41.0",
+    "hono": "^4.7.4",
+    "ts-fsrs": "^5.2.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20250224.0",
+    "drizzle-kit": "^0.31.4",
+    "typescript": "^5.7.3",
+    "wrangler": "^4.5.1"
+  }
+}

@@ -1,0 +1,16 @@
+name = "learn-platform-api"
+main = "packages/api/src/index.ts"
+compatibility_date = "2025-03-01"
+compatibility_flags = ["nodejs_compat"]
+
+[dev]
+port = 8787
+
+[vars]
+BETTER_AUTH_URL = "http://localhost:8787"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "learn-db"
+database_id = "local"
+migrations_dir = "packages/api/src/db/migrations"
