@@ -1,8 +1,11 @@
 import { computed } from "vue";
 import { createAuthClient } from "better-auth/vue";
+import { organizationClient } from "better-auth/client/plugins";
+import { adminClient } from "better-auth/client/plugins";
 
 export const authClient = createAuthClient({
   baseURL: window.location.origin,
+  plugins: [organizationClient(), adminClient()],
 });
 
 export function useAuth() {

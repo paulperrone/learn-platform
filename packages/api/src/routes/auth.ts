@@ -1,6 +1,8 @@
 import { Hono } from "hono";
 import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
+import { organization } from "better-auth/plugins/organization";
+import { admin } from "better-auth/plugins/admin";
 import { drizzle } from "drizzle-orm/d1";
 import * as schema from "../db/schema.js";
 import type { Env } from "../index.js";
@@ -48,6 +50,9 @@ function createAuth(env: Env["Bindings"]) {
         session: schema.sessions,
         account: schema.accounts,
         verification: schema.verifications,
+        organization: schema.organizations,
+        member: schema.members,
+        invitation: schema.invitations,
       },
     }),
     baseURL: env.BETTER_AUTH_URL,
@@ -62,8 +67,13 @@ function createAuth(env: Env["Bindings"]) {
     user: {
       additionalFields: {
         birthYear: { type: "number", required: false },
+        managedBy: { type: "string", required: false },
       },
     },
+    plugins: [
+      organization(),
+      admin(),
+    ],
   });
 }
 

@@ -13,19 +13,19 @@ Add family/team accounts using Better-Auth's organization plugin. A parent creat
 
 ## Progress
 
-**Completed:** None yet
+**Completed:** Phase 1
 **In Progress:** —
-**Next:** Phase 1
+**Next:** Phase 2
 
 ---
 
-## Phase 1: Schema & Auth Plugin Setup
+## Phase 1: Schema & Auth Plugin Setup ✓
 **Goal:** Better-Auth organization + admin plugins wired up with D1
 
-1. [ ] [RSH] Review Better-Auth organization + admin plugin docs, confirm D1/SQLite compatibility, identify all new tables needed (organization, member, invitation, plus session columns)
-2. [ ] [IMP] Add organization and admin plugins to Better-Auth config in `packages/api/src/routes/auth.ts`, add `managedBy` custom field to user schema
-3. [ ] [IMP] Generate Drizzle migration for new tables (organization, member, invitation, session columns for activeOrganizationId), apply to local D1
-4. [ ] [TST] Verify: create an org via API, add a member, confirm schema works end-to-end locally
+1. [x] [RSH] Review Better-Auth organization + admin plugin docs, confirm D1/SQLite compatibility, identify all new tables needed (organization, member, invitation, plus session columns)
+2. [x] [IMP] Add organization and admin plugins to Better-Auth config in `packages/api/src/routes/auth.ts`, add `managedBy` custom field to user schema
+3. [x] [IMP] Generate Drizzle migration for new tables (organization, member, invitation, session columns for activeOrganizationId), apply to local D1
+4. [x] [TST] Verify: create an org via API, add a member, confirm schema works end-to-end locally
 
 **Validation:** Can create an organization, invite/add a member, and query memberships via Better-Auth API. All new tables exist in D1 with correct columns.
 

@@ -56,6 +56,11 @@ export const users = sqliteTable("users", {
   emailVerified: integer("email_verified", { mode: "boolean" }).notNull().default(false),
   image: text("image"),
   birthYear: integer("birth_year"),
+  managedBy: text("managed_by"),
+  role: text("role"),
+  banned: integer("banned", { mode: "boolean" }),
+  banReason: text("ban_reason"),
+  banExpires: text("ban_expires"),
   createdAt: text("created_at").notNull().$defaultFn(() => new Date().toISOString()),
   updatedAt: text("updated_at").notNull().$defaultFn(() => new Date().toISOString()),
 }, (table) => [
@@ -69,6 +74,8 @@ export const sessions = sqliteTable("sessions", {
   expiresAt: text("expires_at").notNull(),
   ipAddress: text("ip_address"),
   userAgent: text("user_agent"),
+  activeOrganizationId: text("active_organization_id"),
+  impersonatedBy: text("impersonated_by"),
   createdAt: text("created_at").notNull().$defaultFn(() => new Date().toISOString()),
   updatedAt: text("updated_at").notNull().$defaultFn(() => new Date().toISOString()),
 }, (table) => [
@@ -100,6 +107,45 @@ export const verifications = sqliteTable("verifications", {
   createdAt: text("created_at").notNull().$defaultFn(() => new Date().toISOString()),
   updatedAt: text("updated_at").notNull().$defaultFn(() => new Date().toISOString()),
 });
+
+// === Organization Tables (Better-Auth organization plugin) ===
+
+export const organizations = sqliteTable("organization", {
+  id: text("id").primaryKey(),
+  name: text("name").notNull(),
+  slug: text("slug").notNull(),
+  logo: text("logo"),
+  metadata: text("metadata"),
+  createdAt: text("created_at").notNull().$defaultFn(() => new Date().toISOString()),
+}, (table) => [
+  uniqueIndex("org_slug_idx").on(table.slug),
+]);
+
+export const members = sqliteTable("member", {
+  id: text("id").primaryKey(),
+  userId: text("user_id").notNull().references(() => users.id),
+  organizationId: text("organization_id").notNull().references(() => organizations.id),
+  role: text("role").notNull(),
+  createdAt: text("created_at").notNull().$defaultFn(() => new Date().toISOString()),
+}, (table) => [
+  index("member_org_idx").on(table.organizationId),
+  index("member_user_idx").on(table.userId),
+]);
+
+export const invitations = sqliteTable("invitation", {
+  id: text("id").primaryKey(),
+  email: text("email").notNull(),
+  inviterId: text("inviter_id").notNull().references(() => users.id),
+  organizationId: text("organization_id").notNull().references(() => organizations.id),
+  role: text("role").notNull(),
+  status: text("status").notNull(),
+  expiresAt: text("expires_at").notNull(),
+  createdAt: text("created_at").notNull().$defaultFn(() => new Date().toISOString()),
+}, (table) => [
+  index("invitation_org_idx").on(table.organizationId),
+]);
+
+// === Learning State Tables ===
 
 export const userTopicState = sqliteTable("user_topic_state", {
   id: integer("id").primaryKey({ autoIncrement: true }),
