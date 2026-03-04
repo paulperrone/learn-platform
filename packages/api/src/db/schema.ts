@@ -142,12 +142,15 @@ export const learnSessions = sqliteTable("learn_sessions", {
   userId: text("user_id").notNull().references(() => users.id),
   startedAt: text("started_at").notNull().$defaultFn(() => new Date().toISOString()),
   endedAt: text("ended_at"),
+  stateJson: text("state_json"),
+  updatedAt: text("updated_at").notNull().$defaultFn(() => new Date().toISOString()),
   topicsAttempted: integer("topics_attempted").notNull().default(0),
   topicsMastered: integer("topics_mastered").notNull().default(0),
   reviewsCompleted: integer("reviews_completed").notNull().default(0),
   averageAccuracy: real("average_accuracy"),
 }, (table) => [
   index("learn_sessions_user_idx").on(table.userId),
+  index("learn_sessions_active_idx").on(table.userId, table.endedAt),
 ]);
 
 export const llmUsage = sqliteTable("llm_usage", {

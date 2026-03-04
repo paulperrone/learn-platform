@@ -1,4 +1,4 @@
-import { eq, and } from "drizzle-orm";
+import { eq, and, isNull } from "drizzle-orm";
 import { Rating, type Grade } from "ts-fsrs";
 import type { DB } from "../db/index.js";
 import * as schema from "../db/schema.js";
@@ -18,7 +18,7 @@ type SessionState = {
   totalAttempts: number;
 };
 
-// In-memory session store (would use KV/DO in production)
+// In-memory cache — D1 is the source of truth
 const activeSessions = new Map<string, SessionState>();
 
 export function createSessionService(db: DB) {
@@ -55,6 +55,32 @@ export function createSessionService(db: DB) {
     return filtered[Math.floor(Math.random() * filtered.length)];
   }
 
+  /** Persist session state to D1 (write-through) */
+  async function persistState(state: SessionState): Promise<void> {
+    await db
+      .update(schema.learnSessions)
+      .set({
+        stateJson: JSON.stringify(state),
+        updatedAt: new Date().toISOString(),
+      })
+      .where(eq(schema.learnSessions.id, state.sessionId));
+  }
+
+  /** Load session state from D1 into in-memory cache (read-through) */
+  async function loadState(sessionId: string): Promise<SessionState | undefined> {
+    const row = await db.query.learnSessions.findFirst({
+      where: eq(schema.learnSessions.id, sessionId),
+    });
+    if (!row?.stateJson || row.endedAt) return undefined;
+    try {
+      const state: SessionState = JSON.parse(row.stateJson);
+      activeSessions.set(sessionId, state);
+      return state;
+    } catch {
+      return undefined;
+    }
+  }
+
   return {
     /**
      * Start a new learning session.
@@ -64,6 +90,17 @@ export function createSessionService(db: DB) {
       firstItem: SessionItem;
     }> {
       const sessionId = crypto.randomUUID();
+
+      // End any existing active session for this user
+      const stale = await db.query.learnSessions.findFirst({
+        where: and(
+          eq(schema.learnSessions.userId, userId),
+          isNull(schema.learnSessions.endedAt),
+        ),
+      });
+      if (stale) {
+        await this.endSession(stale.id);
+      }
 
       // Get session mix
       const mix = await srs.getSessionMix(userId, 10);
@@ -97,10 +134,11 @@ export function createSessionService(db: DB) {
       };
       activeSessions.set(sessionId, state);
 
-      // Create DB record
+      // Create DB record with initial state
       await db.insert(schema.learnSessions).values({
         id: sessionId,
         userId,
+        stateJson: JSON.stringify(state),
       });
 
       return {
@@ -113,7 +151,10 @@ export function createSessionService(db: DB) {
      * Get the current session state and next item.
      */
     async getSession(sessionId: string) {
-      const state = activeSessions.get(sessionId);
+      let state = activeSessions.get(sessionId);
+      if (!state) {
+        state = await loadState(sessionId);
+      }
       if (!state) return null;
       return {
         ...state,
@@ -134,7 +175,10 @@ export function createSessionService(db: DB) {
         selfExplanation?: string;
       }
     ): Promise<SessionItem> {
-      const state = activeSessions.get(sessionId);
+      let state = activeSessions.get(sessionId);
+      if (!state) {
+        state = await loadState(sessionId);
+      }
       if (!state || !state.currentTopicId) {
         return { type: "complete", message: "Session not found or completed." };
       }
@@ -165,7 +209,14 @@ export function createSessionService(db: DB) {
       await srs.applyFIReCredit(state.userId, state.currentTopicId, rating);
 
       // Advance through learning phases
-      return await this.advancePhase(state, isCorrect);
+      const result = await this.advancePhase(state, isCorrect);
+
+      // Write-through: persist after every phase transition
+      if (result.type !== "complete") {
+        await persistState(state);
+      }
+
+      return result;
     },
 
     /**
@@ -359,13 +410,18 @@ export function createSessionService(db: DB) {
      * End a session and update summary stats.
      */
     async endSession(sessionId: string) {
-      const state = activeSessions.get(sessionId);
+      let state = activeSessions.get(sessionId);
+      if (!state) {
+        state = await loadState(sessionId);
+      }
       if (!state) return;
 
       await db
         .update(schema.learnSessions)
         .set({
           endedAt: new Date().toISOString(),
+          stateJson: null,
+          updatedAt: new Date().toISOString(),
           topicsAttempted: state.topicsCompleted.length,
           reviewsCompleted: state.reviewsCompleted,
           averageAccuracy:

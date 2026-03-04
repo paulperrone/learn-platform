@@ -13,9 +13,9 @@ Take the locally-working MVP to a deployed, testable state. Generate full conten
 
 ## Progress
 
-**Completed:** Phase 1, Phase 2
+**Completed:** Phase 1, Phase 2, Phase 3
 **In Progress:** —
-**Next:** Phase 3
+**Next:** Phase 4
 
 ---
 
@@ -44,13 +44,13 @@ Take the locally-working MVP to a deployed, testable state. Generate full conten
 
 ---
 
-## Phase 3: Session Persistence
+## Phase 3: Session Persistence ✓
 **Goal:** Learning sessions survive worker restarts
 
-1. [ ] [RSH] Evaluate D1 vs Durable Objects for session state (cost, complexity, latency)
-2. [ ] [IMP] Implement chosen persistence: save/load session state on each phase transition
-3. [ ] [IMP] Add session recovery — if user returns to /learn with an active session, resume where they left off
-4. [ ] [TST] Verify: start session, restart wrangler dev, resume session at correct phase/topic
+1. [x] [RSH] Evaluate D1 vs Durable Objects for session state (cost, complexity, latency)
+2. [x] [IMP] Implement chosen persistence: save/load session state on each phase transition
+3. [x] [IMP] Add session recovery — if user returns to /learn with an active session, resume where they left off
+4. [x] [TST] Verify: start session, restart wrangler dev, resume session at correct phase/topic
 
 **Validation:** Start a learning session, kill and restart the API server, navigate back to /learn — session resumes at the correct phase and topic.
 

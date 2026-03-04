@@ -40,6 +40,10 @@ export function useApi() {
     },
 
     // Sessions
+    getActiveSession: async () => {
+      const userId = await getUserId();
+      return request<any>(`/learn/sessions/active?userId=${userId}`);
+    },
     startSession: async () => {
       const userId = await getUserId();
       return request<any>("/learn/sessions", {

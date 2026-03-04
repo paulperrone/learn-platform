@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import { useApi } from "@/composables/useApi";
 import ProblemView from "@/components/ProblemView.vue";
 import WorkedExample from "@/components/WorkedExample.vue";
@@ -9,6 +9,22 @@ const sessionId = ref<string | null>(null);
 const currentItem = ref<any>(null);
 const loading = ref(false);
 const sessionActive = ref(false);
+const recovering = ref(true);
+
+onMounted(async () => {
+  try {
+    const result = await api.getActiveSession();
+    if (result.active) {
+      sessionId.value = result.sessionId;
+      currentItem.value = result.currentItem;
+      sessionActive.value = true;
+    }
+  } catch {
+    // No active session — show "Begin Session"
+  } finally {
+    recovering.value = false;
+  }
+});
 
 async function startSession() {
   loading.value = true;
@@ -70,8 +86,13 @@ async function handleExampleDone() {
   <div class="max-w-2xl mx-auto">
     <h1 class="text-3xl font-bold mb-6">Learning Session</h1>
 
+    <!-- Loading (checking for active session) -->
+    <div v-if="recovering" class="text-center py-12">
+      <p class="text-gray-400">Checking for active session...</p>
+    </div>
+
     <!-- Not started -->
-    <div v-if="!sessionId" class="text-center py-12">
+    <div v-else-if="!sessionId" class="text-center py-12">
       <p class="text-gray-600 mb-6">
         Your session will include a mix of new topics and review.
       </p>

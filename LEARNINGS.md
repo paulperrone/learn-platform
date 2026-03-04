@@ -10,6 +10,7 @@ Gotchas, insights, and tacit knowledge. Append-only.
 - Drizzle ORM version must match better-auth peer dependency (>=0.41.0 as of better-auth 1.5.x)
 - `pnpm approve-builds` is interactive — add native deps to `pnpm.onlyBuiltDependencies` in root package.json instead
 - import-content.ts must delete from `review_log` and `user_topic_state` before deleting topics — FK constraints on `topic_id`
+- Drizzle `$defaultFn()` is app-level only — when adding NOT NULL columns via migration, manually add `DEFAULT` to the generated SQL or SQLite will reject it
 
 ---
 
@@ -48,3 +49,14 @@ The original import script only deleted from `encompassings` and `prerequisites`
 `signUp.email()` on the client doesn't accept custom fields defined via `user.additionalFields` on the server (e.g., `birthYear`). The client type system doesn't know about them. Use a type assertion (`as Parameters<typeof authClient.signUp.email>[0]`) to pass extra fields through. They do get stored correctly — it's only a client-side type gap.
 
 **Context:** Adding birthYear to signup form with Better-Auth 1.5.x + better-auth/vue client.
+
+---
+
+### 2026-03-04: SQLite ALTER TABLE can't add NOT NULL column without DEFAULT
+
+**Source:** User session
+**Area:** D1 / SQLite / Drizzle migrations
+
+SQLite `ALTER TABLE ADD COLUMN` fails with "Cannot add a NOT NULL column with default value NULL" if the column is `NOT NULL` and has no `DEFAULT`. Drizzle generates the migration without a DEFAULT even when the schema has `$defaultFn()` (which is app-level, not DB-level). Fix: manually add `DEFAULT ''` to the generated migration SQL.
+
+**Context:** Adding `updated_at TEXT NOT NULL` to `learn_sessions` table. Drizzle's `$defaultFn` only runs in app code, not as a SQL DEFAULT.

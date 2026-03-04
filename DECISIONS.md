@@ -27,3 +27,22 @@ Architectural and design decisions with reasoning. Append-only.
 **Decision:** Start with 71 atomic topics covering K-5 math (Common Core standards), 108 prerequisite edges, 16 encompassing edges.
 
 **Reasoning:** Math K-5 has the clearest prerequisite structure, is objectively assessable, LLMs generate math problems reliably, and there's universal demand. Common Core provides a validated standard to align to.
+
+---
+
+### 2026-03-04: D1 write-through cache for session persistence (not Durable Objects)
+
+**Source:** User session
+
+**Context:** Learning sessions were in-memory only (Map), lost on worker restart. Needed persistence. Original plan said "migrate to Durable Objects for production."
+
+**Decision:** Use D1 (existing database) with a `state_json TEXT` column on `learn_sessions` table. In-memory Map stays as a hot cache with write-through on every phase transition and read-through on cache miss.
+
+**Why:**
+- D1 is already in the stack — no new infrastructure
+- Session state is small (~500 bytes JSON), well within D1 limits
+- Write-through/read-through pattern is simple and reliable
+- Single active session per user eliminates concurrency concerns
+
+**Alternatives rejected:**
+- Durable Objects: More complex setup, per-object billing, overkill for small state blobs that are already being persisted to D1 for summary stats
