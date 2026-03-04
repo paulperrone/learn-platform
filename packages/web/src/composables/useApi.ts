@@ -127,5 +127,28 @@ export function useApi() {
         body: JSON.stringify({ userId, ...data }),
       });
     },
+
+    // Family
+    createFamily: (name: string) =>
+      request<{ family: any }>("/family", {
+        method: "POST",
+        body: JSON.stringify({ name }),
+      }),
+    getFamily: () => request<{ family: any; members: any[]; currentUserRole: string }>("/family"),
+    updateFamily: (name: string) =>
+      request<{ success: boolean }>("/family", {
+        method: "PUT",
+        body: JSON.stringify({ name }),
+      }),
+    addChild: (data: { name: string; email: string; password: string; birthYear?: number }) =>
+      request<{ child: any }>("/family/children", {
+        method: "POST",
+        body: JSON.stringify(data),
+      }),
+    getChildren: () => request<{ children: any[] }>("/family/children"),
+    getChildProgress: (childId: string) =>
+      request<{ childId: string; stats: any; topics: any[] }>(`/family/children/${childId}/progress`),
+    getFamilyProgress: () =>
+      request<{ children: { childId: string; name: string; stats: any }[] }>("/family/progress"),
   };
 }

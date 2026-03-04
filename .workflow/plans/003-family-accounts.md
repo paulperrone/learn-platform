@@ -13,9 +13,9 @@ Add family/team accounts using Better-Auth's organization plugin. A parent creat
 
 ## Progress
 
-**Completed:** Phase 1, Phase 2
+**Completed:** Phase 1, Phase 2, Phase 3
 **In Progress:** —
-**Next:** Phase 3
+**Next:** Phase 4
 
 ---
 
@@ -44,14 +44,14 @@ Add family/team accounts using Better-Auth's organization plugin. A parent creat
 
 ---
 
-## Phase 3: Parent Dashboard UI
+## Phase 3: Parent Dashboard UI ✓
 **Goal:** Parent-facing views for managing children and viewing progress
 
-1. [ ] [IMP] Create family setup flow: after signup, prompt to create family or join as child, family name/settings form
-2. [ ] [IMP] Build child management page: add child (name, birth year), edit child details, remove child from family
-3. [ ] [IMP] Build per-child progress view: reuse existing progress page components scoped to selected child
-4. [ ] [IMP] Build family overview dashboard: all children's progress at a glance (topics mastered, sessions completed, streaks), combined family LLM usage
-5. [ ] [TST] Verify: parent signup → create family → add 2 children → children complete sessions → parent sees both children's progress
+1. [x] [IMP] Create family setup flow: after signup, prompt to create family or join as child, family name/settings form
+2. [x] [IMP] Build child management page: add child (name, birth year), edit child details, remove child from family
+3. [x] [IMP] Build per-child progress view: reuse existing progress page components scoped to selected child
+4. [x] [IMP] Build family overview dashboard: all children's progress at a glance (topics mastered, sessions completed, streaks), combined family LLM usage
+5. [x] [TST] Verify: parent signup → create family → add 2 children → children complete sessions → parent sees both children's progress
 
 **Validation:** Parent can manage children and view their learning progress. Child accounts work independently for learning. Dashboard shows aggregate and per-child views.
 

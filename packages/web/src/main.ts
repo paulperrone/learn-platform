@@ -11,6 +11,8 @@ const router = createRouter({
     { path: "/learn", component: () => import("./pages/learn.vue"), meta: { requiresAuth: true } },
     { path: "/progress", component: () => import("./pages/progress.vue"), meta: { requiresAuth: true } },
     { path: "/explore", component: () => import("./pages/explore.vue"), meta: { requiresAuth: true } },
+    { path: "/family", component: () => import("./pages/family.vue"), meta: { requiresAuth: true } },
+    { path: "/family/child/:childId", component: () => import("./pages/family-child.vue"), meta: { requiresAuth: true } },
     { path: "/login", component: () => import("./pages/login.vue") },
     { path: "/signup", component: () => import("./pages/signup.vue") },
   ],
