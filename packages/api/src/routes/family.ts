@@ -4,7 +4,7 @@ import { createAuth } from "../lib/auth.js";
 import { getDb } from "../db/index.js";
 import { createSRSService } from "../services/srs.js";
 import * as schema from "../db/schema.js";
-import { eq, and } from "drizzle-orm";
+import { eq, and, gte, inArray } from "drizzle-orm";
 import type { Env } from "../index.js";
 
 type AuthUser = { id: string; name: string; email: string; role?: string | null };
@@ -318,4 +318,174 @@ familyRoutes.get("/progress", requireParent, async (c) => {
   );
 
   return c.json({ children: childProgress });
+});
+
+// --- Usage Tracking ---
+
+function parseMetadata(metadata: string | null): Record<string, unknown> {
+  if (!metadata) return {};
+  try { return JSON.parse(metadata); }
+  catch { return {}; }
+}
+
+// GET /api/family/usage — aggregate LLM usage for all family children (current month)
+familyRoutes.get("/usage", requireParent, async (c) => {
+  const family = c.get("family");
+  const user = c.get("user");
+  const db = getDb(c.env.DB);
+
+  // Get all children in family
+  const children = await db
+    .select({ userId: schema.users.id, name: schema.users.name })
+    .from(schema.members)
+    .innerJoin(schema.users, eq(schema.members.userId, schema.users.id))
+    .where(
+      and(
+        eq(schema.members.organizationId, family.organization.id),
+        eq(schema.users.managedBy, user.id)
+      )
+    );
+
+  const childIds = children.map((c) => c.userId);
+  if (childIds.length === 0) {
+    return c.json({ children: [], totalCostCents: 0, monthlyBudgetCents: null });
+  }
+
+  // Current month start (UTC)
+  const now = new Date();
+  const monthStart = new Date(now.getFullYear(), now.getMonth(), 1).toISOString();
+
+  const usageRows = await db
+    .select()
+    .from(schema.llmUsage)
+    .where(
+      and(
+        inArray(schema.llmUsage.userId, childIds),
+        gte(schema.llmUsage.createdAt, monthStart)
+      )
+    );
+
+  // Aggregate per child
+  const perChild = new Map<string, { costCents: number; calls: number }>();
+  for (const id of childIds) perChild.set(id, { costCents: 0, calls: 0 });
+
+  let totalCostCents = 0;
+  for (const row of usageRows) {
+    const entry = perChild.get(row.userId);
+    if (entry) {
+      entry.costCents += row.costCents;
+      entry.calls++;
+    }
+    totalCostCents += row.costCents;
+  }
+
+  const meta = parseMetadata(family.organization.metadata);
+  const monthlyBudgetCents = typeof meta.monthlyBudgetCents === "number" ? meta.monthlyBudgetCents : null;
+
+  return c.json({
+    children: children.map((child) => ({
+      childId: child.userId,
+      name: child.name,
+      ...perChild.get(child.userId)!,
+    })),
+    totalCostCents,
+    monthlyBudgetCents,
+  });
+});
+
+// PUT /api/family/budget — set monthly LLM budget (parent only)
+familyRoutes.put("/budget", requireParent, async (c) => {
+  const family = c.get("family");
+  const { monthlyBudgetCents } = await c.req.json<{ monthlyBudgetCents: number | null }>();
+
+  if (monthlyBudgetCents !== null && (typeof monthlyBudgetCents !== "number" || monthlyBudgetCents < 0)) {
+    return c.json({ error: "Budget must be a positive number or null to disable" }, 400);
+  }
+
+  const meta = parseMetadata(family.organization.metadata);
+  if (monthlyBudgetCents === null) {
+    delete meta.monthlyBudgetCents;
+  } else {
+    meta.monthlyBudgetCents = monthlyBudgetCents;
+  }
+
+  const db = getDb(c.env.DB);
+  await db
+    .update(schema.organizations)
+    .set({ metadata: JSON.stringify(meta) })
+    .where(eq(schema.organizations.id, family.organization.id));
+
+  return c.json({ success: true, monthlyBudgetCents });
+});
+
+// GET /api/family/usage/check/:userId — check if a user has exceeded their family's LLM budget
+familyRoutes.get("/usage/check/:userId", async (c) => {
+  const targetUserId = c.req.param("userId");
+  const db = getDb(c.env.DB);
+
+  // Find user's family via managedBy → parent → org
+  const userRow = await db
+    .select({ managedBy: schema.users.managedBy })
+    .from(schema.users)
+    .where(eq(schema.users.id, targetUserId))
+    .limit(1);
+
+  // Not a managed child — no limit applies
+  if (!userRow.length || !userRow[0].managedBy) {
+    return c.json({ allowed: true });
+  }
+
+  const parentId = userRow[0].managedBy;
+
+  // Find parent's org
+  const parentMembership = await db
+    .select({ organizationId: schema.members.organizationId })
+    .from(schema.members)
+    .where(eq(schema.members.userId, parentId))
+    .limit(1);
+
+  if (!parentMembership.length) {
+    return c.json({ allowed: true });
+  }
+
+  const org = await db
+    .select({ metadata: schema.organizations.metadata })
+    .from(schema.organizations)
+    .where(eq(schema.organizations.id, parentMembership[0].organizationId))
+    .limit(1);
+
+  if (!org.length) return c.json({ allowed: true });
+
+  const meta = parseMetadata(org[0].metadata);
+  const budget = typeof meta.monthlyBudgetCents === "number" ? meta.monthlyBudgetCents : null;
+
+  // No budget set — allowed
+  if (budget === null) return c.json({ allowed: true });
+
+  // Get all children in org
+  const familyChildren = await db
+    .select({ userId: schema.members.userId })
+    .from(schema.members)
+    .where(eq(schema.members.organizationId, parentMembership[0].organizationId));
+
+  const childIds = familyChildren.map((m) => m.userId);
+
+  // Current month usage
+  const now = new Date();
+  const monthStart = new Date(now.getFullYear(), now.getMonth(), 1).toISOString();
+
+  const usageRows = await db
+    .select({ costCents: schema.llmUsage.costCents })
+    .from(schema.llmUsage)
+    .where(
+      and(
+        inArray(schema.llmUsage.userId, childIds),
+        gte(schema.llmUsage.createdAt, monthStart)
+      )
+    );
+
+  const totalCostCents = usageRows.reduce((sum, r) => sum + r.costCents, 0);
+  const allowed = totalCostCents < budget;
+
+  return c.json({ allowed, totalCostCents, budgetCents: budget });
 });

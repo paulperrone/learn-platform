@@ -1,7 +1,7 @@
 # Epic: Family Accounts & Parent Dashboard
 
 > **Created:** 2026-03-04T23:26:01Z
-> **Completed:** —
+> **Completed:** 2026-03-04
 >
 > For project context, see [CLAUDE.md](../../CLAUDE.md)
 > For product vision, see [SPEC.md](./SPEC.md)
@@ -13,9 +13,9 @@ Add family/team accounts using Better-Auth's organization plugin. A parent creat
 
 ## Progress
 
-**Completed:** Phase 1, Phase 2, Phase 3, Phase 4
+**Completed:** Phase 1, Phase 2, Phase 3, Phase 4, Phase 5
 **In Progress:** —
-**Next:** Phase 5
+**Next:** — (epic complete)
 
 ---
 
@@ -68,11 +68,11 @@ Add family/team accounts using Better-Auth's organization plugin. A parent creat
 
 ---
 
-## Phase 5: Usage Tracking & Billing Foundation
+## Phase 5: Usage Tracking & Billing Foundation ✓
 **Goal:** Per-user LLM usage tracking rolled up to family level
 
-1. [ ] [IMP] Aggregate LLM usage by family: query `llm_usage` for all family members, sum costs, break down by child and purpose
-2. [ ] [IMP] Add usage limits and alerts: configurable per-family monthly LLM budget, warn at 80%/100%, block at limit (graceful degradation — learning works, tutoring paused)
-3. [ ] [TST] Verify: children use LLM features → parent sees per-child and total usage → hitting limit pauses LLM features without breaking core learning
+1. [x] [IMP] Aggregate LLM usage by family: query `llm_usage` for all family members, sum costs, break down by child and purpose
+2. [x] [IMP] Add usage limits and alerts: configurable per-family monthly LLM budget, warn at 80%/100%, block at limit (graceful degradation — learning works, tutoring paused)
+3. [x] [TST] Verify: children use LLM features → parent sees per-child and total usage → hitting limit pauses LLM features without breaking core learning
 
 **Validation:** Parent can see exactly how much LLM usage each child generates. Usage limits are enforced at the API level. Core learning (non-LLM) continues even when limit is hit.

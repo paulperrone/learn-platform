@@ -26,9 +26,28 @@ const showAddChild = ref(false);
 const childForm = ref({ name: "", email: "", password: "", birthYear: undefined as number | undefined });
 const addingChild = ref(false);
 
+// Usage tracking
+const usageData = ref<{
+  children: { childId: string; name: string; costCents: number; calls: number }[];
+  totalCostCents: number;
+  monthlyBudgetCents: number | null;
+}>({ children: [], totalCostCents: 0, monthlyBudgetCents: null });
+const showBudgetForm = ref(false);
+const budgetInput = ref<number | undefined>(undefined);
+const savingBudget = ref(false);
+
 const currentYear = new Date().getFullYear();
 
 const isParent = computed(() => currentUserRole.value === "owner");
+
+const budgetPercent = computed(() => {
+  const budget = usageData.value.monthlyBudgetCents;
+  if (!budget) return 0;
+  return Math.min(100, Math.round((usageData.value.totalCostCents / budget) * 100));
+});
+
+const budgetWarning = computed(() => budgetPercent.value >= 80);
+const budgetExceeded = computed(() => budgetPercent.value >= 100);
 
 const children = computed(() =>
   members.value.filter((m) => m.managedBy !== null)
@@ -44,8 +63,15 @@ async function loadFamily() {
     currentUserRole.value = data.currentUserRole;
 
     if (data.currentUserRole === "owner") {
-      const progress = await api.getFamilyProgress();
+      const [progress, usage] = await Promise.all([
+        api.getFamilyProgress(),
+        api.getFamilyUsage(),
+      ]);
       childrenProgress.value = progress.children;
+      usageData.value = usage;
+      budgetInput.value = usage.monthlyBudgetCents != null
+        ? Math.round(usage.monthlyBudgetCents / 100)
+        : undefined;
     }
   } catch (e) {
     if (e instanceof ApiError && e.status === 404) {
@@ -107,6 +133,29 @@ function getChildStats(childId: string) {
 
 function progressPercent(stats: any) {
   return stats.total > 0 ? Math.round((stats.mastered / stats.total) * 100) : 0;
+}
+
+function formatCents(cents: number) {
+  return `$${(cents / 100).toFixed(2)}`;
+}
+
+async function handleSaveBudget() {
+  savingBudget.value = true;
+  const cents = budgetInput.value != null && budgetInput.value > 0
+    ? Math.round(budgetInput.value * 100)
+    : null;
+
+  const result = await withErrorToast(
+    () => api.setFamilyBudget(cents),
+    "Failed to save budget"
+  );
+
+  if (result) {
+    usageData.value.monthlyBudgetCents = result.monthlyBudgetCents;
+    showBudgetForm.value = false;
+    toast.success(cents ? `Monthly budget set to ${formatCents(cents)}` : "Budget limit removed");
+  }
+  savingBudget.value = false;
 }
 
 onMounted(loadFamily);
@@ -301,7 +350,7 @@ onMounted(loadFamily);
         </div>
 
         <!-- Family Summary -->
-        <div v-if="childrenProgress.length > 0" class="bg-white rounded-lg border border-gray-200 p-5">
+        <div v-if="childrenProgress.length > 0" class="bg-white rounded-lg border border-gray-200 p-5 mb-8">
           <h2 class="font-semibold text-gray-800 mb-4">Family Summary</h2>
           <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div>
@@ -327,6 +376,98 @@ onMounted(loadFamily);
               </p>
             </div>
           </div>
+        </div>
+
+        <!-- LLM Usage -->
+        <div class="bg-white rounded-lg border border-gray-200 p-5">
+          <div class="flex items-center justify-between mb-4">
+            <h2 class="font-semibold text-gray-800">AI Tutoring Usage</h2>
+            <button
+              @click="showBudgetForm = !showBudgetForm"
+              class="text-sm font-medium text-blue-600 hover:text-blue-700"
+            >
+              {{ showBudgetForm ? "Cancel" : "Set Budget" }}
+            </button>
+          </div>
+
+          <!-- Budget Form -->
+          <div v-if="showBudgetForm" class="mb-4 p-4 bg-gray-50 rounded-lg">
+            <label class="block text-sm font-medium text-gray-700 mb-1">Monthly Budget (USD)</label>
+            <div class="flex items-center gap-3">
+              <div class="relative">
+                <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm">$</span>
+                <input
+                  v-model.number="budgetInput"
+                  type="number"
+                  min="0"
+                  step="0.50"
+                  placeholder="e.g. 5.00"
+                  class="pl-7 w-32 rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                />
+              </div>
+              <button
+                @click="handleSaveBudget"
+                :disabled="savingBudget"
+                class="rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 disabled:opacity-50"
+              >
+                {{ savingBudget ? "Saving..." : "Save" }}
+              </button>
+              <button
+                v-if="usageData.monthlyBudgetCents !== null"
+                @click="budgetInput = undefined; handleSaveBudget()"
+                class="text-sm text-red-600 hover:text-red-700"
+              >
+                Remove limit
+              </button>
+            </div>
+            <p class="text-xs text-gray-400 mt-2">Leave empty or set to 0 to remove the budget limit. When the limit is reached, AI tutoring pauses but learning continues.</p>
+          </div>
+
+          <!-- Budget Progress Bar -->
+          <div v-if="usageData.monthlyBudgetCents !== null" class="mb-4">
+            <div class="flex justify-between text-sm mb-1">
+              <span class="text-gray-600">This Month</span>
+              <span :class="budgetExceeded ? 'text-red-600 font-medium' : budgetWarning ? 'text-orange-600' : 'text-gray-600'">
+                {{ formatCents(usageData.totalCostCents) }} / {{ formatCents(usageData.monthlyBudgetCents) }}
+              </span>
+            </div>
+            <div class="w-full bg-gray-100 rounded-full h-2.5">
+              <div
+                class="h-2.5 rounded-full transition-all"
+                :class="budgetExceeded ? 'bg-red-500' : budgetWarning ? 'bg-orange-400' : 'bg-blue-500'"
+                :style="{ width: budgetPercent + '%' }"
+              />
+            </div>
+            <p v-if="budgetExceeded" class="text-xs text-red-600 mt-1">Budget exceeded — AI tutoring is paused.</p>
+            <p v-else-if="budgetWarning" class="text-xs text-orange-600 mt-1">Approaching budget limit.</p>
+          </div>
+
+          <!-- No budget set -->
+          <div v-else class="mb-4">
+            <p class="text-sm text-gray-500">
+              Total this month: <span class="font-medium text-gray-700">{{ formatCents(usageData.totalCostCents) }}</span>
+              <span class="text-gray-400"> &middot; No budget limit set</span>
+            </p>
+          </div>
+
+          <!-- Per-child usage breakdown -->
+          <div v-if="usageData.children.length > 0">
+            <h3 class="text-sm font-medium text-gray-600 mb-2">By Child</h3>
+            <div class="space-y-2">
+              <div
+                v-for="child in usageData.children"
+                :key="child.childId"
+                class="flex items-center justify-between text-sm"
+              >
+                <span class="text-gray-700">{{ child.name }}</span>
+                <span class="text-gray-500">
+                  {{ formatCents(child.costCents) }}
+                  <span class="text-gray-400">({{ child.calls }} calls)</span>
+                </span>
+              </div>
+            </div>
+          </div>
+          <p v-else class="text-sm text-gray-400">No AI tutoring usage this month.</p>
         </div>
       </template>
 

@@ -150,5 +150,16 @@ export function useApi() {
       request<{ childId: string; stats: any; topics: any[] }>(`/family/children/${childId}/progress`),
     getFamilyProgress: () =>
       request<{ children: { childId: string; name: string; stats: any }[] }>("/family/progress"),
+    getFamilyUsage: () =>
+      request<{
+        children: { childId: string; name: string; costCents: number; calls: number }[];
+        totalCostCents: number;
+        monthlyBudgetCents: number | null;
+      }>("/family/usage"),
+    setFamilyBudget: (monthlyBudgetCents: number | null) =>
+      request<{ success: boolean; monthlyBudgetCents: number | null }>("/family/budget", {
+        method: "PUT",
+        body: JSON.stringify({ monthlyBudgetCents }),
+      }),
   };
 }
