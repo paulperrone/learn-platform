@@ -62,3 +62,22 @@ Architectural and design decisions with reasoning. Append-only.
 
 **Alternatives rejected:**
 - Keep Nuxt UI: Adds ~57 components of unused overhead, constrains markup structure, and limits design flexibility for no benefit since it was never adopted
+
+---
+
+### 2026-03-04: Single-domain deployment with Workers + static assets
+
+**Source:** User session
+
+**Context:** Deploying the full stack (Hono API + Vue SPA) to Cloudflare. Two options: separate Worker + Pages on different (sub)domains, or single Worker serving both API and static assets.
+
+**Decision:** Use Cloudflare Workers with `[assets]` binding to serve both the API and the Vue SPA from a single domain (`learn.perrone.dev`). The Worker handles `/api/*` and `/auth/*` routes, and a catch-all delegates to the ASSETS binding for static files and SPA fallback.
+
+**Why:**
+- Same-origin avoids all cross-origin cookie issues with Better-Auth
+- Frontend's relative paths (`/api`, `/auth`) work without configuration
+- Single deployment artifact — `wrangler deploy` handles everything
+- `not_found_handling = "single-page-application"` handles Vue Router client-side routes
+
+**Alternatives rejected:**
+- Separate Worker + Pages on different subdomains: Requires SameSite=None cookies, cross-origin auth config, and is fragile as browsers restrict third-party cookies

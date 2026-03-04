@@ -15,6 +15,7 @@ export type Env = {
     BETTER_AUTH_SECRET: string;
     BETTER_AUTH_URL: string;
     OPENROUTER_API_KEY: string;
+    ASSETS?: Fetcher;
   };
 };
 
@@ -38,7 +39,15 @@ app.route("/api/review", reviewRoutes);
 app.route("/api/progress", progressRoutes);
 app.route("/api/llm", llmRoutes);
 
-// 404 handler
+// SPA fallback — serve static assets / index.html for non-API routes
+app.get("*", async (c) => {
+  if (c.env.ASSETS) {
+    return c.env.ASSETS.fetch(c.req.raw);
+  }
+  return c.json({ error: "Not found", status: 404 }, 404);
+});
+
+// 404 handler (POST/PUT/DELETE to unknown routes)
 app.notFound((c) =>
   c.json({ error: "Not found", status: 404 }, 404)
 );

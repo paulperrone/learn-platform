@@ -60,3 +60,14 @@ The original import script only deleted from `encompassings` and `prerequisites`
 SQLite `ALTER TABLE ADD COLUMN` fails with "Cannot add a NOT NULL column with default value NULL" if the column is `NOT NULL` and has no `DEFAULT`. Drizzle generates the migration without a DEFAULT even when the schema has `$defaultFn()` (which is app-level, not DB-level). Fix: manually add `DEFAULT ''` to the generated migration SQL.
 
 **Context:** Adding `updated_at TEXT NOT NULL` to `learn_sessions` table. Drizzle's `$defaultFn` only runs in app code, not as a SQL DEFAULT.
+
+---
+
+### 2026-03-04: Wrangler `[assets]` with `binding` routes ALL requests through Worker
+
+**Source:** User session
+**Area:** Cloudflare Workers / Wrangler v4
+
+When `[assets]` has a `binding = "ASSETS"`, ALL requests go to the Worker — static files are NOT served automatically. The Worker must explicitly call `c.env.ASSETS.fetch(c.req.raw)` for non-API routes. Without a binding, assets are served first and only non-matches reach the Worker. Use `not_found_handling = "single-page-application"` so the ASSETS binding returns `index.html` for unknown paths (SPA routing).
+
+**Context:** Single-domain deployment where Worker serves both API and Vue SPA.

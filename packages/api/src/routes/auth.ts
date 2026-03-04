@@ -13,6 +13,11 @@ function createAuth(env: Env["Bindings"]) {
     database: drizzleAdapter(db, { provider: "sqlite" }),
     baseURL: env.BETTER_AUTH_URL,
     secret: env.BETTER_AUTH_SECRET,
+    trustedOrigins: [
+      "http://localhost:5173",
+      "http://localhost:8787",
+      "https://learn.perrone.dev",
+    ],
     emailAndPassword: { enabled: true },
     user: {
       additionalFields: {

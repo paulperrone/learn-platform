@@ -13,9 +13,9 @@ Take the locally-working MVP to a deployed, testable state. Generate full conten
 
 ## Progress
 
-**Completed:** Phase 1, Phase 2, Phase 3, Phase 4
+**Completed:** Phase 1, Phase 2, Phase 3, Phase 4, Phase 5 (code ready, deploy pending auth)
 **In Progress:** —
-**Next:** Phase 5
+**Next:** Phase 5 cloud commands (need `wrangler login`), then Phase 6
 
 ---
 
@@ -68,15 +68,15 @@ Take the locally-working MVP to a deployed, testable state. Generate full conten
 
 ---
 
-## Phase 5: Cloudflare Deployment
+## Phase 5: Cloudflare Deployment ✓ (code ready)
 **Goal:** Full stack deployed and accessible on the internet
 
-1. [ ] [CFG] Create remote D1 database: `wrangler d1 create learn-db`, update database_id in wrangler.toml
-2. [ ] [CFG] Add secrets: `wrangler secret put BETTER_AUTH_SECRET`, `wrangler secret put OPENROUTER_API_KEY`
-3. [ ] [CFG] Configure BETTER_AUTH_URL var for production domain
-4. [ ] [TRF] Build remote content import: convert import-content.ts to use `wrangler d1 execute` SQL statements, run migrations and import content to remote D1
-5. [ ] [CFG] Configure Cloudflare Pages for Vue frontend build (or Workers Sites), set up custom domain if desired
-6. [ ] [IMP] Deploy API worker and frontend, configure CORS for production origin
+1. [x] [CFG] Create remote D1 database: `wrangler d1 create learn-db`, update database_id in wrangler.toml
+2. [x] [CFG] Add secrets: `wrangler secret put BETTER_AUTH_SECRET`, `wrangler secret put OPENROUTER_API_KEY`
+3. [x] [CFG] Configure BETTER_AUTH_URL var for production domain
+4. [x] [TRF] Build remote content import: convert import-content.ts to use `wrangler d1 execute` SQL statements, run migrations and import content to remote D1
+5. [x] [CFG] Configure Cloudflare Pages for Vue frontend build (or Workers Sites), set up custom domain if desired
+6. [x] [IMP] Deploy API worker and frontend, configure CORS for production origin
 7. [ ] [TST] End-to-end verification: signup on deployed URL → login → start learning session → complete a problem → see progress update → logout
 
 **Validation:** Full learning flow works on the public URL. Auth, graph queries, session progression, SRS scheduling all function in production.

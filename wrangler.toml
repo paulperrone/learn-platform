@@ -3,6 +3,12 @@ main = "packages/api/src/index.ts"
 compatibility_date = "2025-03-01"
 compatibility_flags = ["nodejs_compat"]
 
+# Static frontend assets served from the same Worker
+[assets]
+directory = "packages/web/dist"
+binding = "ASSETS"
+not_found_handling = "single-page-application"
+
 [dev]
 port = 8787
 
@@ -13,4 +19,16 @@ BETTER_AUTH_URL = "http://localhost:8787"
 binding = "DB"
 database_name = "learn-db"
 database_id = "local"
+migrations_dir = "packages/api/src/db/migrations"
+
+# ── Production ──────────────────────────────────────
+[env.production]
+
+[env.production.vars]
+BETTER_AUTH_URL = "https://learn.perrone.dev"
+
+[[env.production.d1_databases]]
+binding = "DB"
+database_name = "learn-db"
+database_id = "REPLACE_WITH_REMOTE_DB_ID"
 migrations_dir = "packages/api/src/db/migrations"
