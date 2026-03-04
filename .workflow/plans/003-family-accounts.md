@@ -13,9 +13,9 @@ Add family/team accounts using Better-Auth's organization plugin. A parent creat
 
 ## Progress
 
-**Completed:** Phase 1
+**Completed:** Phase 1, Phase 2
 **In Progress:** —
-**Next:** Phase 2
+**Next:** Phase 3
 
 ---
 
@@ -31,14 +31,14 @@ Add family/team accounts using Better-Auth's organization plugin. A parent creat
 
 ---
 
-## Phase 2: Family Management API
+## Phase 2: Family Management API ✓
 **Goal:** API endpoints for family CRUD, child account creation, role enforcement
 
-1. [ ] [IMP] Create family routes (`/api/family`): create family (wraps org create), get family details, update family settings
-2. [ ] [IMP] Add child management endpoints: parent creates child account (admin plugin `createUser`), adds to family org as member, lists children in family
-3. [ ] [IMP] Add role-based middleware: verify parent (owner) role for family management endpoints, verify membership for child-scoped data access
-4. [ ] [IMP] Add parent view endpoints: get progress summary for all children in family, get individual child's detailed progress
-5. [ ] [TST] Verify: parent creates family → adds child → child logs in → parent sees child's progress data
+1. [x] [IMP] Create family routes (`/api/family`): create family (wraps org create), get family details, update family settings
+2. [x] [IMP] Add child management endpoints: parent creates child account (admin plugin `createUser`), adds to family org as member, lists children in family
+3. [x] [IMP] Add role-based middleware: verify parent (owner) role for family management endpoints, verify membership for child-scoped data access
+4. [x] [IMP] Add parent view endpoints: get progress summary for all children in family, get individual child's detailed progress
+5. [x] [TST] Verify: parent creates family → adds child → child logs in → parent sees child's progress data
 
 **Validation:** Full API flow works: create family, add children, query per-child and aggregate progress. Role enforcement blocks unauthorized access.
 

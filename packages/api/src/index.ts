@@ -8,6 +8,7 @@ import { learnRoutes } from "./routes/learn.js";
 import { reviewRoutes } from "./routes/review.js";
 import { progressRoutes } from "./routes/progress.js";
 import { llmRoutes } from "./routes/llm.js";
+import { familyRoutes } from "./routes/family.js";
 
 export type Env = {
   Bindings: {
@@ -42,6 +43,7 @@ app.route("/api/learn", learnRoutes);
 app.route("/api/review", reviewRoutes);
 app.route("/api/progress", progressRoutes);
 app.route("/api/llm", llmRoutes);
+app.route("/api/family", familyRoutes);
 
 // SPA fallback — serve static assets / index.html for non-API routes
 app.get("*", async (c) => {

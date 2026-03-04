@@ -81,3 +81,21 @@ Architectural and design decisions with reasoning. Append-only.
 
 **Alternatives rejected:**
 - Separate Worker + Pages on different subdomains: Requires SameSite=None cookies, cross-origin auth config, and is fragile as browsers restrict third-party cookies
+
+---
+
+### 2026-03-04: Family accounts map to Better-Auth organizations (owner=parent, member=child)
+
+**Source:** User session
+
+**Context:** Need family/team accounts for parents to manage children's learning. Better-Auth has an organization plugin with roles.
+
+**Decision:** Map family → organization, parent → owner, child → member. Extract `createAuth` to `packages/api/src/lib/auth.ts` for shared use across auth and family routes. Child accounts created via admin plugin's `createUser` with `managedBy` field linking to parent.
+
+**Why:**
+- Better-Auth's org plugin handles membership, roles, and invitations out of the box
+- Owner role has full control, member role is restricted — matches parent/child access pattern
+- `managedBy` field on user table provides a direct parent→child link independent of org membership
+
+**Alternatives rejected:**
+- Custom role system without organizations: Would require reimplementing membership, role checks, and invitation flows that Better-Auth already provides
