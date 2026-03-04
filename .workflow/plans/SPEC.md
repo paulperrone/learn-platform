@@ -65,3 +65,21 @@ All problems, worked examples, and graph structure are **pre-generated offline**
 - FIRe credit reduces review burden measurably
 - Auth flow works for account creation and login
 - Deployed and accessible on the public internet
+
+## Post-MVP Roadmap
+
+Future capability areas, in recommended priority order. Each should become its own epic via `/workflow-intake`.
+
+1. **Parent Dashboard + Role System** — Parent/guardian accounts that manage child profiles, view progress, set session limits. Requires role-based auth (parent vs learner) and read-only dashboard views.
+
+2. **Math 6-12 Content Expansion** — Extend from 71 K-5 topics to full K-12 math. Requires parameterized content pipeline, support for more complex problem types (algebra expressions, geometry with diagrams), and graph structure scaling.
+
+3. **Enhanced LLM Tutoring** — Inject session context (recent responses, struggle areas, mastery level) into LLM prompts. Add streaming responses for more natural tutoring. Build hint system that progressively reveals solution steps.
+
+4. **Reading/ELA Subject** — First non-math subject. Validates multi-subject architecture. Requires new content types (passages, comprehension questions) and different assessment models beyond right/wrong.
+
+5. **Interactive Simulations** — Canvas/WebGL components for geometry, measurement, and data topics. High-impact for visual learners but significant frontend work per topic.
+
+6. **Speech/TTS** — Text-to-speech for problem reading (K-2 audience), speech-to-text for verbal answers. Browser Web Speech API or external service.
+
+7. **Adaptive Learning Paths** — ML-based path optimization using accumulated user data. Requires months of usage data before viable. Reinforcement learning approach to optimize topic ordering per student.

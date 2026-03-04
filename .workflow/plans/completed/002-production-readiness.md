@@ -1,7 +1,7 @@
 # Epic: Production Readiness
 
 > **Created:** 2026-03-04T03:47:03Z
-> **Completed:** —
+> **Completed:** 2026-03-04
 >
 > For project context, see [CLAUDE.md](../../CLAUDE.md)
 > For product vision, see [SPEC.md](./SPEC.md)
@@ -13,9 +13,9 @@ Take the locally-working MVP to a deployed, testable state. Generate full conten
 
 ## Progress
 
-**Completed:** Phase 1, Phase 2, Phase 3, Phase 4, Phase 5
+**Completed:** Phase 1, Phase 2, Phase 3, Phase 4, Phase 5, Phase 6
 **In Progress:** —
-**Next:** Phase 6
+**Next:** All phases complete. Run `/workflow-intake` to start a new epic.
 
 ---
 
@@ -83,10 +83,10 @@ Take the locally-working MVP to a deployed, testable state. Generate full conten
 
 ---
 
-## Phase 6: Future Capabilities Intake
+## Phase 6: Future Capabilities Intake ✓
 **Goal:** Capture post-MVP research questions and capability areas as structured intake items
 
-1. [ ] [RSH] Run `/workflow-intake` for: (a) runtime learning experience architecture — agent harness vs LLM API calls for tutoring/grading, (b) content pipeline architecture for multiple subjects and content types (problems, examples, video scripts, games), (c) remaining post-MVP capabilities from original plan (additional subjects, speech/TTS, social features, parent dashboard, adaptive paths)
-2. [ ] [DOC] Update SPEC.md and RESEARCH.md with findings and future epic summaries
+1. [x] [RSH] Research three future capability areas: (a) runtime LLM architecture — API calls vs agent harness vs hybrid, (b) content pipeline architecture for multi-subject expansion, (c) post-MVP capabilities assessment with priority ranking
+2. [x] [DOC] Update SPEC.md with post-MVP roadmap (7 prioritized capability areas) and RESEARCH.md with detailed findings (3 research entries)
 
-**Validation:** Future work is captured as structured specs/epics in .workflow/plans/, not just a wish list. Each area has enough definition to be picked up as a `/workflow-next` item.
+**Validation:** Future work captured in RESEARCH.md with trade-off analysis and recommendations. SPEC.md updated with prioritized roadmap. Each area has enough definition to be picked up as a `/workflow-intake` item for its own epic.
