@@ -1,0 +1,92 @@
+# Epic: Production Readiness
+
+> **Created:** 2026-03-04T03:47:03Z
+> **Completed:** —
+>
+> For project context, see [CLAUDE.md](../../CLAUDE.md)
+> For product vision, see [SPEC.md](./SPEC.md)
+> For decisions, see [DECISIONS.md](../../DECISIONS.md)
+
+## Summary
+
+Take the locally-working MVP to a deployed, testable state. Generate full content for all 71 Math K-5 topics, add real authentication UI, persist learning sessions across worker restarts, add error handling, configure Cloudflare infrastructure, and deploy. Final phase captures future capability areas as separate intake items.
+
+## Progress
+
+**Completed:** None yet
+**In Progress:** —
+**Next:** Phase 1
+
+---
+
+## Phase 1: Content Generation
+**Goal:** All 71 topics have validated problem banks and worked examples
+
+1. [ ] [TRF] Generate problem banks for all 68 remaining topics using Claude Code
+2. [ ] [TRF] Generate worked examples for all 70 remaining topics using Claude Code
+3. [ ] [VAL] Run validate-content.ts — 0 errors, all 71 topics have problems and examples
+4. [ ] [TRF] Re-import full content into local D1 and verify via API
+
+**Validation:** `npx tsx tools/validate-content.ts` reports 0 missing topics for problems and examples. `npx tsx tools/import-content.ts` succeeds. API returns problems/examples for a sample of topics across grade levels.
+
+---
+
+## Phase 2: Authentication UI
+**Goal:** Real login/signup flow replacing hardcoded test-user
+
+1. [ ] [IMP] Create auth composable (useAuth) with Better-Auth client: login, signup, logout, session state
+2. [ ] [IMP] Build login page with email/password form
+3. [ ] [IMP] Build signup page with email/password + birth year (for age-appropriate UI)
+4. [ ] [IMP] Add route guards — redirect unauthenticated users to login, pass real userId to all API calls
+5. [ ] [TST] Verify full flow: signup → login → dashboard loads with real user → logout → redirected to login
+
+**Validation:** Can create account, log in, see dashboard with real user data, log out. Hardcoded test-user removed from useApi composable.
+
+---
+
+## Phase 3: Session Persistence
+**Goal:** Learning sessions survive worker restarts
+
+1. [ ] [RSH] Evaluate D1 vs Durable Objects for session state (cost, complexity, latency)
+2. [ ] [IMP] Implement chosen persistence: save/load session state on each phase transition
+3. [ ] [IMP] Add session recovery — if user returns to /learn with an active session, resume where they left off
+4. [ ] [TST] Verify: start session, restart wrangler dev, resume session at correct phase/topic
+
+**Validation:** Start a learning session, kill and restart the API server, navigate back to /learn — session resumes at the correct phase and topic.
+
+---
+
+## Phase 4: Error Handling
+**Goal:** Graceful error handling across API and frontend
+
+1. [ ] [IMP] Add Hono error middleware: catch all route errors, return structured JSON errors with appropriate status codes
+2. [ ] [IMP] Add frontend error boundary and toast/notification system for API errors
+3. [ ] [IMP] Add loading states and empty states to all pages (dashboard, learn, progress, explore)
+4. [ ] [TST] Verify: API returns structured errors on bad input, frontend shows user-friendly messages, no unhandled promise rejections
+
+**Validation:** Hit API with invalid data → get structured error JSON. Frontend shows loading spinners, empty states, and error messages appropriately. No raw error dumps visible to users.
+
+---
+
+## Phase 5: Cloudflare Deployment
+**Goal:** Full stack deployed and accessible on the internet
+
+1. [ ] [CFG] Create remote D1 database: `wrangler d1 create learn-db`, update database_id in wrangler.toml
+2. [ ] [CFG] Add secrets: `wrangler secret put BETTER_AUTH_SECRET`, `wrangler secret put OPENROUTER_API_KEY`
+3. [ ] [CFG] Configure BETTER_AUTH_URL var for production domain
+4. [ ] [TRF] Build remote content import: convert import-content.ts to use `wrangler d1 execute` SQL statements, run migrations and import content to remote D1
+5. [ ] [CFG] Configure Cloudflare Pages for Vue frontend build (or Workers Sites), set up custom domain if desired
+6. [ ] [IMP] Deploy API worker and frontend, configure CORS for production origin
+7. [ ] [TST] End-to-end verification: signup on deployed URL → login → start learning session → complete a problem → see progress update → logout
+
+**Validation:** Full learning flow works on the public URL. Auth, graph queries, session progression, SRS scheduling all function in production.
+
+---
+
+## Phase 6: Future Capabilities Intake
+**Goal:** Capture post-MVP research questions and capability areas as structured intake items
+
+1. [ ] [RSH] Run `/workflow-intake` for: (a) runtime learning experience architecture — agent harness vs LLM API calls for tutoring/grading, (b) content pipeline architecture for multiple subjects and content types (problems, examples, video scripts, games), (c) remaining post-MVP capabilities from original plan (additional subjects, speech/TTS, social features, parent dashboard, adaptive paths)
+2. [ ] [DOC] Update SPEC.md and RESEARCH.md with findings and future epic summaries
+
+**Validation:** Future work is captured as structured specs/epics in .workflow/plans/, not just a wish list. Each area has enough definition to be picked up as a `/workflow-next` item.
