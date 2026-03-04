@@ -13,9 +13,9 @@ Take the locally-working MVP to a deployed, testable state. Generate full conten
 
 ## Progress
 
-**Completed:** Phase 1
+**Completed:** Phase 1, Phase 2
 **In Progress:** —
-**Next:** Phase 2
+**Next:** Phase 3
 
 ---
 
@@ -31,14 +31,14 @@ Take the locally-working MVP to a deployed, testable state. Generate full conten
 
 ---
 
-## Phase 2: Authentication UI
+## Phase 2: Authentication UI ✓
 **Goal:** Real login/signup flow replacing hardcoded test-user
 
-1. [ ] [IMP] Create auth composable (useAuth) with Better-Auth client: login, signup, logout, session state
-2. [ ] [IMP] Build login page with email/password form
-3. [ ] [IMP] Build signup page with email/password + birth year (for age-appropriate UI)
-4. [ ] [IMP] Add route guards — redirect unauthenticated users to login, pass real userId to all API calls
-5. [ ] [TST] Verify full flow: signup → login → dashboard loads with real user → logout → redirected to login
+1. [x] [IMP] Create auth composable (useAuth) with Better-Auth client: login, signup, logout, session state
+2. [x] [IMP] Build login page with email/password form
+3. [x] [IMP] Build signup page with email/password + birth year (for age-appropriate UI)
+4. [x] [IMP] Add route guards — redirect unauthenticated users to login, pass real userId to all API calls
+5. [x] [TST] Verify full flow: signup → login → dashboard loads with real user → logout → redirected to login
 
 **Validation:** Can create account, log in, see dashboard with real user data, log out. Hardcoded test-user removed from useApi composable.
 
