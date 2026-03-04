@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { RouterView, RouterLink, useRouter } from "vue-router";
 import { useAuth } from "./composables/useAuth";
+import ToastContainer from "./components/ToastContainer.vue";
 
 const router = useRouter();
 const { isAuthenticated, user, signOut } = useAuth();
@@ -41,5 +42,6 @@ async function handleLogout() {
     <main class="max-w-7xl mx-auto px-6 py-8">
       <RouterView />
     </main>
+    <ToastContainer />
   </div>
 </template>

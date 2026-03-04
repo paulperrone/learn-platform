@@ -1,6 +1,17 @@
 import { authClient } from "./useAuth";
+import { useToast } from "./useToast";
 
 const API_BASE = "/api";
+
+export class ApiError extends Error {
+  constructor(
+    public status: number,
+    message: string,
+  ) {
+    super(message);
+    this.name = "ApiError";
+  }
+}
 
 async function request<T>(path: string, options?: RequestInit): Promise<T> {
   const response = await fetch(`${API_BASE}${path}`, {
@@ -11,18 +22,39 @@ async function request<T>(path: string, options?: RequestInit): Promise<T> {
       ...options?.headers,
     },
   });
+
   if (!response.ok) {
-    throw new Error(`API error: ${response.status} ${response.statusText}`);
+    let message = `${response.status} ${response.statusText}`;
+    try {
+      const body = await response.json();
+      if (body.error) message = body.error;
+    } catch {
+      // use default message
+    }
+    throw new ApiError(response.status, message);
   }
+
   return response.json();
 }
 
 async function getUserId(): Promise<string> {
   const session = await authClient.getSession();
   if (!session.data?.user?.id) {
-    throw new Error("Not authenticated");
+    throw new ApiError(401, "Not authenticated");
   }
   return session.data.user.id;
+}
+
+/** Wrap an async call with toast error reporting */
+export async function withErrorToast<T>(fn: () => Promise<T>, context?: string): Promise<T | undefined> {
+  try {
+    return await fn();
+  } catch (e) {
+    const toast = useToast();
+    const message = e instanceof ApiError ? e.message : "Something went wrong";
+    toast.error(context ? `${context}: ${message}` : message);
+    return undefined;
+  }
 }
 
 export function useApi() {

@@ -13,9 +13,9 @@ Take the locally-working MVP to a deployed, testable state. Generate full conten
 
 ## Progress
 
-**Completed:** Phase 1, Phase 2, Phase 3
+**Completed:** Phase 1, Phase 2, Phase 3, Phase 4
 **In Progress:** —
-**Next:** Phase 4
+**Next:** Phase 5
 
 ---
 
@@ -56,13 +56,13 @@ Take the locally-working MVP to a deployed, testable state. Generate full conten
 
 ---
 
-## Phase 4: Error Handling
+## Phase 4: Error Handling ✓
 **Goal:** Graceful error handling across API and frontend
 
-1. [ ] [IMP] Add Hono error middleware: catch all route errors, return structured JSON errors with appropriate status codes
-2. [ ] [IMP] Add frontend error boundary and toast/notification system for API errors
-3. [ ] [IMP] Add loading states and empty states to all pages (dashboard, learn, progress, explore)
-4. [ ] [TST] Verify: API returns structured errors on bad input, frontend shows user-friendly messages, no unhandled promise rejections
+1. [x] [IMP] Add Hono error middleware: catch all route errors, return structured JSON errors with appropriate status codes
+2. [x] [IMP] Add frontend error boundary and toast/notification system for API errors
+3. [x] [IMP] Add loading states and empty states to all pages (dashboard, learn, progress, explore)
+4. [x] [TST] Verify: API returns structured errors on bad input, frontend shows user-friendly messages, no unhandled promise rejections
 
 **Validation:** Hit API with invalid data → get structured error JSON. Frontend shows loading spinners, empty states, and error messages appropriately. No raw error dumps visible to users.
 

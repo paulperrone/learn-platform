@@ -1,4 +1,5 @@
 import { Hono } from "hono";
+import { HTTPException } from "hono/http-exception";
 import { cors } from "hono/cors";
 import { logger } from "hono/logger";
 import { authRoutes } from "./routes/auth.js";
@@ -36,5 +37,26 @@ app.route("/api/learn", learnRoutes);
 app.route("/api/review", reviewRoutes);
 app.route("/api/progress", progressRoutes);
 app.route("/api/llm", llmRoutes);
+
+// 404 handler
+app.notFound((c) =>
+  c.json({ error: "Not found", status: 404 }, 404)
+);
+
+// Global error handler
+app.onError((err, c) => {
+  if (err instanceof HTTPException) {
+    return c.json(
+      { error: err.message, status: err.status },
+      err.status
+    );
+  }
+
+  console.error("Unhandled error:", err);
+  return c.json(
+    { error: "Internal server error", status: 500 },
+    500
+  );
+});
 
 export default app;

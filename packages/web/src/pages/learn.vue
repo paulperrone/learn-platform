@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
-import { useApi } from "@/composables/useApi";
+import { useApi, withErrorToast } from "@/composables/useApi";
 import ProblemView from "@/components/ProblemView.vue";
 import WorkedExample from "@/components/WorkedExample.vue";
 
@@ -12,32 +12,30 @@ const sessionActive = ref(false);
 const recovering = ref(true);
 
 onMounted(async () => {
-  try {
-    const result = await api.getActiveSession();
-    if (result.active) {
-      sessionId.value = result.sessionId;
-      currentItem.value = result.currentItem;
-      sessionActive.value = true;
-    }
-  } catch {
-    // No active session — show "Begin Session"
-  } finally {
-    recovering.value = false;
+  const result = await withErrorToast(
+    () => api.getActiveSession(),
+    "Failed to check active session"
+  );
+  if (result?.active) {
+    sessionId.value = result.sessionId;
+    currentItem.value = result.currentItem;
+    sessionActive.value = true;
   }
+  recovering.value = false;
 });
 
 async function startSession() {
   loading.value = true;
-  try {
-    const result = await api.startSession();
+  const result = await withErrorToast(
+    () => api.startSession(),
+    "Failed to start session"
+  );
+  if (result) {
     sessionId.value = result.sessionId;
     currentItem.value = result.firstItem;
     sessionActive.value = result.firstItem.type !== "complete";
-  } catch (e) {
-    console.error("Failed to start session:", e);
-  } finally {
-    loading.value = false;
   }
+  loading.value = false;
 }
 
 async function handleProblemSubmit(data: {
@@ -48,37 +46,37 @@ async function handleProblemSubmit(data: {
 }) {
   if (!sessionId.value) return;
   loading.value = true;
-  try {
-    const result = await api.respondToSession(sessionId.value, data);
+  const result = await withErrorToast(
+    () => api.respondToSession(sessionId.value!, data),
+    "Failed to submit response"
+  );
+  if (result) {
     currentItem.value = result;
     if (result.type === "complete") {
       sessionActive.value = false;
     }
-  } catch (e) {
-    console.error("Failed to submit response:", e);
-  } finally {
-    loading.value = false;
   }
+  loading.value = false;
 }
 
 async function handleExampleDone() {
   if (!sessionId.value) return;
   loading.value = true;
-  try {
-    const result = await api.respondToSession(sessionId.value, {
+  const result = await withErrorToast(
+    () => api.respondToSession(sessionId.value!, {
       correct: true,
       responseMs: 0,
       selfExplanation: "completed",
-    });
+    }),
+    "Failed to advance session"
+  );
+  if (result) {
     currentItem.value = result;
     if (result.type === "complete") {
       sessionActive.value = false;
     }
-  } catch (e) {
-    console.error("Failed to advance session:", e);
-  } finally {
-    loading.value = false;
   }
+  loading.value = false;
 }
 </script>
 
@@ -87,8 +85,12 @@ async function handleExampleDone() {
     <h1 class="text-3xl font-bold mb-6">Learning Session</h1>
 
     <!-- Loading (checking for active session) -->
-    <div v-if="recovering" class="text-center py-12">
-      <p class="text-gray-400">Checking for active session...</p>
+    <div v-if="recovering" class="flex items-center justify-center gap-3 text-gray-400 py-12">
+      <svg class="animate-spin h-5 w-5" viewBox="0 0 24 24" fill="none">
+        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
+        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+      </svg>
+      <span>Checking for active session...</span>
     </div>
 
     <!-- Not started -->
@@ -134,7 +136,13 @@ async function handleExampleDone() {
         <h2 class="text-xl font-semibold text-gray-800">{{ currentItem.topicName }}</h2>
       </div>
 
-      <div v-if="loading" class="text-center py-8 text-gray-500">Loading...</div>
+      <div v-if="loading" class="flex items-center justify-center gap-3 text-gray-400 py-8">
+        <svg class="animate-spin h-5 w-5" viewBox="0 0 24 24" fill="none">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+        </svg>
+        <span>Loading...</span>
+      </div>
 
       <!-- Problem -->
       <ProblemView

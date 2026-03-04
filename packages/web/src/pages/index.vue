@@ -1,25 +1,29 @@
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
-import { useApi } from "@/composables/useApi";
+import { useApi, withErrorToast } from "@/composables/useApi";
 
 const api = useApi();
 const stats = ref({ mastered: 0, inProgress: 0, dueForReview: 0, total: 0 });
 const frontier = ref<any[]>([]);
 const loading = ref(true);
+const error = ref(false);
 
 onMounted(async () => {
-  try {
+  const result = await withErrorToast(async () => {
     const [progressData, frontierData] = await Promise.all([
       api.getProgress(),
       api.getFrontier(),
     ]);
-    stats.value = progressData;
-    frontier.value = frontierData.topics.slice(0, 5);
-  } catch (e) {
-    console.error("Failed to load dashboard:", e);
-  } finally {
-    loading.value = false;
+    return { progressData, frontierData };
+  }, "Failed to load dashboard");
+
+  if (result) {
+    stats.value = result.progressData;
+    frontier.value = result.frontierData.topics.slice(0, 5);
+  } else {
+    error.value = true;
   }
+  loading.value = false;
 });
 
 const progressPercent = () =>
@@ -32,7 +36,20 @@ const progressPercent = () =>
   <div>
     <h1 class="text-3xl font-bold mb-6">Dashboard</h1>
 
-    <div v-if="loading" class="text-gray-500">Loading...</div>
+    <!-- Loading -->
+    <div v-if="loading" class="flex items-center gap-3 text-gray-400 py-12">
+      <svg class="animate-spin h-5 w-5" viewBox="0 0 24 24" fill="none">
+        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
+        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+      </svg>
+      <span>Loading dashboard...</span>
+    </div>
+
+    <!-- Error -->
+    <div v-else-if="error" class="text-center py-12">
+      <p class="text-gray-500 mb-4">Unable to load dashboard data.</p>
+      <button @click="$router.go(0)" class="text-blue-600 hover:underline text-sm">Retry</button>
+    </div>
 
     <template v-else>
       <!-- Stats Cards -->
@@ -102,6 +119,11 @@ const progressPercent = () =>
             </div>
           </div>
         </div>
+      </div>
+
+      <!-- Empty state when all topics mastered -->
+      <div v-else class="bg-white rounded-lg shadow-sm border border-gray-200 p-5 text-center">
+        <p class="text-gray-500">All available topics mastered! Check back for new content.</p>
       </div>
     </template>
   </div>

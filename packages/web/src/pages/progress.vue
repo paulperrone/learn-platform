@@ -1,25 +1,29 @@
 <script setup lang="ts">
 import { ref, onMounted, computed } from "vue";
-import { useApi } from "@/composables/useApi";
+import { useApi, withErrorToast } from "@/composables/useApi";
 
 const api = useApi();
 const topics = ref<any[]>([]);
 const allTopics = ref<any[]>([]);
 const loading = ref(true);
+const error = ref(false);
 
 onMounted(async () => {
-  try {
+  const result = await withErrorToast(async () => {
     const [statesData, topicsData] = await Promise.all([
       api.getTopicStates(),
       api.getTopics("math-k5"),
     ]);
-    topics.value = statesData.topics;
-    allTopics.value = topicsData.topics;
-  } catch (e) {
-    console.error("Failed to load progress:", e);
-  } finally {
-    loading.value = false;
+    return { statesData, topicsData };
+  }, "Failed to load progress");
+
+  if (result) {
+    topics.value = result.statesData.topics;
+    allTopics.value = result.topicsData.topics;
+  } else {
+    error.value = true;
   }
+  loading.value = false;
 });
 
 const stateMap = computed(() => {
@@ -65,7 +69,26 @@ function gradeName(level: number) {
   <div>
     <h1 class="text-3xl font-bold mb-6">Progress</h1>
 
-    <div v-if="loading" class="text-gray-500">Loading...</div>
+    <!-- Loading -->
+    <div v-if="loading" class="flex items-center gap-3 text-gray-400 py-12">
+      <svg class="animate-spin h-5 w-5" viewBox="0 0 24 24" fill="none">
+        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
+        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+      </svg>
+      <span>Loading progress...</span>
+    </div>
+
+    <!-- Error -->
+    <div v-else-if="error" class="text-center py-12">
+      <p class="text-gray-500 mb-4">Unable to load progress data.</p>
+      <button @click="$router.go(0)" class="text-blue-600 hover:underline text-sm">Retry</button>
+    </div>
+
+    <!-- Empty state -->
+    <div v-else-if="allTopics.length === 0" class="text-center py-12">
+      <p class="text-gray-500 mb-4">No topics available yet.</p>
+      <RouterLink to="/learn" class="text-blue-600 hover:underline text-sm">Start learning</RouterLink>
+    </div>
 
     <template v-else>
       <!-- Legend -->

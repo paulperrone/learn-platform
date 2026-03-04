@@ -1,22 +1,27 @@
 <script setup lang="ts">
 import { ref, onMounted, computed } from "vue";
-import { useApi } from "@/composables/useApi";
+import { useApi, withErrorToast } from "@/composables/useApi";
+import { useToast } from "@/composables/useToast";
 
 const api = useApi();
+const toast = useToast();
 const topics = ref<any[]>([]);
 const loading = ref(true);
+const error = ref(false);
 const selectedTopic = ref<any>(null);
 const prereqs = ref<string[]>([]);
 
 onMounted(async () => {
-  try {
-    const data = await api.getTopics("math-k5");
-    topics.value = data.topics;
-  } catch (e) {
-    console.error("Failed to load topics:", e);
-  } finally {
-    loading.value = false;
+  const result = await withErrorToast(
+    () => api.getTopics("math-k5"),
+    "Failed to load topics"
+  );
+  if (result) {
+    topics.value = result.topics;
+  } else {
+    error.value = true;
   }
+  loading.value = false;
 });
 
 const maxDepth = computed(() =>
@@ -37,8 +42,9 @@ async function selectTopic(topic: any) {
   try {
     const data = await fetch(`/api/graph/topics/${topic.id}/prerequisites`).then((r) => r.json());
     prereqs.value = data.prerequisites;
-  } catch (e) {
+  } catch {
     prereqs.value = [];
+    toast.error("Failed to load prerequisites");
   }
 }
 
@@ -57,7 +63,25 @@ function depthColor(depth: number) {
     <h1 class="text-3xl font-bold mb-2">Knowledge Graph Explorer</h1>
     <p class="text-gray-500 mb-6">{{ topics.length }} topics across {{ maxDepth + 1 }} depth levels</p>
 
-    <div v-if="loading" class="text-gray-500">Loading...</div>
+    <!-- Loading -->
+    <div v-if="loading" class="flex items-center gap-3 text-gray-400 py-12">
+      <svg class="animate-spin h-5 w-5" viewBox="0 0 24 24" fill="none">
+        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
+        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+      </svg>
+      <span>Loading knowledge graph...</span>
+    </div>
+
+    <!-- Error -->
+    <div v-else-if="error" class="text-center py-12">
+      <p class="text-gray-500 mb-4">Unable to load the knowledge graph.</p>
+      <button @click="$router.go(0)" class="text-blue-600 hover:underline text-sm">Retry</button>
+    </div>
+
+    <!-- Empty state -->
+    <div v-else-if="topics.length === 0" class="text-center py-12">
+      <p class="text-gray-500">No topics available. Content may not be imported yet.</p>
+    </div>
 
     <div v-else class="flex gap-6">
       <!-- Graph visualization -->
