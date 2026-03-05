@@ -84,6 +84,26 @@ Architectural and design decisions with reasoning. Append-only.
 
 ---
 
+### 2026-03-05: Server-side grading with frontend immediate feedback
+
+**Source:** User session
+
+**Context:** Adding diverse question types (numerical-input, multi-step, matching, multi-select). Frontend was the sole grader via string comparison. Needed grading logic for numeric tolerance, partial credit, and set comparisons.
+
+**Decision:** Create a `grading.ts` service with per-type grading functions (`gradeProblem()`). Backend re-grades when answer text is provided. Frontend components still compute correctness locally for immediate UI feedback, but the backend is authoritative. Partial credit scoring: multi-step = fraction of correct steps, multi-select = (hits - wrong) / total, matching = fraction of correct pairs.
+
+**Why:**
+- Backend grading prevents client-side tampering with `correct: boolean`
+- Partial credit enables fairer FSRS scheduling (not just pass/fail)
+- Same grading logic can be reused for assignment grading and analytics
+- Frontend immediate feedback is essential for learning UX — can't wait for network round-trip
+
+**Alternatives rejected:**
+- Frontend-only grading: No protection against tampering, can't support partial credit in FSRS
+- Backend-only grading with loading spinner: Adds latency to the feedback loop, bad for learning UX
+
+---
+
 ### 2026-03-04: Family accounts map to Better-Auth organizations (owner=parent, member=child)
 
 **Source:** User session

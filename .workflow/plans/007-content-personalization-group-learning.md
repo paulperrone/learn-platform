@@ -83,9 +83,9 @@ TWO INDEPENDENT LAYERS:
 
 ## Progress
 
-**Completed:** Phase 1 ✓
+**Completed:** Phase 1 ✓, Phase 2 ✓
 **In Progress:** —
-**Next:** Phase 2
+**Next:** Phase 3
 
 ---
 
@@ -108,16 +108,16 @@ TWO INDEPENDENT LAYERS:
 
 ---
 
-## Phase 2: Diverse Question Types
+## Phase 2: Diverse Question Types ✓
 **Goal:** Move beyond text Q&A to numerical input, multi-step, and matching — improving retrieval practice depth (short-answer g=0.70 vs MC g=0.48). Research context: [reference/008-physicsgraph-learnings.md](./reference/008-physicsgraph-learnings.md), Question Type Diversity section.
 
-1. [ ] [IMP] Build question type Vue components: `NumericalInput` (type the answer, no options — forces retrieval), `MultiStep` (chain of dependent sub-problems with per-step feedback), `Matching` (connect items from two columns via drag or tap), `MultiSelect` (check all correct answers). Each component handles input, validation, and display. Integrate into ProblemView with dynamic component selection based on `assessment_content.type`.
+1. [x] [IMP] Build question type Vue components: `NumericalInput` (type the answer, no options — forces retrieval), `MultiStep` (chain of dependent sub-problems with per-step feedback), `Matching` (connect items from two columns via drag or tap), `MultiSelect` (check all correct answers). Each component handles input, validation, and display. Integrate into ProblemView with dynamic component selection based on `assessment_content.type`.
 
-2. [ ] [IMP] Update grading logic in learn/review routes: numerical-input exact match with configurable tolerance, multi-step partial credit (per-step scoring), matching set equality, multi-select scoring (partial credit for subset). Update LLM grading to handle multi-step explanations.
+2. [x] [IMP] Update grading logic in learn/review routes: numerical-input exact match with configurable tolerance, multi-step partial credit (per-step scoring), matching set equality, multi-select scoring (partial credit for subset). Update LLM grading to handle multi-step explanations.
 
-3. [ ] [IMP] Add guessability considerations: numerical input inherently prevents guessing (g=0.70 vs MC g=0.48). For any remaining MC-style questions, ensure distractors are plausible. Type selection in session service prefers numerical-input and multi-step over text-qa when available.
+3. [x] [IMP] Add guessability considerations: numerical input inherently prevents guessing (g=0.70 vs MC g=0.48). For any remaining MC-style questions, ensure distractors are plausible. Type selection in session service prefers numerical-input and multi-step over text-qa when available.
 
-4. [ ] [TST] Verify: each question type renders correctly, grading works for all types, existing text-qa problems still work (backward compat), diverse types appear in learning sessions, Teach Mode presentation view handles all types.
+4. [x] [TST] Verify: each question type renders correctly, grading works for all types, existing text-qa problems still work (backward compat), diverse types appear in learning sessions, Teach Mode presentation view handles all types.
 
 **Validation:** Students see diverse question types. Numerical input requires typing. Multi-step shows sequential sub-problems. All types grade correctly. Existing content unaffected.
 

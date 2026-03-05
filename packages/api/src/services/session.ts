@@ -4,7 +4,8 @@ import type { DB } from "../db/index.js";
 import * as schema from "../db/schema.js";
 import { createGraphService } from "./graph.js";
 import { createSRSService } from "./srs.js";
-import type { Problem, WorkedExample, SessionPhase } from "@learn/shared";
+import type { Problem, WorkedExample, SessionPhase, AssessmentType } from "@learn/shared";
+import { gradeProblem } from "./grading.js";
 
 type SessionState = {
   sessionId: string;
@@ -56,16 +57,21 @@ export function createSessionService(db: DB) {
     }));
   }
 
+  // Types that force retrieval practice (higher learning gain than text-qa)
+  const preferredTypes: AssessmentType[] = ["numerical-input", "multi-step", "matching", "multi-select"];
+
   function selectProblem(problems: Problem[], difficulty: string, exclude: string[] = []): Problem | null {
-    const filtered = problems.filter(
-      (p) => p.difficulty === difficulty && !exclude.includes(p.id)
-    );
-    if (filtered.length === 0) {
-      // Fall back to any problem not excluded
-      const anyAvailable = problems.filter((p) => !exclude.includes(p.id));
-      return anyAvailable.length > 0 ? anyAvailable[Math.floor(Math.random() * anyAvailable.length)] : null;
-    }
-    return filtered[Math.floor(Math.random() * filtered.length)];
+    const available = problems.filter((p) => !exclude.includes(p.id));
+    if (available.length === 0) return null;
+
+    const byDifficulty = available.filter((p) => p.difficulty === difficulty);
+    const pool = byDifficulty.length > 0 ? byDifficulty : available;
+
+    // Prefer diverse question types when available
+    const preferred = pool.filter((p) => p.type && preferredTypes.includes(p.type));
+    const candidates = preferred.length > 0 ? preferred : pool;
+
+    return candidates[Math.floor(Math.random() * candidates.length)];
   }
 
   /** Persist session state to D1 (write-through) */
@@ -204,9 +210,18 @@ export function createSessionService(db: DB) {
 
       state.totalAttempts++;
 
-      // Determine rating from response, capped by hint usage
-      const isCorrect = response.correct ?? false;
+      // Server-side grading when answer is provided
+      let isCorrect = response.correct ?? false;
+      if (response.answer != null) {
+        const problems = await getTopicProblems(state.currentTopicId);
+        const problem = problems.find((p) => p.id === (response as any).problemId) ?? problems[0];
+        if (problem) {
+          const gradeResult = gradeProblem(problem, response.answer);
+          isCorrect = gradeResult.correct;
+        }
+      }
       if (isCorrect) state.totalCorrect++;
+
       const hintsUsed = response.hintsUsed ?? 0;
       let rating: Grade = isCorrect ? Rating.Good : Rating.Again;
 

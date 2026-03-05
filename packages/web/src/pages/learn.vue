@@ -166,6 +166,7 @@ async function handleExampleDone() {
       <ProblemView
         v-else-if="currentItem?.type === 'problem' || currentItem?.type === 'remediation'"
         :problem="currentItem.problem"
+        :topic-name="currentItem.topicName"
         :show-hints="currentItem.showHints"
         :ask-confidence="currentItem.askConfidence ?? false"
         :phase="currentItem.phase"

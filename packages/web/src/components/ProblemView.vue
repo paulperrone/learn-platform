@@ -1,18 +1,18 @@
 <script setup lang="ts">
 import { ref, computed, onMounted } from "vue";
+import type { Problem, AssessmentType, MultiStepProperties, MatchingProperties, MultiSelectProperties, NumericalInputProperties } from "@learn/shared";
 import ConfidenceSlider from "./ConfidenceSlider.vue";
 import SpeakButton from "./SpeakButton.vue";
 import VoiceMicButton from "./VoiceMicButton.vue";
+import NumericalInput from "./NumericalInput.vue";
+import MultiStepInput from "./MultiStepInput.vue";
+import MatchingInput from "./MatchingInput.vue";
+import MultiSelectInput from "./MultiSelectInput.vue";
 import { useApi, withErrorToast } from "../composables/useApi";
 import { useLLMStatus } from "../composables/useLLMStatus";
 
 const props = defineProps<{
-  problem: {
-    question: string;
-    answer: string;
-    hints: string[];
-    solution: string;
-  };
+  problem: Problem;
   topicName?: string;
   showHints: boolean;
   askConfidence: boolean;
@@ -28,11 +28,19 @@ const api = useApi();
 const { llmAvailable, check: checkLLM } = useLLMStatus();
 onMounted(checkLLM);
 
+const problemType = computed<AssessmentType>(() => props.problem.type ?? "text-qa");
+const isMultiStep = computed(() => problemType.value === "multi-step");
+
 const answer = ref("");
 const confidence = ref(3);
 const submitted = ref(false);
 const isCorrect = ref(false);
 const startTime = Date.now();
+
+// Refs for sub-components
+const numericalInputRef = ref<InstanceType<typeof NumericalInput> | null>(null);
+const matchingInputRef = ref<InstanceType<typeof MatchingInput> | null>(null);
+const multiSelectInputRef = ref<InstanceType<typeof MultiSelectInput> | null>(null);
 
 // Progressive hint state
 const hintLevel = ref(0);
@@ -55,8 +63,36 @@ const phaseColor = computed(() => {
 });
 
 function checkAnswer() {
-  const normalized = (s: string) => s.trim().toLowerCase().replace(/\s+/g, " ");
-  isCorrect.value = normalized(answer.value) === normalized(props.problem.answer);
+  let result: { correct: boolean; display: string };
+
+  switch (problemType.value) {
+    case "numerical-input":
+      result = numericalInputRef.value!.checkAnswer();
+      break;
+    case "matching":
+      result = matchingInputRef.value!.checkAnswer();
+      break;
+    case "multi-select":
+      result = multiSelectInputRef.value!.checkAnswer();
+      break;
+    default: {
+      // text-qa
+      const normalized = (s: string) => s.trim().toLowerCase().replace(/\s+/g, " ");
+      const correct = normalized(answer.value) === normalized(props.problem.answer);
+      result = { correct, display: answer.value };
+      break;
+    }
+  }
+
+  answer.value = result.display;
+  isCorrect.value = result.correct;
+  submitted.value = true;
+}
+
+// Multi-step completes on its own
+function handleMultiStepDone(result: { correct: boolean; answer: string; stepsCorrect: number; stepsTotal: number }) {
+  answer.value = result.answer;
+  isCorrect.value = result.correct;
   submitted.value = true;
 }
 
@@ -101,6 +137,23 @@ async function requestHint() {
   revealedHints.value.push({ level: result.level, text: result.hint, source: result.source });
   hintMaxReached.value = result.isMaxLevel;
 }
+
+// Display answer for feedback section
+const displayAnswer = computed(() => {
+  if (problemType.value === "matching") {
+    const pairs = (props.problem.typeProperties as MatchingProperties)?.pairs;
+    return pairs?.map((p) => `${p.left} → ${p.right}`).join(", ") ?? props.problem.answer;
+  }
+  if (problemType.value === "multi-select") {
+    const tp = props.problem.typeProperties as MultiSelectProperties;
+    return tp?.correctIndices.map((i) => tp.options[i]).join(", ") ?? props.problem.answer;
+  }
+  if (problemType.value === "multi-step") {
+    const tp = props.problem.typeProperties as MultiStepProperties;
+    return tp?.steps.map((s, i) => `Step ${i + 1}: ${s.answer}`).join(", ") ?? props.problem.answer;
+  }
+  return props.problem.answer;
+});
 </script>
 
 <template>
@@ -120,32 +173,71 @@ async function requestHint() {
     </div>
 
     <div v-if="!submitted" class="space-y-4">
-      <div class="flex items-center gap-2">
-        <input
-          v-model="answer"
-          type="text"
-          class="flex-1 border border-gray-300 rounded-lg p-3 text-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-          placeholder="Type or speak your answer..."
+      <!-- Text QA (default) -->
+      <template v-if="problemType === 'text-qa' || problemType === 'equation-builder'">
+        <div class="flex items-center gap-2">
+          <input
+            v-model="answer"
+            type="text"
+            class="flex-1 border border-gray-300 rounded-lg p-3 text-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            placeholder="Type or speak your answer..."
+            @keyup.enter="checkAnswer"
+          />
+          <VoiceMicButton @transcription="(text) => answer = answer ? `${answer} ${text}` : text" />
+        </div>
+      </template>
+
+      <!-- Numerical Input -->
+      <template v-else-if="problemType === 'numerical-input'">
+        <NumericalInput
+          ref="numericalInputRef"
+          :answer="problem.answer"
+          :type-properties="problem.typeProperties as NumericalInputProperties"
           @keyup.enter="checkAnswer"
         />
-        <VoiceMicButton @transcription="(text) => answer = answer ? `${answer} ${text}` : text" />
-      </div>
+      </template>
+
+      <!-- Multi-Step -->
+      <template v-else-if="problemType === 'multi-step'">
+        <MultiStepInput
+          :type-properties="(problem.typeProperties as MultiStepProperties)"
+          @done="handleMultiStepDone"
+        />
+      </template>
+
+      <!-- Matching -->
+      <template v-else-if="problemType === 'matching'">
+        <MatchingInput
+          ref="matchingInputRef"
+          :type-properties="(problem.typeProperties as MatchingProperties)"
+        />
+      </template>
+
+      <!-- Multi-Select -->
+      <template v-else-if="problemType === 'multi-select'">
+        <MultiSelectInput
+          ref="multiSelectInputRef"
+          :type-properties="(problem.typeProperties as MultiSelectProperties)"
+        />
+      </template>
 
       <div v-if="askConfidence" class="pt-2">
         <ConfidenceSlider v-model="confidence" />
       </div>
 
       <div class="flex items-center gap-3">
+        <!-- Multi-step handles its own submit flow -->
         <button
+          v-if="!isMultiStep"
           @click="checkAnswer"
-          :disabled="!answer.trim()"
+          :disabled="!answer.trim() && problemType === 'text-qa'"
           class="px-6 py-2.5 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           Submit
         </button>
 
         <button
-          v-if="showHints && !hintMaxReached"
+          v-if="showHints && !hintMaxReached && !isMultiStep"
           @click="requestHint"
           :disabled="hintLoading || llmHintsDisabled"
           class="px-4 py-2.5 border border-gray-300 text-gray-600 rounded-lg text-sm hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
@@ -191,7 +283,7 @@ async function requestHint() {
           {{ isCorrect ? "Correct!" : "Not quite." }}
         </p>
         <p v-if="!isCorrect" class="text-sm text-gray-600 mt-1">
-          The answer is: <strong>{{ problem.answer }}</strong>
+          The answer is: <strong>{{ displayAnswer }}</strong>
         </p>
         <p v-if="hintLevel > 0" class="text-xs text-gray-500 mt-1">
           Hints used: {{ hintLevel }}

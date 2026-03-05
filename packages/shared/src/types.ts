@@ -112,6 +112,38 @@ export type AssessmentType =
   | "multi-select"
   | "equation-builder";
 
+export type NumericalInputProperties = {
+  tolerance?: number;
+  unit?: string;
+};
+
+export type MultiStepProperties = {
+  steps: {
+    question: string;
+    answer: string;
+    hints?: string[];
+  }[];
+};
+
+export type MatchingProperties = {
+  pairs: {
+    left: string;
+    right: string;
+  }[];
+};
+
+export type MultiSelectProperties = {
+  options: string[];
+  correctIndices: number[];
+};
+
+export type TypeProperties =
+  | NumericalInputProperties
+  | MultiStepProperties
+  | MatchingProperties
+  | MultiSelectProperties
+  | Record<string, unknown>;
+
 export type Problem = {
   id: string;
   topicId: string;
@@ -121,7 +153,7 @@ export type Problem = {
   hints: string[];
   solution: string;
   type?: AssessmentType;
-  typeProperties?: Record<string, unknown>;
+  typeProperties?: TypeProperties;
 };
 
 export type ContentDimensions = {
