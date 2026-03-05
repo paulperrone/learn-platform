@@ -21,6 +21,7 @@ async function handleLogout() {
           <RouterLink to="/learn" class="text-gray-600 hover:text-gray-900">Study</RouterLink>
           <RouterLink to="/progress" class="text-gray-600 hover:text-gray-900">Progress</RouterLink>
           <RouterLink to="/explore" class="text-gray-600 hover:text-gray-900">Explore</RouterLink>
+          <RouterLink to="/teach" class="text-gray-600 hover:text-gray-900">Teach</RouterLink>
           <RouterLink to="/graph" class="text-gray-600 hover:text-gray-900">Graph</RouterLink>
           <RouterLink v-if="!isChild" to="/family" class="text-gray-600 hover:text-gray-900">Family</RouterLink>
           <RouterLink v-if="(user as any)?.role === 'admin'" to="/admin" class="text-gray-600 hover:text-gray-900">Admin</RouterLink>
@@ -42,6 +43,7 @@ async function handleLogout() {
         </template>
         <template v-else>
           <RouterLink to="/explore" class="text-gray-600 hover:text-gray-900">Explore</RouterLink>
+          <RouterLink to="/teach" class="text-gray-600 hover:text-gray-900">Teach</RouterLink>
           <RouterLink to="/how-we-teach" class="text-gray-600 hover:text-gray-900">How We Teach</RouterLink>
           <RouterLink to="/docs" class="text-gray-600 hover:text-gray-900">Research</RouterLink>
           <div class="ml-auto flex items-center gap-4">

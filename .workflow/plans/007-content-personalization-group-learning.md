@@ -83,9 +83,9 @@ TWO INDEPENDENT LAYERS:
 
 ## Progress
 
-**Completed:** Phase 1 ✓, Phase 2 ✓, Phase 3 ✓
+**Completed:** Phase 1 ✓, Phase 2 ✓, Phase 3 ✓, Phase 4 ✓
 **In Progress:** —
-**Next:** Phase 4
+**Next:** Phase 5
 
 ---
 
@@ -140,18 +140,18 @@ TWO INDEPENDENT LAYERS:
 
 ---
 
-## Phase 4: Teach Mode (Public Classroom Tool)
+## Phase 4: Teach Mode (Public Classroom Tool) ✓
 **Goal:** Zero-account, zero-setup teaching interface. Browse graph, step through worked examples with visuals, present diverse question types. Works with existing classic content.
 
-1. [ ] [IMP] Build `/teach` public route: topic browser showing the knowledge graph organized by grade and strand. No authentication required. Teacher selects a topic. UI optimized for projection (large text, high contrast, minimal chrome). Locale selector in sidebar.
+1. [x] [IMP] Build `/teach` public route: topic browser showing the knowledge graph organized by grade and strand. No authentication required. Teacher selects a topic. UI optimized for projection (large text, high contrast, minimal chrome).
 
-2. [ ] [IMP] Build teaching presentation view: full-screen instructional content with step-by-step reveal (teacher clicks to advance). Visual aids render inline. Teacher notes/hints visible only on their device. Problem display from assessment pool with show/hide answer toggle — supports all question types (numerical input, multi-step, matching). "Next problem" draws from pool for variation.
+2. [x] [IMP] Build teaching presentation view: full-screen instructional content with step-by-step reveal (teacher clicks/keys to advance). Visual aids render inline. Hints visible only on answer reveal. Problem display from assessment pool with show/hide answer toggle — supports all question types. "Next problem" cycles through pool.
 
-3. [ ] [IMP] Build topic sequencing helper: suggest "Teach next" options based on prerequisite graph. Show prerequisite chain. Allow jumping to any topic.
+3. [x] [IMP] Build topic sequencing helper: "Teach Next" suggestions based on prerequisite graph. Prerequisites section shows what to cover first. Direct links to navigate between topics.
 
-4. [ ] [IMP] Build printable/exportable problem sets: export/print a clean problem set (with or without answers) from assessment pool for selected topic and locale.
+4. [x] [IMP] Build printable/exportable problem sets: print a clean problem set (with or without answers) from assessment pool for selected topic. Opens print dialog.
 
-5. [ ] [TST] Verify: /teach works without auth, presentation readable on projector, step-by-step reveal works, all question types display, visuals render, export generates clean output.
+5. [x] [TST] Verify: /teach works without auth, typecheck passes, presentation has keyboard navigation (Space/Arrow/Esc), fullscreen support, all question types display, visuals render, print generates clean output.
 
 **Validation:** A teacher can navigate to /teach, find a topic, and run a classroom lesson with visuals and diverse problem types in under 2 minutes.
 

@@ -153,3 +153,14 @@ Setting `rootDir: "src"` in web package `tsconfig.json` causes `TS6059` errors w
 Full signup flow (`POST /api/auth/sign-up/email`) works in miniflare Workers pool tests. Response includes `set-cookie` header with `better-auth.session_token=<value>`. Extract via regex, use as `Cookie` header for subsequent authenticated requests. ~50-70ms per signup — fast enough for focused test files. This is the ONLY reliable way to test authenticated routes via HTTP; `createAuthSession()` helper doesn't work because Better-Auth hashes tokens internally.
 
 **Context:** Testing settings API routes (GET/PUT /api/settings) that require authentication.
+
+---
+
+### 2026-03-05: Wrangler log EPERM causes `pnpm test` to report failure even when tests pass
+
+**Source:** User session
+**Area:** @cloudflare/vitest-pool-workers / Wrangler
+
+`pnpm test` (vitest with `@cloudflare/vitest-pool-workers`) can report exit code 1 due to wrangler failing to write debug logs (`EPERM: operation not permitted` on `~/.wrangler/logs/`). The actual tests may have passed — check the test result lines, not just the exit code. This is a wrangler infrastructure issue, not a test failure.
+
+**Context:** Running `pnpm test` after Teach Mode implementation. All tests passed but the process exited with code 1 due to wrangler log file permissions.
