@@ -4,7 +4,7 @@ import type { DB } from "../db/index.js";
 import * as schema from "../db/schema.js";
 import { createGraphService } from "./graph.js";
 import { createSRSService } from "./srs.js";
-import type { Problem, WorkedExample, SessionPhase, AssessmentType } from "@learn/shared";
+import type { Problem, WorkedExample, SessionPhase, AssessmentType, VisualAsset } from "@learn/shared";
 import { gradeProblem } from "./grading.js";
 
 type SessionState = {
@@ -54,7 +54,18 @@ export function createSessionService(db: DB) {
       topicId: r.topicId,
       title: r.title,
       steps: JSON.parse(r.stepsJson),
+      visuals: r.assetsJson ? JSON.parse(r.assetsJson) : undefined,
     }));
+  }
+
+  async function getTopicVisuals(topicId: string): Promise<VisualAsset[] | undefined> {
+    const row = await db
+      .select({ assetsJson: schema.instructionalContent.assetsJson })
+      .from(schema.instructionalContent)
+      .where(eq(schema.instructionalContent.topicId, topicId))
+      .limit(1);
+    if (!row[0]?.assetsJson) return undefined;
+    return JSON.parse(row[0].assetsJson);
   }
 
   // Types that force retrieval practice (higher learning gain than text-qa)
@@ -359,6 +370,11 @@ export function createSessionService(db: DB) {
 
       const problems = await getTopicProblems(topic.id);
       const examples = await getTopicExamples(topic.id);
+      const visuals = await getTopicVisuals(topic.id);
+
+      function withVisuals(problem: Problem): Problem {
+        return visuals ? { ...problem, visuals } : problem;
+      }
 
       switch (state.currentPhase) {
         case "pretest": {
@@ -369,7 +385,7 @@ export function createSessionService(db: DB) {
             phase: "pretest",
             topicId: topic.id,
             topicName: topic.name,
-            problem: problem ?? makeFallbackProblem(topic),
+            problem: withVisuals(problem ?? makeFallbackProblem(topic)),
             showHints: false,
             message: "Let's see what you already know. Try your best!",
           };
@@ -396,7 +412,7 @@ export function createSessionService(db: DB) {
             phase: "guided",
             topicId: topic.id,
             topicName: topic.name,
-            problem: problem ?? makeFallbackProblem(topic),
+            problem: withVisuals(problem ?? makeFallbackProblem(topic)),
             showHints: true,
             message: "Now try it with some help. Hints are available if you need them.",
           };
@@ -410,7 +426,7 @@ export function createSessionService(db: DB) {
             phase: "independent",
             topicId: topic.id,
             topicName: topic.name,
-            problem: problem ?? makeFallbackProblem(topic),
+            problem: withVisuals(problem ?? makeFallbackProblem(topic)),
             showHints: false,
             askConfidence: true,
             message: "Solve this on your own. Rate your confidence after.",
@@ -425,7 +441,7 @@ export function createSessionService(db: DB) {
             phase: "review",
             topicId: topic.id,
             topicName: topic.name,
-            problem: problem ?? makeFallbackProblem(topic),
+            problem: withVisuals(problem ?? makeFallbackProblem(topic)),
             showHints: false,
             askConfidence: true,
             message: "Review time! Let's see if you remember.",
@@ -441,7 +457,7 @@ export function createSessionService(db: DB) {
             phase: "remediation",
             topicId: topic.id,
             topicName: topic.name,
-            problem: problem ?? makeFallbackProblem(topic),
+            problem: withVisuals(problem ?? makeFallbackProblem(topic)),
             showHints: true,
             prerequisiteChain: prereqChain,
             message: "Let's go back to basics. Here's an easier version.",

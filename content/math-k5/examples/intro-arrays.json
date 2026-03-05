@@ -3,6 +3,13 @@
     "id": "intro-arrays-ex1",
     "topicId": "intro-arrays",
     "title": "Understanding an Array of Apples",
+    "visuals": [
+      {
+        "type": "array-grid",
+        "params": { "rows": 3, "cols": 4 },
+        "alt": "Array grid showing 3 rows and 4 columns = 12"
+      }
+    ],
     "steps": [
       {
         "subgoalLabel": "See the rows and columns",

@@ -3,6 +3,13 @@
     "id": "teen-numbers-ex1",
     "topicId": "teen-numbers",
     "title": "Understanding 15 as 10 and 5",
+    "visuals": [
+      {
+        "type": "base-ten-blocks",
+        "params": { "tens": 1, "ones": 5 },
+        "alt": "Base ten blocks showing 1 ten and 5 ones, making 15"
+      }
+    ],
     "steps": [
       {
         "subgoalLabel": "Make a group of 10",

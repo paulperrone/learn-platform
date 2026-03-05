@@ -65,6 +65,11 @@ type WorkedExample = {
     work: string;
     explanation: string;
   }[];
+  visuals?: {
+    type: string;
+    params: Record<string, unknown>;
+    alt: string;
+  }[];
 };
 
 function main() {
@@ -160,14 +165,15 @@ function main() {
 
   // Insert instructional content (worked examples)
   const insertInstruction = db.prepare(
-    "INSERT INTO instructional_content (id, topic_id, flavor, locale, presentation, version, title, steps_json, created_at, updated_at) VALUES (?, ?, 'classic', 'en', 'individual', 1, ?, ?, ?, ?)"
+    "INSERT INTO instructional_content (id, topic_id, flavor, locale, presentation, version, title, steps_json, assets_json, created_at, updated_at) VALUES (?, ?, 'classic', 'en', 'individual', 1, ?, ?, ?, ?, ?)"
   );
   let instructionCount = 0;
   const insertInstructions = db.transaction(() => {
     const now = new Date().toISOString();
     for (const [, topicExamples] of examples) {
       for (const e of topicExamples) {
-        insertInstruction.run(e.id, e.topicId, e.title, JSON.stringify(e.steps), now, now);
+        const assetsJson = e.visuals?.length ? JSON.stringify(e.visuals) : null;
+        insertInstruction.run(e.id, e.topicId, e.title, JSON.stringify(e.steps), assetsJson, now, now);
         instructionCount++;
       }
     }

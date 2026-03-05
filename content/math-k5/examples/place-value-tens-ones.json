@@ -3,6 +3,18 @@
     "id": "place-value-tens-ones-ex1",
     "topicId": "place-value-tens-ones",
     "title": "Breaking 36 into Tens and Ones",
+    "visuals": [
+      {
+        "type": "base-ten-blocks",
+        "params": { "tens": 3, "ones": 6 },
+        "alt": "Base ten blocks showing 3 tens and 6 ones, making 36"
+      },
+      {
+        "type": "place-value-chart",
+        "params": { "digits": [{ "place": "tens", "value": 3 }, { "place": "ones", "value": 6 }] },
+        "alt": "Place value chart showing 3 tens and 6 ones"
+      }
+    ],
     "steps": [
       {
         "subgoalLabel": "Find the tens digit",

@@ -3,6 +3,13 @@
     "id": "fractions-number-line-ex1",
     "topicId": "fractions-number-line",
     "title": "Placing 3/4 on a Number Line",
+    "visuals": [
+      {
+        "type": "fraction-bar",
+        "params": { "numerator": 3, "denominator": 4 },
+        "alt": "Fraction bar showing 3 out of 4 parts shaded, representing 3/4"
+      }
+    ],
     "steps": [
       {
         "subgoalLabel": "Draw and divide the number line",

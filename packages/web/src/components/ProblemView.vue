@@ -8,6 +8,7 @@ import NumericalInput from "./NumericalInput.vue";
 import MultiStepInput from "./MultiStepInput.vue";
 import MatchingInput from "./MatchingInput.vue";
 import MultiSelectInput from "./MultiSelectInput.vue";
+import VisualAid from "./visuals/VisualAid.vue";
 import { useApi, withErrorToast } from "../composables/useApi";
 import { useLLMStatus } from "../composables/useLLMStatus";
 
@@ -170,6 +171,7 @@ const displayAnswer = computed(() => {
         <p class="text-lg text-gray-800 whitespace-pre-wrap flex-1">{{ problem.question }}</p>
         <SpeakButton :text="problem.question" :convert-math="true" />
       </div>
+      <VisualAid v-if="problem.visuals?.length" :visuals="problem.visuals" />
     </div>
 
     <div v-if="!submitted" class="space-y-4">

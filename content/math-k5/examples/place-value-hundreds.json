@@ -3,6 +3,18 @@
     "id": "place-value-hundreds-ex1",
     "topicId": "place-value-hundreds",
     "title": "Understanding 748 in Hundreds, Tens, and Ones",
+    "visuals": [
+      {
+        "type": "base-ten-blocks",
+        "params": { "hundreds": 7, "tens": 4, "ones": 8 },
+        "alt": "Base ten blocks showing 7 hundreds, 4 tens, and 8 ones = 748"
+      },
+      {
+        "type": "place-value-chart",
+        "params": { "digits": [{ "place": "hundreds", "value": 7 }, { "place": "tens", "value": 4 }, { "place": "ones", "value": 8 }] },
+        "alt": "Place value chart showing 7 hundreds, 4 tens, 8 ones"
+      }
+    ],
     "steps": [
       {
         "subgoalLabel": "Find the hundreds",

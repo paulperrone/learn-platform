@@ -3,6 +3,13 @@
     "id": "subtract-within-10-ex1",
     "topicId": "subtract-within-10",
     "title": "Subtracting 8 - 5 by Counting Back",
+    "visuals": [
+      {
+        "type": "number-line",
+        "params": { "min": 0, "max": 10, "step": 1, "highlights": [8, 3], "jumps": [{ "from": 8, "to": 3, "label": "-5" }] },
+        "alt": "Number line showing 8 - 5 = 3 with a jump back from 8 to 3"
+      }
+    ],
     "steps": [
       {
         "subgoalLabel": "Start at the first number",

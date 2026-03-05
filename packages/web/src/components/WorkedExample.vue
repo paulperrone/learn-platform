@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
+import type { VisualAsset } from "@learn/shared";
 import SpeakButton from "./SpeakButton.vue";
+import VisualAid from "./visuals/VisualAid.vue";
 
 const props = defineProps<{
   example: {
@@ -11,6 +13,7 @@ const props = defineProps<{
       work: string;
       explanation: string;
     }[];
+    visuals?: VisualAsset[];
   };
 }>();
 
@@ -44,6 +47,8 @@ function nextStep() {
       <h3 class="text-lg font-semibold">{{ example.title }}</h3>
       <SpeakButton :text="stepSpeechText" :convert-math="true" />
     </div>
+
+    <VisualAid v-if="example.visuals?.length" :visuals="example.visuals" />
 
     <div class="flex gap-2 mb-4">
       <div

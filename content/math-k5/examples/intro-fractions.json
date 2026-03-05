@@ -3,6 +3,13 @@
     "id": "intro-fractions-ex1",
     "topicId": "intro-fractions",
     "title": "Understanding 1/4 of a Whole",
+    "visuals": [
+      {
+        "type": "fraction-bar",
+        "params": { "numerator": 1, "denominator": 4 },
+        "alt": "Fraction bar divided into 4 parts with 1 part shaded, showing 1/4"
+      }
+    ],
     "steps": [
       {
         "subgoalLabel": "Divide into equal parts",

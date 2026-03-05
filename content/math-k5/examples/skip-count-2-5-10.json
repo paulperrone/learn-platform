@@ -3,6 +3,13 @@
     "id": "skip-count-2-5-10-ex1",
     "topicId": "skip-count-2-5-10",
     "title": "Skip Counting by 5s from 45",
+    "visuals": [
+      {
+        "type": "number-line",
+        "params": { "min": 40, "max": 65, "step": 5, "highlights": [45, 50, 55, 60], "jumps": [{ "from": 45, "to": 50, "label": "+5" }, { "from": 50, "to": 55, "label": "+5" }, { "from": 55, "to": 60, "label": "+5" }] },
+        "alt": "Number line showing skip counting by 5s: 45, 50, 55, 60"
+      }
+    ],
     "steps": [
       {
         "subgoalLabel": "Identify the pattern",

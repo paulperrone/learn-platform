@@ -3,6 +3,13 @@
     "id": "add-within-10-ex1",
     "topicId": "add-within-10",
     "title": "Adding 6 + 3 by Counting On",
+    "visuals": [
+      {
+        "type": "number-line",
+        "params": { "min": 0, "max": 10, "step": 1, "highlights": [6, 9], "jumps": [{ "from": 6, "to": 7, "label": "+1" }, { "from": 7, "to": 8, "label": "+1" }, { "from": 8, "to": 9, "label": "+1" }] },
+        "alt": "Number line showing 6 + 3 = 9 with three jumps from 6 to 9"
+      }
+    ],
     "steps": [
       {
         "subgoalLabel": "Start with the bigger number",

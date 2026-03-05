@@ -3,6 +3,13 @@
     "id": "equivalent-fractions-3-ex1",
     "topicId": "equivalent-fractions-3",
     "title": "Showing 1/2 = 2/4 with a Model",
+    "visuals": [
+      {
+        "type": "fraction-bar",
+        "params": { "numerator": 1, "denominator": 2, "compare": { "numerator": 2, "denominator": 4 } },
+        "alt": "Two fraction bars comparing 1/2 and 2/4, showing they are equal"
+      }
+    ],
     "steps": [
       {
         "subgoalLabel": "Show 1/2",

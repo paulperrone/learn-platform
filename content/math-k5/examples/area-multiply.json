@@ -3,6 +3,13 @@
     "id": "area-multiply-ex1",
     "topicId": "area-multiply",
     "title": "Finding Area by Multiplying Side Lengths",
+    "visuals": [
+      {
+        "type": "array-grid",
+        "params": { "rows": 4, "cols": 7 },
+        "alt": "Grid showing a 4 by 7 rectangle divided into unit squares = 28 sq cm"
+      }
+    ],
     "steps": [
       {
         "subgoalLabel": "Identify length and width",

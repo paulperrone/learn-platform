@@ -3,6 +3,13 @@
     "id": "multiply-within-100-ex1",
     "topicId": "multiply-within-100",
     "title": "Multiplying 6 × 7 Using Known Facts",
+    "visuals": [
+      {
+        "type": "array-grid",
+        "params": { "rows": 6, "cols": 7, "highlightRows": 6, "highlightCols": 5 },
+        "alt": "Array grid showing 6 rows by 7 columns, split at 5 columns to show 6x5 + 6x2"
+      }
+    ],
     "steps": [
       {
         "subgoalLabel": "Break into known facts",

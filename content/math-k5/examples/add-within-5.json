@@ -3,6 +3,13 @@
     "id": "add-within-5-ex1",
     "topicId": "add-within-5",
     "title": "Adding 2 + 3 with Fingers",
+    "visuals": [
+      {
+        "type": "number-line",
+        "params": { "min": 0, "max": 5, "step": 1, "highlights": [2, 5], "jumps": [{ "from": 2, "to": 5, "label": "+3" }] },
+        "alt": "Number line showing 2 + 3 = 5 with a jump from 2 to 5"
+      }
+    ],
     "steps": [
       {
         "subgoalLabel": "Show the first number",

@@ -154,6 +154,7 @@ export type Problem = {
   solution: string;
   type?: AssessmentType;
   typeProperties?: TypeProperties;
+  visuals?: VisualAsset[];
 };
 
 export type ContentDimensions = {
@@ -170,9 +171,48 @@ export type VisualAssetType =
   | "array-grid"
   | "place-value-chart";
 
+export type NumberLineParams = {
+  min: number;
+  max: number;
+  step?: number;
+  highlights?: number[];
+  jumps?: { from: number; to: number; label?: string }[];
+};
+
+export type BaseTenBlocksParams = {
+  hundreds?: number;
+  tens?: number;
+  ones?: number;
+};
+
+export type FractionBarParams = {
+  numerator: number;
+  denominator: number;
+  compare?: { numerator: number; denominator: number };
+};
+
+export type ArrayGridParams = {
+  rows: number;
+  cols: number;
+  highlightRows?: number;
+  highlightCols?: number;
+};
+
+export type PlaceValueChartParams = {
+  digits: { place: string; value: number }[];
+};
+
+export type VisualAssetParams =
+  | NumberLineParams
+  | BaseTenBlocksParams
+  | FractionBarParams
+  | ArrayGridParams
+  | PlaceValueChartParams;
+
 export type VisualAsset = {
   type: VisualAssetType;
-  params: Record<string, unknown>;
+  params: VisualAssetParams;
+  alt: string;
 };
 
 export type WorkedExample = {
@@ -180,6 +220,7 @@ export type WorkedExample = {
   topicId: string;
   title: string;
   steps: WorkedExampleStep[];
+  visuals?: VisualAsset[];
 };
 
 export type WorkedExampleStep = {

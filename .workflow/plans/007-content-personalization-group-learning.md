@@ -83,9 +83,9 @@ TWO INDEPENDENT LAYERS:
 
 ## Progress
 
-**Completed:** Phase 1 ✓, Phase 2 ✓
+**Completed:** Phase 1 ✓, Phase 2 ✓, Phase 3 ✓
 **In Progress:** —
-**Next:** Phase 3
+**Next:** Phase 4
 
 ---
 
@@ -123,18 +123,18 @@ TWO INDEPENDENT LAYERS:
 
 ---
 
-## Phase 3: Visual Aids
+## Phase 3: Visual Aids ✓
 **Goal:** SVG-based visual representations in instructional content and assessment — dual coding theory shows verbal + visual distributes cognitive load across working memory subsystems. Research context: [reference/008-physicsgraph-learnings.md](./reference/008-physicsgraph-learnings.md), Animations and Visualizations section.
 
-1. [ ] [RSH] Identify highest-impact visual types for K-5 math: number lines (counting, addition, subtraction), base-ten block arrays (place value), fraction bars/circles (fractions), array grids (multiplication), place value charts, bar models (word problems). Map each visual type to the topics where it's most impactful.
+1. [x] [RSH] Identify highest-impact visual types for K-5 math: number lines (counting, addition, subtraction), base-ten block arrays (place value), fraction bars/circles (fractions), array grids (multiplication), place value charts, bar models (word problems). Map each visual type to the topics where it's most impactful.
 
-2. [ ] [IMP] Build reusable Vue SVG components: `NumberLine` (configurable range, tick marks, jump arcs), `BaseTenBlocks` (ones/tens/hundreds with grouping), `FractionBar` (divided bar with shaded portions), `ArrayGrid` (rows x columns for multiplication). Each renders from JSON parameters stored in `assetsJson`.
+2. [x] [IMP] Build reusable Vue SVG components: `NumberLine` (configurable range, tick marks, jump arcs), `BaseTenBlocks` (ones/tens/hundreds with grouping), `FractionBar` (divided bar with shaded portions), `ArrayGrid` (rows x columns for multiplication). Each renders from JSON parameters stored in `assetsJson`.
 
-3. [ ] [IMP] Integrate visuals into ProblemView and WorkedExample components: render visual aids alongside text when present in `assetsJson`. Support visuals in all learning loop phases and in Teach Mode presentation view. Responsive across screen sizes.
+3. [x] [IMP] Integrate visuals into ProblemView and WorkedExample components: render visual aids alongside text when present in `assetsJson`. Support visuals in all learning loop phases and in Teach Mode presentation view. Responsive across screen sizes.
 
-4. [ ] [IMP] Add visual parameters to pilot content: manually add `assetsJson` visual configs to 10-15 topics where visuals are most impactful (counting, place value, fractions, multiplication). This is manual data entry, not pipeline generation.
+4. [x] [IMP] Add visual parameters to pilot content: manually add `assetsJson` visual configs to 10-15 topics where visuals are most impactful (counting, place value, fractions, multiplication). This is manual data entry, not pipeline generation.
 
-5. [ ] [TST] Verify: visual components render across screen sizes. Visuals appear in sessions for topics that have them. Topics without visuals still work. Teach Mode displays visuals on projector. Accessibility: screen reader alt text.
+5. [x] [TST] Verify: visual components render across screen sizes. Visuals appear in sessions for topics that have them. Topics without visuals still work. Teach Mode displays visuals on projector. Accessibility: screen reader alt text.
 
 **Validation:** Students see number lines, arrays, and fraction bars alongside relevant problems. Visuals responsive on mobile and desktop. Teach Mode projector view includes visuals.
 

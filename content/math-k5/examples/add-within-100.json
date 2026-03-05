@@ -3,6 +3,13 @@
     "id": "add-within-100-ex1",
     "topicId": "add-within-100",
     "title": "Adding 35 + 24 (No Regrouping)",
+    "visuals": [
+      {
+        "type": "base-ten-blocks",
+        "params": { "tens": 5, "ones": 9 },
+        "alt": "Base ten blocks showing the result: 5 tens and 9 ones = 59"
+      }
+    ],
     "steps": [
       {
         "subgoalLabel": "Add the ones",
