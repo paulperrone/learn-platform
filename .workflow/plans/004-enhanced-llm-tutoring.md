@@ -13,9 +13,9 @@ Evolve LLM integration from stateless single-turn API calls to context-aware tut
 
 ## Progress
 
-**Completed:** Phase 1, Phase 2, Phase 3, Phase 4, Phase 5, Phase 6
+**Completed:** Phase 1, Phase 2, Phase 3, Phase 4, Phase 5, Phase 6, Phase 7
 **In Progress:** —
-**Next:** Phase 7
+**Next:** — (Plan complete)
 
 ---
 
@@ -91,13 +91,13 @@ Evolve LLM integration from stateless single-turn API calls to context-aware tut
 
 ---
 
-## Phase 7: Admin Experience & Usage Analytics
+## Phase 7: Admin Experience & Usage Analytics ✓
 **Goal:** Platform admin can configure models, view aggregate usage, and see content effectiveness signals
 
-1. [ ] [IMP] Add admin routes (`/api/admin`): platform-level model tier config (CRUD for model assignments per tier), aggregate usage stats (total cost, calls, per-family breakdown), platform config management. Protected by admin role check.
-2. [ ] [IMP] Build admin dashboard page (`/admin`): model configuration panel (which models serve each tier), platform-wide usage metrics (total cost this month, top families by usage, cost by purpose), family-level usage drill-down.
-3. [ ] [IMP] Add content effectiveness analytics: per-topic metrics (LLM call rate, hint request rate, average attempts to mastery, time-to-mastery), identify struggling topics (high tutoring usage → content may need improvement), compare mastery curves across learners to find content that works well vs poorly.
-4. [ ] [IMP] Foundation for adaptive content: track per-user learning patterns in `llm_usage` and `review_log` (which problems trigger tutoring, hint escalation patterns, response time trends). Query endpoints for content effectiveness reports. This data informs future offline content generation — tailoring problem difficulty, example selection, and hint quality based on aggregate learner performance.
-5. [ ] [TST] Verify: admin can view/change model config → changes take effect → usage analytics show meaningful data → content effectiveness signals are queryable and actionable.
+1. [x] [IMP] Add admin routes (`/api/admin`): platform-level model tier config (CRUD for model assignments per tier), aggregate usage stats (total cost, calls, per-family breakdown), platform config management. Protected by admin role check.
+2. [x] [IMP] Build admin dashboard page (`/admin`): model configuration panel (which models serve each tier), platform-wide usage metrics (total cost this month, top families by usage, cost by purpose), family-level usage drill-down.
+3. [x] [IMP] Add content effectiveness analytics: per-topic metrics (LLM call rate, hint request rate, average attempts to mastery, time-to-mastery), identify struggling topics (high tutoring usage → content may need improvement), compare mastery curves across learners to find content that works well vs poorly.
+4. [x] [IMP] Foundation for adaptive content: track per-user learning patterns in `llm_usage` and `review_log` (which problems trigger tutoring, hint escalation patterns, response time trends). Query endpoints for content effectiveness reports. This data informs future offline content generation — tailoring problem difficulty, example selection, and hint quality based on aggregate learner performance.
+5. [x] [TST] Verify: admin can view/change model config → changes take effect → usage analytics show meaningful data → content effectiveness signals are queryable and actionable.
 
 **Validation:** Admin has full visibility into platform usage and model configuration. Content effectiveness metrics are tracked and queryable. Data foundation exists for future adaptive content generation.

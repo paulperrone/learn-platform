@@ -22,6 +22,7 @@ async function handleLogout() {
           <RouterLink to="/progress" class="text-gray-600 hover:text-gray-900">Progress</RouterLink>
           <RouterLink to="/explore" class="text-gray-600 hover:text-gray-900">Explore</RouterLink>
           <RouterLink v-if="!isChild" to="/family" class="text-gray-600 hover:text-gray-900">Family</RouterLink>
+          <RouterLink v-if="(user as any)?.role === 'admin'" to="/admin" class="text-gray-600 hover:text-gray-900">Admin</RouterLink>
           <div class="ml-auto flex items-center gap-4">
             <span class="text-sm text-gray-500">{{ user?.name }}</span>
             <button

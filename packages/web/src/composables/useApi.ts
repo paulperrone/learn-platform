@@ -196,5 +196,43 @@ export function useApi() {
         method: "PUT",
         body: JSON.stringify({ monthlyBudgetCents }),
       }),
+    // Admin
+    getAdminStats: () =>
+      request<{
+        totalUsers: number;
+        totalFamilies: number;
+        totalTopics: number;
+        totalReviews: number;
+        llmCostCentsAllTime: number;
+        llmCostCentsThisMonth: number;
+      }>("/admin/stats"),
+    getAdminLLMConfig: () =>
+      request<{ configs: { tier: string; modelId: string; costInputPerM: number; costOutputPerM: number; updatedAt: string }[] }>("/admin/llm/config"),
+    updateAdminLLMConfig: (tier: string, data: { modelId: string; costInputPerM: number; costOutputPerM: number }) =>
+      request<{ success: boolean }>(`/admin/llm/config/${tier}`, {
+        method: "PUT",
+        body: JSON.stringify(data),
+      }),
+    getAdminLLMUsage: () =>
+      request<{
+        byPurpose: { purpose: string; calls: number; totalCostCents: number; totalInputTokens: number; totalOutputTokens: number }[];
+        byModel: { model: string; calls: number; totalCostCents: number }[];
+        monthStart: string;
+      }>("/admin/llm/usage"),
+    getAdminTopUsers: () =>
+      request<{ topUsers: { userId: string; userName: string; calls: number; totalCostCents: number }[] }>("/admin/llm/usage/top-users"),
+    getContentEffectiveness: () =>
+      request<{
+        topicLLMUsage: { purpose: string; calls: number }[];
+        topicReviewStats: any[];
+        topicMasteryStats: any[];
+        strugglingTopics: { topicId: string; topicName: string; totalAttempts: number; accuracy: number; hintsPerAttempt: number; masteryRate: number; avgReps: number; uniqueLearners: number }[];
+      }>("/admin/analytics/content-effectiveness"),
+    getLearningPatterns: () =>
+      request<{
+        hintPatterns: { hintsUsed: number; count: number; avgCorrect: number }[];
+        responseByPhase: { phase: string; avgResponseMs: number; count: number; accuracy: number }[];
+        dailyActivity: { date: string; reviews: number; uniqueUsers: number }[];
+      }>("/admin/analytics/learning-patterns"),
   };
 }

@@ -13,6 +13,7 @@ const router = createRouter({
     { path: "/explore", component: () => import("./pages/explore.vue"), meta: { requiresAuth: true } },
     { path: "/family", component: () => import("./pages/family.vue"), meta: { requiresAuth: true } },
     { path: "/family/child/:childId", component: () => import("./pages/family-child.vue"), meta: { requiresAuth: true, parentOnly: true } },
+    { path: "/admin", component: () => import("./pages/admin.vue"), meta: { requiresAuth: true, adminOnly: true } },
     { path: "/login", component: () => import("./pages/login.vue") },
     { path: "/signup", component: () => import("./pages/signup.vue") },
   ],
@@ -28,6 +29,11 @@ router.beforeEach(async (to) => {
 
   // Block child accounts from parent-only routes
   if (to.meta.parentOnly && (session.data.user as Record<string, unknown>)?.managedBy) {
+    return { path: "/" };
+  }
+
+  // Block non-admin users from admin routes
+  if (to.meta.adminOnly && (session.data.user as Record<string, unknown>)?.role !== "admin") {
     return { path: "/" };
   }
 });
