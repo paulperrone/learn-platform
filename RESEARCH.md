@@ -373,3 +373,142 @@ Auth: Management API key (created in OpenRouter dashboard > Settings > Provision
 - Raw provisioned keys are secrets — don't store in plaintext metadata.
 - Consider encrypting with a derived key from `BETTER_AUTH_SECRET` or storing in a dedicated encrypted column.
 - Management key has full control over all provisioned keys — protect it carefully.
+
+---
+
+## 2026-03-04: Speech Controls — TTS & STT Technology Assessment
+
+**Source:** Plan 005, Phase 1 research
+**Status:** Complete
+
+### Context
+
+K-5 learners (especially K-2) can't read fluently. Speech controls are critical: TTS to read problems aloud, STT for verbal answers. Evaluated browser-native APIs, Cloudflare Workers AI, and external services. Also reviewed the existing `~/source/assistant` project which has a production Cloudflare Workers AI Whisper implementation.
+
+### 1. Text-to-Speech (TTS) — Browser Compatibility Matrix
+
+| Feature | Chrome | Safari | Firefox | Edge |
+|---------|--------|--------|---------|------|
+| SpeechSynthesis API | Full | Full | Full | Full |
+| Voice count | 20-30+ | 20+ (system) | 3-5 | 20-30+ |
+| Voice quality | Good (Google voices) | Good (Apple voices) | Basic | Good |
+| `voiceschanged` event | Required (async) | Sync getVoices() | Sync | Required |
+| Rate/pitch control | Yes | Yes | Yes | Yes |
+| Sentence boundary events | Yes | Partial | Partial | Yes |
+
+**Assessment:** SpeechSynthesis is well-supported across all target browsers. Voice quality is good on Chrome and Safari (our primary targets). Voices are OS/browser-dependent — need runtime selection logic. No child-specific voices in standard API, but rate/pitch adjustment helps.
+
+**Math pronunciation challenge:** SpeechSynthesis reads raw text, so "3 + 5 = ?" reads as "three plus five equals question mark." Need a math-to-speech text converter (e.g., "×" → "times", "÷" → "divided by", "?" → "what").
+
+### 2. Speech-to-Text (STT) — Technology Comparison
+
+| Approach | Accuracy (children) | Browser Support | Cost | Latency | Privacy |
+|----------|---------------------|-----------------|------|---------|---------|
+| **Web Speech API (SpeechRecognition)** | Fair — trained on adult speech, struggles with children's voices | Chrome + Edge only. Safari partial. No Firefox. | Free | Low (streaming) | Poor — audio sent to Google/Apple servers, no control |
+| **Cloudflare Workers AI Whisper** (`@cf/openai/whisper-large-v3-turbo`) | Good — Whisper v3 handles diverse speakers well | All browsers (record → upload) | $0.00051/min | 1-3s per clip | Good — audio stays in CF infrastructure |
+| **Deepgram Nova 3** | Excellent — dedicated child speech models available | All browsers (record → upload) | ~$0.0059/min | <1s (streaming) | Good |
+| **OpenAI Whisper API** | Good | All browsers | $0.006/min | 2-5s | Good |
+| **Browser-local (Transformers.js)** | Good (Whisper) | WebGPU required | Free | 10-30s for 30s clip | Excellent — local |
+
+### 3. Existing Pattern: Assistant Project STT
+
+The `~/source/assistant` project has a proven Cloudflare Workers AI Whisper implementation:
+
+**Architecture:**
+```
+Browser (MediaRecorder, WebM/Opus) → FormData upload → Hono API → CF Workers AI Whisper → text
+```
+
+**Key implementation details:**
+- **Frontend:** `VoiceMicButton.vue` — uses `navigator.mediaDevices.getUserMedia()`, records WebM with Opus codec via MediaRecorder, uploads as FormData
+- **Backend:** Separate `stt-worker` using `@cf/openai/whisper-large-v3-turbo` via AI binding. Audio converted to base64, passed to `env.AI.run()`
+- **Auth:** Bearer token between services
+- **Error handling:** Graceful fallback when STT unavailable, 60s timeout, empty transcription detection
+- **Cost:** ~$0.00051/min, free tier covers ~200+ min/day
+
+**Adaptation for learn-platform:** Since our API already runs on Cloudflare Workers, we can call Workers AI **directly from the existing Worker** using the AI binding — no need for a separate STT worker. Simpler architecture.
+
+### 4. Recommended Approach
+
+#### TTS: Browser-native SpeechSynthesis API
+
+**Why:**
+- Free, zero latency, works offline
+- Supported on Chrome + Safari (our primary targets)
+- Good enough quality for reading math problems aloud
+- No API calls, no cost scaling with usage
+
+**Implementation plan:**
+- `useSpeech.ts` composable wrapping SpeechSynthesis
+- Math-to-speech text converter for notation
+- Voice selection preferring high-quality system voices
+- Rate control (slower for K-2, adjustable in settings)
+
+#### STT: Cloudflare Workers AI Whisper (same pattern as assistant project)
+
+**Why:**
+- Proven pattern in our stack — assistant project uses it in production
+- Works on ALL browsers (no SpeechRecognition API dependency)
+- $0.00051/min is effectively free at our scale
+- Better accuracy for children's voices than Web Speech API
+- Audio stays in Cloudflare infrastructure (better privacy than Web Speech API which sends to Google)
+- Can add AI binding to existing Worker — no separate service needed
+
+**Why NOT Web Speech API for STT:**
+- Chrome/Edge only — excludes Safari (a primary target for iPad-using families)
+- Audio sent to Google servers with no control
+- Trained primarily on adult speech
+- Flaky across browsers, well-documented Safari issues
+
+**Why NOT Deepgram/OpenAI:**
+- 10x more expensive than CF Workers AI for same quality tier
+- Adds external dependency when we're already on Cloudflare
+
+### 5. Implementation Architecture
+
+```
+┌─────────────────────────────────┐
+│  Browser                        │
+│  ┌───────────┐  ┌────────────┐ │
+│  │ useSpeech │  │useDictation│ │
+│  │ (TTS)     │  │ (STT)      │ │
+│  │ Browser   │  │ MediaRec → │ │
+│  │ SpeechSyn │  │ FormData   │ │
+│  └───────────┘  └─────┬──────┘ │
+└─────────────────────────┼───────┘
+                          │ POST /api/speech/transcribe
+                          ▼
+┌─────────────────────────────────┐
+│  Cloudflare Worker (existing)   │
+│  Hono API                       │
+│  ┌────────────────────────────┐ │
+│  │ env.AI.run(                │ │
+│  │  '@cf/openai/whisper-      │ │
+│  │   large-v3-turbo',        │ │
+│  │  { audio: base64 }        │ │
+│  │ )                          │ │
+│  └────────────────────────────┘ │
+└─────────────────────────────────┘
+```
+
+**Key difference from assistant project:** No separate STT worker. The AI binding is added directly to the existing Worker's `wrangler.toml`:
+```toml
+[ai]
+binding = "AI"
+```
+
+### 6. Cost Projection
+
+| Feature | Usage Estimate (per student/day) | Cost |
+|---------|----------------------------------|------|
+| TTS (browser) | Unlimited | $0 |
+| STT (Whisper) | ~20 problems × 5s each = ~1.7 min | $0.00087 |
+| STT monthly (30 days, 100 students) | ~5,100 min | $2.60 |
+
+At scale (1,000 students): ~$26/month. Well within CF Workers AI free tier for early growth.
+
+### 7. Open Questions
+
+- **Audio format optimization:** WebM/Opus works well for Whisper. Consider if shorter clips (per-answer vs continuous recording) improve accuracy for young learners.
+- **Number word conversion quality:** Need to test how well children say numbers ("twenty-three" vs "two three") and tune conversion logic.
+- **Noise handling:** Classroom/home environments may be noisy. Whisper's VAD preprocessing option may help.

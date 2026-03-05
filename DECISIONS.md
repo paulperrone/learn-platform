@@ -138,3 +138,54 @@ Architectural and design decisions with reasoning. Append-only.
 **Alternatives rejected:**
 - Encrypted column with derived key: Adds crypto complexity, key rotation concerns, and Cloudflare Workers crypto API limitations for what is ultimately a per-family billing key (not user credentials)
 - Separate secrets table: Over-engineering for 2 fields that naturally belong with the org
+
+---
+
+### 2026-03-05: Test authenticated routes at service/DB level, not via HTTP
+
+**Source:** User session
+
+**Context:** Setting up vitest for API testing. Better-Auth's `getSession()` can't be satisfied by manually inserting session rows — it has internal validation beyond raw token lookup.
+
+**Decision:** Test auth middleware rejection (401/403) via HTTP requests. Test business logic of authenticated endpoints (admin analytics, model config, etc.) at the service/DB layer using Drizzle queries directly, bypassing the auth middleware.
+
+**Why:**
+- Better-Auth session resolution is opaque and not mockable in Workers pool tests
+- Service-level tests cover the actual business logic without auth coupling
+- Auth rejection tests verify the middleware works (401 for missing session, 403 for wrong role)
+- Avoids brittle test setup that could break on Better-Auth version changes
+
+**Alternatives rejected:**
+- Full Better-Auth signup/signin flow in tests: Too slow, couples tests to auth internals, requires working email/password hashing in miniflare
+- Mocking Better-Auth: Workers pool runs in workerd, not Node — standard mocking libraries don't work
+
+---
+
+### 2026-03-04: STT via Cloudflare Workers AI Whisper, TTS via browser SpeechSynthesis
+
+**Source:** Plan 005, Phase 1 research
+
+**Context:** Speech controls for K-5 learners: TTS to read problems aloud, STT for verbal answers. Evaluated browser-native APIs, Cloudflare Workers AI, Deepgram, and OpenAI.
+
+**Decision:**
+- **TTS:** Browser-native SpeechSynthesis API — free, zero latency, good support on Chrome + Safari
+- **STT:** Cloudflare Workers AI `@cf/openai/whisper-large-v3-turbo` via AI binding in existing Worker — $0.00051/min, all-browser support, proven pattern from `~/source/assistant` project
+
+**Why CF Workers AI Whisper over Web Speech API for STT:**
+- Works on ALL browsers (MediaRecorder upload) — Web Speech API STT is Chrome/Edge only
+- Better accuracy for children's voices (Whisper v3 vs Google's adult-optimized model)
+- Audio stays in CF infrastructure (privacy) vs Web Speech API sends to Google
+- Already proven in our stack (assistant project uses it in production)
+- AI binding added to existing Worker — no separate service needed
+
+**Why browser-native for TTS (not an external API):**
+- Free and instant — no API latency for reading problems
+- Good enough voice quality on Chrome/Safari
+- Works offline
+- External TTS (ElevenLabs, etc.) adds cost and latency for marginal quality improvement
+
+**Alternatives rejected:**
+- Web Speech API SpeechRecognition for STT: Chrome/Edge only, privacy concerns, poor Safari support, no child-specific optimization
+- Deepgram Nova 3: 10x more expensive ($0.0059/min), overkill when CF is effectively free
+- Browser-local Whisper (Transformers.js): 10-30s latency, 600MB+ download, requires WebGPU
+- ElevenLabs for TTS: Adds cost when browser voices are sufficient for math problems
