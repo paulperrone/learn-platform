@@ -92,7 +92,8 @@ function gradeLabel(range: string) {
     <div class="mt-10 bg-blue-50 border border-blue-200 rounded-lg p-5">
       <h3 class="font-semibold text-blue-900 mb-1">Open by design</h3>
       <p class="text-sm text-blue-800">
-        All curriculum content is free to browse, audit, and download.
+        All curriculum content is free to browse, audit, and
+        <RouterLink to="/license" class="underline hover:text-blue-600">download</RouterLink>.
         We believe transparency builds trust.
         <RouterLink to="/how-we-teach" class="underline hover:text-blue-600">Learn about our teaching approach &rarr;</RouterLink>
       </p>

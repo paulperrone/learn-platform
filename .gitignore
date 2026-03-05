@@ -4,6 +4,7 @@ dist/
 .dev.vars
 *.local
 .DS_Store
+content/*/content-pack.json
 
 # Workflow
 CLAUDE.local.md

@@ -67,7 +67,8 @@ function rateLimit(limit: { max: number; windowMs: number }, pathKey: string) {
 
 // --- Routes ---
 
-// Graph export gets stricter rate limit
+// Download and graph exports get stricter rate limit
+publicRoutes.use("/download/*", rateLimit(RATE_LIMITS.graph, "download"));
 publicRoutes.use("/graph/*", rateLimit(RATE_LIMITS.graph, "graph"));
 // Everything else gets default rate limit
 publicRoutes.use("*", rateLimit(RATE_LIMITS.default, "api"));
@@ -194,6 +195,98 @@ publicRoutes.get("/graph/:subjectId", async (c) => {
   });
 });
 
+// GET /api/public/download/:subject — downloadable content pack
+publicRoutes.get("/download/:subject", async (c) => {
+  const db = getDb(c.env.DB);
+  const subjectId = c.req.param("subject");
+
+  const [subject] = await db
+    .select()
+    .from(schema.subjects)
+    .where(eq(schema.subjects.id, subjectId));
+
+  if (!subject) return c.json({ error: "Subject not found" }, 404);
+
+  const topics = await db
+    .select()
+    .from(schema.topics)
+    .where(eq(schema.topics.subjectId, subjectId))
+    .orderBy(schema.topics.depth);
+
+  const topicIds = new Set(topics.map((t) => t.id));
+
+  const allPrereqs = await db.select().from(schema.prerequisites);
+  const prereqEdges = allPrereqs
+    .filter((p) => topicIds.has(p.fromTopicId) && topicIds.has(p.toTopicId))
+    .map((p) => ({ from: p.fromTopicId, to: p.toTopicId, strength: p.strength }));
+
+  const allEncompassings = await db.select().from(schema.encompassings);
+  const encompassingEdges = allEncompassings
+    .filter((e) => topicIds.has(e.parentTopicId) && topicIds.has(e.childTopicId))
+    .map((e) => ({ parent: e.parentTopicId, child: e.childTopicId, weight: e.weight }));
+
+  const problems: Record<string, unknown[]> = {};
+  const workedExamples: Record<string, unknown[]> = {};
+  let totalProblems = 0;
+  let totalExamples = 0;
+
+  for (const t of topics) {
+    const p = t.problemsJson ? JSON.parse(t.problemsJson) : [];
+    const e = t.examplesJson ? JSON.parse(t.examplesJson) : [];
+    if (p.length > 0) { problems[t.id] = p; totalProblems += p.length; }
+    if (e.length > 0) { workedExamples[t.id] = e; totalExamples += e.length; }
+  }
+
+  const pack = {
+    meta: {
+      version: "1.0.0",
+      generatedAt: new Date().toISOString(),
+      subject: {
+        id: subject.id,
+        name: subject.name,
+        description: subject.description,
+        gradeRange: subject.gradeRange,
+      },
+      counts: {
+        topics: topics.length,
+        problems: totalProblems,
+        workedExamples: totalExamples,
+        prerequisites: prereqEdges.length,
+        encompassings: encompassingEdges.length,
+      },
+      license: {
+        type: "CC-BY-4.0",
+        url: "https://creativecommons.org/licenses/by/4.0/",
+        attribution: "Learn Platform (https://github.com/paulperrone/learn-platform)",
+      },
+    },
+    graph: {
+      topics: topics.map((t) => ({
+        id: t.id,
+        name: t.name,
+        description: t.description,
+        gradeLevel: t.gradeLevel,
+        depth: t.depth,
+        standardCode: t.standardCode,
+      })),
+      prerequisites: prereqEdges,
+      encompassings: encompassingEdges,
+    },
+    problems,
+    workedExamples,
+  };
+
+  const json = JSON.stringify(pack);
+
+  return new Response(json, {
+    headers: {
+      "Content-Type": "application/json",
+      "Content-Disposition": `attachment; filename="${subjectId}-content-pack.json"`,
+      "Cache-Control": "public, max-age=86400",
+    },
+  });
+});
+
 // GET /api/public/schema — self-documenting API schema
 publicRoutes.get("/schema", (c) => {
   return c.json({
@@ -252,6 +345,14 @@ publicRoutes.get("/schema", (c) => {
           prerequisites: [{ from: "string", to: "string", strength: "number" }],
           encompassings: [{ parent: "string", child: "string", weight: "number" }],
         },
+      },
+      {
+        method: "GET",
+        path: "/api/public/download/:subject",
+        description: "Download complete content pack as JSON file (graph + all problems + all examples + license)",
+        rateLimit: "graph",
+        params: { subject: "Subject ID" },
+        response: "JSON file download with Content-Disposition header",
       },
       {
         method: "GET",

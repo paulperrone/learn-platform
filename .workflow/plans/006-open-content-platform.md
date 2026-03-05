@@ -13,9 +13,9 @@ Make the entire learning catalog — knowledge graph, problems, worked examples,
 
 ## Progress
 
-**Completed:** Phase 1, Phase 2, Phase 3
+**Completed:** Phase 1, Phase 2, Phase 3, Phase 4
 **In Progress:** —
-**Next:** Phase 4
+**Next:** Phase 5
 
 ---
 
@@ -57,13 +57,13 @@ Make the entire learning catalog — knowledge graph, problems, worked examples,
 
 ---
 
-## Phase 4: Downloadable Content Packs
+## Phase 4: Downloadable Content Packs ✓
 **Goal:** Static JSON downloads for third-party use and community audit
 
-1. [ ] [IMP] Build content pack generator tool (`tools/generate-content-pack.ts`): bundles graph.json + all problems + all examples into a single versioned JSON file per subject. Include metadata (version, date, topic count, license).
-2. [ ] [IMP] Add download endpoint (`/api/public/download/:subject`): serves the pre-generated content pack as a JSON file with proper Content-Disposition headers. Cached at CDN edge.
-3. [ ] [IMP] Add content license and attribution: CC BY 4.0 or similar permissive license in the pack metadata and a `/license` page. Encourage reuse while requiring attribution.
-4. [ ] [TST] Verify: download works, file is valid JSON, contains all content, version metadata is correct. License is clear and permissive.
+1. [x] [IMP] Build content pack generator tool (`tools/generate-content-pack.ts`): bundles graph.json + all problems + all examples into a single versioned JSON file per subject. Include metadata (version, date, topic count, license).
+2. [x] [IMP] Add download endpoint (`/api/public/download/:subject`): serves the pre-generated content pack as a JSON file with proper Content-Disposition headers. Cached at CDN edge.
+3. [x] [IMP] Add content license and attribution: CC BY 4.0 or similar permissive license in the pack metadata and a `/license` page. Encourage reuse while requiring attribution.
+4. [x] [TST] Verify: download works, file is valid JSON, contains all content, version metadata is correct. License is clear and permissive.
 
 **Validation:** Anyone can download the complete curriculum data, use it in their own tools, and verify content quality independently. License terms are unambiguous.
 

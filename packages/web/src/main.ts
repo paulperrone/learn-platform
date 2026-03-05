@@ -19,6 +19,7 @@ const router = createRouter({
     { path: "/settings", component: () => import("./pages/settings.vue"), meta: { requiresAuth: true } },
     { path: "/admin", component: () => import("./pages/admin.vue"), meta: { requiresAuth: true, adminOnly: true } },
     { path: "/how-we-teach", component: () => import("./pages/how-we-teach.vue") },
+    { path: "/license", component: () => import("./pages/license.vue") },
     { path: "/login", component: () => import("./pages/login.vue") },
     { path: "/signup", component: () => import("./pages/signup.vue") },
   ],
