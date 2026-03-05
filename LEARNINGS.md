@@ -111,3 +111,23 @@ D1's `exec()` in the miniflare test environment fails with "incomplete input" wh
 **Area:** Better-Auth / Testing
 
 Inserting a session row directly into the `sessions` table and setting a `Cookie: better-auth.session_token=<token>` header does NOT make `auth.api.getSession({ headers })` return a valid session. Better-Auth's session resolution has additional validation beyond raw token lookup. For testing authenticated routes, either use the full Better-Auth signup/signin flow or test auth middleware rejection (401) and test business logic at the service/DB level.
+
+---
+
+### 2026-03-05: SpeechSynthesis voice list loads asynchronously on Chrome
+
+**Source:** User session
+**Area:** Web Speech API / Vue
+
+`speechSynthesis.getVoices()` returns an empty array on first call in Chrome — voices load async and fire `voiceschanged` event. Safari returns voices synchronously. Must handle both: call `getVoices()` immediately AND listen for `voiceschanged`. The `useSpeech.ts` composable handles this with `loadVoices()` + event listener.
+
+**Context:** Building TTS for K-5 learners. Voice selection must work across Chrome and Safari.
+
+---
+
+### 2026-03-05: Hono `parseBody()` for FormData in Workers
+
+**Source:** User session
+**Area:** Hono / Cloudflare Workers
+
+Use `c.req.parseBody()` (not `c.req.formData()`) to parse multipart form data in Hono on Workers. Returns an object where file fields are `File` instances. Check with `instanceof File` before processing. Works with the standard `FormData` upload pattern from browsers.
