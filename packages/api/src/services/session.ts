@@ -25,22 +25,35 @@ export function createSessionService(db: DB) {
   const graph = createGraphService(db);
   const srs = createSRSService(db);
 
-  function getTopicProblems(topic: typeof schema.topics.$inferSelect): Problem[] {
-    if (!topic.problemsJson) return [];
-    try {
-      return JSON.parse(topic.problemsJson);
-    } catch {
-      return [];
-    }
+  async function getTopicProblems(topicId: string): Promise<Problem[]> {
+    const rows = await db
+      .select()
+      .from(schema.assessmentContent)
+      .where(eq(schema.assessmentContent.topicId, topicId));
+    return rows.map((r) => ({
+      id: r.id,
+      topicId: r.topicId,
+      difficulty: r.difficulty as Problem["difficulty"],
+      question: r.question,
+      answer: r.answer,
+      hints: JSON.parse(r.hintsJson),
+      solution: r.solution,
+      type: r.type as Problem["type"],
+      typeProperties: r.typeProperties ? JSON.parse(r.typeProperties) : undefined,
+    }));
   }
 
-  function getTopicExamples(topic: typeof schema.topics.$inferSelect): WorkedExample[] {
-    if (!topic.examplesJson) return [];
-    try {
-      return JSON.parse(topic.examplesJson);
-    } catch {
-      return [];
-    }
+  async function getTopicExamples(topicId: string): Promise<WorkedExample[]> {
+    const rows = await db
+      .select()
+      .from(schema.instructionalContent)
+      .where(eq(schema.instructionalContent.topicId, topicId));
+    return rows.map((r) => ({
+      id: r.id,
+      topicId: r.topicId,
+      title: r.title,
+      steps: JSON.parse(r.stepsJson),
+    }));
   }
 
   function selectProblem(problems: Problem[], difficulty: string, exclude: string[] = []): Problem | null {
@@ -329,8 +342,8 @@ export function createSessionService(db: DB) {
         return { type: "error", message: "Topic not found." };
       }
 
-      const problems = getTopicProblems(topic);
-      const examples = getTopicExamples(topic);
+      const problems = await getTopicProblems(topic.id);
+      const examples = await getTopicExamples(topic.id);
 
       switch (state.currentPhase) {
         case "pretest": {
@@ -487,7 +500,7 @@ export type SessionItem =
   | { type: "error"; message: string };
 
 // Fallbacks when no pre-generated content exists
-function makeFallbackProblem(topic: typeof schema.topics.$inferSelect): Problem {
+function makeFallbackProblem(topic: { id: string; name: string; description: string }): Problem {
   return {
     id: `fallback-${topic.id}`,
     topicId: topic.id,
@@ -499,7 +512,7 @@ function makeFallbackProblem(topic: typeof schema.topics.$inferSelect): Problem 
   };
 }
 
-function makeFallbackExample(topic: typeof schema.topics.$inferSelect): WorkedExample {
+function makeFallbackExample(topic: { id: string; name: string; description: string }): WorkedExample {
   return {
     id: `fallback-ex-${topic.id}`,
     topicId: topic.id,

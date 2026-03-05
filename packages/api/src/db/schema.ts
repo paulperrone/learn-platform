@@ -19,12 +19,48 @@ export const topics = sqliteTable("topics", {
   depth: integer("depth").notNull().default(0),
   gradeLevel: integer("grade_level").notNull(),
   standardCode: text("standard_code"),
-  problemsJson: text("problems_json"), // JSON array of Problem objects
-  examplesJson: text("examples_json"), // JSON array of WorkedExample objects
   createdAt: text("created_at").notNull().$defaultFn(() => new Date().toISOString()),
 }, (table) => [
   index("topics_subject_idx").on(table.subjectId),
   index("topics_depth_idx").on(table.depth),
+]);
+
+export const instructionalContent = sqliteTable("instructional_content", {
+  id: text("id").primaryKey(),
+  topicId: text("topic_id").notNull().references(() => topics.id),
+  flavor: text("flavor").notNull().default("classic"),
+  locale: text("locale").notNull().default("en"),
+  presentation: text("presentation").notNull().default("individual"),
+  version: integer("version").notNull().default(1),
+  title: text("title").notNull(),
+  stepsJson: text("steps_json").notNull(),
+  assetsJson: text("assets_json"),
+  createdAt: text("created_at").notNull().$defaultFn(() => new Date().toISOString()),
+  updatedAt: text("updated_at").notNull().$defaultFn(() => new Date().toISOString()),
+}, (table) => [
+  index("ic_topic_idx").on(table.topicId),
+  index("ic_dimensions_idx").on(table.topicId, table.flavor, table.locale, table.presentation, table.version),
+]);
+
+export const assessmentContent = sqliteTable("assessment_content", {
+  id: text("id").primaryKey(),
+  topicId: text("topic_id").notNull().references(() => topics.id),
+  flavor: text("flavor").notNull().default("classic"),
+  locale: text("locale").notNull().default("en"),
+  presentation: text("presentation").notNull().default("individual"),
+  version: integer("version").notNull().default(1),
+  type: text("type").notNull().default("text-qa"),
+  difficulty: text("difficulty").notNull(),
+  question: text("question").notNull(),
+  answer: text("answer").notNull(),
+  hintsJson: text("hints_json").notNull().default("[]"),
+  solution: text("solution").notNull().default(""),
+  typeProperties: text("type_properties"),
+  createdAt: text("created_at").notNull().$defaultFn(() => new Date().toISOString()),
+}, (table) => [
+  index("ac_topic_idx").on(table.topicId),
+  index("ac_dimensions_idx").on(table.topicId, table.flavor, table.locale, table.presentation, table.version),
+  index("ac_type_idx").on(table.topicId, table.type),
 ]);
 
 export const prerequisites = sqliteTable("prerequisites", {

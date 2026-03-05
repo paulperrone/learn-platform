@@ -104,6 +104,14 @@ export type SessionMix = {
 
 export type ProblemDifficulty = "easy" | "medium" | "hard";
 
+export type AssessmentType =
+  | "text-qa"
+  | "numerical-input"
+  | "multi-step"
+  | "matching"
+  | "multi-select"
+  | "equation-builder";
+
 export type Problem = {
   id: string;
   topicId: string;
@@ -112,6 +120,27 @@ export type Problem = {
   answer: string;
   hints: string[];
   solution: string;
+  type?: AssessmentType;
+  typeProperties?: Record<string, unknown>;
+};
+
+export type ContentDimensions = {
+  flavor: string;
+  locale: string;
+  presentation: string;
+  version: number;
+};
+
+export type VisualAssetType =
+  | "number-line"
+  | "base-ten-blocks"
+  | "fraction-bar"
+  | "array-grid"
+  | "place-value-chart";
+
+export type VisualAsset = {
+  type: VisualAssetType;
+  params: Record<string, unknown>;
 };
 
 export type WorkedExample = {

@@ -43,6 +43,13 @@
       "when": 1772681485569,
       "tag": "0005_jazzy_yellowjacket",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "6",
+      "when": 1772870400000,
+      "tag": "0006_content_model_restructure",
+      "breakpoints": true
     }
   ]
 }

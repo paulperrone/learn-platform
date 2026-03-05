@@ -114,6 +114,8 @@ function main() {
   // Clear existing data for this subject (order matters for foreign keys)
   db.exec(`DELETE FROM review_log WHERE topic_id IN (SELECT id FROM topics WHERE subject_id = '${graph.subjectId}')`);
   db.exec(`DELETE FROM user_topic_state WHERE topic_id IN (SELECT id FROM topics WHERE subject_id = '${graph.subjectId}')`);
+  db.exec(`DELETE FROM assessment_content WHERE topic_id IN (SELECT id FROM topics WHERE subject_id = '${graph.subjectId}')`);
+  db.exec(`DELETE FROM instructional_content WHERE topic_id IN (SELECT id FROM topics WHERE subject_id = '${graph.subjectId}')`);
   db.exec(`DELETE FROM encompassings WHERE parent_topic_id IN (SELECT id FROM topics WHERE subject_id = '${graph.subjectId}')`);
   db.exec(`DELETE FROM encompassings WHERE child_topic_id IN (SELECT id FROM topics WHERE subject_id = '${graph.subjectId}')`);
   db.exec(`DELETE FROM prerequisites WHERE from_topic_id IN (SELECT id FROM topics WHERE subject_id = '${graph.subjectId}')`);
@@ -135,14 +137,12 @@ function main() {
   );
   console.log(`Inserted subject: ${graph.subjectName}`);
 
-  // Insert topics
+  // Insert topics (graph nodes only — no content)
   const insertTopic = db.prepare(
-    "INSERT INTO topics (id, subject_id, name, description, depth, grade_level, standard_code, problems_json, examples_json, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+    "INSERT INTO topics (id, subject_id, name, description, depth, grade_level, standard_code, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
   );
   const insertTopics = db.transaction((topics: typeof graph.topics) => {
     for (const t of topics) {
-      const topicProblems = problems.get(t.id) ?? [];
-      const topicExamples = examples.get(t.id) ?? [];
       insertTopic.run(
         t.id,
         graph.subjectId,
@@ -151,14 +151,46 @@ function main() {
         0, // depth computed later
         t.gradeLevel,
         t.standardCode,
-        JSON.stringify(topicProblems),
-        JSON.stringify(topicExamples),
         new Date().toISOString()
       );
     }
   });
   insertTopics(graph.topics);
   console.log(`Inserted ${graph.topics.length} topics`);
+
+  // Insert instructional content (worked examples)
+  const insertInstruction = db.prepare(
+    "INSERT INTO instructional_content (id, topic_id, flavor, locale, presentation, version, title, steps_json, created_at, updated_at) VALUES (?, ?, 'classic', 'en', 'individual', 1, ?, ?, ?, ?)"
+  );
+  let instructionCount = 0;
+  const insertInstructions = db.transaction(() => {
+    const now = new Date().toISOString();
+    for (const [, topicExamples] of examples) {
+      for (const e of topicExamples) {
+        insertInstruction.run(e.id, e.topicId, e.title, JSON.stringify(e.steps), now, now);
+        instructionCount++;
+      }
+    }
+  });
+  insertInstructions();
+  console.log(`Inserted ${instructionCount} instructional content rows`);
+
+  // Insert assessment content (problems)
+  const insertAssessment = db.prepare(
+    "INSERT INTO assessment_content (id, topic_id, flavor, locale, presentation, version, type, difficulty, question, answer, hints_json, solution, created_at) VALUES (?, ?, 'classic', 'en', 'individual', 1, 'text-qa', ?, ?, ?, ?, ?, ?)"
+  );
+  let assessmentCount = 0;
+  const insertAssessments = db.transaction(() => {
+    const now = new Date().toISOString();
+    for (const [, topicProblems] of problems) {
+      for (const p of topicProblems) {
+        insertAssessment.run(p.id, p.topicId, p.difficulty, p.question, p.answer, JSON.stringify(p.hints), p.solution, now);
+        assessmentCount++;
+      }
+    }
+  });
+  insertAssessments();
+  console.log(`Inserted ${assessmentCount} assessment content rows`);
 
   // Insert prerequisites
   const insertPrereq = db.prepare(

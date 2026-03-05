@@ -35,6 +35,8 @@ export async function resetDb() {
     "verifications",
     "sessions",
     "user_preferences",
+    "assessment_content",
+    "instructional_content",
     "encompassings",
     "prerequisites",
     "topics",
@@ -145,6 +147,57 @@ export async function seedTopic(
   return topic;
 }
 
+export async function seedAssessmentContent(
+  topicId: string,
+  overrides: Partial<typeof schema.assessmentContent.$inferInsert> = {}
+) {
+  const db = getTestDb();
+  const id = overrides.id ?? `ac-${crypto.randomUUID().slice(0, 8)}`;
+  const now = new Date().toISOString();
+  const [row] = await db
+    .insert(schema.assessmentContent)
+    .values({
+      id,
+      topicId,
+      difficulty: overrides.difficulty ?? "medium",
+      question: overrides.question ?? "What is 2 + 2?",
+      answer: overrides.answer ?? "4",
+      hintsJson: overrides.hintsJson ?? JSON.stringify(["Think about counting."]),
+      solution: overrides.solution ?? "2 + 2 = 4",
+      createdAt: now,
+      ...overrides,
+    })
+    .returning();
+  return row;
+}
+
+export async function seedInstructionalContent(
+  topicId: string,
+  overrides: Partial<typeof schema.instructionalContent.$inferInsert> = {}
+) {
+  const db = getTestDb();
+  const id = overrides.id ?? `ic-${crypto.randomUUID().slice(0, 8)}`;
+  const now = new Date().toISOString();
+  const [row] = await db
+    .insert(schema.instructionalContent)
+    .values({
+      id,
+      topicId,
+      title: overrides.title ?? "Example: Counting",
+      stepsJson: overrides.stepsJson ?? JSON.stringify([{
+        subgoalLabel: "Step 1",
+        instruction: "Count objects",
+        work: "1, 2, 3",
+        explanation: "We count one at a time.",
+      }]),
+      createdAt: now,
+      updatedAt: now,
+      ...overrides,
+    })
+    .returning();
+  return row;
+}
+
 export async function seedPrerequisite(fromTopicId: string, toTopicId: string, strength = 1.0) {
   const db = getTestDb();
   const [row] = await db
@@ -233,10 +286,21 @@ const SCHEMA_STATEMENTS = [
   // accounts (FK → users)
   'CREATE TABLE accounts (id text PRIMARY KEY NOT NULL, user_id text NOT NULL, account_id text NOT NULL, provider_id text NOT NULL, access_token text, refresh_token text, access_token_expires_at text, refresh_token_expires_at text, scope text, id_token text, password text, created_at text NOT NULL, updated_at text NOT NULL, FOREIGN KEY (user_id) REFERENCES users(id))',
 
-  // topics (FK → subjects)
-  'CREATE TABLE topics (id text PRIMARY KEY NOT NULL, subject_id text NOT NULL, name text NOT NULL, description text NOT NULL, depth integer DEFAULT 0 NOT NULL, grade_level integer NOT NULL, standard_code text, problems_json text, examples_json text, created_at text NOT NULL, FOREIGN KEY (subject_id) REFERENCES subjects(id))',
+  // topics (FK → subjects) — graph nodes only, no content
+  'CREATE TABLE topics (id text PRIMARY KEY NOT NULL, subject_id text NOT NULL, name text NOT NULL, description text NOT NULL, depth integer DEFAULT 0 NOT NULL, grade_level integer NOT NULL, standard_code text, created_at text NOT NULL, FOREIGN KEY (subject_id) REFERENCES subjects(id))',
   'CREATE INDEX topics_subject_idx ON topics (subject_id)',
   'CREATE INDEX topics_depth_idx ON topics (depth)',
+
+  // instructional_content (FK → topics)
+  'CREATE TABLE instructional_content (id text PRIMARY KEY NOT NULL, topic_id text NOT NULL, flavor text DEFAULT \'classic\' NOT NULL, locale text DEFAULT \'en\' NOT NULL, presentation text DEFAULT \'individual\' NOT NULL, version integer DEFAULT 1 NOT NULL, title text NOT NULL, steps_json text NOT NULL, assets_json text, created_at text NOT NULL, updated_at text NOT NULL, FOREIGN KEY (topic_id) REFERENCES topics(id))',
+  'CREATE INDEX ic_topic_idx ON instructional_content (topic_id)',
+  'CREATE INDEX ic_dimensions_idx ON instructional_content (topic_id, flavor, locale, presentation, version)',
+
+  // assessment_content (FK → topics)
+  'CREATE TABLE assessment_content (id text PRIMARY KEY NOT NULL, topic_id text NOT NULL, flavor text DEFAULT \'classic\' NOT NULL, locale text DEFAULT \'en\' NOT NULL, presentation text DEFAULT \'individual\' NOT NULL, version integer DEFAULT 1 NOT NULL, type text DEFAULT \'text-qa\' NOT NULL, difficulty text NOT NULL, question text NOT NULL, answer text NOT NULL, hints_json text DEFAULT \'[]\' NOT NULL, solution text DEFAULT \'\' NOT NULL, type_properties text, created_at text NOT NULL, FOREIGN KEY (topic_id) REFERENCES topics(id))',
+  'CREATE INDEX ac_topic_idx ON assessment_content (topic_id)',
+  'CREATE INDEX ac_dimensions_idx ON assessment_content (topic_id, flavor, locale, presentation, version)',
+  'CREATE INDEX ac_type_idx ON assessment_content (topic_id, type)',
 
   // prerequisites (FK → topics)
   'CREATE TABLE prerequisites (id integer PRIMARY KEY AUTOINCREMENT NOT NULL, from_topic_id text NOT NULL, to_topic_id text NOT NULL, strength real DEFAULT 1 NOT NULL, FOREIGN KEY (from_topic_id) REFERENCES topics(id), FOREIGN KEY (to_topic_id) REFERENCES topics(id))',

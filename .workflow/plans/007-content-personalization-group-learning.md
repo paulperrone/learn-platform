@@ -83,26 +83,26 @@ TWO INDEPENDENT LAYERS:
 
 ## Progress
 
-**Completed:** None yet
+**Completed:** Phase 1 ✓
 **In Progress:** —
-**Next:** Phase 1
+**Next:** Phase 2
 
 ---
 
-## Phase 1: Content Model Restructure & Schema Migration
+## Phase 1: Content Model Restructure & Schema Migration ✓
 **Goal:** Separate the knowledge graph from content. Create normalized `instructional_content` and `assessment_content` tables with dimension columns and question type support. Migrate existing inline JSON blobs. No content generation.
 
-1. [ ] [RSH] Design the normalized content schema. `instructional_content` table: `id`, `topicId` (FK -> topics.id), `flavor` (text, default 'classic'), `locale` (text, default 'en'), `presentation` (text, default 'individual'), `version` (integer, default 1), `title` (text), `stepsJson` (text — array of WorkedExampleStep), `assetsJson` (text — optional: video refs, SVG visual parameters, activity configs), `createdAt`, `updatedAt`. `assessment_content` table: `id`, `topicId` (FK -> topics.id), `flavor` (text, default 'classic'), `locale` (text, default 'en'), `presentation` (text, default 'individual'), `version` (integer, default 1), `type` (text, default 'text-qa' — also: 'numerical-input', 'multi-step', 'matching', 'multi-select', 'equation-builder'), `difficulty` (text), `question` (text), `answer` (text), `hintsJson` (text), `solution` (text), `typeProperties` (text — JSON for type-specific data: sub-steps for multi-step, match pairs for matching, options for multi-select), `createdAt`. Define indexes: composite on (topicId, flavor, locale, presentation, version) for both tables. Define visual asset JSON schema for `assetsJson`: visual types (number-line, base-ten-blocks, fraction-bar, array-grid, place-value-chart) with parameters.
+1. [x] [RSH] Design the normalized content schema. `instructional_content` table: `id`, `topicId` (FK -> topics.id), `flavor` (text, default 'classic'), `locale` (text, default 'en'), `presentation` (text, default 'individual'), `version` (integer, default 1), `title` (text), `stepsJson` (text — array of WorkedExampleStep), `assetsJson` (text — optional: video refs, SVG visual parameters, activity configs), `createdAt`, `updatedAt`. `assessment_content` table: `id`, `topicId` (FK -> topics.id), `flavor` (text, default 'classic'), `locale` (text, default 'en'), `presentation` (text, default 'individual'), `version` (integer, default 1), `type` (text, default 'text-qa' — also: 'numerical-input', 'multi-step', 'matching', 'multi-select', 'equation-builder'), `difficulty` (text), `question` (text), `answer` (text), `hintsJson` (text), `solution` (text), `typeProperties` (text — JSON for type-specific data: sub-steps for multi-step, match pairs for matching, options for multi-select), `createdAt`. Define indexes: composite on (topicId, flavor, locale, presentation, version) for both tables. Define visual asset JSON schema for `assetsJson`: visual types (number-line, base-ten-blocks, fraction-bar, array-grid, place-value-chart) with parameters.
 
-2. [ ] [IMP] Create Drizzle migration: add `instructional_content` and `assessment_content` tables. Migrate existing `examplesJson` from topics into `instructional_content` rows (flavor='classic', locale='en', presentation='individual', version=1). Migrate existing `problemsJson` from topics into `assessment_content` rows (same defaults, type='text-qa'). Drop `problemsJson` and `examplesJson` from `topics` table after migration.
+2. [x] [IMP] Create Drizzle migration: add `instructional_content` and `assessment_content` tables. Migrate existing `examplesJson` from topics into `instructional_content` rows (flavor='classic', locale='en', presentation='individual', version=1). Migrate existing `problemsJson` from topics into `assessment_content` rows (same defaults, type='text-qa'). Drop `problemsJson` and `examplesJson` from `topics` table after migration.
 
-3. [ ] [IMP] Update import pipeline: modify `tools/import-content.ts` to write to the new tables. Import tool tags rows with default dimension values and type='text-qa'.
+3. [x] [IMP] Update import pipeline: modify `tools/import-content.ts` to write to the new tables. Import tool tags rows with default dimension values and type='text-qa'.
 
-4. [ ] [IMP] Update API services: modify graph service, session service, and learn routes to read from new tables. Add dimension parameters to queries with fallback chain (requested -> classic/en/individual). Session service selects assessment problems filtered by topicId + locale.
+4. [x] [IMP] Update API services: modify graph service, session service, and learn routes to read from new tables. Add dimension parameters to queries with fallback chain (requested -> classic/en/individual). Session service selects assessment problems filtered by topicId + locale.
 
-5. [ ] [IMP] Update shared types: add `ContentDimensions`, `AssessmentType`, `VisualAsset` types. Update `Problem` type with `type` and `typeProperties` fields. Update frontend components for new data shape.
+5. [x] [IMP] Update shared types: add `ContentDimensions`, `AssessmentType`, `VisualAsset` types. Update `Problem` type with `type` and `typeProperties` fields. Update frontend components for new data shape.
 
-6. [ ] [TST] Verify: existing learning sessions work end-to-end after migration. Content loads from new tables. Fallback chain works. Import populates correctly. No regressions.
+6. [x] [TST] Verify: existing learning sessions work end-to-end after migration. Content loads from new tables. Fallback chain works. Import populates correctly. No regressions.
 
 **Validation:** Topics table = graph only. All content in normalized tables with dimension + type columns. Existing functionality preserved.
 

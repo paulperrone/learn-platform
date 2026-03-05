@@ -8,6 +8,8 @@ import {
   seedTopic,
   seedPrerequisite,
   seedEncompassing,
+  seedAssessmentContent,
+  seedInstructionalContent,
 } from "../helpers.js";
 
 beforeAll(async () => {
@@ -58,8 +60,8 @@ describe("Public API - /api/public", () => {
       expect(body.topics).toHaveLength(2);
       expect(body.topics[0].id).toBe("count-10");
       expect(body.topics[1].id).toBe("add-10");
-      // Should not include problemsJson/examplesJson in list view
-      expect((body.topics[0] as Record<string, unknown>).problemsJson).toBeUndefined();
+      // Should not include content in list view
+      expect((body.topics[0] as Record<string, unknown>).problems).toBeUndefined();
     });
   });
 
@@ -69,24 +71,33 @@ describe("Public API - /api/public", () => {
       expect(res.status).toBe(404);
     });
 
-    it("returns topic with parsed problems and examples", async () => {
+    it("returns topic with problems and examples from content tables", async () => {
       const subject = await seedSubject({ id: "math-k5" });
-      const problems = [{ id: "p1", question: "1+1=?", answer: "2" }];
-      const examples = [{ id: "e1", title: "Adding", steps: ["Step 1"] }];
       await seedTopic(subject.id, {
         id: "add-10",
         name: "Add Within 10",
         gradeLevel: 1,
-        problemsJson: JSON.stringify(problems),
-        examplesJson: JSON.stringify(examples),
+      });
+      await seedAssessmentContent("add-10", {
+        id: "p1",
+        question: "1+1=?",
+        answer: "2",
+        difficulty: "easy",
+        hintsJson: "[]",
+        solution: "1+1=2",
+      });
+      await seedInstructionalContent("add-10", {
+        id: "e1",
+        title: "Adding",
+        stepsJson: JSON.stringify([{ subgoalLabel: "Step 1", instruction: "Add", work: "1+1", explanation: "equals 2" }]),
       });
 
       const res = await request("/api/public/topics/add-10");
       expect(res.status).toBe(200);
       const body = await json<{ topic: { id: string; problems: unknown[]; examples: unknown[] } }>(res);
       expect(body.topic.id).toBe("add-10");
-      expect(body.topic.problems).toEqual(problems);
-      expect(body.topic.examples).toEqual(examples);
+      expect(body.topic.problems).toHaveLength(1);
+      expect(body.topic.examples).toHaveLength(1);
     });
 
     it("returns empty arrays when no problems/examples", async () => {

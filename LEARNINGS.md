@@ -9,7 +9,7 @@ Gotchas, insights, and tacit knowledge. Append-only.
 - D1 foreign keys are enforced — test users must exist in `users` table before creating `user_topic_state` rows
 - Drizzle ORM version must match better-auth peer dependency (>=0.41.0 as of better-auth 1.5.x)
 - `pnpm approve-builds` is interactive — add native deps to `pnpm.onlyBuiltDependencies` in root package.json instead
-- import-content.ts must delete from `review_log` and `user_topic_state` before deleting topics — FK constraints on `topic_id`
+- import-content.ts must delete from `review_log`, `user_topic_state`, `assessment_content`, and `instructional_content` before deleting topics — FK constraints on `topic_id`
 - Drizzle `$defaultFn()` is app-level only — when adding NOT NULL columns via migration, manually add `DEFAULT` to the generated SQL or SQLite will reject it
 
 ---

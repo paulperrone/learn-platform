@@ -4,7 +4,7 @@ import type { Env } from "../index.js";
 import { getDb } from "../db/index.js";
 import { createGraphService } from "../services/graph.js";
 import * as schema from "../db/schema.js";
-import { eq } from "drizzle-orm";
+import { eq, inArray } from "drizzle-orm";
 
 export const publicRoutes = new Hono<Env>();
 
@@ -183,6 +183,16 @@ publicRoutes.get("/topics/:id", async (c) => {
 
   if (!topic) return c.json({ error: "Topic not found" }, 404);
 
+  const problems = await db
+    .select()
+    .from(schema.assessmentContent)
+    .where(eq(schema.assessmentContent.topicId, topic.id));
+
+  const examples = await db
+    .select()
+    .from(schema.instructionalContent)
+    .where(eq(schema.instructionalContent.topicId, topic.id));
+
   return c.json({
     topic: {
       id: topic.id,
@@ -192,8 +202,22 @@ publicRoutes.get("/topics/:id", async (c) => {
       gradeLevel: topic.gradeLevel,
       depth: topic.depth,
       standardCode: topic.standardCode,
-      problems: topic.problemsJson ? JSON.parse(topic.problemsJson) : [],
-      examples: topic.examplesJson ? JSON.parse(topic.examplesJson) : [],
+      problems: problems.map((p) => ({
+        id: p.id,
+        topicId: p.topicId,
+        difficulty: p.difficulty,
+        question: p.question,
+        answer: p.answer,
+        hints: JSON.parse(p.hintsJson),
+        solution: p.solution,
+        type: p.type,
+      })),
+      examples: examples.map((e) => ({
+        id: e.id,
+        topicId: e.topicId,
+        title: e.title,
+        steps: JSON.parse(e.stepsJson),
+      })),
     },
   });
 });
@@ -275,28 +299,50 @@ publicRoutes.get("/download/:subject", async (c) => {
     .where(eq(schema.topics.subjectId, subjectId))
     .orderBy(schema.topics.depth);
 
-  const topicIds = new Set(topics.map((t) => t.id));
+  const topicIdList = topics.map((t) => t.id);
+  const topicIdSet = new Set(topicIdList);
 
   const allPrereqs = await db.select().from(schema.prerequisites);
   const prereqEdges = allPrereqs
-    .filter((p) => topicIds.has(p.fromTopicId) && topicIds.has(p.toTopicId))
+    .filter((p) => topicIdSet.has(p.fromTopicId) && topicIdSet.has(p.toTopicId))
     .map((p) => ({ from: p.fromTopicId, to: p.toTopicId, strength: p.strength }));
 
   const allEncompassings = await db.select().from(schema.encompassings);
   const encompassingEdges = allEncompassings
-    .filter((e) => topicIds.has(e.parentTopicId) && topicIds.has(e.childTopicId))
+    .filter((e) => topicIdSet.has(e.parentTopicId) && topicIdSet.has(e.childTopicId))
     .map((e) => ({ parent: e.parentTopicId, child: e.childTopicId, weight: e.weight }));
+
+  const allProblems = topicIdList.length > 0
+    ? await db.select().from(schema.assessmentContent).where(inArray(schema.assessmentContent.topicId, topicIdList))
+    : [];
+  const allExamples = topicIdList.length > 0
+    ? await db.select().from(schema.instructionalContent).where(inArray(schema.instructionalContent.topicId, topicIdList))
+    : [];
 
   const problems: Record<string, unknown[]> = {};
   const workedExamples: Record<string, unknown[]> = {};
   let totalProblems = 0;
   let totalExamples = 0;
 
-  for (const t of topics) {
-    const p = t.problemsJson ? JSON.parse(t.problemsJson) : [];
-    const e = t.examplesJson ? JSON.parse(t.examplesJson) : [];
-    if (p.length > 0) { problems[t.id] = p; totalProblems += p.length; }
-    if (e.length > 0) { workedExamples[t.id] = e; totalExamples += e.length; }
+  for (const p of allProblems) {
+    const list = problems[p.topicId] ?? [];
+    list.push({
+      id: p.id, topicId: p.topicId, difficulty: p.difficulty,
+      question: p.question, answer: p.answer,
+      hints: JSON.parse(p.hintsJson), solution: p.solution, type: p.type,
+    });
+    problems[p.topicId] = list;
+    totalProblems++;
+  }
+
+  for (const e of allExamples) {
+    const list = workedExamples[e.topicId] ?? [];
+    list.push({
+      id: e.id, topicId: e.topicId, title: e.title,
+      steps: JSON.parse(e.stepsJson),
+    });
+    workedExamples[e.topicId] = list;
+    totalExamples++;
   }
 
   const pack = {

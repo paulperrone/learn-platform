@@ -313,3 +313,23 @@ Architectural and design decisions with reasoning. Append-only.
 - CAPTCHA/JS challenge for all API access: would break programmatic consumers (the content is open by design)
 - IP reputation scoring: adds complexity, Cloudflare Bot Fight Mode handles this at the edge
 - Rate limiting alone: doesn't distinguish between a parent browsing and an LLM scraper — both hit same limits
+
+---
+
+### 2026-03-05: Three-layer content model — graph nodes, instructional content, assessment content
+
+**Source:** User session
+
+**Context:** Topics table stored problems and examples as JSON blobs (problemsJson, examplesJson). This prevented normalization, indexing, and dimension-based content selection needed for flavors, locales, and diverse question types.
+
+**Decision:** Separate the knowledge graph (topics table) from content into two normalized tables: `instructional_content` (worked examples with dimension columns) and `assessment_content` (problems with dimension + type columns). Topics table is now graph-only. Content is FK'd to topics.
+
+**Why:**
+- Enables content dimensions (flavor, locale, presentation, version) per row instead of per-topic blob
+- Supports diverse assessment types (numerical-input, multi-step, matching) via `type` + `typeProperties` columns
+- Composite indexes on (topicId, flavor, locale, presentation, version) enable efficient dimension-filtered queries
+- Migration path: existing JSON blobs migrated via `json_each()` in SQL, then old columns dropped
+
+**Alternatives rejected:**
+- Keep JSON blobs with embedded dimension metadata: loses SQL-level filtering, can't index dimensions
+- Separate tables per question type: over-normalized, adds joins for every content fetch
