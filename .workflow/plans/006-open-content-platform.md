@@ -13,9 +13,9 @@ Make the entire learning catalog — knowledge graph, problems, worked examples,
 
 ## Progress
 
-**Completed:** Phase 1, Phase 2, Phase 3, Phase 4
+**Completed:** Phase 1, Phase 2, Phase 3, Phase 4, Phase 5
 **In Progress:** —
-**Next:** Phase 5
+**Next:** Phase 6
 
 ---
 
@@ -69,13 +69,13 @@ Make the entire learning catalog — knowledge graph, problems, worked examples,
 
 ---
 
-## Phase 5: Detailed Pedagogy Documentation
+## Phase 5: Detailed Pedagogy Documentation ✓
 **Goal:** Deep-dive docs with research references, methodology details, and design rationale
 
-1. [ ] [RSH] Research and outline detailed articles: (1) "Why Mastery Learning Works" with Bloom's 2-sigma problem context, (2) "How Spaced Repetition Optimizes Memory" with FSRS algorithm explanation, (3) "The Knowledge Graph Approach" comparing to linear curricula, (4) "AI Tutoring Done Right" explaining Socratic method, hint progression, budget controls.
-2. [ ] [IMP] Build `/docs` section with article pages: clean reading experience, code-free explanations with diagrams, links to academic papers, interactive examples where possible (e.g., "see how SRS schedules this topic").
-3. [ ] [IMP] Add "Our Approach vs. Others" comparison: honest comparison with Khan Academy, MathAcademy, IXL — what we do differently and why. No marketing spin, just methodology differences.
-4. [ ] [TST] Verify: all articles render correctly, citations link to actual papers, interactive examples work. Content is accurate and trustworthy.
+1. [x] [RSH] Research and outline detailed articles: (1) "Why Mastery Learning Works" with Bloom's 2-sigma problem context, (2) "How Spaced Repetition Optimizes Memory" with FSRS algorithm explanation, (3) "The Knowledge Graph Approach" comparing to linear curricula, (4) "AI Tutoring Done Right" explaining Socratic method, hint progression, budget controls.
+2. [x] [IMP] Build `/docs` section with article pages: clean reading experience, code-free explanations with diagrams, links to academic papers, interactive examples where possible (e.g., "see how SRS schedules this topic").
+3. [x] [IMP] Add "Our Approach vs. Others" comparison: honest comparison with Khan Academy, MathAcademy, IXL — what we do differently and why. No marketing spin, just methodology differences.
+4. [x] [TST] Verify: all articles render correctly, citations link to actual papers, interactive examples work. Content is accurate and trustworthy.
 
 **Validation:** A skeptical educator or parent can read the full methodology, check the research citations, and understand exactly how the platform works. Transparency builds trust.
 
