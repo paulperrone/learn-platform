@@ -1,6 +1,6 @@
 import { authClient } from "./useAuth";
 import { useToast } from "./useToast";
-import type { SpeechSettings } from "@learn/shared";
+import type { SpeechSettings, Subject, Topic, Problem, WorkedExample } from "@learn/shared";
 
 const API_BASE = "/api";
 
@@ -236,6 +236,22 @@ export function useApi() {
       }>("/admin/llm/usage"),
     getAdminTopUsers: () =>
       request<{ topUsers: { userId: string; userName: string; calls: number; totalCostCents: number }[] }>("/admin/llm/usage/top-users"),
+
+    // Public content (no auth required)
+    getPublicSubjects: () =>
+      request<{ subjects: Subject[] }>("/public/subjects"),
+    getPublicTopics: (subjectId: string) =>
+      request<{ subjectId: string; topics: (Topic & { problemCount?: number; exampleCount?: number })[] }>(`/public/subjects/${subjectId}/topics`),
+    getPublicTopic: (topicId: string) =>
+      request<{ topic: Topic & { problems: Problem[]; examples: WorkedExample[] } }>(`/public/topics/${topicId}`),
+    getPublicGraph: (subjectId: string) =>
+      request<{
+        subject: Subject;
+        topics: Topic[];
+        prerequisites: { from: string; to: string; strength: number }[];
+        encompassings: { parent: string; child: string; weight: number }[];
+      }>(`/public/graph/${subjectId}`),
+
     getContentEffectiveness: () =>
       request<{
         topicLLMUsage: { purpose: string; calls: number }[];

@@ -13,9 +13,9 @@ Make the entire learning catalog — knowledge graph, problems, worked examples,
 
 ## Progress
 
-**Completed:** Phase 1, Phase 2
+**Completed:** Phase 1, Phase 2, Phase 3
 **In Progress:** —
-**Next:** Phase 3
+**Next:** Phase 4
 
 ---
 
@@ -44,14 +44,14 @@ Make the entire learning catalog — knowledge graph, problems, worked examples,
 
 ---
 
-## Phase 3: Public Content Browser
+## Phase 3: Public Content Browser ✓
 **Goal:** SEO-friendly browsable pages showing the knowledge graph, topics, and problem banks
 
-1. [ ] [IMP] Build `/explore` page: subject cards with topic counts, descriptions, grade ranges. Entry point for browsing all content.
-2. [ ] [IMP] Build `/explore/:subjectId` page: visual topic list grouped by grade level, prerequisite arrows (simplified DAG view), mastery depth indicators. Show how topics connect.
-3. [ ] [IMP] Build `/explore/:subjectId/:topicId` page: topic name, description, grade level, standard alignment, sample problems with solutions, worked example previews. Full transparency into content quality.
-4. [ ] [IMP] Add SSR-friendly meta tags per page: dynamic `<title>`, `<meta description>`, Open Graph images for each topic. Social sharing should show topic name and preview.
-5. [ ] [TST] Verify: all explore pages render correct content, navigation between topics works, meta tags are present for SEO, pages work without JavaScript (SSR content), graph visualization is clear.
+1. [x] [IMP] Build `/explore` page: subject cards with topic counts, descriptions, grade ranges. Entry point for browsing all content.
+2. [x] [IMP] Build `/explore/:subjectId` page: visual topic list grouped by grade level, prerequisite arrows (simplified DAG view), mastery depth indicators. Show how topics connect.
+3. [x] [IMP] Build `/explore/:subjectId/:topicId` page: topic name, description, grade level, standard alignment, sample problems with solutions, worked example previews. Full transparency into content quality.
+4. [x] [IMP] Add SSR-friendly meta tags per page: dynamic `<title>`, `<meta description>`, Open Graph images for each topic. Social sharing should show topic name and preview.
+5. [x] [TST] Verify: all explore pages render correct content, navigation between topics works, meta tags are present for SEO, pages work without JavaScript (SSR content), graph visualization is clear.
 
 **Validation:** Anyone can browse the full curriculum, see every problem and example, and understand the prerequisite structure. Pages are indexable by search engines.
 
