@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { ref, computed } from "vue";
+import { ref, computed, onMounted } from "vue";
 import ConfidenceSlider from "./ConfidenceSlider.vue";
 import { useApi, withErrorToast } from "../composables/useApi";
+import { useLLMStatus } from "../composables/useLLMStatus";
 
 const props = defineProps<{
   problem: {
@@ -22,6 +23,9 @@ const emit = defineEmits<{
 }>();
 
 const api = useApi();
+const { llmAvailable, check: checkLLM } = useLLMStatus();
+onMounted(checkLLM);
+
 const answer = ref("");
 const confidence = ref(3);
 const submitted = ref(false);
@@ -63,6 +67,13 @@ function submitAndContinue() {
     hintsUsed: hintLevel.value,
   });
 }
+
+// LLM hints (level 3+) require LLM availability; static hints always work
+const llmHintsDisabled = computed(() => {
+  const nextLevel = hintLevel.value + 1;
+  const hasStaticHint = nextLevel <= 2 && props.problem.hints.length >= nextLevel;
+  return !hasStaticHint && llmAvailable.value === false;
+});
 
 async function requestHint() {
   if (hintLoading.value || hintMaxReached.value) return;
@@ -130,10 +141,12 @@ async function requestHint() {
         <button
           v-if="showHints && !hintMaxReached"
           @click="requestHint"
-          :disabled="hintLoading"
-          class="px-4 py-2.5 border border-gray-300 text-gray-600 rounded-lg text-sm hover:bg-gray-50 disabled:opacity-50"
+          :disabled="hintLoading || llmHintsDisabled"
+          class="px-4 py-2.5 border border-gray-300 text-gray-600 rounded-lg text-sm hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+          :title="llmHintsDisabled ? 'AI hints are not available' : ''"
         >
           <span v-if="hintLoading">Loading...</span>
+          <span v-else-if="llmHintsDisabled">AI hints not available</span>
           <span v-else-if="hintLevel === 0">Need a hint?</span>
           <span v-else>Another hint ({{ hintLevel }}/4)</span>
         </button>

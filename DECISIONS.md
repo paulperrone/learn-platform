@@ -99,3 +99,22 @@ Architectural and design decisions with reasoning. Append-only.
 
 **Alternatives rejected:**
 - Custom role system without organizations: Would require reimplementing membership, role checks, and invitation flows that Better-Auth already provides
+
+---
+
+### 2026-03-04: Dedicated `llm_model_config` table over generic key-value config
+
+**Source:** User session
+
+**Context:** Phase 5 of LLM tutoring plan called for extracting hardcoded `MODEL_MAP` and `COST_PER_M` to a database-configurable store. Two approaches: generic `platform_config` key-value table with JSON values, or a dedicated `llm_model_config` table with typed columns.
+
+**Decision:** Use a dedicated `llm_model_config` table with columns: `tier` (PK), `model_id`, `cost_input_per_m`, `cost_output_per_m`, `updated_at`. Service loads from DB with hardcoded defaults as fallback when table is empty.
+
+**Why:**
+- Only 2 rows (cheap/capable tiers) — a dedicated table is simpler than JSON parsing
+- Typed columns make validation automatic (real vs text)
+- Direct SQL queries for admin dashboard without JSON extraction
+- Fallback-to-defaults pattern means zero config required for fresh deploys
+
+**Alternatives rejected:**
+- Generic `platform_config` key-value table: More flexible but adds JSON serialization overhead and loses column-level type safety for just 2 rows of data

@@ -200,6 +200,14 @@ export const learnSessions = sqliteTable("learn_sessions", {
   index("learn_sessions_active_idx").on(table.userId, table.endedAt),
 ]);
 
+export const llmModelConfig = sqliteTable("llm_model_config", {
+  tier: text("tier").primaryKey(), // 'cheap' | 'capable'
+  modelId: text("model_id").notNull(),
+  costInputPerM: real("cost_input_per_m").notNull(), // cents per million input tokens
+  costOutputPerM: real("cost_output_per_m").notNull(), // cents per million output tokens
+  updatedAt: text("updated_at").notNull().$defaultFn(() => new Date().toISOString()),
+});
+
 export const llmUsage = sqliteTable("llm_usage", {
   id: text("id").primaryKey(),
   userId: text("user_id").notNull().references(() => users.id),

@@ -45,11 +45,16 @@ async function getUserId(): Promise<string> {
   return session.data.user.id;
 }
 
-/** Wrap an async call with toast error reporting */
+/** Wrap an async call with toast error reporting.
+ *  Silently returns undefined for expected LLM unavailability (503). */
 export async function withErrorToast<T>(fn: () => Promise<T>, context?: string): Promise<T | undefined> {
   try {
     return await fn();
   } catch (e) {
+    if (e instanceof ApiError && e.status === 503) {
+      // Expected unavailability (e.g. LLM not configured) — no toast
+      return undefined;
+    }
     const toast = useToast();
     const message = e instanceof ApiError ? e.message : "Something went wrong";
     toast.error(context ? `${context}: ${message}` : message);
@@ -113,6 +118,8 @@ export function useApi() {
     },
 
     // LLM
+    getLLMStatus: () =>
+      request<{ available: boolean; tiers?: { tier: string; modelId: string }[] }>("/llm/status"),
     requestTutor: async (data: any) => {
       const userId = await getUserId();
       return request<any>("/llm/tutor", {

@@ -25,18 +25,21 @@ async function start() {
   try {
     const response = await props.fetchStream();
 
-    // If response is JSON (fallback from server), handle it
+    // If response is JSON (fallback from server or error), handle it
     const contentType = response.headers.get("content-type") ?? "";
     if (contentType.includes("application/json")) {
       const data = await response.json();
-      text.value = data.response ?? data.error ?? "";
-      isStreaming.value = false;
-      if (data.error) {
+      // Handle LLM unavailable (503) or budget exceeded (429)
+      if (data.available === false || data.error) {
+        text.value = "";
+        isStreaming.value = false;
         hasError.value = true;
-        emit("error", data.error);
-      } else {
-        emit("complete", text.value);
+        emit("error", data.error ?? "AI tutoring is not available");
+        return;
       }
+      text.value = data.response ?? "";
+      isStreaming.value = false;
+      emit("complete", text.value);
       return;
     }
 

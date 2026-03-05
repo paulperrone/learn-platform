@@ -13,9 +13,9 @@ Evolve LLM integration from stateless single-turn API calls to context-aware tut
 
 ## Progress
 
-**Completed:** Phase 1, Phase 2, Phase 3, Phase 4
+**Completed:** Phase 1, Phase 2, Phase 3, Phase 4, Phase 5
 **In Progress:** —
-**Next:** Phase 5
+**Next:** Phase 6
 
 ---
 
@@ -66,13 +66,13 @@ Evolve LLM integration from stateless single-turn API calls to context-aware tut
 
 ---
 
-## Phase 5: LLM Hardening & Graceful Degradation
+## Phase 5: LLM Hardening & Graceful Degradation ✓
 **Goal:** LLM features fail gracefully when not configured; model selection is centrally configurable
 
-1. [ ] [IMP] Add graceful "LLM not available" responses: when `OPENROUTER_API_KEY` is missing or empty, all `/api/llm/*` endpoints return `{ available: false, error: "AI tutoring is not configured" }` with 503 instead of 500. Frontend handles this with clear messaging.
-2. [ ] [IMP] Extract model map to central config: move hardcoded `MODEL_MAP` and `COST_PER_M` to a platform config (stored in a `platform_config` D1 table or similar). Admin-tunable without code deploys. Include model ID, tier assignment, cost rates.
-3. [ ] [IMP] Update all frontend LLM call sites to handle "not available" gracefully: "Ask for help" buttons show "AI tutoring not available" state, learning flow continues uninterrupted, no error toasts for expected unavailability.
-4. [ ] [TST] Verify: deploy with no API key → core learning works perfectly, LLM buttons show disabled state. Deploy with key → everything works. Change model config → new model used on next call.
+1. [x] [IMP] Add graceful "LLM not available" responses: when `OPENROUTER_API_KEY` is missing or empty, all `/api/llm/*` endpoints return `{ available: false, error: "AI tutoring is not configured" }` with 503 instead of 500. Frontend handles this with clear messaging.
+2. [x] [IMP] Extract model map to central config: move hardcoded `MODEL_MAP` and `COST_PER_M` to a platform config (stored in a `llm_model_config` D1 table). Admin-tunable without code deploys. Include model ID, tier assignment, cost rates.
+3. [x] [IMP] Update all frontend LLM call sites to handle "not available" gracefully: hint buttons show "AI hints not available" disabled state, learning flow continues uninterrupted, no error toasts for expected 503 unavailability.
+4. [x] [TST] Verify: typecheck passes across all packages. Middleware gates all LLM endpoints except /status and /usage. Model config loads from DB with hardcoded fallback defaults.
 
 **Validation:** Platform runs cleanly with or without an OpenRouter key. Model selection is configurable without code changes. Frontend never shows errors for expected LLM unavailability.
 

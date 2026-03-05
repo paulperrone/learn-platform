@@ -1,11 +1,39 @@
 import { Hono } from "hono";
 import type { Env } from "../index.js";
 import { getDb } from "../db/index.js";
-import { createLLMService } from "../services/llm.js";
+import { createLLMService, getModelConfig } from "../services/llm.js";
+import type { ModelConfig } from "../services/llm.js";
 import * as schema from "../db/schema.js";
 import { eq, and, gte, inArray } from "drizzle-orm";
 
 export const llmRoutes = new Hono<Env>();
+
+const LLM_UNAVAILABLE = { available: false, error: "AI tutoring is not configured" };
+
+/** Middleware: check if LLM is available (API key configured) */
+llmRoutes.use("*", async (c, next) => {
+  // Status and usage endpoints work without an API key
+  if (c.req.path.endsWith("/status") || c.req.path.includes("/usage/")) {
+    return next();
+  }
+  if (!c.env.OPENROUTER_API_KEY) {
+    return c.json(LLM_UNAVAILABLE, 503);
+  }
+  return next();
+});
+
+/** Check LLM availability — frontend calls this to decide UI state */
+llmRoutes.get("/status", async (c) => {
+  const available = !!c.env.OPENROUTER_API_KEY;
+  if (!available) return c.json({ available: false });
+
+  const db = getDb(c.env.DB);
+  const config = await getModelConfig(db);
+  return c.json({
+    available: true,
+    tiers: Object.entries(config.modelMap).map(([tier, modelId]) => ({ tier, modelId })),
+  });
+});
 
 /** Check if user is over their family's monthly LLM budget */
 async function checkBudget(db: ReturnType<typeof getDb>, userId: string): Promise<boolean> {
@@ -60,6 +88,12 @@ async function checkBudget(db: ReturnType<typeof getDb>, userId: string): Promis
 
 const BUDGET_ERROR = { error: "LLM usage limit reached for this month. Learning continues without AI tutoring." };
 
+/** Create LLM service with model config loaded from DB */
+async function createConfiguredLLM(db: ReturnType<typeof getDb>, apiKey: string) {
+  const config = await getModelConfig(db);
+  return createLLMService(db, apiKey, config);
+}
+
 llmRoutes.post("/evaluate", async (c) => {
   const db = getDb(c.env.DB);
   const body = await c.req.json<{
@@ -70,7 +104,7 @@ llmRoutes.post("/evaluate", async (c) => {
     studentExplanation: string;
   }>();
   if (!(await checkBudget(db, body.userId))) return c.json(BUDGET_ERROR, 429);
-  const llm = createLLMService(db, c.env.OPENROUTER_API_KEY);
+  const llm = await createConfiguredLLM(db, c.env.OPENROUTER_API_KEY);
   const result = await llm.evaluateExplanation(
     body.userId,
     body.topicName,
@@ -92,7 +126,7 @@ llmRoutes.post("/tutor", async (c) => {
     conversationHistory?: { role: "system" | "user" | "assistant"; content: string }[];
   }>();
   if (!(await checkBudget(db, body.userId))) return c.json(BUDGET_ERROR, 429);
-  const llm = createLLMService(db, c.env.OPENROUTER_API_KEY);
+  const llm = await createConfiguredLLM(db, c.env.OPENROUTER_API_KEY);
   const result = await llm.socraticTutor(
     body.userId,
     body.topicName,
@@ -115,7 +149,7 @@ llmRoutes.post("/tutor-stream", async (c) => {
     conversationHistory?: { role: "system" | "user" | "assistant"; content: string }[];
   }>();
   if (!(await checkBudget(db, body.userId))) return c.json(BUDGET_ERROR, 429);
-  const llm = createLLMService(db, c.env.OPENROUTER_API_KEY);
+  const llm = await createConfiguredLLM(db, c.env.OPENROUTER_API_KEY);
 
   try {
     const { stream } = await llm.socraticTutorStream(
@@ -168,7 +202,7 @@ llmRoutes.post("/hint", async (c) => {
     if (!(await checkBudget(db, body.userId))) return c.json(BUDGET_ERROR, 429);
   }
 
-  const llm = createLLMService(db, c.env.OPENROUTER_API_KEY);
+  const llm = await createConfiguredLLM(db, c.env.OPENROUTER_API_KEY);
   const result = await llm.generateHint(
     body.userId,
     body.topicName,
@@ -191,7 +225,7 @@ llmRoutes.post("/grade", async (c) => {
     studentAnswer: string;
   }>();
   if (!(await checkBudget(db, body.userId))) return c.json(BUDGET_ERROR, 429);
-  const llm = createLLMService(db, c.env.OPENROUTER_API_KEY);
+  const llm = await createConfiguredLLM(db, c.env.OPENROUTER_API_KEY);
   const result = await llm.gradeResponse(
     body.userId,
     body.topicName,
@@ -204,7 +238,7 @@ llmRoutes.post("/grade", async (c) => {
 
 llmRoutes.get("/usage/:userId", async (c) => {
   const db = getDb(c.env.DB);
-  const llm = createLLMService(db, c.env.OPENROUTER_API_KEY);
+  const llm = createLLMService(db, c.env.OPENROUTER_API_KEY ?? "");
   const result = await llm.getUsage(c.req.param("userId"));
   return c.json(result);
 });

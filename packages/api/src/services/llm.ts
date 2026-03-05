@@ -80,25 +80,52 @@ async function buildStudentProfile(
   return lines.join("\n");
 }
 
-type ModelTier = "cheap" | "capable";
+export type ModelTier = "cheap" | "capable";
 
-const MODEL_MAP: Record<ModelTier, string> = {
+/** Default model config used when no DB overrides exist */
+const DEFAULT_MODEL_MAP: Record<ModelTier, string> = {
   cheap: "anthropic/claude-haiku-4-5-20251001",
   capable: "anthropic/claude-sonnet-4-6",
 };
 
-// Approximate costs per million tokens (cents)
-const COST_PER_M: Record<string, { input: number; output: number }> = {
+const DEFAULT_COST_PER_M: Record<string, { input: number; output: number }> = {
   "anthropic/claude-haiku-4-5-20251001": { input: 80, output: 400 },
   "anthropic/claude-sonnet-4-6": { input: 300, output: 1500 },
 };
+
+export type ModelConfig = {
+  modelMap: Record<ModelTier, string>;
+  costPerM: Record<string, { input: number; output: number }>;
+};
+
+/** Load model config from DB, falling back to hardcoded defaults */
+export async function getModelConfig(db: DB): Promise<ModelConfig> {
+  const rows = await db.select().from(schema.llmModelConfig);
+
+  if (rows.length === 0) {
+    return { modelMap: { ...DEFAULT_MODEL_MAP }, costPerM: { ...DEFAULT_COST_PER_M } };
+  }
+
+  const modelMap: Record<string, string> = { ...DEFAULT_MODEL_MAP };
+  const costPerM: Record<string, { input: number; output: number }> = { ...DEFAULT_COST_PER_M };
+
+  for (const row of rows) {
+    modelMap[row.tier] = row.modelId;
+    costPerM[row.modelId] = { input: row.costInputPerM, output: row.costOutputPerM };
+  }
+
+  return { modelMap: modelMap as Record<ModelTier, string>, costPerM };
+}
 
 type LLMMessage = {
   role: "system" | "user" | "assistant";
   content: string;
 };
 
-export function createLLMService(db: DB, apiKey: string) {
+export function createLLMService(db: DB, apiKey: string, config?: ModelConfig) {
+  const MODEL_MAP = config?.modelMap ?? DEFAULT_MODEL_MAP;
+  const COST_PER_M = config?.costPerM ?? DEFAULT_COST_PER_M;
+
   function openRouterHeaders() {
     return {
       Authorization: `Bearer ${apiKey}`,
