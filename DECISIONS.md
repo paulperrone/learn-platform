@@ -353,3 +353,22 @@ Architectural and design decisions with reasoning. Append-only.
 **Alternatives rejected:**
 - Keep JSON blobs with embedded dimension metadata: loses SQL-level filtering, can't index dimensions
 - Separate tables per question type: over-normalized, adds joins for every content fetch
+
+---
+
+### 2026-03-05: Visual assets stored on instructional_content, propagated to problems at runtime
+
+**Source:** User session
+
+**Context:** Phase 3 (Visual Aids) needed SVG visual configs attached to both worked examples and problems. The `instructional_content` table has an `assets_json` column; `assessment_content` does not.
+
+**Decision:** Store visual assets in `instructional_content.assets_json` per-topic. The session service fetches topic visuals via `getTopicVisuals()` and attaches them to every problem selected for that topic at runtime. No schema migration needed.
+
+**Why:**
+- Visuals are topic-scoped (a number line for "add-within-10" applies to all problems in that topic)
+- Avoids adding an `assets_json` column to `assessment_content` and duplicating configs per-problem
+- Zero schema migration — `assets_json` column already exists on `instructional_content`
+- One extra query per `buildPhaseItem()` call is negligible vs the learning loop round-trip
+
+**Alternatives rejected:**
+- Add `assets_json` to `assessment_content`: Per-problem visuals are redundant when visuals are topic-level. Requires migration and doubles storage
