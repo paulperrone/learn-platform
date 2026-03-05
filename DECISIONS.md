@@ -264,3 +264,31 @@ Architectural and design decisions with reasoning. Append-only.
 
 **Alternatives rejected:**
 - New `/browse` path for public pages: creates two similar-sounding navigation items, confusing for users
+
+---
+
+### 2026-03-05: CC BY 4.0 for curriculum content, dual content pack distribution
+
+**Source:** User session
+
+**Context:** Phase 4 (Downloadable Content Packs) needed a license for the curriculum and a distribution mechanism. Content includes knowledge graph, problems, worked examples, and prerequisite structures.
+
+**Decision:**
+1. License all curriculum content under CC BY 4.0 (Creative Commons Attribution 4.0 International)
+2. Distribute via two channels: offline generator tool (`tools/generate-content-pack.ts`) for static files, and dynamic API endpoint (`/api/public/download/:subject`) assembling from D1
+
+**Why CC BY 4.0:**
+- Maximally permissive while requiring attribution — aligns with "open by design" mission
+- Allows commercial reuse (other edtech platforms can use our content)
+- Well-understood license, no legal ambiguity
+- Attribution requirement maintains visibility as content spreads
+
+**Why dual distribution:**
+- Offline tool generates from source JSON files — works without a running database, useful for CI/CD
+- API endpoint assembles from D1 — always reflects current imported content, CDN-cacheable
+- Both produce identical pack format with version metadata, counts, and license info
+
+**Alternatives rejected:**
+- CC BY-NC (non-commercial): limits adoption, conflicts with platform's mission of maximum access
+- CC BY-SA (share-alike): adds friction for derivative works, unnecessary for our goals
+- Static-only distribution: would require rebuilding and redeploying packs on every content update
