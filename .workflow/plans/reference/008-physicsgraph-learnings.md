@@ -214,6 +214,20 @@ Let me go through the PhysicsGraph updates month by month and extract the tactic
   │ Lower    │ Post-lesson graph animation                    │ Engagement, makes progress tangible                 │
   └──────────┴────────────────────────────────────────────────┴─────────────────────────────────────────────────────┘
 
+## Distribution of Phases
+
+The original 008 plan had 7 phases derived from PhysicsGraph's build-and-grow journey. These have been distributed to active plans where they fit architecturally:
+
+| Original Phase | Distributed To | Plan Phase |
+|---|---|---|
+| Phase 1: Diverse Question Types | **007** (Content Personalization) | Phase 1 (schema) + Phase 2 (components/grading) |
+| Phase 2: Content Quality Analytics | **008** (Admin & Content Landscape) | Phase 3 (content quality analytics) |
+| Phase 3: Visual Aids | **007** (Content Personalization) | Phase 3 (SVG components + integration) |
+| Phase 4: Course-Level Diagnostic | **007** (Content Personalization) | Phase 6 (anonymous usage + diagnostic) |
+| Phase 5: Engagement & Habits | **013** (Engagement & Habits) | Full standalone plan |
+| Phase 6: Content Pipeline Tooling | **009** (Content Generation Pipeline) | Phases 1-5 (full pipeline architecture) |
+| Phase 7: Onboarding & Growth | **007** (Content Personalization) | Phase 6 (anonymous + onboarding flow) |
+
 ## Progress
 
 **Completed:** None yet
