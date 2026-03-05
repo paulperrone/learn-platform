@@ -13,20 +13,20 @@ Make the entire learning catalog — knowledge graph, problems, worked examples,
 
 ## Progress
 
-**Completed:** None yet
+**Completed:** Phase 1
 **In Progress:** —
-**Next:** Phase 1
+**Next:** Phase 2
 
 ---
 
-## Phase 1: Public Content API
+## Phase 1: Public Content API ✓
 **Goal:** Unauthenticated REST endpoints for graph, topics, problems, and worked examples
 
-1. [ ] [IMP] Add public API routes (`/api/public/*`): subjects list, topics by subject, topic detail (with problems + examples), full graph structure (topics + edges). No auth required. Read-only queries against existing D1 tables.
-2. [ ] [IMP] Add Cloudflare rate limiting to public endpoints: use Workers rate limiting or `cf-connecting-ip` based throttle (e.g., 60 req/min per IP for API, 10 req/min for graph export). Return 429 with `Retry-After` header.
-3. [ ] [IMP] Add CORS headers for public API: allow `*` origin on `/api/public/*` routes so external tools and apps can consume the data directly from browsers.
-4. [ ] [IMP] Add OpenAPI-style JSON schema endpoint (`/api/public/schema`) documenting all public endpoints, request/response formats, and rate limits. Self-documenting API.
-5. [ ] [TST] Verify: curl public endpoints without auth → get correct JSON. Hit rate limit → get 429. CORS preflight works from external origin. Schema endpoint documents all routes.
+1. [x] [IMP] Add public API routes (`/api/public/*`): subjects list, topics by subject, topic detail (with problems + examples), full graph structure (topics + edges). No auth required. Read-only queries against existing D1 tables.
+2. [x] [IMP] Add Cloudflare rate limiting to public endpoints: use Workers rate limiting or `cf-connecting-ip` based throttle (e.g., 60 req/min per IP for API, 10 req/min for graph export). Return 429 with `Retry-After` header.
+3. [x] [IMP] Add CORS headers for public API: allow `*` origin on `/api/public/*` routes so external tools and apps can consume the data directly from browsers.
+4. [x] [IMP] Add OpenAPI-style JSON schema endpoint (`/api/public/schema`) documenting all public endpoints, request/response formats, and rate limits. Self-documenting API.
+5. [x] [TST] Verify: curl public endpoints without auth → get correct JSON. Hit rate limit → get 429. CORS preflight works from external origin. Schema endpoint documents all routes.
 
 **Validation:** External consumers can discover, understand, and query the full content catalog without authentication. Rate limiting prevents abuse without blocking legitimate use.
 

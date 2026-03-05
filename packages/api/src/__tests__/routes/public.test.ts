@@ -1,0 +1,180 @@
+import { describe, it, expect, beforeAll, beforeEach } from "vitest";
+import {
+  applyMigrations,
+  resetDb,
+  request,
+  json,
+  seedSubject,
+  seedTopic,
+  seedPrerequisite,
+  seedEncompassing,
+} from "../helpers.js";
+
+beforeAll(async () => {
+  await applyMigrations();
+});
+
+describe("Public API - /api/public", () => {
+  beforeEach(async () => {
+    await resetDb();
+    await applyMigrations();
+  });
+
+  describe("GET /api/public/subjects", () => {
+    it("returns empty list when no subjects exist", async () => {
+      const res = await request("/api/public/subjects");
+      expect(res.status).toBe(200);
+      const body = await json<{ subjects: unknown[] }>(res);
+      expect(body.subjects).toEqual([]);
+    });
+
+    it("returns subjects without auth", async () => {
+      await seedSubject({ id: "math-k5", name: "Math K-5", description: "Elementary math", gradeRange: "K-5", topicCount: 3 });
+      const res = await request("/api/public/subjects");
+      expect(res.status).toBe(200);
+      const body = await json<{ subjects: Array<{ id: string; name: string; topicCount: number }> }>(res);
+      expect(body.subjects).toHaveLength(1);
+      expect(body.subjects[0].id).toBe("math-k5");
+      expect(body.subjects[0].name).toBe("Math K-5");
+      expect(body.subjects[0].topicCount).toBe(3);
+    });
+  });
+
+  describe("GET /api/public/subjects/:id/topics", () => {
+    it("returns 404 for unknown subject", async () => {
+      const res = await request("/api/public/subjects/nonexistent/topics");
+      expect(res.status).toBe(404);
+    });
+
+    it("returns topics ordered by depth", async () => {
+      const subject = await seedSubject({ id: "math-k5" });
+      await seedTopic(subject.id, { id: "count-10", name: "Count to 10", depth: 0, gradeLevel: 0, standardCode: "K.CC.4" });
+      await seedTopic(subject.id, { id: "add-10", name: "Add Within 10", depth: 1, gradeLevel: 1 });
+
+      const res = await request("/api/public/subjects/math-k5/topics");
+      expect(res.status).toBe(200);
+      const body = await json<{ subjectId: string; topics: Array<{ id: string; depth: number }> }>(res);
+      expect(body.subjectId).toBe("math-k5");
+      expect(body.topics).toHaveLength(2);
+      expect(body.topics[0].id).toBe("count-10");
+      expect(body.topics[1].id).toBe("add-10");
+      // Should not include problemsJson/examplesJson in list view
+      expect((body.topics[0] as Record<string, unknown>).problemsJson).toBeUndefined();
+    });
+  });
+
+  describe("GET /api/public/topics/:id", () => {
+    it("returns 404 for unknown topic", async () => {
+      const res = await request("/api/public/topics/nonexistent");
+      expect(res.status).toBe(404);
+    });
+
+    it("returns topic with parsed problems and examples", async () => {
+      const subject = await seedSubject({ id: "math-k5" });
+      const problems = [{ id: "p1", question: "1+1=?", answer: "2" }];
+      const examples = [{ id: "e1", title: "Adding", steps: ["Step 1"] }];
+      await seedTopic(subject.id, {
+        id: "add-10",
+        name: "Add Within 10",
+        gradeLevel: 1,
+        problemsJson: JSON.stringify(problems),
+        examplesJson: JSON.stringify(examples),
+      });
+
+      const res = await request("/api/public/topics/add-10");
+      expect(res.status).toBe(200);
+      const body = await json<{ topic: { id: string; problems: unknown[]; examples: unknown[] } }>(res);
+      expect(body.topic.id).toBe("add-10");
+      expect(body.topic.problems).toEqual(problems);
+      expect(body.topic.examples).toEqual(examples);
+    });
+
+    it("returns empty arrays when no problems/examples", async () => {
+      const subject = await seedSubject({ id: "math-k5" });
+      await seedTopic(subject.id, { id: "empty-topic", gradeLevel: 0 });
+
+      const res = await request("/api/public/topics/empty-topic");
+      expect(res.status).toBe(200);
+      const body = await json<{ topic: { problems: unknown[]; examples: unknown[] } }>(res);
+      expect(body.topic.problems).toEqual([]);
+      expect(body.topic.examples).toEqual([]);
+    });
+  });
+
+  describe("GET /api/public/graph/:subjectId", () => {
+    it("returns 404 for unknown subject", async () => {
+      const res = await request("/api/public/graph/nonexistent");
+      expect(res.status).toBe(404);
+    });
+
+    it("returns full graph with topics, prerequisites, and encompassings", async () => {
+      const subject = await seedSubject({ id: "math-k5", name: "Math K-5" });
+      const t1 = await seedTopic(subject.id, { id: "count-10", depth: 0, gradeLevel: 0 });
+      const t2 = await seedTopic(subject.id, { id: "add-10", depth: 1, gradeLevel: 1 });
+      const t3 = await seedTopic(subject.id, { id: "add-20", depth: 2, gradeLevel: 1 });
+      await seedPrerequisite(t1.id, t2.id, 1.0);
+      await seedPrerequisite(t2.id, t3.id, 1.0);
+      await seedEncompassing(t3.id, t2.id, 0.5);
+
+      const res = await request("/api/public/graph/math-k5");
+      expect(res.status).toBe(200);
+      const body = await json<{
+        subject: { id: string };
+        topics: Array<{ id: string }>;
+        prerequisites: Array<{ from: string; to: string }>;
+        encompassings: Array<{ parent: string; child: string }>;
+      }>(res);
+      expect(body.subject.id).toBe("math-k5");
+      expect(body.topics).toHaveLength(3);
+      expect(body.prerequisites).toHaveLength(2);
+      expect(body.prerequisites[0]).toEqual({ from: "count-10", to: "add-10", strength: 1.0 });
+      expect(body.encompassings).toHaveLength(1);
+      expect(body.encompassings[0]).toEqual({ parent: "add-20", child: "add-10", weight: 0.5 });
+    });
+  });
+
+  describe("GET /api/public/schema", () => {
+    it("returns API documentation", async () => {
+      const res = await request("/api/public/schema");
+      expect(res.status).toBe(200);
+      const body = await json<{ name: string; endpoints: Array<{ method: string; path: string }> }>(res);
+      expect(body.name).toBe("Learn Platform Public API");
+      expect(body.endpoints.length).toBeGreaterThanOrEqual(5);
+      const paths = body.endpoints.map((e) => e.path);
+      expect(paths).toContain("/api/public/subjects");
+      expect(paths).toContain("/api/public/topics/:id");
+      expect(paths).toContain("/api/public/graph/:subjectId");
+      expect(paths).toContain("/api/public/schema");
+    });
+  });
+
+  describe("CORS", () => {
+    it("includes Access-Control-Allow-Origin: * on responses", async () => {
+      const res = await request("/api/public/subjects");
+      expect(res.headers.get("access-control-allow-origin")).toBe("*");
+    });
+
+    it("handles CORS preflight", async () => {
+      const res = await request("/api/public/subjects", {
+        method: "OPTIONS",
+        headers: {
+          Origin: "https://example.com",
+          "Access-Control-Request-Method": "GET",
+        },
+      });
+      // Preflight returns 204
+      expect(res.status).toBe(204);
+      // Allow-Methods header is set
+      expect(res.headers.get("access-control-allow-methods")).toBeTruthy();
+    });
+  });
+
+  describe("Rate Limiting", () => {
+    it("includes rate limit headers", async () => {
+      const res = await request("/api/public/subjects");
+      expect(res.headers.get("x-ratelimit-limit")).toBeTruthy();
+      expect(res.headers.get("x-ratelimit-remaining")).toBeTruthy();
+      expect(res.headers.get("x-ratelimit-reset")).toBeTruthy();
+    });
+  });
+});

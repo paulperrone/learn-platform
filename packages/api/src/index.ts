@@ -12,6 +12,7 @@ import { familyRoutes } from "./routes/family.js";
 import { adminRoutes } from "./routes/admin.js";
 import { speechRoutes } from "./routes/speech.js";
 import { settingsRoutes } from "./routes/settings.js";
+import { publicRoutes } from "./routes/public.js";
 
 export type Env = {
   Bindings: {
@@ -52,6 +53,7 @@ app.route("/api/family", familyRoutes);
 app.route("/api/admin", adminRoutes);
 app.route("/api/speech", speechRoutes);
 app.route("/api/settings", settingsRoutes);
+app.route("/api/public", publicRoutes);
 
 // SPA fallback — serve static assets / index.html for non-API routes
 app.get("*", async (c) => {
