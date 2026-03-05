@@ -9,7 +9,8 @@
     "deploy:content": "npx tsx tools/export-sql.ts > /tmp/content-import.sql && npx wrangler d1 execute learn-db --remote --file=/tmp/content-import.sql --env production",
     "db:generate": "pnpm --filter api db:generate",
     "db:migrate": "pnpm --filter api db:migrate",
-    "typecheck": "pnpm -r typecheck"
+    "typecheck": "pnpm -r typecheck",
+    "test": "pnpm --filter api test"
   },
   "devDependencies": {
     "@types/better-sqlite3": "^7.6.13",

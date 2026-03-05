@@ -37,6 +37,7 @@ tools/               # Offline content pipeline (generate, validate, import)
 
 ```bash
 pnpm dev              # Start API (8787) + frontend (5173) concurrently
+pnpm test             # Run vitest (Workers pool + miniflare D1)
 pnpm db:generate      # Generate Drizzle migration
 pnpm db:migrate       # Apply migration to local D1
 pnpm typecheck        # TypeCheck all packages
@@ -54,6 +55,7 @@ npx tsx tools/validate-content.ts       # Validate problem/example completeness
 - Content is pre-generated offline, validated, then imported — LLM at runtime is for tutoring/grading only
 - FSRS state per user per topic; FIRe credit for encompassing relationships
 - Learning loop phases: pretest → instruction → guided → independent → review → remediation
+- Tests: co-located `__tests__/` directory, `*.test.ts` naming, `@cloudflare/vitest-pool-workers` for API tests with miniflare D1
 
 ---
 
