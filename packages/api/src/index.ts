@@ -10,10 +10,12 @@ import { progressRoutes } from "./routes/progress.js";
 import { llmRoutes } from "./routes/llm.js";
 import { familyRoutes } from "./routes/family.js";
 import { adminRoutes } from "./routes/admin.js";
+import { speechRoutes } from "./routes/speech.js";
 
 export type Env = {
   Bindings: {
     DB: D1Database;
+    AI?: Ai;
     BETTER_AUTH_SECRET: string;
     BETTER_AUTH_URL: string;
     OPENROUTER_API_KEY: string;
@@ -47,6 +49,7 @@ app.route("/api/progress", progressRoutes);
 app.route("/api/llm", llmRoutes);
 app.route("/api/family", familyRoutes);
 app.route("/api/admin", adminRoutes);
+app.route("/api/speech", speechRoutes);
 
 // SPA fallback — serve static assets / index.html for non-API routes
 app.get("*", async (c) => {

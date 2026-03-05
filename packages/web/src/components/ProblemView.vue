@@ -2,6 +2,7 @@
 import { ref, computed, onMounted } from "vue";
 import ConfidenceSlider from "./ConfidenceSlider.vue";
 import SpeakButton from "./SpeakButton.vue";
+import VoiceMicButton from "./VoiceMicButton.vue";
 import { useApi, withErrorToast } from "../composables/useApi";
 import { useLLMStatus } from "../composables/useLLMStatus";
 
@@ -119,14 +120,15 @@ async function requestHint() {
     </div>
 
     <div v-if="!submitted" class="space-y-4">
-      <div>
+      <div class="flex items-center gap-2">
         <input
           v-model="answer"
           type="text"
-          class="w-full border border-gray-300 rounded-lg p-3 text-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-          placeholder="Type your answer..."
+          class="flex-1 border border-gray-300 rounded-lg p-3 text-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          placeholder="Type or speak your answer..."
           @keyup.enter="checkAnswer"
         />
+        <VoiceMicButton @transcription="(text) => answer = answer ? `${answer} ${text}` : text" />
       </div>
 
       <div v-if="askConfidence" class="pt-2">

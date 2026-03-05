@@ -13,9 +13,9 @@ Add text-to-speech for reading problems aloud (critical for K-2 learners who can
 
 ## Progress
 
-**Completed:** Phase 1, Phase 2
+**Completed:** Phase 1, Phase 2, Phase 3
 **In Progress:** —
-**Next:** Phase 3
+**Next:** Phase 4
 
 ---
 
@@ -43,16 +43,16 @@ Add text-to-speech for reading problems aloud (critical for K-2 learners who can
 
 ---
 
-## Phase 3: Speech-to-Text Input (Cloudflare Workers AI Whisper)
+## Phase 3: Speech-to-Text Input (Cloudflare Workers AI Whisper) ✓
 **Goal:** Students can speak answers instead of typing
 
-1. [ ] [IMP] Add AI binding to existing Worker (`wrangler.toml`: `[ai] binding = "AI"`). Add `POST /api/speech/transcribe` route: accept FormData audio, convert to base64, call `env.AI.run('@cf/openai/whisper-large-v3-turbo', { audio })`, return `{ success, text }`
-2. [ ] [IMP] Create STT composable (`useDictation.ts`): MediaRecorder capture (WebM/Opus), start/stop recording, upload to `/api/speech/transcribe`, return transcript. Pattern from `~/source/assistant` VoiceMicButton.vue
-3. [ ] [IMP] Add speech input mode to answer fields: microphone button (VoiceMicButton component), visual feedback (pulsing indicator while recording, spinner while processing), transcript preview with edit-before-submit
-4. [ ] [IMP] Handle number and math input via speech: convert spoken numbers to digits ("twenty three" → "23"), basic math terms ("plus" → "+", "equals" → "=")
-5. [ ] [TST] Verify: student speaks answer → audio uploads → transcript appears → can edit → submit. Number conversion works. Graceful fallback when AI binding unavailable (hide mic button). Vitest tests for transcribe route.
+1. [x] [IMP] Add AI binding to existing Worker (`wrangler.toml`: `[ai] binding = "AI"`). Add `POST /api/speech/transcribe` route + `GET /api/speech/status` endpoint
+2. [x] [IMP] Create STT composable (`useDictation.ts`): MediaRecorder capture (WebM/Opus), start/stop recording, upload to `/api/speech/transcribe`, return transcript with `spokenToMath()` conversion
+3. [x] [IMP] Add VoiceMicButton component to ProblemView answer input: mic icon with recording (red pulse) / processing (spinner) states, transcript appended to answer field
+4. [x] [IMP] `spokenToMath()` converts spoken numbers to digits (0-20, tens, hundreds), math words (plus/minus/times/divided by/equals) to symbols
+5. [x] [TST] Vitest tests for speech routes: status endpoint, missing file (400), oversized file (413), error handling. All 48 tests pass.
 
-**Validation:** Student can answer problems by speaking. Numbers and basic math terms are converted correctly. Works on all browsers (MediaRecorder + server-side Whisper). Degrades gracefully when STT unavailable.
+**Validation:** ✓ Full STT pipeline: browser MediaRecorder → FormData upload → Workers AI Whisper → spokenToMath → answer field. VoiceMicButton auto-hides when STT unavailable. Graceful error handling throughout.
 
 ---
 

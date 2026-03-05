@@ -9,6 +9,9 @@ directory = "packages/web/dist"
 binding = "ASSETS"
 not_found_handling = "single-page-application"
 
+[ai]
+binding = "AI"
+
 [dev]
 port = 8787
 
