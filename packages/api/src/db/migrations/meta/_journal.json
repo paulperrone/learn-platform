@@ -50,6 +50,13 @@
       "when": 1772870400000,
       "tag": "0006_content_model_restructure",
       "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "6",
+      "when": 1772754040001,
+      "tag": "0007_chief_polaris",
+      "breakpoints": true
     }
   ]
 }

@@ -232,6 +232,60 @@ export type WorkedExampleStep = {
 
 export type ConfidenceRating = 1 | 2 | 3 | 4 | 5;
 
+// === Account Link Types ===
+
+export type AccountLinkType = "parent" | "teacher" | "tutor" | "guardian";
+export type AccountLinkStatus = "active" | "pending" | "revoked";
+
+export type AccountLink = {
+  id: string;
+  fromUserId: string;
+  toUserId: string;
+  type: AccountLinkType;
+  permissions: Record<string, boolean> | null;
+  status: AccountLinkStatus;
+  createdAt: string;
+};
+
+// === Org Types ===
+
+export type OrgType = "family" | "school" | "tutoring";
+export type OrgRole = "owner" | "admin" | "teacher" | "student";
+
+// === Teach Data Types ===
+
+export type TeachSession = {
+  id: string;
+  teacherId: string;
+  topicId: string;
+  startedAt: string;
+  endedAt: string | null;
+  notes: string | null;
+};
+
+export type Assignment = {
+  id: string;
+  teacherId: string;
+  topicId: string;
+  shareCode: string;
+  title: string;
+  description: string | null;
+  maxProblems: number | null;
+  createdAt: string;
+  expiresAt: string | null;
+};
+
+export type AssignmentResponse = {
+  id: string;
+  assignmentId: string;
+  userId: string | null;
+  anonymousToken: string | null;
+  questionId: string;
+  answer: string;
+  correct: boolean | null;
+  createdAt: string;
+};
+
 // === Speech Settings ===
 
 export type SpeechSettings = {

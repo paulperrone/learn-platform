@@ -83,9 +83,9 @@ TWO INDEPENDENT LAYERS:
 
 ## Progress
 
-**Completed:** Phase 1 ✓, Phase 2 ✓, Phase 3 ✓, Phase 4 ✓
+**Completed:** Phase 1 ✓, Phase 2 ✓, Phase 3 ✓, Phase 4 ✓, Phase 5 ✓
 **In Progress:** —
-**Next:** Phase 5
+**Next:** Phase 6
 
 ---
 
@@ -157,20 +157,20 @@ TWO INDEPENDENT LAYERS:
 
 ---
 
-## Phase 5: Account Model & Billing Restructure
+## Phase 5: Account Model & Billing Restructure ✓
 **Goal:** Orgs = billing layer (family, school, tutoring). Account_links = visibility layer. Independent signups. Org per-student billing. Any account can learn + teach.
 
-1. [ ] [RSH] Design the unified account model. (a) Org as billing-only: types (family, school, tutoring), roles (owner, admin, teacher, student), per-student budget (~$5/student), org billing priority over individual. (b) `account_links` table: id, fromUserId, toUserId, type ('parent'|'teacher'|'tutor'|'guardian'), permissions (JSON), status ('active'|'pending'|'revoked'), createdAt. Independent of org. (c) Teach data model: `teach_sessions` (log of what was covered), `assignments` (share code), `assignment_responses` (nullable userId for anonymous). (d) Any account can learn AND teach.
+1. [x] [RSH] Design the unified account model. (a) Org as billing-only: types (family, school, tutoring), roles (owner, admin, teacher, student), per-student budget (~$5/student), org billing priority over individual. (b) `account_links` table: id, fromUserId, toUserId, type ('parent'|'teacher'|'tutor'|'guardian'), permissions (JSON), status ('active'|'pending'|'revoked'), createdAt. Independent of org. (c) Teach data model: `teach_sessions` (log of what was covered), `assignments` (share code), `assignment_responses` (nullable userId for anonymous). (d) Any account can learn AND teach.
 
-2. [ ] [IMP] Create `account_links` table and API routes. Link creation flows: parent creates child -> auto parent link; teacher shares code -> student accepts; student requests link via teacher's code. Migrate existing `managedBy` to account_links. Permission checks based on link type.
+2. [x] [IMP] Create `account_links` table and API routes. Link creation flows: parent creates child -> auto parent link; teacher shares code -> student accepts; student requests link via teacher's code. Migrate existing `managedBy` to account_links. Permission checks based on link type.
 
-3. [ ] [IMP] Restructure org for flexible billing. Org types via metadata. Expanded roles: owner, admin, teacher, student. Org billing dashboard: total members, per-student budget, total spend. Billing priority: org > individual > free. OpenRouter key provisioning per-org with per-student limits.
+3. [x] [IMP] Restructure org for flexible billing. Org types via metadata. Expanded roles: owner, admin, teacher, student. Org billing dashboard: total members, per-student budget, total spend. Billing priority: org > individual > free. OpenRouter key provisioning per-org with per-student limits.
 
-4. [ ] [IMP] Independent student signup: no org required. Full free-tier access. Can self-bill ($5/mo or $50/yr). Can join org later. Can link to teachers/parents without joining their org. Universal content access.
+4. [x] [IMP] Independent student signup: no org required. Full free-tier access. Can self-bill ($5/mo or $50/yr). Can join org later. Can link to teachers/parents without joining their org. Universal content access.
 
-5. [ ] [IMP] Add teach data model: `teach_sessions`, `assignments` (with shareCode), `assignment_responses`. Teacher dashboard: topics covered, suggestions for next, linked students' progress.
+5. [x] [IMP] Add teach data model: `teach_sessions`, `assignments` (with shareCode), `assignment_responses`. Teacher dashboard: topics covered, suggestions for next, linked students' progress.
 
-6. [ ] [TST] Verify: independent signup works. Account links create/list/revoke. Linked teacher reads student progress. Org billing priority. Multiple roles per org. Backward compat with existing families. Teach sessions logged. Assignments with share codes.
+6. [x] [TST] Verify: independent signup works. Account links create/list/revoke. Linked teacher reads student progress. Org billing priority. Multiple roles per org. Backward compat with existing families. Teach sessions logged. Assignments with share codes.
 
 **Validation:** Student with 1 parent + 5 teachers has correct visibility. School org with owner + teachers + students has correct billing. Independent student works with zero relationships.
 

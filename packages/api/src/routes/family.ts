@@ -218,15 +218,27 @@ familyRoutes.post("/children", requireParent, async (c) => {
 
   const childUser = child.user;
 
-  // Add child to family org as member
+  // Add child to family org as member (student role)
   const db = getDb(c.env.DB);
   const memberId = crypto.randomUUID();
+  const now = new Date().toISOString();
   await db.insert(schema.members).values({
     id: memberId,
     userId: childUser.id,
     organizationId: family.organization.id,
-    role: "member",
-    createdAt: new Date().toISOString(),
+    role: "student",
+    createdAt: now,
+  });
+
+  // Create account_link for parent→child visibility
+  const linkId = crypto.randomUUID();
+  await db.insert(schema.accountLinks).values({
+    id: linkId,
+    fromUserId: user.id,
+    toUserId: childUser.id,
+    type: "parent",
+    status: "active",
+    createdAt: now,
   });
 
   return c.json({

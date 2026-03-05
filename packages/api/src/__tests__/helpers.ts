@@ -23,6 +23,10 @@ export async function applyMigrations() {
 export async function resetDb() {
   // Drop in reverse FK order
   const tables = [
+    "assignment_responses",
+    "assignments",
+    "teach_sessions",
+    "account_links",
     "llm_model_config",
     "llm_usage",
     "review_log",
@@ -260,6 +264,93 @@ export async function seedReviewLog(
   return row;
 }
 
+export async function seedAccountLink(
+  fromUserId: string,
+  toUserId: string,
+  type: string,
+  overrides: Partial<typeof schema.accountLinks.$inferInsert> = {}
+) {
+  const db = getTestDb();
+  const id = overrides.id ?? `link-${crypto.randomUUID().slice(0, 8)}`;
+  const now = new Date().toISOString();
+  const [row] = await db
+    .insert(schema.accountLinks)
+    .values({
+      id,
+      fromUserId,
+      toUserId,
+      type,
+      status: overrides.status ?? "active",
+      createdAt: now,
+      ...overrides,
+    })
+    .returning();
+  return row;
+}
+
+export async function seedOrg(overrides: Partial<typeof schema.organizations.$inferInsert> = {}) {
+  const db = getTestDb();
+  const id = overrides.id ?? `org-${crypto.randomUUID().slice(0, 8)}`;
+  const now = new Date().toISOString();
+  const [row] = await db
+    .insert(schema.organizations)
+    .values({
+      id,
+      name: overrides.name ?? "Test Org",
+      slug: overrides.slug ?? `test-org-${Date.now().toString(36)}`,
+      createdAt: now,
+      ...overrides,
+    })
+    .returning();
+  return row;
+}
+
+export async function seedMember(
+  userId: string,
+  organizationId: string,
+  role = "student",
+  overrides: Partial<typeof schema.members.$inferInsert> = {}
+) {
+  const db = getTestDb();
+  const id = overrides.id ?? `member-${crypto.randomUUID().slice(0, 8)}`;
+  const now = new Date().toISOString();
+  const [row] = await db
+    .insert(schema.members)
+    .values({
+      id,
+      userId,
+      organizationId,
+      role,
+      createdAt: now,
+      ...overrides,
+    })
+    .returning();
+  return row;
+}
+
+export async function seedAssignment(
+  teacherId: string,
+  topicId: string,
+  overrides: Partial<typeof schema.assignments.$inferInsert> = {}
+) {
+  const db = getTestDb();
+  const id = overrides.id ?? `assign-${crypto.randomUUID().slice(0, 8)}`;
+  const now = new Date().toISOString();
+  const [row] = await db
+    .insert(schema.assignments)
+    .values({
+      id,
+      teacherId,
+      topicId,
+      shareCode: overrides.shareCode ?? `CODE${Date.now().toString(36).toUpperCase().slice(0, 4)}`,
+      title: overrides.title ?? "Test Assignment",
+      createdAt: now,
+      ...overrides,
+    })
+    .returning();
+  return row;
+}
+
 // --- Schema DDL (individual statements for D1 prepare/run) ---
 // Tables created in FK dependency order: users first, then referencing tables
 
@@ -347,4 +438,25 @@ const SCHEMA_STATEMENTS = [
   // invitation (FK → users, organization)
   'CREATE TABLE invitation (id text PRIMARY KEY NOT NULL, email text NOT NULL, inviter_id text NOT NULL, organization_id text NOT NULL, role text NOT NULL, status text NOT NULL, expires_at text NOT NULL, created_at text NOT NULL, FOREIGN KEY (inviter_id) REFERENCES users(id), FOREIGN KEY (organization_id) REFERENCES organization(id))',
   'CREATE INDEX invitation_org_idx ON invitation (organization_id)',
+
+  // account_links (FK → users)
+  'CREATE TABLE account_links (id text PRIMARY KEY NOT NULL, from_user_id text NOT NULL, to_user_id text NOT NULL, type text NOT NULL, permissions text, status text DEFAULT \'active\' NOT NULL, created_at text NOT NULL, FOREIGN KEY (from_user_id) REFERENCES users(id), FOREIGN KEY (to_user_id) REFERENCES users(id))',
+  'CREATE UNIQUE INDEX al_from_to_type_idx ON account_links (from_user_id, to_user_id, type)',
+  'CREATE INDEX al_to_user_idx ON account_links (to_user_id)',
+  'CREATE INDEX al_from_user_idx ON account_links (from_user_id)',
+
+  // teach_sessions (FK → users, topics)
+  'CREATE TABLE teach_sessions (id text PRIMARY KEY NOT NULL, teacher_id text NOT NULL, topic_id text NOT NULL, started_at text NOT NULL, ended_at text, notes text, FOREIGN KEY (teacher_id) REFERENCES users(id), FOREIGN KEY (topic_id) REFERENCES topics(id))',
+  'CREATE INDEX ts_teacher_idx ON teach_sessions (teacher_id)',
+  'CREATE INDEX ts_topic_idx ON teach_sessions (topic_id)',
+
+  // assignments (FK → users, topics)
+  'CREATE TABLE assignments (id text PRIMARY KEY NOT NULL, teacher_id text NOT NULL, topic_id text NOT NULL, share_code text NOT NULL, title text NOT NULL, description text, max_problems integer, created_at text NOT NULL, expires_at text, FOREIGN KEY (teacher_id) REFERENCES users(id), FOREIGN KEY (topic_id) REFERENCES topics(id))',
+  'CREATE UNIQUE INDEX assign_code_idx ON assignments (share_code)',
+  'CREATE INDEX assign_teacher_idx ON assignments (teacher_id)',
+
+  // assignment_responses (FK → assignments)
+  'CREATE TABLE assignment_responses (id text PRIMARY KEY NOT NULL, assignment_id text NOT NULL, user_id text, anonymous_token text, question_id text NOT NULL, answer text NOT NULL, correct integer, created_at text NOT NULL, FOREIGN KEY (assignment_id) REFERENCES assignments(id))',
+  'CREATE INDEX ar_assignment_idx ON assignment_responses (assignment_id)',
+  'CREATE INDEX ar_user_idx ON assignment_responses (user_id)',
 ];

@@ -372,3 +372,27 @@ Architectural and design decisions with reasoning. Append-only.
 
 **Alternatives rejected:**
 - Add `assets_json` to `assessment_content`: Per-problem visuals are redundant when visuals are topic-level. Requires migration and doubles storage
+
+---
+
+### 2026-03-05: Two independent layers — orgs for billing, account_links for visibility
+
+**Source:** User session
+
+**Context:** Phase 5 account model restructure. The existing model conflated family/billing (organizations) with progress visibility (managedBy field). Teachers, tutors, and guardians need to see student progress without being in the same org. Multiple relationships per student needed (1 parent + 5 teachers).
+
+**Decision:** Two independent layers:
+1. **Orgs** = billing only. Types: family, school, tutoring (stored in metadata). Roles expanded to: owner, admin, teacher, student. Billing priority: org > individual > free.
+2. **Account links** = visibility/tracking. New `account_links` table with fromUserId, toUserId, type (parent/teacher/tutor/guardian), permissions (JSON), status (active/pending/revoked). Independent of org membership — persist across org changes.
+
+Child creation now creates both an org member (student role) and an account_link (parent type). `managedBy` field preserved for backward compatibility.
+
+**Why:**
+- A student can have 1 parent (family org) + 5 teachers (account_links) without all being in the same org
+- Teacher linking works without school-level org infrastructure
+- Orgs handle money, links handle relationships — clean separation
+- account_links persist when students change schools/orgs
+
+**Alternatives rejected:**
+- Single org with all roles: Can't represent cross-org relationships (teacher at school A seeing student in family B)
+- Extend managedBy to arrays: Doesn't support typed relationships or status management

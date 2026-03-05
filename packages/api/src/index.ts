@@ -13,6 +13,8 @@ import { adminRoutes } from "./routes/admin.js";
 import { speechRoutes } from "./routes/speech.js";
 import { settingsRoutes } from "./routes/settings.js";
 import { publicRoutes } from "./routes/public.js";
+import { accountLinkRoutes } from "./routes/account-links.js";
+import { teachDataRoutes } from "./routes/teach-data.js";
 
 export type Env = {
   Bindings: {
@@ -83,6 +85,8 @@ app.route("/api/admin", adminRoutes);
 app.route("/api/speech", speechRoutes);
 app.route("/api/settings", settingsRoutes);
 app.route("/api/public", publicRoutes);
+app.route("/api/account-links", accountLinkRoutes);
+app.route("/api/teach-data", teachDataRoutes);
 
 // SPA fallback — serve static assets / index.html for non-API routes
 app.get("*", async (c) => {

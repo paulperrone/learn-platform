@@ -267,3 +267,62 @@ export const llmUsage = sqliteTable("llm_usage", {
 }, (table) => [
   index("llm_usage_user_idx").on(table.userId),
 ]);
+
+// === Account Links (visibility/tracking layer) ===
+
+export const accountLinks = sqliteTable("account_links", {
+  id: text("id").primaryKey(),
+  fromUserId: text("from_user_id").notNull().references(() => users.id),
+  toUserId: text("to_user_id").notNull().references(() => users.id),
+  type: text("type").notNull(), // 'parent' | 'teacher' | 'tutor' | 'guardian'
+  permissions: text("permissions"), // JSON
+  status: text("status").notNull().default("active"), // 'active' | 'pending' | 'revoked'
+  createdAt: text("created_at").notNull().$defaultFn(() => new Date().toISOString()),
+}, (table) => [
+  uniqueIndex("al_from_to_type_idx").on(table.fromUserId, table.toUserId, table.type),
+  index("al_to_user_idx").on(table.toUserId),
+  index("al_from_user_idx").on(table.fromUserId),
+]);
+
+// === Teach Data Model ===
+
+export const teachSessions = sqliteTable("teach_sessions", {
+  id: text("id").primaryKey(),
+  teacherId: text("teacher_id").notNull().references(() => users.id),
+  topicId: text("topic_id").notNull().references(() => topics.id),
+  startedAt: text("started_at").notNull().$defaultFn(() => new Date().toISOString()),
+  endedAt: text("ended_at"),
+  notes: text("notes"),
+}, (table) => [
+  index("ts_teacher_idx").on(table.teacherId),
+  index("ts_topic_idx").on(table.topicId),
+]);
+
+export const assignments = sqliteTable("assignments", {
+  id: text("id").primaryKey(),
+  teacherId: text("teacher_id").notNull().references(() => users.id),
+  topicId: text("topic_id").notNull().references(() => topics.id),
+  shareCode: text("share_code").notNull(),
+  title: text("title").notNull(),
+  description: text("description"),
+  maxProblems: integer("max_problems"),
+  createdAt: text("created_at").notNull().$defaultFn(() => new Date().toISOString()),
+  expiresAt: text("expires_at"),
+}, (table) => [
+  uniqueIndex("assign_code_idx").on(table.shareCode),
+  index("assign_teacher_idx").on(table.teacherId),
+]);
+
+export const assignmentResponses = sqliteTable("assignment_responses", {
+  id: text("id").primaryKey(),
+  assignmentId: text("assignment_id").notNull().references(() => assignments.id),
+  userId: text("user_id"),
+  anonymousToken: text("anonymous_token"),
+  questionId: text("question_id").notNull(),
+  answer: text("answer").notNull(),
+  correct: integer("correct", { mode: "boolean" }),
+  createdAt: text("created_at").notNull().$defaultFn(() => new Date().toISOString()),
+}, (table) => [
+  index("ar_assignment_idx").on(table.assignmentId),
+  index("ar_user_idx").on(table.userId),
+]);
