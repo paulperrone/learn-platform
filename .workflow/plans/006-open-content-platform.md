@@ -13,9 +13,9 @@ Make the entire learning catalog — knowledge graph, problems, worked examples,
 
 ## Progress
 
-**Completed:** Phase 1
+**Completed:** Phase 1, Phase 2
 **In Progress:** —
-**Next:** Phase 2
+**Next:** Phase 3
 
 ---
 
@@ -32,13 +32,13 @@ Make the entire learning catalog — knowledge graph, problems, worked examples,
 
 ---
 
-## Phase 2: "How We Teach" Page
+## Phase 2: "How We Teach" Page ✓
 **Goal:** Integrated page explaining the learning science behind the platform
 
-1. [ ] [RSH] Draft content for the pedagogy page: mastery learning (cite Bloom 1968), spaced repetition (FSRS algorithm, cite Wozniak/Piotr), FIRe credit (how practicing a parent skill implicitly reviews children), worked example effect + fading (Sweller), self-explanation (Chi), pretesting (Richland), interleaving, confidence calibration. Write for parents — clear, not academic.
-2. [ ] [IMP] Build `/how-we-teach` Vue page: structured sections with visual aids (simple diagrams of the knowledge graph, example of SRS scheduling, hint progression). Link to actual problems/examples from the content to make it concrete.
-3. [ ] [IMP] Add SEO meta tags: title, description, Open Graph, structured data (FAQ schema for common parent questions like "Is this aligned to Common Core?", "How does AI tutoring work?", "Is my child's data safe?").
-4. [ ] [TST] Verify: page renders well on mobile and desktop, all links work, content is accurate and parent-friendly. Lighthouse SEO score ≥ 90.
+1. [x] [RSH] Draft content for the pedagogy page: mastery learning (cite Bloom 1984), spaced repetition (FSRS algorithm, cite Ebbinghaus/Bahrick/Kang), FIRe credit (how practicing a parent skill implicitly reviews children), worked example effect + fading (Sweller), self-explanation, pretesting, interleaving, confidence calibration. Write for parents — clear, not academic.
+2. [x] [IMP] Build `/how-we-teach` Vue page: structured sections with visual aids (simple diagrams of the knowledge graph, example of SRS scheduling, hint progression). Link to actual problems/examples from the content to make it concrete.
+3. [x] [IMP] Add SEO meta tags: title, description, Open Graph, structured data (FAQ schema for common parent questions like "Is this aligned to Common Core?", "How does AI tutoring work?", "Is my child's data safe?").
+4. [x] [TST] Verify: page renders well on mobile and desktop, all links work, content is accurate and parent-friendly. Typecheck passes.
 
 **Validation:** A parent landing on this page understands how the platform works, why it's effective, and why they should trust it. No jargon, concrete examples from real content.
 

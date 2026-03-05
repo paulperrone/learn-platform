@@ -40,6 +40,7 @@ async function handleLogout() {
           </div>
         </template>
         <template v-else>
+          <RouterLink to="/how-we-teach" class="text-gray-600 hover:text-gray-900">How We Teach</RouterLink>
           <div class="ml-auto flex items-center gap-4">
             <RouterLink to="/login" class="text-sm text-gray-600 hover:text-gray-900">Sign in</RouterLink>
             <RouterLink to="/signup" class="rounded-md bg-blue-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-blue-700">Sign up</RouterLink>
