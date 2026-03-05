@@ -148,6 +148,39 @@ llmRoutes.post("/tutor-stream", async (c) => {
   }
 });
 
+llmRoutes.post("/hint", async (c) => {
+  const db = getDb(c.env.DB);
+  const body = await c.req.json<{
+    userId: string;
+    topicName: string;
+    problemQuestion: string;
+    problemSolution: string;
+    staticHints: string[];
+    currentHintLevel: number;
+    studentResponse?: string;
+  }>();
+
+  // Static hints (levels 1-2) don't need budget check
+  const nextLevel = body.currentHintLevel + 1;
+  const hasStaticHint = nextLevel <= 2 && body.staticHints.length >= nextLevel;
+
+  if (!hasStaticHint) {
+    if (!(await checkBudget(db, body.userId))) return c.json(BUDGET_ERROR, 429);
+  }
+
+  const llm = createLLMService(db, c.env.OPENROUTER_API_KEY);
+  const result = await llm.generateHint(
+    body.userId,
+    body.topicName,
+    body.problemQuestion,
+    body.problemSolution,
+    body.staticHints,
+    body.currentHintLevel,
+    body.studentResponse
+  );
+  return c.json(result);
+});
+
 llmRoutes.post("/grade", async (c) => {
   const db = getDb(c.env.DB);
   const body = await c.req.json<{

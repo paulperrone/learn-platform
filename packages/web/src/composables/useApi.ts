@@ -129,6 +129,25 @@ export function useApi() {
         body: JSON.stringify({ userId, ...data }),
       });
     },
+    requestHint: async (data: {
+      topicName: string;
+      problemQuestion: string;
+      problemSolution: string;
+      staticHints: string[];
+      currentHintLevel: number;
+      studentResponse?: string;
+    }) => {
+      const userId = await getUserId();
+      return request<{
+        level: number;
+        hint: string;
+        source: "static" | "llm";
+        isMaxLevel: boolean;
+      }>("/llm/hint", {
+        method: "POST",
+        body: JSON.stringify({ userId, ...data }),
+      });
+    },
     gradeAnswer: async (data: any) => {
       const userId = await getUserId();
       return request<any>("/llm/grade", {

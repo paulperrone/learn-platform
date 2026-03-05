@@ -413,6 +413,112 @@ Respond in JSON: {"correct": true|false, "feedback": "brief feedback"}`,
     },
 
     /**
+     * Generate a progressive hint for a problem.
+     * Levels 1-2 prefer static hints from the problem bank (zero LLM cost).
+     * Levels 3-4 are LLM-generated with strict "don't give the answer" prompting.
+     */
+    async generateHint(
+      userId: string,
+      topicName: string,
+      problemQuestion: string,
+      problemSolution: string,
+      staticHints: string[],
+      currentHintLevel: number,
+      studentResponse?: string
+    ): Promise<{ level: number; hint: string; source: "static" | "llm"; isMaxLevel: boolean }> {
+      const nextLevel = currentHintLevel + 1;
+
+      // Levels 1-2: use static hints if available
+      if (nextLevel <= 2 && staticHints.length >= nextLevel) {
+        return {
+          level: nextLevel,
+          hint: staticHints[nextLevel - 1],
+          source: "static",
+          isMaxLevel: nextLevel >= 4,
+        };
+      }
+
+      // Level 1 fallback: LLM-generated nudge
+      if (nextLevel === 1) {
+        const result = await call(
+          [
+            {
+              role: "system",
+              content: `You are a math tutor giving a brief conceptual nudge for a K-5 student working on "${topicName}". Give ONE short sentence that reminds them of the key concept without revealing the approach or answer.`,
+            },
+            { role: "user", content: `Problem: ${problemQuestion}` },
+          ],
+          "cheap",
+          userId,
+          "hint-nudge",
+          256
+        );
+        return { level: 1, hint: result.content, source: "llm", isMaxLevel: false };
+      }
+
+      // Level 2 fallback: LLM-generated guiding question
+      if (nextLevel === 2) {
+        const result = await call(
+          [
+            {
+              role: "system",
+              content: `You are a math tutor helping a K-5 student with "${topicName}". Ask ONE guiding question that leads them toward the right approach. Do NOT reveal the answer or the method directly.`,
+            },
+            {
+              role: "user",
+              content: `Problem: ${problemQuestion}${studentResponse ? `\nStudent tried: ${studentResponse}` : ""}`,
+            },
+          ],
+          "cheap",
+          userId,
+          "hint-guide",
+          256
+        );
+        return { level: 2, hint: result.content, source: "llm", isMaxLevel: false };
+      }
+
+      // Level 3: partial solution reveal
+      if (nextLevel === 3) {
+        const result = await call(
+          [
+            {
+              role: "system",
+              content: `You are a math tutor helping a K-5 student with "${topicName}". Show ONLY the first step of the solution. Do NOT show the final answer. Use simple language.`,
+            },
+            {
+              role: "user",
+              content: `Problem: ${problemQuestion}\nFull solution (for your reference only): ${problemSolution}`,
+            },
+          ],
+          "cheap",
+          userId,
+          "hint-partial",
+          256
+        );
+        return { level: 3, hint: result.content, source: "llm", isMaxLevel: false };
+      }
+
+      // Level 4: full worked step
+      const result = await call(
+        [
+          {
+            role: "system",
+            content: `You are a math tutor helping a K-5 student with "${topicName}". Walk through the solution step-by-step with explanations, but leave the final numerical answer for the student to compute. Use simple language.`,
+          },
+          {
+            role: "user",
+            content: `Problem: ${problemQuestion}\nFull solution (for your reference only): ${problemSolution}`,
+          },
+        ],
+        "cheap",
+        userId,
+        "hint-worked",
+        512
+      );
+      return { level: 4, hint: result.content, source: "llm", isMaxLevel: true };
+    },
+
+    /**
      * Get LLM usage stats for a user.
      */
     async getUsage(userId: string) {

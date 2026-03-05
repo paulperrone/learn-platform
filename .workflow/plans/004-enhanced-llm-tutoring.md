@@ -13,9 +13,9 @@ Evolve LLM integration from stateless single-turn API calls to context-aware tut
 
 ## Progress
 
-**Completed:** Phase 1, Phase 2, Phase 3
+**Completed:** Phase 1, Phase 2, Phase 3, Phase 4
 **In Progress:** —
-**Next:** Phase 4
+**Next:** Phase 5
 
 ---
 
@@ -54,13 +54,13 @@ Evolve LLM integration from stateless single-turn API calls to context-aware tut
 
 ---
 
-## Phase 4: Progressive Hint System
+## Phase 4: Progressive Hint System ✓
 **Goal:** Multi-level hints that scaffold without giving answers
 
-1. [ ] [IMP] Define hint levels in problem schema: Level 1 (conceptual nudge), Level 2 (guiding question), Level 3 (partial solution reveal), Level 4 (full worked step). Store hint templates per problem or generate via LLM.
-2. [ ] [IMP] Add hint API endpoint: `/api/llm/hint` — accepts problem ID, current hint level, student response history; returns next-level hint using LLM with strict "don't give the answer" prompting
-3. [ ] [IMP] Build hint UI: "Need a hint?" button, progressive hint reveal (each click shows next level), visual indicator of hints used, cost warning before LLM hints
-4. [ ] [TST] Verify: hints progress through levels appropriately, never reveal the final answer, hint usage is tracked in review_log for SRS scheduling impact
+1. [x] [IMP] Define hint levels in problem schema: Level 1 (conceptual nudge), Level 2 (guiding question), Level 3 (partial solution reveal), Level 4 (full worked step). Store hint templates per problem or generate via LLM.
+2. [x] [IMP] Add hint API endpoint: `/api/llm/hint` — accepts problem ID, current hint level, student response history; returns next-level hint using LLM with strict "don't give the answer" prompting
+3. [x] [IMP] Build hint UI: "Need a hint?" button, progressive hint reveal (each click shows next level), visual indicator of hints used, cost warning before LLM hints
+4. [x] [TST] Verify: hints progress through levels appropriately, never reveal the final answer, hint usage is tracked in review_log for SRS scheduling impact
 
 **Validation:** Students can request hints at increasing levels of detail. Hints guide without giving answers. Hint usage is recorded and affects SRS scheduling (more hints → shorter review interval).
 

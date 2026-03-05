@@ -56,6 +56,7 @@ learnRoutes.post("/sessions/:id/respond", async (c) => {
     confidence?: number;
     responseMs: number;
     selfExplanation?: string;
+    hintsUsed?: number;
   }>();
   const result = await session.respond(c.req.param("id"), body);
   return c.json(result);

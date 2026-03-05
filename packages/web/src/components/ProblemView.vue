@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
 import ConfidenceSlider from "./ConfidenceSlider.vue";
+import { useApi, withErrorToast } from "../composables/useApi";
 
 const props = defineProps<{
   problem: {
@@ -9,6 +10,7 @@ const props = defineProps<{
     hints: string[];
     solution: string;
   };
+  topicName?: string;
   showHints: boolean;
   askConfidence: boolean;
   phase: string;
@@ -16,16 +18,23 @@ const props = defineProps<{
 }>();
 
 const emit = defineEmits<{
-  submit: [data: { answer: string; correct: boolean; confidence?: number; responseMs: number }];
+  submit: [data: { answer: string; correct: boolean; confidence?: number; responseMs: number; hintsUsed: number }];
 }>();
 
+const api = useApi();
 const answer = ref("");
 const confidence = ref(3);
-const showHint = ref(false);
-const hintIndex = ref(0);
 const submitted = ref(false);
 const isCorrect = ref(false);
 const startTime = Date.now();
+
+// Progressive hint state
+const hintLevel = ref(0);
+const revealedHints = ref<{ level: number; text: string; source: "static" | "llm" }[]>([]);
+const hintLoading = ref(false);
+const hintMaxReached = ref(false);
+
+const HINT_LEVEL_LABELS = ["", "Nudge", "Guiding Question", "Partial Solution", "Worked Step"] as const;
 
 const phaseColor = computed(() => {
   switch (props.phase) {
@@ -51,14 +60,33 @@ function submitAndContinue() {
     correct: isCorrect.value,
     confidence: props.askConfidence ? confidence.value : undefined,
     responseMs: Date.now() - startTime,
+    hintsUsed: hintLevel.value,
   });
 }
 
-function showNextHint() {
-  showHint.value = true;
-  if (hintIndex.value < props.problem.hints.length - 1) {
-    hintIndex.value++;
-  }
+async function requestHint() {
+  if (hintLoading.value || hintMaxReached.value) return;
+
+  hintLoading.value = true;
+  const result = await withErrorToast(
+    () =>
+      api.requestHint({
+        topicName: props.topicName ?? "Math",
+        problemQuestion: props.problem.question,
+        problemSolution: props.problem.solution,
+        staticHints: props.problem.hints,
+        currentHintLevel: hintLevel.value,
+        studentResponse: answer.value || undefined,
+      }),
+    "Hint"
+  );
+  hintLoading.value = false;
+
+  if (!result) return;
+
+  hintLevel.value = result.level;
+  revealedHints.value.push({ level: result.level, text: result.hint, source: result.source });
+  hintMaxReached.value = result.isMaxLevel;
 }
 </script>
 
@@ -100,18 +128,41 @@ function showNextHint() {
         </button>
 
         <button
-          v-if="showHints && problem.hints.length > 0"
-          @click="showNextHint"
-          class="px-4 py-2.5 border border-gray-300 text-gray-600 rounded-lg text-sm hover:bg-gray-50"
+          v-if="showHints && !hintMaxReached"
+          @click="requestHint"
+          :disabled="hintLoading"
+          class="px-4 py-2.5 border border-gray-300 text-gray-600 rounded-lg text-sm hover:bg-gray-50 disabled:opacity-50"
         >
-          Show Hint
+          <span v-if="hintLoading">Loading...</span>
+          <span v-else-if="hintLevel === 0">Need a hint?</span>
+          <span v-else>Another hint ({{ hintLevel }}/4)</span>
         </button>
       </div>
 
-      <div v-if="showHint" class="bg-yellow-50 rounded-lg p-4">
-        <p v-for="(hint, i) in problem.hints.slice(0, hintIndex + 1)" :key="i" class="text-sm text-yellow-800">
-          {{ hint }}
-        </p>
+      <!-- Progressive hints -->
+      <div v-if="revealedHints.length > 0" class="space-y-2">
+        <div
+          v-for="(hint, i) in revealedHints"
+          :key="i"
+          class="rounded-lg p-3 border"
+          :class="{
+            'bg-yellow-50 border-yellow-200': hint.level <= 2,
+            'bg-amber-50 border-amber-200': hint.level === 3,
+            'bg-orange-50 border-orange-200': hint.level === 4,
+          }"
+        >
+          <div class="flex items-center gap-2 mb-1">
+            <span class="text-xs font-medium px-1.5 py-0.5 rounded" :class="{
+              'bg-yellow-200 text-yellow-800': hint.level <= 2,
+              'bg-amber-200 text-amber-800': hint.level === 3,
+              'bg-orange-200 text-orange-800': hint.level === 4,
+            }">
+              {{ HINT_LEVEL_LABELS[hint.level] }}
+            </span>
+            <span v-if="hint.source === 'llm'" class="text-xs text-gray-400">AI</span>
+          </div>
+          <p class="text-sm text-gray-700">{{ hint.text }}</p>
+        </div>
       </div>
     </div>
 
@@ -122,6 +173,9 @@ function showNextHint() {
         </p>
         <p v-if="!isCorrect" class="text-sm text-gray-600 mt-1">
           The answer is: <strong>{{ problem.answer }}</strong>
+        </p>
+        <p v-if="hintLevel > 0" class="text-xs text-gray-500 mt-1">
+          Hints used: {{ hintLevel }}
         </p>
       </div>
 

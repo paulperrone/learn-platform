@@ -73,7 +73,8 @@ export function createSRSService(db: DB) {
       rating: Grade,
       responseMs: number,
       phase: string,
-      confidence?: number
+      confidence?: number,
+      hintsUsed?: number
     ) {
       const state = await this.getOrCreateState(userId, topicId);
       const card = cardFromRow(state);
@@ -129,6 +130,7 @@ export function createSRSService(db: DB) {
         correct: rating >= Rating.Good,
         responseMs,
         phase,
+        hintsUsed: hintsUsed ?? null,
       });
 
       return {

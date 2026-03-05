@@ -173,6 +173,7 @@ export function createSessionService(db: DB) {
         confidence?: number;
         responseMs: number;
         selfExplanation?: string;
+        hintsUsed?: number;
       }
     ): Promise<SessionItem> {
       let state = activeSessions.get(sessionId);
@@ -190,10 +191,24 @@ export function createSessionService(db: DB) {
 
       state.totalAttempts++;
 
-      // Determine rating from response
+      // Determine rating from response, capped by hint usage
       const isCorrect = response.correct ?? false;
       if (isCorrect) state.totalCorrect++;
-      const rating: Grade = isCorrect ? Rating.Good : Rating.Again;
+      const hintsUsed = response.hintsUsed ?? 0;
+      let rating: Grade = isCorrect ? Rating.Good : Rating.Again;
+
+      // Cap rating based on hints used:
+      // 0-1 hints: no change
+      // 2 hints (guiding question): cap at Good (3)
+      // 3 hints (partial reveal): cap at Hard (2)
+      // 4+ hints (worked step): force Again (1)
+      if (isCorrect && hintsUsed >= 4) {
+        rating = Rating.Again;
+      } else if (isCorrect && hintsUsed >= 3) {
+        rating = Math.min(rating, Rating.Hard) as Grade;
+      } else if (isCorrect && hintsUsed >= 2) {
+        rating = Math.min(rating, Rating.Good) as Grade;
+      }
 
       // Record review
       await srs.scheduleReview(
@@ -202,7 +217,8 @@ export function createSessionService(db: DB) {
         rating,
         response.responseMs,
         state.currentPhase,
-        response.confidence
+        response.confidence,
+        hintsUsed
       );
 
       // Apply FIRe credit
