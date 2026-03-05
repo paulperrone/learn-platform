@@ -177,4 +177,56 @@ describe("Public API - /api/public", () => {
       expect(res.headers.get("x-ratelimit-reset")).toBeTruthy();
     });
   });
+
+  describe("Bot Detection", () => {
+    it("blocks known LLM scraper bots", async () => {
+      const blockedUAs = [
+        "Mozilla/5.0 (compatible; GPTBot/1.0; +https://openai.com/gptbot)",
+        "CCBot/2.0 (https://commoncrawl.org/faq/)",
+        "ClaudeBot/1.0",
+        "anthropic-ai",
+        "Bytespider",
+      ];
+
+      for (const ua of blockedUAs) {
+        const res = await request("/api/public/subjects", {
+          headers: { "User-Agent": ua },
+        });
+        expect(res.status).toBe(403);
+        const body = await json<{ error: string }>(res);
+        expect(body.error).toContain("Bot access");
+      }
+    });
+
+    it("allows legitimate browsers and search engines", async () => {
+      await seedSubject({ id: "math-k5" });
+
+      const allowedUAs = [
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+        "Googlebot/2.1 (+http://www.google.com/bot.html)",
+        "Mozilla/5.0 (compatible; Bingbot/2.0)",
+      ];
+
+      for (const ua of allowedUAs) {
+        const res = await request("/api/public/subjects", {
+          headers: { "User-Agent": ua },
+        });
+        expect(res.status).toBe(200);
+      }
+    });
+  });
+});
+
+describe("robots.txt", () => {
+  it("serves robots.txt with crawl directives", async () => {
+    const res = await request("/robots.txt");
+    expect(res.status).toBe(200);
+    const text = await res.text();
+    expect(text).toContain("User-agent: *");
+    expect(text).toContain("Crawl-delay: 2");
+    expect(text).toContain("GPTBot");
+    expect(text).toContain("Disallow: /api/");
+    expect(text).toContain("Sitemap:");
+    expect(res.headers.get("content-type")).toContain("text/plain");
+  });
 });

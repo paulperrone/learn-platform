@@ -292,3 +292,24 @@ Architectural and design decisions with reasoning. Append-only.
 - CC BY-NC (non-commercial): limits adoption, conflicts with platform's mission of maximum access
 - CC BY-SA (share-alike): adds friction for derivative works, unnecessary for our goals
 - Static-only distribution: would require rebuilding and redeploying packs on every content update
+
+---
+
+### 2026-03-05: Multi-layer bot protection: robots.txt + User-Agent middleware + WAF rules
+
+**Source:** User session
+
+**Context:** Phase 6 (Abuse Protection) needed to protect public API endpoints from LLM scrapers and aggressive crawlers without blocking legitimate users (parents, educators, search engines).
+
+**Decision:** Three-layer defense: (1) robots.txt with polite crawl directives and bot-specific Disallow rules, (2) in-code User-Agent pattern matching middleware that blocks known LLM scrapers (GPTBot, CCBot, ClaudeBot, etc.) with 403, (3) documented Cloudflare WAF rules for edge-level enforcement (rate limiting, bot fight mode, managed challenges on download endpoints).
+
+**Why:**
+- robots.txt is the standard polite mechanism — legitimate crawlers respect it
+- In-code middleware enforces for bots that ignore robots.txt — fast, no external dependency
+- WAF rules provide edge-level protection that works before code runs — handles DDoS and sophisticated abuse
+- Legitimate search engines (Googlebot, Bingbot) are explicitly allowed to support SEO
+
+**Alternatives rejected:**
+- CAPTCHA/JS challenge for all API access: would break programmatic consumers (the content is open by design)
+- IP reputation scoring: adds complexity, Cloudflare Bot Fight Mode handles this at the edge
+- Rate limiting alone: doesn't distinguish between a parent browsing and an LLM scraper — both hit same limits

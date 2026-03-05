@@ -24,6 +24,33 @@ database_name = "learn-db"
 database_id = "local"
 migrations_dir = "packages/api/src/db/migrations"
 
+# ── WAF / Abuse Protection ──────────────────────────
+# Cloudflare WAF rules are configured in the dashboard, not in wrangler.toml.
+# Recommended rules for production (dash.cloudflare.com > Security > WAF):
+#
+# 1. Rate Limit Rule: /api/public/* → 120 req/min per IP → Block 60s
+#    (supplements in-code rate limiting which is per-isolate only)
+#
+# 2. Bot Fight Mode: Enable (Settings > Security > Bots)
+#    Challenges verified bots, blocks definitely automated traffic
+#
+# 3. Custom Rule: Block known AI scrapers by User-Agent
+#    Expression: (http.user_agent contains "GPTBot") or
+#                (http.user_agent contains "CCBot") or
+#                (http.user_agent contains "ClaudeBot")
+#    Action: Block
+#
+# 4. Custom Rule: Challenge suspicious API patterns
+#    Expression: (http.request.uri.path contains "/api/public/download") and
+#                (not cf.bot_management.verified_bot)
+#    Action: Managed Challenge
+#
+# In-code protections (already implemented):
+# - robots.txt with crawl directives and bot-specific Disallow rules
+# - User-Agent based bot blocking in public route middleware
+# - Per-IP rate limiting (60 req/min default, 10 req/min for graph/download)
+# - Structured JSON request logging for monitoring
+
 # ── Production ──────────────────────────────────────
 [env.production]
 

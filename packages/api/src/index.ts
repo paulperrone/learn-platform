@@ -43,6 +43,35 @@ app.use(
 
 app.get("/", (c) => c.json({ status: "ok", service: "learn-platform-api" }));
 
+// robots.txt — polite crawl directives for search engines and bots
+app.get("/robots.txt", (c) => {
+  const txt = [
+    "User-agent: *",
+    "Allow: /",
+    "Allow: /explore/",
+    "Allow: /how-we-teach",
+    "Allow: /docs/",
+    "Allow: /license",
+    "",
+    "# API rate limits apply — see /api/public/schema",
+    "User-agent: *",
+    "Crawl-delay: 2",
+    "",
+    "# Block aggressive scrapers from bulk API endpoints",
+    "User-agent: CCBot",
+    "User-agent: GPTBot",
+    "User-agent: Google-Extended",
+    "User-agent: ClaudeBot",
+    "User-agent: anthropic-ai",
+    "User-agent: Bytespider",
+    "User-agent: ChatGPT-User",
+    "Disallow: /api/",
+    "",
+    "Sitemap: https://learn.perrone.dev/sitemap.xml",
+  ].join("\n");
+  return c.text(txt, 200, { "Content-Type": "text/plain; charset=utf-8", "Cache-Control": "public, max-age=86400" });
+});
+
 app.route("/api/auth", authRoutes);
 app.route("/api/graph", graphRoutes);
 app.route("/api/learn", learnRoutes);

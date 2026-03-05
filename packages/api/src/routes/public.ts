@@ -8,8 +8,74 @@ import { eq } from "drizzle-orm";
 
 export const publicRoutes = new Hono<Env>();
 
+// --- Shared Utilities ---
+
+function getClientIp(c: { req: { header: (name: string) => string | undefined } }): string {
+  return c.req.header("cf-connecting-ip") ?? c.req.header("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
+}
+
 // --- CORS: allow all origins for public API ---
 publicRoutes.use("*", cors({ origin: "*" }));
+
+// --- Bot Detection ---
+// Block known LLM scrapers and aggressive crawlers from API endpoints.
+// Legitimate search engines (Google, Bing) are allowed.
+// robots.txt provides polite directives; this enforces them.
+
+const BLOCKED_BOT_PATTERNS = [
+  /CCBot/i,
+  /GPTBot/i,
+  /Google-Extended/i,
+  /ClaudeBot/i,
+  /anthropic-ai/i,
+  /Bytespider/i,
+  /ChatGPT-User/i,
+  /PetalBot/i,
+  /Scrapy/i,
+  /DataForSeoBot/i,
+  /Amazonbot/i,
+];
+
+publicRoutes.use("*", async (c, next) => {
+  const ua = c.req.header("user-agent") ?? "";
+  if (BLOCKED_BOT_PATTERNS.some((p) => p.test(ua))) {
+    return c.json(
+      { error: "Bot access to API not permitted. See /robots.txt" },
+      403
+    );
+  }
+  await next();
+});
+
+// --- Request Logging ---
+// Lightweight per-request logging for public endpoints.
+// Logs: timestamp, method, path, IP, user-agent, status, duration.
+// No PII — IP is for rate-limit correlation, not storage.
+
+publicRoutes.use("*", async (c, next) => {
+  const start = Date.now();
+  const ip = getClientIp(c);
+  const ua = c.req.header("user-agent") ?? "";
+  const method = c.req.method;
+  const path = c.req.path;
+
+  await next();
+
+  const duration = Date.now() - start;
+  const status = c.res.status;
+  console.log(
+    JSON.stringify({
+      type: "public_api_request",
+      ts: new Date().toISOString(),
+      method,
+      path,
+      status,
+      duration_ms: duration,
+      ip: ip.slice(0, 20), // truncate for log safety
+      ua: ua.slice(0, 120), // truncate long UAs
+    })
+  );
+});
 
 // --- Rate Limiting (per-isolate, IP-based) ---
 
@@ -20,10 +86,6 @@ const RATE_LIMITS = {
   default: { max: 60, windowMs: 60_000 },
   graph: { max: 10, windowMs: 60_000 },
 } as const;
-
-function getClientIp(c: { req: { header: (name: string) => string | undefined } }): string {
-  return c.req.header("cf-connecting-ip") ?? c.req.header("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
-}
 
 function checkRateLimit(
   ip: string,
@@ -297,6 +359,11 @@ publicRoutes.get("/schema", (c) => {
     rateLimits: {
       default: { requests: 60, windowSeconds: 60, description: "Most endpoints" },
       graph: { requests: 10, windowSeconds: 60, description: "Full graph export endpoints" },
+    },
+    botPolicy: {
+      description: "Known LLM scrapers and aggressive crawlers are blocked. See /robots.txt for crawl directives.",
+      blocked: ["CCBot", "GPTBot", "ClaudeBot", "Bytespider", "ChatGPT-User", "Scrapy", "DataForSeoBot"],
+      allowed: ["Googlebot", "Bingbot", "standard browsers"],
     },
     endpoints: [
       {

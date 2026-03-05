@@ -13,9 +13,9 @@ Make the entire learning catalog — knowledge graph, problems, worked examples,
 
 ## Progress
 
-**Completed:** Phase 1, Phase 2, Phase 3, Phase 4, Phase 5
+**Completed:** Phase 1, Phase 2, Phase 3, Phase 4, Phase 5, Phase 6
 **In Progress:** —
-**Next:** Phase 6
+**Next:** All phases complete
 
 ---
 
@@ -81,12 +81,12 @@ Make the entire learning catalog — knowledge graph, problems, worked examples,
 
 ---
 
-## Phase 6: Abuse Protection & Monitoring
+## Phase 6: Abuse Protection & Monitoring ✓
 **Goal:** Protect public endpoints from scraping, LLM polling, and DDoS without blocking legitimate users
 
-1. [ ] [IMP] Add bot detection middleware: identify LLM scrapers and mass crawlers via User-Agent patterns, request frequency, and payload patterns. Serve `robots.txt` with polite crawl directives. Allow legitimate bots (Google, Bing) while throttling aggressive ones.
-2. [ ] [IMP] Add request logging for public endpoints: track request counts per IP/endpoint, response times, error rates. Store in D1 or Workers Analytics. No PII logged.
-3. [ ] [IMP] Add Cloudflare WAF rules: configure Page Rules or WAF custom rules for the public API paths — challenge suspicious patterns, block known bad actors, rate limit by IP+path combination.
-4. [ ] [TST] Verify: normal browsing works smoothly, rapid scraping gets throttled, robots.txt is served, analytics show meaningful data. No false positives blocking parents or educators.
+1. [x] [IMP] Add bot detection middleware: identify LLM scrapers and mass crawlers via User-Agent patterns, request frequency, and payload patterns. Serve `robots.txt` with polite crawl directives. Allow legitimate bots (Google, Bing) while throttling aggressive ones.
+2. [x] [IMP] Add request logging for public endpoints: track request counts per IP/endpoint, response times, error rates. Store in D1 or Workers Analytics. No PII logged.
+3. [x] [IMP] Add Cloudflare WAF rules: configure Page Rules or WAF custom rules for the public API paths — challenge suspicious patterns, block known bad actors, rate limit by IP+path combination.
+4. [x] [TST] Verify: normal browsing works smoothly, rapid scraping gets throttled, robots.txt is served, analytics show meaningful data. No false positives blocking parents or educators.
 
 **Validation:** Public content is genuinely accessible to humans and reasonable bots. Abuse is detected and throttled. Platform stays responsive under load.
