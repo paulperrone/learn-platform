@@ -64,6 +64,7 @@ llmRoutes.post("/evaluate", async (c) => {
   const db = getDb(c.env.DB);
   const body = await c.req.json<{
     userId: string;
+    topicId?: string;
     topicName: string;
     stepDescription: string;
     studentExplanation: string;
@@ -74,7 +75,8 @@ llmRoutes.post("/evaluate", async (c) => {
     body.userId,
     body.topicName,
     body.stepDescription,
-    body.studentExplanation
+    body.studentExplanation,
+    body.topicId
   );
   return c.json(result);
 });
@@ -83,6 +85,7 @@ llmRoutes.post("/tutor", async (c) => {
   const db = getDb(c.env.DB);
   const body = await c.req.json<{
     userId: string;
+    topicId?: string;
     topicName: string;
     problemQuestion: string;
     studentResponse: string;
@@ -95,7 +98,8 @@ llmRoutes.post("/tutor", async (c) => {
     body.topicName,
     body.problemQuestion,
     body.studentResponse,
-    body.conversationHistory
+    body.conversationHistory,
+    body.topicId
   );
   return c.json(result);
 });

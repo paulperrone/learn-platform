@@ -13,9 +13,9 @@ Evolve LLM integration from stateless single-turn API calls to context-aware tut
 
 ## Progress
 
-**Completed:** Phase 1
+**Completed:** Phase 1, Phase 2
 **In Progress:** —
-**Next:** Phase 2
+**Next:** Phase 3
 
 ---
 
@@ -30,13 +30,13 @@ Evolve LLM integration from stateless single-turn API calls to context-aware tut
 
 ---
 
-## Phase 2: Session Context Injection
+## Phase 2: Session Context Injection ✓
 **Goal:** LLM calls receive student history for personalized responses
 
-1. [ ] [IMP] Build student profile builder: function that generates a concise text summary from user_topic_state and recent review_log (mastery level, recent struggles, pace, strengths)
-2. [ ] [IMP] Inject profile into socraticTutor system prompt: include student context so tutor adapts language complexity, pacing, and examples to the individual
-3. [ ] [IMP] Inject session context into evaluateExplanation: include what the student has been working on so evaluation accounts for their learning trajectory
-4. [ ] [TST] Verify: compare LLM responses with and without context injection — responses should reference student's specific struggles and adapt difficulty
+1. [x] [IMP] Build student profile builder: function that generates a concise text summary from user_topic_state and recent review_log (mastery level, recent struggles, pace, strengths)
+2. [x] [IMP] Inject profile into socraticTutor system prompt: include student context so tutor adapts language complexity, pacing, and examples to the individual
+3. [x] [IMP] Inject session context into evaluateExplanation: include what the student has been working on so evaluation accounts for their learning trajectory
+4. [x] [TST] Verify: compare LLM responses with and without context injection — responses should reference student's specific struggles and adapt difficulty
 
 **Validation:** LLM responses demonstrably adapt to student history. Tutor references specific areas of strength/weakness. Token usage stays within budget (~500 tokens for context).
 

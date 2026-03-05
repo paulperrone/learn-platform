@@ -1,6 +1,84 @@
-import { eq } from "drizzle-orm";
+import { eq, and, desc } from "drizzle-orm";
 import type { DB } from "../db/index.js";
 import * as schema from "../db/schema.js";
+
+const FSRS_STATE_LABELS = ["New", "Learning", "Review", "Relearning"] as const;
+
+/**
+ * Build a compact student profile (~150-200 tokens) for LLM context injection.
+ * Queries user_topic_state and recent review_log to summarize the student's
+ * mastery level, recent struggles, and pace for a given topic.
+ */
+async function buildStudentProfile(
+  db: DB,
+  userId: string,
+  topicId: string
+): Promise<string> {
+  const [topicState, topic, recentReviews] = await Promise.all([
+    db
+      .select()
+      .from(schema.userTopicState)
+      .where(and(eq(schema.userTopicState.userId, userId), eq(schema.userTopicState.topicId, topicId)))
+      .limit(1)
+      .then((rows) => rows[0] ?? null),
+    db
+      .select({ name: schema.topics.name, gradeLevel: schema.topics.gradeLevel })
+      .from(schema.topics)
+      .where(eq(schema.topics.id, topicId))
+      .limit(1)
+      .then((rows) => rows[0] ?? null),
+    db
+      .select({
+        rating: schema.reviewLog.rating,
+        correct: schema.reviewLog.correct,
+        responseMs: schema.reviewLog.responseMs,
+        phase: schema.reviewLog.phase,
+        confidence: schema.reviewLog.confidence,
+      })
+      .from(schema.reviewLog)
+      .where(and(eq(schema.reviewLog.userId, userId), eq(schema.reviewLog.topicId, topicId)))
+      .orderBy(desc(schema.reviewLog.createdAt))
+      .limit(5),
+  ]);
+
+  const lines: string[] = ["STUDENT PROFILE:"];
+
+  if (topic) {
+    lines.push(`- Topic: ${topic.name} (Grade ${topic.gradeLevel})`);
+  }
+
+  if (topicState) {
+    const stateLabel = FSRS_STATE_LABELS[topicState.state] ?? "Unknown";
+    lines.push(
+      `- Mastery: ${stateLabel} (${topicState.reps} reviews, ${topicState.lapses} lapses, stability ${topicState.stability.toFixed(1)})`
+    );
+    if (topicState.mastered) {
+      lines.push("- Status: Mastered");
+    }
+    if (topicState.confidenceAccuracy != null) {
+      lines.push(`- Confidence calibration: ${(topicState.confidenceAccuracy * 100).toFixed(0)}%`);
+    }
+  } else {
+    lines.push("- Mastery: First encounter with this topic");
+  }
+
+  if (recentReviews.length > 0) {
+    const correctCount = recentReviews.filter((r) => r.correct).length;
+    const avgMs = Math.round(recentReviews.reduce((s, r) => s + r.responseMs, 0) / recentReviews.length);
+    lines.push(`- Recent accuracy: ${correctCount}/${recentReviews.length} correct (last ${recentReviews.length} attempts)`);
+    lines.push(`- Avg response time: ${(avgMs / 1000).toFixed(1)}s`);
+
+    const struggles = recentReviews.filter((r) => !r.correct);
+    if (struggles.length > 0) {
+      const phases = [...new Set(struggles.map((s) => s.phase))].join(", ");
+      lines.push(`- Struggling in phases: ${phases}`);
+    }
+  } else {
+    lines.push("- No prior attempts on this topic");
+  }
+
+  return lines.join("\n");
+}
 
 type ModelTier = "cheap" | "capable";
 
@@ -82,21 +160,24 @@ export function createLLMService(db: DB, apiKey: string) {
   return {
     /**
      * Evaluate a student's self-explanation of a worked example step.
+     * Injects student profile so evaluation calibrates to their level.
      */
     async evaluateExplanation(
       userId: string,
       topicName: string,
       stepDescription: string,
-      studentExplanation: string
+      studentExplanation: string,
+      topicId?: string
     ) {
+      const profile = topicId ? await buildStudentProfile(db, userId, topicId) : "";
+
+      const systemContent = `You are an expert math tutor evaluating a student's self-explanation. The student is learning "${topicName}". Rate their explanation quality and provide brief feedback.
+
+Respond in JSON: {"quality": "good"|"partial"|"poor", "feedback": "brief encouraging feedback", "missingConcepts": ["any key ideas they missed"]}${profile ? `\n\n${profile}` : ""}`;
+
       const result = await call(
         [
-          {
-            role: "system",
-            content: `You are an expert math tutor evaluating a student's self-explanation. The student is learning "${topicName}". Rate their explanation quality and provide brief feedback.
-
-Respond in JSON: {"quality": "good"|"partial"|"poor", "feedback": "brief encouraging feedback", "missingConcepts": ["any key ideas they missed"]}`,
-          },
+          { role: "system", content: systemContent },
           {
             role: "user",
             content: `Step being explained: ${stepDescription}\n\nStudent's explanation: ${studentExplanation}`,
@@ -116,18 +197,19 @@ Respond in JSON: {"quality": "good"|"partial"|"poor", "feedback": "brief encoura
 
     /**
      * Socratic tutoring — guide a stuck student with questions, not answers.
+     * Injects student profile for personalized responses when topicId is provided.
      */
     async socraticTutor(
       userId: string,
       topicName: string,
       problemQuestion: string,
       studentResponse: string,
-      conversationHistory: LLMMessage[] = []
+      conversationHistory: LLMMessage[] = [],
+      topicId?: string
     ) {
-      const messages: LLMMessage[] = [
-        {
-          role: "system",
-          content: `You are a patient, encouraging Socratic math tutor helping a young student (K-5) with "${topicName}".
+      const profile = topicId ? await buildStudentProfile(db, userId, topicId) : "";
+
+      const systemContent = `You are a patient, encouraging Socratic math tutor helping a young student (K-5) with "${topicName}".
 
 Rules:
 - NEVER give the answer directly
@@ -135,8 +217,10 @@ Rules:
 - Use age-appropriate language (simple words, short sentences)
 - Be encouraging and positive
 - If the student is very stuck, break the problem into smaller steps
-- Limit your response to 2-3 sentences`,
-        },
+- Limit your response to 2-3 sentences${profile ? `\n\n${profile}` : ""}`;
+
+      const messages: LLMMessage[] = [
+        { role: "system", content: systemContent },
         ...conversationHistory,
         {
           role: "user",
