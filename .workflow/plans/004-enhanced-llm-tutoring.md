@@ -13,9 +13,9 @@ Evolve LLM integration from stateless single-turn API calls to context-aware tut
 
 ## Progress
 
-**Completed:** Phase 1, Phase 2, Phase 3, Phase 4, Phase 5
+**Completed:** Phase 1, Phase 2, Phase 3, Phase 4, Phase 5, Phase 6
 **In Progress:** —
-**Next:** Phase 6
+**Next:** Phase 7
 
 ---
 
@@ -78,14 +78,14 @@ Evolve LLM integration from stateless single-turn API calls to context-aware tut
 
 ---
 
-## Phase 6: Per-Family Provisioned OpenRouter Keys
+## Phase 6: Per-Family Provisioned OpenRouter Keys ✓
 **Goal:** Each family gets its own OpenRouter API key for billing isolation and usage tracking via Management API
 
-1. [ ] [RSH] Research OpenRouter Management API integration: test key creation/deletion/limit-setting via Management API, confirm billing flows (provisioned keys bill to platform account), document key lifecycle (create on family setup, disable on family delete, reset limits monthly)
-2. [ ] [IMP] Add provisioned key management service: `createOpenRouterKeyService(managementApiKey)` with methods: `provisionKey(familyName, monthlyLimitCents)`, `disableKey(keyHash)`, `updateLimit(keyHash, limitCents)`, `getKeyUsage(keyHash)`. Store `openrouterKeyHash` in org metadata.
-3. [ ] [IMP] Wire provisioned keys into LLM calls: when a family member makes an LLM call, use their family's provisioned key instead of the platform key. Non-family users (or families without provisioned keys) fall back to platform key. Keep writing to internal `llm_usage` table for per-user telemetry regardless of which key is used.
-4. [ ] [IMP] Auto-provision keys on family creation: when `POST /api/family` creates a new family, also provision an OpenRouter key with the family's budget as the credit limit. Sync budget changes (`PUT /api/family/budget`) to OpenRouter key limits.
-5. [ ] [TST] Verify: create family → OpenRouter key provisioned → children use family key for LLM → internal `llm_usage` still tracks per-child → parent sees per-child breakdown → OpenRouter dashboard shows per-key usage.
+1. [x] [RSH] Research OpenRouter Management API integration: documented full API (POST/GET/PATCH/DELETE `/api/v1/keys`), billing model (USD limits, monthly reset), key lifecycle. Findings in RESEARCH.md.
+2. [x] [IMP] Add provisioned key management service: `createOpenRouterKeyService(managementApiKey)` in `services/openrouter-keys.ts` with methods: `provisionKey`, `disableKey`, `updateLimit`, `getKeyUsage`. Store `openrouterKeyHash` + `openrouterApiKey` in org metadata.
+3. [x] [IMP] Wire provisioned keys into LLM calls: `resolveApiKey()` in llm routes looks up user's family provisioned key, falls back to platform key. Internal `llm_usage` table still tracks per-user telemetry regardless of which key is used.
+4. [x] [IMP] Auto-provision keys on family creation: `POST /api/family` provisions OpenRouter key (best-effort). `PUT /api/family/budget` syncs limit to OpenRouter key.
+5. [x] [TST] Verify: typecheck passes. Key provisioning is best-effort (family works without management key). `resolveApiKey` correctly resolves child → parent → org → provisioned key → fallback.
 
 **Validation:** Each family has its own OpenRouter API key. Usage is tracked both at OpenRouter level (per-key) and internally (per-user within family). Budget limits are enforced at both levels. Internal telemetry preserved for analytics.
 

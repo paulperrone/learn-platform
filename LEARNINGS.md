@@ -63,6 +63,26 @@ SQLite `ALTER TABLE ADD COLUMN` fails with "Cannot add a NOT NULL column with de
 
 ---
 
+### 2026-03-05: OpenRouter provisioned key string only returned once at creation
+
+**Source:** User session
+**Area:** OpenRouter Management API
+
+The `POST /api/v1/keys` response includes the raw API key (`sk-or-v1-...`) in the `key` field. This is the **only time** the raw key is ever returned. All subsequent operations reference the key by its `hash`. If you don't store the raw key immediately at creation, it's lost forever.
+
+**Context:** Auto-provisioning family OpenRouter keys. Must store the key in org metadata in the same transaction as creation.
+
+---
+
+### 2026-03-05: OpenRouter API limits are in USD, not cents or tokens
+
+**Source:** User session
+**Area:** OpenRouter Management API
+
+OpenRouter Management API `limit` field is denominated in **USD** (e.g., `limit: 5.00` = $5.00), not cents. Our internal budget tracking uses `monthlyBudgetCents`. Must divide by 100 when syncing: `limit = monthlyBudgetCents / 100`.
+
+**Context:** Syncing family budget to provisioned OpenRouter key limits.
+
 ### 2026-03-04: Wrangler `[assets]` with `binding` routes ALL requests through Worker
 
 **Source:** User session

@@ -289,3 +289,87 @@ Hint usage affects the FSRS rating passed to the SRS scheduler:
   - **Recommendation:** Keep single-turn for Phase 3. Multi-turn chat UI is a Phase 4+ enhancement if data shows students benefit from extended conversations.
 - **LLM hint generation quality:** Need to test whether Haiku produces good partial reveals without leaking the full answer. May need to use Sonnet for Level 3-4 hints if Haiku over-reveals.
   - **Recommendation:** Start with Haiku, add a `hintModelOverride` config option if quality is insufficient.
+
+---
+
+## 2026-03-05: OpenRouter Management API for Provisioned Keys
+
+**Source:** User session (Plan 004, Phase 6 research)
+**Status:** Complete
+
+### Context
+
+Phase 6 requires each family to get its own OpenRouter API key for billing isolation. Investigated the OpenRouter Management API to understand key lifecycle, billing, and limitations.
+
+### API Overview
+
+Base URL: `https://openrouter.ai/api/v1/keys`
+Auth: Management API key (created in OpenRouter dashboard > Settings > Provisioning) as Bearer token. Management keys **cannot** call completion endpoints — they're admin-only.
+
+### Endpoints
+
+| Method | Path | Purpose |
+|--------|------|---------|
+| POST | `/api/v1/keys` | Create key (returns raw key string — only time it's available) |
+| GET | `/api/v1/keys` | List keys (paginated, 100/page) |
+| GET | `/api/v1/keys/{hash}` | Get single key by hash |
+| PATCH | `/api/v1/keys/{hash}` | Update key (name, limit, disabled, limitReset) |
+| DELETE | `/api/v1/keys/{hash}` | Delete key |
+| GET | `/api/v1/key` | Introspect current key (any key, not just management) |
+
+### Create Key Request
+
+```typescript
+{
+  name: string;                          // Required. Display name.
+  limit?: number | null;                 // Spending limit in USD. null = unlimited.
+  limitReset?: "daily" | "weekly" | "monthly" | null;  // Reset cadence. null = never.
+  includeByokInLimit?: boolean;          // Whether BYOK counts against limit.
+  expiresAt?: string | null;             // ISO 8601 expiry (set-once, not updatable).
+}
+```
+
+### Create Key Response
+
+```typescript
+{
+  key: string;       // Raw API key (sk-or-v1-...) — ONLY returned here, never again
+  data: {
+    hash: string;    // Unique ID for all subsequent operations
+    name: string;
+    limit: number | null;           // USD
+    limitRemaining: number | null;  // USD
+    limitReset: string | null;
+    usage: number;                  // Total all-time USD usage
+    usageMonthly: number;           // Current month USD
+    disabled: boolean;
+    createdAt: string;
+    // ... other fields
+  }
+}
+```
+
+### Key Design Facts
+
+1. **Limits are in USD** (not cents, not tokens). `limit: 5.00` = $5.00/month cap.
+2. **`key` string only returned at creation** — store it immediately and securely.
+3. **Keys identified by `hash`** after creation — safe to store in DB.
+4. **Billing flows to parent account** — provisioned keys draw from the platform account's credits.
+5. **`expiresAt` is set-once** — can only be set at creation, not updated.
+6. **No model scoping** — keys cannot be restricted to specific models. Must enforce at app layer.
+7. **Limit resets at midnight UTC** — daily, weekly (Mon-Sun), or monthly.
+
+### Implications for Implementation
+
+- Store `hash` in org metadata (safe, non-secret). Store raw `key` encrypted or in a secrets table.
+- Convert family `monthlyBudgetCents` to USD for OpenRouter API: `limit = monthlyBudgetCents / 100`.
+- Use `limitReset: "monthly"` for family keys.
+- Disable key (PATCH `disabled: true`) on family deletion rather than DELETE to preserve usage records.
+- Need `OPENROUTER_MANAGEMENT_KEY` env var separate from `OPENROUTER_API_KEY`.
+- Internal `llm_usage` table still tracks per-user telemetry regardless of which key is used.
+
+### Security Considerations
+
+- Raw provisioned keys are secrets — don't store in plaintext metadata.
+- Consider encrypting with a derived key from `BETTER_AUTH_SECRET` or storing in a dedicated encrypted column.
+- Management key has full control over all provisioned keys — protect it carefully.

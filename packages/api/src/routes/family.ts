@@ -3,6 +3,7 @@ import type { Context, Next } from "hono";
 import { createAuth } from "../lib/auth.js";
 import { getDb } from "../db/index.js";
 import { createSRSService } from "../services/srs.js";
+import { createOpenRouterKeyService } from "../services/openrouter-keys.js";
 import * as schema from "../db/schema.js";
 import { eq, and, gte, inArray } from "drizzle-orm";
 import type { Env } from "../index.js";
@@ -104,6 +105,23 @@ familyRoutes.post("/", async (c) => {
     body: { name, slug: uniqueSlug },
     headers: c.req.raw.headers,
   });
+
+  // Auto-provision an OpenRouter API key for the family (if management key is configured)
+  if (c.env.OPENROUTER_MANAGEMENT_KEY) {
+    try {
+      const keyService = createOpenRouterKeyService(c.env.OPENROUTER_MANAGEMENT_KEY);
+      const { apiKey, hash } = await keyService.provisionKey(name, null);
+
+      const meta: Record<string, unknown> = { openrouterKeyHash: hash, openrouterApiKey: apiKey };
+      await db
+        .update(schema.organizations)
+        .set({ metadata: JSON.stringify(meta) })
+        .where(eq(schema.organizations.id, org.id));
+    } catch (e) {
+      // Key provisioning is best-effort — family still works with platform key
+      console.error("Failed to provision OpenRouter key for family:", e);
+    }
+  }
 
   return c.json({ family: org }, 201);
 });
@@ -414,6 +432,17 @@ familyRoutes.put("/budget", requireParent, async (c) => {
     .update(schema.organizations)
     .set({ metadata: JSON.stringify(meta) })
     .where(eq(schema.organizations.id, family.organization.id));
+
+  // Sync limit to provisioned OpenRouter key (if exists)
+  const keyHash = typeof meta.openrouterKeyHash === "string" ? meta.openrouterKeyHash : null;
+  if (keyHash && c.env.OPENROUTER_MANAGEMENT_KEY) {
+    try {
+      const keyService = createOpenRouterKeyService(c.env.OPENROUTER_MANAGEMENT_KEY);
+      await keyService.updateLimit(keyHash, monthlyBudgetCents);
+    } catch (e) {
+      console.error("Failed to sync budget to OpenRouter key:", e);
+    }
+  }
 
   return c.json({ success: true, monthlyBudgetCents });
 });

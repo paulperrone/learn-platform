@@ -118,3 +118,23 @@ Architectural and design decisions with reasoning. Append-only.
 
 **Alternatives rejected:**
 - Generic `platform_config` key-value table: More flexible but adds JSON serialization overhead and loses column-level type safety for just 2 rows of data
+
+---
+
+### 2026-03-05: Store provisioned OpenRouter API keys in org metadata (plaintext)
+
+**Source:** User session
+
+**Context:** Each family gets a provisioned OpenRouter API key for billing isolation. Need to store both the raw key (for completions) and the hash (for management operations). Options: encrypted column, separate secrets table, or plaintext in existing org metadata JSON.
+
+**Decision:** Store `openrouterApiKey` and `openrouterKeyHash` in the organization `metadata` JSON field alongside `monthlyBudgetCents`. Provisioning is best-effort — family works with platform key if provisioning fails.
+
+**Why:**
+- Org metadata is server-side only — never exposed to frontend API responses
+- Reuses existing metadata JSON pattern (no schema migration needed)
+- Best-effort provisioning means family creation never fails due to OpenRouter API issues
+- Simple to implement; encryption can be added later as a hardening step
+
+**Alternatives rejected:**
+- Encrypted column with derived key: Adds crypto complexity, key rotation concerns, and Cloudflare Workers crypto API limitations for what is ultimately a per-family billing key (not user credentials)
+- Separate secrets table: Over-engineering for 2 fields that naturally belong with the org

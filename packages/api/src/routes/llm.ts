@@ -88,9 +88,52 @@ async function checkBudget(db: ReturnType<typeof getDb>, userId: string): Promis
 
 const BUDGET_ERROR = { error: "LLM usage limit reached for this month. Learning continues without AI tutoring." };
 
-/** Create LLM service with model config loaded from DB */
-async function createConfiguredLLM(db: ReturnType<typeof getDb>, apiKey: string) {
-  const config = await getModelConfig(db);
+/** Resolve the API key for a user: family provisioned key → platform key fallback */
+async function resolveApiKey(db: ReturnType<typeof getDb>, userId: string, platformKey: string): Promise<string> {
+  // Find user's parent (managed child) → parent's org → org metadata
+  const userRow = await db
+    .select({ managedBy: schema.users.managedBy })
+    .from(schema.users)
+    .where(eq(schema.users.id, userId))
+    .limit(1);
+
+  const parentId = userRow.length > 0 ? userRow[0].managedBy : null;
+  const lookupId = parentId ?? userId;
+
+  const membership = await db
+    .select({ organizationId: schema.members.organizationId })
+    .from(schema.members)
+    .where(eq(schema.members.userId, lookupId))
+    .limit(1);
+
+  if (!membership.length) return platformKey;
+
+  const org = await db
+    .select({ metadata: schema.organizations.metadata })
+    .from(schema.organizations)
+    .where(eq(schema.organizations.id, membership[0].organizationId))
+    .limit(1);
+
+  if (!org.length || !org[0].metadata) return platformKey;
+
+  try {
+    const meta = JSON.parse(org[0].metadata) as Record<string, unknown>;
+    if (typeof meta.openrouterApiKey === "string" && meta.openrouterApiKey) {
+      return meta.openrouterApiKey;
+    }
+  } catch {
+    // invalid metadata JSON
+  }
+
+  return platformKey;
+}
+
+/** Create LLM service with model config loaded from DB, using the best available API key */
+async function createConfiguredLLM(db: ReturnType<typeof getDb>, userId: string, platformKey: string) {
+  const [config, apiKey] = await Promise.all([
+    getModelConfig(db),
+    resolveApiKey(db, userId, platformKey),
+  ]);
   return createLLMService(db, apiKey, config);
 }
 
@@ -104,7 +147,7 @@ llmRoutes.post("/evaluate", async (c) => {
     studentExplanation: string;
   }>();
   if (!(await checkBudget(db, body.userId))) return c.json(BUDGET_ERROR, 429);
-  const llm = await createConfiguredLLM(db, c.env.OPENROUTER_API_KEY);
+  const llm = await createConfiguredLLM(db, body.userId, c.env.OPENROUTER_API_KEY);
   const result = await llm.evaluateExplanation(
     body.userId,
     body.topicName,
@@ -126,7 +169,7 @@ llmRoutes.post("/tutor", async (c) => {
     conversationHistory?: { role: "system" | "user" | "assistant"; content: string }[];
   }>();
   if (!(await checkBudget(db, body.userId))) return c.json(BUDGET_ERROR, 429);
-  const llm = await createConfiguredLLM(db, c.env.OPENROUTER_API_KEY);
+  const llm = await createConfiguredLLM(db, body.userId, c.env.OPENROUTER_API_KEY);
   const result = await llm.socraticTutor(
     body.userId,
     body.topicName,
@@ -149,7 +192,7 @@ llmRoutes.post("/tutor-stream", async (c) => {
     conversationHistory?: { role: "system" | "user" | "assistant"; content: string }[];
   }>();
   if (!(await checkBudget(db, body.userId))) return c.json(BUDGET_ERROR, 429);
-  const llm = await createConfiguredLLM(db, c.env.OPENROUTER_API_KEY);
+  const llm = await createConfiguredLLM(db, body.userId, c.env.OPENROUTER_API_KEY);
 
   try {
     const { stream } = await llm.socraticTutorStream(
@@ -202,7 +245,7 @@ llmRoutes.post("/hint", async (c) => {
     if (!(await checkBudget(db, body.userId))) return c.json(BUDGET_ERROR, 429);
   }
 
-  const llm = await createConfiguredLLM(db, c.env.OPENROUTER_API_KEY);
+  const llm = await createConfiguredLLM(db, body.userId, c.env.OPENROUTER_API_KEY);
   const result = await llm.generateHint(
     body.userId,
     body.topicName,
@@ -225,7 +268,7 @@ llmRoutes.post("/grade", async (c) => {
     studentAnswer: string;
   }>();
   if (!(await checkBudget(db, body.userId))) return c.json(BUDGET_ERROR, 429);
-  const llm = await createConfiguredLLM(db, c.env.OPENROUTER_API_KEY);
+  const llm = await createConfiguredLLM(db, body.userId, c.env.OPENROUTER_API_KEY);
   const result = await llm.gradeResponse(
     body.userId,
     body.topicName,
