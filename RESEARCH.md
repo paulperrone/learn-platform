@@ -5,6 +5,7 @@ Investigation results, comparisons, and findings. Append-only.
 Distinct from:
 - LEARNINGS.md (gotchas, insights)
 - DECISIONS.md (choices made)
+- **docs/learning-science.md** — Comprehensive learning science reference (primary reference for pedagogy decisions)
 
 ---
 
@@ -20,6 +21,8 @@ Key principles driving the platform design:
 - **Interleaving:** Mix topics in practice sessions rather than blocking by topic.
 - **Metacognitive calibration:** Confidence ratings help students develop self-awareness of their knowledge.
 - **FIRe (Fractional Implicit Repetition):** Practicing a composite skill implicitly reviews component sub-skills, reducing total review burden.
+
+**Full reference:** See `docs/learning-science.md` for the comprehensive distillation of "The Math Academy Way" (Skycak, 2026), mathacademy.com pedagogy, and independent learning science research — 20 sections covering every principle, with key numbers, citations, and platform implications.
 
 ---
 
@@ -512,3 +515,45 @@ At scale (1,000 students): ~$26/month. Well within CF Workers AI free tier for e
 - **Audio format optimization:** WebM/Opus works well for Whisper. Consider if shorter clips (per-answer vs continuous recording) improve accuracy for young learners.
 - **Number word conversion quality:** Need to test how well children say numbers ("twenty-three" vs "two three") and tune conversion logic.
 - **Noise handling:** Classroom/home environments may be noisy. Whisper's VAD preprocessing option may help.
+
+---
+
+## 2026-03-05: Comprehensive learning science reference created
+
+**Source:** "The Math Academy Way" (Skycak, 2026), mathacademy.com/pedagogy, independent learning science research, PhysicsGraph (physicsgraph.com).
+
+Created `docs/learning-science.md` — a 20-section reference document distilling all learning science principles relevant to platform design. Covers: Bloom's Two-Sigma, working memory/cognitive load, knowledge graph design, mastery learning, worked examples/fading, retrieval practice, FSRS spaced repetition, FIRe credit, interleaving, self-explanation, pretesting, confidence calibration, AI tutoring, targeted remediation, automaticity, motivation/SDT, habit formation, assessment design, content design guidelines, and key numbers/thresholds.
+
+Key numbers for quick reference: 85% optimal success rate (Wilson et al., 2019), 7:1 active-to-passive ratio, 95% first-attempt pass rate target, ~1 explicit review per topic with FIRe, 20-30% fewer reviews with FSRS vs SM-2.
+
+**Status:** Complete. Living document — update as new research or platform experience warrants.
+
+---
+
+## 2026-03-05: PhysicsGraph — peer platform analysis
+
+**Source:** physicsgraph.com, @JeffreyBiles Twitter updates (Aug 2025 - Feb 2026)
+
+**What they are:** Knowledge graph + spaced repetition platform for AP Physics. Founded by Jeffrey Biles. Similar architecture to Math Academy but for physics.
+
+**Key observations:**
+- ~200 topics in Physics 1 knowledge graph, 10 units
+- Content velocity improved from 2 days/topic to ~1.14 days/topic between first two units
+- Notable question types beyond multiple choice: numerical input, equation input, graph drawing, matching, dynamic select, multi-step, Free Response Questions (FRQs)
+- FRQs use AI grading for point-by-point feedback (mimics AP exam format)
+- Curriculum rewrite after student feedback: shorter/clearer lessons, more tikz diagrams and manim animations, Engelmann's Direct Instruction framework for sequencing, smoother difficulty curves
+- Diagnostic test identifies knowledge frontier before course start
+- Pricing: $29/mo core, $99/mo test prep (FRQs + practice tests)
+- Growth: purely word-of-mouth + Twitter, MRR growing month-over-month
+- B2B deal signed (Alpha School partnership)
+- Team: 3 people (founder + physicist + content creator)
+
+**Relevance to us:**
+- Validates the knowledge graph + mastery learning approach for non-math subjects
+- Their curriculum rewrite validates "fix the content, not the standard" principle
+- Question type diversity (beyond multiple choice) improves retrieval practice depth — short-answer g=0.70 vs MC g=0.48
+- FRQ/free-response format is relevant for future Reading/ELA content (constructed responses)
+- Their content velocity improvements offer a benchmark for our content pipeline
+- SSR for marketing/explore pages is important for growth (they invested in this)
+
+**Status:** Complete. Monitor for future updates.
