@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, computed } from "vue";
+import SpeakButton from "./SpeakButton.vue";
 
 const props = defineProps<{
   example: {
@@ -21,6 +22,11 @@ const currentStep = ref(0);
 const showExplanation = ref(false);
 const selfExplanation = ref("");
 
+const stepSpeechText = computed(() => {
+  const step = props.example.steps[currentStep.value];
+  return `${step.instruction}. ${step.work}`;
+});
+
 function nextStep() {
   showExplanation.value = false;
   selfExplanation.value = "";
@@ -34,7 +40,10 @@ function nextStep() {
 
 <template>
   <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-    <h3 class="text-lg font-semibold mb-4">{{ example.title }}</h3>
+    <div class="flex items-center justify-between mb-4">
+      <h3 class="text-lg font-semibold">{{ example.title }}</h3>
+      <SpeakButton :text="stepSpeechText" :convert-math="true" />
+    </div>
 
     <div class="flex gap-2 mb-4">
       <div

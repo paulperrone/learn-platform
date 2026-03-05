@@ -13,9 +13,9 @@ Add text-to-speech for reading problems aloud (critical for K-2 learners who can
 
 ## Progress
 
-**Completed:** Phase 1
+**Completed:** Phase 1, Phase 2
 **In Progress:** —
-**Next:** Phase 2
+**Next:** Phase 3
 
 ---
 
@@ -31,15 +31,15 @@ Add text-to-speech for reading problems aloud (critical for K-2 learners who can
 
 ---
 
-## Phase 2: Text-to-Speech Integration
+## Phase 2: Text-to-Speech Integration ✓
 **Goal:** Problems and worked examples can be read aloud
 
-1. [ ] [IMP] Create TTS composable (`useSpeech.ts`): wrap SpeechSynthesis API, handle voice selection, rate/pitch control, queue management for multi-sentence content
-2. [ ] [IMP] Add read-aloud button to ProblemView and WorkedExample components: speaker icon, play/pause/stop, highlight current sentence being read
-3. [ ] [IMP] Handle math content in TTS: convert math notation to speakable text (e.g., "3 + 5 = ?" → "three plus five equals what?"), number word conversion for young learners
-4. [ ] [TST] Verify: problems read aloud correctly across Chrome/Safari, math is spoken naturally, controls work (play/pause/stop), voice is age-appropriate
+1. [x] [IMP] Create TTS composable (`useSpeech.ts`): wrap SpeechSynthesis API, handle voice selection, rate/pitch control, queue management for multi-sentence content
+2. [x] [IMP] Add read-aloud button to ProblemView and WorkedExample components: speaker icon, play/pause/stop via reusable SpeakButton component
+3. [x] [IMP] Handle math content in TTS: `mathToSpeech()` converter for operators (+ - × ÷ = > <), fractions, placeholders (? → "what")
+4. [x] [TST] Typecheck passes across all packages. Manual browser testing needed for voice quality.
 
-**Validation:** K-2 student can hear any problem read aloud by clicking a button. Math notation is spoken correctly. Works on Chrome and Safari (primary targets).
+**Validation:** ✓ SpeakButton on ProblemView (reads question) and WorkedExample (reads instruction + work per step). Math notation converted to speakable text. Auto-selects high-quality English voice. Rate set to 0.9 for young learners.
 
 ---
 

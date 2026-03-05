@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, computed, onMounted } from "vue";
 import ConfidenceSlider from "./ConfidenceSlider.vue";
+import SpeakButton from "./SpeakButton.vue";
 import { useApi, withErrorToast } from "../composables/useApi";
 import { useLLMStatus } from "../composables/useLLMStatus";
 
@@ -111,7 +112,10 @@ async function requestHint() {
     </div>
 
     <div class="bg-gray-50 rounded-lg p-6 mb-4">
-      <p class="text-lg text-gray-800 whitespace-pre-wrap">{{ problem.question }}</p>
+      <div class="flex items-start justify-between gap-3">
+        <p class="text-lg text-gray-800 whitespace-pre-wrap flex-1">{{ problem.question }}</p>
+        <SpeakButton :text="problem.question" :convert-math="true" />
+      </div>
     </div>
 
     <div v-if="!submitted" class="space-y-4">
