@@ -13,18 +13,18 @@ Evolve LLM integration from stateless single-turn API calls to context-aware tut
 
 ## Progress
 
-**Completed:** None yet
+**Completed:** Phase 1
 **In Progress:** —
-**Next:** Phase 1
+**Next:** Phase 2
 
 ---
 
-## Phase 1: Research & Design
+## Phase 1: Research & Design ✓
 **Goal:** Define the enhanced tutoring architecture
 
-1. [ ] [RSH] Audit current LLM service: map all call sites, measure typical prompt sizes, identify where context injection would have most impact (socraticTutor, evaluateExplanation, gradeResponse)
-2. [ ] [RSH] Design session context format: what student history to include (last N responses, struggle patterns, mastery level, time-on-task), token budget, how to summarize efficiently
-3. [ ] [RSH] Design hint progression model: define hint levels (nudge → guiding question → partial reveal → worked step), when to escalate, how to track hint usage for SRS scheduling
+1. [x] [RSH] Audit current LLM service: map all call sites, measure typical prompt sizes, identify where context injection would have most impact (socraticTutor, evaluateExplanation, gradeResponse)
+2. [x] [RSH] Design session context format: what student history to include (last N responses, struggle patterns, mastery level, time-on-task), token budget, how to summarize efficiently
+3. [x] [RSH] Design hint progression model: define hint levels (nudge → guiding question → partial reveal → worked step), when to escalate, how to track hint usage for SRS scheduling
 
 **Validation:** Architecture doc in RESEARCH.md with context injection format, hint level definitions, and token budget estimates. Clear implementation path for Phases 2-4.
 
