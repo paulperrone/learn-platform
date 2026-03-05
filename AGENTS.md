@@ -55,7 +55,7 @@ npx tsx tools/validate-content.ts       # Validate problem/example completeness
 - Content is pre-generated offline, validated, then imported — LLM at runtime is for tutoring/grading only
 - FSRS state per user per topic; FIRe credit for encompassing relationships
 - Learning loop phases: pretest → instruction → guided → independent → review → remediation
-- Tests: co-located `__tests__/` directory, `*.test.ts` naming, `@cloudflare/vitest-pool-workers` for API tests with miniflare D1
+- Tests: co-located `__tests__/` directory, `*.test.ts` naming, `@cloudflare/vitest-pool-workers` for API tests with miniflare D1. New services and routes must include vitest tests. Use helpers from `packages/api/src/__tests__/helpers.ts` for DB setup and seeding.
 
 ---
 
