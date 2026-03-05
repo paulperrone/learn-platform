@@ -246,3 +246,21 @@ Architectural and design decisions with reasoning. Append-only.
 - FERPA compliance, school data agreements
 - SSO integration (Google Workspace, Clever, ClassLink)
 - Revisit when adoption warrants school-level features
+
+---
+
+### 2026-03-05: /explore is public, authenticated graph explorer moved to /graph
+
+**Source:** User session
+
+**Context:** Phase 3 (Public Content Browser) needed SEO-friendly browsable pages. The existing `/explore` was auth-gated and showed a flat knowledge graph visualization. The plan called for `/explore`, `/explore/:subjectId`, `/explore/:subjectId/:topicId` as public pages.
+
+**Decision:** Repurpose `/explore` as the public content browser (subject cards → topic list → topic detail). Move the authenticated graph explorer to `/graph`.
+
+**Why:**
+- `/explore` is the natural URL for public browsing — SEO-friendly, discoverable
+- The graph explorer is a power-user tool for logged-in learners; `/graph` is a clear, short name
+- "How We Teach" page already linked to `/explore` for "Browse the curriculum" — no link changes needed
+
+**Alternatives rejected:**
+- New `/browse` path for public pages: creates two similar-sounding navigation items, confusing for users
