@@ -13,6 +13,207 @@ Apply lessons from PhysicsGraph's 7-month build-and-grow journey to our platform
 
 **Research basis:** docs/learning-science.md, PhysicsGraph analysis in RESEARCH.md.
 
+**Detailed Overview from Past Session** 
+
+Let me go through the PhysicsGraph updates month by month and extract the tactical learnings.                         
+                                                                                                                        
+  PhysicsGraph: Tactical Learnings from 7 Months of Building                                                            
+   
+  Content Velocity & Process                                                                                            
+                                                                                                                      
+  Key finding: Content creation speed is the bottleneck, and it improves dramatically with tooling investment.
+  - Started at 2 days/topic, improved to 1.14 days/topic by unit 2 — and called it "the slowest it will ever be"
+  - Every month they shipped content editing improvements: overhauled workflows, removed "papercuts," made rearranging
+  the knowledge graph easier
+  - Built ReviewBot — an AI tool that catches small errors and inconsistencies human reviewers miss. Reduced noise over
+  time.
+  - They hired a content creator (physicist) early, not an engineer. Content is the product.
+
+  Our takeaway: Our tools/ pipeline (generate, validate, import) is the right idea. We should invest in making content
+  creation faster — better tooling pays compound returns. An AI content reviewer (like ReviewBot) is low-hanging fruit
+  we could build with our existing LLM integration.
+
+  ---
+  Question Type Diversity
+
+  Key finding: Multiple choice is insufficient. They built 8+ question types and it materially improved learning.
+
+  Types they built (beyond MC):
+  1. Numerical input — type the number, no guessing
+  2. Equation input — write the equation
+  3. Multi-select — check all that apply
+  4. Matching — connect related items
+  5. Dynamic Select — dropdowns + numerical inputs combined (inspired by Math Academy's proofs)
+  6. Essay/free response — open-ended written answers
+  7. Graph drawing — draw on a coordinate plane
+  8. Multi-step problems — chain of dependent steps
+
+  They also built a scanner that uses AI to catch easily-guessable multiple-choice questions — acknowledging that bad MC
+   questions let students game the system.
+
+  Our takeaway: Our current problemsJson stores problems as question/answer pairs. For K-5 math, the most impactful
+  additions would be:
+  - Numerical input (type the answer, don't pick from options) — retrieval practice g=0.70 vs MC g=0.48
+  - Multi-step (chain of steps for word problems, showing work)
+  - Matching (connect equivalent fractions, match operations to results)
+  - Equation building (drag-and-drop number sentences for younger kids)
+
+  This aligns with the learning science: short-answer forces deeper retrieval than multiple choice.
+
+  ---
+  Curriculum Rewrites Based on Student Feedback
+
+  Key finding: They did a FULL curriculum rewrite after only a few months, driven by student struggle data.
+
+  What changed in the rewrite:
+  - Shorter, clearer lessons — they were too long initially
+  - More tikz diagrams and manim animations — visual explanations matter enormously
+  - Engelmann's Direct Instruction framework for sequencing — explicit, structured, no ambiguity
+  - Smoother difficulty curves — they found "difficulty spikes" that frustrated students
+  - More engaging question types (replacing MC with the types above)
+
+  The rewrite "manages to teach content at a deeper level and require more engaged thinking while also having fewer
+  difficulty spikes." Harder questions + smoother scaffolding = better learning.
+
+  Our takeaway: We should plan for content iteration. Track per-topic and per-problem accuracy rates from day one. When
+  accuracy drops below 80%, investigate the content (not the student). Our analytics already track per-topic accuracy —
+  we should surface this in the admin dashboard and act on it systematically.
+
+  Engelmann's Direct Instruction is worth studying as a sequencing framework for our content pipeline — it's highly
+  structured and works especially well for K-5.
+
+  ---
+  Animations and Visualizations
+
+  Key finding: Manim animations and tikz diagrams were highlighted as a major content improvement.
+
+  They invested heavily in:
+  - Manim animations embedded in lessons (cited "two of three manim animations in this particular lesson")
+  - Tikz diagrams for static visualizations
+  - Image upload and image generation workflows built into their content pipeline
+  - A visualization editor built specifically for content creators
+
+  Our takeaway: For K-5 math, visual representations are critical (dual coding theory). We currently have text-only
+  problems/examples. We should consider:
+  - SVG-based visual aids in worked examples (number lines, arrays, base-ten blocks)
+  - Simple animations for concepts like regrouping/carrying
+  - This could be a future phase — even static diagrams would be a big improvement
+
+  ---
+  Diagnostic Test
+
+  Key finding: They invested significant effort in a diagnostic test and consider it essential.
+
+  Their diagnostic:
+  - Identifies the student's "knowledge frontier" before starting
+  - Includes animations to make it engaging
+  - They're planning to put part of the diagnostic before the credit card so prospects experience the product
+
+  Our takeaway: Our pretest phase in the learning loop is per-topic. A course-level diagnostic (like Math Academy's
+  20-40 question placement exam) would let returning students or those with partial knowledge skip ahead. This is
+  especially important for adult learners reviewing foundations.
+
+  ---
+  Free Response Questions (FRQs) & Practice Tests
+
+  Key finding: FRQs with AI grading were their biggest investment and competitive differentiator.
+
+  - Students write/draw answers, get point-by-point grading like the real AP exam
+  - Feedback in minutes instead of days/weeks
+  - "No one else does this, and I see why" — extremely labor-intensive to build
+  - Made optional (not all users want test prep)
+
+  Our takeaway: For K-5, this maps to having students show their work and explain their reasoning, with LLM grading. Our
+   LLM grading endpoint already exists — we could extend it to evaluate multi-step written solutions, not just final
+  answers. This connects directly to the self-explanation research.
+
+  ---
+  Gamification & Engagement
+
+  Features they added over time:
+  - Daily XP goals (not just total XP)
+  - Estimated course completion time (sets expectations)
+  - XP history per course + GitHub-style contribution graph (visual streaks)
+  - Post-lesson animations emphasizing path through knowledge graph (makes progress tangible)
+  - Progress bars for in-progress topics on the menu
+  - Knowledge graph color-coded by unit with unit filtering
+  - Keyboard shortcuts
+  - Dark mode (in private beta)
+  - "Weekly activity" emails (opt-in)
+
+  Our takeaway: Several of these are quick wins:
+  - Daily XP/practice goals (habit formation research: consistent cues matter)
+  - GitHub-style contribution graph (streak visualization)
+  - Post-lesson knowledge graph animation (connect learning to the bigger picture)
+  - Estimated completion time (sets expectations, reduces dropout)
+
+  ---
+  Growth & Marketing Lessons
+
+  Key finding: They grew purely on word-of-mouth for months, then realized they needed to invest in onboarding.
+
+  Timeline:
+  - Months 1-4: Zero marketing, pure word-of-mouth, MRR still grew 50%
+  - Month 5: "Oops. We forgot to do marketing."
+  - Month 6: New landing page, SSR for marketing pages, Duolingo-inspired onboarding sequence
+  - Month 7: Social media push, record WAU higher than launch
+
+  Critical onboarding insight: "Our site did a very poor job of communicating what we're about, and to understand you
+  had to sign up and give us your credit card." They built:
+  - Better landing page with focused messaging
+  - Duolingo-inspired onboarding sequence (guided, not overwhelming)
+  - Moved credit card input after a taste of the diagnostic (let people experience it first)
+  - Dynamic onboarding email sequence
+  - Free trial infrastructure
+
+  Our takeaway:
+  - The /how-we-teach page we just built addresses the "communicate what we're about" problem
+  - Our /explore pages (public content browser) let people see the product without signing up
+  - We should plan for: free trial without credit card, taste of diagnostic before signup, onboarding email sequence
+  - SSR for public pages matters for SEO/growth (our Cloudflare ASSETS binding can serve pre-rendered pages)
+
+  ---
+  Infrastructure Decisions
+
+  Notable technical choices:
+  - Moved from Stripe Checkout to Stripe Elements (credit card form on their own site, better conversion)
+  - Added end-to-end testing + CI for critical paths
+  - Built sandbox mode for testing, demos, and user-generated content
+  - Introduced a typed ORM to the codebase
+  - SSR for marketing pages
+
+  ---
+  Summary: Top Priorities Informed by PhysicsGraph
+
+  ┌──────────┬────────────────────────────────────────────────┬─────────────────────────────────────────────────────┐
+  │ Priority │                      What                      │                         Why                         │
+  ├──────────┼────────────────────────────────────────────────┼─────────────────────────────────────────────────────┤
+  │ High     │ Numerical input questions (type answer, not    │ g=0.70 vs g=0.48 retrieval practice                 │
+  │          │ MC)                                            │                                                     │
+  ├──────────┼────────────────────────────────────────────────┼─────────────────────────────────────────────────────┤
+  │ High     │ Per-topic/per-problem accuracy analytics in    │ Drives content iteration — their biggest lesson     │
+  │          │ admin                                          │                                                     │
+  ├──────────┼────────────────────────────────────────────────┼─────────────────────────────────────────────────────┤
+  │ High     │ Content pipeline tooling investment            │ Compound returns on creation speed                  │
+  ├──────────┼────────────────────────────────────────────────┼─────────────────────────────────────────────────────┤
+  │ Medium   │ Multi-step problems                            │ Better models real math reasoning                   │
+  ├──────────┼────────────────────────────────────────────────┼─────────────────────────────────────────────────────┤
+  │ Medium   │ Visual aids in problems/examples               │ Dual coding, major content improvement              │
+  │          │ (SVG/diagrams)                                 │                                                     │
+  ├──────────┼────────────────────────────────────────────────┼─────────────────────────────────────────────────────┤
+  │ Medium   │ Daily practice goals + streak visualization    │ Habit formation research                            │
+  ├──────────┼────────────────────────────────────────────────┼─────────────────────────────────────────────────────┤
+  │ Medium   │ Course-level diagnostic test                   │ Proper placement, skip-ahead for knowledgeable      │
+  │          │                                                │ students                                            │
+  ├──────────┼────────────────────────────────────────────────┼─────────────────────────────────────────────────────┤
+  │ Lower    │ AI content reviewer (ReviewBot equivalent)     │ Catches errors humans miss                          │
+  ├──────────┼────────────────────────────────────────────────┼─────────────────────────────────────────────────────┤
+  │ Lower    │ Onboarding sequence (free trial before         │ Conversion optimization, later-stage                │
+  │          │ payment)                                       │                                                     │
+  ├──────────┼────────────────────────────────────────────────┼─────────────────────────────────────────────────────┤
+  │ Lower    │ Post-lesson graph animation                    │ Engagement, makes progress tangible                 │
+  └──────────┴────────────────────────────────────────────────┴─────────────────────────────────────────────────────┘
+
 ## Progress
 
 **Completed:** None yet
