@@ -189,3 +189,60 @@ Architectural and design decisions with reasoning. Append-only.
 - Deepgram Nova 3: 10x more expensive ($0.0059/min), overkill when CF is effectively free
 - Browser-local Whisper (Transformers.js): 10-30s latency, 600MB+ download, requires WebGPU
 - ElevenLabs for TTS: Adds cost when browser voices are sufficient for math problems
+
+---
+
+### 2026-03-05: Pricing model — $5/mo, $50/yr, $3 usage cap, configurable overage
+
+**Source:** User session (business model discussion)
+
+**Context:** Platform needs sustainable revenue while maximizing adoption as a public good. AI features (LLM tutoring/grading/hints, STT) have real per-use costs. Core learning platform (graph, SRS, content, browser TTS) is near-zero marginal cost.
+
+**Decision:**
+- **Free tier:** Full learning platform minus AI features
+- **$5/mo or $50/yr:** Unlocks AI features with $3/mo usage cap
+- **Overage:** Configurable monthly spend cap in $5 increments (each $5 = $3 usage + $2 margin). Default: $5 (no overage). Parent enables "extra usage" to allow auto-charge add-ons up to their set cap
+- **Gross margin:** 40% on monthly, 28% on annual (before Stripe fees, taxes)
+- **Teacher accounts:** Always free (read-only, growth channel)
+
+**Why $3 cap (not $4):**
+- 40% gross margin gives breathing room for Stripe fees (~2.9% + $0.30), platform costs, and sustainability margin
+- $3 is generous — most students burn $1-1.50/mo, families with 2-3 kids may hit $3
+- Incentivizes aggressive cost optimization on AI model selection (Kimik 2.5 for grading, reserve Sonnet for tutoring)
+- Can raise to $3.50 later if margins need adjustment
+
+**Why configurable overage (not fixed add-on limit):**
+- Default $5 cap (no overages) protects casual users
+- Power users / big families can raise cap to $15, $20+ in $5 steps
+- Parent always in control — hard stop at their set cap, no surprises
+- Every $5 increment maintains same 40% margin
+
+**Alternatives rejected:**
+- Per-seat pricing: complexity for families, punishes bigger families
+- Pure usage-based (no cap): unpredictable bills, scares parents away
+- Higher subscription ($10-15/mo): reduces adoption, doesn't align with public good mission
+- Freemium with ads: degrades learning experience, wrong incentive alignment
+
+---
+
+### 2026-03-05: Teacher linking via parent-initiated share codes (Path A)
+
+**Source:** User session (account model discussion)
+
+**Context:** Teachers/tutors need to see student progress, but the platform is family-first. Two approaches: Path A (bottom-up, parent-initiated sharing) vs Path B (top-down, teacher creates classroom, students join).
+
+**Decision:** Path A — parent-initiated sharing via share codes. Teachers get free read-only accounts.
+
+**Why Path A:**
+- Parents control data sharing (COPPA-friendly, trust-building)
+- Students own their accounts (portable across school years/teachers)
+- Teachers are free — reduces adoption friction, makes them a growth channel
+- Works for school teachers, homeschool co-ops, private tutors, after-school programs
+- Much simpler than classroom model — no bulk provisioning, billing delegation, or admin roles
+
+**Deferred (Path B — classroom/school model):**
+- Bulk student provisioning, class codes, school admin roles
+- District billing, site licenses
+- FERPA compliance, school data agreements
+- SSO integration (Google Workspace, Clever, ClassLink)
+- Revisit when adoption warrants school-level features

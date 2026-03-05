@@ -1,12 +1,23 @@
 # SPEC: Learn Platform
 
-> **Version:** 1.0
+> **Version:** 1.1
 > **Created:** 2026-03-04T03:35:01Z
 > **Status:** Active
 
 ## Vision
 
-A free, open mastery-learning platform inspired by MathAcademy's knowledge graph + spaced repetition approach, expanded with LLM capabilities (Socratic tutoring, problem generation, self-explanation assessment). Covers many subjects starting from the very foundations. Revenue: free platform, small margin on LLM usage via OpenRouter passthrough.
+A free, open mastery-learning platform inspired by MathAcademy's knowledge graph + spaced repetition approach, expanded with LLM capabilities (Socratic tutoring, problem generation, self-explanation assessment). Covers many subjects starting from the very foundations. Core platform is free; AI features (LLM tutoring, speech-to-text) are subscription-gated with transparent usage-based pricing.
+
+## Revenue Model
+
+**Goal:** Maximize adoption. Free core learning platform, sustainable margin on AI features only.
+
+- **Free tier:** Full platform — knowledge graph, SRS, problems, worked examples, browser TTS, progress tracking, family accounts
+- **Paid tier ($5/mo or $50/yr):** AI features — LLM tutoring/grading/hints, speech-to-text, future premium features
+- **Usage cap:** $3/mo of AI usage per billing period (40% gross margin before Stripe fees/taxes)
+- **Overage:** Parents set monthly spend cap in $5 increments (default $5 = no overage). Each $5 unlocks $3 more AI usage. Auto-charges up to parent-set cap
+- **Teacher/tutor accounts:** Always free (read-only progress access via parent sharing)
+- **Supplementary revenue:** YouTube lesson videos (ad revenue, no in-app ads)
 
 ## MVP Scope
 
@@ -53,9 +64,10 @@ All problems, worked examples, and graph structure are **pre-generated offline**
 
 ## Users
 
-- Young learners (K-5, ages 5-11) working through math fundamentals
-- Parents/guardians setting up accounts
-- Self-directed adult learners reviewing foundations
+- **Young learners** (K-5, ages 5-11) working through math fundamentals
+- **Parents/guardians** setting up and managing family accounts, controlling billing and teacher sharing
+- **Teachers/tutors** (free accounts) viewing linked students' progress — school teachers, homeschool co-ops, private tutors, after-school programs
+- **Self-directed adult learners** reviewing foundations
 
 ## Success Criteria
 
