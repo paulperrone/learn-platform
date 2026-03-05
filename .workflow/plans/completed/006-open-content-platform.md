@@ -1,7 +1,7 @@
 # Epic: Open Content Platform
 
 > **Created:** 2026-03-05T01:07:44Z
-> **Completed:** —
+> **Completed:** 2026-03-05
 >
 > For project context, see [CLAUDE.md](../../CLAUDE.md)
 > For product vision, see [SPEC.md](./SPEC.md)
