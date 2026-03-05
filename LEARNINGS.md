@@ -91,3 +91,23 @@ OpenRouter Management API `limit` field is denominated in **USD** (e.g., `limit:
 When `[assets]` has a `binding = "ASSETS"`, ALL requests go to the Worker — static files are NOT served automatically. The Worker must explicitly call `c.env.ASSETS.fetch(c.req.raw)` for non-API routes. Without a binding, assets are served first and only non-matches reach the Worker. Use `not_found_handling = "single-page-application"` so the ASSETS binding returns `index.html` for unknown paths (SPA routing).
 
 **Context:** Single-domain deployment where Worker serves both API and Vue SPA.
+
+---
+
+### 2026-03-05: vitest-pool-workers D1 exec() can't handle multi-line template literals
+
+**Source:** User session
+**Area:** @cloudflare/vitest-pool-workers / D1
+
+D1's `exec()` in the miniflare test environment fails with "incomplete input" when given multi-line SQL via template literals (backtick strings). The SQL gets truncated at newlines. Workaround: use `prepare().run()` with single-line SQL strings for schema setup. Define DDL as an array of individual `CREATE TABLE`/`CREATE INDEX` statements.
+
+**Context:** Setting up test database schema in vitest Workers pool. Inlined migration SQL failed; switching to individual `prepare().run()` calls per statement worked.
+
+---
+
+### 2026-03-05: Better-Auth sessions can't be faked by inserting into sessions table
+
+**Source:** User session
+**Area:** Better-Auth / Testing
+
+Inserting a session row directly into the `sessions` table and setting a `Cookie: better-auth.session_token=<token>` header does NOT make `auth.api.getSession({ headers })` return a valid session. Better-Auth's session resolution has additional validation beyond raw token lookup. For testing authenticated routes, either use the full Better-Auth signup/signin flow or test auth middleware rejection (401) and test business logic at the service/DB level.
