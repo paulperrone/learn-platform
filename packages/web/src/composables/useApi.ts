@@ -120,6 +120,15 @@ export function useApi() {
         body: JSON.stringify({ userId, ...data }),
       });
     },
+    requestTutorStream: async (data: any): Promise<Response> => {
+      const userId = await getUserId();
+      return fetch(`${API_BASE}/llm/tutor-stream`, {
+        method: "POST",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userId, ...data }),
+      });
+    },
     gradeAnswer: async (data: any) => {
       const userId = await getUserId();
       return request<any>("/llm/grade", {

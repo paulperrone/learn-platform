@@ -104,6 +104,50 @@ llmRoutes.post("/tutor", async (c) => {
   return c.json(result);
 });
 
+llmRoutes.post("/tutor-stream", async (c) => {
+  const db = getDb(c.env.DB);
+  const body = await c.req.json<{
+    userId: string;
+    topicId?: string;
+    topicName: string;
+    problemQuestion: string;
+    studentResponse: string;
+    conversationHistory?: { role: "system" | "user" | "assistant"; content: string }[];
+  }>();
+  if (!(await checkBudget(db, body.userId))) return c.json(BUDGET_ERROR, 429);
+  const llm = createLLMService(db, c.env.OPENROUTER_API_KEY);
+
+  try {
+    const { stream } = await llm.socraticTutorStream(
+      body.userId,
+      body.topicName,
+      body.problemQuestion,
+      body.studentResponse,
+      body.conversationHistory,
+      body.topicId
+    );
+
+    return new Response(stream, {
+      headers: {
+        "Content-Type": "text/event-stream",
+        "Cache-Control": "no-cache",
+        Connection: "keep-alive",
+      },
+    });
+  } catch (e) {
+    // Fallback to non-streaming
+    const result = await llm.socraticTutor(
+      body.userId,
+      body.topicName,
+      body.problemQuestion,
+      body.studentResponse,
+      body.conversationHistory,
+      body.topicId
+    );
+    return c.json(result);
+  }
+});
+
 llmRoutes.post("/grade", async (c) => {
   const db = getDb(c.env.DB);
   const body = await c.req.json<{

@@ -99,6 +99,38 @@ type LLMMessage = {
 };
 
 export function createLLMService(db: DB, apiKey: string) {
+  function openRouterHeaders() {
+    return {
+      Authorization: `Bearer ${apiKey}`,
+      "Content-Type": "application/json",
+      "HTTP-Referer": "https://learn.perrone.dev",
+      "X-Title": "Learn Platform",
+    };
+  }
+
+  async function trackUsage(
+    model: string,
+    userId: string,
+    purpose: string,
+    inputTokens: number,
+    outputTokens: number
+  ) {
+    const costs = COST_PER_M[model] ?? { input: 0, output: 0 };
+    const costCents =
+      (inputTokens * costs.input) / 1_000_000 +
+      (outputTokens * costs.output) / 1_000_000;
+
+    await db.insert(schema.llmUsage).values({
+      id: crypto.randomUUID(),
+      userId,
+      model,
+      inputTokens,
+      outputTokens,
+      costCents,
+      purpose,
+    });
+  }
+
   async function call(
     messages: LLMMessage[],
     tier: ModelTier,
@@ -110,12 +142,7 @@ export function createLLMService(db: DB, apiKey: string) {
 
     const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
       method: "POST",
-      headers: {
-        Authorization: `Bearer ${apiKey}`,
-        "Content-Type": "application/json",
-        "HTTP-Referer": "https://learn.perrone.dev",
-        "X-Title": "Learn Platform",
-      },
+      headers: openRouterHeaders(),
       body: JSON.stringify({
         model,
         messages,
@@ -138,23 +165,99 @@ export function createLLMService(db: DB, apiKey: string) {
     const inputTokens = data.usage?.prompt_tokens ?? 0;
     const outputTokens = data.usage?.completion_tokens ?? 0;
 
-    // Track usage
-    const costs = COST_PER_M[model] ?? { input: 0, output: 0 };
-    const costCents =
-      (inputTokens * costs.input) / 1_000_000 +
-      (outputTokens * costs.output) / 1_000_000;
+    await trackUsage(model, userId, purpose, inputTokens, outputTokens);
+    return { content, inputTokens, outputTokens };
+  }
 
-    await db.insert(schema.llmUsage).values({
-      id: crypto.randomUUID(),
-      userId,
-      model,
-      inputTokens,
-      outputTokens,
-      costCents,
-      purpose,
+  /**
+   * Streaming call to OpenRouter. Returns a ReadableStream of SSE-formatted chunks
+   * and logs usage after the stream completes.
+   */
+  async function callStream(
+    messages: LLMMessage[],
+    tier: ModelTier,
+    userId: string,
+    purpose: string,
+    maxTokens: number = 1024
+  ): Promise<{ stream: ReadableStream<Uint8Array>; response: Response }> {
+    const model = MODEL_MAP[tier];
+
+    const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+      method: "POST",
+      headers: openRouterHeaders(),
+      body: JSON.stringify({
+        model,
+        messages,
+        max_tokens: maxTokens,
+        temperature: 0.3,
+        stream: true,
+      }),
     });
 
-    return { content, inputTokens, outputTokens };
+    if (!response.ok) {
+      const error = await response.text();
+      throw new Error(`OpenRouter error (${response.status}): ${error}`);
+    }
+
+    if (!response.body) {
+      throw new Error("No response body for streaming");
+    }
+
+    const encoder = new TextEncoder();
+    const decoder = new TextDecoder();
+    let fullContent = "";
+    let inputTokens = 0;
+    let outputTokens = 0;
+
+    const transformStream = new TransformStream<Uint8Array, Uint8Array>({
+      transform(chunk, controller) {
+        const text = decoder.decode(chunk, { stream: true });
+        const lines = text.split("\n");
+
+        for (const line of lines) {
+          if (!line.startsWith("data: ")) continue;
+          const data = line.slice(6).trim();
+          if (data === "[DONE]") {
+            controller.enqueue(encoder.encode("data: [DONE]\n\n"));
+            continue;
+          }
+
+          try {
+            const parsed = JSON.parse(data) as {
+              choices?: { delta?: { content?: string } }[];
+              usage?: { prompt_tokens?: number; completion_tokens?: number };
+            };
+
+            const content = parsed.choices?.[0]?.delta?.content;
+            if (content) {
+              fullContent += content;
+              controller.enqueue(encoder.encode(`data: ${JSON.stringify({ content })}\n\n`));
+            }
+
+            if (parsed.usage) {
+              inputTokens = parsed.usage.prompt_tokens ?? inputTokens;
+              outputTokens = parsed.usage.completion_tokens ?? outputTokens;
+            }
+          } catch {
+            // skip unparseable lines
+          }
+        }
+      },
+      async flush() {
+        // Estimate tokens if not provided by API (streaming often omits usage)
+        if (outputTokens === 0 && fullContent) {
+          outputTokens = Math.ceil(fullContent.length / 4);
+        }
+        if (inputTokens === 0) {
+          const promptText = messages.map((m) => m.content).join(" ");
+          inputTokens = Math.ceil(promptText.length / 4);
+        }
+        await trackUsage(model, userId, purpose, inputTokens, outputTokens);
+      },
+    });
+
+    const stream = response.body.pipeThrough(transformStream);
+    return { stream, response };
   }
 
   return {
@@ -230,6 +333,41 @@ Rules:
 
       const result = await call(messages, "capable", userId, "socratic-tutor");
       return { response: result.content };
+    },
+
+    /**
+     * Streaming socratic tutoring — same as socraticTutor but returns an SSE stream.
+     */
+    async socraticTutorStream(
+      userId: string,
+      topicName: string,
+      problemQuestion: string,
+      studentResponse: string,
+      conversationHistory: LLMMessage[] = [],
+      topicId?: string
+    ) {
+      const profile = topicId ? await buildStudentProfile(db, userId, topicId) : "";
+
+      const systemContent = `You are a patient, encouraging Socratic math tutor helping a young student (K-5) with "${topicName}".
+
+Rules:
+- NEVER give the answer directly
+- Ask guiding questions that lead the student to discover the answer
+- Use age-appropriate language (simple words, short sentences)
+- Be encouraging and positive
+- If the student is very stuck, break the problem into smaller steps
+- Limit your response to 2-3 sentences${profile ? `\n\n${profile}` : ""}`;
+
+      const messages: LLMMessage[] = [
+        { role: "system", content: systemContent },
+        ...conversationHistory,
+        {
+          role: "user",
+          content: `Problem: ${problemQuestion}\n\nStudent said: ${studentResponse}`,
+        },
+      ];
+
+      return callStream(messages, "capable", userId, "socratic-tutor");
     },
 
     /**

@@ -13,9 +13,9 @@ Evolve LLM integration from stateless single-turn API calls to context-aware tut
 
 ## Progress
 
-**Completed:** Phase 1, Phase 2
+**Completed:** Phase 1, Phase 2, Phase 3
 **In Progress:** —
-**Next:** Phase 3
+**Next:** Phase 4
 
 ---
 
@@ -42,13 +42,13 @@ Evolve LLM integration from stateless single-turn API calls to context-aware tut
 
 ---
 
-## Phase 3: Streaming Responses
+## Phase 3: Streaming Responses ✓
 **Goal:** Real-time streamed tutoring responses in the UI
 
-1. [ ] [IMP] Add streaming endpoint: `/api/llm/tutor-stream` using OpenRouter's streaming API, return Server-Sent Events from Hono on Workers
-2. [ ] [IMP] Update LLM service: add `callStream()` method that returns a ReadableStream, handle token counting from streaming responses
-3. [ ] [IMP] Build streaming text component in Vue: progressive text reveal, typing indicator, cancel button, graceful error handling
-4. [ ] [TST] Verify: tutoring response streams word-by-word in UI, token usage is tracked correctly, cancellation works, fallback to non-streaming on error
+1. [x] [IMP] Add streaming endpoint: `/api/llm/tutor-stream` using OpenRouter's streaming API, return Server-Sent Events from Hono on Workers
+2. [x] [IMP] Update LLM service: add `callStream()` method that returns a ReadableStream, handle token counting from streaming responses
+3. [x] [IMP] Build streaming text component in Vue: progressive text reveal, typing indicator, cancel button, graceful error handling
+4. [x] [TST] Verify: tutoring response streams word-by-word in UI, token usage is tracked correctly, cancellation works, fallback to non-streaming on error
 
 **Validation:** Tutoring responses appear progressively in the UI. Latency to first token is <500ms. Usage tracking works with streaming. Non-streaming fallback functions correctly.
 
