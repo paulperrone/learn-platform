@@ -141,23 +141,23 @@ Architectural and design decisions with reasoning. Append-only.
 
 ---
 
-### 2026-03-05: Test authenticated routes at service/DB level, not via HTTP
+### 2026-03-05: Two approaches for testing authenticated routes
 
 **Source:** User session
 
-**Context:** Setting up vitest for API testing. Better-Auth's `getSession()` can't be satisfied by manually inserting session rows — it has internal validation beyond raw token lookup.
+**Context:** Setting up vitest for API testing. Better-Auth's `getSession()` can't be satisfied by manually inserting session rows — it has internal validation beyond raw token lookup. Two working approaches emerged.
 
-**Decision:** Test auth middleware rejection (401/403) via HTTP requests. Test business logic of authenticated endpoints (admin analytics, model config, etc.) at the service/DB layer using Drizzle queries directly, bypassing the auth middleware.
+**Decision:** Use either approach based on test scope:
+1. **Service/DB level tests** — bypass auth, test business logic directly via Drizzle queries. Used for admin analytics, model config, etc.
+2. **Full HTTP tests with signup flow** — call `POST /api/auth/sign-up/email` to get real session cookies, then use them for authenticated requests. Used for settings routes. ~50-70ms per signup, fast enough for small test suites.
 
-**Why:**
-- Better-Auth session resolution is opaque and not mockable in Workers pool tests
-- Service-level tests cover the actual business logic without auth coupling
-- Auth rejection tests verify the middleware works (401 for missing session, 403 for wrong role)
-- Avoids brittle test setup that could break on Better-Auth version changes
+**Why both approaches work:**
+- Service-level tests are faster and don't couple to auth internals
+- HTTP tests with real signup verify the full request pipeline including auth middleware
+- Signup flow works well in miniflare/workerd (~50-70ms) — not too slow for focused tests
+- Auth rejection tests (401/403) verify middleware without needing a real session
 
-**Alternatives rejected:**
-- Full Better-Auth signup/signin flow in tests: Too slow, couples tests to auth internals, requires working email/password hashing in miniflare
-- Mocking Better-Auth: Workers pool runs in workerd, not Node — standard mocking libraries don't work
+**Note:** `createAuthSession()` in helpers.ts does NOT work — Better-Auth hashes session tokens internally, so raw DB inserts don't produce valid sessions. Always use the signup flow for HTTP-level auth testing.
 
 ---
 

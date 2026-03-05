@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
 import { useDictation } from "../composables/useDictation";
+import { useSpeechPrefs } from "../composables/useSpeechPrefs";
 
 defineProps<{
   disabled?: boolean;
@@ -11,6 +12,7 @@ const emit = defineEmits<{
 }>();
 
 const { state, error, supported, start, stop, cancel, checkAvailable } = useDictation();
+const { sttEnabled } = useSpeechPrefs();
 const sttAvailable = ref(false);
 
 onMounted(async () => {
@@ -18,8 +20,6 @@ onMounted(async () => {
     sttAvailable.value = await checkAvailable();
   }
 });
-
-const visible = ref(true);
 
 async function handleClick() {
   if (state.value === "recording") {
@@ -32,10 +32,11 @@ async function handleClick() {
 </script>
 
 <template>
-  <div v-if="supported && sttAvailable" class="inline-flex flex-col items-center">
+  <div v-if="supported && sttAvailable && sttEnabled" class="inline-flex flex-col items-center">
     <button
       @click="handleClick"
       :disabled="disabled || state === 'processing'"
+      :aria-label="state === 'idle' ? 'Start voice input' : state === 'recording' ? 'Stop recording' : 'Processing speech'"
       :title="state === 'idle' ? 'Speak your answer' : state === 'recording' ? 'Stop recording' : 'Processing...'"
       class="inline-flex items-center justify-center w-10 h-10 rounded-full border-2 transition-all"
       :class="{

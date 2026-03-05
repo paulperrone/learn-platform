@@ -7,7 +7,7 @@ const props = defineProps<{
   size?: "sm" | "md";
 }>();
 
-const { state, supported, toggle, stop } = useSpeech();
+const { state, supported, ttsEnabled, toggle, stop } = useSpeech();
 
 function handleClick() {
   toggle(props.text, { convertMath: props.convertMath ?? true });
@@ -16,8 +16,9 @@ function handleClick() {
 
 <template>
   <button
-    v-if="supported"
+    v-if="supported && ttsEnabled"
     @click="handleClick"
+    :aria-label="state === 'idle' ? 'Read aloud' : state === 'speaking' ? 'Pause reading' : 'Resume reading'"
     :title="state === 'idle' ? 'Read aloud' : state === 'speaking' ? 'Pause' : 'Resume'"
     class="inline-flex items-center justify-center rounded-lg border transition-colors"
     :class="[

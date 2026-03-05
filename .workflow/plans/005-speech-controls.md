@@ -13,9 +13,9 @@ Add text-to-speech for reading problems aloud (critical for K-2 learners who can
 
 ## Progress
 
-**Completed:** Phase 1, Phase 2, Phase 3
+**Completed:** Phase 1, Phase 2, Phase 3, Phase 4
 **In Progress:** —
-**Next:** Phase 4
+**Next:** —
 
 ---
 
@@ -56,11 +56,11 @@ Add text-to-speech for reading problems aloud (critical for K-2 learners who can
 
 ---
 
-## Phase 4: Accessibility & Settings
+## Phase 4: Accessibility & Settings ✓
 **Goal:** User preferences for speech features
 
-1. [ ] [IMP] Add speech settings to user preferences: enable/disable TTS, enable/disable STT, voice selection, speech rate, auto-read problems on load
-2. [ ] [IMP] Integrate with family accounts: parent can configure speech settings per child, default auto-read ON for K-2 grade level
-3. [ ] [TST] Verify: settings persist across sessions, per-child settings work in family accounts, ARIA labels on all speech controls
+1. [x] [IMP] Add speech settings to user preferences: enable/disable TTS, enable/disable STT, voice selection, speech rate, auto-read problems on load
+2. [x] [IMP] Integrate with family accounts: parent can configure speech settings per child, default auto-read ON for K-2 grade level
+3. [x] [TST] Verify: settings persist across sessions, per-child settings work in family accounts, ARIA labels on all speech controls
 
-**Validation:** Speech features are configurable per user. Settings persist. Parent can enable auto-read for young children. All speech UI elements are accessible.
+**Validation:** ✓ `user_preferences` table with TTS/STT settings. Settings page at `/settings`. Parent can configure per-child speech settings from `/family/child/:id`. Auto-read defaults ON for K-2 age children. ARIA labels on SpeakButton and VoiceMicButton. 9 new API tests, all 57 tests pass.

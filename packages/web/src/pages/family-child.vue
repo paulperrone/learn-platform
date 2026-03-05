@@ -2,9 +2,12 @@
 import { ref, onMounted, computed } from "vue";
 import { useRoute } from "vue-router";
 import { useApi, withErrorToast } from "@/composables/useApi";
+import { useToast } from "@/composables/useToast";
+import type { SpeechSettings } from "@learn/shared";
 
 const route = useRoute();
 const api = useApi();
+const toast = useToast();
 
 const childId = computed(() => route.params.childId as string);
 const childName = ref("");
@@ -13,6 +16,14 @@ const topicStates = ref<any[]>([]);
 const allTopics = ref<any[]>([]);
 const loading = ref(true);
 const error = ref(false);
+
+// Speech settings for this child
+const speechLoading = ref(true);
+const speechSaving = ref(false);
+const childTtsEnabled = ref(true);
+const childTtsRate = ref(0.9);
+const childTtsAutoRead = ref(false);
+const childSttEnabled = ref(true);
 
 onMounted(async () => {
   const result = await withErrorToast(async () => {
@@ -30,11 +41,48 @@ onMounted(async () => {
     allTopics.value = result.topicsData.topics;
     const child = result.familyData.members.find((m: any) => m.userId === childId.value);
     childName.value = child?.name ?? "Child";
+
+    // Determine K-2 default for auto-read based on birthYear
+    const childUser = result.familyData.members.find((m: any) => m.userId === childId.value);
+    const birthYear = childUser?.birthYear as number | undefined;
+    const currentYear = new Date().getFullYear();
+    const isK2Age = birthYear ? (currentYear - birthYear) <= 8 : false;
+
+    // Load child speech settings
+    const speechSettings = await withErrorToast(
+      () => api.getChildSettings(childId.value),
+      "Loading speech settings",
+    );
+    if (speechSettings) {
+      childTtsEnabled.value = speechSettings.ttsEnabled;
+      childTtsRate.value = speechSettings.ttsRate;
+      childTtsAutoRead.value = speechSettings.ttsAutoRead;
+      childSttEnabled.value = speechSettings.sttEnabled;
+    } else if (isK2Age) {
+      // Default auto-read ON for K-2 age children
+      childTtsAutoRead.value = true;
+    }
+    speechLoading.value = false;
   } else {
     error.value = true;
   }
   loading.value = false;
 });
+
+async function saveSpeechSettings() {
+  speechSaving.value = true;
+  await withErrorToast(
+    () => api.updateChildSettings(childId.value, {
+      ttsEnabled: childTtsEnabled.value,
+      ttsRate: childTtsRate.value,
+      ttsAutoRead: childTtsAutoRead.value,
+      sttEnabled: childSttEnabled.value,
+    }),
+    "Saving speech settings",
+  );
+  speechSaving.value = false;
+  toast.success("Speech settings saved");
+}
 
 const stateMap = computed(() => {
   const map = new Map<string, any>();
@@ -138,6 +186,38 @@ const progressPercent = computed(() =>
             class="bg-green-500 h-3 rounded-full transition-all duration-500"
             :style="{ width: progressPercent + '%' }"
           />
+        </div>
+      </div>
+
+      <!-- Speech Settings -->
+      <div v-if="!speechLoading" class="bg-white rounded-lg shadow-sm border border-gray-200 p-5 mb-6">
+        <h3 class="text-base font-semibold text-gray-800 mb-4">Speech Settings</h3>
+        <div class="space-y-4">
+          <label class="flex items-center gap-3 cursor-pointer">
+            <input type="checkbox" v-model="childTtsEnabled" class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500" />
+            <span class="text-sm text-gray-700">Enable read-aloud</span>
+          </label>
+          <label class="flex items-center gap-3 cursor-pointer">
+            <input type="checkbox" v-model="childTtsAutoRead" :disabled="!childTtsEnabled" class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 disabled:opacity-50" />
+            <span class="text-sm text-gray-700" :class="{ 'opacity-50': !childTtsEnabled }">Auto-read problems</span>
+          </label>
+          <div>
+            <label class="block text-sm text-gray-700 mb-1" :class="{ 'opacity-50': !childTtsEnabled }">
+              Speed: {{ childTtsRate.toFixed(1) }}x
+            </label>
+            <input type="range" v-model.number="childTtsRate" min="0.5" max="1.5" step="0.1" :disabled="!childTtsEnabled" class="w-full disabled:opacity-50" />
+          </div>
+          <label class="flex items-center gap-3 cursor-pointer">
+            <input type="checkbox" v-model="childSttEnabled" class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500" />
+            <span class="text-sm text-gray-700">Enable voice input</span>
+          </label>
+          <button
+            @click="saveSpeechSettings"
+            :disabled="speechSaving"
+            class="px-4 py-2 bg-blue-600 text-white text-sm rounded-lg font-medium hover:bg-blue-700 disabled:opacity-50"
+          >
+            {{ speechSaving ? "Saving..." : "Save Speech Settings" }}
+          </button>
         </div>
       </div>
 

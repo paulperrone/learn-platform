@@ -200,6 +200,17 @@ export const learnSessions = sqliteTable("learn_sessions", {
   index("learn_sessions_active_idx").on(table.userId, table.endedAt),
 ]);
 
+export const userPreferences = sqliteTable("user_preferences", {
+  userId: text("user_id").primaryKey().references(() => users.id),
+  ttsEnabled: integer("tts_enabled", { mode: "boolean" }).notNull().default(true),
+  ttsRate: real("tts_rate").notNull().default(0.9),
+  ttsVoiceName: text("tts_voice_name"),
+  ttsAutoRead: integer("tts_auto_read", { mode: "boolean" }).notNull().default(false),
+  sttEnabled: integer("stt_enabled", { mode: "boolean" }).notNull().default(true),
+  createdAt: text("created_at").notNull().$defaultFn(() => new Date().toISOString()),
+  updatedAt: text("updated_at").notNull().$defaultFn(() => new Date().toISOString()),
+});
+
 export const llmModelConfig = sqliteTable("llm_model_config", {
   tier: text("tier").primaryKey(), // 'cheap' | 'capable'
   modelId: text("model_id").notNull(),

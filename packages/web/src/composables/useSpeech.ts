@@ -1,4 +1,5 @@
-import { ref, onUnmounted } from "vue";
+import { ref, watch, onUnmounted } from "vue";
+import { useSpeechPrefs } from "./useSpeechPrefs";
 
 /**
  * Convert math notation to speakable text for young learners.
@@ -36,13 +37,17 @@ export function mathToSpeech(text: string): string {
 export type SpeechState = "idle" | "speaking" | "paused";
 
 export function useSpeech() {
+  const prefs = useSpeechPrefs();
   const state = ref<SpeechState>("idle");
   const supported = ref(typeof window !== "undefined" && "speechSynthesis" in window);
   const voices = ref<SpeechSynthesisVoice[]>([]);
   const selectedVoice = ref<SpeechSynthesisVoice | null>(null);
-  const rate = ref(0.9); // Slightly slower for young learners
+  const rate = ref(prefs.ttsRate.value);
 
   let currentUtterance: SpeechSynthesisUtterance | null = null;
+
+  // Sync rate from preferences
+  watch(() => prefs.ttsRate.value, (v) => { rate.value = v; });
 
   function loadVoices() {
     if (!supported.value) return;
@@ -54,6 +59,15 @@ export function useSpeech() {
   }
 
   function pickDefaultVoice() {
+    // If user has a saved voice preference, try to match it
+    if (prefs.ttsVoiceName.value) {
+      const saved = voices.value.find((v) => v.name === prefs.ttsVoiceName.value);
+      if (saved) {
+        selectedVoice.value = saved;
+        return;
+      }
+    }
+
     if (selectedVoice.value) return;
 
     const lang = "en";
@@ -71,13 +85,18 @@ export function useSpeech() {
     selectedVoice.value = preferred ?? englishVoices[0] ?? voices.value[0] ?? null;
   }
 
+  // Re-pick voice when preferences load
+  watch(() => prefs.ttsVoiceName.value, () => {
+    if (voices.value.length > 0) pickDefaultVoice();
+  });
+
   if (supported.value) {
     loadVoices();
     speechSynthesis.addEventListener("voiceschanged", loadVoices);
   }
 
   function speak(text: string, { convertMath = true }: { convertMath?: boolean } = {}) {
-    if (!supported.value) return;
+    if (!supported.value || !prefs.ttsEnabled.value) return;
 
     stop();
 
@@ -146,6 +165,8 @@ export function useSpeech() {
   return {
     state,
     supported,
+    ttsEnabled: prefs.ttsEnabled,
+    ttsAutoRead: prefs.ttsAutoRead,
     voices,
     selectedVoice,
     rate,

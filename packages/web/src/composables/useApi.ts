@@ -1,5 +1,6 @@
 import { authClient } from "./useAuth";
 import { useToast } from "./useToast";
+import type { SpeechSettings } from "@learn/shared";
 
 const API_BASE = "/api";
 
@@ -196,6 +197,20 @@ export function useApi() {
         method: "PUT",
         body: JSON.stringify({ monthlyBudgetCents }),
       }),
+    // Settings
+    getSettings: () => request<SpeechSettings>("/settings"),
+    updateSettings: (data: Partial<SpeechSettings>) =>
+      request<{ success: boolean }>("/settings", {
+        method: "PUT",
+        body: JSON.stringify(data),
+      }),
+    getChildSettings: (childId: string) => request<SpeechSettings>(`/settings/${childId}`),
+    updateChildSettings: (childId: string, data: Partial<SpeechSettings>) =>
+      request<{ success: boolean }>(`/settings/${childId}`, {
+        method: "PUT",
+        body: JSON.stringify(data),
+      }),
+
     // Admin
     getAdminStats: () =>
       request<{

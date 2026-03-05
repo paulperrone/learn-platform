@@ -129,3 +129,13 @@ export type WorkedExampleStep = {
 };
 
 export type ConfidenceRating = 1 | 2 | 3 | 4 | 5;
+
+// === Speech Settings ===
+
+export type SpeechSettings = {
+  ttsEnabled: boolean;
+  ttsRate: number;
+  ttsVoiceName: string | null;
+  ttsAutoRead: boolean;
+  sttEnabled: boolean;
+};

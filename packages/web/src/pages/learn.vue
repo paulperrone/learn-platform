@@ -1,15 +1,33 @@
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
+import { ref, watch, onMounted } from "vue";
 import { useApi, withErrorToast } from "@/composables/useApi";
+import { useSpeech } from "@/composables/useSpeech";
+import { useSpeechPrefs } from "@/composables/useSpeechPrefs";
 import ProblemView from "@/components/ProblemView.vue";
 import WorkedExample from "@/components/WorkedExample.vue";
 
 const api = useApi();
+const speech = useSpeech();
+const speechPrefs = useSpeechPrefs();
+
+// Load speech preferences on mount
+speechPrefs.load();
+
 const sessionId = ref<string | null>(null);
 const currentItem = ref<any>(null);
 const loading = ref(false);
 const sessionActive = ref(false);
 const recovering = ref(true);
+
+// Auto-read problem when it appears and ttsAutoRead is enabled
+watch(
+  () => currentItem.value?.problem?.question,
+  (question) => {
+    if (question && speechPrefs.ttsAutoRead.value && speech.supported.value) {
+      speech.speak(question);
+    }
+  },
+);
 
 onMounted(async () => {
   const result = await withErrorToast(

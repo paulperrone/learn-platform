@@ -131,3 +131,25 @@ Inserting a session row directly into the `sessions` table and setting a `Cookie
 **Area:** Hono / Cloudflare Workers
 
 Use `c.req.parseBody()` (not `c.req.formData()`) to parse multipart form data in Hono on Workers. Returns an object where file fields are `File` instances. Check with `instanceof File` before processing. Works with the standard `FormData` upload pattern from browsers.
+
+---
+
+### 2026-03-05: vue-tsc rootDir conflict with cross-package type imports
+
+**Source:** User session
+**Area:** Vue / TypeScript / pnpm monorepo
+
+Setting `rootDir: "src"` in web package `tsconfig.json` causes `TS6059` errors when importing types from `@learn/shared` (which resolves outside `rootDir` via path alias). Even `import type` triggers this. Fix: remove `rootDir` from the web tsconfig — it's not needed for type-checking (`outDir` controls output). API package works because it doesn't set `rootDir`.
+
+**Context:** Adding `SpeechSettings` type import from `@learn/shared` to web composables.
+
+---
+
+### 2026-03-05: Better-Auth signup flow works in vitest Workers pool for HTTP auth tests
+
+**Source:** User session
+**Area:** Better-Auth / Testing / @cloudflare/vitest-pool-workers
+
+Full signup flow (`POST /api/auth/sign-up/email`) works in miniflare Workers pool tests. Response includes `set-cookie` header with `better-auth.session_token=<value>`. Extract via regex, use as `Cookie` header for subsequent authenticated requests. ~50-70ms per signup — fast enough for focused test files. This is the ONLY reliable way to test authenticated routes via HTTP; `createAuthSession()` helper doesn't work because Better-Auth hashes tokens internally.
+
+**Context:** Testing settings API routes (GET/PUT /api/settings) that require authentication.
