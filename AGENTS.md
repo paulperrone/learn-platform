@@ -62,3 +62,4 @@ npx tsx tools/validate-content.ts       # Validate problem/example completeness
 For past decisions, see DECISIONS.md.
 For gotchas, see LEARNINGS.md.
 For research, see RESEARCH.md.
+For learning science reference, see docs/learning-science.md (load relevant sections when making pedagogy/feature decisions).
