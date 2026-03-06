@@ -24,11 +24,42 @@ const currentQuestion = ref<any>(null);
 const questionNumber = ref(0);
 const diagnosticResult = ref<DiagnosticResult | null>(null);
 
+const storageKey = computed(() => `diagnostic-session-${subjectId.value}`);
+
 onMounted(async () => {
   // Load subject name for display
   const subjects = await withErrorToast(() => api.getPublicSubjects());
   const subject = subjects?.subjects?.find((s: any) => s.id === subjectId.value);
   subjectName.value = subject?.name ?? subjectId.value;
+
+  // Try to resume an active session
+  const savedSessionId = sessionStorage.getItem(storageKey.value);
+  if (savedSessionId) {
+    loading.value = true;
+    phase.value = "running";
+
+    const userId = isAuthenticated.value
+      ? await api.getUserId().catch(() => undefined)
+      : undefined;
+
+    const resumed = await api.resumeDiagnostic({
+      userId,
+      subjectId: subjectId.value,
+    }).catch(() => null);
+
+    if (resumed?.sessionId && resumed?.question) {
+      diagnosticSessionId.value = resumed.sessionId;
+      currentQuestion.value = resumed.question;
+      questionNumber.value = resumed.question.questionNumber;
+      loading.value = false;
+      return;
+    }
+
+    // Stale session — clear storage
+    sessionStorage.removeItem(storageKey.value);
+    phase.value = "intro";
+    loading.value = false;
+  }
 });
 
 async function startDiagnostic() {
@@ -46,6 +77,7 @@ async function startDiagnostic() {
 
   if (data) {
     diagnosticSessionId.value = data.sessionId;
+    sessionStorage.setItem(storageKey.value, data.sessionId);
     currentQuestion.value = data.question;
     questionNumber.value = data.question.questionNumber;
   } else {
@@ -66,6 +98,7 @@ async function handleAnswer(data: { answer: string; correct: boolean; responseMs
   if (resp) {
     if (resp.done && resp.result) {
       diagnosticResult.value = resp.result;
+      sessionStorage.removeItem(storageKey.value);
       phase.value = "complete";
     } else if (resp.question) {
       currentQuestion.value = resp.question;
@@ -82,6 +115,7 @@ function goToDashboard() {
 function retake() {
   diagnosticResult.value = null;
   diagnosticSessionId.value = null;
+  sessionStorage.removeItem(storageKey.value);
   currentQuestion.value = null;
   questionNumber.value = 0;
   startDiagnostic();

@@ -91,6 +91,20 @@ learnRoutes.post("/diagnostic/start", async (c) => {
   return c.json(result);
 });
 
+learnRoutes.post("/diagnostic/resume", async (c) => {
+  const db = getDb(c.env.DB);
+  const diagnostic = createDiagnosticService(db);
+  const body = await c.req.json<{
+    userId?: string;
+    anonymousToken?: string;
+    subjectId: string;
+  }>();
+
+  if (!body.subjectId) return c.json({ error: "subjectId required" }, 400);
+  const result = await diagnostic.resume(body);
+  return c.json(result);
+});
+
 learnRoutes.post("/diagnostic/respond", async (c) => {
   const db = getDb(c.env.DB);
   const diagnostic = createDiagnosticService(db);

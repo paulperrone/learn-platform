@@ -110,6 +110,11 @@ export function useApi() {
         method: "POST",
         body: JSON.stringify(params),
       }),
+    resumeDiagnostic: (params: { userId?: string; anonymousToken?: string; subjectId: string }) =>
+      request<{ sessionId: string; question: any } | null>("/learn/diagnostic/resume", {
+        method: "POST",
+        body: JSON.stringify(params),
+      }),
     respondDiagnostic: (sessionId: string, answer: string) =>
       request<{ done: boolean; correct: boolean; question?: any; result?: DiagnosticResult }>("/learn/diagnostic/respond", {
         method: "POST",
@@ -330,10 +335,12 @@ export function useApi() {
 
     getContentMatrix: () =>
       request<{
+        subjects: { id: string; name: string; gradeRange: string }[];
         matrix: {
           topicId: string;
           topicName: string;
           gradeLevel: number;
+          subjectId: string;
           subjectName: string;
           totalInstructional: number;
           totalAssessment: number;

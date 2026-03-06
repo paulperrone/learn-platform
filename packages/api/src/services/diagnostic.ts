@@ -111,11 +111,12 @@ export function createDiagnosticService(db: DB) {
       );
       for (const grade of sortedByDistance) {
         const candidates = byGrade.get(grade) ?? [];
-        // Prefer topics with more prereqs (better signal), not yet asked
         const available = candidates
-          .filter((t) => !state.askedTopicIds.includes(t.id))
-          .sort((a, b) => (prereqMap.get(b.id)?.length ?? 0) - (prereqMap.get(a.id)?.length ?? 0));
-        if (available.length > 0) return available[0].id;
+          .filter((t) => !state.askedTopicIds.includes(t.id));
+        if (available.length > 0) {
+          // Randomly pick among available topics for variance across sessions
+          return available[Math.floor(Math.random() * available.length)].id;
+        }
       }
       return null;
     }
@@ -401,10 +402,10 @@ export function createDiagnosticService(db: DB) {
       }
 
       const problems = await getTopicProblems(firstTopicId);
-      const problem = problems[0];
-      if (!problem) {
+      if (problems.length === 0) {
         return { error: "No problems available for diagnostic" };
       }
+      const problem = problems[Math.floor(Math.random() * problems.length)];
 
       state.currentTopicId = firstTopicId;
       state.currentQuestionId = problem.id;
@@ -558,7 +559,10 @@ export function createDiagnosticService(db: DB) {
       }
 
       const nextProblems = await getTopicProblems(nextTopicId);
-      const nextProblem = nextProblems.find((p) => !state.askedQuestionIds.includes(p.id)) ?? nextProblems[0];
+      const unseenProblems = nextProblems.filter((p) => !state.askedQuestionIds.includes(p.id));
+      const nextProblem = unseenProblems.length > 0
+        ? unseenProblems[Math.floor(Math.random() * unseenProblems.length)]
+        : nextProblems[Math.floor(Math.random() * nextProblems.length)];
 
       state.currentTopicId = nextTopicId;
       state.currentQuestionId = nextProblem?.id ?? null;
@@ -581,6 +585,41 @@ export function createDiagnosticService(db: DB) {
           questionNumber: questionsAsked + 1,
           totalQuestions: null, // Adaptive: we don't know in advance
         } : null,
+      };
+    },
+
+    async resume(params: { userId?: string; anonymousToken?: string; subjectId: string }) {
+      const userFilter = params.userId
+        ? eq(schema.diagnosticSessions.userId, params.userId)
+        : params.anonymousToken
+          ? eq(schema.diagnosticSessions.anonymousToken, params.anonymousToken)
+          : null;
+      if (!userFilter) return null;
+
+      const row = await db.query.diagnosticSessions.findFirst({
+        where: and(
+          userFilter,
+          eq(schema.diagnosticSessions.subjectId, params.subjectId),
+          eq(schema.diagnosticSessions.status, "active")
+        ),
+      });
+      if (!row || !row.stateJson) return null;
+
+      const state: DiagnosticState = JSON.parse(row.stateJson);
+      if (!state.currentTopicId || !state.currentQuestionId) return null;
+
+      const problems = await getTopicProblems(state.currentTopicId);
+      const problem = problems.find((p) => p.id === state.currentQuestionId) ?? problems[0];
+      if (!problem) return null;
+
+      return {
+        sessionId: row.id,
+        question: {
+          topicId: state.currentTopicId,
+          problem,
+          questionNumber: state.askedTopicIds.length + 1,
+          totalQuestions: null,
+        },
       };
     },
 
