@@ -1,9 +1,10 @@
 # Learning Science Reference
 
 > Distilled principles and research guiding platform design. For quick context import into development sessions.
+> For the content taxonomy, dimensions, and creation strategies, see `content-system.md`.
 >
 > **Primary sources:** "The Math Academy Way" (Skycak, 2026), mathacademy.com/pedagogy, and independent learning science research.
-> **Last updated:** 2026-03-05
+> **Last updated:** 2026-03-06
 
 ---
 

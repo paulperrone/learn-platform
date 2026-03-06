@@ -77,6 +77,8 @@ Content depth maps roughly to educational stages, but the meaning of "depth" var
 
 **Seeded disciplines:** math, ela, science, history, languages, philosophy, arts, cs.
 
+**Content depth dimension:** Content items have a `content_depth` field (`survey`, `contextual`, `analytical`, `synthesis`) that controls analytical sophistication independent of topic depth. Combined with `presentation` (audience adaptation: `primary`, `intermediate`, `standard`, `advanced`), this enables the same topic to serve different learners — a 14-year-old gets a crisp age-appropriate survey while a 6-year-old gets a story-based introduction. See `docs/content-system.md` for the full content system reference.
+
 ### Non-Goals (MVP)
 
 - Multiple subjects (post-MVP — but graph architecture supports cross-subject prerequisites)

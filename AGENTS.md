@@ -59,6 +59,7 @@ just import-content   # Import content/ → local D1
 - Content is pre-generated offline, validated, then imported — LLM at runtime is for tutoring/grading only
 - Subjects belong to disciplines; disciplines define progression models (`mastery-gated`, `context-layered`, `flexible`)
 - Prerequisite edges have types: `required` (hard gate), `recommended` (context), `enriching` (suggestion)
+- Content has depth (`survey`, `contextual`, `analytical`, `synthesis`) and presentation (`primary`, `intermediate`, `standard`, `advanced`) dimensions. See `docs/content-system.md`.
 - FSRS state per user per topic; FIRe credit for encompassing relationships
 - Learning loop phases: pretest → instruction → guided → independent → review → remediation
 - Tests: co-located `__tests__/` directory, `*.test.ts` naming, `@cloudflare/vitest-pool-workers` for API tests with miniflare D1. New services and routes must include vitest tests. Use helpers from `packages/api/src/__tests__/helpers.ts` for DB setup and seeding.
@@ -85,6 +86,7 @@ When creating content (graphs, problems, worked examples) for any subject, follo
   - **Depth 3-5 (Contextual):** "Why did it happen?" — causes, effects, connections between events. Multiple perspectives introduced. Maps to middle school / 6-8.
   - **Depth 6-8 (Analytical):** "How do we know?" — primary sources, competing interpretations, historiography. Maps to high school / 9-12.
   - **Depth 9+ (Synthesis):** "What does it mean?" — thematic analysis, comparative history, constructing arguments from evidence. Maps to AP / undergraduate.
+- Content at each depth level must also be created at appropriate **presentation levels** (primary, intermediate, standard, advanced). A 14-year-old starting from scratch gets `survey` depth at `standard` presentation — NOT the primary-level version designed for 6-year-olds. The presentation adapts vocabulary, sentence complexity, and engagement style to the audience without changing the analytical sophistication.
 - The SAME topic can appear at multiple depth layers with different treatment:
   - Survey: "The American Revolution happened in 1776. The colonists wanted independence from Britain."
   - Contextual: "Taxation without representation, Enlightenment ideas, and colonial identity drove the revolution."

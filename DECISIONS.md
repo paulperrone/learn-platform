@@ -733,3 +733,30 @@ Child creation now creates both an org member (student role) and an account_link
 **Alternatives rejected:**
 - Separate graph implementations per discipline: Duplicates infrastructure, prevents cross-discipline edges
 - Single "strength" numeric as proxy for type: Loses semantic meaning; 0.5 strength is ambiguous — is it "recommended" or "weak required"?
+
+---
+
+### 2026-03-06: Content depth dimension for multi-layered analytical treatment
+
+**Source:** User session
+
+**Context:** Context-layered disciplines (history, philosophy) need the same topic treated at different analytical sophistication levels. A topic like "American Revolution" needs survey-level content ("what happened"), contextual-level ("why it happened"), analytical-level ("primary source analysis"), and synthesis-level ("comparative revolutionary theory"). Meanwhile, the same survey might be packaged differently for a 6-year-old vs. a 14-year-old.
+
+**Decision:** Add `content_depth` column to both `instructional_content` and `assessment_content` tables. Values: `survey` | `contextual` | `analytical` | `synthesis`. This is independent of the existing `presentation` column (which handles audience adaptation: primary/intermediate/standard/advanced). Content depth × presentation = full coverage matrix.
+
+**How the two axes compose:**
+- `content_depth` = what analytical level is the content at (how deep)
+- `presentation` = who is the audience (how is it packaged)
+- A 14-year-old starting history gets `(survey, standard)` — age-appropriate intro, not baby content
+- A 6-year-old starting history gets `(survey, primary)` — simple narrative with pictures
+- A 14-year-old going deeper gets `(contextual, standard)` — causes, effects, multiple perspectives
+
+**Why separate from topic depth:**
+- Topic depth is structural (graph position computed from prerequisites)
+- Content depth is about treatment — a root topic still has content at all analytical levels
+- For mastery-gated disciplines, content depth is mostly `survey` because the analytical depth IS the topic progression
+- For context-layered disciplines, content depth is the primary axis of learning progression
+
+**Alternatives rejected:**
+- Encoding depth in topic IDs (e.g., american-revolution-survey, american-revolution-analytical): Explodes the graph, duplicates prerequisite edges, breaks the "one topic = one concept" principle
+- Using `presentation` for both audience and depth: Conflates two independent concerns — a 14-year-old needs standard presentation at survey depth, not primary presentation

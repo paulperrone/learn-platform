@@ -42,6 +42,7 @@ export const instructionalContent = sqliteTable("instructional_content", {
   flavor: text("flavor").notNull().default("classic"),
   locale: text("locale").notNull().default("en"),
   presentation: text("presentation").notNull().default("individual"),
+  contentDepth: text("content_depth").notNull().default("survey"), // 'survey' | 'contextual' | 'analytical' | 'synthesis'
   version: integer("version").notNull().default(1),
   title: text("title").notNull(),
   stepsJson: text("steps_json").notNull(),
@@ -51,6 +52,7 @@ export const instructionalContent = sqliteTable("instructional_content", {
 }, (table) => [
   index("ic_topic_idx").on(table.topicId),
   index("ic_dimensions_idx").on(table.topicId, table.flavor, table.locale, table.presentation, table.version),
+  index("ic_depth_idx").on(table.topicId, table.contentDepth),
 ]);
 
 export const assessmentContent = sqliteTable("assessment_content", {
@@ -59,6 +61,7 @@ export const assessmentContent = sqliteTable("assessment_content", {
   flavor: text("flavor").notNull().default("classic"),
   locale: text("locale").notNull().default("en"),
   presentation: text("presentation").notNull().default("individual"),
+  contentDepth: text("content_depth").notNull().default("survey"), // 'survey' | 'contextual' | 'analytical' | 'synthesis'
   version: integer("version").notNull().default(1),
   type: text("type").notNull().default("text-qa"),
   difficulty: text("difficulty").notNull(),
@@ -72,6 +75,7 @@ export const assessmentContent = sqliteTable("assessment_content", {
   index("ac_topic_idx").on(table.topicId),
   index("ac_dimensions_idx").on(table.topicId, table.flavor, table.locale, table.presentation, table.version),
   index("ac_type_idx").on(table.topicId, table.type),
+  index("ac_depth_idx").on(table.topicId, table.contentDepth),
 ]);
 
 export const prerequisites = sqliteTable("prerequisites", {
