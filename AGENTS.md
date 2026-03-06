@@ -35,16 +35,20 @@ tools/               # Offline content pipeline (generate, validate, import)
 
 ## Commands
 
+Use the justfile for all common operations. Run `just <recipe>` or `just --list` to see all recipes.
+
 ```bash
-pnpm dev              # Start API (8787) + frontend (5173) concurrently
-pnpm test             # Run vitest (Workers pool + miniflare D1)
-pnpm db:generate      # Generate Drizzle migration
-pnpm db:migrate       # Apply migration to local D1
-pnpm typecheck        # TypeCheck all packages
-npx tsx tools/import-content.ts         # Import content/ → local D1
-npx tsx tools/validate-graph.ts         # Validate DAG, no cycles
-npx tsx tools/validate-content.ts       # Validate problem/example completeness
+just dev              # Start API (8787) + frontend (5173) concurrently
+just test             # Run tests (Workers pool + miniflare D1) — ALWAYS use this, never `pnpm vitest run`
+just typecheck        # TypeCheck all packages
+just validate         # Full validation (typecheck + content)
+just validate-content # Validate content only (graph DAG + problems)
+just db-generate      # Generate Drizzle migration
+just db-migrate       # Apply migration to local D1
+just import-content   # Import content/ → local D1
 ```
+
+> **IMPORTANT:** Never run `pnpm vitest run` or `npx vitest` directly. Workers-pool tests import `cloudflare:test` which only resolves through the `@cloudflare/vitest-pool-workers` runner configured in `packages/api/vitest.config.ts`. Use `just test` (or `pnpm test`) which invokes the correct runner. Running vitest directly will show 15+ false failures.
 
 ## Conventions
 

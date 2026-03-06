@@ -8,6 +8,11 @@
 dev:
     pnpm dev
 
+# Run all tests (Workers pool + miniflare D1)
+# IMPORTANT: Always use this, never `pnpm vitest run` directly — Workers tests need the pool runner
+test:
+    pnpm test
+
 # TypeScript validation
 typecheck:
     pnpm typecheck

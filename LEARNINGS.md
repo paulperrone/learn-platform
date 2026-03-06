@@ -187,3 +187,14 @@ Full signup flow (`POST /api/auth/sign-up/email`) works in miniflare Workers poo
 LLMs prompted to create "concrete, hands-on" K-2 content will generate physical manipulation instructions (hold up fingers, point at objects, draw, speak aloud) by default. These are good classroom pedagogy but impossible on a screen-based platform. 48% of initial worked examples had this problem. Fix: generation prompts must explicitly describe the delivery medium and provide screen-native translation examples for common physical actions. Validate with regex patterns post-generation.
 
 **Context:** First content quality review. Added platform-medium constraints to generate-examples.ts, generate-problems.ts, and pattern-based validation to validate-content.ts.
+
+---
+
+### 2026-03-06: Never run `pnpm vitest run` directly — use `pnpm test` or `just test`
+
+**Source:** User session
+**Area:** Testing / @cloudflare/vitest-pool-workers
+
+Running `pnpm vitest run` (or `npx vitest`) directly skips the Workers pool runner. All tests that import `cloudflare:test` fail with "Cannot find package" errors (15+ false failures). The correct command is `pnpm test` (which delegates to `pnpm --filter api test`) or `just test`, both of which use the `@cloudflare/vitest-pool-workers` config from `packages/api/vitest.config.ts`.
+
+**Context:** Only `packages/api/src/__tests__/services/grading.test.ts` (pure logic, no Workers deps) passes under bare vitest. All other test files need the Workers pool.
