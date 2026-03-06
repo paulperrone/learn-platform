@@ -35,19 +35,46 @@ export function createGraphService(db: DB) {
       // Get all prerequisites
       const allPrereqs = await db.select().from(schema.prerequisites);
 
-      // Build prereq map: topicId → list of required topicIds
-      const prereqMap = new Map<string, string[]>();
+      // Get discipline progression models for subjects
+      const subjectRows = await db.select({ id: schema.subjects.id, disciplineId: schema.subjects.disciplineId }).from(schema.subjects);
+      const discRows = await db.select({ id: schema.disciplines.id, progressionModel: schema.disciplines.progressionModel }).from(schema.disciplines);
+      const discModelMap = new Map(discRows.map((d) => [d.id, d.progressionModel]));
+      const subjectDiscMap = new Map(subjectRows.map((s) => [s.id, s.disciplineId]));
+
+      // Build prereq map: topicId → list of { fromTopicId, type }
+      const prereqMap = new Map<string, { fromTopicId: string; type: string }[]>();
       for (const p of allPrereqs) {
         const list = prereqMap.get(p.toTopicId) ?? [];
-        list.push(p.fromTopicId);
+        list.push({ fromTopicId: p.fromTopicId, type: p.type });
         prereqMap.set(p.toTopicId, list);
       }
 
-      // Frontier: all prereqs mastered AND topic not yet started
+      // Build topic → subject map
+      const topicSubjectMap = new Map(allTopics.map((t) => [t.id, t.subjectId]));
+
+      // Frontier: gating depends on discipline progression model
       const frontier = allTopics.filter((topic) => {
         if (startedIds.has(topic.id)) return false;
         const prereqs = prereqMap.get(topic.id) ?? [];
-        return prereqs.every((pid) => masteredIds.has(pid));
+        if (prereqs.length === 0) return true;
+
+        const disciplineId = subjectDiscMap.get(topic.subjectId);
+        const model = disciplineId ? discModelMap.get(disciplineId) : "mastery-gated";
+
+        if (model === "flexible") {
+          // Flexible: all topics available regardless of prerequisites
+          return true;
+        }
+        if (model === "context-layered") {
+          // Context-layered: only 'required' prereqs gate; 'recommended' and 'enriching' don't block
+          return prereqs
+            .filter((p) => p.type === "required")
+            .every((p) => masteredIds.has(p.fromTopicId));
+        }
+        // mastery-gated (default): all 'required' and 'recommended' prereqs must be mastered
+        return prereqs
+          .filter((p) => p.type !== "enriching")
+          .every((p) => masteredIds.has(p.fromTopicId));
       });
 
       return {
@@ -252,10 +279,27 @@ export function createGraphService(db: DB) {
     },
 
     /**
-     * Get all subjects.
+     * Get all subjects with discipline info.
      */
     async getSubjects() {
-      return db.select().from(schema.subjects);
+      return db
+        .select({
+          id: schema.subjects.id,
+          name: schema.subjects.name,
+          description: schema.subjects.description,
+          gradeRange: schema.subjects.gradeRange,
+          topicCount: schema.subjects.topicCount,
+          disciplineId: schema.subjects.disciplineId,
+          createdAt: schema.subjects.createdAt,
+        })
+        .from(schema.subjects);
+    },
+
+    /**
+     * Get all disciplines.
+     */
+    async getDisciplines() {
+      return db.select().from(schema.disciplines);
     },
   };
 }

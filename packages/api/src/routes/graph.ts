@@ -5,6 +5,13 @@ import { createGraphService } from "../services/graph.js";
 
 export const graphRoutes = new Hono<Env>();
 
+graphRoutes.get("/disciplines", async (c) => {
+  const db = getDb(c.env.DB);
+  const graph = createGraphService(db);
+  const disciplines = await graph.getDisciplines();
+  return c.json({ disciplines });
+});
+
 graphRoutes.get("/subjects", async (c) => {
   const db = getDb(c.env.DB);
   const graph = createGraphService(db);

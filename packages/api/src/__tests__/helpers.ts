@@ -1,5 +1,6 @@
 import { env } from "cloudflare:test";
 import { drizzle } from "drizzle-orm/d1";
+import { eq } from "drizzle-orm";
 import * as schema from "../db/schema.js";
 import app from "../index.js";
 
@@ -49,6 +50,7 @@ export async function resetDb() {
     "prerequisites",
     "topics",
     "subjects",
+    "disciplines",
     "users",
   ];
   for (const t of tables) {
@@ -114,9 +116,32 @@ export async function seedAdminUser(overrides: Partial<typeof schema.users.$infe
   return seedUser({ role: "admin", ...overrides });
 }
 
+export async function seedDiscipline(overrides: Partial<typeof schema.disciplines.$inferInsert> = {}) {
+  const db = getTestDb();
+  const id = overrides.id ?? "math";
+  // Upsert: if discipline already exists, skip
+  const existing = await db.select().from(schema.disciplines).where(eq(schema.disciplines.id, id));
+  if (existing.length > 0) return existing[0];
+  const [disc] = await db
+    .insert(schema.disciplines)
+    .values({
+      id,
+      name: overrides.name ?? "Mathematics",
+      description: overrides.description ?? "Test discipline",
+      progressionModel: overrides.progressionModel ?? "mastery-gated",
+      createdAt: new Date().toISOString(),
+      ...overrides,
+    })
+    .returning();
+  return disc;
+}
+
 export async function seedSubject(overrides: Partial<typeof schema.subjects.$inferInsert> = {}) {
   const db = getTestDb();
   const id = overrides.id ?? `subj-${crypto.randomUUID().slice(0, 8)}`;
+  const disciplineId = overrides.disciplineId ?? "math";
+  // Ensure discipline exists
+  await seedDiscipline({ id: disciplineId });
   const now = new Date().toISOString();
   const [subj] = await db
     .insert(schema.subjects)
@@ -124,6 +149,7 @@ export async function seedSubject(overrides: Partial<typeof schema.subjects.$inf
       id,
       name: overrides.name ?? "Foundational Mathematics",
       description: overrides.description ?? "Test subject",
+      disciplineId,
       gradeRange: overrides.gradeRange ?? "K-5",
       createdAt: now,
       ...overrides,
@@ -364,8 +390,12 @@ const SCHEMA_STATEMENTS = [
   'CREATE TABLE users (id text PRIMARY KEY NOT NULL, name text NOT NULL, email text NOT NULL, email_verified integer DEFAULT 0 NOT NULL, image text, birth_year integer, managed_by text, role text, banned integer, ban_reason text, ban_expires text, created_at text NOT NULL, updated_at text NOT NULL)',
   'CREATE UNIQUE INDEX users_email_idx ON users (email)',
 
-  // subjects (no FK deps)
-  'CREATE TABLE subjects (id text PRIMARY KEY NOT NULL, name text NOT NULL, description text NOT NULL, grade_range text NOT NULL, topic_count integer DEFAULT 0 NOT NULL, created_at text NOT NULL)',
+  // disciplines (no FK deps)
+  'CREATE TABLE disciplines (id text PRIMARY KEY NOT NULL, name text NOT NULL, description text NOT NULL, progression_model text DEFAULT \'mastery-gated\' NOT NULL, created_at text NOT NULL)',
+
+  // subjects (FK → disciplines)
+  'CREATE TABLE subjects (id text PRIMARY KEY NOT NULL, discipline_id text DEFAULT \'math\' NOT NULL, name text NOT NULL, description text NOT NULL, grade_range text NOT NULL, topic_count integer DEFAULT 0 NOT NULL, created_at text NOT NULL, FOREIGN KEY (discipline_id) REFERENCES disciplines(id))',
+  'CREATE INDEX subjects_discipline_idx ON subjects (discipline_id)',
 
   // verifications (no FK deps)
   'CREATE TABLE verifications (id text PRIMARY KEY NOT NULL, identifier text NOT NULL, value text NOT NULL, expires_at text NOT NULL, created_at text NOT NULL, updated_at text NOT NULL)',
@@ -399,7 +429,7 @@ const SCHEMA_STATEMENTS = [
   'CREATE INDEX ac_type_idx ON assessment_content (topic_id, type)',
 
   // prerequisites (FK → topics)
-  'CREATE TABLE prerequisites (id integer PRIMARY KEY AUTOINCREMENT NOT NULL, from_topic_id text NOT NULL, to_topic_id text NOT NULL, strength real DEFAULT 1 NOT NULL, FOREIGN KEY (from_topic_id) REFERENCES topics(id), FOREIGN KEY (to_topic_id) REFERENCES topics(id))',
+  'CREATE TABLE prerequisites (id integer PRIMARY KEY AUTOINCREMENT NOT NULL, from_topic_id text NOT NULL, to_topic_id text NOT NULL, strength real DEFAULT 1 NOT NULL, type text DEFAULT \'required\' NOT NULL, FOREIGN KEY (from_topic_id) REFERENCES topics(id), FOREIGN KEY (to_topic_id) REFERENCES topics(id))',
   'CREATE UNIQUE INDEX prereq_unique_idx ON prerequisites (from_topic_id, to_topic_id)',
   'CREATE INDEX prereq_to_idx ON prerequisites (to_topic_id)',
 

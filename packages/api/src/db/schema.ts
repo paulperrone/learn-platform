@@ -2,14 +2,25 @@ import { sqliteTable, text, integer, real, index, uniqueIndex } from "drizzle-or
 
 // === Core Tables ===
 
+export const disciplines = sqliteTable("disciplines", {
+  id: text("id").primaryKey(),
+  name: text("name").notNull(),
+  description: text("description").notNull(),
+  progressionModel: text("progression_model").notNull(), // 'mastery-gated' | 'context-layered' | 'flexible'
+  createdAt: text("created_at").notNull().$defaultFn(() => new Date().toISOString()),
+});
+
 export const subjects = sqliteTable("subjects", {
   id: text("id").primaryKey(),
+  disciplineId: text("discipline_id").notNull().references(() => disciplines.id),
   name: text("name").notNull(),
   description: text("description").notNull(),
   gradeRange: text("grade_range").notNull(),
   topicCount: integer("topic_count").notNull().default(0),
   createdAt: text("created_at").notNull().$defaultFn(() => new Date().toISOString()),
-});
+}, (table) => [
+  index("subjects_discipline_idx").on(table.disciplineId),
+]);
 
 export const topics = sqliteTable("topics", {
   id: text("id").primaryKey(),
@@ -68,6 +79,7 @@ export const prerequisites = sqliteTable("prerequisites", {
   fromTopicId: text("from_topic_id").notNull().references(() => topics.id),
   toTopicId: text("to_topic_id").notNull().references(() => topics.id),
   strength: real("strength").notNull().default(1.0),
+  type: text("type").notNull().default("required"), // 'required' | 'recommended' | 'enriching'
 }, (table) => [
   uniqueIndex("prereq_unique_idx").on(table.fromTopicId, table.toTopicId),
   index("prereq_to_idx").on(table.toTopicId),

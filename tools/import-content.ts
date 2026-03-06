@@ -24,6 +24,7 @@ type GraphDefinition = {
   subjectName: string;
   description?: string;
   gradeRange?: string;
+  disciplineId?: string;
   topics: {
     id: string;
     name: string;
@@ -37,6 +38,7 @@ type GraphDefinition = {
     from: string;
     to: string;
     strength: number;
+    type?: "required" | "recommended" | "enriching";
   }[];
   encompassings?: {
     parent: string;
@@ -136,7 +138,7 @@ function main() {
 
   // Insert subject
   const insertSubject = db.prepare(
-    "INSERT INTO subjects (id, name, description, grade_range, topic_count, created_at) VALUES (?, ?, ?, ?, ?, ?)"
+    "INSERT INTO subjects (id, name, description, grade_range, topic_count, discipline_id, created_at) VALUES (?, ?, ?, ?, ?, ?, ?)"
   );
   insertSubject.run(
     graph.subjectId,
@@ -144,9 +146,10 @@ function main() {
     graph.description ?? "",
     graph.gradeRange ?? "K-5",
     graph.topics.length,
+    graph.disciplineId ?? "math",
     new Date().toISOString()
   );
-  console.log(`Inserted subject: ${graph.subjectName}`);
+  console.log(`Inserted subject: ${graph.subjectName} (discipline: ${graph.disciplineId ?? "math"})`);
 
   // Insert topics (graph nodes only — no content)
   const insertTopic = db.prepare(
@@ -206,11 +209,11 @@ function main() {
 
   // Insert prerequisites
   const insertPrereq = db.prepare(
-    "INSERT INTO prerequisites (from_topic_id, to_topic_id, strength) VALUES (?, ?, ?)"
+    "INSERT INTO prerequisites (from_topic_id, to_topic_id, strength, type) VALUES (?, ?, ?, ?)"
   );
   const insertPrereqs = db.transaction((prereqs: typeof graph.prerequisites) => {
     for (const p of prereqs) {
-      insertPrereq.run(p.from, p.to, p.strength);
+      insertPrereq.run(p.from, p.to, p.strength, p.type ?? "required");
     }
   });
   insertPrereqs(graph.prerequisites);

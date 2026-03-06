@@ -3,6 +3,7 @@
   "subjectName": "Foundational Mathematics",
   "description": "Foundational mathematics covering counting, operations, place value, fractions, measurement, geometry, and early algebra.",
   "gradeRange": "0-5",
+  "disciplineId": "math",
   "topics": [
     {
       "id": "count-to-10",

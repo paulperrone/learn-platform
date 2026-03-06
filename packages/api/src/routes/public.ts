@@ -147,6 +147,7 @@ publicRoutes.get("/subjects", async (c) => {
       description: s.description,
       gradeRange: s.gradeRange,
       topicCount: s.topicCount,
+      disciplineId: s.disciplineId,
     })),
   });
 });

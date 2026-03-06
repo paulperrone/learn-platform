@@ -44,6 +44,39 @@ A free, open mastery-learning platform inspired by MathAcademy's knowledge graph
 
 All problems, worked examples, and graph structure are **pre-generated offline** by LLMs, **human-reviewed**, and **imported**. Runtime LLM is only for interactive tutoring/grading.
 
+### Disciplines & Progression Models
+
+Subjects are grouped into **disciplines** — broad knowledge domains that define how the prerequisite graph is traversed. Each discipline has a **progression model** that controls how strictly prerequisites gate new content.
+
+**Progression models:**
+
+| Model | Gating behavior | Examples |
+|-------|----------------|----------|
+| `mastery-gated` | Must master `required` and `recommended` prerequisites before unlocking. `enriching` edges are suggestions only. Hard sequential progression. | Mathematics, CS, foreign language grammar, music technique |
+| `context-layered` | Only `required` prerequisites gate. `recommended` prerequisites add context but don't block. Breadth-first at each depth, then spiral deeper. | History, philosophy, literature, political science |
+| `flexible` | All topics available. Prerequisites are suggestions for optimal ordering. | Vocabulary, geography, anatomy |
+
+**Prerequisite edge types:**
+
+| Type | Meaning | Gating in mastery-gated | Gating in context-layered | Gating in flexible |
+|------|---------|------------------------|--------------------------|-------------------|
+| `required` | Cannot meaningfully engage without this | Blocks | Blocks | Suggests |
+| `recommended` | Important context that enriches understanding | Blocks | Suggests | Suggests |
+| `enriching` | Nice to have, tangentially related | Suggests | Suggests | Suggests |
+
+**Depth levels and content creation:**
+
+Content depth maps roughly to educational stages, but the meaning of "depth" varies by discipline:
+
+| Depth | Mastery-gated (Math) | Context-layered (History) |
+|-------|---------------------|--------------------------|
+| 0-2 (Survey) | Foundational skills: counting, basic operations | "What happened?" — timelines, key events, notable figures. Simple narratives. |
+| 3-5 (Contextual) | Intermediate skills: fractions, multi-digit ops | "Why did it happen?" — causes, effects, connections. Multiple perspectives. |
+| 6-8 (Analytical) | Pre-algebra, ratios, geometry proofs | "How do we know?" — primary sources, competing interpretations, historiography. |
+| 9+ (Synthesis) | Algebra, trigonometry, calculus | "What does it mean?" — thematic analysis, comparative study, constructing arguments. |
+
+**Seeded disciplines:** math, ela, science, history, languages, philosophy, arts, cs.
+
 ### Non-Goals (MVP)
 
 - Multiple subjects (post-MVP — but graph architecture supports cross-subject prerequisites)
@@ -87,7 +120,7 @@ Future capability areas, in recommended priority order. Each should become its o
 
 1. **Math 6-12 Content Expansion** — Extend from 71 K-5 topics to full K-12 math. Subjects should form continuous connected graphs (K-5 → pre-algebra → algebra, etc.), not isolated silos. The diagnostic should place across the full connected graph. Requires parameterized content pipeline, support for more complex problem types, and graph structure scaling.
 
-2. **Cross-Subject Prerequisites** — Reading comprehension is a prerequisite for math word problems. Algebra is a prerequisite for physics. The graph schema supports cross-subject edges; content and diagnostic need to leverage them.
+2. **Cross-Subject Prerequisites** — Reading comprehension is a prerequisite for math word problems. Algebra is a prerequisite for physics. Disciplines and progression models are implemented. The prerequisites table supports `required`/`recommended`/`enriching` edge types. Content and diagnostic still need to leverage cross-subject edges.
 
 3. **Reading/ELA Subject** — First non-math subject. Validates multi-subject architecture. Requires new content types (passages, comprehension questions) and different assessment models. Light prerequisite links to math word problems.
 

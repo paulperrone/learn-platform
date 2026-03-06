@@ -695,3 +695,41 @@ Child creation now creates both an org member (student role) and an account_link
 - Subject boundaries are organizational (for content generation, UI grouping) not structural (the DAG spans subjects)
 - Content pipeline should be able to generate bridging content at subject boundaries
 - Reference: Math Academy's graph structure connects all levels continuously (see their public graph repo for inspiration)
+
+---
+
+### 2026-03-06: Disciplines with progression models for multi-domain knowledge graphs
+
+**Source:** User session
+
+**Context:** The platform starts with math (strongly compounding — can't multiply without adding) but will expand to history, philosophy, science, ELA, etc. These domains have fundamentally different prerequisite structures. Math prerequisites are hard gates; history prerequisites are context that enriches but doesn't block.
+
+**Decision:** Add a `disciplines` table with a `progression_model` field (`mastery-gated`, `context-layered`, `flexible`). Subjects belong to a discipline. Prerequisites gain a `type` column (`required`, `recommended`, `enriching`). The frontier computation uses the discipline's progression model to decide which prerequisite types gate vs suggest.
+
+**Progression models:**
+- `mastery-gated`: Must master `required` + `recommended` prereqs before unlocking. For math, CS, grammar, music technique.
+- `context-layered`: Only `required` prereqs gate. `recommended` = context that enriches but doesn't block. Breadth-first at each depth layer, then spiral deeper. For history, philosophy, literature.
+- `flexible`: All topics available. Prerequisites are ordering suggestions. For vocabulary, geography.
+
+**Prerequisite types:**
+- `required`: Hard gate in mastery-gated and context-layered. "Cannot meaningfully engage without this."
+- `recommended`: Gates in mastery-gated, suggests in context-layered. "Important context that enriches understanding."
+- `enriching`: Never gates. "Nice to have, tangentially related."
+
+**Content depth framework:**
+- Depth 0-2 (Survey): "What?" — foundational skills (math), timelines and key events (history)
+- Depth 3-5 (Contextual): "How?" — intermediate skills (math), causes and effects (history)
+- Depth 6-8 (Analytical): "Why?" — advanced skills (math), primary sources and competing interpretations (history)
+- Depth 9+ (Synthesis): "So what?" — abstract skills (math), thematic analysis and argument construction (history)
+
+**Why:**
+- Same graph structure works for all disciplines; only traversal rules change
+- Edge types make prerequisite semantics explicit rather than implicit
+- Disciplines provide natural UI grouping (Math → Foundational, Pre-Algebra, Algebra...)
+- Content creators get clear rules for how to structure prerequisites per domain
+
+**Seeded disciplines:** math, ela, science, history, languages, philosophy, arts, cs
+
+**Alternatives rejected:**
+- Separate graph implementations per discipline: Duplicates infrastructure, prevents cross-discipline edges
+- Single "strength" numeric as proxy for type: Loses semantic meaning; 0.5 strength is ambiguous — is it "recommended" or "weak required"?

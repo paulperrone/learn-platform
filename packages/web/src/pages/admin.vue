@@ -991,15 +991,15 @@ const tabs = [
               <table class="w-full text-sm">
                 <thead class="bg-gray-50 sticky top-0 z-10">
                   <tr>
-                    <th class="text-left px-4 py-2 font-medium text-gray-600">Topic</th>
-                    <th class="text-center px-3 py-2 font-medium text-gray-600">Level</th>
-                    <th class="text-right px-3 py-2 font-medium text-gray-600">IC</th>
-                    <th class="text-right px-3 py-2 font-medium text-gray-600">AC Pool</th>
-                    <th class="text-center px-3 py-2 font-medium text-gray-600">E/M/H</th>
-                    <th class="text-center px-3 py-2 font-medium text-gray-600">Types</th>
-                    <th class="text-right px-3 py-2 font-medium text-gray-600">Accuracy</th>
-                    <th class="text-center px-3 py-2 font-medium text-gray-600">Assets</th>
-                    <th class="text-center px-3 py-2 font-medium text-gray-600">Flags</th>
+                    <th class="text-left px-4 py-2 font-medium text-gray-600" title="Knowledge graph topic name">Topic</th>
+                    <th class="text-center px-3 py-2 font-medium text-gray-600" title="Grade/difficulty level in the selected framework">Level</th>
+                    <th class="text-right px-3 py-2 font-medium text-gray-600" title="Instructional content count (worked examples, lessons)">IC</th>
+                    <th class="text-right px-3 py-2 font-medium text-gray-600" title="Assessment content pool size (practice problems, quizzes)">AC Pool</th>
+                    <th class="text-center px-3 py-2 font-medium text-gray-600" title="Assessment difficulty distribution: Easy / Medium / Hard">E/M/H</th>
+                    <th class="text-center px-3 py-2 font-medium text-gray-600" title="Number of distinct question types (e.g. text-qa, multiple-choice)">Types</th>
+                    <th class="text-right px-3 py-2 font-medium text-gray-600" title="Average learner accuracy across all attempts on this topic">Accuracy</th>
+                    <th class="text-center px-3 py-2 font-medium text-gray-600" title="Has rich media assets (images, diagrams, audio)">Assets</th>
+                    <th class="text-center px-3 py-2 font-medium text-gray-600" title="Content flags: Pool (below target size), Diff (missing difficulty levels), Qual (accuracy < 80%), Gap (missing flavor/locale combos)">Flags</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -1069,11 +1069,11 @@ const tabs = [
                   <table class="w-full text-xs">
                     <thead class="bg-gray-50">
                       <tr>
-                        <th class="text-left px-2 py-1 font-medium">Flavor</th>
-                        <th class="text-left px-2 py-1 font-medium">Locale</th>
-                        <th class="text-left px-2 py-1 font-medium">Pres.</th>
-                        <th class="text-right px-2 py-1 font-medium">#</th>
-                        <th class="text-right px-2 py-1 font-medium">Ver</th>
+                        <th class="text-left px-2 py-1 font-medium" title="Content flavor (e.g. classic, story-based)">Flavor</th>
+                        <th class="text-left px-2 py-1 font-medium" title="Language locale">Locale</th>
+                        <th class="text-left px-2 py-1 font-medium" title="Presentation format (e.g. step-by-step, visual)">Pres.</th>
+                        <th class="text-right px-2 py-1 font-medium" title="Number of content items">#</th>
+                        <th class="text-right px-2 py-1 font-medium" title="Latest content version">Ver</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -1095,12 +1095,12 @@ const tabs = [
                   <table class="w-full text-xs">
                     <thead class="bg-gray-50">
                       <tr>
-                        <th class="text-left px-2 py-1 font-medium">Flavor</th>
-                        <th class="text-left px-2 py-1 font-medium">Locale</th>
-                        <th class="text-right px-2 py-1 font-medium">Pool</th>
-                        <th class="text-right px-2 py-1 font-medium">E</th>
-                        <th class="text-right px-2 py-1 font-medium">M</th>
-                        <th class="text-right px-2 py-1 font-medium">H</th>
+                        <th class="text-left px-2 py-1 font-medium" title="Content flavor (e.g. classic, story-based)">Flavor</th>
+                        <th class="text-left px-2 py-1 font-medium" title="Language locale">Locale</th>
+                        <th class="text-right px-2 py-1 font-medium" title="Total assessment items in pool">Pool</th>
+                        <th class="text-right px-2 py-1 font-medium" title="Easy difficulty count">E</th>
+                        <th class="text-right px-2 py-1 font-medium" title="Medium difficulty count">M</th>
+                        <th class="text-right px-2 py-1 font-medium" title="Hard difficulty count">H</th>
                       </tr>
                     </thead>
                     <tbody>
