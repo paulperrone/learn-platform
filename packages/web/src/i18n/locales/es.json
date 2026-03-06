@@ -83,6 +83,7 @@
     "skipDiagnostic": "Saltar diagnóstico, empezar desde el principio",
     "diagnosticTitle": "Evaluación Diagnóstica",
     "diagnosticHint": "No te preocupes si no las aciertas todas — esto nos ayuda a encontrar tu nivel.",
+    "questionCount": "Pregunta {n}",
     "answerPrompt": "Responde lo mejor que puedas.",
     "allSetTitle": "¡Todo Listo!",
     "estimatedLevel": "Nivel Estimado",

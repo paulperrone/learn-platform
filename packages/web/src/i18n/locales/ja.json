@@ -83,6 +83,7 @@
     "skipDiagnostic": "診断をスキップして最初から始める",
     "diagnosticTitle": "診断テスト",
     "diagnosticHint": "全問正解でなくても大丈夫です。レベルを見つけるためのテストです。",
+    "questionCount": "問題 {n}",
     "answerPrompt": "できる限り答えてください。",
     "allSetTitle": "準備完了！",
     "estimatedLevel": "推定レベル",

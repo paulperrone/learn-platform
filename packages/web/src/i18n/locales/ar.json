@@ -83,6 +83,7 @@
     "skipDiagnostic": "تخطي التشخيص، ابدأ من البداية",
     "diagnosticTitle": "التقييم التشخيصي",
     "diagnosticHint": "لا تقلق إذا لم تجب على الكل — هذا يساعدنا في معرفة مستواك.",
+    "questionCount": "السؤال {n}",
     "answerPrompt": "أجب بأفضل ما تستطيع.",
     "allSetTitle": "أنت جاهز!",
     "estimatedLevel": "المستوى المقدر",

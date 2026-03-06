@@ -13,14 +13,22 @@ type DiagnosticState = {
   askedTopicIds: string[];
   askedQuestionIds: string[];
   topicEstimates: TopicEstimates;
+  /** Adaptive phase: "search" = binary-search for boundary, "refine" = test near boundary */
+  phase: "search" | "refine";
+  /** Current search bounds (grade levels) */
+  searchLow: number;
+  searchHigh: number;
+  /** How many consecutive correct/incorrect in search phase */
+  streak: number;
+  streakDirection: "correct" | "incorrect" | null;
 };
 
-/** Scale diagnostic length with graph size: ~25 for 71 topics, ~35 for 150, caps at 50 */
-function diagnosticTarget(topicCount: number, isTaste: boolean): number {
-  if (isTaste) return Math.min(8, topicCount);
-  // sqrt(n) * 3 gives good coverage without being exhausting
-  return Math.min(Math.max(10, Math.round(Math.sqrt(topicCount) * 3)), 50, topicCount);
-}
+/** Max questions before forced completion — prevents infinite diagnostics */
+const MAX_QUESTIONS = 50;
+/** Min questions before we allow early stop based on confidence */
+const MIN_QUESTIONS = 8;
+/** Confidence threshold: stop when boundary is within this many grade levels */
+const BOUNDARY_PRECISION = 0.5;
 
 export function createDiagnosticService(db: DB) {
   const graph = createGraphService(db);
@@ -69,63 +77,75 @@ export function createDiagnosticService(db: DB) {
     return { allTopics, prereqMap, dependentMap, allEncompassings };
   }
 
-  function selectCoveringTopics(
-    allTopics: { id: string; depth: number; gradeLevel: number }[],
-    prereqMap: Map<string, string[]>,
-    isTaste: boolean
-  ): string[] {
-    // Select topics that maximally cover the graph with minimum questions.
-    // Strategy: pick topics at varying depth levels so correct/incorrect propagates well.
-    const target = diagnosticTarget(allTopics.length, isTaste);
-    const sorted = [...allTopics].sort((a, b) => a.depth - b.depth || a.gradeLevel - b.gradeLevel);
-
-    const maxDepth = Math.max(...sorted.map((t) => t.depth), 0);
-    if (maxDepth === 0 || sorted.length <= target) {
-      return sorted.slice(0, target).map((t) => t.id);
-    }
-
-    // Sample evenly across depth levels
-    const byDepth = new Map<number, typeof sorted>();
-    for (const t of sorted) {
-      const list = byDepth.get(t.depth) ?? [];
+  /** Group topics by grade level for the adaptive search */
+  function topicsByGrade(allTopics: { id: string; gradeLevel: number; depth: number }[]) {
+    const byGrade = new Map<number, typeof allTopics>();
+    for (const t of allTopics) {
+      const list = byGrade.get(t.gradeLevel) ?? [];
       list.push(t);
-      byDepth.set(t.depth, list);
+      byGrade.set(t.gradeLevel, list);
     }
-
-    const selected: string[] = [];
-    const depths = [...byDepth.keys()].sort((a, b) => a - b);
-    const perDepth = Math.max(1, Math.ceil(target / depths.length));
-
-    for (const depth of depths) {
-      if (selected.length >= target) break;
-      const topics = byDepth.get(depth)!;
-      // Prefer topics with more prerequisites (better signal)
-      topics.sort((a, b) => (prereqMap.get(b.id)?.length ?? 0) - (prereqMap.get(a.id)?.length ?? 0));
-      for (const t of topics) {
-        if (selected.length >= target) break;
-        selected.push(t.id);
-      }
-    }
-
-    return selected;
+    return byGrade;
   }
 
-  function selectNextQuestion(
+  /**
+   * Adaptive question selection: binary search for the student's level.
+   *
+   * Search phase: Start at middle grade, jump up on correct, down on incorrect.
+   * Refine phase: Once boundary is narrow, test topics near it to build confidence.
+   */
+  function selectNextTopic(
     state: DiagnosticState,
-    coveringTopics: string[],
-    topicEstimates: TopicEstimates
+    allTopics: { id: string; gradeLevel: number; depth: number }[],
+    prereqMap: Map<string, string[]>
   ): string | null {
-    // Pick the covering topic with highest uncertainty (closest to 0.5) that hasn't been asked
-    const candidates = coveringTopics.filter((id) => !state.askedTopicIds.includes(id));
-    if (candidates.length === 0) return null;
+    const byGrade = topicsByGrade(allTopics);
+    const grades = [...byGrade.keys()].sort((a, b) => a - b);
+    if (grades.length === 0) return null;
 
-    candidates.sort((a, b) => {
-      const uncA = Math.abs((topicEstimates[a] ?? 0.5) - 0.5);
-      const uncB = Math.abs((topicEstimates[b] ?? 0.5) - 0.5);
-      return uncA - uncB; // Most uncertain first
-    });
+    // Find a topic at or near the target grade that hasn't been asked
+    function pickTopicNearGrade(targetGrade: number): string | null {
+      // Try exact grade first, then adjacent grades
+      const sortedByDistance = [...grades].sort(
+        (a, b) => Math.abs(a - targetGrade) - Math.abs(b - targetGrade)
+      );
+      for (const grade of sortedByDistance) {
+        const candidates = byGrade.get(grade) ?? [];
+        // Prefer topics with more prereqs (better signal), not yet asked
+        const available = candidates
+          .filter((t) => !state.askedTopicIds.includes(t.id))
+          .sort((a, b) => (prereqMap.get(b.id)?.length ?? 0) - (prereqMap.get(a.id)?.length ?? 0));
+        if (available.length > 0) return available[0].id;
+      }
+      return null;
+    }
 
-    return candidates[0];
+    if (state.phase === "search") {
+      // Binary search: pick middle of current search range
+      const targetGrade = (state.searchLow + state.searchHigh) / 2;
+      return pickTopicNearGrade(Math.round(targetGrade));
+    }
+
+    // Refine phase: test topics near the boundary (searchLow to searchHigh)
+    const boundaryGrades = grades.filter(
+      (g) => g >= Math.floor(state.searchLow) && g <= Math.ceil(state.searchHigh)
+    );
+    // Prefer grades with least-tested topics
+    const gradeAskedCount = new Map<number, number>();
+    for (const tid of state.askedTopicIds) {
+      const t = allTopics.find((t) => t.id === tid);
+      if (t) gradeAskedCount.set(t.gradeLevel, (gradeAskedCount.get(t.gradeLevel) ?? 0) + 1);
+    }
+    boundaryGrades.sort(
+      (a, b) => (gradeAskedCount.get(a) ?? 0) - (gradeAskedCount.get(b) ?? 0)
+    );
+
+    for (const grade of boundaryGrades) {
+      const topic = pickTopicNearGrade(grade);
+      if (topic) return topic;
+    }
+    // Fallback: any unasked topic
+    return pickTopicNearGrade(Math.round((state.searchLow + state.searchHigh) / 2));
   }
 
   function propagateResult(
@@ -133,27 +153,100 @@ export function createDiagnosticService(db: DB) {
     correct: boolean,
     estimates: TopicEstimates,
     prereqMap: Map<string, string[]>,
-    dependentMap: Map<string, string[]>
+    dependentMap: Map<string, string[]>,
+    allTopics: { id: string; gradeLevel: number }[]
   ): TopicEstimates {
     const updated = { ...estimates };
+    const topic = allTopics.find((t) => t.id === topicId);
+    const topicGrade = topic?.gradeLevel ?? 0;
 
     if (correct) {
-      // Correct answer → credit prerequisites (they're likely known too)
-      updated[topicId] = Math.min(1, (updated[topicId] ?? 0.5) + 0.3);
+      // Correct: credit this topic and all prerequisites (transitively by grade)
+      updated[topicId] = Math.min(1, (updated[topicId] ?? 0.5) + 0.35);
+      // Credit all topics at same or lower grade
+      for (const t of allTopics) {
+        if (t.id === topicId) continue;
+        if (t.gradeLevel < topicGrade) {
+          // Strong credit for lower grades
+          updated[t.id] = Math.min(1, (updated[t.id] ?? 0.5) + 0.2);
+        } else if (t.gradeLevel === topicGrade) {
+          // Mild credit for same grade
+          updated[t.id] = Math.min(1, (updated[t.id] ?? 0.5) + 0.1);
+        }
+      }
+      // Direct prereqs get extra credit
       const prereqs = prereqMap.get(topicId) ?? [];
       for (const pid of prereqs) {
-        updated[pid] = Math.min(1, (updated[pid] ?? 0.5) + 0.2);
+        updated[pid] = Math.min(1, (updated[pid] ?? 0.5) + 0.15);
       }
     } else {
-      // Incorrect → penalize dependents (they're likely unknown too)
-      updated[topicId] = Math.max(0, (updated[topicId] ?? 0.5) - 0.3);
+      // Incorrect: penalize this topic and dependents
+      updated[topicId] = Math.max(0, (updated[topicId] ?? 0.5) - 0.35);
+      // Penalize topics at same or higher grade
+      for (const t of allTopics) {
+        if (t.id === topicId) continue;
+        if (t.gradeLevel > topicGrade) {
+          updated[t.id] = Math.max(0, (updated[t.id] ?? 0.5) - 0.15);
+        } else if (t.gradeLevel === topicGrade) {
+          updated[t.id] = Math.max(0, (updated[t.id] ?? 0.5) - 0.08);
+        }
+      }
+      // Direct dependents get extra penalty
       const deps = dependentMap.get(topicId) ?? [];
       for (const did of deps) {
-        updated[did] = Math.max(0, (updated[did] ?? 0.5) - 0.15);
+        updated[did] = Math.max(0, (updated[did] ?? 0.5) - 0.1);
       }
     }
 
     return updated;
+  }
+
+  /** Update search bounds based on answer correctness */
+  function updateSearchBounds(state: DiagnosticState, topicGrade: number, correct: boolean): void {
+    if (correct) {
+      // Raise the floor — student knows at least this level
+      state.searchLow = Math.max(state.searchLow, topicGrade);
+      if (state.streakDirection === "correct") {
+        state.streak++;
+      } else {
+        state.streak = 1;
+        state.streakDirection = "correct";
+      }
+    } else {
+      // Lower the ceiling — student doesn't know this level
+      state.searchHigh = Math.min(state.searchHigh, topicGrade);
+      if (state.streakDirection === "incorrect") {
+        state.streak++;
+      } else {
+        state.streak = 1;
+        state.streakDirection = "incorrect";
+      }
+    }
+
+    // Switch to refine phase when search range is narrow enough
+    if (state.phase === "search" && state.searchHigh - state.searchLow <= 1.5) {
+      state.phase = "refine";
+    }
+  }
+
+  /** Check if the diagnostic should stop early based on confidence */
+  function shouldStop(state: DiagnosticState, isTaste: boolean): boolean {
+    const questionsAsked = state.askedTopicIds.length;
+
+    if (questionsAsked >= MAX_QUESTIONS) return true;
+    if (isTaste && questionsAsked >= 8) return true;
+    if (questionsAsked < MIN_QUESTIONS) return false;
+
+    // In refine phase, stop when we have enough questions in the boundary zone
+    if (state.phase === "refine") {
+      const boundaryRange = state.searchHigh - state.searchLow;
+      if (boundaryRange <= BOUNDARY_PRECISION) return true;
+      // After 3+ refine questions, good enough
+      const refineQuestions = questionsAsked - MIN_QUESTIONS;
+      if (refineQuestions >= 5) return true;
+    }
+
+    return false;
   }
 
   function computeEstimatedFrontier(
@@ -161,10 +254,9 @@ export function createDiagnosticService(db: DB) {
     prereqMap: Map<string, string[]>,
     threshold = 0.6
   ): string[] {
-    // Frontier: topics where prerequisites are likely mastered but this topic is not
     const frontier: string[] = [];
     for (const [topicId, prob] of Object.entries(estimates)) {
-      if (prob >= threshold) continue; // Already likely mastered
+      if (prob >= threshold) continue;
       const prereqs = prereqMap.get(topicId) ?? [];
       const prereqsMastered = prereqs.every((pid) => (estimates[pid] ?? 0.5) >= threshold);
       if (prereqsMastered || prereqs.length === 0) {
@@ -176,7 +268,7 @@ export function createDiagnosticService(db: DB) {
 
   function estimateLevel(estimates: TopicEstimates, allTopics: { id: string; gradeLevel: number }[]): string {
     const topicMap = new Map(allTopics.map((t) => [t.id, t]));
-    let highestMasteredGrade = 0;
+    let highestMasteredGrade = -1;
     for (const [topicId, prob] of Object.entries(estimates)) {
       if (prob >= 0.6) {
         const topic = topicMap.get(topicId);
@@ -185,8 +277,68 @@ export function createDiagnosticService(db: DB) {
         }
       }
     }
+    if (highestMasteredGrade < 0) return "Kindergarten";
     if (highestMasteredGrade === 0) return "Kindergarten";
     return `Grade ${highestMasteredGrade}`;
+  }
+
+  /** Materialize diagnostic estimates into user_topic_state rows */
+  async function materializeMastery(
+    userId: string,
+    estimates: TopicEstimates,
+    frontier: string[],
+    allTopics: { id: string; gradeLevel: number }[]
+  ): Promise<{ mastered: number; frontierCount: number }> {
+    const frontierSet = new Set(frontier);
+    const now = new Date().toISOString();
+    let mastered = 0;
+    let frontierCount = 0;
+
+    for (const topic of allTopics) {
+      const prob = estimates[topic.id] ?? 0.5;
+      const isMastered = prob >= 0.6;
+      const isFrontier = frontierSet.has(topic.id);
+
+      if (!isMastered && !isFrontier) continue;
+
+      if (isMastered) mastered++;
+      if (isFrontier) frontierCount++;
+
+      // Upsert: insert or update
+      const existing = await db.query.userTopicState.findFirst({
+        where: and(
+          eq(schema.userTopicState.userId, userId),
+          eq(schema.userTopicState.topicId, topic.id)
+        ),
+      });
+
+      if (existing) {
+        await db
+          .update(schema.userTopicState)
+          .set({
+            mastered: isMastered,
+            frontier: isFrontier,
+            // If mastered, set FSRS state to Review; if frontier, set to New
+            state: isMastered ? 2 : 0,
+            reps: isMastered ? 1 : 0,
+            lastReview: isMastered ? now : null,
+          })
+          .where(eq(schema.userTopicState.id, existing.id));
+      } else {
+        await db.insert(schema.userTopicState).values({
+          userId,
+          topicId: topic.id,
+          mastered: isMastered,
+          frontier: isFrontier,
+          state: isMastered ? 2 : 0,
+          reps: isMastered ? 1 : 0,
+          due: now,
+          lastReview: isMastered ? now : null,
+        });
+      }
+    }
+
+    return { mastered, frontierCount };
   }
 
   return {
@@ -197,21 +349,53 @@ export function createDiagnosticService(db: DB) {
       isTaste?: boolean;
     }) {
       const sessionId = crypto.randomUUID();
-      const { allTopics, prereqMap } = await loadAllTopicsAndEdges(params.subjectId);
+      const { allTopics, prereqMap, dependentMap } = await loadAllTopicsAndEdges(params.subjectId);
       const isTaste = params.isTaste ?? false;
 
-      const coveringTopics = selectCoveringTopics(allTopics, prereqMap, isTaste);
+      // Cancel any active diagnostic for this user/token
+      const userFilter = params.userId
+        ? eq(schema.diagnosticSessions.userId, params.userId)
+        : params.anonymousToken
+          ? eq(schema.diagnosticSessions.anonymousToken, params.anonymousToken)
+          : null;
+      if (userFilter) {
+        await db
+          .update(schema.diagnosticSessions)
+          .set({ status: "cancelled" })
+          .where(and(userFilter, eq(schema.diagnosticSessions.status, "active")));
+      }
+
+      // Compute grade range for adaptive search
+      const grades = [...new Set(allTopics.map((t) => t.gradeLevel))].sort((a, b) => a - b);
+      const minGrade = grades[0] ?? 0;
+      const maxGrade = grades[grades.length - 1] ?? 5;
 
       const initialEstimates: TopicEstimates = {};
       for (const t of allTopics) {
-        initialEstimates[t.id] = 0.5; // Start uncertain
+        initialEstimates[t.id] = 0.5;
       }
 
-      const firstTopicId = selectNextQuestion(
-        { currentTopicId: null, currentQuestionId: null, askedTopicIds: [], askedQuestionIds: [], topicEstimates: initialEstimates },
-        coveringTopics,
-        initialEstimates
-      );
+      const state: DiagnosticState = {
+        currentTopicId: null,
+        currentQuestionId: null,
+        askedTopicIds: [],
+        askedQuestionIds: [],
+        topicEstimates: initialEstimates,
+        phase: "search",
+        searchLow: minGrade,
+        searchHigh: maxGrade,
+        streak: 0,
+        streakDirection: null,
+      };
+
+      // Start at middle grade
+      const startGrade = Math.round((minGrade + maxGrade) / 2);
+      const firstTopicId = selectNextTopic(
+        { ...state, searchLow: startGrade - 0.1, searchHigh: startGrade + 0.1 },
+        allTopics,
+        prereqMap
+      ) ?? selectNextTopic(state, allTopics, prereqMap);
+
       if (!firstTopicId) {
         return { error: "No topics available for diagnostic" };
       }
@@ -222,13 +406,8 @@ export function createDiagnosticService(db: DB) {
         return { error: "No problems available for diagnostic" };
       }
 
-      const state: DiagnosticState = {
-        currentTopicId: firstTopicId,
-        currentQuestionId: problem.id,
-        askedTopicIds: [],
-        askedQuestionIds: [],
-        topicEstimates: initialEstimates,
-      };
+      state.currentTopicId = firstTopicId;
+      state.currentQuestionId = problem.id;
 
       await db.insert(schema.diagnosticSessions).values({
         id: sessionId,
@@ -236,7 +415,7 @@ export function createDiagnosticService(db: DB) {
         anonymousToken: params.anonymousToken ?? null,
         subjectId: params.subjectId,
         isTaste: isTaste,
-        stateJson: JSON.stringify({ ...state, coveringTopics }),
+        stateJson: JSON.stringify(state),
       });
 
       return {
@@ -245,7 +424,7 @@ export function createDiagnosticService(db: DB) {
           topicId: firstTopicId,
           problem,
           questionNumber: 1,
-          totalQuestions: coveringTopics.length,
+          totalQuestions: isTaste ? 8 : null, // Adaptive: no fixed total
         },
       };
     },
@@ -258,14 +437,12 @@ export function createDiagnosticService(db: DB) {
         return { error: "Diagnostic session not found or completed" };
       }
 
-      const parsed = JSON.parse(row.stateJson!);
-      const state: DiagnosticState & { coveringTopics: string[] } = parsed;
+      const state: DiagnosticState = JSON.parse(row.stateJson!);
       const isTaste = row.isTaste;
 
       const { allTopics, prereqMap, dependentMap } = await loadAllTopicsAndEdges(row.subjectId);
-      const target = diagnosticTarget(allTopics.length, isTaste);
 
-      // Grade the answer for the current question
+      // Grade the answer
       const currentTopicId = state.currentTopicId;
       const currentQuestionId = state.currentQuestionId;
       if (!currentTopicId || !currentQuestionId) {
@@ -284,20 +461,35 @@ export function createDiagnosticService(db: DB) {
       // Update state
       state.askedTopicIds.push(currentTopicId);
       state.askedQuestionIds.push(currentProblem.id);
+
+      // Propagate estimates through the graph
+      const currentTopic = allTopics.find((t) => t.id === currentTopicId);
       state.topicEstimates = propagateResult(
-        currentTopicId, isCorrect, state.topicEstimates, prereqMap, dependentMap
+        currentTopicId, isCorrect, state.topicEstimates, prereqMap, dependentMap, allTopics
       );
+
+      // Update adaptive search bounds
+      if (currentTopic) {
+        updateSearchBounds(state, currentTopic.gradeLevel, isCorrect);
+      }
 
       const questionsAsked = state.askedTopicIds.length;
       const questionsCorrect = (row.questionsCorrect ?? 0) + (isCorrect ? 1 : 0);
 
       // Check if done
-      const done = questionsAsked >= target ||
-        state.coveringTopics.every((id) => state.askedTopicIds.includes(id));
+      const done = shouldStop(state, isTaste);
 
       if (done) {
         const estimatedFrontier = computeEstimatedFrontier(state.topicEstimates, prereqMap);
         const level = estimateLevel(state.topicEstimates, allTopics);
+
+        // Materialize mastery into user_topic_state
+        let materializeStats = { mastered: 0, frontierCount: 0 };
+        if (row.userId) {
+          materializeStats = await materializeMastery(
+            row.userId, state.topicEstimates, estimatedFrontier, allTopics
+          );
+        }
 
         await db
           .update(schema.diagnosticSessions)
@@ -325,11 +517,18 @@ export function createDiagnosticService(db: DB) {
       }
 
       // Not done — next question
-      const nextTopicId = selectNextQuestion(state, state.coveringTopics, state.topicEstimates);
+      const nextTopicId = selectNextTopic(state, allTopics, prereqMap);
       if (!nextTopicId) {
-        // Ran out of covering topics — complete early
+        // Ran out of topics — complete
         const estimatedFrontier = computeEstimatedFrontier(state.topicEstimates, prereqMap);
         const level = estimateLevel(state.topicEstimates, allTopics);
+
+        let materializeStats = { mastered: 0, frontierCount: 0 };
+        if (row.userId) {
+          materializeStats = await materializeMastery(
+            row.userId, state.topicEstimates, estimatedFrontier, allTopics
+          );
+        }
 
         await db
           .update(schema.diagnosticSessions)
@@ -361,7 +560,6 @@ export function createDiagnosticService(db: DB) {
       const nextProblems = await getTopicProblems(nextTopicId);
       const nextProblem = nextProblems.find((p) => !state.askedQuestionIds.includes(p.id)) ?? nextProblems[0];
 
-      // Update state with next question info
       state.currentTopicId = nextTopicId;
       state.currentQuestionId = nextProblem?.id ?? null;
 
@@ -381,7 +579,7 @@ export function createDiagnosticService(db: DB) {
           topicId: nextTopicId,
           problem: nextProblem,
           questionNumber: questionsAsked + 1,
-          totalQuestions: state.coveringTopics.length,
+          totalQuestions: null, // Adaptive: we don't know in advance
         } : null,
       };
     },

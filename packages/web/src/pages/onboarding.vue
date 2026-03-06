@@ -20,7 +20,7 @@ const loading = ref(true);
 const diagnosticSessionId = ref<string | null>(null);
 const currentQuestion = ref<any>(null);
 const questionNumber = ref(0);
-const totalQuestions = ref(0);
+const totalQuestions = ref<number | null>(null);
 const diagnosticResult = ref<DiagnosticResult | null>(null);
 const mergeResult = ref<{ mergedSessions: number; mergedDiagnostics: number } | null>(null);
 const retakingDiagnostic = ref(!!route.query.diagnostic);
@@ -77,7 +77,7 @@ async function startDiagnostic() {
     diagnosticSessionId.value = data.sessionId;
     currentQuestion.value = data.question;
     questionNumber.value = data.question.questionNumber;
-    totalQuestions.value = data.question.totalQuestions;
+    totalQuestions.value = data.question.totalQuestions ?? null;
     await withErrorToast(() => api.updateOnboarding(2, data.sessionId));
   }
   loading.value = false;
@@ -111,7 +111,9 @@ async function startLearning() {
 }
 
 const progressPercent = computed(() =>
-  totalQuestions.value > 0 ? Math.round((questionNumber.value / totalQuestions.value) * 100) : 0
+  totalQuestions.value && totalQuestions.value > 0
+    ? Math.round((questionNumber.value / totalQuestions.value) * 100)
+    : 0
 );
 </script>
 
@@ -169,9 +171,11 @@ const progressPercent = computed(() =>
       <div class="mb-6">
         <div class="flex items-center justify-between mb-2">
           <h1 class="text-2xl font-bold">{{ t('onboarding.diagnosticTitle') }}</h1>
-          <span class="text-sm text-gray-500">{{ questionNumber }} / {{ totalQuestions }}</span>
+          <span class="text-sm text-gray-500">
+            {{ totalQuestions ? `${questionNumber} / ${totalQuestions}` : t('onboarding.questionCount', { n: questionNumber }) }}
+          </span>
         </div>
-        <div class="w-full bg-gray-200 rounded-full h-2">
+        <div v-if="totalQuestions" class="w-full bg-gray-200 rounded-full h-2">
           <div
             class="bg-blue-600 h-2 rounded-full transition-all duration-300"
             :style="{ width: `${progressPercent}%` }"
