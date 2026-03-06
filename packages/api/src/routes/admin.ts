@@ -512,12 +512,17 @@ adminRoutes.get("/analytics/learning-patterns", async (c) => {
 adminRoutes.get("/content-matrix", async (c) => {
   const d1 = c.env.DB;
 
+  // Get all subjects
+  const subjectsResult = await d1.prepare(
+    `SELECT id, name, grade_range AS gradeRange FROM subjects ORDER BY name`
+  ).all<{ id: string; name: string; gradeRange: string }>();
+
   // Get all topics with subject info
   const topicsResult = await d1.prepare(
-    `SELECT t.id, t.name, t.grade_level AS gradeLevel, s.name AS subjectName
+    `SELECT t.id, t.name, t.grade_level AS gradeLevel, t.subject_id AS subjectId, s.name AS subjectName
      FROM topics t JOIN subjects s ON t.subject_id = s.id
      ORDER BY t.grade_level, t.name`
-  ).all<{ id: string; name: string; gradeLevel: number; subjectName: string }>();
+  ).all<{ id: string; name: string; gradeLevel: number; subjectId: string; subjectName: string }>();
 
   // Instructional content: count per topic × flavor × locale × presentation
   const instructionalResult = await d1.prepare(
@@ -636,6 +641,7 @@ adminRoutes.get("/content-matrix", async (c) => {
       topicId: t.id,
       topicName: t.name,
       gradeLevel: t.gradeLevel,
+      subjectId: t.subjectId,
       subjectName: t.subjectName,
       totalInstructional,
       totalAssessment,
@@ -682,6 +688,11 @@ adminRoutes.get("/content-matrix", async (c) => {
   const topicsWithLowQuality = matrix.filter((m) => m.quality && m.quality.accuracy < 0.8).length;
 
   return c.json({
+    subjects: (subjectsResult.results ?? []).map((s) => ({
+      id: s.id,
+      name: s.name,
+      gradeRange: s.gradeRange,
+    })),
     matrix,
     dimensions: {
       flavors: [...allFlavors].sort(),

@@ -50,10 +50,12 @@ const contentVersions = ref<{
   versionComparison: { topicId: string; topicName: string; version: number; contentUpdatedAt: string; attemptsBefore: number; accuracyBefore: number; attemptsAfter: number; accuracyAfter: number }[];
 } | null>(null);
 const contentMatrix = ref<{
+  subjects: { id: string; name: string; gradeRange: string }[];
   matrix: {
     topicId: string;
     topicName: string;
     gradeLevel: number;
+    subjectId: string;
     subjectName: string;
     totalInstructional: number;
     totalAssessment: number;
@@ -76,7 +78,8 @@ const contentMatrix = ref<{
     topicsWithLowQuality: number;
   };
 } | null>(null);
-const matrixFilter = ref<{ grade: number | null; flavor: string | null; locale: string | null; gapsOnly: boolean }>({
+const matrixFilter = ref<{ subject: string | null; grade: number | null; flavor: string | null; locale: string | null; gapsOnly: boolean }>({
+  subject: null,
   grade: null,
   flavor: null,
   locale: null,
@@ -84,6 +87,31 @@ const matrixFilter = ref<{ grade: number | null; flavor: string | null; locale: 
 });
 const matrixSort = ref<"name" | "grade" | "gaps" | "quality" | "pool">("grade");
 const selectedMatrixTopic = ref<string | null>(null);
+
+// Grade level display frameworks
+type GradeFramework = "us" | "uk" | "generic";
+const gradeFramework = ref<GradeFramework>("us");
+
+const gradeLabels: Record<GradeFramework, (level: number) => string> = {
+  us: (level) => {
+    if (level === 0) return "Kindergarten";
+    if (level <= 12) return `Grade ${level}`;
+    return `Level ${level}`;
+  },
+  uk: (level) => {
+    if (level === 0) return "Reception";
+    if (level <= 2) return `KS1 (Year ${level})`;
+    if (level <= 6) return `KS2 (Year ${level})`;
+    if (level <= 9) return `KS3 (Year ${level})`;
+    if (level <= 11) return `KS4 (Year ${level})`;
+    return `KS5 (Year ${level})`;
+  },
+  generic: (level) => `Level ${level}`,
+};
+
+function gradeLabel(level: number): string {
+  return gradeLabels[gradeFramework.value](level);
+}
 const selectedQualityTopic = ref<string | null>(null);
 const learningPatterns = ref<{
   hintPatterns: { hintsUsed: number; count: number; avgCorrect: number }[];
@@ -191,6 +219,7 @@ const filteredMatrix = computed(() => {
   let rows = contentMatrix.value.matrix;
   const f = matrixFilter.value;
 
+  if (f.subject) rows = rows.filter((r) => r.subjectId === f.subject);
   if (f.grade !== null) rows = rows.filter((r) => r.gradeLevel === f.grade);
   if (f.flavor) rows = rows.filter((r) =>
     r.instructional.some((i) => i.flavor === f.flavor) || r.assessment.some((a) => a.flavor === f.flavor)
@@ -215,7 +244,9 @@ const filteredMatrix = computed(() => {
 
 const uniqueGrades = computed(() => {
   if (!contentMatrix.value) return [];
-  return [...new Set(contentMatrix.value.matrix.map((m) => m.gradeLevel))].sort((a, b) => a - b);
+  let rows = contentMatrix.value.matrix;
+  if (matrixFilter.value.subject) rows = rows.filter((r) => r.subjectId === matrixFilter.value.subject);
+  return [...new Set(rows.map((m) => m.gradeLevel))].sort((a, b) => a - b);
 });
 
 function matrixCellColor(topic: typeof filteredMatrix.value[0]): string {
@@ -915,9 +946,13 @@ const tabs = [
 
         <!-- Filters -->
         <div class="flex flex-wrap gap-3 items-center">
+          <select v-model="matrixFilter.subject" class="text-sm border border-gray-300 rounded px-2 py-1 font-medium">
+            <option :value="null">All Subjects</option>
+            <option v-for="s in contentMatrix.subjects" :key="s.id" :value="s.id">{{ s.name }}</option>
+          </select>
           <select v-model="matrixFilter.grade" class="text-sm border border-gray-300 rounded px-2 py-1">
-            <option :value="null">All Grades</option>
-            <option v-for="g in uniqueGrades" :key="g" :value="g">Grade {{ g === 0 ? 'K' : g }}</option>
+            <option :value="null">All Levels</option>
+            <option v-for="g in uniqueGrades" :key="g" :value="g">{{ gradeLabel(g) }}</option>
           </select>
           <select v-model="matrixFilter.flavor" class="text-sm border border-gray-300 rounded px-2 py-1">
             <option :value="null">All Flavors</option>
@@ -932,161 +967,179 @@ const tabs = [
             Gaps only
           </label>
           <select v-model="matrixSort" class="text-sm border border-gray-300 rounded px-2 py-1">
-            <option value="grade">Sort: Grade</option>
+            <option value="grade">Sort: Level</option>
             <option value="name">Sort: Name</option>
             <option value="gaps">Sort: Most Gaps</option>
             <option value="quality">Sort: Lowest Quality</option>
             <option value="pool">Sort: Smallest Pool</option>
           </select>
-          <span class="text-xs text-gray-400">{{ filteredMatrix.length }} topics</span>
+          <div class="ml-auto flex items-center gap-2">
+            <span class="text-xs text-gray-400">{{ filteredMatrix.length }} topics</span>
+            <select v-model="gradeFramework" class="text-xs border border-gray-200 rounded px-1.5 py-0.5 text-gray-500">
+              <option value="us">US (K-12)</option>
+              <option value="uk">UK (Key Stages)</option>
+              <option value="generic">Generic (Levels)</option>
+            </select>
+          </div>
         </div>
 
-        <!-- Matrix Grid -->
-        <div class="bg-white rounded-lg border border-gray-200 overflow-hidden">
-          <table class="w-full text-sm">
-            <thead class="bg-gray-50">
-              <tr>
-                <th class="text-left px-4 py-2 font-medium text-gray-600">Topic</th>
-                <th class="text-center px-3 py-2 font-medium text-gray-600">Grade</th>
-                <th class="text-right px-3 py-2 font-medium text-gray-600">IC</th>
-                <th class="text-right px-3 py-2 font-medium text-gray-600">AC Pool</th>
-                <th class="text-center px-3 py-2 font-medium text-gray-600">E/M/H</th>
-                <th class="text-center px-3 py-2 font-medium text-gray-600">Types</th>
-                <th class="text-right px-3 py-2 font-medium text-gray-600">Accuracy</th>
-                <th class="text-center px-3 py-2 font-medium text-gray-600">Assets</th>
-                <th class="text-center px-3 py-2 font-medium text-gray-600">Flags</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr
-                v-for="row in filteredMatrix"
-                :key="row.topicId"
-                :class="['border-t border-gray-100 cursor-pointer hover:bg-gray-50', matrixCellColor(row)]"
-                @click="selectedMatrixTopic = selectedMatrixTopic === row.topicId ? null : row.topicId"
-              >
-                <td class="px-4 py-2 font-medium">{{ row.topicName }}</td>
-                <td class="px-3 py-2 text-center">{{ row.gradeLevel === 0 ? 'K' : row.gradeLevel }}</td>
-                <td class="px-3 py-2 text-right">{{ row.totalInstructional }}</td>
-                <td class="px-3 py-2 text-right" :class="row.gaps.poolBelowTarget ? 'text-yellow-600 font-semibold' : ''">{{ row.totalAssessment }}</td>
-                <td class="px-3 py-2 text-center text-xs">
-                  <template v-if="row.assessment.length > 0">
-                    {{ row.assessment.reduce((s, a) => s + a.easy, 0) }}/{{ row.assessment.reduce((s, a) => s + a.medium, 0) }}/{{ row.assessment.reduce((s, a) => s + a.hard, 0) }}
-                  </template>
-                  <span v-else class="text-gray-300">-</span>
-                </td>
-                <td class="px-3 py-2 text-center text-xs">
-                  <span v-if="Object.keys(row.questionTypes).length > 0">{{ Object.keys(row.questionTypes).length }}</span>
-                  <span v-else class="text-gray-300">-</span>
-                </td>
-                <td class="px-3 py-2 text-right" :class="row.quality ? healthColor(row.quality.accuracy) : 'text-gray-300'">
-                  {{ row.quality ? formatPct(row.quality.accuracy) : '-' }}
-                </td>
-                <td class="px-3 py-2 text-center">
-                  <span v-if="row.hasAssets" class="text-blue-600">Y</span>
-                  <span v-else class="text-gray-300">-</span>
-                </td>
-                <td class="px-3 py-2 text-center text-xs space-x-1">
-                  <span v-if="row.gaps.poolBelowTarget" class="text-yellow-600" title="Pool below target">Pool</span>
-                  <span v-if="row.gaps.missingDifficulties" class="text-yellow-600" title="Missing difficulty levels">Diff</span>
-                  <span v-if="row.quality && row.quality.accuracy < 0.8" class="text-red-600" title="Low accuracy">Qual</span>
-                  <span v-if="row.gaps.icMissing > 0 || row.gaps.acMissing > 0" class="text-gray-500" title="Missing dimension combos">Gap</span>
-                </td>
-              </tr>
-              <tr v-if="filteredMatrix.length === 0">
-                <td colspan="9" class="px-4 py-4 text-center text-gray-400">No topics match filters</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <!-- Detail panel for selected topic -->
-        <div v-if="selectedMatrixTopic && contentMatrix" class="bg-white rounded-lg border border-gray-200 p-4 space-y-4">
-          <template v-for="row in filteredMatrix.filter((r) => r.topicId === selectedMatrixTopic)" :key="row.topicId">
-            <div class="flex justify-between items-start">
-              <div>
-                <h3 class="text-lg font-semibold">{{ row.topicName }}</h3>
-                <p class="text-sm text-gray-500">Grade {{ row.gradeLevel === 0 ? 'K' : row.gradeLevel }} - {{ row.subjectName }}</p>
-              </div>
-              <button @click="selectedMatrixTopic = null" class="text-gray-400 hover:text-gray-600 text-sm">Close</button>
-            </div>
-
-            <!-- Instructional breakdown -->
-            <div v-if="row.instructional.length > 0">
-              <h4 class="text-sm font-semibold text-gray-700 mb-2">Instructional Content</h4>
-              <table class="w-full text-xs">
-                <thead class="bg-gray-50">
+        <!-- Matrix Grid + Detail Panel (side by side) -->
+        <div class="flex gap-4" :class="selectedMatrixTopic ? 'items-start' : ''">
+          <!-- Table -->
+          <div class="bg-white rounded-lg border border-gray-200 overflow-hidden" :class="selectedMatrixTopic ? 'flex-1 min-w-0' : 'w-full'">
+            <div class="max-h-[70vh] overflow-auto">
+              <table class="w-full text-sm">
+                <thead class="bg-gray-50 sticky top-0 z-10">
                   <tr>
-                    <th class="text-left px-3 py-1 font-medium">Flavor</th>
-                    <th class="text-left px-3 py-1 font-medium">Locale</th>
-                    <th class="text-left px-3 py-1 font-medium">Presentation</th>
-                    <th class="text-right px-3 py-1 font-medium">Count</th>
-                    <th class="text-right px-3 py-1 font-medium">Max Version</th>
-                    <th class="text-center px-3 py-1 font-medium">Assets</th>
+                    <th class="text-left px-4 py-2 font-medium text-gray-600">Topic</th>
+                    <th class="text-center px-3 py-2 font-medium text-gray-600">Level</th>
+                    <th class="text-right px-3 py-2 font-medium text-gray-600">IC</th>
+                    <th class="text-right px-3 py-2 font-medium text-gray-600">AC Pool</th>
+                    <th class="text-center px-3 py-2 font-medium text-gray-600">E/M/H</th>
+                    <th class="text-center px-3 py-2 font-medium text-gray-600">Types</th>
+                    <th class="text-right px-3 py-2 font-medium text-gray-600">Accuracy</th>
+                    <th class="text-center px-3 py-2 font-medium text-gray-600">Assets</th>
+                    <th class="text-center px-3 py-2 font-medium text-gray-600">Flags</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="(ic, i) in row.instructional" :key="i" class="border-t border-gray-100">
-                    <td class="px-3 py-1">{{ ic.flavor }}</td>
-                    <td class="px-3 py-1">{{ ic.locale }}</td>
-                    <td class="px-3 py-1">{{ ic.presentation }}</td>
-                    <td class="px-3 py-1 text-right">{{ ic.count }}</td>
-                    <td class="px-3 py-1 text-right">v{{ ic.maxVersion }}</td>
-                    <td class="px-3 py-1 text-center">{{ ic.hasAssets ? 'Y' : '-' }}</td>
+                  <tr
+                    v-for="row in filteredMatrix"
+                    :key="row.topicId"
+                    :class="[
+                      'border-t border-gray-100 cursor-pointer hover:bg-gray-50',
+                      matrixCellColor(row),
+                      selectedMatrixTopic === row.topicId ? 'ring-2 ring-blue-400 ring-inset' : ''
+                    ]"
+                    @click="selectedMatrixTopic = selectedMatrixTopic === row.topicId ? null : row.topicId"
+                  >
+                    <td class="px-4 py-2 font-medium">{{ row.topicName }}</td>
+                    <td class="px-3 py-2 text-center text-xs">{{ gradeLabel(row.gradeLevel) }}</td>
+                    <td class="px-3 py-2 text-right">{{ row.totalInstructional }}</td>
+                    <td class="px-3 py-2 text-right" :class="row.gaps.poolBelowTarget ? 'text-yellow-600 font-semibold' : ''">{{ row.totalAssessment }}</td>
+                    <td class="px-3 py-2 text-center text-xs">
+                      <template v-if="row.assessment.length > 0">
+                        {{ row.assessment.reduce((s, a) => s + a.easy, 0) }}/{{ row.assessment.reduce((s, a) => s + a.medium, 0) }}/{{ row.assessment.reduce((s, a) => s + a.hard, 0) }}
+                      </template>
+                      <span v-else class="text-gray-300">-</span>
+                    </td>
+                    <td class="px-3 py-2 text-center text-xs">
+                      <span v-if="Object.keys(row.questionTypes).length > 0">{{ Object.keys(row.questionTypes).length }}</span>
+                      <span v-else class="text-gray-300">-</span>
+                    </td>
+                    <td class="px-3 py-2 text-right" :class="row.quality ? healthColor(row.quality.accuracy) : 'text-gray-300'">
+                      {{ row.quality ? formatPct(row.quality.accuracy) : '-' }}
+                    </td>
+                    <td class="px-3 py-2 text-center">
+                      <span v-if="row.hasAssets" class="text-blue-600">Y</span>
+                      <span v-else class="text-gray-300">-</span>
+                    </td>
+                    <td class="px-3 py-2 text-center text-xs space-x-1">
+                      <span v-if="row.gaps.poolBelowTarget" class="text-yellow-600" title="Pool below target">Pool</span>
+                      <span v-if="row.gaps.missingDifficulties" class="text-yellow-600" title="Missing difficulty levels">Diff</span>
+                      <span v-if="row.quality && row.quality.accuracy < 0.8" class="text-red-600" title="Low accuracy">Qual</span>
+                      <span v-if="row.gaps.icMissing > 0 || row.gaps.acMissing > 0" class="text-gray-500" title="Missing dimension combos">Gap</span>
+                    </td>
+                  </tr>
+                  <tr v-if="filteredMatrix.length === 0">
+                    <td colspan="9" class="px-4 py-4 text-center text-gray-400">No topics match filters</td>
                   </tr>
                 </tbody>
               </table>
             </div>
-            <div v-else class="text-sm text-gray-400">No instructional content</div>
+          </div>
 
-            <!-- Assessment breakdown -->
-            <div v-if="row.assessment.length > 0">
-              <h4 class="text-sm font-semibold text-gray-700 mb-2">Assessment Pool</h4>
-              <table class="w-full text-xs">
-                <thead class="bg-gray-50">
-                  <tr>
-                    <th class="text-left px-3 py-1 font-medium">Flavor</th>
-                    <th class="text-left px-3 py-1 font-medium">Locale</th>
-                    <th class="text-right px-3 py-1 font-medium">Pool</th>
-                    <th class="text-right px-3 py-1 font-medium">Easy</th>
-                    <th class="text-right px-3 py-1 font-medium">Medium</th>
-                    <th class="text-right px-3 py-1 font-medium">Hard</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr v-for="(ac, i) in row.assessment" :key="i" class="border-t border-gray-100"
-                      :class="ac.poolSize < contentMatrix.dimensions.targetPoolSize ? 'bg-yellow-50' : ''">
-                    <td class="px-3 py-1">{{ ac.flavor }}</td>
-                    <td class="px-3 py-1">{{ ac.locale }}</td>
-                    <td class="px-3 py-1 text-right" :class="ac.poolSize < contentMatrix.dimensions.targetPoolSize ? 'text-yellow-600 font-semibold' : ''">{{ ac.poolSize }}</td>
-                    <td class="px-3 py-1 text-right" :class="ac.easy === 0 ? 'text-red-500' : ''">{{ ac.easy }}</td>
-                    <td class="px-3 py-1 text-right" :class="ac.medium === 0 ? 'text-red-500' : ''">{{ ac.medium }}</td>
-                    <td class="px-3 py-1 text-right" :class="ac.hard === 0 ? 'text-red-500' : ''">{{ ac.hard }}</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div v-else class="text-sm text-gray-400">No assessment content</div>
+          <!-- Detail panel (sticky sidebar) -->
+          <div v-if="selectedMatrixTopic && contentMatrix" class="w-96 shrink-0 sticky top-4">
+            <div class="bg-white rounded-lg border border-gray-200 p-4 space-y-4 max-h-[70vh] overflow-auto">
+              <template v-for="row in filteredMatrix.filter((r) => r.topicId === selectedMatrixTopic)" :key="row.topicId">
+                <div class="flex justify-between items-start">
+                  <div>
+                    <h3 class="text-base font-semibold">{{ row.topicName }}</h3>
+                    <p class="text-sm text-gray-500">{{ gradeLabel(row.gradeLevel) }} - {{ row.subjectName }}</p>
+                  </div>
+                  <button @click="selectedMatrixTopic = null" class="text-gray-400 hover:text-gray-600 p-1">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                  </button>
+                </div>
 
-            <!-- Question type distribution -->
-            <div v-if="Object.keys(row.questionTypes).length > 0">
-              <h4 class="text-sm font-semibold text-gray-700 mb-2">Question Types</h4>
-              <div class="flex flex-wrap gap-2">
-                <span v-for="(count, type) in row.questionTypes" :key="type"
-                      class="inline-flex items-center gap-1 px-2 py-0.5 bg-gray-100 rounded text-xs">
-                  {{ type }}: {{ count }}
-                </span>
-              </div>
-            </div>
+                <!-- Instructional breakdown -->
+                <div v-if="row.instructional.length > 0">
+                  <h4 class="text-sm font-semibold text-gray-700 mb-2">Instructional Content</h4>
+                  <table class="w-full text-xs">
+                    <thead class="bg-gray-50">
+                      <tr>
+                        <th class="text-left px-2 py-1 font-medium">Flavor</th>
+                        <th class="text-left px-2 py-1 font-medium">Locale</th>
+                        <th class="text-left px-2 py-1 font-medium">Pres.</th>
+                        <th class="text-right px-2 py-1 font-medium">#</th>
+                        <th class="text-right px-2 py-1 font-medium">Ver</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr v-for="(ic, i) in row.instructional" :key="i" class="border-t border-gray-100">
+                        <td class="px-2 py-1">{{ ic.flavor }}</td>
+                        <td class="px-2 py-1">{{ ic.locale }}</td>
+                        <td class="px-2 py-1">{{ ic.presentation }}</td>
+                        <td class="px-2 py-1 text-right">{{ ic.count }}</td>
+                        <td class="px-2 py-1 text-right">v{{ ic.maxVersion }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div v-else class="text-sm text-gray-400">No instructional content</div>
 
-            <!-- Quality info -->
-            <div v-if="row.quality">
-              <h4 class="text-sm font-semibold text-gray-700 mb-1">Quality</h4>
-              <p class="text-sm">
-                Accuracy: <span :class="healthColor(row.quality.accuracy)" class="font-semibold">{{ formatPct(row.quality.accuracy) }}</span>
-                ({{ row.quality.attempts }} attempts)
-              </p>
+                <!-- Assessment breakdown -->
+                <div v-if="row.assessment.length > 0">
+                  <h4 class="text-sm font-semibold text-gray-700 mb-2">Assessment Pool</h4>
+                  <table class="w-full text-xs">
+                    <thead class="bg-gray-50">
+                      <tr>
+                        <th class="text-left px-2 py-1 font-medium">Flavor</th>
+                        <th class="text-left px-2 py-1 font-medium">Locale</th>
+                        <th class="text-right px-2 py-1 font-medium">Pool</th>
+                        <th class="text-right px-2 py-1 font-medium">E</th>
+                        <th class="text-right px-2 py-1 font-medium">M</th>
+                        <th class="text-right px-2 py-1 font-medium">H</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr v-for="(ac, i) in row.assessment" :key="i" class="border-t border-gray-100"
+                          :class="ac.poolSize < contentMatrix.dimensions.targetPoolSize ? 'bg-yellow-50' : ''">
+                        <td class="px-2 py-1">{{ ac.flavor }}</td>
+                        <td class="px-2 py-1">{{ ac.locale }}</td>
+                        <td class="px-2 py-1 text-right" :class="ac.poolSize < contentMatrix.dimensions.targetPoolSize ? 'text-yellow-600 font-semibold' : ''">{{ ac.poolSize }}</td>
+                        <td class="px-2 py-1 text-right" :class="ac.easy === 0 ? 'text-red-500' : ''">{{ ac.easy }}</td>
+                        <td class="px-2 py-1 text-right" :class="ac.medium === 0 ? 'text-red-500' : ''">{{ ac.medium }}</td>
+                        <td class="px-2 py-1 text-right" :class="ac.hard === 0 ? 'text-red-500' : ''">{{ ac.hard }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div v-else class="text-sm text-gray-400">No assessment content</div>
+
+                <!-- Question type distribution -->
+                <div v-if="Object.keys(row.questionTypes).length > 0">
+                  <h4 class="text-sm font-semibold text-gray-700 mb-2">Question Types</h4>
+                  <div class="flex flex-wrap gap-2">
+                    <span v-for="(count, type) in row.questionTypes" :key="type"
+                          class="inline-flex items-center gap-1 px-2 py-0.5 bg-gray-100 rounded text-xs">
+                      {{ type }}: {{ count }}
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Quality info -->
+                <div v-if="row.quality">
+                  <h4 class="text-sm font-semibold text-gray-700 mb-1">Quality</h4>
+                  <p class="text-sm">
+                    Accuracy: <span :class="healthColor(row.quality.accuracy)" class="font-semibold">{{ formatPct(row.quality.accuracy) }}</span>
+                    ({{ row.quality.attempts }} attempts)
+                  </p>
+                </div>
+              </template>
             </div>
-          </template>
+          </div>
         </div>
       </div>
     </template>
