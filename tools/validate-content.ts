@@ -14,6 +14,32 @@ let warnings = 0;
 let totalProblems = 0;
 let totalExamples = 0;
 
+// Platform-incompatible instruction patterns
+// These describe physical/verbal actions that can't be done on a screen
+const INCOMPATIBLE_PATTERNS = [
+  // Physical actions the student is asked to perform (not descriptions of objects)
+  { pattern: /\byou\b.*\b(point to|point at)\b/i, label: "physical pointing" },
+  { pattern: /\b(touch|tap) (each|the|your|every)\b/i, label: "physical touching" },
+  { pattern: /\bhold up (your |)finger/i, label: "finger manipulation" },
+  { pattern: /\bon your (other |)hand\b/i, label: "finger manipulation" },
+  { pattern: /\bhold up.*hand/i, label: "finger manipulation" },
+  { pattern: /\b(say|read) (it |the |this |them |)(aloud|out loud)\b/i, label: "speaking aloud" },
+  { pattern: /\b(draw|sketch) (a |the |on |it |an )\b/i, label: "drawing" },
+  { pattern: /\buse your (hands|fingers|body)\b/i, label: "physical action" },
+  { pattern: /\bplace your finger\b/i, label: "physical pointing" },
+  { pattern: /\bcut (out|the|along)\b/i, label: "physical cutting" },
+  { pattern: /\b(can you |)fold (the |it |along|this)/i, label: "physical folding" },
+];
+
+function checkPlatformCompatibility(text: string, context: string): void {
+  for (const { pattern, label } of INCOMPATIBLE_PATTERNS) {
+    if (pattern.test(text)) {
+      console.warn(`WARN: Platform-incompatible instruction (${label}) in ${context}: "${text.slice(0, 80)}..."`);
+      warnings++;
+    }
+  }
+}
+
 // Validate problems
 const problemsDir = join(contentDir, "problems");
 if (existsSync(problemsDir)) {
@@ -40,6 +66,12 @@ if (existsSync(problemsDir)) {
         console.warn(`WARN: Empty solution for ${p.id} in ${file}`);
         warnings++;
       }
+      // Platform compatibility checks
+      checkPlatformCompatibility(p.question ?? "", `${p.id} question`);
+      for (const hint of p.hints ?? []) {
+        checkPlatformCompatibility(hint, `${p.id} hint`);
+      }
+      checkPlatformCompatibility(p.solution ?? "", `${p.id} solution`);
     }
   }
 }
@@ -70,6 +102,9 @@ if (existsSync(examplesDir)) {
           console.warn(`WARN: Empty explanation in step ${i} of ${ex.id}`);
           warnings++;
         }
+        // Platform compatibility checks
+        checkPlatformCompatibility(step.instruction ?? "", `${ex.id} step ${i} instruction`);
+        checkPlatformCompatibility(step.work ?? "", `${ex.id} step ${i} work`);
       }
     }
   }

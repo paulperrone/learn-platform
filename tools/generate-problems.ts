@@ -82,6 +82,20 @@ Guidelines:
 - For 3-5: use word problems, real-world contexts
 - Each problem should test a slightly different aspect of the skill
 - Hints should guide without giving away the answer
+- The answer must be typeable (a number, short word, or simple expression) — no drawing, pointing, or speaking
+
+CRITICAL — Platform medium:
+Students answer on a SCREEN via text input (tap/click + keyboard). No physical objects, no microphone, no camera.
+
+DO NOT use hints like: "point to each object", "hold up fingers", "say it aloud", "draw", "touch the screen and point at them".
+
+INSTEAD, translate hands-on guidance into screen-native equivalents:
+- "Point to each and count" → "Count each 🍎 one by one: 🍎(1) 🍎(2) 🍎(3). How many total?"
+- "Use your fingers" → "Use the pictures: 🖐️ = 5, ✌️ = 2. How many altogether?"
+- "Draw groups" → "Look at the groups: [⭐⭐⭐] and [⭐⭐]. Count all the stars."
+- "Say the pattern" → "What comes next in the pattern? Type the number."
+
+Keep it active and visual — emoji groupings, number lines described in text, step-by-step sequences. For K-2, the question and hints should be readable by a beginning reader (short sentences, familiar words).
 
 Output as a JSON array of problem objects.`;
 

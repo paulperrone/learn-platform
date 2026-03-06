@@ -633,3 +633,29 @@ Child creation now creates both an org member (student role) and an account_link
 - P5 opens the largest non-English US K-5 market
 
 **Estimated volume:** ~2,000 content rows total across P1-P5. At LLM generation costs of ~$0.01-0.05 per content row, total generation cost: $20-100.
+
+---
+
+### 2026-03-06: Platform-medium constraints as content generation guardrail
+
+**Source:** User session
+
+**Context:** First content quality review revealed 48% of worked examples (34/71 files) contain instructions asking students to perform physical actions (hold up fingers, point at objects, draw, speak aloud) that are impossible on the platform. The earliest, most foundational K-level topics were worst affected. Root cause: LLM generation prompts emphasized "concrete objects" without specifying the delivery medium is a screen.
+
+**Decision:** All content generation prompts must include explicit platform-medium constraints. A validation tool (`validate-content.ts`) enforces this with regex-based pattern detection. A rewrite tool (`rewrite-content.ts`) uses LLM to adapt existing incompatible content.
+
+**The constraint language:**
+- Students interact via screen (phone, tablet, computer) with text input + tap/click
+- No physical objects, microphone, camera, or manipulatives
+- Physical pedagogical intents must be translated to screen-native equivalents: emoji groupings, visual counters (🖐️ = 5), highlighted counting sequences (⭐(1) ⭐(2)), number lines, "look at" / "count" / "type" instead of "point" / "touch" / "say aloud"
+- The spirit of hands-on learning is preserved through visual interaction, not abandoned
+
+**Why:**
+- The platform's medium is fixed — all content must work within it
+- LLMs default to classroom pedagogy unless explicitly told otherwise
+- Validation catches issues before import; rewrite tool fixes existing content
+- This is a systemic guardrail, not a one-time fix
+
+**Alternatives rejected:**
+- Adding physical interaction capabilities (camera, mic) — too complex for MVP, not needed for math K-5 core
+- Removing all concrete/embodied pedagogy — throws out the baby with the bathwater; screen-native equivalents preserve the learning benefit

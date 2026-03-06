@@ -11,6 +11,7 @@ Gotchas, insights, and tacit knowledge. Append-only.
 - `pnpm approve-builds` is interactive — add native deps to `pnpm.onlyBuiltDependencies` in root package.json instead
 - import-content.ts must delete from `group_session_participants`, `group_sessions`, `diagnostic_sessions`, `assignment_responses`, `assignments`, `teach_sessions`, `review_log`, `user_topic_state`, `assessment_content`, and `instructional_content` before deleting topics — FK constraints on `topic_id` and `subject_id`
 - Drizzle `$defaultFn()` is app-level only — when adding NOT NULL columns via migration, manually add `DEFAULT` to the generated SQL or SQLite will reject it
+- Content generation prompts MUST include platform-medium constraints (screen + text input only) or LLMs will generate physical/verbal instructions (hold up fingers, point, speak aloud) that are impossible on the platform. Always run `npx tsx tools/validate-content.ts` after generating content.
 
 ---
 
@@ -175,3 +176,14 @@ Full signup flow (`POST /api/auth/sign-up/email`) works in miniflare Workers poo
 `pnpm test` (vitest with `@cloudflare/vitest-pool-workers`) can report exit code 1 due to wrangler failing to write debug logs (`EPERM: operation not permitted` on `~/.wrangler/logs/`). The actual tests may have passed — check the test result lines, not just the exit code. This is a wrangler infrastructure issue, not a test failure.
 
 **Context:** Running `pnpm test` after Teach Mode implementation. All tests passed but the process exited with code 1 due to wrangler log file permissions.
+
+---
+
+### 2026-03-06: LLM-generated content defaults to classroom pedagogy without medium constraints
+
+**Source:** User session
+**Area:** Content generation / LLM prompts
+
+LLMs prompted to create "concrete, hands-on" K-2 content will generate physical manipulation instructions (hold up fingers, point at objects, draw, speak aloud) by default. These are good classroom pedagogy but impossible on a screen-based platform. 48% of initial worked examples had this problem. Fix: generation prompts must explicitly describe the delivery medium and provide screen-native translation examples for common physical actions. Validate with regex patterns post-generation.
+
+**Context:** First content quality review. Added platform-medium constraints to generate-examples.ts, generate-problems.ts, and pattern-based validation to validate-content.ts.

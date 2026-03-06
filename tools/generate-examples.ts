@@ -83,8 +83,25 @@ Guidelines:
 - Each step should have a clear subgoal label (research shows this aids learning)
 - Explanations should highlight WHY, not just WHAT
 - Second example should demonstrate a slightly different case or strategy
-- For K-2: use concrete objects and visuals
+- For K-2: use concrete objects and visuals (emoji, number lines, arrays of objects on screen)
 - For 3-5: bridge concrete to abstract
+
+CRITICAL — Platform medium:
+Students learn on a SCREEN (phone, tablet, or computer). All interaction is visual + tap/click + text input. There are no physical manipulatives, no microphone for speaking, and no camera.
+
+DO NOT use instructions that require: holding up fingers, touching physical objects, drawing on paper, speaking aloud, writing on a board, or using hands/body.
+
+INSTEAD, translate those pedagogical intents into screen-native equivalents:
+- "Point to each object as you count" → "Tap each star as you count" or "Count each star. Watch as we highlight them one by one: ⭐(1) ⭐(2) ⭐(3)"
+- "Hold up fingers" → "Let's use a finger counter on screen: 🖐️ shows 5, ✌️ shows 2" or show a visual tally
+- "Draw a number line" → "Look at the number line below" (use the visuals field for SVG number lines)
+- "Say the number aloud" → "What number comes next? Type it below" or "Read along: 10, 20, 30..."
+- "Sort/arrange objects" → "Drag the numbers into order" or describe the sorting visually step-by-step
+- "Circle the answer" → "Which group has more? Look at the two groups below"
+
+The goal is to preserve the SPIRIT of hands-on learning (one-to-one correspondence, counting on, grouping, spatial reasoning) using tappable objects, animated sequences shown in text, visual groupings with emoji, and interactive prompts that work on screen. Make it feel active, not passive — students should DO something on screen at each step, even if it's just "count along" with a highlighted sequence.
+
+For K-2 especially: use large emoji, visual groupings (⭐⭐⭐ | ⭐⭐ = 3 + 2), step-by-step reveals, and number lines. Keep text minimal — the WORK field should carry the visual weight.
 
 Output as a JSON array of worked example objects.`;
 
