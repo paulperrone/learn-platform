@@ -13,7 +13,25 @@ export type GradeResult = {
   details?: string;
 };
 
-const normalize = (s: string) => s.trim().toLowerCase().replace(/\s+/g, " ");
+/** Normalize text for comparison: trim, lowercase, collapse spaces, strip trailing punctuation and common STT artifacts */
+function normalize(s: string): string {
+  return s
+    .trim()
+    .toLowerCase()
+    .replace(/\s+/g, " ")       // collapse whitespace
+    .replace(/[.,;:!?]+$/g, "") // strip trailing punctuation (STT often adds "7." or "yes.")
+    .replace(/^[.,;:!?]+/g, "") // strip leading punctuation
+    .replace(/\s+/g, " ")       // re-collapse after stripping
+    .trim();
+}
+
+/** Try to extract a numeric value from a string for comparison */
+function extractNumber(s: string): number | null {
+  // Strip surrounding text to find a number: "7.", "7 ", " 7.0 ", "seven" → 7
+  const cleaned = s.replace(/[,\s$%]+/g, "").replace(/[.]$/, "");
+  const num = parseFloat(cleaned);
+  return isNaN(num) ? null : num;
+}
 
 export function gradeProblem(problem: Problem, answer: string): GradeResult {
   const type: AssessmentType = problem.type ?? "text-qa";
@@ -48,8 +66,23 @@ export function gradeProblem(problem: Problem, answer: string): GradeResult {
 }
 
 function gradeTextQa(expected: string, actual: string): GradeResult {
-  const correct = normalize(actual) === normalize(expected);
-  return { correct, score: correct ? 1 : 0 };
+  const normExpected = normalize(expected);
+  const normActual = normalize(actual);
+
+  // Exact text match (after normalization)
+  if (normActual === normExpected) {
+    return { correct: true, score: 1 };
+  }
+
+  // Numeric fallback: if both parse as numbers, compare numerically
+  // Catches "7." vs "7", "3.0" vs "3", "  7 " vs "7"
+  const numExpected = extractNumber(expected);
+  const numActual = extractNumber(actual);
+  if (numExpected !== null && numActual !== null && numExpected === numActual) {
+    return { correct: true, score: 1 };
+  }
+
+  return { correct: false, score: 0 };
 }
 
 function gradeNumericalInput(

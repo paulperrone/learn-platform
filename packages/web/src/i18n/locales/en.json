@@ -49,7 +49,10 @@
     "allMastered": "All available topics mastered! Check back for new content.",
     "retry": "Retry",
     "loadingDashboard": "Loading dashboard...",
-    "loadError": "Unable to load dashboard data."
+    "loadError": "Unable to load dashboard data.",
+    "diagnosticTitle": "Find your starting level",
+    "diagnosticDescription": "Take a quick placement test so we can start you at the right level instead of the beginning.",
+    "takeDiagnostic": "Take Placement Test"
   },
   "learn": {
     "title": "Learning Session",

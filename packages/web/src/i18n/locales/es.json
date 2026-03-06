@@ -49,7 +49,10 @@
     "allMastered": "¡Todos los temas dominados! Vuelve pronto para más contenido.",
     "retry": "Reintentar",
     "loadingDashboard": "Cargando panel...",
-    "loadError": "No se pudieron cargar los datos del panel."
+    "loadError": "No se pudieron cargar los datos del panel.",
+    "diagnosticTitle": "Encuentra tu nivel inicial",
+    "diagnosticDescription": "Haz una prueba de nivel rápida para empezar en el lugar correcto.",
+    "takeDiagnostic": "Hacer prueba de nivel"
   },
   "learn": {
     "title": "Sesión de Aprendizaje",

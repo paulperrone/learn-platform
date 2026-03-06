@@ -38,6 +38,46 @@ describe("gradeProblem", () => {
       const result = gradeProblem(makeProblem({ type: undefined }), "4");
       expect(result.correct).toBe(true);
     });
+
+    it("strips trailing punctuation from STT input (7. vs 7)", () => {
+      const result = gradeProblem(makeProblem({ answer: "7" }), "7.");
+      expect(result.correct).toBe(true);
+    });
+
+    it("strips leading punctuation from STT input", () => {
+      const result = gradeProblem(makeProblem({ answer: "yes" }), ".yes");
+      expect(result.correct).toBe(true);
+    });
+
+    it("handles numeric comparison: '3.0' vs '3'", () => {
+      const result = gradeProblem(makeProblem({ answer: "3" }), "3.0");
+      expect(result.correct).toBe(true);
+    });
+
+    it("handles numeric comparison: ' 7 ' vs '7'", () => {
+      const result = gradeProblem(makeProblem({ answer: "7" }), "  7  ");
+      expect(result.correct).toBe(true);
+    });
+
+    it("handles STT trailing period on number: '7.' vs '7'", () => {
+      const result = gradeProblem(makeProblem({ answer: "7" }), "7.");
+      expect(result.correct).toBe(true);
+    });
+
+    it("handles mixed case with trailing punctuation", () => {
+      const result = gradeProblem(makeProblem({ answer: "Yes" }), "yes.");
+      expect(result.correct).toBe(true);
+    });
+
+    it("rejects genuinely wrong answers even with normalization", () => {
+      const result = gradeProblem(makeProblem({ answer: "7" }), "8.");
+      expect(result.correct).toBe(false);
+    });
+
+    it("handles numeric with commas: '1,000' vs '1000'", () => {
+      const result = gradeProblem(makeProblem({ answer: "1000" }), "1,000");
+      expect(result.correct).toBe(true);
+    });
   });
 
   describe("numerical-input", () => {
