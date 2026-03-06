@@ -4,8 +4,26 @@ import type { Env } from "../index.js";
 export const speechRoutes = new Hono<Env>();
 
 /** Check if Workers AI speech-to-text is available */
-speechRoutes.get("/status", (c) => {
-  return c.json({ available: !!c.env.AI });
+speechRoutes.get("/status", async (c) => {
+  if (!c.env.AI) {
+    return c.json({ available: false });
+  }
+
+  // Probe the binding to catch auth/connectivity issues (e.g. error 1031 in local dev)
+  try {
+    // Run with empty audio — will fail fast but proves the binding works
+    await (c.env.AI as any).run("@cf/openai/whisper-large-v3-turbo", { audio: "" });
+    return c.json({ available: true });
+  } catch (err) {
+    const message = err instanceof Error ? err.message : String(err);
+    // Model errors (bad input) mean the binding works — AI is reachable
+    if (message.includes("invalid") || message.includes("input")) {
+      return c.json({ available: true });
+    }
+    // Connection/auth errors (1031, etc.) mean AI is not usable
+    console.warn("[speech/status] AI binding unavailable:", message);
+    return c.json({ available: false });
+  }
 });
 
 /** Transcribe audio using Cloudflare Workers AI Whisper */

@@ -24,7 +24,12 @@ onMounted(async () => {
 async function handleClick() {
   if (state.value === "recording") {
     const text = await stop();
-    if (text) emit("transcription", text);
+    if (text) {
+      emit("transcription", text);
+    } else if (error.value) {
+      // Transcription failed (e.g. AI binding broken) — hide mic to avoid repeated failures
+      sttAvailable.value = false;
+    }
   } else if (state.value === "idle") {
     await start();
   }
