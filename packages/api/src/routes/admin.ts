@@ -3,7 +3,7 @@ import type { Context, Next } from "hono";
 import { createAuth } from "../lib/auth.js";
 import { getDb } from "../db/index.js";
 import * as schema from "../db/schema.js";
-import { eq, sql, gte, desc, and } from "drizzle-orm";
+import { eq, sql, gte, desc, and, countDistinct } from "drizzle-orm";
 import type { Env } from "../index.js";
 
 type AuthUser = { id: string; name: string; email: string; role?: string | null };
@@ -43,28 +43,44 @@ adminRoutes.get("/stats", async (c) => {
   const now = new Date();
   const monthStart = new Date(now.getFullYear(), now.getMonth(), 1).toISOString();
 
-  const [userCount, familyCount, topicCount, reviewCount, llmCostAll, llmCostMonth] =
-    await Promise.all([
-      db.select({ count: sql<number>`count(*)` }).from(schema.users),
-      db.select({ count: sql<number>`count(*)` }).from(schema.organizations),
-      db.select({ count: sql<number>`count(*)` }).from(schema.topics),
-      db.select({ count: sql<number>`count(*)` }).from(schema.reviewLog),
-      db
-        .select({ total: sql<number>`coalesce(sum(${schema.llmUsage.costCents}), 0)` })
-        .from(schema.llmUsage),
-      db
-        .select({ total: sql<number>`coalesce(sum(${schema.llmUsage.costCents}), 0)` })
-        .from(schema.llmUsage)
-        .where(gte(schema.llmUsage.createdAt, monthStart)),
-    ]);
+  const d1 = c.env.DB;
+
+  const [
+    userCount, familyCount, topicCount, reviewCount,
+    instructionalCount, assessmentCount,
+    llmCostAll, llmCostMonth,
+    contentByLocale, contentByFlavor,
+  ] = await Promise.all([
+    db.select({ count: sql<number>`count(*)` }).from(schema.users),
+    db.select({ count: sql<number>`count(*)` }).from(schema.organizations),
+    db.select({ count: sql<number>`count(*)` }).from(schema.topics),
+    db.select({ count: sql<number>`count(*)` }).from(schema.reviewLog),
+    db.select({ count: sql<number>`count(*)` }).from(schema.instructionalContent),
+    db.select({ count: sql<number>`count(*)` }).from(schema.assessmentContent),
+    db
+      .select({ total: sql<number>`coalesce(sum(${schema.llmUsage.costCents}), 0)` })
+      .from(schema.llmUsage),
+    db
+      .select({ total: sql<number>`coalesce(sum(${schema.llmUsage.costCents}), 0)` })
+      .from(schema.llmUsage)
+      .where(gte(schema.llmUsage.createdAt, monthStart)),
+    d1.prepare("SELECT locale, SUM(CASE WHEN source = 'instructional' THEN cnt ELSE 0 END) AS instructional, SUM(CASE WHEN source = 'assessment' THEN cnt ELSE 0 END) AS assessment FROM (SELECT locale, count(*) as cnt, 'instructional' as source FROM instructional_content GROUP BY locale UNION ALL SELECT locale, count(*) as cnt, 'assessment' as source FROM assessment_content GROUP BY locale) GROUP BY locale ORDER BY (instructional + assessment) DESC")
+      .all<{ locale: string; instructional: number; assessment: number }>(),
+    d1.prepare("SELECT flavor, SUM(CASE WHEN source = 'instructional' THEN cnt ELSE 0 END) AS instructional, SUM(CASE WHEN source = 'assessment' THEN cnt ELSE 0 END) AS assessment FROM (SELECT flavor, count(*) as cnt, 'instructional' as source FROM instructional_content GROUP BY flavor UNION ALL SELECT flavor, count(*) as cnt, 'assessment' as source FROM assessment_content GROUP BY flavor) GROUP BY flavor ORDER BY (instructional + assessment) DESC")
+      .all<{ flavor: string; instructional: number; assessment: number }>(),
+  ]);
 
   return c.json({
     totalUsers: userCount[0].count,
     totalFamilies: familyCount[0].count,
     totalTopics: topicCount[0].count,
     totalReviews: reviewCount[0].count,
+    totalInstructionalContent: instructionalCount[0].count,
+    totalAssessmentContent: assessmentCount[0].count,
     llmCostCentsAllTime: llmCostAll[0].total,
     llmCostCentsThisMonth: llmCostMonth[0].total,
+    contentByLocale: contentByLocale.results,
+    contentByFlavor: contentByFlavor.results,
   });
 });
 
@@ -242,6 +258,58 @@ adminRoutes.get("/analytics/content-effectiveness", async (c) => {
     topicReviewStats,
     topicMasteryStats,
     strugglingTopics,
+  });
+});
+
+// --- System Stats ---
+
+adminRoutes.get("/system-stats", async (c) => {
+  const db = getDb(c.env.DB);
+  const d1 = c.env.DB;
+  const now = new Date();
+  const sevenDaysAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000).toISOString();
+  const thirtyDaysAgo = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000).toISOString();
+  const monthStart = new Date(now.getFullYear(), now.getMonth(), 1).toISOString();
+  const eightWeeksAgo = new Date(now.getTime() - 56 * 24 * 60 * 60 * 1000).toISOString();
+
+  const [
+    activeUsers7d, activeUsers30d,
+    contentVolume,
+    llmSummary,
+    contentVelocity,
+  ] = await Promise.all([
+    db.select({ count: countDistinct(schema.reviewLog.userId) })
+      .from(schema.reviewLog)
+      .where(gte(schema.reviewLog.createdAt, sevenDaysAgo)),
+
+    db.select({ count: countDistinct(schema.reviewLog.userId) })
+      .from(schema.reviewLog)
+      .where(gte(schema.reviewLog.createdAt, thirtyDaysAgo)),
+
+    d1.prepare("SELECT type, count(*) as count FROM (SELECT 'instructional' as type FROM instructional_content UNION ALL SELECT type FROM assessment_content) GROUP BY type ORDER BY count DESC")
+      .all<{ type: string; count: number }>(),
+
+    db.select({
+      totalCalls: sql<number>`count(*)`,
+      totalCostCents: sql<number>`coalesce(sum(${schema.llmUsage.costCents}), 0)`,
+      totalInputTokens: sql<number>`coalesce(sum(${schema.llmUsage.inputTokens}), 0)`,
+      totalOutputTokens: sql<number>`coalesce(sum(${schema.llmUsage.outputTokens}), 0)`,
+      uniqueModels: countDistinct(schema.llmUsage.model),
+    })
+      .from(schema.llmUsage)
+      .where(gte(schema.llmUsage.createdAt, monthStart)),
+
+    d1.prepare("SELECT week, SUM(CASE WHEN source = 'instructional' THEN cnt ELSE 0 END) AS instructional, SUM(CASE WHEN source = 'assessment' THEN cnt ELSE 0 END) AS assessment FROM (SELECT strftime('%Y-W%W', created_at) as week, count(*) as cnt, 'instructional' as source FROM instructional_content WHERE created_at >= ? GROUP BY week UNION ALL SELECT strftime('%Y-W%W', created_at) as week, count(*) as cnt, 'assessment' as source FROM assessment_content WHERE created_at >= ? GROUP BY week) GROUP BY week ORDER BY week")
+      .bind(eightWeeksAgo, eightWeeksAgo)
+      .all<{ week: string; instructional: number; assessment: number }>(),
+  ]);
+
+  return c.json({
+    activeUsers7d: activeUsers7d[0].count,
+    activeUsers30d: activeUsers30d[0].count,
+    contentVolume: contentVolume.results,
+    llmSummary: llmSummary[0],
+    contentVelocity: contentVelocity.results,
   });
 });
 

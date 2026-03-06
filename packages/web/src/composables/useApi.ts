@@ -254,9 +254,21 @@ export function useApi() {
         totalFamilies: number;
         totalTopics: number;
         totalReviews: number;
+        totalInstructionalContent: number;
+        totalAssessmentContent: number;
         llmCostCentsAllTime: number;
         llmCostCentsThisMonth: number;
+        contentByLocale: { locale: string; instructional: number; assessment: number }[];
+        contentByFlavor: { flavor: string; instructional: number; assessment: number }[];
       }>("/admin/stats"),
+    getAdminSystemStats: () =>
+      request<{
+        activeUsers7d: number;
+        activeUsers30d: number;
+        contentVolume: { type: string; count: number }[];
+        llmSummary: { totalCalls: number; totalCostCents: number; totalInputTokens: number; totalOutputTokens: number; uniqueModels: number };
+        contentVelocity: { week: string; instructional: number; assessment: number }[];
+      }>("/admin/system-stats"),
     getAdminLLMConfig: () =>
       request<{ configs: { tier: string; modelId: string; costInputPerM: number; costOutputPerM: number; updatedAt: string }[] }>("/admin/llm/config"),
     updateAdminLLMConfig: (tier: string, data: { modelId: string; costInputPerM: number; costOutputPerM: number }) =>

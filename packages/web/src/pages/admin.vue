@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { ref, onMounted, computed } from "vue";
+import { ref, onMounted } from "vue";
 import { useApi, withErrorToast } from "@/composables/useApi";
 
 const api = useApi();
 
 const loading = ref(true);
 const error = ref(false);
-const activeTab = ref<"overview" | "models" | "usage" | "content" | "patterns">("overview");
+const activeTab = ref<"overview" | "models" | "usage" | "content" | "patterns" | "system">("overview");
 
 // Data
 const stats = ref<{
@@ -14,8 +14,20 @@ const stats = ref<{
   totalFamilies: number;
   totalTopics: number;
   totalReviews: number;
+  totalInstructionalContent: number;
+  totalAssessmentContent: number;
   llmCostCentsAllTime: number;
   llmCostCentsThisMonth: number;
+  contentByLocale: { locale: string; instructional: number; assessment: number }[];
+  contentByFlavor: { flavor: string; instructional: number; assessment: number }[];
+} | null>(null);
+
+const systemStats = ref<{
+  activeUsers7d: number;
+  activeUsers30d: number;
+  contentVolume: { type: string; count: number }[];
+  llmSummary: { totalCalls: number; totalCostCents: number; totalInputTokens: number; totalOutputTokens: number; uniqueModels: number };
+  contentVelocity: { week: string; instructional: number; assessment: number }[];
 } | null>(null);
 
 const llmConfigs = ref<{ tier: string; modelId: string; costInputPerM: number; costOutputPerM: number; updatedAt: string }[]>([]);
@@ -40,19 +52,21 @@ const saving = ref(false);
 
 onMounted(async () => {
   const result = await withErrorToast(async () => {
-    const [s, configs, usage, users, content, patterns] = await Promise.all([
+    const [s, sys, configs, usage, users, content, patterns] = await Promise.all([
       api.getAdminStats(),
+      api.getAdminSystemStats(),
       api.getAdminLLMConfig(),
       api.getAdminLLMUsage(),
       api.getAdminTopUsers(),
       api.getContentEffectiveness(),
       api.getLearningPatterns(),
     ]);
-    return { s, configs, usage, users, content, patterns };
+    return { s, sys, configs, usage, users, content, patterns };
   }, "Failed to load admin data");
 
   if (result) {
     stats.value = result.s;
+    systemStats.value = result.sys;
     llmConfigs.value = result.configs.configs;
     llmUsage.value = result.usage;
     topUsers.value = result.users.topUsers;
@@ -108,6 +122,7 @@ async function saveConfig() {
 
 const tabs = [
   { id: "overview" as const, label: "Overview" },
+  { id: "system" as const, label: "System Stats" },
   { id: "models" as const, label: "Model Config" },
   { id: "usage" as const, label: "LLM Usage" },
   { id: "content" as const, label: "Content Effectiveness" },
@@ -124,13 +139,13 @@ const tabs = [
 
     <template v-else>
       <!-- Tab navigation -->
-      <div class="flex gap-1 mb-6 border-b border-gray-200">
+      <div class="flex gap-1 mb-6 border-b border-gray-200 overflow-x-auto">
         <button
           v-for="tab in tabs"
           :key="tab.id"
           @click="activeTab = tab.id"
           :class="[
-            'px-4 py-2 text-sm font-medium border-b-2 -mb-px transition-colors',
+            'px-4 py-2 text-sm font-medium border-b-2 -mb-px transition-colors whitespace-nowrap',
             activeTab === tab.id
               ? 'border-blue-600 text-blue-600'
               : 'border-transparent text-gray-500 hover:text-gray-700',
@@ -142,7 +157,8 @@ const tabs = [
 
       <!-- Overview Tab -->
       <div v-if="activeTab === 'overview' && stats" class="space-y-6">
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+        <!-- Stat cards -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
           <div class="bg-white rounded-lg border border-gray-200 p-4">
             <div class="text-sm text-gray-500">Total Users</div>
             <div class="text-2xl font-bold">{{ stats.totalUsers }}</div>
@@ -157,7 +173,15 @@ const tabs = [
           </div>
           <div class="bg-white rounded-lg border border-gray-200 p-4">
             <div class="text-sm text-gray-500">Total Reviews</div>
-            <div class="text-2xl font-bold">{{ stats.totalReviews }}</div>
+            <div class="text-2xl font-bold">{{ stats.totalReviews.toLocaleString() }}</div>
+          </div>
+          <div class="bg-white rounded-lg border border-gray-200 p-4">
+            <div class="text-sm text-gray-500">Instructional Content</div>
+            <div class="text-2xl font-bold">{{ stats.totalInstructionalContent }}</div>
+          </div>
+          <div class="bg-white rounded-lg border border-gray-200 p-4">
+            <div class="text-sm text-gray-500">Assessment Content</div>
+            <div class="text-2xl font-bold">{{ stats.totalAssessmentContent }}</div>
           </div>
           <div class="bg-white rounded-lg border border-gray-200 p-4">
             <div class="text-sm text-gray-500">LLM Cost (This Month)</div>
@@ -166,6 +190,148 @@ const tabs = [
           <div class="bg-white rounded-lg border border-gray-200 p-4">
             <div class="text-sm text-gray-500">LLM Cost (All Time)</div>
             <div class="text-2xl font-bold">{{ formatCents(stats.llmCostCentsAllTime) }}</div>
+          </div>
+        </div>
+
+        <!-- Content by Locale -->
+        <div v-if="stats.contentByLocale.length > 0">
+          <h2 class="text-lg font-semibold mb-3">Content by Locale</h2>
+          <div class="bg-white rounded-lg border border-gray-200 overflow-hidden">
+            <table class="w-full text-sm">
+              <thead class="bg-gray-50">
+                <tr>
+                  <th class="text-left px-4 py-2 font-medium text-gray-600">Locale</th>
+                  <th class="text-right px-4 py-2 font-medium text-gray-600">Instructional</th>
+                  <th class="text-right px-4 py-2 font-medium text-gray-600">Assessment</th>
+                  <th class="text-right px-4 py-2 font-medium text-gray-600">Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="row in stats.contentByLocale" :key="row.locale" class="border-t border-gray-100">
+                  <td class="px-4 py-2 font-mono text-xs uppercase">{{ row.locale }}</td>
+                  <td class="px-4 py-2 text-right">{{ row.instructional }}</td>
+                  <td class="px-4 py-2 text-right">{{ row.assessment }}</td>
+                  <td class="px-4 py-2 text-right font-medium">{{ row.instructional + row.assessment }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Content by Flavor -->
+        <div v-if="stats.contentByFlavor.length > 0">
+          <h2 class="text-lg font-semibold mb-3">Content by Flavor</h2>
+          <div class="bg-white rounded-lg border border-gray-200 overflow-hidden">
+            <table class="w-full text-sm">
+              <thead class="bg-gray-50">
+                <tr>
+                  <th class="text-left px-4 py-2 font-medium text-gray-600">Flavor</th>
+                  <th class="text-right px-4 py-2 font-medium text-gray-600">Instructional</th>
+                  <th class="text-right px-4 py-2 font-medium text-gray-600">Assessment</th>
+                  <th class="text-right px-4 py-2 font-medium text-gray-600">Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="row in stats.contentByFlavor" :key="row.flavor" class="border-t border-gray-100">
+                  <td class="px-4 py-2 capitalize">{{ row.flavor }}</td>
+                  <td class="px-4 py-2 text-right">{{ row.instructional }}</td>
+                  <td class="px-4 py-2 text-right">{{ row.assessment }}</td>
+                  <td class="px-4 py-2 text-right font-medium">{{ row.instructional + row.assessment }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- System Stats Tab -->
+      <div v-if="activeTab === 'system' && systemStats" class="space-y-6">
+        <!-- Active users -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div class="bg-white rounded-lg border border-gray-200 p-4">
+            <div class="text-sm text-gray-500">Active Users (7d)</div>
+            <div class="text-2xl font-bold">{{ systemStats.activeUsers7d }}</div>
+          </div>
+          <div class="bg-white rounded-lg border border-gray-200 p-4">
+            <div class="text-sm text-gray-500">Active Users (30d)</div>
+            <div class="text-2xl font-bold">{{ systemStats.activeUsers30d }}</div>
+          </div>
+          <div class="bg-white rounded-lg border border-gray-200 p-4">
+            <div class="text-sm text-gray-500">LLM Calls (Month)</div>
+            <div class="text-2xl font-bold">{{ systemStats.llmSummary.totalCalls.toLocaleString() }}</div>
+          </div>
+          <div class="bg-white rounded-lg border border-gray-200 p-4">
+            <div class="text-sm text-gray-500">LLM Cost (Month)</div>
+            <div class="text-2xl font-bold">{{ formatCents(systemStats.llmSummary.totalCostCents) }}</div>
+          </div>
+        </div>
+
+        <!-- LLM Summary -->
+        <div>
+          <h2 class="text-lg font-semibold mb-3">LLM Usage Summary (This Month)</h2>
+          <div class="bg-white rounded-lg border border-gray-200 p-4 grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+            <div>
+              <div class="text-gray-500">Input Tokens</div>
+              <div class="font-medium">{{ systemStats.llmSummary.totalInputTokens.toLocaleString() }}</div>
+            </div>
+            <div>
+              <div class="text-gray-500">Output Tokens</div>
+              <div class="font-medium">{{ systemStats.llmSummary.totalOutputTokens.toLocaleString() }}</div>
+            </div>
+            <div>
+              <div class="text-gray-500">Unique Models</div>
+              <div class="font-medium">{{ systemStats.llmSummary.uniqueModels }}</div>
+            </div>
+            <div>
+              <div class="text-gray-500">Total Cost</div>
+              <div class="font-medium">{{ formatCents(systemStats.llmSummary.totalCostCents) }}</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Content Volume -->
+        <div v-if="systemStats.contentVolume.length > 0">
+          <h2 class="text-lg font-semibold mb-3">Content Volume by Type</h2>
+          <div class="bg-white rounded-lg border border-gray-200 overflow-hidden">
+            <table class="w-full text-sm">
+              <thead class="bg-gray-50">
+                <tr>
+                  <th class="text-left px-4 py-2 font-medium text-gray-600">Type</th>
+                  <th class="text-right px-4 py-2 font-medium text-gray-600">Count</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="row in systemStats.contentVolume" :key="row.type" class="border-t border-gray-100">
+                  <td class="px-4 py-2 capitalize">{{ row.type }}</td>
+                  <td class="px-4 py-2 text-right">{{ row.count }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Content Velocity -->
+        <div v-if="systemStats.contentVelocity.length > 0">
+          <h2 class="text-lg font-semibold mb-3">Content Creation Velocity (Last 8 Weeks)</h2>
+          <div class="bg-white rounded-lg border border-gray-200 overflow-hidden">
+            <table class="w-full text-sm">
+              <thead class="bg-gray-50">
+                <tr>
+                  <th class="text-left px-4 py-2 font-medium text-gray-600">Week</th>
+                  <th class="text-right px-4 py-2 font-medium text-gray-600">Instructional</th>
+                  <th class="text-right px-4 py-2 font-medium text-gray-600">Assessment</th>
+                  <th class="text-right px-4 py-2 font-medium text-gray-600">Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="row in systemStats.contentVelocity" :key="row.week" class="border-t border-gray-100">
+                  <td class="px-4 py-2 font-mono text-xs">{{ row.week }}</td>
+                  <td class="px-4 py-2 text-right">{{ row.instructional }}</td>
+                  <td class="px-4 py-2 text-right">{{ row.assessment }}</td>
+                  <td class="px-4 py-2 text-right font-medium">{{ row.instructional + row.assessment }}</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>

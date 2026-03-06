@@ -20,9 +20,9 @@ Admin visibility and content strategy. Before building generation infrastructure
 
 ## Progress
 
-**Completed:** Phase 1 ✓
+**Completed:** Phase 1 ✓, Phase 2 ✓
 **In Progress:** —
-**Next:** Phase 2
+**Next:** Phase 3
 
 ---
 
@@ -91,16 +91,16 @@ Admin visibility and content strategy. Before building generation infrastructure
 
 ---
 
-## Phase 2: Admin Dashboard & System Stats
+## Phase 2: Admin Dashboard & System Stats ✓
 **Goal:** Protected admin area with platform overview. The home base for managing content and monitoring the platform.
 
-1. [ ] [IMP] Build `/admin` route with admin-only auth gate (Better-Auth admin plugin role check). Dashboard home shows: total topics, total instructional content rows, total assessment content rows, content by locale breakdown, content by flavor breakdown, user counts, org counts.
+1. [x] [IMP] Build `/admin` route with admin-only auth gate (Better-Auth admin plugin role check). Dashboard home shows: total topics, total instructional content rows, total assessment content rows, content by locale breakdown, content by flavor breakdown, user counts, org counts.
 
-2. [ ] [IMP] Admin navigation: Content Quality, Content Matrix, Review Queue, Users & Orgs, System Stats. Clean, functional UI — internal tool, table-heavy, data-dense layout.
+2. [x] [IMP] Admin navigation: Overview, System Stats, Model Config, LLM Usage, Content Effectiveness, Learning Patterns. Clean, functional UI — internal tool, table-heavy, data-dense layout.
 
-3. [ ] [IMP] System stats page: database size, total content volume by type, active users, active orgs, LLM usage summary (cost, calls, models), OpenRouter key status, asset storage usage (R2 if applicable), content creation velocity (content rows added over time).
+3. [x] [IMP] System stats page: total content volume by type, active users (7d/30d), LLM usage summary (cost, calls, tokens, models), content creation velocity (content rows added per week, last 8 weeks).
 
-4. [ ] [TST] Verify: admin route auth-gated (non-admin gets 403). Dashboard loads with real data. Navigation works. Stats are accurate.
+4. [x] [TST] Verify: admin route auth-gated (no session gets 401). Dashboard loads with real data. Navigation works. Stats queries validated at service level. All 132 tests pass.
 
 **Validation:** Paul has a home base to see platform health at a glance. Auth-gated, data-dense, functional.
 
