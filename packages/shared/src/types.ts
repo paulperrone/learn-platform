@@ -287,6 +287,52 @@ export type AssignmentResponse = {
   createdAt: string;
 };
 
+// === Group Session Types ===
+
+export type GroupSessionType = "family" | "classroom" | "peer-pair";
+export type GroupSessionStatus = "active" | "completed";
+export type GroupParticipantRole = "student" | "facilitator";
+
+export type GroupSession = {
+  id: string;
+  facilitatorId: string;
+  type: GroupSessionType;
+  topicId: string | null;
+  joinCode: string | null;
+  status: GroupSessionStatus;
+  startedAt: string;
+  endedAt: string | null;
+};
+
+export type GroupSessionParticipant = {
+  id: string;
+  groupSessionId: string;
+  userId: string | null;
+  anonymousToken: string | null;
+  displayName: string | null;
+  role: GroupParticipantRole;
+  currentTopicId: string | null;
+  currentPhase: string | null;
+  totalCorrect: number;
+  totalAttempts: number;
+  joinedAt: string;
+  leftAt: string | null;
+};
+
+export type GroupSessionDashboard = {
+  session: GroupSession;
+  participants: (GroupSessionParticipant & { topicName?: string })[];
+  suggestedTopics?: { id: string; name: string; reason: string }[];
+};
+
+export type PeerPairState = {
+  studentA: string;
+  studentB: string;
+  currentStep: number;
+  currentTurn: string; // userId of active student
+  problem: Problem | null;
+};
+
 // === Speech Settings ===
 
 export type SpeechSettings = {

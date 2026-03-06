@@ -350,6 +350,42 @@ export const diagnosticSessions = sqliteTable("diagnostic_sessions", {
   index("diag_anon_idx").on(table.anonymousToken),
 ]);
 
+// === Group Sessions ===
+
+export const groupSessions = sqliteTable("group_sessions", {
+  id: text("id").primaryKey(),
+  facilitatorId: text("facilitator_id").notNull().references(() => users.id),
+  type: text("type").notNull(), // 'family' | 'classroom' | 'peer-pair'
+  topicId: text("topic_id").references(() => topics.id),
+  joinCode: text("join_code"),
+  status: text("status").notNull().default("active"), // 'active' | 'completed'
+  settingsJson: text("settings_json"), // JSON: { topicOverride?, difficultyOverride? }
+  startedAt: text("started_at").notNull().$defaultFn(() => new Date().toISOString()),
+  endedAt: text("ended_at"),
+}, (table) => [
+  index("gs_facilitator_idx").on(table.facilitatorId),
+  uniqueIndex("gs_join_code_idx").on(table.joinCode),
+  index("gs_status_idx").on(table.facilitatorId, table.status),
+]);
+
+export const groupSessionParticipants = sqliteTable("group_session_participants", {
+  id: text("id").primaryKey(),
+  groupSessionId: text("group_session_id").notNull().references(() => groupSessions.id),
+  userId: text("user_id").references(() => users.id),
+  anonymousToken: text("anonymous_token"),
+  displayName: text("display_name"),
+  role: text("role").notNull().default("student"), // 'student' | 'facilitator'
+  currentTopicId: text("current_topic_id").references(() => topics.id),
+  currentPhase: text("current_phase"),
+  totalCorrect: integer("total_correct").notNull().default(0),
+  totalAttempts: integer("total_attempts").notNull().default(0),
+  joinedAt: text("joined_at").notNull().$defaultFn(() => new Date().toISOString()),
+  leftAt: text("left_at"),
+}, (table) => [
+  index("gsp_session_idx").on(table.groupSessionId),
+  index("gsp_user_idx").on(table.userId),
+]);
+
 // === Onboarding State ===
 
 export const onboardingState = sqliteTable("onboarding_state", {

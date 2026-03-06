@@ -301,5 +301,41 @@ export function useApi() {
         responseByPhase: { phase: string; avgResponseMs: number; count: number; accuracy: number }[];
         dailyActivity: { date: string; reviews: number; uniqueUsers: number }[];
       }>("/admin/analytics/learning-patterns"),
+
+    // Group Sessions
+    createGroupSession: (data: { type: "family" | "classroom" | "peer-pair"; topicId?: string; studentIds?: string[] }) =>
+      request<{ sessionId: string; joinCode: string | null }>("/group-sessions", {
+        method: "POST",
+        body: JSON.stringify(data),
+      }),
+    joinGroupSession: (joinCode: string, displayName?: string, anonymousToken?: string) =>
+      request<{ sessionId: string; participantId: string }>("/group-sessions/join", {
+        method: "POST",
+        body: JSON.stringify({ joinCode, displayName, anonymousToken }),
+      }),
+    listGroupSessions: () =>
+      request<{ sessions: any[] }>("/group-sessions"),
+    getGroupDashboard: (sessionId: string) =>
+      request<{ session: any; participants: any[] }>(`/group-sessions/${sessionId}/dashboard`),
+    suggestGroupTopics: (sessionId: string) =>
+      request<{ suggestions: { id: string; name: string; reason: string }[] }>(`/group-sessions/${sessionId}/suggest-topics`),
+    setGroupTopic: (sessionId: string, topicId: string) =>
+      request<{ topicId: string; topicName: string }>(`/group-sessions/${sessionId}/set-topic`, {
+        method: "POST",
+        body: JSON.stringify({ topicId }),
+      }),
+    getGroupProblem: (sessionId: string, participantId: string) =>
+      request<{ problem: any; topicId: string; difficulty: string }>(`/group-sessions/${sessionId}/problem/${participantId}`),
+    respondGroupProblem: (sessionId: string, participantId: string, data: { correct: boolean; topicId: string; responseMs: number }) =>
+      request<{ totalCorrect: number; totalAttempts: number }>(`/group-sessions/${sessionId}/respond/${participantId}`, {
+        method: "POST",
+        body: JSON.stringify(data),
+      }),
+    getGroupPeerPair: (sessionId: string) =>
+      request<{ studentA: string; studentB: string; currentStep: number; currentTurn: string; problem: any }>(`/group-sessions/${sessionId}/peer-pair`),
+    endGroupSession: (sessionId: string) =>
+      request<{ ended: boolean }>(`/group-sessions/${sessionId}/end`, {
+        method: "POST",
+      }),
   };
 }

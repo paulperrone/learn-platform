@@ -83,9 +83,9 @@ TWO INDEPENDENT LAYERS:
 
 ## Progress
 
-**Completed:** Phase 1 ✓, Phase 2 ✓, Phase 3 ✓, Phase 4 ✓, Phase 5 ✓, Phase 6 ✓, Phase 7 ✓
+**Completed:** Phase 1 ✓, Phase 2 ✓, Phase 3 ✓, Phase 4 ✓, Phase 5 ✓, Phase 6 ✓, Phase 7 ✓, Phase 8 ✓
 **In Progress:** —
-**Next:** Phase 8
+**Next:** All phases complete
 
 ---
 
@@ -214,17 +214,17 @@ TWO INDEPENDENT LAYERS:
 
 ---
 
-## Phase 8: Connected Group Learning
+## Phase 8: Connected Group Learning ✓
 **Goal:** Account-based group modes layered on Teach Mode — family co-learning, connected classroom, peer pairs.
 
-1. [ ] [RSH] Design group session model: `group_sessions` linking facilitator to N students. Session types: Family Co-Learning, Connected Classroom. Topic selection for heterogeneous groups (frontier intersection or teacher override). Individual FSRS tracking within group.
+1. [x] [RSH] Design group session model: `group_sessions` linking facilitator to N students. Session types: Family Co-Learning, Connected Classroom. Topic selection for heterogeneous groups (frontier intersection or teacher override). Individual FSRS tracking within group.
 
-2. [ ] [IMP] Family co-learning: parent starts session, selects children (from account_links). System suggests topics near frontier intersection. Each child gets assessment at their difficulty. Parent sees facilitator view with per-child progress.
+2. [x] [IMP] Family co-learning: parent starts session, selects children (from account_links). System suggests topics near frontier intersection. Each child gets assessment at their difficulty. Parent sees facilitator view with per-child progress.
 
-3. [ ] [IMP] Connected classroom: extends Teach Mode with device sync. Teacher controls big-screen presentation. Students join via code (account or anonymous). Individual assessment at each student's level. Real-time class progress dashboard.
+3. [x] [IMP] Connected classroom: extends Teach Mode with device sync. Teacher controls big-screen presentation. Students join via code (account or anonymous). Individual assessment at each student's level. Real-time class progress dashboard.
 
-4. [ ] [IMP] Peer pair mode: two students alternate steps on multi-step problems. Self-explanation after each step. Both students' SRS state updates.
+4. [x] [IMP] Peer pair mode: two students alternate steps on multi-step problems. Self-explanation after each step. Both students' SRS state updates.
 
-5. [ ] [TST] Verify: co-learning shows different difficulty per child. Classroom joins via code. Real-time sync works. FSRS tracking preserved. Peer pair turns alternate.
+5. [x] [TST] Verify: co-learning shows different difficulty per child. Classroom joins via code. Real-time sync works. FSRS tracking preserved. Peer pair turns alternate.
 
 **Validation:** Parent with 3 kids at different levels runs co-learning. Teacher projects while 20 students practice on devices. Peer pair with turn-taking works.
