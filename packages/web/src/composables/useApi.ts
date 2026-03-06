@@ -328,6 +328,35 @@ export function useApi() {
         dailyActivity: { date: string; reviews: number; uniqueUsers: number }[];
       }>("/admin/analytics/learning-patterns"),
 
+    getContentMatrix: () =>
+      request<{
+        matrix: {
+          topicId: string;
+          topicName: string;
+          gradeLevel: number;
+          subjectName: string;
+          totalInstructional: number;
+          totalAssessment: number;
+          hasAssets: boolean;
+          instructional: { flavor: string; locale: string; presentation: string; count: number; maxVersion: number; hasAssets: boolean }[];
+          assessment: { flavor: string; locale: string; poolSize: number; easy: number; medium: number; hard: number }[];
+          questionTypes: Record<string, number>;
+          quality: { accuracy: number; attempts: number } | null;
+          gaps: { icMissing: number; acMissing: number; poolBelowTarget: boolean; missingDifficulties: boolean };
+        }[];
+        dimensions: { flavors: string[]; locales: string[]; targetPoolSize: number };
+        gapSummary: {
+          totalTopics: number;
+          totalMatrixCells: number;
+          filledCells: number;
+          fillPercentage: number;
+          topicsWithPoolBelowTarget: number;
+          topicsWithMissingDifficulties: number;
+          topicsWithNoAssets: number;
+          topicsWithLowQuality: number;
+        };
+      }>("/admin/content-matrix"),
+
     // Group Sessions
     createGroupSession: (data: { type: "family" | "classroom" | "peer-pair"; topicId?: string; studentIds?: string[] }) =>
       request<{ sessionId: string; joinCode: string | null }>("/group-sessions", {

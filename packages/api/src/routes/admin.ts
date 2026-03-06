@@ -506,3 +506,197 @@ adminRoutes.get("/analytics/learning-patterns", async (c) => {
 
   return c.json({ hintPatterns, responseByPhase, dailyActivity });
 });
+
+// --- Content Matrix ---
+
+adminRoutes.get("/content-matrix", async (c) => {
+  const d1 = c.env.DB;
+
+  // Get all topics with subject info
+  const topicsResult = await d1.prepare(
+    `SELECT t.id, t.name, t.grade_level AS gradeLevel, s.name AS subjectName
+     FROM topics t JOIN subjects s ON t.subject_id = s.id
+     ORDER BY t.grade_level, t.name`
+  ).all<{ id: string; name: string; gradeLevel: number; subjectName: string }>();
+
+  // Instructional content: count per topic × flavor × locale × presentation
+  const instructionalResult = await d1.prepare(
+    `SELECT topic_id AS topicId, flavor, locale, presentation,
+            COUNT(*) AS count, MAX(version) AS maxVersion,
+            MAX(CASE WHEN assets_json IS NOT NULL AND assets_json != '' AND assets_json != '[]' THEN 1 ELSE 0 END) AS hasAssets
+     FROM instructional_content
+     GROUP BY topic_id, flavor, locale, presentation`
+  ).all<{ topicId: string; flavor: string; locale: string; presentation: string; count: number; maxVersion: number; hasAssets: number }>();
+
+  // Assessment content: count per topic × flavor × locale, with difficulty + type breakdown
+  const assessmentResult = await d1.prepare(
+    `SELECT topic_id AS topicId, flavor, locale,
+            COUNT(*) AS poolSize,
+            SUM(CASE WHEN difficulty = 'easy' THEN 1 ELSE 0 END) AS easy,
+            SUM(CASE WHEN difficulty = 'medium' THEN 1 ELSE 0 END) AS medium,
+            SUM(CASE WHEN difficulty = 'hard' THEN 1 ELSE 0 END) AS hard
+     FROM assessment_content
+     GROUP BY topic_id, flavor, locale`
+  ).all<{ topicId: string; flavor: string; locale: string; poolSize: number; easy: number; medium: number; hard: number }>();
+
+  // Assessment type distribution per topic
+  const assessmentTypesResult = await d1.prepare(
+    `SELECT topic_id AS topicId, type, COUNT(*) AS count
+     FROM assessment_content
+     GROUP BY topic_id, type`
+  ).all<{ topicId: string; type: string; count: number }>();
+
+  // Per-topic accuracy from review_log for quality overlay
+  const accuracyResult = await d1.prepare(
+    `SELECT topic_id AS topicId,
+            ROUND(AVG(CASE WHEN correct THEN 1.0 ELSE 0.0 END), 4) AS accuracy,
+            COUNT(*) AS attempts
+     FROM review_log
+     GROUP BY topic_id`
+  ).all<{ topicId: string; accuracy: number; attempts: number }>();
+
+  // Build per-topic summary
+  const topics = topicsResult.results ?? [];
+  const instructionalRows = instructionalResult.results ?? [];
+  const assessmentRows = assessmentResult.results ?? [];
+  const typeRows = assessmentTypesResult.results ?? [];
+  const accuracyRows = accuracyResult.results ?? [];
+
+  // Index data by topicId
+  const instructionalByTopic = new Map<string, typeof instructionalRows>();
+  for (const row of instructionalRows) {
+    const arr = instructionalByTopic.get(row.topicId) ?? [];
+    arr.push(row);
+    instructionalByTopic.set(row.topicId, arr);
+  }
+
+  const assessmentByTopic = new Map<string, typeof assessmentRows>();
+  for (const row of assessmentRows) {
+    const arr = assessmentByTopic.get(row.topicId) ?? [];
+    arr.push(row);
+    assessmentByTopic.set(row.topicId, arr);
+  }
+
+  const typesByTopic = new Map<string, Record<string, number>>();
+  for (const row of typeRows) {
+    const map = typesByTopic.get(row.topicId) ?? {};
+    map[row.type] = row.count;
+    typesByTopic.set(row.topicId, map);
+  }
+
+  const accuracyByTopic = new Map<string, { accuracy: number; attempts: number }>();
+  for (const row of accuracyRows) {
+    accuracyByTopic.set(row.topicId, { accuracy: row.accuracy, attempts: row.attempts });
+  }
+
+  // Collect all unique flavors, locales, presentations
+  const allFlavors = new Set<string>();
+  const allLocales = new Set<string>();
+  for (const row of instructionalRows) {
+    allFlavors.add(row.flavor);
+    allLocales.add(row.locale);
+  }
+  for (const row of assessmentRows) {
+    allFlavors.add(row.flavor);
+    allLocales.add(row.locale);
+  }
+
+  const TARGET_POOL_SIZE = 15;
+
+  const matrix = topics.map((t) => {
+    const icRows = instructionalByTopic.get(t.id) ?? [];
+    const acRows = assessmentByTopic.get(t.id) ?? [];
+    const types = typesByTopic.get(t.id) ?? {};
+    const quality = accuracyByTopic.get(t.id);
+
+    const totalInstructional = icRows.reduce((s, r) => s + r.count, 0);
+    const totalAssessment = acRows.reduce((s, r) => s + r.poolSize, 0);
+    const hasAssets = icRows.some((r) => r.hasAssets === 1);
+
+    // Count distinct flavor×locale combos that exist
+    const icCombos = new Set(icRows.map((r) => `${r.flavor}|${r.locale}`));
+    const acCombos = new Set(acRows.map((r) => `${r.flavor}|${r.locale}`));
+
+    // Total possible combos
+    const totalPossibleCombos = allFlavors.size * allLocales.size;
+
+    // Missing combos
+    const icMissing = totalPossibleCombos - icCombos.size;
+    const acMissing = totalPossibleCombos - acCombos.size;
+
+    // Pool below target?
+    const poolBelowTarget = acRows.some((r) => r.poolSize < TARGET_POOL_SIZE);
+
+    // Difficulty balance: flag if any locale×flavor has 0 of any difficulty
+    const missingDifficulties = acRows.filter(
+      (r) => r.easy === 0 || r.medium === 0 || r.hard === 0
+    ).length > 0;
+
+    return {
+      topicId: t.id,
+      topicName: t.name,
+      gradeLevel: t.gradeLevel,
+      subjectName: t.subjectName,
+      totalInstructional,
+      totalAssessment,
+      hasAssets,
+      instructional: icRows.map((r) => ({
+        flavor: r.flavor,
+        locale: r.locale,
+        presentation: r.presentation,
+        count: r.count,
+        maxVersion: r.maxVersion,
+        hasAssets: r.hasAssets === 1,
+      })),
+      assessment: acRows.map((r) => ({
+        flavor: r.flavor,
+        locale: r.locale,
+        poolSize: r.poolSize,
+        easy: r.easy,
+        medium: r.medium,
+        hard: r.hard,
+      })),
+      questionTypes: types,
+      quality: quality ?? null,
+      gaps: {
+        icMissing,
+        acMissing,
+        poolBelowTarget,
+        missingDifficulties,
+      },
+    };
+  });
+
+  // Gap analysis summary
+  const totalTopics = topics.length;
+  const totalPossibleCombos = allFlavors.size * allLocales.size;
+  const totalMatrixCells = totalTopics * totalPossibleCombos * 2; // ×2 for IC + AC
+  const filledIcCells = instructionalRows.length;
+  const filledAcCells = assessmentRows.length;
+  const filledCells = filledIcCells + filledAcCells;
+  const fillPercentage = totalMatrixCells > 0 ? filledCells / totalMatrixCells : 0;
+
+  const topicsWithPoolBelowTarget = matrix.filter((m) => m.gaps.poolBelowTarget).length;
+  const topicsWithMissingDifficulties = matrix.filter((m) => m.gaps.missingDifficulties).length;
+  const topicsWithNoAssets = matrix.filter((m) => !m.hasAssets).length;
+  const topicsWithLowQuality = matrix.filter((m) => m.quality && m.quality.accuracy < 0.8).length;
+
+  return c.json({
+    matrix,
+    dimensions: {
+      flavors: [...allFlavors].sort(),
+      locales: [...allLocales].sort(),
+      targetPoolSize: TARGET_POOL_SIZE,
+    },
+    gapSummary: {
+      totalTopics,
+      totalMatrixCells,
+      filledCells,
+      fillPercentage,
+      topicsWithPoolBelowTarget,
+      topicsWithMissingDifficulties,
+      topicsWithNoAssets,
+      topicsWithLowQuality,
+    },
+  });
+});
