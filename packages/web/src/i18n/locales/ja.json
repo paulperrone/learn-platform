@@ -54,6 +54,26 @@
     "diagnosticDescription": "簡単なレベルテストで、あなたに合ったレベルから始められます。",
     "takeDiagnostic": "レベルテストを受ける"
   },
+  "diagnostic": {
+    "title": "レベルテスト",
+    "description": "さまざまなレベルの問題を出して、あなたのレベルを見つけます。回答に合わせて調整されます。",
+    "howItWorks": "仕組み",
+    "howStep1": "中間レベルから始めて、回答に基づいて調整します",
+    "howStep2": "正解したらより難しい問題を、間違えたらより簡単な問題を出します。",
+    "howStep3": "レベルが判明したら、学習パスを自動的に設定します。",
+    "start": "レベルテストを開始",
+    "backToDashboard": "ダッシュボードに戻る",
+    "placementTest": "レベルテスト",
+    "questionN": "問題 {n}",
+    "hint": "全問正解でなくても大丈夫です。レベルを見つけるためのテストです。",
+    "answerPrompt": "できる限り答えてください。",
+    "resultsTitle": "あなたの結果",
+    "estimatedLevel": "推定レベル",
+    "correctAnswers": "正解数",
+    "topicsIdentified": "学習パスに{count}個のトピックが特定されました",
+    "startLearning": "学習を始める",
+    "retake": "再テスト"
+  },
   "learn": {
     "title": "学習セッション",
     "guestBanner": "ゲストとして学習中です。進捗は保存されません。",

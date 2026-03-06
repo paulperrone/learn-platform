@@ -1,38 +1,26 @@
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
 import { useApi, withErrorToast } from "@/composables/useApi";
-import { useAuth } from "@/composables/useAuth";
 import { useI18n } from "vue-i18n";
 
 const api = useApi();
-const { isAuthenticated } = useAuth();
 const { t } = useI18n();
 const stats = ref({ mastered: 0, inProgress: 0, dueForReview: 0, total: 0 });
 const frontier = ref<any[]>([]);
 const loading = ref(true);
 const error = ref(false);
-const showDiagnosticCta = ref(false);
-
 onMounted(async () => {
   const result = await withErrorToast(async () => {
-    const fetches: [Promise<any>, Promise<any>, Promise<any> | null] = [
+    const [progressData, frontierData] = await Promise.all([
       api.getProgress(),
       api.getFrontier(),
-      null,
-    ];
-    if (isAuthenticated.value) {
-      fetches[2] = api.getOnboarding().catch(() => null);
-    }
-    const [progressData, frontierData, onboarding] = await Promise.all(fetches);
-    return { progressData, frontierData, onboarding };
+    ]);
+    return { progressData, frontierData };
   }, t("errors.failedToLoad", { resource: "dashboard" }));
 
   if (result) {
     stats.value = result.progressData;
     frontier.value = result.frontierData.topics.slice(0, 5);
-    if (result.onboarding && !result.onboarding.diagnosticSessionId) {
-      showDiagnosticCta.value = true;
-    }
   } else {
     error.value = true;
   }
@@ -101,14 +89,14 @@ const progressPercent = () =>
       </div>
 
       <!-- Diagnostic CTA -->
-      <div v-if="showDiagnosticCta" class="bg-amber-50 border border-amber-200 rounded-lg p-5 mb-8 flex items-center justify-between">
+      <div class="bg-blue-50 border border-blue-200 rounded-lg p-5 mb-8 flex items-center justify-between">
         <div>
-          <p class="font-semibold text-amber-800">{{ t('dashboard.diagnosticTitle') }}</p>
-          <p class="text-sm text-amber-700 mt-1">{{ t('dashboard.diagnosticDescription') }}</p>
+          <p class="font-semibold text-blue-800">{{ t('dashboard.diagnosticTitle') }}</p>
+          <p class="text-sm text-blue-700 mt-1">{{ t('dashboard.diagnosticDescription') }}</p>
         </div>
         <RouterLink
-          to="/onboarding?diagnostic=1"
-          class="shrink-0 bg-amber-600 text-white px-5 py-2 rounded-lg text-sm font-semibold hover:bg-amber-700 transition-colors"
+          to="/diagnostic/math-k5"
+          class="shrink-0 bg-blue-600 text-white px-5 py-2 rounded-lg text-sm font-semibold hover:bg-blue-700 transition-colors"
         >
           {{ t('dashboard.takeDiagnostic') }}
         </RouterLink>
