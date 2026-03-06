@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted, computed } from "vue";
-import { useRouter } from "vue-router";
+import { useRouter, useRoute } from "vue-router";
 import { useApi, withErrorToast } from "@/composables/useApi";
 import { useAnonymous } from "@/composables/useAnonymous";
 import { useAuth } from "@/composables/useAuth";
@@ -12,6 +12,7 @@ const api = useApi();
 const auth = useAuth();
 const anon = useAnonymous();
 const router = useRouter();
+const route = useRoute();
 const { t } = useI18n();
 
 const step = ref(0); // 0=loading, 1=welcome, 2=diagnostic, 3=start learning, 4=done
@@ -22,6 +23,7 @@ const questionNumber = ref(0);
 const totalQuestions = ref(0);
 const diagnosticResult = ref<DiagnosticResult | null>(null);
 const mergeResult = ref<{ mergedSessions: number; mergedDiagnostics: number } | null>(null);
+const retakingDiagnostic = ref(!!route.query.diagnostic);
 
 onMounted(async () => {
   // Merge anonymous data if present
@@ -38,11 +40,12 @@ onMounted(async () => {
 
   // Check onboarding state
   const state = await withErrorToast(() => api.getOnboarding(), t("errors.failedToLoad", { resource: "onboarding" }));
-  if (state?.completedAt) {
+  if (state?.completedAt && !retakingDiagnostic.value) {
     router.replace("/");
     return;
   }
-  step.value = state?.step ?? 1;
+  // If retaking diagnostic, start at welcome step regardless of saved state
+  step.value = retakingDiagnostic.value ? 1 : (state?.step ?? 1);
   loading.value = false;
 });
 
