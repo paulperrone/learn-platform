@@ -257,6 +257,7 @@ export async function seedReviewLog(
       id: overrides.id ?? `rev-${crypto.randomUUID().slice(0, 8)}`,
       userId,
       topicId,
+      assessmentContentId: overrides.assessmentContentId ?? null,
       rating: overrides.rating ?? 3,
       correct: overrides.correct ?? true,
       responseMs: overrides.responseMs ?? 2000,
@@ -415,9 +416,10 @@ const SCHEMA_STATEMENTS = [
   'CREATE INDEX uts_user_mastered_idx ON user_topic_state (user_id, mastered)',
 
   // review_log (FK → users, topics)
-  'CREATE TABLE review_log (id text PRIMARY KEY NOT NULL, user_id text NOT NULL, topic_id text NOT NULL, rating integer NOT NULL, confidence integer, correct integer NOT NULL, response_ms integer NOT NULL, phase text NOT NULL, hints_used integer, created_at text NOT NULL, FOREIGN KEY (user_id) REFERENCES users(id), FOREIGN KEY (topic_id) REFERENCES topics(id))',
+  'CREATE TABLE review_log (id text PRIMARY KEY NOT NULL, user_id text NOT NULL, topic_id text NOT NULL, assessment_content_id text, rating integer NOT NULL, confidence integer, correct integer NOT NULL, response_ms integer NOT NULL, phase text NOT NULL, hints_used integer, created_at text NOT NULL, FOREIGN KEY (user_id) REFERENCES users(id), FOREIGN KEY (topic_id) REFERENCES topics(id))',
   'CREATE INDEX review_user_idx ON review_log (user_id)',
   'CREATE INDEX review_topic_idx ON review_log (topic_id)',
+  'CREATE INDEX review_assessment_idx ON review_log (assessment_content_id)',
 
   // learn_sessions (FK → users, nullable for anonymous)
   'CREATE TABLE learn_sessions (id text PRIMARY KEY NOT NULL, user_id text, anonymous_token text, started_at text NOT NULL, ended_at text, state_json text, updated_at text NOT NULL DEFAULT \'\', topics_attempted integer DEFAULT 0 NOT NULL, topics_mastered integer DEFAULT 0 NOT NULL, reviews_completed integer DEFAULT 0 NOT NULL, average_accuracy real, FOREIGN KEY (user_id) REFERENCES users(id))',

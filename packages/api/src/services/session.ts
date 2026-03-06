@@ -328,7 +328,8 @@ export function createSessionService(db: DB) {
           response.responseMs,
           state.currentPhase,
           response.confidence,
-          hintsUsed
+          hintsUsed,
+          (response as any).problemId
         );
 
         // Apply FIRe credit

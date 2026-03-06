@@ -20,9 +20,9 @@ Admin visibility and content strategy. Before building generation infrastructure
 
 ## Progress
 
-**Completed:** Phase 1 ✓, Phase 2 ✓
+**Completed:** Phase 1 ✓, Phase 2 ✓, Phase 3 ✓
 **In Progress:** —
-**Next:** Phase 3
+**Next:** Phase 4
 
 ---
 
@@ -106,16 +106,16 @@ Admin visibility and content strategy. Before building generation infrastructure
 
 ---
 
-## Phase 3: Content Quality Analytics
+## Phase 3: Content Quality Analytics ✓
 **Goal:** Surface per-topic and per-problem accuracy data so content can be iterated based on real student performance. PhysicsGraph's biggest lesson: track accuracy and fix content, not students.
 
-1. [ ] [IMP] Content quality analytics page: per-topic first-attempt accuracy, hint usage rate, average response time, per-problem accuracy breakdown. Query from `review_log` data. Color-code topics by health (green >85%, yellow 80-85%, red <80%). Click-through to per-problem breakdown showing which specific problems cause struggles. Flag topics with <80% accuracy or >2 hints/attempt average.
+1. [x] [IMP] Content quality analytics page: per-topic first-attempt accuracy, hint usage rate, average response time, per-problem accuracy breakdown. Query from `review_log` data. Color-code topics by health (green >85%, yellow 80-85%, red <80%). Click-through to per-problem breakdown showing which specific problems cause struggles. Flag topics with <80% accuracy or >2 hints/attempt average.
 
-2. [ ] [IMP] Difficulty spike detection: identify adjacent topics in the knowledge graph where accuracy drops >15% from prerequisite to dependent. Surface as "difficulty spikes" — indicates content issues or missing intermediate topics. Graph-aware analysis using prerequisites table.
+2. [x] [IMP] Difficulty spike detection: identify adjacent topics in the knowledge graph where accuracy drops >15% from prerequisite to dependent. Surface as "difficulty spikes" — indicates content issues or missing intermediate topics. Graph-aware analysis using prerequisites table.
 
-3. [ ] [IMP] Content effectiveness over time: track how accuracy changes after content updates. Compare v1 vs v2 performance for the same topic. Show whether content iteration is actually improving outcomes.
+3. [x] [IMP] Content effectiveness over time: track how accuracy changes after content updates. Compare v1 vs v2 performance for the same topic. Show whether content iteration is actually improving outcomes.
 
-4. [ ] [TST] Verify: analytics match manual spot-checks of review_log. Difficulty spikes correctly identified. Version comparison works when data exists.
+4. [x] [TST] Verify: analytics match manual spot-checks of review_log. Difficulty spikes correctly identified. Version comparison works when data exists.
 
 **Validation:** Paul can see which topics and problems need improvement. Difficulty spikes between prerequisite pairs are visible. Analytics drive content iteration decisions.
 

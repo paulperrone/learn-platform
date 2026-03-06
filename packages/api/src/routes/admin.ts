@@ -261,6 +261,156 @@ adminRoutes.get("/analytics/content-effectiveness", async (c) => {
   });
 });
 
+// --- Content Quality Analytics ---
+
+adminRoutes.get("/analytics/content-quality", async (c) => {
+  const d1 = c.env.DB;
+
+  // Per-topic quality metrics: first-attempt accuracy, hint usage, response time
+  // "First attempt" = phase in ('pretest', 'independent', 'review'), i.e. not guided/instruction
+  const topicQuality = await d1.prepare(`
+    SELECT
+      r.topic_id AS topicId,
+      t.name AS topicName,
+      t.grade_level AS gradeLevel,
+      COUNT(*) AS totalAttempts,
+      SUM(CASE WHEN r.correct THEN 1 ELSE 0 END) AS correctAttempts,
+      ROUND(AVG(CASE WHEN r.correct THEN 1.0 ELSE 0.0 END), 4) AS accuracy,
+      ROUND(COALESCE(AVG(r.hints_used), 0), 2) AS avgHintsUsed,
+      ROUND(AVG(r.response_ms), 0) AS avgResponseMs,
+      COUNT(DISTINCT r.user_id) AS uniqueLearners
+    FROM review_log r
+    JOIN topics t ON r.topic_id = t.id
+    GROUP BY r.topic_id, t.name, t.grade_level
+    ORDER BY accuracy ASC
+  `).all<{
+    topicId: string;
+    topicName: string;
+    gradeLevel: number;
+    totalAttempts: number;
+    correctAttempts: number;
+    accuracy: number;
+    avgHintsUsed: number;
+    avgResponseMs: number;
+    uniqueLearners: number;
+  }>();
+
+  // Per-problem accuracy breakdown (only for reviews that tracked assessmentContentId)
+  const problemQuality = await d1.prepare(`
+    SELECT
+      r.assessment_content_id AS assessmentContentId,
+      r.topic_id AS topicId,
+      ac.question,
+      ac.difficulty,
+      ac.type,
+      COUNT(*) AS attempts,
+      SUM(CASE WHEN r.correct THEN 1 ELSE 0 END) AS correct,
+      ROUND(AVG(CASE WHEN r.correct THEN 1.0 ELSE 0.0 END), 4) AS accuracy,
+      ROUND(COALESCE(AVG(r.hints_used), 0), 2) AS avgHints
+    FROM review_log r
+    JOIN assessment_content ac ON r.assessment_content_id = ac.id
+    WHERE r.assessment_content_id IS NOT NULL
+    GROUP BY r.assessment_content_id, r.topic_id, ac.question, ac.difficulty, ac.type
+    HAVING attempts >= 3
+    ORDER BY accuracy ASC
+    LIMIT 100
+  `).all<{
+    assessmentContentId: string;
+    topicId: string;
+    question: string;
+    difficulty: string;
+    type: string;
+    attempts: number;
+    correct: number;
+    accuracy: number;
+    avgHints: number;
+  }>();
+
+  return c.json({
+    topicQuality: topicQuality.results,
+    problemQuality: problemQuality.results,
+  });
+});
+
+// --- Difficulty Spike Detection ---
+
+adminRoutes.get("/analytics/difficulty-spikes", async (c) => {
+  const d1 = c.env.DB;
+
+  // Find prerequisite pairs where accuracy drops >15%
+  const spikes = await d1.prepare(`
+    SELECT
+      p.from_topic_id AS prereqTopicId,
+      t1.name AS prereqTopicName,
+      ROUND(AVG(CASE WHEN r1.correct THEN 1.0 ELSE 0.0 END), 4) AS prereqAccuracy,
+      COUNT(DISTINCT r1.id) AS prereqAttempts,
+      p.to_topic_id AS dependentTopicId,
+      t2.name AS dependentTopicName,
+      ROUND(AVG(CASE WHEN r2.correct THEN 1.0 ELSE 0.0 END), 4) AS dependentAccuracy,
+      COUNT(DISTINCT r2.id) AS dependentAttempts,
+      ROUND(AVG(CASE WHEN r1.correct THEN 1.0 ELSE 0.0 END) - AVG(CASE WHEN r2.correct THEN 1.0 ELSE 0.0 END), 4) AS accuracyDrop
+    FROM prerequisites p
+    JOIN topics t1 ON p.from_topic_id = t1.id
+    JOIN topics t2 ON p.to_topic_id = t2.id
+    JOIN review_log r1 ON r1.topic_id = p.from_topic_id
+    JOIN review_log r2 ON r2.topic_id = p.to_topic_id
+    GROUP BY p.from_topic_id, p.to_topic_id, t1.name, t2.name
+    HAVING prereqAttempts >= 5 AND dependentAttempts >= 5
+      AND accuracyDrop > 0.15
+    ORDER BY accuracyDrop DESC
+  `).all<{
+    prereqTopicId: string;
+    prereqTopicName: string;
+    prereqAccuracy: number;
+    prereqAttempts: number;
+    dependentTopicId: string;
+    dependentTopicName: string;
+    dependentAccuracy: number;
+    dependentAttempts: number;
+    accuracyDrop: number;
+  }>();
+
+  return c.json({ spikes: spikes.results });
+});
+
+// --- Content Version Effectiveness ---
+
+adminRoutes.get("/analytics/content-versions", async (c) => {
+  const d1 = c.env.DB;
+
+  // Compare accuracy before vs after content updates
+  // Uses instructional_content updated_at as the "version change" timestamp
+  const versionComparison = await d1.prepare(`
+    SELECT
+      ic.topic_id AS topicId,
+      t.name AS topicName,
+      ic.version,
+      ic.updated_at AS contentUpdatedAt,
+      COUNT(CASE WHEN r.created_at < ic.updated_at THEN 1 END) AS attemptsBefore,
+      ROUND(AVG(CASE WHEN r.created_at < ic.updated_at THEN (CASE WHEN r.correct THEN 1.0 ELSE 0.0 END) END), 4) AS accuracyBefore,
+      COUNT(CASE WHEN r.created_at >= ic.updated_at THEN 1 END) AS attemptsAfter,
+      ROUND(AVG(CASE WHEN r.created_at >= ic.updated_at THEN (CASE WHEN r.correct THEN 1.0 ELSE 0.0 END) END), 4) AS accuracyAfter
+    FROM instructional_content ic
+    JOIN topics t ON ic.topic_id = t.id
+    JOIN review_log r ON r.topic_id = ic.topic_id
+    WHERE ic.version > 1
+    GROUP BY ic.topic_id, t.name, ic.version, ic.updated_at
+    HAVING attemptsBefore >= 3 AND attemptsAfter >= 3
+    ORDER BY (accuracyAfter - accuracyBefore) DESC
+  `).all<{
+    topicId: string;
+    topicName: string;
+    version: number;
+    contentUpdatedAt: string;
+    attemptsBefore: number;
+    accuracyBefore: number;
+    attemptsAfter: number;
+    accuracyAfter: number;
+  }>();
+
+  return c.json({ versionComparison: versionComparison.results });
+});
+
 // --- System Stats ---
 
 adminRoutes.get("/system-stats", async (c) => {

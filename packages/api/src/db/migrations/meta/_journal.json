@@ -71,6 +71,13 @@
       "when": 1772758719416,
       "tag": "0009_fresh_greymalkin",
       "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "6",
+      "when": 1772870400001,
+      "tag": "0010_add_assessment_content_id_to_review_log",
+      "breakpoints": true
     }
   ]
 }

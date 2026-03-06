@@ -300,6 +300,20 @@ export function useApi() {
         encompassings: { parent: string; child: string; weight: number }[];
       }>(`/public/graph/${subjectId}`),
 
+    getContentQuality: () =>
+      request<{
+        topicQuality: { topicId: string; topicName: string; gradeLevel: number; totalAttempts: number; correctAttempts: number; accuracy: number; avgHintsUsed: number; avgResponseMs: number; uniqueLearners: number }[];
+        problemQuality: { assessmentContentId: string; topicId: string; question: string; difficulty: string; type: string; attempts: number; correct: number; accuracy: number; avgHints: number }[];
+      }>("/admin/analytics/content-quality"),
+    getDifficultySpikes: () =>
+      request<{
+        spikes: { prereqTopicId: string; prereqTopicName: string; prereqAccuracy: number; prereqAttempts: number; dependentTopicId: string; dependentTopicName: string; dependentAccuracy: number; dependentAttempts: number; accuracyDrop: number }[];
+      }>("/admin/analytics/difficulty-spikes"),
+    getContentVersions: () =>
+      request<{
+        versionComparison: { topicId: string; topicName: string; version: number; contentUpdatedAt: string; attemptsBefore: number; accuracyBefore: number; attemptsAfter: number; accuracyAfter: number }[];
+      }>("/admin/analytics/content-versions"),
+
     getContentEffectiveness: () =>
       request<{
         topicLLMUsage: { purpose: string; calls: number }[];

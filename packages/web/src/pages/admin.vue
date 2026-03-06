@@ -6,7 +6,7 @@ const api = useApi();
 
 const loading = ref(true);
 const error = ref(false);
-const activeTab = ref<"overview" | "models" | "usage" | "content" | "patterns" | "system">("overview");
+const activeTab = ref<"overview" | "models" | "usage" | "content" | "quality" | "patterns" | "system">("overview");
 
 // Data
 const stats = ref<{
@@ -39,6 +39,17 @@ const topUsers = ref<{ userId: string; userName: string; calls: number; totalCos
 const contentEffectiveness = ref<{
   strugglingTopics: { topicId: string; topicName: string; totalAttempts: number; accuracy: number; hintsPerAttempt: number; masteryRate: number; avgReps: number; uniqueLearners: number }[];
 } | null>(null);
+const contentQuality = ref<{
+  topicQuality: { topicId: string; topicName: string; gradeLevel: number; totalAttempts: number; correctAttempts: number; accuracy: number; avgHintsUsed: number; avgResponseMs: number; uniqueLearners: number }[];
+  problemQuality: { assessmentContentId: string; topicId: string; question: string; difficulty: string; type: string; attempts: number; correct: number; accuracy: number; avgHints: number }[];
+} | null>(null);
+const difficultySpikes = ref<{
+  spikes: { prereqTopicId: string; prereqTopicName: string; prereqAccuracy: number; prereqAttempts: number; dependentTopicId: string; dependentTopicName: string; dependentAccuracy: number; dependentAttempts: number; accuracyDrop: number }[];
+} | null>(null);
+const contentVersions = ref<{
+  versionComparison: { topicId: string; topicName: string; version: number; contentUpdatedAt: string; attemptsBefore: number; accuracyBefore: number; attemptsAfter: number; accuracyAfter: number }[];
+} | null>(null);
+const selectedQualityTopic = ref<string | null>(null);
 const learningPatterns = ref<{
   hintPatterns: { hintsUsed: number; count: number; avgCorrect: number }[];
   responseByPhase: { phase: string; avgResponseMs: number; count: number; accuracy: number }[];
@@ -52,7 +63,7 @@ const saving = ref(false);
 
 onMounted(async () => {
   const result = await withErrorToast(async () => {
-    const [s, sys, configs, usage, users, content, patterns] = await Promise.all([
+    const [s, sys, configs, usage, users, content, patterns, quality, spikes, versions] = await Promise.all([
       api.getAdminStats(),
       api.getAdminSystemStats(),
       api.getAdminLLMConfig(),
@@ -60,8 +71,11 @@ onMounted(async () => {
       api.getAdminTopUsers(),
       api.getContentEffectiveness(),
       api.getLearningPatterns(),
+      api.getContentQuality(),
+      api.getDifficultySpikes(),
+      api.getContentVersions(),
     ]);
-    return { s, sys, configs, usage, users, content, patterns };
+    return { s, sys, configs, usage, users, content, patterns, quality, spikes, versions };
   }, "Failed to load admin data");
 
   if (result) {
@@ -72,6 +86,9 @@ onMounted(async () => {
     topUsers.value = result.users.topUsers;
     contentEffectiveness.value = result.content;
     learningPatterns.value = result.patterns;
+    contentQuality.value = result.quality;
+    difficultySpikes.value = result.spikes;
+    contentVersions.value = result.versions;
   } else {
     error.value = true;
   }
@@ -97,6 +114,18 @@ function startEdit(config: { tier: string; modelId: string; costInputPerM: numbe
 
 function cancelEdit() {
   editingTier.value = null;
+}
+
+function healthColor(accuracy: number): string {
+  if (accuracy >= 0.85) return "text-green-600";
+  if (accuracy >= 0.80) return "text-yellow-600";
+  return "text-red-600";
+}
+
+function healthBg(accuracy: number): string {
+  if (accuracy >= 0.85) return "bg-green-50";
+  if (accuracy >= 0.80) return "bg-yellow-50";
+  return "bg-red-50";
 }
 
 async function saveConfig() {
@@ -125,6 +154,7 @@ const tabs = [
   { id: "system" as const, label: "System Stats" },
   { id: "models" as const, label: "Model Config" },
   { id: "usage" as const, label: "LLM Usage" },
+  { id: "quality" as const, label: "Content Quality" },
   { id: "content" as const, label: "Content Effectiveness" },
   { id: "patterns" as const, label: "Learning Patterns" },
 ];
@@ -481,6 +511,152 @@ const tabs = [
                 </tr>
                 <tr v-if="topUsers.length === 0">
                   <td colspan="3" class="px-4 py-4 text-center text-gray-400">No usage this month</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Content Quality Tab -->
+      <div v-if="activeTab === 'quality' && contentQuality" class="space-y-6">
+        <!-- Topic Health Overview -->
+        <div>
+          <h2 class="text-lg font-semibold mb-2">Topic Health</h2>
+          <p class="text-sm text-gray-500 mb-3">Color-coded: <span class="text-green-600 font-medium">&gt;85%</span> healthy, <span class="text-yellow-600 font-medium">80-85%</span> watch, <span class="text-red-600 font-medium">&lt;80%</span> needs work. Click a topic for per-problem breakdown.</p>
+          <div class="bg-white rounded-lg border border-gray-200 overflow-hidden">
+            <table class="w-full text-sm">
+              <thead class="bg-gray-50">
+                <tr>
+                  <th class="text-left px-4 py-2 font-medium text-gray-600">Topic</th>
+                  <th class="text-right px-4 py-2 font-medium text-gray-600">Grade</th>
+                  <th class="text-right px-4 py-2 font-medium text-gray-600">Attempts</th>
+                  <th class="text-right px-4 py-2 font-medium text-gray-600">Accuracy</th>
+                  <th class="text-right px-4 py-2 font-medium text-gray-600">Avg Hints</th>
+                  <th class="text-right px-4 py-2 font-medium text-gray-600">Avg Time</th>
+                  <th class="text-right px-4 py-2 font-medium text-gray-600">Learners</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  v-for="topic in contentQuality.topicQuality"
+                  :key="topic.topicId"
+                  :class="[healthBg(topic.accuracy), 'border-t border-gray-100 cursor-pointer hover:bg-gray-50']"
+                  @click="selectedQualityTopic = selectedQualityTopic === topic.topicId ? null : topic.topicId"
+                >
+                  <td class="px-4 py-2">{{ topic.topicName }}</td>
+                  <td class="px-4 py-2 text-right">K{{ topic.gradeLevel }}</td>
+                  <td class="px-4 py-2 text-right">{{ topic.totalAttempts }}</td>
+                  <td class="px-4 py-2 text-right font-medium" :class="healthColor(topic.accuracy)">{{ formatPct(topic.accuracy) }}</td>
+                  <td class="px-4 py-2 text-right" :class="topic.avgHintsUsed > 2 ? 'text-orange-600 font-medium' : ''">{{ topic.avgHintsUsed.toFixed(1) }}</td>
+                  <td class="px-4 py-2 text-right">{{ (topic.avgResponseMs / 1000).toFixed(1) }}s</td>
+                  <td class="px-4 py-2 text-right">{{ topic.uniqueLearners }}</td>
+                </tr>
+                <tr v-if="contentQuality.topicQuality.length === 0">
+                  <td colspan="7" class="px-4 py-4 text-center text-gray-400">No review data yet</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Per-Problem Breakdown (when a topic is selected) -->
+        <div v-if="selectedQualityTopic && contentQuality.problemQuality.filter(p => p.topicId === selectedQualityTopic).length > 0">
+          <h2 class="text-lg font-semibold mb-2">Problem Breakdown: {{ contentQuality.topicQuality.find(t => t.topicId === selectedQualityTopic)?.topicName }}</h2>
+          <p class="text-sm text-gray-500 mb-3">Per-problem accuracy for reviews that tracked the specific assessment.</p>
+          <div class="bg-white rounded-lg border border-gray-200 overflow-hidden">
+            <table class="w-full text-sm">
+              <thead class="bg-gray-50">
+                <tr>
+                  <th class="text-left px-4 py-2 font-medium text-gray-600">Question</th>
+                  <th class="text-left px-4 py-2 font-medium text-gray-600">Type</th>
+                  <th class="text-left px-4 py-2 font-medium text-gray-600">Difficulty</th>
+                  <th class="text-right px-4 py-2 font-medium text-gray-600">Attempts</th>
+                  <th class="text-right px-4 py-2 font-medium text-gray-600">Accuracy</th>
+                  <th class="text-right px-4 py-2 font-medium text-gray-600">Avg Hints</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  v-for="problem in contentQuality.problemQuality.filter(p => p.topicId === selectedQualityTopic)"
+                  :key="problem.assessmentContentId"
+                  :class="[healthBg(problem.accuracy), 'border-t border-gray-100']"
+                >
+                  <td class="px-4 py-2 max-w-xs truncate">{{ problem.question }}</td>
+                  <td class="px-4 py-2 text-xs font-mono">{{ problem.type }}</td>
+                  <td class="px-4 py-2 capitalize text-xs">{{ problem.difficulty }}</td>
+                  <td class="px-4 py-2 text-right">{{ problem.attempts }}</td>
+                  <td class="px-4 py-2 text-right font-medium" :class="healthColor(problem.accuracy)">{{ formatPct(problem.accuracy) }}</td>
+                  <td class="px-4 py-2 text-right">{{ problem.avgHints.toFixed(1) }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div v-else-if="selectedQualityTopic">
+          <p class="text-sm text-gray-400 italic">No per-problem data for this topic yet. Problem-level tracking requires assessment_content_id in review logs.</p>
+        </div>
+
+        <!-- Difficulty Spikes -->
+        <div v-if="difficultySpikes">
+          <h2 class="text-lg font-semibold mb-2">Difficulty Spikes</h2>
+          <p class="text-sm text-gray-500 mb-3">Prerequisite pairs where accuracy drops &gt;15%. May indicate content gaps or missing intermediate topics.</p>
+          <div class="bg-white rounded-lg border border-gray-200 overflow-hidden">
+            <table class="w-full text-sm">
+              <thead class="bg-gray-50">
+                <tr>
+                  <th class="text-left px-4 py-2 font-medium text-gray-600">Prerequisite</th>
+                  <th class="text-right px-4 py-2 font-medium text-gray-600">Accuracy</th>
+                  <th class="text-center px-2 py-2 font-medium text-gray-400">&rarr;</th>
+                  <th class="text-left px-4 py-2 font-medium text-gray-600">Dependent</th>
+                  <th class="text-right px-4 py-2 font-medium text-gray-600">Accuracy</th>
+                  <th class="text-right px-4 py-2 font-medium text-gray-600">Drop</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="spike in difficultySpikes.spikes" :key="`${spike.prereqTopicId}-${spike.dependentTopicId}`" class="border-t border-gray-100">
+                  <td class="px-4 py-2">{{ spike.prereqTopicName }}</td>
+                  <td class="px-4 py-2 text-right" :class="healthColor(spike.prereqAccuracy)">{{ formatPct(spike.prereqAccuracy) }}</td>
+                  <td class="text-center px-2 py-2 text-gray-300">&rarr;</td>
+                  <td class="px-4 py-2">{{ spike.dependentTopicName }}</td>
+                  <td class="px-4 py-2 text-right" :class="healthColor(spike.dependentAccuracy)">{{ formatPct(spike.dependentAccuracy) }}</td>
+                  <td class="px-4 py-2 text-right text-red-600 font-medium">-{{ formatPct(spike.accuracyDrop) }}</td>
+                </tr>
+                <tr v-if="difficultySpikes.spikes.length === 0">
+                  <td colspan="6" class="px-4 py-4 text-center text-gray-400">No difficulty spikes detected (need 5+ attempts per topic in prerequisite pairs)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Content Version Comparison -->
+        <div v-if="contentVersions">
+          <h2 class="text-lg font-semibold mb-2">Content Version Effectiveness</h2>
+          <p class="text-sm text-gray-500 mb-3">Accuracy before vs after content updates. Shows whether iteration improves outcomes.</p>
+          <div class="bg-white rounded-lg border border-gray-200 overflow-hidden">
+            <table class="w-full text-sm">
+              <thead class="bg-gray-50">
+                <tr>
+                  <th class="text-left px-4 py-2 font-medium text-gray-600">Topic</th>
+                  <th class="text-right px-4 py-2 font-medium text-gray-600">Version</th>
+                  <th class="text-right px-4 py-2 font-medium text-gray-600">Before</th>
+                  <th class="text-right px-4 py-2 font-medium text-gray-600">After</th>
+                  <th class="text-right px-4 py-2 font-medium text-gray-600">Change</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="v in contentVersions.versionComparison" :key="`${v.topicId}-${v.version}`" class="border-t border-gray-100">
+                  <td class="px-4 py-2">{{ v.topicName }}</td>
+                  <td class="px-4 py-2 text-right">v{{ v.version }}</td>
+                  <td class="px-4 py-2 text-right text-gray-500">{{ formatPct(v.accuracyBefore) }} <span class="text-xs text-gray-400">({{ v.attemptsBefore }})</span></td>
+                  <td class="px-4 py-2 text-right" :class="healthColor(v.accuracyAfter)">{{ formatPct(v.accuracyAfter) }} <span class="text-xs text-gray-400">({{ v.attemptsAfter }})</span></td>
+                  <td class="px-4 py-2 text-right font-medium" :class="v.accuracyAfter > v.accuracyBefore ? 'text-green-600' : 'text-red-600'">
+                    {{ v.accuracyAfter > v.accuracyBefore ? '+' : '' }}{{ formatPct(v.accuracyAfter - v.accuracyBefore) }}
+                  </td>
+                </tr>
+                <tr v-if="contentVersions.versionComparison.length === 0">
+                  <td colspan="5" class="px-4 py-4 text-center text-gray-400">No versioned content with enough data to compare</td>
                 </tr>
               </tbody>
             </table>

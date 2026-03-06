@@ -208,6 +208,7 @@ export const reviewLog = sqliteTable("review_log", {
   id: text("id").primaryKey(),
   userId: text("user_id").notNull().references(() => users.id),
   topicId: text("topic_id").notNull().references(() => topics.id),
+  assessmentContentId: text("assessment_content_id"),
   rating: integer("rating").notNull(),
   confidence: integer("confidence"),
   correct: integer("correct", { mode: "boolean" }).notNull(),
@@ -218,6 +219,7 @@ export const reviewLog = sqliteTable("review_log", {
 }, (table) => [
   index("review_user_idx").on(table.userId),
   index("review_topic_idx").on(table.topicId),
+  index("review_assessment_idx").on(table.assessmentContentId),
 ]);
 
 export const learnSessions = sqliteTable("learn_sessions", {
