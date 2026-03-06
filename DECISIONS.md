@@ -455,3 +455,181 @@ Child creation now creates both an org member (student role) and an account_link
 **Alternatives rejected:**
 - User.locale DB column: Over-engineered for a preference that works fine in localStorage; adds migration and auth coupling
 - Accept-Language header parsing on API: Complex, doesn't persist user choice, requires middleware
+
+---
+
+### 2026-03-05: Content type priorities — text-first expansion, visuals second, interactive later
+
+**Source:** Plan 008, Phase 1 — Content Strategy & Prioritization
+
+**Context:** Platform has 71 math K-5 topics with ~5 text-only problems each and 1 worked example each. Need to decide what content types to invest in, in what order, given limited resources and the PhysicsGraph lessons (content velocity is the bottleneck, visual aids are high-impact, question diversity improves learning).
+
+**Decision:** Prioritized content type roadmap:
+
+**Next 3 months (text expansion — high impact, low effort):**
+1. Assessment pool expansion: 5 → 20+ problems per topic, diverse question types (numerical-input, multi-step, matching, multi-select). This is the single highest-ROI investment — more problems = less repetition, diverse types = deeper retrieval (g=0.70 vs g=0.48 for MC).
+2. Instructional content improvement: shorter, clearer worked examples following Engelmann's Direct Instruction principles. Multiple examples per topic (currently 1, target 3).
+3. First flavor pilot: 2 flavors (adventure, space) × 10 high-engagement topics. Tests the dimension system end-to-end.
+
+**3-6 months (visual content — high impact, medium effort):**
+4. SVG visual aids for high-impact topics: number lines (counting, addition), base-ten blocks (place value), fraction bars/circles (fractions), array grids (multiplication). ~25 topics benefit most. Stored in existing `assetsJson` column.
+5. First locale pilot: Spanish (es) for classic flavor across all 71 topics. Largest US K-5 non-English population.
+6. Printable worksheets: PDF generation from assessment pool. Free, drives Teach Mode adoption.
+
+**6-12 months (interactive + rich media — high effort, high differentiation):**
+7. Interactive manipulatives: drag-and-drop base-ten blocks, fraction strips, pattern builders. Web Components or Vue components embedded in content.
+8. Simple animations: regrouping/carrying, fraction equivalence, place value exchanges. CSS/SVG animations, not video.
+9. Narrated lessons via TTS: auto-generate audio from instructional content. Leverage existing browser SpeechSynthesis.
+
+**12+ months (narrative IP — long-term differentiation):**
+10. Original characters and story universes for content flavors.
+11. Serialized math adventure stories with embedded problems.
+12. Video content (manim-style animated explanations) for YouTube as growth channel.
+
+**Why this ordering:**
+- Text expansion has the highest impact-to-effort ratio. More diverse problems directly improve learning outcomes (PhysicsGraph's #1 lesson).
+- Visual aids are high-impact for K-5 (dual coding theory) but require component development first.
+- Interactive content is the biggest differentiator but requires significant frontend investment.
+- Narrative/video is long-term brand building — premature before core content is excellent.
+
+**Alternatives rejected:**
+- Video-first: High production cost, low iteration speed, doesn't leverage our text-based pipeline
+- Interactive-first: Requires complex component library before we've proven the content model with simpler types
+- All types simultaneously: Spreads effort thin, nothing ships well
+
+---
+
+### 2026-03-05: Storage architecture — D1 for text, R2 for binary assets, CDN-served
+
+**Source:** Plan 008, Phase 1 — Content Strategy & Prioritization
+
+**Context:** Current content is text-only in D1 tables (`instructional_content`, `assessment_content`). As we add visual aids (SVG), audio (TTS), printables (PDF), and eventually interactive content, we need a storage strategy for binary assets.
+
+**Decision:**
+- **Text content and SVG configs:** Stay in D1 tables. SVG visuals are stored as JSON config in `assetsJson` (type + params), rendered client-side by Vue components. This is the current pattern and works well.
+- **Binary assets (images, audio, PDF, video):** Cloudflare R2 object storage with public bucket + CDN. Assets referenced by URL in content tables.
+- **Asset reference pattern:** `assetsJson` array entries gain an optional `url` field pointing to R2. Format: `https://assets.learn.perrone.dev/{subject}/{topic}/{type}/{hash}.{ext}`.
+- **Versioning:** R2 objects are content-addressed (hash in filename). New version = new hash = new URL. Old versions remain accessible until explicitly garbage-collected.
+- **Size budgets:** SVG configs: <2KB each. Images: <200KB (WebP). Audio: <500KB per segment (Opus). PDF worksheets: <1MB. Video: not stored in R2 (YouTube embed).
+- **Offline packs:** Content packs include SVG configs (rendered client-side) but NOT binary assets. Mobile apps can pre-cache binary assets separately.
+
+**Why R2:**
+- Already in the Cloudflare stack — zero new vendors
+- S3-compatible API, free egress (unlike S3)
+- Custom domain support for CDN serving
+- Workers can generate and upload directly (same runtime)
+
+**Why content-addressed URLs (not versioned paths):**
+- Immutable URLs are CDN-cache-forever friendly
+- No cache invalidation needed on content updates
+- Old content versions naturally reference old assets
+- Simple garbage collection: delete hashes not referenced by any content row
+
+**Alternatives rejected:**
+- R2 with versioned paths (`/v1/`, `/v2/`): Requires cache invalidation on updates, more complex URL management
+- External CDN (Cloudinary, imgix): New vendor, new billing, when R2+CF CDN is free egress
+- Inline base64 in D1: Bloats database, breaks CDN caching, hits D1 row size limits
+
+---
+
+### 2026-03-05: Distribution model — open base, platform-exclusive AI, separately monetizable API
+
+**Source:** Plan 008, Phase 1 — Content Strategy & Prioritization
+
+**Context:** Content is CC BY 4.0. Platform has free + $5/mo tiers. Need to clarify what's open, what's exclusive, and what's separately monetizable as content types expand.
+
+**Decision:** Three distribution tiers:
+
+**Tier 1 — CC BY 4.0 Open (free everywhere):**
+- Knowledge graph structure (topics, prerequisites, encompassings)
+- All text assessment content (problems, all question types)
+- All text instructional content (worked examples, all flavors/locales)
+- SVG visual configs (rendered client-side)
+- Content packs (JSON download via `/api/public/download/:subject`)
+- Printable worksheets (PDF generation)
+
+**Tier 2 — Platform-exclusive (requires account, free or paid):**
+- Adaptive learning sequencing (FSRS scheduling, FIRe credit, session state)
+- Diagnostic placement test
+- Progress tracking and analytics
+- Group learning features
+- Teach Mode (assignment creation, student tracking)
+
+**Tier 3 — Paid features ($5/mo subscription):**
+- AI tutoring (LLM-powered hints, explanations, Socratic dialogue)
+- AI grading (multi-step evaluation, partial credit analysis)
+- Speech-to-text for verbal answers
+- Self-explanation evaluation
+
+**Separately monetizable (future, API licensing):**
+- **Content API:** Free for CC BY 4.0 base content (current `/api/public/*` endpoints). Rate-limited.
+- **Adaptive API:** Paid tier for real-time FSRS scheduling, diagnostic, and analytics via API. For other edtech platforms integrating our content with our intelligence layer. Pricing TBD when demand exists.
+- **Premium media API:** Paid access to generated audio, interactive components, and curated content beyond base text. Pricing TBD.
+
+**Why everything text is CC BY 4.0:**
+- Maximizes content reach and adoption (the core mission)
+- Text content has near-zero marginal cost to distribute
+- Attribution drives awareness back to the platform
+- The moat is the intelligence layer (FSRS, diagnostics, AI), not the content itself
+
+**Why AI is the paid tier (not premium content):**
+- AI features have real per-use costs (LLM tokens, STT processing)
+- Free users still get excellent learning with SRS + diverse content
+- AI features are the differentiator that justifies subscription
+- Aligns with existing pricing decision ($5/mo with $3 usage cap)
+
+**Alternatives rejected:**
+- Premium content tiers (free base + paid flavors): Fragments the content, reduces CC BY 4.0 value, creates "haves and have-nots" in learning quality
+- All-free with donations: Unsustainable, can't cover AI costs
+- API-first monetization: Premature — build the platform first, API licensing follows adoption
+
+---
+
+### 2026-03-05: Short-term content generation priorities for Plan 009
+
+**Source:** Plan 008, Phase 1 — Content Strategy & Prioritization
+
+**Context:** Current: 71 topics × ~5 problems each × text-only × English × classic flavor. Plan 009 (Content Generation Pipeline) needs to know what to build first. Based on content type priorities, storage architecture, and distribution decisions above.
+
+**Decision:** Ordered generation priorities for 009:
+
+**Priority 1 — Assessment pool expansion (immediate, highest ROI):**
+- Target: 20+ problems per topic (from current ~5)
+- Diverse types: numerical-input (40%), text-qa (20%), multi-step (15%), matching (10%), multi-select (10%), equation-builder (5%)
+- Difficulty distribution: 30% easy, 40% medium, 30% hard (current is imbalanced)
+- All 71 topics. Estimated: ~1,400 new problems.
+- Quality gate: AI reviewer + guessability scanner + human spot-check
+
+**Priority 2 — SVG visual aids for high-impact topics (~25 topics):**
+- Number lines: counting-objects, count-to-20, add-within-10, add-within-20, subtract-within-10, subtract-within-20, number-line-basics
+- Base-ten blocks: place-value-tens-ones, place-value-hundreds, add-2digit, subtract-2digit, add-3digit, subtract-3digit
+- Fraction bars/circles: intro-fractions, equivalent-fractions, compare-fractions, add-fractions-like, subtract-fractions-like
+- Array grids: intro-multiplication, multiply-1digit, multiplication-facts, intro-division
+- Stored as JSON configs in `assetsJson`, rendered by Vue SVG components
+
+**Priority 3 — Instructional content improvement (all 71 topics):**
+- Expand to 3 worked examples per topic (from current 1)
+- Shorter, clearer steps (Engelmann-informed: explicit instruction, minimal ambiguity)
+- Add subgoal labels to all steps (supports self-explanation)
+- Estimated: ~142 new worked examples
+
+**Priority 4 — First flavor pilot (2 flavors × 10 topics):**
+- Flavors: adventure, space (most engaging for K-5 based on common preferences)
+- Topics: 10 high-engagement topics spanning grades K-2 (where engagement matters most)
+- Includes: flavored assessment + instructional content
+- Tests the full dimension pipeline: generation → validation → import → session selection
+
+**Priority 5 — First locale pilot (Spanish, all 71 topics):**
+- Spanish (es) classic flavor for all assessment + instructional content
+- Estimated: ~71 translated worked examples + ~357 translated problems
+- Uses LLM translation with cultural adaptation (not literal translation)
+- Quality gate: native speaker review of sample set
+
+**Why this ordering:**
+- P1 directly improves learning outcomes for every user immediately
+- P2 adds the highest-impact non-text content type (dual coding for K-5)
+- P3 improves instruction quality (PhysicsGraph's curriculum rewrite lesson)
+- P4 validates the dimension system before scaling flavors
+- P5 opens the largest non-English US K-5 market
+
+**Estimated volume:** ~2,000 content rows total across P1-P5. At LLM generation costs of ~$0.01-0.05 per content row, total generation cost: $20-100.

@@ -20,16 +20,16 @@ Admin visibility and content strategy. Before building generation infrastructure
 
 ## Progress
 
-**Completed:** None yet
+**Completed:** Phase 1 ✓
 **In Progress:** —
-**Next:** Phase 1
+**Next:** Phase 2
 
 ---
 
-## Phase 1: Content Strategy & Prioritization
+## Phase 1: Content Strategy & Prioritization ✓
 **Goal:** Make the big decisions about what content we produce, how we store different media types, how we distribute beyond the platform, and what we invest in first. These decisions drive everything in 009 (pipeline) and shape what the admin tooling needs to manage.
 
-1. [ ] [RSH] **Content type inventory and prioritization.** Assess each content type for impact, feasibility, and cost. Decide short-term vs long-term priorities:
+1. [x] [RSH] **Content type inventory and prioritization.** Assess each content type for impact, feasibility, and cost. Decide short-term vs long-term priorities:
 
    **Text content (exists today, expand):**
    - Assessment problems (diverse question types — 007 P2)
@@ -59,14 +59,14 @@ Admin visibility and content strategy. Before building generation infrastructure
 
    Produce a prioritized roadmap: what ships in the next 3 months vs 6 months vs later.
 
-2. [ ] [RSH] **Storage architecture for rich media.** Current: text content in D1 tables (`instructional_content`, `assessment_content`). Plan for:
+2. [x] [RSH] **Storage architecture for rich media.** Current: text content in D1 tables (`instructional_content`, `assessment_content`). Plan for:
    - Binary assets (images, audio, video): R2 object storage with CDN
    - Asset references in content tables (`assetsJson` field from 007 P1 schema)
    - Versioning of binary assets alongside content versions
    - Size budgets per content type (mobile-friendly)
    - Offline availability considerations (content packs with embedded assets?)
 
-3. [ ] [RSH] **Distribution and monetization strategy.** The platform is free-leaning with CC BY 4.0 content. How do we create value beyond the free service?
+3. [x] [RSH] **Distribution and monetization strategy.** The platform is free-leaning with CC BY 4.0 content. How do we create value beyond the free service?
    - **On-platform:** Free access to all base content. AI features are the paid tier (already decided in DECISIONS.md).
    - **Content packs:** Already have offline JSON packs (007 P4). Extend to include rich media. Free for basic, premium augmented packs?
    - **API/embed licensing:** Other edtech platforms use our content via API. Free for CC BY 4.0 base content. Paid tier for: real-time adaptive sequencing, FSRS integration, analytics, premium media.
@@ -77,7 +77,7 @@ Admin visibility and content strategy. Before building generation infrastructure
 
    Decide: what's CC BY 4.0 (everything base?), what's platform-exclusive (AI features, adaptive sequencing), what's separately monetizable (premium media, API access, IP)?
 
-4. [ ] [RSH] **Short-term content priorities.** Given the current state (71 math K-5 topics, ~5 problems each, text-only), decide immediate generation priorities for 009:
+4. [x] [RSH] **Short-term content priorities.** Given the current state (71 math K-5 topics, ~5 problems each, text-only), decide immediate generation priorities for 009:
    - Priority 1: Assessment pool expansion (5 → 15-30 per topic, diverse types)
    - Priority 2: SVG visual aids for high-impact topics (counting, place value, fractions)
    - Priority 3: Base English instructional content improvement (shorter, clearer, Engelmann-informed)
@@ -85,7 +85,7 @@ Admin visibility and content strategy. Before building generation infrastructure
    - Priority 5: First locale pilot (pick 1 language, classic content)
    - Validate this ordering or revise based on strategy decisions above.
 
-5. [ ] [DOC] Write up content strategy decisions in DECISIONS.md. Document: content type priorities, storage architecture, distribution model, licensing tiers, short-term generation roadmap.
+5. [x] [DOC] Write up content strategy decisions in DECISIONS.md. Document: content type priorities, storage architecture, distribution model, licensing tiers, short-term generation roadmap.
 
 **Validation:** Clear, documented answers to: what content types do we prioritize? How do we store rich media? How do we distribute and monetize? What does 009 build first? These decisions unblock all downstream work.
 
