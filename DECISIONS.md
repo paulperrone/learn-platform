@@ -22,11 +22,11 @@ Architectural and design decisions with reasoning. Append-only.
 
 **Reasoning:** Simplest approach for local dev. Durable Objects provide per-session persistence with strong consistency, ideal for stateful learning sessions.
 
-## 2026-03-03: 71-topic Math K-5 graph aligned to Common Core
+## 2026-03-03: 71-topic Foundational Mathematics graph aligned to Common Core
 
-**Decision:** Start with 71 atomic topics covering K-5 math (Common Core standards), 108 prerequisite edges, 16 encompassing edges.
+**Decision:** Start with 71 atomic topics covering foundational math (Common Core standards), 108 prerequisite edges, 16 encompassing edges.
 
-**Reasoning:** Math K-5 has the clearest prerequisite structure, is objectively assessable, LLMs generate math problems reliably, and there's universal demand. Common Core provides a validated standard to align to.
+**Reasoning:** Foundational math has the clearest prerequisite structure, is objectively assessable, LLMs generate math problems reliably, and there's universal demand. Common Core provides a validated standard to align to.
 
 ---
 
@@ -687,7 +687,7 @@ Child creation now creates both an org member (student role) and an account_link
 
 ## 2026-03-06: Subjects are continuous knowledge graphs with cross-subject links
 
-**Decision (future):** Subjects should form continuous connected graphs. Math K-5 connects into pre-algebra which connects into algebra, etc. — they are not isolated silos. Cross-subject prerequisites also exist: basic reading comprehension is a prerequisite for math word problems, algebra is a prerequisite for physics, etc.
+**Decision (future):** Subjects should form continuous connected graphs. Foundational Mathematics connects into pre-algebra which connects into algebra, etc. — they are not isolated silos. Cross-subject prerequisites also exist: basic reading comprehension is a prerequisite for math word problems, algebra is a prerequisite for physics, etc.
 
 **Implications:**
 - The graph schema already supports cross-subject prerequisite edges (prerequisites table has no subject constraint)

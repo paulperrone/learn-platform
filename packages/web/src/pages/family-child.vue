@@ -29,7 +29,7 @@ onMounted(async () => {
   const result = await withErrorToast(async () => {
     const [progressData, topicsData, familyData] = await Promise.all([
       api.getChildProgress(childId.value),
-      api.getTopics("math-k5"),
+      api.getTopics("math-foundations"),
       api.getFamily(),
     ]);
     return { progressData, topicsData, familyData };
@@ -178,7 +178,7 @@ const progressPercent = computed(() =>
       <!-- Progress Bar -->
       <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-5 mb-6">
         <div class="flex justify-between text-sm text-gray-600 mb-2">
-          <span>Math K-5 Progress</span>
+          <span>Foundational Math Progress</span>
           <span>{{ stats.mastered }}/{{ stats.total }}</span>
         </div>
         <div class="w-full bg-gray-200 rounded-full h-3">

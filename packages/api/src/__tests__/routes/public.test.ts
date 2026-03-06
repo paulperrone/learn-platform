@@ -31,13 +31,13 @@ describe("Public API - /api/public", () => {
     });
 
     it("returns subjects without auth", async () => {
-      await seedSubject({ id: "math-k5", name: "Math K-5", description: "Elementary math", gradeRange: "K-5", topicCount: 3 });
+      await seedSubject({ id: "math-foundations", name: "Foundational Mathematics", description: "Elementary math", gradeRange: "K-5", topicCount: 3 });
       const res = await request("/api/public/subjects");
       expect(res.status).toBe(200);
       const body = await json<{ subjects: Array<{ id: string; name: string; topicCount: number }> }>(res);
       expect(body.subjects).toHaveLength(1);
-      expect(body.subjects[0].id).toBe("math-k5");
-      expect(body.subjects[0].name).toBe("Math K-5");
+      expect(body.subjects[0].id).toBe("math-foundations");
+      expect(body.subjects[0].name).toBe("Foundational Mathematics");
       expect(body.subjects[0].topicCount).toBe(3);
     });
   });
@@ -49,14 +49,14 @@ describe("Public API - /api/public", () => {
     });
 
     it("returns topics ordered by depth", async () => {
-      const subject = await seedSubject({ id: "math-k5" });
+      const subject = await seedSubject({ id: "math-foundations" });
       await seedTopic(subject.id, { id: "count-10", name: "Count to 10", depth: 0, gradeLevel: 0, standardCode: "K.CC.4" });
       await seedTopic(subject.id, { id: "add-10", name: "Add Within 10", depth: 1, gradeLevel: 1 });
 
-      const res = await request("/api/public/subjects/math-k5/topics");
+      const res = await request("/api/public/subjects/math-foundations/topics");
       expect(res.status).toBe(200);
       const body = await json<{ subjectId: string; topics: Array<{ id: string; depth: number }> }>(res);
-      expect(body.subjectId).toBe("math-k5");
+      expect(body.subjectId).toBe("math-foundations");
       expect(body.topics).toHaveLength(2);
       expect(body.topics[0].id).toBe("count-10");
       expect(body.topics[1].id).toBe("add-10");
@@ -72,7 +72,7 @@ describe("Public API - /api/public", () => {
     });
 
     it("returns topic with problems and examples from content tables", async () => {
-      const subject = await seedSubject({ id: "math-k5" });
+      const subject = await seedSubject({ id: "math-foundations" });
       await seedTopic(subject.id, {
         id: "add-10",
         name: "Add Within 10",
@@ -101,7 +101,7 @@ describe("Public API - /api/public", () => {
     });
 
     it("returns empty arrays when no problems/examples", async () => {
-      const subject = await seedSubject({ id: "math-k5" });
+      const subject = await seedSubject({ id: "math-foundations" });
       await seedTopic(subject.id, { id: "empty-topic", gradeLevel: 0 });
 
       const res = await request("/api/public/topics/empty-topic");
@@ -119,7 +119,7 @@ describe("Public API - /api/public", () => {
     });
 
     it("returns full graph with topics, prerequisites, and encompassings", async () => {
-      const subject = await seedSubject({ id: "math-k5", name: "Math K-5" });
+      const subject = await seedSubject({ id: "math-foundations", name: "Foundational Mathematics" });
       const t1 = await seedTopic(subject.id, { id: "count-10", depth: 0, gradeLevel: 0 });
       const t2 = await seedTopic(subject.id, { id: "add-10", depth: 1, gradeLevel: 1 });
       const t3 = await seedTopic(subject.id, { id: "add-20", depth: 2, gradeLevel: 1 });
@@ -127,7 +127,7 @@ describe("Public API - /api/public", () => {
       await seedPrerequisite(t2.id, t3.id, 1.0);
       await seedEncompassing(t3.id, t2.id, 0.5);
 
-      const res = await request("/api/public/graph/math-k5");
+      const res = await request("/api/public/graph/math-foundations");
       expect(res.status).toBe(200);
       const body = await json<{
         subject: { id: string };
@@ -135,7 +135,7 @@ describe("Public API - /api/public", () => {
         prerequisites: Array<{ from: string; to: string }>;
         encompassings: Array<{ parent: string; child: string }>;
       }>(res);
-      expect(body.subject.id).toBe("math-k5");
+      expect(body.subject.id).toBe("math-foundations");
       expect(body.topics).toHaveLength(3);
       expect(body.prerequisites).toHaveLength(2);
       expect(body.prerequisites[0]).toEqual({ from: "count-10", to: "add-10", strength: 1.0 });
@@ -210,7 +210,7 @@ describe("Public API - /api/public", () => {
     });
 
     it("allows legitimate browsers and search engines", async () => {
-      await seedSubject({ id: "math-k5" });
+      await seedSubject({ id: "math-foundations" });
 
       const allowedUAs = [
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",

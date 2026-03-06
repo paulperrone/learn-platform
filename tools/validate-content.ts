@@ -6,7 +6,7 @@
 import { readFileSync, existsSync, readdirSync } from "fs";
 import { join } from "path";
 
-const subject = process.argv[2] ?? "math-k5";
+const subject = process.argv[2] ?? "math-foundations";
 const contentDir = join(process.cwd(), "content", subject);
 
 let errors = 0;

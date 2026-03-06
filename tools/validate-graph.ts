@@ -6,7 +6,7 @@
 import { readFileSync, existsSync } from "fs";
 import { join } from "path";
 
-const subject = process.argv[2] ?? "math-k5";
+const subject = process.argv[2] ?? "math-foundations";
 const graphPath = join(process.cwd(), "content", subject, "graph.json");
 
 if (!existsSync(graphPath)) {

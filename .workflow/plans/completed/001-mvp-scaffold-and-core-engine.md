@@ -9,7 +9,7 @@
 
 ## Summary
 
-Stand up the full-stack monorepo, implement the core backend engines (knowledge graph, SRS, learning loop, LLM integration), build the content pipeline, create the Math K-5 knowledge graph, and build the frontend UI. This epic covers the foundational build from zero to a locally-working full-stack application.
+Stand up the full-stack monorepo, implement the core backend engines (knowledge graph, SRS, learning loop, LLM integration), build the content pipeline, create the Foundational Mathematics knowledge graph, and build the frontend UI. This epic covers the foundational build from zero to a locally-working full-stack application.
 
 ## Progress
 
@@ -35,16 +35,16 @@ Stand up the full-stack monorepo, implement the core backend engines (knowledge 
 ---
 
 ## Phase 2: Knowledge Graph Engine
-**Goal:** Graph service, import pipeline, Math K-5 content
+**Goal:** Graph service, import pipeline, Foundational Mathematics content
 
 1. [x] [IMP] Create graph service: computeFrontier, getPrerequisiteChain, validateDAG, computeDepths, encompassing queries
 2. [x] [IMP] Wire graph service to Hono routes (/api/graph/*)
-3. [x] [IMP] Build Math K-5 graph: 71 topics, 108 prerequisite edges, 16 encompassing edges (Common Core K-5)
+3. [x] [IMP] Build Foundational Mathematics graph: 71 topics, 108 prerequisite edges, 16 encompassing edges (Common Core K-5)
 4. [x] [IMP] Create sample problem banks (count-to-10, add-within-5, add-within-10) and worked example (add-within-10)
 5. [x] [IMP] Build import-content.ts tool: reads graph.json + problems/ + examples/ → local D1
 6. [x] [VAL] Import graph, query frontier (6 root topics for new user), DAG validates (no cycles), depths computed (max 14)
 
-**Validation:** `npx tsx tools/import-content.ts` imports cleanly, `/api/graph/subjects/math-k5/validate` returns `{"valid":true}`, frontier shows 6 depth-0 topics. ✅
+**Validation:** `npx tsx tools/import-content.ts` imports cleanly, `/api/graph/subjects/math-foundations/validate` returns `{"valid":true}`, frontier shows 6 depth-0 topics. ✅
 
 ---
 

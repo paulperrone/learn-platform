@@ -14,7 +14,7 @@ onMounted(async () => {
   const result = await withErrorToast(async () => {
     const [statesData, topicsData] = await Promise.all([
       api.getTopicStates(),
-      api.getTopics("math-k5"),
+      api.getTopics("math-foundations"),
     ]);
     return { statesData, topicsData };
   }, t("errors.failedToLoad", { resource: "progress" }));

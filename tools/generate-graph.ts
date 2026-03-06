@@ -15,7 +15,7 @@ if (!API_KEY) {
   process.exit(1);
 }
 
-const subject = process.argv[2] ?? "math-k5";
+const subject = process.argv[2] ?? "math-foundations";
 
 async function callLLM(prompt: string, system: string): Promise<string> {
   const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
@@ -75,7 +75,7 @@ Target ~70-80 topics covering:
 Output as JSON with this structure:
 {
   "subjectId": "${subject}",
-  "subjectName": "Mathematics K-5",
+  "subjectName": "Foundational Mathematics",
   "description": "...",
   "gradeRange": "K-5",
   "topics": [...],

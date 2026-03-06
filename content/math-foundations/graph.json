@@ -1,8 +1,8 @@
 {
-  "subjectId": "math-k5",
-  "subjectName": "Mathematics K-5",
-  "description": "Elementary mathematics from kindergarten through 5th grade, covering counting, operations, place value, fractions, measurement, geometry, and early algebra.",
-  "gradeRange": "K-5",
+  "subjectId": "math-foundations",
+  "subjectName": "Foundational Mathematics",
+  "description": "Foundational mathematics covering counting, operations, place value, fractions, measurement, geometry, and early algebra.",
+  "gradeRange": "0-5",
   "topics": [
     {
       "id": "count-to-10",

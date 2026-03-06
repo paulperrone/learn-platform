@@ -95,7 +95,7 @@ const progressPercent = () =>
           <p class="text-sm text-blue-700 mt-1">{{ t('dashboard.diagnosticDescription') }}</p>
         </div>
         <RouterLink
-          to="/diagnostic/math-k5"
+          to="/diagnostic/math-foundations"
           class="shrink-0 bg-blue-600 text-white px-5 py-2 rounded-lg text-sm font-semibold hover:bg-blue-700 transition-colors"
         >
           {{ t('dashboard.takeDiagnostic') }}

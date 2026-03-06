@@ -33,9 +33,9 @@ First non-math subject — Reading/ELA for K-5. Validates multi-subject scalabil
 
 1. [ ] [RSH] Map Common Core ELA K-5 standards to atomic learning topics: phonemic awareness, phonics, fluency, vocabulary, comprehension strategies, writing conventions. Identify prerequisite and encompassing relationships.
 
-2. [ ] [IMP] Create `content/reading-k5/graph.json`: ~50-70 topics with prerequisite edges, grade-level alignment, subject='reading-k5'. Same schema as math-k5 graph — topics table is subject-agnostic.
+2. [ ] [IMP] Create `content/reading-k5/graph.json`: ~50-70 topics with prerequisite edges, grade-level alignment, subject='reading-k5'. Same schema as math-foundations graph — topics table is subject-agnostic.
 
-3. [ ] [IMP] Parameterize import tools: update `tools/import-content.ts` to discover and import all subject directories under `content/`, not just math-k5. Graph import writes to same `topics` table with subject field distinguishing them.
+3. [ ] [IMP] Parameterize import tools: update `tools/import-content.ts` to discover and import all subject directories under `content/`, not just math-foundations. Graph import writes to same `topics` table with subject field distinguishing them.
 
 4. [ ] [VAL] Run `tools/validate-graph.ts` against reading graph: no cycles, all prerequisites valid, depths assigned. Run against both graphs together to confirm cross-subject isolation.
 

@@ -8,7 +8,7 @@
 import { readFileSync, writeFileSync, existsSync, readdirSync } from "fs";
 import { join } from "path";
 
-const subject = process.argv.find((a) => !a.startsWith("-") && a !== process.argv[0] && a !== process.argv[1]) ?? "math-k5";
+const subject = process.argv.find((a) => !a.startsWith("-") && a !== process.argv[0] && a !== process.argv[1]) ?? "math-foundations";
 const dryRun = process.argv.includes("--dry-run");
 
 const API_KEY = process.env.OPENROUTER_API_KEY;

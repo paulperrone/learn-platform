@@ -122,7 +122,7 @@ export async function seedSubject(overrides: Partial<typeof schema.subjects.$inf
     .insert(schema.subjects)
     .values({
       id,
-      name: overrides.name ?? "Math K-5",
+      name: overrides.name ?? "Foundational Mathematics",
       description: overrides.description ?? "Test subject",
       gradeRange: overrides.gradeRange ?? "K-5",
       createdAt: now,

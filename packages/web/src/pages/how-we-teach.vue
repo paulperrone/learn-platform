@@ -31,7 +31,7 @@ onMounted(() => {
         name: "Is this aligned to Common Core?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Yes. Our Math K-5 curriculum covers 71 topics aligned to Common Core standards, from counting through early algebra.",
+          text: "Yes. Our Foundational Mathematics curriculum covers 71 topics aligned to Common Core standards, from counting through early algebra.",
         },
       },
       {
@@ -146,7 +146,7 @@ onMounted(() => {
         what researchers call the <em>knowledge frontier</em>.
       </p>
       <p class="text-gray-700 leading-relaxed">
-        Our Math K-5 curriculum covers 71 topics from counting through early algebra, all aligned
+        Our Foundational Mathematics curriculum covers 71 topics from counting through early algebra, all aligned
         to Common Core standards, with over 100 prerequisite connections ensuring proper sequencing.
       </p>
       <cite class="block text-sm text-gray-500 mt-3">Zou et al. (2019). Students are 3-4x more likely to master frontier topics vs. topics beyond their frontier.</cite>
@@ -417,7 +417,7 @@ onMounted(() => {
       <div class="space-y-4">
         <details class="bg-white border border-gray-200 rounded-lg">
           <summary class="px-5 py-4 cursor-pointer font-medium text-gray-800 hover:text-gray-900">Is this aligned to Common Core?</summary>
-          <p class="px-5 pb-4 text-gray-600 leading-relaxed">Yes. Our Math K-5 curriculum covers 71 topics aligned to Common Core standards (K.CC, K.OA, 1.NBT, etc.), from counting through early algebra. Each topic includes its standard code so you can verify alignment.</p>
+          <p class="px-5 pb-4 text-gray-600 leading-relaxed">Yes. Our Foundational Mathematics curriculum covers 71 topics aligned to Common Core standards (K.CC, K.OA, 1.NBT, etc.), from counting through early algebra. Each topic includes its standard code so you can verify alignment.</p>
         </details>
         <details class="bg-white border border-gray-200 rounded-lg">
           <summary class="px-5 py-4 cursor-pointer font-medium text-gray-800 hover:text-gray-900">How does AI tutoring work?</summary>

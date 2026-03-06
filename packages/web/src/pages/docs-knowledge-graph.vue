@@ -116,7 +116,7 @@ onMounted(() => {
       </div>
 
       <p class="text-gray-700 leading-relaxed mb-4">
-        Our Math K-5 graph contains <strong>71 topics</strong>, <strong>108 prerequisite
+        Our Foundational Mathematics graph contains <strong>71 topics</strong>, <strong>108 prerequisite
         edges</strong>, and <strong>16 encompassing edges</strong> (for FIRe credit), all
         aligned to Common Core standards. You can
         <RouterLink to="/explore" class="text-blue-600 underline">browse the full graph</RouterLink>.

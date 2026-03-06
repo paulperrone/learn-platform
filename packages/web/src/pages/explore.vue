@@ -13,7 +13,7 @@ const prereqs = ref<string[]>([]);
 
 onMounted(async () => {
   const result = await withErrorToast(
-    () => api.getTopics("math-k5"),
+    () => api.getTopics("math-foundations"),
     "Failed to load topics"
   );
   if (result) {

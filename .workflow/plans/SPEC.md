@@ -22,7 +22,7 @@ A free, open mastery-learning platform inspired by MathAcademy's knowledge graph
 
 ## MVP Scope
 
-**Math K-5** as first subject — 71 topics aligned to Common Core, covering counting through early algebra.
+**Foundational Mathematics** as first subject — 71 topics aligned to Common Core, covering counting through early algebra.
 
 ### Core Systems
 
@@ -75,7 +75,7 @@ All problems, worked examples, and graph structure are **pre-generated offline**
 ## Success Criteria
 
 - Full learning session works end-to-end (pretest through review)
-- 71 Math K-5 topics with validated problem banks and worked examples
+- 71 Foundational Mathematics topics with validated problem banks and worked examples
 - SRS scheduling produces correct review intervals
 - FIRe credit reduces review burden measurably
 - Auth flow works for account creation and login

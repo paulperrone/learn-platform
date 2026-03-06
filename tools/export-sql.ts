@@ -44,7 +44,7 @@ function esc(s: string): string {
 }
 
 function main() {
-  const contentDir = join(process.cwd(), "content", "math-k5");
+  const contentDir = join(process.cwd(), "content", "math-foundations");
   const graphPath = join(contentDir, "graph.json");
 
   if (!existsSync(graphPath)) {

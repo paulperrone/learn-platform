@@ -9,7 +9,7 @@
 
 ## Summary
 
-Take the locally-working MVP to a deployed, testable state. Generate full content for all 71 Math K-5 topics, add real authentication UI, persist learning sessions across worker restarts, add error handling, configure Cloudflare infrastructure, and deploy. Final phase captures future capability areas as separate intake items.
+Take the locally-working MVP to a deployed, testable state. Generate full content for all 71 Foundational Mathematics topics, add real authentication UI, persist learning sessions across worker restarts, add error handling, configure Cloudflare infrastructure, and deploy. Final phase captures future capability areas as separate intake items.
 
 ## Progress
 

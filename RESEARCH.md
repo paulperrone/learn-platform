@@ -56,7 +56,7 @@ Key principles driving the platform design:
 
 **Source:** User session
 
-**Context:** The MVP has 71 Math K-5 topics with offline-generated problems and worked examples (JSON files in `content/math-k5/`). The pipeline uses Claude Code to generate content, validation scripts to verify completeness, and an import tool to load into D1. How should this scale to multiple subjects and content types?
+**Context:** The MVP has 71 Foundational Mathematics topics with offline-generated problems and worked examples (JSON files in `content/math-foundations/`). The pipeline uses Claude Code to generate content, validation scripts to verify completeness, and an import tool to load into D1. How should this scale to multiple subjects and content types?
 
 **Question:** What architecture supports adding new subjects (Math 6-12, Reading, Science) and content types (video scripts, interactive games)?
 
@@ -68,7 +68,7 @@ Key principles driving the platform design:
 | **Content types** | Problems (JSON) + Worked Examples (JSON) | + Video scripts, interactive simulations, game templates, adaptive hints |
 | **Generation pipeline** | Ad-hoc Claude Code prompts | Structured pipeline: schema → prompt template → generate → validate → review → import |
 | **Validation** | `validate-content.ts` and `validate-graph.ts` | Per-content-type validators, cross-reference validation (problem references valid topics, examples match problem types) |
-| **Storage** | Flat files in `content/math-k5/` | `content/<subject>/` directories, versioned content with migration support |
+| **Storage** | Flat files in `content/math-foundations/` | `content/<subject>/` directories, versioned content with migration support |
 
 **Proposed architecture:**
 1. **Subject packs** — Each subject is a self-contained directory: `content/<subject>/graph.json`, `problems/`, `examples/`

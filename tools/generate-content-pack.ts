@@ -3,14 +3,14 @@
  * Bundles graph, problems, and worked examples into a single versioned JSON file.
  *
  * Usage: npx tsx tools/generate-content-pack.ts [subject]
- * Default subject: math-k5
+ * Default subject: math-foundations
  *
  * Output: content/[subject]/content-pack.json
  */
 import { readFileSync, writeFileSync, existsSync, readdirSync } from "fs";
 import { join, basename } from "path";
 
-const subject = process.argv[2] || "math-k5";
+const subject = process.argv[2] || "math-foundations";
 const contentDir = join(process.cwd(), "content", subject);
 
 if (!existsSync(contentDir)) {

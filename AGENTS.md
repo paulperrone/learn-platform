@@ -1,6 +1,6 @@
 # Learn Platform
 
-Free, open mastery-learning platform with knowledge graph, spaced repetition (FSRS), and LLM tutoring. MVP: Math K-5.
+Free, open mastery-learning platform with knowledge graph, spaced repetition (FSRS), and LLM tutoring. MVP: Foundational Mathematics.
 
 ## Tech Stack
 
@@ -29,7 +29,7 @@ packages/
     components/      # ProblemView, WorkedExample, ConfidenceSlider
     composables/     # useApi
   shared/src/        # Shared TypeScript types
-content/math-k5/     # Knowledge graph + problem banks (JSON, offline-generated)
+content/math-foundations/  # Knowledge graph + problem banks (JSON, offline-generated)
 tools/               # Offline content pipeline (generate, validate, import)
 ```
 
