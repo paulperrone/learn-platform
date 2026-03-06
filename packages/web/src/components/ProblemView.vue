@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, onMounted } from "vue";
+import { ref, computed, onMounted, onUnmounted, nextTick } from "vue";
 import type { Problem, AssessmentType, MultiStepProperties, MatchingProperties, MultiSelectProperties, NumericalInputProperties } from "@learn/shared";
 import ConfidenceSlider from "./ConfidenceSlider.vue";
 import SpeakButton from "./SpeakButton.vue";
@@ -29,7 +29,14 @@ const emit = defineEmits<{
 const api = useApi();
 const { llmAvailable, check: checkLLM } = useLLMStatus();
 const { t } = useI18n();
-onMounted(checkLLM);
+const inputRef = ref<HTMLInputElement | null>(null);
+
+onMounted(() => {
+  checkLLM();
+  nextTick(() => inputRef.value?.focus());
+  window.addEventListener("keydown", handleGlobalEnter);
+});
+onUnmounted(() => window.removeEventListener("keydown", handleGlobalEnter));
 
 const problemType = computed<AssessmentType>(() => props.problem.type ?? "text-qa");
 const isMultiStep = computed(() => problemType.value === "multi-step");
@@ -65,7 +72,16 @@ const phaseColor = computed(() => {
   }
 });
 
+function handleGlobalEnter(e: KeyboardEvent) {
+  if (e.key !== "Enter") return;
+  if (submitted.value) {
+    e.preventDefault();
+    submitAndContinue();
+  }
+}
+
 function checkAnswer() {
+  if (problemType.value === "text-qa" && !answer.value.trim()) return;
   let result: { correct: boolean; display: string };
 
   switch (problemType.value) {
@@ -181,6 +197,7 @@ const displayAnswer = computed(() => {
       <template v-if="problemType === 'text-qa' || problemType === 'equation-builder'">
         <div class="flex items-center gap-2">
           <input
+            ref="inputRef"
             v-model="answer"
             type="text"
             class="flex-1 border border-gray-300 rounded-lg p-3 text-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent math-ltr"
