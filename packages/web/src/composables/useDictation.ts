@@ -1,4 +1,5 @@
 import { ref, onUnmounted } from "vue";
+import { i18n } from "../i18n";
 
 export type DictationState = "idle" | "recording" | "processing";
 
@@ -146,6 +147,7 @@ export function useDictation() {
   async function transcribe(audioBlob: Blob): Promise<string | null> {
     const formData = new FormData();
     formData.append("file", audioBlob, "recording.webm");
+    formData.append("language", i18n.global.locale.value || "en");
 
     const res = await fetch("/api/speech/transcribe", {
       method: "POST",

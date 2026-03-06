@@ -4,11 +4,13 @@ import { useRouter } from "vue-router";
 import { useAuth } from "../composables/useAuth";
 import { useAnonymous } from "../composables/useAnonymous";
 import { useApi, withErrorToast } from "../composables/useApi";
+import { useI18n } from "vue-i18n";
 
 const router = useRouter();
 const { signUp } = useAuth();
 const anon = useAnonymous();
 const api = useApi();
+const { t } = useI18n();
 
 const name = ref("");
 const email = ref("");
@@ -26,7 +28,7 @@ async function handleSubmit() {
   const result = await signUp(email.value, password.value, name.value, birthYear.value);
 
   if (result.error) {
-    error.value = result.error.message ?? "Sign up failed";
+    error.value = result.error.message ?? t("auth.signUpFailed");
     loading.value = false;
     return;
   }
@@ -35,7 +37,7 @@ async function handleSubmit() {
   if (anon.hasProgress.value) {
     await withErrorToast(
       () => api.mergeAnonymousData(anon.token.value),
-      "Failed to merge guest progress"
+      t("errors.mergeProgress")
     );
     anon.clearOnMerge();
   }
@@ -49,8 +51,8 @@ async function handleSubmit() {
   <div class="flex min-h-[60vh] items-center justify-center">
     <div class="w-full max-w-sm space-y-6">
       <div class="text-center">
-        <h1 class="text-2xl font-bold text-gray-900">Create Account</h1>
-        <p class="mt-1 text-sm text-gray-500">Start your learning journey</p>
+        <h1 class="text-2xl font-bold text-gray-900">{{ t('auth.createAccountTitle') }}</h1>
+        <p class="mt-1 text-sm text-gray-500">{{ t('auth.createAccountSubtitle') }}</p>
       </div>
 
       <form @submit.prevent="handleSubmit" class="space-y-4">
@@ -59,7 +61,7 @@ async function handleSubmit() {
         </div>
 
         <div>
-          <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+          <label for="name" class="block text-sm font-medium text-gray-700">{{ t('auth.name') }}</label>
           <input
             id="name"
             v-model="name"
@@ -71,7 +73,7 @@ async function handleSubmit() {
         </div>
 
         <div>
-          <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+          <label for="email" class="block text-sm font-medium text-gray-700">{{ t('auth.email') }}</label>
           <input
             id="email"
             v-model="email"
@@ -83,7 +85,7 @@ async function handleSubmit() {
         </div>
 
         <div>
-          <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+          <label for="password" class="block text-sm font-medium text-gray-700">{{ t('auth.password') }}</label>
           <input
             id="password"
             v-model="password"
@@ -93,18 +95,18 @@ async function handleSubmit() {
             autocomplete="new-password"
             class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
           />
-          <p class="mt-1 text-xs text-gray-400">At least 8 characters</p>
+          <p class="mt-1 text-xs text-gray-400">{{ t('auth.passwordHint') }}</p>
         </div>
 
         <div>
-          <label for="birthYear" class="block text-sm font-medium text-gray-700">Birth Year <span class="text-gray-400">(optional)</span></label>
+          <label for="birthYear" class="block text-sm font-medium text-gray-700">{{ t('auth.birthYear') }} <span class="text-gray-400">{{ t('auth.optional') }}</span></label>
           <input
             id="birthYear"
             v-model.number="birthYear"
             type="number"
             :min="currentYear - 120"
             :max="currentYear"
-            placeholder="e.g. 2015"
+            :placeholder="t('auth.birthYearPlaceholder')"
             autocomplete="off"
             class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
           />
@@ -115,13 +117,13 @@ async function handleSubmit() {
           :disabled="loading"
           class="w-full rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50"
         >
-          {{ loading ? "Creating account..." : "Create Account" }}
+          {{ loading ? t('auth.creatingAccount') : t('auth.createAccountTitle') }}
         </button>
       </form>
 
       <p class="text-center text-sm text-gray-500">
-        Already have an account?
-        <RouterLink to="/login" class="font-medium text-blue-600 hover:text-blue-500">Sign in</RouterLink>
+        {{ t('auth.hasAccount') }}
+        <RouterLink to="/login" class="font-medium text-blue-600 hover:text-blue-500">{{ t('nav.signIn') }}</RouterLink>
       </p>
     </div>
   </div>

@@ -145,6 +145,7 @@ llmRoutes.post("/evaluate", async (c) => {
     topicName: string;
     stepDescription: string;
     studentExplanation: string;
+    locale?: string;
   }>();
   if (!(await checkBudget(db, body.userId))) return c.json(BUDGET_ERROR, 429);
   const llm = await createConfiguredLLM(db, body.userId, c.env.OPENROUTER_API_KEY);
@@ -153,7 +154,8 @@ llmRoutes.post("/evaluate", async (c) => {
     body.topicName,
     body.stepDescription,
     body.studentExplanation,
-    body.topicId
+    body.topicId,
+    body.locale
   );
   return c.json(result);
 });
@@ -167,6 +169,7 @@ llmRoutes.post("/tutor", async (c) => {
     problemQuestion: string;
     studentResponse: string;
     conversationHistory?: { role: "system" | "user" | "assistant"; content: string }[];
+    locale?: string;
   }>();
   if (!(await checkBudget(db, body.userId))) return c.json(BUDGET_ERROR, 429);
   const llm = await createConfiguredLLM(db, body.userId, c.env.OPENROUTER_API_KEY);
@@ -176,7 +179,8 @@ llmRoutes.post("/tutor", async (c) => {
     body.problemQuestion,
     body.studentResponse,
     body.conversationHistory,
-    body.topicId
+    body.topicId,
+    body.locale
   );
   return c.json(result);
 });
@@ -190,6 +194,7 @@ llmRoutes.post("/tutor-stream", async (c) => {
     problemQuestion: string;
     studentResponse: string;
     conversationHistory?: { role: "system" | "user" | "assistant"; content: string }[];
+    locale?: string;
   }>();
   if (!(await checkBudget(db, body.userId))) return c.json(BUDGET_ERROR, 429);
   const llm = await createConfiguredLLM(db, body.userId, c.env.OPENROUTER_API_KEY);
@@ -201,7 +206,8 @@ llmRoutes.post("/tutor-stream", async (c) => {
       body.problemQuestion,
       body.studentResponse,
       body.conversationHistory,
-      body.topicId
+      body.topicId,
+      body.locale
     );
 
     return new Response(stream, {
@@ -219,7 +225,8 @@ llmRoutes.post("/tutor-stream", async (c) => {
       body.problemQuestion,
       body.studentResponse,
       body.conversationHistory,
-      body.topicId
+      body.topicId,
+      body.locale
     );
     return c.json(result);
   }
@@ -235,6 +242,7 @@ llmRoutes.post("/hint", async (c) => {
     staticHints: string[];
     currentHintLevel: number;
     studentResponse?: string;
+    locale?: string;
   }>();
 
   // Static hints (levels 1-2) don't need budget check
@@ -253,7 +261,8 @@ llmRoutes.post("/hint", async (c) => {
     body.problemSolution,
     body.staticHints,
     body.currentHintLevel,
-    body.studentResponse
+    body.studentResponse,
+    body.locale
   );
   return c.json(result);
 });
@@ -266,6 +275,7 @@ llmRoutes.post("/grade", async (c) => {
     question: string;
     correctAnswer: string;
     studentAnswer: string;
+    locale?: string;
   }>();
   if (!(await checkBudget(db, body.userId))) return c.json(BUDGET_ERROR, 429);
   const llm = await createConfiguredLLM(db, body.userId, c.env.OPENROUTER_API_KEY);
@@ -274,7 +284,8 @@ llmRoutes.post("/grade", async (c) => {
     body.topicName,
     body.question,
     body.correctAnswer,
-    body.studentAnswer
+    body.studentAnswer,
+    body.locale
   );
   return c.json(result);
 });

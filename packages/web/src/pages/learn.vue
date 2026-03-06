@@ -7,12 +7,14 @@ import { useSpeech } from "@/composables/useSpeech";
 import { useSpeechPrefs } from "@/composables/useSpeechPrefs";
 import ProblemView from "@/components/ProblemView.vue";
 import WorkedExample from "@/components/WorkedExample.vue";
+import { useI18n } from "vue-i18n";
 
 const api = useApi();
 const auth = useAuth();
 const anon = useAnonymous();
 const speech = useSpeech();
 const speechPrefs = useSpeechPrefs();
+const { t } = useI18n();
 
 speechPrefs.load();
 
@@ -46,7 +48,7 @@ onMounted(async () => {
     // Authenticated user — check for active session
     const result = await withErrorToast(
       () => api.getActiveSession(),
-      "Failed to check active session"
+      t("errors.failedToLoad", { resource: "session" })
     );
     if (result?.active) {
       sessionId.value = result.sessionId;
@@ -58,7 +60,7 @@ onMounted(async () => {
     isAnonymous.value = true;
     const result = await withErrorToast(
       () => api.getActiveAnonymousSession(anon.token.value),
-      "Failed to check active session"
+      t("errors.failedToLoad", { resource: "session" })
     );
     if (result?.active) {
       sessionId.value = result.sessionId;
@@ -75,12 +77,12 @@ async function startSession() {
   if (isAnonymous.value) {
     result = await withErrorToast(
       () => api.startAnonymousSession(anon.token.value),
-      "Failed to start session"
+      t("errors.failedToStart", { action: "session" })
     );
   } else {
     result = await withErrorToast(
       () => api.startSession(),
-      "Failed to start session"
+      t("errors.failedToStart", { action: "session" })
     );
   }
   if (result) {
@@ -101,7 +103,7 @@ async function handleProblemSubmit(data: {
   loading.value = true;
   const result = await withErrorToast(
     () => api.respondToSession(sessionId.value!, data),
-    "Failed to submit response"
+    t("errors.failedToSubmit", { action: "response" })
   );
   if (result) {
     currentItem.value = result;
@@ -125,7 +127,7 @@ async function handleExampleDone() {
       responseMs: 0,
       selfExplanation: "completed",
     }),
-    "Failed to advance session"
+    t("errors.failedToSubmit", { action: "response" })
   );
   if (result) {
     currentItem.value = result;
@@ -139,14 +141,14 @@ async function handleExampleDone() {
 
 <template>
   <div class="max-w-2xl mx-auto">
-    <h1 class="text-3xl font-bold mb-6">Learning Session</h1>
+    <h1 class="text-3xl font-bold mb-6">{{ t('learn.title') }}</h1>
 
     <!-- Anonymous banner -->
     <div v-if="isAnonymous && !recovering" class="mb-6 bg-amber-50 border border-amber-200 rounded-lg p-4">
       <p class="text-amber-800 text-sm">
-        You're learning as a guest. Progress won't be saved.
-        <RouterLink to="/signup" class="font-semibold underline hover:text-amber-900">Create an account</RouterLink>
-        to track your progress and unlock all features.
+        {{ t('learn.guestBanner') }}
+        <RouterLink to="/signup" class="font-semibold underline hover:text-amber-900">{{ t('learn.createAccount') }}</RouterLink>
+        {{ t('learn.guestBannerSuffix') }}
       </p>
     </div>
 
@@ -156,29 +158,27 @@ async function handleExampleDone() {
         <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
         <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
       </svg>
-      <span>Checking for active session...</span>
+      <span>{{ t('learn.checkingSession') }}</span>
     </div>
 
     <!-- Not started -->
     <div v-else-if="!sessionId" class="text-center py-12">
       <p class="text-gray-600 mb-6">
-        {{ isAnonymous
-          ? "Try a few topics to see how the platform works."
-          : "Your session will include a mix of new topics and review." }}
+        {{ isAnonymous ? t('learn.anonPrompt') : t('learn.authPrompt') }}
       </p>
       <button
         @click="startSession"
         :disabled="loading"
         class="px-8 py-3 bg-blue-600 text-white rounded-lg text-lg font-semibold hover:bg-blue-700 disabled:opacity-50"
       >
-        {{ loading ? "Starting..." : "Begin Session" }}
+        {{ loading ? t('learn.starting') : t('learn.beginSession') }}
       </button>
     </div>
 
     <!-- Session complete -->
     <div v-else-if="!sessionActive" class="text-center py-12">
       <div class="bg-green-50 rounded-xl p-8 mb-6">
-        <h2 class="text-2xl font-bold text-green-800 mb-2">Session Complete!</h2>
+        <h2 class="text-2xl font-bold text-green-800 mb-2">{{ t('learn.sessionComplete') }}</h2>
         <p class="text-green-700">{{ currentItem?.message }}</p>
       </div>
       <div class="flex gap-4 justify-center">
@@ -186,21 +186,21 @@ async function handleExampleDone() {
           @click="sessionId = null; currentItem = null"
           class="px-6 py-2.5 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700"
         >
-          New Session
+          {{ t('learn.newSession') }}
         </button>
         <RouterLink
           v-if="!isAnonymous"
           to="/progress"
           class="px-6 py-2.5 border border-gray-300 text-gray-700 rounded-lg font-medium hover:bg-gray-50"
         >
-          View Progress
+          {{ t('learn.viewProgress') }}
         </RouterLink>
         <RouterLink
           v-if="isAnonymous"
           to="/signup"
           class="px-6 py-2.5 bg-green-600 text-white rounded-lg font-medium hover:bg-green-700"
         >
-          Create Account to Save Progress
+          {{ t('learn.saveProgress') }}
         </RouterLink>
       </div>
     </div>
@@ -217,7 +217,7 @@ async function handleExampleDone() {
           <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
           <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
         </svg>
-        <span>Loading...</span>
+        <span>{{ t('learn.loading') }}</span>
       </div>
 
       <!-- Problem -->

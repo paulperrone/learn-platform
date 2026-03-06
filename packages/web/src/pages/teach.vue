@@ -2,9 +2,11 @@
 import { ref, computed, onMounted } from "vue";
 import { useApi, withErrorToast } from "@/composables/useApi";
 import { useMeta } from "@/composables/useMeta";
+import { useI18n } from "vue-i18n";
 import type { Subject, Topic } from "@learn/shared";
 
 const api = useApi();
+const { t } = useI18n();
 const subjects = ref<Subject[]>([]);
 const selectedSubject = ref<string | null>(null);
 const topics = ref<Topic[]>([]);
@@ -65,7 +67,7 @@ const topicsByGrade = computed(() => {
 });
 
 function gradeName(level: number) {
-  return level === 0 ? "Kindergarten" : `Grade ${level}`;
+  return level === 0 ? t("progress.kindergarten") : t("progress.grade", { level });
 }
 
 function gradeShort(level: number) {
@@ -89,7 +91,7 @@ const currentSubject = computed(() =>
 <template>
   <div>
     <div class="mb-6">
-      <h1 class="text-3xl font-bold text-gray-900 mb-1">Teach Mode</h1>
+      <h1 class="text-3xl font-bold text-gray-900 mb-1">{{ t('teach.title') }}</h1>
       <p class="text-gray-500">Select a topic to present. No account required.</p>
     </div>
 
@@ -105,7 +107,7 @@ const currentSubject = computed(() =>
     <!-- Error -->
     <div v-else-if="error" class="text-center py-12">
       <p class="text-gray-500 mb-4">Unable to load subjects.</p>
-      <button @click="$router.go(0)" class="text-blue-600 hover:underline text-sm">Retry</button>
+      <button @click="$router.go(0)" class="text-blue-600 hover:underline text-sm">{{ t('teach.retry') }}</button>
     </div>
 
     <template v-else>

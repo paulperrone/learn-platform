@@ -11,6 +11,7 @@ import MultiSelectInput from "./MultiSelectInput.vue";
 import VisualAid from "./visuals/VisualAid.vue";
 import { useApi, withErrorToast } from "../composables/useApi";
 import { useLLMStatus } from "../composables/useLLMStatus";
+import { useI18n } from "vue-i18n";
 
 const props = defineProps<{
   problem: Problem;
@@ -27,6 +28,7 @@ const emit = defineEmits<{
 
 const api = useApi();
 const { llmAvailable, check: checkLLM } = useLLMStatus();
+const { t } = useI18n();
 onMounted(checkLLM);
 
 const problemType = computed<AssessmentType>(() => props.problem.type ?? "text-qa");
@@ -168,7 +170,7 @@ const displayAnswer = computed(() => {
 
     <div class="bg-gray-50 rounded-lg p-6 mb-4">
       <div class="flex items-start justify-between gap-3">
-        <p class="text-lg text-gray-800 whitespace-pre-wrap flex-1">{{ problem.question }}</p>
+        <p class="text-lg text-gray-800 whitespace-pre-wrap flex-1 math-ltr">{{ problem.question }}</p>
         <SpeakButton :text="problem.question" :convert-math="true" />
       </div>
       <VisualAid v-if="problem.visuals?.length" :visuals="problem.visuals" />
@@ -181,8 +183,8 @@ const displayAnswer = computed(() => {
           <input
             v-model="answer"
             type="text"
-            class="flex-1 border border-gray-300 rounded-lg p-3 text-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-            placeholder="Type or speak your answer..."
+            class="flex-1 border border-gray-300 rounded-lg p-3 text-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent math-ltr"
+            :placeholder="t('problem.placeholder')"
             @keyup.enter="checkAnswer"
           />
           <VoiceMicButton @transcription="(text) => answer = answer ? `${answer} ${text}` : text" />
@@ -235,7 +237,7 @@ const displayAnswer = computed(() => {
           :disabled="!answer.trim() && problemType === 'text-qa'"
           class="px-6 py-2.5 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          Submit
+          {{ t('problem.submit') }}
         </button>
 
         <button
@@ -243,12 +245,12 @@ const displayAnswer = computed(() => {
           @click="requestHint"
           :disabled="hintLoading || llmHintsDisabled"
           class="px-4 py-2.5 border border-gray-300 text-gray-600 rounded-lg text-sm hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
-          :title="llmHintsDisabled ? 'AI hints are not available' : ''"
+          :title="llmHintsDisabled ? t('problem.hintUnavailable') : ''"
         >
-          <span v-if="hintLoading">Loading...</span>
-          <span v-else-if="llmHintsDisabled">AI hints not available</span>
-          <span v-else-if="hintLevel === 0">Need a hint?</span>
-          <span v-else>Another hint ({{ hintLevel }}/4)</span>
+          <span v-if="hintLoading">{{ t('problem.hintLoading') }}</span>
+          <span v-else-if="llmHintsDisabled">{{ t('problem.hintUnavailable') }}</span>
+          <span v-else-if="hintLevel === 0">{{ t('problem.needHint') }}</span>
+          <span v-else>{{ t('problem.anotherHint', { current: hintLevel }) }}</span>
         </button>
       </div>
 
@@ -282,18 +284,18 @@ const displayAnswer = computed(() => {
     <div v-else class="space-y-4">
       <div :class="isCorrect ? 'bg-green-50 border-green-200' : 'bg-red-50 border-red-200'" class="rounded-lg p-4 border">
         <p :class="isCorrect ? 'text-green-800' : 'text-red-800'" class="font-medium">
-          {{ isCorrect ? "Correct!" : "Not quite." }}
+          {{ isCorrect ? t('problem.correct') : t('problem.incorrect') }}
         </p>
         <p v-if="!isCorrect" class="text-sm text-gray-600 mt-1">
-          The answer is: <strong>{{ displayAnswer }}</strong>
+          {{ t('problem.answerIs', { answer: displayAnswer }) }}
         </p>
         <p v-if="hintLevel > 0" class="text-xs text-gray-500 mt-1">
-          Hints used: {{ hintLevel }}
+          {{ t('problem.hintsUsed', { count: hintLevel }) }}
         </p>
       </div>
 
       <div class="bg-gray-50 rounded-lg p-4">
-        <p class="text-sm font-medium text-gray-700 mb-1">Solution:</p>
+        <p class="text-sm font-medium text-gray-700 mb-1">{{ t('problem.solution') }}</p>
         <p class="text-sm text-gray-600">{{ problem.solution }}</p>
       </div>
 
@@ -301,7 +303,7 @@ const displayAnswer = computed(() => {
         @click="submitAndContinue"
         class="px-6 py-2.5 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700"
       >
-        Continue
+        {{ t('problem.continue') }}
       </button>
     </div>
   </div>

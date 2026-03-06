@@ -435,3 +435,23 @@ Child creation now creates both an org member (student role) and an account_link
 **Alternatives rejected:**
 - Single org with all roles: Can't represent cross-org relationships (teacher at school A seeing student in family B)
 - Extend managedBy to arrays: Doesn't support typed relationships or status management
+
+---
+
+### 2026-03-05: Frontend-driven locale with LLM prompt injection for i18n
+
+**Source:** User session
+
+**Context:** Phase 7 app i18n. Need to internationalize UI strings and make LLM tutoring respond in the student's language.
+
+**Decision:** Locale is frontend-driven: detected from `navigator.language`, persisted to localStorage, selectable in settings. LLM locale is injected via a system prompt suffix (`localeInstruction()`) appended to all LLM methods. No DB `locale` column — locale is a UI preference, not a user record field.
+
+**Why:**
+- Locale is a UI concern — localStorage persistence is simplest and works for anonymous users too
+- LLM prompt injection is the most reliable way to get responses in the target language (no model-level locale API)
+- Adding a DB column would require migration, API plumbing, and auth dependency for a simple preference
+- Frontend passes `locale` param in LLM API calls only when needed
+
+**Alternatives rejected:**
+- User.locale DB column: Over-engineered for a preference that works fine in localStorage; adds migration and auth coupling
+- Accept-Language header parsing on API: Complex, doesn't persist user choice, requires middleware

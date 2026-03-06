@@ -2,9 +2,11 @@
 import { ref, onMounted } from "vue";
 import { useApi, withErrorToast } from "@/composables/useApi";
 import { useMeta } from "@/composables/useMeta";
+import { useI18n } from "vue-i18n";
 import type { Subject } from "@learn/shared";
 
 const api = useApi();
+const { t } = useI18n();
 const subjects = ref<Subject[]>([]);
 const loading = ref(true);
 const error = ref(false);
@@ -32,7 +34,7 @@ function gradeLabel(range: string) {
 <template>
   <div>
     <div class="mb-8">
-      <h1 class="text-3xl font-bold text-gray-900 mb-2">Explore Our Curriculum</h1>
+      <h1 class="text-3xl font-bold text-gray-900 mb-2">{{ t('explore.curriculumTitle') }}</h1>
       <p class="text-gray-600 text-lg">
         Every topic, problem, and worked example — completely free and open.
         See exactly what your child will learn.
@@ -51,7 +53,7 @@ function gradeLabel(range: string) {
     <!-- Error -->
     <div v-else-if="error" class="text-center py-12">
       <p class="text-gray-500 mb-4">Unable to load subjects.</p>
-      <button @click="$router.go(0)" class="text-blue-600 hover:underline text-sm">Retry</button>
+      <button @click="$router.go(0)" class="text-blue-600 hover:underline text-sm">{{ t('explore.retry') }}</button>
     </div>
 
     <!-- Empty -->
@@ -90,7 +92,7 @@ function gradeLabel(range: string) {
 
     <!-- Info callout -->
     <div class="mt-10 bg-blue-50 border border-blue-200 rounded-lg p-5">
-      <h3 class="font-semibold text-blue-900 mb-1">Open by design</h3>
+      <h3 class="font-semibold text-blue-900 mb-1">{{ t('explore.openByDesign') }}</h3>
       <p class="text-sm text-blue-800">
         All curriculum content is free to browse, audit, and
         <RouterLink to="/license" class="underline hover:text-blue-600">download</RouterLink>.

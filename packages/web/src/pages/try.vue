@@ -6,11 +6,13 @@ import { useAnonymous } from "@/composables/useAnonymous";
 import { useAuth } from "@/composables/useAuth";
 import ProblemView from "@/components/ProblemView.vue";
 import type { DiagnosticResult } from "@learn/shared";
+import { useI18n } from "vue-i18n";
 
 const api = useApi();
 const anon = useAnonymous();
 const auth = useAuth();
 const router = useRouter();
+const { t } = useI18n();
 
 const phase = ref<"intro" | "diagnostic" | "result">("intro");
 const diagnosticSessionId = ref<string | null>(null);
@@ -27,7 +29,7 @@ const progressPercent = computed(() =>
 );
 
 onMounted(async () => {
-  const data = await withErrorToast(() => api.getPublicSubjects(), "Failed to load subjects");
+  const data = await withErrorToast(() => api.getPublicSubjects(), t("errors.failedToLoad", { resource: "subjects" }));
   if (data?.subjects) {
     subjects.value = data.subjects;
     if (data.subjects.length === 1) {
@@ -50,7 +52,7 @@ async function startDiagnostic() {
       subjectId: selectedSubject.value!,
       isTaste: true,
     }),
-    "Failed to start diagnostic"
+    t("errors.failedToStart", { action: "diagnostic" })
   );
 
   if (data) {
@@ -68,7 +70,7 @@ async function handleAnswer(data: { answer: string; correct: boolean; responseMs
 
   const resp = await withErrorToast(
     () => api.respondDiagnostic(diagnosticSessionId.value!, data.answer),
-    "Failed to submit answer"
+    t("errors.failedToSubmit", { action: "answer" })
   );
 
   if (resp) {
@@ -101,14 +103,13 @@ function goToSignup() {
   <div class="max-w-2xl mx-auto">
     <!-- Intro -->
     <div v-if="phase === 'intro'" class="text-center py-12">
-      <h1 class="text-4xl font-bold mb-4">See Where You Stand</h1>
+      <h1 class="text-4xl font-bold mb-4">{{ t('tryPage.title') }}</h1>
       <p class="text-lg text-gray-600 mb-8">
-        Answer a few quick questions and we'll estimate your knowledge level.
-        No account needed.
+        {{ t('tryPage.subtitle') }}
       </p>
 
       <div v-if="subjects.length > 1" class="mb-8">
-        <label class="block text-sm font-medium text-gray-700 mb-2">Choose a subject</label>
+        <label class="block text-sm font-medium text-gray-700 mb-2">{{ t('tryPage.chooseSubject') }}</label>
         <select
           v-model="selectedSubject"
           class="block w-64 mx-auto px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
@@ -122,17 +123,17 @@ function goToSignup() {
         :disabled="!selectedSubject || loading"
         class="px-8 py-3 bg-blue-600 text-white rounded-lg text-lg font-semibold hover:bg-blue-700 disabled:opacity-50 transition-colors"
       >
-        {{ loading ? "Loading..." : "Start Quick Assessment" }}
+        {{ loading ? t('common.loading') : t('tryPage.startAssessment') }}
       </button>
 
-      <p class="mt-4 text-sm text-gray-500">Takes about 2-3 minutes</p>
+      <p class="mt-4 text-sm text-gray-500">{{ t('tryPage.duration') }}</p>
     </div>
 
     <!-- Diagnostic Questions -->
     <div v-else-if="phase === 'diagnostic'">
       <div class="mb-6">
         <div class="flex items-center justify-between mb-2">
-          <h1 class="text-2xl font-bold">Quick Assessment</h1>
+          <h1 class="text-2xl font-bold">{{ t('tryPage.assessmentTitle') }}</h1>
           <span class="text-sm text-gray-500">{{ questionNumber }} / {{ totalQuestions }}</span>
         </div>
         <div class="w-full bg-gray-200 rounded-full h-2">
@@ -148,7 +149,7 @@ function goToSignup() {
           <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
           <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
         </svg>
-        <span>Loading next question...</span>
+        <span>{{ t('tryPage.loadingNext') }}</span>
       </div>
 
       <ProblemView
@@ -158,7 +159,7 @@ function goToSignup() {
         :show-hints="false"
         :ask-confidence="false"
         phase="diagnostic"
-        message="Answer as best you can. It's okay if you don't know!"
+        :message="t('tryPage.answerPrompt')"
         :key="currentQuestion.problem.id"
         @submit="handleAnswer"
       />
@@ -167,30 +168,30 @@ function goToSignup() {
     <!-- Results -->
     <div v-else-if="phase === 'result' && result" class="py-8">
       <div class="text-center mb-8">
-        <h1 class="text-3xl font-bold mb-2">Your Results</h1>
-        <p class="text-gray-600">Based on {{ result.questionsAsked }} questions</p>
+        <h1 class="text-3xl font-bold mb-2">{{ t('tryPage.resultsTitle') }}</h1>
+        <p class="text-gray-600">{{ t('tryPage.basedOn', { count: result.questionsAsked }) }}</p>
       </div>
 
       <div class="bg-white border border-gray-200 rounded-xl p-8 mb-8">
         <div class="grid grid-cols-3 gap-6 text-center mb-8">
           <div>
             <div class="text-3xl font-bold text-blue-600">{{ result.estimatedLevel }}</div>
-            <div class="text-sm text-gray-500 mt-1">Estimated Level</div>
+            <div class="text-sm text-gray-500 mt-1">{{ t('tryPage.estimatedLevel') }}</div>
           </div>
           <div>
             <div class="text-3xl font-bold text-green-600">{{ result.questionsCorrect }}</div>
-            <div class="text-sm text-gray-500 mt-1">Correct</div>
+            <div class="text-sm text-gray-500 mt-1">{{ t('tryPage.correct') }}</div>
           </div>
           <div>
             <div class="text-3xl font-bold text-gray-700">{{ result.questionsAsked }}</div>
-            <div class="text-sm text-gray-500 mt-1">Questions</div>
+            <div class="text-sm text-gray-500 mt-1">{{ t('tryPage.questions') }}</div>
           </div>
         </div>
 
         <div v-if="result.estimatedFrontier.length > 0" class="border-t pt-6">
-          <h3 class="font-semibold text-gray-800 mb-2">Recommended Next Topics</h3>
+          <h3 class="font-semibold text-gray-800 mb-2">{{ t('tryPage.recommendedTopics') }}</h3>
           <p class="text-sm text-gray-600">
-            We found {{ result.estimatedFrontier.length }} topics ready for you to learn.
+            {{ t('tryPage.topicsReady', { count: result.estimatedFrontier.length }) }}
           </p>
         </div>
       </div>
@@ -200,14 +201,14 @@ function goToSignup() {
           @click="goToLearn"
           class="px-6 py-2.5 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700"
         >
-          Start Learning
+          {{ t('tryPage.startLearning') }}
         </button>
         <button
           v-if="!auth.isAuthenticated.value"
           @click="goToSignup"
           class="px-6 py-2.5 bg-green-600 text-white rounded-lg font-medium hover:bg-green-700"
         >
-          Create Account
+          {{ t('tryPage.createAccount') }}
         </button>
       </div>
     </div>

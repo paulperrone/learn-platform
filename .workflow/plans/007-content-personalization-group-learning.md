@@ -83,9 +83,9 @@ TWO INDEPENDENT LAYERS:
 
 ## Progress
 
-**Completed:** Phase 1 ✓, Phase 2 ✓, Phase 3 ✓, Phase 4 ✓, Phase 5 ✓, Phase 6 ✓
+**Completed:** Phase 1 ✓, Phase 2 ✓, Phase 3 ✓, Phase 4 ✓, Phase 5 ✓, Phase 6 ✓, Phase 7 ✓
 **In Progress:** —
-**Next:** Phase 7
+**Next:** Phase 8
 
 ---
 
@@ -199,16 +199,16 @@ TWO INDEPENDENT LAYERS:
 
 ---
 
-## Phase 7: App i18n (UI Strings)
+## Phase 7: App i18n (UI Strings) ✓
 **Goal:** Internationalize the application UI. Content translation handled by the content pipeline (plan 012).
 
-1. [ ] [IMP] Integrate `vue-i18n`: extract all UI strings to locale message files (en.json, es.json, ja.json, ar.json). Locale selector in nav/settings. Persist preference (user setting or localStorage). Auto-detect from browser `navigator.language`.
+1. [x] [IMP] Integrate `vue-i18n`: extract all UI strings to locale message files (en.json, es.json, ja.json, ar.json). Locale selector in nav/settings. Persist preference (user setting or localStorage). Auto-detect from browser `navigator.language`.
 
-2. [ ] [IMP] RTL CSS support: Arabic locale layout mirrors correctly. Math notation stays LTR within RTL. Test key flows.
+2. [x] [IMP] RTL CSS support: Arabic locale layout mirrors correctly. Math notation stays LTR within RTL. Test key flows.
 
-3. [ ] [IMP] Locale-aware LLM tutoring: inject locale into system prompts. LLM responds in student's language. TTS voice selection uses locale. STT passes language hint to Whisper.
+3. [x] [IMP] Locale-aware LLM tutoring: inject locale into system prompts. LLM responds in student's language. TTS voice selection uses locale. STT passes language hint to Whisper.
 
-4. [ ] [TST] Verify: UI fully translated in pilot languages. RTL layout correct. LLM responds in correct language. Locale persists across sessions.
+4. [x] [TST] Verify: UI fully translated in pilot languages. RTL layout correct. LLM responds in correct language. Locale persists across sessions.
 
 **Validation:** Spanish-speaking user has fully localized UI, tutoring, and speech. Arabic layout RTL. App detects browser language on first visit.
 

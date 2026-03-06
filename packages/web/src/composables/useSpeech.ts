@@ -1,5 +1,6 @@
 import { ref, watch, onUnmounted } from "vue";
 import { useSpeechPrefs } from "./useSpeechPrefs";
+import { i18n } from "../i18n";
 
 /**
  * Convert math notation to speakable text for young learners.
@@ -70,11 +71,11 @@ export function useSpeech() {
 
     if (selectedVoice.value) return;
 
-    const lang = "en";
-    const englishVoices = voices.value.filter((v) => v.lang.startsWith(lang));
+    const lang = i18n.global.locale.value || "en";
+    const localeVoices = voices.value.filter((v) => v.lang.startsWith(lang));
 
-    // Prefer high-quality voices: Google, Apple Samantha, Microsoft
-    const preferred = englishVoices.find(
+    // Prefer high-quality voices for the current locale
+    const preferred = localeVoices.find(
       (v) =>
         v.name.includes("Google") ||
         v.name.includes("Samantha") ||
@@ -82,7 +83,7 @@ export function useSpeech() {
         v.name.includes("Daniel")
     );
 
-    selectedVoice.value = preferred ?? englishVoices[0] ?? voices.value[0] ?? null;
+    selectedVoice.value = preferred ?? localeVoices[0] ?? voices.value[0] ?? null;
   }
 
   // Re-pick voice when preferences load

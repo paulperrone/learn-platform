@@ -122,6 +122,17 @@ type LLMMessage = {
   content: string;
 };
 
+/** Build a locale instruction snippet for LLM system prompts. */
+function localeInstruction(locale?: string): string {
+  if (!locale || locale === "en") return "";
+  const LOCALE_NAMES: Record<string, string> = {
+    es: "Spanish", ja: "Japanese", ar: "Arabic",
+    fr: "French", de: "German", pt: "Portuguese", zh: "Chinese",
+  };
+  const name = LOCALE_NAMES[locale] ?? locale;
+  return `\n\nIMPORTANT: Respond in ${name}. Use ${name} for all explanations and feedback. Keep math notation universal (numbers, operators).`;
+}
+
 export function createLLMService(db: DB, apiKey: string, config?: ModelConfig) {
   const MODEL_MAP = config?.modelMap ?? DEFAULT_MODEL_MAP;
   const COST_PER_M = config?.costPerM ?? DEFAULT_COST_PER_M;
@@ -297,13 +308,14 @@ export function createLLMService(db: DB, apiKey: string, config?: ModelConfig) {
       topicName: string,
       stepDescription: string,
       studentExplanation: string,
-      topicId?: string
+      topicId?: string,
+      locale?: string
     ) {
       const profile = topicId ? await buildStudentProfile(db, userId, topicId) : "";
 
       const systemContent = `You are an expert math tutor evaluating a student's self-explanation. The student is learning "${topicName}". Rate their explanation quality and provide brief feedback.
 
-Respond in JSON: {"quality": "good"|"partial"|"poor", "feedback": "brief encouraging feedback", "missingConcepts": ["any key ideas they missed"]}${profile ? `\n\n${profile}` : ""}`;
+Respond in JSON: {"quality": "good"|"partial"|"poor", "feedback": "brief encouraging feedback", "missingConcepts": ["any key ideas they missed"]}${profile ? `\n\n${profile}` : ""}${localeInstruction(locale)}`;
 
       const result = await call(
         [
@@ -335,7 +347,8 @@ Respond in JSON: {"quality": "good"|"partial"|"poor", "feedback": "brief encoura
       problemQuestion: string,
       studentResponse: string,
       conversationHistory: LLMMessage[] = [],
-      topicId?: string
+      topicId?: string,
+      locale?: string
     ) {
       const profile = topicId ? await buildStudentProfile(db, userId, topicId) : "";
 
@@ -347,7 +360,7 @@ Rules:
 - Use age-appropriate language (simple words, short sentences)
 - Be encouraging and positive
 - If the student is very stuck, break the problem into smaller steps
-- Limit your response to 2-3 sentences${profile ? `\n\n${profile}` : ""}`;
+- Limit your response to 2-3 sentences${profile ? `\n\n${profile}` : ""}${localeInstruction(locale)}`;
 
       const messages: LLMMessage[] = [
         { role: "system", content: systemContent },
@@ -371,7 +384,8 @@ Rules:
       problemQuestion: string,
       studentResponse: string,
       conversationHistory: LLMMessage[] = [],
-      topicId?: string
+      topicId?: string,
+      locale?: string
     ) {
       const profile = topicId ? await buildStudentProfile(db, userId, topicId) : "";
 
@@ -383,7 +397,7 @@ Rules:
 - Use age-appropriate language (simple words, short sentences)
 - Be encouraging and positive
 - If the student is very stuck, break the problem into smaller steps
-- Limit your response to 2-3 sentences${profile ? `\n\n${profile}` : ""}`;
+- Limit your response to 2-3 sentences${profile ? `\n\n${profile}` : ""}${localeInstruction(locale)}`;
 
       const messages: LLMMessage[] = [
         { role: "system", content: systemContent },
@@ -405,7 +419,8 @@ Rules:
       topicName: string,
       question: string,
       correctAnswer: string,
-      studentAnswer: string
+      studentAnswer: string,
+      locale?: string
     ) {
       const result = await call(
         [
@@ -415,7 +430,7 @@ Rules:
 
 Compare the student's answer to the correct answer. Accept equivalent forms (e.g., "5" and "five", "1/2" and "0.5").
 
-Respond in JSON: {"correct": true|false, "feedback": "brief feedback"}`,
+Respond in JSON: {"correct": true|false, "feedback": "brief feedback"}${localeInstruction(locale)}`,
           },
           {
             role: "user",
@@ -451,7 +466,8 @@ Respond in JSON: {"correct": true|false, "feedback": "brief feedback"}`,
       problemSolution: string,
       staticHints: string[],
       currentHintLevel: number,
-      studentResponse?: string
+      studentResponse?: string,
+      locale?: string
     ): Promise<{ level: number; hint: string; source: "static" | "llm"; isMaxLevel: boolean }> {
       const nextLevel = currentHintLevel + 1;
 
@@ -471,7 +487,7 @@ Respond in JSON: {"correct": true|false, "feedback": "brief feedback"}`,
           [
             {
               role: "system",
-              content: `You are a math tutor giving a brief conceptual nudge for a K-5 student working on "${topicName}". Give ONE short sentence that reminds them of the key concept without revealing the approach or answer.`,
+              content: `You are a math tutor giving a brief conceptual nudge for a K-5 student working on "${topicName}". Give ONE short sentence that reminds them of the key concept without revealing the approach or answer.${localeInstruction(locale)}`,
             },
             { role: "user", content: `Problem: ${problemQuestion}` },
           ],
@@ -489,7 +505,7 @@ Respond in JSON: {"correct": true|false, "feedback": "brief feedback"}`,
           [
             {
               role: "system",
-              content: `You are a math tutor helping a K-5 student with "${topicName}". Ask ONE guiding question that leads them toward the right approach. Do NOT reveal the answer or the method directly.`,
+              content: `You are a math tutor helping a K-5 student with "${topicName}". Ask ONE guiding question that leads them toward the right approach. Do NOT reveal the answer or the method directly.${localeInstruction(locale)}`,
             },
             {
               role: "user",
@@ -510,7 +526,7 @@ Respond in JSON: {"correct": true|false, "feedback": "brief feedback"}`,
           [
             {
               role: "system",
-              content: `You are a math tutor helping a K-5 student with "${topicName}". Show ONLY the first step of the solution. Do NOT show the final answer. Use simple language.`,
+              content: `You are a math tutor helping a K-5 student with "${topicName}". Show ONLY the first step of the solution. Do NOT show the final answer. Use simple language.${localeInstruction(locale)}`,
             },
             {
               role: "user",
@@ -530,7 +546,7 @@ Respond in JSON: {"correct": true|false, "feedback": "brief feedback"}`,
         [
           {
             role: "system",
-            content: `You are a math tutor helping a K-5 student with "${topicName}". Walk through the solution step-by-step with explanations, but leave the final numerical answer for the student to compute. Use simple language.`,
+            content: `You are a math tutor helping a K-5 student with "${topicName}". Walk through the solution step-by-step with explanations, but leave the final numerical answer for the student to compute. Use simple language.${localeInstruction(locale)}`,
           },
           {
             role: "user",

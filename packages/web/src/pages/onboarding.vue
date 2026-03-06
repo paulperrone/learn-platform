@@ -6,11 +6,13 @@ import { useAnonymous } from "@/composables/useAnonymous";
 import { useAuth } from "@/composables/useAuth";
 import ProblemView from "@/components/ProblemView.vue";
 import type { DiagnosticResult } from "@learn/shared";
+import { useI18n } from "vue-i18n";
 
 const api = useApi();
 const auth = useAuth();
 const anon = useAnonymous();
 const router = useRouter();
+const { t } = useI18n();
 
 const step = ref(0); // 0=loading, 1=welcome, 2=diagnostic, 3=start learning, 4=done
 const loading = ref(true);
@@ -26,7 +28,7 @@ onMounted(async () => {
   if (anon.hasProgress.value) {
     const mr = await withErrorToast(
       () => api.mergeAnonymousData(anon.token.value),
-      "Failed to merge progress"
+      t("errors.mergeProgress")
     );
     if (mr?.success) {
       mergeResult.value = mr;
@@ -35,7 +37,7 @@ onMounted(async () => {
   }
 
   // Check onboarding state
-  const state = await withErrorToast(() => api.getOnboarding(), "Failed to load onboarding");
+  const state = await withErrorToast(() => api.getOnboarding(), t("errors.failedToLoad", { resource: "onboarding" }));
   if (state?.completedAt) {
     router.replace("/");
     return;
@@ -65,7 +67,7 @@ async function startDiagnostic() {
   const userId = await api.getUserId().catch(() => undefined);
   const data = await withErrorToast(
     () => api.startDiagnostic({ userId, subjectId, isTaste: false }),
-    "Failed to start diagnostic"
+    t("errors.failedToStart", { action: "diagnostic" })
   );
 
   if (data) {
@@ -84,7 +86,7 @@ async function handleDiagnosticAnswer(data: { answer: string; correct: boolean; 
 
   const resp = await withErrorToast(
     () => api.respondDiagnostic(diagnosticSessionId.value!, data.answer),
-    "Failed to submit answer"
+    t("errors.failedToSubmit", { action: "answer" })
   );
 
   if (resp) {
@@ -118,30 +120,29 @@ const progressPercent = computed(() =>
         <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
         <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
       </svg>
-      Setting up...
+      {{ t('onboarding.settingUp') }}
     </div>
 
     <!-- Merge notification -->
     <div v-if="mergeResult && (mergeResult.mergedSessions > 0 || mergeResult.mergedDiagnostics > 0)" class="mb-6 bg-green-50 border border-green-200 rounded-lg p-4">
       <p class="text-green-800 text-sm">
-        Your guest progress has been saved to your account.
+        {{ t('onboarding.mergeSuccess') }}
       </p>
     </div>
 
     <!-- Step 1: Welcome -->
     <div v-if="step === 1" class="text-center">
-      <h1 class="text-3xl font-bold mb-4">Welcome!</h1>
+      <h1 class="text-3xl font-bold mb-4">{{ t('onboarding.welcomeTitle') }}</h1>
       <p class="text-lg text-gray-600 mb-8">
-        Let's get you set up. This platform uses a knowledge graph to find exactly where you should be learning.
-        Every topic builds on prerequisites — you'll never be asked something you're not ready for.
+        {{ t('onboarding.welcomeText') }}
       </p>
 
       <div class="bg-blue-50 rounded-xl p-6 mb-8 text-left">
-        <h3 class="font-semibold text-blue-900 mb-3">How it works:</h3>
+        <h3 class="font-semibold text-blue-900 mb-3">{{ t('onboarding.howItWorks') }}</h3>
         <ol class="space-y-2 text-blue-800 text-sm">
-          <li><span class="font-bold">1.</span> We'll run a quick diagnostic to find your starting point</li>
-          <li><span class="font-bold">2.</span> You'll begin learning from your personal frontier</li>
-          <li><span class="font-bold">3.</span> Spaced repetition ensures you remember what you learn</li>
+          <li><span class="font-bold">1.</span> {{ t('onboarding.step1') }}</li>
+          <li><span class="font-bold">2.</span> {{ t('onboarding.step2') }}</li>
+          <li><span class="font-bold">3.</span> {{ t('onboarding.step3') }}</li>
         </ol>
       </div>
 
@@ -149,14 +150,14 @@ const progressPercent = computed(() =>
         @click="startDiagnostic"
         class="px-8 py-3 bg-blue-600 text-white rounded-lg text-lg font-semibold hover:bg-blue-700"
       >
-        Start Diagnostic
+        {{ t('onboarding.startDiagnostic') }}
       </button>
 
       <button
         @click="goToStep(3)"
         class="block mx-auto mt-4 text-sm text-gray-500 hover:text-gray-700"
       >
-        Skip diagnostic, start from the beginning
+        {{ t('onboarding.skipDiagnostic') }}
       </button>
     </div>
 
@@ -164,7 +165,7 @@ const progressPercent = computed(() =>
     <div v-else-if="step === 2">
       <div class="mb-6">
         <div class="flex items-center justify-between mb-2">
-          <h1 class="text-2xl font-bold">Diagnostic Assessment</h1>
+          <h1 class="text-2xl font-bold">{{ t('onboarding.diagnosticTitle') }}</h1>
           <span class="text-sm text-gray-500">{{ questionNumber }} / {{ totalQuestions }}</span>
         </div>
         <div class="w-full bg-gray-200 rounded-full h-2">
@@ -173,7 +174,7 @@ const progressPercent = computed(() =>
             :style="{ width: `${progressPercent}%` }"
           />
         </div>
-        <p class="text-xs text-gray-500 mt-1">Don't worry about getting them all right — this helps us find your level.</p>
+        <p class="text-xs text-gray-500 mt-1">{{ t('onboarding.diagnosticHint') }}</p>
       </div>
 
       <div v-if="loading" class="flex items-center justify-center gap-3 text-gray-400 py-8">
@@ -181,7 +182,7 @@ const progressPercent = computed(() =>
           <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
           <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
         </svg>
-        <span>Loading...</span>
+        <span>{{ t('common.loading') }}</span>
       </div>
 
       <ProblemView
@@ -191,7 +192,7 @@ const progressPercent = computed(() =>
         :show-hints="false"
         :ask-confidence="false"
         phase="diagnostic"
-        message="Answer as best you can."
+        :message="t('onboarding.answerPrompt')"
         :key="currentQuestion.problem.id"
         @submit="handleDiagnosticAnswer"
       />
@@ -199,29 +200,29 @@ const progressPercent = computed(() =>
 
     <!-- Step 3: Results & Start Learning -->
     <div v-else-if="step === 3" class="text-center">
-      <h1 class="text-3xl font-bold mb-4">You're All Set!</h1>
+      <h1 class="text-3xl font-bold mb-4">{{ t('onboarding.allSetTitle') }}</h1>
 
       <div v-if="diagnosticResult" class="bg-white border border-gray-200 rounded-xl p-8 mb-8">
         <div class="grid grid-cols-2 gap-6 text-center">
           <div>
             <div class="text-2xl font-bold text-blue-600">{{ diagnosticResult.estimatedLevel }}</div>
-            <div class="text-sm text-gray-500 mt-1">Estimated Level</div>
+            <div class="text-sm text-gray-500 mt-1">{{ t('onboarding.estimatedLevel') }}</div>
           </div>
           <div>
             <div class="text-2xl font-bold text-green-600">
               {{ diagnosticResult.questionsCorrect }}/{{ diagnosticResult.questionsAsked }}
             </div>
-            <div class="text-sm text-gray-500 mt-1">Correct Answers</div>
+            <div class="text-sm text-gray-500 mt-1">{{ t('onboarding.correctAnswers') }}</div>
           </div>
         </div>
         <p v-if="diagnosticResult.estimatedFrontier.length > 0" class="mt-4 text-gray-600 text-sm">
-          We found {{ diagnosticResult.estimatedFrontier.length }} topics at your level to start with.
+          {{ t('onboarding.topicsFound', { count: diagnosticResult.estimatedFrontier.length }) }}
         </p>
       </div>
 
       <div v-else class="bg-blue-50 rounded-xl p-6 mb-8">
         <p class="text-blue-800">
-          You'll start from the beginning and work your way up. The system will adapt as you learn.
+          {{ t('onboarding.startFromBeginning') }}
         </p>
       </div>
 
@@ -229,7 +230,7 @@ const progressPercent = computed(() =>
         @click="startLearning"
         class="px-8 py-3 bg-blue-600 text-white rounded-lg text-lg font-semibold hover:bg-blue-700"
       >
-        Start Learning
+        {{ t('onboarding.startLearning') }}
       </button>
     </div>
   </div>

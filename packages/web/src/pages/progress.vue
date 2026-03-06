@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { ref, onMounted, computed } from "vue";
 import { useApi, withErrorToast } from "@/composables/useApi";
+import { useI18n } from "vue-i18n";
 
 const api = useApi();
+const { t } = useI18n();
 const topics = ref<any[]>([]);
 const allTopics = ref<any[]>([]);
 const loading = ref(true);
@@ -15,7 +17,7 @@ onMounted(async () => {
       api.getTopics("math-k5"),
     ]);
     return { statesData, topicsData };
-  }, "Failed to load progress");
+  }, t("errors.failedToLoad", { resource: "progress" }));
 
   if (result) {
     topics.value = result.statesData.topics;
@@ -61,13 +63,13 @@ function statusColor(status: string) {
 }
 
 function gradeName(level: number) {
-  return level === 0 ? "Kindergarten" : `Grade ${level}`;
+  return level === 0 ? t("progress.kindergarten") : t("progress.grade", { level });
 }
 </script>
 
 <template>
   <div>
-    <h1 class="text-3xl font-bold mb-6">Progress</h1>
+    <h1 class="text-3xl font-bold mb-6">{{ t('progress.title') }}</h1>
 
     <!-- Loading -->
     <div v-if="loading" class="flex items-center gap-3 text-gray-400 py-12">
@@ -75,19 +77,19 @@ function gradeName(level: number) {
         <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
         <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
       </svg>
-      <span>Loading progress...</span>
+      <span>{{ t('progress.loadingProgress') }}</span>
     </div>
 
     <!-- Error -->
     <div v-else-if="error" class="text-center py-12">
-      <p class="text-gray-500 mb-4">Unable to load progress data.</p>
-      <button @click="$router.go(0)" class="text-blue-600 hover:underline text-sm">Retry</button>
+      <p class="text-gray-500 mb-4">{{ t('progress.loadError') }}</p>
+      <button @click="$router.go(0)" class="text-blue-600 hover:underline text-sm">{{ t('progress.retry') }}</button>
     </div>
 
     <!-- Empty state -->
     <div v-else-if="allTopics.length === 0" class="text-center py-12">
-      <p class="text-gray-500 mb-4">No topics available yet.</p>
-      <RouterLink to="/learn" class="text-blue-600 hover:underline text-sm">Start learning</RouterLink>
+      <p class="text-gray-500 mb-4">{{ t('progress.noTopics') }}</p>
+      <RouterLink to="/learn" class="text-blue-600 hover:underline text-sm">{{ t('progress.startLearning') }}</RouterLink>
     </div>
 
     <template v-else>
@@ -95,15 +97,15 @@ function gradeName(level: number) {
       <div class="flex gap-6 mb-6 text-sm">
         <div class="flex items-center gap-2">
           <div class="w-3 h-3 rounded-full bg-green-500" />
-          <span class="text-gray-600">Mastered</span>
+          <span class="text-gray-600">{{ t('progress.mastered') }}</span>
         </div>
         <div class="flex items-center gap-2">
           <div class="w-3 h-3 rounded-full bg-blue-500" />
-          <span class="text-gray-600">In Progress</span>
+          <span class="text-gray-600">{{ t('progress.inProgress') }}</span>
         </div>
         <div class="flex items-center gap-2">
           <div class="w-3 h-3 rounded-full bg-gray-200" />
-          <span class="text-gray-600">Not Started</span>
+          <span class="text-gray-600">{{ t('progress.notStarted') }}</span>
         </div>
       </div>
 
@@ -121,7 +123,7 @@ function gradeName(level: number) {
               <div>
                 <p class="text-sm font-medium text-gray-800 leading-tight">{{ topic.name }}</p>
                 <p v-if="stateMap.get(topic.id)" class="text-xs text-gray-400 mt-1">
-                  {{ stateMap.get(topic.id).reps }} reviews
+                  {{ t('progress.reviews', { count: stateMap.get(topic.id).reps }) }}
                 </p>
               </div>
             </div>
