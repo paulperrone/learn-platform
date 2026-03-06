@@ -15,8 +15,12 @@ type DiagnosticState = {
   topicEstimates: TopicEstimates;
 };
 
-const FULL_DIAGNOSTIC_TARGET = 25;
-const TASTE_DIAGNOSTIC_TARGET = 8;
+/** Scale diagnostic length with graph size: ~25 for 71 topics, ~35 for 150, caps at 50 */
+function diagnosticTarget(topicCount: number, isTaste: boolean): number {
+  if (isTaste) return Math.min(8, topicCount);
+  // sqrt(n) * 3 gives good coverage without being exhausting
+  return Math.min(Math.max(10, Math.round(Math.sqrt(topicCount) * 3)), 50, topicCount);
+}
 
 export function createDiagnosticService(db: DB) {
   const graph = createGraphService(db);
@@ -72,7 +76,7 @@ export function createDiagnosticService(db: DB) {
   ): string[] {
     // Select topics that maximally cover the graph with minimum questions.
     // Strategy: pick topics at varying depth levels so correct/incorrect propagates well.
-    const target = isTaste ? TASTE_DIAGNOSTIC_TARGET : FULL_DIAGNOSTIC_TARGET;
+    const target = diagnosticTarget(allTopics.length, isTaste);
     const sorted = [...allTopics].sort((a, b) => a.depth - b.depth || a.gradeLevel - b.gradeLevel);
 
     const maxDepth = Math.max(...sorted.map((t) => t.depth), 0);
@@ -257,9 +261,9 @@ export function createDiagnosticService(db: DB) {
       const parsed = JSON.parse(row.stateJson!);
       const state: DiagnosticState & { coveringTopics: string[] } = parsed;
       const isTaste = row.isTaste;
-      const target = isTaste ? TASTE_DIAGNOSTIC_TARGET : FULL_DIAGNOSTIC_TARGET;
 
       const { allTopics, prereqMap, dependentMap } = await loadAllTopicsAndEdges(row.subjectId);
+      const target = diagnosticTarget(allTopics.length, isTaste);
 
       // Grade the answer for the current question
       const currentTopicId = state.currentTopicId;

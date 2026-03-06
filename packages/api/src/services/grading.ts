@@ -27,10 +27,60 @@ function normalize(s: string): string {
 
 /** Try to extract a numeric value from a string for comparison */
 function extractNumber(s: string): number | null {
+  const trimmed = s.trim();
+  // Don't treat time formats (3:30, 12:00) as plain numbers
+  if (/^\d{1,2}:\d{2}$/.test(trimmed)) return null;
   // Strip surrounding text to find a number: "7.", "7 ", " 7.0 ", "seven" → 7
-  const cleaned = s.replace(/[,\s$%]+/g, "").replace(/[.]$/, "");
+  const cleaned = trimmed.replace(/[,\s$%]+/g, "").replace(/[.]$/, "");
   const num = parseFloat(cleaned);
   return isNaN(num) ? null : num;
+}
+
+/** Normalize time representations: "3:00", "3 o'clock", "3 oclock" → "3:00" */
+function normalizeTime(s: string): string | null {
+  const norm = s.trim().toLowerCase();
+  // Match "3:00", "12:30", etc. — already canonical
+  const timeMatch = norm.match(/^(\d{1,2}):(\d{2})$/);
+  if (timeMatch) return timeMatch[0];
+  // Match "3 o'clock", "3 oclock", "3 o clock"
+  const oclockMatch = norm.match(/^(\d{1,2})\s*o['']?\s*clock$/);
+  if (oclockMatch) return `${oclockMatch[1]}:00`;
+  // Match bare hour when expected is a time (checked by caller)
+  const bareHour = norm.match(/^(\d{1,2})$/);
+  if (bareHour) return `${bareHour[1]}:00`;
+  return null;
+}
+
+/** Generate equivalent forms of an answer for flexible matching */
+function getEquivalents(s: string): string[] {
+  const norm = normalize(s);
+  const equivs = [norm];
+
+  // Time equivalences: "3:00" ↔ "3 o'clock" ↔ "3"
+  const time = normalizeTime(s);
+  if (time) {
+    equivs.push(time);
+    const hour = time.split(":")[0];
+    const minutes = time.split(":")[1];
+    if (minutes === "00") {
+      equivs.push(hour);
+      equivs.push(`${hour} o'clock`);
+    }
+  }
+
+  // Ordinal equivalences: "1st" ↔ "first", "2nd" ↔ "second", "3rd" ↔ "third"
+  const ordinalMap: Record<string, string> = {
+    "1st": "first", "2nd": "second", "3rd": "third",
+    "4th": "fourth", "5th": "fifth", "6th": "sixth",
+    "7th": "seventh", "8th": "eighth", "9th": "ninth",
+    "10th": "tenth", "11th": "eleventh", "12th": "twelfth",
+  };
+  for (const [num, word] of Object.entries(ordinalMap)) {
+    if (norm === num) equivs.push(word);
+    if (norm === word) equivs.push(num);
+  }
+
+  return equivs;
 }
 
 export function gradeProblem(problem: Problem, answer: string): GradeResult {
@@ -72,6 +122,15 @@ function gradeTextQa(expected: string, actual: string): GradeResult {
   // Exact text match (after normalization)
   if (normActual === normExpected) {
     return { correct: true, score: 1 };
+  }
+
+  // Equivalence matching: time formats, ordinals, etc.
+  const expectedEquivs = getEquivalents(expected);
+  const actualEquivs = getEquivalents(actual);
+  for (const e of expectedEquivs) {
+    for (const a of actualEquivs) {
+      if (e === a) return { correct: true, score: 1 };
+    }
   }
 
   // Numeric fallback: if both parse as numbers, compare numerically

@@ -659,3 +659,39 @@ Child creation now creates both an org member (student role) and an account_link
 **Alternatives rejected:**
 - Adding physical interaction capabilities (camera, mic) — too complex for MVP, not needed for math K-5 core
 - Removing all concrete/embodied pedagogy — throws out the baby with the bathwater; screen-native equivalents preserve the learning benefit
+
+---
+
+## 2026-03-06: Answer grading must handle equivalent representations
+
+**Decision:** The text-qa grader uses multi-pass comparison: (1) normalized text match, (2) equivalent forms (times: "3:00" ↔ "3 o'clock" ↔ "3"; ordinals: "1st" ↔ "first"), (3) numeric fallback. Time-format strings are excluded from numeric extraction to prevent "3:30" matching "3". STT artifacts (trailing punctuation, extra spaces) are stripped during normalization.
+
+**Why:**
+- Students (especially young ones using speech-to-text) express answers in many valid forms
+- Marking "3 o'clock" wrong when the answer is "3:00" erroneously penalizes knowledge and undermines trust
+- K-5 math frequently involves times, ordinals, and spoken number words
+- The grading system must be generous with format but strict on substance
+
+---
+
+## 2026-03-06: Diagnostic scales with graph size, not hardcoded
+
+**Decision:** Diagnostic question count uses `min(max(10, round(sqrt(topicCount) * 3)), 50, topicCount)` instead of a fixed 25. This gives ~25 for 71 topics (current K-5), ~35 for 150, ~47 for 250, capping at 50.
+
+**Why:**
+- As subjects expand (K-5 → pre-algebra → algebra), a fixed 25 won't provide enough coverage
+- sqrt scaling gives diminishing returns — doubling topics doesn't double questions
+- Cap at 50 prevents diagnostic fatigue
+
+---
+
+## 2026-03-06: Subjects are continuous knowledge graphs with cross-subject links
+
+**Decision (future):** Subjects should form continuous connected graphs. Math K-5 connects into pre-algebra which connects into algebra, etc. — they are not isolated silos. Cross-subject prerequisites also exist: basic reading comprehension is a prerequisite for math word problems, algebra is a prerequisite for physics, etc.
+
+**Implications:**
+- The graph schema already supports cross-subject prerequisite edges (prerequisites table has no subject constraint)
+- The diagnostic should be able to place a student across the full connected graph, not just within one subject silo
+- Subject boundaries are organizational (for content generation, UI grouping) not structural (the DAG spans subjects)
+- Content pipeline should be able to generate bridging content at subject boundaries
+- Reference: Math Academy's graph structure connects all levels continuously (see their public graph repo for inspiration)

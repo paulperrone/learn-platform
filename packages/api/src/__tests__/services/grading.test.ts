@@ -78,6 +78,41 @@ describe("gradeProblem", () => {
       const result = gradeProblem(makeProblem({ answer: "1000" }), "1,000");
       expect(result.correct).toBe(true);
     });
+
+    it("accepts '3 o'clock' for expected '3:00'", () => {
+      const result = gradeProblem(makeProblem({ answer: "3:00" }), "3 o'clock");
+      expect(result.correct).toBe(true);
+    });
+
+    it("accepts '3' for expected '3:00'", () => {
+      const result = gradeProblem(makeProblem({ answer: "3:00" }), "3");
+      expect(result.correct).toBe(true);
+    });
+
+    it("accepts '3:00' for expected '3 o'clock'", () => {
+      const result = gradeProblem(makeProblem({ answer: "3 o'clock" }), "3:00");
+      expect(result.correct).toBe(true);
+    });
+
+    it("rejects wrong time: '4:00' vs '3:00'", () => {
+      const result = gradeProblem(makeProblem({ answer: "3:00" }), "4:00");
+      expect(result.correct).toBe(false);
+    });
+
+    it("does not treat '3:30' as '3:00'", () => {
+      const result = gradeProblem(makeProblem({ answer: "3:30" }), "3");
+      expect(result.correct).toBe(false);
+    });
+
+    it("accepts ordinal equivalents: 'first' vs '1st'", () => {
+      const result = gradeProblem(makeProblem({ answer: "1st" }), "first");
+      expect(result.correct).toBe(true);
+    });
+
+    it("accepts ordinal equivalents: '3rd' vs 'third'", () => {
+      const result = gradeProblem(makeProblem({ answer: "third" }), "3rd");
+      expect(result.correct).toBe(true);
+    });
   });
 
   describe("numerical-input", () => {
