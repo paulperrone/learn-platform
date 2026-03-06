@@ -2,9 +2,13 @@
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 import { useAuth } from "../composables/useAuth";
+import { useAnonymous } from "../composables/useAnonymous";
+import { useApi, withErrorToast } from "../composables/useApi";
 
 const router = useRouter();
 const { signUp } = useAuth();
+const anon = useAnonymous();
+const api = useApi();
 
 const name = ref("");
 const email = ref("");
@@ -27,7 +31,17 @@ async function handleSubmit() {
     return;
   }
 
-  router.push("/");
+  // Merge anonymous data if any
+  if (anon.hasProgress.value) {
+    await withErrorToast(
+      () => api.mergeAnonymousData(anon.token.value),
+      "Failed to merge guest progress"
+    );
+    anon.clearOnMerge();
+  }
+
+  // Route to onboarding for new users
+  router.push("/onboarding");
 }
 </script>
 

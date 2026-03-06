@@ -23,6 +23,8 @@ export async function applyMigrations() {
 export async function resetDb() {
   // Drop in reverse FK order
   const tables = [
+    "onboarding_state",
+    "diagnostic_sessions",
     "assignment_responses",
     "assignments",
     "teach_sessions",
@@ -415,10 +417,11 @@ const SCHEMA_STATEMENTS = [
   'CREATE INDEX review_user_idx ON review_log (user_id)',
   'CREATE INDEX review_topic_idx ON review_log (topic_id)',
 
-  // learn_sessions (FK → users)
-  'CREATE TABLE learn_sessions (id text PRIMARY KEY NOT NULL, user_id text NOT NULL, started_at text NOT NULL, ended_at text, state_json text, updated_at text NOT NULL DEFAULT \'\', topics_attempted integer DEFAULT 0 NOT NULL, topics_mastered integer DEFAULT 0 NOT NULL, reviews_completed integer DEFAULT 0 NOT NULL, average_accuracy real, FOREIGN KEY (user_id) REFERENCES users(id))',
+  // learn_sessions (FK → users, nullable for anonymous)
+  'CREATE TABLE learn_sessions (id text PRIMARY KEY NOT NULL, user_id text, anonymous_token text, started_at text NOT NULL, ended_at text, state_json text, updated_at text NOT NULL DEFAULT \'\', topics_attempted integer DEFAULT 0 NOT NULL, topics_mastered integer DEFAULT 0 NOT NULL, reviews_completed integer DEFAULT 0 NOT NULL, average_accuracy real, FOREIGN KEY (user_id) REFERENCES users(id))',
   'CREATE INDEX learn_sessions_user_idx ON learn_sessions (user_id)',
   'CREATE INDEX learn_sessions_active_idx ON learn_sessions (user_id, ended_at)',
+  'CREATE INDEX learn_sessions_anon_idx ON learn_sessions (anonymous_token)',
 
   // llm_usage (FK → users)
   'CREATE TABLE llm_usage (id text PRIMARY KEY NOT NULL, user_id text NOT NULL, model text NOT NULL, input_tokens integer NOT NULL, output_tokens integer NOT NULL, cost_cents real NOT NULL, purpose text NOT NULL, created_at text NOT NULL, FOREIGN KEY (user_id) REFERENCES users(id))',
@@ -459,4 +462,12 @@ const SCHEMA_STATEMENTS = [
   'CREATE TABLE assignment_responses (id text PRIMARY KEY NOT NULL, assignment_id text NOT NULL, user_id text, anonymous_token text, question_id text NOT NULL, answer text NOT NULL, correct integer, created_at text NOT NULL, FOREIGN KEY (assignment_id) REFERENCES assignments(id))',
   'CREATE INDEX ar_assignment_idx ON assignment_responses (assignment_id)',
   'CREATE INDEX ar_user_idx ON assignment_responses (user_id)',
+
+  // diagnostic_sessions (FK → users, subjects)
+  'CREATE TABLE diagnostic_sessions (id text PRIMARY KEY NOT NULL, user_id text, anonymous_token text, subject_id text NOT NULL, status text DEFAULT \'active\' NOT NULL, questions_asked integer DEFAULT 0 NOT NULL, questions_correct integer DEFAULT 0 NOT NULL, estimated_frontier_json text, topic_estimates_json text, state_json text, is_taste integer DEFAULT 0 NOT NULL, created_at text NOT NULL, completed_at text, FOREIGN KEY (user_id) REFERENCES users(id), FOREIGN KEY (subject_id) REFERENCES subjects(id))',
+  'CREATE INDEX diag_user_idx ON diagnostic_sessions (user_id)',
+  'CREATE INDEX diag_anon_idx ON diagnostic_sessions (anonymous_token)',
+
+  // onboarding_state (FK → users)
+  'CREATE TABLE onboarding_state (user_id text PRIMARY KEY NOT NULL, step integer DEFAULT 0 NOT NULL, diagnostic_session_id text, completed_at text, created_at text NOT NULL, FOREIGN KEY (user_id) REFERENCES users(id))',
 ];

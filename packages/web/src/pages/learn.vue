@@ -1,16 +1,19 @@
 <script setup lang="ts">
-import { ref, watch, onMounted } from "vue";
-import { useApi, withErrorToast } from "@/composables/useApi";
+import { ref, watch, onMounted, computed } from "vue";
+import { useApi, withErrorToast, ApiError } from "@/composables/useApi";
+import { useAuth } from "@/composables/useAuth";
+import { useAnonymous } from "@/composables/useAnonymous";
 import { useSpeech } from "@/composables/useSpeech";
 import { useSpeechPrefs } from "@/composables/useSpeechPrefs";
 import ProblemView from "@/components/ProblemView.vue";
 import WorkedExample from "@/components/WorkedExample.vue";
 
 const api = useApi();
+const auth = useAuth();
+const anon = useAnonymous();
 const speech = useSpeech();
 const speechPrefs = useSpeechPrefs();
 
-// Load speech preferences on mount
 speechPrefs.load();
 
 const sessionId = ref<string | null>(null);
@@ -18,6 +21,7 @@ const currentItem = ref<any>(null);
 const loading = ref(false);
 const sessionActive = ref(false);
 const recovering = ref(true);
+const isAnonymous = ref(false);
 
 // Auto-read problem when it appears and ttsAutoRead is enabled
 watch(
@@ -30,24 +34,55 @@ watch(
 );
 
 onMounted(async () => {
-  const result = await withErrorToast(
-    () => api.getActiveSession(),
-    "Failed to check active session"
-  );
-  if (result?.active) {
-    sessionId.value = result.sessionId;
-    currentItem.value = result.currentItem;
-    sessionActive.value = true;
+  // Wait for auth to resolve
+  await new Promise<void>((resolve) => {
+    if (!auth.isPending.value) return resolve();
+    const stop = watch(() => auth.isPending.value, (v) => {
+      if (!v) { stop(); resolve(); }
+    });
+  });
+
+  if (auth.isAuthenticated.value) {
+    // Authenticated user — check for active session
+    const result = await withErrorToast(
+      () => api.getActiveSession(),
+      "Failed to check active session"
+    );
+    if (result?.active) {
+      sessionId.value = result.sessionId;
+      currentItem.value = result.currentItem;
+      sessionActive.value = true;
+    }
+  } else {
+    // Anonymous user — check for active anonymous session
+    isAnonymous.value = true;
+    const result = await withErrorToast(
+      () => api.getActiveAnonymousSession(anon.token.value),
+      "Failed to check active session"
+    );
+    if (result?.active) {
+      sessionId.value = result.sessionId;
+      currentItem.value = result.currentItem;
+      sessionActive.value = true;
+    }
   }
   recovering.value = false;
 });
 
 async function startSession() {
   loading.value = true;
-  const result = await withErrorToast(
-    () => api.startSession(),
-    "Failed to start session"
-  );
+  let result;
+  if (isAnonymous.value) {
+    result = await withErrorToast(
+      () => api.startAnonymousSession(anon.token.value),
+      "Failed to start session"
+    );
+  } else {
+    result = await withErrorToast(
+      () => api.startSession(),
+      "Failed to start session"
+    );
+  }
   if (result) {
     sessionId.value = result.sessionId;
     currentItem.value = result.firstItem;
@@ -72,6 +107,10 @@ async function handleProblemSubmit(data: {
     currentItem.value = result;
     if (result.type === "complete") {
       sessionActive.value = false;
+    }
+    // Track anonymous progress client-side
+    if (isAnonymous.value && data.answer) {
+      anon.recordAttempt(currentItem.value?.topicId ?? "", data.correct);
     }
   }
   loading.value = false;
@@ -102,6 +141,15 @@ async function handleExampleDone() {
   <div class="max-w-2xl mx-auto">
     <h1 class="text-3xl font-bold mb-6">Learning Session</h1>
 
+    <!-- Anonymous banner -->
+    <div v-if="isAnonymous && !recovering" class="mb-6 bg-amber-50 border border-amber-200 rounded-lg p-4">
+      <p class="text-amber-800 text-sm">
+        You're learning as a guest. Progress won't be saved.
+        <RouterLink to="/signup" class="font-semibold underline hover:text-amber-900">Create an account</RouterLink>
+        to track your progress and unlock all features.
+      </p>
+    </div>
+
     <!-- Loading (checking for active session) -->
     <div v-if="recovering" class="flex items-center justify-center gap-3 text-gray-400 py-12">
       <svg class="animate-spin h-5 w-5" viewBox="0 0 24 24" fill="none">
@@ -114,7 +162,9 @@ async function handleExampleDone() {
     <!-- Not started -->
     <div v-else-if="!sessionId" class="text-center py-12">
       <p class="text-gray-600 mb-6">
-        Your session will include a mix of new topics and review.
+        {{ isAnonymous
+          ? "Try a few topics to see how the platform works."
+          : "Your session will include a mix of new topics and review." }}
       </p>
       <button
         @click="startSession"
@@ -139,10 +189,18 @@ async function handleExampleDone() {
           New Session
         </button>
         <RouterLink
+          v-if="!isAnonymous"
           to="/progress"
           class="px-6 py-2.5 border border-gray-300 text-gray-700 rounded-lg font-medium hover:bg-gray-50"
         >
           View Progress
+        </RouterLink>
+        <RouterLink
+          v-if="isAnonymous"
+          to="/signup"
+          class="px-6 py-2.5 bg-green-600 text-white rounded-lg font-medium hover:bg-green-700"
+        >
+          Create Account to Save Progress
         </RouterLink>
       </div>
     </div>

@@ -2,10 +2,12 @@
 import { ref, onMounted, computed } from "vue";
 import { useSpeechPrefs } from "@/composables/useSpeechPrefs";
 import { useSpeech } from "@/composables/useSpeech";
+import { useChildMode } from "@/composables/useChildMode";
 import { useToast } from "@/composables/useToast";
 
 const toast = useToast();
 const prefs = useSpeechPrefs();
+const childMode = useChildMode();
 const { supported: ttsSupported, voices } = useSpeech();
 
 const loading = ref(true);
@@ -135,6 +137,26 @@ async function handleSave() {
             />
             <span class="text-sm text-gray-700">Enable voice input for answers</span>
           </label>
+        </div>
+      </fieldset>
+
+      <!-- Young Child Mode -->
+      <fieldset class="bg-white rounded-lg border border-gray-200 p-6">
+        <legend class="text-lg font-semibold text-gray-800 px-2">Simplified Mode</legend>
+
+        <div class="space-y-3 mt-2">
+          <label class="flex items-center gap-3 cursor-pointer">
+            <input
+              type="checkbox"
+              :checked="childMode.enabled.value"
+              @change="childMode.toggle()"
+              class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+            />
+            <span class="text-sm text-gray-700">Enable simplified mode (ages 2-6)</span>
+          </label>
+          <p class="text-xs text-gray-500 ml-7">
+            Larger buttons, bigger text, simplified navigation. Auto-enables TTS read-aloud.
+          </p>
         </div>
       </fieldset>
 

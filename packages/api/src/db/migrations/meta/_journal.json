@@ -57,6 +57,13 @@
       "when": 1772754040001,
       "tag": "0007_chief_polaris",
       "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "6",
+      "when": 1772754635952,
+      "tag": "0008_fuzzy_hannibal_king",
+      "breakpoints": true
     }
   ]
 }

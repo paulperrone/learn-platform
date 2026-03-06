@@ -117,6 +117,7 @@ function main() {
   const db = new Database(dbPath);
 
   // Clear existing data for this subject (order matters for foreign keys)
+  db.exec(`DELETE FROM diagnostic_sessions WHERE subject_id = '${graph.subjectId}'`);
   db.exec(`DELETE FROM assignment_responses WHERE assignment_id IN (SELECT id FROM assignments WHERE topic_id IN (SELECT id FROM topics WHERE subject_id = '${graph.subjectId}'))`);
   db.exec(`DELETE FROM assignments WHERE topic_id IN (SELECT id FROM topics WHERE subject_id = '${graph.subjectId}')`);
   db.exec(`DELETE FROM teach_sessions WHERE topic_id IN (SELECT id FROM topics WHERE subject_id = '${graph.subjectId}')`);

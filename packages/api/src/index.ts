@@ -15,6 +15,7 @@ import { settingsRoutes } from "./routes/settings.js";
 import { publicRoutes } from "./routes/public.js";
 import { accountLinkRoutes } from "./routes/account-links.js";
 import { teachDataRoutes } from "./routes/teach-data.js";
+import { onboardingRoutes } from "./routes/onboarding.js";
 
 export type Env = {
   Bindings: {
@@ -87,6 +88,7 @@ app.route("/api/settings", settingsRoutes);
 app.route("/api/public", publicRoutes);
 app.route("/api/account-links", accountLinkRoutes);
 app.route("/api/teach-data", teachDataRoutes);
+app.route("/api/onboarding", onboardingRoutes);
 
 // SPA fallback — serve static assets / index.html for non-API routes
 app.get("*", async (c) => {

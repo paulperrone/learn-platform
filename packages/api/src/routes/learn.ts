@@ -4,6 +4,7 @@ import type { Env } from "../index.js";
 import { getDb } from "../db/index.js";
 import * as schema from "../db/schema.js";
 import { createSessionService } from "../services/session.js";
+import { createDiagnosticService } from "../services/diagnostic.js";
 
 export const learnRoutes = new Hono<Env>();
 
@@ -11,13 +12,16 @@ export const learnRoutes = new Hono<Env>();
 learnRoutes.get("/sessions/active", async (c) => {
   const db = getDb(c.env.DB);
   const userId = c.req.query("userId");
-  if (!userId) return c.json({ error: "userId required" }, 400);
+  const anonymousToken = c.req.query("anonymousToken");
+
+  if (!userId && !anonymousToken) {
+    return c.json({ error: "userId or anonymousToken required" }, 400);
+  }
 
   const active = await db.query.learnSessions.findFirst({
-    where: and(
-      eq(schema.learnSessions.userId, userId),
-      isNull(schema.learnSessions.endedAt),
-    ),
+    where: userId
+      ? and(eq(schema.learnSessions.userId, userId), isNull(schema.learnSessions.endedAt))
+      : and(eq(schema.learnSessions.anonymousToken, anonymousToken!), isNull(schema.learnSessions.endedAt)),
   });
 
   if (!active?.stateJson) {
@@ -34,8 +38,15 @@ learnRoutes.get("/sessions/active", async (c) => {
 learnRoutes.post("/sessions", async (c) => {
   const db = getDb(c.env.DB);
   const session = createSessionService(db);
-  const { userId } = await c.req.json<{ userId: string }>();
-  const result = await session.startSession(userId);
+  const body = await c.req.json<{ userId?: string; anonymousToken?: string; subjectId?: string }>();
+
+  if (body.anonymousToken && !body.userId) {
+    const result = await session.startAnonymousSession(body.anonymousToken, body.subjectId);
+    return c.json(result);
+  }
+
+  if (!body.userId) return c.json({ error: "userId or anonymousToken required" }, 400);
+  const result = await session.startSession(body.userId);
   return c.json(result);
 });
 
@@ -59,5 +70,42 @@ learnRoutes.post("/sessions/:id/respond", async (c) => {
     hintsUsed?: number;
   }>();
   const result = await session.respond(c.req.param("id"), body);
+  return c.json(result);
+});
+
+// === Diagnostic Endpoints ===
+
+learnRoutes.post("/diagnostic/start", async (c) => {
+  const db = getDb(c.env.DB);
+  const diagnostic = createDiagnosticService(db);
+  const body = await c.req.json<{
+    userId?: string;
+    anonymousToken?: string;
+    subjectId: string;
+    isTaste?: boolean;
+  }>();
+
+  if (!body.subjectId) return c.json({ error: "subjectId required" }, 400);
+  const result = await diagnostic.startDiagnostic(body);
+  if ("error" in result) return c.json(result, 400);
+  return c.json(result);
+});
+
+learnRoutes.post("/diagnostic/respond", async (c) => {
+  const db = getDb(c.env.DB);
+  const diagnostic = createDiagnosticService(db);
+  const { sessionId, answer } = await c.req.json<{ sessionId: string; answer: string }>();
+
+  if (!sessionId || answer == null) return c.json({ error: "sessionId and answer required" }, 400);
+  const result = await diagnostic.respond(sessionId, answer);
+  if ("error" in result) return c.json(result, 400);
+  return c.json(result);
+});
+
+learnRoutes.get("/diagnostic/result/:id", async (c) => {
+  const db = getDb(c.env.DB);
+  const diagnostic = createDiagnosticService(db);
+  const result = await diagnostic.getResult(c.req.param("id"));
+  if (!result) return c.json({ error: "Diagnostic not found or not completed" }, 404);
   return c.json(result);
 });

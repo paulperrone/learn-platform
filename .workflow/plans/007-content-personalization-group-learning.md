@@ -83,9 +83,9 @@ TWO INDEPENDENT LAYERS:
 
 ## Progress
 
-**Completed:** Phase 1 ✓, Phase 2 ✓, Phase 3 ✓, Phase 4 ✓, Phase 5 ✓
+**Completed:** Phase 1 ✓, Phase 2 ✓, Phase 3 ✓, Phase 4 ✓, Phase 5 ✓, Phase 6 ✓
 **In Progress:** —
-**Next:** Phase 6
+**Next:** Phase 7
 
 ---
 
@@ -176,24 +176,24 @@ TWO INDEPENDENT LAYERS:
 
 ---
 
-## Phase 6: Anonymous Usage, Diagnostic & Onboarding
+## Phase 6: Anonymous Usage, Diagnostic & Onboarding ✓
 **Goal:** Public /learn and /teach with anonymous progress, course-level diagnostic for placement, guided onboarding, and assignment sharing. Research context: [reference/008-physicsgraph-learnings.md](./reference/008-physicsgraph-learnings.md), Diagnostic Test and Growth & Marketing sections.
 
-1. [ ] [IMP] Anonymous learning sessions: public `/learn` allows unauthenticated learning. Generate `anonymousToken` (UUID) in localStorage. Progress tracked client-side. No paid features. Prompt to create account.
+1. [x] [IMP] Anonymous learning sessions: public `/learn` allows unauthenticated learning. Generate `anonymousToken` (UUID) in localStorage. Progress tracked client-side. No paid features. Prompt to create account.
 
-2. [ ] [IMP] Anonymous teach usage: /teach logs sessions via anonymousToken. Anonymous assignment creation: share code link, responses tagged with teacher's token.
+2. [x] [IMP] Anonymous teach usage: /teach logs sessions via anonymousToken. Anonymous assignment creation: share code link, responses tagged with teacher's token.
 
-3. [ ] [IMP] Course-level diagnostic: `POST /api/learn/diagnostic/start`, `POST /api/learn/diagnostic/respond` (adaptive), `GET /api/learn/diagnostic/result`. Graph compression selects ~20-30 covering questions. Correct answer credits prerequisites; incorrect penalizes dependents. Works for both authenticated and anonymous users. Anonymous users see estimated frontier and signup prompt.
+3. [x] [IMP] Course-level diagnostic: `POST /api/learn/diagnostic/start`, `POST /api/learn/diagnostic/respond` (adaptive), `GET /api/learn/diagnostic/result`. Graph compression selects ~20-30 covering questions. Correct answer credits prerequisites; incorrect penalizes dependents. Works for both authenticated and anonymous users. Anonymous users see estimated frontier and signup prompt.
 
-4. [ ] [IMP] Public diagnostic taste: unauthenticated users take 5-10 diagnostic questions on landing page or `/try`. Shows estimated knowledge level and what they'd learn next. Prompts signup to continue with full diagnostic. PhysicsGraph's key insight: let people experience the product before asking for signup/payment.
+4. [x] [IMP] Public diagnostic taste: unauthenticated users take 5-10 diagnostic questions on landing page or `/try`. Shows estimated knowledge level and what they'd learn next. Prompts signup to continue with full diagnostic. PhysicsGraph's key insight: let people experience the product before asking for signup/payment.
 
-5. [ ] [IMP] Guided onboarding: after first signup, 3-step introduction — (1) explain knowledge graph and how learning works, (2) run full diagnostic, (3) start first learning session. Track onboarding completion. Welcome email sequence: day 0 (how to start), day 2 (why daily practice), day 7 (progress summary). Simple email queue via D1 + scheduled Worker.
+5. [x] [IMP] Guided onboarding: after first signup, 3-step introduction — (1) explain knowledge graph and how learning works, (2) run full diagnostic, (3) start first learning session. Track onboarding completion. Welcome email sequence deferred to engagement plan (013).
 
-6. [ ] [IMP] Assignment flow + account merge: teacher creates assignment with share code. Students complete without accounts. Account merge on signup imports anonymousToken data (teach_sessions, assignment_responses, diagnostic results, progress estimates).
+6. [x] [IMP] Assignment flow + account merge: teacher creates assignment with share code. Students complete without accounts. Account merge on signup imports anonymousToken data (teach_sessions, assignment_responses, diagnostic results, progress estimates).
 
-7. [ ] [IMP] Young-child simplified UI mode: optional mode for ages 2-5/6. Large touch targets, icon-based nav, TTS auto-read, STT for answers. UI toggle, not content gating.
+7. [x] [IMP] Young-child simplified UI mode: optional mode for ages 2-5/6. Large touch targets, icon-based nav, TTS auto-read, STT for answers. UI toggle, not content gating.
 
-8. [ ] [TST] Verify: anonymous learn/teach works. Diagnostic converges in 20-30 questions. Public taste works without auth. Onboarding completes end-to-end. Assignments via share link work for anonymous students. Merge preserves all progress. Young-child mode navigable.
+8. [x] [TST] Verify: anonymous learn/teach works. Diagnostic converges in 20-30 questions. Public taste works without auth. Onboarding completes end-to-end. Assignments via share link work for anonymous students. Merge preserves all progress. Young-child mode navigable.
 
 **Validation:** Visitor experiences diagnostic and solves problems in 30 seconds with no account. Student with partial knowledge is placed correctly at frontier. Teacher shares homework link, students complete without accounts. Guest creates account and all progress transfers.
 

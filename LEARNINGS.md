@@ -9,7 +9,7 @@ Gotchas, insights, and tacit knowledge. Append-only.
 - D1 foreign keys are enforced — test users must exist in `users` table before creating `user_topic_state` rows
 - Drizzle ORM version must match better-auth peer dependency (>=0.41.0 as of better-auth 1.5.x)
 - `pnpm approve-builds` is interactive — add native deps to `pnpm.onlyBuiltDependencies` in root package.json instead
-- import-content.ts must delete from `assignment_responses`, `assignments`, `teach_sessions`, `review_log`, `user_topic_state`, `assessment_content`, and `instructional_content` before deleting topics — FK constraints on `topic_id`
+- import-content.ts must delete from `diagnostic_sessions`, `assignment_responses`, `assignments`, `teach_sessions`, `review_log`, `user_topic_state`, `assessment_content`, and `instructional_content` before deleting topics — FK constraints on `topic_id` and `subject_id`
 - Drizzle `$defaultFn()` is app-level only — when adding NOT NULL columns via migration, manually add `DEFAULT` to the generated SQL or SQLite will reject it
 
 ---
@@ -153,6 +153,17 @@ Setting `rootDir: "src"` in web package `tsconfig.json` causes `TS6059` errors w
 Full signup flow (`POST /api/auth/sign-up/email`) works in miniflare Workers pool tests. Response includes `set-cookie` header with `better-auth.session_token=<value>`. Extract via regex, use as `Cookie` header for subsequent authenticated requests. ~50-70ms per signup — fast enough for focused test files. This is the ONLY reliable way to test authenticated routes via HTTP; `createAuthSession()` helper doesn't work because Better-Auth hashes tokens internally.
 
 **Context:** Testing settings API routes (GET/PUT /api/settings) that require authentication.
+
+---
+
+### 2026-03-05: Drizzle `update()` on D1 returns D1Result — no rowsAffected property
+
+**Source:** User session
+**Area:** Drizzle ORM / D1
+
+`db.update().set().where()` returns `D1Result<unknown>` which has `meta.changes` and `meta.rows_written`, but NOT a `rowsAffected` property. If you need to know how many rows were affected, count before updating with a separate `select({ count: sql<number>'count(*)' })` query.
+
+**Context:** Building account merge service that transfers anonymous data to real user accounts. Needed affected row counts for merge confirmation.
 
 ---
 

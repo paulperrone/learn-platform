@@ -222,7 +222,8 @@ export const reviewLog = sqliteTable("review_log", {
 
 export const learnSessions = sqliteTable("learn_sessions", {
   id: text("id").primaryKey(),
-  userId: text("user_id").notNull().references(() => users.id),
+  userId: text("user_id").references(() => users.id),
+  anonymousToken: text("anonymous_token"),
   startedAt: text("started_at").notNull().$defaultFn(() => new Date().toISOString()),
   endedAt: text("ended_at"),
   stateJson: text("state_json"),
@@ -234,6 +235,7 @@ export const learnSessions = sqliteTable("learn_sessions", {
 }, (table) => [
   index("learn_sessions_user_idx").on(table.userId),
   index("learn_sessions_active_idx").on(table.userId, table.endedAt),
+  index("learn_sessions_anon_idx").on(table.anonymousToken),
 ]);
 
 export const userPreferences = sqliteTable("user_preferences", {
@@ -326,3 +328,34 @@ export const assignmentResponses = sqliteTable("assignment_responses", {
   index("ar_assignment_idx").on(table.assignmentId),
   index("ar_user_idx").on(table.userId),
 ]);
+
+// === Diagnostic Sessions ===
+
+export const diagnosticSessions = sqliteTable("diagnostic_sessions", {
+  id: text("id").primaryKey(),
+  userId: text("user_id").references(() => users.id),
+  anonymousToken: text("anonymous_token"),
+  subjectId: text("subject_id").notNull().references(() => subjects.id),
+  status: text("status").notNull().default("active"), // 'active' | 'completed'
+  questionsAsked: integer("questions_asked").notNull().default(0),
+  questionsCorrect: integer("questions_correct").notNull().default(0),
+  estimatedFrontierJson: text("estimated_frontier_json"), // JSON array of topicIds
+  topicEstimatesJson: text("topic_estimates_json"), // JSON: { topicId: probability }
+  stateJson: text("state_json"), // adaptive algorithm state
+  isTaste: integer("is_taste", { mode: "boolean" }).notNull().default(false), // short 5-10q version
+  createdAt: text("created_at").notNull().$defaultFn(() => new Date().toISOString()),
+  completedAt: text("completed_at"),
+}, (table) => [
+  index("diag_user_idx").on(table.userId),
+  index("diag_anon_idx").on(table.anonymousToken),
+]);
+
+// === Onboarding State ===
+
+export const onboardingState = sqliteTable("onboarding_state", {
+  userId: text("user_id").primaryKey().references(() => users.id),
+  step: integer("step").notNull().default(0), // 0=not started, 1=intro, 2=diagnostic, 3=first session, 4=complete
+  diagnosticSessionId: text("diagnostic_session_id"),
+  completedAt: text("completed_at"),
+  createdAt: text("created_at").notNull().$defaultFn(() => new Date().toISOString()),
+});

@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { RouterView, RouterLink, useRouter } from "vue-router";
 import { useAuth } from "./composables/useAuth";
+import { useChildMode } from "./composables/useChildMode";
 import ToastContainer from "./components/ToastContainer.vue";
 
 const router = useRouter();
 const { isAuthenticated, isChild, user, signOut } = useAuth();
+const childMode = useChildMode();
 
 async function handleLogout() {
   await signOut();
@@ -13,17 +15,17 @@ async function handleLogout() {
 </script>
 
 <template>
-  <div class="min-h-screen bg-gray-50">
-    <nav class="bg-white border-b border-gray-200 px-6 py-3">
-      <div class="max-w-7xl mx-auto flex items-center gap-6">
-        <RouterLink to="/" class="text-xl font-bold text-blue-600">Learn</RouterLink>
+  <div class="min-h-screen bg-gray-50" :class="{ 'child-mode': childMode.enabled.value }">
+    <nav class="bg-white border-b border-gray-200 px-6 py-3" :class="{ 'py-4': childMode.enabled.value }">
+      <div class="max-w-7xl mx-auto flex items-center gap-6" :class="{ 'gap-8': childMode.enabled.value }">
+        <RouterLink to="/" class="text-xl font-bold text-blue-600" :class="{ 'text-2xl': childMode.enabled.value }">Learn</RouterLink>
         <template v-if="isAuthenticated">
-          <RouterLink to="/learn" class="text-gray-600 hover:text-gray-900">Study</RouterLink>
-          <RouterLink to="/progress" class="text-gray-600 hover:text-gray-900">Progress</RouterLink>
-          <RouterLink to="/explore" class="text-gray-600 hover:text-gray-900">Explore</RouterLink>
-          <RouterLink to="/teach" class="text-gray-600 hover:text-gray-900">Teach</RouterLink>
-          <RouterLink to="/graph" class="text-gray-600 hover:text-gray-900">Graph</RouterLink>
-          <RouterLink v-if="!isChild" to="/family" class="text-gray-600 hover:text-gray-900">Family</RouterLink>
+          <RouterLink to="/learn" class="text-gray-600 hover:text-gray-900" :class="{ 'text-lg py-1 px-2': childMode.enabled.value }">Study</RouterLink>
+          <RouterLink to="/progress" class="text-gray-600 hover:text-gray-900" :class="{ 'text-lg py-1 px-2': childMode.enabled.value }">Progress</RouterLink>
+          <RouterLink v-if="!childMode.enabled.value" to="/explore" class="text-gray-600 hover:text-gray-900">Explore</RouterLink>
+          <RouterLink v-if="!childMode.enabled.value" to="/teach" class="text-gray-600 hover:text-gray-900">Teach</RouterLink>
+          <RouterLink v-if="!childMode.enabled.value" to="/graph" class="text-gray-600 hover:text-gray-900">Graph</RouterLink>
+          <RouterLink v-if="!isChild && !childMode.enabled.value" to="/family" class="text-gray-600 hover:text-gray-900">Family</RouterLink>
           <RouterLink v-if="(user as any)?.role === 'admin'" to="/admin" class="text-gray-600 hover:text-gray-900">Admin</RouterLink>
           <div class="ml-auto flex items-center gap-4">
             <RouterLink to="/settings" class="text-gray-400 hover:text-gray-600" title="Settings" aria-label="Settings">
@@ -42,6 +44,8 @@ async function handleLogout() {
           </div>
         </template>
         <template v-else>
+          <RouterLink to="/try" class="text-gray-600 hover:text-gray-900">Try It</RouterLink>
+          <RouterLink to="/learn" class="text-gray-600 hover:text-gray-900">Learn</RouterLink>
           <RouterLink to="/explore" class="text-gray-600 hover:text-gray-900">Explore</RouterLink>
           <RouterLink to="/teach" class="text-gray-600 hover:text-gray-900">Teach</RouterLink>
           <RouterLink to="/how-we-teach" class="text-gray-600 hover:text-gray-900">How We Teach</RouterLink>
@@ -59,3 +63,19 @@ async function handleLogout() {
     <ToastContainer />
   </div>
 </template>
+
+<style>
+/* Child mode: larger touch targets, bigger text, simplified UI */
+.child-mode {
+  font-size: 1.25rem;
+}
+.child-mode button,
+.child-mode a {
+  min-height: 3rem;
+  min-width: 3rem;
+}
+.child-mode input {
+  font-size: 1.25rem;
+  padding: 0.75rem 1rem;
+}
+</style>

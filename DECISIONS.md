@@ -375,6 +375,45 @@ Architectural and design decisions with reasoning. Append-only.
 
 ---
 
+### 2026-03-05: Anonymous sessions skip FSRS — sequential topics by depth, capped at 5
+
+**Source:** User session
+
+**Context:** Phase 6 anonymous learning sessions. Anonymous users have no persistent SRS state (no user_topic_state rows). Needed a way to serve them content without FSRS scheduling.
+
+**Decision:** Anonymous sessions use simple sequential topic ordering by depth (shallowest first), skip all SRS scheduling and FIRe credit, and cap at 5 topics per session. Progress is tracked client-side in localStorage.
+
+**Why:**
+- No userId means no SRS state rows — can't schedule reviews
+- Sequential by depth naturally starts with foundational topics
+- 5-topic cap gives a useful taste of the platform while encouraging signup
+- Client-side tracking via anonymousToken enables merge on signup
+
+**Alternatives rejected:**
+- Full SRS with ephemeral state: overcomplicates anonymous flow for users who may never return
+- Unlimited anonymous sessions: no incentive to create account, harder to manage server resources
+
+---
+
+### 2026-03-05: Diagnostic algorithm uses graph-aware propagation
+
+**Source:** User session
+
+**Context:** Course-level diagnostic needs to estimate mastery across 71 topics in ~25 questions. Naive approach: one question per topic. Better: leverage the prerequisite graph to propagate estimates.
+
+**Decision:** Adaptive diagnostic selects covering topics spread across depth levels, then propagates results: correct → credit prerequisites (+0.2 probability), incorrect → penalize dependents (-0.15 probability). Uses uncertainty-based question selection (most uncertain topic asked next). Two modes: full (~25 questions) and taste (~8 questions).
+
+**Why:**
+- Graph propagation multiplies information gain per question (each answer updates ~3-5 topic estimates)
+- Uncertainty-based selection focuses on topics where we learn most
+- Credit/penalize asymmetry: we're more confident about forward implications (if you know multiplication, you know counting) than backward ones
+
+**Alternatives rejected:**
+- One question per topic: requires 71 questions, terrible UX
+- Random selection: wastes questions on topics already implied by graph structure
+
+---
+
 ### 2026-03-05: Two independent layers — orgs for billing, account_links for visibility
 
 **Source:** User session

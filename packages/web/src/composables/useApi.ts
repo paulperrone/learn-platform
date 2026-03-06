@@ -1,6 +1,6 @@
 import { authClient } from "./useAuth";
 import { useToast } from "./useToast";
-import type { SpeechSettings, Subject, Topic, Problem, WorkedExample } from "@learn/shared";
+import type { SpeechSettings, Subject, Topic, Problem, WorkedExample, DiagnosticResult } from "@learn/shared";
 
 const API_BASE = "/api";
 
@@ -93,6 +93,42 @@ export function useApi() {
       request<any>(`/learn/sessions/${sessionId}/respond`, {
         method: "POST",
         body: JSON.stringify(response),
+      }),
+
+    // Anonymous Sessions (no auth required)
+    getActiveAnonymousSession: (anonymousToken: string) =>
+      request<any>(`/learn/sessions/active?anonymousToken=${anonymousToken}`),
+    startAnonymousSession: (anonymousToken: string, subjectId?: string) =>
+      request<any>("/learn/sessions", {
+        method: "POST",
+        body: JSON.stringify({ anonymousToken, subjectId }),
+      }),
+
+    // Diagnostic (no auth required)
+    startDiagnostic: (params: { userId?: string; anonymousToken?: string; subjectId: string; isTaste?: boolean }) =>
+      request<{ sessionId: string; question: any }>("/learn/diagnostic/start", {
+        method: "POST",
+        body: JSON.stringify(params),
+      }),
+    respondDiagnostic: (sessionId: string, answer: string) =>
+      request<{ done: boolean; correct: boolean; question?: any; result?: DiagnosticResult }>("/learn/diagnostic/respond", {
+        method: "POST",
+        body: JSON.stringify({ sessionId, answer }),
+      }),
+    getDiagnosticResult: (sessionId: string) =>
+      request<DiagnosticResult>(`/learn/diagnostic/result/${sessionId}`),
+
+    // Onboarding (auth required)
+    getOnboarding: () => request<{ step: number; completedAt: string | null }>("/onboarding"),
+    updateOnboarding: (step: number, diagnosticSessionId?: string) =>
+      request<{ success: boolean; step: number }>("/onboarding", {
+        method: "PUT",
+        body: JSON.stringify({ step, diagnosticSessionId }),
+      }),
+    mergeAnonymousData: (anonymousToken: string) =>
+      request<{ success: boolean; mergedSessions: number; mergedDiagnostics: number; mergedResponses: number }>("/onboarding/merge", {
+        method: "POST",
+        body: JSON.stringify({ anonymousToken }),
       }),
 
     // Review

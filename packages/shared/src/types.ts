@@ -65,7 +65,8 @@ export type SessionPhase =
   | "guided"
   | "independent"
   | "review"
-  | "remediation";
+  | "remediation"
+  | "diagnostic";
 
 export type Session = {
   id: string;
@@ -294,4 +295,40 @@ export type SpeechSettings = {
   ttsVoiceName: string | null;
   ttsAutoRead: boolean;
   sttEnabled: boolean;
+};
+
+// === Diagnostic Types ===
+
+export type DiagnosticSession = {
+  id: string;
+  userId: string | null;
+  anonymousToken: string | null;
+  subjectId: string;
+  status: "active" | "completed";
+  questionsAsked: number;
+  questionsCorrect: number;
+  estimatedFrontier: string[] | null;
+  isTaste: boolean;
+  createdAt: string;
+  completedAt: string | null;
+};
+
+export type DiagnosticResult = {
+  sessionId: string;
+  questionsAsked: number;
+  questionsCorrect: number;
+  estimatedLevel: string;
+  estimatedFrontier: string[];
+  topicEstimates: Record<string, number>;
+};
+
+// === Onboarding Types ===
+
+export type OnboardingStep = 0 | 1 | 2 | 3 | 4;
+
+export type OnboardingState = {
+  userId: string;
+  step: OnboardingStep;
+  diagnosticSessionId: string | null;
+  completedAt: string | null;
 };

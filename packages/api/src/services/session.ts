@@ -10,6 +10,8 @@ import { gradeProblem } from "./grading.js";
 type SessionState = {
   sessionId: string;
   userId: string;
+  anonymousToken?: string;
+  isAnonymous?: boolean;
   currentTopicId: string | null;
   currentPhase: SessionPhase;
   phaseIndex: number; // Track progression within a topic
@@ -139,11 +141,11 @@ export function createSessionService(db: DB) {
       const firstTopic = mix.items[0];
       if (!firstTopic) {
         // No topics available — everything mastered or no content
-        const dbSession = await db.insert(schema.learnSessions).values({
+        await db.insert(schema.learnSessions).values({
           id: sessionId,
           userId,
           endedAt: new Date().toISOString(),
-        }).returning();
+        });
 
         return {
           sessionId,
@@ -168,6 +170,74 @@ export function createSessionService(db: DB) {
       await db.insert(schema.learnSessions).values({
         id: sessionId,
         userId,
+        stateJson: JSON.stringify(state),
+      });
+
+      return {
+        sessionId,
+        firstItem: await this.buildPhaseItem(state),
+      };
+    },
+
+    /**
+     * Start an anonymous learning session (no auth, no FSRS).
+     * Uses simple sequential topic ordering by depth.
+     */
+    async startAnonymousSession(anonymousToken: string, subjectId?: string): Promise<{
+      sessionId: string;
+      firstItem: SessionItem;
+    }> {
+      const sessionId = crypto.randomUUID();
+
+      // End any existing active anonymous session for this token
+      const stale = await db.query.learnSessions.findFirst({
+        where: and(
+          eq(schema.learnSessions.anonymousToken, anonymousToken),
+          isNull(schema.learnSessions.endedAt),
+        ),
+      });
+      if (stale) {
+        await this.endSession(stale.id);
+      }
+
+      // Get frontier topics by depth (simplest first)
+      const allTopics = subjectId
+        ? await db.select().from(schema.topics).where(eq(schema.topics.subjectId, subjectId))
+        : await db.select().from(schema.topics);
+
+      const sorted = [...allTopics].sort((a, b) => a.depth - b.depth || a.gradeLevel - b.gradeLevel);
+      const firstTopic = sorted[0];
+
+      if (!firstTopic) {
+        await db.insert(schema.learnSessions).values({
+          id: sessionId,
+          anonymousToken,
+          endedAt: new Date().toISOString(),
+        });
+        return {
+          sessionId,
+          firstItem: { type: "complete", message: "No content available yet." },
+        };
+      }
+
+      const state: SessionState = {
+        sessionId,
+        userId: `anon:${anonymousToken}`,
+        anonymousToken,
+        isAnonymous: true,
+        currentTopicId: firstTopic.id,
+        currentPhase: "pretest",
+        phaseIndex: 0,
+        topicsCompleted: [],
+        reviewsCompleted: 0,
+        totalCorrect: 0,
+        totalAttempts: 0,
+      };
+      activeSessions.set(sessionId, state);
+
+      await db.insert(schema.learnSessions).values({
+        id: sessionId,
+        anonymousToken,
         stateJson: JSON.stringify(state),
       });
 
@@ -249,19 +319,21 @@ export function createSessionService(db: DB) {
         rating = Math.min(rating, Rating.Good) as Grade;
       }
 
-      // Record review
-      await srs.scheduleReview(
-        state.userId,
-        state.currentTopicId,
-        rating,
-        response.responseMs,
-        state.currentPhase,
-        response.confidence,
-        hintsUsed
-      );
+      // Record review (skip for anonymous — no persistent SRS state)
+      if (!state.isAnonymous) {
+        await srs.scheduleReview(
+          state.userId,
+          state.currentTopicId,
+          rating,
+          response.responseMs,
+          state.currentPhase,
+          response.confidence,
+          hintsUsed
+        );
 
-      // Apply FIRe credit
-      await srs.applyFIReCredit(state.userId, state.currentTopicId, rating);
+        // Apply FIRe credit
+        await srs.applyFIReCredit(state.userId, state.currentTopicId, rating);
+      }
 
       // Advance through learning phases
       const result = await this.advancePhase(state, isCorrect);
@@ -332,6 +404,10 @@ export function createSessionService(db: DB) {
      * Move to the next topic in the session mix.
      */
     async nextTopic(state: SessionState): Promise<SessionItem> {
+      if (state.isAnonymous) {
+        return await this.nextAnonymousTopic(state);
+      }
+
       const mix = await srs.getSessionMix(state.userId, 10);
 
       // Find a topic we haven't completed in this session
@@ -350,6 +426,36 @@ export function createSessionService(db: DB) {
 
       state.currentTopicId = next.topicId;
       state.currentPhase = next.type === "review" ? "review" : "pretest";
+      state.phaseIndex = 0;
+
+      return await this.buildPhaseItem(state);
+    },
+
+    async nextAnonymousTopic(state: SessionState): Promise<SessionItem> {
+      // Anonymous: simple sequential by depth, cap at 5 topics per session
+      const MAX_ANON_TOPICS = 5;
+      if (state.topicsCompleted.length >= MAX_ANON_TOPICS) {
+        await this.endSession(state.sessionId);
+        return {
+          type: "complete",
+          message: `Nice work! You completed ${state.topicsCompleted.length} topics with ${state.totalAttempts > 0 ? Math.round((state.totalCorrect / state.totalAttempts) * 100) : 0}% accuracy. Create an account to save your progress and continue learning!`,
+        };
+      }
+
+      const allTopics = await db.select().from(schema.topics);
+      const sorted = [...allTopics].sort((a, b) => a.depth - b.depth || a.gradeLevel - b.gradeLevel);
+      const next = sorted.find((t) => !state.topicsCompleted.includes(t.id));
+
+      if (!next) {
+        await this.endSession(state.sessionId);
+        return {
+          type: "complete",
+          message: `All available topics completed! Create an account to track your progress.`,
+        };
+      }
+
+      state.currentTopicId = next.id;
+      state.currentPhase = "pretest";
       state.phaseIndex = 0;
 
       return await this.buildPhaseItem(state);
@@ -461,6 +567,20 @@ export function createSessionService(db: DB) {
             showHints: true,
             prerequisiteChain: prereqChain,
             message: "Let's go back to basics. Here's an easier version.",
+          };
+        }
+
+        default: {
+          // diagnostic phase handled by diagnostic service, not session service
+          const problem = selectProblem(problems, "medium");
+          return {
+            type: "problem",
+            phase: state.currentPhase,
+            topicId: topic.id,
+            topicName: topic.name,
+            problem: withVisuals(problem ?? makeFallbackProblem(topic)),
+            showHints: false,
+            message: "Answer this question.",
           };
         }
       }
