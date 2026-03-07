@@ -5,7 +5,7 @@ import * as schema from "../db/schema.js";
 import { createGraphService } from "./graph.js";
 import { createSRSService } from "./srs.js";
 import { createContentService, type ContentQuery } from "./content.js";
-import type { Problem, WorkedExample, SessionPhase, AssessmentType, VisualAsset, PresentationLevel, ContentDepthLevel } from "@learn/shared";
+import type { Problem, WorkedExample, SessionPhase, AssessmentType, VisualAsset, PresentationLevel, ContentDepthLevel, BlendRole } from "@learn/shared";
 import { gradeProblem } from "./grading.js";
 
 type SessionState = {
@@ -23,6 +23,7 @@ type SessionState = {
   totalAttempts: number;
   lastServedPresentation?: PresentationLevel;
   lastServedSubjectId?: string;
+  currentBlendRole?: BlendRole;
 };
 
 // In-memory cache — D1 is the source of truth
@@ -66,6 +67,15 @@ export function createSessionService(db: DB) {
     if (!state.isAnonymous) {
       presentation = await content.resolvePresentation(state.userId, subjectId);
       contentDepth = await content.resolveContentDepth(state.userId, topicId, disciplineId);
+    }
+
+    // Blend role depth overrides
+    if (state.currentBlendRole === "warmup") {
+      contentDepth = "survey";
+    } else if (state.currentBlendRole === "stretch") {
+      const depths: ContentDepthLevel[] = ["survey", "contextual", "analytical", "synthesis"];
+      const idx = depths.indexOf(contentDepth);
+      if (idx < depths.length - 1) contentDepth = depths[idx + 1];
     }
 
     // Track served presentation for drift nudging in respond()
@@ -171,6 +181,7 @@ export function createSessionService(db: DB) {
         reviewsCompleted: 0,
         totalCorrect: 0,
         totalAttempts: 0,
+        currentBlendRole: firstTopic.blendRole,
       };
       activeSessions.set(sessionId, state);
 
@@ -460,6 +471,7 @@ export function createSessionService(db: DB) {
       state.currentTopicId = next.topicId;
       state.currentPhase = next.type === "review" ? "review" : "pretest";
       state.phaseIndex = 0;
+      state.currentBlendRole = next.blendRole;
 
       return await this.buildPhaseItem(state);
     },
@@ -582,6 +594,7 @@ export function createSessionService(db: DB) {
             availableHints: getAvailableHints(p, "pretest", state.hintIndex),
             showSolution: shouldShowSolution(p, state.currentPhase, state.hintIndex),
             hintsRevealed: state.hintIndex,
+            blendRole: state.currentBlendRole ?? "main",
             message: "Let's see what you already know. Try your best!",
           };
         }
@@ -595,6 +608,7 @@ export function createSessionService(db: DB) {
             topicId: topic.id,
             topicName: topic.name,
             example: example ?? makeFallbackExample(topic),
+            blendRole: state.currentBlendRole ?? "main",
             message: "Study this example carefully. You'll explain it in your own words.",
           };
         }
@@ -612,6 +626,7 @@ export function createSessionService(db: DB) {
             availableHints: getAvailableHints(p, "guided", state.hintIndex),
             showSolution: shouldShowSolution(p, state.currentPhase, state.hintIndex),
             hintsRevealed: state.hintIndex,
+            blendRole: state.currentBlendRole ?? "main",
             message: "Now try it with some help. Hints are available if you need them.",
           };
         }
@@ -630,14 +645,22 @@ export function createSessionService(db: DB) {
             showSolution: shouldShowSolution(p, state.currentPhase, state.hintIndex),
             hintsRevealed: state.hintIndex,
             askConfidence: true,
+            blendRole: state.currentBlendRole ?? "main",
             message: "Solve this on your own. Rate your confidence after.",
           };
         }
 
         case "review": {
-          // Spaced review — medium difficulty
+          // Spaced review — medium difficulty; message varies by blend role
           const problem = selectProblem(problems, "medium");
           const p = withVisuals(problem ?? makeFallbackProblem(topic));
+          const blendRole = state.currentBlendRole ?? "main";
+          let reviewMessage = "Review time! Let's see if you remember.";
+          if (blendRole === "warmup") {
+            reviewMessage = "Quick review!";
+          } else if (blendRole === "stretch") {
+            reviewMessage = "Challenge question — give it your best shot, it's okay to be unsure.";
+          }
           return {
             type: "problem",
             phase: "review",
@@ -647,8 +670,9 @@ export function createSessionService(db: DB) {
             availableHints: getAvailableHints(p, "review", state.hintIndex),
             showSolution: shouldShowSolution(p, state.currentPhase, state.hintIndex),
             hintsRevealed: state.hintIndex,
-            askConfidence: true,
-            message: "Review time! Let's see if you remember.",
+            askConfidence: blendRole !== "warmup",
+            blendRole,
+            message: reviewMessage,
           };
         }
 
@@ -667,6 +691,7 @@ export function createSessionService(db: DB) {
             showSolution: shouldShowSolution(p, state.currentPhase, state.hintIndex),
             hintsRevealed: state.hintIndex,
             prerequisiteChain: prereqChain,
+            blendRole: state.currentBlendRole ?? "main",
             message: "Let's go back to basics. Here's an easier version.",
           };
         }
@@ -684,6 +709,7 @@ export function createSessionService(db: DB) {
             availableHints: getAvailableHints(p, state.currentPhase, state.hintIndex),
             showSolution: shouldShowSolution(p, state.currentPhase, state.hintIndex),
             hintsRevealed: state.hintIndex,
+            blendRole: state.currentBlendRole ?? "main",
             message: "Answer this question.",
           };
         }
@@ -733,6 +759,7 @@ export type SessionItem =
       showSolution: boolean;
       hintsRevealed: number;
       askConfidence?: boolean;
+      blendRole?: BlendRole;
       message: string;
     }
   | {
@@ -741,6 +768,7 @@ export type SessionItem =
       topicId: string;
       topicName: string;
       example: WorkedExample;
+      blendRole?: BlendRole;
       message: string;
     }
   | {
@@ -753,6 +781,7 @@ export type SessionItem =
       showSolution: boolean;
       hintsRevealed: number;
       prerequisiteChain: string[];
+      blendRole?: BlendRole;
       message: string;
     }
   | { type: "complete"; message: string }

@@ -23,9 +23,9 @@ This plan implements: progressive hint reveal, calibrated mastery criteria, full
 
 ## Progress
 
-**Completed:** Phase 1 ✓, Phase 2 ✓
+**Completed:** Phase 1 ✓, Phase 2 ✓, Phase 3 ✓
 **In Progress:** —
-**Next:** Phase 3
+**Next:** Phase 4
 
 ---
 
@@ -61,19 +61,19 @@ This plan implements: progressive hint reveal, calibrated mastery criteria, full
 
 ---
 
-## Phase 3: Session Depth Blending
+## Phase 3: Session Depth Blending ✓
 **Goal:** Sessions mix content depths within a single learning session — warmup recall, main frontier work, stretch questions. Prevents the "one note" feel.
 
-1. [ ] [IMP] Update `getSessionMix()` to include depth blending. For each session:
+1. [x] [IMP] Update `getSessionMix()` to include depth blending. For each session:
    - **Warmup** (first 2-3 items): survey-depth recall questions on previously mastered topics. Quick, builds confidence, activates prior knowledge.
    - **Main work** (~60% of session): content at the student's current frontier depth. Mix of review and new topics (existing 60/40 split).
    - **Stretch** (last 1-2 items): one question at the next depth level above frontier (productive failure / priming for future learning). Only for context-layered disciplines where depth progression exists.
 
-2. [ ] [IMP] Tag session items with their blend role (`warmup`, `main`, `stretch`) so the frontend can adjust messaging. Warmup: "Quick review!" Main: standard messages. Stretch: "Challenge question — give it your best shot, it's okay to be unsure."
+2. [x] [IMP] Tag session items with their blend role (`warmup`, `main`, `stretch`) so the frontend can adjust messaging. Warmup: "Quick review!" Main: standard messages. Stretch: "Challenge question — give it your best shot, it's okay to be unsure."
 
-3. [ ] [IMP] Handle depth blending gracefully when content doesn't exist at target depth: skip warmup if no survey content exists for mastered topics (rare edge case). Skip stretch if no next-depth content exists. Depth blending is best-effort, not required — sessions work fine without it.
+3. [x] [IMP] Handle depth blending gracefully when content doesn't exist at target depth: skip warmup if no survey content exists for mastered topics (rare edge case). Skip stretch if no next-depth content exists. Depth blending is best-effort, not required — sessions work fine without it.
 
-4. [ ] [TST] Verify: session mix includes warmup, main, and stretch items when content exists. Warmup items are survey-depth on mastered topics. Stretch items are one depth above frontier. Mastery-gated subjects get warmup but no stretch (depth is in topic progression). Sessions degrade gracefully when blend content is unavailable.
+4. [x] [TST] Verify: session mix includes warmup, main, and stretch items when content exists. Warmup items are survey-depth on mastered topics. Stretch items are one depth above frontier. Mastery-gated subjects get warmup but no stretch (depth is in topic progression). Sessions degrade gracefully when blend content is unavailable.
 
 **Validation:** Sessions feel varied — easy warmup, focused main work, challenging stretch. Students aren't locked into monotonous same-difficulty questions.
 

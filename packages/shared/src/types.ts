@@ -162,6 +162,8 @@ export type PresentationLevel = "primary" | "intermediate" | "standard" | "advan
 
 export type ContentDepthLevel = "survey" | "contextual" | "analytical" | "synthesis";
 
+export type BlendRole = "warmup" | "main" | "stretch";
+
 export type ContentDimensions = {
   flavor: string;
   locale: string;

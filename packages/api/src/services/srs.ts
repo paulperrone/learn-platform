@@ -1,4 +1,4 @@
-import { eq, and, lte, sql } from "drizzle-orm";
+import { eq, and, lte, sql, inArray } from "drizzle-orm";
 import { createEmptyCard, fsrs, generatorParameters, type Card, type Grade, Rating, State } from "ts-fsrs";
 import type { DB } from "../db/index.js";
 import * as schema from "../db/schema.js";
@@ -8,6 +8,14 @@ const params = generatorParameters({ enable_fuzz: true });
 const f = fsrs(params);
 
 type UserTopicRow = typeof schema.userTopicState.$inferSelect;
+
+export type MixItem = {
+  topicId: string;
+  type: "review" | "new";
+  blendRole: "warmup" | "main" | "stretch";
+  due?: string;
+  depth?: number;
+};
 
 function cardFromRow(row: UserTopicRow): Card {
   return {
@@ -296,51 +304,123 @@ export function createSRSService(db: DB) {
     },
 
     /**
-     * Build the session mix: ~60% review + ~40% new topics, interleaved.
+     * Build the session mix: warmup → main (review+new interleaved) → stretch.
+     *
+     * - Warmup: mastered topics for survey-depth recall (builds confidence, activates prior knowledge)
+     * - Main: ~60% review + ~40% new frontier topics (existing interleave logic)
+     * - Stretch: context-layered frontier topics at next depth (productive failure / priming)
      */
     async getSessionMix(userId: string, count: number = 10) {
       const dueTopics = await this.getDueTopics(userId);
       const frontier = await graph.computeFrontier(userId);
 
-      const reviewCount = Math.ceil(count * 0.6);
-      const newCount = count - reviewCount;
-
-      // Select review topics (most overdue first)
-      const reviewTopics = dueTopics.slice(0, reviewCount).map((t) => ({
+      // --- Warmup: mastered topics for quick recall ---
+      const masteredRows = await db
+        .select({ topicId: schema.userTopicState.topicId })
+        .from(schema.userTopicState)
+        .where(
+          and(
+            eq(schema.userTopicState.userId, userId),
+            eq(schema.userTopicState.mastered, true)
+          )
+        );
+      const warmupPool = masteredRows.sort(() => Math.random() - 0.5);
+      // Scale warmup slots: leave at least 4 slots for main
+      const maxWarmup = Math.max(0, count - 4);
+      const warmupCount = Math.min(warmupPool.length, 3, maxWarmup);
+      const warmupItems: MixItem[] = warmupPool.slice(0, warmupCount).map((t) => ({
         topicId: t.topicId,
-        due: t.due,
         type: "review" as const,
+        blendRole: "warmup" as const,
       }));
+      const warmupTopicIds = new Set(warmupItems.map((w) => w.topicId));
 
-      // Select new topics (lowest depth first for progression)
-      const newTopics = frontier.topics
+      // --- Stretch: context-layered disciplines only ---
+      let stretchItems: MixItem[] = [];
+      const subjectIds = [...new Set(frontier.topics.map((t) => t.subjectId))];
+      if (subjectIds.length > 0) {
+        const subjects = await db
+          .select()
+          .from(schema.subjects)
+          .where(inArray(schema.subjects.id, subjectIds));
+        const discIds = [...new Set(subjects.map((s) => s.disciplineId))];
+        if (discIds.length > 0) {
+          const discs = await db
+            .select()
+            .from(schema.disciplines)
+            .where(inArray(schema.disciplines.id, discIds));
+          const contextLayeredDiscIds = new Set(
+            discs.filter((d) => d.progressionModel === "context-layered").map((d) => d.id)
+          );
+          const contextLayeredSubjectIds = new Set(
+            subjects.filter((s) => contextLayeredDiscIds.has(s.disciplineId)).map((s) => s.id)
+          );
+
+          if (contextLayeredSubjectIds.size > 0) {
+            const stretchCandidates = frontier.topics.filter((t) =>
+              contextLayeredSubjectIds.has(t.subjectId)
+            );
+            // Leave at least 3 slots for main after warmup + stretch
+            const maxStretch = Math.max(0, count - warmupCount - 3);
+            const stretchCount = Math.min(stretchCandidates.length, 2, maxStretch);
+            stretchItems = stretchCandidates.slice(0, stretchCount).map((t) => ({
+              topicId: t.id,
+              type: "review" as const, // single question, no full learning loop
+              blendRole: "stretch" as const,
+            }));
+          }
+        }
+      }
+      const stretchTopicIds = new Set(stretchItems.map((s) => s.topicId));
+
+      // --- Main: review + new interleaved ---
+      const mainSlots = count - warmupCount - stretchItems.length;
+      const mainReviewCount = Math.ceil(mainSlots * 0.6);
+      const mainNewCount = mainSlots - mainReviewCount;
+
+      const reviewTopics: MixItem[] = dueTopics
+        .filter((t) => !warmupTopicIds.has(t.topicId))
+        .slice(0, mainReviewCount)
+        .map((t) => ({
+          topicId: t.topicId,
+          due: t.due,
+          type: "review" as const,
+          blendRole: "main" as const,
+        }));
+
+      const newTopics: MixItem[] = frontier.topics
+        .filter((t) => !stretchTopicIds.has(t.id))
         .sort((a, b) => a.depth - b.depth)
-        .slice(0, newCount)
+        .slice(0, mainNewCount)
         .map((t) => ({
           topicId: t.id,
           depth: t.depth,
           type: "new" as const,
+          blendRole: "main" as const,
         }));
 
-      // Interleave: review, new, review, review, new pattern
-      const mixed: typeof reviewTopics | typeof newTopics = [];
+      // Interleave main items: review, new, review, review, new pattern
+      const mainItems: MixItem[] = [];
       let ri = 0;
       let ni = 0;
       let reviewStreak = 0;
 
       while (ri < reviewTopics.length || ni < newTopics.length) {
         if (ri < reviewTopics.length && (reviewStreak < 2 || ni >= newTopics.length)) {
-          mixed.push(reviewTopics[ri++] as any);
+          mainItems.push(reviewTopics[ri++]);
           reviewStreak++;
         } else if (ni < newTopics.length) {
-          mixed.push(newTopics[ni++] as any);
+          mainItems.push(newTopics[ni++]);
           reviewStreak = 0;
         }
       }
 
+      // Order: warmup → main → stretch
+      const items: MixItem[] = [...warmupItems, ...mainItems, ...stretchItems];
+
       return {
-        items: mixed,
-        reviewCount: reviewTopics.length,
+        items,
+        reviewCount: reviewTopics.length + warmupItems.length,
         newCount: newTopics.length,
       };
     },
