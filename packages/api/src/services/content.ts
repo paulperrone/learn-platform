@@ -56,10 +56,13 @@ export function createContentService(db: DB) {
     });
     const model = disc?.progressionModel ?? "mastery-gated";
 
-    // For mastery-gated: depth is in the topic graph, not content. Always survey.
+    // For mastery-gated: always "survey". These disciplines encode analytical
+    // progression in the topic graph itself — "adding fractions" IS deeper than
+    // "adding whole numbers." Content depth layers (contextual, analytical,
+    // synthesis) don't apply. All mastery-gated content should be tagged "survey".
     if (model === "mastery-gated") return "survey";
 
-    // For flexible: always survey (topics are independent)
+    // For flexible: always "survey" (topics are independent, no depth progression)
     if (model === "flexible") return "survey";
 
     // For context-layered: check what depth the user has completed for this topic
@@ -84,192 +87,93 @@ export function createContentService(db: DB) {
     return "synthesis";
   }
 
+  /**
+   * Compute fallback priority for a content row against the requested dimensions.
+   * Lower = better match. Returns -1 if no fallback tier matches (shouldn't happen
+   * since tier 7 accepts anything for the topic).
+   *
+   * Fallback tiers (per content-system.md §6):
+   *   0: Exact match on all dimensions
+   *   1-3: Adjacent presentation (in fallback order), same depth/locale/flavor
+   *   4: Any presentation, same depth/locale, classic flavor
+   *   5: Any presentation, same depth, classic flavor, en locale
+   *   6: Any presentation, survey depth, classic flavor, en locale
+   *   7: Any content for the topic (last resort)
+   */
+  function contentPriority(
+    row: { presentation: string; contentDepth: string; locale: string; flavor: string },
+    query: { presentation: PresentationLevel; contentDepth: string; locale: string; flavor: string }
+  ): number {
+    const presOrder = [query.presentation, ...PRESENTATION_FALLBACK_ORDER[query.presentation]];
+    const presIdx = presOrder.indexOf(row.presentation as PresentationLevel);
+
+    const depthMatch = row.contentDepth === query.contentDepth;
+    const localeMatch = row.locale === query.locale;
+    const flavorMatch = row.flavor === query.flavor;
+
+    // Tier 0-3: presentation match/fallback with exact depth+locale+flavor
+    if (depthMatch && localeMatch && flavorMatch && presIdx >= 0) return presIdx;
+
+    // Tier 4: same depth+locale, classic flavor (any presentation in order)
+    if (depthMatch && localeMatch && row.flavor === "classic") return 4;
+
+    // Tier 5: same depth, classic+en (any presentation)
+    if (depthMatch && row.flavor === "classic" && row.locale === "en") return 5;
+
+    // Tier 6: survey depth, classic+en (any presentation)
+    if (row.contentDepth === "survey" && row.flavor === "classic" && row.locale === "en") return 6;
+
+    // Tier 7: any content for the topic
+    return 7;
+  }
+
+  /** Pick the best-matching group of rows from all content for a topic. */
+  function selectBestRows<T extends { presentation: string; contentDepth: string; locale: string; flavor: string }>(
+    allRows: T[],
+    query: { presentation: PresentationLevel; contentDepth: string; locale: string; flavor: string }
+  ): T[] {
+    if (allRows.length === 0) return [];
+
+    let bestPriority = 8;
+    let bestRows: T[] = [];
+
+    for (const row of allRows) {
+      const p = contentPriority(row, query);
+      if (p < bestPriority) {
+        bestPriority = p;
+        bestRows = [row];
+      } else if (p === bestPriority) {
+        bestRows.push(row);
+      }
+    }
+
+    return bestRows;
+  }
+
   async function getTopicProblems(query: ContentQuery): Promise<Problem[]> {
     const { topicId, contentDepth, presentation, locale = "en", flavor = "classic" } = query;
 
-    // Try exact match first
-    let rows = await db
-      .select()
-      .from(schema.assessmentContent)
-      .where(
-        and(
-          eq(schema.assessmentContent.topicId, topicId),
-          eq(schema.assessmentContent.contentDepth, contentDepth),
-          eq(schema.assessmentContent.presentation, presentation),
-          eq(schema.assessmentContent.locale, locale),
-          eq(schema.assessmentContent.flavor, flavor)
-        )
-      );
-
-    if (rows.length > 0) return mapProblems(rows);
-
-    // Fallback chain per content-system.md §6
-
-    // a. Try adjacent presentation levels
-    for (const altPres of PRESENTATION_FALLBACK_ORDER[presentation]) {
-      rows = await db
-        .select()
-        .from(schema.assessmentContent)
-        .where(
-          and(
-            eq(schema.assessmentContent.topicId, topicId),
-            eq(schema.assessmentContent.contentDepth, contentDepth),
-            eq(schema.assessmentContent.presentation, altPres),
-            eq(schema.assessmentContent.locale, locale),
-            eq(schema.assessmentContent.flavor, flavor)
-          )
-        );
-      if (rows.length > 0) return mapProblems(rows);
-    }
-
-    // b. Try 'classic' flavor (if not already)
-    if (flavor !== "classic") {
-      rows = await db
-        .select()
-        .from(schema.assessmentContent)
-        .where(
-          and(
-            eq(schema.assessmentContent.topicId, topicId),
-            eq(schema.assessmentContent.contentDepth, contentDepth),
-            eq(schema.assessmentContent.locale, locale),
-            eq(schema.assessmentContent.flavor, "classic")
-          )
-        );
-      if (rows.length > 0) return mapProblems(rows);
-    }
-
-    // c. Try 'en' locale (if not already)
-    if (locale !== "en") {
-      rows = await db
-        .select()
-        .from(schema.assessmentContent)
-        .where(
-          and(
-            eq(schema.assessmentContent.topicId, topicId),
-            eq(schema.assessmentContent.contentDepth, contentDepth),
-            eq(schema.assessmentContent.flavor, "classic"),
-            eq(schema.assessmentContent.locale, "en")
-          )
-        );
-      if (rows.length > 0) return mapProblems(rows);
-    }
-
-    // d. Try 'survey' depth (if not already)
-    if (contentDepth !== "survey") {
-      rows = await db
-        .select()
-        .from(schema.assessmentContent)
-        .where(
-          and(
-            eq(schema.assessmentContent.topicId, topicId),
-            eq(schema.assessmentContent.contentDepth, "survey"),
-            eq(schema.assessmentContent.flavor, "classic"),
-            eq(schema.assessmentContent.locale, "en")
-          )
-        );
-      if (rows.length > 0) return mapProblems(rows);
-    }
-
-    // e. Last resort: any content for this topic
-    rows = await db
+    // Single query: fetch all content for this topic, rank in application code
+    const allRows = await db
       .select()
       .from(schema.assessmentContent)
       .where(eq(schema.assessmentContent.topicId, topicId));
 
-    return mapProblems(rows);
+    const best = selectBestRows(allRows, { presentation, contentDepth, locale, flavor });
+    return mapProblems(best);
   }
 
   async function getTopicExamples(query: ContentQuery): Promise<WorkedExample[]> {
     const { topicId, contentDepth, presentation, locale = "en", flavor = "classic" } = query;
 
-    // Try exact match
-    let rows = await db
-      .select()
-      .from(schema.instructionalContent)
-      .where(
-        and(
-          eq(schema.instructionalContent.topicId, topicId),
-          eq(schema.instructionalContent.contentDepth, contentDepth),
-          eq(schema.instructionalContent.presentation, presentation),
-          eq(schema.instructionalContent.locale, locale),
-          eq(schema.instructionalContent.flavor, flavor)
-        )
-      );
-
-    if (rows.length > 0) return mapExamples(rows);
-
-    // Fallback: adjacent presentation
-    for (const altPres of PRESENTATION_FALLBACK_ORDER[presentation]) {
-      rows = await db
-        .select()
-        .from(schema.instructionalContent)
-        .where(
-          and(
-            eq(schema.instructionalContent.topicId, topicId),
-            eq(schema.instructionalContent.contentDepth, contentDepth),
-            eq(schema.instructionalContent.presentation, altPres),
-            eq(schema.instructionalContent.locale, locale),
-            eq(schema.instructionalContent.flavor, flavor)
-          )
-        );
-      if (rows.length > 0) return mapExamples(rows);
-    }
-
-    // Fallback: classic flavor
-    if (flavor !== "classic") {
-      rows = await db
-        .select()
-        .from(schema.instructionalContent)
-        .where(
-          and(
-            eq(schema.instructionalContent.topicId, topicId),
-            eq(schema.instructionalContent.contentDepth, contentDepth),
-            eq(schema.instructionalContent.locale, locale),
-            eq(schema.instructionalContent.flavor, "classic")
-          )
-        );
-      if (rows.length > 0) return mapExamples(rows);
-    }
-
-    // Fallback: en locale
-    if (locale !== "en") {
-      rows = await db
-        .select()
-        .from(schema.instructionalContent)
-        .where(
-          and(
-            eq(schema.instructionalContent.topicId, topicId),
-            eq(schema.instructionalContent.contentDepth, contentDepth),
-            eq(schema.instructionalContent.flavor, "classic"),
-            eq(schema.instructionalContent.locale, "en")
-          )
-        );
-      if (rows.length > 0) return mapExamples(rows);
-    }
-
-    // Fallback: survey depth
-    if (contentDepth !== "survey") {
-      rows = await db
-        .select()
-        .from(schema.instructionalContent)
-        .where(
-          and(
-            eq(schema.instructionalContent.topicId, topicId),
-            eq(schema.instructionalContent.contentDepth, "survey"),
-            eq(schema.instructionalContent.flavor, "classic"),
-            eq(schema.instructionalContent.locale, "en")
-          )
-        );
-      if (rows.length > 0) return mapExamples(rows);
-    }
-
-    // Last resort: any content for this topic
-    rows = await db
+    // Single query: fetch all content for this topic, rank in application code
+    const allRows = await db
       .select()
       .from(schema.instructionalContent)
       .where(eq(schema.instructionalContent.topicId, topicId));
 
-    return mapExamples(rows);
+    const best = selectBestRows(allRows, { presentation, contentDepth, locale, flavor });
+    return mapExamples(best);
   }
 
   async function getTopicVisuals(query: ContentQuery): Promise<VisualAsset[] | undefined> {
