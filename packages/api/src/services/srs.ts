@@ -1,11 +1,14 @@
-import { eq, and, lte, sql, inArray } from "drizzle-orm";
-import { createEmptyCard, fsrs, generatorParameters, type Card, type Grade, Rating, State } from "ts-fsrs";
+import { eq, and, lte, sql, inArray, count as drizzleCount } from "drizzle-orm";
+import { createEmptyCard, fsrs, generatorParameters, type Card, type Grade, type FSRSParameters, Rating, State } from "ts-fsrs";
 import type { DB } from "../db/index.js";
 import * as schema from "../db/schema.js";
 import { createGraphService } from "./graph.js";
 
-const params = generatorParameters({ enable_fuzz: true });
-const f = fsrs(params);
+const defaultParams = generatorParameters({ enable_fuzz: true });
+const defaultFsrs = fsrs(defaultParams);
+
+const MIN_REVIEWS_FOR_OPTIMIZATION = 50;
+const OPTIMIZATION_STALENESS_DAYS = 7;
 
 type UserTopicRow = typeof schema.userTopicState.$inferSelect;
 
@@ -82,6 +85,24 @@ export function interleaveByStrand(
 export function createSRSService(db: DB) {
   const graph = createGraphService(db);
 
+  async function getUserFsrs(userId: string) {
+    const row = await db.query.userFsrsParams.findFirst({
+      where: eq(schema.userFsrsParams.userId, userId),
+    });
+    if (!row) return defaultFsrs;
+
+    const overrides: Partial<FSRSParameters> = {
+      enable_fuzz: true,
+      request_retention: row.requestRetention,
+    };
+    if (row.wJson) {
+      try {
+        overrides.w = JSON.parse(row.wJson);
+      } catch { /* use defaults */ }
+    }
+    return fsrs(generatorParameters(overrides));
+  }
+
   return {
     /**
      * Get or create user topic state.
@@ -137,7 +158,8 @@ export function createSRSService(db: DB) {
       const card = cardFromRow(state);
       const now = new Date();
 
-      const scheduling = f.repeat(card, now);
+      const userFsrs = await getUserFsrs(userId);
+      const scheduling = userFsrs.repeat(card, now);
       const result = scheduling[rating];
       const newCard = result.card;
 
@@ -643,6 +665,111 @@ export function createSRSService(db: DB) {
         dueForReview: dueNow,
         total: allTopics.length,
       };
+    },
+
+    /**
+     * Compute and store per-user FSRS parameters based on review history.
+     * Uses observed retention rate to adjust request_retention.
+     * Returns null if insufficient data (< 50 reviews).
+     */
+    async optimizeUserParams(userId: string): Promise<{ requestRetention: number; reviewCount: number } | null> {
+      const [{ total }] = await db
+        .select({ total: sql<number>`count(*)` })
+        .from(schema.reviewLog)
+        .where(eq(schema.reviewLog.userId, userId));
+
+      if (total < MIN_REVIEWS_FOR_OPTIMIZATION) return null;
+
+      // Check staleness: skip if recently computed
+      const existing = await db.query.userFsrsParams.findFirst({
+        where: eq(schema.userFsrsParams.userId, userId),
+      });
+      if (existing?.computedAt) {
+        const daysSince = (Date.now() - new Date(existing.computedAt).getTime()) / (1000 * 60 * 60 * 24);
+        if (daysSince < OPTIMIZATION_STALENESS_DAYS && existing.reviewCount === total) return null;
+      }
+
+      // Compute observed retention from review-state reviews (state=2 / Review)
+      // Only count reviews at Review state for meaningful retention signal
+      const [{ reviewStateTotal }] = await db
+        .select({ reviewStateTotal: sql<number>`count(*)` })
+        .from(schema.reviewLog)
+        .where(
+          and(
+            eq(schema.reviewLog.userId, userId),
+            eq(schema.reviewLog.phase, "review"),
+          )
+        );
+
+      const [{ reviewStateCorrect }] = await db
+        .select({ reviewStateCorrect: sql<number>`count(*)` })
+        .from(schema.reviewLog)
+        .where(
+          and(
+            eq(schema.reviewLog.userId, userId),
+            eq(schema.reviewLog.phase, "review"),
+            eq(schema.reviewLog.correct, true),
+          )
+        );
+
+      // Fall back to overall stats if not enough review-phase data
+      let observedRetention: number;
+      if (reviewStateTotal >= 20) {
+        observedRetention = reviewStateCorrect / reviewStateTotal;
+      } else {
+        const [{ allCorrect }] = await db
+          .select({ allCorrect: sql<number>`count(*)` })
+          .from(schema.reviewLog)
+          .where(
+            and(
+              eq(schema.reviewLog.userId, userId),
+              eq(schema.reviewLog.correct, true),
+            )
+          );
+        observedRetention = allCorrect / total;
+      }
+
+      // Adjust request_retention toward observed retention (clamped 0.7-0.97)
+      // If user retains well (>0.9), target slightly higher; if struggling, lower the bar
+      const targetRetention = Math.min(0.97, Math.max(0.7, observedRetention));
+      const now = new Date().toISOString();
+
+      if (existing) {
+        await db
+          .update(schema.userFsrsParams)
+          .set({
+            requestRetention: targetRetention,
+            reviewCount: total,
+            computedAt: now,
+            updatedAt: now,
+          })
+          .where(eq(schema.userFsrsParams.userId, userId));
+      } else {
+        await db
+          .insert(schema.userFsrsParams)
+          .values({
+            userId,
+            requestRetention: targetRetention,
+            reviewCount: total,
+            computedAt: now,
+            createdAt: now,
+            updatedAt: now,
+          });
+      }
+
+      return { requestRetention: targetRetention, reviewCount: total };
+    },
+
+    /**
+     * Get the user's current FSRS parameters (or defaults).
+     */
+    async getUserFsrsParams(userId: string) {
+      const row = await db.query.userFsrsParams.findFirst({
+        where: eq(schema.userFsrsParams.userId, userId),
+      });
+      return row
+        ? { requestRetention: row.requestRetention, reviewCount: row.reviewCount, computedAt: row.computedAt }
+        : { requestRetention: 0.9, reviewCount: 0, computedAt: null };
     },
   };
 }

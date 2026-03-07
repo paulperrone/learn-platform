@@ -24,10 +24,31 @@ type SessionState = {
   lastServedPresentation?: PresentationLevel;
   lastServedSubjectId?: string;
   currentBlendRole?: BlendRole;
+  rollingResults: boolean[]; // Sliding window of last N problem correctness results (for adaptive difficulty)
 };
 
 // In-memory cache — D1 is the source of truth
 const activeSessions = new Map<string, SessionState>();
+
+export type DifficultyBias = "easier" | "on-target" | "harder";
+
+export function computeDifficultyBias(rollingResults: boolean[]): DifficultyBias {
+  if (rollingResults.length < 3) return "on-target"; // Not enough data
+  const correct = rollingResults.filter(Boolean).length;
+  const accuracy = correct / rollingResults.length;
+  if (accuracy > 0.9) return "harder";
+  if (accuracy < 0.8) return "easier";
+  return "on-target";
+}
+
+export function applyDifficultyBias(baseDifficulty: string, bias: DifficultyBias): string {
+  if (bias === "on-target") return baseDifficulty;
+  const levels = ["easy", "medium", "hard"];
+  const idx = levels.indexOf(baseDifficulty);
+  if (idx < 0) return baseDifficulty;
+  if (bias === "harder") return levels[Math.min(idx + 1, levels.length - 1)];
+  return levels[Math.max(idx - 1, 0)];
+}
 
 export function createSessionService(db: DB) {
   const graph = createGraphService(db);
@@ -88,11 +109,12 @@ export function createSessionService(db: DB) {
   // Types that force retrieval practice (higher learning gain than text-qa)
   const preferredTypes: AssessmentType[] = ["numerical-input", "multi-step", "matching", "multi-select"];
 
-  function selectProblem(problems: Problem[], difficulty: string, exclude: string[] = []): Problem | null {
+  function selectProblem(problems: Problem[], difficulty: string, exclude: string[] = [], bias: DifficultyBias = "on-target"): Problem | null {
     const available = problems.filter((p) => !exclude.includes(p.id));
     if (available.length === 0) return null;
 
-    const byDifficulty = available.filter((p) => p.difficulty === difficulty);
+    const targetDifficulty = applyDifficultyBias(difficulty, bias);
+    const byDifficulty = available.filter((p) => p.difficulty === targetDifficulty);
     const pool = byDifficulty.length > 0 ? byDifficulty : available;
 
     // Prefer diverse question types when available
@@ -182,6 +204,7 @@ export function createSessionService(db: DB) {
         totalCorrect: 0,
         totalAttempts: 0,
         currentBlendRole: firstTopic.blendRole,
+        rollingResults: [],
       };
       activeSessions.set(sessionId, state);
 
@@ -252,6 +275,7 @@ export function createSessionService(db: DB) {
         reviewsCompleted: 0,
         totalCorrect: 0,
         totalAttempts: 0,
+        rollingResults: [],
       };
       activeSessions.set(sessionId, state);
 
@@ -322,6 +346,13 @@ export function createSessionService(db: DB) {
         }
       }
       if (isCorrect) state.totalCorrect++;
+
+      // Rolling accuracy tracker: sliding window of last 10 results
+      const ROLLING_WINDOW = 10;
+      state.rollingResults.push(isCorrect);
+      if (state.rollingResults.length > ROLLING_WINDOW) {
+        state.rollingResults = state.rollingResults.slice(-ROLLING_WINDOW);
+      }
 
       // Progressive hint reveal: track hints revealed for rating cap
       const hintsUsed = response.hintsUsed ?? state.hintIndex;
@@ -580,9 +611,11 @@ export function createSessionService(db: DB) {
         return baseReveal + hintIndex > allHints.length;
       }
 
+      const bias = computeDifficultyBias(state.rollingResults);
+
       switch (state.currentPhase) {
         case "pretest": {
-          // 1-2 problems, student likely fails — primes learning
+          // 1-2 problems, student likely fails — primes learning (no adaptive bias for pretest)
           const problem = selectProblem(problems, "medium");
           const p = withVisuals(problem ?? makeFallbackProblem(topic));
           return {
@@ -595,6 +628,7 @@ export function createSessionService(db: DB) {
             showSolution: shouldShowSolution(p, state.currentPhase, state.hintIndex),
             hintsRevealed: state.hintIndex,
             blendRole: state.currentBlendRole ?? "main",
+            difficultyBias: bias,
             message: "Let's see what you already know. Try your best!",
           };
         }
@@ -655,8 +689,8 @@ export function createSessionService(db: DB) {
         }
 
         case "guided": {
-          // Partially scaffolded — start with first hint revealed
-          const problem = selectProblem(problems, "easy");
+          // Partially scaffolded — start with first hint revealed (adaptive bias applies)
+          const problem = selectProblem(problems, "easy", [], bias);
           const p = withVisuals(problem ?? makeFallbackProblem(topic));
           return {
             type: "problem",
@@ -668,13 +702,14 @@ export function createSessionService(db: DB) {
             showSolution: shouldShowSolution(p, state.currentPhase, state.hintIndex),
             hintsRevealed: state.hintIndex,
             blendRole: state.currentBlendRole ?? "main",
+            difficultyBias: bias,
             message: "Now try it with some help. Hints are available if you need them.",
           };
         }
 
         case "independent": {
-          // Full problems, confidence judgment
-          const problem = selectProblem(problems, "medium");
+          // Full problems, confidence judgment (adaptive bias applies)
+          const problem = selectProblem(problems, "medium", [], bias);
           const p = withVisuals(problem ?? makeFallbackProblem(topic));
           return {
             type: "problem",
@@ -687,13 +722,14 @@ export function createSessionService(db: DB) {
             hintsRevealed: state.hintIndex,
             askConfidence: true,
             blendRole: state.currentBlendRole ?? "main",
+            difficultyBias: bias,
             message: "Solve this on your own. Rate your confidence after.",
           };
         }
 
         case "review": {
-          // Spaced review — medium difficulty; message varies by blend role
-          const problem = selectProblem(problems, "medium");
+          // Spaced review — adaptive difficulty; message varies by blend role
+          const problem = selectProblem(problems, "medium", [], bias);
           const p = withVisuals(problem ?? makeFallbackProblem(topic));
           const blendRole = state.currentBlendRole ?? "main";
           let reviewMessage = "Review time! Let's see if you remember.";
@@ -713,12 +749,13 @@ export function createSessionService(db: DB) {
             hintsRevealed: state.hintIndex,
             askConfidence: blendRole !== "warmup",
             blendRole,
+            difficultyBias: bias,
             message: reviewMessage,
           };
         }
 
         case "remediation": {
-          // Trace prereqs, provide simpler practice — start with first hint
+          // Trace prereqs, provide simpler practice — always easy, no upward bias
           const prereqChain = await graph.getPrerequisiteChain(topic.id);
           const problem = selectProblem(problems, "easy");
           const p = withVisuals(problem ?? makeFallbackProblem(topic));
@@ -733,13 +770,14 @@ export function createSessionService(db: DB) {
             hintsRevealed: state.hintIndex,
             prerequisiteChain: prereqChain,
             blendRole: state.currentBlendRole ?? "main",
+            difficultyBias: bias,
             message: "Let's go back to basics. Here's an easier version.",
           };
         }
 
         default: {
           // diagnostic phase handled by diagnostic service, not session service
-          const problem = selectProblem(problems, "medium");
+          const problem = selectProblem(problems, "medium", [], bias);
           const p = withVisuals(problem ?? makeFallbackProblem(topic));
           return {
             type: "problem",
@@ -751,6 +789,7 @@ export function createSessionService(db: DB) {
             showSolution: shouldShowSolution(p, state.currentPhase, state.hintIndex),
             hintsRevealed: state.hintIndex,
             blendRole: state.currentBlendRole ?? "main",
+            difficultyBias: bias,
             message: "Answer this question.",
           };
         }
@@ -783,6 +822,11 @@ export function createSessionService(db: DB) {
         .where(eq(schema.learnSessions.id, sessionId));
 
       activeSessions.delete(sessionId);
+
+      // Trigger per-user FSRS optimization (best-effort, non-blocking)
+      if (!state.isAnonymous) {
+        srs.optimizeUserParams(state.userId).catch(() => {});
+      }
     },
   };
 }
@@ -801,6 +845,7 @@ export type SessionItem =
       hintsRevealed: number;
       askConfidence?: boolean;
       blendRole?: BlendRole;
+      difficultyBias?: "easier" | "on-target" | "harder";
       message: string;
     }
   | {
@@ -824,6 +869,7 @@ export type SessionItem =
       hintsRevealed: number;
       prerequisiteChain: string[];
       blendRole?: BlendRole;
+      difficultyBias?: "easier" | "on-target" | "harder";
       message: string;
     }
   | { type: "complete"; message: string }

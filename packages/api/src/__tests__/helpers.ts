@@ -33,6 +33,7 @@ export async function resetDb() {
     "teach_sessions",
     "account_links",
     "presentation_drift_log",
+    "user_fsrs_params",
     "user_subject_presentation",
     "llm_model_config",
     "llm_usage",
@@ -531,6 +532,9 @@ const SCHEMA_STATEMENTS = [
 
   // user_preferences (FK → users)
   'CREATE TABLE user_preferences (user_id text PRIMARY KEY NOT NULL, tts_enabled integer DEFAULT true NOT NULL, tts_rate real DEFAULT 0.9 NOT NULL, tts_voice_name text, tts_auto_read integer DEFAULT false NOT NULL, stt_enabled integer DEFAULT true NOT NULL, presentation_override text, created_at text NOT NULL, updated_at text NOT NULL, FOREIGN KEY (user_id) REFERENCES users(id))',
+
+  // user_fsrs_params (FK → users)
+  'CREATE TABLE user_fsrs_params (user_id text PRIMARY KEY NOT NULL, request_retention real DEFAULT 0.9 NOT NULL, w_json text, review_count integer DEFAULT 0 NOT NULL, computed_at text, created_at text NOT NULL, updated_at text NOT NULL, FOREIGN KEY (user_id) REFERENCES users(id))',
 
   // llm_model_config (no FK deps)
   'CREATE TABLE llm_model_config (tier text PRIMARY KEY NOT NULL, model_id text NOT NULL, cost_input_per_m real NOT NULL, cost_output_per_m real NOT NULL, updated_at text NOT NULL)',

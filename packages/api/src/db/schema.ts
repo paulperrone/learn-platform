@@ -281,6 +281,16 @@ export const userPreferences = sqliteTable("user_preferences", {
   updatedAt: text("updated_at").notNull().$defaultFn(() => new Date().toISOString()),
 });
 
+export const userFsrsParams = sqliteTable("user_fsrs_params", {
+  userId: text("user_id").primaryKey().references(() => users.id),
+  requestRetention: real("request_retention").notNull().default(0.9),
+  wJson: text("w_json"), // JSON array of custom FSRS weights (null = use defaults)
+  reviewCount: integer("review_count").notNull().default(0), // cached count for threshold check
+  computedAt: text("computed_at"), // when params were last optimized
+  createdAt: text("created_at").notNull().$defaultFn(() => new Date().toISOString()),
+  updatedAt: text("updated_at").notNull().$defaultFn(() => new Date().toISOString()),
+});
+
 export const userSubjectPresentation = sqliteTable("user_subject_presentation", {
   id: integer("id").primaryKey({ autoIncrement: true }),
   userId: text("user_id").notNull().references(() => users.id),

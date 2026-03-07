@@ -120,6 +120,27 @@
       "when": 1772956800003,
       "tag": "0016_user_subject_presentation",
       "breakpoints": true
+    },
+    {
+      "idx": 17,
+      "version": "6",
+      "when": 1772956800004,
+      "tag": "0017_presentation_drift_log",
+      "breakpoints": true
+    },
+    {
+      "idx": 18,
+      "version": "6",
+      "when": 1772956800005,
+      "tag": "0018_consecutive_correct_reviews",
+      "breakpoints": true
+    },
+    {
+      "idx": 19,
+      "version": "6",
+      "when": 1772956800006,
+      "tag": "0019_user_fsrs_params",
+      "breakpoints": true
     }
   ]
 }

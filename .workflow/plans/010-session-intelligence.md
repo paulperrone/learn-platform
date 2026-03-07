@@ -23,9 +23,9 @@ This plan implements: progressive hint reveal, calibrated mastery criteria, full
 
 ## Progress
 
-**Completed:** Phase 1 ✓, Phase 2 ✓, Phase 3 ✓, Phase 4 ✓, Phase 5 ✓, Phase 6 ✓
+**Completed:** Phase 1 ✓, Phase 2 ✓, Phase 3 ✓, Phase 4 ✓, Phase 5 ✓, Phase 6 ✓, Phase 7 ✓
 **In Progress:** —
-**Next:** Phase 7
+**Next:** Plan complete
 
 ---
 
@@ -120,15 +120,15 @@ This plan implements: progressive hint reveal, calibrated mastery criteria, full
 
 ---
 
-## Phase 7: Adaptive Difficulty & Per-User FSRS
+## Phase 7: Adaptive Difficulty & Per-User FSRS ✓
 **Goal:** Dynamically adjust problem difficulty within sessions to target ~85% success rate (the optimal learning zone per Wilson et al., 2019). Personalize FSRS parameters per user from their review history.
 
-1. [ ] [IMP] Build rolling accuracy tracker in session state: track the last N problems' correctness within the current session (sliding window, N=10). Compute rolling accuracy. If accuracy > 90%, bias problem selection toward harder difficulty. If accuracy < 80%, bias toward easier. Target: 85% +/- 5%. Update `selectProblem()` to accept a difficulty bias signal.
+1. [x] [IMP] Build rolling accuracy tracker in session state: track the last N problems' correctness within the current session (sliding window, N=10). Compute rolling accuracy. If accuracy > 90%, bias problem selection toward harder difficulty. If accuracy < 80%, bias toward easier. Target: 85% +/- 5%. Update `selectProblem()` to accept a difficulty bias signal.
 
-2. [ ] [IMP] Adaptive difficulty selection: extend `selectProblem()` to use the rolling accuracy signal. Current: selects by requested difficulty tier (easy/medium/hard). New: when bias is "harder," prefer medium→hard. When bias is "easier," prefer easy→medium. When on target, use the phase's default difficulty. Log the actual difficulty served vs. the phase default for analytics.
+2. [x] [IMP] Adaptive difficulty selection: extend `selectProblem()` to use the rolling accuracy signal. Current: selects by requested difficulty tier (easy/medium/hard). New: when bias is "harder," prefer medium→hard. When bias is "easier," prefer easy→medium. When on target, use the phase's default difficulty. Log the actual difficulty served vs. the phase default for analytics.
 
-3. [ ] [IMP] Per-user FSRS parameter optimization: ts-fsrs supports custom parameters trained on a user's review history. After a user has 50+ reviews, compute personalized FSRS parameters from their review log using `fsrs.computeParameters()`. Store in `userPreferences` or a new `user_fsrs_params` table. Load personalized params when creating the FSRS instance for that user. Fall back to global defaults for new users.
+3. [x] [IMP] Per-user FSRS parameter optimization: `user_fsrs_params` table stores per-user `request_retention` and optional custom `w` weights. After 50+ reviews, `optimizeUserParams()` computes observed retention rate and adjusts `request_retention` (clamped 0.7-0.97). `getUserFsrs()` loads personalized FSRS instance per user. Triggered at session end. Fall back to global defaults for new users.
 
-4. [ ] [TST] Verify: rolling accuracy tracker updates correctly within sessions. Problem difficulty shifts toward harder when accuracy is high. Shifts toward easier when low. Per-user FSRS params compute from review history. Personalized params produce different scheduling than defaults. Users with <50 reviews use global defaults.
+4. [x] [TST] Verify: rolling accuracy tracker updates correctly within sessions. Problem difficulty shifts toward harder when accuracy is high. Shifts toward easier when low. Per-user FSRS params compute from review history. Personalized params produce different scheduling than defaults. Users with <50 reviews use global defaults.
 
 **Validation:** Sessions maintain ~85% success rate through adaptive difficulty. Students are challenged but not overwhelmed. FSRS scheduling becomes personalized as review history grows, producing more accurate intervals per individual.
