@@ -1,6 +1,6 @@
 import { authClient } from "./useAuth";
 import { useToast } from "./useToast";
-import type { SpeechSettings, Subject, Topic, Problem, WorkedExample, DiagnosticResult, TodayProgress, WeeklySummary, DailyGoalConfig, DailyActivityDay, StreakInfo } from "@learn/shared";
+import type { SpeechSettings, Subject, Topic, Problem, WorkedExample, DiagnosticResult, TodayProgress, WeeklySummary, DailyGoalConfig, DailyActivityDay, StreakInfo, CompletionEstimate } from "@learn/shared";
 
 const API_BASE = "/api";
 
@@ -179,6 +179,10 @@ export function useApi() {
         misconceptionCount: number;
         trend: { accuracy: number; window: number }[];
       }>(`/progress/${userId}/calibration`);
+    },
+    getCompletionEstimates: async () => {
+      const userId = await getUserId();
+      return request<{ estimates: CompletionEstimate[] }>(`/progress/${userId}/completion`);
     },
 
     // LLM

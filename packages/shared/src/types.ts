@@ -381,6 +381,32 @@ export type StreakInfo = {
   milestoneReached: number | null;
 };
 
+// === Mastery & Progress Events ===
+
+export type MasteryEvent = {
+  topicId: string;
+  topicName: string;
+  unlockedTopics: { id: string; name: string }[];
+};
+
+export type CompletionEstimate = {
+  subjectId: string;
+  subjectName: string;
+  mastered: number;
+  total: number;
+  percentComplete: number;
+  topicsMasteredPerWeek: number;
+  estimatedWeeksRemaining: number | null; // null if no pace data
+  milestoneReached: 25 | 50 | 75 | 100 | null;
+};
+
+export type ProgressMilestone = {
+  type: "subject_progress";
+  threshold: 25 | 50 | 75 | 100;
+  mastered: number;
+  total: number;
+};
+
 // === Speech Settings ===
 
 export type SpeechSettings = {

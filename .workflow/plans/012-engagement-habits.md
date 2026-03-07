@@ -21,9 +21,9 @@ Daily practice goals, streak visualization, progress animations, and estimated c
 
 ## Progress
 
-**Completed:** Phase 1 ✓, Phase 2 ✓
+**Completed:** Phase 1 ✓, Phase 2 ✓, Phase 3 ✓
 **In Progress:** —
-**Next:** Phase 3
+**Next:** —
 
 ---
 
@@ -57,15 +57,15 @@ Daily practice goals, streak visualization, progress animations, and estimated c
 
 ---
 
-## Phase 3: Progress Animations & Completion Estimates
+## Phase 3: Progress Animations & Completion Estimates ✓
 **Goal:** Post-lesson graph animations and time-to-completion estimates. Connect individual sessions to the bigger picture.
 
-1. [ ] [IMP] Post-lesson knowledge graph highlight: after mastering a topic, show brief animation highlighting the newly mastered node and the topics it unlocks. Makes progress tangible — "You just mastered Addition Within 20. This unlocks: Addition Within 100, Subtraction Within 20." Uses existing knowledge graph data.
+1. [x] [IMP] Post-lesson knowledge graph highlight: after mastering a topic, show brief animation highlighting the newly mastered node and the topics it unlocks. Makes progress tangible — "You just mastered Addition Within 20. This unlocks: Addition Within 100, Subtraction Within 20." Uses existing knowledge graph data.
 
-2. [ ] [IMP] Estimated completion time: based on remaining topics, current pace (topics mastered per week), and projected review burden, estimate weeks/months to complete the subject. Show on progress page. Update as pace changes. Frame positively: "At your current pace, you'll complete K-5 Math in about 14 weeks."
+2. [x] [IMP] Estimated completion time: based on remaining topics, current pace (topics mastered per week), and projected review burden, estimate weeks/months to complete the subject. Show on progress page. Update as pace changes. Frame positively: "At your current pace, you'll complete K-5 Math in about 14 weeks."
 
-3. [ ] [IMP] Progress milestones: acknowledge 25%, 50%, 75%, 100% completion of a subject. Brief celebration + encouragement. Show progress on dashboard as "47 of 71 topics mastered."
+3. [x] [IMP] Progress milestones: acknowledge 25%, 50%, 75%, 100% completion of a subject. Brief celebration + encouragement. Show progress on dashboard as "47 of 71 topics mastered."
 
-4. [ ] [TST] Verify: post-lesson animation fires after topic mastery. Completion estimate is reasonable and updates. Milestones trigger at correct thresholds. Animations are smooth and non-blocking.
+4. [x] [TST] Verify: post-lesson animation fires after topic mastery. Completion estimate is reasonable and updates. Milestones trigger at correct thresholds. Animations are smooth and non-blocking.
 
 **Validation:** Student sees tangible progress after each mastery event. Completion estimate sets expectations. Progress milestones provide periodic encouragement.

@@ -254,6 +254,7 @@ export function createSRSService(db: DB) {
       return {
         card: adjustedCard,
         mastered: shouldMasterFinal,
+        justMastered: shouldMasterFinal && !state.mastered,
         misconception: isMisconception,
         log: adjustedLog,
       };

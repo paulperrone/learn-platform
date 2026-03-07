@@ -2,7 +2,7 @@
 import { ref, computed, onMounted } from "vue";
 import { useApi, withErrorToast } from "@/composables/useApi";
 import { useI18n } from "vue-i18n";
-import type { TodayProgress, WeeklySummary, StreakInfo, DailyActivityDay } from "@learn/shared";
+import type { TodayProgress, WeeklySummary, StreakInfo, DailyActivityDay, CompletionEstimate } from "@learn/shared";
 
 const api = useApi();
 const { t } = useI18n();
@@ -12,21 +12,23 @@ const todayProgress = ref<TodayProgress | null>(null);
 const weeklySummary = ref<WeeklySummary | null>(null);
 const streakInfo = ref<StreakInfo | null>(null);
 const activityHistory = ref<DailyActivityDay[]>([]);
+const completionEstimates = ref<CompletionEstimate[]>([]);
 const loading = ref(true);
 const error = ref(false);
 
 onMounted(async () => {
   const result = await withErrorToast(async () => {
     const today = new Date().toISOString().slice(0, 10);
-    const [progressData, frontierData, todayData, weeklyData, streakData, historyData] = await Promise.all([
+    const [progressData, frontierData, todayData, weeklyData, streakData, historyData, completionData] = await Promise.all([
       api.getProgress(),
       api.getFrontier(),
       api.getTodayProgress(today),
       api.getWeeklySummary(today),
       api.getStreakInfo(today),
       api.getActivityHistory(84),
+      api.getCompletionEstimates(),
     ]);
-    return { progressData, frontierData, todayData, weeklyData, streakData, historyData };
+    return { progressData, frontierData, todayData, weeklyData, streakData, historyData, completionData };
   }, t("errors.failedToLoad", { resource: "dashboard" }));
 
   if (result) {
@@ -36,6 +38,7 @@ onMounted(async () => {
     weeklySummary.value = result.weeklyData;
     streakInfo.value = result.streakData;
     activityHistory.value = result.historyData.days;
+    completionEstimates.value = result.completionData.estimates;
   } else {
     error.value = true;
   }
@@ -106,6 +109,12 @@ const milestoneMessage = computed(() => {
   if (!streakInfo.value?.milestoneReached) return null;
   const key = `dashboard.streakMilestone${streakInfo.value.milestoneReached}`;
   return t(key);
+});
+
+const progressMilestone = computed(() => {
+  const est = completionEstimates.value[0];
+  if (!est?.milestoneReached) return null;
+  return t(`completion.milestone${est.milestoneReached}`);
 });
 </script>
 
@@ -263,6 +272,41 @@ const milestoneMessage = computed(() => {
             :style="{ width: progressPercent() + '%' }"
           />
         </div>
+      </div>
+
+      <!-- Completion Estimate -->
+      <div v-if="completionEstimates.length > 0" class="bg-white rounded-lg shadow-sm border border-gray-200 p-5 mb-8">
+        <div v-for="est in completionEstimates" :key="est.subjectId">
+          <div class="flex justify-between items-baseline mb-2">
+            <span class="font-semibold text-gray-800">{{ est.subjectName }}</span>
+            <span class="text-sm text-gray-500">
+              {{ t('completion.progress', { mastered: est.mastered, total: est.total }) }}
+            </span>
+          </div>
+          <div class="w-full bg-gray-200 rounded-full h-2.5 mb-3">
+            <div
+              class="h-2.5 rounded-full transition-all duration-700"
+              :class="est.percentComplete >= 100 ? 'bg-green-500' : 'bg-blue-500'"
+              :style="{ width: est.percentComplete + '%' }"
+            />
+          </div>
+          <div class="flex items-center gap-4 text-sm">
+            <span v-if="est.topicsMasteredPerWeek > 0" class="text-gray-500">
+              {{ t('completion.pace', { rate: est.topicsMasteredPerWeek }) }}
+            </span>
+            <span v-if="est.estimatedWeeksRemaining != null" class="text-blue-600 font-medium">
+              {{ t('completion.estimate', { weeks: est.estimatedWeeksRemaining }) }}
+            </span>
+            <span v-else-if="est.percentComplete < 100" class="text-gray-400 text-xs">
+              {{ t('completion.noPace') }}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Progress Milestone -->
+      <div v-if="progressMilestone" class="bg-green-50 border border-green-200 rounded-lg p-4 mb-8 text-sm text-green-800 font-medium">
+        {{ progressMilestone }}
       </div>
 
       <!-- Diagnostic CTA -->

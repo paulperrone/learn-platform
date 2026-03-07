@@ -7,6 +7,7 @@ import { useSpeech } from "@/composables/useSpeech";
 import { useSpeechPrefs } from "@/composables/useSpeechPrefs";
 import ProblemView from "@/components/ProblemView.vue";
 import WorkedExample from "@/components/WorkedExample.vue";
+import MasteryCelebration from "@/components/MasteryCelebration.vue";
 import { useI18n } from "vue-i18n";
 
 const api = useApi();
@@ -24,6 +25,7 @@ const loading = ref(false);
 const sessionActive = ref(false);
 const recovering = ref(true);
 const isAnonymous = ref(false);
+const masteryEvent = ref<{ topicId: string; topicName: string; unlockedTopics: { id: string; name: string }[] } | null>(null);
 
 // Auto-read problem when it appears and ttsAutoRead is enabled
 watch(
@@ -106,6 +108,10 @@ async function handleProblemSubmit(data: {
     t("errors.failedToSubmit", { action: "response" })
   );
   if (result) {
+    // Show mastery celebration if topic was just mastered
+    if (result.masteryEvent) {
+      masteryEvent.value = result.masteryEvent;
+    }
     currentItem.value = result;
     if (result.type === "complete") {
       sessionActive.value = false;
@@ -130,6 +136,9 @@ async function handleExampleDone() {
     t("errors.failedToSubmit", { action: "response" })
   );
   if (result) {
+    if (result.masteryEvent) {
+      masteryEvent.value = result.masteryEvent;
+    }
     currentItem.value = result;
     if (result.type === "complete") {
       sessionActive.value = false;
@@ -246,5 +255,13 @@ async function handleExampleDone() {
         @done="handleExampleDone"
       />
     </div>
+
+    <!-- Mastery Celebration Overlay -->
+    <MasteryCelebration
+      v-if="masteryEvent"
+      :topic-name="masteryEvent.topicName"
+      :unlocked-topics="masteryEvent.unlockedTopics"
+      @dismiss="masteryEvent = null"
+    />
   </div>
 </template>

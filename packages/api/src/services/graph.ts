@@ -176,6 +176,79 @@ export function createGraphService(db: DB) {
     },
 
     /**
+     * Given a just-mastered topic, find topics that are now newly unlocked
+     * (all their required/recommended prerequisites are met).
+     */
+    async getNewlyUnlockedTopics(userId: string, justMasteredTopicId: string) {
+      // Get all mastered topic IDs (including the just-mastered one)
+      const masteredRows = await db
+        .select({ topicId: schema.userTopicState.topicId })
+        .from(schema.userTopicState)
+        .where(
+          and(
+            eq(schema.userTopicState.userId, userId),
+            eq(schema.userTopicState.mastered, true)
+          )
+        );
+      const masteredIds = new Set(masteredRows.map((r) => r.topicId));
+
+      // Find topics that have justMasteredTopicId as a prerequisite
+      const dependents = await db
+        .select({ toTopicId: schema.prerequisites.toTopicId })
+        .from(schema.prerequisites)
+        .where(eq(schema.prerequisites.fromTopicId, justMasteredTopicId));
+
+      if (dependents.length === 0) return [];
+
+      const dependentIds = dependents.map((d) => d.toTopicId);
+
+      // Get all prereqs for those dependent topics
+      const allPrereqs = await db
+        .select()
+        .from(schema.prerequisites)
+        .where(inArray(schema.prerequisites.toTopicId, dependentIds));
+
+      // Build prereq map: topicId → prereqs
+      const prereqMap = new Map<string, { fromTopicId: string; type: string }[]>();
+      for (const p of allPrereqs) {
+        const list = prereqMap.get(p.toTopicId) ?? [];
+        list.push({ fromTopicId: p.fromTopicId, type: p.type });
+        prereqMap.set(p.toTopicId, list);
+      }
+
+      // Check which dependent topics already have state (already started)
+      const startedRows = await db
+        .select({ topicId: schema.userTopicState.topicId })
+        .from(schema.userTopicState)
+        .where(
+          and(
+            eq(schema.userTopicState.userId, userId),
+            inArray(schema.userTopicState.topicId, dependentIds)
+          )
+        );
+      const startedIds = new Set(startedRows.map((r) => r.topicId));
+
+      // Filter to topics not yet started where all required/recommended prereqs are mastered
+      const unlockedIds = dependentIds.filter((topicId) => {
+        if (startedIds.has(topicId)) return false;
+        const prereqs = prereqMap.get(topicId) ?? [];
+        return prereqs
+          .filter((p) => p.type !== "enriching")
+          .every((p) => masteredIds.has(p.fromTopicId));
+      });
+
+      if (unlockedIds.length === 0) return [];
+
+      // Get topic names
+      const topics = await db
+        .select({ id: schema.topics.id, name: schema.topics.name })
+        .from(schema.topics)
+        .where(inArray(schema.topics.id, unlockedIds));
+
+      return topics;
+    },
+
+    /**
      * Validate that the prerequisite graph is a DAG (no cycles).
      * When subjectId is provided, validates only within that subject (ignoring cross-subject edges).
      * When subjectId is omitted, validates the full graph across all subjects,

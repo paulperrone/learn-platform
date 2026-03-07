@@ -344,6 +344,23 @@
     "error": "Something went wrong",
     "back": "Back"
   },
+  "mastery": {
+    "congratulations": "Topic Mastered!",
+    "topicMastered": "You've mastered {topic}.",
+    "unlocked": "This unlocks {count} new topic(s):",
+    "continue": "Continue"
+  },
+  "completion": {
+    "title": "Completion Estimate",
+    "progress": "{mastered} of {total} topics mastered",
+    "pace": "{rate} topics/week",
+    "estimate": "At your current pace, about {weeks} weeks remaining.",
+    "noPace": "Complete more topics to see an estimate.",
+    "milestone25": "25% complete! You're building a strong foundation.",
+    "milestone50": "Halfway there! Great progress.",
+    "milestone75": "75% complete! The finish line is in sight.",
+    "milestone100": "Subject complete! You've mastered every topic."
+  },
   "errors": {
     "failedToLoad": "Failed to load {resource}",
     "failedToStart": "Failed to start {action}",

@@ -1,9 +1,10 @@
 import { Hono } from "hono";
-import { sql } from "drizzle-orm";
+import { sql, eq, and, gte } from "drizzle-orm";
 import type { Env } from "../index.js";
 import { getDb } from "../db/index.js";
 import { createSRSService } from "../services/srs.js";
 import { createContentService, buildDefaultDistribution, describePresentationDistribution } from "../services/content.js";
+import * as schema from "../db/schema.js";
 
 export const progressRoutes = new Hono<Env>();
 
@@ -163,4 +164,81 @@ progressRoutes.get("/:userId/calibration", async (c) => {
     misconceptionCount: misconceptionStats.misconceptions ?? 0,
     trend,
   });
+});
+
+progressRoutes.get("/:userId/completion", async (c) => {
+  const db = getDb(c.env.DB);
+  const userId = c.req.param("userId");
+
+  // Get all subjects
+  const subjects = await db.select().from(schema.subjects);
+
+  // Get all topics grouped by subject
+  const allTopics = await db.select({ id: schema.topics.id, subjectId: schema.topics.subjectId }).from(schema.topics);
+
+  // Get all mastered topics for user
+  const masteredRows = await db
+    .select({ topicId: schema.userTopicState.topicId })
+    .from(schema.userTopicState)
+    .where(
+      and(
+        eq(schema.userTopicState.userId, userId),
+        eq(schema.userTopicState.mastered, true)
+      )
+    );
+  const masteredIds = new Set(masteredRows.map((r) => r.topicId));
+
+  // Get mastery pace: topics mastered per week from daily_activity (last 4 weeks)
+  const fourWeeksAgo = new Date();
+  fourWeeksAgo.setDate(fourWeeksAgo.getDate() - 28);
+  const recentActivity = await db
+    .select({
+      totalMastered: sql<number>`sum(topics_mastered)`,
+    })
+    .from(schema.dailyActivity)
+    .where(
+      and(
+        eq(schema.dailyActivity.userId, userId),
+        gte(schema.dailyActivity.date, fourWeeksAgo.toISOString().slice(0, 10))
+      )
+    );
+
+  const totalMasteredRecent = recentActivity[0]?.totalMastered ?? 0;
+  const topicsPerWeek = totalMasteredRecent / 4;
+
+  // Build per-subject estimates
+  const topicsBySubject = new Map<string, string[]>();
+  for (const t of allTopics) {
+    const list = topicsBySubject.get(t.subjectId) ?? [];
+    list.push(t.id);
+    topicsBySubject.set(t.subjectId, list);
+  }
+
+  const estimates = subjects.map((subject) => {
+    const subjectTopics = topicsBySubject.get(subject.id) ?? [];
+    const total = subjectTopics.length;
+    const mastered = subjectTopics.filter((id) => masteredIds.has(id)).length;
+    const remaining = total - mastered;
+    const percentComplete = total > 0 ? Math.round((mastered / total) * 100) : 0;
+
+    // Check milestone thresholds
+    let milestoneReached: 25 | 50 | 75 | 100 | null = null;
+    if (percentComplete >= 100) milestoneReached = 100;
+    else if (percentComplete >= 75) milestoneReached = 75;
+    else if (percentComplete >= 50) milestoneReached = 50;
+    else if (percentComplete >= 25) milestoneReached = 25;
+
+    return {
+      subjectId: subject.id,
+      subjectName: subject.name,
+      mastered,
+      total,
+      percentComplete,
+      topicsMasteredPerWeek: Math.round(topicsPerWeek * 10) / 10,
+      estimatedWeeksRemaining: topicsPerWeek > 0 ? Math.round((remaining / topicsPerWeek) * 10) / 10 : null,
+      milestoneReached,
+    };
+  });
+
+  return c.json({ estimates });
 });

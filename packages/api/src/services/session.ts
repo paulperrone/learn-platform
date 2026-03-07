@@ -5,7 +5,7 @@ import * as schema from "../db/schema.js";
 import { createGraphService } from "./graph.js";
 import { createSRSService } from "./srs.js";
 import { createContentService, type ContentQuery } from "./content.js";
-import type { Problem, WorkedExample, SessionPhase, AssessmentType, VisualAsset, PresentationLevel, ContentDepthLevel, BlendRole } from "@learn/shared";
+import type { Problem, WorkedExample, SessionPhase, AssessmentType, VisualAsset, PresentationLevel, ContentDepthLevel, BlendRole, MasteryEvent } from "@learn/shared";
 import { gradeProblem } from "./grading.js";
 
 type SessionState = {
@@ -438,8 +438,9 @@ export function createSessionService(db: DB) {
       }
 
       // Record review (skip for anonymous — no persistent SRS state)
+      let masteryEvent: MasteryEvent | undefined;
       if (!state.isAnonymous) {
-        await srs.scheduleReview(
+        const reviewResult = await srs.scheduleReview(
           state.userId,
           state.currentTopicId,
           rating,
@@ -449,6 +450,19 @@ export function createSessionService(db: DB) {
           hintsUsed,
           (response as any).problemId
         );
+
+        // Detect new mastery → find unlocked topics
+        if (reviewResult.justMastered) {
+          const unlockedTopics = await graph.getNewlyUnlockedTopics(
+            state.userId,
+            state.currentTopicId
+          );
+          masteryEvent = {
+            topicId: state.currentTopicId,
+            topicName: topic.name,
+            unlockedTopics: unlockedTopics.map((t) => ({ id: t.id, name: t.name })),
+          };
+        }
 
         // Apply FIRe credit (on success) or upward penalty (on failure)
         await srs.applyFIReCredit(state.userId, state.currentTopicId, rating);
@@ -467,6 +481,11 @@ export function createSessionService(db: DB) {
 
       // Advance through learning phases
       const result = await this.advancePhase(state, isCorrect);
+
+      // Attach mastery event to the response
+      if (masteryEvent && result.type !== "error") {
+        (result as any).masteryEvent = masteryEvent;
+      }
 
       // Write-through: persist after every phase transition
       if (result.type !== "complete") {
@@ -966,8 +985,10 @@ export function createSessionService(db: DB) {
 
 // === Types ===
 
+type MasteryEventField = { masteryEvent?: MasteryEvent };
+
 export type SessionItem =
-  | {
+  | ({
       type: "problem";
       phase: SessionPhase;
       topicId: string;
@@ -981,8 +1002,8 @@ export type SessionItem =
       blendRole?: BlendRole;
       difficultyBias?: "easier" | "on-target" | "harder";
       message: string;
-    }
-  | {
+    } & MasteryEventField)
+  | ({
       type: "instruction";
       phase: "instruction";
       topicId: string;
@@ -992,8 +1013,8 @@ export type SessionItem =
       presentationLevel?: PresentationLevel;
       blendRole?: BlendRole;
       message: string;
-    }
-  | {
+    } & MasteryEventField)
+  | ({
       type: "remediation";
       phase: "remediation";
       topicId: string;
@@ -1010,8 +1031,8 @@ export type SessionItem =
       blendRole?: BlendRole;
       difficultyBias?: "easier" | "on-target" | "harder";
       message: string;
-    }
-  | { type: "complete"; message: string }
+    } & MasteryEventField)
+  | ({ type: "complete"; message: string } & MasteryEventField)
   | { type: "error"; message: string };
 
 // Fallbacks when no pre-generated content exists
