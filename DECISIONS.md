@@ -795,3 +795,22 @@ Child creation now creates both an org member (student role) and an account_link
 - The same math concept is taught at all presentation levels — only the language differs
 - A sliding distribution that drifts with performance is more natural than hard level switches
 - Removing manual controls forces the system to earn trust through good adaptation
+
+---
+
+### 2026-03-07: Diagnostic uses deterministic center-level presentation, not random sampling
+
+**Source:** User session
+
+**Context:** Implementing diagnostic distribution seeding (plan 009.5 Phase 2). Diagnostic serves problems at age-default presentation and needs to track comprehension signals.
+
+**Decision:** During diagnostic, serve problems at the deterministic center level of the age-default distribution (e.g., "standard" for age 13), not via weighted random sampling. This makes comprehension signal analysis meaningful — we know exactly what level was served for every question.
+
+**Why:**
+- Random sampling during diagnostic would add noise to signal tracking
+- The diagnostic's goal is to estimate where the student IS, not to explore the distribution
+- Center level is the best prior for the student's presentation needs
+- After diagnostic seeds the distribution, learning sessions use weighted random sampling (Phase 1 already does this)
+
+**Alternatives rejected:**
+- Random sampling from default distribution: adds noise, makes signal analysis unreliable with small question counts

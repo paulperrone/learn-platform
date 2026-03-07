@@ -209,3 +209,14 @@ Running `pnpm vitest run` (or `npx vitest`) directly skips the Workers pool runn
 When migrations are created manually (not via `drizzle-kit generate`), the snapshot chain in `migrations/meta/` gets out of sync. The next `drizzle-kit generate` will diff against the last snapshot it knows about, producing a migration that recreates tables already added by manual migrations. Fix: after manually creating a migration, also run `drizzle-kit generate` to update the snapshot, then replace the generated SQL file with your manual one (keeping the snapshot). Or avoid manual migrations entirely.
 
 **Context:** Manual migration `0014_user_topic_depth.sql` was created without a snapshot. Next generate produced a migration recreating that table plus the intended schema change. Had to fix journal entries, delete bad snapshots, and regenerate.
+
+---
+
+### 2026-03-07: DiagnosticState needs backwards-compat defaults for new fields
+
+**Source:** User session
+**Area:** Diagnostic service / JSON state
+
+When adding new fields to `DiagnosticState` (which is serialized as JSON in `diagnostic_sessions.stateJson`), in-progress diagnostics won't have these fields. In `respond()`, initialize missing fields with defaults before using them: `state.correctness = state.correctness ?? []` and `state.servedPresentationLevels = state.servedPresentationLevels ?? []`. This prevents crashes when resuming diagnostics started before the code update.
+
+**Context:** Added `servedPresentationLevels` and `correctness` arrays to DiagnosticState for presentation distribution seeding (plan 009.5 Phase 2).

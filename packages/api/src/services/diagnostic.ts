@@ -2,8 +2,10 @@ import { eq, and } from "drizzle-orm";
 import type { DB } from "../db/index.js";
 import * as schema from "../db/schema.js";
 import { createGraphService } from "./graph.js";
+import { createContentService, buildDefaultDistribution } from "./content.js";
+import type { PresentationDistribution } from "./content.js";
 import { gradeProblem } from "./grading.js";
-import type { Problem, DiagnosticResult } from "@learn/shared";
+import type { Problem, DiagnosticResult, PresentationLevel } from "@learn/shared";
 
 type TopicEstimates = Record<string, number>; // topicId -> probability of mastery (0-1)
 
@@ -21,6 +23,10 @@ type DiagnosticState = {
   /** How many consecutive correct/incorrect in search phase */
   streak: number;
   streakDirection: "correct" | "incorrect" | null;
+  /** Presentation level served for each question (parallel to askedTopicIds) */
+  servedPresentationLevels: PresentationLevel[];
+  /** Tracks which questions the student got correct (parallel to askedTopicIds) */
+  correctness: boolean[];
 };
 
 /** Max questions before forced completion — prevents infinite diagnostics */
@@ -32,23 +38,48 @@ const BOUNDARY_PRECISION = 0.5;
 
 export function createDiagnosticService(db: DB) {
   const graph = createGraphService(db);
+  const content = createContentService(db);
 
-  async function getTopicProblems(topicId: string): Promise<Problem[]> {
-    const rows = await db
-      .select()
-      .from(schema.assessmentContent)
-      .where(eq(schema.assessmentContent.topicId, topicId));
-    return rows.map((r) => ({
-      id: r.id,
-      topicId: r.topicId,
-      difficulty: r.difficulty as Problem["difficulty"],
-      question: r.question,
-      answer: r.answer,
-      hints: JSON.parse(r.hintsJson),
-      solution: r.solution,
-      type: r.type as Problem["type"],
-      typeProperties: r.typeProperties ? JSON.parse(r.typeProperties) : undefined,
-    }));
+  /**
+   * Fetch problems for a topic during diagnostic using dimension-aware content selection.
+   * Uses age-default presentation (no subject distribution yet — we're building it).
+   */
+  async function getDiagnosticProblems(
+    topicId: string,
+    birthYear: number | null | undefined
+  ): Promise<{ problems: Problem[]; presentation: PresentationLevel }> {
+    const defaultDist = buildDefaultDistribution(birthYear);
+    // Use deterministic center level for diagnostic (not random sampling)
+    // so signal tracking is meaningful — we know exactly what level was served
+    const presentation = defaultDist.centerLevel;
+
+    const problems = await content.getTopicProblems({
+      topicId,
+      contentDepth: "survey", // Diagnostic always uses survey depth
+      presentation,
+    });
+
+    // If dimension-aware query returns nothing, fall back to any content for topic
+    if (problems.length === 0) {
+      const fallbackRows = await db
+        .select()
+        .from(schema.assessmentContent)
+        .where(eq(schema.assessmentContent.topicId, topicId));
+      const fallbackProblems: Problem[] = fallbackRows.map((r) => ({
+        id: r.id,
+        topicId: r.topicId,
+        difficulty: r.difficulty as Problem["difficulty"],
+        question: r.question,
+        answer: r.answer,
+        hints: JSON.parse(r.hintsJson),
+        solution: r.solution,
+        type: r.type as Problem["type"],
+        typeProperties: r.typeProperties ? JSON.parse(r.typeProperties) : undefined,
+      }));
+      return { problems: fallbackProblems, presentation };
+    }
+
+    return { problems, presentation };
   }
 
   async function loadAllTopicsAndEdges(subjectId: string) {
@@ -283,12 +314,87 @@ export function createDiagnosticService(db: DB) {
     return `Grade ${highestMasteredGrade}`;
   }
 
+  /**
+   * Estimate a presentation distribution from diagnostic signals.
+   * Starts from age-default, then adjusts based on comprehension patterns.
+   *
+   * Signals that suggest linguistic mismatch (presentation too high):
+   * - Consistent incorrect answers on topics where prerequisites are mastered
+   *   (knowledge is there but presentation may be blocking comprehension)
+   *
+   * Signals that confirm age-default is appropriate:
+   * - Correct/incorrect pattern matches mastery boundary (knowledge-driven, not presentation-driven)
+   */
+  function estimatePresentationDistribution(
+    state: DiagnosticState,
+    birthYear: number | null | undefined,
+    estimates: TopicEstimates,
+    prereqMap: Map<string, string[]>
+  ): PresentationDistribution {
+    const dist = buildDefaultDistribution(birthYear);
+
+    if (state.askedTopicIds.length === 0) return dist;
+
+    // Count questions where student got prerequisites right but failed this topic
+    // This suggests possible linguistic/presentation mismatch rather than knowledge gap
+    let prereqMasteredButFailed = 0;
+    let prereqMasteredTotal = 0;
+
+    for (let i = 0; i < state.askedTopicIds.length; i++) {
+      const topicId = state.askedTopicIds[i];
+      const correct = state.correctness[i];
+      const prereqs = prereqMap.get(topicId) ?? [];
+
+      // Check if all prerequisites are mastered (high estimate)
+      const allPrereqsMastered = prereqs.length > 0 &&
+        prereqs.every((pId) => (estimates[pId] ?? 0.5) >= 0.6);
+
+      if (allPrereqsMastered) {
+        prereqMasteredTotal++;
+        if (!correct) prereqMasteredButFailed++;
+      }
+    }
+
+    // If ≥40% of "should-know" questions were wrong, shift presentation down
+    if (prereqMasteredTotal >= 3 && prereqMasteredButFailed / prereqMasteredTotal >= 0.4) {
+      return shiftDistributionDown(dist);
+    }
+
+    return dist;
+  }
+
+  /** Shift a distribution's center down one level */
+  function shiftDistributionDown(dist: PresentationDistribution): PresentationDistribution {
+    const levels: PresentationLevel[] = ["primary", "intermediate", "standard", "advanced"];
+    const currentIdx = levels.indexOf(dist.centerLevel);
+    if (currentIdx <= 0) return dist; // Already at lowest
+
+    const newCenterIdx = currentIdx - 1;
+    const weights = [0, 0, 0, 0];
+    weights[newCenterIdx] = 0.75;
+    if (newCenterIdx > 0) weights[newCenterIdx - 1] = 0.15;
+    if (newCenterIdx < 3) weights[newCenterIdx + 1] = 0.10;
+    const sum = weights.reduce((a, b) => a + b, 0);
+    if (sum < 1.0) weights[newCenterIdx] += 1.0 - sum;
+
+    return {
+      primary: weights[0],
+      intermediate: weights[1],
+      standard: weights[2],
+      advanced: weights[3],
+      centerLevel: levels[newCenterIdx],
+    };
+  }
+
   /** Materialize diagnostic estimates into user_topic_state rows */
   async function materializeMastery(
     userId: string,
     estimates: TopicEstimates,
     frontier: string[],
-    allTopics: { id: string; gradeLevel: number }[]
+    allTopics: { id: string; gradeLevel: number }[],
+    subjectId: string,
+    state: DiagnosticState,
+    prereqMap: Map<string, string[]>
   ): Promise<{ mastered: number; frontierCount: number }> {
     const frontierSet = new Set(frontier);
     const now = new Date().toISOString();
@@ -339,6 +445,15 @@ export function createDiagnosticService(db: DB) {
       }
     }
 
+    // Seed presentation distribution from diagnostic signals
+    const user = await db.query.users.findFirst({
+      where: eq(schema.users.id, userId),
+    });
+    const estimatedDist = estimatePresentationDistribution(
+      state, user?.birthYear, estimates, prereqMap
+    );
+    await content.upsertSubjectDistribution(userId, subjectId, estimatedDist);
+
     return { mastered, frontierCount };
   }
 
@@ -376,6 +491,15 @@ export function createDiagnosticService(db: DB) {
         initialEstimates[t.id] = 0.5;
       }
 
+      // Look up birth year for presentation selection
+      let birthYear: number | null = null;
+      if (params.userId) {
+        const user = await db.query.users.findFirst({
+          where: eq(schema.users.id, params.userId),
+        });
+        birthYear = user?.birthYear ?? null;
+      }
+
       const state: DiagnosticState = {
         currentTopicId: null,
         currentQuestionId: null,
@@ -387,6 +511,8 @@ export function createDiagnosticService(db: DB) {
         searchHigh: maxGrade,
         streak: 0,
         streakDirection: null,
+        servedPresentationLevels: [],
+        correctness: [],
       };
 
       // Start at middle grade
@@ -401,7 +527,7 @@ export function createDiagnosticService(db: DB) {
         return { error: "No topics available for diagnostic" };
       }
 
-      const problems = await getTopicProblems(firstTopicId);
+      const { problems, presentation: firstPresentation } = await getDiagnosticProblems(firstTopicId, birthYear);
       if (problems.length === 0) {
         return { error: "No problems available for diagnostic" };
       }
@@ -450,7 +576,16 @@ export function createDiagnosticService(db: DB) {
         return { error: "No current question" };
       }
 
-      const problems = await getTopicProblems(currentTopicId);
+      // Look up birth year for presentation selection
+      let birthYear: number | null = null;
+      if (row.userId) {
+        const user = await db.query.users.findFirst({
+          where: eq(schema.users.id, row.userId),
+        });
+        birthYear = user?.birthYear ?? null;
+      }
+
+      const { problems } = await getDiagnosticProblems(currentTopicId, birthYear);
       const currentProblem = problems.find((p) => p.id === currentQuestionId) ?? problems[0];
       if (!currentProblem) {
         return { error: "No problem found" };
@@ -459,9 +594,17 @@ export function createDiagnosticService(db: DB) {
       const gradeResult = gradeProblem(currentProblem, answer);
       const isCorrect = gradeResult.correct;
 
-      // Update state
+      // Update state — track correctness and presentation levels
       state.askedTopicIds.push(currentTopicId);
       state.askedQuestionIds.push(currentProblem.id);
+      state.correctness = state.correctness ?? [];
+      state.correctness.push(isCorrect);
+      // Presentation level for current question was determined at serve time
+      // (stored when we selected the problem). For backwards compat with
+      // in-progress diagnostics that don't have this field, default to center.
+      if (!state.servedPresentationLevels) {
+        state.servedPresentationLevels = [];
+      }
 
       // Propagate estimates through the graph
       const currentTopic = allTopics.find((t) => t.id === currentTopicId);
@@ -484,11 +627,12 @@ export function createDiagnosticService(db: DB) {
         const estimatedFrontier = computeEstimatedFrontier(state.topicEstimates, prereqMap);
         const level = estimateLevel(state.topicEstimates, allTopics);
 
-        // Materialize mastery into user_topic_state
+        // Materialize mastery into user_topic_state + seed presentation distribution
         let materializeStats = { mastered: 0, frontierCount: 0 };
         if (row.userId) {
           materializeStats = await materializeMastery(
-            row.userId, state.topicEstimates, estimatedFrontier, allTopics
+            row.userId, state.topicEstimates, estimatedFrontier, allTopics,
+            row.subjectId, state, prereqMap
           );
         }
 
@@ -527,7 +671,8 @@ export function createDiagnosticService(db: DB) {
         let materializeStats = { mastered: 0, frontierCount: 0 };
         if (row.userId) {
           materializeStats = await materializeMastery(
-            row.userId, state.topicEstimates, estimatedFrontier, allTopics
+            row.userId, state.topicEstimates, estimatedFrontier, allTopics,
+            row.subjectId, state, prereqMap
           );
         }
 
@@ -558,7 +703,8 @@ export function createDiagnosticService(db: DB) {
         };
       }
 
-      const nextProblems = await getTopicProblems(nextTopicId);
+      const { problems: nextProblems, presentation: nextPresentation } = await getDiagnosticProblems(nextTopicId, birthYear);
+      state.servedPresentationLevels.push(nextPresentation);
       const unseenProblems = nextProblems.filter((p) => !state.askedQuestionIds.includes(p.id));
       const nextProblem = unseenProblems.length > 0
         ? unseenProblems[Math.floor(Math.random() * unseenProblems.length)]
@@ -608,7 +754,15 @@ export function createDiagnosticService(db: DB) {
       const state: DiagnosticState = JSON.parse(row.stateJson);
       if (!state.currentTopicId || !state.currentQuestionId) return null;
 
-      const problems = await getTopicProblems(state.currentTopicId);
+      let birthYear: number | null = null;
+      if (row.userId) {
+        const user = await db.query.users.findFirst({
+          where: eq(schema.users.id, row.userId),
+        });
+        birthYear = user?.birthYear ?? null;
+      }
+
+      const { problems } = await getDiagnosticProblems(state.currentTopicId, birthYear);
       const problem = problems.find((p) => p.id === state.currentQuestionId) ?? problems[0];
       if (!problem) return null;
 
