@@ -23,20 +23,20 @@ This plan implements: progressive hint reveal, calibrated mastery criteria, full
 
 ## Progress
 
-**Completed:** None yet
+**Completed:** Phase 1 ✓
 **In Progress:** —
-**Next:** Phase 1
+**Next:** Phase 2
 
 ---
 
-## Phase 1: Progressive Hint Reveal
+## Phase 1: Progressive Hint Reveal ✓
 **Goal:** Hints revealed one at a time across attempts instead of all-or-nothing. Maps to the documented tutoring protocol: nudge → narrow → partial solution → full solution.
 
-1. [ ] [IMP] Add `hintIndex` to session state per problem attempt. On first attempt: no hints shown. On second attempt (after incorrect answer on same problem or phase): reveal hint[0]. Third attempt: hint[1]. Continue through the array. After all hints exhausted: show full solution. Track `hintsUsed` count in session state for the review log.
+1. [x] [IMP] Add `hintIndex` to session state per problem attempt. On first attempt: no hints shown. On second attempt (after incorrect answer on same problem or phase): reveal hint[0]. Third attempt: hint[1]. Continue through the array. After all hints exhausted: show full solution. Track `hintsUsed` count in session state for the review log.
 
-2. [ ] [IMP] Update `buildPhaseItem()`: instead of `showHints: true/false`, return `availableHints: hint[0..hintIndex]` — the frontend renders only the revealed hints. For `guided` phase, start with hint[0] already revealed (scaffolded). For `independent` and `review`, start with no hints.
+2. [x] [IMP] Update `buildPhaseItem()`: instead of `showHints: true/false`, return `availableHints: hint[0..hintIndex]` — the frontend renders only the revealed hints. For `guided` phase, start with hint[0] already revealed (scaffolded). For `independent` and `review`, start with no hints.
 
-3. [ ] [TST] Verify: first attempt shows no hints. Each subsequent attempt reveals one more hint. Hint count tracked in review log. Guided phase starts with first hint. All hints exhausted triggers solution display. Existing tests unaffected.
+3. [x] [TST] Verify: first attempt shows no hints. Each subsequent attempt reveals one more hint. Hint count tracked in review log. Guided phase starts with first hint. All hints exhausted triggers solution display. Existing tests unaffected.
 
 **Validation:** A student struggling with a problem gets progressively more help — first a nudge, then specific guidance, then a partial solution — rather than either nothing or everything.
 

@@ -16,6 +16,7 @@ type SessionState = {
   currentTopicId: string | null;
   currentPhase: SessionPhase;
   phaseIndex: number; // Track progression within a topic
+  hintIndex: number; // Progressive hint reveal: how many hints revealed so far
   topicsCompleted: string[];
   reviewsCompleted: number;
   totalCorrect: number;
@@ -110,6 +111,8 @@ export function createSessionService(db: DB) {
     if (!row?.stateJson || row.endedAt) return undefined;
     try {
       const state: SessionState = JSON.parse(row.stateJson);
+      // Backwards compat: sessions started before progressive hints
+      state.hintIndex = state.hintIndex ?? 0;
       activeSessions.set(sessionId, state);
       return state;
     } catch {
@@ -163,6 +166,7 @@ export function createSessionService(db: DB) {
         currentTopicId: firstTopic.topicId,
         currentPhase: firstTopic.type === "review" ? "review" : "pretest",
         phaseIndex: 0,
+        hintIndex: 0,
         topicsCompleted: [],
         reviewsCompleted: 0,
         totalCorrect: 0,
@@ -232,6 +236,7 @@ export function createSessionService(db: DB) {
         currentTopicId: firstTopic.id,
         currentPhase: "pretest",
         phaseIndex: 0,
+        hintIndex: 0,
         topicsCompleted: [],
         reviewsCompleted: 0,
         totalCorrect: 0,
@@ -307,8 +312,14 @@ export function createSessionService(db: DB) {
       }
       if (isCorrect) state.totalCorrect++;
 
-      const hintsUsed = response.hintsUsed ?? 0;
+      // Progressive hint reveal: track hints revealed for rating cap
+      const hintsUsed = response.hintsUsed ?? state.hintIndex;
       let rating: Grade = isCorrect ? Rating.Good : Rating.Again;
+
+      // On incorrect answer, reveal next hint for next attempt
+      if (!isCorrect) {
+        state.hintIndex++;
+      }
 
       // Cap rating based on hints used:
       // 0-1 hints: no change
@@ -381,6 +392,7 @@ export function createSessionService(db: DB) {
         // Failed independent practice — remediation
         state.currentPhase = "remediation";
         state.phaseIndex = 0;
+        state.hintIndex = 0;
         return await this.buildPhaseItem(state);
       }
 
@@ -389,6 +401,7 @@ export function createSessionService(db: DB) {
           // Recovery — back to independent
           state.currentPhase = "independent";
           state.phaseIndex = 0;
+          state.hintIndex = 0;
           return await this.buildPhaseItem(state);
         }
         // Still struggling — provide more remediation
@@ -407,6 +420,7 @@ export function createSessionService(db: DB) {
       if (currentIdx < phases.length - 1) {
         state.currentPhase = phases[currentIdx + 1];
         state.phaseIndex = 0;
+        state.hintIndex = 0;
         return await this.buildPhaseItem(state);
       }
 
@@ -531,17 +545,42 @@ export function createSessionService(db: DB) {
         return visuals ? { ...problem, visuals } : problem;
       }
 
+      // Progressive hint reveal: compute available hints based on phase and hintIndex.
+      // - pretest/independent/review: no hints initially, revealed on subsequent incorrect attempts
+      // - guided: start with first hint revealed (scaffolded)
+      // - remediation: start with first hint revealed
+      function getAvailableHints(problem: Problem, phase: SessionPhase, hintIndex: number): string[] {
+        const allHints = problem.hints ?? [];
+        if (allHints.length === 0) return [];
+
+        // Guided and remediation start with first hint pre-revealed
+        const baseReveal = (phase === "guided" || phase === "remediation") ? 1 : 0;
+        const revealCount = Math.min(baseReveal + hintIndex, allHints.length);
+        return allHints.slice(0, revealCount);
+      }
+
+      // Should the full solution be shown? Only when all hints exhausted and still incorrect.
+      function shouldShowSolution(problem: Problem, phase: SessionPhase, hintIndex: number): boolean {
+        const allHints = problem.hints ?? [];
+        if (allHints.length === 0) return false;
+        const baseReveal = (phase === "guided" || phase === "remediation") ? 1 : 0;
+        return baseReveal + hintIndex > allHints.length;
+      }
+
       switch (state.currentPhase) {
         case "pretest": {
           // 1-2 problems, student likely fails — primes learning
           const problem = selectProblem(problems, "medium");
+          const p = withVisuals(problem ?? makeFallbackProblem(topic));
           return {
             type: "problem",
             phase: "pretest",
             topicId: topic.id,
             topicName: topic.name,
-            problem: withVisuals(problem ?? makeFallbackProblem(topic)),
-            showHints: false,
+            problem: p,
+            availableHints: getAvailableHints(p, "pretest", state.hintIndex),
+            showSolution: shouldShowSolution(p, state.currentPhase, state.hintIndex),
+            hintsRevealed: state.hintIndex,
             message: "Let's see what you already know. Try your best!",
           };
         }
@@ -560,15 +599,18 @@ export function createSessionService(db: DB) {
         }
 
         case "guided": {
-          // Partially scaffolded — give hints, easier problems
+          // Partially scaffolded — start with first hint revealed
           const problem = selectProblem(problems, "easy");
+          const p = withVisuals(problem ?? makeFallbackProblem(topic));
           return {
             type: "problem",
             phase: "guided",
             topicId: topic.id,
             topicName: topic.name,
-            problem: withVisuals(problem ?? makeFallbackProblem(topic)),
-            showHints: true,
+            problem: p,
+            availableHints: getAvailableHints(p, "guided", state.hintIndex),
+            showSolution: shouldShowSolution(p, state.currentPhase, state.hintIndex),
+            hintsRevealed: state.hintIndex,
             message: "Now try it with some help. Hints are available if you need them.",
           };
         }
@@ -576,13 +618,16 @@ export function createSessionService(db: DB) {
         case "independent": {
           // Full problems, confidence judgment
           const problem = selectProblem(problems, "medium");
+          const p = withVisuals(problem ?? makeFallbackProblem(topic));
           return {
             type: "problem",
             phase: "independent",
             topicId: topic.id,
             topicName: topic.name,
-            problem: withVisuals(problem ?? makeFallbackProblem(topic)),
-            showHints: false,
+            problem: p,
+            availableHints: getAvailableHints(p, "independent", state.hintIndex),
+            showSolution: shouldShowSolution(p, state.currentPhase, state.hintIndex),
+            hintsRevealed: state.hintIndex,
             askConfidence: true,
             message: "Solve this on your own. Rate your confidence after.",
           };
@@ -591,29 +636,35 @@ export function createSessionService(db: DB) {
         case "review": {
           // Spaced review — medium difficulty
           const problem = selectProblem(problems, "medium");
+          const p = withVisuals(problem ?? makeFallbackProblem(topic));
           return {
             type: "problem",
             phase: "review",
             topicId: topic.id,
             topicName: topic.name,
-            problem: withVisuals(problem ?? makeFallbackProblem(topic)),
-            showHints: false,
+            problem: p,
+            availableHints: getAvailableHints(p, "review", state.hintIndex),
+            showSolution: shouldShowSolution(p, state.currentPhase, state.hintIndex),
+            hintsRevealed: state.hintIndex,
             askConfidence: true,
             message: "Review time! Let's see if you remember.",
           };
         }
 
         case "remediation": {
-          // Trace prereqs, provide simpler practice
+          // Trace prereqs, provide simpler practice — start with first hint
           const prereqChain = await graph.getPrerequisiteChain(topic.id);
           const problem = selectProblem(problems, "easy");
+          const p = withVisuals(problem ?? makeFallbackProblem(topic));
           return {
             type: "remediation",
             phase: "remediation",
             topicId: topic.id,
             topicName: topic.name,
-            problem: withVisuals(problem ?? makeFallbackProblem(topic)),
-            showHints: true,
+            problem: p,
+            availableHints: getAvailableHints(p, "remediation", state.hintIndex),
+            showSolution: shouldShowSolution(p, state.currentPhase, state.hintIndex),
+            hintsRevealed: state.hintIndex,
             prerequisiteChain: prereqChain,
             message: "Let's go back to basics. Here's an easier version.",
           };
@@ -622,13 +673,16 @@ export function createSessionService(db: DB) {
         default: {
           // diagnostic phase handled by diagnostic service, not session service
           const problem = selectProblem(problems, "medium");
+          const p = withVisuals(problem ?? makeFallbackProblem(topic));
           return {
             type: "problem",
             phase: state.currentPhase,
             topicId: topic.id,
             topicName: topic.name,
-            problem: withVisuals(problem ?? makeFallbackProblem(topic)),
-            showHints: false,
+            problem: p,
+            availableHints: getAvailableHints(p, state.currentPhase, state.hintIndex),
+            showSolution: shouldShowSolution(p, state.currentPhase, state.hintIndex),
+            hintsRevealed: state.hintIndex,
             message: "Answer this question.",
           };
         }
@@ -674,7 +728,9 @@ export type SessionItem =
       topicId: string;
       topicName: string;
       problem: Problem;
-      showHints: boolean;
+      availableHints: string[];
+      showSolution: boolean;
+      hintsRevealed: number;
       askConfidence?: boolean;
       message: string;
     }
@@ -692,7 +748,9 @@ export type SessionItem =
       topicId: string;
       topicName: string;
       problem: Problem;
-      showHints: boolean;
+      availableHints: string[];
+      showSolution: boolean;
+      hintsRevealed: number;
       prerequisiteChain: string[];
       message: string;
     }

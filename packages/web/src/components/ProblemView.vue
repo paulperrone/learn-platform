@@ -16,7 +16,9 @@ import { useI18n } from "vue-i18n";
 const props = defineProps<{
   problem: Problem;
   topicName?: string;
-  showHints: boolean;
+  availableHints: string[];
+  showSolution: boolean;
+  hintsRevealed: number;
   askConfidence: boolean;
   phase: string;
   message: string;
@@ -52,11 +54,13 @@ const numericalInputRef = ref<InstanceType<typeof NumericalInput> | null>(null);
 const matchingInputRef = ref<InstanceType<typeof MatchingInput> | null>(null);
 const multiSelectInputRef = ref<InstanceType<typeof MultiSelectInput> | null>(null);
 
-// Progressive hint state
-const hintLevel = ref(0);
-const revealedHints = ref<{ level: number; text: string; source: "static" | "llm" }[]>([]);
+// Progressive hint state — initialized from server-provided hints
+const hintLevel = ref(props.hintsRevealed);
+const revealedHints = ref<{ level: number; text: string; source: "static" | "llm" }[]>(
+  props.availableHints.map((text, i) => ({ level: i + 1, text, source: "static" as const }))
+);
 const hintLoading = ref(false);
-const hintMaxReached = ref(false);
+const hintMaxReached = ref(props.showSolution);
 
 const HINT_LEVEL_LABELS = ["", "Nudge", "Guiding Question", "Partial Solution", "Worked Step"] as const;
 
@@ -258,7 +262,7 @@ const displayAnswer = computed(() => {
         </button>
 
         <button
-          v-if="showHints && !hintMaxReached && !isMultiStep"
+          v-if="!hintMaxReached && !isMultiStep"
           @click="requestHint"
           :disabled="hintLoading || llmHintsDisabled"
           class="px-4 py-2.5 border border-gray-300 text-gray-600 rounded-lg text-sm hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
