@@ -73,7 +73,7 @@ Every content item (instructional or assessment) has these dimension columns:
 |-----------|--------|--------|---------|
 | **Flavor** | `flavor` | `classic`, `adventure`, `space`, ... | Thematic engagement wrapper. Same knowledge, different narrative context. |
 | **Locale** | `locale` | `en`, `es`, `ja`, `ar`, ... | Language. Not a literal translation — culturally adapted. |
-| **Presentation** | `presentation` | `primary`, `intermediate`, `standard`, `advanced` (or legacy `individual`) | Audience adaptation: reading level, vocabulary complexity, visual density. |
+| **Presentation** | `presentation` | `primary`, `intermediate`, `standard`, `advanced` | Audience adaptation: reading level, vocabulary complexity, visual density. |
 | **Content Depth** | `content_depth` | `survey`, `contextual`, `analytical`, `synthesis` | Analytical sophistication. How deeply the content treats the topic. |
 | **Version** | `version` | Integer (1, 2, 3...) | Content iteration for A/B testing and improvement. |
 
@@ -253,7 +253,7 @@ For math, CS, grammar, music technique, etc.
 - Cross-subject edges to prior subjects in the discipline (Foundational Math → Pre-Algebra)
 
 ### Content Strategy
-- **Content depth is usually `survey`** — mastery-gated content doesn't typically need multiple analytical layers because the depth IS the topic progression itself. "Adding fractions" is inherently deeper than "adding whole numbers."
+- **Content depth is always `survey`** — mastery-gated disciplines encode analytical progression in the topic graph itself. "Adding fractions" IS deeper than "adding whole numbers." The survey/contextual/analytical/synthesis depth layers are for context-layered disciplines only. Never create non-survey depth content for mastery-gated subjects.
 - **Presentation matters a lot** — the same skill taught to a 6-year-old vs. a 14-year-old needs different examples, vocabulary, and scaffolding
 - **Assessment is binary** — right or wrong (with partial credit for multi-step)
 - **Build all presentation levels for each topic** — a late-starting teenager needs age-appropriate instruction on basic skills
