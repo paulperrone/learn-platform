@@ -760,3 +760,38 @@ Child creation now creates both an org member (student role) and an account_link
 **Alternatives rejected:**
 - Encoding depth in topic IDs (e.g., american-revolution-survey, american-revolution-analytical): Explodes the graph, duplicates prerequisite edges, breaks the "one topic = one concept" principle
 - Using `presentation` for both audience and depth: Conflates two independent concerns — a 14-year-old needs standard presentation at survey depth, not primary presentation
+
+---
+
+### 2026-03-07: Single-query content fallback with in-app priority ranking
+
+**Source:** User session
+
+**Context:** Content selection's fallback chain (content-system.md §6) was implemented as up to 6 sequential DB queries — try exact match, then adjacent presentations, then classic flavor, then en locale, then survey depth, then any content. Each was a separate round-trip to D1.
+
+**Decision:** Fetch all content for a topic in a single query, compute fallback priority per row in application code, and return the best-matching group. Priority tiers 0-7 encode the same fallback logic.
+
+**Why:**
+- Content per topic is small (tens of rows, not thousands) — fetching all is cheap
+- Single DB round-trip vs up to 6 sequential queries
+- Priority logic is easier to read and test as a pure function than spread across 6 query blocks
+- Same approach works for both assessment and instructional content
+
+**Alternatives rejected:**
+- SQL CASE expression with ORDER BY: Would work but harder to maintain, D1/SQLite CASE syntax is less readable than TypeScript, and the data volume doesn't justify pushing logic to the DB
+
+---
+
+### 2026-03-07: Presentation level is adaptation, not a teaching target
+
+**Source:** User session
+
+**Context:** Question arose whether presentation levels (primary/intermediate/standard/advanced) should be an axis students are taught on, or just an adaptation layer.
+
+**Decision:** Presentation is purely an adaptation — it adjusts linguistic complexity so cognitive load goes to the subject matter, not the reading. The system navigates students between levels automatically via an adaptive distribution (plan 009.5), not through explicit instruction. No manual settings — re-run diagnostic to reset if needed.
+
+**Why:**
+- We don't teach students to read at a higher level through math problems
+- The same math concept is taught at all presentation levels — only the language differs
+- A sliding distribution that drifts with performance is more natural than hard level switches
+- Removing manual controls forces the system to earn trust through good adaptation

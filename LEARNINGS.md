@@ -198,3 +198,14 @@ LLMs prompted to create "concrete, hands-on" K-2 content will generate physical 
 Running `pnpm vitest run` (or `npx vitest`) directly skips the Workers pool runner. All tests that import `cloudflare:test` fail with "Cannot find package" errors (15+ false failures). The correct command is `pnpm test` (which delegates to `pnpm --filter api test`) or `just test`, both of which use the `@cloudflare/vitest-pool-workers` config from `packages/api/vitest.config.ts`.
 
 **Context:** Only `packages/api/src/__tests__/services/grading.test.ts` (pure logic, no Workers deps) passes under bare vitest. All other test files need the Workers pool.
+
+---
+
+### 2026-03-07: Drizzle-kit generate breaks when migrations are manually created
+
+**Source:** User session
+**Area:** Drizzle ORM / drizzle-kit
+
+When migrations are created manually (not via `drizzle-kit generate`), the snapshot chain in `migrations/meta/` gets out of sync. The next `drizzle-kit generate` will diff against the last snapshot it knows about, producing a migration that recreates tables already added by manual migrations. Fix: after manually creating a migration, also run `drizzle-kit generate` to update the snapshot, then replace the generated SQL file with your manual one (keeping the snapshot). Or avoid manual migrations entirely.
+
+**Context:** Manual migration `0014_user_topic_depth.sql` was created without a snapshot. Next generate produced a migration recreating that table plus the intended schema change. Had to fix journal entries, delete bad snapshots, and regenerate.
