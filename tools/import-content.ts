@@ -55,6 +55,10 @@ type Problem = {
   answer: string;
   hints: string[];
   solution: string;
+  flavor?: string;
+  locale?: string;
+  presentation?: string;
+  contentDepth?: string;
 };
 
 type WorkedExample = {
@@ -72,10 +76,15 @@ type WorkedExample = {
     params: Record<string, unknown>;
     alt: string;
   }[];
+  flavor?: string;
+  locale?: string;
+  presentation?: string;
+  contentDepth?: string;
 };
 
 function main() {
-  const contentDir = join(process.cwd(), "content", "math-foundations");
+  const subject = process.argv[2] ?? "math-foundations";
+  const contentDir = join(process.cwd(), "content", subject);
   const graphPath = join(contentDir, "graph.json");
 
   if (!existsSync(graphPath)) {
@@ -174,7 +183,7 @@ function main() {
 
   // Insert instructional content (worked examples)
   const insertInstruction = db.prepare(
-    "INSERT INTO instructional_content (id, topic_id, flavor, locale, presentation, version, title, steps_json, assets_json, created_at, updated_at) VALUES (?, ?, 'classic', 'en', 'individual', 1, ?, ?, ?, ?, ?)"
+    "INSERT INTO instructional_content (id, topic_id, flavor, locale, presentation, content_depth, version, title, steps_json, assets_json, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, 1, ?, ?, ?, ?, ?)"
   );
   let instructionCount = 0;
   const insertInstructions = db.transaction(() => {
@@ -182,7 +191,14 @@ function main() {
     for (const [, topicExamples] of examples) {
       for (const e of topicExamples) {
         const assetsJson = e.visuals?.length ? JSON.stringify(e.visuals) : null;
-        insertInstruction.run(e.id, e.topicId, e.title, JSON.stringify(e.steps), assetsJson, now, now);
+        insertInstruction.run(
+          e.id, e.topicId,
+          e.flavor ?? "classic",
+          e.locale ?? "en",
+          e.presentation ?? "standard",
+          e.contentDepth ?? "survey",
+          e.title, JSON.stringify(e.steps), assetsJson, now, now
+        );
         instructionCount++;
       }
     }
@@ -192,14 +208,21 @@ function main() {
 
   // Insert assessment content (problems)
   const insertAssessment = db.prepare(
-    "INSERT INTO assessment_content (id, topic_id, flavor, locale, presentation, version, type, difficulty, question, answer, hints_json, solution, created_at) VALUES (?, ?, 'classic', 'en', 'individual', 1, 'text-qa', ?, ?, ?, ?, ?, ?)"
+    "INSERT INTO assessment_content (id, topic_id, flavor, locale, presentation, content_depth, version, type, difficulty, question, answer, hints_json, solution, created_at) VALUES (?, ?, ?, ?, ?, ?, 1, 'text-qa', ?, ?, ?, ?, ?, ?)"
   );
   let assessmentCount = 0;
   const insertAssessments = db.transaction(() => {
     const now = new Date().toISOString();
     for (const [, topicProblems] of problems) {
       for (const p of topicProblems) {
-        insertAssessment.run(p.id, p.topicId, p.difficulty, p.question, p.answer, JSON.stringify(p.hints), p.solution, now);
+        insertAssessment.run(
+          p.id, p.topicId,
+          p.flavor ?? "classic",
+          p.locale ?? "en",
+          p.presentation ?? "standard",
+          p.contentDepth ?? "survey",
+          p.difficulty, p.question, p.answer, JSON.stringify(p.hints), p.solution, now
+        );
         assessmentCount++;
       }
     }

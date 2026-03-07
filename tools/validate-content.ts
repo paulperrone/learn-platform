@@ -16,6 +16,33 @@ let totalExamples = 0;
 
 // Platform-incompatible instruction patterns
 // These describe physical/verbal actions that can't be done on a screen
+// Valid dimension values
+const VALID_FLAVORS = ["classic", "story", "game", "visual"];
+const VALID_LOCALES = ["en", "es", "fr", "zh", "ar"];
+const VALID_PRESENTATIONS = ["primary", "intermediate", "standard", "advanced"];
+const VALID_CONTENT_DEPTHS = ["survey", "contextual", "analytical", "synthesis"];
+
+function validateDimensions(item: Record<string, unknown>, context: string): void {
+  if (item.flavor !== undefined && !VALID_FLAVORS.includes(item.flavor as string)) {
+    console.error(`ERROR: Invalid flavor "${item.flavor}" in ${context}. Valid: ${VALID_FLAVORS.join(", ")}`);
+    errors++;
+  }
+  if (item.locale !== undefined && !VALID_LOCALES.includes(item.locale as string)) {
+    console.error(`ERROR: Invalid locale "${item.locale}" in ${context}. Valid: ${VALID_LOCALES.join(", ")}`);
+    errors++;
+  }
+  if (item.presentation !== undefined && !VALID_PRESENTATIONS.includes(item.presentation as string)) {
+    console.error(`ERROR: Invalid presentation "${item.presentation}" in ${context}. Valid: ${VALID_PRESENTATIONS.join(", ")}`);
+    errors++;
+  }
+  if (item.contentDepth !== undefined && !VALID_CONTENT_DEPTHS.includes(item.contentDepth as string)) {
+    console.error(`ERROR: Invalid contentDepth "${item.contentDepth}" in ${context}. Valid: ${VALID_CONTENT_DEPTHS.join(", ")}`);
+    errors++;
+  }
+}
+
+// Platform-incompatible instruction patterns
+// These describe physical/verbal actions that can't be done on a screen
 const INCOMPATIBLE_PATTERNS = [
   // Physical actions the student is asked to perform (not descriptions of objects)
   { pattern: /\byou\b.*\b(point to|point at)\b/i, label: "physical pointing" },
@@ -66,6 +93,8 @@ if (existsSync(problemsDir)) {
         console.warn(`WARN: Empty solution for ${p.id} in ${file}`);
         warnings++;
       }
+      // Dimension validation
+      validateDimensions(p, `${p.id} in ${file}`);
       // Platform compatibility checks
       checkPlatformCompatibility(p.question ?? "", `${p.id} question`);
       for (const hint of p.hints ?? []) {
@@ -92,6 +121,8 @@ if (existsSync(examplesDir)) {
         console.error(`ERROR: No steps in ${file} (${ex.id})`);
         errors++;
       }
+      // Dimension validation
+      validateDimensions(ex, `${ex.id} in ${file}`);
       for (let i = 0; i < (ex.steps ?? []).length; i++) {
         const step = ex.steps[i];
         if (!step.subgoalLabel?.trim()) {

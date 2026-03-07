@@ -21,9 +21,9 @@ This plan closes the gap so that when content is generated across dimensions, it
 
 ## Progress
 
-**Completed:** Phase 1 ✓, Phase 2 ✓
+**Completed:** Phase 1 ✓, Phase 2 ✓, Phase 3 ✓
 **In Progress:** —
-**Next:** Phase 3
+**Next:** Phase 4
 
 ---
 
@@ -64,16 +64,16 @@ This plan closes the gap so that when content is generated across dimensions, it
 
 ---
 
-## Phase 3: Dimension-Aware Import & Tooling
+## Phase 3: Dimension-Aware Import & Tooling ✓
 **Goal:** Import pipeline reads dimension metadata from content JSON instead of hardcoding defaults. Admin matrix reflects actual dimension coverage.
 
-1. [ ] [IMP] Update content JSON schema: problem and example JSON files can optionally include `flavor`, `locale`, `presentation`, `contentDepth` fields. When absent, defaults apply (`classic`, `en`, `standard`, `survey`). Update `tools/validate-content.ts` to validate dimension values when present.
+1. [x] [IMP] Update content JSON schema: problem and example JSON files can optionally include `flavor`, `locale`, `presentation`, `contentDepth` fields. When absent, defaults apply (`classic`, `en`, `standard`, `survey`). Update `tools/validate-content.ts` to validate dimension values when present.
 
-2. [ ] [IMP] Update `tools/import-content.ts`: read dimension fields from content JSON. Insert with actual values instead of hardcoded `'classic', 'en', 'individual', 1`. Support importing multiple dimension variants for the same topic from separate files or a single file with dimension annotations.
+2. [x] [IMP] Update `tools/import-content.ts`: read dimension fields from content JSON. Insert with actual values instead of hardcoded `'classic', 'en', 'individual', 1`. Support importing multiple dimension variants for the same topic from separate files or a single file with dimension annotations.
 
-3. [ ] [IMP] Update `tools/export-sql.ts`: same dimension-awareness as import. Export SQL includes actual dimension values.
+3. [x] [IMP] Update `tools/export-sql.ts`: same dimension-awareness as import. Export SQL includes actual dimension values.
 
-4. [ ] [TST] Verify: content files with explicit dimensions import correctly. Content files without dimensions still import with defaults (backwards compatible). Admin content matrix shows correct dimension coverage after import. Round-trip: export → import produces identical data.
+4. [x] [TST] Verify: content files with explicit dimensions import correctly. Content files without dimensions still import with defaults (backwards compatible). Admin content matrix shows correct dimension coverage after import. Round-trip: export → import produces identical data.
 
 **Validation:** Content files can specify their dimensions. Import respects them. Admin matrix accurately shows what dimension combinations exist per topic.
 
