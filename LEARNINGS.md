@@ -231,3 +231,25 @@ When adding new fields to `DiagnosticState` (which is serialized as JSON in `dia
 ts-fsrs v5 does not include a `computeParameters()` or optimizer function. The `w` weights optimization is only available in the Python `fsrs-optimizer` package. In a JS/Workers environment, per-user FSRS customization must be done via heuristics (adjusting `request_retention` based on observed retention rate) or by running a separate offline optimizer job. Custom params can be passed to `generatorParameters({ request_retention, w })` and `fsrs()`.
 
 **Context:** Implementing per-user FSRS optimization for Plan 010 Phase 7. Plan referenced `fsrs.computeParameters()` which doesn't exist in the TS library.
+
+---
+
+### 2026-03-07: FSRS consecutive correct only increments at State.Review
+
+**Source:** Test failure during confidence calibration implementation
+**Area:** ts-fsrs / SRS service
+
+`consecutiveCorrectReviews` only increments when `newCard.state === State.Review` (state=2). New topics start at `State.New` (0), then move through `State.Learning` (1) after initial reviews. It typically takes 2-3 `Rating.Good` reviews before a card reaches `State.Review`. Tests that check consecutive correct counts must account for this — seeding a few reviews first.
+
+**Context:** Confidence calibration test expected 2 consecutive correct after 2 Good reviews on a new topic, but the card was still in Learning state.
+
+---
+
+### 2026-03-07: Drizzle migration snapshot drift requires manual migration SQL
+
+**Source:** User session
+**Area:** Drizzle ORM / D1
+
+When schema changes are applied via hand-written migrations (not `drizzle-kit generate`), the Drizzle snapshot drifts out of sync. Running `drizzle-kit generate` later produces a migration that tries to recreate already-existing tables/columns. Fix: manually edit the generated SQL to only include the new change (e.g., just the ALTER TABLE), keeping the snapshot file as-is for future sync.
+
+**Context:** Migration 0020 generated CREATE TABLE statements for tables already created in migrations 0016-0019.
