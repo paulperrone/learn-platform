@@ -445,13 +445,13 @@ const SCHEMA_STATEMENTS = [
   'CREATE INDEX topics_depth_idx ON topics (depth)',
 
   // instructional_content (FK → topics)
-  'CREATE TABLE instructional_content (id text PRIMARY KEY NOT NULL, topic_id text NOT NULL, flavor text DEFAULT \'classic\' NOT NULL, locale text DEFAULT \'en\' NOT NULL, presentation text DEFAULT \'individual\' NOT NULL, content_depth text DEFAULT \'survey\' NOT NULL, version integer DEFAULT 1 NOT NULL, title text NOT NULL, steps_json text NOT NULL, assets_json text, created_at text NOT NULL, updated_at text NOT NULL, FOREIGN KEY (topic_id) REFERENCES topics(id))',
+  'CREATE TABLE instructional_content (id text PRIMARY KEY NOT NULL, topic_id text NOT NULL, flavor text DEFAULT \'classic\' NOT NULL, locale text DEFAULT \'en\' NOT NULL, presentation text DEFAULT \'standard\' NOT NULL, content_depth text DEFAULT \'survey\' NOT NULL, version integer DEFAULT 1 NOT NULL, title text NOT NULL, steps_json text NOT NULL, assets_json text, created_at text NOT NULL, updated_at text NOT NULL, FOREIGN KEY (topic_id) REFERENCES topics(id))',
   'CREATE INDEX ic_topic_idx ON instructional_content (topic_id)',
   'CREATE INDEX ic_dimensions_idx ON instructional_content (topic_id, flavor, locale, presentation, version)',
   'CREATE INDEX ic_depth_idx ON instructional_content (topic_id, content_depth)',
 
   // assessment_content (FK → topics)
-  'CREATE TABLE assessment_content (id text PRIMARY KEY NOT NULL, topic_id text NOT NULL, flavor text DEFAULT \'classic\' NOT NULL, locale text DEFAULT \'en\' NOT NULL, presentation text DEFAULT \'individual\' NOT NULL, content_depth text DEFAULT \'survey\' NOT NULL, version integer DEFAULT 1 NOT NULL, type text DEFAULT \'text-qa\' NOT NULL, difficulty text NOT NULL, question text NOT NULL, answer text NOT NULL, hints_json text DEFAULT \'[]\' NOT NULL, solution text DEFAULT \'\' NOT NULL, type_properties text, created_at text NOT NULL, FOREIGN KEY (topic_id) REFERENCES topics(id))',
+  'CREATE TABLE assessment_content (id text PRIMARY KEY NOT NULL, topic_id text NOT NULL, flavor text DEFAULT \'classic\' NOT NULL, locale text DEFAULT \'en\' NOT NULL, presentation text DEFAULT \'standard\' NOT NULL, content_depth text DEFAULT \'survey\' NOT NULL, version integer DEFAULT 1 NOT NULL, type text DEFAULT \'text-qa\' NOT NULL, difficulty text NOT NULL, question text NOT NULL, answer text NOT NULL, hints_json text DEFAULT \'[]\' NOT NULL, solution text DEFAULT \'\' NOT NULL, type_properties text, created_at text NOT NULL, FOREIGN KEY (topic_id) REFERENCES topics(id))',
   'CREATE INDEX ac_topic_idx ON assessment_content (topic_id)',
   'CREATE INDEX ac_dimensions_idx ON assessment_content (topic_id, flavor, locale, presentation, version)',
   'CREATE INDEX ac_type_idx ON assessment_content (topic_id, type)',

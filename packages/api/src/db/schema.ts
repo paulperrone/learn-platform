@@ -41,7 +41,7 @@ export const instructionalContent = sqliteTable("instructional_content", {
   topicId: text("topic_id").notNull().references(() => topics.id),
   flavor: text("flavor").notNull().default("classic"),
   locale: text("locale").notNull().default("en"),
-  presentation: text("presentation").notNull().default("individual"),
+  presentation: text("presentation").notNull().default("standard"),
   contentDepth: text("content_depth").notNull().default("survey"), // 'survey' | 'contextual' | 'analytical' | 'synthesis'
   version: integer("version").notNull().default(1),
   title: text("title").notNull(),
@@ -60,7 +60,7 @@ export const assessmentContent = sqliteTable("assessment_content", {
   topicId: text("topic_id").notNull().references(() => topics.id),
   flavor: text("flavor").notNull().default("classic"),
   locale: text("locale").notNull().default("en"),
-  presentation: text("presentation").notNull().default("individual"),
+  presentation: text("presentation").notNull().default("standard"),
   contentDepth: text("content_depth").notNull().default("survey"), // 'survey' | 'contextual' | 'analytical' | 'synthesis'
   version: integer("version").notNull().default(1),
   type: text("type").notNull().default("text-qa"),
