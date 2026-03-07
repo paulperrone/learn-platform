@@ -43,6 +43,42 @@ function computeRetrievability(row: UserTopicRow): number {
   return Math.pow(1 + elapsedDays / (9 * row.stability), -1);
 }
 
+/**
+ * Reorder items so no two consecutive items share the same strand.
+ * Uses greedy selection: pick the highest-priority item that doesn't
+ * conflict with the previous item's strand. Falls back to same-strand
+ * placement when unavoidable.
+ */
+export function interleaveByStrand(
+  items: MixItem[],
+  strandMap: Map<string, string>
+): MixItem[] {
+  if (items.length <= 1) return items;
+
+  const remaining = [...items];
+  const result: MixItem[] = [];
+
+  while (remaining.length > 0) {
+    const lastStrand = result.length > 0
+      ? strandMap.get(result[result.length - 1].topicId)
+      : null;
+
+    // Find first item from a different strand
+    const idx = remaining.findIndex(
+      (item) => strandMap.get(item.topicId) !== lastStrand
+    );
+
+    if (idx >= 0) {
+      result.push(remaining.splice(idx, 1)[0]);
+    } else {
+      // All remaining items share the same strand — take the first one
+      result.push(remaining.shift()!);
+    }
+  }
+
+  return result;
+}
+
 export function createSRSService(db: DB) {
   const graph = createGraphService(db);
 
@@ -400,20 +436,25 @@ export function createSRSService(db: DB) {
         }));
 
       // Interleave main items: review, new, review, review, new pattern
-      const mainItems: MixItem[] = [];
+      const rawMainItems: MixItem[] = [];
       let ri = 0;
       let ni = 0;
       let reviewStreak = 0;
 
       while (ri < reviewTopics.length || ni < newTopics.length) {
         if (ri < reviewTopics.length && (reviewStreak < 2 || ni >= newTopics.length)) {
-          mainItems.push(reviewTopics[ri++]);
+          rawMainItems.push(reviewTopics[ri++]);
           reviewStreak++;
         } else if (ni < newTopics.length) {
-          mainItems.push(newTopics[ni++]);
+          rawMainItems.push(newTopics[ni++]);
           reviewStreak = 0;
         }
       }
+
+      // Non-interference interleaving: avoid consecutive items from same strand
+      const allMainTopicIds = rawMainItems.map((item) => item.topicId);
+      const strandMap = await graph.getTopicStrands(allMainTopicIds);
+      const mainItems = interleaveByStrand(rawMainItems, strandMap);
 
       // Order: warmup → main → stretch
       const items: MixItem[] = [...warmupItems, ...mainItems, ...stretchItems];

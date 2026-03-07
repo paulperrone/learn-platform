@@ -23,9 +23,9 @@ This plan implements: progressive hint reveal, calibrated mastery criteria, full
 
 ## Progress
 
-**Completed:** Phase 1 ✓, Phase 2 ✓, Phase 3 ✓
+**Completed:** Phase 1 ✓, Phase 2 ✓, Phase 3 ✓, Phase 4 ✓
 **In Progress:** —
-**Next:** Phase 4
+**Next:** Phase 5
 
 ---
 
@@ -79,14 +79,14 @@ This plan implements: progressive hint reveal, calibrated mastery criteria, full
 
 ---
 
-## Phase 4: Non-Interference Interleaving
+## Phase 4: Non-Interference Interleaving ✓
 **Goal:** Avoid putting conceptually similar topics back-to-back in reviews. Research: 50-90% of multiplication errors are caused by interference from related facts.
 
-1. [ ] [IMP] Build topic similarity grouping: topics that share a direct prerequisite edge or are siblings (same parent prerequisite) are in the same "strand." Tag each topic with its strand ID (derived from the first prerequisite or manually assigned). Store as a computed property or denormalized column.
+1. [x] [IMP] Build topic similarity grouping: topics that share a direct prerequisite edge or are siblings (same parent prerequisite) are in the same "strand." Tag each topic with its strand ID (derived from the first prerequisite or manually assigned). Store as a computed property or denormalized column.
 
-2. [ ] [IMP] Update session mix interleaving: when ordering review and new items, ensure no two items from the same strand appear consecutively. If the mix can't satisfy this constraint (e.g., all due reviews are from the same strand), allow it but log a warning. Prioritize non-interference over strict due-date ordering.
+2. [x] [IMP] Update session mix interleaving: when ordering review and new items, ensure no two items from the same strand appear consecutively. If the mix can't satisfy this constraint (e.g., all due reviews are from the same strand), allow it but log a warning. Prioritize non-interference over strict due-date ordering.
 
-3. [ ] [TST] Verify: session mix doesn't place add-within-10 and add-within-20 back-to-back. Topics from different strands (e.g., addition and geometry) alternate. Constraint degrades gracefully when unavoidable.
+3. [x] [TST] Verify: session mix doesn't place add-within-10 and add-within-20 back-to-back. Topics from different strands (e.g., addition and geometry) alternate. Constraint degrades gracefully when unavoidable.
 
 **Validation:** Review sessions alternate between dissimilar topics. Students don't confuse related facts due to adjacency.
 
