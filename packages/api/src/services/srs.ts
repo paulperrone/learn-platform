@@ -340,11 +340,134 @@ export function createSRSService(db: DB) {
     },
 
     /**
+     * Compute FIRe coverage for review compression.
+     * For each candidate topic, find which other due topics it would
+     * implicitly refresh via encompassing edges (multi-hop BFS).
+     * Returns a map of topicId → set of covered due topic IDs.
+     */
+    async computeFIReCoverage(dueTopicIds: Set<string>): Promise<Map<string, Set<string>>> {
+      const coverageMap = new Map<string, Set<string>>();
+      const maxHops = 3;
+
+      for (const topicId of dueTopicIds) {
+        const reachable = new Set<string>();
+        const visited = new Set<string>();
+        const queue: { topicId: string; depth: number; weight: number }[] = [];
+
+        const children = await graph.getEncompassedTopics(topicId);
+        for (const c of children) {
+          if (c.weight > 0.05) {
+            queue.push({ topicId: c.childTopicId, depth: 1, weight: c.weight });
+          }
+        }
+
+        while (queue.length > 0) {
+          const { topicId: childId, depth, weight } = queue.shift()!;
+          if (visited.has(childId)) continue;
+          visited.add(childId);
+
+          if (dueTopicIds.has(childId) && childId !== topicId) {
+            reachable.add(childId);
+          }
+
+          if (depth < maxHops) {
+            const grandchildren = await graph.getEncompassedTopics(childId);
+            for (const gc of grandchildren) {
+              const newWeight = weight * gc.weight;
+              if (newWeight > 0.05 && !visited.has(gc.childTopicId)) {
+                queue.push({ topicId: gc.childTopicId, depth: depth + 1, weight: newWeight });
+              }
+            }
+          }
+        }
+
+        if (reachable.size > 0) {
+          coverageMap.set(topicId, reachable);
+        }
+      }
+
+      return coverageMap;
+    },
+
+    /**
+     * Select reviews using greedy set-cover compression.
+     * Picks topics that maximize implicit FIRe coverage of other due topics,
+     * reducing the total number of explicit reviews needed.
+     * Falls back to most-overdue ordering when encompassing density is too low.
+     */
+    async compressReviews(
+      dueTopics: UserTopicRow[],
+      budget: number,
+      excludeIds: Set<string>
+    ): Promise<{ selected: UserTopicRow[]; coveredCount: number }> {
+      const candidates = dueTopics.filter((t) => !excludeIds.has(t.topicId));
+      if (candidates.length === 0 || budget <= 0) {
+        return { selected: [], coveredCount: 0 };
+      }
+
+      const dueSet = new Set(candidates.map((t) => t.topicId));
+      const coverageMap = await this.computeFIReCoverage(dueSet);
+
+      // Check if compression is meaningful (any topic covers at least one other)
+      const totalCoverage = [...coverageMap.values()].reduce((sum, s) => sum + s.size, 0);
+      if (totalCoverage === 0) {
+        // No encompassing density — fall back to most-overdue
+        return { selected: candidates.slice(0, budget), coveredCount: 0 };
+      }
+
+      // Greedy set cover
+      const selected: UserTopicRow[] = [];
+      const covered = new Set<string>();
+      const remaining = new Set(dueSet);
+
+      while (selected.length < budget && remaining.size > 0) {
+        let bestTopic: UserTopicRow | null = null;
+        let bestScore = -1;
+        let bestOverdue = -Infinity;
+
+        for (const topic of candidates) {
+          if (!remaining.has(topic.topicId)) continue;
+
+          const coverage = coverageMap.get(topic.topicId);
+          const uncoveredCount = coverage
+            ? [...coverage].filter((id) => remaining.has(id) && !covered.has(id)).length
+            : 0;
+          const score = uncoveredCount + 1; // +1 for the topic itself
+
+          const overdueMs = Date.now() - new Date(topic.due).getTime();
+
+          if (score > bestScore || (score === bestScore && overdueMs > bestOverdue)) {
+            bestTopic = topic;
+            bestScore = score;
+            bestOverdue = overdueMs;
+          }
+        }
+
+        if (!bestTopic) break;
+        selected.push(bestTopic);
+        remaining.delete(bestTopic.topicId);
+        covered.add(bestTopic.topicId);
+
+        const coverage = coverageMap.get(bestTopic.topicId);
+        if (coverage) {
+          for (const id of coverage) {
+            covered.add(id);
+          }
+        }
+      }
+
+      return { selected, coveredCount: covered.size };
+    },
+
+    /**
      * Build the session mix: warmup → main (review+new interleaved) → stretch.
      *
      * - Warmup: mastered topics for survey-depth recall (builds confidence, activates prior knowledge)
      * - Main: ~60% review + ~40% new frontier topics (existing interleave logic)
      * - Stretch: context-layered frontier topics at next depth (productive failure / priming)
+     *
+     * Reviews use FIRe compression: selects reviews that maximize implicit
+     * repetition of other due topics through encompassing edges.
      */
     async getSessionMix(userId: string, count: number = 10) {
       const dueTopics = await this.getDueTopics(userId);
@@ -414,15 +537,19 @@ export function createSRSService(db: DB) {
       const mainReviewCount = Math.ceil(mainSlots * 0.6);
       const mainNewCount = mainSlots - mainReviewCount;
 
-      const reviewTopics: MixItem[] = dueTopics
-        .filter((t) => !warmupTopicIds.has(t.topicId))
-        .slice(0, mainReviewCount)
-        .map((t) => ({
-          topicId: t.topicId,
-          due: t.due,
-          type: "review" as const,
-          blendRole: "main" as const,
-        }));
+      // Use FIRe compression to select reviews that maximize implicit coverage
+      const { selected: compressedReviews, coveredCount } = await this.compressReviews(
+        dueTopics,
+        mainReviewCount,
+        warmupTopicIds
+      );
+
+      const reviewTopics: MixItem[] = compressedReviews.map((t) => ({
+        topicId: t.topicId,
+        due: t.due,
+        type: "review" as const,
+        blendRole: "main" as const,
+      }));
 
       const newTopics: MixItem[] = frontier.topics
         .filter((t) => !stretchTopicIds.has(t.id))
@@ -459,10 +586,22 @@ export function createSRSService(db: DB) {
       // Order: warmup → main → stretch
       const items: MixItem[] = [...warmupItems, ...mainItems, ...stretchItems];
 
+      // Compression stats: explicit reviews vs total due topics covered
+      const explicitReviews = reviewTopics.length;
+      const totalDueCovered = coveredCount;
+      const compressionRatio = explicitReviews > 0 && totalDueCovered > 0
+        ? totalDueCovered / explicitReviews
+        : 1;
+
       return {
         items,
         reviewCount: reviewTopics.length + warmupItems.length,
         newCount: newTopics.length,
+        compressionStats: {
+          explicitReviews,
+          totalDueCovered,
+          ratio: Math.round(compressionRatio * 100) / 100,
+        },
       };
     },
 

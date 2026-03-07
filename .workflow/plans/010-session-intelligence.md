@@ -23,9 +23,9 @@ This plan implements: progressive hint reveal, calibrated mastery criteria, full
 
 ## Progress
 
-**Completed:** Phase 1 ✓, Phase 2 ✓, Phase 3 ✓, Phase 4 ✓, Phase 5 ✓
+**Completed:** Phase 1 ✓, Phase 2 ✓, Phase 3 ✓, Phase 4 ✓, Phase 5 ✓, Phase 6 ✓
 **In Progress:** —
-**Next:** Phase 6
+**Next:** Phase 7
 
 ---
 
@@ -105,16 +105,16 @@ This plan implements: progressive hint reveal, calibrated mastery criteria, full
 
 ---
 
-## Phase 6: FIRe Review Compression
+## Phase 6: FIRe Review Compression ✓
 **Goal:** Select reviews that maximize trickle-down credit, reducing the total number of explicit reviews needed. Learning-science.md §8: "Select reviews whose encompassings knock out the most other due reviews. This is the key optimization that makes spaced repetition practical at scale." Math Academy achieves ~1 explicit review per topic on average with this approach.
 
-1. [ ] [IMP] Build review compression algorithm: given the set of all due topics, compute the optimal subset of reviews that covers the most due topics via FIRe trickle-down. For each candidate review topic, calculate its "coverage score" — how many other due topics it would implicitly refresh through encompassing edges (multi-hop, weighted). Greedily select the topic with highest coverage, apply its FIRe credit, recompute remaining due set, repeat until all due topics are covered or the review budget is exhausted.
+1. [x] [IMP] Build review compression algorithm: given the set of all due topics, compute the optimal subset of reviews that covers the most due topics via FIRe trickle-down. For each candidate review topic, calculate its "coverage score" — how many other due topics it would implicitly refresh through encompassing edges (multi-hop, weighted). Greedily select the topic with highest coverage, apply its FIRe credit, recompute remaining due set, repeat until all due topics are covered or the review budget is exhausted.
 
-2. [ ] [IMP] Integrate into `getSessionMix()`: replace the current "most overdue first" review selection with the compression algorithm. The session still targets ~60% review items, but now each review is chosen to maximize implicit repetition of other due topics. Fall back to most-overdue ordering when encompassing density is too low for meaningful compression.
+2. [x] [IMP] Integrate into `getSessionMix()`: replace the current "most overdue first" review selection with the compression algorithm. The session still targets ~60% review items, but now each review is chosen to maximize implicit repetition of other due topics. Fall back to most-overdue ordering when encompassing density is too low for meaningful compression.
 
-3. [ ] [IMP] Track compression metrics: log how many explicit reviews were scheduled vs. how many total due topics were covered (explicit + implicit via FIRe). Surface in admin analytics. Target: compression ratio > 2x (each explicit review covers 2+ due topics on average). This metric improves as encompassing edge density increases (Phase 2).
+3. [x] [IMP] Track compression metrics: log how many explicit reviews were scheduled vs. how many total due topics were covered (explicit + implicit via FIRe). Surface in admin analytics. Target: compression ratio > 2x (each explicit review covers 2+ due topics on average). This metric improves as encompassing edge density increases (Phase 2).
 
-4. [ ] [TST] Verify: compression algorithm selects high-coverage reviews over merely overdue ones. Compression ratio tracked accurately. Sessions still feel natural (not just "always the hardest topic"). Fallback works when encompassing density is low. Total review burden decreases compared to naive scheduling.
+4. [x] [TST] Verify: compression algorithm selects high-coverage reviews over merely overdue ones. Compression ratio tracked accurately. Sessions still feel natural (not just "always the hardest topic"). Fallback works when encompassing density is low. Total review burden decreases compared to naive scheduling.
 
 **Validation:** Students do fewer explicit reviews while maintaining the same retention. Compression ratio is measurable and improves with encompassing density. This is the key efficiency gain that prevents "flashcard fatigue."
 
