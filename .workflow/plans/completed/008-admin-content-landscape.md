@@ -2,7 +2,7 @@
 
 > **Created:** 2026-03-05T19:29:23Z
 > **Updated:** 2026-03-05T21:00:00Z
-> **Completed:** —
+> **Completed:** 2026-03-06
 >
 > For project context, see [CLAUDE.md](../../CLAUDE.md)
 > For product vision, see [SPEC.md](./SPEC.md)
@@ -22,7 +22,7 @@ Admin visibility and content strategy. Before building generation infrastructure
 
 **Completed:** Phase 1 ✓, Phase 2 ✓, Phase 3 ✓, Phase 4 ✓
 **In Progress:** —
-**Next:** Phase 5
+**Next:** — (Phase 5 moved to Plan 012)
 
 ---
 
@@ -138,19 +138,5 @@ Admin visibility and content strategy. Before building generation infrastructure
 
 ---
 
-## Phase 5: Review & Curation Workflow
-**Goal:** Admin UI for reviewing content produced by 009's pipeline. The human quality gate between generation and production. Pipeline produces content → lands here → approved content goes live.
-
-1. [ ] [IMP] Review queue page: list jobs in "generated" or "reviewing" status (from 009's `generation_jobs` table). Show generated content side-by-side with base English classic version. Highlight AI review warnings and guessability flags. Show validation results (math correctness, readability, format compliance).
-
-2. [ ] [IMP] Inline editing: edit generated content before approval (fix errors, improve wording, adjust difficulty). Preview renders (including visuals if present). Save edits back to the job's staging content.
-
-3. [ ] [IMP] Approve/reject workflow: approve imports to `instructional_content` or `assessment_content` tables. Reject with notes (fed back to 009 for template improvement). Idempotent import — re-import updates existing content for same dimension combo.
-
-4. [ ] [IMP] Batch operations: select multiple jobs, bulk approve/reject. Filter by content type, topic, flavor, locale, validation status, media type. Sort by creation date, topic, priority.
-
-5. [ ] [IMP] Curation metrics: acceptance rate over time, common rejection reasons, average review time, content velocity (reviewed/imported per day/week). Track which prompt templates and generation configs produce highest acceptance rates — feed back to 009.
-
-6. [ ] [TST] Verify: review queue shows content correctly. Side-by-side comparison works. Inline editing saves. Approve/reject flows to correct tables. Batch ops work. Metrics track accurately.
-
-**Validation:** Paul reviews content, compares with base, edits, approves, and sees it in the matrix immediately. Rejection feedback improves generation quality over time. Acceptance rate is tracked.
+## Phase 5: Review & Curation Workflow → Moved to Plan 012
+**Note:** This phase has a circular dependency with Plan 012 (Content Generation Pipeline) — it needs the `generation_jobs` table that 012 creates. Moved to Plan 012 as a later phase where it fits naturally after the pipeline infrastructure exists.

@@ -16,7 +16,6 @@ PhysicsGraph's biggest multiplier was investing in content tooling (2 days/topic
 **Depends on:**
 - Plan 007 Phase 1 (content model — `instructional_content` and `assessment_content` tables)
 - Plan 008 Phase 1 (content strategy — what to generate and in what order)
-- Plan 008 Phase 5 (review workflow — where generated content lands for human review)
 
 **Research basis:** [reference/008-physicsgraph-learnings.md](./reference/008-physicsgraph-learnings.md) — Content Velocity, Content Pipeline Tooling, ReviewBot, Question Type Diversity, Animations and Visualizations sections.
 
@@ -56,14 +55,14 @@ Topic (graph node)
    - **Queue** — job created with target dimensions, content type, media type, priority
    - **Generate** — appropriate backend(s) produce content
    - **Validate** — automated checks (Phase 3)
-   - **Review** — human reviews in 008's admin UI
+   - **Review** — human reviews in admin UI (Phase 9)
    - **Import** — approved content written to production tables
 
    Job states: `queued` → `generating` → `generated` → `validating` → `validated` → `reviewing` → `approved`/`rejected` → `imported`. Failed states: `generation_failed`, `validation_failed`. Rejected jobs can be re-queued with modified parameters.
 
 2. [ ] [IMP] Build `generation_jobs` table: `id`, `contentType` ('instructional'|'assessment'), `mediaType` ('text'|'text-visual'|'text-audio'|'video'|'interactive'), `topicId`, `flavor`, `locale`, `presentation`, `version`, `status`, `priority`, `backend` (which generation system), `generatedContentJson` (staging — text content), `generatedAssetsJson` (staging — asset references/parameters), `validationResult`, `reviewNotes`, `costCents` (actual generation cost), `parentJobId` (for multi-stage pipelines — e.g., text job spawns visual job), `createdAt`, `updatedAt`, `importedAt`.
 
-3. [ ] [IMP] Build job management API: `POST /api/admin/jobs` (create job or batch of jobs), `GET /api/admin/jobs` (list by status, filters), `PATCH /api/admin/jobs/:id` (update status), `POST /api/admin/jobs/:id/retry` (re-queue failed job), `POST /api/admin/jobs/batch` (create from matrix gap selection — "fill all gaps for topic X"). Feeds into 008's review queue.
+3. [ ] [IMP] Build job management API: `POST /api/admin/jobs` (create job or batch of jobs), `GET /api/admin/jobs` (list by status, filters), `PATCH /api/admin/jobs/:id` (update status), `POST /api/admin/jobs/:id/retry` (re-queue failed job), `POST /api/admin/jobs/batch` (create from matrix gap selection — "fill all gaps for topic X"). Feeds into Phase 9 review queue.
 
 4. [ ] [IMP] Build CLI tool `tools/pipeline.ts`: create jobs, run generation, check status, retry failures. Supports batch operations. `npx tsx tools/pipeline.ts generate --topic add-within-10 --flavor adventure --locale en`. Also: `--dry-run` to estimate cost without executing.
 
@@ -153,9 +152,9 @@ Topic (graph node)
 
 3. [ ] [IMP] Cost management: track actual cost per job (LLM tokens, Modal compute time, R2 storage). Aggregate by: content type, dimension, backend. Estimate cost before generation (`--dry-run`). Budget limits per batch run. Cost-per-matrix-cell dashboard data for 008's gap analysis.
 
-4. [ ] [IMP] Model selection optimization: for each content type, track quality vs cost across available models. Cheaper models for translation and format conversion. Capable models for original content creation. A/B tracking: when two models produce content for similar jobs, compare acceptance rates in 008's review. Shift allocation toward higher-acceptance models.
+4. [ ] [IMP] Model selection optimization: for each content type, track quality vs cost across available models. Cheaper models for translation and format conversion. Capable models for original content creation. A/B tracking: when two models produce content for similar jobs, compare acceptance rates in Phase 9 review. Shift allocation toward higher-acceptance models.
 
-5. [ ] [IMP] Template iteration loop: track which prompt template versions produce highest acceptance rates (from 008 Phase 5 curation metrics). When acceptance drops below threshold, flag template for revision. Log rejection reasons → feed into template improvement.
+5. [ ] [IMP] Template iteration loop: track which prompt template versions produce highest acceptance rates (from Phase 9 curation metrics). When acceptance drops below threshold, flag template for revision. Log rejection reasons → feed into template improvement.
 
 6. [ ] [TST] Verify: batch of 50+ jobs executes with correct parallelism. Failures retry appropriately. Cost tracking matches actual API bills. Modal jobs dispatch and return. Rate limits respected.
 
@@ -185,9 +184,9 @@ Topic (graph node)
 
 1. [ ] [IMP] Create assessment expansion jobs: for all 71 math K-5 topics, generate additional problems to reach 15-30 per topic. Target diversity: mix of question types (numerical-input, multi-step, matching alongside text-qa), spread across easy/medium/hard, varied surface forms (different number choices, different word problem contexts). Queue as generation jobs with appropriate templates.
 
-2. [ ] [IMP] Execute generation and validation: run queued jobs through LLM generation → automated validation (math correctness, guessability, readability, format). Flag issues. Route validated content to 008's review queue.
+2. [ ] [IMP] Execute generation and validation: run queued jobs through LLM generation → automated validation (math correctness, guessability, readability, format). Flag issues. Route validated content to Phase 9 review queue.
 
-3. [ ] [IMP] Review and import: work through review queue in 008 admin. Track acceptance rate. Feed rejection patterns back to templates. Import approved problems.
+3. [ ] [IMP] Review and import: work through Phase 9 review queue. Track acceptance rate. Feed rejection patterns back to templates. Import approved problems.
 
 4. [ ] [IMP] Add visual aids to high-impact assessment: for topics identified in 008 P1 strategy (counting, place value, fractions, multiplication), generate SVG visual parameters alongside problems. Problems render with diagrams.
 
@@ -215,3 +214,22 @@ Topic (graph node)
 6. [ ] [TST] Verify: flavored content is mathematically correct and thematically appropriate. Localized content uses culturally appropriate contexts. Matrix shows expanding coverage. Quality metrics improve with iteration.
 
 **Validation:** Content matrix shows substantial coverage across flavors and locales. Generated content passes review at >80% acceptance rate. Quality improves via template iteration. Students can experience flavored learning.
+
+---
+
+## Phase 9: Review & Curation Workflow (from Plan 008 Phase 5)
+**Goal:** Admin UI for reviewing content produced by the pipeline. The human quality gate between generation and production. Pipeline produces content → lands here → approved content goes live.
+
+1. [ ] [IMP] Review queue page: list jobs in "generated" or "reviewing" status from `generation_jobs` table. Show generated content side-by-side with base English classic version. Highlight AI review warnings and guessability flags. Show validation results (math correctness, readability, format compliance).
+
+2. [ ] [IMP] Inline editing: edit generated content before approval (fix errors, improve wording, adjust difficulty). Preview renders (including visuals if present). Save edits back to the job's staging content.
+
+3. [ ] [IMP] Approve/reject workflow: approve imports to `instructional_content` or `assessment_content` tables. Reject with notes (fed back to template improvement). Idempotent import — re-import updates existing content for same dimension combo.
+
+4. [ ] [IMP] Batch operations: select multiple jobs, bulk approve/reject. Filter by content type, topic, flavor, locale, validation status, media type. Sort by creation date, topic, priority.
+
+5. [ ] [IMP] Curation metrics: acceptance rate over time, common rejection reasons, average review time, content velocity (reviewed/imported per day/week). Track which prompt templates and generation configs produce highest acceptance rates.
+
+6. [ ] [TST] Verify: review queue shows content correctly. Side-by-side comparison works. Inline editing saves. Approve/reject flows to correct tables. Batch ops work. Metrics track accurately.
+
+**Validation:** Paul reviews content, compares with base, edits, approves, and sees it in the matrix immediately. Rejection feedback improves generation quality over time. Acceptance rate is tracked.
