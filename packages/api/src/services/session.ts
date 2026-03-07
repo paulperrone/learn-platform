@@ -347,8 +347,9 @@ export function createSessionService(db: DB) {
           (response as any).problemId
         );
 
-        // Apply FIRe credit
+        // Apply FIRe credit (on success) or upward penalty (on failure)
         await srs.applyFIReCredit(state.userId, state.currentTopicId, rating);
+        await srs.applyUpwardPenalty(state.userId, state.currentTopicId, rating);
 
         // Nudge presentation distribution based on performance
         if (state.lastServedPresentation && state.lastServedSubjectId) {

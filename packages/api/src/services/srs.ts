@@ -24,6 +24,17 @@ function cardFromRow(row: UserTopicRow): Card {
   };
 }
 
+/** Compute FSRS retrievability (probability of recall) for a topic state. */
+function computeRetrievability(row: UserTopicRow): number {
+  if (row.reps === 0 || row.stability <= 0) return 0;
+  const now = Date.now();
+  const due = new Date(row.due).getTime();
+  const lastReview = row.lastReview ? new Date(row.lastReview).getTime() : now;
+  const elapsedDays = (now - lastReview) / (1000 * 60 * 60 * 24);
+  // FSRS power-law forgetting: R = (1 + t/9s)^-1
+  return Math.pow(1 + elapsedDays / (9 * row.stability), -1);
+}
+
 export function createSRSService(db: DB) {
   const graph = createGraphService(db);
 
@@ -58,6 +69,7 @@ export function createSRSService(db: DB) {
           lapses: 0,
           mastered: false,
           frontier: false,
+          consecutiveCorrectReviews: 0,
         })
         .returning();
 
@@ -85,19 +97,26 @@ export function createSRSService(db: DB) {
       const result = scheduling[rating];
       const newCard = result.card;
 
-      // Check mastery: graduated if 5+ consecutive correct reviews with stability > 30 days
+      // Track consecutive correct reviews at Review state (state=2)
+      const isCorrectReview = rating >= Rating.Good;
+      let newConsecutiveCorrect = state.consecutiveCorrectReviews;
+      if (isCorrectReview && newCard.state === State.Review) {
+        newConsecutiveCorrect = state.consecutiveCorrectReviews + 1;
+      } else if (!isCorrectReview) {
+        newConsecutiveCorrect = 0; // Lapse resets counter
+      }
+
+      // Mastery: 3+ consecutive correct reviews at Review state with stability > 14 days
       const shouldMaster =
-        rating >= Rating.Good &&
-        newCard.reps >= 5 &&
-        newCard.stability >= 30 &&
-        newCard.lapses === 0;
+        newConsecutiveCorrect >= 3 &&
+        newCard.state === State.Review &&
+        newCard.stability >= 14;
 
       // Update confidence tracking (exponential moving average)
       let newConfidenceAccuracy = state.confidenceAccuracy;
       if (confidence != null) {
-        const isCorrect = rating >= Rating.Good;
         const confidenceNorm = confidence / 5; // normalize 1-5 to 0.2-1.0
-        const calibrationError = Math.abs(confidenceNorm - (isCorrect ? 1 : 0));
+        const calibrationError = Math.abs(confidenceNorm - (isCorrectReview ? 1 : 0));
         const alpha = 0.3;
         newConfidenceAccuracy =
           state.confidenceAccuracy != null
@@ -115,6 +134,7 @@ export function createSRSService(db: DB) {
           reps: newCard.reps,
           lapses: newCard.lapses,
           mastered: shouldMaster || state.mastered,
+          consecutiveCorrectReviews: newConsecutiveCorrect,
           lastReview: now.toISOString(),
           confidenceAccuracy: newConfidenceAccuracy,
         })
@@ -129,7 +149,7 @@ export function createSRSService(db: DB) {
         assessmentContentId: assessmentContentId ?? null,
         rating,
         confidence: confidence ?? null,
-        correct: rating >= Rating.Good,
+        correct: isCorrectReview,
         responseMs,
         phase,
         hintsUsed: hintsUsed ?? null,
@@ -161,45 +181,118 @@ export function createSRSService(db: DB) {
     },
 
     /**
-     * Apply FIRe (Fractional Implicit Repetition) credit.
+     * Apply FIRe (Fractional Implicit Repetition) credit with multi-hop traversal.
      * When a user practices a parent topic, encompassed child topics
-     * get fractional credit toward their next review.
+     * get fractional credit toward their next review. Credit flows
+     * through 2-3 hops with diminishing weight.
+     *
+     * Early repetition discount: credit is scaled by (1 - retrievability)
+     * so that fresh topics get less credit.
      */
     async applyFIReCredit(userId: string, topicId: string, rating: Grade) {
-      const encompassed = await graph.getEncompassedTopics(topicId);
-      if (encompassed.length === 0) return [];
+      if (rating < Rating.Good) return [];
 
-      const credits: { topicId: string; weight: number }[] = [];
+      // Multi-hop BFS: collect all reachable children with cumulative weights
+      const visited = new Map<string, number>(); // topicId → cumulative weight
+      const queue: { topicId: string; cumulativeWeight: number; depth: number }[] = [];
+      const maxHops = 3;
 
-      for (const enc of encompassed) {
-        const childState = await this.getOrCreateState(userId, enc.childTopicId);
-        if (childState.mastered) continue;
-        if (childState.reps === 0) continue; // Don't credit topics not yet learned
+      const directChildren = await graph.getEncompassedTopics(topicId);
+      for (const enc of directChildren) {
+        queue.push({ topicId: enc.childTopicId, cumulativeWeight: enc.weight, depth: 1 });
+      }
 
-        const card = cardFromRow(childState);
+      while (queue.length > 0) {
+        const { topicId: childId, cumulativeWeight, depth } = queue.shift()!;
 
-        // Apply fractional credit: adjust the due date closer to now
-        // Weight determines how much credit (0.0 = none, 1.0 = full review)
-        if (rating >= Rating.Good) {
-          const now = new Date();
-          const dueDate = new Date(childState.due);
-          const remainingMs = dueDate.getTime() - now.getTime();
+        // Keep the highest weight path to each child
+        const existing = visited.get(childId);
+        if (existing != null && existing >= cumulativeWeight) continue;
+        visited.set(childId, cumulativeWeight);
 
-          if (remainingMs > 0) {
-            const creditMs = remainingMs * enc.weight;
-            const newDue = new Date(dueDate.getTime() - creditMs);
-
-            await db
-              .update(schema.userTopicState)
-              .set({ due: newDue.toISOString() })
-              .where(eq(schema.userTopicState.id, childState.id));
-
-            credits.push({ topicId: enc.childTopicId, weight: enc.weight });
+        // Continue BFS if within hop limit
+        if (depth < maxHops) {
+          const grandchildren = await graph.getEncompassedTopics(childId);
+          for (const gc of grandchildren) {
+            const newWeight = cumulativeWeight * gc.weight;
+            if (newWeight > 0.05) { // Skip negligible credit
+              queue.push({ topicId: gc.childTopicId, cumulativeWeight: newWeight, depth: depth + 1 });
+            }
           }
         }
       }
 
+      if (visited.size === 0) return [];
+
+      const credits: { topicId: string; weight: number }[] = [];
+      const now = new Date();
+
+      for (const [childTopicId, weight] of visited) {
+        const childState = await this.getOrCreateState(userId, childTopicId);
+        if (childState.mastered) continue;
+        if (childState.reps === 0) continue;
+
+        const dueDate = new Date(childState.due);
+        const remainingMs = dueDate.getTime() - now.getTime();
+        if (remainingMs <= 0) continue;
+
+        // Early repetition discount: scale credit by (1 - retrievability)
+        const retrievability = computeRetrievability(childState);
+        const discountedWeight = weight * (1 - retrievability);
+        if (discountedWeight < 0.01) continue;
+
+        const creditMs = remainingMs * discountedWeight;
+        const newDue = new Date(dueDate.getTime() - creditMs);
+
+        await db
+          .update(schema.userTopicState)
+          .set({ due: newDue.toISOString() })
+          .where(eq(schema.userTopicState.id, childState.id));
+
+        credits.push({ topicId: childTopicId, weight: discountedWeight });
+      }
+
       return credits;
+    },
+
+    /**
+     * Apply upward penalty: when a child topic fails, penalize parent
+     * topics that encompass it. Failure on a simpler skill should
+     * reduce stability on more advanced skills that depend on it.
+     */
+    async applyUpwardPenalty(userId: string, topicId: string, rating: Grade) {
+      if (rating >= Rating.Good) return [];
+
+      const parents = await graph.getEncompassingTopics(topicId);
+      if (parents.length === 0) return [];
+
+      const penaltyFactor = 0.5; // Penalties are less aggressive than credit
+      const penalties: { topicId: string; weight: number }[] = [];
+      const now = new Date();
+
+      for (const enc of parents) {
+        const parentState = await this.getOrCreateState(userId, enc.parentTopicId);
+        if (parentState.reps === 0) continue;
+        if (parentState.mastered) continue;
+
+        // Move parent's due date closer to now (make it due sooner)
+        const dueDate = new Date(parentState.due);
+        const remainingMs = dueDate.getTime() - now.getTime();
+        if (remainingMs <= 0) continue; // Already due
+
+        const penaltyWeight = enc.weight * penaltyFactor;
+        const penaltyMs = remainingMs * penaltyWeight;
+        const newDue = new Date(dueDate.getTime() - penaltyMs);
+
+        await db
+          .update(schema.userTopicState)
+          .set({ due: newDue.toISOString() })
+          .where(eq(schema.userTopicState.id, parentState.id));
+
+        penalties.push({ topicId: enc.parentTopicId, weight: penaltyWeight });
+      }
+
+      return penalties;
     },
 
     /**

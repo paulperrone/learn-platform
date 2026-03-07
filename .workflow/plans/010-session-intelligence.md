@@ -23,9 +23,9 @@ This plan implements: progressive hint reveal, calibrated mastery criteria, full
 
 ## Progress
 
-**Completed:** Phase 1 ✓
+**Completed:** Phase 1 ✓, Phase 2 ✓
 **In Progress:** —
-**Next:** Phase 2
+**Next:** Phase 3
 
 ---
 
@@ -42,20 +42,20 @@ This plan implements: progressive hint reveal, calibrated mastery criteria, full
 
 ---
 
-## Phase 2: Mastery Criteria & FIRe Density
+## Phase 2: Mastery Criteria & FIRe Density ✓
 **Goal:** Fix the overly strict mastery criteria and improve FIRe credit effectiveness.
 
-1. [ ] [IMP] Replace mastery criteria: current requirement of `0 lapses ever` with `consecutive correct at review state`. New criteria: topic is mastered when the student has 3+ consecutive correct reviews at FSRS `Review` state (state=2) with stability > 14 days. A single lapse during the review phase resets the consecutive counter but does NOT reset overall progress — the student re-enters the review cycle, not the learning cycle.
+1. [x] [IMP] Replace mastery criteria: current requirement of `0 lapses ever` with `consecutive correct at review state`. New criteria: topic is mastered when the student has 3+ consecutive correct reviews at FSRS `Review` state (state=2) with stability > 14 days. A single lapse during the review phase resets the consecutive counter but does NOT reset overall progress — the student re-enters the review cycle, not the learning cycle.
 
-2. [ ] [IMP] Add encompassing edges to the math-foundations graph. Current: 16 edges across 71 topics. Target: 40+ edges. Every multi-step topic should encompass its component skills (e.g., `add-within-20` encompasses `add-within-10`; `multiply-2digit` encompasses `multiply-1digit` and `add-within-100`). Update `graph.json` and re-import.
+2. [x] [IMP] Add encompassing edges to the math-foundations graph. Current: 16 edges across 71 topics. Target: 40+ edges. Every multi-step topic should encompass its component skills (e.g., `add-within-20` encompasses `add-within-10`; `multiply-2digit` encompasses `multiply-1digit` and `add-within-100`). Update `graph.json` and re-import.
 
-3. [ ] [IMP] Extend FIRe credit to multi-hop: currently `applyFIReCredit()` only credits direct children. Extend to traverse the encompassing graph 2-3 hops deep with diminishing weight (weight * parentWeight at each hop). This dramatically increases review compression.
+3. [x] [IMP] Extend FIRe credit to multi-hop: currently `applyFIReCredit()` only credits direct children. Extend to traverse the encompassing graph 2-3 hops deep with diminishing weight (weight * parentWeight at each hop). This dramatically increases review compression.
 
-4. [ ] [IMP] Implement upward penalty flow: when a student fails a problem on a simpler/child topic, propagate penalties UP to more advanced/parent topics that encompass it. Failure on `add-within-10` should reduce stability on `add-within-20` since the advanced skill depends on the simpler one. Penalty weight = encompassing weight * penalty factor (e.g., 0.5 — penalties are less aggressive than credit).
+4. [x] [IMP] Implement upward penalty flow: when a student fails a problem on a simpler/child topic, propagate penalties UP to more advanced/parent topics that encompass it. Failure on `add-within-10` should reduce stability on `add-within-20` since the advanced skill depends on the simpler one. Penalty weight = encompassing weight * penalty factor (e.g., 0.5 — penalties are less aggressive than credit).
 
-5. [ ] [IMP] Implement early repetition discount: if FIRe credit is applied when a topic's memory is still very fresh (retrievability > 0.95), discount the credit proportionally. A review that happens well before the optimal interval provides less learning benefit. Discount factor = `1 - retrievability` (so credit at R=0.99 is only 1% effective, credit at R=0.85 is 15% effective). Prevents over-crediting from dense practice sessions.
+5. [x] [IMP] Implement early repetition discount: if FIRe credit is applied when a topic's memory is still very fresh (retrievability > 0.95), discount the credit proportionally. A review that happens well before the optimal interval provides less learning benefit. Discount factor = `1 - retrievability` (so credit at R=0.99 is only 1% effective, credit at R=0.85 is 15% effective). Prevents over-crediting from dense practice sessions.
 
-6. [ ] [TST] Verify: student with 3 consecutive correct reviews at Review state gets mastery. Single lapse resets consecutive counter but not mastery flag if already mastered. FIRe credit flows through 2-3 hops with diminishing weight. Upward penalties reduce parent stability on child failure. Early repetition discount reduces credit for fresh topics. New encompassing edges validate in DAG check. Existing tests updated for new criteria.
+6. [x] [TST] Verify: student with 3 consecutive correct reviews at Review state gets mastery. Single lapse resets consecutive counter but not mastery flag if already mastered. FIRe credit flows through 2-3 hops with diminishing weight. Upward penalties reduce parent stability on child failure. Early repetition discount reduces credit for fresh topics. New encompassing edges validate in DAG check. Existing tests updated for new criteria.
 
 **Validation:** Students don't lose mastery from careless errors. FIRe credit compresses reviews meaningfully — practicing an advanced topic refreshes multiple prerequisites. Failure on basics correctly destabilizes advanced skills. Fresh-memory credit is appropriately discounted.
 

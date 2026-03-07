@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeAll } from "vitest";
-import { Rating } from "ts-fsrs";
+import { Rating, State } from "ts-fsrs";
 import {
   applyMigrations,
   getTestDb,
@@ -31,6 +31,7 @@ describe("createSRSService", () => {
       expect(state.topicId).toBe(topic.id);
       expect(state.reps).toBe(0);
       expect(state.mastered).toBe(false);
+      expect(state.consecutiveCorrectReviews).toBe(0);
     });
 
     it("returns existing state on second call", async () => {
@@ -118,6 +119,121 @@ describe("createSRSService", () => {
     });
   });
 
+  describe("mastery criteria", () => {
+    it("masters topic after 3 consecutive correct reviews at Review state with stability > 14", async () => {
+      const db = getTestDb();
+      const user = await seedUser({ id: "srs-mastery-1" });
+      const subj = await seedSubject({ id: "srs-mastery-subj-1" });
+      const topic = await seedTopic(subj.id, { id: "srs-mastery-topic-1" });
+
+      // Seed state at Review state (state=2) with high stability and 2 consecutive correct
+      await db.insert(schema.userTopicState).values({
+        userId: user.id,
+        topicId: topic.id,
+        stability: 20,
+        difficulty: 5,
+        due: new Date(Date.now() - 60000).toISOString(),
+        state: State.Review, // 2
+        reps: 5,
+        lapses: 1, // Lapses don't prevent mastery in new criteria
+        mastered: false,
+        consecutiveCorrectReviews: 2,
+      });
+
+      const srs = createSRSService(db);
+      const result = await srs.scheduleReview(user.id, topic.id, Rating.Good, 1500, "review");
+
+      expect(result.mastered).toBe(true);
+
+      const [state] = await db
+        .select()
+        .from(schema.userTopicState)
+        .where(
+          and(
+            eq(schema.userTopicState.userId, user.id),
+            eq(schema.userTopicState.topicId, topic.id)
+          )
+        );
+      expect(state.mastered).toBe(true);
+      expect(state.consecutiveCorrectReviews).toBe(3);
+    });
+
+    it("lapse resets consecutive counter but not mastery flag", async () => {
+      const db = getTestDb();
+      const user = await seedUser({ id: "srs-mastery-2" });
+      const subj = await seedSubject({ id: "srs-mastery-subj-2" });
+      const topic = await seedTopic(subj.id, { id: "srs-mastery-topic-2" });
+
+      // Topic already mastered with high consecutive count
+      await db.insert(schema.userTopicState).values({
+        userId: user.id,
+        topicId: topic.id,
+        stability: 20,
+        difficulty: 5,
+        due: new Date(Date.now() - 60000).toISOString(),
+        state: State.Review,
+        reps: 8,
+        lapses: 0,
+        mastered: true,
+        consecutiveCorrectReviews: 5,
+      });
+
+      const srs = createSRSService(db);
+      const result = await srs.scheduleReview(user.id, topic.id, Rating.Again, 1500, "review");
+
+      // Mastery flag stays true (once mastered, stays mastered)
+      expect(result.mastered).toBe(true);
+
+      const [state] = await db
+        .select()
+        .from(schema.userTopicState)
+        .where(
+          and(
+            eq(schema.userTopicState.userId, user.id),
+            eq(schema.userTopicState.topicId, topic.id)
+          )
+        );
+      expect(state.consecutiveCorrectReviews).toBe(0); // Reset
+      expect(state.mastered).toBe(true); // Preserved
+    });
+
+    it("does not master with only 2 consecutive correct reviews", async () => {
+      const db = getTestDb();
+      const user = await seedUser({ id: "srs-mastery-3" });
+      const subj = await seedSubject({ id: "srs-mastery-subj-3" });
+      const topic = await seedTopic(subj.id, { id: "srs-mastery-topic-3" });
+
+      await db.insert(schema.userTopicState).values({
+        userId: user.id,
+        topicId: topic.id,
+        stability: 20,
+        difficulty: 5,
+        due: new Date(Date.now() - 60000).toISOString(),
+        state: State.Review,
+        reps: 4,
+        lapses: 0,
+        mastered: false,
+        consecutiveCorrectReviews: 1,
+      });
+
+      const srs = createSRSService(db);
+      const result = await srs.scheduleReview(user.id, topic.id, Rating.Good, 1500, "review");
+
+      expect(result.mastered).toBe(false);
+
+      const [state] = await db
+        .select()
+        .from(schema.userTopicState)
+        .where(
+          and(
+            eq(schema.userTopicState.userId, user.id),
+            eq(schema.userTopicState.topicId, topic.id)
+          )
+        );
+      expect(state.consecutiveCorrectReviews).toBe(2);
+    });
+  });
+
   describe("getDueTopics", () => {
     it("returns topics that are due", async () => {
       const db = getTestDb();
@@ -170,7 +286,7 @@ describe("createSRSService", () => {
       const child = await seedTopic(subj.id, { id: "srs-child-8" });
       await seedEncompassing(parent.id, child.id, 0.5);
 
-      // Child has state with future due date
+      // Child has state with future due date and low retrievability
       const futureDue = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString();
       await db.insert(schema.userTopicState).values({
         userId: user.id,
@@ -180,6 +296,7 @@ describe("createSRSService", () => {
         reps: 3,
         stability: 5,
         difficulty: 5,
+        lastReview: new Date(Date.now() - 4 * 24 * 60 * 60 * 1000).toISOString(), // 4 days ago
       });
 
       const srs = createSRSService(db);
@@ -199,6 +316,191 @@ describe("createSRSService", () => {
           )
         );
       expect(new Date(updated.due).getTime()).toBeLessThan(new Date(futureDue).getTime());
+    });
+
+    it("flows credit through multi-hop encompassing", async () => {
+      const db = getTestDb();
+      const user = await seedUser({ id: "srs-multihop-1" });
+      const subj = await seedSubject({ id: "srs-multihop-subj" });
+      const grandparent = await seedTopic(subj.id, { id: "srs-gp-1" });
+      const parent = await seedTopic(subj.id, { id: "srs-p-1" });
+      const child = await seedTopic(subj.id, { id: "srs-c-1" });
+
+      // grandparent → parent → child
+      await seedEncompassing(grandparent.id, parent.id, 0.7);
+      await seedEncompassing(parent.id, child.id, 0.8);
+
+      const futureDue = new Date(Date.now() + 14 * 24 * 60 * 60 * 1000).toISOString();
+
+      // Set up parent state
+      await db.insert(schema.userTopicState).values({
+        userId: user.id,
+        topicId: parent.id,
+        due: futureDue,
+        mastered: false,
+        reps: 3,
+        stability: 10,
+        difficulty: 5,
+        lastReview: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString(),
+      });
+
+      // Set up child state
+      await db.insert(schema.userTopicState).values({
+        userId: user.id,
+        topicId: child.id,
+        due: futureDue,
+        mastered: false,
+        reps: 5,
+        stability: 10,
+        difficulty: 5,
+        lastReview: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString(),
+      });
+
+      const srs = createSRSService(db);
+      const credits = await srs.applyFIReCredit(user.id, grandparent.id, Rating.Good);
+
+      // Should credit both parent (1-hop) and child (2-hop)
+      const creditTopicIds = credits.map((c) => c.topicId);
+      expect(creditTopicIds).toContain(parent.id);
+      expect(creditTopicIds).toContain(child.id);
+
+      // Child's credit weight should be less than parent's (diminishing)
+      const parentCredit = credits.find((c) => c.topicId === parent.id)!;
+      const childCredit = credits.find((c) => c.topicId === child.id)!;
+      expect(childCredit.weight).toBeLessThan(parentCredit.weight);
+    });
+
+    it("discounts credit for fresh topics (early repetition discount)", async () => {
+      const db = getTestDb();
+      const user = await seedUser({ id: "srs-fresh-1" });
+      const subj = await seedSubject({ id: "srs-fresh-subj" });
+      const parent = await seedTopic(subj.id, { id: "srs-fresh-p" });
+      const freshChild = await seedTopic(subj.id, { id: "srs-fresh-c" });
+
+      await seedEncompassing(parent.id, freshChild.id, 0.8);
+
+      // Fresh child: reviewed very recently, very high retrievability
+      const futureDue = new Date(Date.now() + 14 * 24 * 60 * 60 * 1000).toISOString();
+      await db.insert(schema.userTopicState).values({
+        userId: user.id,
+        topicId: freshChild.id,
+        due: futureDue,
+        mastered: false,
+        reps: 3,
+        stability: 100, // Very high stability
+        difficulty: 5,
+        lastReview: new Date(Date.now() - 1000).toISOString(), // Just reviewed
+      });
+
+      const srs = createSRSService(db);
+      const credits = await srs.applyFIReCredit(user.id, parent.id, Rating.Good);
+
+      // Credit should be heavily discounted (retrievability ~1.0, so discount factor ~0)
+      // May even be empty if discounted weight drops below threshold
+      if (credits.length > 0) {
+        expect(credits[0].weight).toBeLessThan(0.1);
+      }
+    });
+
+    it("does not apply credit on failure rating", async () => {
+      const db = getTestDb();
+      const user = await seedUser({ id: "srs-nofail-1" });
+      const subj = await seedSubject({ id: "srs-nofail-subj" });
+      const parent = await seedTopic(subj.id, { id: "srs-nofail-p" });
+      const child = await seedTopic(subj.id, { id: "srs-nofail-c" });
+      await seedEncompassing(parent.id, child.id, 0.5);
+
+      const futureDue = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString();
+      await db.insert(schema.userTopicState).values({
+        userId: user.id,
+        topicId: child.id,
+        due: futureDue,
+        mastered: false,
+        reps: 3,
+        stability: 5,
+        difficulty: 5,
+      });
+
+      const srs = createSRSService(db);
+      const credits = await srs.applyFIReCredit(user.id, parent.id, Rating.Again);
+      expect(credits).toHaveLength(0);
+    });
+  });
+
+  describe("applyUpwardPenalty", () => {
+    it("moves parent due date closer when child fails", async () => {
+      const db = getTestDb();
+      const user = await seedUser({ id: "srs-penalty-1" });
+      const subj = await seedSubject({ id: "srs-penalty-subj" });
+      const parent = await seedTopic(subj.id, { id: "srs-penalty-p" });
+      const child = await seedTopic(subj.id, { id: "srs-penalty-c" });
+      await seedEncompassing(parent.id, child.id, 0.8);
+
+      const futureDue = new Date(Date.now() + 10 * 24 * 60 * 60 * 1000).toISOString();
+      await db.insert(schema.userTopicState).values({
+        userId: user.id,
+        topicId: parent.id,
+        due: futureDue,
+        mastered: false,
+        reps: 5,
+        stability: 15,
+        difficulty: 5,
+      });
+
+      const srs = createSRSService(db);
+      const penalties = await srs.applyUpwardPenalty(user.id, child.id, Rating.Again);
+
+      expect(penalties).toHaveLength(1);
+      expect(penalties[0].topicId).toBe(parent.id);
+
+      const [updated] = await db
+        .select()
+        .from(schema.userTopicState)
+        .where(
+          and(
+            eq(schema.userTopicState.userId, user.id),
+            eq(schema.userTopicState.topicId, parent.id)
+          )
+        );
+      expect(new Date(updated.due).getTime()).toBeLessThan(new Date(futureDue).getTime());
+    });
+
+    it("does not penalize on success rating", async () => {
+      const db = getTestDb();
+      const user = await seedUser({ id: "srs-penalty-2" });
+      const subj = await seedSubject({ id: "srs-penalty-subj-2" });
+      const parent = await seedTopic(subj.id, { id: "srs-penalty-p-2" });
+      const child = await seedTopic(subj.id, { id: "srs-penalty-c-2" });
+      await seedEncompassing(parent.id, child.id, 0.8);
+
+      const futureDue = new Date(Date.now() + 10 * 24 * 60 * 60 * 1000).toISOString();
+      await db.insert(schema.userTopicState).values({
+        userId: user.id,
+        topicId: parent.id,
+        due: futureDue,
+        mastered: false,
+        reps: 5,
+        stability: 15,
+        difficulty: 5,
+      });
+
+      const srs = createSRSService(db);
+      const penalties = await srs.applyUpwardPenalty(user.id, child.id, Rating.Good);
+      expect(penalties).toHaveLength(0);
+    });
+
+    it("skips parents not yet started", async () => {
+      const db = getTestDb();
+      const user = await seedUser({ id: "srs-penalty-3" });
+      const subj = await seedSubject({ id: "srs-penalty-subj-3" });
+      const parent = await seedTopic(subj.id, { id: "srs-penalty-p-3" });
+      const child = await seedTopic(subj.id, { id: "srs-penalty-c-3" });
+      await seedEncompassing(parent.id, child.id, 0.8);
+
+      // Parent has no state (not started)
+      const srs = createSRSService(db);
+      const penalties = await srs.applyUpwardPenalty(user.id, child.id, Rating.Again);
+      expect(penalties).toHaveLength(0);
     });
   });
 
