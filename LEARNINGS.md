@@ -220,3 +220,14 @@ When migrations are created manually (not via `drizzle-kit generate`), the snaps
 When adding new fields to `DiagnosticState` (which is serialized as JSON in `diagnostic_sessions.stateJson`), in-progress diagnostics won't have these fields. In `respond()`, initialize missing fields with defaults before using them: `state.correctness = state.correctness ?? []` and `state.servedPresentationLevels = state.servedPresentationLevels ?? []`. This prevents crashes when resuming diagnostics started before the code update.
 
 **Context:** Added `servedPresentationLevels` and `correctness` arrays to DiagnosticState for presentation distribution seeding (plan 009.5 Phase 2).
+
+---
+
+### 2026-03-07: ts-fsrs v5 has no built-in parameter optimizer
+
+**Source:** User session
+**Area:** ts-fsrs / FSRS
+
+ts-fsrs v5 does not include a `computeParameters()` or optimizer function. The `w` weights optimization is only available in the Python `fsrs-optimizer` package. In a JS/Workers environment, per-user FSRS customization must be done via heuristics (adjusting `request_retention` based on observed retention rate) or by running a separate offline optimizer job. Custom params can be passed to `generatorParameters({ request_retention, w })` and `fsrs()`.
+
+**Context:** Implementing per-user FSRS optimization for Plan 010 Phase 7. Plan referenced `fsrs.computeParameters()` which doesn't exist in the TS library.

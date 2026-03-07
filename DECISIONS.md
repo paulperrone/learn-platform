@@ -814,3 +814,24 @@ Child creation now creates both an org member (student role) and an account_link
 
 **Alternatives rejected:**
 - Random sampling from default distribution: adds noise, makes signal analysis unreliable with small question counts
+
+---
+
+### 2026-03-07: Per-user FSRS uses request_retention heuristic, not full w-weight optimization
+
+**Source:** User session
+
+**Context:** Plan 010 Phase 7 called for per-user FSRS parameter optimization. ts-fsrs v5 doesn't include a parameter optimizer — the FSRS optimizer is Python-only (`fsrs-optimizer`).
+
+**Decision:** Adjust `request_retention` (the target recall probability) based on observed retention rate from review history. Clamp to 0.7-0.97. Store in `user_fsrs_params` table. Full `w` weight optimization deferred to a future offline job. Trigger optimization at session end after 50+ reviews, with 7-day staleness check.
+
+**Why:**
+- `request_retention` is the single most impactful FSRS parameter — it controls how aggressive intervals are
+- Observed retention is easy to compute from review_log (correct/total at review phase)
+- No Python runtime needed — runs in Workers
+- Infrastructure is ready for full `w` optimization later (table stores `w_json` column)
+
+**Alternatives rejected:**
+- Full `w` weight optimization in JS: No library exists; would need to port the Python optimizer (~500 lines of matrix math)
+- External optimization service: Over-engineered for current scale; adds dependency
+- No per-user params: Misses easy win — users with 95% retention shouldn't be shown cards as often as those with 75%
