@@ -177,4 +177,85 @@ describe("ActivityService", () => {
       expect(history.length).toBeGreaterThanOrEqual(1);
     });
   });
+
+  describe("getStreakInfo", () => {
+    it("returns zero streak when no activity", async () => {
+      const info = await activity.getStreakInfo(userId, "2026-03-07");
+      expect(info.currentStreak).toBe(0);
+      expect(info.longestStreak).toBe(0);
+      expect(info.milestoneReached).toBeNull();
+    });
+
+    it("counts streak including today", async () => {
+      await seedDailyActivity(userId, "2026-03-05", { goalMet: true });
+      await seedDailyActivity(userId, "2026-03-06", { goalMet: true });
+      await seedDailyActivity(userId, "2026-03-07", { goalMet: true });
+
+      const info = await activity.getStreakInfo(userId, "2026-03-07");
+      expect(info.currentStreak).toBe(3);
+    });
+
+    it("counts streak from yesterday when today not yet met", async () => {
+      await seedDailyActivity(userId, "2026-03-05", { goalMet: true });
+      await seedDailyActivity(userId, "2026-03-06", { goalMet: true });
+      // today (2026-03-07) no activity yet
+
+      const info = await activity.getStreakInfo(userId, "2026-03-07");
+      expect(info.currentStreak).toBe(2);
+    });
+
+    it("returns zero when gap exists before yesterday", async () => {
+      await seedDailyActivity(userId, "2026-03-04", { goalMet: true });
+      // gap on 03-05 and 03-06
+      await seedDailyActivity(userId, "2026-03-07", { goalMet: true });
+
+      const info = await activity.getStreakInfo(userId, "2026-03-07");
+      expect(info.currentStreak).toBe(1);
+    });
+
+    it("calculates longest streak correctly", async () => {
+      // Old streak of 4
+      await seedDailyActivity(userId, "2026-02-20", { goalMet: true });
+      await seedDailyActivity(userId, "2026-02-21", { goalMet: true });
+      await seedDailyActivity(userId, "2026-02-22", { goalMet: true });
+      await seedDailyActivity(userId, "2026-02-23", { goalMet: true });
+      // Gap, then current streak of 2
+      await seedDailyActivity(userId, "2026-03-06", { goalMet: true });
+      await seedDailyActivity(userId, "2026-03-07", { goalMet: true });
+
+      const info = await activity.getStreakInfo(userId, "2026-03-07");
+      expect(info.currentStreak).toBe(2);
+      expect(info.longestStreak).toBe(4);
+    });
+
+    it("returns milestone for 7-day streak", async () => {
+      for (let i = 6; i >= 0; i--) {
+        const d = new Date("2026-03-07T12:00:00Z");
+        d.setUTCDate(d.getUTCDate() - i);
+        await seedDailyActivity(userId, d.toISOString().slice(0, 10), { goalMet: true });
+      }
+
+      const info = await activity.getStreakInfo(userId, "2026-03-07");
+      expect(info.currentStreak).toBe(7);
+      expect(info.milestoneReached).toBe(7);
+    });
+
+    it("returns null milestone for non-milestone streaks", async () => {
+      await seedDailyActivity(userId, "2026-03-06", { goalMet: true });
+      await seedDailyActivity(userId, "2026-03-07", { goalMet: true });
+
+      const info = await activity.getStreakInfo(userId, "2026-03-07");
+      expect(info.currentStreak).toBe(2);
+      expect(info.milestoneReached).toBeNull();
+    });
+
+    it("ignores days where goal was not met", async () => {
+      await seedDailyActivity(userId, "2026-03-05", { goalMet: true });
+      await seedDailyActivity(userId, "2026-03-06", { goalMet: false, minutesActive: 5 }); // active but didn't meet goal
+      await seedDailyActivity(userId, "2026-03-07", { goalMet: true });
+
+      const info = await activity.getStreakInfo(userId, "2026-03-07");
+      expect(info.currentStreak).toBe(1); // streak broken by non-goal day
+    });
+  });
 });

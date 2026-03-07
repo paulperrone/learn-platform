@@ -1,6 +1,6 @@
 import { authClient } from "./useAuth";
 import { useToast } from "./useToast";
-import type { SpeechSettings, Subject, Topic, Problem, WorkedExample, DiagnosticResult, TodayProgress, WeeklySummary, DailyGoalConfig, DailyActivityDay } from "@learn/shared";
+import type { SpeechSettings, Subject, Topic, Problem, WorkedExample, DiagnosticResult, TodayProgress, WeeklySummary, DailyGoalConfig, DailyActivityDay, StreakInfo } from "@learn/shared";
 
 const API_BASE = "/api";
 
@@ -415,6 +415,10 @@ export function useApi() {
     },
     getActivityHistory: async (days = 84) =>
       request<{ days: DailyActivityDay[] }>(`/activity/history?days=${days}`),
+    getStreakInfo: async (date?: string) => {
+      const qs = date ? `?date=${date}` : "";
+      return request<StreakInfo>(`/activity/streak${qs}`);
+    },
     getDailyGoal: () => request<DailyGoalConfig>("/activity/goal"),
     updateDailyGoal: (data: Partial<DailyGoalConfig>) =>
       request<DailyGoalConfig>("/activity/goal", {

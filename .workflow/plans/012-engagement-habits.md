@@ -21,9 +21,9 @@ Daily practice goals, streak visualization, progress animations, and estimated c
 
 ## Progress
 
-**Completed:** Phase 1 ✓
+**Completed:** Phase 1 ✓, Phase 2 ✓
 **In Progress:** —
-**Next:** Phase 2
+**Next:** Phase 3
 
 ---
 
@@ -42,16 +42,16 @@ Daily practice goals, streak visualization, progress animations, and estimated c
 
 ---
 
-## Phase 2: Streak & Contribution Visualization
+## Phase 2: Streak & Contribution Visualization ✓
 **Goal:** GitHub-style contribution graph and streak counter. Visual proof of consistency is a powerful habit reinforcer.
 
-1. [ ] [IMP] Build streak counter: consecutive days meeting daily goal. Display prominently on dashboard. Handle edge cases: timezone, missed single day (research: missing one day doesn't materially affect habit formation — consider "freeze" or gentle messaging rather than streak reset).
+1. [x] [IMP] Build streak counter: consecutive days meeting daily goal. Display prominently on dashboard. Handle edge cases: timezone, missed single day (research: missing one day doesn't materially affect habit formation — consider "freeze" or gentle messaging rather than streak reset).
 
-2. [ ] [IMP] Build contribution graph: GitHub-style grid showing daily activity over past 12 weeks. Color intensity reflects activity level (no activity, below goal, met goal, exceeded goal). Display on dashboard and progress page.
+2. [x] [IMP] Build contribution graph: GitHub-style grid showing daily activity over past 12 weeks. Color intensity reflects activity level (no activity, below goal, met goal, exceeded goal). Display on dashboard and progress page.
 
-3. [ ] [IMP] Streak milestones: acknowledge 7-day, 30-day, 66-day (habit formation median), 100-day streaks. Simple, encouraging messages — not gamified badges. Growth framing: "You've practiced 30 days in a row. Consistency is the most powerful learning strategy."
+3. [x] [IMP] Streak milestones: acknowledge 7-day, 30-day, 66-day (habit formation median), 100-day streaks. Simple, encouraging messages — not gamified badges. Growth framing: "You've practiced 30 days in a row. Consistency is the most powerful learning strategy."
 
-4. [ ] [TST] Verify: streaks count correctly across timezones. Contribution graph renders with real data. Milestones trigger at correct thresholds. Display is responsive.
+4. [x] [TST] Verify: streaks count correctly across timezones. Contribution graph renders with real data. Milestones trigger at correct thresholds. Display is responsive.
 
 **Validation:** Student sees their consistency pattern at a glance. Streak counter motivates daily return. Contribution graph shows long-term patterns.
 

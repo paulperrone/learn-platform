@@ -2,7 +2,7 @@
 import { ref, computed, onMounted } from "vue";
 import { useApi, withErrorToast } from "@/composables/useApi";
 import { useI18n } from "vue-i18n";
-import type { TodayProgress, WeeklySummary } from "@learn/shared";
+import type { TodayProgress, WeeklySummary, StreakInfo, DailyActivityDay } from "@learn/shared";
 
 const api = useApi();
 const { t } = useI18n();
@@ -10,19 +10,23 @@ const stats = ref({ mastered: 0, inProgress: 0, dueForReview: 0, total: 0 });
 const frontier = ref<any[]>([]);
 const todayProgress = ref<TodayProgress | null>(null);
 const weeklySummary = ref<WeeklySummary | null>(null);
+const streakInfo = ref<StreakInfo | null>(null);
+const activityHistory = ref<DailyActivityDay[]>([]);
 const loading = ref(true);
 const error = ref(false);
 
 onMounted(async () => {
   const result = await withErrorToast(async () => {
     const today = new Date().toISOString().slice(0, 10);
-    const [progressData, frontierData, todayData, weeklyData] = await Promise.all([
+    const [progressData, frontierData, todayData, weeklyData, streakData, historyData] = await Promise.all([
       api.getProgress(),
       api.getFrontier(),
       api.getTodayProgress(today),
       api.getWeeklySummary(today),
+      api.getStreakInfo(today),
+      api.getActivityHistory(84),
     ]);
-    return { progressData, frontierData, todayData, weeklyData };
+    return { progressData, frontierData, todayData, weeklyData, streakData, historyData };
   }, t("errors.failedToLoad", { resource: "dashboard" }));
 
   if (result) {
@@ -30,6 +34,8 @@ onMounted(async () => {
     frontier.value = result.frontierData.topics.slice(0, 5);
     todayProgress.value = result.todayData;
     weeklySummary.value = result.weeklyData;
+    streakInfo.value = result.streakData;
+    activityHistory.value = result.historyData.days;
   } else {
     error.value = true;
   }
@@ -49,6 +55,58 @@ const goalPercent = computed(() =>
 const RING_R = 40;
 const RING_C = 2 * Math.PI * RING_R;
 const ringOffset = computed(() => RING_C * (1 - (todayProgress.value?.progress ?? 0)));
+
+// Contribution graph: 12 weeks grid
+const contributionWeeks = computed(() => {
+  const map = new Map<string, DailyActivityDay>();
+  for (const day of activityHistory.value) {
+    map.set(day.date, day);
+  }
+
+  const weeks: { date: string; level: number }[][] = [];
+  const today = new Date();
+  // Start from 83 days ago (12 weeks = 84 days including today)
+  const start = new Date(today);
+  start.setDate(start.getDate() - 83);
+  // Align to start of week (Sunday)
+  start.setDate(start.getDate() - start.getDay());
+
+  let currentWeek: { date: string; level: number }[] = [];
+  const d = new Date(start);
+  while (d <= today) {
+    const dateStr = d.toISOString().slice(0, 10);
+    const day = map.get(dateStr);
+    let level = 0;
+    if (day) {
+      if (day.goalMet) level = 3;
+      else if (day.minutesActive > 0 || day.problemsCompleted > 0) level = day.minutesActive >= 10 || day.problemsCompleted >= 5 ? 2 : 1;
+    }
+    currentWeek.push({ date: dateStr, level });
+    if (currentWeek.length === 7) {
+      weeks.push(currentWeek);
+      currentWeek = [];
+    }
+    d.setDate(d.getDate() + 1);
+  }
+  if (currentWeek.length > 0) weeks.push(currentWeek);
+  return weeks;
+});
+
+const cellColor = (level: number) => {
+  switch (level) {
+    case 0: return "bg-gray-100";
+    case 1: return "bg-green-200";
+    case 2: return "bg-green-400";
+    case 3: return "bg-green-600";
+    default: return "bg-gray-100";
+  }
+};
+
+const milestoneMessage = computed(() => {
+  if (!streakInfo.value?.milestoneReached) return null;
+  const key = `dashboard.streakMilestone${streakInfo.value.milestoneReached}`;
+  return t(key);
+});
 </script>
 
 <template>
@@ -127,6 +185,49 @@ const ringOffset = computed(() => RING_C * (1 - (todayProgress.value?.progress ?
             {{ t('dashboard.weeklyTopics', { count: weeklySummary.totalTopicsMastered }) }}
           </p>
         </div>
+      </div>
+
+      <!-- Streak & Contribution Graph -->
+      <div v-if="streakInfo" class="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-4 mb-8">
+        <!-- Streak Counter -->
+        <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-5 flex flex-col items-center justify-center min-w-[140px]">
+          <div class="text-4xl font-bold" :class="streakInfo.currentStreak > 0 ? 'text-orange-500' : 'text-gray-300'">
+            {{ streakInfo.currentStreak }}
+          </div>
+          <p class="text-sm font-medium text-gray-600 mt-1">
+            {{ streakInfo.currentStreak > 0 ? t('dashboard.streakCounter', { count: streakInfo.currentStreak }) : t('dashboard.noStreak') }}
+          </p>
+          <p v-if="streakInfo.longestStreak > streakInfo.currentStreak" class="text-xs text-gray-400 mt-1">
+            {{ t('dashboard.longestStreak', { count: streakInfo.longestStreak }) }}
+          </p>
+        </div>
+
+        <!-- Contribution Graph -->
+        <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-5">
+          <p class="font-semibold text-gray-800 mb-3">{{ t('dashboard.contributionGraph') }}</p>
+          <div class="flex gap-[3px] overflow-x-auto">
+            <div v-for="(week, wi) in contributionWeeks" :key="wi" class="flex flex-col gap-[3px]">
+              <div
+                v-for="(day, di) in week" :key="di"
+                :class="[cellColor(day.level), 'w-3 h-3 rounded-sm']"
+                :title="`${day.date}: ${day.level === 0 ? 'No activity' : day.level === 3 ? 'Goal met' : 'Active'}`"
+              />
+            </div>
+          </div>
+          <div class="flex items-center gap-1 mt-2 text-xs text-gray-400">
+            <span>{{ t('dashboard.less') }}</span>
+            <div class="w-3 h-3 rounded-sm bg-gray-100" />
+            <div class="w-3 h-3 rounded-sm bg-green-200" />
+            <div class="w-3 h-3 rounded-sm bg-green-400" />
+            <div class="w-3 h-3 rounded-sm bg-green-600" />
+            <span>{{ t('dashboard.more') }}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Streak Milestone -->
+      <div v-if="milestoneMessage" class="bg-amber-50 border border-amber-200 rounded-lg p-4 mb-8 text-sm text-amber-800">
+        {{ milestoneMessage }}
       </div>
 
       <!-- Stats Cards -->

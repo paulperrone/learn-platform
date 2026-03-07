@@ -11,6 +11,33 @@ export type DailyGoalConfig = {
 
 const DEFAULT_GOAL: DailyGoalConfig = { type: "minutes", target: 20 };
 
+const STREAK_MILESTONES = [100, 66, 30, 7] as const;
+
+function getMilestone(streak: number): number | null {
+  for (const m of STREAK_MILESTONES) {
+    if (streak === m) return m;
+  }
+  return null;
+}
+
+function calcLongest(goalMetDates: Set<string>): number {
+  if (goalMetDates.size === 0) return 0;
+  const sorted = [...goalMetDates].sort();
+  let longest = 1;
+  let current = 1;
+  for (let i = 1; i < sorted.length; i++) {
+    const prev = new Date(sorted[i - 1] + "T12:00:00Z");
+    prev.setUTCDate(prev.getUTCDate() + 1);
+    if (prev.toISOString().slice(0, 10) === sorted[i]) {
+      current++;
+      if (current > longest) longest = current;
+    } else {
+      current = 1;
+    }
+  }
+  return longest;
+}
+
 export function createActivityService(db: DB) {
 
   async function getDailyGoal(userId: string): Promise<DailyGoalConfig> {
@@ -177,6 +204,51 @@ export function createActivityService(db: DB) {
       .orderBy(schema.dailyActivity.date);
   }
 
+  async function getStreakInfo(userId: string, today: string) {
+    // Get all days with goalMet, ordered descending from today
+    const rows = await db
+      .select({ date: schema.dailyActivity.date, goalMet: schema.dailyActivity.goalMet })
+      .from(schema.dailyActivity)
+      .where(and(
+        eq(schema.dailyActivity.userId, userId),
+        sql`${schema.dailyActivity.date} <= ${today}`,
+      ))
+      .orderBy(desc(schema.dailyActivity.date));
+
+    // Build set of dates where goal was met
+    const goalMetDates = new Set(rows.filter(r => r.goalMet).map(r => r.date));
+
+    // Calculate current streak: consecutive days ending at today (or yesterday if today not yet met)
+    let currentStreak = 0;
+    const d = new Date(today + "T12:00:00Z");
+
+    // Check if today counts
+    if (goalMetDates.has(today)) {
+      currentStreak = 1;
+      d.setUTCDate(d.getUTCDate() - 1);
+    } else {
+      // Maybe streak is still alive from yesterday
+      d.setUTCDate(d.getUTCDate() - 1);
+      if (!goalMetDates.has(d.toISOString().slice(0, 10))) {
+        // No streak — neither today nor yesterday met goal
+        return { currentStreak: 0, longestStreak: calcLongest(goalMetDates), milestoneReached: null };
+      }
+      currentStreak = 1;
+      d.setUTCDate(d.getUTCDate() - 1);
+    }
+
+    // Count backwards
+    while (goalMetDates.has(d.toISOString().slice(0, 10))) {
+      currentStreak++;
+      d.setUTCDate(d.getUTCDate() - 1);
+    }
+
+    const longestStreak = calcLongest(goalMetDates);
+    const milestoneReached = getMilestone(currentStreak);
+
+    return { currentStreak, longestStreak, milestoneReached };
+  }
+
   return {
     getDailyGoal,
     getOrCreateToday,
@@ -186,5 +258,6 @@ export function createActivityService(db: DB) {
     getTodayProgress,
     getWeeklySummary,
     getActivityHistory,
+    getStreakInfo,
   };
 }

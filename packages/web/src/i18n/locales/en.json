@@ -69,7 +69,17 @@
     "configureGoal": "Set Goal",
     "goalTypeMinutes": "Minutes",
     "goalTypeProblems": "Problems",
-    "goalTarget": "Daily target"
+    "goalTarget": "Daily target",
+    "streakCounter": "{count}-day streak",
+    "noStreak": "Start your streak!",
+    "longestStreak": "Best: {count} days",
+    "contributionGraph": "Activity",
+    "streakMilestone7": "You've practiced 7 days in a row. Building a habit starts with the first week.",
+    "streakMilestone30": "You've practiced 30 days in a row. Consistency is the most powerful learning strategy.",
+    "streakMilestone66": "66-day streak! Research shows habits become automatic around this point. Well done.",
+    "streakMilestone100": "100-day streak! Your dedication to learning is remarkable.",
+    "less": "Less",
+    "more": "More"
   },
   "diagnostic": {
     "title": "Placement Test",

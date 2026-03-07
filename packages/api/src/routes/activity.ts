@@ -53,6 +53,16 @@ activityRoutes.get("/history", async (c) => {
   return c.json({ days: history });
 });
 
+// GET /api/activity/streak?date=YYYY-MM-DD
+activityRoutes.get("/streak", async (c) => {
+  const user = c.get("user");
+  const date = c.req.query("date") ?? new Date().toISOString().slice(0, 10);
+  const db = getDb(c.env.DB);
+  const activity = createActivityService(db);
+  const streak = await activity.getStreakInfo(user.id, date);
+  return c.json(streak);
+});
+
 // GET /api/activity/goal
 activityRoutes.get("/goal", async (c) => {
   const user = c.get("user");

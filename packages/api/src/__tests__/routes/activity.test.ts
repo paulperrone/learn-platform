@@ -144,6 +144,27 @@ describe("Activity Routes", () => {
     });
   });
 
+  describe("GET /api/activity/streak", () => {
+    it("returns streak info", async () => {
+      await seedDailyActivity(userId, "2026-03-05", { goalMet: true });
+      await seedDailyActivity(userId, "2026-03-06", { goalMet: true });
+      await seedDailyActivity(userId, "2026-03-07", { goalMet: true });
+
+      const res = await request("/api/activity/streak?date=2026-03-07", { headers });
+      expect(res.status).toBe(200);
+      const data = await json<any>(res);
+      expect(data.currentStreak).toBe(3);
+      expect(data.longestStreak).toBe(3);
+    });
+
+    it("returns zero streak when no activity", async () => {
+      const res = await request("/api/activity/streak?date=2026-03-07", { headers });
+      expect(res.status).toBe(200);
+      const data = await json<any>(res);
+      expect(data.currentStreak).toBe(0);
+    });
+  });
+
   describe("GET /api/activity/history", () => {
     it("returns activity history", async () => {
       await seedDailyActivity(userId, "2026-03-05", { minutesActive: 20 });

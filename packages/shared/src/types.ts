@@ -375,6 +375,12 @@ export type WeeklySummary = {
   days: DailyActivityDay[];
 };
 
+export type StreakInfo = {
+  currentStreak: number;
+  longestStreak: number;
+  milestoneReached: number | null;
+};
+
 // === Speech Settings ===
 
 export type SpeechSettings = {
