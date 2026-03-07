@@ -52,24 +52,57 @@ export function createGraphService(db: DB) {
       // Build topic → subject map
       const topicSubjectMap = new Map(allTopics.map((t) => [t.id, t.subjectId]));
 
+      // For context-layered spiral: load depth completion data
+      const depthRows = await db
+        .select()
+        .from(schema.userTopicDepth)
+        .where(
+          and(
+            eq(schema.userTopicDepth.userId, userId),
+            eq(schema.userTopicDepth.completed, true)
+          )
+        );
+      // Map topicId → set of completed depths
+      const depthMap = new Map<string, Set<string>>();
+      for (const row of depthRows) {
+        const set = depthMap.get(row.topicId) ?? new Set();
+        set.add(row.contentDepth);
+        depthMap.set(row.topicId, set);
+      }
+
+      const ALL_DEPTHS = ["survey", "contextual", "analytical", "synthesis"];
+
       // Frontier: gating depends on discipline progression model
       const frontier = allTopics.filter((topic) => {
+        const disciplineId = subjectDiscMap.get(topic.subjectId);
+        const model = disciplineId ? discModelMap.get(disciplineId) : "mastery-gated";
+
+        if (model === "context-layered") {
+          // Context-layered spiral: topic is in frontier if:
+          // 1. Not started yet AND required prereqs met, OR
+          // 2. Started/mastered but has uncompleted depth levels
+          const prereqs = prereqMap.get(topic.id) ?? [];
+          const requiredMet = prereqs
+            .filter((p) => p.type === "required")
+            .every((p) => masteredIds.has(p.fromTopicId));
+
+          if (!startedIds.has(topic.id)) {
+            // Not started: include if no prereqs or required prereqs met
+            return prereqs.length === 0 || requiredMet;
+          }
+
+          // Already started/mastered: include if there are uncompleted depths
+          const completedDepths = depthMap.get(topic.id) ?? new Set();
+          return ALL_DEPTHS.some((d) => !completedDepths.has(d));
+        }
+
+        // Non-context-layered: exclude started topics
         if (startedIds.has(topic.id)) return false;
         const prereqs = prereqMap.get(topic.id) ?? [];
         if (prereqs.length === 0) return true;
 
-        const disciplineId = subjectDiscMap.get(topic.subjectId);
-        const model = disciplineId ? discModelMap.get(disciplineId) : "mastery-gated";
-
         if (model === "flexible") {
-          // Flexible: all topics available regardless of prerequisites
           return true;
-        }
-        if (model === "context-layered") {
-          // Context-layered: only 'required' prereqs gate; 'recommended' and 'enriching' don't block
-          return prereqs
-            .filter((p) => p.type === "required")
-            .every((p) => masteredIds.has(p.fromTopicId));
         }
         // mastery-gated (default): all 'required' and 'recommended' prereqs must be mastered
         return prereqs

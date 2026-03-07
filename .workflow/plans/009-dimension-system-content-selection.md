@@ -21,9 +21,9 @@ This plan closes the gap so that when content is generated across dimensions, it
 
 ## Progress
 
-**Completed:** Phase 1 ✓
+**Completed:** Phase 1 ✓, Phase 2 ✓
 **In Progress:** —
-**Next:** Phase 2
+**Next:** Phase 3
 
 ---
 
@@ -49,16 +49,16 @@ This plan closes the gap so that when content is generated across dimensions, it
 
 ---
 
-## Phase 2: Spiral Depth Tracking
+## Phase 2: Spiral Depth Tracking ✓
 **Goal:** Track which content_depth levels a user has completed per topic. Required for context-layered subjects to implement spiral curriculum progression.
 
-1. [ ] [IMP] Add `user_topic_depth` table (or extend `user_topic_state`): `userId`, `topicId`, `contentDepth` ('survey'|'contextual'|'analytical'|'synthesis'), `completed` (boolean), `completedAt`. Unique constraint on `(userId, topicId, contentDepth)`. This tracks per-depth completion independently of overall topic mastery.
+1. [x] [IMP] Add `user_topic_depth` table (or extend `user_topic_state`): `userId`, `topicId`, `contentDepth` ('survey'|'contextual'|'analytical'|'synthesis'), `completed` (boolean), `completedAt`. Unique constraint on `(userId, topicId, contentDepth)`. This tracks per-depth completion independently of overall topic mastery.
 
-2. [ ] [IMP] Update session service `respond()`: when a student demonstrates mastery at a given content depth for a topic (correct on independent practice), mark that depth as completed. For mastery-gated disciplines, completing `survey` depth = topic mastery (existing behavior). For context-layered, topic mastery requires completing the highest depth level the student has been exposed to (or all four for full mastery).
+2. [x] [IMP] Update session service `respond()`: when a student demonstrates mastery at a given content depth for a topic (correct on independent practice), mark that depth as completed. For mastery-gated disciplines, completing `survey` depth = topic mastery (existing behavior). For context-layered, topic mastery requires completing the highest depth level the student has been exposed to (or all four for full mastery).
 
-3. [ ] [IMP] Update frontier computation for context-layered disciplines: frontier includes topics where the student's current depth level has unmastered content, not just topics where the topic itself is unmastered. A student who has completed `survey` on all topics enters the `contextual` pass of the spiral — the same topics reappear at deeper content depth.
+3. [x] [IMP] Update frontier computation for context-layered disciplines: frontier includes topics where the student's current depth level has unmastered content, not just topics where the topic itself is unmastered. A student who has completed `survey` on all topics enters the `contextual` pass of the spiral — the same topics reappear at deeper content depth.
 
-4. [ ] [TST] Verify: depth completion records are created on mastery events. Context-layered frontier correctly returns topics for the next depth pass. Mastery-gated disciplines are unaffected (still topic-level mastery). Spiral progression works: student completes survey pass, then gets contextual pass on same topics.
+4. [x] [TST] Verify: depth completion records are created on mastery events. Context-layered frontier correctly returns topics for the next depth pass. Mastery-gated disciplines are unaffected (still topic-level mastery). Spiral progression works: student completes survey pass, then gets contextual pass on same topics.
 
 **Validation:** A context-layered subject (e.g., US History) spirals correctly — student masters all topics at survey depth, then the same topics reappear at contextual depth with deeper content.
 

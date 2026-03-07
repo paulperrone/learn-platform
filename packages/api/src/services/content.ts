@@ -63,9 +63,25 @@ export function createContentService(db: DB) {
     if (model === "flexible") return "survey";
 
     // For context-layered: check what depth the user has completed for this topic
-    // This will be fully implemented in Phase 2 (spiral depth tracking table).
-    // For now, return survey as the default starting point.
-    return "survey";
+    const depthRows = await db
+      .select()
+      .from(schema.userTopicDepth)
+      .where(
+        and(
+          eq(schema.userTopicDepth.userId, userId),
+          eq(schema.userTopicDepth.topicId, topicId),
+          eq(schema.userTopicDepth.completed, true)
+        )
+      );
+    const completedDepths = new Set(depthRows.map((r) => r.contentDepth));
+
+    // Return the first uncompleted depth in order
+    for (const depth of DEPTH_FALLBACK) {
+      if (!completedDepths.has(depth)) return depth;
+    }
+
+    // All depths completed — return synthesis (highest)
+    return "synthesis";
   }
 
   async function getTopicProblems(query: ContentQuery): Promise<Problem[]> {
@@ -261,9 +277,62 @@ export function createContentService(db: DB) {
     return examples[0]?.visuals;
   }
 
+  async function markDepthCompleted(
+    userId: string,
+    topicId: string,
+    contentDepth: ContentDepthLevel
+  ): Promise<void> {
+    const now = new Date().toISOString();
+    // Upsert: insert or update completed status
+    const existing = await db
+      .select()
+      .from(schema.userTopicDepth)
+      .where(
+        and(
+          eq(schema.userTopicDepth.userId, userId),
+          eq(schema.userTopicDepth.topicId, topicId),
+          eq(schema.userTopicDepth.contentDepth, contentDepth)
+        )
+      );
+
+    if (existing.length > 0) {
+      await db
+        .update(schema.userTopicDepth)
+        .set({ completed: true, completedAt: now })
+        .where(eq(schema.userTopicDepth.id, existing[0].id));
+    } else {
+      await db.insert(schema.userTopicDepth).values({
+        userId,
+        topicId,
+        contentDepth,
+        completed: true,
+        completedAt: now,
+      });
+    }
+  }
+
+  async function getCompletedDepths(
+    userId: string,
+    topicId: string
+  ): Promise<ContentDepthLevel[]> {
+    const rows = await db
+      .select()
+      .from(schema.userTopicDepth)
+      .where(
+        and(
+          eq(schema.userTopicDepth.userId, userId),
+          eq(schema.userTopicDepth.topicId, topicId),
+          eq(schema.userTopicDepth.completed, true)
+        )
+      );
+    return rows.map((r) => r.contentDepth as ContentDepthLevel);
+  }
+
   return {
     resolvePresentation,
     resolveContentDepth,
+    markDepthCompleted,
+    getCompletedDepths,
     getTopicProblems,
     getTopicExamples,
     getTopicVisuals,

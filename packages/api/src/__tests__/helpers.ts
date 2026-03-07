@@ -35,6 +35,7 @@ export async function resetDb() {
     "llm_model_config",
     "llm_usage",
     "review_log",
+    "user_topic_depth",
     "user_topic_state",
     "learn_sessions",
     "invitation",
@@ -250,6 +251,27 @@ export async function seedEncompassing(parentTopicId: string, childTopicId: stri
   return row;
 }
 
+export async function seedUserTopicDepth(
+  userId: string,
+  topicId: string,
+  contentDepth: string,
+  completed = true
+) {
+  const db = getTestDb();
+  const now = new Date().toISOString();
+  const [row] = await db
+    .insert(schema.userTopicDepth)
+    .values({
+      userId,
+      topicId,
+      contentDepth,
+      completed,
+      completedAt: completed ? now : null,
+    })
+    .returning();
+  return row;
+}
+
 export async function seedLLMUsage(userId: string, overrides: Partial<typeof schema.llmUsage.$inferInsert> = {}) {
   const db = getTestDb();
   const now = new Date().toISOString();
@@ -446,6 +468,11 @@ const SCHEMA_STATEMENTS = [
   'CREATE INDEX uts_user_frontier_idx ON user_topic_state (user_id, frontier)',
   'CREATE INDEX uts_user_due_idx ON user_topic_state (user_id, due)',
   'CREATE INDEX uts_user_mastered_idx ON user_topic_state (user_id, mastered)',
+
+  // user_topic_depth (FK → users, topics)
+  'CREATE TABLE user_topic_depth (id integer PRIMARY KEY AUTOINCREMENT NOT NULL, user_id text NOT NULL, topic_id text NOT NULL, content_depth text NOT NULL, completed integer DEFAULT 0 NOT NULL, completed_at text, FOREIGN KEY (user_id) REFERENCES users(id), FOREIGN KEY (topic_id) REFERENCES topics(id))',
+  'CREATE UNIQUE INDEX utd_user_topic_depth_idx ON user_topic_depth (user_id, topic_id, content_depth)',
+  'CREATE INDEX utd_user_topic_idx ON user_topic_depth (user_id, topic_id)',
 
   // review_log (FK → users, topics)
   'CREATE TABLE review_log (id text PRIMARY KEY NOT NULL, user_id text NOT NULL, topic_id text NOT NULL, assessment_content_id text, rating integer NOT NULL, confidence integer, correct integer NOT NULL, response_ms integer NOT NULL, phase text NOT NULL, hints_used integer, created_at text NOT NULL, FOREIGN KEY (user_id) REFERENCES users(id), FOREIGN KEY (topic_id) REFERENCES topics(id))',

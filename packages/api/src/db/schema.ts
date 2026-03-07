@@ -220,6 +220,18 @@ export const userTopicState = sqliteTable("user_topic_state", {
   index("uts_user_mastered_idx").on(table.userId, table.mastered),
 ]);
 
+export const userTopicDepth = sqliteTable("user_topic_depth", {
+  id: integer("id").primaryKey({ autoIncrement: true }),
+  userId: text("user_id").notNull().references(() => users.id),
+  topicId: text("topic_id").notNull().references(() => topics.id),
+  contentDepth: text("content_depth").notNull(), // 'survey' | 'contextual' | 'analytical' | 'synthesis'
+  completed: integer("completed", { mode: "boolean" }).notNull().default(false),
+  completedAt: text("completed_at"),
+}, (table) => [
+  uniqueIndex("utd_user_topic_depth_idx").on(table.userId, table.topicId, table.contentDepth),
+  index("utd_user_topic_idx").on(table.userId, table.topicId),
+]);
+
 export const reviewLog = sqliteTable("review_log", {
   id: text("id").primaryKey(),
   userId: text("user_id").notNull().references(() => users.id),

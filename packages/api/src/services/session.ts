@@ -395,6 +395,9 @@ export function createSessionService(db: DB) {
       }
 
       // Completed all phases for this topic
+      if (!state.isAnonymous) {
+        await this.markDepthCompletionIfNeeded(state);
+      }
       state.topicsCompleted.push(state.currentTopicId!);
       return await this.nextTopic(state);
     },
@@ -458,6 +461,36 @@ export function createSessionService(db: DB) {
       state.phaseIndex = 0;
 
       return await this.buildPhaseItem(state);
+    },
+
+    /**
+     * Mark the current content depth as completed for context-layered disciplines.
+     * For mastery-gated disciplines, depth completion is implicit (topic mastery = done).
+     */
+    async markDepthCompletionIfNeeded(state: SessionState): Promise<void> {
+      if (!state.currentTopicId) return;
+
+      const topic = await graph.getTopic(state.currentTopicId);
+      if (!topic) return;
+
+      const subject = await db.query.subjects.findFirst({
+        where: eq(schema.subjects.id, topic.subjectId),
+      });
+      if (!subject) return;
+
+      const disc = await db.query.disciplines.findFirst({
+        where: eq(schema.disciplines.id, subject.disciplineId),
+      });
+      if (!disc || disc.progressionModel !== "context-layered") return;
+
+      // Resolve which depth the user was working at
+      const currentDepth = await content.resolveContentDepth(
+        state.userId,
+        state.currentTopicId,
+        subject.disciplineId
+      );
+
+      await content.markDepthCompleted(state.userId, state.currentTopicId, currentDepth);
     },
 
     /**
