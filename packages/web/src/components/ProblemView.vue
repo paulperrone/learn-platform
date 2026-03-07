@@ -20,6 +20,7 @@ const props = defineProps<{
   showSolution: boolean;
   hintsRevealed: number;
   askConfidence: boolean;
+  presentationLevel?: string;
   phase: string;
   message: string;
 }>();
@@ -42,6 +43,9 @@ onUnmounted(() => window.removeEventListener("keydown", handleGlobalEnter));
 
 const problemType = computed<AssessmentType>(() => props.problem.type ?? "text-qa");
 const isMultiStep = computed(() => problemType.value === "multi-step");
+const useBinaryConfidence = computed(() =>
+  props.presentationLevel === "primary" || props.presentationLevel === "intermediate"
+);
 
 const answer = ref("");
 const confidence = ref(3);
@@ -311,7 +315,7 @@ const displayAnswer = computed(() => {
       </template>
 
       <div v-if="askConfidence" class="pt-2">
-        <ConfidenceSlider v-model="confidence" />
+        <ConfidenceSlider v-model="confidence" :binary="useBinaryConfidence" />
       </div>
 
       <div class="flex items-center gap-3">

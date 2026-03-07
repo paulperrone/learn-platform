@@ -244,6 +244,7 @@ export const reviewLog = sqliteTable("review_log", {
   responseMs: integer("response_ms").notNull(),
   phase: text("phase").notNull(), // SessionPhase
   hintsUsed: integer("hints_used"),
+  misconception: integer("misconception", { mode: "boolean" }),
   createdAt: text("created_at").notNull().$defaultFn(() => new Date().toISOString()),
 }, (table) => [
   index("review_user_idx").on(table.userId),

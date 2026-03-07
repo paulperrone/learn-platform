@@ -8,23 +8,31 @@ const { t } = useI18n();
 const topics = ref<any[]>([]);
 const allTopics = ref<any[]>([]);
 const distributions = ref<any[]>([]);
+const calibration = ref<{
+  overallAccuracy: number | null;
+  totalRatedReviews: number;
+  misconceptionCount: number;
+  trend: { accuracy: number; window: number }[];
+} | null>(null);
 const loading = ref(true);
 const error = ref(false);
 
 onMounted(async () => {
   const result = await withErrorToast(async () => {
-    const [statesData, topicsData, presData] = await Promise.all([
+    const [statesData, topicsData, presData, calData] = await Promise.all([
       api.getTopicStates(),
       api.getTopics("math-foundations"),
       api.getPresentationDistributions(),
+      api.getCalibration(),
     ]);
-    return { statesData, topicsData, presData };
+    return { statesData, topicsData, presData, calData };
   }, t("errors.failedToLoad", { resource: "progress" }));
 
   if (result) {
     topics.value = result.statesData.topics;
     allTopics.value = result.topicsData.topics;
     distributions.value = result.presData?.distributions ?? [];
+    calibration.value = result.calData;
   } else {
     error.value = true;
   }
@@ -146,6 +154,48 @@ const LEVELS = ["primary", "intermediate", "standard", "advanced"] as const;
             </div>
             <div class="flex justify-between mt-1.5 text-[10px] text-gray-400">
               <span v-for="level in LEVELS" :key="level">{{ t('progress.presentationLevels.' + level) }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Confidence Calibration -->
+      <div v-if="calibration && calibration.overallAccuracy != null" class="mb-8">
+        <h2 class="text-lg font-semibold text-gray-800 mb-3">{{ t('progress.calibration.title') }}</h2>
+        <div class="bg-white rounded-lg border border-gray-200 p-4 space-y-4">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-2xl font-bold text-gray-900">
+                {{ Math.round(calibration.overallAccuracy * 100) }}%
+              </p>
+              <p class="text-sm text-gray-500">{{ t('progress.calibration.accuracy') }}</p>
+            </div>
+            <div class="text-right">
+              <p class="text-sm text-gray-600">
+                {{ t('progress.calibration.totalReviews', { count: calibration.totalRatedReviews }) }}
+              </p>
+              <p v-if="calibration.misconceptionCount > 0" class="text-sm text-red-500 font-medium">
+                {{ t('progress.calibration.misconceptions', { count: calibration.misconceptionCount }) }}
+              </p>
+            </div>
+          </div>
+
+          <!-- Calibration trend bars -->
+          <div v-if="calibration.trend.length > 1" class="space-y-1.5">
+            <p class="text-xs text-gray-400 font-medium">{{ t('progress.calibration.trend') }}</p>
+            <div class="flex items-end gap-1 h-12">
+              <div
+                v-for="point in calibration.trend"
+                :key="point.window"
+                class="flex-1 rounded-t transition-all"
+                :class="point.accuracy >= 0.7 ? 'bg-green-400' : point.accuracy >= 0.5 ? 'bg-amber-400' : 'bg-red-400'"
+                :style="{ height: Math.max(4, point.accuracy * 48) + 'px' }"
+                :title="Math.round(point.accuracy * 100) + '%'"
+              />
+            </div>
+            <div class="flex justify-between text-[10px] text-gray-400">
+              <span>{{ t('progress.calibration.earlier') }}</span>
+              <span>{{ t('progress.calibration.recent') }}</span>
             </div>
           </div>
         </div>

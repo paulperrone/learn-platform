@@ -150,6 +150,15 @@
       "intermediate": "Intermediate",
       "standard": "Standard",
       "advanced": "Advanced"
+    },
+    "calibration": {
+      "title": "Confidence Calibration",
+      "accuracy": "You're right about how well you know things",
+      "totalReviews": "{count} rated reviews",
+      "misconceptions": "{count} misconceptions detected",
+      "trend": "Over time",
+      "earlier": "Earlier",
+      "recent": "Recent"
     }
   },
   "settings": {
@@ -207,7 +216,10 @@
   },
   "confidence": {
     "guessing": "Guessing",
-    "certain": "Certain"
+    "certain": "Certain",
+    "howConfident": "How confident are you?",
+    "notSure": "I'm not sure",
+    "gotIt": "I think I got it right"
   },
   "explore": {
     "title": "Knowledge Graph Explorer",

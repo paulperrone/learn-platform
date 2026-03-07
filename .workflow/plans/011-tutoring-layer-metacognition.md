@@ -21,9 +21,9 @@ These features approximate the key behaviors of an expert human tutor: asking "w
 
 ## Progress
 
-**Completed:** Phase 1 ✓
+**Completed:** Phase 1 ✓, Phase 2 ✓
 **In Progress:** —
-**Next:** Phase 2
+**Next:** Phase 3
 
 ---
 
@@ -48,12 +48,12 @@ These features approximate the key behaviors of an expert human tutor: asking "w
 
 ---
 
-## Phase 2: Confidence Calibration
+## Phase 2: Confidence Calibration ✓
 **Goal:** Collect confidence ratings after problems, integrate with FSRS, detect critical misconceptions (high confidence + wrong answer). Show calibration accuracy over time.
 
-1. [ ] [IMP] Build confidence rating UI component: for K-5 students, binary — two buttons: "I think I got it right" / "I'm not sure" (maps to confidence 4 and 2 on a 1-5 scale). For older students (presentation level `standard` or `advanced`), 1-5 slider. Show after `independent` and `review` phase problems (where `askConfidence` is true in session state). Capture the rating before revealing whether the answer was correct.
+1. [x] [IMP] Build confidence rating UI component: for K-5 students, binary — two buttons: "I think I got it right" / "I'm not sure" (maps to confidence 4 and 2 on a 1-5 scale). For older students (presentation level `standard` or `advanced`), 1-5 slider. Show after `independent` and `review` phase problems (where `askConfidence` is true in session state). Capture the rating before revealing whether the answer was correct.
 
-2. [ ] [IMP] Integrate confidence with FSRS scheduling: update `scheduleReview()` to use confidence signal:
+2. [x] [IMP] Integrate confidence with FSRS scheduling: update `scheduleReview()` to use confidence signal:
    - **High confidence + correct** → stable knowledge, can extend interval (FSRS Rating.Good or Easy)
    - **Low confidence + correct** → fragile knowledge, schedule sooner review (FSRS Rating.Good but shorter interval)
    - **High confidence + wrong** → **critical misconception** — flag immediately, trigger remediation, log as high-priority review item
@@ -61,9 +61,9 @@ These features approximate the key behaviors of an expert human tutor: asking "w
 
    Update the existing `confidenceAccuracy` EMA tracking to use the new confidence data.
 
-3. [ ] [IMP] Build calibration accuracy display: on the progress page, show the student's calibration accuracy over time — "You're right about how well you know things 73% of the time." Simple visualization (line chart or percentage). For parents/teachers: flag students with consistently high overconfidence (they think they know it but don't).
+3. [x] [IMP] Build calibration accuracy display: on the progress page, show the student's calibration accuracy over time — "You're right about how well you know things 73% of the time." Simple visualization (line chart or percentage). For parents/teachers: flag students with consistently high overconfidence (they think they know it but don't).
 
-4. [ ] [TST] Verify: confidence UI shows at correct phases. Binary version for K-5, slider for older. Confidence captured before answer reveal. FSRS scheduling adjusts based on confidence signal. High-confidence-wrong triggers misconception flag. Calibration accuracy calculates correctly. Existing SRS tests updated.
+4. [x] [TST] Verify: confidence UI shows at correct phases. Binary version for K-5, slider for older. Confidence captured before answer reveal. FSRS scheduling adjusts based on confidence signal. High-confidence-wrong triggers misconception flag. Calibration accuracy calculates correctly. Existing SRS tests updated.
 
 **Validation:** Students rate their confidence. The system uses this to schedule reviews more intelligently. Critical misconceptions (confidently wrong) are immediately flagged. Students see their calibration accuracy improving over time.
 

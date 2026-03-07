@@ -172,11 +172,33 @@ export function createSRSService(db: DB) {
         newConsecutiveCorrect = 0; // Lapse resets counter
       }
 
+      // Confidence-based scheduling adjustments
+      // High confidence (4-5) + wrong = critical misconception
+      // Low confidence (1-2) + correct = fragile knowledge, schedule sooner
+      let isMisconception = false;
+      if (confidence != null && !isCorrectReview && confidence >= 4) {
+        isMisconception = true;
+      }
+
+      // Re-schedule with adjusted rating if confidence changes the picture
+      let adjustedRating = rating;
+      let adjustedCard = newCard;
+      let adjustedLog = result.log;
+      if (confidence != null && isCorrectReview && confidence <= 2) {
+        // Fragile knowledge: cap at Good (no Easy), ensures shorter interval
+        adjustedRating = Math.min(rating, Rating.Good) as Grade;
+        if (adjustedRating !== rating) {
+          const reResult = scheduling[adjustedRating];
+          adjustedCard = reResult.card;
+          adjustedLog = reResult.log;
+        }
+      }
+
       // Mastery: 3+ consecutive correct reviews at Review state with stability > 14 days
       const shouldMaster =
         newConsecutiveCorrect >= 3 &&
-        newCard.state === State.Review &&
-        newCard.stability >= 14;
+        adjustedCard.state === State.Review &&
+        adjustedCard.stability >= 14;
 
       // Update confidence tracking (exponential moving average)
       let newConfidenceAccuracy = state.confidenceAccuracy;
@@ -190,16 +212,23 @@ export function createSRSService(db: DB) {
             : 1 - calibrationError;
       }
 
+      // Misconceptions reset consecutive correct and prevent mastery
+      if (isMisconception) {
+        newConsecutiveCorrect = 0;
+      }
+
+      const shouldMasterFinal = !isMisconception && (shouldMaster || state.mastered);
+
       await db
         .update(schema.userTopicState)
         .set({
-          stability: newCard.stability,
-          difficulty: newCard.difficulty,
-          due: newCard.due.toISOString(),
-          state: newCard.state,
-          reps: newCard.reps,
-          lapses: newCard.lapses,
-          mastered: shouldMaster || state.mastered,
+          stability: adjustedCard.stability,
+          difficulty: adjustedCard.difficulty,
+          due: adjustedCard.due.toISOString(),
+          state: adjustedCard.state,
+          reps: adjustedCard.reps,
+          lapses: adjustedCard.lapses,
+          mastered: shouldMasterFinal,
           consecutiveCorrectReviews: newConsecutiveCorrect,
           lastReview: now.toISOString(),
           confidenceAccuracy: newConfidenceAccuracy,
@@ -213,18 +242,20 @@ export function createSRSService(db: DB) {
         userId,
         topicId,
         assessmentContentId: assessmentContentId ?? null,
-        rating,
+        rating: adjustedRating,
         confidence: confidence ?? null,
         correct: isCorrectReview,
         responseMs,
         phase,
         hintsUsed: hintsUsed ?? null,
+        misconception: isMisconception,
       });
 
       return {
-        card: newCard,
-        mastered: shouldMaster || state.mastered,
-        log: result.log,
+        card: adjustedCard,
+        mastered: shouldMasterFinal,
+        misconception: isMisconception,
+        log: adjustedLog,
       };
     },
 

@@ -507,7 +507,7 @@ const SCHEMA_STATEMENTS = [
   'CREATE INDEX utd_user_topic_idx ON user_topic_depth (user_id, topic_id)',
 
   // review_log (FK → users, topics)
-  'CREATE TABLE review_log (id text PRIMARY KEY NOT NULL, user_id text NOT NULL, topic_id text NOT NULL, assessment_content_id text, rating integer NOT NULL, confidence integer, correct integer NOT NULL, response_ms integer NOT NULL, phase text NOT NULL, hints_used integer, created_at text NOT NULL, FOREIGN KEY (user_id) REFERENCES users(id), FOREIGN KEY (topic_id) REFERENCES topics(id))',
+  'CREATE TABLE review_log (id text PRIMARY KEY NOT NULL, user_id text NOT NULL, topic_id text NOT NULL, assessment_content_id text, rating integer NOT NULL, confidence integer, correct integer NOT NULL, response_ms integer NOT NULL, phase text NOT NULL, hints_used integer, misconception integer, created_at text NOT NULL, FOREIGN KEY (user_id) REFERENCES users(id), FOREIGN KEY (topic_id) REFERENCES topics(id))',
   'CREATE INDEX review_user_idx ON review_log (user_id)',
   'CREATE INDEX review_topic_idx ON review_log (topic_id)',
   'CREATE INDEX review_assessment_idx ON review_log (assessment_content_id)',

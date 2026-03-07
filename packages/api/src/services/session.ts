@@ -721,6 +721,7 @@ export function createSessionService(db: DB) {
             showSolution: shouldShowSolution(p, state.currentPhase, state.hintIndex),
             hintsRevealed: state.hintIndex,
             askConfidence: true,
+            presentationLevel: state.lastServedPresentation,
             blendRole: state.currentBlendRole ?? "main",
             difficultyBias: bias,
             message: "Solve this on your own. Rate your confidence after.",
@@ -748,6 +749,7 @@ export function createSessionService(db: DB) {
             showSolution: shouldShowSolution(p, state.currentPhase, state.hintIndex),
             hintsRevealed: state.hintIndex,
             askConfidence: blendRole !== "warmup",
+            presentationLevel: state.lastServedPresentation,
             blendRole,
             difficultyBias: bias,
             message: reviewMessage,
@@ -844,6 +846,7 @@ export type SessionItem =
       showSolution: boolean;
       hintsRevealed: number;
       askConfidence?: boolean;
+      presentationLevel?: PresentationLevel;
       blendRole?: BlendRole;
       difficultyBias?: "easier" | "on-target" | "harder";
       message: string;
@@ -855,6 +858,7 @@ export type SessionItem =
       topicName: string;
       example: WorkedExample;
       fadingLevel: number;
+      presentationLevel?: PresentationLevel;
       blendRole?: BlendRole;
       message: string;
     }
@@ -868,6 +872,7 @@ export type SessionItem =
       showSolution: boolean;
       hintsRevealed: number;
       prerequisiteChain: string[];
+      presentationLevel?: PresentationLevel;
       blendRole?: BlendRole;
       difficultyBias?: "easier" | "on-target" | "harder";
       message: string;

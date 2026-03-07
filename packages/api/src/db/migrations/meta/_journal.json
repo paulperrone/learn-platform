@@ -141,6 +141,13 @@
       "when": 1772956800006,
       "tag": "0019_user_fsrs_params",
       "breakpoints": true
+    },
+    {
+      "idx": 20,
+      "version": "6",
+      "when": 1772917204411,
+      "tag": "0020_lyrical_pestilence",
+      "breakpoints": true
     }
   ]
 }

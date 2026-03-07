@@ -229,6 +229,7 @@ async function handleExampleDone() {
         :show-solution="currentItem.showSolution ?? false"
         :hints-revealed="currentItem.hintsRevealed ?? 0"
         :ask-confidence="currentItem.askConfidence ?? false"
+        :presentation-level="currentItem.presentationLevel"
         :phase="currentItem.phase"
         :message="currentItem.message"
         :key="currentItem.problem.id + currentItem.phase"

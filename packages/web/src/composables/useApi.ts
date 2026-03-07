@@ -171,6 +171,15 @@ export function useApi() {
         }[];
       }>(`/progress/${userId}/presentation`);
     },
+    getCalibration: async () => {
+      const userId = await getUserId();
+      return request<{
+        overallAccuracy: number | null;
+        totalRatedReviews: number;
+        misconceptionCount: number;
+        trend: { accuracy: number; window: number }[];
+      }>(`/progress/${userId}/calibration`);
+    },
 
     // LLM
     getLLMStatus: () =>
