@@ -233,11 +233,16 @@ export async function seedInstructionalContent(
   return row;
 }
 
-export async function seedPrerequisite(fromTopicId: string, toTopicId: string, strength = 1.0) {
+export async function seedPrerequisite(
+  fromTopicId: string,
+  toTopicId: string,
+  strength = 1.0,
+  type: "required" | "recommended" | "enriching" = "required"
+) {
   const db = getTestDb();
   const [row] = await db
     .insert(schema.prerequisites)
-    .values({ fromTopicId, toTopicId, strength })
+    .values({ fromTopicId, toTopicId, strength, type })
     .returning();
   return row;
 }

@@ -207,29 +207,37 @@ The system determines presentation from the learner's age/profile, not from wher
 
 ## 6. Content Selection Algorithm
 
+Implemented in `packages/api/src/services/content.ts` via `createContentService(db)`.
+
 When the session service needs content for a learner on a given topic:
 
 ```
-1. Determine content_depth:
-   - What depth levels has the learner completed on this topic?
-   - Target = next uncompleted depth (or current if in-progress)
-   - For mastery-gated: usually 'survey' (depth is in the topic progression, not content)
-   - For context-layered: tracks per-topic depth completion
+1. Determine content_depth (resolveContentDepth):
+   - For mastery-gated: always returns 'survey' (depth is in the topic graph, not content)
+   - For flexible: always returns 'survey' (topics are independent)
+   - For context-layered: reads user_topic_depth table, returns first uncompleted
+     depth in order: survey → contextual → analytical → synthesis
 
-2. Determine presentation:
-   - From learner profile (age, reading level preference)
-   - K-2 → primary, 3-5 → intermediate, 6-8 → standard, 9+ → advanced
+2. Determine presentation (resolvePresentation):
+   - Check userPreferences.presentationOverride first (explicit user setting)
+   - Otherwise derive from user.birthYear:
+     ages ≤8 → primary, ≤11 → intermediate, ≤14 → standard, 14+ → advanced
+   - Default: 'standard' (when no birthYear set)
 
 3. Select content matching (topicId, content_depth, presentation, flavor, locale):
-   - Filter by all dimensions
-   - If multiple matches: pick by version (latest) and randomize within pool
+   - Query assessmentContent / instructionalContent with all dimension filters
+   - flavor defaults to 'classic', locale defaults to 'en'
 
-4. Fallback chain if no exact match:
-   a. Try adjacent presentation (standard if intermediate unavailable)
+4. Fallback chain if no exact match (getTopicProblems / getTopicExamples):
+   a. Try adjacent presentation levels in order:
+      primary → [intermediate, standard, advanced]
+      intermediate → [standard, primary, advanced]
+      standard → [intermediate, advanced, primary]
+      advanced → [standard, intermediate, primary]
    b. Try 'classic' flavor if requested flavor unavailable
    c. Try 'en' locale if requested locale unavailable
    d. Try 'survey' depth if requested depth unavailable
-   e. Use generic fallback content
+   e. Last resort: any content for the topic (ignores all dimension filters)
 ```
 
 ---
@@ -381,6 +389,11 @@ Prerequisites can cross discipline boundaries:
 - Almost always `required` — if the dependency is soft enough to be `recommended`, question whether it's truly a cross-discipline prerequisite
 - The diagnostic should eventually place students across the full connected graph
 - Cross-discipline edges create natural bridges that guide learners between subjects
+
+### Validation
+- `graph.validateDAG(subjectId)` validates within a single subject (ignores cross-subject edges)
+- `graph.validateDAG()` (no argument) validates the full graph across all subjects, detecting cross-subject cycles
+- API: `GET /api/subjects/:id/validate` for single-subject, `GET /api/graph/validate` for full graph
 
 ---
 

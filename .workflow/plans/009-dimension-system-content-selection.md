@@ -21,9 +21,9 @@ This plan closes the gap so that when content is generated across dimensions, it
 
 ## Progress
 
-**Completed:** Phase 1 ✓, Phase 2 ✓, Phase 3 ✓
+**Completed:** Phase 1 ✓, Phase 2 ✓, Phase 3 ✓, Phase 4 ✓
 **In Progress:** —
-**Next:** Phase 4
+**Next:** Plan complete
 
 ---
 
@@ -79,15 +79,15 @@ This plan closes the gap so that when content is generated across dimensions, it
 
 ---
 
-## Phase 4: Integration Validation
+## Phase 4: Integration Validation ✓
 **Goal:** End-to-end verification that multi-dimension content flows through the entire system correctly.
 
-1. [ ] [IMP] Generate a small multi-variant test set: pick 3 topics, create content at `primary`, `intermediate`, and `standard` presentation levels. Create one topic with `survey` and `contextual` depth variants. Import all variants.
+1. [x] [IMP] Generate a small multi-variant test set: pick 3 topics, create content at `primary`, `intermediate`, and `standard` presentation levels. Create one topic with `survey` and `contextual` depth variants. Import all variants.
 
-2. [ ] [TST] End-to-end integration test: create two test users (one age 6, one age 14), start sessions, verify each receives their presentation-level content. Verify fallback chain when a specific variant doesn't exist. Verify context-layered depth progression with the multi-depth topic.
+2. [x] [TST] End-to-end integration test: create two test users (one age 6, one age 14), start sessions, verify each receives their presentation-level content. Verify fallback chain when a specific variant doesn't exist. Verify context-layered depth progression with the multi-depth topic.
 
-3. [ ] [IMP] Update `validateDAG()` in graph service to support cross-subject prerequisite validation. Current implementation scopes to a single subject — when a second subject is added (ELA, history), cross-subject edges (e.g., reading comprehension → word problems) must be validated without false cycle detection. Validate the full connected graph across subjects, not just within one subject.
+3. [x] [IMP] Update `validateDAG()` in graph service to support cross-subject prerequisite validation. Current implementation scopes to a single subject — when a second subject is added (ELA, history), cross-subject edges (e.g., reading comprehension → word problems) must be validated without false cycle detection. Validate the full connected graph across subjects, not just within one subject.
 
-4. [ ] [DOC] Update `docs/content-system.md` §6 to reflect actual implementation details (any deviations from the documented algorithm). Update `CLAUDE.md` conventions if any patterns changed.
+4. [x] [DOC] Update `docs/content-system.md` §6 to reflect actual implementation details (any deviations from the documented algorithm). Update `CLAUDE.md` conventions if any patterns changed.
 
 **Validation:** A 6-year-old and a 14-year-old user both studying the same topic receive different presentation-level content. Context-layered subject tracks spiral depth completion. Cross-subject prerequisites validate correctly. The dimension system is no longer inert.

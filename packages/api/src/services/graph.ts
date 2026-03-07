@@ -167,13 +167,18 @@ export function createGraphService(db: DB) {
 
     /**
      * Validate that the prerequisite graph is a DAG (no cycles).
+     * When subjectId is provided, validates only within that subject (ignoring cross-subject edges).
+     * When subjectId is omitted, validates the full graph across all subjects,
+     * including cross-subject prerequisite edges.
      * Returns { valid: true } or { valid: false, cycle: string[] }.
      */
-    async validateDAG(subjectId: string) {
-      const subjectTopics = await db
-        .select({ id: schema.topics.id })
-        .from(schema.topics)
-        .where(eq(schema.topics.subjectId, subjectId));
+    async validateDAG(subjectId?: string) {
+      const subjectTopics = subjectId
+        ? await db
+            .select({ id: schema.topics.id })
+            .from(schema.topics)
+            .where(eq(schema.topics.subjectId, subjectId))
+        : await db.select({ id: schema.topics.id }).from(schema.topics);
       const topicIds = new Set(subjectTopics.map((t) => t.id));
 
       const allPrereqs = await db.select().from(schema.prerequisites);
@@ -188,7 +193,7 @@ export function createGraphService(db: DB) {
       // Kahn's algorithm for cycle detection
       const inDegree = new Map<string, number>();
       for (const id of topicIds) inDegree.set(id, 0);
-      for (const [from, tos] of adjacency) {
+      for (const [, tos] of adjacency) {
         for (const to of tos) {
           inDegree.set(to, (inDegree.get(to) ?? 0) + 1);
         }

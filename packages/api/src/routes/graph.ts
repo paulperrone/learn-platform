@@ -33,6 +33,13 @@ graphRoutes.get("/subjects/:id/validate", async (c) => {
   return c.json(result);
 });
 
+graphRoutes.get("/graph/validate", async (c) => {
+  const db = getDb(c.env.DB);
+  const graph = createGraphService(db);
+  const result = await graph.validateDAG();
+  return c.json(result);
+});
+
 graphRoutes.post("/subjects/:id/compute-depths", async (c) => {
   const db = getDb(c.env.DB);
   const graph = createGraphService(db);
