@@ -55,6 +55,104 @@ export function sampleFromDistribution(dist: PresentationDistribution): Presenta
   return dist.centerLevel; // fallback (rounding)
 }
 
+// --- Drift rate constants ---
+// Nudge magnitudes for presentation distribution drift.
+// Structured so they could be made per-discipline or per-subject later.
+export const DRIFT_RATES = {
+  successAtCenter: 0.02,     // small upward nudge
+  failureAtCenter: 0.02,     // small downward nudge
+  successAboveCenter: 0.04,  // larger upward — student stretching successfully
+  failureAboveCenter: 0.01,  // tiny correction — expected difficulty, not punitive
+  successBelowCenter: 0,     // no change — expected ease
+  failureBelowCenter: 0.03,  // genuine struggle signal
+  snapThreshold: 0.05,       // levels below this snap to 0
+} as const;
+
+export function nudgeDistribution(
+  dist: PresentationDistribution,
+  servedLevel: PresentationLevel,
+  success: boolean,
+): PresentationDistribution {
+  const levels = [...PRESENTATION_LEVELS];
+  const centerIdx = levels.indexOf(dist.centerLevel);
+  const servedIdx = levels.indexOf(servedLevel);
+  const weights: [number, number, number, number] = [dist.primary, dist.intermediate, dist.standard, dist.advanced];
+
+  let delta = 0;
+  let fromIdx = centerIdx;
+  let toIdx = centerIdx;
+
+  if (servedIdx === centerIdx) {
+    if (success && centerIdx < 3) {
+      delta = DRIFT_RATES.successAtCenter;
+      fromIdx = centerIdx;
+      toIdx = centerIdx + 1;
+    } else if (!success && centerIdx > 0) {
+      delta = DRIFT_RATES.failureAtCenter;
+      fromIdx = centerIdx;
+      toIdx = centerIdx - 1;
+    }
+  } else if (servedIdx > centerIdx) {
+    if (success) {
+      delta = DRIFT_RATES.successAboveCenter;
+      fromIdx = centerIdx;
+      toIdx = servedIdx;
+    } else {
+      delta = DRIFT_RATES.failureAboveCenter;
+      fromIdx = servedIdx;
+      toIdx = centerIdx;
+    }
+  } else {
+    // servedIdx < centerIdx
+    if (!success) {
+      delta = DRIFT_RATES.failureBelowCenter;
+      fromIdx = centerIdx;
+      toIdx = servedIdx;
+    }
+    // success below center: no change
+  }
+
+  if (delta === 0) return dist;
+
+  // Apply delta
+  weights[fromIdx] = Math.max(0, weights[fromIdx] - delta);
+  weights[toIdx] += delta;
+
+  // Snap levels below threshold to 0
+  for (let i = 0; i < 4; i++) {
+    if (weights[i] > 0 && weights[i] < DRIFT_RATES.snapThreshold) {
+      const snapped = weights[i];
+      weights[i] = 0;
+      // Redistribute to highest-weight level
+      let maxIdx = 0;
+      for (let j = 1; j < 4; j++) {
+        if (weights[j] > weights[maxIdx]) maxIdx = j;
+      }
+      weights[maxIdx] += snapped;
+    }
+  }
+
+  // Renormalize
+  const sum = weights[0] + weights[1] + weights[2] + weights[3];
+  if (sum > 0) {
+    for (let i = 0; i < 4; i++) weights[i] = weights[i] / sum;
+  }
+
+  // Update center to highest weight
+  let newCenterIdx = 0;
+  for (let i = 1; i < 4; i++) {
+    if (weights[i] > weights[newCenterIdx]) newCenterIdx = i;
+  }
+
+  return {
+    primary: weights[0],
+    intermediate: weights[1],
+    standard: weights[2],
+    advanced: weights[3],
+    centerLevel: levels[newCenterIdx],
+  };
+}
+
 const PRESENTATION_FALLBACK_ORDER: Record<PresentationLevel, PresentationLevel[]> = {
   primary: ["intermediate", "standard", "advanced"],
   intermediate: ["standard", "primary", "advanced"],
@@ -364,11 +462,51 @@ export function createContentService(db: DB) {
     }
   }
 
+  async function applyNudge(
+    userId: string,
+    subjectId: string,
+    servedLevel: PresentationLevel,
+    success: boolean
+  ): Promise<void> {
+    const current = await getSubjectDistribution(userId, subjectId);
+    if (!current) return; // No distribution to nudge (anonymous or no diagnostic yet)
+
+    const updated = nudgeDistribution(current, servedLevel, success);
+
+    // Detect meaningful transitions for drift log
+    const centerShifted = current.centerLevel !== updated.centerLevel;
+    const levelEmerged = PRESENTATION_LEVELS.some(
+      (l) => current[l] === 0 && updated[l] > 0
+    );
+    const levelDropped = PRESENTATION_LEVELS.some(
+      (l) => current[l] > 0 && updated[l] === 0
+    );
+
+    if (centerShifted || levelEmerged || levelDropped) {
+      const trigger = centerShifted ? "center_shift" : levelEmerged ? "level_emerged" : "level_dropped";
+      const toWeights = { primary: updated.primary, intermediate: updated.intermediate, standard: updated.standard, advanced: updated.advanced };
+      const fromWeights = { primary: current.primary, intermediate: current.intermediate, standard: current.standard, advanced: current.advanced };
+      await db.insert(schema.presentationDriftLog).values({
+        userId,
+        subjectId,
+        fromWeights: JSON.stringify(fromWeights),
+        toWeights: JSON.stringify(toWeights),
+        fromCenter: current.centerLevel,
+        toCenter: updated.centerLevel,
+        trigger,
+        createdAt: new Date().toISOString(),
+      });
+    }
+
+    await upsertSubjectDistribution(userId, subjectId, updated);
+  }
+
   return {
     resolvePresentation,
     resolveContentDepth,
     getSubjectDistribution,
     upsertSubjectDistribution,
+    applyNudge,
     markDepthCompleted,
     getCompletedDepths,
     getTopicProblems,

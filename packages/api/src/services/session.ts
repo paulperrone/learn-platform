@@ -20,6 +20,8 @@ type SessionState = {
   reviewsCompleted: number;
   totalCorrect: number;
   totalAttempts: number;
+  lastServedPresentation?: PresentationLevel;
+  lastServedSubjectId?: string;
 };
 
 // In-memory cache — D1 is the source of truth
@@ -64,6 +66,10 @@ export function createSessionService(db: DB) {
       presentation = await content.resolvePresentation(state.userId, subjectId);
       contentDepth = await content.resolveContentDepth(state.userId, topicId, disciplineId);
     }
+
+    // Track served presentation for drift nudging in respond()
+    state.lastServedPresentation = presentation;
+    state.lastServedSubjectId = subjectId ?? undefined;
 
     return { topicId, contentDepth, presentation };
   }
@@ -332,6 +338,16 @@ export function createSessionService(db: DB) {
 
         // Apply FIRe credit
         await srs.applyFIReCredit(state.userId, state.currentTopicId, rating);
+
+        // Nudge presentation distribution based on performance
+        if (state.lastServedPresentation && state.lastServedSubjectId) {
+          await content.applyNudge(
+            state.userId,
+            state.lastServedSubjectId,
+            state.lastServedPresentation,
+            isCorrect,
+          );
+        }
       }
 
       // Advance through learning phases

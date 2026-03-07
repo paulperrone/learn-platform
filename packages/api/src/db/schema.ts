@@ -294,6 +294,20 @@ export const userSubjectPresentation = sqliteTable("user_subject_presentation", 
   uniqueIndex("usp_user_subject_idx").on(table.userId, table.subjectId),
 ]);
 
+export const presentationDriftLog = sqliteTable("presentation_drift_log", {
+  id: integer("id").primaryKey({ autoIncrement: true }),
+  userId: text("user_id").notNull().references(() => users.id),
+  subjectId: text("subject_id").notNull().references(() => subjects.id),
+  fromWeights: text("from_weights").notNull(), // JSON: {primary, intermediate, standard, advanced}
+  toWeights: text("to_weights").notNull(), // JSON: {primary, intermediate, standard, advanced}
+  fromCenter: text("from_center").notNull(),
+  toCenter: text("to_center").notNull(),
+  trigger: text("trigger").notNull(), // 'center_shift' | 'level_emerged' | 'level_dropped'
+  createdAt: text("created_at").notNull().$defaultFn(() => new Date().toISOString()),
+}, (table) => [
+  index("pdl_user_subject_idx").on(table.userId, table.subjectId),
+]);
+
 export const llmModelConfig = sqliteTable("llm_model_config", {
   tier: text("tier").primaryKey(), // 'cheap' | 'capable'
   modelId: text("model_id").notNull(),
