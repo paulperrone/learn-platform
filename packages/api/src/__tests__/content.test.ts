@@ -10,8 +10,10 @@ import {
   seedAssessmentContent,
   seedInstructionalContent,
   seedUserTopicDepth,
+  seedUserSubjectPresentation,
 } from "./helpers.js";
 import { createContentService } from "../services/content.js";
+import { buildDefaultDistribution, sampleFromDistribution } from "../services/content.js";
 import * as schema from "../db/schema.js";
 
 describe("content service", () => {
@@ -267,6 +269,176 @@ describe("content service", () => {
       });
       expect(examples).toHaveLength(1);
       expect(examples[0].title).toBe("Introduction to Counting");
+    });
+  });
+
+  describe("buildDefaultDistribution", () => {
+    it("centers on primary for young children (age ~6)", () => {
+      const dist = buildDefaultDistribution(2020);
+      expect(dist.centerLevel).toBe("primary");
+      expect(dist.primary).toBe(0.90);
+      expect(dist.intermediate).toBe(0.10);
+      expect(dist.standard).toBe(0);
+      expect(dist.advanced).toBe(0);
+    });
+
+    it("centers on intermediate for age ~10", () => {
+      const dist = buildDefaultDistribution(2016);
+      expect(dist.centerLevel).toBe("intermediate");
+      expect(dist.primary).toBe(0.15);
+      expect(dist.intermediate).toBe(0.75);
+      expect(dist.standard).toBe(0.10);
+      expect(dist.advanced).toBe(0);
+    });
+
+    it("centers on standard for age ~14", () => {
+      const dist = buildDefaultDistribution(2012);
+      expect(dist.centerLevel).toBe("standard");
+      expect(dist.intermediate).toBe(0.15);
+      expect(dist.standard).toBe(0.75);
+      expect(dist.advanced).toBe(0.10);
+    });
+
+    it("centers on advanced for age 18+", () => {
+      const dist = buildDefaultDistribution(2008);
+      expect(dist.centerLevel).toBe("advanced");
+      expect(dist.standard).toBe(0.15);
+      expect(dist.advanced).toBe(0.85);
+    });
+
+    it("centers on standard when no birthYear", () => {
+      const dist = buildDefaultDistribution(null);
+      expect(dist.centerLevel).toBe("standard");
+      expect(dist.standard).toBe(0.75);
+    });
+
+    it("weights always sum to 1.0", () => {
+      for (const by of [null, 2020, 2016, 2012, 2008]) {
+        const dist = buildDefaultDistribution(by);
+        const sum = dist.primary + dist.intermediate + dist.standard + dist.advanced;
+        expect(sum).toBeCloseTo(1.0, 10);
+      }
+    });
+  });
+
+  describe("sampleFromDistribution", () => {
+    it("respects weights over many samples", () => {
+      const dist = buildDefaultDistribution(2016); // intermediate-centered
+      const counts: Record<string, number> = { primary: 0, intermediate: 0, standard: 0, advanced: 0 };
+      const N = 1000;
+      for (let i = 0; i < N; i++) {
+        counts[sampleFromDistribution(dist)]++;
+      }
+      // Center should get majority
+      expect(counts.intermediate).toBeGreaterThan(N * 0.6);
+      // Adjacent should get some
+      expect(counts.primary).toBeGreaterThan(N * 0.05);
+      expect(counts.standard).toBeGreaterThan(N * 0.02);
+      // Far level should get zero or near-zero
+      expect(counts.advanced).toBeLessThan(N * 0.02);
+    });
+  });
+
+  describe("resolvePresentation with subjectId", () => {
+    it("uses stored distribution when subjectId provided", async () => {
+      const user = await seedUser({ birthYear: 2020 }); // Would be 'primary' by age
+      const subj = await seedSubject({ id: "subj-pres-dist" });
+      // Store a distribution centered on advanced
+      await seedUserSubjectPresentation(
+        user.id,
+        subj.id,
+        { primary: 0, intermediate: 0, standard: 0, advanced: 1.0 },
+        "advanced"
+      );
+      // With subjectId, should always return advanced (weight=1.0)
+      const result = await content.resolvePresentation(user.id, subj.id);
+      expect(result).toBe("advanced");
+    });
+
+    it("falls back to age-default when no distribution stored", async () => {
+      const user = await seedUser({ birthYear: 2020 }); // primary by age
+      // No distribution stored — should sample from age-default (90% primary)
+      const subj = await seedSubject({ id: "subj-pres-no-dist" });
+      const counts: Record<string, number> = { primary: 0, intermediate: 0, standard: 0, advanced: 0 };
+      for (let i = 0; i < 100; i++) {
+        counts[await content.resolvePresentation(user.id, subj.id)]++;
+      }
+      expect(counts.primary).toBeGreaterThan(70);
+    });
+
+    it("returns deterministic age-based level without subjectId (backwards compatible)", async () => {
+      const user = await seedUser({ birthYear: 2020 });
+      const result = await content.resolvePresentation(user.id);
+      expect(result).toBe("primary");
+    });
+
+    it("presentationOverride takes priority over distribution", async () => {
+      const user = await seedUser({ birthYear: 2020 });
+      await db.insert(schema.userPreferences).values({
+        userId: user.id,
+        presentationOverride: "standard",
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+      });
+      const subj = await seedSubject({ id: "subj-pres-override" });
+      await seedUserSubjectPresentation(
+        user.id,
+        subj.id,
+        { primary: 1.0, intermediate: 0, standard: 0, advanced: 0 },
+        "primary"
+      );
+      const result = await content.resolvePresentation(user.id, subj.id);
+      expect(result).toBe("standard"); // Override wins
+    });
+  });
+
+  describe("upsertSubjectDistribution", () => {
+    it("creates new distribution", async () => {
+      const user = await seedUser({});
+      const subj = await seedSubject({ id: "subj-upsert-new" });
+      await content.upsertSubjectDistribution(user.id, subj.id, {
+        primary: 0.1,
+        intermediate: 0.7,
+        standard: 0.15,
+        advanced: 0.05,
+        centerLevel: "intermediate",
+      });
+      const dist = await content.getSubjectDistribution(user.id, subj.id);
+      expect(dist).not.toBeNull();
+      expect(dist!.centerLevel).toBe("intermediate");
+      expect(dist!.intermediate).toBeCloseTo(0.7);
+    });
+
+    it("updates existing distribution", async () => {
+      const user = await seedUser({});
+      const subj = await seedSubject({ id: "subj-upsert-update" });
+      await content.upsertSubjectDistribution(user.id, subj.id, {
+        primary: 0.1,
+        intermediate: 0.7,
+        standard: 0.15,
+        advanced: 0.05,
+        centerLevel: "intermediate",
+      });
+      await content.upsertSubjectDistribution(user.id, subj.id, {
+        primary: 0,
+        intermediate: 0.2,
+        standard: 0.7,
+        advanced: 0.1,
+        centerLevel: "standard",
+      });
+      const dist = await content.getSubjectDistribution(user.id, subj.id);
+      expect(dist!.centerLevel).toBe("standard");
+      expect(dist!.standard).toBeCloseTo(0.7);
+    });
+
+    it("distribution weights sum to 1.0", async () => {
+      const user = await seedUser({});
+      const subj = await seedSubject({ id: "subj-upsert-sum" });
+      const d = { primary: 0.1, intermediate: 0.7, standard: 0.15, advanced: 0.05, centerLevel: "intermediate" as const };
+      await content.upsertSubjectDistribution(user.id, subj.id, d);
+      const dist = await content.getSubjectDistribution(user.id, subj.id);
+      const sum = dist!.primary + dist!.intermediate + dist!.standard + dist!.advanced;
+      expect(sum).toBeCloseTo(1.0, 10);
     });
   });
 });

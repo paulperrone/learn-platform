@@ -32,6 +32,7 @@ export async function resetDb() {
     "assignments",
     "teach_sessions",
     "account_links",
+    "user_subject_presentation",
     "llm_model_config",
     "llm_usage",
     "review_log",
@@ -277,6 +278,30 @@ export async function seedUserTopicDepth(
   return row;
 }
 
+export async function seedUserSubjectPresentation(
+  userId: string,
+  subjectId: string,
+  weights: { primary: number; intermediate: number; standard: number; advanced: number },
+  centerLevel = "standard"
+) {
+  const db = getTestDb();
+  const now = new Date().toISOString();
+  const [row] = await db
+    .insert(schema.userSubjectPresentation)
+    .values({
+      userId,
+      subjectId,
+      primaryWeight: weights.primary,
+      intermediateWeight: weights.intermediate,
+      standardWeight: weights.standard,
+      advancedWeight: weights.advanced,
+      centerLevel,
+      lastAdjustedAt: now,
+    })
+    .returning();
+  return row;
+}
+
 export async function seedLLMUsage(userId: string, overrides: Partial<typeof schema.llmUsage.$inferInsert> = {}) {
   const db = getTestDb();
   const now = new Date().toISOString();
@@ -494,6 +519,10 @@ const SCHEMA_STATEMENTS = [
   // llm_usage (FK → users)
   'CREATE TABLE llm_usage (id text PRIMARY KEY NOT NULL, user_id text NOT NULL, model text NOT NULL, input_tokens integer NOT NULL, output_tokens integer NOT NULL, cost_cents real NOT NULL, purpose text NOT NULL, created_at text NOT NULL, FOREIGN KEY (user_id) REFERENCES users(id))',
   'CREATE INDEX llm_usage_user_idx ON llm_usage (user_id)',
+
+  // user_subject_presentation (FK → users, subjects)
+  'CREATE TABLE user_subject_presentation (id integer PRIMARY KEY AUTOINCREMENT NOT NULL, user_id text NOT NULL, subject_id text NOT NULL, primary_weight real DEFAULT 0 NOT NULL, intermediate_weight real DEFAULT 0 NOT NULL, standard_weight real DEFAULT 0 NOT NULL, advanced_weight real DEFAULT 0 NOT NULL, center_level text DEFAULT \'standard\' NOT NULL, last_adjusted_at text NOT NULL, FOREIGN KEY (user_id) REFERENCES users(id), FOREIGN KEY (subject_id) REFERENCES subjects(id))',
+  'CREATE UNIQUE INDEX usp_user_subject_idx ON user_subject_presentation (user_id, subject_id)',
 
   // user_preferences (FK → users)
   'CREATE TABLE user_preferences (user_id text PRIMARY KEY NOT NULL, tts_enabled integer DEFAULT true NOT NULL, tts_rate real DEFAULT 0.9 NOT NULL, tts_voice_name text, tts_auto_read integer DEFAULT false NOT NULL, stt_enabled integer DEFAULT true NOT NULL, presentation_override text, created_at text NOT NULL, updated_at text NOT NULL, FOREIGN KEY (user_id) REFERENCES users(id))',

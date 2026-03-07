@@ -280,6 +280,20 @@ export const userPreferences = sqliteTable("user_preferences", {
   updatedAt: text("updated_at").notNull().$defaultFn(() => new Date().toISOString()),
 });
 
+export const userSubjectPresentation = sqliteTable("user_subject_presentation", {
+  id: integer("id").primaryKey({ autoIncrement: true }),
+  userId: text("user_id").notNull().references(() => users.id),
+  subjectId: text("subject_id").notNull().references(() => subjects.id),
+  primaryWeight: real("primary_weight").notNull().default(0),
+  intermediateWeight: real("intermediate_weight").notNull().default(0),
+  standardWeight: real("standard_weight").notNull().default(0),
+  advancedWeight: real("advanced_weight").notNull().default(0),
+  centerLevel: text("center_level").notNull().default("standard"),
+  lastAdjustedAt: text("last_adjusted_at").notNull().$defaultFn(() => new Date().toISOString()),
+}, (table) => [
+  uniqueIndex("usp_user_subject_idx").on(table.userId, table.subjectId),
+]);
+
 export const llmModelConfig = sqliteTable("llm_model_config", {
   tier: text("tier").primaryKey(), // 'cheap' | 'capable'
   modelId: text("model_id").notNull(),

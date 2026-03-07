@@ -5,6 +5,56 @@ import type { Problem, WorkedExample, VisualAsset, PresentationLevel, ContentDep
 
 const CURRENT_YEAR = new Date().getFullYear();
 
+export type PresentationDistribution = {
+  primary: number;
+  intermediate: number;
+  standard: number;
+  advanced: number;
+  centerLevel: PresentationLevel;
+};
+
+const PRESENTATION_LEVELS: PresentationLevel[] = ["primary", "intermediate", "standard", "advanced"];
+
+export function buildDefaultDistribution(birthYear: number | null | undefined): PresentationDistribution {
+  let centerIdx: number;
+  if (!birthYear) {
+    centerIdx = 2; // standard
+  } else {
+    const age = CURRENT_YEAR - birthYear;
+    if (age <= 8) centerIdx = 0;        // primary
+    else if (age <= 11) centerIdx = 1;  // intermediate
+    else if (age <= 14) centerIdx = 2;  // standard
+    else centerIdx = 3;                 // advanced
+  }
+
+  const weights = [0, 0, 0, 0];
+  weights[centerIdx] = 0.75;
+  if (centerIdx > 0) weights[centerIdx - 1] = 0.15;
+  if (centerIdx < 3) weights[centerIdx + 1] = 0.10;
+  // Edge cases: when center is 0, no level below; when center is 3, no level above
+  // Redistribute remainder to center
+  const sum = weights.reduce((a, b) => a + b, 0);
+  if (sum < 1.0) weights[centerIdx] += 1.0 - sum;
+
+  return {
+    primary: weights[0],
+    intermediate: weights[1],
+    standard: weights[2],
+    advanced: weights[3],
+    centerLevel: PRESENTATION_LEVELS[centerIdx],
+  };
+}
+
+export function sampleFromDistribution(dist: PresentationDistribution): PresentationLevel {
+  const r = Math.random();
+  let cumulative = 0;
+  for (const level of PRESENTATION_LEVELS) {
+    cumulative += dist[level];
+    if (r < cumulative) return level;
+  }
+  return dist.centerLevel; // fallback (rounding)
+}
+
 const PRESENTATION_FALLBACK_ORDER: Record<PresentationLevel, PresentationLevel[]> = {
   primary: ["intermediate", "standard", "advanced"],
   intermediate: ["standard", "primary", "advanced"],
@@ -23,7 +73,7 @@ export type ContentQuery = {
 };
 
 export function createContentService(db: DB) {
-  async function resolvePresentation(userId: string): Promise<PresentationLevel> {
+  async function resolvePresentation(userId: string, subjectId?: string): Promise<PresentationLevel> {
     // Check for explicit override in preferences
     const prefs = await db.query.userPreferences.findFirst({
       where: eq(schema.userPreferences.userId, userId),
@@ -32,17 +82,41 @@ export function createContentService(db: DB) {
       return prefs.presentationOverride as PresentationLevel;
     }
 
-    // Derive from birthYear
+    // If subjectId provided, check for per-subject distribution
+    if (subjectId) {
+      const dist = await db.query.userSubjectPresentation.findFirst({
+        where: and(
+          eq(schema.userSubjectPresentation.userId, userId),
+          eq(schema.userSubjectPresentation.subjectId, subjectId),
+        ),
+      });
+      if (dist) {
+        return sampleFromDistribution({
+          primary: dist.primaryWeight,
+          intermediate: dist.intermediateWeight,
+          standard: dist.standardWeight,
+          advanced: dist.advancedWeight,
+          centerLevel: dist.centerLevel as PresentationLevel,
+        });
+      }
+    }
+
+    // Fall back to age-based default
     const user = await db.query.users.findFirst({
       where: eq(schema.users.id, userId),
     });
+    if (subjectId) {
+      // Subject provided but no stored distribution — sample from age default
+      const defaultDist = buildDefaultDistribution(user?.birthYear);
+      return sampleFromDistribution(defaultDist);
+    }
+    // No subjectId — deterministic age-based (backwards compatible)
     if (!user?.birthYear) return "standard";
-
     const age = CURRENT_YEAR - user.birthYear;
-    if (age <= 8) return "primary";        // K-2 (ages ~5-8)
-    if (age <= 11) return "intermediate";  // 3-5 (ages ~8-11)
-    if (age <= 14) return "standard";      // 6-8 (ages ~11-14)
-    return "advanced";                     // 9+  (ages 14+)
+    if (age <= 8) return "primary";
+    if (age <= 11) return "intermediate";
+    if (age <= 14) return "standard";
+    return "advanced";
   }
 
   async function resolveContentDepth(
@@ -232,9 +306,69 @@ export function createContentService(db: DB) {
     return rows.map((r) => r.contentDepth as ContentDepthLevel);
   }
 
+  async function getSubjectDistribution(
+    userId: string,
+    subjectId: string
+  ): Promise<PresentationDistribution | null> {
+    const row = await db.query.userSubjectPresentation.findFirst({
+      where: and(
+        eq(schema.userSubjectPresentation.userId, userId),
+        eq(schema.userSubjectPresentation.subjectId, subjectId),
+      ),
+    });
+    if (!row) return null;
+    return {
+      primary: row.primaryWeight,
+      intermediate: row.intermediateWeight,
+      standard: row.standardWeight,
+      advanced: row.advancedWeight,
+      centerLevel: row.centerLevel as PresentationLevel,
+    };
+  }
+
+  async function upsertSubjectDistribution(
+    userId: string,
+    subjectId: string,
+    dist: PresentationDistribution
+  ): Promise<void> {
+    const now = new Date().toISOString();
+    const existing = await db.query.userSubjectPresentation.findFirst({
+      where: and(
+        eq(schema.userSubjectPresentation.userId, userId),
+        eq(schema.userSubjectPresentation.subjectId, subjectId),
+      ),
+    });
+    if (existing) {
+      await db
+        .update(schema.userSubjectPresentation)
+        .set({
+          primaryWeight: dist.primary,
+          intermediateWeight: dist.intermediate,
+          standardWeight: dist.standard,
+          advancedWeight: dist.advanced,
+          centerLevel: dist.centerLevel,
+          lastAdjustedAt: now,
+        })
+        .where(eq(schema.userSubjectPresentation.id, existing.id));
+    } else {
+      await db.insert(schema.userSubjectPresentation).values({
+        userId,
+        subjectId,
+        primaryWeight: dist.primary,
+        intermediateWeight: dist.intermediate,
+        standardWeight: dist.standard,
+        advancedWeight: dist.advanced,
+        centerLevel: dist.centerLevel,
+        lastAdjustedAt: now,
+      });
+    }
+  }
+
   return {
     resolvePresentation,
     resolveContentDepth,
+    getSubjectDistribution,
+    upsertSubjectDistribution,
     markDepthCompleted,
     getCompletedDepths,
     getTopicProblems,

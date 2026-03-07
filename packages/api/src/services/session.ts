@@ -61,7 +61,7 @@ export function createSessionService(db: DB) {
     let contentDepth: ContentDepthLevel = "survey";
 
     if (!state.isAnonymous) {
-      presentation = await content.resolvePresentation(state.userId);
+      presentation = await content.resolvePresentation(state.userId, subjectId);
       contentDepth = await content.resolveContentDepth(state.userId, topicId, disciplineId);
     }
 
