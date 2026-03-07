@@ -1,4 +1,4 @@
-import { eq, and, isNull } from "drizzle-orm";
+import { eq, and, isNull, sql } from "drizzle-orm";
 import { Rating, type Grade } from "ts-fsrs";
 import type { DB } from "../db/index.js";
 import * as schema from "../db/schema.js";
@@ -600,16 +600,57 @@ export function createSessionService(db: DB) {
         }
 
         case "instruction": {
-          // Worked example with self-explanation prompt
+          // Worked example with progressive fading
           const example = examples[0];
+          const ex = example ?? makeFallbackExample(topic);
+
+          // Compute fading level from prior exposure count + FSRS stability
+          let fadingLevel = 0;
+          if (!state.isAnonymous) {
+            const [{ count }] = await db
+              .select({ count: sql<number>`count(*)` })
+              .from(schema.reviewLog)
+              .where(
+                and(
+                  eq(schema.reviewLog.userId, state.userId),
+                  eq(schema.reviewLog.topicId, state.currentTopicId!),
+                  eq(schema.reviewLog.phase, "instruction"),
+                )
+              );
+            fadingLevel = count;
+
+            // FSRS stability modifier: high stability → more fading
+            const uts = await db.query.userTopicState.findFirst({
+              where: and(
+                eq(schema.userTopicState.userId, state.userId),
+                eq(schema.userTopicState.topicId, state.currentTopicId!),
+              ),
+            });
+            if (uts && uts.stability > 14) {
+              fadingLevel++;
+            }
+          }
+
+          // Cap: always show at least the first step
+          const maxFade = Math.max(0, ex.steps.length - 1);
+          fadingLevel = Math.min(fadingLevel, maxFade);
+
+          const fadingMessage =
+            fadingLevel === 0
+              ? "Study this example carefully. You'll explain it in your own words."
+              : fadingLevel >= maxFade
+                ? "You've seen this before. Try to complete each step on your own."
+                : "Fill in the missing steps. The structure is here to guide you.";
+
           return {
             type: "instruction",
             phase: "instruction",
             topicId: topic.id,
             topicName: topic.name,
-            example: example ?? makeFallbackExample(topic),
+            example: ex,
+            fadingLevel,
             blendRole: state.currentBlendRole ?? "main",
-            message: "Study this example carefully. You'll explain it in your own words.",
+            message: fadingMessage,
           };
         }
 
@@ -768,6 +809,7 @@ export type SessionItem =
       topicId: string;
       topicName: string;
       example: WorkedExample;
+      fadingLevel: number;
       blendRole?: BlendRole;
       message: string;
     }

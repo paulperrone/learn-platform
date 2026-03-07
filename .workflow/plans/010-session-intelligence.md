@@ -23,9 +23,9 @@ This plan implements: progressive hint reveal, calibrated mastery criteria, full
 
 ## Progress
 
-**Completed:** Phase 1 ✓, Phase 2 ✓, Phase 3 ✓, Phase 4 ✓
+**Completed:** Phase 1 ✓, Phase 2 ✓, Phase 3 ✓, Phase 4 ✓, Phase 5 ✓
 **In Progress:** —
-**Next:** Phase 5
+**Next:** Phase 6
 
 ---
 
@@ -92,14 +92,14 @@ This plan implements: progressive hint reveal, calibrated mastery criteria, full
 
 ---
 
-## Phase 5: Worked Example Fading
+## Phase 5: Worked Example Fading ✓
 **Goal:** Worked examples progressively fade steps as student gains proficiency. Research shows fading is where learning transitions from passive to active.
 
-1. [ ] [IMP] Track example exposure per topic in session state or user_topic_state: how many times has this student seen worked examples for this topic? First encounter: full example (all steps visible). Second encounter: last step blanked (student fills in). Third encounter: last two steps blanked. Fourth+: fully faded (student solves independently with example structure visible as scaffold).
+1. [x] [IMP] Track example exposure per topic in session state or user_topic_state: how many times has this student seen worked examples for this topic? First encounter: full example (all steps visible). Second encounter: last step blanked (student fills in). Third encounter: last two steps blanked. Fourth+: fully faded (student solves independently with example structure visible as scaffold).
 
-2. [ ] [IMP] Update `buildPhaseItem()` for `instruction` phase: instead of always returning the full example, return the example with a `fadingLevel` (0=full, 1=last step blanked, etc.). Frontend renders blanked steps as input fields where the student fills in the work. Fading level determined by exposure count + FSRS state (higher stability = more fading).
+2. [x] [IMP] Update `buildPhaseItem()` for `instruction` phase: instead of always returning the full example, return the example with a `fadingLevel` (0=full, 1=last step blanked, etc.). Frontend renders blanked steps as input fields where the student fills in the work. Fading level determined by exposure count + FSRS state (higher stability = more fading).
 
-3. [ ] [TST] Verify: first encounter shows full example. Subsequent encounters fade progressively. FSRS state influences fading level (high stability = more fading). Frontend receives correct fading metadata. Fading doesn't break when example has only 2 steps (can't fade beyond available steps).
+3. [x] [TST] Verify: first encounter shows full example. Subsequent encounters fade progressively. FSRS state influences fading level (high stability = more fading). Frontend receives correct fading metadata. Fading doesn't break when example has only 2 steps (can't fade beyond available steps).
 
 **Validation:** Students transition from studying complete examples to actively completing partially-blanked examples to solving independently. The scaffolding removes itself as proficiency grows.
 
