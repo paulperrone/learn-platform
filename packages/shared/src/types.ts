@@ -158,10 +158,15 @@ export type Problem = {
   visuals?: VisualAsset[];
 };
 
+export type PresentationLevel = "primary" | "intermediate" | "standard" | "advanced";
+
+export type ContentDepthLevel = "survey" | "contextual" | "analytical" | "synthesis";
+
 export type ContentDimensions = {
   flavor: string;
   locale: string;
-  presentation: string;
+  presentation: PresentationLevel;
+  contentDepth: ContentDepthLevel;
   version: number;
 };
 

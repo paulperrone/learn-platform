@@ -21,29 +21,29 @@ This plan closes the gap so that when content is generated across dimensions, it
 
 ## Progress
 
-**Completed:** None yet
+**Completed:** Phase 1 ✓
 **In Progress:** —
-**Next:** Phase 1
+**Next:** Phase 2
 
 ---
 
-## Phase 1: Content Selection Engine
+## Phase 1: Content Selection Engine ✓
 **Goal:** Session service filters content by `(topicId, contentDepth, presentation, locale)` with documented fallback chain. Users receive age-appropriate content.
 
-1. [ ] [IMP] Build `resolvePresentation(user)` function: reads `birthYear` from user profile (or explicit preference if set), maps to presentation level — K-2 → `primary`, 3-5 → `intermediate`, 6-8 → `standard`, 9+ → `advanced`. Returns `standard` as default for anonymous users. Add presentation preference field to `userPreferences` table as optional override.
+1. [x] [IMP] Build `resolvePresentation(user)` function: reads `birthYear` from user profile (or explicit preference if set), maps to presentation level — K-2 → `primary`, 3-5 → `intermediate`, 6-8 → `standard`, 9+ → `advanced`. Returns `standard` as default for anonymous users. Add presentation preference field to `userPreferences` table as optional override.
 
-2. [ ] [IMP] Build `resolveContentDepth(userId, topicId, disciplineId)` function: for mastery-gated disciplines, always returns `survey` (depth is in the topic graph, not content). For context-layered disciplines, reads the user's completed depth for this topic (Phase 2 schema) and returns the next uncompleted depth. For flexible, returns `survey`.
+2. [x] [IMP] Build `resolveContentDepth(userId, topicId, disciplineId)` function: for mastery-gated disciplines, always returns `survey` (depth is in the topic graph, not content). For context-layered disciplines, reads the user's completed depth for this topic (Phase 2 schema) and returns the next uncompleted depth. For flexible, returns `survey`.
 
-3. [ ] [IMP] Refactor `getTopicProblems(topicId)` and `getTopicExamples(topicId)` in session service to accept dimension parameters `(topicId, contentDepth, presentation, locale)`. Query filters by all dimensions. Implement fallback chain from content-system.md §6:
+3. [x] [IMP] Refactor `getTopicProblems(topicId)` and `getTopicExamples(topicId)` in session service to accept dimension parameters `(topicId, contentDepth, presentation, locale)`. Query filters by all dimensions. Implement fallback chain from content-system.md §6:
    - a. Try adjacent presentation (standard if intermediate unavailable)
    - b. Try `classic` flavor if requested flavor unavailable
    - c. Try `en` locale if requested locale unavailable
    - d. Try `survey` depth if requested depth unavailable
    - e. Use generic fallback content (existing `makeFallbackProblem`/`makeFallbackExample`)
 
-4. [ ] [IMP] Wire content selection into session flow: `buildPhaseItem()` calls `resolvePresentation()` and `resolveContentDepth()` for the current user and topic, passes dimensions to content queries. Anonymous sessions use `standard` presentation and `survey` depth.
+4. [x] [IMP] Wire content selection into session flow: `buildPhaseItem()` calls `resolvePresentation()` and `resolveContentDepth()` for the current user and topic, passes dimensions to content queries. Anonymous sessions use `standard` presentation and `survey` depth.
 
-5. [ ] [TST] Verify: user with birthYear=2020 (age 6) gets `primary` presentation content when it exists, falls back to next available. User with birthYear=2012 (age 14) gets `standard`. Content depth resolution returns correct depth per discipline type. Fallback chain works when exact match doesn't exist. All existing tests still pass.
+5. [x] [TST] Verify: user with birthYear=2020 (age 6) gets `primary` presentation content when it exists, falls back to next available. User with birthYear=2012 (age 14) gets `standard`. Content depth resolution returns correct depth per discipline type. Fallback chain works when exact match doesn't exist. All existing tests still pass.
 
 **Validation:** Two users of different ages studying the same topic receive different presentation-level content. Fallback chain prevents blank screens when content variants don't exist.
 

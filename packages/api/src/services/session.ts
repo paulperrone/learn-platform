@@ -4,7 +4,8 @@ import type { DB } from "../db/index.js";
 import * as schema from "../db/schema.js";
 import { createGraphService } from "./graph.js";
 import { createSRSService } from "./srs.js";
-import type { Problem, WorkedExample, SessionPhase, AssessmentType, VisualAsset } from "@learn/shared";
+import { createContentService, type ContentQuery } from "./content.js";
+import type { Problem, WorkedExample, SessionPhase, AssessmentType, VisualAsset, PresentationLevel, ContentDepthLevel } from "@learn/shared";
 import { gradeProblem } from "./grading.js";
 
 type SessionState = {
@@ -27,8 +28,10 @@ const activeSessions = new Map<string, SessionState>();
 export function createSessionService(db: DB) {
   const graph = createGraphService(db);
   const srs = createSRSService(db);
+  const content = createContentService(db);
 
-  async function getTopicProblems(topicId: string): Promise<Problem[]> {
+  // Legacy unfiltered queries — used only for grading (needs all problems for a topic)
+  async function getAllTopicProblems(topicId: string): Promise<Problem[]> {
     const rows = await db
       .select()
       .from(schema.assessmentContent)
@@ -46,28 +49,23 @@ export function createSessionService(db: DB) {
     }));
   }
 
-  async function getTopicExamples(topicId: string): Promise<WorkedExample[]> {
-    const rows = await db
-      .select()
-      .from(schema.instructionalContent)
-      .where(eq(schema.instructionalContent.topicId, topicId));
-    return rows.map((r) => ({
-      id: r.id,
-      topicId: r.topicId,
-      title: r.title,
-      steps: JSON.parse(r.stepsJson),
-      visuals: r.assetsJson ? JSON.parse(r.assetsJson) : undefined,
-    }));
-  }
+  async function resolveContentQuery(state: SessionState, topicId: string): Promise<ContentQuery> {
+    const topic = await graph.getTopic(topicId);
+    const subjectId = topic?.subjectId;
+    const subject = subjectId
+      ? await db.query.subjects.findFirst({ where: eq(schema.subjects.id, subjectId) })
+      : null;
+    const disciplineId = subject?.disciplineId ?? "math";
 
-  async function getTopicVisuals(topicId: string): Promise<VisualAsset[] | undefined> {
-    const row = await db
-      .select({ assetsJson: schema.instructionalContent.assetsJson })
-      .from(schema.instructionalContent)
-      .where(eq(schema.instructionalContent.topicId, topicId))
-      .limit(1);
-    if (!row[0]?.assetsJson) return undefined;
-    return JSON.parse(row[0].assetsJson);
+    let presentation: PresentationLevel = "standard";
+    let contentDepth: ContentDepthLevel = "survey";
+
+    if (!state.isAnonymous) {
+      presentation = await content.resolvePresentation(state.userId);
+      contentDepth = await content.resolveContentDepth(state.userId, topicId, disciplineId);
+    }
+
+    return { topicId, contentDepth, presentation };
   }
 
   // Types that force retrieval practice (higher learning gain than text-qa)
@@ -294,7 +292,7 @@ export function createSessionService(db: DB) {
       // Server-side grading when answer is provided
       let isCorrect = response.correct ?? false;
       if (response.answer != null) {
-        const problems = await getTopicProblems(state.currentTopicId);
+        const problems = await getAllTopicProblems(state.currentTopicId);
         const problem = problems.find((p) => p.id === (response as any).problemId) ?? problems[0];
         if (problem) {
           const gradeResult = gradeProblem(problem, response.answer);
@@ -475,9 +473,10 @@ export function createSessionService(db: DB) {
         return { type: "error", message: "Topic not found." };
       }
 
-      const problems = await getTopicProblems(topic.id);
-      const examples = await getTopicExamples(topic.id);
-      const visuals = await getTopicVisuals(topic.id);
+      const query = await resolveContentQuery(state, topic.id);
+      const problems = await content.getTopicProblems(query);
+      const examples = await content.getTopicExamples(query);
+      const visuals = await content.getTopicVisuals(query);
 
       function withVisuals(problem: Problem): Problem {
         return visuals ? { ...problem, visuals } : problem;

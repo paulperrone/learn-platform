@@ -263,6 +263,7 @@ export const userPreferences = sqliteTable("user_preferences", {
   ttsVoiceName: text("tts_voice_name"),
   ttsAutoRead: integer("tts_auto_read", { mode: "boolean" }).notNull().default(false),
   sttEnabled: integer("stt_enabled", { mode: "boolean" }).notNull().default(true),
+  presentationOverride: text("presentation_override"), // 'primary' | 'intermediate' | 'standard' | 'advanced' — overrides age-based default
   createdAt: text("created_at").notNull().$defaultFn(() => new Date().toISOString()),
   updatedAt: text("updated_at").notNull().$defaultFn(() => new Date().toISOString()),
 });

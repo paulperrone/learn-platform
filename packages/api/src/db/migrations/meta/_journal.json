@@ -78,6 +78,27 @@
       "when": 1772870400001,
       "tag": "0010_add_assessment_content_id_to_review_log",
       "breakpoints": true
+    },
+    {
+      "idx": 11,
+      "version": "6",
+      "when": 1772847601666,
+      "tag": "0011_disciplines_and_prereq_types",
+      "breakpoints": true
+    },
+    {
+      "idx": 12,
+      "version": "6",
+      "when": 1772870400002,
+      "tag": "0012_content_depth_dimension",
+      "breakpoints": true
+    },
+    {
+      "idx": 13,
+      "version": "6",
+      "when": 1772956800000,
+      "tag": "0013_presentation_override",
+      "breakpoints": true
     }
   ]
 }
