@@ -24,6 +24,7 @@ export async function applyMigrations() {
 export async function resetDb() {
   // Drop in reverse FK order
   const tables = [
+    "daily_activity",
     "group_session_participants",
     "group_sessions",
     "onboarding_state",
@@ -463,6 +464,28 @@ export async function seedAssignment(
   return row;
 }
 
+export async function seedDailyActivity(
+  userId: string,
+  date: string,
+  overrides: Partial<typeof schema.dailyActivity.$inferInsert> = {}
+) {
+  const db = getTestDb();
+  const [row] = await db
+    .insert(schema.dailyActivity)
+    .values({
+      userId,
+      date,
+      minutesActive: overrides.minutesActive ?? 0,
+      problemsCompleted: overrides.problemsCompleted ?? 0,
+      topicsMastered: overrides.topicsMastered ?? 0,
+      goalMet: overrides.goalMet ?? false,
+      updatedAt: new Date().toISOString(),
+      ...overrides,
+    })
+    .returning();
+  return row;
+}
+
 // --- Schema DDL (individual statements for D1 prepare/run) ---
 // Tables created in FK dependency order: users first, then referencing tables
 
@@ -558,7 +581,7 @@ const SCHEMA_STATEMENTS = [
   'CREATE INDEX pdl_user_subject_idx ON presentation_drift_log (user_id, subject_id)',
 
   // user_preferences (FK → users)
-  'CREATE TABLE user_preferences (user_id text PRIMARY KEY NOT NULL, tts_enabled integer DEFAULT true NOT NULL, tts_rate real DEFAULT 0.9 NOT NULL, tts_voice_name text, tts_auto_read integer DEFAULT false NOT NULL, stt_enabled integer DEFAULT true NOT NULL, presentation_override text, created_at text NOT NULL, updated_at text NOT NULL, FOREIGN KEY (user_id) REFERENCES users(id))',
+  'CREATE TABLE user_preferences (user_id text PRIMARY KEY NOT NULL, tts_enabled integer DEFAULT true NOT NULL, tts_rate real DEFAULT 0.9 NOT NULL, tts_voice_name text, tts_auto_read integer DEFAULT false NOT NULL, stt_enabled integer DEFAULT true NOT NULL, presentation_override text, daily_goal_type text DEFAULT \'minutes\' NOT NULL, daily_goal_target integer DEFAULT 20 NOT NULL, created_at text NOT NULL, updated_at text NOT NULL, FOREIGN KEY (user_id) REFERENCES users(id))',
 
   // user_fsrs_params (FK → users)
   'CREATE TABLE user_fsrs_params (user_id text PRIMARY KEY NOT NULL, request_retention real DEFAULT 0.9 NOT NULL, w_json text, review_count integer DEFAULT 0 NOT NULL, computed_at text, created_at text NOT NULL, updated_at text NOT NULL, FOREIGN KEY (user_id) REFERENCES users(id))',
@@ -609,6 +632,11 @@ const SCHEMA_STATEMENTS = [
   'CREATE INDEX gs_facilitator_idx ON group_sessions (facilitator_id)',
   'CREATE UNIQUE INDEX gs_join_code_idx ON group_sessions (join_code)',
   'CREATE INDEX gs_status_idx ON group_sessions (facilitator_id, status)',
+
+  // daily_activity (FK → users)
+  'CREATE TABLE daily_activity (id integer PRIMARY KEY AUTOINCREMENT NOT NULL, user_id text NOT NULL, date text NOT NULL, minutes_active integer DEFAULT 0 NOT NULL, problems_completed integer DEFAULT 0 NOT NULL, topics_mastered integer DEFAULT 0 NOT NULL, goal_met integer DEFAULT 0 NOT NULL, updated_at text NOT NULL, FOREIGN KEY (user_id) REFERENCES users(id))',
+  'CREATE UNIQUE INDEX da_user_date_idx ON daily_activity (user_id, date)',
+  'CREATE INDEX da_user_goal_idx ON daily_activity (user_id, goal_met)',
 
   // group_session_participants (FK → group_sessions, users, topics)
   'CREATE TABLE group_session_participants (id text PRIMARY KEY NOT NULL, group_session_id text NOT NULL, user_id text, anonymous_token text, display_name text, role text DEFAULT \'student\' NOT NULL, current_topic_id text, current_phase text, total_correct integer DEFAULT 0 NOT NULL, total_attempts integer DEFAULT 0 NOT NULL, joined_at text NOT NULL, left_at text, FOREIGN KEY (group_session_id) REFERENCES group_sessions(id), FOREIGN KEY (user_id) REFERENCES users(id), FOREIGN KEY (current_topic_id) REFERENCES topics(id))',

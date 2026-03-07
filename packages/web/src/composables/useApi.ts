@@ -1,6 +1,6 @@
 import { authClient } from "./useAuth";
 import { useToast } from "./useToast";
-import type { SpeechSettings, Subject, Topic, Problem, WorkedExample, DiagnosticResult } from "@learn/shared";
+import type { SpeechSettings, Subject, Topic, Problem, WorkedExample, DiagnosticResult, TodayProgress, WeeklySummary, DailyGoalConfig, DailyActivityDay } from "@learn/shared";
 
 const API_BASE = "/api";
 
@@ -402,6 +402,34 @@ export function useApi() {
           topicsWithLowQuality: number;
         };
       }>("/admin/content-matrix"),
+
+    // Activity
+    getTodayProgress: async (date?: string) => {
+      const userId = await getUserId();
+      const qs = date ? `?date=${date}` : "";
+      return request<TodayProgress>(`/activity/today${qs}`);
+    },
+    getWeeklySummary: async (date?: string) => {
+      const qs = date ? `?date=${date}` : "";
+      return request<WeeklySummary>(`/activity/weekly${qs}`);
+    },
+    getActivityHistory: async (days = 84) =>
+      request<{ days: DailyActivityDay[] }>(`/activity/history?days=${days}`),
+    getDailyGoal: () => request<DailyGoalConfig>("/activity/goal"),
+    updateDailyGoal: (data: Partial<DailyGoalConfig>) =>
+      request<DailyGoalConfig>("/activity/goal", {
+        method: "PUT",
+        body: JSON.stringify(data),
+      }),
+    recordActivity: (data: { date: string; minutes?: number; problems?: number; topicsMastered?: number }) =>
+      request<{ goalMet: boolean; goalJustCompleted: boolean }>("/activity/record", {
+        method: "POST",
+        body: JSON.stringify(data),
+      }),
+    getChildWeeklySummary: (childId: string, date?: string) => {
+      const qs = date ? `?date=${date}` : "";
+      return request<WeeklySummary>(`/activity/${childId}/weekly${qs}`);
+    },
 
     // Group Sessions
     createGroupSession: (data: { type: "family" | "classroom" | "peer-pair"; topicId?: string; studentIds?: string[] }) =>

@@ -341,6 +341,40 @@ export type PeerPairState = {
   problem: Problem | null;
 };
 
+// === Daily Activity Types ===
+
+export type DailyGoalType = "minutes" | "problems";
+
+export type DailyGoalConfig = {
+  type: DailyGoalType;
+  target: number;
+};
+
+export type DailyActivityDay = {
+  date: string;
+  minutesActive: number;
+  problemsCompleted: number;
+  topicsMastered: number;
+  goalMet: boolean;
+};
+
+export type TodayProgress = DailyActivityDay & {
+  goal: DailyGoalConfig;
+  current: number;
+  progress: number; // 0-1
+};
+
+export type WeeklySummary = {
+  startDate: string;
+  endDate: string;
+  activeDays: number;
+  goalMetDays: number;
+  totalMinutes: number;
+  totalProblems: number;
+  totalTopicsMastered: number;
+  days: DailyActivityDay[];
+};
+
 // === Speech Settings ===
 
 export type SpeechSettings = {

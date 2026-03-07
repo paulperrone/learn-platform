@@ -21,22 +21,22 @@ Daily practice goals, streak visualization, progress animations, and estimated c
 
 ## Progress
 
-**Completed:** None yet
+**Completed:** Phase 1 ✓
 **In Progress:** —
-**Next:** Phase 1
+**Next:** Phase 2
 
 ---
 
-## Phase 1: Daily Practice Goals & Activity Tracking
+## Phase 1: Daily Practice Goals & Activity Tracking ✓
 **Goal:** Configurable daily targets with prominent progress display. The foundation for all habit features.
 
-1. [ ] [IMP] Add `daily_activity` table: userId, date, minutesActive, problemsCompleted, topicsMastered, goalMet. Track activity during learning sessions — update on each problem completion and session end.
+1. [x] [IMP] Add `daily_activity` table: userId, date, minutesActive, problemsCompleted, topicsMastered, goalMet. Track activity during learning sessions — update on each problem completion and session end.
 
-2. [ ] [IMP] Configurable daily goal: default 20 minutes or N problems (user/parent chooses in settings). Show goal progress prominently on dashboard — progress bar/ring, "12 of 20 minutes today" or "8 of 15 problems today." Visual celebration on goal completion. 5:1 praise framing: emphasize what was accomplished, not what's left.
+2. [x] [IMP] Configurable daily goal: default 20 minutes or N problems (user/parent chooses in settings). Show goal progress prominently on dashboard — progress bar/ring, "12 of 20 minutes today" or "8 of 15 problems today." Visual celebration on goal completion. 5:1 praise framing: emphasize what was accomplished, not what's left.
 
-3. [ ] [IMP] Weekly summary view: total active days, total problems, total time, topics mastered this week. Compare to previous week (growth framing, not judgment). Parent-visible via account_links.
+3. [x] [IMP] Weekly summary view: total active days, total problems, total time, topics mastered this week. Compare to previous week (growth framing, not judgment). Parent-visible via account_links.
 
-4. [ ] [TST] Verify: daily activity tracks accurately. Goal progress updates in real-time during sessions. Goal completion triggers celebration. Weekly summary calculates correctly. Timezone handling correct.
+4. [x] [TST] Verify: daily activity tracks accurately. Goal progress updates in real-time during sessions. Goal completion triggers celebration. Weekly summary calculates correctly. Timezone handling correct.
 
 **Validation:** Student sees daily progress and gets celebration on completion. Parent can see child's weekly consistency.
 

@@ -279,6 +279,8 @@ export const userPreferences = sqliteTable("user_preferences", {
   ttsAutoRead: integer("tts_auto_read", { mode: "boolean" }).notNull().default(false),
   sttEnabled: integer("stt_enabled", { mode: "boolean" }).notNull().default(true),
   presentationOverride: text("presentation_override"), // 'primary' | 'intermediate' | 'standard' | 'advanced' — overrides age-based default
+  dailyGoalType: text("daily_goal_type").notNull().default("minutes"), // 'minutes' | 'problems'
+  dailyGoalTarget: integer("daily_goal_target").notNull().default(20), // 20 minutes or N problems
   createdAt: text("created_at").notNull().$defaultFn(() => new Date().toISOString()),
   updatedAt: text("updated_at").notNull().$defaultFn(() => new Date().toISOString()),
 });
@@ -456,6 +458,22 @@ export const groupSessionParticipants = sqliteTable("group_session_participants"
 }, (table) => [
   index("gsp_session_idx").on(table.groupSessionId),
   index("gsp_user_idx").on(table.userId),
+]);
+
+// === Daily Activity Tracking ===
+
+export const dailyActivity = sqliteTable("daily_activity", {
+  id: integer("id").primaryKey({ autoIncrement: true }),
+  userId: text("user_id").notNull().references(() => users.id),
+  date: text("date").notNull(), // ISO date string YYYY-MM-DD (user's local date)
+  minutesActive: integer("minutes_active").notNull().default(0),
+  problemsCompleted: integer("problems_completed").notNull().default(0),
+  topicsMastered: integer("topics_mastered").notNull().default(0),
+  goalMet: integer("goal_met", { mode: "boolean" }).notNull().default(false),
+  updatedAt: text("updated_at").notNull().$defaultFn(() => new Date().toISOString()),
+}, (table) => [
+  uniqueIndex("da_user_date_idx").on(table.userId, table.date),
+  index("da_user_goal_idx").on(table.userId, table.goalMet),
 ]);
 
 // === Onboarding State ===

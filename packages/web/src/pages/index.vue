@@ -1,26 +1,35 @@
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
+import { ref, computed, onMounted } from "vue";
 import { useApi, withErrorToast } from "@/composables/useApi";
 import { useI18n } from "vue-i18n";
+import type { TodayProgress, WeeklySummary } from "@learn/shared";
 
 const api = useApi();
 const { t } = useI18n();
 const stats = ref({ mastered: 0, inProgress: 0, dueForReview: 0, total: 0 });
 const frontier = ref<any[]>([]);
+const todayProgress = ref<TodayProgress | null>(null);
+const weeklySummary = ref<WeeklySummary | null>(null);
 const loading = ref(true);
 const error = ref(false);
+
 onMounted(async () => {
   const result = await withErrorToast(async () => {
-    const [progressData, frontierData] = await Promise.all([
+    const today = new Date().toISOString().slice(0, 10);
+    const [progressData, frontierData, todayData, weeklyData] = await Promise.all([
       api.getProgress(),
       api.getFrontier(),
+      api.getTodayProgress(today),
+      api.getWeeklySummary(today),
     ]);
-    return { progressData, frontierData };
+    return { progressData, frontierData, todayData, weeklyData };
   }, t("errors.failedToLoad", { resource: "dashboard" }));
 
   if (result) {
     stats.value = result.progressData;
     frontier.value = result.frontierData.topics.slice(0, 5);
+    todayProgress.value = result.todayData;
+    weeklySummary.value = result.weeklyData;
   } else {
     error.value = true;
   }
@@ -31,6 +40,15 @@ const progressPercent = () =>
   stats.value.total > 0
     ? Math.round((stats.value.mastered / stats.value.total) * 100)
     : 0;
+
+const goalPercent = computed(() =>
+  todayProgress.value ? Math.round(todayProgress.value.progress * 100) : 0
+);
+
+// SVG ring constants
+const RING_R = 40;
+const RING_C = 2 * Math.PI * RING_R;
+const ringOffset = computed(() => RING_C * (1 - (todayProgress.value?.progress ?? 0)));
 </script>
 
 <template>
@@ -53,6 +71,64 @@ const progressPercent = () =>
     </div>
 
     <template v-else>
+      <!-- Daily Goal + Weekly Summary -->
+      <div v-if="todayProgress" class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+        <!-- Daily Goal Ring -->
+        <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-5 flex items-center gap-6">
+          <div class="relative shrink-0">
+            <svg width="100" height="100" viewBox="0 0 100 100">
+              <circle cx="50" cy="50" :r="RING_R" fill="none" stroke="#e5e7eb" stroke-width="8" />
+              <circle
+                cx="50" cy="50" :r="RING_R" fill="none"
+                :stroke="todayProgress.goalMet ? '#22c55e' : '#3b82f6'"
+                stroke-width="8" stroke-linecap="round"
+                :stroke-dasharray="RING_C"
+                :stroke-dashoffset="ringOffset"
+                transform="rotate(-90 50 50)"
+                class="transition-all duration-700"
+              />
+            </svg>
+            <div class="absolute inset-0 flex items-center justify-center">
+              <span class="text-lg font-bold" :class="todayProgress.goalMet ? 'text-green-600' : 'text-blue-600'">{{ goalPercent }}%</span>
+            </div>
+          </div>
+          <div class="min-w-0">
+            <p class="font-semibold text-gray-800">{{ t('dashboard.dailyGoal') }}</p>
+            <p v-if="todayProgress.goalMet" class="text-green-600 font-medium text-sm mt-1">{{ t('dashboard.goalCelebration') }}</p>
+            <p v-else class="text-sm text-gray-500 mt-1">
+              {{ t('dashboard.goalProgress', {
+                current: todayProgress.current,
+                target: todayProgress.goal.target,
+                unit: t(todayProgress.goal.type === 'minutes' ? 'dashboard.goalMinutes' : 'dashboard.goalProblems')
+              }) }}
+            </p>
+            <RouterLink to="/settings" class="text-xs text-blue-500 hover:underline mt-2 inline-block">{{ t('dashboard.configureGoal') }}</RouterLink>
+          </div>
+        </div>
+
+        <!-- Weekly Summary -->
+        <div v-if="weeklySummary" class="bg-white rounded-lg shadow-sm border border-gray-200 p-5">
+          <p class="font-semibold text-gray-800 mb-3">{{ t('dashboard.weeklySummary') }}</p>
+          <div class="grid grid-cols-2 gap-3 text-sm">
+            <div>
+              <p class="text-gray-500">{{ t('dashboard.activeDays', { count: weeklySummary.activeDays }) }}</p>
+            </div>
+            <div>
+              <p class="text-gray-500">{{ t('dashboard.goalMetDays', { count: weeklySummary.goalMetDays }) }}</p>
+            </div>
+            <div>
+              <p class="text-gray-500">{{ t('dashboard.weeklyMinutes', { count: weeklySummary.totalMinutes }) }}</p>
+            </div>
+            <div>
+              <p class="text-gray-500">{{ t('dashboard.weeklyProblems', { count: weeklySummary.totalProblems }) }}</p>
+            </div>
+          </div>
+          <p v-if="weeklySummary.totalTopicsMastered > 0" class="text-sm text-green-600 mt-2 font-medium">
+            {{ t('dashboard.weeklyTopics', { count: weeklySummary.totalTopicsMastered }) }}
+          </p>
+        </div>
+      </div>
+
       <!-- Stats Cards -->
       <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
         <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-5">
