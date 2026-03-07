@@ -161,6 +161,70 @@ async function requestHint() {
   hintMaxReached.value = result.isMaxLevel;
 }
 
+// Tutor state
+const tutorLoading = ref(false);
+const tutorResponse = ref("");
+const tutorHistory = ref<{ role: "system" | "user" | "assistant"; content: string }[]>([]);
+const showTutor = ref(false);
+
+// LLM grading state
+const llmGrading = ref(false);
+const llmGradeResult = ref<{ correct: boolean; feedback: string } | null>(null);
+
+const canUseTutor = computed(
+  () => llmAvailable.value && ["guided", "independent"].includes(props.phase) && !submitted.value
+);
+
+async function requestTutor() {
+  if (tutorLoading.value) return;
+  showTutor.value = true;
+  tutorLoading.value = true;
+
+  const result = await withErrorToast(
+    () =>
+      api.requestTutor({
+        topicName: props.topicName ?? "Math",
+        problemQuestion: props.problem.question,
+        studentResponse: answer.value || "I'm stuck",
+        conversationHistory: tutorHistory.value,
+      }),
+    "Tutor"
+  );
+  tutorLoading.value = false;
+
+  if (result?.response) {
+    tutorResponse.value = result.response;
+    tutorHistory.value.push(
+      { role: "user", content: answer.value || "I'm stuck" },
+      { role: "assistant", content: result.response }
+    );
+  }
+}
+
+async function requestLLMGrade() {
+  if (llmGrading.value || !answer.value.trim()) return;
+  llmGrading.value = true;
+
+  const result = await withErrorToast(
+    () =>
+      api.gradeAnswer({
+        topicName: props.topicName ?? "Math",
+        question: props.problem.question,
+        correctAnswer: props.problem.answer,
+        studentAnswer: answer.value,
+      }),
+    "Grading"
+  );
+  llmGrading.value = false;
+
+  if (result) {
+    llmGradeResult.value = result;
+    if (result.correct) {
+      isCorrect.value = true;
+    }
+  }
+}
+
 // Display answer for feedback section
 const displayAnswer = computed(() => {
   if (problemType.value === "matching") {
@@ -273,6 +337,16 @@ const displayAnswer = computed(() => {
           <span v-else-if="hintLevel === 0">{{ t('problem.needHint') }}</span>
           <span v-else>{{ t('problem.anotherHint', { current: hintLevel }) }}</span>
         </button>
+
+        <button
+          v-if="canUseTutor"
+          @click="requestTutor"
+          :disabled="tutorLoading"
+          class="px-4 py-2.5 border border-purple-300 text-purple-700 rounded-lg text-sm hover:bg-purple-50 disabled:opacity-50"
+        >
+          <span v-if="tutorLoading">{{ t('problem.tutorLoading') }}</span>
+          <span v-else>{{ t('problem.askTutor') }}</span>
+        </button>
       </div>
 
       <!-- Progressive hints -->
@@ -299,6 +373,11 @@ const displayAnswer = computed(() => {
           </div>
           <p class="text-sm text-gray-700">{{ hint.text }}</p>
         </div>
+      </div>
+      <!-- Tutor response -->
+      <div v-if="showTutor && tutorResponse" class="bg-purple-50 border border-purple-200 rounded-lg p-4">
+        <p class="text-xs font-medium text-purple-600 mb-1">{{ t('problem.tutorSays') }}</p>
+        <p class="text-sm text-purple-900">{{ tutorResponse }}</p>
       </div>
     </div>
 

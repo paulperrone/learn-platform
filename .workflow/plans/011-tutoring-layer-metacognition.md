@@ -21,28 +21,28 @@ These features approximate the key behaviors of an expert human tutor: asking "w
 
 ## Progress
 
-**Completed:** None yet
+**Completed:** Phase 1 ✓
 **In Progress:** —
-**Next:** Phase 1
+**Next:** Phase 2
 
 ---
 
-## Phase 1: Self-Explanation Prompts
+## Phase 1: Self-Explanation Prompts ✓
 **Goal:** After worked examples and guided practice, capture student explanations of *why* a step works. Evaluate with LLM. Research: combining self-explanation with faded examples produces medium-to-large effects on both near and far transfer.
 
-1. [ ] [IMP] Build `buildStudentProfile(db, userId, topicId)` helper: queries user_topic_state, review_log, and active session to produce a ~150-200 token context block injected into LLM system prompts. Includes: topic mastery state, recent struggles (last 3 incorrect reviews), session accuracy, response pace, confidence calibration. Design from RESEARCH.md "Session Context Injection" section.
+1. [x] [IMP] Build `buildStudentProfile(db, userId, topicId)` helper: queries user_topic_state, review_log, and active session to produce a ~150-200 token context block injected into LLM system prompts. Includes: topic mastery state, recent struggles (last 3 incorrect reviews), session accuracy, response pace, confidence calibration. Design from RESEARCH.md "Session Context Injection" section.
 
-2. [ ] [IMP] Wire student profile into existing LLM methods: inject `buildStudentProfile()` output into system prompts for `socraticTutor` and `evaluateExplanation` in llm.ts. The tutor adapts language complexity and references specific struggle areas. The evaluator calibrates expectations to the student's level.
+2. [x] [IMP] Wire student profile into existing LLM methods: inject `buildStudentProfile()` output into system prompts for `socraticTutor` and `evaluateExplanation` in llm.ts. The tutor adapts language complexity and references specific struggle areas. The evaluator calibrates expectations to the student's level.
 
-3. [ ] [IMP] Wire frontend to existing LLM API routes: add tutor button (calls `socraticTutor`), evaluate button (calls `evaluateExplanation`), and LLM grading toggle (calls `gradeResponse`) to ProblemView and WorkedExample components. These API routes exist but have no frontend integration. Tutor button available during `guided` and `independent` phases. Evaluate button available after worked examples.
+3. [x] [IMP] Wire frontend to existing LLM API routes: add tutor button (calls `socraticTutor`), evaluate button (calls `evaluateExplanation`), and LLM grading toggle (calls `gradeResponse`) to ProblemView and WorkedExample components. These API routes exist but have no frontend integration. Tutor button available during `guided` and `independent` phases. Evaluate button available after worked examples.
 
-4. [ ] [IMP] Add self-explanation prompt to session flow: after the `instruction` phase (worked example), before `guided` practice, insert a brief self-explanation prompt. Ask: "Can you explain why [specific step] works?" or "In your own words, what happened in step 2?" The prompt references a specific step from the worked example just shown. For K-5: simpler prompts — "How did you know to do that?" or "What would happen if the number was bigger?"
+4. [x] [IMP] Add self-explanation prompt to session flow: after the `instruction` phase (worked example), before `guided` practice, insert a brief self-explanation prompt. Ask: "Can you explain why [specific step] works?" or "In your own words, what happened in step 2?" The prompt references a specific step from the worked example just shown. For K-5: simpler prompts — "How did you know to do that?" or "What would happen if the number was bigger?"
 
-5. [ ] [IMP] Build explanation capture UI: text input field (or speech-to-text for younger students via existing STT infrastructure). Student submits their explanation. Response sent to LLM for evaluation (now with student profile context injected). Keep interaction short — 1-2 exchanges max for K-5 (per learning-science.md §13).
+5. [x] [IMP] Build explanation capture UI: text input field (or speech-to-text for younger students via existing STT infrastructure). Student submits their explanation. Response sent to LLM for evaluation (now with student profile context injected). Keep interaction short — 1-2 exchanges max for K-5 (per learning-science.md §13).
 
-6. [ ] [IMP] Build LLM explanation evaluator: system prompt instructs the LLM to evaluate the explanation for: correct identification of the underlying principle, connection to prior knowledge, and presence of misconceptions. Returns structured response: `{quality: 'strong'|'partial'|'weak'|'misconception', feedback: string, misconceptionFlag?: string}`. Use the `cheap` LLM tier. If quality is `misconception`, flag for remediation (Phase 3 dependency).
+6. [x] [IMP] Build LLM explanation evaluator: system prompt instructs the LLM to evaluate the explanation for: correct identification of the underlying principle, connection to prior knowledge, and presence of misconceptions. Returns structured response: `{quality: 'strong'|'partial'|'weak'|'misconception', feedback: string, misconceptionFlag?: string}`. Use the `cheap` LLM tier. If quality is `misconception`, flag for remediation (Phase 3 dependency).
 
-7. [ ] [TST] Verify: student profile builds correctly from DB state. LLM system prompts include profile context. Frontend tutor/evaluate/grading buttons call correct API routes. Self-explanation prompt appears after worked example. LLM evaluation returns structured quality assessment. Misconceptions are flagged. K-5 prompts are age-appropriate. LLM cost tracked in llm_usage.
+7. [x] [TST] Verify: student profile builds correctly from DB state. LLM system prompts include profile context. Frontend tutor/evaluate/grading buttons call correct API routes. Self-explanation prompt appears after worked example. LLM evaluation returns structured quality assessment. Misconceptions are flagged. K-5 prompts are age-appropriate. LLM cost tracked in llm_usage.
 
 **Validation:** Students explain their reasoning after worked examples. LLM evaluates quality and provides brief feedback. Misconceptions are detected and flagged for the remediation system.
 

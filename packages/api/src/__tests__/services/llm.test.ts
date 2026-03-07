@@ -7,8 +7,9 @@ import {
   seedTopic,
   seedLLMUsage,
   seedReviewLog,
+  seedDiscipline,
 } from "../helpers.js";
-import { getModelConfig, createLLMService } from "../../services/llm.js";
+import { getModelConfig, createLLMService, buildStudentProfile } from "../../services/llm.js";
 import * as schema from "../../db/schema.js";
 import { eq } from "drizzle-orm";
 
@@ -45,6 +46,85 @@ describe("getModelConfig", () => {
 
     // Cleanup
     await db.delete(schema.llmModelConfig).where(eq(schema.llmModelConfig.tier, "cheap"));
+  });
+});
+
+describe("buildStudentProfile", () => {
+  it("builds profile for first encounter (no state, no reviews)", async () => {
+    const db = getTestDb();
+    const user = await seedUser({ id: "profile-new-user" });
+    const disc = await seedDiscipline();
+    const subj = await seedSubject({ disciplineId: disc.id });
+    const topic = await seedTopic(subj.id, { name: "Counting" });
+
+    const profile = await buildStudentProfile(db, user.id, topic.id);
+    expect(profile).toContain("STUDENT PROFILE:");
+    expect(profile).toContain("Counting");
+    expect(profile).toContain("First encounter");
+    expect(profile).toContain("No prior attempts");
+  });
+
+  it("includes mastery state and recent reviews", async () => {
+    const db = getTestDb();
+    const user = await seedUser({ id: "profile-active-user" });
+    const disc = await seedDiscipline();
+    const subj = await seedSubject({ disciplineId: disc.id });
+    const topic = await seedTopic(subj.id, { name: "Addition Within 10" });
+
+    // Seed user_topic_state
+    const now = new Date().toISOString();
+    await db.insert(schema.userTopicState).values({
+      userId: user.id,
+      topicId: topic.id,
+      state: 2, // Review
+      stability: 5.0,
+      difficulty: 0.3,
+      due: now,
+      reps: 10,
+      lapses: 1,
+      mastered: false,
+      confidenceAccuracy: 0.75,
+      lastReview: now,
+    });
+
+    // Seed some review logs
+    await seedReviewLog(user.id, topic.id, { correct: true, responseMs: 3000 });
+    await seedReviewLog(user.id, topic.id, { correct: false, responseMs: 5000, phase: "guided" });
+    await seedReviewLog(user.id, topic.id, { correct: true, responseMs: 2000 });
+
+    const profile = await buildStudentProfile(db, user.id, topic.id);
+    expect(profile).toContain("Addition Within 10");
+    expect(profile).toContain("Review");
+    expect(profile).toContain("10 reviews");
+    expect(profile).toContain("1 lapses");
+    expect(profile).toContain("Confidence calibration: 75%");
+    expect(profile).toContain("Recent accuracy:");
+    expect(profile).toContain("Struggling in phases: guided");
+  });
+
+  it("shows mastered status when mastered", async () => {
+    const db = getTestDb();
+    const user = await seedUser({ id: "profile-mastered-user" });
+    const disc = await seedDiscipline();
+    const subj = await seedSubject({ disciplineId: disc.id });
+    const topic = await seedTopic(subj.id, { name: "Counting to 10" });
+
+    const now = new Date().toISOString();
+    await db.insert(schema.userTopicState).values({
+      userId: user.id,
+      topicId: topic.id,
+      state: 2,
+      stability: 30.0,
+      difficulty: 0.2,
+      due: now,
+      reps: 20,
+      lapses: 0,
+      mastered: true,
+      lastReview: now,
+    });
+
+    const profile = await buildStudentProfile(db, user.id, topic.id);
+    expect(profile).toContain("Status: Mastered");
   });
 });
 

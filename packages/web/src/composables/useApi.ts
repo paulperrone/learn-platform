@@ -210,6 +210,23 @@ export function useApi() {
         body: JSON.stringify({ userId, ...data }),
       });
     },
+    evaluateExplanation: async (data: {
+      topicName: string;
+      topicId?: string;
+      stepDescription: string;
+      studentExplanation: string;
+    }) => {
+      const userId = await getUserId();
+      return request<{
+        quality: "strong" | "partial" | "weak" | "misconception";
+        feedback: string;
+        missingConcepts: string[];
+        misconceptionFlag: string | null;
+      }>("/llm/evaluate", {
+        method: "POST",
+        body: JSON.stringify({ userId, ...data }),
+      });
+    },
     gradeAnswer: async (data: any) => {
       const userId = await getUserId();
       return request<any>("/llm/grade", {

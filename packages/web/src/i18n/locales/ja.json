@@ -180,15 +180,23 @@
     "anotherHint": "もう1つヒント ({current}/4)",
     "hintLoading": "読み込み中...",
     "hintUnavailable": "AIヒントは利用できません",
-    "hintStepLabel": "このステップのヒント"
+    "hintStepLabel": "このステップのヒント",
+    "askTutor": "チューターに質問",
+    "tutorLoading": "考え中...",
+    "tutorSays": "チューター："
   },
   "example": {
     "explainPrompt": "自分の言葉で説明してください：なぜこのステップは正しいですか？",
     "explainPlaceholder": "説明を入力...",
     "checkExplanation": "説明を確認",
+    "evaluating": "評価中...",
     "heresWhy": "理由：",
     "nextStep": "次のステップ",
-    "continue": "続ける"
+    "continue": "続ける",
+    "qualityStrong": "素晴らしい説明！",
+    "qualityPartial": "良いスタート",
+    "qualityWeak": "もう少し考えよう",
+    "qualityMisconception": "確認しましょう"
   },
   "confidence": {
     "guessing": "推測",

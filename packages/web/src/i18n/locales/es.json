@@ -180,15 +180,23 @@
     "anotherHint": "Otra pista ({current}/4)",
     "hintLoading": "Cargando...",
     "hintUnavailable": "Pistas de IA no disponibles",
-    "hintStepLabel": "Pista para este paso"
+    "hintStepLabel": "Pista para este paso",
+    "askTutor": "Preguntar al tutor",
+    "tutorLoading": "Pensando...",
+    "tutorSays": "El tutor dice:"
   },
   "example": {
     "explainPrompt": "Explica con tus propias palabras: ¿por qué funciona este paso?",
     "explainPlaceholder": "Escribe tu explicación...",
     "checkExplanation": "Verificar Explicación",
+    "evaluating": "Evaluando...",
     "heresWhy": "Por esto:",
     "nextStep": "Siguiente Paso",
-    "continue": "Continuar"
+    "continue": "Continuar",
+    "qualityStrong": "¡Gran explicación!",
+    "qualityPartial": "Buen comienzo",
+    "qualityWeak": "Sigue pensando",
+    "qualityMisconception": "Aclaremos"
   },
   "confidence": {
     "guessing": "Adivinando",

@@ -9,7 +9,7 @@ const FSRS_STATE_LABELS = ["New", "Learning", "Review", "Relearning"] as const;
  * Queries user_topic_state and recent review_log to summarize the student's
  * mastery level, recent struggles, and pace for a given topic.
  */
-async function buildStudentProfile(
+export async function buildStudentProfile(
   db: DB,
   userId: string,
   topicId: string
@@ -315,7 +315,13 @@ export function createLLMService(db: DB, apiKey: string, config?: ModelConfig) {
 
       const systemContent = `You are an expert math tutor evaluating a student's self-explanation. The student is learning "${topicName}". Rate their explanation quality and provide brief feedback.
 
-Respond in JSON: {"quality": "good"|"partial"|"poor", "feedback": "brief encouraging feedback", "missingConcepts": ["any key ideas they missed"]}${profile ? `\n\n${profile}` : ""}${localeInstruction(locale)}`;
+Quality levels:
+- "strong": Student correctly identifies the underlying principle and connects it to prior knowledge.
+- "partial": Student has the right idea but is missing key details or connections.
+- "weak": Student's explanation shows little understanding of why the step works.
+- "misconception": Student demonstrates a clear misunderstanding (e.g., wrong rule, inverted logic). This is critical to flag.
+
+Respond in JSON: {"quality": "strong"|"partial"|"weak"|"misconception", "feedback": "brief encouraging feedback (2-3 sentences max, age-appropriate)", "missingConcepts": ["any key ideas they missed"], "misconceptionFlag": "description of the specific misconception if quality is misconception, otherwise null"}${profile ? `\n\n${profile}` : ""}${localeInstruction(locale)}`;
 
       const result = await call(
         [
@@ -333,7 +339,7 @@ Respond in JSON: {"quality": "good"|"partial"|"poor", "feedback": "brief encoura
       try {
         return JSON.parse(result.content);
       } catch {
-        return { quality: "partial", feedback: result.content, missingConcepts: [] };
+        return { quality: "partial", feedback: result.content, missingConcepts: [], misconceptionFlag: null };
       }
     },
 

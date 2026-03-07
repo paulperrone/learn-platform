@@ -180,15 +180,23 @@
     "anotherHint": "تلميح آخر ({current}/4)",
     "hintLoading": "جاري التحميل...",
     "hintUnavailable": "تلميحات الذكاء الاصطناعي غير متاحة",
-    "hintStepLabel": "تلميح لهذه الخطوة"
+    "hintStepLabel": "تلميح لهذه الخطوة",
+    "askTutor": "اسأل المعلم",
+    "tutorLoading": "يفكر...",
+    "tutorSays": "يقول المعلم:"
   },
   "example": {
     "explainPrompt": "اشرح بكلماتك: لماذا تعمل هذه الخطوة؟",
     "explainPlaceholder": "اكتب شرحك...",
     "checkExplanation": "تحقق من الشرح",
+    "evaluating": "جاري التقييم...",
     "heresWhy": "إليك السبب:",
     "nextStep": "الخطوة التالية",
-    "continue": "متابعة"
+    "continue": "متابعة",
+    "qualityStrong": "شرح رائع!",
+    "qualityPartial": "بداية جيدة",
+    "qualityWeak": "فكر أكثر",
+    "qualityMisconception": "دعنا نوضح"
   },
   "confidence": {
     "guessing": "تخمين",

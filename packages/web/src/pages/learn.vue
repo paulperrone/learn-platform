@@ -239,6 +239,8 @@ async function handleExampleDone() {
       <WorkedExample
         v-else-if="currentItem?.type === 'instruction'"
         :example="currentItem.example"
+        :topic-name="currentItem.topicName"
+        :topic-id="currentItem.topicId"
         :key="currentItem.example.id"
         @done="handleExampleDone"
       />

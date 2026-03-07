@@ -187,15 +187,23 @@
     "anotherHint": "Another hint ({current}/4)",
     "hintLoading": "Loading...",
     "hintUnavailable": "AI hints not available",
-    "hintStepLabel": "Hint for this step"
+    "hintStepLabel": "Hint for this step",
+    "askTutor": "Ask Tutor",
+    "tutorLoading": "Thinking...",
+    "tutorSays": "Tutor says:"
   },
   "example": {
     "explainPrompt": "Explain in your own words: why does this step work?",
     "explainPlaceholder": "Type your explanation...",
     "checkExplanation": "Check Explanation",
+    "evaluating": "Evaluating...",
     "heresWhy": "Here's why:",
     "nextStep": "Next Step",
-    "continue": "Continue"
+    "continue": "Continue",
+    "qualityStrong": "Great explanation!",
+    "qualityPartial": "Good start",
+    "qualityWeak": "Keep thinking",
+    "qualityMisconception": "Let's clarify"
   },
   "confidence": {
     "guessing": "Guessing",
