@@ -25,6 +25,9 @@ type SessionState = {
   lastServedSubjectId?: string;
   currentBlendRole?: BlendRole;
   rollingResults: boolean[]; // Sliding window of last N problem correctness results (for adaptive difficulty)
+  lastProblemId?: string; // Last problem ID responded to (for targeted remediation lookup)
+  remediationTargetTopicId?: string; // Prerequisite topic being remediated (targeted remediation)
+  remediationOriginalTopicId?: string; // Original topic that triggered remediation
 };
 
 // In-memory cache — D1 is the source of truth
@@ -54,6 +57,61 @@ export function createSessionService(db: DB) {
   const graph = createGraphService(db);
   const srs = createSRSService(db);
   const content = createContentService(db);
+
+  /**
+   * Identify the key prerequisite to target for remediation.
+   * Priority: problem's keyPrerequisiteId > lowest-stability direct prerequisite.
+   * Returns null if no prerequisites exist or user is anonymous.
+   */
+  async function identifyKeyPrerequisite(
+    userId: string,
+    topicId: string,
+    lastProblemId?: string,
+    excludeTopicIds: string[] = []
+  ): Promise<string | null> {
+    // Check if the last problem has an explicit keyPrerequisiteId
+    if (lastProblemId) {
+      const [ac] = await db
+        .select({ keyPrerequisiteId: schema.assessmentContent.keyPrerequisiteId })
+        .from(schema.assessmentContent)
+        .where(eq(schema.assessmentContent.id, lastProblemId));
+      if (ac?.keyPrerequisiteId && !excludeTopicIds.includes(ac.keyPrerequisiteId)) {
+        return ac.keyPrerequisiteId;
+      }
+    }
+
+    // Fall back to lowest-stability direct prerequisite
+    const prereqs = await graph.getDirectPrerequisites(topicId);
+    if (prereqs.length === 0) return null;
+
+    // Get user state for each prerequisite
+    const prereqStates = await Promise.all(
+      prereqs
+        .filter((p) => !excludeTopicIds.includes(p.fromTopicId))
+        .map(async (p) => {
+          const [state] = await db
+            .select()
+            .from(schema.userTopicState)
+            .where(
+              and(
+                eq(schema.userTopicState.userId, userId),
+                eq(schema.userTopicState.topicId, p.fromTopicId)
+              )
+            );
+          return {
+            topicId: p.fromTopicId,
+            stability: state?.stability ?? 0,
+            reps: state?.reps ?? 0,
+          };
+        })
+    );
+
+    if (prereqStates.length === 0) return null;
+
+    // Pick the prerequisite with lowest stability (most fragile knowledge)
+    prereqStates.sort((a, b) => a.stability - b.stability);
+    return prereqStates[0].topicId;
+  }
 
   // Legacy unfiltered queries — used only for grading (needs all problems for a topic)
   async function getAllTopicProblems(topicId: string): Promise<Problem[]> {
@@ -334,6 +392,9 @@ export function createSessionService(db: DB) {
       }
 
       state.totalAttempts++;
+      if ((response as any).problemId) {
+        state.lastProblemId = (response as any).problemId;
+      }
 
       // Server-side grading when answer is provided
       let isCorrect = response.correct ?? false;
@@ -432,23 +493,59 @@ export function createSessionService(db: DB) {
       const phases: SessionPhase[] = ["pretest", "instruction", "guided", "independent"];
 
       if (!wasCorrect && state.currentPhase === "independent") {
-        // Failed independent practice — remediation
+        // Failed independent practice — targeted remediation
         state.currentPhase = "remediation";
         state.phaseIndex = 0;
         state.hintIndex = 0;
+
+        // Identify the key prerequisite to target
+        if (!state.isAnonymous && state.currentTopicId) {
+          const keyPrereq = await identifyKeyPrerequisite(
+            state.userId,
+            state.currentTopicId,
+            state.lastProblemId,
+          );
+          if (keyPrereq) {
+            state.remediationTargetTopicId = keyPrereq;
+            state.remediationOriginalTopicId = state.currentTopicId;
+          }
+        }
+
         return await this.buildPhaseItem(state);
       }
 
       if (state.currentPhase === "remediation") {
         if (wasCorrect) {
-          // Recovery — back to independent
+          // Recovery — back to original topic's independent phase
           state.currentPhase = "independent";
           state.phaseIndex = 0;
           state.hintIndex = 0;
+          // Restore original topic if we were doing targeted prereq remediation
+          if (state.remediationOriginalTopicId) {
+            state.currentTopicId = state.remediationOriginalTopicId;
+          }
+          state.remediationTargetTopicId = undefined;
+          state.remediationOriginalTopicId = undefined;
           return await this.buildPhaseItem(state);
         }
-        // Still struggling — provide more remediation
+        // Still struggling — try next weakest prerequisite or continue remediation
         state.phaseIndex++;
+
+        // After 2 failed attempts on a prereq, try the next weakest prerequisite
+        if (state.phaseIndex >= 2 && !state.isAnonymous && state.remediationOriginalTopicId) {
+          const nextPrereq = await identifyKeyPrerequisite(
+            state.userId,
+            state.remediationOriginalTopicId,
+            undefined,
+            state.remediationTargetTopicId ? [state.remediationTargetTopicId] : [],
+          );
+          if (nextPrereq) {
+            state.remediationTargetTopicId = nextPrereq;
+            state.phaseIndex = 0;
+            state.hintIndex = 0;
+          }
+        }
+
         return await this.buildPhaseItem(state);
       }
 
@@ -757,8 +854,42 @@ export function createSessionService(db: DB) {
         }
 
         case "remediation": {
-          // Trace prereqs, provide simpler practice — always easy, no upward bias
+          // Targeted remediation: route to key prerequisite if identified
+          const targetTopicId = state.remediationTargetTopicId;
           const prereqChain = await graph.getPrerequisiteChain(topic.id);
+
+          if (targetTopicId) {
+            // Load problems from the prerequisite topic
+            const prereqTopic = await graph.getTopic(targetTopicId);
+            if (prereqTopic) {
+              const prereqQuery = await resolveContentQuery(state, prereqTopic.id);
+              const prereqProblems = await content.getTopicProblems(prereqQuery);
+              const prereqProblem = selectProblem(prereqProblems, "easy");
+              const prereqVisuals = await content.getTopicVisuals(prereqQuery);
+              const pv = prereqProblem
+                ? (prereqVisuals ? { ...prereqProblem, visuals: prereqVisuals } : prereqProblem)
+                : makeFallbackProblem(prereqTopic);
+              return {
+                type: "remediation",
+                phase: "remediation",
+                topicId: prereqTopic.id,
+                topicName: prereqTopic.name,
+                problem: pv,
+                availableHints: getAvailableHints(pv, "remediation", state.hintIndex),
+                showSolution: shouldShowSolution(pv, state.currentPhase, state.hintIndex),
+                hintsRevealed: state.hintIndex,
+                prerequisiteChain: prereqChain,
+                remediationTargetTopicId: targetTopicId,
+                originalTopicId: state.remediationOriginalTopicId,
+                originalTopicName: topic.name,
+                blendRole: state.currentBlendRole ?? "main",
+                difficultyBias: bias,
+                message: `Let's practice "${prereqTopic.name}" — this skill helps with "${topic.name}".`,
+              };
+            }
+          }
+
+          // Fallback: same-topic remediation (no prereq identified or anonymous)
           const problem = selectProblem(problems, "easy");
           const p = withVisuals(problem ?? makeFallbackProblem(topic));
           return {
@@ -872,6 +1003,9 @@ export type SessionItem =
       showSolution: boolean;
       hintsRevealed: number;
       prerequisiteChain: string[];
+      remediationTargetTopicId?: string;
+      originalTopicId?: string;
+      originalTopicName?: string;
       presentationLevel?: PresentationLevel;
       blendRole?: BlendRole;
       difficultyBias?: "easier" | "on-target" | "harder";

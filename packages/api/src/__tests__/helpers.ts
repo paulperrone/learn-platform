@@ -349,6 +349,33 @@ export async function seedReviewLog(
   return row;
 }
 
+export async function seedUserTopicState(
+  userId: string,
+  topicId: string,
+  overrides: Partial<typeof schema.userTopicState.$inferInsert> = {}
+) {
+  const db = getTestDb();
+  const now = new Date().toISOString();
+  const [row] = await db
+    .insert(schema.userTopicState)
+    .values({
+      userId,
+      topicId,
+      stability: overrides.stability ?? 0,
+      difficulty: overrides.difficulty ?? 0,
+      due: overrides.due ?? now,
+      state: overrides.state ?? 0,
+      reps: overrides.reps ?? 0,
+      lapses: overrides.lapses ?? 0,
+      mastered: overrides.mastered ?? false,
+      frontier: overrides.frontier ?? false,
+      consecutiveCorrectReviews: overrides.consecutiveCorrectReviews ?? 0,
+      ...overrides,
+    })
+    .returning();
+  return row;
+}
+
 export async function seedAccountLink(
   fromUserId: string,
   toUserId: string,
@@ -478,7 +505,7 @@ const SCHEMA_STATEMENTS = [
   'CREATE INDEX ic_depth_idx ON instructional_content (topic_id, content_depth)',
 
   // assessment_content (FK → topics)
-  'CREATE TABLE assessment_content (id text PRIMARY KEY NOT NULL, topic_id text NOT NULL, flavor text DEFAULT \'classic\' NOT NULL, locale text DEFAULT \'en\' NOT NULL, presentation text DEFAULT \'standard\' NOT NULL, content_depth text DEFAULT \'survey\' NOT NULL, version integer DEFAULT 1 NOT NULL, type text DEFAULT \'text-qa\' NOT NULL, difficulty text NOT NULL, question text NOT NULL, answer text NOT NULL, hints_json text DEFAULT \'[]\' NOT NULL, solution text DEFAULT \'\' NOT NULL, type_properties text, created_at text NOT NULL, FOREIGN KEY (topic_id) REFERENCES topics(id))',
+  'CREATE TABLE assessment_content (id text PRIMARY KEY NOT NULL, topic_id text NOT NULL, flavor text DEFAULT \'classic\' NOT NULL, locale text DEFAULT \'en\' NOT NULL, presentation text DEFAULT \'standard\' NOT NULL, content_depth text DEFAULT \'survey\' NOT NULL, version integer DEFAULT 1 NOT NULL, type text DEFAULT \'text-qa\' NOT NULL, difficulty text NOT NULL, question text NOT NULL, answer text NOT NULL, hints_json text DEFAULT \'[]\' NOT NULL, solution text DEFAULT \'\' NOT NULL, type_properties text, key_prerequisite_id text, created_at text NOT NULL, FOREIGN KEY (topic_id) REFERENCES topics(id))',
   'CREATE INDEX ac_topic_idx ON assessment_content (topic_id)',
   'CREATE INDEX ac_dimensions_idx ON assessment_content (topic_id, flavor, locale, presentation, version)',
   'CREATE INDEX ac_type_idx ON assessment_content (topic_id, type)',

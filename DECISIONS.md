@@ -835,3 +835,24 @@ Child creation now creates both an org member (student role) and an account_link
 - Full `w` weight optimization in JS: No library exists; would need to port the Python optimizer (~500 lines of matrix math)
 - External optimization service: Over-engineered for current scale; adds dependency
 - No per-user params: Misses easy win — users with 95% retention shouldn't be shown cards as often as those with 75%
+
+---
+
+### 2026-03-07: Targeted remediation uses keyPrerequisiteId > lowest-stability heuristic
+
+**Source:** User session
+
+**Context:** Plan 011 Phase 3 — implementing targeted remediation that pinpoints the specific prerequisite causing failure instead of generic same-topic easy problems.
+
+**Decision:** Two-tier identification: (1) If the failed problem has an explicit `keyPrerequisiteId` field, use that. (2) Otherwise, query direct prerequisites and pick the one with lowest FSRS stability (most fragile knowledge). After 2 consecutive failures on a remediation prerequisite, switch to the next weakest. Anonymous users get same-topic remediation (no FSRS state available).
+
+**Why:**
+- `keyPrerequisiteId` is the most accurate signal — content authors know which specific skill causes failure
+- Lowest-stability heuristic is the best automatic proxy — fragile prerequisites are the most likely failure cause
+- 2-failure threshold prevents getting stuck on one prereq when the real issue is elsewhere
+- Anonymous users have no FSRS state, so targeted remediation is impossible
+
+**Alternatives rejected:**
+- LLM-based error analysis: Too expensive per failure event, adds latency, and the heuristic is good enough for the common case
+- Always use same-topic easy problems: The original approach, but fails to address the root cause (prerequisite weakness)
+- Recursive deep prerequisite tracing on first failure: Over-aggressive; the direct prerequisite is usually the right target

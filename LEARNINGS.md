@@ -253,3 +253,14 @@ ts-fsrs v5 does not include a `computeParameters()` or optimizer function. The `
 When schema changes are applied via hand-written migrations (not `drizzle-kit generate`), the Drizzle snapshot drifts out of sync. Running `drizzle-kit generate` later produces a migration that tries to recreate already-existing tables/columns. Fix: manually edit the generated SQL to only include the new change (e.g., just the ALTER TABLE), keeping the snapshot file as-is for future sync.
 
 **Context:** Migration 0020 generated CREATE TABLE statements for tables already created in migrations 0016-0019.
+
+---
+
+### 2026-03-07: Session service in-memory cache bypasses DB state in tests
+
+**Source:** User session
+**Area:** Testing / Session service
+
+The session service maintains an in-memory `activeSessions` Map as a cache over D1. When `startSession()` is called, it populates this cache. Subsequent `respond()` calls check the cache first. In tests, if you call `startSession()` and then write state directly to DB to set up a scenario, `respond()` will use the stale cached state, not your DB override. Fix: create learn_session rows directly via `db.insert()` instead of calling `startSession()`, so the cache is never populated and `respond()` reads from DB via `loadState()`.
+
+**Context:** Targeted remediation tests needed to set specific session states (e.g., `currentPhase: "remediation"`, `remediationTargetTopicId`) before calling `respond()`.

@@ -21,9 +21,9 @@ These features approximate the key behaviors of an expert human tutor: asking "w
 
 ## Progress
 
-**Completed:** Phase 1 ✓, Phase 2 ✓
+**Completed:** Phase 1 ✓, Phase 2 ✓, Phase 3 ✓
 **In Progress:** —
-**Next:** Phase 3
+**Next:** Plan complete
 
 ---
 
@@ -69,15 +69,15 @@ These features approximate the key behaviors of an expert human tutor: asking "w
 
 ---
 
-## Phase 3: Targeted Remediation
+## Phase 3: Targeted Remediation ✓
 **Goal:** When a student struggles, identify the *specific* prerequisite skill causing failure rather than sending them back to the entire prerequisite topic. Maps to Math Academy's "key prerequisite" concept.
 
-1. [ ] [IMP] Add `keyPrerequisiteId` to assessment content: optional field linking a problem to the specific prerequisite topic that's most likely to cause failure on this problem. For example, a multi-digit multiplication problem's key prerequisite might be "single-digit multiplication" rather than the broader "addition" topic. Populate for existing math content where the mapping is clear. For new content, include in generation prompts.
+1. [x] [IMP] Add `keyPrerequisiteId` to assessment content: optional field linking a problem to the specific prerequisite topic that's most likely to cause failure on this problem. For example, a multi-digit multiplication problem's key prerequisite might be "single-digit multiplication" rather than the broader "addition" topic. Populate for existing math content where the mapping is clear. For new content, include in generation prompts.
 
-2. [ ] [IMP] Build error pattern heuristic: when a student fails a problem, check if the error matches a known prerequisite weakness pattern. For problems without `keyPrerequisiteId`, use the prerequisite chain: check the student's FSRS state on each direct prerequisite. The prerequisite with the lowest stability (most fragile knowledge) is the likely culprit. Rank prerequisites by `(1 - retrievability)` — the most forgotten prerequisite is the most likely failure cause.
+2. [x] [IMP] Build error pattern heuristic: when a student fails a problem, check if the error matches a known prerequisite weakness pattern. For problems without `keyPrerequisiteId`, use the prerequisite chain: check the student's FSRS state on each direct prerequisite. The prerequisite with the lowest stability (most fragile knowledge) is the likely culprit. Rank prerequisites by `(1 - retrievability)` — the most forgotten prerequisite is the most likely failure cause.
 
-3. [ ] [IMP] Update remediation flow in session service: instead of generic "go back to basics" with an easy problem from the current topic, route to the identified key prerequisite. Load a problem from the key prerequisite topic. If the student gets it right, the issue is elsewhere — try the next most fragile prerequisite. If wrong, confirm the gap — provide instruction (worked example) on the prerequisite before returning to the original topic.
+3. [x] [IMP] Update remediation flow in session service: instead of generic "go back to basics" with an easy problem from the current topic, route to the identified key prerequisite. Load a problem from the key prerequisite topic. If the student gets it right, the issue is elsewhere — try the next most fragile prerequisite. If wrong, confirm the gap — provide instruction (worked example) on the prerequisite before returning to the original topic.
 
-4. [ ] [TST] Verify: remediation targets key prerequisite when available. Without key prereq, targets lowest-stability prerequisite. Student is routed to prerequisite content, not just easier content on the same topic. Successful prerequisite review returns to original topic. Failed prerequisite triggers deeper prerequisite tracing (recursive). Misconception flags from Phase 1 and Phase 2 feed into remediation priority.
+4. [x] [TST] Verify: remediation targets key prerequisite when available. Without key prereq, targets lowest-stability prerequisite. Student is routed to prerequisite content, not just easier content on the same topic. Successful prerequisite review returns to original topic. Failed prerequisite triggers deeper prerequisite tracing (recursive). Misconception flags from Phase 1 and Phase 2 feed into remediation priority.
 
 **Validation:** A student failing at multi-digit multiplication is identified as weak on single-digit multiplication facts specifically, gets targeted practice on that prerequisite, then returns to the original topic. Remediation is surgical, not blanket.

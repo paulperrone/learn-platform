@@ -146,6 +146,16 @@ export function createGraphService(db: DB) {
     },
 
     /**
+     * Get direct prerequisites for a topic (not transitive).
+     */
+    async getDirectPrerequisites(topicId: string) {
+      return db
+        .select()
+        .from(schema.prerequisites)
+        .where(eq(schema.prerequisites.toTopicId, topicId));
+    },
+
+    /**
      * Get topics that encompass the given topic (for FIRe credit).
      */
     async getEncompassingTopics(topicId: string) {

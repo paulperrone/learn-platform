@@ -156,6 +156,7 @@ export type Problem = {
   type?: AssessmentType;
   typeProperties?: TypeProperties;
   visuals?: VisualAsset[];
+  keyPrerequisiteId?: string;
 };
 
 export type PresentationLevel = "primary" | "intermediate" | "standard" | "advanced";

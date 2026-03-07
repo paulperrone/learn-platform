@@ -585,6 +585,7 @@ function mapProblems(rows: (typeof schema.assessmentContent.$inferSelect)[]): Pr
     solution: r.solution,
     type: r.type as Problem["type"],
     typeProperties: r.typeProperties ? JSON.parse(r.typeProperties) : undefined,
+    keyPrerequisiteId: r.keyPrerequisiteId ?? undefined,
   }));
 }
 

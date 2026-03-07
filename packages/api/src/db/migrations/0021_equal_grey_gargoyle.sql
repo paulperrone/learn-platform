@@ -1,0 +1,1 @@
+ALTER TABLE `assessment_content` ADD `key_prerequisite_id` text;

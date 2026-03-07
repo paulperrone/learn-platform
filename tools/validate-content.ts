@@ -67,6 +67,14 @@ function checkPlatformCompatibility(text: string, context: string): void {
   }
 }
 
+// Load graph topic IDs for cross-referencing keyPrerequisiteId
+const graphTopicIds = new Set<string>();
+const preGraphPath = join(contentDir, "graph.json");
+if (existsSync(preGraphPath)) {
+  const g = JSON.parse(readFileSync(preGraphPath, "utf-8"));
+  for (const t of g.topics ?? []) graphTopicIds.add(t.id);
+}
+
 // Validate problems
 const problemsDir = join(contentDir, "problems");
 if (existsSync(problemsDir)) {
@@ -101,6 +109,11 @@ if (existsSync(problemsDir)) {
         checkPlatformCompatibility(hint, `${p.id} hint`);
       }
       checkPlatformCompatibility(p.solution ?? "", `${p.id} solution`);
+      // keyPrerequisiteId cross-reference
+      if (p.keyPrerequisiteId && graphTopicIds.size > 0 && !graphTopicIds.has(p.keyPrerequisiteId)) {
+        console.error(`ERROR: keyPrerequisiteId "${p.keyPrerequisiteId}" not found in graph topics for ${p.id} in ${file}`);
+        errors++;
+      }
     }
   }
 }
