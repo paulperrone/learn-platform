@@ -7,21 +7,24 @@ const api = useApi();
 const { t } = useI18n();
 const topics = ref<any[]>([]);
 const allTopics = ref<any[]>([]);
+const distributions = ref<any[]>([]);
 const loading = ref(true);
 const error = ref(false);
 
 onMounted(async () => {
   const result = await withErrorToast(async () => {
-    const [statesData, topicsData] = await Promise.all([
+    const [statesData, topicsData, presData] = await Promise.all([
       api.getTopicStates(),
       api.getTopics("math-foundations"),
+      api.getPresentationDistributions(),
     ]);
-    return { statesData, topicsData };
+    return { statesData, topicsData, presData };
   }, t("errors.failedToLoad", { resource: "progress" }));
 
   if (result) {
     topics.value = result.statesData.topics;
     allTopics.value = result.topicsData.topics;
+    distributions.value = result.presData?.distributions ?? [];
   } else {
     error.value = true;
   }
@@ -65,6 +68,15 @@ function statusColor(status: string) {
 function gradeName(level: number) {
   return level === 0 ? t("progress.kindergarten") : t("progress.grade", { level });
 }
+
+const levelColors: Record<string, string> = {
+  primary: "bg-amber-400",
+  intermediate: "bg-sky-400",
+  standard: "bg-violet-500",
+  advanced: "bg-emerald-500",
+};
+
+const LEVELS = ["primary", "intermediate", "standard", "advanced"] as const;
 </script>
 
 <template>
@@ -106,6 +118,36 @@ function gradeName(level: number) {
         <div class="flex items-center gap-2">
           <div class="w-3 h-3 rounded-full bg-gray-200" />
           <span class="text-gray-600">{{ t('progress.notStarted') }}</span>
+        </div>
+      </div>
+
+      <!-- Presentation Distribution -->
+      <div v-if="distributions.length > 0" class="mb-8">
+        <h2 class="text-lg font-semibold text-gray-800 mb-3">{{ t('progress.presentationLevel') }}</h2>
+        <div class="space-y-3">
+          <div
+            v-for="dist in distributions"
+            :key="dist.subjectId"
+            class="bg-white rounded-lg border border-gray-200 p-4"
+          >
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-sm font-medium text-gray-800">{{ dist.subjectName }}</span>
+              <span class="text-xs text-gray-500">{{ dist.label }}</span>
+            </div>
+            <div class="flex h-3 rounded-full overflow-hidden bg-gray-100">
+              <div
+                v-for="level in LEVELS"
+                :key="level"
+                :class="levelColors[level]"
+                :style="{ width: (dist.weights[level] * 100) + '%' }"
+                class="transition-all duration-300"
+                :title="t('progress.presentationLevels.' + level) + ': ' + Math.round(dist.weights[level] * 100) + '%'"
+              />
+            </div>
+            <div class="flex justify-between mt-1.5 text-[10px] text-gray-400">
+              <span v-for="level in LEVELS" :key="level">{{ t('progress.presentationLevels.' + level) }}</span>
+            </div>
+          </div>
         </div>
       </div>
 

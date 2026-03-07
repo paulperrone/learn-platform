@@ -501,10 +501,30 @@ export function createContentService(db: DB) {
     await upsertSubjectDistribution(userId, subjectId, updated);
   }
 
+  async function getAllSubjectDistributions(userId: string) {
+    const rows = await db
+      .select()
+      .from(schema.userSubjectPresentation)
+      .where(eq(schema.userSubjectPresentation.userId, userId));
+
+    return rows.map((row) => ({
+      subjectId: row.subjectId,
+      weights: {
+        primary: row.primaryWeight,
+        intermediate: row.intermediateWeight,
+        standard: row.standardWeight,
+        advanced: row.advancedWeight,
+      },
+      centerLevel: row.centerLevel as PresentationLevel,
+      lastAdjustedAt: row.lastAdjustedAt,
+    }));
+  }
+
   return {
     resolvePresentation,
     resolveContentDepth,
     getSubjectDistribution,
+    getAllSubjectDistributions,
     upsertSubjectDistribution,
     applyNudge,
     markDepthCompleted,
@@ -513,6 +533,43 @@ export function createContentService(db: DB) {
     getTopicExamples,
     getTopicVisuals,
   };
+}
+
+// --- Presentation label ---
+
+const LEVEL_LABELS: Record<PresentationLevel, string> = {
+  primary: "Primary",
+  intermediate: "Intermediate",
+  standard: "Standard",
+  advanced: "Advanced",
+};
+
+const LEVEL_ORDER: PresentationLevel[] = ["primary", "intermediate", "standard", "advanced"];
+
+export function describePresentationDistribution(
+  centerLevel: PresentationLevel,
+  weights: Record<PresentationLevel, number>,
+): string {
+  const centerIdx = LEVEL_ORDER.indexOf(centerLevel);
+  const label = LEVEL_LABELS[centerLevel];
+
+  // Find the secondary level (highest weight that isn't center)
+  let secondaryLevel: PresentationLevel | null = null;
+  let secondaryWeight = 0;
+  for (const level of LEVEL_ORDER) {
+    if (level !== centerLevel && weights[level] > secondaryWeight) {
+      secondaryWeight = weights[level];
+      secondaryLevel = level;
+    }
+  }
+
+  if (!secondaryLevel || secondaryWeight < 0.1) {
+    return `Mostly ${label.toLowerCase()}`;
+  }
+
+  const secondaryIdx = LEVEL_ORDER.indexOf(secondaryLevel);
+  const direction = secondaryIdx > centerIdx ? "stretching into" : "reinforcing";
+  return `Mostly ${label.toLowerCase()}, ${direction} ${LEVEL_LABELS[secondaryLevel].toLowerCase()}`;
 }
 
 // --- Mappers ---

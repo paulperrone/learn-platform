@@ -158,6 +158,19 @@ export function useApi() {
       const userId = await getUserId();
       return request<any>(`/progress/${userId}/topics`);
     },
+    getPresentationDistributions: async () => {
+      const userId = await getUserId();
+      return request<{
+        distributions: {
+          subjectId: string;
+          subjectName: string;
+          centerLevel: string;
+          weights: { primary: number; intermediate: number; standard: number; advanced: number };
+          label: string;
+          lastAdjustedAt: string | null;
+        }[];
+      }>(`/progress/${userId}/presentation`);
+    },
 
     // LLM
     getLLMStatus: () =>

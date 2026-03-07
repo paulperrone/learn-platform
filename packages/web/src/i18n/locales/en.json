@@ -143,7 +143,14 @@
     "loadError": "Unable to load progress data.",
     "noTopics": "No topics available yet.",
     "startLearning": "Start learning",
-    "retry": "Retry"
+    "retry": "Retry",
+    "presentationLevel": "Content Level",
+    "presentationLevels": {
+      "primary": "Primary",
+      "intermediate": "Intermediate",
+      "standard": "Standard",
+      "advanced": "Advanced"
+    }
   },
   "settings": {
     "title": "Settings",
