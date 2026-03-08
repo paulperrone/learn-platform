@@ -42,30 +42,30 @@ Each presentation level introduces one new demand type and redistributes weights
 
 ## Progress
 
-**Completed:** None yet
+**Completed:** Phase 1 ✓
 **In Progress:** —
-**Next:** Phase 1
+**Next:** Phase 2
 
 ---
 
-## Phase 1: Schema & Migration
+## Phase 1: Schema & Migration ✓
 **Goal:** Add `cognitive_demand` column to `assessment_content` table with backward-compatible nullable field.
 
-1. [ ] [IMP] Add `cognitiveDemand` field to the `assessmentContent` table in `packages/api/src/db/schema.ts`:
+1. [x] [IMP] Add `cognitiveDemand` field to the `assessmentContent` table in `packages/api/src/db/schema.ts`:
    ```
    cognitiveDemand: text("cognitive_demand")  // nullable for backward compat
    ```
    Valid values: `procedural`, `conceptual`, `application`, `reasoning`, `error_analysis`. Nullable — existing content without a tag is treated as `procedural` by the session service (safe default since most existing problems ARE procedural).
 
-2. [ ] [IMP] Generate and apply Drizzle migration. Since this is a nullable column with no DEFAULT, SQLite `ALTER TABLE ADD COLUMN` will work without manual SQL editing. Run `just db-generate` and `just db-migrate`.
+2. [x] [IMP] Generate and apply Drizzle migration. Since this is a nullable column with no DEFAULT, SQLite `ALTER TABLE ADD COLUMN` will work without manual SQL editing. Run `just db-generate` and `just db-migrate`.
 
-3. [ ] [IMP] Update shared types in `packages/shared/src/types.ts`:
+3. [x] [IMP] Update shared types in `packages/shared/src/types.ts`:
    - Add `CognitiveDemand` type: `'procedural' | 'conceptual' | 'application' | 'reasoning' | 'error_analysis'`
    - Add `cognitiveDemand?: CognitiveDemand` to the `Problem` type (or equivalent assessment content type)
    - Add `DemandDistribution` type mapping `CognitiveDemand` to weight percentages
    - Add `DEMAND_PROFILES` constant defining the four presentation-level distributions
 
-**Validation:** Migration applies cleanly. `just typecheck` passes. Existing content and tests work unchanged (nullable column, no behavioral change yet).
+**Validation:** Migration applies cleanly. `just typecheck` passes. All 377 tests pass (nullable column, no behavioral change yet). Test helper CREATE TABLE updated to include `cognitive_demand` column.
 
 ---
 

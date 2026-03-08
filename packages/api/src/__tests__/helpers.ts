@@ -528,7 +528,7 @@ const SCHEMA_STATEMENTS = [
   'CREATE INDEX ic_depth_idx ON instructional_content (topic_id, content_depth)',
 
   // assessment_content (FK → topics)
-  'CREATE TABLE assessment_content (id text PRIMARY KEY NOT NULL, topic_id text NOT NULL, flavor text DEFAULT \'classic\' NOT NULL, locale text DEFAULT \'en\' NOT NULL, presentation text DEFAULT \'standard\' NOT NULL, content_depth text DEFAULT \'survey\' NOT NULL, version integer DEFAULT 1 NOT NULL, type text DEFAULT \'text-qa\' NOT NULL, difficulty text NOT NULL, question text NOT NULL, answer text NOT NULL, hints_json text DEFAULT \'[]\' NOT NULL, solution text DEFAULT \'\' NOT NULL, type_properties text, key_prerequisite_id text, created_at text NOT NULL, FOREIGN KEY (topic_id) REFERENCES topics(id))',
+  'CREATE TABLE assessment_content (id text PRIMARY KEY NOT NULL, topic_id text NOT NULL, flavor text DEFAULT \'classic\' NOT NULL, locale text DEFAULT \'en\' NOT NULL, presentation text DEFAULT \'standard\' NOT NULL, content_depth text DEFAULT \'survey\' NOT NULL, version integer DEFAULT 1 NOT NULL, type text DEFAULT \'text-qa\' NOT NULL, difficulty text NOT NULL, question text NOT NULL, answer text NOT NULL, hints_json text DEFAULT \'[]\' NOT NULL, solution text DEFAULT \'\' NOT NULL, type_properties text, cognitive_demand text, key_prerequisite_id text, created_at text NOT NULL, FOREIGN KEY (topic_id) REFERENCES topics(id))',
   'CREATE INDEX ac_topic_idx ON assessment_content (topic_id)',
   'CREATE INDEX ac_dimensions_idx ON assessment_content (topic_id, flavor, locale, presentation, version)',
   'CREATE INDEX ac_type_idx ON assessment_content (topic_id, type)',

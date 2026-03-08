@@ -105,6 +105,17 @@ export type SessionMix = {
 
 export type ProblemDifficulty = "easy" | "medium" | "hard";
 
+export type CognitiveDemand = "procedural" | "conceptual" | "application" | "reasoning" | "error_analysis";
+
+export type DemandDistribution = Partial<Record<CognitiveDemand, number>>;
+
+export const DEMAND_PROFILES: Record<PresentationLevel, DemandDistribution> = {
+  primary: { procedural: 0.60, application: 0.40 },
+  intermediate: { procedural: 0.45, application: 0.30, conceptual: 0.25 },
+  standard: { procedural: 0.35, application: 0.25, conceptual: 0.25, reasoning: 0.15 },
+  advanced: { procedural: 0.25, application: 0.20, conceptual: 0.20, reasoning: 0.20, error_analysis: 0.15 },
+};
+
 export type AssessmentType =
   | "text-qa"
   | "numerical-input"
@@ -157,6 +168,7 @@ export type Problem = {
   typeProperties?: TypeProperties;
   visuals?: VisualAsset[];
   keyPrerequisiteId?: string;
+  cognitiveDemand?: CognitiveDemand;
 };
 
 export type PresentationLevel = "primary" | "intermediate" | "standard" | "advanced";
