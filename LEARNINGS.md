@@ -264,3 +264,14 @@ When schema changes are applied via hand-written migrations (not `drizzle-kit ge
 The session service maintains an in-memory `activeSessions` Map as a cache over D1. When `startSession()` is called, it populates this cache. Subsequent `respond()` calls check the cache first. In tests, if you call `startSession()` and then write state directly to DB to set up a scenario, `respond()` will use the stale cached state, not your DB override. Fix: create learn_session rows directly via `db.insert()` instead of calling `startSession()`, so the cache is never populated and `respond()` reads from DB via `loadState()`.
 
 **Context:** Targeted remediation tests needed to set specific session states (e.g., `currentPhase: "remediation"`, `remediationTargetTopicId`) before calling `respond()`.
+
+---
+
+### 2026-03-08: Session stateJson is nulled on completion — read state before session ends
+
+**Source:** User session
+**Area:** Testing / Session service
+
+When `endSession()` is called (triggered by session completion in `respond()`), it sets `stateJson: null` and `endedAt` in the D1 row. Additionally, `persistState()` is only called when `result.type !== "complete"`. This means tests that need to verify session state in D1 must read the state BEFORE the session completes — once `respond()` returns `type: "complete"`, the state is already wiped from D1. Use `getSession()` or read `stateJson` between non-completing responses.
+
+**Context:** Integration test for session state coherence. Initial approach of looping responses then reading state failed because the session completed and wiped stateJson.
