@@ -5,8 +5,12 @@
     "difficulty": "easy",
     "question": "Evaluate: 3 + 4 × 2",
     "answer": "11",
-    "hints": ["Remember PEMDAS: multiplication comes before addition.", "First do 4 × 2 = 8, then add 3."],
-    "solution": "4 × 2 = 8. Then 3 + 8 = 11."
+    "hints": [
+      "Remember PEMDAS: multiplication comes before addition.",
+      "First do 4 × 2 = 8, then add 3."
+    ],
+    "solution": "4 × 2 = 8. Then 3 + 8 = 11.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "order-of-operations-p2",
@@ -14,8 +18,12 @@
     "difficulty": "easy",
     "question": "Evaluate: 10 − 6 ÷ 2",
     "answer": "7",
-    "hints": ["Division comes before subtraction.", "6 ÷ 2 = 3. Then 10 − 3."],
-    "solution": "6 ÷ 2 = 3. Then 10 − 3 = 7."
+    "hints": [
+      "Division comes before subtraction.",
+      "6 ÷ 2 = 3. Then 10 − 3."
+    ],
+    "solution": "6 ÷ 2 = 3. Then 10 − 3 = 7.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "order-of-operations-p3",
@@ -23,8 +31,12 @@
     "difficulty": "medium",
     "question": "Evaluate: (8 + 2) × 3 − 4",
     "answer": "26",
-    "hints": ["Parentheses first: 8 + 2 = 10.", "Then multiply: 10 × 3 = 30. Finally subtract 4."],
-    "solution": "(8 + 2) × 3 − 4: Parentheses: 10. Multiply: 10 × 3 = 30. Subtract: 30 − 4 = 26."
+    "hints": [
+      "Parentheses first: 8 + 2 = 10.",
+      "Then multiply: 10 × 3 = 30. Finally subtract 4."
+    ],
+    "solution": "(8 + 2) × 3 − 4: Parentheses: 10. Multiply: 10 × 3 = 30. Subtract: 30 − 4 = 26.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "order-of-operations-p4",
@@ -32,8 +44,12 @@
     "difficulty": "medium",
     "question": "Evaluate: 5 + 3² × 2",
     "answer": "23",
-    "hints": ["Exponents come first: 3² = 9.", "Then multiply: 9 × 2 = 18. Finally add 5."],
-    "solution": "3² = 9. Then 9 × 2 = 18. Then 5 + 18 = 23."
+    "hints": [
+      "Exponents come first: 3² = 9.",
+      "Then multiply: 9 × 2 = 18. Finally add 5."
+    ],
+    "solution": "3² = 9. Then 9 × 2 = 18. Then 5 + 18 = 23.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "order-of-operations-p5",
@@ -41,7 +57,12 @@
     "difficulty": "hard",
     "question": "Evaluate: 2 × (15 − 3²) + 8 ÷ 4",
     "answer": "14",
-    "hints": ["Inside the parentheses, handle the exponent first: 3² = 9.", "Then 15 − 9 = 6. So the expression becomes 2 × 6 + 8 ÷ 4.", "Multiply and divide left to right, then add."],
-    "solution": "3² = 9. Parentheses: 15 − 9 = 6. Multiply: 2 × 6 = 12. Divide: 8 ÷ 4 = 2. Add: 12 + 2 = 14."
+    "hints": [
+      "Inside the parentheses, handle the exponent first: 3² = 9.",
+      "Then 15 − 9 = 6. So the expression becomes 2 × 6 + 8 ÷ 4.",
+      "Multiply and divide left to right, then add."
+    ],
+    "solution": "3² = 9. Parentheses: 15 − 9 = 6. Multiply: 2 × 6 = 12. Divide: 8 ÷ 4 = 2. Add: 12 + 2 = 14.",
+    "cognitiveDemand": "procedural"
   }
 ]

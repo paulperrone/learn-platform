@@ -5,8 +5,11 @@
     "difficulty": "easy",
     "question": "What is 345 + 231?",
     "answer": "576",
-    "hints": ["Add each place value: ones, tens, hundreds. No regrouping needed."],
-    "solution": "345 + 231 = 576. Ones: 5 + 1 = 6. Tens: 4 + 3 = 7. Hundreds: 3 + 2 = 5."
+    "hints": [
+      "Add each place value: ones, tens, hundreds. No regrouping needed."
+    ],
+    "solution": "345 + 231 = 576. Ones: 5 + 1 = 6. Tens: 4 + 3 = 7. Hundreds: 3 + 2 = 5.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "multi-digit-add-sub-p2",
@@ -14,8 +17,11 @@
     "difficulty": "easy",
     "question": "What is 876 − 543?",
     "answer": "333",
-    "hints": ["Subtract each place: 6 − 3, 7 − 4, 8 − 5."],
-    "solution": "876 − 543 = 333. Ones: 6 − 3 = 3. Tens: 7 − 4 = 3. Hundreds: 8 − 5 = 3."
+    "hints": [
+      "Subtract each place: 6 − 3, 7 − 4, 8 − 5."
+    ],
+    "solution": "876 − 543 = 333. Ones: 6 − 3 = 3. Tens: 7 − 4 = 3. Hundreds: 8 − 5 = 3.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "multi-digit-add-sub-p3",
@@ -23,8 +29,12 @@
     "difficulty": "medium",
     "question": "What is 467 + 358?",
     "answer": "825",
-    "hints": ["Ones: 7 + 8 = 15 (regroup).", "Tens: 6 + 5 + 1 = 12 (regroup)."],
-    "solution": "467 + 358 = 825. Ones: 7 + 8 = 15 (carry 1). Tens: 6 + 5 + 1 = 12 (carry 1). Hundreds: 4 + 3 + 1 = 8."
+    "hints": [
+      "Ones: 7 + 8 = 15 (regroup).",
+      "Tens: 6 + 5 + 1 = 12 (regroup)."
+    ],
+    "solution": "467 + 358 = 825. Ones: 7 + 8 = 15 (carry 1). Tens: 6 + 5 + 1 = 12 (carry 1). Hundreds: 4 + 3 + 1 = 8.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "multi-digit-add-sub-p4",
@@ -32,8 +42,12 @@
     "difficulty": "medium",
     "question": "What is 700 − 284?",
     "answer": "416",
-    "hints": ["You need to regroup from hundreds since there are 0 tens and 0 ones.", "700 = 600 + 90 + 10."],
-    "solution": "700 − 284 = 416. Regroup: 700 = 600 + 90 + 10. Ones: 10 − 4 = 6. Tens: 9 − 8 = 1. Hundreds: 6 − 2 = 4."
+    "hints": [
+      "You need to regroup from hundreds since there are 0 tens and 0 ones.",
+      "700 = 600 + 90 + 10."
+    ],
+    "solution": "700 − 284 = 416. Regroup: 700 = 600 + 90 + 10. Ones: 10 − 4 = 6. Tens: 9 − 8 = 1. Hundreds: 6 − 2 = 4.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "multi-digit-add-sub-p5",
@@ -41,7 +55,11 @@
     "difficulty": "hard",
     "question": "A store had 503 books. They sold 247 and received 189 new books. How many books do they have now?",
     "answer": "445",
-    "hints": ["First subtract: 503 − 247.", "Then add: result + 189."],
-    "solution": "503 − 247 = 256. Then 256 + 189 = 445. The store has 445 books."
+    "hints": [
+      "First subtract: 503 − 247.",
+      "Then add: result + 189."
+    ],
+    "solution": "503 − 247 = 256. Then 256 + 189 = 445. The store has 445 books.",
+    "cognitiveDemand": "application"
   }
 ]

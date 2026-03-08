@@ -5,8 +5,11 @@
     "difficulty": "easy",
     "question": "What is 30 + 20?",
     "answer": "50",
-    "hints": ["Add the tens: 3 tens + 2 tens = ? tens."],
-    "solution": "30 + 20 = 50. We add the tens: 3 + 2 = 5, so 30 + 20 = 50."
+    "hints": [
+      "Add the tens: 3 tens + 2 tens = ? tens."
+    ],
+    "solution": "30 + 20 = 50. We add the tens: 3 + 2 = 5, so 30 + 20 = 50.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "add-within-100-p2",
@@ -14,8 +17,11 @@
     "difficulty": "easy",
     "question": "What is 40 + 10?",
     "answer": "50",
-    "hints": ["Count by tens: 40, then 10 more."],
-    "solution": "40 + 10 = 50. 4 tens + 1 ten = 5 tens = 50."
+    "hints": [
+      "Count by tens: 40, then 10 more."
+    ],
+    "solution": "40 + 10 = 50. 4 tens + 1 ten = 5 tens = 50.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "add-within-100-p3",
@@ -23,8 +29,12 @@
     "difficulty": "medium",
     "question": "What is 34 + 20?",
     "answer": "54",
-    "hints": ["Only the tens change. 34 has 3 tens. Add 2 more tens.", "3 tens + 2 tens = 5 tens. The ones stay at 4."],
-    "solution": "34 + 20 = 54. Add the tens: 30 + 20 = 50, then add the 4 ones: 54."
+    "hints": [
+      "Only the tens change. 34 has 3 tens. Add 2 more tens.",
+      "3 tens + 2 tens = 5 tens. The ones stay at 4."
+    ],
+    "solution": "34 + 20 = 54. Add the tens: 30 + 20 = 50, then add the 4 ones: 54.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "add-within-100-p4",
@@ -32,8 +42,12 @@
     "difficulty": "medium",
     "question": "What is 25 + 13?",
     "answer": "38",
-    "hints": ["Add the tens: 20 + 10 = 30. Add the ones: 5 + 3 = 8.", "Put them together: 30 + 8 = ?"],
-    "solution": "25 + 13 = 38. Tens: 20 + 10 = 30. Ones: 5 + 3 = 8. Total: 30 + 8 = 38."
+    "hints": [
+      "Add the tens: 20 + 10 = 30. Add the ones: 5 + 3 = 8.",
+      "Put them together: 30 + 8 = ?"
+    ],
+    "solution": "25 + 13 = 38. Tens: 20 + 10 = 30. Ones: 5 + 3 = 8. Total: 30 + 8 = 38.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "add-within-100-p5",
@@ -41,7 +55,11 @@
     "difficulty": "hard",
     "question": "What is 47 + 36?",
     "answer": "83",
-    "hints": ["Add the ones first: 7 + 6 = 13. That is 1 ten and 3 ones.", "Now add the tens: 40 + 30 + 10 (from the ones) = 80. Then 80 + 3 = ?"],
-    "solution": "47 + 36 = 83. Ones: 7 + 6 = 13 (write 3, carry 1 ten). Tens: 4 + 3 + 1 = 8 tens. Answer: 83."
+    "hints": [
+      "Add the ones first: 7 + 6 = 13. That is 1 ten and 3 ones.",
+      "Now add the tens: 40 + 30 + 10 (from the ones) = 80. Then 80 + 3 = ?"
+    ],
+    "solution": "47 + 36 = 83. Ones: 7 + 6 = 13 (write 3, carry 1 ten). Tens: 4 + 3 + 1 = 8 tens. Answer: 83.",
+    "cognitiveDemand": "procedural"
   }
 ]

@@ -5,8 +5,11 @@
     "difficulty": "easy",
     "question": "What is the pattern? 3, 6, 9, 12, ___. What comes next?",
     "answer": "15",
-    "hints": ["Each number is 3 more than the one before."],
-    "solution": "The pattern is adding 3 each time. 12 + 3 = 15."
+    "hints": [
+      "Each number is 3 more than the one before."
+    ],
+    "solution": "The pattern is adding 3 each time. 12 + 3 = 15.",
+    "cognitiveDemand": "conceptual"
   },
   {
     "id": "patterns-arithmetic-p2",
@@ -14,8 +17,11 @@
     "difficulty": "easy",
     "question": "What is the pattern? 4, 8, 12, 16, ___. What comes next?",
     "answer": "20",
-    "hints": ["These are multiples of 4."],
-    "solution": "The pattern is counting by 4s. 16 + 4 = 20."
+    "hints": [
+      "These are multiples of 4."
+    ],
+    "solution": "The pattern is counting by 4s. 16 + 4 = 20.",
+    "cognitiveDemand": "conceptual"
   },
   {
     "id": "patterns-arithmetic-p3",
@@ -23,8 +29,12 @@
     "difficulty": "medium",
     "question": "In the multiplication table, what pattern do you see in the 9s column? What is 9 × 5?",
     "answer": "45",
-    "hints": ["Look at the digits: 9, 18, 27, 36, 45...", "The tens digit goes up by 1, the ones digit goes down by 1."],
-    "solution": "9 × 5 = 45. Pattern: the digits of 9s multiples always add up to 9 (4 + 5 = 9)."
+    "hints": [
+      "Look at the digits: 9, 18, 27, 36, 45...",
+      "The tens digit goes up by 1, the ones digit goes down by 1."
+    ],
+    "solution": "9 × 5 = 45. Pattern: the digits of 9s multiples always add up to 9 (4 + 5 = 9).",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "patterns-arithmetic-p4",
@@ -32,8 +42,12 @@
     "difficulty": "medium",
     "question": "Are all multiples of 2 even or odd?",
     "answer": "even",
-    "hints": ["List some multiples of 2: 2, 4, 6, 8, 10...", "What do you notice about these numbers?"],
-    "solution": "All multiples of 2 are even: 2, 4, 6, 8, 10, 12, ... They all end in 0, 2, 4, 6, or 8."
+    "hints": [
+      "List some multiples of 2: 2, 4, 6, 8, 10...",
+      "What do you notice about these numbers?"
+    ],
+    "solution": "All multiples of 2 are even: 2, 4, 6, 8, 10, 12, ... They all end in 0, 2, 4, 6, or 8.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "patterns-arithmetic-p5",
@@ -41,7 +55,11 @@
     "difficulty": "hard",
     "question": "Look at the pattern: 2, 6, 18, 54, ___. What comes next?",
     "answer": "162",
-    "hints": ["How do you get from 2 to 6? From 6 to 18?", "Each number is multiplied by 3."],
-    "solution": "Each number is 3 times the previous one. 54 × 3 = 162."
+    "hints": [
+      "How do you get from 2 to 6? From 6 to 18?",
+      "Each number is multiplied by 3."
+    ],
+    "solution": "Each number is 3 times the previous one. 54 × 3 = 162.",
+    "cognitiveDemand": "procedural"
   }
 ]

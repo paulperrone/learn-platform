@@ -5,8 +5,12 @@
     "difficulty": "easy",
     "question": "Sam has 6 toy cars. He gets 3 more for his birthday. How many toy cars does Sam have now?",
     "answer": "9",
-    "hints": ["He started with some and got more. Should you add or subtract?", "6 + 3 = ?"],
-    "solution": "6 + 3 = 9. Sam gets more cars, so we add. He now has 9 toy cars."
+    "hints": [
+      "He started with some and got more. Should you add or subtract?",
+      "6 + 3 = ?"
+    ],
+    "solution": "6 + 3 = 9. Sam gets more cars, so we add. He now has 9 toy cars.",
+    "cognitiveDemand": "application"
   },
   {
     "id": "add-subtract-word-problems-1-p2",
@@ -14,8 +18,12 @@
     "difficulty": "easy",
     "question": "Maria has 8 stickers. She gives 2 to her friend. How many stickers does Maria have left?",
     "answer": "6",
-    "hints": ["She is giving some away. Should you add or subtract?", "8 - 2 = ?"],
-    "solution": "8 - 2 = 6. Maria gives stickers away, so we subtract. She has 6 stickers left."
+    "hints": [
+      "She is giving some away. Should you add or subtract?",
+      "8 - 2 = ?"
+    ],
+    "solution": "8 - 2 = 6. Maria gives stickers away, so we subtract. She has 6 stickers left.",
+    "cognitiveDemand": "application"
   },
   {
     "id": "add-subtract-word-problems-1-p3",
@@ -23,8 +31,12 @@
     "difficulty": "medium",
     "question": "There are 7 ducks in a pond. 5 more ducks swim over. How many ducks are in the pond now?",
     "answer": "12",
-    "hints": ["More ducks are coming. That means we add.", "7 + 5 = ?"],
-    "solution": "7 + 5 = 12. More ducks joined, so we add: 7 + 5 = 12 ducks in the pond."
+    "hints": [
+      "More ducks are coming. That means we add.",
+      "7 + 5 = ?"
+    ],
+    "solution": "7 + 5 = 12. More ducks joined, so we add: 7 + 5 = 12 ducks in the pond.",
+    "cognitiveDemand": "application"
   },
   {
     "id": "add-subtract-word-problems-1-p4",
@@ -32,8 +44,12 @@
     "difficulty": "medium",
     "question": "Jake has 14 crayons. He loses 6. How many crayons does Jake have now?",
     "answer": "8",
-    "hints": ["He lost some, so the number gets smaller. Subtract!", "14 - 6 = ?"],
-    "solution": "14 - 6 = 8. Jake lost crayons, so we subtract: 14 - 6 = 8 crayons left."
+    "hints": [
+      "He lost some, so the number gets smaller. Subtract!",
+      "14 - 6 = ?"
+    ],
+    "solution": "14 - 6 = 8. Jake lost crayons, so we subtract: 14 - 6 = 8 crayons left.",
+    "cognitiveDemand": "application"
   },
   {
     "id": "add-subtract-word-problems-1-p5",
@@ -41,7 +57,11 @@
     "difficulty": "hard",
     "question": "Emma has some books. She gives 4 to the library and has 9 left. How many books did Emma start with?",
     "answer": "13",
-    "hints": ["She gave away 4 and has 9 left. What did she start with?", "Think: ___ - 4 = 9. So ___ = 9 + 4."],
-    "solution": "9 + 4 = 13. Emma started with 13 books. She gave away 4 and had 9 left: 13 - 4 = 9."
+    "hints": [
+      "She gave away 4 and has 9 left. What did she start with?",
+      "Think: ___ - 4 = 9. So ___ = 9 + 4."
+    ],
+    "solution": "9 + 4 = 13. Emma started with 13 books. She gave away 4 and had 9 left: 13 - 4 = 9.",
+    "cognitiveDemand": "application"
   }
 ]

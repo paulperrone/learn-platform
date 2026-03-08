@@ -5,8 +5,12 @@
     "difficulty": "easy",
     "question": "How much is 1 quarter and 2 dimes?",
     "answer": "45 cents",
-    "hints": ["A quarter is 25 cents. A dime is 10 cents.", "25 + 10 + 10 = ?"],
-    "solution": "1 quarter = 25¢, 2 dimes = 20¢. Total: 25 + 20 = 45 cents."
+    "hints": [
+      "A quarter is 25 cents. A dime is 10 cents.",
+      "25 + 10 + 10 = ?"
+    ],
+    "solution": "1 quarter = 25¢, 2 dimes = 20¢. Total: 25 + 20 = 45 cents.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "money-coins-bills-p2",
@@ -14,8 +18,11 @@
     "difficulty": "easy",
     "question": "How much is 1 dollar bill and 3 quarters?",
     "answer": "$1.75",
-    "hints": ["1 dollar = 100 cents. 3 quarters = 75 cents."],
-    "solution": "$1.00 + $0.75 = $1.75."
+    "hints": [
+      "1 dollar = 100 cents. 3 quarters = 75 cents."
+    ],
+    "solution": "$1.00 + $0.75 = $1.75.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "money-coins-bills-p3",
@@ -23,8 +30,12 @@
     "difficulty": "medium",
     "question": "You have 2 quarters, 1 dime, and 3 nickels. How much money do you have?",
     "answer": "75 cents",
-    "hints": ["2 quarters = 50¢, 1 dime = 10¢, 3 nickels = 15¢.", "Add them all up."],
-    "solution": "2 quarters = 50¢, 1 dime = 10¢, 3 nickels = 15¢. Total: 50 + 10 + 15 = 75 cents."
+    "hints": [
+      "2 quarters = 50¢, 1 dime = 10¢, 3 nickels = 15¢.",
+      "Add them all up."
+    ],
+    "solution": "2 quarters = 50¢, 1 dime = 10¢, 3 nickels = 15¢. Total: 50 + 10 + 15 = 75 cents.",
+    "cognitiveDemand": "application"
   },
   {
     "id": "money-coins-bills-p4",
@@ -32,8 +43,12 @@
     "difficulty": "medium",
     "question": "A toy costs 85 cents. You pay with 1 dollar. How much change do you get?",
     "answer": "15 cents",
-    "hints": ["1 dollar = 100 cents.", "100 − 85 = ?"],
-    "solution": "100 − 85 = 15 cents in change."
+    "hints": [
+      "1 dollar = 100 cents.",
+      "100 − 85 = ?"
+    ],
+    "solution": "100 − 85 = 15 cents in change.",
+    "cognitiveDemand": "application"
   },
   {
     "id": "money-coins-bills-p5",
@@ -41,7 +56,11 @@
     "difficulty": "hard",
     "question": "Emma has 3 dollar bills, 2 quarters, 4 dimes, and 1 nickel. How much money does she have in total?",
     "answer": "$3.95",
-    "hints": ["Count the bills first: 3 × $1.00 = $3.00.", "Coins: 2 quarters = 50¢, 4 dimes = 40¢, 1 nickel = 5¢."],
-    "solution": "Bills: $3.00. Coins: 50¢ + 40¢ + 5¢ = 95¢. Total: $3.00 + $0.95 = $3.95."
+    "hints": [
+      "Count the bills first: 3 × $1.00 = $3.00.",
+      "Coins: 2 quarters = 50¢, 4 dimes = 40¢, 1 nickel = 5¢."
+    ],
+    "solution": "Bills: $3.00. Coins: 50¢ + 40¢ + 5¢ = 95¢. Total: $3.00 + $0.95 = $3.95.",
+    "cognitiveDemand": "application"
   }
 ]

@@ -5,8 +5,12 @@
     "difficulty": "easy",
     "question": "What is 1/3 ÷ 2?",
     "answer": "1/6",
-    "hints": ["Dividing a fraction by a whole number: divide the fraction into that many equal parts.", "1/3 ÷ 2 = 1/(3 × 2)."],
-    "solution": "1/3 ÷ 2 = 1/3 × 1/2 = 1/6."
+    "hints": [
+      "Dividing a fraction by a whole number: divide the fraction into that many equal parts.",
+      "1/3 ÷ 2 = 1/(3 × 2)."
+    ],
+    "solution": "1/3 ÷ 2 = 1/3 × 1/2 = 1/6.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "divide-fractions-p2",
@@ -14,8 +18,11 @@
     "difficulty": "easy",
     "question": "What is 1/4 ÷ 3?",
     "answer": "1/12",
-    "hints": ["Dividing by 3 is the same as multiplying by 1/3."],
-    "solution": "1/4 ÷ 3 = 1/4 × 1/3 = 1/12."
+    "hints": [
+      "Dividing by 3 is the same as multiplying by 1/3."
+    ],
+    "solution": "1/4 ÷ 3 = 1/4 × 1/3 = 1/12.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "divide-fractions-p3",
@@ -23,8 +30,12 @@
     "difficulty": "medium",
     "question": "What is 3 ÷ 1/4?",
     "answer": "12",
-    "hints": ["How many quarters are in 1 whole? In 3 wholes?", "Dividing by 1/4 is the same as multiplying by 4."],
-    "solution": "3 ÷ 1/4 = 3 × 4 = 12. There are 12 quarters in 3 wholes."
+    "hints": [
+      "How many quarters are in 1 whole? In 3 wholes?",
+      "Dividing by 1/4 is the same as multiplying by 4."
+    ],
+    "solution": "3 ÷ 1/4 = 3 × 4 = 12. There are 12 quarters in 3 wholes.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "divide-fractions-p4",
@@ -32,8 +43,12 @@
     "difficulty": "medium",
     "question": "What is 5 ÷ 1/3?",
     "answer": "15",
-    "hints": ["How many thirds are in 1 whole? There are 3.", "So in 5 wholes there are 5 × 3."],
-    "solution": "5 ÷ 1/3 = 5 × 3 = 15. There are 15 thirds in 5 wholes."
+    "hints": [
+      "How many thirds are in 1 whole? There are 3.",
+      "So in 5 wholes there are 5 × 3."
+    ],
+    "solution": "5 ÷ 1/3 = 5 × 3 = 15. There are 15 thirds in 5 wholes.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "divide-fractions-p5",
@@ -41,7 +56,11 @@
     "difficulty": "hard",
     "question": "You have 1/2 pound of trail mix to divide equally among 4 friends. How much trail mix does each friend get?",
     "answer": "1/8",
-    "hints": ["Divide 1/2 by 4.", "1/2 ÷ 4 = 1/2 × 1/4."],
-    "solution": "1/2 ÷ 4 = 1/2 × 1/4 = 1/8 pound each."
+    "hints": [
+      "Divide 1/2 by 4.",
+      "1/2 ÷ 4 = 1/2 × 1/4."
+    ],
+    "solution": "1/2 ÷ 4 = 1/2 × 1/4 = 1/8 pound each.",
+    "cognitiveDemand": "application"
   }
 ]

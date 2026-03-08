@@ -5,8 +5,11 @@
     "difficulty": "easy",
     "question": "What is 3.4 + 2.5?",
     "answer": "5.9",
-    "hints": ["Line up the decimal points, then add like whole numbers."],
-    "solution": "3.4 + 2.5: 4 + 5 = 9 (tenths), 3 + 2 = 5 (ones). Answer: 5.9."
+    "hints": [
+      "Line up the decimal points, then add like whole numbers."
+    ],
+    "solution": "3.4 + 2.5: 4 + 5 = 9 (tenths), 3 + 2 = 5 (ones). Answer: 5.9.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "decimal-operations-p2",
@@ -14,8 +17,11 @@
     "difficulty": "easy",
     "question": "What is 7.8 − 3.2?",
     "answer": "4.6",
-    "hints": ["Line up the decimals and subtract."],
-    "solution": "7.8 − 3.2: 8 − 2 = 6 (tenths), 7 − 3 = 4 (ones). Answer: 4.6."
+    "hints": [
+      "Line up the decimals and subtract."
+    ],
+    "solution": "7.8 − 3.2: 8 − 2 = 6 (tenths), 7 − 3 = 4 (ones). Answer: 4.6.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "decimal-operations-p3",
@@ -23,8 +29,12 @@
     "difficulty": "medium",
     "question": "What is 2.4 × 0.3?",
     "answer": "0.72",
-    "hints": ["Multiply 24 × 3 = 72. Then count total decimal places: 1 + 1 = 2.", "Place the decimal point 2 places from the right."],
-    "solution": "2.4 × 0.3: Multiply 24 × 3 = 72. Two total decimal places → 0.72."
+    "hints": [
+      "Multiply 24 × 3 = 72. Then count total decimal places: 1 + 1 = 2.",
+      "Place the decimal point 2 places from the right."
+    ],
+    "solution": "2.4 × 0.3: Multiply 24 × 3 = 72. Two total decimal places → 0.72.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "decimal-operations-p4",
@@ -32,8 +42,12 @@
     "difficulty": "medium",
     "question": "What is 8.64 ÷ 4?",
     "answer": "2.16",
-    "hints": ["Divide as if it were 864 ÷ 4, then place the decimal.", "864 ÷ 4 = 216. The decimal goes in the same position as the dividend."],
-    "solution": "8.64 ÷ 4 = 2.16. Divide 864 by 4 to get 216, then place the decimal: 2.16."
+    "hints": [
+      "Divide as if it were 864 ÷ 4, then place the decimal.",
+      "864 ÷ 4 = 216. The decimal goes in the same position as the dividend."
+    ],
+    "solution": "8.64 ÷ 4 = 2.16. Divide 864 by 4 to get 216, then place the decimal: 2.16.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "decimal-operations-p5",
@@ -41,7 +55,11 @@
     "difficulty": "hard",
     "question": "A runner ran 3 laps. Her times were 2.35 minutes, 2.48 minutes, and 2.17 minutes. What was her total time?",
     "answer": "7.00",
-    "hints": ["Add all three times. Line up the decimal points.", "2.35 + 2.48 + 2.17."],
-    "solution": "2.35 + 2.48 = 4.83. Then 4.83 + 2.17 = 7.00 minutes."
+    "hints": [
+      "Add all three times. Line up the decimal points.",
+      "2.35 + 2.48 + 2.17."
+    ],
+    "solution": "2.35 + 2.48 = 4.83. Then 4.83 + 2.17 = 7.00 minutes.",
+    "cognitiveDemand": "application"
   }
 ]

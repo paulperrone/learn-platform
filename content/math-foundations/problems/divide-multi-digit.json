@@ -5,8 +5,12 @@
     "difficulty": "easy",
     "question": "What is 780 ÷ 15?",
     "answer": "52",
-    "hints": ["15 × 5 = 75. So 15 goes into 78 five times.", "78 − 75 = 3. Bring down 0 to get 30. 15 × 2 = 30."],
-    "solution": "780 ÷ 15: 15 into 78 = 5 (75), remainder 3. Bring down 0 → 30. 15 into 30 = 2. Answer: 52."
+    "hints": [
+      "15 × 5 = 75. So 15 goes into 78 five times.",
+      "78 − 75 = 3. Bring down 0 to get 30. 15 × 2 = 30."
+    ],
+    "solution": "780 ÷ 15: 15 into 78 = 5 (75), remainder 3. Bring down 0 → 30. 15 into 30 = 2. Answer: 52.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "divide-multi-digit-p2",
@@ -14,8 +18,12 @@
     "difficulty": "easy",
     "question": "What is 672 ÷ 12?",
     "answer": "56",
-    "hints": ["12 × 5 = 60. So 12 goes into 67 five times with remainder 7.", "Bring down 2 to get 72. 12 × 6 = 72."],
-    "solution": "672 ÷ 12: 12 into 67 = 5 (60), R7. Bring down 2 → 72. 12 into 72 = 6. Answer: 56."
+    "hints": [
+      "12 × 5 = 60. So 12 goes into 67 five times with remainder 7.",
+      "Bring down 2 to get 72. 12 × 6 = 72."
+    ],
+    "solution": "672 ÷ 12: 12 into 67 = 5 (60), R7. Bring down 2 → 72. 12 into 72 = 6. Answer: 56.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "divide-multi-digit-p3",
@@ -23,8 +31,12 @@
     "difficulty": "medium",
     "question": "What is 2,340 ÷ 18?",
     "answer": "130",
-    "hints": ["18 into 23 = 1 (18), remainder 5. Bring down 4 → 54.", "18 into 54 = 3. Bring down 0. 18 into 0 = 0."],
-    "solution": "2,340 ÷ 18: 23 ÷ 18 = 1 R5. 54 ÷ 18 = 3. 0 ÷ 18 = 0. Answer: 130."
+    "hints": [
+      "18 into 23 = 1 (18), remainder 5. Bring down 4 → 54.",
+      "18 into 54 = 3. Bring down 0. 18 into 0 = 0."
+    ],
+    "solution": "2,340 ÷ 18: 23 ÷ 18 = 1 R5. 54 ÷ 18 = 3. 0 ÷ 18 = 0. Answer: 130.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "divide-multi-digit-p4",
@@ -32,8 +44,12 @@
     "difficulty": "medium",
     "question": "What is 4,536 ÷ 24?",
     "answer": "189",
-    "hints": ["24 into 45 = 1 (24), R21. Bring down 3 → 213.", "24 into 213 = 8 (192), R21. Bring down 6 → 216."],
-    "solution": "4,536 ÷ 24: 45 ÷ 24 = 1 R21. 213 ÷ 24 = 8 R21. 216 ÷ 24 = 9. Answer: 189."
+    "hints": [
+      "24 into 45 = 1 (24), R21. Bring down 3 → 213.",
+      "24 into 213 = 8 (192), R21. Bring down 6 → 216."
+    ],
+    "solution": "4,536 ÷ 24: 45 ÷ 24 = 1 R21. 213 ÷ 24 = 8 R21. 216 ÷ 24 = 9. Answer: 189.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "divide-multi-digit-p5",
@@ -41,7 +57,11 @@
     "difficulty": "hard",
     "question": "A factory produced 7,650 items in 34 days, producing the same number each day. How many items were produced each day?",
     "answer": "225",
-    "hints": ["Divide 7,650 by 34.", "34 × 2 = 68. So 34 into 76 = 2 (68), R8. Bring down 5 → 85."],
-    "solution": "7,650 ÷ 34: 76 ÷ 34 = 2 R8. 85 ÷ 34 = 2 R17. 170 ÷ 34 = 5. Answer: 225 items per day."
+    "hints": [
+      "Divide 7,650 by 34.",
+      "34 × 2 = 68. So 34 into 76 = 2 (68), R8. Bring down 5 → 85."
+    ],
+    "solution": "7,650 ÷ 34: 76 ÷ 34 = 2 R8. 85 ÷ 34 = 2 R17. 170 ÷ 34 = 5. Answer: 225 items per day.",
+    "cognitiveDemand": "application"
   }
 ]

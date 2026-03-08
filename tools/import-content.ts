@@ -60,6 +60,7 @@ type Problem = {
   presentation?: string;
   contentDepth?: string;
   keyPrerequisiteId?: string;
+  cognitiveDemand?: string;
 };
 
 type WorkedExample = {
@@ -209,7 +210,7 @@ function main() {
 
   // Insert assessment content (problems)
   const insertAssessment = db.prepare(
-    "INSERT INTO assessment_content (id, topic_id, flavor, locale, presentation, content_depth, version, type, difficulty, question, answer, hints_json, solution, key_prerequisite_id, created_at) VALUES (?, ?, ?, ?, ?, ?, 1, 'text-qa', ?, ?, ?, ?, ?, ?, ?)"
+    "INSERT INTO assessment_content (id, topic_id, flavor, locale, presentation, content_depth, version, type, difficulty, question, answer, hints_json, solution, cognitive_demand, key_prerequisite_id, created_at) VALUES (?, ?, ?, ?, ?, ?, 1, 'text-qa', ?, ?, ?, ?, ?, ?, ?, ?)"
   );
   let assessmentCount = 0;
   const insertAssessments = db.transaction(() => {
@@ -222,7 +223,7 @@ function main() {
           p.locale ?? "en",
           p.presentation ?? "standard",
           p.contentDepth ?? "survey",
-          p.difficulty, p.question, p.answer, JSON.stringify(p.hints), p.solution, p.keyPrerequisiteId ?? null, now
+          p.difficulty, p.question, p.answer, JSON.stringify(p.hints), p.solution, p.cognitiveDemand ?? null, p.keyPrerequisiteId ?? null, now
         );
         assessmentCount++;
       }

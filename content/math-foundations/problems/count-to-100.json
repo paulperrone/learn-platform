@@ -5,8 +5,11 @@
     "difficulty": "easy",
     "question": "What number comes after 29?",
     "answer": "30",
-    "hints": ["Count: 27, 28, 29, ... what is next?"],
-    "solution": "The number after 29 is 30. When we finish the twenties, we start the thirties."
+    "hints": [
+      "Count: 27, 28, 29, ... what is next?"
+    ],
+    "solution": "The number after 29 is 30. When we finish the twenties, we start the thirties.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "count-to-100-p2",
@@ -14,8 +17,11 @@
     "difficulty": "easy",
     "question": "Count by tens: 10, 20, 30, ___. What number comes next?",
     "answer": "40",
-    "hints": ["We are counting by tens. 30 plus 10 more is..."],
-    "solution": "The next number is 40. When counting by tens: 10, 20, 30, 40."
+    "hints": [
+      "We are counting by tens. 30 plus 10 more is..."
+    ],
+    "solution": "The next number is 40. When counting by tens: 10, 20, 30, 40.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "count-to-100-p3",
@@ -23,8 +29,11 @@
     "difficulty": "medium",
     "question": "What number comes right before 50?",
     "answer": "49",
-    "hints": ["Count: 47, 48, ___, 50. What goes in the blank?"],
-    "solution": "The number right before 50 is 49."
+    "hints": [
+      "Count: 47, 48, ___, 50. What goes in the blank?"
+    ],
+    "solution": "The number right before 50 is 49.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "count-to-100-p4",
@@ -32,8 +41,11 @@
     "difficulty": "medium",
     "question": "Count by tens: 10, 20, 30, 40, 50, 60, 70, 80, 90, ___. What number comes next?",
     "answer": "100",
-    "hints": ["We are almost done counting by tens! 90 plus 10 more is..."],
-    "solution": "The next number is 100! Counting by tens: 10, 20, 30, 40, 50, 60, 70, 80, 90, 100."
+    "hints": [
+      "We are almost done counting by tens! 90 plus 10 more is..."
+    ],
+    "solution": "The next number is 100! Counting by tens: 10, 20, 30, 40, 50, 60, 70, 80, 90, 100.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "count-to-100-p5",
@@ -41,7 +53,11 @@
     "difficulty": "hard",
     "question": "What number is 10 more than 63?",
     "answer": "73",
-    "hints": ["Start at 63 and count 10 more.", "63, then count by ones: 64, 65, 66... or just add 10!"],
-    "solution": "10 more than 63 is 73. We keep the 3 and change the 6 to 7."
+    "hints": [
+      "Start at 63 and count 10 more.",
+      "63, then count by ones: 64, 65, 66... or just add 10!"
+    ],
+    "solution": "10 more than 63 is 73. We keep the 3 and change the 6 to 7.",
+    "cognitiveDemand": "procedural"
   }
 ]

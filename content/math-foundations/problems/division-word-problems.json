@@ -5,8 +5,12 @@
     "difficulty": "easy",
     "question": "There are 15 apples shared equally among 3 friends. How many apples does each friend get?",
     "answer": "5",
-    "hints": ["This is equal sharing: 15 ÷ 3.", "Think: 3 × ? = 15."],
-    "solution": "15 ÷ 3 = 5. Each friend gets 5 apples."
+    "hints": [
+      "This is equal sharing: 15 ÷ 3.",
+      "Think: 3 × ? = 15."
+    ],
+    "solution": "15 ÷ 3 = 5. Each friend gets 5 apples.",
+    "cognitiveDemand": "application"
   },
   {
     "id": "division-word-problems-p2",
@@ -14,8 +18,12 @@
     "difficulty": "easy",
     "question": "You have 20 stickers and want to put 4 stickers on each page. How many pages do you need?",
     "answer": "5",
-    "hints": ["This is equal grouping: 20 ÷ 4.", "How many groups of 4 are in 20?"],
-    "solution": "20 ÷ 4 = 5. You need 5 pages."
+    "hints": [
+      "This is equal grouping: 20 ÷ 4.",
+      "How many groups of 4 are in 20?"
+    ],
+    "solution": "20 ÷ 4 = 5. You need 5 pages.",
+    "cognitiveDemand": "application"
   },
   {
     "id": "division-word-problems-p3",
@@ -23,8 +31,12 @@
     "difficulty": "medium",
     "question": "A teacher has 42 pencils to share equally among 7 students. How many pencils does each student get?",
     "answer": "6",
-    "hints": ["42 ÷ 7 = ?", "Think: 7 × ? = 42."],
-    "solution": "42 ÷ 7 = 6. Each student gets 6 pencils."
+    "hints": [
+      "42 ÷ 7 = ?",
+      "Think: 7 × ? = 42."
+    ],
+    "solution": "42 ÷ 7 = 6. Each student gets 6 pencils.",
+    "cognitiveDemand": "application"
   },
   {
     "id": "division-word-problems-p4",
@@ -32,8 +44,12 @@
     "difficulty": "medium",
     "question": "There are 56 chairs to arrange in rows of 8. How many rows will there be?",
     "answer": "7",
-    "hints": ["56 ÷ 8 = ?", "How many 8s are in 56?"],
-    "solution": "56 ÷ 8 = 7. There will be 7 rows of chairs."
+    "hints": [
+      "56 ÷ 8 = ?",
+      "How many 8s are in 56?"
+    ],
+    "solution": "56 ÷ 8 = 7. There will be 7 rows of chairs.",
+    "cognitiveDemand": "application"
   },
   {
     "id": "division-word-problems-p5",
@@ -41,7 +57,11 @@
     "difficulty": "hard",
     "question": "A baker made 72 cookies. She puts 9 cookies in each box. How many boxes does she fill?",
     "answer": "8",
-    "hints": ["72 ÷ 9 = ?", "Think: 9 × ? = 72."],
-    "solution": "72 ÷ 9 = 8. She fills 8 boxes."
+    "hints": [
+      "72 ÷ 9 = ?",
+      "Think: 9 × ? = 72."
+    ],
+    "solution": "72 ÷ 9 = 8. She fills 8 boxes.",
+    "cognitiveDemand": "application"
   }
 ]

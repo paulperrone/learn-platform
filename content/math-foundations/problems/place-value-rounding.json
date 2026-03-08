@@ -5,8 +5,12 @@
     "difficulty": "easy",
     "question": "Round 43 to the nearest ten.",
     "answer": "40",
-    "hints": ["43 is between 40 and 50. Which is it closer to?", "The ones digit is 3, which is less than 5."],
-    "solution": "43 rounds to 40. The ones digit is 3 (less than 5), so we round down."
+    "hints": [
+      "43 is between 40 and 50. Which is it closer to?",
+      "The ones digit is 3, which is less than 5."
+    ],
+    "solution": "43 rounds to 40. The ones digit is 3 (less than 5), so we round down.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "place-value-rounding-p2",
@@ -14,8 +18,12 @@
     "difficulty": "easy",
     "question": "Round 78 to the nearest ten.",
     "answer": "80",
-    "hints": ["78 is between 70 and 80.", "The ones digit is 8, which is 5 or more."],
-    "solution": "78 rounds to 80. The ones digit is 8 (5 or more), so we round up."
+    "hints": [
+      "78 is between 70 and 80.",
+      "The ones digit is 8, which is 5 or more."
+    ],
+    "solution": "78 rounds to 80. The ones digit is 8 (5 or more), so we round up.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "place-value-rounding-p3",
@@ -23,8 +31,12 @@
     "difficulty": "medium",
     "question": "Round 450 to the nearest hundred.",
     "answer": "500",
-    "hints": ["450 is between 400 and 500.", "The tens digit is 5. When it's exactly 5, we round up."],
-    "solution": "450 rounds to 500. The tens digit is 5, so we round up to the next hundred."
+    "hints": [
+      "450 is between 400 and 500.",
+      "The tens digit is 5. When it's exactly 5, we round up."
+    ],
+    "solution": "450 rounds to 500. The tens digit is 5, so we round up to the next hundred.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "place-value-rounding-p4",
@@ -32,8 +44,12 @@
     "difficulty": "medium",
     "question": "Round 824 to the nearest hundred.",
     "answer": "800",
-    "hints": ["824 is between 800 and 900.", "Look at the tens digit: 2 is less than 5."],
-    "solution": "824 rounds to 800. The tens digit is 2 (less than 5), so we round down."
+    "hints": [
+      "824 is between 800 and 900.",
+      "Look at the tens digit: 2 is less than 5."
+    ],
+    "solution": "824 rounds to 800. The tens digit is 2 (less than 5), so we round down.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "place-value-rounding-p5",
@@ -41,7 +57,11 @@
     "difficulty": "hard",
     "question": "Round 965 to the nearest ten AND the nearest hundred.",
     "answer": "970 and 1000",
-    "hints": ["Nearest ten: look at the ones digit (5).", "Nearest hundred: look at the tens digit (6)."],
-    "solution": "Nearest ten: ones digit is 5, round up to 970. Nearest hundred: tens digit is 6 (5 or more), round up to 1000."
+    "hints": [
+      "Nearest ten: look at the ones digit (5).",
+      "Nearest hundred: look at the tens digit (6)."
+    ],
+    "solution": "Nearest ten: ones digit is 5, round up to 970. Nearest hundred: tens digit is 6 (5 or more), round up to 1000.",
+    "cognitiveDemand": "procedural"
   }
 ]

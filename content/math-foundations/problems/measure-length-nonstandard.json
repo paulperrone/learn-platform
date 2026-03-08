@@ -5,8 +5,11 @@
     "difficulty": "easy",
     "question": "A pencil is 5 paper clips long. How many paper clips long is the pencil?",
     "answer": "5",
-    "hints": ["The question already tells you! Read it carefully."],
-    "solution": "The pencil is 5 paper clips long. We measured using paper clips as our unit."
+    "hints": [
+      "The question already tells you! Read it carefully."
+    ],
+    "solution": "The pencil is 5 paper clips long. We measured using paper clips as our unit.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "measure-length-nonstandard-p2",
@@ -14,8 +17,11 @@
     "difficulty": "easy",
     "question": "You line up cubes along a book and count 8 cubes. How many cubes long is the book?",
     "answer": "8",
-    "hints": ["Each cube you placed tells you one unit of length."],
-    "solution": "The book is 8 cubes long. We used cubes as our measuring unit."
+    "hints": [
+      "Each cube you placed tells you one unit of length."
+    ],
+    "solution": "The book is 8 cubes long. We used cubes as our measuring unit.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "measure-length-nonstandard-p3",
@@ -23,8 +29,11 @@
     "difficulty": "medium",
     "question": "A table is 12 hand-spans long. A desk is 9 hand-spans long. Which is longer?",
     "answer": "table",
-    "hints": ["Compare the numbers. 12 or 9, which is more?"],
-    "solution": "The table is longer. 12 hand-spans is more than 9 hand-spans."
+    "hints": [
+      "Compare the numbers. 12 or 9, which is more?"
+    ],
+    "solution": "The table is longer. 12 hand-spans is more than 9 hand-spans.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "measure-length-nonstandard-p4",
@@ -32,8 +41,11 @@
     "difficulty": "medium",
     "question": "A crayon is 3 paper clips long. A marker is 5 paper clips long. How many more paper clips long is the marker?",
     "answer": "2",
-    "hints": ["Find the difference: 5 - 3 = ?"],
-    "solution": "5 - 3 = 2. The marker is 2 paper clips longer than the crayon."
+    "hints": [
+      "Find the difference: 5 - 3 = ?"
+    ],
+    "solution": "5 - 3 = 2. The marker is 2 paper clips longer than the crayon.",
+    "cognitiveDemand": "application"
   },
   {
     "id": "measure-length-nonstandard-p5",
@@ -41,7 +53,11 @@
     "difficulty": "hard",
     "question": "Anna measures a ribbon with big paper clips and gets 4. Ben measures the same ribbon with small paper clips and gets 7. Why did they get different numbers?",
     "answer": "The small paper clips are shorter, so more of them fit along the ribbon.",
-    "hints": ["Think about the size of each paper clip.", "Smaller units mean you need more of them to measure the same thing."],
-    "solution": "Smaller units give bigger numbers. Small paper clips are shorter, so it takes more of them (7) to cover the same ribbon that only takes 4 big paper clips."
+    "hints": [
+      "Think about the size of each paper clip.",
+      "Smaller units mean you need more of them to measure the same thing."
+    ],
+    "solution": "Smaller units give bigger numbers. Small paper clips are shorter, so it takes more of them (7) to cover the same ribbon that only takes 4 big paper clips.",
+    "cognitiveDemand": "conceptual"
   }
 ]

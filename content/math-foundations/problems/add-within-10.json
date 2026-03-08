@@ -5,8 +5,11 @@
     "difficulty": "easy",
     "question": "What is 3 + 2?",
     "answer": "5",
-    "hints": ["Start at 3 and count up 2 more: 4, 5."],
-    "solution": "3 + 2 = 5."
+    "hints": [
+      "Start at 3 and count up 2 more: 4, 5."
+    ],
+    "solution": "3 + 2 = 5.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "add-within-10-p2",
@@ -14,8 +17,11 @@
     "difficulty": "easy",
     "question": "What is 4 + 3?",
     "answer": "7",
-    "hints": ["Start at 4 and count up 3: 5, 6, 7."],
-    "solution": "4 + 3 = 7."
+    "hints": [
+      "Start at 4 and count up 3: 5, 6, 7."
+    ],
+    "solution": "4 + 3 = 7.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "add-within-10-p3",
@@ -23,8 +29,11 @@
     "difficulty": "medium",
     "question": "What is 5 + 4?",
     "answer": "9",
-    "hints": ["5 + 5 = 10, so 5 + 4 must be one less."],
-    "solution": "5 + 4 = 9. Think: 5 + 5 = 10, so 5 + 4 = 9."
+    "hints": [
+      "5 + 5 = 10, so 5 + 4 must be one less."
+    ],
+    "solution": "5 + 4 = 9. Think: 5 + 5 = 10, so 5 + 4 = 9.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "add-within-10-p4",
@@ -32,8 +41,11 @@
     "difficulty": "medium",
     "question": "You have 6 stickers and get 3 more. How many stickers do you have?",
     "answer": "9",
-    "hints": ["Start at 6 and count up 3 more."],
-    "solution": "6 + 3 = 9 stickers."
+    "hints": [
+      "Start at 6 and count up 3 more."
+    ],
+    "solution": "6 + 3 = 9 stickers.",
+    "cognitiveDemand": "application"
   },
   {
     "id": "add-within-10-p5",
@@ -41,7 +53,10 @@
     "difficulty": "hard",
     "question": "What is 7 + 3?",
     "answer": "10",
-    "hints": ["7 needs 3 more to make 10."],
-    "solution": "7 + 3 = 10. Seven plus three makes ten."
+    "hints": [
+      "7 needs 3 more to make 10."
+    ],
+    "solution": "7 + 3 = 10. Seven plus three makes ten.",
+    "cognitiveDemand": "procedural"
   }
 ]

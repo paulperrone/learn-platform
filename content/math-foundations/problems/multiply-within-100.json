@@ -5,8 +5,12 @@
     "difficulty": "easy",
     "question": "What is 3 × 4?",
     "answer": "12",
-    "hints": ["Think of 3 groups of 4.", "4 + 4 + 4 = ?"],
-    "solution": "3 × 4 = 12. Three groups of 4: 4 + 4 + 4 = 12."
+    "hints": [
+      "Think of 3 groups of 4.",
+      "4 + 4 + 4 = ?"
+    ],
+    "solution": "3 × 4 = 12. Three groups of 4: 4 + 4 + 4 = 12.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "multiply-within-100-p2",
@@ -14,8 +18,11 @@
     "difficulty": "easy",
     "question": "What is 5 × 6?",
     "answer": "30",
-    "hints": ["Count by 5s six times: 5, 10, 15, 20, 25, 30."],
-    "solution": "5 × 6 = 30. Skip count by 5s: 5, 10, 15, 20, 25, 30."
+    "hints": [
+      "Count by 5s six times: 5, 10, 15, 20, 25, 30."
+    ],
+    "solution": "5 × 6 = 30. Skip count by 5s: 5, 10, 15, 20, 25, 30.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "multiply-within-100-p3",
@@ -23,8 +30,12 @@
     "difficulty": "medium",
     "question": "What is 7 × 8?",
     "answer": "56",
-    "hints": ["Think: 7 × 8 is the same as 7 × 4 × 2.", "7 × 4 = 28, and 28 × 2 = 56."],
-    "solution": "7 × 8 = 56. Strategy: double 7 × 4. 7 × 4 = 28, 28 × 2 = 56."
+    "hints": [
+      "Think: 7 × 8 is the same as 7 × 4 × 2.",
+      "7 × 4 = 28, and 28 × 2 = 56."
+    ],
+    "solution": "7 × 8 = 56. Strategy: double 7 × 4. 7 × 4 = 28, 28 × 2 = 56.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "multiply-within-100-p4",
@@ -32,8 +43,12 @@
     "difficulty": "medium",
     "question": "What is 9 × 6?",
     "answer": "54",
-    "hints": ["Use the 9s trick: 9 × 6 = (10 × 6) − 6.", "60 − 6 = ?"],
-    "solution": "9 × 6 = 54. Think: (10 × 6) − 6 = 60 − 6 = 54."
+    "hints": [
+      "Use the 9s trick: 9 × 6 = (10 × 6) − 6.",
+      "60 − 6 = ?"
+    ],
+    "solution": "9 × 6 = 54. Think: (10 × 6) − 6 = 60 − 6 = 54.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "multiply-within-100-p5",
@@ -41,7 +56,11 @@
     "difficulty": "hard",
     "question": "What is 8 × 9?",
     "answer": "72",
-    "hints": ["8 × 9 = 8 × 10 − 8.", "80 − 8 = ?"],
-    "solution": "8 × 9 = 72. Strategy: 8 × 10 = 80, minus one group of 8: 80 − 8 = 72."
+    "hints": [
+      "8 × 9 = 8 × 10 − 8.",
+      "80 − 8 = ?"
+    ],
+    "solution": "8 × 9 = 72. Strategy: 8 × 10 = 80, minus one group of 8: 80 − 8 = 72.",
+    "cognitiveDemand": "procedural"
   }
 ]

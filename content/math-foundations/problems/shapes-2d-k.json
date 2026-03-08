@@ -5,8 +5,11 @@
     "difficulty": "easy",
     "question": "How many sides does a triangle have?",
     "answer": "3",
-    "hints": ["Tri- means three. Count the sides of a triangle."],
-    "solution": "A triangle has 3 sides. The name 'triangle' tells us: tri means three."
+    "hints": [
+      "Tri- means three. Count the sides of a triangle."
+    ],
+    "solution": "A triangle has 3 sides. The name 'triangle' tells us: tri means three.",
+    "cognitiveDemand": "application"
   },
   {
     "id": "shapes-2d-k-p2",
@@ -14,8 +17,11 @@
     "difficulty": "easy",
     "question": "A shape has 4 equal sides and 4 corners. What shape is it?",
     "answer": "square",
-    "hints": ["All 4 sides are the same length. Think of a box shape."],
-    "solution": "It is a square. A square has 4 equal sides and 4 corners."
+    "hints": [
+      "All 4 sides are the same length. Think of a box shape."
+    ],
+    "solution": "It is a square. A square has 4 equal sides and 4 corners.",
+    "cognitiveDemand": "application"
   },
   {
     "id": "shapes-2d-k-p3",
@@ -23,8 +29,11 @@
     "difficulty": "medium",
     "question": "How many corners does a rectangle have?",
     "answer": "4",
-    "hints": ["A rectangle is like a door shape. Count each corner."],
-    "solution": "A rectangle has 4 corners. It also has 4 sides, with opposite sides being the same length."
+    "hints": [
+      "A rectangle is like a door shape. Count each corner."
+    ],
+    "solution": "A rectangle has 4 corners. It also has 4 sides, with opposite sides being the same length.",
+    "cognitiveDemand": "application"
   },
   {
     "id": "shapes-2d-k-p4",
@@ -32,8 +41,11 @@
     "difficulty": "medium",
     "question": "A circle has how many sides?",
     "answer": "0",
-    "hints": ["A circle is round all the way around. Does it have any straight sides?"],
-    "solution": "A circle has 0 sides. It is perfectly round with no straight edges."
+    "hints": [
+      "A circle is round all the way around. Does it have any straight sides?"
+    ],
+    "solution": "A circle has 0 sides. It is perfectly round with no straight edges.",
+    "cognitiveDemand": "application"
   },
   {
     "id": "shapes-2d-k-p5",
@@ -41,7 +53,11 @@
     "difficulty": "hard",
     "question": "How many sides does a hexagon have?",
     "answer": "6",
-    "hints": ["Hex- means six. Think of a honeycomb shape.", "Count: it has more sides than a square but is not round."],
-    "solution": "A hexagon has 6 sides. Hex means six. Honeycomb cells are hexagons!"
+    "hints": [
+      "Hex- means six. Think of a honeycomb shape.",
+      "Count: it has more sides than a square but is not round."
+    ],
+    "solution": "A hexagon has 6 sides. Hex means six. Honeycomb cells are hexagons!",
+    "cognitiveDemand": "application"
   }
 ]

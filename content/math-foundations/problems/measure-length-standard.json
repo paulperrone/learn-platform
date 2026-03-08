@@ -5,8 +5,11 @@
     "difficulty": "easy",
     "question": "A pencil is 7 inches long. A crayon is 4 inches long. How much longer is the pencil?",
     "answer": "3 inches",
-    "hints": ["Subtract the shorter length from the longer length."],
-    "solution": "7 − 4 = 3 inches. The pencil is 3 inches longer than the crayon."
+    "hints": [
+      "Subtract the shorter length from the longer length."
+    ],
+    "solution": "7 − 4 = 3 inches. The pencil is 3 inches longer than the crayon.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "measure-length-standard-p2",
@@ -14,8 +17,11 @@
     "difficulty": "easy",
     "question": "A ribbon is 12 inches long. How many feet is that?",
     "answer": "1 foot",
-    "hints": ["There are 12 inches in 1 foot."],
-    "solution": "12 inches = 1 foot."
+    "hints": [
+      "There are 12 inches in 1 foot."
+    ],
+    "solution": "12 inches = 1 foot.",
+    "cognitiveDemand": "application"
   },
   {
     "id": "measure-length-standard-p3",
@@ -23,8 +29,11 @@
     "difficulty": "medium",
     "question": "Sam's desk is 60 centimeters long. Maria's desk is 85 centimeters long. How much longer is Maria's desk?",
     "answer": "25 centimeters",
-    "hints": ["Subtract: 85 − 60."],
-    "solution": "85 − 60 = 25 centimeters. Maria's desk is 25 cm longer."
+    "hints": [
+      "Subtract: 85 − 60."
+    ],
+    "solution": "85 − 60 = 25 centimeters. Maria's desk is 25 cm longer.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "measure-length-standard-p4",
@@ -32,8 +41,12 @@
     "difficulty": "medium",
     "question": "A bookshelf is 3 feet tall. How many inches tall is it?",
     "answer": "36 inches",
-    "hints": ["1 foot = 12 inches.", "Multiply: 3 × 12."],
-    "solution": "3 feet × 12 inches per foot = 36 inches."
+    "hints": [
+      "1 foot = 12 inches.",
+      "Multiply: 3 × 12."
+    ],
+    "solution": "3 feet × 12 inches per foot = 36 inches.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "measure-length-standard-p5",
@@ -41,7 +54,11 @@
     "difficulty": "hard",
     "question": "A rope is 2 meters long. Another rope is 150 centimeters long. Which rope is longer, and by how much?",
     "answer": "The first rope is longer by 50 centimeters",
-    "hints": ["Convert meters to centimeters: 1 meter = 100 centimeters.", "2 meters = 200 cm. Now compare 200 cm and 150 cm."],
-    "solution": "2 meters = 200 cm. 200 − 150 = 50 cm. The first rope is 50 centimeters longer."
+    "hints": [
+      "Convert meters to centimeters: 1 meter = 100 centimeters.",
+      "2 meters = 200 cm. Now compare 200 cm and 150 cm."
+    ],
+    "solution": "2 meters = 200 cm. 200 − 150 = 50 cm. The first rope is 50 centimeters longer.",
+    "cognitiveDemand": "procedural"
   }
 ]

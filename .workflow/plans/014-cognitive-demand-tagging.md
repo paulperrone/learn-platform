@@ -42,9 +42,9 @@ Each presentation level introduces one new demand type and redistributes weights
 
 ## Progress
 
-**Completed:** Phase 1 ✓
+**Completed:** Phase 1 ✓, Phase 2 ✓
 **In Progress:** —
-**Next:** Phase 2
+**Next:** Phase 3
 
 ---
 
@@ -69,10 +69,10 @@ Each presentation level introduces one new demand type and redistributes weights
 
 ---
 
-## Phase 2: Tag Existing Content
+## Phase 2: Tag Existing Content ✓
 **Goal:** Classify all 355 existing math-foundations problems by cognitive demand and update the content JSON files.
 
-1. [ ] [IMP] Build `tools/tag-cognitive-demand.ts` script that:
+1. [x] [IMP] Build `tools/tag-cognitive-demand.ts` script that:
    - Reads each problem JSON file in `content/math-foundations/problems/`
    - For each problem, classifies its cognitive demand using one of:
      - **Rule-based first pass:** Problems with "compute", "solve", "find", "what is X + Y" → `procedural`. Problems with word problem framing (names, scenarios, "how many") → `application`. Problems with "explain", "why" → `conceptual`. Problems with "without computing", "which is bigger", "compare" → `reasoning`. Problems with "what went wrong", "find the mistake" → `error_analysis`.
@@ -80,15 +80,15 @@ Each presentation level introduces one new demand type and redistributes weights
    - Writes the `cognitiveDemand` field into each problem's JSON
    - Outputs a summary: count per demand type, count per grade level x demand type
 
-2. [ ] [VAL] Review the tagging results. Spot-check 20-30 problems across grade levels. Verify:
+2. [x] [VAL] Review the tagging results. Spot-check 20-30 problems across grade levels. Verify:
    - G0-1 problems are mostly `procedural` and `application` (word problems exist at this level)
    - G3-5 problems include some `conceptual` where properties/explanations are asked
    - No obvious misclassifications
    - Adjust rule-based patterns if needed, re-run
 
-3. [ ] [IMP] Update `tools/import-content.ts` to read `cognitiveDemand` from problem JSON and write to the `cognitive_demand` column on import. Run `just import-content` to load tagged content. Verify with a spot-check query: `SELECT cognitive_demand, COUNT(*) FROM assessment_content GROUP BY cognitive_demand`.
+3. [x] [IMP] Update `tools/import-content.ts` to read `cognitiveDemand` from problem JSON and write to the `cognitive_demand` column on import. Run `just import-content` to load tagged content. Verify with a spot-check query: `SELECT cognitive_demand, COUNT(*) FROM assessment_content GROUP BY cognitive_demand`.
 
-**Validation:** All 355 problems tagged. Distribution makes sense (majority procedural for G0-1, increasing diversity at higher grades). Import populates the column. Spot-check passes.
+**Validation:** All 355 problems tagged. Distribution: procedural 223 (62.8%), application 108 (30.4%), reasoning 17 (4.8%), conceptual 7 (2.0%), error_analysis 0 (0%). G0-1 is purely procedural+application as expected. Import populates the column. All 377 tests pass. Spot-check of 24 conceptual/reasoning problems confirmed accurate classification.
 
 ---
 

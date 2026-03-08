@@ -5,8 +5,11 @@
     "difficulty": "easy",
     "question": "Is 8 odd or even?",
     "answer": "even",
-    "hints": ["Can you split 8 into two equal groups?"],
-    "solution": "8 is even because 8 = 4 + 4. It can be split into two equal groups."
+    "hints": [
+      "Can you split 8 into two equal groups?"
+    ],
+    "solution": "8 is even because 8 = 4 + 4. It can be split into two equal groups.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "odd-even-p2",
@@ -14,8 +17,11 @@
     "difficulty": "easy",
     "question": "Is 13 odd or even?",
     "answer": "odd",
-    "hints": ["Try to split 13 into two equal groups. Is there a leftover?"],
-    "solution": "13 is odd because 13 = 6 + 7. You can't split it into two equal groups — there's always 1 left over."
+    "hints": [
+      "Try to split 13 into two equal groups. Is there a leftover?"
+    ],
+    "solution": "13 is odd because 13 = 6 + 7. You can't split it into two equal groups — there's always 1 left over.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "odd-even-p3",
@@ -23,8 +29,11 @@
     "difficulty": "medium",
     "question": "Is 46 odd or even?",
     "answer": "even",
-    "hints": ["Look at the ones digit. If it's 0, 2, 4, 6, or 8, the number is even."],
-    "solution": "46 is even because the ones digit is 6, which is even."
+    "hints": [
+      "Look at the ones digit. If it's 0, 2, 4, 6, or 8, the number is even."
+    ],
+    "solution": "46 is even because the ones digit is 6, which is even.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "odd-even-p4",
@@ -32,8 +41,11 @@
     "difficulty": "medium",
     "question": "Write all the even numbers between 11 and 20.",
     "answer": "12, 14, 16, 18, 20",
-    "hints": ["Even numbers end in 0, 2, 4, 6, or 8."],
-    "solution": "The even numbers between 11 and 20 are: 12, 14, 16, 18, 20."
+    "hints": [
+      "Even numbers end in 0, 2, 4, 6, or 8."
+    ],
+    "solution": "The even numbers between 11 and 20 are: 12, 14, 16, 18, 20.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "odd-even-p5",
@@ -41,7 +53,11 @@
     "difficulty": "hard",
     "question": "If you add two odd numbers together, is the result odd or even? Try 7 + 5.",
     "answer": "even",
-    "hints": ["7 + 5 = 12. Is 12 odd or even?", "Try another pair: 3 + 9 = 12."],
-    "solution": "7 + 5 = 12, which is even. When you add two odd numbers, the result is always even."
+    "hints": [
+      "7 + 5 = 12. Is 12 odd or even?",
+      "Try another pair: 3 + 9 = 12."
+    ],
+    "solution": "7 + 5 = 12, which is even. When you add two odd numbers, the result is always even.",
+    "cognitiveDemand": "procedural"
   }
 ]

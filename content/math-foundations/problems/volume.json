@@ -5,8 +5,12 @@
     "difficulty": "easy",
     "question": "A rectangular prism has a length of 4 cm, a width of 3 cm, and a height of 2 cm. What is its volume?",
     "answer": "24 cubic cm",
-    "hints": ["Use the formula V = l × w × h.", "4 × 3 × 2 = ?"],
-    "solution": "V = 4 × 3 × 2 = 24 cubic cm."
+    "hints": [
+      "Use the formula V = l × w × h.",
+      "4 × 3 × 2 = ?"
+    ],
+    "solution": "V = 4 × 3 × 2 = 24 cubic cm.",
+    "cognitiveDemand": "application"
   },
   {
     "id": "volume-p2",
@@ -14,8 +18,12 @@
     "difficulty": "easy",
     "question": "What is the volume of a cube with side length 5 inches?",
     "answer": "125 cubic inches",
-    "hints": ["A cube has equal length, width, and height.", "V = 5 × 5 × 5."],
-    "solution": "V = 5 × 5 × 5 = 125 cubic inches."
+    "hints": [
+      "A cube has equal length, width, and height.",
+      "V = 5 × 5 × 5."
+    ],
+    "solution": "V = 5 × 5 × 5 = 125 cubic inches.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "volume-p3",
@@ -23,8 +31,12 @@
     "difficulty": "medium",
     "question": "A box is 10 cm long, 6 cm wide, and 8 cm tall. How many 1-cm unit cubes can fit inside?",
     "answer": "480",
-    "hints": ["The number of unit cubes equals the volume.", "V = 10 × 6 × 8."],
-    "solution": "V = 10 × 6 × 8 = 480. So 480 unit cubes fit inside."
+    "hints": [
+      "The number of unit cubes equals the volume.",
+      "V = 10 × 6 × 8."
+    ],
+    "solution": "V = 10 × 6 × 8 = 480. So 480 unit cubes fit inside.",
+    "cognitiveDemand": "application"
   },
   {
     "id": "volume-p4",
@@ -32,8 +44,12 @@
     "difficulty": "medium",
     "question": "A rectangular prism has a volume of 120 cubic feet. Its length is 10 ft and its width is 4 ft. What is its height?",
     "answer": "3 ft",
-    "hints": ["V = l × w × h. Substitute: 120 = 10 × 4 × h.", "120 = 40 × h. Divide both sides by 40."],
-    "solution": "120 = 10 × 4 × h = 40h. h = 120 ÷ 40 = 3 ft."
+    "hints": [
+      "V = l × w × h. Substitute: 120 = 10 × 4 × h.",
+      "120 = 40 × h. Divide both sides by 40."
+    ],
+    "solution": "120 = 10 × 4 × h = 40h. h = 120 ÷ 40 = 3 ft.",
+    "cognitiveDemand": "application"
   },
   {
     "id": "volume-p5",
@@ -41,7 +57,11 @@
     "difficulty": "hard",
     "question": "An L-shaped room can be split into two rectangular prisms. The first part is 8 m long, 4 m wide, and 3 m tall. The second part is 5 m long, 4 m wide, and 3 m tall. What is the total volume of the room?",
     "answer": "156 cubic m",
-    "hints": ["Find the volume of each part separately.", "Add the two volumes together."],
-    "solution": "Part 1: 8 × 4 × 3 = 96 cubic m. Part 2: 5 × 4 × 3 = 60 cubic m. Total: 96 + 60 = 156 cubic m."
+    "hints": [
+      "Find the volume of each part separately.",
+      "Add the two volumes together."
+    ],
+    "solution": "Part 1: 8 × 4 × 3 = 96 cubic m. Part 2: 5 × 4 × 3 = 60 cubic m. Total: 96 + 60 = 156 cubic m.",
+    "cognitiveDemand": "application"
   }
 ]

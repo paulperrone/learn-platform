@@ -5,8 +5,11 @@
     "difficulty": "easy",
     "question": "What is 230 + 150?",
     "answer": "380",
-    "hints": ["Add the hundreds: 200 + 100 = 300. Add the tens: 30 + 50 = 80."],
-    "solution": "230 + 150 = 380. Hundreds: 200 + 100 = 300. Tens: 30 + 50 = 80. Total: 300 + 80 = 380."
+    "hints": [
+      "Add the hundreds: 200 + 100 = 300. Add the tens: 30 + 50 = 80."
+    ],
+    "solution": "230 + 150 = 380. Hundreds: 200 + 100 = 300. Tens: 30 + 50 = 80. Total: 300 + 80 = 380.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "add-within-1000-p2",
@@ -14,8 +17,12 @@
     "difficulty": "easy",
     "question": "What is 412 + 356?",
     "answer": "768",
-    "hints": ["Add each place: ones, tens, hundreds.", "2 + 6 = 8, 10 + 50 = 60, 400 + 300 = 700."],
-    "solution": "412 + 356 = 768. Ones: 2 + 6 = 8. Tens: 10 + 50 = 60. Hundreds: 400 + 300 = 700. Total: 768."
+    "hints": [
+      "Add each place: ones, tens, hundreds.",
+      "2 + 6 = 8, 10 + 50 = 60, 400 + 300 = 700."
+    ],
+    "solution": "412 + 356 = 768. Ones: 2 + 6 = 8. Tens: 10 + 50 = 60. Hundreds: 400 + 300 = 700. Total: 768.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "add-within-1000-p3",
@@ -23,8 +30,12 @@
     "difficulty": "medium",
     "question": "What is 347 + 285?",
     "answer": "632",
-    "hints": ["Add ones: 7 + 5 = 12 (regroup).", "Add tens: 4 + 8 + 1 = 13 tens (regroup again)."],
-    "solution": "347 + 285 = 632. Ones: 7 + 5 = 12 (write 2, carry 1). Tens: 4 + 8 + 1 = 13 (write 3, carry 1). Hundreds: 3 + 2 + 1 = 6. Answer: 632."
+    "hints": [
+      "Add ones: 7 + 5 = 12 (regroup).",
+      "Add tens: 4 + 8 + 1 = 13 tens (regroup again)."
+    ],
+    "solution": "347 + 285 = 632. Ones: 7 + 5 = 12 (write 2, carry 1). Tens: 4 + 8 + 1 = 13 (write 3, carry 1). Hundreds: 3 + 2 + 1 = 6. Answer: 632.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "add-within-1000-p4",
@@ -32,8 +43,12 @@
     "difficulty": "medium",
     "question": "A school has 468 students. 275 more students join. How many students are there now?",
     "answer": "743",
-    "hints": ["Add 468 + 275.", "Start with the ones: 8 + 5 = 13."],
-    "solution": "468 + 275 = 743. Ones: 8 + 5 = 13 (carry 1). Tens: 6 + 7 + 1 = 14 (carry 1). Hundreds: 4 + 2 + 1 = 7. Total: 743."
+    "hints": [
+      "Add 468 + 275.",
+      "Start with the ones: 8 + 5 = 13."
+    ],
+    "solution": "468 + 275 = 743. Ones: 8 + 5 = 13 (carry 1). Tens: 6 + 7 + 1 = 14 (carry 1). Hundreds: 4 + 2 + 1 = 7. Total: 743.",
+    "cognitiveDemand": "application"
   },
   {
     "id": "add-within-1000-p5",
@@ -41,7 +56,11 @@
     "difficulty": "hard",
     "question": "What is 596 + 387?",
     "answer": "983",
-    "hints": ["Every place value will need regrouping.", "Ones: 6 + 7 = 13. Tens: 9 + 8 + 1 = 18. Hundreds: 5 + 3 + 1 = 9."],
-    "solution": "596 + 387 = 983. Ones: 6 + 7 = 13 (carry 1). Tens: 9 + 8 + 1 = 18 (carry 1). Hundreds: 5 + 3 + 1 = 9. Answer: 983."
+    "hints": [
+      "Every place value will need regrouping.",
+      "Ones: 6 + 7 = 13. Tens: 9 + 8 + 1 = 18. Hundreds: 5 + 3 + 1 = 9."
+    ],
+    "solution": "596 + 387 = 983. Ones: 6 + 7 = 13 (carry 1). Tens: 9 + 8 + 1 = 18 (carry 1). Hundreds: 5 + 3 + 1 = 9. Answer: 983.",
+    "cognitiveDemand": "procedural"
   }
 ]

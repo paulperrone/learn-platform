@@ -5,8 +5,11 @@
     "difficulty": "easy",
     "question": "Which is greater: 34 or 67?",
     "answer": "67",
-    "hints": ["Compare the tens first. 3 tens or 6 tens -- which is more?"],
-    "solution": "67 is greater than 34. 6 tens is more than 3 tens, so 67 > 34."
+    "hints": [
+      "Compare the tens first. 3 tens or 6 tens -- which is more?"
+    ],
+    "solution": "67 is greater than 34. 6 tens is more than 3 tens, so 67 > 34.",
+    "cognitiveDemand": "reasoning"
   },
   {
     "id": "compare-two-digit-p2",
@@ -14,8 +17,11 @@
     "difficulty": "easy",
     "question": "Which is less: 52 or 28?",
     "answer": "28",
-    "hints": ["Less means smaller. Compare the tens digits."],
-    "solution": "28 is less than 52. 2 tens is less than 5 tens, so 28 < 52."
+    "hints": [
+      "Less means smaller. Compare the tens digits."
+    ],
+    "solution": "28 is less than 52. 2 tens is less than 5 tens, so 28 < 52.",
+    "cognitiveDemand": "reasoning"
   },
   {
     "id": "compare-two-digit-p3",
@@ -23,8 +29,11 @@
     "difficulty": "medium",
     "question": "Compare 45 and 43. Which is greater?",
     "answer": "45",
-    "hints": ["The tens are the same (both 4). Now compare the ones."],
-    "solution": "45 is greater. Both have 4 tens, but 45 has 5 ones and 43 has 3 ones. 5 > 3."
+    "hints": [
+      "The tens are the same (both 4). Now compare the ones."
+    ],
+    "solution": "45 is greater. Both have 4 tens, but 45 has 5 ones and 43 has 3 ones. 5 > 3.",
+    "cognitiveDemand": "reasoning"
   },
   {
     "id": "compare-two-digit-p4",
@@ -32,8 +41,11 @@
     "difficulty": "medium",
     "question": "Write <, >, or = to compare: 71 ___ 71",
     "answer": "=",
-    "hints": ["Look carefully at both numbers. Are they different?"],
-    "solution": "71 = 71. The numbers are exactly the same, so we use the equals sign."
+    "hints": [
+      "Look carefully at both numbers. Are they different?"
+    ],
+    "solution": "71 = 71. The numbers are exactly the same, so we use the equals sign.",
+    "cognitiveDemand": "reasoning"
   },
   {
     "id": "compare-two-digit-p5",
@@ -41,7 +53,11 @@
     "difficulty": "hard",
     "question": "Put these numbers in order from least to greatest: 58, 39, 85. Write them separated by commas.",
     "answer": "39, 58, 85",
-    "hints": ["Compare the tens digits first to find the smallest.", "3 tens < 5 tens < 8 tens."],
-    "solution": "39, 58, 85. We compare tens: 3 < 5 < 8, so the order is 39, 58, 85."
+    "hints": [
+      "Compare the tens digits first to find the smallest.",
+      "3 tens < 5 tens < 8 tens."
+    ],
+    "solution": "39, 58, 85. We compare tens: 3 < 5 < 8, so the order is 39, 58, 85.",
+    "cognitiveDemand": "procedural"
   }
 ]

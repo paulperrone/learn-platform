@@ -5,8 +5,11 @@
     "difficulty": "easy",
     "question": "An array has 2 rows with 5 stars in each row. How many stars are there in all?",
     "answer": "10",
-    "hints": ["Add: 5 + 5."],
-    "solution": "2 rows of 5 = 5 + 5 = 10 stars."
+    "hints": [
+      "Add: 5 + 5."
+    ],
+    "solution": "2 rows of 5 = 5 + 5 = 10 stars.",
+    "cognitiveDemand": "application"
   },
   {
     "id": "intro-arrays-p2",
@@ -14,8 +17,11 @@
     "difficulty": "easy",
     "question": "An array has 3 rows with 4 dots in each row. How many dots are there in all?",
     "answer": "12",
-    "hints": ["Add 4 three times: 4 + 4 + 4."],
-    "solution": "3 rows of 4 = 4 + 4 + 4 = 12 dots."
+    "hints": [
+      "Add 4 three times: 4 + 4 + 4."
+    ],
+    "solution": "3 rows of 4 = 4 + 4 + 4 = 12 dots.",
+    "cognitiveDemand": "application"
   },
   {
     "id": "intro-arrays-p3",
@@ -23,8 +29,11 @@
     "difficulty": "medium",
     "question": "There are 4 rows of chairs with 5 chairs in each row. Write an addition sentence and find the total.",
     "answer": "20",
-    "hints": ["Write it as repeated addition: 5 + 5 + 5 + 5."],
-    "solution": "4 rows of 5: 5 + 5 + 5 + 5 = 20 chairs."
+    "hints": [
+      "Write it as repeated addition: 5 + 5 + 5 + 5."
+    ],
+    "solution": "4 rows of 5: 5 + 5 + 5 + 5 = 20 chairs.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "intro-arrays-p4",
@@ -32,8 +41,12 @@
     "difficulty": "medium",
     "question": "An array has 5 rows with 3 cupcakes in each row. How many cupcakes in all?",
     "answer": "15",
-    "hints": ["Add 3 five times.", "3 + 3 + 3 + 3 + 3 = ?"],
-    "solution": "5 rows of 3 = 3 + 3 + 3 + 3 + 3 = 15 cupcakes."
+    "hints": [
+      "Add 3 five times.",
+      "3 + 3 + 3 + 3 + 3 = ?"
+    ],
+    "solution": "5 rows of 3 = 3 + 3 + 3 + 3 + 3 = 15 cupcakes.",
+    "cognitiveDemand": "application"
   },
   {
     "id": "intro-arrays-p5",
@@ -41,7 +54,11 @@
     "difficulty": "hard",
     "question": "A marching band has 4 rows with 6 musicians in each row. Another section has 3 rows with 6 musicians in each row. How many musicians are there altogether?",
     "answer": "42",
-    "hints": ["First section: 4 × 6 = 24. Second section: 3 × 6 = 18.", "Add the two totals."],
-    "solution": "First: 6 + 6 + 6 + 6 = 24. Second: 6 + 6 + 6 = 18. Total: 24 + 18 = 42 musicians."
+    "hints": [
+      "First section: 4 × 6 = 24. Second section: 3 × 6 = 18.",
+      "Add the two totals."
+    ],
+    "solution": "First: 6 + 6 + 6 + 6 = 24. Second: 6 + 6 + 6 = 18. Total: 24 + 18 = 42 musicians.",
+    "cognitiveDemand": "application"
   }
 ]

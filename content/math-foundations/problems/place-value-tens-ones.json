@@ -5,8 +5,11 @@
     "difficulty": "easy",
     "question": "How many tens are in the number 30?",
     "answer": "3",
-    "hints": ["30 = ___ tens and 0 ones. Count by tens: 10, 20, 30."],
-    "solution": "30 has 3 tens. 10 + 10 + 10 = 30."
+    "hints": [
+      "30 = ___ tens and 0 ones. Count by tens: 10, 20, 30."
+    ],
+    "solution": "30 has 3 tens. 10 + 10 + 10 = 30.",
+    "cognitiveDemand": "application"
   },
   {
     "id": "place-value-tens-ones-p2",
@@ -14,8 +17,11 @@
     "difficulty": "easy",
     "question": "What number has 2 tens and 5 ones?",
     "answer": "25",
-    "hints": ["2 tens = 20. Then add 5 ones."],
-    "solution": "2 tens and 5 ones = 25. 20 + 5 = 25."
+    "hints": [
+      "2 tens = 20. Then add 5 ones."
+    ],
+    "solution": "2 tens and 5 ones = 25. 20 + 5 = 25.",
+    "cognitiveDemand": "application"
   },
   {
     "id": "place-value-tens-ones-p3",
@@ -23,8 +29,11 @@
     "difficulty": "medium",
     "question": "In the number 47, how many ones are there?",
     "answer": "7",
-    "hints": ["The ones digit is on the right side of the number."],
-    "solution": "47 has 7 ones. The 4 is in the tens place and the 7 is in the ones place."
+    "hints": [
+      "The ones digit is on the right side of the number."
+    ],
+    "solution": "47 has 7 ones. The 4 is in the tens place and the 7 is in the ones place.",
+    "cognitiveDemand": "application"
   },
   {
     "id": "place-value-tens-ones-p4",
@@ -32,8 +41,11 @@
     "difficulty": "medium",
     "question": "What number has 6 tens and 0 ones?",
     "answer": "60",
-    "hints": ["6 tens = 60. There are no ones to add."],
-    "solution": "6 tens and 0 ones = 60. When there are 0 ones, we put a 0 in the ones place."
+    "hints": [
+      "6 tens = 60. There are no ones to add."
+    ],
+    "solution": "6 tens and 0 ones = 60. When there are 0 ones, we put a 0 in the ones place.",
+    "cognitiveDemand": "application"
   },
   {
     "id": "place-value-tens-ones-p5",
@@ -41,7 +53,11 @@
     "difficulty": "hard",
     "question": "Which is bigger: 4 tens and 2 ones, or 2 tens and 9 ones?",
     "answer": "4 tens and 2 ones",
-    "hints": ["First, figure out what number each one makes.", "4 tens and 2 ones = 42. 2 tens and 9 ones = 29. Which is bigger?"],
-    "solution": "4 tens and 2 ones = 42. 2 tens and 9 ones = 29. 42 > 29, so 4 tens and 2 ones is bigger."
+    "hints": [
+      "First, figure out what number each one makes.",
+      "4 tens and 2 ones = 42. 2 tens and 9 ones = 29. Which is bigger?"
+    ],
+    "solution": "4 tens and 2 ones = 42. 2 tens and 9 ones = 29. 42 > 29, so 4 tens and 2 ones is bigger.",
+    "cognitiveDemand": "reasoning"
   }
 ]

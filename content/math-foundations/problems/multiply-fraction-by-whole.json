@@ -5,8 +5,11 @@
     "difficulty": "easy",
     "question": "What is 3 × 1/4?",
     "answer": "3/4",
-    "hints": ["Multiply the whole number by the numerator. The denominator stays the same."],
-    "solution": "3 × 1/4 = 3/4. Think of it as 1/4 + 1/4 + 1/4 = 3/4."
+    "hints": [
+      "Multiply the whole number by the numerator. The denominator stays the same."
+    ],
+    "solution": "3 × 1/4 = 3/4. Think of it as 1/4 + 1/4 + 1/4 = 3/4.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "multiply-fraction-by-whole-p2",
@@ -14,8 +17,11 @@
     "difficulty": "easy",
     "question": "What is 2 × 3/5?",
     "answer": "6/5",
-    "hints": ["Multiply the numerator 3 by 2. The denominator stays 5."],
-    "solution": "2 × 3/5 = 6/5 (or 1 1/5)."
+    "hints": [
+      "Multiply the numerator 3 by 2. The denominator stays 5."
+    ],
+    "solution": "2 × 3/5 = 6/5 (or 1 1/5).",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "multiply-fraction-by-whole-p3",
@@ -23,8 +29,12 @@
     "difficulty": "medium",
     "question": "What is 4 × 2/3? Give your answer as a mixed number.",
     "answer": "2 2/3",
-    "hints": ["4 × 2/3 = 8/3. Now convert 8/3 to a mixed number.", "How many times does 3 go into 8?"],
-    "solution": "4 × 2/3 = 8/3. 8 ÷ 3 = 2 R2. So 8/3 = 2 2/3."
+    "hints": [
+      "4 × 2/3 = 8/3. Now convert 8/3 to a mixed number.",
+      "How many times does 3 go into 8?"
+    ],
+    "solution": "4 × 2/3 = 8/3. 8 ÷ 3 = 2 R2. So 8/3 = 2 2/3.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "multiply-fraction-by-whole-p4",
@@ -32,8 +42,11 @@
     "difficulty": "medium",
     "question": "What is 5 × 3/8?",
     "answer": "15/8",
-    "hints": ["Multiply 5 × 3 = 15. The denominator stays 8."],
-    "solution": "5 × 3/8 = 15/8 (or 1 7/8)."
+    "hints": [
+      "Multiply 5 × 3 = 15. The denominator stays 8."
+    ],
+    "solution": "5 × 3/8 = 15/8 (or 1 7/8).",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "multiply-fraction-by-whole-p5",
@@ -41,7 +54,11 @@
     "difficulty": "hard",
     "question": "A recipe calls for 2/3 cup of flour. If you want to make 6 batches, how many cups of flour do you need? Give your answer as a whole number or mixed number.",
     "answer": "4",
-    "hints": ["Calculate 6 × 2/3.", "6 × 2 = 12. So you get 12/3. Simplify."],
-    "solution": "6 × 2/3 = 12/3 = 4. You need 4 cups of flour."
+    "hints": [
+      "Calculate 6 × 2/3.",
+      "6 × 2 = 12. So you get 12/3. Simplify."
+    ],
+    "solution": "6 × 2/3 = 12/3 = 4. You need 4 cups of flour.",
+    "cognitiveDemand": "procedural"
   }
 ]

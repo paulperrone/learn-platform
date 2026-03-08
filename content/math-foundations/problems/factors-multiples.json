@@ -5,8 +5,11 @@
     "difficulty": "easy",
     "question": "List all the factor pairs of 12.",
     "answer": "1 × 12, 2 × 6, 3 × 4",
-    "hints": ["Start with 1 × 12, then check if 2 divides evenly into 12, then 3, and so on."],
-    "solution": "Factors of 12: 1, 2, 3, 4, 6, 12. Factor pairs: 1 × 12, 2 × 6, 3 × 4."
+    "hints": [
+      "Start with 1 × 12, then check if 2 divides evenly into 12, then 3, and so on."
+    ],
+    "solution": "Factors of 12: 1, 2, 3, 4, 6, 12. Factor pairs: 1 × 12, 2 × 6, 3 × 4.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "factors-multiples-p2",
@@ -14,8 +17,11 @@
     "difficulty": "easy",
     "question": "List the first five multiples of 7.",
     "answer": "7, 14, 21, 28, 35",
-    "hints": ["Multiply 7 by 1, then by 2, then by 3, and keep going."],
-    "solution": "7 × 1 = 7, 7 × 2 = 14, 7 × 3 = 21, 7 × 4 = 28, 7 × 5 = 35."
+    "hints": [
+      "Multiply 7 by 1, then by 2, then by 3, and keep going."
+    ],
+    "solution": "7 × 1 = 7, 7 × 2 = 14, 7 × 3 = 21, 7 × 4 = 28, 7 × 5 = 35.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "factors-multiples-p3",
@@ -23,8 +29,12 @@
     "difficulty": "medium",
     "question": "Is 29 prime or composite? Explain how you know.",
     "answer": "prime",
-    "hints": ["Try dividing 29 by 2, 3, 4, 5. Does any divide evenly?", "You only need to check divisors up to 5 because 6 × 6 = 36 > 29."],
-    "solution": "29 is prime. It is not divisible by 2, 3, 4, or 5. Its only factors are 1 and 29."
+    "hints": [
+      "Try dividing 29 by 2, 3, 4, 5. Does any divide evenly?",
+      "You only need to check divisors up to 5 because 6 × 6 = 36 > 29."
+    ],
+    "solution": "29 is prime. It is not divisible by 2, 3, 4, or 5. Its only factors are 1 and 29.",
+    "cognitiveDemand": "conceptual"
   },
   {
     "id": "factors-multiples-p4",
@@ -32,8 +42,11 @@
     "difficulty": "medium",
     "question": "Is 51 prime or composite?",
     "answer": "composite",
-    "hints": ["Check if 3 divides into 51. Add the digits: 5 + 1 = 6. Is 6 divisible by 3?"],
-    "solution": "51 is composite because 51 = 3 × 17. The digit sum 5 + 1 = 6 is divisible by 3."
+    "hints": [
+      "Check if 3 divides into 51. Add the digits: 5 + 1 = 6. Is 6 divisible by 3?"
+    ],
+    "solution": "51 is composite because 51 = 3 × 17. The digit sum 5 + 1 = 6 is divisible by 3.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "factors-multiples-p5",
@@ -41,7 +54,11 @@
     "difficulty": "hard",
     "question": "Sam is putting 36 stickers into equal groups. List all the different ways he can arrange them into equal groups (using whole numbers greater than 1 for both the number of groups and the number per group).",
     "answer": "2 × 18, 3 × 12, 4 × 9, 6 × 6",
-    "hints": ["Find all factor pairs of 36, but exclude the pair 1 × 36.", "Start checking: does 2 divide 36? Does 3? Does 4? Keep going until the factors repeat."],
-    "solution": "Factor pairs of 36 (excluding 1 × 36): 2 × 18, 3 × 12, 4 × 9, 6 × 6. Sam has 4 different arrangements."
+    "hints": [
+      "Find all factor pairs of 36, but exclude the pair 1 × 36.",
+      "Start checking: does 2 divide 36? Does 3? Does 4? Keep going until the factors repeat."
+    ],
+    "solution": "Factor pairs of 36 (excluding 1 × 36): 2 × 18, 3 × 12, 4 × 9, 6 × 6. Sam has 4 different arrangements.",
+    "cognitiveDemand": "procedural"
   }
 ]

@@ -5,8 +5,11 @@
     "difficulty": "easy",
     "question": "The hour hand is on 3 and the minute hand is on 12. What time is it?",
     "answer": "3:00",
-    "hints": ["When the minute hand is on 12, it's exactly on the hour."],
-    "solution": "The hour hand on 3 and minute hand on 12 means it is 3:00."
+    "hints": [
+      "When the minute hand is on 12, it's exactly on the hour."
+    ],
+    "solution": "The hour hand on 3 and minute hand on 12 means it is 3:00.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "tell-time-minute-p2",
@@ -14,8 +17,12 @@
     "difficulty": "easy",
     "question": "The hour hand is between 7 and 8, and the minute hand is on 6. What time is it?",
     "answer": "7:30",
-    "hints": ["The minute hand on 6 means 30 minutes past.", "The hour hand past 7 means it's still the 7 o'clock hour."],
-    "solution": "Minute hand on 6 = 30 minutes. Hour hand past 7 = 7:30."
+    "hints": [
+      "The minute hand on 6 means 30 minutes past.",
+      "The hour hand past 7 means it's still the 7 o'clock hour."
+    ],
+    "solution": "Minute hand on 6 = 30 minutes. Hour hand past 7 = 7:30.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "tell-time-minute-p3",
@@ -23,8 +30,12 @@
     "difficulty": "medium",
     "question": "The minute hand points to the 3. How many minutes past the hour is it?",
     "answer": "15 minutes",
-    "hints": ["Each number on the clock represents 5 minutes.", "3 × 5 = ?"],
-    "solution": "Each number = 5 minutes. The 3 = 3 × 5 = 15 minutes past the hour."
+    "hints": [
+      "Each number on the clock represents 5 minutes.",
+      "3 × 5 = ?"
+    ],
+    "solution": "Each number = 5 minutes. The 3 = 3 × 5 = 15 minutes past the hour.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "tell-time-minute-p4",
@@ -32,8 +43,11 @@
     "difficulty": "medium",
     "question": "It is 2:45 now. What time will it be in 30 minutes?",
     "answer": "3:15",
-    "hints": ["2:45 + 15 minutes = 3:00. Then add 15 more minutes."],
-    "solution": "2:45 + 30 minutes: first add 15 min to get 3:00, then 15 more = 3:15."
+    "hints": [
+      "2:45 + 15 minutes = 3:00. Then add 15 more minutes."
+    ],
+    "solution": "2:45 + 30 minutes: first add 15 min to get 3:00, then 15 more = 3:15.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "tell-time-minute-p5",
@@ -41,7 +55,11 @@
     "difficulty": "hard",
     "question": "A movie starts at 1:25 and ends at 3:10. How long is the movie?",
     "answer": "1 hour and 45 minutes",
-    "hints": ["From 1:25 to 2:25 is 1 hour.", "From 2:25 to 3:10 is how many more minutes?"],
-    "solution": "1:25 to 2:25 = 1 hour. 2:25 to 3:00 = 35 minutes. 3:00 to 3:10 = 10 minutes. Total: 1 hour + 35 + 10 = 1 hour 45 minutes."
+    "hints": [
+      "From 1:25 to 2:25 is 1 hour.",
+      "From 2:25 to 3:10 is how many more minutes?"
+    ],
+    "solution": "1:25 to 2:25 = 1 hour. 2:25 to 3:00 = 35 minutes. 3:00 to 3:10 = 10 minutes. Total: 1 hour + 35 + 10 = 1 hour 45 minutes.",
+    "cognitiveDemand": "procedural"
   }
 ]

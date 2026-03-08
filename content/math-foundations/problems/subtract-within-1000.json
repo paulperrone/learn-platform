@@ -5,8 +5,11 @@
     "difficulty": "easy",
     "question": "What is 685 − 243?",
     "answer": "442",
-    "hints": ["Subtract each place: 5 − 3, 8 − 4, 6 − 2."],
-    "solution": "685 − 243 = 442. Ones: 5 − 3 = 2. Tens: 8 − 4 = 4. Hundreds: 6 − 2 = 4. Answer: 442."
+    "hints": [
+      "Subtract each place: 5 − 3, 8 − 4, 6 − 2."
+    ],
+    "solution": "685 − 243 = 442. Ones: 5 − 3 = 2. Tens: 8 − 4 = 4. Hundreds: 6 − 2 = 4. Answer: 442.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "subtract-within-1000-p2",
@@ -14,8 +17,11 @@
     "difficulty": "easy",
     "question": "What is 578 − 134?",
     "answer": "444",
-    "hints": ["No regrouping needed. Subtract ones, tens, hundreds."],
-    "solution": "578 − 134 = 444. Ones: 8 − 4 = 4. Tens: 7 − 3 = 4. Hundreds: 5 − 1 = 4. Answer: 444."
+    "hints": [
+      "No regrouping needed. Subtract ones, tens, hundreds."
+    ],
+    "solution": "578 − 134 = 444. Ones: 8 − 4 = 4. Tens: 7 − 3 = 4. Hundreds: 5 − 1 = 4. Answer: 444.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "subtract-within-1000-p3",
@@ -23,8 +29,12 @@
     "difficulty": "medium",
     "question": "What is 532 − 287?",
     "answer": "245",
-    "hints": ["2 − 7 doesn't work, so regroup from the tens.", "After regrouping, the tens need regrouping from hundreds too."],
-    "solution": "532 − 287 = 245. Regroup: 532 = 400 + 120 + 12. Ones: 12 − 7 = 5. Tens: 12 − 8 = 4. Hundreds: 4 − 2 = 2. Answer: 245."
+    "hints": [
+      "2 − 7 doesn't work, so regroup from the tens.",
+      "After regrouping, the tens need regrouping from hundreds too."
+    ],
+    "solution": "532 − 287 = 245. Regroup: 532 = 400 + 120 + 12. Ones: 12 − 7 = 5. Tens: 12 − 8 = 4. Hundreds: 4 − 2 = 2. Answer: 245.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "subtract-within-1000-p4",
@@ -32,8 +42,12 @@
     "difficulty": "medium",
     "question": "A store had 750 apples and sold 368. How many apples are left?",
     "answer": "382",
-    "hints": ["Find 750 − 368.", "You'll need to regroup from hundreds to tens and from tens to ones."],
-    "solution": "750 − 368 = 382. Regroup: 750 = 600 + 140 + 10. Ones: 10 − 8 = 2. Tens: 14 − 6 = 8. Hundreds: 6 − 3 = 3. Answer: 382."
+    "hints": [
+      "Find 750 − 368.",
+      "You'll need to regroup from hundreds to tens and from tens to ones."
+    ],
+    "solution": "750 − 368 = 382. Regroup: 750 = 600 + 140 + 10. Ones: 10 − 8 = 2. Tens: 14 − 6 = 8. Hundreds: 6 − 3 = 3. Answer: 382.",
+    "cognitiveDemand": "application"
   },
   {
     "id": "subtract-within-1000-p5",
@@ -41,7 +55,11 @@
     "difficulty": "hard",
     "question": "What is 800 − 456?",
     "answer": "344",
-    "hints": ["800 has 0 tens and 0 ones, so you need to regroup from hundreds.", "Think: 800 = 700 + 90 + 10."],
-    "solution": "800 − 456 = 344. Regroup: 800 = 700 + 90 + 10. Ones: 10 − 6 = 4. Tens: 9 − 5 = 4. Hundreds: 7 − 4 = 3. Answer: 344."
+    "hints": [
+      "800 has 0 tens and 0 ones, so you need to regroup from hundreds.",
+      "Think: 800 = 700 + 90 + 10."
+    ],
+    "solution": "800 − 456 = 344. Regroup: 800 = 700 + 90 + 10. Ones: 10 − 6 = 4. Tens: 9 − 5 = 4. Hundreds: 7 − 4 = 3. Answer: 344.",
+    "cognitiveDemand": "procedural"
   }
 ]

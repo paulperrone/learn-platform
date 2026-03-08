@@ -5,8 +5,11 @@
     "difficulty": "easy",
     "question": "The short hand points to 3 and the long hand points to 12. What time is it?",
     "answer": "3:00",
-    "hints": ["When the long hand (minute hand) points to 12, it is exactly on the hour."],
-    "solution": "It is 3:00. The short hand (hour hand) on 3 and the long hand on 12 means 3 o'clock."
+    "hints": [
+      "When the long hand (minute hand) points to 12, it is exactly on the hour."
+    ],
+    "solution": "It is 3:00. The short hand (hour hand) on 3 and the long hand on 12 means 3 o'clock.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "tell-time-hour-half-p2",
@@ -14,8 +17,11 @@
     "difficulty": "easy",
     "question": "The short hand points to 7 and the long hand points to 12. What time is it?",
     "answer": "7:00",
-    "hints": ["The long hand on 12 means 'o'clock'. What number is the short hand on?"],
-    "solution": "It is 7:00. The hour hand on 7 and the minute hand on 12 means 7 o'clock."
+    "hints": [
+      "The long hand on 12 means 'o'clock'. What number is the short hand on?"
+    ],
+    "solution": "It is 7:00. The hour hand on 7 and the minute hand on 12 means 7 o'clock.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "tell-time-hour-half-p3",
@@ -23,8 +29,12 @@
     "difficulty": "medium",
     "question": "The long hand points to 6 and the short hand is between 4 and 5. What time is it?",
     "answer": "4:30",
-    "hints": ["When the long hand points to 6, it is half past the hour.", "The short hand is past 4 but not yet at 5."],
-    "solution": "It is 4:30 (half past 4). The minute hand on 6 means 30 minutes. The hour hand between 4 and 5 means it is in the 4 o'clock hour."
+    "hints": [
+      "When the long hand points to 6, it is half past the hour.",
+      "The short hand is past 4 but not yet at 5."
+    ],
+    "solution": "It is 4:30 (half past 4). The minute hand on 6 means 30 minutes. The hour hand between 4 and 5 means it is in the 4 o'clock hour.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "tell-time-hour-half-p4",
@@ -32,8 +42,11 @@
     "difficulty": "medium",
     "question": "What time is 'half past 9'?",
     "answer": "9:30",
-    "hints": ["Half past means 30 minutes after the hour."],
-    "solution": "Half past 9 is 9:30. The minute hand would point to the 6 and the hour hand would be between 9 and 10."
+    "hints": [
+      "Half past means 30 minutes after the hour."
+    ],
+    "solution": "Half past 9 is 9:30. The minute hand would point to the 6 and the hour hand would be between 9 and 10.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "tell-time-hour-half-p5",
@@ -41,7 +54,11 @@
     "difficulty": "hard",
     "question": "It is 2:00 now. What time will it be in one hour?",
     "answer": "3:00",
-    "hints": ["One hour later means the hour hand moves to the next number.", "2 + 1 = ?"],
-    "solution": "2:00 plus one hour is 3:00. The hour hand moves from 2 to 3."
+    "hints": [
+      "One hour later means the hour hand moves to the next number.",
+      "2 + 1 = ?"
+    ],
+    "solution": "2:00 plus one hour is 3:00. The hour hand moves from 2 to 3.",
+    "cognitiveDemand": "procedural"
   }
 ]

@@ -5,8 +5,11 @@
     "difficulty": "easy",
     "question": "Skip count by 2s: 2, 4, 6, 8, ___. What comes next?",
     "answer": "10",
-    "hints": ["Each number is 2 more than the one before it."],
-    "solution": "8 + 2 = 10. The next number when skip counting by 2s is 10."
+    "hints": [
+      "Each number is 2 more than the one before it."
+    ],
+    "solution": "8 + 2 = 10. The next number when skip counting by 2s is 10.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "skip-count-2-5-10-p2",
@@ -14,8 +17,11 @@
     "difficulty": "easy",
     "question": "Skip count by 5s: 5, 10, 15, 20, ___. What comes next?",
     "answer": "25",
-    "hints": ["Each number is 5 more than the one before it."],
-    "solution": "20 + 5 = 25. When skip counting by 5s, the next number after 20 is 25."
+    "hints": [
+      "Each number is 5 more than the one before it."
+    ],
+    "solution": "20 + 5 = 25. When skip counting by 5s, the next number after 20 is 25.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "skip-count-2-5-10-p3",
@@ -23,8 +29,12 @@
     "difficulty": "medium",
     "question": "Skip count by 10s starting at 340: 340, 350, 360, ___. What comes next?",
     "answer": "370",
-    "hints": ["Add 10 to the last number.", "360 + 10 = ?"],
-    "solution": "360 + 10 = 370. When skip counting by 10s, the tens digit goes up by 1 each time."
+    "hints": [
+      "Add 10 to the last number.",
+      "360 + 10 = ?"
+    ],
+    "solution": "360 + 10 = 370. When skip counting by 10s, the tens digit goes up by 1 each time.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "skip-count-2-5-10-p4",
@@ -32,8 +42,12 @@
     "difficulty": "medium",
     "question": "Skip count by 5s starting at 85. What are the next three numbers?",
     "answer": "90, 95, 100",
-    "hints": ["Add 5 each time.", "85 + 5 = 90. Keep going!"],
-    "solution": "85 + 5 = 90, 90 + 5 = 95, 95 + 5 = 100. The next three numbers are 90, 95, 100."
+    "hints": [
+      "Add 5 each time.",
+      "85 + 5 = 90. Keep going!"
+    ],
+    "solution": "85 + 5 = 90, 90 + 5 = 95, 95 + 5 = 100. The next three numbers are 90, 95, 100.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "skip-count-2-5-10-p5",
@@ -41,7 +55,11 @@
     "difficulty": "hard",
     "question": "Skip count by 2s from 194. What are the next three numbers?",
     "answer": "196, 198, 200",
-    "hints": ["Add 2 each time.", "What happens when you add 2 to 198?"],
-    "solution": "194 + 2 = 196, 196 + 2 = 198, 198 + 2 = 200. Notice how we cross from the 100s to 200!"
+    "hints": [
+      "Add 2 each time.",
+      "What happens when you add 2 to 198?"
+    ],
+    "solution": "194 + 2 = 196, 196 + 2 = 198, 198 + 2 = 200. Notice how we cross from the 100s to 200!",
+    "cognitiveDemand": "procedural"
   }
 ]

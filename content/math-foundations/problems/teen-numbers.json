@@ -5,8 +5,11 @@
     "difficulty": "easy",
     "question": "How many tens are in the number 14?",
     "answer": "1",
-    "hints": ["Teen numbers all have 1 ten and some extra ones."],
-    "solution": "14 has 1 ten. All teen numbers (11-19) have exactly 1 ten."
+    "hints": [
+      "Teen numbers all have 1 ten and some extra ones."
+    ],
+    "solution": "14 has 1 ten. All teen numbers (11-19) have exactly 1 ten.",
+    "cognitiveDemand": "application"
   },
   {
     "id": "teen-numbers-p2",
@@ -14,8 +17,11 @@
     "difficulty": "easy",
     "question": "What is 10 and 3 more?",
     "answer": "13",
-    "hints": ["Start at 10 and count 3 more: 11, 12, 13."],
-    "solution": "10 and 3 more is 13. We write it as 13: one ten and three ones."
+    "hints": [
+      "Start at 10 and count 3 more: 11, 12, 13."
+    ],
+    "solution": "10 and 3 more is 13. We write it as 13: one ten and three ones.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "teen-numbers-p3",
@@ -23,8 +29,11 @@
     "difficulty": "medium",
     "question": "Break apart 16: it is 10 and how many more?",
     "answer": "6",
-    "hints": ["16 = 10 + ___. What number do you add to 10 to get 16?"],
-    "solution": "16 is 10 and 6 more. 10 + 6 = 16."
+    "hints": [
+      "16 = 10 + ___. What number do you add to 10 to get 16?"
+    ],
+    "solution": "16 is 10 and 6 more. 10 + 6 = 16.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "teen-numbers-p4",
@@ -32,8 +41,11 @@
     "difficulty": "medium",
     "question": "Which teen number is 10 and 9 more?",
     "answer": "19",
-    "hints": ["10 + 9 = ___"],
-    "solution": "10 and 9 more is 19. 19 is the biggest teen number."
+    "hints": [
+      "10 + 9 = ___"
+    ],
+    "solution": "10 and 9 more is 19. 19 is the biggest teen number.",
+    "cognitiveDemand": "procedural"
   },
   {
     "id": "teen-numbers-p5",
@@ -41,7 +53,11 @@
     "difficulty": "hard",
     "question": "You have 10 red blocks and 7 blue blocks. How many blocks do you have in all? Write the teen number.",
     "answer": "17",
-    "hints": ["10 blocks plus some more blocks makes a teen number.", "10 + 7 = ___"],
-    "solution": "10 + 7 = 17. You have 17 blocks. That is 1 ten and 7 ones."
+    "hints": [
+      "10 blocks plus some more blocks makes a teen number.",
+      "10 + 7 = ___"
+    ],
+    "solution": "10 + 7 = 17. You have 17 blocks. That is 1 ten and 7 ones.",
+    "cognitiveDemand": "application"
   }
 ]
