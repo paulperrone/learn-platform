@@ -95,6 +95,10 @@ async function startSession() {
   loading.value = false;
 }
 
+function todayDate(): string {
+  return new Date().toISOString().slice(0, 10);
+}
+
 async function handleProblemSubmit(data: {
   answer: string;
   correct: boolean;
@@ -119,6 +123,14 @@ async function handleProblemSubmit(data: {
     // Track anonymous progress client-side
     if (isAnonymous.value && data.answer) {
       anon.recordAttempt(currentItem.value?.topicId ?? "", data.correct);
+    }
+    // Record activity for authenticated users
+    if (!isAnonymous.value) {
+      api.recordActivity({
+        date: todayDate(),
+        problems: 1,
+        topicsMastered: result.masteryEvent ? 1 : 0,
+      }).catch(() => {}); // fire-and-forget, don't block session
     }
   }
   loading.value = false;

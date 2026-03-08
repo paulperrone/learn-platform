@@ -1,15 +1,19 @@
 <script setup lang="ts">
 import { ref, onMounted, computed } from "vue";
 import { useApi, withErrorToast } from "@/composables/useApi";
+import { useAuth } from "@/composables/useAuth";
 import { useToast } from "@/composables/useToast";
 
 const api = useApi();
+const auth = useAuth();
 const toast = useToast();
 const topics = ref<any[]>([]);
 const loading = ref(true);
 const error = ref(false);
 const selectedTopic = ref<any>(null);
 const prereqs = ref<string[]>([]);
+const masteredIds = ref<Set<string>>(new Set());
+const inProgressIds = ref<Set<string>>(new Set());
 
 onMounted(async () => {
   const result = await withErrorToast(
@@ -20,6 +24,18 @@ onMounted(async () => {
     topics.value = result.topics;
   } else {
     error.value = true;
+  }
+  // Load mastery state for authenticated users
+  if (auth.isAuthenticated.value) {
+    try {
+      const states = await api.getTopicStates();
+      if (states?.topics) {
+        for (const s of states.topics) {
+          if (s.mastered) masteredIds.value.add(s.topicId);
+          else if (s.reps > 0) inProgressIds.value.add(s.topicId);
+        }
+      }
+    } catch { /* non-critical */ }
   }
   loading.value = false;
 });
@@ -102,10 +118,16 @@ function depthColor(depth: number) {
                   ? 'border-blue-500 ring-2 ring-blue-200 bg-blue-50 font-medium'
                   : prereqs.includes(topic.id)
                     ? 'border-orange-300 bg-orange-50'
-                    : 'border-gray-200 hover:border-gray-300 hover:bg-gray-50'
+                    : masteredIds.has(topic.id)
+                      ? 'border-green-400 bg-green-50'
+                      : inProgressIds.has(topic.id)
+                        ? 'border-blue-300 bg-blue-50'
+                        : 'border-gray-200 hover:border-gray-300 hover:bg-gray-50'
               ]"
-              :style="{ backgroundColor: selectedTopic?.id !== topic.id && !prereqs.includes(topic.id) ? depthColor(depth) : undefined }"
+              :style="{ backgroundColor: selectedTopic?.id !== topic.id && !prereqs.includes(topic.id) && !masteredIds.has(topic.id) && !inProgressIds.has(topic.id) ? depthColor(depth) : undefined }"
             >
+              <span v-if="masteredIds.has(topic.id)" class="text-green-600 text-xs mr-1">&#10003;</span>
+              <span v-else-if="inProgressIds.has(topic.id)" class="text-blue-500 text-xs mr-1">&#9679;</span>
               <span class="text-gray-500 text-xs mr-1">G{{ gradeName(topic.gradeLevel) }}</span>
               {{ topic.name }}
             </button>
@@ -120,6 +142,14 @@ function depthColor(depth: number) {
           <p class="text-sm text-gray-600 mb-4">{{ selectedTopic.description }}</p>
 
           <div class="space-y-2 text-sm">
+            <div v-if="masteredIds.has(selectedTopic.id)" class="flex justify-between">
+              <span class="text-gray-500">Status</span>
+              <span class="text-green-600 font-medium">Mastered</span>
+            </div>
+            <div v-else-if="inProgressIds.has(selectedTopic.id)" class="flex justify-between">
+              <span class="text-gray-500">Status</span>
+              <span class="text-blue-600 font-medium">In Progress</span>
+            </div>
             <div class="flex justify-between">
               <span class="text-gray-500">Grade</span>
               <span>{{ gradeName(selectedTopic.gradeLevel) }}</span>
