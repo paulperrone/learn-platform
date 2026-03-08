@@ -1,0 +1,18 @@
+{
+  "id": "struggling-young",
+  "name": "Struggling Young Learner",
+  "description": "Age 6, low ability (50-60% even at grade 0)",
+  "age": 6,
+  "abilityCurve": {
+    "0": 0.60,
+    "1": 0.50,
+    "2": 0.35,
+    "3": 0.25,
+    "4": 0.15,
+    "5": 0.10
+  },
+  "responseSpeed": { "meanMs": 15000, "stddevMs": 5000 },
+  "hintSeekingProbability": 0.40,
+  "confidenceTendency": "underconfident",
+  "misconceptions": []
+}

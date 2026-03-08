@@ -1,0 +1,18 @@
+{
+  "id": "average-older",
+  "name": "Average Older Learner",
+  "description": "Age 12, moderate ability K-3 (75%), drops grade 4+",
+  "age": 12,
+  "abilityCurve": {
+    "0": 0.90,
+    "1": 0.85,
+    "2": 0.80,
+    "3": 0.75,
+    "4": 0.55,
+    "5": 0.40
+  },
+  "responseSpeed": { "meanMs": 6000, "stddevMs": 2500 },
+  "hintSeekingProbability": 0.15,
+  "confidenceTendency": "calibrated",
+  "misconceptions": []
+}

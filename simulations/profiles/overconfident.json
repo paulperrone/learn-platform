@@ -1,0 +1,18 @@
+{
+  "id": "overconfident",
+  "name": "Overconfident Learner",
+  "description": "Age 10, average ability but confidence always 4-5 regardless of correctness",
+  "age": 10,
+  "abilityCurve": {
+    "0": 0.85,
+    "1": 0.80,
+    "2": 0.70,
+    "3": 0.60,
+    "4": 0.45,
+    "5": 0.35
+  },
+  "responseSpeed": { "meanMs": 4000, "stddevMs": 1500 },
+  "hintSeekingProbability": 0.05,
+  "confidenceTendency": "overconfident",
+  "misconceptions": []
+}

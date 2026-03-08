@@ -1,0 +1,18 @@
+{
+  "id": "strong-older",
+  "name": "Strong Older Learner",
+  "description": "Age 14, high ability across K-5 (90%+)",
+  "age": 14,
+  "abilityCurve": {
+    "0": 0.98,
+    "1": 0.97,
+    "2": 0.95,
+    "3": 0.93,
+    "4": 0.90,
+    "5": 0.88
+  },
+  "responseSpeed": { "meanMs": 5000, "stddevMs": 2000 },
+  "hintSeekingProbability": 0.05,
+  "confidenceTendency": "calibrated",
+  "misconceptions": []
+}

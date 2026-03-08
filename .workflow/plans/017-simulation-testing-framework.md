@@ -13,17 +13,17 @@ Build a framework that runs synthetic learners through the real learning engine 
 
 ## Progress
 
-**Completed:** None yet
+**Completed:** Phase 1 ✓
 **In Progress:** —
-**Next:** Phase 1
+**Next:** Phase 2
 
 ---
 
-## Phase 1: Simulation Harness & Learner Profiles
+## Phase 1: Simulation Harness & Learner Profiles ✓
 **Goal:** Core infrastructure — define learner archetypes, build the simulation loop that calls real services against a real D1, and structured event logging.
 
-1. [ ] [RSH] Design learner profile schema: ability curve (per-grade-level accuracy probability), age/birthYear, answer speed distribution, hint-seeking behavior (probability of requesting hints per phase), confidence calibration tendency (overconfident/underconfident/calibrated), misconception map (specific topicIds or grade ranges where ability drops sharply)
-2. [ ] [IMP] Define 8-10 learner archetypes as JSON profile files in `simulations/profiles/`:
+1. [x] [RSH] Design learner profile schema: ability curve (per-grade-level accuracy probability), age/birthYear, answer speed distribution, hint-seeking behavior (probability of requesting hints per phase), confidence calibration tendency (overconfident/underconfident/calibrated), misconception map (specific topicIds or grade ranges where ability drops sharply)
+2. [x] [IMP] Define 8-10 learner archetypes as JSON profile files in `simulations/profiles/`:
    - `strong-young.json` — age 6, high ability across K-2 (85-95% accuracy), drops at grade 3+
    - `average-young.json` — age 7, moderate ability K-1 (70-80%), drops grade 2+
    - `struggling-young.json` — age 6, low ability (50-60% even at grade 0)
@@ -33,12 +33,12 @@ Build a framework that runs synthetic learners through the real learning engine 
    - `overconfident.json` — age 10, average ability but confidence always 4-5 regardless of correctness
    - `underconfident.json` — age 10, average ability but confidence always 1-2
    - `misconception-fractions.json` — age 10, strong on whole-number ops (90%) but collapses on fraction topics (30-40%)
-   - `fast-learner.json` — age 8, starts average but ability increases by +5% per 10 sessions (simulating learning)
-3. [ ] [IMP] Build answer strategy engine: deterministic function `resolveAnswer(profile, topic, difficulty, cognitiveDemand, phase, sessionNumber) → { correct: boolean, responseMs: number, confidence: number, hintsToRequest: number }`. Uses profile's ability curve + topic grade + difficulty + misconception map to compute weighted probability, then uses seeded PRNG for reproducibility.
-4. [ ] [IMP] Build structured event logger: writes JSONL to `simulations/runs/<profile>-<timestamp>/events.jsonl`. Each event includes: `{ tick, sessionNumber, phase, topicId, problemId, difficulty, cognitiveDemand, presentation, contentDepth, correct, confidence, hintsUsed, rating, stabilityBefore, stabilityAfter, difficultyBefore, difficultyAfter, masteredBefore, masteredAfter, frontierBefore, frontierAfter, rollingAccuracy, presentationWeights, remediationTarget, fireCreditApplied, fadingLevel, interleaveStrand }`.
-5. [ ] [IMP] Build simulation runner: `SimulationRunner` class that given a profile + subject + session count: (a) initializes a fresh D1 with content imported, (b) creates user from profile, (c) runs diagnostic, (d) runs N learning sessions calling real `createSessionService`, `createSRSService`, `createContentService`, `createGradingService` against the D1, (e) advances simulated time between sessions. Uses miniflare D1 (same as test infrastructure).
-6. [ ] [IMP] Add CLI entry points to justfile: `just simulate <profile> [--sessions N] [--seed S]` runs single profile; `just simulate-all [--sessions N]` runs all profiles. Outputs to `simulations/runs/`.
-7. [ ] [TST] Smoke test: run `just simulate average-older --sessions 3` end-to-end, verify JSONL log is produced with correct event structure, no service errors.
+   - `fast-learner.json` — age 8, starts average but ability increases by +0.5% per session (simulating learning)
+3. [x] [IMP] Build answer strategy engine: deterministic function `resolveAnswer(profile, topic, difficulty, cognitiveDemand, phase, sessionNumber) → { correct: boolean, responseMs: number, confidence: number, hintsToRequest: number }`. Uses profile's ability curve + topic grade + difficulty + misconception map to compute weighted probability, then uses seeded PRNG for reproducibility.
+4. [x] [IMP] Build structured event logger: writes JSONL to `simulations/runs/<profile>-<timestamp>/events.jsonl`. Each event includes: `{ tick, sessionNumber, phase, topicId, problemId, difficulty, cognitiveDemand, presentation, contentDepth, correct, confidence, hintsUsed, rating, stabilityBefore, stabilityAfter, difficultyBefore, difficultyAfter, masteredBefore, masteredAfter, frontierBefore, frontierAfter, rollingAccuracy, presentationWeights, remediationTarget, fireCreditApplied, fadingLevel, interleaveStrand }`.
+5. [x] [IMP] Build simulation runner: `SimulationRunner` class that given a profile + subject + session count: (a) initializes a fresh in-memory SQLite DB with content imported, (b) creates user from profile, (c) runs diagnostic, (d) runs N learning sessions calling real `createSessionService`, `createSRSService`, `createContentService`, `createGradingService` against the DB, (e) advances simulated time between sessions. Uses better-sqlite3 with drizzle-orm adapter (same schema as D1).
+6. [x] [IMP] Add CLI entry points to justfile: `just simulate <profile> [sessions] [seed]` runs single profile; `just simulate-all [sessions] [seed]` runs all profiles. Outputs to `simulations/runs/`.
+7. [x] [TST] Smoke test: run `just simulate average-older 5` end-to-end, verify JSONL log is produced with correct event structure (27 fields, 418 events covering diagnostic + 5 learning sessions), no service errors.
 
 **Validation:** `just simulate average-older --sessions 5` completes without error and produces a valid JSONL log file with events covering diagnostic + 5 learning sessions.
 

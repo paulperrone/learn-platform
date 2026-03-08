@@ -1,0 +1,18 @@
+{
+  "id": "underconfident",
+  "name": "Underconfident Learner",
+  "description": "Age 10, average ability but confidence always 1-2",
+  "age": 10,
+  "abilityCurve": {
+    "0": 0.85,
+    "1": 0.80,
+    "2": 0.70,
+    "3": 0.60,
+    "4": 0.45,
+    "5": 0.35
+  },
+  "responseSpeed": { "meanMs": 12000, "stddevMs": 4000 },
+  "hintSeekingProbability": 0.35,
+  "confidenceTendency": "underconfident",
+  "misconceptions": []
+}

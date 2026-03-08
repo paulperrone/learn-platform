@@ -1,0 +1,19 @@
+{
+  "id": "fast-learner",
+  "name": "Fast Learner",
+  "description": "Age 8, starts average but ability increases by +0.5% per session (simulating learning)",
+  "age": 8,
+  "abilityCurve": {
+    "0": 0.75,
+    "1": 0.70,
+    "2": 0.60,
+    "3": 0.50,
+    "4": 0.35,
+    "5": 0.25
+  },
+  "responseSpeed": { "meanMs": 7000, "stddevMs": 2500 },
+  "hintSeekingProbability": 0.15,
+  "confidenceTendency": "calibrated",
+  "misconceptions": [],
+  "learningGain": { "abilityDeltaPerSession": 0.005 }
+}

@@ -1,0 +1,18 @@
+{
+  "id": "strong-young",
+  "name": "Strong Young Learner",
+  "description": "Age 6, high ability across K-2 (85-95%), drops at grade 3+",
+  "age": 6,
+  "abilityCurve": {
+    "0": 0.95,
+    "1": 0.90,
+    "2": 0.85,
+    "3": 0.55,
+    "4": 0.35,
+    "5": 0.20
+  },
+  "responseSpeed": { "meanMs": 8000, "stddevMs": 3000 },
+  "hintSeekingProbability": 0.1,
+  "confidenceTendency": "calibrated",
+  "misconceptions": []
+}

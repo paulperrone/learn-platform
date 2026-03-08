@@ -62,6 +62,14 @@ deploy:
     pnpm --filter web exec vite build
     npx wrangler pages deploy packages/web/dist --project-name learn-platform-web --commit-dirty=true
 
+# Run simulation for a single profile
+simulate profile sessions="5" seed="42":
+    npx tsx simulations/src/cli.ts {{profile}} --sessions {{sessions}} --seed {{seed}}
+
+# Run simulation for all profiles
+simulate-all sessions="5" seed="42":
+    npx tsx simulations/src/cli.ts --all --sessions {{sessions}} --seed {{seed}}
+
 # Clean up task execution state
 task-cleanup:
     #!/usr/bin/env bash

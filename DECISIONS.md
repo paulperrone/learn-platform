@@ -898,3 +898,23 @@ Child creation now creates both an org member (student role) and an account_link
 **Implementation:** `cognitive_demand` column on `assessment_content` (nullable, null treated as procedural). `DEMAND_PROFILES` constant in `packages/shared/src/types.ts` maps presentation levels to demand weight distributions. Session state tracks `servedDemands[]` for distribution-aware selection via `selectTargetDemand()`. All 355 math-foundations problems tagged: 62.8% procedural, 30.4% application, 4.8% reasoning, 2.0% conceptual, 0% error_analysis. Documented in `docs/content-system.md` §14.
 
 **Research basis:** Learning science sections on cognitive load (demand must match developmental stage), worked examples and scaffolding (fading cognitive support), active learning and retrieval practice (varied practice improves transfer), interleaving (mixing problem types improves retention), assessment design (the 85% rule requires calibrated difficulty AND demand variety).
+
+---
+
+## 2026-03-08: Simulation framework uses better-sqlite3 instead of miniflare
+
+**Source:** User session
+
+**Context:** Plan 017 Phase 1 — building the simulation harness to run synthetic learners through real services.
+
+**Decision:** Use `better-sqlite3` with `drizzle-orm/better-sqlite3` adapter (type-cast to `DB`) for the simulation database instead of programmatic miniflare. Each simulation run gets a fresh in-memory SQLite database with the full schema and content imported from `content/` JSON files.
+
+**Why:**
+- Both `better-sqlite3` and `drizzle-orm` are already root dependencies — no new deps needed
+- In-memory SQLite is faster than miniflare's D1 emulation for batch simulation runs
+- The Drizzle query builder API is runtime-compatible across adapters despite different TypeScript types
+- Simpler setup: `new Database(":memory:")` vs configuring miniflare Workers/bindings
+
+**Alternatives rejected:**
+- Programmatic miniflare D1: More faithful to production runtime, but adds setup complexity (Workers script, D1 binding config) for no practical benefit since the services use Drizzle abstraction layer
+- Running simulations as vitest tests: Would get miniflare D1 for free via pool-workers config, but poor CLI experience and no easy way to parameterize profiles/sessions

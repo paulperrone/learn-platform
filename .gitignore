@@ -6,6 +6,7 @@ dist/
 .DS_Store
 content/*/content-pack.json
 tools/visualize-graph.html
+simulations/runs/
 
 # Workflow
 CLAUDE.local.md

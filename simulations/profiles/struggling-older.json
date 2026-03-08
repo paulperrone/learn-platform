@@ -1,0 +1,18 @@
+{
+  "id": "struggling-older",
+  "name": "Struggling Older Learner",
+  "description": "Age 13, low ability K-1 (60%), drops grade 2+",
+  "age": 13,
+  "abilityCurve": {
+    "0": 0.65,
+    "1": 0.60,
+    "2": 0.45,
+    "3": 0.35,
+    "4": 0.25,
+    "5": 0.15
+  },
+  "responseSpeed": { "meanMs": 12000, "stddevMs": 4000 },
+  "hintSeekingProbability": 0.30,
+  "confidenceTendency": "underconfident",
+  "misconceptions": []
+}

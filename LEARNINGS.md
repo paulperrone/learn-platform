@@ -275,3 +275,38 @@ The session service maintains an in-memory `activeSessions` Map as a cache over 
 When `endSession()` is called (triggered by session completion in `respond()`), it sets `stateJson: null` and `endedAt` in the D1 row. Additionally, `persistState()` is only called when `result.type !== "complete"`. This means tests that need to verify session state in D1 must read the state BEFORE the session completes — once `respond()` returns `type: "complete"`, the state is already wiped from D1. Use `getSession()` or read `stateJson` between non-completing responses.
 
 **Context:** Integration test for session state coherence. Initial approach of looping responses then reading state failed because the session completed and wiped stateJson.
+
+---
+
+### 2026-03-08: Diagnostic materialization creates invalid FSRS state for mastered topics
+
+**Source:** User session
+**Area:** Diagnostic service / FSRS / Simulation
+
+When the diagnostic materializes mastery into `user_topic_state`, mastered topics get `state=2` (Review) but `stability=0` and `difficulty=0`. FSRS's `repeat()` produces NaN when given a Review-state card with zero stability, because the scheduling algorithm divides by stability. The NaN propagates to the `.set({ stability: NaN })` update, and SQLite stores NaN as NULL, triggering the NOT NULL constraint.
+
+**Workaround:** The simulation runner sanitizes post-diagnostic state by setting `stability=15, difficulty=5` for any row with `state=2` and `stability=0`. A proper fix would be for `materializeMastery()` in `diagnostic.ts` to set reasonable FSRS defaults when marking topics as mastered.
+
+**Context:** Discovered while building the simulation framework (Plan 017 Phase 1). The production app may not hit this because sessions might not immediately schedule reviews on diagnostic-mastered topics, but it's a latent bug.
+
+---
+
+### 2026-03-08: V8's `new Date()` does NOT call `Date.now()` internally
+
+**Source:** User session
+**Area:** JavaScript / Node.js / Time mocking
+
+Overriding `Date.now()` does NOT affect `new Date()` in V8. The no-arg Date constructor calls the C++ runtime directly to get the current time, bypassing `Date.now()`. To mock time for both patterns, you must replace the Date constructor itself (e.g., via Proxy) — simply patching `Date.now` is insufficient.
+
+**Context:** Simulation time advancement for FSRS scheduling. Services use `new Date()` and `new Date().toISOString()` throughout. A `Proxy`-based approach that intercepts `construct` with zero args works correctly.
+
+---
+
+### 2026-03-08: Drizzle better-sqlite3 adapter is runtime-compatible with D1 adapter services
+
+**Source:** User session
+**Area:** Drizzle ORM / Testing / Simulation
+
+Services typed as `DB` (which is `DrizzleD1Database<typeof schema>`) work correctly at runtime when passed a `drizzle-orm/better-sqlite3` instance cast via `as unknown as DB`. The query builder API is identical — `select()`, `insert()`, `update()`, `returning()`, and `db.query.*` relational queries all work. `await` on synchronous better-sqlite3 results is a no-op. This enables running the full service layer against an in-memory SQLite database without miniflare.
+
+**Context:** Simulation framework uses better-sqlite3 (already a root dependency) instead of miniflare for simplicity. All 71 topics, 355 problems, and 142 examples import correctly. Services run diagnostic + multi-session learning loops without modification.
