@@ -115,7 +115,10 @@
     "newSession": "New Session",
     "viewProgress": "View Progress",
     "saveProgress": "Create Account to Save Progress",
-    "loading": "Loading..."
+    "loading": "Loading...",
+    "problems": "problems",
+    "minutes": "min",
+    "goalMet": "Goal met!"
   },
   "onboarding": {
     "settingUp": "Setting up...",

@@ -26,6 +26,16 @@ const sessionActive = ref(false);
 const recovering = ref(true);
 const isAnonymous = ref(false);
 const masteryEvent = ref<{ topicId: string; topicName: string; unlockedTopics: { id: string; name: string }[] } | null>(null);
+const goalProgress = ref<{
+  problemsCompleted: number;
+  minutesActive: number;
+  topicsMastered: number;
+  goalMet: boolean;
+  goalJustCompleted: boolean;
+  goalType: "minutes" | "problems";
+  goalTarget: number;
+  progress: number;
+} | null>(null);
 
 // Auto-read problem when it appears and ttsAutoRead is enabled
 watch(
@@ -95,10 +105,6 @@ async function startSession() {
   loading.value = false;
 }
 
-function todayDate(): string {
-  return new Date().toISOString().slice(0, 10);
-}
-
 async function handleProblemSubmit(data: {
   answer: string;
   correct: boolean;
@@ -124,13 +130,9 @@ async function handleProblemSubmit(data: {
     if (isAnonymous.value && data.answer) {
       anon.recordAttempt(currentItem.value?.topicId ?? "", data.correct);
     }
-    // Record activity for authenticated users
-    if (!isAnonymous.value) {
-      api.recordActivity({
-        date: todayDate(),
-        problems: 1,
-        topicsMastered: result.masteryEvent ? 1 : 0,
-      }).catch(() => {}); // fire-and-forget, don't block session
+    // Update goal progress from server response
+    if (result.goalProgress) {
+      goalProgress.value = result.goalProgress;
     }
   }
   loading.value = false;
@@ -150,6 +152,9 @@ async function handleExampleDone() {
   if (result) {
     if (result.masteryEvent) {
       masteryEvent.value = result.masteryEvent;
+    }
+    if (result.goalProgress) {
+      goalProgress.value = result.goalProgress;
     }
     currentItem.value = result;
     if (result.type === "complete") {
@@ -228,6 +233,26 @@ async function handleExampleDone() {
 
     <!-- Active session -->
     <div v-else>
+      <!-- Goal progress indicator -->
+      <div v-if="goalProgress && !isAnonymous" class="mb-4 flex items-center gap-3 text-sm text-gray-600">
+        <div class="flex-1 bg-gray-200 rounded-full h-2 overflow-hidden">
+          <div
+            class="h-full rounded-full transition-all duration-500"
+            :class="goalProgress.goalMet ? 'bg-green-500' : 'bg-blue-500'"
+            :style="{ width: `${Math.min(goalProgress.progress * 100, 100)}%` }"
+          />
+        </div>
+        <span class="whitespace-nowrap">
+          <template v-if="goalProgress.goalType === 'problems'">
+            {{ goalProgress.problemsCompleted }}/{{ goalProgress.goalTarget }} {{ t('learn.problems') }}
+          </template>
+          <template v-else>
+            {{ goalProgress.minutesActive }}/{{ goalProgress.goalTarget }} {{ t('learn.minutes') }}
+          </template>
+          <span v-if="goalProgress.goalMet" class="text-green-600 font-medium ml-1">{{ t('learn.goalMet') }}</span>
+        </span>
+      </div>
+
       <!-- Topic header -->
       <div v-if="currentItem?.topicName" class="mb-4">
         <h2 class="text-xl font-semibold text-gray-800">{{ currentItem.topicName }}</h2>

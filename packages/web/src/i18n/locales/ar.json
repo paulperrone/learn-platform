@@ -88,7 +88,10 @@
     "newSession": "جلسة جديدة",
     "viewProgress": "عرض التقدم",
     "saveProgress": "أنشئ حساباً لحفظ التقدم",
-    "loading": "جاري التحميل..."
+    "loading": "جاري التحميل...",
+    "problems": "مسائل",
+    "minutes": "دقيقة",
+    "goalMet": "تم تحقيق الهدف!"
   },
   "onboarding": {
     "settingUp": "جاري الإعداد...",

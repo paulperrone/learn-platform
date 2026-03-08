@@ -88,7 +88,10 @@
     "newSession": "Nueva Sesión",
     "viewProgress": "Ver Progreso",
     "saveProgress": "Crear Cuenta para Guardar Progreso",
-    "loading": "Cargando..."
+    "loading": "Cargando...",
+    "problems": "problemas",
+    "minutes": "min",
+    "goalMet": "Meta cumplida!"
   },
   "onboarding": {
     "settingUp": "Configurando...",

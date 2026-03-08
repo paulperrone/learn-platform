@@ -8,6 +8,7 @@ import { createContentService, type ContentQuery } from "./content.js";
 import type { Problem, WorkedExample, SessionPhase, AssessmentType, VisualAsset, PresentationLevel, ContentDepthLevel, BlendRole, MasteryEvent, CognitiveDemand, DemandDistribution } from "@learn/shared";
 import { DEMAND_PROFILES } from "@learn/shared";
 import { gradeProblem } from "./grading.js";
+import { createActivityService } from "./activity.js";
 
 type SessionState = {
   sessionId: string;
@@ -30,6 +31,7 @@ type SessionState = {
   remediationTargetTopicId?: string; // Prerequisite topic being remediated (targeted remediation)
   remediationOriginalTopicId?: string; // Original topic that triggered remediation
   servedDemands?: CognitiveDemand[]; // Cognitive demands served this session (for demand mixing)
+  totalResponseMs?: number; // Accumulated response time for activity minutes recording
 };
 
 // In-memory cache — D1 is the source of truth
@@ -59,6 +61,7 @@ export function createSessionService(db: DB) {
   const graph = createGraphService(db);
   const srs = createSRSService(db);
   const content = createContentService(db);
+  const activity = createActivityService(db);
 
   /**
    * Identify the key prerequisite to target for remediation.
@@ -448,6 +451,7 @@ export function createSessionService(db: DB) {
       }
 
       state.totalAttempts++;
+      state.totalResponseMs = (state.totalResponseMs ?? 0) + (response.responseMs ?? 0);
       if ((response as any).problemId) {
         state.lastProblemId = (response as any).problemId;
       }
@@ -535,12 +539,40 @@ export function createSessionService(db: DB) {
         }
       }
 
+      // Record activity for authenticated users (fire-and-forget, best-effort)
+      let goalProgress: GoalProgress | undefined;
+      if (!state.isAnonymous) {
+        const today = new Date().toISOString().slice(0, 10);
+        try {
+          const problemResult = await activity.recordProblemCompleted(state.userId, today);
+          if (masteryEvent) {
+            await activity.recordTopicMastered(state.userId, today);
+          }
+          const progress = await activity.getTodayProgress(state.userId, today);
+          goalProgress = {
+            problemsCompleted: progress.problemsCompleted,
+            minutesActive: progress.minutesActive,
+            topicsMastered: progress.topicsMastered,
+            goalMet: progress.goalMet,
+            goalJustCompleted: problemResult.goalJustCompleted,
+            goalType: progress.goal.type,
+            goalTarget: progress.goal.target,
+            progress: progress.progress,
+          };
+        } catch {
+          // Best-effort — don't fail the session response
+        }
+      }
+
       // Advance through learning phases
       const result = await this.advancePhase(state, isCorrect);
 
-      // Attach mastery event to the response
+      // Attach mastery event and goal progress to the response
       if (masteryEvent && result.type !== "error") {
         (result as any).masteryEvent = masteryEvent;
+      }
+      if (goalProgress && result.type !== "error") {
+        (result as any).goalProgress = goalProgress;
       }
 
       // Write-through: persist after every phase transition
@@ -1055,6 +1087,16 @@ export function createSessionService(db: DB) {
 
       activeSessions.delete(sessionId);
 
+      // Record accumulated session minutes (best-effort)
+      if (!state.isAnonymous) {
+        const totalMs = state.totalResponseMs ?? 0;
+        const minutes = Math.ceil(totalMs / 60_000);
+        if (minutes > 0) {
+          const today = new Date().toISOString().slice(0, 10);
+          activity.recordMinutes(state.userId, today, minutes).catch(() => {});
+        }
+      }
+
       // Trigger per-user FSRS optimization (best-effort, non-blocking)
       if (!state.isAnonymous) {
         srs.optimizeUserParams(state.userId).catch(() => {});
@@ -1066,6 +1108,19 @@ export function createSessionService(db: DB) {
 // === Types ===
 
 type MasteryEventField = { masteryEvent?: MasteryEvent };
+
+export type GoalProgress = {
+  problemsCompleted: number;
+  minutesActive: number;
+  topicsMastered: number;
+  goalMet: boolean;
+  goalJustCompleted: boolean;
+  goalType: "minutes" | "problems";
+  goalTarget: number;
+  progress: number; // 0-1
+};
+
+type GoalProgressField = { goalProgress?: GoalProgress };
 
 export type SessionItem =
   | ({
@@ -1082,7 +1137,7 @@ export type SessionItem =
       blendRole?: BlendRole;
       difficultyBias?: "easier" | "on-target" | "harder";
       message: string;
-    } & MasteryEventField)
+    } & MasteryEventField & GoalProgressField)
   | ({
       type: "instruction";
       phase: "instruction";
@@ -1093,7 +1148,7 @@ export type SessionItem =
       presentationLevel?: PresentationLevel;
       blendRole?: BlendRole;
       message: string;
-    } & MasteryEventField)
+    } & MasteryEventField & GoalProgressField)
   | ({
       type: "remediation";
       phase: "remediation";
@@ -1111,8 +1166,8 @@ export type SessionItem =
       blendRole?: BlendRole;
       difficultyBias?: "easier" | "on-target" | "harder";
       message: string;
-    } & MasteryEventField)
-  | ({ type: "complete"; message: string } & MasteryEventField)
+    } & MasteryEventField & GoalProgressField)
+  | ({ type: "complete"; message: string } & MasteryEventField & GoalProgressField)
   | { type: "error"; message: string };
 
 // Fallbacks when no pre-generated content exists
