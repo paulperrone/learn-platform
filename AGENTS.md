@@ -12,7 +12,7 @@ Free, open mastery-learning platform with knowledge graph, spaced repetition (FS
 | Auth | Better-Auth |
 | Frontend | Vue 3 + Vite + Tailwind CSS v4 |
 | SRS | ts-fsrs v5 |
-| LLM | OpenRouter (model-agnostic) |
+| LLM (runtime) | OpenRouter (model-agnostic) — tutoring/grading only |
 | Monorepo | pnpm workspaces |
 | Deploy | Cloudflare Pages |
 
@@ -29,8 +29,8 @@ packages/
     components/      # ProblemView, WorkedExample, ConfidenceSlider
     composables/     # useApi
   shared/src/        # Shared TypeScript types
-content/math-foundations/  # Knowledge graph + problem banks (JSON, offline-generated)
-tools/               # Offline content pipeline (generate, validate, import)
+content/math-foundations/  # Knowledge graph + problem banks (JSON, source of truth)
+tools/               # Content pipeline (validate, import, visualize)
 ```
 
 ## Commands
@@ -57,12 +57,33 @@ just import-content   # Import content/ → local D1
 - Strict TypeScript, no `any`
 - Services are factory functions: `createXService(db)` returning method objects
 - Content is pre-generated offline, validated, then imported — LLM at runtime is for tutoring/grading only
+- **Content generation happens in Claude Code sessions** (not via OpenRouter pipelines). Claude Code is the workhorse for graph design, problem/example generation, encompassing analysis, and content review. OpenRouter is only for in-app runtime LLM features (tutoring, grading, self-explanation evaluation). The `tools/generate-*.ts` scripts using OpenRouter are legacy — prefer direct Claude Code authoring for quality and iteration speed.
 - Subjects belong to disciplines; disciplines define progression models (`mastery-gated`, `context-layered`, `flexible`)
 - Prerequisite edges have types: `required` (hard gate), `recommended` (context), `enriching` (suggestion)
 - Content has depth (`survey`, `contextual`, `analytical`, `synthesis`) and presentation (`primary`, `intermediate`, `standard`, `advanced`) dimensions. See `docs/content-system.md`.
 - FSRS state per user per topic; FIRe credit for encompassing relationships
 - Learning loop phases: pretest → instruction → guided → independent → review → remediation
 - Tests: co-located `__tests__/` directory, `*.test.ts` naming, `@cloudflare/vitest-pool-workers` for API tests with miniflare D1. New services and routes must include vitest tests. Use helpers from `packages/api/src/__tests__/helpers.ts` for DB setup and seeding.
+
+## Content Pipeline
+
+**Source of truth:** `content/<subject>/graph.json` + `problems/*.json` + `examples/*.json` (all in git).
+**D1 is a disposable read model** — rebuilt from content files via `just import-content`.
+
+### How content is created
+
+All content authoring happens in **Claude Code sessions**. The workflow:
+
+1. **Design the knowledge graph** — Define topics, prerequisites, and encompassing edges in `graph.json`. Follow the discipline's progression model (below) and the encompassing methodology in `docs/content-system.md`. Use `just visualize <subject>` to inspect the DAG structure.
+2. **Generate problems** — Write `content/<subject>/problems/<topic-id>.json` files. 5 problems per topic at 3 difficulty levels. Follow platform-medium constraints (screen + text input only).
+3. **Generate worked examples** — Write `content/<subject>/examples/<topic-id>.json` files. 2 examples per topic with step-by-step breakdowns.
+4. **Validate** — `just validate-content` checks DAG integrity, topic coverage, and platform-incompatible instructions.
+5. **Import** — `just import-content` loads everything into local D1.
+6. **Visualize** — `just visualize <subject>` generates an interactive graph visualization.
+
+**OpenRouter is NOT used for content generation.** The `tools/generate-*.ts` scripts are legacy. Claude Code produces higher quality content with better iteration — it can read the graph, understand prerequisites, check consistency, and fix issues in the same session.
+
+**Non-text content** (images, animations, audio) will use separate pipelines when needed, but text content (graphs, problems, examples) is always authored through Claude Code.
 
 ## Content Creation by Discipline
 

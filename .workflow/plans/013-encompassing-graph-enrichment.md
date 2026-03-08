@@ -151,3 +151,30 @@ Starting state: 71 topics, 108 prerequisite edges, 42 encompassing edges. 24 top
 2. [ ] [DOC] Add DECISIONS.md entry: "Encompassing enrichment methodology established. Weight rubric (0.3-0.9 scale), three identification categories (within-strand, cross-strand, application→foundation), target density per discipline type. Math-foundations enriched from 42 to 133 edges with 1.9 edges/topic density. Methodology documented in docs/content-system.md for reuse across all future subjects."
 
 **Validation:** `docs/content-system.md` has a complete encompassing methodology section. A developer creating a new subject graph can follow it end-to-end without needing to read this plan. DECISIONS.md records the methodology establishment.
+
+---
+
+## Phase 5: Remove Legacy OpenRouter Generation Scripts
+**Goal:** Remove the `tools/generate-*.ts` scripts that call OpenRouter for content generation. Content authoring happens in Claude Code sessions (see DECISIONS.md 2026-03-07). These scripts are dead code that will confuse future contributors.
+
+**Key context:**
+- `tools/generate-graph.ts` — generates graph.json via OpenRouter. Replaced by Claude Code graph design sessions.
+- `tools/generate-problems.ts` — generates problems/*.json via OpenRouter. Replaced by Claude Code problem authoring.
+- `tools/generate-examples.ts` — generates examples/*.json via OpenRouter. Replaced by Claude Code example authoring.
+- `tools/generate-content-pack.ts` — bundles graph + problems + examples into content-pack.json. May still be useful for distribution; evaluate.
+- The justfile has recipes `generate-problems` and `generate-examples` that invoke these scripts.
+- `CLAUDE.md` already documents these as legacy (updated 2026-03-07).
+
+**Steps:**
+
+1. [ ] [IMP] Remove `tools/generate-graph.ts`, `tools/generate-problems.ts`, `tools/generate-examples.ts`. Keep `tools/generate-content-pack.ts` if it's useful for bundling/distribution (check if anything depends on `content-pack.json`).
+
+2. [ ] [IMP] Remove the `generate-problems` and `generate-examples` recipes from the justfile. If `generate-content-pack.ts` is kept, keep its recipe.
+
+3. [ ] [IMP] Check if any OpenRouter-specific dependencies in `package.json` are ONLY used by these scripts (not by the runtime LLM service). If so, remove them.
+
+4. [ ] [IMP] Update `CLAUDE.md` to remove the "legacy" caveat — once the scripts are gone, there's nothing legacy to warn about.
+
+5. [ ] [TST] `just validate` still passes. No remaining references to the removed scripts.
+
+**Validation:** The `tools/` directory contains only validation, import, visualization, and export scripts — no generation scripts that call external LLMs. The content pipeline section in CLAUDE.md is clean with no legacy caveats.
