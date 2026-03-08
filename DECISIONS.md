@@ -856,3 +856,23 @@ Child creation now creates both an org member (student role) and an account_link
 - LLM-based error analysis: Too expensive per failure event, adds latency, and the heuristic is good enough for the common case
 - Always use same-topic easy problems: The original approach, but fails to address the root cause (prerequisite weakness)
 - Recursive deep prerequisite tracing on first failure: Over-aggressive; the direct prerequisite is usually the right target
+
+---
+
+## 2026-03-07: Content generation via Claude Code, not OpenRouter pipelines
+
+**Decision:** All content authoring (knowledge graphs, problems, worked examples, encompassing analysis) happens in Claude Code sessions. OpenRouter is reserved exclusively for in-app runtime LLM features (tutoring, grading, self-explanation). The `tools/generate-*.ts` scripts that call OpenRouter are legacy.
+
+**Reasoning:** Claude Code produces higher-quality content because it can read the full graph, understand prerequisites, check cross-topic consistency, validate platform constraints, and fix issues — all in the same session. Pipeline scripts generate content in isolation per-topic with no broader context. The encompassing enrichment (plan 013) demonstrated this: the original LLM-generated graph had only 42 sparse encompassings; a Claude Code session analyzing the full graph structure added 91 well-calibrated edges. Non-text content (images, animations) will use separate pipelines when needed.
+
+**Alternatives rejected:**
+- OpenRouter pipeline scripts for all generation: Generates in isolation, can't reason about cross-topic consistency, produces sparse/miscalibrated encompassings
+- Hybrid (pipeline for bulk, Claude Code for review): Adds complexity without clear benefit — Claude Code can generate at the same scale with better quality
+
+---
+
+## 2026-03-07: Graph progression is bottom-up (foundations at bottom, advanced at top)
+
+**Decision:** The knowledge graph is presented bottom-up everywhere — in the visualization tool, in the explore pages, and conceptually. Students start at the bottom and climb upward through mastery. Foundations are at the bottom, advanced topics at the top.
+
+**Reasoning:** Matches the mental model of "building up" knowledge. Math Academy and PhysicsGraph both use this orientation. More intuitive than top-down — "I'm climbing toward mastery" vs. "I'm descending through a hierarchy."
