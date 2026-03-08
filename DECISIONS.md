@@ -876,3 +876,13 @@ Child creation now creates both an org member (student role) and an account_link
 **Decision:** The knowledge graph is presented bottom-up everywhere — in the visualization tool, in the explore pages, and conceptually. Students start at the bottom and climb upward through mastery. Foundations are at the bottom, advanced topics at the top.
 
 **Reasoning:** Matches the mental model of "building up" knowledge. Math Academy and PhysicsGraph both use this orientation. More intuitive than top-down — "I'm climbing toward mastery" vs. "I'm descending through a hierarchy."
+
+---
+
+## 2026-03-07: Encompassing enrichment methodology established
+
+**Decision:** Formalized the encompassing relationship design methodology with a weight rubric (0.3-0.9 scale), three identification categories (within-strand, cross-strand, application→foundation), and target density per discipline type. Documented in `docs/content-system.md` §4 for reuse across all future subjects.
+
+**Results from math-foundations:** Enriched from 42 to 133 encompassing edges with 1.9 edges/topic density. FIRe compression tests confirm enriched graph covers significantly more topics per review session than the sparse original. Multi-hop credit flows 3 hops deep with correct weight diminishment. Cross-strand edges (word problems → computation) provide the highest compression value.
+
+**Why formalize now:** Without documented methodology, each new subject would need ad-hoc encompassing design. The rubric, density targets, and validation checklist make encompassing design reproducible.

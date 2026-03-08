@@ -17,9 +17,9 @@ FIRe (Fractional Implicit Repetition) is one of the platform's most powerful fea
 
 ## Progress
 
-**Completed:** Phase 1 ✓, Phase 2 ✓, Phase 3 ✓
+**Completed:** Phase 1 ✓, Phase 2 ✓, Phase 3 ✓, Phase 4 ✓
 **In Progress:** —
-**Next:** Phase 4
+**Next:** Phase 5
 
 ### Phase 1-2 Results (completed 2026-03-07)
 
@@ -107,7 +107,7 @@ Starting state: 71 topics, 108 prerequisite edges, 42 encompassing edges. 24 top
 
 ---
 
-## Phase 4: Methodology Documentation
+## Phase 4: Methodology Documentation ✓
 **Goal:** Document the encompassing design methodology as a reusable playbook for all future subjects. This is critical — right now the weight rubric and identification strategies exist only in this plan file, not in any reusable documentation.
 
 **Key context:**
@@ -118,7 +118,7 @@ Starting state: 71 topics, 108 prerequisite edges, 42 encompassing edges. 24 top
 
 **Steps:**
 
-1. [ ] [DOC] Add "Encompassing Relationships" section to `docs/content-system.md` (after the existing "Prerequisite Edge Types" section, around line 120). Cover:
+1. [x] [DOC] Add "Encompassing Relationships" section to `docs/content-system.md` (after the existing "Prerequisite Edge Types" section, around line 120). Cover:
 
    - **Definition:** When topic A implicitly exercises topic B during practice. Distinct from prerequisites (sequencing) — encompassings are about implicit practice credit.
 
@@ -148,7 +148,7 @@ Starting state: 71 topics, 108 prerequisite edges, 42 encompassing edges. 24 top
      - Don't create edges below 0.3 — the FIRe credit is negligible and adds graph complexity
      - Don't skip cross-strand edges — they provide the most compression value
 
-2. [ ] [DOC] Add DECISIONS.md entry: "Encompassing enrichment methodology established. Weight rubric (0.3-0.9 scale), three identification categories (within-strand, cross-strand, application→foundation), target density per discipline type. Math-foundations enriched from 42 to 133 edges with 1.9 edges/topic density. Methodology documented in docs/content-system.md for reuse across all future subjects."
+2. [x] [DOC] Add DECISIONS.md entry: "Encompassing enrichment methodology established. Weight rubric (0.3-0.9 scale), three identification categories (within-strand, cross-strand, application→foundation), target density per discipline type. Math-foundations enriched from 42 to 133 edges with 1.9 edges/topic density. Methodology documented in docs/content-system.md for reuse across all future subjects."
 
 **Validation:** `docs/content-system.md` has a complete encompassing methodology section. A developer creating a new subject graph can follow it end-to-end without needing to read this plan. DECISIONS.md records the methodology establishment.
 

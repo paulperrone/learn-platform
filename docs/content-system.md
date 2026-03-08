@@ -11,15 +11,16 @@
 1. [Content Hierarchy](#1-content-hierarchy)
 2. [Content Dimensions](#2-content-dimensions)
 3. [Disciplines & Progression Models](#3-disciplines--progression-models)
-4. [Content Depth](#4-content-depth)
-5. [Presentation Levels](#5-presentation-levels)
-6. [Content Selection Algorithm](#6-content-selection-algorithm)
-7. [Building Mastery-Gated Subjects](#7-building-mastery-gated-subjects)
-8. [Building Context-Layered Subjects](#8-building-context-layered-subjects)
-9. [Building Hybrid Subjects](#9-building-hybrid-subjects)
-10. [Building Flexible Subjects](#10-building-flexible-subjects)
-11. [Cross-Discipline Prerequisites](#11-cross-discipline-prerequisites)
-12. [Content Creation Workflow](#12-content-creation-workflow)
+4. [Encompassing Relationships](#4-encompassing-relationships)
+5. [Content Depth](#5-content-depth)
+6. [Presentation Levels](#6-presentation-levels)
+7. [Content Selection Algorithm](#7-content-selection-algorithm)
+8. [Building Mastery-Gated Subjects](#8-building-mastery-gated-subjects)
+9. [Building Context-Layered Subjects](#9-building-context-layered-subjects)
+10. [Building Hybrid Subjects](#10-building-hybrid-subjects)
+11. [Building Flexible Subjects](#11-building-flexible-subjects)
+12. [Cross-Discipline Prerequisites](#12-cross-discipline-prerequisites)
+13. [Content Creation Workflow](#13-content-creation-workflow)
 
 ---
 
@@ -121,7 +122,102 @@ Not every combination needs to exist. Build the most impactful combinations firs
 
 ---
 
-## 4. Content Depth
+## 4. Encompassing Relationships
+
+Encompassing edges are distinct from prerequisites. **Prerequisites** control sequencing — "you must learn A before B." **Encompassings** define implicit practice — "practicing B implicitly exercises A."
+
+When a student practices topic B and B encompasses A, the platform gives A fractional FIRe (Fractional Implicit Repetition) credit, reducing or delaying A's next explicit review. With sufficient encompassing density, most topics can be maintained through implicit repetition alone — Math Academy reports roughly one explicit review per topic on average.
+
+### How to Identify Encompassing Edges
+
+Encompassing edges fall into three categories:
+
+**1. Within-strand chains** — Same operation at increasing complexity. Every higher-level topic in a strand encompasses its predecessors.
+
+Examples:
+- `add-within-100` encompasses `add-within-20` (which encompasses `add-within-10`)
+- `subtract-within-100-fluent` encompasses `subtract-within-100` (which encompasses `subtract-within-20`)
+- `equivalent-fractions` encompasses `fractions-of-whole`
+
+Within-strand chains are the most natural encompassings — if you can add within 100, you're implicitly practicing adding within 20.
+
+**2. Cross-strand** — A topic in one strand exercises skills from another strand.
+
+Examples:
+- Word problems encompass computation: `addition-word-problems` encompasses `add-within-100-fluent`
+- Multi-step problems encompass component operations: `multi-step-word-problems` encompasses add, subtract, multiply, divide fluency
+- Measurement encompasses arithmetic: `perimeter-area` encompasses `add-within-100-fluent` and `multiply-within-100`
+- Fractions encompass whole-number operations: `equivalent-fractions` encompasses `multiply-within-100`
+
+Cross-strand edges provide the most compression value — one word-problem review can implicitly refresh multiple computation skills.
+
+**3. Application → foundation** — Any topic that uses a simpler skill as a tool (not as the primary focus).
+
+Examples:
+- Long division encompasses multiplication (checking quotients)
+- Order of operations encompasses all four basic operations
+- Coordinate geometry encompasses number lines and basic arithmetic
+
+### Weight Assignment Rubric
+
+Encompassing weights represent how much practicing the parent topic exercises the child skill. Weights range from 0.3 to 1.0:
+
+| Weight Range | Meaning | Examples |
+|---|---|---|
+| **0.8-1.0** | Advanced topic exercises the simpler skill nearly identically | `count-to-20` → `count-to-10` (0.8), `add-within-20` → `add-within-5` (0.9) |
+| **0.5-0.7** | Simpler skill is a core component exercised every time | `place-value-hundreds` → `place-value-tens-ones` (0.7), `factors-multiples` → `multiply-within-100` (0.5) |
+| **0.3-0.4** | Simpler skill is exercised incidentally | `order-of-operations` → `add-within-100-fluent` (0.3), `money-coins-bills` → `skip-count-2-5-10` (0.4) |
+
+**Heuristics:**
+- Within-strand edges: 0.6-0.8 (direct skill progression)
+- Cross-strand edges: 0.3-0.5 (incidental exercise)
+- Word-problem edges: 0.4-0.6 (computation is exercised but not the focus)
+- Never create edges below 0.3 — the FIRe credit is negligible and adds graph complexity
+
+### Target Density by Discipline
+
+| Discipline type | Target edges/topic | Rationale |
+|---|---|---|
+| **Mastery-gated** (math, CS) | 1.0-2.0 | Dense within-strand chains + cross-strand links. Skills compound heavily. |
+| **Context-layered** (history, philosophy) | 0.5-1.0 | "Causes of Civil War" encompasses "Slavery in America" (~0.4). Less direct skill transfer. |
+| **Flexible** (vocabulary, geography) | 0.3-0.5 | Root words encompass derived words (~0.3). Topics are mostly independent. |
+
+Math-foundations achieved 1.9 edges/topic (133 edges across 71 topics) with measurable FIRe compression improvement.
+
+### Multi-Hop Credit
+
+FIRe credit flows through encompassing chains up to 3 hops deep, with cumulative weight diminishing at each hop:
+
+```
+order-of-operations
+  → multiply-within-100  (hop 1, weight 0.4)
+    → skip-count-2-5-10  (hop 2, cumulative 0.4 × 0.4 = 0.16)
+      → count-to-20      (hop 3, cumulative 0.16 × 0.3 = 0.048 → pruned, below 0.05)
+```
+
+Paths with cumulative weight below 0.05 are pruned as negligible.
+
+### Validation Checklist
+
+Run after adding encompassing edges to any subject:
+
+1. `just validate-content` passes (DAG integrity, all topic IDs valid)
+2. Every leaf topic (no children in the prerequisite graph) is encompassed by at least one parent
+3. Multi-hop chains exist for deep graph regions (3+ hops)
+4. Weight distribution is reasonable (mostly 0.3-0.6 with some 0.7-0.9 within-strand)
+5. `just visualize <subject>` shows clear hierarchical structure
+6. FIRe compression test passes (`fire-compression.test.ts` can be parameterized for new subjects)
+
+### Anti-Patterns
+
+- **Too indirect:** Don't add encompassings where the exercise is tangential. Reading a word problem doesn't encompass phonics.
+- **Inflated weights:** Don't inflate weights to game compression. Inaccurate weights mean students skip reviews they actually need.
+- **Below threshold:** Don't create edges below 0.3. The FIRe credit is negligible and adds graph complexity.
+- **Missing cross-strand:** Don't skip cross-strand edges. They provide the most compression value — one review covering multiple skill areas.
+
+---
+
+## 5. Content Depth
 
 Content depth is the most important dimension for context-layered disciplines. It controls the analytical sophistication of how a topic is treated.
 
@@ -169,7 +265,7 @@ Original analysis, cross-domain connections, argument construction.
 
 ---
 
-## 5. Presentation Levels
+## 6. Presentation Levels
 
 Presentation adapts the same knowledge for different audiences. This is NOT about depth (that's `content_depth`) — it's about **how the content is packaged**.
 
@@ -205,7 +301,7 @@ The system determines presentation from the learner's age/profile, not from wher
 
 ---
 
-## 6. Content Selection Algorithm
+## 7. Content Selection Algorithm
 
 Implemented in `packages/api/src/services/content.ts` via `createContentService(db)`.
 
@@ -242,7 +338,7 @@ When the session service needs content for a learner on a given topic:
 
 ---
 
-## 7. Building Mastery-Gated Subjects
+## 8. Building Mastery-Gated Subjects
 
 For math, CS, grammar, music technique, etc.
 
@@ -266,7 +362,7 @@ For math, CS, grammar, music technique, etc.
 
 ---
 
-## 8. Building Context-Layered Subjects
+## 9. Building Context-Layered Subjects
 
 For history, philosophy, literature, political science, etc.
 
@@ -333,7 +429,7 @@ These are NOT rigid grade assignments — a gifted 10-year-old might work at ana
 
 ---
 
-## 9. Building Hybrid Subjects
+## 10. Building Hybrid Subjects
 
 Economics, some sciences, and advanced language courses have both compounding skills and contextual knowledge.
 
@@ -357,7 +453,7 @@ The mastery-gated progression model ensures skill prerequisites are enforced whi
 
 ---
 
-## 10. Building Flexible Subjects
+## 11. Building Flexible Subjects
 
 Vocabulary, geography, anatomy, etc.
 
@@ -374,7 +470,7 @@ Vocabulary, geography, anatomy, etc.
 
 ---
 
-## 11. Cross-Discipline Prerequisites
+## 12. Cross-Discipline Prerequisites
 
 Prerequisites can cross discipline boundaries:
 
@@ -397,7 +493,7 @@ Prerequisites can cross discipline boundaries:
 
 ---
 
-## 12. Content Creation Workflow
+## 13. Content Creation Workflow
 
 ### Priority Matrix
 
