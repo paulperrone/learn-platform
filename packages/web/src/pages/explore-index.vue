@@ -1,15 +1,18 @@
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
 import { useApi, withErrorToast } from "@/composables/useApi";
+import { useAuth } from "@/composables/useAuth";
 import { useMeta } from "@/composables/useMeta";
 import { useI18n } from "vue-i18n";
 import type { Subject } from "@learn/shared";
 
 const api = useApi();
+const auth = useAuth();
 const { t } = useI18n();
 const subjects = ref<Subject[]>([]);
 const loading = ref(true);
 const error = ref(false);
+const subjectProgress = ref<Map<string, { mastered: number; total: number; progress: number }>>(new Map());
 
 onMounted(async () => {
   useMeta({
@@ -20,6 +23,24 @@ onMounted(async () => {
   const result = await withErrorToast(() => api.getPublicSubjects(), "Failed to load subjects");
   if (result) {
     subjects.value = result.subjects;
+
+    // Load per-subject mastery for authenticated users
+    if (auth.isAuthenticated.value) {
+      const statePromises = result.subjects.map((s) =>
+        api.getUserGraphState(s.id).catch(() => null)
+      );
+      const states = await Promise.all(statePromises);
+      for (let i = 0; i < result.subjects.length; i++) {
+        const state = states[i];
+        if (state) {
+          subjectProgress.value.set(result.subjects[i].id, {
+            mastered: state.summary.mastered,
+            total: state.summary.total,
+            progress: state.summary.progress,
+          });
+        }
+      }
+    }
   } else {
     error.value = true;
   }
@@ -86,6 +107,18 @@ function gradeLabel(range: string) {
             {{ subject.topicCount }} topics
           </span>
           <span class="text-blue-600 group-hover:underline ml-auto">Browse &rarr;</span>
+        </div>
+        <!-- User progress (authenticated only) -->
+        <div v-if="subjectProgress.get(subject.id)" class="mt-3 pt-3 border-t border-gray-100">
+          <div class="flex items-center gap-2 text-xs text-gray-500 mb-1">
+            <span>{{ subjectProgress.get(subject.id)!.mastered }}/{{ subjectProgress.get(subject.id)!.total }} mastered</span>
+          </div>
+          <div class="h-1.5 bg-gray-100 rounded-full overflow-hidden">
+            <div
+              class="h-full bg-green-500 rounded-full transition-all"
+              :style="{ width: `${Math.round(subjectProgress.get(subject.id)!.progress * 100)}%` }"
+            />
+          </div>
         </div>
       </RouterLink>
     </div>

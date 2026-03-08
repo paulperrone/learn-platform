@@ -197,8 +197,7 @@ describe("session-activity integration", () => {
 
     // Seed counting as nearly-mastered so next correct answer triggers mastery
     await seedUserTopicState(user.id, "counting", {
-      status: "learning",
-      repetitions: 3,
+      reps: 3,
       stability: 5.0,
       difficulty: 0.3,
     });

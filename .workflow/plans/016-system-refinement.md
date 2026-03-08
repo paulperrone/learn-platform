@@ -13,9 +13,9 @@ Closes the remaining system-level gaps identified in the March 7 review and Plan
 
 ## Progress
 
-**Completed:** Phase 1
+**Completed:** Phase 1, Phase 2
 **In Progress:** —
-**Next:** Phase 2
+**Next:** Phase 3
 
 ---
 
@@ -35,16 +35,16 @@ Closes the remaining system-level gaps identified in the March 7 review and Plan
 
 ---
 
-## Phase 2: Explore Mastery Visualization
+## Phase 2: Explore Mastery Visualization ✓
 **Goal:** Authenticated users see their mastery state overlaid on the knowledge graph in the modern explore pages.
 
-1. [ ] [IMP] Add authenticated graph endpoint `GET /graph/:subjectId/user-state` that returns topic list merged with user's `userTopicState` (mastered, reps, status: notStarted/inProgress/mastered/locked)
-2. [ ] [IMP] Update `explore-subject.vue` to dual-load: public graph + user state (if authenticated); show mastery badges per topic (checkmark, progress dot, lock icon, frontier highlight)
-3. [ ] [IMP] Update `explore-topic.vue` to show user's state for the topic: mastery status, prerequisite completion, review schedule, next recommended action
-4. [ ] [IMP] Update `explore-index.vue` to show per-subject completion percentage and topic counts (mastered/total) for authenticated users
-5. [ ] [IMP] Visual design: color-coded topic nodes by status, frontier topics highlighted, prerequisite chain shows completion state; graceful fallback for unauthenticated (same public view as today)
-6. [ ] [TST] Test authenticated vs unauthenticated explore views return correct data; verify mastery state reflects actual `userTopicState` records
-7. [ ] [VAL] Visual inspection in dev: mastered topics green, in-progress blue, locked gray, frontier highlighted
+1. [x] [IMP] Add authenticated graph endpoint `GET /graph/:subjectId/user-state` that returns topic list merged with user's `userTopicState` (mastered, reps, status: notStarted/inProgress/mastered/locked)
+2. [x] [IMP] Update `explore-subject.vue` to dual-load: public graph + user state (if authenticated); show mastery badges per topic (checkmark, progress dot, lock icon, frontier highlight)
+3. [x] [IMP] Update `explore-topic.vue` to show user's state for the topic: mastery status, prerequisite completion, review schedule, next recommended action
+4. [x] [IMP] Update `explore-index.vue` to show per-subject completion percentage and topic counts (mastered/total) for authenticated users
+5. [x] [IMP] Visual design: color-coded topic nodes by status, frontier topics highlighted, prerequisite chain shows completion state; graceful fallback for unauthenticated (same public view as today)
+6. [x] [TST] Test authenticated vs unauthenticated explore views return correct data; verify mastery state reflects actual `userTopicState` records
+7. [x] [VAL] Visual inspection in dev: mastered topics green, in-progress blue, locked gray, frontier highlighted
 
 **Validation:** Authenticated user sees their progress overlaid on the knowledge graph. Unauthenticated users see the same public view as before.
 

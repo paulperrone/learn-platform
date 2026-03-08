@@ -76,6 +76,13 @@ export function useApi() {
       const userId = await getUserId();
       return request<any>(`/graph/frontier/${userId}`);
     },
+    getUserGraphState: async (subjectId: string) => {
+      const userId = await getUserId();
+      return request<{
+        topics: (Topic & { status: "not-started" | "in-progress" | "mastered" | "frontier"; repetitions: number; stability: number | null; lastReviewedAt: string | null })[];
+        summary: { total: number; mastered: number; inProgress: number; frontier: number; progress: number };
+      }>(`/graph/${subjectId}/user-state/${userId}`);
+    },
 
     // Sessions
     getActiveSession: async () => {

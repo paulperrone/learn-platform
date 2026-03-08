@@ -2,11 +2,13 @@
 import { ref, computed, onMounted } from "vue";
 import { useRoute } from "vue-router";
 import { useApi, withErrorToast } from "@/composables/useApi";
+import { useAuth } from "@/composables/useAuth";
 import { useMeta } from "@/composables/useMeta";
 import type { Topic, Subject } from "@learn/shared";
 
 const route = useRoute();
 const api = useApi();
+const auth = useAuth();
 const subjectId = route.params.subjectId as string;
 
 const subject = ref<Subject | null>(null);
@@ -15,6 +17,8 @@ const prerequisites = ref<{ from: string; to: string; strength: number }[]>([]);
 const loading = ref(true);
 const error = ref(false);
 const selectedGrade = ref<number | null>(null);
+const topicStatusMap = ref<Map<string, "not-started" | "in-progress" | "mastered" | "frontier">>(new Map());
+const masterySummary = ref<{ total: number; mastered: number; inProgress: number; frontier: number; progress: number } | null>(null);
 
 onMounted(async () => {
   const [graphResult, topicsResult] = await Promise.all([
@@ -31,6 +35,17 @@ onMounted(async () => {
       title: `${graphResult.subject.name} — Explore`,
       description: `Browse ${graphResult.topics.length} topics in ${graphResult.subject.name}. See prerequisites, grade levels, and how topics connect.`,
     });
+
+    // Load user mastery state if authenticated
+    if (auth.isAuthenticated.value) {
+      const userState = await api.getUserGraphState(subjectId).catch(() => null);
+      if (userState) {
+        masterySummary.value = userState.summary;
+        for (const t of userState.topics) {
+          topicStatusMap.value.set(t.id, t.status);
+        }
+      }
+    }
   } else {
     error.value = true;
   }
@@ -81,6 +96,18 @@ const maxDepth = computed(() => Math.max(...topics.value.map((t) => t.depth), 0)
 function depthBar(depth: number) {
   return Math.round((depth / Math.max(maxDepth.value, 1)) * 100);
 }
+
+function topicStatus(topicId: string) {
+  return topicStatusMap.value.get(topicId) ?? "not-started";
+}
+
+function statusBorderClass(topicId: string) {
+  const s = topicStatus(topicId);
+  if (s === "mastered") return "border-green-300 bg-green-50/30";
+  if (s === "in-progress") return "border-blue-300 bg-blue-50/30";
+  if (s === "frontier") return "border-amber-300 bg-amber-50/30";
+  return "border-gray-200";
+}
 </script>
 
 <template>
@@ -119,6 +146,33 @@ function depthBar(depth: number) {
         </div>
       </div>
 
+      <!-- Mastery progress bar (authenticated only) -->
+      <div v-if="masterySummary" class="mb-6 bg-white rounded-lg border border-gray-200 p-4">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-sm font-medium text-gray-700">Your Progress</span>
+          <span class="text-sm text-gray-500">
+            {{ masterySummary.mastered }}/{{ masterySummary.total }} mastered
+          </span>
+        </div>
+        <div class="h-2.5 bg-gray-100 rounded-full overflow-hidden">
+          <div
+            class="h-full bg-green-500 rounded-full transition-all duration-500"
+            :style="{ width: `${Math.round(masterySummary.progress * 100)}%` }"
+          />
+        </div>
+        <div class="flex gap-4 mt-2 text-xs text-gray-500">
+          <span class="flex items-center gap-1">
+            <span class="w-2 h-2 rounded-full bg-green-500" /> {{ masterySummary.mastered }} mastered
+          </span>
+          <span class="flex items-center gap-1">
+            <span class="w-2 h-2 rounded-full bg-blue-500" /> {{ masterySummary.inProgress }} in progress
+          </span>
+          <span class="flex items-center gap-1">
+            <span class="w-2 h-2 rounded-full bg-amber-500" /> {{ masterySummary.frontier }} ready to learn
+          </span>
+        </div>
+      </div>
+
       <!-- Grade filter -->
       <div class="flex flex-wrap gap-2 mb-6">
         <button
@@ -154,12 +208,25 @@ function depthBar(depth: number) {
             v-for="topic in gradeTopics"
             :key="topic.id"
             :to="`/explore/${subjectId}/${topic.id}`"
-            class="bg-white rounded-lg border border-gray-200 p-4 hover:border-blue-300 hover:shadow-sm transition-all group"
+            class="rounded-lg border p-4 hover:shadow-sm transition-all group"
+            :class="statusBorderClass(topic.id)"
           >
             <div class="flex items-start justify-between mb-2">
-              <h3 class="font-medium text-gray-900 group-hover:text-blue-600 transition-colors">
-                {{ topic.name }}
-              </h3>
+              <div class="flex items-center gap-2">
+                <!-- Mastery status icon -->
+                <span v-if="topicStatus(topic.id) === 'mastered'" class="text-green-600 shrink-0" title="Mastered">
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+                </span>
+                <span v-else-if="topicStatus(topic.id) === 'in-progress'" class="text-blue-500 shrink-0" title="In progress">
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><circle cx="10" cy="10" r="4" /></svg>
+                </span>
+                <span v-else-if="topicStatus(topic.id) === 'frontier'" class="text-amber-500 shrink-0" title="Ready to learn">
+                  <svg class="w-4 h-4" fill="none" viewBox="0 0 20 20" stroke="currentColor" stroke-width="2"><circle cx="10" cy="10" r="7" /></svg>
+                </span>
+                <h3 class="font-medium text-gray-900 group-hover:text-blue-600 transition-colors">
+                  {{ topic.name }}
+                </h3>
+              </div>
               <span v-if="topic.standardCode" class="text-xs font-mono text-gray-400 ml-2 shrink-0">
                 {{ topic.standardCode }}
               </span>

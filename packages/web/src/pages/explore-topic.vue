@@ -2,11 +2,13 @@
 import { ref, computed, onMounted } from "vue";
 import { useRoute } from "vue-router";
 import { useApi, withErrorToast } from "@/composables/useApi";
+import { useAuth } from "@/composables/useAuth";
 import { useMeta } from "@/composables/useMeta";
 import type { Topic, Problem, WorkedExample } from "@learn/shared";
 
 const route = useRoute();
 const api = useApi();
+const auth = useAuth();
 const subjectId = route.params.subjectId as string;
 const topicId = route.params.topicId as string;
 
@@ -17,6 +19,8 @@ const error = ref(false);
 const activeTab = ref<"problems" | "examples">("problems");
 const expandedProblem = ref<string | null>(null);
 const expandedExample = ref<string | null>(null);
+const userTopicStatus = ref<"not-started" | "in-progress" | "mastered" | "frontier">("not-started");
+const prereqStatusMap = ref<Map<string, string>>(new Map());
 
 onMounted(async () => {
   const [topicResult, graphResult] = await Promise.all([
@@ -40,6 +44,20 @@ onMounted(async () => {
       .filter((p) => p.to === topicId)
       .map((p) => p.from);
     prereqTopics.value = graphResult.topics.filter((t) => prereqIds.includes(t.id));
+  }
+
+  // Load user state for this topic if authenticated
+  if (auth.isAuthenticated.value) {
+    const userState = await api.getUserGraphState(subjectId).catch(() => null);
+    if (userState) {
+      const thisTopicState = userState.topics.find((t) => t.id === topicId);
+      if (thisTopicState) {
+        userTopicStatus.value = thisTopicState.status;
+      }
+      for (const t of userState.topics) {
+        prereqStatusMap.value.set(t.id, t.status);
+      }
+    }
   }
 
   loading.value = false;
@@ -123,6 +141,30 @@ function toggleExample(id: string) {
         </div>
       </div>
 
+      <!-- User mastery state (authenticated only) -->
+      <div v-if="auth.isAuthenticated.value && userTopicStatus !== 'not-started'" class="mb-6 rounded-lg border p-4"
+        :class="{
+          'bg-green-50 border-green-200': userTopicStatus === 'mastered',
+          'bg-blue-50 border-blue-200': userTopicStatus === 'in-progress',
+          'bg-amber-50 border-amber-200': userTopicStatus === 'frontier',
+        }"
+      >
+        <div class="flex items-center gap-2">
+          <span v-if="userTopicStatus === 'mastered'" class="text-green-700 font-medium text-sm flex items-center gap-1.5">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+            You've mastered this topic
+          </span>
+          <span v-else-if="userTopicStatus === 'in-progress'" class="text-blue-700 font-medium text-sm flex items-center gap-1.5">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><circle cx="10" cy="10" r="4" /></svg>
+            In progress — keep practicing
+          </span>
+          <span v-else-if="userTopicStatus === 'frontier'" class="text-amber-700 font-medium text-sm flex items-center gap-1.5">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 20 20" stroke="currentColor" stroke-width="2"><circle cx="10" cy="10" r="7" /></svg>
+            Ready to learn — start a session to begin
+          </span>
+        </div>
+      </div>
+
       <!-- Prerequisites -->
       <div v-if="prereqTopics.length > 0" class="mb-6 bg-orange-50 border border-orange-200 rounded-lg p-4">
         <h2 class="text-sm font-semibold text-orange-800 mb-2">
@@ -133,8 +175,14 @@ function toggleExample(id: string) {
             v-for="prereq in prereqTopics"
             :key="prereq.id"
             :to="`/explore/${subjectId}/${prereq.id}`"
-            class="text-sm bg-white border border-orange-200 text-orange-700 px-3 py-1 rounded-full hover:bg-orange-100 transition-colors"
+            class="text-sm border px-3 py-1 rounded-full hover:opacity-80 transition-colors flex items-center gap-1"
+            :class="prereqStatusMap.get(prereq.id) === 'mastered'
+              ? 'bg-green-50 border-green-300 text-green-700'
+              : prereqStatusMap.get(prereq.id) === 'in-progress'
+                ? 'bg-blue-50 border-blue-300 text-blue-700'
+                : 'bg-white border-orange-200 text-orange-700'"
           >
+            <svg v-if="prereqStatusMap.get(prereq.id) === 'mastered'" class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
             {{ prereq.name }}
           </RouterLink>
         </div>

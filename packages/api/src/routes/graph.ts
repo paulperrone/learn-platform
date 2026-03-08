@@ -1,7 +1,9 @@
 import { Hono } from "hono";
+import { eq, and } from "drizzle-orm";
 import type { Env } from "../index.js";
 import { getDb } from "../db/index.js";
 import { createGraphService } from "../services/graph.js";
+import * as schema from "../db/schema.js";
 
 export const graphRoutes = new Hono<Env>();
 
@@ -67,4 +69,54 @@ graphRoutes.get("/frontier/:userId", async (c) => {
   const graph = createGraphService(db);
   const frontier = await graph.computeFrontier(c.req.param("userId"));
   return c.json(frontier);
+});
+
+// GET /graph/:subjectId/user-state/:userId — topics merged with user mastery state
+graphRoutes.get("/:subjectId/user-state/:userId", async (c) => {
+  const db = getDb(c.env.DB);
+  const graph = createGraphService(db);
+  const subjectId = c.req.param("subjectId");
+  const userId = c.req.param("userId");
+
+  const topics = await graph.getSubjectTopics(subjectId);
+  const states = await db
+    .select()
+    .from(schema.userTopicState)
+    .where(eq(schema.userTopicState.userId, userId));
+
+  const stateMap = new Map(states.map((s) => [s.topicId, s]));
+  const frontier = await graph.computeFrontier(userId);
+  const frontierIds = new Set(frontier.topics.map((t: any) => t.id));
+
+  const topicsWithState = topics.map((topic: any) => {
+    const state = stateMap.get(topic.id);
+    let status: "not-started" | "in-progress" | "mastered" | "frontier" = "not-started";
+    if (state?.mastered) {
+      status = "mastered";
+    } else if (state) {
+      status = "in-progress";
+    } else if (frontierIds.has(topic.id)) {
+      status = "frontier";
+    }
+    return {
+      ...topic,
+      status,
+      repetitions: state?.reps ?? 0,
+      stability: state?.stability ?? null,
+      lastReviewedAt: state?.lastReview ?? null,
+    };
+  });
+
+  const mastered = topicsWithState.filter((t) => t.status === "mastered").length;
+
+  return c.json({
+    topics: topicsWithState,
+    summary: {
+      total: topics.length,
+      mastered,
+      inProgress: topicsWithState.filter((t) => t.status === "in-progress").length,
+      frontier: topicsWithState.filter((t) => t.status === "frontier").length,
+      progress: topics.length > 0 ? mastered / topics.length : 0,
+    },
+  });
 });
