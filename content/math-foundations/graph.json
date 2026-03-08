@@ -211,7 +211,7 @@
     {
       "id": "multiply-within-100",
       "name": "Multiply Within 100",
-      "description": "Fluently multiply within 100 (multiplication facts to 10×10).",
+      "description": "Fluently multiply within 100 (multiplication facts to 10\u00d710).",
       "gradeLevel": 3,
       "standardCode": "3.OA.7"
     },
@@ -372,7 +372,7 @@
     {
       "id": "multiply-fraction-by-whole",
       "name": "Multiply Fraction by Whole Number",
-      "description": "Multiply a fraction by a whole number (e.g., 3 × 2/5).",
+      "description": "Multiply a fraction by a whole number (e.g., 3 \u00d7 2/5).",
       "gradeLevel": 4,
       "standardCode": "4.NF.4"
     },
@@ -477,7 +477,7 @@
     {
       "id": "volume",
       "name": "Volume",
-      "description": "Find volumes of right rectangular prisms. Use V = l × w × h.",
+      "description": "Find volumes of right rectangular prisms. Use V = l \u00d7 w \u00d7 h.",
       "gradeLevel": 5,
       "standardCode": "5.MD.3"
     },
@@ -504,158 +504,1212 @@
     }
   ],
   "prerequisites": [
-    { "from": "count-to-10", "to": "count-to-20", "strength": 1.0 },
-    { "from": "count-to-20", "to": "count-to-100", "strength": 1.0 },
-    { "from": "count-to-10", "to": "compare-numbers-k", "strength": 1.0 },
-    { "from": "count-to-10", "to": "add-within-5", "strength": 1.0 },
-    { "from": "count-to-10", "to": "subtract-within-5", "strength": 1.0 },
-    { "from": "add-within-5", "to": "add-within-10", "strength": 1.0 },
-    { "from": "subtract-within-5", "to": "subtract-within-10", "strength": 1.0 },
-    { "from": "count-to-10", "to": "teen-numbers", "strength": 0.8 },
-    { "from": "count-to-20", "to": "teen-numbers", "strength": 1.0 },
-    { "from": "add-within-10", "to": "add-within-20", "strength": 1.0 },
-    { "from": "subtract-within-10", "to": "subtract-within-20", "strength": 1.0 },
-    { "from": "teen-numbers", "to": "add-within-20", "strength": 0.7 },
-    { "from": "add-within-20", "to": "add-subtract-word-problems-1", "strength": 1.0 },
-    { "from": "subtract-within-20", "to": "add-subtract-word-problems-1", "strength": 1.0 },
-    { "from": "teen-numbers", "to": "place-value-tens-ones", "strength": 1.0 },
-    { "from": "count-to-100", "to": "place-value-tens-ones", "strength": 0.8 },
-    { "from": "place-value-tens-ones", "to": "compare-two-digit", "strength": 1.0 },
-    { "from": "compare-numbers-k", "to": "compare-two-digit", "strength": 0.7 },
-    { "from": "add-within-20", "to": "add-within-100", "strength": 1.0 },
-    { "from": "place-value-tens-ones", "to": "add-within-100", "strength": 1.0 },
-    { "from": "count-to-100", "to": "skip-count-2-5-10", "strength": 1.0 },
-    { "from": "add-within-10", "to": "skip-count-2-5-10", "strength": 0.6 },
-    { "from": "add-within-100", "to": "add-within-100-fluent", "strength": 1.0 },
-    { "from": "subtract-within-20", "to": "subtract-within-100-fluent", "strength": 1.0 },
-    { "from": "place-value-tens-ones", "to": "subtract-within-100-fluent", "strength": 0.8 },
-    { "from": "add-within-100-fluent", "to": "add-within-1000", "strength": 1.0 },
-    { "from": "place-value-tens-ones", "to": "place-value-hundreds", "strength": 1.0 },
-    { "from": "place-value-hundreds", "to": "add-within-1000", "strength": 0.8 },
-    { "from": "subtract-within-100-fluent", "to": "subtract-within-1000", "strength": 1.0 },
-    { "from": "place-value-hundreds", "to": "subtract-within-1000", "strength": 0.8 },
-    { "from": "skip-count-2-5-10", "to": "intro-arrays", "strength": 0.7 },
-    { "from": "add-within-20", "to": "intro-arrays", "strength": 0.8 },
-    { "from": "count-to-20", "to": "odd-even", "strength": 0.8 },
-    { "from": "skip-count-2-5-10", "to": "odd-even", "strength": 0.6 },
-    { "from": "intro-arrays", "to": "multiply-within-100", "strength": 1.0 },
-    { "from": "skip-count-2-5-10", "to": "multiply-within-100", "strength": 0.7 },
-    { "from": "multiply-within-100", "to": "divide-within-100", "strength": 1.0 },
-    { "from": "multiply-within-100", "to": "multiply-word-problems", "strength": 1.0 },
-    { "from": "divide-within-100", "to": "division-word-problems", "strength": 1.0 },
-    { "from": "multiply-within-100", "to": "properties-of-multiplication", "strength": 1.0 },
-    { "from": "multiply-within-100", "to": "patterns-arithmetic", "strength": 0.7 },
-    { "from": "add-within-100-fluent", "to": "patterns-arithmetic", "strength": 0.5 },
-    { "from": "place-value-hundreds", "to": "place-value-rounding", "strength": 1.0 },
-    { "from": "add-within-1000", "to": "multi-digit-add-sub", "strength": 1.0 },
-    { "from": "subtract-within-1000", "to": "multi-digit-add-sub", "strength": 1.0 },
-    { "from": "place-value-tens-ones", "to": "intro-fractions", "strength": 0.5 },
-    { "from": "divide-within-100", "to": "intro-fractions", "strength": 0.6 },
-    { "from": "intro-fractions", "to": "fractions-number-line", "strength": 1.0 },
-    { "from": "fractions-number-line", "to": "equivalent-fractions-3", "strength": 1.0 },
-    { "from": "fractions-number-line", "to": "compare-fractions-3", "strength": 1.0 },
-    { "from": "measure-length-nonstandard", "to": "measure-length-standard", "strength": 1.0 },
-    { "from": "multiply-within-100", "to": "area-intro", "strength": 0.5 },
-    { "from": "measure-length-standard", "to": "perimeter", "strength": 0.8 },
-    { "from": "add-within-100-fluent", "to": "perimeter", "strength": 0.5 },
-    { "from": "area-intro", "to": "area-multiply", "strength": 1.0 },
-    { "from": "multiply-within-100", "to": "area-multiply", "strength": 1.0 },
-    { "from": "tell-time-hour-half", "to": "tell-time-minute", "strength": 1.0 },
-    { "from": "add-within-100-fluent", "to": "money-coins-bills", "strength": 0.7 },
-    { "from": "multiply-within-100", "to": "multi-digit-multiply", "strength": 1.0 },
-    { "from": "properties-of-multiplication", "to": "multi-digit-multiply", "strength": 0.8 },
-    { "from": "multi-digit-add-sub", "to": "multi-digit-multiply", "strength": 0.6 },
-    { "from": "divide-within-100", "to": "long-division", "strength": 1.0 },
-    { "from": "multi-digit-add-sub", "to": "long-division", "strength": 0.7 },
-    { "from": "multiply-within-100", "to": "factors-multiples", "strength": 1.0 },
-    { "from": "divide-within-100", "to": "factors-multiples", "strength": 1.0 },
-    { "from": "equivalent-fractions-3", "to": "equivalent-fractions-4", "strength": 1.0 },
-    { "from": "multiply-within-100", "to": "equivalent-fractions-4", "strength": 0.5 },
-    { "from": "equivalent-fractions-4", "to": "compare-fractions-4", "strength": 1.0 },
-    { "from": "compare-fractions-3", "to": "compare-fractions-4", "strength": 0.8 },
-    { "from": "intro-fractions", "to": "add-subtract-fractions", "strength": 1.0 },
-    { "from": "add-within-20", "to": "add-subtract-fractions", "strength": 0.3 },
-    { "from": "intro-fractions", "to": "multiply-fraction-by-whole", "strength": 1.0 },
-    { "from": "multiply-within-100", "to": "multiply-fraction-by-whole", "strength": 0.5 },
-    { "from": "equivalent-fractions-4", "to": "decimals-intro", "strength": 0.8 },
-    { "from": "place-value-hundreds", "to": "decimals-intro", "strength": 0.7 },
-    { "from": "shapes-2d-k", "to": "angles-intro", "strength": 0.5 },
-    { "from": "measure-length-standard", "to": "angles-intro", "strength": 0.3 },
-    { "from": "shapes-2d-k", "to": "line-symmetry", "strength": 0.7 },
-    { "from": "multi-digit-multiply", "to": "multi-step-word-problems", "strength": 0.8 },
-    { "from": "long-division", "to": "multi-step-word-problems", "strength": 0.8 },
-    { "from": "multiply-word-problems", "to": "multi-step-word-problems", "strength": 0.7 },
-    { "from": "decimals-intro", "to": "place-value-decimals", "strength": 1.0 },
-    { "from": "multi-digit-multiply", "to": "multiply-multi-digit", "strength": 1.0 },
-    { "from": "long-division", "to": "divide-multi-digit", "strength": 1.0 },
-    { "from": "equivalent-fractions-4", "to": "add-subtract-fractions-unlike", "strength": 1.0 },
-    { "from": "add-subtract-fractions", "to": "add-subtract-fractions-unlike", "strength": 1.0 },
-    { "from": "multiply-fraction-by-whole", "to": "multiply-fractions", "strength": 1.0 },
-    { "from": "equivalent-fractions-4", "to": "multiply-fractions", "strength": 0.6 },
-    { "from": "multiply-fractions", "to": "divide-fractions", "strength": 1.0 },
-    { "from": "divide-within-100", "to": "divide-fractions", "strength": 0.5 },
-    { "from": "place-value-decimals", "to": "decimal-operations", "strength": 1.0 },
-    { "from": "multi-digit-add-sub", "to": "decimal-operations", "strength": 0.5 },
-    { "from": "multi-digit-multiply", "to": "order-of-operations", "strength": 0.7 },
-    { "from": "add-subtract-fractions-unlike", "to": "order-of-operations", "strength": 0.3 },
-    { "from": "order-of-operations", "to": "variables-expressions", "strength": 1.0 },
-    { "from": "place-value-decimals", "to": "coordinate-plane", "strength": 0.3 },
-    { "from": "add-within-100-fluent", "to": "coordinate-plane", "strength": 0.5 },
-    { "from": "multiply-multi-digit", "to": "volume", "strength": 0.8 },
-    { "from": "area-multiply", "to": "volume", "strength": 1.0 },
-    { "from": "shapes-2d-k", "to": "classify-2d-shapes", "strength": 0.8 },
-    { "from": "angles-intro", "to": "classify-2d-shapes", "strength": 0.7 },
-    { "from": "line-symmetry", "to": "classify-2d-shapes", "strength": 0.3 },
-    { "from": "add-subtract-fractions-unlike", "to": "line-plots", "strength": 0.6 },
-    { "from": "bar-graphs-picture-graphs", "to": "line-plots", "strength": 0.7 },
-    { "from": "multiply-multi-digit", "to": "unit-conversion", "strength": 0.5 },
-    { "from": "divide-multi-digit", "to": "unit-conversion", "strength": 0.5 },
-    { "from": "decimal-operations", "to": "unit-conversion", "strength": 0.6 },
-    { "from": "measure-length-standard", "to": "unit-conversion", "strength": 0.7 }
+    {
+      "from": "count-to-10",
+      "to": "count-to-20",
+      "strength": 1.0
+    },
+    {
+      "from": "count-to-20",
+      "to": "count-to-100",
+      "strength": 1.0
+    },
+    {
+      "from": "count-to-10",
+      "to": "compare-numbers-k",
+      "strength": 1.0
+    },
+    {
+      "from": "count-to-10",
+      "to": "add-within-5",
+      "strength": 1.0
+    },
+    {
+      "from": "count-to-10",
+      "to": "subtract-within-5",
+      "strength": 1.0
+    },
+    {
+      "from": "add-within-5",
+      "to": "add-within-10",
+      "strength": 1.0
+    },
+    {
+      "from": "subtract-within-5",
+      "to": "subtract-within-10",
+      "strength": 1.0
+    },
+    {
+      "from": "count-to-10",
+      "to": "teen-numbers",
+      "strength": 0.8
+    },
+    {
+      "from": "count-to-20",
+      "to": "teen-numbers",
+      "strength": 1.0
+    },
+    {
+      "from": "add-within-10",
+      "to": "add-within-20",
+      "strength": 1.0
+    },
+    {
+      "from": "subtract-within-10",
+      "to": "subtract-within-20",
+      "strength": 1.0
+    },
+    {
+      "from": "teen-numbers",
+      "to": "add-within-20",
+      "strength": 0.7
+    },
+    {
+      "from": "add-within-20",
+      "to": "add-subtract-word-problems-1",
+      "strength": 1.0
+    },
+    {
+      "from": "subtract-within-20",
+      "to": "add-subtract-word-problems-1",
+      "strength": 1.0
+    },
+    {
+      "from": "teen-numbers",
+      "to": "place-value-tens-ones",
+      "strength": 1.0
+    },
+    {
+      "from": "count-to-100",
+      "to": "place-value-tens-ones",
+      "strength": 0.8
+    },
+    {
+      "from": "place-value-tens-ones",
+      "to": "compare-two-digit",
+      "strength": 1.0
+    },
+    {
+      "from": "compare-numbers-k",
+      "to": "compare-two-digit",
+      "strength": 0.7
+    },
+    {
+      "from": "add-within-20",
+      "to": "add-within-100",
+      "strength": 1.0
+    },
+    {
+      "from": "place-value-tens-ones",
+      "to": "add-within-100",
+      "strength": 1.0
+    },
+    {
+      "from": "count-to-100",
+      "to": "skip-count-2-5-10",
+      "strength": 1.0
+    },
+    {
+      "from": "add-within-10",
+      "to": "skip-count-2-5-10",
+      "strength": 0.6
+    },
+    {
+      "from": "add-within-100",
+      "to": "add-within-100-fluent",
+      "strength": 1.0
+    },
+    {
+      "from": "subtract-within-20",
+      "to": "subtract-within-100-fluent",
+      "strength": 1.0
+    },
+    {
+      "from": "place-value-tens-ones",
+      "to": "subtract-within-100-fluent",
+      "strength": 0.8
+    },
+    {
+      "from": "add-within-100-fluent",
+      "to": "add-within-1000",
+      "strength": 1.0
+    },
+    {
+      "from": "place-value-tens-ones",
+      "to": "place-value-hundreds",
+      "strength": 1.0
+    },
+    {
+      "from": "place-value-hundreds",
+      "to": "add-within-1000",
+      "strength": 0.8
+    },
+    {
+      "from": "subtract-within-100-fluent",
+      "to": "subtract-within-1000",
+      "strength": 1.0
+    },
+    {
+      "from": "place-value-hundreds",
+      "to": "subtract-within-1000",
+      "strength": 0.8
+    },
+    {
+      "from": "skip-count-2-5-10",
+      "to": "intro-arrays",
+      "strength": 0.7
+    },
+    {
+      "from": "add-within-20",
+      "to": "intro-arrays",
+      "strength": 0.8
+    },
+    {
+      "from": "count-to-20",
+      "to": "odd-even",
+      "strength": 0.8
+    },
+    {
+      "from": "skip-count-2-5-10",
+      "to": "odd-even",
+      "strength": 0.6
+    },
+    {
+      "from": "intro-arrays",
+      "to": "multiply-within-100",
+      "strength": 1.0
+    },
+    {
+      "from": "skip-count-2-5-10",
+      "to": "multiply-within-100",
+      "strength": 0.7
+    },
+    {
+      "from": "multiply-within-100",
+      "to": "divide-within-100",
+      "strength": 1.0
+    },
+    {
+      "from": "multiply-within-100",
+      "to": "multiply-word-problems",
+      "strength": 1.0
+    },
+    {
+      "from": "divide-within-100",
+      "to": "division-word-problems",
+      "strength": 1.0
+    },
+    {
+      "from": "multiply-within-100",
+      "to": "properties-of-multiplication",
+      "strength": 1.0
+    },
+    {
+      "from": "multiply-within-100",
+      "to": "patterns-arithmetic",
+      "strength": 0.7
+    },
+    {
+      "from": "add-within-100-fluent",
+      "to": "patterns-arithmetic",
+      "strength": 0.5
+    },
+    {
+      "from": "place-value-hundreds",
+      "to": "place-value-rounding",
+      "strength": 1.0
+    },
+    {
+      "from": "add-within-1000",
+      "to": "multi-digit-add-sub",
+      "strength": 1.0
+    },
+    {
+      "from": "subtract-within-1000",
+      "to": "multi-digit-add-sub",
+      "strength": 1.0
+    },
+    {
+      "from": "place-value-tens-ones",
+      "to": "intro-fractions",
+      "strength": 0.5
+    },
+    {
+      "from": "divide-within-100",
+      "to": "intro-fractions",
+      "strength": 0.6
+    },
+    {
+      "from": "intro-fractions",
+      "to": "fractions-number-line",
+      "strength": 1.0
+    },
+    {
+      "from": "fractions-number-line",
+      "to": "equivalent-fractions-3",
+      "strength": 1.0
+    },
+    {
+      "from": "fractions-number-line",
+      "to": "compare-fractions-3",
+      "strength": 1.0
+    },
+    {
+      "from": "measure-length-nonstandard",
+      "to": "measure-length-standard",
+      "strength": 1.0
+    },
+    {
+      "from": "multiply-within-100",
+      "to": "area-intro",
+      "strength": 0.5
+    },
+    {
+      "from": "measure-length-standard",
+      "to": "perimeter",
+      "strength": 0.8
+    },
+    {
+      "from": "add-within-100-fluent",
+      "to": "perimeter",
+      "strength": 0.5
+    },
+    {
+      "from": "area-intro",
+      "to": "area-multiply",
+      "strength": 1.0
+    },
+    {
+      "from": "multiply-within-100",
+      "to": "area-multiply",
+      "strength": 1.0
+    },
+    {
+      "from": "tell-time-hour-half",
+      "to": "tell-time-minute",
+      "strength": 1.0
+    },
+    {
+      "from": "add-within-100-fluent",
+      "to": "money-coins-bills",
+      "strength": 0.7
+    },
+    {
+      "from": "multiply-within-100",
+      "to": "multi-digit-multiply",
+      "strength": 1.0
+    },
+    {
+      "from": "properties-of-multiplication",
+      "to": "multi-digit-multiply",
+      "strength": 0.8
+    },
+    {
+      "from": "multi-digit-add-sub",
+      "to": "multi-digit-multiply",
+      "strength": 0.6
+    },
+    {
+      "from": "divide-within-100",
+      "to": "long-division",
+      "strength": 1.0
+    },
+    {
+      "from": "multi-digit-add-sub",
+      "to": "long-division",
+      "strength": 0.7
+    },
+    {
+      "from": "multiply-within-100",
+      "to": "factors-multiples",
+      "strength": 1.0
+    },
+    {
+      "from": "divide-within-100",
+      "to": "factors-multiples",
+      "strength": 1.0
+    },
+    {
+      "from": "equivalent-fractions-3",
+      "to": "equivalent-fractions-4",
+      "strength": 1.0
+    },
+    {
+      "from": "multiply-within-100",
+      "to": "equivalent-fractions-4",
+      "strength": 0.5
+    },
+    {
+      "from": "equivalent-fractions-4",
+      "to": "compare-fractions-4",
+      "strength": 1.0
+    },
+    {
+      "from": "compare-fractions-3",
+      "to": "compare-fractions-4",
+      "strength": 0.8
+    },
+    {
+      "from": "intro-fractions",
+      "to": "add-subtract-fractions",
+      "strength": 1.0
+    },
+    {
+      "from": "add-within-20",
+      "to": "add-subtract-fractions",
+      "strength": 0.3
+    },
+    {
+      "from": "intro-fractions",
+      "to": "multiply-fraction-by-whole",
+      "strength": 1.0
+    },
+    {
+      "from": "multiply-within-100",
+      "to": "multiply-fraction-by-whole",
+      "strength": 0.5
+    },
+    {
+      "from": "equivalent-fractions-4",
+      "to": "decimals-intro",
+      "strength": 0.8
+    },
+    {
+      "from": "place-value-hundreds",
+      "to": "decimals-intro",
+      "strength": 0.7
+    },
+    {
+      "from": "shapes-2d-k",
+      "to": "angles-intro",
+      "strength": 0.5
+    },
+    {
+      "from": "measure-length-standard",
+      "to": "angles-intro",
+      "strength": 0.3
+    },
+    {
+      "from": "shapes-2d-k",
+      "to": "line-symmetry",
+      "strength": 0.7
+    },
+    {
+      "from": "multi-digit-multiply",
+      "to": "multi-step-word-problems",
+      "strength": 0.8
+    },
+    {
+      "from": "long-division",
+      "to": "multi-step-word-problems",
+      "strength": 0.8
+    },
+    {
+      "from": "multiply-word-problems",
+      "to": "multi-step-word-problems",
+      "strength": 0.7
+    },
+    {
+      "from": "decimals-intro",
+      "to": "place-value-decimals",
+      "strength": 1.0
+    },
+    {
+      "from": "multi-digit-multiply",
+      "to": "multiply-multi-digit",
+      "strength": 1.0
+    },
+    {
+      "from": "long-division",
+      "to": "divide-multi-digit",
+      "strength": 1.0
+    },
+    {
+      "from": "equivalent-fractions-4",
+      "to": "add-subtract-fractions-unlike",
+      "strength": 1.0
+    },
+    {
+      "from": "add-subtract-fractions",
+      "to": "add-subtract-fractions-unlike",
+      "strength": 1.0
+    },
+    {
+      "from": "multiply-fraction-by-whole",
+      "to": "multiply-fractions",
+      "strength": 1.0
+    },
+    {
+      "from": "equivalent-fractions-4",
+      "to": "multiply-fractions",
+      "strength": 0.6
+    },
+    {
+      "from": "multiply-fractions",
+      "to": "divide-fractions",
+      "strength": 1.0
+    },
+    {
+      "from": "divide-within-100",
+      "to": "divide-fractions",
+      "strength": 0.5
+    },
+    {
+      "from": "place-value-decimals",
+      "to": "decimal-operations",
+      "strength": 1.0
+    },
+    {
+      "from": "multi-digit-add-sub",
+      "to": "decimal-operations",
+      "strength": 0.5
+    },
+    {
+      "from": "multi-digit-multiply",
+      "to": "order-of-operations",
+      "strength": 0.7
+    },
+    {
+      "from": "add-subtract-fractions-unlike",
+      "to": "order-of-operations",
+      "strength": 0.3
+    },
+    {
+      "from": "order-of-operations",
+      "to": "variables-expressions",
+      "strength": 1.0
+    },
+    {
+      "from": "place-value-decimals",
+      "to": "coordinate-plane",
+      "strength": 0.3
+    },
+    {
+      "from": "add-within-100-fluent",
+      "to": "coordinate-plane",
+      "strength": 0.5
+    },
+    {
+      "from": "multiply-multi-digit",
+      "to": "volume",
+      "strength": 0.8
+    },
+    {
+      "from": "area-multiply",
+      "to": "volume",
+      "strength": 1.0
+    },
+    {
+      "from": "shapes-2d-k",
+      "to": "classify-2d-shapes",
+      "strength": 0.8
+    },
+    {
+      "from": "angles-intro",
+      "to": "classify-2d-shapes",
+      "strength": 0.7
+    },
+    {
+      "from": "line-symmetry",
+      "to": "classify-2d-shapes",
+      "strength": 0.3
+    },
+    {
+      "from": "add-subtract-fractions-unlike",
+      "to": "line-plots",
+      "strength": 0.6
+    },
+    {
+      "from": "bar-graphs-picture-graphs",
+      "to": "line-plots",
+      "strength": 0.7
+    },
+    {
+      "from": "multiply-multi-digit",
+      "to": "unit-conversion",
+      "strength": 0.5
+    },
+    {
+      "from": "divide-multi-digit",
+      "to": "unit-conversion",
+      "strength": 0.5
+    },
+    {
+      "from": "decimal-operations",
+      "to": "unit-conversion",
+      "strength": 0.6
+    },
+    {
+      "from": "measure-length-standard",
+      "to": "unit-conversion",
+      "strength": 0.7
+    }
   ],
   "encompassings": [
-    { "parent": "add-within-20", "child": "add-within-10", "weight": 0.8 },
-    { "parent": "add-within-20", "child": "add-within-5", "weight": 0.9 },
-    { "parent": "subtract-within-20", "child": "subtract-within-10", "weight": 0.8 },
-    { "parent": "subtract-within-20", "child": "subtract-within-5", "weight": 0.9 },
-    { "parent": "add-within-100-fluent", "child": "add-within-20", "weight": 0.7 },
-    { "parent": "subtract-within-100-fluent", "child": "subtract-within-20", "weight": 0.7 },
-    { "parent": "add-within-1000", "child": "add-within-100-fluent", "weight": 0.6 },
-    { "parent": "subtract-within-1000", "child": "subtract-within-100-fluent", "weight": 0.6 },
-    { "parent": "multiply-within-100", "child": "skip-count-2-5-10", "weight": 0.4 },
-    { "parent": "multi-digit-multiply", "child": "multiply-within-100", "weight": 0.6 },
-    { "parent": "long-division", "child": "divide-within-100", "weight": 0.5 },
-    { "parent": "multiply-fractions", "child": "multiply-fraction-by-whole", "weight": 0.7 },
-    { "parent": "add-subtract-fractions-unlike", "child": "add-subtract-fractions", "weight": 0.8 },
-    { "parent": "decimal-operations", "child": "decimals-intro", "weight": 0.6 },
-    { "parent": "equivalent-fractions-4", "child": "equivalent-fractions-3", "weight": 0.8 },
-    { "parent": "compare-fractions-4", "child": "compare-fractions-3", "weight": 0.7 },
-
-    { "parent": "add-subtract-word-problems-1", "child": "add-within-20", "weight": 0.6 },
-    { "parent": "add-subtract-word-problems-1", "child": "subtract-within-20", "weight": 0.6 },
-    { "parent": "add-within-100", "child": "add-within-20", "weight": 0.7 },
-    { "parent": "multi-digit-add-sub", "child": "add-within-1000", "weight": 0.7 },
-    { "parent": "multi-digit-add-sub", "child": "subtract-within-1000", "weight": 0.7 },
-    { "parent": "area-multiply", "child": "multiply-within-100", "weight": 0.5 },
-    { "parent": "area-multiply", "child": "area-intro", "weight": 0.6 },
-    { "parent": "perimeter", "child": "add-within-100-fluent", "weight": 0.4 },
-    { "parent": "volume", "child": "area-multiply", "weight": 0.6 },
-    { "parent": "volume", "child": "multiply-multi-digit", "weight": 0.4 },
-    { "parent": "multiply-word-problems", "child": "multiply-within-100", "weight": 0.6 },
-    { "parent": "division-word-problems", "child": "divide-within-100", "weight": 0.6 },
-    { "parent": "multi-step-word-problems", "child": "multi-digit-multiply", "weight": 0.5 },
-    { "parent": "multi-step-word-problems", "child": "long-division", "weight": 0.5 },
-    { "parent": "add-subtract-fractions", "child": "intro-fractions", "weight": 0.5 },
-    { "parent": "multiply-fraction-by-whole", "child": "intro-fractions", "weight": 0.4 },
-    { "parent": "multiply-fraction-by-whole", "child": "multiply-within-100", "weight": 0.3 },
-    { "parent": "divide-fractions", "child": "multiply-fractions", "weight": 0.6 },
-    { "parent": "order-of-operations", "child": "multi-digit-multiply", "weight": 0.4 },
-    { "parent": "multiply-multi-digit", "child": "multi-digit-multiply", "weight": 0.7 },
-    { "parent": "divide-multi-digit", "child": "long-division", "weight": 0.7 },
-    { "parent": "place-value-decimals", "child": "decimals-intro", "weight": 0.7 },
-    { "parent": "tell-time-minute", "child": "tell-time-hour-half", "weight": 0.6 },
-    { "parent": "classify-2d-shapes", "child": "shapes-2d-k", "weight": 0.5 },
-    { "parent": "classify-2d-shapes", "child": "angles-intro", "weight": 0.4 },
-    { "parent": "unit-conversion", "child": "decimal-operations", "weight": 0.4 }
+    {
+      "parent": "add-within-20",
+      "child": "add-within-10",
+      "weight": 0.8
+    },
+    {
+      "parent": "add-within-20",
+      "child": "add-within-5",
+      "weight": 0.9
+    },
+    {
+      "parent": "subtract-within-20",
+      "child": "subtract-within-10",
+      "weight": 0.8
+    },
+    {
+      "parent": "subtract-within-20",
+      "child": "subtract-within-5",
+      "weight": 0.9
+    },
+    {
+      "parent": "add-within-100-fluent",
+      "child": "add-within-20",
+      "weight": 0.7
+    },
+    {
+      "parent": "subtract-within-100-fluent",
+      "child": "subtract-within-20",
+      "weight": 0.7
+    },
+    {
+      "parent": "add-within-1000",
+      "child": "add-within-100-fluent",
+      "weight": 0.6
+    },
+    {
+      "parent": "subtract-within-1000",
+      "child": "subtract-within-100-fluent",
+      "weight": 0.6
+    },
+    {
+      "parent": "multiply-within-100",
+      "child": "skip-count-2-5-10",
+      "weight": 0.4
+    },
+    {
+      "parent": "multi-digit-multiply",
+      "child": "multiply-within-100",
+      "weight": 0.6
+    },
+    {
+      "parent": "long-division",
+      "child": "divide-within-100",
+      "weight": 0.5
+    },
+    {
+      "parent": "multiply-fractions",
+      "child": "multiply-fraction-by-whole",
+      "weight": 0.7
+    },
+    {
+      "parent": "add-subtract-fractions-unlike",
+      "child": "add-subtract-fractions",
+      "weight": 0.8
+    },
+    {
+      "parent": "decimal-operations",
+      "child": "decimals-intro",
+      "weight": 0.6
+    },
+    {
+      "parent": "equivalent-fractions-4",
+      "child": "equivalent-fractions-3",
+      "weight": 0.8
+    },
+    {
+      "parent": "compare-fractions-4",
+      "child": "compare-fractions-3",
+      "weight": 0.7
+    },
+    {
+      "parent": "add-subtract-word-problems-1",
+      "child": "add-within-20",
+      "weight": 0.6
+    },
+    {
+      "parent": "add-subtract-word-problems-1",
+      "child": "subtract-within-20",
+      "weight": 0.6
+    },
+    {
+      "parent": "add-within-100",
+      "child": "add-within-20",
+      "weight": 0.7
+    },
+    {
+      "parent": "multi-digit-add-sub",
+      "child": "add-within-1000",
+      "weight": 0.7
+    },
+    {
+      "parent": "multi-digit-add-sub",
+      "child": "subtract-within-1000",
+      "weight": 0.7
+    },
+    {
+      "parent": "area-multiply",
+      "child": "multiply-within-100",
+      "weight": 0.5
+    },
+    {
+      "parent": "area-multiply",
+      "child": "area-intro",
+      "weight": 0.6
+    },
+    {
+      "parent": "perimeter",
+      "child": "add-within-100-fluent",
+      "weight": 0.4
+    },
+    {
+      "parent": "volume",
+      "child": "area-multiply",
+      "weight": 0.6
+    },
+    {
+      "parent": "volume",
+      "child": "multiply-multi-digit",
+      "weight": 0.4
+    },
+    {
+      "parent": "multiply-word-problems",
+      "child": "multiply-within-100",
+      "weight": 0.6
+    },
+    {
+      "parent": "division-word-problems",
+      "child": "divide-within-100",
+      "weight": 0.6
+    },
+    {
+      "parent": "multi-step-word-problems",
+      "child": "multi-digit-multiply",
+      "weight": 0.5
+    },
+    {
+      "parent": "multi-step-word-problems",
+      "child": "long-division",
+      "weight": 0.5
+    },
+    {
+      "parent": "add-subtract-fractions",
+      "child": "intro-fractions",
+      "weight": 0.5
+    },
+    {
+      "parent": "multiply-fraction-by-whole",
+      "child": "intro-fractions",
+      "weight": 0.4
+    },
+    {
+      "parent": "multiply-fraction-by-whole",
+      "child": "multiply-within-100",
+      "weight": 0.3
+    },
+    {
+      "parent": "divide-fractions",
+      "child": "multiply-fractions",
+      "weight": 0.6
+    },
+    {
+      "parent": "order-of-operations",
+      "child": "multi-digit-multiply",
+      "weight": 0.4
+    },
+    {
+      "parent": "multiply-multi-digit",
+      "child": "multi-digit-multiply",
+      "weight": 0.7
+    },
+    {
+      "parent": "divide-multi-digit",
+      "child": "long-division",
+      "weight": 0.7
+    },
+    {
+      "parent": "place-value-decimals",
+      "child": "decimals-intro",
+      "weight": 0.7
+    },
+    {
+      "parent": "tell-time-minute",
+      "child": "tell-time-hour-half",
+      "weight": 0.6
+    },
+    {
+      "parent": "classify-2d-shapes",
+      "child": "shapes-2d-k",
+      "weight": 0.5
+    },
+    {
+      "parent": "classify-2d-shapes",
+      "child": "angles-intro",
+      "weight": 0.4
+    },
+    {
+      "parent": "unit-conversion",
+      "child": "decimal-operations",
+      "weight": 0.4
+    },
+    {
+      "parent": "add-within-100",
+      "child": "add-within-10",
+      "weight": 0.5
+    },
+    {
+      "parent": "add-within-100",
+      "child": "add-within-5",
+      "weight": 0.4
+    },
+    {
+      "parent": "add-within-100-fluent",
+      "child": "add-within-10",
+      "weight": 0.5
+    },
+    {
+      "parent": "add-within-100-fluent",
+      "child": "add-within-5",
+      "weight": 0.4
+    },
+    {
+      "parent": "add-within-1000",
+      "child": "add-within-20",
+      "weight": 0.5
+    },
+    {
+      "parent": "add-within-1000",
+      "child": "add-within-10",
+      "weight": 0.4
+    },
+    {
+      "parent": "multi-digit-add-sub",
+      "child": "add-within-100-fluent",
+      "weight": 0.5
+    },
+    {
+      "parent": "subtract-within-100-fluent",
+      "child": "subtract-within-10",
+      "weight": 0.5
+    },
+    {
+      "parent": "subtract-within-100-fluent",
+      "child": "subtract-within-5",
+      "weight": 0.4
+    },
+    {
+      "parent": "subtract-within-1000",
+      "child": "subtract-within-20",
+      "weight": 0.5
+    },
+    {
+      "parent": "subtract-within-1000",
+      "child": "subtract-within-10",
+      "weight": 0.4
+    },
+    {
+      "parent": "multi-digit-add-sub",
+      "child": "subtract-within-100-fluent",
+      "weight": 0.5
+    },
+    {
+      "parent": "multiply-multi-digit",
+      "child": "multiply-within-100",
+      "weight": 0.5
+    },
+    {
+      "parent": "multi-digit-multiply",
+      "child": "skip-count-2-5-10",
+      "weight": 0.3
+    },
+    {
+      "parent": "divide-multi-digit",
+      "child": "divide-within-100",
+      "weight": 0.5
+    },
+    {
+      "parent": "long-division",
+      "child": "multiply-within-100",
+      "weight": 0.4
+    },
+    {
+      "parent": "divide-multi-digit",
+      "child": "multiply-within-100",
+      "weight": 0.3
+    },
+    {
+      "parent": "add-subtract-fractions-unlike",
+      "child": "intro-fractions",
+      "weight": 0.4
+    },
+    {
+      "parent": "add-subtract-fractions-unlike",
+      "child": "equivalent-fractions-3",
+      "weight": 0.5
+    },
+    {
+      "parent": "add-subtract-fractions",
+      "child": "add-within-20",
+      "weight": 0.3
+    },
+    {
+      "parent": "multiply-fractions",
+      "child": "multiply-within-100",
+      "weight": 0.3
+    },
+    {
+      "parent": "divide-fractions",
+      "child": "divide-within-100",
+      "weight": 0.3
+    },
+    {
+      "parent": "divide-fractions",
+      "child": "multiply-fraction-by-whole",
+      "weight": 0.4
+    },
+    {
+      "parent": "compare-fractions-4",
+      "child": "equivalent-fractions-3",
+      "weight": 0.4
+    },
+    {
+      "parent": "equivalent-fractions-4",
+      "child": "multiply-within-100",
+      "weight": 0.3
+    },
+    {
+      "parent": "equivalent-fractions-4",
+      "child": "intro-fractions",
+      "weight": 0.4
+    },
+    {
+      "parent": "decimal-operations",
+      "child": "place-value-decimals",
+      "weight": 0.6
+    },
+    {
+      "parent": "decimal-operations",
+      "child": "add-within-100-fluent",
+      "weight": 0.4
+    },
+    {
+      "parent": "decimal-operations",
+      "child": "subtract-within-100-fluent",
+      "weight": 0.4
+    },
+    {
+      "parent": "decimal-operations",
+      "child": "multiply-within-100",
+      "weight": 0.3
+    },
+    {
+      "parent": "place-value-hundreds",
+      "child": "place-value-tens-ones",
+      "weight": 0.7
+    },
+    {
+      "parent": "place-value-rounding",
+      "child": "place-value-tens-ones",
+      "weight": 0.4
+    },
+    {
+      "parent": "place-value-rounding",
+      "child": "place-value-hundreds",
+      "weight": 0.6
+    },
+    {
+      "parent": "place-value-decimals",
+      "child": "place-value-hundreds",
+      "weight": 0.5
+    },
+    {
+      "parent": "place-value-decimals",
+      "child": "place-value-tens-ones",
+      "weight": 0.4
+    },
+    {
+      "parent": "add-subtract-word-problems-1",
+      "child": "add-within-10",
+      "weight": 0.4
+    },
+    {
+      "parent": "add-subtract-word-problems-1",
+      "child": "subtract-within-10",
+      "weight": 0.4
+    },
+    {
+      "parent": "multiply-word-problems",
+      "child": "intro-arrays",
+      "weight": 0.3
+    },
+    {
+      "parent": "division-word-problems",
+      "child": "multiply-within-100",
+      "weight": 0.3
+    },
+    {
+      "parent": "multi-step-word-problems",
+      "child": "add-within-100-fluent",
+      "weight": 0.3
+    },
+    {
+      "parent": "multi-step-word-problems",
+      "child": "subtract-within-100-fluent",
+      "weight": 0.3
+    },
+    {
+      "parent": "multi-step-word-problems",
+      "child": "multiply-within-100",
+      "weight": 0.3
+    },
+    {
+      "parent": "multi-step-word-problems",
+      "child": "divide-within-100",
+      "weight": 0.3
+    },
+    {
+      "parent": "perimeter",
+      "child": "add-within-100",
+      "weight": 0.3
+    },
+    {
+      "parent": "perimeter",
+      "child": "multiply-within-100",
+      "weight": 0.3
+    },
+    {
+      "parent": "area-intro",
+      "child": "skip-count-2-5-10",
+      "weight": 0.3
+    },
+    {
+      "parent": "volume",
+      "child": "multiply-within-100",
+      "weight": 0.3
+    },
+    {
+      "parent": "order-of-operations",
+      "child": "add-within-100-fluent",
+      "weight": 0.3
+    },
+    {
+      "parent": "order-of-operations",
+      "child": "subtract-within-100-fluent",
+      "weight": 0.3
+    },
+    {
+      "parent": "order-of-operations",
+      "child": "multiply-within-100",
+      "weight": 0.3
+    },
+    {
+      "parent": "order-of-operations",
+      "child": "divide-within-100",
+      "weight": 0.3
+    },
+    {
+      "parent": "variables-expressions",
+      "child": "order-of-operations",
+      "weight": 0.6
+    },
+    {
+      "parent": "variables-expressions",
+      "child": "multi-digit-multiply",
+      "weight": 0.3
+    },
+    {
+      "parent": "variables-expressions",
+      "child": "add-within-100-fluent",
+      "weight": 0.3
+    },
+    {
+      "parent": "place-value-tens-ones",
+      "child": "count-to-100",
+      "weight": 0.5
+    },
+    {
+      "parent": "place-value-tens-ones",
+      "child": "count-to-20",
+      "weight": 0.4
+    },
+    {
+      "parent": "place-value-tens-ones",
+      "child": "teen-numbers",
+      "weight": 0.5
+    },
+    {
+      "parent": "place-value-hundreds",
+      "child": "count-to-100",
+      "weight": 0.3
+    },
+    {
+      "parent": "compare-two-digit",
+      "child": "compare-numbers-k",
+      "weight": 0.6
+    },
+    {
+      "parent": "compare-two-digit",
+      "child": "place-value-tens-ones",
+      "weight": 0.5
+    },
+    {
+      "parent": "intro-arrays",
+      "child": "skip-count-2-5-10",
+      "weight": 0.5
+    },
+    {
+      "parent": "intro-arrays",
+      "child": "add-within-20",
+      "weight": 0.4
+    },
+    {
+      "parent": "factors-multiples",
+      "child": "multiply-within-100",
+      "weight": 0.5
+    },
+    {
+      "parent": "factors-multiples",
+      "child": "divide-within-100",
+      "weight": 0.5
+    },
+    {
+      "parent": "properties-of-multiplication",
+      "child": "multiply-within-100",
+      "weight": 0.6
+    },
+    {
+      "parent": "properties-of-multiplication",
+      "child": "intro-arrays",
+      "weight": 0.4
+    },
+    {
+      "parent": "patterns-arithmetic",
+      "child": "add-within-100-fluent",
+      "weight": 0.4
+    },
+    {
+      "parent": "patterns-arithmetic",
+      "child": "multiply-within-100",
+      "weight": 0.4
+    },
+    {
+      "parent": "money-coins-bills",
+      "child": "add-within-100-fluent",
+      "weight": 0.4
+    },
+    {
+      "parent": "money-coins-bills",
+      "child": "skip-count-2-5-10",
+      "weight": 0.4
+    },
+    {
+      "parent": "coordinate-plane",
+      "child": "place-value-decimals",
+      "weight": 0.3
+    },
+    {
+      "parent": "coordinate-plane",
+      "child": "add-within-100-fluent",
+      "weight": 0.3
+    },
+    {
+      "parent": "line-symmetry",
+      "child": "shapes-2d-k",
+      "weight": 0.4
+    },
+    {
+      "parent": "angles-intro",
+      "child": "shapes-2d-k",
+      "weight": 0.3
+    },
+    {
+      "parent": "classify-2d-shapes",
+      "child": "line-symmetry",
+      "weight": 0.4
+    },
+    {
+      "parent": "line-plots",
+      "child": "add-subtract-fractions-unlike",
+      "weight": 0.4
+    },
+    {
+      "parent": "line-plots",
+      "child": "bar-graphs-picture-graphs",
+      "weight": 0.5
+    },
+    {
+      "parent": "bar-graphs-picture-graphs",
+      "child": "count-to-20",
+      "weight": 0.3
+    },
+    {
+      "parent": "bar-graphs-picture-graphs",
+      "child": "compare-numbers-k",
+      "weight": 0.3
+    },
+    {
+      "parent": "tell-time-minute",
+      "child": "skip-count-2-5-10",
+      "weight": 0.4
+    },
+    {
+      "parent": "tell-time-minute",
+      "child": "count-to-100",
+      "weight": 0.3
+    },
+    {
+      "parent": "measure-length-standard",
+      "child": "measure-length-nonstandard",
+      "weight": 0.6
+    },
+    {
+      "parent": "unit-conversion",
+      "child": "multiply-multi-digit",
+      "weight": 0.4
+    },
+    {
+      "parent": "unit-conversion",
+      "child": "divide-multi-digit",
+      "weight": 0.4
+    },
+    {
+      "parent": "odd-even",
+      "child": "count-to-20",
+      "weight": 0.4
+    },
+    {
+      "parent": "odd-even",
+      "child": "skip-count-2-5-10",
+      "weight": 0.5
+    },
+    {
+      "parent": "fractions-number-line",
+      "child": "intro-fractions",
+      "weight": 0.6
+    },
+    {
+      "parent": "count-to-100",
+      "child": "count-to-20",
+      "weight": 0.7
+    },
+    {
+      "parent": "count-to-100",
+      "child": "count-to-10",
+      "weight": 0.5
+    },
+    {
+      "parent": "count-to-20",
+      "child": "count-to-10",
+      "weight": 0.8
+    },
+    {
+      "parent": "teen-numbers",
+      "child": "count-to-10",
+      "weight": 0.5
+    }
   ]
 }
