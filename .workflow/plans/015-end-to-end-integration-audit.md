@@ -34,9 +34,9 @@ Systematic verification that all features from plans 009-014 are fully wired end
 
 ## Progress
 
-**Completed:** Phase 1
+**Completed:** Phase 1, Phase 2
 **In Progress:** —
-**Next:** Phase 2
+**Next:** Phase 3
 
 ---
 
@@ -81,37 +81,38 @@ Systematic verification that all features from plans 009-014 are fully wired end
 
 ---
 
-## Phase 2: Content Dimension & Presentation Audit
+## Phase 2: Content Dimension & Presentation Audit ✓
 **Goal:** Verify Plans 009 + 009.5 dimension selection and adaptive presentation are fully wired from user profile through content delivery to frontend display.
 
-1. [ ] [RSH] Trace content selection pipeline end-to-end:
-   - `resolveContentQuery()` in session.ts: how does it determine `contentDepth`, `presentation`, `locale`, `flavor`?
-   - `resolvePresentation()` in content.ts: does it read `user_subject_presentation` distribution? Does it fall back to birthYear-based default when no distribution exists?
-   - `resolveContentDepth()`: does it check `user_topic_depth` for context-layered subjects? Does it correctly return `survey` for mastery-gated?
-   - `getTopicProblems(query)` / `getTopicExamples(query)`: does the fallback chain work? (adjacent presentation → classic flavor → en locale → survey depth → any)
-   - Check `content.test.ts` and `dimension-integration.test.ts`. Run and confirm.
+1. [x] [RSH] Trace content selection pipeline end-to-end:
+   - `resolveContentQuery()` (session.ts:137-167): resolves `contentDepth` + `presentation` for auth users, defaults to standard/survey for anonymous. **Gap:** `locale`/`flavor` never set — always defaults to "en"/"classic". Schema columns exist but no resolution logic. Acceptable for MVP (single locale).
+   - `resolvePresentation()` (content.ts:174-218): reads `user_subject_presentation` distribution → samples probabilistically. Falls back to birthYear-based default. Override support exists. ✅ Fully wired.
+   - `resolveContentDepth()` (content.ts:220-260): mastery-gated → "survey", flexible → "survey", context-layered → spiral through `userTopicDepth`. ✅ Fully wired.
+   - `getTopicProblems()`/`getTopicExamples()` (content.ts:325-349): 8-tier fallback chain via `contentPriority()` (exact match → adjacent presentation → classic flavor → en locale → survey depth → any). ✅ Fully wired and tested.
+   - Tests: `content.test.ts` (443 lines) + `dimension-integration.test.ts` (404 lines). All pass.
 
-2. [ ] [RSH] Verify diagnostic → presentation distribution seeding:
-   - Trace `diagnostic.ts`: after diagnostic completion, does `materializeMastery()` call distribution seeding?
-   - Does `estimatePresentationDistribution()` use linguistic comprehension signals from diagnostic responses?
-   - Does it create/update rows in `user_subject_presentation`?
-   - What happens on diagnostic re-run? (Should overwrite existing distribution)
-   - Check `diagnostic-presentation.test.ts`. Run and confirm.
+2. [x] [RSH] Verify diagnostic → presentation distribution seeding:
+   - `materializeMastery()` (diagnostic.ts:448-455) calls `estimatePresentationDistribution()` then `content.upsertSubjectDistribution()`. ✅ Fully wired.
+   - Linguistic comprehension signal: prereq-mastered-but-failed heuristic (≥40% failure rate + ≥3 qualifying questions → shift distribution down one level). ✅ Implemented.
+   - Creates/updates `user_subject_presentation` rows via upsert on unique `(userId, subjectId)`. ✅
+   - Re-run overwrites cleanly (test confirms exactly 1 row after 2 diagnostics). ✅
+   - Tests: `diagnostic-presentation.test.ts` (231 lines, 8 tests). All pass.
 
-3. [ ] [RSH] Verify presentation drift engine:
-   - After a problem is graded in session.ts, does the drift engine fire?
-   - Trace: `nudgeDistribution(distribution, servedLevel, success)` — does it asymmetrically adjust weights?
-   - Does `presentation_drift_log` get written on centerLevel changes?
-   - Does the next content query use the updated distribution?
-   - Check `presentation-drift.test.ts`. Run and confirm.
+3. [x] [RSH] Verify presentation drift engine:
+   - Fires in `respond()` (session.ts:527-535) via `content.applyNudge()` after grading. ✅
+   - Asymmetric: 6 context-dependent rates in `DRIFT_RATES` (content.ts:61-69). Success above center = 0.04 (2x normal), failure above = 0.01 (tiny), success below = 0 (no change). ✅
+   - `presentation_drift_log` written on center_shift, level_emerged, level_dropped (content.ts:485-498). Schema at schema.ts:313-325. ✅
+   - Next content query reads updated distribution via `resolvePresentation()` → `sampleFromDistribution()`. ✅
+   - Tests: `presentation-drift.test.ts` (230 lines, 13 pure + 3 integration). All pass.
 
-4. [ ] [RSH] Verify frontend integration:
-   - Does `learn.vue` pass presentation context through to content display?
-   - Does `progress.vue` fetch and render per-subject presentation distribution?
-   - Does the distribution visualization show meaningful data (not empty/default)?
-   - Check `progress-presentation.test.ts`. Run and confirm.
+4. [x] [RSH] Verify frontend integration:
+   - `learn.vue` passes `presentationLevel` to `ProblemView` (line 241). ✅
+   - `ProblemView.vue` adapts confidence slider: binary for primary/intermediate, 5-point for standard/advanced. ✅
+   - `progress.vue` fetches distributions via `getPresentationDistributions()` and renders stacked bar chart with color-coded levels. ✅
+   - `WorkedExample.vue` does NOT adapt to presentation level — acceptable (scaffolding is consistent across levels). ⚠️ Minor.
+   - No frontend unit tests for presentation rendering. ⚠️ Minor (backend coverage is comprehensive).
 
-**Validation:** Content dimension pipeline is confirmed end-to-end: user profile → dimension resolution → content query → fallback chain → correct content served. Presentation drift adjusts distribution after responses. Frontend renders distribution. Diagnostic seeds distribution correctly.
+**Validation:** Content dimension pipeline confirmed end-to-end. ✅ All 390 tests pass. Only gap is locale/flavor resolution (deferred — single locale MVP). Presentation drift, diagnostic seeding, fallback chain, and frontend visualization all fully wired.
 
 ---
 
