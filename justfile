@@ -45,6 +45,10 @@ generate-problems:
 generate-examples:
     npx tsx tools/generate-examples.ts
 
+# Visualize knowledge graph (default: math-foundations, or pass subject name)
+visualize subject="math-foundations":
+    python3 tools/visualize-graph.py content/{{subject}}/graph.json --open
+
 # Build web app
 build-web:
     pnpm --filter web exec vite build
