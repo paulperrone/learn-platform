@@ -96,6 +96,11 @@
   "onboarding": {
     "settingUp": "جاري الإعداد...",
     "mergeSuccess": "تم حفظ تقدمك كضيف في حسابك.",
+    "mergedDiagnostics": "{count} نتيجة تشخيص",
+    "mergedSessions": "{count} جلسة تدريب",
+    "mergedResponses": "{count} إجابة واجب",
+    "mergedTopicStates": "{count} سجل إتقان موضوع",
+    "startFresh": "ابدأ من جديد",
     "welcomeTitle": "مرحباً!",
     "welcomeText": "لنقم بإعدادك. تستخدم هذه المنصة رسماً بيانياً للمعرفة لإيجاد المكان المناسب لبدء تعلمك. كل موضوع مبني على متطلبات سابقة — لن يُطلب منك شيء لست مستعداً له.",
     "howItWorks": "كيف يعمل:",

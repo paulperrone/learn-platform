@@ -13,9 +13,9 @@ Closes the remaining system-level gaps identified in the March 7 review and Plan
 
 ## Progress
 
-**Completed:** Phase 1, Phase 2
+**Completed:** Phase 1, Phase 2, Phase 3
 **In Progress:** —
-**Next:** Phase 3
+**Next:** Phase 4
 
 ---
 
@@ -50,15 +50,15 @@ Closes the remaining system-level gaps identified in the March 7 review and Plan
 
 ---
 
-## Phase 3: Try → Signup Flow Hardening
+## Phase 3: Try → Signup Flow Hardening ✓
 **Goal:** Anonymous try → diagnostic → signup → preserved progress works end-to-end without data loss.
 
-1. [ ] [IMP] Add `userTopicState` and `userTopicDepth` to `account-merge.ts` — transfer anonymous topic state to authenticated user on merge
-2. [ ] [IMP] Persist diagnostic session state to D1 on each response (not just sessionStorage) so sessions survive page refresh and tab close
-3. [ ] [IMP] Validate merge preserves estimated frontier: after merge, authenticated user's first `/frontier` call returns topics consistent with diagnostic results
-4. [ ] [IMP] Enhance onboarding merge UI: show specific counts ("We saved your 12 practice problems and diagnostic results") with option to start fresh
-5. [ ] [TST] Integration test: anonymous token → taste diagnostic → full diagnostic → signup → merge → verify `userTopicState`, `diagnosticSessions`, `learnSessions` all transferred with correct userId
-6. [ ] [TST] Edge case tests: multi-tab merge (idempotent), skip-diagnostic path, stale/expired token, merge with no anonymous data
+1. [x] [IMP] Add `userTopicState` and `userTopicDepth` to `account-merge.ts` — transfer anonymous topic state to authenticated user on merge
+2. [x] [IMP] Persist diagnostic session state to D1 on each response (not just sessionStorage) so sessions survive page refresh and tab close
+3. [x] [IMP] Validate merge preserves estimated frontier: after merge, authenticated user's first `/frontier` call returns topics consistent with diagnostic results
+4. [x] [IMP] Enhance onboarding merge UI: show specific counts ("We saved your 12 practice problems and diagnostic results") with option to start fresh
+5. [x] [TST] Integration test: anonymous token → taste diagnostic → full diagnostic → signup → merge → verify `userTopicState`, `diagnosticSessions`, `learnSessions` all transferred with correct userId
+6. [x] [TST] Edge case tests: multi-tab merge (idempotent), skip-diagnostic path, stale/expired token, merge with no anonymous data
 
 **Validation:** End-to-end test passes. Manual walkthrough: try.vue → diagnostic → signup → onboarding shows merged data → learning starts at correct frontier position.
 

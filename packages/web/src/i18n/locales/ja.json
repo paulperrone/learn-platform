@@ -96,6 +96,11 @@
   "onboarding": {
     "settingUp": "準備中...",
     "mergeSuccess": "ゲストの進捗がアカウントに保存されました。",
+    "mergedDiagnostics": "診断結果 {count} 件",
+    "mergedSessions": "練習セッション {count} 件",
+    "mergedResponses": "課題回答 {count} 件",
+    "mergedTopicStates": "トピック習熟記録 {count} 件",
+    "startFresh": "最初からやり直す",
     "welcomeTitle": "ようこそ！",
     "welcomeText": "セットアップしましょう。このプラットフォームは知識グラフを使って、あなたが学ぶべき場所を正確に見つけます。すべてのトピックは前提条件に基づいています。準備ができていないことは出題されません。",
     "howItWorks": "仕組み：",

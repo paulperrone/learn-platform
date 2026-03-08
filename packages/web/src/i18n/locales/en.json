@@ -123,6 +123,11 @@
   "onboarding": {
     "settingUp": "Setting up...",
     "mergeSuccess": "Your guest progress has been saved to your account.",
+    "mergedDiagnostics": "{count} diagnostic result(s)",
+    "mergedSessions": "{count} practice session(s)",
+    "mergedResponses": "{count} assignment response(s)",
+    "mergedTopicStates": "{count} topic mastery record(s)",
+    "startFresh": "Start fresh instead",
     "welcomeTitle": "Welcome!",
     "welcomeText": "Let's get you set up. This platform uses a knowledge graph to find exactly where you should be learning. Every topic builds on prerequisites — you'll never be asked something you're not ready for.",
     "howItWorks": "How it works:",

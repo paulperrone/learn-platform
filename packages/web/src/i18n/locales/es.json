@@ -96,6 +96,11 @@
   "onboarding": {
     "settingUp": "Configurando...",
     "mergeSuccess": "Tu progreso como invitado se ha guardado en tu cuenta.",
+    "mergedDiagnostics": "{count} resultado(s) de diagnóstico",
+    "mergedSessions": "{count} sesión(es) de práctica",
+    "mergedResponses": "{count} respuesta(s) de tarea",
+    "mergedTopicStates": "{count} registro(s) de dominio de tema",
+    "startFresh": "Empezar de nuevo",
     "welcomeTitle": "¡Bienvenido!",
     "welcomeText": "Vamos a configurar todo. Esta plataforma usa un grafo de conocimiento para encontrar exactamente dónde debes aprender. Cada tema se basa en prerrequisitos — nunca te pediremos algo para lo que no estés listo.",
     "howItWorks": "Cómo funciona:",

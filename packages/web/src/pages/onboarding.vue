@@ -22,7 +22,7 @@ const currentQuestion = ref<any>(null);
 const questionNumber = ref(0);
 const totalQuestions = ref<number | null>(null);
 const diagnosticResult = ref<DiagnosticResult | null>(null);
-const mergeResult = ref<{ mergedSessions: number; mergedDiagnostics: number } | null>(null);
+const mergeResult = ref<{ mergedSessions: number; mergedDiagnostics: number; mergedResponses: number; mergedTopicStates: number } | null>(null);
 const retakingDiagnostic = ref(!!route.query.diagnostic);
 
 onMounted(async () => {
@@ -110,11 +110,23 @@ async function startLearning() {
   router.push("/learn");
 }
 
+const mergeTotal = computed(() =>
+  mergeResult.value
+    ? mergeResult.value.mergedSessions + mergeResult.value.mergedDiagnostics + mergeResult.value.mergedResponses + mergeResult.value.mergedTopicStates
+    : 0
+);
+
 const progressPercent = computed(() =>
   totalQuestions.value && totalQuestions.value > 0
     ? Math.round((questionNumber.value / totalQuestions.value) * 100)
     : 0
 );
+
+async function handleStartFresh() {
+  mergeResult.value = null;
+  // User will go through full diagnostic from scratch — merged data stays in DB
+  // but the new diagnostic will overwrite topic state
+}
 </script>
 
 <template>
@@ -129,10 +141,22 @@ const progressPercent = computed(() =>
     </div>
 
     <!-- Merge notification -->
-    <div v-if="mergeResult && (mergeResult.mergedSessions > 0 || mergeResult.mergedDiagnostics > 0)" class="mb-6 bg-green-50 border border-green-200 rounded-lg p-4">
-      <p class="text-green-800 text-sm">
+    <div v-if="mergeResult && mergeTotal > 0" class="mb-6 bg-green-50 border border-green-200 rounded-lg p-4">
+      <p class="text-green-800 text-sm font-medium">
         {{ t('onboarding.mergeSuccess') }}
       </p>
+      <ul class="mt-2 text-green-700 text-xs space-y-0.5">
+        <li v-if="mergeResult.mergedDiagnostics > 0">{{ t('onboarding.mergedDiagnostics', { count: mergeResult.mergedDiagnostics }) }}</li>
+        <li v-if="mergeResult.mergedSessions > 0">{{ t('onboarding.mergedSessions', { count: mergeResult.mergedSessions }) }}</li>
+        <li v-if="mergeResult.mergedResponses > 0">{{ t('onboarding.mergedResponses', { count: mergeResult.mergedResponses }) }}</li>
+        <li v-if="mergeResult.mergedTopicStates > 0">{{ t('onboarding.mergedTopicStates', { count: mergeResult.mergedTopicStates }) }}</li>
+      </ul>
+      <button
+        @click="handleStartFresh"
+        class="mt-2 text-xs text-green-600 underline hover:text-green-800"
+      >
+        {{ t('onboarding.startFresh') }}
+      </button>
     </div>
 
     <!-- Step 1: Welcome -->

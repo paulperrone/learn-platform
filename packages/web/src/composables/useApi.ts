@@ -138,7 +138,7 @@ export function useApi() {
         body: JSON.stringify({ step, diagnosticSessionId }),
       }),
     mergeAnonymousData: (anonymousToken: string) =>
-      request<{ success: boolean; mergedSessions: number; mergedDiagnostics: number; mergedResponses: number }>("/onboarding/merge", {
+      request<{ success: boolean; mergedSessions: number; mergedDiagnostics: number; mergedResponses: number; mergedTopicStates: number }>("/onboarding/merge", {
         method: "POST",
         body: JSON.stringify({ anonymousToken }),
       }),
