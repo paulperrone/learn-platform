@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Math Foundations — Knowledge Graph</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; background: #0c1222; color: #e2e8f0; overflow: hidden; }
+
+  #controls { position: fixed; top: 0; left: 0; right: 0; z-index: 10; background: #1e293bee; backdrop-filter: blur(8px); border-bottom: 1px solid #334155; padding: 10px 20px; display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+  #controls h1 { font-size: 14px; font-weight: 600; color: #f8fafc; margin-right: 4px; white-space: nowrap; }
+  .ctrl { display: flex; align-items: center; gap: 5px; }
+  .ctrl label { font-size: 11px; color: #94a3b8; white-space: nowrap; }
+  .tog { appearance: none; width: 32px; height: 18px; background: #475569; border-radius: 9px; position: relative; cursor: pointer; transition: background 0.2s; flex-shrink: 0; }
+  .tog:checked { background: #3b82f6; }
+  .tog::after { content: ''; position: absolute; width: 14px; height: 14px; background: #f8fafc; border-radius: 50%; top: 2px; left: 2px; transition: transform 0.2s; }
+  .tog:checked::after { transform: translateX(14px); }
+  select { background: #334155; color: #e2e8f0; border: 1px solid #475569; border-radius: 5px; padding: 3px 6px; font-size: 11px; cursor: pointer; }
+  .stats { font-size: 10px; color: #64748b; margin-left: auto; display: flex; gap: 10px; }
+  .stats span { white-space: nowrap; }
+  .sv { color: #94a3b8; font-weight: 500; }
+
+  #tip { position: fixed; pointer-events: none; background: #1e293bf0; border: 1px solid #475569; border-radius: 8px; padding: 10px 14px; font-size: 12px; max-width: 300px; z-index: 20; box-shadow: 0 8px 24px rgba(0,0,0,0.5); display: none; line-height: 1.4; }
+  #tip .tn { font-weight: 600; font-size: 13px; margin-bottom: 2px; }
+  #tip .ti { font-size: 10px; color: #64748b; font-family: monospace; margin-bottom: 4px; }
+  #tip .td { color: #94a3b8; margin-bottom: 6px; }
+  #tip .tm { font-size: 10px; color: #64748b; margin-bottom: 6px; }
+  #tip .tm span { margin-right: 8px; }
+  #tip .te { font-size: 10px; }
+  #tip .te dt { color: #64748b; margin-top: 3px; }
+  #tip .te dd { color: #cbd5e1; margin-left: 6px; }
+
+  #legend { position: fixed; bottom: 12px; left: 12px; z-index: 10; background: #1e293bee; backdrop-filter: blur(8px); border: 1px solid #334155; border-radius: 8px; padding: 10px 14px; font-size: 10px; max-height: calc(100vh - 80px); overflow-y: auto; }
+  #legend h3 { font-size: 11px; margin-bottom: 6px; color: #94a3b8; }
+  .li { display: flex; align-items: center; gap: 6px; margin-bottom: 3px; color: #cbd5e1; }
+  .ls { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
+  .ll { width: 20px; height: 0; flex-shrink: 0; }
+
+  svg { display: block; }
+  .edge-prereq { fill: none; stroke: #3b82f640; stroke-width: 1.5; }
+  .edge-prereq.hl { stroke: #60a5fa; stroke-width: 2.5; }
+  .edge-encomp { fill: none; stroke-width: 1; stroke-dasharray: 3 2; opacity: 0.35; }
+  .edge-encomp.hl { opacity: 1; stroke-width: 2; }
+  .edge-encomp.hidden { display: none; }
+  .edge-prereq.hidden { display: none; }
+  .node-g { cursor: pointer; }
+  .node-g.dimmed { opacity: 0.08; }
+  .edge-prereq.dimmed, .edge-encomp.dimmed { opacity: 0.03; }
+  .node-pill { rx: 12; ry: 12; stroke-width: 1.5; }
+  .node-label { font-size: 9px; fill: #f0f0f0; text-anchor: middle; dominant-baseline: central; pointer-events: none; font-weight: 500; }
+</style>
+</head>
+<body>
+<div id="controls">
+  <h1>Math Foundations Graph</h1>
+  <div class="ctrl"><label>Prerequisites</label><input type="checkbox" class="tog" id="showP" checked></div>
+  <div class="ctrl"><label>Encompassing</label><input type="checkbox" class="tog" id="showE"></div>
+  <div class="ctrl"><label>Strand</label><select id="sf"><option value="all">All</option></select></div>
+  <div class="stats">
+    <span>Topics: <span class="sv" id="sT">0</span></span>
+    <span>Prereqs: <span class="sv" id="sP">0</span></span>
+    <span>Encomp: <span class="sv" id="sE">0</span></span>
+  </div>
+</div>
+<div id="tip"></div>
+<div id="legend">
+  <h3>Edge Types</h3>
+  <div class="li"><div class="ll" style="border-top:2px solid #3b82f680"></div>Prerequisite</div>
+  <div class="li"><div class="ll" style="border-top:1.5px dashed #22d3ee66"></div>Encompassing</div>
+  <h3 style="margin-top:6px">Strands</h3>
+  <div id="ls"></div>
+</div>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="https://unpkg.com/@dagrejs/dagre@1.1.4/dist/dagre.min.js"></script>
+<script>
+const GRAPH_DATA = {"topics":[{"id":"count-to-10","name":"Count to 10","description":"Count objects from 1 to 10 with one-to-one correspondence.","gradeLevel":0,"standardCode":"K.CC.4"},{"id":"count-to-20","name":"Count to 20","description":"Count objects from 1 to 20.","gradeLevel":0,"standardCode":"K.CC.5"},{"id":"count-to-100","name":"Count to 100","description":"Count to 100 by ones and by tens.","gradeLevel":0,"standardCode":"K.CC.1"},{"id":"compare-numbers-k","name":"Compare Numbers (K)","description":"Compare two numbers between 1 and 10 using greater than, less than, equal to.","gradeLevel":0,"standardCode":"K.CC.6"},{"id":"add-within-5","name":"Add Within 5","description":"Add two numbers whose sum is 5 or less using objects or drawings.","gradeLevel":0,"standardCode":"K.OA.1"},{"id":"subtract-within-5","name":"Subtract Within 5","description":"Subtract within 5 using objects or drawings.","gradeLevel":0,"standardCode":"K.OA.1"},{"id":"add-within-10","name":"Add Within 10","description":"Fluently add within 10.","gradeLevel":0,"standardCode":"K.OA.5"},{"id":"subtract-within-10","name":"Subtract Within 10","description":"Fluently subtract within 10.","gradeLevel":0,"standardCode":"K.OA.5"},{"id":"teen-numbers","name":"Teen Numbers (Place Value)","description":"Understand teen numbers as ten ones and some more ones (10 + n).","gradeLevel":0,"standardCode":"K.NBT.1"},{"id":"shapes-2d-k","name":"2D Shapes (K)","description":"Identify and describe squares, circles, triangles, rectangles.","gradeLevel":0,"standardCode":"K.G.2"},{"id":"shapes-3d-k","name":"3D Shapes (K)","description":"Identify and describe cubes, cones, cylinders, spheres.","gradeLevel":0,"standardCode":"K.G.1"},{"id":"add-within-20","name":"Add Within 20","description":"Add within 20 using strategies like making ten and counting on.","gradeLevel":1,"standardCode":"1.OA.6"},{"id":"subtract-within-20","name":"Subtract Within 20","description":"Subtract within 20 using strategies related to addition.","gradeLevel":1,"standardCode":"1.OA.6"},{"id":"add-subtract-word-problems-1","name":"Word Problems (Add/Sub within 20)","description":"Solve addition and subtraction word problems within 20.","gradeLevel":1,"standardCode":"1.OA.1"},{"id":"place-value-tens-ones","name":"Place Value: Tens and Ones","description":"Understand two-digit numbers as tens and ones.","gradeLevel":1,"standardCode":"1.NBT.2"},{"id":"compare-two-digit","name":"Compare Two-Digit Numbers","description":"Compare two-digit numbers using >, <, = based on place value.","gradeLevel":1,"standardCode":"1.NBT.3"},{"id":"add-within-100","name":"Add Within 100","description":"Add within 100 using place value strategies.","gradeLevel":1,"standardCode":"1.NBT.4"},{"id":"measure-length-nonstandard","name":"Measure Length (Nonstandard Units)","description":"Measure length using nonstandard units like paper clips.","gradeLevel":1,"standardCode":"1.MD.2"},{"id":"tell-time-hour-half","name":"Tell Time (Hour and Half Hour)","description":"Tell and write time in hours and half-hours using analog and digital clocks.","gradeLevel":1,"standardCode":"1.MD.3"},{"id":"skip-count-2-5-10","name":"Skip Count by 2s, 5s, 10s","description":"Skip count by 2, 5, and 10 within 1000.","gradeLevel":2,"standardCode":"2.NBT.2"},{"id":"add-within-100-fluent","name":"Fluently Add Within 100","description":"Fluently add within 100 using strategies based on place value.","gradeLevel":2,"standardCode":"2.NBT.5"},{"id":"subtract-within-100-fluent","name":"Fluently Subtract Within 100","description":"Fluently subtract within 100 using strategies based on place value.","gradeLevel":2,"standardCode":"2.NBT.5"},{"id":"add-within-1000","name":"Add Within 1000","description":"Add up to four two-digit numbers or add within 1000.","gradeLevel":2,"standardCode":"2.NBT.6"},{"id":"subtract-within-1000","name":"Subtract Within 1000","description":"Subtract within 1000 using models and strategies.","gradeLevel":2,"standardCode":"2.NBT.7"},{"id":"place-value-hundreds","name":"Place Value: Hundreds","description":"Understand three-digit numbers as hundreds, tens, and ones.","gradeLevel":2,"standardCode":"2.NBT.1"},{"id":"measure-length-standard","name":"Measure Length (Standard Units)","description":"Measure and estimate lengths in standard units (inches, feet, centimeters, meters).","gradeLevel":2,"standardCode":"2.MD.1"},{"id":"money-coins-bills","name":"Money: Coins and Bills","description":"Solve word problems involving dollar bills, quarters, dimes, nickels, pennies.","gradeLevel":2,"standardCode":"2.MD.8"},{"id":"intro-arrays","name":"Introduction to Arrays","description":"Use arrays to understand repeated addition as a foundation for multiplication.","gradeLevel":2,"standardCode":"2.OA.4"},{"id":"odd-even","name":"Odd and Even Numbers","description":"Determine whether a group of objects has an odd or even number.","gradeLevel":2,"standardCode":"2.OA.3"},{"id":"multiply-within-100","name":"Multiply Within 100","description":"Fluently multiply within 100 (multiplication facts to 10\u00d710).","gradeLevel":3,"standardCode":"3.OA.7"},{"id":"divide-within-100","name":"Divide Within 100","description":"Fluently divide within 100 (division facts related to multiplication).","gradeLevel":3,"standardCode":"3.OA.7"},{"id":"multiply-word-problems","name":"Multiplication Word Problems","description":"Solve word problems involving equal groups, arrays, and comparison.","gradeLevel":3,"standardCode":"3.OA.3"},{"id":"division-word-problems","name":"Division Word Problems","description":"Solve word problems involving equal sharing and grouping.","gradeLevel":3,"standardCode":"3.OA.3"},{"id":"properties-of-multiplication","name":"Properties of Multiplication","description":"Apply commutative, associative, and distributive properties of multiplication.","gradeLevel":3,"standardCode":"3.OA.5"},{"id":"patterns-arithmetic","name":"Patterns in Arithmetic","description":"Identify arithmetic patterns (including patterns in the addition and multiplication tables).","gradeLevel":3,"standardCode":"3.OA.9"},{"id":"place-value-rounding","name":"Round to Nearest 10 or 100","description":"Use place value to round whole numbers to the nearest 10 or 100.","gradeLevel":3,"standardCode":"3.NBT.1"},{"id":"multi-digit-add-sub","name":"Multi-Digit Addition and Subtraction","description":"Fluently add and subtract within 1000 using algorithms.","gradeLevel":3,"standardCode":"3.NBT.2"},{"id":"intro-fractions","name":"Introduction to Fractions","description":"Understand a fraction 1/b as one part when a whole is partitioned into b equal parts.","gradeLevel":3,"standardCode":"3.NF.1"},{"id":"fractions-number-line","name":"Fractions on a Number Line","description":"Represent fractions on a number line.","gradeLevel":3,"standardCode":"3.NF.2"},{"id":"equivalent-fractions-3","name":"Equivalent Fractions (Intro)","description":"Understand and identify simple equivalent fractions (e.g., 1/2 = 2/4).","gradeLevel":3,"standardCode":"3.NF.3"},{"id":"compare-fractions-3","name":"Compare Fractions (Same Denominator/Numerator)","description":"Compare fractions with same numerator or same denominator.","gradeLevel":3,"standardCode":"3.NF.3d"},{"id":"perimeter","name":"Perimeter","description":"Find the perimeter of polygons given side lengths. Solve perimeter word problems.","gradeLevel":3,"standardCode":"3.MD.8"},{"id":"area-intro","name":"Area (Introduction)","description":"Measure areas by counting unit squares. Understand area as covering.","gradeLevel":3,"standardCode":"3.MD.5"},{"id":"area-multiply","name":"Area by Multiplying","description":"Find area of rectangles by multiplying side lengths.","gradeLevel":3,"standardCode":"3.MD.7"},{"id":"tell-time-minute","name":"Tell Time to the Minute","description":"Tell and write time to the nearest minute. Solve elapsed time problems.","gradeLevel":3,"standardCode":"3.MD.1"},{"id":"bar-graphs-picture-graphs","name":"Bar Graphs and Picture Graphs","description":"Draw and interpret scaled bar graphs and picture graphs.","gradeLevel":3,"standardCode":"3.MD.3"},{"id":"multi-digit-multiply","name":"Multi-Digit Multiplication","description":"Multiply a whole number up to four digits by a one-digit number, and two two-digit numbers.","gradeLevel":4,"standardCode":"4.NBT.5"},{"id":"long-division","name":"Long Division","description":"Divide up to four-digit dividends by one-digit divisors.","gradeLevel":4,"standardCode":"4.NBT.6"},{"id":"factors-multiples","name":"Factors and Multiples","description":"Find factor pairs, determine if a number is prime or composite.","gradeLevel":4,"standardCode":"4.OA.4"},{"id":"equivalent-fractions-4","name":"Equivalent Fractions","description":"Generate equivalent fractions using visual models and multiplication/division.","gradeLevel":4,"standardCode":"4.NF.1"},{"id":"compare-fractions-4","name":"Compare Fractions (Unlike Denominators)","description":"Compare fractions with unlike denominators by finding common denominators.","gradeLevel":4,"standardCode":"4.NF.2"},{"id":"add-subtract-fractions","name":"Add and Subtract Fractions (Same Denominator)","description":"Add and subtract fractions with the same denominator.","gradeLevel":4,"standardCode":"4.NF.3"},{"id":"multiply-fraction-by-whole","name":"Multiply Fraction by Whole Number","description":"Multiply a fraction by a whole number (e.g., 3 \u00d7 2/5).","gradeLevel":4,"standardCode":"4.NF.4"},{"id":"decimals-intro","name":"Introduction to Decimals","description":"Understand decimal notation for fractions with denominators 10 and 100.","gradeLevel":4,"standardCode":"4.NF.6"},{"id":"angles-intro","name":"Angles (Introduction)","description":"Understand angles as a measure of rotation. Measure angles with a protractor.","gradeLevel":4,"standardCode":"4.MD.5"},{"id":"line-symmetry","name":"Line Symmetry","description":"Identify line-symmetric figures and draw lines of symmetry.","gradeLevel":4,"standardCode":"4.G.3"},{"id":"multi-step-word-problems","name":"Multi-Step Word Problems","description":"Solve multi-step word problems using the four operations.","gradeLevel":4,"standardCode":"4.OA.3"},{"id":"place-value-decimals","name":"Place Value with Decimals","description":"Understand the place value system extended to decimals (tenths, hundredths, thousandths).","gradeLevel":5,"standardCode":"5.NBT.1"},{"id":"multiply-multi-digit","name":"Multiply Multi-Digit Whole Numbers","description":"Fluently multiply multi-digit whole numbers using standard algorithm.","gradeLevel":5,"standardCode":"5.NBT.5"},{"id":"divide-multi-digit","name":"Divide Multi-Digit Whole Numbers","description":"Divide whole numbers with up to four-digit dividends and two-digit divisors.","gradeLevel":5,"standardCode":"5.NBT.6"},{"id":"add-subtract-fractions-unlike","name":"Add/Subtract Fractions (Unlike Denominators)","description":"Add and subtract fractions with unlike denominators by finding common denominators.","gradeLevel":5,"standardCode":"5.NF.1"},{"id":"multiply-fractions","name":"Multiply Fractions","description":"Multiply fractions and mixed numbers.","gradeLevel":5,"standardCode":"5.NF.4"},{"id":"divide-fractions","name":"Divide Fractions","description":"Divide unit fractions by whole numbers and whole numbers by unit fractions.","gradeLevel":5,"standardCode":"5.NF.7"},{"id":"decimal-operations","name":"Decimal Operations","description":"Add, subtract, multiply, and divide decimals to hundredths.","gradeLevel":5,"standardCode":"5.NBT.7"},{"id":"order-of-operations","name":"Order of Operations","description":"Evaluate expressions with parentheses, brackets, and braces (PEMDAS).","gradeLevel":5,"standardCode":"5.OA.1"},{"id":"variables-expressions","name":"Variables and Expressions","description":"Write and evaluate simple expressions with variables.","gradeLevel":5,"standardCode":"5.OA.2"},{"id":"coordinate-plane","name":"Coordinate Plane (Introduction)","description":"Graph points in the first quadrant of the coordinate plane.","gradeLevel":5,"standardCode":"5.G.1"},{"id":"volume","name":"Volume","description":"Find volumes of right rectangular prisms. Use V = l \u00d7 w \u00d7 h.","gradeLevel":5,"standardCode":"5.MD.3"},{"id":"classify-2d-shapes","name":"Classify 2D Shapes","description":"Classify triangles and quadrilaterals based on properties.","gradeLevel":5,"standardCode":"5.G.3"},{"id":"line-plots","name":"Line Plots with Fractions","description":"Make line plots to display data measured in fractions.","gradeLevel":5,"standardCode":"5.MD.2"},{"id":"unit-conversion","name":"Unit Conversion","description":"Convert among different-sized measurement units within a system.","gradeLevel":5,"standardCode":"5.MD.1"}],"prerequisites":[{"from":"count-to-10","to":"count-to-20","strength":1.0},{"from":"count-to-20","to":"count-to-100","strength":1.0},{"from":"count-to-10","to":"compare-numbers-k","strength":1.0},{"from":"count-to-10","to":"add-within-5","strength":1.0},{"from":"count-to-10","to":"subtract-within-5","strength":1.0},{"from":"add-within-5","to":"add-within-10","strength":1.0},{"from":"subtract-within-5","to":"subtract-within-10","strength":1.0},{"from":"count-to-10","to":"teen-numbers","strength":0.8},{"from":"count-to-20","to":"teen-numbers","strength":1.0},{"from":"add-within-10","to":"add-within-20","strength":1.0},{"from":"subtract-within-10","to":"subtract-within-20","strength":1.0},{"from":"teen-numbers","to":"add-within-20","strength":0.7},{"from":"add-within-20","to":"add-subtract-word-problems-1","strength":1.0},{"from":"subtract-within-20","to":"add-subtract-word-problems-1","strength":1.0},{"from":"teen-numbers","to":"place-value-tens-ones","strength":1.0},{"from":"count-to-100","to":"place-value-tens-ones","strength":0.8},{"from":"place-value-tens-ones","to":"compare-two-digit","strength":1.0},{"from":"compare-numbers-k","to":"compare-two-digit","strength":0.7},{"from":"add-within-20","to":"add-within-100","strength":1.0},{"from":"place-value-tens-ones","to":"add-within-100","strength":1.0},{"from":"count-to-100","to":"skip-count-2-5-10","strength":1.0},{"from":"add-within-10","to":"skip-count-2-5-10","strength":0.6},{"from":"add-within-100","to":"add-within-100-fluent","strength":1.0},{"from":"subtract-within-20","to":"subtract-within-100-fluent","strength":1.0},{"from":"place-value-tens-ones","to":"subtract-within-100-fluent","strength":0.8},{"from":"add-within-100-fluent","to":"add-within-1000","strength":1.0},{"from":"place-value-tens-ones","to":"place-value-hundreds","strength":1.0},{"from":"place-value-hundreds","to":"add-within-1000","strength":0.8},{"from":"subtract-within-100-fluent","to":"subtract-within-1000","strength":1.0},{"from":"place-value-hundreds","to":"subtract-within-1000","strength":0.8},{"from":"skip-count-2-5-10","to":"intro-arrays","strength":0.7},{"from":"add-within-20","to":"intro-arrays","strength":0.8},{"from":"count-to-20","to":"odd-even","strength":0.8},{"from":"skip-count-2-5-10","to":"odd-even","strength":0.6},{"from":"intro-arrays","to":"multiply-within-100","strength":1.0},{"from":"skip-count-2-5-10","to":"multiply-within-100","strength":0.7},{"from":"multiply-within-100","to":"divide-within-100","strength":1.0},{"from":"multiply-within-100","to":"multiply-word-problems","strength":1.0},{"from":"divide-within-100","to":"division-word-problems","strength":1.0},{"from":"multiply-within-100","to":"properties-of-multiplication","strength":1.0},{"from":"multiply-within-100","to":"patterns-arithmetic","strength":0.7},{"from":"add-within-100-fluent","to":"patterns-arithmetic","strength":0.5},{"from":"place-value-hundreds","to":"place-value-rounding","strength":1.0},{"from":"add-within-1000","to":"multi-digit-add-sub","strength":1.0},{"from":"subtract-within-1000","to":"multi-digit-add-sub","strength":1.0},{"from":"place-value-tens-ones","to":"intro-fractions","strength":0.5},{"from":"divide-within-100","to":"intro-fractions","strength":0.6},{"from":"intro-fractions","to":"fractions-number-line","strength":1.0},{"from":"fractions-number-line","to":"equivalent-fractions-3","strength":1.0},{"from":"fractions-number-line","to":"compare-fractions-3","strength":1.0},{"from":"measure-length-nonstandard","to":"measure-length-standard","strength":1.0},{"from":"multiply-within-100","to":"area-intro","strength":0.5},{"from":"measure-length-standard","to":"perimeter","strength":0.8},{"from":"add-within-100-fluent","to":"perimeter","strength":0.5},{"from":"area-intro","to":"area-multiply","strength":1.0},{"from":"multiply-within-100","to":"area-multiply","strength":1.0},{"from":"tell-time-hour-half","to":"tell-time-minute","strength":1.0},{"from":"add-within-100-fluent","to":"money-coins-bills","strength":0.7},{"from":"multiply-within-100","to":"multi-digit-multiply","strength":1.0},{"from":"properties-of-multiplication","to":"multi-digit-multiply","strength":0.8},{"from":"multi-digit-add-sub","to":"multi-digit-multiply","strength":0.6},{"from":"divide-within-100","to":"long-division","strength":1.0},{"from":"multi-digit-add-sub","to":"long-division","strength":0.7},{"from":"multiply-within-100","to":"factors-multiples","strength":1.0},{"from":"divide-within-100","to":"factors-multiples","strength":1.0},{"from":"equivalent-fractions-3","to":"equivalent-fractions-4","strength":1.0},{"from":"multiply-within-100","to":"equivalent-fractions-4","strength":0.5},{"from":"equivalent-fractions-4","to":"compare-fractions-4","strength":1.0},{"from":"compare-fractions-3","to":"compare-fractions-4","strength":0.8},{"from":"intro-fractions","to":"add-subtract-fractions","strength":1.0},{"from":"add-within-20","to":"add-subtract-fractions","strength":0.3},{"from":"intro-fractions","to":"multiply-fraction-by-whole","strength":1.0},{"from":"multiply-within-100","to":"multiply-fraction-by-whole","strength":0.5},{"from":"equivalent-fractions-4","to":"decimals-intro","strength":0.8},{"from":"place-value-hundreds","to":"decimals-intro","strength":0.7},{"from":"shapes-2d-k","to":"angles-intro","strength":0.5},{"from":"measure-length-standard","to":"angles-intro","strength":0.3},{"from":"shapes-2d-k","to":"line-symmetry","strength":0.7},{"from":"multi-digit-multiply","to":"multi-step-word-problems","strength":0.8},{"from":"long-division","to":"multi-step-word-problems","strength":0.8},{"from":"multiply-word-problems","to":"multi-step-word-problems","strength":0.7},{"from":"decimals-intro","to":"place-value-decimals","strength":1.0},{"from":"multi-digit-multiply","to":"multiply-multi-digit","strength":1.0},{"from":"long-division","to":"divide-multi-digit","strength":1.0},{"from":"equivalent-fractions-4","to":"add-subtract-fractions-unlike","strength":1.0},{"from":"add-subtract-fractions","to":"add-subtract-fractions-unlike","strength":1.0},{"from":"multiply-fraction-by-whole","to":"multiply-fractions","strength":1.0},{"from":"equivalent-fractions-4","to":"multiply-fractions","strength":0.6},{"from":"multiply-fractions","to":"divide-fractions","strength":1.0},{"from":"divide-within-100","to":"divide-fractions","strength":0.5},{"from":"place-value-decimals","to":"decimal-operations","strength":1.0},{"from":"multi-digit-add-sub","to":"decimal-operations","strength":0.5},{"from":"multi-digit-multiply","to":"order-of-operations","strength":0.7},{"from":"add-subtract-fractions-unlike","to":"order-of-operations","strength":0.3},{"from":"order-of-operations","to":"variables-expressions","strength":1.0},{"from":"place-value-decimals","to":"coordinate-plane","strength":0.3},{"from":"add-within-100-fluent","to":"coordinate-plane","strength":0.5},{"from":"multiply-multi-digit","to":"volume","strength":0.8},{"from":"area-multiply","to":"volume","strength":1.0},{"from":"shapes-2d-k","to":"classify-2d-shapes","strength":0.8},{"from":"angles-intro","to":"classify-2d-shapes","strength":0.7},{"from":"line-symmetry","to":"classify-2d-shapes","strength":0.3},{"from":"add-subtract-fractions-unlike","to":"line-plots","strength":0.6},{"from":"bar-graphs-picture-graphs","to":"line-plots","strength":0.7},{"from":"multiply-multi-digit","to":"unit-conversion","strength":0.5},{"from":"divide-multi-digit","to":"unit-conversion","strength":0.5},{"from":"decimal-operations","to":"unit-conversion","strength":0.6},{"from":"measure-length-standard","to":"unit-conversion","strength":0.7}],"encompassings":[{"parent":"add-within-20","child":"add-within-10","weight":0.8},{"parent":"add-within-20","child":"add-within-5","weight":0.9},{"parent":"subtract-within-20","child":"subtract-within-10","weight":0.8},{"parent":"subtract-within-20","child":"subtract-within-5","weight":0.9},{"parent":"add-within-100-fluent","child":"add-within-20","weight":0.7},{"parent":"subtract-within-100-fluent","child":"subtract-within-20","weight":0.7},{"parent":"add-within-1000","child":"add-within-100-fluent","weight":0.6},{"parent":"subtract-within-1000","child":"subtract-within-100-fluent","weight":0.6},{"parent":"multiply-within-100","child":"skip-count-2-5-10","weight":0.4},{"parent":"multi-digit-multiply","child":"multiply-within-100","weight":0.6},{"parent":"long-division","child":"divide-within-100","weight":0.5},{"parent":"multiply-fractions","child":"multiply-fraction-by-whole","weight":0.7},{"parent":"add-subtract-fractions-unlike","child":"add-subtract-fractions","weight":0.8},{"parent":"decimal-operations","child":"decimals-intro","weight":0.6},{"parent":"equivalent-fractions-4","child":"equivalent-fractions-3","weight":0.8},{"parent":"compare-fractions-4","child":"compare-fractions-3","weight":0.7},{"parent":"add-subtract-word-problems-1","child":"add-within-20","weight":0.6},{"parent":"add-subtract-word-problems-1","child":"subtract-within-20","weight":0.6},{"parent":"add-within-100","child":"add-within-20","weight":0.7},{"parent":"multi-digit-add-sub","child":"add-within-1000","weight":0.7},{"parent":"multi-digit-add-sub","child":"subtract-within-1000","weight":0.7},{"parent":"area-multiply","child":"multiply-within-100","weight":0.5},{"parent":"area-multiply","child":"area-intro","weight":0.6},{"parent":"perimeter","child":"add-within-100-fluent","weight":0.4},{"parent":"volume","child":"area-multiply","weight":0.6},{"parent":"volume","child":"multiply-multi-digit","weight":0.4},{"parent":"multiply-word-problems","child":"multiply-within-100","weight":0.6},{"parent":"division-word-problems","child":"divide-within-100","weight":0.6},{"parent":"multi-step-word-problems","child":"multi-digit-multiply","weight":0.5},{"parent":"multi-step-word-problems","child":"long-division","weight":0.5},{"parent":"add-subtract-fractions","child":"intro-fractions","weight":0.5},{"parent":"multiply-fraction-by-whole","child":"intro-fractions","weight":0.4},{"parent":"multiply-fraction-by-whole","child":"multiply-within-100","weight":0.3},{"parent":"divide-fractions","child":"multiply-fractions","weight":0.6},{"parent":"order-of-operations","child":"multi-digit-multiply","weight":0.4},{"parent":"multiply-multi-digit","child":"multi-digit-multiply","weight":0.7},{"parent":"divide-multi-digit","child":"long-division","weight":0.7},{"parent":"place-value-decimals","child":"decimals-intro","weight":0.7},{"parent":"tell-time-minute","child":"tell-time-hour-half","weight":0.6},{"parent":"classify-2d-shapes","child":"shapes-2d-k","weight":0.5},{"parent":"classify-2d-shapes","child":"angles-intro","weight":0.4},{"parent":"unit-conversion","child":"decimal-operations","weight":0.4},{"parent":"add-within-100","child":"add-within-10","weight":0.5},{"parent":"add-within-100","child":"add-within-5","weight":0.4},{"parent":"add-within-100-fluent","child":"add-within-10","weight":0.5},{"parent":"add-within-100-fluent","child":"add-within-5","weight":0.4},{"parent":"add-within-1000","child":"add-within-20","weight":0.5},{"parent":"add-within-1000","child":"add-within-10","weight":0.4},{"parent":"multi-digit-add-sub","child":"add-within-100-fluent","weight":0.5},{"parent":"subtract-within-100-fluent","child":"subtract-within-10","weight":0.5},{"parent":"subtract-within-100-fluent","child":"subtract-within-5","weight":0.4},{"parent":"subtract-within-1000","child":"subtract-within-20","weight":0.5},{"parent":"subtract-within-1000","child":"subtract-within-10","weight":0.4},{"parent":"multi-digit-add-sub","child":"subtract-within-100-fluent","weight":0.5},{"parent":"multiply-multi-digit","child":"multiply-within-100","weight":0.5},{"parent":"multi-digit-multiply","child":"skip-count-2-5-10","weight":0.3},{"parent":"divide-multi-digit","child":"divide-within-100","weight":0.5},{"parent":"long-division","child":"multiply-within-100","weight":0.4},{"parent":"divide-multi-digit","child":"multiply-within-100","weight":0.3},{"parent":"add-subtract-fractions-unlike","child":"intro-fractions","weight":0.4},{"parent":"add-subtract-fractions-unlike","child":"equivalent-fractions-3","weight":0.5},{"parent":"add-subtract-fractions","child":"add-within-20","weight":0.3},{"parent":"multiply-fractions","child":"multiply-within-100","weight":0.3},{"parent":"divide-fractions","child":"divide-within-100","weight":0.3},{"parent":"divide-fractions","child":"multiply-fraction-by-whole","weight":0.4},{"parent":"compare-fractions-4","child":"equivalent-fractions-3","weight":0.4},{"parent":"equivalent-fractions-4","child":"multiply-within-100","weight":0.3},{"parent":"equivalent-fractions-4","child":"intro-fractions","weight":0.4},{"parent":"decimal-operations","child":"place-value-decimals","weight":0.6},{"parent":"decimal-operations","child":"add-within-100-fluent","weight":0.4},{"parent":"decimal-operations","child":"subtract-within-100-fluent","weight":0.4},{"parent":"decimal-operations","child":"multiply-within-100","weight":0.3},{"parent":"place-value-hundreds","child":"place-value-tens-ones","weight":0.7},{"parent":"place-value-rounding","child":"place-value-tens-ones","weight":0.4},{"parent":"place-value-rounding","child":"place-value-hundreds","weight":0.6},{"parent":"place-value-decimals","child":"place-value-hundreds","weight":0.5},{"parent":"place-value-decimals","child":"place-value-tens-ones","weight":0.4},{"parent":"add-subtract-word-problems-1","child":"add-within-10","weight":0.4},{"parent":"add-subtract-word-problems-1","child":"subtract-within-10","weight":0.4},{"parent":"multiply-word-problems","child":"intro-arrays","weight":0.3},{"parent":"division-word-problems","child":"multiply-within-100","weight":0.3},{"parent":"multi-step-word-problems","child":"add-within-100-fluent","weight":0.3},{"parent":"multi-step-word-problems","child":"subtract-within-100-fluent","weight":0.3},{"parent":"multi-step-word-problems","child":"multiply-within-100","weight":0.3},{"parent":"multi-step-word-problems","child":"divide-within-100","weight":0.3},{"parent":"perimeter","child":"add-within-100","weight":0.3},{"parent":"perimeter","child":"multiply-within-100","weight":0.3},{"parent":"area-intro","child":"skip-count-2-5-10","weight":0.3},{"parent":"volume","child":"multiply-within-100","weight":0.3},{"parent":"order-of-operations","child":"add-within-100-fluent","weight":0.3},{"parent":"order-of-operations","child":"subtract-within-100-fluent","weight":0.3},{"parent":"order-of-operations","child":"multiply-within-100","weight":0.3},{"parent":"order-of-operations","child":"divide-within-100","weight":0.3},{"parent":"variables-expressions","child":"order-of-operations","weight":0.6},{"parent":"variables-expressions","child":"multi-digit-multiply","weight":0.3},{"parent":"variables-expressions","child":"add-within-100-fluent","weight":0.3},{"parent":"place-value-tens-ones","child":"count-to-100","weight":0.5},{"parent":"place-value-tens-ones","child":"count-to-20","weight":0.4},{"parent":"place-value-tens-ones","child":"teen-numbers","weight":0.5},{"parent":"place-value-hundreds","child":"count-to-100","weight":0.3},{"parent":"compare-two-digit","child":"compare-numbers-k","weight":0.6},{"parent":"compare-two-digit","child":"place-value-tens-ones","weight":0.5},{"parent":"intro-arrays","child":"skip-count-2-5-10","weight":0.5},{"parent":"intro-arrays","child":"add-within-20","weight":0.4},{"parent":"factors-multiples","child":"multiply-within-100","weight":0.5},{"parent":"factors-multiples","child":"divide-within-100","weight":0.5},{"parent":"properties-of-multiplication","child":"multiply-within-100","weight":0.6},{"parent":"properties-of-multiplication","child":"intro-arrays","weight":0.4},{"parent":"patterns-arithmetic","child":"add-within-100-fluent","weight":0.4},{"parent":"patterns-arithmetic","child":"multiply-within-100","weight":0.4},{"parent":"money-coins-bills","child":"add-within-100-fluent","weight":0.4},{"parent":"money-coins-bills","child":"skip-count-2-5-10","weight":0.4},{"parent":"coordinate-plane","child":"place-value-decimals","weight":0.3},{"parent":"coordinate-plane","child":"add-within-100-fluent","weight":0.3},{"parent":"line-symmetry","child":"shapes-2d-k","weight":0.4},{"parent":"angles-intro","child":"shapes-2d-k","weight":0.3},{"parent":"classify-2d-shapes","child":"line-symmetry","weight":0.4},{"parent":"line-plots","child":"add-subtract-fractions-unlike","weight":0.4},{"parent":"line-plots","child":"bar-graphs-picture-graphs","weight":0.5},{"parent":"bar-graphs-picture-graphs","child":"count-to-20","weight":0.3},{"parent":"bar-graphs-picture-graphs","child":"compare-numbers-k","weight":0.3},{"parent":"tell-time-minute","child":"skip-count-2-5-10","weight":0.4},{"parent":"tell-time-minute","child":"count-to-100","weight":0.3},{"parent":"measure-length-standard","child":"measure-length-nonstandard","weight":0.6},{"parent":"unit-conversion","child":"multiply-multi-digit","weight":0.4},{"parent":"unit-conversion","child":"divide-multi-digit","weight":0.4},{"parent":"odd-even","child":"count-to-20","weight":0.4},{"parent":"odd-even","child":"skip-count-2-5-10","weight":0.5},{"parent":"fractions-number-line","child":"intro-fractions","weight":0.6},{"parent":"count-to-100","child":"count-to-20","weight":0.7},{"parent":"count-to-100","child":"count-to-10","weight":0.5},{"parent":"count-to-20","child":"count-to-10","weight":0.8},{"parent":"teen-numbers","child":"count-to-10","weight":0.5}]};
+
+const SM = {
+  'count-to-10':'counting','count-to-20':'counting','count-to-100':'counting',
+  'teen-numbers':'counting','skip-count-2-5-10':'counting',
+  'compare-numbers-k':'counting','compare-two-digit':'counting','odd-even':'counting',
+  'add-within-5':'addition','add-within-10':'addition','add-within-20':'addition',
+  'add-within-100':'addition','add-within-100-fluent':'addition',
+  'add-within-1000':'addition','multi-digit-add-sub':'add-sub',
+  'subtract-within-5':'subtraction','subtract-within-10':'subtraction',
+  'subtract-within-20':'subtraction','subtract-within-100-fluent':'subtraction',
+  'subtract-within-1000':'subtraction',
+  'add-subtract-word-problems-1':'word-problems','multiply-word-problems':'word-problems',
+  'division-word-problems':'word-problems','multi-step-word-problems':'word-problems',
+  'intro-arrays':'multiplication','properties-of-multiplication':'multiplication',
+  'multiply-within-100':'multiplication','multi-digit-multiply':'multiplication',
+  'multiply-multi-digit':'multiplication','order-of-operations':'multiplication',
+  'divide-within-100':'division','long-division':'division',
+  'divide-multi-digit':'division','factors-multiples':'division',
+  'intro-fractions':'fractions','fractions-number-line':'fractions',
+  'equivalent-fractions-3':'fractions','equivalent-fractions-4':'fractions',
+  'compare-fractions-3':'fractions','compare-fractions-4':'fractions',
+  'add-subtract-fractions':'fractions','add-subtract-fractions-unlike':'fractions',
+  'multiply-fraction-by-whole':'fractions','multiply-fractions':'fractions',
+  'divide-fractions':'fractions',
+  'decimals-intro':'decimals','place-value-decimals':'decimals','decimal-operations':'decimals',
+  'place-value-tens-ones':'place-value','place-value-hundreds':'place-value','place-value-rounding':'place-value',
+  'shapes-2d-k':'geometry','shapes-3d-k':'geometry','classify-2d-shapes':'geometry',
+  'line-symmetry':'geometry','angles-intro':'geometry','coordinate-plane':'geometry',
+  'measure-length-nonstandard':'measurement','measure-length-standard':'measurement',
+  'perimeter':'measurement','area-intro':'measurement','area-multiply':'measurement',
+  'volume':'measurement','unit-conversion':'measurement',
+  'tell-time-hour-half':'time-money','tell-time-minute':'time-money','money-coins-bills':'time-money',
+  'bar-graphs-picture-graphs':'data','line-plots':'data',
+  'patterns-arithmetic':'algebra','variables-expressions':'algebra',
+};
+const SC = {
+  counting:'#f97316',addition:'#22c55e',subtraction:'#ef4444','add-sub':'#84cc16',
+  'word-problems':'#eab308',multiplication:'#3b82f6',division:'#8b5cf6',
+  fractions:'#ec4899',decimals:'#f43f5e','place-value':'#14b8a6',
+  geometry:'#06b6d4',measurement:'#a855f7','time-money':'#78716c',
+  data:'#64748b',algebra:'#f59e0b',
+};
+
+(function main() {
+  const graph = GRAPH_DATA;
+  const W = window.innerWidth, H = window.innerHeight;
+
+  // Build dagre graph — ONLY prerequisites define the hierarchy
+  const dg = new dagre.graphlib.Graph();
+  dg.setGraph({ rankdir: 'BT', nodesep: 28, ranksep: 60, marginx: 40, marginy: 60 });
+  dg.setDefaultEdgeLabel(() => ({}));
+
+  const nodeMap = {};
+  graph.topics.forEach(t => {
+    const strand = SM[t.id] || 'other';
+    const label = t.name.length > 22 ? t.name.slice(0, 20) + '…' : t.name;
+    const w = Math.max(90, label.length * 6.5 + 20);
+    dg.setNode(t.id, { label, width: w, height: 28 });
+    nodeMap[t.id] = { ...t, strand, displayName: label, w };
+  });
+
+  graph.prerequisites.forEach(p => {
+    dg.setEdge(p.from, p.to);
+  });
+
+  dagre.layout(dg);
+
+  // Extract positions
+  const nodes = [];
+  dg.nodes().forEach(id => {
+    const n = dg.node(id);
+    const meta = nodeMap[id];
+    nodes.push({ id, x: n.x, y: n.y, w: n.width, h: n.height, ...meta });
+  });
+
+  // Build edge paths using dagre points
+  const prereqEdges = [];
+  graph.prerequisites.forEach(p => {
+    const edge = dg.edge(p.from, p.to);
+    prereqEdges.push({ source: p.from, target: p.to, points: edge.points });
+  });
+
+  // Encompassing edges — simple curved lines (not part of dagre layout)
+  const nodePos = {};
+  nodes.forEach(n => { nodePos[n.id] = { x: n.x, y: n.y, h: n.h }; });
+
+  const encompEdges = graph.encompassings.map(e => ({
+    source: e.parent, target: e.child, weight: e.weight,
+    sx: nodePos[e.parent]?.x || 0, sy: (nodePos[e.parent]?.y || 0) + 14,
+    tx: nodePos[e.child]?.x || 0, ty: (nodePos[e.child]?.y || 0) - 14,
+  }));
+
+  // Adjacency for tooltips
+  const adjE = {}, adjP = {};
+  graph.encompassings.forEach(e => {
+    (adjE[e.parent] ??= []).push({ id: e.child, w: e.weight, dir: 'child' });
+    (adjE[e.child] ??= []).push({ id: e.parent, w: e.weight, dir: 'parent' });
+  });
+  graph.prerequisites.forEach(p => {
+    (adjP[p.to] ??= []).push({ id: p.from, dir: 'requires' });
+    (adjP[p.from] ??= []).push({ id: p.to, dir: 'unlocks' });
+  });
+
+  // Stats
+  document.getElementById('sT').textContent = nodes.length;
+  document.getElementById('sP').textContent = prereqEdges.length;
+  document.getElementById('sE').textContent = encompEdges.length;
+
+  // Strand filter + legend
+  const strands = [...new Set(nodes.map(n => n.strand))].sort();
+  const sf = document.getElementById('sf');
+  strands.forEach(s => { const o = document.createElement('option'); o.value = s; o.textContent = s; sf.appendChild(o); });
+  const ls = document.getElementById('ls');
+  strands.forEach(s => {
+    const d = document.createElement('div');
+    d.className = 'li';
+    d.innerHTML = '<div class="ls" style="background:' + (SC[s]||'#666') + '"></div>' + s;
+    ls.appendChild(d);
+  });
+
+  // SVG
+  const svg = d3.select('body').append('svg').attr('width', W).attr('height', H);
+  const gRoot = svg.append('g');
+
+  // Zoom + pan
+  const zoom = d3.zoom().scaleExtent([0.15, 3]).on('zoom', e => gRoot.attr('transform', e.transform));
+  svg.call(zoom);
+
+  // Arrow markers
+  const defs = svg.append('defs');
+  [['ap','#3b82f680',8],['aph','#60a5fa',8],['ae','#22d3ee44',6],['aeh','#22d3ee',6]].forEach(([id,fill,sz]) => {
+    defs.append('marker').attr('id',id).attr('viewBox','0 -3 6 6')
+      .attr('refX',6).attr('refY',0).attr('markerWidth',sz).attr('markerHeight',sz)
+      .attr('orient','auto').append('path').attr('d','M0,-2.5L6,0L0,2.5').attr('fill',fill);
+  });
+
+  // Line generator for dagre edge points
+  const line = d3.line().x(d=>d.x).y(d=>d.y).curve(d3.curveBasis);
+
+  // Draw prereq edges
+  const edgeG = gRoot.append('g');
+  const pEdgeSel = edgeG.selectAll('.edge-prereq').data(prereqEdges).enter().append('path')
+    .attr('class', 'edge-prereq')
+    .attr('d', d => line(d.points))
+    .attr('marker-end', 'url(#ap)');
+
+  // Draw encompassing edges
+  const eEdgeSel = edgeG.selectAll('.edge-encomp').data(encompEdges).enter().append('path')
+    .attr('class', 'edge-encomp hidden')
+    .attr('stroke', d => (SC[nodeMap[d.source]?.strand] || '#22d3ee') + '66')
+    .attr('d', d => {
+      const dx = d.tx - d.sx, dy = d.ty - d.sy;
+      const cx = (d.sx + d.tx) / 2 + dy * 0.15;
+      const cy = (d.sy + d.ty) / 2 - dx * 0.08;
+      return 'M' + d.sx + ',' + d.sy + ' Q' + cx + ',' + cy + ' ' + d.tx + ',' + d.ty;
+    })
+    .attr('marker-end', 'url(#ae)');
+
+  // Draw nodes
+  const nodeG = gRoot.append('g');
+  const nodeSel = nodeG.selectAll('.node-g').data(nodes).enter().append('g')
+    .attr('class', 'node-g')
+    .attr('transform', d => 'translate(' + d.x + ',' + d.y + ')');
+
+  nodeSel.append('rect')
+    .attr('class', 'node-pill')
+    .attr('x', d => -d.w/2).attr('y', -14)
+    .attr('width', d => d.w).attr('height', 28)
+    .attr('fill', d => {
+      const c = d3.color(SC[d.strand] || '#666');
+      c.opacity = 0.8;
+      return c + '';
+    })
+    .attr('stroke', d => {
+      const c = d3.color(SC[d.strand] || '#666').brighter(0.6);
+      c.opacity = 0.5;
+      return c + '';
+    });
+
+  nodeSel.append('text').attr('class', 'node-label')
+    .text(d => d.displayName);
+
+  // Tooltip
+  const tip = document.getElementById('tip');
+
+  nodeSel.on('mouseover', (ev, d) => {
+    const conn = new Set([d.id]);
+    const connP = new Set(), connE = new Set();
+    prereqEdges.forEach((e, i) => { if (e.source === d.id || e.target === d.id) { conn.add(e.source); conn.add(e.target); connP.add(i); }});
+    encompEdges.forEach((e, i) => { if (e.source === d.id || e.target === d.id) { conn.add(e.source); conn.add(e.target); connE.add(i); }});
+
+    nodeSel.classed('dimmed', n => !conn.has(n.id));
+    pEdgeSel.classed('dimmed', (_, i) => !connP.has(i)).classed('hl', (_, i) => connP.has(i))
+      .attr('marker-end', (_, i) => connP.has(i) ? 'url(#aph)' : 'url(#ap)');
+    eEdgeSel.classed('dimmed', (_, i) => !connE.has(i)).classed('hl', (_, i) => connE.has(i))
+      .attr('marker-end', (_, i) => connE.has(i) ? 'url(#aeh)' : 'url(#ae)');
+
+    const pr = (adjP[d.id]||[]).filter(x=>x.dir==='requires');
+    const ul = (adjP[d.id]||[]).filter(x=>x.dir==='unlocks');
+    const ep = (adjE[d.id]||[]).filter(x=>x.dir==='parent');
+    const ec = (adjE[d.id]||[]).filter(x=>x.dir==='child');
+
+    let h = '<div class="tn">' + d.name + '</div>';
+    h += '<div class="ti">' + d.id + '</div>';
+    h += '<div class="td">' + d.description + '</div>';
+    h += '<div class="tm"><span>Grade ' + d.gradeLevel + '</span><span>' + d.standardCode + '</span><span style="color:' + (SC[d.strand]||'#888') + '">' + d.strand + '</span></div>';
+    h += '<dl class="te">';
+    if (pr.length) h += '<dt>Requires (' + pr.length + '):</dt><dd>' + pr.map(x=>(nodeMap[x.id]?.name||x.id)).join(', ') + '</dd>';
+    if (ul.length) h += '<dt>Unlocks (' + ul.length + '):</dt><dd>' + ul.map(x=>(nodeMap[x.id]?.name||x.id)).join(', ') + '</dd>';
+    if (ep.length) h += '<dt>Encompassed by (' + ep.length + '):</dt><dd>' + ep.map(x=>(nodeMap[x.id]?.name||x.id) + ' (' + x.w + ')').join(', ') + '</dd>';
+    if (ec.length) h += '<dt>Encompasses (' + ec.length + '):</dt><dd>' + ec.map(x=>(nodeMap[x.id]?.name||x.id) + ' (' + x.w + ')').join(', ') + '</dd>';
+    h += '</dl>';
+    tip.innerHTML = h;
+    tip.style.display = 'block';
+  })
+  .on('mousemove', ev => {
+    let x = ev.clientX + 14, y = ev.clientY - 8;
+    if (x + tip.offsetWidth > W) x = ev.clientX - tip.offsetWidth - 10;
+    if (y + tip.offsetHeight > H) y = H - tip.offsetHeight - 8;
+    tip.style.left = x + 'px'; tip.style.top = y + 'px';
+  })
+  .on('mouseout', () => {
+    nodeSel.classed('dimmed', false);
+    pEdgeSel.classed('dimmed', false).classed('hl', false).attr('marker-end', 'url(#ap)');
+    eEdgeSel.classed('dimmed', false).classed('hl', false).attr('marker-end', 'url(#ae)');
+    tip.style.display = 'none';
+  });
+
+  // Filters
+  function applyFilters() {
+    const strand = sf.value;
+    const showP = document.getElementById('showP').checked;
+    const showE = document.getElementById('showE').checked;
+
+    const vis = new Set();
+    nodes.forEach(n => { if (strand === 'all' || n.strand === strand) vis.add(n.id); });
+
+    nodeSel.style('display', n => vis.has(n.id) ? null : 'none');
+    pEdgeSel.classed('hidden', d => !showP || !vis.has(d.source) || !vis.has(d.target));
+    eEdgeSel.classed('hidden', d => !showE || !vis.has(d.source) || !vis.has(d.target));
+  }
+  document.getElementById('showP').addEventListener('change', applyFilters);
+  document.getElementById('showE').addEventListener('change', applyFilters);
+  sf.addEventListener('change', applyFilters);
+  applyFilters();
+
+  // Fit to view
+  const gBox = dg.graph();
+  const gw = gBox.width || 1200, gh = gBox.height || 800;
+  const scale = Math.min(0.92 * W / gw, 0.88 * (H - 50) / gh, 1.2);
+  const tx = (W - gw * scale) / 2, ty = (H - 50 - gh * scale) / 2 + 50;
+  svg.call(zoom.transform, d3.zoomIdentity.translate(tx, ty).scale(scale));
+})();
+</script>
+</body>
+</html>

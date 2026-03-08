@@ -34,7 +34,7 @@ const topicsByDepth = computed(() => {
     if (!groups.has(t.depth)) groups.set(t.depth, []);
     groups.get(t.depth)!.push(t);
   }
-  return [...groups.entries()].sort(([a], [b]) => a - b);
+  return [...groups.entries()].sort(([a], [b]) => b - a);
 });
 
 async function selectTopic(topic: any) {
@@ -53,8 +53,8 @@ function gradeName(level: number) {
 }
 
 function depthColor(depth: number) {
-  const hue = (depth / Math.max(maxDepth.value, 1)) * 240; // blue to red
-  return `hsl(${240 - hue}, 70%, 90%)`;
+  const hue = (depth / Math.max(maxDepth.value, 1)) * 240; // foundations=warm, advanced=cool
+  return `hsl(${hue}, 70%, 90%)`;
 }
 </script>
 

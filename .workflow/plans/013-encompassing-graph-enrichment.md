@@ -9,16 +9,9 @@
 
 ## Summary
 
-Audit the 71-topic math-foundations knowledge graph, identify missing encompassing relationships (currently 42, targeting 80+), assign calibrated fractional weights, validate that FIRe review compression meaningfully improves, and document the weight assignment methodology as a reusable playbook for all future subjects.
+Audit the 71-topic math-foundations knowledge graph, identify missing encompassing relationships, assign calibrated fractional weights, validate that FIRe review compression meaningfully improves, and document the weight assignment methodology as a reusable playbook for all future subjects.
 
-FIRe (Fractional Implicit Repetition) is one of the platform's most powerful features — Math Academy credits it with reducing explicit reviews to ~1 per topic on average. The SRS service already implements multi-hop credit traversal, upward penalty propagation, and greedy set-cover review compression. But with only 42 encompassing edges (and 24 topics with zero edges), the compression algorithm has limited material to work with.
-
-**Current state:**
-- 71 topics, 108 prerequisite edges, 42 encompassing edges
-- 24 topics have NO encompassing edges (including foundational topics like count-to-10, place-value-tens-ones, intro-arrays)
-- FIRe compression falls back to most-overdue ordering when density is too low
-- No documented methodology for assigning fractional weights
-- Cross-strand encompassings are underrepresented (e.g., word problems encompassing computation skills)
+FIRe (Fractional Implicit Repetition) is one of the platform's most powerful features — Math Academy credits it with reducing explicit reviews to ~1 per topic on average. The SRS service already implements multi-hop credit traversal, upward penalty propagation, and greedy set-cover review compression.
 
 **Research basis:** `docs/learning-science.md` section 8 (FIRe), section 15 (Automaticity and Layering). Math Academy empirical result: most courses can be learned with roughly only one explicit review per topic on average when encompassing density is sufficient.
 
@@ -28,92 +21,133 @@ FIRe (Fractional Implicit Repetition) is one of the platform's most powerful fea
 **In Progress:** —
 **Next:** Phase 3
 
+### Phase 1-2 Results (completed 2026-03-07)
+
+Starting state: 71 topics, 108 prerequisite edges, 42 encompassing edges. 24 topics had zero encompassing edges.
+
+**What was done:** Systematically analyzed all 71 topics across 14 strands (counting, addition, subtraction, multiplication, division, fractions, decimals, place-value, geometry, measurement, time-money, data, algebra, add-sub, word-problems). Added 91 new encompassing edges.
+
+**Final state:**
+- **133 encompassing edges** (42 original + 91 new)
+- **1.9 encompassing edges per topic** (exceeds 1.0-1.5 target for mastery-gated disciplines)
+- **70 of 71 topics** now have at least one encompassing edge (`shapes-3d-k` is genuinely isolated — 3D shapes at K level has no valid encompassing relationship)
+- **Weight distribution:** 68 edges at 0.3-0.4, 46 at 0.5-0.6, 17 at 0.7-0.8, 2 at 0.9-1.0
+- **Multi-hop chains verified:** 3-4 hops deep with meaningful weight propagation (e.g., `variables-expressions` → `order-of-operations` → `multi-digit-multiply` → `multiply-within-100` → `skip-count-2-5-10`, cumulative weight 0.058)
+- `just validate-content` passes (0 errors, DAG intact)
+- Committed as `a7c6c79`
+
+**Edge categories added:**
+- Within-strand transitive chains: addition (6), subtraction (4), multiplication (2), division (3), fractions (9), decimals (4), place value (5), counting (4)
+- Cross-strand: word-problems→computation (8), measurement→arithmetic (4), order-of-operations→all-four-ops (4), algebra→computation (3), place-value→counting (4), comparison (2), arrays (2), factors (2), properties (2), patterns (2), money (2), coordinate (2), geometry (3), data (4), time (2), measurement-chain (3), odd-even (2), fractions-number-line (1)
+
+**Weight rubric applied (from Phase 2 step 1 — this must be documented in Phase 4):**
+
+| Weight Range | Meaning | Examples |
+|---|---|---|
+| **0.8-1.0** | Advanced topic exercises the simpler skill nearly identically | `count-to-20` → `count-to-10` (0.8), `add-within-20` → `add-within-5` (0.9) |
+| **0.5-0.7** | Simpler skill is a core component exercised every time | `place-value-hundreds` → `place-value-tens-ones` (0.7), `factors-multiples` → `multiply-within-100` (0.5) |
+| **0.3-0.4** | Simpler skill is exercised incidentally | `order-of-operations` → `add-within-100-fluent` (0.3), `money-coins-bills` → `skip-count-2-5-10` (0.4) |
+| **0.1-0.2** | Too tangential — edges at this weight were not created |
+
+**Heuristic used:** Within-strand edges tend 0.6-0.8. Cross-strand edges tend 0.3-0.5. Word-problem edges typically 0.4-0.6.
+
 ---
 
-## Phase 1: Audit & Relationship Identification
-**Goal:** Systematically identify all valid encompassing relationships across the 71 topics. An advanced topic encompasses a simpler topic when practicing the advanced topic implicitly exercises the simpler skill.
+## Phase 1: Audit & Relationship Identification ✓
+**Goal:** Systematically identify all valid encompassing relationships across the 71 topics.
 
-1. [x] [RSH] Analyze the graph by strand (addition, subtraction, multiplication, division, fractions, place value, geometry, measurement, data/graphs) and identify within-strand encompassing chains. Many within-strand chains already exist (e.g., add-within-20 -> add-within-10 -> add-within-5). Find gaps — e.g., `add-within-100-fluent` should encompass `add-within-10` (not just `add-within-20`), since 100-level addition still exercises single-digit addition skills.
-
-2. [x] [RSH] Identify cross-strand encompassing relationships. These are currently underrepresented and are where the most compression value lies. Examples:
-   - **Word problems encompass computation:** `multiply-word-problems` encompasses `add-within-100-fluent` (checking answers requires addition), `division-word-problems` encompasses `subtract-within-100-fluent` (remainder checking)
-   - **Fractions encompass whole-number operations:** `add-subtract-fractions` encompasses `add-within-20` (adding numerators), `multiply-fractions` encompasses `multiply-within-100` (multiplying numerators/denominators)
-   - **Multi-step encompasses component operations:** `order-of-operations` encompasses `add-within-100-fluent`, `subtract-within-100-fluent`, `multiply-within-100`, `divide-within-100`
-   - **Measurement encompasses computation:** `perimeter` encompasses `multiply-within-100` (rectangular perimeter), `area-multiply` encompasses `add-within-100-fluent`
-   - **Place value encompasses counting:** `place-value-hundreds` encompasses `count-to-100`, `place-value-tens-ones` encompasses `count-to-20`
-
-3. [x] [RSH] Identify multi-hop depth opportunities. The SRS service supports multi-hop credit (2-3 hops with diminishing weight). Verify that chains are deep enough for multi-hop to engage. Example chain: `order-of-operations` -> `multi-digit-multiply` -> `multiply-within-100` -> `skip-count-2-5-10`. Credit should flow 3 hops from order-of-operations all the way to skip-counting.
-
-4. [x] [RSH] Address the 24 zero-edge topics specifically. For each, determine:
-   - **Root topics** (count-to-10, count-to-20, shapes-2d-k, shapes-3d-k, measure-length-nonstandard, bar-graphs-picture-graphs): These are leaf nodes — they ARE encompassed by others but don't encompass anything. Ensure at least one parent topic has an encompassing edge pointing to them.
-   - **Mid-graph topics** (place-value-tens-ones, intro-arrays, properties-of-multiplication, factors-multiples, fractions-number-line, place-value-hundreds, place-value-rounding, odd-even): These should both encompass children and be encompassed by parents. These are the biggest gaps.
-   - **Isolated strands** (money-coins-bills, coordinate-plane, line-symmetry, line-plots): Topics with few connections to the main computation strands. Identify any valid encompassings or accept they have limited FIRe value.
-
-**Validation:** A complete list of proposed encompassing edges with rationale, organized by strand and cross-strand category. Target: 40+ new edges identified (bringing total from 42 to 80+).
+1. [x] [RSH] Analyze the graph by strand and identify within-strand encompassing chains and gaps.
+2. [x] [RSH] Identify cross-strand encompassing relationships (word problems→computation, fractions→whole-number ops, measurement→arithmetic, place-value→counting).
+3. [x] [RSH] Identify multi-hop depth opportunities — verified chains 3-4 hops deep.
+4. [x] [RSH] Address the 24 zero-edge topics — reduced to 1 (`shapes-3d-k`, genuinely isolated).
 
 ---
 
-## Phase 2: Weight Calibration & Edge Creation
-**Goal:** Assign fractional weights to all identified edges using a documented rubric, update graph.json, validate integrity, and import.
+## Phase 2: Weight Calibration & Edge Creation ✓
+**Goal:** Assign fractional weights, update graph.json, validate integrity.
 
-1. [x] [IMP] Apply weight assignment rubric to all identified edges:
-
-   | Weight Range | Meaning | Examples |
-   |---|---|---|
-   | **0.8-1.0** | Advanced topic exercises the simpler skill nearly identically. The simpler skill IS the core of the advanced task, just with harder numbers or more steps. | `add-within-20` encompasses `add-within-10` (0.8): same operation, bigger numbers |
-   | **0.5-0.7** | Simpler skill is a core component exercised every time. Student must use the simpler skill to complete the advanced task, but other skills are also required. | `multiply-word-problems` encompasses `multiply-within-100` (0.6): must multiply, but also read/interpret |
-   | **0.3-0.4** | Simpler skill is exercised incidentally — not the focus, but it happens. | `order-of-operations` encompasses `add-within-100-fluent` (0.3): addition happens but isn't the point |
-   | **0.1-0.2** | Tangential exercise — the skill is used but barely. | Generally not worth an edge — skip. |
-
-   Within-strand edges tend toward higher weights (0.6-0.8). Cross-strand edges tend toward lower weights (0.3-0.5). Word-problem edges are typically 0.4-0.6 (the computation is exercised but reading/interpretation is the main skill).
-
-2. [x] [IMP] Update `content/math-foundations/graph.json` with all new encompassing edges. Maintain the existing edges — only add new ones. Run `just validate-content` to ensure DAG integrity (no cycles introduced through encompassings, all referenced topic IDs exist). Run `just import-content` to load into local D1.
-
-3. [x] [TST] Verify graph integrity: `just validate-content` passes. Spot-check 10 edges manually — does the weight feel right? Does the parent topic genuinely exercise the child skill at the assigned fraction? Count total edges and verify target met (80+).
-
-**Validation:** graph.json updated with 80+ encompassing edges. Validation passes. Import succeeds. Weights follow the documented rubric.
+1. [x] [IMP] Apply weight assignment rubric to all 91 identified edges.
+2. [x] [IMP] Update `content/math-foundations/graph.json` — 133 total encompassing edges. `just validate-content` passes.
+3. [x] [TST] Verify graph integrity — spot-checked 10 random edges, all weights appropriate for their category.
 
 ---
 
 ## Phase 3: FIRe Compression Validation
-**Goal:** Prove that enriched encompassings measurably improve review compression and that multi-hop credit flows correctly through the enriched graph.
+**Goal:** Prove that enriched encompassings measurably improve review compression and that multi-hop credit flows correctly.
 
-1. [ ] [TST] Write a test in `packages/api/src/__tests__/services/fire-compression.test.ts` that:
-   - Seeds 20+ topics as "due for review" in user_topic_state
-   - Calls `srs.compressReviews()` with the OLD encompassing set (42 edges) and measures compression ratio (selected reviews / due topics)
-   - Calls `srs.compressReviews()` with the NEW encompassing set (80+ edges) and measures compression ratio
-   - Asserts the new ratio is meaningfully better (e.g., old: 15/20 selected, new: 10/20 selected)
-   - Verifies that the selected reviews' FIRe coverage actually covers the skipped topics (no gaps)
+**Key context for implementation:**
+- The SRS service lives at `packages/api/src/services/srs.ts` — look for `compressReviews()`, `applyFIReCredit()`, and multi-hop traversal logic
+- Encompassings are loaded from the graph service at `packages/api/src/services/graph.ts`
+- Existing SRS tests are in `packages/api/src/__tests__/services/` — follow the same patterns
+- Use `just test` (never `pnpm vitest run` directly — Workers pool tests need `@cloudflare/vitest-pool-workers`)
+- Use helpers from `packages/api/src/__tests__/helpers.ts` for DB setup and seeding
+- The graph data is in `content/math-foundations/graph.json` — the test can load this directly or seed a subset
+
+**Steps:**
+
+1. [ ] [TST] Write `packages/api/src/__tests__/services/fire-compression.test.ts`:
+   - Read the SRS service to understand `compressReviews()` API signature and how it takes encompassing data
+   - Seed 20+ topics as "due for review" in user_topic_state
+   - Compare compression with a subset of encompassings (original 42) vs. full set (133)
+   - Assert the new ratio is meaningfully better (fewer explicit reviews selected for same coverage)
+   - Verify that the selected reviews' FIRe coverage actually covers the skipped topics
 
 2. [ ] [TST] Write a test for multi-hop credit flow:
-   - Practice `order-of-operations` (a high-level topic with deep encompassing chains)
-   - Verify credit flows to `multi-digit-multiply` (hop 1), `multiply-within-100` (hop 2), `skip-count-2-5-10` (hop 3)
-   - Verify credit diminishes appropriately at each hop (weight * parent_weight at each level)
-   - Verify upward penalty also flows: fail `add-within-10` -> penalty to `add-within-20`, `add-within-100`, `add-within-1000`
+   - Practice `order-of-operations` (has deep chains — see Phase 1-2 Results above)
+   - Verify credit flows to `multi-digit-multiply` (hop 1, w=0.4), `multiply-within-100` (hop 2, w=0.6), `skip-count-2-5-10` (hop 3, w=0.4)
+   - Verify credit diminishes: hop 1 = 0.4, hop 2 = 0.24, hop 3 = 0.096
+   - Verify upward penalty: fail `add-within-10` → penalty to `add-within-20` (w=0.8), `add-within-100` (hop 2), `add-within-100-fluent` (hop 3)
 
 3. [ ] [TST] Write a test for cross-strand coverage:
-   - Mark computation topics (add, subtract, multiply) and word-problem topics as due
-   - Verify that reviewing word-problem topics covers some computation topics via encompassing edges
-   - This is the key cross-strand value: a single word-problem review session implicitly refreshes multiple computation skills
+   - Mark computation topics (add, subtract, multiply, divide within 100) and word-problem topics as due
+   - Verify that reviewing `multi-step-word-problems` covers `add-within-100-fluent` (0.3), `subtract-within-100-fluent` (0.3), `multiply-within-100` (0.3), `divide-within-100` (0.3)
+   - This is the key cross-strand value: one word-problem review implicitly refreshes four computation skills
 
-**Validation:** Tests pass. Compression ratio improves measurably with enriched graph. Multi-hop credit flows at least 3 hops deep. Cross-strand encompassings provide meaningful coverage.
+**Validation:** `just test` passes. Compression ratio improves measurably. Multi-hop credit flows 3+ hops. Cross-strand encompassings provide meaningful coverage.
 
 ---
 
 ## Phase 4: Methodology Documentation
-**Goal:** Document the encompassing design methodology as a reusable playbook for all future subjects.
+**Goal:** Document the encompassing design methodology as a reusable playbook for all future subjects. This is critical — right now the weight rubric and identification strategies exist only in this plan file, not in any reusable documentation.
 
-1. [ ] [DOC] Add "Encompassing Relationships" section to `docs/content-system.md` covering:
-   - **What is an encompassing relationship?** When topic A implicitly exercises topic B during practice. Distinct from prerequisites (which are about sequencing, not implicit practice).
-   - **How to identify encompassings:** Within-strand (same operation at different complexity levels), cross-strand (word problems encompass computation, multi-step encompasses component operations), measurement/application encompasses computation.
-   - **Weight assignment rubric:** The table from Phase 2 step 1, with examples from each weight range.
-   - **Common patterns by discipline:**
-     - Mastery-gated (math): Dense within-strand chains + cross-strand computation links. Target: 1.0-1.5 encompassing edges per topic.
-     - Context-layered (history): Sparser — "Causes of Civil War" encompasses "Slavery in America" (~0.4) because understanding causes exercises knowledge of the institution. Target: 0.5-1.0 edges per topic.
-     - Flexible (vocabulary): Minimal — root words encompass derived words (~0.3). Target: 0.3-0.5 edges per topic.
-   - **Validation checklist:** After adding encompassings to a new subject, verify: DAG integrity, all leaf topics are encompassed by at least one parent, multi-hop chains exist for deep graph regions, compression ratio is meaningful (test).
-   - **Anti-patterns:** Don't add encompassings where the exercise is too indirect (reading a word problem doesn't encompass phonics). Don't inflate weights to game compression — inaccurate weights mean inaccurate FIRe credit, which means students think they've reviewed when they haven't.
+**Key context:**
+- `docs/content-system.md` already documents topics, prerequisites, edge types, progression models, and content dimensions. It mentions encompassings exist (line ~57) but has NO section on how to design them.
+- `docs/learning-science.md` section 8 explains the research basis for FIRe and why encompassings matter, but not how to create them.
+- The gap: someone creating a new subject (e.g., physics, history) has no guidance on identifying encompassing edges, assigning weights, or validating coverage.
+- The weight rubric, identification strategies, and density targets from Phase 1-2 (documented in the "Phase 1-2 Results" section above) must be formalized into `docs/content-system.md`.
 
-2. [ ] [DOC] Add a DECISIONS.md entry recording: "Encompassing enrichment methodology: weight rubric, cross-strand patterns, target density per discipline type. Enriched math-foundations from 42 to N edges with measured FIRe compression improvement."
+**Steps:**
 
-**Validation:** Content system docs include encompassing methodology section. Future subject graph designers have a clear rubric and checklist. DECISIONS.md records the enrichment rationale and outcome.
+1. [ ] [DOC] Add "Encompassing Relationships" section to `docs/content-system.md` (after the existing "Prerequisite Edge Types" section, around line 120). Cover:
+
+   - **Definition:** When topic A implicitly exercises topic B during practice. Distinct from prerequisites (sequencing) — encompassings are about implicit practice credit.
+
+   - **How to identify encompassings — three categories:**
+     1. **Within-strand:** Same operation at increasing complexity. Every higher-level topic in a strand encompasses its predecessors (e.g., `add-within-100` encompasses `add-within-20`, which encompasses `add-within-10`). These form chains.
+     2. **Cross-strand:** Topic in one strand exercises skills from another. Word problems encompass computation. Multi-step encompasses component operations. Measurement/application encompasses arithmetic. Fractions encompass whole-number operations.
+     3. **Application → foundation:** Any topic that requires using a simpler skill as a tool (not as the focus). Long division encompasses multiplication (checking quotients). Equivalent fractions encompass multiplication.
+
+   - **Weight assignment rubric:** Copy the table from Phase 1-2 Results above. Add the heuristic: within-strand → 0.6-0.8, cross-strand → 0.3-0.5, word-problems → 0.4-0.6. Never create edges below 0.3 (too indirect to provide meaningful FIRe credit).
+
+   - **Target density by discipline:**
+     - Mastery-gated (math, CS): 1.0-2.0 edges per topic. Dense within-strand chains + cross-strand links.
+     - Context-layered (history, philosophy): 0.5-1.0 edges per topic. "Causes of Civil War" encompasses "Slavery in America" (~0.4).
+     - Flexible (vocabulary, geography): 0.3-0.5 edges per topic. Root words encompass derived words (~0.3).
+
+   - **Validation checklist (run after adding encompassings to any subject):**
+     1. `just validate-content` passes (DAG integrity, all topic IDs valid)
+     2. Every leaf topic (no children in prereq graph) is encompassed by at least one parent
+     3. Multi-hop chains exist for deep graph regions (3+ hops)
+     4. Weight distribution is reasonable (mostly 0.3-0.6 with some 0.7-0.9 within-strand)
+     5. `tools/visualize-graph.html` shows clear hierarchical structure (update the inline data when graph changes)
+     6. FIRe compression test passes (Phase 3 test can be parameterized for new subjects)
+
+   - **Anti-patterns:**
+     - Don't add encompassings where exercise is too indirect (reading a word problem doesn't encompass phonics)
+     - Don't inflate weights to game compression — inaccurate weights mean students think they've reviewed when they haven't
+     - Don't create edges below 0.3 — the FIRe credit is negligible and adds graph complexity
+     - Don't skip cross-strand edges — they provide the most compression value
+
+2. [ ] [DOC] Add DECISIONS.md entry: "Encompassing enrichment methodology established. Weight rubric (0.3-0.9 scale), three identification categories (within-strand, cross-strand, application→foundation), target density per discipline type. Math-foundations enriched from 42 to 133 edges with 1.9 edges/topic density. Methodology documented in docs/content-system.md for reuse across all future subjects."
+
+**Validation:** `docs/content-system.md` has a complete encompassing methodology section. A developer creating a new subject graph can follow it end-to-end without needing to read this plan. DECISIONS.md records the methodology establishment.

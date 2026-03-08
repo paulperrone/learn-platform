@@ -53,7 +53,7 @@ const topicsByGrade = computed(() => {
     if (!groups.has(t.gradeLevel)) groups.set(t.gradeLevel, []);
     groups.get(t.gradeLevel)!.push(t);
   }
-  return [...groups.entries()].sort(([a], [b]) => a - b);
+  return [...groups.entries()].sort(([a], [b]) => b - a);
 });
 
 function gradeName(level: number) {
