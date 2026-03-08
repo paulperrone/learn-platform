@@ -62,7 +62,73 @@ Topic (graph node)
 
 **Completed:** None yet
 **In Progress:** —
-**Next:** Phase 1
+**Next:** Phase 0
+
+---
+
+## Phase 0: Content System Research & Design
+**Goal:** Research and design the content health infrastructure — simulation testing, gap analysis, analytics reporting — so we know exactly what tooling to build before building it. This phase may add or adjust later phases based on findings.
+
+**Why this comes first:** We have 355 tagged problems, a cognitive demand system, and session/SRS machinery — but no way to stress-test the content *as a system*. Before expanding pools (Phase 2) or adding flavors (Phase 4), we need to understand: Does the current content actually produce good learning sessions? Where are the gaps? What does "good" look like in measurable terms?
+
+### Research Questions
+
+1. **Simulated learner testing:**
+   - What learner archetypes should we simulate? (e.g., strong-at-grade, one-grade-behind, gifted-but-gaps, struggling-with-prerequisites)
+   - How do we model "answer correctly/incorrectly" per archetype per topic? (probability by difficulty + archetype skill level, not random)
+   - Can we drive the session service programmatically (DB operations + service function calls, no browser) to run a simulated learner through pretest → instruction → guided → independent → review → remediation?
+   - What metrics do we capture per simulated session? (problems seen, demand variety, phase transitions, SRS state changes, mastered/not-mastered, time-to-mastery estimate)
+   - How many simulated sessions per archetype to get meaningful signal? (enough to see SRS scheduling effects, not just one-shot)
+
+2. **Content gap analysis:**
+   - What constitutes a "healthy" topic? (minimum problem count, difficulty spread, demand diversity per grade expectations from plan 014, worked example coverage)
+   - How do we detect problems that are functionally duplicates? (same numbers, same structure, just rephrased)
+   - Can we score topic health as a single number for easy sorting? (composite of problem count, difficulty balance, demand coverage, example count)
+   - What's the right output format for Claude Code consumption? (structured markdown report that fits in context, not raw JSON dumps)
+
+3. **Analytics-to-remediation pipeline:**
+   - What does the CLI report look like that a developer pastes into Claude Code to say "fix these gaps"? Design the report format.
+   - Should we have `just content-health` (static analysis of JSON files) vs `just content-analytics` (runtime data from review_log)? Or one unified tool?
+   - How does simulation data feed back into content improvement? (simulate → identify weak spots → generate targeted content → re-simulate → compare)
+   - What thresholds trigger warnings vs errors? (e.g., topic with 3 problems = warning, topic with 0 application problems at G3+ = warning, simulated learner stuck in remediation loop = error)
+
+4. **Integration with existing tooling:**
+   - How does this relate to the admin content matrix route (`/api/admin/content-matrix`) already in the codebase?
+   - Can `tools/content-status.ts` (Phase 1 step 3) and this simulation/analytics work share a data model?
+   - Should simulation be a vitest test suite (like `__tests__/simulation/`) or a standalone tool (`tools/simulate-learners.ts`)?
+
+### Steps
+
+1. [ ] [RSH] Investigate the current session service API surface for programmatic driving:
+   - Map the function call chain for a full learning session (select topic → get problem → submit answer → advance phase → repeat)
+   - Identify what can be called directly as service functions vs what requires HTTP round-trips
+   - Determine if the session state machine can be driven in a test harness with a seeded D1 database
+   - Document the minimum viable "simulated session" — the smallest set of calls that exercises the full learning loop
+
+2. [ ] [RSH] Design the learner simulation framework:
+   - Define 4-6 learner archetypes with answer probability models (e.g., "G2 student on G2 content: 85% correct on easy, 65% medium, 40% hard; on G3 content: 50%/30%/10%")
+   - Design how archetypes interact with cognitive demand (procedural vs conceptual accuracy may differ)
+   - Spec the simulation runner: inputs (archetype, subject, number of sessions), outputs (per-session metrics, aggregate stats)
+   - Decide: vitest integration test vs standalone CLI tool vs both
+
+3. [ ] [RSH] Design the content health report:
+   - Define "topic health score" — composite metric covering problem count, difficulty balance, demand diversity (vs grade-level targets from plan 014), example count, near-duplicate detection
+   - Design the CLI output format: optimized for pasting into Claude Code (structured markdown, not tables wider than 100 chars, actionable next-steps section)
+   - Design the simulation results report: per-archetype metrics, topics where simulated learners get stuck, demand variety experienced per session
+   - Mock up example reports for current math-foundations content
+
+4. [ ] [RSH] Evaluate whether findings change later phases:
+   - Does the simulation reveal that Phase 2 (pool expansion) should prioritize differently than "topics with < 15 problems"?
+   - Should Phase 6 (content quality analytics) be pulled earlier or merged with this tooling?
+   - Are there new phases needed? (e.g., "near-duplicate deduplication pass", "difficulty recalibration based on simulation")
+   - Document adjustments in this plan file and in DECISIONS.md
+
+**Outputs:**
+- Design doc (can live in `docs/content-testing.md`) covering simulation framework, health scoring, report formats
+- Possibly a proof-of-concept simulation test for 1 archetype on 5 topics to validate the approach
+- Updated phase list for this plan if research reveals needed changes
+
+**Validation:** Research questions are answered with concrete designs. The team (or a future Claude Code session) can pick up Phase 1 knowing exactly what content health tooling to build alongside the authoring workflow.
 
 ---
 
@@ -194,7 +260,7 @@ Topic (graph node)
 ---
 
 ## Phase 6: Content Quality Analytics & Iteration
-**Goal:** Use runtime data to identify weak content and improve it. Close the feedback loop.
+**Goal:** Use runtime data to identify weak content and improve it. Close the feedback loop. (May be adjusted or pulled earlier based on Phase 0 findings.)
 
 1. [ ] [IMP] Track per-problem analytics: accuracy rate, hint usage rate, average time, skip rate. Store in a `content_analytics` table or compute from `review_log`.
 
