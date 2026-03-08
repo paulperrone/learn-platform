@@ -13,9 +13,9 @@ Closes the remaining system-level gaps identified in the March 7 review and Plan
 
 ## Progress
 
-**Completed:** Phase 1, Phase 2, Phase 3
+**Completed:** Phase 1, Phase 2, Phase 3, Phase 4
 **In Progress:** —
-**Next:** Phase 4
+**Next:** Phase 5
 
 ---
 
@@ -64,13 +64,13 @@ Closes the remaining system-level gaps identified in the March 7 review and Plan
 
 ---
 
-## Phase 4: Graph Design Guidelines
+## Phase 4: Graph Design Guidelines ✓
 **Goal:** Documented methodology for designing knowledge graphs per progression model, ready for new subject creation.
 
-1. [ ] [DOC] Document target topic granularity per model in `content-system.md`: mastery-gated (~50-100 topics per subject, ~1 skill per topic), context-layered (~25-40 topics, broader thematic units), flexible (~20-30 topics, independent items)
-2. [ ] [DOC] Document recommended graph shape per model: mastery-gated (deep linear chains with parallelism, 1.5-2.5 prereq edges/topic), context-layered (wide shallow layers, 0.5-1.0 prereq edges/topic, mostly recommended), flexible (sparse, 0.2-0.5 edges/topic, mostly enriching)
-3. [ ] [DOC] Document encompassing relationship design patterns per model type, building on Plan 013's weight methodology: mastery-gated targets 1.0-2.0 encompassing edges/topic, context-layered 0.5-1.0, flexible 0.3-0.5
-4. [ ] [DOC] Add graph design checklist to `content-system.md` — prerequisite checklist before generating any new subject's content (DAG valid, edge types match progression model, encompassing density meets target, frontier computation produces reasonable results, topic granularity appropriate)
+1. [x] [DOC] Document target topic granularity per model in `content-system.md`: mastery-gated (~50-100 topics per subject, ~1 skill per topic), context-layered (~25-40 topics, broader thematic units), flexible (~20-30 topics, independent items)
+2. [x] [DOC] Document recommended graph shape per model: mastery-gated (deep linear chains with parallelism, 1.5-2.5 prereq edges/topic), context-layered (wide shallow layers, 0.5-1.0 prereq edges/topic, mostly recommended), flexible (sparse, 0.2-0.5 edges/topic, mostly enriching)
+3. [x] [DOC] Document encompassing relationship design patterns per model type, building on Plan 013's weight methodology: mastery-gated targets 1.0-2.0 encompassing edges/topic, context-layered 0.5-1.0, flexible 0.3-0.5
+4. [x] [DOC] Add graph design checklist to `content-system.md` — prerequisite checklist before generating any new subject's content (DAG valid, edge types match progression model, encompassing density meets target, frontier computation produces reasonable results, topic granularity appropriate)
 
 **Validation:** A developer (or Claude Code session) designing a new subject graph can follow the documented guidelines and produce a structurally valid graph without guesswork.
 

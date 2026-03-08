@@ -2,7 +2,7 @@
 
 > Comprehensive guide to the platform's content taxonomy, dimensions, and creation strategies. For learning science principles, see `learning-science.md`. For architectural decisions, see `DECISIONS.md`.
 >
-> **Last updated:** 2026-03-06
+> **Last updated:** 2026-03-08
 
 ---
 
@@ -20,8 +20,10 @@
 10. [Building Hybrid Subjects](#10-building-hybrid-subjects)
 11. [Building Flexible Subjects](#11-building-flexible-subjects)
 12. [Cross-Discipline Prerequisites](#12-cross-discipline-prerequisites)
-13. [Content Creation Workflow](#13-content-creation-workflow)
-14. [Cognitive Demand](#14-cognitive-demand)
+13. [Graph Design Guidelines](#13-graph-design-guidelines)
+14. [Graph Design Checklist](#14-graph-design-checklist)
+15. [Content Creation Workflow](#15-content-creation-workflow)
+16. [Cognitive Demand](#16-cognitive-demand)
 
 ---
 
@@ -494,7 +496,156 @@ Prerequisites can cross discipline boundaries:
 
 ---
 
-## 13. Content Creation Workflow
+## 13. Graph Design Guidelines
+
+When designing a knowledge graph for a new subject, follow these guidelines for topic granularity, graph shape, prerequisite density, and encompassing density based on the discipline's progression model.
+
+### Topic Granularity
+
+| Progression Model | Topics per Subject | Granularity | Rationale |
+|---|---|---|---|
+| **Mastery-gated** | 50-100 | ~1 discrete skill per topic | Each topic tests one thing with a clear right/wrong answer. "Add within 20" is one topic; "Add within 100" is another. Fine granularity enables precise mastery tracking and targeted remediation. |
+| **Context-layered** | 25-40 | Broader thematic units | Topics are entry points revisited at multiple depths. "Causes of the American Revolution" is one topic with survey, contextual, analytical, and synthesis content. Fewer topics because depth layers multiply content per topic. |
+| **Flexible** | 20-30 | Independent items or small clusters | Topics are mostly standalone. Group only when there's a natural cluster (e.g., "Latin root words" as a topic containing multiple roots). Fewer topics because there's little prerequisite structure to navigate. |
+
+**Reference:** Math-foundations has 71 topics across grades K-5 (mastery-gated). A US History subject might have 30-35 topics covering the full timeline at 4 depth layers each.
+
+### Recommended Graph Shape
+
+| Progression Model | Shape | Prereq Edges/Topic | Max Depth | Width Profile |
+|---|---|---|---|---|
+| **Mastery-gated** | Deep chains with parallelism | 1.5-2.5 | 10-15 | Narrow at roots (5-8), widens at mid-depth (6-10 per level), narrows at leaves (1-3) |
+| **Context-layered** | Wide, shallow layers | 0.5-1.0 | 3-5 | Wide at every level (8-15 per level), few deep chains |
+| **Flexible** | Sparse, mostly disconnected | 0.2-0.5 | 1-2 | Nearly flat — most topics at depth 0-1 |
+
+**Reference:** Math-foundations graph shape:
+- 71 topics, 108 prerequisite edges (1.52 edges/topic), max depth 14
+- 6 roots (counting, comparison, shapes basics), widest at depths 4 and 6 (7-8 topics), single leaf at depth 14
+- Multiple parallel strands (addition, subtraction, multiplication, division, fractions, geometry) that converge at higher levels (word problems, order of operations)
+
+#### Mastery-Gated Shape Details
+
+The graph should have **parallel strands** that share common foundations:
+
+```
+Strand structure (math example):
+  count → add → add-fluent → multiply → multiply-fluent
+  count → subtract → subtract-fluent → divide → divide-fluent
+                                          ↘               ↘
+                                     fractions → equivalent-fractions → ...
+```
+
+- **Early depths (0-3):** Foundational skills. 5-8 topics. Multiple independent entry points.
+- **Mid depths (4-8):** Strands develop in parallel. Widest part of the graph. Cross-strand prerequisites emerge (fractions need multiplication).
+- **Late depths (9+):** Strands converge into integrative topics (word problems, multi-step reasoning). Graph narrows.
+
+#### Context-Layered Shape Details
+
+The graph should be **wide and shallow** with thematic clusters:
+
+```
+Cluster structure (history example):
+  [foundations] → [era-1-topics] → [era-2-topics] → [era-3-topics]
+                        ↕                 ↕                ↕
+              (enriching cross-era connections)
+```
+
+- **Depth 0:** Methodological foundations ("What is a primary source?", "Reading a timeline"). 2-4 topics. These are the only `required` prerequisites.
+- **Depth 1-2:** Thematic/chronological clusters. 8-15 topics each. Connected by `recommended` edges within an era, `enriching` edges across eras.
+- **Depth 3+:** Integrative/comparative topics that require multiple era clusters. Rare — most topics sit at depth 1-2.
+
+#### Flexible Shape Details
+
+Nearly flat. Most topics at depth 0 with optional `enriching` edges:
+
+```
+  root-words ···(enriching)··· derived-words
+  continent-A ···(enriching)··· continent-B
+```
+
+### Prerequisite Edge Type Distribution
+
+| Progression Model | `required` | `recommended` | `enriching` |
+|---|---|---|---|
+| **Mastery-gated** | 90-100% | 0-10% | 0-5% |
+| **Context-layered** | 5-10% | 60-75% | 20-30% |
+| **Flexible** | 0% | 5-15% | 85-95% |
+
+### Encompassing Design Patterns by Model
+
+Encompassing edges are documented in detail in §4. This section covers **density targets and design strategies** per progression model.
+
+#### Mastery-Gated (target: 1.0-2.0 edges/topic)
+
+Dense encompassings are the primary mechanism for reducing explicit review load. Three patterns dominate:
+
+1. **Within-strand chains** (weight 0.6-0.8): Every topic encompasses its direct predecessors in the same skill strand. `multiply-within-100` encompasses `multiply-within-20` which encompasses `skip-count-2-5-10`.
+2. **Cross-strand bridges** (weight 0.3-0.5): Application topics encompass component skills from other strands. `addition-word-problems` encompasses `add-within-100-fluent`.
+3. **Integration sinks** (weight 0.3-0.5): Late-graph integrative topics encompass many earlier skills. `order-of-operations` encompasses all four basic operations. `multi-step-word-problems` encompasses add, subtract, multiply, divide fluency.
+
+**Strategy:** Start with within-strand chains (mechanical — every successor encompasses its predecessors). Then add cross-strand bridges by asking "what skills does this topic exercise incidentally?" Finally, check integration sinks for broad encompassing.
+
+#### Context-Layered (target: 0.5-1.0 edges/topic)
+
+Encompassings are sparser because topics exercise each other less directly. Patterns:
+
+1. **Thematic deepening** (weight 0.4-0.6): A contextual-depth treatment of a topic encompasses the survey-depth treatment. Analyzing causes of WWI implicitly reviews WWI facts.
+2. **Cross-era connections** (weight 0.3-0.4): Comparative topics encompass the individual topics being compared. "Age of Revolutions" encompasses American, French, and Haitian revolutions.
+3. **Methodological application** (weight 0.3-0.4): Topics that apply a methodology encompass the methodology topic. "Analyze this primary source" encompasses "What is a primary source?"
+
+**Strategy:** Focus on thematic deepening first — these are the most natural and highest-weight. Add cross-era connections for topics that explicitly draw comparisons. Methodological encompassings apply only to the small set of foundational method topics.
+
+#### Flexible (target: 0.3-0.5 edges/topic)
+
+Minimal encompassings. Topics are mostly independent.
+
+1. **Root → derived** (weight 0.3-0.4): Knowing a Latin root encompasses derived vocabulary. `root-port` encompasses `transport`, `export`, `import`.
+2. **Category → member** (weight 0.3): Studying a geographic region encompasses individual country facts within it.
+
+**Strategy:** Only add encompassings where practicing one topic genuinely exercises another. Most flexible-model topics will have 0 encompassing edges, and that's correct.
+
+---
+
+## 14. Graph Design Checklist
+
+Run through this checklist before generating content for any new subject. Every item must pass.
+
+### Structural Validity
+
+- [ ] **DAG valid** — `just validate-content` passes with no cycles
+- [ ] **Connected graph** — Every topic is reachable from at least one root (no orphaned topics)
+- [ ] **Root topics exist** — At least 2 root topics (no prerequisites) to provide multiple entry points
+- [ ] **No bottleneck topics** — No single topic is the sole prerequisite for more than 8 downstream topics (creates a single point of failure for learner progression)
+
+### Progression Model Compliance
+
+- [ ] **Edge types match model** — Mastery-gated uses mostly `required`, context-layered uses mostly `recommended`, flexible uses mostly `enriching` (see §13 distribution table)
+- [ ] **Granularity appropriate** — Topic count falls within the target range for the model (50-100 mastery-gated, 25-40 context-layered, 20-30 flexible)
+- [ ] **Depth appropriate** — Max graph depth falls within target range (10-15 mastery-gated, 3-5 context-layered, 1-2 flexible)
+- [ ] **Prerequisite density in range** — Prereq edges/topic matches target (1.5-2.5 mastery-gated, 0.5-1.0 context-layered, 0.2-0.5 flexible)
+
+### Encompassing Completeness
+
+- [ ] **Density target met** — Encompassing edges/topic within target range (1.0-2.0 mastery-gated, 0.5-1.0 context-layered, 0.3-0.5 flexible)
+- [ ] **Leaf coverage** — Every leaf topic (no children in prereq graph) is encompassed by at least one parent
+- [ ] **Within-strand chains complete** — For mastery-gated subjects: every topic in a skill strand encompasses its direct predecessor
+- [ ] **Weight distribution reasonable** — Mostly 0.3-0.6 with some 0.7-0.9 within-strand; nothing below 0.3
+- [ ] **Multi-hop chains exist** — For deep graphs (depth 8+): encompassing chains reach 3+ hops in dense graph regions
+
+### Frontier Computation
+
+- [ ] **Frontier is reasonable** — For a brand-new user, the frontier computation returns 3-8 root or near-root topics (not the entire graph, not just one topic)
+- [ ] **Progression is smooth** — Mastering a frontier topic unlocks 1-3 new topics (not 0, not 10+)
+- [ ] **Dead ends avoided** — No topic exists where mastering it unlocks nothing and it isn't a natural terminus of the subject
+
+### Visualization
+
+- [ ] **`just visualize <subject>`** shows clear hierarchical structure with identifiable strands/clusters
+- [ ] **No visual clutter** — Graph is readable; if it's a tangled mess, the structure probably needs simplification
+
+---
+
+## 15. Content Creation Workflow
 
 ### Priority Matrix
 
@@ -528,7 +679,7 @@ The `graph.json` for each subject includes:
 
 ---
 
-## 14. Cognitive Demand
+## 16. Cognitive Demand
 
 Assessment problems are tagged with a **cognitive demand** type that describes what kind of thinking the problem exercises. The session service mixes demands based on the learner's presentation level, preventing sessions from feeling repetitive ("one-note") even when the topic stays the same.
 
