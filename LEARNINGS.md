@@ -310,3 +310,29 @@ Overriding `Date.now()` does NOT affect `new Date()` in V8. The no-arg Date cons
 Services typed as `DB` (which is `DrizzleD1Database<typeof schema>`) work correctly at runtime when passed a `drizzle-orm/better-sqlite3` instance cast via `as unknown as DB`. The query builder API is identical — `select()`, `insert()`, `update()`, `returning()`, and `db.query.*` relational queries all work. `await` on synchronous better-sqlite3 results is a no-op. This enables running the full service layer against an in-memory SQLite database without miniflare.
 
 **Context:** Simulation framework uses better-sqlite3 (already a root dependency) instead of miniflare for simplicity. All 71 topics, 355 problems, and 142 examples import correctly. Services run diagnostic + multi-session learning loops without modification.
+
+---
+
+### 2026-03-08: Simulation must patch Math.random for deterministic diagnostic topic selection
+
+**Source:** Simulation diagnostic analysis (plan 017 Phase 2)
+**Area:** Simulation / Diagnostic service
+
+The diagnostic service uses `Math.random()` for topic selection within `selectNextTopic()`. Without patching Math.random, simulation runs produce different results each invocation even with the same seed — only the answer engine's PRNG was seeded, not the diagnostic's topic selection. Fix: patch `Math.random` with a **separate** seeded PRNG (different seed offset from the answer engine's PRNG, e.g., `seed + 1000000`). Using the same PRNG instance changes the answer sequence because topic selection consumes values from the shared sequence.
+
+**Context:** Discovered when diagnostic analysis produced different placement results on consecutive runs with the same seed.
+
+---
+
+### 2026-03-08: Diagnostic binary search has upward placement bias and bounds lock-in
+
+**Source:** Simulation diagnostic analysis (plan 017 Phase 2)
+**Area:** Diagnostic service
+
+The diagnostic's binary search has two related issues revealed by simulation across 10 learner profiles:
+
+1. **Upward placement bias:** `searchLow` ratchets up aggressively on correct answers (`Math.max(searchLow, topicGrade)`) but can never decrease. A single lucky correct answer permanently raises the floor. 5/10 profiles placed above expected frontier grade.
+
+2. **Bounds lock-in:** Once `searchLow = searchHigh`, incorrect answers at that grade can't lower searchHigh (since `Math.min(searchHigh, topicGrade)` is a no-op). All 10 profiles converge to `searchLow = searchHigh` by completion. The diagnostic stops at exactly 8 questions (MIN_QUESTIONS) every time — it converges quickly but potentially prematurely.
+
+**Impact:** The learning session's adaptive difficulty targeting and remediation partially compensate, but struggling students may face initial frustration from inflated placement. Specific fix suggestions documented in `simulations/reports/diagnostic.md` for Phase 6.

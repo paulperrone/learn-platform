@@ -9,9 +9,10 @@ import { createSimulationDb, createSimUser } from "./db-setup.js";
 import { resolveAnswer } from "./answer-engine.js";
 import { EventLogger } from "./event-logger.js";
 import { SeededRNG } from "./prng.js";
-import type { SimulationConfig, SimulationResult, SimulationEvent, LearnerProfile } from "./types.js";
+import type { SimulationConfig, SimulationResult, SimulationEvent, LearnerProfile, DiagnosticRunResult } from "./types.js";
 import { join } from "path";
 import { eq } from "drizzle-orm";
+import { writeFileSync } from "fs";
 import * as schema from "../../packages/api/src/db/schema.js";
 
 const ONE_DAY_MS = 24 * 60 * 60 * 1000;
@@ -22,6 +23,26 @@ const ONE_DAY_MS = 24 * 60 * 60 * 1000;
  */
 const RealDate = globalThis.Date;
 let simulatedNowMs: number | null = null;
+
+/**
+ * Override Math.random to use a seeded PRNG for deterministic simulation.
+ * The diagnostic service uses Math.random() for topic selection —
+ * without this patch, runs aren't reproducible across invocations.
+ */
+const OrigMathRandom = Math.random;
+let seededRandomFn: (() => number) | null = null;
+
+function setSeededRandom(fn: () => number): void {
+  seededRandomFn = fn;
+  Math.random = function () {
+    return seededRandomFn ? seededRandomFn() : OrigMathRandom();
+  };
+}
+
+function restoreRealRandom(): void {
+  seededRandomFn = null;
+  Math.random = OrigMathRandom;
+}
 
 function setSimulatedTime(timeMs: number): void {
   simulatedNowMs = timeMs;
@@ -80,6 +101,11 @@ export class SimulationRunner {
   async run(): Promise<SimulationResult> {
     const runsDir = join(process.cwd(), "simulations", "runs");
     this.logger = new EventLogger(this.config.profile.id, runsDir);
+
+    // Patch Math.random with a separate seeded PRNG for deterministic
+    // diagnostic topic selection (doesn't share state with answer engine's PRNG)
+    const mathRandomRng = new SeededRNG(this.config.seed + 1000000);
+    setSeededRandom(() => mathRandomRng.next());
 
     console.log(`[sim] Setting up DB for ${this.config.subject}...`);
     this.db = createSimulationDb(this.config.subject);
@@ -149,8 +175,9 @@ export class SimulationRunner {
       }
     }
 
-    // Restore real Date
+    // Restore real Date and Math.random
     restoreRealDate();
+    restoreRealRandom();
 
     // Write summary
     this.logger.writeSummary({
@@ -177,6 +204,13 @@ export class SimulationRunner {
     return result;
   }
 
+  private diagnosticResult: DiagnosticRunResult | null = null;
+
+  /** Access the diagnostic result after run() completes */
+  getDiagnosticResult(): DiagnosticRunResult | null {
+    return this.diagnosticResult;
+  }
+
   private async runDiagnostic(): Promise<number> {
     setSimulatedTime(this.simulatedTimeMs);
 
@@ -194,6 +228,8 @@ export class SimulationRunner {
     let sessionId = startResult.sessionId;
     let currentQuestion = startResult.question;
     let questionsAsked = 0;
+    let questionsCorrect = 0;
+    const questionTrace: DiagnosticRunResult["questionTrace"] = [];
 
     while (currentQuestion) {
       questionsAsked++;
@@ -211,6 +247,8 @@ export class SimulationRunner {
         "diagnostic",
         0
       );
+
+      if (answer.correct) questionsCorrect++;
 
       // Respond with the correct answer text if we decided to be correct,
       // otherwise respond with a wrong answer
@@ -248,6 +286,23 @@ export class SimulationRunner {
 
       const response = await diagnostic.respond(sessionId, answerText);
 
+      // Read diagnostic state from DB to capture search bounds after each question
+      const diagRow = await this.db.query.diagnosticSessions.findFirst({
+        where: eq(schema.diagnosticSessions.id, sessionId),
+      });
+      if (diagRow?.stateJson) {
+        const state = JSON.parse(diagRow.stateJson);
+        questionTrace.push({
+          questionNumber: questionsAsked,
+          topicId,
+          gradeLevel,
+          correct: answer.correct,
+          searchLowAfter: state.searchLow,
+          searchHighAfter: state.searchHigh,
+          phaseAfter: state.phase,
+        });
+      }
+
       if ("error" in response) {
         console.error(`[sim] Diagnostic respond error: ${response.error}`);
         break;
@@ -260,7 +315,75 @@ export class SimulationRunner {
       currentQuestion = response.question;
     }
 
+    // Extract final diagnostic state and save diagnostic-result.json
+    await this.saveDiagnosticResult(sessionId, questionsAsked, questionsCorrect, questionTrace);
+
     return questionsAsked;
+  }
+
+  /** Extract and save diagnostic result data from the completed diagnostic session */
+  private async saveDiagnosticResult(
+    sessionId: string,
+    questionsAsked: number,
+    questionsCorrect: number,
+    questionTrace: DiagnosticRunResult["questionTrace"]
+  ): Promise<void> {
+    const diagRow = await this.db.query.diagnosticSessions.findFirst({
+      where: eq(schema.diagnosticSessions.id, sessionId),
+    });
+    if (!diagRow?.stateJson) return;
+
+    const state = JSON.parse(diagRow.stateJson);
+    const estimates: Record<string, number> = state.topicEstimates ?? {};
+    const frontier: string[] = diagRow.estimatedFrontierJson
+      ? JSON.parse(diagRow.estimatedFrontierJson)
+      : [];
+
+    // Get mastered topic IDs from materialized state
+    const allState = await this.db
+      .select()
+      .from(schema.userTopicState)
+      .where(eq(schema.userTopicState.userId, this.userId));
+    const masteredTopicIds = allState
+      .filter((r) => r.mastered)
+      .map((r) => r.topicId);
+
+    // Get presentation distribution
+    const presRows = await this.db
+      .select()
+      .from(schema.userSubjectPresentation)
+      .where(eq(schema.userSubjectPresentation.userId, this.userId));
+    const presRow = presRows[0] ?? null;
+
+    const presentationDistribution = presRow
+      ? {
+          centerLevel: presRow.centerLevel,
+          primary: presRow.primaryWeight,
+          intermediate: presRow.intermediateWeight,
+          standard: presRow.standardWeight,
+          advanced: presRow.advancedWeight,
+        }
+      : null;
+
+    this.diagnosticResult = {
+      profileId: this.config.profile.id,
+      questionsAsked,
+      questionsCorrect,
+      searchLow: state.searchLow,
+      searchHigh: state.searchHigh,
+      phase: state.phase,
+      topicEstimates: estimates,
+      estimatedFrontier: frontier,
+      masteredTopicIds,
+      presentationDistribution,
+      questionTrace,
+    };
+
+    // Write to file alongside events.jsonl
+    writeFileSync(
+      join(this.logger.getRunDir(), "diagnostic-result.json"),
+      JSON.stringify(this.diagnosticResult, null, 2) + "\n"
+    );
   }
 
   private async runLearningSession(sessionNumber: number): Promise<void> {

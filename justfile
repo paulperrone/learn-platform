@@ -70,6 +70,10 @@ simulate profile sessions="5" seed="42":
 simulate-all sessions="5" seed="42":
     npx tsx simulations/src/cli.ts --all --sessions {{sessions}} --seed {{seed}}
 
+# Run diagnostic analysis for all profiles
+simulate-diagnostic seed="42":
+    npx tsx simulations/src/diagnostic-analysis.ts --seed {{seed}}
+
 # Clean up task execution state
 task-cleanup:
     #!/usr/bin/env bash

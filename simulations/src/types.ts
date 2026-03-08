@@ -105,3 +105,37 @@ export type SimulationResult = {
   totalEvents: number;
   runDir: string;
 };
+
+/** Diagnostic result data saved after each simulation run */
+export type DiagnosticRunResult = {
+  profileId: string;
+  questionsAsked: number;
+  questionsCorrect: number;
+  searchLow: number;
+  searchHigh: number;
+  phase: "search" | "refine";
+  /** Topic estimates at end of diagnostic: topicId → P(mastery) */
+  topicEstimates: Record<string, number>;
+  /** Topic IDs identified as frontier */
+  estimatedFrontier: string[];
+  /** Materialized mastery: topic IDs the diagnostic considered mastered */
+  masteredTopicIds: string[];
+  /** Presentation distribution seeded by diagnostic */
+  presentationDistribution: {
+    centerLevel: string;
+    primary: number;
+    intermediate: number;
+    standard: number;
+    advanced: number;
+  } | null;
+  /** Per-question trace with grade levels */
+  questionTrace: {
+    questionNumber: number;
+    topicId: string;
+    gradeLevel: number;
+    correct: boolean;
+    searchLowAfter: number;
+    searchHighAfter: number;
+    phaseAfter: "search" | "refine";
+  }[];
+};
