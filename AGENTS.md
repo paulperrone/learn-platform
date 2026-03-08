@@ -57,7 +57,7 @@ just import-content   # Import content/ → local D1
 - Strict TypeScript, no `any`
 - Services are factory functions: `createXService(db)` returning method objects
 - Content is pre-generated offline, validated, then imported — LLM at runtime is for tutoring/grading only
-- **Content generation happens in Claude Code sessions** (not via OpenRouter pipelines). Claude Code is the workhorse for graph design, problem/example generation, encompassing analysis, and content review. OpenRouter is only for in-app runtime LLM features (tutoring, grading, self-explanation evaluation). The `tools/generate-*.ts` scripts using OpenRouter are legacy — prefer direct Claude Code authoring for quality and iteration speed.
+- **Content generation happens in Claude Code sessions** (not via OpenRouter pipelines). Claude Code is the workhorse for graph design, problem/example generation, encompassing analysis, and content review. OpenRouter is only for in-app runtime LLM features (tutoring, grading, self-explanation evaluation).
 - Subjects belong to disciplines; disciplines define progression models (`mastery-gated`, `context-layered`, `flexible`)
 - Prerequisite edges have types: `required` (hard gate), `recommended` (context), `enriching` (suggestion)
 - Content has depth (`survey`, `contextual`, `analytical`, `synthesis`) and presentation (`primary`, `intermediate`, `standard`, `advanced`) dimensions. See `docs/content-system.md`.
@@ -81,7 +81,7 @@ All content authoring happens in **Claude Code sessions**. The workflow:
 5. **Import** — `just import-content` loads everything into local D1.
 6. **Visualize** — `just visualize <subject>` generates an interactive graph visualization.
 
-**OpenRouter is NOT used for content generation.** The `tools/generate-*.ts` scripts are legacy. Claude Code produces higher quality content with better iteration — it can read the graph, understand prerequisites, check consistency, and fix issues in the same session.
+**OpenRouter is NOT used for content generation.** Claude Code produces higher quality content with better iteration — it can read the graph, understand prerequisites, check consistency, and fix issues in the same session.
 
 **Non-text content** (images, animations, audio) will use separate pipelines when needed, but text content (graphs, problems, examples) is always authored through Claude Code.
 

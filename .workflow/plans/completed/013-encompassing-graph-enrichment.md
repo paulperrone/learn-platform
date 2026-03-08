@@ -17,9 +17,9 @@ FIRe (Fractional Implicit Repetition) is one of the platform's most powerful fea
 
 ## Progress
 
-**Completed:** Phase 1 ✓, Phase 2 ✓, Phase 3 ✓, Phase 4 ✓
+**Completed:** Phase 1 ✓, Phase 2 ✓, Phase 3 ✓, Phase 4 ✓, Phase 5 ✓
 **In Progress:** —
-**Next:** Phase 5
+**Next:** All phases complete
 
 ### Phase 1-2 Results (completed 2026-03-07)
 
@@ -154,7 +154,7 @@ Starting state: 71 topics, 108 prerequisite edges, 42 encompassing edges. 24 top
 
 ---
 
-## Phase 5: Remove Legacy OpenRouter Generation Scripts
+## Phase 5: Remove Legacy OpenRouter Generation Scripts ✓
 **Goal:** Remove the `tools/generate-*.ts` scripts that call OpenRouter for content generation. Content authoring happens in Claude Code sessions (see DECISIONS.md 2026-03-07). These scripts are dead code that will confuse future contributors.
 
 **Key context:**
@@ -167,14 +167,14 @@ Starting state: 71 topics, 108 prerequisite edges, 42 encompassing edges. 24 top
 
 **Steps:**
 
-1. [ ] [IMP] Remove `tools/generate-graph.ts`, `tools/generate-problems.ts`, `tools/generate-examples.ts`. Keep `tools/generate-content-pack.ts` if it's useful for bundling/distribution (check if anything depends on `content-pack.json`).
+1. [x] [IMP] Remove `tools/generate-graph.ts`, `tools/generate-problems.ts`, `tools/generate-examples.ts`. Kept `tools/generate-content-pack.ts` — used by public API route for content export.
 
-2. [ ] [IMP] Remove the `generate-problems` and `generate-examples` recipes from the justfile. If `generate-content-pack.ts` is kept, keep its recipe.
+2. [x] [IMP] Removed `generate-problems` and `generate-examples` recipes from the justfile.
 
-3. [ ] [IMP] Check if any OpenRouter-specific dependencies in `package.json` are ONLY used by these scripts (not by the runtime LLM service). If so, remove them.
+3. [x] [IMP] Checked — OpenRouter deps are used by runtime LLM service (llm.ts, openrouter-keys.ts). No deps to remove.
 
-4. [ ] [IMP] Update `CLAUDE.md` to remove the "legacy" caveat — once the scripts are gone, there's nothing legacy to warn about.
+4. [x] [IMP] Updated `CLAUDE.md` — removed legacy caveats about `tools/generate-*.ts` scripts.
 
-5. [ ] [TST] `just validate` still passes. No remaining references to the removed scripts.
+5. [x] [TST] `just validate` passes (0 errors). No functional references to removed scripts remain.
 
 **Validation:** The `tools/` directory contains only validation, import, visualization, and export scripts — no generation scripts that call external LLMs. The content pipeline section in CLAUDE.md is clean with no legacy caveats.

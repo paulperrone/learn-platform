@@ -37,14 +37,6 @@ db-migrate:
 import-content:
     npx tsx tools/import-content.ts
 
-# Generate problems (requires OPENROUTER_API_KEY)
-generate-problems:
-    npx tsx tools/generate-problems.ts
-
-# Generate worked examples (requires OPENROUTER_API_KEY)
-generate-examples:
-    npx tsx tools/generate-examples.ts
-
 # Visualize knowledge graph (default: math-foundations, or pass subject name)
 visualize subject="math-foundations":
     python3 tools/visualize-graph.py content/{{subject}}/graph.json --open
