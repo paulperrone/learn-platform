@@ -886,3 +886,15 @@ Child creation now creates both an org member (student role) and an account_link
 **Results from math-foundations:** Enriched from 42 to 133 encompassing edges with 1.9 edges/topic density. FIRe compression tests confirm enriched graph covers significantly more topics per review session than the sparse original. Multi-hop credit flows 3 hops deep with correct weight diminishment. Cross-strand edges (word problems → computation) provide the highest compression value.
 
 **Why formalize now:** Without documented methodology, each new subject would need ad-hoc encompassing design. The rubric, density targets, and validation checklist make encompassing design reproducible.
+
+---
+
+## 2026-03-08: Cognitive demand tagging and demand-aware session mixing
+
+**Decision:** Each assessment problem is tagged with a `cognitiveDemand` type (`procedural`, `application`, `conceptual`, `reasoning`, `error_analysis`). The session service mixes demands based on the learner's presentation level, with phase-specific strategies (pretest: procedural/application only; guided: favor conceptual; independent: full profile mixing; review: procedural/application; remediation: always procedural). Content generation targets vary by topic grade level: G0-1 gets procedural+application only, G2-3 adds conceptual, G4-5 adds reasoning and error analysis.
+
+**Reasoning:** Within a single mastery-gated topic, all problems tend to test the same cognitive mode (usually procedural computation). Sessions feel repetitive even when the engine is doing sophisticated things under the hood. Demand mixing adds cognitive variety while respecting developmental appropriateness — younger learners aren't asked to explain abstract properties, and struggling learners in remediation get reduced cognitive load.
+
+**Implementation:** `cognitive_demand` column on `assessment_content` (nullable, null treated as procedural). `DEMAND_PROFILES` constant in `packages/shared/src/types.ts` maps presentation levels to demand weight distributions. Session state tracks `servedDemands[]` for distribution-aware selection via `selectTargetDemand()`. All 355 math-foundations problems tagged: 62.8% procedural, 30.4% application, 4.8% reasoning, 2.0% conceptual, 0% error_analysis. Documented in `docs/content-system.md` §14.
+
+**Research basis:** Learning science sections on cognitive load (demand must match developmental stage), worked examples and scaffolding (fading cognitive support), active learning and retrieval practice (varied practice improves transfer), interleaving (mixing problem types improves retention), assessment design (the 85% rule requires calibrated difficulty AND demand variety).

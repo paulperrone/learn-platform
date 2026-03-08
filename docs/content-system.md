@@ -21,6 +21,7 @@
 11. [Building Flexible Subjects](#11-building-flexible-subjects)
 12. [Cross-Discipline Prerequisites](#12-cross-discipline-prerequisites)
 13. [Content Creation Workflow](#13-content-creation-workflow)
+14. [Cognitive Demand](#14-cognitive-demand)
 
 ---
 
@@ -524,3 +525,93 @@ The `graph.json` for each subject includes:
 - Topics with `gradeLevel` for approximate educational stage
 - Prerequisites with `type` (required/recommended/enriching)
 - Content files reference depth and presentation in their metadata
+
+---
+
+## 14. Cognitive Demand
+
+Assessment problems are tagged with a **cognitive demand** type that describes what kind of thinking the problem exercises. The session service mixes demands based on the learner's presentation level, preventing sessions from feeling repetitive ("one-note") even when the topic stays the same.
+
+### Demand Types
+
+| Demand | What it tests | Definition |
+|---|---|---|
+| `procedural` | Can you execute the procedure? | Direct computation or skill application with no context or reasoning required. |
+| `application` | Can you apply it in context? | Word problems, scenarios, or real-world framing that requires selecting and applying the right procedure. |
+| `conceptual` | Do you understand the underlying property? | Questions about *why* something works, mathematical properties, equivalences, or alternative representations. |
+| `reasoning` | Can you reason about it without computing? | Estimation, comparison, logical deduction, or pattern recognition — no computation needed. |
+| `error_analysis` | Can you diagnose mistakes? | Given incorrect work, identify what went wrong and explain the misconception. |
+
+### Examples by Grade Level
+
+**G0-1 (Add Within 20):**
+
+| Demand | Example |
+|---|---|
+| `procedural` | "Compute 7 + 8" |
+| `application` | "Sara has 7 stickers and gets 8 more. How many does she have now?" |
+
+**G2-3 (Fractions of a Whole):**
+
+| Demand | Example |
+|---|---|
+| `procedural` | "What is 1/4 of 12?" |
+| `application` | "A pizza is cut into 8 equal slices. You eat 3. What fraction did you eat?" |
+| `conceptual` | "Show two different ways to represent 3/4 using words or numbers." |
+
+**G4-5 (Order of Operations):**
+
+| Demand | Example |
+|---|---|
+| `procedural` | "Evaluate: 3 + 4 × 2" |
+| `application` | "You buy 3 notebooks at $4 each and a pen for $2. Write an expression and find the total." |
+| `conceptual` | "Why does 3 + 4 × 2 equal 11, not 14? Explain the rule." |
+| `reasoning` | "Without computing: is (5 + 3) × 2 greater or less than 5 + 3 × 2? Explain." |
+| `error_analysis` | "Alex wrote 3 + 4 × 2 = 14. What mistake did Alex make?" |
+
+### Generation Targets by Grade Level
+
+When creating content for a topic, the cognitive demands to include depend on the topic's grade level:
+
+| Grade Level | Demands to Generate | Distribution |
+|---|---|---|
+| **G0-1** | `procedural` + `application` only | 60% procedural, 40% application |
+| **G2-3** | `procedural` + `application` + `conceptual` | 40% procedural, 30% application, 30% conceptual |
+| **G4-5** | All five types | 30% proc, 20% app, 20% concept, 20% reasoning, 10% error_analysis |
+
+- **G0-1:** Conceptual, reasoning, and error analysis are developmentally inappropriate. Stick to "do it" and "use it."
+- **G2-3:** Conceptual questions at this level are concrete: "Show two different ways to make 15" or "Is 3 + 4 the same as 4 + 3? Why?" — not abstract properties.
+- **G4-5:** Reasoning and error analysis become meaningful. Students can compare without computing, identify mistakes, and explain rules.
+- **Not every topic needs all demands.** Some topics are inherently procedural (basic counting). The system handles this gracefully — don't force unnatural demands.
+
+### Relationship to Presentation Level
+
+Content is generated with demands appropriate to the **topic's grade level**. The session service then selects from available demands based on the **learner's presentation level**.
+
+The `DEMAND_PROFILES` in `packages/shared/src/types.ts` define what the session service draws from:
+
+| Presentation Level | Available Demands | Weighting |
+|---|---|---|
+| `primary` (K-2) | procedural, application | 60/40 |
+| `intermediate` (3-5) | + conceptual | 45/30/25 |
+| `standard` (6-8) | + reasoning | 35/25/25/15 |
+| `advanced` (9+) | + error_analysis | 25/20/20/20/15 |
+
+**Key insight:** These are independent dimensions. A precocious 8-year-old at `standard` presentation on a G2 topic will get conceptual questions (because they exist for G2) but not reasoning (because G2 content doesn't have reasoning problems). The session service can only select from demands that exist in the content — it handles missing demand types gracefully by falling back to whatever is available.
+
+### Phase-Specific Demand Selection
+
+The session service applies different demand strategies per learning phase:
+
+| Phase | Demand Strategy | Rationale |
+|---|---|---|
+| **Pretest** | procedural + application only (60/40) | Quick diagnostic check — not the place for "explain why" |
+| **Instruction** | N/A (worked examples) | No assessment in this phase |
+| **Guided** | Favor conceptual | "Why does this work?" pairs with self-explanation scaffolding |
+| **Independent** | Full profile mixing | Primary mixing phase — uses the learner's full demand distribution |
+| **Review** | Favor procedural + application (55/45) | Retrieval practice is about recall, not deep reasoning |
+| **Remediation** | Always procedural | Student is struggling — reduce cognitive load |
+
+### Demand Tracking
+
+The session state tracks `servedDemands: CognitiveDemand[]` — a running list of demands served this session. The `selectTargetDemand` function compares the actual distribution of served demands against the target profile weights and picks the most underrepresented demand type. This ensures variety over the course of a session without strict ordering.

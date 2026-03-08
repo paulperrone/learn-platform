@@ -1,7 +1,7 @@
 # Plan: Cognitive Demand Tagging
 
 > **Created:** 2026-03-08T00:52:40Z
-> **Completed:** —
+> **Completed:** 2026-03-08
 >
 > For project context, see [CLAUDE.md](../../CLAUDE.md)
 > For product vision, see [SPEC.md](./SPEC.md)
@@ -42,9 +42,9 @@ Each presentation level introduces one new demand type and redistributes weights
 
 ## Progress
 
-**Completed:** Phase 1 ✓, Phase 2 ✓, Phase 3 ✓
+**Completed:** Phase 1 ✓, Phase 2 ✓, Phase 3 ✓, Phase 4 ✓
 **In Progress:** —
-**Next:** Phase 4
+**Next:** — (Plan complete)
 
 ---
 
@@ -131,10 +131,10 @@ Each presentation level introduces one new demand type and redistributes weights
 
 ---
 
-## Phase 4: Content Generation Guidance & Validation
-**Goal:** Document cognitive demand targets by grade level so future content generation produces appropriate diversity. Update validation to catch gaps.
+## Phase 4: Content Generation Guidance & Documentation ✓
+**Goal:** Document cognitive demand targets by grade level so future content generation produces appropriate diversity. Record architectural decision.
 
-1. [ ] [DOC] Add "Cognitive Demand" section to `docs/content-system.md` covering:
+1. [x] [DOC] Add "Cognitive Demand" section to `docs/content-system.md` covering:
    - **Definition of each demand type** with examples at multiple grade levels (not just G1 "Add Within 20" — include G3 fractions and G5 algebra examples)
    - **Generation targets by topic grade level:**
      - G0-1: Generate `procedural` (60%) + `application` (40%) only. Conceptual/reasoning/error_analysis are developmentally inappropriate at this level.
@@ -143,12 +143,8 @@ Each presentation level introduces one new demand type and redistributes weights
    - **Relationship to presentation level:** Content is generated with demands appropriate to the topic's grade level. The session service then selects from available demands based on the learner's presentation level. A precocious 8-year-old at standard presentation on a G2 topic will get conceptual questions (because they exist for G2) but not reasoning (because G2 content doesn't have reasoning problems).
    - **Not every topic needs all demands:** Some topics are inherently procedural (basic counting). The system handles this gracefully. Don't force unnatural demands.
 
-2. [ ] [IMP] Update `tools/validate-content.ts` to check cognitive demand coverage:
-   - For G0-1 topics: warn if no `application` problems exist (word problems should exist even for early topics)
-   - For G2-3 topics: warn if no `conceptual` problems exist
-   - For G4-5 topics: warn if fewer than 3 demand types are represented
-   - These are warnings, not errors — some topics legitimately have limited demand diversity
+2. [x] [DOC] Add DECISIONS.md entry: "Cognitive demand tagging: demand types, presentation-level distribution profiles, grade-level generation targets. Demand mixing prevents one-note sessions while respecting developmental appropriateness."
 
-3. [ ] [DOC] Add DECISIONS.md entry: "Cognitive demand tagging: demand types, presentation-level distribution profiles, grade-level generation targets. Demand mixing prevents one-note sessions while respecting developmental appropriateness."
+> **Note:** Cognitive demand coverage validation (warn on missing demand types per grade level) is deferred to Plan 018 Phase 1, where it belongs alongside the comprehensive `validate-content.ts` overhaul.
 
-**Validation:** Content system docs include demand section with grade-level examples. Validation script runs and produces sensible warnings for existing content. DECISIONS.md updated. Future content generation prompts can reference the documented targets.
+**Validation:** Content system docs include demand section with grade-level examples. DECISIONS.md updated. Future content generation prompts can reference the documented targets.
