@@ -1,7 +1,7 @@
 # Plan: System Refinement & Integration Gaps
 
 > **Created:** 2026-03-08T18:34:18Z
-> **Completed:** —
+> **Completed:** 2026-03-08
 >
 > For project context, see [CLAUDE.md](../../CLAUDE.md)
 > For product vision, see [SPEC.md](./SPEC.md)
@@ -13,9 +13,9 @@ Closes the remaining system-level gaps identified in the March 7 review and Plan
 
 ## Progress
 
-**Completed:** Phase 1, Phase 2, Phase 3, Phase 4
+**Completed:** Phase 1, Phase 2, Phase 3, Phase 4, Phase 5
 **In Progress:** —
-**Next:** Phase 5
+**Next:** — (all phases complete)
 
 ---
 
@@ -76,12 +76,12 @@ Closes the remaining system-level gaps identified in the March 7 review and Plan
 
 ---
 
-## Phase 5: Content Iteration Protocol
+## Phase 5: Content Iteration Protocol ✓
 **Goal:** Documented detect → diagnose → fix → deploy → measure workflow for improving content based on usage data.
 
-1. [ ] [DOC] Document detection: how admin analytics surface poor-performing topics (accuracy < 70% or > 95%, hint usage > 60%, high lapse rate, confidence miscalibration — overconfident-wrong or underconfident-right)
-2. [ ] [DOC] Document diagnosis workflow: decision tree for root cause — content quality issue (ambiguous wording, wrong answer, missing hint), prerequisite gap (topic too hard given prereqs), difficulty miscalibration (tagged easy but actually hard), cognitive demand mismatch (all procedural, no conceptual variety)
-3. [ ] [DOC] Document fix → validate → import → verify cycle: edit content JSON → `just validate-content` → `just import-content` → verify via admin analytics; include rollback procedure (git revert + reimport)
-4. [ ] [DOC] Add protocol as "Content Iteration" section in `content-system.md` with concrete examples and thresholds
+1. [x] [DOC] Document detection: how admin analytics surface poor-performing topics (accuracy < 70% or > 95%, hint usage > 60%, high lapse rate, confidence miscalibration — overconfident-wrong or underconfident-right)
+2. [x] [DOC] Document diagnosis workflow: decision tree for root cause — content quality issue (ambiguous wording, wrong answer, missing hint), prerequisite gap (topic too hard given prereqs), difficulty miscalibration (tagged easy but actually hard), cognitive demand mismatch (all procedural, no conceptual variety)
+3. [x] [DOC] Document fix → validate → import → verify cycle: edit content JSON → `just validate-content` → `just import-content` → verify via admin analytics; include rollback procedure (git revert + reimport)
+4. [x] [DOC] Add protocol as "Content Iteration" section in `content-system.md` with concrete examples and thresholds
 
 **Validation:** Protocol is actionable — someone reading it can identify a poorly performing topic and fix it using the documented steps.

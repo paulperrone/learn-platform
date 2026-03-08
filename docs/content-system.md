@@ -24,6 +24,7 @@
 14. [Graph Design Checklist](#14-graph-design-checklist)
 15. [Content Creation Workflow](#15-content-creation-workflow)
 16. [Cognitive Demand](#16-cognitive-demand)
+17. [Content Iteration Protocol](#17-content-iteration-protocol)
 
 ---
 
@@ -766,3 +767,174 @@ The session service applies different demand strategies per learning phase:
 ### Demand Tracking
 
 The session state tracks `servedDemands: CognitiveDemand[]` — a running list of demands served this session. The `selectTargetDemand` function compares the actual distribution of served demands against the target profile weights and picks the most underrepresented demand type. This ensures variety over the course of a session without strict ordering.
+
+---
+
+## 17. Content Iteration Protocol
+
+A detect → diagnose → fix → deploy → measure workflow for improving content based on usage data. Content is never "done" — usage data reveals problems that aren't visible during authoring.
+
+### Detection: Surfacing Poor-Performing Content
+
+Query `review_log` and `user_topic_state` to identify topics that need attention. The following signals indicate problems:
+
+#### Red Flags (investigate immediately)
+
+| Signal | Query basis | Threshold | What it suggests |
+|---|---|---|---|
+| **Very low accuracy** | `review_log.correct` grouped by `topicId` | < 50% across 20+ attempts | Content is too hard, ambiguous, or has wrong answers |
+| **Very high accuracy** | `review_log.correct` grouped by `topicId` | > 95% across 20+ attempts | Content is too easy — not testing the intended skill |
+| **High hint usage** | `review_log.hintsUsed` grouped by `topicId` | > 60% of attempts use hints | Instruction is insufficient or problems are unclear without hints |
+| **High lapse rate** | `user_topic_state.lapses` grouped by `topicId` | Average > 3 lapses per user | Topic isn't sticking — possible prerequisite gap or poor instruction |
+
+#### Yellow Flags (review when time permits)
+
+| Signal | Query basis | Threshold | What it suggests |
+|---|---|---|---|
+| **Moderate low accuracy** | `review_log.correct` by `topicId` | 50-70% across 20+ attempts | May be appropriate difficulty, or may indicate a minor issue |
+| **Confidence miscalibration: overconfident-wrong** | `review_log.confidence` vs `review_log.correct` | High confidence (4-5) + incorrect > 25% of attempts | Students think they know it but don't — misleading instruction or ambiguous problems |
+| **Confidence miscalibration: underconfident-right** | `review_log.confidence` vs `review_log.correct` | Low confidence (1-2) + correct > 40% of attempts | Students know it but don't feel confident — instruction may not build understanding |
+| **Slow response times** | `review_log.responseMs` by `topicId` | Median > 2x the subject average | Problems may be confusingly worded or require too many steps |
+| **Cognitive demand imbalance** | `review_log` joined with `assessment_content` | A topic has > 80% of one demand type | Missing variety — sessions feel repetitive on this topic |
+
+#### Minimum Sample Size
+
+Don't act on signals with fewer than **20 attempts across 5+ unique users**. Small samples produce unreliable statistics. For confidence miscalibration, require **30+ attempts** (confidence is noisier than correctness).
+
+### Diagnosis: Root Cause Decision Tree
+
+When a signal fires, walk this decision tree to identify the root cause:
+
+```
+Topic flagged
+├── Accuracy too low (< 50%)?
+│   ├── Check specific problems: is one problem dragging down the average?
+│   │   ├── Yes → Content quality issue (that specific problem)
+│   │   └── No → All problems are hard
+│   │       ├── Check prerequisites: do most failing students have weak prereq mastery?
+│   │       │   ├── Yes → Prerequisite gap (topic placed too early in graph, or missing prereq edge)
+│   │       │   └── No → Students have prereqs but still fail
+│   │       │       ├── Check worked examples: do they cover the exact skill being tested?
+│   │       │       │   ├── No → Instruction gap (examples don't match problems)
+│   │       │       │   └── Yes → Difficulty miscalibration (problems harder than intended)
+│   │       │       └── Check difficulty tags: are "easy" problems actually hard?
+│   │           └── Yes → Difficulty miscalibration
+│   │
+├── Accuracy too high (> 95%)?
+│   ├── Check difficulty distribution: does the topic have hard problems?
+│   │   ├── No → Missing difficulty levels (only easy problems exist)
+│   │   └── Yes → Hard problems exist but aren't being served
+│   │       └── Check session service logs: is content selection skipping hard problems?
+│   │
+├── High hint usage (> 60%)?
+│   ├── Check if hints are too revealing (giving away the answer)
+│   │   ├── Yes → Hint quality issue (hints should scaffold, not solve)
+│   │   └── No → Problems need hints to be solvable
+│   │       └── Check worked examples: do they prepare students for the problem style?
+│   │           ├── No → Instruction gap
+│   │           └── Yes → Problem wording may be unclear without hints
+│   │
+├── High lapse rate (avg > 3)?
+│   ├── Check if lapses cluster after long intervals (expected FSRS behavior)
+│   │   ├── Yes → Normal forgetting — FSRS will adjust intervals automatically
+│   │   └── No → Lapses happen even at short intervals
+│   │       └── Prerequisite gap: the skill was never truly mastered, just pattern-matched
+│   │
+├── Confidence miscalibration?
+│   ├── Overconfident-wrong: students think they know it
+│   │   └── Common cause: problems test a slightly different skill than instruction covers
+│   │       (e.g., instruction shows simple cases, problems include edge cases)
+│   └── Underconfident-right: students don't trust their knowledge
+│       └── Common cause: instruction is abstract/unclear, students rely on intuition
+│           and don't realize they've learned the pattern
+│
+└── Cognitive demand imbalance?
+    └── Add problems in the missing demand types (see §16 for targets by grade level)
+```
+
+### Root Cause Categories
+
+| Root Cause | Fix | Scope |
+|---|---|---|
+| **Content quality issue** | Edit the specific problem/example in `content/<subject>/problems/<topic>.json` or `examples/<topic>.json`. Fix wording, correct answer, add missing hints. | Single content item |
+| **Instruction gap** | Add or revise worked examples to cover the exact skill pattern tested by problems. | `examples/<topic>.json` |
+| **Prerequisite gap** | Add a missing prerequisite edge in `graph.json`, or move the topic deeper in the graph. | `graph.json` |
+| **Difficulty miscalibration** | Adjust `difficulty` tags on problems (1-3 scale). Ensure the topic has problems at all 3 levels. | `problems/<topic>.json` |
+| **Hint quality issue** | Rewrite hints to scaffold thinking without revealing answers. Hints should ask a guiding question or point to the relevant concept, not state the next step. | `problems/<topic>.json` |
+| **Missing difficulty levels** | Generate additional problems at the missing difficulty level(s). | `problems/<topic>.json` |
+| **Missing cognitive demands** | Generate problems in the underrepresented demand type(s). Follow §16 targets. | `problems/<topic>.json` |
+
+### Fix → Validate → Import → Verify Cycle
+
+Once the root cause is identified and the content JSON is edited:
+
+```
+1. Edit content files
+   └── content/<subject>/problems/<topic>.json   (problem fixes)
+   └── content/<subject>/examples/<topic>.json   (instruction fixes)
+   └── content/<subject>/graph.json              (prerequisite fixes)
+
+2. Validate
+   └── just validate-content
+   └── Confirms: DAG integrity, topic coverage, platform-medium constraints,
+       no physical/verbal instructions, all topic IDs valid
+
+3. Import to local D1
+   └── just import-content
+   └── Rebuilds the D1 read model from content files
+
+4. Verify locally
+   └── just dev
+   └── Navigate to the affected topic, confirm the fix looks correct
+   └── Run a learning session on the topic if possible
+
+5. Commit and deploy
+   └── git add content/<subject>/...
+   └── git commit -m "fix(content): <description of what was fixed and why>"
+   └── git push origin main
+   └── Cloudflare Pages deploys automatically
+
+6. Measure
+   └── After deployment, wait for 20+ new attempts on the topic
+   └── Re-check the original signal — it should improve
+   └── If not improved, re-diagnose (the root cause may have been wrong)
+```
+
+### Rollback Procedure
+
+If a content fix makes things worse:
+
+```bash
+# Identify the bad commit
+git log --oneline content/
+
+# Revert it
+git revert <commit-hash>
+
+# Reimport to restore previous content
+just import-content
+
+# Push the revert
+git push origin main
+```
+
+D1 is a disposable read model — `just import-content` always rebuilds from the content files in git. Reverting the git commit and reimporting is a clean rollback with no residual state.
+
+### Worked Example: Fixing a Low-Accuracy Topic
+
+**Signal:** `subtract-within-100` has 42% accuracy across 35 attempts from 8 users.
+
+**Diagnosis:**
+1. Check individual problems — problem #3 ("What is 83 - 47?") has 15% accuracy while others average 55%. Single problem dragging down the average.
+2. Check problem #3's hints — the hint says "Try borrowing from the tens place" but doesn't explain the borrowing procedure.
+3. Check worked examples — the examples cover borrowing for 2-digit minus 1-digit but not 2-digit minus 2-digit with borrowing from tens.
+
+**Root causes:** Content quality issue (problem hint too vague) + Instruction gap (examples don't cover borrowing across tens).
+
+**Fix:**
+1. Edit `content/math-foundations/problems/subtract-within-100.json` — rewrite problem #3 hint: "83 has 8 tens and 3 ones. You can't take 7 ones from 3 ones. What if you broke one of the tens into 10 ones?"
+2. Edit `content/math-foundations/examples/subtract-within-100.json` — add a worked example showing 2-digit minus 2-digit borrowing (e.g., 72 - 38).
+3. Run `just validate-content` — passes.
+4. Run `just import-content` — content updated.
+5. Commit: `fix(content): improve subtract-within-100 borrowing hint and add 2-digit borrowing example`
+6. After 30 new attempts, accuracy rises to 68% — within acceptable range.
