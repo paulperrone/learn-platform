@@ -34,16 +34,16 @@ Systematic verification that all features from plans 009-014 are fully wired end
 
 ## Progress
 
-**Completed:** None yet
+**Completed:** Phase 1
 **In Progress:** —
-**Next:** Phase 1
+**Next:** Phase 2
 
 ---
 
-## Phase 1: Session Learning Loop Audit
+## Phase 1: Session Learning Loop Audit ✓
 **Goal:** Verify the full session flow works end-to-end with all Plan 010 intelligence features wired correctly.
 
-1. [ ] [RSH] Trace the `startSession` → `buildPhaseItem` → `respond` path in `packages/api/src/services/session.ts`. For each of the 6 session phases (pretest, instruction, guided, independent, review, remediation), verify:
+1. [x] [RSH] Trace the `startSession` → `buildPhaseItem` → `respond` path in `packages/api/src/services/session.ts`. For each of the 6 session phases (pretest, instruction, guided, independent, review, remediation), verify:
    - **Pretest:** Selects medium-difficulty problem. Pass = skip instruction. Fail = proceed to instruction. No hints.
    - **Instruction:** Returns worked example. Fading level applied (full → partial → independent based on exposure count + FSRS stability). Self-explanation prompt inserted after example.
    - **Guided:** Selects easy problem with adaptive difficulty bias. First hint pre-revealed. Progressive hint reveal gates subsequent hints across attempts.
@@ -52,26 +52,26 @@ Systematic verification that all features from plans 009-014 are fully wired end
    - **Remediation:** Routes to key prerequisite topic (or lowest-stability prerequisite). Easy difficulty. No demand mixing.
    Document any phase where a feature is present in code but not reachable in the execution path.
 
-2. [ ] [RSH] Verify adaptive difficulty targeting. Trace the rolling accuracy tracker:
+2. [x] [RSH] Verify adaptive difficulty targeting. Trace the rolling accuracy tracker:
    - Where is accuracy computed? (last N problems in session state)
    - Where does it influence `selectProblem`'s difficulty parameter?
    - Does the bias actually shift? (>90% accuracy → harder, <80% → easier)
    - Check `adaptive-difficulty.test.ts` covers these paths. Run `just test` and confirm test passes.
 
-3. [ ] [RSH] Verify worked example fading end-to-end:
+3. [x] [RSH] Verify worked example fading end-to-end:
    - Where is example exposure count stored? (`user_topic_state` or session state?)
    - Does `buildPhaseItem` for instruction phase read this count?
    - Does the returned `fadingLevel` actually increase with exposure?
    - Does the frontend (`WorkedExample.vue`) render blanked steps based on `fadingLevel`?
    - Check `session-fading.test.ts`. Run and confirm.
 
-4. [ ] [RSH] Verify FIRe compression and non-interference in review phase:
+4. [x] [RSH] Verify FIRe compression and non-interference in review phase:
    - Trace `srs.getSessionMix()` → `compressReviews()` → greedy set-cover
    - Verify multi-hop credit: `applyFIReCredit()` traverses 2-3 hops with diminishing weight
    - Verify non-interference: review ordering avoids same-strand topics back-to-back
    - Check `review-compression.test.ts` and `interleaving.test.ts`. Run and confirm.
 
-5. [ ] [TST] Write `packages/api/src/__tests__/integration/session-full-loop.test.ts` — an integration test that exercises a complete multi-topic learning session:
+5. [x] [TST] Write `packages/api/src/__tests__/integration/session-full-loop.test.ts` — an integration test that exercises a complete multi-topic learning session:
    - Start session for a user with some mastered topics (review due) and frontier topics
    - Step through: pretest (fail) → instruction (worked example with fading) → guided (hint revealed) → independent (graded, confidence captured) → review (FIRe-compressed, depth-blended) → respond incorrectly → remediation (routes to prerequisite)
    - Assert: each phase returns correct `type`, fading progresses, hints gate, confidence is captured, review topics are interleaved, remediation targets a prerequisite
