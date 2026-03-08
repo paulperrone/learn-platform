@@ -17,9 +17,9 @@ FIRe (Fractional Implicit Repetition) is one of the platform's most powerful fea
 
 ## Progress
 
-**Completed:** Phase 1 ✓, Phase 2 ✓
+**Completed:** Phase 1 ✓, Phase 2 ✓, Phase 3 ✓
 **In Progress:** —
-**Next:** Phase 3
+**Next:** Phase 4
 
 ### Phase 1-2 Results (completed 2026-03-07)
 
@@ -72,7 +72,7 @@ Starting state: 71 topics, 108 prerequisite edges, 42 encompassing edges. 24 top
 
 ---
 
-## Phase 3: FIRe Compression Validation
+## Phase 3: FIRe Compression Validation ✓
 **Goal:** Prove that enriched encompassings measurably improve review compression and that multi-hop credit flows correctly.
 
 **Key context for implementation:**
@@ -85,20 +85,20 @@ Starting state: 71 topics, 108 prerequisite edges, 42 encompassing edges. 24 top
 
 **Steps:**
 
-1. [ ] [TST] Write `packages/api/src/__tests__/services/fire-compression.test.ts`:
+1. [x] [TST] Write `packages/api/src/__tests__/services/fire-compression.test.ts`:
    - Read the SRS service to understand `compressReviews()` API signature and how it takes encompassing data
    - Seed 20+ topics as "due for review" in user_topic_state
    - Compare compression with a subset of encompassings (original 42) vs. full set (133)
    - Assert the new ratio is meaningfully better (fewer explicit reviews selected for same coverage)
    - Verify that the selected reviews' FIRe coverage actually covers the skipped topics
 
-2. [ ] [TST] Write a test for multi-hop credit flow:
+2. [x] [TST] Write a test for multi-hop credit flow:
    - Practice `order-of-operations` (has deep chains — see Phase 1-2 Results above)
    - Verify credit flows to `multi-digit-multiply` (hop 1, w=0.4), `multiply-within-100` (hop 2, w=0.6), `skip-count-2-5-10` (hop 3, w=0.4)
    - Verify credit diminishes: hop 1 = 0.4, hop 2 = 0.24, hop 3 = 0.096
    - Verify upward penalty: fail `add-within-10` → penalty to `add-within-20` (w=0.8), `add-within-100` (hop 2), `add-within-100-fluent` (hop 3)
 
-3. [ ] [TST] Write a test for cross-strand coverage:
+3. [x] [TST] Write a test for cross-strand coverage:
    - Mark computation topics (add, subtract, multiply, divide within 100) and word-problem topics as due
    - Verify that reviewing `multi-step-word-problems` covers `add-within-100-fluent` (0.3), `subtract-within-100-fluent` (0.3), `multiply-within-100` (0.3), `divide-within-100` (0.3)
    - This is the key cross-strand value: one word-problem review implicitly refreshes four computation skills
