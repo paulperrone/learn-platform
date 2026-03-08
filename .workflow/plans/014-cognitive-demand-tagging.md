@@ -42,9 +42,9 @@ Each presentation level introduces one new demand type and redistributes weights
 
 ## Progress
 
-**Completed:** Phase 1 ✓, Phase 2 ✓
+**Completed:** Phase 1 ✓, Phase 2 ✓, Phase 3 ✓
 **In Progress:** —
-**Next:** Phase 3
+**Next:** Phase 4
 
 ---
 
@@ -92,16 +92,16 @@ Each presentation level introduces one new demand type and redistributes weights
 
 ---
 
-## Phase 3: Demand-Aware Session Mixing
+## Phase 3: Demand-Aware Session Mixing ✓
 **Goal:** Update the session service to select problems with cognitive demand variety, weighted by the learner's presentation level.
 
-1. [ ] [IMP] Add a `getDemandProfile(presentation: PresentationLevel): DemandDistribution` function that returns the weight distribution for the learner's presentation level:
+1. [x] [IMP] Add a `getDemandProfile(presentation: PresentationLevel): DemandDistribution` function that returns the weight distribution for the learner's presentation level:
    - `primary`: `{ procedural: 0.60, application: 0.40 }`
    - `intermediate`: `{ procedural: 0.45, application: 0.30, conceptual: 0.25 }`
    - `standard`: `{ procedural: 0.35, application: 0.25, conceptual: 0.25, reasoning: 0.15 }`
    - `advanced`: `{ procedural: 0.25, application: 0.20, conceptual: 0.20, reasoning: 0.20, error_analysis: 0.15 }`
 
-2. [ ] [IMP] Update `selectProblem` in `packages/api/src/services/session.ts` to incorporate demand mixing:
+2. [x] [IMP] Update `selectProblem` in `packages/api/src/services/session.ts` to incorporate demand mixing:
    - Accept optional `demandProfile` and `recentDemands` parameters
    - When a demand profile is provided and the problem pool has multiple demand types:
      - Compute which demand type is most "underrepresented" given recent demands vs target weights
@@ -110,7 +110,7 @@ Each presentation level introduces one new demand type and redistributes weights
    - When problems lack `cognitiveDemand` tags (null), treat them as `procedural`
    - Track which demands have been served in the session state (`recentDemands: CognitiveDemand[]`)
 
-3. [ ] [IMP] Wire demand mixing into each session phase with phase-appropriate behavior:
+3. [x] [IMP] Wire demand mixing into each session phase with phase-appropriate behavior:
    - **Pretest:** Always `procedural` or `application` — quick diagnostic check, not the place for "explain why"
    - **Instruction:** N/A (worked examples, not assessment)
    - **Guided:** Favor `conceptual` when available — this is where "why does this work?" prompts pair with self-explanation. Fall back to `procedural` if no conceptual problems exist for this topic.
@@ -118,7 +118,7 @@ Each presentation level introduces one new demand type and redistributes weights
    - **Review:** Favor `procedural` and `application` — retrieval practice is about recall, not deep reasoning
    - **Remediation:** Always `procedural` — student is struggling, reduce cognitive load
 
-4. [ ] [TST] Write tests in `packages/api/src/__tests__/services/cognitive-demand.test.ts`:
+4. [x] [TST] Write tests in `packages/api/src/__tests__/services/cognitive-demand.test.ts`:
    - Seed a topic with problems tagged across all 5 demand types
    - Verify `selectProblem` with `primary` profile only returns procedural/application
    - Verify `selectProblem` with `advanced` profile returns all 5 types over multiple selections
@@ -127,7 +127,7 @@ Each presentation level introduces one new demand type and redistributes weights
    - Verify phase-appropriate behavior: pretest selects procedural/application regardless of profile
    - Verify null `cognitiveDemand` treated as procedural
 
-**Validation:** Tests pass. A primary-level learner doing independent practice sees procedural + application only. An advanced-level learner sees all five demand types over the course of a session. No regression in existing session tests.
+**Validation:** All 382 tests pass (377 existing + 5 new). Pretest restricts to procedural/application. Guided favors conceptual. Independent uses full demand mixing per presentation-level profile. Review favors procedural/application. Remediation always procedural. Null demands treated as procedural. No regression in existing tests.
 
 ---
 

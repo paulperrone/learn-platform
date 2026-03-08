@@ -5,7 +5,8 @@ import * as schema from "../db/schema.js";
 import { createGraphService } from "./graph.js";
 import { createSRSService } from "./srs.js";
 import { createContentService, type ContentQuery } from "./content.js";
-import type { Problem, WorkedExample, SessionPhase, AssessmentType, VisualAsset, PresentationLevel, ContentDepthLevel, BlendRole, MasteryEvent } from "@learn/shared";
+import type { Problem, WorkedExample, SessionPhase, AssessmentType, VisualAsset, PresentationLevel, ContentDepthLevel, BlendRole, MasteryEvent, CognitiveDemand, DemandDistribution } from "@learn/shared";
+import { DEMAND_PROFILES } from "@learn/shared";
 import { gradeProblem } from "./grading.js";
 
 type SessionState = {
@@ -28,6 +29,7 @@ type SessionState = {
   lastProblemId?: string; // Last problem ID responded to (for targeted remediation lookup)
   remediationTargetTopicId?: string; // Prerequisite topic being remediated (targeted remediation)
   remediationOriginalTopicId?: string; // Original topic that triggered remediation
+  servedDemands?: CognitiveDemand[]; // Cognitive demands served this session (for demand mixing)
 };
 
 // In-memory cache — D1 is the source of truth
@@ -167,7 +169,54 @@ export function createSessionService(db: DB) {
   // Types that force retrieval practice (higher learning gain than text-qa)
   const preferredTypes: AssessmentType[] = ["numerical-input", "multi-step", "matching", "multi-select"];
 
-  function selectProblem(problems: Problem[], difficulty: string, exclude: string[] = [], bias: DifficultyBias = "on-target"): Problem | null {
+  /** Get the demand distribution profile for a presentation level */
+  function getDemandProfile(presentation: PresentationLevel): DemandDistribution {
+    return DEMAND_PROFILES[presentation];
+  }
+
+  /** Pick the most underrepresented demand type given recent history and target weights */
+  function selectTargetDemand(profile: DemandDistribution, recentDemands: CognitiveDemand[]): CognitiveDemand | null {
+    const demandTypes = Object.keys(profile) as CognitiveDemand[];
+    if (demandTypes.length === 0) return null;
+
+    if (recentDemands.length === 0) {
+      // First selection — weighted random from profile
+      const r = Math.random();
+      let cumulative = 0;
+      for (const d of demandTypes) {
+        cumulative += profile[d] ?? 0;
+        if (r < cumulative) return d;
+      }
+      return demandTypes[demandTypes.length - 1];
+    }
+
+    // Count occurrences in recent history
+    const counts: Partial<Record<CognitiveDemand, number>> = {};
+    for (const d of recentDemands) counts[d] = (counts[d] ?? 0) + 1;
+    const total = recentDemands.length;
+
+    // Find most underrepresented demand relative to target weight
+    let bestDemand = demandTypes[0];
+    let bestGap = -Infinity;
+    for (const d of demandTypes) {
+      const targetRate = profile[d] ?? 0;
+      const actualRate = (counts[d] ?? 0) / total;
+      const gap = targetRate - actualRate;
+      if (gap > bestGap) {
+        bestGap = gap;
+        bestDemand = d;
+      }
+    }
+    return bestDemand;
+  }
+
+  function selectProblem(
+    problems: Problem[],
+    difficulty: string,
+    exclude: string[] = [],
+    bias: DifficultyBias = "on-target",
+    demandPreference?: CognitiveDemand | null,
+  ): Problem | null {
     const available = problems.filter((p) => !exclude.includes(p.id));
     if (available.length === 0) return null;
 
@@ -175,9 +224,16 @@ export function createSessionService(db: DB) {
     const byDifficulty = available.filter((p) => p.difficulty === targetDifficulty);
     const pool = byDifficulty.length > 0 ? byDifficulty : available;
 
+    // Apply cognitive demand preference (soft — falls back if not available)
+    let demandFiltered = pool;
+    if (demandPreference) {
+      const matching = pool.filter((p) => (p.cognitiveDemand ?? "procedural") === demandPreference);
+      if (matching.length > 0) demandFiltered = matching;
+    }
+
     // Prefer diverse question types when available
-    const preferred = pool.filter((p) => p.type && preferredTypes.includes(p.type));
-    const candidates = preferred.length > 0 ? preferred : pool;
+    const preferred = demandFiltered.filter((p) => p.type && preferredTypes.includes(p.type));
+    const candidates = preferred.length > 0 ? preferred : demandFiltered;
 
     return candidates[Math.floor(Math.random() * candidates.length)];
   }
@@ -729,11 +785,26 @@ export function createSessionService(db: DB) {
 
       const bias = computeDifficultyBias(state.rollingResults);
 
+      // Resolve demand mixing for this phase
+      const presentation = state.lastServedPresentation ?? "standard";
+      const profile = getDemandProfile(presentation);
+      const recentDemands = state.servedDemands ?? [];
+
+      /** Record a served demand into session state */
+      function trackDemand(problem: Problem): void {
+        const demand = problem.cognitiveDemand ?? "procedural";
+        if (!state.servedDemands) state.servedDemands = [];
+        state.servedDemands.push(demand);
+      }
+
       switch (state.currentPhase) {
         case "pretest": {
-          // 1-2 problems, student likely fails — primes learning (no adaptive bias for pretest)
-          const problem = selectProblem(problems, "medium");
+          // 1-2 problems, student likely fails — primes learning
+          // Always procedural/application — quick check, not "explain why"
+          const pretestDemand = selectTargetDemand({ procedural: 0.60, application: 0.40 }, recentDemands);
+          const problem = selectProblem(problems, "medium", [], "on-target", pretestDemand);
           const p = withVisuals(problem ?? makeFallbackProblem(topic));
+          trackDemand(p);
           return {
             type: "problem",
             phase: "pretest",
@@ -806,8 +877,11 @@ export function createSessionService(db: DB) {
 
         case "guided": {
           // Partially scaffolded — start with first hint revealed (adaptive bias applies)
-          const problem = selectProblem(problems, "easy", [], bias);
+          // Favor conceptual — "why does this work?" pairs with self-explanation
+          const guidedDemand = profile.conceptual ? "conceptual" as CognitiveDemand : null;
+          const problem = selectProblem(problems, "easy", [], bias, guidedDemand);
           const p = withVisuals(problem ?? makeFallbackProblem(topic));
+          trackDemand(p);
           return {
             type: "problem",
             phase: "guided",
@@ -825,8 +899,11 @@ export function createSessionService(db: DB) {
 
         case "independent": {
           // Full problems, confidence judgment (adaptive bias applies)
-          const problem = selectProblem(problems, "medium", [], bias);
+          // Full demand mixing per the learner's profile — this is the primary mixing phase
+          const independentDemand = selectTargetDemand(profile, recentDemands);
+          const problem = selectProblem(problems, "medium", [], bias, independentDemand);
           const p = withVisuals(problem ?? makeFallbackProblem(topic));
+          trackDemand(p);
           return {
             type: "problem",
             phase: "independent",
@@ -846,8 +923,11 @@ export function createSessionService(db: DB) {
 
         case "review": {
           // Spaced review — adaptive difficulty; message varies by blend role
-          const problem = selectProblem(problems, "medium", [], bias);
+          // Favor procedural/application — retrieval practice is about recall
+          const reviewDemand = selectTargetDemand({ procedural: 0.55, application: 0.45 }, recentDemands);
+          const problem = selectProblem(problems, "medium", [], bias, reviewDemand);
           const p = withVisuals(problem ?? makeFallbackProblem(topic));
+          trackDemand(p);
           const blendRole = state.currentBlendRole ?? "main";
           let reviewMessage = "Review time! Let's see if you remember.";
           if (blendRole === "warmup") {
@@ -883,7 +963,7 @@ export function createSessionService(db: DB) {
             if (prereqTopic) {
               const prereqQuery = await resolveContentQuery(state, prereqTopic.id);
               const prereqProblems = await content.getTopicProblems(prereqQuery);
-              const prereqProblem = selectProblem(prereqProblems, "easy");
+              const prereqProblem = selectProblem(prereqProblems, "easy", [], "on-target", "procedural");
               const prereqVisuals = await content.getTopicVisuals(prereqQuery);
               const pv = prereqProblem
                 ? (prereqVisuals ? { ...prereqProblem, visuals: prereqVisuals } : prereqProblem)
@@ -909,7 +989,7 @@ export function createSessionService(db: DB) {
           }
 
           // Fallback: same-topic remediation (no prereq identified or anonymous)
-          const problem = selectProblem(problems, "easy");
+          const problem = selectProblem(problems, "easy", [], "on-target", "procedural");
           const p = withVisuals(problem ?? makeFallbackProblem(topic));
           return {
             type: "remediation",
