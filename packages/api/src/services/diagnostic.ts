@@ -383,6 +383,7 @@ export function createDiagnosticService(db: DB) {
       standard: weights[2],
       advanced: weights[3],
       centerLevel: levels[newCenterIdx],
+      driftSignal: 0,
     };
   }
 

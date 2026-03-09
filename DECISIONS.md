@@ -1016,3 +1016,27 @@ Child creation now creates both an org member (student role) and an account_link
 - Per-topic interleaving (interleave within learning loop): pedagogically wrong — learning loop phases must be sequential on the same topic
 
 **Results:** average-older: 57% review ratio, 2.4% same-strand adj, 100% sessions with new topics. strong-older: 67%, 5.0%, 100%. misconception-fractions: 81%, 27.1%, 70% — fails due to remediation cascading within same-strand prerequisite chains (documented limitation).
+
+---
+
+## 2026-03-09: Presentation drift stabilized with two-layer EMA + hysteresis
+
+**Source:** Plan 017.5 Phase 5
+
+**Decision:** Replaced per-problem direct drift rates with a two-layer architecture: signal rates (large, asymmetric, for EMA direction tracking) and a fixed driftRate (small, for actual weight changes). Added three stabilization mechanisms: (1) EMA smoothing gates drift application, (2) center-level hysteresis with margin, (3) signal reset on center shift.
+
+**Changes:**
+1. Signal rates are asymmetric: failure signals (0.06-0.08) > success signals (0.05-0.10). Breakeven accuracy is ~62% — below this, the system drifts downward. This fixes struggling-older drifting UP at 60% accuracy.
+2. EMA with alpha=0.3 and threshold=0.015 smooths the direction signal. At 60% accuracy, the weak net signal (-0.002 per problem) stays below threshold → near-zero drift. At 90% accuracy, strong signal (+0.037) → consistent drift.
+3. `driftRate` = 0.008 per application provides controlled weight changes (~0.15-0.24 per session depending on accuracy).
+4. Center hysteresis requires another level to exceed both threshold (0.40) AND current center weight + margin (0.10). Signal resets to 0 on center shift to prevent rapid flip-back.
+5. Snap weight redistribution goes to drift target level instead of highest weight, preventing snapped weight from fighting drift direction.
+6. Added `drift_signal` column to `user_subject_presentation` (migration 0025).
+
+**Why:**
+- Old symmetric rates (0.02/0.02) meant any accuracy > 50% created net upward drift — wrong for struggling students
+- Per-problem drift without smoothing caused noise-driven oscillation
+- Center label was unstable when two adjacent levels had similar weights
+- The distribution (used for content sampling) is always correct; only the center label oscillated
+
+**Results:** struggling-older drifts from intermediate → primary (was drifting UP). strong-young drifts from primary → intermediate. Both profiles show correct direction with mostly stable centers. No regression on mastery, remediation, or session mix.

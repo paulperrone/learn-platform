@@ -306,6 +306,7 @@ export const userSubjectPresentation = sqliteTable("user_subject_presentation", 
   standardWeight: real("standard_weight").notNull().default(0),
   advancedWeight: real("advanced_weight").notNull().default(0),
   centerLevel: text("center_level").notNull().default("standard"),
+  driftSignal: real("drift_signal").notNull().default(0),
   lastAdjustedAt: text("last_adjusted_at").notNull().$defaultFn(() => new Date().toISOString()),
 }, (table) => [
   uniqueIndex("usp_user_subject_idx").on(table.userId, table.subjectId),

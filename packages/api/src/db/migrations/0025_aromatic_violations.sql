@@ -1,0 +1,1 @@
+ALTER TABLE `user_subject_presentation` ADD `drift_signal` real DEFAULT 0 NOT NULL;

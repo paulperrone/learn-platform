@@ -11,6 +11,7 @@ export type PresentationDistribution = {
   standard: number;
   advanced: number;
   centerLevel: PresentationLevel;
+  driftSignal: number; // EMA of drift direction — persisted across sessions
 };
 
 const PRESENTATION_LEVELS: PresentationLevel[] = ["primary", "intermediate", "standard", "advanced"];
@@ -42,6 +43,7 @@ export function buildDefaultDistribution(birthYear: number | null | undefined): 
     standard: weights[2],
     advanced: weights[3],
     centerLevel: PRESENTATION_LEVELS[centerIdx],
+    driftSignal: 0,
   };
 }
 
@@ -56,16 +58,27 @@ export function sampleFromDistribution(dist: PresentationDistribution): Presenta
 }
 
 // --- Drift rate constants ---
-// Nudge magnitudes for presentation distribution drift.
-// Structured so they could be made per-discipline or per-subject later.
+// Two-layer system: signal rates (for EMA direction tracking) and driftRate
+// (actual weight change per application). EMA gates WHEN drift happens;
+// driftRate controls HOW MUCH weight moves.
+//
+// Asymmetric rates: failure > success at all positions, so accuracy below
+// ~62% creates net downward signal. This fixes struggling profiles drifting
+// UP when they get 60% correct at center level.
 export const DRIFT_RATES = {
-  successAtCenter: 0.02,     // small upward nudge
-  failureAtCenter: 0.02,     // small downward nudge
-  successAboveCenter: 0.04,  // larger upward — student stretching successfully
-  failureAboveCenter: 0.01,  // tiny correction — expected difficulty, not punitive
-  successBelowCenter: 0,     // no change — expected ease
-  failureBelowCenter: 0.03,  // genuine struggle signal
+  // Signal magnitudes (input to EMA — larger = stronger pedagogical signal)
+  successAtCenter: 0.05,     // moderate upward signal
+  failureAtCenter: 0.08,     // strong downward signal — 62% breakeven
+  successAboveCenter: 0.10,  // strong upward — genuinely stretching
+  failureAboveCenter: 0.06,  // meaningful downward — failing above center means center is too high
+  successBelowCenter: 0,     // no signal — expected ease
+  failureBelowCenter: 0.08,  // strong downward — genuine struggle
+  // Application rate (fixed per-problem weight change when EMA exceeds threshold)
+  driftRate: 0.008,          // small per-application delta, ~0.2 per session at 90% accuracy
   snapThreshold: 0.05,       // levels below this snap to 0
+  emaAlpha: 0.3,             // EMA smoothing factor (0-1, higher = more responsive)
+  emaThreshold: 0.015,       // minimum |signal| to apply drift
+  hysteresisThreshold: 0.40, // weight required to become new center (prevents oscillation)
 } as const;
 
 export function nudgeDistribution(
@@ -76,59 +89,61 @@ export function nudgeDistribution(
   const levels = [...PRESENTATION_LEVELS];
   const centerIdx = levels.indexOf(dist.centerLevel);
   const servedIdx = levels.indexOf(servedLevel);
-  const weights: [number, number, number, number] = [dist.primary, dist.intermediate, dist.standard, dist.advanced];
 
-  let delta = 0;
-  let fromIdx = centerIdx;
-  let toIdx = centerIdx;
+  // 1. Compute raw direction signal (signed: positive = up, negative = down)
+  let rawSignal = 0;
 
   if (servedIdx === centerIdx) {
     if (success && centerIdx < 3) {
-      delta = DRIFT_RATES.successAtCenter;
-      fromIdx = centerIdx;
-      toIdx = centerIdx + 1;
+      rawSignal = DRIFT_RATES.successAtCenter;
     } else if (!success && centerIdx > 0) {
-      delta = DRIFT_RATES.failureAtCenter;
-      fromIdx = centerIdx;
-      toIdx = centerIdx - 1;
+      rawSignal = -DRIFT_RATES.failureAtCenter;
     }
   } else if (servedIdx > centerIdx) {
-    if (success) {
-      delta = DRIFT_RATES.successAboveCenter;
-      fromIdx = centerIdx;
-      toIdx = servedIdx;
-    } else {
-      delta = DRIFT_RATES.failureAboveCenter;
-      fromIdx = servedIdx;
-      toIdx = centerIdx;
-    }
+    rawSignal = success ? DRIFT_RATES.successAboveCenter : -DRIFT_RATES.failureAboveCenter;
   } else {
     // servedIdx < centerIdx
-    if (!success) {
-      delta = DRIFT_RATES.failureBelowCenter;
-      fromIdx = centerIdx;
-      toIdx = servedIdx;
-    }
-    // success below center: no change
+    rawSignal = success ? 0 : -DRIFT_RATES.failureBelowCenter;
   }
 
-  if (delta === 0) return dist;
+  if (rawSignal === 0) return { ...dist };
 
-  // Apply delta
-  weights[fromIdx] = Math.max(0, weights[fromIdx] - delta);
-  weights[toIdx] += delta;
+  // 2. Update EMA drift signal
+  const prevSignal = dist.driftSignal ?? 0;
+  const newSignal = DRIFT_RATES.emaAlpha * rawSignal + (1 - DRIFT_RATES.emaAlpha) * prevSignal;
+
+  // 3. Only apply weight changes if smoothed signal exceeds threshold
+  if (Math.abs(newSignal) < DRIFT_RATES.emaThreshold) {
+    return { ...dist, driftSignal: newSignal };
+  }
+
+  // 4. Apply fixed driftRate in the direction of the smoothed signal
+  const weights: [number, number, number, number] = [dist.primary, dist.intermediate, dist.standard, dist.advanced];
+  const delta = DRIFT_RATES.driftRate;
+
+  if (newSignal > 0 && centerIdx < 3) {
+    weights[centerIdx] = Math.max(0, weights[centerIdx] - delta);
+    weights[centerIdx + 1] += delta;
+  } else if (newSignal < 0 && centerIdx > 0) {
+    weights[centerIdx] = Math.max(0, weights[centerIdx] - delta);
+    weights[centerIdx - 1] += delta;
+  } else {
+    return { ...dist, driftSignal: newSignal };
+  }
 
   // Snap levels below threshold to 0
+  // Redistribute snapped weight to drift target (reinforces direction)
+  // instead of highest weight (which can fight drift direction)
+  const driftTargetIdx = newSignal > 0
+    ? Math.min(3, centerIdx + 1)
+    : Math.max(0, centerIdx - 1);
   for (let i = 0; i < 4; i++) {
     if (weights[i] > 0 && weights[i] < DRIFT_RATES.snapThreshold) {
       const snapped = weights[i];
       weights[i] = 0;
-      // Redistribute to highest-weight level
-      let maxIdx = 0;
-      for (let j = 1; j < 4; j++) {
-        if (weights[j] > weights[maxIdx]) maxIdx = j;
-      }
-      weights[maxIdx] += snapped;
+      // Give snapped weight to drift target, or center if target is being snapped
+      const redistributeIdx = (i === driftTargetIdx) ? centerIdx : driftTargetIdx;
+      weights[redistributeIdx] += snapped;
     }
   }
 
@@ -138,11 +153,34 @@ export function nudgeDistribution(
     for (let i = 0; i < 4; i++) weights[i] = weights[i] / sum;
   }
 
-  // Update center to highest weight
-  let newCenterIdx = 0;
-  for (let i = 1; i < 4; i++) {
-    if (weights[i] > weights[newCenterIdx]) newCenterIdx = i;
+  // 5. Center-level hysteresis: only change center if another level both
+  //    (a) exceeds the hysteresis threshold AND (b) exceeds current center by a margin.
+  //    This prevents oscillation when two levels have similar weights near the threshold.
+  const CENTER_MARGIN = 0.10; // must exceed current center weight by this much
+  let newCenterIdx = centerIdx;
+  let maxOtherWeight = 0;
+  for (let i = 0; i < 4; i++) {
+    if (
+      i !== centerIdx &&
+      weights[i] >= DRIFT_RATES.hysteresisThreshold &&
+      weights[i] > weights[centerIdx] + CENTER_MARGIN &&
+      weights[i] > maxOtherWeight
+    ) {
+      newCenterIdx = i;
+      maxOtherWeight = weights[i];
+    }
   }
+  // Fallback: if current center weight collapsed to 0, use highest weight regardless
+  if (newCenterIdx === centerIdx && weights[centerIdx] === 0) {
+    for (let i = 0; i < 4; i++) {
+      if (weights[i] > weights[newCenterIdx]) newCenterIdx = i;
+    }
+  }
+
+  // If center shifted, reset signal to 0 so system must rebuild momentum
+  // before shifting back. This prevents rapid oscillation between adjacent levels.
+  const centerShifted = newCenterIdx !== centerIdx;
+  const finalSignal = centerShifted ? 0 : newSignal;
 
   return {
     primary: weights[0],
@@ -150,6 +188,7 @@ export function nudgeDistribution(
     standard: weights[2],
     advanced: weights[3],
     centerLevel: levels[newCenterIdx],
+    driftSignal: finalSignal,
   };
 }
 
@@ -421,6 +460,7 @@ export function createContentService(db: DB) {
       standard: row.standardWeight,
       advanced: row.advancedWeight,
       centerLevel: row.centerLevel as PresentationLevel,
+      driftSignal: row.driftSignal ?? 0,
     };
   }
 
@@ -445,6 +485,7 @@ export function createContentService(db: DB) {
           standardWeight: dist.standard,
           advancedWeight: dist.advanced,
           centerLevel: dist.centerLevel,
+          driftSignal: dist.driftSignal,
           lastAdjustedAt: now,
         })
         .where(eq(schema.userSubjectPresentation.id, existing.id));
@@ -457,6 +498,7 @@ export function createContentService(db: DB) {
         standardWeight: dist.standard,
         advancedWeight: dist.advanced,
         centerLevel: dist.centerLevel,
+        driftSignal: dist.driftSignal,
         lastAdjustedAt: now,
       });
     }

@@ -68,6 +68,7 @@ describe("presentation-drift-content integration", () => {
       standard: 0.3,
       advanced: 0.1,
       centerLevel: "intermediate",
+      driftSignal: 0,
     };
 
     // Success at center → nudge up
@@ -84,6 +85,7 @@ describe("presentation-drift-content integration", () => {
       standard: 0.5,
       advanced: 0.1,
       centerLevel: "standard",
+      driftSignal: 0,
     };
 
     // Failure at center → nudge down
@@ -93,21 +95,23 @@ describe("presentation-drift-content integration", () => {
     expect(nudged.intermediate).toBeGreaterThan(dist.intermediate);
   });
 
-  it("success above center nudges with 2x rate", () => {
+  it("success above center produces stronger signal than at center", () => {
     const dist: PresentationDistribution = {
       primary: 0,
       intermediate: 0.5,
       standard: 0.4,
       advanced: 0.1,
       centerLevel: "intermediate",
+      driftSignal: 0,
     };
 
-    // Success above center (standard when center=intermediate) → 0.04 rate
-    const nudged = nudgeDistribution(dist, "standard", true);
+    // Success above center (standard when center=intermediate)
+    const nudgedAbove = nudgeDistribution(dist, "standard", true);
+    const nudgedCenter = nudgeDistribution(dist, "intermediate", true);
 
-    // Should move 0.04 from center (intermediate) to served level (standard)
-    expect(nudged.intermediate).toBeCloseTo(dist.intermediate - 0.04, 10);
-    expect(nudged.standard).toBeCloseTo(dist.standard + 0.04, 10);
+    // Above-center success produces a stronger EMA signal than at-center
+    // (weight delta is the same fixed driftRate, but signal builds faster)
+    expect(nudgedAbove.driftSignal).toBeGreaterThan(nudgedCenter.driftSignal);
   });
 
   it("applyNudge persists updated distribution and logs center shift", async () => {
@@ -122,9 +126,9 @@ describe("presentation-drift-content integration", () => {
       advanced: 0.10,
     }, "intermediate");
 
-    // Repeatedly succeed above center to shift center
-    // Each success above center applies 0.04 nudge
-    for (let i = 0; i < 5; i++) {
+    // Repeatedly succeed above center to shift distribution
+    // With driftRate=0.008 and EMA gating, need enough nudges for signal buildup + drift
+    for (let i = 0; i < 15; i++) {
       await content.applyNudge(user.id, subject.id, "standard", true);
     }
 
@@ -136,31 +140,26 @@ describe("presentation-drift-content integration", () => {
         eq(schema.userSubjectPresentation.subjectId, subject.id),
       ));
 
-    // After 5 nudges of 0.04 each: intermediate lost 0.20, standard gained 0.20
     expect(row.intermediateWeight).toBeLessThan(0.50);
     expect(row.standardWeight).toBeGreaterThan(0.35);
-
-    // Center may have shifted to standard
-    // (depends on whether standard weight exceeded intermediate weight)
-    if (row.standardWeight > row.intermediateWeight) {
-      expect(row.centerLevel).toBe("standard");
-    }
   });
 
   it("drift log records center_shift transitions", async () => {
     const { db, user, subject } = await setupContentWithPresentations();
     const content = createContentService(db);
 
-    // Start near the tipping point: standard almost exceeds intermediate
+    // Start near the tipping point: standard exceeds threshold and margin over intermediate
     await seedUserSubjectPresentation(user.id, subject.id, {
       primary: 0.05,
-      intermediate: 0.35,
-      standard: 0.45,
+      intermediate: 0.20,
+      standard: 0.60,
       advanced: 0.15,
     }, "intermediate");
 
-    // One more nudge above center should tip it
-    await content.applyNudge(user.id, subject.id, "standard", true);
+    // Multiple nudges above center to build EMA signal and trigger center shift
+    for (let i = 0; i < 3; i++) {
+      await content.applyNudge(user.id, subject.id, "standard", true);
+    }
 
     // Check drift log
     const logs = await db.select()
@@ -175,21 +174,23 @@ describe("presentation-drift-content integration", () => {
     }
   });
 
-  it("failure above center applies tiny correction (0.01)", () => {
+  it("failure above center absorbed by EMA on single occurrence", () => {
     const dist: PresentationDistribution = {
       primary: 0,
       intermediate: 0.5,
       standard: 0.4,
       advanced: 0.1,
       centerLevel: "intermediate",
+      driftSignal: 0,
     };
 
-    // Failure above center → tiny correction (0.01)
+    // Single failure above center: tiny signal absorbed by EMA smoothing
     const nudged = nudgeDistribution(dist, "standard", false);
 
-    // Move 0.01 from served (standard) back to center (intermediate)
-    expect(nudged.standard).toBeCloseTo(dist.standard - 0.01, 10);
-    expect(nudged.intermediate).toBeCloseTo(dist.intermediate + 0.01, 10);
+    // Signal tracked but below threshold → no weight change
+    expect(nudged.driftSignal).toBeLessThan(0);
+    expect(nudged.standard).toBeCloseTo(dist.standard, 10);
+    expect(nudged.intermediate).toBeCloseTo(dist.intermediate, 10);
   });
 
   it("success below center produces no change", () => {
@@ -199,6 +200,7 @@ describe("presentation-drift-content integration", () => {
       standard: 0.5,
       advanced: 0.1,
       centerLevel: "standard",
+      driftSignal: 0,
     };
 
     // Success below center → no nudge (expected ease)
