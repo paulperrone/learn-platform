@@ -1086,3 +1086,30 @@ Child creation now creates both an org member (student role) and an account_link
 - Classify presentation drift as FAIL: Rejected. 8/10 is strong. The 2 failures are edge cases where the system adapts to actual performance (arguably correct behavior).
 
 **Next:** Plan 018 Phase 0 (content generation readiness) is now the next available work.
+
+---
+
+## 2026-03-09: Engine signals from simulations, content signals from live data
+
+**Source:** User session
+
+**Context:** Building the evaluation engine (Plan 017.7) raised the question of what simulations can and cannot validate. Simulated profiles answer based on ability curves, not problem clarity — so a confusing problem still gets 80% accuracy from an 80%-ability profile.
+
+**Decision:** Formally separate signal sources:
+- **Engine signals** (simulations only): mastery convergence, review/new balance, interleaving, FIRe compression, remediation routing, presentation drift, diagnostic placement, difficulty targeting, cognitive demand entropy. Driven to 90-95% satisfaction via the healing loop.
+- **Content signals** (live data only): problem clarity, difficulty calibration accuracy, misconception coverage gaps, worked example effectiveness, engagement/completion rates. Validated through analytics once real users exist.
+- **Bridge signals** (simulations approximate, live data confirms): content quality flags (too-hard, too-easy, miscalibrated). Simulations catch gross calibration errors; live data reveals subtle issues.
+
+Tag each target in `targets.json` with `signal_source: "engine" | "content" | "bridge"` so the evaluation engine can report them separately. Content-tagged targets produce advisory output only until live data pipeline exists.
+
+**Why:**
+- Simulations can never validate content quality (profiles don't read problem text)
+- Live data is noisy for engine validation (student distraction, content confusion, ability conflated)
+- Clean separation prevents chasing content fixes for engine problems and vice versa
+- The healing loop only attempts fixes for engine signals; content fixes go through the content pipeline
+
+**Alternatives rejected:**
+- Use simulations for everything: Rejected — simulations fundamentally can't test problem clarity
+- Wait for live data before formalizing: Rejected — the separation is a design principle, not an implementation detail. Cheaper to tag now.
+
+**Future work:** Build a live-data feedback pipeline that feeds content signals back into the content generation workflow (Plan 018+). This is NOT yet implemented — only the tagging and principle are established.

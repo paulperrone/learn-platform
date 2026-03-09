@@ -570,3 +570,12 @@ With `MIN_QUESTIONS = 8`, the diagnostic could stop even if `searchHigh - search
 **Area:** Simulation tooling
 
 The 30-session `baseline.json` was from pre-017.5 (showed 0% mastery for most profiles, 99% review ratio). Comparing post-017.5 runs against this stale baseline produced 19 false "regressions" — the baseline reflected broken system behavior, not target behavior. After major system changes (mastery, remediation, session mix), always regenerate the baseline from a fresh full run before using `simulate-compare`.
+
+---
+
+### 2026-03-09: Top-level await breaks tsx/esbuild in CJS mode for simulation scripts
+
+**Source:** Plan 017.7 Phase 2
+**Area:** Simulation tooling / TypeScript
+
+Simulation scripts run via `npx tsx` default to CJS output format. Top-level `await` (e.g., `const x = await import(...)` at module scope) causes esbuild `TransformError`. Workaround: use static imports, or wrap async code in a `main()` function. Also guard CLI execution with `if (process.argv[1]?.endsWith("filename.ts"))` so the main block doesn't fire when the module is imported by tests or other scripts.

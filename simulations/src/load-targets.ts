@@ -27,6 +27,7 @@ const VALID_DIRECTIONS: TargetDirection[] = ["higher_better", "lower_better", "i
 const VALID_PRIORITIES = ["P0", "P1", "P2"];
 const VALID_UNITS = ["percent", "count", "ratio", "bits", "grade_levels"];
 const VALID_REMEDIATION = ["none", "low", "moderate", "high"];
+const VALID_SIGNAL_SOURCES = ["engine", "content", "bridge"];
 
 function validateSystemTarget(id: string, target: TargetDefinition): ValidationError[] {
   const errors: ValidationError[] = [];
@@ -65,6 +66,9 @@ function validateSystemTarget(id: string, target: TargetDefinition): ValidationE
   }
   if (!Array.isArray(target.evaluation_profiles) || target.evaluation_profiles.length === 0) {
     errors.push({ field: `${prefix}.evaluation_profiles`, message: "Must be a non-empty array" });
+  }
+  if (!VALID_SIGNAL_SOURCES.includes(target.signal_source)) {
+    errors.push({ field: `${prefix}.signal_source`, message: `Must be one of: ${VALID_SIGNAL_SOURCES.join(", ")}` });
   }
 
   return errors;

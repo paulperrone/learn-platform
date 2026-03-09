@@ -32,7 +32,7 @@ console.log("\n1. Valid targets.json loads without errors");
 {
   const result = loadTargets();
   assertEqual(result.errors.length, 0, "No validation errors");
-  assert(result.targets.version === 1, "Version is 1");
+  assert(result.targets.version >= 1, `Version is valid (v${result.targets.version})`);
   assert(!!result.targets.lastUpdated, "Has lastUpdated");
   assert(!!result.targets.lastUpdatedReason, "Has lastUpdatedReason");
 }

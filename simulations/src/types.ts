@@ -209,6 +209,8 @@ export type DiagnosticRunResult = {
 
 export type TargetDirection = "higher_better" | "lower_better" | "in_range";
 
+export type SignalSource = "engine" | "content" | "bridge";
+
 export type TargetDefinition = {
   name: string;
   description: string;
@@ -224,6 +226,8 @@ export type TargetDefinition = {
   rationale: string;
   source_files: string[];
   evaluation_profiles: string[];
+  /** Whether this target is validated by simulations (engine), live data (content), or both (bridge) */
+  signal_source: SignalSource;
 };
 
 export type RemediationExpectation = "none" | "low" | "moderate" | "high";

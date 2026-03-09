@@ -320,6 +320,11 @@ Topic (graph node)
 
 3. [ ] [IMP] Add at least one cross-discipline prerequisite edge (e.g., basic reading comprehension → history primary source analysis) to validate cross-subject DAG. Run `just validate-content` to confirm cross-subject validation works.
 
-4. [ ] [TST] Second subject is complete and functional in the app. Diagnostic works for context-layered model. Learning sessions serve spiral depth content. FIRe compression works (if applicable). Cross-discipline edge is recognized. Run Plan 017 simulation against new subject to validate behavior. Documentation is sufficient for creating a third subject without additional guidance.
+4. [ ] [IMP] Create cross-discipline and subject-specific simulation profiles (Plan 017.8 dependency):
+   - Cross-discipline profiles: "strong math / average history", "average math / strong history", "weak both" — tests cross-subject prerequisite routing and session mix across disciplines
+   - Subject-specific profiles for the new discipline type (context-layered profiles with depth-layer expectations, rubric-based scoring behavior)
+   - Add profiles to `simulations/profiles/`, update `targets.json` profile expectations, run `/heal-update` to propose target adjustments
+
+5. [ ] [TST] Second subject is complete and functional in the app. Diagnostic works for context-layered model. Learning sessions serve spiral depth content. FIRe compression works (if applicable). Cross-discipline edge is recognized. Run Plan 017 simulation against new subject to validate behavior. Cross-discipline profiles from step 4 validate routing across subjects. Documentation is sufficient for creating a third subject without additional guidance.
 
 **Validation:** A second subject exists end-to-end. Context-layered (or alternative) progression model validated with real content. Cross-discipline prerequisites work. Simulation confirms adaptive systems behave correctly for the new subject type.

@@ -182,7 +182,7 @@ console.log("\n5. Evaluate runs against existing simulation data");
     // Build full report
     const report = buildHealingReport(systemResults, profileResults, contentQuality, targets.version);
     assert(!!report.timestamp, "Report has timestamp");
-    assertEqual(report.targetVersion, 1, "Report target version matches");
+    assert(report.targetVersion >= 1, `Report target version is valid (v${report.targetVersion})`);
     assert(
       report.summary.passCount + report.summary.warnCount + report.summary.failCount === 10,
       "Summary counts add up to 10"
