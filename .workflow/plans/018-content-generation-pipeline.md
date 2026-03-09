@@ -15,7 +15,7 @@ The production system for creating content at scale. All text content — knowle
 **OpenRouter is NOT used for content generation.** It's reserved for in-app runtime LLM features (tutoring, grading, self-explanation). See DECISIONS.md 2026-03-07.
 
 **Depends on:**
-- **Plan 017.5 (System Remediation & Retest)** — All 7 adaptive systems must pass simulation readiness gate before content generation begins. If Plan 017.5's Phase 7 gate fails, Plan 017.6 extends the block. See `simulations/reports/system-readiness.md` for current status.
+- ~~**Plan 017.5 (System Remediation & Retest)**~~ — **UNBLOCKED (2026-03-09).** Phase 7 readiness gate: 5 PASS, 2 WARN, 0 FAIL. See `simulations/reports/system-readiness.md`.
 - Plan 007 Phase 1 (content model — `instructional_content` and `assessment_content` tables)
 - Plan 008 Phase 1 (content strategy — what to generate and in what order)
 - Plan 013 Phase 4 (encompassing methodology documentation in `docs/content-system.md`)

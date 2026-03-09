@@ -552,3 +552,21 @@ Adding a column to `schema.ts` and generating a D1 migration is not enough. The 
 **Area:** Diagnostic service / stopping criteria
 
 With `MIN_QUESTIONS = 8`, the diagnostic could stop even if `searchHigh - searchLow > 1` (wide bounds = low confidence). Added a convergence gate: don't stop if `boundaryRange > 1` regardless of question count. `MAX_QUESTIONS = 15` prevents infinite questioning. Result: struggling profiles now get 10-13 questions (previously always 8), producing accurate placement.
+
+---
+
+### 2026-03-09: Diagnostic-only simulation runs shadow full runs in analysis tooling
+
+**Source:** Plan 017.5 Phase 7
+**Area:** Simulation tooling
+
+`findLatestRuns()` in `adaptive-analysis.ts` picks the most recent run directory per profile. Running `just simulate-diagnostic` creates 0-session (diagnostic-only) run directories with timestamps AFTER the 30-session full runs. The adaptive analysis then reads these diagnostic-only runs and reports 0 problems, 0 remediation, 0% interleaving — all metrics show initial=final. Fix: delete diagnostic-only and short-run directories before running analysis, or add a sessions-minimum filter to `findLatestRuns()`.
+
+---
+
+### 2026-03-09: Simulation baseline must be regenerated after system-level changes
+
+**Source:** Plan 017.5 Phase 7
+**Area:** Simulation tooling
+
+The 30-session `baseline.json` was from pre-017.5 (showed 0% mastery for most profiles, 99% review ratio). Comparing post-017.5 runs against this stale baseline produced 19 false "regressions" — the baseline reflected broken system behavior, not target behavior. After major system changes (mastery, remediation, session mix), always regenerate the baseline from a fresh full run before using `simulate-compare`.
