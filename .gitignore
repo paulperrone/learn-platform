@@ -7,6 +7,9 @@ dist/
 content/*/content-pack.json
 tools/visualize-graph.html
 simulations/runs/
+simulations/reports/evaluation.json
+simulations/reports/evaluation.md
+simulations/reports/healing/
 
 # Workflow
 CLAUDE.local.md
