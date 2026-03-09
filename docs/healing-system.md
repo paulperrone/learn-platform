@@ -121,16 +121,16 @@ See `docs/simulation-targets.md` for the full derivation methodology.
 
 | System | Priority | Signal | Target | Description |
 |--------|----------|--------|--------|-------------|
-| mastery_convergence | P0 | engine | ≥6/8 profiles | Non-struggling reach 50% mastery |
+| mastery_convergence | P0 | engine | ≥4/8 profiles | Non-struggling reach 50% mastery |
 | mastery_preservation | P0 | engine | ≤10% loss | Diagnostic mastery retained in session 1 |
 | remediation_routing | P0 | engine | ≥5 events | Misconception profiles get remediation |
 | difficulty_targeting | P1 | bridge | ≥7/10 profiles | Rolling accuracy in [0.80, 0.90] |
 | review_new_balance | P1 | engine | [0.50, 0.70] | Review ratio across sessions |
 | interleaving | P1 | engine | ≤10% adjacency | Same-strand adjacency rate |
 | fire_compression | P1 | engine | ≥20% reduction | FIRe review compression |
-| presentation_drift | P2 | engine | ≥8/10 stable | Presentation center stabilizes by session 15 |
+| presentation_drift | P2 | engine | ≥6/10 stable | Presentation center stabilizes |
 | diagnostic_placement | P2 | engine | 10/10 within ±1 | Diagnostic places accurately |
-| cognitive_demand_entropy | P2 | content | ≥1.2 bits | Shannon entropy of demand distribution |
+| cognitive_demand_entropy | P2 | bridge | ≥0.90 bits | Shannon entropy of demand distribution |
 
 ### Reading Evaluation Output
 

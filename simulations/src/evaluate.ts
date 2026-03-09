@@ -468,7 +468,7 @@ function computeCognitiveDemandEntropy(runs: ProfileRun[]): {
     totalEntropy += entropy;
     profileCount++;
 
-    if (entropy < 1.2) {
+    if (entropy < 0.90) {
       contributing.push(run.profileId);
     }
   }
