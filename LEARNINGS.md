@@ -516,3 +516,21 @@ Warmup topics (mastered topic recall) are single review problems. When a warmup 
 **Area:** SRS service / session mix
 
 After diagnostic, frontier topics are materialized with `reps=0, mastered=false`. `getDueTopics()` was including these as review candidates because they're non-mastered and past due. But they've never been studied — they should appear as NEW topics, not reviews. Fix: filter `getDueTopics()` to only return topics with `reps > 0`. Also detect diagnostic frontier topics in `computeFrontier()` (frontier=true, mastered=false, reps=0) and include them in the frontier instead of excluding them.
+
+---
+
+### 2026-03-09: Snap weight redistribution must target drift direction, not highest weight
+
+**Source:** Plan 017.5 Phase 5
+**Area:** Presentation drift / content service
+
+When presentation weights are snapped (values below `snapThreshold` redistributed), the snapped weight must go to the drift target level — not the highest-weight level. If snapped weight goes to highest weight, it fights downward drift: a struggling student's weight accumulates at the current center instead of the level they're drifting toward, preventing center shift.
+
+---
+
+### 2026-03-09: Hardcoded DDL in test helpers and simulation db-setup must be updated with schema changes
+
+**Source:** Plan 017.5 Phase 5
+**Area:** Testing / schema migrations
+
+Adding a column to `schema.ts` and generating a D1 migration is not enough. The vitest workers (miniflare) use hardcoded CREATE TABLE statements in `packages/api/src/__tests__/helpers.ts`, and simulations use a separate copy in `simulations/src/db-setup.ts`. Both must be updated manually when schema changes. Forgetting either causes "no such column" errors only visible at test/simulation runtime.
