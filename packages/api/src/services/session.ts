@@ -30,6 +30,8 @@ type SessionState = {
   lastProblemId?: string; // Last problem ID responded to (for targeted remediation lookup)
   remediationTargetTopicId?: string; // Prerequisite topic being remediated (targeted remediation)
   remediationOriginalTopicId?: string; // Original topic that triggered remediation
+  remediationOriginalPhase?: SessionPhase; // Phase the student was in when remediation triggered
+  sessionFailures?: Record<string, number>; // Per-topic failure count within this session (for remediation trigger)
   servedDemands?: CognitiveDemand[]; // Cognitive demands served this session (for demand mixing)
   totalResponseMs?: number; // Accumulated response time for activity minutes recording
 };
@@ -599,32 +601,57 @@ export function createSessionService(db: DB) {
     async advancePhase(state: SessionState, wasCorrect: boolean): Promise<SessionItem> {
       const phases: SessionPhase[] = ["pretest", "instruction", "guided", "independent"];
 
-      if (!wasCorrect && state.currentPhase === "independent") {
-        // Failed independent practice — targeted remediation
+      // Track per-topic failure accumulation within this session
+      if (!wasCorrect && state.currentTopicId && state.currentPhase !== "instruction") {
+        if (!state.sessionFailures) state.sessionFailures = {};
+        const topicId = state.currentTopicId;
+        state.sessionFailures[topicId] = (state.sessionFailures[topicId] ?? 0) + 1;
+      }
+
+      // Check if remediation should trigger based on accumulated failures (2+ for any topic)
+      const shouldRemediate = !wasCorrect
+        && state.currentTopicId
+        && state.currentPhase !== "remediation"
+        && state.currentPhase !== "instruction"
+        && (state.sessionFailures?.[state.currentTopicId] ?? 0) >= 2;
+
+      if (shouldRemediate) {
+        const originalTopicId = state.currentTopicId!;
+        const originalPhase = state.currentPhase;
         state.currentPhase = "remediation";
         state.phaseIndex = 0;
         state.hintIndex = 0;
 
-        // Identify the key prerequisite to target
-        if (!state.isAnonymous && state.currentTopicId) {
+        // Identify the key prerequisite to target (skip for anonymous — no persistent state)
+        if (!state.isAnonymous) {
           const keyPrereq = await identifyKeyPrerequisite(
             state.userId,
-            state.currentTopicId,
+            originalTopicId,
             state.lastProblemId,
           );
           if (keyPrereq) {
             state.remediationTargetTopicId = keyPrereq;
-            state.remediationOriginalTopicId = state.currentTopicId;
+            state.remediationOriginalTopicId = originalTopicId;
+            state.remediationOriginalPhase = originalPhase;
           }
         }
 
         return await this.buildPhaseItem(state);
       }
 
+      if (!wasCorrect && state.currentPhase === "independent") {
+        // Failed independent practice (first failure) — stay in independent for retry
+        // Remediation will trigger on 2nd failure via the accumulated failures check above
+        state.phaseIndex++;
+        state.hintIndex = 0;
+        return await this.buildPhaseItem(state);
+      }
+
       if (state.currentPhase === "remediation") {
         if (wasCorrect) {
-          // Recovery — back to original topic's independent phase
-          state.currentPhase = "independent";
+          // Recovery — back to original topic in its original phase
+          const returnPhase = state.remediationOriginalPhase ?? "independent";
+          state.currentPhase = returnPhase;
           state.phaseIndex = 0;
           state.hintIndex = 0;
           // Restore original topic if we were doing targeted prereq remediation
@@ -633,13 +660,14 @@ export function createSessionService(db: DB) {
           }
           state.remediationTargetTopicId = undefined;
           state.remediationOriginalTopicId = undefined;
+          state.remediationOriginalPhase = undefined;
           return await this.buildPhaseItem(state);
         }
         // Still struggling — try next weakest prerequisite or continue remediation
         state.phaseIndex++;
 
         // After 2 failed attempts on a prereq, try the next weakest prerequisite
-        if (state.phaseIndex >= 2 && !state.isAnonymous && state.remediationOriginalTopicId) {
+        if (state.phaseIndex >= 2 && state.remediationOriginalTopicId) {
           const nextPrereq = await identifyKeyPrerequisite(
             state.userId,
             state.remediationOriginalTopicId,
@@ -657,8 +685,20 @@ export function createSessionService(db: DB) {
       }
 
       if (state.currentPhase === "review") {
+        if (wasCorrect) {
+          state.reviewsCompleted++;
+          return await this.nextTopic(state);
+        }
+        // Failed review — give one retry before moving on (remediation triggers on 2nd failure via sessionFailures)
+        const topicFailures = state.sessionFailures?.[state.currentTopicId!] ?? 0;
+        if (topicFailures < 2) {
+          // First failure on this review topic — retry with a new problem
+          state.phaseIndex++;
+          state.hintIndex = 0;
+          return await this.buildPhaseItem(state);
+        }
+        // 2+ failures handled by shouldRemediate above — this path means remediation wasn't possible (anonymous or no prereqs)
         state.reviewsCompleted++;
-        // Review done — move to next topic
         return await this.nextTopic(state);
       }
 

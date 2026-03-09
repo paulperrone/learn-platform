@@ -152,7 +152,14 @@ describe("targeted remediation", () => {
 
     const session = createSessionService(db);
 
-    // Fail independent → should enter targeted remediation
+    // First failure → stays in independent (retry)
+    const retry = await session.respond(sessionId, {
+      correct: false,
+      responseMs: 3000,
+    });
+    expect(retry.type).toBe("problem");
+
+    // Second failure → triggers remediation (2+ accumulated failures)
     const result = await session.respond(sessionId, {
       correct: false,
       responseMs: 3000,
@@ -199,6 +206,14 @@ describe("targeted remediation", () => {
     });
 
     const session = createSessionService(db);
+
+    // First failure → stays in independent (retry)
+    await session.respond(sessionId, {
+      correct: false,
+      responseMs: 3000,
+    });
+
+    // Second failure → triggers remediation
     const result = await session.respond(sessionId, {
       correct: false,
       responseMs: 3000,
@@ -226,6 +241,7 @@ describe("targeted remediation", () => {
       currentPhase: "remediation",
       remediationTargetTopicId: "counting",
       remediationOriginalTopicId: "addition",
+      remediationOriginalPhase: "independent",
     });
 
     const session = createSessionService(db);
@@ -294,6 +310,14 @@ describe("targeted remediation", () => {
     });
 
     const session = createSessionService(db);
+
+    // First failure → stays in independent (retry)
+    await session.respond(sessionId, {
+      correct: false,
+      responseMs: 2000,
+    });
+
+    // Second failure → triggers remediation (2+ accumulated failures)
     const result = await session.respond(sessionId, {
       correct: false,
       responseMs: 2000,
@@ -378,6 +402,14 @@ describe("targeted remediation", () => {
     });
 
     const session = createSessionService(db);
+
+    // First failure → stays in independent (retry)
+    await session.respond(sessionId, {
+      correct: false,
+      responseMs: 2000,
+    });
+
+    // Second failure → triggers remediation (2+ accumulated failures)
     const result = await session.respond(sessionId, {
       correct: false,
       responseMs: 2000,
@@ -389,6 +421,167 @@ describe("targeted remediation", () => {
       expect(result.remediationTargetTopicId).toBeUndefined();
       expect(result.topicId).toBe("standalone");
       expect(result.message).toContain("back to basics");
+    }
+  });
+
+  it("triggers remediation on 2+ failures accumulated across phases", async () => {
+    const { db, user } = await setupGraph();
+
+    await seedUserTopicState(user.id, "counting", {
+      stability: 2.0,
+      reps: 3,
+      state: 2,
+    });
+
+    // Start in pretest phase — first failure here
+    const sessionId = await createTestSession(user.id, {
+      currentTopicId: "addition",
+      currentPhase: "pretest",
+    });
+
+    const session = createSessionService(db);
+
+    // Fail pretest → advances to instruction (failure tracked: count=1)
+    const preResult = await session.respond(sessionId, {
+      correct: false,
+      responseMs: 2000,
+    });
+    expect(preResult.type).toBe("instruction");
+
+    // Acknowledge instruction → advances to guided
+    const instResult = await session.respond(sessionId, {
+      correct: true,
+      responseMs: 3000,
+    });
+    expect((instResult as any).phase).toBe("guided");
+
+    // Fail guided → advances to independent (failure tracked: count=2 → triggers remediation)
+    const guidedResult = await session.respond(sessionId, {
+      correct: false,
+      responseMs: 3000,
+    });
+
+    expect(guidedResult.type).toBe("remediation");
+    if (guidedResult.type === "remediation") {
+      expect(guidedResult.remediationTargetTopicId).toBe("counting");
+    }
+  });
+
+  it("triggers remediation on review topic after 2 failures", async () => {
+    const { db, user } = await setupGraph();
+
+    await seedUserTopicState(user.id, "counting", {
+      stability: 2.0,
+      reps: 3,
+      state: 2,
+    });
+
+    const sessionId = await createTestSession(user.id, {
+      currentTopicId: "addition",
+      currentPhase: "review",
+    });
+
+    const session = createSessionService(db);
+
+    // First review failure → retry (failure tracked: count=1)
+    const retry = await session.respond(sessionId, {
+      correct: false,
+      responseMs: 3000,
+    });
+    // Should stay on same topic for retry
+    expect((retry as any).topicId).toBe("addition");
+
+    // Second review failure → triggers remediation (count=2)
+    const result = await session.respond(sessionId, {
+      correct: false,
+      responseMs: 3000,
+    });
+
+    expect(result.type).toBe("remediation");
+    if (result.type === "remediation") {
+      expect(result.remediationTargetTopicId).toBe("counting");
+      expect(result.originalTopicId).toBe("addition");
+    }
+  });
+
+  it("returns to review phase after successful remediation from review", async () => {
+    const { db, user } = await setupGraph();
+
+    await seedUserTopicState(user.id, "counting", {
+      stability: 2.0,
+      reps: 3,
+      state: 2,
+    });
+
+    const sessionId = await createTestSession(user.id, {
+      currentTopicId: "counting",
+      currentPhase: "remediation",
+      remediationTargetTopicId: "counting",
+      remediationOriginalTopicId: "addition",
+      remediationOriginalPhase: "review",
+    });
+
+    const session = createSessionService(db);
+
+    // Succeed in remediation → should return to original topic's review phase
+    const result = await session.respond(sessionId, {
+      correct: true,
+      responseMs: 2000,
+    });
+
+    expect(result.type).toBe("problem");
+    if (result.type === "problem") {
+      expect(result.phase).toBe("review");
+      expect(result.topicId).toBe("addition");
+    }
+  });
+
+  it("identifyKeyPrerequisite returns correct weak prerequisite for fraction topics", async () => {
+    const db = getTestDb();
+    const user = await seedUser();
+    const subject = await seedSubject();
+
+    // Create a mini graph: whole-number-ops → fraction-addition
+    await seedTopic(subject.id, { id: "whole-number-ops", name: "Whole Number Operations", depth: 1 });
+    await seedTopic(subject.id, { id: "fraction-addition", name: "Fraction Addition", depth: 3 });
+    await seedPrerequisite("whole-number-ops", "fraction-addition");
+
+    // Whole number ops has low stability (weak knowledge)
+    await seedUserTopicState(user.id, "whole-number-ops", {
+      stability: 1.5,
+      reps: 2,
+      state: 2,
+    });
+
+    await seedAssessmentContent("fraction-addition", {
+      id: "frac-p1", difficulty: "medium", question: "1/4 + 1/4?", answer: "1/2",
+    });
+    await seedAssessmentContent("fraction-addition", {
+      id: "frac-p2", difficulty: "medium", question: "1/3 + 1/3?", answer: "2/3",
+    });
+    await seedAssessmentContent("whole-number-ops", {
+      id: "whole-p1", difficulty: "easy", question: "5 + 3?", answer: "8",
+    });
+    await seedInstructionalContent("fraction-addition", { id: "frac-ex1", title: "Fraction Addition" });
+    await seedInstructionalContent("whole-number-ops", { id: "whole-ex1", title: "Whole Number Ops" });
+
+    // Set up session in independent phase on fraction-addition
+    const sessionId = await createTestSession(user.id, {
+      currentTopicId: "fraction-addition",
+      currentPhase: "independent",
+    });
+
+    const session = createSessionService(db);
+
+    // Fail twice → triggers remediation
+    await session.respond(sessionId, { correct: false, responseMs: 2000 });
+    const result = await session.respond(sessionId, { correct: false, responseMs: 2000 });
+
+    expect(result.type).toBe("remediation");
+    if (result.type === "remediation") {
+      // Should route to whole-number-ops (the weak prerequisite)
+      expect(result.remediationTargetTopicId).toBe("whole-number-ops");
+      expect(result.topicId).toBe("whole-number-ops");
     }
   });
 });

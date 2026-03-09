@@ -957,3 +957,26 @@ Child creation now creates both an org member (student role) and an account_link
 **Results:** strong-older: 100% → 0% mastery (before) → 100% → 90% (after). Diagnostic mastery preserved through session 1. Still declining for average-older due to diagnostic over-materialization (Phase 6) and insufficient topic review frequency (Phase 4).
 
 **Why these thresholds:** stability >= 7 balances false mastery vs real progress at 1-day intervals. Hysteresis of 2 prevents thrashing from single unlucky answers while still catching genuine regressions. The 5-consecutive path allows topics stuck in Learning state to reach mastery through demonstrated competence.
+
+---
+
+## 2026-03-09: Remediation broadened to accumulated failures across all phases
+
+**Source:** Plan 017.5 Phase 2
+
+**Decision:** Remediation now triggers on 2+ accumulated failures for any topic within a session, across all phases (pretest, guided, independent, review). Previously, remediation only triggered on a single failure in the `independent` phase specifically.
+
+**Changes:**
+1. Added `sessionFailures: Record<string, number>` to `SessionState` for per-topic failure tracking
+2. Review topics get a retry on first failure (stay on topic) instead of immediately moving on
+3. Both anonymous and authenticated users can trigger remediation via failure accumulation
+4. After remediation from a review topic, student returns to the review phase (not independent)
+5. Tracked `remediationOriginalPhase` to correctly restore state after remediation
+
+**Why:**
+- Diagnostic materializes 40-71 topics → sessions are 100% review → review topics never enter independent phase → 0 remediations ever triggered
+- Single-failure trigger was too aggressive for noise (10% error rate on strong topics)
+- 2-failure threshold provides genuine struggle signal while filtering noise
+- Review topics must participate in remediation or the system is completely bypassed after diagnostic
+
+**Results:** misconception-fractions: 0 remediations (before) → 704 remediations across 15 sessions (after). No regression on mastery convergence.

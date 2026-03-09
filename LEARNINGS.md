@@ -424,3 +424,23 @@ The simulation runner was not passing `problemId` when calling `sessionSvc.respo
 **Fix:** Added `isActuallyCorrect = rating >= Rating.Hard` (2). Used `isActuallyCorrect` for mastery tracking, consecutive correct/incorrect counters, misconception detection, and review log correctness. `isCorrectReview` is still used for FSRS scheduling quality (fragile knowledge detection, confidence calibration).
 
 **Key insight:** A correct answer with hints is NOT a misconception. The rating cap is a scheduling signal (schedule more reviews), not a correctness signal.
+
+---
+
+### 2026-03-09: Remediation requires failure accumulation, not single-failure trigger
+
+**Source:** Plan 017.5 Phase 2
+**Area:** Session service / Remediation
+
+Single-failure remediation (entering remediation on the first incorrect answer in independent phase) is too aggressive. With the diagnostic materializing 40-71 topics into the review queue, students interact with many topics — a single failure is often noise. The 2-failure threshold within a session provides a better signal that the student genuinely struggles with a topic.
+
+**Implementation:** `sessionFailures: Record<string, number>` on `SessionState` tracks per-topic failure counts across all phases (pretest, guided, independent, review). Remediation triggers when any topic accumulates 2+ failures. Review topics get a retry on first failure before moving on.
+
+---
+
+### 2026-03-09: Review topics must participate in remediation routing
+
+**Source:** Plan 017.5 Phase 2
+**Area:** Session service / Remediation
+
+When the diagnostic materializes many topics (40-71), sessions become 100% review with 0 new topic introduction. If review topics can't trigger remediation, the remediation system is completely bypassed. Review topics now get a retry on first failure (stay on topic) and trigger remediation on 2nd failure via the accumulated `sessionFailures` counter.
