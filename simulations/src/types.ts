@@ -204,3 +204,107 @@ export type DiagnosticRunResult = {
     phaseAfter: "search" | "refine";
   }[];
 };
+
+// --- Target System (Healing Loop) ---
+
+export type TargetDirection = "higher_better" | "lower_better" | "in_range";
+
+export type TargetDefinition = {
+  name: string;
+  description: string;
+  priority: "P0" | "P1" | "P2";
+  metric: string;
+  target: number;
+  tolerance: number;
+  unit: "percent" | "count" | "ratio" | "bits" | "grade_levels";
+  direction: TargetDirection;
+  range_min?: number;
+  range_max?: number;
+  science_ref: string;
+  rationale: string;
+  source_files: string[];
+  evaluation_profiles: string[];
+};
+
+export type RemediationExpectation = "none" | "low" | "moderate" | "high";
+
+export type ProfileExpectation = {
+  description: string;
+  behavioral_signature: string;
+  min_final_mastery: number;
+  max_final_mastery: number;
+  expected_frontier_grade: number;
+  expected_presentation_center: string;
+  expected_remediation_events: RemediationExpectation;
+  mastery_growth_rate: number;
+  difficulty_convergence_by: number;
+  metrics?: Record<string, { target: number; tolerance: number; direction: TargetDirection }>;
+};
+
+export type ContentQualityTargets = {
+  too_hard_threshold: { strong_profile_min_accuracy: number; min_attempts: number };
+  too_easy_threshold: { all_profile_max_accuracy: number; min_attempts: number };
+  difficulty_calibration: Record<string, { expected_min: number; expected_max: number }>;
+};
+
+export type TargetFile = {
+  version: number;
+  lastUpdated: string;
+  lastUpdatedReason: string;
+  systems: Record<string, TargetDefinition>;
+  profile_expectations: Record<string, ProfileExpectation>;
+  content_quality: ContentQualityTargets;
+};
+
+export type EvaluationStatus = "PASS" | "WARN" | "FAIL";
+
+export type SystemEvaluationResult = {
+  systemId: string;
+  name: string;
+  priority: "P0" | "P1" | "P2";
+  status: EvaluationStatus;
+  actual: number;
+  target: number;
+  tolerance: number;
+  delta: number;
+  direction: TargetDirection;
+  unit: string;
+  contributingProfiles: string[];
+  investigationArea?: {
+    files: string[];
+    functions: string[];
+    relevantEvents: string[];
+  };
+};
+
+export type ProfileEvaluationResult = {
+  profileId: string;
+  metrics: Record<string, {
+    actual: number;
+    expected: number;
+    tolerance: number;
+    status: EvaluationStatus;
+  }>;
+  behavioralMatch: boolean;
+  notes: string[];
+};
+
+export type ContentQualityResult = {
+  tooHard: { topicId: string; strongAccuracy: number; allAccuracy: number }[];
+  tooEasy: { topicId: string; accuracy: number }[];
+  miscalibrated: { topicId: string; difficulty: string; expectedRange: [number, number]; actual: number }[];
+};
+
+export type HealingReport = {
+  timestamp: string;
+  targetVersion: number;
+  systems: SystemEvaluationResult[];
+  profiles: ProfileEvaluationResult[];
+  contentQuality: ContentQualityResult;
+  summary: {
+    passCount: number;
+    warnCount: number;
+    failCount: number;
+    overallStatus: EvaluationStatus;
+  };
+};

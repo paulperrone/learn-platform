@@ -1,0 +1,299 @@
+{
+  "version": 1,
+  "lastUpdated": "2026-03-09T12:00:00Z",
+  "lastUpdatedReason": "Initial creation from Plan 017.7 Phase 1",
+  "systems": {
+    "mastery_convergence": {
+      "name": "Mastery Convergence",
+      "description": "Non-struggling profiles should reach ≥50% mastery by session 30, demonstrating the system drives genuine learning progression",
+      "priority": "P0",
+      "metric": "mastery_convergence_count",
+      "target": 6,
+      "tolerance": 1,
+      "unit": "count",
+      "direction": "higher_better",
+      "science_ref": "Bloom 1984 (2-sigma problem); Kulik et al. 1990 (~0.5-1.0 SD effect for mastery learning)",
+      "rationale": "≥6 of 8 non-struggling profiles (75%) reaching 50% mastery demonstrates the system enables progression. Excludes struggling-young and struggling-older whose ability curves cap below 50% mastery in 30 sessions.",
+      "source_files": [
+        "packages/api/src/services/srs.ts",
+        "packages/api/src/services/session.ts"
+      ],
+      "evaluation_profiles": ["average-older", "average-young", "fast-learner", "misconception-fractions", "overconfident", "strong-older", "strong-young", "underconfident"]
+    },
+    "mastery_preservation": {
+      "name": "Mastery Preservation",
+      "description": "Diagnostic-established mastery should be retained through the first learning session without significant loss",
+      "priority": "P0",
+      "metric": "mastery_preservation_max_loss",
+      "target": 10,
+      "tolerance": 2,
+      "unit": "percent",
+      "direction": "lower_better",
+      "science_ref": "Mastery learning requires stability (Bloom 1984); hysteresis prevents careless-error resets",
+      "rationale": "≤10 percentage point drop from session 0 to session 1. Diagnostic places students with mastered topics; losing >10% indicates broken hysteresis or overly aggressive review criteria.",
+      "source_files": [
+        "packages/api/src/services/srs.ts"
+      ],
+      "evaluation_profiles": ["all"]
+    },
+    "difficulty_targeting": {
+      "name": "85% Difficulty Targeting",
+      "description": "Rolling problem accuracy should converge to the [0.80, 0.90] optimal learning zone for most profiles",
+      "priority": "P1",
+      "metric": "difficulty_targeting_converged_count",
+      "target": 7,
+      "tolerance": 1,
+      "unit": "count",
+      "direction": "higher_better",
+      "science_ref": "Wilson et al. 2019 (Nature Communications): optimal learning at ~85% success rate",
+      "rationale": "≥7 of 10 profiles converging within 500 problems. Strong-older may exceed 90% (content ceiling). Struggling profiles may take longer. Tolerance of ±1 accounts for stochastic variance.",
+      "source_files": [
+        "packages/api/src/services/session.ts",
+        "packages/api/src/services/srs.ts"
+      ],
+      "evaluation_profiles": ["all"]
+    },
+    "review_new_balance": {
+      "name": "Review/New Balance",
+      "description": "Session mix should maintain ~60% review / ~40% new content to balance retention with progression",
+      "priority": "P1",
+      "metric": "review_new_ratio_avg",
+      "target": 0.60,
+      "tolerance": 0.05,
+      "unit": "ratio",
+      "direction": "in_range",
+      "range_min": 0.50,
+      "range_max": 0.70,
+      "science_ref": "Math Academy design (~60/40 review/new); session design research on review fatigue prevention",
+      "rationale": "Averaged across sessions 2+ (skip session 1 warmup). Range [0.50, 0.70] with center at 0.60. Above 0.70 indicates review queue dominance; below 0.50 indicates insufficient retention practice.",
+      "source_files": [
+        "packages/api/src/services/session.ts",
+        "packages/api/src/services/srs.ts"
+      ],
+      "evaluation_profiles": ["all"]
+    },
+    "interleaving": {
+      "name": "Interleaving Quality",
+      "description": "Topics should be mixed across strands to maximize retention through interleaved practice",
+      "priority": "P1",
+      "metric": "same_strand_adjacency_avg",
+      "target": 0.10,
+      "tolerance": 0.02,
+      "unit": "ratio",
+      "direction": "lower_better",
+      "science_ref": "Rohrer 2012: 76% better retention at 1-month delay; Taylor & Rohrer 2010: doubled test scores with interleaving",
+      "rationale": "Same-strand adjacency ≤10% at topic-transition level. Two profiles (misconception-fractions, struggling-older) may exceed due to prerequisite-chain remediation in one strand — this is pedagogically correct.",
+      "source_files": [
+        "packages/api/src/services/session.ts"
+      ],
+      "evaluation_profiles": ["all"]
+    },
+    "fire_compression": {
+      "name": "FIRe Review Compression",
+      "description": "Encompassing-based implicit repetition should reduce explicit review count by crediting prerequisite practice",
+      "priority": "P1",
+      "metric": "fire_compression_ratio",
+      "target": 0.20,
+      "tolerance": 0.05,
+      "unit": "ratio",
+      "direction": "higher_better",
+      "science_ref": "Skycak 2026 (Math Academy FIRe model); Ausubel et al. 1957 (retroactive facilitation restores memory as effectively as direct repetition)",
+      "rationale": "≥20% review reduction vs no-FIRe baseline. Requires paired simulation runs (with/without encompassing edges). Known limitation: diagnostic over-materialization keeps review queue full regardless of compression.",
+      "source_files": [
+        "packages/api/src/services/srs.ts"
+      ],
+      "evaluation_profiles": ["average-older", "misconception-fractions", "strong-older"]
+    },
+    "remediation_routing": {
+      "name": "Remediation Routing",
+      "description": "Students with misconceptions should receive targeted prerequisite remediation when struggling",
+      "priority": "P0",
+      "metric": "remediation_event_count",
+      "target": 5,
+      "tolerance": 2,
+      "unit": "count",
+      "direction": "higher_better",
+      "science_ref": "Targeted remediation is core to mastery learning (Bloom 1984); key prerequisite repair enables progress",
+      "rationale": "≥5 remediation events for misconception profiles in 15 sessions. The misconception-fractions profile has 9 fraction topics with 25-40% accuracy, so the system should detect and remediate. Low count indicates broken trigger logic.",
+      "source_files": [
+        "packages/api/src/services/session.ts"
+      ],
+      "evaluation_profiles": ["misconception-fractions"]
+    },
+    "presentation_drift": {
+      "name": "Presentation Drift",
+      "description": "Presentation level should adapt toward the appropriate level based on student performance and stabilize",
+      "priority": "P2",
+      "metric": "presentation_drift_correct_count",
+      "target": 8,
+      "tolerance": 1,
+      "unit": "count",
+      "direction": "higher_better",
+      "science_ref": "Sweller et al. 2003 (expertise reversal effect): scaffolding that helps novices actively hinders experts",
+      "rationale": "≥8 of 10 profiles drift in expected direction AND stabilize by session 15. Two known edge cases: strong-young (remediation noise) and average-older (actual performance exceeds expected direction).",
+      "source_files": [
+        "packages/api/src/services/content.ts"
+      ],
+      "evaluation_profiles": ["all"]
+    },
+    "diagnostic_placement": {
+      "name": "Diagnostic Placement Accuracy",
+      "description": "Adaptive diagnostic should place all profiles within ±1 grade of their expected frontier",
+      "priority": "P2",
+      "metric": "diagnostic_placement_accurate_count",
+      "target": 10,
+      "tolerance": 0,
+      "unit": "count",
+      "direction": "higher_better",
+      "science_ref": "Zou et al. 2019: students 3-4x more likely to master frontier topics; adaptive testing literature",
+      "rationale": "10 of 10 profiles within ±1 grade. Zero tolerance because misplacement by ≥2 grades wastes student time on content that is too easy or too hard. Diagnostic uses adaptive binary search with 8-15 questions.",
+      "source_files": [
+        "packages/api/src/services/diagnostic.ts"
+      ],
+      "evaluation_profiles": ["all"]
+    },
+    "cognitive_demand_entropy": {
+      "name": "Cognitive Demand Entropy",
+      "description": "Problems should exercise diverse cognitive demands (recall, procedural, conceptual, analytical) for transfer",
+      "priority": "P2",
+      "metric": "demand_entropy_avg",
+      "target": 1.2,
+      "tolerance": 0.2,
+      "unit": "bits",
+      "direction": "higher_better",
+      "science_ref": "Bjork & Bjork 2011: varied practice (desirable difficulties) promotes transfer",
+      "rationale": "Shannon entropy ≥1.2 bits averaged across profiles. With 4 demand types, max entropy is 2.0 bits (uniform). 1.2 bits indicates reasonable variety without requiring perfect uniformity. Content must provide problems across demand types.",
+      "source_files": [
+        "packages/api/src/services/session.ts"
+      ],
+      "evaluation_profiles": ["all"]
+    }
+  },
+  "profile_expectations": {
+    "average-older": {
+      "description": "Age 12, moderate ability through grade 3, tests typical older learner progression path",
+      "behavioral_signature": "Should be placed at grade 3 frontier, steadily master K-3 topics, struggle at grade 4+. Presentation stays at standard (age-appropriate). Moderate remediation when encountering grade 4 content.",
+      "min_final_mastery": 0.55,
+      "max_final_mastery": 0.85,
+      "expected_frontier_grade": 3,
+      "expected_presentation_center": "standard",
+      "expected_remediation_events": "moderate",
+      "mastery_growth_rate": 0.02,
+      "difficulty_convergence_by": 100
+    },
+    "average-young": {
+      "description": "Age 7, moderate ability through grade 1, tests young learner with limited content range",
+      "behavioral_signature": "Placed at grade 1 frontier. Slow mastery growth limited by content ceiling and young-learner response speed. Primary presentation. Moderate remediation on grade 2 content.",
+      "min_final_mastery": 0.20,
+      "max_final_mastery": 0.55,
+      "expected_frontier_grade": 1,
+      "expected_presentation_center": "primary",
+      "expected_remediation_events": "moderate",
+      "mastery_growth_rate": 0.01,
+      "difficulty_convergence_by": 350
+    },
+    "fast-learner": {
+      "description": "Age 8, starts average but ability increases +0.5% per session, tests learning gain adaptation",
+      "behavioral_signature": "Placed at grade 2 frontier initially. Should show accelerating mastery as ability curve shifts up. Difficulty targeting should track the improving ability. Eventually reaches topics previously too hard.",
+      "min_final_mastery": 0.30,
+      "max_final_mastery": 0.65,
+      "expected_frontier_grade": 2,
+      "expected_presentation_center": "intermediate",
+      "expected_remediation_events": "moderate",
+      "mastery_growth_rate": 0.015,
+      "difficulty_convergence_by": 350
+    },
+    "misconception-fractions": {
+      "description": "Age 10, strong on whole-number ops but collapses on fractions, tests remediation routing",
+      "behavioral_signature": "Placed at grade 5 frontier (high general ability). Rapid mastery of non-fraction topics. Heavy remediation on fraction topics (9 misconception targets at 25-40%). Should trigger prerequisite-based remediation chains. High interleaving due to strand-diverse mastery.",
+      "min_final_mastery": 0.70,
+      "max_final_mastery": 0.95,
+      "expected_frontier_grade": 5,
+      "expected_presentation_center": "intermediate",
+      "expected_remediation_events": "high",
+      "mastery_growth_rate": 0.01,
+      "difficulty_convergence_by": 100
+    },
+    "overconfident": {
+      "description": "Age 10, average ability with consistently high confidence regardless of correctness",
+      "behavioral_signature": "Placed at grade 2-3 frontier. Average mastery progression. Confidence-accuracy mismatch should be detectable (high confidence + wrong answers). Moderate remediation. Fastest convergence on difficulty targeting due to consistent behavior.",
+      "min_final_mastery": 0.25,
+      "max_final_mastery": 0.60,
+      "expected_frontier_grade": 2,
+      "expected_presentation_center": "intermediate",
+      "expected_remediation_events": "moderate",
+      "mastery_growth_rate": 0.01,
+      "difficulty_convergence_by": 50
+    },
+    "strong-older": {
+      "description": "Age 14, high ability (90%+) across all grades, tests ceiling effects and efficiency",
+      "behavioral_signature": "Placed at grade 5 frontier (max). Near-100% mastery from diagnostic. Minimal or no mastery growth needed. No remediation. Difficulty targeting may exceed 90% (content ceiling). Fastest session completion. Tests system efficiency with advanced learners.",
+      "min_final_mastery": 0.90,
+      "max_final_mastery": 1.00,
+      "expected_frontier_grade": 5,
+      "expected_presentation_center": "standard",
+      "expected_remediation_events": "none",
+      "mastery_growth_rate": 0.00,
+      "difficulty_convergence_by": 50
+    },
+    "strong-young": {
+      "description": "Age 6, high ability K-2 but drops sharply at grade 3+, tests young gifted learner",
+      "behavioral_signature": "Placed at grade 2 frontier. Quick mastery of K-2 topics. Heavy remediation when system pushes into grade 3 content (55% accuracy). Presentation stays primary (age 6). Known edge case: high remediation generates failure signals that may push presentation down.",
+      "min_final_mastery": 0.30,
+      "max_final_mastery": 0.60,
+      "expected_frontier_grade": 2,
+      "expected_presentation_center": "primary",
+      "expected_remediation_events": "high",
+      "mastery_growth_rate": 0.01,
+      "difficulty_convergence_by": 300
+    },
+    "struggling-older": {
+      "description": "Age 13, low ability even at grade 0-1, tests system behavior with below-grade-level older student",
+      "behavioral_signature": "Placed at grade 0-1 frontier. Very slow mastery growth. Heavy remediation. Difficulty targeting takes longest to converge (high oscillation at ~60% accuracy). Presentation starts standard (age) but may drift down. Tests floor behavior and patience of adaptive systems.",
+      "min_final_mastery": 0.05,
+      "max_final_mastery": 0.30,
+      "expected_frontier_grade": 1,
+      "expected_presentation_center": "standard",
+      "expected_remediation_events": "high",
+      "mastery_growth_rate": 0.005,
+      "difficulty_convergence_by": 1000
+    },
+    "struggling-young": {
+      "description": "Age 6, low ability (50-60% even at grade 0), tests system behavior with most challenged learner",
+      "behavioral_signature": "Placed at grade 0 frontier. Minimal mastery growth possible. Heavy remediation. System must provide scaffolding without frustrating the student. Primary presentation. Tests absolute floor of the adaptive system.",
+      "min_final_mastery": 0.05,
+      "max_final_mastery": 0.25,
+      "expected_frontier_grade": 0,
+      "expected_presentation_center": "primary",
+      "expected_remediation_events": "high",
+      "mastery_growth_rate": 0.005,
+      "difficulty_convergence_by": 300
+    },
+    "underconfident": {
+      "description": "Age 10, average ability with consistently low confidence, tests confidence-system interaction",
+      "behavioral_signature": "Same ability curve as overconfident but opposite confidence. Placed at grade 2-3 frontier. Average mastery progression. Low confidence may cause unnecessary hint-seeking. Should NOT be penalized for low confidence when answers are correct. Slower difficulty convergence due to hesitant behavior.",
+      "min_final_mastery": 0.25,
+      "max_final_mastery": 0.60,
+      "expected_frontier_grade": 2,
+      "expected_presentation_center": "intermediate",
+      "expected_remediation_events": "moderate",
+      "mastery_growth_rate": 0.01,
+      "difficulty_convergence_by": 400
+    }
+  },
+  "content_quality": {
+    "too_hard_threshold": {
+      "strong_profile_min_accuracy": 0.70,
+      "min_attempts": 3
+    },
+    "too_easy_threshold": {
+      "all_profile_max_accuracy": 0.95,
+      "min_attempts": 10
+    },
+    "difficulty_calibration": {
+      "easy": { "expected_min": 0.70, "expected_max": 1.00 },
+      "medium": { "expected_min": 0.50, "expected_max": 0.90 },
+      "hard": { "expected_min": 0.30, "expected_max": 0.80 }
+    }
+  }
+}
