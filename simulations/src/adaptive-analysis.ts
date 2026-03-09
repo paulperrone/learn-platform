@@ -442,23 +442,36 @@ function analyzeInterleaving(
     if (sessionEvents.length < 2) continue;
     sessionCount++;
 
-    // Same-strand adjacency
+    // Same-strand adjacency (topic-transition level, not event level)
+    // Deduplicate consecutive same-topic events (learning loop stays on one topic)
+    const topicSeq: string[] = [];
+    for (const e of sessionEvents) {
+      if (e.topicId && e.topicId !== topicSeq[topicSeq.length - 1]) {
+        topicSeq.push(e.topicId);
+      }
+    }
     let sameAdj = 0;
-    for (let i = 1; i < sessionEvents.length; i++) {
-      const prev = getStrand(sessionEvents[i - 1].topicId!);
-      const curr = getStrand(sessionEvents[i].topicId!);
+    for (let i = 1; i < topicSeq.length; i++) {
+      const prev = getStrand(topicSeq[i - 1]);
+      const curr = getStrand(topicSeq[i]);
       if (prev === curr) sameAdj++;
     }
-    const pairs = sessionEvents.length - 1;
+    const pairs = topicSeq.length - 1;
     const sameStrandAdj = pairs > 0 ? sameAdj / pairs : 0;
     totalSameAdj += sameAdj;
     totalPairs += pairs;
 
-    // Review vs new ratio
-    const reviews = sessionEvents.filter((e) => e.phase === "review").length;
-    const nonReviews = sessionEvents.length - reviews;
-    const reviewRatio = sessionEvents.length > 0
-      ? reviews / sessionEvents.length
+    // Review vs new ratio (topic-level: count topics whose first phase is review)
+    const topicFirstPhase = new Map<string, string>();
+    for (const e of sessionEvents) {
+      if (e.topicId && e.phase && !topicFirstPhase.has(e.topicId)) {
+        topicFirstPhase.set(e.topicId, e.phase);
+      }
+    }
+    const reviews = [...topicFirstPhase.values()].filter((p) => p === "review").length;
+    const nonReviews = topicFirstPhase.size - reviews;
+    const reviewRatio = topicFirstPhase.size > 0
+      ? reviews / topicFirstPhase.size
       : 0;
     totalReview += reviews;
     totalNonReview += nonReviews;

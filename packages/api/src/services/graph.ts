@@ -24,10 +24,22 @@ export function createGraphService(db: DB) {
 
       // Get all topic IDs this user has started (has any state)
       const startedRows = await db
-        .select({ topicId: schema.userTopicState.topicId })
+        .select({
+          topicId: schema.userTopicState.topicId,
+          frontier: schema.userTopicState.frontier,
+          reps: schema.userTopicState.reps,
+          mastered: schema.userTopicState.mastered,
+        })
         .from(schema.userTopicState)
         .where(eq(schema.userTopicState.userId, userId));
       const startedIds = new Set(startedRows.map((r) => r.topicId));
+      // Diagnostic frontier topics: materialized but never studied (reps=0, not mastered)
+      // These should still appear in the frontier for new topic introduction.
+      const diagnosticFrontierIds = new Set(
+        startedRows
+          .filter((r) => r.frontier && !r.mastered && r.reps === 0)
+          .map((r) => r.topicId)
+      );
 
       // Get all topics
       const allTopics = await db.select().from(schema.topics);
@@ -96,8 +108,9 @@ export function createGraphService(db: DB) {
           return ALL_DEPTHS.some((d) => !completedDepths.has(d));
         }
 
-        // Non-context-layered: exclude started topics
-        if (startedIds.has(topic.id)) return false;
+        // Non-context-layered: exclude started topics, but include
+        // diagnostic frontier topics (materialized but never studied)
+        if (startedIds.has(topic.id) && !diagnosticFrontierIds.has(topic.id)) return false;
         const prereqs = prereqMap.get(topic.id) ?? [];
         if (prereqs.length === 0) return true;
 

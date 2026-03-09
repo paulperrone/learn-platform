@@ -369,7 +369,7 @@ describe("createSRSService", () => {
       const subj = await seedSubject({ id: "srs-subj-6" });
       const topic = await seedTopic(subj.id, { id: "srs-topic-6" });
 
-      // Create a state that's due now
+      // Create a state that's due now (reps > 0 = actually reviewed, not just diagnostic)
       await db.insert(schema.userTopicState).values({
         userId: user.id,
         topicId: topic.id,
@@ -377,6 +377,7 @@ describe("createSRSService", () => {
         mastered: false,
         stability: 1,
         difficulty: 5,
+        reps: 1,
       });
 
       const srs = createSRSService(db);

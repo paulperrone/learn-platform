@@ -69,11 +69,13 @@ describe("remediation-interleaving integration", () => {
     await seedTopic(subject.id, { id: "area", name: "Area", depth: 1 });
     await seedPrerequisite("shapes", "area");
 
-    // Strand 3: patterns (independent)
-    await seedTopic(subject.id, { id: "patterns", name: "Patterns", depth: 0 });
+    // Strand 3: data → patterns
+    await seedTopic(subject.id, { id: "data", name: "Data", depth: 0 });
+    await seedTopic(subject.id, { id: "patterns", name: "Patterns", depth: 1 });
+    await seedPrerequisite("data", "patterns");
 
     // Content for all topics
-    for (const topicId of ["counting", "addition", "multiplication", "shapes", "area", "patterns"]) {
+    for (const topicId of ["counting", "addition", "multiplication", "shapes", "area", "data", "patterns"]) {
       await seedAssessmentContent(topicId, {
         id: `${topicId}-easy`, difficulty: "easy",
         question: `Easy ${topicId}?`, answer: "1",
@@ -106,6 +108,9 @@ describe("remediation-interleaving integration", () => {
     });
     await seedUserTopicState(user.id, "shapes", {
       mastered: true, stability: 12, reps: 4, state: 2, due: farFuture,
+    });
+    await seedUserTopicState(user.id, "data", {
+      mastered: true, stability: 2.0, reps: 3, state: 2, due: farFuture,
     });
 
     // Frontier topics: not mastered, with recent progress

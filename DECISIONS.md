@@ -998,3 +998,21 @@ Child creation now creates both an org member (student role) and an account_link
 - Due-date advancement (original): paradoxically increased reviews by preventing natural lapsing
 
 **Results:** FIRe regression fixed (was +20% increase, now 0% neutral). 20% compression target not met due to diagnostic over-materialization creating 40+ simultaneously-due topics — blocked by Phase 4 session mix changes.
+
+---
+
+## 2026-03-09: Session mix interleaving — cache mix, cap reviews, guarantee new topics
+
+**Decision:** Implemented three session mix changes: (1) cache session mix in session state on `startSession()` to prevent re-interleaving, (2) cap total reviews at 70% of session size (warmup + main), (3) guarantee minimum 2 new topics by capping main reviews at `mainSlots - 2`. Also reduced warmup from 3 to 1 when review queue exceeds main slots.
+
+**Reasoning:**
+- Diagnostic materializes 40-71 topics → review queue overwhelms mix → 0 new topics → students never progress
+- Re-calling `getSessionMix()` on each topic transition recomputed interleaving and lost topic progression state
+- Warmup (mastered recall) competing with new topic introduction when review queue is large
+- 70% review cap + 2 new minimum ensures progressive learning even with large review backlog
+
+**Alternatives rejected:**
+- No review cap (pure FSRS scheduling): diagnostic materialization creates 40+ simultaneously-due topics, blocking new topic introduction indefinitely
+- Per-topic interleaving (interleave within learning loop): pedagogically wrong — learning loop phases must be sequential on the same topic
+
+**Results:** average-older: 57% review ratio, 2.4% same-strand adj, 100% sessions with new topics. strong-older: 67%, 5.0%, 100%. misconception-fractions: 81%, 27.1%, 70% — fails due to remediation cascading within same-strand prerequisite chains (documented limitation).

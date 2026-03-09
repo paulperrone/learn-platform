@@ -471,3 +471,48 @@ The `compressReviews()` greedy set-cover algorithm marked covered children in a 
 **Area:** FIRe / session service
 
 FIRe due-date extension and review compression both work at the unit test level, but show 0% compression in simulation. Root cause: diagnostic materializes 40+ topics simultaneously, all immediately overdue. With this many due topics, the review budget (5 slots) always fills regardless of FIRe compression. FIRe can only reduce explicit reviews when the due pool is small enough that compression reduces it BELOW the budget. Requires Phase 4 session mix changes (review cap, new-topic guarantee) to reduce the perpetually-full review queue.
+
+---
+
+### 2026-03-09: Simulation interleaving metric must measure topic-transition adjacency, not event-level
+
+**Source:** Plan 017.5 Phase 4 implementation
+**Area:** Simulation / adaptive-analysis
+
+The `adaptive-analysis.ts` same-strand adjacency metric was measuring consecutive event pairs (every problem/answer in a session). This inflated adjacency to 25-96% because the learning loop naturally stays on one topic for 10-20 events (pretest → instruction → guided → independent). Fix: deduplicate consecutive same-topic events into a topic sequence, then measure strand adjacency on topic transitions only. This dropped average adjacency from 25.6% to 11.9% and correctly reflects the mix-level interleaving quality.
+
+---
+
+### 2026-03-09: Session mix must be cached in session state to prevent re-interleaving
+
+**Source:** Plan 017.5 Phase 4 debugging
+**Area:** Session service
+
+`nextTopic()` was calling `srs.getSessionMix()` on every topic transition, which recomputed the mix each time. This caused: (1) interleaving to be lost as the mix was regenerated, (2) topics already completed to reappear, (3) sessions stuck on the same topic for 100 events. Fix: cache `mix.items` in `SessionState.sessionMix` on `startSession()` and reuse it in `nextTopic()`, filtering by `topicsCompleted`.
+
+---
+
+### 2026-03-09: Review handler must push to topicsCompleted on all exit paths
+
+**Source:** Plan 017.5 Phase 4 debugging
+**Area:** Session service
+
+The `advancePhase()` review handler was moving to the next topic without adding the current topic to `topicsCompleted`. This caused `nextTopic()` to return the same topic repeatedly (100 events on the same topic). Fix: ensure every exit path from review handling (correct answer, warmup failure, remediation trigger, max retries) pushes `currentTopicId` to `topicsCompleted` before calling `nextTopic()`.
+
+---
+
+### 2026-03-09: Remediation on warmup topics causes infinite loops
+
+**Source:** Plan 017.5 Phase 4 debugging
+**Area:** Session service / remediation
+
+Warmup topics (mastered topic recall) are single review problems. When a warmup topic triggers remediation (on failure), the remediation can loop because warmup topics don't follow the full learning loop. Fix: skip remediation for warmup topics (they're mastered, failure is noise) and for already-remediated topics (prevent re-triggering). Added `isWarmup` check on `currentBlendRole` and `remediatedTopics` tracking in session state.
+
+---
+
+### 2026-03-09: Diagnostic frontier topics must be excluded from getDueTopics
+
+**Source:** Plan 017.5 Phase 4 debugging
+**Area:** SRS service / session mix
+
+After diagnostic, frontier topics are materialized with `reps=0, mastered=false`. `getDueTopics()` was including these as review candidates because they're non-mastered and past due. But they've never been studied — they should appear as NEW topics, not reviews. Fix: filter `getDueTopics()` to only return topics with `reps > 0`. Also detect diagnostic frontier topics in `computeFrontier()` (frontier=true, mastered=false, reps=0) and include them in the frontier instead of excluding them.

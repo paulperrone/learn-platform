@@ -290,7 +290,7 @@ export function createSRSService(db: DB) {
      */
     async getDueTopics(userId: string) {
       const now = new Date().toISOString();
-      return db
+      const rows = await db
         .select()
         .from(schema.userTopicState)
         .where(
@@ -301,6 +301,10 @@ export function createSRSService(db: DB) {
           )
         )
         .orderBy(schema.userTopicState.due);
+      // Exclude diagnostic frontier topics that were never actually reviewed.
+      // These have reps=0 and should be introduced as new topics via computeFrontier,
+      // not treated as reviews.
+      return rows.filter((r) => r.reps > 0);
     },
 
     /**
@@ -579,9 +583,12 @@ export function createSRSService(db: DB) {
           )
         );
       const warmupPool = masteredRows.sort(() => Math.random() - 0.5);
-      // Scale warmup slots: leave at least 4 slots for main
+      // Scale warmup slots: leave at least 4 slots for main.
+      // Reduce warmup when review queue is large — warmup should not
+      // compete with new topic introduction.
       const maxWarmup = Math.max(0, count - 4);
-      const warmupCount = Math.min(warmupPool.length, 3, maxWarmup);
+      const baseWarmup = dueTopics.length > (count - 3) ? 1 : 3;
+      const warmupCount = Math.min(warmupPool.length, baseWarmup, maxWarmup);
       const warmupItems: MixItem[] = warmupPool.slice(0, warmupCount).map((t) => ({
         topicId: t.topicId,
         type: "review" as const,
@@ -629,7 +636,21 @@ export function createSRSService(db: DB) {
 
       // --- Main: review + new interleaved ---
       const mainSlots = count - warmupCount - stretchItems.length;
-      const mainReviewBudget = Math.ceil(mainSlots * 0.6);
+
+      // Cap total reviews (warmup + main) at 70% of session size.
+      // This prevents review dominance when many topics are due.
+      const maxTotalReviews = Math.floor(count * 0.7);
+      const maxMainReviews = Math.max(0, maxTotalReviews - warmupCount);
+
+      // Guarantee at least 2 new-topic slots in main to ensure
+      // frontier topics are introduced even when review queue is large.
+      const minNewTopics = Math.min(2, mainSlots);
+      const mainReviewCap = Math.max(0, mainSlots - minNewTopics);
+      const mainReviewBudget = Math.min(
+        Math.ceil(mainSlots * 0.6),
+        maxMainReviews,
+        mainReviewCap
+      );
 
       // Use FIRe compression to select reviews that maximize implicit coverage.
       // compressReviews may return fewer than budget if encompassing coverage

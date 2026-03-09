@@ -34,6 +34,8 @@ type SessionState = {
   sessionFailures?: Record<string, number>; // Per-topic failure count within this session (for remediation trigger)
   servedDemands?: CognitiveDemand[]; // Cognitive demands served this session (for demand mixing)
   totalResponseMs?: number; // Accumulated response time for activity minutes recording
+  sessionMix?: { topicId: string; type: "review" | "new"; blendRole: string }[]; // Cached session mix from getSessionMix
+  remediatedTopics?: string[]; // Topics that have already been remediated this session (prevent re-entry)
 };
 
 // In-memory cache — D1 is the source of truth
@@ -324,6 +326,7 @@ export function createSessionService(db: DB) {
         totalAttempts: 0,
         currentBlendRole: firstTopic.blendRole,
         rollingResults: [],
+        sessionMix: mix.items.map((i) => ({ topicId: i.topicId, type: i.type, blendRole: i.blendRole })),
       };
       activeSessions.set(sessionId, state);
 
@@ -608,11 +611,17 @@ export function createSessionService(db: DB) {
         state.sessionFailures[topicId] = (state.sessionFailures[topicId] ?? 0) + 1;
       }
 
-      // Check if remediation should trigger based on accumulated failures (2+ for any topic)
+      // Check if remediation should trigger based on accumulated failures (2+ for any topic).
+      // Skip remediation for warmup topics (quick recall, not deep practice).
+      // Skip if this topic was already remediated this session (prevent infinite loops).
+      const isWarmup = state.currentBlendRole === "warmup";
+      const alreadyRemediated = state.remediatedTopics?.includes(state.currentTopicId!) ?? false;
       const shouldRemediate = !wasCorrect
         && state.currentTopicId
         && state.currentPhase !== "remediation"
         && state.currentPhase !== "instruction"
+        && !isWarmup
+        && !alreadyRemediated
         && (state.sessionFailures?.[state.currentTopicId] ?? 0) >= 2;
 
       if (shouldRemediate) {
@@ -621,6 +630,10 @@ export function createSessionService(db: DB) {
         state.currentPhase = "remediation";
         state.phaseIndex = 0;
         state.hintIndex = 0;
+
+        // Track that this topic has been remediated to prevent re-entry
+        if (!state.remediatedTopics) state.remediatedTopics = [];
+        state.remediatedTopics.push(originalTopicId);
 
         // Identify the key prerequisite to target (skip for anonymous — no persistent state)
         if (!state.isAnonymous) {
@@ -687,6 +700,13 @@ export function createSessionService(db: DB) {
       if (state.currentPhase === "review") {
         if (wasCorrect) {
           state.reviewsCompleted++;
+          state.topicsCompleted.push(state.currentTopicId!);
+          return await this.nextTopic(state);
+        }
+        // Warmup topics: single question, move on after any failure
+        if (state.currentBlendRole === "warmup") {
+          state.reviewsCompleted++;
+          state.topicsCompleted.push(state.currentTopicId!);
           return await this.nextTopic(state);
         }
         // Failed review — give one retry before moving on (remediation triggers on 2nd failure via sessionFailures)
@@ -697,8 +717,9 @@ export function createSessionService(db: DB) {
           state.hintIndex = 0;
           return await this.buildPhaseItem(state);
         }
-        // 2+ failures handled by shouldRemediate above — this path means remediation wasn't possible (anonymous or no prereqs)
+        // 2+ failures and remediation not possible or already done — move on
         state.reviewsCompleted++;
+        state.topicsCompleted.push(state.currentTopicId!);
         return await this.nextTopic(state);
       }
 
@@ -727,10 +748,14 @@ export function createSessionService(db: DB) {
         return await this.nextAnonymousTopic(state);
       }
 
-      const mix = await srs.getSessionMix(state.userId, 10);
+      // Use cached session mix (computed once at session start) to preserve
+      // interleaving order and avoid re-computing the mix each topic transition.
+      // Fall back to fresh mix if cache is missing (legacy sessions).
+      const mixItems = state.sessionMix
+        ?? (await srs.getSessionMix(state.userId, 10)).items;
 
       // Find a topic we haven't completed in this session
-      const next = mix.items.find(
+      const next = mixItems.find(
         (item) => !state.topicsCompleted.includes(item.topicId)
       );
 
