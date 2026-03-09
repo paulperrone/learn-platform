@@ -108,6 +108,14 @@ simulate-report sessions="30" seed="42":
 simulate-regression seed="42":
     npx tsx simulations/src/regression.ts --seed {{seed}}
 
+# Evaluate simulation runs against targets.json (healing loop)
+evaluate *args:
+    npx tsx simulations/src/evaluate.ts {{args}}
+
+# Evaluate with FIRe comparison (slow — runs paired simulations)
+evaluate-fire *args:
+    npx tsx simulations/src/evaluate.ts --run-fire {{args}}
+
 # Clean up task execution state
 task-cleanup:
     #!/usr/bin/env bash
