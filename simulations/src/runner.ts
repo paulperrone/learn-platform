@@ -9,10 +9,10 @@ import { createSimulationDb, createSimUser } from "./db-setup.js";
 import { resolveAnswer } from "./answer-engine.js";
 import { EventLogger } from "./event-logger.js";
 import { SeededRNG } from "./prng.js";
-import type { SimulationConfig, SimulationResult, SimulationEvent, LearnerProfile, DiagnosticRunResult } from "./types.js";
+import type { SimulationConfig, SimulationResult, SimulationEvent, LearnerProfile, DiagnosticRunResult, SessionSummary, StateSnapshot, TopicStateSnapshot, PresentationSnapshot, TimeSchedule } from "./types.js";
 import { join } from "path";
 import { eq } from "drizzle-orm";
-import { writeFileSync } from "fs";
+import { writeFileSync, readFileSync } from "fs";
 import * as schema from "../../packages/api/src/db/schema.js";
 
 const ONE_DAY_MS = 24 * 60 * 60 * 1000;
@@ -91,7 +91,11 @@ export class SimulationRunner {
   private userId!: string;
   private logger!: EventLogger;
   private simulatedTimeMs!: number;
+  private simulationStartMs!: number;
   private topicGradeLevels = new Map<string, number>();
+  private totalTopicCount = 0;
+  private sessionSummaries: SessionSummary[] = [];
+  private stateSnapshots: StateSnapshot[] = [];
 
   constructor(config: SimulationConfig) {
     this.config = config;
@@ -119,9 +123,11 @@ export class SimulationRunner {
     for (const t of topics) {
       this.topicGradeLevels.set(t.id, t.gradeLevel);
     }
+    this.totalTopicCount = topics.length;
 
     // Start simulated time at a fixed point
     this.simulatedTimeMs = new Date("2026-01-15T08:00:00Z").getTime();
+    this.simulationStartMs = this.simulatedTimeMs;
 
     console.log(`[sim] Running diagnostic for ${this.config.profile.id}...`);
     const diagnosticQuestions = await this.runDiagnostic();
@@ -131,12 +137,15 @@ export class SimulationRunner {
     // which causes FSRS to produce NaN on next scheduling. Set reasonable defaults.
     await this.sanitizePostDiagnosticState();
 
+    // Take initial state snapshot (post-diagnostic)
+    await this.takeStateSnapshot(0);
+
     let sessionsCompleted = 0;
     for (let i = 0; i < this.config.sessionCount; i++) {
-      // Advance time between sessions
-      this.simulatedTimeMs += this.config.sessionIntervalMs ?? ONE_DAY_MS;
+      // Advance time between sessions using the configured schedule
+      this.simulatedTimeMs += this.getSessionInterval(i);
 
-      console.log(`[sim] Session ${i + 1}/${this.config.sessionCount} for ${this.config.profile.id}...`);
+      console.log(`[sim] Session ${i + 1}/${this.config.sessionCount} for ${this.config.profile.id} (day ${this.getSimulatedDay()})...`);
       try {
         await this.runLearningSession(i + 1);
         sessionsCompleted++;
@@ -173,6 +182,10 @@ export class SimulationRunner {
           interleaveStrand: null,
         });
       }
+
+      // Snapshot state and compute session summary after each session
+      await this.takeStateSnapshot(i + 1);
+      this.computeSessionSummary(i + 1);
     }
 
     // Restore real Date and Math.random
@@ -187,7 +200,20 @@ export class SimulationRunner {
       sessionsCompleted,
       diagnosticQuestionsAsked: diagnosticQuestions,
       totalEvents: this.logger.getTick(),
+      sessionSummaries: this.sessionSummaries,
     });
+
+    // Write state snapshots to separate file
+    writeFileSync(
+      join(this.logger.getRunDir(), "state-snapshots.json"),
+      JSON.stringify(this.stateSnapshots, null, 2) + "\n"
+    );
+
+    // Write session summaries to separate file
+    writeFileSync(
+      join(this.logger.getRunDir(), "session-summaries.json"),
+      JSON.stringify(this.sessionSummaries, null, 2) + "\n"
+    );
 
     const result: SimulationResult = {
       profileId: this.config.profile.id,
@@ -196,6 +222,7 @@ export class SimulationRunner {
       diagnosticQuestionsAsked: diagnosticQuestions,
       totalEvents: this.logger.getTick(),
       runDir: this.logger.getRunDir(),
+      sessionSummaries: this.sessionSummaries,
     };
 
     console.log(`[sim] Complete: ${sessionsCompleted} sessions, ${this.logger.getTick()} events`);
@@ -589,5 +616,183 @@ export class SimulationRunner {
       "math-foundations": "math-foundations",
     };
     return subjectMap[this.config.subject] ?? this.config.subject;
+  }
+
+  /** Get the time interval before session i (0-indexed) */
+  private getSessionInterval(sessionIndex: number): number {
+    const schedule = this.config.timeSchedule;
+    if (!schedule) {
+      return this.config.sessionIntervalMs ?? ONE_DAY_MS;
+    }
+
+    const base = schedule.baseIntervalMs ?? ONE_DAY_MS;
+
+    if (schedule.type === "fixed") {
+      return base;
+    }
+
+    if (schedule.type === "variable" && schedule.intervals) {
+      return schedule.intervals[sessionIndex] ?? base;
+    }
+
+    if (schedule.type === "weekdays") {
+      // Simulate weekday-only practice: skip weekends
+      const currentDate = new Date(this.simulatedTimeMs);
+      const dayOfWeek = currentDate.getUTCDay(); // 0=Sun, 6=Sat
+      if (dayOfWeek === 5) return base * 3; // Friday → Monday (skip Sat+Sun)
+      if (dayOfWeek === 6) return base * 2; // Saturday → Monday (skip Sun)
+      return base;
+    }
+
+    return base;
+  }
+
+  /** Get current simulated day number (0-indexed from start) */
+  private getSimulatedDay(): number {
+    return Math.round((this.simulatedTimeMs - this.simulationStartMs) / ONE_DAY_MS);
+  }
+
+  /** Snapshot full user state after a session */
+  private async takeStateSnapshot(sessionNumber: number): Promise<void> {
+    const allState = await this.db
+      .select()
+      .from(schema.userTopicState)
+      .where(eq(schema.userTopicState.userId, this.userId));
+
+    const topicStates: TopicStateSnapshot[] = allState.map((row) => ({
+      topicId: row.topicId,
+      stability: row.stability,
+      difficulty: row.difficulty,
+      due: row.due,
+      state: row.state,
+      reps: row.reps,
+      lapses: row.lapses,
+      mastered: row.mastered,
+      frontier: row.frontier,
+      consecutiveCorrectReviews: row.consecutiveCorrectReviews,
+    }));
+
+    const presRows = await this.db
+      .select()
+      .from(schema.userSubjectPresentation)
+      .where(eq(schema.userSubjectPresentation.userId, this.userId));
+    const presRow = presRows[0] ?? null;
+
+    const presentation: PresentationSnapshot | null = presRow
+      ? {
+          centerLevel: presRow.centerLevel,
+          primaryWeight: presRow.primaryWeight,
+          intermediateWeight: presRow.intermediateWeight,
+          standardWeight: presRow.standardWeight,
+          advancedWeight: presRow.advancedWeight,
+        }
+      : null;
+
+    const masteryCount = topicStates.filter((t) => t.mastered).length;
+
+    this.stateSnapshots.push({
+      sessionNumber,
+      day: this.getSimulatedDay(),
+      simulatedTime: new Date(this.simulatedTimeMs).toISOString(),
+      masteryCount,
+      masteryPercent: this.totalTopicCount > 0 ? masteryCount / this.totalTopicCount : 0,
+      totalTopics: this.totalTopicCount,
+      topicStates,
+      presentation,
+    });
+  }
+
+  /** Compute session summary from events logged during the session */
+  private computeSessionSummary(sessionNumber: number): void {
+    // Read events from the JSONL file for this session
+    const eventsPath = join(this.logger.getRunDir(), "events.jsonl");
+    const allLines = readFileSync(eventsPath, "utf-8").trim().split("\n").filter(Boolean);
+    const sessionEvents: SimulationEvent[] = allLines
+      .map((line) => JSON.parse(line))
+      .filter((e: SimulationEvent) => e.sessionNumber === sessionNumber);
+
+    const topicsAttempted = new Set<string>();
+    const topicsMastered = new Set<string>();
+    let reviewsCompleted = 0;
+    let newTopicsIntroduced = 0;
+    let remediationsTriggered = 0;
+    let correctCount = 0;
+    let totalProblems = 0;
+    let fireReviewsSkipped = 0;
+    const fadingLevels: Record<string, number> = {};
+    const demandDist: Record<string, number> = {};
+    let errors = 0;
+
+    for (const event of sessionEvents) {
+      if (event.phase === "error") {
+        errors++;
+        continue;
+      }
+
+      if (event.topicId) {
+        topicsAttempted.add(event.topicId);
+      }
+
+      // Track mastery transitions
+      if (event.masteredBefore === false && event.masteredAfter === true && event.topicId) {
+        topicsMastered.add(event.topicId);
+      }
+
+      // Track reviews vs new
+      if (event.phase === "review") {
+        reviewsCompleted++;
+      }
+      if (event.phase === "pretest") {
+        newTopicsIntroduced++;
+      }
+
+      // Track remediation
+      if (event.remediationTarget) {
+        remediationsTriggered++;
+      }
+
+      // Track accuracy (only for problems, not instructions)
+      if (event.correct !== null) {
+        totalProblems++;
+        if (event.correct) correctCount++;
+      }
+
+      // Track FIRe
+      if (event.fireCreditApplied) {
+        fireReviewsSkipped++;
+      }
+
+      // Track fading levels
+      if (event.fadingLevel !== null && event.topicId) {
+        fadingLevels[event.topicId] = event.fadingLevel;
+      }
+
+      // Track cognitive demand distribution
+      if (event.cognitiveDemand) {
+        demandDist[event.cognitiveDemand] = (demandDist[event.cognitiveDemand] ?? 0) + 1;
+      }
+    }
+
+    // Get presentation center from latest snapshot
+    const latestSnapshot = this.stateSnapshots[this.stateSnapshots.length - 1];
+    const presentationCenter = latestSnapshot?.presentation?.centerLevel ?? null;
+
+    const summary: SessionSummary = {
+      sessionNumber,
+      day: this.getSimulatedDay(),
+      topicsAttempted: [...topicsAttempted],
+      topicsMastered: [...topicsMastered],
+      reviewsCompleted,
+      newTopicsIntroduced,
+      remediationsTriggered,
+      averageAccuracy: totalProblems > 0 ? correctCount / totalProblems : 0,
+      presentationCenter,
+      fireReviewsSkipped,
+      fadingLevels,
+      cognitiveDemandDistribution: demandDist,
+      errors,
+    };
+
+    this.sessionSummaries.push(summary);
   }
 }

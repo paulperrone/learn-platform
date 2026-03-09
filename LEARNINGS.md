@@ -336,3 +336,28 @@ The diagnostic's binary search has two related issues revealed by simulation acr
 2. **Bounds lock-in:** Once `searchLow = searchHigh`, incorrect answers at that grade can't lower searchHigh (since `Math.min(searchHigh, topicGrade)` is a no-op). All 10 profiles converge to `searchLow = searchHigh` by completion. The diagnostic stops at exactly 8 questions (MIN_QUESTIONS) every time — it converges quickly but potentially prematurely.
 
 **Impact:** The learning session's adaptive difficulty targeting and remediation partially compensate, but struggling students may face initial frustration from inflated placement. Specific fix suggestions documented in `simulations/reports/diagnostic.md` for Phase 6.
+
+---
+
+### 2026-03-08: Diagnostic-materialized mastery is immediately lost when sessions review those topics
+
+**Source:** Simulation trajectory analysis (plan 017 Phase 3)
+**Area:** SRS service / Diagnostic service / Session service
+
+When the diagnostic materializes mastery, it sets `mastered=true, state=2 (Review)` but `consecutiveCorrectReviews=0`. The simulation sanitizes `stability=15, difficulty=5` for these topics. However, when the session service reviews a mastered topic, the SRS service re-evaluates the mastery criterion: `consecutiveCorrectReviews ≥ 3 AND stability ≥ 14 AND state = Review`. Since `consecutiveCorrectReviews=0`, the check fails and mastery is cleared. This causes 7/10 profiles to lose ALL diagnostic mastery within 1-5 sessions. strong-older drops from 100% → 0%.
+
+**Fix options for Phase 6:**
+1. Set `consecutiveCorrectReviews=3` during diagnostic materialization
+2. Separate "diagnostic mastery" from "earned mastery" — don't re-evaluate diagnostic mastery on review
+3. Adjust mastery criterion to not un-master already-mastered topics on correct reviews
+
+---
+
+### 2026-03-08: Session service never triggers remediation or worked example fading in simulation
+
+**Source:** Simulation trajectory analysis (plan 017 Phase 3)
+**Area:** Session service
+
+Across 30 sessions × 10 profiles (15,560 total events), zero remediation events and zero fading-level events were observed. The remediation routing and worked example fading systems exist in the session service code but don't activate under simulation conditions. Possible causes: (1) remediation requires specific failure patterns that the simulation's answer engine doesn't produce, (2) fading levels aren't propagated to the session response items, (3) the session mix (60% review, 40% new) doesn't create conditions where remediation would trigger.
+
+**Impact:** Remediation and fading validation deferred to Phase 6, after the system issues above are addressed.

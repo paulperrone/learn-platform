@@ -74,6 +74,14 @@ simulate-all sessions="5" seed="42":
 simulate-diagnostic seed="42":
     npx tsx simulations/src/diagnostic-analysis.ts --seed {{seed}}
 
+# Analyze trajectories from latest simulation runs
+simulate-trajectories:
+    npx tsx simulations/src/trajectory-analysis.ts --all-latest
+
+# Analyze trajectory from a specific run directory
+simulate-trajectory run-dir:
+    npx tsx simulations/src/trajectory-analysis.ts {{run-dir}}
+
 # Clean up task execution state
 task-cleanup:
     #!/usr/bin/env bash

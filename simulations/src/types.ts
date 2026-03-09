@@ -86,15 +86,78 @@ export type SimulationEvent = {
   interleaveStrand: string | null;
 };
 
+// --- Session Summary ---
+
+export type SessionSummary = {
+  sessionNumber: number;
+  day: number;
+  topicsAttempted: string[];
+  topicsMastered: string[];
+  reviewsCompleted: number;
+  newTopicsIntroduced: number;
+  remediationsTriggered: number;
+  averageAccuracy: number;
+  presentationCenter: string | null;
+  fireReviewsSkipped: number;
+  fadingLevels: Record<string, number>;
+  cognitiveDemandDistribution: Record<string, number>;
+  errors: number;
+};
+
+// --- State Snapshot ---
+
+export type TopicStateSnapshot = {
+  topicId: string;
+  stability: number;
+  difficulty: number;
+  due: string;
+  state: number;
+  reps: number;
+  lapses: number;
+  mastered: boolean;
+  frontier: boolean;
+  consecutiveCorrectReviews: number;
+};
+
+export type PresentationSnapshot = {
+  centerLevel: string;
+  primaryWeight: number;
+  intermediateWeight: number;
+  standardWeight: number;
+  advancedWeight: number;
+};
+
+export type StateSnapshot = {
+  sessionNumber: number;
+  day: number;
+  simulatedTime: string;
+  masteryCount: number;
+  masteryPercent: number;
+  totalTopics: number;
+  topicStates: TopicStateSnapshot[];
+  presentation: PresentationSnapshot | null;
+};
+
 // --- Simulation Config ---
+
+export type TimeSchedule = {
+  /** Type of schedule: 'fixed' (same interval), 'weekdays' (skip weekends), 'variable' (custom per-session) */
+  type: "fixed" | "weekdays" | "variable";
+  /** Base interval in ms (used by 'fixed' and 'weekdays') */
+  baseIntervalMs?: number;
+  /** Per-session intervals in ms (used by 'variable') */
+  intervals?: number[];
+};
 
 export type SimulationConfig = {
   profile: LearnerProfile;
   subject: string;
   sessionCount: number;
   seed: number;
-  /** Time between sessions in ms (default: 24 hours) */
+  /** Time between sessions in ms (default: 24 hours). Simple fixed interval. */
   sessionIntervalMs?: number;
+  /** Advanced time schedule. Overrides sessionIntervalMs if provided. */
+  timeSchedule?: TimeSchedule;
 };
 
 export type SimulationResult = {
@@ -104,6 +167,7 @@ export type SimulationResult = {
   diagnosticQuestionsAsked: number;
   totalEvents: number;
   runDir: string;
+  sessionSummaries: SessionSummary[];
 };
 
 /** Diagnostic result data saved after each simulation run */
