@@ -163,20 +163,31 @@ export function createSRSService(db: DB) {
       const result = scheduling[rating];
       const newCard = result.card;
 
-      // Track consecutive correct reviews at Review state (state=2)
+      // isCorrectReview = FSRS scheduling quality (Hard/Again count as "not correct" for scheduling)
+      // isActuallyCorrect = did the student get the right answer (before hint caps reduce rating)
+      // Use isActuallyCorrect for mastery/misconception; isCorrectReview for FSRS scheduling
       const isCorrectReview = rating >= Rating.Good;
+      const isActuallyCorrect = rating >= Rating.Hard; // Hard = correct but needed help
+
+      // Track consecutive correct/incorrect for mastery using actual correctness.
+      // Count in any FSRS state (not just Review) — topics in Learning/Relearning
+      // should still accumulate toward mastery when answered correctly.
       let newConsecutiveCorrect = state.consecutiveCorrectReviews;
-      if (isCorrectReview && newCard.state === State.Review) {
+      let newConsecutiveIncorrect = state.consecutiveIncorrectReviews;
+      if (isActuallyCorrect) {
         newConsecutiveCorrect = state.consecutiveCorrectReviews + 1;
-      } else if (!isCorrectReview) {
-        newConsecutiveCorrect = 0; // Lapse resets counter
+        newConsecutiveIncorrect = 0;
+      } else {
+        newConsecutiveCorrect = 0;
+        newConsecutiveIncorrect = state.consecutiveIncorrectReviews + 1;
       }
 
       // Confidence-based scheduling adjustments
-      // High confidence (4-5) + wrong = critical misconception
+      // High confidence (4-5) + actually wrong = critical misconception
       // Low confidence (1-2) + correct = fragile knowledge, schedule sooner
+      // Use isActuallyCorrect: hint-capped ratings (correct with hints) are NOT misconceptions
       let isMisconception = false;
-      if (confidence != null && !isCorrectReview && confidence >= 4) {
+      if (confidence != null && !isActuallyCorrect && confidence >= 4) {
         isMisconception = true;
       }
 
@@ -194,11 +205,13 @@ export function createSRSService(db: DB) {
         }
       }
 
-      // Mastery: 3+ consecutive correct reviews at Review state with stability > 14 days
+      // Mastery criterion (two paths):
+      // Path A: 3+ consecutive correct in Review state with stability >= 7 days
+      // Path B: 5+ consecutive correct in any state (proven knowledge through repetition,
+      //         regardless of FSRS scheduling state — covers topics stuck in Learning)
       const shouldMaster =
-        newConsecutiveCorrect >= 3 &&
-        adjustedCard.state === State.Review &&
-        adjustedCard.stability >= 14;
+        (newConsecutiveCorrect >= 3 && adjustedCard.state === State.Review && adjustedCard.stability >= 7) ||
+        (newConsecutiveCorrect >= 5);
 
       // Update confidence tracking (exponential moving average)
       let newConfidenceAccuracy = state.confidenceAccuracy;
@@ -217,7 +230,18 @@ export function createSRSService(db: DB) {
         newConsecutiveCorrect = 0;
       }
 
-      const shouldMasterFinal = !isMisconception && (shouldMaster || state.mastered);
+      // Mastery with hysteresis: once mastered, only lose mastery on 2+
+      // consecutive incorrect reviews (not a single re-evaluation).
+      // This prevents mastery thrashing from occasional mistakes.
+      let shouldMasterFinal: boolean;
+      if (state.mastered) {
+        // Already mastered — preserve unless 2+ consecutive incorrect
+        const shouldLoseMastery = newConsecutiveIncorrect >= 2 || isMisconception;
+        shouldMasterFinal = !shouldLoseMastery;
+      } else {
+        // Not yet mastered — gain mastery via shouldMaster
+        shouldMasterFinal = !isMisconception && shouldMaster;
+      }
 
       await db
         .update(schema.userTopicState)
@@ -230,6 +254,7 @@ export function createSRSService(db: DB) {
           lapses: adjustedCard.lapses,
           mastered: shouldMasterFinal,
           consecutiveCorrectReviews: newConsecutiveCorrect,
+          consecutiveIncorrectReviews: newConsecutiveIncorrect,
           lastReview: now.toISOString(),
           confidenceAccuracy: newConfidenceAccuracy,
         })
@@ -244,7 +269,7 @@ export function createSRSService(db: DB) {
         assessmentContentId: assessmentContentId ?? null,
         rating: adjustedRating,
         confidence: confidence ?? null,
-        correct: isCorrectReview,
+        correct: isActuallyCorrect,
         responseMs,
         phase,
         hintsUsed: hintsUsed ?? null,

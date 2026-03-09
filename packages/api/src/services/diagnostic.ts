@@ -425,9 +425,12 @@ export function createDiagnosticService(db: DB) {
           .set({
             mastered: isMastered,
             frontier: isFrontier,
-            // If mastered, set FSRS state to Review; if frontier, set to New
+            // If mastered, set FSRS state to Review with reasonable defaults
             state: isMastered ? 2 : 0,
             reps: isMastered ? 1 : 0,
+            stability: isMastered ? 15 : 0,
+            difficulty: isMastered ? 5 : 0,
+            consecutiveCorrectReviews: isMastered ? 3 : 0,
             lastReview: isMastered ? now : null,
           })
           .where(eq(schema.userTopicState.id, existing.id));
@@ -439,6 +442,9 @@ export function createDiagnosticService(db: DB) {
           frontier: isFrontier,
           state: isMastered ? 2 : 0,
           reps: isMastered ? 1 : 0,
+          stability: isMastered ? 15 : 0,
+          difficulty: isMastered ? 5 : 0,
+          consecutiveCorrectReviews: isMastered ? 3 : 0,
           due: now,
           lastReview: isMastered ? now : null,
         });

@@ -214,6 +214,7 @@ export const userTopicState = sqliteTable("user_topic_state", {
   mastered: integer("mastered", { mode: "boolean" }).notNull().default(false),
   frontier: integer("frontier", { mode: "boolean" }).notNull().default(false),
   consecutiveCorrectReviews: integer("consecutive_correct_reviews").notNull().default(0),
+  consecutiveIncorrectReviews: integer("consecutive_incorrect_reviews").notNull().default(0),
   confidenceAccuracy: real("confidence_accuracy"),
   lastReview: text("last_review"),
 }, (table) => [

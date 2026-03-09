@@ -527,7 +527,7 @@ export class SimulationRunner {
         sessionNumber
       );
 
-      // Submit answer
+      // Submit answer — include problemId so server grades against the correct problem
       const answerText = answerResult.correct ? problem.answer : "__wrong__";
       currentItem = await sessionSvc.respond(sessionId, {
         answer: answerText,
@@ -535,7 +535,8 @@ export class SimulationRunner {
         confidence: answerResult.confidence,
         responseMs: answerResult.responseMs,
         hintsUsed: answerResult.hintsToRequest,
-      });
+        problemId: problem.id,
+      } as any);
 
       // Get post-response state for logging
       const postState = await this.getTopicState(topicId);
@@ -670,6 +671,7 @@ export class SimulationRunner {
       mastered: row.mastered,
       frontier: row.frontier,
       consecutiveCorrectReviews: row.consecutiveCorrectReviews,
+      consecutiveIncorrectReviews: row.consecutiveIncorrectReviews,
     }));
 
     const presRows = await this.db

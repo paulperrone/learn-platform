@@ -117,6 +117,7 @@ export type TopicStateSnapshot = {
   mastered: boolean;
   frontier: boolean;
   consecutiveCorrectReviews: number;
+  consecutiveIncorrectReviews: number;
 };
 
 export type PresentationSnapshot = {

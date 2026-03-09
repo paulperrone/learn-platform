@@ -1,8 +1,8 @@
 {
   "version": "6",
   "dialect": "sqlite",
-  "id": "faa6de7f-83c7-48fa-b747-6b2e7e469efa",
-  "prevId": "799f5977-83c7-48fa-b747-6b2e7e469efa",
+  "id": "a599918d-80be-461a-8369-46db10e93f36",
+  "prevId": "faa6de7f-83c7-48fa-b747-6b2e7e469efa",
   "tables": {
     "account_links": {
       "name": "account_links",
@@ -3191,6 +3191,14 @@
         },
         "consecutive_correct_reviews": {
           "name": "consecutive_correct_reviews",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": 0
+        },
+        "consecutive_incorrect_reviews": {
+          "name": "consecutive_incorrect_reviews",
           "type": "integer",
           "primaryKey": false,
           "notNull": true,

@@ -120,7 +120,7 @@ describe("createSRSService", () => {
   });
 
   describe("mastery criteria", () => {
-    it("masters topic after 3 consecutive correct reviews at Review state with stability > 14", async () => {
+    it("masters topic after 3 consecutive correct reviews at Review state with stability >= 7", async () => {
       const db = getTestDb();
       const user = await seedUser({ id: "srs-mastery-1" });
       const subj = await seedSubject({ id: "srs-mastery-subj-1" });
@@ -195,6 +195,134 @@ describe("createSRSService", () => {
         );
       expect(state.consecutiveCorrectReviews).toBe(0); // Reset
       expect(state.mastered).toBe(true); // Preserved
+    });
+
+    it("mastery hysteresis: single incorrect does not clear mastery", async () => {
+      const db = getTestDb();
+      const user = await seedUser({ id: "srs-mastery-hyst-1" });
+      const subj = await seedSubject({ id: "srs-mastery-hyst-subj-1" });
+      const topic = await seedTopic(subj.id, { id: "srs-mastery-hyst-topic-1" });
+
+      await db.insert(schema.userTopicState).values({
+        userId: user.id,
+        topicId: topic.id,
+        stability: 20,
+        difficulty: 5,
+        due: new Date(Date.now() - 60000).toISOString(),
+        state: State.Review,
+        reps: 8,
+        lapses: 0,
+        mastered: true,
+        consecutiveCorrectReviews: 5,
+        consecutiveIncorrectReviews: 0,
+      });
+
+      const srs = createSRSService(db);
+
+      // First incorrect — mastery preserved (hysteresis requires 2+)
+      const result1 = await srs.scheduleReview(user.id, topic.id, Rating.Again, 1500, "review");
+      expect(result1.mastered).toBe(true);
+
+      const [state1] = await db.select().from(schema.userTopicState)
+        .where(and(eq(schema.userTopicState.userId, user.id), eq(schema.userTopicState.topicId, topic.id)));
+      expect(state1.mastered).toBe(true);
+      expect(state1.consecutiveIncorrectReviews).toBe(1);
+    });
+
+    it("mastery hysteresis: 2 consecutive incorrect clears mastery", async () => {
+      const db = getTestDb();
+      const user = await seedUser({ id: "srs-mastery-hyst-2" });
+      const subj = await seedSubject({ id: "srs-mastery-hyst-subj-2" });
+      const topic = await seedTopic(subj.id, { id: "srs-mastery-hyst-topic-2" });
+
+      await db.insert(schema.userTopicState).values({
+        userId: user.id,
+        topicId: topic.id,
+        stability: 20,
+        difficulty: 5,
+        due: new Date(Date.now() - 60000).toISOString(),
+        state: State.Review,
+        reps: 8,
+        lapses: 0,
+        mastered: true,
+        consecutiveCorrectReviews: 0,
+        consecutiveIncorrectReviews: 1, // already had 1 incorrect
+      });
+
+      const srs = createSRSService(db);
+
+      // Second incorrect — mastery cleared (2 consecutive)
+      const result = await srs.scheduleReview(user.id, topic.id, Rating.Again, 1500, "review");
+      expect(result.mastered).toBe(false);
+
+      const [state] = await db.select().from(schema.userTopicState)
+        .where(and(eq(schema.userTopicState.userId, user.id), eq(schema.userTopicState.topicId, topic.id)));
+      expect(state.mastered).toBe(false);
+      expect(state.consecutiveIncorrectReviews).toBe(2);
+    });
+
+    it("diagnostic mastery survives first warmup review", async () => {
+      const db = getTestDb();
+      const user = await seedUser({ id: "srs-mastery-diag-1" });
+      const subj = await seedSubject({ id: "srs-mastery-diag-subj-1" });
+      const topic = await seedTopic(subj.id, { id: "srs-mastery-diag-topic-1" });
+
+      // Simulate diagnostic materialization (now sets stability=15, ccr=3)
+      await db.insert(schema.userTopicState).values({
+        userId: user.id,
+        topicId: topic.id,
+        stability: 15,
+        difficulty: 5,
+        due: new Date(Date.now() - 60000).toISOString(),
+        state: State.Review,
+        reps: 1,
+        lapses: 0,
+        mastered: true,
+        consecutiveCorrectReviews: 3,
+        consecutiveIncorrectReviews: 0,
+      });
+
+      const srs = createSRSService(db);
+
+      // Correct warmup review
+      const result = await srs.scheduleReview(user.id, topic.id, Rating.Good, 1500, "review");
+      expect(result.mastered).toBe(true);
+
+      // Incorrect warmup review (reset state first)
+      await db.update(schema.userTopicState).set({
+        mastered: true, stability: 15, difficulty: 5, state: State.Review,
+        consecutiveCorrectReviews: 3, consecutiveIncorrectReviews: 0,
+        reps: 1, lapses: 0, due: new Date(Date.now() - 60000).toISOString(),
+      }).where(and(eq(schema.userTopicState.userId, user.id), eq(schema.userTopicState.topicId, topic.id)));
+
+      const result2 = await srs.scheduleReview(user.id, topic.id, Rating.Again, 1500, "review");
+      expect(result2.mastered).toBe(true); // Still mastered — hysteresis
+    });
+
+    it("mastery via alternative path: 5+ consecutive correct regardless of stability", async () => {
+      const db = getTestDb();
+      const user = await seedUser({ id: "srs-mastery-alt-1" });
+      const subj = await seedSubject({ id: "srs-mastery-alt-subj-1" });
+      const topic = await seedTopic(subj.id, { id: "srs-mastery-alt-topic-1" });
+
+      // Low stability but 4 consecutive correct
+      await db.insert(schema.userTopicState).values({
+        userId: user.id,
+        topicId: topic.id,
+        stability: 3, // below threshold of 7
+        difficulty: 5,
+        due: new Date(Date.now() - 60000).toISOString(),
+        state: State.Review,
+        reps: 6,
+        lapses: 0,
+        mastered: false,
+        consecutiveCorrectReviews: 4,
+      });
+
+      const srs = createSRSService(db);
+      const result = await srs.scheduleReview(user.id, topic.id, Rating.Good, 1500, "review");
+      expect(result.mastered).toBe(true); // 5th consecutive correct → mastered
+      expect(result.justMastered).toBe(true);
     });
 
     it("does not master with only 2 consecutive correct reviews", async () => {

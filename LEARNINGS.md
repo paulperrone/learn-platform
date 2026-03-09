@@ -400,3 +400,27 @@ All 10 profiles show 97-100% review ratio across 30 sessions (target: ~60%). Aft
 The fast regression check runs 3 profiles × 5 sessions, while the full analysis runs 10 profiles × 15-30 sessions. Comparing 5-session metrics against a 30-session baseline produces false regressions (e.g., same-strand adjacency rate varies with session count). The regression script uses its own `regression-baseline.json` created from matching 5-session runs. The full `baseline.json` is for `just simulate-compare` after deep analysis runs.
 
 **Context:** Separate baseline files avoid session-count mismatches between fast regression checks and deep analysis.
+
+---
+
+### 2026-03-08: Simulation must pass problemId for correct server-side grading
+
+**Source:** Plan 017.5 Phase 1 investigation
+**Area:** Simulation / Session service
+
+The simulation runner was not passing `problemId` when calling `sessionSvc.respond()`. The session service falls back to `problems[0]` (first problem from `getAllTopicProblems`) when no `problemId` is provided. Since `selectProblem` often picks a different problem than `problems[0]`, the server graded answers against the wrong problem — causing correct answers to be marked incorrect. Combined with calibrated confidence (3-5 when "correct"), this triggered false misconception detection, stripping mastery from correctly-answered topics.
+
+**Fix:** Pass `problemId: problem.id` in the simulation's respond call.
+
+---
+
+### 2026-03-08: FSRS rating-based correctness vs actual correctness for mastery
+
+**Source:** Plan 017.5 Phase 1 investigation
+**Area:** SRS service
+
+`isCorrectReview = rating >= Rating.Good` (3) treats hint-capped ratings as incorrect. When a student answers correctly but uses 3+ hints, the session caps the rating to `Rating.Hard` (2), making `isCorrectReview = false`. Combined with confidence >= 4, this falsely triggers misconception detection.
+
+**Fix:** Added `isActuallyCorrect = rating >= Rating.Hard` (2). Used `isActuallyCorrect` for mastery tracking, consecutive correct/incorrect counters, misconception detection, and review log correctness. `isCorrectReview` is still used for FSRS scheduling quality (fragile knowledge detection, confidence calibration).
+
+**Key insight:** A correct answer with hints is NOT a misconception. The rating cap is a scheduling signal (schedule more reviews), not a correctness signal.

@@ -545,7 +545,7 @@ const SCHEMA_STATEMENTS = [
   'CREATE INDEX encomp_parent_idx ON encompassings (parent_topic_id)',
 
   // user_topic_state (FK → users, topics)
-  'CREATE TABLE user_topic_state (id integer PRIMARY KEY AUTOINCREMENT NOT NULL, user_id text NOT NULL, topic_id text NOT NULL, stability real DEFAULT 0 NOT NULL, difficulty real DEFAULT 0 NOT NULL, due text NOT NULL, state integer DEFAULT 0 NOT NULL, reps integer DEFAULT 0 NOT NULL, lapses integer DEFAULT 0 NOT NULL, mastered integer DEFAULT 0 NOT NULL, frontier integer DEFAULT 0 NOT NULL, consecutive_correct_reviews integer DEFAULT 0 NOT NULL, confidence_accuracy real, last_review text, FOREIGN KEY (user_id) REFERENCES users(id), FOREIGN KEY (topic_id) REFERENCES topics(id))',
+  'CREATE TABLE user_topic_state (id integer PRIMARY KEY AUTOINCREMENT NOT NULL, user_id text NOT NULL, topic_id text NOT NULL, stability real DEFAULT 0 NOT NULL, difficulty real DEFAULT 0 NOT NULL, due text NOT NULL, state integer DEFAULT 0 NOT NULL, reps integer DEFAULT 0 NOT NULL, lapses integer DEFAULT 0 NOT NULL, mastered integer DEFAULT 0 NOT NULL, frontier integer DEFAULT 0 NOT NULL, consecutive_correct_reviews integer DEFAULT 0 NOT NULL, consecutive_incorrect_reviews integer DEFAULT 0 NOT NULL, confidence_accuracy real, last_review text, FOREIGN KEY (user_id) REFERENCES users(id), FOREIGN KEY (topic_id) REFERENCES topics(id))',
   'CREATE UNIQUE INDEX uts_user_topic_idx ON user_topic_state (user_id, topic_id)',
   'CREATE INDEX uts_user_frontier_idx ON user_topic_state (user_id, frontier)',
   'CREATE INDEX uts_user_due_idx ON user_topic_state (user_id, due)',

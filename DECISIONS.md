@@ -937,3 +937,23 @@ Child creation now creates both an org member (student role) and an account_link
 **Alternatives rejected:**
 - Proceed to content generation with known system issues: Would generate content calibrated against broken behavior, requiring re-calibration after fixes
 - Fix everything in Plan 017 Phase 6: Too much scope for a single phase — dedicated plan enables incremental validation after each fix
+
+---
+
+## 2026-03-08: Mastery criterion tuned with hysteresis and dual-path
+
+**Decision:** Rewrote mastery convergence logic with three changes:
+1. **Lowered stability threshold** from >= 14 to >= 7 (FSRS stability grows slowly at 1-day intervals)
+2. **Added alternative mastery path:** 5+ consecutive correct in any state, regardless of stability
+3. **Added hysteresis:** mastered topics require 2+ consecutive incorrect to lose mastery (not a single re-evaluation)
+4. **Separated actual correctness from FSRS rating:** misconception detection and mastery tracking use `isActuallyCorrect` (rating >= Hard), not `isCorrectReview` (rating >= Good). Correct answers with hint caps (Hard rating) are no longer treated as misconceptions.
+
+**Root causes found:**
+- Simulation didn't pass `problemId` → server graded against wrong problem → false misconceptions
+- Hint-capped ratings (correct + 3 hints = Hard) treated as incorrect for misconception/mastery purposes
+- `materializeMastery()` didn't set stability, difficulty, or consecutiveCorrectReviews
+- Consecutive correct counter only incremented in Review state (not Learning/Relearning)
+
+**Results:** strong-older: 100% → 0% mastery (before) → 100% → 90% (after). Diagnostic mastery preserved through session 1. Still declining for average-older due to diagnostic over-materialization (Phase 6) and insufficient topic review frequency (Phase 4).
+
+**Why these thresholds:** stability >= 7 balances false mastery vs real progress at 1-day intervals. Hysteresis of 2 prevents thrashing from single unlucky answers while still catching genuine regressions. The 5-consecutive path allows topics stuck in Learning state to reach mastery through demonstrated competence.

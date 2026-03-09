@@ -1,0 +1,1 @@
+ALTER TABLE `user_topic_state` ADD `consecutive_incorrect_reviews` integer DEFAULT 0 NOT NULL;
