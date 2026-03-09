@@ -41,6 +41,8 @@ import type {
   ConvergenceState,
   MiniSimResult,
   EvaluationStatus,
+  SignalSource,
+  SystemEvaluationResult,
 } from "./types.js";
 
 // ── Constants ────────────────────────────────────────────────────────
@@ -819,6 +821,120 @@ if (
   });
 }
 
+// ── Training Loop Utilities ──────────────────────────────────────────
+
+type FailedApproach = {
+  system: string;
+  approach: string;
+  result: string;
+  epoch: number;
+};
+
+/**
+ * Select the highest-priority fix target from failing systems.
+ *
+ * Priority ordering: P0 > P1 > P2, then by normalized delta (worst first).
+ * Skips systems with non-engine signal_source and systems that have
+ * exhausted their fix attempts (≥ maxAttempts failed approaches).
+ */
+function selectFixTarget(
+  systems: SystemEvaluationResult[],
+  signalSources: Record<string, SignalSource>,
+  failedApproaches: Record<string, FailedApproach[]>,
+  maxAttempts: number = 2,
+  targetSystem?: string
+): SystemEvaluationResult | null {
+  const failing = systems.filter((s) => s.status === "FAIL");
+  if (failing.length === 0) return null;
+
+  // If targeting a specific system, use it if it's failing
+  if (targetSystem) {
+    return failing.find((s) => s.systemId === targetSystem) ?? null;
+  }
+
+  const priorityOrder: Record<string, number> = { P0: 0, P1: 1, P2: 2 };
+
+  const candidates = failing
+    .filter((s) => {
+      // Skip non-engine signal sources
+      const source = signalSources[s.systemId];
+      if (source && source !== "engine") return false;
+      // Skip systems with exhausted attempts
+      const attempts = failedApproaches[s.systemId] ?? [];
+      if (attempts.length >= maxAttempts) return false;
+      return true;
+    })
+    .sort((a, b) => {
+      // Sort by priority first
+      const pDiff = (priorityOrder[a.priority] ?? 9) - (priorityOrder[b.priority] ?? 9);
+      if (pDiff !== 0) return pDiff;
+      // Then by normalized delta magnitude (worst first)
+      const aDelta = Math.abs(a.delta) / (a.target || 1);
+      const bDelta = Math.abs(b.delta) / (b.target || 1);
+      return bDelta - aDelta;
+    });
+
+  return candidates[0] ?? null;
+}
+
+/**
+ * Check if all remaining failures are content/bridge signal source
+ * (i.e., the engine is fully optimized, only content changes can help).
+ */
+function isContentConverged(
+  systems: SystemEvaluationResult[],
+  signalSources: Record<string, SignalSource>
+): boolean {
+  const failing = systems.filter((s) => s.status === "FAIL");
+  if (failing.length === 0) return false; // Not content-converged, just converged
+  return failing.every((s) => {
+    const source = signalSources[s.systemId];
+    return source === "content" || source === "bridge";
+  });
+}
+
+/**
+ * Detect soft regressions: systems whose metrics worsened beyond tolerance
+ * between two evaluations, even if their status didn't change.
+ */
+function detectSoftRegressions(
+  current: SystemEvaluationResult[],
+  previous: SystemEvaluationResult[],
+  fixTarget?: string
+): Array<{ systemId: string; before: number; after: number; tolerance: number }> {
+  const regressions: Array<{ systemId: string; before: number; after: number; tolerance: number }> = [];
+
+  for (const sys of current) {
+    if (sys.systemId === fixTarget) continue; // Skip the fix target itself
+    const prev = previous.find((s) => s.systemId === sys.systemId);
+    if (!prev) continue;
+
+    // Check if metric worsened beyond tolerance
+    let worsened = false;
+    if (sys.direction === "higher_better") {
+      worsened = prev.actual - sys.actual > sys.tolerance;
+    } else if (sys.direction === "lower_better") {
+      worsened = sys.actual - prev.actual > sys.tolerance;
+    } else if (sys.direction === "in_range") {
+      // For in_range, check if it moved further from the range
+      const prevDist = Math.max(0, prev.actual - (prev.target + prev.tolerance), (prev.target - prev.tolerance) - prev.actual);
+      const curDist = Math.max(0, sys.actual - (sys.target + sys.tolerance), (sys.target - sys.tolerance) - sys.actual);
+      worsened = curDist - prevDist > sys.tolerance;
+    }
+
+    if (worsened) {
+      regressions.push({
+        systemId: sys.systemId,
+        before: prev.actual,
+        after: sys.actual,
+        tolerance: sys.tolerance,
+      });
+    }
+  }
+
+  return regressions;
+}
+
 // ── Exports ──────────────────────────────────────────────────────────
 
 export {
@@ -831,4 +947,7 @@ export {
   computeDelta,
   detectConvergence,
   generateCheckpointSummary,
+  selectFixTarget,
+  isContentConverged,
+  detectSoftRegressions,
 };

@@ -19,6 +19,25 @@ Run an autonomous multi-epoch training loop on the learn-platform adaptive engin
 /train --continue               # Resume from previous /train state (reads history)
 ```
 
+### Argument Parsing
+
+```
+MAX_EPOCHS = 5
+TARGET_SYSTEM = null
+DRY_RUN = false
+CONTINUE = false
+
+Parse arguments from the user's invocation:
+- If "--epochs" found: MAX_EPOCHS = next arg (integer)
+- If "--target" found: TARGET_SYSTEM = next arg (system ID from targets.json)
+- If "--dry-run" found: DRY_RUN = true
+- If "--continue" found: CONTINUE = true
+
+Valid system IDs: mastery_convergence, mastery_preservation, difficulty_targeting,
+  review_new_balance, interleaving, fire_compression, remediation_routing,
+  presentation_drift, diagnostic_placement, cognitive_demand_entropy
+```
+
 ## Prerequisites
 
 Before starting, verify:
@@ -32,6 +51,14 @@ git status --porcelain               # Working tree is clean (for rollback safet
 ```
 
 If working tree is dirty, warn: "Uncommitted changes detected. Commit or stash before training to enable safe rollback."
+
+If `CONTINUE`:
+```bash
+# Load previous training state
+cat simulations/reports/training/latest-state.json 2>/dev/null
+```
+If state exists: resume with `systems_fixed`, `systems_skipped`, `failed_approaches` from previous run. Set epoch counter to `epochs_completed + 1`.
+If no state: warn "No previous training state found. Starting fresh."
 
 ---
 
@@ -55,7 +82,8 @@ If working tree is dirty, warn: "Uncommitted changes detected. Commit or stash b
 │    9. If mini-verify fails → rollback, try alt       │
 │   10. Full re-evaluate → check for regressions       │
 │   11. If regression → rollback, try alt or skip      │
-│   12. Log epoch results                              │
+│   12. Log epoch results, save state                  │
+│   13. Loop back to 1 or stop                         │
 │                                                     │
 │  Output: training summary with before/after/delta    │
 └─────────────────────────────────────────────────────┘
@@ -70,19 +98,43 @@ just heal-epoch 30 42
 This runs all profiles (30 sessions, seed 42) and evaluates.
 
 **Step 2: Evaluate**
-Read `simulations/reports/evaluation.json`. Parse system results into a status table.
+```bash
+cat simulations/reports/evaluation.json
+```
+Parse the JSON — extract from `systems` array:
+- `systemId`, `status` (PASS/WARN/FAIL), `actual`, `target`, `delta`, `priority`, `contributingProfiles`
+
+Build a status table and print it:
+```
+| System               | Actual | Target | Status | Priority | Δ from target |
+|----------------------|--------|--------|--------|----------|---------------|
+```
 
 If `--target <system>` is set, only consider that system for fixing (but still evaluate all for regression detection).
 
 **Step 3: Check termination conditions**
 See [Convergence & Stall Criteria](#convergence--stall-criteria) below.
 
+Also check: if this is epoch 2+, compare current systems vs previous epoch's systems:
+```python
+# Pseudo-code for regression check between epochs
+for system in current_systems:
+    prev = find_in_previous_epoch(system.systemId)
+    if prev and prev.status == "PASS" and system.status == "FAIL":
+        # This is a regression from a PREVIOUS fix — flag it
+```
+
 **Step 4: Select fix target**
 Priority ordering:
-1. Sort by priority: P0 > P1 > P2
-2. Within same priority: sort by normalized delta (worst first)
-3. Skip systems with `signal_source: "content"` (these need content generation, not engine fixes)
-4. Skip systems already in `failed_approaches` with 2+ failed attempts this session
+1. Filter to FAIL systems only
+2. Sort by priority: P0 > P1 > P2
+3. Within same priority: sort by normalized delta magnitude (worst first)
+4. Skip `signal_source: "bridge"` or `"content"` systems — read from `simulations/targets.json`:
+   - Currently only `cognitive_demand_entropy` is `bridge` (all others are `engine`)
+5. Skip systems already in `failed_approaches` with 2+ failed attempts this session
+6. If `TARGET_SYSTEM` is set: override selection, use that system (if it's FAIL)
+
+If no fixable systems remain: stop with content-converged or all-skipped report.
 
 **Step 5: Create restore point**
 ```bash
@@ -90,11 +142,23 @@ git stash push -m "train-epoch-N-before-<system-id>"
 ```
 
 **Step 6: Diagnose root cause**
-Follow the system-specific playbook from `/heal`:
-1. Read `investigationArea` from evaluation JSON (files, functions, events)
-2. Inspect simulation events for worst-contributing profile (see `/heal` Step 2)
-3. Trace metric through code path
-4. Form hypothesis
+Follow the system-specific playbook from `/heal` (`.workflow/commands/heal.md` → "System-Specific Diagnosis Playbooks"):
+
+1. **Read investigation area** from evaluation JSON — each system result has `investigationArea: { files, functions, relevantEvents }`
+2. **Read the playbook** for the target system in heal.md. The playbook lists:
+   - Which source files to inspect
+   - Common root causes (ordered by likelihood)
+   - Diagnostic traces to run
+3. **Inspect simulation events** for worst-contributing profile:
+   ```bash
+   # Find latest run for the contributing profile
+   ls -t simulations/runs/<profile>-* | head -1
+   cat simulations/runs/<latest>/events.jsonl | head -100
+   cat simulations/runs/<latest>/summary.json
+   ```
+4. **Trace the metric** through the code path: evaluate.ts metric computation → service code that produces the behavior
+5. **Form hypothesis:** "The metric fails because [X] in [file:function] causes [Y behavior]"
+6. **Check failed_approaches** — don't re-attempt an approach that already failed for this system
 
 **Step 7: Implement fix**
 1. Make the minimal code change
@@ -103,9 +167,12 @@ Follow the system-specific playbook from `/heal`:
 
 **Step 8: Mini-verify**
 ```bash
-just heal-verify <system-id> --profiles <contributing-profiles> --sessions 10
+# Use positional args for justfile (named args are: system profiles sessions seed)
+just heal-verify <system-id> <contributing-profiles-comma-separated> 10 42
 ```
-- **Improved:** Proceed to Step 10
+Example: `just heal-verify interleaving average-older,strong-older 10 42`
+
+- **Improved** (metric moved toward target): Proceed to Step 9
 - **Unchanged/regressed:** Go to [Rollback Protocol](#regression-safety-protocol)
 
 **Step 9: Full re-evaluate**
@@ -124,6 +191,19 @@ Compare ALL systems against the pre-fix epoch. Check for regressions.
 Record in training state:
 - System targeted, fix applied, before/after metrics
 - Whether fix was successful, rolled back, or skipped
+
+Save training state after each epoch for `--continue` support:
+```bash
+mkdir -p simulations/reports/training
+```
+Write the training state JSON (see [Training State](#training-state)) to:
+- `simulations/reports/training/train-<timestamp>.json` (permanent record)
+- `simulations/reports/training/latest-state.json` (overwritten each epoch for `--continue`)
+
+**Step 12: Loop or stop**
+- Increment epoch counter
+- If epoch counter >= MAX_EPOCHS: stop with max-epochs report
+- Otherwise: go back to Step 1
 
 ---
 

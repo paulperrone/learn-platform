@@ -10,6 +10,9 @@ import {
   generateCheckpointSummary,
   loadHistory,
   saveHistory,
+  selectFixTarget,
+  isContentConverged,
+  detectSoftRegressions,
 } from "../heal-loop.js";
 import type {
   HealEpoch,
@@ -17,6 +20,7 @@ import type {
   HealingReport,
   SystemEvaluationResult,
   ConvergenceState,
+  SignalSource,
 } from "../types.js";
 import { mkdirSync, rmSync, existsSync } from "fs";
 import { join } from "path";
@@ -293,6 +297,162 @@ console.log("\n9. detectConvergence — not stalled with improvements");
 
   const convergence = detectConvergence(history);
   assertEqual(convergence.status, "running", "not stalled when b improved");
+}
+
+// ── Test: selectFixTarget — priority ordering ───────────────────────
+
+console.log("\n10. selectFixTarget — priority ordering");
+{
+  const systems = [
+    makeSystemResult("review_new_balance", "FAIL", 0.88, 0.60),
+    makeSystemResult("mastery_convergence", "FAIL", 2, 4),
+    makeSystemResult("interleaving", "FAIL", 0.14, 0.10),
+  ];
+  // Override priorities to match real targets
+  systems[0].priority = "P1";
+  systems[1].priority = "P0";
+  systems[2].priority = "P1";
+
+  const sources: Record<string, SignalSource> = {
+    review_new_balance: "engine",
+    mastery_convergence: "engine",
+    interleaving: "engine",
+  };
+
+  const result = selectFixTarget(systems, sources, {});
+  assertEqual(result?.systemId, "mastery_convergence", "P0 system selected first");
+}
+
+// ── Test: selectFixTarget — skips non-engine signal sources ─────────
+
+console.log("\n11. selectFixTarget — skips bridge/content signal sources");
+{
+  const systems = [
+    makeSystemResult("cognitive_demand_entropy", "FAIL", 0.5, 0.9),
+    makeSystemResult("review_new_balance", "FAIL", 0.88, 0.60),
+  ];
+  systems[0].priority = "P2";
+  systems[1].priority = "P1";
+
+  const sources: Record<string, SignalSource> = {
+    cognitive_demand_entropy: "bridge",
+    review_new_balance: "engine",
+  };
+
+  const result = selectFixTarget(systems, sources, {});
+  assertEqual(result?.systemId, "review_new_balance", "bridge system skipped, engine selected");
+}
+
+// ── Test: selectFixTarget — skips exhausted systems ─────────────────
+
+console.log("\n12. selectFixTarget — skips systems with 2+ failed attempts");
+{
+  const systems = [
+    makeSystemResult("mastery_convergence", "FAIL", 2, 4),
+    makeSystemResult("interleaving", "FAIL", 0.14, 0.10),
+  ];
+  systems[0].priority = "P0";
+  systems[1].priority = "P1";
+
+  const sources: Record<string, SignalSource> = {
+    mastery_convergence: "engine",
+    interleaving: "engine",
+  };
+
+  const failedApproaches = {
+    mastery_convergence: [
+      { system: "mastery_convergence", approach: "a", result: "unchanged", epoch: 1 },
+      { system: "mastery_convergence", approach: "b", result: "regressed", epoch: 2 },
+    ],
+  };
+
+  const result = selectFixTarget(systems, sources, failedApproaches);
+  assertEqual(result?.systemId, "interleaving", "exhausted P0 skipped, P1 selected");
+}
+
+// ── Test: selectFixTarget — returns null when no candidates ─────────
+
+console.log("\n13. selectFixTarget — returns null when all skipped/passing");
+{
+  const systems = [
+    makeSystemResult("a", "PASS", 8, 6),
+    makeSystemResult("b", "WARN", 5, 7),
+  ];
+
+  const result = selectFixTarget(systems, {}, {});
+  assertEqual(result, null, "no FAIL systems = null");
+}
+
+// ── Test: selectFixTarget — --target override ───────────────────────
+
+console.log("\n14. selectFixTarget — target system override");
+{
+  const systems = [
+    makeSystemResult("mastery_convergence", "FAIL", 2, 4),
+    makeSystemResult("interleaving", "FAIL", 0.14, 0.10),
+  ];
+  systems[0].priority = "P0";
+  systems[1].priority = "P1";
+
+  const result = selectFixTarget(systems, {}, {}, 2, "interleaving");
+  assertEqual(result?.systemId, "interleaving", "target override selects specified system");
+}
+
+// ── Test: isContentConverged ────────────────────────────────────────
+
+console.log("\n15. isContentConverged");
+{
+  const systems1 = [
+    makeSystemResult("a", "PASS", 8, 6),
+    makeSystemResult("cognitive_demand_entropy", "FAIL", 0.5, 0.9),
+  ];
+  const sources1: Record<string, SignalSource> = {
+    a: "engine",
+    cognitive_demand_entropy: "bridge",
+  };
+  assert(isContentConverged(systems1, sources1), "only bridge FAIL = content-converged");
+
+  const systems2 = [
+    makeSystemResult("a", "FAIL", 3, 6),
+    makeSystemResult("cognitive_demand_entropy", "FAIL", 0.5, 0.9),
+  ];
+  const sources2: Record<string, SignalSource> = {
+    a: "engine",
+    cognitive_demand_entropy: "bridge",
+  };
+  assert(!isContentConverged(systems2, sources2), "engine FAIL present = not content-converged");
+
+  const systems3 = [
+    makeSystemResult("a", "PASS", 8, 6),
+    makeSystemResult("b", "PASS", 7, 7),
+  ];
+  assert(!isContentConverged(systems3, {}), "all PASS = not content-converged (just converged)");
+}
+
+// ── Test: detectSoftRegressions ─────────────────────────────────────
+
+console.log("\n16. detectSoftRegressions");
+{
+  const previous = [
+    makeSystemResult("a", "FAIL", 3, 6),   // target: 6, tolerance: 1
+    makeSystemResult("b", "PASS", 8, 6),   // target: 6, tolerance: 1
+  ];
+  const current = [
+    makeSystemResult("a", "FAIL", 3, 6),   // unchanged
+    makeSystemResult("b", "PASS", 7.5, 6), // dropped 8→7.5, delta 0.5 within tolerance of 1
+  ];
+
+  const regs = detectSoftRegressions(current, previous, "a");
+  assertEqual(regs.length, 0, "no soft regression when within tolerance (fix target excluded)");
+
+  // Now simulate a worse case
+  const currentBad = [
+    makeSystemResult("a", "FAIL", 3, 6),
+    makeSystemResult("b", "PASS", 5, 6),   // dropped 8→5, beyond tolerance of 1
+  ];
+  const regsBad = detectSoftRegressions(currentBad, previous, "a");
+  assertEqual(regsBad.length, 1, "soft regression detected beyond tolerance");
+  assertEqual(regsBad[0]?.systemId, "b", "regression on system b");
 }
 
 // ── Summary ──────────────────────────────────────────────────────────
