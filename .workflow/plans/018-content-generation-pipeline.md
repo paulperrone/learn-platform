@@ -1,7 +1,7 @@
 # Plan 018: Content Generation Pipeline
 
 > **Created:** 2026-03-05T21:00:00Z
-> **Updated:** 2026-03-08T21:45:00Z — Rewritten to incorporate simulation dependency (Plan 017), procedural generators, presentation analytics, content gap detection
+> **Updated:** 2026-03-09T00:15:00Z — Updated blocking dependency (017.5), content priority signals, Phase 0 simulation file references
 > **Completed:** —
 >
 > For project context, see [CLAUDE.md](../../CLAUDE.md)
@@ -15,10 +15,10 @@ The production system for creating content at scale. All text content — knowle
 **OpenRouter is NOT used for content generation.** It's reserved for in-app runtime LLM features (tutoring, grading, self-explanation). See DECISIONS.md 2026-03-07.
 
 **Depends on:**
-- **Plan 017 Phase 6 (Readiness Gate)** — System must pass simulation validation before content generation begins. If Plan 017.5 is created, this plan is blocked until 017.5 completes.
+- **Plan 017.5 (System Remediation & Retest)** — All 7 adaptive systems must pass simulation readiness gate before content generation begins. If Plan 017.5's Phase 7 gate fails, Plan 017.6 extends the block. See `simulations/reports/system-readiness.md` for current status.
 - Plan 007 Phase 1 (content model — `instructional_content` and `assessment_content` tables)
 - Plan 008 Phase 1 (content strategy — what to generate and in what order)
-- Plan 013 Phase 4 (encompassing methodology documentation)
+- Plan 013 Phase 4 (encompassing methodology documentation in `docs/content-system.md`)
 - Plan 014 (cognitive demand tagging)
 
 **Content authoring model:**
@@ -68,7 +68,7 @@ Topic (graph node)
 **In Progress:** —
 **Next:** Phase 0 (blocked on Plan 017.5 — system remediation must pass before content generation)
 
-**Blocking dependency:** Plan 017 Phase 6 readiness gate determined FAIL (5/7 systems). Plan 017.5 (System Remediation & Retest) created to address: mastery convergence, remediation routing, FIRe compression, interleaving, presentation drift, diagnostic bounds. This plan remains blocked until 017.5 completes and all systems pass re-simulation.
+**Blocking dependency:** Plan 017 Phase 6 readiness gate determined FAIL (5/7 systems). Plan 017.5 (System Remediation & Retest) addresses: mastery convergence, remediation routing, FIRe compression, interleaving, presentation drift, diagnostic bounds. This plan remains blocked until 017.5 Phase 7 (or 017.6 if needed) completes with all systems at PASS or WARN. See DECISIONS.md 2026-03-08 entry for full rationale.
 
 **Content priority signals from simulation (Plan 017 Phase 5):**
 - 24 topics flagged as too hard for strong profiles (<70% accuracy) — prioritize problem review/rewrite for: coordinate-plane, unit-conversion, multi-digit-multiply, and 21 others (see `simulations/reports/content-quality.md`)
@@ -100,11 +100,13 @@ Topic (graph node)
    - Output actionable report: "Top 20 content gaps to fill, ranked by impact"
    - Add `just content-gaps` recipe to justfile
 
-4. [ ] [IMP] Integrate with Plan 017 simulation output:
-   - Parse `simulations/reports/content-quality.md` from Plan 017 Phase 5
+4. [ ] [IMP] Integrate with Plan 017/017.5 simulation output:
+   - Parse `simulations/reports/content-quality.md` (24 too-hard topics, 47 difficulty calibration issues — from Plan 017 Phase 5)
+   - Parse `simulations/baseline.json` for per-topic accuracy metrics (updated by Plan 017.5 Phase 7)
    - Merge simulation-identified weak topics (strong profiles score <70%) into content status
    - Merge simulation-identified too-easy topics (all profiles >95%) into content status
    - Unified view: content health = static analysis + simulation signals
+   - Re-read simulation data after Plan 017.5 completes — baselines will reflect fixed system behavior, producing more reliable content quality signals
 
 5. [ ] [TST] Run `just content-status` and `just content-gaps` against math-foundations. Verify output is accurate and actionable. Confirm simulation data integration works with Plan 017 output.
 
