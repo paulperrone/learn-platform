@@ -366,6 +366,11 @@ export function createSRSService(db: DB) {
         if (childState.mastered) continue;
         if (childState.reps === 0) continue;
         if (childState.stability <= 0) continue;
+        // Only apply virtual reviews to children in Review state.
+        // Learning/Relearning use step-based scheduling (stability stays flat),
+        // and New state can decrease stability. Virtual reviews on non-Review
+        // cards disrupt FSRS scheduling and increase review frequency.
+        if (childState.state !== State.Review) continue;
 
         // Skip if child is fresh — high retrievability means no marginal benefit
         const retrievability = computeRetrievability(childState);

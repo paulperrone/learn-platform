@@ -529,9 +529,12 @@ export function createSessionService(db: DB) {
           };
         }
 
-        // Apply FIRe credit (on success) or upward penalty (on failure)
+        // Apply FIRe credit on successful reviews.
+        // Upward penalty (applyUpwardPenalty) is disabled: it has no research
+        // basis in the FIRe model, and empirically it generates more reviews
+        // than FIRe saves for struggling profiles, producing net negative
+        // compression. Remediation routing already handles prerequisite gaps.
         await srs.applyFIReCredit(state.userId, state.currentTopicId, rating);
-        await srs.applyUpwardPenalty(state.userId, state.currentTopicId, rating);
 
         // Nudge presentation distribution based on performance
         if (state.lastServedPresentation && state.lastServedSubjectId) {
