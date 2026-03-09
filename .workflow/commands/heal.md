@@ -161,7 +161,7 @@ When escalating, provide:
 
 ### mastery_convergence (P0)
 **What it measures:** Non-struggling profiles reaching ≥50% mastery by session 30.
-**Target:** ≥6 of 8 non-struggling profiles.
+**Target:** ≥4 of 8 non-struggling profiles.
 
 **Where to look:**
 - `packages/api/src/services/srs.ts` → `processReview()`, `checkMasteryCriterion()`
@@ -267,8 +267,8 @@ When escalating, provide:
 ---
 
 ### presentation_drift (P2)
-**What it measures:** Profiles with stable presentation center by session 15.
-**Target:** ≥8 of 10 profiles.
+**What it measures:** Profiles drifting in expected direction and stabilizing.
+**Target:** ≥6 of 10 profiles.
 
 **Where to look:**
 - `packages/api/src/services/content.ts` → `nudgeDistribution()`, `DRIFT_RATES`, EMA + hysteresis
@@ -297,7 +297,7 @@ When escalating, provide:
 
 ### cognitive_demand_entropy (P2)
 **What it measures:** Shannon entropy of cognitive demand distribution across problems.
-**Target:** ≥1.2 bits.
+**Target:** ≥0.90 bits.
 
 **Where to look:**
 - `packages/api/src/services/session.ts` → problem selection

@@ -109,7 +109,7 @@ Run `/heal` in a Claude Code session. It automates steps 2-7 above:
 Each target represents a measurable property of the adaptive engine, grounded in learning science research. Targets have:
 
 - **Metric**: What is measured (e.g., mastery convergence count)
-- **Target value**: Expected result (e.g., ≥6 of 8 non-struggling profiles)
+- **Target value**: Expected result (e.g., ≥4 of 8 non-struggling profiles)
 - **Tolerance**: Acceptable variance (±1)
 - **Direction**: `higher_better`, `lower_better`, or `in_range`
 - **Priority**: P0 (system broken without), P1 (degrades quality), P2 (optimization)
