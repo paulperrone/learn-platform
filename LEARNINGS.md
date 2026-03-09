@@ -579,3 +579,12 @@ The 30-session `baseline.json` was from pre-017.5 (showed 0% mastery for most pr
 **Area:** Simulation tooling / TypeScript
 
 Simulation scripts run via `npx tsx` default to CJS output format. Top-level `await` (e.g., `const x = await import(...)` at module scope) causes esbuild `TransformError`. Workaround: use static imports, or wrap async code in a `main()` function. Also guard CLI execution with `if (process.argv[1]?.endsWith("filename.ts"))` so the main block doesn't fire when the module is imported by tests or other scripts.
+
+---
+
+### 2026-03-09: loadTargets() returns LoadResult wrapper, not TargetFile directly
+
+**Source:** Plan 017.7 Phase 5
+**Area:** Simulation tooling
+
+`loadTargets()` in `simulations/src/load-targets.ts` returns `{ targets, errors, warnings }` (type `LoadResult`), not a raw `TargetFile`. Code consuming targets must destructure: `const { targets } = loadTargets()`. This tripped up `detect-changes.ts` which tried to call `Object.entries(targets.systems)` on the wrapper object.
