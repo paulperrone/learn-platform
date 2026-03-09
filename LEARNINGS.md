@@ -444,3 +444,30 @@ Single-failure remediation (entering remediation on the first incorrect answer i
 **Area:** Session service / Remediation
 
 When the diagnostic materializes many topics (40-71), sessions become 100% review with 0 new topic introduction. If review topics can't trigger remediation, the remediation system is completely bypassed. Review topics now get a retry on first failure (stay on topic) and trigger remediation on 2nd failure via the accumulated `sessionFailures` counter.
+
+---
+
+### 2026-03-09: FIRe stability bonus model doesn't work — FSRS overwrites on next review
+
+**Source:** Plan 017.5 Phase 3 implementation
+**Area:** SRS service / FIRe credit
+
+Attempted to change FIRe credit from due-date advancement to stability bonus: boost child topic's `stability` value so FSRS schedules the next review further out. Failed because FSRS recomputes stability from scratch on every `scheduleReview()` call: `scheduling[rating].card.stability` overwrites the bonus completely. The stability bonus is ephemeral — it exists only between FIRe credit application and the next explicit review. Due-date extension (pushing due dates further out) works because FSRS sets a NEW due date on each review but doesn't read/consider the current due date for scheduling calculations.
+
+---
+
+### 2026-03-09: compressReviews greedy set-cover had coverage leak — covered children not removed from remaining
+
+**Source:** Plan 017.5 Phase 3 analysis
+**Area:** SRS service / review compression
+
+The `compressReviews()` greedy set-cover algorithm marked covered children in a `covered` Set but did NOT remove them from the `remaining` Set. This meant the loop continued selecting topics from the full candidate pool until `budget` was reached, regardless of how many topics were already implicitly covered. Fix: also call `remaining.delete(id)` for each covered child. This enables the loop to terminate early when all due topics are covered with fewer than `budget` explicit reviews.
+
+---
+
+### 2026-03-09: FIRe compression requires reduced review dominance to be effective
+
+**Source:** Plan 017.5 Phase 3 simulation gate
+**Area:** FIRe / session service
+
+FIRe due-date extension and review compression both work at the unit test level, but show 0% compression in simulation. Root cause: diagnostic materializes 40+ topics simultaneously, all immediately overdue. With this many due topics, the review budget (5 slots) always fills regardless of FIRe compression. FIRe can only reduce explicit reviews when the due pool is small enough that compression reduces it BELOW the budget. Requires Phase 4 session mix changes (review cap, new-topic guarantee) to reduce the perpetually-full review queue.

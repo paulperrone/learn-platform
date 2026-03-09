@@ -62,7 +62,7 @@ describe("confidence-fsrs-fire integration", () => {
       lastReview: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toISOString(),
     });
 
-    // Children: reviewed, due in 10 days (FIRe credit will pull forward)
+    // Children: reviewed, due in 10 days (FIRe credit will boost stability)
     const childDue = new Date(Date.now() + 10 * 24 * 60 * 60 * 1000).toISOString();
     await seedUserTopicState(user.id, "child1", {
       stability: 8, difficulty: 5, reps: 2, state: 2,
@@ -83,7 +83,7 @@ describe("confidence-fsrs-fire integration", () => {
     return { db, user, subject };
   }
 
-  it("high confidence + correct → Easy rating → extended interval, FIRe credit flows", async () => {
+  it("high confidence + correct → Easy rating → extended interval, FIRe extends child due dates", async () => {
     const { db, user } = await setupGraph();
     const srs = createSRSService(db);
 
@@ -108,7 +108,7 @@ describe("confidence-fsrs-fire integration", () => {
     const credits = await srs.applyFIReCredit(user.id, "parent", Rating.Easy);
     expect(credits.length).toBeGreaterThanOrEqual(1);
 
-    // Child1 due date should be pulled forward
+    // Child1 due date should be pushed further out (extension model)
     const [child1After] = await db.select()
       .from(schema.userTopicState)
       .where(and(
@@ -117,7 +117,7 @@ describe("confidence-fsrs-fire integration", () => {
       ));
 
     expect(new Date(child1After.due).getTime())
-      .toBeLessThan(new Date(child1Before.due).getTime());
+      .toBeGreaterThan(new Date(child1Before.due).getTime());
   });
 
   it("low confidence + correct → capped at Good → shorter interval", async () => {
@@ -166,7 +166,7 @@ describe("confidence-fsrs-fire integration", () => {
     expect(state.consecutiveCorrectReviews).toBe(0);
   });
 
-  it("FIRe credit flows multi-hop with diminishing weight", async () => {
+  it("FIRe due-date extension flows multi-hop with diminishing weight", async () => {
     const { db, user } = await setupGraph();
     const srs = createSRSService(db);
 
@@ -195,7 +195,7 @@ describe("confidence-fsrs-fire integration", () => {
       expect(gcCredit.weight).toBeLessThan(child1Credit.weight);
     }
 
-    // Verify grandchild due date pulled forward (if credit was significant enough)
+    // Verify grandchild due date pushed further out (if credit was significant enough)
     const [gcAfter] = await db.select()
       .from(schema.userTopicState)
       .where(and(
@@ -205,7 +205,7 @@ describe("confidence-fsrs-fire integration", () => {
 
     if (gcCredit) {
       expect(new Date(gcAfter.due).getTime())
-        .toBeLessThan(new Date(gcBefore.due).getTime());
+        .toBeGreaterThan(new Date(gcBefore.due).getTime());
     }
   });
 

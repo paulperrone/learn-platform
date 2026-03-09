@@ -980,3 +980,21 @@ Child creation now creates both an org member (student role) and an account_link
 - Review topics must participate in remediation or the system is completely bypassed after diagnostic
 
 **Results:** misconception-fractions: 0 remediations (before) → 704 remediations across 15 sessions (after). No regression on mastery convergence.
+
+---
+
+## 2026-03-09: FIRe credit model changed from due-date advancement to due-date extension
+
+**Decision:** Rewrote `applyFIReCredit()` to EXTEND child topic due dates further into the future (reducing review frequency) instead of ADVANCING them closer to now (which increased review frequency). Also fixed `compressReviews()` to properly remove covered children from the candidate pool, and updated `getSessionMix()` to use actual compressed review count instead of fixed budget.
+
+**Reasoning:**
+- Old model pulled child due dates closer → topics stayed perpetually "fresh" → more topics remained due → +20% review increase
+- New model pushes due dates further out → topics need review less often → review burden reduced
+- Stability bonus approach was rejected: FSRS overwrites stability on next explicit review, making bonuses ephemeral
+- `compressReviews` had a bug: covered children were marked as "covered" but NOT removed from `remaining`, so the greedy set-cover always filled the full budget
+
+**Alternatives rejected:**
+- Stability bonus: FSRS recomputes stability from scratch on each review, overwriting any accumulated bonus
+- Due-date advancement (original): paradoxically increased reviews by preventing natural lapsing
+
+**Results:** FIRe regression fixed (was +20% increase, now 0% neutral). 20% compression target not met due to diagnostic over-materialization creating 40+ simultaneously-due topics — blocked by Phase 4 session mix changes.

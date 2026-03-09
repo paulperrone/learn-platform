@@ -281,10 +281,11 @@ describe("FIRe review compression", () => {
         new Set()
       );
 
-      // Parent selected first (score=4: itself + 3 children), then one more
-      expect(selected.length).toBe(2);
+      // Parent covers all 3 children — only 1 explicit review needed
+      // (children removed from remaining via FIRe compression)
+      expect(selected.length).toBe(1);
       expect(selected[0].topicId).toBe(parent.id);
-      // All 4 due topics covered by just 2 explicit reviews
+      // All 4 due topics covered by just 1 explicit review
       expect(coveredCount).toBe(4);
       expect(coveredCount).toBeGreaterThan(selected.length);
     });

@@ -406,7 +406,7 @@ describe("createSRSService", () => {
   });
 
   describe("applyFIReCredit", () => {
-    it("moves child topic due date closer when parent is reviewed", async () => {
+    it("extends child due date further out when parent is reviewed", async () => {
       const db = getTestDb();
       const user = await seedUser({ id: "srs-user-8" });
       const subj = await seedSubject({ id: "srs-subj-8" });
@@ -433,7 +433,7 @@ describe("createSRSService", () => {
       expect(credits).toHaveLength(1);
       expect(credits[0].topicId).toBe(child.id);
 
-      // Verify due date moved closer
+      // Verify due date pushed further out (extension model — reduces review frequency)
       const [updated] = await db
         .select()
         .from(schema.userTopicState)
@@ -443,7 +443,7 @@ describe("createSRSService", () => {
             eq(schema.userTopicState.topicId, child.id)
           )
         );
-      expect(new Date(updated.due).getTime()).toBeLessThan(new Date(futureDue).getTime());
+      expect(new Date(updated.due).getTime()).toBeGreaterThan(new Date(futureDue).getTime());
     });
 
     it("flows credit through multi-hop encompassing", async () => {
@@ -528,6 +528,46 @@ describe("createSRSService", () => {
       if (credits.length > 0) {
         expect(credits[0].weight).toBeLessThan(0.1);
       }
+    });
+
+    it("caps due date extension at 50% of stability in days", async () => {
+      const db = getTestDb();
+      const user = await seedUser({ id: "srs-cap-1" });
+      const subj = await seedSubject({ id: "srs-cap-subj" });
+      const parent = await seedTopic(subj.id, { id: "srs-cap-p" });
+      const child = await seedTopic(subj.id, { id: "srs-cap-c" });
+      await seedEncompassing(parent.id, child.id, 0.9); // High weight
+
+      // Child with stability 10 days, very low retrievability (big discount factor)
+      const futureDue = new Date(Date.now() + 3 * 24 * 60 * 60 * 1000);
+      await db.insert(schema.userTopicState).values({
+        userId: user.id,
+        topicId: child.id,
+        due: futureDue.toISOString(),
+        mastered: false,
+        reps: 3,
+        stability: 10,
+        difficulty: 5,
+        lastReview: new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString(), // 30 days ago → low retrievability
+      });
+
+      const srs = createSRSService(db);
+      await srs.applyFIReCredit(user.id, parent.id, Rating.Good);
+
+      const [updated] = await db
+        .select()
+        .from(schema.userTopicState)
+        .where(
+          and(
+            eq(schema.userTopicState.userId, user.id),
+            eq(schema.userTopicState.topicId, child.id)
+          )
+        );
+      // Due date should be extended, but capped at 50% of stability (5 days max)
+      const extensionMs = new Date(updated.due).getTime() - futureDue.getTime();
+      const extensionDays = extensionMs / (24 * 60 * 60 * 1000);
+      expect(extensionDays).toBeGreaterThan(0);
+      expect(extensionDays).toBeLessThanOrEqual(5.01); // 50% of 10-day stability
     });
 
     it("does not apply credit on failure rating", async () => {

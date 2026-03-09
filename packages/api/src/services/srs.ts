@@ -350,22 +350,34 @@ export function createSRSService(db: DB) {
       const credits: { topicId: string; weight: number }[] = [];
       const now = new Date();
 
+      // FIRe due-date extension model: instead of advancing due dates closer
+      // (which kept topics perpetually fresh and increased review burden),
+      // EXTEND due dates further into the future. When a parent topic is
+      // reviewed successfully, its encompassed children need review less urgently.
+      // This directly reduces how often topics appear in the review queue.
+      // Cap extension at 50% of stability (in days) to prevent over-inflation.
+      const FIRE_EXTENSION_CAP = 0.5; // Max extension = 50% of stability in days
+
       for (const [childTopicId, weight] of visited) {
         const childState = await this.getOrCreateState(userId, childTopicId);
         if (childState.mastered) continue;
         if (childState.reps === 0) continue;
-
-        const dueDate = new Date(childState.due);
-        const remainingMs = dueDate.getTime() - now.getTime();
-        if (remainingMs <= 0) continue;
+        if (childState.stability <= 0) continue;
 
         // Early repetition discount: scale credit by (1 - retrievability)
         const retrievability = computeRetrievability(childState);
         const discountedWeight = weight * (1 - retrievability);
         if (discountedWeight < 0.01) continue;
 
-        const creditMs = remainingMs * discountedWeight;
-        const newDue = new Date(dueDate.getTime() - creditMs);
+        // Extend due date: push child's review further out
+        // Extension = stability * weight * (1 - R), capped at 50% of stability
+        const stabilityMs = childState.stability * 24 * 60 * 60 * 1000;
+        const rawExtensionMs = stabilityMs * discountedWeight;
+        const capMs = stabilityMs * FIRE_EXTENSION_CAP;
+        const extensionMs = Math.min(rawExtensionMs, capMs);
+
+        const dueDate = new Date(childState.due);
+        const newDue = new Date(dueDate.getTime() + extensionMs);
 
         await db
           .update(schema.userTopicState)
@@ -531,6 +543,10 @@ export function createSRSService(db: DB) {
         if (coverage) {
           for (const id of coverage) {
             covered.add(id);
+            // Remove covered children from remaining — they get implicit review
+            // via FIRe credit, so they don't need explicit review this session.
+            // This is the core compression mechanism: fewer explicit reviews needed.
+            remaining.delete(id);
           }
         }
       }
@@ -613,15 +629,20 @@ export function createSRSService(db: DB) {
 
       // --- Main: review + new interleaved ---
       const mainSlots = count - warmupCount - stretchItems.length;
-      const mainReviewCount = Math.ceil(mainSlots * 0.6);
-      const mainNewCount = mainSlots - mainReviewCount;
+      const mainReviewBudget = Math.ceil(mainSlots * 0.6);
 
-      // Use FIRe compression to select reviews that maximize implicit coverage
+      // Use FIRe compression to select reviews that maximize implicit coverage.
+      // compressReviews may return fewer than budget if encompassing coverage
+      // lets us skip explicit reviews for covered child topics.
       const { selected: compressedReviews, coveredCount } = await this.compressReviews(
         dueTopics,
-        mainReviewCount,
+        mainReviewBudget,
         warmupTopicIds
       );
+
+      // Freed slots (from FIRe compression) go to new topics
+      const actualReviewCount = compressedReviews.length;
+      const mainNewCount = mainSlots - actualReviewCount;
 
       const reviewTopics: MixItem[] = compressedReviews.map((t) => ({
         topicId: t.topicId,

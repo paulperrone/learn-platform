@@ -200,7 +200,7 @@ describe("FIRe multi-hop credit flow", () => {
     expect(creditMap.has(mul100.id)).toBe(true);
     expect(creditMap.has(skipCount.id)).toBe(true);
 
-    // Verify due dates moved earlier for all three
+    // Verify due dates pushed further out for all three (extension model)
     const statesAfter = await db
       .select()
       .from(schema.userTopicState)
@@ -208,7 +208,7 @@ describe("FIRe multi-hop credit flow", () => {
     for (const state of statesAfter) {
       const before = dueBefore.get(state.topicId);
       if (before && state.topicId !== orderOps.id) {
-        expect(new Date(state.due).getTime()).toBeLessThan(
+        expect(new Date(state.due).getTime()).toBeGreaterThan(
           new Date(before).getTime()
         );
       }
