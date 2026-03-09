@@ -314,20 +314,21 @@ When escalating, provide:
 ### fire_compression (P1)
 **What it measures:** Review count reduction vs no-FIRe baseline.
 **Target:** ≥20% reduction.
+**Current:** ~6.4% average (strong-older at 25%, varies by profile).
 
-**Post-017.7 context:** Reduced diagnostic materialization (only materialize topics at placement grade and above) brought FIRe from 0% → 8.5%. The root cause was: `applyFIReCredit()` skips `mastered=true` topics, so over-materializing with mastery blocked FIRe entirely. Further iteration should target encompassing graph density and session-level FIRe credit application.
+**Architecture (virtual FSRS reviews):** `applyFIReCredit()` gives encompassed children virtual FSRS reviews when a parent is reviewed successfully. Calls `repeat(card, Rating.Good)` and interpolates the stability increase by encompassing weight. Updates `stability`, `due`, `lastReview` — keeps FSRS state coherent. Skips children with retrievability > 0.9 (too fresh). Previous due-date extension approach was abandoned because it caused FSRS to interpret longer gaps as memory decay, producing negative compression.
 
 **Where to look:**
-- `packages/api/src/services/srs.ts` → `applyFIReCredit()`, `compressReviews()`
-- `packages/api/src/services/diagnostic.ts` → `materializeMastery()` — only materializes topics at `gradeLevel >= placementGrade`
-- `content/*/graph.json` → encompassing edge density (more edges = more FIRe credit opportunities)
+- `packages/api/src/services/srs.ts` → `applyFIReCredit()` (virtual FSRS reviews), `compressReviews()` (greedy set-cover session selection)
+- `content/*/graph.json` → encompassing edge density (more edges = more credit opportunities)
+- `docs/content-system.md` §4 → weight assignment rubric and encompassing design guide
 
 **Common root causes:**
 1. **~~Diagnostic over-materialization~~** *(fixed in 017.7 Phase 7)* — materializing ALL topics below placement filled the review budget. Now only placement-and-above topics are materialized.
-2. **Insufficient encompassing density** — FIRe credit scales with the number of encompassing edges. If the graph has few encompassing relationships, credit is sparse. Check `graph.json` for encompassing edge count.
-3. **FIRe credit keeps topics fresh instead of reducing reviews** — credit extends due dates by hours, but topics are overdue by days. Credit is too small to push topics past their due date.
-4. **FIRe credit applied to non-mastered topics** — credit should only compress reviews for mastered encompassing topics. `applyFIReCredit()` correctly skips mastered=true children.
-5. **Review pool too small** — FIRe compression = `1 - (fire_reviews / baseline_reviews)`. If the review pool is small (few non-mastered topics due for review), even good FIRe credit doesn't compress many reviews.
+2. **~~Due-date extension model~~** *(fixed: replaced with virtual FSRS reviews)* — extending `due` without updating `lastReview`/`stability` caused FSRS to interpret longer gaps as memory decay, increasing review frequency.
+3. **Insufficient encompassing density** — FIRe credit scales with the number of encompassing edges. Current graph has only 15 edges for 71 topics (target 1.0-2.0 edges/topic). Cross-strand edges provide the most compression value. Check `graph.json` encompassing count.
+4. **Weight accuracy** — Inaccurate weights mean virtual reviews over- or under-credit stability. Audit weights using the rubric in `docs/content-system.md` §4.
+5. **Review pool too small** — FIRe compression = `1 - (fire_reviews / baseline_reviews)`. If few non-mastered topics are due for review, even good credit doesn't compress many reviews.
 
 **Evaluation note:** FIRe compression requires paired simulation runs (with/without FIRe). Use `/heal --full` or `just evaluate-fire` for the definitive metric. Quick evaluation skips FIRe.
 

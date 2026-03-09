@@ -87,9 +87,10 @@ Absolute targets are preferred — they are self-contained and do not require a 
 - **Metric:** Review event reduction compared to no-FIRe baseline.
 - **Target:** ≥20% review reduction.
 - **Tolerance:** Measured as aggregate across all profiles. Individual profiles may vary from 5% to 40%.
-- **Known limitation:** Diagnostic over-materializes topics, keeping the review queue full regardless of compression. Fix direction: reduce materialization count.
-- **How to update:** As content grows with deeper encompassing chains, compression should increase. Raise target if baseline consistently exceeds 30%.
-- **Red flags:** If compression <15%, check encompassing edge coverage in `graph.json` and FIRe credit propagation in `srs.ts`.
+- **Known limitation:** Current encompassing density (15 edges / 71 topics) limits compression. Diagnostic over-materialization was fixed in 017.7.
+- **Implementation:** Virtual FSRS reviews — `applyFIReCredit()` calls `repeat(card, Rating.Good)` on encompassed children and interpolates stability increase by weight. Keeps FSRS state coherent. Previous due-date extension approach caused negative compression.
+- **How to update:** As content grows with deeper encompassing chains and cross-strand edges, compression should increase. Raise target if baseline consistently exceeds 30%.
+- **Red flags:** If compression <15%, check encompassing edge coverage in `graph.json` (target 1.0-2.0 edges/topic) and virtual review propagation in `srs.ts`.
 
 ### 2.7 Remediation Routing (P0)
 

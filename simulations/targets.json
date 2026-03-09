@@ -103,7 +103,7 @@
       "unit": "ratio",
       "direction": "higher_better",
       "science_ref": "Skycak 2026 (Math Academy FIRe model); Ausubel et al. 1957 (retroactive facilitation restores memory as effectively as direct repetition)",
-      "rationale": "≥20% review reduction vs no-FIRe baseline. Requires paired simulation runs (with/without encompassing edges). Known limitation: diagnostic over-materialization keeps review queue full regardless of compression.",
+      "rationale": "≥20% review reduction vs no-FIRe baseline. Requires paired simulation runs (with/without encompassing edges). Implementation: virtual FSRS reviews (stability interpolated by weight). Current limitation: low encompassing density (15 edges / 71 topics).",
       "source_files": [
         "packages/api/src/services/srs.ts"
       ],

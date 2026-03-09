@@ -61,7 +61,7 @@ just import-content   # Import content/ → local D1
 - Subjects belong to disciplines; disciplines define progression models (`mastery-gated`, `context-layered`, `flexible`)
 - Prerequisite edges have types: `required` (hard gate), `recommended` (context), `enriching` (suggestion)
 - Content has depth (`survey`, `contextual`, `analytical`, `synthesis`) and presentation (`primary`, `intermediate`, `standard`, `advanced`) dimensions. See `docs/content-system.md`.
-- FSRS state per user per topic; FIRe credit for encompassing relationships
+- FSRS state per user per topic; FIRe credit via virtual FSRS reviews for encompassing relationships
 - Learning loop phases: pretest → instruction → guided → independent → review → remediation
 - Tests: co-located `__tests__/` directory, `*.test.ts` naming, `@cloudflare/vitest-pool-workers` for API tests with miniflare D1. New services and routes must include vitest tests. Use helpers from `packages/api/src/__tests__/helpers.ts` for DB setup and seeding.
 

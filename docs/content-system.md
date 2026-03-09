@@ -130,7 +130,7 @@ Not every combination needs to exist. Build the most impactful combinations firs
 
 Encompassing edges are distinct from prerequisites. **Prerequisites** control sequencing — "you must learn A before B." **Encompassings** define implicit practice — "practicing B implicitly exercises A."
 
-When a student practices topic B and B encompasses A, the platform gives A fractional FIRe (Fractional Implicit Repetition) credit, reducing or delaying A's next explicit review. With sufficient encompassing density, most topics can be maintained through implicit repetition alone — Math Academy reports roughly one explicit review per topic on average.
+When a student practices topic B and B encompasses A, the platform gives A a **virtual FSRS review** — updating its spaced-repetition state (stability, due date, last review) as if it were actually reviewed, scaled by the encompassing weight. This is FIRe (Fractional Implicit Repetition) credit. With sufficient encompassing density, most topics can be maintained through implicit repetition alone — Math Academy reports roughly one explicit review per topic on average.
 
 ### How to Identify Encompassing Edges
 

@@ -190,16 +190,23 @@ For the full primary source, see `~/Desktop/the-math-academy-way.pdf` (Skycak, 2
 
 **Mechanism:**
 - Successful work on an advanced topic "trickles down" credit to encompassed simpler topics. Failed work on a simpler topic "flows up" as penalties to more advanced topics.
-- Multi-layer flow: credit/penalties travel many layers deep through the graph.
+- Multi-layer flow: credit/penalties travel many layers deep through the graph (up to 3 hops, pruned at 0.05 cumulative weight).
 - Partial encompassings: only a fraction of credit flows along partial edges. Credit travels unhindered along "trunk" of full encompassings but fades along partial branches.
-- Early repetition discount: if a repetition happens before the ideal interval (memory still too fresh), the credit is discounted.
+- Freshness gate: if the child topic was recently reviewed (retrievability > 0.9), implicit credit is skipped — the memory is already strong enough that additional reinforcement provides negligible benefit.
+
+**Credit implementation — Virtual FSRS reviews:**
+- When a parent topic is reviewed successfully, each encompassed child receives a *virtual* FSRS review: the system calls `repeat(card, Rating.Good)` and interpolates the resulting stability increase by the encompassing weight.
+- Weight 0.8 → child receives 80% of the stability increase a real Good review would produce. Weight 0.4 → 40%.
+- The virtual review updates `stability`, `due`, and `lastReview` but NOT `reps`, `difficulty`, `state`, or `lapses` — these reflect actual student interactions only.
+- This keeps FSRS state internally consistent: no forgetting curve distortion, no gap-as-decay misinterpretation.
+- Previous approach (due-date extension without FSRS state update) was abandoned because FSRS interpreted the longer gap between `lastReview` and the extended `due` as memory decay, *increasing* review frequency.
 
 **Repetition compression:**
-- Gather all topics with due repetitions. Compress into a much smaller set of tasks that covers all due repetitions while maximizing overall gain.
+- Gather all topics with due repetitions. Compress into a much smaller set of tasks that covers all due repetitions while maximizing overall gain (greedy set-cover algorithm).
 - Math Academy empirical result: most courses can be learned with roughly **only one explicit review per topic on average**.
 - Theoretical maximum efficiency: with sufficient encompassings, all spaced repetitions can be completed without ever explicitly reviewing. Standard flashcard systems implement the theoretical minimum.
 
-**Platform implication:** Select reviews whose encompassings "knock out" the most other due reviews. This is the key optimization that makes spaced repetition practical at scale. Our encompassing edges in the knowledge graph directly enable this.
+**Platform implication:** Select reviews whose encompassings "knock out" the most other due reviews. This is the key optimization that makes spaced repetition practical at scale. Our encompassing edges in the knowledge graph directly enable this. Virtual FSRS reviews ensure compression persists across sessions — children's updated stability means they genuinely need review less often.
 
 ---
 

@@ -67,7 +67,7 @@ These optimizations could cut per-user infrastructure cost by 50-70%, but are un
 
 1. **Knowledge Graph Engine** — DAG of prerequisite relationships between atomic learning topics. Frontier computation, traversal, depth assignment, validation.
 
-2. **SRS Engine** — ts-fsrs spaced repetition with FIRe (Fractional Implicit Repetition) credit. Per-user per-topic FSRS card state. Session mix: ~60% review, ~40% new.
+2. **SRS Engine** — ts-fsrs spaced repetition with FIRe (Fractional Implicit Repetition) credit via virtual FSRS reviews. Per-user per-topic FSRS card state. Session mix: ~60% review, ~40% new.
 
 3. **Adaptive Diagnostic** — Binary-search placement test that finds a student's level by jumping through the knowledge graph. Starts at middle grade, adapts based on answers, refines near the boundary. Materializes mastery estimates into SRS state on completion. Supports retake from dashboard.
 
