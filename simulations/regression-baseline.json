@@ -1,0 +1,45 @@
+{
+  "generatedAt": "2026-03-09T04:35:09.000Z",
+  "seed": 42,
+  "sessions": 5,
+  "profiles": {
+    "average-older": {
+      "placementAccuracy": 0,
+      "finalMasteryPercent": 0,
+      "sessionsTo50Mastery": 0,
+      "difficultyConvergencePoint": 135,
+      "sameStrandAdjacencyRate": 0.18857142857142858,
+      "reviewNewRatio": 0.9915492957746479,
+      "demandEntropy": 1.2248563858656514,
+      "remediationEvents": 0,
+      "fireReviewsSkipped": 0
+    },
+    "misconception-fractions": {
+      "placementAccuracy": 0,
+      "finalMasteryPercent": 0,
+      "sessionsTo50Mastery": 0,
+      "difficultyConvergencePoint": 151,
+      "sameStrandAdjacencyRate": 0.1903485254691689,
+      "reviewNewRatio": 0.9947089947089947,
+      "demandEntropy": 1.1499052110265986,
+      "remediationEvents": 0,
+      "fireReviewsSkipped": 0
+    },
+    "strong-older": {
+      "placementAccuracy": 0,
+      "finalMasteryPercent": 0,
+      "sessionsTo50Mastery": 0,
+      "difficultyConvergencePoint": null,
+      "sameStrandAdjacencyRate": 0.13602015113350127,
+      "reviewNewRatio": 0.9950248756218906,
+      "demandEntropy": 1.2374558914459666,
+      "remediationEvents": 0,
+      "fireReviewsSkipped": 0
+    }
+  },
+  "contentQuality": {
+    "tooHard": [],
+    "tooEasy": [],
+    "perTopicAccuracy": {}
+  }
+}

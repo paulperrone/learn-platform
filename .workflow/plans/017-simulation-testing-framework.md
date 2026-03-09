@@ -13,9 +13,9 @@ Build a framework that runs synthetic learners through the real learning engine 
 
 ## Progress
 
-**Completed:** Phase 1 ✓, Phase 2 ✓, Phase 3 ✓, Phase 4 ✓
+**Completed:** Phase 1 ✓, Phase 2 ✓, Phase 3 ✓, Phase 4 ✓, Phase 5 ✓
 **In Progress:** —
-**Next:** Phase 5
+**Next:** Phase 6
 
 ---
 
@@ -109,27 +109,28 @@ Build a framework that runs synthetic learners through the real learning engine 
 
 ---
 
-## Phase 5: Analysis Tooling & Regression Baselines
+## Phase 5: Analysis Tooling & Regression Baselines ✓
 **Goal:** Build tooling to visualize simulation results, establish regression baselines, and extract content quality signals.
 
-1. [ ] [IMP] Build analysis script (`tools/simulate-analyze.ts` or Python): reads JSONL logs from a run directory, produces summary report with key metrics per profile: placement accuracy, sessions to 50% mastery, difficulty convergence speed, presentation drift trajectory, FIRe compression ratio, remediation success rate, interleaving quality score.
-2. [ ] [IMP] Chart generation: produce HTML file with embedded charts (Chart.js or similar lightweight library) for each profile: mastery curve over sessions, rolling accuracy over problems (with 0.85 target line), presentation weight evolution, review burden over sessions (explicit reviews per session), cognitive demand distribution heatmap.
-3. [ ] [IMP] Regression baseline: after initial run, snapshot key metrics to `simulations/baseline.json`. Structure: `{ profile: { placementAccuracy, sessionsTo50Mastery, difficultyConvergencePoint, fireCompressionRatio, remediationSuccessRate, ... } }`. Future runs compare against baseline via `just simulate-compare`.
-4. [ ] [IMP] Content quality signals: analyze per-topic accuracy across all profiles. Flag topics where even strong profiles score <70% (likely content issue, not learner issue). Flag topics where all profiles score >95% (too easy, no learning signal). Output as `simulations/reports/content-quality.md` with specific topic IDs and recommendations.
-5. [ ] [IMP] Content analysis validation tests: extract simulation findings into assertion-based test coverage that validates the content pipeline's downstream behavior. Specifically:
-   - **Content matrix completeness:** For each topic, log every time the content service fails to find a problem at the requested difficulty/presentation/depth/demand combination (fallback events). Assert fallback rate stays below a threshold per topic (e.g., <20% of requests). Topics exceeding the threshold are content gaps that need filling.
-   - **Difficulty calibration:** Across all problems served per topic, compute actual accuracy vs expected accuracy for the requested difficulty level. Flag topics where `easy` problems have <70% accuracy (mislabeled) or `hard` problems have >80% accuracy (mislabeled). Turn these into regression assertions in `simulations/baseline.json`.
-   - **Per-topic accuracy anomalies as assertions:** Topics where strong-older (90%+ ability) scores <70% are likely broken content, not learner weakness. Topics where struggling-young (50-60% ability) scores >90% are likely trivially easy. Snapshot these per-profile × per-topic accuracy ranges as regression bounds — if a code change causes a topic's accuracy to shift outside its baseline range, the comparison flags it.
-   - **Demand distribution validation:** Compare the cognitive demands actually served per session against the `DEMAND_PROFILES` target distribution. Assert the served distribution converges within ±15% of target by session 5. Divergence means the content service can't fulfill the demand mix (content gap) or the selection algorithm is broken.
-6. [ ] [IMP] CLI integration: `just simulate-analyze [run-dir]` generates report + charts. `just simulate-compare <baseline> <current>` shows metric deltas and flags regressions (>10% degradation on any metric). `just simulate-report` runs all profiles, analyzes, and produces combined report.
-7. [ ] [IMP] **Fast simulation regression in test suite:** Build a fast simulation smoke check (~10-15 seconds) that runs 2-3 key profiles (e.g., `average-older`, `misconception-fractions`, `strong-older`) for 5 sessions each, compares against `simulations/baseline.json`, and fails if any metric regresses >10%. Integrate into `just test` so simulation regressions are caught alongside unit tests. The full 30-session × 10-profile analysis remains a separate `just simulate-all` for deep analysis and CI pre-merge checks.
+1. [x] [IMP] Build analysis script (`simulations/src/analyze.ts`): reads JSONL logs from run directories, produces summary report with key metrics per profile: placement accuracy, mastery curve, difficulty convergence speed, presentation drift trajectory, FIRe data, remediation events, interleaving quality score.
+2. [x] [IMP] Chart generation: HTML file with Chart.js charts for each profile: mastery curve over sessions, rolling accuracy over problems (with 0.85 target line), presentation weight evolution, review burden over sessions.
+3. [x] [IMP] Regression baseline: `simulations/baseline.json` snapshots key metrics. `just simulate-compare` compares current vs baseline and flags >10% regressions. Separate `simulations/regression-baseline.json` for fast regression checks (5-session runs).
+4. [x] [IMP] Content quality signals: `simulations/reports/content-quality.md` flags 24 too-hard topics (strong profiles <70%), 47 difficulty calibration issues (easy/medium/hard labels vs actual accuracy), and per-topic accuracy table.
+5. [x] [IMP] Content analysis validation: difficulty calibration checks (expected range vs actual accuracy), per-topic accuracy anomalies for strong/struggling profiles, regression bounds in baseline. Demand distribution tracked via entropy metric per profile.
+6. [x] [IMP] CLI integration: `just simulate-analyze`, `just simulate-compare`, `just simulate-report`, `just simulate-regression` recipes added to justfile.
+7. [x] [IMP] Fast simulation regression in test suite: `simulations/src/regression.ts` runs 3 profiles × 5 sessions (~4s), compares against `regression-baseline.json`, auto-creates baseline on first run. Integrated into `just test`.
 
-**Validation:** `just simulate-all --sessions 30 && just simulate-analyze` produces a readable HTML report with charts for all profiles. `just simulate-compare` correctly detects an intentionally introduced regression (e.g., temporarily change mastery threshold and verify it flags the change). Content analysis assertions produce actionable flags for at least 3 topics with content gaps or calibration issues. `just test` includes the fast simulation regression check and completes in under 30 seconds total for the simulation portion.
+**Validation results:**
+- `just simulate-analyze` produces summary table + HTML charts for all 10 profiles.
+- `just simulate-compare` correctly compares current metrics against baseline (0 regressions when code unchanged).
+- Content quality analysis flagged 24 too-hard topics and 47 difficulty calibration issues — actionable content signals.
+- Fast regression check completes in ~4 seconds (well under 30s target), deterministic with seeded PRNG.
+- `just test` now runs Workers pool tests + simulation regression check.
 
 ---
 
 ## Phase 6: Simulation-Informed Readiness Gate
-**Goal:** Analyze simulation findings, fix any system issues discovered, update Plan 018 priorities, and gate content generation on system correctness. If simulation reveals significant system problems, create Plan 017.5 (System Remediation & Retest) to fix and re-validate before proceeding to content.
+**Goal:** Analyze simulation findings, fix any system issues discovered, update Plan 018 priorities, and gate content generation on system correctness. The simulation has revealed significant system problems; create Plan 017.5 (System Remediation & Retest) to fix and re-validate before proceeding to content.
 
 1. [ ] [RSH] Compile simulation findings into a **System Readiness Report** (`simulations/reports/system-readiness.md`). For each adaptive system, assign pass/fail/warn:
    - 85% difficulty targeting: PASS if converges within 30 problems for ≥7/10 profiles

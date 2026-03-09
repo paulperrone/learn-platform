@@ -8,10 +8,11 @@
 dev:
     pnpm dev
 
-# Run all tests (Workers pool + miniflare D1)
+# Run all tests (Workers pool + miniflare D1 + simulation regression)
 # IMPORTANT: Always use this, never `pnpm vitest run` directly — Workers tests need the pool runner
 test:
     pnpm test
+    npx tsx simulations/src/regression.ts
 
 # TypeScript validation
 typecheck:
@@ -89,6 +90,23 @@ simulate-adaptive:
 # Run FIRe comparison simulations (with vs without encompassing edges)
 simulate-fire seed="42":
     npx tsx simulations/src/adaptive-analysis.ts --all-latest --run-fire-comparison --seed {{seed}}
+
+# Analyze simulation runs: summary + charts
+simulate-analyze *args:
+    npx tsx simulations/src/analyze.ts --all-latest {{args}}
+
+# Compare current simulation metrics against baseline (flags >10% regression)
+simulate-compare baseline="simulations/baseline.json":
+    npx tsx simulations/src/analyze.ts --all-latest --compare {{baseline}}
+
+# Run all profiles, analyze, and produce combined report + content quality
+simulate-report sessions="30" seed="42":
+    just simulate-all {{sessions}} {{seed}}
+    npx tsx simulations/src/analyze.ts --report --baseline --content-quality
+
+# Fast simulation regression check (~15s, 3 profiles × 5 sessions)
+simulate-regression seed="42":
+    npx tsx simulations/src/regression.ts --seed {{seed}}
 
 # Clean up task execution state
 task-cleanup:
