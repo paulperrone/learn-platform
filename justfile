@@ -116,6 +116,22 @@ evaluate *args:
 evaluate-fire *args:
     npx tsx simulations/src/evaluate.ts --run-fire {{args}}
 
+# Run single healing epoch (simulate all → evaluate → report)
+heal-epoch sessions="30" seed="42":
+    npx tsx simulations/src/heal-loop.ts --epoch --sessions {{sessions}} --seed {{seed}}
+
+# Verify a fix against a specific system target
+heal-verify system profiles="all" sessions="10" seed="42":
+    npx tsx simulations/src/heal-loop.ts --verify-fix --system {{system}} --profiles {{profiles}} --sessions {{sessions}} --seed {{seed}}
+
+# Show healing loop status and history
+heal-status:
+    npx tsx simulations/src/heal-loop.ts --status
+
+# Force a healing checkpoint
+heal-checkpoint:
+    npx tsx simulations/src/heal-loop.ts --checkpoint
+
 # Clean up task execution state
 task-cleanup:
     #!/usr/bin/env bash

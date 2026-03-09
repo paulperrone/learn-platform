@@ -312,3 +312,49 @@ export type HealingReport = {
     overallStatus: EvaluationStatus;
   };
 };
+
+// --- Healing Loop Orchestrator ---
+
+export type HealEpoch = {
+  epochNumber: number;
+  timestamp: string;
+  simulationSeed: number;
+  sessions: number;
+  evaluationResult: HealingReport;
+  systemsPassCount: number;
+  systemsFailCount: number;
+  systemsWarnCount: number;
+  deltaFromPreviousEpoch: Record<string, number>;
+  fixesApplied: string[];
+  checkpointCommit?: string;
+};
+
+export type HealingHistoryStatus =
+  | "running"
+  | "converged"
+  | "stalled"
+  | "user_review_needed";
+
+export type HealingHistory = {
+  epochs: HealEpoch[];
+  startedAt: string;
+  targetVersion: number;
+  currentStatus: HealingHistoryStatus;
+};
+
+export type ConvergenceState = {
+  status: HealingHistoryStatus;
+  reason: string;
+  recommendedAction: string;
+};
+
+export type MiniSimResult = {
+  system: string;
+  profiles: string[];
+  sessions: number;
+  seed: number;
+  before: { actual: number; status: EvaluationStatus };
+  after: { actual: number; status: EvaluationStatus };
+  improved: boolean;
+  delta: number;
+};
