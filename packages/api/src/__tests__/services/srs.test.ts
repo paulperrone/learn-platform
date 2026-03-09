@@ -120,13 +120,13 @@ describe("createSRSService", () => {
   });
 
   describe("mastery criteria", () => {
-    it("masters topic after 3 consecutive correct reviews at Review state with stability >= 7", async () => {
+    it("masters topic after 2 consecutive correct reviews at Review state with stability >= 4", async () => {
       const db = getTestDb();
       const user = await seedUser({ id: "srs-mastery-1" });
       const subj = await seedSubject({ id: "srs-mastery-subj-1" });
       const topic = await seedTopic(subj.id, { id: "srs-mastery-topic-1" });
 
-      // Seed state at Review state (state=2) with high stability and 2 consecutive correct
+      // Seed state at Review state (state=2) with high stability and 1 consecutive correct
       await db.insert(schema.userTopicState).values({
         userId: user.id,
         topicId: topic.id,
@@ -137,7 +137,7 @@ describe("createSRSService", () => {
         reps: 5,
         lapses: 1, // Lapses don't prevent mastery in new criteria
         mastered: false,
-        consecutiveCorrectReviews: 2,
+        consecutiveCorrectReviews: 1,
       });
 
       const srs = createSRSService(db);
@@ -155,7 +155,7 @@ describe("createSRSService", () => {
           )
         );
       expect(state.mastered).toBe(true);
-      expect(state.consecutiveCorrectReviews).toBe(3);
+      expect(state.consecutiveCorrectReviews).toBe(2);
     });
 
     it("lapse resets consecutive counter but not mastery flag", async () => {
@@ -299,33 +299,33 @@ describe("createSRSService", () => {
       expect(result2.mastered).toBe(true); // Still mastered — hysteresis
     });
 
-    it("mastery via alternative path: 5+ consecutive correct regardless of stability", async () => {
+    it("mastery via alternative path: 3+ consecutive correct regardless of stability", async () => {
       const db = getTestDb();
       const user = await seedUser({ id: "srs-mastery-alt-1" });
       const subj = await seedSubject({ id: "srs-mastery-alt-subj-1" });
       const topic = await seedTopic(subj.id, { id: "srs-mastery-alt-topic-1" });
 
-      // Low stability but 4 consecutive correct
+      // Low stability but 2 consecutive correct
       await db.insert(schema.userTopicState).values({
         userId: user.id,
         topicId: topic.id,
-        stability: 3, // below threshold of 7
+        stability: 2, // below threshold of 4
         difficulty: 5,
         due: new Date(Date.now() - 60000).toISOString(),
         state: State.Review,
         reps: 6,
         lapses: 0,
         mastered: false,
-        consecutiveCorrectReviews: 4,
+        consecutiveCorrectReviews: 2,
       });
 
       const srs = createSRSService(db);
       const result = await srs.scheduleReview(user.id, topic.id, Rating.Good, 1500, "review");
-      expect(result.mastered).toBe(true); // 5th consecutive correct → mastered
+      expect(result.mastered).toBe(true); // 3rd consecutive correct → mastered
       expect(result.justMastered).toBe(true);
     });
 
-    it("does not master with only 2 consecutive correct reviews", async () => {
+    it("does not master with only 1 consecutive correct review", async () => {
       const db = getTestDb();
       const user = await seedUser({ id: "srs-mastery-3" });
       const subj = await seedSubject({ id: "srs-mastery-subj-3" });
@@ -341,7 +341,7 @@ describe("createSRSService", () => {
         reps: 4,
         lapses: 0,
         mastered: false,
-        consecutiveCorrectReviews: 1,
+        consecutiveCorrectReviews: 0,
       });
 
       const srs = createSRSService(db);
@@ -358,7 +358,7 @@ describe("createSRSService", () => {
             eq(schema.userTopicState.topicId, topic.id)
           )
         );
-      expect(state.consecutiveCorrectReviews).toBe(2);
+      expect(state.consecutiveCorrectReviews).toBe(1);
     });
   });
 
@@ -524,11 +524,9 @@ describe("createSRSService", () => {
       const srs = createSRSService(db);
       const credits = await srs.applyFIReCredit(user.id, parent.id, Rating.Good);
 
-      // Credit should be heavily discounted (retrievability ~1.0, so discount factor ~0)
-      // May even be empty if discounted weight drops below threshold
-      if (credits.length > 0) {
-        expect(credits[0].weight).toBeLessThan(0.1);
-      }
+      // Fresh topic has high retrievability → discounted weight < 0.01
+      // so credit is filtered out entirely (no extension applied)
+      expect(credits.length).toBe(0);
     });
 
     it("caps due date extension at 50% of stability in days", async () => {
@@ -539,7 +537,6 @@ describe("createSRSService", () => {
       const child = await seedTopic(subj.id, { id: "srs-cap-c" });
       await seedEncompassing(parent.id, child.id, 0.9); // High weight
 
-      // Child with stability 10 days, very low retrievability (big discount factor)
       const futureDue = new Date(Date.now() + 3 * 24 * 60 * 60 * 1000);
       await db.insert(schema.userTopicState).values({
         userId: user.id,
@@ -549,7 +546,7 @@ describe("createSRSService", () => {
         reps: 3,
         stability: 10,
         difficulty: 5,
-        lastReview: new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString(), // 30 days ago → low retrievability
+        lastReview: new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString(),
       });
 
       const srs = createSRSService(db);
@@ -564,7 +561,6 @@ describe("createSRSService", () => {
             eq(schema.userTopicState.topicId, child.id)
           )
         );
-      // Due date should be extended, but capped at 50% of stability (5 days max)
       const extensionMs = new Date(updated.due).getTime() - futureDue.getTime();
       const extensionDays = extensionMs / (24 * 60 * 60 * 1000);
       expect(extensionDays).toBeGreaterThan(0);

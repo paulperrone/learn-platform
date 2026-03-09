@@ -273,7 +273,8 @@ describe("FIRe review compression", () => {
       const srs = createSRSService(db);
 
       // Test compression directly with a budget smaller than total due topics.
-      // Budget of 2: parent (covers 3 children) should be selected first.
+      // Budget of 2: parent (covers 3 children) should be selected first
+      // by the greedy set-cover algorithm (highest coverage score).
       const dueTopics = await srs.getDueTopics(user.id);
       const { selected, coveredCount } = await srs.compressReviews(
         dueTopics,
@@ -281,11 +282,11 @@ describe("FIRe review compression", () => {
         new Set()
       );
 
-      // Parent covers all 3 children — only 1 explicit review needed
-      // (children removed from remaining via FIRe compression)
+      // Parent prioritized first (highest coverage), covers all 3 children.
+      // Children removed from remaining by greedy set-cover, so only parent selected.
       expect(selected.length).toBe(1);
       expect(selected[0].topicId).toBe(parent.id);
-      // All 4 due topics covered by just 1 explicit review
+      // Coverage tracking counts parent + 3 covered children
       expect(coveredCount).toBe(4);
       expect(coveredCount).toBeGreaterThan(selected.length);
     });

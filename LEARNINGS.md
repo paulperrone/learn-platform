@@ -657,3 +657,32 @@ Pattern: any new code that counts mastered topics must check both `user_topic_st
 **Area:** Simulation / evaluation
 
 The mastery preservation metric (S0 → S1 drop) showed 36.6% false failure because S0 included implicit mastery (44 topics = 62%) which naturally decreases as topics move from implicit → materialized with `mastered=false`. The fix: use `materializedMasteryCount` (earned SRS mastery) for preservation, not total `masteryCount`. Added `materializedMasteryCount` field to `StateSnapshot` type. After fix: mastery preservation = 1.4% (PASS).
+
+---
+
+### 2026-03-09: FIRe due-date extension conflicts with FSRS state model
+
+**Source:** Plan 017.8 Phase 5 (training run epoch 3)
+**Area:** SRS / FIRe compression
+
+`applyFIReCredit()` extends child topic due dates when a parent is reviewed. However, FSRS interprets the resulting longer gap between reviews as memory decay, which *increases* review frequency — the opposite of the intended compression. Three approaches (removing retrievability discount, increasing cap, removing child deletion from set-cover) all produced negative compression (-5.8% to -10.5%). The fix requires architectural redesign: virtual FSRS reviews that update the child's full FSRS state (stability, difficulty, reps) as if it were actually reviewed, not just pushing the due date.
+
+**Context:** This blocks the `fire_compression` target (0% actual vs 20% target). The encompassing graph structure and `computeFIReCoverage()` work correctly — the issue is purely in how credit is applied to FSRS state.
+
+---
+
+### 2026-03-09: Mini-verify (heal-verify) is unreliable for metrics requiring many sessions
+
+**Source:** Plan 017.8 Phase 5 (training run epochs 2-3)
+**Area:** Healing / training loop
+
+`heal-verify` runs 3 profiles × 10 sessions for quick feedback. This is insufficient for `mastery_convergence` (needs 30 sessions to build mastery) and `review_new_balance` (needs enough sessions for frontier exhaustion to manifest). Mini-verify also measures `in_range` metrics incorrectly — it reports "worsened" when moving *toward* the target range if the delta direction is ambiguous. Use full evaluation (`just evaluate`) for these metrics.
+
+---
+
+### 2026-03-09: Frontier exhaustion limits review/new balance with small content sets
+
+**Source:** Plan 017.8 Phase 5 (training run epoch 2)
+**Area:** Session mix / content
+
+With only ~27 frontier topics in math-foundations, the frontier dries up by session ~10 regardless of session mix tuning. After that, sessions are 100% review. The review/new balance target (0.50-0.70) is mathematically unreachable without more content. Aggressive tuning (lower review cap, higher new topic cap) degrades interleaving quality. The fix is content expansion, not parameter tuning.

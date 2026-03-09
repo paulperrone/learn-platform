@@ -206,12 +206,14 @@ export function createSRSService(db: DB) {
       }
 
       // Mastery criterion (two paths):
-      // Path A: 3+ consecutive correct in Review state with stability >= 7 days
-      // Path B: 5+ consecutive correct in any state (proven knowledge through repetition,
+      // Path A: 2+ consecutive correct in Review state with stability >= 4 days
+      //   (lowered from 3/7 to accelerate frontier unlocking — topics were taking
+      //   12+ sessions to master, causing frontier exhaustion by session 8)
+      // Path B: 3+ consecutive correct in any state (proven knowledge through repetition,
       //         regardless of FSRS scheduling state — covers topics stuck in Learning)
       const shouldMaster =
-        (newConsecutiveCorrect >= 3 && adjustedCard.state === State.Review && adjustedCard.stability >= 7) ||
-        (newConsecutiveCorrect >= 5);
+        (newConsecutiveCorrect >= 2 && adjustedCard.state === State.Review && adjustedCard.stability >= 4) ||
+        (newConsecutiveCorrect >= 3);
 
       // Update confidence tracking (exponential moving average)
       let newConfidenceAccuracy = state.confidenceAccuracy;

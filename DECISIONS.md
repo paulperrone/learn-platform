@@ -1198,3 +1198,23 @@ Tag each target in `targets.json` with `signal_source: "engine" | "content" | "b
 **Alternatives rejected:**
 - Use total masteryCount: 36.6% false failure, masks real preservation issues
 - Skip S0 entirely and use S1→S2: loses the diagnostic-to-first-session transition signal
+
+---
+
+## 2026-03-09: First autonomous training run results (Plan 017.8, Phase 5)
+
+**Source:** `/train --epochs 3` live validation run
+
+**Context:** Ran 3 epochs of autonomous training against 10 systems. Pre-training: 4 FAIL, 1 WARN, 5 PASS. Post-training: 2 FAIL, 1 WARN, 7 PASS. Profiles 2/10 → 10/10 behavioral match.
+
+**Results:**
+- **Epoch 1 (mastery_convergence): SUCCESS** — Lowered mastery criterion from 3 consecutive correct + stability≥7 to 2+stability≥4 (Path A), 5→3 (Path B). Collateral: interleaving FAIL→PASS, presentation_drift WARN→PASS.
+- **Epoch 2 (review_new_balance): SKIPPED** — Two approaches caused regressions. Frontier exhaustion (~27 topics over 30 sessions) makes 0.50-0.70 target mathematically difficult without more content.
+- **Epoch 3 (fire_compression): SKIPPED** — Three approaches failed. FIRe due-date extension model conflicts with FSRS state tracking: extending due dates without virtual FSRS reviews causes FSRS to interpret gaps as memory decay, increasing review frequency. Needs architectural redesign.
+
+**Decisions:**
+- Keep the mastery criterion change (only code modification retained)
+- `review_new_balance` needs content expansion (more frontier topics) before it can be fixed
+- `fire_compression` needs architectural redesign: virtual FSRS reviews instead of due-date extension
+
+**Why:** The training loop correctly identified the highest-impact fix (mastery criterion was too strict, causing frontier exhaustion) and correctly abandoned approaches that caused regressions. The two skipped systems have root causes outside the current SRS parameter space.
