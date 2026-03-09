@@ -633,3 +633,27 @@ With fewer mastered topics materialized (15 instead of 44), the warmup pool is s
 **Area:** Simulation / evaluation
 
 The ±1 materialization approach (25 mastered topics) showed noisy FIRe paired results: average-older went -14.9% (more reviews WITH FIRe). The ±0 approach (15 mastered topics) showed consistent positive results (8.5% average). Larger materialization reductions produce clearer FIRe signals because the session dynamics diverge more between with/without encompassing runs.
+
+---
+
+### 2026-03-09: Simulation metrics must account for implicit mastery after reduced materialization
+
+**Source:** Plan 017.8 Phase 1
+**Area:** Simulation / metrics
+
+After reduced materialization (017.7), three locations counted mastered topics from `user_topic_state` only, missing topics implicitly mastered via diagnostic estimates (prob ≥ 0.6 in `diagnosticSessions.topicEstimatesJson`):
+
+1. `runner.ts:takeStateSnapshot()` — undercounted mastery in state snapshots
+2. `runner.ts:saveDiagnosticResult()` — undercounted `masteredTopicIds` in diagnostic results
+3. `progress.ts:/completion` route — undercounted user completion percentages
+
+Pattern: any new code that counts mastered topics must check both `user_topic_state` rows with `mastered=true` AND diagnostic estimates with prob ≥ 0.6 for topics not in `user_topic_state`. Reference `computeFrontier()` in `graph.ts` for the canonical pattern.
+
+---
+
+### 2026-03-09: Mastery preservation metric must use materialized mastery, not total
+
+**Source:** Plan 017.8 Phase 1
+**Area:** Simulation / evaluation
+
+The mastery preservation metric (S0 → S1 drop) showed 36.6% false failure because S0 included implicit mastery (44 topics = 62%) which naturally decreases as topics move from implicit → materialized with `mastered=false`. The fix: use `materializedMasteryCount` (earned SRS mastery) for preservation, not total `masteryCount`. Added `materializedMasteryCount` field to `StateSnapshot` type. After fix: mastery preservation = 1.4% (PASS).

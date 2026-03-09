@@ -1179,3 +1179,22 @@ Tag each target in `targets.json` with `signal_source: "engine" | "content" | "b
 - ±1 (placement-1): 2.5% FIRe, noisy paired results (average-older -14.9%). Rejected: too many mastered warmup topics still present
 - mastered=false for near-placement: richer FIRe dynamics but severe regressions (mastery 1, profiles 2/10). Rejected: overwhelms review queue with known topics
 - ±0 selected as best tradeoff: strongest FIRe signal with manageable regressions
+
+---
+
+## 2026-03-09: Mastery preservation uses materialized mastery only (Plan 017.8, Phase 1)
+
+**Source:** Plan 017.8 Phase 1
+
+**Context:** After adding implicit mastery to simulation snapshots, the mastery preservation metric (S0 → S1 mastery loss) showed 36.6% failure — a false positive. S0 counted 44 mastered topics (15 materialized + 29 implicit), but by S1, many implicit topics had been materialized with mastered=false, causing a natural "drop" that isn't real mastery loss.
+
+**Decision:** Mastery preservation computes loss from `materializedMasteryCount` (topics with `mastered=true` in user_topic_state), not total `masteryCount` (which includes diagnostic estimates). Added `materializedMasteryCount` to StateSnapshot type.
+
+**Why:**
+- Implicit mastery from diagnostic estimates is an initial approximation, not earned mastery
+- As users study, implicit topics get materialized with mastered=false — this is expected, not a regression
+- Materialized mastery represents actual SRS-tracked learning progress
+
+**Alternatives rejected:**
+- Use total masteryCount: 36.6% false failure, masks real preservation issues
+- Skip S0 entirely and use S1→S2: loses the diagnostic-to-first-session transition signal

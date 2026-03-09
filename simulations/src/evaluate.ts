@@ -202,6 +202,9 @@ function computeMasteryPreservation(runs: ProfileRun[]): {
   contributing: string[];
 } {
   // Max mastery loss from session 0 → session 1 across all profiles
+  // Uses materializedMasteryCount (earned mastery in SRS) rather than total
+  // masteryCount (which includes implicit diagnostic estimates that naturally
+  // decrease as topics move from implicit → materialized with mastered=false)
   let maxLoss = 0;
   const contributing: string[] = [];
 
@@ -211,7 +214,9 @@ function computeMasteryPreservation(runs: ProfileRun[]): {
     const session1 = run.snapshots.find((s) => s.sessionNumber === 1);
     if (!session0 || !session1) continue;
 
-    const loss = (session0.masteryPercent - session1.masteryPercent) * 100;
+    const s0Mastery = (session0.materializedMasteryCount ?? session0.masteryCount) / session0.totalTopics;
+    const s1Mastery = (session1.materializedMasteryCount ?? session1.masteryCount) / session1.totalTopics;
+    const loss = (s0Mastery - s1Mastery) * 100;
     if (loss > maxLoss) {
       maxLoss = loss;
     }

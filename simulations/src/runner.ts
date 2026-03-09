@@ -11,7 +11,7 @@ import { EventLogger } from "./event-logger.js";
 import { SeededRNG } from "./prng.js";
 import type { SimulationConfig, SimulationResult, SimulationEvent, LearnerProfile, DiagnosticRunResult, SessionSummary, StateSnapshot, TopicStateSnapshot, PresentationSnapshot, TimeSchedule } from "./types.js";
 import { join } from "path";
-import { eq } from "drizzle-orm";
+import { eq, and, desc } from "drizzle-orm";
 import { writeFileSync, readFileSync } from "fs";
 import * as schema from "../../packages/api/src/db/schema.js";
 
@@ -375,6 +375,14 @@ export class SimulationRunner {
       .filter((r) => r.mastered)
       .map((r) => r.topicId);
 
+    // Include implicitly mastered topics from diagnostic estimates
+    const materializedIds = new Set(allState.map((r) => r.topicId));
+    for (const [topicId, prob] of Object.entries(estimates)) {
+      if (prob >= 0.6 && !materializedIds.has(topicId) && !masteredTopicIds.includes(topicId)) {
+        masteredTopicIds.push(topicId);
+      }
+    }
+
     // Get presentation distribution
     const presRows = await this.db
       .select()
@@ -690,7 +698,30 @@ export class SimulationRunner {
         }
       : null;
 
-    const masteryCount = topicStates.filter((t) => t.mastered).length;
+    // Count materialized mastery
+    const materializedMastered = topicStates.filter((t) => t.mastered).length;
+
+    // Include implicit mastery from diagnostic estimates (reduced materialization)
+    const diagnosticSession = await this.db.query.diagnosticSessions.findFirst({
+      where: and(
+        eq(schema.diagnosticSessions.userId, this.userId),
+        eq(schema.diagnosticSessions.status, "completed")
+      ),
+      orderBy: desc(schema.diagnosticSessions.completedAt),
+    });
+
+    let implicitMastered = 0;
+    if (diagnosticSession?.topicEstimatesJson) {
+      const estimates: Record<string, number> = JSON.parse(diagnosticSession.topicEstimatesJson);
+      const materializedIds = new Set(topicStates.map((t) => t.topicId));
+      for (const [topicId, prob] of Object.entries(estimates)) {
+        if (prob >= 0.6 && !materializedIds.has(topicId)) {
+          implicitMastered++;
+        }
+      }
+    }
+
+    const masteryCount = materializedMastered + implicitMastered;
 
     this.stateSnapshots.push({
       sessionNumber,
@@ -698,6 +729,7 @@ export class SimulationRunner {
       simulatedTime: new Date(this.simulatedTimeMs).toISOString(),
       masteryCount,
       masteryPercent: this.totalTopicCount > 0 ? masteryCount / this.totalTopicCount : 0,
+      materializedMasteryCount: materializedMastered,
       totalTopics: this.totalTopicCount,
       topicStates,
       presentation,

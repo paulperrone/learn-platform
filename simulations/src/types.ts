@@ -134,6 +134,7 @@ export type StateSnapshot = {
   simulatedTime: string;
   masteryCount: number;
   masteryPercent: number;
+  materializedMasteryCount: number;
   totalTopics: number;
   topicStates: TopicStateSnapshot[];
   presentation: PresentationSnapshot | null;

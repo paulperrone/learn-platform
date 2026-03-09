@@ -1,5 +1,5 @@
 import { Hono } from "hono";
-import { sql, eq, and, gte } from "drizzle-orm";
+import { sql, eq, and, gte, desc } from "drizzle-orm";
 import type { Env } from "../index.js";
 import { getDb } from "../db/index.js";
 import { createSRSService } from "../services/srs.js";
@@ -176,7 +176,7 @@ progressRoutes.get("/:userId/completion", async (c) => {
   // Get all topics grouped by subject
   const allTopics = await db.select({ id: schema.topics.id, subjectId: schema.topics.subjectId }).from(schema.topics);
 
-  // Get all mastered topics for user
+  // Get all mastered topics for user (materialized + implicit)
   const masteredRows = await db
     .select({ topicId: schema.userTopicState.topicId })
     .from(schema.userTopicState)
@@ -187,6 +187,23 @@ progressRoutes.get("/:userId/completion", async (c) => {
       )
     );
   const masteredIds = new Set(masteredRows.map((r) => r.topicId));
+
+  // Include implicit mastery from diagnostic estimates (reduced materialization)
+  const diagnosticSession = await db.query.diagnosticSessions.findFirst({
+    where: and(
+      eq(schema.diagnosticSessions.userId, userId),
+      eq(schema.diagnosticSessions.status, "completed")
+    ),
+    orderBy: desc(schema.diagnosticSessions.completedAt),
+  });
+  if (diagnosticSession?.topicEstimatesJson) {
+    const estimates: Record<string, number> = JSON.parse(diagnosticSession.topicEstimatesJson);
+    for (const [topicId, prob] of Object.entries(estimates)) {
+      if (prob >= 0.6) {
+        masteredIds.add(topicId);
+      }
+    }
+  }
 
   // Get mastery pace: topics mastered per week from daily_activity (last 4 weeks)
   const fourWeeksAgo = new Date();
