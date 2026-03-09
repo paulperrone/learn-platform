@@ -30,7 +30,7 @@ type DiagnosticState = {
 };
 
 /** Max questions before forced completion — prevents infinite diagnostics */
-const MAX_QUESTIONS = 50;
+const MAX_QUESTIONS = 15;
 /** Min questions before we allow early stop based on confidence */
 const MIN_QUESTIONS = 8;
 /** Confidence threshold: stop when boundary is within this many grade levels */
@@ -247,12 +247,26 @@ export function createDiagnosticService(db: DB) {
     } else {
       // Lower the ceiling — student doesn't know this level
       state.searchHigh = Math.min(state.searchHigh, topicGrade);
+      // Fix upward placement bias: allow searchLow to decrease when student
+      // has 3+ consecutive failures at or below the current floor. Requires
+      // streak >= 2 (meaning 2 prior incorrect, this is the 3rd) to avoid
+      // noise from stochastic answering at frontier grades.
+      if (topicGrade <= state.searchLow && state.streakDirection === "incorrect" && state.streak >= 2) {
+        state.searchLow = Math.max(0, topicGrade - 1);
+      }
       if (state.streakDirection === "incorrect") {
         state.streak++;
       } else {
         state.streak = 1;
         state.streakDirection = "incorrect";
       }
+    }
+
+    // Prevent full lock-in: if bounds collapsed to a single point during search,
+    // reopen by decreasing the floor by 1. This happens when a lucky correct answer
+    // raised searchLow to the same grade where an incorrect answer lowered searchHigh.
+    if (state.searchLow >= state.searchHigh && state.phase === "search") {
+      state.searchLow = Math.max(0, state.searchHigh - 1);
     }
 
     // Switch to refine phase when search range is narrow enough
@@ -269,9 +283,12 @@ export function createDiagnosticService(db: DB) {
     if (isTaste && questionsAsked >= 8) return true;
     if (questionsAsked < MIN_QUESTIONS) return false;
 
+    // Don't stop if bounds haven't converged — keep asking until within ±1
+    const boundaryRange = state.searchHigh - state.searchLow;
+    if (boundaryRange > 1) return false;
+
     // In refine phase, stop when we have enough questions in the boundary zone
     if (state.phase === "refine") {
-      const boundaryRange = state.searchHigh - state.searchLow;
       if (boundaryRange <= BOUNDARY_PRECISION) return true;
       // After 3+ refine questions, good enough
       const refineQuestions = questionsAsked - MIN_QUESTIONS;
@@ -360,6 +377,18 @@ export function createDiagnosticService(db: DB) {
       return shiftDistributionDown(dist);
     }
 
+    // Check for performance significantly above age-expected level — shift UP
+    // If searchLow (confirmed grade floor) is 2+ grades above age-expected,
+    // the student needs more advanced presentation
+    const currentYear = new Date().getFullYear();
+    const age = birthYear ? currentYear - birthYear : null;
+    if (age !== null) {
+      const ageExpectedGrade = Math.max(0, age - 5);
+      if (state.searchLow >= ageExpectedGrade + 2) {
+        return shiftDistributionUp(dist);
+      }
+    }
+
     return dist;
   }
 
@@ -374,6 +403,30 @@ export function createDiagnosticService(db: DB) {
     weights[newCenterIdx] = 0.75;
     if (newCenterIdx > 0) weights[newCenterIdx - 1] = 0.15;
     if (newCenterIdx < 3) weights[newCenterIdx + 1] = 0.10;
+    const sum = weights.reduce((a, b) => a + b, 0);
+    if (sum < 1.0) weights[newCenterIdx] += 1.0 - sum;
+
+    return {
+      primary: weights[0],
+      intermediate: weights[1],
+      standard: weights[2],
+      advanced: weights[3],
+      centerLevel: levels[newCenterIdx],
+      driftSignal: 0,
+    };
+  }
+
+  /** Shift a distribution's center up one level */
+  function shiftDistributionUp(dist: PresentationDistribution): PresentationDistribution {
+    const levels: PresentationLevel[] = ["primary", "intermediate", "standard", "advanced"];
+    const currentIdx = levels.indexOf(dist.centerLevel);
+    if (currentIdx >= levels.length - 1) return dist; // Already at highest
+
+    const newCenterIdx = currentIdx + 1;
+    const weights = [0, 0, 0, 0];
+    weights[newCenterIdx] = 0.75;
+    if (newCenterIdx > 0) weights[newCenterIdx - 1] = 0.10;
+    if (newCenterIdx < 3) weights[newCenterIdx + 1] = 0.15;
     const sum = weights.reduce((a, b) => a + b, 0);
     if (sum < 1.0) weights[newCenterIdx] += 1.0 - sum;
 

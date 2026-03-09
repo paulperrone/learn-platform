@@ -1,6 +1,6 @@
 # Diagnostic Simulation Report
 
-> Generated: 2026-03-08T22:36:37.802Z
+> Generated: 2026-03-09T16:04:30.441Z
 > Seed: 42
 > Profiles: 10
 
@@ -14,14 +14,14 @@
 | misconception-fractions | 10 | 5 | [5-5] | ✓ 0.0 | 8 | 63% | refine | intermediate |
 | overconfident | 10 | 3 | [3-3] | ✓ 0.0 | 8 | 63% | refine | intermediate |
 | strong-older | 14 | 5 | [5-5] | ✓ 0.0 | 8 | 100% | refine | standard |
-| strong-young | 6 | 2 | [3-3] | ✓ 1.0 | 8 | 63% | refine | primary |
+| strong-young | 6 | 2 | [3-3] | ✓ 1.0 | 8 | 63% | refine | primary→intermediate |
 | struggling-older | 13 | 1 | [2-2] | ✓ 1.0 | 8 | 38% | refine | standard→intermediate |
-| struggling-young | 6 | 0 | [2-2] | ✗ 2.0 | 8 | 25% | refine | primary |
+| struggling-young | 6 | 0 | [0-0] | ✓ 0.0 | 10 | 20% | refine | primary |
 | underconfident | 10 | 3 | [2-2] | ✓ 1.0 | 8 | 50% | refine | intermediate→primary |
 
 ## Assertion Results
 
-**31/32 passed** (1 failed)
+**32/32 passed** (0 failed)
 
 - ✓ **average-older: placement within ±1 grade**: Expected grade 3, actual floor 3 (Δ0.0)
 - ✓ **average-young: placement within ±1 grade**: Expected grade 1, actual floor 2 (Δ1.0)
@@ -31,7 +31,7 @@
 - ✓ **strong-older: placement within ±1 grade**: Expected grade 5, actual floor 5 (Δ0.0)
 - ✓ **strong-young: placement within ±1 grade**: Expected grade 2, actual floor 3 (Δ1.0)
 - ✓ **struggling-older: placement within ±1 grade**: Expected grade 1, actual floor 2 (Δ1.0)
-- ✗ **struggling-young: placement within ±1 grade**: FAIL: Expected grade 0, actual floor 2 (Δ2.0)
+- ✓ **struggling-young: placement within ±1 grade**: Expected grade 0, actual floor 0 (Δ0.0)
 - ✓ **underconfident: placement within ±1 grade**: Expected grade 3, actual floor 2 (Δ1.0)
 - ✓ **average-older: ≤30 diagnostic questions**: 8 questions
 - ✓ **average-young: ≤30 diagnostic questions**: 8 questions
@@ -41,7 +41,7 @@
 - ✓ **strong-older: ≤30 diagnostic questions**: 8 questions
 - ✓ **strong-young: ≤30 diagnostic questions**: 8 questions
 - ✓ **struggling-older: ≤30 diagnostic questions**: 8 questions
-- ✓ **struggling-young: ≤30 diagnostic questions**: 8 questions
+- ✓ **struggling-young: ≤30 diagnostic questions**: 10 questions
 - ✓ **underconfident: ≤30 diagnostic questions**: 8 questions
 - ✓ **average-older: ≥8 diagnostic questions**: 8 questions
 - ✓ **average-young: ≥8 diagnostic questions**: 8 questions
@@ -51,9 +51,9 @@
 - ✓ **strong-older: ≥8 diagnostic questions**: 8 questions
 - ✓ **strong-young: ≥8 diagnostic questions**: 8 questions
 - ✓ **struggling-older: ≥8 diagnostic questions**: 8 questions
-- ✓ **struggling-young: ≥8 diagnostic questions**: 8 questions
+- ✓ **struggling-young: ≥8 diagnostic questions**: 10 questions
 - ✓ **underconfident: ≥8 diagnostic questions**: 8 questions
-- ✓ **strong-young: presentation seeding documented**: Default: primary, actual: primary. Note: Diagnostic only shifts DOWN on comprehension mismatch. Upward shift (primary→intermediate for advanced young learners) requires session-level presentation drift, not diagnostic seeding.
+- ✓ **strong-young: presentation seeding documented**: Default: primary, actual: intermediate. Note: Diagnostic only shifts DOWN on comprehension mismatch. Upward shift (primary→intermediate for advanced young learners) requires session-level presentation drift, not diagnostic seeding.
 - ✓ **struggling-older: presentation shifted down from standard**: Shifted from standard to intermediate
 
 ## Question Traces
@@ -205,10 +205,9 @@
 ### struggling-young (Struggling Young Learner)
 
 - Age: 6, Expected frontier: grade 0
-- Questions: 8, Correct: 2 (25%)
-- Final bounds: [2, 2], Phase: refine
-- Mastered: 19 topics, Frontier: 8 topics
-- Flags: PLACEMENT_DRIFT: ±2.0 grades
+- Questions: 10, Correct: 2 (20%)
+- Final bounds: [0, 0], Phase: refine
+- Mastered: 15 topics, Frontier: 9 topics
 
 | # | Topic | Grade | Correct | Search Low | Search High | Phase |
 |---|-------|-------|---------|------------|-------------|-------|
@@ -219,7 +218,9 @@
 | 5 | subtract-within-1000 | 2 | ✓ | 2 | 2 | refine |
 | 6 | skip-count-2-5-10 | 2 | ✗ | 2 | 2 | refine |
 | 7 | place-value-hundreds | 2 | ✗ | 2 | 2 | refine |
-| 8 | measure-length-standard | 2 | ✗ | 2 | 2 | refine |
+| 8 | measure-length-standard | 2 | ✗ | 1 | 2 | refine |
+| 9 | add-within-20 | 1 | ✗ | 0 | 1 | refine |
+| 10 | subtract-within-5 | 0 | ✗ | 0 | 0 | refine |
 
 ### underconfident (Underconfident Learner)
 
@@ -253,7 +254,7 @@ The diagnostic seeds the presentation distribution based on two signals:
 | misconception-fractions | intermediate | intermediate | No | Age-default confirmed |
 | overconfident | intermediate | intermediate | No | Age-default confirmed |
 | strong-older | standard | standard | No | Age-default confirmed |
-| strong-young | primary | primary | No | Age-default confirmed |
+| strong-young | primary | intermediate | Yes | Mismatch detected — shifted down |
 | struggling-older | standard | intermediate | Yes | Mismatch detected — shifted down |
 | struggling-young | primary | primary | No | Age-default confirmed |
 | underconfident | intermediate | primary | Yes | Mismatch detected — shifted down |
@@ -269,7 +270,7 @@ This is by design — diagnostic is conservative, and session-level drift correc
 
 ### Finding 1: Upward Placement Bias
 
-5/10 profiles are placed above their expected frontier grade. 
+4/10 profiles are placed above their expected frontier grade. 
 The binary search raises `searchLow` aggressively on correct answers — a single correct answer at a grade level 
 permanently sets the floor there. Since the diagnostic only asks 8 questions minimum, a few lucky 
 correct answers on above-level topics can lock in an inflated placement.
@@ -280,16 +281,9 @@ but can cause frustration in early sessions.
 
 ### Finding 2: Search Bounds Lock-In
 
-10/10 profiles have searchLow=searchHigh at diagnostic completion, 
+9/10 profiles have searchLow=searchHigh at diagnostic completion, 
 meaning the bounds collapsed to a single grade. Once this happens, incorrect answers at that grade 
 cannot lower searchHigh (since `Math.min(searchHigh, topicGrade)` is a no-op when they're equal). 
 The diagnostic should potentially allow searchHigh to decrease below the current value when 
 multiple incorrect answers accumulate at a grade level.
-
-### Finding 4: All Diagnostics Stop at Minimum (8 Questions)
-
-Every profile completed in exactly 8 questions. This suggests the diagnostic converges 
-(or appears to converge) quickly — the binary search narrows the range in 2-3 questions, 
-then the refine phase hits the 5-question limit or boundary precision threshold. 
-While efficient, this may be too few questions for reliable placement of borderline profiles.
 

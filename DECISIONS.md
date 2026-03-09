@@ -1040,3 +1040,19 @@ Child creation now creates both an org member (student role) and an account_link
 - The distribution (used for content sampling) is always correct; only the center label oscillated
 
 **Results:** struggling-older drifts from intermediate → primary (was drifting UP). strong-young drifts from primary → intermediate. Both profiles show correct direction with mostly stable centers. No regression on mastery, remediation, or session mix.
+
+---
+
+## 2026-03-09: Diagnostic bounds fix — anti-lock-in with conservative floor decrease + convergence gate
+
+**Decision:** Three changes to the diagnostic binary search: (1) Allow `searchLow` to decrease when student has 3+ consecutive failures at/below the floor (not just single failures). (2) Prevent full lock-in: when bounds collapse (`searchLow >= searchHigh`) during search, reopen by decreasing floor by 1. (3) Don't stop until bounds converge within ±1 grade, with MAX_QUESTIONS=15 safety valve (was 50).
+
+**Reasoning:**
+- Old behavior: `searchLow` ratcheted up monotonically. A single lucky correct answer permanently locked the floor, causing upward bias for 5/10 profiles.
+- First fix attempt (decrease floor on ANY failure at floor) overcorrected: stochastic answering at 60-70% frontier accuracy caused noise-driven floor drops, producing downward bias (4/10 failed).
+- Final approach: require 3+ consecutive incorrect (streak >= 2 before current answer) to filter out noise. The lock-in prevention is separate — it only activates when bounds fully collapse.
+- `shouldStop` convergence gate ensures the diagnostic asks enough questions for confident placement. Struggling profiles now get 10-13 questions instead of always 8.
+
+**Also added:** Bidirectional presentation seeding. When `searchLow` is 2+ grades above age-expected, shift presentation UP (primary → intermediate). Was previously DOWN-only.
+
+**Results:** 10/10 profiles within ±1 grade (was 5/10). struggling-young at grade 0 (was 2, expected 0). All profiles complete in 8-13 questions. Bidirectional presentation seeding active.

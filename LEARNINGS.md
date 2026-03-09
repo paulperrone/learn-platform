@@ -534,3 +534,21 @@ When presentation weights are snapped (values below `snapThreshold` redistribute
 **Area:** Testing / schema migrations
 
 Adding a column to `schema.ts` and generating a D1 migration is not enough. The vitest workers (miniflare) use hardcoded CREATE TABLE statements in `packages/api/src/__tests__/helpers.ts`, and simulations use a separate copy in `simulations/src/db-setup.ts`. Both must be updated manually when schema changes. Forgetting either causes "no such column" errors only visible at test/simulation runtime.
+
+---
+
+### 2026-03-09: Diagnostic binary search floor must not ratchet up monotonically
+
+**Source:** Plan 017.5 Phase 6
+**Area:** Diagnostic service / placement
+
+`searchLow` (the confirmed grade floor) was a one-way ratchet: `Math.max(searchLow, topicGrade)` on correct answers, never decreasing. This caused upward placement bias (5/10 profiles). Fix: (a) allow floor decrease on 3+ consecutive failures at/below floor, (b) prevent full lock-in when `searchLow >= searchHigh` during search. Conservative thresholds (3 consecutive, not 1) prevent stochastic noise at 60-70% accuracy frontier grades from pulling the floor down.
+
+---
+
+### 2026-03-09: Diagnostic should not stop until bounds converge
+
+**Source:** Plan 017.5 Phase 6
+**Area:** Diagnostic service / stopping criteria
+
+With `MIN_QUESTIONS = 8`, the diagnostic could stop even if `searchHigh - searchLow > 1` (wide bounds = low confidence). Added a convergence gate: don't stop if `boundaryRange > 1` regardless of question count. `MAX_QUESTIONS = 15` prevents infinite questioning. Result: struggling profiles now get 10-13 questions (previously always 8), producing accurate placement.
