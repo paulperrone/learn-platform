@@ -455,6 +455,15 @@ export function createDiagnosticService(db: DB) {
     let mastered = 0;
     let frontierCount = 0;
 
+    // Compute placement grade: highest grade with mastery estimate >= 0.6
+    let placementGrade = 0;
+    for (const topic of allTopics) {
+      const prob = estimates[topic.id] ?? 0.5;
+      if (prob >= 0.6 && topic.gradeLevel > placementGrade) {
+        placementGrade = topic.gradeLevel;
+      }
+    }
+
     for (const topic of allTopics) {
       const prob = estimates[topic.id] ?? 0.5;
       const isMastered = prob >= 0.6;
@@ -464,6 +473,17 @@ export function createDiagnosticService(db: DB) {
 
       if (isMastered) mastered++;
       if (isFrontier) frontierCount++;
+
+      // Reduced materialization: only materialize topics at or above the placement
+      // grade (and frontier topics). Topics below placement are implicitly mastered —
+      // computeFrontier infers mastery from diagnostic estimates.
+      // This dramatically reduces user_topic_state rows, keeping:
+      //   - Fewer "started" topics → larger frontier for new topic introduction
+      //   - Fewer mastered warmup candidates → more session slots for new/review
+      //   - Better review/new balance (more frontier exploration)
+      if (isMastered && !isFrontier && topic.gradeLevel < placementGrade) {
+        continue;
+      }
 
       // Upsert: insert or update
       const existing = await db.query.userTopicState.findFirst({

@@ -606,3 +606,30 @@ Simulation scripts run via `npx tsx` default to CJS output format. Top-level `aw
 **Area:** Simulation / healing loop
 
 When the review/new ratio is >95% (as in current post-diagnostic sessions), same-strand adjacency rate is low regardless of whether the strand-aware shuffle is active, disabled, or reversed. Reviews of diverse topics naturally intersperse, masking the shuffle algorithm's effect. Interleaving mini-sim verification is only meaningful when the review ratio is closer to the 60/40 target.
+
+---
+
+### 2026-03-09: FIRe compression requires non-mastered topics in the review pool
+
+**Source:** Plan 017.7 Phase 7
+**Area:** Diagnostic / SRS / FIRe
+
+applyFIReCredit skips mastered=true children, and compressReviews only operates on getDueTopics (mastered=false, reps > 0). When diagnostic materializes 44 topics as mastered=true, FIRe has nothing to compress. The fix: reduce materialization to placement grade only (skip grades below placement). computeFrontier infers implicit mastery from diagnostic topicEstimatesJson. Result: 0% → 8.5% FIRe compression.
+
+---
+
+### 2026-03-09: Reduced materialization causes interleaving regression via warmup diversity
+
+**Source:** Plan 017.7 Phase 7
+**Area:** Session mix / interleaving
+
+With fewer mastered topics materialized (15 instead of 44), the warmup pool is smaller and less strand-diverse. Sessions start with frontier topics from the same area, increasing same-strand adjacency (0.071 → 0.144). Fix needed: improve strand diversity in getSessionMix when warmup pool is small, or add synthetic diversity from implicit mastery pool.
+
+---
+
+### 2026-03-09: FIRe paired evaluation is noisy at smaller materialization differences
+
+**Source:** Plan 017.7 Phase 7
+**Area:** Simulation / evaluation
+
+The ±1 materialization approach (25 mastered topics) showed noisy FIRe paired results: average-older went -14.9% (more reviews WITH FIRe). The ±0 approach (15 mastered topics) showed consistent positive results (8.5% average). Larger materialization reductions produce clearer FIRe signals because the session dynamics diverge more between with/without encompassing runs.

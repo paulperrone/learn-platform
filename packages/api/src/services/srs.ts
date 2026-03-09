@@ -1,4 +1,4 @@
-import { eq, and, lte, sql, inArray, count as drizzleCount } from "drizzle-orm";
+import { eq, and, lte, sql, inArray, count as drizzleCount, desc } from "drizzle-orm";
 import { createEmptyCard, fsrs, generatorParameters, type Card, type Grade, type FSRSParameters, Rating, State } from "ts-fsrs";
 import type { DB } from "../db/index.js";
 import * as schema from "../db/schema.js";
@@ -750,16 +750,36 @@ export function createSRSService(db: DB) {
         .from(schema.userTopicState)
         .where(eq(schema.userTopicState.userId, userId));
 
-      const mastered = allStates.filter((s) => s.mastered).length;
+      const materializedMastered = allStates.filter((s) => s.mastered).length;
       const inProgress = allStates.filter((s) => !s.mastered && s.reps > 0).length;
       const dueNow = allStates.filter(
         (s) => !s.mastered && new Date(s.due) <= new Date()
       ).length;
 
+      // Include implicitly mastered topics from diagnostic estimates
+      // (reduced materialization means not all mastered topics are in user_topic_state)
+      let implicitMastered = 0;
+      const materializedIds = new Set(allStates.map((s) => s.topicId));
+      const diagSession = await db.query.diagnosticSessions.findFirst({
+        where: and(
+          eq(schema.diagnosticSessions.userId, userId),
+          eq(schema.diagnosticSessions.status, "completed")
+        ),
+        orderBy: desc(schema.diagnosticSessions.completedAt),
+      });
+      if (diagSession?.topicEstimatesJson) {
+        const estimates: Record<string, number> = JSON.parse(diagSession.topicEstimatesJson);
+        for (const [topicId, prob] of Object.entries(estimates)) {
+          if (prob >= 0.6 && !materializedIds.has(topicId)) {
+            implicitMastered++;
+          }
+        }
+      }
+
       const allTopics = await db.select({ id: schema.topics.id }).from(schema.topics);
 
       return {
-        mastered,
+        mastered: materializedMastered + implicitMastered,
         inProgress,
         dueForReview: dueNow,
         total: allTopics.length,

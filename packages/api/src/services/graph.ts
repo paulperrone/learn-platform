@@ -1,4 +1,4 @@
-import { eq, and, inArray, sql } from "drizzle-orm";
+import { eq, and, inArray, sql, desc } from "drizzle-orm";
 import type { DrizzleD1Database } from "drizzle-orm/d1";
 import * as schema from "../db/schema.js";
 
@@ -21,6 +21,26 @@ export function createGraphService(db: DB) {
           )
         );
       const masteredIds = new Set(masteredRows.map((r) => r.topicId));
+
+      // Infer implicit mastery from diagnostic estimates.
+      // After reduced materialization (frontier ±1 only), topics far below
+      // the placement grade aren't in user_topic_state but are still mastered.
+      // Query the latest completed diagnostic to restore these for prereq checks.
+      const diagnosticSession = await db.query.diagnosticSessions.findFirst({
+        where: and(
+          eq(schema.diagnosticSessions.userId, userId),
+          eq(schema.diagnosticSessions.status, "completed")
+        ),
+        orderBy: desc(schema.diagnosticSessions.completedAt),
+      });
+      if (diagnosticSession?.topicEstimatesJson) {
+        const estimates: Record<string, number> = JSON.parse(diagnosticSession.topicEstimatesJson);
+        for (const [topicId, prob] of Object.entries(estimates)) {
+          if (prob >= 0.6) {
+            masteredIds.add(topicId);
+          }
+        }
+      }
 
       // Get all topic IDs this user has started (has any state)
       const startedRows = await db
@@ -204,6 +224,21 @@ export function createGraphService(db: DB) {
           )
         );
       const masteredIds = new Set(masteredRows.map((r) => r.topicId));
+
+      // Include implicit mastery from diagnostic estimates (reduced materialization)
+      const diagSession = await db.query.diagnosticSessions.findFirst({
+        where: and(
+          eq(schema.diagnosticSessions.userId, userId),
+          eq(schema.diagnosticSessions.status, "completed")
+        ),
+        orderBy: desc(schema.diagnosticSessions.completedAt),
+      });
+      if (diagSession?.topicEstimatesJson) {
+        const estimates: Record<string, number> = JSON.parse(diagSession.topicEstimatesJson);
+        for (const [topicId, prob] of Object.entries(estimates)) {
+          if (prob >= 0.6) masteredIds.add(topicId);
+        }
+      }
 
       // Find topics that have justMasteredTopicId as a prerequisite
       const dependents = await db

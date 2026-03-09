@@ -1136,3 +1136,46 @@ Tag each target in `targets.json` with `signal_source: "engine" | "content" | "b
 **Alternatives rejected:**
 - Leave targets unchanged and accept 5 FAIL: Would make the healing loop noisy — can't distinguish real regressions from known limitations
 - Lower all failing targets: review_new_balance and fire_compression failures are genuine engine bugs that Phase 7 should fix
+
+---
+
+## 2026-03-09: Reduced diagnostic materialization for FIRe compression (Plan 017.7, Phase 7)
+
+**Source:** Plan 017.7 Phase 7
+
+**Context:** Diagnostic materializeMastery() was materializing ALL topics with estimate ≥ 0.6 into user_topic_state (44 topics for average-older). This had three negative effects:
+1. **FIRe blocked**: mastered=true topics are skipped by applyFIReCredit and excluded from compressReviews, making FIRe compression 0%
+2. **Frontier exhaustion**: all mastered topics added to startedIds, excluding them from computeFrontier → tiny frontier (7 new topics in 30 sessions)
+3. **Review dominance**: 38 warmup-only mastered topics + small review pool → 94% review ratio
+
+**Decision:** Only materialize topics at the placement grade and above. Topics below placement grade are NOT in user_topic_state but are implicitly mastered via diagnostic estimates. Modified:
+- `diagnostic.ts:materializeMastery()`: skip topics where `gradeLevel < placementGrade`
+- `graph.ts:computeFrontier()`: query diagnostic session's topicEstimatesJson, add estimate ≥ 0.6 to masteredIds
+- `graph.ts:getNewlyUnlockedTopics()`: same implicit mastery inference
+- `srs.ts:getUserStats()`: include implicit mastery in progress counts
+
+**Results (±0 approach, paired FIRe evaluation):**
+- FIRe compression: **0% → 8.5%** (average-older: 16.3%, misconception-fractions: 7.9%, strong-older: 1.3%)
+- Frontier topics introduced: **9 → 24** in 30 sessions
+- Review/new balance: 0.96 → 0.88 (improved but still above 0.50-0.70 target)
+- **Regressions**: interleaving PASS→FAIL (0.071→0.144), mastery convergence WARN→FAIL (3→1), profiles 10→2
+
+**Why regressions occurred:**
+- Interleaving: fewer mastered warmup candidates → less strand diversity at session start → more same-strand adjacency
+- Mastery convergence: fewer initial mastered topics → students need to master them through learning → slower convergence in 30-session window
+- Profiles: fundamentally different dynamics (more exploration, less review) → profile expectations don't match
+
+**Why this validates the healing loop:**
+- The healing system correctly: (a) identified FIRe root cause, (b) measured improvement after fix, (c) detected cross-system regressions
+- Gate criteria option (b) met: fix direction validated (8.5%), further iteration needed for regressions
+- Regressions are systematic and addressable (interleaving can be tuned, mastery convergence targets recalibrated)
+
+**Next steps:**
+1. Fix interleaving regression: improve strand diversity in getSessionMix when warmup pool is small
+2. Recalibrate mastery convergence target for reduced materialization dynamics
+3. Iterate FIRe toward 20%: consider lazy materialization of below-placement topics when they naturally enter the review cycle
+
+**Alternatives tested:**
+- ±1 (placement-1): 2.5% FIRe, noisy paired results (average-older -14.9%). Rejected: too many mastered warmup topics still present
+- mastered=false for near-placement: richer FIRe dynamics but severe regressions (mastery 1, profiles 2/10). Rejected: overwhelms review queue with known topics
+- ±0 selected as best tradeoff: strongest FIRe signal with manageable regressions
