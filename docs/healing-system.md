@@ -53,14 +53,23 @@ The healing system is a continuous quality assurance loop for the learn-platform
 ### Quick Start
 
 ```bash
-# Check system health
+# Check system health (quick, skips FIRe paired runs)
 just evaluate
+
+# Full evaluation with paired FIRe simulations (slower, definitive)
+just evaluate-fire
 
 # Full heal cycle (simulate + evaluate + report)
 just heal-epoch
 
 # AI-assisted healing (diagnose + fix + verify)
 /heal
+
+# AI-assisted with full FIRe evaluation
+/heal --full
+
+# Just show status, don't fix
+/heal --evaluate-only
 
 # Verify a manual fix
 just heal-verify fire_compression

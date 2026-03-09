@@ -14,6 +14,7 @@ Run one or more healing iterations on the learn-platform adaptive engine. Reads 
 ```
 /heal                          # Fix up to 3 failing systems, then checkpoint
 /heal --evaluate-only          # Just run evaluation, show status, don't fix
+/heal --full                   # Run full evaluation with paired FIRe sims (slower, definitive)
 /heal --verify <system>        # Verify a manual fix for a specific system
 /heal --system <id>            # Target a specific system only
 /heal --max <N>                # Fix up to N systems (default 3)
@@ -41,12 +42,20 @@ If any prerequisite is missing, stop and report what's needed.
 Run evaluation to get the current system health:
 
 ```bash
-# If recent simulation data exists (< 1 hour old), use it:
+# Default: quick evaluation (uses cached simulation data, skips FIRe paired runs)
 just evaluate
 
-# If no recent data, run a full epoch:
+# --full flag: comprehensive evaluation with paired FIRe simulations (slower, definitive)
+just evaluate-fire
+
+# If no recent data exists (< 1 hour old), run a full epoch first:
 just heal-epoch
 ```
+
+**Choose evaluation mode:**
+- Default `/heal` or `/heal --evaluate-only`: uses `just evaluate` (fast, skips FIRe)
+- `/heal --full`: uses `just evaluate-fire` (runs paired with/without-FIRe simulations, gives definitive `fire_compression` metric)
+- When diagnosing `fire_compression` specifically, always use `--full` for accurate measurement
 
 Read the output:
 - `simulations/reports/evaluation.json` — machine-readable results
@@ -57,7 +66,7 @@ Read the output:
 - Within each priority, sort by delta magnitude (worst first)
 - Identify the highest-priority FAIL system — that's the fix target
 
-**If `--evaluate-only`:** Print the status table and stop.
+**If `--evaluate-only` or `--full` without other flags:** Print the status table and stop.
 
 **If `--verify <system>`:**
 - Run `just heal-verify <system> --sessions 10`
@@ -70,11 +79,58 @@ For the target failing system, read its `investigationArea` from the evaluation 
 
 1. **Read the suggested source files** — use TLDR for structure first, then read specific functions
 2. **Read the relevant simulation events** — check `simulations/runs/` for the contributing profiles
-3. **Trace the failing metric through the code path:**
+3. **Inspect simulation data for the failing system** (see system-specific inspection below)
+4. **Trace the failing metric through the code path:**
    - Start at the metric computation in `evaluate.ts` — understand what's being measured
    - Follow to the service code — understand what's producing the measured behavior
    - Identify the specific code that causes the metric to miss its target
-4. **Form a hypothesis** — state clearly: "The metric fails because [X] in [file:function] causes [Y behavior]"
+5. **Form a hypothesis** — state clearly: "The metric fails because [X] in [file:function] causes [Y behavior]"
+
+#### System-Specific Event Inspection
+
+When diagnosing a failing system, automatically inspect the relevant simulation data for the worst-contributing profile:
+
+Run structure: `simulations/runs/<profile>-<timestamp>/` contains `events.jsonl`, `summary.json`, `diagnostic-result.json`. Find the latest run for the worst-contributing profile:
+
+```bash
+# Find latest run for a profile (e.g., average-older)
+ls -t simulations/runs/<profile>-* | head -1
+```
+
+**For interleaving:**
+```bash
+# Read events for worst-contributing profile — check strand adjacency
+cat simulations/runs/<latest-run>/events.jsonl | head -200
+```
+Look for: consecutive same-topic problems, especially at session start (warmup phase). Count strand transitions vs same-strand adjacencies. If adjacency is clustered in warmup, the fix is warmup diversity; if spread throughout, the fix is shuffle algorithm.
+
+**For mastery_convergence:**
+```bash
+# Read summary — check mastery trajectory across sessions
+cat simulations/runs/<latest-run>/summary.json
+```
+Check `masteryCount` vs `materializedMasteryCount` in state snapshots. If `masteryCount` is flat but `materializedMasteryCount` grows, the student IS learning but total isn't updating. If both are flat, no progress.
+
+**For review_new_balance:**
+```bash
+# Read events — check review vs new problem counts per session
+cat simulations/runs/<latest-run>/events.jsonl | grep '"type":"session"' | head -30
+```
+Look for: sessions with 0 new topics (all review), review ratio per session, whether new-topic count changes over time.
+
+**For fire_compression:**
+```bash
+# Check evaluation results (requires --full for paired FIRe data)
+cat simulations/reports/evaluation.json
+```
+Look at fire_compression metric details. Check fire-enabled vs fire-disabled review counts per profile. If counts are similar, FIRe credit is not meaningful enough. Also check encompassing edge density in `content/*/graph.json`.
+
+**For mastery_preservation:**
+```bash
+# Read summary — check session 0 vs session 1 mastery counts
+cat simulations/runs/<latest-run>/summary.json
+```
+Look for: mastery drop between session 0 (post-diagnostic) and session 1. If significant drop, check which topics lost mastery in `events.jsonl` and why (hard questions on warmup review).
 
 ### Step 3: Design Fix
 
@@ -163,17 +219,26 @@ When escalating, provide:
 **What it measures:** Non-struggling profiles reaching ≥50% mastery by session 30.
 **Target:** ≥4 of 8 non-struggling profiles.
 
+**Important — implicit vs materialized mastery (post-017.7):**
+- `StateSnapshot.masteryCount` = total mastery (materialized + implicit from diagnostic estimates)
+- `StateSnapshot.materializedMasteryCount` = earned SRS mastery only (topics in `user_topic_state` with `mastered=true`)
+- Mastery convergence uses `masteryCount` (total). The metric counts ALL mastered topics, not just materialized ones.
+- Topics below placement grade are implicitly mastered via `diagnosticSessions.topicEstimatesJson` — they are NOT in `user_topic_state` but DO count toward mastery.
+- When diagnosing, distinguish "initial mastery from diagnostic" (implicit, set at session 0) vs "earned mastery through learning" (materialized, grows across sessions). Flat `masteryCount` with growing `materializedMasteryCount` means the student is earning real mastery.
+
 **Where to look:**
 - `packages/api/src/services/srs.ts` → `processReview()`, `checkMasteryCriterion()`
 - `packages/api/src/services/session.ts` → `getSessionMix()`
+- `packages/api/src/services/graph.ts` → `computeFrontier()` (implicit mastery query)
 
 **Common root causes:**
 1. **Stability threshold too strict** — mastery requires too many consecutive correct answers. Check `MASTERY_THRESHOLD` and `CONSECUTIVE_CORRECT_REQUIRED` in srs.ts.
 2. **Consecutive correct counter not incrementing** — the counter may reset on review failures for OTHER topics. Verify counter is per-topic.
 3. **Session mix starving new topics** — if review queue dominates, students never see enough new material to master it. Check review cap in getSessionMix().
 4. **Mastery preservation bypassed** — diagnostic mastery not surviving into session 1. Check hysteresis logic in processReview().
+5. **Frontier exhaustion from over-materialization** — too many topics materialized at diagnostic → all added to startedIds → excluded from `computeFrontier()` → tiny frontier → few new topics to master.
 
-**Diagnostic trace:** Read `state-snapshots.json` for failing profiles. Plot mastery% across sessions. Look for: flat lines (no progress), sawtooth (gaining then losing), or late starts (mastery only begins in later sessions).
+**Diagnostic trace:** Read `state-snapshots.json` for failing profiles. Compare `masteryCount` vs `materializedMasteryCount` across sessions. Look for: flat lines (no progress), sawtooth (gaining then losing), late starts (mastery only begins in later sessions), or stagnant `materializedMasteryCount` (not earning new mastery despite high total).
 
 ---
 
@@ -209,15 +274,20 @@ When escalating, provide:
 **What it measures:** Review ratio across sessions in [0.50, 0.70] range.
 **Target:** Average review ratio in range.
 
+**Post-017.7 context:** Reduced materialization improved review ratio from 0.96→0.88 but still above the 0.50-0.70 target. The improvement came from fewer materialized topics = smaller review queue. Further improvement requires: (a) session mix algorithm enforcing a new-topic minimum, (b) FIRe compression reducing review load, or (c) more aggressive frontier expansion.
+
 **Where to look:**
-- `packages/api/src/services/session.ts` → `getSessionMix()` slot allocation
+- `packages/api/src/services/session.ts` → `getSessionMix()` slot allocation, new-topic minimum
+- `packages/api/src/services/graph.ts` → `computeFrontier()` — frontier size determines available new topics
+- `packages/api/src/services/diagnostic.ts` → `materializeMastery()` — controls how many topics start in review queue
 
 **Common root causes:**
 1. **Review queue dominance** — too many topics due for review, consuming all session slots. Check if there's a review cap or new-topic minimum guarantee.
-2. **Diagnostic over-materialization** — too many topics materialized, all immediately due for review. Connected to fire_compression issue.
+2. **~~Diagnostic over-materialization~~** *(partially fixed in 017.7 Phase 7)* — reduced materialization brought ratio from 0.96→0.88. Further reduction may come from FIRe compression.
 3. **No minimum new-topic guarantee** — session should always introduce at least N new topics regardless of review queue size.
+4. **Frontier exhaustion** — if `computeFrontier()` returns few topics (because prerequisites aren't met), there aren't enough new topics to balance the ratio even with a minimum guarantee. Check frontier size in session events.
 
-**Note:** This is strongly connected to `fire_compression`. Fixing FIRe (reducing materializations) often fixes review/new balance as a side effect.
+**Connection to other systems:** Strongly connected to `fire_compression` (FIRe reduces review load → better ratio) and `mastery_convergence` (faster mastery → topics leave review queue → better ratio). Fix FIRe and mastery convergence first; review/new balance may improve as a side effect.
 
 ---
 
@@ -225,13 +295,19 @@ When escalating, provide:
 **What it measures:** Same-strand adjacency rate (consecutive problems on same topic).
 **Target:** ≤10%.
 
+**Post-017.7 context:** Reduced materialization caused PASS→FAIL regression (0.071→0.144). Root cause: fewer mastered warmup candidates → less strand diversity at session start → more same-strand adjacency. When review ratio >95%, interleaving is insensitive to shuffle algorithm — reviews of diverse topics naturally intersperse. Fix interleaving AFTER fixing review/new balance.
+
 **Where to look:**
-- `packages/api/src/services/session.ts` → `getSessionMix()` topic ordering
+- `packages/api/src/services/session.ts` → `getSessionMix()` topic ordering, warmup candidate selection
+- `packages/api/src/services/srs.ts` → warmup pool size (depends on mastered + near-due topics)
 
 **Common root causes:**
-1. **No strand-aware shuffle** — topics are presented in order rather than interleaved.
-2. **Review queue overwhelms** — all review topics are the same strand because they were learned together.
-3. **Learning loop phases keep same topic** — pretest → instruction → guided → independent is naturally sequential. Adjacency should be measured at topic-transition level, not every event.
+1. **Small warmup pool** — after reduced materialization, fewer topics are mastered in `user_topic_state`, so the warmup candidate pool is small. Sessions start with consecutive problems on the same few topics. Check warmup candidate count in session events.
+2. **No strand-aware shuffle** — topics are presented in order rather than interleaved.
+3. **Review queue overwhelms** — all review topics are the same strand because they were learned together.
+4. **Learning loop phases keep same topic** — pretest → instruction → guided → independent is naturally sequential. Adjacency should be measured at topic-transition level, not every event.
+
+**Diagnostic trace:** Read session events for worst-contributing profile. Check strand transitions. If adjacency is clustered at session start (warmup phase), the fix is warmup diversity. If spread throughout, the fix is shuffle algorithm.
 
 ---
 
@@ -239,16 +315,21 @@ When escalating, provide:
 **What it measures:** Review count reduction vs no-FIRe baseline.
 **Target:** ≥20% reduction.
 
+**Post-017.7 context:** Reduced diagnostic materialization (only materialize topics at placement grade and above) brought FIRe from 0% → 8.5%. The root cause was: `applyFIReCredit()` skips `mastered=true` topics, so over-materializing with mastery blocked FIRe entirely. Further iteration should target encompassing graph density and session-level FIRe credit application.
+
 **Where to look:**
 - `packages/api/src/services/srs.ts` → `applyFIReCredit()`, `compressReviews()`
-- `packages/api/src/services/diagnostic.ts` → `materializeMastery()`
+- `packages/api/src/services/diagnostic.ts` → `materializeMastery()` — only materializes topics at `gradeLevel >= placementGrade`
+- `content/*/graph.json` → encompassing edge density (more edges = more FIRe credit opportunities)
 
 **Common root causes:**
-1. **Diagnostic over-materialization** — materializing ALL topics below placement fills the review budget regardless of FIRe. Fix: only materialize frontier ±1 grade topics.
-2. **FIRe credit keeps topics fresh instead of reducing reviews** — credit extends due dates by hours, but topics are overdue by days. Credit is too small to push topics past their due date.
-3. **FIRe credit applied to non-mastered topics** — credit should only compress reviews for mastered encompassing topics.
+1. **~~Diagnostic over-materialization~~** *(fixed in 017.7 Phase 7)* — materializing ALL topics below placement filled the review budget. Now only placement-and-above topics are materialized.
+2. **Insufficient encompassing density** — FIRe credit scales with the number of encompassing edges. If the graph has few encompassing relationships, credit is sparse. Check `graph.json` for encompassing edge count.
+3. **FIRe credit keeps topics fresh instead of reducing reviews** — credit extends due dates by hours, but topics are overdue by days. Credit is too small to push topics past their due date.
+4. **FIRe credit applied to non-mastered topics** — credit should only compress reviews for mastered encompassing topics. `applyFIReCredit()` correctly skips mastered=true children.
+5. **Review pool too small** — FIRe compression = `1 - (fire_reviews / baseline_reviews)`. If the review pool is small (few non-mastered topics due for review), even good FIRe credit doesn't compress many reviews.
 
-**This is the highest-value fix remaining from 017.5.** Plan 017.7 Phase 7 targets this specifically.
+**Evaluation note:** FIRe compression requires paired simulation runs (with/without FIRe). Use `/heal --full` or `just evaluate-fire` for the definitive metric. Quick evaluation skips FIRe.
 
 ---
 
