@@ -386,3 +386,14 @@ Running identical profiles with and without encompassing edges reveals that FIRe
 All 10 profiles show 97-100% review ratio across 30 sessions (target: ~60%). After diagnostic materializes mastery for many topics, ALL of those topics become immediately due for review (due dates are set to now). The session mix algorithm gives 60% of slots to reviews, but with 40-71 topics all due simultaneously, the review budget is exhausted before any new topics are introduced. Since topics don't gain mastery and keep failing the mastery criterion, they cycle back as perpetually-due reviews.
 
 **Impact:** New frontier topics are never introduced. Learning stagnates on review cycling. The session service needs a max-reviews-per-session cap or a mechanism to "graduate" topics from review even without meeting the strict mastery criterion.
+
+---
+
+### 2026-03-09: Simulation analysis baseline must match session count for regression checks
+
+**Source:** User session
+**Area:** Simulation framework
+
+The fast regression check runs 3 profiles × 5 sessions, while the full analysis runs 10 profiles × 15-30 sessions. Comparing 5-session metrics against a 30-session baseline produces false regressions (e.g., same-strand adjacency rate varies with session count). The regression script uses its own `regression-baseline.json` created from matching 5-session runs. The full `baseline.json` is for `just simulate-compare` after deep analysis runs.
+
+**Context:** Separate baseline files avoid session-count mismatches between fast regression checks and deep analysis.
