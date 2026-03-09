@@ -407,7 +407,7 @@ describe("createSRSService", () => {
   });
 
   describe("applyFIReCredit", () => {
-    it("extends child due date further out when parent is reviewed", async () => {
+    it("applies virtual FSRS review with interpolated stability", async () => {
       const db = getTestDb();
       const user = await seedUser({ id: "srs-user-8" });
       const subj = await seedSubject({ id: "srs-subj-8" });
@@ -415,8 +415,9 @@ describe("createSRSService", () => {
       const child = await seedTopic(subj.id, { id: "srs-child-8" });
       await seedEncompassing(parent.id, child.id, 0.5);
 
-      // Child has state with future due date and low retrievability
+      // Child has low retrievability (reviewed 10 days ago, stability 5 → R ≈ 0.69)
       const futureDue = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString();
+      const lastReviewBefore = new Date(Date.now() - 10 * 24 * 60 * 60 * 1000).toISOString();
       await db.insert(schema.userTopicState).values({
         userId: user.id,
         topicId: child.id,
@@ -425,7 +426,8 @@ describe("createSRSService", () => {
         reps: 3,
         stability: 5,
         difficulty: 5,
-        lastReview: new Date(Date.now() - 4 * 24 * 60 * 60 * 1000).toISOString(), // 4 days ago
+        state: State.Review,
+        lastReview: lastReviewBefore,
       });
 
       const srs = createSRSService(db);
@@ -434,7 +436,7 @@ describe("createSRSService", () => {
       expect(credits).toHaveLength(1);
       expect(credits[0].topicId).toBe(child.id);
 
-      // Verify due date pushed further out (extension model — reduces review frequency)
+      // Verify virtual FSRS review updated full state
       const [updated] = await db
         .select()
         .from(schema.userTopicState)
@@ -444,7 +446,14 @@ describe("createSRSService", () => {
             eq(schema.userTopicState.topicId, child.id)
           )
         );
-      expect(new Date(updated.due).getTime()).toBeGreaterThan(new Date(futureDue).getTime());
+      // Stability should increase (virtual review reinforces memory)
+      expect(updated.stability).toBeGreaterThan(5);
+      // lastReview should be updated to now (critical for FSRS coherence)
+      expect(new Date(updated.lastReview!).getTime()).toBeGreaterThan(new Date(lastReviewBefore).getTime());
+      // Due date should be in the future from now
+      expect(new Date(updated.due).getTime()).toBeGreaterThan(Date.now());
+      // Reps should NOT change (virtual review doesn't count as actual interaction)
+      expect(updated.reps).toBe(3);
     });
 
     it("flows credit through multi-hop encompassing", async () => {
@@ -461,7 +470,7 @@ describe("createSRSService", () => {
 
       const futureDue = new Date(Date.now() + 14 * 24 * 60 * 60 * 1000).toISOString();
 
-      // Set up parent state
+      // Set up parent state (R ≈ 0.86 with stability 10, 15 days ago)
       await db.insert(schema.userTopicState).values({
         userId: user.id,
         topicId: parent.id,
@@ -470,10 +479,11 @@ describe("createSRSService", () => {
         reps: 3,
         stability: 10,
         difficulty: 5,
-        lastReview: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString(),
+        state: State.Review,
+        lastReview: new Date(Date.now() - 15 * 24 * 60 * 60 * 1000).toISOString(),
       });
 
-      // Set up child state
+      // Set up child state (R ≈ 0.86 with stability 10, 15 days ago)
       await db.insert(schema.userTopicState).values({
         userId: user.id,
         topicId: child.id,
@@ -482,7 +492,8 @@ describe("createSRSService", () => {
         reps: 5,
         stability: 10,
         difficulty: 5,
-        lastReview: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString(),
+        state: State.Review,
+        lastReview: new Date(Date.now() - 15 * 24 * 60 * 60 * 1000).toISOString(),
       });
 
       const srs = createSRSService(db);
@@ -499,7 +510,7 @@ describe("createSRSService", () => {
       expect(childCredit.weight).toBeLessThan(parentCredit.weight);
     });
 
-    it("discounts credit for fresh topics (early repetition discount)", async () => {
+    it("skips fresh topics with high retrievability", async () => {
       const db = getTestDb();
       const user = await seedUser({ id: "srs-fresh-1" });
       const subj = await seedSubject({ id: "srs-fresh-subj" });
@@ -508,7 +519,7 @@ describe("createSRSService", () => {
 
       await seedEncompassing(parent.id, freshChild.id, 0.8);
 
-      // Fresh child: reviewed very recently, very high retrievability
+      // Fresh child: reviewed very recently, very high retrievability (R > 0.9)
       const futureDue = new Date(Date.now() + 14 * 24 * 60 * 60 * 1000).toISOString();
       await db.insert(schema.userTopicState).values({
         userId: user.id,
@@ -524,47 +535,65 @@ describe("createSRSService", () => {
       const srs = createSRSService(db);
       const credits = await srs.applyFIReCredit(user.id, parent.id, Rating.Good);
 
-      // Fresh topic has high retrievability → discounted weight < 0.01
-      // so credit is filtered out entirely (no extension applied)
+      // Fresh topic has R > 0.9 → skipped entirely (no marginal benefit)
       expect(credits.length).toBe(0);
     });
 
-    it("caps due date extension at 50% of stability in days", async () => {
+    it("scales stability increase by encompassing weight", async () => {
       const db = getTestDb();
       const user = await seedUser({ id: "srs-cap-1" });
       const subj = await seedSubject({ id: "srs-cap-subj" });
-      const parent = await seedTopic(subj.id, { id: "srs-cap-p" });
-      const child = await seedTopic(subj.id, { id: "srs-cap-c" });
-      await seedEncompassing(parent.id, child.id, 0.9); // High weight
+      const parentHigh = await seedTopic(subj.id, { id: "srs-cap-ph" });
+      const parentLow = await seedTopic(subj.id, { id: "srs-cap-pl" });
+      const childHigh = await seedTopic(subj.id, { id: "srs-cap-ch" });
+      const childLow = await seedTopic(subj.id, { id: "srs-cap-cl" });
+      await seedEncompassing(parentHigh.id, childHigh.id, 0.9); // High weight
+      await seedEncompassing(parentLow.id, childLow.id, 0.3); // Low weight
 
-      const futureDue = new Date(Date.now() + 3 * 24 * 60 * 60 * 1000);
-      await db.insert(schema.userTopicState).values({
-        userId: user.id,
-        topicId: child.id,
-        due: futureDue.toISOString(),
-        mastered: false,
-        reps: 3,
-        stability: 10,
-        difficulty: 5,
-        lastReview: new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString(),
-      });
+      // Both children start with identical state (Review state, R ≈ 0.86)
+      const lastReview = new Date(Date.now() - 15 * 24 * 60 * 60 * 1000).toISOString();
+      for (const childId of [childHigh.id, childLow.id]) {
+        await db.insert(schema.userTopicState).values({
+          userId: user.id,
+          topicId: childId,
+          due: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString(), // overdue
+          mastered: false,
+          reps: 3,
+          stability: 10,
+          difficulty: 5,
+          state: State.Review,
+          lastReview,
+        });
+      }
 
       const srs = createSRSService(db);
-      await srs.applyFIReCredit(user.id, parent.id, Rating.Good);
+      await srs.applyFIReCredit(user.id, parentHigh.id, Rating.Good);
+      await srs.applyFIReCredit(user.id, parentLow.id, Rating.Good);
 
-      const [updated] = await db
+      const [updatedHigh] = await db
         .select()
         .from(schema.userTopicState)
         .where(
           and(
             eq(schema.userTopicState.userId, user.id),
-            eq(schema.userTopicState.topicId, child.id)
+            eq(schema.userTopicState.topicId, childHigh.id)
           )
         );
-      const extensionMs = new Date(updated.due).getTime() - futureDue.getTime();
-      const extensionDays = extensionMs / (24 * 60 * 60 * 1000);
-      expect(extensionDays).toBeGreaterThan(0);
-      expect(extensionDays).toBeLessThanOrEqual(5.01); // 50% of 10-day stability
+      const [updatedLow] = await db
+        .select()
+        .from(schema.userTopicState)
+        .where(
+          and(
+            eq(schema.userTopicState.userId, user.id),
+            eq(schema.userTopicState.topicId, childLow.id)
+          )
+        );
+
+      // Both should have increased stability
+      expect(updatedHigh.stability).toBeGreaterThan(10);
+      expect(updatedLow.stability).toBeGreaterThan(10);
+      // High-weight child should have more stability increase than low-weight
+      expect(updatedHigh.stability).toBeGreaterThan(updatedLow.stability);
     });
 
     it("does not apply credit on failure rating", async () => {

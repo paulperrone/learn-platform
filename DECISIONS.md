@@ -1218,3 +1218,31 @@ Tag each target in `targets.json` with `signal_source: "engine" | "content" | "b
 - `fire_compression` needs architectural redesign: virtual FSRS reviews instead of due-date extension
 
 **Why:** The training loop correctly identified the highest-impact fix (mastery criterion was too strict, causing frontier exhaustion) and correctly abandoned approaches that caused regressions. The two skipped systems have root causes outside the current SRS parameter space.
+
+---
+
+## 2026-03-09: FIRe credit redesigned from due-date extension to virtual FSRS reviews
+
+**Source:** User session
+
+**Context:** FIRe credit used `applyFIReCredit()` to push child due dates further out when a parent was reviewed. Training loop (epoch 3) proved this fundamentally conflicts with FSRS: extending due dates without updating `lastReview`/`stability` causes FSRS to interpret longer gaps as memory decay, increasing review frequency (negative compression). Three tuning approaches all failed.
+
+**Decision:** Replace due-date extension with virtual FSRS reviews. When a parent is reviewed successfully:
+1. Call FSRS `repeat(card, Rating.Good)` on each encompassed child
+2. Interpolate stability increase by encompassing weight: `newStab = oldStab + weight × (fsrsStab - oldStab)`
+3. Scale the due interval proportionally: `virtualInterval = fsrsInterval × (virtualStab / fsrsStab)`
+4. Update `stability`, `due`, and `lastReview` (but NOT `reps`, `difficulty`, `state`, `lapses`)
+5. Skip if child retrievability > 0.9 (too fresh for marginal benefit)
+
+**Why:**
+- FSRS state stays internally consistent — no forgetting curve distortion
+- Learning science confirms implicit practice IS real memory reinforcement (Ausubel 1957)
+- Virtual reviews let compression persist across sessions (child's updated state is permanent)
+- Stability interpolation by weight means weight 0.7 → 70% of the stability increase, matching the actual degree of implicit practice
+
+**Results:** FIRe compression 0% → 6.4% average, with `strong-older` at 25%. No regressions on other systems. Remaining gap to 20% target addressable via graph density (more encompassing edges).
+
+**Alternatives rejected:**
+- Due-date extension only: causes negative compression (-5.8% to -10.5%)
+- Compression-only (drop credit): no cross-session accumulation, limited benefit
+- Shadow interval tracker: dual-system complexity, unclear interaction model

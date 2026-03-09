@@ -660,14 +660,14 @@ The mastery preservation metric (S0 → S1 drop) showed 36.6% false failure beca
 
 ---
 
-### 2026-03-09: FIRe due-date extension conflicts with FSRS state model
+### 2026-03-09: FIRe due-date extension conflicts with FSRS state model (RESOLVED)
 
 **Source:** Plan 017.8 Phase 5 (training run epoch 3)
 **Area:** SRS / FIRe compression
 
-`applyFIReCredit()` extends child topic due dates when a parent is reviewed. However, FSRS interprets the resulting longer gap between reviews as memory decay, which *increases* review frequency — the opposite of the intended compression. Three approaches (removing retrievability discount, increasing cap, removing child deletion from set-cover) all produced negative compression (-5.8% to -10.5%). The fix requires architectural redesign: virtual FSRS reviews that update the child's full FSRS state (stability, difficulty, reps) as if it were actually reviewed, not just pushing the due date.
+`applyFIReCredit()` originally extended child topic due dates when a parent was reviewed. FSRS interpreted the resulting longer gap as memory decay, *increasing* review frequency. **Fixed:** replaced with virtual FSRS reviews that update full state (stability, due, lastReview) via `repeat(card, Rating.Good)` with stability interpolated by encompassing weight. Result: 0% → 6.4% compression (up to 25% for advanced profiles).
 
-**Context:** This blocks the `fire_compression` target (0% actual vs 20% target). The encompassing graph structure and `computeFIReCoverage()` work correctly — the issue is purely in how credit is applied to FSRS state.
+**Context:** Remaining gap to 20% target is addressable via encompassing graph density (currently 15 edges for 71 topics).
 
 ---
 

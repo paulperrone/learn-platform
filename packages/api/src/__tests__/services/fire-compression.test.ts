@@ -200,16 +200,18 @@ describe("FIRe multi-hop credit flow", () => {
     expect(creditMap.has(mul100.id)).toBe(true);
     expect(creditMap.has(skipCount.id)).toBe(true);
 
-    // Verify due dates pushed further out for all three (extension model)
+    // Verify stability increased for all three (virtual FSRS review model)
     const statesAfter = await db
       .select()
       .from(schema.userTopicState)
       .where(eq(schema.userTopicState.userId, user.id));
     for (const state of statesAfter) {
-      const before = dueBefore.get(state.topicId);
-      if (before && state.topicId !== orderOps.id) {
-        expect(new Date(state.due).getTime()).toBeGreaterThan(
-          new Date(before).getTime()
+      if (state.topicId !== orderOps.id) {
+        // Virtual review should increase stability from baseline of 1
+        expect(state.stability).toBeGreaterThan(1);
+        // lastReview should be updated to now
+        expect(new Date(state.lastReview!).getTime()).toBeGreaterThan(
+          Date.now() - 5000 // within last 5 seconds
         );
       }
     }

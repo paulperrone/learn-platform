@@ -312,11 +312,15 @@ export function createSRSService(db: DB) {
     /**
      * Apply FIRe (Fractional Implicit Repetition) credit with multi-hop traversal.
      * When a user practices a parent topic, encompassed child topics
-     * get fractional credit toward their next review. Credit flows
-     * through 2-3 hops with diminishing weight.
+     * get virtual FSRS reviews — updating their full FSRS state (stability,
+     * due, lastReview) as if they were actually reviewed with a scaled grade.
      *
-     * Early repetition discount: credit is scaled by (1 - retrievability)
-     * so that fresh topics get less credit.
+     * Virtual review model: call FSRS repeat() with Rating.Good on the child,
+     * then interpolate the stability increase by the encompassing weight.
+     * This keeps FSRS state internally consistent (no due-date-only hacks)
+     * and produces real compression across sessions.
+     *
+     * Skip if retrievability > 0.9 (child is fresh, no marginal benefit).
      */
     async applyFIReCredit(userId: string, topicId: string, rating: Grade) {
       if (rating < Rating.Good) return [];
@@ -355,14 +359,7 @@ export function createSRSService(db: DB) {
 
       const credits: { topicId: string; weight: number }[] = [];
       const now = new Date();
-
-      // FIRe due-date extension model: instead of advancing due dates closer
-      // (which kept topics perpetually fresh and increased review burden),
-      // EXTEND due dates further into the future. When a parent topic is
-      // reviewed successfully, its encompassed children need review less urgently.
-      // This directly reduces how often topics appear in the review queue.
-      // Cap extension at 50% of stability (in days) to prevent over-inflation.
-      const FIRE_EXTENSION_CAP = 0.5; // Max extension = 50% of stability in days
+      const userFsrs = await getUserFsrs(userId);
 
       for (const [childTopicId, weight] of visited) {
         const childState = await this.getOrCreateState(userId, childTopicId);
@@ -370,27 +367,35 @@ export function createSRSService(db: DB) {
         if (childState.reps === 0) continue;
         if (childState.stability <= 0) continue;
 
-        // Early repetition discount: scale credit by (1 - retrievability)
+        // Skip if child is fresh — high retrievability means no marginal benefit
         const retrievability = computeRetrievability(childState);
-        const discountedWeight = weight * (1 - retrievability);
-        if (discountedWeight < 0.01) continue;
+        if (retrievability > 0.9) continue;
 
-        // Extend due date: push child's review further out
-        // Extension = stability * weight * (1 - R), capped at 50% of stability
-        const stabilityMs = childState.stability * 24 * 60 * 60 * 1000;
-        const rawExtensionMs = stabilityMs * discountedWeight;
-        const capMs = stabilityMs * FIRE_EXTENSION_CAP;
-        const extensionMs = Math.min(rawExtensionMs, capMs);
+        // Virtual FSRS review: compute what a Good review would produce
+        const card = cardFromRow(childState);
+        const fsrsResult = userFsrs.repeat(card, now)[Rating.Good].card;
 
-        const dueDate = new Date(childState.due);
-        const newDue = new Date(dueDate.getTime() + extensionMs);
+        // Interpolate stability by weight: partial implicit practice →
+        // partial stability increase. Weight 0.8 → 80% of the increase.
+        const stabilityIncrease = fsrsResult.stability - childState.stability;
+        const virtualStability = childState.stability + weight * stabilityIncrease;
+
+        // Compute virtual due date: scale the FSRS interval proportionally
+        const fsrsIntervalMs = fsrsResult.due.getTime() - now.getTime();
+        const virtualIntervalMs = fsrsIntervalMs * (virtualStability / fsrsResult.stability);
+        const virtualDue = new Date(now.getTime() + virtualIntervalMs);
 
         await db
           .update(schema.userTopicState)
-          .set({ due: newDue.toISOString() })
+          .set({
+            stability: virtualStability,
+            due: virtualDue.toISOString(),
+            lastReview: now.toISOString(),
+            // Don't update: reps, difficulty, state, lapses — these reflect actual interactions
+          })
           .where(eq(schema.userTopicState.id, childState.id));
 
-        credits.push({ topicId: childTopicId, weight: discountedWeight });
+        credits.push({ topicId: childTopicId, weight });
       }
 
       return credits;

@@ -62,22 +62,23 @@ describe("confidence-fsrs-fire integration", () => {
       lastReview: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toISOString(),
     });
 
-    // Children: reviewed, due in 10 days (FIRe credit will boost stability)
+    // Children: reviewed longer ago so retrievability < 0.9 (eligible for FIRe credit)
+    // R = (1 + t/(9*S))^-1; for R < 0.9: t > S (roughly)
     const childDue = new Date(Date.now() + 10 * 24 * 60 * 60 * 1000).toISOString();
     await seedUserTopicState(user.id, "child1", {
       stability: 8, difficulty: 5, reps: 2, state: 2,
       due: childDue,
-      lastReview: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000).toISOString(),
+      lastReview: new Date(Date.now() - 12 * 24 * 60 * 60 * 1000).toISOString(),
     });
     await seedUserTopicState(user.id, "child2", {
       stability: 8, difficulty: 5, reps: 2, state: 2,
       due: childDue,
-      lastReview: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000).toISOString(),
+      lastReview: new Date(Date.now() - 12 * 24 * 60 * 60 * 1000).toISOString(),
     });
     await seedUserTopicState(user.id, "grandchild", {
       stability: 5, difficulty: 5, reps: 2, state: 2,
       due: childDue,
-      lastReview: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(),
+      lastReview: new Date(Date.now() - 8 * 24 * 60 * 60 * 1000).toISOString(),
     });
 
     return { db, user, subject };
@@ -108,7 +109,7 @@ describe("confidence-fsrs-fire integration", () => {
     const credits = await srs.applyFIReCredit(user.id, "parent", Rating.Easy);
     expect(credits.length).toBeGreaterThanOrEqual(1);
 
-    // Child1 due date should be pushed further out (extension model)
+    // Child1 should have updated state (virtual FSRS review)
     const [child1After] = await db.select()
       .from(schema.userTopicState)
       .where(and(
@@ -116,8 +117,11 @@ describe("confidence-fsrs-fire integration", () => {
         eq(schema.userTopicState.topicId, "child1"),
       ));
 
-    expect(new Date(child1After.due).getTime())
-      .toBeGreaterThan(new Date(child1Before.due).getTime());
+    // Stability should increase from virtual review
+    expect(child1After.stability).toBeGreaterThan(child1Before.stability);
+    // lastReview should be updated
+    expect(new Date(child1After.lastReview!).getTime())
+      .toBeGreaterThan(new Date(child1Before.lastReview!).getTime());
   });
 
   it("low confidence + correct → capped at Good → shorter interval", async () => {
@@ -195,7 +199,7 @@ describe("confidence-fsrs-fire integration", () => {
       expect(gcCredit.weight).toBeLessThan(child1Credit.weight);
     }
 
-    // Verify grandchild due date pushed further out (if credit was significant enough)
+    // Verify grandchild received virtual FSRS review (if credit was significant enough)
     const [gcAfter] = await db.select()
       .from(schema.userTopicState)
       .where(and(
@@ -204,8 +208,8 @@ describe("confidence-fsrs-fire integration", () => {
       ));
 
     if (gcCredit) {
-      expect(new Date(gcAfter.due).getTime())
-        .toBeGreaterThan(new Date(gcBefore.due).getTime());
+      // Stability should increase from virtual review
+      expect(gcAfter.stability).toBeGreaterThan(gcBefore.stability);
     }
   });
 
