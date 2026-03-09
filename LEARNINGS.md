@@ -361,3 +361,28 @@ When the diagnostic materializes mastery, it sets `mastered=true, state=2 (Revie
 Across 30 sessions × 10 profiles (15,560 total events), zero remediation events and zero fading-level events were observed. The remediation routing and worked example fading systems exist in the session service code but don't activate under simulation conditions. Possible causes: (1) remediation requires specific failure patterns that the simulation's answer engine doesn't produce, (2) fading levels aren't propagated to the session response items, (3) the session mix (60% review, 40% new) doesn't create conditions where remediation would trigger.
 
 **Impact:** Remediation and fading validation deferred to Phase 6, after the system issues above are addressed.
+
+---
+
+### 2026-03-09: FIRe encompassing credit paradoxically increases review load
+
+**Source:** Simulation adaptive analysis (plan 017 Phase 4)
+**Area:** SRS service / FIRe compression
+
+Running identical profiles with and without encompassing edges reveals that FIRe *increases* total reviews by -20.4% (731 vs 501 for average-older, 681 vs 620 for strong-older). FIRe credit keeps more topics "fresh" via fractional credit on reviewed parents, which prevents children from lapsing and dropping out of the review cycle. Without encompassing edges, non-reviewed topics lapse and are naturally pruned from the due list. The `compressReviews` greedy set-cover algorithm selects parent topics that cover more due children, but because those children stay due (via credit), the total review burden grows.
+
+**Fix options for Phase 6:**
+1. Only apply FIRe credit when it would SKIP the child's explicit review (true compression), not just reduce time-to-due
+2. The session service review budget is fixed at ~60% of interactions — FIRe should reduce the *proportion* of budget spent on reviews, not increase topic throughput
+3. Consider FIRe as a scheduling signal (delay the child's next explicit review) rather than a stability credit
+
+---
+
+### 2026-03-09: Session service runs 98-100% reviews, almost no new topic introduction
+
+**Source:** Simulation adaptive analysis (plan 017 Phase 4)
+**Area:** Session service / SRS service
+
+All 10 profiles show 97-100% review ratio across 30 sessions (target: ~60%). After diagnostic materializes mastery for many topics, ALL of those topics become immediately due for review (due dates are set to now). The session mix algorithm gives 60% of slots to reviews, but with 40-71 topics all due simultaneously, the review budget is exhausted before any new topics are introduced. Since topics don't gain mastery and keep failing the mastery criterion, they cycle back as perpetually-due reviews.
+
+**Impact:** New frontier topics are never introduced. Learning stagnates on review cycling. The session service needs a max-reviews-per-session cap or a mechanism to "graduate" topics from review even without meeting the strict mastery criterion.

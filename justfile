@@ -82,6 +82,14 @@ simulate-trajectories:
 simulate-trajectory run-dir:
     npx tsx simulations/src/trajectory-analysis.ts {{run-dir}}
 
+# Analyze adaptive systems (Phase 4) from latest simulation runs
+simulate-adaptive:
+    npx tsx simulations/src/adaptive-analysis.ts --all-latest
+
+# Run FIRe comparison simulations (with vs without encompassing edges)
+simulate-fire seed="42":
+    npx tsx simulations/src/adaptive-analysis.ts --all-latest --run-fire-comparison --seed {{seed}}
+
 # Clean up task execution state
 task-cleanup:
     #!/usr/bin/env bash
