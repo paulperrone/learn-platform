@@ -588,3 +588,21 @@ Simulation scripts run via `npx tsx` default to CJS output format. Top-level `aw
 **Area:** Simulation tooling
 
 `loadTargets()` in `simulations/src/load-targets.ts` returns `{ targets, errors, warnings }` (type `LoadResult`), not a raw `TargetFile`. Code consuming targets must destructure: `const { targets } = loadTargets()`. This tripped up `detect-changes.ts` which tried to call `Object.entries(targets.systems)` on the wrapper object.
+
+---
+
+### 2026-03-09: Justfile named args require positional invocation from CLI
+
+**Source:** Plan 017.7 Phase 6
+**Area:** Build tooling / justfile
+
+`just heal-epoch sessions="30" seed="42"` passes the literal strings `sessions=30` and `seed=42` as argument values, causing `--sessions sessions=30` which parses as NaN. Use positional arguments instead: `just heal-epoch 30 42`. This caused epoch-1 to run 0 sessions (diagnostic only) with NaN seed.
+
+---
+
+### 2026-03-09: Interleaving metrics insensitive when review ratio >95%
+
+**Source:** Plan 017.7 Phase 6
+**Area:** Simulation / healing loop
+
+When the review/new ratio is >95% (as in current post-diagnostic sessions), same-strand adjacency rate is low regardless of whether the strand-aware shuffle is active, disabled, or reversed. Reviews of diverse topics naturally intersperse, masking the shuffle algorithm's effect. Interleaving mini-sim verification is only meaningful when the review ratio is closer to the 60/40 target.
