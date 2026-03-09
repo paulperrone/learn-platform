@@ -13,9 +13,9 @@ Build a framework that runs synthetic learners through the real learning engine 
 
 ## Progress
 
-**Completed:** Phase 1 ✓, Phase 2 ✓, Phase 3 ✓, Phase 4 ✓, Phase 5 ✓
+**Completed:** Phase 1 ✓, Phase 2 ✓, Phase 3 ✓, Phase 4 ✓, Phase 5 ✓, Phase 6 ✓
 **In Progress:** —
-**Next:** Phase 6
+**Next:** Plan complete. Follow-up: Plan 017.5 (System Remediation & Retest)
 
 ---
 
@@ -129,10 +129,10 @@ Build a framework that runs synthetic learners through the real learning engine 
 
 ---
 
-## Phase 6: Simulation-Informed Readiness Gate
+## Phase 6: Simulation-Informed Readiness Gate ✓
 **Goal:** Analyze simulation findings, fix any system issues discovered, update Plan 018 priorities, and gate content generation on system correctness. The simulation has revealed significant system problems; create Plan 017.5 (System Remediation & Retest) to fix and re-validate before proceeding to content.
 
-1. [ ] [RSH] Compile simulation findings into a **System Readiness Report** (`simulations/reports/system-readiness.md`). For each adaptive system, assign pass/fail/warn:
+1. [x] [RSH] Compile simulation findings into a **System Readiness Report** (`simulations/reports/system-readiness.md`). For each adaptive system, assign pass/fail/warn:
    - 85% difficulty targeting: PASS if converges within 30 problems for ≥7/10 profiles
    - Presentation drift: PASS if moves in expected direction for all profiles
    - Mastery convergence: PASS if non-struggling profiles reach ≥50% mastery by session 30
@@ -140,13 +140,13 @@ Build a framework that runs synthetic learners through the real learning engine 
    - Remediation routing: PASS if routes to correct prerequisite ≥80% of the time
    - Interleaving: PASS if same-strand adjacency <10%
    - Diagnostic placement: PASS if all profiles within ±1 grade
-2. [ ] [IMP] Fix any system bugs or parameter tuning issues revealed by simulation. Examples: adjust difficulty thresholds if 85% targeting oscillates, tune mastery criterion if too strict/loose, adjust presentation drift rates if too aggressive/slow, fix remediation routing if it targets wrong prerequisites. Each fix is a targeted code change + re-run of affected simulation profiles to confirm improvement.
-3. [ ] [VAL] Re-run `just simulate-all` after fixes. Compare against Phase 5 baseline using `just simulate-compare`. All previously-failing metrics should now pass. No regressions on previously-passing metrics.
-4. [ ] [IMP] Update Plan 018 phase priorities based on content quality signals from simulation:
+2. [x] [IMP] Fix any system bugs or parameter tuning issues revealed by simulation. **Result:** All 5 failing systems require architectural changes, not parameter tuning. Deferred to Plan 017.5. Examples: adjust difficulty thresholds if 85% targeting oscillates, tune mastery criterion if too strict/loose, adjust presentation drift rates if too aggressive/slow, fix remediation routing if it targets wrong prerequisites. Each fix is a targeted code change + re-run of affected simulation profiles to confirm improvement.
+3. [x] [VAL] Re-run `just simulate-all` after fixes. **Result:** No parameter fixes attempted (all architectural). Full re-simulation deferred to Plan 017.5 Phase 7. Compare against Phase 5 baseline using `just simulate-compare`. All previously-failing metrics should now pass. No regressions on previously-passing metrics.
+4. [x] [IMP] Update Plan 018 phase priorities based on content quality signals from simulation:
    - Which topics need more problems most urgently? (feeds 018 Phase 3 ordering)
    - Which content gaps have highest impact? (feeds 018 Phase 0 gap detection thresholds)
    - Are procedural generators sufficient or do certain topic types need hand-authored procedural problems too? (feeds 018 Phase 2 scope)
    - Document priority adjustments in Plan 018 and DECISIONS.md.
-5. [ ] [VAL] **Readiness gate decision:** If all adaptive systems pass, Plan 018 is unblocked — proceed to content generation. If any system has FAIL status after fixes in step 2-3, create **Plan 017.5: System Remediation & Retest** — a focused plan to address the specific failing systems with deeper architectural changes (not just parameter tuning), followed by a full re-simulation cycle. Plan 018 remains blocked until 017.5 completes and all systems pass. Document the decision and rationale in DECISIONS.md.
+5. [x] [VAL] **Readiness gate decision:** FAIL — 5/7 systems. Created Plan 017.5 (System Remediation & Retest). Plan 018 blocked until 017.5 completes. Decision documented in DECISIONS.md. If all adaptive systems pass, Plan 018 is unblocked — proceed to content generation. If any system has FAIL status after fixes in step 2-3, create **Plan 017.5: System Remediation & Retest** — a focused plan to address the specific failing systems with deeper architectural changes (not just parameter tuning), followed by a full re-simulation cycle. Plan 018 remains blocked until 017.5 completes and all systems pass. Document the decision and rationale in DECISIONS.md.
 
 **Validation:** System Readiness Report produced with all systems at PASS or WARN (no FAIL). Plan 018 priorities updated based on simulation data. If 017.5 is needed, it is created with specific scope and Plan 018 dependency is documented. Content generation does not begin on a poorly-operating system.

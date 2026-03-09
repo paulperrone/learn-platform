@@ -66,7 +66,15 @@ Topic (graph node)
 
 **Completed:** None yet
 **In Progress:** —
-**Next:** Phase 0 (blocked on Plan 017 Phase 6 readiness gate)
+**Next:** Phase 0 (blocked on Plan 017.5 — system remediation must pass before content generation)
+
+**Blocking dependency:** Plan 017 Phase 6 readiness gate determined FAIL (5/7 systems). Plan 017.5 (System Remediation & Retest) created to address: mastery convergence, remediation routing, FIRe compression, interleaving, presentation drift, diagnostic bounds. This plan remains blocked until 017.5 completes and all systems pass re-simulation.
+
+**Content priority signals from simulation (Plan 017 Phase 5):**
+- 24 topics flagged as too hard for strong profiles (<70% accuracy) — prioritize problem review/rewrite for: coordinate-plane, unit-conversion, multi-digit-multiply, and 21 others (see `simulations/reports/content-quality.md`)
+- 47 difficulty calibration mismatches — "easy" problems with 37-49% actual accuracy need relabeling or rewriting
+- Procedural generators most urgent for high-volume computation topics (addition, subtraction, multiplication, division strands) where accuracy data is most reliable
+- Presentation fallback frequency data available in simulation logs — prioritize primary-level content for topics where young profiles experience >30% fallbacks
 
 ---
 

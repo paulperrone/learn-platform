@@ -918,3 +918,22 @@ Child creation now creates both an org member (student role) and an account_link
 **Alternatives rejected:**
 - Programmatic miniflare D1: More faithful to production runtime, but adds setup complexity (Workers script, D1 binding config) for no practical benefit since the services use Drizzle abstraction layer
 - Running simulations as vitest tests: Would get miniflare D1 for free via pool-workers config, but poor CLI experience and no easy way to parameterize profiles/sessions
+
+---
+
+## 2026-03-08: Plan 017 readiness gate → FAIL, Plan 017.5 created
+
+**Decision:** Plan 017 Phase 6 readiness gate determined FAIL for 5/7 adaptive systems. Created Plan 017.5 (System Remediation & Retest) to fix mastery convergence, remediation routing, FIRe compression, interleaving, and presentation drift. Plan 018 (Content Generation) remains blocked until 017.5 completes and all systems pass re-simulation.
+
+**Reasoning:** Simulation across 10 learner profiles × 30 sessions revealed that the learning engine's core adaptive behaviors are broken: mastery never grows (0/10 profiles gain mastery), remediation never triggers (0 events), FIRe increases review burden instead of reducing it, and sessions are 99% review with almost no new topic introduction. Investing in content generation on a broken engine would waste effort — content quality signals from simulation are meaningless if the engine doesn't properly teach, remediate, or progress students.
+
+**Pass/fail summary:**
+- PASS: 85% difficulty targeting (7/10 converge)
+- WARN: Diagnostic placement (9/10 within ±1 grade)
+- FAIL: Mastery convergence, FIRe compression, remediation routing, interleaving, presentation drift
+
+**Fix approach:** Architectural changes organized in 7 phases (mastery → remediation → FIRe → interleaving → presentation → diagnostic → full retest). Parameter tuning alone insufficient — all failing systems have structural issues.
+
+**Alternatives rejected:**
+- Proceed to content generation with known system issues: Would generate content calibrated against broken behavior, requiring re-calibration after fixes
+- Fix everything in Plan 017 Phase 6: Too much scope for a single phase — dedicated plan enables incremental validation after each fix

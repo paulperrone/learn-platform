@@ -346,10 +346,13 @@ The diagnostic's binary search has two related issues revealed by simulation acr
 
 When the diagnostic materializes mastery, it sets `mastered=true, state=2 (Review)` but `consecutiveCorrectReviews=0`. The simulation sanitizes `stability=15, difficulty=5` for these topics. However, when the session service reviews a mastered topic, the SRS service re-evaluates the mastery criterion: `consecutiveCorrectReviews ≥ 3 AND stability ≥ 14 AND state = Review`. Since `consecutiveCorrectReviews=0`, the check fails and mastery is cleared. This causes 7/10 profiles to lose ALL diagnostic mastery within 1-5 sessions. strong-older drops from 100% → 0%.
 
-**Fix options for Phase 6:**
+**Code mystery (Phase 6 analysis):** Line 220 of srs.ts has `shouldMasterFinal = !isMisconception && (shouldMaster || state.mastered)` — the `state.mastered` OR clause SHOULD preserve mastery for already-mastered topics. But simulation shows mastery being cleared anyway. This means either: (a) `state.mastered` is false coming in (diagnostic materialization bug), (b) `isMisconception` is true for some reviews (misconception detection false positive), or (c) there's another code path that clears mastery. Investigation needed in Plan 017.5 Phase 1.
+
+**Fix options (Plan 017.5):**
 1. Set `consecutiveCorrectReviews=3` during diagnostic materialization
 2. Separate "diagnostic mastery" from "earned mastery" — don't re-evaluate diagnostic mastery on review
 3. Adjust mastery criterion to not un-master already-mastered topics on correct reviews
+4. First priority: trace the exact code path in simulation to identify why `state.mastered` OR clause doesn't preserve mastery
 
 ---
 
