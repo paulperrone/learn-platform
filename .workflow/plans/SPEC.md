@@ -13,12 +13,51 @@ A free, open mastery-learning platform inspired by MathAcademy's knowledge graph
 
 **Goal:** Maximize adoption. Free core learning platform, sustainable margin on AI features only.
 
-- **Free tier:** Full platform — knowledge graph, SRS, problems, worked examples, browser TTS, progress tracking, family accounts
-- **Paid tier ($5/mo or $50/yr):** AI features — LLM tutoring/grading/hints, speech-to-text, future premium features
-- **Usage cap:** $3/mo of AI usage per billing period (40% gross margin before Stripe fees/taxes)
-- **Overage:** Parents set monthly spend cap in $5 increments (default $5 = no overage). Each $5 unlocks $3 more AI usage. Auto-charges up to parent-set cap
+- **Free tier:** Full platform — knowledge graph, SRS, problems, worked examples, browser TTS, progress tracking, family accounts. Zero LLM cost per free user.
+- **Paid tier ($8/mo or $70/yr):** AI features — LLM tutoring/grading/hints, speech-to-text, future premium features
+- **Usage cap:** $3/mo of AI usage per billing period
+- **Overage:** Parents set monthly spend cap in $8 increments (default $8 = no overage). Each $8 unlocks $3 more AI usage. Auto-charges up to parent-set cap
 - **Teacher/tutor accounts:** Always free (read-only progress access via parent sharing)
 - **Supplementary revenue:** YouTube lesson videos (ad revenue, no in-app ads)
+
+## Infrastructure Cost Model
+
+**Updated:** 2026-03-09 — based on per-session D1 operation audit and full margin analysis
+
+**Free tier cost per user:** ~$0.01/mo (D1 + Workers only, zero LLM). The entire learning engine — SRS, adaptive difficulty, remediation, diagnostic, content delivery — runs on deterministic code. No LLM in the loop for free users.
+
+**Paid tier true margins (after Stripe 2.9% + $0.30, $3/mo LLM usage):**
+
+| Plan | Price | After Stripe | After LLM | **Net margin** |
+|------|-------|-------------|-----------|----------------|
+| Monthly $8 | $8.00 | $7.47 | $4.47 | **$4.46** |
+| Annual $70 | $5.83/mo | $5.63 | $2.63 | **$2.62** |
+
+**Fixed overhead (solo operator):** ~$150-200/mo (transactional email, monitoring, accounting, business registration, tax compliance).
+
+**Sustainability at conservative 1% conversion:**
+
+| Free DAU | Infra/mo | Paid users | Margin/mo | Fixed OH | **Net** |
+|----------|----------|-----------|-----------|----------|---------|
+| 5K | $50 | 50 | $185 | $150 | **+$35** |
+| 10K | $120 | 100 | $370 | $175 | **+$75** |
+| 50K | $500 | 500 | $1,850 | $200 | **+$1,150** |
+| 100K | $1,000 | 1,000 | $3,700 | $200 | **+$2,500** |
+
+**Breakeven: ~7K free DAU at 1% conversion. ~3K at 2%.**
+
+**Key architectural advantage:** free users are nearly free because content is pre-generated, grading is deterministic, and SRS is algorithmic. LLM costs only exist for paid users and are self-funded by subscription margin.
+
+**Pricing context:** Duolingo $8/mo, IXL $10/mo, MathAcademy $49/mo. $8/mo is competitive. $70/yr ($5.83/mo effective) incentivizes annual commitment with lower churn and better Stripe fee ratio.
+
+**Future cost optimizations (defer until 10K+ DAU):**
+1. Cache frontier per user (invalidate on mastery change) — saves ~60 D1 reads/session
+2. Batch content queries in `buildPhaseItem()` (3→1 query) — saves ~30 reads/session
+3. Batch presentation drift writes (per-session not per-response) — saves ~14 writes/session
+4. Move session state to Durable Objects — eliminates `persistState()` D1 write per response
+5. Edge-cache static content (problems, examples, graph) via Cache API or KV
+
+These optimizations could cut per-user infrastructure cost by 50-70%, but are unnecessary until scale demands them.
 
 ## MVP Scope
 
