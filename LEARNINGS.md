@@ -692,3 +692,14 @@ After all three fixes: -10.5% → +1.2% average, strong-older at +25%. Remaining
 **Area:** Session mix / content
 
 With only ~27 frontier topics in math-foundations, the frontier dries up by session ~10 regardless of session mix tuning. After that, sessions are 100% review. The review/new balance target (0.50-0.70) is mathematically unreachable without more content. Aggressive tuning (lower review cap, higher new topic cap) degrades interleaving quality. The fix is content expansion, not parameter tuning.
+
+---
+
+### 2026-03-09: Ceiling profiles show lower final mastery than ability suggests due to early session exits
+
+**Source:** Plan 017.9 Phase 1
+**Area:** Simulation / profile calibration
+
+Profiles with very high ability (strong-older, strong-highschool, gifted-middle) complete sessions with far fewer events (~165-355 vs ~2000+ for average profiles) because the content ceiling is reached quickly. This means fewer topics are practiced and mastered in 30 sessions despite near-perfect accuracy. Final mastery of 0.70-0.80 (not 0.90+) is expected. Also, high ability across all grades pushes presentation drift toward "advanced" regardless of age — strong-older (14) and gifted-middle (10) both drift up because ability level maps to "standard"/"advanced" in the presentation drift logic.
+
+**Context:** Profile expectations (min/max final mastery, expected presentation center) must account for this ceiling effect when calibrating targets.
