@@ -1266,3 +1266,30 @@ Tag each target in `targets.json` with `signal_source: "engine" | "content" | "b
 **Results:** FIRe compression -10.5% → +1.2% average. Also improved: mastery convergence FAIL(1) → WARN(3), presentation drift WARN(5) → PASS(6), difficulty targeting 9 → 10.
 
 **Also in this change:** Added `State.Review` filter to `applyFIReCredit()`. Virtual FSRS reviews on Learning/Relearning/New state cards produce 0 or negative stability changes. Only Review-state cards should receive virtual reviews.
+
+---
+
+## 2026-03-10: Restructure Plan 018 for year-long simulation support
+
+**Source:** User session — content analysis showed 71 K-5 math topics insufficient for L3+ simulations
+
+**Context:** With only 71 math topics (K-5), strong learner profiles exhaust the frontier by session ~25-30. L3 (90 sessions), L4 (180), and L5 (360) simulations would mostly test review scheduling with no new content to learn — not useful for engine validation. Additionally, 0 encompassing edges meant FIRe compression couldn't work, and no strand tags meant interleaving metrics were meaningless.
+
+**Decision:** Restructure Plan 018 from "content pipeline + enrichment" to "multi-subject expansion for simulation validation":
+- Phase 0: Content health infrastructure (tooling — kept)
+- Phase 1: Math structural enrichment (strands, encompassing, fixes)
+- Phase 2: Math K-8 expansion (71 → 200-240 topics, add grades 6-8)
+- Phase 3: Procedural generators + assessment pool expansion
+- Phase 4: ELA K-5 subject (50-70 topics, mastery-gated)
+- Phase 5: US History subject (25-40 topics, context-layered)
+- Phase 6: Cross-discipline integration + simulation validation gate
+
+**Deferred to 019+:** Translation/localization, flavored content, visual SVG generation, runtime analytics, additional subjects. These are engagement/polish features that don't affect engine validation.
+
+**Why:**
+- 200+ math topics prevent frontier exhaustion in year-long sims
+- Encompassing edges (70-140) enable FIRe compression measurement
+- ELA validates multi-subject routing + cross-discipline prerequisites
+- US History validates the untested context-layered progression model
+- Three subjects × three discipline models = comprehensive engine validation
+- Total target: ~300 topics across 3 subjects
