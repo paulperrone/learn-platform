@@ -1,24 +1,24 @@
 {
   "version": 3,
-  "lastUpdated": "2026-03-09T22:00:00Z",
-  "lastUpdatedReason": "Expand from 10 to 20 profiles (Plan 017.9 Phase 1). Update system target thresholds for larger profile set.",
+  "lastUpdated": "2026-03-10T02:15:00Z",
+  "lastUpdatedReason": "Add 4 usage-habit profiles (binge, weekend, fading, completion-driven). Expand from 20 to 24 profiles.",
   "systems": {
     "mastery_convergence": {
       "name": "Mastery Convergence",
       "description": "Non-struggling profiles should reach ≥50% mastery by session 30, demonstrating the system drives genuine learning progression",
       "priority": "P0",
       "metric": "mastery_convergence_count",
-      "target": 9,
+      "target": 11,
       "tolerance": 2,
       "unit": "count",
       "direction": "higher_better",
       "science_ref": "Bloom 1984 (2-sigma problem); Kulik et al. 1990 (~0.5-1.0 SD effect for mastery learning)",
-      "rationale": "≥9 of 15 non-struggling profiles (60%) reaching 50% mastery in 30 sessions. Excludes struggling-young, struggling-older, struggling-middle, adult-remedial, and slow-steady. With 71 topics, 50% mastery requires ~35 topics mastered. Tolerance of 2 accounts for stochastic variance across 15 profiles.",
+      "rationale": "≥11 of 19 non-struggling profiles (~58%) reaching 50% mastery in 30 sessions. Excludes struggling-young, struggling-older, struggling-middle, adult-remedial, and slow-steady. Usage-habit profiles (weekend-warrior, fading-motivation) may converge slower due to scheduling gaps. Tolerance of 2 accounts for stochastic variance.",
       "source_files": [
         "packages/api/src/services/srs.ts",
         "packages/api/src/services/session.ts"
       ],
-      "evaluation_profiles": ["average-older", "average-young", "fast-learner", "fast-learner-older", "misconception-fractions", "multi-misconception", "overconfident", "strong-older", "strong-young", "strong-highschool", "gifted-middle", "underconfident", "irregular-attendance", "returning-after-gap", "average-undergraduate"],
+      "evaluation_profiles": ["average-older", "average-young", "fast-learner", "fast-learner-older", "misconception-fractions", "multi-misconception", "overconfident", "strong-older", "strong-young", "strong-highschool", "gifted-middle", "underconfident", "irregular-attendance", "returning-after-gap", "average-undergraduate", "binge-learner", "weekend-warrior", "fading-motivation", "completion-driven"],
       "signal_source": "engine"
     },
     "mastery_preservation": {
@@ -43,12 +43,12 @@
       "description": "Rolling problem accuracy should converge to the [0.80, 0.90] optimal learning zone for most profiles",
       "priority": "P1",
       "metric": "difficulty_targeting_converged_count",
-      "target": 14,
-      "tolerance": 2,
+      "target": 17,
+      "tolerance": 3,
       "unit": "count",
       "direction": "higher_better",
       "science_ref": "Wilson et al. 2019 (Nature Communications): optimal learning at ~85% success rate",
-      "rationale": "≥14 of 20 profiles converging within 500 problems. Strong/gifted profiles may exceed 90% (content ceiling). Struggling profiles may take longer. Tolerance of ±2 accounts for stochastic variance across 20 profiles.",
+      "rationale": "≥17 of 24 profiles converging within 500 problems. Strong/gifted profiles may exceed 90% (content ceiling). Struggling and usage-habit profiles may take longer. Tolerance of ±3 accounts for stochastic variance across 24 profiles.",
       "source_files": [
         "packages/api/src/services/session.ts",
         "packages/api/src/services/srs.ts"
@@ -132,12 +132,12 @@
       "description": "Presentation level should adapt toward the appropriate level based on student performance and stabilize",
       "priority": "P2",
       "metric": "presentation_drift_correct_count",
-      "target": 12,
-      "tolerance": 2,
+      "target": 14,
+      "tolerance": 3,
       "unit": "count",
       "direction": "higher_better",
       "science_ref": "Sweller et al. 2003 (expertise reversal effect): scaffolding that helps novices actively hinders experts",
-      "rationale": "≥12 of 20 profiles drift in expected direction AND stabilize. Stabilization requires sufficient varied data points; with review-dominated sessions after session ~7, many profiles lack enough new-topic encounters to trigger meaningful drift. Proportionally equivalent to 6/10 ratio.",
+      "rationale": "≥14 of 24 profiles drift in expected direction AND stabilize. Usage-habit profiles with gaps may show less stable drift due to fewer data points. Tolerance of 3 accounts for scheduling-related instability.",
       "source_files": [
         "packages/api/src/services/content.ts"
       ],
@@ -149,12 +149,12 @@
       "description": "Adaptive diagnostic should place all profiles within ±1 grade of their expected frontier",
       "priority": "P2",
       "metric": "diagnostic_placement_accurate_count",
-      "target": 20,
+      "target": 24,
       "tolerance": 0,
       "unit": "count",
       "direction": "higher_better",
       "science_ref": "Zou et al. 2019: students 3-4x more likely to master frontier topics; adaptive testing literature",
-      "rationale": "20 of 20 profiles within ±1 grade. Zero tolerance because misplacement by ≥2 grades wastes student time on content that is too easy or too hard. Diagnostic uses adaptive binary search with 8-15 questions.",
+      "rationale": "24 of 24 profiles within ±1 grade. Zero tolerance because misplacement by ≥2 grades wastes student time on content that is too easy or too hard. Scheduling habits don't affect diagnostic (runs once at start).",
       "source_files": [
         "packages/api/src/services/diagnostic.ts"
       ],
@@ -399,6 +399,50 @@
       "expected_remediation_events": "moderate",
       "mastery_growth_rate": 0.006,
       "difficulty_convergence_by": 500
+    },
+    "binge-learner": {
+      "description": "Age 11, average ability, practices in bursts of 3-4 sessions/day then 2-3 day gaps",
+      "behavioral_signature": "Placed at grade 3 frontier. Clustered sessions mean FSRS sees multiple reviews in rapid succession (same-day intervals) followed by multi-day gaps. Mastery growth should be comparable to daily but more erratic — rapid progress during bursts, slight decay during gaps. Tests whether FSRS handles sub-day intervals correctly and whether review queue management works with bursty patterns.",
+      "min_final_mastery": 0.35,
+      "max_final_mastery": 0.75,
+      "expected_frontier_grade": 3,
+      "expected_presentation_center": "intermediate",
+      "expected_remediation_events": "moderate",
+      "mastery_growth_rate": 0.012,
+      "difficulty_convergence_by": 200
+    },
+    "weekend-warrior": {
+      "description": "Age 13, average ability, only practices on weekends (2 days on, 5 off)",
+      "behavioral_signature": "Placed at grade 3 frontier. Weekly 5-day gaps mean FSRS stability must survive regular breaks. Mastery growth should be significantly slower than daily — each weekend must re-review lapsed topics before progressing. Review queue should spike each Saturday. Tests whether the system prioritizes retention recovery over new topic introduction after gaps.",
+      "min_final_mastery": 0.20,
+      "max_final_mastery": 0.60,
+      "expected_frontier_grade": 3,
+      "expected_presentation_center": "standard",
+      "expected_remediation_events": "moderate",
+      "mastery_growth_rate": 0.008,
+      "difficulty_convergence_by": 300
+    },
+    "fading-motivation": {
+      "description": "Age 10, average ability, starts daily then gradually spaces out to every 3-5 days",
+      "behavioral_signature": "Placed at grade 2-3 frontier. Good early mastery growth (daily sessions) that slows as intervals increase. By session 20+, intervals are 3-5 days — FSRS must handle the transition from short to long intervals. Mastery may plateau or decline as gaps exceed FSRS-predicted intervals. Tests progressive disengagement — the most realistic 'at-risk' usage pattern.",
+      "min_final_mastery": 0.15,
+      "max_final_mastery": 0.55,
+      "expected_frontier_grade": 2,
+      "expected_presentation_center": "intermediate",
+      "expected_remediation_events": "moderate",
+      "mastery_growth_rate": 0.008,
+      "difficulty_convergence_by": 250
+    },
+    "completion-driven": {
+      "description": "Age 12, above-average ability, daily until strand mastery then 3-7 day break",
+      "behavioral_signature": "Placed at grade 3-4 frontier. Steady mastery growth during active periods. After mastering a strand/cluster, takes a break — tests whether mastered topics retain stability across the gap and whether the system correctly resumes with the next strand. Should show staircase mastery curve (climb, plateau, climb). Higher overall mastery than daily peers due to focused intent.",
+      "min_final_mastery": 0.40,
+      "max_final_mastery": 0.80,
+      "expected_frontier_grade": 3,
+      "expected_presentation_center": "standard",
+      "expected_remediation_events": "low",
+      "mastery_growth_rate": 0.015,
+      "difficulty_convergence_by": 150
     }
   },
   "content_quality": {

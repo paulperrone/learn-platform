@@ -1,0 +1,18 @@
+{
+  "id": "weekend-warrior",
+  "name": "Weekend Warrior Learner",
+  "description": "Age 13, average ability, only practices on weekends (2 days on, 5 days off). Tests FSRS with regular weekly gaps and whether mastery retention survives 5-day breaks. Scheduling: weekend-only(sat+sun, gap_days=5)",
+  "age": 13,
+  "abilityCurve": {
+    "0": 0.90,
+    "1": 0.85,
+    "2": 0.78,
+    "3": 0.68,
+    "4": 0.52,
+    "5": 0.38
+  },
+  "responseSpeed": { "meanMs": 6000, "stddevMs": 2000 },
+  "hintSeekingProbability": 0.12,
+  "confidenceTendency": "calibrated",
+  "misconceptions": []
+}

@@ -1,0 +1,18 @@
+{
+  "id": "completion-driven",
+  "name": "Completion-Driven Learner",
+  "description": "Age 12, above-average ability, practices daily until mastering a strand/cluster then takes a 3-7 day break before starting the next. Tests mastery retention across strand-completion breaks and re-engagement momentum. Scheduling: completion-break(break_days=3-7, trigger=strand_mastery)",
+  "age": 12,
+  "abilityCurve": {
+    "0": 0.92,
+    "1": 0.88,
+    "2": 0.82,
+    "3": 0.75,
+    "4": 0.60,
+    "5": 0.45
+  },
+  "responseSpeed": { "meanMs": 5500, "stddevMs": 2000 },
+  "hintSeekingProbability": 0.10,
+  "confidenceTendency": "calibrated",
+  "misconceptions": []
+}
