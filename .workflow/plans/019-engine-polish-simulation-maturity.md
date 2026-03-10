@@ -1,0 +1,248 @@
+# Plan 019: Engine Polish & Simulation Maturity
+
+> **Created:** 2026-03-10T18:30:55Z
+> **Completed:** —
+>
+> For project context, see [CLAUDE.md](../../CLAUDE.md)
+> For product vision, see [SPEC.md](./SPEC.md)
+> For decisions, see [DECISIONS.md](../../DECISIONS.md)
+
+## Summary
+
+Fix the two remaining P1 evaluation failures (FIRe compression measurement, interleaving strand coverage), run a holistic system assessment to identify the path to real users, then formalize the L1-L5 simulation maturity ladder. Consolidates remaining work from Plan 017.9 Phases 3-5.
+
+**Depends on:**
+- Plan 018 Phase 6 ✅ (multi-subject content + simulation support)
+- Plan 017.9 Phases 1-2 ✅ (24 profiles, scheduling presets, cleanup tooling)
+
+**Current evaluation state (L2, 30 sessions, 29 profiles):**
+- 7 PASS, 1 WARN, 2 FAIL
+- P1 FIRe Compression: FAIL (0% — needs `--run-fire` paired simulation, not actually 0%)
+- P1 Interleaving Quality: FAIL (0.254 same-strand adjacency vs 0.100 target — measurement bug: `STRAND_PATTERNS` only covers math-foundations topic IDs)
+- All P0 systems PASS. 27/29 profiles behavioral match.
+
+## Progress
+
+**Completed:** —
+**In Progress:** —
+**Next:** Phase 1
+
+---
+
+## Phase 1: FIRe Compression Evaluation
+**Goal:** Get a real FIRe compression number with the expanded content set (207 math topics, 263 encompassing edges — up from 71 topics, 15 edges where FIRe showed +1.2%).
+
+1. [ ] [VAL] Run `just evaluate-fire` with current content:
+   - Paired simulation: full L2 (30 sessions) with encompassings enabled vs disabled
+   - Record compression ratio per profile and overall average
+   - Compare against 20% target (tolerance 10%, so ≥10% = WARN, ≥20% = PASS)
+
+2. [ ] [RSH] Analyze FIRe results:
+   - If PASS or WARN: document the improvement from content expansion and move on
+   - If still FAIL: investigate whether encompassing density is sufficient (target: 1.0-2.0 edges/topic)
+   - Check which profiles benefit most/least from FIRe — strong profiles should compress more
+   - Review `applyFIReCredit()` parameters: weight interpolation, State.Review filter, skip thresholds
+
+3. [ ] [IMP] If FAIL: tune FIRe credit parameters:
+   - Adjust weight thresholds in `applyFIReCredit()` if compression is close but insufficient
+   - Consider adding more encompassing edges to math-middle (currently 100 edges / 115 topics = 0.87/topic)
+   - Re-run `just evaluate-fire` after changes
+
+4. [ ] [VAL] Confirm FIRe is at least WARN (≥10% compression) in final evaluation
+
+**Validation:** `just evaluate-fire` shows FIRe compression ≥ WARN. Results documented.
+
+---
+
+## Phase 2: Fix Interleaving Measurement & Engine
+**Goal:** Eliminate the interleaving P1 FAIL. The measurement is wrong first — `STRAND_PATTERNS` in `evaluate.ts` uses hardcoded math-foundations regexes, so all math-middle, ELA, and history topics score as `"other"` strand.
+
+**Root cause analysis:**
+- `STRAND_PATTERNS` (evaluate.ts:143): 12 regex patterns, all match math-foundations topic ID prefixes only
+- `getStrand()` returns `"other"` for any unmatched topic ID
+- Multi-subject profiles (5 profiles) and math-middle profiles have most topics in `"other"` → inflated same-strand adjacency
+- The engine's `interleaveByStrand()` (srs.ts) uses actual strand data from `graph.json` via `getTopicStrands()` — the engine is likely fine, only the measurement is wrong
+
+1. [ ] [IMP] Replace hardcoded `STRAND_PATTERNS` with graph.json strand data:
+   - Load strand assignments from all subject `graph.json` files at evaluation startup
+   - Build `topicId → strand` map from the authoritative source
+   - Prefix strand with subject to avoid cross-subject collisions (e.g., `math-foundations:fractions`, `ela-k5:reading-comprehension`)
+   - Remove the hardcoded regex array
+
+2. [ ] [VAL] Re-run `just evaluate` at L2 with fixed measurement:
+   - Record new interleaving metric
+   - If PASS or WARN: measurement was the only issue, document and move on
+   - If still FAIL: proceed to step 3
+
+3. [ ] [IMP] If still FAIL — investigate and fix engine interleaving:
+   - Analyze session event logs: which sessions have high same-strand adjacency? Why?
+   - Check if `interleaveByStrand()` receives correct strand data from `getTopicStrands()`
+   - Check if warmup/stretch items bypass interleaving (they're prepended/appended, not interleaved)
+   - Potential fixes: extend interleaving to full session (warmup + main + stretch), improve strand diversity in topic selection
+   - Re-run evaluation after fixes
+
+4. [ ] [VAL] Confirm interleaving is at least WARN (≤ 0.10 + tolerance) in final L2 evaluation. Run full `just evaluate` to confirm no regressions in other metrics.
+
+**Validation:** Interleaving metric uses authoritative strand data from graph.json. `just evaluate` at L2 shows interleaving ≥ WARN. No regressions in other systems.
+
+---
+
+## Phase 3: Holistic System Assessment
+**Goal:** Step back from individual metrics and assess the platform holistically. Identify top blockers for real user testing and produce a prioritized next-work list.
+
+1. [ ] [RSH] Engine assessment:
+   - Run `just evaluate` at L2 — summarize all 10 system targets and 29 profile behavioral matches
+   - Inventory: 302 topics, 4 subjects, 3 discipline models, 29 simulation profiles, 5 maturity levels defined
+   - Document known limitations: content ceiling effects, frontier exhaustion timing, scheduling edge cases
+   - Assess: is the engine ready for real users? What would break first?
+
+2. [ ] [RSH] Frontend assessment:
+   - Audit `packages/web/src/pages/` — which pages exist, which are functional, which are stubs
+   - Check: can a real user sign up, run diagnostic, start a learning session, see progress?
+   - Identify UI gaps: missing pages, broken flows, missing error handling
+   - Check mobile responsiveness, accessibility basics
+
+3. [ ] [RSH] Deployment & infrastructure assessment:
+   - Can the app be deployed to Cloudflare Pages right now?
+   - D1 migration state — are all migrations applied? Any pending?
+   - Auth flow: does Better-Auth work end-to-end in production?
+   - Content import: can `import-content` run against production D1?
+   - OpenRouter integration: is tutoring/grading wired up?
+
+4. [ ] [DOC] Produce "State of the Platform" document (`docs/platform-assessment.md`):
+   - Section 1: Engine — what works, what's validated, known limitations
+   - Section 2: Content — coverage, quality signals, gaps
+   - Section 3: Frontend — functional flows, missing pieces
+   - Section 4: Infrastructure — deployment readiness, production blockers
+   - Section 5: Prioritized next-work list — what to build next to get to real user testing
+
+5. [ ] [DOC] Based on assessment, recommend whether to:
+   - Continue simulation maturity (Phases 4-6) before users
+   - Pivot to frontend/deployment work to get real users sooner
+   - Some combination (e.g., L3 validation + frontend MVP in parallel)
+
+**Validation:** Assessment document exists with all 5 sections. Prioritized next-work list is actionable. Recommendation is clear.
+
+---
+
+## Phase 4: Maturity Levels L1-L3 (5 / 30 / 90 Sessions)
+**Goal:** Formalize the first three maturity levels with justfile recipes, run all profiles at each level, and establish baselines.
+
+**Maturity level details:**
+
+| Level | What it reveals | Key metrics to watch |
+|-------|----------------|---------------------|
+| L1 (5 sessions) | Diagnostic placement, initial mastery preservation, session mix warmup | Placement accuracy, mastery loss session 0→1, first-session review ratio |
+| L2 (30 sessions) | Core adaptive behavior — convergence, remediation, interleaving, drift | All 10 system targets |
+| L3 (90 sessions) | Medium-term scaling — does mastery plateau? does review queue grow? does FIRe compress more? | Mastery growth rate slope change, review count per session trend, FIRe compression trend |
+
+1. [ ] [IMP] Add maturity-level justfile recipes:
+   - `simulate-l1 seed="42"`: alias for `just simulate-regression`
+   - `simulate-l2 seed="42"`: `just simulate-all 30 {{seed}}`
+   - `simulate-l3 seed="42"`: `just simulate-all 90 {{seed}}`
+   - Each recipe runs simulation + evaluation + cleanup of old runs
+
+2. [ ] [IMP] Add L3-specific evaluation metrics to `evaluate.ts`:
+   - **Mastery plateau detection:** Does mastery % stop increasing? At what session? Content ceiling vs system bug?
+   - **Review queue scaling:** Reviews-per-session trend — linear, plateau, or decrease over time
+   - **FIRe compression trend:** Does compression ratio improve as more topics are mastered?
+   - **Difficulty targeting stability:** Does rolling accuracy stay in [0.80, 0.90] once converged?
+
+3. [ ] [VAL] Run L1 with all profiles:
+   - All profiles complete without errors
+   - `just evaluate` shows diagnostic placement and mastery preservation metrics
+   - Establish L1 regression baseline: `simulations/baselines/l1.json`
+
+4. [ ] [VAL] Run L2 with all profiles:
+   - All 10 system targets evaluated
+   - Compare against L1 — mastery convergence should improve, review balance should normalize
+   - Establish L2 baseline: `simulations/baselines/l2.json`
+
+5. [ ] [VAL] Run L3 with all profiles:
+   - L3-specific metrics computed (plateau, scaling, compression trend)
+   - Identify any engine issues that only manifest at 90 sessions
+   - Establish L3 baseline: `simulations/baselines/l3.json`
+   - Document findings: what behaviors change between L2 and L3?
+
+6. [ ] [DOC] Document maturity level findings in `docs/simulation-maturity.md`:
+   - What each level tests and when to run it
+   - Expected metric behavior at each level
+   - Known differences between levels
+
+**Validation:** All three levels run successfully with all profiles. Baselines established. L3 reveals at least one insight not visible at L2.
+
+---
+
+## Phase 5: Maturity Levels L4-L5 (180 / 360+ Sessions)
+**Goal:** Semester and year-long simulations that reveal long-term engine behavior, stress-test FSRS scheduling at scale, and validate effectiveness over extended periods.
+
+**Key profiles for L4/L5** (not all 29 — too expensive):
+- `average-older` (typical learner)
+- `fast-learner-older` (improving ability over long term)
+- `struggling-older` (floor behavior over extended time)
+- `returning-after-gap` (gap resilience)
+- `misconception-fractions` (remediation effectiveness long-term)
+- `strong-highschool` (ceiling behavior)
+- `multi-math-strong` (multi-subject long-term)
+
+1. [ ] [IMP] Add L4/L5 justfile recipes:
+   - `simulate-l4 seed="42"`: 7 key profiles × 180 sessions
+   - `simulate-l5 seed="42"`: 7 key profiles × 360 sessions
+
+2. [ ] [IMP] Add L4/L5-specific evaluation metrics:
+   - **Long-term mastery retention:** Do mastered topics stay mastered? Lapse rate after session 100
+   - **Review efficiency:** Reviews per session should decrease as stability increases — trend after session 60
+   - **New topic starvation:** Does system stop introducing new topics? All mastered (good) or review queue too large (bad)?
+   - **FIRe long-term compression:** Expected to increase with denser mastered graph
+   - **Gap resilience (returning-after-gap):** Mastery before gap vs after return, sessions to recover
+
+3. [ ] [VAL] Run L4 (180 sessions, 7 profiles):
+   - Evaluate long-term metrics
+   - Identify scaling issues (memory, performance, FSRS parameter drift)
+   - Compare against L3 baseline
+   - Establish L4 baseline: `simulations/baselines/l4.json`
+
+4. [ ] [VAL] Run L5 (360+ sessions, 7 profiles):
+   - Full year simulation
+   - Document end state per profile: mastery %, review queue, still learning?
+   - Identify pathological behaviors (infinite review loops, mastery oscillation, review queue explosion)
+   - Establish L5 baseline: `simulations/baselines/l5.json`
+
+5. [ ] [DOC] Update `docs/simulation-maturity.md` with L4/L5 findings:
+   - Long-term engine behavior characteristics
+   - Known scaling issues and severity
+   - Recommendations for future engine improvements
+
+**Validation:** L4 and L5 complete without crashes. At least 2 insights discovered that were invisible at L3. No pathological behaviors. Gap resilience measured.
+
+---
+
+## Phase 6: Baselines & Documentation
+**Goal:** Run the complete evaluation pipeline at each maturity level, establish multi-level regression baselines, and produce a comprehensive simulation capability report.
+
+1. [ ] [VAL] Multi-level regression validation:
+   - Run L1 → L2 → L3 sequentially, verify metrics improve monotonically where expected
+   - Mastery convergence: should increase L1→L2→L3
+   - Review balance: should normalize by L2, stay stable at L3
+   - FIRe compression: should increase L2→L3
+   - Difficulty targeting: should converge by L2, stay stable at L3
+
+2. [ ] [IMP] Create multi-level baseline file: `simulations/baselines/multi-level.json`
+   - Contains L1-L5 baselines in a single file for trend comparison
+   - `just simulate-compare-levels` recipe to compare across maturity levels
+   - Visualization: per-system metric trend across L1-L5 (text table)
+
+3. [ ] [IMP] Add maturity level to evaluation report output:
+   - `evaluation.json` includes `maturityLevel` field
+   - Markdown report shows which level the evaluation was run at
+   - Console output displays level context
+
+4. [ ] [DOC] Finalize `docs/simulation-maturity.md`:
+   - Complete reference for the 5-level maturity ladder
+   - Profile coverage matrix: which profiles run at which levels
+   - What each level reveals that shorter levels don't
+   - When to run each level (regression: every code change, L2: per plan phase, L3: per plan, L4/L5: quarterly)
+
+5. [ ] [VAL] Final validation: run `just test` to ensure all existing tests still pass. Run `just evaluate` at L2 to confirm the full pipeline works with 29 profiles. Verify cleanup tool keeps repo lean.
+
+**Validation:** Multi-level baselines established. Evaluation reports include maturity level context. Documentation is complete. Simulation infrastructure is production-ready.

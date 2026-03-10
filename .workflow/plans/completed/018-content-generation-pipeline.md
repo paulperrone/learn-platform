@@ -2,7 +2,7 @@
 
 > **Created:** 2026-03-05T21:00:00Z
 > **Updated:** 2026-03-10T16:24:00Z — Added Phase 3.5 (content pipeline commands & source tracking). Updated Phases 4-6 to use `/generate-content` and `/content-health` commands.
-> **Completed:** —
+> **Completed:** 2026-03-10
 >
 > For project context, see [CLAUDE.md](../../CLAUDE.md)
 > For product vision, see [SPEC.md](./SPEC.md)
