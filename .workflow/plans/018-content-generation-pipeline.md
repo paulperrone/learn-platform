@@ -1,7 +1,7 @@
 # Plan 018: Content Generation & Multi-Subject Expansion
 
 > **Created:** 2026-03-05T21:00:00Z
-> **Updated:** 2026-03-10T04:47:26Z — Restructured for year-long simulation support: math expansion to K-8, ELA K-5, US History subjects. Deferred translation/flavors/visuals/analytics to Plan 019+.
+> **Updated:** 2026-03-10T16:24:00Z — Added Phase 3.5 (content pipeline commands & source tracking). Updated Phases 4-6 to use `/generate-content` and `/content-health` commands.
 > **Completed:** —
 >
 > For project context, see [CLAUDE.md](../../CLAUDE.md)
@@ -74,7 +74,7 @@ Topic (graph node)
 
 **Completed:** Phase 0 ✓, Phase 1 ✓, Phase 2 ✓, Phase 3 ✓
 **In Progress:** —
-**Next:** Phase 4
+**Next:** Phase 3.5
 
 ---
 
@@ -279,6 +279,57 @@ Topic (graph node)
 
 ---
 
+## Phase 3.5: Content Pipeline Commands & Source Tracking
+**Goal:** Codify the content generation workflow as reusable Claude Code commands (`/generate-content`, `/content-health`) and add problem source provenance to the DB schema. Makes Phases 4-6 faster and more consistent by encoding discipline-specific workflows, quality gates, and verification loops into executable commands.
+
+**Motivation:** Phase 3 took ~40 minutes of ad-hoc authoring. Future phases (ELA, US History) are LLM-heavy with no procedural generator shortcut. Encoding the workflow as commands ensures consistent quality gates, correct discipline-specific rules, and reproducible post-generation verification — regardless of which session executes the phase.
+
+1. [ ] [IMP] Add `source` column to `assessment_content` schema + migration:
+   - Add `source TEXT NOT NULL DEFAULT 'hand-authored'` to Drizzle schema
+   - Generate migration with `just db-generate`, manually add DEFAULT to SQL if needed (per LEARNINGS.md)
+   - Update `import-content.ts` to read `p.source` from JSON, fallback `'hand-authored'` for legacy `problems/`
+   - Update `generate-content-pack.ts` to include `problems-generated/` directory
+   - Valid values: `procedural` (generators), `supplementary` (LLM-authored gap fill), `hand-authored` (original content)
+
+2. [ ] [IMP] Create `/generate-content` command (`.claude/commands/generate-content.md`):
+   - **Arguments:** `/generate-content <subject>` with optional `--graph-only`, `--problems-only`, `--examples-only`, `--dry-run`
+   - **Discipline detection:** Read `graph.json` → `progressionModel` to select workflow
+   - **Math (mastery-gated, computation-heavy) path:**
+     1. Run procedural generators (`just generate-problems`) for topics with registered generators
+     2. Identify coverage gaps (topics < 20 problems)
+     3. LLM-author supplementary problems for gap topics (15 per topic, `source: "supplementary"`)
+     4. Regenerate procedural problems (in case supplementary agents overwrote files — per LEARNINGS.md)
+     5. LLM-author worked examples (2+ per topic)
+     6. Run `/content-health` verification loop
+   - **Non-math (LLM-only) path:**
+     1. LLM-author all problems with structured prompt templates (5+ per topic, 3 difficulty levels)
+     2. All problems get `source: "hand-authored"`
+     3. LLM-author worked examples (2+ per topic)
+     4. Run `/content-health` verification loop
+   - **Discipline-specific quality gates embedded in command:**
+     - Mastery-gated: all prerequisite edges `required`, difficulty distribution 30/40/30, cognitive demand targets by grade
+     - Context-layered: mostly `recommended` edges, multiple depth levels, rubric-based scoring where appropriate
+     - Flexible: mostly `enriching` edges, recall-based assessment
+   - **Platform-medium constraints:** Screen + text input only. Regex patterns from `validate-content.ts` listed as examples of what to avoid.
+   - **Post-generation verification loop:** validate → fix warnings → re-validate → report
+
+3. [ ] [IMP] Create `/content-health` command (`.claude/commands/content-health.md`):
+   - Wraps `just validate-content`, `just content-status`, `just content-gaps` into single diagnostic
+   - **Arguments:** `/content-health [subject]` with optional `--all`, `--fix` (auto-fix common issues)
+   - Output: summary table of per-topic health, ranked gap list, validation errors/warnings
+   - Actionable: "These N topics need attention" with specific remediation steps
+   - References `just visualize <subject>` for graph inspection when structural issues found
+
+4. [ ] [TST] Validate against existing math content:
+   - Run `just db-migrate` and `just import-content` — verify `source` column populated (`procedural` for generated, `hand-authored` for originals)
+   - Dry-run `/generate-content math-foundations` workflow — verify it describes the same process Phase 3 actually executed
+   - Run `/content-health math-foundations` and `/content-health math-middle` — verify output is accurate and actionable
+   - Verify `generate-content-pack.ts` includes problems from both directories
+
+**Validation:** Both commands exist in `.claude/commands/` and are invocable as slash commands. `source` column in `assessment_content` is populated after import. `/generate-content` workflow matches the Phase 3 process for math and describes a clear LLM-only path for non-math. `/content-health` produces actionable diagnostic output.
+
+---
+
 ## Phase 4: ELA K-5 Subject
 **Goal:** Create an English Language Arts subject for grades K-5 (~50-70 topics). Second mastery-gated subject. Validates multi-subject routing, cross-discipline prerequisites, and the content pipeline for non-math content.
 
@@ -306,16 +357,17 @@ Topic (graph node)
    - `contentDepth: "survey"` for all topics (mastery-gated model)
    - Run `just validate-content` and `just visualize ela-k5`
 
-3. [ ] [IMP] Author problems for all ELA topics (5+ per topic, 3 difficulty levels):
+3. [ ] [IMP] Author problems for all ELA topics using `/generate-content ela-k5 --problems-only` workflow (non-math LLM path):
+   - All problems include `source: "hand-authored"` field for DB provenance tracking
    - **Phonics/decoding:** "Which word starts with the /sh/ sound?", "Sound out this word: 'bright'"
    - **Vocabulary:** "What does 'enormous' mean?", context clue questions, word root identification
    - **Grammar:** sentence correction, parts-of-speech identification, punctuation placement
    - **Reading comprehension:** short passages (age-appropriate) + questions on main idea, details, inference, author's purpose
    - **Writing:** sentence combining, paragraph ordering, prompt-based short responses (graded by rubric via LLM)
-   - Platform-medium constraints: all text-based, no speaking/listening tasks
+   - Platform-medium constraints enforced by `/generate-content` quality gates
    - Cognitive demand distribution appropriate per grade level
 
-4. [ ] [IMP] Author worked examples for all ELA topics (2+ per topic):
+4. [ ] [IMP] Author worked examples for all ELA topics using `/generate-content ela-k5 --examples-only` workflow:
    - Step-by-step demonstrations: "How to sound out an unfamiliar word", "How to find the main idea"
    - Strategy-based: reading comprehension examples show the thinking process, not just the answer
 
@@ -329,11 +381,11 @@ Topic (graph node)
    - Verify comprehension questions are answerable from the provided passage text
    - Verify vocabulary words appear in context when testing context clues
 
-7. [x] [TST] Full validation:
-   - `just validate-content` passes for ela-k5
+7. [ ] [TST] Full validation using `/content-health ela-k5`:
+   - `/content-health ela-k5` reports all topics green (no gaps, no validation errors)
    - 50-70 topics with strand tags, prerequisite + encompassing edges
    - Cross-discipline edges correctly connect ELA → math
-   - `just import-content` loads ELA alongside math without conflicts
+   - `just import-content` loads ELA alongside math without conflicts — verify `source` column populated
    - Run simulation with ELA-specific profile to verify learning progression
    - Diagnostic places students correctly in ELA graph
 
@@ -369,14 +421,17 @@ Topic (graph node)
    - Encompassing edges with weights
    - Run `just validate-content` and `just visualize us-history`
 
-3. [ ] [IMP] Author **survey-depth** content for all topics (5+ problems, 2+ examples):
+3. [ ] [IMP] Author **survey-depth** content using `/generate-content us-history` workflow (non-math LLM path, context-layered discipline):
+   - All problems include `source: "hand-authored"` field
    - Survey answers "What happened?" — timelines, key events, notable figures
    - Simple factual questions: dates, people, places, sequence of events
    - Difficulty levels: easy (recall), medium (connect 2 facts), hard (sequence/compare)
    - Worked examples: narrative walkthroughs of key events
    - Two presentation levels: `intermediate` (ages 8-10) and `standard` (ages 11-14)
+   - `/generate-content` enforces context-layered quality gates: mostly `recommended` edges, depth-level tagging
 
 4. [ ] [IMP] Author **contextual-depth** content for anchor topics (10-15 key topics, 5+ problems each):
+   - Use `/generate-content us-history --problems-only` with depth targeting for contextual layer
    - Contextual answers "Why did it happen?" — causes, effects, connections, multiple perspectives
    - Questions require analysis beyond recall: "Why did colonists oppose the Stamp Act?", "How did the railroad change westward expansion?"
    - Rubric-based scoring: 1-4 scale on comprehension depth (not binary right/wrong)
@@ -394,14 +449,14 @@ Topic (graph node)
    - Verify presentation levels are appropriate for topic grade level
    - Verify `recommended` and `enriching` edge types are used (not all `required`)
 
-7. [x] [TST] Full validation:
-   - `just validate-content` passes for us-history
+7. [ ] [TST] Full validation using `/content-health us-history`:
+   - `/content-health us-history` reports all topics green (no gaps, no validation errors)
    - 25-40 topics with era strands, mixed edge types, encompassing edges
    - Survey depth: all topics have 5+ problems and 2+ examples
    - Contextual depth: 10-15 anchor topics have additional content
    - Cross-discipline edges connect ELA → History
    - Rubric-based problems defined with scoring criteria
-   - `just import-content` loads alongside math and ELA
+   - `just import-content` loads alongside math and ELA — verify `source` column populated
    - Run simulation with context-layered profile to verify breadth-first progression and spiral depth behavior
 
 **Validation:** US History exists as a complete context-layered subject. Survey + contextual depth content authored. Recommended/enriching edges validated. Rubric-based scoring defined. Spiral depth progression visible in simulation.
@@ -438,7 +493,8 @@ Topic (graph node)
    - Add context-layered-specific targets (depth progression rate, breadth-first behavior)
    - Run `/heal-update` to propose target adjustments
 
-5. [ ] [VAL] Run L2 simulation (30 sessions) across all subjects and profiles:
+5. [ ] [VAL] Run `/content-health --all` + L2 simulation (30 sessions) across all subjects and profiles:
+   - `/content-health --all` reports green across all 3 subjects
    - All profiles complete without errors
    - Math profiles: frontier not exhausted by session 30 (200+ topics)
    - ELA profiles: mastery-gated progression works
@@ -456,11 +512,12 @@ Topic (graph node)
    - If gate passes: Plan 017.9 Phases 3-5 are unblocked
 
 7. [ ] [DOC] Document content authoring workflow in `docs/content-authoring.md`:
-   - End-to-end workflow for creating any subject (graph → problems → examples → validate → import)
-   - Quality checklist per content type
-   - Per-discipline guidelines (mastery-gated vs context-layered vs flexible)
+   - Reference `/generate-content` command as the canonical workflow (the command IS the playbook)
+   - Supplement with human-readable overview: graph → problems → examples → validate → import
+   - Per-discipline guidelines summary (mastery-gated vs context-layered vs flexible)
    - How to add cross-discipline prerequisites
-   - Sufficient for creating a fourth subject without additional guidance
+   - How to add procedural generators for new math-like subjects
+   - Sufficient for creating a fourth subject: "Run `/generate-content <subject>` and follow the prompts"
 
 **Validation:** All 3 subjects integrated and functional. Cross-discipline prerequisites work. Multi-subject simulation profiles produce meaningful behavior. Content sufficiency gate passes for Plan 017.9 L3-L5 simulations.
 
