@@ -1,0 +1,18 @@
+{
+  "id": "gifted-middle",
+  "name": "Gifted Middle Learner",
+  "description": "Age 10, very high ability K-5 (95%+), tests system at content ceiling mid-age range",
+  "age": 10,
+  "abilityCurve": {
+    "0": 0.99,
+    "1": 0.98,
+    "2": 0.97,
+    "3": 0.96,
+    "4": 0.95,
+    "5": 0.93
+  },
+  "responseSpeed": { "meanMs": 4500, "stddevMs": 1500 },
+  "hintSeekingProbability": 0.03,
+  "confidenceTendency": "calibrated",
+  "misconceptions": []
+}

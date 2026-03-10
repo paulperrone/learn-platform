@@ -1,0 +1,18 @@
+{
+  "id": "strong-highschool",
+  "name": "Strong High School Learner",
+  "description": "Age 16, high ability across all K-5 (92%+), tests advanced presentation and fast mastery at ceiling with older student",
+  "age": 16,
+  "abilityCurve": {
+    "0": 0.99,
+    "1": 0.98,
+    "2": 0.96,
+    "3": 0.95,
+    "4": 0.93,
+    "5": 0.92
+  },
+  "responseSpeed": { "meanMs": 4000, "stddevMs": 1500 },
+  "hintSeekingProbability": 0.02,
+  "confidenceTendency": "calibrated",
+  "misconceptions": []
+}

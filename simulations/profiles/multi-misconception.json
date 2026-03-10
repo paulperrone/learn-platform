@@ -1,0 +1,27 @@
+{
+  "id": "multi-misconception",
+  "name": "Multi-Misconception Learner",
+  "description": "Age 11, struggles in fractions AND place-value strands simultaneously, tests multi-strand remediation",
+  "age": 11,
+  "abilityCurve": {
+    "0": 0.88,
+    "1": 0.82,
+    "2": 0.78,
+    "3": 0.72,
+    "4": 0.60,
+    "5": 0.48
+  },
+  "responseSpeed": { "meanMs": 8000, "stddevMs": 3000 },
+  "hintSeekingProbability": 0.25,
+  "confidenceTendency": "calibrated",
+  "misconceptions": [
+    { "target": "fraction-concepts", "accuracy": 0.35 },
+    { "target": "equivalent-fractions", "accuracy": 0.30 },
+    { "target": "compare-fractions", "accuracy": 0.32 },
+    { "target": "add-subtract-fractions-like", "accuracy": 0.35 },
+    { "target": "place-value-ones-tens", "accuracy": 0.40 },
+    { "target": "place-value-hundreds", "accuracy": 0.35 },
+    { "target": "compare-order-3digit", "accuracy": 0.38 },
+    { "target": "round-nearest-10-100", "accuracy": 0.30 }
+  ]
+}

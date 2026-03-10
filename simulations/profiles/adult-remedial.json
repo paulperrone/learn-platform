@@ -1,0 +1,18 @@
+{
+  "id": "adult-remedial",
+  "name": "Adult Remedial Learner",
+  "description": "Age 35, adult with low ability re-learning basics, tests advanced presentation + slow mastery progression",
+  "age": 35,
+  "abilityCurve": {
+    "0": 0.70,
+    "1": 0.60,
+    "2": 0.45,
+    "3": 0.32,
+    "4": 0.20,
+    "5": 0.12
+  },
+  "responseSpeed": { "meanMs": 9000, "stddevMs": 3000 },
+  "hintSeekingProbability": 0.20,
+  "confidenceTendency": "underconfident",
+  "misconceptions": []
+}

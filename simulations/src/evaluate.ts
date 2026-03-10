@@ -164,7 +164,7 @@ function getStrand(topicId: string): string {
 
 // ── Helper: resolve profiles for a target ─────────────────────────────
 
-const STRUGGLING_PROFILES = ["struggling-young", "struggling-older"];
+const STRUGGLING_PROFILES = ["struggling-young", "struggling-older", "struggling-middle", "adult-remedial", "slow-steady"];
 
 function resolveProfiles(
   evalProfiles: string[],

@@ -1,0 +1,19 @@
+{
+  "id": "slow-steady",
+  "name": "Slow and Steady Learner",
+  "description": "Age 9, low learning gain but consistent attendance, tests patience of adaptive systems over many sessions",
+  "age": 9,
+  "abilityCurve": {
+    "0": 0.72,
+    "1": 0.65,
+    "2": 0.52,
+    "3": 0.40,
+    "4": 0.28,
+    "5": 0.18
+  },
+  "responseSpeed": { "meanMs": 10000, "stddevMs": 3500 },
+  "hintSeekingProbability": 0.25,
+  "confidenceTendency": "calibrated",
+  "misconceptions": [],
+  "learningGain": { "abilityDeltaPerSession": 0.002 }
+}

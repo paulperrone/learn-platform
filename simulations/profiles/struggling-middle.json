@@ -1,0 +1,18 @@
+{
+  "id": "struggling-middle",
+  "name": "Struggling Middle Learner",
+  "description": "Age 10, below-grade-level ability (55-65% at grade 0-1), tests struggling without age extremes",
+  "age": 10,
+  "abilityCurve": {
+    "0": 0.65,
+    "1": 0.55,
+    "2": 0.40,
+    "3": 0.30,
+    "4": 0.20,
+    "5": 0.12
+  },
+  "responseSpeed": { "meanMs": 12000, "stddevMs": 4000 },
+  "hintSeekingProbability": 0.35,
+  "confidenceTendency": "underconfident",
+  "misconceptions": []
+}

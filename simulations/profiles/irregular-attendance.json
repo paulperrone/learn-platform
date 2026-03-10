@@ -1,0 +1,18 @@
+{
+  "id": "irregular-attendance",
+  "name": "Irregular Attendance Learner",
+  "description": "Age 10, average ability, sessions every 2-5 days (not daily) — tests FSRS interval robustness with irregular scheduling",
+  "age": 10,
+  "abilityCurve": {
+    "0": 0.85,
+    "1": 0.80,
+    "2": 0.70,
+    "3": 0.60,
+    "4": 0.45,
+    "5": 0.32
+  },
+  "responseSpeed": { "meanMs": 7000, "stddevMs": 2500 },
+  "hintSeekingProbability": 0.15,
+  "confidenceTendency": "calibrated",
+  "misconceptions": []
+}

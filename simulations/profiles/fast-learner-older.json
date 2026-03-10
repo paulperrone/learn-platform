@@ -1,0 +1,19 @@
+{
+  "id": "fast-learner-older",
+  "name": "Fast Learner Older",
+  "description": "Age 13, starts average but ability increases +0.5% per session, tests improving ability with mature presentation needs",
+  "age": 13,
+  "abilityCurve": {
+    "0": 0.88,
+    "1": 0.82,
+    "2": 0.75,
+    "3": 0.65,
+    "4": 0.50,
+    "5": 0.38
+  },
+  "responseSpeed": { "meanMs": 5500, "stddevMs": 2000 },
+  "hintSeekingProbability": 0.10,
+  "confidenceTendency": "calibrated",
+  "misconceptions": [],
+  "learningGain": { "abilityDeltaPerSession": 0.005 }
+}
