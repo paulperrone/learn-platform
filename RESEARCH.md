@@ -557,3 +557,34 @@ Key numbers for quick reference: 85% optimal success rate (Wilson et al., 2019),
 - SSR for marketing/explore pages is important for growth (they invested in this)
 
 **Status:** Complete. Monitor for future updates.
+
+---
+
+### 2026-03-09: FIRe Compression Bottleneck Analysis
+
+**Source:** User session
+
+**Context:** FIRe compression was showing -10.5% average (net negative — MORE reviews with encompassings). Needed to isolate whether the issue was architectural, content density, or evaluation methodology.
+
+**Question:** Why does enabling encompassing edges increase total reviews instead of decreasing them? Is graph density enough to fix this?
+
+**Findings:**
+
+Investigation isolated four independent factors contributing to negative compression:
+
+| Factor | Impact | Status |
+|--------|--------|--------|
+| Due-date extension (old approach) | FSRS interpreted longer gaps as decay → more reviews | Fixed (virtual FSRS reviews) |
+| Upward penalty (`applyUpwardPenalty`) | Parent due dates pulled closer on child failure → more reviews for struggling profiles | Fixed (disabled, no research basis) |
+| Non-Review state virtual reviews | FSRS Learning/New states produce 0 or negative stability from Good rating | Fixed (State.Review filter) |
+| Low encompassing density | 15 edges / 71 topics (0.21/topic) — too few for meaningful compression | Content gap, needs 1.0-2.0/topic |
+
+Key discoveries:
+- **Paired evaluation is reliable**: SimulationRunner seeds Math.random (for FSRS fuzz) with a separate seeded PRNG. Both paired runs are deterministic. Earlier suspicion of fuzz noise was incorrect.
+- **Upward penalty was the largest single factor**: Removing it swung compression from -10.5% to +1.2% average. misconception-fractions went from -33.8% to -8.5%.
+- **strong-older proves mechanism works**: +25% compression (only profile that rarely fails → no penalty drag, and enough encompassing edges touch its review pool).
+- **New-topic inflation exists but is secondary**: When `compressReviews` frees review slots, those become new topic introductions creating future review debt. Attempted fix (capping new topic count) made results worse — reverted.
+
+**Conclusion:** The architecture is sound after the three code fixes. Remaining gap to 20% target is a content problem (encompassing graph density), not an engine problem. Need ~71-142 encompassing edges (1.0-2.0 per topic) with emphasis on cross-strand edges for maximum compression value.
+
+**Status:** Open — graph enrichment needed.
