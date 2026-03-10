@@ -1240,9 +1240,29 @@ Tag each target in `targets.json` with `signal_source: "engine" | "content" | "b
 - Virtual reviews let compression persist across sessions (child's updated state is permanent)
 - Stability interpolation by weight means weight 0.7 → 70% of the stability increase, matching the actual degree of implicit practice
 
-**Results:** FIRe compression 0% → 6.4% average, with `strong-older` at 25%. No regressions on other systems. Remaining gap to 20% target addressable via graph density (more encompassing edges).
+**Results:** FIRe compression 0% → 6.4% → 1.2% average (after disabling upward penalty and adding State.Review filter), with `strong-older` at +25%. No regressions on other systems. Remaining gap to 20% target addressable via graph density (more encompassing edges).
 
 **Alternatives rejected:**
 - Due-date extension only: causes negative compression (-5.8% to -10.5%)
 - Compression-only (drop credit): no cross-session accumulation, limited benefit
 - Shadow interval tracker: dual-system complexity, unclear interaction model
+
+---
+
+### 2026-03-09: Disable upward penalty on child failure
+
+**Source:** User session
+
+**Context:** `applyUpwardPenalty()` pulled parent due dates closer when a child topic was failed. With encompassings active, the paired FIRe evaluation showed negative compression for struggling profiles (-22.6% average-older, -33.8% misconception-fractions). Investigation revealed the penalty generated more reviews than FIRe credit saved.
+
+**Decision:** Disable `applyUpwardPenalty()` in the session loop. Keep the function in srs.ts for potential future use but don't call it.
+
+**Why:**
+- No research basis in Math Academy's FIRe model (Skycak 2026) or Ausubel's retroactive facilitation research
+- Empirically produces net negative compression for profiles that fail often (penalty-driven reviews exceed FIRe savings)
+- Prerequisite-based remediation routing already handles "student can't do prerequisites"
+- strong-older (rarely fails) unaffected — still shows +25% compression
+
+**Results:** FIRe compression -10.5% → +1.2% average. Also improved: mastery convergence FAIL(1) → WARN(3), presentation drift WARN(5) → PASS(6), difficulty targeting 9 → 10.
+
+**Also in this change:** Added `State.Review` filter to `applyFIReCredit()`. Virtual FSRS reviews on Learning/Relearning/New state cards produce 0 or negative stability changes. Only Review-state cards should receive virtual reviews.

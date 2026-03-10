@@ -189,9 +189,10 @@ For the full primary source, see `~/Desktop/the-math-academy-way.pdf` (Skycak, 2
 - Novel algorithm developed by Math Academy (Skycak).
 
 **Mechanism:**
-- Successful work on an advanced topic "trickles down" credit to encompassed simpler topics. Failed work on a simpler topic "flows up" as penalties to more advanced topics.
-- Multi-layer flow: credit/penalties travel many layers deep through the graph (up to 3 hops, pruned at 0.05 cumulative weight).
+- Successful work on an advanced topic "trickles down" credit to encompassed simpler topics via virtual FSRS reviews.
+- Multi-layer flow: credit travels many layers deep through the graph (up to 3 hops, pruned at 0.05 cumulative weight).
 - Partial encompassings: only a fraction of credit flows along partial edges. Credit travels unhindered along "trunk" of full encompassings but fades along partial branches.
+- **No upward penalty:** An earlier design penalized parent topics when children failed, but this has no research basis in the FIRe model and empirically produced net negative compression for struggling profiles. Prerequisite-based remediation routing handles the "student can't do prerequisites" case instead.
 - Freshness gate: if the child topic was recently reviewed (retrievability > 0.9), implicit credit is skipped — the memory is already strong enough that additional reinforcement provides negligible benefit.
 
 **Credit implementation — Virtual FSRS reviews:**

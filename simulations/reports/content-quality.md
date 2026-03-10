@@ -1,6 +1,6 @@
 # Content Quality Analysis
 
-> Generated: 2026-03-09T04:33:35.530Z
+> Generated: 2026-03-10T00:02:46.517Z
 
 ## Topics That Are Too Hard
 
@@ -8,30 +8,19 @@ Strong profiles (strong-older, strong-young) score <70% — likely a content iss
 
 | Topic | Strong Accuracy | Overall Accuracy | Recommendation |
 |-------|----------------|-----------------|----------------|
-| unit-conversion | 35% | 38% | Review problem wording/difficulty labels |
-| multi-digit-multiply | 38% | 47% | Review problem wording/difficulty labels |
-| coordinate-plane | 43% | 37% | Review problem wording/difficulty labels |
-| volume | 43% | 43% | Review problem wording/difficulty labels |
-| variables-expressions | 44% | 47% | Review problem wording/difficulty labels |
-| add-subtract-fractions-unlike | 44% | 52% | Review problem wording/difficulty labels |
-| classify-2d-shapes | 47% | 44% | Review problem wording/difficulty labels |
-| decimal-operations | 49% | 42% | Review problem wording/difficulty labels |
-| place-value-decimals | 50% | 46% | Review problem wording/difficulty labels |
-| line-symmetry | 50% | 48% | Review problem wording/difficulty labels |
-| multi-step-word-problems | 53% | 45% | Review problem wording/difficulty labels |
-| line-plots | 54% | 44% | Review problem wording/difficulty labels |
-| factors-multiples | 55% | 58% | Review problem wording/difficulty labels |
-| equivalent-fractions-4 | 55% | 56% | Review problem wording/difficulty labels |
-| compare-fractions-4 | 60% | 46% | Review problem wording/difficulty labels |
-| order-of-operations | 60% | 45% | Review problem wording/difficulty labels |
-| divide-multi-digit | 60% | 47% | Review problem wording/difficulty labels |
-| multiply-multi-digit | 61% | 46% | Review problem wording/difficulty labels |
-| intro-fractions | 62% | 63% | Review problem wording/difficulty labels |
-| compare-fractions-3 | 64% | 71% | Review problem wording/difficulty labels |
-| angles-intro | 64% | 57% | Review problem wording/difficulty labels |
-| multiply-fractions | 65% | 49% | Review problem wording/difficulty labels |
-| multiply-fraction-by-whole | 67% | 58% | Review problem wording/difficulty labels |
-| divide-fractions | 70% | 51% | Review problem wording/difficulty labels |
+| long-division | 23% | 64% | Review problem wording/difficulty labels |
+| classify-2d-shapes | 24% | 34% | Review problem wording/difficulty labels |
+| factors-multiples | 36% | 45% | Review problem wording/difficulty labels |
+| line-symmetry | 50% | 50% | Review problem wording/difficulty labels |
+| angles-intro | 51% | 50% | Review problem wording/difficulty labels |
+| fractions-number-line | 63% | 76% | Review problem wording/difficulty labels |
+| place-value-rounding | 64% | 55% | Review problem wording/difficulty labels |
+| multiply-word-problems | 67% | 71% | Review problem wording/difficulty labels |
+| teen-numbers | 67% | 87% | Review problem wording/difficulty labels |
+| intro-fractions | 67% | 75% | Review problem wording/difficulty labels |
+| area-intro | 67% | 63% | Review problem wording/difficulty labels |
+| multi-digit-multiply | 67% | 61% | Review problem wording/difficulty labels |
+| divide-within-100 | 69% | 72% | Review problem wording/difficulty labels |
 
 ## Topics That Are Too Easy
 
@@ -43,99 +32,99 @@ No topics flagged as too easy.
 
 | Topic | Difficulty | Expected Range | Actual Accuracy | Issue |
 |-------|-----------|---------------|----------------|-------|
-| multiply-word-problems | medium | 70% | 0% | Too hard for label |
-| decimals-intro | medium | 70% | 17% | Too hard for label |
-| coordinate-plane | easy | 85% | 37% | Too hard for label |
+| coordinate-plane | hard | 55% | 0% | Too hard for label |
+| decimal-operations | medium | 70% | 20% | Too hard for label |
+| classify-2d-shapes | easy | 85% | 38% | Too hard for label |
+| divide-fractions | easy | 85% | 38% | Too hard for label |
+| divide-fractions | hard | 55% | 10% | Too hard for label |
+| add-within-5 | hard | 55% | 100% | Too easy for label |
+| subtract-within-5 | hard | 55% | 100% | Too easy for label |
+| add-subtract-word-problems-1 | hard | 55% | 100% | Too easy for label |
+| odd-even | hard | 55% | 100% | Too easy for label |
+| money-coins-bills | hard | 55% | 100% | Too easy for label |
+| multiply-word-problems | hard | 55% | 100% | Too easy for label |
 | subtract-within-10 | hard | 55% | 100% | Too easy for label |
-| multiply-fractions | medium | 70% | 25% | Too hard for label |
-| multiply-multi-digit | easy | 85% | 43% | Too hard for label |
-| divide-multi-digit | easy | 85% | 43% | Too hard for label |
-| line-plots | medium | 70% | 29% | Too hard for label |
-| volume | easy | 85% | 44% | Too hard for label |
-| order-of-operations | easy | 85% | 44% | Too hard for label |
-| classify-2d-shapes | easy | 85% | 45% | Too hard for label |
-| line-plots | easy | 85% | 45% | Too hard for label |
-| multi-step-word-problems | medium | 70% | 30% | Too hard for label |
-| compare-fractions-4 | easy | 85% | 46% | Too hard for label |
-| place-value-decimals | easy | 85% | 46% | Too hard for label |
-| multi-digit-multiply | easy | 85% | 47% | Too hard for label |
-| volume | medium | 70% | 33% | Too hard for label |
-| line-symmetry | medium | 70% | 33% | Too hard for label |
-| line-symmetry | easy | 85% | 49% | Too hard for label |
-| variables-expressions | medium | 70% | 34% | Too hard for label |
+| classify-2d-shapes | medium | 70% | 29% | Too hard for label |
+| factors-multiples | hard | 55% | 18% | Too hard for label |
+| long-division | hard | 55% | 18% | Too hard for label |
+| multiply-fraction-by-whole | medium | 70% | 33% | Too hard for label |
+| bar-graphs-picture-graphs | easy | 85% | 48% | Too hard for label |
+| bar-graphs-picture-graphs | hard | 55% | 20% | Too hard for label |
+| place-value-rounding | hard | 55% | 20% | Too hard for label |
+| angles-intro | easy | 85% | 50% | Too hard for label |
 
 ## Per-Topic Accuracy (All Profiles)
 
 | Topic | Accuracy | Status |
 |-------|----------|--------|
-| coordinate-plane | 37% | Very Hard |
-| unit-conversion | 38% | Very Hard |
-| decimal-operations | 42% | Very Hard |
-| volume | 43% | Very Hard |
-| line-plots | 44% | Very Hard |
-| classify-2d-shapes | 44% | Very Hard |
-| order-of-operations | 45% | Very Hard |
-| multi-step-word-problems | 45% | Very Hard |
-| compare-fractions-4 | 46% | Very Hard |
-| multiply-multi-digit | 46% | Very Hard |
-| place-value-decimals | 46% | Very Hard |
-| divide-multi-digit | 47% | Very Hard |
-| variables-expressions | 47% | Very Hard |
-| multi-digit-multiply | 47% | Very Hard |
-| line-symmetry | 48% | Very Hard |
-| multiply-fractions | 49% | Very Hard |
-| divide-fractions | 51% | Very Hard |
-| add-subtract-fractions-unlike | 52% | Very Hard |
-| equivalent-fractions-4 | 56% | Very Hard |
-| angles-intro | 57% | Very Hard |
-| factors-multiples | 58% | Very Hard |
-| multiply-fraction-by-whole | 58% | Very Hard |
-| long-division | 59% | Very Hard |
-| add-subtract-fractions | 60% | Very Hard |
-| intro-fractions | 63% | Hard |
-| decimals-intro | 64% | Hard |
-| division-word-problems | 64% | Hard |
-| area-intro | 65% | Hard |
-| multiply-word-problems | 67% | Hard |
-| compare-two-digit | 68% | Hard |
-| properties-of-multiplication | 70% | OK |
-| compare-fractions-3 | 71% | OK |
-| equivalent-fractions-3 | 71% | OK |
-| area-multiply | 72% | OK |
-| bar-graphs-picture-graphs | 73% | OK |
-| tell-time-minute | 73% | OK |
-| fractions-number-line | 73% | OK |
-| place-value-rounding | 73% | OK |
-| patterns-arithmetic | 74% | OK |
-| odd-even | 75% | OK |
-| skip-count-2-5-10 | 76% | OK |
-| place-value-tens-ones | 76% | OK |
-| place-value-hundreds | 77% | OK |
-| perimeter | 78% | OK |
-| subtract-within-20 | 78% | OK |
-| multiply-within-100 | 79% | OK |
-| add-within-20 | 79% | OK |
-| divide-within-100 | 80% | OK |
-| multi-digit-add-sub | 81% | OK |
-| tell-time-hour-half | 82% | OK |
-| money-coins-bills | 82% | OK |
-| measure-length-nonstandard | 83% | OK |
-| add-within-100 | 83% | OK |
-| compare-numbers-k | 83% | OK |
-| count-to-10 | 83% | OK |
-| shapes-3d-k | 83% | OK |
-| add-within-1000 | 84% | OK |
-| count-to-100 | 84% | OK |
-| subtract-within-5 | 84% | OK |
-| add-subtract-word-problems-1 | 84% | OK |
-| intro-arrays | 84% | OK |
-| shapes-2d-k | 85% | OK |
-| teen-numbers | 86% | OK |
-| add-within-10 | 86% | OK |
-| subtract-within-10 | 86% | OK |
-| add-within-5 | 87% | OK |
-| count-to-20 | 87% | OK |
-| subtract-within-100-fluent | 87% | OK |
-| add-within-100-fluent | 87% | OK |
-| subtract-within-1000 | 88% | OK |
-| measure-length-standard | 88% | OK |
+| classify-2d-shapes | 34% | Very Hard |
+| divide-fractions | 35% | Very Hard |
+| factors-multiples | 45% | Very Hard |
+| add-subtract-fractions-unlike | 48% | Very Hard |
+| angles-intro | 50% | Very Hard |
+| line-symmetry | 50% | Very Hard |
+| coordinate-plane | 51% | Very Hard |
+| bar-graphs-picture-graphs | 53% | Very Hard |
+| place-value-rounding | 55% | Very Hard |
+| tell-time-minute | 55% | Very Hard |
+| add-subtract-fractions | 58% | Very Hard |
+| add-within-1000 | 58% | Very Hard |
+| perimeter | 60% | Hard |
+| volume | 61% | Hard |
+| multi-digit-multiply | 61% | Hard |
+| multiply-fraction-by-whole | 61% | Hard |
+| place-value-decimals | 61% | Hard |
+| skip-count-2-5-10 | 62% | Hard |
+| area-intro | 63% | Hard |
+| long-division | 64% | Hard |
+| compare-two-digit | 64% | Hard |
+| add-within-100 | 64% | Hard |
+| multiply-fractions | 66% | Hard |
+| subtract-within-1000 | 66% | Hard |
+| multiply-multi-digit | 66% | Hard |
+| unit-conversion | 67% | Hard |
+| subtract-within-100-fluent | 67% | Hard |
+| place-value-hundreds | 68% | Hard |
+| patterns-arithmetic | 70% | Hard |
+| decimals-intro | 70% | OK |
+| multiply-word-problems | 71% | OK |
+| multiply-within-100 | 72% | OK |
+| divide-within-100 | 72% | OK |
+| compare-fractions-4 | 73% | OK |
+| decimal-operations | 73% | OK |
+| measure-length-standard | 73% | OK |
+| subtract-within-20 | 74% | OK |
+| intro-arrays | 74% | OK |
+| compare-fractions-3 | 74% | OK |
+| equivalent-fractions-4 | 75% | OK |
+| measure-length-nonstandard | 75% | OK |
+| money-coins-bills | 75% | OK |
+| order-of-operations | 75% | OK |
+| intro-fractions | 75% | OK |
+| fractions-number-line | 76% | OK |
+| multi-digit-add-sub | 76% | OK |
+| add-within-10 | 77% | OK |
+| add-within-100-fluent | 77% | OK |
+| equivalent-fractions-3 | 77% | OK |
+| odd-even | 78% | OK |
+| properties-of-multiplication | 78% | OK |
+| subtract-within-5 | 78% | OK |
+| place-value-tens-ones | 79% | OK |
+| count-to-100 | 80% | OK |
+| divide-multi-digit | 80% | OK |
+| compare-numbers-k | 82% | OK |
+| add-within-20 | 83% | OK |
+| division-word-problems | 83% | OK |
+| shapes-3d-k | 84% | OK |
+| tell-time-hour-half | 84% | OK |
+| count-to-10 | 85% | OK |
+| line-plots | 86% | OK |
+| teen-numbers | 87% | OK |
+| subtract-within-10 | 87% | OK |
+| add-subtract-word-problems-1 | 88% | OK |
+| count-to-20 | 88% | OK |
+| add-within-5 | 89% | OK |
+| shapes-2d-k | 89% | OK |
+| multi-step-word-problems | 90% | OK |
+| area-multiply | 91% | OK |
+| variables-expressions | 100% | Very Easy |

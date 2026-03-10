@@ -660,14 +660,20 @@ The mastery preservation metric (S0 → S1 drop) showed 36.6% false failure beca
 
 ---
 
-### 2026-03-09: FIRe due-date extension conflicts with FSRS state model (RESOLVED)
+### 2026-03-09: FIRe architecture — three fixes to reach positive compression
 
-**Source:** Plan 017.8 Phase 5 (training run epoch 3)
+**Source:** User session + Plan 017.8 Phase 5
 **Area:** SRS / FIRe compression
 
-`applyFIReCredit()` originally extended child topic due dates when a parent was reviewed. FSRS interpreted the resulting longer gap as memory decay, *increasing* review frequency. **Fixed:** replaced with virtual FSRS reviews that update full state (stability, due, lastReview) via `repeat(card, Rating.Good)` with stability interpolated by encompassing weight. Result: 0% → 6.4% compression (up to 25% for advanced profiles).
+Three issues caused FIRe compression to be 0% or negative:
 
-**Context:** Remaining gap to 20% target is addressable via encompassing graph density (currently 15 edges for 71 topics).
+1. **Due-date extension conflicts with FSRS** — extending `due` without updating `lastReview`/`stability` made FSRS interpret longer gaps as decay, increasing reviews. Fixed: virtual FSRS reviews via `repeat(card, Rating.Good)` with stability interpolated by weight.
+2. **Upward penalty counteracts FIRe credit** — `applyUpwardPenalty()` pulled parent due dates closer on child failure. For struggling profiles, penalty-driven reviews exceeded FIRe savings (-33.8% for misconception-fractions). No research basis in FIRe model. Fixed: disabled in session loop.
+3. **Non-Review state virtual reviews** — FSRS Learning/New states produce 0 or negative stability from Good rating. Fixed: `State.Review` filter in `applyFIReCredit()`.
+
+After all three fixes: -10.5% → +1.2% average, strong-older at +25%. Remaining gap to 20% target requires more encompassing edges (currently 15 / 71 topics).
+
+**Context:** Paired evaluation IS deterministic (Math.random seeded via SimulationRunner). FSRS fuzz is NOT a confound — earlier suspicion was incorrect.
 
 ---
 

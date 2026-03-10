@@ -314,9 +314,9 @@ When escalating, provide:
 ### fire_compression (P1)
 **What it measures:** Review count reduction vs no-FIRe baseline.
 **Target:** ≥20% reduction.
-**Current:** ~6.4% average (strong-older at 25%, varies by profile).
+**Current:** ~1.2% average (strong-older at +25%, average-older at -12.9%, misconception-fractions at -8.5%).
 
-**Architecture (virtual FSRS reviews):** `applyFIReCredit()` gives encompassed children virtual FSRS reviews when a parent is reviewed successfully. Calls `repeat(card, Rating.Good)` and interpolates the stability increase by encompassing weight. Updates `stability`, `due`, `lastReview` — keeps FSRS state coherent. Skips children with retrievability > 0.9 (too fresh). Previous due-date extension approach was abandoned because it caused FSRS to interpret longer gaps as memory decay, producing negative compression.
+**Architecture (virtual FSRS reviews):** `applyFIReCredit()` gives encompassed children virtual FSRS reviews when a parent is reviewed successfully. Calls `repeat(card, Rating.Good)` and interpolates the stability increase by encompassing weight. Updates `stability`, `due`, `lastReview` — keeps FSRS state coherent. Skips children with retrievability > 0.9 (too fresh) and children not in FSRS Review state. Previous due-date extension approach was abandoned because it caused FSRS to interpret longer gaps as memory decay, producing negative compression. Upward penalty (`applyUpwardPenalty`) is disabled — it has no research basis in the FIRe model and produced net negative compression by generating more reviews than FIRe saved for struggling profiles.
 
 **Where to look:**
 - `packages/api/src/services/srs.ts` → `applyFIReCredit()` (virtual FSRS reviews), `compressReviews()` (greedy set-cover session selection)
@@ -326,9 +326,11 @@ When escalating, provide:
 **Common root causes:**
 1. **~~Diagnostic over-materialization~~** *(fixed in 017.7 Phase 7)* — materializing ALL topics below placement filled the review budget. Now only placement-and-above topics are materialized.
 2. **~~Due-date extension model~~** *(fixed: replaced with virtual FSRS reviews)* — extending `due` without updating `lastReview`/`stability` caused FSRS to interpret longer gaps as memory decay, increasing review frequency.
-3. **Insufficient encompassing density** — FIRe credit scales with the number of encompassing edges. Current graph has only 15 edges for 71 topics (target 1.0-2.0 edges/topic). Cross-strand edges provide the most compression value. Check `graph.json` encompassing count.
-4. **Weight accuracy** — Inaccurate weights mean virtual reviews over- or under-credit stability. Audit weights using the rubric in `docs/content-system.md` §4.
-5. **Review pool too small** — FIRe compression = `1 - (fire_reviews / baseline_reviews)`. If few non-mastered topics are due for review, even good credit doesn't compress many reviews.
+3. **~~Upward penalty~~** *(fixed: disabled)* — `applyUpwardPenalty()` pulled parent due dates closer on child failure. No research basis in FIRe model. Produced net negative compression for struggling profiles (penalty-driven reviews exceeded FIRe credit savings). Remediation routing handles prerequisite gaps instead.
+4. **~~Non-Review state virtual reviews~~** *(fixed: State.Review filter)* — Virtual FSRS reviews on Learning/Relearning/New state cards produced 0 or negative stability changes. Now skipped.
+5. **Insufficient encompassing density** — FIRe credit scales with the number of encompassing edges. Current graph has only 15 edges for 71 topics (target 1.0-2.0 edges/topic). Cross-strand edges provide the most compression value. Check `graph.json` encompassing count. **This is the primary remaining bottleneck.**
+6. **Weight accuracy** — Inaccurate weights mean virtual reviews over- or under-credit stability. Audit weights using the rubric in `docs/content-system.md` §4.
+7. **Review pool too small** — FIRe compression = `1 - (fire_reviews / baseline_reviews)`. If few non-mastered topics are due for review, even good credit doesn't compress many reviews.
 
 **Evaluation note:** FIRe compression requires paired simulation runs (with/without FIRe). Use `/heal --full` or `just evaluate-fire` for the definitive metric. Quick evaluation skips FIRe.
 
