@@ -72,42 +72,42 @@ Topic (graph node)
 
 ## Progress
 
-**Completed:** None yet
+**Completed:** Phase 0 ✓
 **In Progress:** —
-**Next:** Phase 0
+**Next:** Phase 1
 
 ---
 
-## Phase 0: Content Health Infrastructure
+## Phase 0: Content Health Infrastructure ✓
 **Goal:** Build tooling that measures content health using simulation output, static analysis, and (eventually) runtime data. This is the foundation for knowing where to invest content effort.
 
-1. [ ] [IMP] Build `tools/content-status.ts` — per-topic health scoring:
+1. [x] [IMP] Build `tools/content-status.ts` — per-topic health scoring:
    - For each topic: problem count by difficulty, problem count by cognitive demand, example count, validation status
    - Composite health score: weighted sum of problem count (target 20+), difficulty balance (30/40/30 easy/med/hard), demand diversity (vs grade-level targets from Plan 014), example count (target 2+)
    - Highlight gaps: topics below threshold, topics with 0 of a demand type, topics with validation errors
    - Output as terminal table + JSON for programmatic use
    - Add `just content-status` recipe to justfile
 
-2. [ ] [IMP] Build presentation-level analytics into content status:
+2. [x] [IMP] Build presentation-level analytics into content status:
    - For each topic: count content variants by presentation level (primary/intermediate/standard/advanced)
    - Cross-reference with user population data (when available): if X% of users are age 6-8, flag topics with no primary-level content
    - Track fallback frequency from simulation data: parse Plan 017 simulation logs to identify how often content selection falls back to a non-ideal presentation level
    - Output: "These N topics cause >30% presentation fallbacks for young learner profiles"
 
-3. [ ] [IMP] Build `tools/content-gaps.ts` — automated content gap detection:
+3. [x] [IMP] Build `tools/content-gaps.ts` — automated content gap detection:
    - Cross-reference content availability matrix (topic × presentation × depth × locale × flavor) against priority matrix from `docs/content-system.md`
    - Rank gaps by impact: (user population affected) × (topic traffic from simulation) × (priority tier)
    - Output actionable report: "Top 20 content gaps to fill, ranked by impact"
    - Add `just content-gaps` recipe to justfile
 
-4. [ ] [IMP] Integrate with Plan 017/017.5 simulation output:
+4. [x] [IMP] Integrate with Plan 017/017.5 simulation output:
    - Parse `simulations/reports/content-quality.md` (24 too-hard topics, 47 difficulty calibration issues — from Plan 017 Phase 5)
    - Parse `simulations/baseline.json` for per-topic accuracy metrics (updated by Plan 017.5 Phase 7)
    - Merge simulation-identified weak topics (strong profiles score <70%) into content status
    - Merge simulation-identified too-easy topics (all profiles >95%) into content status
    - Unified view: content health = static analysis + simulation signals
 
-5. [ ] [TST] Run `just content-status` and `just content-gaps` against math-foundations. Verify output is accurate and actionable. Confirm simulation data integration works with Plan 017 output.
+5. [x] [TST] Run `just content-status` and `just content-gaps` against math-foundations. Verify output is accurate and actionable. Confirm simulation data integration works with Plan 017 output.
 
 **Validation:** `just content-status` produces per-topic health scores. `just content-gaps` produces ranked gap list. Both integrate with simulation output when available.
 

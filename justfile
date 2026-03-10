@@ -38,6 +38,14 @@ db-migrate:
 import-content:
     npx tsx tools/import-content.ts
 
+# Content health scoring (per-topic analysis)
+content-status *args:
+    npx tsx tools/content-status.ts {{args}}
+
+# Content gap detection (ranked by impact)
+content-gaps *args:
+    npx tsx tools/content-gaps.ts {{args}}
+
 # Visualize knowledge graph (default: math-foundations, or pass subject name)
 visualize subject="math-foundations":
     python3 tools/visualize-graph.py content/{{subject}}/graph.json --open
