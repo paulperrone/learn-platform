@@ -1,0 +1,58 @@
+[
+  {
+    "id": "progressive-era-ex1",
+    "topicId": "progressive-era",
+    "title": "How Reformers Tackled Industrial Problems",
+    "steps": [
+      {
+        "subgoalLabel": "Identify the problems",
+        "instruction": "What problems from industrialization and urbanization did Progressive reformers want to fix?",
+        "work": "Unsafe working conditions (factory fires, injuries, child labor), corrupt city governments controlled by political 'bosses,' monopolies that crushed competition, contaminated food and medicine, and the lack of voting rights for women.",
+        "explanation": "The Progressive Era (roughly 1890-1920) was a response to the problems created by rapid industrialization and urbanization. Reformers believed government should actively protect citizens."
+      },
+      {
+        "subgoalLabel": "Examine a key reform effort",
+        "instruction": "Pick one reform and explain how it worked.",
+        "work": "After the Triangle Shirtwaist Factory fire in 1911 killed 146 workers (mostly young immigrant women), public outrage led to new workplace safety laws. The factory had locked exit doors and lacked fire escapes. New York passed dozens of laws requiring fire escapes, sprinkler systems, and safety inspections.",
+        "explanation": "Tragic events often accelerated reform. The Triangle fire showed that voluntary safety measures weren't enough — government regulation was needed to protect workers."
+      },
+      {
+        "subgoalLabel": "Identify the key players",
+        "instruction": "Who were the major figures pushing for Progressive reforms?",
+        "work": "President Theodore Roosevelt ('trust-buster' who broke up monopolies), Upton Sinclair (wrote 'The Jungle' about meatpacking conditions, leading to food safety laws), Jane Addams (settlement houses for immigrants), and suffragists like Susan B. Anthony and Alice Paul (women's voting rights).",
+        "explanation": "Progressive reform came from many directions — presidents, journalists, activists, and ordinary citizens all played roles."
+      },
+      {
+        "subgoalLabel": "Assess the results",
+        "instruction": "What lasting changes came from the Progressive Era?",
+        "work": "The 19th Amendment gave women the right to vote (1920). The FDA was created to ensure food and drug safety. Antitrust laws broke up monopolies. Child labor laws restricted how young children could work. The direct election of senators (17th Amendment) gave voters more power.",
+        "explanation": "Many Progressive Era reforms are still part of American life today. The idea that government should regulate business and protect citizens became a lasting part of American politics."
+      }
+    ]
+  },
+  {
+    "id": "progressive-era-ex2",
+    "topicId": "progressive-era",
+    "title": "Muckrakers and the Power of Journalism",
+    "steps": [
+      {
+        "subgoalLabel": "Define muckrakers",
+        "instruction": "Who were the muckrakers and what did they do?",
+        "work": "Muckrakers were journalists and writers who investigated and exposed corruption, unsafe conditions, and social injustice. President Theodore Roosevelt gave them the nickname — comparing them to a character in a book who raked through muck (filth) to find the truth.",
+        "explanation": "Muckrakers used the power of the press to inform the public about problems that powerful people wanted to keep hidden."
+      },
+      {
+        "subgoalLabel": "Examine a specific example",
+        "instruction": "How did Upton Sinclair's 'The Jungle' lead to real change?",
+        "work": "Sinclair wrote about the horrifying conditions in Chicago's meatpacking plants — rotten meat, rats ground into sausage, workers losing fingers. He intended to expose worker exploitation, but the public was most horrified by the food safety issues. President Roosevelt read the book and pushed Congress to pass the Pure Food and Drug Act and the Meat Inspection Act in 1906.",
+        "explanation": "Sinclair famously said he 'aimed at the public's heart and hit it in the stomach.' His book is a perfect example of how investigative journalism could drive legislation."
+      },
+      {
+        "subgoalLabel": "Connect to broader significance",
+        "instruction": "Why did muckraking matter for American democracy?",
+        "work": "Muckrakers showed that a free press could hold the powerful accountable. Their work led directly to new laws protecting consumers, workers, and voters. They proved that informed citizens could demand change through democratic processes.",
+        "explanation": "The muckraker tradition continues today in investigative journalism. The principle — that exposing the truth can lead to reform — remains central to how American democracy works."
+      }
+    ]
+  }
+]

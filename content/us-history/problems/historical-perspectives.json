@@ -1,0 +1,69 @@
+[
+  {
+    "id": "historical-perspectives-p1",
+    "topicId": "historical-perspectives",
+    "difficulty": "easy",
+    "question": "What does 'historical perspective' mean?",
+    "answer": "A particular point of view or way of understanding past events",
+    "hints": [
+      "Think about how different people can see the same event differently based on who they are."
+    ],
+    "solution": "A historical perspective is a particular point of view or way of understanding events in the past. Different people experience the same event differently based on their background, culture, social position, and interests. Studying multiple perspectives gives a more complete picture of history.",
+    "cognitiveDemand": "recall",
+    "source": "hand-authored"
+  },
+  {
+    "id": "historical-perspectives-p2",
+    "topicId": "historical-perspectives",
+    "difficulty": "easy",
+    "question": "When Columbus arrived in the Caribbean in 1492, would the Indigenous Taino people and the Spanish sailors have viewed this event the same way?",
+    "answer": "No, they would have had very different perspectives",
+    "hints": [
+      "Think about what each group hoped for and feared from this encounter."
+    ],
+    "solution": "No, they would have seen it very differently. The Spanish viewed their arrival as a great discovery and opportunity for wealth and glory. The Taino people experienced it as the arrival of strangers who would soon disrupt their way of life. The same event looks very different depending on whose perspective you consider.",
+    "cognitiveDemand": "recall",
+    "source": "hand-authored"
+  },
+  {
+    "id": "historical-perspectives-p3",
+    "topicId": "historical-perspectives",
+    "difficulty": "medium",
+    "question": "A British merchant and a colonial farmer both lived under mercantilism. How would their perspectives on the Navigation Acts (which restricted colonial trade to England) likely differ?",
+    "answer": "The British merchant would support the acts (guaranteed customers); the colonial farmer would oppose them (limited where he could sell)",
+    "hints": [
+      "Think about who benefits and who is restricted by laws that force colonists to trade only with England."
+    ],
+    "solution": "The British merchant would likely support the Navigation Acts because they guaranteed a captive market — colonists had to buy from and sell to England. The colonial farmer would likely oppose them because he was forced to sell his crops to English buyers (possibly at lower prices) and could not seek better deals elsewhere. Their economic positions shaped their perspectives on the same policy.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "historical-perspectives-p4",
+    "topicId": "historical-perspectives",
+    "difficulty": "medium",
+    "question": "In the 1600s, Puritan leaders in Massachusetts valued strict religious rules. Roger Williams disagreed and was banished, later founding Rhode Island with religious freedom. Whose perspective does a typical textbook usually present first, and why might that matter?",
+    "answer": "Usually the Puritans' perspective, because they were the dominant group; this can make Williams seem like the outsider rather than a reformer",
+    "hints": [
+      "Think about who held power and whose records survived most completely.",
+      "Consider how the order in which perspectives are presented affects how we understand events."
+    ],
+    "solution": "Textbooks typically present the Puritan perspective first because they were the established, dominant group with more surviving records. This framing can make Roger Williams appear as a troublemaker rather than a principled advocate for religious freedom. The order and emphasis of perspectives in how history is told shapes our understanding — being aware of this helps us think more critically about historical narratives.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "historical-perspectives-p5",
+    "topicId": "historical-perspectives",
+    "difficulty": "hard",
+    "question": "Why is it important for historians to study the perspectives of ordinary people (farmers, workers, enslaved people, women) and not just the perspectives of leaders and elites?",
+    "answer": "Ordinary people were the majority, and their experiences reveal aspects of history that elite records ignore",
+    "hints": [
+      "Think about what percentage of the population were leaders versus ordinary people.",
+      "Consider what kinds of experiences and truths might only appear in the records of everyday people."
+    ],
+    "solution": "Leaders and elites represent a tiny fraction of any population. Studying only their perspectives gives an incomplete and often distorted picture — it emphasizes politics and warfare while missing daily life, labor conditions, family structures, resistance movements, and cultural practices. Ordinary people's perspectives reveal how historical events actually affected most people. Without these voices, historians risk telling history as a story only of the powerful, ignoring the experiences of the majority.",
+    "cognitiveDemand": "analysis",
+    "source": "hand-authored"
+  }
+]

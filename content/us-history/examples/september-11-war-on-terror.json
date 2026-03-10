@@ -1,0 +1,64 @@
+[
+  {
+    "id": "september-11-war-on-terror-ex1",
+    "topicId": "september-11-war-on-terror",
+    "title": "The September 11 Attacks and Their Immediate Aftermath",
+    "steps": [
+      {
+        "subgoalLabel": "Describe what happened",
+        "instruction": "What occurred on September 11, 2001?",
+        "work": "On the morning of September 11, 2001, 19 hijackers from the terrorist group al-Qaeda seized four commercial airplanes. Two planes crashed into the Twin Towers of the World Trade Center in New York City, causing both towers to collapse. A third plane hit the Pentagon in Washington, D.C. A fourth plane, likely headed for the U.S. Capitol, crashed in a Pennsylvania field after passengers fought the hijackers. Nearly 3,000 people were killed.",
+        "explanation": "September 11 was the deadliest terrorist attack in American history and the deadliest attack on U.S. soil since Pearl Harbor. It happened on live television, searing the images into the nation's memory."
+      },
+      {
+        "subgoalLabel": "Identify who was responsible and why",
+        "instruction": "Who carried out the attacks and what was their motivation?",
+        "work": "Al-Qaeda was an extremist Islamist terrorist organization led by Osama bin Laden, based in Afghanistan under the protection of the Taliban government. Bin Laden opposed U.S. military presence in Saudi Arabia, U.S. support for Israel, and what he saw as Western interference in Muslim countries. The attackers represented a tiny radical fringe — not mainstream Islam.",
+        "explanation": "Understanding the attackers' stated motivations is important for understanding the events that followed. It is equally important to note that the vast majority of Muslims worldwide condemned the attacks."
+      },
+      {
+        "subgoalLabel": "Describe the immediate response",
+        "instruction": "How did America respond in the days and weeks after 9/11?",
+        "work": "The nation experienced grief, shock, and a surge of unity. First responders (firefighters, police, paramedics) became heroes — 343 firefighters died in the towers. Congress authorized the use of military force against those responsible. President George W. Bush declared a 'War on Terror.' In October 2001, the U.S. invaded Afghanistan to overthrow the Taliban and pursue al-Qaeda. Bush's approval rating reached 90%.",
+        "explanation": "The immediate aftermath was marked by extraordinary national unity and a determination to respond. The decisions made in this emotional period would shape American policy for decades."
+      },
+      {
+        "subgoalLabel": "Summarize the significance",
+        "instruction": "Why is 9/11 considered a turning point in American history?",
+        "work": "September 11 ended the sense of security Americans had felt since the Cold War ended. It launched two decades of war in the Middle East. It led to major changes in domestic security (the Department of Homeland Security, the TSA, the Patriot Act). It raised difficult questions about the balance between security and civil liberties that Americans continue to debate.",
+        "explanation": "Just as Pearl Harbor defined a generation, 9/11 defined the early 21st century. Its effects on American foreign policy, domestic security, and national psychology are still felt today."
+      }
+    ]
+  },
+  {
+    "id": "september-11-war-on-terror-ex2",
+    "topicId": "september-11-war-on-terror",
+    "title": "The War on Terror: Afghanistan and Iraq",
+    "steps": [
+      {
+        "subgoalLabel": "Describe the Afghanistan War",
+        "instruction": "Why did the U.S. invade Afghanistan, and what happened?",
+        "work": "The U.S. invaded Afghanistan in October 2001 to destroy al-Qaeda's base and overthrow the Taliban government that sheltered them. The Taliban fell quickly, but Osama bin Laden escaped to Pakistan. The U.S. stayed to build a democratic Afghan government and prevent terrorists from returning. The war became America's longest — lasting until 2021. The Taliban retook control shortly after U.S. withdrawal.",
+        "explanation": "Afghanistan showed that overthrowing a government was far easier than building a stable replacement. The same lesson from Vietnam appeared again — military power alone couldn't achieve political goals."
+      },
+      {
+        "subgoalLabel": "Explain the Iraq War",
+        "instruction": "Why did the U.S. invade Iraq in 2003?",
+        "work": "The Bush administration argued that Iraqi dictator Saddam Hussein had weapons of mass destruction (WMDs) and connections to al-Qaeda. Both claims turned out to be false — no WMDs were found and no al-Qaeda link existed. The U.S. invaded in March 2003 and quickly toppled Saddam's government. But a long and violent occupation followed, with sectarian warfare and an insurgency. Over 4,400 Americans and hundreds of thousands of Iraqis died.",
+        "explanation": "The Iraq War became one of the most controversial decisions in American foreign policy. The failure to find WMDs damaged U.S. credibility and public trust in government — echoing the credibility gap of the Vietnam era."
+      },
+      {
+        "subgoalLabel": "Identify the domestic effects",
+        "instruction": "How did the War on Terror affect life inside the United States?",
+        "work": "The Patriot Act expanded government surveillance powers. The TSA was created, changing air travel permanently. Muslim Americans and people perceived as Muslim faced discrimination and hate crimes. Guantanamo Bay detention camp and reports of torture raised questions about American values. The wars' costs exceeded $6 trillion, contributing to national debt.",
+        "explanation": "The War on Terror raised fundamental questions: How much freedom should Americans give up for security? How should the U.S. use its military power? These debates continue to shape American politics."
+      },
+      {
+        "subgoalLabel": "Reflect on the legacy",
+        "instruction": "What is the lasting significance of the War on Terror?",
+        "work": "Osama bin Laden was killed by U.S. forces in 2011. But terrorism remains a global challenge. The wars in Afghanistan and Iraq consumed enormous resources without achieving clear victory. The experience made many Americans skeptical of military intervention. The tension between security and liberty — a theme running through American history from the Sedition Acts to McCarthyism to the Patriot Act — continued in a new form.",
+        "explanation": "The War on Terror connects to recurring patterns in American history: the tension between security and freedom, the difficulty of nation-building abroad, and the lasting consequences of decisions made in moments of crisis."
+      }
+    ]
+  }
+]

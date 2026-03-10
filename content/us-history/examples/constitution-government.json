@@ -1,0 +1,64 @@
+[
+  {
+    "id": "constitution-government-ex1",
+    "topicId": "constitution-government",
+    "title": "Why the Articles of Confederation Failed and the Constitution Replaced Them",
+    "steps": [
+      {
+        "subgoalLabel": "Understand the first attempt at government",
+        "instruction": "After independence, the new nation needed a government. What was the Articles of Confederation?",
+        "work": "The Articles of Confederation (1781) created a loose alliance of 13 states. Congress could declare war and make treaties but could NOT tax, regulate trade, or enforce laws. Each state acted almost like its own country.",
+        "explanation": "The founders feared a strong central government (they had just fought a king), so they made the national government intentionally weak. This turned out to be too weak to work."
+      },
+      {
+        "subgoalLabel": "Identify the problems",
+        "instruction": "What problems showed that the Articles weren't working?",
+        "work": "Congress couldn't pay war debts because it couldn't collect taxes. States printed their own money, causing economic chaos. Shays' Rebellion (1786-87) — an armed uprising of farmers — showed the government couldn't maintain order.",
+        "explanation": "When a government can't pay its debts, manage the economy, or keep order, it's clearly not functioning. Shays' Rebellion scared many leaders into supporting a stronger government."
+      },
+      {
+        "subgoalLabel": "See how the Constitution solved these problems",
+        "instruction": "In 1787, delegates met in Philadelphia. What kind of government did the Constitution create?",
+        "work": "The Constitution created a federal system with power shared between national and state governments. It gave Congress the power to tax, regulate trade, and raise an army. It split government into three branches: legislative (Congress), executive (President), and judicial (courts).",
+        "explanation": "The new system balanced the need for a strong national government with the states' desire to keep some power. The three branches were designed to check each other so no one branch became too powerful."
+      },
+      {
+        "subgoalLabel": "Understand the Bill of Rights compromise",
+        "instruction": "Not everyone supported the Constitution. What convinced people to ratify it?",
+        "work": "Anti-Federalists worried the Constitution gave too much power to the national government and didn't protect individual rights. To win ratification, Federalists promised to add the Bill of Rights — the first 10 amendments, guaranteeing freedoms like speech, religion, and fair trials.",
+        "explanation": "The Bill of Rights was a compromise. It got enough states to ratify the Constitution while protecting the individual liberties that colonists had fought a revolution to secure."
+      }
+    ]
+  },
+  {
+    "id": "constitution-government-ex2",
+    "topicId": "constitution-government",
+    "title": "How the Great Compromise Shaped Congress",
+    "steps": [
+      {
+        "subgoalLabel": "Understand the conflict between large and small states",
+        "instruction": "At the Constitutional Convention, states disagreed about representation. What did large and small states each want?",
+        "work": "Large states (like Virginia) wanted representation based on population — more people means more votes. Small states (like New Jersey) wanted equal representation — each state gets the same number of votes regardless of size.",
+        "explanation": "This was the biggest fight at the Convention. If representation was based on population, large states would dominate. If each state got equal votes, small states could outvote the majority of Americans."
+      },
+      {
+        "subgoalLabel": "See the compromise solution",
+        "instruction": "How did the delegates resolve this disagreement?",
+        "work": "The Great Compromise created a two-chamber Congress. The House of Representatives has seats based on population (large states get more). The Senate gives every state exactly 2 senators (equal representation).",
+        "explanation": "By creating two chambers, both sides got something. Large states have more power in the House, while small states have equal power in the Senate. Both chambers must agree for a law to pass."
+      },
+      {
+        "subgoalLabel": "Understand the Three-Fifths Compromise",
+        "instruction": "Population-based representation created another problem: should enslaved people count as population? Why was this controversial?",
+        "work": "Southern states wanted enslaved people counted for representation (giving them more House seats) but not counted for taxation. Northern states wanted the opposite. The compromise counted each enslaved person as three-fifths of a person for both representation and taxes.",
+        "explanation": "The Three-Fifths Compromise gave slave states more political power without giving enslaved people any rights. It shows how slavery was embedded in the nation's founding documents."
+      },
+      {
+        "subgoalLabel": "Connect the compromises to the bigger picture",
+        "instruction": "What do these compromises tell us about how the Constitution was created?",
+        "work": "The Constitution was not written by people who all agreed. It was a series of negotiations and compromises between competing interests — large vs. small states, North vs. South, federal vs. state power.",
+        "explanation": "Understanding the Constitution as a product of compromise explains both its strengths (it balanced many interests) and its weaknesses (it protected slavery to get Southern support)."
+      }
+    ]
+  }
+]

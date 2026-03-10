@@ -164,6 +164,58 @@ for (const t of roots) {
   console.log(`  - ${t.id}: ${t.name} (grade ${t.gradeLevel})`);
 }
 
+// Discipline-specific validation
+if (graph.disciplineId) {
+  // Detect progression model from known disciplines
+  const contextLayeredDisciplines = ["history", "philosophy"];
+  const flexibleDisciplines: string[] = [];
+  const isContextLayered = contextLayeredDisciplines.includes(graph.disciplineId);
+  const isFlexible = flexibleDisciplines.includes(graph.disciplineId);
+
+  if (isContextLayered) {
+    console.log("\n--- Context-layered discipline checks ---");
+    // Edge type distribution: should be mostly recommended/enriching, not all required
+    const localPrereqs = graph.prerequisites.filter((p: any) => !p.from.includes(":"));
+    const requiredCount = localPrereqs.filter((p: any) => p.type === "required").length;
+    const recommendedCount = localPrereqs.filter((p: any) => p.type === "recommended").length;
+    const enrichingCount = localPrereqs.filter((p: any) => p.type === "enriching").length;
+    const total = localPrereqs.length;
+
+    console.log(`  Edge types: ${requiredCount} required (${total > 0 ? Math.round(100 * requiredCount / total) : 0}%), ${recommendedCount} recommended (${total > 0 ? Math.round(100 * recommendedCount / total) : 0}%), ${enrichingCount} enriching (${total > 0 ? Math.round(100 * enrichingCount / total) : 0}%)`);
+
+    if (total > 0 && requiredCount / total > 0.3) {
+      console.warn(`  WARN: Context-layered subject has >30% required edges (${Math.round(100 * requiredCount / total)}%). Most edges should be recommended or enriching.`);
+      warnings++;
+    }
+    if (total > 0 && (recommendedCount + enrichingCount) / total < 0.5) {
+      console.warn(`  WARN: Context-layered subject has <50% recommended+enriching edges. Expected mostly soft prerequisites.`);
+      warnings++;
+    }
+
+    // Check content depth coverage (context-layered should have multi-depth content)
+    const problemsDir = join(process.cwd(), "content", subject, "problems");
+    if (existsSync(problemsDir)) {
+      const depthCounts = new Map<string, Set<string>>();
+      for (const file of readdirSync(problemsDir).filter((f: string) => f.endsWith(".json"))) {
+        const topicId = file.replace(".json", "");
+        const problems = JSON.parse(readFileSync(join(problemsDir, file), "utf-8"));
+        const depths = new Set<string>();
+        for (const p of problems) {
+          depths.add(p.contentDepth ?? "survey");
+        }
+        depthCounts.set(topicId, depths);
+      }
+      const multiDepthTopics = [...depthCounts.entries()].filter(([, depths]) => depths.size > 1);
+      const surveyOnlyTopics = [...depthCounts.entries()].filter(([, depths]) => depths.size === 1 && depths.has("survey"));
+      console.log(`  Content depth: ${multiDepthTopics.length} topics with multi-depth content, ${surveyOnlyTopics.length} survey-only`);
+      if (multiDepthTopics.length === 0 && graph.topics.length > 5) {
+        console.warn(`  WARN: No topics have multi-depth content. Context-layered subjects should have contextual/analytical depth for anchor topics.`);
+        warnings++;
+      }
+    }
+  }
+}
+
 // Summary
 console.log(`\n${"=".repeat(40)}`);
 console.log(`Errors: ${errors}`);

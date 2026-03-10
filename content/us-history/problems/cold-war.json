@@ -1,0 +1,142 @@
+[
+  {
+    "id": "cold-war-p1",
+    "topicId": "cold-war",
+    "difficulty": "easy",
+    "question": "What two superpowers were the main rivals during the Cold War?",
+    "answer": "The United States and the Soviet Union",
+    "hints": [
+      "One was a capitalist democracy, the other a communist state."
+    ],
+    "solution": "The Cold War (roughly 1947-1991) was a period of political and military tension between the United States and the Soviet Union. It was called 'cold' because the two superpowers never fought each other directly in a full-scale war.",
+    "cognitiveDemand": "recall",
+    "source": "hand-authored"
+  },
+  {
+    "id": "cold-war-p2",
+    "topicId": "cold-war",
+    "difficulty": "easy",
+    "question": "What was the US policy of \"containment\" during the Cold War?",
+    "answer": "Preventing the spread of communism to new countries.",
+    "hints": [
+      "The word 'contain' means to keep something from spreading."
+    ],
+    "solution": "Containment was the US foreign policy strategy of preventing communism from spreading beyond the countries where it already existed. This policy, first outlined by diplomat George Kennan, guided American actions throughout the Cold War, including military interventions in Korea and Vietnam.",
+    "cognitiveDemand": "recall",
+    "source": "hand-authored"
+  },
+  {
+    "id": "cold-war-p3",
+    "topicId": "cold-war",
+    "difficulty": "medium",
+    "question": "In 1962, the Cuban Missile Crisis brought the US and Soviet Union to the brink of nuclear war. What caused this crisis?",
+    "answer": "The Soviet Union placed nuclear missiles in Cuba, just 90 miles from the United States.",
+    "hints": [
+      "Think about why having enemy weapons on a nearby island would be so alarming."
+    ],
+    "solution": "In October 1962, US spy planes discovered that the Soviet Union was installing nuclear missiles in Cuba, within striking distance of major American cities. President Kennedy imposed a naval blockade and demanded their removal. After 13 tense days, the Soviets agreed to remove the missiles in exchange for a US pledge not to invade Cuba.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "cold-war-p4",
+    "topicId": "cold-war",
+    "difficulty": "medium",
+    "question": "The Korean War (1950-1953) is sometimes called a \"proxy war.\" What does that mean in the context of the Cold War?",
+    "answer": "The US and Soviet Union supported opposite sides without fighting each other directly.",
+    "hints": [
+      "A 'proxy' is someone who acts on behalf of another. Think about who was really behind each side in Korea."
+    ],
+    "solution": "A proxy war is a conflict where major powers support opposing sides without directly fighting each other. In Korea, the US backed South Korea while the Soviet Union and China supported North Korea. The superpowers fought indirectly through these smaller nations, avoiding a direct US-Soviet confrontation that could escalate to nuclear war.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "cold-war-p5",
+    "topicId": "cold-war",
+    "difficulty": "hard",
+    "question": "The Cold War was fought through an arms race, space race, and proxy wars rather than direct combat between the US and Soviet Union. Why did both sides avoid fighting each other directly?",
+    "answer": "Both had nuclear weapons, so direct war risked mutual destruction.",
+    "hints": [
+      "Think about what would happen if two countries with thousands of nuclear weapons went to war."
+    ],
+    "solution": "The concept of Mutually Assured Destruction (MAD) meant that a direct war between the US and Soviet Union would likely escalate to nuclear war, destroying both nations and potentially civilization itself. This nuclear deterrence paradoxically kept the peace between the superpowers while they competed through proxy wars, espionage, propaganda, and technological rivalry like the Space Race.",
+    "cognitiveDemand": "analysis",
+    "source": "hand-authored"
+  },
+  {
+    "id": "cold-war-ctx-p1",
+    "topicId": "cold-war",
+    "difficulty": "easy",
+    "contentDepth": "contextual",
+    "question": "Why did the US and Soviet Union become rivals after WWII rather than remaining allies? What fundamental disagreements drove them apart?",
+    "answer": "They had opposing political and economic systems — the US promoted capitalism and democracy while the Soviets promoted communism and one-party rule. After their common enemy (Nazi Germany) was defeated, they clashed over how to rebuild Europe and who would have influence over which countries.",
+    "hints": [
+      "Think about what held the wartime alliance together and what happened when that shared goal was achieved.",
+      "Consider how differently each side wanted to organize the post-war world."
+    ],
+    "solution": "The US-Soviet wartime alliance was driven by a shared enemy, not shared values. Once Germany surrendered, their deep ideological differences resurfaced. The US wanted democratic, capitalist nations open to American trade. The Soviets, having been invaded twice through Eastern Europe, wanted communist buffer states to protect their border. Disputes over Germany's future, Poland's government, and the spread of communism in Greece and Turkey hardened positions. The Truman Doctrine (1947) and Marshall Plan (1948) formalized the split: the US would actively oppose communist expansion and rebuild Western Europe as a capitalist bloc, while the Soviets consolidated control over Eastern Europe.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "cold-war-ctx-p2",
+    "topicId": "cold-war",
+    "difficulty": "easy",
+    "contentDepth": "contextual",
+    "question": "How did the Marshall Plan serve both humanitarian and strategic goals for the United States?",
+    "answer": "The Marshall Plan rebuilt war-torn European economies (humanitarian goal) while also creating stable, prosperous democracies that would resist communist influence and become trading partners for US businesses (strategic goal).",
+    "hints": [
+      "Think about why the US would spend billions rebuilding other countries' economies.",
+      "Consider what might happen to poor, desperate populations when communists offer an alternative system."
+    ],
+    "solution": "The Marshall Plan (1948-1952) provided over $13 billion in economic aid to rebuild Western European economies devastated by WWII. The humanitarian motive was genuine: millions faced hunger, homelessness, and economic collapse. But the strategic calculus was equally important. US policymakers feared that poverty and instability would make European populations receptive to communism, as had nearly happened in Greece, Italy, and France. By rebuilding economies, the US created stable democracies resistant to Soviet influence, built loyal allies for the Cold War, and opened prosperous markets for American exports. The Marshall Plan showed how economic aid could be a powerful weapon in ideological competition.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "cold-war-ctx-p3",
+    "topicId": "cold-war",
+    "difficulty": "medium",
+    "contentDepth": "contextual",
+    "question": "The Vietnam War was a containment war, but it divided American society deeply. Explain why the same containment policy that Americans supported in Korea became so controversial in Vietnam.",
+    "answer": "Vietnam dragged on far longer with no clear progress, the draft forced reluctant young men to fight, televised coverage showed the war's brutality to the public for the first time, the South Vietnamese government was corrupt and unpopular, and many Americans questioned whether a civil war in a small country truly threatened US security.",
+    "hints": [
+      "Think about what was different about Vietnam compared to Korea — length, media coverage, the draft, and public understanding of the stakes.",
+      "Consider how seeing war footage on television every night changed public opinion."
+    ],
+    "solution": "Several factors made Vietnam controversial in ways Korea was not. Korea lasted three years; Vietnam dragged on for over a decade with no clear path to victory. Television brought graphic combat footage into living rooms nightly, making the war's human cost visceral in a way previous wars had not been. The draft compelled young men to fight in a war many viewed as unnecessary, sparking widespread protest. The South Vietnamese government's corruption undermined the argument that the US was defending democracy. The Tet Offensive (1968) shattered government claims of progress. As casualties mounted with no end in sight, many Americans concluded that containing communism in Vietnam was not worth the cost, fracturing the Cold War consensus that had supported containment since the late 1940s.",
+    "cognitiveDemand": "analysis",
+    "source": "hand-authored"
+  },
+  {
+    "id": "cold-war-ctx-p4",
+    "topicId": "cold-war",
+    "difficulty": "medium",
+    "contentDepth": "contextual",
+    "question": "The Space Race was part of the Cold War competition. Explain how launching satellites and sending astronauts to the moon connected to the broader superpower rivalry.",
+    "answer": "Space achievements demonstrated technological and scientific superiority, which implied military capability (the same rockets that launched satellites could deliver nuclear warheads). Beating the rival to milestones like the moon landing was a propaganda victory that showed the world which system — capitalism or communism — produced better results.",
+    "hints": [
+      "Think about the connection between rocket technology and nuclear missiles.",
+      "Consider how space achievements were used to win hearts and minds around the world."
+    ],
+    "solution": "The Space Race was a high-profile arena of Cold War competition with real strategic implications. When the Soviets launched Sputnik in 1957, Americans panicked — a country that could put a satellite in orbit could also deliver nuclear warheads anywhere on Earth. Space achievements served as proof of system superiority: each side argued that its political and economic system produced greater scientific innovation. The US poured resources into NASA and science education (the National Defense Education Act) in direct response to Soviet space successes. The moon landing in 1969 was celebrated as a vindication of American ingenuity and democratic capitalism. Throughout, the Space Race served as a safer substitute for direct military competition — a way to demonstrate dominance without firing a shot.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "cold-war-ctx-p5",
+    "topicId": "cold-war",
+    "difficulty": "hard",
+    "contentDepth": "contextual",
+    "question": "The Cold War affected American domestic life, not just foreign policy. Explain how the fear of communism shaped life inside the United States during the 1950s, including both legitimate security concerns and overreactions.",
+    "answer": "Legitimate concerns included Soviet espionage (real spies like the Rosenbergs were caught). But the Red Scare and McCarthyism went far beyond reasonable security measures — Senator McCarthy and others accused thousands of Americans of being communists without evidence, ruining careers of teachers, actors, and government workers. Fear of being labeled 'un-American' suppressed dissent and free speech, showing how external threats can erode domestic civil liberties.",
+    "hints": [
+      "Think about both real threats (Soviet spies did exist) and the overreaction (accusing innocent people).",
+      "Consider what happens to free speech when disagreeing with the government can get you labeled a traitor."
+    ],
+    "solution": "The Cold War created a pervasive atmosphere of fear inside America. Real security threats existed: Soviet spies had penetrated the Manhattan Project, and the USSR developed nuclear weapons partly through espionage. However, the response far exceeded the threat. Senator Joseph McCarthy led witch-hunts accusing government officials, professors, Hollywood figures, and ordinary citizens of communist sympathies, often without evidence. The House Un-American Activities Committee (HUAC) demanded loyalty oaths and blacklisted suspected sympathizers. Thousands lost jobs, and self-censorship became widespread as people feared being denounced. The Red Scare illustrated a recurring pattern in American history: external threats provoking domestic crackdowns that violate the very freedoms the nation claims to defend. McCarthyism eventually discredited itself, but not before demonstrating how fear can undermine civil liberties in a democracy.",
+    "cognitiveDemand": "analysis",
+    "source": "hand-authored"
+  }
+]

@@ -1,0 +1,70 @@
+[
+  {
+    "id": "colonial-life-ex1",
+    "topicId": "colonial-life",
+    "title": "Comparing the Three Colonial Regions",
+    "steps": [
+      {
+        "subgoalLabel": "Identify the three regions",
+        "instruction": "The 13 English colonies are grouped into three regions based on geography, economy, and culture. Start by naming the regions and a few colonies in each.",
+        "work": "New England Colonies: Massachusetts, Connecticut, Rhode Island, New Hampshire\nMiddle Colonies: New York, Pennsylvania, New Jersey, Delaware\nSouthern Colonies: Virginia, Maryland, North Carolina, South Carolina, Georgia",
+        "explanation": "Grouping colonies by region helps us see patterns. Colonies in the same region shared similar geography and developed similar economies — even though each colony had its own character."
+      },
+      {
+        "subgoalLabel": "Connect geography to economy in each region",
+        "instruction": "For each region, think: what is the land and climate like? What kind of work does that environment support?",
+        "work": "New England → rocky soil, cold winters, forests, coastline → NOT great for farming → economy based on fishing, shipbuilding, lumber, and trade\nMiddle → fertile soil, moderate climate, rivers → good farmland → economy based on growing wheat, corn, and oats ('breadbasket colonies') plus trade through port cities\nSouthern → rich soil, warm climate, long growing season → ideal for large-scale farming → economy based on cash crops (tobacco, rice, indigo) grown on plantations",
+        "explanation": "This is the same geography-shapes-life pattern we see throughout history. The Southern colonies' warm climate and plantation economy led directly to their heavy reliance on enslaved labor."
+      },
+      {
+        "subgoalLabel": "Compare social structures",
+        "instruction": "Who lived in each region? How was society organized? Think about who had power and who did the work.",
+        "work": "New England → small towns centered around churches; Puritan values; most families farmed small plots; emphasis on education (first public schools)\nMiddle → most diverse region; many different religions and nationalities (Dutch, German, Swedish, Quaker); mix of small farms and merchants\nSouthern → plantation owners at the top; large gap between wealthy planters and poor farmers; enslaved Africans did most plantation labor and had no rights or freedom",
+        "explanation": "The economy shaped the social structure. Plantation agriculture created extreme inequality, while small-farm and trade economies distributed wealth more (though not equally — no colony was truly equal)."
+      },
+      {
+        "subgoalLabel": "Note what all regions shared",
+        "instruction": "Despite differences, what did all 13 colonies have in common?",
+        "work": "All 13 colonies:\n- Were governed by England and subject to English law\n- Had some form of local self-government (town meetings, assemblies)\n- Relied on trade with England and each other\n- Displaced Indigenous peoples from their land\n- Developed a growing sense of 'American' identity distinct from England",
+        "explanation": "Similarities matter as much as differences. These shared experiences — especially self-government and a distinct identity — helped the colonies eventually unite against England."
+      }
+    ]
+  },
+  {
+    "id": "colonial-life-ex2",
+    "topicId": "colonial-life",
+    "title": "A Day in Colonial Life: Comparing a Farmer and an Enslaved Person",
+    "steps": [
+      {
+        "subgoalLabel": "Set the scene",
+        "instruction": "To understand colonial life, we need to think about what daily life actually looked like. Let's compare two people living in Virginia around 1720: a small farmer and an enslaved African working on a tobacco plantation.",
+        "work": "Small farmer: Owns about 50 acres, works the land with his family, grows tobacco and food crops.\nEnslaved person: Has no freedom, no pay, no legal rights. Forced to work on a large plantation growing tobacco for the planter's profit.",
+        "explanation": "Comparing daily lives shows us what history felt like for real people — not just dates and events. Virginia in 1720 had both free farmers and enslaved people, and their experiences were radically different."
+      },
+      {
+        "subgoalLabel": "Compare their work",
+        "instruction": "Both people grew tobacco, but under completely different conditions. What did their workdays look like?",
+        "work": "Farmer: Works sunrise to sunset on his own schedule. Decides what to plant, when to harvest, and keeps his profits. Hard physical labor, but he controls it.\nEnslaved person: Works sunrise to sunset (or longer) under an overseer's watch. Has no choice about the work. Can be punished for working too slowly. Keeps nothing from the harvest.",
+        "explanation": "The key difference isn't the type of work — it's freedom and choice. The farmer works hard by choice for his own benefit. The enslaved person works hard by force for someone else's benefit."
+      },
+      {
+        "subgoalLabel": "Compare their rights and family life",
+        "instruction": "Think beyond work. What about family, education, and legal rights?",
+        "work": "Farmer: Can own property, vote (if male and property-owning), move freely, educate his children, and make decisions for his family.\nEnslaved person: Legally considered property, not a person. Cannot legally marry, though many formed families. Family members could be sold to different owners at any time. Forbidden from learning to read in many colonies.",
+        "explanation": "Slavery wasn't just forced labor — it was the denial of basic human rights. Understanding this helps explain why its legacy lasted long after it was abolished."
+      },
+      {
+        "subgoalLabel": "Recognize resilience and resistance",
+        "instruction": "Despite these brutal conditions, enslaved people were not passive. How did they maintain their humanity and resist?",
+        "work": "Forms of resistance and resilience:\n- Maintained African cultural traditions (music, storytelling, spiritual practices)\n- Built strong community bonds despite the threat of family separation\n- Resisted through slowing work, breaking tools, running away, and sometimes open rebellion\n- Passed knowledge and survival strategies to their children",
+        "explanation": "History includes not just what was done TO people but what people DID in response. Enslaved people's resilience and resistance are central to the American story, not a footnote."
+      },
+      {
+        "subgoalLabel": "Connect to the bigger picture",
+        "instruction": "What does this comparison tell us about colonial society as a whole?",
+        "work": "Colonial America was built on a deep contradiction: ideals of freedom and self-government for some people existed alongside the complete denial of freedom for others. The tobacco economy that made Virginia prosperous depended on enslaved labor. This contradiction would shape American history for centuries.",
+        "explanation": "Looking at daily life reveals truths that big-picture history can miss. The wealth of the colonies was not created equally — and not shared equally. Recognizing this is essential to understanding American history honestly."
+      }
+    ]
+  }
+]

@@ -1,0 +1,58 @@
+[
+  {
+    "id": "vietnam-war-ex1",
+    "topicId": "vietnam-war",
+    "title": "How the U.S. Got Involved in Vietnam",
+    "steps": [
+      {
+        "subgoalLabel": "Set the context",
+        "instruction": "Why did the United States care about a small country in Southeast Asia?",
+        "work": "Vietnam had been a French colony. After France lost to Vietnamese independence fighters at Dien Bien Phu (1954), Vietnam was divided: communist North Vietnam (led by Ho Chi Minh) and non-communist South Vietnam. U.S. leaders believed in the 'domino theory' — if one country fell to communism, its neighbors would follow. Supporting South Vietnam was seen as essential to containing communism.",
+        "explanation": "The Vietnam War was a Cold War conflict. The U.S. wasn't primarily concerned about Vietnam itself but about stopping the global spread of communism."
+      },
+      {
+        "subgoalLabel": "Trace the escalation",
+        "instruction": "How did U.S. involvement grow from advisors to a full-scale war?",
+        "work": "Presidents Eisenhower and Kennedy sent money and military advisors to South Vietnam. After the Gulf of Tonkin incident (1964) — reported attacks on U.S. ships — Congress gave President Johnson broad authority to use military force. Johnson escalated rapidly: from 23,000 troops in 1964 to over 500,000 by 1968. The U.S. bombed North Vietnam heavily.",
+        "explanation": "The escalation happened gradually, without a formal declaration of war. Each step made it harder to back out, drawing the U.S. deeper into a conflict that proved far more difficult than expected."
+      },
+      {
+        "subgoalLabel": "Explain why the war was so difficult",
+        "instruction": "Why couldn't the world's most powerful military win?",
+        "work": "North Vietnamese and Viet Cong (South Vietnamese communist fighters) used guerrilla tactics — ambushes, tunnels, blending in with civilians. There were no clear front lines. American troops struggled to tell friend from enemy. The South Vietnamese government was corrupt and unpopular. The Tet Offensive (1968) — a surprise attack during a holiday ceasefire — showed Americans that the war was far from won despite government claims of progress.",
+        "explanation": "Vietnam challenged the assumption that superior firepower wins wars. The conflict showed that fighting an enemy with deep local support and willingness to endure enormous losses was a fundamentally different challenge."
+      },
+      {
+        "subgoalLabel": "Describe the outcome",
+        "instruction": "How did the war end?",
+        "work": "Growing opposition at home and on the battlefield led President Nixon to begin withdrawing troops ('Vietnamization'). The Paris Peace Accords were signed in 1973 and the last U.S. troops left. In 1975, North Vietnam conquered the South and unified the country under communist rule. Over 58,000 Americans and an estimated 2-3 million Vietnamese died.",
+        "explanation": "Vietnam was the first war the United States clearly lost. It shattered public trust in government and military leadership, creating lasting scars in American society and politics."
+      }
+    ]
+  },
+  {
+    "id": "vietnam-war-ex2",
+    "topicId": "vietnam-war",
+    "title": "The Anti-War Movement and Its Impact",
+    "steps": [
+      {
+        "subgoalLabel": "Describe the growth of opposition",
+        "instruction": "Why did so many Americans oppose the Vietnam War?",
+        "work": "Television brought the war's brutality into American homes — it was the first 'living room war.' The draft forced young men to fight in a war many saw as pointless. Casualties mounted with no clear progress. The government's optimistic claims contradicted what journalists and soldiers reported (the 'credibility gap'). College students, clergy, and civil rights leaders organized massive protests.",
+        "explanation": "Vietnam divided American society like no conflict since the Civil War. The combination of a draft, graphic TV coverage, and government dishonesty fueled unprecedented opposition to a war."
+      },
+      {
+        "subgoalLabel": "Identify key moments",
+        "instruction": "What were the major events of the anti-war movement?",
+        "work": "Teach-ins at universities (1965) educated students about the war. Massive marches drew hundreds of thousands to Washington, D.C. Muhammad Ali refused the draft, saying 'I ain't got no quarrel with them Viet Cong.' The Pentagon Papers (1971) revealed that the government had been lying about the war for years. Kent State (1970): National Guard soldiers killed four student protesters at an Ohio university, shocking the nation.",
+        "explanation": "The anti-war movement used many tactics — education, protest, civil disobedience, and legal challenges. Each escalation of the war brought more people into opposition."
+      },
+      {
+        "subgoalLabel": "Assess the lasting impact",
+        "instruction": "How did Vietnam change America?",
+        "work": "The 'Vietnam Syndrome' made Americans wary of future military interventions. Trust in government plummeted. The draft ended in 1973, replaced by an all-volunteer military. Veterans were often poorly treated upon return, struggling with physical and psychological wounds (PTSD was first recognized after Vietnam). The War Powers Act (1973) tried to limit presidential power to commit troops without Congress.",
+        "explanation": "Vietnam's legacy reaches far beyond the war itself. It fundamentally changed how Americans view their government, their military, and the use of American power abroad."
+      }
+    ]
+  }
+]

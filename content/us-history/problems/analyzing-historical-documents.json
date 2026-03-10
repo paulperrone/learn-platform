@@ -1,0 +1,69 @@
+[
+  {
+    "id": "analyzing-historical-documents-p1",
+    "topicId": "analyzing-historical-documents",
+    "difficulty": "easy",
+    "question": "When analyzing a historical document, what does 'context' mean?",
+    "answer": "The circumstances and time period in which the document was created",
+    "hints": [
+      "Think about the who, when, where, and why surrounding the document."
+    ],
+    "solution": "Context means the circumstances surrounding a document's creation — who wrote it, when and where it was written, and what was happening at that time. Understanding context helps us interpret what the document means and why it was created.",
+    "cognitiveDemand": "recall",
+    "source": "hand-authored"
+  },
+  {
+    "id": "analyzing-historical-documents-p2",
+    "topicId": "analyzing-historical-documents",
+    "difficulty": "easy",
+    "question": "What are the first three questions a historian asks when examining a historical document?",
+    "answer": "Who wrote it, when was it written, and why was it written",
+    "hints": [
+      "These are basic questions about the author, date, and purpose."
+    ],
+    "solution": "Historians start by asking: Who wrote this document? When was it written? Why was it written (what was the author's purpose)? These three questions establish the basics needed to understand and evaluate any historical document.",
+    "cognitiveDemand": "recall",
+    "source": "hand-authored"
+  },
+  {
+    "id": "analyzing-historical-documents-p3",
+    "topicId": "analyzing-historical-documents",
+    "difficulty": "medium",
+    "question": "A colonial governor writes a letter to the King of England describing a peaceful, prosperous colony. A settler's diary from the same colony describes food shortages and conflict. How should a historian handle these contradicting sources?",
+    "answer": "Consider each author's purpose and audience to understand why their accounts differ",
+    "hints": [
+      "Think about why the governor might want to present a positive picture to the King.",
+      "Think about who the diary was written for versus who the letter was written for."
+    ],
+    "solution": "A historian should consider both sources and ask why they differ. The governor had a motive to present the colony positively to the King (to keep his position and attract more settlers). The diary was private, so the settler had no reason to exaggerate. By comparing the sources and considering each author's purpose and audience, the historian builds a more complete and accurate picture.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "analyzing-historical-documents-p4",
+    "topicId": "analyzing-historical-documents",
+    "difficulty": "medium",
+    "question": "You are reading a colonial-era document and encounter the word 'savage' used to describe Indigenous peoples. What should you consider about this word choice when analyzing the document?",
+    "answer": "The word reflects the author's biases and attitudes of that time period, not reality",
+    "hints": [
+      "Think about how language reveals the beliefs and prejudices of the person who wrote it."
+    ],
+    "solution": "The word 'savage' reflects the biases and prejudices of many European colonists, not an accurate description of Indigenous peoples. When analyzing historical documents, word choices reveal the author's attitudes and the beliefs common in their time period. Recognizing biased language helps historians understand the author's perspective without accepting it as truth.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "analyzing-historical-documents-p5",
+    "topicId": "analyzing-historical-documents",
+    "difficulty": "hard",
+    "question": "A historian has two accounts of the same 1620 event: one written in 1620 and one written in 1680 by a person who was a child in 1620. What are the strengths and weaknesses of each source?",
+    "answer": "The 1620 account is more immediate but may lack perspective; the 1680 account has hindsight but memory may be unreliable after 60 years",
+    "hints": [
+      "Think about the advantages of writing immediately after an event versus writing long after.",
+      "Consider how memory changes over time and how knowing what happened later might change how someone describes the past."
+    ],
+    "solution": "The 1620 account is strong because it was written in the moment with fresh details, but the author may lack perspective on the event's significance. The 1680 account benefits from 60 years of hindsight — the writer knows how things turned out — but memory fades and reshapes over time, and the writer was a child during the event and may not have fully understood what happened. Historians weigh both accounts, using each to fill gaps in the other.",
+    "cognitiveDemand": "analysis",
+    "source": "hand-authored"
+  }
+]

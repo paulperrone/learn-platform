@@ -756,3 +756,15 @@ Fix: Two-phase import — (1) iterate subjects inserting subjects + topics + con
 Common Core ELA phonics standards (RF.K.2a-d: rhyming, syllable counting, phoneme blending/segmenting) and fluency standards (RF.x.4: timed oral reading) require audio. These cannot be assessed on a screen + text platform. Adaptations: oral phoneme manipulation → visual letter-sound blending (CVC words); oral fluency → omitted entirely. Text-based decoding accuracy is the platform's strength.
 
 ---
+
+
+---
+
+### 2026-03-10: Context-layered subjects need historical-skills topics connected to the content graph
+
+**Source:** User session — Plan 018 Phase 5
+**Area:** Content / knowledge graph design
+
+When designing context-layered subjects (history), foundational skill topics (e.g., "primary sources intro", "cause and effect", "historical perspectives") tend to be created as standalone nodes disconnected from the chronological content graph. The graph validator flags these as orphans. These skill topics MUST have `recommended` edges pointing INTO the content topics that use those skills (e.g., `cause-and-effect-in-history` → `causes-of-revolution`). Without these edges, the skill topics are unreachable in the frontier and never served to learners.
+
+**Context:** Applies to any context-layered subject where methodological/analytical skill topics sit alongside content topics. The skill topics are prerequisites for deeper analysis but not for survey-depth content — use `recommended` edges, not `required`.

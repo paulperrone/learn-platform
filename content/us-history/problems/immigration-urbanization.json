@@ -1,0 +1,67 @@
+[
+  {
+    "id": "immigration-urbanization-p1",
+    "topicId": "immigration-urbanization",
+    "difficulty": "easy",
+    "question": "What famous processing station in New York Harbor did millions of immigrants pass through when arriving in the United States?",
+    "answer": "Ellis Island",
+    "hints": [
+      "This island is located near the Statue of Liberty."
+    ],
+    "solution": "Ellis Island served as the main immigration processing station from 1892 to 1954. Over 12 million immigrants entered the United States through Ellis Island.",
+    "cognitiveDemand": "recall",
+    "source": "hand-authored"
+  },
+  {
+    "id": "immigration-urbanization-p2",
+    "topicId": "immigration-urbanization",
+    "difficulty": "easy",
+    "question": "What term describes the reasons that drove people to leave their home countries, such as poverty or persecution?",
+    "answer": "Push factors",
+    "hints": [
+      "Think of what 'pushed' people away from where they lived."
+    ],
+    "solution": "Push factors are conditions that drive people to leave their home countries. Common push factors included poverty, famine, religious persecution, and lack of opportunity.",
+    "cognitiveDemand": "recall",
+    "source": "hand-authored"
+  },
+  {
+    "id": "immigration-urbanization-p3",
+    "topicId": "immigration-urbanization",
+    "difficulty": "medium",
+    "question": "Many immigrants settled in neighborhoods with people from the same country, creating areas like \"Little Italy\" or \"Chinatown.\" Why did immigrants tend to settle near others from their homeland?",
+    "answer": "Shared language, culture, and mutual support made adjusting to a new country easier.",
+    "hints": [
+      "Think about the challenges of arriving in a country where you don't speak the language."
+    ],
+    "solution": "Immigrants settled near people who shared their language and customs because it provided a support network. Neighbors could help find jobs, translate, and maintain familiar traditions while adapting to American life.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "immigration-urbanization-p4",
+    "topicId": "immigration-urbanization",
+    "difficulty": "medium",
+    "question": "What were tenements, and why were they a problem in growing American cities?",
+    "answer": "Overcrowded, poorly built apartment buildings with unsafe and unsanitary conditions.",
+    "hints": [
+      "Think about what happens when too many people move to a city and housing hasn't kept up."
+    ],
+    "solution": "Tenements were cheaply built, overcrowded apartment buildings where many immigrant families lived. They had poor ventilation, limited plumbing, and were fire hazards. Reformers like Jacob Riis documented these conditions to push for housing laws.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "immigration-urbanization-p5",
+    "topicId": "immigration-urbanization",
+    "difficulty": "hard",
+    "question": "Immigrants faced both \"push factors\" driving them from home and \"pull factors\" attracting them to America. Give one example of each and explain how they worked together to cause immigration.",
+    "answer": "Push: famine or persecution at home. Pull: jobs and freedom in America. Together they made leaving worthwhile despite the difficult journey.",
+    "hints": [
+      "Push factors are bad conditions at home; pull factors are good things America offered."
+    ],
+    "solution": "A push factor like the Irish Potato Famine made staying home dangerous, while a pull factor like factory jobs in American cities offered hope for a better life. When conditions at home were desperate and America offered opportunity, millions chose to make the difficult journey across the ocean.",
+    "cognitiveDemand": "analysis",
+    "source": "hand-authored"
+  }
+]

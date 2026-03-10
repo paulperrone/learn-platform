@@ -1,0 +1,64 @@
+[
+  {
+    "id": "causes-of-civil-war-ex1",
+    "topicId": "causes-of-civil-war",
+    "title": "How the Slavery Debate Tore the Nation Apart",
+    "steps": [
+      {
+        "subgoalLabel": "Understand the core disagreement",
+        "instruction": "What was the fundamental issue dividing the North and South by the mid-1800s?",
+        "work": "The central issue was slavery — specifically, whether slavery would be allowed in the new western territories. The South depended on slavery economically and wanted to expand it. The North was increasingly against slavery's spread, though many Northerners were not yet calling for abolition everywhere.",
+        "explanation": "The fight wasn't just about morality — it was about power. If new states were free, the North would dominate Congress. If they were slave states, the South would maintain equal power. Control of the territories meant control of the nation's future."
+      },
+      {
+        "subgoalLabel": "Trace the failed compromises",
+        "instruction": "Congress tried multiple times to compromise on slavery in the territories. What were the key attempts?",
+        "work": "The Missouri Compromise (1820) drew a line across the territories: slavery allowed below it, banned above it. The Compromise of 1850 admitted California as a free state but added the harsh Fugitive Slave Act. The Kansas-Nebraska Act (1854) let settlers in new territories vote on slavery, leading to violent conflict known as 'Bleeding Kansas.'",
+        "explanation": "Each compromise was a temporary fix that created new problems. The Missouri Compromise held for 30 years, but when it was overturned by Kansas-Nebraska, the political system lost its ability to manage the slavery question peacefully."
+      },
+      {
+        "subgoalLabel": "See how political parties fractured",
+        "instruction": "How did the slavery debate destroy existing political parties and create new ones?",
+        "work": "The Whig Party collapsed because it couldn't hold together Northern and Southern members who disagreed on slavery. The Republican Party was founded in 1854 specifically to oppose slavery's expansion into the territories. The Democratic Party split into Northern and Southern factions.",
+        "explanation": "When political parties can no longer bridge divisions, the political system breaks down. The Republicans' rise as a purely Northern party meant the South felt it had no voice in the political system."
+      },
+      {
+        "subgoalLabel": "Connect Lincoln's election to secession",
+        "instruction": "Why did Abraham Lincoln's election in 1860 trigger the breakup of the Union?",
+        "work": "Lincoln won without carrying a single Southern state. He opposed slavery's expansion but didn't call for abolishing it where it existed. Even so, Southern states saw his election as proof they had lost control of the federal government. South Carolina seceded in December 1860, and six more states followed before Lincoln took office.",
+        "explanation": "The South seceded not because Lincoln planned to end slavery immediately, but because they saw the political trend moving against them. They chose to leave the Union rather than accept a future where they couldn't expand slavery."
+      }
+    ]
+  },
+  {
+    "id": "causes-of-civil-war-ex2",
+    "topicId": "causes-of-civil-war",
+    "title": "States' Rights, Sectionalism, and the Road to War",
+    "steps": [
+      {
+        "subgoalLabel": "Examine the states' rights argument",
+        "instruction": "Southern leaders argued the war was about 'states' rights.' What did they mean, and what right were they primarily defending?",
+        "work": "Southern leaders argued that states had the right to govern themselves and could leave (secede from) the Union if the federal government overstepped. But the specific right they were defending was the right to own enslaved people. Confederate Vice President Alexander Stephens said the Confederacy's 'cornerstone' was the belief that Black people were not equal to whites.",
+        "explanation": "While states' rights was the legal framework, the right in question was slavery. The Southern states' own secession declarations make this clear — they explicitly named the preservation of slavery as their reason for leaving."
+      },
+      {
+        "subgoalLabel": "Understand economic sectionalism",
+        "instruction": "How had the North and South developed into two very different economies?",
+        "work": "The North had industrialized: factories, railroads, wage laborers, and growing cities. The South remained agricultural: plantations, cotton, and enslaved labor. These different economies created different interests — the North wanted tariffs to protect factories, while the South wanted free trade to sell cotton abroad cheaply.",
+        "explanation": "Economic differences reinforced the divide. The two regions had developed such different ways of life that they increasingly saw each other's interests as threats to their own survival."
+      },
+      {
+        "subgoalLabel": "See how violence foreshadowed war",
+        "instruction": "Before the war officially began, where did violence over slavery already break out?",
+        "work": "'Bleeding Kansas' (1854-1858) saw pro-slavery and anti-slavery settlers fighting and killing each other over whether Kansas would be slave or free. In 1856, a Southern congressman beat Senator Charles Sumner nearly to death on the Senate floor for an anti-slavery speech. John Brown's raid at Harpers Ferry (1859) attempted to start a slave revolt by seizing a federal arsenal.",
+        "explanation": "These episodes showed that the political system could no longer contain the conflict. When people resort to violence over political disagreements, war becomes likely."
+      },
+      {
+        "subgoalLabel": "Identify the final trigger",
+        "instruction": "What event started the actual fighting?",
+        "work": "After Lincoln's inauguration in March 1861, the federal government still held Fort Sumter in Charleston Harbor, South Carolina. When Lincoln tried to resupply the fort, Confederate forces bombarded it on April 12, 1861. The attack on Fort Sumter unified the North and prompted four more slave states to join the Confederacy.",
+        "explanation": "Fort Sumter turned the political crisis into a military one. The Confederate attack on a federal fort forced both sides to choose: accept the breakup of the Union or fight to preserve it."
+      }
+    ]
+  }
+]

@@ -1,0 +1,67 @@
+[
+  {
+    "id": "vietnam-war-p1",
+    "topicId": "vietnam-war",
+    "difficulty": "easy",
+    "question": "Why did the United States get involved in the Vietnam War?",
+    "answer": "To prevent South Vietnam from falling to communism (containment policy).",
+    "hints": [
+      "Think about the Cold War strategy of stopping communism from spreading."
+    ],
+    "solution": "The US entered the Vietnam War to prevent communist North Vietnam from taking over South Vietnam. Under the domino theory, American leaders feared that if one Southeast Asian country fell to communism, neighboring countries would follow. US involvement escalated from advisors in the 1950s to combat troops by 1965.",
+    "cognitiveDemand": "recall",
+    "source": "hand-authored"
+  },
+  {
+    "id": "vietnam-war-p2",
+    "topicId": "vietnam-war",
+    "difficulty": "easy",
+    "question": "What happened in 1975 that marked the end of the Vietnam War?",
+    "answer": "The Fall of Saigon — North Vietnam captured South Vietnam's capital.",
+    "hints": [
+      "The capital city of South Vietnam was taken over, and the last Americans were evacuated by helicopter."
+    ],
+    "solution": "On April 30, 1975, North Vietnamese forces captured Saigon, the capital of South Vietnam. The remaining Americans and some South Vietnamese allies were evacuated by helicopter in a chaotic retreat. Vietnam was reunified under communist rule, and Saigon was renamed Ho Chi Minh City.",
+    "cognitiveDemand": "recall",
+    "source": "hand-authored"
+  },
+  {
+    "id": "vietnam-war-p3",
+    "topicId": "vietnam-war",
+    "difficulty": "medium",
+    "question": "What was the draft, and why did it cause widespread protests during the Vietnam War?",
+    "answer": "The government required young men to serve in the military. Many opposed being forced to fight in a war they considered unjust.",
+    "hints": [
+      "Think about how Americans would react to being required by law to go fight in an unpopular war overseas."
+    ],
+    "solution": "The draft (Selective Service) required young men to register and potentially serve in the military. During Vietnam, the draft forced many reluctant Americans into combat. Protests erupted because many believed the war was unjust, the draft unfairly targeted lower-income Americans, and college students could receive deferments that working-class men could not.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "vietnam-war-p4",
+    "topicId": "vietnam-war",
+    "difficulty": "medium",
+    "question": "How did media coverage of the Vietnam War differ from coverage of earlier American wars?",
+    "answer": "Television brought uncensored combat footage into American living rooms for the first time.",
+    "hints": [
+      "Think about what new technology existed in the 1960s that let people see the war in a way they never had before."
+    ],
+    "solution": "Vietnam was called the first 'living room war' because television reporters filmed actual combat and its aftermath, broadcasting it into American homes. Unlike previous wars with heavily censored coverage, Americans saw the reality of battle, wounded soldiers, and civilian suffering. This graphic coverage turned public opinion against the war.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "vietnam-war-p5",
+    "topicId": "vietnam-war",
+    "difficulty": "hard",
+    "question": "The Vietnam War created deep divisions in American society. How did the war change Americans' trust in their government?",
+    "answer": "Government deceptions like the Pentagon Papers eroded public trust and created lasting skepticism about official statements on war.",
+    "hints": [
+      "Think about what happened when Americans learned their government had not been honest about the war's progress and reasons."
+    ],
+    "solution": "The Vietnam War severely damaged Americans' trust in government. Officials repeatedly claimed the war was being won while reality told a different story. The Pentagon Papers (1971) revealed that the government had systematically deceived the public about the war. Combined with the credibility gap, Vietnam contributed to a lasting skepticism toward government that was further deepened by Watergate.",
+    "cognitiveDemand": "analysis",
+    "source": "hand-authored"
+  }
+]

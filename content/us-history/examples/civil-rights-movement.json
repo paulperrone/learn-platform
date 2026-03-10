@@ -1,0 +1,58 @@
+[
+  {
+    "id": "civil-rights-movement-ex1",
+    "topicId": "civil-rights-movement",
+    "title": "The Fight to End Segregation",
+    "steps": [
+      {
+        "subgoalLabel": "Describe the problem",
+        "instruction": "What was life like for Black Americans under segregation?",
+        "work": "After Reconstruction ended in 1877, Southern states passed 'Jim Crow' laws enforcing racial segregation. Black and white people were separated in schools, restaurants, buses, drinking fountains, and virtually all public spaces. Black facilities were always inferior. The Supreme Court upheld segregation in Plessy v. Ferguson (1896) with the 'separate but equal' doctrine. Violence, including lynching, enforced white supremacy.",
+        "explanation": "Understanding the depth and brutality of segregation is essential to understanding why the Civil Rights Movement was necessary and why it required such courage."
+      },
+      {
+        "subgoalLabel": "Identify the early turning points",
+        "instruction": "What events in the 1950s began to challenge segregation?",
+        "work": "Brown v. Board of Education (1954): The Supreme Court ruled school segregation unconstitutional, overturning Plessy. Rosa Parks and the Montgomery Bus Boycott (1955-1956): After Parks refused to give up her bus seat, Black residents boycotted the bus system for over a year. The boycott succeeded and brought Martin Luther King Jr. to national attention. The Little Rock Nine (1957): Nine Black students integrated a high school in Arkansas, protected by federal troops.",
+        "explanation": "The movement combined legal challenges (courts), direct action (boycotts, sit-ins), and moral courage. Each victory inspired the next action."
+      },
+      {
+        "subgoalLabel": "Describe the movement's peak",
+        "instruction": "What were the major events of the early 1960s?",
+        "work": "Sit-ins at segregated lunch counters spread across the South (1960). Freedom Riders challenged segregation on interstate buses (1961). The March on Washington (1963) drew 250,000 people and featured King's 'I Have a Dream' speech. The Birmingham campaign used nonviolent protest against violent police response — images of fire hoses and police dogs turned on peaceful protesters shocked the nation.",
+        "explanation": "The movement's strategy of nonviolent resistance exposed the injustice of segregation to the nation and the world. Television broadcast the violence against peaceful protesters into American living rooms, building support for change."
+      },
+      {
+        "subgoalLabel": "Identify the legislative victories",
+        "instruction": "What laws resulted from the movement?",
+        "work": "The Civil Rights Act of 1964 banned discrimination in public places and employment. The Voting Rights Act of 1965 outlawed practices that prevented Black people from voting (like literacy tests). The 24th Amendment (1964) banned poll taxes. These laws dismantled the legal framework of segregation.",
+        "explanation": "These laws were hard-won achievements that changed the legal landscape of America. They did not end racism, but they ended legal segregation and protected voting rights — transforming American society."
+      }
+    ]
+  },
+  {
+    "id": "civil-rights-movement-ex2",
+    "topicId": "civil-rights-movement",
+    "title": "Leaders and Strategies of the Movement",
+    "steps": [
+      {
+        "subgoalLabel": "Examine the nonviolent approach",
+        "instruction": "Why did Martin Luther King Jr. and others choose nonviolent protest?",
+        "work": "King was inspired by Mahatma Gandhi's nonviolent resistance in India and by Christian teachings about love and justice. The strategy was deliberate: peaceful protesters would expose the violence and injustice of segregation. When protesters were beaten on TV, it forced the rest of the country to confront the reality of racism. King argued that nonviolence held the moral high ground.",
+        "explanation": "Nonviolence was not passivity — it was a powerful strategic choice. It required extraordinary discipline and courage to face violence without fighting back."
+      },
+      {
+        "subgoalLabel": "Recognize diverse leadership",
+        "instruction": "Who else led the movement beyond King?",
+        "work": "Ella Baker organized grassroots activists and helped found SNCC (Student Nonviolent Coordinating Committee). John Lewis led the Freedom Rides and was nearly killed on 'Bloody Sunday' in Selma. Fannie Lou Hamer fought for voting rights in Mississippi despite being beaten and jailed. Medgar Evers organized NAACP efforts in Mississippi until his assassination in 1963. Thurgood Marshall argued Brown v. Board before the Supreme Court.",
+        "explanation": "The Civil Rights Movement was not the work of one person. It was powered by thousands of ordinary people showing extraordinary courage — organizers, students, parents, and community leaders across the South."
+      },
+      {
+        "subgoalLabel": "Note different perspectives within the movement",
+        "instruction": "Did all civil rights leaders agree on strategy?",
+        "work": "No. Malcolm X and the Nation of Islam initially rejected integration and nonviolence, arguing for Black self-defense and self-determination. The Black Power movement (Stokely Carmichael, Black Panthers) emphasized racial pride and community control rather than appealing to white sympathy. These differing approaches reflected real debates about the best path forward.",
+        "explanation": "The movement was not monolithic. Different leaders and organizations had different visions — but all shared the goal of Black freedom and dignity. Understanding these debates helps us see the full complexity of the struggle."
+      }
+    ]
+  }
+]

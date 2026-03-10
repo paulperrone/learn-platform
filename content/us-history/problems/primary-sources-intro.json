@@ -1,0 +1,68 @@
+[
+  {
+    "id": "primary-sources-intro-p1",
+    "topicId": "primary-sources-intro",
+    "difficulty": "easy",
+    "question": "What is a primary source?",
+    "answer": "A firsthand account or original document from the time period being studied",
+    "hints": [
+      "Think about the difference between hearing a story directly from someone who was there versus reading about it later."
+    ],
+    "solution": "A primary source is a firsthand account or original document created during the time period being studied. Examples include diaries, letters, photographs, speeches, and official records. Primary sources give us direct evidence about the past from people who experienced events themselves.",
+    "cognitiveDemand": "recall",
+    "source": "hand-authored"
+  },
+  {
+    "id": "primary-sources-intro-p2",
+    "topicId": "primary-sources-intro",
+    "difficulty": "easy",
+    "question": "Which of these is a primary source: (A) a textbook chapter about the American Revolution, (B) a letter written by a soldier during the American Revolution, or (C) a documentary film about the American Revolution?",
+    "answer": "B",
+    "hints": [
+      "A primary source was created by someone who was actually there during the event."
+    ],
+    "solution": "The letter written by a soldier during the American Revolution (B) is the primary source because it was created by someone who experienced the events firsthand. The textbook and documentary are secondary sources — they were created later by people who studied the events but were not there.",
+    "cognitiveDemand": "recall",
+    "source": "hand-authored"
+  },
+  {
+    "id": "primary-sources-intro-p3",
+    "topicId": "primary-sources-intro",
+    "difficulty": "medium",
+    "question": "A historian finds a colonial merchant's account book listing goods bought and sold in 1750. What kind of information could this primary source tell us that a secondary source might not?",
+    "answer": "Exact prices, specific goods traded, and real daily business details from that time",
+    "hints": [
+      "Think about the specific details an actual merchant would record that a later historian might summarize or leave out."
+    ],
+    "solution": "The merchant's account book would show exact prices, specific products, quantities, names of trading partners, and dates of transactions — precise details about daily economic life in 1750. A secondary source might summarize colonial trade in general terms but would lack these specific, firsthand details. Primary sources preserve the granular reality of the past.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "primary-sources-intro-p4",
+    "topicId": "primary-sources-intro",
+    "difficulty": "medium",
+    "question": "Can a newspaper article be both a primary source and a secondary source? Explain when it would be each.",
+    "answer": "Yes: primary when studying the time it was written, secondary when it reports on earlier events",
+    "hints": [
+      "Think about what time period you are studying. A 1920 newspaper is 'from' 1920, but it might be reporting on something that happened in 1850."
+    ],
+    "solution": "Yes. A newspaper article is a primary source when you are studying the time it was published — it shows what people knew, believed, and reported at that moment. The same article becomes a secondary source if it is reporting on events from an earlier period, because the writer was not a firsthand witness. Context determines whether a source is primary or secondary.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "primary-sources-intro-p5",
+    "topicId": "primary-sources-intro",
+    "difficulty": "hard",
+    "question": "A historian studying colonial slavery has access to plantation owners' diaries and account books, but very few written records from enslaved people themselves. Why might relying only on plantation owners' records give an incomplete picture of slavery?",
+    "answer": "Plantation owners' records reflect the owners' perspective and interests, not the experiences of enslaved people",
+    "hints": [
+      "Think about whose voice is represented and whose is missing.",
+      "Consider whether a slaveholder would record the suffering, resistance, or daily lives of enslaved people accurately."
+    ],
+    "solution": "Plantation owners' records reflect their own perspective — they recorded profits, property, and management concerns, not the lived experiences of enslaved people. These records may minimize suffering, ignore resistance, and treat human beings as property. Without sources from enslaved people themselves (oral histories, narratives, songs), historians get a one-sided view. This is why historians must think critically about whose voices are present and absent in the historical record.",
+    "cognitiveDemand": "analysis",
+    "source": "hand-authored"
+  }
+]

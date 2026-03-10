@@ -1,0 +1,142 @@
+[
+  {
+    "id": "world-war-ii-p1",
+    "topicId": "world-war-ii",
+    "difficulty": "easy",
+    "question": "What event on December 7, 1941, caused the United States to enter World War II?",
+    "answer": "The Japanese attack on Pearl Harbor",
+    "hints": [
+      "Japan launched a surprise military strike on a US naval base in Hawaii."
+    ],
+    "solution": "On December 7, 1941, Japan launched a surprise attack on the US naval base at Pearl Harbor, Hawaii, destroying ships and killing over 2,400 Americans. The next day, Congress declared war on Japan, and the US entered World War II.",
+    "cognitiveDemand": "recall",
+    "source": "hand-authored"
+  },
+  {
+    "id": "world-war-ii-p2",
+    "topicId": "world-war-ii",
+    "difficulty": "easy",
+    "question": "What was D-Day?",
+    "answer": "The Allied invasion of Normandy, France, on June 6, 1944.",
+    "hints": [
+      "This was the largest seaborne invasion in history, launched across the English Channel."
+    ],
+    "solution": "D-Day, June 6, 1944, was the Allied invasion of Nazi-occupied France at Normandy. Over 150,000 troops landed on five beaches in the largest amphibious assault in history. It marked the beginning of the liberation of Western Europe from Nazi control.",
+    "cognitiveDemand": "recall",
+    "source": "hand-authored"
+  },
+  {
+    "id": "world-war-ii-p3",
+    "topicId": "world-war-ii",
+    "difficulty": "medium",
+    "question": "During World War II, American factories shifted from making consumer goods to producing war materials. How did this transformation help end the Great Depression?",
+    "answer": "War production created millions of jobs and ended mass unemployment.",
+    "hints": [
+      "Think about what happened to unemployment when every factory started making tanks, planes, and weapons."
+    ],
+    "solution": "The wartime industrial mobilization created enormous demand for workers in factories, shipyards, and military service. Unemployment virtually disappeared as millions found work producing weapons, vehicles, and supplies. Women and minorities entered the workforce in unprecedented numbers. The war spending finally ended the economic stagnation of the Depression.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "world-war-ii-p4",
+    "topicId": "world-war-ii",
+    "difficulty": "medium",
+    "question": "What was the Holocaust?",
+    "answer": "The systematic murder of six million Jews and millions of others by Nazi Germany.",
+    "hints": [
+      "The Nazi regime carried out genocide — the deliberate killing of an entire group of people."
+    ],
+    "solution": "The Holocaust was the Nazi regime's systematic, state-sponsored persecution and murder of six million Jews, along with millions of Roma, disabled people, political prisoners, and others deemed 'undesirable.' Victims were sent to concentration and extermination camps. The Holocaust stands as one of history's greatest atrocities.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "world-war-ii-p5",
+    "topicId": "world-war-ii",
+    "difficulty": "hard",
+    "question": "President Truman decided to drop atomic bombs on Hiroshima and Nagasaki in August 1945. What was his stated reason for this decision, and what consequence did it have for the post-war world?",
+    "answer": "He aimed to end the war quickly and avoid a costly invasion of Japan. It launched the nuclear arms race.",
+    "hints": [
+      "Think about the alternative to using the bomb (invading Japan) and what it meant that this weapon now existed."
+    ],
+    "solution": "Truman argued that dropping the atomic bombs would force Japan's quick surrender and avoid a land invasion that military planners estimated could cost hundreds of thousands of American and Japanese lives. Japan surrendered days after the bombings. However, the use of nuclear weapons ushered in the atomic age and set the stage for the nuclear arms race between the US and Soviet Union during the Cold War.",
+    "cognitiveDemand": "analysis",
+    "source": "hand-authored"
+  },
+  {
+    "id": "world-war-ii-ctx-p1",
+    "topicId": "world-war-ii",
+    "difficulty": "easy",
+    "contentDepth": "contextual",
+    "question": "Before Pearl Harbor, most Americans opposed entering World War II. What factors had kept the US out of the war from 1939 to 1941, and why did Pearl Harbor change public opinion so dramatically?",
+    "answer": "Americans remembered the costly losses of World War I and wanted to avoid another European war. Isolationist sentiment and the Neutrality Acts kept the US officially neutral. Pearl Harbor changed everything because it was a direct attack on American soil — it transformed the war from a distant European conflict into a personal threat.",
+    "hints": [
+      "Think about how Americans felt about World War I and why they did not want to repeat it.",
+      "Consider the difference between hearing about a war overseas versus being attacked at home."
+    ],
+    "solution": "The memory of World War I's devastating casualties created strong isolationist sentiment in the 1930s. Congress passed Neutrality Acts to prevent entanglement in foreign wars. Many Americans viewed the European conflict as not their problem. While FDR supported the Allies through programs like Lend-Lease, he could not overcome public opposition to entering the war directly. Pearl Harbor shattered isolationism overnight because it was an unprovoked attack on American territory that killed thousands. The attack unified the country around a war that now felt personal and defensive rather than a choice to intervene abroad.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "world-war-ii-ctx-p2",
+    "topicId": "world-war-ii",
+    "difficulty": "easy",
+    "contentDepth": "contextual",
+    "question": "During WWII, over 120,000 Japanese Americans were forcibly relocated to internment camps. What motivated this policy, and why is it considered a civil rights violation?",
+    "answer": "Fear and racial prejudice after Pearl Harbor led the government to assume Japanese Americans were disloyal. It was a civil rights violation because citizens were imprisoned without evidence of wrongdoing, solely based on their ethnicity.",
+    "hints": [
+      "Think about why Japanese Americans were targeted but German Americans and Italian Americans were not treated the same way.",
+      "Consider what rights were violated when people were imprisoned without charges or trials."
+    ],
+    "solution": "After Pearl Harbor, wartime hysteria and longstanding anti-Asian racism led to Executive Order 9066, which forced Japanese Americans — two-thirds of whom were US citizens — into internment camps. No evidence of disloyalty was required. German and Italian Americans faced no equivalent policy, revealing that racial prejudice drove the decision more than genuine security concerns. Japanese Americans lost homes, businesses, and years of their lives. In 1988, the US government formally apologized and paid reparations, acknowledging the internment as a grave injustice driven by 'race prejudice, war hysteria, and a failure of political leadership.'",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "world-war-ii-ctx-p3",
+    "topicId": "world-war-ii",
+    "difficulty": "medium",
+    "contentDepth": "contextual",
+    "question": "WWII opened new opportunities for women and African Americans in the workforce. Explain how the war changed their roles and why many of those gains were reversed after the war ended.",
+    "answer": "Labor shortages during the war led to women working in factories ('Rosie the Riveter') and African Americans filling industrial jobs previously denied to them. After the war, returning soldiers reclaimed these jobs, and social pressure pushed women back into domestic roles. However, the experience of wartime work planted seeds for the civil rights and women's movements.",
+    "hints": [
+      "Think about who filled factory jobs when millions of men went overseas to fight.",
+      "Consider what happened when those men came home and wanted their jobs back."
+    ],
+    "solution": "With 16 million men in military service, factories desperately needed workers. Women took on industrial jobs symbolized by 'Rosie the Riveter,' proving they could do work previously considered men-only. African Americans migrated to northern and western cities for defense industry jobs (the Second Great Migration), though they still faced discrimination and segregation. After the war, social and economic pressure pushed women back into homemaking, and many Black workers lost ground as returning veterans reclaimed jobs. Yet the wartime experience was transformative: women had tasted economic independence, and Black veterans returned unwilling to accept second-class citizenship, fueling the civil rights movement of the 1950s and 1960s.",
+    "cognitiveDemand": "analysis",
+    "source": "hand-authored"
+  },
+  {
+    "id": "world-war-ii-ctx-p4",
+    "topicId": "world-war-ii",
+    "difficulty": "medium",
+    "contentDepth": "contextual",
+    "question": "Why did the United States and the Soviet Union, allies during WWII, become rivals almost immediately after the war ended?",
+    "answer": "They had opposed ideologies (capitalism vs. communism) and had only allied against a common enemy. Once Nazi Germany was defeated, their competing visions for post-war Europe — the US wanting democratic capitalist nations and the Soviets wanting communist buffer states — brought their fundamental differences to the surface.",
+    "hints": [
+      "Think about what held the alliance together and what happened when that common enemy was gone.",
+      "Consider what each side wanted for the countries they had liberated in Europe."
+    ],
+    "solution": "The US-Soviet alliance was always one of convenience against a shared threat. The two nations had fundamentally incompatible systems: the US championed capitalism, democracy, and open markets; the Soviet Union promoted communism, one-party rule, and state control. During the war, defeating Hitler took priority. After victory, they clashed over the future of Europe. The Soviets installed communist governments in Eastern Europe as a buffer against future invasion. The US saw this as aggressive expansion. Disagreements over Germany's future, nuclear weapons, and spheres of influence quickly hardened into the Cold War rivalry that would define the next four decades.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "world-war-ii-ctx-p5",
+    "topicId": "world-war-ii",
+    "difficulty": "hard",
+    "contentDepth": "contextual",
+    "question": "The GI Bill (1944) is considered one of the most transformative laws in American history. Explain how it reshaped American society after WWII — and why its benefits were not shared equally across racial lines.",
+    "answer": "The GI Bill paid for veterans' college education, offered low-interest home loans, and provided business loans, creating a massive expansion of the middle class. However, Black veterans were largely shut out because colleges could reject them, banks in segregated areas denied their loans, and suburban developments excluded Black families, widening the racial wealth gap.",
+    "hints": [
+      "Think about what it meant for millions of working-class men to suddenly afford college and homeownership.",
+      "Consider how segregation and discrimination affected who actually received these benefits."
+    ],
+    "solution": "The GI Bill gave nearly 8 million veterans access to free college education, low-interest mortgages, and business loans. It transformed America by creating a massive, educated middle class, fueling suburban growth, and driving economic prosperity. However, the benefits were administered locally, allowing racial discrimination to persist. Many colleges refused Black applicants, banks redlined Black neighborhoods to deny mortgages, and suburban developments like Levittown explicitly banned Black families. While white veterans used the GI Bill to build wealth through education and homeownership, Black veterans were systematically excluded from the same opportunities. This unequal implementation widened the racial wealth gap, with effects that persist generations later.",
+    "cognitiveDemand": "analysis",
+    "source": "hand-authored"
+  }
+]

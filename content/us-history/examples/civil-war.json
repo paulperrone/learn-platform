@@ -1,0 +1,64 @@
+[
+  {
+    "id": "civil-war-ex1",
+    "topicId": "civil-war",
+    "title": "How the Union Won the Civil War",
+    "steps": [
+      {
+        "subgoalLabel": "Compare the two sides' advantages",
+        "instruction": "At the start of the war in 1861, what advantages did the Union (North) and the Confederacy (South) each have?",
+        "work": "The Union had 22 million people vs. the Confederacy's 9 million (including 3.5 million enslaved people). The Union had most of the factories, railroads, and financial resources. The Confederacy had the advantage of fighting a defensive war on home territory, experienced military officers (like Robert E. Lee), and high motivation to defend their way of life.",
+        "explanation": "The Union's advantages in population and industry meant it could fight a long war. The South needed to win quickly or convince the North that the war wasn't worth fighting — a long war favored the Union."
+      },
+      {
+        "subgoalLabel": "Understand the Union's strategy",
+        "instruction": "What was the Union's plan to defeat the Confederacy?",
+        "work": "The 'Anaconda Plan' had three parts: 1) Blockade Southern ports to cut off trade and supplies. 2) Control the Mississippi River to split the Confederacy in two. 3) Capture the Confederate capital, Richmond, Virginia. The plan worked slowly — the blockade tightened over years, and Grant captured Vicksburg (controlling the Mississippi) in July 1863.",
+        "explanation": "The Union strategy was to strangle the Confederacy economically while dividing and conquering its territory. It wasn't flashy, but it used the Union's strengths — naval power and industrial capacity — effectively."
+      },
+      {
+        "subgoalLabel": "Identify the turning point",
+        "instruction": "What battle is considered the turning point of the war?",
+        "work": "The Battle of Gettysburg (July 1-3, 1863) in Pennsylvania was the turning point. Lee invaded the North hoping a major victory would break Union morale. Instead, Union forces won after three days of brutal fighting, with about 50,000 total casualties. Lee retreated to Virginia and never invaded the North again.",
+        "explanation": "Gettysburg and Vicksburg (which fell the next day) together marked the moment the war shifted permanently in the Union's favor. The South lost its best chance to win and was now on the defensive."
+      },
+      {
+        "subgoalLabel": "See how the war ended",
+        "instruction": "How did the final year of the war unfold?",
+        "work": "General Grant pressed Lee's army in Virginia through constant fighting, while General Sherman marched through Georgia and the Carolinas, destroying infrastructure. The South ran out of men, food, and supplies. Lee surrendered to Grant at Appomattox Court House on April 9, 1865. Five days later, President Lincoln was assassinated.",
+        "explanation": "The Union won by wearing down the Confederacy through relentless military pressure and economic strangulation. The war ended slavery but cost over 600,000 lives — more American deaths than any other war in U.S. history."
+      }
+    ]
+  },
+  {
+    "id": "civil-war-ex2",
+    "topicId": "civil-war",
+    "title": "The Emancipation Proclamation and the War's Meaning",
+    "steps": [
+      {
+        "subgoalLabel": "Understand why Lincoln didn't free enslaved people immediately",
+        "instruction": "Lincoln personally opposed slavery, but he didn't issue the Emancipation Proclamation until 1863 — nearly two years into the war. Why did he wait?",
+        "work": "Lincoln's top priority was preserving the Union, not ending slavery. Four slave states (Missouri, Kentucky, Maryland, Delaware) had stayed in the Union, and freeing enslaved people too early might push them to join the Confederacy. He waited until the Union had a military victory (Antietam, September 1862) to issue the Proclamation from a position of strength.",
+        "explanation": "Lincoln's timing was strategic. He needed to keep the border states loyal and frame emancipation as a military necessity, not just a moral crusade. Politics and principle were intertwined."
+      },
+      {
+        "subgoalLabel": "Examine what the Proclamation actually did",
+        "instruction": "What did the Emancipation Proclamation (January 1, 1863) say, and what were its limits?",
+        "work": "The Proclamation declared that all enslaved people in Confederate states were 'forever free.' However, it did NOT free enslaved people in the border states that had stayed loyal to the Union. It also could only be enforced where the Union army advanced and took control.",
+        "explanation": "The Proclamation was limited in scope — it freed enslaved people only in places where the Union didn't yet have control. But its symbolic and practical impact was enormous: it transformed the war into a fight to end slavery."
+      },
+      {
+        "subgoalLabel": "See the Proclamation's real-world impact",
+        "instruction": "Even with its limits, how did the Emancipation Proclamation change the war?",
+        "work": "It allowed Black men to enlist in the Union army — about 180,000 served by war's end. It discouraged Britain and France from supporting the Confederacy (they couldn't back a pro-slavery side after the North made the war about freedom). Enslaved people in the South left plantations in growing numbers whenever Union forces approached.",
+        "explanation": "The Proclamation changed what the war was about. Before it, the Union fought to preserve the nation. After it, the Union fought to preserve the nation AND end slavery. This gave the war a moral purpose that strengthened Northern resolve."
+      },
+      {
+        "subgoalLabel": "Connect to the permanent end of slavery",
+        "instruction": "The Proclamation was a wartime order. How was slavery permanently ended?",
+        "work": "The 13th Amendment to the Constitution, ratified in December 1865, permanently abolished slavery everywhere in the United States. Unlike the Proclamation, the amendment was a permanent part of the Constitution and applied to all states, including the border states.",
+        "explanation": "Lincoln pushed for the 13th Amendment because he knew a wartime proclamation could be reversed after the war. The amendment made abolition permanent and constitutional — no future president or court could undo it."
+      }
+    ]
+  }
+]

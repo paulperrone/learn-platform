@@ -1,0 +1,67 @@
+[
+  {
+    "id": "world-war-i-p1",
+    "topicId": "world-war-i",
+    "difficulty": "easy",
+    "question": "What event in 1914 triggered the start of World War I?",
+    "answer": "The assassination of Archduke Franz Ferdinand",
+    "hints": [
+      "An important leader from Austria-Hungary was killed in Sarajevo."
+    ],
+    "solution": "The assassination of Archduke Franz Ferdinand of Austria-Hungary in Sarajevo on June 28, 1914, set off a chain reaction of alliance obligations that pulled European nations into war.",
+    "cognitiveDemand": "recall",
+    "source": "hand-authored"
+  },
+  {
+    "id": "world-war-i-p2",
+    "topicId": "world-war-i",
+    "difficulty": "easy",
+    "question": "What was the name of the peace treaty that ended World War I?",
+    "answer": "Treaty of Versailles",
+    "hints": [
+      "It was signed in 1919 at a famous palace in France."
+    ],
+    "solution": "The Treaty of Versailles was signed on June 28, 1919, officially ending World War I. It imposed harsh penalties on Germany, including war guilt, territorial losses, and heavy reparations.",
+    "cognitiveDemand": "recall",
+    "source": "hand-authored"
+  },
+  {
+    "id": "world-war-i-p3",
+    "topicId": "world-war-i",
+    "difficulty": "medium",
+    "question": "The United States stayed neutral for the first years of World War I. Name one event that helped push the US to enter the war in 1917.",
+    "answer": "Unrestricted German submarine warfare or the Zimmermann Telegram",
+    "hints": [
+      "Think about what Germany did that threatened American lives and what secret message was intercepted."
+    ],
+    "solution": "Two key events pushed America toward war: Germany resumed unrestricted submarine warfare, sinking ships with American passengers, and the Zimmermann Telegram revealed Germany's attempt to ally with Mexico against the US. Together, these turned American public opinion toward entering the war.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "world-war-i-p4",
+    "topicId": "world-war-i",
+    "difficulty": "medium",
+    "question": "World War I introduced new weapons like machine guns, poison gas, and tanks. How did these weapons change the way the war was fought?",
+    "answer": "They made attacks deadly and led to trench warfare where neither side could advance easily.",
+    "hints": [
+      "Think about why soldiers dug trenches instead of charging across open fields."
+    ],
+    "solution": "New weapons made offensive charges across open ground suicidal. Machine guns could mow down advancing troops, so both sides dug elaborate trench systems for protection. This led to a long, deadly stalemate on the Western Front.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "world-war-i-p5",
+    "topicId": "world-war-i",
+    "difficulty": "hard",
+    "question": "The Treaty of Versailles blamed Germany for the war and demanded heavy reparations. Why do many historians argue that this treaty helped cause World War II?",
+    "answer": "The harsh terms humiliated Germany and caused economic hardship, creating conditions that allowed extremists like Hitler to gain power.",
+    "hints": [
+      "Think about how Germans felt about the treaty and what economic conditions resulted from the reparations."
+    ],
+    "solution": "The treaty's war guilt clause and enormous reparations crippled Germany's economy and humiliated its people. Widespread resentment and poverty made Germans receptive to extremist leaders like Adolf Hitler, who promised to restore German pride and overturn the treaty. Many historians see a direct line from Versailles to the rise of Nazism.",
+    "cognitiveDemand": "analysis",
+    "source": "hand-authored"
+  }
+]

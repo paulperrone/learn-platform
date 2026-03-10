@@ -1,0 +1,146 @@
+[
+  {
+    "id": "reconstruction-p1",
+    "topicId": "reconstruction",
+    "difficulty": "easy",
+    "question": "Which three Constitutional amendments were passed during Reconstruction, and what did they do?",
+    "answer": "13th (abolished slavery), 14th (granted citizenship and equal protection), 15th (gave Black men the right to vote)",
+    "hints": [
+      "They are the 13th, 14th, and 15th Amendments.",
+      "Together they are called the Reconstruction Amendments."
+    ],
+    "solution": "The 13th Amendment (1865) abolished slavery throughout the United States. The 14th Amendment (1868) granted citizenship to all people born in the U.S. and guaranteed equal protection under the law. The 15th Amendment (1870) prohibited denying the right to vote based on race. Together, these aimed to secure freedom and rights for formerly enslaved people.",
+    "cognitiveDemand": "recall",
+    "source": "hand-authored"
+  },
+  {
+    "id": "reconstruction-p2",
+    "topicId": "reconstruction",
+    "difficulty": "easy",
+    "question": "What was the Freedmen's Bureau?",
+    "answer": "A federal agency that helped formerly enslaved people with food, housing, education, and legal aid after the Civil War",
+    "hints": [
+      "It was created by the federal government to help people transition out of slavery."
+    ],
+    "solution": "The Freedmen's Bureau was established by Congress in 1865 to assist formerly enslaved people and poor whites in the South. It provided food, clothing, medical care, and legal assistance. One of its greatest achievements was establishing schools, helping hundreds of thousands of Black Americans learn to read and write for the first time.",
+    "cognitiveDemand": "recall",
+    "source": "hand-authored"
+  },
+  {
+    "id": "reconstruction-p3",
+    "topicId": "reconstruction",
+    "difficulty": "medium",
+    "question": "What were 'Black Codes,' and why did Southern states pass them after the Civil War?",
+    "answer": "Laws passed by Southern states to restrict the freedom of formerly enslaved people and force them to work in conditions similar to slavery",
+    "hints": [
+      "Even though slavery was abolished, Southern states found ways to limit Black Americans' freedom.",
+      "These laws controlled where Black people could work, travel, and live."
+    ],
+    "solution": "Black Codes were laws passed by Southern states in 1865–1866 to restrict the rights of formerly enslaved people. They required Black Americans to sign yearly labor contracts, allowed arrest for 'vagrancy' if unemployed, restricted property ownership, and limited where they could live and travel. The codes were designed to maintain white control over Black labor and recreate conditions as close to slavery as legally possible. They were a major reason Congress passed the 14th Amendment and the Reconstruction Acts.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "reconstruction-p4",
+    "topicId": "reconstruction",
+    "difficulty": "medium",
+    "question": "What methods did white Southerners use to prevent Black Americans from voting after the 15th Amendment was passed?",
+    "answer": "Poll taxes, literacy tests, grandfather clauses, and violence or intimidation from groups like the Ku Klux Klan",
+    "hints": [
+      "Even though the law said Black men could vote, there were ways to make it nearly impossible.",
+      "Some methods used legal tricks; others used threats and violence."
+    ],
+    "solution": "Despite the 15th Amendment, Southern states used many tactics to suppress Black voting: poll taxes (fees many couldn't afford), literacy tests (unfairly administered), grandfather clauses (exempting whites whose grandfathers could vote), and outright violence and intimidation by groups like the Ku Klux Klan. These measures effectively disenfranchised most Black voters in the South for nearly a century, until the Voting Rights Act of 1965.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "reconstruction-p5",
+    "topicId": "reconstruction",
+    "difficulty": "hard",
+    "question": "Why did Reconstruction ultimately fail to secure lasting equality for Black Americans in the South?",
+    "answer": "The federal government withdrew troops and enforcement in 1877, allowing Southern states to pass Jim Crow laws that segregated and disenfranchised Black citizens for decades",
+    "hints": [
+      "Think about what happened when the federal government stopped enforcing the new amendments.",
+      "The Compromise of 1877 ended Reconstruction."
+    ],
+    "solution": "Reconstruction made significant gains: constitutional amendments, Black elected officials, and new schools. However, it failed to create lasting equality for several reasons. The Compromise of 1877 removed federal troops from the South, ending enforcement of civil rights protections. Without federal oversight, Southern states enacted Jim Crow laws enforcing racial segregation, used voter suppression tactics to silence Black political power, and tolerated racial violence. Northern political will to protect Black rights faded as other issues took priority. The result was a system of legal segregation and second-class citizenship that lasted until the Civil Rights Movement of the 1950s–1960s.",
+    "cognitiveDemand": "analysis",
+    "source": "hand-authored"
+  },
+  {
+    "id": "reconstruction-ctx-p1",
+    "topicId": "reconstruction",
+    "difficulty": "easy",
+    "contentDepth": "contextual",
+    "question": "Why did President Andrew Johnson's lenient approach to Reconstruction anger Radical Republicans in Congress?",
+    "answer": "Johnson allowed former Confederate leaders to regain power and Southern states to pass Black Codes, which Radical Republicans saw as restoring slavery in everything but name and betraying the purpose of the war.",
+    "hints": [
+      "Think about what Johnson's plan allowed former Confederate states to do.",
+      "Radical Republicans had fought the war partly to secure rights for formerly enslaved people."
+    ],
+    "solution": "Johnson's Reconstruction plan required little of Southern states — no voting rights for Black men, and quick restoration of self-government. Former Confederate officials returned to power, and states immediately passed Black Codes restricting Black freedom. Radical Republicans like Thaddeus Stevens and Charles Sumner saw this as a betrayal: the Union had lost 360,000 soldiers to end slavery, yet Johnson's plan allowed the South to recreate near-slavery conditions. This conflict led Congress to seize control of Reconstruction, pass the 14th Amendment over Johnson's veto, and eventually impeach him. The clash between Johnson and Congress shaped the entire trajectory of Reconstruction.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "reconstruction-ctx-p2",
+    "topicId": "reconstruction",
+    "difficulty": "easy",
+    "contentDepth": "contextual",
+    "question": "Why was land ownership so important to formerly enslaved people, and why did the failure to redistribute land have lasting consequences?",
+    "answer": "Land would have given formerly enslaved people economic independence, making them less vulnerable to exploitation by former slaveholders. Without land, most had no choice but to work for their former owners through sharecropping, which trapped them in cycles of debt and poverty.",
+    "hints": [
+      "Think about what it means to be free but own nothing — no land, no tools, no savings.",
+      "What options did formerly enslaved people have if they couldn't farm their own land?"
+    ],
+    "solution": "Formerly enslaved people understood that true freedom required economic independence, and in an agricultural society, that meant land. Some Reconstruction proposals (like Sherman's 'forty acres and a mule' order) briefly redistributed confiscated Confederate land, but President Johnson reversed these policies and returned land to former slaveholders. Without land, formerly enslaved people were forced into sharecropping — farming someone else's land in exchange for a share of the crop. Landlords controlled the terms, charged inflated prices at company stores, and kept sharecroppers perpetually in debt. This economic dependence undermined political freedom: employers could threaten sharecroppers who tried to vote or assert their rights. The failure to redistribute land is considered one of Reconstruction's most consequential missed opportunities.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "reconstruction-ctx-p3",
+    "topicId": "reconstruction",
+    "difficulty": "medium",
+    "contentDepth": "contextual",
+    "question": "How did the Ku Klux Klan use violence to undermine Reconstruction, and why was the federal government's response both initially effective and ultimately insufficient?",
+    "answer": "The Klan used terrorism — murders, beatings, arson — to prevent Black citizens and white Republicans from voting and holding office. Federal Enforcement Acts (1870-1871) temporarily suppressed the Klan, but the government lacked the long-term political will to sustain military enforcement across the entire South.",
+    "hints": [
+      "Think about how terror can undermine democracy even when the law is on the victims' side.",
+      "Consider why it's difficult to maintain military enforcement over a large region for many years."
+    ],
+    "solution": "The Ku Klux Klan, formed in 1866, used systematic terrorism to destroy Reconstruction from below. They murdered Black elected officials, burned schools and churches, whipped and killed Black voters, and attacked white Republicans who supported racial equality. Their goal was to restore white supremacy by making the cost of political participation lethal. The federal response — the Enforcement Acts and the KKK Act of 1871 — authorized military intervention and prosecution, and President Grant used them aggressively. The Klan was temporarily crushed. However, sustaining this required ongoing military presence and political commitment. As Northern voters grew tired of Reconstruction and focused on economic issues (especially after the Panic of 1873), enforcement weakened. White supremacist violence continued through new organizations like the Red Shirts and White League, and without sustained federal protection, Black political participation collapsed across the South.",
+    "cognitiveDemand": "analysis",
+    "source": "hand-authored"
+  },
+  {
+    "id": "reconstruction-ctx-p4",
+    "topicId": "reconstruction",
+    "difficulty": "medium",
+    "contentDepth": "contextual",
+    "question": "During Reconstruction, Black Americans were elected to local, state, and federal offices for the first time. Why was this political participation so threatening to white Southerners, and what does it reveal about the real stakes of Reconstruction?",
+    "answer": "Black officeholders proved that formerly enslaved people could govern effectively, directly challenging the white supremacist ideology that had justified slavery. This threatened the entire social hierarchy the South was built on, which is why white Southerners used violence and legal manipulation to end Black political power.",
+    "hints": [
+      "Think about what it meant for people who had been enslaved just years earlier to now be making laws.",
+      "Why would slaveholders' descendants find this particularly threatening?"
+    ],
+    "solution": "During Reconstruction, over 1,500 Black men held elected office, including 16 U.S. Congressmen and 2 U.S. Senators. They established public schools, reformed tax systems, and built infrastructure. This was profoundly threatening to white Southerners because it demolished the foundational claim of slavery — that Black people were incapable of self-governance. If formerly enslaved people could legislate, govern, and lead, then the entire justification for the racial hierarchy collapsed. This is why the backlash was so violent and sustained: it wasn't just about political power, but about preserving a worldview. The 'Lost Cause' mythology later distorted Reconstruction by portraying Black officeholders as corrupt and incompetent — a narrative designed to justify their removal and make disenfranchisement seem reasonable rather than unjust.",
+    "cognitiveDemand": "analysis",
+    "source": "hand-authored"
+  },
+  {
+    "id": "reconstruction-ctx-p5",
+    "topicId": "reconstruction",
+    "difficulty": "hard",
+    "contentDepth": "contextual",
+    "question": "The Compromise of 1877 ended Reconstruction by withdrawing federal troops from the South. Explain how Northern economic interests, political exhaustion, and racial attitudes all contributed to the North's willingness to abandon the project of racial equality.",
+    "answer": "Northern industrialists prioritized economic stability and Southern markets over Black rights; voters were exhausted by a decade of sectional conflict and the Panic of 1873 shifted attention to economic recovery; and many white Northerners shared racist views that made them comfortable abandoning equality once their own interests were secured.",
+    "hints": [
+      "Think about what motivated Northern voters and politicians beyond idealism about racial equality.",
+      "Consider what was happening in the Northern economy in the 1870s."
+    ],
+    "solution": "The end of Reconstruction resulted from converging Northern failures of will. Economically, Northern industrialists wanted stable access to Southern markets, raw materials, and cheap labor — ongoing sectional conflict disrupted business. Railroads and manufacturers pressured Republican leaders to prioritize economic reconciliation over civil rights. Politically, Northern voters experienced 'Reconstruction fatigue' after a decade of crisis; the Panic of 1873 caused widespread unemployment, and voters demanded their leaders focus on economic recovery rather than Southern governance. Racially, most white Northerners had never believed in full racial equality — they opposed slavery but still held deeply racist views. Once slavery was abolished and the Union preserved, many saw no reason to continue fighting for Black rights. The Compromise of 1877 reflected all three factors: Republicans traded away Black freedom in the South for the presidency and economic stability, a bargain most Northern whites found acceptable. The result was nearly a century of Jim Crow segregation.",
+    "cognitiveDemand": "analysis",
+    "source": "hand-authored"
+  }
+]

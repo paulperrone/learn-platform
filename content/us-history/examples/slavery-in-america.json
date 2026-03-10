@@ -1,0 +1,64 @@
+[
+  {
+    "id": "slavery-in-america-ex1",
+    "topicId": "slavery-in-america",
+    "title": "Understanding the System of American Slavery",
+    "steps": [
+      {
+        "subgoalLabel": "Understand how slavery began in the colonies",
+        "instruction": "How did slavery become established in America?",
+        "work": "The first enslaved Africans arrived in Virginia in 1619. By the late 1600s, colonial laws established hereditary, race-based slavery: children of enslaved mothers were automatically enslaved, and enslaved people were treated as property, not persons.",
+        "explanation": "American slavery was deliberately constructed through laws. It wasn't just a cultural practice — legal codes defined enslaved people as property, made slavery permanent and hereditary, and made it nearly impossible to escape."
+      },
+      {
+        "subgoalLabel": "See why slavery became central to the Southern economy",
+        "instruction": "Why did slavery become so deeply embedded in the South?",
+        "work": "The Southern economy depended on cash crops — first tobacco, then cotton after the cotton gin was invented in 1793. Growing and harvesting these crops required enormous amounts of labor. By 1860, there were nearly 4 million enslaved people in the South, and cotton was America's most valuable export.",
+        "explanation": "The cotton gin made cotton hugely profitable, but it also made slavery more entrenched. Rather than reducing the need for enslaved labor, the gin increased demand for it because planters grew much more cotton."
+      },
+      {
+        "subgoalLabel": "Understand the human experience of slavery",
+        "instruction": "What was daily life like for enslaved people?",
+        "work": "Enslaved people worked from dawn to dark, often under threat of whipping. Families were routinely separated when members were sold. Enslaved people were denied education, freedom of movement, and legal rights. Despite this, they built communities, maintained cultural traditions, and resisted in many ways — from slowing work to running away to organizing revolts.",
+        "explanation": "It's essential to see enslaved people not just as victims but as human beings who maintained dignity and resisted oppression. Their resistance took many forms, from subtle daily acts to dramatic escapes on the Underground Railroad."
+      },
+      {
+        "subgoalLabel": "Connect slavery to the nation's founding contradictions",
+        "instruction": "How did slavery create a contradiction at the heart of American ideals?",
+        "work": "The Declaration of Independence declared 'all men are created equal,' yet many signers owned enslaved people. The Constitution counted enslaved people as three-fifths of a person for representation, protected the slave trade until 1808, and required the return of escaped slaves.",
+        "explanation": "The founders knew slavery contradicted their ideals but chose to protect it to keep the Southern states in the union. This compromise built a time bomb into the nation's foundation that would eventually explode in the Civil War."
+      }
+    ]
+  },
+  {
+    "id": "slavery-in-america-ex2",
+    "topicId": "slavery-in-america",
+    "title": "The Abolitionist Movement and Resistance to Slavery",
+    "steps": [
+      {
+        "subgoalLabel": "Understand who the abolitionists were",
+        "instruction": "Who fought to end slavery, and what motivated them?",
+        "work": "Abolitionists included formerly enslaved people like Frederick Douglass and Harriet Tubman, white activists like William Lloyd Garrison, and religious groups like the Quakers. Their motivations ranged from moral and religious conviction to the belief that slavery violated the nation's founding principles.",
+        "explanation": "The abolitionist movement was diverse. Understanding who was involved — and that Black Americans were leaders, not just beneficiaries — is important for seeing the full picture."
+      },
+      {
+        "subgoalLabel": "Examine the methods abolitionists used",
+        "instruction": "How did abolitionists try to end slavery?",
+        "work": "Garrison published 'The Liberator' newspaper. Douglass wrote his autobiography and gave powerful speeches. Harriet Beecher Stowe wrote 'Uncle Tom's Cabin,' which showed Northern readers the horrors of slavery. Harriet Tubman led enslaved people to freedom through the Underground Railroad, a secret network of safe houses.",
+        "explanation": "Abolitionists used different strategies — writing, speaking, legal action, and direct rescue. Their work changed public opinion in the North, making slavery a moral issue that couldn't be ignored."
+      },
+      {
+        "subgoalLabel": "See the resistance from enslaved people themselves",
+        "instruction": "How did enslaved people resist slavery directly?",
+        "work": "Resistance ranged from everyday acts (breaking tools, slowing work, feigning illness) to running away to armed revolts. Nat Turner's Rebellion (1831) in Virginia killed about 60 white people before being suppressed. After the revolt, Southern states passed even harsher slave codes restricting education and movement.",
+        "explanation": "Enslaved people were not passive. Their resistance — especially major revolts — terrified slaveholders and led to harsher laws, showing that the system of slavery required constant violence and control to maintain."
+      },
+      {
+        "subgoalLabel": "Understand how the debate over slavery intensified",
+        "instruction": "How did the slavery debate become more extreme over time?",
+        "work": "By the 1850s, compromise was failing. The Fugitive Slave Act (1850) required Northerners to help capture escaped slaves, angering many who had been neutral. The Dred Scott decision (1857) ruled that Black people could never be citizens. John Brown's raid on Harpers Ferry (1859) attempted to start a slave revolt by force.",
+        "explanation": "Each of these events pushed the North and South further apart. The question of slavery went from something politicians tried to compromise on to something both sides saw as non-negotiable — making war increasingly likely."
+      }
+    ]
+  }
+]

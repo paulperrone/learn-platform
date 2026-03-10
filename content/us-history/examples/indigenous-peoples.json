@@ -1,0 +1,70 @@
+[
+  {
+    "id": "indigenous-peoples-ex1",
+    "topicId": "indigenous-peoples",
+    "title": "Comparing Two Indigenous Groups: Haudenosaunee and Pueblo",
+    "steps": [
+      {
+        "subgoalLabel": "Identify the groups and their regions",
+        "instruction": "When comparing two groups, start by figuring out WHERE each group lived. The Haudenosaunee (Iroquois) lived in the Eastern Woodlands (present-day New York). The Pueblo peoples lived in the Southwest (present-day New Mexico and Arizona).",
+        "work": "Haudenosaunee → Eastern Woodlands (forests, rivers, cold winters)\nPueblo → Southwest (desert, mesas, hot and dry)",
+        "explanation": "Where people live shapes everything about how they live. Starting with geography gives us a foundation for understanding differences."
+      },
+      {
+        "subgoalLabel": "Connect geography to shelter",
+        "instruction": "Now think: what building materials would be available in each region? What kind of shelter makes sense for the climate?",
+        "work": "Haudenosaunee → longhouses made from wood and bark (forests provided timber; longhouses held extended families and kept warmth in winter)\nPueblo → multi-story adobe buildings made from clay and sun-dried brick (little wood available; thick walls stayed cool in desert heat)",
+        "explanation": "This is a key thinking pattern in history: environment shapes resources, and resources shape how people build and live. Neither approach is 'better' — each is a smart solution to a different problem."
+      },
+      {
+        "subgoalLabel": "Connect geography to food",
+        "instruction": "Apply the same pattern: how did each group's environment affect what they ate and how they got food?",
+        "work": "Haudenosaunee → farmed the 'Three Sisters' (corn, beans, squash) in forest clearings; also hunted deer and fished in rivers\nPueblo → farmed corn, beans, and squash using irrigation in dry land; hunted smaller animals like rabbits",
+        "explanation": "Notice both groups farmed the Three Sisters — corn, beans, and squash were staple crops across many Indigenous nations. But their hunting and water strategies differed because of the environment."
+      },
+      {
+        "subgoalLabel": "Compare government and social organization",
+        "instruction": "Look beyond physical survival. How did each group organize their communities and make decisions?",
+        "work": "Haudenosaunee → formed the Haudenosaunee Confederacy (a union of five, later six nations with a Great Law of Peace; clan mothers held significant power in choosing leaders)\nPueblo → governed by individual village councils; religious leaders played a central role in community decisions",
+        "explanation": "Both groups had organized governments long before European contact. The Haudenosaunee Confederacy is one of the oldest representative democracies in the world."
+      },
+      {
+        "subgoalLabel": "Summarize the comparison",
+        "instruction": "Pull your observations together. What's the big takeaway from comparing these two groups?",
+        "work": "Both groups developed complex societies with farming, government, and culture. Their differences — in housing, food strategies, and governance — reflect adaptations to very different environments, not differences in sophistication.",
+        "explanation": "Good historical comparison doesn't rank groups as 'better' or 'worse.' It shows how people solve similar human problems (shelter, food, governance) in different ways based on their circumstances."
+      }
+    ]
+  },
+  {
+    "id": "indigenous-peoples-ex2",
+    "topicId": "indigenous-peoples",
+    "title": "Understanding How Geography Shaped the Plains Nations",
+    "steps": [
+      {
+        "subgoalLabel": "Identify the region and its key feature",
+        "instruction": "The Great Plains stretch across the middle of North America — vast grasslands with few trees. What was the most important resource on the Plains?",
+        "work": "Key resource: the American bison (buffalo). Massive herds roamed the grasslands. Plains nations like the Lakota, Cheyenne, and Comanche built their way of life around the bison.",
+        "explanation": "Historians look for the central resource or feature of a region because it often explains many other aspects of life there."
+      },
+      {
+        "subgoalLabel": "Trace how the key resource shaped daily life",
+        "instruction": "Think about all the ways one animal could provide for a community. How did Plains nations use the bison?",
+        "work": "Meat → food (fresh and dried as jerky/pemmican for winter)\nHide → clothing, blankets, and tipi covers\nBones → tools, needles, and weapons\nSinew → thread and bowstrings\nAlmost every part of the bison was used for something.",
+        "explanation": "This shows resourcefulness and deep knowledge of the natural world. Using every part of an animal reflects values of respect and sustainability."
+      },
+      {
+        "subgoalLabel": "Connect the resource to movement patterns",
+        "instruction": "Bison herds migrated across the Plains with the seasons. What does that mean for the people who depended on them?",
+        "work": "Plains nations were semi-nomadic — they moved with the bison herds. This is why they used tipis (portable shelters that could be set up and taken down quickly) rather than permanent buildings.",
+        "explanation": "The nomadic lifestyle wasn't random wandering. It was a deliberate strategy to follow their primary food source. Tipis were an engineering solution to the need for portable shelter."
+      },
+      {
+        "subgoalLabel": "Consider what changed and why it matters",
+        "instruction": "In the 1800s, the U.S. government and settlers deliberately destroyed bison herds (reducing them from tens of millions to fewer than 1,000). What would this mean for Plains nations?",
+        "work": "Destroying the bison meant destroying the foundation of Plains life — food, shelter, clothing, tools, and the reason for their movement patterns. It was a strategy to force Plains nations onto reservations by removing their ability to live independently.",
+        "explanation": "This is an example of cause-and-effect thinking in history. The bison destruction wasn't accidental — it was connected to the goal of taking Plains land. Understanding this connection helps us see the full picture."
+      }
+    ]
+  }
+]

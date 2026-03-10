@@ -1,0 +1,64 @@
+[
+  {
+    "id": "revolutionary-war-ex1",
+    "topicId": "revolutionary-war",
+    "title": "How the Colonies Won Independence from Britain",
+    "steps": [
+      {
+        "subgoalLabel": "Understand the two sides",
+        "instruction": "Who fought in the Revolutionary War, and what advantages did each side have?",
+        "work": "Britain had the world's strongest navy, a professional army, and more money. The colonies had home-field advantage, motivated soldiers fighting for their freedom, and strong leaders like George Washington.",
+        "explanation": "Knowing each side's strengths and weaknesses helps explain why the war lasted 8 years and why the outcome wasn't obvious at the start."
+      },
+      {
+        "subgoalLabel": "Identify the turning point",
+        "instruction": "The war didn't go well for the colonies at first. What battle changed the momentum?",
+        "work": "The Battle of Saratoga (1777) was the turning point. The colonial army defeated a major British force in New York. This victory convinced France to enter the war as an ally of the colonies.",
+        "explanation": "Saratoga mattered not just as a military victory but because it brought France into the war. French money, soldiers, and naval support were crucial to the eventual American victory."
+      },
+      {
+        "subgoalLabel": "See how the war ended",
+        "instruction": "How did the final victory happen?",
+        "work": "In 1781, George Washington's army and French forces trapped the British army at Yorktown, Virginia. The French navy blocked British escape by sea. British General Cornwallis surrendered on October 19, 1781.",
+        "explanation": "Yorktown showed the power of the French alliance. American troops alone couldn't have trapped the British — the French navy was essential to cutting off their escape route."
+      },
+      {
+        "subgoalLabel": "Understand the result",
+        "instruction": "What did American independence mean in practice?",
+        "work": "The Treaty of Paris (1783) officially ended the war. Britain recognized American independence and gave up territory from the Atlantic Ocean to the Mississippi River. The 13 colonies were now a free nation.",
+        "explanation": "The treaty didn't just end the fighting — it established the United States as a sovereign country with defined borders, setting the stage for building a new government."
+      }
+    ]
+  },
+  {
+    "id": "revolutionary-war-ex2",
+    "topicId": "revolutionary-war",
+    "title": "The Declaration of Independence and What It Meant",
+    "steps": [
+      {
+        "subgoalLabel": "Understand why a declaration was needed",
+        "instruction": "By mid-1776, fighting had been going on for over a year. Why did the Continental Congress decide to write a formal declaration?",
+        "work": "The colonies needed to officially explain why they were breaking away from Britain. A formal declaration would unite the colonies, attract foreign allies, and make the cause legitimate in the eyes of the world.",
+        "explanation": "You can't win allies or build a government if you haven't clearly stated what you're fighting for. The declaration served both a practical and a philosophical purpose."
+      },
+      {
+        "subgoalLabel": "Identify the key ideas",
+        "instruction": "Thomas Jefferson was the main author. What were the core ideas he wrote about?",
+        "work": "Jefferson wrote that all men are created equal with rights to life, liberty, and the pursuit of happiness. He argued that governments get their power from the consent of the governed, and that people can change a government that violates their rights.",
+        "explanation": "These ideas were revolutionary. Most governments at the time were monarchies where the king's power came from birth, not from the people's consent."
+      },
+      {
+        "subgoalLabel": "Note what the Declaration left out",
+        "instruction": "The Declaration said 'all men are created equal.' Did that apply to everyone in 1776?",
+        "work": "In practice, the rights described applied only to white men who owned property. Women, enslaved people, and Native Americans were not included. Many enslaved people were owned by the men who signed the Declaration, including Jefferson himself.",
+        "explanation": "This contradiction between ideals and reality is one of the most important things to understand about the founding era. The gap between the promise of equality and the reality of slavery shaped American history for centuries."
+      },
+      {
+        "subgoalLabel": "Understand the Declaration's lasting impact",
+        "instruction": "Why does the Declaration still matter today?",
+        "work": "The Declaration established principles that Americans have returned to again and again — abolitionists, women's suffrage activists, and civil rights leaders all pointed to 'all men are created equal' as a promise the nation needed to fulfill.",
+        "explanation": "The Declaration set an aspirational standard. Even though the founders didn't live up to it, the ideals they wrote down became tools for future generations fighting for broader equality."
+      }
+    ]
+  }
+]

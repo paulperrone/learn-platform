@@ -1,0 +1,64 @@
+[
+  {
+    "id": "primary-sources-intro-ex1",
+    "topicId": "primary-sources-intro",
+    "title": "Identifying Primary vs. Secondary Sources",
+    "steps": [
+      {
+        "subgoalLabel": "Define the two types",
+        "instruction": "In history, we divide sources into two categories based on ONE key question: Was this created DURING the time period being studied, by someone who was there?",
+        "work": "Primary source: Created during the time period by someone who experienced or witnessed the event.\nExamples: a diary entry, a letter, a photograph, an official document, a speech, a newspaper from the time.\n\nSecondary source: Created AFTER the time period by someone analyzing or writing about it.\nExamples: a textbook, a documentary, a historian's book, a Wikipedia article.",
+        "explanation": "The key distinction is timing and participation. A soldier's letter home from the Civil War is primary. A historian's book about the Civil War written in 2020 is secondary. Both are valuable — they just serve different purposes."
+      },
+      {
+        "subgoalLabel": "Practice with a clear example",
+        "instruction": "Let's classify some specific sources about the American Revolution. For each one, ask: Was this created during the Revolution by someone involved?",
+        "work": "1. The Declaration of Independence (1776) → PRIMARY (created during the Revolution by the people making it happen)\n2. A textbook chapter about the causes of the Revolution → SECONDARY (written later by someone who wasn't there)\n3. A letter from Abigail Adams to John Adams (1776) → PRIMARY (written during the period by a participant)\n4. A documentary film about Valley Forge → SECONDARY (created much later, interpreting events)\n5. A British tax stamp from 1765 → PRIMARY (a physical object from the period)",
+        "explanation": "Notice that primary sources can be documents (letters, laws), objects (stamps, tools), or any other artifact from the time. They don't have to be written."
+      },
+      {
+        "subgoalLabel": "Handle a tricky case",
+        "instruction": "Here's one that trips people up: A history book published in 1920 about World War I. Is it primary or secondary? What about if you're studying the 1920s instead?",
+        "work": "Studying WWI (1914-1918): The 1920 book is SECONDARY — it was written after the war by someone analyzing it.\n\nStudying the 1920s and how Americans understood WWI: The same book becomes PRIMARY — it's a document FROM the 1920s showing how people at that time thought about the war.\n\nThe category depends on what question you're asking.",
+        "explanation": "This is the most important insight about sources: whether something is 'primary' or 'secondary' depends on YOUR research question. The source itself doesn't change — your purpose for using it does."
+      },
+      {
+        "subgoalLabel": "Understand why the distinction matters",
+        "instruction": "Why do historians care about this distinction? What does each type give us that the other can't?",
+        "work": "Primary sources give us: Direct evidence, the actual words and objects from the past, perspectives of people who lived it. But they may be biased, incomplete, or hard to interpret without context.\n\nSecondary sources give us: Analysis, context, the big picture, connections between events. But they're filtered through the author's interpretation.\n\nHistorians use BOTH: primary sources as evidence, secondary sources for context and interpretation.",
+        "explanation": "Neither type is 'better.' A detective needs both the physical evidence (primary) and expert analysis (secondary) to solve a case. Historians work the same way."
+      }
+    ]
+  },
+  {
+    "id": "primary-sources-intro-ex2",
+    "topicId": "primary-sources-intro",
+    "title": "Evaluating a Primary Source: Who Made This and Why?",
+    "steps": [
+      {
+        "subgoalLabel": "Start with basic identification",
+        "instruction": "Imagine you encounter this primary source: a newspaper article from the Boston Gazette, published March 12, 1770, describing the 'Boston Massacre.' Before reading the content, what should you figure out first?",
+        "work": "Key identification questions:\n- WHAT is it? A newspaper article.\n- WHEN was it created? March 12, 1770 (just 7 days after the event on March 5).\n- WHERE was it published? Boston, Massachusetts.\n- WHO created it? The publisher/editor of the Boston Gazette (a colonial newspaper known for anti-British views).",
+        "explanation": "Before analyzing WHAT a source says, always establish the basics: what, when, where, who. These facts shape how we interpret everything else."
+      },
+      {
+        "subgoalLabel": "Consider the creator's perspective",
+        "instruction": "The Boston Gazette was edited by Samuel Adams and other Patriots who opposed British rule. How does knowing the creator's perspective change how you read this source?",
+        "work": "Knowing the source comes from Patriot editors tells us:\n- The article likely emphasizes British soldiers' aggression\n- It may downplay anything the colonial crowd did to provoke the soldiers\n- The word 'Massacre' itself is a choice — it frames the event as one-sided brutality\n- The goal of this article was probably to stir up anti-British feeling, not to report neutrally",
+        "explanation": "This doesn't mean the article is lying — it means it shows ONE perspective. Every source has a point of view. Recognizing bias doesn't disqualify a source; it helps you use it more carefully."
+      },
+      {
+        "subgoalLabel": "Compare with another perspective",
+        "instruction": "Now imagine you also have a report written by Captain Thomas Preston, the British officer in charge of the soldiers that night. He wrote his account from jail while awaiting trial. How would his version likely differ?",
+        "work": "Captain Preston's account would likely:\n- Emphasize that the crowd was threatening and throwing objects at the soldiers\n- Argue the soldiers fired in self-defense or by accident\n- Downplay the number of casualties or the soldiers' intent\n- Call it an 'incident' or 'unfortunate event,' not a 'massacre'\n- His goal: defend himself at trial and avoid execution",
+        "explanation": "Neither source is 'the truth' by itself. The Patriot newspaper and the British officer each tell part of the story from their position. Good history puts multiple perspectives together to build a fuller picture."
+      },
+      {
+        "subgoalLabel": "Ask what the source can and cannot tell us",
+        "instruction": "Based on our analysis, what can this Boston Gazette article reliably tell us, and what can't it tell us?",
+        "work": "CAN tell us:\n- How Patriots framed the event to the public\n- What language and arguments the independence movement used\n- That the event happened and that colonists died (basic facts confirmed by multiple sources)\n- How quickly news spread and shaped opinion\n\nCANNOT reliably tell us:\n- Exactly what happened moment by moment\n- Whether the soldiers were provoked\n- What the crowd was doing before the shooting\n- The British perspective on events",
+        "explanation": "Every source is good at answering SOME questions and bad at answering others. Knowing what a source CAN'T tell you is just as important as knowing what it can. This is a skill historians use constantly."
+      }
+    ]
+  }
+]

@@ -1,0 +1,68 @@
+[
+  {
+    "id": "colonial-life-p1",
+    "topicId": "colonial-life",
+    "difficulty": "easy",
+    "question": "What was the first permanent English settlement in North America, founded in 1607?",
+    "answer": "Jamestown",
+    "hints": [
+      "It was located in present-day Virginia."
+    ],
+    "solution": "Jamestown, Virginia, was the first permanent English settlement in North America. It was founded in 1607 by the Virginia Company of London. The colony struggled with starvation, disease, and conflict with the Powhatan people in its early years.",
+    "cognitiveDemand": "recall",
+    "source": "hand-authored"
+  },
+  {
+    "id": "colonial-life-p2",
+    "topicId": "colonial-life",
+    "difficulty": "easy",
+    "question": "In colonial America, most children learned to read and write at home or in small schools. What book was most commonly used to teach reading?",
+    "answer": "The Bible",
+    "hints": [
+      "It was the most important religious text for the colonists."
+    ],
+    "solution": "The Bible was the most commonly used book for teaching reading in colonial America. Families and small schools used it because colonists, especially the Puritans, believed reading scripture was essential for every person.",
+    "cognitiveDemand": "recall",
+    "source": "hand-authored"
+  },
+  {
+    "id": "colonial-life-p3",
+    "topicId": "colonial-life",
+    "difficulty": "medium",
+    "question": "Colonial families typically made most of their own clothes, candles, and soap at home. What does this tell us about how colonial life differed from life today?",
+    "answer": "Colonists were more self-sufficient because there were few stores or factories",
+    "hints": [
+      "Think about where you get your clothes and household goods today compared to how colonists got theirs."
+    ],
+    "solution": "Colonial families had to be largely self-sufficient because there were few stores and no factories. They made their own necessities by hand. Today, we buy manufactured goods from stores. This difference shows how limited trade networks and technology shaped daily colonial life.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "colonial-life-p4",
+    "topicId": "colonial-life",
+    "difficulty": "medium",
+    "question": "The Pilgrims came to Plymouth in 1620 seeking religious freedom. The Jamestown settlers came in 1607 seeking wealth. How did these different motivations affect the type of communities they built?",
+    "answer": "Pilgrims built a tight religious community; Jamestown focused on profit and trade",
+    "hints": [
+      "Think about what each group valued most and how that shaped their priorities."
+    ],
+    "solution": "The Pilgrims built a close-knit community centered on their shared religious beliefs, with rules and governance shaped by their faith (the Mayflower Compact). Jamestown settlers focused on finding gold and profitable resources, leading to a more commercially driven settlement. Their different motivations led to very different community structures.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "colonial-life-p5",
+    "topicId": "colonial-life",
+    "difficulty": "hard",
+    "question": "Why was the role of women in colonial America both essential to survival and yet largely invisible in official records and government?",
+    "answer": "Women did vital work (farming, cooking, childcare) but were excluded from voting and legal records",
+    "hints": [
+      "Think about what work women did every day versus who was allowed to participate in government.",
+      "Consider who wrote the records and who was considered a full citizen."
+    ],
+    "solution": "Women in colonial America performed essential work — tending gardens, preserving food, making clothing, raising children, and sometimes managing farms. However, they could not vote, hold office, or own property in most colonies. Official records were kept by men about men's activities (land deals, elections, court cases), so women's contributions went largely unrecorded despite being critical to colonial survival.",
+    "cognitiveDemand": "analysis",
+    "source": "hand-authored"
+  }
+]

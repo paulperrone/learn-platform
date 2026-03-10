@@ -1,0 +1,146 @@
+[
+  {
+    "id": "slavery-in-america-p1",
+    "topicId": "slavery-in-america",
+    "difficulty": "easy",
+    "question": "What was the Underground Railroad?",
+    "answer": "A secret network of routes and safe houses used to help enslaved people escape to freedom",
+    "hints": [
+      "It was not an actual railroad with trains.",
+      "It helped people travel from the South to the North or Canada."
+    ],
+    "solution": "The Underground Railroad was a network of secret routes and safe houses ('stations') used by enslaved African Americans to escape to free states and Canada. 'Conductors' like Harriet Tubman guided freedom seekers along the routes, often traveling at night to avoid capture.",
+    "cognitiveDemand": "recall",
+    "source": "hand-authored"
+  },
+  {
+    "id": "slavery-in-america-p2",
+    "topicId": "slavery-in-america",
+    "difficulty": "easy",
+    "question": "Who was Frederick Douglass?",
+    "answer": "An escaped enslaved man who became a leading abolitionist speaker and writer",
+    "hints": [
+      "He escaped slavery and wrote a famous autobiography about his experiences."
+    ],
+    "solution": "Frederick Douglass (c. 1817–1895) escaped slavery in Maryland in 1838 and became one of the most prominent abolitionists in American history. He was a powerful orator, wrote several autobiographies including 'Narrative of the Life of Frederick Douglass,' and published an anti-slavery newspaper called The North Star.",
+    "cognitiveDemand": "recall",
+    "source": "hand-authored"
+  },
+  {
+    "id": "slavery-in-america-p3",
+    "topicId": "slavery-in-america",
+    "difficulty": "medium",
+    "question": "Why was cotton production so closely tied to the expansion of slavery in the South?",
+    "answer": "Growing cotton required intensive manual labor, so plantation owners relied on enslaved workers to plant and harvest large fields profitably",
+    "hints": [
+      "Think about what kind of labor cotton farming requires.",
+      "The cotton gin made processing faster but increased demand for raw cotton."
+    ],
+    "solution": "Cotton was extremely labor-intensive to plant, tend, and harvest. After Eli Whitney's cotton gin (1793) made processing cotton faster, demand for raw cotton soared. Southern plantation owners expanded their fields and bought more enslaved people to do the work. By 1860, cotton was America's most valuable export, and the Southern economy depended on enslaved labor to produce it.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "slavery-in-america-p4",
+    "topicId": "slavery-in-america",
+    "difficulty": "medium",
+    "question": "Name two ways that enslaved people resisted slavery.",
+    "answer": "Examples include escaping via the Underground Railroad, work slowdowns, learning to read (which was forbidden), maintaining cultural traditions, and armed rebellions like Nat Turner's",
+    "hints": [
+      "Resistance took many forms, not just running away.",
+      "Some forms of resistance were subtle; others were dramatic."
+    ],
+    "solution": "Enslaved people resisted in many ways: escaping to freedom (sometimes via the Underground Railroad), slowing down work or breaking tools, learning to read despite laws forbidding it, preserving African cultural traditions and family bonds, and occasionally organizing armed rebellions (such as Nat Turner's Rebellion in 1831). Even small acts of defiance were dangerous and showed courage.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "slavery-in-america-p5",
+    "topicId": "slavery-in-america",
+    "difficulty": "hard",
+    "question": "How did abolitionists in the North and defenders of slavery in the South each use moral arguments to support their positions?",
+    "answer": "Abolitionists argued slavery violated human rights and Christian principles of equality; defenders claimed slavery was a positive good, citing biblical passages and arguing enslaved people were better off than free workers in the North",
+    "hints": [
+      "Both sides used religion and ideas about human nature to make their case.",
+      "Think about what each side believed about the morality of owning other people."
+    ],
+    "solution": "Abolitionists like William Lloyd Garrison and Frederick Douglass argued that slavery was a sin that violated the principles of the Declaration of Independence ('all men are created equal') and Christian teachings about human dignity. Southern defenders like John C. Calhoun argued slavery was a 'positive good,' claiming enslaved people were cared for better than Northern factory workers, citing biblical passages they interpreted as supporting slavery, and arguing that white supremacy was the natural order.",
+    "cognitiveDemand": "analysis",
+    "source": "hand-authored"
+  },
+  {
+    "id": "slavery-in-america-ctx-p1",
+    "topicId": "slavery-in-america",
+    "difficulty": "easy",
+    "contentDepth": "contextual",
+    "question": "Why did slavery become concentrated in the South rather than remaining common in both the North and the South?",
+    "answer": "The South's warm climate and long growing season made large-scale cash crop agriculture profitable, creating heavy demand for enslaved labor. The North's economy shifted toward manufacturing and small farms that did not rely on enslaved labor, making slavery less economically important there.",
+    "hints": [
+      "Think about the different kinds of work that made money in the North versus the South.",
+      "Climate and geography shaped what each region's economy looked like."
+    ],
+    "solution": "In the colonial and early national periods, slavery existed in both regions. However, the South's climate allowed plantation agriculture — tobacco, rice, indigo, and later cotton — that required large, year-round labor forces. This made enslaved labor enormously profitable for Southern landowners. The North's shorter growing seasons favored small farms, and its economy increasingly centered on manufacturing, shipping, and trade, where enslaved labor offered less economic advantage. Northern states gradually abolished slavery in the late 1700s and early 1800s, but this was easier because their economies did not depend on it. The economic divergence deepened the political divide over slavery's future.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "slavery-in-america-ctx-p2",
+    "topicId": "slavery-in-america",
+    "difficulty": "easy",
+    "contentDepth": "contextual",
+    "question": "Why did Southern states pass laws making it illegal to teach enslaved people to read and write?",
+    "answer": "Slaveholders feared that literacy would allow enslaved people to read abolitionist materials, communicate secretly, organize resistance, and understand their legal rights — all of which threatened the institution of slavery.",
+    "hints": [
+      "Think about what enslaved people could do with the ability to read that they couldn't do without it.",
+      "Knowledge can be a form of power."
+    ],
+    "solution": "Anti-literacy laws reveal how slaveholders understood that knowledge threatened their control. Literate enslaved people could read abolitionist newspapers and pamphlets, write their own passes to escape, communicate across plantations to organize resistance, and understand legal documents. After Nat Turner's Rebellion (1831), which Turner partly inspired through religious literacy, Southern states tightened these laws dramatically. Frederick Douglass later wrote that his enslaver told him learning to read would make him 'unfit' to be enslaved — confirming that slaveholders saw literacy as fundamentally incompatible with keeping people in bondage.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "slavery-in-america-ctx-p3",
+    "topicId": "slavery-in-america",
+    "difficulty": "medium",
+    "contentDepth": "contextual",
+    "question": "How did the invention of the cotton gin in 1793 unintentionally strengthen slavery, even though it was a labor-saving device?",
+    "answer": "The cotton gin made processing cotton much faster, which dramatically increased the demand for raw cotton. This led planters to expand cotton fields westward and purchase far more enslaved people to plant and pick the cotton, making slavery more profitable and more deeply entrenched than before.",
+    "hints": [
+      "Think about the difference between processing cotton and growing/picking it.",
+      "When a product becomes more profitable, what happens to demand for the labor that produces it?"
+    ],
+    "solution": "Before the cotton gin, separating cotton seeds from fiber was so slow that cotton was only moderately profitable. The gin solved the processing bottleneck, but growing and harvesting cotton still required intensive hand labor. With processing no longer the limiting factor, planters could profit from vastly larger harvests — if they had enough workers to plant and pick it. Cotton cultivation exploded westward into Alabama, Mississippi, Louisiana, and Texas, and the domestic slave trade boomed to supply labor. The enslaved population in the South grew from about 700,000 in 1790 to nearly 4 million by 1860. A machine meant to reduce labor paradoxically created massive new demand for enslaved labor.",
+    "cognitiveDemand": "analysis",
+    "source": "hand-authored"
+  },
+  {
+    "id": "slavery-in-america-ctx-p4",
+    "topicId": "slavery-in-america",
+    "difficulty": "medium",
+    "contentDepth": "contextual",
+    "question": "Why did enslaved people create and maintain their own cultural traditions — music, religion, folktales — even under conditions designed to strip away their identities?",
+    "answer": "Cultural traditions provided community bonds, emotional resilience, coded communication, and a sense of identity and dignity that slaveholders could not fully control. Spirituals, for example, expressed hope for freedom and sometimes contained hidden messages about escape routes.",
+    "hints": [
+      "Think about what culture provides beyond entertainment.",
+      "Consider how shared traditions help people endure hardship and maintain their sense of self."
+    ],
+    "solution": "Slaveholders deliberately separated families, banned African languages, and tried to erase cultural identity to make enslaved people easier to control. Despite this, enslaved communities created rich cultural traditions that served multiple purposes. Spirituals and songs provided emotional sustenance, expressed religious faith, and sometimes encoded escape instructions ('Follow the Drinking Gourd' referenced the North Star). Folktales featuring clever tricksters outsmarting powerful figures taught survival strategies. Religious gatherings created community spaces beyond slaveholder oversight. These traditions were acts of resistance — by maintaining cultural identity, enslaved people refused to accept the dehumanization that slavery demanded. These cultural forms also became foundational to American music, literature, and religious traditions.",
+    "cognitiveDemand": "analysis",
+    "source": "hand-authored"
+  },
+  {
+    "id": "slavery-in-america-ctx-p5",
+    "topicId": "slavery-in-america",
+    "difficulty": "hard",
+    "contentDepth": "contextual",
+    "question": "The Northern economy benefited from slavery even though most Northern states had abolished it. Explain how the North was economically connected to Southern slavery and why this complicated the abolitionist cause.",
+    "answer": "Northern factories processed Southern cotton into textiles, Northern banks financed plantation operations, and Northern merchants shipped slave-produced goods. This meant many Northerners profited from slavery indirectly, making some reluctant to support abolition because it would disrupt their own economic interests.",
+    "hints": [
+      "Think about what happened to Southern cotton after it was picked — who turned it into cloth, and who sold it?",
+      "Consider why some Northerners who personally opposed slavery still resisted the abolitionist movement."
+    ],
+    "solution": "The Northern and Southern economies were deeply intertwined through slavery. Northern textile mills in places like Lowell, Massachusetts depended on cheap Southern cotton as their raw material. Northern banks and insurance companies financed slave purchases and plantation operations. Northern shipping firms transported cotton to European markets. This created a powerful economic incentive for many Northerners to tolerate slavery — abolition would disrupt supply chains, crash cotton-dependent industries, and destabilize financial institutions. This is why abolitionists were often unpopular even in the North; mobs attacked abolitionist meetings, and newspapers denounced them as radicals threatening economic stability. The complicity of Northern capital in slavery complicated the simple narrative of a 'free North' versus a 'slave South.'",
+    "cognitiveDemand": "analysis",
+    "source": "hand-authored"
+  }
+]

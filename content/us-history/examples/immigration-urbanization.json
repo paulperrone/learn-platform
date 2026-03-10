@@ -1,0 +1,58 @@
+[
+  {
+    "id": "immigration-urbanization-ex1",
+    "topicId": "immigration-urbanization",
+    "title": "Why Immigrants Came to America",
+    "steps": [
+      {
+        "subgoalLabel": "Identify push factors",
+        "instruction": "What conditions in their home countries pushed people to leave?",
+        "work": "Push factors included famine (like the Irish Potato Famine of the 1840s), poverty, religious persecution (Jewish people fleeing pogroms in Russia), political instability, and lack of economic opportunity.",
+        "explanation": "Push factors are the bad conditions that make people want to leave their homeland. Understanding these helps explain why millions chose the difficult journey to America."
+      },
+      {
+        "subgoalLabel": "Identify pull factors",
+        "instruction": "What attracted immigrants to the United States specifically?",
+        "work": "Pull factors included factory jobs, farmland in the West, religious freedom, the promise of democracy, and the idea of the 'American Dream' — that hard work could lead to a better life. Letters from relatives already in America encouraged others to follow.",
+        "explanation": "Pull factors are the positive conditions that attract people to a new place. America actively recruited immigrants for labor, especially for railroad construction and factory work."
+      },
+      {
+        "subgoalLabel": "Describe the immigrant experience",
+        "instruction": "What was the journey and arrival like for most immigrants?",
+        "work": "Most immigrants crossed the Atlantic in crowded ships, traveling in steerage (the cheapest section below deck). Upon arrival, many passed through Ellis Island in New York Harbor. They faced medical inspections and questioning. Most settled in cities, often in neighborhoods with others from their home country.",
+        "explanation": "The immigrant experience was difficult from start to finish. Ethnic neighborhoods (like Little Italy or Chinatown) formed as immigrants sought community and support in an unfamiliar country."
+      },
+      {
+        "subgoalLabel": "Summarize the significance",
+        "instruction": "Why does immigration during this period matter for understanding America?",
+        "work": "Between 1880 and 1920, over 20 million immigrants arrived in the United States. They built railroads, worked in factories, and helped transform America into an industrial power. They also brought diverse cultures, foods, languages, and traditions that shaped American identity.",
+        "explanation": "This wave of immigration fundamentally shaped what America became — a diverse, industrialized nation. The debates about immigration from this era echo in American politics to this day."
+      }
+    ]
+  },
+  {
+    "id": "immigration-urbanization-ex2",
+    "topicId": "immigration-urbanization",
+    "title": "The Growth of American Cities",
+    "steps": [
+      {
+        "subgoalLabel": "Identify why cities grew",
+        "instruction": "What caused American cities to grow so rapidly in the late 1800s?",
+        "work": "Factories were located in cities, drawing workers. Immigrants arrived and settled near jobs. Rural Americans also moved to cities seeking opportunity. Railroads made cities into transportation hubs.",
+        "explanation": "Urbanization — the growth of cities — happened because that's where the jobs were. Factories needed workers, and workers needed to live near factories."
+      },
+      {
+        "subgoalLabel": "Describe city conditions",
+        "instruction": "What were living conditions like in rapidly growing cities?",
+        "work": "Many workers lived in tenements — cramped, poorly ventilated apartment buildings. Families of 6-8 might share two small rooms. Sanitation was poor, diseases spread easily, and fire was a constant danger. Streets were often filthy.",
+        "explanation": "Cities grew faster than their infrastructure could handle. There were few building codes, no zoning laws, and limited public services — creating dangerous living conditions."
+      },
+      {
+        "subgoalLabel": "Identify responses to urban problems",
+        "instruction": "How did people try to address these problems?",
+        "work": "Settlement houses (like Jane Addams' Hull House in Chicago) provided education and services to immigrants and the poor. Journalists called 'muckrakers' exposed terrible conditions — Jacob Riis photographed tenement life in 'How the Other Half Lives.' Cities began building public water systems, sewers, and fire departments.",
+        "explanation": "The problems of urbanization sparked reform movements. Ordinary people, journalists, and activists pushed for change — setting the stage for the Progressive Era."
+      }
+    ]
+  }
+]

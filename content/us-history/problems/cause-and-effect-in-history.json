@@ -1,0 +1,69 @@
+[
+  {
+    "id": "cause-and-effect-in-history-p1",
+    "topicId": "cause-and-effect-in-history",
+    "difficulty": "easy",
+    "question": "In history, what is the difference between a cause and an effect?",
+    "answer": "A cause is why something happened; an effect is what happened as a result",
+    "hints": [
+      "Think of cause as the reason and effect as the outcome."
+    ],
+    "solution": "A cause is the reason something happened — the event, decision, or condition that led to a result. An effect is the outcome or consequence — what happened because of the cause. Historians study cause and effect to understand why events unfolded as they did.",
+    "cognitiveDemand": "recall",
+    "source": "hand-authored"
+  },
+  {
+    "id": "cause-and-effect-in-history-p2",
+    "topicId": "cause-and-effect-in-history",
+    "difficulty": "easy",
+    "question": "The Pilgrims faced religious persecution in England. As a result, they sailed to North America in 1620. Which part is the cause and which is the effect?",
+    "answer": "Cause: religious persecution; Effect: sailing to North America",
+    "hints": [
+      "Ask yourself: what happened first, and what did it lead to?"
+    ],
+    "solution": "The cause is religious persecution in England — this is why the Pilgrims left. The effect is their voyage to North America in 1620 — this is what happened as a result of that persecution. The cause explains the motivation; the effect is the action taken.",
+    "cognitiveDemand": "recall",
+    "source": "hand-authored"
+  },
+  {
+    "id": "cause-and-effect-in-history-p3",
+    "topicId": "cause-and-effect-in-history",
+    "difficulty": "medium",
+    "question": "The introduction of tobacco farming in Virginia led to a demand for more labor, which led to the increased use of indentured servants and later enslaved Africans. Identify the chain of cause and effect in this sequence.",
+    "answer": "Tobacco farming caused labor demand, which caused the use of indentured servants and enslaved people",
+    "hints": [
+      "Look for how one event leads to the next in a chain: first event causes the second, which causes the third."
+    ],
+    "solution": "This is a cause-and-effect chain. Tobacco became profitable (first cause), creating high demand for labor (first effect, which becomes the second cause). That labor demand led to the use of indentured servants and eventually enslaved Africans (final effect). Historical events often form chains where one effect becomes the cause of the next event.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "cause-and-effect-in-history-p4",
+    "topicId": "cause-and-effect-in-history",
+    "difficulty": "medium",
+    "question": "The harsh winter of 1609-1610 at Jamestown (the 'Starving Time') had multiple causes. Name two causes that contributed to the food shortage.",
+    "answer": "Drought reduced crops and conflict with the Powhatan cut off trade",
+    "hints": [
+      "Think about both natural conditions and relationships with neighboring peoples.",
+      "The colonists were also not experienced farmers."
+    ],
+    "solution": "Multiple causes contributed to the Starving Time: a severe drought reduced crop yields, conflict with the Powhatan people cut off food trade, many settlers lacked farming skills and searched for gold instead, and supply ships from England were delayed. Most historical events have multiple causes, not just one.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "cause-and-effect-in-history-p5",
+    "topicId": "cause-and-effect-in-history",
+    "difficulty": "hard",
+    "question": "Some historians say the main cause of European exploration was economic (desire for wealth and trade routes). Others say it was religious (desire to spread Christianity). Why might historians disagree about the primary cause of the same event?",
+    "answer": "Historical events have multiple causes, and historians weigh evidence differently based on their focus and interpretation",
+    "hints": [
+      "Think about whether a complex event can have just one cause.",
+      "Consider that different historians might study different sources or ask different questions."
+    ],
+    "solution": "Historians disagree because complex events like European exploration had multiple causes operating simultaneously. Historians who study economic records may emphasize wealth-seeking, while those who study religious documents may emphasize spreading Christianity. Each historian weighs the available evidence differently depending on their questions, sources, and analytical framework. This is why historical interpretation involves debate, not just memorizing one 'correct' answer.",
+    "cognitiveDemand": "analysis",
+    "source": "hand-authored"
+  }
+]
