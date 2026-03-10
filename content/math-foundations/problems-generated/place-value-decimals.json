@@ -1,0 +1,206 @@
+[
+  {
+    "id": "place-value-decimals-sup-e0",
+    "topicId": "place-value-decimals",
+    "difficulty": "easy",
+    "question": "In the number 3.7, what digit is in the tenths place?",
+    "answer": "7",
+    "hints": [
+      "The tenths place is the first digit to the right of the decimal point."
+    ],
+    "solution": "In 3.7, the 7 is in the tenths place. It represents 7 tenths, or 0.7.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-decimals-sup-e1",
+    "topicId": "place-value-decimals",
+    "difficulty": "easy",
+    "question": "What is the value of the 5 in 0.52?",
+    "answer": "5 tenths or 0.5",
+    "hints": [
+      "The 5 is the first digit after the decimal point.",
+      "The first position after the decimal is the tenths place."
+    ],
+    "solution": "In 0.52, the 5 is in the tenths place. Its value is 5 tenths = 0.5.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-decimals-sup-e2",
+    "topicId": "place-value-decimals",
+    "difficulty": "easy",
+    "question": "In the number 2.46, what digit is in the hundredths place?",
+    "answer": "6",
+    "hints": [
+      "The hundredths place is the second digit after the decimal point."
+    ],
+    "solution": "In 2.46, the 6 is in the hundredths place. It represents 6 hundredths, or 0.06.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-decimals-sup-e3",
+    "topicId": "place-value-decimals",
+    "difficulty": "easy",
+    "question": "Write a number that has 4 ones and 3 tenths.",
+    "answer": "4.3",
+    "hints": [
+      "The ones digit goes before the decimal point. The tenths digit goes after."
+    ],
+    "solution": "4 ones and 3 tenths = 4.3.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-decimals-sup-e4",
+    "topicId": "place-value-decimals",
+    "difficulty": "easy",
+    "question": "Which place is worth more: tenths or hundredths?",
+    "answer": "tenths",
+    "hints": [
+      "Compare: 1 tenth = 0.1 and 1 hundredth = 0.01. Which is bigger?"
+    ],
+    "solution": "Tenths are worth more than hundredths. 1 tenth = 0.1, while 1 hundredth = 0.01. It takes 10 hundredths to equal 1 tenth.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-decimals-sup-m0",
+    "topicId": "place-value-decimals",
+    "difficulty": "medium",
+    "question": "Write 6.29 in expanded form.",
+    "answer": "6 + 0.2 + 0.09",
+    "hints": [
+      "Break it into ones, tenths, and hundredths.",
+      "6 ones + 2 tenths + 9 hundredths."
+    ],
+    "solution": "6.29 = 6 + 0.2 + 0.09. The 6 is ones, the 2 is tenths (0.2), and the 9 is hundredths (0.09).",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-decimals-sup-m1",
+    "topicId": "place-value-decimals",
+    "difficulty": "medium",
+    "question": "How many tenths are in 0.80?",
+    "answer": "8",
+    "hints": [
+      "0.80 = 0.8. The 8 is in the tenths place."
+    ],
+    "solution": "0.80 has 8 tenths. The 0 in the hundredths place does not change the value. 0.80 = 0.8 = 8 tenths.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-decimals-sup-m2",
+    "topicId": "place-value-decimals",
+    "difficulty": "medium",
+    "question": "Which is greater: 0.4 or 0.38?",
+    "answer": "0.4",
+    "hints": [
+      "Write 0.4 as 0.40 to compare more easily.",
+      "Compare tenths first: both have different tenths digits... wait, compare carefully."
+    ],
+    "solution": "0.4 = 0.40. Comparing 0.40 and 0.38: both have the same ones (0). Tenths: 4 > 3. So 0.40 > 0.38, meaning 0.4 is greater.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-decimals-sup-m3",
+    "topicId": "place-value-decimals",
+    "difficulty": "medium",
+    "question": "How many hundredths equal one tenth?",
+    "answer": "10",
+    "hints": [
+      "1 tenth = 0.1. 1 hundredth = 0.01.",
+      "How many 0.01s fit into 0.1?"
+    ],
+    "solution": "10 hundredths = 1 tenth. 0.01 x 10 = 0.10 = 0.1.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-decimals-sup-m4",
+    "topicId": "place-value-decimals",
+    "difficulty": "medium",
+    "question": "Write the number 8 tenths and 5 hundredths as a decimal.",
+    "answer": "0.85",
+    "hints": [
+      "8 tenths goes in the tenths place. 5 hundredths goes in the hundredths place."
+    ],
+    "solution": "8 tenths = 0.8, 5 hundredths = 0.05. Together: 0.85.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-decimals-sup-h0",
+    "topicId": "place-value-decimals",
+    "difficulty": "hard",
+    "question": "In the number 7.777, how is the value of each 7 different?",
+    "answer": "7 ones, 7 tenths, 7 hundredths, 7 thousandths",
+    "hints": [
+      "Each 7 is in a different place: ones, tenths, hundredths, thousandths.",
+      "The value depends on position, not the digit."
+    ],
+    "solution": "In 7.777: first 7 = 7 ones (7), second 7 = 7 tenths (0.7), third 7 = 7 hundredths (0.07), fourth 7 = 7 thousandths (0.007). Each 7 is worth 10 times less than the one to its left.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-decimals-sup-h1",
+    "topicId": "place-value-decimals",
+    "difficulty": "hard",
+    "question": "Sam says 0.5 and 0.50 are different numbers because 50 is bigger than 5. Is Sam right? Explain.",
+    "answer": "no",
+    "hints": [
+      "Think about what each decimal means.",
+      "0.5 = 5 tenths. 0.50 = 5 tenths and 0 hundredths."
+    ],
+    "solution": "Sam is wrong. 0.5 and 0.50 are equal. 0.5 = 5 tenths = 50 hundredths = 0.50. Adding a zero after the last decimal digit does not change the value.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-decimals-sup-h2",
+    "topicId": "place-value-decimals",
+    "difficulty": "hard",
+    "question": "What number is 0.01 more than 3.99?",
+    "answer": "4.00",
+    "hints": [
+      "Add 1 hundredth to the hundredths place.",
+      "9 hundredths + 1 hundredth = 10 hundredths = 1 tenth. Then carry."
+    ],
+    "solution": "3.99 + 0.01: 9 hundredths + 1 = 10 hundredths = 1 tenth (carry). 9 tenths + 1 = 10 tenths = 1 one (carry). 3 + 1 = 4. Answer: 4.00.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-decimals-sup-h3",
+    "topicId": "place-value-decimals",
+    "difficulty": "hard",
+    "question": "Order from least to greatest: 0.09, 0.9, 0.19, 0.91",
+    "answer": "0.09, 0.19, 0.9, 0.91",
+    "hints": [
+      "Compare tenths first, then hundredths.",
+      "0.09 has 0 tenths. 0.19 has 1 tenth. 0.9 has 9 tenths. 0.91 has 9 tenths."
+    ],
+    "solution": "0.09 (0 tenths, 9 hundredths), 0.19 (1 tenth, 9 hundredths), 0.9 (9 tenths), 0.91 (9 tenths, 1 hundredth). Order: 0.09, 0.19, 0.9, 0.91.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-decimals-sup-h4",
+    "topicId": "place-value-decimals",
+    "difficulty": "hard",
+    "question": "The digit 3 appears in both 0.3 and 0.03. How many times greater is the 3 in 0.3 than the 3 in 0.03?",
+    "answer": "10",
+    "hints": [
+      "0.3 = 3 tenths. 0.03 = 3 hundredths.",
+      "How many hundredths make one tenth?"
+    ],
+    "solution": "0.3 = 3 tenths = 30 hundredths. 0.03 = 3 hundredths. 30 / 3 = 10. The 3 in 0.3 is 10 times greater than the 3 in 0.03.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  }
+]

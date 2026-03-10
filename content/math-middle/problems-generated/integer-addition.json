@@ -1,0 +1,652 @@
+[
+  {
+    "id": "integer-addition-gen-e0",
+    "topicId": "integer-addition",
+    "difficulty": "easy",
+    "question": "What is 0 + 5?",
+    "answer": "5",
+    "hints": [
+      "When adding integers, same signs: add and keep sign. Different signs: subtract and keep the sign of the larger absolute value."
+    ],
+    "solution": "0 + (5) = 5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-addition-gen-e1",
+    "topicId": "integer-addition",
+    "difficulty": "easy",
+    "question": "What is 4 + 6?",
+    "answer": "10",
+    "hints": [
+      "When adding integers, same signs: add and keep sign. Different signs: subtract and keep the sign of the larger absolute value."
+    ],
+    "solution": "4 + (6) = 10.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-addition-gen-e2",
+    "topicId": "integer-addition",
+    "difficulty": "easy",
+    "question": "What is 5 − 3?",
+    "answer": "2",
+    "hints": [
+      "When adding integers, same signs: add and keep sign. Different signs: subtract and keep the sign of the larger absolute value."
+    ],
+    "solution": "5 + (-3) = 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-addition-gen-e3",
+    "topicId": "integer-addition",
+    "difficulty": "easy",
+    "question": "What is 3 + 8?",
+    "answer": "11",
+    "hints": [
+      "When adding integers, same signs: add and keep sign. Different signs: subtract and keep the sign of the larger absolute value."
+    ],
+    "solution": "3 + (8) = 11.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-addition-gen-e4",
+    "topicId": "integer-addition",
+    "difficulty": "easy",
+    "question": "What is -9 + 4?",
+    "answer": "-5",
+    "hints": [
+      "When adding integers, same signs: add and keep sign. Different signs: subtract and keep the sign of the larger absolute value."
+    ],
+    "solution": "-9 + (4) = -5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-addition-gen-e5",
+    "topicId": "integer-addition",
+    "difficulty": "easy",
+    "question": "What is 10 − 5?",
+    "answer": "5",
+    "hints": [
+      "When adding integers, same signs: add and keep sign. Different signs: subtract and keep the sign of the larger absolute value."
+    ],
+    "solution": "10 + (-5) = 5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-addition-gen-e6",
+    "topicId": "integer-addition",
+    "difficulty": "easy",
+    "question": "What is 9 − 2?",
+    "answer": "7",
+    "hints": [
+      "When adding integers, same signs: add and keep sign. Different signs: subtract and keep the sign of the larger absolute value."
+    ],
+    "solution": "9 + (-2) = 7.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-addition-gen-e7",
+    "topicId": "integer-addition",
+    "difficulty": "easy",
+    "question": "What is -3 − 9?",
+    "answer": "-12",
+    "hints": [
+      "When adding integers, same signs: add and keep sign. Different signs: subtract and keep the sign of the larger absolute value."
+    ],
+    "solution": "-3 + (-9) = -12.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-addition-gen-e8",
+    "topicId": "integer-addition",
+    "difficulty": "easy",
+    "question": "What is -3 − 3?",
+    "answer": "-6",
+    "hints": [
+      "When adding integers, same signs: add and keep sign. Different signs: subtract and keep the sign of the larger absolute value."
+    ],
+    "solution": "-3 + (-3) = -6.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-addition-gen-e9",
+    "topicId": "integer-addition",
+    "difficulty": "easy",
+    "question": "What is -8 − 1?",
+    "answer": "-9",
+    "hints": [
+      "When adding integers, same signs: add and keep sign. Different signs: subtract and keep the sign of the larger absolute value."
+    ],
+    "solution": "-8 + (-1) = -9.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-addition-gen-e10",
+    "topicId": "integer-addition",
+    "difficulty": "easy",
+    "question": "What is -7 − 9?",
+    "answer": "-16",
+    "hints": [
+      "When adding integers, same signs: add and keep sign. Different signs: subtract and keep the sign of the larger absolute value."
+    ],
+    "solution": "-7 + (-9) = -16.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-addition-gen-e11",
+    "topicId": "integer-addition",
+    "difficulty": "easy",
+    "question": "What is -6 + 7?",
+    "answer": "1",
+    "hints": [
+      "When adding integers, same signs: add and keep sign. Different signs: subtract and keep the sign of the larger absolute value."
+    ],
+    "solution": "-6 + (7) = 1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-addition-gen-e12",
+    "topicId": "integer-addition",
+    "difficulty": "easy",
+    "question": "What is 8 + 3?",
+    "answer": "11",
+    "hints": [
+      "When adding integers, same signs: add and keep sign. Different signs: subtract and keep the sign of the larger absolute value."
+    ],
+    "solution": "8 + (3) = 11.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-addition-gen-e13",
+    "topicId": "integer-addition",
+    "difficulty": "easy",
+    "question": "What is 10 + 2?",
+    "answer": "12",
+    "hints": [
+      "When adding integers, same signs: add and keep sign. Different signs: subtract and keep the sign of the larger absolute value."
+    ],
+    "solution": "10 + (2) = 12.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-addition-gen-e14",
+    "topicId": "integer-addition",
+    "difficulty": "easy",
+    "question": "What is -1 − 7?",
+    "answer": "-8",
+    "hints": [
+      "When adding integers, same signs: add and keep sign. Different signs: subtract and keep the sign of the larger absolute value."
+    ],
+    "solution": "-1 + (-7) = -8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-addition-gen-m0",
+    "topicId": "integer-addition",
+    "difficulty": "medium",
+    "question": "What is -44 − 20?",
+    "answer": "-64",
+    "hints": [
+      "When adding integers, same signs: add and keep sign. Different signs: subtract and keep the sign of the larger absolute value."
+    ],
+    "solution": "-44 + (-20) = -64.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-addition-gen-m1",
+    "topicId": "integer-addition",
+    "difficulty": "medium",
+    "question": "What is 13 + 47?",
+    "answer": "60",
+    "hints": [
+      "When adding integers, same signs: add and keep sign. Different signs: subtract and keep the sign of the larger absolute value."
+    ],
+    "solution": "13 + (47) = 60.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-addition-gen-m2",
+    "topicId": "integer-addition",
+    "difficulty": "medium",
+    "question": "What is -33 + 15?",
+    "answer": "-18",
+    "hints": [
+      "When adding integers, same signs: add and keep sign. Different signs: subtract and keep the sign of the larger absolute value."
+    ],
+    "solution": "-33 + (15) = -18.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-addition-gen-m3",
+    "topicId": "integer-addition",
+    "difficulty": "medium",
+    "question": "What is -34 + 43?",
+    "answer": "9",
+    "hints": [
+      "When adding integers, same signs: add and keep sign. Different signs: subtract and keep the sign of the larger absolute value."
+    ],
+    "solution": "-34 + (43) = 9.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-addition-gen-m4",
+    "topicId": "integer-addition",
+    "difficulty": "medium",
+    "question": "What is -27 − 41?",
+    "answer": "-68",
+    "hints": [
+      "When adding integers, same signs: add and keep sign. Different signs: subtract and keep the sign of the larger absolute value."
+    ],
+    "solution": "-27 + (-41) = -68.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-addition-gen-m5",
+    "topicId": "integer-addition",
+    "difficulty": "medium",
+    "question": "What is 7 − 46?",
+    "answer": "-39",
+    "hints": [
+      "When adding integers, same signs: add and keep sign. Different signs: subtract and keep the sign of the larger absolute value."
+    ],
+    "solution": "7 + (-46) = -39.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-addition-gen-m6",
+    "topicId": "integer-addition",
+    "difficulty": "medium",
+    "question": "What is 22 + 44?",
+    "answer": "66",
+    "hints": [
+      "When adding integers, same signs: add and keep sign. Different signs: subtract and keep the sign of the larger absolute value."
+    ],
+    "solution": "22 + (44) = 66.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-addition-gen-m7",
+    "topicId": "integer-addition",
+    "difficulty": "medium",
+    "question": "What is -23 − 21?",
+    "answer": "-44",
+    "hints": [
+      "When adding integers, same signs: add and keep sign. Different signs: subtract and keep the sign of the larger absolute value."
+    ],
+    "solution": "-23 + (-21) = -44.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-addition-gen-m8",
+    "topicId": "integer-addition",
+    "difficulty": "medium",
+    "question": "What is 31 − 46?",
+    "answer": "-15",
+    "hints": [
+      "When adding integers, same signs: add and keep sign. Different signs: subtract and keep the sign of the larger absolute value."
+    ],
+    "solution": "31 + (-46) = -15.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-addition-gen-m9",
+    "topicId": "integer-addition",
+    "difficulty": "medium",
+    "question": "What is 8 + 10?",
+    "answer": "18",
+    "hints": [
+      "When adding integers, same signs: add and keep sign. Different signs: subtract and keep the sign of the larger absolute value."
+    ],
+    "solution": "8 + (10) = 18.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-addition-gen-m10",
+    "topicId": "integer-addition",
+    "difficulty": "medium",
+    "question": "What is 11 + 13?",
+    "answer": "24",
+    "hints": [
+      "When adding integers, same signs: add and keep sign. Different signs: subtract and keep the sign of the larger absolute value."
+    ],
+    "solution": "11 + (13) = 24.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-addition-gen-m11",
+    "topicId": "integer-addition",
+    "difficulty": "medium",
+    "question": "What is 20 − 40?",
+    "answer": "-20",
+    "hints": [
+      "When adding integers, same signs: add and keep sign. Different signs: subtract and keep the sign of the larger absolute value."
+    ],
+    "solution": "20 + (-40) = -20.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-addition-gen-m12",
+    "topicId": "integer-addition",
+    "difficulty": "medium",
+    "question": "What is -49 − 20?",
+    "answer": "-69",
+    "hints": [
+      "When adding integers, same signs: add and keep sign. Different signs: subtract and keep the sign of the larger absolute value."
+    ],
+    "solution": "-49 + (-20) = -69.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-addition-gen-m13",
+    "topicId": "integer-addition",
+    "difficulty": "medium",
+    "question": "What is 33 − 9?",
+    "answer": "24",
+    "hints": [
+      "When adding integers, same signs: add and keep sign. Different signs: subtract and keep the sign of the larger absolute value."
+    ],
+    "solution": "33 + (-9) = 24.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-addition-gen-m14",
+    "topicId": "integer-addition",
+    "difficulty": "medium",
+    "question": "What is -7 − 17?",
+    "answer": "-24",
+    "hints": [
+      "When adding integers, same signs: add and keep sign. Different signs: subtract and keep the sign of the larger absolute value."
+    ],
+    "solution": "-7 + (-17) = -24.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-addition-gen-m15",
+    "topicId": "integer-addition",
+    "difficulty": "medium",
+    "question": "What is 29 + 37?",
+    "answer": "66",
+    "hints": [
+      "When adding integers, same signs: add and keep sign. Different signs: subtract and keep the sign of the larger absolute value."
+    ],
+    "solution": "29 + (37) = 66.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-addition-gen-m16",
+    "topicId": "integer-addition",
+    "difficulty": "medium",
+    "question": "What is 29 − 22?",
+    "answer": "7",
+    "hints": [
+      "When adding integers, same signs: add and keep sign. Different signs: subtract and keep the sign of the larger absolute value."
+    ],
+    "solution": "29 + (-22) = 7.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-addition-gen-m17",
+    "topicId": "integer-addition",
+    "difficulty": "medium",
+    "question": "What is -46 − 28?",
+    "answer": "-74",
+    "hints": [
+      "When adding integers, same signs: add and keep sign. Different signs: subtract and keep the sign of the larger absolute value."
+    ],
+    "solution": "-46 + (-28) = -74.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-addition-gen-m18",
+    "topicId": "integer-addition",
+    "difficulty": "medium",
+    "question": "What is 22 − 47?",
+    "answer": "-25",
+    "hints": [
+      "When adding integers, same signs: add and keep sign. Different signs: subtract and keep the sign of the larger absolute value."
+    ],
+    "solution": "22 + (-47) = -25.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-addition-gen-m19",
+    "topicId": "integer-addition",
+    "difficulty": "medium",
+    "question": "What is -35 − 7?",
+    "answer": "-42",
+    "hints": [
+      "When adding integers, same signs: add and keep sign. Different signs: subtract and keep the sign of the larger absolute value."
+    ],
+    "solution": "-35 + (-7) = -42.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-addition-gen-h0",
+    "topicId": "integer-addition",
+    "difficulty": "hard",
+    "question": "What is -44 − 35?",
+    "answer": "-79",
+    "hints": [
+      "When adding integers, same signs: add and keep sign. Different signs: subtract and keep the sign of the larger absolute value."
+    ],
+    "solution": "-44 + (-35) = -79.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-addition-gen-h1",
+    "topicId": "integer-addition",
+    "difficulty": "hard",
+    "question": "What is 49 + 90?",
+    "answer": "139",
+    "hints": [
+      "When adding integers, same signs: add and keep sign. Different signs: subtract and keep the sign of the larger absolute value."
+    ],
+    "solution": "49 + (90) = 139.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-addition-gen-h2",
+    "topicId": "integer-addition",
+    "difficulty": "hard",
+    "question": "What is -9 + 19?",
+    "answer": "10",
+    "hints": [
+      "When adding integers, same signs: add and keep sign. Different signs: subtract and keep the sign of the larger absolute value."
+    ],
+    "solution": "-9 + (19) = 10.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-addition-gen-h3",
+    "topicId": "integer-addition",
+    "difficulty": "hard",
+    "question": "What is 25 + 32?",
+    "answer": "57",
+    "hints": [
+      "When adding integers, same signs: add and keep sign. Different signs: subtract and keep the sign of the larger absolute value."
+    ],
+    "solution": "25 + (32) = 57.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-addition-gen-h4",
+    "topicId": "integer-addition",
+    "difficulty": "hard",
+    "question": "What is 81 + 40?",
+    "answer": "121",
+    "hints": [
+      "When adding integers, same signs: add and keep sign. Different signs: subtract and keep the sign of the larger absolute value."
+    ],
+    "solution": "81 + (40) = 121.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-addition-gen-h5",
+    "topicId": "integer-addition",
+    "difficulty": "hard",
+    "question": "What is 64 − 66?",
+    "answer": "-2",
+    "hints": [
+      "When adding integers, same signs: add and keep sign. Different signs: subtract and keep the sign of the larger absolute value."
+    ],
+    "solution": "64 + (-66) = -2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-addition-gen-h6",
+    "topicId": "integer-addition",
+    "difficulty": "hard",
+    "question": "What is 37 + 72?",
+    "answer": "109",
+    "hints": [
+      "When adding integers, same signs: add and keep sign. Different signs: subtract and keep the sign of the larger absolute value."
+    ],
+    "solution": "37 + (72) = 109.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-addition-gen-h7",
+    "topicId": "integer-addition",
+    "difficulty": "hard",
+    "question": "What is 21 − 6?",
+    "answer": "15",
+    "hints": [
+      "When adding integers, same signs: add and keep sign. Different signs: subtract and keep the sign of the larger absolute value."
+    ],
+    "solution": "21 + (-6) = 15.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-addition-gen-h8",
+    "topicId": "integer-addition",
+    "difficulty": "hard",
+    "question": "What is -6 + 25?",
+    "answer": "19",
+    "hints": [
+      "When adding integers, same signs: add and keep sign. Different signs: subtract and keep the sign of the larger absolute value."
+    ],
+    "solution": "-6 + (25) = 19.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-addition-gen-h9",
+    "topicId": "integer-addition",
+    "difficulty": "hard",
+    "question": "What is -9 − 69?",
+    "answer": "-78",
+    "hints": [
+      "When adding integers, same signs: add and keep sign. Different signs: subtract and keep the sign of the larger absolute value."
+    ],
+    "solution": "-9 + (-69) = -78.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-addition-gen-h10",
+    "topicId": "integer-addition",
+    "difficulty": "hard",
+    "question": "What is -1 + 8?",
+    "answer": "7",
+    "hints": [
+      "When adding integers, same signs: add and keep sign. Different signs: subtract and keep the sign of the larger absolute value."
+    ],
+    "solution": "-1 + (8) = 7.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-addition-gen-h11",
+    "topicId": "integer-addition",
+    "difficulty": "hard",
+    "question": "What is 84 − 50?",
+    "answer": "34",
+    "hints": [
+      "When adding integers, same signs: add and keep sign. Different signs: subtract and keep the sign of the larger absolute value."
+    ],
+    "solution": "84 + (-50) = 34.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-addition-gen-h12",
+    "topicId": "integer-addition",
+    "difficulty": "hard",
+    "question": "What is -65 + 24?",
+    "answer": "-41",
+    "hints": [
+      "When adding integers, same signs: add and keep sign. Different signs: subtract and keep the sign of the larger absolute value."
+    ],
+    "solution": "-65 + (24) = -41.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-addition-gen-h13",
+    "topicId": "integer-addition",
+    "difficulty": "hard",
+    "question": "What is -99 + 31?",
+    "answer": "-68",
+    "hints": [
+      "When adding integers, same signs: add and keep sign. Different signs: subtract and keep the sign of the larger absolute value."
+    ],
+    "solution": "-99 + (31) = -68.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-addition-gen-h14",
+    "topicId": "integer-addition",
+    "difficulty": "hard",
+    "question": "What is 0 + 12?",
+    "answer": "12",
+    "hints": [
+      "When adding integers, same signs: add and keep sign. Different signs: subtract and keep the sign of the larger absolute value."
+    ],
+    "solution": "0 + (12) = 12.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  }
+]

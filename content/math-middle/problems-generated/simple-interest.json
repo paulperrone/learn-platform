@@ -1,0 +1,652 @@
+[
+  {
+    "id": "simple-interest-gen-e0",
+    "topicId": "simple-interest",
+    "difficulty": "easy",
+    "question": "Find the simple interest on $100 at 10% for 1 year.",
+    "answer": "$10.00",
+    "hints": [
+      "I = P × r × t = 100 × 0.1 × 1."
+    ],
+    "solution": "I = $100 × 0.1 × 1 = $10.00.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "simple-interest-gen-e1",
+    "topicId": "simple-interest",
+    "difficulty": "easy",
+    "question": "Find the simple interest on $500 at 5% for 3 years.",
+    "answer": "$75.00",
+    "hints": [
+      "I = P × r × t = 500 × 0.05 × 3."
+    ],
+    "solution": "I = $500 × 0.05 × 3 = $75.00.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "simple-interest-gen-e2",
+    "topicId": "simple-interest",
+    "difficulty": "easy",
+    "question": "Find the simple interest on $200 at 10% for 3 years.",
+    "answer": "$60.00",
+    "hints": [
+      "I = P × r × t = 200 × 0.1 × 3."
+    ],
+    "solution": "I = $200 × 0.1 × 3 = $60.00.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "simple-interest-gen-e3",
+    "topicId": "simple-interest",
+    "difficulty": "easy",
+    "question": "Find the simple interest on $200 at 5% for 3 years.",
+    "answer": "$30.00",
+    "hints": [
+      "I = P × r × t = 200 × 0.05 × 3."
+    ],
+    "solution": "I = $200 × 0.05 × 3 = $30.00.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "simple-interest-gen-e4",
+    "topicId": "simple-interest",
+    "difficulty": "easy",
+    "question": "Find the simple interest on $500 at 10% for 1 year.",
+    "answer": "$50.00",
+    "hints": [
+      "I = P × r × t = 500 × 0.1 × 1."
+    ],
+    "solution": "I = $500 × 0.1 × 1 = $50.00.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "simple-interest-gen-e5",
+    "topicId": "simple-interest",
+    "difficulty": "easy",
+    "question": "Find the simple interest on $200 at 10% for 2 years.",
+    "answer": "$40.00",
+    "hints": [
+      "I = P × r × t = 200 × 0.1 × 2."
+    ],
+    "solution": "I = $200 × 0.1 × 2 = $40.00.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "simple-interest-gen-e6",
+    "topicId": "simple-interest",
+    "difficulty": "easy",
+    "question": "Find the simple interest on $500 at 5% for 3 years.",
+    "answer": "$75.00",
+    "hints": [
+      "I = P × r × t = 500 × 0.05 × 3."
+    ],
+    "solution": "I = $500 × 0.05 × 3 = $75.00.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "simple-interest-gen-e7",
+    "topicId": "simple-interest",
+    "difficulty": "easy",
+    "question": "Find the simple interest on $200 at 5% for 1 year.",
+    "answer": "$10.00",
+    "hints": [
+      "I = P × r × t = 200 × 0.05 × 1."
+    ],
+    "solution": "I = $200 × 0.05 × 1 = $10.00.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "simple-interest-gen-e8",
+    "topicId": "simple-interest",
+    "difficulty": "easy",
+    "question": "Find the simple interest on $500 at 10% for 1 year.",
+    "answer": "$50.00",
+    "hints": [
+      "I = P × r × t = 500 × 0.1 × 1."
+    ],
+    "solution": "I = $500 × 0.1 × 1 = $50.00.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "simple-interest-gen-e9",
+    "topicId": "simple-interest",
+    "difficulty": "easy",
+    "question": "Find the simple interest on $500 at 5% for 2 years.",
+    "answer": "$50.00",
+    "hints": [
+      "I = P × r × t = 500 × 0.05 × 2."
+    ],
+    "solution": "I = $500 × 0.05 × 2 = $50.00.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "simple-interest-gen-e10",
+    "topicId": "simple-interest",
+    "difficulty": "easy",
+    "question": "Find the simple interest on $100 at 10% for 1 year.",
+    "answer": "$10.00",
+    "hints": [
+      "I = P × r × t = 100 × 0.1 × 1."
+    ],
+    "solution": "I = $100 × 0.1 × 1 = $10.00.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "simple-interest-gen-e11",
+    "topicId": "simple-interest",
+    "difficulty": "easy",
+    "question": "Find the simple interest on $100 at 10% for 2 years.",
+    "answer": "$20.00",
+    "hints": [
+      "I = P × r × t = 100 × 0.1 × 2."
+    ],
+    "solution": "I = $100 × 0.1 × 2 = $20.00.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "simple-interest-gen-e12",
+    "topicId": "simple-interest",
+    "difficulty": "easy",
+    "question": "Find the simple interest on $100 at 10% for 2 years.",
+    "answer": "$20.00",
+    "hints": [
+      "I = P × r × t = 100 × 0.1 × 2."
+    ],
+    "solution": "I = $100 × 0.1 × 2 = $20.00.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "simple-interest-gen-e13",
+    "topicId": "simple-interest",
+    "difficulty": "easy",
+    "question": "Find the simple interest on $100 at 5% for 2 years.",
+    "answer": "$10.00",
+    "hints": [
+      "I = P × r × t = 100 × 0.05 × 2."
+    ],
+    "solution": "I = $100 × 0.05 × 2 = $10.00.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "simple-interest-gen-e14",
+    "topicId": "simple-interest",
+    "difficulty": "easy",
+    "question": "Find the simple interest on $100 at 10% for 3 years.",
+    "answer": "$30.00",
+    "hints": [
+      "I = P × r × t = 100 × 0.1 × 3."
+    ],
+    "solution": "I = $100 × 0.1 × 3 = $30.00.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "simple-interest-gen-m0",
+    "topicId": "simple-interest",
+    "difficulty": "medium",
+    "question": "Find the simple interest on $1000 at 8% for 1 year.",
+    "answer": "$80.00",
+    "hints": [
+      "I = P × r × t = 1000 × 0.08 × 1."
+    ],
+    "solution": "I = $1000 × 0.08 × 1 = $80.00.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "simple-interest-gen-m1",
+    "topicId": "simple-interest",
+    "difficulty": "medium",
+    "question": "Find the simple interest on $250 at 8% for 4 years.",
+    "answer": "$80.00",
+    "hints": [
+      "I = P × r × t = 250 × 0.08 × 4."
+    ],
+    "solution": "I = $250 × 0.08 × 4 = $80.00.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "simple-interest-gen-m2",
+    "topicId": "simple-interest",
+    "difficulty": "medium",
+    "question": "Find the simple interest on $500 at 5% for 4 years.",
+    "answer": "$100.00",
+    "hints": [
+      "I = P × r × t = 500 × 0.05 × 4."
+    ],
+    "solution": "I = $500 × 0.05 × 4 = $100.00.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "simple-interest-gen-m3",
+    "topicId": "simple-interest",
+    "difficulty": "medium",
+    "question": "Find the simple interest on $500 at 4% for 5 years.",
+    "answer": "$100.00",
+    "hints": [
+      "I = P × r × t = 500 × 0.04 × 5."
+    ],
+    "solution": "I = $500 × 0.04 × 5 = $100.00.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "simple-interest-gen-m4",
+    "topicId": "simple-interest",
+    "difficulty": "medium",
+    "question": "Find the simple interest on $250 at 5% for 1 year.",
+    "answer": "$12.50",
+    "hints": [
+      "I = P × r × t = 250 × 0.05 × 1."
+    ],
+    "solution": "I = $250 × 0.05 × 1 = $12.50.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "simple-interest-gen-m5",
+    "topicId": "simple-interest",
+    "difficulty": "medium",
+    "question": "Find the simple interest on $5000 at 8% for 5 years.",
+    "answer": "$2000.00",
+    "hints": [
+      "I = P × r × t = 5000 × 0.08 × 5."
+    ],
+    "solution": "I = $5000 × 0.08 × 5 = $2000.00.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "simple-interest-gen-m6",
+    "topicId": "simple-interest",
+    "difficulty": "medium",
+    "question": "Find the simple interest on $1000 at 8% for 5 years.",
+    "answer": "$400.00",
+    "hints": [
+      "I = P × r × t = 1000 × 0.08 × 5."
+    ],
+    "solution": "I = $1000 × 0.08 × 5 = $400.00.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "simple-interest-gen-m7",
+    "topicId": "simple-interest",
+    "difficulty": "medium",
+    "question": "Find the simple interest on $5000 at 4% for 1 year.",
+    "answer": "$200.00",
+    "hints": [
+      "I = P × r × t = 5000 × 0.04 × 1."
+    ],
+    "solution": "I = $5000 × 0.04 × 1 = $200.00.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "simple-interest-gen-m8",
+    "topicId": "simple-interest",
+    "difficulty": "medium",
+    "question": "Find the simple interest on $250 at 8% for 4 years.",
+    "answer": "$80.00",
+    "hints": [
+      "I = P × r × t = 250 × 0.08 × 4."
+    ],
+    "solution": "I = $250 × 0.08 × 4 = $80.00.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "simple-interest-gen-m9",
+    "topicId": "simple-interest",
+    "difficulty": "medium",
+    "question": "Find the simple interest on $1000 at 3% for 4 years.",
+    "answer": "$120.00",
+    "hints": [
+      "I = P × r × t = 1000 × 0.03 × 4."
+    ],
+    "solution": "I = $1000 × 0.03 × 4 = $120.00.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "simple-interest-gen-m10",
+    "topicId": "simple-interest",
+    "difficulty": "medium",
+    "question": "Find the simple interest on $2000 at 5% for 2 years.",
+    "answer": "$200.00",
+    "hints": [
+      "I = P × r × t = 2000 × 0.05 × 2."
+    ],
+    "solution": "I = $2000 × 0.05 × 2 = $200.00.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "simple-interest-gen-m11",
+    "topicId": "simple-interest",
+    "difficulty": "medium",
+    "question": "Find the simple interest on $500 at 3% for 1 year.",
+    "answer": "$15.00",
+    "hints": [
+      "I = P × r × t = 500 × 0.03 × 1."
+    ],
+    "solution": "I = $500 × 0.03 × 1 = $15.00.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "simple-interest-gen-m12",
+    "topicId": "simple-interest",
+    "difficulty": "medium",
+    "question": "Find the simple interest on $2000 at 5% for 2 years.",
+    "answer": "$200.00",
+    "hints": [
+      "I = P × r × t = 2000 × 0.05 × 2."
+    ],
+    "solution": "I = $2000 × 0.05 × 2 = $200.00.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "simple-interest-gen-m13",
+    "topicId": "simple-interest",
+    "difficulty": "medium",
+    "question": "Find the simple interest on $5000 at 5% for 3 years.",
+    "answer": "$750.00",
+    "hints": [
+      "I = P × r × t = 5000 × 0.05 × 3."
+    ],
+    "solution": "I = $5000 × 0.05 × 3 = $750.00.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "simple-interest-gen-m14",
+    "topicId": "simple-interest",
+    "difficulty": "medium",
+    "question": "Find the simple interest on $1000 at 5% for 3 years.",
+    "answer": "$150.00",
+    "hints": [
+      "I = P × r × t = 1000 × 0.05 × 3."
+    ],
+    "solution": "I = $1000 × 0.05 × 3 = $150.00.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "simple-interest-gen-m15",
+    "topicId": "simple-interest",
+    "difficulty": "medium",
+    "question": "Find the simple interest on $2000 at 4% for 4 years.",
+    "answer": "$320.00",
+    "hints": [
+      "I = P × r × t = 2000 × 0.04 × 4."
+    ],
+    "solution": "I = $2000 × 0.04 × 4 = $320.00.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "simple-interest-gen-m16",
+    "topicId": "simple-interest",
+    "difficulty": "medium",
+    "question": "Find the simple interest on $1000 at 5% for 4 years.",
+    "answer": "$200.00",
+    "hints": [
+      "I = P × r × t = 1000 × 0.05 × 4."
+    ],
+    "solution": "I = $1000 × 0.05 × 4 = $200.00.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "simple-interest-gen-m17",
+    "topicId": "simple-interest",
+    "difficulty": "medium",
+    "question": "Find the simple interest on $5000 at 8% for 1 year.",
+    "answer": "$400.00",
+    "hints": [
+      "I = P × r × t = 5000 × 0.08 × 1."
+    ],
+    "solution": "I = $5000 × 0.08 × 1 = $400.00.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "simple-interest-gen-m18",
+    "topicId": "simple-interest",
+    "difficulty": "medium",
+    "question": "Find the simple interest on $2000 at 5% for 3 years.",
+    "answer": "$300.00",
+    "hints": [
+      "I = P × r × t = 2000 × 0.05 × 3."
+    ],
+    "solution": "I = $2000 × 0.05 × 3 = $300.00.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "simple-interest-gen-m19",
+    "topicId": "simple-interest",
+    "difficulty": "medium",
+    "question": "Find the simple interest on $500 at 10% for 3 years.",
+    "answer": "$150.00",
+    "hints": [
+      "I = P × r × t = 500 × 0.1 × 3."
+    ],
+    "solution": "I = $500 × 0.1 × 3 = $150.00.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "simple-interest-gen-h0",
+    "topicId": "simple-interest",
+    "difficulty": "hard",
+    "question": "Find the simple interest on $500 at 3% for 4 years.",
+    "answer": "$60.00",
+    "hints": [
+      "I = P × r × t = 500 × 0.03 × 4."
+    ],
+    "solution": "I = $500 × 0.03 × 4 = $60.00.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "simple-interest-gen-h1",
+    "topicId": "simple-interest",
+    "difficulty": "hard",
+    "question": "Find the simple interest on $250 at 10% for 2 years.",
+    "answer": "$50.00",
+    "hints": [
+      "I = P × r × t = 250 × 0.1 × 2."
+    ],
+    "solution": "I = $250 × 0.1 × 2 = $50.00.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "simple-interest-gen-h2",
+    "topicId": "simple-interest",
+    "difficulty": "hard",
+    "question": "Find the simple interest on $250 at 6% for 4 years.",
+    "answer": "$60.00",
+    "hints": [
+      "I = P × r × t = 250 × 0.06 × 4."
+    ],
+    "solution": "I = $250 × 0.06 × 4 = $60.00.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "simple-interest-gen-h3",
+    "topicId": "simple-interest",
+    "difficulty": "hard",
+    "question": "Find the simple interest on $2000 at 5% for 1 year.",
+    "answer": "$100.00",
+    "hints": [
+      "I = P × r × t = 2000 × 0.05 × 1."
+    ],
+    "solution": "I = $2000 × 0.05 × 1 = $100.00.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "simple-interest-gen-h4",
+    "topicId": "simple-interest",
+    "difficulty": "hard",
+    "question": "Find the simple interest on $1000 at 10% for 1 year.",
+    "answer": "$100.00",
+    "hints": [
+      "I = P × r × t = 1000 × 0.1 × 1."
+    ],
+    "solution": "I = $1000 × 0.1 × 1 = $100.00.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "simple-interest-gen-h5",
+    "topicId": "simple-interest",
+    "difficulty": "hard",
+    "question": "Find the simple interest on $1000 at 3% for 2 years.",
+    "answer": "$60.00",
+    "hints": [
+      "I = P × r × t = 1000 × 0.03 × 2."
+    ],
+    "solution": "I = $1000 × 0.03 × 2 = $60.00.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "simple-interest-gen-h6",
+    "topicId": "simple-interest",
+    "difficulty": "hard",
+    "question": "Find the simple interest on $500 at 4% for 3 years.",
+    "answer": "$60.00",
+    "hints": [
+      "I = P × r × t = 500 × 0.04 × 3."
+    ],
+    "solution": "I = $500 × 0.04 × 3 = $60.00.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "simple-interest-gen-h7",
+    "topicId": "simple-interest",
+    "difficulty": "hard",
+    "question": "Find the simple interest on $5000 at 3% for 5 years.",
+    "answer": "$750.00",
+    "hints": [
+      "I = P × r × t = 5000 × 0.03 × 5."
+    ],
+    "solution": "I = $5000 × 0.03 × 5 = $750.00.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "simple-interest-gen-h8",
+    "topicId": "simple-interest",
+    "difficulty": "hard",
+    "question": "Find the simple interest on $5000 at 10% for 5 years.",
+    "answer": "$2500.00",
+    "hints": [
+      "I = P × r × t = 5000 × 0.1 × 5."
+    ],
+    "solution": "I = $5000 × 0.1 × 5 = $2500.00.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "simple-interest-gen-h9",
+    "topicId": "simple-interest",
+    "difficulty": "hard",
+    "question": "Find the simple interest on $1000 at 5% for 2 years.",
+    "answer": "$100.00",
+    "hints": [
+      "I = P × r × t = 1000 × 0.05 × 2."
+    ],
+    "solution": "I = $1000 × 0.05 × 2 = $100.00.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "simple-interest-gen-h10",
+    "topicId": "simple-interest",
+    "difficulty": "hard",
+    "question": "Find the simple interest on $500 at 10% for 2 years.",
+    "answer": "$100.00",
+    "hints": [
+      "I = P × r × t = 500 × 0.1 × 2."
+    ],
+    "solution": "I = $500 × 0.1 × 2 = $100.00.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "simple-interest-gen-h11",
+    "topicId": "simple-interest",
+    "difficulty": "hard",
+    "question": "Find the simple interest on $1000 at 3% for 1 year.",
+    "answer": "$30.00",
+    "hints": [
+      "I = P × r × t = 1000 × 0.03 × 1."
+    ],
+    "solution": "I = $1000 × 0.03 × 1 = $30.00.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "simple-interest-gen-h12",
+    "topicId": "simple-interest",
+    "difficulty": "hard",
+    "question": "Find the simple interest on $2000 at 10% for 4 years.",
+    "answer": "$800.00",
+    "hints": [
+      "I = P × r × t = 2000 × 0.1 × 4."
+    ],
+    "solution": "I = $2000 × 0.1 × 4 = $800.00.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "simple-interest-gen-h13",
+    "topicId": "simple-interest",
+    "difficulty": "hard",
+    "question": "Find the simple interest on $5000 at 10% for 4 years.",
+    "answer": "$2000.00",
+    "hints": [
+      "I = P × r × t = 5000 × 0.1 × 4."
+    ],
+    "solution": "I = $5000 × 0.1 × 4 = $2000.00.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "simple-interest-gen-h14",
+    "topicId": "simple-interest",
+    "difficulty": "hard",
+    "question": "Find the simple interest on $2000 at 4% for 1 year.",
+    "answer": "$80.00",
+    "hints": [
+      "I = P × r × t = 2000 × 0.04 × 1."
+    ],
+    "solution": "I = $2000 × 0.04 × 1 = $80.00.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  }
+]

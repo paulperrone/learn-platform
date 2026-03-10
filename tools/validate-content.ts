@@ -75,11 +75,13 @@ if (existsSync(preGraphPath)) {
   for (const t of g.topics ?? []) graphTopicIds.add(t.id);
 }
 
-// Validate problems
-const problemsDir = join(contentDir, "problems");
+// Validate problems (hand-authored + generated)
+const problemsDirs = [join(contentDir, "problems"), join(contentDir, "problems-generated")];
+let totalProblemFiles = 0;
+for (const problemsDir of problemsDirs) {
 if (existsSync(problemsDir)) {
   const files = readdirSync(problemsDir).filter((f) => f.endsWith(".json"));
-  console.log(`Validating ${files.length} problem files...`);
+  totalProblemFiles += files.length;
 
   for (const file of files) {
     const problems = JSON.parse(readFileSync(join(problemsDir, file), "utf-8"));
@@ -117,6 +119,8 @@ if (existsSync(problemsDir)) {
     }
   }
 }
+}
+console.log(`Validating ${totalProblemFiles} problem files...`);
 
 // Validate examples
 const examplesDir = join(contentDir, "examples");
@@ -159,11 +163,13 @@ const graphPath = join(contentDir, "graph.json");
 if (existsSync(graphPath)) {
   const graph = JSON.parse(readFileSync(graphPath, "utf-8"));
   const problemTopics = new Set(
-    existsSync(problemsDir)
-      ? readdirSync(problemsDir)
-          .filter((f) => f.endsWith(".json"))
-          .map((f) => f.replace(".json", ""))
-      : []
+    problemsDirs.flatMap(dir =>
+      existsSync(dir)
+        ? readdirSync(dir)
+            .filter((f) => f.endsWith(".json"))
+            .map((f) => f.replace(".json", ""))
+        : []
+    )
   );
   const exampleTopics = new Set(
     existsSync(examplesDir)

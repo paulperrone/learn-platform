@@ -1,0 +1,205 @@
+[
+  {
+    "id": "place-value-tens-ones-sup-e0",
+    "topicId": "place-value-tens-ones",
+    "difficulty": "easy",
+    "question": "In the number 34, what digit is in the tens place?",
+    "answer": "3",
+    "hints": [
+      "The tens place is the digit on the left."
+    ],
+    "solution": "In 34, the digit 3 is in the tens place. It represents 3 tens, or 30.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-tens-ones-sup-e1",
+    "topicId": "place-value-tens-ones",
+    "difficulty": "easy",
+    "question": "In the number 56, what digit is in the ones place?",
+    "answer": "6",
+    "hints": [
+      "The ones place is the digit on the right."
+    ],
+    "solution": "In 56, the digit 6 is in the ones place. It represents 6 ones.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-tens-ones-sup-e2",
+    "topicId": "place-value-tens-ones",
+    "difficulty": "easy",
+    "question": "What number has 2 tens and 5 ones?",
+    "answer": "25",
+    "hints": [
+      "2 tens = 20. 5 ones = 5. Add them together."
+    ],
+    "solution": "2 tens = 20, and 5 ones = 5. 20 + 5 = 25.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-tens-ones-sup-e3",
+    "topicId": "place-value-tens-ones",
+    "difficulty": "easy",
+    "question": "How many tens are in 70?",
+    "answer": "7",
+    "hints": [
+      "70 = ? tens and 0 ones."
+    ],
+    "solution": "70 has 7 tens and 0 ones. 7 x 10 = 70.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-tens-ones-sup-e4",
+    "topicId": "place-value-tens-ones",
+    "difficulty": "easy",
+    "question": "What number has 4 tens and 0 ones?",
+    "answer": "40",
+    "hints": [
+      "4 tens = 40. There are no extra ones."
+    ],
+    "solution": "4 tens = 40, and 0 ones = 0. The number is 40.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-tens-ones-sup-m0",
+    "topicId": "place-value-tens-ones",
+    "difficulty": "medium",
+    "question": "What is the value of the digit 8 in the number 83?",
+    "answer": "80",
+    "hints": [
+      "The 8 is in the tens place.",
+      "A digit in the tens place is worth that many tens."
+    ],
+    "solution": "In 83, the 8 is in the tens place. Its value is 8 tens = 80.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-tens-ones-sup-m1",
+    "topicId": "place-value-tens-ones",
+    "difficulty": "medium",
+    "question": "Write 47 in expanded form (tens + ones).",
+    "answer": "40 + 7",
+    "hints": [
+      "Break the number into its tens part and its ones part.",
+      "4 tens = 40, 7 ones = 7."
+    ],
+    "solution": "47 = 40 + 7. The 4 in the tens place is worth 40, and the 7 in the ones place is worth 7.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-tens-ones-sup-m2",
+    "topicId": "place-value-tens-ones",
+    "difficulty": "medium",
+    "question": "Which number is greater: a number with 6 tens and 3 ones, or a number with 3 tens and 6 ones?",
+    "answer": "6 tens and 3 ones",
+    "hints": [
+      "First make each number: 6 tens and 3 ones = 63. 3 tens and 6 ones = 36.",
+      "Compare tens first."
+    ],
+    "solution": "6 tens and 3 ones = 63. 3 tens and 6 ones = 36. 63 > 36 because 6 tens is more than 3 tens.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-tens-ones-sup-m3",
+    "topicId": "place-value-tens-ones",
+    "difficulty": "medium",
+    "question": "Tom says 52 has 5 ones and 2 tens. Is Tom correct? Answer yes or no and explain.",
+    "answer": "no",
+    "hints": [
+      "In a two-digit number, the left digit is tens and the right digit is ones."
+    ],
+    "solution": "No, Tom is incorrect. In 52, the 5 is in the tens place (5 tens = 50) and the 2 is in the ones place (2 ones). Tom mixed up the places.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-tens-ones-sup-m4",
+    "topicId": "place-value-tens-ones",
+    "difficulty": "medium",
+    "question": "Add 10 to 38. What do you get?",
+    "answer": "48",
+    "hints": [
+      "Adding 10 increases the tens digit by 1.",
+      "The ones digit stays the same."
+    ],
+    "solution": "38 + 10 = 48. When you add 10, the tens digit goes from 3 to 4. The ones digit (8) does not change.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-tens-ones-sup-h0",
+    "topicId": "place-value-tens-ones",
+    "difficulty": "hard",
+    "question": "I am a two-digit number. My tens digit is 3 more than my ones digit. My ones digit is 2. What number am I?",
+    "answer": "52",
+    "hints": [
+      "Ones digit = 2. Tens digit = 2 + 3 = ?",
+      "Put the tens digit and ones digit together."
+    ],
+    "solution": "Ones digit = 2. Tens digit = 2 + 3 = 5. The number is 52.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-tens-ones-sup-h1",
+    "topicId": "place-value-tens-ones",
+    "difficulty": "hard",
+    "question": "The number 64 has 6 tens and 4 ones. Can you also think of it as 5 tens and __ ones?",
+    "answer": "14",
+    "hints": [
+      "Take away 1 ten from 6 tens. That leaves 5 tens.",
+      "That 1 ten you removed becomes 10 ones. Add those to the 4 ones."
+    ],
+    "solution": "64 = 6 tens + 4 ones = 5 tens + 14 ones. Taking 1 ten and converting it to 10 ones: 4 + 10 = 14 ones.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-tens-ones-sup-h2",
+    "topicId": "place-value-tens-ones",
+    "difficulty": "hard",
+    "question": "Using the digits 7 and 3, what is the largest two-digit number you can make?",
+    "answer": "73",
+    "hints": [
+      "To make the largest number, put the bigger digit in the tens place."
+    ],
+    "solution": "The two possible numbers are 73 and 37. 73 is larger because it has 7 tens (70), while 37 has only 3 tens (30).",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-tens-ones-sup-h3",
+    "topicId": "place-value-tens-ones",
+    "difficulty": "hard",
+    "question": "What happens to the number 45 when you swap its digits? What is the new number, and how much less is it?",
+    "answer": "54, it is 9 more not less",
+    "hints": [
+      "Swapping digits of 45 gives 54.",
+      "Is 54 more or less than 45?"
+    ],
+    "solution": "Swapping the digits of 45 gives 54. 54 is actually 9 MORE than 45, not less. 54 - 45 = 9.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-tens-ones-sup-h4",
+    "topicId": "place-value-tens-ones",
+    "difficulty": "hard",
+    "question": "A store has 9 packs of 10 pencils and 6 loose pencils. How many pencils are there in all?",
+    "answer": "96",
+    "hints": [
+      "9 packs of 10 = 9 tens = 90.",
+      "Add the 6 loose pencils: 90 + 6."
+    ],
+    "solution": "9 packs of 10 = 90 pencils. Plus 6 loose pencils: 90 + 6 = 96 pencils total. That is 9 tens and 6 ones.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  }
+]

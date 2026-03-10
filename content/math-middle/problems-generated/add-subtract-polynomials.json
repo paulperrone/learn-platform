@@ -1,0 +1,652 @@
+[
+  {
+    "id": "add-subtract-polynomials-gen-e0",
+    "topicId": "add-subtract-polynomials",
+    "difficulty": "easy",
+    "question": "Simplify: (5x + 5) + (1x + 5)",
+    "answer": "6x + 10",
+    "hints": [
+      "Combine like terms."
+    ],
+    "solution": "Add x terms: 5 + 1 = 6. Constants: 5 + 5 = 10.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-subtract-polynomials-gen-e1",
+    "topicId": "add-subtract-polynomials",
+    "difficulty": "easy",
+    "question": "Simplify: (2x + 6) + (7x + 6)",
+    "answer": "9x + 12",
+    "hints": [
+      "Combine like terms."
+    ],
+    "solution": "Add x terms: 2 + 7 = 9. Constants: 6 + 6 = 12.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-subtract-polynomials-gen-e2",
+    "topicId": "add-subtract-polynomials",
+    "difficulty": "easy",
+    "question": "Simplify: (6x + 7) + (4x + 4)",
+    "answer": "10x + 11",
+    "hints": [
+      "Combine like terms."
+    ],
+    "solution": "Add x terms: 6 + 4 = 10. Constants: 7 + 4 = 11.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-subtract-polynomials-gen-e3",
+    "topicId": "add-subtract-polynomials",
+    "difficulty": "easy",
+    "question": "Simplify: (7x + 4) − (5x + 3)",
+    "answer": "2x + 1",
+    "hints": [
+      "Combine like terms."
+    ],
+    "solution": "Subtract x terms: 7 − 5 = 2. Constants: 4 − 3 = 1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-subtract-polynomials-gen-e4",
+    "topicId": "add-subtract-polynomials",
+    "difficulty": "easy",
+    "question": "Simplify: (2x + 3) + (8x + 5)",
+    "answer": "10x + 8",
+    "hints": [
+      "Combine like terms."
+    ],
+    "solution": "Add x terms: 2 + 8 = 10. Constants: 3 + 5 = 8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-subtract-polynomials-gen-e5",
+    "topicId": "add-subtract-polynomials",
+    "difficulty": "easy",
+    "question": "Simplify: (8x + 1) − (8x + 3)",
+    "answer": "0x − 2",
+    "hints": [
+      "Combine like terms."
+    ],
+    "solution": "Subtract x terms: 8 − 8 = 0. Constants: 1 − 3 = -2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-subtract-polynomials-gen-e6",
+    "topicId": "add-subtract-polynomials",
+    "difficulty": "easy",
+    "question": "Simplify: (2x + 8) − (1x + 1)",
+    "answer": "1x + 7",
+    "hints": [
+      "Combine like terms."
+    ],
+    "solution": "Subtract x terms: 2 − 1 = 1. Constants: 8 − 1 = 7.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-subtract-polynomials-gen-e7",
+    "topicId": "add-subtract-polynomials",
+    "difficulty": "easy",
+    "question": "Simplify: (4x + 6) + (8x + 1)",
+    "answer": "12x + 7",
+    "hints": [
+      "Combine like terms."
+    ],
+    "solution": "Add x terms: 4 + 8 = 12. Constants: 6 + 1 = 7.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-subtract-polynomials-gen-e8",
+    "topicId": "add-subtract-polynomials",
+    "difficulty": "easy",
+    "question": "Simplify: (2x + 7) + (7x + 7)",
+    "answer": "9x + 14",
+    "hints": [
+      "Combine like terms."
+    ],
+    "solution": "Add x terms: 2 + 7 = 9. Constants: 7 + 7 = 14.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-subtract-polynomials-gen-e9",
+    "topicId": "add-subtract-polynomials",
+    "difficulty": "easy",
+    "question": "Simplify: (4x + 6) + (5x + 2)",
+    "answer": "9x + 8",
+    "hints": [
+      "Combine like terms."
+    ],
+    "solution": "Add x terms: 4 + 5 = 9. Constants: 6 + 2 = 8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-subtract-polynomials-gen-e10",
+    "topicId": "add-subtract-polynomials",
+    "difficulty": "easy",
+    "question": "Simplify: (2x + 4) + (5x + 2)",
+    "answer": "7x + 6",
+    "hints": [
+      "Combine like terms."
+    ],
+    "solution": "Add x terms: 2 + 5 = 7. Constants: 4 + 2 = 6.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-subtract-polynomials-gen-e11",
+    "topicId": "add-subtract-polynomials",
+    "difficulty": "easy",
+    "question": "Simplify: (4x + 2) + (1x + 1)",
+    "answer": "5x + 3",
+    "hints": [
+      "Combine like terms."
+    ],
+    "solution": "Add x terms: 4 + 1 = 5. Constants: 2 + 1 = 3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-subtract-polynomials-gen-e12",
+    "topicId": "add-subtract-polynomials",
+    "difficulty": "easy",
+    "question": "Simplify: (6x + 6) + (6x + 3)",
+    "answer": "12x + 9",
+    "hints": [
+      "Combine like terms."
+    ],
+    "solution": "Add x terms: 6 + 6 = 12. Constants: 6 + 3 = 9.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-subtract-polynomials-gen-e13",
+    "topicId": "add-subtract-polynomials",
+    "difficulty": "easy",
+    "question": "Simplify: (7x + 3) + (7x + 5)",
+    "answer": "14x + 8",
+    "hints": [
+      "Combine like terms."
+    ],
+    "solution": "Add x terms: 7 + 7 = 14. Constants: 3 + 5 = 8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-subtract-polynomials-gen-e14",
+    "topicId": "add-subtract-polynomials",
+    "difficulty": "easy",
+    "question": "Simplify: (8x + 5) − (3x + 5)",
+    "answer": "5x + 0",
+    "hints": [
+      "Combine like terms."
+    ],
+    "solution": "Subtract x terms: 8 − 3 = 5. Constants: 5 − 5 = 0.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-subtract-polynomials-gen-m0",
+    "topicId": "add-subtract-polynomials",
+    "difficulty": "medium",
+    "question": "Simplify: (6x + 2) − (1x + 8)",
+    "answer": "5x − 6",
+    "hints": [
+      "Combine like terms."
+    ],
+    "solution": "Subtract x terms: 6 − 1 = 5. Constants: 2 − 8 = -6.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-subtract-polynomials-gen-m1",
+    "topicId": "add-subtract-polynomials",
+    "difficulty": "medium",
+    "question": "Simplify: (7x + 7) − (3x + 8)",
+    "answer": "4x − 1",
+    "hints": [
+      "Combine like terms."
+    ],
+    "solution": "Subtract x terms: 7 − 3 = 4. Constants: 7 − 8 = -1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-subtract-polynomials-gen-m2",
+    "topicId": "add-subtract-polynomials",
+    "difficulty": "medium",
+    "question": "Simplify: (8x + 6) + (7x + 8)",
+    "answer": "15x + 14",
+    "hints": [
+      "Combine like terms."
+    ],
+    "solution": "Add x terms: 8 + 7 = 15. Constants: 6 + 8 = 14.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-subtract-polynomials-gen-m3",
+    "topicId": "add-subtract-polynomials",
+    "difficulty": "medium",
+    "question": "Simplify: (4x + 3) − (7x + 7)",
+    "answer": "-3x − 4",
+    "hints": [
+      "Combine like terms."
+    ],
+    "solution": "Subtract x terms: 4 − 7 = -3. Constants: 3 − 7 = -4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-subtract-polynomials-gen-m4",
+    "topicId": "add-subtract-polynomials",
+    "difficulty": "medium",
+    "question": "Simplify: (2x + 3) + (4x + 2)",
+    "answer": "6x + 5",
+    "hints": [
+      "Combine like terms."
+    ],
+    "solution": "Add x terms: 2 + 4 = 6. Constants: 3 + 2 = 5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-subtract-polynomials-gen-m5",
+    "topicId": "add-subtract-polynomials",
+    "difficulty": "medium",
+    "question": "Simplify: (4x + 5) + (6x + 4)",
+    "answer": "10x + 9",
+    "hints": [
+      "Combine like terms."
+    ],
+    "solution": "Add x terms: 4 + 6 = 10. Constants: 5 + 4 = 9.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-subtract-polynomials-gen-m6",
+    "topicId": "add-subtract-polynomials",
+    "difficulty": "medium",
+    "question": "Simplify: (3x + 4) + (3x + 8)",
+    "answer": "6x + 12",
+    "hints": [
+      "Combine like terms."
+    ],
+    "solution": "Add x terms: 3 + 3 = 6. Constants: 4 + 8 = 12.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-subtract-polynomials-gen-m7",
+    "topicId": "add-subtract-polynomials",
+    "difficulty": "medium",
+    "question": "Simplify: (6x + 3) − (8x + 6)",
+    "answer": "-2x − 3",
+    "hints": [
+      "Combine like terms."
+    ],
+    "solution": "Subtract x terms: 6 − 8 = -2. Constants: 3 − 6 = -3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-subtract-polynomials-gen-m8",
+    "topicId": "add-subtract-polynomials",
+    "difficulty": "medium",
+    "question": "Simplify: (6x + 7) − (5x + 8)",
+    "answer": "1x − 1",
+    "hints": [
+      "Combine like terms."
+    ],
+    "solution": "Subtract x terms: 6 − 5 = 1. Constants: 7 − 8 = -1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-subtract-polynomials-gen-m9",
+    "topicId": "add-subtract-polynomials",
+    "difficulty": "medium",
+    "question": "Simplify: (4x + 6) + (1x + 7)",
+    "answer": "5x + 13",
+    "hints": [
+      "Combine like terms."
+    ],
+    "solution": "Add x terms: 4 + 1 = 5. Constants: 6 + 7 = 13.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-subtract-polynomials-gen-m10",
+    "topicId": "add-subtract-polynomials",
+    "difficulty": "medium",
+    "question": "Simplify: (3x + 3) − (3x + 3)",
+    "answer": "0x + 0",
+    "hints": [
+      "Combine like terms."
+    ],
+    "solution": "Subtract x terms: 3 − 3 = 0. Constants: 3 − 3 = 0.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-subtract-polynomials-gen-m11",
+    "topicId": "add-subtract-polynomials",
+    "difficulty": "medium",
+    "question": "Simplify: (7x + 3) − (5x + 1)",
+    "answer": "2x + 2",
+    "hints": [
+      "Combine like terms."
+    ],
+    "solution": "Subtract x terms: 7 − 5 = 2. Constants: 3 − 1 = 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-subtract-polynomials-gen-m12",
+    "topicId": "add-subtract-polynomials",
+    "difficulty": "medium",
+    "question": "Simplify: (1x + 3) + (6x + 5)",
+    "answer": "7x + 8",
+    "hints": [
+      "Combine like terms."
+    ],
+    "solution": "Add x terms: 1 + 6 = 7. Constants: 3 + 5 = 8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-subtract-polynomials-gen-m13",
+    "topicId": "add-subtract-polynomials",
+    "difficulty": "medium",
+    "question": "Simplify: (6x + 5) − (7x + 7)",
+    "answer": "-1x − 2",
+    "hints": [
+      "Combine like terms."
+    ],
+    "solution": "Subtract x terms: 6 − 7 = -1. Constants: 5 − 7 = -2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-subtract-polynomials-gen-m14",
+    "topicId": "add-subtract-polynomials",
+    "difficulty": "medium",
+    "question": "Simplify: (1x + 2) − (8x + 4)",
+    "answer": "-7x − 2",
+    "hints": [
+      "Combine like terms."
+    ],
+    "solution": "Subtract x terms: 1 − 8 = -7. Constants: 2 − 4 = -2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-subtract-polynomials-gen-m15",
+    "topicId": "add-subtract-polynomials",
+    "difficulty": "medium",
+    "question": "Simplify: (3x + 8) − (7x + 7)",
+    "answer": "-4x + 1",
+    "hints": [
+      "Combine like terms."
+    ],
+    "solution": "Subtract x terms: 3 − 7 = -4. Constants: 8 − 7 = 1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-subtract-polynomials-gen-m16",
+    "topicId": "add-subtract-polynomials",
+    "difficulty": "medium",
+    "question": "Simplify: (3x + 1) − (2x + 4)",
+    "answer": "1x − 3",
+    "hints": [
+      "Combine like terms."
+    ],
+    "solution": "Subtract x terms: 3 − 2 = 1. Constants: 1 − 4 = -3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-subtract-polynomials-gen-m17",
+    "topicId": "add-subtract-polynomials",
+    "difficulty": "medium",
+    "question": "Simplify: (7x + 7) + (4x + 6)",
+    "answer": "11x + 13",
+    "hints": [
+      "Combine like terms."
+    ],
+    "solution": "Add x terms: 7 + 4 = 11. Constants: 7 + 6 = 13.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-subtract-polynomials-gen-m18",
+    "topicId": "add-subtract-polynomials",
+    "difficulty": "medium",
+    "question": "Simplify: (7x + 2) − (7x + 2)",
+    "answer": "0x + 0",
+    "hints": [
+      "Combine like terms."
+    ],
+    "solution": "Subtract x terms: 7 − 7 = 0. Constants: 2 − 2 = 0.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-subtract-polynomials-gen-m19",
+    "topicId": "add-subtract-polynomials",
+    "difficulty": "medium",
+    "question": "Simplify: (3x + 6) − (5x + 5)",
+    "answer": "-2x + 1",
+    "hints": [
+      "Combine like terms."
+    ],
+    "solution": "Subtract x terms: 3 − 5 = -2. Constants: 6 − 5 = 1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-subtract-polynomials-gen-h0",
+    "topicId": "add-subtract-polynomials",
+    "difficulty": "hard",
+    "question": "Simplify: (8x + 5) + (7x + 3)",
+    "answer": "15x + 8",
+    "hints": [
+      "Combine like terms."
+    ],
+    "solution": "Add x terms: 8 + 7 = 15. Constants: 5 + 3 = 8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-subtract-polynomials-gen-h1",
+    "topicId": "add-subtract-polynomials",
+    "difficulty": "hard",
+    "question": "Simplify: (4x + 4) + (2x + 1)",
+    "answer": "6x + 5",
+    "hints": [
+      "Combine like terms."
+    ],
+    "solution": "Add x terms: 4 + 2 = 6. Constants: 4 + 1 = 5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-subtract-polynomials-gen-h2",
+    "topicId": "add-subtract-polynomials",
+    "difficulty": "hard",
+    "question": "Simplify: (4x + 2) + (7x + 6)",
+    "answer": "11x + 8",
+    "hints": [
+      "Combine like terms."
+    ],
+    "solution": "Add x terms: 4 + 7 = 11. Constants: 2 + 6 = 8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-subtract-polynomials-gen-h3",
+    "topicId": "add-subtract-polynomials",
+    "difficulty": "hard",
+    "question": "Simplify: (8x + 3) + (4x + 4)",
+    "answer": "12x + 7",
+    "hints": [
+      "Combine like terms."
+    ],
+    "solution": "Add x terms: 8 + 4 = 12. Constants: 3 + 4 = 7.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-subtract-polynomials-gen-h4",
+    "topicId": "add-subtract-polynomials",
+    "difficulty": "hard",
+    "question": "Simplify: (1x + 2) − (7x + 8)",
+    "answer": "-6x − 6",
+    "hints": [
+      "Combine like terms."
+    ],
+    "solution": "Subtract x terms: 1 − 7 = -6. Constants: 2 − 8 = -6.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-subtract-polynomials-gen-h5",
+    "topicId": "add-subtract-polynomials",
+    "difficulty": "hard",
+    "question": "Simplify: (6x + 8) + (6x + 6)",
+    "answer": "12x + 14",
+    "hints": [
+      "Combine like terms."
+    ],
+    "solution": "Add x terms: 6 + 6 = 12. Constants: 8 + 6 = 14.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-subtract-polynomials-gen-h6",
+    "topicId": "add-subtract-polynomials",
+    "difficulty": "hard",
+    "question": "Simplify: (2x + 8) − (1x + 2)",
+    "answer": "1x + 6",
+    "hints": [
+      "Combine like terms."
+    ],
+    "solution": "Subtract x terms: 2 − 1 = 1. Constants: 8 − 2 = 6.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-subtract-polynomials-gen-h7",
+    "topicId": "add-subtract-polynomials",
+    "difficulty": "hard",
+    "question": "Simplify: (5x + 1) + (8x + 3)",
+    "answer": "13x + 4",
+    "hints": [
+      "Combine like terms."
+    ],
+    "solution": "Add x terms: 5 + 8 = 13. Constants: 1 + 3 = 4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-subtract-polynomials-gen-h8",
+    "topicId": "add-subtract-polynomials",
+    "difficulty": "hard",
+    "question": "Simplify: (7x + 7) − (4x + 1)",
+    "answer": "3x + 6",
+    "hints": [
+      "Combine like terms."
+    ],
+    "solution": "Subtract x terms: 7 − 4 = 3. Constants: 7 − 1 = 6.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-subtract-polynomials-gen-h9",
+    "topicId": "add-subtract-polynomials",
+    "difficulty": "hard",
+    "question": "Simplify: (6x + 8) − (6x + 1)",
+    "answer": "0x + 7",
+    "hints": [
+      "Combine like terms."
+    ],
+    "solution": "Subtract x terms: 6 − 6 = 0. Constants: 8 − 1 = 7.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-subtract-polynomials-gen-h10",
+    "topicId": "add-subtract-polynomials",
+    "difficulty": "hard",
+    "question": "Simplify: (2x + 1) − (8x + 2)",
+    "answer": "-6x − 1",
+    "hints": [
+      "Combine like terms."
+    ],
+    "solution": "Subtract x terms: 2 − 8 = -6. Constants: 1 − 2 = -1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-subtract-polynomials-gen-h11",
+    "topicId": "add-subtract-polynomials",
+    "difficulty": "hard",
+    "question": "Simplify: (8x + 1) + (3x + 2)",
+    "answer": "11x + 3",
+    "hints": [
+      "Combine like terms."
+    ],
+    "solution": "Add x terms: 8 + 3 = 11. Constants: 1 + 2 = 3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-subtract-polynomials-gen-h12",
+    "topicId": "add-subtract-polynomials",
+    "difficulty": "hard",
+    "question": "Simplify: (3x + 3) + (7x + 2)",
+    "answer": "10x + 5",
+    "hints": [
+      "Combine like terms."
+    ],
+    "solution": "Add x terms: 3 + 7 = 10. Constants: 3 + 2 = 5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-subtract-polynomials-gen-h13",
+    "topicId": "add-subtract-polynomials",
+    "difficulty": "hard",
+    "question": "Simplify: (8x + 8) + (1x + 7)",
+    "answer": "9x + 15",
+    "hints": [
+      "Combine like terms."
+    ],
+    "solution": "Add x terms: 8 + 1 = 9. Constants: 8 + 7 = 15.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-subtract-polynomials-gen-h14",
+    "topicId": "add-subtract-polynomials",
+    "difficulty": "hard",
+    "question": "Simplify: (8x + 1) + (4x + 7)",
+    "answer": "12x + 8",
+    "hints": [
+      "Combine like terms."
+    ],
+    "solution": "Add x terms: 8 + 4 = 12. Constants: 1 + 7 = 8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  }
+]

@@ -1,0 +1,204 @@
+[
+  {
+    "id": "properties-of-multiplication-sup-e0",
+    "topicId": "properties-of-multiplication",
+    "difficulty": "easy",
+    "question": "3 × 4 = 12 and 4 × 3 = 12. What property of multiplication does this show?",
+    "answer": "commutative",
+    "hints": [
+      "The order of the numbers changed but the answer stayed the same."
+    ],
+    "solution": "This shows the commutative property: changing the order of the factors does not change the product. a × b = b × a.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "properties-of-multiplication-sup-e1",
+    "topicId": "properties-of-multiplication",
+    "difficulty": "easy",
+    "question": "What is 1 × 457?",
+    "answer": "457",
+    "hints": [
+      "Any number multiplied by 1 equals itself."
+    ],
+    "solution": "1 × 457 = 457. This is the identity property of multiplication: multiplying by 1 does not change the number.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "properties-of-multiplication-sup-e2",
+    "topicId": "properties-of-multiplication",
+    "difficulty": "easy",
+    "question": "What is 6 × 0?",
+    "answer": "0",
+    "hints": [
+      "Any number multiplied by 0 equals what?"
+    ],
+    "solution": "6 × 0 = 0. This is the zero property of multiplication: any number times 0 is 0.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "properties-of-multiplication-sup-e3",
+    "topicId": "properties-of-multiplication",
+    "difficulty": "easy",
+    "question": "Which property says you can change the order of factors without changing the product?",
+    "answer": "commutative property",
+    "hints": [
+      "'Commute' means to move or switch places."
+    ],
+    "solution": "The commutative property of multiplication says a × b = b × a. You can switch the order of the factors.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "properties-of-multiplication-sup-e4",
+    "topicId": "properties-of-multiplication",
+    "difficulty": "easy",
+    "question": "True or false: 8 × 5 gives the same answer as 5 × 8.",
+    "answer": "true",
+    "hints": [
+      "This is an example of the commutative property."
+    ],
+    "solution": "True. 8 × 5 = 40 and 5 × 8 = 40. The commutative property guarantees the same product regardless of order.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "properties-of-multiplication-sup-m0",
+    "topicId": "properties-of-multiplication",
+    "difficulty": "medium",
+    "question": "Use the distributive property to solve 7 × 8 by breaking 8 into 5 + 3. Show the two simpler multiplications.",
+    "answer": "35 + 21 = 56",
+    "hints": [
+      "7 × 8 = 7 × (5 + 3) = (7 × 5) + (7 × 3).",
+      "Calculate each part separately."
+    ],
+    "solution": "7 × 8 = 7 × (5 + 3) = (7 × 5) + (7 × 3) = 35 + 21 = 56. The distributive property lets you break apart one factor to make multiplication easier.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "properties-of-multiplication-sup-m1",
+    "topicId": "properties-of-multiplication",
+    "difficulty": "medium",
+    "question": "(2 × 3) × 4 = 2 × (3 × 4). What property is this?",
+    "answer": "associative",
+    "hints": [
+      "The factors are the same, but the grouping (parentheses) changed."
+    ],
+    "solution": "This is the associative property of multiplication. It says you can change the grouping of factors without changing the product: (a × b) × c = a × (b × c).",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "properties-of-multiplication-sup-m2",
+    "topicId": "properties-of-multiplication",
+    "difficulty": "medium",
+    "question": "A student needs to calculate 4 × 7 × 25. Use the associative and commutative properties to make this easier. What is the answer?",
+    "answer": "700",
+    "hints": [
+      "Rearrange: 4 × 25 × 7 (commutative).",
+      "4 × 25 = 100, then 100 × 7 = 700."
+    ],
+    "solution": "Rearrange (commutative): 4 × 25 × 7. Regroup (associative): (4 × 25) × 7 = 100 × 7 = 700.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "properties-of-multiplication-sup-m3",
+    "topicId": "properties-of-multiplication",
+    "difficulty": "medium",
+    "question": "Dan says: '5 × (3 + 2) = (5 × 3) + 2 = 17.' What mistake did Dan make?",
+    "answer": "he did not distribute the 5 to both numbers inside the parentheses",
+    "hints": [
+      "The distributive property says a × (b + c) = (a × b) + (a × c).",
+      "Dan forgot to multiply 5 × 2."
+    ],
+    "solution": "Dan forgot to distribute the 5 to both terms. Correct: 5 × (3 + 2) = (5 × 3) + (5 × 2) = 15 + 10 = 25. Dan only distributed to the 3 and left the 2 unchanged.",
+    "cognitiveDemand": "error-analysis",
+    "source": "generated"
+  },
+  {
+    "id": "properties-of-multiplication-sup-m4",
+    "topicId": "properties-of-multiplication",
+    "difficulty": "medium",
+    "question": "Use the distributive property to calculate 6 × 12 by breaking 12 into 10 + 2.",
+    "answer": "72",
+    "hints": [
+      "6 × 12 = 6 × (10 + 2) = (6 × 10) + (6 × 2)."
+    ],
+    "solution": "6 × 12 = 6 × (10 + 2) = (6 × 10) + (6 × 2) = 60 + 12 = 72.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "properties-of-multiplication-sup-h0",
+    "topicId": "properties-of-multiplication",
+    "difficulty": "hard",
+    "question": "Does the commutative property work for division? Use an example to explain.",
+    "answer": "no",
+    "hints": [
+      "Try: 12 ÷ 3 and 3 ÷ 12. Are they the same?"
+    ],
+    "solution": "No. 12 ÷ 3 = 4, but 3 ÷ 12 = 1/4. These are different, so division is NOT commutative. The order matters for division.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "properties-of-multiplication-sup-h1",
+    "topicId": "properties-of-multiplication",
+    "difficulty": "hard",
+    "question": "Explain why the zero property makes sense using the idea of groups. What does 5 × 0 mean in terms of groups?",
+    "answer": "5 groups of 0 items is 0 total items",
+    "hints": [
+      "5 × 0 means 5 groups, each with 0 items.",
+      "If each group has nothing in it, how many total?"
+    ],
+    "solution": "5 × 0 means 5 groups of 0 items. If you have 5 baskets and each basket is empty, you have 0 items total. That's why any number times 0 equals 0.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "properties-of-multiplication-sup-h2",
+    "topicId": "properties-of-multiplication",
+    "difficulty": "hard",
+    "question": "Use the distributive property to calculate 8 × 99 mentally. Show your strategy.",
+    "answer": "792",
+    "hints": [
+      "Think of 99 as 100 − 1.",
+      "8 × 99 = 8 × (100 − 1) = (8 × 100) − (8 × 1)."
+    ],
+    "solution": "8 × 99 = 8 × (100 − 1) = (8 × 100) − (8 × 1) = 800 − 8 = 792. The distributive property works with subtraction too.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "properties-of-multiplication-sup-h3",
+    "topicId": "properties-of-multiplication",
+    "difficulty": "hard",
+    "question": "Maya claims: 'The associative property works for subtraction too, so (10 − 3) − 2 = 10 − (3 − 2).' Is she right? Calculate both sides.",
+    "answer": "no, left side is 5 and right side is 9",
+    "hints": [
+      "Calculate: (10 − 3) − 2 = 7 − 2 = 5.",
+      "Calculate: 10 − (3 − 2) = 10 − 1 = 9."
+    ],
+    "solution": "Maya is wrong. (10 − 3) − 2 = 7 − 2 = 5. But 10 − (3 − 2) = 10 − 1 = 9. The results are different (5 ≠ 9), so the associative property does NOT work for subtraction.",
+    "cognitiveDemand": "error-analysis",
+    "source": "generated"
+  },
+  {
+    "id": "properties-of-multiplication-sup-h4",
+    "topicId": "properties-of-multiplication",
+    "difficulty": "hard",
+    "question": "Without calculating, explain which is easier to compute: (2 × 9) × 5 or 2 × (9 × 5). Why?",
+    "answer": "2 × (9 × 5) because 9 × 5 = 45 and then 2 × 45 = 90 is straightforward",
+    "hints": [
+      "Try both groupings. Which gives you a 'friendly' intermediate number?",
+      "Or rearrange: 2 × 5 × 9 = 10 × 9."
+    ],
+    "solution": "Using the associative property, both give the same answer (90). But 2 × (9 × 5) = 2 × 45 = 90 is pretty easy. Even better: rearrange to (2 × 5) × 9 = 10 × 9 = 90, which uses a 'friendly' number (10). The properties let you choose the easiest path.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  }
+]

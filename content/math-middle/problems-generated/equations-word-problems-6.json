@@ -1,0 +1,212 @@
+[
+  {
+    "id": "equations-word-problems-6-sup-e0",
+    "topicId": "equations-word-problems-6",
+    "difficulty": "easy",
+    "question": "Jenna has some stickers. She gives away 5 and has 12 left. Write an equation and solve for the original number of stickers. Use s for the starting number.",
+    "answer": "s - 5 = 12; s = 17",
+    "hints": [
+      "She starts with s stickers, gives away 5, and has 12.",
+      "s - 5 = 12. Add 5 to both sides."
+    ],
+    "solution": "s - 5 = 12. Add 5 to both sides: s = 17. Jenna started with 17 stickers.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "equations-word-problems-6-sup-e1",
+    "topicId": "equations-word-problems-6",
+    "difficulty": "easy",
+    "question": "A number multiplied by 4 equals 28. What is the number?",
+    "answer": "7",
+    "hints": [
+      "Write the equation: 4n = 28.",
+      "Divide both sides by 4."
+    ],
+    "solution": "4n = 28. Divide by 4: n = 7.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "equations-word-problems-6-sup-e2",
+    "topicId": "equations-word-problems-6",
+    "difficulty": "easy",
+    "question": "Tom has 8 more baseball cards than Sam. Tom has 23 cards. How many cards does Sam have? Write an equation using s for Sam's cards and solve.",
+    "answer": "s + 8 = 23; s = 15",
+    "hints": [
+      "Sam's cards plus 8 equals Tom's 23 cards.",
+      "s + 8 = 23. Subtract 8 from both sides."
+    ],
+    "solution": "s + 8 = 23. Subtract 8: s = 15. Sam has 15 cards.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "equations-word-problems-6-sup-e3",
+    "topicId": "equations-word-problems-6",
+    "difficulty": "easy",
+    "question": "A bag of oranges is split equally among 6 friends. Each friend gets 4 oranges. How many oranges were in the bag?",
+    "answer": "24",
+    "hints": [
+      "Total oranges divided by 6 equals 4.",
+      "n/6 = 4. Multiply both sides by 6."
+    ],
+    "solution": "n/6 = 4. Multiply by 6: n = 24. There were 24 oranges in the bag.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "equations-word-problems-6-sup-e4",
+    "topicId": "equations-word-problems-6",
+    "difficulty": "easy",
+    "question": "After adding 15 points to her score, Mia has 62 points. What was her score before? Write an equation and solve.",
+    "answer": "x + 15 = 62; x = 47",
+    "hints": [
+      "Her original score plus 15 equals 62.",
+      "x + 15 = 62. Subtract 15 from both sides."
+    ],
+    "solution": "x + 15 = 62. Subtract 15: x = 47. Mia had 47 points before.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "equations-word-problems-6-sup-m0",
+    "topicId": "equations-word-problems-6",
+    "difficulty": "medium",
+    "question": "A rectangle's length is 3 times its width. The perimeter is 48 cm. Find the width. Write an equation and solve.",
+    "answer": "w = 6",
+    "hints": [
+      "Length = 3w. Perimeter = 2(length + width) = 2(3w + w) = 48.",
+      "2(4w) = 48. So 8w = 48."
+    ],
+    "solution": "Let width = w, length = 3w. Perimeter: 2(3w + w) = 48 → 2(4w) = 48 → 8w = 48 → w = 6 cm.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "equations-word-problems-6-sup-m1",
+    "topicId": "equations-word-problems-6",
+    "difficulty": "medium",
+    "question": "Three friends earned a total of $90 doing yard work. Alex earned twice as much as Ben, and Ben earned $15. How much did the third friend, Cara, earn? Write an equation and solve.",
+    "answer": "45",
+    "hints": [
+      "Ben = $15. Alex = 2 × $15 = $30.",
+      "Ben + Alex + Cara = 90. So 15 + 30 + c = 90."
+    ],
+    "solution": "Ben = $15, Alex = 2(15) = $30. Total: 15 + 30 + c = 90 → 45 + c = 90 → c = 45. Cara earned $45.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "equations-word-problems-6-sup-m2",
+    "topicId": "equations-word-problems-6",
+    "difficulty": "medium",
+    "question": "A student writes the equation '12 - n = 20' for this problem: 'A number subtracted from 12 gives 20.' The student gets n = -8. Another student says the answer should be positive. Who is correct and why?",
+    "answer": "The first student is correct. 12 - n = 20 gives n = -8. When you subtract a negative number from 12, you get 20: 12 - (-8) = 20.",
+    "hints": [
+      "Solve 12 - n = 20: subtract 12 from both sides to get -n = 8.",
+      "So n = -8. Check: 12 - (-8) = 12 + 8 = 20. It works!"
+    ],
+    "solution": "The first student is correct. 12 - n = 20 → -n = 8 → n = -8. Check: 12 - (-8) = 12 + 8 = 20. A negative number subtracted from 12 gives a result larger than 12, which makes sense.",
+    "cognitiveDemand": "error-analysis",
+    "source": "generated"
+  },
+  {
+    "id": "equations-word-problems-6-sup-m3",
+    "topicId": "equations-word-problems-6",
+    "difficulty": "medium",
+    "question": "Maria is 4 years older than twice her brother's age. Maria is 16 years old. How old is her brother? Write an equation and solve.",
+    "answer": "6",
+    "hints": [
+      "Let b = brother's age. Maria's age = 2b + 4.",
+      "2b + 4 = 16. Subtract 4, then divide by 2."
+    ],
+    "solution": "2b + 4 = 16. Subtract 4: 2b = 12. Divide by 2: b = 6. Maria's brother is 6 years old.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "equations-word-problems-6-sup-m4",
+    "topicId": "equations-word-problems-6",
+    "difficulty": "medium",
+    "question": "A school bus holds 54 students. If each row seats 3 students, how many rows are on the bus? Write an equation and solve.",
+    "answer": "18",
+    "hints": [
+      "Number of rows × 3 = 54.",
+      "3r = 54. Divide by 3."
+    ],
+    "solution": "3r = 54. Divide by 3: r = 18. The bus has 18 rows.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "equations-word-problems-6-sup-h0",
+    "topicId": "equations-word-problems-6",
+    "difficulty": "hard",
+    "question": "A rope is cut into two pieces. One piece is 7 meters longer than twice the other piece. The total rope length is 40 meters. Find the length of the shorter piece.",
+    "answer": "11",
+    "hints": [
+      "Let the shorter piece = x. The longer piece = 2x + 7.",
+      "x + (2x + 7) = 40."
+    ],
+    "solution": "Let shorter = x. Longer = 2x + 7. Total: x + 2x + 7 = 40 → 3x + 7 = 40 → 3x = 33 → x = 11. The shorter piece is 11 meters.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "equations-word-problems-6-sup-h1",
+    "topicId": "equations-word-problems-6",
+    "difficulty": "hard",
+    "question": "Kai has $5 more than Lin, and together they have $47. A student writes: k = 5 + L and k = 47 - L. Are both equations correct? Use them to find how much each person has.",
+    "answer": "Yes, both are correct. Lin has $21 and Kai has $26.",
+    "hints": [
+      "From k = 5 + L and k + L = 47, substitute: (5 + L) + L = 47.",
+      "5 + 2L = 47. Solve for L."
+    ],
+    "solution": "Both equations are correct. Substituting: 5 + L + L = 47 → 5 + 2L = 47 → 2L = 42 → L = 21. Kai = 21 + 5 = 26. Check: 21 + 26 = 47.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "equations-word-problems-6-sup-h2",
+    "topicId": "equations-word-problems-6",
+    "difficulty": "hard",
+    "question": "Three consecutive even numbers add up to 78. What are the three numbers?",
+    "answer": "24, 26, 28",
+    "hints": [
+      "Let the first even number be n. The next two are n + 2 and n + 4.",
+      "n + (n + 2) + (n + 4) = 78."
+    ],
+    "solution": "Let n = first number. n + (n+2) + (n+4) = 78 → 3n + 6 = 78 → 3n = 72 → n = 24. The numbers are 24, 26, 28. Check: 24 + 26 + 28 = 78.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "equations-word-problems-6-sup-h3",
+    "topicId": "equations-word-problems-6",
+    "difficulty": "hard",
+    "question": "A student writes 'n + 8 = 3n' for this situation: 'Eight more than a number equals three times the number.' Solve for n. Does the answer make sense?",
+    "answer": "n = 4. Yes — eight more than 4 is 12, and three times 4 is 12.",
+    "hints": [
+      "n + 8 = 3n. Subtract n from both sides: 8 = 2n.",
+      "n = 4. Check: 4 + 8 = 12 and 3(4) = 12."
+    ],
+    "solution": "n + 8 = 3n → 8 = 2n → n = 4. Check: 4 + 8 = 12 and 3(4) = 12. Both sides equal 12, confirming n = 4.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "equations-word-problems-6-sup-h4",
+    "topicId": "equations-word-problems-6",
+    "difficulty": "hard",
+    "question": "A theater charges $8 for adults and $5 for children. A group of 20 people pays a total of $124. How many adults and how many children are in the group?",
+    "answer": "8 adults and 12 children",
+    "hints": [
+      "Let a = number of adults. Then children = 20 - a.",
+      "8a + 5(20 - a) = 124."
+    ],
+    "solution": "Let a = adults, c = children. a + c = 20 and 8a + 5c = 124. Substitute c = 20 - a: 8a + 5(20 - a) = 124 → 8a + 100 - 5a = 124 → 3a = 24 → a = 8. Children = 12. Check: 8(8) + 5(12) = 64 + 60 = 124.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  }
+]

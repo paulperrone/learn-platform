@@ -1,0 +1,203 @@
+[
+  {
+    "id": "count-to-100-sup-e0",
+    "topicId": "count-to-100",
+    "difficulty": "easy",
+    "question": "What number comes right after 29?",
+    "answer": "30",
+    "hints": [
+      "After 29, the tens digit changes. What group of ten comes after the twenties?"
+    ],
+    "solution": "The number after 29 is 30. When the ones digit reaches 9, the next number starts a new group of ten.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "count-to-100-sup-e1",
+    "topicId": "count-to-100",
+    "difficulty": "easy",
+    "question": "Fill in the blank: 48, 49, __, 51",
+    "answer": "50",
+    "hints": [
+      "Count: 48, 49, ... what number is between 49 and 51?"
+    ],
+    "solution": "The missing number is 50. Counting: 48, 49, 50, 51.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "count-to-100-sup-e2",
+    "topicId": "count-to-100",
+    "difficulty": "easy",
+    "question": "Count by 10s: 10, 20, 30, __, 50. What number is missing?",
+    "answer": "40",
+    "hints": [
+      "When counting by 10s, each number is 10 more than the last."
+    ],
+    "solution": "Counting by 10s: 10, 20, 30, 40, 50. The missing number is 40.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "count-to-100-sup-e3",
+    "topicId": "count-to-100",
+    "difficulty": "easy",
+    "question": "What number comes just before 70?",
+    "answer": "69",
+    "hints": [
+      "Count: 67, 68, 69, 70. Which number is right before 70?"
+    ],
+    "solution": "The number just before 70 is 69.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "count-to-100-sup-e4",
+    "topicId": "count-to-100",
+    "difficulty": "easy",
+    "question": "Count by 5s: 5, 10, 15, 20, __. What comes next?",
+    "answer": "25",
+    "hints": [
+      "Each number is 5 more than the last. 20 + 5 = ?"
+    ],
+    "solution": "Counting by 5s: 5, 10, 15, 20, 25. The next number is 25.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "count-to-100-sup-m0",
+    "topicId": "count-to-100",
+    "difficulty": "medium",
+    "question": "Count by 2s starting at 80: 80, 82, 84, __, __. Fill in the next two numbers.",
+    "answer": "86, 88",
+    "hints": [
+      "Each number is 2 more than the last. 84 + 2 = ?"
+    ],
+    "solution": "Counting by 2s: 80, 82, 84, 86, 88. Each step adds 2.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "count-to-100-sup-m1",
+    "topicId": "count-to-100",
+    "difficulty": "medium",
+    "question": "Fill in the missing numbers: 55, 60, __, 70, __, 80. What pattern is this?",
+    "answer": "65, 75",
+    "hints": [
+      "Look at the difference between 55 and 60. What is being added each time?",
+      "The pattern is counting by 5s."
+    ],
+    "solution": "Counting by 5s: 55, 60, 65, 70, 75, 80. The missing numbers are 65 and 75.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "count-to-100-sup-m2",
+    "topicId": "count-to-100",
+    "difficulty": "medium",
+    "question": "How many tens are in the number 80?",
+    "answer": "8",
+    "hints": [
+      "Count by 10s to 80: 10, 20, 30, 40, 50, 60, 70, 80. How many tens did you count?"
+    ],
+    "solution": "80 = 8 tens. Counting by 10s: 10, 20, 30, 40, 50, 60, 70, 80 is 8 groups of ten.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "count-to-100-sup-m3",
+    "topicId": "count-to-100",
+    "difficulty": "medium",
+    "question": "Which of these numbers is NOT part of counting by 10s? 30, 45, 60, 90",
+    "answer": "45",
+    "hints": [
+      "When you count by 10s, every number ends in 0."
+    ],
+    "solution": "45 is not part of counting by 10s. When counting by 10s (10, 20, 30, 40, 50, 60...), all numbers end in 0. 45 ends in 5.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "count-to-100-sup-m4",
+    "topicId": "count-to-100",
+    "difficulty": "medium",
+    "question": "A farmer counts eggs by 2s. She counts: 2, 4, 6, 8, 10, 12, 14. How many eggs does she have?",
+    "answer": "14",
+    "hints": [
+      "The last number she says tells you the total."
+    ],
+    "solution": "When counting by 2s, the last number you say is the total count. She counted to 14, so she has 14 eggs.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "count-to-100-sup-h0",
+    "topicId": "count-to-100",
+    "difficulty": "hard",
+    "question": "Start at 23 and count by 10s. What are the next three numbers?",
+    "answer": "33, 43, 53",
+    "hints": [
+      "When counting by 10s from any number, the tens digit goes up by 1 each time.",
+      "23 + 10 = 33, 33 + 10 = ?"
+    ],
+    "solution": "Starting at 23 and counting by 10s: 23, 33, 43, 53. Only the tens digit changes; the ones digit stays 3.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "count-to-100-sup-h1",
+    "topicId": "count-to-100",
+    "difficulty": "hard",
+    "question": "Is 100 an even number or an odd number?",
+    "answer": "even",
+    "hints": [
+      "Count by 2s: 2, 4, 6, 8, 10... Do you reach 100?",
+      "Even numbers end in 0, 2, 4, 6, or 8."
+    ],
+    "solution": "100 is even. It ends in 0, and all numbers ending in 0 are even. You can count by 2s and reach 100.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "count-to-100-sup-h2",
+    "topicId": "count-to-100",
+    "difficulty": "hard",
+    "question": "How many numbers from 1 to 100 end in the digit 5?",
+    "answer": "10",
+    "hints": [
+      "List them: 5, 15, 25, 35... Keep going to 100.",
+      "There is one in each group of ten."
+    ],
+    "solution": "Numbers ending in 5: 5, 15, 25, 35, 45, 55, 65, 75, 85, 95. That is 10 numbers. Each group of ten has exactly one number ending in 5.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "count-to-100-sup-h3",
+    "topicId": "count-to-100",
+    "difficulty": "hard",
+    "question": "Leo starts at 37 and counts by 5s. What are the next four numbers he says?",
+    "answer": "42, 47, 52, 57",
+    "hints": [
+      "Add 5 each time: 37 + 5 = 42.",
+      "Notice the ones digit alternates between 2 and 7."
+    ],
+    "solution": "Starting at 37, counting by 5s: 37, 42, 47, 52, 57. Each step adds 5. The ones digit alternates: 7, 2, 7, 2, 7.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "count-to-100-sup-h4",
+    "topicId": "count-to-100",
+    "difficulty": "hard",
+    "question": "A number chart goes from 1 to 100 in rows of 10. In which row would you find the number 67?",
+    "answer": "7",
+    "hints": [
+      "Row 1 is 1-10, row 2 is 11-20, row 3 is 21-30...",
+      "Which group of ten does 67 belong to?"
+    ],
+    "solution": "Row 1: 1-10, row 2: 11-20, row 3: 21-30, row 4: 31-40, row 5: 41-50, row 6: 51-60, row 7: 61-70. 67 is in row 7.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  }
+]

@@ -1,0 +1,652 @@
+[
+  {
+    "id": "area-composite-shapes-gen-e0",
+    "topicId": "area-composite-shapes",
+    "difficulty": "easy",
+    "question": "An L-shaped figure is made of two rectangles. Rectangle 1 is 6 by 4. Rectangle 2 is 3 by 2. What is the total area?",
+    "answer": "30",
+    "hints": [
+      "Find the area of each rectangle and add them."
+    ],
+    "solution": "Area = 6 × 4 + 3 × 2 = 24 + 6 = 30 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-composite-shapes-gen-e1",
+    "topicId": "area-composite-shapes",
+    "difficulty": "easy",
+    "question": "An L-shaped figure is made of two rectangles. Rectangle 1 is 6 by 2. Rectangle 2 is 2 by 4. What is the total area?",
+    "answer": "20",
+    "hints": [
+      "Find the area of each rectangle and add them."
+    ],
+    "solution": "Area = 6 × 2 + 2 × 4 = 12 + 8 = 20 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-composite-shapes-gen-e2",
+    "topicId": "area-composite-shapes",
+    "difficulty": "easy",
+    "question": "An L-shaped figure is made of two rectangles. Rectangle 1 is 3 by 2. Rectangle 2 is 2 by 3. What is the total area?",
+    "answer": "12",
+    "hints": [
+      "Find the area of each rectangle and add them."
+    ],
+    "solution": "Area = 3 × 2 + 2 × 3 = 6 + 6 = 12 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-composite-shapes-gen-e3",
+    "topicId": "area-composite-shapes",
+    "difficulty": "easy",
+    "question": "An L-shaped figure is made of two rectangles. Rectangle 1 is 6 by 4. Rectangle 2 is 4 by 3. What is the total area?",
+    "answer": "36",
+    "hints": [
+      "Find the area of each rectangle and add them."
+    ],
+    "solution": "Area = 6 × 4 + 4 × 3 = 24 + 12 = 36 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-composite-shapes-gen-e4",
+    "topicId": "area-composite-shapes",
+    "difficulty": "easy",
+    "question": "An L-shaped figure is made of two rectangles. Rectangle 1 is 5 by 4. Rectangle 2 is 2 by 2. What is the total area?",
+    "answer": "24",
+    "hints": [
+      "Find the area of each rectangle and add them."
+    ],
+    "solution": "Area = 5 × 4 + 2 × 2 = 20 + 4 = 24 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-composite-shapes-gen-e5",
+    "topicId": "area-composite-shapes",
+    "difficulty": "easy",
+    "question": "An L-shaped figure is made of two rectangles. Rectangle 1 is 6 by 3. Rectangle 2 is 2 by 4. What is the total area?",
+    "answer": "26",
+    "hints": [
+      "Find the area of each rectangle and add them."
+    ],
+    "solution": "Area = 6 × 3 + 2 × 4 = 18 + 8 = 26 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-composite-shapes-gen-e6",
+    "topicId": "area-composite-shapes",
+    "difficulty": "easy",
+    "question": "An L-shaped figure is made of two rectangles. Rectangle 1 is 5 by 4. Rectangle 2 is 4 by 4. What is the total area?",
+    "answer": "36",
+    "hints": [
+      "Find the area of each rectangle and add them."
+    ],
+    "solution": "Area = 5 × 4 + 4 × 4 = 20 + 16 = 36 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-composite-shapes-gen-e7",
+    "topicId": "area-composite-shapes",
+    "difficulty": "easy",
+    "question": "An L-shaped figure is made of two rectangles. Rectangle 1 is 6 by 3. Rectangle 2 is 2 by 4. What is the total area?",
+    "answer": "26",
+    "hints": [
+      "Find the area of each rectangle and add them."
+    ],
+    "solution": "Area = 6 × 3 + 2 × 4 = 18 + 8 = 26 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-composite-shapes-gen-e8",
+    "topicId": "area-composite-shapes",
+    "difficulty": "easy",
+    "question": "An L-shaped figure is made of two rectangles. Rectangle 1 is 4 by 3. Rectangle 2 is 3 by 3. What is the total area?",
+    "answer": "21",
+    "hints": [
+      "Find the area of each rectangle and add them."
+    ],
+    "solution": "Area = 4 × 3 + 3 × 3 = 12 + 9 = 21 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-composite-shapes-gen-e9",
+    "topicId": "area-composite-shapes",
+    "difficulty": "easy",
+    "question": "An L-shaped figure is made of two rectangles. Rectangle 1 is 6 by 4. Rectangle 2 is 2 by 2. What is the total area?",
+    "answer": "28",
+    "hints": [
+      "Find the area of each rectangle and add them."
+    ],
+    "solution": "Area = 6 × 4 + 2 × 2 = 24 + 4 = 28 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-composite-shapes-gen-e10",
+    "topicId": "area-composite-shapes",
+    "difficulty": "easy",
+    "question": "An L-shaped figure is made of two rectangles. Rectangle 1 is 5 by 3. Rectangle 2 is 3 by 2. What is the total area?",
+    "answer": "21",
+    "hints": [
+      "Find the area of each rectangle and add them."
+    ],
+    "solution": "Area = 5 × 3 + 3 × 2 = 15 + 6 = 21 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-composite-shapes-gen-e11",
+    "topicId": "area-composite-shapes",
+    "difficulty": "easy",
+    "question": "An L-shaped figure is made of two rectangles. Rectangle 1 is 4 by 4. Rectangle 2 is 3 by 3. What is the total area?",
+    "answer": "25",
+    "hints": [
+      "Find the area of each rectangle and add them."
+    ],
+    "solution": "Area = 4 × 4 + 3 × 3 = 16 + 9 = 25 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-composite-shapes-gen-e12",
+    "topicId": "area-composite-shapes",
+    "difficulty": "easy",
+    "question": "An L-shaped figure is made of two rectangles. Rectangle 1 is 3 by 5. Rectangle 2 is 2 by 3. What is the total area?",
+    "answer": "21",
+    "hints": [
+      "Find the area of each rectangle and add them."
+    ],
+    "solution": "Area = 3 × 5 + 2 × 3 = 15 + 6 = 21 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-composite-shapes-gen-e13",
+    "topicId": "area-composite-shapes",
+    "difficulty": "easy",
+    "question": "An L-shaped figure is made of two rectangles. Rectangle 1 is 6 by 5. Rectangle 2 is 2 by 2. What is the total area?",
+    "answer": "34",
+    "hints": [
+      "Find the area of each rectangle and add them."
+    ],
+    "solution": "Area = 6 × 5 + 2 × 2 = 30 + 4 = 34 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-composite-shapes-gen-e14",
+    "topicId": "area-composite-shapes",
+    "difficulty": "easy",
+    "question": "An L-shaped figure is made of two rectangles. Rectangle 1 is 3 by 4. Rectangle 2 is 2 by 3. What is the total area?",
+    "answer": "18",
+    "hints": [
+      "Find the area of each rectangle and add them."
+    ],
+    "solution": "Area = 3 × 4 + 2 × 3 = 12 + 6 = 18 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-composite-shapes-gen-m0",
+    "topicId": "area-composite-shapes",
+    "difficulty": "medium",
+    "question": "An L-shaped figure is made of two rectangles. Rectangle 1 is 8 by 8. Rectangle 2 is 6 by 6. What is the total area?",
+    "answer": "100",
+    "hints": [
+      "Find the area of each rectangle and add them."
+    ],
+    "solution": "Area = 8 × 8 + 6 × 6 = 64 + 36 = 100 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-composite-shapes-gen-m1",
+    "topicId": "area-composite-shapes",
+    "difficulty": "medium",
+    "question": "An L-shaped figure is made of two rectangles. Rectangle 1 is 3 by 8. Rectangle 2 is 2 by 3. What is the total area?",
+    "answer": "30",
+    "hints": [
+      "Find the area of each rectangle and add them."
+    ],
+    "solution": "Area = 3 × 8 + 2 × 3 = 24 + 6 = 30 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-composite-shapes-gen-m2",
+    "topicId": "area-composite-shapes",
+    "difficulty": "medium",
+    "question": "An L-shaped figure is made of two rectangles. Rectangle 1 is 4 by 7. Rectangle 2 is 2 by 5. What is the total area?",
+    "answer": "38",
+    "hints": [
+      "Find the area of each rectangle and add them."
+    ],
+    "solution": "Area = 4 × 7 + 2 × 5 = 28 + 10 = 38 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-composite-shapes-gen-m3",
+    "topicId": "area-composite-shapes",
+    "difficulty": "medium",
+    "question": "An L-shaped figure is made of two rectangles. Rectangle 1 is 10 by 4. Rectangle 2 is 6 by 5. What is the total area?",
+    "answer": "70",
+    "hints": [
+      "Find the area of each rectangle and add them."
+    ],
+    "solution": "Area = 10 × 4 + 6 × 5 = 40 + 30 = 70 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-composite-shapes-gen-m4",
+    "topicId": "area-composite-shapes",
+    "difficulty": "medium",
+    "question": "An L-shaped figure is made of two rectangles. Rectangle 1 is 3 by 6. Rectangle 2 is 2 by 7. What is the total area?",
+    "answer": "32",
+    "hints": [
+      "Find the area of each rectangle and add them."
+    ],
+    "solution": "Area = 3 × 6 + 2 × 7 = 18 + 14 = 32 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-composite-shapes-gen-m5",
+    "topicId": "area-composite-shapes",
+    "difficulty": "medium",
+    "question": "An L-shaped figure is made of two rectangles. Rectangle 1 is 5 by 5. Rectangle 2 is 3 by 7. What is the total area?",
+    "answer": "46",
+    "hints": [
+      "Find the area of each rectangle and add them."
+    ],
+    "solution": "Area = 5 × 5 + 3 × 7 = 25 + 21 = 46 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-composite-shapes-gen-m6",
+    "topicId": "area-composite-shapes",
+    "difficulty": "medium",
+    "question": "An L-shaped figure is made of two rectangles. Rectangle 1 is 7 by 3. Rectangle 2 is 3 by 2. What is the total area?",
+    "answer": "27",
+    "hints": [
+      "Find the area of each rectangle and add them."
+    ],
+    "solution": "Area = 7 × 3 + 3 × 2 = 21 + 6 = 27 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-composite-shapes-gen-m7",
+    "topicId": "area-composite-shapes",
+    "difficulty": "medium",
+    "question": "An L-shaped figure is made of two rectangles. Rectangle 1 is 9 by 6. Rectangle 2 is 6 by 3. What is the total area?",
+    "answer": "72",
+    "hints": [
+      "Find the area of each rectangle and add them."
+    ],
+    "solution": "Area = 9 × 6 + 6 × 3 = 54 + 18 = 72 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-composite-shapes-gen-m8",
+    "topicId": "area-composite-shapes",
+    "difficulty": "medium",
+    "question": "An L-shaped figure is made of two rectangles. Rectangle 1 is 9 by 4. Rectangle 2 is 5 by 2. What is the total area?",
+    "answer": "46",
+    "hints": [
+      "Find the area of each rectangle and add them."
+    ],
+    "solution": "Area = 9 × 4 + 5 × 2 = 36 + 10 = 46 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-composite-shapes-gen-m9",
+    "topicId": "area-composite-shapes",
+    "difficulty": "medium",
+    "question": "An L-shaped figure is made of two rectangles. Rectangle 1 is 9 by 7. Rectangle 2 is 4 by 6. What is the total area?",
+    "answer": "87",
+    "hints": [
+      "Find the area of each rectangle and add them."
+    ],
+    "solution": "Area = 9 × 7 + 4 × 6 = 63 + 24 = 87 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-composite-shapes-gen-m10",
+    "topicId": "area-composite-shapes",
+    "difficulty": "medium",
+    "question": "An L-shaped figure is made of two rectangles. Rectangle 1 is 10 by 5. Rectangle 2 is 2 by 6. What is the total area?",
+    "answer": "62",
+    "hints": [
+      "Find the area of each rectangle and add them."
+    ],
+    "solution": "Area = 10 × 5 + 2 × 6 = 50 + 12 = 62 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-composite-shapes-gen-m11",
+    "topicId": "area-composite-shapes",
+    "difficulty": "medium",
+    "question": "An L-shaped figure is made of two rectangles. Rectangle 1 is 8 by 5. Rectangle 2 is 3 by 5. What is the total area?",
+    "answer": "55",
+    "hints": [
+      "Find the area of each rectangle and add them."
+    ],
+    "solution": "Area = 8 × 5 + 3 × 5 = 40 + 15 = 55 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-composite-shapes-gen-m12",
+    "topicId": "area-composite-shapes",
+    "difficulty": "medium",
+    "question": "An L-shaped figure is made of two rectangles. Rectangle 1 is 8 by 7. Rectangle 2 is 7 by 2. What is the total area?",
+    "answer": "70",
+    "hints": [
+      "Find the area of each rectangle and add them."
+    ],
+    "solution": "Area = 8 × 7 + 7 × 2 = 56 + 14 = 70 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-composite-shapes-gen-m13",
+    "topicId": "area-composite-shapes",
+    "difficulty": "medium",
+    "question": "An L-shaped figure is made of two rectangles. Rectangle 1 is 6 by 4. Rectangle 2 is 5 by 7. What is the total area?",
+    "answer": "59",
+    "hints": [
+      "Find the area of each rectangle and add them."
+    ],
+    "solution": "Area = 6 × 4 + 5 × 7 = 24 + 35 = 59 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-composite-shapes-gen-m14",
+    "topicId": "area-composite-shapes",
+    "difficulty": "medium",
+    "question": "An L-shaped figure is made of two rectangles. Rectangle 1 is 4 by 7. Rectangle 2 is 3 by 6. What is the total area?",
+    "answer": "46",
+    "hints": [
+      "Find the area of each rectangle and add them."
+    ],
+    "solution": "Area = 4 × 7 + 3 × 6 = 28 + 18 = 46 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-composite-shapes-gen-m15",
+    "topicId": "area-composite-shapes",
+    "difficulty": "medium",
+    "question": "An L-shaped figure is made of two rectangles. Rectangle 1 is 7 by 3. Rectangle 2 is 5 by 2. What is the total area?",
+    "answer": "31",
+    "hints": [
+      "Find the area of each rectangle and add them."
+    ],
+    "solution": "Area = 7 × 3 + 5 × 2 = 21 + 10 = 31 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-composite-shapes-gen-m16",
+    "topicId": "area-composite-shapes",
+    "difficulty": "medium",
+    "question": "An L-shaped figure is made of two rectangles. Rectangle 1 is 6 by 4. Rectangle 2 is 4 by 4. What is the total area?",
+    "answer": "40",
+    "hints": [
+      "Find the area of each rectangle and add them."
+    ],
+    "solution": "Area = 6 × 4 + 4 × 4 = 24 + 16 = 40 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-composite-shapes-gen-m17",
+    "topicId": "area-composite-shapes",
+    "difficulty": "medium",
+    "question": "An L-shaped figure is made of two rectangles. Rectangle 1 is 7 by 2. Rectangle 2 is 5 by 7. What is the total area?",
+    "answer": "49",
+    "hints": [
+      "Find the area of each rectangle and add them."
+    ],
+    "solution": "Area = 7 × 2 + 5 × 7 = 14 + 35 = 49 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-composite-shapes-gen-m18",
+    "topicId": "area-composite-shapes",
+    "difficulty": "medium",
+    "question": "An L-shaped figure is made of two rectangles. Rectangle 1 is 7 by 4. Rectangle 2 is 5 by 5. What is the total area?",
+    "answer": "53",
+    "hints": [
+      "Find the area of each rectangle and add them."
+    ],
+    "solution": "Area = 7 × 4 + 5 × 5 = 28 + 25 = 53 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-composite-shapes-gen-m19",
+    "topicId": "area-composite-shapes",
+    "difficulty": "medium",
+    "question": "An L-shaped figure is made of two rectangles. Rectangle 1 is 3 by 2. Rectangle 2 is 2 by 2. What is the total area?",
+    "answer": "10",
+    "hints": [
+      "Find the area of each rectangle and add them."
+    ],
+    "solution": "Area = 3 × 2 + 2 × 2 = 6 + 4 = 10 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-composite-shapes-gen-h0",
+    "topicId": "area-composite-shapes",
+    "difficulty": "hard",
+    "question": "An L-shaped figure is made of two rectangles. Rectangle 1 is 4 by 6. Rectangle 2 is 2 by 6. What is the total area?",
+    "answer": "36",
+    "hints": [
+      "Find the area of each rectangle and add them."
+    ],
+    "solution": "Area = 4 × 6 + 2 × 6 = 24 + 12 = 36 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-composite-shapes-gen-h1",
+    "topicId": "area-composite-shapes",
+    "difficulty": "hard",
+    "question": "An L-shaped figure is made of two rectangles. Rectangle 1 is 4 by 3. Rectangle 2 is 3 by 4. What is the total area?",
+    "answer": "24",
+    "hints": [
+      "Find the area of each rectangle and add them."
+    ],
+    "solution": "Area = 4 × 3 + 3 × 4 = 12 + 12 = 24 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-composite-shapes-gen-h2",
+    "topicId": "area-composite-shapes",
+    "difficulty": "hard",
+    "question": "An L-shaped figure is made of two rectangles. Rectangle 1 is 8 by 2. Rectangle 2 is 2 by 3. What is the total area?",
+    "answer": "22",
+    "hints": [
+      "Find the area of each rectangle and add them."
+    ],
+    "solution": "Area = 8 × 2 + 2 × 3 = 16 + 6 = 22 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-composite-shapes-gen-h3",
+    "topicId": "area-composite-shapes",
+    "difficulty": "hard",
+    "question": "An L-shaped figure is made of two rectangles. Rectangle 1 is 8 by 4. Rectangle 2 is 4 by 4. What is the total area?",
+    "answer": "48",
+    "hints": [
+      "Find the area of each rectangle and add them."
+    ],
+    "solution": "Area = 8 × 4 + 4 × 4 = 32 + 16 = 48 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-composite-shapes-gen-h4",
+    "topicId": "area-composite-shapes",
+    "difficulty": "hard",
+    "question": "An L-shaped figure is made of two rectangles. Rectangle 1 is 3 by 8. Rectangle 2 is 2 by 6. What is the total area?",
+    "answer": "36",
+    "hints": [
+      "Find the area of each rectangle and add them."
+    ],
+    "solution": "Area = 3 × 8 + 2 × 6 = 24 + 12 = 36 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-composite-shapes-gen-h5",
+    "topicId": "area-composite-shapes",
+    "difficulty": "hard",
+    "question": "An L-shaped figure is made of two rectangles. Rectangle 1 is 3 by 6. Rectangle 2 is 2 by 6. What is the total area?",
+    "answer": "30",
+    "hints": [
+      "Find the area of each rectangle and add them."
+    ],
+    "solution": "Area = 3 × 6 + 2 × 6 = 18 + 12 = 30 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-composite-shapes-gen-h6",
+    "topicId": "area-composite-shapes",
+    "difficulty": "hard",
+    "question": "An L-shaped figure is made of two rectangles. Rectangle 1 is 9 by 6. Rectangle 2 is 5 by 2. What is the total area?",
+    "answer": "64",
+    "hints": [
+      "Find the area of each rectangle and add them."
+    ],
+    "solution": "Area = 9 × 6 + 5 × 2 = 54 + 10 = 64 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-composite-shapes-gen-h7",
+    "topicId": "area-composite-shapes",
+    "difficulty": "hard",
+    "question": "An L-shaped figure is made of two rectangles. Rectangle 1 is 9 by 5. Rectangle 2 is 5 by 6. What is the total area?",
+    "answer": "75",
+    "hints": [
+      "Find the area of each rectangle and add them."
+    ],
+    "solution": "Area = 9 × 5 + 5 × 6 = 45 + 30 = 75 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-composite-shapes-gen-h8",
+    "topicId": "area-composite-shapes",
+    "difficulty": "hard",
+    "question": "An L-shaped figure is made of two rectangles. Rectangle 1 is 9 by 6. Rectangle 2 is 2 by 4. What is the total area?",
+    "answer": "62",
+    "hints": [
+      "Find the area of each rectangle and add them."
+    ],
+    "solution": "Area = 9 × 6 + 2 × 4 = 54 + 8 = 62 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-composite-shapes-gen-h9",
+    "topicId": "area-composite-shapes",
+    "difficulty": "hard",
+    "question": "An L-shaped figure is made of two rectangles. Rectangle 1 is 10 by 4. Rectangle 2 is 5 by 7. What is the total area?",
+    "answer": "75",
+    "hints": [
+      "Find the area of each rectangle and add them."
+    ],
+    "solution": "Area = 10 × 4 + 5 × 7 = 40 + 35 = 75 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-composite-shapes-gen-h10",
+    "topicId": "area-composite-shapes",
+    "difficulty": "hard",
+    "question": "An L-shaped figure is made of two rectangles. Rectangle 1 is 8 by 3. Rectangle 2 is 2 by 3. What is the total area?",
+    "answer": "30",
+    "hints": [
+      "Find the area of each rectangle and add them."
+    ],
+    "solution": "Area = 8 × 3 + 2 × 3 = 24 + 6 = 30 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-composite-shapes-gen-h11",
+    "topicId": "area-composite-shapes",
+    "difficulty": "hard",
+    "question": "An L-shaped figure is made of two rectangles. Rectangle 1 is 5 by 5. Rectangle 2 is 4 by 4. What is the total area?",
+    "answer": "41",
+    "hints": [
+      "Find the area of each rectangle and add them."
+    ],
+    "solution": "Area = 5 × 5 + 4 × 4 = 25 + 16 = 41 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-composite-shapes-gen-h12",
+    "topicId": "area-composite-shapes",
+    "difficulty": "hard",
+    "question": "An L-shaped figure is made of two rectangles. Rectangle 1 is 10 by 4. Rectangle 2 is 4 by 4. What is the total area?",
+    "answer": "56",
+    "hints": [
+      "Find the area of each rectangle and add them."
+    ],
+    "solution": "Area = 10 × 4 + 4 × 4 = 40 + 16 = 56 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-composite-shapes-gen-h13",
+    "topicId": "area-composite-shapes",
+    "difficulty": "hard",
+    "question": "An L-shaped figure is made of two rectangles. Rectangle 1 is 5 by 4. Rectangle 2 is 4 by 6. What is the total area?",
+    "answer": "44",
+    "hints": [
+      "Find the area of each rectangle and add them."
+    ],
+    "solution": "Area = 5 × 4 + 4 × 6 = 20 + 24 = 44 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-composite-shapes-gen-h14",
+    "topicId": "area-composite-shapes",
+    "difficulty": "hard",
+    "question": "An L-shaped figure is made of two rectangles. Rectangle 1 is 6 by 2. Rectangle 2 is 2 by 4. What is the total area?",
+    "answer": "20",
+    "hints": [
+      "Find the area of each rectangle and add them."
+    ],
+    "solution": "Area = 6 × 2 + 2 × 4 = 12 + 8 = 20 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  }
+]

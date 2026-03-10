@@ -1,0 +1,652 @@
+[
+  {
+    "id": "circumference-gen-e0",
+    "topicId": "circumference",
+    "difficulty": "easy",
+    "question": "What is the circumference of a circle with radius 5? (Use π ≈ 3.14)",
+    "answer": "31.4",
+    "hints": [
+      "C = 2πr."
+    ],
+    "solution": "C = 2 × 3.14 × 5 = 31.4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "circumference-gen-e1",
+    "topicId": "circumference",
+    "difficulty": "easy",
+    "question": "What is the circumference of a circle with radius 6? (Use π ≈ 3.14)",
+    "answer": "37.68",
+    "hints": [
+      "C = 2πr."
+    ],
+    "solution": "C = 2 × 3.14 × 6 = 37.68.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "circumference-gen-e2",
+    "topicId": "circumference",
+    "difficulty": "easy",
+    "question": "What is the circumference of a circle with radius 8? (Use π ≈ 3.14)",
+    "answer": "50.24",
+    "hints": [
+      "C = 2πr."
+    ],
+    "solution": "C = 2 × 3.14 × 8 = 50.24.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "circumference-gen-e3",
+    "topicId": "circumference",
+    "difficulty": "easy",
+    "question": "What is the circumference of a circle with diameter 18? (Use π ≈ 3.14)",
+    "answer": "56.52",
+    "hints": [
+      "C = πd."
+    ],
+    "solution": "C = 3.14 × 18 = 56.52.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "circumference-gen-e4",
+    "topicId": "circumference",
+    "difficulty": "easy",
+    "question": "What is the circumference of a circle with radius 1? (Use π ≈ 3.14)",
+    "answer": "6.28",
+    "hints": [
+      "C = 2πr."
+    ],
+    "solution": "C = 2 × 3.14 × 1 = 6.28.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "circumference-gen-e5",
+    "topicId": "circumference",
+    "difficulty": "easy",
+    "question": "What is the circumference of a circle with radius 2? (Use π ≈ 3.14)",
+    "answer": "12.56",
+    "hints": [
+      "C = 2πr."
+    ],
+    "solution": "C = 2 × 3.14 × 2 = 12.56.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "circumference-gen-e6",
+    "topicId": "circumference",
+    "difficulty": "easy",
+    "question": "What is the circumference of a circle with diameter 10? (Use π ≈ 3.14)",
+    "answer": "31.4",
+    "hints": [
+      "C = πd."
+    ],
+    "solution": "C = 3.14 × 10 = 31.4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "circumference-gen-e7",
+    "topicId": "circumference",
+    "difficulty": "easy",
+    "question": "What is the circumference of a circle with diameter 4? (Use π ≈ 3.14)",
+    "answer": "12.56",
+    "hints": [
+      "C = πd."
+    ],
+    "solution": "C = 3.14 × 4 = 12.56.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "circumference-gen-e8",
+    "topicId": "circumference",
+    "difficulty": "easy",
+    "question": "What is the circumference of a circle with radius 5? (Use π ≈ 3.14)",
+    "answer": "31.4",
+    "hints": [
+      "C = 2πr."
+    ],
+    "solution": "C = 2 × 3.14 × 5 = 31.4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "circumference-gen-e9",
+    "topicId": "circumference",
+    "difficulty": "easy",
+    "question": "What is the circumference of a circle with radius 3? (Use π ≈ 3.14)",
+    "answer": "18.84",
+    "hints": [
+      "C = 2πr."
+    ],
+    "solution": "C = 2 × 3.14 × 3 = 18.84.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "circumference-gen-e10",
+    "topicId": "circumference",
+    "difficulty": "easy",
+    "question": "What is the circumference of a circle with radius 2? (Use π ≈ 3.14)",
+    "answer": "12.56",
+    "hints": [
+      "C = 2πr."
+    ],
+    "solution": "C = 2 × 3.14 × 2 = 12.56.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "circumference-gen-e11",
+    "topicId": "circumference",
+    "difficulty": "easy",
+    "question": "What is the circumference of a circle with diameter 16? (Use π ≈ 3.14)",
+    "answer": "50.24",
+    "hints": [
+      "C = πd."
+    ],
+    "solution": "C = 3.14 × 16 = 50.24.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "circumference-gen-e12",
+    "topicId": "circumference",
+    "difficulty": "easy",
+    "question": "What is the circumference of a circle with diameter 12? (Use π ≈ 3.14)",
+    "answer": "37.68",
+    "hints": [
+      "C = πd."
+    ],
+    "solution": "C = 3.14 × 12 = 37.68.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "circumference-gen-e13",
+    "topicId": "circumference",
+    "difficulty": "easy",
+    "question": "What is the circumference of a circle with radius 10? (Use π ≈ 3.14)",
+    "answer": "62.8",
+    "hints": [
+      "C = 2πr."
+    ],
+    "solution": "C = 2 × 3.14 × 10 = 62.8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "circumference-gen-e14",
+    "topicId": "circumference",
+    "difficulty": "easy",
+    "question": "What is the circumference of a circle with radius 1? (Use π ≈ 3.14)",
+    "answer": "6.28",
+    "hints": [
+      "C = 2πr."
+    ],
+    "solution": "C = 2 × 3.14 × 1 = 6.28.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "circumference-gen-m0",
+    "topicId": "circumference",
+    "difficulty": "medium",
+    "question": "What is the circumference of a circle with radius 18? (Use π ≈ 3.14)",
+    "answer": "113.04",
+    "hints": [
+      "C = 2πr."
+    ],
+    "solution": "C = 2 × 3.14 × 18 = 113.04.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "circumference-gen-m1",
+    "topicId": "circumference",
+    "difficulty": "medium",
+    "question": "What is the circumference of a circle with radius 19? (Use π ≈ 3.14)",
+    "answer": "119.32",
+    "hints": [
+      "C = 2πr."
+    ],
+    "solution": "C = 2 × 3.14 × 19 = 119.32.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "circumference-gen-m2",
+    "topicId": "circumference",
+    "difficulty": "medium",
+    "question": "What is the circumference of a circle with radius 11? (Use π ≈ 3.14)",
+    "answer": "69.08",
+    "hints": [
+      "C = 2πr."
+    ],
+    "solution": "C = 2 × 3.14 × 11 = 69.08.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "circumference-gen-m3",
+    "topicId": "circumference",
+    "difficulty": "medium",
+    "question": "What is the circumference of a circle with diameter 36? (Use π ≈ 3.14)",
+    "answer": "113.04",
+    "hints": [
+      "C = πd."
+    ],
+    "solution": "C = 3.14 × 36 = 113.04.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "circumference-gen-m4",
+    "topicId": "circumference",
+    "difficulty": "medium",
+    "question": "What is the circumference of a circle with radius 7? (Use π ≈ 3.14)",
+    "answer": "43.96",
+    "hints": [
+      "C = 2πr."
+    ],
+    "solution": "C = 2 × 3.14 × 7 = 43.96.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "circumference-gen-m5",
+    "topicId": "circumference",
+    "difficulty": "medium",
+    "question": "What is the circumference of a circle with diameter 40? (Use π ≈ 3.14)",
+    "answer": "125.6",
+    "hints": [
+      "C = πd."
+    ],
+    "solution": "C = 3.14 × 40 = 125.6.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "circumference-gen-m6",
+    "topicId": "circumference",
+    "difficulty": "medium",
+    "question": "What is the circumference of a circle with diameter 8? (Use π ≈ 3.14)",
+    "answer": "25.12",
+    "hints": [
+      "C = πd."
+    ],
+    "solution": "C = 3.14 × 8 = 25.12.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "circumference-gen-m7",
+    "topicId": "circumference",
+    "difficulty": "medium",
+    "question": "What is the circumference of a circle with diameter 8? (Use π ≈ 3.14)",
+    "answer": "25.12",
+    "hints": [
+      "C = πd."
+    ],
+    "solution": "C = 3.14 × 8 = 25.12.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "circumference-gen-m8",
+    "topicId": "circumference",
+    "difficulty": "medium",
+    "question": "What is the circumference of a circle with diameter 4? (Use π ≈ 3.14)",
+    "answer": "12.56",
+    "hints": [
+      "C = πd."
+    ],
+    "solution": "C = 3.14 × 4 = 12.56.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "circumference-gen-m9",
+    "topicId": "circumference",
+    "difficulty": "medium",
+    "question": "What is the circumference of a circle with radius 9? (Use π ≈ 3.14)",
+    "answer": "56.52",
+    "hints": [
+      "C = 2πr."
+    ],
+    "solution": "C = 2 × 3.14 × 9 = 56.52.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "circumference-gen-m10",
+    "topicId": "circumference",
+    "difficulty": "medium",
+    "question": "What is the circumference of a circle with diameter 2? (Use π ≈ 3.14)",
+    "answer": "6.28",
+    "hints": [
+      "C = πd."
+    ],
+    "solution": "C = 3.14 × 2 = 6.28.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "circumference-gen-m11",
+    "topicId": "circumference",
+    "difficulty": "medium",
+    "question": "What is the circumference of a circle with radius 16? (Use π ≈ 3.14)",
+    "answer": "100.48",
+    "hints": [
+      "C = 2πr."
+    ],
+    "solution": "C = 2 × 3.14 × 16 = 100.48.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "circumference-gen-m12",
+    "topicId": "circumference",
+    "difficulty": "medium",
+    "question": "What is the circumference of a circle with radius 4? (Use π ≈ 3.14)",
+    "answer": "25.12",
+    "hints": [
+      "C = 2πr."
+    ],
+    "solution": "C = 2 × 3.14 × 4 = 25.12.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "circumference-gen-m13",
+    "topicId": "circumference",
+    "difficulty": "medium",
+    "question": "What is the circumference of a circle with diameter 24? (Use π ≈ 3.14)",
+    "answer": "75.36",
+    "hints": [
+      "C = πd."
+    ],
+    "solution": "C = 3.14 × 24 = 75.36.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "circumference-gen-m14",
+    "topicId": "circumference",
+    "difficulty": "medium",
+    "question": "What is the circumference of a circle with diameter 18? (Use π ≈ 3.14)",
+    "answer": "56.52",
+    "hints": [
+      "C = πd."
+    ],
+    "solution": "C = 3.14 × 18 = 56.52.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "circumference-gen-m15",
+    "topicId": "circumference",
+    "difficulty": "medium",
+    "question": "What is the circumference of a circle with diameter 38? (Use π ≈ 3.14)",
+    "answer": "119.32",
+    "hints": [
+      "C = πd."
+    ],
+    "solution": "C = 3.14 × 38 = 119.32.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "circumference-gen-m16",
+    "topicId": "circumference",
+    "difficulty": "medium",
+    "question": "What is the circumference of a circle with radius 18? (Use π ≈ 3.14)",
+    "answer": "113.04",
+    "hints": [
+      "C = 2πr."
+    ],
+    "solution": "C = 2 × 3.14 × 18 = 113.04.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "circumference-gen-m17",
+    "topicId": "circumference",
+    "difficulty": "medium",
+    "question": "What is the circumference of a circle with diameter 30? (Use π ≈ 3.14)",
+    "answer": "94.2",
+    "hints": [
+      "C = πd."
+    ],
+    "solution": "C = 3.14 × 30 = 94.2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "circumference-gen-m18",
+    "topicId": "circumference",
+    "difficulty": "medium",
+    "question": "What is the circumference of a circle with radius 16? (Use π ≈ 3.14)",
+    "answer": "100.48",
+    "hints": [
+      "C = 2πr."
+    ],
+    "solution": "C = 2 × 3.14 × 16 = 100.48.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "circumference-gen-m19",
+    "topicId": "circumference",
+    "difficulty": "medium",
+    "question": "What is the circumference of a circle with diameter 26? (Use π ≈ 3.14)",
+    "answer": "81.64",
+    "hints": [
+      "C = πd."
+    ],
+    "solution": "C = 3.14 × 26 = 81.64.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "circumference-gen-h0",
+    "topicId": "circumference",
+    "difficulty": "hard",
+    "question": "What is the circumference of a circle with diameter 20? (Use π ≈ 3.14)",
+    "answer": "62.8",
+    "hints": [
+      "C = πd."
+    ],
+    "solution": "C = 3.14 × 20 = 62.8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "circumference-gen-h1",
+    "topicId": "circumference",
+    "difficulty": "hard",
+    "question": "What is the circumference of a circle with diameter 36? (Use π ≈ 3.14)",
+    "answer": "113.04",
+    "hints": [
+      "C = πd."
+    ],
+    "solution": "C = 3.14 × 36 = 113.04.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "circumference-gen-h2",
+    "topicId": "circumference",
+    "difficulty": "hard",
+    "question": "What is the circumference of a circle with radius 14? (Use π ≈ 3.14)",
+    "answer": "87.92",
+    "hints": [
+      "C = 2πr."
+    ],
+    "solution": "C = 2 × 3.14 × 14 = 87.92.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "circumference-gen-h3",
+    "topicId": "circumference",
+    "difficulty": "hard",
+    "question": "What is the circumference of a circle with diameter 2? (Use π ≈ 3.14)",
+    "answer": "6.28",
+    "hints": [
+      "C = πd."
+    ],
+    "solution": "C = 3.14 × 2 = 6.28.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "circumference-gen-h4",
+    "topicId": "circumference",
+    "difficulty": "hard",
+    "question": "What is the circumference of a circle with radius 12? (Use π ≈ 3.14)",
+    "answer": "75.36",
+    "hints": [
+      "C = 2πr."
+    ],
+    "solution": "C = 2 × 3.14 × 12 = 75.36.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "circumference-gen-h5",
+    "topicId": "circumference",
+    "difficulty": "hard",
+    "question": "What is the circumference of a circle with diameter 26? (Use π ≈ 3.14)",
+    "answer": "81.64",
+    "hints": [
+      "C = πd."
+    ],
+    "solution": "C = 3.14 × 26 = 81.64.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "circumference-gen-h6",
+    "topicId": "circumference",
+    "difficulty": "hard",
+    "question": "What is the circumference of a circle with radius 7? (Use π ≈ 3.14)",
+    "answer": "43.96",
+    "hints": [
+      "C = 2πr."
+    ],
+    "solution": "C = 2 × 3.14 × 7 = 43.96.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "circumference-gen-h7",
+    "topicId": "circumference",
+    "difficulty": "hard",
+    "question": "What is the circumference of a circle with radius 8? (Use π ≈ 3.14)",
+    "answer": "50.24",
+    "hints": [
+      "C = 2πr."
+    ],
+    "solution": "C = 2 × 3.14 × 8 = 50.24.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "circumference-gen-h8",
+    "topicId": "circumference",
+    "difficulty": "hard",
+    "question": "What is the circumference of a circle with radius 2? (Use π ≈ 3.14)",
+    "answer": "12.56",
+    "hints": [
+      "C = 2πr."
+    ],
+    "solution": "C = 2 × 3.14 × 2 = 12.56.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "circumference-gen-h9",
+    "topicId": "circumference",
+    "difficulty": "hard",
+    "question": "What is the circumference of a circle with diameter 24? (Use π ≈ 3.14)",
+    "answer": "75.36",
+    "hints": [
+      "C = πd."
+    ],
+    "solution": "C = 3.14 × 24 = 75.36.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "circumference-gen-h10",
+    "topicId": "circumference",
+    "difficulty": "hard",
+    "question": "What is the circumference of a circle with radius 18? (Use π ≈ 3.14)",
+    "answer": "113.04",
+    "hints": [
+      "C = 2πr."
+    ],
+    "solution": "C = 2 × 3.14 × 18 = 113.04.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "circumference-gen-h11",
+    "topicId": "circumference",
+    "difficulty": "hard",
+    "question": "What is the circumference of a circle with radius 6? (Use π ≈ 3.14)",
+    "answer": "37.68",
+    "hints": [
+      "C = 2πr."
+    ],
+    "solution": "C = 2 × 3.14 × 6 = 37.68.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "circumference-gen-h12",
+    "topicId": "circumference",
+    "difficulty": "hard",
+    "question": "What is the circumference of a circle with radius 17? (Use π ≈ 3.14)",
+    "answer": "106.76",
+    "hints": [
+      "C = 2πr."
+    ],
+    "solution": "C = 2 × 3.14 × 17 = 106.76.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "circumference-gen-h13",
+    "topicId": "circumference",
+    "difficulty": "hard",
+    "question": "What is the circumference of a circle with diameter 2? (Use π ≈ 3.14)",
+    "answer": "6.28",
+    "hints": [
+      "C = πd."
+    ],
+    "solution": "C = 3.14 × 2 = 6.28.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "circumference-gen-h14",
+    "topicId": "circumference",
+    "difficulty": "hard",
+    "question": "What is the circumference of a circle with radius 17? (Use π ≈ 3.14)",
+    "answer": "106.76",
+    "hints": [
+      "C = 2πr."
+    ],
+    "solution": "C = 2 × 3.14 × 17 = 106.76.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  }
+]

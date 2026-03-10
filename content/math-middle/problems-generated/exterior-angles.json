@@ -1,0 +1,652 @@
+[
+  {
+    "id": "exterior-angles-gen-e0",
+    "topicId": "exterior-angles",
+    "difficulty": "easy",
+    "question": "A triangle has two remote interior angles of 40° and 79°. What is the exterior angle?",
+    "answer": "119°",
+    "hints": [
+      "The exterior angle equals the sum of the two remote interior angles."
+    ],
+    "solution": "40° + 79° = 119°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exterior-angles-gen-e1",
+    "topicId": "exterior-angles",
+    "difficulty": "easy",
+    "question": "A triangle has two remote interior angles of 77° and 71°. What is the exterior angle?",
+    "answer": "148°",
+    "hints": [
+      "The exterior angle equals the sum of the two remote interior angles."
+    ],
+    "solution": "77° + 71° = 148°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exterior-angles-gen-e2",
+    "topicId": "exterior-angles",
+    "difficulty": "easy",
+    "question": "A triangle has two remote interior angles of 44° and 32°. What is the exterior angle?",
+    "answer": "76°",
+    "hints": [
+      "The exterior angle equals the sum of the two remote interior angles."
+    ],
+    "solution": "44° + 32° = 76°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exterior-angles-gen-e3",
+    "topicId": "exterior-angles",
+    "difficulty": "easy",
+    "question": "A triangle has two remote interior angles of 53° and 79°. What is the exterior angle?",
+    "answer": "132°",
+    "hints": [
+      "The exterior angle equals the sum of the two remote interior angles."
+    ],
+    "solution": "53° + 79° = 132°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exterior-angles-gen-e4",
+    "topicId": "exterior-angles",
+    "difficulty": "easy",
+    "question": "A triangle has two remote interior angles of 36° and 60°. What is the exterior angle?",
+    "answer": "96°",
+    "hints": [
+      "The exterior angle equals the sum of the two remote interior angles."
+    ],
+    "solution": "36° + 60° = 96°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exterior-angles-gen-e5",
+    "topicId": "exterior-angles",
+    "difficulty": "easy",
+    "question": "A triangle has two remote interior angles of 57° and 64°. What is the exterior angle?",
+    "answer": "121°",
+    "hints": [
+      "The exterior angle equals the sum of the two remote interior angles."
+    ],
+    "solution": "57° + 64° = 121°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exterior-angles-gen-e6",
+    "topicId": "exterior-angles",
+    "difficulty": "easy",
+    "question": "A triangle has two remote interior angles of 68° and 67°. What is the exterior angle?",
+    "answer": "135°",
+    "hints": [
+      "The exterior angle equals the sum of the two remote interior angles."
+    ],
+    "solution": "68° + 67° = 135°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exterior-angles-gen-e7",
+    "topicId": "exterior-angles",
+    "difficulty": "easy",
+    "question": "A triangle has two remote interior angles of 60° and 66°. What is the exterior angle?",
+    "answer": "126°",
+    "hints": [
+      "The exterior angle equals the sum of the two remote interior angles."
+    ],
+    "solution": "60° + 66° = 126°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exterior-angles-gen-e8",
+    "topicId": "exterior-angles",
+    "difficulty": "easy",
+    "question": "A triangle has two remote interior angles of 39° and 48°. What is the exterior angle?",
+    "answer": "87°",
+    "hints": [
+      "The exterior angle equals the sum of the two remote interior angles."
+    ],
+    "solution": "39° + 48° = 87°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exterior-angles-gen-e9",
+    "topicId": "exterior-angles",
+    "difficulty": "easy",
+    "question": "A triangle has two remote interior angles of 63° and 76°. What is the exterior angle?",
+    "answer": "139°",
+    "hints": [
+      "The exterior angle equals the sum of the two remote interior angles."
+    ],
+    "solution": "63° + 76° = 139°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exterior-angles-gen-e10",
+    "topicId": "exterior-angles",
+    "difficulty": "easy",
+    "question": "A triangle has two remote interior angles of 40° and 65°. What is the exterior angle?",
+    "answer": "105°",
+    "hints": [
+      "The exterior angle equals the sum of the two remote interior angles."
+    ],
+    "solution": "40° + 65° = 105°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exterior-angles-gen-e11",
+    "topicId": "exterior-angles",
+    "difficulty": "easy",
+    "question": "A triangle has two remote interior angles of 80° and 34°. What is the exterior angle?",
+    "answer": "114°",
+    "hints": [
+      "The exterior angle equals the sum of the two remote interior angles."
+    ],
+    "solution": "80° + 34° = 114°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exterior-angles-gen-e12",
+    "topicId": "exterior-angles",
+    "difficulty": "easy",
+    "question": "A triangle has two remote interior angles of 50° and 46°. What is the exterior angle?",
+    "answer": "96°",
+    "hints": [
+      "The exterior angle equals the sum of the two remote interior angles."
+    ],
+    "solution": "50° + 46° = 96°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exterior-angles-gen-e13",
+    "topicId": "exterior-angles",
+    "difficulty": "easy",
+    "question": "A triangle has two remote interior angles of 46° and 46°. What is the exterior angle?",
+    "answer": "92°",
+    "hints": [
+      "The exterior angle equals the sum of the two remote interior angles."
+    ],
+    "solution": "46° + 46° = 92°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exterior-angles-gen-e14",
+    "topicId": "exterior-angles",
+    "difficulty": "easy",
+    "question": "A triangle has two remote interior angles of 71° and 70°. What is the exterior angle?",
+    "answer": "141°",
+    "hints": [
+      "The exterior angle equals the sum of the two remote interior angles."
+    ],
+    "solution": "71° + 70° = 141°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exterior-angles-gen-m0",
+    "topicId": "exterior-angles",
+    "difficulty": "medium",
+    "question": "A triangle has two remote interior angles of 79° and 47°. What is the exterior angle?",
+    "answer": "126°",
+    "hints": [
+      "The exterior angle equals the sum of the two remote interior angles."
+    ],
+    "solution": "79° + 47° = 126°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exterior-angles-gen-m1",
+    "topicId": "exterior-angles",
+    "difficulty": "medium",
+    "question": "A triangle has two remote interior angles of 65° and 61°. What is the exterior angle?",
+    "answer": "126°",
+    "hints": [
+      "The exterior angle equals the sum of the two remote interior angles."
+    ],
+    "solution": "65° + 61° = 126°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exterior-angles-gen-m2",
+    "topicId": "exterior-angles",
+    "difficulty": "medium",
+    "question": "A triangle has two remote interior angles of 53° and 64°. What is the exterior angle?",
+    "answer": "117°",
+    "hints": [
+      "The exterior angle equals the sum of the two remote interior angles."
+    ],
+    "solution": "53° + 64° = 117°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exterior-angles-gen-m3",
+    "topicId": "exterior-angles",
+    "difficulty": "medium",
+    "question": "A triangle has two remote interior angles of 34° and 77°. What is the exterior angle?",
+    "answer": "111°",
+    "hints": [
+      "The exterior angle equals the sum of the two remote interior angles."
+    ],
+    "solution": "34° + 77° = 111°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exterior-angles-gen-m4",
+    "topicId": "exterior-angles",
+    "difficulty": "medium",
+    "question": "A triangle has two remote interior angles of 72° and 63°. What is the exterior angle?",
+    "answer": "135°",
+    "hints": [
+      "The exterior angle equals the sum of the two remote interior angles."
+    ],
+    "solution": "72° + 63° = 135°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exterior-angles-gen-m5",
+    "topicId": "exterior-angles",
+    "difficulty": "medium",
+    "question": "A triangle has two remote interior angles of 58° and 74°. What is the exterior angle?",
+    "answer": "132°",
+    "hints": [
+      "The exterior angle equals the sum of the two remote interior angles."
+    ],
+    "solution": "58° + 74° = 132°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exterior-angles-gen-m6",
+    "topicId": "exterior-angles",
+    "difficulty": "medium",
+    "question": "A triangle has two remote interior angles of 69° and 37°. What is the exterior angle?",
+    "answer": "106°",
+    "hints": [
+      "The exterior angle equals the sum of the two remote interior angles."
+    ],
+    "solution": "69° + 37° = 106°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exterior-angles-gen-m7",
+    "topicId": "exterior-angles",
+    "difficulty": "medium",
+    "question": "A triangle has two remote interior angles of 78° and 55°. What is the exterior angle?",
+    "answer": "133°",
+    "hints": [
+      "The exterior angle equals the sum of the two remote interior angles."
+    ],
+    "solution": "78° + 55° = 133°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exterior-angles-gen-m8",
+    "topicId": "exterior-angles",
+    "difficulty": "medium",
+    "question": "A triangle has two remote interior angles of 55° and 35°. What is the exterior angle?",
+    "answer": "90°",
+    "hints": [
+      "The exterior angle equals the sum of the two remote interior angles."
+    ],
+    "solution": "55° + 35° = 90°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exterior-angles-gen-m9",
+    "topicId": "exterior-angles",
+    "difficulty": "medium",
+    "question": "A triangle has two remote interior angles of 30° and 56°. What is the exterior angle?",
+    "answer": "86°",
+    "hints": [
+      "The exterior angle equals the sum of the two remote interior angles."
+    ],
+    "solution": "30° + 56° = 86°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exterior-angles-gen-m10",
+    "topicId": "exterior-angles",
+    "difficulty": "medium",
+    "question": "A triangle has two remote interior angles of 63° and 63°. What is the exterior angle?",
+    "answer": "126°",
+    "hints": [
+      "The exterior angle equals the sum of the two remote interior angles."
+    ],
+    "solution": "63° + 63° = 126°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exterior-angles-gen-m11",
+    "topicId": "exterior-angles",
+    "difficulty": "medium",
+    "question": "A triangle has two remote interior angles of 47° and 75°. What is the exterior angle?",
+    "answer": "122°",
+    "hints": [
+      "The exterior angle equals the sum of the two remote interior angles."
+    ],
+    "solution": "47° + 75° = 122°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exterior-angles-gen-m12",
+    "topicId": "exterior-angles",
+    "difficulty": "medium",
+    "question": "A triangle has two remote interior angles of 31° and 46°. What is the exterior angle?",
+    "answer": "77°",
+    "hints": [
+      "The exterior angle equals the sum of the two remote interior angles."
+    ],
+    "solution": "31° + 46° = 77°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exterior-angles-gen-m13",
+    "topicId": "exterior-angles",
+    "difficulty": "medium",
+    "question": "A triangle has two remote interior angles of 59° and 63°. What is the exterior angle?",
+    "answer": "122°",
+    "hints": [
+      "The exterior angle equals the sum of the two remote interior angles."
+    ],
+    "solution": "59° + 63° = 122°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exterior-angles-gen-m14",
+    "topicId": "exterior-angles",
+    "difficulty": "medium",
+    "question": "A triangle has two remote interior angles of 62° and 40°. What is the exterior angle?",
+    "answer": "102°",
+    "hints": [
+      "The exterior angle equals the sum of the two remote interior angles."
+    ],
+    "solution": "62° + 40° = 102°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exterior-angles-gen-m15",
+    "topicId": "exterior-angles",
+    "difficulty": "medium",
+    "question": "A triangle has two remote interior angles of 66° and 54°. What is the exterior angle?",
+    "answer": "120°",
+    "hints": [
+      "The exterior angle equals the sum of the two remote interior angles."
+    ],
+    "solution": "66° + 54° = 120°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exterior-angles-gen-m16",
+    "topicId": "exterior-angles",
+    "difficulty": "medium",
+    "question": "A triangle has two remote interior angles of 61° and 78°. What is the exterior angle?",
+    "answer": "139°",
+    "hints": [
+      "The exterior angle equals the sum of the two remote interior angles."
+    ],
+    "solution": "61° + 78° = 139°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exterior-angles-gen-m17",
+    "topicId": "exterior-angles",
+    "difficulty": "medium",
+    "question": "A triangle has two remote interior angles of 57° and 32°. What is the exterior angle?",
+    "answer": "89°",
+    "hints": [
+      "The exterior angle equals the sum of the two remote interior angles."
+    ],
+    "solution": "57° + 32° = 89°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exterior-angles-gen-m18",
+    "topicId": "exterior-angles",
+    "difficulty": "medium",
+    "question": "A triangle has two remote interior angles of 45° and 41°. What is the exterior angle?",
+    "answer": "86°",
+    "hints": [
+      "The exterior angle equals the sum of the two remote interior angles."
+    ],
+    "solution": "45° + 41° = 86°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exterior-angles-gen-m19",
+    "topicId": "exterior-angles",
+    "difficulty": "medium",
+    "question": "A triangle has two remote interior angles of 50° and 42°. What is the exterior angle?",
+    "answer": "92°",
+    "hints": [
+      "The exterior angle equals the sum of the two remote interior angles."
+    ],
+    "solution": "50° + 42° = 92°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exterior-angles-gen-h0",
+    "topicId": "exterior-angles",
+    "difficulty": "hard",
+    "question": "A triangle has two remote interior angles of 61° and 74°. What is the exterior angle?",
+    "answer": "135°",
+    "hints": [
+      "The exterior angle equals the sum of the two remote interior angles."
+    ],
+    "solution": "61° + 74° = 135°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exterior-angles-gen-h1",
+    "topicId": "exterior-angles",
+    "difficulty": "hard",
+    "question": "A triangle has two remote interior angles of 41° and 64°. What is the exterior angle?",
+    "answer": "105°",
+    "hints": [
+      "The exterior angle equals the sum of the two remote interior angles."
+    ],
+    "solution": "41° + 64° = 105°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exterior-angles-gen-h2",
+    "topicId": "exterior-angles",
+    "difficulty": "hard",
+    "question": "A triangle has two remote interior angles of 65° and 79°. What is the exterior angle?",
+    "answer": "144°",
+    "hints": [
+      "The exterior angle equals the sum of the two remote interior angles."
+    ],
+    "solution": "65° + 79° = 144°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exterior-angles-gen-h3",
+    "topicId": "exterior-angles",
+    "difficulty": "hard",
+    "question": "A triangle has two remote interior angles of 54° and 80°. What is the exterior angle?",
+    "answer": "134°",
+    "hints": [
+      "The exterior angle equals the sum of the two remote interior angles."
+    ],
+    "solution": "54° + 80° = 134°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exterior-angles-gen-h4",
+    "topicId": "exterior-angles",
+    "difficulty": "hard",
+    "question": "A triangle has two remote interior angles of 44° and 75°. What is the exterior angle?",
+    "answer": "119°",
+    "hints": [
+      "The exterior angle equals the sum of the two remote interior angles."
+    ],
+    "solution": "44° + 75° = 119°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exterior-angles-gen-h5",
+    "topicId": "exterior-angles",
+    "difficulty": "hard",
+    "question": "A triangle has two remote interior angles of 32° and 60°. What is the exterior angle?",
+    "answer": "92°",
+    "hints": [
+      "The exterior angle equals the sum of the two remote interior angles."
+    ],
+    "solution": "32° + 60° = 92°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exterior-angles-gen-h6",
+    "topicId": "exterior-angles",
+    "difficulty": "hard",
+    "question": "A triangle has two remote interior angles of 75° and 60°. What is the exterior angle?",
+    "answer": "135°",
+    "hints": [
+      "The exterior angle equals the sum of the two remote interior angles."
+    ],
+    "solution": "75° + 60° = 135°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exterior-angles-gen-h7",
+    "topicId": "exterior-angles",
+    "difficulty": "hard",
+    "question": "A triangle has two remote interior angles of 74° and 61°. What is the exterior angle?",
+    "answer": "135°",
+    "hints": [
+      "The exterior angle equals the sum of the two remote interior angles."
+    ],
+    "solution": "74° + 61° = 135°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exterior-angles-gen-h8",
+    "topicId": "exterior-angles",
+    "difficulty": "hard",
+    "question": "A triangle has two remote interior angles of 35° and 56°. What is the exterior angle?",
+    "answer": "91°",
+    "hints": [
+      "The exterior angle equals the sum of the two remote interior angles."
+    ],
+    "solution": "35° + 56° = 91°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exterior-angles-gen-h9",
+    "topicId": "exterior-angles",
+    "difficulty": "hard",
+    "question": "A triangle has two remote interior angles of 58° and 49°. What is the exterior angle?",
+    "answer": "107°",
+    "hints": [
+      "The exterior angle equals the sum of the two remote interior angles."
+    ],
+    "solution": "58° + 49° = 107°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exterior-angles-gen-h10",
+    "topicId": "exterior-angles",
+    "difficulty": "hard",
+    "question": "A triangle has two remote interior angles of 53° and 65°. What is the exterior angle?",
+    "answer": "118°",
+    "hints": [
+      "The exterior angle equals the sum of the two remote interior angles."
+    ],
+    "solution": "53° + 65° = 118°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exterior-angles-gen-h11",
+    "topicId": "exterior-angles",
+    "difficulty": "hard",
+    "question": "A triangle has two remote interior angles of 46° and 47°. What is the exterior angle?",
+    "answer": "93°",
+    "hints": [
+      "The exterior angle equals the sum of the two remote interior angles."
+    ],
+    "solution": "46° + 47° = 93°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exterior-angles-gen-h12",
+    "topicId": "exterior-angles",
+    "difficulty": "hard",
+    "question": "A triangle has two remote interior angles of 51° and 41°. What is the exterior angle?",
+    "answer": "92°",
+    "hints": [
+      "The exterior angle equals the sum of the two remote interior angles."
+    ],
+    "solution": "51° + 41° = 92°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exterior-angles-gen-h13",
+    "topicId": "exterior-angles",
+    "difficulty": "hard",
+    "question": "A triangle has two remote interior angles of 30° and 36°. What is the exterior angle?",
+    "answer": "66°",
+    "hints": [
+      "The exterior angle equals the sum of the two remote interior angles."
+    ],
+    "solution": "30° + 36° = 66°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exterior-angles-gen-h14",
+    "topicId": "exterior-angles",
+    "difficulty": "hard",
+    "question": "A triangle has two remote interior angles of 42° and 63°. What is the exterior angle?",
+    "answer": "105°",
+    "hints": [
+      "The exterior angle equals the sum of the two remote interior angles."
+    ],
+    "solution": "42° + 63° = 105°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  }
+]

@@ -1,0 +1,204 @@
+[
+  {
+    "id": "shapes-3d-k-sup-e0",
+    "topicId": "shapes-3d-k",
+    "difficulty": "easy",
+    "question": "A ball is shaped like which 3D shape?",
+    "answer": "sphere",
+    "hints": [
+      "A ball is round in every direction."
+    ],
+    "solution": "A ball is shaped like a sphere. A sphere is perfectly round in all directions.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "shapes-3d-k-sup-e1",
+    "topicId": "shapes-3d-k",
+    "difficulty": "easy",
+    "question": "A dice (die) is shaped like which 3D shape?",
+    "answer": "cube",
+    "hints": [
+      "A die has 6 square faces that are all the same size."
+    ],
+    "solution": "A die is shaped like a cube. A cube has 6 equal square faces.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "shapes-3d-k-sup-e2",
+    "topicId": "shapes-3d-k",
+    "difficulty": "easy",
+    "question": "A soup can is shaped like which 3D shape?",
+    "answer": "cylinder",
+    "hints": [
+      "It has two flat circles on the top and bottom and is round in the middle."
+    ],
+    "solution": "A soup can is shaped like a cylinder. A cylinder has two circular flat faces and a curved surface.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "shapes-3d-k-sup-e3",
+    "topicId": "shapes-3d-k",
+    "difficulty": "easy",
+    "question": "An ice cream cone (without the ice cream) looks like which 3D shape?",
+    "answer": "cone",
+    "hints": [
+      "It has a point at the bottom and a circle at the top."
+    ],
+    "solution": "An ice cream cone is shaped like a cone. A cone has a circular base and comes to a point.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "shapes-3d-k-sup-e4",
+    "topicId": "shapes-3d-k",
+    "difficulty": "easy",
+    "question": "How many flat faces does a sphere have?",
+    "answer": "0",
+    "hints": [
+      "Think about a ball. Can it sit flat on a table without rolling?"
+    ],
+    "solution": "A sphere has 0 flat faces. It is completely curved, which is why balls roll.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "shapes-3d-k-sup-m0",
+    "topicId": "shapes-3d-k",
+    "difficulty": "medium",
+    "question": "How many faces does a cube have?",
+    "answer": "6",
+    "hints": [
+      "Think of a box. It has a top, bottom, front, back, left side, and right side."
+    ],
+    "solution": "A cube has 6 faces: top, bottom, front, back, left, and right. Each face is a square.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "shapes-3d-k-sup-m1",
+    "topicId": "shapes-3d-k",
+    "difficulty": "medium",
+    "question": "Which 3D shape can roll AND slide: a sphere, a cylinder, or a cube?",
+    "answer": "cylinder",
+    "hints": [
+      "Rolling needs a curved surface. Sliding needs a flat surface.",
+      "Which shape has both curved and flat parts?"
+    ],
+    "solution": "A cylinder can both roll (on its curved side) and slide (on its flat circular faces). A sphere can only roll. A cube can only slide.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "shapes-3d-k-sup-m2",
+    "topicId": "shapes-3d-k",
+    "difficulty": "medium",
+    "question": "What shape is the flat face on the bottom of a cone?",
+    "answer": "circle",
+    "hints": [
+      "Think about an ice cream cone sitting on a table. What shape is touching the table?"
+    ],
+    "solution": "The flat face on the bottom of a cone is a circle.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "shapes-3d-k-sup-m3",
+    "topicId": "shapes-3d-k",
+    "difficulty": "medium",
+    "question": "Which 3D shape would stack most easily: a sphere, a cone, or a cube?",
+    "answer": "cube",
+    "hints": [
+      "Think about which shape has flat faces that line up evenly.",
+      "Curved shapes tend to roll."
+    ],
+    "solution": "A cube stacks most easily because it has flat, square faces on all sides. Spheres roll and cones tip over.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "shapes-3d-k-sup-m4",
+    "topicId": "shapes-3d-k",
+    "difficulty": "medium",
+    "question": "Name one real-world object shaped like a cylinder.",
+    "answer": "can",
+    "hints": [
+      "Think about objects in a kitchen that are round and tall.",
+      "Examples: can, log, paper towel roll, drinking glass."
+    ],
+    "solution": "Many real-world objects are cylinders: a can, a log, a paper towel roll, a drinking glass, a battery. Any of these answers is correct.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "shapes-3d-k-sup-h0",
+    "topicId": "shapes-3d-k",
+    "difficulty": "hard",
+    "question": "How are a cone and a cylinder alike? Name one way they are the same.",
+    "answer": "both have a circular face",
+    "hints": [
+      "Think about the bottom of each shape.",
+      "Both have at least one flat face that is a circle."
+    ],
+    "solution": "A cone and a cylinder are alike because both have at least one circular flat face. They also both have curved surfaces.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "shapes-3d-k-sup-h1",
+    "topicId": "shapes-3d-k",
+    "difficulty": "hard",
+    "question": "How is a cube different from a sphere? Name two differences.",
+    "answer": "a cube has flat faces and corners, a sphere has no flat faces and no corners",
+    "hints": [
+      "Think about faces: does a cube have flat surfaces? Does a sphere?",
+      "Think about corners: does a cube have points where edges meet?"
+    ],
+    "solution": "A cube has 6 flat square faces, 8 corners, and 12 edges. A sphere has 0 flat faces, 0 corners, and 0 edges. A cube can only slide; a sphere rolls.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "shapes-3d-k-sup-h2",
+    "topicId": "shapes-3d-k",
+    "difficulty": "hard",
+    "question": "You stack two cubes on top of each other. How many faces can you see from the outside? (Two faces are hidden where the cubes touch.)",
+    "answer": "10",
+    "hints": [
+      "Each cube has 6 faces. Two cubes have 12 faces total.",
+      "When they stack, the top of the bottom cube and the bottom of the top cube are hidden."
+    ],
+    "solution": "Two cubes have 6 + 6 = 12 faces total. When stacked, 2 faces are hidden (where they touch). 12 - 2 = 10 visible faces.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "shapes-3d-k-sup-h3",
+    "topicId": "shapes-3d-k",
+    "difficulty": "hard",
+    "question": "If you trace around the bottom of a cylinder on paper, what 2D shape would you see?",
+    "answer": "circle",
+    "hints": [
+      "The bottom of a cylinder is flat and round."
+    ],
+    "solution": "Tracing the bottom of a cylinder gives you a circle, because the flat face of a cylinder is circular.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "shapes-3d-k-sup-h4",
+    "topicId": "shapes-3d-k",
+    "difficulty": "hard",
+    "question": "Sort these objects by shape: basketball (sphere), tissue box (cube-like), birthday hat (cone), marker (cylinder). Which two objects can roll?",
+    "answer": "basketball and marker",
+    "hints": [
+      "Rolling requires a curved surface.",
+      "Which objects have curved surfaces?"
+    ],
+    "solution": "The basketball (sphere) and marker (cylinder) can roll because they have curved surfaces. The tissue box has only flat faces and cannot roll. The birthday hat (cone) can roll on its side but is less stable.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  }
+]

@@ -1,0 +1,211 @@
+[
+  {
+    "id": "add-subtract-word-problems-1-sup-e0",
+    "topicId": "add-subtract-word-problems-1",
+    "difficulty": "easy",
+    "question": "You have 5 red balls and 3 blue balls. How many balls do you have in all?",
+    "answer": "8",
+    "hints": [
+      "You are putting two groups together.",
+      "5 + 3 = ?"
+    ],
+    "solution": "5 + 3 = 8 balls in all.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "add-subtract-word-problems-1-sup-e1",
+    "topicId": "add-subtract-word-problems-1",
+    "difficulty": "easy",
+    "question": "There are 9 birds on a fence. 4 fly away. How many birds are left?",
+    "answer": "5",
+    "hints": [
+      "Some birds left, so we subtract.",
+      "9 − 4 = ?"
+    ],
+    "solution": "9 − 4 = 5 birds are left on the fence.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "add-subtract-word-problems-1-sup-e2",
+    "topicId": "add-subtract-word-problems-1",
+    "difficulty": "easy",
+    "question": "Emma has 6 crayons. Her mom gives her 4 more. How many crayons does Emma have now?",
+    "answer": "10",
+    "hints": [
+      "She is getting more, so add.",
+      "6 + 4 = ?"
+    ],
+    "solution": "6 + 4 = 10 crayons.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "add-subtract-word-problems-1-sup-e3",
+    "topicId": "add-subtract-word-problems-1",
+    "difficulty": "easy",
+    "question": "There are 7 puppies. 2 go to sleep. How many puppies are still awake?",
+    "answer": "5",
+    "hints": [
+      "Some puppies are no longer awake, so subtract.",
+      "7 − 2 = ?"
+    ],
+    "solution": "7 − 2 = 5 puppies are still awake.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "add-subtract-word-problems-1-sup-e4",
+    "topicId": "add-subtract-word-problems-1",
+    "difficulty": "easy",
+    "question": "You see 8 ducks. 3 more ducks swim over. How many ducks are there now?",
+    "answer": "11",
+    "hints": [
+      "More ducks are joining, so add.",
+      "8 + 3 = ?"
+    ],
+    "solution": "8 + 3 = 11 ducks.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "add-subtract-word-problems-1-sup-m0",
+    "topicId": "add-subtract-word-problems-1",
+    "difficulty": "medium",
+    "question": "Leo has 12 grapes. He eats some and now has 7 left. How many grapes did he eat?",
+    "answer": "5",
+    "hints": [
+      "He started with 12 and ended with 7.",
+      "12 − ? = 7, so ? = 12 − 7."
+    ],
+    "solution": "12 − 7 = 5. Leo ate 5 grapes.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "add-subtract-word-problems-1-sup-m1",
+    "topicId": "add-subtract-word-problems-1",
+    "difficulty": "medium",
+    "question": "Sam has 8 toy cars. His sister has 5 toy cars. How many more toy cars does Sam have than his sister?",
+    "answer": "3",
+    "hints": [
+      "'How many more' means find the difference.",
+      "8 − 5 = ?"
+    ],
+    "solution": "8 − 5 = 3. Sam has 3 more toy cars than his sister.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "add-subtract-word-problems-1-sup-m2",
+    "topicId": "add-subtract-word-problems-1",
+    "difficulty": "medium",
+    "question": "There were some fish in a pond. 6 more fish were added and now there are 14 fish. How many fish were in the pond at first?",
+    "answer": "8",
+    "hints": [
+      "? + 6 = 14.",
+      "14 − 6 = ?"
+    ],
+    "solution": "? + 6 = 14, so ? = 14 − 6 = 8. There were 8 fish in the pond at first.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "add-subtract-word-problems-1-sup-m3",
+    "topicId": "add-subtract-word-problems-1",
+    "difficulty": "medium",
+    "question": "A problem says: 'Mia has 11 stickers. She gives 4 to her friend.' Is this an addition or subtraction problem? How do you know?",
+    "answer": "subtraction, because she is giving away stickers so she has fewer",
+    "hints": [
+      "When someone gives things away, do they have more or fewer?",
+      "Having fewer means subtract."
+    ],
+    "solution": "This is a subtraction problem. Mia is giving stickers away, so she ends up with fewer. 11 − 4 = 7 stickers left.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "add-subtract-word-problems-1-sup-m4",
+    "topicId": "add-subtract-word-problems-1",
+    "difficulty": "medium",
+    "question": "Kai picked 9 flowers. Then he picked 6 more. Then he gave 3 to his teacher. How many flowers does Kai have?",
+    "answer": "12",
+    "hints": [
+      "First add: 9 + 6 = 15.",
+      "Then subtract: 15 − 3 = ?"
+    ],
+    "solution": "9 + 6 = 15 flowers. Then 15 − 3 = 12 flowers.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "add-subtract-word-problems-1-sup-h0",
+    "topicId": "add-subtract-word-problems-1",
+    "difficulty": "hard",
+    "question": "Ana has some pennies. She finds 7 more and now has 15. How many pennies did she start with? Write the equation.",
+    "answer": "8",
+    "hints": [
+      "? + 7 = 15. What number plus 7 equals 15?"
+    ],
+    "solution": "? + 7 = 15. So ? = 15 − 7 = 8. Ana started with 8 pennies.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "add-subtract-word-problems-1-sup-h1",
+    "topicId": "add-subtract-word-problems-1",
+    "difficulty": "hard",
+    "question": "There are 13 children on a bus. At a stop, some children get off and now there are 6 on the bus. How many children got off?",
+    "answer": "7",
+    "hints": [
+      "13 − ? = 6.",
+      "? = 13 − 6."
+    ],
+    "solution": "13 − ? = 6, so ? = 13 − 6 = 7. Seven children got off the bus.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "add-subtract-word-problems-1-sup-h2",
+    "topicId": "add-subtract-word-problems-1",
+    "difficulty": "hard",
+    "question": "Tom says: 'I have 6 more marbles than Jess. Jess has 8 marbles.' Write an equation and find how many marbles Tom has.",
+    "answer": "14",
+    "hints": [
+      "'6 more than Jess' means Jess's amount plus 6.",
+      "8 + 6 = ?"
+    ],
+    "solution": "Tom = Jess + 6 = 8 + 6 = 14 marbles.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "add-subtract-word-problems-1-sup-h3",
+    "topicId": "add-subtract-word-problems-1",
+    "difficulty": "hard",
+    "question": "A student wrote 7 − 5 = 12 for this problem: 'I have 7 apples and get 5 more. How many do I have?' What two mistakes did the student make?",
+    "answer": "should have added not subtracted, and 7 - 5 equals 2 not 12",
+    "hints": [
+      "Getting more means addition, not subtraction.",
+      "Also check: does 7 − 5 equal 12?"
+    ],
+    "solution": "Two mistakes: (1) The student subtracted instead of adding — 'get 5 more' means add. (2) Even the subtraction is wrong: 7 − 5 = 2, not 12. The correct equation is 7 + 5 = 12.",
+    "cognitiveDemand": "error-analysis",
+    "source": "generated"
+  },
+  {
+    "id": "add-subtract-word-problems-1-sup-h4",
+    "topicId": "add-subtract-word-problems-1",
+    "difficulty": "hard",
+    "question": "Make up a subtraction word problem where the answer is 9. The numbers must be within 20.",
+    "answer": "any valid subtraction word problem within 20 that equals 9",
+    "hints": [
+      "Pick a starting number and figure out what to subtract to get 9.",
+      "Example: 15 − ? = 9, so subtract 6."
+    ],
+    "solution": "Example: 'There are 17 books on a shelf. A student takes 8 books. How many books are left?' 17 − 8 = 9. Any subtraction within 20 that equals 9 is correct.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  }
+]

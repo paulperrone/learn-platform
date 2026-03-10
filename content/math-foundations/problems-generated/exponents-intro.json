@@ -1,0 +1,652 @@
+[
+  {
+    "id": "exponents-intro-gen-e0",
+    "topicId": "exponents-intro",
+    "difficulty": "easy",
+    "question": "What is 5^2?",
+    "answer": "25",
+    "hints": [
+      "5^2 means 5 × 5."
+    ],
+    "solution": "5^2 = 5 × 5 = 25.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exponents-intro-gen-e1",
+    "topicId": "exponents-intro",
+    "difficulty": "easy",
+    "question": "What is 5^2?",
+    "answer": "25",
+    "hints": [
+      "5^2 means 5 × 5."
+    ],
+    "solution": "5^2 = 5 × 5 = 25.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exponents-intro-gen-e2",
+    "topicId": "exponents-intro",
+    "difficulty": "easy",
+    "question": "What is 5^2?",
+    "answer": "25",
+    "hints": [
+      "5^2 means 5 × 5."
+    ],
+    "solution": "5^2 = 5 × 5 = 25.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exponents-intro-gen-e3",
+    "topicId": "exponents-intro",
+    "difficulty": "easy",
+    "question": "What is 3^2?",
+    "answer": "9",
+    "hints": [
+      "3^2 means 3 × 3."
+    ],
+    "solution": "3^2 = 3 × 3 = 9.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exponents-intro-gen-e4",
+    "topicId": "exponents-intro",
+    "difficulty": "easy",
+    "question": "What is 2^2?",
+    "answer": "4",
+    "hints": [
+      "2^2 means 2 × 2."
+    ],
+    "solution": "2^2 = 2 × 2 = 4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exponents-intro-gen-e5",
+    "topicId": "exponents-intro",
+    "difficulty": "easy",
+    "question": "What is 4^2?",
+    "answer": "16",
+    "hints": [
+      "4^2 means 4 × 4."
+    ],
+    "solution": "4^2 = 4 × 4 = 16.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exponents-intro-gen-e6",
+    "topicId": "exponents-intro",
+    "difficulty": "easy",
+    "question": "What is 3^2?",
+    "answer": "9",
+    "hints": [
+      "3^2 means 3 × 3."
+    ],
+    "solution": "3^2 = 3 × 3 = 9.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exponents-intro-gen-e7",
+    "topicId": "exponents-intro",
+    "difficulty": "easy",
+    "question": "What is 3^2?",
+    "answer": "9",
+    "hints": [
+      "3^2 means 3 × 3."
+    ],
+    "solution": "3^2 = 3 × 3 = 9.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exponents-intro-gen-e8",
+    "topicId": "exponents-intro",
+    "difficulty": "easy",
+    "question": "What is 5^2?",
+    "answer": "25",
+    "hints": [
+      "5^2 means 5 × 5."
+    ],
+    "solution": "5^2 = 5 × 5 = 25.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exponents-intro-gen-e9",
+    "topicId": "exponents-intro",
+    "difficulty": "easy",
+    "question": "What is 3^2?",
+    "answer": "9",
+    "hints": [
+      "3^2 means 3 × 3."
+    ],
+    "solution": "3^2 = 3 × 3 = 9.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exponents-intro-gen-e10",
+    "topicId": "exponents-intro",
+    "difficulty": "easy",
+    "question": "What is 4^2?",
+    "answer": "16",
+    "hints": [
+      "4^2 means 4 × 4."
+    ],
+    "solution": "4^2 = 4 × 4 = 16.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exponents-intro-gen-e11",
+    "topicId": "exponents-intro",
+    "difficulty": "easy",
+    "question": "What is 4^2?",
+    "answer": "16",
+    "hints": [
+      "4^2 means 4 × 4."
+    ],
+    "solution": "4^2 = 4 × 4 = 16.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exponents-intro-gen-e12",
+    "topicId": "exponents-intro",
+    "difficulty": "easy",
+    "question": "What is 2^2?",
+    "answer": "4",
+    "hints": [
+      "2^2 means 2 × 2."
+    ],
+    "solution": "2^2 = 2 × 2 = 4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exponents-intro-gen-e13",
+    "topicId": "exponents-intro",
+    "difficulty": "easy",
+    "question": "What is 4^2?",
+    "answer": "16",
+    "hints": [
+      "4^2 means 4 × 4."
+    ],
+    "solution": "4^2 = 4 × 4 = 16.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exponents-intro-gen-e14",
+    "topicId": "exponents-intro",
+    "difficulty": "easy",
+    "question": "What is 2^2?",
+    "answer": "4",
+    "hints": [
+      "2^2 means 2 × 2."
+    ],
+    "solution": "2^2 = 2 × 2 = 4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exponents-intro-gen-m0",
+    "topicId": "exponents-intro",
+    "difficulty": "medium",
+    "question": "What is 8^2?",
+    "answer": "64",
+    "hints": [
+      "8^2 means 8 × 8."
+    ],
+    "solution": "8^2 = 8 × 8 = 64.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exponents-intro-gen-m1",
+    "topicId": "exponents-intro",
+    "difficulty": "medium",
+    "question": "What is 2^2?",
+    "answer": "4",
+    "hints": [
+      "2^2 means 2 × 2."
+    ],
+    "solution": "2^2 = 2 × 2 = 4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exponents-intro-gen-m2",
+    "topicId": "exponents-intro",
+    "difficulty": "medium",
+    "question": "What is 6^3?",
+    "answer": "216",
+    "hints": [
+      "6^3 means 6 × 6 × 6."
+    ],
+    "solution": "6^3 = 6 × 6 × 6 = 216.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exponents-intro-gen-m3",
+    "topicId": "exponents-intro",
+    "difficulty": "medium",
+    "question": "What is 7^3?",
+    "answer": "343",
+    "hints": [
+      "7^3 means 7 × 7 × 7."
+    ],
+    "solution": "7^3 = 7 × 7 × 7 = 343.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exponents-intro-gen-m4",
+    "topicId": "exponents-intro",
+    "difficulty": "medium",
+    "question": "What is 3^2?",
+    "answer": "9",
+    "hints": [
+      "3^2 means 3 × 3."
+    ],
+    "solution": "3^2 = 3 × 3 = 9.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exponents-intro-gen-m5",
+    "topicId": "exponents-intro",
+    "difficulty": "medium",
+    "question": "What is 6^2?",
+    "answer": "36",
+    "hints": [
+      "6^2 means 6 × 6."
+    ],
+    "solution": "6^2 = 6 × 6 = 36.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exponents-intro-gen-m6",
+    "topicId": "exponents-intro",
+    "difficulty": "medium",
+    "question": "What is 8^3?",
+    "answer": "512",
+    "hints": [
+      "8^3 means 8 × 8 × 8."
+    ],
+    "solution": "8^3 = 8 × 8 × 8 = 512.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exponents-intro-gen-m7",
+    "topicId": "exponents-intro",
+    "difficulty": "medium",
+    "question": "What is 4^3?",
+    "answer": "64",
+    "hints": [
+      "4^3 means 4 × 4 × 4."
+    ],
+    "solution": "4^3 = 4 × 4 × 4 = 64.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exponents-intro-gen-m8",
+    "topicId": "exponents-intro",
+    "difficulty": "medium",
+    "question": "What is 7^3?",
+    "answer": "343",
+    "hints": [
+      "7^3 means 7 × 7 × 7."
+    ],
+    "solution": "7^3 = 7 × 7 × 7 = 343.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exponents-intro-gen-m9",
+    "topicId": "exponents-intro",
+    "difficulty": "medium",
+    "question": "What is 3^2?",
+    "answer": "9",
+    "hints": [
+      "3^2 means 3 × 3."
+    ],
+    "solution": "3^2 = 3 × 3 = 9.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exponents-intro-gen-m10",
+    "topicId": "exponents-intro",
+    "difficulty": "medium",
+    "question": "What is 9^2?",
+    "answer": "81",
+    "hints": [
+      "9^2 means 9 × 9."
+    ],
+    "solution": "9^2 = 9 × 9 = 81.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exponents-intro-gen-m11",
+    "topicId": "exponents-intro",
+    "difficulty": "medium",
+    "question": "What is 2^3?",
+    "answer": "8",
+    "hints": [
+      "2^3 means 2 × 2 × 2."
+    ],
+    "solution": "2^3 = 2 × 2 × 2 = 8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exponents-intro-gen-m12",
+    "topicId": "exponents-intro",
+    "difficulty": "medium",
+    "question": "What is 5^2?",
+    "answer": "25",
+    "hints": [
+      "5^2 means 5 × 5."
+    ],
+    "solution": "5^2 = 5 × 5 = 25.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exponents-intro-gen-m13",
+    "topicId": "exponents-intro",
+    "difficulty": "medium",
+    "question": "What is 5^3?",
+    "answer": "125",
+    "hints": [
+      "5^3 means 5 × 5 × 5."
+    ],
+    "solution": "5^3 = 5 × 5 × 5 = 125.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exponents-intro-gen-m14",
+    "topicId": "exponents-intro",
+    "difficulty": "medium",
+    "question": "What is 3^3?",
+    "answer": "27",
+    "hints": [
+      "3^3 means 3 × 3 × 3."
+    ],
+    "solution": "3^3 = 3 × 3 × 3 = 27.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exponents-intro-gen-m15",
+    "topicId": "exponents-intro",
+    "difficulty": "medium",
+    "question": "What is 7^2?",
+    "answer": "49",
+    "hints": [
+      "7^2 means 7 × 7."
+    ],
+    "solution": "7^2 = 7 × 7 = 49.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exponents-intro-gen-m16",
+    "topicId": "exponents-intro",
+    "difficulty": "medium",
+    "question": "What is 5^3?",
+    "answer": "125",
+    "hints": [
+      "5^3 means 5 × 5 × 5."
+    ],
+    "solution": "5^3 = 5 × 5 × 5 = 125.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exponents-intro-gen-m17",
+    "topicId": "exponents-intro",
+    "difficulty": "medium",
+    "question": "What is 6^3?",
+    "answer": "216",
+    "hints": [
+      "6^3 means 6 × 6 × 6."
+    ],
+    "solution": "6^3 = 6 × 6 × 6 = 216.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exponents-intro-gen-m18",
+    "topicId": "exponents-intro",
+    "difficulty": "medium",
+    "question": "What is 8^2?",
+    "answer": "64",
+    "hints": [
+      "8^2 means 8 × 8."
+    ],
+    "solution": "8^2 = 8 × 8 = 64.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exponents-intro-gen-m19",
+    "topicId": "exponents-intro",
+    "difficulty": "medium",
+    "question": "What is 4^2?",
+    "answer": "16",
+    "hints": [
+      "4^2 means 4 × 4."
+    ],
+    "solution": "4^2 = 4 × 4 = 16.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exponents-intro-gen-h0",
+    "topicId": "exponents-intro",
+    "difficulty": "hard",
+    "question": "What is 6^4?",
+    "answer": "1296",
+    "hints": [
+      "6^4 means 6 × 6 × 6 × 6."
+    ],
+    "solution": "6^4 = 6 × 6 × 6 × 6 = 1296.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exponents-intro-gen-h1",
+    "topicId": "exponents-intro",
+    "difficulty": "hard",
+    "question": "What is 2^3?",
+    "answer": "8",
+    "hints": [
+      "2^3 means 2 × 2 × 2."
+    ],
+    "solution": "2^3 = 2 × 2 × 2 = 8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exponents-intro-gen-h2",
+    "topicId": "exponents-intro",
+    "difficulty": "hard",
+    "question": "What is 4^3?",
+    "answer": "64",
+    "hints": [
+      "4^3 means 4 × 4 × 4."
+    ],
+    "solution": "4^3 = 4 × 4 × 4 = 64.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exponents-intro-gen-h3",
+    "topicId": "exponents-intro",
+    "difficulty": "hard",
+    "question": "What is 2^3?",
+    "answer": "8",
+    "hints": [
+      "2^3 means 2 × 2 × 2."
+    ],
+    "solution": "2^3 = 2 × 2 × 2 = 8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exponents-intro-gen-h4",
+    "topicId": "exponents-intro",
+    "difficulty": "hard",
+    "question": "What is 4^3?",
+    "answer": "64",
+    "hints": [
+      "4^3 means 4 × 4 × 4."
+    ],
+    "solution": "4^3 = 4 × 4 × 4 = 64.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exponents-intro-gen-h5",
+    "topicId": "exponents-intro",
+    "difficulty": "hard",
+    "question": "What is 6^3?",
+    "answer": "216",
+    "hints": [
+      "6^3 means 6 × 6 × 6."
+    ],
+    "solution": "6^3 = 6 × 6 × 6 = 216.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exponents-intro-gen-h6",
+    "topicId": "exponents-intro",
+    "difficulty": "hard",
+    "question": "What is 3^4?",
+    "answer": "81",
+    "hints": [
+      "3^4 means 3 × 3 × 3 × 3."
+    ],
+    "solution": "3^4 = 3 × 3 × 3 × 3 = 81.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exponents-intro-gen-h7",
+    "topicId": "exponents-intro",
+    "difficulty": "hard",
+    "question": "What is 6^4?",
+    "answer": "1296",
+    "hints": [
+      "6^4 means 6 × 6 × 6 × 6."
+    ],
+    "solution": "6^4 = 6 × 6 × 6 × 6 = 1296.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exponents-intro-gen-h8",
+    "topicId": "exponents-intro",
+    "difficulty": "hard",
+    "question": "What is 2^3?",
+    "answer": "8",
+    "hints": [
+      "2^3 means 2 × 2 × 2."
+    ],
+    "solution": "2^3 = 2 × 2 × 2 = 8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exponents-intro-gen-h9",
+    "topicId": "exponents-intro",
+    "difficulty": "hard",
+    "question": "What is 3^3?",
+    "answer": "27",
+    "hints": [
+      "3^3 means 3 × 3 × 3."
+    ],
+    "solution": "3^3 = 3 × 3 × 3 = 27.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exponents-intro-gen-h10",
+    "topicId": "exponents-intro",
+    "difficulty": "hard",
+    "question": "What is 2^4?",
+    "answer": "16",
+    "hints": [
+      "2^4 means 2 × 2 × 2 × 2."
+    ],
+    "solution": "2^4 = 2 × 2 × 2 × 2 = 16.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exponents-intro-gen-h11",
+    "topicId": "exponents-intro",
+    "difficulty": "hard",
+    "question": "What is 3^4?",
+    "answer": "81",
+    "hints": [
+      "3^4 means 3 × 3 × 3 × 3."
+    ],
+    "solution": "3^4 = 3 × 3 × 3 × 3 = 81.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exponents-intro-gen-h12",
+    "topicId": "exponents-intro",
+    "difficulty": "hard",
+    "question": "What is 3^4?",
+    "answer": "81",
+    "hints": [
+      "3^4 means 3 × 3 × 3 × 3."
+    ],
+    "solution": "3^4 = 3 × 3 × 3 × 3 = 81.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exponents-intro-gen-h13",
+    "topicId": "exponents-intro",
+    "difficulty": "hard",
+    "question": "What is 3^3?",
+    "answer": "27",
+    "hints": [
+      "3^3 means 3 × 3 × 3."
+    ],
+    "solution": "3^3 = 3 × 3 × 3 = 27.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "exponents-intro-gen-h14",
+    "topicId": "exponents-intro",
+    "difficulty": "hard",
+    "question": "What is 5^3?",
+    "answer": "125",
+    "hints": [
+      "5^3 means 5 × 5 × 5."
+    ],
+    "solution": "5^3 = 5 × 5 × 5 = 125.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  }
+]

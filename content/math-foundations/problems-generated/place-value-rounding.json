@@ -1,0 +1,652 @@
+[
+  {
+    "id": "place-value-rounding-gen-e0",
+    "topicId": "place-value-rounding",
+    "difficulty": "easy",
+    "question": "Round 91 to the nearest 10.",
+    "answer": "90",
+    "hints": [
+      "Look at the digit in the ones place: 1. Is it 5 or more?"
+    ],
+    "solution": "The digit is 1, which is less than 5, so round down. 91 rounds to 90.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-rounding-gen-e1",
+    "topicId": "place-value-rounding",
+    "difficulty": "easy",
+    "question": "Round 87 to the nearest 10.",
+    "answer": "90",
+    "hints": [
+      "Look at the digit in the ones place: 7. Is it 5 or more?"
+    ],
+    "solution": "The digit is 7, which is 5 or more, so round up. 87 rounds to 90.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-rounding-gen-e2",
+    "topicId": "place-value-rounding",
+    "difficulty": "easy",
+    "question": "Round 42 to the nearest 10.",
+    "answer": "40",
+    "hints": [
+      "Look at the digit in the ones place: 2. Is it 5 or more?"
+    ],
+    "solution": "The digit is 2, which is less than 5, so round down. 42 rounds to 40.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-rounding-gen-e3",
+    "topicId": "place-value-rounding",
+    "difficulty": "easy",
+    "question": "Round 84 to the nearest 10.",
+    "answer": "80",
+    "hints": [
+      "Look at the digit in the ones place: 4. Is it 5 or more?"
+    ],
+    "solution": "The digit is 4, which is less than 5, so round down. 84 rounds to 80.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-rounding-gen-e4",
+    "topicId": "place-value-rounding",
+    "difficulty": "easy",
+    "question": "Round 60 to the nearest 10.",
+    "answer": "60",
+    "hints": [
+      "Look at the digit in the ones place: 0. Is it 5 or more?"
+    ],
+    "solution": "The digit is 0, which is less than 5, so round down. 60 rounds to 60.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-rounding-gen-e5",
+    "topicId": "place-value-rounding",
+    "difficulty": "easy",
+    "question": "Round 47 to the nearest 10.",
+    "answer": "50",
+    "hints": [
+      "Look at the digit in the ones place: 7. Is it 5 or more?"
+    ],
+    "solution": "The digit is 7, which is 5 or more, so round up. 47 rounds to 50.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-rounding-gen-e6",
+    "topicId": "place-value-rounding",
+    "difficulty": "easy",
+    "question": "Round 58 to the nearest 10.",
+    "answer": "60",
+    "hints": [
+      "Look at the digit in the ones place: 8. Is it 5 or more?"
+    ],
+    "solution": "The digit is 8, which is 5 or more, so round up. 58 rounds to 60.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-rounding-gen-e7",
+    "topicId": "place-value-rounding",
+    "difficulty": "easy",
+    "question": "Round 11 to the nearest 10.",
+    "answer": "10",
+    "hints": [
+      "Look at the digit in the ones place: 1. Is it 5 or more?"
+    ],
+    "solution": "The digit is 1, which is less than 5, so round down. 11 rounds to 10.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-rounding-gen-e8",
+    "topicId": "place-value-rounding",
+    "difficulty": "easy",
+    "question": "Round 37 to the nearest 10.",
+    "answer": "40",
+    "hints": [
+      "Look at the digit in the ones place: 7. Is it 5 or more?"
+    ],
+    "solution": "The digit is 7, which is 5 or more, so round up. 37 rounds to 40.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-rounding-gen-e9",
+    "topicId": "place-value-rounding",
+    "difficulty": "easy",
+    "question": "Round 21 to the nearest 10.",
+    "answer": "20",
+    "hints": [
+      "Look at the digit in the ones place: 1. Is it 5 or more?"
+    ],
+    "solution": "The digit is 1, which is less than 5, so round down. 21 rounds to 20.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-rounding-gen-e10",
+    "topicId": "place-value-rounding",
+    "difficulty": "easy",
+    "question": "Round 41 to the nearest 10.",
+    "answer": "40",
+    "hints": [
+      "Look at the digit in the ones place: 1. Is it 5 or more?"
+    ],
+    "solution": "The digit is 1, which is less than 5, so round down. 41 rounds to 40.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-rounding-gen-e11",
+    "topicId": "place-value-rounding",
+    "difficulty": "easy",
+    "question": "Round 51 to the nearest 10.",
+    "answer": "50",
+    "hints": [
+      "Look at the digit in the ones place: 1. Is it 5 or more?"
+    ],
+    "solution": "The digit is 1, which is less than 5, so round down. 51 rounds to 50.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-rounding-gen-e12",
+    "topicId": "place-value-rounding",
+    "difficulty": "easy",
+    "question": "Round 94 to the nearest 10.",
+    "answer": "90",
+    "hints": [
+      "Look at the digit in the ones place: 4. Is it 5 or more?"
+    ],
+    "solution": "The digit is 4, which is less than 5, so round down. 94 rounds to 90.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-rounding-gen-e13",
+    "topicId": "place-value-rounding",
+    "difficulty": "easy",
+    "question": "Round 62 to the nearest 10.",
+    "answer": "60",
+    "hints": [
+      "Look at the digit in the ones place: 2. Is it 5 or more?"
+    ],
+    "solution": "The digit is 2, which is less than 5, so round down. 62 rounds to 60.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-rounding-gen-e14",
+    "topicId": "place-value-rounding",
+    "difficulty": "easy",
+    "question": "Round 95 to the nearest 10.",
+    "answer": "100",
+    "hints": [
+      "Look at the digit in the ones place: 5. Is it 5 or more?"
+    ],
+    "solution": "The digit is 5, which is 5 or more, so round up. 95 rounds to 100.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-rounding-gen-m0",
+    "topicId": "place-value-rounding",
+    "difficulty": "medium",
+    "question": "Round 364 to the nearest 100.",
+    "answer": "400",
+    "hints": [
+      "Look at the digit in the tens place: 6. Is it 5 or more?"
+    ],
+    "solution": "The digit is 6, which is 5 or more, so round up. 364 rounds to 400.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-rounding-gen-m1",
+    "topicId": "place-value-rounding",
+    "difficulty": "medium",
+    "question": "Round 500 to the nearest 100.",
+    "answer": "500",
+    "hints": [
+      "Look at the digit in the tens place: 0. Is it 5 or more?"
+    ],
+    "solution": "The digit is 0, which is less than 5, so round down. 500 rounds to 500.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-rounding-gen-m2",
+    "topicId": "place-value-rounding",
+    "difficulty": "medium",
+    "question": "Round 104 to the nearest 10.",
+    "answer": "100",
+    "hints": [
+      "Look at the digit in the ones place: 4. Is it 5 or more?"
+    ],
+    "solution": "The digit is 4, which is less than 5, so round down. 104 rounds to 100.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-rounding-gen-m3",
+    "topicId": "place-value-rounding",
+    "difficulty": "medium",
+    "question": "Round 891 to the nearest 100.",
+    "answer": "900",
+    "hints": [
+      "Look at the digit in the tens place: 9. Is it 5 or more?"
+    ],
+    "solution": "The digit is 9, which is 5 or more, so round up. 891 rounds to 900.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-rounding-gen-m4",
+    "topicId": "place-value-rounding",
+    "difficulty": "medium",
+    "question": "Round 176 to the nearest 10.",
+    "answer": "180",
+    "hints": [
+      "Look at the digit in the ones place: 6. Is it 5 or more?"
+    ],
+    "solution": "The digit is 6, which is 5 or more, so round up. 176 rounds to 180.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-rounding-gen-m5",
+    "topicId": "place-value-rounding",
+    "difficulty": "medium",
+    "question": "Round 639 to the nearest 10.",
+    "answer": "640",
+    "hints": [
+      "Look at the digit in the ones place: 9. Is it 5 or more?"
+    ],
+    "solution": "The digit is 9, which is 5 or more, so round up. 639 rounds to 640.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-rounding-gen-m6",
+    "topicId": "place-value-rounding",
+    "difficulty": "medium",
+    "question": "Round 789 to the nearest 100.",
+    "answer": "800",
+    "hints": [
+      "Look at the digit in the tens place: 8. Is it 5 or more?"
+    ],
+    "solution": "The digit is 8, which is 5 or more, so round up. 789 rounds to 800.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-rounding-gen-m7",
+    "topicId": "place-value-rounding",
+    "difficulty": "medium",
+    "question": "Round 258 to the nearest 100.",
+    "answer": "300",
+    "hints": [
+      "Look at the digit in the tens place: 5. Is it 5 or more?"
+    ],
+    "solution": "The digit is 5, which is 5 or more, so round up. 258 rounds to 300.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-rounding-gen-m8",
+    "topicId": "place-value-rounding",
+    "difficulty": "medium",
+    "question": "Round 103 to the nearest 10.",
+    "answer": "100",
+    "hints": [
+      "Look at the digit in the ones place: 3. Is it 5 or more?"
+    ],
+    "solution": "The digit is 3, which is less than 5, so round down. 103 rounds to 100.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-rounding-gen-m9",
+    "topicId": "place-value-rounding",
+    "difficulty": "medium",
+    "question": "Round 338 to the nearest 10.",
+    "answer": "340",
+    "hints": [
+      "Look at the digit in the ones place: 8. Is it 5 or more?"
+    ],
+    "solution": "The digit is 8, which is 5 or more, so round up. 338 rounds to 340.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-rounding-gen-m10",
+    "topicId": "place-value-rounding",
+    "difficulty": "medium",
+    "question": "Round 178 to the nearest 100.",
+    "answer": "200",
+    "hints": [
+      "Look at the digit in the tens place: 7. Is it 5 or more?"
+    ],
+    "solution": "The digit is 7, which is 5 or more, so round up. 178 rounds to 200.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-rounding-gen-m11",
+    "topicId": "place-value-rounding",
+    "difficulty": "medium",
+    "question": "Round 891 to the nearest 100.",
+    "answer": "900",
+    "hints": [
+      "Look at the digit in the tens place: 9. Is it 5 or more?"
+    ],
+    "solution": "The digit is 9, which is 5 or more, so round up. 891 rounds to 900.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-rounding-gen-m12",
+    "topicId": "place-value-rounding",
+    "difficulty": "medium",
+    "question": "Round 702 to the nearest 100.",
+    "answer": "700",
+    "hints": [
+      "Look at the digit in the tens place: 0. Is it 5 or more?"
+    ],
+    "solution": "The digit is 0, which is less than 5, so round down. 702 rounds to 700.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-rounding-gen-m13",
+    "topicId": "place-value-rounding",
+    "difficulty": "medium",
+    "question": "Round 772 to the nearest 100.",
+    "answer": "800",
+    "hints": [
+      "Look at the digit in the tens place: 7. Is it 5 or more?"
+    ],
+    "solution": "The digit is 7, which is 5 or more, so round up. 772 rounds to 800.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-rounding-gen-m14",
+    "topicId": "place-value-rounding",
+    "difficulty": "medium",
+    "question": "Round 438 to the nearest 10.",
+    "answer": "440",
+    "hints": [
+      "Look at the digit in the ones place: 8. Is it 5 or more?"
+    ],
+    "solution": "The digit is 8, which is 5 or more, so round up. 438 rounds to 440.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-rounding-gen-m15",
+    "topicId": "place-value-rounding",
+    "difficulty": "medium",
+    "question": "Round 810 to the nearest 100.",
+    "answer": "800",
+    "hints": [
+      "Look at the digit in the tens place: 1. Is it 5 or more?"
+    ],
+    "solution": "The digit is 1, which is less than 5, so round down. 810 rounds to 800.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-rounding-gen-m16",
+    "topicId": "place-value-rounding",
+    "difficulty": "medium",
+    "question": "Round 527 to the nearest 100.",
+    "answer": "500",
+    "hints": [
+      "Look at the digit in the tens place: 2. Is it 5 or more?"
+    ],
+    "solution": "The digit is 2, which is less than 5, so round down. 527 rounds to 500.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-rounding-gen-m17",
+    "topicId": "place-value-rounding",
+    "difficulty": "medium",
+    "question": "Round 883 to the nearest 100.",
+    "answer": "900",
+    "hints": [
+      "Look at the digit in the tens place: 8. Is it 5 or more?"
+    ],
+    "solution": "The digit is 8, which is 5 or more, so round up. 883 rounds to 900.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-rounding-gen-m18",
+    "topicId": "place-value-rounding",
+    "difficulty": "medium",
+    "question": "Round 706 to the nearest 100.",
+    "answer": "700",
+    "hints": [
+      "Look at the digit in the tens place: 0. Is it 5 or more?"
+    ],
+    "solution": "The digit is 0, which is less than 5, so round down. 706 rounds to 700.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-rounding-gen-m19",
+    "topicId": "place-value-rounding",
+    "difficulty": "medium",
+    "question": "Round 599 to the nearest 100.",
+    "answer": "600",
+    "hints": [
+      "Look at the digit in the tens place: 9. Is it 5 or more?"
+    ],
+    "solution": "The digit is 9, which is 5 or more, so round up. 599 rounds to 600.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-rounding-gen-h0",
+    "topicId": "place-value-rounding",
+    "difficulty": "hard",
+    "question": "Round 2141 to the nearest 100.",
+    "answer": "2100",
+    "hints": [
+      "Look at the digit in the tens place: 4. Is it 5 or more?"
+    ],
+    "solution": "The digit is 4, which is less than 5, so round down. 2141 rounds to 2100.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-rounding-gen-h1",
+    "topicId": "place-value-rounding",
+    "difficulty": "hard",
+    "question": "Round 6421 to the nearest 10.",
+    "answer": "6420",
+    "hints": [
+      "Look at the digit in the ones place: 1. Is it 5 or more?"
+    ],
+    "solution": "The digit is 1, which is less than 5, so round down. 6421 rounds to 6420.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-rounding-gen-h2",
+    "topicId": "place-value-rounding",
+    "difficulty": "hard",
+    "question": "Round 8573 to the nearest 1000.",
+    "answer": "9000",
+    "hints": [
+      "Look at the digit in the hundreds place: 5. Is it 5 or more?"
+    ],
+    "solution": "The digit is 5, which is 5 or more, so round up. 8573 rounds to 9000.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-rounding-gen-h3",
+    "topicId": "place-value-rounding",
+    "difficulty": "hard",
+    "question": "Round 2102 to the nearest 1000.",
+    "answer": "2000",
+    "hints": [
+      "Look at the digit in the hundreds place: 1. Is it 5 or more?"
+    ],
+    "solution": "The digit is 1, which is less than 5, so round down. 2102 rounds to 2000.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-rounding-gen-h4",
+    "topicId": "place-value-rounding",
+    "difficulty": "hard",
+    "question": "Round 5158 to the nearest 100.",
+    "answer": "5200",
+    "hints": [
+      "Look at the digit in the tens place: 5. Is it 5 or more?"
+    ],
+    "solution": "The digit is 5, which is 5 or more, so round up. 5158 rounds to 5200.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-rounding-gen-h5",
+    "topicId": "place-value-rounding",
+    "difficulty": "hard",
+    "question": "Round 4113 to the nearest 1000.",
+    "answer": "4000",
+    "hints": [
+      "Look at the digit in the hundreds place: 1. Is it 5 or more?"
+    ],
+    "solution": "The digit is 1, which is less than 5, so round down. 4113 rounds to 4000.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-rounding-gen-h6",
+    "topicId": "place-value-rounding",
+    "difficulty": "hard",
+    "question": "Round 3654 to the nearest 10.",
+    "answer": "3650",
+    "hints": [
+      "Look at the digit in the ones place: 4. Is it 5 or more?"
+    ],
+    "solution": "The digit is 4, which is less than 5, so round down. 3654 rounds to 3650.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-rounding-gen-h7",
+    "topicId": "place-value-rounding",
+    "difficulty": "hard",
+    "question": "Round 5585 to the nearest 10.",
+    "answer": "5590",
+    "hints": [
+      "Look at the digit in the ones place: 5. Is it 5 or more?"
+    ],
+    "solution": "The digit is 5, which is 5 or more, so round up. 5585 rounds to 5590.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-rounding-gen-h8",
+    "topicId": "place-value-rounding",
+    "difficulty": "hard",
+    "question": "Round 1913 to the nearest 100.",
+    "answer": "1900",
+    "hints": [
+      "Look at the digit in the tens place: 1. Is it 5 or more?"
+    ],
+    "solution": "The digit is 1, which is less than 5, so round down. 1913 rounds to 1900.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-rounding-gen-h9",
+    "topicId": "place-value-rounding",
+    "difficulty": "hard",
+    "question": "Round 9697 to the nearest 1000.",
+    "answer": "10000",
+    "hints": [
+      "Look at the digit in the hundreds place: 6. Is it 5 or more?"
+    ],
+    "solution": "The digit is 6, which is 5 or more, so round up. 9697 rounds to 10000.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-rounding-gen-h10",
+    "topicId": "place-value-rounding",
+    "difficulty": "hard",
+    "question": "Round 4629 to the nearest 10.",
+    "answer": "4630",
+    "hints": [
+      "Look at the digit in the ones place: 9. Is it 5 or more?"
+    ],
+    "solution": "The digit is 9, which is 5 or more, so round up. 4629 rounds to 4630.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-rounding-gen-h11",
+    "topicId": "place-value-rounding",
+    "difficulty": "hard",
+    "question": "Round 9553 to the nearest 100.",
+    "answer": "9600",
+    "hints": [
+      "Look at the digit in the tens place: 5. Is it 5 or more?"
+    ],
+    "solution": "The digit is 5, which is 5 or more, so round up. 9553 rounds to 9600.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-rounding-gen-h12",
+    "topicId": "place-value-rounding",
+    "difficulty": "hard",
+    "question": "Round 8945 to the nearest 100.",
+    "answer": "8900",
+    "hints": [
+      "Look at the digit in the tens place: 4. Is it 5 or more?"
+    ],
+    "solution": "The digit is 4, which is less than 5, so round down. 8945 rounds to 8900.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-rounding-gen-h13",
+    "topicId": "place-value-rounding",
+    "difficulty": "hard",
+    "question": "Round 7018 to the nearest 100.",
+    "answer": "7000",
+    "hints": [
+      "Look at the digit in the tens place: 1. Is it 5 or more?"
+    ],
+    "solution": "The digit is 1, which is less than 5, so round down. 7018 rounds to 7000.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "place-value-rounding-gen-h14",
+    "topicId": "place-value-rounding",
+    "difficulty": "hard",
+    "question": "Round 6783 to the nearest 10.",
+    "answer": "6780",
+    "hints": [
+      "Look at the digit in the ones place: 3. Is it 5 or more?"
+    ],
+    "solution": "The digit is 3, which is less than 5, so round down. 6783 rounds to 6780.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  }
+]

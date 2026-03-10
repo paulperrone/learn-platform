@@ -1,0 +1,652 @@
+[
+  {
+    "id": "area-triangles-gen-e0",
+    "topicId": "area-triangles",
+    "difficulty": "easy",
+    "question": "What is the area of a triangle with base 4 and height 6?",
+    "answer": "12",
+    "hints": [
+      "Area = ½ × base × height."
+    ],
+    "solution": "A = ½ × 4 × 6 = 12 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-triangles-gen-e1",
+    "topicId": "area-triangles",
+    "difficulty": "easy",
+    "question": "What is the area of a triangle with base 2 and height 3?",
+    "answer": "3",
+    "hints": [
+      "Area = ½ × base × height."
+    ],
+    "solution": "A = ½ × 2 × 3 = 3 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-triangles-gen-e2",
+    "topicId": "area-triangles",
+    "difficulty": "easy",
+    "question": "What is the area of a triangle with base 2 and height 8?",
+    "answer": "8",
+    "hints": [
+      "Area = ½ × base × height."
+    ],
+    "solution": "A = ½ × 2 × 8 = 8 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-triangles-gen-e3",
+    "topicId": "area-triangles",
+    "difficulty": "easy",
+    "question": "What is the area of a triangle with base 9 and height 4?",
+    "answer": "18",
+    "hints": [
+      "Area = ½ × base × height."
+    ],
+    "solution": "A = ½ × 9 × 4 = 18 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-triangles-gen-e4",
+    "topicId": "area-triangles",
+    "difficulty": "easy",
+    "question": "What is the area of a triangle with base 8 and height 6?",
+    "answer": "24",
+    "hints": [
+      "Area = ½ × base × height."
+    ],
+    "solution": "A = ½ × 8 × 6 = 24 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-triangles-gen-e5",
+    "topicId": "area-triangles",
+    "difficulty": "easy",
+    "question": "What is the area of a triangle with base 7 and height 7?",
+    "answer": "24.5",
+    "hints": [
+      "Area = ½ × base × height."
+    ],
+    "solution": "A = ½ × 7 × 7 = 24.5 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-triangles-gen-e6",
+    "topicId": "area-triangles",
+    "difficulty": "easy",
+    "question": "What is the area of a triangle with base 9 and height 2?",
+    "answer": "9",
+    "hints": [
+      "Area = ½ × base × height."
+    ],
+    "solution": "A = ½ × 9 × 2 = 9 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-triangles-gen-e7",
+    "topicId": "area-triangles",
+    "difficulty": "easy",
+    "question": "What is the area of a triangle with base 7 and height 4?",
+    "answer": "14",
+    "hints": [
+      "Area = ½ × base × height."
+    ],
+    "solution": "A = ½ × 7 × 4 = 14 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-triangles-gen-e8",
+    "topicId": "area-triangles",
+    "difficulty": "easy",
+    "question": "What is the area of a triangle with base 5 and height 6?",
+    "answer": "15",
+    "hints": [
+      "Area = ½ × base × height."
+    ],
+    "solution": "A = ½ × 5 × 6 = 15 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-triangles-gen-e9",
+    "topicId": "area-triangles",
+    "difficulty": "easy",
+    "question": "What is the area of a triangle with base 9 and height 6?",
+    "answer": "27",
+    "hints": [
+      "Area = ½ × base × height."
+    ],
+    "solution": "A = ½ × 9 × 6 = 27 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-triangles-gen-e10",
+    "topicId": "area-triangles",
+    "difficulty": "easy",
+    "question": "What is the area of a triangle with base 5 and height 5?",
+    "answer": "12.5",
+    "hints": [
+      "Area = ½ × base × height."
+    ],
+    "solution": "A = ½ × 5 × 5 = 12.5 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-triangles-gen-e11",
+    "topicId": "area-triangles",
+    "difficulty": "easy",
+    "question": "What is the area of a triangle with base 10 and height 10?",
+    "answer": "50",
+    "hints": [
+      "Area = ½ × base × height."
+    ],
+    "solution": "A = ½ × 10 × 10 = 50 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-triangles-gen-e12",
+    "topicId": "area-triangles",
+    "difficulty": "easy",
+    "question": "What is the area of a triangle with base 5 and height 5?",
+    "answer": "12.5",
+    "hints": [
+      "Area = ½ × base × height."
+    ],
+    "solution": "A = ½ × 5 × 5 = 12.5 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-triangles-gen-e13",
+    "topicId": "area-triangles",
+    "difficulty": "easy",
+    "question": "What is the area of a triangle with base 2 and height 5?",
+    "answer": "5",
+    "hints": [
+      "Area = ½ × base × height."
+    ],
+    "solution": "A = ½ × 2 × 5 = 5 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-triangles-gen-e14",
+    "topicId": "area-triangles",
+    "difficulty": "easy",
+    "question": "What is the area of a triangle with base 6 and height 4?",
+    "answer": "12",
+    "hints": [
+      "Area = ½ × base × height."
+    ],
+    "solution": "A = ½ × 6 × 4 = 12 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-triangles-gen-m0",
+    "topicId": "area-triangles",
+    "difficulty": "medium",
+    "question": "What is the area of a triangle with base 12 and height 12?",
+    "answer": "72",
+    "hints": [
+      "Area = ½ × base × height."
+    ],
+    "solution": "A = ½ × 12 × 12 = 72 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-triangles-gen-m1",
+    "topicId": "area-triangles",
+    "difficulty": "medium",
+    "question": "What is the area of a triangle with base 11 and height 6?",
+    "answer": "33",
+    "hints": [
+      "Area = ½ × base × height."
+    ],
+    "solution": "A = ½ × 11 × 6 = 33 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-triangles-gen-m2",
+    "topicId": "area-triangles",
+    "difficulty": "medium",
+    "question": "What is the area of a triangle with base 14 and height 18?",
+    "answer": "126",
+    "hints": [
+      "Area = ½ × base × height."
+    ],
+    "solution": "A = ½ × 14 × 18 = 126 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-triangles-gen-m3",
+    "topicId": "area-triangles",
+    "difficulty": "medium",
+    "question": "What is the area of a triangle with base 9 and height 5?",
+    "answer": "22.5",
+    "hints": [
+      "Area = ½ × base × height."
+    ],
+    "solution": "A = ½ × 9 × 5 = 22.5 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-triangles-gen-m4",
+    "topicId": "area-triangles",
+    "difficulty": "medium",
+    "question": "What is the area of a triangle with base 5 and height 15?",
+    "answer": "37.5",
+    "hints": [
+      "Area = ½ × base × height."
+    ],
+    "solution": "A = ½ × 5 × 15 = 37.5 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-triangles-gen-m5",
+    "topicId": "area-triangles",
+    "difficulty": "medium",
+    "question": "What is the area of a triangle with base 15 and height 13?",
+    "answer": "97.5",
+    "hints": [
+      "Area = ½ × base × height."
+    ],
+    "solution": "A = ½ × 15 × 13 = 97.5 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-triangles-gen-m6",
+    "topicId": "area-triangles",
+    "difficulty": "medium",
+    "question": "What is the area of a triangle with base 19 and height 9?",
+    "answer": "85.5",
+    "hints": [
+      "Area = ½ × base × height."
+    ],
+    "solution": "A = ½ × 19 × 9 = 85.5 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-triangles-gen-m7",
+    "topicId": "area-triangles",
+    "difficulty": "medium",
+    "question": "What is the area of a triangle with base 20 and height 18?",
+    "answer": "180",
+    "hints": [
+      "Area = ½ × base × height."
+    ],
+    "solution": "A = ½ × 20 × 18 = 180 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-triangles-gen-m8",
+    "topicId": "area-triangles",
+    "difficulty": "medium",
+    "question": "What is the area of a triangle with base 13 and height 10?",
+    "answer": "65",
+    "hints": [
+      "Area = ½ × base × height."
+    ],
+    "solution": "A = ½ × 13 × 10 = 65 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-triangles-gen-m9",
+    "topicId": "area-triangles",
+    "difficulty": "medium",
+    "question": "What is the area of a triangle with base 12 and height 15?",
+    "answer": "90",
+    "hints": [
+      "Area = ½ × base × height."
+    ],
+    "solution": "A = ½ × 12 × 15 = 90 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-triangles-gen-m10",
+    "topicId": "area-triangles",
+    "difficulty": "medium",
+    "question": "What is the area of a triangle with base 20 and height 14?",
+    "answer": "140",
+    "hints": [
+      "Area = ½ × base × height."
+    ],
+    "solution": "A = ½ × 20 × 14 = 140 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-triangles-gen-m11",
+    "topicId": "area-triangles",
+    "difficulty": "medium",
+    "question": "What is the area of a triangle with base 11 and height 10?",
+    "answer": "55",
+    "hints": [
+      "Area = ½ × base × height."
+    ],
+    "solution": "A = ½ × 11 × 10 = 55 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-triangles-gen-m12",
+    "topicId": "area-triangles",
+    "difficulty": "medium",
+    "question": "What is the area of a triangle with base 17 and height 17?",
+    "answer": "144.5",
+    "hints": [
+      "Area = ½ × base × height."
+    ],
+    "solution": "A = ½ × 17 × 17 = 144.5 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-triangles-gen-m13",
+    "topicId": "area-triangles",
+    "difficulty": "medium",
+    "question": "What is the area of a triangle with base 13 and height 13?",
+    "answer": "84.5",
+    "hints": [
+      "Area = ½ × base × height."
+    ],
+    "solution": "A = ½ × 13 × 13 = 84.5 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-triangles-gen-m14",
+    "topicId": "area-triangles",
+    "difficulty": "medium",
+    "question": "What is the area of a triangle with base 13 and height 11?",
+    "answer": "71.5",
+    "hints": [
+      "Area = ½ × base × height."
+    ],
+    "solution": "A = ½ × 13 × 11 = 71.5 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-triangles-gen-m15",
+    "topicId": "area-triangles",
+    "difficulty": "medium",
+    "question": "What is the area of a triangle with base 19 and height 16?",
+    "answer": "152",
+    "hints": [
+      "Area = ½ × base × height."
+    ],
+    "solution": "A = ½ × 19 × 16 = 152 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-triangles-gen-m16",
+    "topicId": "area-triangles",
+    "difficulty": "medium",
+    "question": "What is the area of a triangle with base 12 and height 14?",
+    "answer": "84",
+    "hints": [
+      "Area = ½ × base × height."
+    ],
+    "solution": "A = ½ × 12 × 14 = 84 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-triangles-gen-m17",
+    "topicId": "area-triangles",
+    "difficulty": "medium",
+    "question": "What is the area of a triangle with base 7 and height 18?",
+    "answer": "63",
+    "hints": [
+      "Area = ½ × base × height."
+    ],
+    "solution": "A = ½ × 7 × 18 = 63 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-triangles-gen-m18",
+    "topicId": "area-triangles",
+    "difficulty": "medium",
+    "question": "What is the area of a triangle with base 8 and height 12?",
+    "answer": "48",
+    "hints": [
+      "Area = ½ × base × height."
+    ],
+    "solution": "A = ½ × 8 × 12 = 48 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-triangles-gen-m19",
+    "topicId": "area-triangles",
+    "difficulty": "medium",
+    "question": "What is the area of a triangle with base 14 and height 7?",
+    "answer": "49",
+    "hints": [
+      "Area = ½ × base × height."
+    ],
+    "solution": "A = ½ × 14 × 7 = 49 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-triangles-gen-h0",
+    "topicId": "area-triangles",
+    "difficulty": "hard",
+    "question": "What is the area of a triangle with base 17 and height 18?",
+    "answer": "153",
+    "hints": [
+      "Area = ½ × base × height."
+    ],
+    "solution": "A = ½ × 17 × 18 = 153 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-triangles-gen-h1",
+    "topicId": "area-triangles",
+    "difficulty": "hard",
+    "question": "What is the area of a triangle with base 6 and height 16?",
+    "answer": "48",
+    "hints": [
+      "Area = ½ × base × height."
+    ],
+    "solution": "A = ½ × 6 × 16 = 48 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-triangles-gen-h2",
+    "topicId": "area-triangles",
+    "difficulty": "hard",
+    "question": "What is the area of a triangle with base 12 and height 6?",
+    "answer": "36",
+    "hints": [
+      "Area = ½ × base × height."
+    ],
+    "solution": "A = ½ × 12 × 6 = 36 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-triangles-gen-h3",
+    "topicId": "area-triangles",
+    "difficulty": "hard",
+    "question": "What is the area of a triangle with base 18 and height 7?",
+    "answer": "63",
+    "hints": [
+      "Area = ½ × base × height."
+    ],
+    "solution": "A = ½ × 18 × 7 = 63 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-triangles-gen-h4",
+    "topicId": "area-triangles",
+    "difficulty": "hard",
+    "question": "What is the area of a triangle with base 18 and height 17?",
+    "answer": "153",
+    "hints": [
+      "Area = ½ × base × height."
+    ],
+    "solution": "A = ½ × 18 × 17 = 153 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-triangles-gen-h5",
+    "topicId": "area-triangles",
+    "difficulty": "hard",
+    "question": "What is the area of a triangle with base 10 and height 5?",
+    "answer": "25",
+    "hints": [
+      "Area = ½ × base × height."
+    ],
+    "solution": "A = ½ × 10 × 5 = 25 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-triangles-gen-h6",
+    "topicId": "area-triangles",
+    "difficulty": "hard",
+    "question": "What is the area of a triangle with base 15 and height 6?",
+    "answer": "45",
+    "hints": [
+      "Area = ½ × base × height."
+    ],
+    "solution": "A = ½ × 15 × 6 = 45 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-triangles-gen-h7",
+    "topicId": "area-triangles",
+    "difficulty": "hard",
+    "question": "What is the area of a triangle with base 8 and height 7?",
+    "answer": "28",
+    "hints": [
+      "Area = ½ × base × height."
+    ],
+    "solution": "A = ½ × 8 × 7 = 28 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-triangles-gen-h8",
+    "topicId": "area-triangles",
+    "difficulty": "hard",
+    "question": "What is the area of a triangle with base 9 and height 7?",
+    "answer": "31.5",
+    "hints": [
+      "Area = ½ × base × height."
+    ],
+    "solution": "A = ½ × 9 × 7 = 31.5 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-triangles-gen-h9",
+    "topicId": "area-triangles",
+    "difficulty": "hard",
+    "question": "What is the area of a triangle with base 9 and height 17?",
+    "answer": "76.5",
+    "hints": [
+      "Area = ½ × base × height."
+    ],
+    "solution": "A = ½ × 9 × 17 = 76.5 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-triangles-gen-h10",
+    "topicId": "area-triangles",
+    "difficulty": "hard",
+    "question": "What is the area of a triangle with base 8 and height 9?",
+    "answer": "36",
+    "hints": [
+      "Area = ½ × base × height."
+    ],
+    "solution": "A = ½ × 8 × 9 = 36 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-triangles-gen-h11",
+    "topicId": "area-triangles",
+    "difficulty": "hard",
+    "question": "What is the area of a triangle with base 10 and height 5?",
+    "answer": "25",
+    "hints": [
+      "Area = ½ × base × height."
+    ],
+    "solution": "A = ½ × 10 × 5 = 25 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-triangles-gen-h12",
+    "topicId": "area-triangles",
+    "difficulty": "hard",
+    "question": "What is the area of a triangle with base 7 and height 8?",
+    "answer": "28",
+    "hints": [
+      "Area = ½ × base × height."
+    ],
+    "solution": "A = ½ × 7 × 8 = 28 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-triangles-gen-h13",
+    "topicId": "area-triangles",
+    "difficulty": "hard",
+    "question": "What is the area of a triangle with base 8 and height 5?",
+    "answer": "20",
+    "hints": [
+      "Area = ½ × base × height."
+    ],
+    "solution": "A = ½ × 8 × 5 = 20 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-triangles-gen-h14",
+    "topicId": "area-triangles",
+    "difficulty": "hard",
+    "question": "What is the area of a triangle with base 11 and height 17?",
+    "answer": "93.5",
+    "hints": [
+      "Area = ½ × base × height."
+    ],
+    "solution": "A = ½ × 11 × 17 = 93.5 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  }
+]

@@ -1,0 +1,208 @@
+[
+  {
+    "id": "area-intro-sup-e0",
+    "topicId": "area-intro",
+    "difficulty": "easy",
+    "question": "A shape covers 8 square units on a grid. What is its area?",
+    "answer": "8 square units",
+    "hints": [
+      "Area is the number of square units that cover a shape."
+    ],
+    "solution": "The area is 8 square units. Area measures how many unit squares fit inside a shape.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "area-intro-sup-e1",
+    "topicId": "area-intro",
+    "difficulty": "easy",
+    "question": "What does area measure: the distance around a shape or the space inside a shape?",
+    "answer": "the space inside a shape",
+    "hints": [
+      "The distance around is called perimeter. Area is something different."
+    ],
+    "solution": "Area measures the space inside a shape. It tells you how many square units fit inside. The distance around a shape is the perimeter.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "area-intro-sup-e2",
+    "topicId": "area-intro",
+    "difficulty": "easy",
+    "question": "A rectangle on a grid is 3 squares wide and 2 squares tall. What is its area in square units?",
+    "answer": "6",
+    "hints": [
+      "Count the square units, or multiply: 3 × 2."
+    ],
+    "solution": "The area is 3 × 2 = 6 square units. You can count 6 unit squares inside the rectangle.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "area-intro-sup-e3",
+    "topicId": "area-intro",
+    "difficulty": "easy",
+    "question": "True or false: Area is measured in square units.",
+    "answer": "true",
+    "hints": [
+      "We count how many unit squares fit inside the shape."
+    ],
+    "solution": "True. Area is measured in square units because we count how many unit squares cover the surface of a shape.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "area-intro-sup-e4",
+    "topicId": "area-intro",
+    "difficulty": "easy",
+    "question": "A square on a grid has sides of 1 unit each. What is the area of this square?",
+    "answer": "1 square unit",
+    "hints": [
+      "This is one unit square — the basic building block of area."
+    ],
+    "solution": "The area is 1 square unit. A square with sides of 1 unit is called a unit square, and it has an area of exactly 1 square unit.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "area-intro-sup-m0",
+    "topicId": "area-intro",
+    "difficulty": "medium",
+    "question": "An L-shaped figure on a grid is made of 5 squares in a row plus 3 squares stacked on top of the leftmost square. How many square units is the total area?",
+    "answer": "7",
+    "hints": [
+      "Count the squares in the bottom row: 5.",
+      "Count the squares stacked on top: 3, but 1 of those is shared with the bottom row.",
+      "Actually, recount: 5 in the row plus 2 additional above = 7."
+    ],
+    "solution": "The bottom row has 5 square units. The stack above the leftmost square adds 2 more square units (the leftmost square is already counted). Total: 5 + 2 = 7 square units.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "area-intro-sup-m1",
+    "topicId": "area-intro",
+    "difficulty": "medium",
+    "question": "Two rectangles have the same area of 12 square units. One is 3 by 4. Give different dimensions for the other rectangle.",
+    "answer": "2 by 6",
+    "hints": [
+      "What other pairs of numbers multiply to 12?",
+      "Try 1 × 12, 2 × 6, or 3 × 4."
+    ],
+    "solution": "Several rectangles have an area of 12: 1 × 12, 2 × 6, 3 × 4. Since one is already 3 × 4, the other could be 2 × 6 (or 1 × 12).",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "area-intro-sup-m2",
+    "topicId": "area-intro",
+    "difficulty": "medium",
+    "question": "Sara says the area of a 4-by-3 rectangle is 14 square units. What mistake did Sara make?",
+    "answer": "she added instead of multiplied",
+    "hints": [
+      "What is 4 + 3 + 4 + 3?",
+      "That's 14 — but is that the area or something else?"
+    ],
+    "solution": "Sara added the sides (4 + 3 + 4 + 3 = 14) instead of multiplying (4 × 3 = 12). She found the perimeter instead of the area. The correct area is 12 square units.",
+    "cognitiveDemand": "error-analysis",
+    "source": "generated"
+  },
+  {
+    "id": "area-intro-sup-m3",
+    "topicId": "area-intro",
+    "difficulty": "medium",
+    "question": "A shape on a grid includes some half-squares along a diagonal edge. There are 6 full squares and 4 half-squares. What is the total area?",
+    "answer": "8 square units",
+    "hints": [
+      "Each full square is 1 square unit. Each half-square is 1/2 square unit.",
+      "6 + (4 × 1/2) = ?"
+    ],
+    "solution": "6 full squares = 6 square units. 4 half-squares = 4 × 1/2 = 2 square units. Total area = 6 + 2 = 8 square units.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "area-intro-sup-m4",
+    "topicId": "area-intro",
+    "difficulty": "medium",
+    "question": "Can two different shapes have the same area? Explain with an example.",
+    "answer": "yes",
+    "hints": [
+      "Think about a 2 × 4 rectangle and an L-shape that covers 8 squares."
+    ],
+    "solution": "Yes. For example, a 2 × 4 rectangle and a 1 × 8 rectangle both have an area of 8 square units but look very different. An L-shaped figure with 8 squares also has the same area. Many different shapes can share the same area.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "area-intro-sup-h0",
+    "topicId": "area-intro",
+    "difficulty": "hard",
+    "question": "A rectangle has an area of 24 square units. One side is 6 units long. What is the length of the other side?",
+    "answer": "4",
+    "hints": [
+      "Area = length × width.",
+      "24 = 6 × ?"
+    ],
+    "solution": "Area = length × width, so 24 = 6 × width. Width = 24 ÷ 6 = 4 units.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "area-intro-sup-h1",
+    "topicId": "area-intro",
+    "difficulty": "hard",
+    "question": "You have 16 square tiles. You arrange them into a rectangle. List all the possible rectangles you can make (give the dimensions).",
+    "answer": "1 by 16, 2 by 8, 4 by 4",
+    "hints": [
+      "Find all pairs of whole numbers that multiply to 16.",
+      "1 × 16, 2 × 8, 4 × 4."
+    ],
+    "solution": "The factor pairs of 16 are: 1 × 16, 2 × 8, and 4 × 4. So you can make three different rectangles (not counting rotations as different).",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "area-intro-sup-h2",
+    "topicId": "area-intro",
+    "difficulty": "hard",
+    "question": "A large rectangle (5 by 4) has a small rectangle (2 by 1) removed from its corner. What is the area of the remaining shape?",
+    "answer": "18",
+    "hints": [
+      "First find the area of the large rectangle: 5 × 4.",
+      "Then subtract the area of the cutout: 2 × 1."
+    ],
+    "solution": "Large rectangle: 5 × 4 = 20 square units. Cutout: 2 × 1 = 2 square units. Remaining area: 20 − 2 = 18 square units.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "area-intro-sup-h3",
+    "topicId": "area-intro",
+    "difficulty": "hard",
+    "question": "A square has the same area as a 2-by-8 rectangle. What is the side length of the square?",
+    "answer": "4",
+    "hints": [
+      "The rectangle's area is 2 × 8 = 16 square units.",
+      "What number times itself equals 16?"
+    ],
+    "solution": "Rectangle area: 2 × 8 = 16 square units. For a square with area 16: side × side = 16, so side = 4 units.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "area-intro-sup-h4",
+    "topicId": "area-intro",
+    "difficulty": "hard",
+    "question": "Jake says: 'If I double the sides of a square, the area also doubles.' Jake's square has sides of 3 units. What is the area of his original square and the larger square? Is Jake correct?",
+    "answer": "no, original is 9 and larger is 36 so area quadruples",
+    "hints": [
+      "Original square: 3 × 3 = ?",
+      "Doubled square: 6 × 6 = ?",
+      "Is 36 double 9?"
+    ],
+    "solution": "Original: 3 × 3 = 9 square units. Doubled sides: 6 × 6 = 36 square units. 36 is 4 times 9, not 2 times. Jake is incorrect — doubling the sides quadruples the area.",
+    "cognitiveDemand": "error-analysis",
+    "source": "generated"
+  }
+]

@@ -1,0 +1,208 @@
+[
+  {
+    "id": "number-patterns-sequences-sup-e0",
+    "topicId": "number-patterns-sequences",
+    "difficulty": "easy",
+    "question": "What is the rule for this sequence? 4, 8, 12, 16, 20",
+    "answer": "add 4",
+    "hints": [
+      "Find the difference between consecutive numbers.",
+      "8 − 4 = 4, 12 − 8 = 4."
+    ],
+    "solution": "Each number is 4 more than the previous one. The rule is 'add 4' (or 'multiply the position by 4').",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "number-patterns-sequences-sup-e1",
+    "topicId": "number-patterns-sequences",
+    "difficulty": "easy",
+    "question": "What comes next? 1, 2, 4, 8, ___",
+    "answer": "16",
+    "hints": [
+      "Look at how each number relates to the one before it.",
+      "Each number is double the previous one."
+    ],
+    "solution": "Each number is multiplied by 2: 1, 2, 4, 8, 16. The rule is 'multiply by 2' (doubling).",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "number-patterns-sequences-sup-e2",
+    "topicId": "number-patterns-sequences",
+    "difficulty": "easy",
+    "question": "A sequence starts at 100 and subtracts 10 each time. What are the first 5 terms?",
+    "answer": "100, 90, 80, 70, 60",
+    "hints": [
+      "Start at 100. Subtract 10 to get each new term."
+    ],
+    "solution": "100, 90, 80, 70, 60. Each term is 10 less than the one before.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "number-patterns-sequences-sup-e3",
+    "topicId": "number-patterns-sequences",
+    "difficulty": "easy",
+    "question": "What comes next? 3, 6, 9, 12, 15, ___",
+    "answer": "18",
+    "hints": [
+      "These are the multiples of 3."
+    ],
+    "solution": "The pattern adds 3 each time (multiples of 3): 3, 6, 9, 12, 15, 18.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "number-patterns-sequences-sup-e4",
+    "topicId": "number-patterns-sequences",
+    "difficulty": "easy",
+    "question": "The sequence is: 1, 4, 7, 10, 13. What is being added each time?",
+    "answer": "3",
+    "hints": [
+      "4 − 1 = 3, 7 − 4 = 3."
+    ],
+    "solution": "The constant difference is 3. Each term adds 3 to the previous term.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "number-patterns-sequences-sup-m0",
+    "topicId": "number-patterns-sequences",
+    "difficulty": "medium",
+    "question": "What comes next? 2, 6, 18, 54, ___",
+    "answer": "162",
+    "hints": [
+      "Look at the relationship: 6 ÷ 2 = 3, 18 ÷ 6 = 3.",
+      "Each number is multiplied by 3."
+    ],
+    "solution": "Each term is multiplied by 3: 2, 6, 18, 54, 162. (54 × 3 = 162)",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "number-patterns-sequences-sup-m1",
+    "topicId": "number-patterns-sequences",
+    "difficulty": "medium",
+    "question": "A sequence follows the rule 'start at 2, multiply by 2 then subtract 1.' What are the first 4 terms?",
+    "answer": "2, 3, 5, 9",
+    "hints": [
+      "Term 1: 2. Term 2: 2 × 2 − 1 = 3. Term 3: 3 × 2 − 1 = 5.",
+      "Term 4: 5 × 2 − 1 = ?"
+    ],
+    "solution": "Term 1: 2. Term 2: (2 × 2) − 1 = 3. Term 3: (3 × 2) − 1 = 5. Term 4: (5 × 2) − 1 = 9.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "number-patterns-sequences-sup-m2",
+    "topicId": "number-patterns-sequences",
+    "difficulty": "medium",
+    "question": "Find the missing number: 5, 10, ___, 40, 80. What is the rule?",
+    "answer": "20, multiply by 2",
+    "hints": [
+      "10 ÷ 5 = 2. 80 ÷ 40 = 2.",
+      "Each number is doubled."
+    ],
+    "solution": "The rule is 'multiply by 2.' 5, 10, 20, 40, 80. The missing number is 20.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "number-patterns-sequences-sup-m3",
+    "topicId": "number-patterns-sequences",
+    "difficulty": "medium",
+    "question": "Maria says the rule for 1, 3, 7, 15 is 'add 2, then add 4, then add 8.' Give a simpler single rule that produces the same sequence.",
+    "answer": "multiply by 2 then add 1",
+    "hints": [
+      "Try: 1 × 2 + 1 = 3. 3 × 2 + 1 = 7. 7 × 2 + 1 = 15.",
+      "Each term follows the same rule."
+    ],
+    "solution": "The rule is 'multiply by 2, then add 1.' Check: 1 × 2 + 1 = 3. 3 × 2 + 1 = 7. 7 × 2 + 1 = 15. This single rule works for every term.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "number-patterns-sequences-sup-m4",
+    "topicId": "number-patterns-sequences",
+    "difficulty": "medium",
+    "question": "The 1st term of a sequence is 6. The rule is 'add 7.' What is the 10th term?",
+    "answer": "69",
+    "hints": [
+      "The nth term = first term + (n − 1) × 7.",
+      "10th term = 6 + 9 × 7."
+    ],
+    "solution": "10th term = 6 + (10 − 1) × 7 = 6 + 63 = 69.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "number-patterns-sequences-sup-h0",
+    "topicId": "number-patterns-sequences",
+    "difficulty": "hard",
+    "question": "A sequence goes: 0, 1, 1, 2, 3, 5, 8, ___. Each number is the sum of the two numbers before it. What comes next?",
+    "answer": "13",
+    "hints": [
+      "5 + 8 = ?"
+    ],
+    "solution": "This is the Fibonacci sequence. Each term is the sum of the two before it: 5 + 8 = 13.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "number-patterns-sequences-sup-h1",
+    "topicId": "number-patterns-sequences",
+    "difficulty": "hard",
+    "question": "Sequence A: 0, 3, 6, 9, 12. Sequence B: 0, 6, 12, 18, 24. How is each term of B related to the corresponding term of A?",
+    "answer": "each term of B is double the corresponding term of A",
+    "hints": [
+      "Compare: A's 2nd term is 3, B's 2nd term is 6. A's 3rd is 6, B's 3rd is 12.",
+      "6 = 2 × 3. 12 = 2 × 6."
+    ],
+    "solution": "Each term in B is exactly 2 times the corresponding term in A. B adds 6 each time while A adds 3, so B's rule is double A's rule.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "number-patterns-sequences-sup-h2",
+    "topicId": "number-patterns-sequences",
+    "difficulty": "hard",
+    "question": "A sequence starts at 1 and each term is 3 times the previous term. Will any term in this sequence be even? Explain.",
+    "answer": "no",
+    "hints": [
+      "List the first few terms: 1, 3, 9, 27, 81...",
+      "What happens when you multiply an odd number by 3?"
+    ],
+    "solution": "No. The sequence is 1, 3, 9, 27, 81, 243... Starting with 1 (odd) and multiplying by 3 (odd) always gives an odd result. Odd × odd = odd, so every term will be odd.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "number-patterns-sequences-sup-h3",
+    "topicId": "number-patterns-sequences",
+    "difficulty": "hard",
+    "question": "The differences between consecutive terms of a sequence are: 2, 4, 6, 8. The first term is 1. What are the first 5 terms of the sequence?",
+    "answer": "1, 3, 7, 13, 21",
+    "hints": [
+      "Start with 1. Add 2 → 3. Add 4 → 7. Add 6 → 13. Add 8 → 21.",
+      "The differences themselves increase by 2 each time."
+    ],
+    "solution": "Term 1: 1. Term 2: 1 + 2 = 3. Term 3: 3 + 4 = 7. Term 4: 7 + 6 = 13. Term 5: 13 + 8 = 21. The sequence is 1, 3, 7, 13, 21.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "number-patterns-sequences-sup-h4",
+    "topicId": "number-patterns-sequences",
+    "difficulty": "hard",
+    "question": "Ty says: 'The rule for 2, 5, 11, 23 is add 3.' Is Ty correct? If not, what is the actual rule?",
+    "answer": "no, the rule is multiply by 2 then add 1",
+    "hints": [
+      "Check Ty's rule: 2 + 3 = 5 (works). 5 + 3 = 8 (not 11). Ty is wrong.",
+      "Try: 2 × 2 + 1 = 5. 5 × 2 + 1 = 11. 11 × 2 + 1 = 23."
+    ],
+    "solution": "Ty is incorrect. 'Add 3' gives 2, 5, 8, 11... not 2, 5, 11, 23. The actual rule is 'multiply by 2, then add 1': 2×2+1=5, 5×2+1=11, 11×2+1=23.",
+    "cognitiveDemand": "error-analysis",
+    "source": "generated"
+  }
+]

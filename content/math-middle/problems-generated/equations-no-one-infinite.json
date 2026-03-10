@@ -1,0 +1,652 @@
+[
+  {
+    "id": "equations-no-one-infinite-gen-e0",
+    "topicId": "equations-no-one-infinite",
+    "difficulty": "easy",
+    "question": "Solve: 4x + 4 = -4",
+    "answer": "-2",
+    "hints": [
+      "This equation has exactly one solution."
+    ],
+    "solution": "4x = -8. x = -2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equations-no-one-infinite-gen-e1",
+    "topicId": "equations-no-one-infinite",
+    "difficulty": "easy",
+    "question": "Solve: 5x + 4 = 9",
+    "answer": "1",
+    "hints": [
+      "This equation has exactly one solution."
+    ],
+    "solution": "5x = 5. x = 1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equations-no-one-infinite-gen-e2",
+    "topicId": "equations-no-one-infinite",
+    "difficulty": "easy",
+    "question": "Solve: 2x + 9 = 2x + 11",
+    "answer": "no solution",
+    "hints": [
+      "Subtract 2x from both sides. What do you get?"
+    ],
+    "solution": "9 ≠ 10. No solution.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equations-no-one-infinite-gen-e3",
+    "topicId": "equations-no-one-infinite",
+    "difficulty": "easy",
+    "question": "Solve: 2(x + 10) = 2x + 20",
+    "answer": "infinitely many solutions",
+    "hints": [
+      "Expand the left side. What do you notice?"
+    ],
+    "solution": "2x + 20 = 2x + 20. True for all x. Infinitely many solutions.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equations-no-one-infinite-gen-e4",
+    "topicId": "equations-no-one-infinite",
+    "difficulty": "easy",
+    "question": "Solve: 6(x + 7) = 6x + 42",
+    "answer": "infinitely many solutions",
+    "hints": [
+      "Expand the left side. What do you notice?"
+    ],
+    "solution": "6x + 42 = 6x + 42. True for all x. Infinitely many solutions.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equations-no-one-infinite-gen-e5",
+    "topicId": "equations-no-one-infinite",
+    "difficulty": "easy",
+    "question": "Solve: 5(x + 6) = 5x + 30",
+    "answer": "infinitely many solutions",
+    "hints": [
+      "Expand the left side. What do you notice?"
+    ],
+    "solution": "5x + 30 = 5x + 30. True for all x. Infinitely many solutions.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equations-no-one-infinite-gen-e6",
+    "topicId": "equations-no-one-infinite",
+    "difficulty": "easy",
+    "question": "Solve: 6(x + 7) = 6x + 42",
+    "answer": "infinitely many solutions",
+    "hints": [
+      "Expand the left side. What do you notice?"
+    ],
+    "solution": "6x + 42 = 6x + 42. True for all x. Infinitely many solutions.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equations-no-one-infinite-gen-e7",
+    "topicId": "equations-no-one-infinite",
+    "difficulty": "easy",
+    "question": "Solve: 6x + 10 = 6x + 14",
+    "answer": "no solution",
+    "hints": [
+      "Subtract 6x from both sides. What do you get?"
+    ],
+    "solution": "10 ≠ 11. No solution.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equations-no-one-infinite-gen-e8",
+    "topicId": "equations-no-one-infinite",
+    "difficulty": "easy",
+    "question": "Solve: 4x + 4 = 24",
+    "answer": "5",
+    "hints": [
+      "This equation has exactly one solution."
+    ],
+    "solution": "4x = 20. x = 5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equations-no-one-infinite-gen-e9",
+    "topicId": "equations-no-one-infinite",
+    "difficulty": "easy",
+    "question": "Solve: 3x + 4 = 3x + 8",
+    "answer": "no solution",
+    "hints": [
+      "Subtract 3x from both sides. What do you get?"
+    ],
+    "solution": "4 ≠ 5. No solution.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equations-no-one-infinite-gen-e10",
+    "topicId": "equations-no-one-infinite",
+    "difficulty": "easy",
+    "question": "Solve: 5x + 9 = 34",
+    "answer": "5",
+    "hints": [
+      "This equation has exactly one solution."
+    ],
+    "solution": "5x = 25. x = 5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equations-no-one-infinite-gen-e11",
+    "topicId": "equations-no-one-infinite",
+    "difficulty": "easy",
+    "question": "Solve: 5x + 9 = 5x + 11",
+    "answer": "no solution",
+    "hints": [
+      "Subtract 5x from both sides. What do you get?"
+    ],
+    "solution": "9 ≠ 10. No solution.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equations-no-one-infinite-gen-e12",
+    "topicId": "equations-no-one-infinite",
+    "difficulty": "easy",
+    "question": "Solve: 4(x + 8) = 4x + 32",
+    "answer": "infinitely many solutions",
+    "hints": [
+      "Expand the left side. What do you notice?"
+    ],
+    "solution": "4x + 32 = 4x + 32. True for all x. Infinitely many solutions.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equations-no-one-infinite-gen-e13",
+    "topicId": "equations-no-one-infinite",
+    "difficulty": "easy",
+    "question": "Solve: 6x + 2 = 6x + 7",
+    "answer": "no solution",
+    "hints": [
+      "Subtract 6x from both sides. What do you get?"
+    ],
+    "solution": "2 ≠ 3. No solution.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equations-no-one-infinite-gen-e14",
+    "topicId": "equations-no-one-infinite",
+    "difficulty": "easy",
+    "question": "Solve: 3x + 4 = 3x + 8",
+    "answer": "no solution",
+    "hints": [
+      "Subtract 3x from both sides. What do you get?"
+    ],
+    "solution": "4 ≠ 5. No solution.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equations-no-one-infinite-gen-m0",
+    "topicId": "equations-no-one-infinite",
+    "difficulty": "medium",
+    "question": "Solve: 6x + 7 = 6x + 9",
+    "answer": "no solution",
+    "hints": [
+      "Subtract 6x from both sides. What do you get?"
+    ],
+    "solution": "7 ≠ 8. No solution.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equations-no-one-infinite-gen-m1",
+    "topicId": "equations-no-one-infinite",
+    "difficulty": "medium",
+    "question": "Solve: 3x + 5 = -4",
+    "answer": "-3",
+    "hints": [
+      "This equation has exactly one solution."
+    ],
+    "solution": "3x = -9. x = -3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equations-no-one-infinite-gen-m2",
+    "topicId": "equations-no-one-infinite",
+    "difficulty": "medium",
+    "question": "Solve: 6(x + 3) = 6x + 18",
+    "answer": "infinitely many solutions",
+    "hints": [
+      "Expand the left side. What do you notice?"
+    ],
+    "solution": "6x + 18 = 6x + 18. True for all x. Infinitely many solutions.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equations-no-one-infinite-gen-m3",
+    "topicId": "equations-no-one-infinite",
+    "difficulty": "medium",
+    "question": "Solve: 4x + 8 = 24",
+    "answer": "4",
+    "hints": [
+      "This equation has exactly one solution."
+    ],
+    "solution": "4x = 16. x = 4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equations-no-one-infinite-gen-m4",
+    "topicId": "equations-no-one-infinite",
+    "difficulty": "medium",
+    "question": "Solve: 2(x + 6) = 2x + 12",
+    "answer": "infinitely many solutions",
+    "hints": [
+      "Expand the left side. What do you notice?"
+    ],
+    "solution": "2x + 12 = 2x + 12. True for all x. Infinitely many solutions.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equations-no-one-infinite-gen-m5",
+    "topicId": "equations-no-one-infinite",
+    "difficulty": "medium",
+    "question": "Solve: 3(x + 7) = 3x + 21",
+    "answer": "infinitely many solutions",
+    "hints": [
+      "Expand the left side. What do you notice?"
+    ],
+    "solution": "3x + 21 = 3x + 21. True for all x. Infinitely many solutions.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equations-no-one-infinite-gen-m6",
+    "topicId": "equations-no-one-infinite",
+    "difficulty": "medium",
+    "question": "Solve: 5x + 8 = 8",
+    "answer": "0",
+    "hints": [
+      "This equation has exactly one solution."
+    ],
+    "solution": "5x = 0. x = 0.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equations-no-one-infinite-gen-m7",
+    "topicId": "equations-no-one-infinite",
+    "difficulty": "medium",
+    "question": "Solve: 3(x + 1) = 3x + 3",
+    "answer": "infinitely many solutions",
+    "hints": [
+      "Expand the left side. What do you notice?"
+    ],
+    "solution": "3x + 3 = 3x + 3. True for all x. Infinitely many solutions.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equations-no-one-infinite-gen-m8",
+    "topicId": "equations-no-one-infinite",
+    "difficulty": "medium",
+    "question": "Solve: 4(x + 3) = 4x + 12",
+    "answer": "infinitely many solutions",
+    "hints": [
+      "Expand the left side. What do you notice?"
+    ],
+    "solution": "4x + 12 = 4x + 12. True for all x. Infinitely many solutions.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equations-no-one-infinite-gen-m9",
+    "topicId": "equations-no-one-infinite",
+    "difficulty": "medium",
+    "question": "Solve: 6(x + 3) = 6x + 18",
+    "answer": "infinitely many solutions",
+    "hints": [
+      "Expand the left side. What do you notice?"
+    ],
+    "solution": "6x + 18 = 6x + 18. True for all x. Infinitely many solutions.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equations-no-one-infinite-gen-m10",
+    "topicId": "equations-no-one-infinite",
+    "difficulty": "medium",
+    "question": "Solve: 4x + 10 = 6",
+    "answer": "-1",
+    "hints": [
+      "This equation has exactly one solution."
+    ],
+    "solution": "4x = -4. x = -1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equations-no-one-infinite-gen-m11",
+    "topicId": "equations-no-one-infinite",
+    "difficulty": "medium",
+    "question": "Solve: 3x + 4 = 3x + 5",
+    "answer": "no solution",
+    "hints": [
+      "Subtract 3x from both sides. What do you get?"
+    ],
+    "solution": "4 ≠ 5. No solution.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equations-no-one-infinite-gen-m12",
+    "topicId": "equations-no-one-infinite",
+    "difficulty": "medium",
+    "question": "Solve: 2(x + 3) = 2x + 6",
+    "answer": "infinitely many solutions",
+    "hints": [
+      "Expand the left side. What do you notice?"
+    ],
+    "solution": "2x + 6 = 2x + 6. True for all x. Infinitely many solutions.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equations-no-one-infinite-gen-m13",
+    "topicId": "equations-no-one-infinite",
+    "difficulty": "medium",
+    "question": "Solve: 6(x + 1) = 6x + 6",
+    "answer": "infinitely many solutions",
+    "hints": [
+      "Expand the left side. What do you notice?"
+    ],
+    "solution": "6x + 6 = 6x + 6. True for all x. Infinitely many solutions.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equations-no-one-infinite-gen-m14",
+    "topicId": "equations-no-one-infinite",
+    "difficulty": "medium",
+    "question": "Solve: 4x + 7 = 7",
+    "answer": "0",
+    "hints": [
+      "This equation has exactly one solution."
+    ],
+    "solution": "4x = 0. x = 0.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equations-no-one-infinite-gen-m15",
+    "topicId": "equations-no-one-infinite",
+    "difficulty": "medium",
+    "question": "Solve: 6x + 8 = 6x + 12",
+    "answer": "no solution",
+    "hints": [
+      "Subtract 6x from both sides. What do you get?"
+    ],
+    "solution": "8 ≠ 9. No solution.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equations-no-one-infinite-gen-m16",
+    "topicId": "equations-no-one-infinite",
+    "difficulty": "medium",
+    "question": "Solve: 3x + 9 = -6",
+    "answer": "-5",
+    "hints": [
+      "This equation has exactly one solution."
+    ],
+    "solution": "3x = -15. x = -5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equations-no-one-infinite-gen-m17",
+    "topicId": "equations-no-one-infinite",
+    "difficulty": "medium",
+    "question": "Solve: 6(x + 5) = 6x + 30",
+    "answer": "infinitely many solutions",
+    "hints": [
+      "Expand the left side. What do you notice?"
+    ],
+    "solution": "6x + 30 = 6x + 30. True for all x. Infinitely many solutions.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equations-no-one-infinite-gen-m18",
+    "topicId": "equations-no-one-infinite",
+    "difficulty": "medium",
+    "question": "Solve: 6x + 7 = 6x + 9",
+    "answer": "no solution",
+    "hints": [
+      "Subtract 6x from both sides. What do you get?"
+    ],
+    "solution": "7 ≠ 8. No solution.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equations-no-one-infinite-gen-m19",
+    "topicId": "equations-no-one-infinite",
+    "difficulty": "medium",
+    "question": "Solve: 5x + 8 = -7",
+    "answer": "-3",
+    "hints": [
+      "This equation has exactly one solution."
+    ],
+    "solution": "5x = -15. x = -3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equations-no-one-infinite-gen-h0",
+    "topicId": "equations-no-one-infinite",
+    "difficulty": "hard",
+    "question": "Solve: 3x + 8 = 3x + 11",
+    "answer": "no solution",
+    "hints": [
+      "Subtract 3x from both sides. What do you get?"
+    ],
+    "solution": "8 ≠ 9. No solution.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equations-no-one-infinite-gen-h1",
+    "topicId": "equations-no-one-infinite",
+    "difficulty": "hard",
+    "question": "Solve: 2x + 10 = 4",
+    "answer": "-3",
+    "hints": [
+      "This equation has exactly one solution."
+    ],
+    "solution": "2x = -6. x = -3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equations-no-one-infinite-gen-h2",
+    "topicId": "equations-no-one-infinite",
+    "difficulty": "hard",
+    "question": "Solve: 6(x + 7) = 6x + 42",
+    "answer": "infinitely many solutions",
+    "hints": [
+      "Expand the left side. What do you notice?"
+    ],
+    "solution": "6x + 42 = 6x + 42. True for all x. Infinitely many solutions.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equations-no-one-infinite-gen-h3",
+    "topicId": "equations-no-one-infinite",
+    "difficulty": "hard",
+    "question": "Solve: 5x + 4 = -16",
+    "answer": "-4",
+    "hints": [
+      "This equation has exactly one solution."
+    ],
+    "solution": "5x = -20. x = -4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equations-no-one-infinite-gen-h4",
+    "topicId": "equations-no-one-infinite",
+    "difficulty": "hard",
+    "question": "Solve: 4x + 7 = 11",
+    "answer": "1",
+    "hints": [
+      "This equation has exactly one solution."
+    ],
+    "solution": "4x = 4. x = 1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equations-no-one-infinite-gen-h5",
+    "topicId": "equations-no-one-infinite",
+    "difficulty": "hard",
+    "question": "Solve: 6x + 10 = 6x + 11",
+    "answer": "no solution",
+    "hints": [
+      "Subtract 6x from both sides. What do you get?"
+    ],
+    "solution": "10 ≠ 11. No solution.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equations-no-one-infinite-gen-h6",
+    "topicId": "equations-no-one-infinite",
+    "difficulty": "hard",
+    "question": "Solve: 3x + 7 = 3x + 10",
+    "answer": "no solution",
+    "hints": [
+      "Subtract 3x from both sides. What do you get?"
+    ],
+    "solution": "7 ≠ 8. No solution.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equations-no-one-infinite-gen-h7",
+    "topicId": "equations-no-one-infinite",
+    "difficulty": "hard",
+    "question": "Solve: 3(x + 5) = 3x + 15",
+    "answer": "infinitely many solutions",
+    "hints": [
+      "Expand the left side. What do you notice?"
+    ],
+    "solution": "3x + 15 = 3x + 15. True for all x. Infinitely many solutions.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equations-no-one-infinite-gen-h8",
+    "topicId": "equations-no-one-infinite",
+    "difficulty": "hard",
+    "question": "Solve: 6x + 10 = -14",
+    "answer": "-4",
+    "hints": [
+      "This equation has exactly one solution."
+    ],
+    "solution": "6x = -24. x = -4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equations-no-one-infinite-gen-h9",
+    "topicId": "equations-no-one-infinite",
+    "difficulty": "hard",
+    "question": "Solve: 3(x + 8) = 3x + 24",
+    "answer": "infinitely many solutions",
+    "hints": [
+      "Expand the left side. What do you notice?"
+    ],
+    "solution": "3x + 24 = 3x + 24. True for all x. Infinitely many solutions.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equations-no-one-infinite-gen-h10",
+    "topicId": "equations-no-one-infinite",
+    "difficulty": "hard",
+    "question": "Solve: 4x + 6 = 14",
+    "answer": "2",
+    "hints": [
+      "This equation has exactly one solution."
+    ],
+    "solution": "4x = 8. x = 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equations-no-one-infinite-gen-h11",
+    "topicId": "equations-no-one-infinite",
+    "difficulty": "hard",
+    "question": "Solve: 3x + 1 = -2",
+    "answer": "-1",
+    "hints": [
+      "This equation has exactly one solution."
+    ],
+    "solution": "3x = -3. x = -1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equations-no-one-infinite-gen-h12",
+    "topicId": "equations-no-one-infinite",
+    "difficulty": "hard",
+    "question": "Solve: 3x + 8 = 3x + 13",
+    "answer": "no solution",
+    "hints": [
+      "Subtract 3x from both sides. What do you get?"
+    ],
+    "solution": "8 ≠ 9. No solution.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equations-no-one-infinite-gen-h13",
+    "topicId": "equations-no-one-infinite",
+    "difficulty": "hard",
+    "question": "Solve: 5x + 7 = 5x + 12",
+    "answer": "no solution",
+    "hints": [
+      "Subtract 5x from both sides. What do you get?"
+    ],
+    "solution": "7 ≠ 8. No solution.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equations-no-one-infinite-gen-h14",
+    "topicId": "equations-no-one-infinite",
+    "difficulty": "hard",
+    "question": "Solve: 5x + 9 = 4",
+    "answer": "-1",
+    "hints": [
+      "This equation has exactly one solution."
+    ],
+    "solution": "5x = -5. x = -1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  }
+]

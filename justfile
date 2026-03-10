@@ -49,6 +49,10 @@ db-migrate:
 import-content:
     npx tsx tools/import-content.ts
 
+# Generate procedural problems (seeded, reproducible)
+generate-problems *args:
+    npx tsx tools/generate-problems.ts {{args}}
+
 # Content health scoring (per-topic analysis)
 content-status *args:
     npx tsx tools/content-status.ts {{args}}

@@ -1,0 +1,652 @@
+[
+  {
+    "id": "percent-of-a-number-gen-e0",
+    "topicId": "percent-of-a-number",
+    "difficulty": "easy",
+    "question": "What is 50% of 200?",
+    "answer": "100",
+    "hints": [
+      "Convert 50% to a decimal: 0.5. Multiply by 200."
+    ],
+    "solution": "50% × 200 = 0.5 × 200 = 100.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-of-a-number-gen-e1",
+    "topicId": "percent-of-a-number",
+    "difficulty": "easy",
+    "question": "What is 20% of 200?",
+    "answer": "40",
+    "hints": [
+      "Convert 20% to a decimal: 0.2. Multiply by 200."
+    ],
+    "solution": "20% × 200 = 0.2 × 200 = 40.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-of-a-number-gen-e2",
+    "topicId": "percent-of-a-number",
+    "difficulty": "easy",
+    "question": "What is 10% of 200?",
+    "answer": "20",
+    "hints": [
+      "Convert 10% to a decimal: 0.1. Multiply by 200."
+    ],
+    "solution": "10% × 200 = 0.1 × 200 = 20.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-of-a-number-gen-e3",
+    "topicId": "percent-of-a-number",
+    "difficulty": "easy",
+    "question": "What is 25% of 200?",
+    "answer": "50",
+    "hints": [
+      "Convert 25% to a decimal: 0.25. Multiply by 200."
+    ],
+    "solution": "25% × 200 = 0.25 × 200 = 50.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-of-a-number-gen-e4",
+    "topicId": "percent-of-a-number",
+    "difficulty": "easy",
+    "question": "What is 25% of 200?",
+    "answer": "50",
+    "hints": [
+      "Convert 25% to a decimal: 0.25. Multiply by 200."
+    ],
+    "solution": "25% × 200 = 0.25 × 200 = 50.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-of-a-number-gen-e5",
+    "topicId": "percent-of-a-number",
+    "difficulty": "easy",
+    "question": "What is 20% of 50?",
+    "answer": "10",
+    "hints": [
+      "Convert 20% to a decimal: 0.2. Multiply by 50."
+    ],
+    "solution": "20% × 50 = 0.2 × 50 = 10.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-of-a-number-gen-e6",
+    "topicId": "percent-of-a-number",
+    "difficulty": "easy",
+    "question": "What is 25% of 100?",
+    "answer": "25",
+    "hints": [
+      "Convert 25% to a decimal: 0.25. Multiply by 100."
+    ],
+    "solution": "25% × 100 = 0.25 × 100 = 25.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-of-a-number-gen-e7",
+    "topicId": "percent-of-a-number",
+    "difficulty": "easy",
+    "question": "What is 25% of 100?",
+    "answer": "25",
+    "hints": [
+      "Convert 25% to a decimal: 0.25. Multiply by 100."
+    ],
+    "solution": "25% × 100 = 0.25 × 100 = 25.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-of-a-number-gen-e8",
+    "topicId": "percent-of-a-number",
+    "difficulty": "easy",
+    "question": "What is 25% of 100?",
+    "answer": "25",
+    "hints": [
+      "Convert 25% to a decimal: 0.25. Multiply by 100."
+    ],
+    "solution": "25% × 100 = 0.25 × 100 = 25.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-of-a-number-gen-e9",
+    "topicId": "percent-of-a-number",
+    "difficulty": "easy",
+    "question": "What is 25% of 200?",
+    "answer": "50",
+    "hints": [
+      "Convert 25% to a decimal: 0.25. Multiply by 200."
+    ],
+    "solution": "25% × 200 = 0.25 × 200 = 50.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-of-a-number-gen-e10",
+    "topicId": "percent-of-a-number",
+    "difficulty": "easy",
+    "question": "What is 20% of 50?",
+    "answer": "10",
+    "hints": [
+      "Convert 20% to a decimal: 0.2. Multiply by 50."
+    ],
+    "solution": "20% × 50 = 0.2 × 50 = 10.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-of-a-number-gen-e11",
+    "topicId": "percent-of-a-number",
+    "difficulty": "easy",
+    "question": "What is 10% of 100?",
+    "answer": "10",
+    "hints": [
+      "Convert 10% to a decimal: 0.1. Multiply by 100."
+    ],
+    "solution": "10% × 100 = 0.1 × 100 = 10.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-of-a-number-gen-e12",
+    "topicId": "percent-of-a-number",
+    "difficulty": "easy",
+    "question": "What is 50% of 200?",
+    "answer": "100",
+    "hints": [
+      "Convert 50% to a decimal: 0.5. Multiply by 200."
+    ],
+    "solution": "50% × 200 = 0.5 × 200 = 100.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-of-a-number-gen-e13",
+    "topicId": "percent-of-a-number",
+    "difficulty": "easy",
+    "question": "What is 50% of 100?",
+    "answer": "50",
+    "hints": [
+      "Convert 50% to a decimal: 0.5. Multiply by 100."
+    ],
+    "solution": "50% × 100 = 0.5 × 100 = 50.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-of-a-number-gen-e14",
+    "topicId": "percent-of-a-number",
+    "difficulty": "easy",
+    "question": "What is 20% of 50?",
+    "answer": "10",
+    "hints": [
+      "Convert 20% to a decimal: 0.2. Multiply by 50."
+    ],
+    "solution": "20% × 50 = 0.2 × 50 = 10.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-of-a-number-gen-m0",
+    "topicId": "percent-of-a-number",
+    "difficulty": "medium",
+    "question": "What is 55% of 63?",
+    "answer": "34.65",
+    "hints": [
+      "Convert 55% to a decimal: 0.55. Multiply by 63."
+    ],
+    "solution": "55% × 63 = 0.55 × 63 = 34.65.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-of-a-number-gen-m1",
+    "topicId": "percent-of-a-number",
+    "difficulty": "medium",
+    "question": "What is 23% of 356?",
+    "answer": "81.88",
+    "hints": [
+      "Convert 23% to a decimal: 0.23. Multiply by 356."
+    ],
+    "solution": "23% × 356 = 0.23 × 356 = 81.88.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-of-a-number-gen-m2",
+    "topicId": "percent-of-a-number",
+    "difficulty": "medium",
+    "question": "What is 77% of 72?",
+    "answer": "55.44",
+    "hints": [
+      "Convert 77% to a decimal: 0.77. Multiply by 72."
+    ],
+    "solution": "77% × 72 = 0.77 × 72 = 55.44.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-of-a-number-gen-m3",
+    "topicId": "percent-of-a-number",
+    "difficulty": "medium",
+    "question": "What is 16% of 313?",
+    "answer": "50.08",
+    "hints": [
+      "Convert 16% to a decimal: 0.16. Multiply by 313."
+    ],
+    "solution": "16% × 313 = 0.16 × 313 = 50.08.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-of-a-number-gen-m4",
+    "topicId": "percent-of-a-number",
+    "difficulty": "medium",
+    "question": "What is 21% of 231?",
+    "answer": "48.51",
+    "hints": [
+      "Convert 21% to a decimal: 0.21. Multiply by 231."
+    ],
+    "solution": "21% × 231 = 0.21 × 231 = 48.51.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-of-a-number-gen-m5",
+    "topicId": "percent-of-a-number",
+    "difficulty": "medium",
+    "question": "What is 26% of 129?",
+    "answer": "33.54",
+    "hints": [
+      "Convert 26% to a decimal: 0.26. Multiply by 129."
+    ],
+    "solution": "26% × 129 = 0.26 × 129 = 33.54.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-of-a-number-gen-m6",
+    "topicId": "percent-of-a-number",
+    "difficulty": "medium",
+    "question": "What is 44% of 381?",
+    "answer": "167.64",
+    "hints": [
+      "Convert 44% to a decimal: 0.44. Multiply by 381."
+    ],
+    "solution": "44% × 381 = 0.44 × 381 = 167.64.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-of-a-number-gen-m7",
+    "topicId": "percent-of-a-number",
+    "difficulty": "medium",
+    "question": "What is 53% of 485?",
+    "answer": "257.05",
+    "hints": [
+      "Convert 53% to a decimal: 0.53. Multiply by 485."
+    ],
+    "solution": "53% × 485 = 0.53 × 485 = 257.05.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-of-a-number-gen-m8",
+    "topicId": "percent-of-a-number",
+    "difficulty": "medium",
+    "question": "What is 15% of 455?",
+    "answer": "68.25",
+    "hints": [
+      "Convert 15% to a decimal: 0.15. Multiply by 455."
+    ],
+    "solution": "15% × 455 = 0.15 × 455 = 68.25.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-of-a-number-gen-m9",
+    "topicId": "percent-of-a-number",
+    "difficulty": "medium",
+    "question": "What is 54% of 122?",
+    "answer": "65.88",
+    "hints": [
+      "Convert 54% to a decimal: 0.54. Multiply by 122."
+    ],
+    "solution": "54% × 122 = 0.54 × 122 = 65.88.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-of-a-number-gen-m10",
+    "topicId": "percent-of-a-number",
+    "difficulty": "medium",
+    "question": "What is 89% of 108?",
+    "answer": "96.12",
+    "hints": [
+      "Convert 89% to a decimal: 0.89. Multiply by 108."
+    ],
+    "solution": "89% × 108 = 0.89 × 108 = 96.12.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-of-a-number-gen-m11",
+    "topicId": "percent-of-a-number",
+    "difficulty": "medium",
+    "question": "What is 81% of 103?",
+    "answer": "83.43",
+    "hints": [
+      "Convert 81% to a decimal: 0.81. Multiply by 103."
+    ],
+    "solution": "81% × 103 = 0.81 × 103 = 83.43.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-of-a-number-gen-m12",
+    "topicId": "percent-of-a-number",
+    "difficulty": "medium",
+    "question": "What is 81% of 254?",
+    "answer": "205.74",
+    "hints": [
+      "Convert 81% to a decimal: 0.81. Multiply by 254."
+    ],
+    "solution": "81% × 254 = 0.81 × 254 = 205.74.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-of-a-number-gen-m13",
+    "topicId": "percent-of-a-number",
+    "difficulty": "medium",
+    "question": "What is 87% of 229?",
+    "answer": "199.23",
+    "hints": [
+      "Convert 87% to a decimal: 0.87. Multiply by 229."
+    ],
+    "solution": "87% × 229 = 0.87 × 229 = 199.23.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-of-a-number-gen-m14",
+    "topicId": "percent-of-a-number",
+    "difficulty": "medium",
+    "question": "What is 27% of 34?",
+    "answer": "9.18",
+    "hints": [
+      "Convert 27% to a decimal: 0.27. Multiply by 34."
+    ],
+    "solution": "27% × 34 = 0.27 × 34 = 9.18.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-of-a-number-gen-m15",
+    "topicId": "percent-of-a-number",
+    "difficulty": "medium",
+    "question": "What is 76% of 193?",
+    "answer": "146.68",
+    "hints": [
+      "Convert 76% to a decimal: 0.76. Multiply by 193."
+    ],
+    "solution": "76% × 193 = 0.76 × 193 = 146.68.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-of-a-number-gen-m16",
+    "topicId": "percent-of-a-number",
+    "difficulty": "medium",
+    "question": "What is 74% of 177?",
+    "answer": "130.98",
+    "hints": [
+      "Convert 74% to a decimal: 0.74. Multiply by 177."
+    ],
+    "solution": "74% × 177 = 0.74 × 177 = 130.98.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-of-a-number-gen-m17",
+    "topicId": "percent-of-a-number",
+    "difficulty": "medium",
+    "question": "What is 51% of 401?",
+    "answer": "204.51",
+    "hints": [
+      "Convert 51% to a decimal: 0.51. Multiply by 401."
+    ],
+    "solution": "51% × 401 = 0.51 × 401 = 204.51.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-of-a-number-gen-m18",
+    "topicId": "percent-of-a-number",
+    "difficulty": "medium",
+    "question": "What is 94% of 205?",
+    "answer": "192.7",
+    "hints": [
+      "Convert 94% to a decimal: 0.94. Multiply by 205."
+    ],
+    "solution": "94% × 205 = 0.94 × 205 = 192.7.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-of-a-number-gen-m19",
+    "topicId": "percent-of-a-number",
+    "difficulty": "medium",
+    "question": "What is 85% of 97?",
+    "answer": "82.45",
+    "hints": [
+      "Convert 85% to a decimal: 0.85. Multiply by 97."
+    ],
+    "solution": "85% × 97 = 0.85 × 97 = 82.45.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-of-a-number-gen-h0",
+    "topicId": "percent-of-a-number",
+    "difficulty": "hard",
+    "question": "What is 89% of 484?",
+    "answer": "430.76",
+    "hints": [
+      "Convert 89% to a decimal: 0.89. Multiply by 484."
+    ],
+    "solution": "89% × 484 = 0.89 × 484 = 430.76.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-of-a-number-gen-h1",
+    "topicId": "percent-of-a-number",
+    "difficulty": "hard",
+    "question": "What is 38% of 497?",
+    "answer": "188.86",
+    "hints": [
+      "Convert 38% to a decimal: 0.38. Multiply by 497."
+    ],
+    "solution": "38% × 497 = 0.38 × 497 = 188.86.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-of-a-number-gen-h2",
+    "topicId": "percent-of-a-number",
+    "difficulty": "hard",
+    "question": "What is 94% of 429?",
+    "answer": "403.26",
+    "hints": [
+      "Convert 94% to a decimal: 0.94. Multiply by 429."
+    ],
+    "solution": "94% × 429 = 0.94 × 429 = 403.26.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-of-a-number-gen-h3",
+    "topicId": "percent-of-a-number",
+    "difficulty": "hard",
+    "question": "What is 13% of 375?",
+    "answer": "48.75",
+    "hints": [
+      "Convert 13% to a decimal: 0.13. Multiply by 375."
+    ],
+    "solution": "13% × 375 = 0.13 × 375 = 48.75.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-of-a-number-gen-h4",
+    "topicId": "percent-of-a-number",
+    "difficulty": "hard",
+    "question": "What is 43% of 51?",
+    "answer": "21.93",
+    "hints": [
+      "Convert 43% to a decimal: 0.43. Multiply by 51."
+    ],
+    "solution": "43% × 51 = 0.43 × 51 = 21.93.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-of-a-number-gen-h5",
+    "topicId": "percent-of-a-number",
+    "difficulty": "hard",
+    "question": "What is 9% of 65?",
+    "answer": "5.85",
+    "hints": [
+      "Convert 9% to a decimal: 0.09. Multiply by 65."
+    ],
+    "solution": "9% × 65 = 0.09 × 65 = 5.85.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-of-a-number-gen-h6",
+    "topicId": "percent-of-a-number",
+    "difficulty": "hard",
+    "question": "What is 45% of 394?",
+    "answer": "177.3",
+    "hints": [
+      "Convert 45% to a decimal: 0.45. Multiply by 394."
+    ],
+    "solution": "45% × 394 = 0.45 × 394 = 177.3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-of-a-number-gen-h7",
+    "topicId": "percent-of-a-number",
+    "difficulty": "hard",
+    "question": "What is 86% of 499?",
+    "answer": "429.14",
+    "hints": [
+      "Convert 86% to a decimal: 0.86. Multiply by 499."
+    ],
+    "solution": "86% × 499 = 0.86 × 499 = 429.14.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-of-a-number-gen-h8",
+    "topicId": "percent-of-a-number",
+    "difficulty": "hard",
+    "question": "What is 79% of 402?",
+    "answer": "317.58",
+    "hints": [
+      "Convert 79% to a decimal: 0.79. Multiply by 402."
+    ],
+    "solution": "79% × 402 = 0.79 × 402 = 317.58.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-of-a-number-gen-h9",
+    "topicId": "percent-of-a-number",
+    "difficulty": "hard",
+    "question": "What is 57% of 214?",
+    "answer": "121.98",
+    "hints": [
+      "Convert 57% to a decimal: 0.57. Multiply by 214."
+    ],
+    "solution": "57% × 214 = 0.57 × 214 = 121.98.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-of-a-number-gen-h10",
+    "topicId": "percent-of-a-number",
+    "difficulty": "hard",
+    "question": "What is 10% of 498?",
+    "answer": "49.8",
+    "hints": [
+      "Convert 10% to a decimal: 0.1. Multiply by 498."
+    ],
+    "solution": "10% × 498 = 0.1 × 498 = 49.8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-of-a-number-gen-h11",
+    "topicId": "percent-of-a-number",
+    "difficulty": "hard",
+    "question": "What is 69% of 262?",
+    "answer": "180.78",
+    "hints": [
+      "Convert 69% to a decimal: 0.69. Multiply by 262."
+    ],
+    "solution": "69% × 262 = 0.69 × 262 = 180.78.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-of-a-number-gen-h12",
+    "topicId": "percent-of-a-number",
+    "difficulty": "hard",
+    "question": "What is 36% of 39?",
+    "answer": "14.04",
+    "hints": [
+      "Convert 36% to a decimal: 0.36. Multiply by 39."
+    ],
+    "solution": "36% × 39 = 0.36 × 39 = 14.04.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-of-a-number-gen-h13",
+    "topicId": "percent-of-a-number",
+    "difficulty": "hard",
+    "question": "What is 59% of 268?",
+    "answer": "158.12",
+    "hints": [
+      "Convert 59% to a decimal: 0.59. Multiply by 268."
+    ],
+    "solution": "59% × 268 = 0.59 × 268 = 158.12.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-of-a-number-gen-h14",
+    "topicId": "percent-of-a-number",
+    "difficulty": "hard",
+    "question": "What is 77% of 102?",
+    "answer": "78.54",
+    "hints": [
+      "Convert 77% to a decimal: 0.77. Multiply by 102."
+    ],
+    "solution": "77% × 102 = 0.77 × 102 = 78.54.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  }
+]

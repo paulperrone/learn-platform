@@ -1,0 +1,652 @@
+[
+  {
+    "id": "add-within-10-gen-e0",
+    "topicId": "add-within-10",
+    "difficulty": "easy",
+    "question": "What is 5 + 0?",
+    "answer": "5",
+    "hints": [
+      "Start with 5 and count up 0 more."
+    ],
+    "solution": "5 + 0 = 5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-10-gen-e1",
+    "topicId": "add-within-10",
+    "difficulty": "easy",
+    "question": "What is 1 + 1?",
+    "answer": "2",
+    "hints": [
+      "Start with 1 and count up 1 more."
+    ],
+    "solution": "1 + 1 = 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-10-gen-e2",
+    "topicId": "add-within-10",
+    "difficulty": "easy",
+    "question": "What is 2 + 0?",
+    "answer": "2",
+    "hints": [
+      "Start with 2 and count up 0 more."
+    ],
+    "solution": "2 + 0 = 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-10-gen-e3",
+    "topicId": "add-within-10",
+    "difficulty": "easy",
+    "question": "What is 0 + 2?",
+    "answer": "2",
+    "hints": [
+      "Start with 0 and count up 2 more."
+    ],
+    "solution": "0 + 2 = 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-10-gen-e4",
+    "topicId": "add-within-10",
+    "difficulty": "easy",
+    "question": "What is 1 + 0?",
+    "answer": "1",
+    "hints": [
+      "Start with 1 and count up 0 more."
+    ],
+    "solution": "1 + 0 = 1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-10-gen-e5",
+    "topicId": "add-within-10",
+    "difficulty": "easy",
+    "question": "What is 5 + 3?",
+    "answer": "8",
+    "hints": [
+      "Start with 5 and count up 3 more."
+    ],
+    "solution": "5 + 3 = 8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-10-gen-e6",
+    "topicId": "add-within-10",
+    "difficulty": "easy",
+    "question": "What is 0 + 6?",
+    "answer": "6",
+    "hints": [
+      "Start with 0 and count up 6 more."
+    ],
+    "solution": "0 + 6 = 6.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-10-gen-e7",
+    "topicId": "add-within-10",
+    "difficulty": "easy",
+    "question": "What is 1 + 6?",
+    "answer": "7",
+    "hints": [
+      "Start with 1 and count up 6 more."
+    ],
+    "solution": "1 + 6 = 7.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-10-gen-e8",
+    "topicId": "add-within-10",
+    "difficulty": "easy",
+    "question": "What is 2 + 3?",
+    "answer": "5",
+    "hints": [
+      "Start with 2 and count up 3 more."
+    ],
+    "solution": "2 + 3 = 5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-10-gen-e9",
+    "topicId": "add-within-10",
+    "difficulty": "easy",
+    "question": "What is 4 + 1?",
+    "answer": "5",
+    "hints": [
+      "Start with 4 and count up 1 more."
+    ],
+    "solution": "4 + 1 = 5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-10-gen-e10",
+    "topicId": "add-within-10",
+    "difficulty": "easy",
+    "question": "What is 1 + 9?",
+    "answer": "10",
+    "hints": [
+      "Start with 1 and count up 9 more."
+    ],
+    "solution": "1 + 9 = 10.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-10-gen-e11",
+    "topicId": "add-within-10",
+    "difficulty": "easy",
+    "question": "What is 2 + 5?",
+    "answer": "7",
+    "hints": [
+      "Start with 2 and count up 5 more."
+    ],
+    "solution": "2 + 5 = 7.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-10-gen-e12",
+    "topicId": "add-within-10",
+    "difficulty": "easy",
+    "question": "What is 3 + 7?",
+    "answer": "10",
+    "hints": [
+      "Start with 3 and count up 7 more."
+    ],
+    "solution": "3 + 7 = 10.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-10-gen-e13",
+    "topicId": "add-within-10",
+    "difficulty": "easy",
+    "question": "What is 0 + 6?",
+    "answer": "6",
+    "hints": [
+      "Start with 0 and count up 6 more."
+    ],
+    "solution": "0 + 6 = 6.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-10-gen-e14",
+    "topicId": "add-within-10",
+    "difficulty": "easy",
+    "question": "What is 1 + 4?",
+    "answer": "5",
+    "hints": [
+      "Start with 1 and count up 4 more."
+    ],
+    "solution": "1 + 4 = 5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-10-gen-m0",
+    "topicId": "add-within-10",
+    "difficulty": "medium",
+    "question": "What is 3 + 4?",
+    "answer": "7",
+    "hints": [
+      "Start with 3 and count up 4 more."
+    ],
+    "solution": "3 + 4 = 7.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-10-gen-m1",
+    "topicId": "add-within-10",
+    "difficulty": "medium",
+    "question": "What is 6 + 4?",
+    "answer": "10",
+    "hints": [
+      "Start with 6 and count up 4 more."
+    ],
+    "solution": "6 + 4 = 10.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-10-gen-m2",
+    "topicId": "add-within-10",
+    "difficulty": "medium",
+    "question": "What is 6 + 1?",
+    "answer": "7",
+    "hints": [
+      "Start with 6 and count up 1 more."
+    ],
+    "solution": "6 + 1 = 7.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-10-gen-m3",
+    "topicId": "add-within-10",
+    "difficulty": "medium",
+    "question": "What is 6 + 2?",
+    "answer": "8",
+    "hints": [
+      "Start with 6 and count up 2 more."
+    ],
+    "solution": "6 + 2 = 8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-10-gen-m4",
+    "topicId": "add-within-10",
+    "difficulty": "medium",
+    "question": "What is 3 + 4?",
+    "answer": "7",
+    "hints": [
+      "Start with 3 and count up 4 more."
+    ],
+    "solution": "3 + 4 = 7.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-10-gen-m5",
+    "topicId": "add-within-10",
+    "difficulty": "medium",
+    "question": "What is 2 + 3?",
+    "answer": "5",
+    "hints": [
+      "Start with 2 and count up 3 more."
+    ],
+    "solution": "2 + 3 = 5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-10-gen-m6",
+    "topicId": "add-within-10",
+    "difficulty": "medium",
+    "question": "What is 6 + 3?",
+    "answer": "9",
+    "hints": [
+      "Start with 6 and count up 3 more."
+    ],
+    "solution": "6 + 3 = 9.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-10-gen-m7",
+    "topicId": "add-within-10",
+    "difficulty": "medium",
+    "question": "What is 3 + 6?",
+    "answer": "9",
+    "hints": [
+      "Start with 3 and count up 6 more."
+    ],
+    "solution": "3 + 6 = 9.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-10-gen-m8",
+    "topicId": "add-within-10",
+    "difficulty": "medium",
+    "question": "What is 2 + 5?",
+    "answer": "7",
+    "hints": [
+      "Start with 2 and count up 5 more."
+    ],
+    "solution": "2 + 5 = 7.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-10-gen-m9",
+    "topicId": "add-within-10",
+    "difficulty": "medium",
+    "question": "What is 2 + 6?",
+    "answer": "8",
+    "hints": [
+      "Start with 2 and count up 6 more."
+    ],
+    "solution": "2 + 6 = 8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-10-gen-m10",
+    "topicId": "add-within-10",
+    "difficulty": "medium",
+    "question": "What is 5 + 2?",
+    "answer": "7",
+    "hints": [
+      "Start with 5 and count up 2 more."
+    ],
+    "solution": "5 + 2 = 7.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-10-gen-m11",
+    "topicId": "add-within-10",
+    "difficulty": "medium",
+    "question": "What is 6 + 3?",
+    "answer": "9",
+    "hints": [
+      "Start with 6 and count up 3 more."
+    ],
+    "solution": "6 + 3 = 9.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-10-gen-m12",
+    "topicId": "add-within-10",
+    "difficulty": "medium",
+    "question": "What is 4 + 1?",
+    "answer": "5",
+    "hints": [
+      "Start with 4 and count up 1 more."
+    ],
+    "solution": "4 + 1 = 5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-10-gen-m13",
+    "topicId": "add-within-10",
+    "difficulty": "medium",
+    "question": "What is 5 + 3?",
+    "answer": "8",
+    "hints": [
+      "Start with 5 and count up 3 more."
+    ],
+    "solution": "5 + 3 = 8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-10-gen-m14",
+    "topicId": "add-within-10",
+    "difficulty": "medium",
+    "question": "What is 5 + 1?",
+    "answer": "6",
+    "hints": [
+      "Start with 5 and count up 1 more."
+    ],
+    "solution": "5 + 1 = 6.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-10-gen-m15",
+    "topicId": "add-within-10",
+    "difficulty": "medium",
+    "question": "What is 2 + 3?",
+    "answer": "5",
+    "hints": [
+      "Start with 2 and count up 3 more."
+    ],
+    "solution": "2 + 3 = 5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-10-gen-m16",
+    "topicId": "add-within-10",
+    "difficulty": "medium",
+    "question": "What is 5 + 3?",
+    "answer": "8",
+    "hints": [
+      "Start with 5 and count up 3 more."
+    ],
+    "solution": "5 + 3 = 8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-10-gen-m17",
+    "topicId": "add-within-10",
+    "difficulty": "medium",
+    "question": "What is 6 + 3?",
+    "answer": "9",
+    "hints": [
+      "Start with 6 and count up 3 more."
+    ],
+    "solution": "6 + 3 = 9.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-10-gen-m18",
+    "topicId": "add-within-10",
+    "difficulty": "medium",
+    "question": "What is 3 + 3?",
+    "answer": "6",
+    "hints": [
+      "Start with 3 and count up 3 more."
+    ],
+    "solution": "3 + 3 = 6.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-10-gen-m19",
+    "topicId": "add-within-10",
+    "difficulty": "medium",
+    "question": "What is 5 + 3?",
+    "answer": "8",
+    "hints": [
+      "Start with 5 and count up 3 more."
+    ],
+    "solution": "5 + 3 = 8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-10-gen-h0",
+    "topicId": "add-within-10",
+    "difficulty": "hard",
+    "question": "What is 4 + 2?",
+    "answer": "6",
+    "hints": [
+      "Start with 4 and count up 2 more."
+    ],
+    "solution": "4 + 2 = 6.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-10-gen-h1",
+    "topicId": "add-within-10",
+    "difficulty": "hard",
+    "question": "What is 5 + 3?",
+    "answer": "8",
+    "hints": [
+      "Start with 5 and count up 3 more."
+    ],
+    "solution": "5 + 3 = 8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-10-gen-h2",
+    "topicId": "add-within-10",
+    "difficulty": "hard",
+    "question": "What is 7 + 3?",
+    "answer": "10",
+    "hints": [
+      "Start with 7 and count up 3 more."
+    ],
+    "solution": "7 + 3 = 10.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-10-gen-h3",
+    "topicId": "add-within-10",
+    "difficulty": "hard",
+    "question": "What is 3 + 7?",
+    "answer": "10",
+    "hints": [
+      "Start with 3 and count up 7 more."
+    ],
+    "solution": "3 + 7 = 10.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-10-gen-h4",
+    "topicId": "add-within-10",
+    "difficulty": "hard",
+    "question": "What is 3 + 5?",
+    "answer": "8",
+    "hints": [
+      "Start with 3 and count up 5 more."
+    ],
+    "solution": "3 + 5 = 8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-10-gen-h5",
+    "topicId": "add-within-10",
+    "difficulty": "hard",
+    "question": "What is 6 + 4?",
+    "answer": "10",
+    "hints": [
+      "Start with 6 and count up 4 more."
+    ],
+    "solution": "6 + 4 = 10.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-10-gen-h6",
+    "topicId": "add-within-10",
+    "difficulty": "hard",
+    "question": "What is 6 + 2?",
+    "answer": "8",
+    "hints": [
+      "Start with 6 and count up 2 more."
+    ],
+    "solution": "6 + 2 = 8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-10-gen-h7",
+    "topicId": "add-within-10",
+    "difficulty": "hard",
+    "question": "What is 5 + 5?",
+    "answer": "10",
+    "hints": [
+      "Start with 5 and count up 5 more."
+    ],
+    "solution": "5 + 5 = 10.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-10-gen-h8",
+    "topicId": "add-within-10",
+    "difficulty": "hard",
+    "question": "What is 5 + 3?",
+    "answer": "8",
+    "hints": [
+      "Start with 5 and count up 3 more."
+    ],
+    "solution": "5 + 3 = 8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-10-gen-h9",
+    "topicId": "add-within-10",
+    "difficulty": "hard",
+    "question": "What is 3 + 6?",
+    "answer": "9",
+    "hints": [
+      "Start with 3 and count up 6 more."
+    ],
+    "solution": "3 + 6 = 9.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-10-gen-h10",
+    "topicId": "add-within-10",
+    "difficulty": "hard",
+    "question": "What is 3 + 7?",
+    "answer": "10",
+    "hints": [
+      "Start with 3 and count up 7 more."
+    ],
+    "solution": "3 + 7 = 10.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-10-gen-h11",
+    "topicId": "add-within-10",
+    "difficulty": "hard",
+    "question": "What is 5 + 4?",
+    "answer": "9",
+    "hints": [
+      "Start with 5 and count up 4 more."
+    ],
+    "solution": "5 + 4 = 9.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-10-gen-h12",
+    "topicId": "add-within-10",
+    "difficulty": "hard",
+    "question": "What is 4 + 4?",
+    "answer": "8",
+    "hints": [
+      "Start with 4 and count up 4 more."
+    ],
+    "solution": "4 + 4 = 8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-10-gen-h13",
+    "topicId": "add-within-10",
+    "difficulty": "hard",
+    "question": "What is 5 + 3?",
+    "answer": "8",
+    "hints": [
+      "Start with 5 and count up 3 more."
+    ],
+    "solution": "5 + 3 = 8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-10-gen-h14",
+    "topicId": "add-within-10",
+    "difficulty": "hard",
+    "question": "What is 5 + 2?",
+    "answer": "7",
+    "hints": [
+      "Start with 5 and count up 2 more."
+    ],
+    "solution": "5 + 2 = 7.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  }
+]

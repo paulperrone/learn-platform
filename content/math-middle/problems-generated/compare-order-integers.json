@@ -1,0 +1,652 @@
+[
+  {
+    "id": "compare-order-integers-gen-e0",
+    "topicId": "compare-order-integers",
+    "difficulty": "easy",
+    "question": "Compare: -7 ___ -4",
+    "answer": "<",
+    "hints": [
+      "On a number line, which is farther right?"
+    ],
+    "solution": "-7 < -4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-integers-gen-e1",
+    "topicId": "compare-order-integers",
+    "difficulty": "easy",
+    "question": "Compare: -1 ___ -8",
+    "answer": ">",
+    "hints": [
+      "On a number line, which is farther right?"
+    ],
+    "solution": "-1 > -8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-integers-gen-e2",
+    "topicId": "compare-order-integers",
+    "difficulty": "easy",
+    "question": "Compare: 10 ___ -10",
+    "answer": ">",
+    "hints": [
+      "On a number line, which is farther right?"
+    ],
+    "solution": "10 > -10.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-integers-gen-e3",
+    "topicId": "compare-order-integers",
+    "difficulty": "easy",
+    "question": "Compare: 8 ___ 0",
+    "answer": ">",
+    "hints": [
+      "On a number line, which is farther right?"
+    ],
+    "solution": "8 > 0.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-integers-gen-e4",
+    "topicId": "compare-order-integers",
+    "difficulty": "easy",
+    "question": "Compare: -7 ___ -8",
+    "answer": ">",
+    "hints": [
+      "On a number line, which is farther right?"
+    ],
+    "solution": "-7 > -8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-integers-gen-e5",
+    "topicId": "compare-order-integers",
+    "difficulty": "easy",
+    "question": "Compare: 3 ___ -6",
+    "answer": ">",
+    "hints": [
+      "On a number line, which is farther right?"
+    ],
+    "solution": "3 > -6.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-integers-gen-e6",
+    "topicId": "compare-order-integers",
+    "difficulty": "easy",
+    "question": "Compare: -4 ___ -1",
+    "answer": "<",
+    "hints": [
+      "On a number line, which is farther right?"
+    ],
+    "solution": "-4 < -1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-integers-gen-e7",
+    "topicId": "compare-order-integers",
+    "difficulty": "easy",
+    "question": "Compare: -10 ___ 10",
+    "answer": "<",
+    "hints": [
+      "On a number line, which is farther right?"
+    ],
+    "solution": "-10 < 10.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-integers-gen-e8",
+    "topicId": "compare-order-integers",
+    "difficulty": "easy",
+    "question": "Compare: 10 ___ 3",
+    "answer": ">",
+    "hints": [
+      "On a number line, which is farther right?"
+    ],
+    "solution": "10 > 3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-integers-gen-e9",
+    "topicId": "compare-order-integers",
+    "difficulty": "easy",
+    "question": "Compare: -6 ___ -4",
+    "answer": "<",
+    "hints": [
+      "On a number line, which is farther right?"
+    ],
+    "solution": "-6 < -4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-integers-gen-e10",
+    "topicId": "compare-order-integers",
+    "difficulty": "easy",
+    "question": "Compare: -5 ___ -1",
+    "answer": "<",
+    "hints": [
+      "On a number line, which is farther right?"
+    ],
+    "solution": "-5 < -1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-integers-gen-e11",
+    "topicId": "compare-order-integers",
+    "difficulty": "easy",
+    "question": "Compare: 8 ___ -1",
+    "answer": ">",
+    "hints": [
+      "On a number line, which is farther right?"
+    ],
+    "solution": "8 > -1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-integers-gen-e12",
+    "topicId": "compare-order-integers",
+    "difficulty": "easy",
+    "question": "Compare: 5 ___ -1",
+    "answer": ">",
+    "hints": [
+      "On a number line, which is farther right?"
+    ],
+    "solution": "5 > -1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-integers-gen-e13",
+    "topicId": "compare-order-integers",
+    "difficulty": "easy",
+    "question": "Compare: -9 ___ -5",
+    "answer": "<",
+    "hints": [
+      "On a number line, which is farther right?"
+    ],
+    "solution": "-9 < -5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-integers-gen-e14",
+    "topicId": "compare-order-integers",
+    "difficulty": "easy",
+    "question": "Compare: 10 ___ -6",
+    "answer": ">",
+    "hints": [
+      "On a number line, which is farther right?"
+    ],
+    "solution": "10 > -6.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-integers-gen-m0",
+    "topicId": "compare-order-integers",
+    "difficulty": "medium",
+    "question": "Order from least to greatest: -12, 10, -6, -4",
+    "answer": "-12, -6, -4, 10",
+    "hints": [
+      "Negative numbers are less than positive. More negative = less."
+    ],
+    "solution": "Ordered: -12, -6, -4, 10.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-integers-gen-m1",
+    "topicId": "compare-order-integers",
+    "difficulty": "medium",
+    "question": "Order from least to greatest: 11, -12, -11, -11",
+    "answer": "-12, -11, -11, 11",
+    "hints": [
+      "Negative numbers are less than positive. More negative = less."
+    ],
+    "solution": "Ordered: -12, -11, -11, 11.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-integers-gen-m2",
+    "topicId": "compare-order-integers",
+    "difficulty": "medium",
+    "question": "Order from least to greatest: 2, 14, -7, 9",
+    "answer": "-7, 2, 9, 14",
+    "hints": [
+      "Negative numbers are less than positive. More negative = less."
+    ],
+    "solution": "Ordered: -7, 2, 9, 14.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-integers-gen-m3",
+    "topicId": "compare-order-integers",
+    "difficulty": "medium",
+    "question": "Order from least to greatest: 11, -8, 3, 2",
+    "answer": "-8, 2, 3, 11",
+    "hints": [
+      "Negative numbers are less than positive. More negative = less."
+    ],
+    "solution": "Ordered: -8, 2, 3, 11.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-integers-gen-m4",
+    "topicId": "compare-order-integers",
+    "difficulty": "medium",
+    "question": "Order from least to greatest: 10, -20, 15, -15",
+    "answer": "-20, -15, 10, 15",
+    "hints": [
+      "Negative numbers are less than positive. More negative = less."
+    ],
+    "solution": "Ordered: -20, -15, 10, 15.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-integers-gen-m5",
+    "topicId": "compare-order-integers",
+    "difficulty": "medium",
+    "question": "Order from least to greatest: 4, 12, -12, -14",
+    "answer": "-14, -12, 4, 12",
+    "hints": [
+      "Negative numbers are less than positive. More negative = less."
+    ],
+    "solution": "Ordered: -14, -12, 4, 12.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-integers-gen-m6",
+    "topicId": "compare-order-integers",
+    "difficulty": "medium",
+    "question": "Order from least to greatest: -6, 19, -2, 14",
+    "answer": "-6, -2, 14, 19",
+    "hints": [
+      "Negative numbers are less than positive. More negative = less."
+    ],
+    "solution": "Ordered: -6, -2, 14, 19.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-integers-gen-m7",
+    "topicId": "compare-order-integers",
+    "difficulty": "medium",
+    "question": "Order from least to greatest: 6, 9, 17, 2",
+    "answer": "2, 6, 9, 17",
+    "hints": [
+      "Negative numbers are less than positive. More negative = less."
+    ],
+    "solution": "Ordered: 2, 6, 9, 17.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-integers-gen-m8",
+    "topicId": "compare-order-integers",
+    "difficulty": "medium",
+    "question": "Order from least to greatest: -15, 17, 1, 20",
+    "answer": "-15, 1, 17, 20",
+    "hints": [
+      "Negative numbers are less than positive. More negative = less."
+    ],
+    "solution": "Ordered: -15, 1, 17, 20.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-integers-gen-m9",
+    "topicId": "compare-order-integers",
+    "difficulty": "medium",
+    "question": "Order from least to greatest: 0, -10, 3, -20",
+    "answer": "-20, -10, 0, 3",
+    "hints": [
+      "Negative numbers are less than positive. More negative = less."
+    ],
+    "solution": "Ordered: -20, -10, 0, 3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-integers-gen-m10",
+    "topicId": "compare-order-integers",
+    "difficulty": "medium",
+    "question": "Order from least to greatest: 17, -12, -4, -9",
+    "answer": "-12, -9, -4, 17",
+    "hints": [
+      "Negative numbers are less than positive. More negative = less."
+    ],
+    "solution": "Ordered: -12, -9, -4, 17.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-integers-gen-m11",
+    "topicId": "compare-order-integers",
+    "difficulty": "medium",
+    "question": "Order from least to greatest: 11, -2, 2, 2",
+    "answer": "-2, 2, 2, 11",
+    "hints": [
+      "Negative numbers are less than positive. More negative = less."
+    ],
+    "solution": "Ordered: -2, 2, 2, 11.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-integers-gen-m12",
+    "topicId": "compare-order-integers",
+    "difficulty": "medium",
+    "question": "Order from least to greatest: 11, 2, -6, -16",
+    "answer": "-16, -6, 2, 11",
+    "hints": [
+      "Negative numbers are less than positive. More negative = less."
+    ],
+    "solution": "Ordered: -16, -6, 2, 11.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-integers-gen-m13",
+    "topicId": "compare-order-integers",
+    "difficulty": "medium",
+    "question": "Order from least to greatest: -18, 18, 20, -15",
+    "answer": "-18, -15, 18, 20",
+    "hints": [
+      "Negative numbers are less than positive. More negative = less."
+    ],
+    "solution": "Ordered: -18, -15, 18, 20.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-integers-gen-m14",
+    "topicId": "compare-order-integers",
+    "difficulty": "medium",
+    "question": "Order from least to greatest: -7, -15, -11, 17",
+    "answer": "-15, -11, -7, 17",
+    "hints": [
+      "Negative numbers are less than positive. More negative = less."
+    ],
+    "solution": "Ordered: -15, -11, -7, 17.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-integers-gen-m15",
+    "topicId": "compare-order-integers",
+    "difficulty": "medium",
+    "question": "Order from least to greatest: 9, -2, 3, 9",
+    "answer": "-2, 3, 9, 9",
+    "hints": [
+      "Negative numbers are less than positive. More negative = less."
+    ],
+    "solution": "Ordered: -2, 3, 9, 9.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-integers-gen-m16",
+    "topicId": "compare-order-integers",
+    "difficulty": "medium",
+    "question": "Order from least to greatest: -11, -10, 12, -5",
+    "answer": "-11, -10, -5, 12",
+    "hints": [
+      "Negative numbers are less than positive. More negative = less."
+    ],
+    "solution": "Ordered: -11, -10, -5, 12.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-integers-gen-m17",
+    "topicId": "compare-order-integers",
+    "difficulty": "medium",
+    "question": "Order from least to greatest: -1, 16, -2, 20",
+    "answer": "-2, -1, 16, 20",
+    "hints": [
+      "Negative numbers are less than positive. More negative = less."
+    ],
+    "solution": "Ordered: -2, -1, 16, 20.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-integers-gen-m18",
+    "topicId": "compare-order-integers",
+    "difficulty": "medium",
+    "question": "Order from least to greatest: 12, 9, 19, 13",
+    "answer": "9, 12, 13, 19",
+    "hints": [
+      "Negative numbers are less than positive. More negative = less."
+    ],
+    "solution": "Ordered: 9, 12, 13, 19.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-integers-gen-m19",
+    "topicId": "compare-order-integers",
+    "difficulty": "medium",
+    "question": "Order from least to greatest: -17, -14, 6, 7",
+    "answer": "-17, -14, 6, 7",
+    "hints": [
+      "Negative numbers are less than positive. More negative = less."
+    ],
+    "solution": "Ordered: -17, -14, 6, 7.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-integers-gen-h0",
+    "topicId": "compare-order-integers",
+    "difficulty": "hard",
+    "question": "Order from least to greatest: 14, 1, 8, 9, 18, 15",
+    "answer": "1, 8, 9, 14, 15, 18",
+    "hints": [
+      "Negative numbers are less than positive. More negative = less."
+    ],
+    "solution": "Ordered: 1, 8, 9, 14, 15, 18.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-integers-gen-h1",
+    "topicId": "compare-order-integers",
+    "difficulty": "hard",
+    "question": "Order from least to greatest: 0, 3, -17, -5, 20, -15",
+    "answer": "-17, -15, -5, 0, 3, 20",
+    "hints": [
+      "Negative numbers are less than positive. More negative = less."
+    ],
+    "solution": "Ordered: -17, -15, -5, 0, 3, 20.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-integers-gen-h2",
+    "topicId": "compare-order-integers",
+    "difficulty": "hard",
+    "question": "Order from least to greatest: -19, -15, -16, 9, 10, -16",
+    "answer": "-19, -16, -16, -15, 9, 10",
+    "hints": [
+      "Negative numbers are less than positive. More negative = less."
+    ],
+    "solution": "Ordered: -19, -16, -16, -15, 9, 10.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-integers-gen-h3",
+    "topicId": "compare-order-integers",
+    "difficulty": "hard",
+    "question": "Order from least to greatest: 15, -10, -5, -18, -11, 8",
+    "answer": "-18, -11, -10, -5, 8, 15",
+    "hints": [
+      "Negative numbers are less than positive. More negative = less."
+    ],
+    "solution": "Ordered: -18, -11, -10, -5, 8, 15.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-integers-gen-h4",
+    "topicId": "compare-order-integers",
+    "difficulty": "hard",
+    "question": "Order from least to greatest: 4, -4, 18, -3, -2, 2",
+    "answer": "-4, -3, -2, 2, 4, 18",
+    "hints": [
+      "Negative numbers are less than positive. More negative = less."
+    ],
+    "solution": "Ordered: -4, -3, -2, 2, 4, 18.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-integers-gen-h5",
+    "topicId": "compare-order-integers",
+    "difficulty": "hard",
+    "question": "Order from least to greatest: -16, -4, 5, -5, -3, 1",
+    "answer": "-16, -5, -4, -3, 1, 5",
+    "hints": [
+      "Negative numbers are less than positive. More negative = less."
+    ],
+    "solution": "Ordered: -16, -5, -4, -3, 1, 5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-integers-gen-h6",
+    "topicId": "compare-order-integers",
+    "difficulty": "hard",
+    "question": "Order from least to greatest: 1, -1, -6, -18, -17, 3",
+    "answer": "-18, -17, -6, -1, 1, 3",
+    "hints": [
+      "Negative numbers are less than positive. More negative = less."
+    ],
+    "solution": "Ordered: -18, -17, -6, -1, 1, 3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-integers-gen-h7",
+    "topicId": "compare-order-integers",
+    "difficulty": "hard",
+    "question": "Order from least to greatest: -16, -8, -16, 8, -6, -8",
+    "answer": "-16, -16, -8, -8, -6, 8",
+    "hints": [
+      "Negative numbers are less than positive. More negative = less."
+    ],
+    "solution": "Ordered: -16, -16, -8, -8, -6, 8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-integers-gen-h8",
+    "topicId": "compare-order-integers",
+    "difficulty": "hard",
+    "question": "Order from least to greatest: -6, -3, -4, 4, 4, 7",
+    "answer": "-6, -4, -3, 4, 4, 7",
+    "hints": [
+      "Negative numbers are less than positive. More negative = less."
+    ],
+    "solution": "Ordered: -6, -4, -3, 4, 4, 7.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-integers-gen-h9",
+    "topicId": "compare-order-integers",
+    "difficulty": "hard",
+    "question": "Order from least to greatest: -5, -10, -7, -19, 8, 18",
+    "answer": "-19, -10, -7, -5, 8, 18",
+    "hints": [
+      "Negative numbers are less than positive. More negative = less."
+    ],
+    "solution": "Ordered: -19, -10, -7, -5, 8, 18.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-integers-gen-h10",
+    "topicId": "compare-order-integers",
+    "difficulty": "hard",
+    "question": "Order from least to greatest: 11, 0, -13, -10, -12, -10",
+    "answer": "-13, -12, -10, -10, 0, 11",
+    "hints": [
+      "Negative numbers are less than positive. More negative = less."
+    ],
+    "solution": "Ordered: -13, -12, -10, -10, 0, 11.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-integers-gen-h11",
+    "topicId": "compare-order-integers",
+    "difficulty": "hard",
+    "question": "Order from least to greatest: -20, 20, 10, 14, -4, 17",
+    "answer": "-20, -4, 10, 14, 17, 20",
+    "hints": [
+      "Negative numbers are less than positive. More negative = less."
+    ],
+    "solution": "Ordered: -20, -4, 10, 14, 17, 20.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-integers-gen-h12",
+    "topicId": "compare-order-integers",
+    "difficulty": "hard",
+    "question": "Order from least to greatest: 17, 1, -11, 15, -2, -7",
+    "answer": "-11, -7, -2, 1, 15, 17",
+    "hints": [
+      "Negative numbers are less than positive. More negative = less."
+    ],
+    "solution": "Ordered: -11, -7, -2, 1, 15, 17.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-integers-gen-h13",
+    "topicId": "compare-order-integers",
+    "difficulty": "hard",
+    "question": "Order from least to greatest: -1, -12, 8, 4, 10, 3",
+    "answer": "-12, -1, 3, 4, 8, 10",
+    "hints": [
+      "Negative numbers are less than positive. More negative = less."
+    ],
+    "solution": "Ordered: -12, -1, 3, 4, 8, 10.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-integers-gen-h14",
+    "topicId": "compare-order-integers",
+    "difficulty": "hard",
+    "question": "Order from least to greatest: -15, 6, 20, -2, -6, -7",
+    "answer": "-15, -7, -6, -2, 6, 20",
+    "hints": [
+      "Negative numbers are less than positive. More negative = less."
+    ],
+    "solution": "Ordered: -15, -7, -6, -2, 6, 20.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  }
+]

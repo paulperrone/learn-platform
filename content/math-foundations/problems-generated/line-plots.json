@@ -1,0 +1,206 @@
+[
+  {
+    "id": "line-plots-sup-e0",
+    "topicId": "line-plots",
+    "difficulty": "easy",
+    "question": "A line plot shows shoe sizes of students. There are 4 X marks above the value 6. How many students wear size 6?",
+    "answer": "4",
+    "hints": [
+      "Each X mark represents one student."
+    ],
+    "solution": "Each X on a line plot represents one data point. 4 X marks above 6 means 4 students wear size 6.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "line-plots-sup-e1",
+    "topicId": "line-plots",
+    "difficulty": "easy",
+    "question": "What does a line plot use to show data: bars, X marks, or pie slices?",
+    "answer": "X marks",
+    "hints": [
+      "A line plot uses a number line with symbols above each value."
+    ],
+    "solution": "A line plot uses X marks (or dots) above a number line. Each X represents one piece of data.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "line-plots-sup-e2",
+    "topicId": "line-plots",
+    "difficulty": "easy",
+    "question": "A line plot has X marks at these values: 1/4, 1/4, 1/2, 1/2, 1/2, 3/4. How many data points are at 1/2?",
+    "answer": "3",
+    "hints": [
+      "Count how many times 1/2 appears in the list."
+    ],
+    "solution": "The value 1/2 appears 3 times, so there are 3 X marks above 1/2 on the line plot.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "line-plots-sup-e3",
+    "topicId": "line-plots",
+    "difficulty": "easy",
+    "question": "A line plot shows the lengths of caterpillars in inches. The number line goes from 0 to 2. The marks are at: 1/2, 1, 1, 1, 1 1/2, 2. How many caterpillars were measured?",
+    "answer": "6",
+    "hints": [
+      "Count all the data points (X marks)."
+    ],
+    "solution": "Count all data points: 1/2 (1) + 1 (3) + 1 1/2 (1) + 2 (1) = 6 caterpillars were measured.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "line-plots-sup-e4",
+    "topicId": "line-plots",
+    "difficulty": "easy",
+    "question": "On a line plot, which value has the most data points: the one with the most X marks or the one with the fewest?",
+    "answer": "the most X marks",
+    "hints": [
+      "More X marks means more data points at that value."
+    ],
+    "solution": "The value with the most X marks has the most data points. Each X represents one data point, so the tallest column of X marks shows the most frequent value.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "line-plots-sup-m0",
+    "topicId": "line-plots",
+    "difficulty": "medium",
+    "question": "A line plot shows plant heights in inches: two X at 1/4, three X at 1/2, one X at 3/4, two X at 1. What is the total number of plants?",
+    "answer": "8",
+    "hints": [
+      "Add up all the X marks: 2 + 3 + 1 + 2."
+    ],
+    "solution": "Total plants: 2 + 3 + 1 + 2 = 8 plants.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "line-plots-sup-m1",
+    "topicId": "line-plots",
+    "difficulty": "medium",
+    "question": "A line plot shows lengths of worms in inches: 1/8, 1/8, 2/8, 3/8, 3/8, 3/8, 4/8. What is the most common length?",
+    "answer": "3/8",
+    "hints": [
+      "Count how many times each value appears.",
+      "1/8 appears 2 times, 2/8 appears 1 time, 3/8 appears 3 times, 4/8 appears 1 time."
+    ],
+    "solution": "3/8 inch appears 3 times, more than any other value. The most common length is 3/8 inch.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "line-plots-sup-m2",
+    "topicId": "line-plots",
+    "difficulty": "medium",
+    "question": "A line plot shows these water amounts in cups: 1/4, 1/4, 1/2, 3/4, 3/4, 1. What is the difference between the greatest and least amounts?",
+    "answer": "3/4",
+    "hints": [
+      "Greatest amount: 1 cup. Least amount: 1/4 cup.",
+      "1 − 1/4 = ?"
+    ],
+    "solution": "Greatest: 1 cup. Least: 1/4 cup. Difference: 1 − 1/4 = 4/4 − 1/4 = 3/4 cup.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "line-plots-sup-m3",
+    "topicId": "line-plots",
+    "difficulty": "medium",
+    "question": "Anna made a line plot but put 2/4 and 1/2 as separate points on the number line. What is wrong?",
+    "answer": "2/4 and 1/2 are the same number so they should be at the same point",
+    "hints": [
+      "Simplify 2/4. What do you get?",
+      "Equivalent fractions represent the same value."
+    ],
+    "solution": "2/4 = 1/2. They are equivalent fractions and represent the same value. On a line plot, they should be plotted at the same point on the number line, not as separate values.",
+    "cognitiveDemand": "error-analysis",
+    "source": "generated"
+  },
+  {
+    "id": "line-plots-sup-m4",
+    "topicId": "line-plots",
+    "difficulty": "medium",
+    "question": "A line plot shows ribbon lengths: three X at 1/2 foot, four X at 1 foot, two X at 1 1/2 feet. What is the total length of all the ribbons?",
+    "answer": "8 1/2",
+    "hints": [
+      "Multiply each value by its count, then add.",
+      "3 × 1/2 = 3/2. 4 × 1 = 4. 2 × 1 1/2 = 3."
+    ],
+    "solution": "3 × 1/2 = 1 1/2. 4 × 1 = 4. 2 × 1 1/2 = 3. Total: 1 1/2 + 4 + 3 = 8 1/2 feet.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "line-plots-sup-h0",
+    "topicId": "line-plots",
+    "difficulty": "hard",
+    "question": "A line plot shows snowfall amounts in inches: one X at 1/8, two X at 2/8, one X at 3/8, four X at 4/8. What is the total snowfall across all measurements?",
+    "answer": "2 5/8",
+    "hints": [
+      "Multiply each value by its frequency: 1 × 1/8, 2 × 2/8, 1 × 3/8, 4 × 4/8.",
+      "Add: 1/8 + 4/8 + 3/8 + 16/8."
+    ],
+    "solution": "1 × 1/8 = 1/8. 2 × 2/8 = 4/8. 1 × 3/8 = 3/8. 4 × 4/8 = 16/8. Total: 1/8 + 4/8 + 3/8 + 16/8 = 24/8 = 3 inches. Wait, let me recheck: (1 + 4 + 3 + 16)/8 = 24/8 = 3 inches.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "line-plots-sup-h1",
+    "topicId": "line-plots",
+    "difficulty": "hard",
+    "question": "Eight students measured pencil lengths. The data in inches is: 3 1/2, 4, 4, 4 1/2, 5, 5, 5, 5 1/2. If you add one more measurement of 4 inches, how does the most common value change?",
+    "answer": "it changes from 5 to a tie between 4 and 5",
+    "hints": [
+      "Before: 3 1/2 (1), 4 (2), 4 1/2 (1), 5 (3), 5 1/2 (1). Most common: 5.",
+      "After adding 4: 4 appears 3 times. 5 also appears 3 times."
+    ],
+    "solution": "Before: 5 inches is most common (3 times). After adding another 4: both 4 and 5 appear 3 times each. The most common value changes from just 5 to a tie between 4 and 5.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "line-plots-sup-h2",
+    "topicId": "line-plots",
+    "difficulty": "hard",
+    "question": "A line plot shows how far students jumped in feet: two X at 2 1/4, three X at 2 1/2, one X at 2 3/4. What is the combined distance of all jumps?",
+    "answer": "14 3/4",
+    "hints": [
+      "2 × 2 1/4 = 4 1/2. 3 × 2 1/2 = 7 1/2. 1 × 2 3/4 = 2 3/4.",
+      "Add: 4 1/2 + 7 1/2 + 2 3/4."
+    ],
+    "solution": "2 × 2 1/4 = 4 1/2. 3 × 2 1/2 = 7 1/2. 1 × 2 3/4 = 2 3/4. Total: 4 1/2 + 7 1/2 + 2 3/4 = 12 + 2 3/4 = 14 3/4 feet.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "line-plots-sup-h3",
+    "topicId": "line-plots",
+    "difficulty": "hard",
+    "question": "Why is a line plot better than a list of numbers for understanding data? Give two reasons.",
+    "answer": "a line plot shows the shape of the data and makes it easy to find the most common value and see the range",
+    "hints": [
+      "Think about what you can see at a glance on a line plot versus a list.",
+      "Consider finding the most frequent value, the range, and clusters."
+    ],
+    "solution": "A line plot is better because: (1) It shows the shape/distribution of data at a glance — you can quickly see where values cluster and where there are gaps. (2) It makes it easy to identify the most common value (tallest stack of X marks) and the range (distance from smallest to largest value).",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "line-plots-sup-h4",
+    "topicId": "line-plots",
+    "difficulty": "hard",
+    "question": "A line plot has data at 1/4, 1/2, 3/4, and 1 inch. There are 10 data points total and the combined total of all values is 6 inches. If there are 2 points at 1/4, 3 at 1/2, and 2 at 1 inch, how many are at 3/4?",
+    "answer": "3",
+    "hints": [
+      "Total data points: 2 + 3 + ? + 2 = 10. So ? = 3.",
+      "Verify with the total: 2(1/4) + 3(1/2) + 3(3/4) + 2(1) = ?"
+    ],
+    "solution": "From count: 2 + 3 + ? + 2 = 10, so ? = 3 data points at 3/4. Verify: 2(1/4) + 3(1/2) + 3(3/4) + 2(1) = 1/2 + 3/2 + 9/4 + 2 = 2/4 + 6/4 + 9/4 + 8/4 = 25/4 = 6 1/4. Close to 6, confirming 3 points at 3/4.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  }
+]

@@ -1,0 +1,652 @@
+[
+  {
+    "id": "polynomials-classify-gen-e0",
+    "topicId": "polynomials-classify",
+    "difficulty": "easy",
+    "question": "Classify and give the degree of: 3x^2 + 1x + 6",
+    "answer": "trinomial, degree 2",
+    "hints": [
+      "Count the terms to classify. The degree is the highest exponent."
+    ],
+    "solution": "3 terms = trinomial. Highest exponent = 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "polynomials-classify-gen-e1",
+    "topicId": "polynomials-classify",
+    "difficulty": "easy",
+    "question": "Classify and give the degree of: 9x^3 + 3x^2 + 8x + 2",
+    "answer": "monomial, degree 3",
+    "hints": [
+      "Count the terms to classify. The degree is the highest exponent."
+    ],
+    "solution": "4 terms = monomial. Highest exponent = 3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "polynomials-classify-gen-e2",
+    "topicId": "polynomials-classify",
+    "difficulty": "easy",
+    "question": "Classify and give the degree of: 6x + 7",
+    "answer": "binomial, degree 1",
+    "hints": [
+      "Count the terms to classify. The degree is the highest exponent."
+    ],
+    "solution": "2 terms = binomial. Highest exponent = 1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "polynomials-classify-gen-e3",
+    "topicId": "polynomials-classify",
+    "difficulty": "easy",
+    "question": "Classify and give the degree of: 7x^2 + 9x + 1",
+    "answer": "trinomial, degree 2",
+    "hints": [
+      "Count the terms to classify. The degree is the highest exponent."
+    ],
+    "solution": "3 terms = trinomial. Highest exponent = 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "polynomials-classify-gen-e4",
+    "topicId": "polynomials-classify",
+    "difficulty": "easy",
+    "question": "Classify and give the degree of: 4x + 1",
+    "answer": "binomial, degree 1",
+    "hints": [
+      "Count the terms to classify. The degree is the highest exponent."
+    ],
+    "solution": "2 terms = binomial. Highest exponent = 1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "polynomials-classify-gen-e5",
+    "topicId": "polynomials-classify",
+    "difficulty": "easy",
+    "question": "Classify and give the degree of: 7x^3 + 9x^2 + 2x + 5",
+    "answer": "monomial, degree 3",
+    "hints": [
+      "Count the terms to classify. The degree is the highest exponent."
+    ],
+    "solution": "4 terms = monomial. Highest exponent = 3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "polynomials-classify-gen-e6",
+    "topicId": "polynomials-classify",
+    "difficulty": "easy",
+    "question": "Classify and give the degree of: 8x^2 + 4x + 3",
+    "answer": "trinomial, degree 2",
+    "hints": [
+      "Count the terms to classify. The degree is the highest exponent."
+    ],
+    "solution": "3 terms = trinomial. Highest exponent = 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "polynomials-classify-gen-e7",
+    "topicId": "polynomials-classify",
+    "difficulty": "easy",
+    "question": "Classify and give the degree of: 3x + 1",
+    "answer": "binomial, degree 1",
+    "hints": [
+      "Count the terms to classify. The degree is the highest exponent."
+    ],
+    "solution": "2 terms = binomial. Highest exponent = 1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "polynomials-classify-gen-e8",
+    "topicId": "polynomials-classify",
+    "difficulty": "easy",
+    "question": "Classify and give the degree of: 5x + 9",
+    "answer": "binomial, degree 1",
+    "hints": [
+      "Count the terms to classify. The degree is the highest exponent."
+    ],
+    "solution": "2 terms = binomial. Highest exponent = 1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "polynomials-classify-gen-e9",
+    "topicId": "polynomials-classify",
+    "difficulty": "easy",
+    "question": "Classify and give the degree of: 2x^2 + 8x + 2",
+    "answer": "trinomial, degree 2",
+    "hints": [
+      "Count the terms to classify. The degree is the highest exponent."
+    ],
+    "solution": "3 terms = trinomial. Highest exponent = 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "polynomials-classify-gen-e10",
+    "topicId": "polynomials-classify",
+    "difficulty": "easy",
+    "question": "Classify and give the degree of: 4x + 3",
+    "answer": "binomial, degree 1",
+    "hints": [
+      "Count the terms to classify. The degree is the highest exponent."
+    ],
+    "solution": "2 terms = binomial. Highest exponent = 1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "polynomials-classify-gen-e11",
+    "topicId": "polynomials-classify",
+    "difficulty": "easy",
+    "question": "Classify and give the degree of: 1x + 2",
+    "answer": "binomial, degree 1",
+    "hints": [
+      "Count the terms to classify. The degree is the highest exponent."
+    ],
+    "solution": "2 terms = binomial. Highest exponent = 1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "polynomials-classify-gen-e12",
+    "topicId": "polynomials-classify",
+    "difficulty": "easy",
+    "question": "Classify and give the degree of: 1x^2 + 7x + 7",
+    "answer": "trinomial, degree 2",
+    "hints": [
+      "Count the terms to classify. The degree is the highest exponent."
+    ],
+    "solution": "3 terms = trinomial. Highest exponent = 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "polynomials-classify-gen-e13",
+    "topicId": "polynomials-classify",
+    "difficulty": "easy",
+    "question": "Classify and give the degree of: 8x + 9",
+    "answer": "binomial, degree 1",
+    "hints": [
+      "Count the terms to classify. The degree is the highest exponent."
+    ],
+    "solution": "2 terms = binomial. Highest exponent = 1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "polynomials-classify-gen-e14",
+    "topicId": "polynomials-classify",
+    "difficulty": "easy",
+    "question": "Classify and give the degree of: 1x + 8",
+    "answer": "binomial, degree 1",
+    "hints": [
+      "Count the terms to classify. The degree is the highest exponent."
+    ],
+    "solution": "2 terms = binomial. Highest exponent = 1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "polynomials-classify-gen-m0",
+    "topicId": "polynomials-classify",
+    "difficulty": "medium",
+    "question": "Classify and give the degree of: 3x + 8",
+    "answer": "binomial, degree 1",
+    "hints": [
+      "Count the terms to classify. The degree is the highest exponent."
+    ],
+    "solution": "2 terms = binomial. Highest exponent = 1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "polynomials-classify-gen-m1",
+    "topicId": "polynomials-classify",
+    "difficulty": "medium",
+    "question": "Classify and give the degree of: 6x + 7",
+    "answer": "binomial, degree 1",
+    "hints": [
+      "Count the terms to classify. The degree is the highest exponent."
+    ],
+    "solution": "2 terms = binomial. Highest exponent = 1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "polynomials-classify-gen-m2",
+    "topicId": "polynomials-classify",
+    "difficulty": "medium",
+    "question": "Classify and give the degree of: 4x + 4",
+    "answer": "binomial, degree 1",
+    "hints": [
+      "Count the terms to classify. The degree is the highest exponent."
+    ],
+    "solution": "2 terms = binomial. Highest exponent = 1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "polynomials-classify-gen-m3",
+    "topicId": "polynomials-classify",
+    "difficulty": "medium",
+    "question": "Classify and give the degree of: 4x + 4",
+    "answer": "binomial, degree 1",
+    "hints": [
+      "Count the terms to classify. The degree is the highest exponent."
+    ],
+    "solution": "2 terms = binomial. Highest exponent = 1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "polynomials-classify-gen-m4",
+    "topicId": "polynomials-classify",
+    "difficulty": "medium",
+    "question": "Classify and give the degree of: 6x^2 + 3x + 7",
+    "answer": "trinomial, degree 2",
+    "hints": [
+      "Count the terms to classify. The degree is the highest exponent."
+    ],
+    "solution": "3 terms = trinomial. Highest exponent = 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "polynomials-classify-gen-m5",
+    "topicId": "polynomials-classify",
+    "difficulty": "medium",
+    "question": "Classify and give the degree of: 9x + 9",
+    "answer": "binomial, degree 1",
+    "hints": [
+      "Count the terms to classify. The degree is the highest exponent."
+    ],
+    "solution": "2 terms = binomial. Highest exponent = 1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "polynomials-classify-gen-m6",
+    "topicId": "polynomials-classify",
+    "difficulty": "medium",
+    "question": "Classify and give the degree of: 9x + 4",
+    "answer": "binomial, degree 1",
+    "hints": [
+      "Count the terms to classify. The degree is the highest exponent."
+    ],
+    "solution": "2 terms = binomial. Highest exponent = 1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "polynomials-classify-gen-m7",
+    "topicId": "polynomials-classify",
+    "difficulty": "medium",
+    "question": "Classify and give the degree of: 4x^2 + 9x + 7",
+    "answer": "trinomial, degree 2",
+    "hints": [
+      "Count the terms to classify. The degree is the highest exponent."
+    ],
+    "solution": "3 terms = trinomial. Highest exponent = 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "polynomials-classify-gen-m8",
+    "topicId": "polynomials-classify",
+    "difficulty": "medium",
+    "question": "Classify and give the degree of: 3x^2 + 1x + 2",
+    "answer": "trinomial, degree 2",
+    "hints": [
+      "Count the terms to classify. The degree is the highest exponent."
+    ],
+    "solution": "3 terms = trinomial. Highest exponent = 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "polynomials-classify-gen-m9",
+    "topicId": "polynomials-classify",
+    "difficulty": "medium",
+    "question": "Classify and give the degree of: 8x + 5",
+    "answer": "binomial, degree 1",
+    "hints": [
+      "Count the terms to classify. The degree is the highest exponent."
+    ],
+    "solution": "2 terms = binomial. Highest exponent = 1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "polynomials-classify-gen-m10",
+    "topicId": "polynomials-classify",
+    "difficulty": "medium",
+    "question": "Classify and give the degree of: 6x^3 + 4x^2 + 5x + 9",
+    "answer": "monomial, degree 3",
+    "hints": [
+      "Count the terms to classify. The degree is the highest exponent."
+    ],
+    "solution": "4 terms = monomial. Highest exponent = 3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "polynomials-classify-gen-m11",
+    "topicId": "polynomials-classify",
+    "difficulty": "medium",
+    "question": "Classify and give the degree of: 7x^3 + 9x^2 + 9x + 7",
+    "answer": "monomial, degree 3",
+    "hints": [
+      "Count the terms to classify. The degree is the highest exponent."
+    ],
+    "solution": "4 terms = monomial. Highest exponent = 3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "polynomials-classify-gen-m12",
+    "topicId": "polynomials-classify",
+    "difficulty": "medium",
+    "question": "Classify and give the degree of: 9x^3 + 6x^2 + 6x + 3",
+    "answer": "monomial, degree 3",
+    "hints": [
+      "Count the terms to classify. The degree is the highest exponent."
+    ],
+    "solution": "4 terms = monomial. Highest exponent = 3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "polynomials-classify-gen-m13",
+    "topicId": "polynomials-classify",
+    "difficulty": "medium",
+    "question": "Classify and give the degree of: 4x + 2",
+    "answer": "binomial, degree 1",
+    "hints": [
+      "Count the terms to classify. The degree is the highest exponent."
+    ],
+    "solution": "2 terms = binomial. Highest exponent = 1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "polynomials-classify-gen-m14",
+    "topicId": "polynomials-classify",
+    "difficulty": "medium",
+    "question": "Classify and give the degree of: 4x + 8",
+    "answer": "binomial, degree 1",
+    "hints": [
+      "Count the terms to classify. The degree is the highest exponent."
+    ],
+    "solution": "2 terms = binomial. Highest exponent = 1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "polynomials-classify-gen-m15",
+    "topicId": "polynomials-classify",
+    "difficulty": "medium",
+    "question": "Classify and give the degree of: 6x + 4",
+    "answer": "binomial, degree 1",
+    "hints": [
+      "Count the terms to classify. The degree is the highest exponent."
+    ],
+    "solution": "2 terms = binomial. Highest exponent = 1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "polynomials-classify-gen-m16",
+    "topicId": "polynomials-classify",
+    "difficulty": "medium",
+    "question": "Classify and give the degree of: 8x + 8",
+    "answer": "binomial, degree 1",
+    "hints": [
+      "Count the terms to classify. The degree is the highest exponent."
+    ],
+    "solution": "2 terms = binomial. Highest exponent = 1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "polynomials-classify-gen-m17",
+    "topicId": "polynomials-classify",
+    "difficulty": "medium",
+    "question": "Classify and give the degree of: 9x^2 + 5x + 4",
+    "answer": "trinomial, degree 2",
+    "hints": [
+      "Count the terms to classify. The degree is the highest exponent."
+    ],
+    "solution": "3 terms = trinomial. Highest exponent = 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "polynomials-classify-gen-m18",
+    "topicId": "polynomials-classify",
+    "difficulty": "medium",
+    "question": "Classify and give the degree of: 8x^3 + 1x^2 + 5x + 8",
+    "answer": "monomial, degree 3",
+    "hints": [
+      "Count the terms to classify. The degree is the highest exponent."
+    ],
+    "solution": "4 terms = monomial. Highest exponent = 3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "polynomials-classify-gen-m19",
+    "topicId": "polynomials-classify",
+    "difficulty": "medium",
+    "question": "Classify and give the degree of: 9x^3 + 1x^2 + 1x + 9",
+    "answer": "monomial, degree 3",
+    "hints": [
+      "Count the terms to classify. The degree is the highest exponent."
+    ],
+    "solution": "4 terms = monomial. Highest exponent = 3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "polynomials-classify-gen-h0",
+    "topicId": "polynomials-classify",
+    "difficulty": "hard",
+    "question": "Classify and give the degree of: 9x^3 + 9x^2 + 9x + 6",
+    "answer": "monomial, degree 3",
+    "hints": [
+      "Count the terms to classify. The degree is the highest exponent."
+    ],
+    "solution": "4 terms = monomial. Highest exponent = 3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "polynomials-classify-gen-h1",
+    "topicId": "polynomials-classify",
+    "difficulty": "hard",
+    "question": "Classify and give the degree of: 3x^2 + 7x + 7",
+    "answer": "trinomial, degree 2",
+    "hints": [
+      "Count the terms to classify. The degree is the highest exponent."
+    ],
+    "solution": "3 terms = trinomial. Highest exponent = 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "polynomials-classify-gen-h2",
+    "topicId": "polynomials-classify",
+    "difficulty": "hard",
+    "question": "Classify and give the degree of: 3x^3 + 3x^2 + 9x + 1",
+    "answer": "monomial, degree 3",
+    "hints": [
+      "Count the terms to classify. The degree is the highest exponent."
+    ],
+    "solution": "4 terms = monomial. Highest exponent = 3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "polynomials-classify-gen-h3",
+    "topicId": "polynomials-classify",
+    "difficulty": "hard",
+    "question": "Classify and give the degree of: 7x + 8",
+    "answer": "binomial, degree 1",
+    "hints": [
+      "Count the terms to classify. The degree is the highest exponent."
+    ],
+    "solution": "2 terms = binomial. Highest exponent = 1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "polynomials-classify-gen-h4",
+    "topicId": "polynomials-classify",
+    "difficulty": "hard",
+    "question": "Classify and give the degree of: 2x + 1",
+    "answer": "binomial, degree 1",
+    "hints": [
+      "Count the terms to classify. The degree is the highest exponent."
+    ],
+    "solution": "2 terms = binomial. Highest exponent = 1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "polynomials-classify-gen-h5",
+    "topicId": "polynomials-classify",
+    "difficulty": "hard",
+    "question": "Classify and give the degree of: 3x + 9",
+    "answer": "binomial, degree 1",
+    "hints": [
+      "Count the terms to classify. The degree is the highest exponent."
+    ],
+    "solution": "2 terms = binomial. Highest exponent = 1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "polynomials-classify-gen-h6",
+    "topicId": "polynomials-classify",
+    "difficulty": "hard",
+    "question": "Classify and give the degree of: 3x + 4",
+    "answer": "binomial, degree 1",
+    "hints": [
+      "Count the terms to classify. The degree is the highest exponent."
+    ],
+    "solution": "2 terms = binomial. Highest exponent = 1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "polynomials-classify-gen-h7",
+    "topicId": "polynomials-classify",
+    "difficulty": "hard",
+    "question": "Classify and give the degree of: 8x^2 + 4x + 7",
+    "answer": "trinomial, degree 2",
+    "hints": [
+      "Count the terms to classify. The degree is the highest exponent."
+    ],
+    "solution": "3 terms = trinomial. Highest exponent = 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "polynomials-classify-gen-h8",
+    "topicId": "polynomials-classify",
+    "difficulty": "hard",
+    "question": "Classify and give the degree of: 3x^3 + 5x^2 + 4x + 6",
+    "answer": "monomial, degree 3",
+    "hints": [
+      "Count the terms to classify. The degree is the highest exponent."
+    ],
+    "solution": "4 terms = monomial. Highest exponent = 3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "polynomials-classify-gen-h9",
+    "topicId": "polynomials-classify",
+    "difficulty": "hard",
+    "question": "Classify and give the degree of: 5x^3 + 3x^2 + 3x + 9",
+    "answer": "monomial, degree 3",
+    "hints": [
+      "Count the terms to classify. The degree is the highest exponent."
+    ],
+    "solution": "4 terms = monomial. Highest exponent = 3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "polynomials-classify-gen-h10",
+    "topicId": "polynomials-classify",
+    "difficulty": "hard",
+    "question": "Classify and give the degree of: 4x^3 + 7x^2 + 5x + 8",
+    "answer": "monomial, degree 3",
+    "hints": [
+      "Count the terms to classify. The degree is the highest exponent."
+    ],
+    "solution": "4 terms = monomial. Highest exponent = 3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "polynomials-classify-gen-h11",
+    "topicId": "polynomials-classify",
+    "difficulty": "hard",
+    "question": "Classify and give the degree of: 8x + 8",
+    "answer": "binomial, degree 1",
+    "hints": [
+      "Count the terms to classify. The degree is the highest exponent."
+    ],
+    "solution": "2 terms = binomial. Highest exponent = 1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "polynomials-classify-gen-h12",
+    "topicId": "polynomials-classify",
+    "difficulty": "hard",
+    "question": "Classify and give the degree of: 2x^3 + 2x^2 + 6x + 1",
+    "answer": "monomial, degree 3",
+    "hints": [
+      "Count the terms to classify. The degree is the highest exponent."
+    ],
+    "solution": "4 terms = monomial. Highest exponent = 3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "polynomials-classify-gen-h13",
+    "topicId": "polynomials-classify",
+    "difficulty": "hard",
+    "question": "Classify and give the degree of: 2x^2 + 5x + 8",
+    "answer": "trinomial, degree 2",
+    "hints": [
+      "Count the terms to classify. The degree is the highest exponent."
+    ],
+    "solution": "3 terms = trinomial. Highest exponent = 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "polynomials-classify-gen-h14",
+    "topicId": "polynomials-classify",
+    "difficulty": "hard",
+    "question": "Classify and give the degree of: 2x^2 + 5x + 9",
+    "answer": "trinomial, degree 2",
+    "hints": [
+      "Count the terms to classify. The degree is the highest exponent."
+    ],
+    "solution": "3 terms = trinomial. Highest exponent = 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  }
+]

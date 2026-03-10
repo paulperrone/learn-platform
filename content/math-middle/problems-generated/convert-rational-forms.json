@@ -1,0 +1,652 @@
+[
+  {
+    "id": "convert-rational-forms-gen-e0",
+    "topicId": "convert-rational-forms",
+    "difficulty": "easy",
+    "question": "Convert 1.25 to a fraction in simplest form.",
+    "answer": "5/4",
+    "hints": [
+      "Write as a fraction over a power of 10, then simplify."
+    ],
+    "solution": "1.25 = 5/4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "convert-rational-forms-gen-e1",
+    "topicId": "convert-rational-forms",
+    "difficulty": "easy",
+    "question": "Convert 1.5 to a fraction in simplest form.",
+    "answer": "3/2",
+    "hints": [
+      "Write as a fraction over a power of 10, then simplify."
+    ],
+    "solution": "1.5 = 3/2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "convert-rational-forms-gen-e2",
+    "topicId": "convert-rational-forms",
+    "difficulty": "easy",
+    "question": "Convert 1.4 to a fraction in simplest form.",
+    "answer": "7/5",
+    "hints": [
+      "Write as a fraction over a power of 10, then simplify."
+    ],
+    "solution": "1.4 = 7/5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "convert-rational-forms-gen-e3",
+    "topicId": "convert-rational-forms",
+    "difficulty": "easy",
+    "question": "Convert 2 to a fraction in simplest form.",
+    "answer": "2",
+    "hints": [
+      "Write as a fraction over a power of 10, then simplify."
+    ],
+    "solution": "2 = 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "convert-rational-forms-gen-e4",
+    "topicId": "convert-rational-forms",
+    "difficulty": "easy",
+    "question": "Convert 1/4 to a decimal.",
+    "answer": "0.25",
+    "hints": [
+      "Divide 1 by 4."
+    ],
+    "solution": "1 ÷ 4 = 0.25.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "convert-rational-forms-gen-e5",
+    "topicId": "convert-rational-forms",
+    "difficulty": "easy",
+    "question": "Convert 1.5 to a fraction in simplest form.",
+    "answer": "3/2",
+    "hints": [
+      "Write as a fraction over a power of 10, then simplify."
+    ],
+    "solution": "1.5 = 3/2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "convert-rational-forms-gen-e6",
+    "topicId": "convert-rational-forms",
+    "difficulty": "easy",
+    "question": "Convert 0.75 to a fraction in simplest form.",
+    "answer": "3/4",
+    "hints": [
+      "Write as a fraction over a power of 10, then simplify."
+    ],
+    "solution": "0.75 = 3/4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "convert-rational-forms-gen-e7",
+    "topicId": "convert-rational-forms",
+    "difficulty": "easy",
+    "question": "Convert 1 to a fraction in simplest form.",
+    "answer": "1",
+    "hints": [
+      "Write as a fraction over a power of 10, then simplify."
+    ],
+    "solution": "1 = 1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "convert-rational-forms-gen-e8",
+    "topicId": "convert-rational-forms",
+    "difficulty": "easy",
+    "question": "Convert 1 to a decimal.",
+    "answer": "1",
+    "hints": [
+      "Divide 2 by 2."
+    ],
+    "solution": "2 ÷ 2 = 1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "convert-rational-forms-gen-e9",
+    "topicId": "convert-rational-forms",
+    "difficulty": "easy",
+    "question": "Convert 2 to a fraction in simplest form.",
+    "answer": "2",
+    "hints": [
+      "Write as a fraction over a power of 10, then simplify."
+    ],
+    "solution": "2 = 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "convert-rational-forms-gen-e10",
+    "topicId": "convert-rational-forms",
+    "difficulty": "easy",
+    "question": "Convert 1.5 to a fraction in simplest form.",
+    "answer": "3/2",
+    "hints": [
+      "Write as a fraction over a power of 10, then simplify."
+    ],
+    "solution": "1.5 = 3/2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "convert-rational-forms-gen-e11",
+    "topicId": "convert-rational-forms",
+    "difficulty": "easy",
+    "question": "Convert 1/4 to a decimal.",
+    "answer": "0.25",
+    "hints": [
+      "Divide 1 by 4."
+    ],
+    "solution": "1 ÷ 4 = 0.25.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "convert-rational-forms-gen-e12",
+    "topicId": "convert-rational-forms",
+    "difficulty": "easy",
+    "question": "Convert 1.6 to a fraction in simplest form.",
+    "answer": "8/5",
+    "hints": [
+      "Write as a fraction over a power of 10, then simplify."
+    ],
+    "solution": "1.6 = 8/5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "convert-rational-forms-gen-e13",
+    "topicId": "convert-rational-forms",
+    "difficulty": "easy",
+    "question": "Convert 1 to a fraction in simplest form.",
+    "answer": "1",
+    "hints": [
+      "Write as a fraction over a power of 10, then simplify."
+    ],
+    "solution": "1 = 1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "convert-rational-forms-gen-e14",
+    "topicId": "convert-rational-forms",
+    "difficulty": "easy",
+    "question": "Convert 2 to a fraction in simplest form.",
+    "answer": "2",
+    "hints": [
+      "Write as a fraction over a power of 10, then simplify."
+    ],
+    "solution": "2 = 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "convert-rational-forms-gen-m0",
+    "topicId": "convert-rational-forms",
+    "difficulty": "medium",
+    "question": "Convert 5/4 to a decimal.",
+    "answer": "1.25",
+    "hints": [
+      "Divide 10 by 8."
+    ],
+    "solution": "10 ÷ 8 = 1.25.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "convert-rational-forms-gen-m1",
+    "topicId": "convert-rational-forms",
+    "difficulty": "medium",
+    "question": "Convert 1/5 to a decimal.",
+    "answer": "0.2",
+    "hints": [
+      "Divide 2 by 10."
+    ],
+    "solution": "2 ÷ 10 = 0.2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "convert-rational-forms-gen-m2",
+    "topicId": "convert-rational-forms",
+    "difficulty": "medium",
+    "question": "Convert 8/5 to a decimal.",
+    "answer": "1.6",
+    "hints": [
+      "Divide 8 by 5."
+    ],
+    "solution": "8 ÷ 5 = 1.6.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "convert-rational-forms-gen-m3",
+    "topicId": "convert-rational-forms",
+    "difficulty": "medium",
+    "question": "Convert 1 to a fraction in simplest form.",
+    "answer": "1",
+    "hints": [
+      "Write as a fraction over a power of 10, then simplify."
+    ],
+    "solution": "1 = 1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "convert-rational-forms-gen-m4",
+    "topicId": "convert-rational-forms",
+    "difficulty": "medium",
+    "question": "Convert 0.125 to a fraction in simplest form.",
+    "answer": "1/8",
+    "hints": [
+      "Write as a fraction over a power of 10, then simplify."
+    ],
+    "solution": "0.125 = 1/8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "convert-rational-forms-gen-m5",
+    "topicId": "convert-rational-forms",
+    "difficulty": "medium",
+    "question": "Convert 1 to a fraction in simplest form.",
+    "answer": "1",
+    "hints": [
+      "Write as a fraction over a power of 10, then simplify."
+    ],
+    "solution": "1 = 1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "convert-rational-forms-gen-m6",
+    "topicId": "convert-rational-forms",
+    "difficulty": "medium",
+    "question": "Convert 1 to a fraction in simplest form.",
+    "answer": "1",
+    "hints": [
+      "Write as a fraction over a power of 10, then simplify."
+    ],
+    "solution": "1 = 1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "convert-rational-forms-gen-m7",
+    "topicId": "convert-rational-forms",
+    "difficulty": "medium",
+    "question": "Convert 0.8 to a fraction in simplest form.",
+    "answer": "4/5",
+    "hints": [
+      "Write as a fraction over a power of 10, then simplify."
+    ],
+    "solution": "0.8 = 4/5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "convert-rational-forms-gen-m8",
+    "topicId": "convert-rational-forms",
+    "difficulty": "medium",
+    "question": "Convert 1.2 to a fraction in simplest form.",
+    "answer": "6/5",
+    "hints": [
+      "Write as a fraction over a power of 10, then simplify."
+    ],
+    "solution": "1.2 = 6/5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "convert-rational-forms-gen-m9",
+    "topicId": "convert-rational-forms",
+    "difficulty": "medium",
+    "question": "Convert 3/8 to a decimal.",
+    "answer": "0.375",
+    "hints": [
+      "Divide 3 by 8."
+    ],
+    "solution": "3 ÷ 8 = 0.375.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "convert-rational-forms-gen-m10",
+    "topicId": "convert-rational-forms",
+    "difficulty": "medium",
+    "question": "Convert 1.25 to a fraction in simplest form.",
+    "answer": "5/4",
+    "hints": [
+      "Write as a fraction over a power of 10, then simplify."
+    ],
+    "solution": "1.25 = 5/4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "convert-rational-forms-gen-m11",
+    "topicId": "convert-rational-forms",
+    "difficulty": "medium",
+    "question": "Convert 1 to a fraction in simplest form.",
+    "answer": "1",
+    "hints": [
+      "Write as a fraction over a power of 10, then simplify."
+    ],
+    "solution": "1 = 1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "convert-rational-forms-gen-m12",
+    "topicId": "convert-rational-forms",
+    "difficulty": "medium",
+    "question": "Convert 1.4 to a fraction in simplest form.",
+    "answer": "7/5",
+    "hints": [
+      "Write as a fraction over a power of 10, then simplify."
+    ],
+    "solution": "1.4 = 7/5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "convert-rational-forms-gen-m13",
+    "topicId": "convert-rational-forms",
+    "difficulty": "medium",
+    "question": "Convert 0.75 to a fraction in simplest form.",
+    "answer": "3/4",
+    "hints": [
+      "Write as a fraction over a power of 10, then simplify."
+    ],
+    "solution": "0.75 = 3/4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "convert-rational-forms-gen-m14",
+    "topicId": "convert-rational-forms",
+    "difficulty": "medium",
+    "question": "Convert 2 to a decimal.",
+    "answer": "2",
+    "hints": [
+      "Divide 8 by 4."
+    ],
+    "solution": "8 ÷ 4 = 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "convert-rational-forms-gen-m15",
+    "topicId": "convert-rational-forms",
+    "difficulty": "medium",
+    "question": "Convert 0.4 to a fraction in simplest form.",
+    "answer": "2/5",
+    "hints": [
+      "Write as a fraction over a power of 10, then simplify."
+    ],
+    "solution": "0.4 = 2/5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "convert-rational-forms-gen-m16",
+    "topicId": "convert-rational-forms",
+    "difficulty": "medium",
+    "question": "Convert 0.7 to a fraction in simplest form.",
+    "answer": "7/10",
+    "hints": [
+      "Write as a fraction over a power of 10, then simplify."
+    ],
+    "solution": "0.7 = 7/10.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "convert-rational-forms-gen-m17",
+    "topicId": "convert-rational-forms",
+    "difficulty": "medium",
+    "question": "Convert 1.8 to a fraction in simplest form.",
+    "answer": "9/5",
+    "hints": [
+      "Write as a fraction over a power of 10, then simplify."
+    ],
+    "solution": "1.8 = 9/5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "convert-rational-forms-gen-m18",
+    "topicId": "convert-rational-forms",
+    "difficulty": "medium",
+    "question": "Convert 2 to a decimal.",
+    "answer": "2",
+    "hints": [
+      "Divide 16 by 8."
+    ],
+    "solution": "16 ÷ 8 = 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "convert-rational-forms-gen-m19",
+    "topicId": "convert-rational-forms",
+    "difficulty": "medium",
+    "question": "Convert 0.75 to a fraction in simplest form.",
+    "answer": "3/4",
+    "hints": [
+      "Write as a fraction over a power of 10, then simplify."
+    ],
+    "solution": "0.75 = 3/4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "convert-rational-forms-gen-h0",
+    "topicId": "convert-rational-forms",
+    "difficulty": "hard",
+    "question": "Convert 2/3 to a decimal.",
+    "answer": "0.667",
+    "hints": [
+      "Divide 6 by 9."
+    ],
+    "solution": "6 ÷ 9 = 0.667.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "convert-rational-forms-gen-h1",
+    "topicId": "convert-rational-forms",
+    "difficulty": "hard",
+    "question": "Convert 1 to a decimal.",
+    "answer": "1",
+    "hints": [
+      "Divide 9 by 9."
+    ],
+    "solution": "9 ÷ 9 = 1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "convert-rational-forms-gen-h2",
+    "topicId": "convert-rational-forms",
+    "difficulty": "hard",
+    "question": "Convert 20/11 to a decimal.",
+    "answer": "1.818",
+    "hints": [
+      "Divide 20 by 11."
+    ],
+    "solution": "20 ÷ 11 = 1.818.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "convert-rational-forms-gen-h3",
+    "topicId": "convert-rational-forms",
+    "difficulty": "hard",
+    "question": "Convert 1 to a decimal.",
+    "answer": "1",
+    "hints": [
+      "Divide 3 by 3."
+    ],
+    "solution": "3 ÷ 3 = 1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "convert-rational-forms-gen-h4",
+    "topicId": "convert-rational-forms",
+    "difficulty": "hard",
+    "question": "Convert 1.625 to a fraction in simplest form.",
+    "answer": "13/8",
+    "hints": [
+      "Write as a fraction over a power of 10, then simplify."
+    ],
+    "solution": "1.625 = 13/8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "convert-rational-forms-gen-h5",
+    "topicId": "convert-rational-forms",
+    "difficulty": "hard",
+    "question": "Convert 5/3 to a decimal.",
+    "answer": "1.667",
+    "hints": [
+      "Divide 10 by 6."
+    ],
+    "solution": "10 ÷ 6 = 1.667.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "convert-rational-forms-gen-h6",
+    "topicId": "convert-rational-forms",
+    "difficulty": "hard",
+    "question": "Convert 4/3 to a decimal.",
+    "answer": "1.333",
+    "hints": [
+      "Divide 12 by 9."
+    ],
+    "solution": "12 ÷ 9 = 1.333.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "convert-rational-forms-gen-h7",
+    "topicId": "convert-rational-forms",
+    "difficulty": "hard",
+    "question": "Convert 1 to a fraction in simplest form.",
+    "answer": "1",
+    "hints": [
+      "Write as a fraction over a power of 10, then simplify."
+    ],
+    "solution": "1 = 1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "convert-rational-forms-gen-h8",
+    "topicId": "convert-rational-forms",
+    "difficulty": "hard",
+    "question": "Convert 2 to a fraction in simplest form.",
+    "answer": "2",
+    "hints": [
+      "Write as a fraction over a power of 10, then simplify."
+    ],
+    "solution": "2 = 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "convert-rational-forms-gen-h9",
+    "topicId": "convert-rational-forms",
+    "difficulty": "hard",
+    "question": "Convert 5/3 to a decimal.",
+    "answer": "1.667",
+    "hints": [
+      "Divide 10 by 6."
+    ],
+    "solution": "10 ÷ 6 = 1.667.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "convert-rational-forms-gen-h10",
+    "topicId": "convert-rational-forms",
+    "difficulty": "hard",
+    "question": "Convert 0.909 to a fraction in simplest form.",
+    "answer": "10/11",
+    "hints": [
+      "Write as a fraction over a power of 10, then simplify."
+    ],
+    "solution": "0.909 = 10/11.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "convert-rational-forms-gen-h11",
+    "topicId": "convert-rational-forms",
+    "difficulty": "hard",
+    "question": "Convert 5/3 to a decimal.",
+    "answer": "1.667",
+    "hints": [
+      "Divide 5 by 3."
+    ],
+    "solution": "5 ÷ 3 = 1.667.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "convert-rational-forms-gen-h12",
+    "topicId": "convert-rational-forms",
+    "difficulty": "hard",
+    "question": "Convert 2 to a fraction in simplest form.",
+    "answer": "2",
+    "hints": [
+      "Write as a fraction over a power of 10, then simplify."
+    ],
+    "solution": "2 = 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "convert-rational-forms-gen-h13",
+    "topicId": "convert-rational-forms",
+    "difficulty": "hard",
+    "question": "Convert 17/11 to a decimal.",
+    "answer": "1.545",
+    "hints": [
+      "Divide 17 by 11."
+    ],
+    "solution": "17 ÷ 11 = 1.545.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "convert-rational-forms-gen-h14",
+    "topicId": "convert-rational-forms",
+    "difficulty": "hard",
+    "question": "Convert 5/3 to a decimal.",
+    "answer": "1.667",
+    "hints": [
+      "Divide 15 by 9."
+    ],
+    "solution": "15 ÷ 9 = 1.667.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  }
+]

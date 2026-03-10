@@ -1,0 +1,207 @@
+[
+  {
+    "id": "two-way-tables-sup-e0",
+    "topicId": "two-way-tables",
+    "difficulty": "easy",
+    "question": "A two-way table shows: Boys who like soccer = 15, Boys who like basketball = 10, Girls who like soccer = 12, Girls who like basketball = 13. How many students were surveyed in total?",
+    "answer": "50",
+    "hints": [
+      "Add all four cells together."
+    ],
+    "solution": "Total = 15 + 10 + 12 + 13 = 50 students.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "two-way-tables-sup-e1",
+    "topicId": "two-way-tables",
+    "difficulty": "easy",
+    "question": "In a two-way table, the row totals are called ______. Do they tell you about one variable or both?",
+    "answer": "marginal frequencies; they tell you about one variable only",
+    "hints": [
+      "The totals appear on the margins (edges) of the table."
+    ],
+    "solution": "Row and column totals are called marginal frequencies. They summarize one variable at a time. For example, a row total tells you the total for that row category regardless of the column category.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "two-way-tables-sup-e2",
+    "topicId": "two-way-tables",
+    "difficulty": "easy",
+    "question": "A two-way table shows pet preference by grade. 6th grade: dog=20, cat=15. 7th grade: dog=18, cat=22. How many students prefer cats?",
+    "answer": "37",
+    "hints": [
+      "Add the cat column: 6th grade cats + 7th grade cats."
+    ],
+    "solution": "Total cats = 15 + 22 = 37 students prefer cats.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "two-way-tables-sup-e3",
+    "topicId": "two-way-tables",
+    "difficulty": "easy",
+    "question": "A two-way table has rows for 'Plays sports' and 'Does not play sports,' and columns for 'Gets 8+ hours of sleep' and 'Gets less than 8 hours of sleep.' What two variables does this table display?",
+    "answer": "Sports participation and amount of sleep.",
+    "hints": [
+      "The rows represent one variable and the columns represent another."
+    ],
+    "solution": "The table displays two categorical variables: (1) whether a person plays sports (yes/no) and (2) whether they get 8+ hours of sleep (yes/no). A two-way table always shows the relationship between two categorical variables.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "two-way-tables-sup-e4",
+    "topicId": "two-way-tables",
+    "difficulty": "easy",
+    "question": "A two-way table: Right-handed boys = 40, Left-handed boys = 5, Right-handed girls = 38, Left-handed girls = 7. How many students are right-handed?",
+    "answer": "78",
+    "hints": [
+      "Add all right-handed students regardless of gender."
+    ],
+    "solution": "Right-handed total = 40 + 38 = 78 students.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "two-way-tables-sup-m0",
+    "topicId": "two-way-tables",
+    "difficulty": "medium",
+    "question": "A two-way table shows lunch choices. Pizza: 7th grade=30, 8th grade=20. Salad: 7th grade=10, 8th grade=25. What fraction of 8th graders chose pizza?",
+    "answer": "20/45",
+    "hints": [
+      "First find the total number of 8th graders.",
+      "Then find how many chose pizza."
+    ],
+    "solution": "Total 8th graders = 20 + 25 = 45. 8th graders who chose pizza = 20. Fraction = 20/45 = 4/9.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "two-way-tables-sup-m1",
+    "topicId": "two-way-tables",
+    "difficulty": "medium",
+    "question": "A two-way table: Pass test - studied = 35, didn't study = 10. Fail test - studied = 5, didn't study = 20. What percentage of students who studied passed the test? Round to the nearest percent.",
+    "answer": "88%",
+    "hints": [
+      "Total who studied = 35 + 5 = 40.",
+      "Of those, 35 passed."
+    ],
+    "solution": "Students who studied = 35 + 5 = 40. Of those, 35 passed. Percentage = 35/40 = 0.875 = 88% (rounded).",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "two-way-tables-sup-m2",
+    "topicId": "two-way-tables",
+    "difficulty": "medium",
+    "question": "Complete this two-way table. Bike to school: boys = 12, girls = ?. Walk to school: boys = 18, girls = 15. Total boys = 30, total girls = 25. What is the missing value?",
+    "answer": "10",
+    "hints": [
+      "Total girls = girls who bike + girls who walk.",
+      "25 = ? + 15."
+    ],
+    "solution": "Girls who bike = Total girls - Girls who walk = 25 - 15 = 10.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "two-way-tables-sup-m3",
+    "topicId": "two-way-tables",
+    "difficulty": "medium",
+    "question": "A two-way table shows: Likes math - female=28, male=22. Doesn't like math - female=12, male=18. Is there an association between gender and liking math? Explain using the data.",
+    "answer": "Yes, there appears to be an association. 70% of females like math (28/40) compared to 55% of males (22/40). Females in this sample are more likely to report liking math.",
+    "hints": [
+      "Compare the percentage who like math within each gender, not just the raw counts.",
+      "Calculate: females who like math / total females, and males who like math / total males."
+    ],
+    "solution": "Total females = 28 + 12 = 40. % who like math = 28/40 = 70%. Total males = 22 + 18 = 40. % who like math = 22/40 = 55%. Since 70% ≠ 55%, there appears to be an association — females in this sample are more likely to report liking math than males.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "two-way-tables-sup-m4",
+    "topicId": "two-way-tables",
+    "difficulty": "medium",
+    "question": "A student looks at a two-way table and says '30 boys like pizza and 25 girls like pizza, so boys like pizza more.' What is wrong with comparing raw counts?",
+    "answer": "If there are different numbers of boys and girls total, raw counts are misleading. You need to compare percentages or proportions within each group.",
+    "hints": [
+      "What if there are 60 boys but only 30 girls in the survey?",
+      "30/60 = 50% of boys vs 25/30 = 83% of girls would tell a very different story."
+    ],
+    "solution": "Raw counts are misleading when group sizes differ. If there are 60 boys total, then 30/60 = 50% like pizza. If there are 30 girls, then 25/30 = 83% like pizza. In this case, girls actually have a higher preference rate! You must compare percentages (relative frequencies) within each group to make valid comparisons.",
+    "cognitiveDemand": "error-analysis",
+    "source": "generated"
+  },
+  {
+    "id": "two-way-tables-sup-h0",
+    "topicId": "two-way-tables",
+    "difficulty": "hard",
+    "question": "A two-way table shows exercise habits and cold frequency. Exercises regularly: got cold = 15, no cold = 45. Doesn't exercise: got cold = 30, no cold = 30. Calculate the percentage who got a cold in each group. Does the data suggest an association?",
+    "answer": "Exercises: 15/60 = 25% got colds. Doesn't exercise: 30/60 = 50% got colds. Yes, the data suggests an association — people who don't exercise got colds at twice the rate.",
+    "hints": [
+      "Find the total in each row, then calculate the cold percentage.",
+      "Compare the percentages, not the raw numbers."
+    ],
+    "solution": "Exercises: total = 15 + 45 = 60. Cold rate = 15/60 = 25%. Doesn't exercise: total = 30 + 30 = 60. Cold rate = 30/60 = 50%. The data suggests an association: non-exercisers got colds at twice the rate (50% vs 25%). Note: this doesn't prove exercise prevents colds — other factors could be involved.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "two-way-tables-sup-h1",
+    "topicId": "two-way-tables",
+    "difficulty": "hard",
+    "question": "A two-way table of 200 students shows phone type and grade. 8th grade iPhone = 45, 8th grade Android = 35. 7th grade iPhone = 50, 7th grade Android = 70. A company concludes '8th graders prefer iPhones.' Evaluate this claim using relative frequencies.",
+    "answer": "8th graders: 45/80 = 56% iPhone. 7th graders: 50/120 = 42% iPhone. The claim has some support — a higher proportion of 8th graders use iPhones. But 56% is only a slight majority, not a strong preference.",
+    "hints": [
+      "Calculate the iPhone percentage within each grade.",
+      "Be careful about overstating the conclusion."
+    ],
+    "solution": "8th grade: 45/(45+35) = 45/80 = 56.3% iPhone. 7th grade: 50/(50+70) = 50/120 = 41.7% iPhone. A higher proportion of 8th graders use iPhones compared to 7th graders (56% vs 42%). The claim has some support, but 'prefer' is too strong — 56% is only a slight majority. A more accurate statement: 'iPhones are somewhat more common among 8th graders than 7th graders in this sample.'",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "two-way-tables-sup-h2",
+    "topicId": "two-way-tables",
+    "difficulty": "hard",
+    "question": "If two variables have NO association in a two-way table, what would be true about the relative frequencies in each row? Give an example with numbers.",
+    "answer": "The relative frequencies (percentages) would be approximately the same in each row. Example: if 60% of boys like pizza and 60% of girls like pizza, there is no association between gender and pizza preference.",
+    "hints": [
+      "No association means knowing one variable doesn't help predict the other.",
+      "The distribution of one variable should look the same across all categories of the other."
+    ],
+    "solution": "With no association, the relative frequencies would be the same across rows. Example: Boys: pizza=30, salad=20 (60% pizza). Girls: pizza=24, salad=16 (60% pizza). Both groups have the same 60/40 split, meaning gender doesn't affect pizza preference. If the percentages differ between rows, there IS an association.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "two-way-tables-sup-h3",
+    "topicId": "two-way-tables",
+    "difficulty": "hard",
+    "question": "A two-way table has 3 rows and 4 columns with all marginal totals given. The grand total is 120. How many cells need to be filled in? If you know the values of 6 of the 12 inner cells, can you determine the rest? Explain.",
+    "answer": "12 inner cells need to be filled. Yes, if you know 6 strategically placed cells, you can use the marginal totals to calculate the remaining 6.",
+    "hints": [
+      "3 rows × 4 columns = 12 cells.",
+      "Each cell can be found if you know the row total minus the other cells in that row."
+    ],
+    "solution": "There are 3 × 4 = 12 inner cells. With marginal totals known, you can use subtraction to find missing cells. If you know 6 cells (at least 2 in each row and 3 in each column to avoid redundancy), you can calculate the rest using row total - known cells = unknown cells. For example, if row 1 total is 40 and three of four cells are known, the fourth = 40 - sum of the three.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "two-way-tables-sup-h4",
+    "topicId": "two-way-tables",
+    "difficulty": "hard",
+    "question": "A two-way table: Homework complete - A/B grade = 40, C/D/F grade = 10. Homework incomplete - A/B grade = 8, C/D/F grade = 22. A parent says 'completing homework causes good grades.' Using the data, explain why this causal claim may not be justified, even though an association exists.",
+    "answer": "The data shows an association (80% of homework completers got A/B vs 27% of non-completers), but correlation doesn't prove causation. Students who complete homework may also study more, have more support at home, or be more motivated — these confounding factors could explain both behaviors.",
+    "hints": [
+      "An association in a two-way table doesn't prove one variable causes the other.",
+      "What other factors might explain why some students both complete homework and get good grades?"
+    ],
+    "solution": "The association is strong: 40/50 = 80% of homework completers earned A/B vs 8/30 = 27% of non-completers. However, causation isn't justified because: (1) confounding variables exist — students who complete homework may also study more, have better time management, or have more parental support; (2) reverse causation is possible — students who understand the material (and would get A/B anyway) may find homework easier to complete; (3) this is observational data, not an experiment. The association is real, but the cause could be a third factor.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  }
+]

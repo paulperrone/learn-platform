@@ -1,0 +1,212 @@
+[
+  {
+    "id": "ratios-intro-sup-e0",
+    "topicId": "ratios-intro",
+    "difficulty": "easy",
+    "question": "A classroom has 12 boys and 8 girls. What is the ratio of boys to girls? Write it in the form a:b.",
+    "answer": "12:8",
+    "hints": [
+      "The ratio of boys to girls compares the number of boys first, then girls.",
+      "Write: number of boys : number of girls."
+    ],
+    "solution": "The ratio of boys to girls is 12:8. This can also be simplified to 3:2 by dividing both by 4.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "ratios-intro-sup-e1",
+    "topicId": "ratios-intro",
+    "difficulty": "easy",
+    "question": "A bag contains 3 red marbles and 5 blue marbles. What is the ratio of red marbles to total marbles? Write it in the form a:b.",
+    "answer": "3:8",
+    "hints": [
+      "Total marbles = red + blue = 3 + 5.",
+      "The ratio is red : total."
+    ],
+    "solution": "Total marbles = 3 + 5 = 8. The ratio of red to total is 3:8.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "ratios-intro-sup-e2",
+    "topicId": "ratios-intro",
+    "difficulty": "easy",
+    "question": "A recipe uses 2 cups of flour for every 1 cup of sugar. If you use 4 cups of flour, how many cups of sugar do you need?",
+    "answer": "2",
+    "hints": [
+      "The ratio is 2 cups flour : 1 cup sugar.",
+      "4 cups of flour is double the original. Double the sugar too."
+    ],
+    "solution": "The ratio is 2:1 (flour to sugar). With 4 cups flour (doubled), you need 2 cups sugar (doubled). 4:2 is equivalent to 2:1.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "ratios-intro-sup-e3",
+    "topicId": "ratios-intro",
+    "difficulty": "easy",
+    "question": "Write the ratio '5 to 9' using a colon.",
+    "answer": "5:9",
+    "hints": [
+      "The word 'to' in a ratio is replaced by a colon (:).",
+      "The first number goes before the colon, the second after."
+    ],
+    "solution": "'5 to 9' written with a colon is 5:9. Ratios can be written as '5 to 9,' 5:9, or 5/9.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "ratios-intro-sup-e4",
+    "topicId": "ratios-intro",
+    "difficulty": "easy",
+    "question": "A parking lot has 10 cars and 6 trucks. What is the ratio of trucks to cars in simplest form? Write it as a:b.",
+    "answer": "3:5",
+    "hints": [
+      "Trucks to cars = 6:10. Notice the order matters!",
+      "Simplify by dividing both by 2."
+    ],
+    "solution": "Trucks to cars = 6:10. Divide both by 2: 3:5. The ratio in simplest form is 3:5.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "ratios-intro-sup-m0",
+    "topicId": "ratios-intro",
+    "difficulty": "medium",
+    "question": "A trail mix has peanuts, raisins, and chocolate chips in the ratio 4:2:1. If you have 28 peanuts, how many total pieces are in the mix?",
+    "answer": "49",
+    "hints": [
+      "The ratio 4:2:1 means for every 4 peanuts there are 2 raisins and 1 chocolate chip.",
+      "28 peanuts ÷ 4 = 7, so the multiplier is 7. Multiply each part by 7."
+    ],
+    "solution": "Ratio is 4:2:1. Since 28 ÷ 4 = 7, the multiplier is 7. Raisins: 2 × 7 = 14. Chocolate chips: 1 × 7 = 7. Total: 28 + 14 + 7 = 49.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "ratios-intro-sup-m1",
+    "topicId": "ratios-intro",
+    "difficulty": "medium",
+    "question": "A student says the ratio of cats to dogs is 3:5, so there are 3 cats and 5 dogs. Is this necessarily true? Explain briefly.",
+    "answer": "No. The ratio 3:5 means for every 3 cats there are 5 dogs, but the actual numbers could be any multiple like 6:10 or 9:15.",
+    "hints": [
+      "A ratio tells you the relationship between quantities, not the exact amounts.",
+      "3:5 is the same as 6:10, 9:15, 12:20, etc."
+    ],
+    "solution": "No. A ratio of 3:5 means the number of cats to dogs is in the proportion 3 to 5, but the actual numbers could be 3 and 5, or 6 and 10, or 30 and 50 — any equivalent ratio. A ratio describes a relationship, not specific quantities.",
+    "cognitiveDemand": "error-analysis",
+    "source": "generated"
+  },
+  {
+    "id": "ratios-intro-sup-m2",
+    "topicId": "ratios-intro",
+    "difficulty": "medium",
+    "question": "In a fruit basket the ratio of apples to oranges is 5:3. If there are 24 total fruits (only apples and oranges), how many apples are there?",
+    "answer": "15",
+    "hints": [
+      "The total parts in the ratio are 5 + 3 = 8.",
+      "Each part = 24 ÷ 8 = 3. Apples = 5 × 3."
+    ],
+    "solution": "Total parts = 5 + 3 = 8. Each part = 24 ÷ 8 = 3 fruits. Apples = 5 × 3 = 15. Oranges = 3 × 3 = 9. Check: 15 + 9 = 24.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "ratios-intro-sup-m3",
+    "topicId": "ratios-intro",
+    "difficulty": "medium",
+    "question": "The ratio of fiction to nonfiction books on a shelf is 7:3. If 6 more nonfiction books are added and the ratio becomes 7:6, how many fiction books are on the shelf?",
+    "answer": "14",
+    "hints": [
+      "The fiction count didn't change. Originally fiction:nonfiction = 7:3.",
+      "After adding 6 nonfiction books, the ratio is 7:6. So nonfiction doubled from the ratio perspective."
+    ],
+    "solution": "Let the multiplier be k. Fiction = 7k, original nonfiction = 3k. After adding 6: 7k/(3k + 6) = 7/6. Cross-multiply: 42k = 7(3k + 6) = 21k + 42. So 21k = 42, k = 2. Fiction = 7 × 2 = 14.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "ratios-intro-sup-m4",
+    "topicId": "ratios-intro",
+    "difficulty": "medium",
+    "question": "A paint color is mixed using red and white paint in the ratio 2:5. Does this mixture have more red or more white paint?",
+    "answer": "more white paint",
+    "hints": [
+      "Compare the two numbers in the ratio: 2 and 5.",
+      "The larger number in the ratio represents the larger quantity."
+    ],
+    "solution": "In the ratio 2:5, white (5 parts) is more than red (2 parts). For every 2 units of red paint, there are 5 units of white. The mixture has more white paint.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "ratios-intro-sup-h0",
+    "topicId": "ratios-intro",
+    "difficulty": "hard",
+    "question": "The ratio of boys to girls in a club is 3:4. After 5 boys and 5 girls join, the ratio becomes 4:5. How many boys were in the club originally?",
+    "answer": "15",
+    "hints": [
+      "Let the original number of boys be 3k and girls be 4k.",
+      "After joining: (3k + 5)/(4k + 5) = 4/5. Cross-multiply and solve for k."
+    ],
+    "solution": "Original: boys = 3k, girls = 4k. After: (3k + 5)/(4k + 5) = 4/5. Cross-multiply: 5(3k + 5) = 4(4k + 5). 15k + 25 = 16k + 20. k = 5. Original boys = 3 × 5 = 15.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "ratios-intro-sup-h1",
+    "topicId": "ratios-intro",
+    "difficulty": "hard",
+    "question": "A student writes: 'The ratio of wins to losses is 8:2, which simplifies to 4:1. This means the team won 4 games.' What error did the student make?",
+    "answer": "Simplifying a ratio does not change it to actual counts. 4:1 means 4 wins per 1 loss, but the actual numbers are 8 wins and 2 losses.",
+    "hints": [
+      "Simplifying a ratio keeps the same relationship but doesn't give actual amounts.",
+      "8:2 and 4:1 describe the same relationship, but 4:1 doesn't mean only 4 wins."
+    ],
+    "solution": "The student confused the simplified ratio with actual quantities. Simplifying 8:2 to 4:1 means 'for every 4 wins there is 1 loss,' but the actual counts remain 8 wins and 2 losses. A simplified ratio describes the relationship, not the number of events.",
+    "cognitiveDemand": "error-analysis",
+    "source": "generated"
+  },
+  {
+    "id": "ratios-intro-sup-h2",
+    "topicId": "ratios-intro",
+    "difficulty": "hard",
+    "question": "Three siblings split a $60 gift in the ratio of their ages: 4, 6, and 10. How much does the youngest sibling get?",
+    "answer": "12",
+    "hints": [
+      "Total ratio parts = 4 + 6 + 10 = 20.",
+      "Each part = $60 ÷ 20 = $3. The youngest gets 4 parts."
+    ],
+    "solution": "Total parts = 4 + 6 + 10 = 20. Value per part = $60 ÷ 20 = $3. Youngest (4 parts) = 4 × $3 = $12. Middle = $18. Oldest = $30. Check: 12 + 18 + 30 = 60.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "ratios-intro-sup-h3",
+    "topicId": "ratios-intro",
+    "difficulty": "hard",
+    "question": "Is a ratio of 0:5 meaningful? Explain in one sentence why or why not.",
+    "answer": "Yes, it means there are none of the first quantity for every 5 of the second.",
+    "hints": [
+      "Can one part of a ratio be zero?",
+      "Think of an example: 0 cats to 5 dogs — there are simply no cats."
+    ],
+    "solution": "Yes, 0:5 is a valid ratio. It means there are 0 of the first quantity for every 5 of the second. For example, a bag with 0 red marbles and 5 blue marbles has a red:blue ratio of 0:5. However, 5:0 would be problematic as a fraction since you cannot divide by 0.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "ratios-intro-sup-h4",
+    "topicId": "ratios-intro",
+    "difficulty": "hard",
+    "question": "Two ratios look different: 2:3 and 4:6. A student says they represent different situations. Is the student correct? Explain briefly.",
+    "answer": "No. 2:3 and 4:6 are equivalent ratios because 4:6 simplifies to 2:3.",
+    "hints": [
+      "Try simplifying 4:6 by dividing both numbers by their GCF.",
+      "4 ÷ 2 = 2 and 6 ÷ 2 = 3."
+    ],
+    "solution": "The student is incorrect. 2:3 and 4:6 are equivalent ratios — they describe the same relationship. Dividing both parts of 4:6 by 2 gives 2:3. Equivalent ratios are like equivalent fractions: they look different but represent the same comparison.",
+    "cognitiveDemand": "error-analysis",
+    "source": "generated"
+  }
+]

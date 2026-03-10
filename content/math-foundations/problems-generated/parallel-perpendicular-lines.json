@@ -1,0 +1,207 @@
+[
+  {
+    "id": "parallel-perpendicular-lines-sup-e0",
+    "topicId": "parallel-perpendicular-lines",
+    "difficulty": "easy",
+    "question": "Two lines never cross no matter how far they extend. What type of lines are they?",
+    "answer": "parallel",
+    "hints": [
+      "Think of railroad tracks. They go in the same direction and never meet."
+    ],
+    "solution": "Lines that never intersect (cross) are called parallel lines. They are always the same distance apart.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "parallel-perpendicular-lines-sup-e1",
+    "topicId": "parallel-perpendicular-lines",
+    "difficulty": "easy",
+    "question": "Two lines cross and form a right angle (90°). What type of lines are they?",
+    "answer": "perpendicular",
+    "hints": [
+      "Lines that meet at a 90° angle have a special name."
+    ],
+    "solution": "Lines that intersect at right angles (90°) are called perpendicular lines.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "parallel-perpendicular-lines-sup-e2",
+    "topicId": "parallel-perpendicular-lines",
+    "difficulty": "easy",
+    "question": "The top and bottom edges of a rectangular book are examples of what type of lines?",
+    "answer": "parallel",
+    "hints": [
+      "Do the top and bottom edges ever meet?",
+      "They go in the same direction and are always the same distance apart."
+    ],
+    "solution": "The top and bottom edges of a book are parallel lines. They go in the same direction and never meet.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "parallel-perpendicular-lines-sup-e3",
+    "topicId": "parallel-perpendicular-lines",
+    "difficulty": "easy",
+    "question": "The top edge and the left edge of a piece of paper meet at a corner. Are these edges parallel or perpendicular?",
+    "answer": "perpendicular",
+    "hints": [
+      "What kind of angle does the corner of a piece of paper make?"
+    ],
+    "solution": "They are perpendicular. The corner of a piece of paper forms a right angle (90°), so the two edges meeting there are perpendicular.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "parallel-perpendicular-lines-sup-e4",
+    "topicId": "parallel-perpendicular-lines",
+    "difficulty": "easy",
+    "question": "True or false: Parallel lines can sometimes cross if they are long enough.",
+    "answer": "false",
+    "hints": [
+      "The definition of parallel lines says they never cross."
+    ],
+    "solution": "False. By definition, parallel lines never cross, no matter how far they are extended.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "parallel-perpendicular-lines-sup-m0",
+    "topicId": "parallel-perpendicular-lines",
+    "difficulty": "medium",
+    "question": "In a rectangle, name one pair of parallel sides and one pair of perpendicular sides.",
+    "answer": "top and bottom are parallel, top and left side are perpendicular",
+    "hints": [
+      "Which sides never meet? Those are parallel.",
+      "Which sides meet at a corner (right angle)? Those are perpendicular."
+    ],
+    "solution": "Parallel: the top and bottom sides (or the left and right sides) — they never meet and are always the same distance apart. Perpendicular: any two sides that share a corner, such as the top and left side — they meet at a 90° angle.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "parallel-perpendicular-lines-sup-m1",
+    "topicId": "parallel-perpendicular-lines",
+    "difficulty": "medium",
+    "question": "Can two lines be neither parallel nor perpendicular? Explain.",
+    "answer": "yes",
+    "hints": [
+      "Two lines can cross without making a 90° angle."
+    ],
+    "solution": "Yes. Two lines that cross at an angle other than 90° are neither parallel (they do cross) nor perpendicular (they don't form right angles). For example, lines crossing at 45°.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "parallel-perpendicular-lines-sup-m2",
+    "topicId": "parallel-perpendicular-lines",
+    "difficulty": "medium",
+    "question": "Look at the capital letter H. How many pairs of parallel line segments can you find?",
+    "answer": "1",
+    "hints": [
+      "The letter H has two vertical strokes and one horizontal bar.",
+      "Which strokes go in the same direction and never meet?"
+    ],
+    "solution": "The letter H has 1 pair of parallel segments: the two vertical strokes. They go in the same direction and are the same distance apart. The horizontal bar is perpendicular to both vertical strokes.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "parallel-perpendicular-lines-sup-m3",
+    "topicId": "parallel-perpendicular-lines",
+    "difficulty": "medium",
+    "question": "Tom says: 'If two lines are not parallel, they must be perpendicular.' Is Tom correct?",
+    "answer": "no",
+    "hints": [
+      "Non-parallel lines cross, but at what angle?",
+      "Do all crossing lines make 90° angles?"
+    ],
+    "solution": "Tom is incorrect. Two non-parallel lines must cross somewhere, but they could cross at any angle (30°, 45°, 60°, etc.). They are only perpendicular if they cross at exactly 90°.",
+    "cognitiveDemand": "error-analysis",
+    "source": "generated"
+  },
+  {
+    "id": "parallel-perpendicular-lines-sup-m4",
+    "topicId": "parallel-perpendicular-lines",
+    "difficulty": "medium",
+    "question": "The capital letter T contains segments that are perpendicular. How many right angles are formed where the segments meet?",
+    "answer": "2",
+    "hints": [
+      "The vertical stroke meets the horizontal stroke.",
+      "At the meeting point, angles form on both the left and right side."
+    ],
+    "solution": "Where the vertical and horizontal strokes of T meet, 2 right angles are formed (one on the left and one on the right of the vertical stroke).",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "parallel-perpendicular-lines-sup-h0",
+    "topicId": "parallel-perpendicular-lines",
+    "difficulty": "hard",
+    "question": "A rectangle has 4 sides. How many pairs of parallel sides and how many pairs of perpendicular sides does it have?",
+    "answer": "2 parallel pairs and 4 perpendicular pairs",
+    "hints": [
+      "For parallel: which opposite sides are parallel?",
+      "For perpendicular: each corner is a right angle, and each corner involves 2 sides."
+    ],
+    "solution": "Parallel pairs: 2 (top/bottom and left/right). Perpendicular pairs: 4 (each of the 4 corners connects two sides at a right angle).",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "parallel-perpendicular-lines-sup-h1",
+    "topicId": "parallel-perpendicular-lines",
+    "difficulty": "hard",
+    "question": "Line A is parallel to line B. Line B is parallel to line C. Must line A be parallel to line C? Explain.",
+    "answer": "yes",
+    "hints": [
+      "If A and B go in the same direction, and B and C go in the same direction...",
+      "Do A and C go in the same direction?"
+    ],
+    "solution": "Yes. If line A is parallel to line B (same direction, never crossing), and line B is parallel to line C (same direction, never crossing), then lines A and C must also go in the same direction and never cross. So A is parallel to C.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "parallel-perpendicular-lines-sup-h2",
+    "topicId": "parallel-perpendicular-lines",
+    "difficulty": "hard",
+    "question": "Line A is perpendicular to line B. Line B is perpendicular to line C. Must line A be perpendicular to line C?",
+    "answer": "no",
+    "hints": [
+      "If A is vertical and B is horizontal (perpendicular to A), what direction is C if it's perpendicular to B?",
+      "C would also be vertical — the same direction as A."
+    ],
+    "solution": "No. Lines A and C would actually be parallel, not perpendicular. If A is vertical, B must be horizontal (perpendicular to A). Then C must be vertical (perpendicular to B), which means C is parallel to A.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "parallel-perpendicular-lines-sup-h3",
+    "topicId": "parallel-perpendicular-lines",
+    "difficulty": "hard",
+    "question": "A student says: 'Two lines that are the same distance apart everywhere must be parallel.' Is this correct?",
+    "answer": "yes",
+    "hints": [
+      "If two lines are always the same distance apart, can they ever cross?",
+      "Crossing lines get closer together on one side of the crossing point."
+    ],
+    "solution": "Yes, this is correct. If two lines are always the same distance apart, they can never cross (since crossing would mean the distance between them reaches 0). Lines that never cross are parallel by definition.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "parallel-perpendicular-lines-sup-h4",
+    "topicId": "parallel-perpendicular-lines",
+    "difficulty": "hard",
+    "question": "In a regular hexagon, opposite sides are parallel. How many pairs of parallel sides does a regular hexagon have?",
+    "answer": "3",
+    "hints": [
+      "A regular hexagon has 6 sides.",
+      "Each side has one opposite side."
+    ],
+    "solution": "A regular hexagon has 3 pairs of parallel sides. It has 6 sides, and each side is parallel to the side directly opposite it, giving 6 ÷ 2 = 3 pairs.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  }
+]

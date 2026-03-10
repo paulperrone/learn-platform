@@ -1,0 +1,207 @@
+[
+  {
+    "id": "tell-time-hour-half-sup-e0",
+    "topicId": "tell-time-hour-half",
+    "difficulty": "easy",
+    "question": "The short hand points to 3 and the long hand points to 12. What time is it?",
+    "answer": "3:00",
+    "hints": [
+      "When the long hand points to 12, it is exactly on the hour.",
+      "The short hand tells which hour."
+    ],
+    "solution": "The short hand on 3 and the long hand on 12 means it is 3 o'clock, or 3:00.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "tell-time-hour-half-sup-e1",
+    "topicId": "tell-time-hour-half",
+    "difficulty": "easy",
+    "question": "What time does a clock show when the short hand is on 7 and the long hand is on 12?",
+    "answer": "7:00",
+    "hints": [
+      "Long hand on 12 = on the hour. Short hand tells the hour."
+    ],
+    "solution": "It is 7:00 (seven o'clock). The long hand on 12 means it is exactly on the hour.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "tell-time-hour-half-sup-e2",
+    "topicId": "tell-time-hour-half",
+    "difficulty": "easy",
+    "question": "At half past 9, where does the long hand point?",
+    "answer": "6",
+    "hints": [
+      "Half past means 30 minutes past the hour.",
+      "At 30 minutes, the long hand is at the bottom of the clock."
+    ],
+    "solution": "At half past 9 (9:30), the long hand points to 6. This is the halfway point around the clock.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "tell-time-hour-half-sup-e3",
+    "topicId": "tell-time-hour-half",
+    "difficulty": "easy",
+    "question": "The short hand is between 2 and 3, and the long hand is on 6. What time is it?",
+    "answer": "2:30",
+    "hints": [
+      "The long hand on 6 means 30 minutes (half past).",
+      "The short hand is past 2 but not yet at 3."
+    ],
+    "solution": "It is 2:30 (half past 2). The long hand on 6 means 30 minutes, and the short hand between 2 and 3 means we are still in the 2 o'clock hour.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "tell-time-hour-half-sup-e4",
+    "topicId": "tell-time-hour-half",
+    "difficulty": "easy",
+    "question": "How many minutes are in one hour?",
+    "answer": "60",
+    "hints": [
+      "The long hand goes all the way around the clock in one hour."
+    ],
+    "solution": "There are 60 minutes in one hour. The minute hand (long hand) takes 60 minutes to go all the way around the clock.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "tell-time-hour-half-sup-m0",
+    "topicId": "tell-time-hour-half",
+    "difficulty": "medium",
+    "question": "How many minutes are in half an hour?",
+    "answer": "30",
+    "hints": [
+      "An hour has 60 minutes. Half of 60 = ?"
+    ],
+    "solution": "Half an hour = 60 / 2 = 30 minutes. That is why half past means :30.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "tell-time-hour-half-sup-m1",
+    "topicId": "tell-time-hour-half",
+    "difficulty": "medium",
+    "question": "School starts at 8:00. Recess is at 10:30. How many hours and minutes from school start to recess?",
+    "answer": "2 hours and 30 minutes",
+    "hints": [
+      "From 8:00 to 10:00 is 2 hours.",
+      "From 10:00 to 10:30 is 30 more minutes."
+    ],
+    "solution": "From 8:00 to 10:00 = 2 hours. From 10:00 to 10:30 = 30 minutes. Total: 2 hours and 30 minutes.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "tell-time-hour-half-sup-m2",
+    "topicId": "tell-time-hour-half",
+    "difficulty": "medium",
+    "question": "It is 4:30 now. What time was it 1 hour ago?",
+    "answer": "3:30",
+    "hints": [
+      "Go back 1 hour from 4:30.",
+      "The minutes stay the same, but the hour goes back by 1."
+    ],
+    "solution": "1 hour before 4:30 is 3:30. Subtract 1 from the hour: 4 - 1 = 3. Minutes stay at :30.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "tell-time-hour-half-sup-m3",
+    "topicId": "tell-time-hour-half",
+    "difficulty": "medium",
+    "question": "Which is later in the morning: 9:00 or 9:30?",
+    "answer": "9:30",
+    "hints": [
+      "Both are in the 9 o'clock hour. Which has more minutes past 9?"
+    ],
+    "solution": "9:30 is later because it is 30 minutes after 9:00. 9:00 comes first, then 9:30.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "tell-time-hour-half-sup-m4",
+    "topicId": "tell-time-hour-half",
+    "difficulty": "medium",
+    "question": "At 6:00, both the short and long hands point to the same part of the clock. True or false?",
+    "answer": "false",
+    "hints": [
+      "At 6:00, where does the short hand point? Where does the long hand point?",
+      "The short hand points to 6, but the long hand points to 12."
+    ],
+    "solution": "False. At 6:00, the short hand points to 6 and the long hand points to 12. They point in opposite directions.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "tell-time-hour-half-sup-h0",
+    "topicId": "tell-time-hour-half",
+    "difficulty": "hard",
+    "question": "Liam eats breakfast at 7:00 and lunch at 12:00. How many hours between breakfast and lunch?",
+    "answer": "5",
+    "hints": [
+      "Count from 7 to 12: 8, 9, 10, 11, 12."
+    ],
+    "solution": "From 7:00 to 12:00: count the hours: 8, 9, 10, 11, 12. That is 5 hours.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "tell-time-hour-half-sup-h1",
+    "topicId": "tell-time-hour-half",
+    "difficulty": "hard",
+    "question": "It is 11:30. What time will it be in 1 hour?",
+    "answer": "12:30",
+    "hints": [
+      "Add 1 hour to 11:30.",
+      "11 + 1 = 12. The minutes stay at :30."
+    ],
+    "solution": "11:30 + 1 hour = 12:30. The hour goes from 11 to 12, and the minutes stay at :30.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "tell-time-hour-half-sup-h2",
+    "topicId": "tell-time-hour-half",
+    "difficulty": "hard",
+    "question": "A TV show starts at 5:00 and ends at 5:30. Another show starts at 5:30 and ends at 7:00. Which show is longer?",
+    "answer": "the second show",
+    "hints": [
+      "First show: 5:00 to 5:30 = 30 minutes.",
+      "Second show: 5:30 to 7:00 = 1 hour and 30 minutes."
+    ],
+    "solution": "First show: 30 minutes (5:00 to 5:30). Second show: 1 hour 30 minutes (5:30 to 7:00). The second show is longer.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "tell-time-hour-half-sup-h3",
+    "topicId": "tell-time-hour-half",
+    "difficulty": "hard",
+    "question": "At 12:00, the short hand and long hand are both pointing to 12. What is the next time they will both point to the same number?",
+    "answer": "about 1:05",
+    "hints": [
+      "The long hand moves much faster than the short hand.",
+      "By 1:00, the long hand is at 12 but the short hand is at 1. When the long hand reaches 1, it is about 1:05."
+    ],
+    "solution": "After 12:00, the hands overlap again at roughly 1:05. The minute hand catches up to the hour hand about once every 65 minutes. For this level, 'about 1:05' is a good approximation.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "tell-time-hour-half-sup-h4",
+    "topicId": "tell-time-hour-half",
+    "difficulty": "hard",
+    "question": "Maya has soccer practice from 3:30 to 5:00. How long is soccer practice?",
+    "answer": "1 hour and 30 minutes",
+    "hints": [
+      "From 3:30 to 4:30 is 1 hour.",
+      "From 4:30 to 5:00 is 30 more minutes."
+    ],
+    "solution": "From 3:30 to 4:30 = 1 hour. From 4:30 to 5:00 = 30 minutes. Total: 1 hour and 30 minutes.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  }
+]

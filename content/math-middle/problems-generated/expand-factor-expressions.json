@@ -1,0 +1,652 @@
+[
+  {
+    "id": "expand-factor-expressions-gen-e0",
+    "topicId": "expand-factor-expressions",
+    "difficulty": "easy",
+    "question": "Factor: 12x + 6",
+    "answer": "6(2x + 1)",
+    "hints": [
+      "Find the GCF of 12 and 6: 6."
+    ],
+    "solution": "GCF = 6. 12x + 6 = 6(2x + 1).",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "expand-factor-expressions-gen-e1",
+    "topicId": "expand-factor-expressions",
+    "difficulty": "easy",
+    "question": "Factor: 18x + 15",
+    "answer": "3(6x + 5)",
+    "hints": [
+      "Find the GCF of 18 and 15: 3."
+    ],
+    "solution": "GCF = 3. 18x + 15 = 3(6x + 5).",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "expand-factor-expressions-gen-e2",
+    "topicId": "expand-factor-expressions",
+    "difficulty": "easy",
+    "question": "Factor: 8x + 12",
+    "answer": "4(2x + 3)",
+    "hints": [
+      "Find the GCF of 8 and 12: 4."
+    ],
+    "solution": "GCF = 4. 8x + 12 = 4(2x + 3).",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "expand-factor-expressions-gen-e3",
+    "topicId": "expand-factor-expressions",
+    "difficulty": "easy",
+    "question": "Expand: 6(8x + 6)",
+    "answer": "48x + 36",
+    "hints": [
+      "Multiply 6 by each term inside."
+    ],
+    "solution": "6(8x + 6) = 48x + 36.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "expand-factor-expressions-gen-e4",
+    "topicId": "expand-factor-expressions",
+    "difficulty": "easy",
+    "question": "Factor: 16x + 4",
+    "answer": "4(4x + 1)",
+    "hints": [
+      "Find the GCF of 16 and 4: 4."
+    ],
+    "solution": "GCF = 4. 16x + 4 = 4(4x + 1).",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "expand-factor-expressions-gen-e5",
+    "topicId": "expand-factor-expressions",
+    "difficulty": "easy",
+    "question": "Factor: 32x + 24",
+    "answer": "8(4x + 3)",
+    "hints": [
+      "Find the GCF of 32 and 24: 8."
+    ],
+    "solution": "GCF = 8. 32x + 24 = 8(4x + 3).",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "expand-factor-expressions-gen-e6",
+    "topicId": "expand-factor-expressions",
+    "difficulty": "easy",
+    "question": "Expand: 4(8x + 3)",
+    "answer": "32x + 12",
+    "hints": [
+      "Multiply 4 by each term inside."
+    ],
+    "solution": "4(8x + 3) = 32x + 12.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "expand-factor-expressions-gen-e7",
+    "topicId": "expand-factor-expressions",
+    "difficulty": "easy",
+    "question": "Expand: 2(4x + 3)",
+    "answer": "8x + 6",
+    "hints": [
+      "Multiply 2 by each term inside."
+    ],
+    "solution": "2(4x + 3) = 8x + 6.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "expand-factor-expressions-gen-e8",
+    "topicId": "expand-factor-expressions",
+    "difficulty": "easy",
+    "question": "Expand: 5(1x + 8)",
+    "answer": "5x + 40",
+    "hints": [
+      "Multiply 5 by each term inside."
+    ],
+    "solution": "5(1x + 8) = 5x + 40.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "expand-factor-expressions-gen-e9",
+    "topicId": "expand-factor-expressions",
+    "difficulty": "easy",
+    "question": "Expand: 6(1x + 6)",
+    "answer": "6x + 36",
+    "hints": [
+      "Multiply 6 by each term inside."
+    ],
+    "solution": "6(1x + 6) = 6x + 36.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "expand-factor-expressions-gen-e10",
+    "topicId": "expand-factor-expressions",
+    "difficulty": "easy",
+    "question": "Expand: 5(7x + 4)",
+    "answer": "35x + 20",
+    "hints": [
+      "Multiply 5 by each term inside."
+    ],
+    "solution": "5(7x + 4) = 35x + 20.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "expand-factor-expressions-gen-e11",
+    "topicId": "expand-factor-expressions",
+    "difficulty": "easy",
+    "question": "Factor: 2x + 8",
+    "answer": "2(1x + 4)",
+    "hints": [
+      "Find the GCF of 2 and 8: 2."
+    ],
+    "solution": "GCF = 2. 2x + 8 = 2(1x + 4).",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "expand-factor-expressions-gen-e12",
+    "topicId": "expand-factor-expressions",
+    "difficulty": "easy",
+    "question": "Factor: 24x + 4",
+    "answer": "4(6x + 1)",
+    "hints": [
+      "Find the GCF of 24 and 4: 4."
+    ],
+    "solution": "GCF = 4. 24x + 4 = 4(6x + 1).",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "expand-factor-expressions-gen-e13",
+    "topicId": "expand-factor-expressions",
+    "difficulty": "easy",
+    "question": "Factor: 18x + 3",
+    "answer": "3(6x + 1)",
+    "hints": [
+      "Find the GCF of 18 and 3: 3."
+    ],
+    "solution": "GCF = 3. 18x + 3 = 3(6x + 1).",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "expand-factor-expressions-gen-e14",
+    "topicId": "expand-factor-expressions",
+    "difficulty": "easy",
+    "question": "Factor: 18x + 9",
+    "answer": "9(2x + 1)",
+    "hints": [
+      "Find the GCF of 18 and 9: 9."
+    ],
+    "solution": "GCF = 9. 18x + 9 = 9(2x + 1).",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "expand-factor-expressions-gen-m0",
+    "topicId": "expand-factor-expressions",
+    "difficulty": "medium",
+    "question": "Factor: 18x + 12",
+    "answer": "6(3x + 2)",
+    "hints": [
+      "Find the GCF of 18 and 12: 6."
+    ],
+    "solution": "GCF = 6. 18x + 12 = 6(3x + 2).",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "expand-factor-expressions-gen-m1",
+    "topicId": "expand-factor-expressions",
+    "difficulty": "medium",
+    "question": "Factor: 40x + 25",
+    "answer": "5(8x + 5)",
+    "hints": [
+      "Find the GCF of 40 and 25: 5."
+    ],
+    "solution": "GCF = 5. 40x + 25 = 5(8x + 5).",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "expand-factor-expressions-gen-m2",
+    "topicId": "expand-factor-expressions",
+    "difficulty": "medium",
+    "question": "Expand: 3(4x + 8)",
+    "answer": "12x + 24",
+    "hints": [
+      "Multiply 3 by each term inside."
+    ],
+    "solution": "3(4x + 8) = 12x + 24.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "expand-factor-expressions-gen-m3",
+    "topicId": "expand-factor-expressions",
+    "difficulty": "medium",
+    "question": "Expand: 4(4x + 6)",
+    "answer": "16x + 24",
+    "hints": [
+      "Multiply 4 by each term inside."
+    ],
+    "solution": "4(4x + 6) = 16x + 24.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "expand-factor-expressions-gen-m4",
+    "topicId": "expand-factor-expressions",
+    "difficulty": "medium",
+    "question": "Expand: 5(7x + 6)",
+    "answer": "35x + 30",
+    "hints": [
+      "Multiply 5 by each term inside."
+    ],
+    "solution": "5(7x + 6) = 35x + 30.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "expand-factor-expressions-gen-m5",
+    "topicId": "expand-factor-expressions",
+    "difficulty": "medium",
+    "question": "Factor: 4x + 16",
+    "answer": "4(1x + 4)",
+    "hints": [
+      "Find the GCF of 4 and 16: 4."
+    ],
+    "solution": "GCF = 4. 4x + 16 = 4(1x + 4).",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "expand-factor-expressions-gen-m6",
+    "topicId": "expand-factor-expressions",
+    "difficulty": "medium",
+    "question": "Expand: 2(4x + 8)",
+    "answer": "8x + 16",
+    "hints": [
+      "Multiply 2 by each term inside."
+    ],
+    "solution": "2(4x + 8) = 8x + 16.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "expand-factor-expressions-gen-m7",
+    "topicId": "expand-factor-expressions",
+    "difficulty": "medium",
+    "question": "Factor: 40x + 35",
+    "answer": "5(8x + 7)",
+    "hints": [
+      "Find the GCF of 40 and 35: 5."
+    ],
+    "solution": "GCF = 5. 40x + 35 = 5(8x + 7).",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "expand-factor-expressions-gen-m8",
+    "topicId": "expand-factor-expressions",
+    "difficulty": "medium",
+    "question": "Expand: 6(2x + 5)",
+    "answer": "12x + 30",
+    "hints": [
+      "Multiply 6 by each term inside."
+    ],
+    "solution": "6(2x + 5) = 12x + 30.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "expand-factor-expressions-gen-m9",
+    "topicId": "expand-factor-expressions",
+    "difficulty": "medium",
+    "question": "Factor: 48x + 42",
+    "answer": "6(8x + 7)",
+    "hints": [
+      "Find the GCF of 48 and 42: 6."
+    ],
+    "solution": "GCF = 6. 48x + 42 = 6(8x + 7).",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "expand-factor-expressions-gen-m10",
+    "topicId": "expand-factor-expressions",
+    "difficulty": "medium",
+    "question": "Factor: 15x + 25",
+    "answer": "5(3x + 5)",
+    "hints": [
+      "Find the GCF of 15 and 25: 5."
+    ],
+    "solution": "GCF = 5. 15x + 25 = 5(3x + 5).",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "expand-factor-expressions-gen-m11",
+    "topicId": "expand-factor-expressions",
+    "difficulty": "medium",
+    "question": "Factor: 16x + 28",
+    "answer": "4(4x + 7)",
+    "hints": [
+      "Find the GCF of 16 and 28: 4."
+    ],
+    "solution": "GCF = 4. 16x + 28 = 4(4x + 7).",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "expand-factor-expressions-gen-m12",
+    "topicId": "expand-factor-expressions",
+    "difficulty": "medium",
+    "question": "Factor: 5x + 30",
+    "answer": "5(1x + 6)",
+    "hints": [
+      "Find the GCF of 5 and 30: 5."
+    ],
+    "solution": "GCF = 5. 5x + 30 = 5(1x + 6).",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "expand-factor-expressions-gen-m13",
+    "topicId": "expand-factor-expressions",
+    "difficulty": "medium",
+    "question": "Expand: 2(4x + 1)",
+    "answer": "8x + 2",
+    "hints": [
+      "Multiply 2 by each term inside."
+    ],
+    "solution": "2(4x + 1) = 8x + 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "expand-factor-expressions-gen-m14",
+    "topicId": "expand-factor-expressions",
+    "difficulty": "medium",
+    "question": "Factor: 16x + 10",
+    "answer": "2(8x + 5)",
+    "hints": [
+      "Find the GCF of 16 and 10: 2."
+    ],
+    "solution": "GCF = 2. 16x + 10 = 2(8x + 5).",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "expand-factor-expressions-gen-m15",
+    "topicId": "expand-factor-expressions",
+    "difficulty": "medium",
+    "question": "Expand: 4(3x + 2)",
+    "answer": "12x + 8",
+    "hints": [
+      "Multiply 4 by each term inside."
+    ],
+    "solution": "4(3x + 2) = 12x + 8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "expand-factor-expressions-gen-m16",
+    "topicId": "expand-factor-expressions",
+    "difficulty": "medium",
+    "question": "Expand: 5(6x + 2)",
+    "answer": "30x + 10",
+    "hints": [
+      "Multiply 5 by each term inside."
+    ],
+    "solution": "5(6x + 2) = 30x + 10.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "expand-factor-expressions-gen-m17",
+    "topicId": "expand-factor-expressions",
+    "difficulty": "medium",
+    "question": "Expand: 4(4x + 3)",
+    "answer": "16x + 12",
+    "hints": [
+      "Multiply 4 by each term inside."
+    ],
+    "solution": "4(4x + 3) = 16x + 12.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "expand-factor-expressions-gen-m18",
+    "topicId": "expand-factor-expressions",
+    "difficulty": "medium",
+    "question": "Factor: 4x + 28",
+    "answer": "4(1x + 7)",
+    "hints": [
+      "Find the GCF of 4 and 28: 4."
+    ],
+    "solution": "GCF = 4. 4x + 28 = 4(1x + 7).",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "expand-factor-expressions-gen-m19",
+    "topicId": "expand-factor-expressions",
+    "difficulty": "medium",
+    "question": "Factor: 12x + 8",
+    "answer": "4(3x + 2)",
+    "hints": [
+      "Find the GCF of 12 and 8: 4."
+    ],
+    "solution": "GCF = 4. 12x + 8 = 4(3x + 2).",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "expand-factor-expressions-gen-h0",
+    "topicId": "expand-factor-expressions",
+    "difficulty": "hard",
+    "question": "Expand: 4(6x + 7)",
+    "answer": "24x + 28",
+    "hints": [
+      "Multiply 4 by each term inside."
+    ],
+    "solution": "4(6x + 7) = 24x + 28.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "expand-factor-expressions-gen-h1",
+    "topicId": "expand-factor-expressions",
+    "difficulty": "hard",
+    "question": "Factor: 5x + 5",
+    "answer": "5(1x + 1)",
+    "hints": [
+      "Find the GCF of 5 and 5: 5."
+    ],
+    "solution": "GCF = 5. 5x + 5 = 5(1x + 1).",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "expand-factor-expressions-gen-h2",
+    "topicId": "expand-factor-expressions",
+    "difficulty": "hard",
+    "question": "Factor: 25x + 35",
+    "answer": "5(5x + 7)",
+    "hints": [
+      "Find the GCF of 25 and 35: 5."
+    ],
+    "solution": "GCF = 5. 25x + 35 = 5(5x + 7).",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "expand-factor-expressions-gen-h3",
+    "topicId": "expand-factor-expressions",
+    "difficulty": "hard",
+    "question": "Factor: 16x + 4",
+    "answer": "4(4x + 1)",
+    "hints": [
+      "Find the GCF of 16 and 4: 4."
+    ],
+    "solution": "GCF = 4. 16x + 4 = 4(4x + 1).",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "expand-factor-expressions-gen-h4",
+    "topicId": "expand-factor-expressions",
+    "difficulty": "hard",
+    "question": "Factor: 36x + 36",
+    "answer": "36(1x + 1)",
+    "hints": [
+      "Find the GCF of 36 and 36: 36."
+    ],
+    "solution": "GCF = 36. 36x + 36 = 36(1x + 1).",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "expand-factor-expressions-gen-h5",
+    "topicId": "expand-factor-expressions",
+    "difficulty": "hard",
+    "question": "Expand: 6(4x + 4)",
+    "answer": "24x + 24",
+    "hints": [
+      "Multiply 6 by each term inside."
+    ],
+    "solution": "6(4x + 4) = 24x + 24.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "expand-factor-expressions-gen-h6",
+    "topicId": "expand-factor-expressions",
+    "difficulty": "hard",
+    "question": "Factor: 36x + 42",
+    "answer": "6(6x + 7)",
+    "hints": [
+      "Find the GCF of 36 and 42: 6."
+    ],
+    "solution": "GCF = 6. 36x + 42 = 6(6x + 7).",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "expand-factor-expressions-gen-h7",
+    "topicId": "expand-factor-expressions",
+    "difficulty": "hard",
+    "question": "Expand: 5(6x + 4)",
+    "answer": "30x + 20",
+    "hints": [
+      "Multiply 5 by each term inside."
+    ],
+    "solution": "5(6x + 4) = 30x + 20.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "expand-factor-expressions-gen-h8",
+    "topicId": "expand-factor-expressions",
+    "difficulty": "hard",
+    "question": "Expand: 4(1x + 8)",
+    "answer": "4x + 32",
+    "hints": [
+      "Multiply 4 by each term inside."
+    ],
+    "solution": "4(1x + 8) = 4x + 32.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "expand-factor-expressions-gen-h9",
+    "topicId": "expand-factor-expressions",
+    "difficulty": "hard",
+    "question": "Factor: 12x + 24",
+    "answer": "12(1x + 2)",
+    "hints": [
+      "Find the GCF of 12 and 24: 12."
+    ],
+    "solution": "GCF = 12. 12x + 24 = 12(1x + 2).",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "expand-factor-expressions-gen-h10",
+    "topicId": "expand-factor-expressions",
+    "difficulty": "hard",
+    "question": "Factor: 8x + 10",
+    "answer": "2(4x + 5)",
+    "hints": [
+      "Find the GCF of 8 and 10: 2."
+    ],
+    "solution": "GCF = 2. 8x + 10 = 2(4x + 5).",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "expand-factor-expressions-gen-h11",
+    "topicId": "expand-factor-expressions",
+    "difficulty": "hard",
+    "question": "Expand: 5(3x + 1)",
+    "answer": "15x + 5",
+    "hints": [
+      "Multiply 5 by each term inside."
+    ],
+    "solution": "5(3x + 1) = 15x + 5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "expand-factor-expressions-gen-h12",
+    "topicId": "expand-factor-expressions",
+    "difficulty": "hard",
+    "question": "Expand: 6(7x + 3)",
+    "answer": "42x + 18",
+    "hints": [
+      "Multiply 6 by each term inside."
+    ],
+    "solution": "6(7x + 3) = 42x + 18.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "expand-factor-expressions-gen-h13",
+    "topicId": "expand-factor-expressions",
+    "difficulty": "hard",
+    "question": "Expand: 2(1x + 8)",
+    "answer": "2x + 16",
+    "hints": [
+      "Multiply 2 by each term inside."
+    ],
+    "solution": "2(1x + 8) = 2x + 16.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "expand-factor-expressions-gen-h14",
+    "topicId": "expand-factor-expressions",
+    "difficulty": "hard",
+    "question": "Expand: 4(5x + 4)",
+    "answer": "20x + 16",
+    "hints": [
+      "Multiply 4 by each term inside."
+    ],
+    "solution": "4(5x + 4) = 20x + 16.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  }
+]

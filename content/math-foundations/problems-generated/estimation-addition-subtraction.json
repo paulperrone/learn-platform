@@ -1,0 +1,702 @@
+[
+  {
+    "id": "estimation-addition-subtraction-gen-e0",
+    "topicId": "estimation-addition-subtraction",
+    "difficulty": "easy",
+    "question": "Estimate 48 + 70 by rounding to the nearest 10.",
+    "answer": "120",
+    "hints": [
+      "Round 48 to the nearest 10: 50.",
+      "Round 70 to the nearest 10: 70."
+    ],
+    "solution": "48 rounds to 50. 70 rounds to 70. 50 + 70 = 120.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-addition-subtraction-gen-e1",
+    "topicId": "estimation-addition-subtraction",
+    "difficulty": "easy",
+    "question": "Estimate 75 − 15 by rounding to the nearest 10.",
+    "answer": "60",
+    "hints": [
+      "Round 75 to the nearest 10: 80.",
+      "Round 15 to the nearest 10: 20."
+    ],
+    "solution": "75 rounds to 80. 15 rounds to 20. 80 − 20 = 60.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-addition-subtraction-gen-e2",
+    "topicId": "estimation-addition-subtraction",
+    "difficulty": "easy",
+    "question": "Estimate 68 + 35 by rounding to the nearest 10.",
+    "answer": "110",
+    "hints": [
+      "Round 68 to the nearest 10: 70.",
+      "Round 35 to the nearest 10: 40."
+    ],
+    "solution": "68 rounds to 70. 35 rounds to 40. 70 + 40 = 110.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-addition-subtraction-gen-e3",
+    "topicId": "estimation-addition-subtraction",
+    "difficulty": "easy",
+    "question": "Estimate 63 + 17 by rounding to the nearest 10.",
+    "answer": "80",
+    "hints": [
+      "Round 63 to the nearest 10: 60.",
+      "Round 17 to the nearest 10: 20."
+    ],
+    "solution": "63 rounds to 60. 17 rounds to 20. 60 + 20 = 80.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-addition-subtraction-gen-e4",
+    "topicId": "estimation-addition-subtraction",
+    "difficulty": "easy",
+    "question": "Estimate 46 + 32 by rounding to the nearest 10.",
+    "answer": "80",
+    "hints": [
+      "Round 46 to the nearest 10: 50.",
+      "Round 32 to the nearest 10: 30."
+    ],
+    "solution": "46 rounds to 50. 32 rounds to 30. 50 + 30 = 80.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-addition-subtraction-gen-e5",
+    "topicId": "estimation-addition-subtraction",
+    "difficulty": "easy",
+    "question": "Estimate 80 + 77 by rounding to the nearest 10.",
+    "answer": "160",
+    "hints": [
+      "Round 80 to the nearest 10: 80.",
+      "Round 77 to the nearest 10: 80."
+    ],
+    "solution": "80 rounds to 80. 77 rounds to 80. 80 + 80 = 160.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-addition-subtraction-gen-e6",
+    "topicId": "estimation-addition-subtraction",
+    "difficulty": "easy",
+    "question": "Estimate 31 + 81 by rounding to the nearest 10.",
+    "answer": "110",
+    "hints": [
+      "Round 31 to the nearest 10: 30.",
+      "Round 81 to the nearest 10: 80."
+    ],
+    "solution": "31 rounds to 30. 81 rounds to 80. 30 + 80 = 110.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-addition-subtraction-gen-e7",
+    "topicId": "estimation-addition-subtraction",
+    "difficulty": "easy",
+    "question": "Estimate 85 − 70 by rounding to the nearest 10.",
+    "answer": "20",
+    "hints": [
+      "Round 85 to the nearest 10: 90.",
+      "Round 70 to the nearest 10: 70."
+    ],
+    "solution": "85 rounds to 90. 70 rounds to 70. 90 − 70 = 20.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-addition-subtraction-gen-e8",
+    "topicId": "estimation-addition-subtraction",
+    "difficulty": "easy",
+    "question": "Estimate 77 + 43 by rounding to the nearest 10.",
+    "answer": "120",
+    "hints": [
+      "Round 77 to the nearest 10: 80.",
+      "Round 43 to the nearest 10: 40."
+    ],
+    "solution": "77 rounds to 80. 43 rounds to 40. 80 + 40 = 120.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-addition-subtraction-gen-e9",
+    "topicId": "estimation-addition-subtraction",
+    "difficulty": "easy",
+    "question": "Estimate 69 − 62 by rounding to the nearest 10.",
+    "answer": "10",
+    "hints": [
+      "Round 69 to the nearest 10: 70.",
+      "Round 62 to the nearest 10: 60."
+    ],
+    "solution": "69 rounds to 70. 62 rounds to 60. 70 − 60 = 10.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-addition-subtraction-gen-e10",
+    "topicId": "estimation-addition-subtraction",
+    "difficulty": "easy",
+    "question": "Estimate 79 − 35 by rounding to the nearest 10.",
+    "answer": "40",
+    "hints": [
+      "Round 79 to the nearest 10: 80.",
+      "Round 35 to the nearest 10: 40."
+    ],
+    "solution": "79 rounds to 80. 35 rounds to 40. 80 − 40 = 40.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-addition-subtraction-gen-e11",
+    "topicId": "estimation-addition-subtraction",
+    "difficulty": "easy",
+    "question": "Estimate 79 + 37 by rounding to the nearest 10.",
+    "answer": "120",
+    "hints": [
+      "Round 79 to the nearest 10: 80.",
+      "Round 37 to the nearest 10: 40."
+    ],
+    "solution": "79 rounds to 80. 37 rounds to 40. 80 + 40 = 120.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-addition-subtraction-gen-e12",
+    "topicId": "estimation-addition-subtraction",
+    "difficulty": "easy",
+    "question": "Estimate 43 − 28 by rounding to the nearest 10.",
+    "answer": "10",
+    "hints": [
+      "Round 43 to the nearest 10: 40.",
+      "Round 28 to the nearest 10: 30."
+    ],
+    "solution": "43 rounds to 40. 28 rounds to 30. 40 − 30 = 10.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-addition-subtraction-gen-e13",
+    "topicId": "estimation-addition-subtraction",
+    "difficulty": "easy",
+    "question": "Estimate 86 − 32 by rounding to the nearest 10.",
+    "answer": "60",
+    "hints": [
+      "Round 86 to the nearest 10: 90.",
+      "Round 32 to the nearest 10: 30."
+    ],
+    "solution": "86 rounds to 90. 32 rounds to 30. 90 − 30 = 60.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-addition-subtraction-gen-e14",
+    "topicId": "estimation-addition-subtraction",
+    "difficulty": "easy",
+    "question": "Estimate 33 + 84 by rounding to the nearest 10.",
+    "answer": "110",
+    "hints": [
+      "Round 33 to the nearest 10: 30.",
+      "Round 84 to the nearest 10: 80."
+    ],
+    "solution": "33 rounds to 30. 84 rounds to 80. 30 + 80 = 110.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-addition-subtraction-gen-m0",
+    "topicId": "estimation-addition-subtraction",
+    "difficulty": "medium",
+    "question": "Estimate 860 + 164 by rounding to the nearest 100.",
+    "answer": "1100",
+    "hints": [
+      "Round 860 to the nearest 100: 900.",
+      "Round 164 to the nearest 100: 200."
+    ],
+    "solution": "860 rounds to 900. 164 rounds to 200. 900 + 200 = 1100.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-addition-subtraction-gen-m1",
+    "topicId": "estimation-addition-subtraction",
+    "difficulty": "medium",
+    "question": "Estimate 416 − 214 by rounding to the nearest 100.",
+    "answer": "200",
+    "hints": [
+      "Round 416 to the nearest 100: 400.",
+      "Round 214 to the nearest 100: 200."
+    ],
+    "solution": "416 rounds to 400. 214 rounds to 200. 400 − 200 = 200.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-addition-subtraction-gen-m2",
+    "topicId": "estimation-addition-subtraction",
+    "difficulty": "medium",
+    "question": "Estimate 702 + 891 by rounding to the nearest 100.",
+    "answer": "1600",
+    "hints": [
+      "Round 702 to the nearest 100: 700.",
+      "Round 891 to the nearest 100: 900."
+    ],
+    "solution": "702 rounds to 700. 891 rounds to 900. 700 + 900 = 1600.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-addition-subtraction-gen-m3",
+    "topicId": "estimation-addition-subtraction",
+    "difficulty": "medium",
+    "question": "Estimate 547 + 454 by rounding to the nearest 100.",
+    "answer": "1000",
+    "hints": [
+      "Round 547 to the nearest 100: 500.",
+      "Round 454 to the nearest 100: 500."
+    ],
+    "solution": "547 rounds to 500. 454 rounds to 500. 500 + 500 = 1000.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-addition-subtraction-gen-m4",
+    "topicId": "estimation-addition-subtraction",
+    "difficulty": "medium",
+    "question": "Estimate 825 − 800 by rounding to the nearest 100.",
+    "answer": "0",
+    "hints": [
+      "Round 825 to the nearest 100: 800.",
+      "Round 800 to the nearest 100: 800."
+    ],
+    "solution": "825 rounds to 800. 800 rounds to 800. 800 − 800 = 0.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-addition-subtraction-gen-m5",
+    "topicId": "estimation-addition-subtraction",
+    "difficulty": "medium",
+    "question": "Estimate 868 − 631 by rounding to the nearest 100.",
+    "answer": "300",
+    "hints": [
+      "Round 868 to the nearest 100: 900.",
+      "Round 631 to the nearest 100: 600."
+    ],
+    "solution": "868 rounds to 900. 631 rounds to 600. 900 − 600 = 300.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-addition-subtraction-gen-m6",
+    "topicId": "estimation-addition-subtraction",
+    "difficulty": "medium",
+    "question": "Estimate 255 + 560 by rounding to the nearest 100.",
+    "answer": "900",
+    "hints": [
+      "Round 255 to the nearest 100: 300.",
+      "Round 560 to the nearest 100: 600."
+    ],
+    "solution": "255 rounds to 300. 560 rounds to 600. 300 + 600 = 900.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-addition-subtraction-gen-m7",
+    "topicId": "estimation-addition-subtraction",
+    "difficulty": "medium",
+    "question": "Estimate 881 + 596 by rounding to the nearest 100.",
+    "answer": "1500",
+    "hints": [
+      "Round 881 to the nearest 100: 900.",
+      "Round 596 to the nearest 100: 600."
+    ],
+    "solution": "881 rounds to 900. 596 rounds to 600. 900 + 600 = 1500.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-addition-subtraction-gen-m8",
+    "topicId": "estimation-addition-subtraction",
+    "difficulty": "medium",
+    "question": "Estimate 375 − 177 by rounding to the nearest 100.",
+    "answer": "200",
+    "hints": [
+      "Round 375 to the nearest 100: 400.",
+      "Round 177 to the nearest 100: 200."
+    ],
+    "solution": "375 rounds to 400. 177 rounds to 200. 400 − 200 = 200.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-addition-subtraction-gen-m9",
+    "topicId": "estimation-addition-subtraction",
+    "difficulty": "medium",
+    "question": "Estimate 654 − 524 by rounding to the nearest 100.",
+    "answer": "200",
+    "hints": [
+      "Round 654 to the nearest 100: 700.",
+      "Round 524 to the nearest 100: 500."
+    ],
+    "solution": "654 rounds to 700. 524 rounds to 500. 700 − 500 = 200.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-addition-subtraction-gen-m10",
+    "topicId": "estimation-addition-subtraction",
+    "difficulty": "medium",
+    "question": "Estimate 222 + 386 by rounding to the nearest 100.",
+    "answer": "600",
+    "hints": [
+      "Round 222 to the nearest 100: 200.",
+      "Round 386 to the nearest 100: 400."
+    ],
+    "solution": "222 rounds to 200. 386 rounds to 400. 200 + 400 = 600.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-addition-subtraction-gen-m11",
+    "topicId": "estimation-addition-subtraction",
+    "difficulty": "medium",
+    "question": "Estimate 574 + 224 by rounding to the nearest 100.",
+    "answer": "800",
+    "hints": [
+      "Round 574 to the nearest 100: 600.",
+      "Round 224 to the nearest 100: 200."
+    ],
+    "solution": "574 rounds to 600. 224 rounds to 200. 600 + 200 = 800.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-addition-subtraction-gen-m12",
+    "topicId": "estimation-addition-subtraction",
+    "difficulty": "medium",
+    "question": "Estimate 475 + 550 by rounding to the nearest 100.",
+    "answer": "1100",
+    "hints": [
+      "Round 475 to the nearest 100: 500.",
+      "Round 550 to the nearest 100: 600."
+    ],
+    "solution": "475 rounds to 500. 550 rounds to 600. 500 + 600 = 1100.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-addition-subtraction-gen-m13",
+    "topicId": "estimation-addition-subtraction",
+    "difficulty": "medium",
+    "question": "Estimate 381 − 315 by rounding to the nearest 100.",
+    "answer": "100",
+    "hints": [
+      "Round 381 to the nearest 100: 400.",
+      "Round 315 to the nearest 100: 300."
+    ],
+    "solution": "381 rounds to 400. 315 rounds to 300. 400 − 300 = 100.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-addition-subtraction-gen-m14",
+    "topicId": "estimation-addition-subtraction",
+    "difficulty": "medium",
+    "question": "Estimate 814 + 604 by rounding to the nearest 100.",
+    "answer": "1400",
+    "hints": [
+      "Round 814 to the nearest 100: 800.",
+      "Round 604 to the nearest 100: 600."
+    ],
+    "solution": "814 rounds to 800. 604 rounds to 600. 800 + 600 = 1400.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-addition-subtraction-gen-m15",
+    "topicId": "estimation-addition-subtraction",
+    "difficulty": "medium",
+    "question": "Estimate 730 − 366 by rounding to the nearest 100.",
+    "answer": "300",
+    "hints": [
+      "Round 730 to the nearest 100: 700.",
+      "Round 366 to the nearest 100: 400."
+    ],
+    "solution": "730 rounds to 700. 366 rounds to 400. 700 − 400 = 300.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-addition-subtraction-gen-m16",
+    "topicId": "estimation-addition-subtraction",
+    "difficulty": "medium",
+    "question": "Estimate 638 + 330 by rounding to the nearest 100.",
+    "answer": "900",
+    "hints": [
+      "Round 638 to the nearest 100: 600.",
+      "Round 330 to the nearest 100: 300."
+    ],
+    "solution": "638 rounds to 600. 330 rounds to 300. 600 + 300 = 900.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-addition-subtraction-gen-m17",
+    "topicId": "estimation-addition-subtraction",
+    "difficulty": "medium",
+    "question": "Estimate 773 + 781 by rounding to the nearest 100.",
+    "answer": "1600",
+    "hints": [
+      "Round 773 to the nearest 100: 800.",
+      "Round 781 to the nearest 100: 800."
+    ],
+    "solution": "773 rounds to 800. 781 rounds to 800. 800 + 800 = 1600.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-addition-subtraction-gen-m18",
+    "topicId": "estimation-addition-subtraction",
+    "difficulty": "medium",
+    "question": "Estimate 222 − 120 by rounding to the nearest 100.",
+    "answer": "100",
+    "hints": [
+      "Round 222 to the nearest 100: 200.",
+      "Round 120 to the nearest 100: 100."
+    ],
+    "solution": "222 rounds to 200. 120 rounds to 100. 200 − 100 = 100.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-addition-subtraction-gen-m19",
+    "topicId": "estimation-addition-subtraction",
+    "difficulty": "medium",
+    "question": "Estimate 171 + 339 by rounding to the nearest 100.",
+    "answer": "500",
+    "hints": [
+      "Round 171 to the nearest 100: 200.",
+      "Round 339 to the nearest 100: 300."
+    ],
+    "solution": "171 rounds to 200. 339 rounds to 300. 200 + 300 = 500.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-addition-subtraction-gen-h0",
+    "topicId": "estimation-addition-subtraction",
+    "difficulty": "hard",
+    "question": "Estimate 2132 − 1533 by rounding to the nearest 100.",
+    "answer": "600",
+    "hints": [
+      "Round 2132 to the nearest 100: 2100.",
+      "Round 1533 to the nearest 100: 1500."
+    ],
+    "solution": "2132 rounds to 2100. 1533 rounds to 1500. 2100 − 1500 = 600.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-addition-subtraction-gen-h1",
+    "topicId": "estimation-addition-subtraction",
+    "difficulty": "hard",
+    "question": "Estimate 387 − 322 by rounding to the nearest 100.",
+    "answer": "100",
+    "hints": [
+      "Round 387 to the nearest 100: 400.",
+      "Round 322 to the nearest 100: 300."
+    ],
+    "solution": "387 rounds to 400. 322 rounds to 300. 400 − 300 = 100.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-addition-subtraction-gen-h2",
+    "topicId": "estimation-addition-subtraction",
+    "difficulty": "hard",
+    "question": "Estimate 4805 + 2741 by rounding to the nearest 100.",
+    "answer": "7500",
+    "hints": [
+      "Round 4805 to the nearest 100: 4800.",
+      "Round 2741 to the nearest 100: 2700."
+    ],
+    "solution": "4805 rounds to 4800. 2741 rounds to 2700. 4800 + 2700 = 7500.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-addition-subtraction-gen-h3",
+    "topicId": "estimation-addition-subtraction",
+    "difficulty": "hard",
+    "question": "Estimate 380 − 101 by rounding to the nearest 100.",
+    "answer": "300",
+    "hints": [
+      "Round 380 to the nearest 100: 400.",
+      "Round 101 to the nearest 100: 100."
+    ],
+    "solution": "380 rounds to 400. 101 rounds to 100. 400 − 100 = 300.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-addition-subtraction-gen-h4",
+    "topicId": "estimation-addition-subtraction",
+    "difficulty": "hard",
+    "question": "Estimate 5765 + 4934 by rounding to the nearest 100.",
+    "answer": "10700",
+    "hints": [
+      "Round 5765 to the nearest 100: 5800.",
+      "Round 4934 to the nearest 100: 4900."
+    ],
+    "solution": "5765 rounds to 5800. 4934 rounds to 4900. 5800 + 4900 = 10700.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-addition-subtraction-gen-h5",
+    "topicId": "estimation-addition-subtraction",
+    "difficulty": "hard",
+    "question": "Estimate 8865 − 1027 by rounding to the nearest 100.",
+    "answer": "7900",
+    "hints": [
+      "Round 8865 to the nearest 100: 8900.",
+      "Round 1027 to the nearest 100: 1000."
+    ],
+    "solution": "8865 rounds to 8900. 1027 rounds to 1000. 8900 − 1000 = 7900.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-addition-subtraction-gen-h6",
+    "topicId": "estimation-addition-subtraction",
+    "difficulty": "hard",
+    "question": "Estimate 2911 + 1765 by rounding to the nearest 100.",
+    "answer": "4700",
+    "hints": [
+      "Round 2911 to the nearest 100: 2900.",
+      "Round 1765 to the nearest 100: 1800."
+    ],
+    "solution": "2911 rounds to 2900. 1765 rounds to 1800. 2900 + 1800 = 4700.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-addition-subtraction-gen-h7",
+    "topicId": "estimation-addition-subtraction",
+    "difficulty": "hard",
+    "question": "Estimate 6534 + 6471 by rounding to the nearest 100.",
+    "answer": "13000",
+    "hints": [
+      "Round 6534 to the nearest 100: 6500.",
+      "Round 6471 to the nearest 100: 6500."
+    ],
+    "solution": "6534 rounds to 6500. 6471 rounds to 6500. 6500 + 6500 = 13000.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-addition-subtraction-gen-h8",
+    "topicId": "estimation-addition-subtraction",
+    "difficulty": "hard",
+    "question": "Estimate 6147 + 5670 by rounding to the nearest 100.",
+    "answer": "11800",
+    "hints": [
+      "Round 6147 to the nearest 100: 6100.",
+      "Round 5670 to the nearest 100: 5700."
+    ],
+    "solution": "6147 rounds to 6100. 5670 rounds to 5700. 6100 + 5700 = 11800.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-addition-subtraction-gen-h9",
+    "topicId": "estimation-addition-subtraction",
+    "difficulty": "hard",
+    "question": "Estimate 6764 − 4372 by rounding to the nearest 100.",
+    "answer": "2400",
+    "hints": [
+      "Round 6764 to the nearest 100: 6800.",
+      "Round 4372 to the nearest 100: 4400."
+    ],
+    "solution": "6764 rounds to 6800. 4372 rounds to 4400. 6800 − 4400 = 2400.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-addition-subtraction-gen-h10",
+    "topicId": "estimation-addition-subtraction",
+    "difficulty": "hard",
+    "question": "Estimate 5287 + 4294 by rounding to the nearest 100.",
+    "answer": "9600",
+    "hints": [
+      "Round 5287 to the nearest 100: 5300.",
+      "Round 4294 to the nearest 100: 4300."
+    ],
+    "solution": "5287 rounds to 5300. 4294 rounds to 4300. 5300 + 4300 = 9600.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-addition-subtraction-gen-h11",
+    "topicId": "estimation-addition-subtraction",
+    "difficulty": "hard",
+    "question": "Estimate 2581 − 296 by rounding to the nearest 100.",
+    "answer": "2300",
+    "hints": [
+      "Round 2581 to the nearest 100: 2600.",
+      "Round 296 to the nearest 100: 300."
+    ],
+    "solution": "2581 rounds to 2600. 296 rounds to 300. 2600 − 300 = 2300.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-addition-subtraction-gen-h12",
+    "topicId": "estimation-addition-subtraction",
+    "difficulty": "hard",
+    "question": "Estimate 1363 + 1147 by rounding to the nearest 100.",
+    "answer": "2500",
+    "hints": [
+      "Round 1363 to the nearest 100: 1400.",
+      "Round 1147 to the nearest 100: 1100."
+    ],
+    "solution": "1363 rounds to 1400. 1147 rounds to 1100. 1400 + 1100 = 2500.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-addition-subtraction-gen-h13",
+    "topicId": "estimation-addition-subtraction",
+    "difficulty": "hard",
+    "question": "Estimate 1565 − 667 by rounding to the nearest 100.",
+    "answer": "900",
+    "hints": [
+      "Round 1565 to the nearest 100: 1600.",
+      "Round 667 to the nearest 100: 700."
+    ],
+    "solution": "1565 rounds to 1600. 667 rounds to 700. 1600 − 700 = 900.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-addition-subtraction-gen-h14",
+    "topicId": "estimation-addition-subtraction",
+    "difficulty": "hard",
+    "question": "Estimate 8776 + 5039 by rounding to the nearest 100.",
+    "answer": "13800",
+    "hints": [
+      "Round 8776 to the nearest 100: 8800.",
+      "Round 5039 to the nearest 100: 5000."
+    ],
+    "solution": "8776 rounds to 8800. 5039 rounds to 5000. 8800 + 5000 = 13800.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  }
+]

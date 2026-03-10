@@ -1,0 +1,652 @@
+[
+  {
+    "id": "compare-order-rationals-gen-e0",
+    "topicId": "compare-order-rationals",
+    "difficulty": "easy",
+    "question": "Compare: -3/2 ___ 1/2",
+    "answer": "<",
+    "hints": [
+      "Convert to decimals or find a common denominator."
+    ],
+    "solution": "-3/2 ≈ -1.5, 1/2 ≈ 0.5. So -3/2 < 1/2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-rationals-gen-e1",
+    "topicId": "compare-order-rationals",
+    "difficulty": "easy",
+    "question": "Compare: 2/3 ___ -1/2",
+    "answer": ">",
+    "hints": [
+      "Convert to decimals or find a common denominator."
+    ],
+    "solution": "2/3 ≈ 0.667, -1/2 ≈ -0.5. So 2/3 > -1/2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-rationals-gen-e2",
+    "topicId": "compare-order-rationals",
+    "difficulty": "easy",
+    "question": "Compare: -2 ___ -1/3",
+    "answer": "<",
+    "hints": [
+      "Convert to decimals or find a common denominator."
+    ],
+    "solution": "-2 ≈ -2, -1/3 ≈ -0.333. So -2 < -1/3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-rationals-gen-e3",
+    "topicId": "compare-order-rationals",
+    "difficulty": "easy",
+    "question": "Compare: 11/6 ___ 5/4",
+    "answer": ">",
+    "hints": [
+      "Convert to decimals or find a common denominator."
+    ],
+    "solution": "11/6 ≈ 1.833, 5/4 ≈ 1.25. So 11/6 > 5/4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-rationals-gen-e4",
+    "topicId": "compare-order-rationals",
+    "difficulty": "easy",
+    "question": "Compare: -2 ___ -7/8",
+    "answer": "<",
+    "hints": [
+      "Convert to decimals or find a common denominator."
+    ],
+    "solution": "-2 ≈ -2, -7/8 ≈ -0.875. So -2 < -7/8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-rationals-gen-e5",
+    "topicId": "compare-order-rationals",
+    "difficulty": "easy",
+    "question": "Compare: -8/5 ___ 1/3",
+    "answer": "<",
+    "hints": [
+      "Convert to decimals or find a common denominator."
+    ],
+    "solution": "-8/5 ≈ -1.6, 1/3 ≈ 0.333. So -8/5 < 1/3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-rationals-gen-e6",
+    "topicId": "compare-order-rationals",
+    "difficulty": "easy",
+    "question": "Compare: 7/5 ___ -6/5",
+    "answer": ">",
+    "hints": [
+      "Convert to decimals or find a common denominator."
+    ],
+    "solution": "7/5 ≈ 1.4, -6/5 ≈ -1.2. So 7/5 > -6/5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-rationals-gen-e7",
+    "topicId": "compare-order-rationals",
+    "difficulty": "easy",
+    "question": "Compare: -2 ___ 1",
+    "answer": "<",
+    "hints": [
+      "Convert to decimals or find a common denominator."
+    ],
+    "solution": "-2 ≈ -2, 1 ≈ 1. So -2 < 1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-rationals-gen-e8",
+    "topicId": "compare-order-rationals",
+    "difficulty": "easy",
+    "question": "Compare: -1 ___ 9/5",
+    "answer": "<",
+    "hints": [
+      "Convert to decimals or find a common denominator."
+    ],
+    "solution": "-1 ≈ -1, 9/5 ≈ 1.8. So -1 < 9/5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-rationals-gen-e9",
+    "topicId": "compare-order-rationals",
+    "difficulty": "easy",
+    "question": "Compare: 1 ___ 1/4",
+    "answer": ">",
+    "hints": [
+      "Convert to decimals or find a common denominator."
+    ],
+    "solution": "1 ≈ 1, 1/4 ≈ 0.25. So 1 > 1/4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-rationals-gen-e10",
+    "topicId": "compare-order-rationals",
+    "difficulty": "easy",
+    "question": "Compare: -3/8 ___ 7/4",
+    "answer": "<",
+    "hints": [
+      "Convert to decimals or find a common denominator."
+    ],
+    "solution": "-3/8 ≈ -0.375, 7/4 ≈ 1.75. So -3/8 < 7/4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-rationals-gen-e11",
+    "topicId": "compare-order-rationals",
+    "difficulty": "easy",
+    "question": "Compare: 2 ___ -6/5",
+    "answer": ">",
+    "hints": [
+      "Convert to decimals or find a common denominator."
+    ],
+    "solution": "2 ≈ 2, -6/5 ≈ -1.2. So 2 > -6/5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-rationals-gen-e12",
+    "topicId": "compare-order-rationals",
+    "difficulty": "easy",
+    "question": "Compare: -3/2 ___ 5/8",
+    "answer": "<",
+    "hints": [
+      "Convert to decimals or find a common denominator."
+    ],
+    "solution": "-3/2 ≈ -1.5, 5/8 ≈ 0.625. So -3/2 < 5/8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-rationals-gen-e13",
+    "topicId": "compare-order-rationals",
+    "difficulty": "easy",
+    "question": "Compare: -1 ___ 4/5",
+    "answer": "<",
+    "hints": [
+      "Convert to decimals or find a common denominator."
+    ],
+    "solution": "-1 ≈ -1, 4/5 ≈ 0.8. So -1 < 4/5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-rationals-gen-e14",
+    "topicId": "compare-order-rationals",
+    "difficulty": "easy",
+    "question": "Compare: 0 ___ -11/8",
+    "answer": ">",
+    "hints": [
+      "Convert to decimals or find a common denominator."
+    ],
+    "solution": "0 ≈ 0, -11/8 ≈ -1.375. So 0 > -11/8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-rationals-gen-m0",
+    "topicId": "compare-order-rationals",
+    "difficulty": "medium",
+    "question": "Order from least to greatest: -5/4, 0, -7/4, 2/3",
+    "answer": "-7/4, -5/4, 0, 2/3",
+    "hints": [
+      "Convert each to a decimal to compare."
+    ],
+    "solution": "Ordered: -7/4, -5/4, 0, 2/3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-rationals-gen-m1",
+    "topicId": "compare-order-rationals",
+    "difficulty": "medium",
+    "question": "Order from least to greatest: 2, 13/10, -1, 1/6",
+    "answer": "-1, 1/6, 13/10, 2",
+    "hints": [
+      "Convert each to a decimal to compare."
+    ],
+    "solution": "Ordered: -1, 1/6, 13/10, 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-rationals-gen-m2",
+    "topicId": "compare-order-rationals",
+    "difficulty": "medium",
+    "question": "Order from least to greatest: 19/10, 17/10, 1/10, 3/4",
+    "answer": "1/10, 3/4, 17/10, 19/10",
+    "hints": [
+      "Convert each to a decimal to compare."
+    ],
+    "solution": "Ordered: 1/10, 3/4, 17/10, 19/10.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-rationals-gen-m3",
+    "topicId": "compare-order-rationals",
+    "difficulty": "medium",
+    "question": "Order from least to greatest: -13/8, 4/3, 1/2, -2/3",
+    "answer": "-13/8, -2/3, 1/2, 4/3",
+    "hints": [
+      "Convert each to a decimal to compare."
+    ],
+    "solution": "Ordered: -13/8, -2/3, 1/2, 4/3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-rationals-gen-m4",
+    "topicId": "compare-order-rationals",
+    "difficulty": "medium",
+    "question": "Order from least to greatest: -4/5, -1/2, -4/5, 1/5",
+    "answer": "-4/5, -4/5, -1/2, 1/5",
+    "hints": [
+      "Convert each to a decimal to compare."
+    ],
+    "solution": "Ordered: -4/5, -4/5, -1/2, 1/5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-rationals-gen-m5",
+    "topicId": "compare-order-rationals",
+    "difficulty": "medium",
+    "question": "Order from least to greatest: 5/8, 0, -13/8, 4/3",
+    "answer": "-13/8, 0, 5/8, 4/3",
+    "hints": [
+      "Convert each to a decimal to compare."
+    ],
+    "solution": "Ordered: -13/8, 0, 5/8, 4/3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-rationals-gen-m6",
+    "topicId": "compare-order-rationals",
+    "difficulty": "medium",
+    "question": "Order from least to greatest: 3/2, -3/2, -1/2, -1",
+    "answer": "-3/2, -1, -1/2, 3/2",
+    "hints": [
+      "Convert each to a decimal to compare."
+    ],
+    "solution": "Ordered: -3/2, -1, -1/2, 3/2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-rationals-gen-m7",
+    "topicId": "compare-order-rationals",
+    "difficulty": "medium",
+    "question": "Order from least to greatest: -2, 13/10, -2/3, -15/8",
+    "answer": "-2, -15/8, -2/3, 13/10",
+    "hints": [
+      "Convert each to a decimal to compare."
+    ],
+    "solution": "Ordered: -2, -15/8, -2/3, 13/10.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-rationals-gen-m8",
+    "topicId": "compare-order-rationals",
+    "difficulty": "medium",
+    "question": "Order from least to greatest: 3/5, -3/2, -1/2, 5/3",
+    "answer": "-3/2, -1/2, 3/5, 5/3",
+    "hints": [
+      "Convert each to a decimal to compare."
+    ],
+    "solution": "Ordered: -3/2, -1/2, 3/5, 5/3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-rationals-gen-m9",
+    "topicId": "compare-order-rationals",
+    "difficulty": "medium",
+    "question": "Order from least to greatest: 4/3, 4/5, 3/4, -2",
+    "answer": "-2, 3/4, 4/5, 4/3",
+    "hints": [
+      "Convert each to a decimal to compare."
+    ],
+    "solution": "Ordered: -2, 3/4, 4/5, 4/3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-rationals-gen-m10",
+    "topicId": "compare-order-rationals",
+    "difficulty": "medium",
+    "question": "Order from least to greatest: -1/3, -5/3, 2, 3/4",
+    "answer": "-5/3, -1/3, 3/4, 2",
+    "hints": [
+      "Convert each to a decimal to compare."
+    ],
+    "solution": "Ordered: -5/3, -1/3, 3/4, 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-rationals-gen-m11",
+    "topicId": "compare-order-rationals",
+    "difficulty": "medium",
+    "question": "Order from least to greatest: -1/4, 11/6, -1/2, 5/3",
+    "answer": "-1/2, -1/4, 5/3, 11/6",
+    "hints": [
+      "Convert each to a decimal to compare."
+    ],
+    "solution": "Ordered: -1/2, -1/4, 5/3, 11/6.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-rationals-gen-m12",
+    "topicId": "compare-order-rationals",
+    "difficulty": "medium",
+    "question": "Order from least to greatest: -9/5, 13/10, 2, -2",
+    "answer": "-2, -9/5, 13/10, 2",
+    "hints": [
+      "Convert each to a decimal to compare."
+    ],
+    "solution": "Ordered: -2, -9/5, 13/10, 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-rationals-gen-m13",
+    "topicId": "compare-order-rationals",
+    "difficulty": "medium",
+    "question": "Order from least to greatest: 0, 3/2, -3/5, -2",
+    "answer": "-2, -3/5, 0, 3/2",
+    "hints": [
+      "Convert each to a decimal to compare."
+    ],
+    "solution": "Ordered: -2, -3/5, 0, 3/2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-rationals-gen-m14",
+    "topicId": "compare-order-rationals",
+    "difficulty": "medium",
+    "question": "Order from least to greatest: -15/8, 2, -9/5, 3/2",
+    "answer": "-15/8, -9/5, 3/2, 2",
+    "hints": [
+      "Convert each to a decimal to compare."
+    ],
+    "solution": "Ordered: -15/8, -9/5, 3/2, 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-rationals-gen-m15",
+    "topicId": "compare-order-rationals",
+    "difficulty": "medium",
+    "question": "Order from least to greatest: -1, 1/2, 2, 7/5",
+    "answer": "-1, 1/2, 7/5, 2",
+    "hints": [
+      "Convert each to a decimal to compare."
+    ],
+    "solution": "Ordered: -1, 1/2, 7/5, 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-rationals-gen-m16",
+    "topicId": "compare-order-rationals",
+    "difficulty": "medium",
+    "question": "Order from least to greatest: 7/5, -3/2, -1/3, 7/4",
+    "answer": "-3/2, -1/3, 7/5, 7/4",
+    "hints": [
+      "Convert each to a decimal to compare."
+    ],
+    "solution": "Ordered: -3/2, -1/3, 7/5, 7/4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-rationals-gen-m17",
+    "topicId": "compare-order-rationals",
+    "difficulty": "medium",
+    "question": "Order from least to greatest: -4/3, -1/3, -1/6, -5/3",
+    "answer": "-5/3, -4/3, -1/3, -1/6",
+    "hints": [
+      "Convert each to a decimal to compare."
+    ],
+    "solution": "Ordered: -5/3, -4/3, -1/3, -1/6.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-rationals-gen-m18",
+    "topicId": "compare-order-rationals",
+    "difficulty": "medium",
+    "question": "Order from least to greatest: -1/8, 1, 3/2, 2/5",
+    "answer": "-1/8, 2/5, 1, 3/2",
+    "hints": [
+      "Convert each to a decimal to compare."
+    ],
+    "solution": "Ordered: -1/8, 2/5, 1, 3/2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-rationals-gen-m19",
+    "topicId": "compare-order-rationals",
+    "difficulty": "medium",
+    "question": "Order from least to greatest: -1, -1/4, 9/5, 0",
+    "answer": "-1, -1/4, 0, 9/5",
+    "hints": [
+      "Convert each to a decimal to compare."
+    ],
+    "solution": "Ordered: -1, -1/4, 0, 9/5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-rationals-gen-h0",
+    "topicId": "compare-order-rationals",
+    "difficulty": "hard",
+    "question": "Order from least to greatest: -1, 3/2, 1, -1/2, -8/5",
+    "answer": "-8/5, -1, -1/2, 1, 3/2",
+    "hints": [
+      "Convert each to a decimal to compare."
+    ],
+    "solution": "Ordered: -8/5, -1, -1/2, 1, 3/2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-rationals-gen-h1",
+    "topicId": "compare-order-rationals",
+    "difficulty": "hard",
+    "question": "Order from least to greatest: 1, -1, -3/10, 4/5, -1",
+    "answer": "-1, -1, -3/10, 4/5, 1",
+    "hints": [
+      "Convert each to a decimal to compare."
+    ],
+    "solution": "Ordered: -1, -1, -3/10, 4/5, 1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-rationals-gen-h2",
+    "topicId": "compare-order-rationals",
+    "difficulty": "hard",
+    "question": "Order from least to greatest: -2/5, -1, 2, 1/2, 2",
+    "answer": "-1, -2/5, 1/2, 2, 2",
+    "hints": [
+      "Convert each to a decimal to compare."
+    ],
+    "solution": "Ordered: -1, -2/5, 1/2, 2, 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-rationals-gen-h3",
+    "topicId": "compare-order-rationals",
+    "difficulty": "hard",
+    "question": "Order from least to greatest: 0, 2/3, 8/5, 1/2, 6/5",
+    "answer": "0, 1/2, 2/3, 6/5, 8/5",
+    "hints": [
+      "Convert each to a decimal to compare."
+    ],
+    "solution": "Ordered: 0, 1/2, 2/3, 6/5, 8/5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-rationals-gen-h4",
+    "topicId": "compare-order-rationals",
+    "difficulty": "hard",
+    "question": "Order from least to greatest: -11/6, 0, -2/5, 3/2, -1/2",
+    "answer": "-11/6, -1/2, -2/5, 0, 3/2",
+    "hints": [
+      "Convert each to a decimal to compare."
+    ],
+    "solution": "Ordered: -11/6, -1/2, -2/5, 0, 3/2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-rationals-gen-h5",
+    "topicId": "compare-order-rationals",
+    "difficulty": "hard",
+    "question": "Order from least to greatest: -2, 1, -7/5, 1, 2",
+    "answer": "-2, -7/5, 1, 1, 2",
+    "hints": [
+      "Convert each to a decimal to compare."
+    ],
+    "solution": "Ordered: -2, -7/5, 1, 1, 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-rationals-gen-h6",
+    "topicId": "compare-order-rationals",
+    "difficulty": "hard",
+    "question": "Order from least to greatest: 5/3, -8/5, 11/10, 1/2, 19/10",
+    "answer": "-8/5, 1/2, 11/10, 5/3, 19/10",
+    "hints": [
+      "Convert each to a decimal to compare."
+    ],
+    "solution": "Ordered: -8/5, 1/2, 11/10, 5/3, 19/10.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-rationals-gen-h7",
+    "topicId": "compare-order-rationals",
+    "difficulty": "hard",
+    "question": "Order from least to greatest: -2/5, 0, 1/2, 2, -2",
+    "answer": "-2, -2/5, 0, 1/2, 2",
+    "hints": [
+      "Convert each to a decimal to compare."
+    ],
+    "solution": "Ordered: -2, -2/5, 0, 1/2, 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-rationals-gen-h8",
+    "topicId": "compare-order-rationals",
+    "difficulty": "hard",
+    "question": "Order from least to greatest: -2/5, 1/2, 2, -7/5, 0",
+    "answer": "-7/5, -2/5, 0, 1/2, 2",
+    "hints": [
+      "Convert each to a decimal to compare."
+    ],
+    "solution": "Ordered: -7/5, -2/5, 0, 1/2, 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-rationals-gen-h9",
+    "topicId": "compare-order-rationals",
+    "difficulty": "hard",
+    "question": "Order from least to greatest: 5/3, -9/8, -5/8, -3/2, -1/2",
+    "answer": "-3/2, -9/8, -5/8, -1/2, 5/3",
+    "hints": [
+      "Convert each to a decimal to compare."
+    ],
+    "solution": "Ordered: -3/2, -9/8, -5/8, -1/2, 5/3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-rationals-gen-h10",
+    "topicId": "compare-order-rationals",
+    "difficulty": "hard",
+    "question": "Order from least to greatest: -2, 7/4, -19/10, 5/4, -1/5",
+    "answer": "-2, -19/10, -1/5, 5/4, 7/4",
+    "hints": [
+      "Convert each to a decimal to compare."
+    ],
+    "solution": "Ordered: -2, -19/10, -1/5, 5/4, 7/4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-rationals-gen-h11",
+    "topicId": "compare-order-rationals",
+    "difficulty": "hard",
+    "question": "Order from least to greatest: -3/2, -1, -3/2, -1, -1/4",
+    "answer": "-3/2, -3/2, -1, -1, -1/4",
+    "hints": [
+      "Convert each to a decimal to compare."
+    ],
+    "solution": "Ordered: -3/2, -3/2, -1, -1, -1/4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-rationals-gen-h12",
+    "topicId": "compare-order-rationals",
+    "difficulty": "hard",
+    "question": "Order from least to greatest: 2, -2/3, 1, 13/10, -3/2",
+    "answer": "-3/2, -2/3, 1, 13/10, 2",
+    "hints": [
+      "Convert each to a decimal to compare."
+    ],
+    "solution": "Ordered: -3/2, -2/3, 1, 13/10, 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-rationals-gen-h13",
+    "topicId": "compare-order-rationals",
+    "difficulty": "hard",
+    "question": "Order from least to greatest: 7/4, -3/2, 5/8, -8/5, 0",
+    "answer": "-8/5, -3/2, 0, 5/8, 7/4",
+    "hints": [
+      "Convert each to a decimal to compare."
+    ],
+    "solution": "Ordered: -8/5, -3/2, 0, 5/8, 7/4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-order-rationals-gen-h14",
+    "topicId": "compare-order-rationals",
+    "difficulty": "hard",
+    "question": "Order from least to greatest: 7/4, 5/4, 7/4, -11/10, 1/6",
+    "answer": "-11/10, 1/6, 5/4, 7/4, 7/4",
+    "hints": [
+      "Convert each to a decimal to compare."
+    ],
+    "solution": "Ordered: -11/10, 1/6, 5/4, 7/4, 7/4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  }
+]

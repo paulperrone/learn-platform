@@ -1,0 +1,209 @@
+[
+  {
+    "id": "line-symmetry-sup-e0",
+    "topicId": "line-symmetry",
+    "difficulty": "easy",
+    "question": "Does the letter A have a line of symmetry? Answer yes or no.",
+    "answer": "yes",
+    "hints": [
+      "Imagine drawing a vertical line down the middle of the letter A.",
+      "Would both halves match?"
+    ],
+    "solution": "Yes. The letter A has a vertical line of symmetry. The left half mirrors the right half.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "line-symmetry-sup-e1",
+    "topicId": "line-symmetry",
+    "difficulty": "easy",
+    "question": "A shape is folded along a line and both halves match perfectly. What is this line called?",
+    "answer": "line of symmetry",
+    "hints": [
+      "This special line divides a shape into two matching halves."
+    ],
+    "solution": "The line is called a line of symmetry. When a shape is folded along it, both halves match exactly.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "line-symmetry-sup-e2",
+    "topicId": "line-symmetry",
+    "difficulty": "easy",
+    "question": "How many lines of symmetry does a square have?",
+    "answer": "4",
+    "hints": [
+      "Think about folding a square in half different ways.",
+      "You can fold vertically, horizontally, and along both diagonals."
+    ],
+    "solution": "A square has 4 lines of symmetry: one vertical, one horizontal, and two diagonal.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "line-symmetry-sup-e3",
+    "topicId": "line-symmetry",
+    "difficulty": "easy",
+    "question": "Does a circle have lines of symmetry? Answer yes or no.",
+    "answer": "yes",
+    "hints": [
+      "Imagine folding a circle in half. Can you imagine folding it in many different ways and still get matching halves?"
+    ],
+    "solution": "Yes. A circle has infinitely many lines of symmetry. Any line through the center divides it into two matching halves.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "line-symmetry-sup-e4",
+    "topicId": "line-symmetry",
+    "difficulty": "easy",
+    "question": "Does the letter F have a line of symmetry? Answer yes or no.",
+    "answer": "no",
+    "hints": [
+      "Try imagining a line down the middle — vertically or horizontally.",
+      "Do both halves look the same?"
+    ],
+    "solution": "No. The letter F does not have a line of symmetry. No matter where you place a line, the two halves will not match.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "line-symmetry-sup-m0",
+    "topicId": "line-symmetry",
+    "difficulty": "medium",
+    "question": "How many lines of symmetry does a regular hexagon (6 equal sides) have?",
+    "answer": "6",
+    "hints": [
+      "A regular polygon with n sides has n lines of symmetry.",
+      "A hexagon has 6 sides."
+    ],
+    "solution": "A regular hexagon has 6 lines of symmetry: 3 through opposite vertices and 3 through the midpoints of opposite sides.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "line-symmetry-sup-m1",
+    "topicId": "line-symmetry",
+    "difficulty": "medium",
+    "question": "A rectangle that is NOT a square has how many lines of symmetry?",
+    "answer": "2",
+    "hints": [
+      "Imagine folding a rectangle in half.",
+      "Can you fold it along the diagonals and get matching halves?"
+    ],
+    "solution": "A non-square rectangle has exactly 2 lines of symmetry: one vertical (through the middle of the long sides) and one horizontal (through the middle of the short sides). The diagonals are NOT lines of symmetry.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "line-symmetry-sup-m2",
+    "topicId": "line-symmetry",
+    "difficulty": "medium",
+    "question": "Jake says a rectangle has 4 lines of symmetry, just like a square. What is wrong with Jake's thinking?",
+    "answer": "a rectangle only has 2 lines of symmetry",
+    "hints": [
+      "A square has 4 lines of symmetry including the diagonals.",
+      "Try the diagonals on a rectangle that isn't a square. Do the halves match?"
+    ],
+    "solution": "Jake is wrong because a non-square rectangle only has 2 lines of symmetry (vertical and horizontal). The diagonals of a non-square rectangle do NOT create matching halves because the sides are different lengths.",
+    "cognitiveDemand": "error-analysis",
+    "source": "generated"
+  },
+  {
+    "id": "line-symmetry-sup-m3",
+    "topicId": "line-symmetry",
+    "difficulty": "medium",
+    "question": "An equilateral triangle has how many lines of symmetry?",
+    "answer": "3",
+    "hints": [
+      "An equilateral triangle has 3 equal sides.",
+      "Each line of symmetry goes from a vertex to the midpoint of the opposite side."
+    ],
+    "solution": "An equilateral triangle has 3 lines of symmetry. Each line goes from one vertex to the midpoint of the opposite side.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "line-symmetry-sup-m4",
+    "topicId": "line-symmetry",
+    "difficulty": "medium",
+    "question": "Which has more lines of symmetry: a regular pentagon (5 sides) or a square?",
+    "answer": "regular pentagon",
+    "hints": [
+      "A square has 4 lines of symmetry.",
+      "A regular polygon with n sides has n lines of symmetry."
+    ],
+    "solution": "A regular pentagon has 5 lines of symmetry, while a square has 4. So the regular pentagon has more.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "line-symmetry-sup-h0",
+    "topicId": "line-symmetry",
+    "difficulty": "hard",
+    "question": "Can a triangle have exactly 2 lines of symmetry? Explain why or why not.",
+    "answer": "no",
+    "hints": [
+      "Think about what kinds of triangles have lines of symmetry.",
+      "An isosceles triangle has 1 line. An equilateral has 3. What about 2?"
+    ],
+    "solution": "No. A triangle can have 0 lines of symmetry (scalene), 1 line (isosceles), or 3 lines (equilateral). If a triangle had 2 lines of symmetry, it would force all 3 sides to be equal, giving it 3 lines of symmetry instead.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "line-symmetry-sup-h1",
+    "topicId": "line-symmetry",
+    "difficulty": "hard",
+    "question": "A regular polygon has exactly 8 lines of symmetry. How many sides does it have?",
+    "answer": "8",
+    "hints": [
+      "There is a pattern: a regular polygon with n sides has n lines of symmetry."
+    ],
+    "solution": "A regular polygon with n sides has exactly n lines of symmetry. So a polygon with 8 lines of symmetry has 8 sides (a regular octagon).",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "line-symmetry-sup-h2",
+    "topicId": "line-symmetry",
+    "difficulty": "hard",
+    "question": "Emma claims that if a shape has a line of symmetry, the line must be vertical. Give an example that proves Emma wrong.",
+    "answer": "a horizontal line through the middle of a rectangle",
+    "hints": [
+      "Think about shapes that can be folded horizontally or diagonally.",
+      "A rectangle can be folded top-to-bottom."
+    ],
+    "solution": "Emma is wrong. For example, a rectangle has a horizontal line of symmetry (folding top to bottom). The letter D has a horizontal line of symmetry. Lines of symmetry can be vertical, horizontal, or diagonal.",
+    "cognitiveDemand": "error-analysis",
+    "source": "generated"
+  },
+  {
+    "id": "line-symmetry-sup-h3",
+    "topicId": "line-symmetry",
+    "difficulty": "hard",
+    "question": "A shape has no lines of symmetry. Does that mean the shape has no special properties? Give an example of such a shape.",
+    "answer": "no",
+    "hints": [
+      "Think about a parallelogram that is not a rectangle.",
+      "A parallelogram has equal opposite sides and angles but no lines of symmetry."
+    ],
+    "solution": "No. A shape without lines of symmetry can still have special properties. For example, a parallelogram (that is not a rectangle) has no lines of symmetry, but it has two pairs of parallel sides and equal opposite angles.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "line-symmetry-sup-h4",
+    "topicId": "line-symmetry",
+    "difficulty": "hard",
+    "question": "If you put two identical right triangles together along their longest sides, what shape do you get, and how many lines of symmetry does it have?",
+    "answer": "rectangle with 2 lines of symmetry",
+    "hints": [
+      "The longest side of a right triangle is the hypotenuse.",
+      "Joining two identical right triangles along their hypotenuses makes a four-sided shape."
+    ],
+    "solution": "Joining two identical right triangles along their hypotenuses creates a rectangle. A rectangle has 2 lines of symmetry (one vertical and one horizontal through the center). If the right triangles happen to be isosceles, you get a square with 4 lines of symmetry.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  }
+]

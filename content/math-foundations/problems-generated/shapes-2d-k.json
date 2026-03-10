@@ -1,0 +1,205 @@
+[
+  {
+    "id": "shapes-2d-k-sup-e0",
+    "topicId": "shapes-2d-k",
+    "difficulty": "easy",
+    "question": "A clock face is shaped like which 2D shape?",
+    "answer": "circle",
+    "hints": [
+      "Think about the shape of a clock. Is it straight-sided or round?"
+    ],
+    "solution": "A clock face is shaped like a circle. It is round with no corners or straight sides.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "shapes-2d-k-sup-e1",
+    "topicId": "shapes-2d-k",
+    "difficulty": "easy",
+    "question": "How many corners does a square have?",
+    "answer": "4",
+    "hints": [
+      "A square has 4 equal sides. How many places do the sides meet?"
+    ],
+    "solution": "A square has 4 corners. Each place where two sides meet is a corner.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "shapes-2d-k-sup-e2",
+    "topicId": "shapes-2d-k",
+    "difficulty": "easy",
+    "question": "What shape has 3 sides and 3 corners?",
+    "answer": "triangle",
+    "hints": [
+      "Tri- means three."
+    ],
+    "solution": "A triangle has 3 sides and 3 corners. The prefix tri- means three.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "shapes-2d-k-sup-e3",
+    "topicId": "shapes-2d-k",
+    "difficulty": "easy",
+    "question": "A door is usually shaped like which 2D shape?",
+    "answer": "rectangle",
+    "hints": [
+      "A door has 4 sides, but it is taller than it is wide."
+    ],
+    "solution": "A door is shaped like a rectangle. It has 4 sides with opposite sides the same length, but it is not a square because it is taller than wide.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "shapes-2d-k-sup-e4",
+    "topicId": "shapes-2d-k",
+    "difficulty": "easy",
+    "question": "Does a circle have any corners? Answer yes or no.",
+    "answer": "no",
+    "hints": [
+      "A circle is perfectly round."
+    ],
+    "solution": "No, a circle has no corners. It is a smooth, round shape with no straight sides.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "shapes-2d-k-sup-m0",
+    "topicId": "shapes-2d-k",
+    "difficulty": "medium",
+    "question": "Which has more sides: a triangle or a hexagon?",
+    "answer": "hexagon",
+    "hints": [
+      "A triangle has 3 sides. How many does a hexagon have?",
+      "Hex- means six."
+    ],
+    "solution": "A hexagon has 6 sides, and a triangle has 3 sides. A hexagon has more sides.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "shapes-2d-k-sup-m1",
+    "topicId": "shapes-2d-k",
+    "difficulty": "medium",
+    "question": "Is every square also a rectangle? Answer yes or no.",
+    "answer": "yes",
+    "hints": [
+      "A rectangle has 4 sides and 4 corners with opposite sides equal.",
+      "Does a square have these same features?"
+    ],
+    "solution": "Yes, every square is also a rectangle. A rectangle has 4 sides with opposite sides equal and 4 corners. A square has all of this, plus all 4 sides are equal.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "shapes-2d-k-sup-m2",
+    "topicId": "shapes-2d-k",
+    "difficulty": "medium",
+    "question": "Name a shape that has no sides at all.",
+    "answer": "circle",
+    "hints": [
+      "Think of a shape that is completely round."
+    ],
+    "solution": "A circle has no straight sides. It is one continuous curve.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "shapes-2d-k-sup-m3",
+    "topicId": "shapes-2d-k",
+    "difficulty": "medium",
+    "question": "A stop sign has 8 sides. A hexagon has 6 sides. How many more sides does a stop sign have than a hexagon?",
+    "answer": "2",
+    "hints": [
+      "Find the difference: 8 - 6 = ?"
+    ],
+    "solution": "A stop sign (octagon) has 8 sides and a hexagon has 6 sides. 8 - 6 = 2 more sides.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "shapes-2d-k-sup-m4",
+    "topicId": "shapes-2d-k",
+    "difficulty": "medium",
+    "question": "How are a square and a rectangle the same? Name one thing they have in common.",
+    "answer": "4 sides",
+    "hints": [
+      "Count the sides of each shape.",
+      "They also both have 4 corners."
+    ],
+    "solution": "Squares and rectangles both have 4 sides and 4 corners. They are both flat shapes with straight sides.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "shapes-2d-k-sup-h0",
+    "topicId": "shapes-2d-k",
+    "difficulty": "hard",
+    "question": "If you put two triangles together along one side, what new shape could you make?",
+    "answer": "rectangle",
+    "hints": [
+      "Think of a rectangle split along a diagonal line.",
+      "Two right triangles placed together can form a rectangle or a square."
+    ],
+    "solution": "Two triangles placed together along one side can form a rectangle (or a square, or a larger triangle, depending on the triangles). With two identical right triangles, you get a rectangle.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "shapes-2d-k-sup-h1",
+    "topicId": "shapes-2d-k",
+    "difficulty": "hard",
+    "question": "I have 4 sides. Two of my sides are long and two are short. I am not a square. What shape am I?",
+    "answer": "rectangle",
+    "hints": [
+      "A square has all sides the same length.",
+      "What shape has 4 sides but not all the same length?"
+    ],
+    "solution": "A rectangle has 4 sides where opposite sides are equal, but not all 4 sides are the same length (unlike a square).",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "shapes-2d-k-sup-h2",
+    "topicId": "shapes-2d-k",
+    "difficulty": "hard",
+    "question": "A shape has more sides than a square but fewer sides than a hexagon. It has 5 sides. What is it called?",
+    "answer": "pentagon",
+    "hints": [
+      "Penta- means five.",
+      "A square has 4 sides and a hexagon has 6 sides."
+    ],
+    "solution": "A shape with 5 sides is called a pentagon. Penta- means five. It fits between a square (4 sides) and a hexagon (6 sides).",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "shapes-2d-k-sup-h3",
+    "topicId": "shapes-2d-k",
+    "difficulty": "hard",
+    "question": "Sort these shapes into two groups: shapes with corners and shapes without corners. Circle, triangle, square, rectangle, hexagon. How many shapes have corners?",
+    "answer": "4",
+    "hints": [
+      "Which shape is round and has no corners?",
+      "The rest all have straight sides and corners."
+    ],
+    "solution": "Shapes with corners: triangle (3), square (4), rectangle (4), hexagon (6). Shapes without corners: circle. 4 shapes have corners.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "shapes-2d-k-sup-h4",
+    "topicId": "shapes-2d-k",
+    "difficulty": "hard",
+    "question": "A honeycomb cell is shaped like a hexagon. If you look at 3 honeycomb cells, how many sides do those 3 hexagons have in total?",
+    "answer": "18",
+    "hints": [
+      "Each hexagon has 6 sides.",
+      "3 hexagons: 3 times 6 = ?"
+    ],
+    "solution": "Each hexagon has 6 sides. 3 hexagons have 3 x 6 = 18 sides in total.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  }
+]

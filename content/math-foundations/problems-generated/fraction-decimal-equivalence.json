@@ -1,0 +1,652 @@
+[
+  {
+    "id": "fraction-decimal-equivalence-gen-e0",
+    "topicId": "fraction-decimal-equivalence",
+    "difficulty": "easy",
+    "question": "Convert 0.75 to a fraction in simplest form.",
+    "answer": "3/4",
+    "hints": [
+      "0.75 means 75 out of 100. Simplify."
+    ],
+    "solution": "0.75 = 3/4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "fraction-decimal-equivalence-gen-e1",
+    "topicId": "fraction-decimal-equivalence",
+    "difficulty": "easy",
+    "question": "Convert 3/4 to a decimal.",
+    "answer": "0.75",
+    "hints": [
+      "Divide 3 by 4."
+    ],
+    "solution": "3 ÷ 4 = 0.75.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "fraction-decimal-equivalence-gen-e2",
+    "topicId": "fraction-decimal-equivalence",
+    "difficulty": "easy",
+    "question": "Convert 1/2 to a decimal.",
+    "answer": "0.5",
+    "hints": [
+      "Divide 1 by 2."
+    ],
+    "solution": "1 ÷ 2 = 0.5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "fraction-decimal-equivalence-gen-e3",
+    "topicId": "fraction-decimal-equivalence",
+    "difficulty": "easy",
+    "question": "Convert 1/2 to a decimal.",
+    "answer": "0.5",
+    "hints": [
+      "Divide 1 by 2."
+    ],
+    "solution": "1 ÷ 2 = 0.5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "fraction-decimal-equivalence-gen-e4",
+    "topicId": "fraction-decimal-equivalence",
+    "difficulty": "easy",
+    "question": "Convert 3/4 to a decimal.",
+    "answer": "0.75",
+    "hints": [
+      "Divide 3 by 4."
+    ],
+    "solution": "3 ÷ 4 = 0.75.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "fraction-decimal-equivalence-gen-e5",
+    "topicId": "fraction-decimal-equivalence",
+    "difficulty": "easy",
+    "question": "Convert 0.5 to a fraction in simplest form.",
+    "answer": "1/2",
+    "hints": [
+      "0.5 means 5 out of 10. Simplify."
+    ],
+    "solution": "0.5 = 1/2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "fraction-decimal-equivalence-gen-e6",
+    "topicId": "fraction-decimal-equivalence",
+    "difficulty": "easy",
+    "question": "Convert 1/5 to a decimal.",
+    "answer": "0.2",
+    "hints": [
+      "Divide 1 by 5."
+    ],
+    "solution": "1 ÷ 5 = 0.2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "fraction-decimal-equivalence-gen-e7",
+    "topicId": "fraction-decimal-equivalence",
+    "difficulty": "easy",
+    "question": "Convert 1/2 to a decimal.",
+    "answer": "0.5",
+    "hints": [
+      "Divide 1 by 2."
+    ],
+    "solution": "1 ÷ 2 = 0.5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "fraction-decimal-equivalence-gen-e8",
+    "topicId": "fraction-decimal-equivalence",
+    "difficulty": "easy",
+    "question": "Convert 0.25 to a fraction in simplest form.",
+    "answer": "1/4",
+    "hints": [
+      "0.25 means 25 out of 100. Simplify."
+    ],
+    "solution": "0.25 = 1/4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "fraction-decimal-equivalence-gen-e9",
+    "topicId": "fraction-decimal-equivalence",
+    "difficulty": "easy",
+    "question": "Convert 0.25 to a fraction in simplest form.",
+    "answer": "1/4",
+    "hints": [
+      "0.25 means 25 out of 100. Simplify."
+    ],
+    "solution": "0.25 = 1/4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "fraction-decimal-equivalence-gen-e10",
+    "topicId": "fraction-decimal-equivalence",
+    "difficulty": "easy",
+    "question": "Convert 0.75 to a fraction in simplest form.",
+    "answer": "3/4",
+    "hints": [
+      "0.75 means 75 out of 100. Simplify."
+    ],
+    "solution": "0.75 = 3/4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "fraction-decimal-equivalence-gen-e11",
+    "topicId": "fraction-decimal-equivalence",
+    "difficulty": "easy",
+    "question": "Convert 0.25 to a fraction in simplest form.",
+    "answer": "1/4",
+    "hints": [
+      "0.25 means 25 out of 100. Simplify."
+    ],
+    "solution": "0.25 = 1/4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "fraction-decimal-equivalence-gen-e12",
+    "topicId": "fraction-decimal-equivalence",
+    "difficulty": "easy",
+    "question": "Convert 1/4 to a decimal.",
+    "answer": "0.25",
+    "hints": [
+      "Divide 1 by 4."
+    ],
+    "solution": "1 ÷ 4 = 0.25.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "fraction-decimal-equivalence-gen-e13",
+    "topicId": "fraction-decimal-equivalence",
+    "difficulty": "easy",
+    "question": "Convert 1/2 to a decimal.",
+    "answer": "0.5",
+    "hints": [
+      "Divide 1 by 2."
+    ],
+    "solution": "1 ÷ 2 = 0.5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "fraction-decimal-equivalence-gen-e14",
+    "topicId": "fraction-decimal-equivalence",
+    "difficulty": "easy",
+    "question": "Convert 1/2 to a decimal.",
+    "answer": "0.5",
+    "hints": [
+      "Divide 1 by 2."
+    ],
+    "solution": "1 ÷ 2 = 0.5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "fraction-decimal-equivalence-gen-m0",
+    "topicId": "fraction-decimal-equivalence",
+    "difficulty": "medium",
+    "question": "Convert 0.4 to a fraction in simplest form.",
+    "answer": "2/5",
+    "hints": [
+      "0.4 means 4 out of 10. Simplify."
+    ],
+    "solution": "0.4 = 2/5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "fraction-decimal-equivalence-gen-m1",
+    "topicId": "fraction-decimal-equivalence",
+    "difficulty": "medium",
+    "question": "Convert 3/8 to a decimal.",
+    "answer": "0.375",
+    "hints": [
+      "Divide 3 by 8."
+    ],
+    "solution": "3 ÷ 8 = 0.375.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "fraction-decimal-equivalence-gen-m2",
+    "topicId": "fraction-decimal-equivalence",
+    "difficulty": "medium",
+    "question": "Convert 3/5 to a decimal.",
+    "answer": "0.6",
+    "hints": [
+      "Divide 3 by 5."
+    ],
+    "solution": "3 ÷ 5 = 0.6.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "fraction-decimal-equivalence-gen-m3",
+    "topicId": "fraction-decimal-equivalence",
+    "difficulty": "medium",
+    "question": "Convert 0.6 to a fraction in simplest form.",
+    "answer": "3/5",
+    "hints": [
+      "0.6 means 6 out of 10. Simplify."
+    ],
+    "solution": "0.6 = 3/5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "fraction-decimal-equivalence-gen-m4",
+    "topicId": "fraction-decimal-equivalence",
+    "difficulty": "medium",
+    "question": "Convert 0.875 to a fraction in simplest form.",
+    "answer": "7/8",
+    "hints": [
+      "0.875 means 875 out of 1000. Simplify."
+    ],
+    "solution": "0.875 = 7/8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "fraction-decimal-equivalence-gen-m5",
+    "topicId": "fraction-decimal-equivalence",
+    "difficulty": "medium",
+    "question": "Convert 3/8 to a decimal.",
+    "answer": "0.375",
+    "hints": [
+      "Divide 3 by 8."
+    ],
+    "solution": "3 ÷ 8 = 0.375.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "fraction-decimal-equivalence-gen-m6",
+    "topicId": "fraction-decimal-equivalence",
+    "difficulty": "medium",
+    "question": "Convert 7/8 to a decimal.",
+    "answer": "0.875",
+    "hints": [
+      "Divide 7 by 8."
+    ],
+    "solution": "7 ÷ 8 = 0.875.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "fraction-decimal-equivalence-gen-m7",
+    "topicId": "fraction-decimal-equivalence",
+    "difficulty": "medium",
+    "question": "Convert 7/8 to a decimal.",
+    "answer": "0.875",
+    "hints": [
+      "Divide 7 by 8."
+    ],
+    "solution": "7 ÷ 8 = 0.875.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "fraction-decimal-equivalence-gen-m8",
+    "topicId": "fraction-decimal-equivalence",
+    "difficulty": "medium",
+    "question": "Convert 0.4 to a fraction in simplest form.",
+    "answer": "2/5",
+    "hints": [
+      "0.4 means 4 out of 10. Simplify."
+    ],
+    "solution": "0.4 = 2/5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "fraction-decimal-equivalence-gen-m9",
+    "topicId": "fraction-decimal-equivalence",
+    "difficulty": "medium",
+    "question": "Convert 2/5 to a decimal.",
+    "answer": "0.4",
+    "hints": [
+      "Divide 2 by 5."
+    ],
+    "solution": "2 ÷ 5 = 0.4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "fraction-decimal-equivalence-gen-m10",
+    "topicId": "fraction-decimal-equivalence",
+    "difficulty": "medium",
+    "question": "Convert 3/8 to a decimal.",
+    "answer": "0.375",
+    "hints": [
+      "Divide 3 by 8."
+    ],
+    "solution": "3 ÷ 8 = 0.375.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "fraction-decimal-equivalence-gen-m11",
+    "topicId": "fraction-decimal-equivalence",
+    "difficulty": "medium",
+    "question": "Convert 0.375 to a fraction in simplest form.",
+    "answer": "3/8",
+    "hints": [
+      "0.375 means 375 out of 1000. Simplify."
+    ],
+    "solution": "0.375 = 3/8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "fraction-decimal-equivalence-gen-m12",
+    "topicId": "fraction-decimal-equivalence",
+    "difficulty": "medium",
+    "question": "Convert 1/8 to a decimal.",
+    "answer": "0.125",
+    "hints": [
+      "Divide 1 by 8."
+    ],
+    "solution": "1 ÷ 8 = 0.125.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "fraction-decimal-equivalence-gen-m13",
+    "topicId": "fraction-decimal-equivalence",
+    "difficulty": "medium",
+    "question": "Convert 3/8 to a decimal.",
+    "answer": "0.375",
+    "hints": [
+      "Divide 3 by 8."
+    ],
+    "solution": "3 ÷ 8 = 0.375.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "fraction-decimal-equivalence-gen-m14",
+    "topicId": "fraction-decimal-equivalence",
+    "difficulty": "medium",
+    "question": "Convert 1/8 to a decimal.",
+    "answer": "0.125",
+    "hints": [
+      "Divide 1 by 8."
+    ],
+    "solution": "1 ÷ 8 = 0.125.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "fraction-decimal-equivalence-gen-m15",
+    "topicId": "fraction-decimal-equivalence",
+    "difficulty": "medium",
+    "question": "Convert 0.875 to a fraction in simplest form.",
+    "answer": "7/8",
+    "hints": [
+      "0.875 means 875 out of 1000. Simplify."
+    ],
+    "solution": "0.875 = 7/8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "fraction-decimal-equivalence-gen-m16",
+    "topicId": "fraction-decimal-equivalence",
+    "difficulty": "medium",
+    "question": "Convert 0.125 to a fraction in simplest form.",
+    "answer": "1/8",
+    "hints": [
+      "0.125 means 125 out of 1000. Simplify."
+    ],
+    "solution": "0.125 = 1/8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "fraction-decimal-equivalence-gen-m17",
+    "topicId": "fraction-decimal-equivalence",
+    "difficulty": "medium",
+    "question": "Convert 0.875 to a fraction in simplest form.",
+    "answer": "7/8",
+    "hints": [
+      "0.875 means 875 out of 1000. Simplify."
+    ],
+    "solution": "0.875 = 7/8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "fraction-decimal-equivalence-gen-m18",
+    "topicId": "fraction-decimal-equivalence",
+    "difficulty": "medium",
+    "question": "Convert 3/5 to a decimal.",
+    "answer": "0.6",
+    "hints": [
+      "Divide 3 by 5."
+    ],
+    "solution": "3 ÷ 5 = 0.6.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "fraction-decimal-equivalence-gen-m19",
+    "topicId": "fraction-decimal-equivalence",
+    "difficulty": "medium",
+    "question": "Convert 0.375 to a fraction in simplest form.",
+    "answer": "3/8",
+    "hints": [
+      "0.375 means 375 out of 1000. Simplify."
+    ],
+    "solution": "0.375 = 3/8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "fraction-decimal-equivalence-gen-h0",
+    "topicId": "fraction-decimal-equivalence",
+    "difficulty": "hard",
+    "question": "Convert 0.167 to a fraction in simplest form.",
+    "answer": "1/6",
+    "hints": [
+      "0.167 means 167 out of 1000. Simplify."
+    ],
+    "solution": "0.167 = 1/6.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "fraction-decimal-equivalence-gen-h1",
+    "topicId": "fraction-decimal-equivalence",
+    "difficulty": "hard",
+    "question": "Convert 0.333 to a fraction in simplest form.",
+    "answer": "1/3",
+    "hints": [
+      "0.333 means 333 out of 1000. Simplify."
+    ],
+    "solution": "0.333 = 1/3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "fraction-decimal-equivalence-gen-h2",
+    "topicId": "fraction-decimal-equivalence",
+    "difficulty": "hard",
+    "question": "Convert 5/8 to a decimal.",
+    "answer": "0.625",
+    "hints": [
+      "Divide 5 by 8."
+    ],
+    "solution": "5 ÷ 8 = 0.625.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "fraction-decimal-equivalence-gen-h3",
+    "topicId": "fraction-decimal-equivalence",
+    "difficulty": "hard",
+    "question": "Convert 0.625 to a fraction in simplest form.",
+    "answer": "5/8",
+    "hints": [
+      "0.625 means 625 out of 1000. Simplify."
+    ],
+    "solution": "0.625 = 5/8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "fraction-decimal-equivalence-gen-h4",
+    "topicId": "fraction-decimal-equivalence",
+    "difficulty": "hard",
+    "question": "Convert 1/3 to a decimal.",
+    "answer": "0.333",
+    "hints": [
+      "Divide 1 by 3."
+    ],
+    "solution": "1 ÷ 3 = 0.333.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "fraction-decimal-equivalence-gen-h5",
+    "topicId": "fraction-decimal-equivalence",
+    "difficulty": "hard",
+    "question": "Convert 0.333 to a fraction in simplest form.",
+    "answer": "1/3",
+    "hints": [
+      "0.333 means 333 out of 1000. Simplify."
+    ],
+    "solution": "0.333 = 1/3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "fraction-decimal-equivalence-gen-h6",
+    "topicId": "fraction-decimal-equivalence",
+    "difficulty": "hard",
+    "question": "Convert 5/8 to a decimal.",
+    "answer": "0.625",
+    "hints": [
+      "Divide 5 by 8."
+    ],
+    "solution": "5 ÷ 8 = 0.625.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "fraction-decimal-equivalence-gen-h7",
+    "topicId": "fraction-decimal-equivalence",
+    "difficulty": "hard",
+    "question": "Convert 0.167 to a fraction in simplest form.",
+    "answer": "1/6",
+    "hints": [
+      "0.167 means 167 out of 1000. Simplify."
+    ],
+    "solution": "0.167 = 1/6.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "fraction-decimal-equivalence-gen-h8",
+    "topicId": "fraction-decimal-equivalence",
+    "difficulty": "hard",
+    "question": "Convert 0.167 to a fraction in simplest form.",
+    "answer": "1/6",
+    "hints": [
+      "0.167 means 167 out of 1000. Simplify."
+    ],
+    "solution": "0.167 = 1/6.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "fraction-decimal-equivalence-gen-h9",
+    "topicId": "fraction-decimal-equivalence",
+    "difficulty": "hard",
+    "question": "Convert 5/8 to a decimal.",
+    "answer": "0.625",
+    "hints": [
+      "Divide 5 by 8."
+    ],
+    "solution": "5 ÷ 8 = 0.625.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "fraction-decimal-equivalence-gen-h10",
+    "topicId": "fraction-decimal-equivalence",
+    "difficulty": "hard",
+    "question": "Convert 1/3 to a decimal.",
+    "answer": "0.333",
+    "hints": [
+      "Divide 1 by 3."
+    ],
+    "solution": "1 ÷ 3 = 0.333.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "fraction-decimal-equivalence-gen-h11",
+    "topicId": "fraction-decimal-equivalence",
+    "difficulty": "hard",
+    "question": "Convert 1/6 to a decimal.",
+    "answer": "0.167",
+    "hints": [
+      "Divide 1 by 6."
+    ],
+    "solution": "1 ÷ 6 = 0.167.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "fraction-decimal-equivalence-gen-h12",
+    "topicId": "fraction-decimal-equivalence",
+    "difficulty": "hard",
+    "question": "Convert 0.333 to a fraction in simplest form.",
+    "answer": "1/3",
+    "hints": [
+      "0.333 means 333 out of 1000. Simplify."
+    ],
+    "solution": "0.333 = 1/3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "fraction-decimal-equivalence-gen-h13",
+    "topicId": "fraction-decimal-equivalence",
+    "difficulty": "hard",
+    "question": "Convert 0.167 to a fraction in simplest form.",
+    "answer": "1/6",
+    "hints": [
+      "0.167 means 167 out of 1000. Simplify."
+    ],
+    "solution": "0.167 = 1/6.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "fraction-decimal-equivalence-gen-h14",
+    "topicId": "fraction-decimal-equivalence",
+    "difficulty": "hard",
+    "question": "Convert 1/3 to a decimal.",
+    "answer": "0.333",
+    "hints": [
+      "Divide 1 by 3."
+    ],
+    "solution": "1 ÷ 3 = 0.333.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  }
+]

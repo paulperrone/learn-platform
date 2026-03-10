@@ -1,0 +1,209 @@
+[
+  {
+    "id": "congruence-similarity-sup-e0",
+    "topicId": "congruence-similarity",
+    "difficulty": "easy",
+    "question": "Two triangles have the exact same shape and size. Are they congruent, similar, or both?",
+    "answer": "both",
+    "hints": [
+      "Congruent means same shape AND size. Similar means same shape (but possibly different size)."
+    ],
+    "solution": "Both. Congruent figures have the same shape and size. All congruent figures are also similar (same shape), so these triangles are both congruent and similar.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "congruence-similarity-sup-e1",
+    "topicId": "congruence-similarity",
+    "difficulty": "easy",
+    "question": "Triangle A has sides 3, 4, 5. Triangle B has sides 6, 8, 10. Are these triangles similar? Answer yes or no.",
+    "answer": "yes",
+    "hints": [
+      "Check if the ratios of corresponding sides are equal.",
+      "3/6 = ?, 4/8 = ?, 5/10 = ?"
+    ],
+    "solution": "Yes. The ratios are 3/6 = 1/2, 4/8 = 1/2, 5/10 = 1/2. All ratios are equal, so the triangles are similar with a scale factor of 1:2.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "congruence-similarity-sup-e2",
+    "topicId": "congruence-similarity",
+    "difficulty": "easy",
+    "question": "What is the difference between congruent and similar figures?",
+    "answer": "Congruent figures have the same shape AND size. Similar figures have the same shape but can be different sizes.",
+    "hints": [
+      "Think of congruent as identical copies and similar as scaled copies."
+    ],
+    "solution": "Congruent figures are identical — same shape and same size. All corresponding sides and angles are equal. Similar figures have the same shape but can differ in size — corresponding angles are equal, and corresponding sides are proportional.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "congruence-similarity-sup-e3",
+    "topicId": "congruence-similarity",
+    "difficulty": "easy",
+    "question": "Two rectangles both have angles of 90°. Rectangle A is 2 × 4 and Rectangle B is 3 × 6. Are they similar? Answer yes or no.",
+    "answer": "yes",
+    "hints": [
+      "Check if the ratios of corresponding sides are equal.",
+      "2/3 = ? and 4/6 = ?"
+    ],
+    "solution": "Yes. 2/3 = 4/6 = 2/3. The corresponding sides are proportional, and all angles are 90°, so the rectangles are similar with scale factor 2:3.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "congruence-similarity-sup-e4",
+    "topicId": "congruence-similarity",
+    "difficulty": "easy",
+    "question": "A photo is 4 inches by 6 inches. You enlarge it to 8 inches by 12 inches. Is the enlargement similar to the original? Answer yes or no.",
+    "answer": "yes",
+    "hints": [
+      "Check if both dimensions are multiplied by the same factor."
+    ],
+    "solution": "Yes. 4→8 (×2) and 6→12 (×2). Both dimensions are multiplied by 2, so the enlargement is similar to the original with a scale factor of 2.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "congruence-similarity-sup-m0",
+    "topicId": "congruence-similarity",
+    "difficulty": "medium",
+    "question": "Triangle PQR has sides 5, 12, 13. Triangle XYZ has sides 10, 24, 26. Are they similar? If so, what is the scale factor from PQR to XYZ?",
+    "answer": "Yes, they are similar. Scale factor = 2.",
+    "hints": [
+      "Compare corresponding sides: 5/10, 12/24, 13/26.",
+      "If all ratios are equal, the triangles are similar."
+    ],
+    "solution": "5/10 = 1/2, 12/24 = 1/2, 13/26 = 1/2. All ratios are equal, so the triangles are similar. The scale factor from PQR to XYZ is 2 (each side of XYZ is twice the corresponding side of PQR).",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "congruence-similarity-sup-m1",
+    "topicId": "congruence-similarity",
+    "difficulty": "medium",
+    "question": "Two similar triangles have a scale factor of 3:5. The smaller triangle has a perimeter of 24 cm. What is the perimeter of the larger triangle?",
+    "answer": "40 cm",
+    "hints": [
+      "Perimeters of similar figures scale by the same factor as corresponding sides.",
+      "24 × (5/3) = ?"
+    ],
+    "solution": "Perimeters scale by the same ratio as side lengths. Perimeter of larger = 24 × (5/3) = 40 cm.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "congruence-similarity-sup-m2",
+    "topicId": "congruence-similarity",
+    "difficulty": "medium",
+    "question": "Rectangle A is 3 × 5. Rectangle B is 6 × 9. Are they similar? Answer yes or no and explain.",
+    "answer": "no",
+    "hints": [
+      "Check if the ratios of corresponding sides are equal.",
+      "3/6 = 1/2, but 5/9 ≈ 0.556. Are these equal?"
+    ],
+    "solution": "No. 3/6 = 1/2 = 0.5, but 5/9 ≈ 0.556. The ratios are not equal, so the rectangles are not similar. For similarity, both pairs of corresponding sides must have the same ratio.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "congruence-similarity-sup-m3",
+    "topicId": "congruence-similarity",
+    "difficulty": "medium",
+    "question": "Two triangles have the same three angle measures: 40°, 60°, 80°. Must they be similar? Must they be congruent?",
+    "answer": "They must be similar (same angles guarantee similarity for triangles). They are NOT necessarily congruent — they could be different sizes.",
+    "hints": [
+      "For triangles, same angles = same shape (AA similarity).",
+      "But same shape doesn't mean same size."
+    ],
+    "solution": "They must be similar. For triangles, having the same angles (AA similarity) guarantees similarity. However, they are not necessarily congruent — one could be larger than the other while maintaining the same angles. For example, triangles with angles 40-60-80 could have sides 3-4-5 or 6-8-10.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "congruence-similarity-sup-m4",
+    "topicId": "congruence-similarity",
+    "difficulty": "medium",
+    "question": "Triangle DEF is similar to triangle GHI with scale factor 4:1. If the area of triangle DEF is 48 square cm, what is the area of triangle GHI?",
+    "answer": "3 square cm",
+    "hints": [
+      "Area scales by the SQUARE of the linear scale factor.",
+      "Scale factor = 4:1, so area ratio = 16:1."
+    ],
+    "solution": "The area ratio is the square of the linear scale factor: (4)² : (1)² = 16:1. If DEF's area = 48, then GHI's area = 48/16 = 3 square cm.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "congruence-similarity-sup-h0",
+    "topicId": "congruence-similarity",
+    "difficulty": "hard",
+    "question": "A student says: 'All squares are similar to each other.' Is this true? Also, are all rectangles similar to each other? Explain both.",
+    "answer": "All squares ARE similar (all have 90° angles and all sides equal, so the ratio is always 1:1 within each square, giving proportional sides). NOT all rectangles are similar — a 1×2 rectangle and a 1×3 rectangle have different proportions.",
+    "hints": [
+      "For squares, every square has the same shape — what's the ratio of sides?",
+      "For rectangles, think of a very long thin one vs a nearly square one."
+    ],
+    "solution": "All squares are similar. Every square has four 90° angles and four equal sides. Any two squares have sides in the ratio s₁:s₂, which is the same for all four sides. So corresponding sides are proportional. Not all rectangles are similar. A 1×2 rectangle and a 1×3 rectangle have different proportions (1/2 ≠ 1/3). Similar rectangles must have the same length-to-width ratio.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "congruence-similarity-sup-h1",
+    "topicId": "congruence-similarity",
+    "difficulty": "hard",
+    "question": "Two similar triangles have areas in the ratio 9:25. What is the ratio of their corresponding sides?",
+    "answer": "3:5",
+    "hints": [
+      "Area ratio = (side ratio)².",
+      "Take the square root of the area ratio to find the side ratio."
+    ],
+    "solution": "Since area scales as the square of the linear scale factor: side ratio = √(area ratio) = √(9/25) = 3/5. The corresponding sides are in the ratio 3:5.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "congruence-similarity-sup-h2",
+    "topicId": "congruence-similarity",
+    "difficulty": "hard",
+    "question": "Triangle ABC has sides 8, 15, 17. Triangle DEF has sides 15, 17, 8. Are these triangles congruent? Explain carefully.",
+    "answer": "Yes, they are congruent. They have the same three side lengths (8, 15, 17), just listed in a different order. By SSS (side-side-side), triangles with the same three side lengths are congruent.",
+    "hints": [
+      "Congruence requires the same three side lengths, but they can correspond in any order.",
+      "SSS: if three sides match, the triangles are congruent."
+    ],
+    "solution": "Yes, they are congruent by SSS (side-side-side). Both triangles have sides of length 8, 15, and 17. The fact that the sides are listed in a different order just means the correspondence is different (A↔F, B↔D, C↔E, for example). Three matching side lengths guarantee congruence regardless of labeling order.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "congruence-similarity-sup-h3",
+    "topicId": "congruence-similarity",
+    "difficulty": "hard",
+    "question": "A flagpole casts a 15-foot shadow. At the same time, a 6-foot person casts a 4-foot shadow. Using similar triangles, find the height of the flagpole.",
+    "answer": "22.5 feet",
+    "hints": [
+      "The sun creates similar triangles: the person and their shadow form one triangle, the flagpole and its shadow form another.",
+      "Set up a proportion: height/shadow = height/shadow."
+    ],
+    "solution": "The flagpole and its shadow form a triangle similar to the person and their shadow (same sun angle). Height/shadow ratios are equal: h/15 = 6/4. Cross-multiply: 4h = 90. h = 22.5 feet.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "congruence-similarity-sup-h4",
+    "topicId": "congruence-similarity",
+    "difficulty": "hard",
+    "question": "A student claims: 'If two triangles have two pairs of equal sides, they must be similar.' Is this correct? Give an example or counterexample.",
+    "answer": "Incorrect. Triangle A with sides 3, 4, 5 and Triangle B with sides 3, 4, 6 share two side lengths but are NOT similar because the ratios 3/3, 4/4, 5/6 are not all equal.",
+    "hints": [
+      "Similar requires ALL corresponding sides to be proportional.",
+      "Can you find two triangles that share two sides but have different third sides?"
+    ],
+    "solution": "Incorrect. Counterexample: Triangle A (3, 4, 5) and Triangle B (3, 4, 6). They share sides 3 and 4, but the third sides differ (5 vs 6). For similarity, we'd need 3/3 = 4/4 = 5/6, but 1 ≠ 1 ≠ 0.833. Having two matching sides doesn't guarantee the third side makes the ratios proportional. Two matching sides is not sufficient for similarity.",
+    "cognitiveDemand": "error-analysis",
+    "source": "generated"
+  }
+]

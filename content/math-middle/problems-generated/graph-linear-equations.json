@@ -1,0 +1,652 @@
+[
+  {
+    "id": "graph-linear-equations-gen-e0",
+    "topicId": "graph-linear-equations",
+    "difficulty": "easy",
+    "question": "For y = 2x − 1, what is y when x = 2?",
+    "answer": "3",
+    "hints": [
+      "Substitute x = 2."
+    ],
+    "solution": "y = 2(2) − 1 = 4 − 1 = 3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-linear-equations-gen-e1",
+    "topicId": "graph-linear-equations",
+    "difficulty": "easy",
+    "question": "For y = -3x − 5, what is y when x = 5?",
+    "answer": "-20",
+    "hints": [
+      "Substitute x = 5."
+    ],
+    "solution": "y = -3(5) − 5 = -15 − 5 = -20.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-linear-equations-gen-e2",
+    "topicId": "graph-linear-equations",
+    "difficulty": "easy",
+    "question": "For y = 2x − 2, what is y when x = 2?",
+    "answer": "2",
+    "hints": [
+      "Substitute x = 2."
+    ],
+    "solution": "y = 2(2) − 2 = 4 − 2 = 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-linear-equations-gen-e3",
+    "topicId": "graph-linear-equations",
+    "difficulty": "easy",
+    "question": "For y = -3x + 2, what is y when x = 3?",
+    "answer": "-7",
+    "hints": [
+      "Substitute x = 3."
+    ],
+    "solution": "y = -3(3) + 2 = -9 + 2 = -7.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-linear-equations-gen-e4",
+    "topicId": "graph-linear-equations",
+    "difficulty": "easy",
+    "question": "For y = 2x − 2, what is y when x = 5?",
+    "answer": "8",
+    "hints": [
+      "Substitute x = 5."
+    ],
+    "solution": "y = 2(5) − 2 = 10 − 2 = 8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-linear-equations-gen-e5",
+    "topicId": "graph-linear-equations",
+    "difficulty": "easy",
+    "question": "For y = 0x − 3, what is y when x = 2?",
+    "answer": "-3",
+    "hints": [
+      "Substitute x = 2."
+    ],
+    "solution": "y = 0(2) − 3 = 0 − 3 = -3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-linear-equations-gen-e6",
+    "topicId": "graph-linear-equations",
+    "difficulty": "easy",
+    "question": "For y = 1x − 2, what is y when x = 2?",
+    "answer": "0",
+    "hints": [
+      "Substitute x = 2."
+    ],
+    "solution": "y = 1(2) − 2 = 2 − 2 = 0.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-linear-equations-gen-e7",
+    "topicId": "graph-linear-equations",
+    "difficulty": "easy",
+    "question": "For y = -3x + 5, what is y when x = 4?",
+    "answer": "-7",
+    "hints": [
+      "Substitute x = 4."
+    ],
+    "solution": "y = -3(4) + 5 = -12 + 5 = -7.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-linear-equations-gen-e8",
+    "topicId": "graph-linear-equations",
+    "difficulty": "easy",
+    "question": "For y = -2x + 0, what is y when x = 4?",
+    "answer": "-8",
+    "hints": [
+      "Substitute x = 4."
+    ],
+    "solution": "y = -2(4) + 0 = -8 + 0 = -8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-linear-equations-gen-e9",
+    "topicId": "graph-linear-equations",
+    "difficulty": "easy",
+    "question": "For y = -1x + 5, what is y when x = 3?",
+    "answer": "2",
+    "hints": [
+      "Substitute x = 3."
+    ],
+    "solution": "y = -1(3) + 5 = -3 + 5 = 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-linear-equations-gen-e10",
+    "topicId": "graph-linear-equations",
+    "difficulty": "easy",
+    "question": "For y = 3x − 3, what is y when x = 4?",
+    "answer": "9",
+    "hints": [
+      "Substitute x = 4."
+    ],
+    "solution": "y = 3(4) − 3 = 12 − 3 = 9.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-linear-equations-gen-e11",
+    "topicId": "graph-linear-equations",
+    "difficulty": "easy",
+    "question": "For y = -3x − 1, what is y when x = 2?",
+    "answer": "-7",
+    "hints": [
+      "Substitute x = 2."
+    ],
+    "solution": "y = -3(2) − 1 = -6 − 1 = -7.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-linear-equations-gen-e12",
+    "topicId": "graph-linear-equations",
+    "difficulty": "easy",
+    "question": "For y = 1x − 4, what is y when x = 2?",
+    "answer": "-2",
+    "hints": [
+      "Substitute x = 2."
+    ],
+    "solution": "y = 1(2) − 4 = 2 − 4 = -2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-linear-equations-gen-e13",
+    "topicId": "graph-linear-equations",
+    "difficulty": "easy",
+    "question": "For y = -3x + 0, what is y when x = 4?",
+    "answer": "-12",
+    "hints": [
+      "Substitute x = 4."
+    ],
+    "solution": "y = -3(4) + 0 = -12 + 0 = -12.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-linear-equations-gen-e14",
+    "topicId": "graph-linear-equations",
+    "difficulty": "easy",
+    "question": "For y = 3x − 4, what is y when x = 2?",
+    "answer": "2",
+    "hints": [
+      "Substitute x = 2."
+    ],
+    "solution": "y = 3(2) − 4 = 6 − 4 = 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-linear-equations-gen-m0",
+    "topicId": "graph-linear-equations",
+    "difficulty": "medium",
+    "question": "For y = -2x − 3, what is y when x = 1?",
+    "answer": "-5",
+    "hints": [
+      "Substitute x = 1."
+    ],
+    "solution": "y = -2(1) − 3 = -2 − 3 = -5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-linear-equations-gen-m1",
+    "topicId": "graph-linear-equations",
+    "difficulty": "medium",
+    "question": "For y = 3x − 1, what is y when x = 4?",
+    "answer": "11",
+    "hints": [
+      "Substitute x = 4."
+    ],
+    "solution": "y = 3(4) − 1 = 12 − 1 = 11.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-linear-equations-gen-m2",
+    "topicId": "graph-linear-equations",
+    "difficulty": "medium",
+    "question": "For y = 3x − 4, what is y when x = 4?",
+    "answer": "8",
+    "hints": [
+      "Substitute x = 4."
+    ],
+    "solution": "y = 3(4) − 4 = 12 − 4 = 8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-linear-equations-gen-m3",
+    "topicId": "graph-linear-equations",
+    "difficulty": "medium",
+    "question": "For y = 3x + 1, what is y when x = 5?",
+    "answer": "16",
+    "hints": [
+      "Substitute x = 5."
+    ],
+    "solution": "y = 3(5) + 1 = 15 + 1 = 16.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-linear-equations-gen-m4",
+    "topicId": "graph-linear-equations",
+    "difficulty": "medium",
+    "question": "For y = -1x + 1, what is y when x = 2?",
+    "answer": "-1",
+    "hints": [
+      "Substitute x = 2."
+    ],
+    "solution": "y = -1(2) + 1 = -2 + 1 = -1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-linear-equations-gen-m5",
+    "topicId": "graph-linear-equations",
+    "difficulty": "medium",
+    "question": "For y = 1x + 0, what is y when x = 5?",
+    "answer": "5",
+    "hints": [
+      "Substitute x = 5."
+    ],
+    "solution": "y = 1(5) + 0 = 5 + 0 = 5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-linear-equations-gen-m6",
+    "topicId": "graph-linear-equations",
+    "difficulty": "medium",
+    "question": "For y = 2x − 3, what is y when x = 1?",
+    "answer": "-1",
+    "hints": [
+      "Substitute x = 1."
+    ],
+    "solution": "y = 2(1) − 3 = 2 − 3 = -1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-linear-equations-gen-m7",
+    "topicId": "graph-linear-equations",
+    "difficulty": "medium",
+    "question": "For y = -1x − 1, what is y when x = 5?",
+    "answer": "-6",
+    "hints": [
+      "Substitute x = 5."
+    ],
+    "solution": "y = -1(5) − 1 = -5 − 1 = -6.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-linear-equations-gen-m8",
+    "topicId": "graph-linear-equations",
+    "difficulty": "medium",
+    "question": "For y = 2x − 1, what is y when x = 2?",
+    "answer": "3",
+    "hints": [
+      "Substitute x = 2."
+    ],
+    "solution": "y = 2(2) − 1 = 4 − 1 = 3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-linear-equations-gen-m9",
+    "topicId": "graph-linear-equations",
+    "difficulty": "medium",
+    "question": "For y = -2x + 2, what is y when x = 5?",
+    "answer": "-8",
+    "hints": [
+      "Substitute x = 5."
+    ],
+    "solution": "y = -2(5) + 2 = -10 + 2 = -8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-linear-equations-gen-m10",
+    "topicId": "graph-linear-equations",
+    "difficulty": "medium",
+    "question": "For y = -1x + 4, what is y when x = 5?",
+    "answer": "-1",
+    "hints": [
+      "Substitute x = 5."
+    ],
+    "solution": "y = -1(5) + 4 = -5 + 4 = -1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-linear-equations-gen-m11",
+    "topicId": "graph-linear-equations",
+    "difficulty": "medium",
+    "question": "For y = 0x − 3, what is y when x = 2?",
+    "answer": "-3",
+    "hints": [
+      "Substitute x = 2."
+    ],
+    "solution": "y = 0(2) − 3 = 0 − 3 = -3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-linear-equations-gen-m12",
+    "topicId": "graph-linear-equations",
+    "difficulty": "medium",
+    "question": "For y = 2x + 0, what is y when x = 1?",
+    "answer": "2",
+    "hints": [
+      "Substitute x = 1."
+    ],
+    "solution": "y = 2(1) + 0 = 2 + 0 = 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-linear-equations-gen-m13",
+    "topicId": "graph-linear-equations",
+    "difficulty": "medium",
+    "question": "For y = 1x − 4, what is y when x = 4?",
+    "answer": "0",
+    "hints": [
+      "Substitute x = 4."
+    ],
+    "solution": "y = 1(4) − 4 = 4 − 4 = 0.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-linear-equations-gen-m14",
+    "topicId": "graph-linear-equations",
+    "difficulty": "medium",
+    "question": "For y = 3x + 4, what is y when x = 2?",
+    "answer": "10",
+    "hints": [
+      "Substitute x = 2."
+    ],
+    "solution": "y = 3(2) + 4 = 6 + 4 = 10.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-linear-equations-gen-m15",
+    "topicId": "graph-linear-equations",
+    "difficulty": "medium",
+    "question": "For y = -2x + 1, what is y when x = 3?",
+    "answer": "-5",
+    "hints": [
+      "Substitute x = 3."
+    ],
+    "solution": "y = -2(3) + 1 = -6 + 1 = -5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-linear-equations-gen-m16",
+    "topicId": "graph-linear-equations",
+    "difficulty": "medium",
+    "question": "For y = -1x − 5, what is y when x = 5?",
+    "answer": "-10",
+    "hints": [
+      "Substitute x = 5."
+    ],
+    "solution": "y = -1(5) − 5 = -5 − 5 = -10.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-linear-equations-gen-m17",
+    "topicId": "graph-linear-equations",
+    "difficulty": "medium",
+    "question": "For y = 3x + 4, what is y when x = 2?",
+    "answer": "10",
+    "hints": [
+      "Substitute x = 2."
+    ],
+    "solution": "y = 3(2) + 4 = 6 + 4 = 10.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-linear-equations-gen-m18",
+    "topicId": "graph-linear-equations",
+    "difficulty": "medium",
+    "question": "For y = 0x + 2, what is y when x = 3?",
+    "answer": "2",
+    "hints": [
+      "Substitute x = 3."
+    ],
+    "solution": "y = 0(3) + 2 = 0 + 2 = 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-linear-equations-gen-m19",
+    "topicId": "graph-linear-equations",
+    "difficulty": "medium",
+    "question": "For y = -3x + 5, what is y when x = 4?",
+    "answer": "-7",
+    "hints": [
+      "Substitute x = 4."
+    ],
+    "solution": "y = -3(4) + 5 = -12 + 5 = -7.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-linear-equations-gen-h0",
+    "topicId": "graph-linear-equations",
+    "difficulty": "hard",
+    "question": "For y = -2x − 3, what is y when x = 4?",
+    "answer": "-11",
+    "hints": [
+      "Substitute x = 4."
+    ],
+    "solution": "y = -2(4) − 3 = -8 − 3 = -11.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-linear-equations-gen-h1",
+    "topicId": "graph-linear-equations",
+    "difficulty": "hard",
+    "question": "For y = 3x + 3, what is y when x = 4?",
+    "answer": "15",
+    "hints": [
+      "Substitute x = 4."
+    ],
+    "solution": "y = 3(4) + 3 = 12 + 3 = 15.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-linear-equations-gen-h2",
+    "topicId": "graph-linear-equations",
+    "difficulty": "hard",
+    "question": "For y = 0x + 3, what is y when x = 3?",
+    "answer": "3",
+    "hints": [
+      "Substitute x = 3."
+    ],
+    "solution": "y = 0(3) + 3 = 0 + 3 = 3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-linear-equations-gen-h3",
+    "topicId": "graph-linear-equations",
+    "difficulty": "hard",
+    "question": "For y = 2x − 1, what is y when x = 1?",
+    "answer": "1",
+    "hints": [
+      "Substitute x = 1."
+    ],
+    "solution": "y = 2(1) − 1 = 2 − 1 = 1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-linear-equations-gen-h4",
+    "topicId": "graph-linear-equations",
+    "difficulty": "hard",
+    "question": "For y = 1x + 2, what is y when x = 3?",
+    "answer": "5",
+    "hints": [
+      "Substitute x = 3."
+    ],
+    "solution": "y = 1(3) + 2 = 3 + 2 = 5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-linear-equations-gen-h5",
+    "topicId": "graph-linear-equations",
+    "difficulty": "hard",
+    "question": "For y = 1x + 1, what is y when x = 3?",
+    "answer": "4",
+    "hints": [
+      "Substitute x = 3."
+    ],
+    "solution": "y = 1(3) + 1 = 3 + 1 = 4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-linear-equations-gen-h6",
+    "topicId": "graph-linear-equations",
+    "difficulty": "hard",
+    "question": "For y = 1x + 0, what is y when x = 1?",
+    "answer": "1",
+    "hints": [
+      "Substitute x = 1."
+    ],
+    "solution": "y = 1(1) + 0 = 1 + 0 = 1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-linear-equations-gen-h7",
+    "topicId": "graph-linear-equations",
+    "difficulty": "hard",
+    "question": "For y = 3x − 3, what is y when x = 3?",
+    "answer": "6",
+    "hints": [
+      "Substitute x = 3."
+    ],
+    "solution": "y = 3(3) − 3 = 9 − 3 = 6.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-linear-equations-gen-h8",
+    "topicId": "graph-linear-equations",
+    "difficulty": "hard",
+    "question": "For y = -1x + 1, what is y when x = 1?",
+    "answer": "0",
+    "hints": [
+      "Substitute x = 1."
+    ],
+    "solution": "y = -1(1) + 1 = -1 + 1 = 0.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-linear-equations-gen-h9",
+    "topicId": "graph-linear-equations",
+    "difficulty": "hard",
+    "question": "For y = 1x − 3, what is y when x = 1?",
+    "answer": "-2",
+    "hints": [
+      "Substitute x = 1."
+    ],
+    "solution": "y = 1(1) − 3 = 1 − 3 = -2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-linear-equations-gen-h10",
+    "topicId": "graph-linear-equations",
+    "difficulty": "hard",
+    "question": "For y = -1x − 5, what is y when x = 5?",
+    "answer": "-10",
+    "hints": [
+      "Substitute x = 5."
+    ],
+    "solution": "y = -1(5) − 5 = -5 − 5 = -10.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-linear-equations-gen-h11",
+    "topicId": "graph-linear-equations",
+    "difficulty": "hard",
+    "question": "For y = 0x − 4, what is y when x = 2?",
+    "answer": "-4",
+    "hints": [
+      "Substitute x = 2."
+    ],
+    "solution": "y = 0(2) − 4 = 0 − 4 = -4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-linear-equations-gen-h12",
+    "topicId": "graph-linear-equations",
+    "difficulty": "hard",
+    "question": "For y = 2x − 1, what is y when x = 5?",
+    "answer": "9",
+    "hints": [
+      "Substitute x = 5."
+    ],
+    "solution": "y = 2(5) − 1 = 10 − 1 = 9.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-linear-equations-gen-h13",
+    "topicId": "graph-linear-equations",
+    "difficulty": "hard",
+    "question": "For y = -2x − 3, what is y when x = 1?",
+    "answer": "-5",
+    "hints": [
+      "Substitute x = 1."
+    ],
+    "solution": "y = -2(1) − 3 = -2 − 3 = -5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-linear-equations-gen-h14",
+    "topicId": "graph-linear-equations",
+    "difficulty": "hard",
+    "question": "For y = 1x + 4, what is y when x = 4?",
+    "answer": "8",
+    "hints": [
+      "Substitute x = 4."
+    ],
+    "solution": "y = 1(4) + 4 = 4 + 4 = 8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  }
+]

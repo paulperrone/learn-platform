@@ -1,0 +1,205 @@
+[
+  {
+    "id": "intro-arrays-sup-e0",
+    "topicId": "intro-arrays",
+    "difficulty": "easy",
+    "question": "There are 3 rows of chairs with 2 chairs in each row. How many chairs are there in all?",
+    "answer": "6",
+    "hints": [
+      "Count by 2s: 2, 4, 6. Or add: 2 + 2 + 2."
+    ],
+    "solution": "3 rows of 2 = 3 x 2 = 6 chairs. You can also count: 2 + 2 + 2 = 6.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "intro-arrays-sup-e1",
+    "topicId": "intro-arrays",
+    "difficulty": "easy",
+    "question": "Look at this array: ★★★★ / ★★★★ / ★★★★ (3 rows, 4 in each row). How many rows are there?",
+    "answer": "3",
+    "hints": [
+      "Count the horizontal lines of stars."
+    ],
+    "solution": "There are 3 rows. Each row has 4 stars.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "intro-arrays-sup-e2",
+    "topicId": "intro-arrays",
+    "difficulty": "easy",
+    "question": "There are 4 bags with 5 apples in each bag. How many equal groups are there?",
+    "answer": "4",
+    "hints": [
+      "Each bag is one equal group."
+    ],
+    "solution": "There are 4 equal groups (bags), with 5 apples in each group.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "intro-arrays-sup-e3",
+    "topicId": "intro-arrays",
+    "difficulty": "easy",
+    "question": "2 groups of 3 is how many in all?",
+    "answer": "6",
+    "hints": [
+      "Add: 3 + 3, or count by 3s: 3, 6."
+    ],
+    "solution": "2 groups of 3 = 3 + 3 = 6.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "intro-arrays-sup-e4",
+    "topicId": "intro-arrays",
+    "difficulty": "easy",
+    "question": "An array has 2 rows and 5 columns. How many items are in the array?",
+    "answer": "10",
+    "hints": [
+      "2 rows with 5 in each row: 5 + 5."
+    ],
+    "solution": "2 rows x 5 columns = 10 items. You can also add: 5 + 5 = 10.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "intro-arrays-sup-m0",
+    "topicId": "intro-arrays",
+    "difficulty": "medium",
+    "question": "Write a repeated addition sentence for 4 groups of 3.",
+    "answer": "3 + 3 + 3 + 3 = 12",
+    "hints": [
+      "4 groups means you write 3 four times with plus signs."
+    ],
+    "solution": "4 groups of 3 = 3 + 3 + 3 + 3 = 12. This is the same as 4 x 3 = 12.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "intro-arrays-sup-m1",
+    "topicId": "intro-arrays",
+    "difficulty": "medium",
+    "question": "A parking lot has 5 rows with 4 cars in each row. Write a multiplication sentence that shows how many cars there are.",
+    "answer": "5 x 4 = 20",
+    "hints": [
+      "Number of rows x number in each row = total.",
+      "5 x 4 = ?"
+    ],
+    "solution": "5 rows x 4 cars per row = 5 x 4 = 20 cars.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "intro-arrays-sup-m2",
+    "topicId": "intro-arrays",
+    "difficulty": "medium",
+    "question": "An array shows 3 x 4 = 12. If you turn the array sideways, what multiplication sentence does it show?",
+    "answer": "4 x 3 = 12",
+    "hints": [
+      "Turning the array sideways swaps rows and columns.",
+      "The total stays the same."
+    ],
+    "solution": "Turning a 3 x 4 array sideways gives a 4 x 3 array. Both equal 12. This shows that 3 x 4 = 4 x 3 (commutative property).",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "intro-arrays-sup-m3",
+    "topicId": "intro-arrays",
+    "difficulty": "medium",
+    "question": "There are 6 groups of 2 pencils. Can you also think of this as 2 groups of 6? Do both give the same total?",
+    "answer": "yes, both equal 12",
+    "hints": [
+      "6 x 2 = 12 and 2 x 6 = 12.",
+      "The order of multiplication does not change the total."
+    ],
+    "solution": "Yes, 6 groups of 2 = 12 and 2 groups of 6 = 12. The total is the same. 6 x 2 = 2 x 6 = 12.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "intro-arrays-sup-m4",
+    "topicId": "intro-arrays",
+    "difficulty": "medium",
+    "question": "Jake sees 3 shelves. Each shelf holds 5 books. He uses repeated addition: 5 + 5 + 5 = 15. Write this as a multiplication sentence.",
+    "answer": "3 x 5 = 15",
+    "hints": [
+      "He added 5 three times. That is 3 groups of 5."
+    ],
+    "solution": "5 + 5 + 5 = 3 x 5 = 15. There are 3 groups (shelves) of 5 books each.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "intro-arrays-sup-h0",
+    "topicId": "intro-arrays",
+    "difficulty": "hard",
+    "question": "A garden has 4 rows of flowers with 6 flowers in each row. If the gardener adds 1 more row of 6 flowers, how many flowers total?",
+    "answer": "30",
+    "hints": [
+      "Original: 4 x 6 = 24. New row adds 6 more.",
+      "Or think: 5 x 6."
+    ],
+    "solution": "Original: 4 rows x 6 = 24 flowers. Add 1 row: now 5 rows x 6 = 30 flowers. Or: 24 + 6 = 30.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "intro-arrays-sup-h1",
+    "topicId": "intro-arrays",
+    "difficulty": "hard",
+    "question": "You have 18 stickers to arrange in equal rows. Name two different arrays you could make.",
+    "answer": "2 x 9 and 3 x 6",
+    "hints": [
+      "Find pairs of numbers that multiply to 18.",
+      "Try: 1x18, 2x9, 3x6..."
+    ],
+    "solution": "18 stickers can be arranged as: 1x18, 2x9, 3x6, 6x3, 9x2, or 18x1. Two examples: 2 rows of 9 and 3 rows of 6.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "intro-arrays-sup-h2",
+    "topicId": "intro-arrays",
+    "difficulty": "hard",
+    "question": "An array of dots has 3 rows and 5 columns. If you cover up 1 row, how many dots can you still see? What multiplication sentence shows the uncovered dots?",
+    "answer": "10, 2 x 5 = 10",
+    "hints": [
+      "Original: 3 x 5 = 15. Covering 1 row removes 5 dots.",
+      "Now there are 2 rows of 5."
+    ],
+    "solution": "Original: 3 x 5 = 15. Remove 1 row: 2 rows left, each with 5. 2 x 5 = 10 visible dots.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "intro-arrays-sup-h3",
+    "topicId": "intro-arrays",
+    "difficulty": "hard",
+    "question": "A classroom has 5 rows of 4 desks. The teacher wants to rearrange into 4 rows. How many desks will be in each new row?",
+    "answer": "5",
+    "hints": [
+      "Total desks = 5 x 4 = 20.",
+      "Now arrange 20 desks into 4 equal rows: 20 / 4 = ?"
+    ],
+    "solution": "Total desks: 5 x 4 = 20. Rearranged into 4 rows: 20 / 4 = 5 desks per row. The array changes from 5x4 to 4x5.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "intro-arrays-sup-h4",
+    "topicId": "intro-arrays",
+    "difficulty": "hard",
+    "question": "Can you arrange 13 objects into an array with equal rows (more than 1 row, more than 1 per row)? Why or why not?",
+    "answer": "no, 13 is a prime number",
+    "hints": [
+      "Try to divide 13 evenly: 13/2, 13/3, 13/4...",
+      "Does any number divide evenly into 13?"
+    ],
+    "solution": "No, 13 cannot be arranged into an array with more than 1 row and more than 1 per row. 13 is only divisible by 1 and 13. This makes 13 a prime number. The only arrays possible are 1x13 or 13x1.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  }
+]

@@ -1,0 +1,212 @@
+[
+  {
+    "id": "percent-intro-sup-e0",
+    "topicId": "percent-intro",
+    "difficulty": "easy",
+    "question": "What does 'percent' literally mean?",
+    "answer": "per hundred",
+    "hints": [
+      "The word 'percent' comes from Latin.",
+      "'Per' means 'for each' and 'cent' means 'hundred' (like century or centimeter)."
+    ],
+    "solution": "'Percent' literally means 'per hundred.' So 25% means 25 per hundred, or 25 out of every 100.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "percent-intro-sup-e1",
+    "topicId": "percent-intro",
+    "difficulty": "easy",
+    "question": "Write 50% as a fraction in simplest form.",
+    "answer": "1/2",
+    "hints": [
+      "50% means 50 out of 100.",
+      "50/100 simplifies to 1/2."
+    ],
+    "solution": "50% = 50/100 = 1/2. Half of any amount is 50%.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "percent-intro-sup-e2",
+    "topicId": "percent-intro",
+    "difficulty": "easy",
+    "question": "If 100% of a pizza is the whole pizza, what fraction of the pizza is 25%?",
+    "answer": "1/4",
+    "hints": [
+      "25% means 25 out of 100.",
+      "25/100 simplifies — divide both by 25."
+    ],
+    "solution": "25% = 25/100 = 1/4. So 25% of a pizza is one quarter of the pizza.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "percent-intro-sup-e3",
+    "topicId": "percent-intro",
+    "difficulty": "easy",
+    "question": "Write 75% as a decimal.",
+    "answer": "0.75",
+    "hints": [
+      "To convert a percent to a decimal, divide by 100.",
+      "75 ÷ 100 = 0.75."
+    ],
+    "solution": "75% = 75 ÷ 100 = 0.75. To convert any percent to a decimal, move the decimal point two places to the left.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "percent-intro-sup-e4",
+    "topicId": "percent-intro",
+    "difficulty": "easy",
+    "question": "A grid has 100 squares. If 40 squares are shaded, what percent is shaded?",
+    "answer": "40%",
+    "hints": [
+      "Percent means 'per hundred.'",
+      "40 out of 100 squares = 40 per hundred."
+    ],
+    "solution": "Since percent means 'per hundred' and 40 out of 100 squares are shaded, the answer is 40%.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "percent-intro-sup-m0",
+    "topicId": "percent-intro",
+    "difficulty": "medium",
+    "question": "A student scored 18 out of 20 on a quiz. What is the student's score as a percent?",
+    "answer": "90%",
+    "hints": [
+      "Convert the fraction 18/20 so the denominator is 100.",
+      "18/20 = ?/100. Multiply both by 5."
+    ],
+    "solution": "18/20 = 90/100 = 90%. Alternatively, 18 ÷ 20 = 0.9, and 0.9 × 100 = 90%.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "percent-intro-sup-m1",
+    "topicId": "percent-intro",
+    "difficulty": "medium",
+    "question": "A student says: '150% is impossible because you can't have more than 100%.' Is the student correct? Answer yes or no and explain briefly.",
+    "answer": "No. Percents can be greater than 100% when a quantity exceeds the whole or reference amount.",
+    "hints": [
+      "Think about this: if a town's population was 1,000 and grew to 1,500, what percent is that?",
+      "150% means 150 per hundred, or 1.5 times the reference amount."
+    ],
+    "solution": "The student is incorrect. Percents above 100% are valid and common. 150% means 1.5 times the reference. For example, if you expected 100 people at an event and 150 came, attendance was 150% of expectations.",
+    "cognitiveDemand": "error-analysis",
+    "source": "generated"
+  },
+  {
+    "id": "percent-intro-sup-m2",
+    "topicId": "percent-intro",
+    "difficulty": "medium",
+    "question": "Convert the fraction 3/8 to a percent. Round to the nearest whole percent.",
+    "answer": "38%",
+    "hints": [
+      "Divide 3 by 8 to get a decimal first.",
+      "3 ÷ 8 = 0.375. Now multiply by 100."
+    ],
+    "solution": "3/8 = 3 ÷ 8 = 0.375. As a percent: 0.375 × 100 = 37.5%, which rounds to 38%.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "percent-intro-sup-m3",
+    "topicId": "percent-intro",
+    "difficulty": "medium",
+    "question": "Which is greater: 30% of 50 or 50% of 30?",
+    "answer": "They are equal.",
+    "hints": [
+      "Calculate each: 30% of 50 = 0.30 × 50. 50% of 30 = 0.50 × 30.",
+      "What do you get for each?"
+    ],
+    "solution": "30% of 50 = 0.30 × 50 = 15. 50% of 30 = 0.50 × 30 = 15. They are equal! This is always true: a% of b = b% of a, because both equal (a × b)/100.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "percent-intro-sup-m4",
+    "topicId": "percent-intro",
+    "difficulty": "medium",
+    "question": "A jar has 200 jellybeans. 35% are red. How many red jellybeans are there?",
+    "answer": "70",
+    "hints": [
+      "35% means 35 per hundred.",
+      "For 200 jellybeans: 35% × 200 = 0.35 × 200."
+    ],
+    "solution": "35% of 200 = 0.35 × 200 = 70 red jellybeans.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "percent-intro-sup-h0",
+    "topicId": "percent-intro",
+    "difficulty": "hard",
+    "question": "A class has 30 students. 60% passed the first test and 80% passed the second test. Can you determine what percent passed both tests? Answer yes or no and explain briefly.",
+    "answer": "No. Without knowing the overlap, you cannot determine what percent passed both.",
+    "hints": [
+      "Could all 18 who passed the first test be among the 24 who passed the second?",
+      "Or could some students have passed one test but not the other? You need more info."
+    ],
+    "solution": "No. 60% of 30 = 18 passed test 1. 80% of 30 = 24 passed test 2. The overlap could range from 12 (if all non-passers of test 2 passed test 1) to 18 (if everyone who passed test 1 also passed test 2). Without knowing the overlap, the exact percent who passed both is indeterminate.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "percent-intro-sup-h1",
+    "topicId": "percent-intro",
+    "difficulty": "hard",
+    "question": "A student says: '0.5% is the same as half, or 50%.' What mistake did the student make?",
+    "answer": "The student confused 0.5% with 50%. 0.5% means 0.5 per hundred, which is 0.005 as a decimal — much smaller than 50%.",
+    "hints": [
+      "Convert 0.5% to a decimal: 0.5 ÷ 100.",
+      "0.5 ÷ 100 = 0.005, which is very different from 0.5 (which is 50%)."
+    ],
+    "solution": "The student confused 0.5% with 50%. 0.5% = 0.5/100 = 0.005 as a decimal, meaning only 5 out of every 1,000. Meanwhile, 50% = 50/100 = 0.5 = one half. 0.5% is 100 times smaller than 50%.",
+    "cognitiveDemand": "error-analysis",
+    "source": "generated"
+  },
+  {
+    "id": "percent-intro-sup-h2",
+    "topicId": "percent-intro",
+    "difficulty": "hard",
+    "question": "In a school, 45% of students play a sport and 30% play an instrument. A teacher says: 'So 75% of students do at least one activity.' What assumption is the teacher making, and could it be wrong?",
+    "answer": "The teacher assumes no student does both activities. If some students play a sport AND an instrument, the total would be less than 75%.",
+    "hints": [
+      "Can a student both play a sport and play an instrument?",
+      "If there's overlap, adding the percents overcounts the students who do both."
+    ],
+    "solution": "The teacher assumes no overlap — that no student does both. If students do both activities, adding 45% + 30% double-counts them, making the actual 'at least one' percent less than 75%. For example, if 10% do both, then 45% + 30% - 10% = 65% do at least one.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "percent-intro-sup-h3",
+    "topicId": "percent-intro",
+    "difficulty": "hard",
+    "question": "Write 1/3 as a percent. Give your answer rounded to one decimal place, including the % sign.",
+    "answer": "33.3%",
+    "hints": [
+      "Divide 1 by 3 to get a decimal.",
+      "1 ÷ 3 = 0.333... Multiply by 100 to get a percent."
+    ],
+    "solution": "1/3 = 0.3333... As a percent: 0.3333... × 100 = 33.333...%, which rounds to 33.3%.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "percent-intro-sup-h4",
+    "topicId": "percent-intro",
+    "difficulty": "hard",
+    "question": "A store has 80 items. On Monday, 25% are sold. On Tuesday, 50% of the remaining items are sold. What percent of the original 80 items have been sold in total?",
+    "answer": "62.5%",
+    "hints": [
+      "Monday: 25% of 80 = 20 sold. Remaining: 60.",
+      "Tuesday: 50% of 60 = 30 sold. Total sold = 20 + 30 = 50. What percent of 80 is 50?"
+    ],
+    "solution": "Monday: 25% of 80 = 20 sold, 60 remain. Tuesday: 50% of 60 = 30 sold. Total sold: 20 + 30 = 50. Percent of original: 50/80 = 0.625 = 62.5%.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  }
+]

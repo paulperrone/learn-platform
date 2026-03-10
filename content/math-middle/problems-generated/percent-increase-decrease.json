@@ -1,0 +1,652 @@
+[
+  {
+    "id": "percent-increase-decrease-gen-e0",
+    "topicId": "percent-increase-decrease",
+    "difficulty": "easy",
+    "question": "A number is 100. After a 10% decrease, what is the new number?",
+    "answer": "90",
+    "hints": [
+      "Find 10% of 100: 10. Then subtract."
+    ],
+    "solution": "10% of 100 = 10. 100 − 10 = 90.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-increase-decrease-gen-e1",
+    "topicId": "percent-increase-decrease",
+    "difficulty": "easy",
+    "question": "A number is 100. After a 10% increase, what is the new number?",
+    "answer": "110",
+    "hints": [
+      "Find 10% of 100: 10. Then add."
+    ],
+    "solution": "10% of 100 = 10. 100 + 10 = 110.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-increase-decrease-gen-e2",
+    "topicId": "percent-increase-decrease",
+    "difficulty": "easy",
+    "question": "A number is 200. After a 25% decrease, what is the new number?",
+    "answer": "150",
+    "hints": [
+      "Find 25% of 200: 50. Then subtract."
+    ],
+    "solution": "25% of 200 = 50. 200 − 50 = 150.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-increase-decrease-gen-e3",
+    "topicId": "percent-increase-decrease",
+    "difficulty": "easy",
+    "question": "A number is 200. After a 20% decrease, what is the new number?",
+    "answer": "160",
+    "hints": [
+      "Find 20% of 200: 40. Then subtract."
+    ],
+    "solution": "20% of 200 = 40. 200 − 40 = 160.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-increase-decrease-gen-e4",
+    "topicId": "percent-increase-decrease",
+    "difficulty": "easy",
+    "question": "A number is 200. After a 25% increase, what is the new number?",
+    "answer": "250",
+    "hints": [
+      "Find 25% of 200: 50. Then add."
+    ],
+    "solution": "25% of 200 = 50. 200 + 50 = 250.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-increase-decrease-gen-e5",
+    "topicId": "percent-increase-decrease",
+    "difficulty": "easy",
+    "question": "A number is 100. After a 10% decrease, what is the new number?",
+    "answer": "90",
+    "hints": [
+      "Find 10% of 100: 10. Then subtract."
+    ],
+    "solution": "10% of 100 = 10. 100 − 10 = 90.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-increase-decrease-gen-e6",
+    "topicId": "percent-increase-decrease",
+    "difficulty": "easy",
+    "question": "A number is 200. After a 50% increase, what is the new number?",
+    "answer": "300",
+    "hints": [
+      "Find 50% of 200: 100. Then add."
+    ],
+    "solution": "50% of 200 = 100. 200 + 100 = 300.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-increase-decrease-gen-e7",
+    "topicId": "percent-increase-decrease",
+    "difficulty": "easy",
+    "question": "A number is 100. After a 10% decrease, what is the new number?",
+    "answer": "90",
+    "hints": [
+      "Find 10% of 100: 10. Then subtract."
+    ],
+    "solution": "10% of 100 = 10. 100 − 10 = 90.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-increase-decrease-gen-e8",
+    "topicId": "percent-increase-decrease",
+    "difficulty": "easy",
+    "question": "A number is 200. After a 10% decrease, what is the new number?",
+    "answer": "180",
+    "hints": [
+      "Find 10% of 200: 20. Then subtract."
+    ],
+    "solution": "10% of 200 = 20. 200 − 20 = 180.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-increase-decrease-gen-e9",
+    "topicId": "percent-increase-decrease",
+    "difficulty": "easy",
+    "question": "A number is 200. After a 10% decrease, what is the new number?",
+    "answer": "180",
+    "hints": [
+      "Find 10% of 200: 20. Then subtract."
+    ],
+    "solution": "10% of 200 = 20. 200 − 20 = 180.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-increase-decrease-gen-e10",
+    "topicId": "percent-increase-decrease",
+    "difficulty": "easy",
+    "question": "A number is 200. After a 25% decrease, what is the new number?",
+    "answer": "150",
+    "hints": [
+      "Find 25% of 200: 50. Then subtract."
+    ],
+    "solution": "25% of 200 = 50. 200 − 50 = 150.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-increase-decrease-gen-e11",
+    "topicId": "percent-increase-decrease",
+    "difficulty": "easy",
+    "question": "A number is 200. After a 10% increase, what is the new number?",
+    "answer": "220",
+    "hints": [
+      "Find 10% of 200: 20. Then add."
+    ],
+    "solution": "10% of 200 = 20. 200 + 20 = 220.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-increase-decrease-gen-e12",
+    "topicId": "percent-increase-decrease",
+    "difficulty": "easy",
+    "question": "A number is 100. After a 50% increase, what is the new number?",
+    "answer": "150",
+    "hints": [
+      "Find 50% of 100: 50. Then add."
+    ],
+    "solution": "50% of 100 = 50. 100 + 50 = 150.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-increase-decrease-gen-e13",
+    "topicId": "percent-increase-decrease",
+    "difficulty": "easy",
+    "question": "A number is 200. After a 10% decrease, what is the new number?",
+    "answer": "180",
+    "hints": [
+      "Find 10% of 200: 20. Then subtract."
+    ],
+    "solution": "10% of 200 = 20. 200 − 20 = 180.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-increase-decrease-gen-e14",
+    "topicId": "percent-increase-decrease",
+    "difficulty": "easy",
+    "question": "A number is 200. After a 20% increase, what is the new number?",
+    "answer": "240",
+    "hints": [
+      "Find 20% of 200: 40. Then add."
+    ],
+    "solution": "20% of 200 = 40. 200 + 40 = 240.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-increase-decrease-gen-m0",
+    "topicId": "percent-increase-decrease",
+    "difficulty": "medium",
+    "question": "A number is 76. After a 8% decrease, what is the new number?",
+    "answer": "69.92",
+    "hints": [
+      "Find 8% of 76: 6.08. Then subtract."
+    ],
+    "solution": "8% of 76 = 6.08. 76 − 6.08 = 69.92.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-increase-decrease-gen-m1",
+    "topicId": "percent-increase-decrease",
+    "difficulty": "medium",
+    "question": "A number is 318. After a 54% increase, what is the new number?",
+    "answer": "489.72",
+    "hints": [
+      "Find 54% of 318: 171.72. Then add."
+    ],
+    "solution": "54% of 318 = 171.72. 318 + 171.72 = 489.72.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-increase-decrease-gen-m2",
+    "topicId": "percent-increase-decrease",
+    "difficulty": "medium",
+    "question": "A number is 253. After a 11% decrease, what is the new number?",
+    "answer": "225.17000000000002",
+    "hints": [
+      "Find 11% of 253: 27.83. Then subtract."
+    ],
+    "solution": "11% of 253 = 27.83. 253 − 27.83 = 225.17000000000002.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-increase-decrease-gen-m3",
+    "topicId": "percent-increase-decrease",
+    "difficulty": "medium",
+    "question": "A number is 314. After a 64% decrease, what is the new number?",
+    "answer": "113.03999999999999",
+    "hints": [
+      "Find 64% of 314: 200.96. Then subtract."
+    ],
+    "solution": "64% of 314 = 200.96. 314 − 200.96 = 113.03999999999999.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-increase-decrease-gen-m4",
+    "topicId": "percent-increase-decrease",
+    "difficulty": "medium",
+    "question": "A number is 115. After a 20% decrease, what is the new number?",
+    "answer": "92",
+    "hints": [
+      "Find 20% of 115: 23. Then subtract."
+    ],
+    "solution": "20% of 115 = 23. 115 − 23 = 92.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-increase-decrease-gen-m5",
+    "topicId": "percent-increase-decrease",
+    "difficulty": "medium",
+    "question": "A number is 331. After a 26% decrease, what is the new number?",
+    "answer": "244.94",
+    "hints": [
+      "Find 26% of 331: 86.06. Then subtract."
+    ],
+    "solution": "26% of 331 = 86.06. 331 − 86.06 = 244.94.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-increase-decrease-gen-m6",
+    "topicId": "percent-increase-decrease",
+    "difficulty": "medium",
+    "question": "A number is 454. After a 25% decrease, what is the new number?",
+    "answer": "340.5",
+    "hints": [
+      "Find 25% of 454: 113.5. Then subtract."
+    ],
+    "solution": "25% of 454 = 113.5. 454 − 113.5 = 340.5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-increase-decrease-gen-m7",
+    "topicId": "percent-increase-decrease",
+    "difficulty": "medium",
+    "question": "A number is 499. After a 28% decrease, what is the new number?",
+    "answer": "359.28",
+    "hints": [
+      "Find 28% of 499: 139.72. Then subtract."
+    ],
+    "solution": "28% of 499 = 139.72. 499 − 139.72 = 359.28.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-increase-decrease-gen-m8",
+    "topicId": "percent-increase-decrease",
+    "difficulty": "medium",
+    "question": "A number is 302. After a 21% decrease, what is the new number?",
+    "answer": "238.57999999999998",
+    "hints": [
+      "Find 21% of 302: 63.42. Then subtract."
+    ],
+    "solution": "21% of 302 = 63.42. 302 − 63.42 = 238.57999999999998.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-increase-decrease-gen-m9",
+    "topicId": "percent-increase-decrease",
+    "difficulty": "medium",
+    "question": "A number is 252. After a 61% decrease, what is the new number?",
+    "answer": "98.28",
+    "hints": [
+      "Find 61% of 252: 153.72. Then subtract."
+    ],
+    "solution": "61% of 252 = 153.72. 252 − 153.72 = 98.28.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-increase-decrease-gen-m10",
+    "topicId": "percent-increase-decrease",
+    "difficulty": "medium",
+    "question": "A number is 315. After a 70% decrease, what is the new number?",
+    "answer": "94.5",
+    "hints": [
+      "Find 70% of 315: 220.5. Then subtract."
+    ],
+    "solution": "70% of 315 = 220.5. 315 − 220.5 = 94.5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-increase-decrease-gen-m11",
+    "topicId": "percent-increase-decrease",
+    "difficulty": "medium",
+    "question": "A number is 226. After a 64% decrease, what is the new number?",
+    "answer": "81.36000000000001",
+    "hints": [
+      "Find 64% of 226: 144.64. Then subtract."
+    ],
+    "solution": "64% of 226 = 144.64. 226 − 144.64 = 81.36000000000001.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-increase-decrease-gen-m12",
+    "topicId": "percent-increase-decrease",
+    "difficulty": "medium",
+    "question": "A number is 252. After a 11% decrease, what is the new number?",
+    "answer": "224.28",
+    "hints": [
+      "Find 11% of 252: 27.72. Then subtract."
+    ],
+    "solution": "11% of 252 = 27.72. 252 − 27.72 = 224.28.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-increase-decrease-gen-m13",
+    "topicId": "percent-increase-decrease",
+    "difficulty": "medium",
+    "question": "A number is 412. After a 50% increase, what is the new number?",
+    "answer": "618",
+    "hints": [
+      "Find 50% of 412: 206. Then add."
+    ],
+    "solution": "50% of 412 = 206. 412 + 206 = 618.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-increase-decrease-gen-m14",
+    "topicId": "percent-increase-decrease",
+    "difficulty": "medium",
+    "question": "A number is 178. After a 10% increase, what is the new number?",
+    "answer": "195.8",
+    "hints": [
+      "Find 10% of 178: 17.8. Then add."
+    ],
+    "solution": "10% of 178 = 17.8. 178 + 17.8 = 195.8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-increase-decrease-gen-m15",
+    "topicId": "percent-increase-decrease",
+    "difficulty": "medium",
+    "question": "A number is 416. After a 12% increase, what is the new number?",
+    "answer": "465.92",
+    "hints": [
+      "Find 12% of 416: 49.92. Then add."
+    ],
+    "solution": "12% of 416 = 49.92. 416 + 49.92 = 465.92.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-increase-decrease-gen-m16",
+    "topicId": "percent-increase-decrease",
+    "difficulty": "medium",
+    "question": "A number is 220. After a 65% decrease, what is the new number?",
+    "answer": "77",
+    "hints": [
+      "Find 65% of 220: 143. Then subtract."
+    ],
+    "solution": "65% of 220 = 143. 220 − 143 = 77.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-increase-decrease-gen-m17",
+    "topicId": "percent-increase-decrease",
+    "difficulty": "medium",
+    "question": "A number is 45. After a 28% decrease, what is the new number?",
+    "answer": "32.4",
+    "hints": [
+      "Find 28% of 45: 12.6. Then subtract."
+    ],
+    "solution": "28% of 45 = 12.6. 45 − 12.6 = 32.4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-increase-decrease-gen-m18",
+    "topicId": "percent-increase-decrease",
+    "difficulty": "medium",
+    "question": "A number is 73. After a 33% increase, what is the new number?",
+    "answer": "97.09",
+    "hints": [
+      "Find 33% of 73: 24.09. Then add."
+    ],
+    "solution": "33% of 73 = 24.09. 73 + 24.09 = 97.09.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-increase-decrease-gen-m19",
+    "topicId": "percent-increase-decrease",
+    "difficulty": "medium",
+    "question": "A number is 433. After a 53% decrease, what is the new number?",
+    "answer": "203.51",
+    "hints": [
+      "Find 53% of 433: 229.49. Then subtract."
+    ],
+    "solution": "53% of 433 = 229.49. 433 − 229.49 = 203.51.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-increase-decrease-gen-h0",
+    "topicId": "percent-increase-decrease",
+    "difficulty": "hard",
+    "question": "A number is 329. After a 76% decrease, what is the new number?",
+    "answer": "78.96000000000001",
+    "hints": [
+      "Find 76% of 329: 250.04. Then subtract."
+    ],
+    "solution": "76% of 329 = 250.04. 329 − 250.04 = 78.96000000000001.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-increase-decrease-gen-h1",
+    "topicId": "percent-increase-decrease",
+    "difficulty": "hard",
+    "question": "A number is 79. After a 63% decrease, what is the new number?",
+    "answer": "29.229999999999997",
+    "hints": [
+      "Find 63% of 79: 49.77. Then subtract."
+    ],
+    "solution": "63% of 79 = 49.77. 79 − 49.77 = 29.229999999999997.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-increase-decrease-gen-h2",
+    "topicId": "percent-increase-decrease",
+    "difficulty": "hard",
+    "question": "A number is 449. After a 75% increase, what is the new number?",
+    "answer": "785.75",
+    "hints": [
+      "Find 75% of 449: 336.75. Then add."
+    ],
+    "solution": "75% of 449 = 336.75. 449 + 336.75 = 785.75.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-increase-decrease-gen-h3",
+    "topicId": "percent-increase-decrease",
+    "difficulty": "hard",
+    "question": "A number is 438. After a 44% decrease, what is the new number?",
+    "answer": "245.28",
+    "hints": [
+      "Find 44% of 438: 192.72. Then subtract."
+    ],
+    "solution": "44% of 438 = 192.72. 438 − 192.72 = 245.28.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-increase-decrease-gen-h4",
+    "topicId": "percent-increase-decrease",
+    "difficulty": "hard",
+    "question": "A number is 77. After a 8% increase, what is the new number?",
+    "answer": "83.16",
+    "hints": [
+      "Find 8% of 77: 6.16. Then add."
+    ],
+    "solution": "8% of 77 = 6.16. 77 + 6.16 = 83.16.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-increase-decrease-gen-h5",
+    "topicId": "percent-increase-decrease",
+    "difficulty": "hard",
+    "question": "A number is 269. After a 39% increase, what is the new number?",
+    "answer": "373.90999999999997",
+    "hints": [
+      "Find 39% of 269: 104.91. Then add."
+    ],
+    "solution": "39% of 269 = 104.91. 269 + 104.91 = 373.90999999999997.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-increase-decrease-gen-h6",
+    "topicId": "percent-increase-decrease",
+    "difficulty": "hard",
+    "question": "A number is 444. After a 62% decrease, what is the new number?",
+    "answer": "168.72000000000003",
+    "hints": [
+      "Find 62% of 444: 275.28. Then subtract."
+    ],
+    "solution": "62% of 444 = 275.28. 444 − 275.28 = 168.72000000000003.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-increase-decrease-gen-h7",
+    "topicId": "percent-increase-decrease",
+    "difficulty": "hard",
+    "question": "A number is 291. After a 32% decrease, what is the new number?",
+    "answer": "197.88",
+    "hints": [
+      "Find 32% of 291: 93.12. Then subtract."
+    ],
+    "solution": "32% of 291 = 93.12. 291 − 93.12 = 197.88.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-increase-decrease-gen-h8",
+    "topicId": "percent-increase-decrease",
+    "difficulty": "hard",
+    "question": "A number is 263. After a 28% increase, what is the new number?",
+    "answer": "336.64",
+    "hints": [
+      "Find 28% of 263: 73.64. Then add."
+    ],
+    "solution": "28% of 263 = 73.64. 263 + 73.64 = 336.64.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-increase-decrease-gen-h9",
+    "topicId": "percent-increase-decrease",
+    "difficulty": "hard",
+    "question": "A number is 188. After a 80% increase, what is the new number?",
+    "answer": "338.4",
+    "hints": [
+      "Find 80% of 188: 150.4. Then add."
+    ],
+    "solution": "80% of 188 = 150.4. 188 + 150.4 = 338.4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-increase-decrease-gen-h10",
+    "topicId": "percent-increase-decrease",
+    "difficulty": "hard",
+    "question": "A number is 119. After a 54% decrease, what is the new number?",
+    "answer": "54.739999999999995",
+    "hints": [
+      "Find 54% of 119: 64.26. Then subtract."
+    ],
+    "solution": "54% of 119 = 64.26. 119 − 64.26 = 54.739999999999995.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-increase-decrease-gen-h11",
+    "topicId": "percent-increase-decrease",
+    "difficulty": "hard",
+    "question": "A number is 451. After a 28% decrease, what is the new number?",
+    "answer": "324.72",
+    "hints": [
+      "Find 28% of 451: 126.28. Then subtract."
+    ],
+    "solution": "28% of 451 = 126.28. 451 − 126.28 = 324.72.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-increase-decrease-gen-h12",
+    "topicId": "percent-increase-decrease",
+    "difficulty": "hard",
+    "question": "A number is 173. After a 26% decrease, what is the new number?",
+    "answer": "128.02",
+    "hints": [
+      "Find 26% of 173: 44.98. Then subtract."
+    ],
+    "solution": "26% of 173 = 44.98. 173 − 44.98 = 128.02.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-increase-decrease-gen-h13",
+    "topicId": "percent-increase-decrease",
+    "difficulty": "hard",
+    "question": "A number is 101. After a 10% decrease, what is the new number?",
+    "answer": "90.9",
+    "hints": [
+      "Find 10% of 101: 10.1. Then subtract."
+    ],
+    "solution": "10% of 101 = 10.1. 101 − 10.1 = 90.9.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-increase-decrease-gen-h14",
+    "topicId": "percent-increase-decrease",
+    "difficulty": "hard",
+    "question": "A number is 323. After a 80% increase, what is the new number?",
+    "answer": "581.4",
+    "hints": [
+      "Find 80% of 323: 258.4. Then add."
+    ],
+    "solution": "80% of 323 = 258.4. 323 + 258.4 = 581.4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  }
+]

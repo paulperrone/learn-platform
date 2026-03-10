@@ -1,0 +1,652 @@
+[
+  {
+    "id": "compound-probability-gen-e0",
+    "topicId": "compound-probability",
+    "difficulty": "easy",
+    "question": "A die shows 4 or less, and a coin shows heads (1/2 chance). What is the probability of both?",
+    "answer": "1/3",
+    "hints": [
+      "P(A and B) = P(A) × P(B) for independent events."
+    ],
+    "solution": "4/6 × 1/2 = 4/12 = 1/3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compound-probability-gen-e1",
+    "topicId": "compound-probability",
+    "difficulty": "easy",
+    "question": "A die shows 3 or less, and a coin shows heads (1/2 chance). What is the probability of both?",
+    "answer": "1/4",
+    "hints": [
+      "P(A and B) = P(A) × P(B) for independent events."
+    ],
+    "solution": "3/6 × 1/2 = 3/12 = 1/4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compound-probability-gen-e2",
+    "topicId": "compound-probability",
+    "difficulty": "easy",
+    "question": "A die shows 4 or less, and a coin shows heads (1/2 chance). What is the probability of both?",
+    "answer": "1/3",
+    "hints": [
+      "P(A and B) = P(A) × P(B) for independent events."
+    ],
+    "solution": "4/6 × 1/2 = 4/12 = 1/3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compound-probability-gen-e3",
+    "topicId": "compound-probability",
+    "difficulty": "easy",
+    "question": "A die shows 5 or less, and a coin shows heads (1/2 chance). What is the probability of both?",
+    "answer": "5/6",
+    "hints": [
+      "P(A and B) = P(A) × P(B) for independent events."
+    ],
+    "solution": "5/6 × 2/2 = 10/12 = 5/6.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compound-probability-gen-e4",
+    "topicId": "compound-probability",
+    "difficulty": "easy",
+    "question": "A die shows 4 or less, and a coin shows heads (1/2 chance). What is the probability of both?",
+    "answer": "1/3",
+    "hints": [
+      "P(A and B) = P(A) × P(B) for independent events."
+    ],
+    "solution": "4/6 × 1/2 = 4/12 = 1/3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compound-probability-gen-e5",
+    "topicId": "compound-probability",
+    "difficulty": "easy",
+    "question": "A die shows 3 or less, and a coin shows heads (1/2 chance). What is the probability of both?",
+    "answer": "1/2",
+    "hints": [
+      "P(A and B) = P(A) × P(B) for independent events."
+    ],
+    "solution": "3/6 × 2/2 = 6/12 = 1/2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compound-probability-gen-e6",
+    "topicId": "compound-probability",
+    "difficulty": "easy",
+    "question": "A die shows 1 or less, and a coin shows heads (1/2 chance). What is the probability of both?",
+    "answer": "1/12",
+    "hints": [
+      "P(A and B) = P(A) × P(B) for independent events."
+    ],
+    "solution": "1/6 × 1/2 = 1/12 = 1/12.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compound-probability-gen-e7",
+    "topicId": "compound-probability",
+    "difficulty": "easy",
+    "question": "A die shows 3 or less, and a coin shows heads (1/2 chance). What is the probability of both?",
+    "answer": "1/4",
+    "hints": [
+      "P(A and B) = P(A) × P(B) for independent events."
+    ],
+    "solution": "3/6 × 1/2 = 3/12 = 1/4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compound-probability-gen-e8",
+    "topicId": "compound-probability",
+    "difficulty": "easy",
+    "question": "A die shows 4 or less, and a coin shows heads (1/2 chance). What is the probability of both?",
+    "answer": "1/3",
+    "hints": [
+      "P(A and B) = P(A) × P(B) for independent events."
+    ],
+    "solution": "4/6 × 1/2 = 4/12 = 1/3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compound-probability-gen-e9",
+    "topicId": "compound-probability",
+    "difficulty": "easy",
+    "question": "A die shows 3 or less, and a coin shows heads (1/2 chance). What is the probability of both?",
+    "answer": "1/4",
+    "hints": [
+      "P(A and B) = P(A) × P(B) for independent events."
+    ],
+    "solution": "3/6 × 1/2 = 3/12 = 1/4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compound-probability-gen-e10",
+    "topicId": "compound-probability",
+    "difficulty": "easy",
+    "question": "A die shows 3 or less, and a coin shows heads (1/2 chance). What is the probability of both?",
+    "answer": "1/4",
+    "hints": [
+      "P(A and B) = P(A) × P(B) for independent events."
+    ],
+    "solution": "3/6 × 1/2 = 3/12 = 1/4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compound-probability-gen-e11",
+    "topicId": "compound-probability",
+    "difficulty": "easy",
+    "question": "A die shows 2 or less, and a coin shows heads (1/2 chance). What is the probability of both?",
+    "answer": "1/3",
+    "hints": [
+      "P(A and B) = P(A) × P(B) for independent events."
+    ],
+    "solution": "2/6 × 2/2 = 4/12 = 1/3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compound-probability-gen-e12",
+    "topicId": "compound-probability",
+    "difficulty": "easy",
+    "question": "A die shows 3 or less, and a coin shows heads (1/2 chance). What is the probability of both?",
+    "answer": "1/2",
+    "hints": [
+      "P(A and B) = P(A) × P(B) for independent events."
+    ],
+    "solution": "3/6 × 2/2 = 6/12 = 1/2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compound-probability-gen-e13",
+    "topicId": "compound-probability",
+    "difficulty": "easy",
+    "question": "A die shows 5 or less, and a coin shows heads (1/2 chance). What is the probability of both?",
+    "answer": "5/12",
+    "hints": [
+      "P(A and B) = P(A) × P(B) for independent events."
+    ],
+    "solution": "5/6 × 1/2 = 5/12 = 5/12.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compound-probability-gen-e14",
+    "topicId": "compound-probability",
+    "difficulty": "easy",
+    "question": "A die shows 5 or less, and a coin shows heads (1/2 chance). What is the probability of both?",
+    "answer": "5/6",
+    "hints": [
+      "P(A and B) = P(A) × P(B) for independent events."
+    ],
+    "solution": "5/6 × 2/2 = 10/12 = 5/6.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compound-probability-gen-m0",
+    "topicId": "compound-probability",
+    "difficulty": "medium",
+    "question": "A die shows 3 or less, and a coin shows heads (1/8 chance). What is the probability of both?",
+    "answer": "1/16",
+    "hints": [
+      "P(A and B) = P(A) × P(B) for independent events."
+    ],
+    "solution": "3/6 × 1/8 = 3/48 = 1/16.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compound-probability-gen-m1",
+    "topicId": "compound-probability",
+    "difficulty": "medium",
+    "question": "A die shows 5 or less, and a coin shows heads (1/4 chance). What is the probability of both?",
+    "answer": "5/12",
+    "hints": [
+      "P(A and B) = P(A) × P(B) for independent events."
+    ],
+    "solution": "5/6 × 2/4 = 10/24 = 5/12.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compound-probability-gen-m2",
+    "topicId": "compound-probability",
+    "difficulty": "medium",
+    "question": "A die shows 2 or less, and a coin shows heads (1/8 chance). What is the probability of both?",
+    "answer": "1/24",
+    "hints": [
+      "P(A and B) = P(A) × P(B) for independent events."
+    ],
+    "solution": "2/6 × 1/8 = 2/48 = 1/24.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compound-probability-gen-m3",
+    "topicId": "compound-probability",
+    "difficulty": "medium",
+    "question": "A die shows 3 or less, and a coin shows heads (1/6 chance). What is the probability of both?",
+    "answer": "1/4",
+    "hints": [
+      "P(A and B) = P(A) × P(B) for independent events."
+    ],
+    "solution": "3/6 × 3/6 = 9/36 = 1/4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compound-probability-gen-m4",
+    "topicId": "compound-probability",
+    "difficulty": "medium",
+    "question": "A die shows 6 or less, and a coin shows heads (1/4 chance). What is the probability of both?",
+    "answer": "3/4",
+    "hints": [
+      "P(A and B) = P(A) × P(B) for independent events."
+    ],
+    "solution": "6/6 × 3/4 = 18/24 = 3/4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compound-probability-gen-m5",
+    "topicId": "compound-probability",
+    "difficulty": "medium",
+    "question": "A die shows 2 or less, and a coin shows heads (1/4 chance). What is the probability of both?",
+    "answer": "1/12",
+    "hints": [
+      "P(A and B) = P(A) × P(B) for independent events."
+    ],
+    "solution": "2/6 × 1/4 = 2/24 = 1/12.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compound-probability-gen-m6",
+    "topicId": "compound-probability",
+    "difficulty": "medium",
+    "question": "A die shows 6 or less, and a coin shows heads (1/8 chance). What is the probability of both?",
+    "answer": "1/4",
+    "hints": [
+      "P(A and B) = P(A) × P(B) for independent events."
+    ],
+    "solution": "6/6 × 2/8 = 12/48 = 1/4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compound-probability-gen-m7",
+    "topicId": "compound-probability",
+    "difficulty": "medium",
+    "question": "A die shows 6 or less, and a coin shows heads (1/4 chance). What is the probability of both?",
+    "answer": "1/1",
+    "hints": [
+      "P(A and B) = P(A) × P(B) for independent events."
+    ],
+    "solution": "6/6 × 4/4 = 24/24 = 1/1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compound-probability-gen-m8",
+    "topicId": "compound-probability",
+    "difficulty": "medium",
+    "question": "A die shows 3 or less, and a coin shows heads (1/6 chance). What is the probability of both?",
+    "answer": "1/3",
+    "hints": [
+      "P(A and B) = P(A) × P(B) for independent events."
+    ],
+    "solution": "3/6 × 4/6 = 12/36 = 1/3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compound-probability-gen-m9",
+    "topicId": "compound-probability",
+    "difficulty": "medium",
+    "question": "A die shows 2 or less, and a coin shows heads (1/4 chance). What is the probability of both?",
+    "answer": "1/3",
+    "hints": [
+      "P(A and B) = P(A) × P(B) for independent events."
+    ],
+    "solution": "2/6 × 4/4 = 8/24 = 1/3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compound-probability-gen-m10",
+    "topicId": "compound-probability",
+    "difficulty": "medium",
+    "question": "A die shows 4 or less, and a coin shows heads (1/6 chance). What is the probability of both?",
+    "answer": "1/9",
+    "hints": [
+      "P(A and B) = P(A) × P(B) for independent events."
+    ],
+    "solution": "4/6 × 1/6 = 4/36 = 1/9.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compound-probability-gen-m11",
+    "topicId": "compound-probability",
+    "difficulty": "medium",
+    "question": "A die shows 1 or less, and a coin shows heads (1/6 chance). What is the probability of both?",
+    "answer": "1/9",
+    "hints": [
+      "P(A and B) = P(A) × P(B) for independent events."
+    ],
+    "solution": "1/6 × 4/6 = 4/36 = 1/9.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compound-probability-gen-m12",
+    "topicId": "compound-probability",
+    "difficulty": "medium",
+    "question": "A die shows 1 or less, and a coin shows heads (1/4 chance). What is the probability of both?",
+    "answer": "1/12",
+    "hints": [
+      "P(A and B) = P(A) × P(B) for independent events."
+    ],
+    "solution": "1/6 × 2/4 = 2/24 = 1/12.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compound-probability-gen-m13",
+    "topicId": "compound-probability",
+    "difficulty": "medium",
+    "question": "A die shows 3 or less, and a coin shows heads (1/4 chance). What is the probability of both?",
+    "answer": "1/2",
+    "hints": [
+      "P(A and B) = P(A) × P(B) for independent events."
+    ],
+    "solution": "3/6 × 4/4 = 12/24 = 1/2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compound-probability-gen-m14",
+    "topicId": "compound-probability",
+    "difficulty": "medium",
+    "question": "A die shows 5 or less, and a coin shows heads (1/8 chance). What is the probability of both?",
+    "answer": "5/48",
+    "hints": [
+      "P(A and B) = P(A) × P(B) for independent events."
+    ],
+    "solution": "5/6 × 1/8 = 5/48 = 5/48.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compound-probability-gen-m15",
+    "topicId": "compound-probability",
+    "difficulty": "medium",
+    "question": "A die shows 2 or less, and a coin shows heads (1/4 chance). What is the probability of both?",
+    "answer": "1/6",
+    "hints": [
+      "P(A and B) = P(A) × P(B) for independent events."
+    ],
+    "solution": "2/6 × 2/4 = 4/24 = 1/6.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compound-probability-gen-m16",
+    "topicId": "compound-probability",
+    "difficulty": "medium",
+    "question": "A die shows 6 or less, and a coin shows heads (1/4 chance). What is the probability of both?",
+    "answer": "1/4",
+    "hints": [
+      "P(A and B) = P(A) × P(B) for independent events."
+    ],
+    "solution": "6/6 × 1/4 = 6/24 = 1/4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compound-probability-gen-m17",
+    "topicId": "compound-probability",
+    "difficulty": "medium",
+    "question": "A die shows 6 or less, and a coin shows heads (1/8 chance). What is the probability of both?",
+    "answer": "3/8",
+    "hints": [
+      "P(A and B) = P(A) × P(B) for independent events."
+    ],
+    "solution": "6/6 × 3/8 = 18/48 = 3/8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compound-probability-gen-m18",
+    "topicId": "compound-probability",
+    "difficulty": "medium",
+    "question": "A die shows 1 or less, and a coin shows heads (1/4 chance). What is the probability of both?",
+    "answer": "1/6",
+    "hints": [
+      "P(A and B) = P(A) × P(B) for independent events."
+    ],
+    "solution": "1/6 × 4/4 = 4/24 = 1/6.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compound-probability-gen-m19",
+    "topicId": "compound-probability",
+    "difficulty": "medium",
+    "question": "A die shows 1 or less, and a coin shows heads (1/6 chance). What is the probability of both?",
+    "answer": "1/18",
+    "hints": [
+      "P(A and B) = P(A) × P(B) for independent events."
+    ],
+    "solution": "1/6 × 2/6 = 2/36 = 1/18.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compound-probability-gen-h0",
+    "topicId": "compound-probability",
+    "difficulty": "hard",
+    "question": "A die shows 6 or less, and a coin shows heads (1/8 chance). What is the probability of both?",
+    "answer": "3/8",
+    "hints": [
+      "P(A and B) = P(A) × P(B) for independent events."
+    ],
+    "solution": "6/6 × 3/8 = 18/48 = 3/8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compound-probability-gen-h1",
+    "topicId": "compound-probability",
+    "difficulty": "hard",
+    "question": "A die shows 1 or less, and a coin shows heads (1/8 chance). What is the probability of both?",
+    "answer": "1/12",
+    "hints": [
+      "P(A and B) = P(A) × P(B) for independent events."
+    ],
+    "solution": "1/6 × 4/8 = 4/48 = 1/12.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compound-probability-gen-h2",
+    "topicId": "compound-probability",
+    "difficulty": "hard",
+    "question": "A die shows 3 or less, and a coin shows heads (1/6 chance). What is the probability of both?",
+    "answer": "1/12",
+    "hints": [
+      "P(A and B) = P(A) × P(B) for independent events."
+    ],
+    "solution": "3/6 × 1/6 = 3/36 = 1/12.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compound-probability-gen-h3",
+    "topicId": "compound-probability",
+    "difficulty": "hard",
+    "question": "A die shows 4 or less, and a coin shows heads (1/6 chance). What is the probability of both?",
+    "answer": "1/3",
+    "hints": [
+      "P(A and B) = P(A) × P(B) for independent events."
+    ],
+    "solution": "4/6 × 3/6 = 12/36 = 1/3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compound-probability-gen-h4",
+    "topicId": "compound-probability",
+    "difficulty": "hard",
+    "question": "A die shows 1 or less, and a coin shows heads (1/4 chance). What is the probability of both?",
+    "answer": "1/24",
+    "hints": [
+      "P(A and B) = P(A) × P(B) for independent events."
+    ],
+    "solution": "1/6 × 1/4 = 1/24 = 1/24.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compound-probability-gen-h5",
+    "topicId": "compound-probability",
+    "difficulty": "hard",
+    "question": "A die shows 4 or less, and a coin shows heads (1/8 chance). What is the probability of both?",
+    "answer": "1/6",
+    "hints": [
+      "P(A and B) = P(A) × P(B) for independent events."
+    ],
+    "solution": "4/6 × 2/8 = 8/48 = 1/6.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compound-probability-gen-h6",
+    "topicId": "compound-probability",
+    "difficulty": "hard",
+    "question": "A die shows 5 or less, and a coin shows heads (1/6 chance). What is the probability of both?",
+    "answer": "5/9",
+    "hints": [
+      "P(A and B) = P(A) × P(B) for independent events."
+    ],
+    "solution": "5/6 × 4/6 = 20/36 = 5/9.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compound-probability-gen-h7",
+    "topicId": "compound-probability",
+    "difficulty": "hard",
+    "question": "A die shows 3 or less, and a coin shows heads (1/6 chance). What is the probability of both?",
+    "answer": "1/6",
+    "hints": [
+      "P(A and B) = P(A) × P(B) for independent events."
+    ],
+    "solution": "3/6 × 2/6 = 6/36 = 1/6.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compound-probability-gen-h8",
+    "topicId": "compound-probability",
+    "difficulty": "hard",
+    "question": "A die shows 3 or less, and a coin shows heads (1/6 chance). What is the probability of both?",
+    "answer": "1/4",
+    "hints": [
+      "P(A and B) = P(A) × P(B) for independent events."
+    ],
+    "solution": "3/6 × 3/6 = 9/36 = 1/4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compound-probability-gen-h9",
+    "topicId": "compound-probability",
+    "difficulty": "hard",
+    "question": "A die shows 2 or less, and a coin shows heads (1/4 chance). What is the probability of both?",
+    "answer": "1/4",
+    "hints": [
+      "P(A and B) = P(A) × P(B) for independent events."
+    ],
+    "solution": "2/6 × 3/4 = 6/24 = 1/4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compound-probability-gen-h10",
+    "topicId": "compound-probability",
+    "difficulty": "hard",
+    "question": "A die shows 4 or less, and a coin shows heads (1/6 chance). What is the probability of both?",
+    "answer": "4/9",
+    "hints": [
+      "P(A and B) = P(A) × P(B) for independent events."
+    ],
+    "solution": "4/6 × 4/6 = 16/36 = 4/9.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compound-probability-gen-h11",
+    "topicId": "compound-probability",
+    "difficulty": "hard",
+    "question": "A die shows 4 or less, and a coin shows heads (1/4 chance). What is the probability of both?",
+    "answer": "1/6",
+    "hints": [
+      "P(A and B) = P(A) × P(B) for independent events."
+    ],
+    "solution": "4/6 × 1/4 = 4/24 = 1/6.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compound-probability-gen-h12",
+    "topicId": "compound-probability",
+    "difficulty": "hard",
+    "question": "A die shows 1 or less, and a coin shows heads (1/4 chance). What is the probability of both?",
+    "answer": "1/24",
+    "hints": [
+      "P(A and B) = P(A) × P(B) for independent events."
+    ],
+    "solution": "1/6 × 1/4 = 1/24 = 1/24.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compound-probability-gen-h13",
+    "topicId": "compound-probability",
+    "difficulty": "hard",
+    "question": "A die shows 5 or less, and a coin shows heads (1/4 chance). What is the probability of both?",
+    "answer": "5/24",
+    "hints": [
+      "P(A and B) = P(A) × P(B) for independent events."
+    ],
+    "solution": "5/6 × 1/4 = 5/24 = 5/24.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compound-probability-gen-h14",
+    "topicId": "compound-probability",
+    "difficulty": "hard",
+    "question": "A die shows 6 or less, and a coin shows heads (1/6 chance). What is the probability of both?",
+    "answer": "1/2",
+    "hints": [
+      "P(A and B) = P(A) × P(B) for independent events."
+    ],
+    "solution": "6/6 × 3/6 = 18/36 = 1/2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  }
+]

@@ -1,0 +1,212 @@
+[
+  {
+    "id": "ratio-word-problems-sup-e0",
+    "topicId": "ratio-word-problems",
+    "difficulty": "easy",
+    "question": "A recipe calls for 2 cups of flour for every 3 cups of sugar. If you use 6 cups of flour, how many cups of sugar do you need?",
+    "answer": "9",
+    "hints": [
+      "The ratio is 2 flour : 3 sugar.",
+      "6 cups flour is 3 times the original. Multiply sugar by 3 too."
+    ],
+    "solution": "Ratio: 2:3. Scale factor: 6 ÷ 2 = 3. Sugar: 3 × 3 = 9 cups.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "ratio-word-problems-sup-e1",
+    "topicId": "ratio-word-problems",
+    "difficulty": "easy",
+    "question": "A car travels 150 miles in 3 hours. What is the car's speed in miles per hour?",
+    "answer": "50 mph",
+    "hints": [
+      "Speed = distance ÷ time.",
+      "150 ÷ 3 = ?"
+    ],
+    "solution": "Speed = 150 miles ÷ 3 hours = 50 miles per hour.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "ratio-word-problems-sup-e2",
+    "topicId": "ratio-word-problems",
+    "difficulty": "easy",
+    "question": "If 4 pencils cost $2, how much do 10 pencils cost?",
+    "answer": "$5",
+    "hints": [
+      "Find the cost per pencil: $2 ÷ 4 = $0.50.",
+      "10 pencils: 10 × $0.50 = ?"
+    ],
+    "solution": "Unit rate: $2 ÷ 4 = $0.50 per pencil. 10 pencils: 10 × $0.50 = $5.00.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "ratio-word-problems-sup-e3",
+    "topicId": "ratio-word-problems",
+    "difficulty": "easy",
+    "question": "In a bag, the ratio of red to blue marbles is 3:5. If there are 15 red marbles, how many blue marbles are there?",
+    "answer": "25",
+    "hints": [
+      "3 parts red = 15 marbles. So each part = 15 ÷ 3 = 5 marbles.",
+      "Blue = 5 parts = 5 × 5 = ?"
+    ],
+    "solution": "Each ratio part = 15 ÷ 3 = 5 marbles. Blue = 5 × 5 = 25 marbles.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "ratio-word-problems-sup-e4",
+    "topicId": "ratio-word-problems",
+    "difficulty": "easy",
+    "question": "A faucet drips 6 drops per minute. How many drops will it drip in 10 minutes?",
+    "answer": "60",
+    "hints": [
+      "Rate = 6 drops per minute.",
+      "In 10 minutes: 6 × 10 = ?"
+    ],
+    "solution": "6 drops/min × 10 min = 60 drops.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "ratio-word-problems-sup-m0",
+    "topicId": "ratio-word-problems",
+    "difficulty": "medium",
+    "question": "Store A sells 5 oranges for $3. Store B sells 8 oranges for $4. Which store has the better price per orange? Type A or B.",
+    "answer": "B",
+    "hints": [
+      "Find the unit price at each store.",
+      "Store A: $3 ÷ 5 = $0.60. Store B: $4 ÷ 8 = $0.50."
+    ],
+    "solution": "Store A: $3/5 = $0.60 per orange. Store B: $4/8 = $0.50 per orange. Store B has the lower price at $0.50 per orange.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "ratio-word-problems-sup-m1",
+    "topicId": "ratio-word-problems",
+    "difficulty": "medium",
+    "question": "A map uses a scale of 1 inch = 25 miles. Two cities are 3.5 inches apart on the map. How far apart are they in real life?",
+    "answer": "87.5 miles",
+    "hints": [
+      "Multiply the map distance by the scale factor.",
+      "3.5 × 25 = ?"
+    ],
+    "solution": "Real distance = 3.5 inches × 25 miles/inch = 87.5 miles.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "ratio-word-problems-sup-m2",
+    "topicId": "ratio-word-problems",
+    "difficulty": "medium",
+    "question": "A student says: 'I can run 2 miles in 16 minutes. At this rate, I can run a 10-mile race in 1 hour 20 minutes.' Is the student correct? Show your reasoning.",
+    "answer": "Yes. Rate = 8 min/mile. 10 miles × 8 min = 80 min = 1 hour 20 minutes.",
+    "hints": [
+      "Find the rate: 16 min ÷ 2 miles = 8 min per mile.",
+      "10 miles × 8 min/mile = 80 minutes."
+    ],
+    "solution": "Rate: 16 ÷ 2 = 8 minutes per mile. For 10 miles: 8 × 10 = 80 minutes = 1 hour 20 minutes. The student is correct.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "ratio-word-problems-sup-m3",
+    "topicId": "ratio-word-problems",
+    "difficulty": "medium",
+    "question": "A paint mixture uses red and blue in the ratio 3:7. If you need 20 liters of paint total, how many liters of red paint do you need?",
+    "answer": "6",
+    "hints": [
+      "Total ratio parts = 3 + 7 = 10.",
+      "Red fraction = 3/10 of total. 3/10 × 20 = ?"
+    ],
+    "solution": "Total parts = 3 + 7 = 10. Red = (3/10) × 20 = 6 liters. Blue = (7/10) × 20 = 14 liters.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "ratio-word-problems-sup-m4",
+    "topicId": "ratio-word-problems",
+    "difficulty": "medium",
+    "question": "A student calculates that a car uses 3 gallons for 90 miles and concludes the rate is 30 gallons per mile. What is the student's error?",
+    "answer": "The student inverted the rate. It should be 30 miles per gallon (mpg), not 30 gallons per mile.",
+    "hints": [
+      "Which quantity should be 'per' the other?",
+      "90 miles ÷ 3 gallons = 30 miles per gallon, not gallons per mile."
+    ],
+    "solution": "The student swapped the units. 90 miles ÷ 3 gallons = 30 miles per gallon. '30 gallons per mile' would mean using 30 gallons for every single mile, which is absurd. The correct rate is 30 mpg.",
+    "cognitiveDemand": "error-analysis",
+    "source": "generated"
+  },
+  {
+    "id": "ratio-word-problems-sup-h0",
+    "topicId": "ratio-word-problems",
+    "difficulty": "hard",
+    "question": "Machine A produces 120 widgets in 8 hours. Machine B produces 90 widgets in 5 hours. If both machines run together for 10 hours, how many widgets total are produced?",
+    "answer": "330",
+    "hints": [
+      "Find each machine's rate per hour.",
+      "A: 120/8 = 15/hr. B: 90/5 = 18/hr. Combined: 33/hr."
+    ],
+    "solution": "Rate A: 120/8 = 15 widgets/hr. Rate B: 90/5 = 18 widgets/hr. Combined: 15 + 18 = 33 widgets/hr. In 10 hours: 33 × 10 = 330 widgets.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "ratio-word-problems-sup-h1",
+    "topicId": "ratio-word-problems",
+    "difficulty": "hard",
+    "question": "A trail mix recipe calls for nuts, raisins, and seeds in the ratio 5:3:2. You have exactly 120g of raisins. How many grams of the complete trail mix can you make?",
+    "answer": "400",
+    "hints": [
+      "Raisins are 3 parts. 3 parts = 120g means 1 part = 40g.",
+      "Total parts = 5 + 3 + 2 = 10. Total mix = 10 × 40g."
+    ],
+    "solution": "1 part = 120 ÷ 3 = 40g. Total parts = 5 + 3 + 2 = 10. Total mix = 10 × 40 = 400g. (Nuts: 200g, raisins: 120g, seeds: 80g.)",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "ratio-word-problems-sup-h2",
+    "topicId": "ratio-word-problems",
+    "difficulty": "hard",
+    "question": "A printer prints 24 pages in 4 minutes. At this rate, how many minutes will it take to print 150 pages?",
+    "answer": "25",
+    "hints": [
+      "Rate = 24/4 = 6 pages per minute.",
+      "Time = 150 ÷ 6 = ?"
+    ],
+    "solution": "Rate: 24/4 = 6 pages/min. Time for 150 pages: 150 ÷ 6 = 25 minutes.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "ratio-word-problems-sup-h3",
+    "topicId": "ratio-word-problems",
+    "difficulty": "hard",
+    "question": "Two faucets fill a tank. Faucet A fills it in 6 hours alone, Faucet B fills it in 4 hours alone. If both run together, how long does it take to fill the tank? Give your answer as a decimal.",
+    "answer": "2.4",
+    "hints": [
+      "Faucet A fills 1/6 of the tank per hour. Faucet B fills 1/4 per hour.",
+      "Together: 1/6 + 1/4 = 2/12 + 3/12 = 5/12 per hour. Time = 12/5."
+    ],
+    "solution": "Combined rate: 1/6 + 1/4 = 5/12 tank per hour. Time: 1 ÷ (5/12) = 12/5 = 2.4 hours.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "ratio-word-problems-sup-h4",
+    "topicId": "ratio-word-problems",
+    "difficulty": "hard",
+    "question": "A student says: 'If I double the speed, it takes double the time.' Is this correct? Explain with an example.",
+    "answer": "No. Doubling speed halves the time. For example, traveling 100 miles at 50 mph takes 2 hours, but at 100 mph it takes only 1 hour.",
+    "hints": [
+      "Speed and time have an inverse relationship when distance is constant.",
+      "If you go faster, you arrive sooner, not later."
+    ],
+    "solution": "Incorrect. Speed and time are inversely proportional (for fixed distance). Doubling speed halves the time. Example: 100 miles at 50 mph = 2 hours. At 100 mph = 1 hour (halved, not doubled).",
+    "cognitiveDemand": "error-analysis",
+    "source": "generated"
+  }
+]

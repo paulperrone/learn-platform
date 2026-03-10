@@ -1,0 +1,212 @@
+[
+  {
+    "id": "systems-of-equations-intro-sup-e0",
+    "topicId": "systems-of-equations-intro",
+    "difficulty": "easy",
+    "question": "Is the point (2, 5) a solution to the equation y = 2x + 1? Answer yes or no.",
+    "answer": "yes",
+    "hints": [
+      "Substitute x = 2 into y = 2x + 1.",
+      "y = 2(2) + 1 = 5. Does this match the given y-value?"
+    ],
+    "solution": "Substitute x = 2: y = 2(2) + 1 = 5. Since the result matches the given y = 5, the point (2, 5) IS a solution.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "systems-of-equations-intro-sup-e1",
+    "topicId": "systems-of-equations-intro",
+    "difficulty": "easy",
+    "question": "What does it mean to 'solve a system of two equations'?",
+    "answer": "Find the values of x and y that make BOTH equations true at the same time.",
+    "hints": [
+      "A system has more than one equation.",
+      "The solution must satisfy all equations simultaneously."
+    ],
+    "solution": "Solving a system means finding the values (x, y) that satisfy both equations at the same time. Graphically, this is the point where the two lines intersect.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "systems-of-equations-intro-sup-e2",
+    "topicId": "systems-of-equations-intro",
+    "difficulty": "easy",
+    "question": "Two lines on a graph cross at the point (3, 4). What is the solution to the system of equations represented by these lines?",
+    "answer": "x = 3, y = 4",
+    "hints": [
+      "The intersection point is where both equations are true.",
+      "The coordinates of the intersection give the solution."
+    ],
+    "solution": "The solution is (3, 4), meaning x = 3 and y = 4. The intersection point of two lines is the solution to the system they represent.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "systems-of-equations-intro-sup-e3",
+    "topicId": "systems-of-equations-intro",
+    "difficulty": "easy",
+    "question": "Is (1, 3) a solution to the system: y = x + 2 and y = 2x + 1? Check both equations.",
+    "answer": "yes",
+    "hints": [
+      "Check equation 1: does 3 = 1 + 2?",
+      "Check equation 2: does 3 = 2(1) + 1?"
+    ],
+    "solution": "Equation 1: y = x + 2 → 3 = 1 + 2 = 3. True. Equation 2: y = 2x + 1 → 3 = 2(1) + 1 = 3. True. Since (1, 3) satisfies both, it is a solution to the system.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "systems-of-equations-intro-sup-e4",
+    "topicId": "systems-of-equations-intro",
+    "difficulty": "easy",
+    "question": "Two lines are graphed: y = x and y = 5. Where do they intersect? Give the point as (x, y).",
+    "answer": "(5, 5)",
+    "hints": [
+      "y = 5 is a horizontal line at height 5.",
+      "Where does y = x equal 5? When x = 5."
+    ],
+    "solution": "Set the equations equal: x = 5. So the intersection is at (5, 5). Check: y = x → y = 5, and y = 5. Both are satisfied.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "systems-of-equations-intro-sup-m0",
+    "topicId": "systems-of-equations-intro",
+    "difficulty": "medium",
+    "question": "If two lines are parallel (same slope, different y-intercepts), how many solutions does their system have?",
+    "answer": "0",
+    "hints": [
+      "Parallel lines never intersect.",
+      "No intersection = no point that satisfies both equations."
+    ],
+    "solution": "Zero solutions. Parallel lines have the same slope but different y-intercepts, so they never intersect. A system with no solution is called 'inconsistent.'",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "systems-of-equations-intro-sup-m1",
+    "topicId": "systems-of-equations-intro",
+    "difficulty": "medium",
+    "question": "A student says: '(2, 3) is a solution to y = x + 1 because 3 = 2 + 1.' But the system also includes y = 3x - 1. Is (2, 3) a solution to the system?",
+    "answer": "No. Check equation 2: 3 = 3(2) - 1 = 5. Since 3 ≠ 5, the point fails the second equation.",
+    "hints": [
+      "A point must satisfy BOTH equations to be a system solution.",
+      "Check y = 3x - 1 with x = 2: 3(2) - 1 = 5, not 3."
+    ],
+    "solution": "(2, 3) satisfies y = x + 1 (3 = 3), but NOT y = 3x - 1 (3 ≠ 5). To solve a system, the point must work in BOTH equations. So (2, 3) is not a solution to the system.",
+    "cognitiveDemand": "error-analysis",
+    "source": "generated"
+  },
+  {
+    "id": "systems-of-equations-intro-sup-m2",
+    "topicId": "systems-of-equations-intro",
+    "difficulty": "medium",
+    "question": "Solve the system by inspection: y = x + 1 and y = -x + 5. Find the point (x, y) where they intersect.",
+    "answer": "(2, 3)",
+    "hints": [
+      "Set the right sides equal: x + 1 = -x + 5.",
+      "2x = 4, so x = 2. Then y = 2 + 1 = 3."
+    ],
+    "solution": "Set equal: x + 1 = -x + 5 → 2x = 4 → x = 2. Then y = 2 + 1 = 3. Solution: (2, 3). Check: 3 = -2 + 5 = 3.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "systems-of-equations-intro-sup-m3",
+    "topicId": "systems-of-equations-intro",
+    "difficulty": "medium",
+    "question": "If two equations in a system are y = 2x + 3 and y = 2x - 1, what can you conclude about the number of solutions? Explain.",
+    "answer": "No solutions. Both lines have slope 2 but different y-intercepts (3 and -1), so they are parallel and never intersect.",
+    "hints": [
+      "Compare the slopes and y-intercepts.",
+      "Same slope (2) but different y-intercepts means the lines are parallel."
+    ],
+    "solution": "Both lines have slope 2 but different y-intercepts (3 vs -1), making them parallel. Parallel lines never cross, so the system has no solution.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "systems-of-equations-intro-sup-m4",
+    "topicId": "systems-of-equations-intro",
+    "difficulty": "medium",
+    "question": "If two equations are y = 3x + 2 and 2y = 6x + 4, how many solutions does the system have?",
+    "answer": "Infinitely many solutions. The second equation simplifies to y = 3x + 2, which is the same line as the first.",
+    "hints": [
+      "Simplify the second equation by dividing both sides by 2.",
+      "2y = 6x + 4 becomes y = 3x + 2."
+    ],
+    "solution": "Dividing the second equation by 2: y = 3x + 2. Both equations represent the same line, so every point on that line is a solution. The system has infinitely many solutions.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "systems-of-equations-intro-sup-h0",
+    "topicId": "systems-of-equations-intro",
+    "difficulty": "hard",
+    "question": "A system of two linear equations can have exactly 0, 1, or infinitely many solutions. Explain graphically why it can NEVER have exactly 2 solutions.",
+    "answer": "Two straight lines can either be parallel (0 intersections), cross at one point (1 intersection), or be the same line (infinite intersections). Two straight lines cannot cross at exactly 2 points.",
+    "hints": [
+      "Think about how two straight lines can relate: parallel, intersecting, or identical.",
+      "Can two straight lines (not curves) cross in exactly two places?"
+    ],
+    "solution": "Two straight lines in a plane have exactly three geometric possibilities: (1) parallel — 0 intersections, (2) intersecting — exactly 1 intersection, (3) coincident (same line) — infinitely many points in common. Two distinct lines cannot curve to meet twice, so exactly 2 solutions is impossible.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "systems-of-equations-intro-sup-h1",
+    "topicId": "systems-of-equations-intro",
+    "difficulty": "hard",
+    "question": "Without solving, predict whether this system has 0, 1, or infinitely many solutions: y = 4x - 2 and y = -x + 8. Explain your reasoning.",
+    "answer": "Exactly 1 solution. The slopes are different (4 and -1), so the lines must intersect at exactly one point.",
+    "hints": [
+      "Compare slopes: 4 and -1. Are they the same?",
+      "Different slopes means the lines are not parallel and must cross."
+    ],
+    "solution": "The slopes are 4 and -1 (different). Lines with different slopes are neither parallel nor identical, so they intersect at exactly one point. The system has exactly 1 solution.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "systems-of-equations-intro-sup-h2",
+    "topicId": "systems-of-equations-intro",
+    "difficulty": "hard",
+    "question": "Solve the system: y = 3x - 5 and y = x + 1. Then verify your answer satisfies both equations.",
+    "answer": "(3, 4)",
+    "hints": [
+      "Set 3x - 5 = x + 1 and solve for x.",
+      "2x = 6, so x = 3. Find y from either equation."
+    ],
+    "solution": "3x - 5 = x + 1 → 2x = 6 → x = 3. y = 3 + 1 = 4. Solution: (3, 4). Verify: 4 = 3(3) - 5 = 4. 4 = 3 + 1 = 4. Both check out.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "systems-of-equations-intro-sup-h3",
+    "topicId": "systems-of-equations-intro",
+    "difficulty": "hard",
+    "question": "A student graphs y = 2x + 1 and y = 2.01x + 1 and says 'They look like the same line, so there are infinitely many solutions.' What is wrong with this conclusion?",
+    "answer": "The lines have different slopes (2 vs 2.01), so they are NOT the same line. They will eventually intersect at exactly one point, even though they look nearly parallel.",
+    "hints": [
+      "Are the slopes identical or just close?",
+      "Lines with different slopes always intersect, even if the angle is very small."
+    ],
+    "solution": "The slopes are different (2 ≠ 2.01), so the lines are not identical — they will intersect at exactly one point. The intersection may be far from the visible portion of the graph, making them appear identical. Infinitely many solutions require EXACTLY the same line.",
+    "cognitiveDemand": "error-analysis",
+    "source": "generated"
+  },
+  {
+    "id": "systems-of-equations-intro-sup-h4",
+    "topicId": "systems-of-equations-intro",
+    "difficulty": "hard",
+    "question": "Create a system of two equations whose solution is the point (4, -1). Write both equations.",
+    "answer": "y = x - 5 and y = -x + 3",
+    "hints": [
+      "Pick any two different equations that are true when x = 4 and y = -1.",
+      "For example: y = x - 5 gives -1 = 4 - 5 = -1. Find a second equation."
+    ],
+    "solution": "Many answers are valid. Example: y = x - 5 (check: -1 = 4 - 5) and y = -x + 3 (check: -1 = -4 + 3). Any two non-parallel lines passing through (4, -1) work.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  }
+]

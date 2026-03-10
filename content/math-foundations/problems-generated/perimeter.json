@@ -1,0 +1,652 @@
+[
+  {
+    "id": "perimeter-gen-e0",
+    "topicId": "perimeter",
+    "difficulty": "easy",
+    "question": "What is the perimeter of a rectangle with length 4 and width 2?",
+    "answer": "12",
+    "hints": [
+      "Perimeter = 2 × (length + width)."
+    ],
+    "solution": "P = 2 × (4 + 2) = 2 × 6 = 12.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "perimeter-gen-e1",
+    "topicId": "perimeter",
+    "difficulty": "easy",
+    "question": "What is the perimeter of a rectangle with length 5 and width 6?",
+    "answer": "22",
+    "hints": [
+      "Perimeter = 2 × (length + width)."
+    ],
+    "solution": "P = 2 × (5 + 6) = 2 × 11 = 22.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "perimeter-gen-e2",
+    "topicId": "perimeter",
+    "difficulty": "easy",
+    "question": "What is the perimeter of a rectangle with length 2 and width 7?",
+    "answer": "18",
+    "hints": [
+      "Perimeter = 2 × (length + width)."
+    ],
+    "solution": "P = 2 × (2 + 7) = 2 × 9 = 18.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "perimeter-gen-e3",
+    "topicId": "perimeter",
+    "difficulty": "easy",
+    "question": "What is the perimeter of a rectangle with length 7 and width 2?",
+    "answer": "18",
+    "hints": [
+      "Perimeter = 2 × (length + width)."
+    ],
+    "solution": "P = 2 × (7 + 2) = 2 × 9 = 18.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "perimeter-gen-e4",
+    "topicId": "perimeter",
+    "difficulty": "easy",
+    "question": "What is the perimeter of a rectangle with length 2 and width 5?",
+    "answer": "14",
+    "hints": [
+      "Perimeter = 2 × (length + width)."
+    ],
+    "solution": "P = 2 × (2 + 5) = 2 × 7 = 14.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "perimeter-gen-e5",
+    "topicId": "perimeter",
+    "difficulty": "easy",
+    "question": "What is the perimeter of a rectangle with length 8 and width 8?",
+    "answer": "32",
+    "hints": [
+      "Perimeter = 2 × (length + width)."
+    ],
+    "solution": "P = 2 × (8 + 8) = 2 × 16 = 32.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "perimeter-gen-e6",
+    "topicId": "perimeter",
+    "difficulty": "easy",
+    "question": "What is the perimeter of a rectangle with length 4 and width 4?",
+    "answer": "16",
+    "hints": [
+      "Perimeter = 2 × (length + width)."
+    ],
+    "solution": "P = 2 × (4 + 4) = 2 × 8 = 16.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "perimeter-gen-e7",
+    "topicId": "perimeter",
+    "difficulty": "easy",
+    "question": "What is the perimeter of a rectangle with length 4 and width 2?",
+    "answer": "12",
+    "hints": [
+      "Perimeter = 2 × (length + width)."
+    ],
+    "solution": "P = 2 × (4 + 2) = 2 × 6 = 12.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "perimeter-gen-e8",
+    "topicId": "perimeter",
+    "difficulty": "easy",
+    "question": "What is the perimeter of a rectangle with length 2 and width 7?",
+    "answer": "18",
+    "hints": [
+      "Perimeter = 2 × (length + width)."
+    ],
+    "solution": "P = 2 × (2 + 7) = 2 × 9 = 18.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "perimeter-gen-e9",
+    "topicId": "perimeter",
+    "difficulty": "easy",
+    "question": "What is the perimeter of a rectangle with length 8 and width 2?",
+    "answer": "20",
+    "hints": [
+      "Perimeter = 2 × (length + width)."
+    ],
+    "solution": "P = 2 × (8 + 2) = 2 × 10 = 20.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "perimeter-gen-e10",
+    "topicId": "perimeter",
+    "difficulty": "easy",
+    "question": "What is the perimeter of a rectangle with length 8 and width 3?",
+    "answer": "22",
+    "hints": [
+      "Perimeter = 2 × (length + width)."
+    ],
+    "solution": "P = 2 × (8 + 3) = 2 × 11 = 22.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "perimeter-gen-e11",
+    "topicId": "perimeter",
+    "difficulty": "easy",
+    "question": "What is the perimeter of a rectangle with length 8 and width 5?",
+    "answer": "26",
+    "hints": [
+      "Perimeter = 2 × (length + width)."
+    ],
+    "solution": "P = 2 × (8 + 5) = 2 × 13 = 26.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "perimeter-gen-e12",
+    "topicId": "perimeter",
+    "difficulty": "easy",
+    "question": "What is the perimeter of a rectangle with length 8 and width 8?",
+    "answer": "32",
+    "hints": [
+      "Perimeter = 2 × (length + width)."
+    ],
+    "solution": "P = 2 × (8 + 8) = 2 × 16 = 32.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "perimeter-gen-e13",
+    "topicId": "perimeter",
+    "difficulty": "easy",
+    "question": "What is the perimeter of a rectangle with length 3 and width 8?",
+    "answer": "22",
+    "hints": [
+      "Perimeter = 2 × (length + width)."
+    ],
+    "solution": "P = 2 × (3 + 8) = 2 × 11 = 22.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "perimeter-gen-e14",
+    "topicId": "perimeter",
+    "difficulty": "easy",
+    "question": "What is the perimeter of a rectangle with length 5 and width 3?",
+    "answer": "16",
+    "hints": [
+      "Perimeter = 2 × (length + width)."
+    ],
+    "solution": "P = 2 × (5 + 3) = 2 × 8 = 16.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "perimeter-gen-m0",
+    "topicId": "perimeter",
+    "difficulty": "medium",
+    "question": "What is the perimeter of a square with side length 4?",
+    "answer": "16",
+    "hints": [
+      "A square has 4 equal sides."
+    ],
+    "solution": "P = 4 × 4 = 16.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "perimeter-gen-m1",
+    "topicId": "perimeter",
+    "difficulty": "medium",
+    "question": "What is the perimeter of a square with side length 13?",
+    "answer": "52",
+    "hints": [
+      "A square has 4 equal sides."
+    ],
+    "solution": "P = 4 × 13 = 52.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "perimeter-gen-m2",
+    "topicId": "perimeter",
+    "difficulty": "medium",
+    "question": "What is the perimeter of a square with side length 15?",
+    "answer": "60",
+    "hints": [
+      "A square has 4 equal sides."
+    ],
+    "solution": "P = 4 × 15 = 60.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "perimeter-gen-m3",
+    "topicId": "perimeter",
+    "difficulty": "medium",
+    "question": "What is the perimeter of a square with side length 7?",
+    "answer": "28",
+    "hints": [
+      "A square has 4 equal sides."
+    ],
+    "solution": "P = 4 × 7 = 28.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "perimeter-gen-m4",
+    "topicId": "perimeter",
+    "difficulty": "medium",
+    "question": "What is the perimeter of a square with side length 6?",
+    "answer": "24",
+    "hints": [
+      "A square has 4 equal sides."
+    ],
+    "solution": "P = 4 × 6 = 24.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "perimeter-gen-m5",
+    "topicId": "perimeter",
+    "difficulty": "medium",
+    "question": "What is the perimeter of a square with side length 4?",
+    "answer": "16",
+    "hints": [
+      "A square has 4 equal sides."
+    ],
+    "solution": "P = 4 × 4 = 16.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "perimeter-gen-m6",
+    "topicId": "perimeter",
+    "difficulty": "medium",
+    "question": "What is the perimeter of a square with side length 15?",
+    "answer": "60",
+    "hints": [
+      "A square has 4 equal sides."
+    ],
+    "solution": "P = 4 × 15 = 60.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "perimeter-gen-m7",
+    "topicId": "perimeter",
+    "difficulty": "medium",
+    "question": "What is the perimeter of a square with side length 5?",
+    "answer": "20",
+    "hints": [
+      "A square has 4 equal sides."
+    ],
+    "solution": "P = 4 × 5 = 20.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "perimeter-gen-m8",
+    "topicId": "perimeter",
+    "difficulty": "medium",
+    "question": "What is the perimeter of a square with side length 12?",
+    "answer": "48",
+    "hints": [
+      "A square has 4 equal sides."
+    ],
+    "solution": "P = 4 × 12 = 48.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "perimeter-gen-m9",
+    "topicId": "perimeter",
+    "difficulty": "medium",
+    "question": "What is the perimeter of a square with side length 4?",
+    "answer": "16",
+    "hints": [
+      "A square has 4 equal sides."
+    ],
+    "solution": "P = 4 × 4 = 16.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "perimeter-gen-m10",
+    "topicId": "perimeter",
+    "difficulty": "medium",
+    "question": "What is the perimeter of a square with side length 6?",
+    "answer": "24",
+    "hints": [
+      "A square has 4 equal sides."
+    ],
+    "solution": "P = 4 × 6 = 24.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "perimeter-gen-m11",
+    "topicId": "perimeter",
+    "difficulty": "medium",
+    "question": "What is the perimeter of a square with side length 12?",
+    "answer": "48",
+    "hints": [
+      "A square has 4 equal sides."
+    ],
+    "solution": "P = 4 × 12 = 48.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "perimeter-gen-m12",
+    "topicId": "perimeter",
+    "difficulty": "medium",
+    "question": "What is the perimeter of a square with side length 10?",
+    "answer": "40",
+    "hints": [
+      "A square has 4 equal sides."
+    ],
+    "solution": "P = 4 × 10 = 40.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "perimeter-gen-m13",
+    "topicId": "perimeter",
+    "difficulty": "medium",
+    "question": "What is the perimeter of a square with side length 14?",
+    "answer": "56",
+    "hints": [
+      "A square has 4 equal sides."
+    ],
+    "solution": "P = 4 × 14 = 56.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "perimeter-gen-m14",
+    "topicId": "perimeter",
+    "difficulty": "medium",
+    "question": "What is the perimeter of a square with side length 5?",
+    "answer": "20",
+    "hints": [
+      "A square has 4 equal sides."
+    ],
+    "solution": "P = 4 × 5 = 20.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "perimeter-gen-m15",
+    "topicId": "perimeter",
+    "difficulty": "medium",
+    "question": "What is the perimeter of a square with side length 14?",
+    "answer": "56",
+    "hints": [
+      "A square has 4 equal sides."
+    ],
+    "solution": "P = 4 × 14 = 56.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "perimeter-gen-m16",
+    "topicId": "perimeter",
+    "difficulty": "medium",
+    "question": "What is the perimeter of a square with side length 8?",
+    "answer": "32",
+    "hints": [
+      "A square has 4 equal sides."
+    ],
+    "solution": "P = 4 × 8 = 32.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "perimeter-gen-m17",
+    "topicId": "perimeter",
+    "difficulty": "medium",
+    "question": "What is the perimeter of a square with side length 14?",
+    "answer": "56",
+    "hints": [
+      "A square has 4 equal sides."
+    ],
+    "solution": "P = 4 × 14 = 56.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "perimeter-gen-m18",
+    "topicId": "perimeter",
+    "difficulty": "medium",
+    "question": "What is the perimeter of a square with side length 6?",
+    "answer": "24",
+    "hints": [
+      "A square has 4 equal sides."
+    ],
+    "solution": "P = 4 × 6 = 24.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "perimeter-gen-m19",
+    "topicId": "perimeter",
+    "difficulty": "medium",
+    "question": "What is the perimeter of a square with side length 7?",
+    "answer": "28",
+    "hints": [
+      "A square has 4 equal sides."
+    ],
+    "solution": "P = 4 × 7 = 28.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "perimeter-gen-h0",
+    "topicId": "perimeter",
+    "difficulty": "hard",
+    "question": "What is the perimeter of a triangle with sides 5, 9, and 13?",
+    "answer": "27",
+    "hints": [
+      "Add all three sides."
+    ],
+    "solution": "P = 5 + 9 + 13 = 27.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "perimeter-gen-h1",
+    "topicId": "perimeter",
+    "difficulty": "hard",
+    "question": "What is the perimeter of a triangle with sides 9, 10, and 5?",
+    "answer": "24",
+    "hints": [
+      "Add all three sides."
+    ],
+    "solution": "P = 9 + 10 + 5 = 24.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "perimeter-gen-h2",
+    "topicId": "perimeter",
+    "difficulty": "hard",
+    "question": "What is the perimeter of a triangle with sides 6, 8, and 6?",
+    "answer": "20",
+    "hints": [
+      "Add all three sides."
+    ],
+    "solution": "P = 6 + 8 + 6 = 20.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "perimeter-gen-h3",
+    "topicId": "perimeter",
+    "difficulty": "hard",
+    "question": "What is the perimeter of a triangle with sides 12, 8, and 15?",
+    "answer": "35",
+    "hints": [
+      "Add all three sides."
+    ],
+    "solution": "P = 12 + 8 + 15 = 35.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "perimeter-gen-h4",
+    "topicId": "perimeter",
+    "difficulty": "hard",
+    "question": "What is the perimeter of a triangle with sides 9, 6, and 11?",
+    "answer": "26",
+    "hints": [
+      "Add all three sides."
+    ],
+    "solution": "P = 9 + 6 + 11 = 26.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "perimeter-gen-h5",
+    "topicId": "perimeter",
+    "difficulty": "hard",
+    "question": "What is the perimeter of a triangle with sides 9, 12, and 20?",
+    "answer": "41",
+    "hints": [
+      "Add all three sides."
+    ],
+    "solution": "P = 9 + 12 + 20 = 41.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "perimeter-gen-h6",
+    "topicId": "perimeter",
+    "difficulty": "hard",
+    "question": "What is the perimeter of a triangle with sides 6, 11, and 14?",
+    "answer": "31",
+    "hints": [
+      "Add all three sides."
+    ],
+    "solution": "P = 6 + 11 + 14 = 31.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "perimeter-gen-h7",
+    "topicId": "perimeter",
+    "difficulty": "hard",
+    "question": "What is the perimeter of a triangle with sides 10, 4, and 9?",
+    "answer": "23",
+    "hints": [
+      "Add all three sides."
+    ],
+    "solution": "P = 10 + 4 + 9 = 23.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "perimeter-gen-h8",
+    "topicId": "perimeter",
+    "difficulty": "hard",
+    "question": "What is the perimeter of a triangle with sides 10, 4, and 12?",
+    "answer": "26",
+    "hints": [
+      "Add all three sides."
+    ],
+    "solution": "P = 10 + 4 + 12 = 26.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "perimeter-gen-h9",
+    "topicId": "perimeter",
+    "difficulty": "hard",
+    "question": "What is the perimeter of a triangle with sides 3, 7, and 9?",
+    "answer": "19",
+    "hints": [
+      "Add all three sides."
+    ],
+    "solution": "P = 3 + 7 + 9 = 19.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "perimeter-gen-h10",
+    "topicId": "perimeter",
+    "difficulty": "hard",
+    "question": "What is the perimeter of a triangle with sides 11, 3, and 10?",
+    "answer": "24",
+    "hints": [
+      "Add all three sides."
+    ],
+    "solution": "P = 11 + 3 + 10 = 24.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "perimeter-gen-h11",
+    "topicId": "perimeter",
+    "difficulty": "hard",
+    "question": "What is the perimeter of a triangle with sides 12, 6, and 17?",
+    "answer": "35",
+    "hints": [
+      "Add all three sides."
+    ],
+    "solution": "P = 12 + 6 + 17 = 35.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "perimeter-gen-h12",
+    "topicId": "perimeter",
+    "difficulty": "hard",
+    "question": "What is the perimeter of a triangle with sides 12, 6, and 16?",
+    "answer": "34",
+    "hints": [
+      "Add all three sides."
+    ],
+    "solution": "P = 12 + 6 + 16 = 34.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "perimeter-gen-h13",
+    "topicId": "perimeter",
+    "difficulty": "hard",
+    "question": "What is the perimeter of a triangle with sides 5, 9, and 6?",
+    "answer": "20",
+    "hints": [
+      "Add all three sides."
+    ],
+    "solution": "P = 5 + 9 + 6 = 20.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "perimeter-gen-h14",
+    "topicId": "perimeter",
+    "difficulty": "hard",
+    "question": "What is the perimeter of a triangle with sides 8, 7, and 10?",
+    "answer": "25",
+    "hints": [
+      "Add all three sides."
+    ],
+    "solution": "P = 8 + 7 + 10 = 25.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  }
+]

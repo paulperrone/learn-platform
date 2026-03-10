@@ -1,0 +1,212 @@
+[
+  {
+    "id": "rational-numbers-intro-sup-e0",
+    "topicId": "rational-numbers-intro",
+    "difficulty": "easy",
+    "question": "Is the number 3/4 a rational number? Answer yes or no.",
+    "answer": "yes",
+    "hints": [
+      "A rational number can be written as a fraction with an integer on top and a nonzero integer on the bottom.",
+      "3/4 is already in fraction form with integers 3 and 4."
+    ],
+    "solution": "Yes. 3/4 is a rational number because it can be written as a fraction of two integers (3 and 4), where the denominator is not zero.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "rational-numbers-intro-sup-e1",
+    "topicId": "rational-numbers-intro",
+    "difficulty": "easy",
+    "question": "Is the whole number 7 also a rational number? Answer yes or no.",
+    "answer": "yes",
+    "hints": [
+      "Can you write 7 as a fraction?",
+      "7 = 7/1, which is a fraction of two integers."
+    ],
+    "solution": "Yes. Every whole number is also a rational number because it can be written as a fraction: 7 = 7/1.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "rational-numbers-intro-sup-e2",
+    "topicId": "rational-numbers-intro",
+    "difficulty": "easy",
+    "question": "Which point on a number line is exactly halfway between 0 and 1? Type the answer as a fraction.",
+    "answer": "1/2",
+    "hints": [
+      "Halfway means the same distance from 0 and from 1.",
+      "Split the distance from 0 to 1 into two equal parts."
+    ],
+    "solution": "The point exactly halfway between 0 and 1 is 1/2. It divides the unit interval into two equal parts.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "rational-numbers-intro-sup-e3",
+    "topicId": "rational-numbers-intro",
+    "difficulty": "easy",
+    "question": "Write the decimal 0.75 as a fraction in simplest form.",
+    "answer": "3/4",
+    "hints": [
+      "0.75 means 75 hundredths, or 75/100.",
+      "Simplify 75/100 by dividing both by 25."
+    ],
+    "solution": "0.75 = 75/100. Divide numerator and denominator by 25: 75 ÷ 25 = 3, 100 ÷ 25 = 4. So 0.75 = 3/4.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "rational-numbers-intro-sup-e4",
+    "topicId": "rational-numbers-intro",
+    "difficulty": "easy",
+    "question": "True or false: Every integer is a rational number.",
+    "answer": "true",
+    "hints": [
+      "Can every integer be written as a fraction?",
+      "Any integer n can be written as n/1."
+    ],
+    "solution": "True. Every integer n can be written as n/1, which is a fraction with integer numerator and nonzero integer denominator. Therefore every integer is rational.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "rational-numbers-intro-sup-m0",
+    "topicId": "rational-numbers-intro",
+    "difficulty": "medium",
+    "question": "Place -2/3 on the number line. Is it between -1 and 0, between 0 and 1, or less than -1?",
+    "answer": "between -1 and 0",
+    "hints": [
+      "-2/3 is negative, so it's to the left of 0.",
+      "Is 2/3 less than 1? If so, -2/3 is greater than -1."
+    ],
+    "solution": "-2/3 is negative (left of 0) but its absolute value 2/3 is less than 1, so -2/3 is greater than -1. Therefore -2/3 is between -1 and 0 on the number line.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "rational-numbers-intro-sup-m1",
+    "topicId": "rational-numbers-intro",
+    "difficulty": "medium",
+    "question": "Sam says 0.333... (repeating) is NOT a rational number because the decimal never ends. Is Sam correct? Answer yes or no.",
+    "answer": "no",
+    "hints": [
+      "A number is rational if it can be written as a fraction of integers.",
+      "What fraction equals 0.333...?"
+    ],
+    "solution": "Sam is incorrect. 0.333... = 1/3, which is a fraction of two integers. Repeating decimals are always rational numbers. Only non-repeating, non-terminating decimals are irrational.",
+    "cognitiveDemand": "error-analysis",
+    "source": "generated"
+  },
+  {
+    "id": "rational-numbers-intro-sup-m2",
+    "topicId": "rational-numbers-intro",
+    "difficulty": "medium",
+    "question": "Which is greater: 5/8 or 3/5? Type the greater fraction.",
+    "answer": "5/8",
+    "hints": [
+      "Find a common denominator to compare. The LCD of 8 and 5 is 40.",
+      "5/8 = 25/40 and 3/5 = 24/40. Compare the numerators."
+    ],
+    "solution": "Convert to a common denominator of 40: 5/8 = 25/40 and 3/5 = 24/40. Since 25 > 24, we have 5/8 > 3/5.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "rational-numbers-intro-sup-m3",
+    "topicId": "rational-numbers-intro",
+    "difficulty": "medium",
+    "question": "Name one rational number that is between 1/4 and 1/2. Type your answer as a fraction.",
+    "answer": "1/3",
+    "hints": [
+      "1/4 = 0.25 and 1/2 = 0.50. Any fraction with a value between these works.",
+      "Try 1/3 ≈ 0.333, or 3/8 = 0.375, or 2/5 = 0.4."
+    ],
+    "solution": "There are infinitely many rational numbers between 1/4 and 1/2. One example is 1/3 (≈ 0.333), which is between 0.25 and 0.5. Other valid answers include 3/8, 2/5, 3/7, etc.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "rational-numbers-intro-sup-m4",
+    "topicId": "rational-numbers-intro",
+    "difficulty": "medium",
+    "question": "A student claims that -5/3 is not rational because it's negative. What is wrong with this reasoning?",
+    "answer": "Rational numbers can be negative. -5/3 is rational because it equals the fraction -5 over 3, both integers.",
+    "hints": [
+      "Does the definition of rational number say anything about the sign?",
+      "A rational number is any number that can be written as a/b where a, b are integers and b ≠ 0."
+    ],
+    "solution": "The definition of a rational number is any number expressible as a/b where a and b are integers and b ≠ 0. There is no requirement that the number be positive. -5/3 = (-5)/3, which fits the definition perfectly.",
+    "cognitiveDemand": "error-analysis",
+    "source": "generated"
+  },
+  {
+    "id": "rational-numbers-intro-sup-h0",
+    "topicId": "rational-numbers-intro",
+    "difficulty": "hard",
+    "question": "Explain why there is no 'smallest positive rational number.' Give a brief reason in one sentence.",
+    "answer": "For any positive rational number, you can always find a smaller one by dividing it by 2.",
+    "hints": [
+      "If someone claims the smallest positive rational is some number r, what is r/2?",
+      "r/2 is still positive and still rational, but smaller than r."
+    ],
+    "solution": "There is no smallest positive rational number because for any positive rational r, the number r/2 is also a positive rational number and r/2 < r. This process can continue forever.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "rational-numbers-intro-sup-h1",
+    "topicId": "rational-numbers-intro",
+    "difficulty": "hard",
+    "question": "True or false: Between any two different rational numbers, there is always at least one more rational number.",
+    "answer": "true",
+    "hints": [
+      "If you have two rational numbers a and b, what is (a + b)/2?",
+      "(a + b)/2 is the average — it's between a and b, and it's rational if a and b are rational."
+    ],
+    "solution": "True. Given any two distinct rational numbers a and b, their average (a + b)/2 is also rational and lies between them. In fact, there are infinitely many rational numbers between any two distinct rationals (this is called the 'density' of the rationals).",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "rational-numbers-intro-sup-h2",
+    "topicId": "rational-numbers-intro",
+    "difficulty": "hard",
+    "question": "A student says: 'Since 22/7 is close to pi, and 22/7 is rational, pi must be rational too.' What is the flaw in this reasoning?",
+    "answer": "Being close to a rational number does not make a number rational. 22/7 approximates pi but does not equal it.",
+    "hints": [
+      "22/7 ≈ 3.142857... but π ≈ 3.141592... They are close but not equal.",
+      "A number is rational only if it EXACTLY equals some fraction a/b."
+    ],
+    "solution": "The flaw is that being 'close to' a rational number does not make a number rational. 22/7 is an approximation of π, not equal to π. A number must exactly equal a fraction of integers to be rational. π cannot be expressed as any fraction of integers, so it is irrational regardless of how close rational approximations get.",
+    "cognitiveDemand": "error-analysis",
+    "source": "generated"
+  },
+  {
+    "id": "rational-numbers-intro-sup-h3",
+    "topicId": "rational-numbers-intro",
+    "difficulty": "hard",
+    "question": "Sort these numbers into rational and irrational: 0.5, √2, -7, 0.121212... (repeating), √9. List only the irrational numbers.",
+    "answer": "√2",
+    "hints": [
+      "Check each: Can it be written as a fraction of integers?",
+      "√9 = 3 (a whole number). 0.121212... repeating is rational. √2 cannot be written as a fraction."
+    ],
+    "solution": "0.5 = 1/2 (rational). √2 ≈ 1.41421... non-repeating, non-terminating (irrational). -7 = -7/1 (rational). 0.121212... = 12/99 = 4/33 (rational). √9 = 3 (rational). The only irrational number is √2.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "rational-numbers-intro-sup-h4",
+    "topicId": "rational-numbers-intro",
+    "difficulty": "hard",
+    "question": "Find three different rational numbers between 1/3 and 2/3. Type them as fractions separated by commas.",
+    "answer": "5/12, 1/2, 7/12",
+    "hints": [
+      "Convert to a common denominator: 1/3 = 4/12 and 2/3 = 8/12.",
+      "Now find fractions with denominator 12 between 4/12 and 8/12."
+    ],
+    "solution": "Convert to twelfths: 1/3 = 4/12 and 2/3 = 8/12. Between them: 5/12, 6/12 (= 1/2), and 7/12. Any three distinct fractions between 1/3 and 2/3 are valid answers.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  }
+]

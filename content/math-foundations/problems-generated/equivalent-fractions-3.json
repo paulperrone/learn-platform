@@ -1,0 +1,652 @@
+[
+  {
+    "id": "equivalent-fractions-3-gen-e0",
+    "topicId": "equivalent-fractions-3",
+    "difficulty": "easy",
+    "question": "Find the missing number: 1/2 = ?/6",
+    "answer": "3",
+    "hints": [
+      "The denominator was multiplied by 3. Do the same to the numerator."
+    ],
+    "solution": "1/2 = 3/6. Both parts were multiplied by 3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-fractions-3-gen-e1",
+    "topicId": "equivalent-fractions-3",
+    "difficulty": "easy",
+    "question": "Find the missing number: 1/2 = ?/4",
+    "answer": "2",
+    "hints": [
+      "The denominator was multiplied by 2. Do the same to the numerator."
+    ],
+    "solution": "1/2 = 2/4. Both parts were multiplied by 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-fractions-3-gen-e2",
+    "topicId": "equivalent-fractions-3",
+    "difficulty": "easy",
+    "question": "Find the missing number: 1/4 = ?/8",
+    "answer": "2",
+    "hints": [
+      "The denominator was multiplied by 2. Do the same to the numerator."
+    ],
+    "solution": "1/4 = 2/8. Both parts were multiplied by 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-fractions-3-gen-e3",
+    "topicId": "equivalent-fractions-3",
+    "difficulty": "easy",
+    "question": "Find the missing number: 1/4 = ?/8",
+    "answer": "2",
+    "hints": [
+      "The denominator was multiplied by 2. Do the same to the numerator."
+    ],
+    "solution": "1/4 = 2/8. Both parts were multiplied by 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-fractions-3-gen-e4",
+    "topicId": "equivalent-fractions-3",
+    "difficulty": "easy",
+    "question": "Find the missing number: 1/4 = ?/8",
+    "answer": "2",
+    "hints": [
+      "The denominator was multiplied by 2. Do the same to the numerator."
+    ],
+    "solution": "1/4 = 2/8. Both parts were multiplied by 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-fractions-3-gen-e5",
+    "topicId": "equivalent-fractions-3",
+    "difficulty": "easy",
+    "question": "Find the missing number: 1/2 = ?/4",
+    "answer": "2",
+    "hints": [
+      "The denominator was multiplied by 2. Do the same to the numerator."
+    ],
+    "solution": "1/2 = 2/4. Both parts were multiplied by 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-fractions-3-gen-e6",
+    "topicId": "equivalent-fractions-3",
+    "difficulty": "easy",
+    "question": "Find the missing number: 1/3 = ?/9",
+    "answer": "3",
+    "hints": [
+      "The denominator was multiplied by 3. Do the same to the numerator."
+    ],
+    "solution": "1/3 = 3/9. Both parts were multiplied by 3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-fractions-3-gen-e7",
+    "topicId": "equivalent-fractions-3",
+    "difficulty": "easy",
+    "question": "Find the missing number: 1/3 = ?/6",
+    "answer": "2",
+    "hints": [
+      "The denominator was multiplied by 2. Do the same to the numerator."
+    ],
+    "solution": "1/3 = 2/6. Both parts were multiplied by 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-fractions-3-gen-e8",
+    "topicId": "equivalent-fractions-3",
+    "difficulty": "easy",
+    "question": "Find the missing number: 1/2 = ?/6",
+    "answer": "3",
+    "hints": [
+      "The denominator was multiplied by 3. Do the same to the numerator."
+    ],
+    "solution": "1/2 = 3/6. Both parts were multiplied by 3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-fractions-3-gen-e9",
+    "topicId": "equivalent-fractions-3",
+    "difficulty": "easy",
+    "question": "Find the missing number: 1/4 = ?/12",
+    "answer": "3",
+    "hints": [
+      "The denominator was multiplied by 3. Do the same to the numerator."
+    ],
+    "solution": "1/4 = 3/12. Both parts were multiplied by 3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-fractions-3-gen-e10",
+    "topicId": "equivalent-fractions-3",
+    "difficulty": "easy",
+    "question": "Find the missing number: 1/4 = ?/8",
+    "answer": "2",
+    "hints": [
+      "The denominator was multiplied by 2. Do the same to the numerator."
+    ],
+    "solution": "1/4 = 2/8. Both parts were multiplied by 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-fractions-3-gen-e11",
+    "topicId": "equivalent-fractions-3",
+    "difficulty": "easy",
+    "question": "Find the missing number: 1/2 = ?/4",
+    "answer": "2",
+    "hints": [
+      "The denominator was multiplied by 2. Do the same to the numerator."
+    ],
+    "solution": "1/2 = 2/4. Both parts were multiplied by 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-fractions-3-gen-e12",
+    "topicId": "equivalent-fractions-3",
+    "difficulty": "easy",
+    "question": "Find the missing number: 1/4 = ?/12",
+    "answer": "3",
+    "hints": [
+      "The denominator was multiplied by 3. Do the same to the numerator."
+    ],
+    "solution": "1/4 = 3/12. Both parts were multiplied by 3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-fractions-3-gen-e13",
+    "topicId": "equivalent-fractions-3",
+    "difficulty": "easy",
+    "question": "Find the missing number: 1/4 = ?/8",
+    "answer": "2",
+    "hints": [
+      "The denominator was multiplied by 2. Do the same to the numerator."
+    ],
+    "solution": "1/4 = 2/8. Both parts were multiplied by 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-fractions-3-gen-e14",
+    "topicId": "equivalent-fractions-3",
+    "difficulty": "easy",
+    "question": "Find the missing number: 1/4 = ?/8",
+    "answer": "2",
+    "hints": [
+      "The denominator was multiplied by 2. Do the same to the numerator."
+    ],
+    "solution": "1/4 = 2/8. Both parts were multiplied by 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-fractions-3-gen-m0",
+    "topicId": "equivalent-fractions-3",
+    "difficulty": "medium",
+    "question": "Find the missing number: 2/4 = ?/8",
+    "answer": "4",
+    "hints": [
+      "The denominator was multiplied by 2. Do the same to the numerator."
+    ],
+    "solution": "2/4 = 4/8. Both parts were multiplied by 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-fractions-3-gen-m1",
+    "topicId": "equivalent-fractions-3",
+    "difficulty": "medium",
+    "question": "Find the missing number: 3/4 = ?/16",
+    "answer": "12",
+    "hints": [
+      "The denominator was multiplied by 4. Do the same to the numerator."
+    ],
+    "solution": "3/4 = 12/16. Both parts were multiplied by 4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-fractions-3-gen-m2",
+    "topicId": "equivalent-fractions-3",
+    "difficulty": "medium",
+    "question": "Find the missing number: 1/6 = ?/24",
+    "answer": "4",
+    "hints": [
+      "The denominator was multiplied by 4. Do the same to the numerator."
+    ],
+    "solution": "1/6 = 4/24. Both parts were multiplied by 4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-fractions-3-gen-m3",
+    "topicId": "equivalent-fractions-3",
+    "difficulty": "medium",
+    "question": "Find the missing number: 2/3 = ?/6",
+    "answer": "4",
+    "hints": [
+      "The denominator was multiplied by 2. Do the same to the numerator."
+    ],
+    "solution": "2/3 = 4/6. Both parts were multiplied by 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-fractions-3-gen-m4",
+    "topicId": "equivalent-fractions-3",
+    "difficulty": "medium",
+    "question": "Find the missing number: 3/6 = ?/12",
+    "answer": "6",
+    "hints": [
+      "The denominator was multiplied by 2. Do the same to the numerator."
+    ],
+    "solution": "3/6 = 6/12. Both parts were multiplied by 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-fractions-3-gen-m5",
+    "topicId": "equivalent-fractions-3",
+    "difficulty": "medium",
+    "question": "Find the missing number: 3/6 = ?/18",
+    "answer": "9",
+    "hints": [
+      "The denominator was multiplied by 3. Do the same to the numerator."
+    ],
+    "solution": "3/6 = 9/18. Both parts were multiplied by 3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-fractions-3-gen-m6",
+    "topicId": "equivalent-fractions-3",
+    "difficulty": "medium",
+    "question": "Find the missing number: 1/2 = ?/6",
+    "answer": "3",
+    "hints": [
+      "The denominator was multiplied by 3. Do the same to the numerator."
+    ],
+    "solution": "1/2 = 3/6. Both parts were multiplied by 3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-fractions-3-gen-m7",
+    "topicId": "equivalent-fractions-3",
+    "difficulty": "medium",
+    "question": "Find the missing number: 1/2 = ?/4",
+    "answer": "2",
+    "hints": [
+      "The denominator was multiplied by 2. Do the same to the numerator."
+    ],
+    "solution": "1/2 = 2/4. Both parts were multiplied by 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-fractions-3-gen-m8",
+    "topicId": "equivalent-fractions-3",
+    "difficulty": "medium",
+    "question": "Find the missing number: 3/4 = ?/12",
+    "answer": "9",
+    "hints": [
+      "The denominator was multiplied by 3. Do the same to the numerator."
+    ],
+    "solution": "3/4 = 9/12. Both parts were multiplied by 3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-fractions-3-gen-m9",
+    "topicId": "equivalent-fractions-3",
+    "difficulty": "medium",
+    "question": "Find the missing number: 1/2 = ?/6",
+    "answer": "3",
+    "hints": [
+      "The denominator was multiplied by 3. Do the same to the numerator."
+    ],
+    "solution": "1/2 = 3/6. Both parts were multiplied by 3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-fractions-3-gen-m10",
+    "topicId": "equivalent-fractions-3",
+    "difficulty": "medium",
+    "question": "Find the missing number: 4/6 = ?/18",
+    "answer": "12",
+    "hints": [
+      "The denominator was multiplied by 3. Do the same to the numerator."
+    ],
+    "solution": "4/6 = 12/18. Both parts were multiplied by 3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-fractions-3-gen-m11",
+    "topicId": "equivalent-fractions-3",
+    "difficulty": "medium",
+    "question": "Find the missing number: 1/3 = ?/6",
+    "answer": "2",
+    "hints": [
+      "The denominator was multiplied by 2. Do the same to the numerator."
+    ],
+    "solution": "1/3 = 2/6. Both parts were multiplied by 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-fractions-3-gen-m12",
+    "topicId": "equivalent-fractions-3",
+    "difficulty": "medium",
+    "question": "Find the missing number: 1/3 = ?/12",
+    "answer": "4",
+    "hints": [
+      "The denominator was multiplied by 4. Do the same to the numerator."
+    ],
+    "solution": "1/3 = 4/12. Both parts were multiplied by 4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-fractions-3-gen-m13",
+    "topicId": "equivalent-fractions-3",
+    "difficulty": "medium",
+    "question": "Find the missing number: 2/3 = ?/9",
+    "answer": "6",
+    "hints": [
+      "The denominator was multiplied by 3. Do the same to the numerator."
+    ],
+    "solution": "2/3 = 6/9. Both parts were multiplied by 3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-fractions-3-gen-m14",
+    "topicId": "equivalent-fractions-3",
+    "difficulty": "medium",
+    "question": "Find the missing number: 1/2 = ?/8",
+    "answer": "4",
+    "hints": [
+      "The denominator was multiplied by 4. Do the same to the numerator."
+    ],
+    "solution": "1/2 = 4/8. Both parts were multiplied by 4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-fractions-3-gen-m15",
+    "topicId": "equivalent-fractions-3",
+    "difficulty": "medium",
+    "question": "Find the missing number: 2/4 = ?/8",
+    "answer": "4",
+    "hints": [
+      "The denominator was multiplied by 2. Do the same to the numerator."
+    ],
+    "solution": "2/4 = 4/8. Both parts were multiplied by 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-fractions-3-gen-m16",
+    "topicId": "equivalent-fractions-3",
+    "difficulty": "medium",
+    "question": "Find the missing number: 1/4 = ?/12",
+    "answer": "3",
+    "hints": [
+      "The denominator was multiplied by 3. Do the same to the numerator."
+    ],
+    "solution": "1/4 = 3/12. Both parts were multiplied by 3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-fractions-3-gen-m17",
+    "topicId": "equivalent-fractions-3",
+    "difficulty": "medium",
+    "question": "Find the missing number: 4/6 = ?/18",
+    "answer": "12",
+    "hints": [
+      "The denominator was multiplied by 3. Do the same to the numerator."
+    ],
+    "solution": "4/6 = 12/18. Both parts were multiplied by 3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-fractions-3-gen-m18",
+    "topicId": "equivalent-fractions-3",
+    "difficulty": "medium",
+    "question": "Find the missing number: 1/2 = ?/6",
+    "answer": "3",
+    "hints": [
+      "The denominator was multiplied by 3. Do the same to the numerator."
+    ],
+    "solution": "1/2 = 3/6. Both parts were multiplied by 3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-fractions-3-gen-m19",
+    "topicId": "equivalent-fractions-3",
+    "difficulty": "medium",
+    "question": "Find the missing number: 3/4 = ?/16",
+    "answer": "12",
+    "hints": [
+      "The denominator was multiplied by 4. Do the same to the numerator."
+    ],
+    "solution": "3/4 = 12/16. Both parts were multiplied by 4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-fractions-3-gen-h0",
+    "topicId": "equivalent-fractions-3",
+    "difficulty": "hard",
+    "question": "Find the missing number: 3/4 = ?/16",
+    "answer": "12",
+    "hints": [
+      "The denominator was multiplied by 4. Do the same to the numerator."
+    ],
+    "solution": "3/4 = 12/16. Both parts were multiplied by 4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-fractions-3-gen-h1",
+    "topicId": "equivalent-fractions-3",
+    "difficulty": "hard",
+    "question": "Find the missing number: 5/6 = ?/18",
+    "answer": "15",
+    "hints": [
+      "The denominator was multiplied by 3. Do the same to the numerator."
+    ],
+    "solution": "5/6 = 15/18. Both parts were multiplied by 3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-fractions-3-gen-h2",
+    "topicId": "equivalent-fractions-3",
+    "difficulty": "hard",
+    "question": "Find the missing number: 5/6 = ?/18",
+    "answer": "15",
+    "hints": [
+      "The denominator was multiplied by 3. Do the same to the numerator."
+    ],
+    "solution": "5/6 = 15/18. Both parts were multiplied by 3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-fractions-3-gen-h3",
+    "topicId": "equivalent-fractions-3",
+    "difficulty": "hard",
+    "question": "Find the missing number: 1/5 = ?/25",
+    "answer": "5",
+    "hints": [
+      "The denominator was multiplied by 5. Do the same to the numerator."
+    ],
+    "solution": "1/5 = 5/25. Both parts were multiplied by 5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-fractions-3-gen-h4",
+    "topicId": "equivalent-fractions-3",
+    "difficulty": "hard",
+    "question": "Find the missing number: 1/3 = ?/15",
+    "answer": "5",
+    "hints": [
+      "The denominator was multiplied by 5. Do the same to the numerator."
+    ],
+    "solution": "1/3 = 5/15. Both parts were multiplied by 5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-fractions-3-gen-h5",
+    "topicId": "equivalent-fractions-3",
+    "difficulty": "hard",
+    "question": "Find the missing number: 4/6 = ?/30",
+    "answer": "20",
+    "hints": [
+      "The denominator was multiplied by 5. Do the same to the numerator."
+    ],
+    "solution": "4/6 = 20/30. Both parts were multiplied by 5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-fractions-3-gen-h6",
+    "topicId": "equivalent-fractions-3",
+    "difficulty": "hard",
+    "question": "Find the missing number: 4/5 = ?/20",
+    "answer": "16",
+    "hints": [
+      "The denominator was multiplied by 4. Do the same to the numerator."
+    ],
+    "solution": "4/5 = 16/20. Both parts were multiplied by 4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-fractions-3-gen-h7",
+    "topicId": "equivalent-fractions-3",
+    "difficulty": "hard",
+    "question": "Find the missing number: 1/3 = ?/9",
+    "answer": "3",
+    "hints": [
+      "The denominator was multiplied by 3. Do the same to the numerator."
+    ],
+    "solution": "1/3 = 3/9. Both parts were multiplied by 3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-fractions-3-gen-h8",
+    "topicId": "equivalent-fractions-3",
+    "difficulty": "hard",
+    "question": "Find the missing number: 1/3 = ?/9",
+    "answer": "3",
+    "hints": [
+      "The denominator was multiplied by 3. Do the same to the numerator."
+    ],
+    "solution": "1/3 = 3/9. Both parts were multiplied by 3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-fractions-3-gen-h9",
+    "topicId": "equivalent-fractions-3",
+    "difficulty": "hard",
+    "question": "Find the missing number: 5/6 = ?/30",
+    "answer": "25",
+    "hints": [
+      "The denominator was multiplied by 5. Do the same to the numerator."
+    ],
+    "solution": "5/6 = 25/30. Both parts were multiplied by 5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-fractions-3-gen-h10",
+    "topicId": "equivalent-fractions-3",
+    "difficulty": "hard",
+    "question": "Find the missing number: 2/3 = ?/9",
+    "answer": "6",
+    "hints": [
+      "The denominator was multiplied by 3. Do the same to the numerator."
+    ],
+    "solution": "2/3 = 6/9. Both parts were multiplied by 3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-fractions-3-gen-h11",
+    "topicId": "equivalent-fractions-3",
+    "difficulty": "hard",
+    "question": "Find the missing number: 1/5 = ?/20",
+    "answer": "4",
+    "hints": [
+      "The denominator was multiplied by 4. Do the same to the numerator."
+    ],
+    "solution": "1/5 = 4/20. Both parts were multiplied by 4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-fractions-3-gen-h12",
+    "topicId": "equivalent-fractions-3",
+    "difficulty": "hard",
+    "question": "Find the missing number: 1/3 = ?/15",
+    "answer": "5",
+    "hints": [
+      "The denominator was multiplied by 5. Do the same to the numerator."
+    ],
+    "solution": "1/3 = 5/15. Both parts were multiplied by 5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-fractions-3-gen-h13",
+    "topicId": "equivalent-fractions-3",
+    "difficulty": "hard",
+    "question": "Find the missing number: 3/4 = ?/20",
+    "answer": "15",
+    "hints": [
+      "The denominator was multiplied by 5. Do the same to the numerator."
+    ],
+    "solution": "3/4 = 15/20. Both parts were multiplied by 5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-fractions-3-gen-h14",
+    "topicId": "equivalent-fractions-3",
+    "difficulty": "hard",
+    "question": "Find the missing number: 2/3 = ?/15",
+    "answer": "10",
+    "hints": [
+      "The denominator was multiplied by 5. Do the same to the numerator."
+    ],
+    "solution": "2/3 = 10/15. Both parts were multiplied by 5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  }
+]

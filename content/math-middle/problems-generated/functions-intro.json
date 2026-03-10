@@ -1,0 +1,212 @@
+[
+  {
+    "id": "functions-intro-sup-e0",
+    "topicId": "functions-intro",
+    "difficulty": "easy",
+    "question": "A function rule is: output = input + 3. If the input is 7, what is the output?",
+    "answer": "10",
+    "hints": [
+      "Substitute the input into the rule.",
+      "7 + 3 = ?"
+    ],
+    "solution": "Output = input + 3 = 7 + 3 = 10.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "functions-intro-sup-e1",
+    "topicId": "functions-intro",
+    "difficulty": "easy",
+    "question": "True or false: A function can give two different outputs for the same input.",
+    "answer": "false",
+    "hints": [
+      "The key rule of functions: each input maps to exactly one output.",
+      "If one input gave two outputs, it would NOT be a function."
+    ],
+    "solution": "False. By definition, a function assigns exactly one output to each input. If an input produced two different outputs, the relation would not be a function.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "functions-intro-sup-e2",
+    "topicId": "functions-intro",
+    "difficulty": "easy",
+    "question": "A vending machine gives one specific item for each button pressed. Is this an example of a function? Answer yes or no.",
+    "answer": "yes",
+    "hints": [
+      "Each button (input) gives exactly one item (output).",
+      "Does pressing the same button always give the same item?"
+    ],
+    "solution": "Yes. Each button press (input) produces exactly one item (output). This is a real-world example of a function.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "functions-intro-sup-e3",
+    "topicId": "functions-intro",
+    "difficulty": "easy",
+    "question": "For the function f(x) = 2x, what is f(5)?",
+    "answer": "10",
+    "hints": [
+      "f(5) means substitute x = 5 into the function.",
+      "f(5) = 2(5) = ?"
+    ],
+    "solution": "f(5) = 2(5) = 10.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "functions-intro-sup-e4",
+    "topicId": "functions-intro",
+    "difficulty": "easy",
+    "question": "A table shows: input 1 → output 4, input 2 → output 4, input 3 → output 4. Is this a function? Answer yes or no.",
+    "answer": "yes",
+    "hints": [
+      "Check: does any input give more than one output?",
+      "Each input has exactly one output (they all happen to be 4, but that's OK)."
+    ],
+    "solution": "Yes. Each input maps to exactly one output. It's fine for multiple inputs to share the same output — what matters is that no single input produces two different outputs.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "functions-intro-sup-m0",
+    "topicId": "functions-intro",
+    "difficulty": "medium",
+    "question": "A table shows: input 2 → output 5, input 3 → output 7, input 2 → output 9. Is this a function? Explain briefly.",
+    "answer": "No. The input 2 maps to two different outputs (5 and 9), which violates the definition of a function.",
+    "hints": [
+      "Check if any input appears more than once with different outputs.",
+      "Input 2 gives both 5 and 9."
+    ],
+    "solution": "Not a function. The input 2 produces two different outputs (5 and 9). A function requires each input to have exactly one output.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "functions-intro-sup-m1",
+    "topicId": "functions-intro",
+    "difficulty": "medium",
+    "question": "A student says: 'This isn't a function because two different inputs give the same output.' The mapping is: 3 → 6 and 4 → 6. Is the student correct?",
+    "answer": "No. Different inputs CAN map to the same output. A function only fails when one input maps to multiple outputs.",
+    "hints": [
+      "The function rule: each input → exactly one output.",
+      "Two inputs sharing an output doesn't break this rule."
+    ],
+    "solution": "The student is wrong. It's perfectly valid for different inputs to give the same output. For example, f(x) = 6 for all x is a function. The rule only forbids one input from having multiple outputs.",
+    "cognitiveDemand": "error-analysis",
+    "source": "generated"
+  },
+  {
+    "id": "functions-intro-sup-m2",
+    "topicId": "functions-intro",
+    "difficulty": "medium",
+    "question": "For f(x) = 3x - 1, find the input x that gives an output of 14.",
+    "answer": "5",
+    "hints": [
+      "Set f(x) = 14: 3x - 1 = 14.",
+      "Add 1: 3x = 15. Divide by 3."
+    ],
+    "solution": "3x - 1 = 14 → 3x = 15 → x = 5. Check: f(5) = 3(5) - 1 = 14.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "functions-intro-sup-m3",
+    "topicId": "functions-intro",
+    "difficulty": "medium",
+    "question": "Each student in a class has exactly one student ID number, but two students might share the same last name. Is the relationship 'student → student ID' a function? Is 'student → last name' a function? Answer for both.",
+    "answer": "Both are functions. Each student has exactly one ID and exactly one last name.",
+    "hints": [
+      "For each relationship, ask: does each input (student) have exactly one output?",
+      "Each student has one ID and one last name — even if last names can repeat."
+    ],
+    "solution": "Both are functions. 'Student → ID' is a function because each student has exactly one ID. 'Student → last name' is also a function because each student has exactly one last name. Different students sharing a last name doesn't violate the function definition.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "functions-intro-sup-m4",
+    "topicId": "functions-intro",
+    "difficulty": "medium",
+    "question": "A function table shows: x = 0, y = 1; x = 1, y = 3; x = 2, y = 5; x = 3, y = 7. What is the function rule? Write it as y = ...",
+    "answer": "y = 2x + 1",
+    "hints": [
+      "Look at the pattern: y increases by 2 each time x increases by 1.",
+      "When x = 0, y = 1. So the rule is y = 2x + 1."
+    ],
+    "solution": "The output increases by 2 for each unit increase in x (rate of change = 2). When x = 0, y = 1. So y = 2x + 1. Check: 2(3) + 1 = 7.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "functions-intro-sup-h0",
+    "topicId": "functions-intro",
+    "difficulty": "hard",
+    "question": "Explain why the relationship 'city → zip code' is NOT a function, while 'zip code → city' might not be either. Hint: some cities have multiple zip codes.",
+    "answer": "City → zip code is not a function because one city can have multiple zip codes (one input, multiple outputs). Zip code → city IS a function because each zip code belongs to exactly one city.",
+    "hints": [
+      "New York City has many zip codes. So 'NYC' as input gives multiple outputs.",
+      "But each individual zip code belongs to just one city."
+    ],
+    "solution": "'City → zip code' is NOT a function because large cities have many zip codes (one input → multiple outputs). 'Zip code → city' IS a function because each zip code corresponds to exactly one city.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "functions-intro-sup-h1",
+    "topicId": "functions-intro",
+    "difficulty": "hard",
+    "question": "A student writes: f(x) = x² and says 'f(3) = 9 and f(-3) = 9, so this is not a function because two inputs give the same output.' Explain the student's error.",
+    "answer": "The student confuses the function rule. A function can have different inputs give the same output. It only fails if one input gives different outputs. f(x) = x² is a valid function.",
+    "hints": [
+      "The definition of a function: each input has exactly ONE output.",
+      "f(3) = 9 (one output) and f(-3) = 9 (one output). Each input has one output."
+    ],
+    "solution": "The student misunderstands the definition. A function requires each input to have exactly one output, NOT that each output comes from only one input. f(3) = 9 (unique output for input 3) and f(-3) = 9 (unique output for input -3). Both satisfy the function definition.",
+    "cognitiveDemand": "error-analysis",
+    "source": "generated"
+  },
+  {
+    "id": "functions-intro-sup-h2",
+    "topicId": "functions-intro",
+    "difficulty": "hard",
+    "question": "The set of ordered pairs {(1,2), (2,4), (3,6), (4,8)} defines a function. Write the function rule AND predict the output when the input is 10.",
+    "answer": "y = 2x; when x = 10, y = 20",
+    "hints": [
+      "Each output is twice the input.",
+      "The rule is y = 2x. For x = 10: y = 2(10)."
+    ],
+    "solution": "Pattern: 2/1 = 2, 4/2 = 2, 6/3 = 2, 8/4 = 2. The rule is y = 2x. For x = 10: y = 2(10) = 20.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "functions-intro-sup-h3",
+    "topicId": "functions-intro",
+    "difficulty": "hard",
+    "question": "Can a function have an infinite number of inputs but only one output? If yes, give an example.",
+    "answer": "Yes. For example, f(x) = 5 for all x. Every input gives the output 5.",
+    "hints": [
+      "Think of a constant function where the output never changes.",
+      "f(x) = 5 means no matter what x is, the output is always 5."
+    ],
+    "solution": "Yes. The constant function f(x) = 5 takes any real number as input and always outputs 5. It satisfies the function definition because each input maps to exactly one output (which happens to always be 5).",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "functions-intro-sup-h4",
+    "topicId": "functions-intro",
+    "difficulty": "hard",
+    "question": "Given f(x) = 4x - 3, for what value of x does f(x) = x? In other words, find the input that equals its own output.",
+    "answer": "1",
+    "hints": [
+      "Set f(x) = x: the equation becomes 4x - 3 = x.",
+      "Subtract x: 3x - 3 = 0. Solve for x."
+    ],
+    "solution": "4x - 3 = x → 3x = 3 → x = 1. Check: f(1) = 4(1) - 3 = 1. The input 1 produces itself as output. This is called a 'fixed point' of the function.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  }
+]

@@ -1,0 +1,702 @@
+[
+  {
+    "id": "estimation-multiplication-division-gen-e0",
+    "topicId": "estimation-multiplication-division",
+    "difficulty": "easy",
+    "question": "Estimate 35 × 8 by rounding 35 to the nearest 10.",
+    "answer": "320",
+    "hints": [
+      "Round 35 to 40.",
+      "40 × 8 = ?"
+    ],
+    "solution": "35 ≈ 40. 40 × 8 = 320.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-multiplication-division-gen-e1",
+    "topicId": "estimation-multiplication-division",
+    "difficulty": "easy",
+    "question": "Estimate 16 × 5 by rounding 16 to the nearest 10.",
+    "answer": "100",
+    "hints": [
+      "Round 16 to 20.",
+      "20 × 5 = ?"
+    ],
+    "solution": "16 ≈ 20. 20 × 5 = 100.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-multiplication-division-gen-e2",
+    "topicId": "estimation-multiplication-division",
+    "difficulty": "easy",
+    "question": "Estimate 32 × 6 by rounding 32 to the nearest 10.",
+    "answer": "180",
+    "hints": [
+      "Round 32 to 30.",
+      "30 × 6 = ?"
+    ],
+    "solution": "32 ≈ 30. 30 × 6 = 180.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-multiplication-division-gen-e3",
+    "topicId": "estimation-multiplication-division",
+    "difficulty": "easy",
+    "question": "Estimate 45 ÷ 6 by rounding 45 to the nearest 10.",
+    "answer": "8",
+    "hints": [
+      "Round 45 to 50.",
+      "50 ÷ 6 ≈ ?"
+    ],
+    "solution": "45 ≈ 50. 50 ÷ 6 ≈ 8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-multiplication-division-gen-e4",
+    "topicId": "estimation-multiplication-division",
+    "difficulty": "easy",
+    "question": "Estimate 28 ÷ 5 by rounding 28 to the nearest 10.",
+    "answer": "6",
+    "hints": [
+      "Round 28 to 30.",
+      "30 ÷ 5 ≈ ?"
+    ],
+    "solution": "28 ≈ 30. 30 ÷ 5 ≈ 6.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-multiplication-division-gen-e5",
+    "topicId": "estimation-multiplication-division",
+    "difficulty": "easy",
+    "question": "Estimate 21 × 9 by rounding 21 to the nearest 10.",
+    "answer": "180",
+    "hints": [
+      "Round 21 to 20.",
+      "20 × 9 = ?"
+    ],
+    "solution": "21 ≈ 20. 20 × 9 = 180.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-multiplication-division-gen-e6",
+    "topicId": "estimation-multiplication-division",
+    "difficulty": "easy",
+    "question": "Estimate 28 × 5 by rounding 28 to the nearest 10.",
+    "answer": "150",
+    "hints": [
+      "Round 28 to 30.",
+      "30 × 5 = ?"
+    ],
+    "solution": "28 ≈ 30. 30 × 5 = 150.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-multiplication-division-gen-e7",
+    "topicId": "estimation-multiplication-division",
+    "difficulty": "easy",
+    "question": "Estimate 30 × 5 by rounding 30 to the nearest 10.",
+    "answer": "150",
+    "hints": [
+      "Round 30 to 30.",
+      "30 × 5 = ?"
+    ],
+    "solution": "30 ≈ 30. 30 × 5 = 150.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-multiplication-division-gen-e8",
+    "topicId": "estimation-multiplication-division",
+    "difficulty": "easy",
+    "question": "Estimate 21 ÷ 6 by rounding 21 to the nearest 10.",
+    "answer": "3",
+    "hints": [
+      "Round 21 to 20.",
+      "20 ÷ 6 ≈ ?"
+    ],
+    "solution": "21 ≈ 20. 20 ÷ 6 ≈ 3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-multiplication-division-gen-e9",
+    "topicId": "estimation-multiplication-division",
+    "difficulty": "easy",
+    "question": "Estimate 21 ÷ 9 by rounding 21 to the nearest 10.",
+    "answer": "2",
+    "hints": [
+      "Round 21 to 20.",
+      "20 ÷ 9 ≈ ?"
+    ],
+    "solution": "21 ≈ 20. 20 ÷ 9 ≈ 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-multiplication-division-gen-e10",
+    "topicId": "estimation-multiplication-division",
+    "difficulty": "easy",
+    "question": "Estimate 10 ÷ 2 by rounding 10 to the nearest 10.",
+    "answer": "5",
+    "hints": [
+      "Round 10 to 10.",
+      "10 ÷ 2 ≈ ?"
+    ],
+    "solution": "10 ≈ 10. 10 ÷ 2 ≈ 5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-multiplication-division-gen-e11",
+    "topicId": "estimation-multiplication-division",
+    "difficulty": "easy",
+    "question": "Estimate 43 ÷ 6 by rounding 43 to the nearest 10.",
+    "answer": "7",
+    "hints": [
+      "Round 43 to 40.",
+      "40 ÷ 6 ≈ ?"
+    ],
+    "solution": "43 ≈ 40. 40 ÷ 6 ≈ 7.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-multiplication-division-gen-e12",
+    "topicId": "estimation-multiplication-division",
+    "difficulty": "easy",
+    "question": "Estimate 44 ÷ 8 by rounding 44 to the nearest 10.",
+    "answer": "5",
+    "hints": [
+      "Round 44 to 40.",
+      "40 ÷ 8 ≈ ?"
+    ],
+    "solution": "44 ≈ 40. 40 ÷ 8 ≈ 5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-multiplication-division-gen-e13",
+    "topicId": "estimation-multiplication-division",
+    "difficulty": "easy",
+    "question": "Estimate 27 × 7 by rounding 27 to the nearest 10.",
+    "answer": "210",
+    "hints": [
+      "Round 27 to 30.",
+      "30 × 7 = ?"
+    ],
+    "solution": "27 ≈ 30. 30 × 7 = 210.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-multiplication-division-gen-e14",
+    "topicId": "estimation-multiplication-division",
+    "difficulty": "easy",
+    "question": "Estimate 22 × 8 by rounding 22 to the nearest 10.",
+    "answer": "160",
+    "hints": [
+      "Round 22 to 20.",
+      "20 × 8 = ?"
+    ],
+    "solution": "22 ≈ 20. 20 × 8 = 160.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-multiplication-division-gen-m0",
+    "topicId": "estimation-multiplication-division",
+    "difficulty": "medium",
+    "question": "Estimate 62 × 47 by rounding 62 to the nearest 10.",
+    "answer": "2820",
+    "hints": [
+      "Round 62 to 60.",
+      "60 × 47 = ?"
+    ],
+    "solution": "62 ≈ 60. 60 × 47 = 2820.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-multiplication-division-gen-m1",
+    "topicId": "estimation-multiplication-division",
+    "difficulty": "medium",
+    "question": "Estimate 80 ÷ 39 by rounding 80 to the nearest 10.",
+    "answer": "2",
+    "hints": [
+      "Round 80 to 80.",
+      "80 ÷ 39 ≈ ?"
+    ],
+    "solution": "80 ≈ 80. 80 ÷ 39 ≈ 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-multiplication-division-gen-m2",
+    "topicId": "estimation-multiplication-division",
+    "difficulty": "medium",
+    "question": "Estimate 74 × 25 by rounding 74 to the nearest 10.",
+    "answer": "1750",
+    "hints": [
+      "Round 74 to 70.",
+      "70 × 25 = ?"
+    ],
+    "solution": "74 ≈ 70. 70 × 25 = 1750.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-multiplication-division-gen-m3",
+    "topicId": "estimation-multiplication-division",
+    "difficulty": "medium",
+    "question": "Estimate 11 ÷ 27 by rounding 11 to the nearest 10.",
+    "answer": "0",
+    "hints": [
+      "Round 11 to 10.",
+      "10 ÷ 27 ≈ ?"
+    ],
+    "solution": "11 ≈ 10. 10 ÷ 27 ≈ 0.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-multiplication-division-gen-m4",
+    "topicId": "estimation-multiplication-division",
+    "difficulty": "medium",
+    "question": "Estimate 98 × 13 by rounding 98 to the nearest 10.",
+    "answer": "1300",
+    "hints": [
+      "Round 98 to 100.",
+      "100 × 13 = ?"
+    ],
+    "solution": "98 ≈ 100. 100 × 13 = 1300.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-multiplication-division-gen-m5",
+    "topicId": "estimation-multiplication-division",
+    "difficulty": "medium",
+    "question": "Estimate 51 × 30 by rounding 51 to the nearest 10.",
+    "answer": "1500",
+    "hints": [
+      "Round 51 to 50.",
+      "50 × 30 = ?"
+    ],
+    "solution": "51 ≈ 50. 50 × 30 = 1500.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-multiplication-division-gen-m6",
+    "topicId": "estimation-multiplication-division",
+    "difficulty": "medium",
+    "question": "Estimate 29 × 25 by rounding 29 to the nearest 10.",
+    "answer": "750",
+    "hints": [
+      "Round 29 to 30.",
+      "30 × 25 = ?"
+    ],
+    "solution": "29 ≈ 30. 30 × 25 = 750.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-multiplication-division-gen-m7",
+    "topicId": "estimation-multiplication-division",
+    "difficulty": "medium",
+    "question": "Estimate 12 × 36 by rounding 12 to the nearest 10.",
+    "answer": "360",
+    "hints": [
+      "Round 12 to 10.",
+      "10 × 36 = ?"
+    ],
+    "solution": "12 ≈ 10. 10 × 36 = 360.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-multiplication-division-gen-m8",
+    "topicId": "estimation-multiplication-division",
+    "difficulty": "medium",
+    "question": "Estimate 58 × 12 by rounding 58 to the nearest 10.",
+    "answer": "720",
+    "hints": [
+      "Round 58 to 60.",
+      "60 × 12 = ?"
+    ],
+    "solution": "58 ≈ 60. 60 × 12 = 720.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-multiplication-division-gen-m9",
+    "topicId": "estimation-multiplication-division",
+    "difficulty": "medium",
+    "question": "Estimate 33 ÷ 42 by rounding 33 to the nearest 10.",
+    "answer": "1",
+    "hints": [
+      "Round 33 to 30.",
+      "30 ÷ 42 ≈ ?"
+    ],
+    "solution": "33 ≈ 30. 30 ÷ 42 ≈ 1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-multiplication-division-gen-m10",
+    "topicId": "estimation-multiplication-division",
+    "difficulty": "medium",
+    "question": "Estimate 65 × 39 by rounding 65 to the nearest 10.",
+    "answer": "2730",
+    "hints": [
+      "Round 65 to 70.",
+      "70 × 39 = ?"
+    ],
+    "solution": "65 ≈ 70. 70 × 39 = 2730.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-multiplication-division-gen-m11",
+    "topicId": "estimation-multiplication-division",
+    "difficulty": "medium",
+    "question": "Estimate 96 × 36 by rounding 96 to the nearest 10.",
+    "answer": "3600",
+    "hints": [
+      "Round 96 to 100.",
+      "100 × 36 = ?"
+    ],
+    "solution": "96 ≈ 100. 100 × 36 = 3600.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-multiplication-division-gen-m12",
+    "topicId": "estimation-multiplication-division",
+    "difficulty": "medium",
+    "question": "Estimate 13 ÷ 21 by rounding 13 to the nearest 10.",
+    "answer": "0",
+    "hints": [
+      "Round 13 to 10.",
+      "10 ÷ 21 ≈ ?"
+    ],
+    "solution": "13 ≈ 10. 10 ÷ 21 ≈ 0.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-multiplication-division-gen-m13",
+    "topicId": "estimation-multiplication-division",
+    "difficulty": "medium",
+    "question": "Estimate 11 × 19 by rounding 11 to the nearest 10.",
+    "answer": "190",
+    "hints": [
+      "Round 11 to 10.",
+      "10 × 19 = ?"
+    ],
+    "solution": "11 ≈ 10. 10 × 19 = 190.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-multiplication-division-gen-m14",
+    "topicId": "estimation-multiplication-division",
+    "difficulty": "medium",
+    "question": "Estimate 96 ÷ 14 by rounding 96 to the nearest 10.",
+    "answer": "7",
+    "hints": [
+      "Round 96 to 100.",
+      "100 ÷ 14 ≈ ?"
+    ],
+    "solution": "96 ≈ 100. 100 ÷ 14 ≈ 7.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-multiplication-division-gen-m15",
+    "topicId": "estimation-multiplication-division",
+    "difficulty": "medium",
+    "question": "Estimate 23 ÷ 36 by rounding 23 to the nearest 10.",
+    "answer": "1",
+    "hints": [
+      "Round 23 to 20.",
+      "20 ÷ 36 ≈ ?"
+    ],
+    "solution": "23 ≈ 20. 20 ÷ 36 ≈ 1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-multiplication-division-gen-m16",
+    "topicId": "estimation-multiplication-division",
+    "difficulty": "medium",
+    "question": "Estimate 42 ÷ 33 by rounding 42 to the nearest 10.",
+    "answer": "1",
+    "hints": [
+      "Round 42 to 40.",
+      "40 ÷ 33 ≈ ?"
+    ],
+    "solution": "42 ≈ 40. 40 ÷ 33 ≈ 1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-multiplication-division-gen-m17",
+    "topicId": "estimation-multiplication-division",
+    "difficulty": "medium",
+    "question": "Estimate 96 × 21 by rounding 96 to the nearest 10.",
+    "answer": "2100",
+    "hints": [
+      "Round 96 to 100.",
+      "100 × 21 = ?"
+    ],
+    "solution": "96 ≈ 100. 100 × 21 = 2100.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-multiplication-division-gen-m18",
+    "topicId": "estimation-multiplication-division",
+    "difficulty": "medium",
+    "question": "Estimate 98 ÷ 10 by rounding 98 to the nearest 10.",
+    "answer": "10",
+    "hints": [
+      "Round 98 to 100.",
+      "100 ÷ 10 ≈ ?"
+    ],
+    "solution": "98 ≈ 100. 100 ÷ 10 ≈ 10.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-multiplication-division-gen-m19",
+    "topicId": "estimation-multiplication-division",
+    "difficulty": "medium",
+    "question": "Estimate 30 ÷ 24 by rounding 30 to the nearest 10.",
+    "answer": "1",
+    "hints": [
+      "Round 30 to 30.",
+      "30 ÷ 24 ≈ ?"
+    ],
+    "solution": "30 ≈ 30. 30 ÷ 24 ≈ 1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-multiplication-division-gen-h0",
+    "topicId": "estimation-multiplication-division",
+    "difficulty": "hard",
+    "question": "Estimate 205 × 5 by rounding 205 to the nearest 100.",
+    "answer": "1000",
+    "hints": [
+      "Round 205 to 200.",
+      "200 × 5 = ?"
+    ],
+    "solution": "205 ≈ 200. 200 × 5 = 1000.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-multiplication-division-gen-h1",
+    "topicId": "estimation-multiplication-division",
+    "difficulty": "hard",
+    "question": "Estimate 712 ÷ 4 by rounding 712 to the nearest 100.",
+    "answer": "175",
+    "hints": [
+      "Round 712 to 700.",
+      "700 ÷ 4 ≈ ?"
+    ],
+    "solution": "712 ≈ 700. 700 ÷ 4 ≈ 175.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-multiplication-division-gen-h2",
+    "topicId": "estimation-multiplication-division",
+    "difficulty": "hard",
+    "question": "Estimate 265 ÷ 11 by rounding 265 to the nearest 100.",
+    "answer": "27",
+    "hints": [
+      "Round 265 to 300.",
+      "300 ÷ 11 ≈ ?"
+    ],
+    "solution": "265 ≈ 300. 300 ÷ 11 ≈ 27.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-multiplication-division-gen-h3",
+    "topicId": "estimation-multiplication-division",
+    "difficulty": "hard",
+    "question": "Estimate 314 × 11 by rounding 314 to the nearest 100.",
+    "answer": "3300",
+    "hints": [
+      "Round 314 to 300.",
+      "300 × 11 = ?"
+    ],
+    "solution": "314 ≈ 300. 300 × 11 = 3300.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-multiplication-division-gen-h4",
+    "topicId": "estimation-multiplication-division",
+    "difficulty": "hard",
+    "question": "Estimate 672 ÷ 12 by rounding 672 to the nearest 100.",
+    "answer": "58",
+    "hints": [
+      "Round 672 to 700.",
+      "700 ÷ 12 ≈ ?"
+    ],
+    "solution": "672 ≈ 700. 700 ÷ 12 ≈ 58.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-multiplication-division-gen-h5",
+    "topicId": "estimation-multiplication-division",
+    "difficulty": "hard",
+    "question": "Estimate 658 × 3 by rounding 658 to the nearest 100.",
+    "answer": "2100",
+    "hints": [
+      "Round 658 to 700.",
+      "700 × 3 = ?"
+    ],
+    "solution": "658 ≈ 700. 700 × 3 = 2100.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-multiplication-division-gen-h6",
+    "topicId": "estimation-multiplication-division",
+    "difficulty": "hard",
+    "question": "Estimate 541 × 8 by rounding 541 to the nearest 100.",
+    "answer": "4000",
+    "hints": [
+      "Round 541 to 500.",
+      "500 × 8 = ?"
+    ],
+    "solution": "541 ≈ 500. 500 × 8 = 4000.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-multiplication-division-gen-h7",
+    "topicId": "estimation-multiplication-division",
+    "difficulty": "hard",
+    "question": "Estimate 463 × 16 by rounding 463 to the nearest 100.",
+    "answer": "8000",
+    "hints": [
+      "Round 463 to 500.",
+      "500 × 16 = ?"
+    ],
+    "solution": "463 ≈ 500. 500 × 16 = 8000.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-multiplication-division-gen-h8",
+    "topicId": "estimation-multiplication-division",
+    "difficulty": "hard",
+    "question": "Estimate 841 ÷ 8 by rounding 841 to the nearest 100.",
+    "answer": "100",
+    "hints": [
+      "Round 841 to 800.",
+      "800 ÷ 8 ≈ ?"
+    ],
+    "solution": "841 ≈ 800. 800 ÷ 8 ≈ 100.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-multiplication-division-gen-h9",
+    "topicId": "estimation-multiplication-division",
+    "difficulty": "hard",
+    "question": "Estimate 936 ÷ 19 by rounding 936 to the nearest 100.",
+    "answer": "47",
+    "hints": [
+      "Round 936 to 900.",
+      "900 ÷ 19 ≈ ?"
+    ],
+    "solution": "936 ≈ 900. 900 ÷ 19 ≈ 47.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-multiplication-division-gen-h10",
+    "topicId": "estimation-multiplication-division",
+    "difficulty": "hard",
+    "question": "Estimate 750 ÷ 16 by rounding 750 to the nearest 100.",
+    "answer": "50",
+    "hints": [
+      "Round 750 to 800.",
+      "800 ÷ 16 ≈ ?"
+    ],
+    "solution": "750 ≈ 800. 800 ÷ 16 ≈ 50.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-multiplication-division-gen-h11",
+    "topicId": "estimation-multiplication-division",
+    "difficulty": "hard",
+    "question": "Estimate 462 ÷ 8 by rounding 462 to the nearest 100.",
+    "answer": "63",
+    "hints": [
+      "Round 462 to 500.",
+      "500 ÷ 8 ≈ ?"
+    ],
+    "solution": "462 ≈ 500. 500 ÷ 8 ≈ 63.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-multiplication-division-gen-h12",
+    "topicId": "estimation-multiplication-division",
+    "difficulty": "hard",
+    "question": "Estimate 302 ÷ 18 by rounding 302 to the nearest 100.",
+    "answer": "17",
+    "hints": [
+      "Round 302 to 300.",
+      "300 ÷ 18 ≈ ?"
+    ],
+    "solution": "302 ≈ 300. 300 ÷ 18 ≈ 17.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-multiplication-division-gen-h13",
+    "topicId": "estimation-multiplication-division",
+    "difficulty": "hard",
+    "question": "Estimate 221 ÷ 19 by rounding 221 to the nearest 100.",
+    "answer": "11",
+    "hints": [
+      "Round 221 to 200.",
+      "200 ÷ 19 ≈ ?"
+    ],
+    "solution": "221 ≈ 200. 200 ÷ 19 ≈ 11.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "estimation-multiplication-division-gen-h14",
+    "topicId": "estimation-multiplication-division",
+    "difficulty": "hard",
+    "question": "Estimate 350 × 17 by rounding 350 to the nearest 100.",
+    "answer": "6800",
+    "hints": [
+      "Round 350 to 400.",
+      "400 × 17 = ?"
+    ],
+    "solution": "350 ≈ 400. 400 × 17 = 6800.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  }
+]

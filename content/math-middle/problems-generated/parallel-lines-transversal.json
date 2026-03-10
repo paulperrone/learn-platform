@@ -1,0 +1,652 @@
+[
+  {
+    "id": "parallel-lines-transversal-gen-e0",
+    "topicId": "parallel-lines-transversal",
+    "difficulty": "easy",
+    "question": "Parallel lines cut by a transversal form a 107° angle. What is the co-interior angle?",
+    "answer": "73°",
+    "hints": [
+      "Co-interior (same-side interior) angles are supplementary."
+    ],
+    "solution": "180° − 107° = 73°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "parallel-lines-transversal-gen-e1",
+    "topicId": "parallel-lines-transversal",
+    "difficulty": "easy",
+    "question": "Parallel lines cut by a transversal form a 145° angle. What is the co-interior angle?",
+    "answer": "35°",
+    "hints": [
+      "Co-interior (same-side interior) angles are supplementary."
+    ],
+    "solution": "180° − 145° = 35°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "parallel-lines-transversal-gen-e2",
+    "topicId": "parallel-lines-transversal",
+    "difficulty": "easy",
+    "question": "Parallel lines cut by a transversal form a 49° angle. What is the alternate interior angle?",
+    "answer": "49°",
+    "hints": [
+      "Alternate interior angles are equal when lines are parallel."
+    ],
+    "solution": "alternate interior angles are congruent: 49°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "parallel-lines-transversal-gen-e3",
+    "topicId": "parallel-lines-transversal",
+    "difficulty": "easy",
+    "question": "Parallel lines cut by a transversal form a 82° angle. What is the corresponding angle?",
+    "answer": "82°",
+    "hints": [
+      "Corresponding angles are equal when lines are parallel."
+    ],
+    "solution": "corresponding angles are congruent: 82°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "parallel-lines-transversal-gen-e4",
+    "topicId": "parallel-lines-transversal",
+    "difficulty": "easy",
+    "question": "Parallel lines cut by a transversal form a 62° angle. What is the co-interior angle?",
+    "answer": "118°",
+    "hints": [
+      "Co-interior (same-side interior) angles are supplementary."
+    ],
+    "solution": "180° − 62° = 118°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "parallel-lines-transversal-gen-e5",
+    "topicId": "parallel-lines-transversal",
+    "difficulty": "easy",
+    "question": "Parallel lines cut by a transversal form a 31° angle. What is the corresponding angle?",
+    "answer": "31°",
+    "hints": [
+      "Corresponding angles are equal when lines are parallel."
+    ],
+    "solution": "corresponding angles are congruent: 31°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "parallel-lines-transversal-gen-e6",
+    "topicId": "parallel-lines-transversal",
+    "difficulty": "easy",
+    "question": "Parallel lines cut by a transversal form a 56° angle. What is the corresponding angle?",
+    "answer": "56°",
+    "hints": [
+      "Corresponding angles are equal when lines are parallel."
+    ],
+    "solution": "corresponding angles are congruent: 56°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "parallel-lines-transversal-gen-e7",
+    "topicId": "parallel-lines-transversal",
+    "difficulty": "easy",
+    "question": "Parallel lines cut by a transversal form a 143° angle. What is the alternate interior angle?",
+    "answer": "143°",
+    "hints": [
+      "Alternate interior angles are equal when lines are parallel."
+    ],
+    "solution": "alternate interior angles are congruent: 143°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "parallel-lines-transversal-gen-e8",
+    "topicId": "parallel-lines-transversal",
+    "difficulty": "easy",
+    "question": "Parallel lines cut by a transversal form a 33° angle. What is the corresponding angle?",
+    "answer": "33°",
+    "hints": [
+      "Corresponding angles are equal when lines are parallel."
+    ],
+    "solution": "corresponding angles are congruent: 33°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "parallel-lines-transversal-gen-e9",
+    "topicId": "parallel-lines-transversal",
+    "difficulty": "easy",
+    "question": "Parallel lines cut by a transversal form a 150° angle. What is the alternate interior angle?",
+    "answer": "150°",
+    "hints": [
+      "Alternate interior angles are equal when lines are parallel."
+    ],
+    "solution": "alternate interior angles are congruent: 150°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "parallel-lines-transversal-gen-e10",
+    "topicId": "parallel-lines-transversal",
+    "difficulty": "easy",
+    "question": "Parallel lines cut by a transversal form a 54° angle. What is the co-interior angle?",
+    "answer": "126°",
+    "hints": [
+      "Co-interior (same-side interior) angles are supplementary."
+    ],
+    "solution": "180° − 54° = 126°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "parallel-lines-transversal-gen-e11",
+    "topicId": "parallel-lines-transversal",
+    "difficulty": "easy",
+    "question": "Parallel lines cut by a transversal form a 120° angle. What is the corresponding angle?",
+    "answer": "120°",
+    "hints": [
+      "Corresponding angles are equal when lines are parallel."
+    ],
+    "solution": "corresponding angles are congruent: 120°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "parallel-lines-transversal-gen-e12",
+    "topicId": "parallel-lines-transversal",
+    "difficulty": "easy",
+    "question": "Parallel lines cut by a transversal form a 97° angle. What is the corresponding angle?",
+    "answer": "97°",
+    "hints": [
+      "Corresponding angles are equal when lines are parallel."
+    ],
+    "solution": "corresponding angles are congruent: 97°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "parallel-lines-transversal-gen-e13",
+    "topicId": "parallel-lines-transversal",
+    "difficulty": "easy",
+    "question": "Parallel lines cut by a transversal form a 99° angle. What is the co-interior angle?",
+    "answer": "81°",
+    "hints": [
+      "Co-interior (same-side interior) angles are supplementary."
+    ],
+    "solution": "180° − 99° = 81°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "parallel-lines-transversal-gen-e14",
+    "topicId": "parallel-lines-transversal",
+    "difficulty": "easy",
+    "question": "Parallel lines cut by a transversal form a 43° angle. What is the co-interior angle?",
+    "answer": "137°",
+    "hints": [
+      "Co-interior (same-side interior) angles are supplementary."
+    ],
+    "solution": "180° − 43° = 137°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "parallel-lines-transversal-gen-m0",
+    "topicId": "parallel-lines-transversal",
+    "difficulty": "medium",
+    "question": "Parallel lines cut by a transversal form a 96° angle. What is the corresponding angle?",
+    "answer": "96°",
+    "hints": [
+      "Corresponding angles are equal when lines are parallel."
+    ],
+    "solution": "corresponding angles are congruent: 96°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "parallel-lines-transversal-gen-m1",
+    "topicId": "parallel-lines-transversal",
+    "difficulty": "medium",
+    "question": "Parallel lines cut by a transversal form a 106° angle. What is the corresponding angle?",
+    "answer": "106°",
+    "hints": [
+      "Corresponding angles are equal when lines are parallel."
+    ],
+    "solution": "corresponding angles are congruent: 106°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "parallel-lines-transversal-gen-m2",
+    "topicId": "parallel-lines-transversal",
+    "difficulty": "medium",
+    "question": "Parallel lines cut by a transversal form a 53° angle. What is the corresponding angle?",
+    "answer": "53°",
+    "hints": [
+      "Corresponding angles are equal when lines are parallel."
+    ],
+    "solution": "corresponding angles are congruent: 53°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "parallel-lines-transversal-gen-m3",
+    "topicId": "parallel-lines-transversal",
+    "difficulty": "medium",
+    "question": "Parallel lines cut by a transversal form a 121° angle. What is the co-interior angle?",
+    "answer": "59°",
+    "hints": [
+      "Co-interior (same-side interior) angles are supplementary."
+    ],
+    "solution": "180° − 121° = 59°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "parallel-lines-transversal-gen-m4",
+    "topicId": "parallel-lines-transversal",
+    "difficulty": "medium",
+    "question": "Parallel lines cut by a transversal form a 120° angle. What is the alternate interior angle?",
+    "answer": "120°",
+    "hints": [
+      "Alternate interior angles are equal when lines are parallel."
+    ],
+    "solution": "alternate interior angles are congruent: 120°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "parallel-lines-transversal-gen-m5",
+    "topicId": "parallel-lines-transversal",
+    "difficulty": "medium",
+    "question": "Parallel lines cut by a transversal form a 134° angle. What is the corresponding angle?",
+    "answer": "134°",
+    "hints": [
+      "Corresponding angles are equal when lines are parallel."
+    ],
+    "solution": "corresponding angles are congruent: 134°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "parallel-lines-transversal-gen-m6",
+    "topicId": "parallel-lines-transversal",
+    "difficulty": "medium",
+    "question": "Parallel lines cut by a transversal form a 51° angle. What is the alternate interior angle?",
+    "answer": "51°",
+    "hints": [
+      "Alternate interior angles are equal when lines are parallel."
+    ],
+    "solution": "alternate interior angles are congruent: 51°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "parallel-lines-transversal-gen-m7",
+    "topicId": "parallel-lines-transversal",
+    "difficulty": "medium",
+    "question": "Parallel lines cut by a transversal form a 78° angle. What is the alternate interior angle?",
+    "answer": "78°",
+    "hints": [
+      "Alternate interior angles are equal when lines are parallel."
+    ],
+    "solution": "alternate interior angles are congruent: 78°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "parallel-lines-transversal-gen-m8",
+    "topicId": "parallel-lines-transversal",
+    "difficulty": "medium",
+    "question": "Parallel lines cut by a transversal form a 69° angle. What is the co-interior angle?",
+    "answer": "111°",
+    "hints": [
+      "Co-interior (same-side interior) angles are supplementary."
+    ],
+    "solution": "180° − 69° = 111°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "parallel-lines-transversal-gen-m9",
+    "topicId": "parallel-lines-transversal",
+    "difficulty": "medium",
+    "question": "Parallel lines cut by a transversal form a 72° angle. What is the alternate interior angle?",
+    "answer": "72°",
+    "hints": [
+      "Alternate interior angles are equal when lines are parallel."
+    ],
+    "solution": "alternate interior angles are congruent: 72°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "parallel-lines-transversal-gen-m10",
+    "topicId": "parallel-lines-transversal",
+    "difficulty": "medium",
+    "question": "Parallel lines cut by a transversal form a 95° angle. What is the alternate interior angle?",
+    "answer": "95°",
+    "hints": [
+      "Alternate interior angles are equal when lines are parallel."
+    ],
+    "solution": "alternate interior angles are congruent: 95°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "parallel-lines-transversal-gen-m11",
+    "topicId": "parallel-lines-transversal",
+    "difficulty": "medium",
+    "question": "Parallel lines cut by a transversal form a 150° angle. What is the corresponding angle?",
+    "answer": "150°",
+    "hints": [
+      "Corresponding angles are equal when lines are parallel."
+    ],
+    "solution": "corresponding angles are congruent: 150°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "parallel-lines-transversal-gen-m12",
+    "topicId": "parallel-lines-transversal",
+    "difficulty": "medium",
+    "question": "Parallel lines cut by a transversal form a 70° angle. What is the corresponding angle?",
+    "answer": "70°",
+    "hints": [
+      "Corresponding angles are equal when lines are parallel."
+    ],
+    "solution": "corresponding angles are congruent: 70°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "parallel-lines-transversal-gen-m13",
+    "topicId": "parallel-lines-transversal",
+    "difficulty": "medium",
+    "question": "Parallel lines cut by a transversal form a 86° angle. What is the corresponding angle?",
+    "answer": "86°",
+    "hints": [
+      "Corresponding angles are equal when lines are parallel."
+    ],
+    "solution": "corresponding angles are congruent: 86°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "parallel-lines-transversal-gen-m14",
+    "topicId": "parallel-lines-transversal",
+    "difficulty": "medium",
+    "question": "Parallel lines cut by a transversal form a 137° angle. What is the corresponding angle?",
+    "answer": "137°",
+    "hints": [
+      "Corresponding angles are equal when lines are parallel."
+    ],
+    "solution": "corresponding angles are congruent: 137°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "parallel-lines-transversal-gen-m15",
+    "topicId": "parallel-lines-transversal",
+    "difficulty": "medium",
+    "question": "Parallel lines cut by a transversal form a 115° angle. What is the alternate interior angle?",
+    "answer": "115°",
+    "hints": [
+      "Alternate interior angles are equal when lines are parallel."
+    ],
+    "solution": "alternate interior angles are congruent: 115°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "parallel-lines-transversal-gen-m16",
+    "topicId": "parallel-lines-transversal",
+    "difficulty": "medium",
+    "question": "Parallel lines cut by a transversal form a 115° angle. What is the corresponding angle?",
+    "answer": "115°",
+    "hints": [
+      "Corresponding angles are equal when lines are parallel."
+    ],
+    "solution": "corresponding angles are congruent: 115°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "parallel-lines-transversal-gen-m17",
+    "topicId": "parallel-lines-transversal",
+    "difficulty": "medium",
+    "question": "Parallel lines cut by a transversal form a 120° angle. What is the alternate interior angle?",
+    "answer": "120°",
+    "hints": [
+      "Alternate interior angles are equal when lines are parallel."
+    ],
+    "solution": "alternate interior angles are congruent: 120°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "parallel-lines-transversal-gen-m18",
+    "topicId": "parallel-lines-transversal",
+    "difficulty": "medium",
+    "question": "Parallel lines cut by a transversal form a 90° angle. What is the co-interior angle?",
+    "answer": "90°",
+    "hints": [
+      "Co-interior (same-side interior) angles are supplementary."
+    ],
+    "solution": "180° − 90° = 90°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "parallel-lines-transversal-gen-m19",
+    "topicId": "parallel-lines-transversal",
+    "difficulty": "medium",
+    "question": "Parallel lines cut by a transversal form a 87° angle. What is the corresponding angle?",
+    "answer": "87°",
+    "hints": [
+      "Corresponding angles are equal when lines are parallel."
+    ],
+    "solution": "corresponding angles are congruent: 87°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "parallel-lines-transversal-gen-h0",
+    "topicId": "parallel-lines-transversal",
+    "difficulty": "hard",
+    "question": "Parallel lines cut by a transversal form a 136° angle. What is the co-interior angle?",
+    "answer": "44°",
+    "hints": [
+      "Co-interior (same-side interior) angles are supplementary."
+    ],
+    "solution": "180° − 136° = 44°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "parallel-lines-transversal-gen-h1",
+    "topicId": "parallel-lines-transversal",
+    "difficulty": "hard",
+    "question": "Parallel lines cut by a transversal form a 111° angle. What is the corresponding angle?",
+    "answer": "111°",
+    "hints": [
+      "Corresponding angles are equal when lines are parallel."
+    ],
+    "solution": "corresponding angles are congruent: 111°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "parallel-lines-transversal-gen-h2",
+    "topicId": "parallel-lines-transversal",
+    "difficulty": "hard",
+    "question": "Parallel lines cut by a transversal form a 75° angle. What is the co-interior angle?",
+    "answer": "105°",
+    "hints": [
+      "Co-interior (same-side interior) angles are supplementary."
+    ],
+    "solution": "180° − 75° = 105°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "parallel-lines-transversal-gen-h3",
+    "topicId": "parallel-lines-transversal",
+    "difficulty": "hard",
+    "question": "Parallel lines cut by a transversal form a 148° angle. What is the alternate interior angle?",
+    "answer": "148°",
+    "hints": [
+      "Alternate interior angles are equal when lines are parallel."
+    ],
+    "solution": "alternate interior angles are congruent: 148°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "parallel-lines-transversal-gen-h4",
+    "topicId": "parallel-lines-transversal",
+    "difficulty": "hard",
+    "question": "Parallel lines cut by a transversal form a 52° angle. What is the alternate interior angle?",
+    "answer": "52°",
+    "hints": [
+      "Alternate interior angles are equal when lines are parallel."
+    ],
+    "solution": "alternate interior angles are congruent: 52°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "parallel-lines-transversal-gen-h5",
+    "topicId": "parallel-lines-transversal",
+    "difficulty": "hard",
+    "question": "Parallel lines cut by a transversal form a 59° angle. What is the corresponding angle?",
+    "answer": "59°",
+    "hints": [
+      "Corresponding angles are equal when lines are parallel."
+    ],
+    "solution": "corresponding angles are congruent: 59°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "parallel-lines-transversal-gen-h6",
+    "topicId": "parallel-lines-transversal",
+    "difficulty": "hard",
+    "question": "Parallel lines cut by a transversal form a 75° angle. What is the corresponding angle?",
+    "answer": "75°",
+    "hints": [
+      "Corresponding angles are equal when lines are parallel."
+    ],
+    "solution": "corresponding angles are congruent: 75°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "parallel-lines-transversal-gen-h7",
+    "topicId": "parallel-lines-transversal",
+    "difficulty": "hard",
+    "question": "Parallel lines cut by a transversal form a 85° angle. What is the corresponding angle?",
+    "answer": "85°",
+    "hints": [
+      "Corresponding angles are equal when lines are parallel."
+    ],
+    "solution": "corresponding angles are congruent: 85°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "parallel-lines-transversal-gen-h8",
+    "topicId": "parallel-lines-transversal",
+    "difficulty": "hard",
+    "question": "Parallel lines cut by a transversal form a 84° angle. What is the alternate interior angle?",
+    "answer": "84°",
+    "hints": [
+      "Alternate interior angles are equal when lines are parallel."
+    ],
+    "solution": "alternate interior angles are congruent: 84°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "parallel-lines-transversal-gen-h9",
+    "topicId": "parallel-lines-transversal",
+    "difficulty": "hard",
+    "question": "Parallel lines cut by a transversal form a 78° angle. What is the co-interior angle?",
+    "answer": "102°",
+    "hints": [
+      "Co-interior (same-side interior) angles are supplementary."
+    ],
+    "solution": "180° − 78° = 102°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "parallel-lines-transversal-gen-h10",
+    "topicId": "parallel-lines-transversal",
+    "difficulty": "hard",
+    "question": "Parallel lines cut by a transversal form a 96° angle. What is the co-interior angle?",
+    "answer": "84°",
+    "hints": [
+      "Co-interior (same-side interior) angles are supplementary."
+    ],
+    "solution": "180° − 96° = 84°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "parallel-lines-transversal-gen-h11",
+    "topicId": "parallel-lines-transversal",
+    "difficulty": "hard",
+    "question": "Parallel lines cut by a transversal form a 111° angle. What is the alternate interior angle?",
+    "answer": "111°",
+    "hints": [
+      "Alternate interior angles are equal when lines are parallel."
+    ],
+    "solution": "alternate interior angles are congruent: 111°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "parallel-lines-transversal-gen-h12",
+    "topicId": "parallel-lines-transversal",
+    "difficulty": "hard",
+    "question": "Parallel lines cut by a transversal form a 133° angle. What is the alternate interior angle?",
+    "answer": "133°",
+    "hints": [
+      "Alternate interior angles are equal when lines are parallel."
+    ],
+    "solution": "alternate interior angles are congruent: 133°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "parallel-lines-transversal-gen-h13",
+    "topicId": "parallel-lines-transversal",
+    "difficulty": "hard",
+    "question": "Parallel lines cut by a transversal form a 100° angle. What is the co-interior angle?",
+    "answer": "80°",
+    "hints": [
+      "Co-interior (same-side interior) angles are supplementary."
+    ],
+    "solution": "180° − 100° = 80°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "parallel-lines-transversal-gen-h14",
+    "topicId": "parallel-lines-transversal",
+    "difficulty": "hard",
+    "question": "Parallel lines cut by a transversal form a 127° angle. What is the corresponding angle?",
+    "answer": "127°",
+    "hints": [
+      "Corresponding angles are equal when lines are parallel."
+    ],
+    "solution": "corresponding angles are congruent: 127°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  }
+]

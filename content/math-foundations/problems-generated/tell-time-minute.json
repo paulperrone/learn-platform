@@ -1,0 +1,207 @@
+[
+  {
+    "id": "tell-time-minute-sup-e0",
+    "topicId": "tell-time-minute",
+    "difficulty": "easy",
+    "question": "The short hand is on 4 and the long hand is on 3. What time is it?",
+    "answer": "4:15",
+    "hints": [
+      "Each number on the clock represents 5 minutes for the long hand.",
+      "The long hand on 3 means 3 x 5 = 15 minutes."
+    ],
+    "solution": "The short hand on 4 = hour 4. The long hand on 3 = 15 minutes (3 x 5). The time is 4:15.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "tell-time-minute-sup-e1",
+    "topicId": "tell-time-minute",
+    "difficulty": "easy",
+    "question": "If the long hand points to 9, how many minutes past the hour is it?",
+    "answer": "45",
+    "hints": [
+      "Count by 5s from 12 to 9: 5, 10, 15, 20, 25, 30, 35, 40, 45."
+    ],
+    "solution": "The long hand on 9 = 45 minutes. Count by 5s: each number is 5 minutes. 9 x 5 = 45.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "tell-time-minute-sup-e2",
+    "topicId": "tell-time-minute",
+    "difficulty": "easy",
+    "question": "What time is 10 minutes after 2:00?",
+    "answer": "2:10",
+    "hints": [
+      "Start at 2:00 and add 10 minutes."
+    ],
+    "solution": "2:00 + 10 minutes = 2:10.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "tell-time-minute-sup-e3",
+    "topicId": "tell-time-minute",
+    "difficulty": "easy",
+    "question": "The long hand is on 6. How many minutes past the hour is it?",
+    "answer": "30",
+    "hints": [
+      "6 x 5 = 30 minutes."
+    ],
+    "solution": "The long hand on 6 means 30 minutes past the hour. 6 x 5 = 30.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "tell-time-minute-sup-e4",
+    "topicId": "tell-time-minute",
+    "difficulty": "easy",
+    "question": "How many minutes does the long hand take to move from one number to the next on a clock?",
+    "answer": "5",
+    "hints": [
+      "There are 12 numbers and 60 minutes total. 60 divided by 12 = ?"
+    ],
+    "solution": "The long hand takes 5 minutes to move from one number to the next. 60 minutes / 12 numbers = 5 minutes per number.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "tell-time-minute-sup-m0",
+    "topicId": "tell-time-minute",
+    "difficulty": "medium",
+    "question": "The clock shows 8:47. How many minutes until 9:00?",
+    "answer": "13",
+    "hints": [
+      "From 8:47 to 9:00, how many minutes remain?",
+      "60 - 47 = ?"
+    ],
+    "solution": "From 8:47 to 9:00 = 60 - 47 = 13 minutes.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "tell-time-minute-sup-m1",
+    "topicId": "tell-time-minute",
+    "difficulty": "medium",
+    "question": "It is 3:25. What time will it be in 20 minutes?",
+    "answer": "3:45",
+    "hints": [
+      "25 + 20 = 45 minutes.",
+      "Still in the 3 o'clock hour since 45 < 60."
+    ],
+    "solution": "3:25 + 20 minutes: 25 + 20 = 45 minutes. The time is 3:45.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "tell-time-minute-sup-m2",
+    "topicId": "tell-time-minute",
+    "difficulty": "medium",
+    "question": "A class starts at 9:15 and ends at 10:00. How long is the class?",
+    "answer": "45 minutes",
+    "hints": [
+      "From 9:15 to 10:00: count from 15 minutes to 60 minutes.",
+      "60 - 15 = ?"
+    ],
+    "solution": "From 9:15 to 10:00 = 60 - 15 = 45 minutes.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "tell-time-minute-sup-m3",
+    "topicId": "tell-time-minute",
+    "difficulty": "medium",
+    "question": "It is 7:50 now. What time was it 25 minutes ago?",
+    "answer": "7:25",
+    "hints": [
+      "Subtract 25 from 50: 50 - 25 = 25.",
+      "Still in the 7 o'clock hour."
+    ],
+    "solution": "7:50 - 25 minutes: 50 - 25 = 25. The time was 7:25.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "tell-time-minute-sup-m4",
+    "topicId": "tell-time-minute",
+    "difficulty": "medium",
+    "question": "Write 'quarter past 6' as a digital time.",
+    "answer": "6:15",
+    "hints": [
+      "A quarter of an hour = 15 minutes.",
+      "Quarter past means 15 minutes after the hour."
+    ],
+    "solution": "Quarter past 6 = 6:15. A quarter of 60 minutes is 15 minutes.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "tell-time-minute-sup-h0",
+    "topicId": "tell-time-minute",
+    "difficulty": "hard",
+    "question": "It is 11:45. What time will it be in 30 minutes?",
+    "answer": "12:15",
+    "hints": [
+      "45 + 30 = 75 minutes. That is more than 60, so we cross into the next hour.",
+      "75 - 60 = 15 minutes into the next hour."
+    ],
+    "solution": "11:45 + 30 minutes: 45 + 30 = 75 minutes. 75 - 60 = 15 minutes past the next hour. 11 + 1 = 12. The time is 12:15.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "tell-time-minute-sup-h1",
+    "topicId": "tell-time-minute",
+    "difficulty": "hard",
+    "question": "A movie starts at 2:35 and is 1 hour and 45 minutes long. What time does it end?",
+    "answer": "4:20",
+    "hints": [
+      "Add 1 hour first: 2:35 + 1 hour = 3:35.",
+      "Then add 45 minutes: 35 + 45 = 80 minutes = 1 hour and 20 minutes."
+    ],
+    "solution": "2:35 + 1 hour = 3:35. Then + 45 minutes: 35 + 45 = 80 minutes = 1 hour 20 minutes. So 3:35 + 45 min = 4:20.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "tell-time-minute-sup-h2",
+    "topicId": "tell-time-minute",
+    "difficulty": "hard",
+    "question": "How many times does the minute hand go all the way around the clock in 3 hours?",
+    "answer": "3",
+    "hints": [
+      "The minute hand makes one full trip around the clock each hour."
+    ],
+    "solution": "The minute hand completes 1 full rotation per hour. In 3 hours, it goes around 3 times.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "tell-time-minute-sup-h3",
+    "topicId": "tell-time-minute",
+    "difficulty": "hard",
+    "question": "Write 'quarter to 5' as a digital time.",
+    "answer": "4:45",
+    "hints": [
+      "Quarter to means 15 minutes before the hour.",
+      "15 minutes before 5:00 = ?"
+    ],
+    "solution": "Quarter to 5 means 15 minutes before 5:00. 5:00 - 15 minutes = 4:45.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "tell-time-minute-sup-h4",
+    "topicId": "tell-time-minute",
+    "difficulty": "hard",
+    "question": "Emma looks at the clock at 6:18 and again at 7:03. How much time has passed?",
+    "answer": "45 minutes",
+    "hints": [
+      "From 6:18 to 7:00 = 42 minutes.",
+      "From 7:00 to 7:03 = 3 more minutes."
+    ],
+    "solution": "From 6:18 to 7:00 = 60 - 18 = 42 minutes. From 7:00 to 7:03 = 3 minutes. Total: 42 + 3 = 45 minutes.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  }
+]

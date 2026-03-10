@@ -1,0 +1,652 @@
+[
+  {
+    "id": "volume-prisms-gen-e0",
+    "topicId": "volume-prisms",
+    "difficulty": "easy",
+    "question": "What is the volume of a rectangular prism with length 5, width 4, and height 5?",
+    "answer": "100",
+    "hints": [
+      "V = l × w × h."
+    ],
+    "solution": "V = 5 × 4 × 5 = 100 cubic units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "volume-prisms-gen-e1",
+    "topicId": "volume-prisms",
+    "difficulty": "easy",
+    "question": "What is the volume of a rectangular prism with length 4, width 6, and height 3?",
+    "answer": "72",
+    "hints": [
+      "V = l × w × h."
+    ],
+    "solution": "V = 4 × 6 × 3 = 72 cubic units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "volume-prisms-gen-e2",
+    "topicId": "volume-prisms",
+    "difficulty": "easy",
+    "question": "What is the volume of a rectangular prism with length 8, width 4, and height 3?",
+    "answer": "96",
+    "hints": [
+      "V = l × w × h."
+    ],
+    "solution": "V = 8 × 4 × 3 = 96 cubic units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "volume-prisms-gen-e3",
+    "topicId": "volume-prisms",
+    "difficulty": "easy",
+    "question": "What is the volume of a rectangular prism with length 3, width 5, and height 7?",
+    "answer": "105",
+    "hints": [
+      "V = l × w × h."
+    ],
+    "solution": "V = 3 × 5 × 7 = 105 cubic units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "volume-prisms-gen-e4",
+    "topicId": "volume-prisms",
+    "difficulty": "easy",
+    "question": "What is the volume of a rectangular prism with length 3, width 4, and height 8?",
+    "answer": "96",
+    "hints": [
+      "V = l × w × h."
+    ],
+    "solution": "V = 3 × 4 × 8 = 96 cubic units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "volume-prisms-gen-e5",
+    "topicId": "volume-prisms",
+    "difficulty": "easy",
+    "question": "What is the volume of a rectangular prism with length 6, width 5, and height 2?",
+    "answer": "60",
+    "hints": [
+      "V = l × w × h."
+    ],
+    "solution": "V = 6 × 5 × 2 = 60 cubic units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "volume-prisms-gen-e6",
+    "topicId": "volume-prisms",
+    "difficulty": "easy",
+    "question": "What is the volume of a rectangular prism with length 3, width 2, and height 8?",
+    "answer": "48",
+    "hints": [
+      "V = l × w × h."
+    ],
+    "solution": "V = 3 × 2 × 8 = 48 cubic units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "volume-prisms-gen-e7",
+    "topicId": "volume-prisms",
+    "difficulty": "easy",
+    "question": "What is the volume of a rectangular prism with length 2, width 8, and height 8?",
+    "answer": "128",
+    "hints": [
+      "V = l × w × h."
+    ],
+    "solution": "V = 2 × 8 × 8 = 128 cubic units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "volume-prisms-gen-e8",
+    "topicId": "volume-prisms",
+    "difficulty": "easy",
+    "question": "What is the volume of a rectangular prism with length 5, width 7, and height 8?",
+    "answer": "280",
+    "hints": [
+      "V = l × w × h."
+    ],
+    "solution": "V = 5 × 7 × 8 = 280 cubic units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "volume-prisms-gen-e9",
+    "topicId": "volume-prisms",
+    "difficulty": "easy",
+    "question": "What is the volume of a rectangular prism with length 8, width 8, and height 5?",
+    "answer": "320",
+    "hints": [
+      "V = l × w × h."
+    ],
+    "solution": "V = 8 × 8 × 5 = 320 cubic units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "volume-prisms-gen-e10",
+    "topicId": "volume-prisms",
+    "difficulty": "easy",
+    "question": "What is the volume of a rectangular prism with length 4, width 2, and height 3?",
+    "answer": "24",
+    "hints": [
+      "V = l × w × h."
+    ],
+    "solution": "V = 4 × 2 × 3 = 24 cubic units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "volume-prisms-gen-e11",
+    "topicId": "volume-prisms",
+    "difficulty": "easy",
+    "question": "What is the volume of a rectangular prism with length 4, width 8, and height 7?",
+    "answer": "224",
+    "hints": [
+      "V = l × w × h."
+    ],
+    "solution": "V = 4 × 8 × 7 = 224 cubic units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "volume-prisms-gen-e12",
+    "topicId": "volume-prisms",
+    "difficulty": "easy",
+    "question": "What is the volume of a rectangular prism with length 8, width 3, and height 6?",
+    "answer": "144",
+    "hints": [
+      "V = l × w × h."
+    ],
+    "solution": "V = 8 × 3 × 6 = 144 cubic units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "volume-prisms-gen-e13",
+    "topicId": "volume-prisms",
+    "difficulty": "easy",
+    "question": "What is the volume of a rectangular prism with length 8, width 5, and height 4?",
+    "answer": "160",
+    "hints": [
+      "V = l × w × h."
+    ],
+    "solution": "V = 8 × 5 × 4 = 160 cubic units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "volume-prisms-gen-e14",
+    "topicId": "volume-prisms",
+    "difficulty": "easy",
+    "question": "What is the volume of a rectangular prism with length 6, width 5, and height 6?",
+    "answer": "180",
+    "hints": [
+      "V = l × w × h."
+    ],
+    "solution": "V = 6 × 5 × 6 = 180 cubic units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "volume-prisms-gen-m0",
+    "topicId": "volume-prisms",
+    "difficulty": "medium",
+    "question": "What is the volume of a rectangular prism with length 3, width 5, and height 6?",
+    "answer": "90",
+    "hints": [
+      "V = l × w × h."
+    ],
+    "solution": "V = 3 × 5 × 6 = 90 cubic units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "volume-prisms-gen-m1",
+    "topicId": "volume-prisms",
+    "difficulty": "medium",
+    "question": "What is the volume of a rectangular prism with length 4, width 5, and height 11?",
+    "answer": "220",
+    "hints": [
+      "V = l × w × h."
+    ],
+    "solution": "V = 4 × 5 × 11 = 220 cubic units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "volume-prisms-gen-m2",
+    "topicId": "volume-prisms",
+    "difficulty": "medium",
+    "question": "What is the volume of a rectangular prism with length 12, width 2, and height 7?",
+    "answer": "168",
+    "hints": [
+      "V = l × w × h."
+    ],
+    "solution": "V = 12 × 2 × 7 = 168 cubic units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "volume-prisms-gen-m3",
+    "topicId": "volume-prisms",
+    "difficulty": "medium",
+    "question": "What is the volume of a rectangular prism with length 12, width 9, and height 10?",
+    "answer": "1080",
+    "hints": [
+      "V = l × w × h."
+    ],
+    "solution": "V = 12 × 9 × 10 = 1080 cubic units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "volume-prisms-gen-m4",
+    "topicId": "volume-prisms",
+    "difficulty": "medium",
+    "question": "What is the volume of a rectangular prism with length 6, width 2, and height 7?",
+    "answer": "84",
+    "hints": [
+      "V = l × w × h."
+    ],
+    "solution": "V = 6 × 2 × 7 = 84 cubic units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "volume-prisms-gen-m5",
+    "topicId": "volume-prisms",
+    "difficulty": "medium",
+    "question": "What is the volume of a rectangular prism with length 10, width 4, and height 4?",
+    "answer": "160",
+    "hints": [
+      "V = l × w × h."
+    ],
+    "solution": "V = 10 × 4 × 4 = 160 cubic units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "volume-prisms-gen-m6",
+    "topicId": "volume-prisms",
+    "difficulty": "medium",
+    "question": "What is the volume of a rectangular prism with length 11, width 3, and height 3?",
+    "answer": "99",
+    "hints": [
+      "V = l × w × h."
+    ],
+    "solution": "V = 11 × 3 × 3 = 99 cubic units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "volume-prisms-gen-m7",
+    "topicId": "volume-prisms",
+    "difficulty": "medium",
+    "question": "What is the volume of a rectangular prism with length 3, width 11, and height 10?",
+    "answer": "330",
+    "hints": [
+      "V = l × w × h."
+    ],
+    "solution": "V = 3 × 11 × 10 = 330 cubic units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "volume-prisms-gen-m8",
+    "topicId": "volume-prisms",
+    "difficulty": "medium",
+    "question": "What is the volume of a rectangular prism with length 9, width 4, and height 12?",
+    "answer": "432",
+    "hints": [
+      "V = l × w × h."
+    ],
+    "solution": "V = 9 × 4 × 12 = 432 cubic units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "volume-prisms-gen-m9",
+    "topicId": "volume-prisms",
+    "difficulty": "medium",
+    "question": "What is the volume of a rectangular prism with length 11, width 2, and height 12?",
+    "answer": "264",
+    "hints": [
+      "V = l × w × h."
+    ],
+    "solution": "V = 11 × 2 × 12 = 264 cubic units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "volume-prisms-gen-m10",
+    "topicId": "volume-prisms",
+    "difficulty": "medium",
+    "question": "What is the volume of a rectangular prism with length 9, width 2, and height 9?",
+    "answer": "162",
+    "hints": [
+      "V = l × w × h."
+    ],
+    "solution": "V = 9 × 2 × 9 = 162 cubic units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "volume-prisms-gen-m11",
+    "topicId": "volume-prisms",
+    "difficulty": "medium",
+    "question": "What is the volume of a rectangular prism with length 3, width 12, and height 2?",
+    "answer": "72",
+    "hints": [
+      "V = l × w × h."
+    ],
+    "solution": "V = 3 × 12 × 2 = 72 cubic units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "volume-prisms-gen-m12",
+    "topicId": "volume-prisms",
+    "difficulty": "medium",
+    "question": "What is the volume of a rectangular prism with length 4, width 8, and height 2?",
+    "answer": "64",
+    "hints": [
+      "V = l × w × h."
+    ],
+    "solution": "V = 4 × 8 × 2 = 64 cubic units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "volume-prisms-gen-m13",
+    "topicId": "volume-prisms",
+    "difficulty": "medium",
+    "question": "What is the volume of a rectangular prism with length 12, width 9, and height 9?",
+    "answer": "972",
+    "hints": [
+      "V = l × w × h."
+    ],
+    "solution": "V = 12 × 9 × 9 = 972 cubic units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "volume-prisms-gen-m14",
+    "topicId": "volume-prisms",
+    "difficulty": "medium",
+    "question": "What is the volume of a rectangular prism with length 8, width 5, and height 3?",
+    "answer": "120",
+    "hints": [
+      "V = l × w × h."
+    ],
+    "solution": "V = 8 × 5 × 3 = 120 cubic units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "volume-prisms-gen-m15",
+    "topicId": "volume-prisms",
+    "difficulty": "medium",
+    "question": "What is the volume of a rectangular prism with length 10, width 5, and height 6?",
+    "answer": "300",
+    "hints": [
+      "V = l × w × h."
+    ],
+    "solution": "V = 10 × 5 × 6 = 300 cubic units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "volume-prisms-gen-m16",
+    "topicId": "volume-prisms",
+    "difficulty": "medium",
+    "question": "What is the volume of a rectangular prism with length 5, width 8, and height 8?",
+    "answer": "320",
+    "hints": [
+      "V = l × w × h."
+    ],
+    "solution": "V = 5 × 8 × 8 = 320 cubic units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "volume-prisms-gen-m17",
+    "topicId": "volume-prisms",
+    "difficulty": "medium",
+    "question": "What is the volume of a rectangular prism with length 12, width 2, and height 9?",
+    "answer": "216",
+    "hints": [
+      "V = l × w × h."
+    ],
+    "solution": "V = 12 × 2 × 9 = 216 cubic units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "volume-prisms-gen-m18",
+    "topicId": "volume-prisms",
+    "difficulty": "medium",
+    "question": "What is the volume of a rectangular prism with length 9, width 9, and height 11?",
+    "answer": "891",
+    "hints": [
+      "V = l × w × h."
+    ],
+    "solution": "V = 9 × 9 × 11 = 891 cubic units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "volume-prisms-gen-m19",
+    "topicId": "volume-prisms",
+    "difficulty": "medium",
+    "question": "What is the volume of a rectangular prism with length 12, width 12, and height 3?",
+    "answer": "432",
+    "hints": [
+      "V = l × w × h."
+    ],
+    "solution": "V = 12 × 12 × 3 = 432 cubic units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "volume-prisms-gen-h0",
+    "topicId": "volume-prisms",
+    "difficulty": "hard",
+    "question": "What is the volume of a rectangular prism with length 8, width 11, and height 10?",
+    "answer": "880",
+    "hints": [
+      "V = l × w × h."
+    ],
+    "solution": "V = 8 × 11 × 10 = 880 cubic units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "volume-prisms-gen-h1",
+    "topicId": "volume-prisms",
+    "difficulty": "hard",
+    "question": "What is the volume of a rectangular prism with length 3, width 6, and height 12?",
+    "answer": "216",
+    "hints": [
+      "V = l × w × h."
+    ],
+    "solution": "V = 3 × 6 × 12 = 216 cubic units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "volume-prisms-gen-h2",
+    "topicId": "volume-prisms",
+    "difficulty": "hard",
+    "question": "What is the volume of a rectangular prism with length 8, width 12, and height 3?",
+    "answer": "288",
+    "hints": [
+      "V = l × w × h."
+    ],
+    "solution": "V = 8 × 12 × 3 = 288 cubic units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "volume-prisms-gen-h3",
+    "topicId": "volume-prisms",
+    "difficulty": "hard",
+    "question": "What is the volume of a rectangular prism with length 7, width 2, and height 2?",
+    "answer": "28",
+    "hints": [
+      "V = l × w × h."
+    ],
+    "solution": "V = 7 × 2 × 2 = 28 cubic units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "volume-prisms-gen-h4",
+    "topicId": "volume-prisms",
+    "difficulty": "hard",
+    "question": "What is the volume of a rectangular prism with length 8, width 10, and height 9?",
+    "answer": "720",
+    "hints": [
+      "V = l × w × h."
+    ],
+    "solution": "V = 8 × 10 × 9 = 720 cubic units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "volume-prisms-gen-h5",
+    "topicId": "volume-prisms",
+    "difficulty": "hard",
+    "question": "What is the volume of a rectangular prism with length 7, width 8, and height 8?",
+    "answer": "448",
+    "hints": [
+      "V = l × w × h."
+    ],
+    "solution": "V = 7 × 8 × 8 = 448 cubic units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "volume-prisms-gen-h6",
+    "topicId": "volume-prisms",
+    "difficulty": "hard",
+    "question": "What is the volume of a rectangular prism with length 5, width 10, and height 10?",
+    "answer": "500",
+    "hints": [
+      "V = l × w × h."
+    ],
+    "solution": "V = 5 × 10 × 10 = 500 cubic units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "volume-prisms-gen-h7",
+    "topicId": "volume-prisms",
+    "difficulty": "hard",
+    "question": "What is the volume of a rectangular prism with length 7, width 2, and height 2?",
+    "answer": "28",
+    "hints": [
+      "V = l × w × h."
+    ],
+    "solution": "V = 7 × 2 × 2 = 28 cubic units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "volume-prisms-gen-h8",
+    "topicId": "volume-prisms",
+    "difficulty": "hard",
+    "question": "What is the volume of a rectangular prism with length 3, width 4, and height 6?",
+    "answer": "72",
+    "hints": [
+      "V = l × w × h."
+    ],
+    "solution": "V = 3 × 4 × 6 = 72 cubic units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "volume-prisms-gen-h9",
+    "topicId": "volume-prisms",
+    "difficulty": "hard",
+    "question": "What is the volume of a rectangular prism with length 3, width 9, and height 6?",
+    "answer": "162",
+    "hints": [
+      "V = l × w × h."
+    ],
+    "solution": "V = 3 × 9 × 6 = 162 cubic units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "volume-prisms-gen-h10",
+    "topicId": "volume-prisms",
+    "difficulty": "hard",
+    "question": "What is the volume of a rectangular prism with length 7, width 3, and height 12?",
+    "answer": "252",
+    "hints": [
+      "V = l × w × h."
+    ],
+    "solution": "V = 7 × 3 × 12 = 252 cubic units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "volume-prisms-gen-h11",
+    "topicId": "volume-prisms",
+    "difficulty": "hard",
+    "question": "What is the volume of a rectangular prism with length 4, width 4, and height 7?",
+    "answer": "112",
+    "hints": [
+      "V = l × w × h."
+    ],
+    "solution": "V = 4 × 4 × 7 = 112 cubic units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "volume-prisms-gen-h12",
+    "topicId": "volume-prisms",
+    "difficulty": "hard",
+    "question": "What is the volume of a rectangular prism with length 8, width 4, and height 6?",
+    "answer": "192",
+    "hints": [
+      "V = l × w × h."
+    ],
+    "solution": "V = 8 × 4 × 6 = 192 cubic units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "volume-prisms-gen-h13",
+    "topicId": "volume-prisms",
+    "difficulty": "hard",
+    "question": "What is the volume of a rectangular prism with length 9, width 8, and height 3?",
+    "answer": "216",
+    "hints": [
+      "V = l × w × h."
+    ],
+    "solution": "V = 9 × 8 × 3 = 216 cubic units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "volume-prisms-gen-h14",
+    "topicId": "volume-prisms",
+    "difficulty": "hard",
+    "question": "What is the volume of a rectangular prism with length 5, width 9, and height 10?",
+    "answer": "450",
+    "hints": [
+      "V = l × w × h."
+    ],
+    "solution": "V = 5 × 9 × 10 = 450 cubic units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  }
+]

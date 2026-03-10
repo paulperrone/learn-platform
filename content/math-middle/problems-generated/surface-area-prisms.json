@@ -1,0 +1,652 @@
+[
+  {
+    "id": "surface-area-prisms-gen-e0",
+    "topicId": "surface-area-prisms",
+    "difficulty": "easy",
+    "question": "What is the surface area of a rectangular prism with length 3, width 6, and height 3?",
+    "answer": "90",
+    "hints": [
+      "SA = 2(lw + lh + wh)."
+    ],
+    "solution": "SA = 2(3×6 + 3×3 + 6×3) = 2(18 + 9 + 18) = 90 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "surface-area-prisms-gen-e1",
+    "topicId": "surface-area-prisms",
+    "difficulty": "easy",
+    "question": "What is the surface area of a rectangular prism with length 2, width 2, and height 2?",
+    "answer": "24",
+    "hints": [
+      "SA = 2(lw + lh + wh)."
+    ],
+    "solution": "SA = 2(2×2 + 2×2 + 2×2) = 2(4 + 4 + 4) = 24 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "surface-area-prisms-gen-e2",
+    "topicId": "surface-area-prisms",
+    "difficulty": "easy",
+    "question": "What is the surface area of a rectangular prism with length 3, width 4, and height 2?",
+    "answer": "52",
+    "hints": [
+      "SA = 2(lw + lh + wh)."
+    ],
+    "solution": "SA = 2(3×4 + 3×2 + 4×2) = 2(12 + 6 + 8) = 52 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "surface-area-prisms-gen-e3",
+    "topicId": "surface-area-prisms",
+    "difficulty": "easy",
+    "question": "What is the surface area of a rectangular prism with length 6, width 3, and height 3?",
+    "answer": "90",
+    "hints": [
+      "SA = 2(lw + lh + wh)."
+    ],
+    "solution": "SA = 2(6×3 + 6×3 + 3×3) = 2(18 + 18 + 9) = 90 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "surface-area-prisms-gen-e4",
+    "topicId": "surface-area-prisms",
+    "difficulty": "easy",
+    "question": "What is the surface area of a rectangular prism with length 5, width 5, and height 3?",
+    "answer": "110",
+    "hints": [
+      "SA = 2(lw + lh + wh)."
+    ],
+    "solution": "SA = 2(5×5 + 5×3 + 5×3) = 2(25 + 15 + 15) = 110 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "surface-area-prisms-gen-e5",
+    "topicId": "surface-area-prisms",
+    "difficulty": "easy",
+    "question": "What is the surface area of a rectangular prism with length 4, width 3, and height 2?",
+    "answer": "52",
+    "hints": [
+      "SA = 2(lw + lh + wh)."
+    ],
+    "solution": "SA = 2(4×3 + 4×2 + 3×2) = 2(12 + 8 + 6) = 52 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "surface-area-prisms-gen-e6",
+    "topicId": "surface-area-prisms",
+    "difficulty": "easy",
+    "question": "What is the surface area of a rectangular prism with length 4, width 5, and height 3?",
+    "answer": "94",
+    "hints": [
+      "SA = 2(lw + lh + wh)."
+    ],
+    "solution": "SA = 2(4×5 + 4×3 + 5×3) = 2(20 + 12 + 15) = 94 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "surface-area-prisms-gen-e7",
+    "topicId": "surface-area-prisms",
+    "difficulty": "easy",
+    "question": "What is the surface area of a rectangular prism with length 2, width 4, and height 6?",
+    "answer": "88",
+    "hints": [
+      "SA = 2(lw + lh + wh)."
+    ],
+    "solution": "SA = 2(2×4 + 2×6 + 4×6) = 2(8 + 12 + 24) = 88 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "surface-area-prisms-gen-e8",
+    "topicId": "surface-area-prisms",
+    "difficulty": "easy",
+    "question": "What is the surface area of a rectangular prism with length 4, width 3, and height 5?",
+    "answer": "94",
+    "hints": [
+      "SA = 2(lw + lh + wh)."
+    ],
+    "solution": "SA = 2(4×3 + 4×5 + 3×5) = 2(12 + 20 + 15) = 94 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "surface-area-prisms-gen-e9",
+    "topicId": "surface-area-prisms",
+    "difficulty": "easy",
+    "question": "What is the surface area of a rectangular prism with length 5, width 3, and height 4?",
+    "answer": "94",
+    "hints": [
+      "SA = 2(lw + lh + wh)."
+    ],
+    "solution": "SA = 2(5×3 + 5×4 + 3×4) = 2(15 + 20 + 12) = 94 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "surface-area-prisms-gen-e10",
+    "topicId": "surface-area-prisms",
+    "difficulty": "easy",
+    "question": "What is the surface area of a rectangular prism with length 2, width 3, and height 2?",
+    "answer": "32",
+    "hints": [
+      "SA = 2(lw + lh + wh)."
+    ],
+    "solution": "SA = 2(2×3 + 2×2 + 3×2) = 2(6 + 4 + 6) = 32 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "surface-area-prisms-gen-e11",
+    "topicId": "surface-area-prisms",
+    "difficulty": "easy",
+    "question": "What is the surface area of a rectangular prism with length 2, width 5, and height 6?",
+    "answer": "104",
+    "hints": [
+      "SA = 2(lw + lh + wh)."
+    ],
+    "solution": "SA = 2(2×5 + 2×6 + 5×6) = 2(10 + 12 + 30) = 104 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "surface-area-prisms-gen-e12",
+    "topicId": "surface-area-prisms",
+    "difficulty": "easy",
+    "question": "What is the surface area of a rectangular prism with length 4, width 4, and height 4?",
+    "answer": "96",
+    "hints": [
+      "SA = 2(lw + lh + wh)."
+    ],
+    "solution": "SA = 2(4×4 + 4×4 + 4×4) = 2(16 + 16 + 16) = 96 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "surface-area-prisms-gen-e13",
+    "topicId": "surface-area-prisms",
+    "difficulty": "easy",
+    "question": "What is the surface area of a rectangular prism with length 2, width 3, and height 3?",
+    "answer": "42",
+    "hints": [
+      "SA = 2(lw + lh + wh)."
+    ],
+    "solution": "SA = 2(2×3 + 2×3 + 3×3) = 2(6 + 6 + 9) = 42 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "surface-area-prisms-gen-e14",
+    "topicId": "surface-area-prisms",
+    "difficulty": "easy",
+    "question": "What is the surface area of a rectangular prism with length 2, width 6, and height 5?",
+    "answer": "104",
+    "hints": [
+      "SA = 2(lw + lh + wh)."
+    ],
+    "solution": "SA = 2(2×6 + 2×5 + 6×5) = 2(12 + 10 + 30) = 104 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "surface-area-prisms-gen-m0",
+    "topicId": "surface-area-prisms",
+    "difficulty": "medium",
+    "question": "What is the surface area of a rectangular prism with length 10, width 2, and height 6?",
+    "answer": "184",
+    "hints": [
+      "SA = 2(lw + lh + wh)."
+    ],
+    "solution": "SA = 2(10×2 + 10×6 + 2×6) = 2(20 + 60 + 12) = 184 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "surface-area-prisms-gen-m1",
+    "topicId": "surface-area-prisms",
+    "difficulty": "medium",
+    "question": "What is the surface area of a rectangular prism with length 7, width 3, and height 8?",
+    "answer": "202",
+    "hints": [
+      "SA = 2(lw + lh + wh)."
+    ],
+    "solution": "SA = 2(7×3 + 7×8 + 3×8) = 2(21 + 56 + 24) = 202 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "surface-area-prisms-gen-m2",
+    "topicId": "surface-area-prisms",
+    "difficulty": "medium",
+    "question": "What is the surface area of a rectangular prism with length 8, width 2, and height 7?",
+    "answer": "172",
+    "hints": [
+      "SA = 2(lw + lh + wh)."
+    ],
+    "solution": "SA = 2(8×2 + 8×7 + 2×7) = 2(16 + 56 + 14) = 172 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "surface-area-prisms-gen-m3",
+    "topicId": "surface-area-prisms",
+    "difficulty": "medium",
+    "question": "What is the surface area of a rectangular prism with length 6, width 2, and height 2?",
+    "answer": "56",
+    "hints": [
+      "SA = 2(lw + lh + wh)."
+    ],
+    "solution": "SA = 2(6×2 + 6×2 + 2×2) = 2(12 + 12 + 4) = 56 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "surface-area-prisms-gen-m4",
+    "topicId": "surface-area-prisms",
+    "difficulty": "medium",
+    "question": "What is the surface area of a rectangular prism with length 7, width 6, and height 9?",
+    "answer": "318",
+    "hints": [
+      "SA = 2(lw + lh + wh)."
+    ],
+    "solution": "SA = 2(7×6 + 7×9 + 6×9) = 2(42 + 63 + 54) = 318 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "surface-area-prisms-gen-m5",
+    "topicId": "surface-area-prisms",
+    "difficulty": "medium",
+    "question": "What is the surface area of a rectangular prism with length 7, width 5, and height 6?",
+    "answer": "214",
+    "hints": [
+      "SA = 2(lw + lh + wh)."
+    ],
+    "solution": "SA = 2(7×5 + 7×6 + 5×6) = 2(35 + 42 + 30) = 214 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "surface-area-prisms-gen-m6",
+    "topicId": "surface-area-prisms",
+    "difficulty": "medium",
+    "question": "What is the surface area of a rectangular prism with length 8, width 3, and height 3?",
+    "answer": "114",
+    "hints": [
+      "SA = 2(lw + lh + wh)."
+    ],
+    "solution": "SA = 2(8×3 + 8×3 + 3×3) = 2(24 + 24 + 9) = 114 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "surface-area-prisms-gen-m7",
+    "topicId": "surface-area-prisms",
+    "difficulty": "medium",
+    "question": "What is the surface area of a rectangular prism with length 7, width 10, and height 5?",
+    "answer": "310",
+    "hints": [
+      "SA = 2(lw + lh + wh)."
+    ],
+    "solution": "SA = 2(7×10 + 7×5 + 10×5) = 2(70 + 35 + 50) = 310 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "surface-area-prisms-gen-m8",
+    "topicId": "surface-area-prisms",
+    "difficulty": "medium",
+    "question": "What is the surface area of a rectangular prism with length 7, width 9, and height 9?",
+    "answer": "414",
+    "hints": [
+      "SA = 2(lw + lh + wh)."
+    ],
+    "solution": "SA = 2(7×9 + 7×9 + 9×9) = 2(63 + 63 + 81) = 414 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "surface-area-prisms-gen-m9",
+    "topicId": "surface-area-prisms",
+    "difficulty": "medium",
+    "question": "What is the surface area of a rectangular prism with length 10, width 5, and height 8?",
+    "answer": "340",
+    "hints": [
+      "SA = 2(lw + lh + wh)."
+    ],
+    "solution": "SA = 2(10×5 + 10×8 + 5×8) = 2(50 + 80 + 40) = 340 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "surface-area-prisms-gen-m10",
+    "topicId": "surface-area-prisms",
+    "difficulty": "medium",
+    "question": "What is the surface area of a rectangular prism with length 9, width 10, and height 6?",
+    "answer": "408",
+    "hints": [
+      "SA = 2(lw + lh + wh)."
+    ],
+    "solution": "SA = 2(9×10 + 9×6 + 10×6) = 2(90 + 54 + 60) = 408 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "surface-area-prisms-gen-m11",
+    "topicId": "surface-area-prisms",
+    "difficulty": "medium",
+    "question": "What is the surface area of a rectangular prism with length 8, width 6, and height 3?",
+    "answer": "180",
+    "hints": [
+      "SA = 2(lw + lh + wh)."
+    ],
+    "solution": "SA = 2(8×6 + 8×3 + 6×3) = 2(48 + 24 + 18) = 180 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "surface-area-prisms-gen-m12",
+    "topicId": "surface-area-prisms",
+    "difficulty": "medium",
+    "question": "What is the surface area of a rectangular prism with length 5, width 7, and height 6?",
+    "answer": "214",
+    "hints": [
+      "SA = 2(lw + lh + wh)."
+    ],
+    "solution": "SA = 2(5×7 + 5×6 + 7×6) = 2(35 + 30 + 42) = 214 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "surface-area-prisms-gen-m13",
+    "topicId": "surface-area-prisms",
+    "difficulty": "medium",
+    "question": "What is the surface area of a rectangular prism with length 6, width 6, and height 2?",
+    "answer": "120",
+    "hints": [
+      "SA = 2(lw + lh + wh)."
+    ],
+    "solution": "SA = 2(6×6 + 6×2 + 6×2) = 2(36 + 12 + 12) = 120 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "surface-area-prisms-gen-m14",
+    "topicId": "surface-area-prisms",
+    "difficulty": "medium",
+    "question": "What is the surface area of a rectangular prism with length 3, width 5, and height 10?",
+    "answer": "190",
+    "hints": [
+      "SA = 2(lw + lh + wh)."
+    ],
+    "solution": "SA = 2(3×5 + 3×10 + 5×10) = 2(15 + 30 + 50) = 190 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "surface-area-prisms-gen-m15",
+    "topicId": "surface-area-prisms",
+    "difficulty": "medium",
+    "question": "What is the surface area of a rectangular prism with length 6, width 9, and height 6?",
+    "answer": "288",
+    "hints": [
+      "SA = 2(lw + lh + wh)."
+    ],
+    "solution": "SA = 2(6×9 + 6×6 + 9×6) = 2(54 + 36 + 54) = 288 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "surface-area-prisms-gen-m16",
+    "topicId": "surface-area-prisms",
+    "difficulty": "medium",
+    "question": "What is the surface area of a rectangular prism with length 9, width 10, and height 4?",
+    "answer": "332",
+    "hints": [
+      "SA = 2(lw + lh + wh)."
+    ],
+    "solution": "SA = 2(9×10 + 9×4 + 10×4) = 2(90 + 36 + 40) = 332 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "surface-area-prisms-gen-m17",
+    "topicId": "surface-area-prisms",
+    "difficulty": "medium",
+    "question": "What is the surface area of a rectangular prism with length 8, width 6, and height 4?",
+    "answer": "208",
+    "hints": [
+      "SA = 2(lw + lh + wh)."
+    ],
+    "solution": "SA = 2(8×6 + 8×4 + 6×4) = 2(48 + 32 + 24) = 208 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "surface-area-prisms-gen-m18",
+    "topicId": "surface-area-prisms",
+    "difficulty": "medium",
+    "question": "What is the surface area of a rectangular prism with length 3, width 3, and height 10?",
+    "answer": "138",
+    "hints": [
+      "SA = 2(lw + lh + wh)."
+    ],
+    "solution": "SA = 2(3×3 + 3×10 + 3×10) = 2(9 + 30 + 30) = 138 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "surface-area-prisms-gen-m19",
+    "topicId": "surface-area-prisms",
+    "difficulty": "medium",
+    "question": "What is the surface area of a rectangular prism with length 9, width 7, and height 10?",
+    "answer": "446",
+    "hints": [
+      "SA = 2(lw + lh + wh)."
+    ],
+    "solution": "SA = 2(9×7 + 9×10 + 7×10) = 2(63 + 90 + 70) = 446 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "surface-area-prisms-gen-h0",
+    "topicId": "surface-area-prisms",
+    "difficulty": "hard",
+    "question": "What is the surface area of a rectangular prism with length 2, width 9, and height 5?",
+    "answer": "146",
+    "hints": [
+      "SA = 2(lw + lh + wh)."
+    ],
+    "solution": "SA = 2(2×9 + 2×5 + 9×5) = 2(18 + 10 + 45) = 146 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "surface-area-prisms-gen-h1",
+    "topicId": "surface-area-prisms",
+    "difficulty": "hard",
+    "question": "What is the surface area of a rectangular prism with length 7, width 9, and height 2?",
+    "answer": "190",
+    "hints": [
+      "SA = 2(lw + lh + wh)."
+    ],
+    "solution": "SA = 2(7×9 + 7×2 + 9×2) = 2(63 + 14 + 18) = 190 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "surface-area-prisms-gen-h2",
+    "topicId": "surface-area-prisms",
+    "difficulty": "hard",
+    "question": "What is the surface area of a rectangular prism with length 2, width 8, and height 2?",
+    "answer": "72",
+    "hints": [
+      "SA = 2(lw + lh + wh)."
+    ],
+    "solution": "SA = 2(2×8 + 2×2 + 8×2) = 2(16 + 4 + 16) = 72 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "surface-area-prisms-gen-h3",
+    "topicId": "surface-area-prisms",
+    "difficulty": "hard",
+    "question": "What is the surface area of a rectangular prism with length 10, width 8, and height 10?",
+    "answer": "520",
+    "hints": [
+      "SA = 2(lw + lh + wh)."
+    ],
+    "solution": "SA = 2(10×8 + 10×10 + 8×10) = 2(80 + 100 + 80) = 520 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "surface-area-prisms-gen-h4",
+    "topicId": "surface-area-prisms",
+    "difficulty": "hard",
+    "question": "What is the surface area of a rectangular prism with length 8, width 2, and height 8?",
+    "answer": "192",
+    "hints": [
+      "SA = 2(lw + lh + wh)."
+    ],
+    "solution": "SA = 2(8×2 + 8×8 + 2×8) = 2(16 + 64 + 16) = 192 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "surface-area-prisms-gen-h5",
+    "topicId": "surface-area-prisms",
+    "difficulty": "hard",
+    "question": "What is the surface area of a rectangular prism with length 2, width 8, and height 9?",
+    "answer": "212",
+    "hints": [
+      "SA = 2(lw + lh + wh)."
+    ],
+    "solution": "SA = 2(2×8 + 2×9 + 8×9) = 2(16 + 18 + 72) = 212 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "surface-area-prisms-gen-h6",
+    "topicId": "surface-area-prisms",
+    "difficulty": "hard",
+    "question": "What is the surface area of a rectangular prism with length 6, width 3, and height 5?",
+    "answer": "126",
+    "hints": [
+      "SA = 2(lw + lh + wh)."
+    ],
+    "solution": "SA = 2(6×3 + 6×5 + 3×5) = 2(18 + 30 + 15) = 126 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "surface-area-prisms-gen-h7",
+    "topicId": "surface-area-prisms",
+    "difficulty": "hard",
+    "question": "What is the surface area of a rectangular prism with length 10, width 8, and height 9?",
+    "answer": "484",
+    "hints": [
+      "SA = 2(lw + lh + wh)."
+    ],
+    "solution": "SA = 2(10×8 + 10×9 + 8×9) = 2(80 + 90 + 72) = 484 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "surface-area-prisms-gen-h8",
+    "topicId": "surface-area-prisms",
+    "difficulty": "hard",
+    "question": "What is the surface area of a rectangular prism with length 6, width 4, and height 5?",
+    "answer": "148",
+    "hints": [
+      "SA = 2(lw + lh + wh)."
+    ],
+    "solution": "SA = 2(6×4 + 6×5 + 4×5) = 2(24 + 30 + 20) = 148 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "surface-area-prisms-gen-h9",
+    "topicId": "surface-area-prisms",
+    "difficulty": "hard",
+    "question": "What is the surface area of a rectangular prism with length 4, width 10, and height 9?",
+    "answer": "332",
+    "hints": [
+      "SA = 2(lw + lh + wh)."
+    ],
+    "solution": "SA = 2(4×10 + 4×9 + 10×9) = 2(40 + 36 + 90) = 332 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "surface-area-prisms-gen-h10",
+    "topicId": "surface-area-prisms",
+    "difficulty": "hard",
+    "question": "What is the surface area of a rectangular prism with length 3, width 6, and height 9?",
+    "answer": "198",
+    "hints": [
+      "SA = 2(lw + lh + wh)."
+    ],
+    "solution": "SA = 2(3×6 + 3×9 + 6×9) = 2(18 + 27 + 54) = 198 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "surface-area-prisms-gen-h11",
+    "topicId": "surface-area-prisms",
+    "difficulty": "hard",
+    "question": "What is the surface area of a rectangular prism with length 8, width 8, and height 8?",
+    "answer": "384",
+    "hints": [
+      "SA = 2(lw + lh + wh)."
+    ],
+    "solution": "SA = 2(8×8 + 8×8 + 8×8) = 2(64 + 64 + 64) = 384 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "surface-area-prisms-gen-h12",
+    "topicId": "surface-area-prisms",
+    "difficulty": "hard",
+    "question": "What is the surface area of a rectangular prism with length 7, width 2, and height 8?",
+    "answer": "172",
+    "hints": [
+      "SA = 2(lw + lh + wh)."
+    ],
+    "solution": "SA = 2(7×2 + 7×8 + 2×8) = 2(14 + 56 + 16) = 172 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "surface-area-prisms-gen-h13",
+    "topicId": "surface-area-prisms",
+    "difficulty": "hard",
+    "question": "What is the surface area of a rectangular prism with length 4, width 3, and height 8?",
+    "answer": "136",
+    "hints": [
+      "SA = 2(lw + lh + wh)."
+    ],
+    "solution": "SA = 2(4×3 + 4×8 + 3×8) = 2(12 + 32 + 24) = 136 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "surface-area-prisms-gen-h14",
+    "topicId": "surface-area-prisms",
+    "difficulty": "hard",
+    "question": "What is the surface area of a rectangular prism with length 5, width 10, and height 7?",
+    "answer": "310",
+    "hints": [
+      "SA = 2(lw + lh + wh)."
+    ],
+    "solution": "SA = 2(5×10 + 5×7 + 10×7) = 2(50 + 35 + 70) = 310 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  }
+]

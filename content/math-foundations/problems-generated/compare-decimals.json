@@ -1,0 +1,652 @@
+[
+  {
+    "id": "compare-decimals-gen-e0",
+    "topicId": "compare-decimals",
+    "difficulty": "easy",
+    "question": "Compare: 0.9 ___ 0.2",
+    "answer": ">",
+    "hints": [
+      "Compare digit by digit from left to right."
+    ],
+    "solution": "0.9 > 0.2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-decimals-gen-e1",
+    "topicId": "compare-decimals",
+    "difficulty": "easy",
+    "question": "Compare: 0.6 ___ 0.8",
+    "answer": "<",
+    "hints": [
+      "Compare digit by digit from left to right."
+    ],
+    "solution": "0.6 < 0.8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-decimals-gen-e2",
+    "topicId": "compare-decimals",
+    "difficulty": "easy",
+    "question": "Compare: 0.6 ___ 0.1",
+    "answer": ">",
+    "hints": [
+      "Compare digit by digit from left to right."
+    ],
+    "solution": "0.6 > 0.1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-decimals-gen-e3",
+    "topicId": "compare-decimals",
+    "difficulty": "easy",
+    "question": "Compare: 0.6 ___ 0.2",
+    "answer": ">",
+    "hints": [
+      "Compare digit by digit from left to right."
+    ],
+    "solution": "0.6 > 0.2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-decimals-gen-e4",
+    "topicId": "compare-decimals",
+    "difficulty": "easy",
+    "question": "Compare: 0.1 ___ 0.4",
+    "answer": "<",
+    "hints": [
+      "Compare digit by digit from left to right."
+    ],
+    "solution": "0.1 < 0.4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-decimals-gen-e5",
+    "topicId": "compare-decimals",
+    "difficulty": "easy",
+    "question": "Compare: 0.4 ___ 0.3",
+    "answer": ">",
+    "hints": [
+      "Compare digit by digit from left to right."
+    ],
+    "solution": "0.4 > 0.3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-decimals-gen-e6",
+    "topicId": "compare-decimals",
+    "difficulty": "easy",
+    "question": "Compare: 0.4 ___ 0.8",
+    "answer": "<",
+    "hints": [
+      "Compare digit by digit from left to right."
+    ],
+    "solution": "0.4 < 0.8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-decimals-gen-e7",
+    "topicId": "compare-decimals",
+    "difficulty": "easy",
+    "question": "Compare: 0.4 ___ 0.6",
+    "answer": "<",
+    "hints": [
+      "Compare digit by digit from left to right."
+    ],
+    "solution": "0.4 < 0.6.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-decimals-gen-e8",
+    "topicId": "compare-decimals",
+    "difficulty": "easy",
+    "question": "Compare: 0.1 ___ 0.8",
+    "answer": "<",
+    "hints": [
+      "Compare digit by digit from left to right."
+    ],
+    "solution": "0.1 < 0.8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-decimals-gen-e9",
+    "topicId": "compare-decimals",
+    "difficulty": "easy",
+    "question": "Compare: 0.6 ___ 0.4",
+    "answer": ">",
+    "hints": [
+      "Compare digit by digit from left to right."
+    ],
+    "solution": "0.6 > 0.4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-decimals-gen-e10",
+    "topicId": "compare-decimals",
+    "difficulty": "easy",
+    "question": "Compare: 0.6 ___ 0.4",
+    "answer": ">",
+    "hints": [
+      "Compare digit by digit from left to right."
+    ],
+    "solution": "0.6 > 0.4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-decimals-gen-e11",
+    "topicId": "compare-decimals",
+    "difficulty": "easy",
+    "question": "Compare: 0.2 ___ 0.8",
+    "answer": "<",
+    "hints": [
+      "Compare digit by digit from left to right."
+    ],
+    "solution": "0.2 < 0.8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-decimals-gen-e12",
+    "topicId": "compare-decimals",
+    "difficulty": "easy",
+    "question": "Compare: 0.6 ___ 0.3",
+    "answer": ">",
+    "hints": [
+      "Compare digit by digit from left to right."
+    ],
+    "solution": "0.6 > 0.3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-decimals-gen-e13",
+    "topicId": "compare-decimals",
+    "difficulty": "easy",
+    "question": "Compare: 0.8 ___ 0.4",
+    "answer": ">",
+    "hints": [
+      "Compare digit by digit from left to right."
+    ],
+    "solution": "0.8 > 0.4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-decimals-gen-e14",
+    "topicId": "compare-decimals",
+    "difficulty": "easy",
+    "question": "Compare: 0.6 ___ 0.7",
+    "answer": "<",
+    "hints": [
+      "Compare digit by digit from left to right."
+    ],
+    "solution": "0.6 < 0.7.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-decimals-gen-m0",
+    "topicId": "compare-decimals",
+    "difficulty": "medium",
+    "question": "Compare: 0.20 ___ 0.16",
+    "answer": ">",
+    "hints": [
+      "Compare digit by digit from left to right."
+    ],
+    "solution": "0.20 > 0.16.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-decimals-gen-m1",
+    "topicId": "compare-decimals",
+    "difficulty": "medium",
+    "question": "Compare: 0.20 ___ 0.50",
+    "answer": "<",
+    "hints": [
+      "Compare digit by digit from left to right."
+    ],
+    "solution": "0.20 < 0.50.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-decimals-gen-m2",
+    "topicId": "compare-decimals",
+    "difficulty": "medium",
+    "question": "Compare: 0.52 ___ 0.85",
+    "answer": "<",
+    "hints": [
+      "Compare digit by digit from left to right."
+    ],
+    "solution": "0.52 < 0.85.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-decimals-gen-m3",
+    "topicId": "compare-decimals",
+    "difficulty": "medium",
+    "question": "Compare: 0.39 ___ 0.18",
+    "answer": ">",
+    "hints": [
+      "Compare digit by digit from left to right."
+    ],
+    "solution": "0.39 > 0.18.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-decimals-gen-m4",
+    "topicId": "compare-decimals",
+    "difficulty": "medium",
+    "question": "Compare: 0.69 ___ 0.26",
+    "answer": ">",
+    "hints": [
+      "Compare digit by digit from left to right."
+    ],
+    "solution": "0.69 > 0.26.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-decimals-gen-m5",
+    "topicId": "compare-decimals",
+    "difficulty": "medium",
+    "question": "Compare: 0.68 ___ 0.99",
+    "answer": "<",
+    "hints": [
+      "Compare digit by digit from left to right."
+    ],
+    "solution": "0.68 < 0.99.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-decimals-gen-m6",
+    "topicId": "compare-decimals",
+    "difficulty": "medium",
+    "question": "Compare: 0.60 ___ 0.52",
+    "answer": ">",
+    "hints": [
+      "Compare digit by digit from left to right."
+    ],
+    "solution": "0.60 > 0.52.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-decimals-gen-m7",
+    "topicId": "compare-decimals",
+    "difficulty": "medium",
+    "question": "Compare: 0.37 ___ 0.12",
+    "answer": ">",
+    "hints": [
+      "Compare digit by digit from left to right."
+    ],
+    "solution": "0.37 > 0.12.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-decimals-gen-m8",
+    "topicId": "compare-decimals",
+    "difficulty": "medium",
+    "question": "Compare: 0.23 ___ 0.87",
+    "answer": "<",
+    "hints": [
+      "Compare digit by digit from left to right."
+    ],
+    "solution": "0.23 < 0.87.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-decimals-gen-m9",
+    "topicId": "compare-decimals",
+    "difficulty": "medium",
+    "question": "Compare: 0.85 ___ 0.77",
+    "answer": ">",
+    "hints": [
+      "Compare digit by digit from left to right."
+    ],
+    "solution": "0.85 > 0.77.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-decimals-gen-m10",
+    "topicId": "compare-decimals",
+    "difficulty": "medium",
+    "question": "Compare: 0.47 ___ 0.89",
+    "answer": "<",
+    "hints": [
+      "Compare digit by digit from left to right."
+    ],
+    "solution": "0.47 < 0.89.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-decimals-gen-m11",
+    "topicId": "compare-decimals",
+    "difficulty": "medium",
+    "question": "Compare: 0.39 ___ 0.55",
+    "answer": "<",
+    "hints": [
+      "Compare digit by digit from left to right."
+    ],
+    "solution": "0.39 < 0.55.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-decimals-gen-m12",
+    "topicId": "compare-decimals",
+    "difficulty": "medium",
+    "question": "Compare: 0.26 ___ 0.20",
+    "answer": ">",
+    "hints": [
+      "Compare digit by digit from left to right."
+    ],
+    "solution": "0.26 > 0.20.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-decimals-gen-m13",
+    "topicId": "compare-decimals",
+    "difficulty": "medium",
+    "question": "Compare: 0.25 ___ 0.80",
+    "answer": "<",
+    "hints": [
+      "Compare digit by digit from left to right."
+    ],
+    "solution": "0.25 < 0.80.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-decimals-gen-m14",
+    "topicId": "compare-decimals",
+    "difficulty": "medium",
+    "question": "Compare: 0.97 ___ 0.14",
+    "answer": ">",
+    "hints": [
+      "Compare digit by digit from left to right."
+    ],
+    "solution": "0.97 > 0.14.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-decimals-gen-m15",
+    "topicId": "compare-decimals",
+    "difficulty": "medium",
+    "question": "Compare: 0.66 ___ 0.90",
+    "answer": "<",
+    "hints": [
+      "Compare digit by digit from left to right."
+    ],
+    "solution": "0.66 < 0.90.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-decimals-gen-m16",
+    "topicId": "compare-decimals",
+    "difficulty": "medium",
+    "question": "Compare: 0.40 ___ 0.56",
+    "answer": "<",
+    "hints": [
+      "Compare digit by digit from left to right."
+    ],
+    "solution": "0.40 < 0.56.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-decimals-gen-m17",
+    "topicId": "compare-decimals",
+    "difficulty": "medium",
+    "question": "Compare: 0.89 ___ 0.39",
+    "answer": ">",
+    "hints": [
+      "Compare digit by digit from left to right."
+    ],
+    "solution": "0.89 > 0.39.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-decimals-gen-m18",
+    "topicId": "compare-decimals",
+    "difficulty": "medium",
+    "question": "Compare: 0.62 ___ 0.31",
+    "answer": ">",
+    "hints": [
+      "Compare digit by digit from left to right."
+    ],
+    "solution": "0.62 > 0.31.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-decimals-gen-m19",
+    "topicId": "compare-decimals",
+    "difficulty": "medium",
+    "question": "Compare: 0.10 ___ 0.50",
+    "answer": "<",
+    "hints": [
+      "Compare digit by digit from left to right."
+    ],
+    "solution": "0.10 < 0.50.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-decimals-gen-h0",
+    "topicId": "compare-decimals",
+    "difficulty": "hard",
+    "question": "Compare: 0.614 ___ 0.964",
+    "answer": "<",
+    "hints": [
+      "Compare digit by digit from left to right."
+    ],
+    "solution": "0.614 < 0.964.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-decimals-gen-h1",
+    "topicId": "compare-decimals",
+    "difficulty": "hard",
+    "question": "Compare: 0.207 ___ 0.700",
+    "answer": "<",
+    "hints": [
+      "Compare digit by digit from left to right."
+    ],
+    "solution": "0.207 < 0.700.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-decimals-gen-h2",
+    "topicId": "compare-decimals",
+    "difficulty": "hard",
+    "question": "Compare: 0.644 ___ 0.675",
+    "answer": "<",
+    "hints": [
+      "Compare digit by digit from left to right."
+    ],
+    "solution": "0.644 < 0.675.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-decimals-gen-h3",
+    "topicId": "compare-decimals",
+    "difficulty": "hard",
+    "question": "Compare: 0.809 ___ 0.877",
+    "answer": "<",
+    "hints": [
+      "Compare digit by digit from left to right."
+    ],
+    "solution": "0.809 < 0.877.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-decimals-gen-h4",
+    "topicId": "compare-decimals",
+    "difficulty": "hard",
+    "question": "Compare: 0.767 ___ 0.270",
+    "answer": ">",
+    "hints": [
+      "Compare digit by digit from left to right."
+    ],
+    "solution": "0.767 > 0.270.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-decimals-gen-h5",
+    "topicId": "compare-decimals",
+    "difficulty": "hard",
+    "question": "Compare: 0.921 ___ 0.770",
+    "answer": ">",
+    "hints": [
+      "Compare digit by digit from left to right."
+    ],
+    "solution": "0.921 > 0.770.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-decimals-gen-h6",
+    "topicId": "compare-decimals",
+    "difficulty": "hard",
+    "question": "Compare: 0.682 ___ 0.972",
+    "answer": "<",
+    "hints": [
+      "Compare digit by digit from left to right."
+    ],
+    "solution": "0.682 < 0.972.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-decimals-gen-h7",
+    "topicId": "compare-decimals",
+    "difficulty": "hard",
+    "question": "Compare: 0.384 ___ 0.298",
+    "answer": ">",
+    "hints": [
+      "Compare digit by digit from left to right."
+    ],
+    "solution": "0.384 > 0.298.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-decimals-gen-h8",
+    "topicId": "compare-decimals",
+    "difficulty": "hard",
+    "question": "Compare: 0.409 ___ 0.165",
+    "answer": ">",
+    "hints": [
+      "Compare digit by digit from left to right."
+    ],
+    "solution": "0.409 > 0.165.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-decimals-gen-h9",
+    "topicId": "compare-decimals",
+    "difficulty": "hard",
+    "question": "Compare: 0.532 ___ 0.674",
+    "answer": "<",
+    "hints": [
+      "Compare digit by digit from left to right."
+    ],
+    "solution": "0.532 < 0.674.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-decimals-gen-h10",
+    "topicId": "compare-decimals",
+    "difficulty": "hard",
+    "question": "Compare: 0.534 ___ 0.909",
+    "answer": "<",
+    "hints": [
+      "Compare digit by digit from left to right."
+    ],
+    "solution": "0.534 < 0.909.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-decimals-gen-h11",
+    "topicId": "compare-decimals",
+    "difficulty": "hard",
+    "question": "Compare: 0.511 ___ 0.485",
+    "answer": ">",
+    "hints": [
+      "Compare digit by digit from left to right."
+    ],
+    "solution": "0.511 > 0.485.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-decimals-gen-h12",
+    "topicId": "compare-decimals",
+    "difficulty": "hard",
+    "question": "Compare: 0.765 ___ 0.314",
+    "answer": ">",
+    "hints": [
+      "Compare digit by digit from left to right."
+    ],
+    "solution": "0.765 > 0.314.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-decimals-gen-h13",
+    "topicId": "compare-decimals",
+    "difficulty": "hard",
+    "question": "Compare: 0.651 ___ 0.445",
+    "answer": ">",
+    "hints": [
+      "Compare digit by digit from left to right."
+    ],
+    "solution": "0.651 > 0.445.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "compare-decimals-gen-h14",
+    "topicId": "compare-decimals",
+    "difficulty": "hard",
+    "question": "Compare: 0.276 ___ 0.738",
+    "answer": "<",
+    "hints": [
+      "Compare digit by digit from left to right."
+    ],
+    "solution": "0.276 < 0.738.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  }
+]

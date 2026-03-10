@@ -1,0 +1,212 @@
+[
+  {
+    "id": "integers-intro-sup-e0",
+    "topicId": "integers-intro",
+    "difficulty": "easy",
+    "question": "A thermometer reads 5 degrees above zero. Is this temperature represented by a positive or negative integer?",
+    "answer": "positive",
+    "hints": [
+      "Above zero means the temperature is greater than 0.",
+      "Numbers greater than 0 are positive."
+    ],
+    "solution": "5 degrees above zero is +5, which is a positive integer. Temperatures above zero are always represented by positive integers.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "integers-intro-sup-e1",
+    "topicId": "integers-intro",
+    "difficulty": "easy",
+    "question": "Maya owes her friend $7. What integer represents how much money Maya has relative to owing nothing?",
+    "answer": "-7",
+    "hints": [
+      "Owing money means you have less than $0.",
+      "Debt is represented by negative numbers."
+    ],
+    "solution": "Owing $7 means Maya is $7 below having $0. This is represented by the integer -7.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "integers-intro-sup-e2",
+    "topicId": "integers-intro",
+    "difficulty": "easy",
+    "question": "Is 0 a positive integer, a negative integer, or neither?",
+    "answer": "neither",
+    "hints": [
+      "Positive integers are greater than 0. Negative integers are less than 0.",
+      "Where does 0 fit?"
+    ],
+    "solution": "Zero is neither positive nor negative. It is the dividing point between positive and negative integers on the number line.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "integers-intro-sup-e3",
+    "topicId": "integers-intro",
+    "difficulty": "easy",
+    "question": "A diver is 12 meters below the surface of the ocean. What integer represents the diver's depth relative to the surface?",
+    "answer": "-12",
+    "hints": [
+      "The surface is 0 meters.",
+      "Below the surface is represented by negative numbers."
+    ],
+    "solution": "The surface is at 0 meters. Being 12 meters below the surface is represented as -12.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "integers-intro-sup-e4",
+    "topicId": "integers-intro",
+    "difficulty": "easy",
+    "question": "Which of these is NOT an integer: -4, 2.5, 0, 8? Type the number that is not an integer.",
+    "answer": "2.5",
+    "hints": [
+      "Integers are whole numbers (no fractions or decimals).",
+      "Check each number — does it have a decimal part?"
+    ],
+    "solution": "2.5 is not an integer because it has a decimal part. Integers are whole numbers like ..., -2, -1, 0, 1, 2, ... with no fractions or decimals.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "integers-intro-sup-m0",
+    "topicId": "integers-intro",
+    "difficulty": "medium",
+    "question": "At midnight the temperature was -3°F. By noon it was 14°F. Did the temperature increase or decrease, and by how many degrees?",
+    "answer": "increased by 17 degrees",
+    "hints": [
+      "Compare -3 to 14. Which is larger?",
+      "Find the distance: from -3 to 0 is 3 degrees, from 0 to 14 is 14 degrees."
+    ],
+    "solution": "The temperature went from -3°F to 14°F. Since 14 > -3, it increased. The change is 14 - (-3) = 14 + 3 = 17 degrees.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "integers-intro-sup-m1",
+    "topicId": "integers-intro",
+    "difficulty": "medium",
+    "question": "A student says: 'Negative numbers are always smaller than positive numbers.' Is this statement true or false?",
+    "answer": "true",
+    "hints": [
+      "Think about the number line. Where are negative numbers compared to positive numbers?",
+      "Every negative number is to the left of every positive number on the number line."
+    ],
+    "solution": "True. On the number line, all negative numbers are to the left of 0, and all positive numbers are to the right of 0. Since left means smaller, every negative number is less than every positive number.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "integers-intro-sup-m2",
+    "topicId": "integers-intro",
+    "difficulty": "medium",
+    "question": "An elevator starts at floor 3, goes down 5 floors, then goes up 2 floors. What floor is it on now? Type just the integer.",
+    "answer": "0",
+    "hints": [
+      "Start at 3. Going down 5 floors: 3 - 5 = ?",
+      "Then go up 2 floors from that position."
+    ],
+    "solution": "Start at floor 3. Go down 5: 3 - 5 = -2 (basement level 2). Go up 2: -2 + 2 = 0 (ground floor).",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "integers-intro-sup-m3",
+    "topicId": "integers-intro",
+    "difficulty": "medium",
+    "question": "Carlos says '-8 is greater than -2 because 8 is greater than 2.' What is wrong with Carlos's reasoning?",
+    "answer": "With negative numbers, the number closer to zero is greater. -2 is closer to zero than -8, so -2 > -8.",
+    "hints": [
+      "Think about the number line. Where is -8 compared to -2?",
+      "For negative numbers, the one with the smaller absolute value is actually the greater number."
+    ],
+    "solution": "Carlos is confusing the magnitude (absolute value) with the value. On the number line, -2 is to the right of -8, so -2 > -8. With negative numbers, being closer to zero means being greater.",
+    "cognitiveDemand": "error-analysis",
+    "source": "generated"
+  },
+  {
+    "id": "integers-intro-sup-m4",
+    "topicId": "integers-intro",
+    "difficulty": "medium",
+    "question": "Death Valley is 86 meters below sea level and Mount Whitney is 4,421 meters above sea level. What is the difference in elevation between them? Type just the number of meters.",
+    "answer": "4507",
+    "hints": [
+      "Below sea level is negative: Death Valley is at -86 m. Above sea level is positive: Mt. Whitney is at 4421 m.",
+      "Difference = 4421 - (-86)."
+    ],
+    "solution": "Death Valley: -86 m. Mount Whitney: 4421 m. Difference: 4421 - (-86) = 4421 + 86 = 4507 meters.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "integers-intro-sup-h0",
+    "topicId": "integers-intro",
+    "difficulty": "hard",
+    "question": "A student claims: 'If I add two negative integers, I always get a negative integer.' Is this claim correct? Explain why or why not in one sentence.",
+    "answer": "Yes, adding two negative integers always gives a negative integer.",
+    "hints": [
+      "Try some examples: -3 + (-5) = ? What about -1 + (-1)?",
+      "When you add two negative numbers, you move further left on the number line."
+    ],
+    "solution": "The claim is correct. When you add two negative integers, both pull the sum further below zero (further left on the number line), so the result is always negative. For example, -a + (-b) = -(a + b) where a, b > 0.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "integers-intro-sup-h1",
+    "topicId": "integers-intro",
+    "difficulty": "hard",
+    "question": "The temperature at 6 AM was -12°C. It rose 4 degrees each hour until 11 AM. What was the temperature at 11 AM?",
+    "answer": "8",
+    "hints": [
+      "From 6 AM to 11 AM is 5 hours.",
+      "Total rise = 5 hours × 4 degrees/hour = 20 degrees. Add that to -12."
+    ],
+    "solution": "From 6 AM to 11 AM is 5 hours. Temperature rise = 5 × 4 = 20 degrees. Final temperature = -12 + 20 = 8°C.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "integers-intro-sup-h2",
+    "topicId": "integers-intro",
+    "difficulty": "hard",
+    "question": "Aisha says: 'Subtracting a negative number is the same as adding a positive number.' Is Aisha correct? Give an example with specific numbers to support your answer.",
+    "answer": "Yes. For example, 5 - (-3) = 5 + 3 = 8.",
+    "hints": [
+      "Try computing 10 - (-4) step by step.",
+      "Subtracting a negative means removing a debt — which increases your total."
+    ],
+    "solution": "Aisha is correct. Subtracting a negative number is equivalent to adding its positive counterpart. For example, 5 - (-3) = 5 + 3 = 8. This works because the two negatives cancel: minus a negative equals plus a positive.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "integers-intro-sup-h3",
+    "topicId": "integers-intro",
+    "difficulty": "hard",
+    "question": "Three friends check their bank accounts. Ali has -$15, Bea has $8, and Cal has -$23. They decide to combine all their money. What is the total? Type just the integer.",
+    "answer": "-30",
+    "hints": [
+      "Add all three amounts: (-15) + 8 + (-23).",
+      "Combine the negatives first: -15 + (-23) = -38. Then add the positive."
+    ],
+    "solution": "Total = (-15) + 8 + (-23) = (-15) + (-23) + 8 = -38 + 8 = -30. Together they owe $30.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "integers-intro-sup-h4",
+    "topicId": "integers-intro",
+    "difficulty": "hard",
+    "question": "A student wrote: '-5 + 5 = 0, so -5 and 5 are called _______ of each other.' Fill in the blank with the correct math term.",
+    "answer": "opposites",
+    "hints": [
+      "When two numbers add up to zero, they have a special relationship.",
+      "Each number is the same distance from zero but on different sides of the number line."
+    ],
+    "solution": "The numbers -5 and 5 are called opposites (also called additive inverses). Two numbers are opposites when their sum is 0. Every integer has an opposite: the number that is the same distance from 0 on the other side of the number line.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  }
+]

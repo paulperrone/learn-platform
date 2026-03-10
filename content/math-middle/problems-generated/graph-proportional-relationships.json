@@ -1,0 +1,652 @@
+[
+  {
+    "id": "graph-proportional-relationships-gen-e0",
+    "topicId": "graph-proportional-relationships",
+    "difficulty": "easy",
+    "question": "A proportional relationship passes through (0, 0) and (3, 18). What is the constant of proportionality?",
+    "answer": "6",
+    "hints": [
+      "k = y/x."
+    ],
+    "solution": "k = 18/3 = 6.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-proportional-relationships-gen-e1",
+    "topicId": "graph-proportional-relationships",
+    "difficulty": "easy",
+    "question": "A proportional relationship passes through (0, 0) and (5, 30). What is the constant of proportionality?",
+    "answer": "6",
+    "hints": [
+      "k = y/x."
+    ],
+    "solution": "k = 30/5 = 6.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-proportional-relationships-gen-e2",
+    "topicId": "graph-proportional-relationships",
+    "difficulty": "easy",
+    "question": "A proportional relationship passes through (0, 0) and (2, 4). What is the constant of proportionality?",
+    "answer": "2",
+    "hints": [
+      "k = y/x."
+    ],
+    "solution": "k = 4/2 = 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-proportional-relationships-gen-e3",
+    "topicId": "graph-proportional-relationships",
+    "difficulty": "easy",
+    "question": "A proportional relationship passes through (0, 0) and (6, 42). What is the constant of proportionality?",
+    "answer": "7",
+    "hints": [
+      "k = y/x."
+    ],
+    "solution": "k = 42/6 = 7.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-proportional-relationships-gen-e4",
+    "topicId": "graph-proportional-relationships",
+    "difficulty": "easy",
+    "question": "A proportional relationship passes through (0, 0) and (6, 36). What is the constant of proportionality?",
+    "answer": "6",
+    "hints": [
+      "k = y/x."
+    ],
+    "solution": "k = 36/6 = 6.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-proportional-relationships-gen-e5",
+    "topicId": "graph-proportional-relationships",
+    "difficulty": "easy",
+    "question": "A proportional relationship passes through (0, 0) and (10, 60). What is the constant of proportionality?",
+    "answer": "6",
+    "hints": [
+      "k = y/x."
+    ],
+    "solution": "k = 60/10 = 6.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-proportional-relationships-gen-e6",
+    "topicId": "graph-proportional-relationships",
+    "difficulty": "easy",
+    "question": "A proportional relationship passes through (0, 0) and (8, 24). What is the constant of proportionality?",
+    "answer": "3",
+    "hints": [
+      "k = y/x."
+    ],
+    "solution": "k = 24/8 = 3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-proportional-relationships-gen-e7",
+    "topicId": "graph-proportional-relationships",
+    "difficulty": "easy",
+    "question": "A proportional relationship passes through (0, 0) and (6, 12). What is the constant of proportionality?",
+    "answer": "2",
+    "hints": [
+      "k = y/x."
+    ],
+    "solution": "k = 12/6 = 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-proportional-relationships-gen-e8",
+    "topicId": "graph-proportional-relationships",
+    "difficulty": "easy",
+    "question": "A proportional relationship passes through (0, 0) and (10, 60). What is the constant of proportionality?",
+    "answer": "6",
+    "hints": [
+      "k = y/x."
+    ],
+    "solution": "k = 60/10 = 6.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-proportional-relationships-gen-e9",
+    "topicId": "graph-proportional-relationships",
+    "difficulty": "easy",
+    "question": "A proportional relationship passes through (0, 0) and (6, 36). What is the constant of proportionality?",
+    "answer": "6",
+    "hints": [
+      "k = y/x."
+    ],
+    "solution": "k = 36/6 = 6.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-proportional-relationships-gen-e10",
+    "topicId": "graph-proportional-relationships",
+    "difficulty": "easy",
+    "question": "A proportional relationship passes through (0, 0) and (1, 5). What is the constant of proportionality?",
+    "answer": "5",
+    "hints": [
+      "k = y/x."
+    ],
+    "solution": "k = 5/1 = 5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-proportional-relationships-gen-e11",
+    "topicId": "graph-proportional-relationships",
+    "difficulty": "easy",
+    "question": "A proportional relationship passes through (0, 0) and (5, 40). What is the constant of proportionality?",
+    "answer": "8",
+    "hints": [
+      "k = y/x."
+    ],
+    "solution": "k = 40/5 = 8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-proportional-relationships-gen-e12",
+    "topicId": "graph-proportional-relationships",
+    "difficulty": "easy",
+    "question": "A proportional relationship passes through (0, 0) and (5, 20). What is the constant of proportionality?",
+    "answer": "4",
+    "hints": [
+      "k = y/x."
+    ],
+    "solution": "k = 20/5 = 4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-proportional-relationships-gen-e13",
+    "topicId": "graph-proportional-relationships",
+    "difficulty": "easy",
+    "question": "A proportional relationship passes through (0, 0) and (4, 24). What is the constant of proportionality?",
+    "answer": "6",
+    "hints": [
+      "k = y/x."
+    ],
+    "solution": "k = 24/4 = 6.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-proportional-relationships-gen-e14",
+    "topicId": "graph-proportional-relationships",
+    "difficulty": "easy",
+    "question": "A proportional relationship passes through (0, 0) and (10, 50). What is the constant of proportionality?",
+    "answer": "5",
+    "hints": [
+      "k = y/x."
+    ],
+    "solution": "k = 50/10 = 5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-proportional-relationships-gen-m0",
+    "topicId": "graph-proportional-relationships",
+    "difficulty": "medium",
+    "question": "A proportional relationship passes through (0, 0) and (8, 24). What is the constant of proportionality?",
+    "answer": "3",
+    "hints": [
+      "k = y/x."
+    ],
+    "solution": "k = 24/8 = 3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-proportional-relationships-gen-m1",
+    "topicId": "graph-proportional-relationships",
+    "difficulty": "medium",
+    "question": "A proportional relationship passes through (0, 0) and (6, 30). What is the constant of proportionality?",
+    "answer": "5",
+    "hints": [
+      "k = y/x."
+    ],
+    "solution": "k = 30/6 = 5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-proportional-relationships-gen-m2",
+    "topicId": "graph-proportional-relationships",
+    "difficulty": "medium",
+    "question": "A proportional relationship passes through (0, 0) and (8, 24). What is the constant of proportionality?",
+    "answer": "3",
+    "hints": [
+      "k = y/x."
+    ],
+    "solution": "k = 24/8 = 3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-proportional-relationships-gen-m3",
+    "topicId": "graph-proportional-relationships",
+    "difficulty": "medium",
+    "question": "A proportional relationship passes through (0, 0) and (8, 32). What is the constant of proportionality?",
+    "answer": "4",
+    "hints": [
+      "k = y/x."
+    ],
+    "solution": "k = 32/8 = 4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-proportional-relationships-gen-m4",
+    "topicId": "graph-proportional-relationships",
+    "difficulty": "medium",
+    "question": "A proportional relationship passes through (0, 0) and (2, 14). What is the constant of proportionality?",
+    "answer": "7",
+    "hints": [
+      "k = y/x."
+    ],
+    "solution": "k = 14/2 = 7.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-proportional-relationships-gen-m5",
+    "topicId": "graph-proportional-relationships",
+    "difficulty": "medium",
+    "question": "A proportional relationship passes through (0, 0) and (4, 12). What is the constant of proportionality?",
+    "answer": "3",
+    "hints": [
+      "k = y/x."
+    ],
+    "solution": "k = 12/4 = 3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-proportional-relationships-gen-m6",
+    "topicId": "graph-proportional-relationships",
+    "difficulty": "medium",
+    "question": "A proportional relationship passes through (0, 0) and (3, 3). What is the constant of proportionality?",
+    "answer": "1",
+    "hints": [
+      "k = y/x."
+    ],
+    "solution": "k = 3/3 = 1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-proportional-relationships-gen-m7",
+    "topicId": "graph-proportional-relationships",
+    "difficulty": "medium",
+    "question": "A proportional relationship passes through (0, 0) and (8, 64). What is the constant of proportionality?",
+    "answer": "8",
+    "hints": [
+      "k = y/x."
+    ],
+    "solution": "k = 64/8 = 8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-proportional-relationships-gen-m8",
+    "topicId": "graph-proportional-relationships",
+    "difficulty": "medium",
+    "question": "A proportional relationship passes through (0, 0) and (7, 7). What is the constant of proportionality?",
+    "answer": "1",
+    "hints": [
+      "k = y/x."
+    ],
+    "solution": "k = 7/7 = 1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-proportional-relationships-gen-m9",
+    "topicId": "graph-proportional-relationships",
+    "difficulty": "medium",
+    "question": "A proportional relationship passes through (0, 0) and (4, 28). What is the constant of proportionality?",
+    "answer": "7",
+    "hints": [
+      "k = y/x."
+    ],
+    "solution": "k = 28/4 = 7.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-proportional-relationships-gen-m10",
+    "topicId": "graph-proportional-relationships",
+    "difficulty": "medium",
+    "question": "A proportional relationship passes through (0, 0) and (9, 54). What is the constant of proportionality?",
+    "answer": "6",
+    "hints": [
+      "k = y/x."
+    ],
+    "solution": "k = 54/9 = 6.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-proportional-relationships-gen-m11",
+    "topicId": "graph-proportional-relationships",
+    "difficulty": "medium",
+    "question": "A proportional relationship passes through (0, 0) and (4, 4). What is the constant of proportionality?",
+    "answer": "1",
+    "hints": [
+      "k = y/x."
+    ],
+    "solution": "k = 4/4 = 1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-proportional-relationships-gen-m12",
+    "topicId": "graph-proportional-relationships",
+    "difficulty": "medium",
+    "question": "A proportional relationship passes through (0, 0) and (7, 42). What is the constant of proportionality?",
+    "answer": "6",
+    "hints": [
+      "k = y/x."
+    ],
+    "solution": "k = 42/7 = 6.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-proportional-relationships-gen-m13",
+    "topicId": "graph-proportional-relationships",
+    "difficulty": "medium",
+    "question": "A proportional relationship passes through (0, 0) and (4, 12). What is the constant of proportionality?",
+    "answer": "3",
+    "hints": [
+      "k = y/x."
+    ],
+    "solution": "k = 12/4 = 3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-proportional-relationships-gen-m14",
+    "topicId": "graph-proportional-relationships",
+    "difficulty": "medium",
+    "question": "A proportional relationship passes through (0, 0) and (9, 36). What is the constant of proportionality?",
+    "answer": "4",
+    "hints": [
+      "k = y/x."
+    ],
+    "solution": "k = 36/9 = 4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-proportional-relationships-gen-m15",
+    "topicId": "graph-proportional-relationships",
+    "difficulty": "medium",
+    "question": "A proportional relationship passes through (0, 0) and (5, 5). What is the constant of proportionality?",
+    "answer": "1",
+    "hints": [
+      "k = y/x."
+    ],
+    "solution": "k = 5/5 = 1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-proportional-relationships-gen-m16",
+    "topicId": "graph-proportional-relationships",
+    "difficulty": "medium",
+    "question": "A proportional relationship passes through (0, 0) and (6, 42). What is the constant of proportionality?",
+    "answer": "7",
+    "hints": [
+      "k = y/x."
+    ],
+    "solution": "k = 42/6 = 7.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-proportional-relationships-gen-m17",
+    "topicId": "graph-proportional-relationships",
+    "difficulty": "medium",
+    "question": "A proportional relationship passes through (0, 0) and (2, 2). What is the constant of proportionality?",
+    "answer": "1",
+    "hints": [
+      "k = y/x."
+    ],
+    "solution": "k = 2/2 = 1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-proportional-relationships-gen-m18",
+    "topicId": "graph-proportional-relationships",
+    "difficulty": "medium",
+    "question": "A proportional relationship passes through (0, 0) and (9, 36). What is the constant of proportionality?",
+    "answer": "4",
+    "hints": [
+      "k = y/x."
+    ],
+    "solution": "k = 36/9 = 4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-proportional-relationships-gen-m19",
+    "topicId": "graph-proportional-relationships",
+    "difficulty": "medium",
+    "question": "A proportional relationship passes through (0, 0) and (9, 63). What is the constant of proportionality?",
+    "answer": "7",
+    "hints": [
+      "k = y/x."
+    ],
+    "solution": "k = 63/9 = 7.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-proportional-relationships-gen-h0",
+    "topicId": "graph-proportional-relationships",
+    "difficulty": "hard",
+    "question": "A proportional relationship passes through (0, 0) and (1, 4). What is the constant of proportionality?",
+    "answer": "4",
+    "hints": [
+      "k = y/x."
+    ],
+    "solution": "k = 4/1 = 4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-proportional-relationships-gen-h1",
+    "topicId": "graph-proportional-relationships",
+    "difficulty": "hard",
+    "question": "A proportional relationship passes through (0, 0) and (2, 14). What is the constant of proportionality?",
+    "answer": "7",
+    "hints": [
+      "k = y/x."
+    ],
+    "solution": "k = 14/2 = 7.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-proportional-relationships-gen-h2",
+    "topicId": "graph-proportional-relationships",
+    "difficulty": "hard",
+    "question": "A proportional relationship passes through (0, 0) and (4, 24). What is the constant of proportionality?",
+    "answer": "6",
+    "hints": [
+      "k = y/x."
+    ],
+    "solution": "k = 24/4 = 6.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-proportional-relationships-gen-h3",
+    "topicId": "graph-proportional-relationships",
+    "difficulty": "hard",
+    "question": "A proportional relationship passes through (0, 0) and (10, 30). What is the constant of proportionality?",
+    "answer": "3",
+    "hints": [
+      "k = y/x."
+    ],
+    "solution": "k = 30/10 = 3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-proportional-relationships-gen-h4",
+    "topicId": "graph-proportional-relationships",
+    "difficulty": "hard",
+    "question": "A proportional relationship passes through (0, 0) and (9, 36). What is the constant of proportionality?",
+    "answer": "4",
+    "hints": [
+      "k = y/x."
+    ],
+    "solution": "k = 36/9 = 4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-proportional-relationships-gen-h5",
+    "topicId": "graph-proportional-relationships",
+    "difficulty": "hard",
+    "question": "A proportional relationship passes through (0, 0) and (4, 20). What is the constant of proportionality?",
+    "answer": "5",
+    "hints": [
+      "k = y/x."
+    ],
+    "solution": "k = 20/4 = 5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-proportional-relationships-gen-h6",
+    "topicId": "graph-proportional-relationships",
+    "difficulty": "hard",
+    "question": "A proportional relationship passes through (0, 0) and (7, 21). What is the constant of proportionality?",
+    "answer": "3",
+    "hints": [
+      "k = y/x."
+    ],
+    "solution": "k = 21/7 = 3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-proportional-relationships-gen-h7",
+    "topicId": "graph-proportional-relationships",
+    "difficulty": "hard",
+    "question": "A proportional relationship passes through (0, 0) and (3, 12). What is the constant of proportionality?",
+    "answer": "4",
+    "hints": [
+      "k = y/x."
+    ],
+    "solution": "k = 12/3 = 4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-proportional-relationships-gen-h8",
+    "topicId": "graph-proportional-relationships",
+    "difficulty": "hard",
+    "question": "A proportional relationship passes through (0, 0) and (2, 8). What is the constant of proportionality?",
+    "answer": "4",
+    "hints": [
+      "k = y/x."
+    ],
+    "solution": "k = 8/2 = 4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-proportional-relationships-gen-h9",
+    "topicId": "graph-proportional-relationships",
+    "difficulty": "hard",
+    "question": "A proportional relationship passes through (0, 0) and (3, 9). What is the constant of proportionality?",
+    "answer": "3",
+    "hints": [
+      "k = y/x."
+    ],
+    "solution": "k = 9/3 = 3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-proportional-relationships-gen-h10",
+    "topicId": "graph-proportional-relationships",
+    "difficulty": "hard",
+    "question": "A proportional relationship passes through (0, 0) and (4, 12). What is the constant of proportionality?",
+    "answer": "3",
+    "hints": [
+      "k = y/x."
+    ],
+    "solution": "k = 12/4 = 3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-proportional-relationships-gen-h11",
+    "topicId": "graph-proportional-relationships",
+    "difficulty": "hard",
+    "question": "A proportional relationship passes through (0, 0) and (5, 15). What is the constant of proportionality?",
+    "answer": "3",
+    "hints": [
+      "k = y/x."
+    ],
+    "solution": "k = 15/5 = 3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-proportional-relationships-gen-h12",
+    "topicId": "graph-proportional-relationships",
+    "difficulty": "hard",
+    "question": "A proportional relationship passes through (0, 0) and (5, 35). What is the constant of proportionality?",
+    "answer": "7",
+    "hints": [
+      "k = y/x."
+    ],
+    "solution": "k = 35/5 = 7.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-proportional-relationships-gen-h13",
+    "topicId": "graph-proportional-relationships",
+    "difficulty": "hard",
+    "question": "A proportional relationship passes through (0, 0) and (9, 45). What is the constant of proportionality?",
+    "answer": "5",
+    "hints": [
+      "k = y/x."
+    ],
+    "solution": "k = 45/9 = 5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "graph-proportional-relationships-gen-h14",
+    "topicId": "graph-proportional-relationships",
+    "difficulty": "hard",
+    "question": "A proportional relationship passes through (0, 0) and (9, 36). What is the constant of proportionality?",
+    "answer": "4",
+    "hints": [
+      "k = y/x."
+    ],
+    "solution": "k = 36/9 = 4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  }
+]

@@ -1,0 +1,652 @@
+[
+  {
+    "id": "divide-multi-digit-6-gen-e0",
+    "topicId": "divide-multi-digit-6",
+    "difficulty": "easy",
+    "question": "What is 308 ÷ 14?",
+    "answer": "22",
+    "hints": [
+      "Use long division."
+    ],
+    "solution": "308 ÷ 14 = 22.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-6-gen-e1",
+    "topicId": "divide-multi-digit-6",
+    "difficulty": "easy",
+    "question": "What is 195 ÷ 13?",
+    "answer": "15",
+    "hints": [
+      "Use long division."
+    ],
+    "solution": "195 ÷ 13 = 15.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-6-gen-e2",
+    "topicId": "divide-multi-digit-6",
+    "difficulty": "easy",
+    "question": "What is 430 ÷ 10?",
+    "answer": "43",
+    "hints": [
+      "Use long division."
+    ],
+    "solution": "430 ÷ 10 = 43.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-6-gen-e3",
+    "topicId": "divide-multi-digit-6",
+    "difficulty": "easy",
+    "question": "What is 378 ÷ 14?",
+    "answer": "27",
+    "hints": [
+      "Use long division."
+    ],
+    "solution": "378 ÷ 14 = 27.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-6-gen-e4",
+    "topicId": "divide-multi-digit-6",
+    "difficulty": "easy",
+    "question": "What is 425 ÷ 17?",
+    "answer": "25",
+    "hints": [
+      "Use long division."
+    ],
+    "solution": "425 ÷ 17 = 25.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-6-gen-e5",
+    "topicId": "divide-multi-digit-6",
+    "difficulty": "easy",
+    "question": "What is 400 ÷ 10?",
+    "answer": "40",
+    "hints": [
+      "Use long division."
+    ],
+    "solution": "400 ÷ 10 = 40.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-6-gen-e6",
+    "topicId": "divide-multi-digit-6",
+    "difficulty": "easy",
+    "question": "What is 484 ÷ 11?",
+    "answer": "44",
+    "hints": [
+      "Use long division."
+    ],
+    "solution": "484 ÷ 11 = 44.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-6-gen-e7",
+    "topicId": "divide-multi-digit-6",
+    "difficulty": "easy",
+    "question": "What is 616 ÷ 14?",
+    "answer": "44",
+    "hints": [
+      "Use long division."
+    ],
+    "solution": "616 ÷ 14 = 44.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-6-gen-e8",
+    "topicId": "divide-multi-digit-6",
+    "difficulty": "easy",
+    "question": "What is 324 ÷ 18?",
+    "answer": "18",
+    "hints": [
+      "Use long division."
+    ],
+    "solution": "324 ÷ 18 = 18.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-6-gen-e9",
+    "topicId": "divide-multi-digit-6",
+    "difficulty": "easy",
+    "question": "What is 308 ÷ 14?",
+    "answer": "22",
+    "hints": [
+      "Use long division."
+    ],
+    "solution": "308 ÷ 14 = 22.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-6-gen-e10",
+    "topicId": "divide-multi-digit-6",
+    "difficulty": "easy",
+    "question": "What is 680 ÷ 17?",
+    "answer": "40",
+    "hints": [
+      "Use long division."
+    ],
+    "solution": "680 ÷ 17 = 40.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-6-gen-e11",
+    "topicId": "divide-multi-digit-6",
+    "difficulty": "easy",
+    "question": "What is 270 ÷ 15?",
+    "answer": "18",
+    "hints": [
+      "Use long division."
+    ],
+    "solution": "270 ÷ 15 = 18.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-6-gen-e12",
+    "topicId": "divide-multi-digit-6",
+    "difficulty": "easy",
+    "question": "What is 570 ÷ 15?",
+    "answer": "38",
+    "hints": [
+      "Use long division."
+    ],
+    "solution": "570 ÷ 15 = 38.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-6-gen-e13",
+    "topicId": "divide-multi-digit-6",
+    "difficulty": "easy",
+    "question": "What is 516 ÷ 12?",
+    "answer": "43",
+    "hints": [
+      "Use long division."
+    ],
+    "solution": "516 ÷ 12 = 43.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-6-gen-e14",
+    "topicId": "divide-multi-digit-6",
+    "difficulty": "easy",
+    "question": "What is 520 ÷ 13?",
+    "answer": "40",
+    "hints": [
+      "Use long division."
+    ],
+    "solution": "520 ÷ 13 = 40.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-6-gen-m0",
+    "topicId": "divide-multi-digit-6",
+    "difficulty": "medium",
+    "question": "What is 462 ÷ 22?",
+    "answer": "21",
+    "hints": [
+      "Use long division."
+    ],
+    "solution": "462 ÷ 22 = 21.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-6-gen-m1",
+    "topicId": "divide-multi-digit-6",
+    "difficulty": "medium",
+    "question": "What is 3915 ÷ 29?",
+    "answer": "135",
+    "hints": [
+      "Use long division."
+    ],
+    "solution": "3915 ÷ 29 = 135.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-6-gen-m2",
+    "topicId": "divide-multi-digit-6",
+    "difficulty": "medium",
+    "question": "What is 5548 ÷ 38?",
+    "answer": "146",
+    "hints": [
+      "Use long division."
+    ],
+    "solution": "5548 ÷ 38 = 146.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-6-gen-m3",
+    "topicId": "divide-multi-digit-6",
+    "difficulty": "medium",
+    "question": "What is 5560 ÷ 40?",
+    "answer": "139",
+    "hints": [
+      "Use long division."
+    ],
+    "solution": "5560 ÷ 40 = 139.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-6-gen-m4",
+    "topicId": "divide-multi-digit-6",
+    "difficulty": "medium",
+    "question": "What is 1989 ÷ 13?",
+    "answer": "153",
+    "hints": [
+      "Use long division."
+    ],
+    "solution": "1989 ÷ 13 = 153.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-6-gen-m5",
+    "topicId": "divide-multi-digit-6",
+    "difficulty": "medium",
+    "question": "What is 3840 ÷ 32?",
+    "answer": "120",
+    "hints": [
+      "Use long division."
+    ],
+    "solution": "3840 ÷ 32 = 120.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-6-gen-m6",
+    "topicId": "divide-multi-digit-6",
+    "difficulty": "medium",
+    "question": "What is 722 ÷ 19?",
+    "answer": "38",
+    "hints": [
+      "Use long division."
+    ],
+    "solution": "722 ÷ 19 = 38.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-6-gen-m7",
+    "topicId": "divide-multi-digit-6",
+    "difficulty": "medium",
+    "question": "What is 2520 ÷ 14?",
+    "answer": "180",
+    "hints": [
+      "Use long division."
+    ],
+    "solution": "2520 ÷ 14 = 180.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-6-gen-m8",
+    "topicId": "divide-multi-digit-6",
+    "difficulty": "medium",
+    "question": "What is 4575 ÷ 25?",
+    "answer": "183",
+    "hints": [
+      "Use long division."
+    ],
+    "solution": "4575 ÷ 25 = 183.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-6-gen-m9",
+    "topicId": "divide-multi-digit-6",
+    "difficulty": "medium",
+    "question": "What is 1160 ÷ 10?",
+    "answer": "116",
+    "hints": [
+      "Use long division."
+    ],
+    "solution": "1160 ÷ 10 = 116.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-6-gen-m10",
+    "topicId": "divide-multi-digit-6",
+    "difficulty": "medium",
+    "question": "What is 700 ÷ 10?",
+    "answer": "70",
+    "hints": [
+      "Use long division."
+    ],
+    "solution": "700 ÷ 10 = 70.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-6-gen-m11",
+    "topicId": "divide-multi-digit-6",
+    "difficulty": "medium",
+    "question": "What is 3300 ÷ 22?",
+    "answer": "150",
+    "hints": [
+      "Use long division."
+    ],
+    "solution": "3300 ÷ 22 = 150.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-6-gen-m12",
+    "topicId": "divide-multi-digit-6",
+    "difficulty": "medium",
+    "question": "What is 1770 ÷ 10?",
+    "answer": "177",
+    "hints": [
+      "Use long division."
+    ],
+    "solution": "1770 ÷ 10 = 177.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-6-gen-m13",
+    "topicId": "divide-multi-digit-6",
+    "difficulty": "medium",
+    "question": "What is 4935 ÷ 35?",
+    "answer": "141",
+    "hints": [
+      "Use long division."
+    ],
+    "solution": "4935 ÷ 35 = 141.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-6-gen-m14",
+    "topicId": "divide-multi-digit-6",
+    "difficulty": "medium",
+    "question": "What is 7097 ÷ 47?",
+    "answer": "151",
+    "hints": [
+      "Use long division."
+    ],
+    "solution": "7097 ÷ 47 = 151.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-6-gen-m15",
+    "topicId": "divide-multi-digit-6",
+    "difficulty": "medium",
+    "question": "What is 1199 ÷ 11?",
+    "answer": "109",
+    "hints": [
+      "Use long division."
+    ],
+    "solution": "1199 ÷ 11 = 109.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-6-gen-m16",
+    "topicId": "divide-multi-digit-6",
+    "difficulty": "medium",
+    "question": "What is 1584 ÷ 24?",
+    "answer": "66",
+    "hints": [
+      "Use long division."
+    ],
+    "solution": "1584 ÷ 24 = 66.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-6-gen-m17",
+    "topicId": "divide-multi-digit-6",
+    "difficulty": "medium",
+    "question": "What is 378 ÷ 18?",
+    "answer": "21",
+    "hints": [
+      "Use long division."
+    ],
+    "solution": "378 ÷ 18 = 21.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-6-gen-m18",
+    "topicId": "divide-multi-digit-6",
+    "difficulty": "medium",
+    "question": "What is 288 ÷ 12?",
+    "answer": "24",
+    "hints": [
+      "Use long division."
+    ],
+    "solution": "288 ÷ 12 = 24.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-6-gen-m19",
+    "topicId": "divide-multi-digit-6",
+    "difficulty": "medium",
+    "question": "What is 4560 ÷ 38?",
+    "answer": "120",
+    "hints": [
+      "Use long division."
+    ],
+    "solution": "4560 ÷ 38 = 120.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-6-gen-h0",
+    "topicId": "divide-multi-digit-6",
+    "difficulty": "hard",
+    "question": "What is 10560 ÷ 96?",
+    "answer": "110",
+    "hints": [
+      "Use long division."
+    ],
+    "solution": "10560 ÷ 96 = 110.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-6-gen-h1",
+    "topicId": "divide-multi-digit-6",
+    "difficulty": "hard",
+    "question": "What is 7030 ÷ 38?",
+    "answer": "185",
+    "hints": [
+      "Use long division."
+    ],
+    "solution": "7030 ÷ 38 = 185.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-6-gen-h2",
+    "topicId": "divide-multi-digit-6",
+    "difficulty": "hard",
+    "question": "What is 22656 ÷ 96?",
+    "answer": "236",
+    "hints": [
+      "Use long division."
+    ],
+    "solution": "22656 ÷ 96 = 236.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-6-gen-h3",
+    "topicId": "divide-multi-digit-6",
+    "difficulty": "hard",
+    "question": "What is 9198 ÷ 73?",
+    "answer": "126",
+    "hints": [
+      "Use long division."
+    ],
+    "solution": "9198 ÷ 73 = 126.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-6-gen-h4",
+    "topicId": "divide-multi-digit-6",
+    "difficulty": "hard",
+    "question": "What is 21015 ÷ 45?",
+    "answer": "467",
+    "hints": [
+      "Use long division."
+    ],
+    "solution": "21015 ÷ 45 = 467.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-6-gen-h5",
+    "topicId": "divide-multi-digit-6",
+    "difficulty": "hard",
+    "question": "What is 6050 ÷ 25?",
+    "answer": "242",
+    "hints": [
+      "Use long division."
+    ],
+    "solution": "6050 ÷ 25 = 242.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-6-gen-h6",
+    "topicId": "divide-multi-digit-6",
+    "difficulty": "hard",
+    "question": "What is 5341 ÷ 49?",
+    "answer": "109",
+    "hints": [
+      "Use long division."
+    ],
+    "solution": "5341 ÷ 49 = 109.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-6-gen-h7",
+    "topicId": "divide-multi-digit-6",
+    "difficulty": "hard",
+    "question": "What is 20459 ÷ 41?",
+    "answer": "499",
+    "hints": [
+      "Use long division."
+    ],
+    "solution": "20459 ÷ 41 = 499.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-6-gen-h8",
+    "topicId": "divide-multi-digit-6",
+    "difficulty": "hard",
+    "question": "What is 19875 ÷ 53?",
+    "answer": "375",
+    "hints": [
+      "Use long division."
+    ],
+    "solution": "19875 ÷ 53 = 375.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-6-gen-h9",
+    "topicId": "divide-multi-digit-6",
+    "difficulty": "hard",
+    "question": "What is 1863 ÷ 23?",
+    "answer": "81",
+    "hints": [
+      "Use long division."
+    ],
+    "solution": "1863 ÷ 23 = 81.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-6-gen-h10",
+    "topicId": "divide-multi-digit-6",
+    "difficulty": "hard",
+    "question": "What is 18354 ÷ 46?",
+    "answer": "399",
+    "hints": [
+      "Use long division."
+    ],
+    "solution": "18354 ÷ 46 = 399.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-6-gen-h11",
+    "topicId": "divide-multi-digit-6",
+    "difficulty": "hard",
+    "question": "What is 18080 ÷ 40?",
+    "answer": "452",
+    "hints": [
+      "Use long division."
+    ],
+    "solution": "18080 ÷ 40 = 452.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-6-gen-h12",
+    "topicId": "divide-multi-digit-6",
+    "difficulty": "hard",
+    "question": "What is 8964 ÷ 83?",
+    "answer": "108",
+    "hints": [
+      "Use long division."
+    ],
+    "solution": "8964 ÷ 83 = 108.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-6-gen-h13",
+    "topicId": "divide-multi-digit-6",
+    "difficulty": "hard",
+    "question": "What is 30192 ÷ 68?",
+    "answer": "444",
+    "hints": [
+      "Use long division."
+    ],
+    "solution": "30192 ÷ 68 = 444.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-6-gen-h14",
+    "topicId": "divide-multi-digit-6",
+    "difficulty": "hard",
+    "question": "What is 26596 ÷ 61?",
+    "answer": "436",
+    "hints": [
+      "Use long division."
+    ],
+    "solution": "26596 ÷ 61 = 436.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  }
+]

@@ -1,0 +1,652 @@
+[
+  {
+    "id": "slope-intro-gen-e0",
+    "topicId": "slope-intro",
+    "difficulty": "easy",
+    "question": "Find the slope between (3, 1) and (0, 1).",
+    "answer": "0",
+    "hints": [
+      "Slope = rise/run = (y₂ − y₁)/(x₂ − x₁)."
+    ],
+    "solution": "(1 − 1)/(0 − 3) = 0/-3 = 0.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "slope-intro-gen-e1",
+    "topicId": "slope-intro",
+    "difficulty": "easy",
+    "question": "Find the slope between (-1, -4) and (-5, 2).",
+    "answer": "-3/2",
+    "hints": [
+      "Slope = rise/run = (y₂ − y₁)/(x₂ − x₁)."
+    ],
+    "solution": "(2 − -4)/(-5 − -1) = 6/-4 = -3/2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "slope-intro-gen-e2",
+    "topicId": "slope-intro",
+    "difficulty": "easy",
+    "question": "Find the slope between (5, -4) and (0, -2).",
+    "answer": "-2/5",
+    "hints": [
+      "Slope = rise/run = (y₂ − y₁)/(x₂ − x₁)."
+    ],
+    "solution": "(-2 − -4)/(0 − 5) = 2/-5 = -2/5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "slope-intro-gen-e3",
+    "topicId": "slope-intro",
+    "difficulty": "easy",
+    "question": "Find the slope between (4, 5) and (-4, -2).",
+    "answer": "7/8",
+    "hints": [
+      "Slope = rise/run = (y₂ − y₁)/(x₂ − x₁)."
+    ],
+    "solution": "(-2 − 5)/(-4 − 4) = -7/-8 = 7/8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "slope-intro-gen-e4",
+    "topicId": "slope-intro",
+    "difficulty": "easy",
+    "question": "Find the slope between (-4, 3) and (2, -5).",
+    "answer": "-4/3",
+    "hints": [
+      "Slope = rise/run = (y₂ − y₁)/(x₂ − x₁)."
+    ],
+    "solution": "(-5 − 3)/(2 − -4) = -8/6 = -4/3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "slope-intro-gen-e5",
+    "topicId": "slope-intro",
+    "difficulty": "easy",
+    "question": "Find the slope between (-1, -5) and (-5, -4).",
+    "answer": "-1/4",
+    "hints": [
+      "Slope = rise/run = (y₂ − y₁)/(x₂ − x₁)."
+    ],
+    "solution": "(-4 − -5)/(-5 − -1) = 1/-4 = -1/4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "slope-intro-gen-e6",
+    "topicId": "slope-intro",
+    "difficulty": "easy",
+    "question": "Find the slope between (-1, -2) and (2, 1).",
+    "answer": "1",
+    "hints": [
+      "Slope = rise/run = (y₂ − y₁)/(x₂ − x₁)."
+    ],
+    "solution": "(1 − -2)/(2 − -1) = 3/3 = 1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "slope-intro-gen-e7",
+    "topicId": "slope-intro",
+    "difficulty": "easy",
+    "question": "Find the slope between (-1, 2) and (-5, 1).",
+    "answer": "1/4",
+    "hints": [
+      "Slope = rise/run = (y₂ − y₁)/(x₂ − x₁)."
+    ],
+    "solution": "(1 − 2)/(-5 − -1) = -1/-4 = 1/4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "slope-intro-gen-e8",
+    "topicId": "slope-intro",
+    "difficulty": "easy",
+    "question": "Find the slope between (1, 2) and (-3, 4).",
+    "answer": "-1/2",
+    "hints": [
+      "Slope = rise/run = (y₂ − y₁)/(x₂ − x₁)."
+    ],
+    "solution": "(4 − 2)/(-3 − 1) = 2/-4 = -1/2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "slope-intro-gen-e9",
+    "topicId": "slope-intro",
+    "difficulty": "easy",
+    "question": "Find the slope between (5, 2) and (4, 4).",
+    "answer": "-2",
+    "hints": [
+      "Slope = rise/run = (y₂ − y₁)/(x₂ − x₁)."
+    ],
+    "solution": "(4 − 2)/(4 − 5) = 2/-1 = -2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "slope-intro-gen-e10",
+    "topicId": "slope-intro",
+    "difficulty": "easy",
+    "question": "Find the slope between (2, -5) and (-3, -3).",
+    "answer": "-2/5",
+    "hints": [
+      "Slope = rise/run = (y₂ − y₁)/(x₂ − x₁)."
+    ],
+    "solution": "(-3 − -5)/(-3 − 2) = 2/-5 = -2/5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "slope-intro-gen-e11",
+    "topicId": "slope-intro",
+    "difficulty": "easy",
+    "question": "Find the slope between (-1, 5) and (3, -2).",
+    "answer": "-7/4",
+    "hints": [
+      "Slope = rise/run = (y₂ − y₁)/(x₂ − x₁)."
+    ],
+    "solution": "(-2 − 5)/(3 − -1) = -7/4 = -7/4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "slope-intro-gen-e12",
+    "topicId": "slope-intro",
+    "difficulty": "easy",
+    "question": "Find the slope between (-3, 4) and (5, 3).",
+    "answer": "-1/8",
+    "hints": [
+      "Slope = rise/run = (y₂ − y₁)/(x₂ − x₁)."
+    ],
+    "solution": "(3 − 4)/(5 − -3) = -1/8 = -1/8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "slope-intro-gen-e13",
+    "topicId": "slope-intro",
+    "difficulty": "easy",
+    "question": "Find the slope between (3, 4) and (2, 1).",
+    "answer": "3",
+    "hints": [
+      "Slope = rise/run = (y₂ − y₁)/(x₂ − x₁)."
+    ],
+    "solution": "(1 − 4)/(2 − 3) = -3/-1 = 3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "slope-intro-gen-e14",
+    "topicId": "slope-intro",
+    "difficulty": "easy",
+    "question": "Find the slope between (-3, -1) and (4, 0).",
+    "answer": "1/7",
+    "hints": [
+      "Slope = rise/run = (y₂ − y₁)/(x₂ − x₁)."
+    ],
+    "solution": "(0 − -1)/(4 − -3) = 1/7 = 1/7.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "slope-intro-gen-m0",
+    "topicId": "slope-intro",
+    "difficulty": "medium",
+    "question": "Find the slope between (1, 2) and (-4, -1).",
+    "answer": "3/5",
+    "hints": [
+      "Slope = rise/run = (y₂ − y₁)/(x₂ − x₁)."
+    ],
+    "solution": "(-1 − 2)/(-4 − 1) = -3/-5 = 3/5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "slope-intro-gen-m1",
+    "topicId": "slope-intro",
+    "difficulty": "medium",
+    "question": "Find the slope between (2, 4) and (-4, -5).",
+    "answer": "3/2",
+    "hints": [
+      "Slope = rise/run = (y₂ − y₁)/(x₂ − x₁)."
+    ],
+    "solution": "(-5 − 4)/(-4 − 2) = -9/-6 = 3/2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "slope-intro-gen-m2",
+    "topicId": "slope-intro",
+    "difficulty": "medium",
+    "question": "Find the slope between (-5, 2) and (0, -5).",
+    "answer": "-7/5",
+    "hints": [
+      "Slope = rise/run = (y₂ − y₁)/(x₂ − x₁)."
+    ],
+    "solution": "(-5 − 2)/(0 − -5) = -7/5 = -7/5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "slope-intro-gen-m3",
+    "topicId": "slope-intro",
+    "difficulty": "medium",
+    "question": "Find the slope between (0, 2) and (-1, -4).",
+    "answer": "6",
+    "hints": [
+      "Slope = rise/run = (y₂ − y₁)/(x₂ − x₁)."
+    ],
+    "solution": "(-4 − 2)/(-1 − 0) = -6/-1 = 6.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "slope-intro-gen-m4",
+    "topicId": "slope-intro",
+    "difficulty": "medium",
+    "question": "Find the slope between (-4, -2) and (-5, -1).",
+    "answer": "-1",
+    "hints": [
+      "Slope = rise/run = (y₂ − y₁)/(x₂ − x₁)."
+    ],
+    "solution": "(-1 − -2)/(-5 − -4) = 1/-1 = -1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "slope-intro-gen-m5",
+    "topicId": "slope-intro",
+    "difficulty": "medium",
+    "question": "Find the slope between (0, 5) and (3, -4).",
+    "answer": "-3",
+    "hints": [
+      "Slope = rise/run = (y₂ − y₁)/(x₂ − x₁)."
+    ],
+    "solution": "(-4 − 5)/(3 − 0) = -9/3 = -3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "slope-intro-gen-m6",
+    "topicId": "slope-intro",
+    "difficulty": "medium",
+    "question": "Find the slope between (1, 5) and (3, 1).",
+    "answer": "-2",
+    "hints": [
+      "Slope = rise/run = (y₂ − y₁)/(x₂ − x₁)."
+    ],
+    "solution": "(1 − 5)/(3 − 1) = -4/2 = -2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "slope-intro-gen-m7",
+    "topicId": "slope-intro",
+    "difficulty": "medium",
+    "question": "Find the slope between (3, -4) and (-2, 4).",
+    "answer": "-8/5",
+    "hints": [
+      "Slope = rise/run = (y₂ − y₁)/(x₂ − x₁)."
+    ],
+    "solution": "(4 − -4)/(-2 − 3) = 8/-5 = -8/5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "slope-intro-gen-m8",
+    "topicId": "slope-intro",
+    "difficulty": "medium",
+    "question": "Find the slope between (2, -1) and (-4, 4).",
+    "answer": "-5/6",
+    "hints": [
+      "Slope = rise/run = (y₂ − y₁)/(x₂ − x₁)."
+    ],
+    "solution": "(4 − -1)/(-4 − 2) = 5/-6 = -5/6.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "slope-intro-gen-m9",
+    "topicId": "slope-intro",
+    "difficulty": "medium",
+    "question": "Find the slope between (-5, 2) and (-3, 1).",
+    "answer": "-1/2",
+    "hints": [
+      "Slope = rise/run = (y₂ − y₁)/(x₂ − x₁)."
+    ],
+    "solution": "(1 − 2)/(-3 − -5) = -1/2 = -1/2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "slope-intro-gen-m10",
+    "topicId": "slope-intro",
+    "difficulty": "medium",
+    "question": "Find the slope between (-2, 0) and (-1, 3).",
+    "answer": "3",
+    "hints": [
+      "Slope = rise/run = (y₂ − y₁)/(x₂ − x₁)."
+    ],
+    "solution": "(3 − 0)/(-1 − -2) = 3/1 = 3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "slope-intro-gen-m11",
+    "topicId": "slope-intro",
+    "difficulty": "medium",
+    "question": "Find the slope between (0, -1) and (-1, -2).",
+    "answer": "1",
+    "hints": [
+      "Slope = rise/run = (y₂ − y₁)/(x₂ − x₁)."
+    ],
+    "solution": "(-2 − -1)/(-1 − 0) = -1/-1 = 1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "slope-intro-gen-m12",
+    "topicId": "slope-intro",
+    "difficulty": "medium",
+    "question": "Find the slope between (-3, 3) and (5, 1).",
+    "answer": "-1/4",
+    "hints": [
+      "Slope = rise/run = (y₂ − y₁)/(x₂ − x₁)."
+    ],
+    "solution": "(1 − 3)/(5 − -3) = -2/8 = -1/4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "slope-intro-gen-m13",
+    "topicId": "slope-intro",
+    "difficulty": "medium",
+    "question": "Find the slope between (2, -5) and (-2, 0).",
+    "answer": "-5/4",
+    "hints": [
+      "Slope = rise/run = (y₂ − y₁)/(x₂ − x₁)."
+    ],
+    "solution": "(0 − -5)/(-2 − 2) = 5/-4 = -5/4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "slope-intro-gen-m14",
+    "topicId": "slope-intro",
+    "difficulty": "medium",
+    "question": "Find the slope between (1, -5) and (-4, -2).",
+    "answer": "-3/5",
+    "hints": [
+      "Slope = rise/run = (y₂ − y₁)/(x₂ − x₁)."
+    ],
+    "solution": "(-2 − -5)/(-4 − 1) = 3/-5 = -3/5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "slope-intro-gen-m15",
+    "topicId": "slope-intro",
+    "difficulty": "medium",
+    "question": "Find the slope between (-3, -2) and (-1, -3).",
+    "answer": "-1/2",
+    "hints": [
+      "Slope = rise/run = (y₂ − y₁)/(x₂ − x₁)."
+    ],
+    "solution": "(-3 − -2)/(-1 − -3) = -1/2 = -1/2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "slope-intro-gen-m16",
+    "topicId": "slope-intro",
+    "difficulty": "medium",
+    "question": "Find the slope between (0, 0) and (2, 4).",
+    "answer": "2",
+    "hints": [
+      "Slope = rise/run = (y₂ − y₁)/(x₂ − x₁)."
+    ],
+    "solution": "(4 − 0)/(2 − 0) = 4/2 = 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "slope-intro-gen-m17",
+    "topicId": "slope-intro",
+    "difficulty": "medium",
+    "question": "Find the slope between (2, -1) and (3, 2).",
+    "answer": "3",
+    "hints": [
+      "Slope = rise/run = (y₂ − y₁)/(x₂ − x₁)."
+    ],
+    "solution": "(2 − -1)/(3 − 2) = 3/1 = 3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "slope-intro-gen-m18",
+    "topicId": "slope-intro",
+    "difficulty": "medium",
+    "question": "Find the slope between (5, -3) and (-2, -2).",
+    "answer": "-1/7",
+    "hints": [
+      "Slope = rise/run = (y₂ − y₁)/(x₂ − x₁)."
+    ],
+    "solution": "(-2 − -3)/(-2 − 5) = 1/-7 = -1/7.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "slope-intro-gen-m19",
+    "topicId": "slope-intro",
+    "difficulty": "medium",
+    "question": "Find the slope between (5, -2) and (-3, -2).",
+    "answer": "0",
+    "hints": [
+      "Slope = rise/run = (y₂ − y₁)/(x₂ − x₁)."
+    ],
+    "solution": "(-2 − -2)/(-3 − 5) = 0/-8 = 0.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "slope-intro-gen-h0",
+    "topicId": "slope-intro",
+    "difficulty": "hard",
+    "question": "Find the slope between (-4, 0) and (5, 0).",
+    "answer": "0",
+    "hints": [
+      "Slope = rise/run = (y₂ − y₁)/(x₂ − x₁)."
+    ],
+    "solution": "(0 − 0)/(5 − -4) = 0/9 = 0.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "slope-intro-gen-h1",
+    "topicId": "slope-intro",
+    "difficulty": "hard",
+    "question": "Find the slope between (4, -5) and (-2, 3).",
+    "answer": "-4/3",
+    "hints": [
+      "Slope = rise/run = (y₂ − y₁)/(x₂ − x₁)."
+    ],
+    "solution": "(3 − -5)/(-2 − 4) = 8/-6 = -4/3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "slope-intro-gen-h2",
+    "topicId": "slope-intro",
+    "difficulty": "hard",
+    "question": "Find the slope between (-1, 3) and (-3, 1).",
+    "answer": "1",
+    "hints": [
+      "Slope = rise/run = (y₂ − y₁)/(x₂ − x₁)."
+    ],
+    "solution": "(1 − 3)/(-3 − -1) = -2/-2 = 1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "slope-intro-gen-h3",
+    "topicId": "slope-intro",
+    "difficulty": "hard",
+    "question": "Find the slope between (4, 4) and (-5, -3).",
+    "answer": "7/9",
+    "hints": [
+      "Slope = rise/run = (y₂ − y₁)/(x₂ − x₁)."
+    ],
+    "solution": "(-3 − 4)/(-5 − 4) = -7/-9 = 7/9.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "slope-intro-gen-h4",
+    "topicId": "slope-intro",
+    "difficulty": "hard",
+    "question": "Find the slope between (-1, 1) and (-5, 3).",
+    "answer": "-1/2",
+    "hints": [
+      "Slope = rise/run = (y₂ − y₁)/(x₂ − x₁)."
+    ],
+    "solution": "(3 − 1)/(-5 − -1) = 2/-4 = -1/2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "slope-intro-gen-h5",
+    "topicId": "slope-intro",
+    "difficulty": "hard",
+    "question": "Find the slope between (5, 4) and (-2, 0).",
+    "answer": "4/7",
+    "hints": [
+      "Slope = rise/run = (y₂ − y₁)/(x₂ − x₁)."
+    ],
+    "solution": "(0 − 4)/(-2 − 5) = -4/-7 = 4/7.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "slope-intro-gen-h6",
+    "topicId": "slope-intro",
+    "difficulty": "hard",
+    "question": "Find the slope between (1, -4) and (0, 5).",
+    "answer": "-9",
+    "hints": [
+      "Slope = rise/run = (y₂ − y₁)/(x₂ − x₁)."
+    ],
+    "solution": "(5 − -4)/(0 − 1) = 9/-1 = -9.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "slope-intro-gen-h7",
+    "topicId": "slope-intro",
+    "difficulty": "hard",
+    "question": "Find the slope between (0, -1) and (1, -3).",
+    "answer": "-2",
+    "hints": [
+      "Slope = rise/run = (y₂ − y₁)/(x₂ − x₁)."
+    ],
+    "solution": "(-3 − -1)/(1 − 0) = -2/1 = -2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "slope-intro-gen-h8",
+    "topicId": "slope-intro",
+    "difficulty": "hard",
+    "question": "Find the slope between (2, -3) and (-5, -3).",
+    "answer": "0",
+    "hints": [
+      "Slope = rise/run = (y₂ − y₁)/(x₂ − x₁)."
+    ],
+    "solution": "(-3 − -3)/(-5 − 2) = 0/-7 = 0.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "slope-intro-gen-h9",
+    "topicId": "slope-intro",
+    "difficulty": "hard",
+    "question": "Find the slope between (2, -5) and (-1, 5).",
+    "answer": "-10/3",
+    "hints": [
+      "Slope = rise/run = (y₂ − y₁)/(x₂ − x₁)."
+    ],
+    "solution": "(5 − -5)/(-1 − 2) = 10/-3 = -10/3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "slope-intro-gen-h10",
+    "topicId": "slope-intro",
+    "difficulty": "hard",
+    "question": "Find the slope between (1, -1) and (-5, 3).",
+    "answer": "-2/3",
+    "hints": [
+      "Slope = rise/run = (y₂ − y₁)/(x₂ − x₁)."
+    ],
+    "solution": "(3 − -1)/(-5 − 1) = 4/-6 = -2/3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "slope-intro-gen-h11",
+    "topicId": "slope-intro",
+    "difficulty": "hard",
+    "question": "Find the slope between (-5, 4) and (-1, -4).",
+    "answer": "-2",
+    "hints": [
+      "Slope = rise/run = (y₂ − y₁)/(x₂ − x₁)."
+    ],
+    "solution": "(-4 − 4)/(-1 − -5) = -8/4 = -2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "slope-intro-gen-h12",
+    "topicId": "slope-intro",
+    "difficulty": "hard",
+    "question": "Find the slope between (-2, 5) and (2, -2).",
+    "answer": "-7/4",
+    "hints": [
+      "Slope = rise/run = (y₂ − y₁)/(x₂ − x₁)."
+    ],
+    "solution": "(-2 − 5)/(2 − -2) = -7/4 = -7/4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "slope-intro-gen-h13",
+    "topicId": "slope-intro",
+    "difficulty": "hard",
+    "question": "Find the slope between (-1, 3) and (0, -2).",
+    "answer": "-5",
+    "hints": [
+      "Slope = rise/run = (y₂ − y₁)/(x₂ − x₁)."
+    ],
+    "solution": "(-2 − 3)/(0 − -1) = -5/1 = -5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "slope-intro-gen-h14",
+    "topicId": "slope-intro",
+    "difficulty": "hard",
+    "question": "Find the slope between (-1, 5) and (1, 1).",
+    "answer": "-2",
+    "hints": [
+      "Slope = rise/run = (y₂ − y₁)/(x₂ − x₁)."
+    ],
+    "solution": "(1 − 5)/(1 − -1) = -4/2 = -2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  }
+]

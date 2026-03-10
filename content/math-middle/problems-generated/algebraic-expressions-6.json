@@ -1,0 +1,212 @@
+[
+  {
+    "id": "algebraic-expressions-6-sup-e0",
+    "topicId": "algebraic-expressions-6",
+    "difficulty": "easy",
+    "question": "Write an algebraic expression for 'a number plus 5.' Use n for the number.",
+    "answer": "n + 5",
+    "hints": [
+      "'Plus' means addition.",
+      "A number (n) plus 5 is written as n + 5."
+    ],
+    "solution": "'A number plus 5' translates to n + 5, where n represents the unknown number.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "algebraic-expressions-6-sup-e1",
+    "topicId": "algebraic-expressions-6",
+    "difficulty": "easy",
+    "question": "Write an algebraic expression for 'twice a number.' Use x for the number.",
+    "answer": "2x",
+    "hints": [
+      "'Twice' means two times.",
+      "Two times x is written as 2x."
+    ],
+    "solution": "'Twice a number' means 2 times the number, written as 2x.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "algebraic-expressions-6-sup-e2",
+    "topicId": "algebraic-expressions-6",
+    "difficulty": "easy",
+    "question": "Write an algebraic expression for 'a number decreased by 9.' Use y for the number.",
+    "answer": "y - 9",
+    "hints": [
+      "'Decreased by' means subtraction.",
+      "Start with y and subtract 9."
+    ],
+    "solution": "'A number decreased by 9' is y - 9. The word 'decreased' signals subtraction.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "algebraic-expressions-6-sup-e3",
+    "topicId": "algebraic-expressions-6",
+    "difficulty": "easy",
+    "question": "Write an expression for 'the quotient of a number and 4.' Use n for the number.",
+    "answer": "n/4",
+    "hints": [
+      "'Quotient' means division.",
+      "The number divided by 4 is n/4 or n ÷ 4."
+    ],
+    "solution": "'The quotient of a number and 4' means n ÷ 4, which is written as n/4.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "algebraic-expressions-6-sup-e4",
+    "topicId": "algebraic-expressions-6",
+    "difficulty": "easy",
+    "question": "A movie ticket costs $d. Write an expression for the cost of 3 tickets.",
+    "answer": "3d",
+    "hints": [
+      "If one ticket costs $d, three tickets cost 3 times as much.",
+      "3 times d is written as 3d."
+    ],
+    "solution": "3 tickets at $d each = 3 × d = 3d.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "algebraic-expressions-6-sup-m0",
+    "topicId": "algebraic-expressions-6",
+    "difficulty": "medium",
+    "question": "Write an expression for 'five more than three times a number.' Use x for the number.",
+    "answer": "3x + 5",
+    "hints": [
+      "Break it into parts: 'three times a number' is 3x.",
+      "'Five more than' means add 5 to that result."
+    ],
+    "solution": "'Three times a number' = 3x. 'Five more than' that = 3x + 5.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "algebraic-expressions-6-sup-m1",
+    "topicId": "algebraic-expressions-6",
+    "difficulty": "medium",
+    "question": "A student writes '7 - n' for 'seven less than a number n.' Is this correct? Answer yes or no.",
+    "answer": "no",
+    "hints": [
+      "'Seven less than a number' means start with the number and subtract 7.",
+      "'Less than' reverses the order: n - 7, not 7 - n."
+    ],
+    "solution": "No. 'Seven less than n' means n - 7, not 7 - n. The phrase 'less than' means you subtract from the number, so the number comes first.",
+    "cognitiveDemand": "error-analysis",
+    "source": "generated"
+  },
+  {
+    "id": "algebraic-expressions-6-sup-m2",
+    "topicId": "algebraic-expressions-6",
+    "difficulty": "medium",
+    "question": "A plumber charges $50 for a house call plus $30 per hour of work. Write an expression for the total charge for h hours of work.",
+    "answer": "50 + 30h",
+    "hints": [
+      "The fixed cost is $50 (doesn't change with hours).",
+      "The variable cost is $30 per hour = 30h. Add them together."
+    ],
+    "solution": "Fixed charge: $50. Hourly charge: $30 × h = 30h. Total: 50 + 30h.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "algebraic-expressions-6-sup-m3",
+    "topicId": "algebraic-expressions-6",
+    "difficulty": "medium",
+    "question": "Write an expression for 'the product of a number and the sum of that number and 6.' Use n.",
+    "answer": "n(n + 6)",
+    "hints": [
+      "'The sum of n and 6' is (n + 6).",
+      "'The product of n and (n + 6)' means multiply: n × (n + 6)."
+    ],
+    "solution": "'Sum of n and 6' = n + 6. 'Product of n and that sum' = n(n + 6). The parentheses are needed to show n + 6 is computed first.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "algebraic-expressions-6-sup-m4",
+    "topicId": "algebraic-expressions-6",
+    "difficulty": "medium",
+    "question": "Leo has some stickers. He gives away 12 and then splits the remaining stickers equally among 3 friends. Write an expression for how many stickers each friend gets. Use s for the starting number of stickers.",
+    "answer": "(s - 12)/3",
+    "hints": [
+      "After giving away 12: s - 12 stickers remain.",
+      "Split equally among 3: divide (s - 12) by 3."
+    ],
+    "solution": "Start with s stickers. Give away 12: s - 12 remain. Split among 3 friends: (s - 12)/3 each.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "algebraic-expressions-6-sup-h0",
+    "topicId": "algebraic-expressions-6",
+    "difficulty": "hard",
+    "question": "A student says that '3 more than x' and '3 is more than x' mean the same thing. Explain why the student is wrong.",
+    "answer": "'3 more than x' means x + 3 (an expression). '3 is more than x' means 3 > x (an inequality). They have completely different meanings.",
+    "hints": [
+      "'3 more than x' is an addition phrase: x + 3.",
+      "'3 is more than x' is a comparison: 3 > x."
+    ],
+    "solution": "'3 more than x' translates to the expression x + 3 (adding 3 to x). '3 is more than x' is the inequality 3 > x (comparing 3 and x). The first is an expression; the second is a statement about size.",
+    "cognitiveDemand": "error-analysis",
+    "source": "generated"
+  },
+  {
+    "id": "algebraic-expressions-6-sup-h1",
+    "topicId": "algebraic-expressions-6",
+    "difficulty": "hard",
+    "question": "Mia earns $12/hour for the first 8 hours and $18/hour for each additional hour. Write an expression for her total pay if she works h hours, where h > 8.",
+    "answer": "96 + 18(h - 8)",
+    "hints": [
+      "First 8 hours: 12 × 8 = $96.",
+      "Additional hours beyond 8: (h - 8) hours at $18 each."
+    ],
+    "solution": "First 8 hours: 12 × 8 = $96. Extra hours: h - 8 at $18/hr = 18(h - 8). Total: 96 + 18(h - 8).",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "algebraic-expressions-6-sup-h2",
+    "topicId": "algebraic-expressions-6",
+    "difficulty": "hard",
+    "question": "Write an expression for 'half the difference between a number and 10.' Use n for the number.",
+    "answer": "(n - 10)/2",
+    "hints": [
+      "'The difference between n and 10' is n - 10.",
+      "'Half' of something means divide by 2."
+    ],
+    "solution": "'Difference between n and 10' = n - 10. 'Half' that difference = (n - 10)/2. Parentheses ensure the subtraction happens before dividing.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "algebraic-expressions-6-sup-h3",
+    "topicId": "algebraic-expressions-6",
+    "difficulty": "hard",
+    "question": "Two students translate 'subtract 4 from the product of 6 and a number' differently. One writes 6n - 4 and the other writes 4 - 6n. Which is correct?",
+    "answer": "6n - 4",
+    "hints": [
+      "'The product of 6 and n' = 6n. That's the starting point.",
+      "'Subtract 4 from' that product means 6n - 4, not 4 - 6n."
+    ],
+    "solution": "'Product of 6 and n' = 6n. 'Subtract 4 from' 6n means take 4 away from 6n: 6n - 4. The phrase 'subtract A from B' always means B - A.",
+    "cognitiveDemand": "error-analysis",
+    "source": "generated"
+  },
+  {
+    "id": "algebraic-expressions-6-sup-h4",
+    "topicId": "algebraic-expressions-6",
+    "difficulty": "hard",
+    "question": "A taxi charges a $3 flat fee, then $2 per mile for the first 5 miles, and $1.50 per mile after that. Write an expression for the cost of a trip of m miles, where m > 5.",
+    "answer": "3 + 10 + 1.5(m - 5)",
+    "hints": [
+      "Flat fee: $3. First 5 miles: 5 × $2 = $10.",
+      "Miles beyond 5: (m - 5) miles at $1.50 each."
+    ],
+    "solution": "Flat fee: $3. First 5 miles: 2 × 5 = $10. Remaining (m - 5) miles at $1.50: 1.5(m - 5). Total: 3 + 10 + 1.5(m - 5) = 13 + 1.5(m - 5).",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  }
+]

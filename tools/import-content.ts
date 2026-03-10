@@ -96,16 +96,18 @@ function main() {
 
   const graph: GraphDefinition = JSON.parse(readFileSync(graphPath, "utf-8"));
 
-  // Load problems
-  const problemsDir = join(contentDir, "problems");
+  // Load problems (hand-authored + generated)
+  const problemsDirs = [join(contentDir, "problems"), join(contentDir, "problems-generated")];
   const problems = new Map<string, Problem[]>();
-  if (existsSync(problemsDir)) {
-    for (const file of readdirSync(problemsDir).filter((f) => f.endsWith(".json"))) {
-      const topicProblems: Problem[] = JSON.parse(readFileSync(join(problemsDir, file), "utf-8"));
-      for (const p of topicProblems) {
-        const list = problems.get(p.topicId) ?? [];
-        list.push(p);
-        problems.set(p.topicId, list);
+  for (const problemsDir of problemsDirs) {
+    if (existsSync(problemsDir)) {
+      for (const file of readdirSync(problemsDir).filter((f) => f.endsWith(".json"))) {
+        const topicProblems: Problem[] = JSON.parse(readFileSync(join(problemsDir, file), "utf-8"));
+        for (const p of topicProblems) {
+          const list = problems.get(p.topicId) ?? [];
+          list.push(p);
+          problems.set(p.topicId, list);
+        }
       }
     }
   }

@@ -1,0 +1,207 @@
+[
+  {
+    "id": "qualitative-graphs-sup-e0",
+    "topicId": "qualitative-graphs",
+    "difficulty": "easy",
+    "question": "A graph shows temperature over a day. It rises from morning to afternoon, then falls in the evening. Which part of the graph represents the warmest time?",
+    "answer": "The highest point (peak) of the graph, which occurs in the afternoon.",
+    "hints": [
+      "The highest point on a temperature graph represents the warmest time."
+    ],
+    "solution": "The warmest time is at the peak (highest point) of the graph, during the afternoon. Before this point, the temperature is rising; after this point, it is falling.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "qualitative-graphs-sup-e1",
+    "topicId": "qualitative-graphs",
+    "difficulty": "easy",
+    "question": "A graph of a car's speed over time shows a flat horizontal line at 60 mph. What does this mean about the car's movement?",
+    "answer": "The car is traveling at a constant speed of 60 mph (not speeding up or slowing down).",
+    "hints": [
+      "A horizontal line means the y-value is not changing."
+    ],
+    "solution": "A horizontal line on a speed-time graph means the speed is constant — the car maintains 60 mph without accelerating or decelerating.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "qualitative-graphs-sup-e2",
+    "topicId": "qualitative-graphs",
+    "difficulty": "easy",
+    "question": "On a graph of distance from home vs. time, the line goes up. What does this tell you about the person's movement?",
+    "answer": "The person is moving away from home (the distance is increasing over time).",
+    "hints": [
+      "An increasing line means the y-value (distance from home) is getting larger."
+    ],
+    "solution": "An upward-sloping line on a distance-from-home graph means the person is traveling away from home. The steeper the line, the faster they are moving.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "qualitative-graphs-sup-e3",
+    "topicId": "qualitative-graphs",
+    "difficulty": "easy",
+    "question": "A graph shows the height of water in a bathtub over time. It rises steeply, stays flat, then drops steeply. Describe what is happening in each section.",
+    "answer": "Rising: the tub is being filled. Flat: the faucet is off and the person is bathing. Dropping: the water is draining.",
+    "hints": [
+      "Think about what causes the water level to rise, stay the same, or fall."
+    ],
+    "solution": "Rising section: water is being added (faucet on). Flat section: water level is constant (faucet off, drain closed — someone is bathing). Dropping section: water is draining out (drain open).",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "qualitative-graphs-sup-e4",
+    "topicId": "qualitative-graphs",
+    "difficulty": "easy",
+    "question": "A graph of a plant's height over 6 months shows a line that goes up gradually. What does this represent?",
+    "answer": "The plant is growing over time. Its height is steadily increasing.",
+    "hints": [
+      "Height increasing over time = growth."
+    ],
+    "solution": "The gradually increasing line shows the plant is growing. A steady upward slope means the growth rate is roughly constant — the plant adds about the same amount of height each month.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "qualitative-graphs-sup-m0",
+    "topicId": "qualitative-graphs",
+    "difficulty": "medium",
+    "question": "A student walks to school: first on flat ground, then uphill, then flat again. Which graph of speed vs. time best matches? (A) Constant, then lower constant, then back to original constant. (B) Increasing, decreasing, increasing. (C) Constant throughout.",
+    "answer": "A",
+    "hints": [
+      "Walking uphill usually slows you down.",
+      "On flat ground, you walk at your normal pace."
+    ],
+    "solution": "Answer A. On flat ground, the student walks at a normal constant speed. Going uphill, the student slows down (lower constant speed). Returning to flat ground, speed returns to normal. This creates a pattern: constant → lower constant → original constant.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "qualitative-graphs-sup-m1",
+    "topicId": "qualitative-graphs",
+    "difficulty": "medium",
+    "question": "A graph of distance from home vs. time shows: rising line, horizontal line, rising line again, then falling line back to 0. Describe a story that matches this graph.",
+    "answer": "A person leaves home (rising), stops at a store (horizontal), continues to a friend's house (rising), then returns home (falling back to 0).",
+    "hints": [
+      "Rising = moving away from home. Horizontal = stopped. Falling = returning home.",
+      "The graph ends at 0, meaning the person is back home."
+    ],
+    "solution": "Example story: A person walks away from home (first rising section). They stop at a park to rest (horizontal section). They continue walking farther away to visit a friend (second rising section). Then they return home (falling line back to distance = 0).",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "qualitative-graphs-sup-m2",
+    "topicId": "qualitative-graphs",
+    "difficulty": "medium",
+    "question": "A graph shows the amount of money in a bank account over a year. It increases steadily each month but has a sharp drop in December. What might explain the December drop?",
+    "answer": "Holiday gift shopping or a large purchase caused a big withdrawal, reducing the account balance sharply.",
+    "hints": [
+      "What happens in December that might cause people to spend a lot of money?",
+      "Steady increase = regular deposits (paychecks). Sharp drop = large withdrawal."
+    ],
+    "solution": "The steady monthly increase likely represents regular paycheck deposits. The sharp December drop could be explained by holiday gift shopping, year-end bills, or a large planned purchase. The graph shows that the spending in December exceeded that month's income, causing the balance to drop.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "qualitative-graphs-sup-m3",
+    "topicId": "qualitative-graphs",
+    "difficulty": "medium",
+    "question": "Two runners are shown on a distance-time graph. Runner A's line is steeper than Runner B's. Both lines start at the origin. Which runner is faster? Explain.",
+    "answer": "Runner A is faster. A steeper line means more distance covered in the same amount of time.",
+    "hints": [
+      "On a distance-time graph, steepness = speed.",
+      "Steeper means covering more distance per unit of time."
+    ],
+    "solution": "Runner A is faster. On a distance-time graph, the slope represents speed (distance/time). A steeper slope means a higher speed — Runner A covers more distance in the same amount of time. At any given time, Runner A is ahead (higher on the y-axis).",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "qualitative-graphs-sup-m4",
+    "topicId": "qualitative-graphs",
+    "difficulty": "medium",
+    "question": "A graph of a bouncing ball shows height vs. time. The peaks get lower each bounce. What does the decreasing peak height tell you about the ball?",
+    "answer": "The ball bounces lower each time because it loses energy with each bounce. Eventually it will stop bouncing.",
+    "hints": [
+      "Each bounce peak is the maximum height for that bounce.",
+      "Energy is lost when the ball hits the ground."
+    ],
+    "solution": "The decreasing peak heights show that the ball loses energy with each bounce. Some kinetic energy converts to heat and sound when the ball hits the ground, so it cannot reach its previous height. The pattern of diminishing peaks continues until the ball stops bouncing entirely.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "qualitative-graphs-sup-h0",
+    "topicId": "qualitative-graphs",
+    "difficulty": "hard",
+    "question": "Describe a situation that would produce this distance-from-home graph: starts at 0, rises steeply, rises gradually, horizontal section, falls steeply back to 0. Be specific about what is happening during each section and why the slopes differ.",
+    "answer": "A person drives quickly to the highway (steep rise), then takes a slow scenic road (gradual rise), stops at a lookout point (horizontal), then drives back on the highway (steep fall). The slopes differ because driving speeds differ.",
+    "hints": [
+      "Different slopes mean different speeds.",
+      "Steep = fast. Gradual = slow. Horizontal = stopped. Falling = returning."
+    ],
+    "solution": "Example: A cyclist leaves home, riding fast downhill on a main road (steep rise — high speed = steep slope). They turn onto an uphill trail (gradual rise — slower speed = gentler slope). They stop at a scenic viewpoint to rest (horizontal — distance not changing). Then they ride quickly back home via the downhill main road (steep fall — fast return). The varying slopes reflect the different speeds during each segment.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "qualitative-graphs-sup-h1",
+    "topicId": "qualitative-graphs",
+    "difficulty": "hard",
+    "question": "A speed-time graph shows: starts at 0, rises to 30, stays at 30, rises to 60, stays at 60, drops to 0. A student says the object traveled the same distance at 30 mph as at 60 mph because both flat sections look the same length on the graph. Is this correct?",
+    "answer": "Not necessarily. Even if the time intervals look equal, the distance at 60 mph would be double the distance at 30 mph because speed × time = distance.",
+    "hints": [
+      "Distance = speed × time. Same time at double speed means double distance.",
+      "The graph shows speed, not distance directly."
+    ],
+    "solution": "The student is incorrect. Even if both constant-speed sections last the same amount of time, distance = speed × time. At 30 mph for, say, 2 hours = 60 miles. At 60 mph for 2 hours = 120 miles. The higher-speed section covers twice the distance in the same time. You cannot read distance directly from a speed-time graph — it corresponds to the area under the curve.",
+    "cognitiveDemand": "error-analysis",
+    "source": "generated"
+  },
+  {
+    "id": "qualitative-graphs-sup-h2",
+    "topicId": "qualitative-graphs",
+    "difficulty": "hard",
+    "question": "A graph of water level in a container vs. time shows the level rising quickly at first, then gradually slowing down. The container is being filled at a constant rate. What shape must the container be?",
+    "answer": "The container must get wider toward the top (like a bowl or cone opening upward). A constant fill rate in a wider section raises the water level more slowly.",
+    "hints": [
+      "If water flows in at a constant rate but the level rises slower, the container must be getting wider.",
+      "A wider cross-section needs more water to raise the level by the same amount."
+    ],
+    "solution": "The container widens toward the top (like a bowl, vase, or inverted cone). With a constant flow rate, a narrow bottom fills quickly (water level rises fast). As the container widens, the same flow rate spreads across a larger area, so the level rises more slowly. The decreasing rate of rise directly maps to an increasing cross-sectional area.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "qualitative-graphs-sup-h3",
+    "topicId": "qualitative-graphs",
+    "difficulty": "hard",
+    "question": "A distance-time graph shows two people. Person A: straight line from origin to (4, 20). Person B: starts at origin, curved line that starts steep and flattens, reaching (4, 20). They end at the same point. Compare their journeys.",
+    "answer": "Both travel 20 miles in 4 hours (same average speed). Person A travels at a constant 5 mph. Person B starts fast and slows down over time, but still covers 20 miles total.",
+    "hints": [
+      "Same start and end means same average speed.",
+      "A straight line = constant speed. A curve that flattens = decelerating."
+    ],
+    "solution": "Both cover 20 miles in 4 hours (average speed = 5 mph). Person A maintains a constant 5 mph throughout (straight line = constant slope). Person B starts at a high speed (steep initial curve) and gradually slows down (curve flattening). At any time before 4 hours, Person B is ahead of Person A. They arrive at the same point simultaneously, but their speed profiles are very different.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "qualitative-graphs-sup-h4",
+    "topicId": "qualitative-graphs",
+    "difficulty": "hard",
+    "question": "A student confuses a distance-time graph with a picture of the path traveled. They see a line going up and say 'the person is walking uphill.' Explain why this interpretation is wrong, and what the upward line actually means.",
+    "answer": "An upward line on a distance-time graph means distance from a point is increasing over time (the person is moving away), NOT that they are going uphill. The graph shows a relationship between variables, not a physical picture of the terrain.",
+    "hints": [
+      "The y-axis is distance, not elevation. The x-axis is time.",
+      "A graph is not a picture of the physical path."
+    ],
+    "solution": "This is a common misconception. A distance-time graph plots distance on the y-axis against time on the x-axis — it is NOT a picture of the terrain. An upward line means distance is increasing over time (the person is moving). The steepness represents speed, not slope of the ground. A person walking on perfectly flat ground would still produce an upward line because their distance from the starting point increases with time.",
+    "cognitiveDemand": "error-analysis",
+    "source": "generated"
+  }
+]

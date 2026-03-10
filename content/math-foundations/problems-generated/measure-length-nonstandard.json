@@ -1,0 +1,204 @@
+[
+  {
+    "id": "measure-length-nonstandard-sup-e0",
+    "topicId": "measure-length-nonstandard",
+    "difficulty": "easy",
+    "question": "A book is 5 paper clips long. A pencil is 3 paper clips long. Which is longer?",
+    "answer": "the book",
+    "hints": [
+      "Compare the numbers: 5 paper clips vs. 3 paper clips."
+    ],
+    "solution": "The book is longer because 5 paper clips > 3 paper clips.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "measure-length-nonstandard-sup-e1",
+    "topicId": "measure-length-nonstandard",
+    "difficulty": "easy",
+    "question": "You measure a desk using your hands. It is 8 hands long. What unit did you use?",
+    "answer": "hands",
+    "hints": [
+      "The measurement says '8 hands.' What word tells the unit?"
+    ],
+    "solution": "The unit used is hands. You placed your hand end-to-end 8 times to measure the desk.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "measure-length-nonstandard-sup-e2",
+    "topicId": "measure-length-nonstandard",
+    "difficulty": "easy",
+    "question": "A crayon is 6 cubes long. Another crayon is 6 cubes long. Are they the same length?",
+    "answer": "yes",
+    "hints": [
+      "Both measure 6 cubes using the same unit."
+    ],
+    "solution": "Yes, if both crayons are 6 cubes long and the cubes are the same size, the crayons are the same length.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "measure-length-nonstandard-sup-e3",
+    "topicId": "measure-length-nonstandard",
+    "difficulty": "easy",
+    "question": "What does it mean to measure something with paper clips?",
+    "answer": "line up paper clips end to end along the object and count them",
+    "hints": [
+      "Think about placing paper clips in a row next to the object."
+    ],
+    "solution": "To measure with paper clips, you place them end-to-end along the length of the object with no gaps or overlaps, then count how many paper clips it takes.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "measure-length-nonstandard-sup-e4",
+    "topicId": "measure-length-nonstandard",
+    "difficulty": "easy",
+    "question": "A ribbon is 4 blocks long. How many blocks long is the ribbon?",
+    "answer": "4",
+    "hints": [
+      "The measurement is already given!"
+    ],
+    "solution": "The ribbon is 4 blocks long. This directly states the measurement.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "measure-length-nonstandard-sup-m0",
+    "topicId": "measure-length-nonstandard",
+    "difficulty": "medium",
+    "question": "Ana measures a table using big blocks and gets 4. Ben measures the same table using small blocks and gets 8. Why did Ben get a bigger number?",
+    "answer": "his blocks are smaller so he needs more of them",
+    "hints": [
+      "The table is the same length for both. Think about the size of each block.",
+      "Smaller units need more of them to cover the same length."
+    ],
+    "solution": "Ben got a bigger number because his blocks are smaller. When you use a smaller unit, you need more of them to cover the same length. The table did not change; only the unit size changed.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "measure-length-nonstandard-sup-m1",
+    "topicId": "measure-length-nonstandard",
+    "difficulty": "medium",
+    "question": "A path is 10 footsteps long for a child. Would it be more or fewer footsteps for an adult? Why?",
+    "answer": "fewer, because adult feet are bigger",
+    "hints": [
+      "Adult feet are larger than child feet.",
+      "Bigger steps cover more distance, so you need fewer."
+    ],
+    "solution": "Fewer footsteps for an adult. Adult feet are larger, so each step covers more distance. The path is the same length, but bigger units mean fewer are needed.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "measure-length-nonstandard-sup-m2",
+    "topicId": "measure-length-nonstandard",
+    "difficulty": "medium",
+    "question": "You measure a shelf with paper clips. You count 12 paper clips. Your friend leaves gaps between the paper clips and counts 10. Whose measurement is more accurate?",
+    "answer": "yours, because there should be no gaps",
+    "hints": [
+      "When measuring, units should be placed end-to-end with no gaps and no overlaps."
+    ],
+    "solution": "Your measurement of 12 is more accurate. When measuring, units must be placed end-to-end with no gaps. Gaps make the measurement too small (fewer units counted).",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "measure-length-nonstandard-sup-m3",
+    "topicId": "measure-length-nonstandard",
+    "difficulty": "medium",
+    "question": "A rope is 7 cubes long. You cut off a piece that is 3 cubes long. How long is the remaining rope?",
+    "answer": "4 cubes",
+    "hints": [
+      "Subtract: 7 - 3 = ?"
+    ],
+    "solution": "7 cubes - 3 cubes = 4 cubes remaining.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "measure-length-nonstandard-sup-m4",
+    "topicId": "measure-length-nonstandard",
+    "difficulty": "medium",
+    "question": "Which would you need more of to measure a bookshelf: paper clips or building blocks (blocks are bigger than paper clips)?",
+    "answer": "paper clips",
+    "hints": [
+      "Paper clips are smaller than building blocks.",
+      "Smaller units require more to cover the same length."
+    ],
+    "solution": "You would need more paper clips because they are smaller than building blocks. Smaller units require a greater number to measure the same length.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "measure-length-nonstandard-sup-h0",
+    "topicId": "measure-length-nonstandard",
+    "difficulty": "hard",
+    "question": "Sam says his desk is 6 erasers long. Jill says the same desk is 9 crayons long. Can both be correct? Explain.",
+    "answer": "yes, if erasers are longer than crayons",
+    "hints": [
+      "Different units can give different numbers for the same length.",
+      "If erasers are bigger, you need fewer to cover the desk."
+    ],
+    "solution": "Yes, both can be correct. If erasers are longer than crayons, Sam needs fewer erasers (6) while Jill needs more crayons (9) to measure the same desk. Different unit sizes give different numbers.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "measure-length-nonstandard-sup-h1",
+    "topicId": "measure-length-nonstandard",
+    "difficulty": "hard",
+    "question": "Why is it a problem if two people measure the same thing but use different-sized paper clips?",
+    "answer": "they will get different numbers and cannot compare their measurements fairly",
+    "hints": [
+      "If my paper clips are bigger than yours, I will count fewer for the same object.",
+      "The measurements will not match even though the object is the same length."
+    ],
+    "solution": "Using different-sized paper clips gives different numbers for the same length. The measurements cannot be compared fairly. This is why standard units (like inches or centimeters) exist — everyone uses the same size.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "measure-length-nonstandard-sup-h2",
+    "topicId": "measure-length-nonstandard",
+    "difficulty": "hard",
+    "question": "A marker is 3 cubes long. A table is 9 cubes long. How many markers long is the table?",
+    "answer": "3",
+    "hints": [
+      "Each marker = 3 cubes. How many groups of 3 cubes fit in 9 cubes?",
+      "9 divided by 3 = ?"
+    ],
+    "solution": "The table is 9 cubes and each marker is 3 cubes. 9 / 3 = 3 markers. The table is 3 markers long.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "measure-length-nonstandard-sup-h3",
+    "topicId": "measure-length-nonstandard",
+    "difficulty": "hard",
+    "question": "Two strings are placed end to end. One is 5 paper clips long, the other is 7 paper clips long. How long are they together?",
+    "answer": "12 paper clips",
+    "hints": [
+      "Add the two lengths: 5 + 7."
+    ],
+    "solution": "5 paper clips + 7 paper clips = 12 paper clips when placed end to end.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "measure-length-nonstandard-sup-h4",
+    "topicId": "measure-length-nonstandard",
+    "difficulty": "hard",
+    "question": "You only have 4 paper clips but the object is longer than 4 paper clips. How could you still measure it?",
+    "answer": "place the 4 clips, mark where they end, move them and continue counting",
+    "hints": [
+      "You do not need to line up all the clips at once.",
+      "You can mark a spot and reuse the clips."
+    ],
+    "solution": "Place 4 paper clips end-to-end, mark the endpoint, then move the clips past the mark and keep counting (5, 6, 7...). This lets you measure longer objects with fewer clips by reusing them.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  }
+]

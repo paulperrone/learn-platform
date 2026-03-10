@@ -1,0 +1,207 @@
+[
+  {
+    "id": "line-of-best-fit-sup-e0",
+    "topicId": "line-of-best-fit",
+    "difficulty": "easy",
+    "question": "A line of best fit on a scatter plot has the equation y = 2x + 10. What is the predicted y-value when x = 5?",
+    "answer": "20",
+    "hints": [
+      "Substitute x = 5 into the equation."
+    ],
+    "solution": "y = 2(5) + 10 = 10 + 10 = 20.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "line-of-best-fit-sup-e1",
+    "topicId": "line-of-best-fit",
+    "difficulty": "easy",
+    "question": "What is the purpose of a line of best fit on a scatter plot?",
+    "answer": "To model the overall trend in the data and make predictions.",
+    "hints": [
+      "Think about what the line shows that individual points don't."
+    ],
+    "solution": "A line of best fit shows the overall trend or pattern in a scatter plot. It allows you to summarize the relationship between two variables and use it to make predictions for values not in the data set.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "line-of-best-fit-sup-e2",
+    "topicId": "line-of-best-fit",
+    "difficulty": "easy",
+    "question": "A trend line has equation y = -3x + 50. Does this line show a positive or negative trend?",
+    "answer": "negative",
+    "hints": [
+      "Look at the slope (the coefficient of x). Is it positive or negative?"
+    ],
+    "solution": "The trend is negative because the slope is -3. As x increases by 1, y decreases by 3. The line goes downward from left to right.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "line-of-best-fit-sup-e3",
+    "topicId": "line-of-best-fit",
+    "difficulty": "easy",
+    "question": "A line of best fit for height (inches) vs. weight (pounds) has equation y = 3.5x - 100. What does the slope of 3.5 mean in context?",
+    "answer": "For each additional inch of height, the predicted weight increases by 3.5 pounds.",
+    "hints": [
+      "The slope tells you how much y changes for each 1-unit increase in x."
+    ],
+    "solution": "The slope of 3.5 means that for each additional inch of height (x), the predicted weight (y) increases by 3.5 pounds. It describes the rate at which weight increases as height increases.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "line-of-best-fit-sup-e4",
+    "topicId": "line-of-best-fit",
+    "difficulty": "easy",
+    "question": "True or false: Every data point in a scatter plot must fall exactly on the line of best fit.",
+    "answer": "false",
+    "hints": [
+      "Think about why it's called a line of 'best fit' rather than a 'perfect fit.'"
+    ],
+    "solution": "False. A line of best fit is the line that comes closest to all the points overall, but individual points usually do not fall exactly on the line. It minimizes the overall distances from points to the line, not eliminates them.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "line-of-best-fit-sup-m0",
+    "topicId": "line-of-best-fit",
+    "difficulty": "medium",
+    "question": "A line of best fit for study hours (x) vs. exam score (y) is y = 8x + 45. Predict the score for a student who studies 6 hours. If the student actually scores 92, what is the residual?",
+    "answer": "Predicted: 93. Residual: 92 - 93 = -1.",
+    "hints": [
+      "Residual = actual value - predicted value.",
+      "First find the predicted value using the equation."
+    ],
+    "solution": "Predicted score: y = 8(6) + 45 = 48 + 45 = 93. Residual = actual - predicted = 92 - 93 = -1. The negative residual means the student scored 1 point less than the line predicted.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "line-of-best-fit-sup-m1",
+    "topicId": "line-of-best-fit",
+    "difficulty": "medium",
+    "question": "A trend line equation is y = -0.5x + 30, where x = age of a car (years) and y = value (thousands of dollars). Interpret the y-intercept (30) in context.",
+    "answer": "When the car is brand new (age 0), the predicted value is $30,000.",
+    "hints": [
+      "The y-intercept is the y-value when x = 0.",
+      "What does x = 0 mean for a car?"
+    ],
+    "solution": "The y-intercept of 30 means that when x = 0 (a brand-new car), the predicted value is 30 thousand dollars ($30,000). This represents the estimated starting value of the car before any depreciation.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "line-of-best-fit-sup-m2",
+    "topicId": "line-of-best-fit",
+    "difficulty": "medium",
+    "question": "A line of best fit for a data set with x-values from 1 to 10 has equation y = 4x + 3. A student uses it to predict y when x = 50. Why might this prediction be unreliable?",
+    "answer": "x = 50 is far outside the range of the original data (1-10). The relationship may not continue in the same pattern beyond the data range.",
+    "hints": [
+      "The line is based on data from x = 1 to x = 10.",
+      "Predicting far beyond the data range is called extrapolation."
+    ],
+    "solution": "This is extrapolation — predicting beyond the range of the original data. The line of best fit is only reliable within or near the data range (x = 1 to 10). At x = 50, the actual relationship may have changed (it could curve, level off, or reverse). The linear pattern observed in a small range may not hold for extreme values.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "line-of-best-fit-sup-m3",
+    "topicId": "line-of-best-fit",
+    "difficulty": "medium",
+    "question": "Two students each place a line through a scatter plot. Student A's line passes through the most data points. Student B's line minimizes the overall distances from all points to the line. Whose line is a better line of best fit? Answer A or B.",
+    "answer": "B",
+    "hints": [
+      "A line of best fit aims to minimize overall error, not pass through the most points.",
+      "Some points should be above and some below a good fit line."
+    ],
+    "solution": "Student B's line is better. A line of best fit minimizes the overall distances (residuals) from all points to the line, not the number of points it passes through. Student A's approach could ignore large errors for points it misses. A good line of best fit balances errors above and below the line.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "line-of-best-fit-sup-m4",
+    "topicId": "line-of-best-fit",
+    "difficulty": "medium",
+    "question": "A line of best fit has equation y = 1.5x + 20. Two data points are (4, 27) and (8, 30). Calculate the residual for each point.",
+    "answer": "(4, 27): residual = 27 - 26 = 1. (8, 30): residual = 30 - 32 = -2.",
+    "hints": [
+      "Find the predicted y for each x, then subtract: residual = actual - predicted.",
+      "For x=4: predicted = 1.5(4) + 20. For x=8: predicted = 1.5(8) + 20."
+    ],
+    "solution": "For (4, 27): predicted = 1.5(4) + 20 = 26. Residual = 27 - 26 = +1 (above the line). For (8, 30): predicted = 1.5(8) + 20 = 32. Residual = 30 - 32 = -2 (below the line).",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "line-of-best-fit-sup-h0",
+    "topicId": "line-of-best-fit",
+    "difficulty": "hard",
+    "question": "A trend line for years of education (x) vs. annual salary in thousands (y) is y = 5.2x - 10. A person with 16 years of education earns $60K. Another with 12 years earns $55K. Which person is farther from the prediction? Calculate both residuals.",
+    "answer": "Person 1 (16 years): predicted = 73.2K, residual = -13.2. Person 2 (12 years): predicted = 52.4K, residual = 2.6. Person 1 is farther from the prediction.",
+    "hints": [
+      "Calculate predicted salary for each person using the equation.",
+      "Residual = actual - predicted. Compare absolute values."
+    ],
+    "solution": "Person 1 (x=16): predicted = 5.2(16) - 10 = 83.2 - 10 = 73.2K. Residual = 60 - 73.2 = -13.2K. Person 2 (x=12): predicted = 5.2(12) - 10 = 62.4 - 10 = 52.4K. Residual = 55 - 52.4 = +2.6K. Person 1 is much farther from the prediction (|13.2| > |2.6|), earning $13.2K less than expected given their education level.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "line-of-best-fit-sup-h1",
+    "topicId": "line-of-best-fit",
+    "difficulty": "hard",
+    "question": "A scatter plot of advertising spending (x, in thousands) vs. revenue (y, in thousands) has a line of best fit y = 3x + 50. The data covers spending from $2K to $20K. A company wants to spend $100K on advertising and uses the equation to predict $350K revenue. Critique this prediction.",
+    "answer": "This is unreliable extrapolation. The data only covers $2K-$20K spending. At $100K, the linear relationship likely breaks down — returns on advertising typically diminish at high spending levels.",
+    "hints": [
+      "How far is $100K from the data range of $2K-$20K?",
+      "Think about whether revenue would really keep growing at the same rate."
+    ],
+    "solution": "This prediction is highly unreliable for two reasons: (1) Extrapolation — $100K is 5× beyond the data range ($2K-$20K), so the model has no basis for this prediction. (2) Real-world economics — advertising returns typically diminish at high spending levels (market saturation). The linear model predicts constant returns, which is unrealistic. The actual revenue at $100K spending would likely be much less than $350K.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "line-of-best-fit-sup-h2",
+    "topicId": "line-of-best-fit",
+    "difficulty": "hard",
+    "question": "A line of best fit for temperature (°F, x) vs. lemonade sales ($, y) is y = 2x - 80. What temperature would result in $0 sales according to the model? Does this make sense in the real world?",
+    "answer": "Setting y = 0: 0 = 2x - 80, so x = 40°F. This somewhat makes sense — few people buy lemonade at 40°F. But the model predicts negative sales below 40°F, which doesn't make sense in reality.",
+    "hints": [
+      "Set y = 0 and solve for x.",
+      "Think about what the model predicts for very cold temperatures."
+    ],
+    "solution": "Set 0 = 2x - 80 → x = 40°F. The model predicts $0 sales at 40°F, which is somewhat reasonable (cold weather = low lemonade demand). However, for temperatures below 40°F, the model predicts negative dollar amounts, which is impossible. This shows the model's limitations — it's only valid within a reasonable temperature range and shouldn't be trusted at extreme values.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "line-of-best-fit-sup-h3",
+    "topicId": "line-of-best-fit",
+    "difficulty": "hard",
+    "question": "A student plots data and draws two possible trend lines. Line 1: y = 2x + 5 with residuals {-1, 2, 0, -1, 1, -1}. Line 2: y = 2.5x + 3 with residuals {3, -4, 1, 2, -3, 1}. Which line fits the data better? Explain using the residuals.",
+    "answer": "Line 1 fits better. Its residuals are smaller (closer to 0) and more balanced. Line 2 has larger residuals, indicating points are farther from the line.",
+    "hints": [
+      "Compare the size of the residuals for each line.",
+      "Smaller residuals (closer to 0) mean a better fit."
+    ],
+    "solution": "Line 1 fits better. Its residuals range from -1 to 2, all close to zero. Sum of squared residuals = 1+4+0+1+1+1 = 8. Line 2's residuals range from -4 to 3, much larger. Sum of squared residuals = 9+16+1+4+9+1 = 40. Line 1 has much smaller overall error, indicating a better fit to the data.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "line-of-best-fit-sup-h4",
+    "topicId": "line-of-best-fit",
+    "difficulty": "hard",
+    "question": "A scatter plot shows the number of practice hours (x) vs. race time in minutes (y). The line of best fit is y = -0.8x + 30. What does the slope mean in context? If an athlete wants to finish in under 20 minutes, how many hours of practice does the model suggest?",
+    "answer": "Slope: each additional hour of practice is associated with a 0.8-minute decrease in race time. For under 20 minutes: 20 = -0.8x + 30 → x = 12.5, so more than 12.5 hours of practice.",
+    "hints": [
+      "Interpret slope as rate of change in context.",
+      "For the prediction, set y < 20 and solve for x."
+    ],
+    "solution": "The slope of -0.8 means each additional practice hour is associated with a 0.8-minute decrease in race time. For y < 20: 20 = -0.8x + 30 → 0.8x = 10 → x = 12.5 hours. The model suggests more than 12.5 hours of practice to finish under 20 minutes. Caveat: this is valid only within the data range, and diminishing returns may apply.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  }
+]

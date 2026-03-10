@@ -1,0 +1,206 @@
+[
+  {
+    "id": "classify-2d-shapes-sup-e0",
+    "topicId": "classify-2d-shapes",
+    "difficulty": "easy",
+    "question": "A shape has 4 sides that are all the same length and 4 right angles. What is it?",
+    "answer": "square",
+    "hints": [
+      "It has 4 equal sides, so it's either a square or a rhombus.",
+      "It also has 4 right angles."
+    ],
+    "solution": "A shape with 4 equal sides and 4 right angles is a square.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "classify-2d-shapes-sup-e1",
+    "topicId": "classify-2d-shapes",
+    "difficulty": "easy",
+    "question": "How many sides does a pentagon have?",
+    "answer": "5",
+    "hints": [
+      "The prefix 'penta-' means 5."
+    ],
+    "solution": "A pentagon has 5 sides. The prefix 'penta-' means five.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "classify-2d-shapes-sup-e2",
+    "topicId": "classify-2d-shapes",
+    "difficulty": "easy",
+    "question": "A quadrilateral has how many sides?",
+    "answer": "4",
+    "hints": [
+      "The prefix 'quad-' means 4."
+    ],
+    "solution": "A quadrilateral has 4 sides. 'Quad' means four.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "classify-2d-shapes-sup-e3",
+    "topicId": "classify-2d-shapes",
+    "difficulty": "easy",
+    "question": "True or false: All rectangles are quadrilaterals.",
+    "answer": "true",
+    "hints": [
+      "How many sides does a rectangle have?",
+      "A quadrilateral is any shape with 4 sides."
+    ],
+    "solution": "True. A rectangle has 4 sides, so it is a quadrilateral. All rectangles are quadrilaterals.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "classify-2d-shapes-sup-e4",
+    "topicId": "classify-2d-shapes",
+    "difficulty": "easy",
+    "question": "A shape has 3 sides. What type of polygon is it?",
+    "answer": "triangle",
+    "hints": [
+      "'Tri-' means three."
+    ],
+    "solution": "A shape with 3 sides is a triangle.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "classify-2d-shapes-sup-m0",
+    "topicId": "classify-2d-shapes",
+    "difficulty": "medium",
+    "question": "A quadrilateral has exactly one pair of parallel sides. What is it called?",
+    "answer": "trapezoid",
+    "hints": [
+      "Think of quadrilaterals with parallel sides.",
+      "A parallelogram has two pairs. This one has only one pair."
+    ],
+    "solution": "A quadrilateral with exactly one pair of parallel sides is called a trapezoid.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "classify-2d-shapes-sup-m1",
+    "topicId": "classify-2d-shapes",
+    "difficulty": "medium",
+    "question": "True or false: All squares are rectangles.",
+    "answer": "true",
+    "hints": [
+      "What are the properties of a rectangle?",
+      "A rectangle is a quadrilateral with 4 right angles. Does a square meet these requirements?"
+    ],
+    "solution": "True. A rectangle is a quadrilateral with 4 right angles. A square has 4 right angles (and also 4 equal sides), so every square is also a rectangle.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "classify-2d-shapes-sup-m2",
+    "topicId": "classify-2d-shapes",
+    "difficulty": "medium",
+    "question": "True or false: All rectangles are squares.",
+    "answer": "false",
+    "hints": [
+      "A square must have 4 equal sides.",
+      "Can a rectangle have sides of different lengths?"
+    ],
+    "solution": "False. A rectangle only needs 4 right angles. Its sides can be different lengths (e.g., 3 cm by 5 cm), so it would not be a square. Only rectangles with all equal sides are squares.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "classify-2d-shapes-sup-m3",
+    "topicId": "classify-2d-shapes",
+    "difficulty": "medium",
+    "question": "A rhombus has 4 equal sides. If it also has 4 right angles, what else can you call it?",
+    "answer": "square",
+    "hints": [
+      "What shape has 4 equal sides AND 4 right angles?"
+    ],
+    "solution": "A rhombus with 4 right angles is a square. A square is a special type of both rhombus and rectangle.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "classify-2d-shapes-sup-m4",
+    "topicId": "classify-2d-shapes",
+    "difficulty": "medium",
+    "question": "Carlos says a shape with 4 sides must be a rectangle. Is Carlos correct? Explain.",
+    "answer": "no",
+    "hints": [
+      "A shape with 4 sides is a quadrilateral.",
+      "Are all quadrilaterals rectangles? Think of a trapezoid or a rhombus."
+    ],
+    "solution": "Carlos is incorrect. A 4-sided shape is a quadrilateral, but not all quadrilaterals are rectangles. Trapezoids, parallelograms, and rhombuses all have 4 sides but are not necessarily rectangles.",
+    "cognitiveDemand": "error-analysis",
+    "source": "generated"
+  },
+  {
+    "id": "classify-2d-shapes-sup-h0",
+    "topicId": "classify-2d-shapes",
+    "difficulty": "hard",
+    "question": "Name all the categories that a square belongs to: triangle, quadrilateral, parallelogram, rectangle, rhombus, trapezoid. List all that apply.",
+    "answer": "quadrilateral, parallelogram, rectangle, rhombus",
+    "hints": [
+      "Start with the most general: does a square have 4 sides?",
+      "Does it have two pairs of parallel sides? 4 right angles? 4 equal sides?"
+    ],
+    "solution": "A square is a quadrilateral (4 sides), a parallelogram (2 pairs of parallel sides), a rectangle (4 right angles), and a rhombus (4 equal sides). It is not a triangle (3 sides).",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "classify-2d-shapes-sup-h1",
+    "topicId": "classify-2d-shapes",
+    "difficulty": "hard",
+    "question": "A student sorted shapes into two groups: 'Has right angles' and 'Has all equal sides.' Where would a square go?",
+    "answer": "both groups",
+    "hints": [
+      "Does a square have right angles? Does it have all equal sides?"
+    ],
+    "solution": "A square belongs in both groups. It has 4 right angles AND 4 equal sides. It is the only quadrilateral that fits in both categories.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "classify-2d-shapes-sup-h2",
+    "topicId": "classify-2d-shapes",
+    "difficulty": "hard",
+    "question": "Explain why every parallelogram is a quadrilateral, but not every quadrilateral is a parallelogram.",
+    "answer": "a parallelogram has 4 sides so it is a quadrilateral but a quadrilateral like a trapezoid may not have 2 pairs of parallel sides",
+    "hints": [
+      "What makes something a quadrilateral? What extra property does a parallelogram need?",
+      "Think of a quadrilateral that is not a parallelogram."
+    ],
+    "solution": "Every parallelogram has 4 sides, making it a quadrilateral. But a quadrilateral only needs 4 sides — it does not need parallel sides. A trapezoid has 4 sides but only one pair of parallel sides, so it is a quadrilateral but not a parallelogram.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "classify-2d-shapes-sup-h3",
+    "topicId": "classify-2d-shapes",
+    "difficulty": "hard",
+    "question": "Li says: 'A shape with 4 equal sides must be a square.' Give a counterexample to show Li is wrong.",
+    "answer": "rhombus",
+    "hints": [
+      "Is there a quadrilateral with 4 equal sides but no right angles?"
+    ],
+    "solution": "Li is wrong. A rhombus has 4 equal sides but its angles are not necessarily 90°. A tilted rhombus (like a diamond shape) has 4 equal sides but is not a square.",
+    "cognitiveDemand": "error-analysis",
+    "source": "generated"
+  },
+  {
+    "id": "classify-2d-shapes-sup-h4",
+    "topicId": "classify-2d-shapes",
+    "difficulty": "hard",
+    "question": "How many diagonals does a hexagon have?",
+    "answer": "9",
+    "hints": [
+      "A hexagon has 6 vertices. From each vertex, you can connect a line to every non-adjacent vertex.",
+      "From each vertex you can draw 3 diagonals (not to itself or its 2 neighbors). That's 6 × 3 = 18, but each diagonal is counted twice."
+    ],
+    "solution": "A hexagon has 6 vertices. From each vertex, you can draw 3 diagonals (to the 3 non-adjacent vertices). That gives 6 × 3 = 18, but each diagonal connects two vertices, so divide by 2: 18 ÷ 2 = 9 diagonals.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  }
+]

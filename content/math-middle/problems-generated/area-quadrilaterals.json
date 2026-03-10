@@ -1,0 +1,652 @@
+[
+  {
+    "id": "area-quadrilaterals-gen-e0",
+    "topicId": "area-quadrilaterals",
+    "difficulty": "easy",
+    "question": "What is the area of a rectangle with length 5 and width 10?",
+    "answer": "50",
+    "hints": [
+      "Area = length × width."
+    ],
+    "solution": "A = 5 × 10 = 50 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-quadrilaterals-gen-e1",
+    "topicId": "area-quadrilaterals",
+    "difficulty": "easy",
+    "question": "What is the area of a square with side 4?",
+    "answer": "16",
+    "hints": [
+      "Area = length × width."
+    ],
+    "solution": "A = 4 × 4 = 16 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-quadrilaterals-gen-e2",
+    "topicId": "area-quadrilaterals",
+    "difficulty": "easy",
+    "question": "What is the area of a rectangle with length 6 and width 7?",
+    "answer": "42",
+    "hints": [
+      "Area = length × width."
+    ],
+    "solution": "A = 6 × 7 = 42 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-quadrilaterals-gen-e3",
+    "topicId": "area-quadrilaterals",
+    "difficulty": "easy",
+    "question": "What is the area of a square with side 4?",
+    "answer": "16",
+    "hints": [
+      "Area = length × width."
+    ],
+    "solution": "A = 4 × 4 = 16 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-quadrilaterals-gen-e4",
+    "topicId": "area-quadrilaterals",
+    "difficulty": "easy",
+    "question": "What is the area of a square with side 7?",
+    "answer": "49",
+    "hints": [
+      "Area = length × width."
+    ],
+    "solution": "A = 7 × 7 = 49 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-quadrilaterals-gen-e5",
+    "topicId": "area-quadrilaterals",
+    "difficulty": "easy",
+    "question": "What is the area of a square with side 10?",
+    "answer": "100",
+    "hints": [
+      "Area = length × width."
+    ],
+    "solution": "A = 10 × 10 = 100 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-quadrilaterals-gen-e6",
+    "topicId": "area-quadrilaterals",
+    "difficulty": "easy",
+    "question": "What is the area of a rectangle with length 5 and width 3?",
+    "answer": "15",
+    "hints": [
+      "Area = length × width."
+    ],
+    "solution": "A = 5 × 3 = 15 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-quadrilaterals-gen-e7",
+    "topicId": "area-quadrilaterals",
+    "difficulty": "easy",
+    "question": "What is the area of a rectangle with length 9 and width 3?",
+    "answer": "27",
+    "hints": [
+      "Area = length × width."
+    ],
+    "solution": "A = 9 × 3 = 27 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-quadrilaterals-gen-e8",
+    "topicId": "area-quadrilaterals",
+    "difficulty": "easy",
+    "question": "What is the area of a square with side 7?",
+    "answer": "49",
+    "hints": [
+      "Area = length × width."
+    ],
+    "solution": "A = 7 × 7 = 49 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-quadrilaterals-gen-e9",
+    "topicId": "area-quadrilaterals",
+    "difficulty": "easy",
+    "question": "What is the area of a square with side 7?",
+    "answer": "49",
+    "hints": [
+      "Area = length × width."
+    ],
+    "solution": "A = 7 × 7 = 49 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-quadrilaterals-gen-e10",
+    "topicId": "area-quadrilaterals",
+    "difficulty": "easy",
+    "question": "What is the area of a square with side 7?",
+    "answer": "49",
+    "hints": [
+      "Area = length × width."
+    ],
+    "solution": "A = 7 × 7 = 49 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-quadrilaterals-gen-e11",
+    "topicId": "area-quadrilaterals",
+    "difficulty": "easy",
+    "question": "What is the area of a square with side 4?",
+    "answer": "16",
+    "hints": [
+      "Area = length × width."
+    ],
+    "solution": "A = 4 × 4 = 16 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-quadrilaterals-gen-e12",
+    "topicId": "area-quadrilaterals",
+    "difficulty": "easy",
+    "question": "What is the area of a rectangle with length 13 and width 8?",
+    "answer": "104",
+    "hints": [
+      "Area = length × width."
+    ],
+    "solution": "A = 13 × 8 = 104 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-quadrilaterals-gen-e13",
+    "topicId": "area-quadrilaterals",
+    "difficulty": "easy",
+    "question": "What is the area of a square with side 15?",
+    "answer": "225",
+    "hints": [
+      "Area = length × width."
+    ],
+    "solution": "A = 15 × 15 = 225 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-quadrilaterals-gen-e14",
+    "topicId": "area-quadrilaterals",
+    "difficulty": "easy",
+    "question": "What is the area of a rectangle with length 6 and width 15?",
+    "answer": "90",
+    "hints": [
+      "Area = length × width."
+    ],
+    "solution": "A = 6 × 15 = 90 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-quadrilaterals-gen-m0",
+    "topicId": "area-quadrilaterals",
+    "difficulty": "medium",
+    "question": "What is the area of a rectangle with length 6 and width 14?",
+    "answer": "84",
+    "hints": [
+      "Area = length × width."
+    ],
+    "solution": "A = 6 × 14 = 84 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-quadrilaterals-gen-m1",
+    "topicId": "area-quadrilaterals",
+    "difficulty": "medium",
+    "question": "What is the area of a rectangle with length 4 and width 14?",
+    "answer": "56",
+    "hints": [
+      "Area = length × width."
+    ],
+    "solution": "A = 4 × 14 = 56 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-quadrilaterals-gen-m2",
+    "topicId": "area-quadrilaterals",
+    "difficulty": "medium",
+    "question": "What is the area of a parallelogram with base 15 and height 3?",
+    "answer": "45",
+    "hints": [
+      "Area = base × height."
+    ],
+    "solution": "A = 15 × 3 = 45 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-quadrilaterals-gen-m3",
+    "topicId": "area-quadrilaterals",
+    "difficulty": "medium",
+    "question": "What is the area of a parallelogram with base 6 and height 3?",
+    "answer": "18",
+    "hints": [
+      "Area = base × height."
+    ],
+    "solution": "A = 6 × 3 = 18 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-quadrilaterals-gen-m4",
+    "topicId": "area-quadrilaterals",
+    "difficulty": "medium",
+    "question": "What is the area of a rectangle with length 8 and width 7?",
+    "answer": "56",
+    "hints": [
+      "Area = length × width."
+    ],
+    "solution": "A = 8 × 7 = 56 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-quadrilaterals-gen-m5",
+    "topicId": "area-quadrilaterals",
+    "difficulty": "medium",
+    "question": "What is the area of a trapezoid with bases 9 and 12 and height 5?",
+    "answer": "52.5",
+    "hints": [
+      "Area = ½(b₁ + b₂) × h."
+    ],
+    "solution": "A = ½(9 + 12) × 5 = ½ × 21 × 5 = 52.5 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-quadrilaterals-gen-m6",
+    "topicId": "area-quadrilaterals",
+    "difficulty": "medium",
+    "question": "What is the area of a parallelogram with base 9 and height 10?",
+    "answer": "90",
+    "hints": [
+      "Area = base × height."
+    ],
+    "solution": "A = 9 × 10 = 90 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-quadrilaterals-gen-m7",
+    "topicId": "area-quadrilaterals",
+    "difficulty": "medium",
+    "question": "What is the area of a trapezoid with bases 6 and 8 and height 6?",
+    "answer": "42",
+    "hints": [
+      "Area = ½(b₁ + b₂) × h."
+    ],
+    "solution": "A = ½(6 + 8) × 6 = ½ × 14 × 6 = 42 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-quadrilaterals-gen-m8",
+    "topicId": "area-quadrilaterals",
+    "difficulty": "medium",
+    "question": "What is the area of a parallelogram with base 3 and height 5?",
+    "answer": "15",
+    "hints": [
+      "Area = base × height."
+    ],
+    "solution": "A = 3 × 5 = 15 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-quadrilaterals-gen-m9",
+    "topicId": "area-quadrilaterals",
+    "difficulty": "medium",
+    "question": "What is the area of a rectangle with length 5 and width 12?",
+    "answer": "60",
+    "hints": [
+      "Area = length × width."
+    ],
+    "solution": "A = 5 × 12 = 60 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-quadrilaterals-gen-m10",
+    "topicId": "area-quadrilaterals",
+    "difficulty": "medium",
+    "question": "What is the area of a rectangle with length 3 and width 8?",
+    "answer": "24",
+    "hints": [
+      "Area = length × width."
+    ],
+    "solution": "A = 3 × 8 = 24 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-quadrilaterals-gen-m11",
+    "topicId": "area-quadrilaterals",
+    "difficulty": "medium",
+    "question": "What is the area of a parallelogram with base 10 and height 12?",
+    "answer": "120",
+    "hints": [
+      "Area = base × height."
+    ],
+    "solution": "A = 10 × 12 = 120 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-quadrilaterals-gen-m12",
+    "topicId": "area-quadrilaterals",
+    "difficulty": "medium",
+    "question": "What is the area of a parallelogram with base 15 and height 6?",
+    "answer": "90",
+    "hints": [
+      "Area = base × height."
+    ],
+    "solution": "A = 15 × 6 = 90 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-quadrilaterals-gen-m13",
+    "topicId": "area-quadrilaterals",
+    "difficulty": "medium",
+    "question": "What is the area of a trapezoid with bases 3 and 6 and height 6?",
+    "answer": "27",
+    "hints": [
+      "Area = ½(b₁ + b₂) × h."
+    ],
+    "solution": "A = ½(3 + 6) × 6 = ½ × 9 × 6 = 27 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-quadrilaterals-gen-m14",
+    "topicId": "area-quadrilaterals",
+    "difficulty": "medium",
+    "question": "What is the area of a trapezoid with bases 7 and 15 and height 10?",
+    "answer": "110",
+    "hints": [
+      "Area = ½(b₁ + b₂) × h."
+    ],
+    "solution": "A = ½(7 + 15) × 10 = ½ × 22 × 10 = 110 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-quadrilaterals-gen-m15",
+    "topicId": "area-quadrilaterals",
+    "difficulty": "medium",
+    "question": "What is the area of a trapezoid with bases 7 and 6 and height 8?",
+    "answer": "52",
+    "hints": [
+      "Area = ½(b₁ + b₂) × h."
+    ],
+    "solution": "A = ½(7 + 6) × 8 = ½ × 13 × 8 = 52 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-quadrilaterals-gen-m16",
+    "topicId": "area-quadrilaterals",
+    "difficulty": "medium",
+    "question": "What is the area of a trapezoid with bases 4 and 10 and height 10?",
+    "answer": "70",
+    "hints": [
+      "Area = ½(b₁ + b₂) × h."
+    ],
+    "solution": "A = ½(4 + 10) × 10 = ½ × 14 × 10 = 70 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-quadrilaterals-gen-m17",
+    "topicId": "area-quadrilaterals",
+    "difficulty": "medium",
+    "question": "What is the area of a parallelogram with base 3 and height 8?",
+    "answer": "24",
+    "hints": [
+      "Area = base × height."
+    ],
+    "solution": "A = 3 × 8 = 24 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-quadrilaterals-gen-m18",
+    "topicId": "area-quadrilaterals",
+    "difficulty": "medium",
+    "question": "What is the area of a rectangle with length 4 and width 9?",
+    "answer": "36",
+    "hints": [
+      "Area = length × width."
+    ],
+    "solution": "A = 4 × 9 = 36 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-quadrilaterals-gen-m19",
+    "topicId": "area-quadrilaterals",
+    "difficulty": "medium",
+    "question": "What is the area of a trapezoid with bases 10 and 10 and height 10?",
+    "answer": "100",
+    "hints": [
+      "Area = ½(b₁ + b₂) × h."
+    ],
+    "solution": "A = ½(10 + 10) × 10 = ½ × 20 × 10 = 100 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-quadrilaterals-gen-h0",
+    "topicId": "area-quadrilaterals",
+    "difficulty": "hard",
+    "question": "What is the area of a rectangle with length 12 and width 7?",
+    "answer": "84",
+    "hints": [
+      "Area = length × width."
+    ],
+    "solution": "A = 12 × 7 = 84 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-quadrilaterals-gen-h1",
+    "topicId": "area-quadrilaterals",
+    "difficulty": "hard",
+    "question": "What is the area of a trapezoid with bases 9 and 9 and height 8?",
+    "answer": "72",
+    "hints": [
+      "Area = ½(b₁ + b₂) × h."
+    ],
+    "solution": "A = ½(9 + 9) × 8 = ½ × 18 × 8 = 72 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-quadrilaterals-gen-h2",
+    "topicId": "area-quadrilaterals",
+    "difficulty": "hard",
+    "question": "What is the area of a parallelogram with base 11 and height 6?",
+    "answer": "66",
+    "hints": [
+      "Area = base × height."
+    ],
+    "solution": "A = 11 × 6 = 66 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-quadrilaterals-gen-h3",
+    "topicId": "area-quadrilaterals",
+    "difficulty": "hard",
+    "question": "What is the area of a parallelogram with base 13 and height 6?",
+    "answer": "78",
+    "hints": [
+      "Area = base × height."
+    ],
+    "solution": "A = 13 × 6 = 78 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-quadrilaterals-gen-h4",
+    "topicId": "area-quadrilaterals",
+    "difficulty": "hard",
+    "question": "What is the area of a trapezoid with bases 7 and 6 and height 8?",
+    "answer": "52",
+    "hints": [
+      "Area = ½(b₁ + b₂) × h."
+    ],
+    "solution": "A = ½(7 + 6) × 8 = ½ × 13 × 8 = 52 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-quadrilaterals-gen-h5",
+    "topicId": "area-quadrilaterals",
+    "difficulty": "hard",
+    "question": "What is the area of a trapezoid with bases 3 and 12 and height 9?",
+    "answer": "67.5",
+    "hints": [
+      "Area = ½(b₁ + b₂) × h."
+    ],
+    "solution": "A = ½(3 + 12) × 9 = ½ × 15 × 9 = 67.5 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-quadrilaterals-gen-h6",
+    "topicId": "area-quadrilaterals",
+    "difficulty": "hard",
+    "question": "What is the area of a trapezoid with bases 3 and 11 and height 7?",
+    "answer": "49",
+    "hints": [
+      "Area = ½(b₁ + b₂) × h."
+    ],
+    "solution": "A = ½(3 + 11) × 7 = ½ × 14 × 7 = 49 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-quadrilaterals-gen-h7",
+    "topicId": "area-quadrilaterals",
+    "difficulty": "hard",
+    "question": "What is the area of a trapezoid with bases 9 and 7 and height 4?",
+    "answer": "32",
+    "hints": [
+      "Area = ½(b₁ + b₂) × h."
+    ],
+    "solution": "A = ½(9 + 7) × 4 = ½ × 16 × 4 = 32 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-quadrilaterals-gen-h8",
+    "topicId": "area-quadrilaterals",
+    "difficulty": "hard",
+    "question": "What is the area of a rectangle with length 10 and width 7?",
+    "answer": "70",
+    "hints": [
+      "Area = length × width."
+    ],
+    "solution": "A = 10 × 7 = 70 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-quadrilaterals-gen-h9",
+    "topicId": "area-quadrilaterals",
+    "difficulty": "hard",
+    "question": "What is the area of a trapezoid with bases 8 and 7 and height 4?",
+    "answer": "30",
+    "hints": [
+      "Area = ½(b₁ + b₂) × h."
+    ],
+    "solution": "A = ½(8 + 7) × 4 = ½ × 15 × 4 = 30 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-quadrilaterals-gen-h10",
+    "topicId": "area-quadrilaterals",
+    "difficulty": "hard",
+    "question": "What is the area of a rectangle with length 14 and width 3?",
+    "answer": "42",
+    "hints": [
+      "Area = length × width."
+    ],
+    "solution": "A = 14 × 3 = 42 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-quadrilaterals-gen-h11",
+    "topicId": "area-quadrilaterals",
+    "difficulty": "hard",
+    "question": "What is the area of a rectangle with length 12 and width 11?",
+    "answer": "132",
+    "hints": [
+      "Area = length × width."
+    ],
+    "solution": "A = 12 × 11 = 132 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-quadrilaterals-gen-h12",
+    "topicId": "area-quadrilaterals",
+    "difficulty": "hard",
+    "question": "What is the area of a trapezoid with bases 4 and 12 and height 10?",
+    "answer": "80",
+    "hints": [
+      "Area = ½(b₁ + b₂) × h."
+    ],
+    "solution": "A = ½(4 + 12) × 10 = ½ × 16 × 10 = 80 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-quadrilaterals-gen-h13",
+    "topicId": "area-quadrilaterals",
+    "difficulty": "hard",
+    "question": "What is the area of a trapezoid with bases 10 and 7 and height 10?",
+    "answer": "85",
+    "hints": [
+      "Area = ½(b₁ + b₂) × h."
+    ],
+    "solution": "A = ½(10 + 7) × 10 = ½ × 17 × 10 = 85 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "area-quadrilaterals-gen-h14",
+    "topicId": "area-quadrilaterals",
+    "difficulty": "hard",
+    "question": "What is the area of a trapezoid with bases 7 and 13 and height 10?",
+    "answer": "100",
+    "hints": [
+      "Area = ½(b₁ + b₂) × h."
+    ],
+    "solution": "A = ½(7 + 13) × 10 = ½ × 20 × 10 = 100 square units.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  }
+]

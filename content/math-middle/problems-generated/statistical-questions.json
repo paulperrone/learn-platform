@@ -1,0 +1,206 @@
+[
+  {
+    "id": "statistical-questions-sup-e0",
+    "topicId": "statistical-questions",
+    "difficulty": "easy",
+    "question": "Is this a statistical question? 'How many siblings do students in our class have?' Answer yes or no.",
+    "answer": "yes",
+    "hints": [
+      "Think about whether different people would give different answers."
+    ],
+    "solution": "Yes. Different students have different numbers of siblings, so the answers vary. This makes it a statistical question.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "statistical-questions-sup-e1",
+    "topicId": "statistical-questions",
+    "difficulty": "easy",
+    "question": "Is this a statistical question? 'What is the capital of France?' Answer yes or no.",
+    "answer": "no",
+    "hints": [
+      "Does this question have one fixed answer, or would answers vary?"
+    ],
+    "solution": "No. The capital of France is always Paris. There is no variability, so this is not a statistical question.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "statistical-questions-sup-e2",
+    "topicId": "statistical-questions",
+    "difficulty": "easy",
+    "question": "Is this a statistical question? 'How far do sixth graders travel to get to school?' Answer yes or no.",
+    "answer": "yes",
+    "hints": [
+      "Would every sixth grader give the same answer?"
+    ],
+    "solution": "Yes. Different students live different distances from school, so answers would vary. This is a statistical question.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "statistical-questions-sup-e3",
+    "topicId": "statistical-questions",
+    "difficulty": "easy",
+    "question": "Is this a statistical question? 'How many inches are in a foot?' Answer yes or no.",
+    "answer": "no",
+    "hints": [
+      "Is there only one correct answer, or could answers be different?"
+    ],
+    "solution": "No. There are always 12 inches in a foot. The answer is fixed with no variability, so this is not a statistical question.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "statistical-questions-sup-e4",
+    "topicId": "statistical-questions",
+    "difficulty": "easy",
+    "question": "Is this a statistical question? 'What are the favorite pizza toppings of students at Lincoln Middle School?' Answer yes or no.",
+    "answer": "yes",
+    "hints": [
+      "Think about whether you would collect data from many people to answer this."
+    ],
+    "solution": "Yes. Different students prefer different toppings, so answers vary. You would need to survey students and collect data, making this a statistical question.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "statistical-questions-sup-m0",
+    "topicId": "statistical-questions",
+    "difficulty": "medium",
+    "question": "A student writes: 'How many words can sixth graders type per minute?' Another student writes: 'How many words can Jayden type per minute?' Which is statistical? Answer 'first' or 'second'.",
+    "answer": "first",
+    "hints": [
+      "A statistical question anticipates variability in responses.",
+      "Which question asks about a group where answers would differ?"
+    ],
+    "solution": "The first question is statistical because different sixth graders type at different speeds, producing variable data. The second question asks about one specific person, which has a single answer.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "statistical-questions-sup-m1",
+    "topicId": "statistical-questions",
+    "difficulty": "medium",
+    "question": "Explain why 'How many books did our class read this month?' is statistical, but 'How many books did the teacher assign this month?' might not be. Type your explanation.",
+    "answer": "The class question has variability because different students read different numbers of books, while the teacher question has one fixed answer.",
+    "hints": [
+      "Think about who is being asked and whether answers would differ.",
+      "A statistical question expects a range of different answers."
+    ],
+    "solution": "The class question is statistical because each student may have read a different number of books, creating variability in the data. The teacher question has one definite answer (the number the teacher assigned), so it is not statistical.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "statistical-questions-sup-m2",
+    "topicId": "statistical-questions",
+    "difficulty": "medium",
+    "question": "Sam wants to know about his classmates' bedtimes. Which question should he ask to collect statistical data? (A) What time does the school close? (B) What time do you usually go to bed on school nights? (C) What time did I go to bed last night? Answer A, B, or C.",
+    "answer": "B",
+    "hints": [
+      "Which option would give answers that vary from person to person?"
+    ],
+    "solution": "B is the statistical question. Different classmates go to bed at different times, so there is variability. A has one fixed answer (school closing time), and C asks about one person's single night.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "statistical-questions-sup-m3",
+    "topicId": "statistical-questions",
+    "difficulty": "medium",
+    "question": "Turn this non-statistical question into a statistical one: 'How many pages is the Harry Potter book?' Type your revised question.",
+    "answer": "How many pages are the books that sixth graders are currently reading?",
+    "hints": [
+      "Change the question so that it asks about a group where answers would vary.",
+      "Instead of one specific book, ask about multiple books or multiple people."
+    ],
+    "solution": "A possible answer: 'How many pages are the books that sixth graders are currently reading?' This produces variable data because students are reading books of different lengths.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "statistical-questions-sup-m4",
+    "topicId": "statistical-questions",
+    "difficulty": "medium",
+    "question": "Maria says 'What is the average height of students in our school?' is NOT a statistical question because it has one answer (the average). Is Maria correct? Answer yes or no.",
+    "answer": "no",
+    "hints": [
+      "Think about what data you need to collect before you can find the average.",
+      "Does answering this question require gathering data that varies?"
+    ],
+    "solution": "No. Even though the final average is one number, you must collect heights from many students (variable data) to compute it. The question anticipates variability in the data, so it is statistical.",
+    "cognitiveDemand": "error-analysis",
+    "source": "generated"
+  },
+  {
+    "id": "statistical-questions-sup-h0",
+    "topicId": "statistical-questions",
+    "difficulty": "hard",
+    "question": "A survey asks: 'On a scale of 1-10, how much do you enjoy math class?' Is this a statistical question? Explain why a scale-based question can still be statistical. Type your answer.",
+    "answer": "Yes, it is statistical because different students would rate their enjoyment differently, creating variability in responses even though the scale is fixed.",
+    "hints": [
+      "Focus on whether different people would give different responses.",
+      "The fixed scale doesn't mean the answers are fixed — think about who is answering."
+    ],
+    "solution": "Yes. Although the scale is limited to 1-10, different students would choose different ratings based on their personal enjoyment. The variability in responses makes it statistical. A question is statistical when you expect the data to vary, not when the answer format varies.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "statistical-questions-sup-h1",
+    "topicId": "statistical-questions",
+    "difficulty": "hard",
+    "question": "Consider these two questions: (1) 'How tall is the Statue of Liberty?' (2) 'How tall is the Statue of Liberty if measured by 50 different students using a tape measure?' Which is statistical? Answer 1 or 2, and explain why.",
+    "answer": "2",
+    "hints": [
+      "Think about whether the measurements would all be exactly the same.",
+      "Measurement variability is a real source of data variation."
+    ],
+    "solution": "Question 2 is statistical. Even though the Statue of Liberty has one true height, 50 students measuring it would get slightly different measurements due to measurement error, creating variability in the data. Question 1 asks for one fixed fact.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "statistical-questions-sup-h2",
+    "topicId": "statistical-questions",
+    "difficulty": "hard",
+    "question": "Jake writes three questions for a survey project: (1) 'How many students are in our school?' (2) 'How many hours per week do students spend on homework?' (3) 'What is today's date?' Which question(s) are statistical? List the number(s).",
+    "answer": "2",
+    "hints": [
+      "Check each question: does it have one fixed answer, or would answers vary across a group?",
+      "Only one of these produces data with variability."
+    ],
+    "solution": "Only question 2 is statistical. Different students spend different amounts of time on homework, producing variable data. Question 1 has one fixed answer (the enrollment number), and question 3 has one fixed answer (today's date).",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "statistical-questions-sup-h3",
+    "topicId": "statistical-questions",
+    "difficulty": "hard",
+    "question": "A student argues: 'How many legs does a dog have?' is statistical because you could survey many dogs. Identify the error in this reasoning.",
+    "answer": "Every dog has 4 legs (with rare exceptions), so there is no meaningful variability. Surveying many dogs does not make a question statistical if all answers are the same.",
+    "hints": [
+      "Would you actually get different answers from dog to dog?",
+      "A statistical question requires variability in the data, not just collecting data from many sources."
+    ],
+    "solution": "The student confuses 'asking many subjects' with 'expecting variability.' Every dog has 4 legs, so there is no meaningful variation in responses. Simply surveying many subjects does not make a question statistical — the key is whether answers are expected to differ.",
+    "cognitiveDemand": "error-analysis",
+    "source": "generated"
+  },
+  {
+    "id": "statistical-questions-sup-h4",
+    "topicId": "statistical-questions",
+    "difficulty": "hard",
+    "question": "Create a question about lunch that is NOT statistical and then revise it to make it statistical. Type both versions, labeling them 'Non-statistical:' and 'Statistical:'.",
+    "answer": "Non-statistical: How many minutes is the lunch period? Statistical: How many minutes do students in our grade spend eating lunch?",
+    "hints": [
+      "The non-statistical version should have one fixed answer.",
+      "The statistical version should ask about a group where answers vary."
+    ],
+    "solution": "Example — Non-statistical: 'How many minutes is the lunch period?' (one fixed answer, e.g., 30 minutes). Statistical: 'How many minutes do students in our grade spend eating lunch?' (different students take different amounts of time, creating variability).",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  }
+]

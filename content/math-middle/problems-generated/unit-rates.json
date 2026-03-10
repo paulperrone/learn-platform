@@ -1,0 +1,652 @@
+[
+  {
+    "id": "unit-rates-gen-e0",
+    "topicId": "unit-rates",
+    "difficulty": "easy",
+    "question": "If you travel 20 words in 2 minutes, what is the unit rate?",
+    "answer": "10 words per minute",
+    "hints": [
+      "Divide 20 by 2."
+    ],
+    "solution": "20 ÷ 2 = 10 words per minute.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-gen-e1",
+    "topicId": "unit-rates",
+    "difficulty": "easy",
+    "question": "If you travel 8 dollars in 2 items, what is the unit rate?",
+    "answer": "4 dollars per item",
+    "hints": [
+      "Divide 8 by 2."
+    ],
+    "solution": "8 ÷ 2 = 4 dollars per item.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-gen-e2",
+    "topicId": "unit-rates",
+    "difficulty": "easy",
+    "question": "If you travel 24 dollars in 4 items, what is the unit rate?",
+    "answer": "6 dollars per item",
+    "hints": [
+      "Divide 24 by 4."
+    ],
+    "solution": "24 ÷ 4 = 6 dollars per item.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-gen-e3",
+    "topicId": "unit-rates",
+    "difficulty": "easy",
+    "question": "If you travel 12 words in 2 minutes, what is the unit rate?",
+    "answer": "6 words per minute",
+    "hints": [
+      "Divide 12 by 2."
+    ],
+    "solution": "12 ÷ 2 = 6 words per minute.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-gen-e4",
+    "topicId": "unit-rates",
+    "difficulty": "easy",
+    "question": "If you travel 12 words in 4 minutes, what is the unit rate?",
+    "answer": "3 words per minute",
+    "hints": [
+      "Divide 12 by 4."
+    ],
+    "solution": "12 ÷ 4 = 3 words per minute.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-gen-e5",
+    "topicId": "unit-rates",
+    "difficulty": "easy",
+    "question": "If you travel 35 dollars in 5 items, what is the unit rate?",
+    "answer": "7 dollars per item",
+    "hints": [
+      "Divide 35 by 5."
+    ],
+    "solution": "35 ÷ 5 = 7 dollars per item.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-gen-e6",
+    "topicId": "unit-rates",
+    "difficulty": "easy",
+    "question": "If you travel 12 pages in 2 hours, what is the unit rate?",
+    "answer": "6 pages per hour",
+    "hints": [
+      "Divide 12 by 2."
+    ],
+    "solution": "12 ÷ 2 = 6 pages per hour.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-gen-e7",
+    "topicId": "unit-rates",
+    "difficulty": "easy",
+    "question": "If you travel 45 miles in 5 hours, what is the unit rate?",
+    "answer": "9 miles per hour",
+    "hints": [
+      "Divide 45 by 5."
+    ],
+    "solution": "45 ÷ 5 = 9 miles per hour.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-gen-e8",
+    "topicId": "unit-rates",
+    "difficulty": "easy",
+    "question": "If you travel 40 dollars in 5 items, what is the unit rate?",
+    "answer": "8 dollars per item",
+    "hints": [
+      "Divide 40 by 5."
+    ],
+    "solution": "40 ÷ 5 = 8 dollars per item.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-gen-e9",
+    "topicId": "unit-rates",
+    "difficulty": "easy",
+    "question": "If you travel 15 words in 3 minutes, what is the unit rate?",
+    "answer": "5 words per minute",
+    "hints": [
+      "Divide 15 by 3."
+    ],
+    "solution": "15 ÷ 3 = 5 words per minute.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-gen-e10",
+    "topicId": "unit-rates",
+    "difficulty": "easy",
+    "question": "If you travel 40 dollars in 5 items, what is the unit rate?",
+    "answer": "8 dollars per item",
+    "hints": [
+      "Divide 40 by 5."
+    ],
+    "solution": "40 ÷ 5 = 8 dollars per item.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-gen-e11",
+    "topicId": "unit-rates",
+    "difficulty": "easy",
+    "question": "If you travel 50 words in 5 minutes, what is the unit rate?",
+    "answer": "10 words per minute",
+    "hints": [
+      "Divide 50 by 5."
+    ],
+    "solution": "50 ÷ 5 = 10 words per minute.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-gen-e12",
+    "topicId": "unit-rates",
+    "difficulty": "easy",
+    "question": "If you travel 30 dollars in 5 items, what is the unit rate?",
+    "answer": "6 dollars per item",
+    "hints": [
+      "Divide 30 by 5."
+    ],
+    "solution": "30 ÷ 5 = 6 dollars per item.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-gen-e13",
+    "topicId": "unit-rates",
+    "difficulty": "easy",
+    "question": "If you travel 10 pages in 2 hours, what is the unit rate?",
+    "answer": "5 pages per hour",
+    "hints": [
+      "Divide 10 by 2."
+    ],
+    "solution": "10 ÷ 2 = 5 pages per hour.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-gen-e14",
+    "topicId": "unit-rates",
+    "difficulty": "easy",
+    "question": "If you travel 45 dollars in 5 items, what is the unit rate?",
+    "answer": "9 dollars per item",
+    "hints": [
+      "Divide 45 by 5."
+    ],
+    "solution": "45 ÷ 5 = 9 dollars per item.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-gen-m0",
+    "topicId": "unit-rates",
+    "difficulty": "medium",
+    "question": "If you travel 36 miles in 9 hours, what is the unit rate?",
+    "answer": "4 miles per hour",
+    "hints": [
+      "Divide 36 by 9."
+    ],
+    "solution": "36 ÷ 9 = 4 miles per hour.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-gen-m1",
+    "topicId": "unit-rates",
+    "difficulty": "medium",
+    "question": "If you travel 39 miles in 3 hours, what is the unit rate?",
+    "answer": "13 miles per hour",
+    "hints": [
+      "Divide 39 by 3."
+    ],
+    "solution": "39 ÷ 3 = 13 miles per hour.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-gen-m2",
+    "topicId": "unit-rates",
+    "difficulty": "medium",
+    "question": "If you travel 77 miles in 7 hours, what is the unit rate?",
+    "answer": "11 miles per hour",
+    "hints": [
+      "Divide 77 by 7."
+    ],
+    "solution": "77 ÷ 7 = 11 miles per hour.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-gen-m3",
+    "topicId": "unit-rates",
+    "difficulty": "medium",
+    "question": "If you travel 200 dollars in 10 items, what is the unit rate?",
+    "answer": "20 dollars per item",
+    "hints": [
+      "Divide 200 by 10."
+    ],
+    "solution": "200 ÷ 10 = 20 dollars per item.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-gen-m4",
+    "topicId": "unit-rates",
+    "difficulty": "medium",
+    "question": "If you travel 120 pages in 5 hours, what is the unit rate?",
+    "answer": "24 pages per hour",
+    "hints": [
+      "Divide 120 by 5."
+    ],
+    "solution": "120 ÷ 5 = 24 pages per hour.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-gen-m5",
+    "topicId": "unit-rates",
+    "difficulty": "medium",
+    "question": "If you travel 88 miles in 8 hours, what is the unit rate?",
+    "answer": "11 miles per hour",
+    "hints": [
+      "Divide 88 by 8."
+    ],
+    "solution": "88 ÷ 8 = 11 miles per hour.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-gen-m6",
+    "topicId": "unit-rates",
+    "difficulty": "medium",
+    "question": "If you travel 150 miles in 6 hours, what is the unit rate?",
+    "answer": "25 miles per hour",
+    "hints": [
+      "Divide 150 by 6."
+    ],
+    "solution": "150 ÷ 6 = 25 miles per hour.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-gen-m7",
+    "topicId": "unit-rates",
+    "difficulty": "medium",
+    "question": "If you travel 95 words in 5 minutes, what is the unit rate?",
+    "answer": "19 words per minute",
+    "hints": [
+      "Divide 95 by 5."
+    ],
+    "solution": "95 ÷ 5 = 19 words per minute.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-gen-m8",
+    "topicId": "unit-rates",
+    "difficulty": "medium",
+    "question": "If you travel 21 dollars in 3 items, what is the unit rate?",
+    "answer": "7 dollars per item",
+    "hints": [
+      "Divide 21 by 3."
+    ],
+    "solution": "21 ÷ 3 = 7 dollars per item.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-gen-m9",
+    "topicId": "unit-rates",
+    "difficulty": "medium",
+    "question": "If you travel 15 pages in 3 hours, what is the unit rate?",
+    "answer": "5 pages per hour",
+    "hints": [
+      "Divide 15 by 3."
+    ],
+    "solution": "15 ÷ 3 = 5 pages per hour.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-gen-m10",
+    "topicId": "unit-rates",
+    "difficulty": "medium",
+    "question": "If you travel 20 pages in 4 hours, what is the unit rate?",
+    "answer": "5 pages per hour",
+    "hints": [
+      "Divide 20 by 4."
+    ],
+    "solution": "20 ÷ 4 = 5 pages per hour.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-gen-m11",
+    "topicId": "unit-rates",
+    "difficulty": "medium",
+    "question": "If you travel 16 dollars in 4 items, what is the unit rate?",
+    "answer": "4 dollars per item",
+    "hints": [
+      "Divide 16 by 4."
+    ],
+    "solution": "16 ÷ 4 = 4 dollars per item.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-gen-m12",
+    "topicId": "unit-rates",
+    "difficulty": "medium",
+    "question": "If you travel 126 dollars in 7 items, what is the unit rate?",
+    "answer": "18 dollars per item",
+    "hints": [
+      "Divide 126 by 7."
+    ],
+    "solution": "126 ÷ 7 = 18 dollars per item.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-gen-m13",
+    "topicId": "unit-rates",
+    "difficulty": "medium",
+    "question": "If you travel 40 dollars in 4 items, what is the unit rate?",
+    "answer": "10 dollars per item",
+    "hints": [
+      "Divide 40 by 4."
+    ],
+    "solution": "40 ÷ 4 = 10 dollars per item.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-gen-m14",
+    "topicId": "unit-rates",
+    "difficulty": "medium",
+    "question": "If you travel 104 pages in 8 hours, what is the unit rate?",
+    "answer": "13 pages per hour",
+    "hints": [
+      "Divide 104 by 8."
+    ],
+    "solution": "104 ÷ 8 = 13 pages per hour.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-gen-m15",
+    "topicId": "unit-rates",
+    "difficulty": "medium",
+    "question": "If you travel 112 miles in 7 hours, what is the unit rate?",
+    "answer": "16 miles per hour",
+    "hints": [
+      "Divide 112 by 7."
+    ],
+    "solution": "112 ÷ 7 = 16 miles per hour.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-gen-m16",
+    "topicId": "unit-rates",
+    "difficulty": "medium",
+    "question": "If you travel 16 dollars in 8 items, what is the unit rate?",
+    "answer": "2 dollars per item",
+    "hints": [
+      "Divide 16 by 8."
+    ],
+    "solution": "16 ÷ 8 = 2 dollars per item.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-gen-m17",
+    "topicId": "unit-rates",
+    "difficulty": "medium",
+    "question": "If you travel 28 miles in 2 hours, what is the unit rate?",
+    "answer": "14 miles per hour",
+    "hints": [
+      "Divide 28 by 2."
+    ],
+    "solution": "28 ÷ 2 = 14 miles per hour.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-gen-m18",
+    "topicId": "unit-rates",
+    "difficulty": "medium",
+    "question": "If you travel 96 miles in 8 hours, what is the unit rate?",
+    "answer": "12 miles per hour",
+    "hints": [
+      "Divide 96 by 8."
+    ],
+    "solution": "96 ÷ 8 = 12 miles per hour.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-gen-m19",
+    "topicId": "unit-rates",
+    "difficulty": "medium",
+    "question": "If you travel 20 words in 2 minutes, what is the unit rate?",
+    "answer": "10 words per minute",
+    "hints": [
+      "Divide 20 by 2."
+    ],
+    "solution": "20 ÷ 2 = 10 words per minute.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-gen-h0",
+    "topicId": "unit-rates",
+    "difficulty": "hard",
+    "question": "If you travel 44 pages in 2 hours, what is the unit rate?",
+    "answer": "22 pages per hour",
+    "hints": [
+      "Divide 44 by 2."
+    ],
+    "solution": "44 ÷ 2 = 22 pages per hour.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-gen-h1",
+    "topicId": "unit-rates",
+    "difficulty": "hard",
+    "question": "If you travel 45 pages in 3 hours, what is the unit rate?",
+    "answer": "15 pages per hour",
+    "hints": [
+      "Divide 45 by 3."
+    ],
+    "solution": "45 ÷ 3 = 15 pages per hour.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-gen-h2",
+    "topicId": "unit-rates",
+    "difficulty": "hard",
+    "question": "If you travel 128 words in 8 minutes, what is the unit rate?",
+    "answer": "16 words per minute",
+    "hints": [
+      "Divide 128 by 8."
+    ],
+    "solution": "128 ÷ 8 = 16 words per minute.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-gen-h3",
+    "topicId": "unit-rates",
+    "difficulty": "hard",
+    "question": "If you travel 34 words in 2 minutes, what is the unit rate?",
+    "answer": "17 words per minute",
+    "hints": [
+      "Divide 34 by 2."
+    ],
+    "solution": "34 ÷ 2 = 17 words per minute.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-gen-h4",
+    "topicId": "unit-rates",
+    "difficulty": "hard",
+    "question": "If you travel 48 words in 6 minutes, what is the unit rate?",
+    "answer": "8 words per minute",
+    "hints": [
+      "Divide 48 by 6."
+    ],
+    "solution": "48 ÷ 6 = 8 words per minute.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-gen-h5",
+    "topicId": "unit-rates",
+    "difficulty": "hard",
+    "question": "If you travel 60 pages in 4 hours, what is the unit rate?",
+    "answer": "15 pages per hour",
+    "hints": [
+      "Divide 60 by 4."
+    ],
+    "solution": "60 ÷ 4 = 15 pages per hour.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-gen-h6",
+    "topicId": "unit-rates",
+    "difficulty": "hard",
+    "question": "If you travel 100 pages in 4 hours, what is the unit rate?",
+    "answer": "25 pages per hour",
+    "hints": [
+      "Divide 100 by 4."
+    ],
+    "solution": "100 ÷ 4 = 25 pages per hour.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-gen-h7",
+    "topicId": "unit-rates",
+    "difficulty": "hard",
+    "question": "If you travel 136 dollars in 8 items, what is the unit rate?",
+    "answer": "17 dollars per item",
+    "hints": [
+      "Divide 136 by 8."
+    ],
+    "solution": "136 ÷ 8 = 17 dollars per item.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-gen-h8",
+    "topicId": "unit-rates",
+    "difficulty": "hard",
+    "question": "If you travel 81 pages in 9 hours, what is the unit rate?",
+    "answer": "9 pages per hour",
+    "hints": [
+      "Divide 81 by 9."
+    ],
+    "solution": "81 ÷ 9 = 9 pages per hour.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-gen-h9",
+    "topicId": "unit-rates",
+    "difficulty": "hard",
+    "question": "If you travel 32 dollars in 2 items, what is the unit rate?",
+    "answer": "16 dollars per item",
+    "hints": [
+      "Divide 32 by 2."
+    ],
+    "solution": "32 ÷ 2 = 16 dollars per item.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-gen-h10",
+    "topicId": "unit-rates",
+    "difficulty": "hard",
+    "question": "If you travel 57 words in 3 minutes, what is the unit rate?",
+    "answer": "19 words per minute",
+    "hints": [
+      "Divide 57 by 3."
+    ],
+    "solution": "57 ÷ 3 = 19 words per minute.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-gen-h11",
+    "topicId": "unit-rates",
+    "difficulty": "hard",
+    "question": "If you travel 154 dollars in 7 items, what is the unit rate?",
+    "answer": "22 dollars per item",
+    "hints": [
+      "Divide 154 by 7."
+    ],
+    "solution": "154 ÷ 7 = 22 dollars per item.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-gen-h12",
+    "topicId": "unit-rates",
+    "difficulty": "hard",
+    "question": "If you travel 75 pages in 5 hours, what is the unit rate?",
+    "answer": "15 pages per hour",
+    "hints": [
+      "Divide 75 by 5."
+    ],
+    "solution": "75 ÷ 5 = 15 pages per hour.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-gen-h13",
+    "topicId": "unit-rates",
+    "difficulty": "hard",
+    "question": "If you travel 63 pages in 9 hours, what is the unit rate?",
+    "answer": "7 pages per hour",
+    "hints": [
+      "Divide 63 by 9."
+    ],
+    "solution": "63 ÷ 9 = 7 pages per hour.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-gen-h14",
+    "topicId": "unit-rates",
+    "difficulty": "hard",
+    "question": "If you travel 96 dollars in 4 items, what is the unit rate?",
+    "answer": "24 dollars per item",
+    "hints": [
+      "Divide 96 by 4."
+    ],
+    "solution": "96 ÷ 4 = 24 dollars per item.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  }
+]

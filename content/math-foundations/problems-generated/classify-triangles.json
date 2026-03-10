@@ -1,0 +1,207 @@
+[
+  {
+    "id": "classify-triangles-sup-e0",
+    "topicId": "classify-triangles",
+    "difficulty": "easy",
+    "question": "A triangle has all three sides the same length. What type of triangle is it?",
+    "answer": "equilateral",
+    "hints": [
+      "'Equi-' means equal, 'lateral' means sides."
+    ],
+    "solution": "A triangle with all three sides equal is an equilateral triangle.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "classify-triangles-sup-e1",
+    "topicId": "classify-triangles",
+    "difficulty": "easy",
+    "question": "A triangle has sides of length 3 cm, 3 cm, and 5 cm. Is it equilateral, isosceles, or scalene?",
+    "answer": "isosceles",
+    "hints": [
+      "Count how many sides are the same length.",
+      "Two sides are 3 cm. That's exactly two equal sides."
+    ],
+    "solution": "Two sides are equal (3 cm and 3 cm), so this is an isosceles triangle.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "classify-triangles-sup-e2",
+    "topicId": "classify-triangles",
+    "difficulty": "easy",
+    "question": "A triangle has a 90° angle. What type of triangle is it (by angles)?",
+    "answer": "right triangle",
+    "hints": [
+      "What do we call an angle that is exactly 90°?"
+    ],
+    "solution": "A triangle with a 90° angle is called a right triangle.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "classify-triangles-sup-e3",
+    "topicId": "classify-triangles",
+    "difficulty": "easy",
+    "question": "A triangle has sides of length 4 cm, 7 cm, and 5 cm. All sides are different. Is it equilateral, isosceles, or scalene?",
+    "answer": "scalene",
+    "hints": [
+      "Are any of the sides the same length?"
+    ],
+    "solution": "All three sides have different lengths (4, 5, and 7), so this is a scalene triangle.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "classify-triangles-sup-e4",
+    "topicId": "classify-triangles",
+    "difficulty": "easy",
+    "question": "All three angles in a triangle are less than 90°. What type of triangle is it (by angles)?",
+    "answer": "acute",
+    "hints": [
+      "Angles less than 90° are called acute angles."
+    ],
+    "solution": "A triangle where all three angles are less than 90° is called an acute triangle.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "classify-triangles-sup-m0",
+    "topicId": "classify-triangles",
+    "difficulty": "medium",
+    "question": "Can an equilateral triangle also be a right triangle? Explain.",
+    "answer": "no",
+    "hints": [
+      "An equilateral triangle has all equal angles. What does each angle measure?",
+      "180° ÷ 3 = 60°. Is 60° a right angle?"
+    ],
+    "solution": "No. An equilateral triangle has three equal angles, each measuring 60° (since 180° ÷ 3 = 60°). None of the angles is 90°, so it cannot be a right triangle.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "classify-triangles-sup-m1",
+    "topicId": "classify-triangles",
+    "difficulty": "medium",
+    "question": "A triangle has angles of 40°, 60°, and 80°. Classify it by its angles.",
+    "answer": "acute",
+    "hints": [
+      "Check each angle: is any of them 90° or more?"
+    ],
+    "solution": "All three angles (40°, 60°, 80°) are less than 90°, so this is an acute triangle.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "classify-triangles-sup-m2",
+    "topicId": "classify-triangles",
+    "difficulty": "medium",
+    "question": "A triangle has one angle of 120°. What type is it by angles? Can any other angle in this triangle be obtuse?",
+    "answer": "obtuse, no",
+    "hints": [
+      "An angle greater than 90° makes it an obtuse triangle.",
+      "The three angles must add to 180°. If one is 120°, the other two add to 60°."
+    ],
+    "solution": "It is an obtuse triangle. The other two angles add up to 180° − 120° = 60°, so both must be less than 90°. A triangle can have at most one obtuse angle.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "classify-triangles-sup-m3",
+    "topicId": "classify-triangles",
+    "difficulty": "medium",
+    "question": "Mia says: 'An isosceles triangle always has exactly two equal sides.' Is there a case where Mia's statement is misleading?",
+    "answer": "yes, an equilateral triangle has three equal sides and is also isosceles",
+    "hints": [
+      "Does an equilateral triangle have at least two equal sides?",
+      "An equilateral triangle is a special case of isosceles."
+    ],
+    "solution": "Mia's statement is misleading because an equilateral triangle has three equal sides, and it is also considered isosceles (it has at least two equal sides). Isosceles means 'at least two equal sides,' not 'exactly two.'",
+    "cognitiveDemand": "error-analysis",
+    "source": "generated"
+  },
+  {
+    "id": "classify-triangles-sup-m4",
+    "topicId": "classify-triangles",
+    "difficulty": "medium",
+    "question": "Classify a triangle with sides 5 cm, 5 cm, 5 cm by both its sides AND its angles.",
+    "answer": "equilateral and acute",
+    "hints": [
+      "All sides are equal, so classify by sides first.",
+      "What are the angles of an equilateral triangle?"
+    ],
+    "solution": "By sides: equilateral (all three sides are 5 cm). By angles: acute (all angles are 60°, which is less than 90°).",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "classify-triangles-sup-h0",
+    "topicId": "classify-triangles",
+    "difficulty": "hard",
+    "question": "Can a right triangle be isosceles? If yes, what would the three angles be?",
+    "answer": "yes, 90 and 45 and 45",
+    "hints": [
+      "If a right triangle is isosceles, two angles must be equal.",
+      "One angle is 90°. The other two must add to 90° and be equal."
+    ],
+    "solution": "Yes. If one angle is 90°, the other two must add to 90°. If the triangle is isosceles, those two angles are equal: 90° ÷ 2 = 45° each. The angles are 90°, 45°, 45°.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "classify-triangles-sup-h1",
+    "topicId": "classify-triangles",
+    "difficulty": "hard",
+    "question": "A triangle has angles of 35° and 35°. What is the third angle? Classify the triangle by both sides and angles.",
+    "answer": "110, isosceles obtuse",
+    "hints": [
+      "The three angles add to 180°. Find the third: 180° − 35° − 35° = ?",
+      "Two angles are equal, so two sides are equal."
+    ],
+    "solution": "Third angle: 180° − 35° − 35° = 110°. By sides: isosceles (two equal angles means two equal sides). By angles: obtuse (110° > 90°).",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "classify-triangles-sup-h2",
+    "topicId": "classify-triangles",
+    "difficulty": "hard",
+    "question": "Alex says: 'A scalene triangle can never be a right triangle.' Is Alex correct?",
+    "answer": "no",
+    "hints": [
+      "Can all three sides of a right triangle be different lengths?",
+      "Think of a triangle with sides 3, 4, and 5."
+    ],
+    "solution": "Alex is incorrect. A right triangle can be scalene. For example, a triangle with sides 3, 4, and 5 is a right triangle (3² + 4² = 5²) and all three sides are different lengths, making it scalene.",
+    "cognitiveDemand": "error-analysis",
+    "source": "generated"
+  },
+  {
+    "id": "classify-triangles-sup-h3",
+    "topicId": "classify-triangles",
+    "difficulty": "hard",
+    "question": "How many different types of triangles can you name by combining side classification (equilateral, isosceles, scalene) with angle classification (acute, right, obtuse)? List the possible combinations.",
+    "answer": "7",
+    "hints": [
+      "Start with each side type and think about which angle types are possible.",
+      "Equilateral is always acute. Isosceles can be acute, right, or obtuse. Scalene can be acute, right, or obtuse."
+    ],
+    "solution": "There are 7 possible combinations: equilateral acute (the only option for equilateral), isosceles acute, isosceles right, isosceles obtuse, scalene acute, scalene right, scalene obtuse.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "classify-triangles-sup-h4",
+    "topicId": "classify-triangles",
+    "difficulty": "hard",
+    "question": "A triangle has two angles that are each 60°. Without calculating the third angle, explain why this triangle must be equilateral.",
+    "answer": "the third angle is also 60 so all angles are equal meaning all sides are equal",
+    "hints": [
+      "What must the third angle be if the other two are 60°?",
+      "If all angles in a triangle are equal, what does that tell you about the sides?"
+    ],
+    "solution": "The third angle must be 180° − 60° − 60° = 60°. Since all three angles are 60°, all three sides must be equal in length. A triangle with all equal sides is equilateral.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  }
+]

@@ -1,0 +1,652 @@
+[
+  {
+    "id": "unit-rates-complex-gen-e0",
+    "topicId": "unit-rates-complex",
+    "difficulty": "easy",
+    "question": "Find the unit rate: 5/3 miles in 5/3 hours.",
+    "answer": "1 miles per hour",
+    "hints": [
+      "Divide: 5/3 ÷ 5/3."
+    ],
+    "solution": "5/3 ÷ 5/3 = 1 mph.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-complex-gen-e1",
+    "topicId": "unit-rates-complex",
+    "difficulty": "easy",
+    "question": "Find the unit rate: 3/2 miles in 1 hours.",
+    "answer": "1.5 miles per hour",
+    "hints": [
+      "Divide: 3/2 ÷ 1."
+    ],
+    "solution": "3/2 ÷ 1 = 1.5 mph.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-complex-gen-e2",
+    "topicId": "unit-rates-complex",
+    "difficulty": "easy",
+    "question": "Find the unit rate: 4/3 miles in 1 hours.",
+    "answer": "1.333 miles per hour",
+    "hints": [
+      "Divide: 4/3 ÷ 1."
+    ],
+    "solution": "4/3 ÷ 1 = 1.333 mph.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-complex-gen-e3",
+    "topicId": "unit-rates-complex",
+    "difficulty": "easy",
+    "question": "Find the unit rate: 5/3 miles in 5/4 hours.",
+    "answer": "1.333 miles per hour",
+    "hints": [
+      "Divide: 5/3 ÷ 5/4."
+    ],
+    "solution": "5/3 ÷ 5/4 = 1.333 mph.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-complex-gen-e4",
+    "topicId": "unit-rates-complex",
+    "difficulty": "easy",
+    "question": "Find the unit rate: 2/3 miles in 1/2 hours.",
+    "answer": "1.333 miles per hour",
+    "hints": [
+      "Divide: 2/3 ÷ 1/2."
+    ],
+    "solution": "2/3 ÷ 1/2 = 1.333 mph.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-complex-gen-e5",
+    "topicId": "unit-rates-complex",
+    "difficulty": "easy",
+    "question": "Find the unit rate: 1/2 miles in 5/3 hours.",
+    "answer": "0.3 miles per hour",
+    "hints": [
+      "Divide: 1/2 ÷ 5/3."
+    ],
+    "solution": "1/2 ÷ 5/3 = 0.3 mph.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-complex-gen-e6",
+    "topicId": "unit-rates-complex",
+    "difficulty": "easy",
+    "question": "Find the unit rate: 1/4 miles in 1/4 hours.",
+    "answer": "1 miles per hour",
+    "hints": [
+      "Divide: 1/4 ÷ 1/4."
+    ],
+    "solution": "1/4 ÷ 1/4 = 1 mph.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-complex-gen-e7",
+    "topicId": "unit-rates-complex",
+    "difficulty": "easy",
+    "question": "Find the unit rate: 5/3 miles in 1/4 hours.",
+    "answer": "6.667 miles per hour",
+    "hints": [
+      "Divide: 5/3 ÷ 1/4."
+    ],
+    "solution": "5/3 ÷ 1/4 = 6.667 mph.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-complex-gen-e8",
+    "topicId": "unit-rates-complex",
+    "difficulty": "easy",
+    "question": "Find the unit rate: 2 miles in 5/3 hours.",
+    "answer": "1.2 miles per hour",
+    "hints": [
+      "Divide: 2 ÷ 5/3."
+    ],
+    "solution": "2 ÷ 5/3 = 1.2 mph.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-complex-gen-e9",
+    "topicId": "unit-rates-complex",
+    "difficulty": "easy",
+    "question": "Find the unit rate: 1/2 miles in 3/2 hours.",
+    "answer": "0.333 miles per hour",
+    "hints": [
+      "Divide: 1/2 ÷ 3/2."
+    ],
+    "solution": "1/2 ÷ 3/2 = 0.333 mph.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-complex-gen-e10",
+    "topicId": "unit-rates-complex",
+    "difficulty": "easy",
+    "question": "Find the unit rate: 3/4 miles in 1 hours.",
+    "answer": "0.75 miles per hour",
+    "hints": [
+      "Divide: 3/4 ÷ 1."
+    ],
+    "solution": "3/4 ÷ 1 = 0.75 mph.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-complex-gen-e11",
+    "topicId": "unit-rates-complex",
+    "difficulty": "easy",
+    "question": "Find the unit rate: 3/2 miles in 1 hours.",
+    "answer": "1.5 miles per hour",
+    "hints": [
+      "Divide: 3/2 ÷ 1."
+    ],
+    "solution": "3/2 ÷ 1 = 1.5 mph.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-complex-gen-e12",
+    "topicId": "unit-rates-complex",
+    "difficulty": "easy",
+    "question": "Find the unit rate: 1/3 miles in 1 hours.",
+    "answer": "0.333 miles per hour",
+    "hints": [
+      "Divide: 1/3 ÷ 1."
+    ],
+    "solution": "1/3 ÷ 1 = 0.333 mph.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-complex-gen-e13",
+    "topicId": "unit-rates-complex",
+    "difficulty": "easy",
+    "question": "Find the unit rate: 1/3 miles in 1 hours.",
+    "answer": "0.333 miles per hour",
+    "hints": [
+      "Divide: 1/3 ÷ 1."
+    ],
+    "solution": "1/3 ÷ 1 = 0.333 mph.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-complex-gen-e14",
+    "topicId": "unit-rates-complex",
+    "difficulty": "easy",
+    "question": "Find the unit rate: 1/2 miles in 3/2 hours.",
+    "answer": "0.333 miles per hour",
+    "hints": [
+      "Divide: 1/2 ÷ 3/2."
+    ],
+    "solution": "1/2 ÷ 3/2 = 0.333 mph.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-complex-gen-m0",
+    "topicId": "unit-rates-complex",
+    "difficulty": "medium",
+    "question": "Find the unit rate: 2/3 miles in 4/3 hours.",
+    "answer": "0.5 miles per hour",
+    "hints": [
+      "Divide: 2/3 ÷ 4/3."
+    ],
+    "solution": "2/3 ÷ 4/3 = 0.5 mph.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-complex-gen-m1",
+    "topicId": "unit-rates-complex",
+    "difficulty": "medium",
+    "question": "Find the unit rate: 1/3 miles in 1 hours.",
+    "answer": "0.333 miles per hour",
+    "hints": [
+      "Divide: 1/3 ÷ 1."
+    ],
+    "solution": "1/3 ÷ 1 = 0.333 mph.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-complex-gen-m2",
+    "topicId": "unit-rates-complex",
+    "difficulty": "medium",
+    "question": "Find the unit rate: 3/4 miles in 3/4 hours.",
+    "answer": "1 miles per hour",
+    "hints": [
+      "Divide: 3/4 ÷ 3/4."
+    ],
+    "solution": "3/4 ÷ 3/4 = 1 mph.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-complex-gen-m3",
+    "topicId": "unit-rates-complex",
+    "difficulty": "medium",
+    "question": "Find the unit rate: 5/3 miles in 2/3 hours.",
+    "answer": "2.5 miles per hour",
+    "hints": [
+      "Divide: 5/3 ÷ 2/3."
+    ],
+    "solution": "5/3 ÷ 2/3 = 2.5 mph.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-complex-gen-m4",
+    "topicId": "unit-rates-complex",
+    "difficulty": "medium",
+    "question": "Find the unit rate: 1 miles in 2/3 hours.",
+    "answer": "1.5 miles per hour",
+    "hints": [
+      "Divide: 1 ÷ 2/3."
+    ],
+    "solution": "1 ÷ 2/3 = 1.5 mph.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-complex-gen-m5",
+    "topicId": "unit-rates-complex",
+    "difficulty": "medium",
+    "question": "Find the unit rate: 1/4 miles in 1/4 hours.",
+    "answer": "1 miles per hour",
+    "hints": [
+      "Divide: 1/4 ÷ 1/4."
+    ],
+    "solution": "1/4 ÷ 1/4 = 1 mph.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-complex-gen-m6",
+    "topicId": "unit-rates-complex",
+    "difficulty": "medium",
+    "question": "Find the unit rate: 5/3 miles in 2 hours.",
+    "answer": "0.833 miles per hour",
+    "hints": [
+      "Divide: 5/3 ÷ 2."
+    ],
+    "solution": "5/3 ÷ 2 = 0.833 mph.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-complex-gen-m7",
+    "topicId": "unit-rates-complex",
+    "difficulty": "medium",
+    "question": "Find the unit rate: 1/4 miles in 3/2 hours.",
+    "answer": "0.167 miles per hour",
+    "hints": [
+      "Divide: 1/4 ÷ 3/2."
+    ],
+    "solution": "1/4 ÷ 3/2 = 0.167 mph.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-complex-gen-m8",
+    "topicId": "unit-rates-complex",
+    "difficulty": "medium",
+    "question": "Find the unit rate: 2/3 miles in 1/2 hours.",
+    "answer": "1.333 miles per hour",
+    "hints": [
+      "Divide: 2/3 ÷ 1/2."
+    ],
+    "solution": "2/3 ÷ 1/2 = 1.333 mph.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-complex-gen-m9",
+    "topicId": "unit-rates-complex",
+    "difficulty": "medium",
+    "question": "Find the unit rate: 1/2 miles in 1/3 hours.",
+    "answer": "1.5 miles per hour",
+    "hints": [
+      "Divide: 1/2 ÷ 1/3."
+    ],
+    "solution": "1/2 ÷ 1/3 = 1.5 mph.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-complex-gen-m10",
+    "topicId": "unit-rates-complex",
+    "difficulty": "medium",
+    "question": "Find the unit rate: 1/2 miles in 3/4 hours.",
+    "answer": "0.667 miles per hour",
+    "hints": [
+      "Divide: 1/2 ÷ 3/4."
+    ],
+    "solution": "1/2 ÷ 3/4 = 0.667 mph.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-complex-gen-m11",
+    "topicId": "unit-rates-complex",
+    "difficulty": "medium",
+    "question": "Find the unit rate: 5/4 miles in 1/2 hours.",
+    "answer": "2.5 miles per hour",
+    "hints": [
+      "Divide: 5/4 ÷ 1/2."
+    ],
+    "solution": "5/4 ÷ 1/2 = 2.5 mph.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-complex-gen-m12",
+    "topicId": "unit-rates-complex",
+    "difficulty": "medium",
+    "question": "Find the unit rate: 1/2 miles in 1/3 hours.",
+    "answer": "1.5 miles per hour",
+    "hints": [
+      "Divide: 1/2 ÷ 1/3."
+    ],
+    "solution": "1/2 ÷ 1/3 = 1.5 mph.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-complex-gen-m13",
+    "topicId": "unit-rates-complex",
+    "difficulty": "medium",
+    "question": "Find the unit rate: 1/2 miles in 1 hours.",
+    "answer": "0.5 miles per hour",
+    "hints": [
+      "Divide: 1/2 ÷ 1."
+    ],
+    "solution": "1/2 ÷ 1 = 0.5 mph.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-complex-gen-m14",
+    "topicId": "unit-rates-complex",
+    "difficulty": "medium",
+    "question": "Find the unit rate: 1/2 miles in 1/3 hours.",
+    "answer": "1.5 miles per hour",
+    "hints": [
+      "Divide: 1/2 ÷ 1/3."
+    ],
+    "solution": "1/2 ÷ 1/3 = 1.5 mph.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-complex-gen-m15",
+    "topicId": "unit-rates-complex",
+    "difficulty": "medium",
+    "question": "Find the unit rate: 1/3 miles in 3/4 hours.",
+    "answer": "0.444 miles per hour",
+    "hints": [
+      "Divide: 1/3 ÷ 3/4."
+    ],
+    "solution": "1/3 ÷ 3/4 = 0.444 mph.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-complex-gen-m16",
+    "topicId": "unit-rates-complex",
+    "difficulty": "medium",
+    "question": "Find the unit rate: 5/2 miles in 2 hours.",
+    "answer": "1.25 miles per hour",
+    "hints": [
+      "Divide: 5/2 ÷ 2."
+    ],
+    "solution": "5/2 ÷ 2 = 1.25 mph.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-complex-gen-m17",
+    "topicId": "unit-rates-complex",
+    "difficulty": "medium",
+    "question": "Find the unit rate: 5/3 miles in 5/4 hours.",
+    "answer": "1.333 miles per hour",
+    "hints": [
+      "Divide: 5/3 ÷ 5/4."
+    ],
+    "solution": "5/3 ÷ 5/4 = 1.333 mph.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-complex-gen-m18",
+    "topicId": "unit-rates-complex",
+    "difficulty": "medium",
+    "question": "Find the unit rate: 5/3 miles in 1/2 hours.",
+    "answer": "3.333 miles per hour",
+    "hints": [
+      "Divide: 5/3 ÷ 1/2."
+    ],
+    "solution": "5/3 ÷ 1/2 = 3.333 mph.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-complex-gen-m19",
+    "topicId": "unit-rates-complex",
+    "difficulty": "medium",
+    "question": "Find the unit rate: 1 miles in 1 hours.",
+    "answer": "1 miles per hour",
+    "hints": [
+      "Divide: 1 ÷ 1."
+    ],
+    "solution": "1 ÷ 1 = 1 mph.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-complex-gen-h0",
+    "topicId": "unit-rates-complex",
+    "difficulty": "hard",
+    "question": "Find the unit rate: 1/2 miles in 1/2 hours.",
+    "answer": "1 miles per hour",
+    "hints": [
+      "Divide: 1/2 ÷ 1/2."
+    ],
+    "solution": "1/2 ÷ 1/2 = 1 mph.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-complex-gen-h1",
+    "topicId": "unit-rates-complex",
+    "difficulty": "hard",
+    "question": "Find the unit rate: 5/2 miles in 1/4 hours.",
+    "answer": "10 miles per hour",
+    "hints": [
+      "Divide: 5/2 ÷ 1/4."
+    ],
+    "solution": "5/2 ÷ 1/4 = 10 mph.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-complex-gen-h2",
+    "topicId": "unit-rates-complex",
+    "difficulty": "hard",
+    "question": "Find the unit rate: 3/2 miles in 2/3 hours.",
+    "answer": "2.25 miles per hour",
+    "hints": [
+      "Divide: 3/2 ÷ 2/3."
+    ],
+    "solution": "3/2 ÷ 2/3 = 2.25 mph.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-complex-gen-h3",
+    "topicId": "unit-rates-complex",
+    "difficulty": "hard",
+    "question": "Find the unit rate: 1 miles in 1/4 hours.",
+    "answer": "4 miles per hour",
+    "hints": [
+      "Divide: 1 ÷ 1/4."
+    ],
+    "solution": "1 ÷ 1/4 = 4 mph.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-complex-gen-h4",
+    "topicId": "unit-rates-complex",
+    "difficulty": "hard",
+    "question": "Find the unit rate: 1 miles in 5/3 hours.",
+    "answer": "0.6 miles per hour",
+    "hints": [
+      "Divide: 1 ÷ 5/3."
+    ],
+    "solution": "1 ÷ 5/3 = 0.6 mph.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-complex-gen-h5",
+    "topicId": "unit-rates-complex",
+    "difficulty": "hard",
+    "question": "Find the unit rate: 1 miles in 5/4 hours.",
+    "answer": "0.8 miles per hour",
+    "hints": [
+      "Divide: 1 ÷ 5/4."
+    ],
+    "solution": "1 ÷ 5/4 = 0.8 mph.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-complex-gen-h6",
+    "topicId": "unit-rates-complex",
+    "difficulty": "hard",
+    "question": "Find the unit rate: 1 miles in 1/2 hours.",
+    "answer": "2 miles per hour",
+    "hints": [
+      "Divide: 1 ÷ 1/2."
+    ],
+    "solution": "1 ÷ 1/2 = 2 mph.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-complex-gen-h7",
+    "topicId": "unit-rates-complex",
+    "difficulty": "hard",
+    "question": "Find the unit rate: 5/3 miles in 2/3 hours.",
+    "answer": "2.5 miles per hour",
+    "hints": [
+      "Divide: 5/3 ÷ 2/3."
+    ],
+    "solution": "5/3 ÷ 2/3 = 2.5 mph.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-complex-gen-h8",
+    "topicId": "unit-rates-complex",
+    "difficulty": "hard",
+    "question": "Find the unit rate: 1/3 miles in 1/3 hours.",
+    "answer": "1 miles per hour",
+    "hints": [
+      "Divide: 1/3 ÷ 1/3."
+    ],
+    "solution": "1/3 ÷ 1/3 = 1 mph.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-complex-gen-h9",
+    "topicId": "unit-rates-complex",
+    "difficulty": "hard",
+    "question": "Find the unit rate: 3/4 miles in 3/4 hours.",
+    "answer": "1 miles per hour",
+    "hints": [
+      "Divide: 3/4 ÷ 3/4."
+    ],
+    "solution": "3/4 ÷ 3/4 = 1 mph.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-complex-gen-h10",
+    "topicId": "unit-rates-complex",
+    "difficulty": "hard",
+    "question": "Find the unit rate: 1 miles in 1 hours.",
+    "answer": "1 miles per hour",
+    "hints": [
+      "Divide: 1 ÷ 1."
+    ],
+    "solution": "1 ÷ 1 = 1 mph.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-complex-gen-h11",
+    "topicId": "unit-rates-complex",
+    "difficulty": "hard",
+    "question": "Find the unit rate: 1/2 miles in 1/4 hours.",
+    "answer": "2 miles per hour",
+    "hints": [
+      "Divide: 1/2 ÷ 1/4."
+    ],
+    "solution": "1/2 ÷ 1/4 = 2 mph.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-complex-gen-h12",
+    "topicId": "unit-rates-complex",
+    "difficulty": "hard",
+    "question": "Find the unit rate: 5/2 miles in 5/4 hours.",
+    "answer": "2 miles per hour",
+    "hints": [
+      "Divide: 5/2 ÷ 5/4."
+    ],
+    "solution": "5/2 ÷ 5/4 = 2 mph.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-complex-gen-h13",
+    "topicId": "unit-rates-complex",
+    "difficulty": "hard",
+    "question": "Find the unit rate: 4/3 miles in 4/3 hours.",
+    "answer": "1 miles per hour",
+    "hints": [
+      "Divide: 4/3 ÷ 4/3."
+    ],
+    "solution": "4/3 ÷ 4/3 = 1 mph.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "unit-rates-complex-gen-h14",
+    "topicId": "unit-rates-complex",
+    "difficulty": "hard",
+    "question": "Find the unit rate: 4/3 miles in 1/2 hours.",
+    "answer": "2.667 miles per hour",
+    "hints": [
+      "Divide: 4/3 ÷ 1/2."
+    ],
+    "solution": "4/3 ÷ 1/2 = 2.667 mph.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  }
+]

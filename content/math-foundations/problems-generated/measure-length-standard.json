@@ -1,0 +1,203 @@
+[
+  {
+    "id": "measure-length-standard-sup-e0",
+    "topicId": "measure-length-standard",
+    "difficulty": "easy",
+    "question": "What are two common units for measuring length?",
+    "answer": "inches and centimeters",
+    "hints": [
+      "Think about what you see on a ruler."
+    ],
+    "solution": "Two common units for measuring length are inches and centimeters. Inches are used in the US customary system and centimeters in the metric system.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "measure-length-standard-sup-e1",
+    "topicId": "measure-length-standard",
+    "difficulty": "easy",
+    "question": "A pencil is 7 inches long. A crayon is 3 inches long. Which is longer and by how much?",
+    "answer": "the pencil, by 4 inches",
+    "hints": [
+      "Compare: 7 inches vs. 3 inches. Find the difference."
+    ],
+    "solution": "The pencil (7 inches) is longer than the crayon (3 inches). Difference: 7 - 3 = 4 inches longer.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "measure-length-standard-sup-e2",
+    "topicId": "measure-length-standard",
+    "difficulty": "easy",
+    "question": "Which is longer: 1 inch or 1 centimeter?",
+    "answer": "1 inch",
+    "hints": [
+      "Look at a ruler: the inch marks are farther apart than the centimeter marks."
+    ],
+    "solution": "1 inch is longer than 1 centimeter. One inch is about 2.5 centimeters.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "measure-length-standard-sup-e3",
+    "topicId": "measure-length-standard",
+    "difficulty": "easy",
+    "question": "When measuring with a ruler, where should you start measuring from?",
+    "answer": "the 0 mark",
+    "hints": [
+      "Line up one end of the object with the beginning of the ruler."
+    ],
+    "solution": "Start measuring from the 0 mark (or the very edge) of the ruler. Line up one end of the object with 0, then read the number at the other end.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "measure-length-standard-sup-e4",
+    "topicId": "measure-length-standard",
+    "difficulty": "easy",
+    "question": "A ribbon is 10 centimeters long. Is that closer to the length of your finger or the length of your whole arm?",
+    "answer": "finger",
+    "hints": [
+      "10 centimeters is about 4 inches. That is pretty short."
+    ],
+    "solution": "10 centimeters is closer to the length of a finger (or hand span). Your arm is much longer, about 50-70 centimeters.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "measure-length-standard-sup-m0",
+    "topicId": "measure-length-standard",
+    "difficulty": "medium",
+    "question": "How many inches are in 1 foot?",
+    "answer": "12",
+    "hints": [
+      "A foot is a standard unit. Think of a 12-inch ruler."
+    ],
+    "solution": "There are 12 inches in 1 foot. A standard ruler is 1 foot (12 inches) long.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "measure-length-standard-sup-m1",
+    "topicId": "measure-length-standard",
+    "difficulty": "medium",
+    "question": "A bug walks 8 cm, then 5 cm more. How far did the bug walk in all?",
+    "answer": "13 cm",
+    "hints": [
+      "Add the two distances: 8 + 5."
+    ],
+    "solution": "8 cm + 5 cm = 13 cm total distance walked.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "measure-length-standard-sup-m2",
+    "topicId": "measure-length-standard",
+    "difficulty": "medium",
+    "question": "Would you measure the length of a swimming pool in centimeters or meters? Why?",
+    "answer": "meters, because a pool is very long and meters are a larger unit",
+    "hints": [
+      "A centimeter is about the width of your fingernail.",
+      "A meter is about the height of a door handle from the floor."
+    ],
+    "solution": "Meters. A swimming pool is very long (typically 25 or 50 meters). Using centimeters would give very large numbers (2500+ cm), which is harder to work with.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "measure-length-standard-sup-m3",
+    "topicId": "measure-length-standard",
+    "difficulty": "medium",
+    "question": "A straw is 15 cm long. You cut 6 cm off. How long is the remaining piece?",
+    "answer": "9 cm",
+    "hints": [
+      "Subtract: 15 - 6 = ?"
+    ],
+    "solution": "15 cm - 6 cm = 9 cm remaining.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "measure-length-standard-sup-m4",
+    "topicId": "measure-length-standard",
+    "difficulty": "medium",
+    "question": "How many centimeters are in 1 meter?",
+    "answer": "100",
+    "hints": [
+      "The prefix 'centi' means hundredth.",
+      "1 meter = 100 centimeters."
+    ],
+    "solution": "There are 100 centimeters in 1 meter. 'Centi' means hundredth, so a centimeter is 1/100 of a meter.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "measure-length-standard-sup-h0",
+    "topicId": "measure-length-standard",
+    "difficulty": "hard",
+    "question": "A table is 3 feet long. How many inches is that?",
+    "answer": "36",
+    "hints": [
+      "1 foot = 12 inches.",
+      "3 feet = 3 x 12."
+    ],
+    "solution": "3 feet x 12 inches per foot = 36 inches.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "measure-length-standard-sup-h1",
+    "topicId": "measure-length-standard",
+    "difficulty": "hard",
+    "question": "Emma measures a book as 22 cm. Noah starts his ruler at the 3 cm mark instead of 0 and reads 25 cm at the other end. What is the actual length Noah measured?",
+    "answer": "22 cm",
+    "hints": [
+      "Noah did not start at 0. He started at 3 cm and ended at 25 cm.",
+      "The actual length is the difference: 25 - 3."
+    ],
+    "solution": "Noah started at 3 cm and ended at 25 cm. Actual length = 25 - 3 = 22 cm. It matches Emma's measurement. You must subtract if you do not start at 0.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "measure-length-standard-sup-h2",
+    "topicId": "measure-length-standard",
+    "difficulty": "hard",
+    "question": "A caterpillar is 4 cm long. It grows to 11 cm. How many centimeters did it grow?",
+    "answer": "7 cm",
+    "hints": [
+      "Find the difference: 11 - 4."
+    ],
+    "solution": "Growth = 11 cm - 4 cm = 7 cm. The caterpillar grew 7 centimeters.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "measure-length-standard-sup-h3",
+    "topicId": "measure-length-standard",
+    "difficulty": "hard",
+    "question": "A bookshelf is 90 cm tall. Is it taller or shorter than 1 meter?",
+    "answer": "shorter",
+    "hints": [
+      "1 meter = 100 cm.",
+      "Compare: 90 cm vs. 100 cm."
+    ],
+    "solution": "1 meter = 100 cm. The bookshelf is 90 cm, which is 10 cm less than 1 meter. It is shorter than 1 meter.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "measure-length-standard-sup-h4",
+    "topicId": "measure-length-standard",
+    "difficulty": "hard",
+    "question": "Two ropes are each 45 cm long. If tied end to end, the knot uses up 5 cm. How long is the combined rope?",
+    "answer": "85 cm",
+    "hints": [
+      "Total without knot: 45 + 45 = 90 cm.",
+      "The knot takes away 5 cm: 90 - 5 = ?"
+    ],
+    "solution": "45 cm + 45 cm = 90 cm total. The knot uses 5 cm. 90 - 5 = 85 cm for the combined rope.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  }
+]

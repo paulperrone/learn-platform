@@ -1,0 +1,652 @@
+[
+  {
+    "id": "divide-multi-digit-gen-e0",
+    "topicId": "divide-multi-digit",
+    "difficulty": "easy",
+    "question": "What is 320 ÷ 16?",
+    "answer": "20",
+    "hints": [
+      "Estimate: about how many 16s fit in 320?"
+    ],
+    "solution": "320 ÷ 16 = 20. Check: 16 × 20 = 320.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-gen-e1",
+    "topicId": "divide-multi-digit",
+    "difficulty": "easy",
+    "question": "What is 240 ÷ 16?",
+    "answer": "15",
+    "hints": [
+      "Estimate: about how many 16s fit in 240?"
+    ],
+    "solution": "240 ÷ 16 = 15. Check: 16 × 15 = 240.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-gen-e2",
+    "topicId": "divide-multi-digit",
+    "difficulty": "easy",
+    "question": "What is 252 ÷ 18?",
+    "answer": "14",
+    "hints": [
+      "Estimate: about how many 18s fit in 252?"
+    ],
+    "solution": "252 ÷ 18 = 14. Check: 18 × 14 = 252.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-gen-e3",
+    "topicId": "divide-multi-digit",
+    "difficulty": "easy",
+    "question": "What is 656 ÷ 16?",
+    "answer": "41",
+    "hints": [
+      "Estimate: about how many 16s fit in 656?"
+    ],
+    "solution": "656 ÷ 16 = 41. Check: 16 × 41 = 656.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-gen-e4",
+    "topicId": "divide-multi-digit",
+    "difficulty": "easy",
+    "question": "What is 190 ÷ 19?",
+    "answer": "10",
+    "hints": [
+      "Estimate: about how many 19s fit in 190?"
+    ],
+    "solution": "190 ÷ 19 = 10. Check: 19 × 10 = 190.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-gen-e5",
+    "topicId": "divide-multi-digit",
+    "difficulty": "easy",
+    "question": "What is 250 ÷ 10?",
+    "answer": "25",
+    "hints": [
+      "Estimate: about how many 10s fit in 250?"
+    ],
+    "solution": "250 ÷ 10 = 25. Check: 10 × 25 = 250.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-gen-e6",
+    "topicId": "divide-multi-digit",
+    "difficulty": "easy",
+    "question": "What is 420 ÷ 20?",
+    "answer": "21",
+    "hints": [
+      "Estimate: about how many 20s fit in 420?"
+    ],
+    "solution": "420 ÷ 20 = 21. Check: 20 × 21 = 420.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-gen-e7",
+    "topicId": "divide-multi-digit",
+    "difficulty": "easy",
+    "question": "What is 912 ÷ 19?",
+    "answer": "48",
+    "hints": [
+      "Estimate: about how many 19s fit in 912?"
+    ],
+    "solution": "912 ÷ 19 = 48. Check: 19 × 48 = 912.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-gen-e8",
+    "topicId": "divide-multi-digit",
+    "difficulty": "easy",
+    "question": "What is 182 ÷ 13?",
+    "answer": "14",
+    "hints": [
+      "Estimate: about how many 13s fit in 182?"
+    ],
+    "solution": "182 ÷ 13 = 14. Check: 13 × 14 = 182.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-gen-e9",
+    "topicId": "divide-multi-digit",
+    "difficulty": "easy",
+    "question": "What is 120 ÷ 10?",
+    "answer": "12",
+    "hints": [
+      "Estimate: about how many 10s fit in 120?"
+    ],
+    "solution": "120 ÷ 10 = 12. Check: 10 × 12 = 120.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-gen-e10",
+    "topicId": "divide-multi-digit",
+    "difficulty": "easy",
+    "question": "What is 418 ÷ 19?",
+    "answer": "22",
+    "hints": [
+      "Estimate: about how many 19s fit in 418?"
+    ],
+    "solution": "418 ÷ 19 = 22. Check: 19 × 22 = 418.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-gen-e11",
+    "topicId": "divide-multi-digit",
+    "difficulty": "easy",
+    "question": "What is 874 ÷ 19?",
+    "answer": "46",
+    "hints": [
+      "Estimate: about how many 19s fit in 874?"
+    ],
+    "solution": "874 ÷ 19 = 46. Check: 19 × 46 = 874.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-gen-e12",
+    "topicId": "divide-multi-digit",
+    "difficulty": "easy",
+    "question": "What is 312 ÷ 12?",
+    "answer": "26",
+    "hints": [
+      "Estimate: about how many 12s fit in 312?"
+    ],
+    "solution": "312 ÷ 12 = 26. Check: 12 × 26 = 312.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-gen-e13",
+    "topicId": "divide-multi-digit",
+    "difficulty": "easy",
+    "question": "What is 460 ÷ 20?",
+    "answer": "23",
+    "hints": [
+      "Estimate: about how many 20s fit in 460?"
+    ],
+    "solution": "460 ÷ 20 = 23. Check: 20 × 23 = 460.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-gen-e14",
+    "topicId": "divide-multi-digit",
+    "difficulty": "easy",
+    "question": "What is 504 ÷ 12?",
+    "answer": "42",
+    "hints": [
+      "Estimate: about how many 12s fit in 504?"
+    ],
+    "solution": "504 ÷ 12 = 42. Check: 12 × 42 = 504.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-gen-m0",
+    "topicId": "divide-multi-digit",
+    "difficulty": "medium",
+    "question": "What is 1710 ÷ 19?",
+    "answer": "90",
+    "hints": [
+      "Estimate: about how many 19s fit in 1710?"
+    ],
+    "solution": "1710 ÷ 19 = 90. Check: 19 × 90 = 1710.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-gen-m1",
+    "topicId": "divide-multi-digit",
+    "difficulty": "medium",
+    "question": "What is 276 ÷ 23?",
+    "answer": "12",
+    "hints": [
+      "Estimate: about how many 23s fit in 276?"
+    ],
+    "solution": "276 ÷ 23 = 12. Check: 23 × 12 = 276.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-gen-m2",
+    "topicId": "divide-multi-digit",
+    "difficulty": "medium",
+    "question": "What is 532 ÷ 38?",
+    "answer": "14",
+    "hints": [
+      "Estimate: about how many 38s fit in 532?"
+    ],
+    "solution": "532 ÷ 38 = 14. Check: 38 × 14 = 532.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-gen-m3",
+    "topicId": "divide-multi-digit",
+    "difficulty": "medium",
+    "question": "What is 600 ÷ 25?",
+    "answer": "24",
+    "hints": [
+      "Estimate: about how many 25s fit in 600?"
+    ],
+    "solution": "600 ÷ 25 = 24. Check: 25 × 24 = 600.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-gen-m4",
+    "topicId": "divide-multi-digit",
+    "difficulty": "medium",
+    "question": "What is 2910 ÷ 30?",
+    "answer": "97",
+    "hints": [
+      "Estimate: about how many 30s fit in 2910?"
+    ],
+    "solution": "2910 ÷ 30 = 97. Check: 30 × 97 = 2910.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-gen-m5",
+    "topicId": "divide-multi-digit",
+    "difficulty": "medium",
+    "question": "What is 640 ÷ 16?",
+    "answer": "40",
+    "hints": [
+      "Estimate: about how many 16s fit in 640?"
+    ],
+    "solution": "640 ÷ 16 = 40. Check: 16 × 40 = 640.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-gen-m6",
+    "topicId": "divide-multi-digit",
+    "difficulty": "medium",
+    "question": "What is 1680 ÷ 48?",
+    "answer": "35",
+    "hints": [
+      "Estimate: about how many 48s fit in 1680?"
+    ],
+    "solution": "1680 ÷ 48 = 35. Check: 48 × 35 = 1680.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-gen-m7",
+    "topicId": "divide-multi-digit",
+    "difficulty": "medium",
+    "question": "What is 1560 ÷ 40?",
+    "answer": "39",
+    "hints": [
+      "Estimate: about how many 40s fit in 1560?"
+    ],
+    "solution": "1560 ÷ 40 = 39. Check: 40 × 39 = 1560.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-gen-m8",
+    "topicId": "divide-multi-digit",
+    "difficulty": "medium",
+    "question": "What is 1248 ÷ 16?",
+    "answer": "78",
+    "hints": [
+      "Estimate: about how many 16s fit in 1248?"
+    ],
+    "solution": "1248 ÷ 16 = 78. Check: 16 × 78 = 1248.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-gen-m9",
+    "topicId": "divide-multi-digit",
+    "difficulty": "medium",
+    "question": "What is 1260 ÷ 30?",
+    "answer": "42",
+    "hints": [
+      "Estimate: about how many 30s fit in 1260?"
+    ],
+    "solution": "1260 ÷ 30 = 42. Check: 30 × 42 = 1260.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-gen-m10",
+    "topicId": "divide-multi-digit",
+    "difficulty": "medium",
+    "question": "What is 705 ÷ 47?",
+    "answer": "15",
+    "hints": [
+      "Estimate: about how many 47s fit in 705?"
+    ],
+    "solution": "705 ÷ 47 = 15. Check: 47 × 15 = 705.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-gen-m11",
+    "topicId": "divide-multi-digit",
+    "difficulty": "medium",
+    "question": "What is 351 ÷ 27?",
+    "answer": "13",
+    "hints": [
+      "Estimate: about how many 27s fit in 351?"
+    ],
+    "solution": "351 ÷ 27 = 13. Check: 27 × 13 = 351.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-gen-m12",
+    "topicId": "divide-multi-digit",
+    "difficulty": "medium",
+    "question": "What is 1890 ÷ 27?",
+    "answer": "70",
+    "hints": [
+      "Estimate: about how many 27s fit in 1890?"
+    ],
+    "solution": "1890 ÷ 27 = 70. Check: 27 × 70 = 1890.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-gen-m13",
+    "topicId": "divide-multi-digit",
+    "difficulty": "medium",
+    "question": "What is 529 ÷ 23?",
+    "answer": "23",
+    "hints": [
+      "Estimate: about how many 23s fit in 529?"
+    ],
+    "solution": "529 ÷ 23 = 23. Check: 23 × 23 = 529.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-gen-m14",
+    "topicId": "divide-multi-digit",
+    "difficulty": "medium",
+    "question": "What is 850 ÷ 10?",
+    "answer": "85",
+    "hints": [
+      "Estimate: about how many 10s fit in 850?"
+    ],
+    "solution": "850 ÷ 10 = 85. Check: 10 × 85 = 850.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-gen-m15",
+    "topicId": "divide-multi-digit",
+    "difficulty": "medium",
+    "question": "What is 1080 ÷ 27?",
+    "answer": "40",
+    "hints": [
+      "Estimate: about how many 27s fit in 1080?"
+    ],
+    "solution": "1080 ÷ 27 = 40. Check: 27 × 40 = 1080.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-gen-m16",
+    "topicId": "divide-multi-digit",
+    "difficulty": "medium",
+    "question": "What is 1680 ÷ 30?",
+    "answer": "56",
+    "hints": [
+      "Estimate: about how many 30s fit in 1680?"
+    ],
+    "solution": "1680 ÷ 30 = 56. Check: 30 × 56 = 1680.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-gen-m17",
+    "topicId": "divide-multi-digit",
+    "difficulty": "medium",
+    "question": "What is 272 ÷ 17?",
+    "answer": "16",
+    "hints": [
+      "Estimate: about how many 17s fit in 272?"
+    ],
+    "solution": "272 ÷ 17 = 16. Check: 17 × 16 = 272.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-gen-m18",
+    "topicId": "divide-multi-digit",
+    "difficulty": "medium",
+    "question": "What is 2911 ÷ 41?",
+    "answer": "71",
+    "hints": [
+      "Estimate: about how many 41s fit in 2911?"
+    ],
+    "solution": "2911 ÷ 41 = 71. Check: 41 × 71 = 2911.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-gen-m19",
+    "topicId": "divide-multi-digit",
+    "difficulty": "medium",
+    "question": "What is 1230 ÷ 15?",
+    "answer": "82",
+    "hints": [
+      "Estimate: about how many 15s fit in 1230?"
+    ],
+    "solution": "1230 ÷ 15 = 82. Check: 15 × 82 = 1230.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-gen-h0",
+    "topicId": "divide-multi-digit",
+    "difficulty": "hard",
+    "question": "What is 1536 ÷ 96?",
+    "answer": "16",
+    "hints": [
+      "Estimate: about how many 96s fit in 1536?"
+    ],
+    "solution": "1536 ÷ 96 = 16. Check: 96 × 16 = 1536.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-gen-h1",
+    "topicId": "divide-multi-digit",
+    "difficulty": "hard",
+    "question": "What is 2184 ÷ 28?",
+    "answer": "78",
+    "hints": [
+      "Estimate: about how many 28s fit in 2184?"
+    ],
+    "solution": "2184 ÷ 28 = 78. Check: 28 × 78 = 2184.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-gen-h2",
+    "topicId": "divide-multi-digit",
+    "difficulty": "hard",
+    "question": "What is 4928 ÷ 77?",
+    "answer": "64",
+    "hints": [
+      "Estimate: about how many 77s fit in 4928?"
+    ],
+    "solution": "4928 ÷ 77 = 64. Check: 77 × 64 = 4928.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-gen-h3",
+    "topicId": "divide-multi-digit",
+    "difficulty": "hard",
+    "question": "What is 620 ÷ 31?",
+    "answer": "20",
+    "hints": [
+      "Estimate: about how many 31s fit in 620?"
+    ],
+    "solution": "620 ÷ 31 = 20. Check: 31 × 20 = 620.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-gen-h4",
+    "topicId": "divide-multi-digit",
+    "difficulty": "hard",
+    "question": "What is 2911 ÷ 71?",
+    "answer": "41",
+    "hints": [
+      "Estimate: about how many 71s fit in 2911?"
+    ],
+    "solution": "2911 ÷ 71 = 41. Check: 71 × 41 = 2911.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-gen-h5",
+    "topicId": "divide-multi-digit",
+    "difficulty": "hard",
+    "question": "What is 2816 ÷ 44?",
+    "answer": "64",
+    "hints": [
+      "Estimate: about how many 44s fit in 2816?"
+    ],
+    "solution": "2816 ÷ 44 = 64. Check: 44 × 64 = 2816.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-gen-h6",
+    "topicId": "divide-multi-digit",
+    "difficulty": "hard",
+    "question": "What is 3960 ÷ 88?",
+    "answer": "45",
+    "hints": [
+      "Estimate: about how many 88s fit in 3960?"
+    ],
+    "solution": "3960 ÷ 88 = 45. Check: 88 × 45 = 3960.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-gen-h7",
+    "topicId": "divide-multi-digit",
+    "difficulty": "hard",
+    "question": "What is 4293 ÷ 81?",
+    "answer": "53",
+    "hints": [
+      "Estimate: about how many 81s fit in 4293?"
+    ],
+    "solution": "4293 ÷ 81 = 53. Check: 81 × 53 = 4293.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-gen-h8",
+    "topicId": "divide-multi-digit",
+    "difficulty": "hard",
+    "question": "What is 840 ÷ 20?",
+    "answer": "42",
+    "hints": [
+      "Estimate: about how many 20s fit in 840?"
+    ],
+    "solution": "840 ÷ 20 = 42. Check: 20 × 42 = 840.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-gen-h9",
+    "topicId": "divide-multi-digit",
+    "difficulty": "hard",
+    "question": "What is 3774 ÷ 51?",
+    "answer": "74",
+    "hints": [
+      "Estimate: about how many 51s fit in 3774?"
+    ],
+    "solution": "3774 ÷ 51 = 74. Check: 51 × 74 = 3774.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-gen-h10",
+    "topicId": "divide-multi-digit",
+    "difficulty": "hard",
+    "question": "What is 3690 ÷ 45?",
+    "answer": "82",
+    "hints": [
+      "Estimate: about how many 45s fit in 3690?"
+    ],
+    "solution": "3690 ÷ 45 = 82. Check: 45 × 82 = 3690.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-gen-h11",
+    "topicId": "divide-multi-digit",
+    "difficulty": "hard",
+    "question": "What is 1032 ÷ 86?",
+    "answer": "12",
+    "hints": [
+      "Estimate: about how many 86s fit in 1032?"
+    ],
+    "solution": "1032 ÷ 86 = 12. Check: 86 × 12 = 1032.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-gen-h12",
+    "topicId": "divide-multi-digit",
+    "difficulty": "hard",
+    "question": "What is 8736 ÷ 96?",
+    "answer": "91",
+    "hints": [
+      "Estimate: about how many 96s fit in 8736?"
+    ],
+    "solution": "8736 ÷ 96 = 91. Check: 96 × 91 = 8736.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-gen-h13",
+    "topicId": "divide-multi-digit",
+    "difficulty": "hard",
+    "question": "What is 3770 ÷ 65?",
+    "answer": "58",
+    "hints": [
+      "Estimate: about how many 65s fit in 3770?"
+    ],
+    "solution": "3770 ÷ 65 = 58. Check: 65 × 58 = 3770.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-multi-digit-gen-h14",
+    "topicId": "divide-multi-digit",
+    "difficulty": "hard",
+    "question": "What is 4389 ÷ 57?",
+    "answer": "77",
+    "hints": [
+      "Estimate: about how many 57s fit in 4389?"
+    ],
+    "solution": "4389 ÷ 57 = 77. Check: 57 × 77 = 4389.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  }
+]

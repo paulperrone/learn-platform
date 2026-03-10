@@ -1,0 +1,212 @@
+[
+  {
+    "id": "square-roots-intro-sup-e0",
+    "topicId": "square-roots-intro",
+    "difficulty": "easy",
+    "question": "What is √49?",
+    "answer": "7",
+    "hints": [
+      "What number times itself equals 49?",
+      "7 × 7 = 49."
+    ],
+    "solution": "√49 = 7 because 7 × 7 = 49. 49 is a perfect square.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "square-roots-intro-sup-e1",
+    "topicId": "square-roots-intro",
+    "difficulty": "easy",
+    "question": "Is 36 a perfect square? Answer yes or no.",
+    "answer": "yes",
+    "hints": [
+      "A perfect square is the result of a whole number multiplied by itself.",
+      "6 × 6 = ?"
+    ],
+    "solution": "Yes. 36 = 6 × 6, so 36 is a perfect square. Its square root is 6.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "square-roots-intro-sup-e2",
+    "topicId": "square-roots-intro",
+    "difficulty": "easy",
+    "question": "What is √1?",
+    "answer": "1",
+    "hints": [
+      "What number times itself equals 1?",
+      "1 × 1 = 1."
+    ],
+    "solution": "√1 = 1 because 1 × 1 = 1. The number 1 is the smallest perfect square.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "square-roots-intro-sup-e3",
+    "topicId": "square-roots-intro",
+    "difficulty": "easy",
+    "question": "What perfect square comes right after 25? Type the number.",
+    "answer": "36",
+    "hints": [
+      "25 = 5 × 5. What is the next whole number after 5?",
+      "6 × 6 = ?"
+    ],
+    "solution": "25 = 5². The next perfect square is 6² = 36.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "square-roots-intro-sup-e4",
+    "topicId": "square-roots-intro",
+    "difficulty": "easy",
+    "question": "What is √100?",
+    "answer": "10",
+    "hints": [
+      "What number multiplied by itself gives 100?",
+      "10 × 10 = 100."
+    ],
+    "solution": "√100 = 10 because 10 × 10 = 100.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "square-roots-intro-sup-m0",
+    "topicId": "square-roots-intro",
+    "difficulty": "medium",
+    "question": "Between which two consecutive whole numbers does √50 fall?",
+    "answer": "7 and 8",
+    "hints": [
+      "Find perfect squares near 50: 7² = 49 and 8² = 64.",
+      "Since 49 < 50 < 64, √50 is between √49 and √64."
+    ],
+    "solution": "7² = 49 and 8² = 64. Since 49 < 50 < 64, we have 7 < √50 < 8. So √50 falls between 7 and 8.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "square-roots-intro-sup-m1",
+    "topicId": "square-roots-intro",
+    "difficulty": "medium",
+    "question": "A student says: '√16 + √9 = √25.' Is this correct? Answer yes or no.",
+    "answer": "no",
+    "hints": [
+      "Calculate each side separately.",
+      "√16 = 4, √9 = 3, so the left side is 7. √25 = 5. Is 7 = 5?"
+    ],
+    "solution": "No. √16 + √9 = 4 + 3 = 7, but √25 = 5. Since 7 ≠ 5, the equation is false. Square roots do NOT distribute over addition: √a + √b ≠ √(a + b) in general.",
+    "cognitiveDemand": "error-analysis",
+    "source": "generated"
+  },
+  {
+    "id": "square-roots-intro-sup-m2",
+    "topicId": "square-roots-intro",
+    "difficulty": "medium",
+    "question": "A square garden has an area of 81 square feet. What is the length of one side?",
+    "answer": "9 feet",
+    "hints": [
+      "For a square, area = side × side = side².",
+      "If side² = 81, then side = √81."
+    ],
+    "solution": "Area of a square = side². If area = 81 ft², then side = √81 = 9 feet.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "square-roots-intro-sup-m3",
+    "topicId": "square-roots-intro",
+    "difficulty": "medium",
+    "question": "List all perfect squares between 50 and 100 (not including 100). Separate them with commas.",
+    "answer": "64, 81",
+    "hints": [
+      "Check 8² = 64, 9² = 81, 10² = 100.",
+      "Which of these are between 50 and 100 (not including 100)?"
+    ],
+    "solution": "7² = 49 (too small), 8² = 64, 9² = 81, 10² = 100 (excluded). The perfect squares between 50 and 100 are 64 and 81.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "square-roots-intro-sup-m4",
+    "topicId": "square-roots-intro",
+    "difficulty": "medium",
+    "question": "Is √0 defined? If so, what is its value?",
+    "answer": "0",
+    "hints": [
+      "What number times itself equals 0?",
+      "0 × 0 = 0."
+    ],
+    "solution": "Yes, √0 = 0 because 0 × 0 = 0. Zero is a perfect square.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "square-roots-intro-sup-h0",
+    "topicId": "square-roots-intro",
+    "difficulty": "hard",
+    "question": "Without a calculator, estimate √40 to the nearest tenth.",
+    "answer": "6.3",
+    "hints": [
+      "6² = 36 and 7² = 49, so √40 is between 6 and 7.",
+      "40 is closer to 36 than to 49. Try 6.3: 6.3² = 39.69. Try 6.4: 6.4² = 40.96."
+    ],
+    "solution": "6² = 36 and 7² = 49. Since 40 is between them, √40 is between 6 and 7. Testing: 6.3² = 39.69 and 6.4² = 40.96. Since 40 is closer to 39.69, √40 ≈ 6.3.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "square-roots-intro-sup-h1",
+    "topicId": "square-roots-intro",
+    "difficulty": "hard",
+    "question": "Explain why there is no real number whose square is -4. Answer in one sentence.",
+    "answer": "Any real number squared is non-negative, so no real number times itself can equal -4.",
+    "hints": [
+      "What happens when you square a positive number? A negative number? Zero?",
+      "Positive × positive = positive. Negative × negative = positive. 0 × 0 = 0."
+    ],
+    "solution": "No real number squared gives a negative result: positive × positive = positive, negative × negative = positive, and 0 × 0 = 0. Therefore √(-4) has no real value.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "square-roots-intro-sup-h2",
+    "topicId": "square-roots-intro",
+    "difficulty": "hard",
+    "question": "A student says: 'Since 2.5² = 6.25, then √6 must be less than 2.5.' Is the student's reasoning valid? Answer yes or no.",
+    "answer": "yes",
+    "hints": [
+      "If 2.5² = 6.25, and 6 < 6.25, what does that tell us about √6 vs. 2.5?",
+      "The square root function is increasing: larger input → larger output."
+    ],
+    "solution": "Yes. Since 2.5² = 6.25 and 6 < 6.25, we know √6 < √6.25 = 2.5. The reasoning is valid because the square root function preserves order: if a < b, then √a < √b.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "square-roots-intro-sup-h3",
+    "topicId": "square-roots-intro",
+    "difficulty": "hard",
+    "question": "The area of a square tile is 144 cm². You want to put 5 tiles in a row with no gaps. What is the total length of the row in cm?",
+    "answer": "60",
+    "hints": [
+      "First find the side length of one tile: √144.",
+      "Then multiply the side length by 5 tiles."
+    ],
+    "solution": "Side of one tile = √144 = 12 cm. Five tiles in a row: 5 × 12 = 60 cm.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "square-roots-intro-sup-h4",
+    "topicId": "square-roots-intro",
+    "difficulty": "hard",
+    "question": "A student claims: 'The square root of any even perfect square is even, and the square root of any odd perfect square is odd.' Test this claim with examples. Is it true or false?",
+    "answer": "true",
+    "hints": [
+      "Test even perfect squares: √4 = 2, √16 = 4, √36 = 6. Are these all even?",
+      "Test odd perfect squares: √9 = 3, √25 = 5, √49 = 7. Are these all odd?"
+    ],
+    "solution": "True. Even × even = even (so even perfect squares have even roots: 2²=4, 4²=16, 6²=36). Odd × odd = odd (so odd perfect squares have odd roots: 3²=9, 5²=25, 7²=49). An even number squared is even; an odd number squared is odd.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  }
+]

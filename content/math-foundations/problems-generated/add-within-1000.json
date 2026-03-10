@@ -1,0 +1,702 @@
+[
+  {
+    "id": "add-within-1000-gen-e0",
+    "topicId": "add-within-1000",
+    "difficulty": "easy",
+    "question": "What is 139 + 170?",
+    "answer": "309",
+    "hints": [
+      "Start with 139 and count up 170 more.",
+      "Add tens first: 130 + 170 = 300."
+    ],
+    "solution": "139 + 170 = 309.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-1000-gen-e1",
+    "topicId": "add-within-1000",
+    "difficulty": "easy",
+    "question": "What is 138 + 78?",
+    "answer": "216",
+    "hints": [
+      "Start with 138 and count up 78 more.",
+      "Add tens first: 130 + 70 = 200."
+    ],
+    "solution": "138 + 78 = 216.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-1000-gen-e2",
+    "topicId": "add-within-1000",
+    "difficulty": "easy",
+    "question": "What is 41 + 75?",
+    "answer": "116",
+    "hints": [
+      "Start with 41 and count up 75 more.",
+      "Add tens first: 40 + 70 = 110."
+    ],
+    "solution": "41 + 75 = 116.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-1000-gen-e3",
+    "topicId": "add-within-1000",
+    "difficulty": "easy",
+    "question": "What is 33 + 68?",
+    "answer": "101",
+    "hints": [
+      "Start with 33 and count up 68 more.",
+      "Add tens first: 30 + 60 = 90."
+    ],
+    "solution": "33 + 68 = 101.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-1000-gen-e4",
+    "topicId": "add-within-1000",
+    "difficulty": "easy",
+    "question": "What is 64 + 198?",
+    "answer": "262",
+    "hints": [
+      "Start with 64 and count up 198 more.",
+      "Add tens first: 60 + 190 = 250."
+    ],
+    "solution": "64 + 198 = 262.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-1000-gen-e5",
+    "topicId": "add-within-1000",
+    "difficulty": "easy",
+    "question": "What is 256 + 63?",
+    "answer": "319",
+    "hints": [
+      "Start with 256 and count up 63 more.",
+      "Add tens first: 250 + 60 = 310."
+    ],
+    "solution": "256 + 63 = 319.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-1000-gen-e6",
+    "topicId": "add-within-1000",
+    "difficulty": "easy",
+    "question": "What is 72 + 117?",
+    "answer": "189",
+    "hints": [
+      "Start with 72 and count up 117 more.",
+      "Add tens first: 70 + 110 = 180."
+    ],
+    "solution": "72 + 117 = 189.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-1000-gen-e7",
+    "topicId": "add-within-1000",
+    "difficulty": "easy",
+    "question": "What is 237 + 248?",
+    "answer": "485",
+    "hints": [
+      "Start with 237 and count up 248 more.",
+      "Add tens first: 230 + 240 = 470."
+    ],
+    "solution": "237 + 248 = 485.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-1000-gen-e8",
+    "topicId": "add-within-1000",
+    "difficulty": "easy",
+    "question": "What is 376 + 195?",
+    "answer": "571",
+    "hints": [
+      "Start with 376 and count up 195 more.",
+      "Add tens first: 370 + 190 = 560."
+    ],
+    "solution": "376 + 195 = 571.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-1000-gen-e9",
+    "topicId": "add-within-1000",
+    "difficulty": "easy",
+    "question": "What is 172 + 138?",
+    "answer": "310",
+    "hints": [
+      "Start with 172 and count up 138 more.",
+      "Add tens first: 170 + 130 = 300."
+    ],
+    "solution": "172 + 138 = 310.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-1000-gen-e10",
+    "topicId": "add-within-1000",
+    "difficulty": "easy",
+    "question": "What is 397 + 99?",
+    "answer": "496",
+    "hints": [
+      "Start with 397 and count up 99 more.",
+      "Add tens first: 390 + 90 = 480."
+    ],
+    "solution": "397 + 99 = 496.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-1000-gen-e11",
+    "topicId": "add-within-1000",
+    "difficulty": "easy",
+    "question": "What is 221 + 60?",
+    "answer": "281",
+    "hints": [
+      "Start with 221 and count up 60 more.",
+      "Add tens first: 220 + 60 = 280."
+    ],
+    "solution": "221 + 60 = 281.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-1000-gen-e12",
+    "topicId": "add-within-1000",
+    "difficulty": "easy",
+    "question": "What is 106 + 254?",
+    "answer": "360",
+    "hints": [
+      "Start with 106 and count up 254 more.",
+      "Add tens first: 100 + 250 = 350."
+    ],
+    "solution": "106 + 254 = 360.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-1000-gen-e13",
+    "topicId": "add-within-1000",
+    "difficulty": "easy",
+    "question": "What is 176 + 30?",
+    "answer": "206",
+    "hints": [
+      "Start with 176 and count up 30 more.",
+      "Add tens first: 170 + 30 = 200."
+    ],
+    "solution": "176 + 30 = 206.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-1000-gen-e14",
+    "topicId": "add-within-1000",
+    "difficulty": "easy",
+    "question": "What is 113 + 235?",
+    "answer": "348",
+    "hints": [
+      "Start with 113 and count up 235 more.",
+      "Add tens first: 110 + 230 = 340."
+    ],
+    "solution": "113 + 235 = 348.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-1000-gen-m0",
+    "topicId": "add-within-1000",
+    "difficulty": "medium",
+    "question": "What is 214 + 568?",
+    "answer": "782",
+    "hints": [
+      "Start with 214 and count up 568 more.",
+      "Add tens first: 210 + 560 = 770."
+    ],
+    "solution": "214 + 568 = 782.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-1000-gen-m1",
+    "topicId": "add-within-1000",
+    "difficulty": "medium",
+    "question": "What is 459 + 438?",
+    "answer": "897",
+    "hints": [
+      "Start with 459 and count up 438 more.",
+      "Add tens first: 450 + 430 = 880."
+    ],
+    "solution": "459 + 438 = 897.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-1000-gen-m2",
+    "topicId": "add-within-1000",
+    "difficulty": "medium",
+    "question": "What is 536 + 209?",
+    "answer": "745",
+    "hints": [
+      "Start with 536 and count up 209 more.",
+      "Add tens first: 530 + 200 = 730."
+    ],
+    "solution": "536 + 209 = 745.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-1000-gen-m3",
+    "topicId": "add-within-1000",
+    "difficulty": "medium",
+    "question": "What is 210 + 393?",
+    "answer": "603",
+    "hints": [
+      "Start with 210 and count up 393 more.",
+      "Add tens first: 210 + 390 = 600."
+    ],
+    "solution": "210 + 393 = 603.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-1000-gen-m4",
+    "topicId": "add-within-1000",
+    "difficulty": "medium",
+    "question": "What is 411 + 469?",
+    "answer": "880",
+    "hints": [
+      "Start with 411 and count up 469 more.",
+      "Add tens first: 410 + 460 = 870."
+    ],
+    "solution": "411 + 469 = 880.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-1000-gen-m5",
+    "topicId": "add-within-1000",
+    "difficulty": "medium",
+    "question": "What is 335 + 462?",
+    "answer": "797",
+    "hints": [
+      "Start with 335 and count up 462 more.",
+      "Add tens first: 330 + 460 = 790."
+    ],
+    "solution": "335 + 462 = 797.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-1000-gen-m6",
+    "topicId": "add-within-1000",
+    "difficulty": "medium",
+    "question": "What is 410 + 381?",
+    "answer": "791",
+    "hints": [
+      "Start with 410 and count up 381 more.",
+      "Add tens first: 410 + 380 = 790."
+    ],
+    "solution": "410 + 381 = 791.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-1000-gen-m7",
+    "topicId": "add-within-1000",
+    "difficulty": "medium",
+    "question": "What is 359 + 506?",
+    "answer": "865",
+    "hints": [
+      "Start with 359 and count up 506 more.",
+      "Add tens first: 350 + 500 = 850."
+    ],
+    "solution": "359 + 506 = 865.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-1000-gen-m8",
+    "topicId": "add-within-1000",
+    "difficulty": "medium",
+    "question": "What is 301 + 269?",
+    "answer": "570",
+    "hints": [
+      "Start with 301 and count up 269 more.",
+      "Add tens first: 300 + 260 = 560."
+    ],
+    "solution": "301 + 269 = 570.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-1000-gen-m9",
+    "topicId": "add-within-1000",
+    "difficulty": "medium",
+    "question": "What is 327 + 538?",
+    "answer": "865",
+    "hints": [
+      "Start with 327 and count up 538 more.",
+      "Add tens first: 320 + 530 = 850."
+    ],
+    "solution": "327 + 538 = 865.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-1000-gen-m10",
+    "topicId": "add-within-1000",
+    "difficulty": "medium",
+    "question": "What is 350 + 414?",
+    "answer": "764",
+    "hints": [
+      "Start with 350 and count up 414 more.",
+      "Add tens first: 350 + 410 = 760."
+    ],
+    "solution": "350 + 414 = 764.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-1000-gen-m11",
+    "topicId": "add-within-1000",
+    "difficulty": "medium",
+    "question": "What is 493 + 107?",
+    "answer": "600",
+    "hints": [
+      "Start with 493 and count up 107 more.",
+      "Add tens first: 490 + 100 = 590."
+    ],
+    "solution": "493 + 107 = 600.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-1000-gen-m12",
+    "topicId": "add-within-1000",
+    "difficulty": "medium",
+    "question": "What is 388 + 379?",
+    "answer": "767",
+    "hints": [
+      "Start with 388 and count up 379 more.",
+      "Add tens first: 380 + 370 = 750."
+    ],
+    "solution": "388 + 379 = 767.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-1000-gen-m13",
+    "topicId": "add-within-1000",
+    "difficulty": "medium",
+    "question": "What is 387 + 517?",
+    "answer": "904",
+    "hints": [
+      "Start with 387 and count up 517 more.",
+      "Add tens first: 380 + 510 = 890."
+    ],
+    "solution": "387 + 517 = 904.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-1000-gen-m14",
+    "topicId": "add-within-1000",
+    "difficulty": "medium",
+    "question": "What is 495 + 166?",
+    "answer": "661",
+    "hints": [
+      "Start with 495 and count up 166 more.",
+      "Add tens first: 490 + 160 = 650."
+    ],
+    "solution": "495 + 166 = 661.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-1000-gen-m15",
+    "topicId": "add-within-1000",
+    "difficulty": "medium",
+    "question": "What is 592 + 153?",
+    "answer": "745",
+    "hints": [
+      "Start with 592 and count up 153 more.",
+      "Add tens first: 590 + 150 = 740."
+    ],
+    "solution": "592 + 153 = 745.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-1000-gen-m16",
+    "topicId": "add-within-1000",
+    "difficulty": "medium",
+    "question": "What is 374 + 514?",
+    "answer": "888",
+    "hints": [
+      "Start with 374 and count up 514 more.",
+      "Add tens first: 370 + 510 = 880."
+    ],
+    "solution": "374 + 514 = 888.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-1000-gen-m17",
+    "topicId": "add-within-1000",
+    "difficulty": "medium",
+    "question": "What is 342 + 327?",
+    "answer": "669",
+    "hints": [
+      "Start with 342 and count up 327 more.",
+      "Add tens first: 340 + 320 = 660."
+    ],
+    "solution": "342 + 327 = 669.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-1000-gen-m18",
+    "topicId": "add-within-1000",
+    "difficulty": "medium",
+    "question": "What is 351 + 170?",
+    "answer": "521",
+    "hints": [
+      "Start with 351 and count up 170 more.",
+      "Add tens first: 350 + 170 = 520."
+    ],
+    "solution": "351 + 170 = 521.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-1000-gen-m19",
+    "topicId": "add-within-1000",
+    "difficulty": "medium",
+    "question": "What is 375 + 338?",
+    "answer": "713",
+    "hints": [
+      "Start with 375 and count up 338 more.",
+      "Add tens first: 370 + 330 = 700."
+    ],
+    "solution": "375 + 338 = 713.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-1000-gen-h0",
+    "topicId": "add-within-1000",
+    "difficulty": "hard",
+    "question": "What is 492 + 421?",
+    "answer": "913",
+    "hints": [
+      "Start with 492 and count up 421 more.",
+      "Add tens first: 490 + 420 = 910."
+    ],
+    "solution": "492 + 421 = 913.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-1000-gen-h1",
+    "topicId": "add-within-1000",
+    "difficulty": "hard",
+    "question": "What is 352 + 249?",
+    "answer": "601",
+    "hints": [
+      "Start with 352 and count up 249 more.",
+      "Add tens first: 350 + 240 = 590."
+    ],
+    "solution": "352 + 249 = 601.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-1000-gen-h2",
+    "topicId": "add-within-1000",
+    "difficulty": "hard",
+    "question": "What is 346 + 278?",
+    "answer": "624",
+    "hints": [
+      "Start with 346 and count up 278 more.",
+      "Add tens first: 340 + 270 = 610."
+    ],
+    "solution": "346 + 278 = 624.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-1000-gen-h3",
+    "topicId": "add-within-1000",
+    "difficulty": "hard",
+    "question": "What is 623 + 357?",
+    "answer": "980",
+    "hints": [
+      "Start with 623 and count up 357 more.",
+      "Add tens first: 620 + 350 = 970."
+    ],
+    "solution": "623 + 357 = 980.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-1000-gen-h4",
+    "topicId": "add-within-1000",
+    "difficulty": "hard",
+    "question": "What is 426 + 510?",
+    "answer": "936",
+    "hints": [
+      "Start with 426 and count up 510 more.",
+      "Add tens first: 420 + 510 = 930."
+    ],
+    "solution": "426 + 510 = 936.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-1000-gen-h5",
+    "topicId": "add-within-1000",
+    "difficulty": "hard",
+    "question": "What is 475 + 457?",
+    "answer": "932",
+    "hints": [
+      "Start with 475 and count up 457 more.",
+      "Add tens first: 470 + 450 = 920."
+    ],
+    "solution": "475 + 457 = 932.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-1000-gen-h6",
+    "topicId": "add-within-1000",
+    "difficulty": "hard",
+    "question": "What is 366 + 270?",
+    "answer": "636",
+    "hints": [
+      "Start with 366 and count up 270 more.",
+      "Add tens first: 360 + 270 = 630."
+    ],
+    "solution": "366 + 270 = 636.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-1000-gen-h7",
+    "topicId": "add-within-1000",
+    "difficulty": "hard",
+    "question": "What is 538 + 328?",
+    "answer": "866",
+    "hints": [
+      "Start with 538 and count up 328 more.",
+      "Add tens first: 530 + 320 = 850."
+    ],
+    "solution": "538 + 328 = 866.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-1000-gen-h8",
+    "topicId": "add-within-1000",
+    "difficulty": "hard",
+    "question": "What is 599 + 338?",
+    "answer": "937",
+    "hints": [
+      "Start with 599 and count up 338 more.",
+      "Add tens first: 590 + 330 = 920."
+    ],
+    "solution": "599 + 338 = 937.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-1000-gen-h9",
+    "topicId": "add-within-1000",
+    "difficulty": "hard",
+    "question": "What is 484 + 206?",
+    "answer": "690",
+    "hints": [
+      "Start with 484 and count up 206 more.",
+      "Add tens first: 480 + 200 = 680."
+    ],
+    "solution": "484 + 206 = 690.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-1000-gen-h10",
+    "topicId": "add-within-1000",
+    "difficulty": "hard",
+    "question": "What is 684 + 253?",
+    "answer": "937",
+    "hints": [
+      "Start with 684 and count up 253 more.",
+      "Add tens first: 680 + 250 = 930."
+    ],
+    "solution": "684 + 253 = 937.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-1000-gen-h11",
+    "topicId": "add-within-1000",
+    "difficulty": "hard",
+    "question": "What is 484 + 405?",
+    "answer": "889",
+    "hints": [
+      "Start with 484 and count up 405 more.",
+      "Add tens first: 480 + 400 = 880."
+    ],
+    "solution": "484 + 405 = 889.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-1000-gen-h12",
+    "topicId": "add-within-1000",
+    "difficulty": "hard",
+    "question": "What is 459 + 410?",
+    "answer": "869",
+    "hints": [
+      "Start with 459 and count up 410 more.",
+      "Add tens first: 450 + 410 = 860."
+    ],
+    "solution": "459 + 410 = 869.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-1000-gen-h13",
+    "topicId": "add-within-1000",
+    "difficulty": "hard",
+    "question": "What is 666 + 295?",
+    "answer": "961",
+    "hints": [
+      "Start with 666 and count up 295 more.",
+      "Add tens first: 660 + 290 = 950."
+    ],
+    "solution": "666 + 295 = 961.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "add-within-1000-gen-h14",
+    "topicId": "add-within-1000",
+    "difficulty": "hard",
+    "question": "What is 624 + 356?",
+    "answer": "980",
+    "hints": [
+      "Start with 624 and count up 356 more.",
+      "Add tens first: 620 + 350 = 970."
+    ],
+    "solution": "624 + 356 = 980.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  }
+]

@@ -1,0 +1,652 @@
+[
+  {
+    "id": "divide-within-100-gen-e0",
+    "topicId": "divide-within-100",
+    "difficulty": "easy",
+    "question": "What is 12 ÷ 4?",
+    "answer": "3",
+    "hints": [
+      "Think: 4 × ? = 12."
+    ],
+    "solution": "12 ÷ 4 = 3 because 4 × 3 = 12.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-within-100-gen-e1",
+    "topicId": "divide-within-100",
+    "difficulty": "easy",
+    "question": "What is 16 ÷ 4?",
+    "answer": "4",
+    "hints": [
+      "Think: 4 × ? = 16."
+    ],
+    "solution": "16 ÷ 4 = 4 because 4 × 4 = 16.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-within-100-gen-e2",
+    "topicId": "divide-within-100",
+    "difficulty": "easy",
+    "question": "What is 20 ÷ 5?",
+    "answer": "4",
+    "hints": [
+      "Think: 5 × ? = 20."
+    ],
+    "solution": "20 ÷ 5 = 4 because 5 × 4 = 20.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-within-100-gen-e3",
+    "topicId": "divide-within-100",
+    "difficulty": "easy",
+    "question": "What is 2 ÷ 2?",
+    "answer": "1",
+    "hints": [
+      "Think: 2 × ? = 2."
+    ],
+    "solution": "2 ÷ 2 = 1 because 2 × 1 = 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-within-100-gen-e4",
+    "topicId": "divide-within-100",
+    "difficulty": "easy",
+    "question": "What is 16 ÷ 4?",
+    "answer": "4",
+    "hints": [
+      "Think: 4 × ? = 16."
+    ],
+    "solution": "16 ÷ 4 = 4 because 4 × 4 = 16.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-within-100-gen-e5",
+    "topicId": "divide-within-100",
+    "difficulty": "easy",
+    "question": "What is 5 ÷ 5?",
+    "answer": "1",
+    "hints": [
+      "Think: 5 × ? = 5."
+    ],
+    "solution": "5 ÷ 5 = 1 because 5 × 1 = 5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-within-100-gen-e6",
+    "topicId": "divide-within-100",
+    "difficulty": "easy",
+    "question": "What is 25 ÷ 5?",
+    "answer": "5",
+    "hints": [
+      "Think: 5 × ? = 25."
+    ],
+    "solution": "25 ÷ 5 = 5 because 5 × 5 = 25.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-within-100-gen-e7",
+    "topicId": "divide-within-100",
+    "difficulty": "easy",
+    "question": "What is 16 ÷ 4?",
+    "answer": "4",
+    "hints": [
+      "Think: 4 × ? = 16."
+    ],
+    "solution": "16 ÷ 4 = 4 because 4 × 4 = 16.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-within-100-gen-e8",
+    "topicId": "divide-within-100",
+    "difficulty": "easy",
+    "question": "What is 12 ÷ 3?",
+    "answer": "4",
+    "hints": [
+      "Think: 3 × ? = 12."
+    ],
+    "solution": "12 ÷ 3 = 4 because 3 × 4 = 12.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-within-100-gen-e9",
+    "topicId": "divide-within-100",
+    "difficulty": "easy",
+    "question": "What is 10 ÷ 5?",
+    "answer": "2",
+    "hints": [
+      "Think: 5 × ? = 10."
+    ],
+    "solution": "10 ÷ 5 = 2 because 5 × 2 = 10.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-within-100-gen-e10",
+    "topicId": "divide-within-100",
+    "difficulty": "easy",
+    "question": "What is 12 ÷ 3?",
+    "answer": "4",
+    "hints": [
+      "Think: 3 × ? = 12."
+    ],
+    "solution": "12 ÷ 3 = 4 because 3 × 4 = 12.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-within-100-gen-e11",
+    "topicId": "divide-within-100",
+    "difficulty": "easy",
+    "question": "What is 12 ÷ 4?",
+    "answer": "3",
+    "hints": [
+      "Think: 4 × ? = 12."
+    ],
+    "solution": "12 ÷ 4 = 3 because 4 × 3 = 12.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-within-100-gen-e12",
+    "topicId": "divide-within-100",
+    "difficulty": "easy",
+    "question": "What is 2 ÷ 2?",
+    "answer": "1",
+    "hints": [
+      "Think: 2 × ? = 2."
+    ],
+    "solution": "2 ÷ 2 = 1 because 2 × 1 = 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-within-100-gen-e13",
+    "topicId": "divide-within-100",
+    "difficulty": "easy",
+    "question": "What is 6 ÷ 3?",
+    "answer": "2",
+    "hints": [
+      "Think: 3 × ? = 6."
+    ],
+    "solution": "6 ÷ 3 = 2 because 3 × 2 = 6.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-within-100-gen-e14",
+    "topicId": "divide-within-100",
+    "difficulty": "easy",
+    "question": "What is 10 ÷ 5?",
+    "answer": "2",
+    "hints": [
+      "Think: 5 × ? = 10."
+    ],
+    "solution": "10 ÷ 5 = 2 because 5 × 2 = 10.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-within-100-gen-m0",
+    "topicId": "divide-within-100",
+    "difficulty": "medium",
+    "question": "What is 32 ÷ 4?",
+    "answer": "8",
+    "hints": [
+      "Think: 4 × ? = 32."
+    ],
+    "solution": "32 ÷ 4 = 8 because 4 × 8 = 32.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-within-100-gen-m1",
+    "topicId": "divide-within-100",
+    "difficulty": "medium",
+    "question": "What is 12 ÷ 6?",
+    "answer": "2",
+    "hints": [
+      "Think: 6 × ? = 12."
+    ],
+    "solution": "12 ÷ 6 = 2 because 6 × 2 = 12.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-within-100-gen-m2",
+    "topicId": "divide-within-100",
+    "difficulty": "medium",
+    "question": "What is 48 ÷ 6?",
+    "answer": "8",
+    "hints": [
+      "Think: 6 × ? = 48."
+    ],
+    "solution": "48 ÷ 6 = 8 because 6 × 8 = 48.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-within-100-gen-m3",
+    "topicId": "divide-within-100",
+    "difficulty": "medium",
+    "question": "What is 4 ÷ 2?",
+    "answer": "2",
+    "hints": [
+      "Think: 2 × ? = 4."
+    ],
+    "solution": "4 ÷ 2 = 2 because 2 × 2 = 4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-within-100-gen-m4",
+    "topicId": "divide-within-100",
+    "difficulty": "medium",
+    "question": "What is 21 ÷ 7?",
+    "answer": "3",
+    "hints": [
+      "Think: 7 × ? = 21."
+    ],
+    "solution": "21 ÷ 7 = 3 because 7 × 3 = 21.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-within-100-gen-m5",
+    "topicId": "divide-within-100",
+    "difficulty": "medium",
+    "question": "What is 32 ÷ 4?",
+    "answer": "8",
+    "hints": [
+      "Think: 4 × ? = 32."
+    ],
+    "solution": "32 ÷ 4 = 8 because 4 × 8 = 32.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-within-100-gen-m6",
+    "topicId": "divide-within-100",
+    "difficulty": "medium",
+    "question": "What is 8 ÷ 4?",
+    "answer": "2",
+    "hints": [
+      "Think: 4 × ? = 8."
+    ],
+    "solution": "8 ÷ 4 = 2 because 4 × 2 = 8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-within-100-gen-m7",
+    "topicId": "divide-within-100",
+    "difficulty": "medium",
+    "question": "What is 45 ÷ 9?",
+    "answer": "5",
+    "hints": [
+      "Think: 9 × ? = 45."
+    ],
+    "solution": "45 ÷ 9 = 5 because 9 × 5 = 45.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-within-100-gen-m8",
+    "topicId": "divide-within-100",
+    "difficulty": "medium",
+    "question": "What is 24 ÷ 3?",
+    "answer": "8",
+    "hints": [
+      "Think: 3 × ? = 24."
+    ],
+    "solution": "24 ÷ 3 = 8 because 3 × 8 = 24.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-within-100-gen-m9",
+    "topicId": "divide-within-100",
+    "difficulty": "medium",
+    "question": "What is 21 ÷ 7?",
+    "answer": "3",
+    "hints": [
+      "Think: 7 × ? = 21."
+    ],
+    "solution": "21 ÷ 7 = 3 because 7 × 3 = 21.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-within-100-gen-m10",
+    "topicId": "divide-within-100",
+    "difficulty": "medium",
+    "question": "What is 24 ÷ 6?",
+    "answer": "4",
+    "hints": [
+      "Think: 6 × ? = 24."
+    ],
+    "solution": "24 ÷ 6 = 4 because 6 × 4 = 24.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-within-100-gen-m11",
+    "topicId": "divide-within-100",
+    "difficulty": "medium",
+    "question": "What is 56 ÷ 7?",
+    "answer": "8",
+    "hints": [
+      "Think: 7 × ? = 56."
+    ],
+    "solution": "56 ÷ 7 = 8 because 7 × 8 = 56.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-within-100-gen-m12",
+    "topicId": "divide-within-100",
+    "difficulty": "medium",
+    "question": "What is 18 ÷ 3?",
+    "answer": "6",
+    "hints": [
+      "Think: 3 × ? = 18."
+    ],
+    "solution": "18 ÷ 3 = 6 because 3 × 6 = 18.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-within-100-gen-m13",
+    "topicId": "divide-within-100",
+    "difficulty": "medium",
+    "question": "What is 40 ÷ 8?",
+    "answer": "5",
+    "hints": [
+      "Think: 8 × ? = 40."
+    ],
+    "solution": "40 ÷ 8 = 5 because 8 × 5 = 40.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-within-100-gen-m14",
+    "topicId": "divide-within-100",
+    "difficulty": "medium",
+    "question": "What is 24 ÷ 8?",
+    "answer": "3",
+    "hints": [
+      "Think: 8 × ? = 24."
+    ],
+    "solution": "24 ÷ 8 = 3 because 8 × 3 = 24.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-within-100-gen-m15",
+    "topicId": "divide-within-100",
+    "difficulty": "medium",
+    "question": "What is 18 ÷ 6?",
+    "answer": "3",
+    "hints": [
+      "Think: 6 × ? = 18."
+    ],
+    "solution": "18 ÷ 6 = 3 because 6 × 3 = 18.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-within-100-gen-m16",
+    "topicId": "divide-within-100",
+    "difficulty": "medium",
+    "question": "What is 35 ÷ 5?",
+    "answer": "7",
+    "hints": [
+      "Think: 5 × ? = 35."
+    ],
+    "solution": "35 ÷ 5 = 7 because 5 × 7 = 35.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-within-100-gen-m17",
+    "topicId": "divide-within-100",
+    "difficulty": "medium",
+    "question": "What is 81 ÷ 9?",
+    "answer": "9",
+    "hints": [
+      "Think: 9 × ? = 81."
+    ],
+    "solution": "81 ÷ 9 = 9 because 9 × 9 = 81.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-within-100-gen-m18",
+    "topicId": "divide-within-100",
+    "difficulty": "medium",
+    "question": "What is 15 ÷ 3?",
+    "answer": "5",
+    "hints": [
+      "Think: 3 × ? = 15."
+    ],
+    "solution": "15 ÷ 3 = 5 because 3 × 5 = 15.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-within-100-gen-m19",
+    "topicId": "divide-within-100",
+    "difficulty": "medium",
+    "question": "What is 9 ÷ 3?",
+    "answer": "3",
+    "hints": [
+      "Think: 3 × ? = 9."
+    ],
+    "solution": "9 ÷ 3 = 3 because 3 × 3 = 9.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-within-100-gen-h0",
+    "topicId": "divide-within-100",
+    "difficulty": "hard",
+    "question": "What is 90 ÷ 10?",
+    "answer": "9",
+    "hints": [
+      "Think: 10 × ? = 90."
+    ],
+    "solution": "90 ÷ 10 = 9 because 10 × 9 = 90.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-within-100-gen-h1",
+    "topicId": "divide-within-100",
+    "difficulty": "hard",
+    "question": "What is 54 ÷ 9?",
+    "answer": "6",
+    "hints": [
+      "Think: 9 × ? = 54."
+    ],
+    "solution": "54 ÷ 9 = 6 because 9 × 6 = 54.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-within-100-gen-h2",
+    "topicId": "divide-within-100",
+    "difficulty": "hard",
+    "question": "What is 100 ÷ 10?",
+    "answer": "10",
+    "hints": [
+      "Think: 10 × ? = 100."
+    ],
+    "solution": "100 ÷ 10 = 10 because 10 × 10 = 100.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-within-100-gen-h3",
+    "topicId": "divide-within-100",
+    "difficulty": "hard",
+    "question": "What is 110 ÷ 11?",
+    "answer": "10",
+    "hints": [
+      "Think: 11 × ? = 110."
+    ],
+    "solution": "110 ÷ 11 = 10 because 11 × 10 = 110.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-within-100-gen-h4",
+    "topicId": "divide-within-100",
+    "difficulty": "hard",
+    "question": "What is 120 ÷ 12?",
+    "answer": "10",
+    "hints": [
+      "Think: 12 × ? = 120."
+    ],
+    "solution": "120 ÷ 12 = 10 because 12 × 10 = 120.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-within-100-gen-h5",
+    "topicId": "divide-within-100",
+    "difficulty": "hard",
+    "question": "What is 132 ÷ 11?",
+    "answer": "12",
+    "hints": [
+      "Think: 11 × ? = 132."
+    ],
+    "solution": "132 ÷ 11 = 12 because 11 × 12 = 132.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-within-100-gen-h6",
+    "topicId": "divide-within-100",
+    "difficulty": "hard",
+    "question": "What is 120 ÷ 12?",
+    "answer": "10",
+    "hints": [
+      "Think: 12 × ? = 120."
+    ],
+    "solution": "120 ÷ 12 = 10 because 12 × 10 = 120.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-within-100-gen-h7",
+    "topicId": "divide-within-100",
+    "difficulty": "hard",
+    "question": "What is 72 ÷ 6?",
+    "answer": "12",
+    "hints": [
+      "Think: 6 × ? = 72."
+    ],
+    "solution": "72 ÷ 6 = 12 because 6 × 12 = 72.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-within-100-gen-h8",
+    "topicId": "divide-within-100",
+    "difficulty": "hard",
+    "question": "What is 132 ÷ 12?",
+    "answer": "11",
+    "hints": [
+      "Think: 12 × ? = 132."
+    ],
+    "solution": "132 ÷ 12 = 11 because 12 × 11 = 132.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-within-100-gen-h9",
+    "topicId": "divide-within-100",
+    "difficulty": "hard",
+    "question": "What is 120 ÷ 10?",
+    "answer": "12",
+    "hints": [
+      "Think: 10 × ? = 120."
+    ],
+    "solution": "120 ÷ 10 = 12 because 10 × 12 = 120.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-within-100-gen-h10",
+    "topicId": "divide-within-100",
+    "difficulty": "hard",
+    "question": "What is 100 ÷ 10?",
+    "answer": "10",
+    "hints": [
+      "Think: 10 × ? = 100."
+    ],
+    "solution": "100 ÷ 10 = 10 because 10 × 10 = 100.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-within-100-gen-h11",
+    "topicId": "divide-within-100",
+    "difficulty": "hard",
+    "question": "What is 60 ÷ 10?",
+    "answer": "6",
+    "hints": [
+      "Think: 10 × ? = 60."
+    ],
+    "solution": "60 ÷ 10 = 6 because 10 × 6 = 60.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-within-100-gen-h12",
+    "topicId": "divide-within-100",
+    "difficulty": "hard",
+    "question": "What is 99 ÷ 11?",
+    "answer": "9",
+    "hints": [
+      "Think: 11 × ? = 99."
+    ],
+    "solution": "99 ÷ 11 = 9 because 11 × 9 = 99.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-within-100-gen-h13",
+    "topicId": "divide-within-100",
+    "difficulty": "hard",
+    "question": "What is 80 ÷ 10?",
+    "answer": "8",
+    "hints": [
+      "Think: 10 × ? = 80."
+    ],
+    "solution": "80 ÷ 10 = 8 because 10 × 8 = 80.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "divide-within-100-gen-h14",
+    "topicId": "divide-within-100",
+    "difficulty": "hard",
+    "question": "What is 64 ÷ 8?",
+    "answer": "8",
+    "hints": [
+      "Think: 8 × ? = 64."
+    ],
+    "solution": "64 ÷ 8 = 8 because 8 × 8 = 64.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  }
+]

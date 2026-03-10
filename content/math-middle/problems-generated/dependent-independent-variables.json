@@ -1,0 +1,212 @@
+[
+  {
+    "id": "dependent-independent-variables-sup-e0",
+    "topicId": "dependent-independent-variables",
+    "difficulty": "easy",
+    "question": "You earn $10 per hour. Which is the independent variable: the number of hours worked or the total earnings?",
+    "answer": "the number of hours worked",
+    "hints": [
+      "The independent variable is the one you choose or control.",
+      "You decide how many hours to work; the earnings depend on that."
+    ],
+    "solution": "Hours worked is the independent variable because you choose it. Total earnings is the dependent variable because it depends on how many hours you work.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "dependent-independent-variables-sup-e1",
+    "topicId": "dependent-independent-variables",
+    "difficulty": "easy",
+    "question": "As the number of books you read increases, your vocabulary grows. Which is the dependent variable?",
+    "answer": "vocabulary",
+    "hints": [
+      "The dependent variable is what changes as a result.",
+      "Vocabulary changes because of reading more books."
+    ],
+    "solution": "Vocabulary is the dependent variable because it changes in response to the number of books read (the independent variable).",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "dependent-independent-variables-sup-e2",
+    "topicId": "dependent-independent-variables",
+    "difficulty": "easy",
+    "question": "A plant's height depends on the number of days since it was planted. Which variable would go on the x-axis of a graph?",
+    "answer": "number of days",
+    "hints": [
+      "The independent variable goes on the x-axis.",
+      "Which variable is being controlled or tracked over time?"
+    ],
+    "solution": "Number of days goes on the x-axis because it is the independent variable. Height (the dependent variable) goes on the y-axis.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "dependent-independent-variables-sup-e3",
+    "topicId": "dependent-independent-variables",
+    "difficulty": "easy",
+    "question": "You buy apples at $2 each. The total cost depends on how many apples you buy. What is the dependent variable?",
+    "answer": "total cost",
+    "hints": [
+      "What changes based on your choice?",
+      "You choose how many apples. The cost is a result of that choice."
+    ],
+    "solution": "The total cost is the dependent variable because it depends on the number of apples (the independent variable).",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "dependent-independent-variables-sup-e4",
+    "topicId": "dependent-independent-variables",
+    "difficulty": "easy",
+    "question": "In the equation y = 3x + 1, which letter represents the dependent variable?",
+    "answer": "y",
+    "hints": [
+      "The dependent variable is the one that is calculated from the other.",
+      "y is defined in terms of x."
+    ],
+    "solution": "y is the dependent variable because its value is determined by x. You plug in x (independent) and get y (dependent).",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "dependent-independent-variables-sup-m0",
+    "topicId": "dependent-independent-variables",
+    "difficulty": "medium",
+    "question": "A scientist measures how the temperature of water changes as it is heated over time. Identify the independent and dependent variables. Write your answer as: independent: ___; dependent: ___",
+    "answer": "independent: time; dependent: temperature",
+    "hints": [
+      "Time passes regardless — the scientist tracks it.",
+      "Temperature changes as a result of heating over time."
+    ],
+    "solution": "Independent: time (the scientist measures at set time intervals). Dependent: temperature (it changes as more time passes with heating).",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "dependent-independent-variables-sup-m1",
+    "topicId": "dependent-independent-variables",
+    "difficulty": "medium",
+    "question": "A student says: 'The dependent variable always goes on the x-axis.' Is this correct? Answer yes or no.",
+    "answer": "no",
+    "hints": [
+      "Think about which variable goes where on a coordinate graph.",
+      "The independent variable goes on the x-axis; the dependent goes on the y-axis."
+    ],
+    "solution": "No. The independent variable goes on the x-axis and the dependent variable goes on the y-axis. The student has it backwards.",
+    "cognitiveDemand": "error-analysis",
+    "source": "generated"
+  },
+  {
+    "id": "dependent-independent-variables-sup-m2",
+    "topicId": "dependent-independent-variables",
+    "difficulty": "medium",
+    "question": "A phone plan costs $25/month plus $0.10 per text message. Write an equation relating the monthly cost (c) to the number of texts (t). Which is the dependent variable?",
+    "answer": "c = 25 + 0.10t; the dependent variable is c (monthly cost)",
+    "hints": [
+      "The fixed cost is $25. The variable cost is $0.10 per text.",
+      "c depends on how many texts (t) you send."
+    ],
+    "solution": "c = 25 + 0.10t. The number of texts (t) is independent (you choose how many to send), and the cost (c) is dependent (it results from your texting).",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "dependent-independent-variables-sup-m3",
+    "topicId": "dependent-independent-variables",
+    "difficulty": "medium",
+    "question": "As the speed of a car increases, the distance it travels in one hour increases. If you were studying this relationship, which variable would you put on the y-axis?",
+    "answer": "distance",
+    "hints": [
+      "The y-axis shows the variable that responds to changes in the other.",
+      "Distance depends on speed."
+    ],
+    "solution": "Distance goes on the y-axis because it is the dependent variable — it depends on the speed (independent variable, x-axis).",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "dependent-independent-variables-sup-m4",
+    "topicId": "dependent-independent-variables",
+    "difficulty": "medium",
+    "question": "A baker tests how many cookies she can make with different amounts of flour. She uses 1 cup, 2 cups, 3 cups, and 4 cups and counts the cookies each time. What is the independent variable?",
+    "answer": "amount of flour",
+    "hints": [
+      "What is the baker choosing to change in her experiment?",
+      "She controls how much flour to use."
+    ],
+    "solution": "The amount of flour is the independent variable because the baker deliberately changes it. The number of cookies produced is the dependent variable.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "dependent-independent-variables-sup-h0",
+    "topicId": "dependent-independent-variables",
+    "difficulty": "hard",
+    "question": "A student says: 'In the equation d = 60t, time (t) is always the independent variable.' Can you think of a real-world scenario where time might actually be the dependent variable? Describe one briefly.",
+    "answer": "Yes. If you want to know how long a 300-mile trip takes at different speeds, time depends on speed: t = 300/speed. Here speed is independent and time is dependent.",
+    "hints": [
+      "What if you're asking 'how long does it take to go a fixed distance at different speeds'?",
+      "Then you're choosing the speed and calculating the time."
+    ],
+    "solution": "If you fix the distance (say 300 miles) and vary the speed, then time = distance/speed. Here speed is independent and time is dependent. Context determines which variable is independent — it's not always time.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "dependent-independent-variables-sup-h1",
+    "topicId": "dependent-independent-variables",
+    "difficulty": "hard",
+    "question": "Two students debate: 'Does studying more cause better grades, or do better students study more?' In each interpretation, which is the independent variable? Give both answers.",
+    "answer": "Interpretation 1: study time is independent, grades dependent. Interpretation 2: student ability is independent, study time dependent.",
+    "hints": [
+      "The independent variable is the cause or the thing that comes first.",
+      "In interpretation 1, studying causes grades. In interpretation 2, ability drives study habits."
+    ],
+    "solution": "If studying causes better grades: independent = study time, dependent = grades. If better students study more: independent = student ability, dependent = study time. The choice of independent variable depends on which factor you believe drives the other.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "dependent-independent-variables-sup-h2",
+    "topicId": "dependent-independent-variables",
+    "difficulty": "hard",
+    "question": "A gym membership costs $30/month plus $5 per class. Another gym charges $50/month with unlimited classes. Write equations for each (use c for classes, m for monthly cost) and identify the independent variable.",
+    "answer": "Gym 1: m = 30 + 5c. Gym 2: m = 50. Independent variable: c (number of classes).",
+    "hints": [
+      "For Gym 1, cost changes with the number of classes.",
+      "For Gym 2, cost is always $50 no matter how many classes."
+    ],
+    "solution": "Gym 1: m = 30 + 5c (cost depends on classes). Gym 2: m = 50 (constant, no dependency). The independent variable is c (number of classes). For Gym 2, the cost doesn't actually depend on c — it's constant.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "dependent-independent-variables-sup-h3",
+    "topicId": "dependent-independent-variables",
+    "difficulty": "hard",
+    "question": "A student claims: 'The independent variable is always the one that increases.' Is this true? Give a counterexample if false.",
+    "answer": "False. You can choose to decrease the independent variable. For example, testing plant growth at decreasing amounts of sunlight — sunlight (independent) decreases while you measure growth (dependent).",
+    "hints": [
+      "Can the independent variable go down?",
+      "Think of an experiment where you deliberately reduce something."
+    ],
+    "solution": "False. The independent variable is the one you control, and you can choose to increase or decrease it. For example, a scientist testing how reducing fertilizer affects crop yield would decrease the independent variable (fertilizer amount) while measuring the dependent variable (yield).",
+    "cognitiveDemand": "error-analysis",
+    "source": "generated"
+  },
+  {
+    "id": "dependent-independent-variables-sup-h4",
+    "topicId": "dependent-independent-variables",
+    "difficulty": "hard",
+    "question": "A table shows: when x = 1, y = 5; when x = 2, y = 8; when x = 3, y = 11. Write an equation relating x and y, and state which is independent and which is dependent.",
+    "answer": "y = 3x + 2. x is independent, y is dependent.",
+    "hints": [
+      "Find the pattern: y increases by 3 each time x increases by 1.",
+      "The equation has the form y = 3x + b. Plug in x = 1, y = 5 to find b."
+    ],
+    "solution": "The pattern increases by 3 for each unit of x: slope = 3. When x = 1, y = 5: 5 = 3(1) + b, so b = 2. Equation: y = 3x + 2. x is independent (input), y is dependent (output).",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  }
+]

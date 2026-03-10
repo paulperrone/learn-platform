@@ -1,0 +1,203 @@
+[
+  {
+    "id": "bar-graphs-picture-graphs-sup-e0",
+    "topicId": "bar-graphs-picture-graphs",
+    "difficulty": "easy",
+    "question": "A bar graph shows favorite fruits. The bar for 'apples' reaches up to 7. How many students chose apples?",
+    "answer": "7",
+    "hints": [
+      "The height of the bar tells you how many."
+    ],
+    "solution": "The bar reaches 7 on the scale, so 7 students chose apples. In a bar graph, the height (or length) of each bar shows the value.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "bar-graphs-picture-graphs-sup-e1",
+    "topicId": "bar-graphs-picture-graphs",
+    "difficulty": "easy",
+    "question": "In a picture graph, each picture of a star stands for 2 votes. A row has 4 stars. How many votes does that represent?",
+    "answer": "8",
+    "hints": [
+      "Each star = 2 votes. Multiply: 4 × 2."
+    ],
+    "solution": "4 stars × 2 votes per star = 8 votes.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "bar-graphs-picture-graphs-sup-e2",
+    "topicId": "bar-graphs-picture-graphs",
+    "difficulty": "easy",
+    "question": "What part of a bar graph tells you what each bar represents?",
+    "answer": "the labels",
+    "hints": [
+      "Look at the bottom or side of the graph where the names of categories appear."
+    ],
+    "solution": "The labels (usually along the bottom or side axis) tell you what each bar represents — for example, the names of different fruits, colors, or activities.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "bar-graphs-picture-graphs-sup-e3",
+    "topicId": "bar-graphs-picture-graphs",
+    "difficulty": "easy",
+    "question": "A bar graph has bars for cats (5), dogs (8), and fish (3). Which pet is the most popular?",
+    "answer": "dogs",
+    "hints": [
+      "Look for the tallest bar."
+    ],
+    "solution": "Dogs is the most popular with 8 votes. It has the tallest bar.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "bar-graphs-picture-graphs-sup-e4",
+    "topicId": "bar-graphs-picture-graphs",
+    "difficulty": "easy",
+    "question": "In a picture graph, a key says each smiley face = 1 student. A row shows 6 smiley faces. How many students does that row represent?",
+    "answer": "6",
+    "hints": [
+      "Each face = 1 student. Count the faces."
+    ],
+    "solution": "6 smiley faces × 1 student each = 6 students.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "bar-graphs-picture-graphs-sup-m0",
+    "topicId": "bar-graphs-picture-graphs",
+    "difficulty": "medium",
+    "question": "A bar graph shows: Soccer = 12, Basketball = 9, Baseball = 6. How many more students chose soccer than baseball?",
+    "answer": "6",
+    "hints": [
+      "Subtract: 12 − 6."
+    ],
+    "solution": "Soccer (12) − Baseball (6) = 6 more students chose soccer than baseball.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "bar-graphs-picture-graphs-sup-m1",
+    "topicId": "bar-graphs-picture-graphs",
+    "difficulty": "medium",
+    "question": "In a picture graph, each book icon stands for 5 books read. The 'March' row has 3 full books and one half-book. How many books were read in March?",
+    "answer": "17 or 18",
+    "hints": [
+      "3 full icons × 5 = 15.",
+      "A half icon = half of 5 = 2.5, so about 2 or 3."
+    ],
+    "solution": "3 full icons = 3 × 5 = 15 books. The half icon represents about half of 5, which is approximately 2-3 books. Total: about 17 or 18 books read in March.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "bar-graphs-picture-graphs-sup-m2",
+    "topicId": "bar-graphs-picture-graphs",
+    "difficulty": "medium",
+    "question": "A bar graph has bars for Red (10), Blue (15), Green (5), Yellow (10). How many total votes were cast?",
+    "answer": "40",
+    "hints": [
+      "Add all the bar values together.",
+      "10 + 15 + 5 + 10 = ?"
+    ],
+    "solution": "10 + 15 + 5 + 10 = 40 total votes.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "bar-graphs-picture-graphs-sup-m3",
+    "topicId": "bar-graphs-picture-graphs",
+    "difficulty": "medium",
+    "question": "Leo made a bar graph but forgot to include a title and labels. Why is this a problem?",
+    "answer": "without a title and labels you cannot tell what the graph is about or what each bar represents",
+    "hints": [
+      "If someone sees bars with no labels, can they understand what the data means?"
+    ],
+    "solution": "Without a title and labels, a reader cannot tell what the graph is about, what each bar represents, or what the numbers mean. Titles and labels are essential for understanding any graph.",
+    "cognitiveDemand": "error-analysis",
+    "source": "generated"
+  },
+  {
+    "id": "bar-graphs-picture-graphs-sup-m4",
+    "topicId": "bar-graphs-picture-graphs",
+    "difficulty": "medium",
+    "question": "A picture graph uses a key where each apple icon = 3 apples. To show 9 apples, how many icons should be drawn?",
+    "answer": "3",
+    "hints": [
+      "Divide: 9 ÷ 3 = ?"
+    ],
+    "solution": "9 ÷ 3 = 3 icons. You need 3 apple icons to represent 9 apples.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "bar-graphs-picture-graphs-sup-h0",
+    "topicId": "bar-graphs-picture-graphs",
+    "difficulty": "hard",
+    "question": "A bar graph shows test scores: Class A = 85, Class B = 70, Class C = 90. The scale starts at 60 instead of 0. Why might this be misleading?",
+    "answer": "starting at 60 makes the differences between bars look bigger than they really are",
+    "hints": [
+      "When the scale doesn't start at 0, the visual differences between bars are exaggerated.",
+      "Class A looks much taller than Class B, but the actual difference is only 15."
+    ],
+    "solution": "Starting the scale at 60 instead of 0 makes the differences look much larger than they are. Class C's bar looks many times taller than Class B's, but the actual difference is only 20 points (90 vs 70). A scale starting at 0 would show the true proportions.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "bar-graphs-picture-graphs-sup-h1",
+    "topicId": "bar-graphs-picture-graphs",
+    "difficulty": "hard",
+    "question": "A picture graph needs to show: Monday = 14 books, Tuesday = 7 books, Wednesday = 21 books. Each icon represents 7 books. How many icons go in each row?",
+    "answer": "Monday 2, Tuesday 1, Wednesday 3",
+    "hints": [
+      "Divide each number by 7.",
+      "14 ÷ 7, 7 ÷ 7, 21 ÷ 7."
+    ],
+    "solution": "Monday: 14 ÷ 7 = 2 icons. Tuesday: 7 ÷ 7 = 1 icon. Wednesday: 21 ÷ 7 = 3 icons.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "bar-graphs-picture-graphs-sup-h2",
+    "topicId": "bar-graphs-picture-graphs",
+    "difficulty": "hard",
+    "question": "A bar graph shows votes for class president. Kim got 15 votes, Sam got 12, and Pat got 15. A student says Kim won. Is this correct? Explain.",
+    "answer": "no, Kim and Pat are tied",
+    "hints": [
+      "Compare all the values carefully.",
+      "Do any candidates have the same number of votes?"
+    ],
+    "solution": "The student is incorrect. Kim and Pat both received 15 votes, so they are tied. Neither one won outright. The class would need a way to break the tie.",
+    "cognitiveDemand": "error-analysis",
+    "source": "generated"
+  },
+  {
+    "id": "bar-graphs-picture-graphs-sup-h3",
+    "topicId": "bar-graphs-picture-graphs",
+    "difficulty": "hard",
+    "question": "A bar graph shows rainfall: Jan = 3 inches, Feb = 5 inches, Mar = 4 inches, Apr = 8 inches. How much total rainfall was there? Which month had twice the rainfall of January?",
+    "answer": "20 inches total, and no month had exactly twice January",
+    "hints": [
+      "Total: 3 + 5 + 4 + 8 = ?",
+      "Twice January = 2 × 3 = 6. Did any month have exactly 6 inches?"
+    ],
+    "solution": "Total rainfall: 3 + 5 + 4 + 8 = 20 inches. Twice January's rainfall would be 2 × 3 = 6 inches. No month had exactly 6 inches of rainfall.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "bar-graphs-picture-graphs-sup-h4",
+    "topicId": "bar-graphs-picture-graphs",
+    "difficulty": "hard",
+    "question": "When would you choose a picture graph instead of a bar graph to display data? Give one advantage of each type.",
+    "answer": "picture graphs are easier for young readers and bar graphs are better for showing exact values",
+    "hints": [
+      "Think about who is reading the graph and how precise the data needs to be."
+    ],
+    "solution": "Picture graphs are good when the audience is young or when data values are small and simple — the icons make data engaging and easy to understand. Bar graphs are better for larger data values and when you need to show exact numbers precisely using a number scale.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  }
+]

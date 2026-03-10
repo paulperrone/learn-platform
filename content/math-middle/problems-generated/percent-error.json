@@ -1,0 +1,652 @@
+[
+  {
+    "id": "percent-error-gen-e0",
+    "topicId": "percent-error",
+    "difficulty": "easy",
+    "question": "Estimated: 39. Actual: 38. What is the percent error?",
+    "answer": "2.6%",
+    "hints": [
+      "Percent error = |estimated − actual| / actual × 100."
+    ],
+    "solution": "|39 − 38| / 38 × 100 = 1/38 × 100 = 2.6%.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-error-gen-e1",
+    "topicId": "percent-error",
+    "difficulty": "easy",
+    "question": "Estimated: 30. Actual: 35. What is the percent error?",
+    "answer": "14.3%",
+    "hints": [
+      "Percent error = |estimated − actual| / actual × 100."
+    ],
+    "solution": "|30 − 35| / 35 × 100 = 5/35 × 100 = 14.3%.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-error-gen-e2",
+    "topicId": "percent-error",
+    "difficulty": "easy",
+    "question": "Estimated: 15. Actual: 20. What is the percent error?",
+    "answer": "25%",
+    "hints": [
+      "Percent error = |estimated − actual| / actual × 100."
+    ],
+    "solution": "|15 − 20| / 20 × 100 = 5/20 × 100 = 25%.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-error-gen-e3",
+    "topicId": "percent-error",
+    "difficulty": "easy",
+    "question": "Estimated: 22. Actual: 24. What is the percent error?",
+    "answer": "8.3%",
+    "hints": [
+      "Percent error = |estimated − actual| / actual × 100."
+    ],
+    "solution": "|22 − 24| / 24 × 100 = 2/24 × 100 = 8.3%.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-error-gen-e4",
+    "topicId": "percent-error",
+    "difficulty": "easy",
+    "question": "Estimated: 47. Actual: 42. What is the percent error?",
+    "answer": "11.9%",
+    "hints": [
+      "Percent error = |estimated − actual| / actual × 100."
+    ],
+    "solution": "|47 − 42| / 42 × 100 = 5/42 × 100 = 11.9%.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-error-gen-e5",
+    "topicId": "percent-error",
+    "difficulty": "easy",
+    "question": "Estimated: 13. Actual: 15. What is the percent error?",
+    "answer": "13.3%",
+    "hints": [
+      "Percent error = |estimated − actual| / actual × 100."
+    ],
+    "solution": "|13 − 15| / 15 × 100 = 2/15 × 100 = 13.3%.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-error-gen-e6",
+    "topicId": "percent-error",
+    "difficulty": "easy",
+    "question": "Estimated: 33. Actual: 46. What is the percent error?",
+    "answer": "28.3%",
+    "hints": [
+      "Percent error = |estimated − actual| / actual × 100."
+    ],
+    "solution": "|33 − 46| / 46 × 100 = 13/46 × 100 = 28.3%.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-error-gen-e7",
+    "topicId": "percent-error",
+    "difficulty": "easy",
+    "question": "Estimated: 34. Actual: 42. What is the percent error?",
+    "answer": "19%",
+    "hints": [
+      "Percent error = |estimated − actual| / actual × 100."
+    ],
+    "solution": "|34 − 42| / 42 × 100 = 8/42 × 100 = 19%.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-error-gen-e8",
+    "topicId": "percent-error",
+    "difficulty": "easy",
+    "question": "Estimated: 58. Actual: 47. What is the percent error?",
+    "answer": "23.4%",
+    "hints": [
+      "Percent error = |estimated − actual| / actual × 100."
+    ],
+    "solution": "|58 − 47| / 47 × 100 = 11/47 × 100 = 23.4%.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-error-gen-e9",
+    "topicId": "percent-error",
+    "difficulty": "easy",
+    "question": "Estimated: 23. Actual: 21. What is the percent error?",
+    "answer": "9.5%",
+    "hints": [
+      "Percent error = |estimated − actual| / actual × 100."
+    ],
+    "solution": "|23 − 21| / 21 × 100 = 2/21 × 100 = 9.5%.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-error-gen-e10",
+    "topicId": "percent-error",
+    "difficulty": "easy",
+    "question": "Estimated: 49. Actual: 44. What is the percent error?",
+    "answer": "11.4%",
+    "hints": [
+      "Percent error = |estimated − actual| / actual × 100."
+    ],
+    "solution": "|49 − 44| / 44 × 100 = 5/44 × 100 = 11.4%.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-error-gen-e11",
+    "topicId": "percent-error",
+    "difficulty": "easy",
+    "question": "Estimated: 20. Actual: 16. What is the percent error?",
+    "answer": "25%",
+    "hints": [
+      "Percent error = |estimated − actual| / actual × 100."
+    ],
+    "solution": "|20 − 16| / 16 × 100 = 4/16 × 100 = 25%.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-error-gen-e12",
+    "topicId": "percent-error",
+    "difficulty": "easy",
+    "question": "Estimated: 55. Actual: 49. What is the percent error?",
+    "answer": "12.2%",
+    "hints": [
+      "Percent error = |estimated − actual| / actual × 100."
+    ],
+    "solution": "|55 − 49| / 49 × 100 = 6/49 × 100 = 12.2%.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-error-gen-e13",
+    "topicId": "percent-error",
+    "difficulty": "easy",
+    "question": "Estimated: 21. Actual: 18. What is the percent error?",
+    "answer": "16.7%",
+    "hints": [
+      "Percent error = |estimated − actual| / actual × 100."
+    ],
+    "solution": "|21 − 18| / 18 × 100 = 3/18 × 100 = 16.7%.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-error-gen-e14",
+    "topicId": "percent-error",
+    "difficulty": "easy",
+    "question": "Estimated: 17. Actual: 16. What is the percent error?",
+    "answer": "6.3%",
+    "hints": [
+      "Percent error = |estimated − actual| / actual × 100."
+    ],
+    "solution": "|17 − 16| / 16 × 100 = 1/16 × 100 = 6.3%.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-error-gen-m0",
+    "topicId": "percent-error",
+    "difficulty": "medium",
+    "question": "Estimated: 29. Actual: 39. What is the percent error?",
+    "answer": "25.6%",
+    "hints": [
+      "Percent error = |estimated − actual| / actual × 100."
+    ],
+    "solution": "|29 − 39| / 39 × 100 = 10/39 × 100 = 25.6%.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-error-gen-m1",
+    "topicId": "percent-error",
+    "difficulty": "medium",
+    "question": "Estimated: 35. Actual: 41. What is the percent error?",
+    "answer": "14.6%",
+    "hints": [
+      "Percent error = |estimated − actual| / actual × 100."
+    ],
+    "solution": "|35 − 41| / 41 × 100 = 6/41 × 100 = 14.6%.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-error-gen-m2",
+    "topicId": "percent-error",
+    "difficulty": "medium",
+    "question": "Estimated: 61. Actual: 55. What is the percent error?",
+    "answer": "10.9%",
+    "hints": [
+      "Percent error = |estimated − actual| / actual × 100."
+    ],
+    "solution": "|61 − 55| / 55 × 100 = 6/55 × 100 = 10.9%.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-error-gen-m3",
+    "topicId": "percent-error",
+    "difficulty": "medium",
+    "question": "Estimated: 30. Actual: 36. What is the percent error?",
+    "answer": "16.7%",
+    "hints": [
+      "Percent error = |estimated − actual| / actual × 100."
+    ],
+    "solution": "|30 − 36| / 36 × 100 = 6/36 × 100 = 16.7%.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-error-gen-m4",
+    "topicId": "percent-error",
+    "difficulty": "medium",
+    "question": "Estimated: 72. Actual: 100. What is the percent error?",
+    "answer": "28%",
+    "hints": [
+      "Percent error = |estimated − actual| / actual × 100."
+    ],
+    "solution": "|72 − 100| / 100 × 100 = 28/100 × 100 = 28%.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-error-gen-m5",
+    "topicId": "percent-error",
+    "difficulty": "medium",
+    "question": "Estimated: 120. Actual: 111. What is the percent error?",
+    "answer": "8.1%",
+    "hints": [
+      "Percent error = |estimated − actual| / actual × 100."
+    ],
+    "solution": "|120 − 111| / 111 × 100 = 9/111 × 100 = 8.1%.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-error-gen-m6",
+    "topicId": "percent-error",
+    "difficulty": "medium",
+    "question": "Estimated: 73. Actual: 60. What is the percent error?",
+    "answer": "21.7%",
+    "hints": [
+      "Percent error = |estimated − actual| / actual × 100."
+    ],
+    "solution": "|73 − 60| / 60 × 100 = 13/60 × 100 = 21.7%.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-error-gen-m7",
+    "topicId": "percent-error",
+    "difficulty": "medium",
+    "question": "Estimated: 95. Actual: 129. What is the percent error?",
+    "answer": "26.4%",
+    "hints": [
+      "Percent error = |estimated − actual| / actual × 100."
+    ],
+    "solution": "|95 − 129| / 129 × 100 = 34/129 × 100 = 26.4%.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-error-gen-m8",
+    "topicId": "percent-error",
+    "difficulty": "medium",
+    "question": "Estimated: 128. Actual: 147. What is the percent error?",
+    "answer": "12.9%",
+    "hints": [
+      "Percent error = |estimated − actual| / actual × 100."
+    ],
+    "solution": "|128 − 147| / 147 × 100 = 19/147 × 100 = 12.9%.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-error-gen-m9",
+    "topicId": "percent-error",
+    "difficulty": "medium",
+    "question": "Estimated: 68. Actual: 57. What is the percent error?",
+    "answer": "19.3%",
+    "hints": [
+      "Percent error = |estimated − actual| / actual × 100."
+    ],
+    "solution": "|68 − 57| / 57 × 100 = 11/57 × 100 = 19.3%.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-error-gen-m10",
+    "topicId": "percent-error",
+    "difficulty": "medium",
+    "question": "Estimated: 183. Actual: 180. What is the percent error?",
+    "answer": "1.7%",
+    "hints": [
+      "Percent error = |estimated − actual| / actual × 100."
+    ],
+    "solution": "|183 − 180| / 180 × 100 = 3/180 × 100 = 1.7%.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-error-gen-m11",
+    "topicId": "percent-error",
+    "difficulty": "medium",
+    "question": "Estimated: 47. Actual: 39. What is the percent error?",
+    "answer": "20.5%",
+    "hints": [
+      "Percent error = |estimated − actual| / actual × 100."
+    ],
+    "solution": "|47 − 39| / 39 × 100 = 8/39 × 100 = 20.5%.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-error-gen-m12",
+    "topicId": "percent-error",
+    "difficulty": "medium",
+    "question": "Estimated: 198. Actual: 157. What is the percent error?",
+    "answer": "26.1%",
+    "hints": [
+      "Percent error = |estimated − actual| / actual × 100."
+    ],
+    "solution": "|198 − 157| / 157 × 100 = 41/157 × 100 = 26.1%.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-error-gen-m13",
+    "topicId": "percent-error",
+    "difficulty": "medium",
+    "question": "Estimated: 72. Actual: 71. What is the percent error?",
+    "answer": "1.4%",
+    "hints": [
+      "Percent error = |estimated − actual| / actual × 100."
+    ],
+    "solution": "|72 − 71| / 71 × 100 = 1/71 × 100 = 1.4%.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-error-gen-m14",
+    "topicId": "percent-error",
+    "difficulty": "medium",
+    "question": "Estimated: 136. Actual: 156. What is the percent error?",
+    "answer": "12.8%",
+    "hints": [
+      "Percent error = |estimated − actual| / actual × 100."
+    ],
+    "solution": "|136 − 156| / 156 × 100 = 20/156 × 100 = 12.8%.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-error-gen-m15",
+    "topicId": "percent-error",
+    "difficulty": "medium",
+    "question": "Estimated: 220. Actual: 181. What is the percent error?",
+    "answer": "21.5%",
+    "hints": [
+      "Percent error = |estimated − actual| / actual × 100."
+    ],
+    "solution": "|220 − 181| / 181 × 100 = 39/181 × 100 = 21.5%.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-error-gen-m16",
+    "topicId": "percent-error",
+    "difficulty": "medium",
+    "question": "Estimated: 58. Actual: 74. What is the percent error?",
+    "answer": "21.6%",
+    "hints": [
+      "Percent error = |estimated − actual| / actual × 100."
+    ],
+    "solution": "|58 − 74| / 74 × 100 = 16/74 × 100 = 21.6%.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-error-gen-m17",
+    "topicId": "percent-error",
+    "difficulty": "medium",
+    "question": "Estimated: 40. Actual: 32. What is the percent error?",
+    "answer": "25%",
+    "hints": [
+      "Percent error = |estimated − actual| / actual × 100."
+    ],
+    "solution": "|40 − 32| / 32 × 100 = 8/32 × 100 = 25%.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-error-gen-m18",
+    "topicId": "percent-error",
+    "difficulty": "medium",
+    "question": "Estimated: 85. Actual: 68. What is the percent error?",
+    "answer": "25%",
+    "hints": [
+      "Percent error = |estimated − actual| / actual × 100."
+    ],
+    "solution": "|85 − 68| / 68 × 100 = 17/68 × 100 = 25%.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-error-gen-m19",
+    "topicId": "percent-error",
+    "difficulty": "medium",
+    "question": "Estimated: 60. Actual: 65. What is the percent error?",
+    "answer": "7.7%",
+    "hints": [
+      "Percent error = |estimated − actual| / actual × 100."
+    ],
+    "solution": "|60 − 65| / 65 × 100 = 5/65 × 100 = 7.7%.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-error-gen-h0",
+    "topicId": "percent-error",
+    "difficulty": "hard",
+    "question": "Estimated: 137. Actual: 116. What is the percent error?",
+    "answer": "18.1%",
+    "hints": [
+      "Percent error = |estimated − actual| / actual × 100."
+    ],
+    "solution": "|137 − 116| / 116 × 100 = 21/116 × 100 = 18.1%.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-error-gen-h1",
+    "topicId": "percent-error",
+    "difficulty": "hard",
+    "question": "Estimated: 68. Actual: 84. What is the percent error?",
+    "answer": "19%",
+    "hints": [
+      "Percent error = |estimated − actual| / actual × 100."
+    ],
+    "solution": "|68 − 84| / 84 × 100 = 16/84 × 100 = 19%.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-error-gen-h2",
+    "topicId": "percent-error",
+    "difficulty": "hard",
+    "question": "Estimated: 40. Actual: 52. What is the percent error?",
+    "answer": "23.1%",
+    "hints": [
+      "Percent error = |estimated − actual| / actual × 100."
+    ],
+    "solution": "|40 − 52| / 52 × 100 = 12/52 × 100 = 23.1%.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-error-gen-h3",
+    "topicId": "percent-error",
+    "difficulty": "hard",
+    "question": "Estimated: 123. Actual: 150. What is the percent error?",
+    "answer": "18%",
+    "hints": [
+      "Percent error = |estimated − actual| / actual × 100."
+    ],
+    "solution": "|123 − 150| / 150 × 100 = 27/150 × 100 = 18%.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-error-gen-h4",
+    "topicId": "percent-error",
+    "difficulty": "hard",
+    "question": "Estimated: 23. Actual: 26. What is the percent error?",
+    "answer": "11.5%",
+    "hints": [
+      "Percent error = |estimated − actual| / actual × 100."
+    ],
+    "solution": "|23 − 26| / 26 × 100 = 3/26 × 100 = 11.5%.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-error-gen-h5",
+    "topicId": "percent-error",
+    "difficulty": "hard",
+    "question": "Estimated: 51. Actual: 53. What is the percent error?",
+    "answer": "3.8%",
+    "hints": [
+      "Percent error = |estimated − actual| / actual × 100."
+    ],
+    "solution": "|51 − 53| / 53 × 100 = 2/53 × 100 = 3.8%.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-error-gen-h6",
+    "topicId": "percent-error",
+    "difficulty": "hard",
+    "question": "Estimated: 203. Actual: 165. What is the percent error?",
+    "answer": "23%",
+    "hints": [
+      "Percent error = |estimated − actual| / actual × 100."
+    ],
+    "solution": "|203 − 165| / 165 × 100 = 38/165 × 100 = 23%.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-error-gen-h7",
+    "topicId": "percent-error",
+    "difficulty": "hard",
+    "question": "Estimated: 170. Actual: 198. What is the percent error?",
+    "answer": "14.1%",
+    "hints": [
+      "Percent error = |estimated − actual| / actual × 100."
+    ],
+    "solution": "|170 − 198| / 198 × 100 = 28/198 × 100 = 14.1%.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-error-gen-h8",
+    "topicId": "percent-error",
+    "difficulty": "hard",
+    "question": "Estimated: 70. Actual: 64. What is the percent error?",
+    "answer": "9.4%",
+    "hints": [
+      "Percent error = |estimated − actual| / actual × 100."
+    ],
+    "solution": "|70 − 64| / 64 × 100 = 6/64 × 100 = 9.4%.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-error-gen-h9",
+    "topicId": "percent-error",
+    "difficulty": "hard",
+    "question": "Estimated: 67. Actual: 90. What is the percent error?",
+    "answer": "25.6%",
+    "hints": [
+      "Percent error = |estimated − actual| / actual × 100."
+    ],
+    "solution": "|67 − 90| / 90 × 100 = 23/90 × 100 = 25.6%.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-error-gen-h10",
+    "topicId": "percent-error",
+    "difficulty": "hard",
+    "question": "Estimated: 113. Actual: 87. What is the percent error?",
+    "answer": "29.9%",
+    "hints": [
+      "Percent error = |estimated − actual| / actual × 100."
+    ],
+    "solution": "|113 − 87| / 87 × 100 = 26/87 × 100 = 29.9%.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-error-gen-h11",
+    "topicId": "percent-error",
+    "difficulty": "hard",
+    "question": "Estimated: 42. Actual: 55. What is the percent error?",
+    "answer": "23.6%",
+    "hints": [
+      "Percent error = |estimated − actual| / actual × 100."
+    ],
+    "solution": "|42 − 55| / 55 × 100 = 13/55 × 100 = 23.6%.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-error-gen-h12",
+    "topicId": "percent-error",
+    "difficulty": "hard",
+    "question": "Estimated: 80. Actual: 68. What is the percent error?",
+    "answer": "17.6%",
+    "hints": [
+      "Percent error = |estimated − actual| / actual × 100."
+    ],
+    "solution": "|80 − 68| / 68 × 100 = 12/68 × 100 = 17.6%.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-error-gen-h13",
+    "topicId": "percent-error",
+    "difficulty": "hard",
+    "question": "Estimated: 9. Actual: 10. What is the percent error?",
+    "answer": "10%",
+    "hints": [
+      "Percent error = |estimated − actual| / actual × 100."
+    ],
+    "solution": "|9 − 10| / 10 × 100 = 1/10 × 100 = 10%.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "percent-error-gen-h14",
+    "topicId": "percent-error",
+    "difficulty": "hard",
+    "question": "Estimated: 62. Actual: 70. What is the percent error?",
+    "answer": "11.4%",
+    "hints": [
+      "Percent error = |estimated − actual| / actual × 100."
+    ],
+    "solution": "|62 − 70| / 70 × 100 = 8/70 × 100 = 11.4%.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  }
+]

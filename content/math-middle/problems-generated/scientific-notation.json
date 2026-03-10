@@ -1,0 +1,652 @@
+[
+  {
+    "id": "scientific-notation-gen-e0",
+    "topicId": "scientific-notation",
+    "difficulty": "easy",
+    "question": "Write 16000 in scientific notation.",
+    "answer": "1.6 × 10^4",
+    "hints": [
+      "Move the decimal point until you have a number between 1 and 10."
+    ],
+    "solution": "16000 = 1.6 × 10^4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "scientific-notation-gen-e1",
+    "topicId": "scientific-notation",
+    "difficulty": "easy",
+    "question": "Write 6.5 × 10^2 in standard form.",
+    "answer": "650",
+    "hints": [
+      "Move the decimal 2 places to the right."
+    ],
+    "solution": "6.5 × 10^2 = 650.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "scientific-notation-gen-e2",
+    "topicId": "scientific-notation",
+    "difficulty": "easy",
+    "question": "Write 9.2 × 10^1 in standard form.",
+    "answer": "92",
+    "hints": [
+      "Move the decimal 1 places to the right."
+    ],
+    "solution": "9.2 × 10^1 = 92.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "scientific-notation-gen-e3",
+    "topicId": "scientific-notation",
+    "difficulty": "easy",
+    "question": "Write 4.3 × 10^2 in standard form.",
+    "answer": "430",
+    "hints": [
+      "Move the decimal 2 places to the right."
+    ],
+    "solution": "4.3 × 10^2 = 430.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "scientific-notation-gen-e4",
+    "topicId": "scientific-notation",
+    "difficulty": "easy",
+    "question": "Write 4 × 10^1 in standard form.",
+    "answer": "40",
+    "hints": [
+      "Move the decimal 1 places to the right."
+    ],
+    "solution": "4 × 10^1 = 40.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "scientific-notation-gen-e5",
+    "topicId": "scientific-notation",
+    "difficulty": "easy",
+    "question": "Write 1.7 × 10^5 in standard form.",
+    "answer": "170000",
+    "hints": [
+      "Move the decimal 5 places to the right."
+    ],
+    "solution": "1.7 × 10^5 = 170000.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "scientific-notation-gen-e6",
+    "topicId": "scientific-notation",
+    "difficulty": "easy",
+    "question": "Write 980.0000000000001 in scientific notation.",
+    "answer": "9.8 × 10^2",
+    "hints": [
+      "Move the decimal point until you have a number between 1 and 10."
+    ],
+    "solution": "980.0000000000001 = 9.8 × 10^2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "scientific-notation-gen-e7",
+    "topicId": "scientific-notation",
+    "difficulty": "easy",
+    "question": "Write 480000 in scientific notation.",
+    "answer": "4.8 × 10^5",
+    "hints": [
+      "Move the decimal point until you have a number between 1 and 10."
+    ],
+    "solution": "480000 = 4.8 × 10^5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "scientific-notation-gen-e8",
+    "topicId": "scientific-notation",
+    "difficulty": "easy",
+    "question": "Write 840000 in scientific notation.",
+    "answer": "8.4 × 10^5",
+    "hints": [
+      "Move the decimal point until you have a number between 1 and 10."
+    ],
+    "solution": "840000 = 8.4 × 10^5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "scientific-notation-gen-e9",
+    "topicId": "scientific-notation",
+    "difficulty": "easy",
+    "question": "Write 7.2 × 10^3 in standard form.",
+    "answer": "7200",
+    "hints": [
+      "Move the decimal 3 places to the right."
+    ],
+    "solution": "7.2 × 10^3 = 7200.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "scientific-notation-gen-e10",
+    "topicId": "scientific-notation",
+    "difficulty": "easy",
+    "question": "Write 190 in scientific notation.",
+    "answer": "1.9 × 10^2",
+    "hints": [
+      "Move the decimal point until you have a number between 1 and 10."
+    ],
+    "solution": "190 = 1.9 × 10^2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "scientific-notation-gen-e11",
+    "topicId": "scientific-notation",
+    "difficulty": "easy",
+    "question": "Write 5.7 × 10^1 in standard form.",
+    "answer": "57",
+    "hints": [
+      "Move the decimal 1 places to the right."
+    ],
+    "solution": "5.7 × 10^1 = 57.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "scientific-notation-gen-e12",
+    "topicId": "scientific-notation",
+    "difficulty": "easy",
+    "question": "Write 3.3 × 10^4 in standard form.",
+    "answer": "33000",
+    "hints": [
+      "Move the decimal 4 places to the right."
+    ],
+    "solution": "3.3 × 10^4 = 33000.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "scientific-notation-gen-e13",
+    "topicId": "scientific-notation",
+    "difficulty": "easy",
+    "question": "Write 2.3 × 10^3 in standard form.",
+    "answer": "2300",
+    "hints": [
+      "Move the decimal 3 places to the right."
+    ],
+    "solution": "2.3 × 10^3 = 2300.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "scientific-notation-gen-e14",
+    "topicId": "scientific-notation",
+    "difficulty": "easy",
+    "question": "Write 26000 in scientific notation.",
+    "answer": "2.6 × 10^4",
+    "hints": [
+      "Move the decimal point until you have a number between 1 and 10."
+    ],
+    "solution": "26000 = 2.6 × 10^4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "scientific-notation-gen-m0",
+    "topicId": "scientific-notation",
+    "difficulty": "medium",
+    "question": "Write 0.41 in scientific notation.",
+    "answer": "4.1 × 10^-1",
+    "hints": [
+      "Move the decimal point until you have a number between 1 and 10."
+    ],
+    "solution": "0.41 = 4.1 × 10^-1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "scientific-notation-gen-m1",
+    "topicId": "scientific-notation",
+    "difficulty": "medium",
+    "question": "Write 0.00022999999999999998 in scientific notation.",
+    "answer": "2.3 × 10^-4",
+    "hints": [
+      "Move the decimal point until you have a number between 1 and 10."
+    ],
+    "solution": "0.00022999999999999998 = 2.3 × 10^-4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "scientific-notation-gen-m2",
+    "topicId": "scientific-notation",
+    "difficulty": "medium",
+    "question": "Write 0.003 in scientific notation.",
+    "answer": "3 × 10^-3",
+    "hints": [
+      "Move the decimal point until you have a number between 1 and 10."
+    ],
+    "solution": "0.003 = 3 × 10^-3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "scientific-notation-gen-m3",
+    "topicId": "scientific-notation",
+    "difficulty": "medium",
+    "question": "Write 5.7 × 10^2 in standard form.",
+    "answer": "570",
+    "hints": [
+      "Move the decimal 2 places to the right."
+    ],
+    "solution": "5.7 × 10^2 = 570.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "scientific-notation-gen-m4",
+    "topicId": "scientific-notation",
+    "difficulty": "medium",
+    "question": "Write 3.8 × 10^3 in standard form.",
+    "answer": "3800",
+    "hints": [
+      "Move the decimal 3 places to the right."
+    ],
+    "solution": "3.8 × 10^3 = 3800.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "scientific-notation-gen-m5",
+    "topicId": "scientific-notation",
+    "difficulty": "medium",
+    "question": "Write 8.2 × 10^5 in standard form.",
+    "answer": "819999.9999999999",
+    "hints": [
+      "Move the decimal 5 places to the right."
+    ],
+    "solution": "8.2 × 10^5 = 819999.9999999999.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "scientific-notation-gen-m6",
+    "topicId": "scientific-notation",
+    "difficulty": "medium",
+    "question": "Write 4.3 × 10^4 in standard form.",
+    "answer": "43000",
+    "hints": [
+      "Move the decimal 4 places to the right."
+    ],
+    "solution": "4.3 × 10^4 = 43000.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "scientific-notation-gen-m7",
+    "topicId": "scientific-notation",
+    "difficulty": "medium",
+    "question": "Write 2.8 × 10^4 in standard form.",
+    "answer": "28000",
+    "hints": [
+      "Move the decimal 4 places to the right."
+    ],
+    "solution": "2.8 × 10^4 = 28000.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "scientific-notation-gen-m8",
+    "topicId": "scientific-notation",
+    "difficulty": "medium",
+    "question": "Write 90000 in scientific notation.",
+    "answer": "9 × 10^4",
+    "hints": [
+      "Move the decimal point until you have a number between 1 and 10."
+    ],
+    "solution": "90000 = 9 × 10^4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "scientific-notation-gen-m9",
+    "topicId": "scientific-notation",
+    "difficulty": "medium",
+    "question": "Write 2.7 × 10^1 in standard form.",
+    "answer": "27",
+    "hints": [
+      "Move the decimal 1 places to the right."
+    ],
+    "solution": "2.7 × 10^1 = 27.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "scientific-notation-gen-m10",
+    "topicId": "scientific-notation",
+    "difficulty": "medium",
+    "question": "Write 990 in scientific notation.",
+    "answer": "9.9 × 10^2",
+    "hints": [
+      "Move the decimal point until you have a number between 1 and 10."
+    ],
+    "solution": "990 = 9.9 × 10^2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "scientific-notation-gen-m11",
+    "topicId": "scientific-notation",
+    "difficulty": "medium",
+    "question": "Write 5.6 × 10^4 in standard form.",
+    "answer": "56000",
+    "hints": [
+      "Move the decimal 4 places to the right."
+    ],
+    "solution": "5.6 × 10^4 = 56000.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "scientific-notation-gen-m12",
+    "topicId": "scientific-notation",
+    "difficulty": "medium",
+    "question": "Write 7.5 × 10^4 in standard form.",
+    "answer": "75000",
+    "hints": [
+      "Move the decimal 4 places to the right."
+    ],
+    "solution": "7.5 × 10^4 = 75000.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "scientific-notation-gen-m13",
+    "topicId": "scientific-notation",
+    "difficulty": "medium",
+    "question": "Write 620 in scientific notation.",
+    "answer": "6.2 × 10^2",
+    "hints": [
+      "Move the decimal point until you have a number between 1 and 10."
+    ],
+    "solution": "620 = 6.2 × 10^2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "scientific-notation-gen-m14",
+    "topicId": "scientific-notation",
+    "difficulty": "medium",
+    "question": "Write 7.9 in scientific notation.",
+    "answer": "7.9 × 10^0",
+    "hints": [
+      "Move the decimal point until you have a number between 1 and 10."
+    ],
+    "solution": "7.9 = 7.9 × 10^0.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "scientific-notation-gen-m15",
+    "topicId": "scientific-notation",
+    "difficulty": "medium",
+    "question": "Write 0.0009000000000000001 in scientific notation.",
+    "answer": "9 × 10^-4",
+    "hints": [
+      "Move the decimal point until you have a number between 1 and 10."
+    ],
+    "solution": "0.0009000000000000001 = 9 × 10^-4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "scientific-notation-gen-m16",
+    "topicId": "scientific-notation",
+    "difficulty": "medium",
+    "question": "Write 6 × 10^2 in standard form.",
+    "answer": "600",
+    "hints": [
+      "Move the decimal 2 places to the right."
+    ],
+    "solution": "6 × 10^2 = 600.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "scientific-notation-gen-m17",
+    "topicId": "scientific-notation",
+    "difficulty": "medium",
+    "question": "Write 13000000 in scientific notation.",
+    "answer": "1.3 × 10^7",
+    "hints": [
+      "Move the decimal point until you have a number between 1 and 10."
+    ],
+    "solution": "13000000 = 1.3 × 10^7.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "scientific-notation-gen-m18",
+    "topicId": "scientific-notation",
+    "difficulty": "medium",
+    "question": "Write 7.1 × 10^5 in standard form.",
+    "answer": "710000",
+    "hints": [
+      "Move the decimal 5 places to the right."
+    ],
+    "solution": "7.1 × 10^5 = 710000.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "scientific-notation-gen-m19",
+    "topicId": "scientific-notation",
+    "difficulty": "medium",
+    "question": "Write 8.8 × 10^4 in standard form.",
+    "answer": "88000",
+    "hints": [
+      "Move the decimal 4 places to the right."
+    ],
+    "solution": "8.8 × 10^4 = 88000.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "scientific-notation-gen-h0",
+    "topicId": "scientific-notation",
+    "difficulty": "hard",
+    "question": "Write 4.3 × 10^2 in standard form.",
+    "answer": "430",
+    "hints": [
+      "Move the decimal 2 places to the right."
+    ],
+    "solution": "4.3 × 10^2 = 430.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "scientific-notation-gen-h1",
+    "topicId": "scientific-notation",
+    "difficulty": "hard",
+    "question": "Write 0.00071 in scientific notation.",
+    "answer": "7.1 × 10^-4",
+    "hints": [
+      "Move the decimal point until you have a number between 1 and 10."
+    ],
+    "solution": "0.00071 = 7.1 × 10^-4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "scientific-notation-gen-h2",
+    "topicId": "scientific-notation",
+    "difficulty": "hard",
+    "question": "Write 20000000 in scientific notation.",
+    "answer": "2 × 10^7",
+    "hints": [
+      "Move the decimal point until you have a number between 1 and 10."
+    ],
+    "solution": "20000000 = 2 × 10^7.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "scientific-notation-gen-h3",
+    "topicId": "scientific-notation",
+    "difficulty": "hard",
+    "question": "Write 4.8 × 10^5 in standard form.",
+    "answer": "480000",
+    "hints": [
+      "Move the decimal 5 places to the right."
+    ],
+    "solution": "4.8 × 10^5 = 480000.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "scientific-notation-gen-h4",
+    "topicId": "scientific-notation",
+    "difficulty": "hard",
+    "question": "Write 3.3 × 10^4 in standard form.",
+    "answer": "33000",
+    "hints": [
+      "Move the decimal 4 places to the right."
+    ],
+    "solution": "3.3 × 10^4 = 33000.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "scientific-notation-gen-h5",
+    "topicId": "scientific-notation",
+    "difficulty": "hard",
+    "question": "Write 780 in scientific notation.",
+    "answer": "7.8 × 10^2",
+    "hints": [
+      "Move the decimal point until you have a number between 1 and 10."
+    ],
+    "solution": "780 = 7.8 × 10^2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "scientific-notation-gen-h6",
+    "topicId": "scientific-notation",
+    "difficulty": "hard",
+    "question": "Write 6.2 × 10^3 in standard form.",
+    "answer": "6200",
+    "hints": [
+      "Move the decimal 3 places to the right."
+    ],
+    "solution": "6.2 × 10^3 = 6200.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "scientific-notation-gen-h7",
+    "topicId": "scientific-notation",
+    "difficulty": "hard",
+    "question": "Write 6.4 × 10^4 in standard form.",
+    "answer": "64000",
+    "hints": [
+      "Move the decimal 4 places to the right."
+    ],
+    "solution": "6.4 × 10^4 = 64000.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "scientific-notation-gen-h8",
+    "topicId": "scientific-notation",
+    "difficulty": "hard",
+    "question": "Write 8.1 × 10^5 in standard form.",
+    "answer": "810000",
+    "hints": [
+      "Move the decimal 5 places to the right."
+    ],
+    "solution": "8.1 × 10^5 = 810000.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "scientific-notation-gen-h9",
+    "topicId": "scientific-notation",
+    "difficulty": "hard",
+    "question": "Write 150000 in scientific notation.",
+    "answer": "1.5 × 10^5",
+    "hints": [
+      "Move the decimal point until you have a number between 1 and 10."
+    ],
+    "solution": "150000 = 1.5 × 10^5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "scientific-notation-gen-h10",
+    "topicId": "scientific-notation",
+    "difficulty": "hard",
+    "question": "Write 9.2 × 10^2 in standard form.",
+    "answer": "919.9999999999999",
+    "hints": [
+      "Move the decimal 2 places to the right."
+    ],
+    "solution": "9.2 × 10^2 = 919.9999999999999.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "scientific-notation-gen-h11",
+    "topicId": "scientific-notation",
+    "difficulty": "hard",
+    "question": "Write 0.00031 in scientific notation.",
+    "answer": "3.1 × 10^-4",
+    "hints": [
+      "Move the decimal point until you have a number between 1 and 10."
+    ],
+    "solution": "0.00031 = 3.1 × 10^-4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "scientific-notation-gen-h12",
+    "topicId": "scientific-notation",
+    "difficulty": "hard",
+    "question": "Write 4.8 × 10^4 in standard form.",
+    "answer": "48000",
+    "hints": [
+      "Move the decimal 4 places to the right."
+    ],
+    "solution": "4.8 × 10^4 = 48000.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "scientific-notation-gen-h13",
+    "topicId": "scientific-notation",
+    "difficulty": "hard",
+    "question": "Write 2.2 × 10^5 in standard form.",
+    "answer": "220000.00000000003",
+    "hints": [
+      "Move the decimal 5 places to the right."
+    ],
+    "solution": "2.2 × 10^5 = 220000.00000000003.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "scientific-notation-gen-h14",
+    "topicId": "scientific-notation",
+    "difficulty": "hard",
+    "question": "Write 540 in scientific notation.",
+    "answer": "5.4 × 10^2",
+    "hints": [
+      "Move the decimal point until you have a number between 1 and 10."
+    ],
+    "solution": "540 = 5.4 × 10^2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  }
+]

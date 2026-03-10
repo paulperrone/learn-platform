@@ -1,0 +1,652 @@
+[
+  {
+    "id": "coordinate-plane-four-quadrants-gen-e0",
+    "topicId": "coordinate-plane-four-quadrants",
+    "difficulty": "easy",
+    "question": "In which quadrant is the point (-6, -2)?",
+    "answer": "III",
+    "hints": [
+      "Quadrant I: (+, +). II: (−, +). III: (−, −). IV: (+, −)."
+    ],
+    "solution": "(-6, -2): x is negative, y is negative. Quadrant III.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "coordinate-plane-four-quadrants-gen-e1",
+    "topicId": "coordinate-plane-four-quadrants",
+    "difficulty": "easy",
+    "question": "In which quadrant is the point (2, 2)?",
+    "answer": "I",
+    "hints": [
+      "Quadrant I: (+, +). II: (−, +). III: (−, −). IV: (+, −)."
+    ],
+    "solution": "(2, 2): x is positive, y is positive. Quadrant I.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "coordinate-plane-four-quadrants-gen-e2",
+    "topicId": "coordinate-plane-four-quadrants",
+    "difficulty": "easy",
+    "question": "In which quadrant is the point (8, -9)?",
+    "answer": "IV",
+    "hints": [
+      "Quadrant I: (+, +). II: (−, +). III: (−, −). IV: (+, −)."
+    ],
+    "solution": "(8, -9): x is positive, y is negative. Quadrant IV.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "coordinate-plane-four-quadrants-gen-e3",
+    "topicId": "coordinate-plane-four-quadrants",
+    "difficulty": "easy",
+    "question": "In which quadrant is the point (5, 4)?",
+    "answer": "I",
+    "hints": [
+      "Quadrant I: (+, +). II: (−, +). III: (−, −). IV: (+, −)."
+    ],
+    "solution": "(5, 4): x is positive, y is positive. Quadrant I.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "coordinate-plane-four-quadrants-gen-e4",
+    "topicId": "coordinate-plane-four-quadrants",
+    "difficulty": "easy",
+    "question": "In which quadrant is the point (10, 4)?",
+    "answer": "I",
+    "hints": [
+      "Quadrant I: (+, +). II: (−, +). III: (−, −). IV: (+, −)."
+    ],
+    "solution": "(10, 4): x is positive, y is positive. Quadrant I.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "coordinate-plane-four-quadrants-gen-e5",
+    "topicId": "coordinate-plane-four-quadrants",
+    "difficulty": "easy",
+    "question": "In which quadrant is the point (0, 0)?",
+    "answer": "on an axis",
+    "hints": [
+      "Quadrant I: (+, +). II: (−, +). III: (−, −). IV: (+, −)."
+    ],
+    "solution": "(0, 0): x is positive, y is positive. Quadrant on an axis.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "coordinate-plane-four-quadrants-gen-e6",
+    "topicId": "coordinate-plane-four-quadrants",
+    "difficulty": "easy",
+    "question": "In which quadrant is the point (-6, 5)?",
+    "answer": "II",
+    "hints": [
+      "Quadrant I: (+, +). II: (−, +). III: (−, −). IV: (+, −)."
+    ],
+    "solution": "(-6, 5): x is negative, y is positive. Quadrant II.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "coordinate-plane-four-quadrants-gen-e7",
+    "topicId": "coordinate-plane-four-quadrants",
+    "difficulty": "easy",
+    "question": "In which quadrant is the point (4, 6)?",
+    "answer": "I",
+    "hints": [
+      "Quadrant I: (+, +). II: (−, +). III: (−, −). IV: (+, −)."
+    ],
+    "solution": "(4, 6): x is positive, y is positive. Quadrant I.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "coordinate-plane-four-quadrants-gen-e8",
+    "topicId": "coordinate-plane-four-quadrants",
+    "difficulty": "easy",
+    "question": "In which quadrant is the point (-1, -4)?",
+    "answer": "III",
+    "hints": [
+      "Quadrant I: (+, +). II: (−, +). III: (−, −). IV: (+, −)."
+    ],
+    "solution": "(-1, -4): x is negative, y is negative. Quadrant III.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "coordinate-plane-four-quadrants-gen-e9",
+    "topicId": "coordinate-plane-four-quadrants",
+    "difficulty": "easy",
+    "question": "In which quadrant is the point (6, -10)?",
+    "answer": "IV",
+    "hints": [
+      "Quadrant I: (+, +). II: (−, +). III: (−, −). IV: (+, −)."
+    ],
+    "solution": "(6, -10): x is positive, y is negative. Quadrant IV.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "coordinate-plane-four-quadrants-gen-e10",
+    "topicId": "coordinate-plane-four-quadrants",
+    "difficulty": "easy",
+    "question": "In which quadrant is the point (-2, -3)?",
+    "answer": "III",
+    "hints": [
+      "Quadrant I: (+, +). II: (−, +). III: (−, −). IV: (+, −)."
+    ],
+    "solution": "(-2, -3): x is negative, y is negative. Quadrant III.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "coordinate-plane-four-quadrants-gen-e11",
+    "topicId": "coordinate-plane-four-quadrants",
+    "difficulty": "easy",
+    "question": "In which quadrant is the point (4, 2)?",
+    "answer": "I",
+    "hints": [
+      "Quadrant I: (+, +). II: (−, +). III: (−, −). IV: (+, −)."
+    ],
+    "solution": "(4, 2): x is positive, y is positive. Quadrant I.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "coordinate-plane-four-quadrants-gen-e12",
+    "topicId": "coordinate-plane-four-quadrants",
+    "difficulty": "easy",
+    "question": "In which quadrant is the point (4, 8)?",
+    "answer": "I",
+    "hints": [
+      "Quadrant I: (+, +). II: (−, +). III: (−, −). IV: (+, −)."
+    ],
+    "solution": "(4, 8): x is positive, y is positive. Quadrant I.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "coordinate-plane-four-quadrants-gen-e13",
+    "topicId": "coordinate-plane-four-quadrants",
+    "difficulty": "easy",
+    "question": "In which quadrant is the point (-4, 9)?",
+    "answer": "II",
+    "hints": [
+      "Quadrant I: (+, +). II: (−, +). III: (−, −). IV: (+, −)."
+    ],
+    "solution": "(-4, 9): x is negative, y is positive. Quadrant II.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "coordinate-plane-four-quadrants-gen-e14",
+    "topicId": "coordinate-plane-four-quadrants",
+    "difficulty": "easy",
+    "question": "In which quadrant is the point (-4, -6)?",
+    "answer": "III",
+    "hints": [
+      "Quadrant I: (+, +). II: (−, +). III: (−, −). IV: (+, −)."
+    ],
+    "solution": "(-4, -6): x is negative, y is negative. Quadrant III.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "coordinate-plane-four-quadrants-gen-m0",
+    "topicId": "coordinate-plane-four-quadrants",
+    "difficulty": "medium",
+    "question": "In which quadrant is the point (6, -1)?",
+    "answer": "IV",
+    "hints": [
+      "Quadrant I: (+, +). II: (−, +). III: (−, −). IV: (+, −)."
+    ],
+    "solution": "(6, -1): x is positive, y is negative. Quadrant IV.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "coordinate-plane-four-quadrants-gen-m1",
+    "topicId": "coordinate-plane-four-quadrants",
+    "difficulty": "medium",
+    "question": "In which quadrant is the point (8, -6)?",
+    "answer": "IV",
+    "hints": [
+      "Quadrant I: (+, +). II: (−, +). III: (−, −). IV: (+, −)."
+    ],
+    "solution": "(8, -6): x is positive, y is negative. Quadrant IV.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "coordinate-plane-four-quadrants-gen-m2",
+    "topicId": "coordinate-plane-four-quadrants",
+    "difficulty": "medium",
+    "question": "In which quadrant is the point (-6, 8)?",
+    "answer": "II",
+    "hints": [
+      "Quadrant I: (+, +). II: (−, +). III: (−, −). IV: (+, −)."
+    ],
+    "solution": "(-6, 8): x is negative, y is positive. Quadrant II.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "coordinate-plane-four-quadrants-gen-m3",
+    "topicId": "coordinate-plane-four-quadrants",
+    "difficulty": "medium",
+    "question": "In which quadrant is the point (5, -2)?",
+    "answer": "IV",
+    "hints": [
+      "Quadrant I: (+, +). II: (−, +). III: (−, −). IV: (+, −)."
+    ],
+    "solution": "(5, -2): x is positive, y is negative. Quadrant IV.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "coordinate-plane-four-quadrants-gen-m4",
+    "topicId": "coordinate-plane-four-quadrants",
+    "difficulty": "medium",
+    "question": "In which quadrant is the point (-10, 10)?",
+    "answer": "II",
+    "hints": [
+      "Quadrant I: (+, +). II: (−, +). III: (−, −). IV: (+, −)."
+    ],
+    "solution": "(-10, 10): x is negative, y is positive. Quadrant II.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "coordinate-plane-four-quadrants-gen-m5",
+    "topicId": "coordinate-plane-four-quadrants",
+    "difficulty": "medium",
+    "question": "In which quadrant is the point (-2, 7)?",
+    "answer": "II",
+    "hints": [
+      "Quadrant I: (+, +). II: (−, +). III: (−, −). IV: (+, −)."
+    ],
+    "solution": "(-2, 7): x is negative, y is positive. Quadrant II.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "coordinate-plane-four-quadrants-gen-m6",
+    "topicId": "coordinate-plane-four-quadrants",
+    "difficulty": "medium",
+    "question": "In which quadrant is the point (3, 6)?",
+    "answer": "I",
+    "hints": [
+      "Quadrant I: (+, +). II: (−, +). III: (−, −). IV: (+, −)."
+    ],
+    "solution": "(3, 6): x is positive, y is positive. Quadrant I.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "coordinate-plane-four-quadrants-gen-m7",
+    "topicId": "coordinate-plane-four-quadrants",
+    "difficulty": "medium",
+    "question": "In which quadrant is the point (-7, -7)?",
+    "answer": "III",
+    "hints": [
+      "Quadrant I: (+, +). II: (−, +). III: (−, −). IV: (+, −)."
+    ],
+    "solution": "(-7, -7): x is negative, y is negative. Quadrant III.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "coordinate-plane-four-quadrants-gen-m8",
+    "topicId": "coordinate-plane-four-quadrants",
+    "difficulty": "medium",
+    "question": "In which quadrant is the point (-5, 3)?",
+    "answer": "II",
+    "hints": [
+      "Quadrant I: (+, +). II: (−, +). III: (−, −). IV: (+, −)."
+    ],
+    "solution": "(-5, 3): x is negative, y is positive. Quadrant II.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "coordinate-plane-four-quadrants-gen-m9",
+    "topicId": "coordinate-plane-four-quadrants",
+    "difficulty": "medium",
+    "question": "In which quadrant is the point (-5, -4)?",
+    "answer": "III",
+    "hints": [
+      "Quadrant I: (+, +). II: (−, +). III: (−, −). IV: (+, −)."
+    ],
+    "solution": "(-5, -4): x is negative, y is negative. Quadrant III.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "coordinate-plane-four-quadrants-gen-m10",
+    "topicId": "coordinate-plane-four-quadrants",
+    "difficulty": "medium",
+    "question": "In which quadrant is the point (10, 10)?",
+    "answer": "I",
+    "hints": [
+      "Quadrant I: (+, +). II: (−, +). III: (−, −). IV: (+, −)."
+    ],
+    "solution": "(10, 10): x is positive, y is positive. Quadrant I.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "coordinate-plane-four-quadrants-gen-m11",
+    "topicId": "coordinate-plane-four-quadrants",
+    "difficulty": "medium",
+    "question": "In which quadrant is the point (4, 3)?",
+    "answer": "I",
+    "hints": [
+      "Quadrant I: (+, +). II: (−, +). III: (−, −). IV: (+, −)."
+    ],
+    "solution": "(4, 3): x is positive, y is positive. Quadrant I.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "coordinate-plane-four-quadrants-gen-m12",
+    "topicId": "coordinate-plane-four-quadrants",
+    "difficulty": "medium",
+    "question": "In which quadrant is the point (-9, 7)?",
+    "answer": "II",
+    "hints": [
+      "Quadrant I: (+, +). II: (−, +). III: (−, −). IV: (+, −)."
+    ],
+    "solution": "(-9, 7): x is negative, y is positive. Quadrant II.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "coordinate-plane-four-quadrants-gen-m13",
+    "topicId": "coordinate-plane-four-quadrants",
+    "difficulty": "medium",
+    "question": "In which quadrant is the point (-2, -5)?",
+    "answer": "III",
+    "hints": [
+      "Quadrant I: (+, +). II: (−, +). III: (−, −). IV: (+, −)."
+    ],
+    "solution": "(-2, -5): x is negative, y is negative. Quadrant III.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "coordinate-plane-four-quadrants-gen-m14",
+    "topicId": "coordinate-plane-four-quadrants",
+    "difficulty": "medium",
+    "question": "In which quadrant is the point (-6, 4)?",
+    "answer": "II",
+    "hints": [
+      "Quadrant I: (+, +). II: (−, +). III: (−, −). IV: (+, −)."
+    ],
+    "solution": "(-6, 4): x is negative, y is positive. Quadrant II.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "coordinate-plane-four-quadrants-gen-m15",
+    "topicId": "coordinate-plane-four-quadrants",
+    "difficulty": "medium",
+    "question": "In which quadrant is the point (-8, -8)?",
+    "answer": "III",
+    "hints": [
+      "Quadrant I: (+, +). II: (−, +). III: (−, −). IV: (+, −)."
+    ],
+    "solution": "(-8, -8): x is negative, y is negative. Quadrant III.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "coordinate-plane-four-quadrants-gen-m16",
+    "topicId": "coordinate-plane-four-quadrants",
+    "difficulty": "medium",
+    "question": "In which quadrant is the point (8, 8)?",
+    "answer": "I",
+    "hints": [
+      "Quadrant I: (+, +). II: (−, +). III: (−, −). IV: (+, −)."
+    ],
+    "solution": "(8, 8): x is positive, y is positive. Quadrant I.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "coordinate-plane-four-quadrants-gen-m17",
+    "topicId": "coordinate-plane-four-quadrants",
+    "difficulty": "medium",
+    "question": "In which quadrant is the point (6, 8)?",
+    "answer": "I",
+    "hints": [
+      "Quadrant I: (+, +). II: (−, +). III: (−, −). IV: (+, −)."
+    ],
+    "solution": "(6, 8): x is positive, y is positive. Quadrant I.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "coordinate-plane-four-quadrants-gen-m18",
+    "topicId": "coordinate-plane-four-quadrants",
+    "difficulty": "medium",
+    "question": "In which quadrant is the point (-10, 3)?",
+    "answer": "II",
+    "hints": [
+      "Quadrant I: (+, +). II: (−, +). III: (−, −). IV: (+, −)."
+    ],
+    "solution": "(-10, 3): x is negative, y is positive. Quadrant II.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "coordinate-plane-four-quadrants-gen-m19",
+    "topicId": "coordinate-plane-four-quadrants",
+    "difficulty": "medium",
+    "question": "In which quadrant is the point (-2, -2)?",
+    "answer": "III",
+    "hints": [
+      "Quadrant I: (+, +). II: (−, +). III: (−, −). IV: (+, −)."
+    ],
+    "solution": "(-2, -2): x is negative, y is negative. Quadrant III.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "coordinate-plane-four-quadrants-gen-h0",
+    "topicId": "coordinate-plane-four-quadrants",
+    "difficulty": "hard",
+    "question": "In which quadrant is the point (4, -2)?",
+    "answer": "IV",
+    "hints": [
+      "Quadrant I: (+, +). II: (−, +). III: (−, −). IV: (+, −)."
+    ],
+    "solution": "(4, -2): x is positive, y is negative. Quadrant IV.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "coordinate-plane-four-quadrants-gen-h1",
+    "topicId": "coordinate-plane-four-quadrants",
+    "difficulty": "hard",
+    "question": "In which quadrant is the point (-8, 1)?",
+    "answer": "II",
+    "hints": [
+      "Quadrant I: (+, +). II: (−, +). III: (−, −). IV: (+, −)."
+    ],
+    "solution": "(-8, 1): x is negative, y is positive. Quadrant II.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "coordinate-plane-four-quadrants-gen-h2",
+    "topicId": "coordinate-plane-four-quadrants",
+    "difficulty": "hard",
+    "question": "In which quadrant is the point (2, 6)?",
+    "answer": "I",
+    "hints": [
+      "Quadrant I: (+, +). II: (−, +). III: (−, −). IV: (+, −)."
+    ],
+    "solution": "(2, 6): x is positive, y is positive. Quadrant I.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "coordinate-plane-four-quadrants-gen-h3",
+    "topicId": "coordinate-plane-four-quadrants",
+    "difficulty": "hard",
+    "question": "In which quadrant is the point (2, 10)?",
+    "answer": "I",
+    "hints": [
+      "Quadrant I: (+, +). II: (−, +). III: (−, −). IV: (+, −)."
+    ],
+    "solution": "(2, 10): x is positive, y is positive. Quadrant I.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "coordinate-plane-four-quadrants-gen-h4",
+    "topicId": "coordinate-plane-four-quadrants",
+    "difficulty": "hard",
+    "question": "In which quadrant is the point (5, -4)?",
+    "answer": "IV",
+    "hints": [
+      "Quadrant I: (+, +). II: (−, +). III: (−, −). IV: (+, −)."
+    ],
+    "solution": "(5, -4): x is positive, y is negative. Quadrant IV.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "coordinate-plane-four-quadrants-gen-h5",
+    "topicId": "coordinate-plane-four-quadrants",
+    "difficulty": "hard",
+    "question": "In which quadrant is the point (1, -2)?",
+    "answer": "IV",
+    "hints": [
+      "Quadrant I: (+, +). II: (−, +). III: (−, −). IV: (+, −)."
+    ],
+    "solution": "(1, -2): x is positive, y is negative. Quadrant IV.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "coordinate-plane-four-quadrants-gen-h6",
+    "topicId": "coordinate-plane-four-quadrants",
+    "difficulty": "hard",
+    "question": "In which quadrant is the point (7, -8)?",
+    "answer": "IV",
+    "hints": [
+      "Quadrant I: (+, +). II: (−, +). III: (−, −). IV: (+, −)."
+    ],
+    "solution": "(7, -8): x is positive, y is negative. Quadrant IV.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "coordinate-plane-four-quadrants-gen-h7",
+    "topicId": "coordinate-plane-four-quadrants",
+    "difficulty": "hard",
+    "question": "In which quadrant is the point (-2, -2)?",
+    "answer": "III",
+    "hints": [
+      "Quadrant I: (+, +). II: (−, +). III: (−, −). IV: (+, −)."
+    ],
+    "solution": "(-2, -2): x is negative, y is negative. Quadrant III.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "coordinate-plane-four-quadrants-gen-h8",
+    "topicId": "coordinate-plane-four-quadrants",
+    "difficulty": "hard",
+    "question": "In which quadrant is the point (3, -5)?",
+    "answer": "IV",
+    "hints": [
+      "Quadrant I: (+, +). II: (−, +). III: (−, −). IV: (+, −)."
+    ],
+    "solution": "(3, -5): x is positive, y is negative. Quadrant IV.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "coordinate-plane-four-quadrants-gen-h9",
+    "topicId": "coordinate-plane-four-quadrants",
+    "difficulty": "hard",
+    "question": "In which quadrant is the point (-2, -1)?",
+    "answer": "III",
+    "hints": [
+      "Quadrant I: (+, +). II: (−, +). III: (−, −). IV: (+, −)."
+    ],
+    "solution": "(-2, -1): x is negative, y is negative. Quadrant III.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "coordinate-plane-four-quadrants-gen-h10",
+    "topicId": "coordinate-plane-four-quadrants",
+    "difficulty": "hard",
+    "question": "In which quadrant is the point (10, 0)?",
+    "answer": "on an axis",
+    "hints": [
+      "Quadrant I: (+, +). II: (−, +). III: (−, −). IV: (+, −)."
+    ],
+    "solution": "(10, 0): x is positive, y is positive. Quadrant on an axis.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "coordinate-plane-four-quadrants-gen-h11",
+    "topicId": "coordinate-plane-four-quadrants",
+    "difficulty": "hard",
+    "question": "In which quadrant is the point (7, -7)?",
+    "answer": "IV",
+    "hints": [
+      "Quadrant I: (+, +). II: (−, +). III: (−, −). IV: (+, −)."
+    ],
+    "solution": "(7, -7): x is positive, y is negative. Quadrant IV.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "coordinate-plane-four-quadrants-gen-h12",
+    "topicId": "coordinate-plane-four-quadrants",
+    "difficulty": "hard",
+    "question": "In which quadrant is the point (-6, 2)?",
+    "answer": "II",
+    "hints": [
+      "Quadrant I: (+, +). II: (−, +). III: (−, −). IV: (+, −)."
+    ],
+    "solution": "(-6, 2): x is negative, y is positive. Quadrant II.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "coordinate-plane-four-quadrants-gen-h13",
+    "topicId": "coordinate-plane-four-quadrants",
+    "difficulty": "hard",
+    "question": "In which quadrant is the point (4, -2)?",
+    "answer": "IV",
+    "hints": [
+      "Quadrant I: (+, +). II: (−, +). III: (−, −). IV: (+, −)."
+    ],
+    "solution": "(4, -2): x is positive, y is negative. Quadrant IV.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "coordinate-plane-four-quadrants-gen-h14",
+    "topicId": "coordinate-plane-four-quadrants",
+    "difficulty": "hard",
+    "question": "In which quadrant is the point (-7, -5)?",
+    "answer": "III",
+    "hints": [
+      "Quadrant I: (+, +). II: (−, +). III: (−, −). IV: (+, −)."
+    ],
+    "solution": "(-7, -5): x is negative, y is negative. Quadrant III.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  }
+]

@@ -1,0 +1,652 @@
+[
+  {
+    "id": "pythagorean-converse-gen-e0",
+    "topicId": "pythagorean-converse",
+    "difficulty": "easy",
+    "question": "Do the sides 3, 4, 5 form a right triangle?",
+    "answer": "yes",
+    "hints": [
+      "Check: 3² + 4² = 5²?"
+    ],
+    "solution": "3² + 4² = 9 + 16 = 25. 5² = 25. Equal, so yes.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "pythagorean-converse-gen-e1",
+    "topicId": "pythagorean-converse",
+    "difficulty": "easy",
+    "question": "Do the sides 8, 10, 19 form a right triangle?",
+    "answer": "no",
+    "hints": [
+      "Check: 8² + 10² = 19²?"
+    ],
+    "solution": "8² + 10² = 164. 19² = 361. Not equal, so no.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "pythagorean-converse-gen-e2",
+    "topicId": "pythagorean-converse",
+    "difficulty": "easy",
+    "question": "Do the sides 3, 4, 5 form a right triangle?",
+    "answer": "yes",
+    "hints": [
+      "Check: 3² + 4² = 5²?"
+    ],
+    "solution": "3² + 4² = 9 + 16 = 25. 5² = 25. Equal, so yes.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "pythagorean-converse-gen-e3",
+    "topicId": "pythagorean-converse",
+    "difficulty": "easy",
+    "question": "Do the sides 6, 7, 15 form a right triangle?",
+    "answer": "no",
+    "hints": [
+      "Check: 6² + 7² = 15²?"
+    ],
+    "solution": "6² + 7² = 85. 15² = 225. Not equal, so no.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "pythagorean-converse-gen-e4",
+    "topicId": "pythagorean-converse",
+    "difficulty": "easy",
+    "question": "Do the sides 6, 9, 18 form a right triangle?",
+    "answer": "no",
+    "hints": [
+      "Check: 6² + 9² = 18²?"
+    ],
+    "solution": "6² + 9² = 117. 18² = 324. Not equal, so no.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "pythagorean-converse-gen-e5",
+    "topicId": "pythagorean-converse",
+    "difficulty": "easy",
+    "question": "Do the sides 3, 4, 5 form a right triangle?",
+    "answer": "yes",
+    "hints": [
+      "Check: 3² + 4² = 5²?"
+    ],
+    "solution": "3² + 4² = 9 + 16 = 25. 5² = 25. Equal, so yes.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "pythagorean-converse-gen-e6",
+    "topicId": "pythagorean-converse",
+    "difficulty": "easy",
+    "question": "Do the sides 7, 6, 16 form a right triangle?",
+    "answer": "no",
+    "hints": [
+      "Check: 7² + 6² = 16²?"
+    ],
+    "solution": "7² + 6² = 85. 16² = 256. Not equal, so no.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "pythagorean-converse-gen-e7",
+    "topicId": "pythagorean-converse",
+    "difficulty": "easy",
+    "question": "Do the sides 7, 6, 14 form a right triangle?",
+    "answer": "no",
+    "hints": [
+      "Check: 7² + 6² = 14²?"
+    ],
+    "solution": "7² + 6² = 85. 14² = 196. Not equal, so no.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "pythagorean-converse-gen-e8",
+    "topicId": "pythagorean-converse",
+    "difficulty": "easy",
+    "question": "Do the sides 8, 9, 20 form a right triangle?",
+    "answer": "no",
+    "hints": [
+      "Check: 8² + 9² = 20²?"
+    ],
+    "solution": "8² + 9² = 145. 20² = 400. Not equal, so no.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "pythagorean-converse-gen-e9",
+    "topicId": "pythagorean-converse",
+    "difficulty": "easy",
+    "question": "Do the sides 3, 4, 5 form a right triangle?",
+    "answer": "yes",
+    "hints": [
+      "Check: 3² + 4² = 5²?"
+    ],
+    "solution": "3² + 4² = 9 + 16 = 25. 5² = 25. Equal, so yes.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "pythagorean-converse-gen-e10",
+    "topicId": "pythagorean-converse",
+    "difficulty": "easy",
+    "question": "Do the sides 6, 5, 10 form a right triangle?",
+    "answer": "no",
+    "hints": [
+      "Check: 6² + 5² = 10²?"
+    ],
+    "solution": "6² + 5² = 61. 10² = 100. Not equal, so no.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "pythagorean-converse-gen-e11",
+    "topicId": "pythagorean-converse",
+    "difficulty": "easy",
+    "question": "Do the sides 4, 4, 11 form a right triangle?",
+    "answer": "no",
+    "hints": [
+      "Check: 4² + 4² = 11²?"
+    ],
+    "solution": "4² + 4² = 32. 11² = 121. Not equal, so no.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "pythagorean-converse-gen-e12",
+    "topicId": "pythagorean-converse",
+    "difficulty": "easy",
+    "question": "Do the sides 8, 15, 17 form a right triangle?",
+    "answer": "yes",
+    "hints": [
+      "Check: 8² + 15² = 17²?"
+    ],
+    "solution": "8² + 15² = 64 + 225 = 289. 17² = 289. Equal, so yes.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "pythagorean-converse-gen-e13",
+    "topicId": "pythagorean-converse",
+    "difficulty": "easy",
+    "question": "Do the sides 3, 4, 10 form a right triangle?",
+    "answer": "no",
+    "hints": [
+      "Check: 3² + 4² = 10²?"
+    ],
+    "solution": "3² + 4² = 25. 10² = 100. Not equal, so no.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "pythagorean-converse-gen-e14",
+    "topicId": "pythagorean-converse",
+    "difficulty": "easy",
+    "question": "Do the sides 8, 5, 13 form a right triangle?",
+    "answer": "no",
+    "hints": [
+      "Check: 8² + 5² = 13²?"
+    ],
+    "solution": "8² + 5² = 89. 13² = 169. Not equal, so no.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "pythagorean-converse-gen-m0",
+    "topicId": "pythagorean-converse",
+    "difficulty": "medium",
+    "question": "Do the sides 5, 12, 13 form a right triangle?",
+    "answer": "yes",
+    "hints": [
+      "Check: 5² + 12² = 13²?"
+    ],
+    "solution": "5² + 12² = 25 + 144 = 169. 13² = 169. Equal, so yes.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "pythagorean-converse-gen-m1",
+    "topicId": "pythagorean-converse",
+    "difficulty": "medium",
+    "question": "Do the sides 5, 12, 13 form a right triangle?",
+    "answer": "yes",
+    "hints": [
+      "Check: 5² + 12² = 13²?"
+    ],
+    "solution": "5² + 12² = 25 + 144 = 169. 13² = 169. Equal, so yes.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "pythagorean-converse-gen-m2",
+    "topicId": "pythagorean-converse",
+    "difficulty": "medium",
+    "question": "Do the sides 8, 15, 17 form a right triangle?",
+    "answer": "yes",
+    "hints": [
+      "Check: 8² + 15² = 17²?"
+    ],
+    "solution": "8² + 15² = 64 + 225 = 289. 17² = 289. Equal, so yes.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "pythagorean-converse-gen-m3",
+    "topicId": "pythagorean-converse",
+    "difficulty": "medium",
+    "question": "Do the sides 5, 5, 8 form a right triangle?",
+    "answer": "no",
+    "hints": [
+      "Check: 5² + 5² = 8²?"
+    ],
+    "solution": "5² + 5² = 50. 8² = 64. Not equal, so no.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "pythagorean-converse-gen-m4",
+    "topicId": "pythagorean-converse",
+    "difficulty": "medium",
+    "question": "Do the sides 3, 4, 5 form a right triangle?",
+    "answer": "yes",
+    "hints": [
+      "Check: 3² + 4² = 5²?"
+    ],
+    "solution": "3² + 4² = 9 + 16 = 25. 5² = 25. Equal, so yes.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "pythagorean-converse-gen-m5",
+    "topicId": "pythagorean-converse",
+    "difficulty": "medium",
+    "question": "Do the sides 7, 7, 13 form a right triangle?",
+    "answer": "no",
+    "hints": [
+      "Check: 7² + 7² = 13²?"
+    ],
+    "solution": "7² + 7² = 98. 13² = 169. Not equal, so no.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "pythagorean-converse-gen-m6",
+    "topicId": "pythagorean-converse",
+    "difficulty": "medium",
+    "question": "Do the sides 3, 4, 5 form a right triangle?",
+    "answer": "yes",
+    "hints": [
+      "Check: 3² + 4² = 5²?"
+    ],
+    "solution": "3² + 4² = 9 + 16 = 25. 5² = 25. Equal, so yes.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "pythagorean-converse-gen-m7",
+    "topicId": "pythagorean-converse",
+    "difficulty": "medium",
+    "question": "Do the sides 5, 12, 13 form a right triangle?",
+    "answer": "yes",
+    "hints": [
+      "Check: 5² + 12² = 13²?"
+    ],
+    "solution": "5² + 12² = 25 + 144 = 169. 13² = 169. Equal, so yes.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "pythagorean-converse-gen-m8",
+    "topicId": "pythagorean-converse",
+    "difficulty": "medium",
+    "question": "Do the sides 3, 4, 5 form a right triangle?",
+    "answer": "yes",
+    "hints": [
+      "Check: 3² + 4² = 5²?"
+    ],
+    "solution": "3² + 4² = 9 + 16 = 25. 5² = 25. Equal, so yes.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "pythagorean-converse-gen-m9",
+    "topicId": "pythagorean-converse",
+    "difficulty": "medium",
+    "question": "Do the sides 5, 12, 13 form a right triangle?",
+    "answer": "yes",
+    "hints": [
+      "Check: 5² + 12² = 13²?"
+    ],
+    "solution": "5² + 12² = 25 + 144 = 169. 13² = 169. Equal, so yes.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "pythagorean-converse-gen-m10",
+    "topicId": "pythagorean-converse",
+    "difficulty": "medium",
+    "question": "Do the sides 3, 6, 8 form a right triangle?",
+    "answer": "no",
+    "hints": [
+      "Check: 3² + 6² = 8²?"
+    ],
+    "solution": "3² + 6² = 45. 8² = 64. Not equal, so no.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "pythagorean-converse-gen-m11",
+    "topicId": "pythagorean-converse",
+    "difficulty": "medium",
+    "question": "Do the sides 3, 4, 5 form a right triangle?",
+    "answer": "yes",
+    "hints": [
+      "Check: 3² + 4² = 5²?"
+    ],
+    "solution": "3² + 4² = 9 + 16 = 25. 5² = 25. Equal, so yes.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "pythagorean-converse-gen-m12",
+    "topicId": "pythagorean-converse",
+    "difficulty": "medium",
+    "question": "Do the sides 7, 4, 13 form a right triangle?",
+    "answer": "no",
+    "hints": [
+      "Check: 7² + 4² = 13²?"
+    ],
+    "solution": "7² + 4² = 65. 13² = 169. Not equal, so no.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "pythagorean-converse-gen-m13",
+    "topicId": "pythagorean-converse",
+    "difficulty": "medium",
+    "question": "Do the sides 3, 4, 5 form a right triangle?",
+    "answer": "yes",
+    "hints": [
+      "Check: 3² + 4² = 5²?"
+    ],
+    "solution": "3² + 4² = 9 + 16 = 25. 5² = 25. Equal, so yes.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "pythagorean-converse-gen-m14",
+    "topicId": "pythagorean-converse",
+    "difficulty": "medium",
+    "question": "Do the sides 5, 12, 13 form a right triangle?",
+    "answer": "yes",
+    "hints": [
+      "Check: 5² + 12² = 13²?"
+    ],
+    "solution": "5² + 12² = 25 + 144 = 169. 13² = 169. Equal, so yes.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "pythagorean-converse-gen-m15",
+    "topicId": "pythagorean-converse",
+    "difficulty": "medium",
+    "question": "Do the sides 3, 4, 5 form a right triangle?",
+    "answer": "yes",
+    "hints": [
+      "Check: 3² + 4² = 5²?"
+    ],
+    "solution": "3² + 4² = 9 + 16 = 25. 5² = 25. Equal, so yes.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "pythagorean-converse-gen-m16",
+    "topicId": "pythagorean-converse",
+    "difficulty": "medium",
+    "question": "Do the sides 6, 6, 13 form a right triangle?",
+    "answer": "no",
+    "hints": [
+      "Check: 6² + 6² = 13²?"
+    ],
+    "solution": "6² + 6² = 72. 13² = 169. Not equal, so no.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "pythagorean-converse-gen-m17",
+    "topicId": "pythagorean-converse",
+    "difficulty": "medium",
+    "question": "Do the sides 3, 4, 5 form a right triangle?",
+    "answer": "yes",
+    "hints": [
+      "Check: 3² + 4² = 5²?"
+    ],
+    "solution": "3² + 4² = 9 + 16 = 25. 5² = 25. Equal, so yes.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "pythagorean-converse-gen-m18",
+    "topicId": "pythagorean-converse",
+    "difficulty": "medium",
+    "question": "Do the sides 7, 8, 18 form a right triangle?",
+    "answer": "no",
+    "hints": [
+      "Check: 7² + 8² = 18²?"
+    ],
+    "solution": "7² + 8² = 113. 18² = 324. Not equal, so no.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "pythagorean-converse-gen-m19",
+    "topicId": "pythagorean-converse",
+    "difficulty": "medium",
+    "question": "Do the sides 3, 4, 5 form a right triangle?",
+    "answer": "yes",
+    "hints": [
+      "Check: 3² + 4² = 5²?"
+    ],
+    "solution": "3² + 4² = 9 + 16 = 25. 5² = 25. Equal, so yes.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "pythagorean-converse-gen-h0",
+    "topicId": "pythagorean-converse",
+    "difficulty": "hard",
+    "question": "Do the sides 4, 7, 10 form a right triangle?",
+    "answer": "no",
+    "hints": [
+      "Check: 4² + 7² = 10²?"
+    ],
+    "solution": "4² + 7² = 65. 10² = 100. Not equal, so no.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "pythagorean-converse-gen-h1",
+    "topicId": "pythagorean-converse",
+    "difficulty": "hard",
+    "question": "Do the sides 4, 5, 7 form a right triangle?",
+    "answer": "no",
+    "hints": [
+      "Check: 4² + 5² = 7²?"
+    ],
+    "solution": "4² + 5² = 41. 7² = 49. Not equal, so no.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "pythagorean-converse-gen-h2",
+    "topicId": "pythagorean-converse",
+    "difficulty": "hard",
+    "question": "Do the sides 5, 4, 11 form a right triangle?",
+    "answer": "no",
+    "hints": [
+      "Check: 5² + 4² = 11²?"
+    ],
+    "solution": "5² + 4² = 41. 11² = 121. Not equal, so no.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "pythagorean-converse-gen-h3",
+    "topicId": "pythagorean-converse",
+    "difficulty": "hard",
+    "question": "Do the sides 6, 7, 13 form a right triangle?",
+    "answer": "no",
+    "hints": [
+      "Check: 6² + 7² = 13²?"
+    ],
+    "solution": "6² + 7² = 85. 13² = 169. Not equal, so no.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "pythagorean-converse-gen-h4",
+    "topicId": "pythagorean-converse",
+    "difficulty": "hard",
+    "question": "Do the sides 8, 15, 17 form a right triangle?",
+    "answer": "yes",
+    "hints": [
+      "Check: 8² + 15² = 17²?"
+    ],
+    "solution": "8² + 15² = 64 + 225 = 289. 17² = 289. Equal, so yes.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "pythagorean-converse-gen-h5",
+    "topicId": "pythagorean-converse",
+    "difficulty": "hard",
+    "question": "Do the sides 5, 12, 13 form a right triangle?",
+    "answer": "yes",
+    "hints": [
+      "Check: 5² + 12² = 13²?"
+    ],
+    "solution": "5² + 12² = 25 + 144 = 169. 13² = 169. Equal, so yes.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "pythagorean-converse-gen-h6",
+    "topicId": "pythagorean-converse",
+    "difficulty": "hard",
+    "question": "Do the sides 4, 6, 12 form a right triangle?",
+    "answer": "no",
+    "hints": [
+      "Check: 4² + 6² = 12²?"
+    ],
+    "solution": "4² + 6² = 52. 12² = 144. Not equal, so no.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "pythagorean-converse-gen-h7",
+    "topicId": "pythagorean-converse",
+    "difficulty": "hard",
+    "question": "Do the sides 8, 15, 17 form a right triangle?",
+    "answer": "yes",
+    "hints": [
+      "Check: 8² + 15² = 17²?"
+    ],
+    "solution": "8² + 15² = 64 + 225 = 289. 17² = 289. Equal, so yes.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "pythagorean-converse-gen-h8",
+    "topicId": "pythagorean-converse",
+    "difficulty": "hard",
+    "question": "Do the sides 3, 4, 5 form a right triangle?",
+    "answer": "yes",
+    "hints": [
+      "Check: 3² + 4² = 5²?"
+    ],
+    "solution": "3² + 4² = 9 + 16 = 25. 5² = 25. Equal, so yes.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "pythagorean-converse-gen-h9",
+    "topicId": "pythagorean-converse",
+    "difficulty": "hard",
+    "question": "Do the sides 5, 12, 13 form a right triangle?",
+    "answer": "yes",
+    "hints": [
+      "Check: 5² + 12² = 13²?"
+    ],
+    "solution": "5² + 12² = 25 + 144 = 169. 13² = 169. Equal, so yes.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "pythagorean-converse-gen-h10",
+    "topicId": "pythagorean-converse",
+    "difficulty": "hard",
+    "question": "Do the sides 8, 6, 12 form a right triangle?",
+    "answer": "no",
+    "hints": [
+      "Check: 8² + 6² = 12²?"
+    ],
+    "solution": "8² + 6² = 100. 12² = 144. Not equal, so no.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "pythagorean-converse-gen-h11",
+    "topicId": "pythagorean-converse",
+    "difficulty": "hard",
+    "question": "Do the sides 4, 6, 10 form a right triangle?",
+    "answer": "no",
+    "hints": [
+      "Check: 4² + 6² = 10²?"
+    ],
+    "solution": "4² + 6² = 52. 10² = 100. Not equal, so no.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "pythagorean-converse-gen-h12",
+    "topicId": "pythagorean-converse",
+    "difficulty": "hard",
+    "question": "Do the sides 8, 15, 17 form a right triangle?",
+    "answer": "yes",
+    "hints": [
+      "Check: 8² + 15² = 17²?"
+    ],
+    "solution": "8² + 15² = 64 + 225 = 289. 17² = 289. Equal, so yes.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "pythagorean-converse-gen-h13",
+    "topicId": "pythagorean-converse",
+    "difficulty": "hard",
+    "question": "Do the sides 3, 4, 5 form a right triangle?",
+    "answer": "yes",
+    "hints": [
+      "Check: 3² + 4² = 5²?"
+    ],
+    "solution": "3² + 4² = 9 + 16 = 25. 5² = 25. Equal, so yes.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "pythagorean-converse-gen-h14",
+    "topicId": "pythagorean-converse",
+    "difficulty": "hard",
+    "question": "Do the sides 5, 12, 13 form a right triangle?",
+    "answer": "yes",
+    "hints": [
+      "Check: 5² + 12² = 13²?"
+    ],
+    "solution": "5² + 12² = 25 + 144 = 169. 13² = 169. Equal, so yes.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  }
+]

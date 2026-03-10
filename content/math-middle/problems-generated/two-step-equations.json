@@ -1,0 +1,702 @@
+[
+  {
+    "id": "two-step-equations-gen-e0",
+    "topicId": "two-step-equations",
+    "difficulty": "easy",
+    "question": "Solve: 4x + 1 = 37",
+    "answer": "9",
+    "hints": [
+      "Subtract 1 from both sides: 4x = 36.",
+      "Divide by 4."
+    ],
+    "solution": "4x + 1 = 37. 4x = 36. x = 9 = 9.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "two-step-equations-gen-e1",
+    "topicId": "two-step-equations",
+    "difficulty": "easy",
+    "question": "Solve: 5x + 8 = 18",
+    "answer": "2",
+    "hints": [
+      "Subtract 8 from both sides: 5x = 10.",
+      "Divide by 5."
+    ],
+    "solution": "5x + 8 = 18. 5x = 10. x = 2 = 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "two-step-equations-gen-e2",
+    "topicId": "two-step-equations",
+    "difficulty": "easy",
+    "question": "Solve: 4x + 5 = 29",
+    "answer": "6",
+    "hints": [
+      "Subtract 5 from both sides: 4x = 24.",
+      "Divide by 4."
+    ],
+    "solution": "4x + 5 = 29. 4x = 24. x = 6 = 6.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "two-step-equations-gen-e3",
+    "topicId": "two-step-equations",
+    "difficulty": "easy",
+    "question": "Solve: 5x + 4 = 14",
+    "answer": "2",
+    "hints": [
+      "Subtract 4 from both sides: 5x = 10.",
+      "Divide by 5."
+    ],
+    "solution": "5x + 4 = 14. 5x = 10. x = 2 = 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "two-step-equations-gen-e4",
+    "topicId": "two-step-equations",
+    "difficulty": "easy",
+    "question": "Solve: 5x + 10 = 50",
+    "answer": "8",
+    "hints": [
+      "Subtract 10 from both sides: 5x = 40.",
+      "Divide by 5."
+    ],
+    "solution": "5x + 10 = 50. 5x = 40. x = 8 = 8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "two-step-equations-gen-e5",
+    "topicId": "two-step-equations",
+    "difficulty": "easy",
+    "question": "Solve: 2x + 10 = 20",
+    "answer": "5",
+    "hints": [
+      "Subtract 10 from both sides: 2x = 10.",
+      "Divide by 2."
+    ],
+    "solution": "2x + 10 = 20. 2x = 10. x = 5 = 5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "two-step-equations-gen-e6",
+    "topicId": "two-step-equations",
+    "difficulty": "easy",
+    "question": "Solve: 2x + 8 = 22",
+    "answer": "7",
+    "hints": [
+      "Subtract 8 from both sides: 2x = 14.",
+      "Divide by 2."
+    ],
+    "solution": "2x + 8 = 22. 2x = 14. x = 7 = 7.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "two-step-equations-gen-e7",
+    "topicId": "two-step-equations",
+    "difficulty": "easy",
+    "question": "Solve: 5x + 9 = 14",
+    "answer": "1",
+    "hints": [
+      "Subtract 9 from both sides: 5x = 5.",
+      "Divide by 5."
+    ],
+    "solution": "5x + 9 = 14. 5x = 5. x = 1 = 1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "two-step-equations-gen-e8",
+    "topicId": "two-step-equations",
+    "difficulty": "easy",
+    "question": "Solve: 2x + 5 = 23",
+    "answer": "9",
+    "hints": [
+      "Subtract 5 from both sides: 2x = 18.",
+      "Divide by 2."
+    ],
+    "solution": "2x + 5 = 23. 2x = 18. x = 9 = 9.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "two-step-equations-gen-e9",
+    "topicId": "two-step-equations",
+    "difficulty": "easy",
+    "question": "Solve: 3x + 10 = 31",
+    "answer": "7",
+    "hints": [
+      "Subtract 10 from both sides: 3x = 21.",
+      "Divide by 3."
+    ],
+    "solution": "3x + 10 = 31. 3x = 21. x = 7 = 7.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "two-step-equations-gen-e10",
+    "topicId": "two-step-equations",
+    "difficulty": "easy",
+    "question": "Solve: 3x + 5 = 35",
+    "answer": "10",
+    "hints": [
+      "Subtract 5 from both sides: 3x = 30.",
+      "Divide by 3."
+    ],
+    "solution": "3x + 5 = 35. 3x = 30. x = 10 = 10.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "two-step-equations-gen-e11",
+    "topicId": "two-step-equations",
+    "difficulty": "easy",
+    "question": "Solve: 2x + 6 = 26",
+    "answer": "10",
+    "hints": [
+      "Subtract 6 from both sides: 2x = 20.",
+      "Divide by 2."
+    ],
+    "solution": "2x + 6 = 26. 2x = 20. x = 10 = 10.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "two-step-equations-gen-e12",
+    "topicId": "two-step-equations",
+    "difficulty": "easy",
+    "question": "Solve: 2x + 5 = 19",
+    "answer": "7",
+    "hints": [
+      "Subtract 5 from both sides: 2x = 14.",
+      "Divide by 2."
+    ],
+    "solution": "2x + 5 = 19. 2x = 14. x = 7 = 7.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "two-step-equations-gen-e13",
+    "topicId": "two-step-equations",
+    "difficulty": "easy",
+    "question": "Solve: 4x + 1 = 5",
+    "answer": "1",
+    "hints": [
+      "Subtract 1 from both sides: 4x = 4.",
+      "Divide by 4."
+    ],
+    "solution": "4x + 1 = 5. 4x = 4. x = 1 = 1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "two-step-equations-gen-e14",
+    "topicId": "two-step-equations",
+    "difficulty": "easy",
+    "question": "Solve: 5x + 2 = 7",
+    "answer": "1",
+    "hints": [
+      "Subtract 2 from both sides: 5x = 5.",
+      "Divide by 5."
+    ],
+    "solution": "5x + 2 = 7. 5x = 5. x = 1 = 1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "two-step-equations-gen-m0",
+    "topicId": "two-step-equations",
+    "difficulty": "medium",
+    "question": "Solve: 4x + 12 = 0",
+    "answer": "-3",
+    "hints": [
+      "Subtract 12 from both sides: 4x = -12.",
+      "Divide by 4."
+    ],
+    "solution": "4x + 12 = 0. 4x = -12. x = -3 = -3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "two-step-equations-gen-m1",
+    "topicId": "two-step-equations",
+    "difficulty": "medium",
+    "question": "Solve: 6x + 5 = 47",
+    "answer": "7",
+    "hints": [
+      "Subtract 5 from both sides: 6x = 42.",
+      "Divide by 6."
+    ],
+    "solution": "6x + 5 = 47. 6x = 42. x = 7 = 7.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "two-step-equations-gen-m2",
+    "topicId": "two-step-equations",
+    "difficulty": "medium",
+    "question": "Solve: 4x + 19 = 31",
+    "answer": "3",
+    "hints": [
+      "Subtract 19 from both sides: 4x = 12.",
+      "Divide by 4."
+    ],
+    "solution": "4x + 19 = 31. 4x = 12. x = 3 = 3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "two-step-equations-gen-m3",
+    "topicId": "two-step-equations",
+    "difficulty": "medium",
+    "question": "Solve: 2x + 6 = -14",
+    "answer": "-10",
+    "hints": [
+      "Subtract 6 from both sides: 2x = -20.",
+      "Divide by 2."
+    ],
+    "solution": "2x + 6 = -14. 2x = -20. x = -10 = -10.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "two-step-equations-gen-m4",
+    "topicId": "two-step-equations",
+    "difficulty": "medium",
+    "question": "Solve: 7x + 5 = -9",
+    "answer": "-2",
+    "hints": [
+      "Subtract 5 from both sides: 7x = -14.",
+      "Divide by 7."
+    ],
+    "solution": "7x + 5 = -9. 7x = -14. x = -2 = -2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "two-step-equations-gen-m5",
+    "topicId": "two-step-equations",
+    "difficulty": "medium",
+    "question": "Solve: 8x + 12 = 92",
+    "answer": "10",
+    "hints": [
+      "Subtract 12 from both sides: 8x = 80.",
+      "Divide by 8."
+    ],
+    "solution": "8x + 12 = 92. 8x = 80. x = 10 = 10.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "two-step-equations-gen-m6",
+    "topicId": "two-step-equations",
+    "difficulty": "medium",
+    "question": "Solve: 3x + 11 = 50",
+    "answer": "13",
+    "hints": [
+      "Subtract 11 from both sides: 3x = 39.",
+      "Divide by 3."
+    ],
+    "solution": "3x + 11 = 50. 3x = 39. x = 13 = 13.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "two-step-equations-gen-m7",
+    "topicId": "two-step-equations",
+    "difficulty": "medium",
+    "question": "Solve: 3x + 13 = 49",
+    "answer": "12",
+    "hints": [
+      "Subtract 13 from both sides: 3x = 36.",
+      "Divide by 3."
+    ],
+    "solution": "3x + 13 = 49. 3x = 36. x = 12 = 12.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "two-step-equations-gen-m8",
+    "topicId": "two-step-equations",
+    "difficulty": "medium",
+    "question": "Solve: 8x + 6 = -34",
+    "answer": "-5",
+    "hints": [
+      "Subtract 6 from both sides: 8x = -40.",
+      "Divide by 8."
+    ],
+    "solution": "8x + 6 = -34. 8x = -40. x = -5 = -5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "two-step-equations-gen-m9",
+    "topicId": "two-step-equations",
+    "difficulty": "medium",
+    "question": "Solve: 2x + 10 = 0",
+    "answer": "-5",
+    "hints": [
+      "Subtract 10 from both sides: 2x = -10.",
+      "Divide by 2."
+    ],
+    "solution": "2x + 10 = 0. 2x = -10. x = -5 = -5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "two-step-equations-gen-m10",
+    "topicId": "two-step-equations",
+    "difficulty": "medium",
+    "question": "Solve: 5x + 8 = -7",
+    "answer": "-3",
+    "hints": [
+      "Subtract 8 from both sides: 5x = -15.",
+      "Divide by 5."
+    ],
+    "solution": "5x + 8 = -7. 5x = -15. x = -3 = -3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "two-step-equations-gen-m11",
+    "topicId": "two-step-equations",
+    "difficulty": "medium",
+    "question": "Solve: 6x + 8 = -52",
+    "answer": "-10",
+    "hints": [
+      "Subtract 8 from both sides: 6x = -60.",
+      "Divide by 6."
+    ],
+    "solution": "6x + 8 = -52. 6x = -60. x = -10 = -10.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "two-step-equations-gen-m12",
+    "topicId": "two-step-equations",
+    "difficulty": "medium",
+    "question": "Solve: 8x + 20 = 52",
+    "answer": "4",
+    "hints": [
+      "Subtract 20 from both sides: 8x = 32.",
+      "Divide by 8."
+    ],
+    "solution": "8x + 20 = 52. 8x = 32. x = 4 = 4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "two-step-equations-gen-m13",
+    "topicId": "two-step-equations",
+    "difficulty": "medium",
+    "question": "Solve: 6x + 12 = 66",
+    "answer": "9",
+    "hints": [
+      "Subtract 12 from both sides: 6x = 54.",
+      "Divide by 6."
+    ],
+    "solution": "6x + 12 = 66. 6x = 54. x = 9 = 9.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "two-step-equations-gen-m14",
+    "topicId": "two-step-equations",
+    "difficulty": "medium",
+    "question": "Solve: 3x + 11 = 5",
+    "answer": "-2",
+    "hints": [
+      "Subtract 11 from both sides: 3x = -6.",
+      "Divide by 3."
+    ],
+    "solution": "3x + 11 = 5. 3x = -6. x = -2 = -2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "two-step-equations-gen-m15",
+    "topicId": "two-step-equations",
+    "difficulty": "medium",
+    "question": "Solve: 4x + 1 = 9",
+    "answer": "2",
+    "hints": [
+      "Subtract 1 from both sides: 4x = 8.",
+      "Divide by 4."
+    ],
+    "solution": "4x + 1 = 9. 4x = 8. x = 2 = 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "two-step-equations-gen-m16",
+    "topicId": "two-step-equations",
+    "difficulty": "medium",
+    "question": "Solve: 3x + 14 = 56",
+    "answer": "14",
+    "hints": [
+      "Subtract 14 from both sides: 3x = 42.",
+      "Divide by 3."
+    ],
+    "solution": "3x + 14 = 56. 3x = 42. x = 14 = 14.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "two-step-equations-gen-m17",
+    "topicId": "two-step-equations",
+    "difficulty": "medium",
+    "question": "Solve: 4x + 8 = 36",
+    "answer": "7",
+    "hints": [
+      "Subtract 8 from both sides: 4x = 28.",
+      "Divide by 4."
+    ],
+    "solution": "4x + 8 = 36. 4x = 28. x = 7 = 7.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "two-step-equations-gen-m18",
+    "topicId": "two-step-equations",
+    "difficulty": "medium",
+    "question": "Solve: 5x + 17 = 92",
+    "answer": "15",
+    "hints": [
+      "Subtract 17 from both sides: 5x = 75.",
+      "Divide by 5."
+    ],
+    "solution": "5x + 17 = 92. 5x = 75. x = 15 = 15.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "two-step-equations-gen-m19",
+    "topicId": "two-step-equations",
+    "difficulty": "medium",
+    "question": "Solve: 8x + 17 = 57",
+    "answer": "5",
+    "hints": [
+      "Subtract 17 from both sides: 8x = 40.",
+      "Divide by 8."
+    ],
+    "solution": "8x + 17 = 57. 8x = 40. x = 5 = 5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "two-step-equations-gen-h0",
+    "topicId": "two-step-equations",
+    "difficulty": "hard",
+    "question": "Solve: 6x + 9 = -33",
+    "answer": "-7",
+    "hints": [
+      "Subtract 9 from both sides: 6x = -42.",
+      "Divide by 6."
+    ],
+    "solution": "6x + 9 = -33. 6x = -42. x = -7 = -7.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "two-step-equations-gen-h1",
+    "topicId": "two-step-equations",
+    "difficulty": "hard",
+    "question": "Solve: 7x + 19 = 12",
+    "answer": "-1",
+    "hints": [
+      "Subtract 19 from both sides: 7x = -7.",
+      "Divide by 7."
+    ],
+    "solution": "7x + 19 = 12. 7x = -7. x = -1 = -1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "two-step-equations-gen-h2",
+    "topicId": "two-step-equations",
+    "difficulty": "hard",
+    "question": "Solve: 4x + 6 = 42",
+    "answer": "9",
+    "hints": [
+      "Subtract 6 from both sides: 4x = 36.",
+      "Divide by 4."
+    ],
+    "solution": "4x + 6 = 42. 4x = 36. x = 9 = 9.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "two-step-equations-gen-h3",
+    "topicId": "two-step-equations",
+    "difficulty": "hard",
+    "question": "Solve: 7x + 19 = -2",
+    "answer": "-3",
+    "hints": [
+      "Subtract 19 from both sides: 7x = -21.",
+      "Divide by 7."
+    ],
+    "solution": "7x + 19 = -2. 7x = -21. x = -3 = -3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "two-step-equations-gen-h4",
+    "topicId": "two-step-equations",
+    "difficulty": "hard",
+    "question": "Solve: 3x + 19 = 25",
+    "answer": "2",
+    "hints": [
+      "Subtract 19 from both sides: 3x = 6.",
+      "Divide by 3."
+    ],
+    "solution": "3x + 19 = 25. 3x = 6. x = 2 = 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "two-step-equations-gen-h5",
+    "topicId": "two-step-equations",
+    "difficulty": "hard",
+    "question": "Solve: 4x + 18 = 62",
+    "answer": "11",
+    "hints": [
+      "Subtract 18 from both sides: 4x = 44.",
+      "Divide by 4."
+    ],
+    "solution": "4x + 18 = 62. 4x = 44. x = 11 = 11.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "two-step-equations-gen-h6",
+    "topicId": "two-step-equations",
+    "difficulty": "hard",
+    "question": "Solve: 3x + 4 = -5",
+    "answer": "-3",
+    "hints": [
+      "Subtract 4 from both sides: 3x = -9.",
+      "Divide by 3."
+    ],
+    "solution": "3x + 4 = -5. 3x = -9. x = -3 = -3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "two-step-equations-gen-h7",
+    "topicId": "two-step-equations",
+    "difficulty": "hard",
+    "question": "Solve: 7x + 18 = -17",
+    "answer": "-5",
+    "hints": [
+      "Subtract 18 from both sides: 7x = -35.",
+      "Divide by 7."
+    ],
+    "solution": "7x + 18 = -17. 7x = -35. x = -5 = -5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "two-step-equations-gen-h8",
+    "topicId": "two-step-equations",
+    "difficulty": "hard",
+    "question": "Solve: 3x + 17 = 47",
+    "answer": "10",
+    "hints": [
+      "Subtract 17 from both sides: 3x = 30.",
+      "Divide by 3."
+    ],
+    "solution": "3x + 17 = 47. 3x = 30. x = 10 = 10.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "two-step-equations-gen-h9",
+    "topicId": "two-step-equations",
+    "difficulty": "hard",
+    "question": "Solve: 6x + 17 = 47",
+    "answer": "5",
+    "hints": [
+      "Subtract 17 from both sides: 6x = 30.",
+      "Divide by 6."
+    ],
+    "solution": "6x + 17 = 47. 6x = 30. x = 5 = 5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "two-step-equations-gen-h10",
+    "topicId": "two-step-equations",
+    "difficulty": "hard",
+    "question": "Solve: 7x + 10 = 3",
+    "answer": "-1",
+    "hints": [
+      "Subtract 10 from both sides: 7x = -7.",
+      "Divide by 7."
+    ],
+    "solution": "7x + 10 = 3. 7x = -7. x = -1 = -1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "two-step-equations-gen-h11",
+    "topicId": "two-step-equations",
+    "difficulty": "hard",
+    "question": "Solve: 8x + 4 = -60",
+    "answer": "-8",
+    "hints": [
+      "Subtract 4 from both sides: 8x = -64.",
+      "Divide by 8."
+    ],
+    "solution": "8x + 4 = -60. 8x = -64. x = -8 = -8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "two-step-equations-gen-h12",
+    "topicId": "two-step-equations",
+    "difficulty": "hard",
+    "question": "Solve: 2x + 18 = 46",
+    "answer": "14",
+    "hints": [
+      "Subtract 18 from both sides: 2x = 28.",
+      "Divide by 2."
+    ],
+    "solution": "2x + 18 = 46. 2x = 28. x = 14 = 14.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "two-step-equations-gen-h13",
+    "topicId": "two-step-equations",
+    "difficulty": "hard",
+    "question": "Solve: 2x + 6 = 30",
+    "answer": "12",
+    "hints": [
+      "Subtract 6 from both sides: 2x = 24.",
+      "Divide by 2."
+    ],
+    "solution": "2x + 6 = 30. 2x = 24. x = 12 = 12.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "two-step-equations-gen-h14",
+    "topicId": "two-step-equations",
+    "difficulty": "hard",
+    "question": "Solve: 2x + 10 = -10",
+    "answer": "-10",
+    "hints": [
+      "Subtract 10 from both sides: 2x = -20.",
+      "Divide by 2."
+    ],
+    "solution": "2x + 10 = -10. 2x = -20. x = -10 = -10.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  }
+]

@@ -1,0 +1,208 @@
+[
+  {
+    "id": "cross-sections-sup-e0",
+    "topicId": "cross-sections",
+    "difficulty": "easy",
+    "question": "If you slice a sphere with a flat plane, what shape is the cross section?",
+    "answer": "circle",
+    "hints": [
+      "Every flat slice through a sphere produces the same type of shape."
+    ],
+    "solution": "A cross section of a sphere is always a circle. The size of the circle depends on where you slice — through the center gives the largest circle, and slices near the edge give smaller circles.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "cross-sections-sup-e1",
+    "topicId": "cross-sections",
+    "difficulty": "easy",
+    "question": "If you slice a rectangular prism (box) parallel to one of its faces, what shape is the cross section?",
+    "answer": "rectangle",
+    "hints": [
+      "Slicing parallel to a face gives a shape identical to that face."
+    ],
+    "solution": "A rectangle. When you slice a rectangular prism parallel to one of its faces, the cross section is a rectangle with the same dimensions as that face.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "cross-sections-sup-e2",
+    "topicId": "cross-sections",
+    "difficulty": "easy",
+    "question": "A cylinder is sliced perpendicular to its height (horizontally). What shape is the cross section?",
+    "answer": "circle",
+    "hints": [
+      "Think about what a cylinder looks like from the top."
+    ],
+    "solution": "A circle. Slicing a cylinder horizontally (perpendicular to its height) always produces a circle with the same radius as the cylinder.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "cross-sections-sup-e3",
+    "topicId": "cross-sections",
+    "difficulty": "easy",
+    "question": "What is a cross section?",
+    "answer": "A cross section is the 2D shape you get when you slice a 3D figure with a flat plane.",
+    "hints": [
+      "Imagine cutting through a solid object — the flat surface you reveal is the cross section."
+    ],
+    "solution": "A cross section is the two-dimensional shape formed when a plane intersects (slices through) a three-dimensional figure. It's like looking at the flat surface revealed when you cut through a solid object.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "cross-sections-sup-e4",
+    "topicId": "cross-sections",
+    "difficulty": "easy",
+    "question": "A cube is sliced parallel to one of its faces. What shape is the cross section?",
+    "answer": "square",
+    "hints": [
+      "A cube's faces are all squares. A parallel slice produces the same shape."
+    ],
+    "solution": "A square. Since all faces of a cube are squares, slicing parallel to any face produces a square cross section of the same size as the face.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "cross-sections-sup-m0",
+    "topicId": "cross-sections",
+    "difficulty": "medium",
+    "question": "A cone is sliced horizontally (parallel to the base). What shape is the cross section? How does the size change depending on where you slice?",
+    "answer": "circle. The circle is smaller near the top (apex) and larger near the base.",
+    "hints": [
+      "Think about the cone getting wider from top to bottom.",
+      "A horizontal slice at any height produces a circle."
+    ],
+    "solution": "The cross section is a circle. Near the apex (top), the circle is very small. As you slice closer to the base, the circle gets larger. At the base itself, the cross section equals the full base circle. The radius increases proportionally with distance from the apex.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "cross-sections-sup-m1",
+    "topicId": "cross-sections",
+    "difficulty": "medium",
+    "question": "A cylinder is sliced vertically (parallel to its height, through the center). What shape is the cross section?",
+    "answer": "rectangle",
+    "hints": [
+      "Imagine cutting a can straight down through the middle.",
+      "The width is the diameter, and the height is the cylinder's height."
+    ],
+    "solution": "A rectangle. The width of the rectangle equals the diameter of the cylinder (2r), and the height of the rectangle equals the height of the cylinder. Slicing through the center gives the largest possible rectangle.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "cross-sections-sup-m2",
+    "topicId": "cross-sections",
+    "difficulty": "medium",
+    "question": "A right rectangular prism (box) is sliced diagonally from one top edge to the opposite bottom edge. Is the cross section a rectangle, triangle, or some other shape?",
+    "answer": "rectangle",
+    "hints": [
+      "Imagine cutting diagonally from the top-left edge to the bottom-right edge.",
+      "The cut passes through four edges of the prism."
+    ],
+    "solution": "A diagonal slice through a rectangular prism from one top edge to the opposite bottom edge produces a rectangle. The rectangle's dimensions depend on the angle of the cut — it will be taller than a horizontal slice and tilted relative to the faces.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "cross-sections-sup-m3",
+    "topicId": "cross-sections",
+    "difficulty": "medium",
+    "question": "A cone is sliced vertically through its apex (the tip) and the center of its base. What shape is the cross section?",
+    "answer": "triangle",
+    "hints": [
+      "The slice passes through the tip and the full diameter of the base.",
+      "What shape has a point at the top and a flat bottom?"
+    ],
+    "solution": "An isosceles triangle. The slice passes through the apex (one point) and across the full diameter of the base (a line segment). The resulting triangle has the apex of the cone at its top and the diameter as its base.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "cross-sections-sup-m4",
+    "topicId": "cross-sections",
+    "difficulty": "medium",
+    "question": "Can the cross section of a cube ever be a triangle? If yes, describe how you would slice the cube. If no, explain why not.",
+    "answer": "Yes. Slice the cube through three non-adjacent vertices (one on each of three different faces that share a corner). This produces a triangular cross section.",
+    "hints": [
+      "Think about slicing diagonally through a corner of the cube.",
+      "A plane through three vertices of the cube that are not on the same face."
+    ],
+    "solution": "Yes. If you slice a cube with a plane that passes through three vertices that each lie on different faces meeting at one corner, you get an equilateral triangle. For example, slice through the midpoints of three edges emanating from one vertex — this creates a triangular cross section.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "cross-sections-sup-h0",
+    "topicId": "cross-sections",
+    "difficulty": "hard",
+    "question": "A cone can produce different cross-section shapes depending on how it's sliced. Name three different shapes you can get by slicing a cone at different angles.",
+    "answer": "Circle (horizontal slice), triangle (vertical slice through apex), and ellipse (angled slice not through apex and not parallel to base).",
+    "hints": [
+      "These are called 'conic sections' and have been studied for thousands of years.",
+      "Try horizontal, vertical through the apex, and angled cuts."
+    ],
+    "solution": "Three cross sections of a cone: (1) Circle — slice parallel to the base. (2) Triangle — slice vertically through the apex and center of base. (3) Ellipse — slice at an angle that crosses both sides of the cone but not parallel to the base. (Bonus: a parabola occurs when the slice is parallel to the slant edge, and a hyperbola when the slice is steeper than the slant.)",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "cross-sections-sup-h1",
+    "topicId": "cross-sections",
+    "difficulty": "hard",
+    "question": "A triangular prism has equilateral triangle bases with side length 6 cm and a height (length) of 10 cm. If you slice it parallel to the triangular bases, what is the area of the cross section?",
+    "answer": "9√3 or approximately 15.6 square cm",
+    "hints": [
+      "A slice parallel to the base produces the same shape as the base.",
+      "Area of equilateral triangle = (s²√3)/4."
+    ],
+    "solution": "Slicing parallel to the triangular base produces an identical equilateral triangle with side length 6 cm. Area = (6²√3)/4 = (36√3)/4 = 9√3 ≈ 15.6 sq cm. The cross section is the same regardless of where along the length you slice.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "cross-sections-sup-h2",
+    "topicId": "cross-sections",
+    "difficulty": "hard",
+    "question": "A student says 'the cross section of a rectangular prism is always a rectangle.' Is this true? If not, give a counterexample.",
+    "answer": "False. A diagonal slice through a rectangular prism can produce shapes other than rectangles, such as a triangle (slicing through three faces at a corner) or a hexagon (slicing through all six faces).",
+    "hints": [
+      "Consider slicing at unusual angles, not just parallel or perpendicular to faces.",
+      "Can you cut through only three faces?"
+    ],
+    "solution": "False. While horizontal and vertical slices produce rectangles, other angles produce different shapes: (1) A slice through three faces meeting at a corner produces a triangle. (2) A slice at the right angle through all six faces produces a hexagon. The cross section depends entirely on the angle and position of the cutting plane.",
+    "cognitiveDemand": "error-analysis",
+    "source": "generated"
+  },
+  {
+    "id": "cross-sections-sup-h3",
+    "topicId": "cross-sections",
+    "difficulty": "hard",
+    "question": "A cylinder has radius 5 cm and height 12 cm. It is sliced vertically, 3 cm from the center (not through the center). What shape is the cross section, and is it the same size as a slice through the center?",
+    "answer": "The cross section is a rectangle, but it is narrower than the central slice. Its width is 8 cm (using the chord length) instead of 10 cm (the diameter).",
+    "hints": [
+      "A vertical slice not through the center still creates a rectangle, but the width is a chord of the circle, not the diameter.",
+      "Use the Pythagorean theorem to find the chord length: half-chord = √(5² - 3²)."
+    ],
+    "solution": "The cross section is a rectangle with height 12 cm. The width is the chord of the circular base at distance 3 cm from center. Half-chord = √(5² - 3²) = √(25-9) = √16 = 4 cm. Full chord = 8 cm. So the rectangle is 8 cm × 12 cm. The central slice would be 10 cm × 12 cm (using the full diameter), so this off-center slice is narrower.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "cross-sections-sup-h4",
+    "topicId": "cross-sections",
+    "difficulty": "hard",
+    "question": "A square pyramid has a square base with side 10 cm and a height of 15 cm. If you slice it horizontally at a height of 10 cm from the base, what is the side length of the resulting square cross section?",
+    "answer": "10/3 cm or approximately 3.33 cm",
+    "hints": [
+      "At height 10, you are 5 cm from the apex (total height 15).",
+      "The cross section scales proportionally to the distance from the apex.",
+      "At height h from apex, side = base_side × (h/total_height). Wait — think about which direction: at 10 cm from base = 5 cm from apex."
+    ],
+    "solution": "At 10 cm from the base, the slice is 15 - 10 = 5 cm from the apex. The pyramid tapers linearly from base (side 10) to apex (side 0). The ratio from apex: 5/15 = 1/3 of the total height. Side length at this height = 10 × (1/3) = 10/3 ≈ 3.33 cm. The cross section is a square with side 10/3 cm.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  }
+]

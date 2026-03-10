@@ -1,0 +1,207 @@
+[
+  {
+    "id": "intro-fractions-sup-e0",
+    "topicId": "intro-fractions",
+    "difficulty": "easy",
+    "question": "A pie is cut into 4 equal pieces. You eat 1 piece. What fraction of the pie did you eat?",
+    "answer": "1/4",
+    "hints": [
+      "You ate 1 piece out of 4 total equal pieces."
+    ],
+    "solution": "You ate 1 out of 4 equal pieces = 1/4 (one fourth) of the pie.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "intro-fractions-sup-e1",
+    "topicId": "intro-fractions",
+    "difficulty": "easy",
+    "question": "What does the bottom number (denominator) in a fraction tell you?",
+    "answer": "the total number of equal parts",
+    "hints": [
+      "In 3/4, the 4 is the bottom number. What does it mean?"
+    ],
+    "solution": "The bottom number (denominator) tells you how many equal parts the whole is divided into. In 3/4, the whole is split into 4 equal parts.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "intro-fractions-sup-e2",
+    "topicId": "intro-fractions",
+    "difficulty": "easy",
+    "question": "A sandwich is cut in half. What fraction is each piece?",
+    "answer": "1/2",
+    "hints": [
+      "Cutting in half makes 2 equal pieces. Each piece is 1 out of 2."
+    ],
+    "solution": "Each piece is 1/2 (one half). The sandwich is divided into 2 equal parts, and each part is 1 of those 2.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "intro-fractions-sup-e3",
+    "topicId": "intro-fractions",
+    "difficulty": "easy",
+    "question": "What fraction of a pizza is left if you eat 0 slices out of 8?",
+    "answer": "8/8",
+    "hints": [
+      "If you eat nothing, all 8 slices remain.",
+      "8 out of 8 slices are left."
+    ],
+    "solution": "If you eat 0 slices, all 8 out of 8 are left. 8/8 = the whole pizza.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "intro-fractions-sup-e4",
+    "topicId": "intro-fractions",
+    "difficulty": "easy",
+    "question": "In the fraction 2/3, what does the top number (2) tell you?",
+    "answer": "the number of parts you have",
+    "hints": [
+      "The top number is called the numerator.",
+      "It counts how many parts of the whole you are talking about."
+    ],
+    "solution": "The top number (numerator) tells you how many parts you have or are talking about. In 2/3, you have 2 of the 3 equal parts.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "intro-fractions-sup-m0",
+    "topicId": "intro-fractions",
+    "difficulty": "medium",
+    "question": "A rectangle is divided into 6 equal parts. 4 parts are shaded. What fraction is shaded?",
+    "answer": "4/6",
+    "hints": [
+      "Count the shaded parts (numerator) and the total parts (denominator)."
+    ],
+    "solution": "4 parts shaded out of 6 total = 4/6.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "intro-fractions-sup-m1",
+    "topicId": "intro-fractions",
+    "difficulty": "medium",
+    "question": "Which is larger: 1/2 or 1/4?",
+    "answer": "1/2",
+    "hints": [
+      "Think about sharing a cookie with 2 people vs. 4 people.",
+      "Fewer pieces means each piece is bigger."
+    ],
+    "solution": "1/2 is larger than 1/4. When a whole is split into fewer equal parts, each part is bigger. Half a cookie is more than a quarter of a cookie.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "intro-fractions-sup-m2",
+    "topicId": "intro-fractions",
+    "difficulty": "medium",
+    "question": "There are 5 marbles in a bag: 3 are red and 2 are blue. What fraction of the marbles are red?",
+    "answer": "3/5",
+    "hints": [
+      "Red marbles = 3. Total marbles = 5.",
+      "Fraction = part / whole."
+    ],
+    "solution": "3 out of 5 marbles are red = 3/5.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "intro-fractions-sup-m3",
+    "topicId": "intro-fractions",
+    "difficulty": "medium",
+    "question": "If 3/8 of a pie is eaten, what fraction is left?",
+    "answer": "5/8",
+    "hints": [
+      "The whole pie is 8/8.",
+      "8/8 - 3/8 = ?"
+    ],
+    "solution": "The whole pie = 8/8. Eaten = 3/8. Left = 8/8 - 3/8 = 5/8.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "intro-fractions-sup-m4",
+    "topicId": "intro-fractions",
+    "difficulty": "medium",
+    "question": "True or false: 4/4 equals one whole.",
+    "answer": "true",
+    "hints": [
+      "If something is cut into 4 equal parts and you have all 4 parts..."
+    ],
+    "solution": "True. 4/4 means you have all 4 out of 4 equal parts, which is the entire whole. 4/4 = 1.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "intro-fractions-sup-h0",
+    "topicId": "intro-fractions",
+    "difficulty": "hard",
+    "question": "Which is larger: 3/4 or 2/3? Explain your thinking.",
+    "answer": "3/4",
+    "hints": [
+      "Think about how much is missing from each. 3/4 is missing 1/4. 2/3 is missing 1/3.",
+      "1/4 is less than 1/3, so 3/4 is missing less."
+    ],
+    "solution": "3/4 is larger. 3/4 is missing 1/4 of a whole, while 2/3 is missing 1/3. Since 1/4 < 1/3, 3/4 is closer to 1 whole and therefore larger.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "intro-fractions-sup-h1",
+    "topicId": "intro-fractions",
+    "difficulty": "hard",
+    "question": "Max ate 2/6 of a cake. Lily ate 1/3 of the same cake. Who ate more?",
+    "answer": "they ate the same amount",
+    "hints": [
+      "Can you simplify 2/6?",
+      "2/6 = 1/3 when you divide top and bottom by 2."
+    ],
+    "solution": "2/6 simplifies to 1/3 (divide numerator and denominator by 2). So Max and Lily ate the same amount: 1/3 of the cake each.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "intro-fractions-sup-h2",
+    "topicId": "intro-fractions",
+    "difficulty": "hard",
+    "question": "A class has 20 students. 1/4 of the students are wearing hats. How many students are wearing hats?",
+    "answer": "5",
+    "hints": [
+      "1/4 of 20 means divide 20 into 4 equal groups.",
+      "20 divided by 4 = ?"
+    ],
+    "solution": "1/4 of 20 = 20 / 4 = 5 students are wearing hats.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "intro-fractions-sup-h3",
+    "topicId": "intro-fractions",
+    "difficulty": "hard",
+    "question": "A bar is divided into 3 equal parts. Then each part is cut in half. How many total pieces are there? What fraction is each piece?",
+    "answer": "6 pieces, each is 1/6",
+    "hints": [
+      "3 parts, each cut in half: 3 x 2 = 6 pieces.",
+      "Each piece is 1 out of 6 total."
+    ],
+    "solution": "3 parts cut in half = 3 x 2 = 6 total pieces. Each piece is 1/6 of the whole bar.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "intro-fractions-sup-h4",
+    "topicId": "intro-fractions",
+    "difficulty": "hard",
+    "question": "Sam says 1/8 is bigger than 1/2 because 8 is bigger than 2. What mistake is Sam making?",
+    "answer": "bigger denominator means smaller pieces, not bigger",
+    "hints": [
+      "Think about sharing a pizza with 2 people vs. 8 people.",
+      "More pieces means each piece is smaller."
+    ],
+    "solution": "Sam is wrong. A larger denominator means the whole is divided into more pieces, making each piece smaller. 1/8 is much smaller than 1/2. Sharing with 8 people gives everyone less than sharing with 2.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  }
+]

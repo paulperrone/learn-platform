@@ -1,0 +1,652 @@
+[
+  {
+    "id": "equivalent-ratios-gen-e0",
+    "topicId": "equivalent-ratios",
+    "difficulty": "easy",
+    "question": "Find the missing value: 5:3 = 20:?",
+    "answer": "12",
+    "hints": [
+      "The first number was multiplied by 4. Do the same to the second."
+    ],
+    "solution": "5 × 4 = 20, so 3 × 4 = 12. Answer: 12.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-ratios-gen-e1",
+    "topicId": "equivalent-ratios",
+    "difficulty": "easy",
+    "question": "Find the missing value: 2:4 = 4:?",
+    "answer": "8",
+    "hints": [
+      "The first number was multiplied by 2. Do the same to the second."
+    ],
+    "solution": "2 × 2 = 4, so 4 × 2 = 8. Answer: 8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-ratios-gen-e2",
+    "topicId": "equivalent-ratios",
+    "difficulty": "easy",
+    "question": "Find the missing value: 4:1 = 8:?",
+    "answer": "2",
+    "hints": [
+      "The first number was multiplied by 2. Do the same to the second."
+    ],
+    "solution": "4 × 2 = 8, so 1 × 2 = 2. Answer: 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-ratios-gen-e3",
+    "topicId": "equivalent-ratios",
+    "difficulty": "easy",
+    "question": "Find the missing value: 3:2 = 9:?",
+    "answer": "6",
+    "hints": [
+      "The first number was multiplied by 3. Do the same to the second."
+    ],
+    "solution": "3 × 3 = 9, so 2 × 3 = 6. Answer: 6.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-ratios-gen-e4",
+    "topicId": "equivalent-ratios",
+    "difficulty": "easy",
+    "question": "Find the missing value: 5:1 = 20:?",
+    "answer": "4",
+    "hints": [
+      "The first number was multiplied by 4. Do the same to the second."
+    ],
+    "solution": "5 × 4 = 20, so 1 × 4 = 4. Answer: 4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-ratios-gen-e5",
+    "topicId": "equivalent-ratios",
+    "difficulty": "easy",
+    "question": "Find the missing value: 1:5 = 3:?",
+    "answer": "15",
+    "hints": [
+      "The first number was multiplied by 3. Do the same to the second."
+    ],
+    "solution": "1 × 3 = 3, so 5 × 3 = 15. Answer: 15.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-ratios-gen-e6",
+    "topicId": "equivalent-ratios",
+    "difficulty": "easy",
+    "question": "Find the missing value: 1:5 = 4:?",
+    "answer": "20",
+    "hints": [
+      "The first number was multiplied by 4. Do the same to the second."
+    ],
+    "solution": "1 × 4 = 4, so 5 × 4 = 20. Answer: 20.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-ratios-gen-e7",
+    "topicId": "equivalent-ratios",
+    "difficulty": "easy",
+    "question": "Find the missing value: 1:1 = 4:?",
+    "answer": "4",
+    "hints": [
+      "The first number was multiplied by 4. Do the same to the second."
+    ],
+    "solution": "1 × 4 = 4, so 1 × 4 = 4. Answer: 4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-ratios-gen-e8",
+    "topicId": "equivalent-ratios",
+    "difficulty": "easy",
+    "question": "Find the missing value: 3:3 = 6:?",
+    "answer": "6",
+    "hints": [
+      "The first number was multiplied by 2. Do the same to the second."
+    ],
+    "solution": "3 × 2 = 6, so 3 × 2 = 6. Answer: 6.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-ratios-gen-e9",
+    "topicId": "equivalent-ratios",
+    "difficulty": "easy",
+    "question": "Find the missing value: 5:5 = 20:?",
+    "answer": "20",
+    "hints": [
+      "The first number was multiplied by 4. Do the same to the second."
+    ],
+    "solution": "5 × 4 = 20, so 5 × 4 = 20. Answer: 20.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-ratios-gen-e10",
+    "topicId": "equivalent-ratios",
+    "difficulty": "easy",
+    "question": "Find the missing value: 2:1 = 4:?",
+    "answer": "2",
+    "hints": [
+      "The first number was multiplied by 2. Do the same to the second."
+    ],
+    "solution": "2 × 2 = 4, so 1 × 2 = 2. Answer: 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-ratios-gen-e11",
+    "topicId": "equivalent-ratios",
+    "difficulty": "easy",
+    "question": "Find the missing value: 2:1 = 6:?",
+    "answer": "3",
+    "hints": [
+      "The first number was multiplied by 3. Do the same to the second."
+    ],
+    "solution": "2 × 3 = 6, so 1 × 3 = 3. Answer: 3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-ratios-gen-e12",
+    "topicId": "equivalent-ratios",
+    "difficulty": "easy",
+    "question": "Find the missing value: 3:3 = 9:?",
+    "answer": "9",
+    "hints": [
+      "The first number was multiplied by 3. Do the same to the second."
+    ],
+    "solution": "3 × 3 = 9, so 3 × 3 = 9. Answer: 9.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-ratios-gen-e13",
+    "topicId": "equivalent-ratios",
+    "difficulty": "easy",
+    "question": "Find the missing value: 1:4 = 2:?",
+    "answer": "8",
+    "hints": [
+      "The first number was multiplied by 2. Do the same to the second."
+    ],
+    "solution": "1 × 2 = 2, so 4 × 2 = 8. Answer: 8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-ratios-gen-e14",
+    "topicId": "equivalent-ratios",
+    "difficulty": "easy",
+    "question": "Find the missing value: 3:3 = 9:?",
+    "answer": "9",
+    "hints": [
+      "The first number was multiplied by 3. Do the same to the second."
+    ],
+    "solution": "3 × 3 = 9, so 3 × 3 = 9. Answer: 9.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-ratios-gen-m0",
+    "topicId": "equivalent-ratios",
+    "difficulty": "medium",
+    "question": "Find the missing value: 3:2 = 12:?",
+    "answer": "8",
+    "hints": [
+      "The first number was multiplied by 4. Do the same to the second."
+    ],
+    "solution": "3 × 4 = 12, so 2 × 4 = 8. Answer: 8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-ratios-gen-m1",
+    "topicId": "equivalent-ratios",
+    "difficulty": "medium",
+    "question": "Find the missing value: 4:9 = 12:?",
+    "answer": "27",
+    "hints": [
+      "The first number was multiplied by 3. Do the same to the second."
+    ],
+    "solution": "4 × 3 = 12, so 9 × 3 = 27. Answer: 27.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-ratios-gen-m2",
+    "topicId": "equivalent-ratios",
+    "difficulty": "medium",
+    "question": "Find the missing value: 8:5 = 56:?",
+    "answer": "35",
+    "hints": [
+      "The first number was multiplied by 7. Do the same to the second."
+    ],
+    "solution": "8 × 7 = 56, so 5 × 7 = 35. Answer: 35.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-ratios-gen-m3",
+    "topicId": "equivalent-ratios",
+    "difficulty": "medium",
+    "question": "Find the missing value: 9:9 = 18:?",
+    "answer": "18",
+    "hints": [
+      "The first number was multiplied by 2. Do the same to the second."
+    ],
+    "solution": "9 × 2 = 18, so 9 × 2 = 18. Answer: 18.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-ratios-gen-m4",
+    "topicId": "equivalent-ratios",
+    "difficulty": "medium",
+    "question": "Find the missing value: 2:2 = 12:?",
+    "answer": "12",
+    "hints": [
+      "The first number was multiplied by 6. Do the same to the second."
+    ],
+    "solution": "2 × 6 = 12, so 2 × 6 = 12. Answer: 12.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-ratios-gen-m5",
+    "topicId": "equivalent-ratios",
+    "difficulty": "medium",
+    "question": "Find the missing value: 10:7 = 50:?",
+    "answer": "35",
+    "hints": [
+      "The first number was multiplied by 5. Do the same to the second."
+    ],
+    "solution": "10 × 5 = 50, so 7 × 5 = 35. Answer: 35.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-ratios-gen-m6",
+    "topicId": "equivalent-ratios",
+    "difficulty": "medium",
+    "question": "Find the missing value: 7:1 = 56:?",
+    "answer": "8",
+    "hints": [
+      "The first number was multiplied by 8. Do the same to the second."
+    ],
+    "solution": "7 × 8 = 56, so 1 × 8 = 8. Answer: 8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-ratios-gen-m7",
+    "topicId": "equivalent-ratios",
+    "difficulty": "medium",
+    "question": "Find the missing value: 1:7 = 5:?",
+    "answer": "35",
+    "hints": [
+      "The first number was multiplied by 5. Do the same to the second."
+    ],
+    "solution": "1 × 5 = 5, so 7 × 5 = 35. Answer: 35.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-ratios-gen-m8",
+    "topicId": "equivalent-ratios",
+    "difficulty": "medium",
+    "question": "Find the missing value: 10:1 = 80:?",
+    "answer": "8",
+    "hints": [
+      "The first number was multiplied by 8. Do the same to the second."
+    ],
+    "solution": "10 × 8 = 80, so 1 × 8 = 8. Answer: 8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-ratios-gen-m9",
+    "topicId": "equivalent-ratios",
+    "difficulty": "medium",
+    "question": "Find the missing value: 7:1 = 56:?",
+    "answer": "8",
+    "hints": [
+      "The first number was multiplied by 8. Do the same to the second."
+    ],
+    "solution": "7 × 8 = 56, so 1 × 8 = 8. Answer: 8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-ratios-gen-m10",
+    "topicId": "equivalent-ratios",
+    "difficulty": "medium",
+    "question": "Find the missing value: 3:1 = 18:?",
+    "answer": "6",
+    "hints": [
+      "The first number was multiplied by 6. Do the same to the second."
+    ],
+    "solution": "3 × 6 = 18, so 1 × 6 = 6. Answer: 6.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-ratios-gen-m11",
+    "topicId": "equivalent-ratios",
+    "difficulty": "medium",
+    "question": "Find the missing value: 5:2 = 20:?",
+    "answer": "8",
+    "hints": [
+      "The first number was multiplied by 4. Do the same to the second."
+    ],
+    "solution": "5 × 4 = 20, so 2 × 4 = 8. Answer: 8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-ratios-gen-m12",
+    "topicId": "equivalent-ratios",
+    "difficulty": "medium",
+    "question": "Find the missing value: 3:5 = 6:?",
+    "answer": "10",
+    "hints": [
+      "The first number was multiplied by 2. Do the same to the second."
+    ],
+    "solution": "3 × 2 = 6, so 5 × 2 = 10. Answer: 10.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-ratios-gen-m13",
+    "topicId": "equivalent-ratios",
+    "difficulty": "medium",
+    "question": "Find the missing value: 7:7 = 21:?",
+    "answer": "21",
+    "hints": [
+      "The first number was multiplied by 3. Do the same to the second."
+    ],
+    "solution": "7 × 3 = 21, so 7 × 3 = 21. Answer: 21.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-ratios-gen-m14",
+    "topicId": "equivalent-ratios",
+    "difficulty": "medium",
+    "question": "Find the missing value: 3:9 = 9:?",
+    "answer": "27",
+    "hints": [
+      "The first number was multiplied by 3. Do the same to the second."
+    ],
+    "solution": "3 × 3 = 9, so 9 × 3 = 27. Answer: 27.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-ratios-gen-m15",
+    "topicId": "equivalent-ratios",
+    "difficulty": "medium",
+    "question": "Find the missing value: 10:5 = 60:?",
+    "answer": "30",
+    "hints": [
+      "The first number was multiplied by 6. Do the same to the second."
+    ],
+    "solution": "10 × 6 = 60, so 5 × 6 = 30. Answer: 30.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-ratios-gen-m16",
+    "topicId": "equivalent-ratios",
+    "difficulty": "medium",
+    "question": "Find the missing value: 3:3 = 18:?",
+    "answer": "18",
+    "hints": [
+      "The first number was multiplied by 6. Do the same to the second."
+    ],
+    "solution": "3 × 6 = 18, so 3 × 6 = 18. Answer: 18.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-ratios-gen-m17",
+    "topicId": "equivalent-ratios",
+    "difficulty": "medium",
+    "question": "Find the missing value: 5:6 = 35:?",
+    "answer": "42",
+    "hints": [
+      "The first number was multiplied by 7. Do the same to the second."
+    ],
+    "solution": "5 × 7 = 35, so 6 × 7 = 42. Answer: 42.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-ratios-gen-m18",
+    "topicId": "equivalent-ratios",
+    "difficulty": "medium",
+    "question": "Find the missing value: 7:9 = 21:?",
+    "answer": "27",
+    "hints": [
+      "The first number was multiplied by 3. Do the same to the second."
+    ],
+    "solution": "7 × 3 = 21, so 9 × 3 = 27. Answer: 27.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-ratios-gen-m19",
+    "topicId": "equivalent-ratios",
+    "difficulty": "medium",
+    "question": "Find the missing value: 2:10 = 10:?",
+    "answer": "50",
+    "hints": [
+      "The first number was multiplied by 5. Do the same to the second."
+    ],
+    "solution": "2 × 5 = 10, so 10 × 5 = 50. Answer: 50.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-ratios-gen-h0",
+    "topicId": "equivalent-ratios",
+    "difficulty": "hard",
+    "question": "Find the missing value: 8:6 = 32:?",
+    "answer": "24",
+    "hints": [
+      "The first number was multiplied by 4. Do the same to the second."
+    ],
+    "solution": "8 × 4 = 32, so 6 × 4 = 24. Answer: 24.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-ratios-gen-h1",
+    "topicId": "equivalent-ratios",
+    "difficulty": "hard",
+    "question": "Find the missing value: 9:10 = 27:?",
+    "answer": "30",
+    "hints": [
+      "The first number was multiplied by 3. Do the same to the second."
+    ],
+    "solution": "9 × 3 = 27, so 10 × 3 = 30. Answer: 30.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-ratios-gen-h2",
+    "topicId": "equivalent-ratios",
+    "difficulty": "hard",
+    "question": "Find the missing value: 8:2 = 24:?",
+    "answer": "6",
+    "hints": [
+      "The first number was multiplied by 3. Do the same to the second."
+    ],
+    "solution": "8 × 3 = 24, so 2 × 3 = 6. Answer: 6.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-ratios-gen-h3",
+    "topicId": "equivalent-ratios",
+    "difficulty": "hard",
+    "question": "Find the missing value: 3:6 = 18:?",
+    "answer": "36",
+    "hints": [
+      "The first number was multiplied by 6. Do the same to the second."
+    ],
+    "solution": "3 × 6 = 18, so 6 × 6 = 36. Answer: 36.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-ratios-gen-h4",
+    "topicId": "equivalent-ratios",
+    "difficulty": "hard",
+    "question": "Find the missing value: 2:6 = 16:?",
+    "answer": "48",
+    "hints": [
+      "The first number was multiplied by 8. Do the same to the second."
+    ],
+    "solution": "2 × 8 = 16, so 6 × 8 = 48. Answer: 48.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-ratios-gen-h5",
+    "topicId": "equivalent-ratios",
+    "difficulty": "hard",
+    "question": "Find the missing value: 4:4 = 12:?",
+    "answer": "12",
+    "hints": [
+      "The first number was multiplied by 3. Do the same to the second."
+    ],
+    "solution": "4 × 3 = 12, so 4 × 3 = 12. Answer: 12.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-ratios-gen-h6",
+    "topicId": "equivalent-ratios",
+    "difficulty": "hard",
+    "question": "Find the missing value: 1:1 = 6:?",
+    "answer": "6",
+    "hints": [
+      "The first number was multiplied by 6. Do the same to the second."
+    ],
+    "solution": "1 × 6 = 6, so 1 × 6 = 6. Answer: 6.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-ratios-gen-h7",
+    "topicId": "equivalent-ratios",
+    "difficulty": "hard",
+    "question": "Find the missing value: 1:9 = 6:?",
+    "answer": "54",
+    "hints": [
+      "The first number was multiplied by 6. Do the same to the second."
+    ],
+    "solution": "1 × 6 = 6, so 9 × 6 = 54. Answer: 54.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-ratios-gen-h8",
+    "topicId": "equivalent-ratios",
+    "difficulty": "hard",
+    "question": "Find the missing value: 4:1 = 8:?",
+    "answer": "2",
+    "hints": [
+      "The first number was multiplied by 2. Do the same to the second."
+    ],
+    "solution": "4 × 2 = 8, so 1 × 2 = 2. Answer: 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-ratios-gen-h9",
+    "topicId": "equivalent-ratios",
+    "difficulty": "hard",
+    "question": "Find the missing value: 2:8 = 8:?",
+    "answer": "32",
+    "hints": [
+      "The first number was multiplied by 4. Do the same to the second."
+    ],
+    "solution": "2 × 4 = 8, so 8 × 4 = 32. Answer: 32.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-ratios-gen-h10",
+    "topicId": "equivalent-ratios",
+    "difficulty": "hard",
+    "question": "Find the missing value: 4:8 = 24:?",
+    "answer": "48",
+    "hints": [
+      "The first number was multiplied by 6. Do the same to the second."
+    ],
+    "solution": "4 × 6 = 24, so 8 × 6 = 48. Answer: 48.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-ratios-gen-h11",
+    "topicId": "equivalent-ratios",
+    "difficulty": "hard",
+    "question": "Find the missing value: 8:7 = 40:?",
+    "answer": "35",
+    "hints": [
+      "The first number was multiplied by 5. Do the same to the second."
+    ],
+    "solution": "8 × 5 = 40, so 7 × 5 = 35. Answer: 35.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-ratios-gen-h12",
+    "topicId": "equivalent-ratios",
+    "difficulty": "hard",
+    "question": "Find the missing value: 10:1 = 40:?",
+    "answer": "4",
+    "hints": [
+      "The first number was multiplied by 4. Do the same to the second."
+    ],
+    "solution": "10 × 4 = 40, so 1 × 4 = 4. Answer: 4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-ratios-gen-h13",
+    "topicId": "equivalent-ratios",
+    "difficulty": "hard",
+    "question": "Find the missing value: 1:6 = 7:?",
+    "answer": "42",
+    "hints": [
+      "The first number was multiplied by 7. Do the same to the second."
+    ],
+    "solution": "1 × 7 = 7, so 6 × 7 = 42. Answer: 42.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "equivalent-ratios-gen-h14",
+    "topicId": "equivalent-ratios",
+    "difficulty": "hard",
+    "question": "Find the missing value: 5:10 = 35:?",
+    "answer": "70",
+    "hints": [
+      "The first number was multiplied by 7. Do the same to the second."
+    ],
+    "solution": "5 × 7 = 35, so 10 × 7 = 70. Answer: 70.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  }
+]

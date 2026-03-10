@@ -1,0 +1,211 @@
+[
+  {
+    "id": "multiply-word-problems-sup-e0",
+    "topicId": "multiply-word-problems",
+    "difficulty": "easy",
+    "question": "There are 3 bags with 4 apples in each bag. How many apples are there in all?",
+    "answer": "12",
+    "hints": [
+      "You have 3 groups of 4.",
+      "3 × 4 = ?"
+    ],
+    "solution": "3 bags × 4 apples per bag = 12 apples.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "multiply-word-problems-sup-e1",
+    "topicId": "multiply-word-problems",
+    "difficulty": "easy",
+    "question": "A classroom has 5 rows of desks with 6 desks in each row. How many desks are there?",
+    "answer": "30",
+    "hints": [
+      "Think of this as an array: 5 rows of 6.",
+      "5 × 6 = ?"
+    ],
+    "solution": "5 rows × 6 desks per row = 30 desks. This is like a 5-by-6 array.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "multiply-word-problems-sup-e2",
+    "topicId": "multiply-word-problems",
+    "difficulty": "easy",
+    "question": "Each child gets 2 stickers. There are 7 children. How many stickers are needed?",
+    "answer": "14",
+    "hints": [
+      "7 children, each getting 2 stickers.",
+      "7 × 2 = ?"
+    ],
+    "solution": "7 children × 2 stickers each = 14 stickers.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "multiply-word-problems-sup-e3",
+    "topicId": "multiply-word-problems",
+    "difficulty": "easy",
+    "question": "A spider has 8 legs. How many legs do 3 spiders have altogether?",
+    "answer": "24",
+    "hints": [
+      "3 groups of 8 legs.",
+      "3 × 8 = ?"
+    ],
+    "solution": "3 spiders × 8 legs each = 24 legs.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "multiply-word-problems-sup-e4",
+    "topicId": "multiply-word-problems",
+    "difficulty": "easy",
+    "question": "There are 4 plates on a table. Each plate has 5 cookies. How many cookies are there?",
+    "answer": "20",
+    "hints": [
+      "4 groups of 5.",
+      "4 × 5 = ?"
+    ],
+    "solution": "4 plates × 5 cookies per plate = 20 cookies.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "multiply-word-problems-sup-m0",
+    "topicId": "multiply-word-problems",
+    "difficulty": "medium",
+    "question": "A baker puts 6 muffins in each box. She fills 8 boxes. Then she gives away 5 muffins. How many muffins does she have left?",
+    "answer": "43",
+    "hints": [
+      "First find total muffins: 6 × 8.",
+      "Then subtract the 5 she gave away."
+    ],
+    "solution": "Total muffins: 6 × 8 = 48. After giving away 5: 48 − 5 = 43 muffins left.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "multiply-word-problems-sup-m1",
+    "topicId": "multiply-word-problems",
+    "difficulty": "medium",
+    "question": "A store sells packs of markers. Each pack has 8 markers. Ms. Lee buys 3 packs for her class and Mr. Kim buys 4 packs. How many markers did they buy altogether?",
+    "answer": "56",
+    "hints": [
+      "Ms. Lee: 3 × 8. Mr. Kim: 4 × 8.",
+      "Add the two amounts together."
+    ],
+    "solution": "Ms. Lee: 3 × 8 = 24 markers. Mr. Kim: 4 × 8 = 32 markers. Total: 24 + 32 = 56 markers.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "multiply-word-problems-sup-m2",
+    "topicId": "multiply-word-problems",
+    "difficulty": "medium",
+    "question": "Eli says: 'I have 5 groups of 3, so I have 53 things.' What mistake did Eli make?",
+    "answer": "Eli put the digits next to each other instead of multiplying; 5 × 3 = 15",
+    "hints": [
+      "5 groups of 3 means 5 × 3.",
+      "5 × 3 = 15, not 53."
+    ],
+    "solution": "Eli wrote the digits side by side (5 and 3 → 53) instead of multiplying. The correct answer is 5 × 3 = 15.",
+    "cognitiveDemand": "error-analysis",
+    "source": "generated"
+  },
+  {
+    "id": "multiply-word-problems-sup-m3",
+    "topicId": "multiply-word-problems",
+    "difficulty": "medium",
+    "question": "A garden has 4 rows with 7 flowers in each row. After a storm, 3 flowers in each row are damaged. How many undamaged flowers remain?",
+    "answer": "16",
+    "hints": [
+      "Undamaged per row: 7 − 3 = 4.",
+      "Total undamaged: 4 rows × 4 undamaged = ?"
+    ],
+    "solution": "Undamaged flowers per row: 7 − 3 = 4. Total undamaged: 4 rows × 4 flowers = 16 flowers.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "multiply-word-problems-sup-m4",
+    "topicId": "multiply-word-problems",
+    "difficulty": "medium",
+    "question": "Write a word problem that can be solved with 6 × 9.",
+    "answer": "any valid word problem where 6 groups of 9 or 9 groups of 6 make sense",
+    "hints": [
+      "Think of equal groups: 6 groups of 9 things, or an array with 6 rows of 9."
+    ],
+    "solution": "Example: 'A parking lot has 6 rows with 9 cars in each row. How many cars are in the lot?' Answer: 6 × 9 = 54 cars. Any problem with 6 equal groups of 9 works.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "multiply-word-problems-sup-h0",
+    "topicId": "multiply-word-problems",
+    "difficulty": "hard",
+    "question": "A school has 3 buildings. Each building has 4 classrooms. Each classroom has 7 tables. How many tables are there in the whole school?",
+    "answer": "84",
+    "hints": [
+      "Classrooms total: 3 × 4 = 12.",
+      "Tables total: 12 × 7 = ?"
+    ],
+    "solution": "3 buildings × 4 classrooms = 12 classrooms. 12 classrooms × 7 tables = 84 tables.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "multiply-word-problems-sup-h1",
+    "topicId": "multiply-word-problems",
+    "difficulty": "hard",
+    "question": "Max has some bags of marbles. Each bag has 9 marbles. He has more than 40 but fewer than 50 marbles total. How many bags does Max have?",
+    "answer": "5",
+    "hints": [
+      "Find a multiple of 9 between 40 and 50.",
+      "9 × 4 = 36 (too low). 9 × 5 = 45. 9 × 6 = 54 (too high)."
+    ],
+    "solution": "9 × 5 = 45, which is between 40 and 50. So Max has 5 bags.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "multiply-word-problems-sup-h2",
+    "topicId": "multiply-word-problems",
+    "difficulty": "hard",
+    "question": "Sara solved a word problem and wrote 7 + 7 + 7 + 7 + 7. What multiplication equation gives the same answer?",
+    "answer": "5 × 7 = 35",
+    "hints": [
+      "Count how many 7s are being added.",
+      "There are 5 groups of 7."
+    ],
+    "solution": "Sara added 7 five times: 7 + 7 + 7 + 7 + 7 = 5 × 7 = 35. Multiplication is a shortcut for repeated addition of equal groups.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "multiply-word-problems-sup-h3",
+    "topicId": "multiply-word-problems",
+    "difficulty": "hard",
+    "question": "Two friends pick berries. Amy picks 3 baskets with 8 berries each. Ben picks 4 baskets with 6 berries each. Who picked more berries, and by how many?",
+    "answer": "they picked the same amount, 24 each",
+    "hints": [
+      "Amy: 3 × 8. Ben: 4 × 6.",
+      "Compare the products."
+    ],
+    "solution": "Amy: 3 × 8 = 24 berries. Ben: 4 × 6 = 24 berries. They picked the same number! Neither picked more.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "multiply-word-problems-sup-h4",
+    "topicId": "multiply-word-problems",
+    "difficulty": "hard",
+    "question": "A problem says: 'There are 8 teams with 5 players each.' Ava says this is addition (8 + 5 = 13). Ben says it's multiplication (8 × 5 = 40). Who is right and why?",
+    "answer": "Ben is right because equal groups means multiplication",
+    "hints": [
+      "'8 teams with 5 players each' means 8 equal groups of 5.",
+      "Equal groups → multiplication, not addition."
+    ],
+    "solution": "Ben is correct. '8 teams with 5 players each' describes 8 equal groups of 5, which is multiplication: 8 × 5 = 40 players. Addition (8 + 5 = 13) would mean combining 8 and 5 into one group, which doesn't match the problem.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  }
+]

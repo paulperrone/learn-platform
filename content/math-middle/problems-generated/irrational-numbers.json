@@ -1,0 +1,212 @@
+[
+  {
+    "id": "irrational-numbers-sup-e0",
+    "topicId": "irrational-numbers",
+    "difficulty": "easy",
+    "question": "Is √4 irrational? Answer yes or no.",
+    "answer": "no",
+    "hints": [
+      "√4 = 2, which is a whole number.",
+      "Whole numbers are rational, not irrational."
+    ],
+    "solution": "No. √4 = 2, which is a rational number (it can be written as 2/1). Only square roots of non-perfect-squares are irrational.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "irrational-numbers-sup-e1",
+    "topicId": "irrational-numbers",
+    "difficulty": "easy",
+    "question": "Is √5 rational or irrational?",
+    "answer": "irrational",
+    "hints": [
+      "Is 5 a perfect square? (Is there a whole number times itself that equals 5?)",
+      "No whole number squared gives 5, so √5 cannot be written as a fraction."
+    ],
+    "solution": "√5 is irrational. Since 5 is not a perfect square (2² = 4, 3² = 9), √5 cannot be expressed as a fraction of integers. Its decimal expansion is non-terminating and non-repeating: 2.2360679...",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "irrational-numbers-sup-e2",
+    "topicId": "irrational-numbers",
+    "difficulty": "easy",
+    "question": "What makes a number irrational? Choose the best description: (A) It has a decimal expansion. (B) It cannot be written as a fraction of two integers. (C) It is a negative number.",
+    "answer": "B",
+    "hints": [
+      "Rational numbers CAN be written as a/b where a, b are integers and b ≠ 0.",
+      "Irrational means NOT rational — it cannot be expressed this way."
+    ],
+    "solution": "B. An irrational number cannot be written as a fraction a/b where a and b are integers. Its decimal expansion goes on forever without repeating.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "irrational-numbers-sup-e3",
+    "topicId": "irrational-numbers",
+    "difficulty": "easy",
+    "question": "Name one famous irrational number that starts with 3.14...",
+    "answer": "pi",
+    "hints": [
+      "This number is the ratio of a circle's circumference to its diameter.",
+      "It's represented by the Greek letter π."
+    ],
+    "solution": "Pi (π ≈ 3.14159265...) is a famous irrational number. Its decimal digits go on forever without repeating.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "irrational-numbers-sup-e4",
+    "topicId": "irrational-numbers",
+    "difficulty": "easy",
+    "question": "Is the decimal 0.666... (repeating) rational or irrational?",
+    "answer": "rational",
+    "hints": [
+      "Repeating decimals can always be written as fractions.",
+      "0.666... = 2/3."
+    ],
+    "solution": "Rational. 0.666... = 2/3, which is a fraction of two integers. All repeating decimals are rational numbers.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "irrational-numbers-sup-m0",
+    "topicId": "irrational-numbers",
+    "difficulty": "medium",
+    "question": "Classify each number as rational or irrational: √9, √10, π, 0.25, √2. List only the irrational ones.",
+    "answer": "√10, π, √2",
+    "hints": [
+      "√9 = 3 (rational). 0.25 = 1/4 (rational).",
+      "√10 and √2 are not perfect squares. π is known to be irrational."
+    ],
+    "solution": "√9 = 3 (rational). √10 (irrational, 10 is not a perfect square). π (irrational). 0.25 = 1/4 (rational). √2 (irrational, 2 is not a perfect square). Irrational: √10, π, √2.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "irrational-numbers-sup-m1",
+    "topicId": "irrational-numbers",
+    "difficulty": "medium",
+    "question": "A student says: '√2 = 1.414 exactly.' Is this correct? Answer yes or no and explain briefly.",
+    "answer": "No. 1.414 is an approximation. √2 is irrational, so its decimal never terminates and never repeats.",
+    "hints": [
+      "Check: 1.414 × 1.414 = 1.999396, not exactly 2.",
+      "An irrational number's decimal goes on forever without repeating."
+    ],
+    "solution": "No. 1.414² = 1.999396, not 2. √2 is irrational, meaning its exact decimal representation is infinite and non-repeating (1.41421356...). 1.414 is only an approximation.",
+    "cognitiveDemand": "error-analysis",
+    "source": "generated"
+  },
+  {
+    "id": "irrational-numbers-sup-m2",
+    "topicId": "irrational-numbers",
+    "difficulty": "medium",
+    "question": "Between which two consecutive integers does √20 fall?",
+    "answer": "4 and 5",
+    "hints": [
+      "4² = 16 and 5² = 25.",
+      "Since 16 < 20 < 25, √20 is between 4 and 5."
+    ],
+    "solution": "4² = 16, 5² = 25. Since 16 < 20 < 25, we get 4 < √20 < 5. √20 ≈ 4.47.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "irrational-numbers-sup-m3",
+    "topicId": "irrational-numbers",
+    "difficulty": "medium",
+    "question": "Is the sum of two irrational numbers always irrational? Answer yes or no and give an example.",
+    "answer": "No. For example, √2 + (-√2) = 0, which is rational.",
+    "hints": [
+      "Can you think of two irrational numbers that cancel each other out?",
+      "What is √2 + (-√2)?"
+    ],
+    "solution": "No. Counterexample: √2 and -√2 are both irrational, but √2 + (-√2) = 0, which is rational. The sum of two irrational numbers can be rational.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "irrational-numbers-sup-m4",
+    "topicId": "irrational-numbers",
+    "difficulty": "medium",
+    "question": "A calculator shows that √7 = 2.6457513... Is √7 closer to 2.6 or 2.7?",
+    "answer": "2.6",
+    "hints": [
+      "Look at the digit after 2.6: it's 4, which is less than 5.",
+      "2.6457... rounds down to 2.6."
+    ],
+    "solution": "√7 ≈ 2.6457... The distance from 2.6 is about 0.046, and from 2.7 is about 0.054. Since 2.6457 is closer to 2.6, √7 is closer to 2.6.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "irrational-numbers-sup-h0",
+    "topicId": "irrational-numbers",
+    "difficulty": "hard",
+    "question": "If you multiply a rational number (not zero) by an irrational number, is the result always irrational? Answer yes or no and explain.",
+    "answer": "Yes. A nonzero rational times an irrational always gives an irrational result.",
+    "hints": [
+      "Suppose the result were rational. Then you could divide by the rational number to get the irrational number as a ratio of rationals.",
+      "A ratio of two rational numbers is rational — contradiction."
+    ],
+    "solution": "Yes. Proof by contradiction: Suppose r (rational, ≠ 0) × i (irrational) = q (rational). Then i = q/r, which is rational (quotient of two rationals). But i is irrational — contradiction. So the product must be irrational.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "irrational-numbers-sup-h1",
+    "topicId": "irrational-numbers",
+    "difficulty": "hard",
+    "question": "A student creates the number 0.101001000100001... (the number of zeros between each 1 increases by one each time). Is this number rational or irrational? Explain briefly.",
+    "answer": "Irrational. The decimal has a pattern but it never repeats a fixed block of digits, so it cannot be written as a fraction.",
+    "hints": [
+      "A rational number's decimal either terminates or repeats a fixed block.",
+      "Does this decimal ever repeat the exact same sequence over and over?"
+    ],
+    "solution": "Irrational. Although there's a pattern, the decimal never settles into a repeating block (the gaps between 1s keep growing). For a number to be rational, its decimal must eventually repeat a fixed cycle. This one never does.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "irrational-numbers-sup-h2",
+    "topicId": "irrational-numbers",
+    "difficulty": "hard",
+    "question": "Place √3, √8, and π in order from least to greatest.",
+    "answer": "√3, √8, π",
+    "hints": [
+      "Approximate each: √3 ≈ 1.73, √8 ≈ 2.83, π ≈ 3.14.",
+      "Order from smallest to largest."
+    ],
+    "solution": "√3 ≈ 1.732, √8 ≈ 2.828, π ≈ 3.14159. From least to greatest: √3, √8, π.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "irrational-numbers-sup-h3",
+    "topicId": "irrational-numbers",
+    "difficulty": "hard",
+    "question": "A student claims: 'π/π = 1, and 1 is rational. So I just proved that dividing two irrationals gives a rational.' Is the student correct that π/π = 1? Does this disprove the claim that 'an irrational divided by an irrational is always irrational'?",
+    "answer": "Yes, π/π = 1 (rational). This disproves the claim — dividing two irrationals CAN give a rational result, so it's not always irrational.",
+    "hints": [
+      "Any number divided by itself equals 1 (as long as it's not zero).",
+      "This is a valid counterexample showing irrational ÷ irrational can be rational."
+    ],
+    "solution": "π/π = 1, which is indeed rational. This is a valid counterexample showing that dividing two irrational numbers does NOT always yield an irrational number. Similarly, √2/√2 = 1. However, √2/√3 = √(2/3), which IS irrational. The result depends on the specific numbers.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "irrational-numbers-sup-h4",
+    "topicId": "irrational-numbers",
+    "difficulty": "hard",
+    "question": "Without a calculator, determine whether √50 is rational or irrational. Then estimate its value to the nearest whole number.",
+    "answer": "Irrational. √50 ≈ 7.",
+    "hints": [
+      "Is 50 a perfect square? 7² = 49 and 8² = 64.",
+      "50 is not a perfect square, so √50 is irrational. Since 49 < 50 < 64, √50 is between 7 and 8."
+    ],
+    "solution": "50 is not a perfect square (7² = 49, 8² = 64), so √50 is irrational. Since 50 is very close to 49, √50 ≈ 7.07, which rounds to 7.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  }
+]

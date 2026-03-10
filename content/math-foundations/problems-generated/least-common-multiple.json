@@ -1,0 +1,702 @@
+[
+  {
+    "id": "least-common-multiple-gen-e0",
+    "topicId": "least-common-multiple",
+    "difficulty": "easy",
+    "question": "What is the least common multiple (LCM) of 2 and 5?",
+    "answer": "10",
+    "hints": [
+      "List multiples of 2: 2, 4, 6, 8, 10, 12...",
+      "List multiples of 5: 5, 10, 15, 20, 25, 30... Find the smallest shared one."
+    ],
+    "solution": "Multiples of 2: 2, 4, 6, 8, 10, 12... Multiples of 5: 5, 10, 15, 20, 25, 30... LCM = 10.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "least-common-multiple-gen-e1",
+    "topicId": "least-common-multiple",
+    "difficulty": "easy",
+    "question": "What is the least common multiple (LCM) of 2 and 3?",
+    "answer": "6",
+    "hints": [
+      "List multiples of 2: 2, 4, 6, 8, 10, 12...",
+      "List multiples of 3: 3, 6, 9, 12, 15, 18... Find the smallest shared one."
+    ],
+    "solution": "Multiples of 2: 2, 4, 6, 8, 10, 12... Multiples of 3: 3, 6, 9, 12, 15, 18... LCM = 6.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "least-common-multiple-gen-e2",
+    "topicId": "least-common-multiple",
+    "difficulty": "easy",
+    "question": "What is the least common multiple (LCM) of 4 and 6?",
+    "answer": "12",
+    "hints": [
+      "List multiples of 4: 4, 8, 12, 16, 20, 24...",
+      "List multiples of 6: 6, 12, 18, 24, 30, 36... Find the smallest shared one."
+    ],
+    "solution": "Multiples of 4: 4, 8, 12, 16, 20, 24... Multiples of 6: 6, 12, 18, 24, 30, 36... LCM = 12.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "least-common-multiple-gen-e3",
+    "topicId": "least-common-multiple",
+    "difficulty": "easy",
+    "question": "What is the least common multiple (LCM) of 6 and 4?",
+    "answer": "12",
+    "hints": [
+      "List multiples of 6: 6, 12, 18, 24, 30, 36...",
+      "List multiples of 4: 4, 8, 12, 16, 20, 24... Find the smallest shared one."
+    ],
+    "solution": "Multiples of 6: 6, 12, 18, 24, 30, 36... Multiples of 4: 4, 8, 12, 16, 20, 24... LCM = 12.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "least-common-multiple-gen-e4",
+    "topicId": "least-common-multiple",
+    "difficulty": "easy",
+    "question": "What is the least common multiple (LCM) of 2 and 4?",
+    "answer": "4",
+    "hints": [
+      "List multiples of 2: 2, 4, 6, 8, 10, 12...",
+      "List multiples of 4: 4, 8, 12, 16, 20, 24... Find the smallest shared one."
+    ],
+    "solution": "Multiples of 2: 2, 4, 6, 8, 10, 12... Multiples of 4: 4, 8, 12, 16, 20, 24... LCM = 4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "least-common-multiple-gen-e5",
+    "topicId": "least-common-multiple",
+    "difficulty": "easy",
+    "question": "What is the least common multiple (LCM) of 6 and 3?",
+    "answer": "6",
+    "hints": [
+      "List multiples of 6: 6, 12, 18, 24, 30, 36...",
+      "List multiples of 3: 3, 6, 9, 12, 15, 18... Find the smallest shared one."
+    ],
+    "solution": "Multiples of 6: 6, 12, 18, 24, 30, 36... Multiples of 3: 3, 6, 9, 12, 15, 18... LCM = 6.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "least-common-multiple-gen-e6",
+    "topicId": "least-common-multiple",
+    "difficulty": "easy",
+    "question": "What is the least common multiple (LCM) of 5 and 6?",
+    "answer": "30",
+    "hints": [
+      "List multiples of 5: 5, 10, 15, 20, 25, 30...",
+      "List multiples of 6: 6, 12, 18, 24, 30, 36... Find the smallest shared one."
+    ],
+    "solution": "Multiples of 5: 5, 10, 15, 20, 25, 30... Multiples of 6: 6, 12, 18, 24, 30, 36... LCM = 30.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "least-common-multiple-gen-e7",
+    "topicId": "least-common-multiple",
+    "difficulty": "easy",
+    "question": "What is the least common multiple (LCM) of 2 and 6?",
+    "answer": "6",
+    "hints": [
+      "List multiples of 2: 2, 4, 6, 8, 10, 12...",
+      "List multiples of 6: 6, 12, 18, 24, 30, 36... Find the smallest shared one."
+    ],
+    "solution": "Multiples of 2: 2, 4, 6, 8, 10, 12... Multiples of 6: 6, 12, 18, 24, 30, 36... LCM = 6.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "least-common-multiple-gen-e8",
+    "topicId": "least-common-multiple",
+    "difficulty": "easy",
+    "question": "What is the least common multiple (LCM) of 2 and 5?",
+    "answer": "10",
+    "hints": [
+      "List multiples of 2: 2, 4, 6, 8, 10, 12...",
+      "List multiples of 5: 5, 10, 15, 20, 25, 30... Find the smallest shared one."
+    ],
+    "solution": "Multiples of 2: 2, 4, 6, 8, 10, 12... Multiples of 5: 5, 10, 15, 20, 25, 30... LCM = 10.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "least-common-multiple-gen-e9",
+    "topicId": "least-common-multiple",
+    "difficulty": "easy",
+    "question": "What is the least common multiple (LCM) of 6 and 3?",
+    "answer": "6",
+    "hints": [
+      "List multiples of 6: 6, 12, 18, 24, 30, 36...",
+      "List multiples of 3: 3, 6, 9, 12, 15, 18... Find the smallest shared one."
+    ],
+    "solution": "Multiples of 6: 6, 12, 18, 24, 30, 36... Multiples of 3: 3, 6, 9, 12, 15, 18... LCM = 6.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "least-common-multiple-gen-e10",
+    "topicId": "least-common-multiple",
+    "difficulty": "easy",
+    "question": "What is the least common multiple (LCM) of 5 and 4?",
+    "answer": "20",
+    "hints": [
+      "List multiples of 5: 5, 10, 15, 20, 25, 30...",
+      "List multiples of 4: 4, 8, 12, 16, 20, 24... Find the smallest shared one."
+    ],
+    "solution": "Multiples of 5: 5, 10, 15, 20, 25, 30... Multiples of 4: 4, 8, 12, 16, 20, 24... LCM = 20.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "least-common-multiple-gen-e11",
+    "topicId": "least-common-multiple",
+    "difficulty": "easy",
+    "question": "What is the least common multiple (LCM) of 2 and 4?",
+    "answer": "4",
+    "hints": [
+      "List multiples of 2: 2, 4, 6, 8, 10, 12...",
+      "List multiples of 4: 4, 8, 12, 16, 20, 24... Find the smallest shared one."
+    ],
+    "solution": "Multiples of 2: 2, 4, 6, 8, 10, 12... Multiples of 4: 4, 8, 12, 16, 20, 24... LCM = 4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "least-common-multiple-gen-e12",
+    "topicId": "least-common-multiple",
+    "difficulty": "easy",
+    "question": "What is the least common multiple (LCM) of 2 and 6?",
+    "answer": "6",
+    "hints": [
+      "List multiples of 2: 2, 4, 6, 8, 10, 12...",
+      "List multiples of 6: 6, 12, 18, 24, 30, 36... Find the smallest shared one."
+    ],
+    "solution": "Multiples of 2: 2, 4, 6, 8, 10, 12... Multiples of 6: 6, 12, 18, 24, 30, 36... LCM = 6.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "least-common-multiple-gen-e13",
+    "topicId": "least-common-multiple",
+    "difficulty": "easy",
+    "question": "What is the least common multiple (LCM) of 4 and 2?",
+    "answer": "4",
+    "hints": [
+      "List multiples of 4: 4, 8, 12, 16, 20, 24...",
+      "List multiples of 2: 2, 4, 6, 8, 10, 12... Find the smallest shared one."
+    ],
+    "solution": "Multiples of 4: 4, 8, 12, 16, 20, 24... Multiples of 2: 2, 4, 6, 8, 10, 12... LCM = 4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "least-common-multiple-gen-e14",
+    "topicId": "least-common-multiple",
+    "difficulty": "easy",
+    "question": "What is the least common multiple (LCM) of 2 and 4?",
+    "answer": "4",
+    "hints": [
+      "List multiples of 2: 2, 4, 6, 8, 10, 12...",
+      "List multiples of 4: 4, 8, 12, 16, 20, 24... Find the smallest shared one."
+    ],
+    "solution": "Multiples of 2: 2, 4, 6, 8, 10, 12... Multiples of 4: 4, 8, 12, 16, 20, 24... LCM = 4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "least-common-multiple-gen-m0",
+    "topicId": "least-common-multiple",
+    "difficulty": "medium",
+    "question": "What is the least common multiple (LCM) of 8 and 4?",
+    "answer": "8",
+    "hints": [
+      "List multiples of 8: 8, 16, 24, 32, 40, 48...",
+      "List multiples of 4: 4, 8, 12, 16, 20, 24... Find the smallest shared one."
+    ],
+    "solution": "Multiples of 8: 8, 16, 24, 32, 40, 48... Multiples of 4: 4, 8, 12, 16, 20, 24... LCM = 8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "least-common-multiple-gen-m1",
+    "topicId": "least-common-multiple",
+    "difficulty": "medium",
+    "question": "What is the least common multiple (LCM) of 10 and 3?",
+    "answer": "30",
+    "hints": [
+      "List multiples of 10: 10, 20, 30, 40, 50, 60...",
+      "List multiples of 3: 3, 6, 9, 12, 15, 18... Find the smallest shared one."
+    ],
+    "solution": "Multiples of 10: 10, 20, 30, 40, 50, 60... Multiples of 3: 3, 6, 9, 12, 15, 18... LCM = 30.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "least-common-multiple-gen-m2",
+    "topicId": "least-common-multiple",
+    "difficulty": "medium",
+    "question": "What is the least common multiple (LCM) of 9 and 3?",
+    "answer": "9",
+    "hints": [
+      "List multiples of 9: 9, 18, 27, 36, 45, 54...",
+      "List multiples of 3: 3, 6, 9, 12, 15, 18... Find the smallest shared one."
+    ],
+    "solution": "Multiples of 9: 9, 18, 27, 36, 45, 54... Multiples of 3: 3, 6, 9, 12, 15, 18... LCM = 9.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "least-common-multiple-gen-m3",
+    "topicId": "least-common-multiple",
+    "difficulty": "medium",
+    "question": "What is the least common multiple (LCM) of 5 and 8?",
+    "answer": "40",
+    "hints": [
+      "List multiples of 5: 5, 10, 15, 20, 25, 30...",
+      "List multiples of 8: 8, 16, 24, 32, 40, 48... Find the smallest shared one."
+    ],
+    "solution": "Multiples of 5: 5, 10, 15, 20, 25, 30... Multiples of 8: 8, 16, 24, 32, 40, 48... LCM = 40.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "least-common-multiple-gen-m4",
+    "topicId": "least-common-multiple",
+    "difficulty": "medium",
+    "question": "What is the least common multiple (LCM) of 3 and 5?",
+    "answer": "15",
+    "hints": [
+      "List multiples of 3: 3, 6, 9, 12, 15, 18...",
+      "List multiples of 5: 5, 10, 15, 20, 25, 30... Find the smallest shared one."
+    ],
+    "solution": "Multiples of 3: 3, 6, 9, 12, 15, 18... Multiples of 5: 5, 10, 15, 20, 25, 30... LCM = 15.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "least-common-multiple-gen-m5",
+    "topicId": "least-common-multiple",
+    "difficulty": "medium",
+    "question": "What is the least common multiple (LCM) of 4 and 8?",
+    "answer": "8",
+    "hints": [
+      "List multiples of 4: 4, 8, 12, 16, 20, 24...",
+      "List multiples of 8: 8, 16, 24, 32, 40, 48... Find the smallest shared one."
+    ],
+    "solution": "Multiples of 4: 4, 8, 12, 16, 20, 24... Multiples of 8: 8, 16, 24, 32, 40, 48... LCM = 8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "least-common-multiple-gen-m6",
+    "topicId": "least-common-multiple",
+    "difficulty": "medium",
+    "question": "What is the least common multiple (LCM) of 9 and 4?",
+    "answer": "36",
+    "hints": [
+      "List multiples of 9: 9, 18, 27, 36, 45, 54...",
+      "List multiples of 4: 4, 8, 12, 16, 20, 24... Find the smallest shared one."
+    ],
+    "solution": "Multiples of 9: 9, 18, 27, 36, 45, 54... Multiples of 4: 4, 8, 12, 16, 20, 24... LCM = 36.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "least-common-multiple-gen-m7",
+    "topicId": "least-common-multiple",
+    "difficulty": "medium",
+    "question": "What is the least common multiple (LCM) of 10 and 8?",
+    "answer": "40",
+    "hints": [
+      "List multiples of 10: 10, 20, 30, 40, 50, 60...",
+      "List multiples of 8: 8, 16, 24, 32, 40, 48... Find the smallest shared one."
+    ],
+    "solution": "Multiples of 10: 10, 20, 30, 40, 50, 60... Multiples of 8: 8, 16, 24, 32, 40, 48... LCM = 40.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "least-common-multiple-gen-m8",
+    "topicId": "least-common-multiple",
+    "difficulty": "medium",
+    "question": "What is the least common multiple (LCM) of 10 and 5?",
+    "answer": "10",
+    "hints": [
+      "List multiples of 10: 10, 20, 30, 40, 50, 60...",
+      "List multiples of 5: 5, 10, 15, 20, 25, 30... Find the smallest shared one."
+    ],
+    "solution": "Multiples of 10: 10, 20, 30, 40, 50, 60... Multiples of 5: 5, 10, 15, 20, 25, 30... LCM = 10.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "least-common-multiple-gen-m9",
+    "topicId": "least-common-multiple",
+    "difficulty": "medium",
+    "question": "What is the least common multiple (LCM) of 3 and 10?",
+    "answer": "30",
+    "hints": [
+      "List multiples of 3: 3, 6, 9, 12, 15, 18...",
+      "List multiples of 10: 10, 20, 30, 40, 50, 60... Find the smallest shared one."
+    ],
+    "solution": "Multiples of 3: 3, 6, 9, 12, 15, 18... Multiples of 10: 10, 20, 30, 40, 50, 60... LCM = 30.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "least-common-multiple-gen-m10",
+    "topicId": "least-common-multiple",
+    "difficulty": "medium",
+    "question": "What is the least common multiple (LCM) of 8 and 9?",
+    "answer": "72",
+    "hints": [
+      "List multiples of 8: 8, 16, 24, 32, 40, 48...",
+      "List multiples of 9: 9, 18, 27, 36, 45, 54... Find the smallest shared one."
+    ],
+    "solution": "Multiples of 8: 8, 16, 24, 32, 40, 48... Multiples of 9: 9, 18, 27, 36, 45, 54... LCM = 72.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "least-common-multiple-gen-m11",
+    "topicId": "least-common-multiple",
+    "difficulty": "medium",
+    "question": "What is the least common multiple (LCM) of 4 and 10?",
+    "answer": "20",
+    "hints": [
+      "List multiples of 4: 4, 8, 12, 16, 20, 24...",
+      "List multiples of 10: 10, 20, 30, 40, 50, 60... Find the smallest shared one."
+    ],
+    "solution": "Multiples of 4: 4, 8, 12, 16, 20, 24... Multiples of 10: 10, 20, 30, 40, 50, 60... LCM = 20.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "least-common-multiple-gen-m12",
+    "topicId": "least-common-multiple",
+    "difficulty": "medium",
+    "question": "What is the least common multiple (LCM) of 9 and 5?",
+    "answer": "45",
+    "hints": [
+      "List multiples of 9: 9, 18, 27, 36, 45, 54...",
+      "List multiples of 5: 5, 10, 15, 20, 25, 30... Find the smallest shared one."
+    ],
+    "solution": "Multiples of 9: 9, 18, 27, 36, 45, 54... Multiples of 5: 5, 10, 15, 20, 25, 30... LCM = 45.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "least-common-multiple-gen-m13",
+    "topicId": "least-common-multiple",
+    "difficulty": "medium",
+    "question": "What is the least common multiple (LCM) of 4 and 6?",
+    "answer": "12",
+    "hints": [
+      "List multiples of 4: 4, 8, 12, 16, 20, 24...",
+      "List multiples of 6: 6, 12, 18, 24, 30, 36... Find the smallest shared one."
+    ],
+    "solution": "Multiples of 4: 4, 8, 12, 16, 20, 24... Multiples of 6: 6, 12, 18, 24, 30, 36... LCM = 12.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "least-common-multiple-gen-m14",
+    "topicId": "least-common-multiple",
+    "difficulty": "medium",
+    "question": "What is the least common multiple (LCM) of 7 and 9?",
+    "answer": "63",
+    "hints": [
+      "List multiples of 7: 7, 14, 21, 28, 35, 42...",
+      "List multiples of 9: 9, 18, 27, 36, 45, 54... Find the smallest shared one."
+    ],
+    "solution": "Multiples of 7: 7, 14, 21, 28, 35, 42... Multiples of 9: 9, 18, 27, 36, 45, 54... LCM = 63.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "least-common-multiple-gen-m15",
+    "topicId": "least-common-multiple",
+    "difficulty": "medium",
+    "question": "What is the least common multiple (LCM) of 5 and 3?",
+    "answer": "15",
+    "hints": [
+      "List multiples of 5: 5, 10, 15, 20, 25, 30...",
+      "List multiples of 3: 3, 6, 9, 12, 15, 18... Find the smallest shared one."
+    ],
+    "solution": "Multiples of 5: 5, 10, 15, 20, 25, 30... Multiples of 3: 3, 6, 9, 12, 15, 18... LCM = 15.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "least-common-multiple-gen-m16",
+    "topicId": "least-common-multiple",
+    "difficulty": "medium",
+    "question": "What is the least common multiple (LCM) of 3 and 10?",
+    "answer": "30",
+    "hints": [
+      "List multiples of 3: 3, 6, 9, 12, 15, 18...",
+      "List multiples of 10: 10, 20, 30, 40, 50, 60... Find the smallest shared one."
+    ],
+    "solution": "Multiples of 3: 3, 6, 9, 12, 15, 18... Multiples of 10: 10, 20, 30, 40, 50, 60... LCM = 30.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "least-common-multiple-gen-m17",
+    "topicId": "least-common-multiple",
+    "difficulty": "medium",
+    "question": "What is the least common multiple (LCM) of 7 and 6?",
+    "answer": "42",
+    "hints": [
+      "List multiples of 7: 7, 14, 21, 28, 35, 42...",
+      "List multiples of 6: 6, 12, 18, 24, 30, 36... Find the smallest shared one."
+    ],
+    "solution": "Multiples of 7: 7, 14, 21, 28, 35, 42... Multiples of 6: 6, 12, 18, 24, 30, 36... LCM = 42.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "least-common-multiple-gen-m18",
+    "topicId": "least-common-multiple",
+    "difficulty": "medium",
+    "question": "What is the least common multiple (LCM) of 5 and 4?",
+    "answer": "20",
+    "hints": [
+      "List multiples of 5: 5, 10, 15, 20, 25, 30...",
+      "List multiples of 4: 4, 8, 12, 16, 20, 24... Find the smallest shared one."
+    ],
+    "solution": "Multiples of 5: 5, 10, 15, 20, 25, 30... Multiples of 4: 4, 8, 12, 16, 20, 24... LCM = 20.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "least-common-multiple-gen-m19",
+    "topicId": "least-common-multiple",
+    "difficulty": "medium",
+    "question": "What is the least common multiple (LCM) of 4 and 6?",
+    "answer": "12",
+    "hints": [
+      "List multiples of 4: 4, 8, 12, 16, 20, 24...",
+      "List multiples of 6: 6, 12, 18, 24, 30, 36... Find the smallest shared one."
+    ],
+    "solution": "Multiples of 4: 4, 8, 12, 16, 20, 24... Multiples of 6: 6, 12, 18, 24, 30, 36... LCM = 12.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "least-common-multiple-gen-h0",
+    "topicId": "least-common-multiple",
+    "difficulty": "hard",
+    "question": "What is the least common multiple (LCM) of 13 and 8?",
+    "answer": "104",
+    "hints": [
+      "List multiples of 13: 13, 26, 39, 52, 65, 78...",
+      "List multiples of 8: 8, 16, 24, 32, 40, 48... Find the smallest shared one."
+    ],
+    "solution": "Multiples of 13: 13, 26, 39, 52, 65, 78... Multiples of 8: 8, 16, 24, 32, 40, 48... LCM = 104.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "least-common-multiple-gen-h1",
+    "topicId": "least-common-multiple",
+    "difficulty": "hard",
+    "question": "What is the least common multiple (LCM) of 10 and 7?",
+    "answer": "70",
+    "hints": [
+      "List multiples of 10: 10, 20, 30, 40, 50, 60...",
+      "List multiples of 7: 7, 14, 21, 28, 35, 42... Find the smallest shared one."
+    ],
+    "solution": "Multiples of 10: 10, 20, 30, 40, 50, 60... Multiples of 7: 7, 14, 21, 28, 35, 42... LCM = 70.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "least-common-multiple-gen-h2",
+    "topicId": "least-common-multiple",
+    "difficulty": "hard",
+    "question": "What is the least common multiple (LCM) of 7 and 13?",
+    "answer": "91",
+    "hints": [
+      "List multiples of 7: 7, 14, 21, 28, 35, 42...",
+      "List multiples of 13: 13, 26, 39, 52, 65, 78... Find the smallest shared one."
+    ],
+    "solution": "Multiples of 7: 7, 14, 21, 28, 35, 42... Multiples of 13: 13, 26, 39, 52, 65, 78... LCM = 91.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "least-common-multiple-gen-h3",
+    "topicId": "least-common-multiple",
+    "difficulty": "hard",
+    "question": "What is the least common multiple (LCM) of 12 and 15?",
+    "answer": "60",
+    "hints": [
+      "List multiples of 12: 12, 24, 36, 48, 60, 72...",
+      "List multiples of 15: 15, 30, 45, 60, 75, 90... Find the smallest shared one."
+    ],
+    "solution": "Multiples of 12: 12, 24, 36, 48, 60, 72... Multiples of 15: 15, 30, 45, 60, 75, 90... LCM = 60.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "least-common-multiple-gen-h4",
+    "topicId": "least-common-multiple",
+    "difficulty": "hard",
+    "question": "What is the least common multiple (LCM) of 12 and 11?",
+    "answer": "132",
+    "hints": [
+      "List multiples of 12: 12, 24, 36, 48, 60, 72...",
+      "List multiples of 11: 11, 22, 33, 44, 55, 66... Find the smallest shared one."
+    ],
+    "solution": "Multiples of 12: 12, 24, 36, 48, 60, 72... Multiples of 11: 11, 22, 33, 44, 55, 66... LCM = 132.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "least-common-multiple-gen-h5",
+    "topicId": "least-common-multiple",
+    "difficulty": "hard",
+    "question": "What is the least common multiple (LCM) of 15 and 8?",
+    "answer": "120",
+    "hints": [
+      "List multiples of 15: 15, 30, 45, 60, 75, 90...",
+      "List multiples of 8: 8, 16, 24, 32, 40, 48... Find the smallest shared one."
+    ],
+    "solution": "Multiples of 15: 15, 30, 45, 60, 75, 90... Multiples of 8: 8, 16, 24, 32, 40, 48... LCM = 120.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "least-common-multiple-gen-h6",
+    "topicId": "least-common-multiple",
+    "difficulty": "hard",
+    "question": "What is the least common multiple (LCM) of 9 and 12?",
+    "answer": "36",
+    "hints": [
+      "List multiples of 9: 9, 18, 27, 36, 45, 54...",
+      "List multiples of 12: 12, 24, 36, 48, 60, 72... Find the smallest shared one."
+    ],
+    "solution": "Multiples of 9: 9, 18, 27, 36, 45, 54... Multiples of 12: 12, 24, 36, 48, 60, 72... LCM = 36.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "least-common-multiple-gen-h7",
+    "topicId": "least-common-multiple",
+    "difficulty": "hard",
+    "question": "What is the least common multiple (LCM) of 12 and 8?",
+    "answer": "24",
+    "hints": [
+      "List multiples of 12: 12, 24, 36, 48, 60, 72...",
+      "List multiples of 8: 8, 16, 24, 32, 40, 48... Find the smallest shared one."
+    ],
+    "solution": "Multiples of 12: 12, 24, 36, 48, 60, 72... Multiples of 8: 8, 16, 24, 32, 40, 48... LCM = 24.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "least-common-multiple-gen-h8",
+    "topicId": "least-common-multiple",
+    "difficulty": "hard",
+    "question": "What is the least common multiple (LCM) of 14 and 15?",
+    "answer": "210",
+    "hints": [
+      "List multiples of 14: 14, 28, 42, 56, 70, 84...",
+      "List multiples of 15: 15, 30, 45, 60, 75, 90... Find the smallest shared one."
+    ],
+    "solution": "Multiples of 14: 14, 28, 42, 56, 70, 84... Multiples of 15: 15, 30, 45, 60, 75, 90... LCM = 210.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "least-common-multiple-gen-h9",
+    "topicId": "least-common-multiple",
+    "difficulty": "hard",
+    "question": "What is the least common multiple (LCM) of 7 and 12?",
+    "answer": "84",
+    "hints": [
+      "List multiples of 7: 7, 14, 21, 28, 35, 42...",
+      "List multiples of 12: 12, 24, 36, 48, 60, 72... Find the smallest shared one."
+    ],
+    "solution": "Multiples of 7: 7, 14, 21, 28, 35, 42... Multiples of 12: 12, 24, 36, 48, 60, 72... LCM = 84.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "least-common-multiple-gen-h10",
+    "topicId": "least-common-multiple",
+    "difficulty": "hard",
+    "question": "What is the least common multiple (LCM) of 10 and 14?",
+    "answer": "70",
+    "hints": [
+      "List multiples of 10: 10, 20, 30, 40, 50, 60...",
+      "List multiples of 14: 14, 28, 42, 56, 70, 84... Find the smallest shared one."
+    ],
+    "solution": "Multiples of 10: 10, 20, 30, 40, 50, 60... Multiples of 14: 14, 28, 42, 56, 70, 84... LCM = 70.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "least-common-multiple-gen-h11",
+    "topicId": "least-common-multiple",
+    "difficulty": "hard",
+    "question": "What is the least common multiple (LCM) of 7 and 13?",
+    "answer": "91",
+    "hints": [
+      "List multiples of 7: 7, 14, 21, 28, 35, 42...",
+      "List multiples of 13: 13, 26, 39, 52, 65, 78... Find the smallest shared one."
+    ],
+    "solution": "Multiples of 7: 7, 14, 21, 28, 35, 42... Multiples of 13: 13, 26, 39, 52, 65, 78... LCM = 91.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "least-common-multiple-gen-h12",
+    "topicId": "least-common-multiple",
+    "difficulty": "hard",
+    "question": "What is the least common multiple (LCM) of 15 and 12?",
+    "answer": "60",
+    "hints": [
+      "List multiples of 15: 15, 30, 45, 60, 75, 90...",
+      "List multiples of 12: 12, 24, 36, 48, 60, 72... Find the smallest shared one."
+    ],
+    "solution": "Multiples of 15: 15, 30, 45, 60, 75, 90... Multiples of 12: 12, 24, 36, 48, 60, 72... LCM = 60.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "least-common-multiple-gen-h13",
+    "topicId": "least-common-multiple",
+    "difficulty": "hard",
+    "question": "What is the least common multiple (LCM) of 11 and 9?",
+    "answer": "99",
+    "hints": [
+      "List multiples of 11: 11, 22, 33, 44, 55, 66...",
+      "List multiples of 9: 9, 18, 27, 36, 45, 54... Find the smallest shared one."
+    ],
+    "solution": "Multiples of 11: 11, 22, 33, 44, 55, 66... Multiples of 9: 9, 18, 27, 36, 45, 54... LCM = 99.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "least-common-multiple-gen-h14",
+    "topicId": "least-common-multiple",
+    "difficulty": "hard",
+    "question": "What is the least common multiple (LCM) of 11 and 9?",
+    "answer": "99",
+    "hints": [
+      "List multiples of 11: 11, 22, 33, 44, 55, 66...",
+      "List multiples of 9: 9, 18, 27, 36, 45, 54... Find the smallest shared one."
+    ],
+    "solution": "Multiples of 11: 11, 22, 33, 44, 55, 66... Multiples of 9: 9, 18, 27, 36, 45, 54... LCM = 99.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  }
+]

@@ -1,0 +1,652 @@
+[
+  {
+    "id": "angle-relationships-gen-e0",
+    "topicId": "angle-relationships",
+    "difficulty": "easy",
+    "question": "Two angles are complementary. One is 37°. What is the other?",
+    "answer": "53°",
+    "hints": [
+      "Complementary angles add to 90°."
+    ],
+    "solution": "90° − 37° = 53°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "angle-relationships-gen-e1",
+    "topicId": "angle-relationships",
+    "difficulty": "easy",
+    "question": "Two angles are supplementary. One is 63°. What is the other?",
+    "answer": "117°",
+    "hints": [
+      "Supplementary angles add to 180°."
+    ],
+    "solution": "180° − 63° = 117°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "angle-relationships-gen-e2",
+    "topicId": "angle-relationships",
+    "difficulty": "easy",
+    "question": "Two angles are supplementary. One is 113°. What is the other?",
+    "answer": "67°",
+    "hints": [
+      "Supplementary angles add to 180°."
+    ],
+    "solution": "180° − 113° = 67°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "angle-relationships-gen-e3",
+    "topicId": "angle-relationships",
+    "difficulty": "easy",
+    "question": "Two vertical angles are formed. One is 71°. What is the other?",
+    "answer": "71°",
+    "hints": [
+      "Vertical angles are equal."
+    ],
+    "solution": "Vertical angles are congruent: 71°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "angle-relationships-gen-e4",
+    "topicId": "angle-relationships",
+    "difficulty": "easy",
+    "question": "Two angles are complementary. One is 58°. What is the other?",
+    "answer": "32°",
+    "hints": [
+      "Complementary angles add to 90°."
+    ],
+    "solution": "90° − 58° = 32°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "angle-relationships-gen-e5",
+    "topicId": "angle-relationships",
+    "difficulty": "easy",
+    "question": "Two angles are complementary. One is 10°. What is the other?",
+    "answer": "80°",
+    "hints": [
+      "Complementary angles add to 90°."
+    ],
+    "solution": "90° − 10° = 80°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "angle-relationships-gen-e6",
+    "topicId": "angle-relationships",
+    "difficulty": "easy",
+    "question": "Two angles are supplementary. One is 156°. What is the other?",
+    "answer": "24°",
+    "hints": [
+      "Supplementary angles add to 180°."
+    ],
+    "solution": "180° − 156° = 24°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "angle-relationships-gen-e7",
+    "topicId": "angle-relationships",
+    "difficulty": "easy",
+    "question": "Two angles are supplementary. One is 141°. What is the other?",
+    "answer": "39°",
+    "hints": [
+      "Supplementary angles add to 180°."
+    ],
+    "solution": "180° − 141° = 39°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "angle-relationships-gen-e8",
+    "topicId": "angle-relationships",
+    "difficulty": "easy",
+    "question": "Two angles are complementary. One is 55°. What is the other?",
+    "answer": "35°",
+    "hints": [
+      "Complementary angles add to 90°."
+    ],
+    "solution": "90° − 55° = 35°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "angle-relationships-gen-e9",
+    "topicId": "angle-relationships",
+    "difficulty": "easy",
+    "question": "Two angles are supplementary. One is 89°. What is the other?",
+    "answer": "91°",
+    "hints": [
+      "Supplementary angles add to 180°."
+    ],
+    "solution": "180° − 89° = 91°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "angle-relationships-gen-e10",
+    "topicId": "angle-relationships",
+    "difficulty": "easy",
+    "question": "Two angles are supplementary. One is 22°. What is the other?",
+    "answer": "158°",
+    "hints": [
+      "Supplementary angles add to 180°."
+    ],
+    "solution": "180° − 22° = 158°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "angle-relationships-gen-e11",
+    "topicId": "angle-relationships",
+    "difficulty": "easy",
+    "question": "Two angles are complementary. One is 13°. What is the other?",
+    "answer": "77°",
+    "hints": [
+      "Complementary angles add to 90°."
+    ],
+    "solution": "90° − 13° = 77°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "angle-relationships-gen-e12",
+    "topicId": "angle-relationships",
+    "difficulty": "easy",
+    "question": "Two vertical angles are formed. One is 106°. What is the other?",
+    "answer": "106°",
+    "hints": [
+      "Vertical angles are equal."
+    ],
+    "solution": "Vertical angles are congruent: 106°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "angle-relationships-gen-e13",
+    "topicId": "angle-relationships",
+    "difficulty": "easy",
+    "question": "Two vertical angles are formed. One is 22°. What is the other?",
+    "answer": "22°",
+    "hints": [
+      "Vertical angles are equal."
+    ],
+    "solution": "Vertical angles are congruent: 22°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "angle-relationships-gen-e14",
+    "topicId": "angle-relationships",
+    "difficulty": "easy",
+    "question": "Two angles are complementary. One is 47°. What is the other?",
+    "answer": "43°",
+    "hints": [
+      "Complementary angles add to 90°."
+    ],
+    "solution": "90° − 47° = 43°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "angle-relationships-gen-m0",
+    "topicId": "angle-relationships",
+    "difficulty": "medium",
+    "question": "Two angles are supplementary. One is 91°. What is the other?",
+    "answer": "89°",
+    "hints": [
+      "Supplementary angles add to 180°."
+    ],
+    "solution": "180° − 91° = 89°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "angle-relationships-gen-m1",
+    "topicId": "angle-relationships",
+    "difficulty": "medium",
+    "question": "Two vertical angles are formed. One is 94°. What is the other?",
+    "answer": "94°",
+    "hints": [
+      "Vertical angles are equal."
+    ],
+    "solution": "Vertical angles are congruent: 94°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "angle-relationships-gen-m2",
+    "topicId": "angle-relationships",
+    "difficulty": "medium",
+    "question": "Two vertical angles are formed. One is 165°. What is the other?",
+    "answer": "165°",
+    "hints": [
+      "Vertical angles are equal."
+    ],
+    "solution": "Vertical angles are congruent: 165°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "angle-relationships-gen-m3",
+    "topicId": "angle-relationships",
+    "difficulty": "medium",
+    "question": "Two vertical angles are formed. One is 76°. What is the other?",
+    "answer": "76°",
+    "hints": [
+      "Vertical angles are equal."
+    ],
+    "solution": "Vertical angles are congruent: 76°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "angle-relationships-gen-m4",
+    "topicId": "angle-relationships",
+    "difficulty": "medium",
+    "question": "Two angles are supplementary. One is 120°. What is the other?",
+    "answer": "60°",
+    "hints": [
+      "Supplementary angles add to 180°."
+    ],
+    "solution": "180° − 120° = 60°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "angle-relationships-gen-m5",
+    "topicId": "angle-relationships",
+    "difficulty": "medium",
+    "question": "Two angles are supplementary. One is 124°. What is the other?",
+    "answer": "56°",
+    "hints": [
+      "Supplementary angles add to 180°."
+    ],
+    "solution": "180° − 124° = 56°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "angle-relationships-gen-m6",
+    "topicId": "angle-relationships",
+    "difficulty": "medium",
+    "question": "Two angles are supplementary. One is 54°. What is the other?",
+    "answer": "126°",
+    "hints": [
+      "Supplementary angles add to 180°."
+    ],
+    "solution": "180° − 54° = 126°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "angle-relationships-gen-m7",
+    "topicId": "angle-relationships",
+    "difficulty": "medium",
+    "question": "Two vertical angles are formed. One is 22°. What is the other?",
+    "answer": "22°",
+    "hints": [
+      "Vertical angles are equal."
+    ],
+    "solution": "Vertical angles are congruent: 22°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "angle-relationships-gen-m8",
+    "topicId": "angle-relationships",
+    "difficulty": "medium",
+    "question": "Two angles are supplementary. One is 108°. What is the other?",
+    "answer": "72°",
+    "hints": [
+      "Supplementary angles add to 180°."
+    ],
+    "solution": "180° − 108° = 72°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "angle-relationships-gen-m9",
+    "topicId": "angle-relationships",
+    "difficulty": "medium",
+    "question": "Two angles are complementary. One is 25°. What is the other?",
+    "answer": "65°",
+    "hints": [
+      "Complementary angles add to 90°."
+    ],
+    "solution": "90° − 25° = 65°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "angle-relationships-gen-m10",
+    "topicId": "angle-relationships",
+    "difficulty": "medium",
+    "question": "Two vertical angles are formed. One is 43°. What is the other?",
+    "answer": "43°",
+    "hints": [
+      "Vertical angles are equal."
+    ],
+    "solution": "Vertical angles are congruent: 43°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "angle-relationships-gen-m11",
+    "topicId": "angle-relationships",
+    "difficulty": "medium",
+    "question": "Two angles are supplementary. One is 57°. What is the other?",
+    "answer": "123°",
+    "hints": [
+      "Supplementary angles add to 180°."
+    ],
+    "solution": "180° − 57° = 123°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "angle-relationships-gen-m12",
+    "topicId": "angle-relationships",
+    "difficulty": "medium",
+    "question": "Two angles are supplementary. One is 92°. What is the other?",
+    "answer": "88°",
+    "hints": [
+      "Supplementary angles add to 180°."
+    ],
+    "solution": "180° − 92° = 88°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "angle-relationships-gen-m13",
+    "topicId": "angle-relationships",
+    "difficulty": "medium",
+    "question": "Two angles are complementary. One is 37°. What is the other?",
+    "answer": "53°",
+    "hints": [
+      "Complementary angles add to 90°."
+    ],
+    "solution": "90° − 37° = 53°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "angle-relationships-gen-m14",
+    "topicId": "angle-relationships",
+    "difficulty": "medium",
+    "question": "Two angles are complementary. One is 61°. What is the other?",
+    "answer": "29°",
+    "hints": [
+      "Complementary angles add to 90°."
+    ],
+    "solution": "90° − 61° = 29°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "angle-relationships-gen-m15",
+    "topicId": "angle-relationships",
+    "difficulty": "medium",
+    "question": "Two angles are complementary. One is 58°. What is the other?",
+    "answer": "32°",
+    "hints": [
+      "Complementary angles add to 90°."
+    ],
+    "solution": "90° − 58° = 32°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "angle-relationships-gen-m16",
+    "topicId": "angle-relationships",
+    "difficulty": "medium",
+    "question": "Two angles are complementary. One is 25°. What is the other?",
+    "answer": "65°",
+    "hints": [
+      "Complementary angles add to 90°."
+    ],
+    "solution": "90° − 25° = 65°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "angle-relationships-gen-m17",
+    "topicId": "angle-relationships",
+    "difficulty": "medium",
+    "question": "Two vertical angles are formed. One is 51°. What is the other?",
+    "answer": "51°",
+    "hints": [
+      "Vertical angles are equal."
+    ],
+    "solution": "Vertical angles are congruent: 51°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "angle-relationships-gen-m18",
+    "topicId": "angle-relationships",
+    "difficulty": "medium",
+    "question": "Two vertical angles are formed. One is 113°. What is the other?",
+    "answer": "113°",
+    "hints": [
+      "Vertical angles are equal."
+    ],
+    "solution": "Vertical angles are congruent: 113°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "angle-relationships-gen-m19",
+    "topicId": "angle-relationships",
+    "difficulty": "medium",
+    "question": "Two angles are supplementary. One is 72°. What is the other?",
+    "answer": "108°",
+    "hints": [
+      "Supplementary angles add to 180°."
+    ],
+    "solution": "180° − 72° = 108°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "angle-relationships-gen-h0",
+    "topicId": "angle-relationships",
+    "difficulty": "hard",
+    "question": "Two angles are supplementary. One is 156°. What is the other?",
+    "answer": "24°",
+    "hints": [
+      "Supplementary angles add to 180°."
+    ],
+    "solution": "180° − 156° = 24°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "angle-relationships-gen-h1",
+    "topicId": "angle-relationships",
+    "difficulty": "hard",
+    "question": "Two vertical angles are formed. One is 30°. What is the other?",
+    "answer": "30°",
+    "hints": [
+      "Vertical angles are equal."
+    ],
+    "solution": "Vertical angles are congruent: 30°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "angle-relationships-gen-h2",
+    "topicId": "angle-relationships",
+    "difficulty": "hard",
+    "question": "Two angles are complementary. One is 55°. What is the other?",
+    "answer": "35°",
+    "hints": [
+      "Complementary angles add to 90°."
+    ],
+    "solution": "90° − 55° = 35°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "angle-relationships-gen-h3",
+    "topicId": "angle-relationships",
+    "difficulty": "hard",
+    "question": "Two angles are supplementary. One is 44°. What is the other?",
+    "answer": "136°",
+    "hints": [
+      "Supplementary angles add to 180°."
+    ],
+    "solution": "180° − 44° = 136°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "angle-relationships-gen-h4",
+    "topicId": "angle-relationships",
+    "difficulty": "hard",
+    "question": "Two angles are complementary. One is 71°. What is the other?",
+    "answer": "19°",
+    "hints": [
+      "Complementary angles add to 90°."
+    ],
+    "solution": "90° − 71° = 19°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "angle-relationships-gen-h5",
+    "topicId": "angle-relationships",
+    "difficulty": "hard",
+    "question": "Two angles are complementary. One is 29°. What is the other?",
+    "answer": "61°",
+    "hints": [
+      "Complementary angles add to 90°."
+    ],
+    "solution": "90° − 29° = 61°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "angle-relationships-gen-h6",
+    "topicId": "angle-relationships",
+    "difficulty": "hard",
+    "question": "Two angles are supplementary. One is 32°. What is the other?",
+    "answer": "148°",
+    "hints": [
+      "Supplementary angles add to 180°."
+    ],
+    "solution": "180° − 32° = 148°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "angle-relationships-gen-h7",
+    "topicId": "angle-relationships",
+    "difficulty": "hard",
+    "question": "Two angles are supplementary. One is 64°. What is the other?",
+    "answer": "116°",
+    "hints": [
+      "Supplementary angles add to 180°."
+    ],
+    "solution": "180° − 64° = 116°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "angle-relationships-gen-h8",
+    "topicId": "angle-relationships",
+    "difficulty": "hard",
+    "question": "Two angles are complementary. One is 33°. What is the other?",
+    "answer": "57°",
+    "hints": [
+      "Complementary angles add to 90°."
+    ],
+    "solution": "90° − 33° = 57°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "angle-relationships-gen-h9",
+    "topicId": "angle-relationships",
+    "difficulty": "hard",
+    "question": "Two angles are complementary. One is 43°. What is the other?",
+    "answer": "47°",
+    "hints": [
+      "Complementary angles add to 90°."
+    ],
+    "solution": "90° − 43° = 47°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "angle-relationships-gen-h10",
+    "topicId": "angle-relationships",
+    "difficulty": "hard",
+    "question": "Two angles are complementary. One is 57°. What is the other?",
+    "answer": "33°",
+    "hints": [
+      "Complementary angles add to 90°."
+    ],
+    "solution": "90° − 57° = 33°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "angle-relationships-gen-h11",
+    "topicId": "angle-relationships",
+    "difficulty": "hard",
+    "question": "Two vertical angles are formed. One is 110°. What is the other?",
+    "answer": "110°",
+    "hints": [
+      "Vertical angles are equal."
+    ],
+    "solution": "Vertical angles are congruent: 110°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "angle-relationships-gen-h12",
+    "topicId": "angle-relationships",
+    "difficulty": "hard",
+    "question": "Two angles are supplementary. One is 20°. What is the other?",
+    "answer": "160°",
+    "hints": [
+      "Supplementary angles add to 180°."
+    ],
+    "solution": "180° − 20° = 160°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "angle-relationships-gen-h13",
+    "topicId": "angle-relationships",
+    "difficulty": "hard",
+    "question": "Two vertical angles are formed. One is 165°. What is the other?",
+    "answer": "165°",
+    "hints": [
+      "Vertical angles are equal."
+    ],
+    "solution": "Vertical angles are congruent: 165°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "angle-relationships-gen-h14",
+    "topicId": "angle-relationships",
+    "difficulty": "hard",
+    "question": "Two angles are complementary. One is 66°. What is the other?",
+    "answer": "24°",
+    "hints": [
+      "Complementary angles add to 90°."
+    ],
+    "solution": "90° − 66° = 24°.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  }
+]

@@ -1,0 +1,207 @@
+[
+  {
+    "id": "sampling-inference-sup-e0",
+    "topicId": "sampling-inference",
+    "difficulty": "easy",
+    "question": "A school has 600 students. A researcher surveys 50 students by picking names randomly from the school roster. Is this a random sample? Answer yes or no.",
+    "answer": "yes",
+    "hints": [
+      "A random sample gives every member of the population an equal chance of being selected."
+    ],
+    "solution": "Yes. Randomly picking names from the full roster gives every student an equal chance of being selected, making it a random sample.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "sampling-inference-sup-e1",
+    "topicId": "sampling-inference",
+    "difficulty": "easy",
+    "question": "A researcher wants to know the favorite sport of all middle schoolers in a city. She surveys only students at a basketball camp. Is this sample likely to represent all middle schoolers? Answer yes or no.",
+    "answer": "no",
+    "hints": [
+      "Think about whether basketball camp students have the same preferences as all middle schoolers."
+    ],
+    "solution": "No. Students at a basketball camp are much more likely to prefer basketball. This is a biased sample that does not represent all middle schoolers.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "sampling-inference-sup-e2",
+    "topicId": "sampling-inference",
+    "difficulty": "easy",
+    "question": "What is the 'population' in a study? Is it (A) the group you actually survey, or (B) the entire group you want to learn about? Answer A or B.",
+    "answer": "B",
+    "hints": [
+      "The group you actually survey is called the sample."
+    ],
+    "solution": "B. The population is the entire group you want to learn about. The sample is the smaller group you actually survey to draw conclusions about the population.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "sampling-inference-sup-e3",
+    "topicId": "sampling-inference",
+    "difficulty": "easy",
+    "question": "A teacher wants to know how many hours per week her students spend reading. She puts all 30 student names in a hat and draws 10. What is the population? What is the sample?",
+    "answer": "Population: all 30 students in the class. Sample: the 10 students whose names were drawn.",
+    "hints": [
+      "The population is who she wants to learn about. The sample is who she actually surveys."
+    ],
+    "solution": "Population: all 30 students in her class (the group she wants to learn about). Sample: the 10 students whose names were drawn from the hat (the group she actually collects data from).",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "sampling-inference-sup-e4",
+    "topicId": "sampling-inference",
+    "difficulty": "easy",
+    "question": "Why is it usually not practical to survey every person in a population? Give one reason.",
+    "answer": "It would take too much time and/or cost too much money to survey everyone, especially in large populations.",
+    "hints": [
+      "Imagine trying to survey every student in the entire country."
+    ],
+    "solution": "Surveying every person (a census) is usually impractical because of time, cost, and logistics — especially for large populations. A well-chosen sample can provide reliable estimates much more efficiently.",
+    "cognitiveDemand": "conceptual",
+    "source": "generated"
+  },
+  {
+    "id": "sampling-inference-sup-m0",
+    "topicId": "sampling-inference",
+    "difficulty": "medium",
+    "question": "A company surveys customers about product satisfaction by emailing all customers and using responses from those who reply. What type of bias might this create?",
+    "answer": "Voluntary response bias. People with strong opinions (very satisfied or very dissatisfied) are more likely to respond, so the results may not represent all customers.",
+    "hints": [
+      "Not everyone responds to voluntary surveys.",
+      "Who is most likely to take the time to respond?"
+    ],
+    "solution": "This creates voluntary response bias (also called self-selection bias). People who respond voluntarily tend to have stronger opinions — they're either very happy or very unhappy. Customers with average satisfaction are less motivated to respond, making the sample unrepresentative.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "sampling-inference-sup-m1",
+    "topicId": "sampling-inference",
+    "difficulty": "medium",
+    "question": "A random sample of 80 students at a school of 400 found that 20 students prefer pizza for lunch. Estimate how many students in the whole school prefer pizza.",
+    "answer": "100",
+    "hints": [
+      "Find the proportion in the sample: 20/80.",
+      "Apply that proportion to the full population."
+    ],
+    "solution": "Sample proportion: 20/80 = 1/4 = 25%. Estimate for school: 25% × 400 = 100 students prefer pizza.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "sampling-inference-sup-m2",
+    "topicId": "sampling-inference",
+    "difficulty": "medium",
+    "question": "Which sampling method is better for a school survey? (A) Survey the first 30 students who arrive at school, or (B) Assign each student a number and use a random number generator to select 30 students. Answer A or B and explain.",
+    "answer": "B",
+    "hints": [
+      "Think about whether method A gives all students an equal chance.",
+      "Who arrives first at school? Could that group be different from the overall school population?"
+    ],
+    "solution": "Method B is better. It gives every student an equal chance of being selected (random sampling). Method A is biased because early arrivals may differ from the general population — they might live closer, have parents who drive them, or be more motivated students.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "sampling-inference-sup-m3",
+    "topicId": "sampling-inference",
+    "difficulty": "medium",
+    "question": "In a random sample of 60 fish from a lake, 9 were bass. The lake has approximately 2,000 fish. Estimate the number of bass in the lake.",
+    "answer": "300",
+    "hints": [
+      "Find the proportion: 9/60.",
+      "Apply to total: proportion × 2000."
+    ],
+    "solution": "Sample proportion of bass: 9/60 = 3/20 = 0.15. Estimated bass in lake: 0.15 × 2,000 = 300 bass.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "sampling-inference-sup-m4",
+    "topicId": "sampling-inference",
+    "difficulty": "medium",
+    "question": "A student surveys 10 friends about their screen time and concludes 'teenagers spend an average of 6 hours per day on screens.' What two problems exist with this inference?",
+    "answer": "1) The sample is not random (only friends, who likely have similar habits). 2) The sample is too small (10 people) to generalize to all teenagers.",
+    "hints": [
+      "Think about whether friends represent all teenagers.",
+      "Is 10 people enough to make a general claim?"
+    ],
+    "solution": "Two problems: (1) The sample is biased — surveying only friends is a convenience sample, not random. Friends likely share similar lifestyles and screen habits. (2) The sample size (10) is too small to make reliable generalizations about all teenagers. A valid inference needs a larger, random sample.",
+    "cognitiveDemand": "error-analysis",
+    "source": "generated"
+  },
+  {
+    "id": "sampling-inference-sup-h0",
+    "topicId": "sampling-inference",
+    "difficulty": "hard",
+    "question": "Two random samples from the same school are taken. Sample 1 (n=25): 40% prefer basketball. Sample 2 (n=100): 32% prefer basketball. Which estimate is likely closer to the true percentage for the school? Answer 1 or 2 and explain.",
+    "answer": "2",
+    "hints": [
+      "Larger samples tend to give more reliable estimates.",
+      "Think about how sample size affects variability."
+    ],
+    "solution": "Sample 2 is likely closer. Larger samples (n=100 vs n=25) produce more reliable estimates with less sampling variability. While both are random samples, the larger sample's proportion (32%) is a more stable estimate of the true population proportion.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "sampling-inference-sup-h1",
+    "topicId": "sampling-inference",
+    "difficulty": "hard",
+    "question": "A city wants to estimate how many residents support a new park. They randomly sample 200 residents and find 130 support it. Give a point estimate for the proportion of all residents who support the park. If the city has 50,000 residents, estimate the number of supporters.",
+    "answer": "Point estimate: 130/200 = 0.65 or 65%. Estimated supporters: 0.65 × 50,000 = 32,500.",
+    "hints": [
+      "Point estimate = sample proportion.",
+      "Apply the proportion to the population size."
+    ],
+    "solution": "Point estimate: 130/200 = 0.65 (65% of the sample supports the park). Estimated supporters in the city: 0.65 × 50,000 = 32,500 residents. Note: this is an estimate — the true number could be somewhat higher or lower.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "sampling-inference-sup-h2",
+    "topicId": "sampling-inference",
+    "difficulty": "hard",
+    "question": "A magazine asks readers to vote online: 'Should the school year be longer?' 85% say no. Can the magazine conclude that 85% of Americans oppose a longer school year? Explain why or why not.",
+    "answer": "No. This is a voluntary response sample of the magazine's readers, not a random sample of all Americans. The readers are self-selected and not representative of the general population.",
+    "hints": [
+      "Who participates in an online magazine poll?",
+      "Is this sample random? Is it representative?"
+    ],
+    "solution": "No. This suffers from multiple biases: (1) Voluntary response — only people with strong opinions bother to vote online. (2) The sample is magazine readers, not all Americans — they may differ demographically. (3) Online polls can be manipulated. A valid conclusion about all Americans would require a random sample of the general population, not self-selected magazine readers.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  },
+  {
+    "id": "sampling-inference-sup-h3",
+    "topicId": "sampling-inference",
+    "difficulty": "hard",
+    "question": "A biologist tags 40 deer in a forest, releases them, then later captures 50 deer and finds 8 are tagged. Estimate the total deer population in the forest.",
+    "answer": "250",
+    "hints": [
+      "This is capture-recapture. The proportion of tagged in the second sample estimates the proportion of tagged in the population.",
+      "Set up: 40/N = 8/50, solve for N."
+    ],
+    "solution": "Using capture-recapture: tagged/total population = recaptured tagged/second sample. So 40/N = 8/50. Cross-multiply: 8N = 2000, so N = 250. The estimated deer population is 250.",
+    "cognitiveDemand": "application",
+    "source": "generated"
+  },
+  {
+    "id": "sampling-inference-sup-h4",
+    "topicId": "sampling-inference",
+    "difficulty": "hard",
+    "question": "A polling company reports: 'In a random sample of 500 voters, 52% support Candidate A, with a margin of error of ±3%.' What does the margin of error mean? Can we be sure Candidate A will win?",
+    "answer": "The margin of error means the true percentage likely falls between 49% and 55%. We cannot be sure Candidate A will win because the range includes values below 50%.",
+    "hints": [
+      "Add and subtract the margin of error from 52%.",
+      "Could the true percentage be below 50%?"
+    ],
+    "solution": "The margin of error means the true population proportion is likely between 52% - 3% = 49% and 52% + 3% = 55%. Since this range includes values below 50%, we cannot be certain Candidate A will win. The race is too close to call — Candidate A might actually have less than 50% support.",
+    "cognitiveDemand": "reasoning",
+    "source": "generated"
+  }
+]

@@ -1,0 +1,652 @@
+[
+  {
+    "id": "integer-division-gen-e0",
+    "topicId": "integer-division",
+    "difficulty": "easy",
+    "question": "What is 9 ÷ (-3)?",
+    "answer": "-3",
+    "hints": [
+      "Divide the absolute values, then determine the sign."
+    ],
+    "solution": "9 ÷ (-3) = -3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-division-gen-e1",
+    "topicId": "integer-division",
+    "difficulty": "easy",
+    "question": "What is 15 ÷ (-3)?",
+    "answer": "-5",
+    "hints": [
+      "Divide the absolute values, then determine the sign."
+    ],
+    "solution": "15 ÷ (-3) = -5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-division-gen-e2",
+    "topicId": "integer-division",
+    "difficulty": "easy",
+    "question": "What is 6 ÷ (2)?",
+    "answer": "3",
+    "hints": [
+      "Divide the absolute values, then determine the sign."
+    ],
+    "solution": "6 ÷ (2) = 3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-division-gen-e3",
+    "topicId": "integer-division",
+    "difficulty": "easy",
+    "question": "What is 0 ÷ (5)?",
+    "answer": "0",
+    "hints": [
+      "Divide the absolute values, then determine the sign."
+    ],
+    "solution": "0 ÷ (5) = 0.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-division-gen-e4",
+    "topicId": "integer-division",
+    "difficulty": "easy",
+    "question": "What is 5 ÷ (5)?",
+    "answer": "1",
+    "hints": [
+      "Divide the absolute values, then determine the sign."
+    ],
+    "solution": "5 ÷ (5) = 1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-division-gen-e5",
+    "topicId": "integer-division",
+    "difficulty": "easy",
+    "question": "What is 8 ÷ (-2)?",
+    "answer": "-4",
+    "hints": [
+      "Divide the absolute values, then determine the sign."
+    ],
+    "solution": "8 ÷ (-2) = -4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-division-gen-e6",
+    "topicId": "integer-division",
+    "difficulty": "easy",
+    "question": "What is 25 ÷ (-5)?",
+    "answer": "-5",
+    "hints": [
+      "Divide the absolute values, then determine the sign."
+    ],
+    "solution": "25 ÷ (-5) = -5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-division-gen-e7",
+    "topicId": "integer-division",
+    "difficulty": "easy",
+    "question": "What is 25 ÷ (5)?",
+    "answer": "5",
+    "hints": [
+      "Divide the absolute values, then determine the sign."
+    ],
+    "solution": "25 ÷ (5) = 5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-division-gen-e8",
+    "topicId": "integer-division",
+    "difficulty": "easy",
+    "question": "What is -4 ÷ (-2)?",
+    "answer": "2",
+    "hints": [
+      "Divide the absolute values, then determine the sign."
+    ],
+    "solution": "-4 ÷ (-2) = 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-division-gen-e9",
+    "topicId": "integer-division",
+    "difficulty": "easy",
+    "question": "What is 2 ÷ (-2)?",
+    "answer": "-1",
+    "hints": [
+      "Divide the absolute values, then determine the sign."
+    ],
+    "solution": "2 ÷ (-2) = -1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-division-gen-e10",
+    "topicId": "integer-division",
+    "difficulty": "easy",
+    "question": "What is 8 ÷ (-2)?",
+    "answer": "-4",
+    "hints": [
+      "Divide the absolute values, then determine the sign."
+    ],
+    "solution": "8 ÷ (-2) = -4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-division-gen-e11",
+    "topicId": "integer-division",
+    "difficulty": "easy",
+    "question": "What is -12 ÷ (-3)?",
+    "answer": "4",
+    "hints": [
+      "Divide the absolute values, then determine the sign."
+    ],
+    "solution": "-12 ÷ (-3) = 4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-division-gen-e12",
+    "topicId": "integer-division",
+    "difficulty": "easy",
+    "question": "What is -25 ÷ (-5)?",
+    "answer": "5",
+    "hints": [
+      "Divide the absolute values, then determine the sign."
+    ],
+    "solution": "-25 ÷ (-5) = 5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-division-gen-e13",
+    "topicId": "integer-division",
+    "difficulty": "easy",
+    "question": "What is -8 ÷ (-4)?",
+    "answer": "2",
+    "hints": [
+      "Divide the absolute values, then determine the sign."
+    ],
+    "solution": "-8 ÷ (-4) = 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-division-gen-e14",
+    "topicId": "integer-division",
+    "difficulty": "easy",
+    "question": "What is 10 ÷ (-5)?",
+    "answer": "-2",
+    "hints": [
+      "Divide the absolute values, then determine the sign."
+    ],
+    "solution": "10 ÷ (-5) = -2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-division-gen-m0",
+    "topicId": "integer-division",
+    "difficulty": "medium",
+    "question": "What is -20 ÷ (-10)?",
+    "answer": "2",
+    "hints": [
+      "Divide the absolute values, then determine the sign."
+    ],
+    "solution": "-20 ÷ (-10) = 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-division-gen-m1",
+    "topicId": "integer-division",
+    "difficulty": "medium",
+    "question": "What is 24 ÷ (3)?",
+    "answer": "8",
+    "hints": [
+      "Divide the absolute values, then determine the sign."
+    ],
+    "solution": "24 ÷ (3) = 8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-division-gen-m2",
+    "topicId": "integer-division",
+    "difficulty": "medium",
+    "question": "What is -16 ÷ (8)?",
+    "answer": "-2",
+    "hints": [
+      "Divide the absolute values, then determine the sign."
+    ],
+    "solution": "-16 ÷ (8) = -2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-division-gen-m3",
+    "topicId": "integer-division",
+    "difficulty": "medium",
+    "question": "What is -4 ÷ (4)?",
+    "answer": "-1",
+    "hints": [
+      "Divide the absolute values, then determine the sign."
+    ],
+    "solution": "-4 ÷ (4) = -1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-division-gen-m4",
+    "topicId": "integer-division",
+    "difficulty": "medium",
+    "question": "What is 10 ÷ (10)?",
+    "answer": "1",
+    "hints": [
+      "Divide the absolute values, then determine the sign."
+    ],
+    "solution": "10 ÷ (10) = 1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-division-gen-m5",
+    "topicId": "integer-division",
+    "difficulty": "medium",
+    "question": "What is 90 ÷ (-10)?",
+    "answer": "-9",
+    "hints": [
+      "Divide the absolute values, then determine the sign."
+    ],
+    "solution": "90 ÷ (-10) = -9.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-division-gen-m6",
+    "topicId": "integer-division",
+    "difficulty": "medium",
+    "question": "What is 12 ÷ (-4)?",
+    "answer": "-3",
+    "hints": [
+      "Divide the absolute values, then determine the sign."
+    ],
+    "solution": "12 ÷ (-4) = -3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-division-gen-m7",
+    "topicId": "integer-division",
+    "difficulty": "medium",
+    "question": "What is -32 ÷ (8)?",
+    "answer": "-4",
+    "hints": [
+      "Divide the absolute values, then determine the sign."
+    ],
+    "solution": "-32 ÷ (8) = -4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-division-gen-m8",
+    "topicId": "integer-division",
+    "difficulty": "medium",
+    "question": "What is -60 ÷ (-6)?",
+    "answer": "10",
+    "hints": [
+      "Divide the absolute values, then determine the sign."
+    ],
+    "solution": "-60 ÷ (-6) = 10.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-division-gen-m9",
+    "topicId": "integer-division",
+    "difficulty": "medium",
+    "question": "What is 12 ÷ (3)?",
+    "answer": "4",
+    "hints": [
+      "Divide the absolute values, then determine the sign."
+    ],
+    "solution": "12 ÷ (3) = 4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-division-gen-m10",
+    "topicId": "integer-division",
+    "difficulty": "medium",
+    "question": "What is 72 ÷ (-8)?",
+    "answer": "-9",
+    "hints": [
+      "Divide the absolute values, then determine the sign."
+    ],
+    "solution": "72 ÷ (-8) = -9.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-division-gen-m11",
+    "topicId": "integer-division",
+    "difficulty": "medium",
+    "question": "What is -48 ÷ (-8)?",
+    "answer": "6",
+    "hints": [
+      "Divide the absolute values, then determine the sign."
+    ],
+    "solution": "-48 ÷ (-8) = 6.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-division-gen-m12",
+    "topicId": "integer-division",
+    "difficulty": "medium",
+    "question": "What is 0 ÷ (3)?",
+    "answer": "0",
+    "hints": [
+      "Divide the absolute values, then determine the sign."
+    ],
+    "solution": "0 ÷ (3) = 0.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-division-gen-m13",
+    "topicId": "integer-division",
+    "difficulty": "medium",
+    "question": "What is -18 ÷ (-6)?",
+    "answer": "3",
+    "hints": [
+      "Divide the absolute values, then determine the sign."
+    ],
+    "solution": "-18 ÷ (-6) = 3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-division-gen-m14",
+    "topicId": "integer-division",
+    "difficulty": "medium",
+    "question": "What is 80 ÷ (-8)?",
+    "answer": "-10",
+    "hints": [
+      "Divide the absolute values, then determine the sign."
+    ],
+    "solution": "80 ÷ (-8) = -10.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-division-gen-m15",
+    "topicId": "integer-division",
+    "difficulty": "medium",
+    "question": "What is 20 ÷ (-10)?",
+    "answer": "-2",
+    "hints": [
+      "Divide the absolute values, then determine the sign."
+    ],
+    "solution": "20 ÷ (-10) = -2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-division-gen-m16",
+    "topicId": "integer-division",
+    "difficulty": "medium",
+    "question": "What is 50 ÷ (10)?",
+    "answer": "5",
+    "hints": [
+      "Divide the absolute values, then determine the sign."
+    ],
+    "solution": "50 ÷ (10) = 5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-division-gen-m17",
+    "topicId": "integer-division",
+    "difficulty": "medium",
+    "question": "What is 24 ÷ (8)?",
+    "answer": "3",
+    "hints": [
+      "Divide the absolute values, then determine the sign."
+    ],
+    "solution": "24 ÷ (8) = 3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-division-gen-m18",
+    "topicId": "integer-division",
+    "difficulty": "medium",
+    "question": "What is 90 ÷ (10)?",
+    "answer": "9",
+    "hints": [
+      "Divide the absolute values, then determine the sign."
+    ],
+    "solution": "90 ÷ (10) = 9.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-division-gen-m19",
+    "topicId": "integer-division",
+    "difficulty": "medium",
+    "question": "What is 6 ÷ (-3)?",
+    "answer": "-2",
+    "hints": [
+      "Divide the absolute values, then determine the sign."
+    ],
+    "solution": "6 ÷ (-3) = -2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-division-gen-h0",
+    "topicId": "integer-division",
+    "difficulty": "hard",
+    "question": "What is -144 ÷ (-12)?",
+    "answer": "12",
+    "hints": [
+      "Divide the absolute values, then determine the sign."
+    ],
+    "solution": "-144 ÷ (-12) = 12.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-division-gen-h1",
+    "topicId": "integer-division",
+    "difficulty": "hard",
+    "question": "What is -78 ÷ (6)?",
+    "answer": "-13",
+    "hints": [
+      "Divide the absolute values, then determine the sign."
+    ],
+    "solution": "-78 ÷ (6) = -13.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-division-gen-h2",
+    "topicId": "integer-division",
+    "difficulty": "hard",
+    "question": "What is 180 ÷ (12)?",
+    "answer": "15",
+    "hints": [
+      "Divide the absolute values, then determine the sign."
+    ],
+    "solution": "180 ÷ (12) = 15.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-division-gen-h3",
+    "topicId": "integer-division",
+    "difficulty": "hard",
+    "question": "What is 39 ÷ (-3)?",
+    "answer": "-13",
+    "hints": [
+      "Divide the absolute values, then determine the sign."
+    ],
+    "solution": "39 ÷ (-3) = -13.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-division-gen-h4",
+    "topicId": "integer-division",
+    "difficulty": "hard",
+    "question": "What is 18 ÷ (3)?",
+    "answer": "6",
+    "hints": [
+      "Divide the absolute values, then determine the sign."
+    ],
+    "solution": "18 ÷ (3) = 6.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-division-gen-h5",
+    "topicId": "integer-division",
+    "difficulty": "hard",
+    "question": "What is 4 ÷ (-1)?",
+    "answer": "-4",
+    "hints": [
+      "Divide the absolute values, then determine the sign."
+    ],
+    "solution": "4 ÷ (-1) = -4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-division-gen-h6",
+    "topicId": "integer-division",
+    "difficulty": "hard",
+    "question": "What is -63 ÷ (-9)?",
+    "answer": "7",
+    "hints": [
+      "Divide the absolute values, then determine the sign."
+    ],
+    "solution": "-63 ÷ (-9) = 7.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-division-gen-h7",
+    "topicId": "integer-division",
+    "difficulty": "hard",
+    "question": "What is -48 ÷ (12)?",
+    "answer": "-4",
+    "hints": [
+      "Divide the absolute values, then determine the sign."
+    ],
+    "solution": "-48 ÷ (12) = -4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-division-gen-h8",
+    "topicId": "integer-division",
+    "difficulty": "hard",
+    "question": "What is 24 ÷ (-6)?",
+    "answer": "-4",
+    "hints": [
+      "Divide the absolute values, then determine the sign."
+    ],
+    "solution": "24 ÷ (-6) = -4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-division-gen-h9",
+    "topicId": "integer-division",
+    "difficulty": "hard",
+    "question": "What is -120 ÷ (-10)?",
+    "answer": "12",
+    "hints": [
+      "Divide the absolute values, then determine the sign."
+    ],
+    "solution": "-120 ÷ (-10) = 12.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-division-gen-h10",
+    "topicId": "integer-division",
+    "difficulty": "hard",
+    "question": "What is 28 ÷ (4)?",
+    "answer": "7",
+    "hints": [
+      "Divide the absolute values, then determine the sign."
+    ],
+    "solution": "28 ÷ (4) = 7.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-division-gen-h11",
+    "topicId": "integer-division",
+    "difficulty": "hard",
+    "question": "What is -110 ÷ (-10)?",
+    "answer": "11",
+    "hints": [
+      "Divide the absolute values, then determine the sign."
+    ],
+    "solution": "-110 ÷ (-10) = 11.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-division-gen-h12",
+    "topicId": "integer-division",
+    "difficulty": "hard",
+    "question": "What is 8 ÷ (-8)?",
+    "answer": "-1",
+    "hints": [
+      "Divide the absolute values, then determine the sign."
+    ],
+    "solution": "8 ÷ (-8) = -1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-division-gen-h13",
+    "topicId": "integer-division",
+    "difficulty": "hard",
+    "question": "What is 36 ÷ (-3)?",
+    "answer": "-12",
+    "hints": [
+      "Divide the absolute values, then determine the sign."
+    ],
+    "solution": "36 ÷ (-3) = -12.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "integer-division-gen-h14",
+    "topicId": "integer-division",
+    "difficulty": "hard",
+    "question": "What is -180 ÷ (-12)?",
+    "answer": "15",
+    "hints": [
+      "Divide the absolute values, then determine the sign."
+    ],
+    "solution": "-180 ÷ (-12) = 15.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  }
+]

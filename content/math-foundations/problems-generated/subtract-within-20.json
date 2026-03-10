@@ -1,0 +1,652 @@
+[
+  {
+    "id": "subtract-within-20-gen-e0",
+    "topicId": "subtract-within-20",
+    "difficulty": "easy",
+    "question": "What is 9 − 0?",
+    "answer": "9",
+    "hints": [
+      "Start at 9 and count back 0."
+    ],
+    "solution": "9 − 0 = 9.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "subtract-within-20-gen-e1",
+    "topicId": "subtract-within-20",
+    "difficulty": "easy",
+    "question": "What is 7 − 0?",
+    "answer": "7",
+    "hints": [
+      "Start at 7 and count back 0."
+    ],
+    "solution": "7 − 0 = 7.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "subtract-within-20-gen-e2",
+    "topicId": "subtract-within-20",
+    "difficulty": "easy",
+    "question": "What is 6 − 3?",
+    "answer": "3",
+    "hints": [
+      "Start at 6 and count back 3."
+    ],
+    "solution": "6 − 3 = 3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "subtract-within-20-gen-e3",
+    "topicId": "subtract-within-20",
+    "difficulty": "easy",
+    "question": "What is 5 − 2?",
+    "answer": "3",
+    "hints": [
+      "Start at 5 and count back 2."
+    ],
+    "solution": "5 − 2 = 3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "subtract-within-20-gen-e4",
+    "topicId": "subtract-within-20",
+    "difficulty": "easy",
+    "question": "What is 2 − 0?",
+    "answer": "2",
+    "hints": [
+      "Start at 2 and count back 0."
+    ],
+    "solution": "2 − 0 = 2.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "subtract-within-20-gen-e5",
+    "topicId": "subtract-within-20",
+    "difficulty": "easy",
+    "question": "What is 10 − 4?",
+    "answer": "6",
+    "hints": [
+      "Start at 10 and count back 4."
+    ],
+    "solution": "10 − 4 = 6.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "subtract-within-20-gen-e6",
+    "topicId": "subtract-within-20",
+    "difficulty": "easy",
+    "question": "What is 7 − 3?",
+    "answer": "4",
+    "hints": [
+      "Start at 7 and count back 3."
+    ],
+    "solution": "7 − 3 = 4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "subtract-within-20-gen-e7",
+    "topicId": "subtract-within-20",
+    "difficulty": "easy",
+    "question": "What is 9 − 1?",
+    "answer": "8",
+    "hints": [
+      "Start at 9 and count back 1."
+    ],
+    "solution": "9 − 1 = 8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "subtract-within-20-gen-e8",
+    "topicId": "subtract-within-20",
+    "difficulty": "easy",
+    "question": "What is 8 − 2?",
+    "answer": "6",
+    "hints": [
+      "Start at 8 and count back 2."
+    ],
+    "solution": "8 − 2 = 6.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "subtract-within-20-gen-e9",
+    "topicId": "subtract-within-20",
+    "difficulty": "easy",
+    "question": "What is 9 − 3?",
+    "answer": "6",
+    "hints": [
+      "Start at 9 and count back 3."
+    ],
+    "solution": "9 − 3 = 6.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "subtract-within-20-gen-e10",
+    "topicId": "subtract-within-20",
+    "difficulty": "easy",
+    "question": "What is 2 − 1?",
+    "answer": "1",
+    "hints": [
+      "Start at 2 and count back 1."
+    ],
+    "solution": "2 − 1 = 1.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "subtract-within-20-gen-e11",
+    "topicId": "subtract-within-20",
+    "difficulty": "easy",
+    "question": "What is 7 − 0?",
+    "answer": "7",
+    "hints": [
+      "Start at 7 and count back 0."
+    ],
+    "solution": "7 − 0 = 7.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "subtract-within-20-gen-e12",
+    "topicId": "subtract-within-20",
+    "difficulty": "easy",
+    "question": "What is 8 − 1?",
+    "answer": "7",
+    "hints": [
+      "Start at 8 and count back 1."
+    ],
+    "solution": "8 − 1 = 7.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "subtract-within-20-gen-e13",
+    "topicId": "subtract-within-20",
+    "difficulty": "easy",
+    "question": "What is 10 − 5?",
+    "answer": "5",
+    "hints": [
+      "Start at 10 and count back 5."
+    ],
+    "solution": "10 − 5 = 5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "subtract-within-20-gen-e14",
+    "topicId": "subtract-within-20",
+    "difficulty": "easy",
+    "question": "What is 7 − 0?",
+    "answer": "7",
+    "hints": [
+      "Start at 7 and count back 0."
+    ],
+    "solution": "7 − 0 = 7.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "subtract-within-20-gen-m0",
+    "topicId": "subtract-within-20",
+    "difficulty": "medium",
+    "question": "What is 8 − 5?",
+    "answer": "3",
+    "hints": [
+      "Start at 8 and count back 5."
+    ],
+    "solution": "8 − 5 = 3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "subtract-within-20-gen-m1",
+    "topicId": "subtract-within-20",
+    "difficulty": "medium",
+    "question": "What is 14 − 3?",
+    "answer": "11",
+    "hints": [
+      "Start at 14 and count back 3."
+    ],
+    "solution": "14 − 3 = 11.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "subtract-within-20-gen-m2",
+    "topicId": "subtract-within-20",
+    "difficulty": "medium",
+    "question": "What is 10 − 3?",
+    "answer": "7",
+    "hints": [
+      "Start at 10 and count back 3."
+    ],
+    "solution": "10 − 3 = 7.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "subtract-within-20-gen-m3",
+    "topicId": "subtract-within-20",
+    "difficulty": "medium",
+    "question": "What is 12 − 7?",
+    "answer": "5",
+    "hints": [
+      "Start at 12 and count back 7."
+    ],
+    "solution": "12 − 7 = 5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "subtract-within-20-gen-m4",
+    "topicId": "subtract-within-20",
+    "difficulty": "medium",
+    "question": "What is 14 − 4?",
+    "answer": "10",
+    "hints": [
+      "Start at 14 and count back 4."
+    ],
+    "solution": "14 − 4 = 10.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "subtract-within-20-gen-m5",
+    "topicId": "subtract-within-20",
+    "difficulty": "medium",
+    "question": "What is 14 − 3?",
+    "answer": "11",
+    "hints": [
+      "Start at 14 and count back 3."
+    ],
+    "solution": "14 − 3 = 11.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "subtract-within-20-gen-m6",
+    "topicId": "subtract-within-20",
+    "difficulty": "medium",
+    "question": "What is 6 − 3?",
+    "answer": "3",
+    "hints": [
+      "Start at 6 and count back 3."
+    ],
+    "solution": "6 − 3 = 3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "subtract-within-20-gen-m7",
+    "topicId": "subtract-within-20",
+    "difficulty": "medium",
+    "question": "What is 7 − 4?",
+    "answer": "3",
+    "hints": [
+      "Start at 7 and count back 4."
+    ],
+    "solution": "7 − 4 = 3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "subtract-within-20-gen-m8",
+    "topicId": "subtract-within-20",
+    "difficulty": "medium",
+    "question": "What is 12 − 6?",
+    "answer": "6",
+    "hints": [
+      "Start at 12 and count back 6."
+    ],
+    "solution": "12 − 6 = 6.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "subtract-within-20-gen-m9",
+    "topicId": "subtract-within-20",
+    "difficulty": "medium",
+    "question": "What is 13 − 5?",
+    "answer": "8",
+    "hints": [
+      "Start at 13 and count back 5."
+    ],
+    "solution": "13 − 5 = 8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "subtract-within-20-gen-m10",
+    "topicId": "subtract-within-20",
+    "difficulty": "medium",
+    "question": "What is 14 − 4?",
+    "answer": "10",
+    "hints": [
+      "Start at 14 and count back 4."
+    ],
+    "solution": "14 − 4 = 10.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "subtract-within-20-gen-m11",
+    "topicId": "subtract-within-20",
+    "difficulty": "medium",
+    "question": "What is 13 − 4?",
+    "answer": "9",
+    "hints": [
+      "Start at 13 and count back 4."
+    ],
+    "solution": "13 − 4 = 9.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "subtract-within-20-gen-m12",
+    "topicId": "subtract-within-20",
+    "difficulty": "medium",
+    "question": "What is 10 − 3?",
+    "answer": "7",
+    "hints": [
+      "Start at 10 and count back 3."
+    ],
+    "solution": "10 − 3 = 7.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "subtract-within-20-gen-m13",
+    "topicId": "subtract-within-20",
+    "difficulty": "medium",
+    "question": "What is 9 − 3?",
+    "answer": "6",
+    "hints": [
+      "Start at 9 and count back 3."
+    ],
+    "solution": "9 − 3 = 6.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "subtract-within-20-gen-m14",
+    "topicId": "subtract-within-20",
+    "difficulty": "medium",
+    "question": "What is 6 − 2?",
+    "answer": "4",
+    "hints": [
+      "Start at 6 and count back 2."
+    ],
+    "solution": "6 − 2 = 4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "subtract-within-20-gen-m15",
+    "topicId": "subtract-within-20",
+    "difficulty": "medium",
+    "question": "What is 8 − 5?",
+    "answer": "3",
+    "hints": [
+      "Start at 8 and count back 5."
+    ],
+    "solution": "8 − 5 = 3.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "subtract-within-20-gen-m16",
+    "topicId": "subtract-within-20",
+    "difficulty": "medium",
+    "question": "What is 14 − 4?",
+    "answer": "10",
+    "hints": [
+      "Start at 14 and count back 4."
+    ],
+    "solution": "14 − 4 = 10.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "subtract-within-20-gen-m17",
+    "topicId": "subtract-within-20",
+    "difficulty": "medium",
+    "question": "What is 7 − 3?",
+    "answer": "4",
+    "hints": [
+      "Start at 7 and count back 3."
+    ],
+    "solution": "7 − 3 = 4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "subtract-within-20-gen-m18",
+    "topicId": "subtract-within-20",
+    "difficulty": "medium",
+    "question": "What is 8 − 4?",
+    "answer": "4",
+    "hints": [
+      "Start at 8 and count back 4."
+    ],
+    "solution": "8 − 4 = 4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "subtract-within-20-gen-m19",
+    "topicId": "subtract-within-20",
+    "difficulty": "medium",
+    "question": "What is 6 − 2?",
+    "answer": "4",
+    "hints": [
+      "Start at 6 and count back 2."
+    ],
+    "solution": "6 − 2 = 4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "subtract-within-20-gen-h0",
+    "topicId": "subtract-within-20",
+    "difficulty": "hard",
+    "question": "What is 17 − 8?",
+    "answer": "9",
+    "hints": [
+      "Start at 17 and count back 8."
+    ],
+    "solution": "17 − 8 = 9.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "subtract-within-20-gen-h1",
+    "topicId": "subtract-within-20",
+    "difficulty": "hard",
+    "question": "What is 20 − 16?",
+    "answer": "4",
+    "hints": [
+      "Start at 20 and count back 16."
+    ],
+    "solution": "20 − 16 = 4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "subtract-within-20-gen-h2",
+    "topicId": "subtract-within-20",
+    "difficulty": "hard",
+    "question": "What is 11 − 5?",
+    "answer": "6",
+    "hints": [
+      "Start at 11 and count back 5."
+    ],
+    "solution": "11 − 5 = 6.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "subtract-within-20-gen-h3",
+    "topicId": "subtract-within-20",
+    "difficulty": "hard",
+    "question": "What is 14 − 5?",
+    "answer": "9",
+    "hints": [
+      "Start at 14 and count back 5."
+    ],
+    "solution": "14 − 5 = 9.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "subtract-within-20-gen-h4",
+    "topicId": "subtract-within-20",
+    "difficulty": "hard",
+    "question": "What is 15 − 9?",
+    "answer": "6",
+    "hints": [
+      "Start at 15 and count back 9."
+    ],
+    "solution": "15 − 9 = 6.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "subtract-within-20-gen-h5",
+    "topicId": "subtract-within-20",
+    "difficulty": "hard",
+    "question": "What is 16 − 4?",
+    "answer": "12",
+    "hints": [
+      "Start at 16 and count back 4."
+    ],
+    "solution": "16 − 4 = 12.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "subtract-within-20-gen-h6",
+    "topicId": "subtract-within-20",
+    "difficulty": "hard",
+    "question": "What is 16 − 6?",
+    "answer": "10",
+    "hints": [
+      "Start at 16 and count back 6."
+    ],
+    "solution": "16 − 6 = 10.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "subtract-within-20-gen-h7",
+    "topicId": "subtract-within-20",
+    "difficulty": "hard",
+    "question": "What is 20 − 15?",
+    "answer": "5",
+    "hints": [
+      "Start at 20 and count back 15."
+    ],
+    "solution": "20 − 15 = 5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "subtract-within-20-gen-h8",
+    "topicId": "subtract-within-20",
+    "difficulty": "hard",
+    "question": "What is 17 − 11?",
+    "answer": "6",
+    "hints": [
+      "Start at 17 and count back 11."
+    ],
+    "solution": "17 − 11 = 6.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "subtract-within-20-gen-h9",
+    "topicId": "subtract-within-20",
+    "difficulty": "hard",
+    "question": "What is 17 − 8?",
+    "answer": "9",
+    "hints": [
+      "Start at 17 and count back 8."
+    ],
+    "solution": "17 − 8 = 9.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "subtract-within-20-gen-h10",
+    "topicId": "subtract-within-20",
+    "difficulty": "hard",
+    "question": "What is 15 − 5?",
+    "answer": "10",
+    "hints": [
+      "Start at 15 and count back 5."
+    ],
+    "solution": "15 − 5 = 10.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "subtract-within-20-gen-h11",
+    "topicId": "subtract-within-20",
+    "difficulty": "hard",
+    "question": "What is 17 − 7?",
+    "answer": "10",
+    "hints": [
+      "Start at 17 and count back 7."
+    ],
+    "solution": "17 − 7 = 10.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "subtract-within-20-gen-h12",
+    "topicId": "subtract-within-20",
+    "difficulty": "hard",
+    "question": "What is 12 − 8?",
+    "answer": "4",
+    "hints": [
+      "Start at 12 and count back 8."
+    ],
+    "solution": "12 − 8 = 4.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "subtract-within-20-gen-h13",
+    "topicId": "subtract-within-20",
+    "difficulty": "hard",
+    "question": "What is 18 − 13?",
+    "answer": "5",
+    "hints": [
+      "Start at 18 and count back 13."
+    ],
+    "solution": "18 − 13 = 5.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  },
+  {
+    "id": "subtract-within-20-gen-h14",
+    "topicId": "subtract-within-20",
+    "difficulty": "hard",
+    "question": "What is 18 − 10?",
+    "answer": "8",
+    "hints": [
+      "Start at 18 and count back 10."
+    ],
+    "solution": "18 − 10 = 8.",
+    "cognitiveDemand": "procedural",
+    "source": "generated"
+  }
+]
