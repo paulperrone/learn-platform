@@ -154,7 +154,7 @@ describe("FIRe review compression", () => {
 
       const selectedIds = selected.map((s) => s.topicId);
       expect(selectedIds).toContain(parent.id);
-      // coveredCount should be > number of explicit reviews
+      // coveredCount should be > number of explicit reviews (set-cover compression)
       expect(coveredCount).toBeGreaterThan(selected.length);
     });
 

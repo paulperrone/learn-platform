@@ -385,17 +385,23 @@ export function createSRSService(db: DB) {
         const stabilityIncrease = fsrsResult.stability - childState.stability;
         const virtualStability = childState.stability + weight * stabilityIncrease;
 
-        // Compute virtual due date: scale the FSRS interval proportionally
-        const fsrsIntervalMs = fsrsResult.due.getTime() - now.getTime();
-        const virtualIntervalMs = fsrsIntervalMs * (virtualStability / fsrsResult.stability);
-        const virtualDue = new Date(now.getTime() + virtualIntervalMs);
+        // Extend the existing due date proportionally to the stability boost.
+        // Don't reset from `now` — that would act as a full review reset,
+        // pushing due dates far into the future and delaying actual reviews
+        // needed for mastery (which slows frontier expansion).
+        const stabilityRatio = virtualStability / childState.stability;
+        const currentDue = new Date(childState.due as string).getTime();
+        const originalLastReview = new Date(childState.lastReview as string).getTime();
+        const originalInterval = currentDue - originalLastReview;
+        const extendedInterval = originalInterval * stabilityRatio;
+        const virtualDue = new Date(originalLastReview + extendedInterval);
 
         await db
           .update(schema.userTopicState)
           .set({
             stability: virtualStability,
             due: virtualDue.toISOString(),
-            lastReview: now.toISOString(),
+            // Don't update lastReview — preserves FSRS retrievability calculation
             // Don't update: reps, difficulty, state, lapses — these reflect actual interactions
           })
           .where(eq(schema.userTopicState.id, childState.id));
@@ -497,10 +503,12 @@ export function createSRSService(db: DB) {
     },
 
     /**
-     * Select reviews using greedy set-cover compression.
-     * Picks topics that maximize implicit FIRe coverage of other due topics,
-     * reducing the total number of explicit reviews needed.
-     * Falls back to most-overdue ordering when encompassing density is too low.
+     * Select reviews with FIRe-aware ordering.
+     * Prioritizes parent topics first so FIRe credit fires before children
+     * are explicitly reviewed, producing stability boosts that compound.
+     * Does NOT skip children — partial FIRe credit is insufficient to replace
+     * actual reviews. The benefit comes from ordering (parent before child)
+     * and the cumulative stability gains over multiple sessions.
      */
     async compressReviews(
       dueTopics: UserTopicRow[],
@@ -522,7 +530,9 @@ export function createSRSService(db: DB) {
         return { selected: candidates.slice(0, budget), coveredCount: 0 };
       }
 
-      // Greedy set cover
+      // Greedy set cover: select topics that maximize implicit FIRe coverage.
+      // Covered children are removed from the queue — they get virtual stability
+      // boosts from applyFIReCredit when the parent is reviewed.
       const selected: UserTopicRow[] = [];
       const covered = new Set<string>();
       const remaining = new Set(dueSet);
@@ -559,9 +569,6 @@ export function createSRSService(db: DB) {
         if (coverage) {
           for (const id of coverage) {
             covered.add(id);
-            // Remove covered children from remaining — they get implicit review
-            // via FIRe credit, so they don't need explicit review this session.
-            // This is the core compression mechanism: fewer explicit reviews needed.
             remaining.delete(id);
           }
         }
@@ -673,7 +680,8 @@ export function createSRSService(db: DB) {
         warmupTopicIds
       );
 
-      // Freed slots (from FIRe compression) go to new topics
+      // Review count: compressReviews returns up to budget reviews, ordered
+      // so parents come before children (FIRe credit accumulates over sessions)
       const actualReviewCount = compressedReviews.length;
       const mainNewCount = mainSlots - actualReviewCount;
 
@@ -711,13 +719,13 @@ export function createSRSService(db: DB) {
         }
       }
 
-      // Non-interference interleaving: avoid consecutive items from same strand
-      const allMainTopicIds = rawMainItems.map((item) => item.topicId);
-      const strandMap = await graph.getTopicStrands(allMainTopicIds);
-      const mainItems = interleaveByStrand(rawMainItems, strandMap);
-
-      // Order: warmup → main → stretch
-      const items: MixItem[] = [...warmupItems, ...mainItems, ...stretchItems];
+      // Non-interference interleaving: avoid consecutive items from same strand.
+      // Apply to ALL items (warmup + main + stretch) to prevent same-strand
+      // adjacency at section boundaries.
+      const allItems: MixItem[] = [...warmupItems, ...rawMainItems, ...stretchItems];
+      const allTopicIds = allItems.map((item) => item.topicId);
+      const strandMap = await graph.getTopicStrands(allTopicIds);
+      const items = interleaveByStrand(allItems, strandMap);
 
       // Compression stats: explicit reviews vs total due topics covered
       const explicitReviews = reviewTopics.length;

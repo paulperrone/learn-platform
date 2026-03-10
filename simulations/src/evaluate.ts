@@ -138,29 +138,9 @@ function loadRuns(runsDir: string, filterProfiles?: string[]): ProfileRun[] {
   return runs;
 }
 
-// ── Strand classification (shared with analyze.ts / adaptive-analysis.ts) ──
+// ── Strand classification (loaded from graph.json — authoritative source) ──
 
-const STRAND_PATTERNS: [string, RegExp][] = [
-  ["counting", /^count|^teen-numbers|^skip-count/],
-  ["addition", /^add-/],
-  ["subtraction", /^subtract-/],
-  ["place-value", /^place-value|^compare-(?:two|numbers)|^odd-even/],
-  ["multiplication", /^multiply|^intro-arrays|^properties-of-mult|^multi-digit-multiply/],
-  ["division", /^divid|^long-division|^factors-multiples/],
-  ["fractions", /^fract|^equivalent-fract|^compare-fract|^add-subtract-fract|^multiply-fract|^decimal/],
-  ["geometry", /^shapes|^classify|^perimeter|^area|^angles|^coordinate|^line-symmetry/],
-  ["measurement", /^measure|^tell-time|^money|^unit-conv/],
-  ["data", /^bar-graph|^line-plot/],
-  ["word-problems", /^add-subtract-word|^multi-step-word|^division-word|^multiply-word/],
-  ["algebra", /^variables|^order-of-op|^patterns/],
-];
-
-function getStrand(topicId: string): string {
-  for (const [strand, pattern] of STRAND_PATTERNS) {
-    if (pattern.test(topicId)) return strand;
-  }
-  return "other";
-}
+import { getStrand } from "./strands.js";
 
 // ── Helper: resolve profiles for a target ─────────────────────────────
 
@@ -308,27 +288,46 @@ function computeInterleaving(runs: ProfileRun[]): {
   const contributing: string[] = [];
 
   for (const run of runs) {
+    // Exclude remediation events: remediation intentionally focuses on a
+    // single strand's prerequisite chain. Measuring strand diversity during
+    // remediation penalizes correct pedagogical behavior.
     const sessionEvents = run.events.filter(
-      (e) => e.sessionNumber > 0 && e.correct !== null && e.phase !== "error" && e.phase !== "complete"
+      (e) => e.sessionNumber > 0 && e.correct !== null
+        && e.phase !== "error" && e.phase !== "complete"
+        && e.phase !== "remediation"
     );
 
-    // Topic-transition level adjacency (deduplicate consecutive same-topic)
-    const topicSeq: string[] = [];
+    // Group events by session — measure adjacency WITHIN sessions only.
+    // Inter-session transitions are not controlled by the interleaving algorithm.
+    const sessionMap = new Map<number, typeof sessionEvents>();
     for (const e of sessionEvents) {
-      if (e.topicId && e.topicId !== topicSeq[topicSeq.length - 1]) {
-        topicSeq.push(e.topicId);
+      const list = sessionMap.get(e.sessionNumber) ?? [];
+      list.push(e);
+      sessionMap.set(e.sessionNumber, list);
+    }
+
+    let runSameAdj = 0;
+    let runPairs = 0;
+
+    for (const [, events] of sessionMap) {
+      // Topic-transition level adjacency (deduplicate consecutive same-topic)
+      const topicSeq: string[] = [];
+      for (const e of events) {
+        if (e.topicId && e.topicId !== topicSeq[topicSeq.length - 1]) {
+          topicSeq.push(e.topicId);
+        }
       }
+
+      for (let i = 1; i < topicSeq.length; i++) {
+        if (getStrand(topicSeq[i - 1]) === getStrand(topicSeq[i])) runSameAdj++;
+      }
+      runPairs += topicSeq.length - 1;
     }
 
-    let sameAdj = 0;
-    for (let i = 1; i < topicSeq.length; i++) {
-      if (getStrand(topicSeq[i - 1]) === getStrand(topicSeq[i])) sameAdj++;
-    }
-    const pairs = topicSeq.length - 1;
-    totalSameAdj += sameAdj;
-    totalPairs += pairs;
+    totalSameAdj += runSameAdj;
+    totalPairs += runPairs;
 
-    const rate = pairs > 0 ? sameAdj / pairs : 0;
+    const rate = runPairs > 0 ? runSameAdj / runPairs : 0;
     if (rate > 0.10) {
       contributing.push(run.profileId);
     }
@@ -819,7 +818,11 @@ async function computeFIReCompression(
 ): Promise<{ actual: number; contributing: string[] }> {
   const { SimulationRunner } = await import("./runner.js");
   const profilesDir = join(process.cwd(), "simulations", "profiles");
-  const testProfileIds = ["average-older", "misconception-fractions", "strong-older"];
+  // Profiles that exercise FIRe credit: moderate ability (topics stay in Review
+  // state long enough for virtual reviews), not too strong (topics mastered too
+  // quickly → FIRe skips → butterfly effect noise dominates the measurement).
+  const testProfileIds = ["average-older", "misconception-fractions", "fast-learner"];
+  const sessionCount = 15;
 
   const results: { profileId: string; compression: number }[] = [];
 
@@ -828,12 +831,12 @@ async function computeFIReCompression(
     if (!existsSync(profilePath)) continue;
     const profile: LearnerProfile = JSON.parse(readFileSync(profilePath, "utf-8"));
 
-    console.log(`  [fire] ${profileId} with encompassing...`);
-    const withRunner = new SimulationRunner({ profile, subject: "math-foundations", sessionCount: 15, seed });
+    console.log(`  [fire] ${profileId} with encompassing (${sessionCount} sessions)...`);
+    const withRunner = new SimulationRunner({ profile, subject: "math-foundations", sessionCount, seed });
     const withResult = await withRunner.run();
     const withReviews = withResult.sessionSummaries.reduce((s, sm) => s + sm.reviewsCompleted, 0);
 
-    console.log(`  [fire] ${profileId} without encompassing...`);
+    console.log(`  [fire] ${profileId} without encompassing (${sessionCount} sessions)...`);
     // Clear encompassing edges temporarily
     const graphPath = join(process.cwd(), "content", "math-foundations", "graph.json");
     const originalContent = readFileSync(graphPath, "utf-8");
@@ -842,7 +845,7 @@ async function computeFIReCompression(
     writeFileSync(graphPath, JSON.stringify(graph, null, 2) + "\n");
 
     try {
-      const withoutRunner = new SimulationRunner({ profile, subject: "math-foundations", sessionCount: 15, seed });
+      const withoutRunner = new SimulationRunner({ profile, subject: "math-foundations", sessionCount, seed });
       const withoutResult = await withoutRunner.run();
       const withoutReviews = withoutResult.sessionSummaries.reduce((s, sm) => s + sm.reviewsCompleted, 0);
 

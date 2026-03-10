@@ -119,9 +119,8 @@ describe("confidence-fsrs-fire integration", () => {
 
     // Stability should increase from virtual review
     expect(child1After.stability).toBeGreaterThan(child1Before.stability);
-    // lastReview should be updated
-    expect(new Date(child1After.lastReview!).getTime())
-      .toBeGreaterThan(new Date(child1Before.lastReview!).getTime());
+    // lastReview should NOT be updated — FIRe preserves original scheduling anchor
+    expect(child1After.lastReview).toBe(child1Before.lastReview);
   });
 
   it("low confidence + correct → capped at Good → shorter interval", async () => {

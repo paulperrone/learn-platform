@@ -209,9 +209,9 @@ describe("FIRe multi-hop credit flow", () => {
       if (state.topicId !== orderOps.id) {
         // Virtual review should increase stability from baseline of 1
         expect(state.stability).toBeGreaterThan(1);
-        // lastReview should be updated to now
-        expect(new Date(state.lastReview!).getTime()).toBeGreaterThan(
-          Date.now() - 5000 // within last 5 seconds
+        // lastReview should NOT be updated — FIRe preserves original scheduling anchor
+        expect(new Date(state.lastReview!).getTime()).toBeLessThan(
+          Date.now() - 13 * 24 * 60 * 60 * 1000 // still the original 14-days-ago value
         );
       }
     }

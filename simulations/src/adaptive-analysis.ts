@@ -56,29 +56,9 @@ function loadProfile(profileId: string): LearnerProfile | null {
   return JSON.parse(readFileSync(path, "utf-8"));
 }
 
-// --- Strand classification for interleaving analysis ---
+// --- Strand classification (loaded from graph.json — authoritative source) ---
 
-const STRAND_PATTERNS: [string, RegExp][] = [
-  ["counting", /^count|^teen-numbers|^skip-count/],
-  ["addition", /^add-/],
-  ["subtraction", /^subtract-/],
-  ["place-value", /^place-value|^compare-(?:two|numbers)|^odd-even/],
-  ["multiplication", /^multiply|^intro-arrays|^properties-of-mult|^multi-digit-multiply/],
-  ["division", /^divid|^long-division|^factors-multiples/],
-  ["fractions", /^fract|^equivalent-fract|^compare-fract|^add-subtract-fract|^multiply-fract|^decimal/],
-  ["geometry", /^shapes|^classify|^perimeter|^area|^angles|^coordinate/],
-  ["measurement", /^measure|^tell-time|^money|^unit-conv/],
-  ["data", /^bar-graph|^line-plot/],
-  ["word-problems", /^add-subtract-word|^multi-step-word|^division-word|^multiply-word/],
-  ["algebra", /^variables|^order-of-op|^patterns/],
-];
-
-function getStrand(topicId: string): string {
-  for (const [strand, pattern] of STRAND_PATTERNS) {
-    if (pattern.test(topicId)) return strand;
-  }
-  return "other";
-}
+import { getStrand } from "./strands.js";
 
 // --- Analysis types ---
 

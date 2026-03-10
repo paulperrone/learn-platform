@@ -23,7 +23,7 @@ const SCHEMA_STATEMENTS = [
   'CREATE UNIQUE INDEX sessions_token_idx ON sessions (token)',
   'CREATE INDEX sessions_user_idx ON sessions (user_id)',
   'CREATE TABLE accounts (id text PRIMARY KEY NOT NULL, user_id text NOT NULL, account_id text NOT NULL, provider_id text NOT NULL, access_token text, refresh_token text, access_token_expires_at text, refresh_token_expires_at text, scope text, id_token text, password text, created_at text NOT NULL, updated_at text NOT NULL, FOREIGN KEY (user_id) REFERENCES users(id))',
-  'CREATE TABLE topics (id text PRIMARY KEY NOT NULL, subject_id text NOT NULL, name text NOT NULL, description text NOT NULL, depth integer DEFAULT 0 NOT NULL, grade_level integer NOT NULL, standard_code text, created_at text NOT NULL, FOREIGN KEY (subject_id) REFERENCES subjects(id))',
+  'CREATE TABLE topics (id text PRIMARY KEY NOT NULL, subject_id text NOT NULL, name text NOT NULL, description text NOT NULL, depth integer DEFAULT 0 NOT NULL, grade_level integer NOT NULL, strand text, standard_code text, created_at text NOT NULL, FOREIGN KEY (subject_id) REFERENCES subjects(id))',
   'CREATE INDEX topics_subject_idx ON topics (subject_id)',
   'CREATE INDEX topics_depth_idx ON topics (depth)',
   'CREATE TABLE instructional_content (id text PRIMARY KEY NOT NULL, topic_id text NOT NULL, flavor text DEFAULT \'classic\' NOT NULL, locale text DEFAULT \'en\' NOT NULL, presentation text DEFAULT \'standard\' NOT NULL, content_depth text DEFAULT \'survey\' NOT NULL, version integer DEFAULT 1 NOT NULL, title text NOT NULL, steps_json text NOT NULL, assets_json text, created_at text NOT NULL, updated_at text NOT NULL, FOREIGN KEY (topic_id) REFERENCES topics(id))',
@@ -182,7 +182,7 @@ export function createMultiSubjectSimulationDb(subjects: string[]): DB {
 
   const now = new Date().toISOString();
   const insertTopic = sqlite.prepare(
-    "INSERT INTO topics (id, subject_id, name, description, depth, grade_level, standard_code, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
+    "INSERT INTO topics (id, subject_id, name, description, depth, grade_level, strand, standard_code, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"
   );
   const insertProblem = sqlite.prepare(
     "INSERT INTO assessment_content (id, topic_id, flavor, locale, presentation, content_depth, version, type, difficulty, question, answer, hints_json, solution, type_properties, cognitive_demand, key_prerequisite_id, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
@@ -217,7 +217,7 @@ export function createMultiSubjectSimulationDb(subjects: string[]): DB {
 
     // Insert topics
     for (const t of graph.topics) {
-      insertTopic.run(t.id, graph.subjectId, t.name, t.description, t.gradeLevel, t.gradeLevel, t.standardCode, now);
+      insertTopic.run(t.id, graph.subjectId, t.name, t.description, t.gradeLevel, t.gradeLevel, t.strand ?? null, t.standardCode, now);
     }
 
     // Import problems from both hand-authored and generated directories

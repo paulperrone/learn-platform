@@ -472,51 +472,31 @@ export function createGraphService(db: DB) {
     },
 
     /**
-     * Compute strand IDs for topics. Topics in the same "strand" are
-     * conceptually similar (share a direct prerequisite or are siblings
-     * under the same parent). Strand = root ancestor in the prerequisite
-     * chain. Topics that share any root prerequisite are in the same strand.
+     * Get strand assignments for topics from the DB (imported from graph.json).
+     * Strands are prefixed with subject ID for cross-subject uniqueness.
+     * Falls back to topic ID itself if no strand is assigned.
      */
     async getTopicStrands(topicIds: string[]): Promise<Map<string, string>> {
       if (topicIds.length === 0) return new Map();
 
-      const allPrereqs = await db.select().from(schema.prerequisites);
-
-      // Build parent map: topicId → list of prerequisite topic IDs
-      const parentMap = new Map<string, string[]>();
-      for (const p of allPrereqs) {
-        const list = parentMap.get(p.toTopicId) ?? [];
-        list.push(p.fromTopicId);
-        parentMap.set(p.toTopicId, list);
-      }
-
-      // For each topic, walk up to the root(s) and use the first root as strand ID
       const strandMap = new Map<string, string>();
-      const rootCache = new Map<string, string>();
 
-      function findRoot(topicId: string): string {
-        if (rootCache.has(topicId)) return rootCache.get(topicId)!;
+      // Batch fetch all requested topics
+      const allTopics = await db.select({
+        id: schema.topics.id,
+        subjectId: schema.topics.subjectId,
+        strand: schema.topics.strand,
+      }).from(schema.topics);
 
-        const visited = new Set<string>();
-        let current = topicId;
-
-        while (true) {
-          if (visited.has(current)) break; // cycle guard
-          visited.add(current);
-          const parents = parentMap.get(current);
-          if (!parents || parents.length === 0) break;
-          current = parents[0]; // follow first parent to root
-        }
-
-        // Cache for all visited nodes
-        for (const v of visited) {
-          rootCache.set(v, current);
-        }
-        return current;
-      }
+      const topicLookup = new Map(allTopics.map(t => [t.id, t]));
 
       for (const topicId of topicIds) {
-        strandMap.set(topicId, findRoot(topicId));
+        const topic = topicLookup.get(topicId);
+        if (topic?.strand) {
+          strandMap.set(topicId, `${topic.subjectId}:${topic.strand}`);
+        } else {
+          strandMap.set(topicId, topicId); // fallback
+        }
       }
 
       return strandMap;

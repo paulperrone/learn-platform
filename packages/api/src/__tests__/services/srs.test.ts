@@ -448,10 +448,10 @@ describe("createSRSService", () => {
         );
       // Stability should increase (virtual review reinforces memory)
       expect(updated.stability).toBeGreaterThan(5);
-      // lastReview should be updated to now (critical for FSRS coherence)
-      expect(new Date(updated.lastReview!).getTime()).toBeGreaterThan(new Date(lastReviewBefore).getTime());
-      // Due date should be in the future from now
-      expect(new Date(updated.due).getTime()).toBeGreaterThan(Date.now());
+      // lastReview should NOT be updated — preserves FSRS retrievability calculation
+      expect(updated.lastReview).toBe(lastReviewBefore);
+      // Due date should be extended from original anchor (not reset from now)
+      expect(new Date(updated.due).getTime()).toBeGreaterThan(new Date(futureDue).getTime());
       // Reps should NOT change (virtual review doesn't count as actual interaction)
       expect(updated.reps).toBe(3);
     });

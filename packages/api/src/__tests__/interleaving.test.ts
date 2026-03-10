@@ -123,63 +123,54 @@ describe("Non-Interference Interleaving", () => {
       await db.delete(schema.subjects);
     });
 
-    it("assigns same strand to topics in the same prerequisite chain", async () => {
+    it("reads strand from DB column for topics with strand set", async () => {
       const subject = await seedSubject({ id: "math-test" });
-      const counting = await seedTopic(subject.id, { id: "counting", depth: 0 });
-      const add5 = await seedTopic(subject.id, { id: "add-5", depth: 1 });
-      const add10 = await seedTopic(subject.id, { id: "add-10", depth: 2 });
-      await seedPrerequisite(counting.id, add5.id);
-      await seedPrerequisite(add5.id, add10.id);
+      await seedTopic(subject.id, { id: "counting", depth: 0, strand: "counting-cardinality" });
+      await seedTopic(subject.id, { id: "add-5", depth: 1, strand: "counting-cardinality" });
+      await seedTopic(subject.id, { id: "add-10", depth: 2, strand: "counting-cardinality" });
 
       const graphService = createGraphService(db);
-      const strands = await graphService.getTopicStrands([counting.id, add5.id, add10.id]);
+      const strands = await graphService.getTopicStrands(["counting", "add-5", "add-10"]);
 
-      // All should trace back to "counting" as root
-      expect(strands.get(add5.id)).toBe(counting.id);
-      expect(strands.get(add10.id)).toBe(counting.id);
-      expect(strands.get(counting.id)).toBe(counting.id);
+      // All should have the same strand (prefixed with subject ID)
+      expect(strands.get("add-5")).toBe("math-test:counting-cardinality");
+      expect(strands.get("add-10")).toBe("math-test:counting-cardinality");
+      expect(strands.get("counting")).toBe("math-test:counting-cardinality");
     });
 
-    it("assigns same strand to sibling topics (same parent)", async () => {
+    it("assigns same strand to sibling topics with same strand value", async () => {
       const subject = await seedSubject({ id: "math-test" });
-      const counting = await seedTopic(subject.id, { id: "counting", depth: 0 });
-      const add5 = await seedTopic(subject.id, { id: "add-5", depth: 1 });
-      const sub5 = await seedTopic(subject.id, { id: "sub-5", depth: 1 });
-      await seedPrerequisite(counting.id, add5.id);
-      await seedPrerequisite(counting.id, sub5.id);
+      await seedTopic(subject.id, { id: "add-5", depth: 1, strand: "operations" });
+      await seedTopic(subject.id, { id: "sub-5", depth: 1, strand: "operations" });
 
       const graphService = createGraphService(db);
-      const strands = await graphService.getTopicStrands([add5.id, sub5.id]);
+      const strands = await graphService.getTopicStrands(["add-5", "sub-5"]);
 
-      // Both siblings trace to "counting"
-      expect(strands.get(add5.id)).toBe(strands.get(sub5.id));
+      expect(strands.get("add-5")).toBe(strands.get("sub-5"));
     });
 
-    it("assigns different strands to topics from different roots", async () => {
+    it("assigns different strands to topics with different strand values", async () => {
       const subject = await seedSubject({ id: "math-test" });
-      const counting = await seedTopic(subject.id, { id: "counting", depth: 0 });
-      const shapes = await seedTopic(subject.id, { id: "shapes", depth: 0 });
-      const add5 = await seedTopic(subject.id, { id: "add-5", depth: 1 });
-      const angles = await seedTopic(subject.id, { id: "angles", depth: 1 });
-      await seedPrerequisite(counting.id, add5.id);
-      await seedPrerequisite(shapes.id, angles.id);
+      await seedTopic(subject.id, { id: "add-5", depth: 1, strand: "counting" });
+      await seedTopic(subject.id, { id: "angles", depth: 1, strand: "geometry" });
 
       const graphService = createGraphService(db);
-      const strands = await graphService.getTopicStrands([add5.id, angles.id]);
+      const strands = await graphService.getTopicStrands(["add-5", "angles"]);
 
-      expect(strands.get(add5.id)).toBe(counting.id);
-      expect(strands.get(angles.id)).toBe(shapes.id);
-      expect(strands.get(add5.id)).not.toBe(strands.get(angles.id));
+      expect(strands.get("add-5")).toBe("math-test:counting");
+      expect(strands.get("angles")).toBe("math-test:geometry");
+      expect(strands.get("add-5")).not.toBe(strands.get("angles"));
     });
 
-    it("returns topic as its own strand when it has no prerequisites", async () => {
+    it("falls back to topic ID when strand column is null", async () => {
       const subject = await seedSubject({ id: "math-test" });
-      const standalone = await seedTopic(subject.id, { id: "standalone", depth: 0 });
+      await seedTopic(subject.id, { id: "standalone", depth: 0 });
 
       const graphService = createGraphService(db);
-      const strands = await graphService.getTopicStrands([standalone.id]);
+      const strands = await graphService.getTopicStrands(["standalone"]);
 
-      expect(strands.get(standalone.id)).toBe(standalone.id);
+      // No strand set — falls back to topic ID
+      expect(strands.get("standalone")).toBe("standalone");
     });
 
     it("returns empty map for empty input", async () => {
@@ -210,12 +201,12 @@ describe("Non-Interference Interleaving", () => {
     it("interleaves topics from different strands in session mix", async () => {
       const subject = await seedSubject({ id: "math-test" });
 
-      // Two strands: arithmetic chain and geometry chain
-      const counting = await seedTopic(subject.id, { id: "counting", depth: 0 });
-      const add5 = await seedTopic(subject.id, { id: "add-5", depth: 1 });
-      const add10 = await seedTopic(subject.id, { id: "add-10", depth: 2 });
-      const shapes = await seedTopic(subject.id, { id: "shapes", depth: 0 });
-      const angles = await seedTopic(subject.id, { id: "angles", depth: 1 });
+      // Two strands: arithmetic and geometry
+      const counting = await seedTopic(subject.id, { id: "counting", depth: 0, strand: "arithmetic" });
+      const add5 = await seedTopic(subject.id, { id: "add-5", depth: 1, strand: "arithmetic" });
+      const add10 = await seedTopic(subject.id, { id: "add-10", depth: 2, strand: "arithmetic" });
+      const shapes = await seedTopic(subject.id, { id: "shapes", depth: 0, strand: "geometry" });
+      const angles = await seedTopic(subject.id, { id: "angles", depth: 1, strand: "geometry" });
 
       await seedPrerequisite(counting.id, add5.id);
       await seedPrerequisite(add5.id, add10.id);

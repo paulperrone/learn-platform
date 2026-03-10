@@ -190,6 +190,13 @@
       "when": 1773160793092,
       "tag": "0026_loud_gamora",
       "breakpoints": true
+    },
+    {
+      "idx": 27,
+      "version": "6",
+      "when": 1773169616795,
+      "tag": "0027_lethal_wild_pack",
+      "breakpoints": true
     }
   ]
 }

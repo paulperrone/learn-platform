@@ -29,6 +29,7 @@ export const topics = sqliteTable("topics", {
   description: text("description").notNull(),
   depth: integer("depth").notNull().default(0),
   gradeLevel: integer("grade_level").notNull(),
+  strand: text("strand"),
   standardCode: text("standard_code"),
   createdAt: text("created_at").notNull().$defaultFn(() => new Date().toISOString()),
 }, (table) => [

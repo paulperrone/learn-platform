@@ -193,11 +193,11 @@ function main() {
 
     // Insert topics
     const insertTopic = db.prepare(
-      "INSERT INTO topics (id, subject_id, name, description, depth, grade_level, standard_code, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
+      "INSERT INTO topics (id, subject_id, name, description, depth, grade_level, strand, standard_code, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"
     );
     const insertTopics = db.transaction((topics: typeof graph.topics) => {
       for (const t of topics) {
-        insertTopic.run(t.id, graph.subjectId, t.name, t.description, 0, t.gradeLevel, t.standardCode, new Date().toISOString());
+        insertTopic.run(t.id, graph.subjectId, t.name, t.description, 0, t.gradeLevel, t.strand ?? null, t.standardCode, new Date().toISOString());
       }
     });
     insertTopics(graph.topics);
