@@ -30,7 +30,7 @@ const SCHEMA_STATEMENTS = [
   'CREATE INDEX ic_topic_idx ON instructional_content (topic_id)',
   'CREATE INDEX ic_dimensions_idx ON instructional_content (topic_id, flavor, locale, presentation, version)',
   'CREATE INDEX ic_depth_idx ON instructional_content (topic_id, content_depth)',
-  'CREATE TABLE assessment_content (id text PRIMARY KEY NOT NULL, topic_id text NOT NULL, flavor text DEFAULT \'classic\' NOT NULL, locale text DEFAULT \'en\' NOT NULL, presentation text DEFAULT \'standard\' NOT NULL, content_depth text DEFAULT \'survey\' NOT NULL, version integer DEFAULT 1 NOT NULL, type text DEFAULT \'text-qa\' NOT NULL, difficulty text NOT NULL, question text NOT NULL, answer text NOT NULL, hints_json text DEFAULT \'[]\' NOT NULL, solution text DEFAULT \'\' NOT NULL, type_properties text, cognitive_demand text, key_prerequisite_id text, created_at text NOT NULL, FOREIGN KEY (topic_id) REFERENCES topics(id))',
+  'CREATE TABLE assessment_content (id text PRIMARY KEY NOT NULL, topic_id text NOT NULL, flavor text DEFAULT \'classic\' NOT NULL, locale text DEFAULT \'en\' NOT NULL, presentation text DEFAULT \'standard\' NOT NULL, content_depth text DEFAULT \'survey\' NOT NULL, version integer DEFAULT 1 NOT NULL, type text DEFAULT \'text-qa\' NOT NULL, difficulty text NOT NULL, question text NOT NULL, answer text NOT NULL, hints_json text DEFAULT \'[]\' NOT NULL, solution text DEFAULT \'\' NOT NULL, type_properties text, cognitive_demand text, key_prerequisite_id text, source text DEFAULT \'hand-authored\' NOT NULL, created_at text NOT NULL, FOREIGN KEY (topic_id) REFERENCES topics(id))',
   'CREATE INDEX ac_topic_idx ON assessment_content (topic_id)',
   'CREATE INDEX ac_dimensions_idx ON assessment_content (topic_id, flavor, locale, presentation, version)',
   'CREATE INDEX ac_type_idx ON assessment_content (topic_id, type)',
@@ -155,109 +155,155 @@ type WorkedExample = {
 };
 
 export function createSimulationDb(subject: string): DB {
+  return createMultiSubjectSimulationDb([subject]);
+}
+
+/** Discipline metadata for inserting into the DB */
+const DISCIPLINE_METADATA: Record<string, { name: string; description: string; progressionModel: string }> = {
+  math: { name: "Mathematics", description: "Mathematics", progressionModel: "mastery-gated" },
+  ela: { name: "English Language Arts", description: "English Language Arts", progressionModel: "mastery-gated" },
+  history: { name: "History", description: "History & Social Studies", progressionModel: "context-layered" },
+};
+
+/**
+ * Create an in-memory simulation DB with one or more subjects loaded.
+ * Cross-subject prerequisite edges (e.g. "math-foundations:decimal-operations")
+ * are resolved by stripping the subject prefix — the referenced topic must be
+ * loaded in one of the specified subjects.
+ */
+export function createMultiSubjectSimulationDb(subjects: string[]): DB {
   const sqlite = new Database(":memory:");
   sqlite.pragma("journal_mode = WAL");
   sqlite.pragma("foreign_keys = ON");
 
-  // Apply schema
   for (const stmt of SCHEMA_STATEMENTS) {
     sqlite.exec(stmt);
   }
 
-  // Import content
-  const contentDir = join(process.cwd(), "content", subject);
-  const graphPath = join(contentDir, "graph.json");
-
-  if (!existsSync(graphPath)) {
-    throw new Error(`graph.json not found at ${graphPath}`);
-  }
-
-  const graph: GraphDefinition = JSON.parse(readFileSync(graphPath, "utf-8"));
   const now = new Date().toISOString();
-
-  // Insert discipline
-  sqlite.prepare(
-    "INSERT OR IGNORE INTO disciplines (id, name, description, progression_model, created_at) VALUES (?, ?, ?, ?, ?)"
-  ).run(graph.disciplineId ?? "math", "Mathematics", "Foundational Mathematics", "mastery-gated", now);
-
-  // Insert subject
-  sqlite.prepare(
-    "INSERT INTO subjects (id, discipline_id, name, description, grade_range, topic_count, created_at) VALUES (?, ?, ?, ?, ?, ?, ?)"
-  ).run(graph.subjectId, graph.disciplineId ?? "math", graph.subjectName, graph.description ?? "", graph.gradeRange ?? "K-5", graph.topics.length, now);
-
-  // Insert topics
   const insertTopic = sqlite.prepare(
     "INSERT INTO topics (id, subject_id, name, description, depth, grade_level, standard_code, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
   );
-  for (const t of graph.topics) {
-    insertTopic.run(t.id, graph.subjectId, t.name, t.description, t.gradeLevel, t.gradeLevel, t.standardCode, now);
-  }
-
-  // Insert prerequisites
-  const insertPrereq = sqlite.prepare(
-    "INSERT INTO prerequisites (from_topic_id, to_topic_id, strength, type) VALUES (?, ?, ?, ?)"
+  const insertProblem = sqlite.prepare(
+    "INSERT INTO assessment_content (id, topic_id, flavor, locale, presentation, content_depth, version, type, difficulty, question, answer, hints_json, solution, type_properties, cognitive_demand, key_prerequisite_id, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
   );
-  for (const p of graph.prerequisites) {
-    insertPrereq.run(p.from, p.to, p.strength, p.type ?? "required");
-  }
+  const insertExample = sqlite.prepare(
+    "INSERT INTO instructional_content (id, topic_id, flavor, locale, presentation, content_depth, version, title, steps_json, assets_json, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+  );
 
-  // Insert encompassings
-  if (graph.encompassings) {
-    const insertEncomp = sqlite.prepare(
-      "INSERT INTO encompassings (parent_topic_id, child_topic_id, weight) VALUES (?, ?, ?)"
-    );
-    for (const e of graph.encompassings) {
-      insertEncomp.run(e.parent, e.child, e.weight);
+  // Phase 1: Load all subjects — topics, problems, examples
+  const allGraphs: GraphDefinition[] = [];
+  for (const subject of subjects) {
+    const contentDir = join(process.cwd(), "content", subject);
+    const graphPath = join(contentDir, "graph.json");
+    if (!existsSync(graphPath)) {
+      throw new Error(`graph.json not found at ${graphPath}`);
     }
-  }
 
-  // Import problems
-  const problemsDir = join(contentDir, "problems");
-  if (existsSync(problemsDir)) {
-    const insertProblem = sqlite.prepare(
-      "INSERT INTO assessment_content (id, topic_id, flavor, locale, presentation, content_depth, version, type, difficulty, question, answer, hints_json, solution, type_properties, cognitive_demand, key_prerequisite_id, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
-    );
-    for (const file of readdirSync(problemsDir).filter((f) => f.endsWith(".json"))) {
-      const problems: Problem[] = JSON.parse(readFileSync(join(problemsDir, file), "utf-8"));
-      for (const p of problems) {
-        insertProblem.run(
-          p.id, p.topicId,
-          p.flavor ?? "classic", p.locale ?? "en",
-          p.presentation ?? "standard", p.contentDepth ?? "survey",
-          1, "text-qa", p.difficulty, p.question, p.answer,
-          JSON.stringify(p.hints), p.solution,
-          null, p.cognitiveDemand ?? null, p.keyPrerequisiteId ?? null,
-          now
-        );
+    const graph: GraphDefinition = JSON.parse(readFileSync(graphPath, "utf-8"));
+    allGraphs.push(graph);
+
+    // Insert discipline
+    const discId = graph.disciplineId ?? "math";
+    const discMeta = DISCIPLINE_METADATA[discId] ?? { name: discId, description: discId, progressionModel: "mastery-gated" };
+    sqlite.prepare(
+      "INSERT OR IGNORE INTO disciplines (id, name, description, progression_model, created_at) VALUES (?, ?, ?, ?, ?)"
+    ).run(discId, discMeta.name, discMeta.description, discMeta.progressionModel, now);
+
+    // Insert subject
+    sqlite.prepare(
+      "INSERT INTO subjects (id, discipline_id, name, description, grade_range, topic_count, created_at) VALUES (?, ?, ?, ?, ?, ?, ?)"
+    ).run(graph.subjectId, discId, graph.subjectName, graph.description ?? "", graph.gradeRange ?? "K-5", graph.topics.length, now);
+
+    // Insert topics
+    for (const t of graph.topics) {
+      insertTopic.run(t.id, graph.subjectId, t.name, t.description, t.gradeLevel, t.gradeLevel, t.standardCode, now);
+    }
+
+    // Import problems from both hand-authored and generated directories
+    for (const dir of ["problems", "problems-generated"]) {
+      const problemsDir = join(contentDir, dir);
+      if (!existsSync(problemsDir)) continue;
+      for (const file of readdirSync(problemsDir).filter((f) => f.endsWith(".json"))) {
+        const problems: Problem[] = JSON.parse(readFileSync(join(problemsDir, file), "utf-8"));
+        for (const p of problems) {
+          insertProblem.run(
+            p.id, p.topicId,
+            p.flavor ?? "classic", p.locale ?? "en",
+            p.presentation ?? "standard", p.contentDepth ?? "survey",
+            1, "text-qa", p.difficulty, p.question, p.answer,
+            JSON.stringify(p.hints), p.solution,
+            null, p.cognitiveDemand ?? null, p.keyPrerequisiteId ?? null,
+            now
+          );
+        }
+      }
+    }
+
+    // Import worked examples
+    const examplesDir = join(contentDir, "examples");
+    if (existsSync(examplesDir)) {
+      for (const file of readdirSync(examplesDir).filter((f) => f.endsWith(".json"))) {
+        const examples: WorkedExample[] = JSON.parse(readFileSync(join(examplesDir, file), "utf-8"));
+        for (const e of examples) {
+          insertExample.run(
+            e.id, e.topicId,
+            e.flavor ?? "classic", e.locale ?? "en",
+            e.presentation ?? "standard", e.contentDepth ?? "survey",
+            1, e.title, JSON.stringify(e.steps),
+            e.visuals ? JSON.stringify(e.visuals) : null,
+            now, now
+          );
+        }
       }
     }
   }
 
-  // Import worked examples
-  const examplesDir = join(contentDir, "examples");
-  if (existsSync(examplesDir)) {
-    const insertExample = sqlite.prepare(
-      "INSERT INTO instructional_content (id, topic_id, flavor, locale, presentation, content_depth, version, title, steps_json, assets_json, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
-    );
-    for (const file of readdirSync(examplesDir).filter((f) => f.endsWith(".json"))) {
-      const examples: WorkedExample[] = JSON.parse(readFileSync(join(examplesDir, file), "utf-8"));
-      for (const e of examples) {
-        insertExample.run(
-          e.id, e.topicId,
-          e.flavor ?? "classic", e.locale ?? "en",
-          e.presentation ?? "standard", e.contentDepth ?? "survey",
-          1, e.title, JSON.stringify(e.steps),
-          e.visuals ? JSON.stringify(e.visuals) : null,
-          now, now
-        );
+  // Phase 2: Insert all edges (prerequisites + encompassings) after all topics are loaded
+  // This ensures cross-subject FKs resolve correctly
+  // Build set of loaded topic IDs to skip dangling cross-subject edges
+  const loadedTopicIds = new Set<string>();
+  for (const graph of allGraphs) {
+    for (const t of graph.topics) {
+      loadedTopicIds.add(t.id);
+    }
+  }
+
+  const insertPrereq = sqlite.prepare(
+    "INSERT OR IGNORE INTO prerequisites (from_topic_id, to_topic_id, strength, type) VALUES (?, ?, ?, ?)"
+  );
+  const insertEncomp = sqlite.prepare(
+    "INSERT OR IGNORE INTO encompassings (parent_topic_id, child_topic_id, weight) VALUES (?, ?, ?)"
+  );
+
+  for (const graph of allGraphs) {
+    for (const p of graph.prerequisites) {
+      // Resolve cross-subject topic IDs: "math-foundations:decimal-operations" → "decimal-operations"
+      const fromId = resolveTopicId(p.from);
+      const toId = resolveTopicId(p.to);
+      // Skip edges referencing topics not loaded (cross-subject edges in single-subject mode)
+      if (!loadedTopicIds.has(fromId) || !loadedTopicIds.has(toId)) continue;
+      insertPrereq.run(fromId, toId, p.strength, p.type ?? "required");
+    }
+
+    if (graph.encompassings) {
+      for (const e of graph.encompassings) {
+        const parentId = resolveTopicId(e.parent);
+        const childId = resolveTopicId(e.child);
+        if (!loadedTopicIds.has(parentId) || !loadedTopicIds.has(childId)) continue;
+        insertEncomp.run(parentId, childId, e.weight);
       }
     }
   }
 
-  // Create Drizzle instance — cast to DB (DrizzleD1Database) since the
-  // query builder API is compatible at runtime despite different TS types
   const db = drizzle(sqlite, { schema }) as unknown as DB;
   return db;
+}
+
+/** Strip cross-subject prefix: "math-foundations:decimal-operations" → "decimal-operations" */
+function resolveTopicId(id: string): string {
+  const colonIdx = id.indexOf(":");
+  return colonIdx >= 0 ? id.substring(colonIdx + 1) : id;
 }
 
 /** Create a simulated user in the database */

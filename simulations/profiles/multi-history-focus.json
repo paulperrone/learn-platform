@@ -1,0 +1,22 @@
+{
+  "id": "multi-history-focus",
+  "name": "History Focus",
+  "description": "Age 12, average ability, context-layered history + ELA prerequisites",
+  "age": 12,
+  "abilityCurve": {
+    "0": 0.88,
+    "1": 0.83,
+    "2": 0.78,
+    "3": 0.72,
+    "4": 0.60,
+    "5": 0.50,
+    "6": 0.40,
+    "7": 0.30,
+    "8": 0.25
+  },
+  "responseSpeed": { "meanMs": 8000, "stddevMs": 3000 },
+  "hintSeekingProbability": 0.20,
+  "confidenceTendency": "calibrated",
+  "misconceptions": [],
+  "subjects": ["ela-k5", "us-history"]
+}

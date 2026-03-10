@@ -11,14 +11,17 @@ import { SeededRNG } from "./prng.js";
 export function resolveAnswer(
   rng: SeededRNG,
   profile: LearnerProfile,
-  topic: { id: string; gradeLevel: number },
+  topic: { id: string; gradeLevel: number; subjectId?: string },
   difficulty: string,
   cognitiveDemand: string | null,
   phase: string,
   sessionNumber: number
 ): AnswerResult {
-  // Base accuracy from ability curve — interpolate if grade not specified
-  let accuracy = getBaseAccuracy(profile, topic.gradeLevel);
+  // Base accuracy from ability curve — use subject-specific curve if available
+  const subjectCurve = topic.subjectId && profile.subjectAbility?.[topic.subjectId];
+  let accuracy = subjectCurve
+    ? getBaseAccuracyFromCurve(subjectCurve, topic.gradeLevel)
+    : getBaseAccuracy(profile, topic.gradeLevel);
 
   // Check for misconceptions
   for (const m of profile.misconceptions) {
@@ -69,20 +72,26 @@ export function resolveAnswer(
   return { correct, responseMs, confidence, hintsToRequest };
 }
 
+import type { AbilityCurve } from "./types.js";
+
 function getBaseAccuracy(profile: LearnerProfile, gradeLevel: number): number {
+  return getBaseAccuracyFromCurve(profile.abilityCurve, gradeLevel);
+}
+
+function getBaseAccuracyFromCurve(curve: AbilityCurve, gradeLevel: number): number {
   // Direct lookup
-  if (gradeLevel in profile.abilityCurve) {
-    return profile.abilityCurve[gradeLevel];
+  if (gradeLevel in curve) {
+    return curve[gradeLevel];
   }
 
   // Interpolate between nearest defined grade levels
-  const grades = Object.keys(profile.abilityCurve)
+  const grades = Object.keys(curve)
     .map(Number)
     .sort((a, b) => a - b);
 
   if (grades.length === 0) return 0.5;
-  if (gradeLevel <= grades[0]) return profile.abilityCurve[grades[0]];
-  if (gradeLevel >= grades[grades.length - 1]) return profile.abilityCurve[grades[grades.length - 1]];
+  if (gradeLevel <= grades[0]) return curve[grades[0]];
+  if (gradeLevel >= grades[grades.length - 1]) return curve[grades[grades.length - 1]];
 
   // Find surrounding grades
   let lower = grades[0];
@@ -92,10 +101,10 @@ function getBaseAccuracy(profile: LearnerProfile, gradeLevel: number): number {
     if (g >= gradeLevel && g < upper) upper = g;
   }
 
-  if (lower === upper) return profile.abilityCurve[lower];
+  if (lower === upper) return curve[lower];
 
   const t = (gradeLevel - lower) / (upper - lower);
-  return profile.abilityCurve[lower] * (1 - t) + profile.abilityCurve[upper] * t;
+  return curve[lower] * (1 - t) + curve[upper] * t;
 }
 
 function resolveConfidence(

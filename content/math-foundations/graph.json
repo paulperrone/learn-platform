@@ -298,7 +298,7 @@
     {
       "id": "multiply-within-100",
       "name": "Multiply Within 100",
-      "description": "Fluently multiply within 100 (multiplication facts to 10\u00d710).",
+      "description": "Fluently multiply within 100 (multiplication facts to 10×10).",
       "gradeLevel": 3,
       "standardCode": "3.OA.7",
       "strand": "operations-multiplication",
@@ -528,7 +528,7 @@
     {
       "id": "multiply-fraction-by-whole",
       "name": "Multiply Fraction by Whole Number",
-      "description": "Multiply a fraction by a whole number (e.g., 3 \u00d7 2/5).",
+      "description": "Multiply a fraction by a whole number (e.g., 3 × 2/5).",
       "gradeLevel": 4,
       "standardCode": "4.NF.4",
       "strand": "fractions",
@@ -678,7 +678,7 @@
     {
       "id": "volume",
       "name": "Volume",
-      "description": "Find volumes of right rectangular prisms. Use V = l \u00d7 w \u00d7 h.",
+      "description": "Find volumes of right rectangular prisms. Use V = l × w × h.",
       "gradeLevel": 5,
       "standardCode": "5.MD.3",
       "strand": "geometry",
@@ -930,732 +930,878 @@
     {
       "from": "count-to-10",
       "to": "count-to-20",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "count-to-20",
       "to": "count-to-100",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "count-to-10",
       "to": "compare-numbers-k",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "count-to-10",
       "to": "add-within-5",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "count-to-10",
       "to": "subtract-within-5",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "add-within-5",
       "to": "add-within-10",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "subtract-within-5",
       "to": "subtract-within-10",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "count-to-10",
       "to": "teen-numbers",
-      "strength": 0.8
+      "strength": 0.8,
+      "type": "required"
     },
     {
       "from": "count-to-20",
       "to": "teen-numbers",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "add-within-10",
       "to": "add-within-20",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "subtract-within-10",
       "to": "subtract-within-20",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "teen-numbers",
       "to": "add-within-20",
-      "strength": 0.7
+      "strength": 0.7,
+      "type": "required"
     },
     {
       "from": "add-within-20",
       "to": "add-subtract-word-problems-1",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "subtract-within-20",
       "to": "add-subtract-word-problems-1",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "teen-numbers",
       "to": "place-value-tens-ones",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "count-to-100",
       "to": "place-value-tens-ones",
-      "strength": 0.8
+      "strength": 0.8,
+      "type": "required"
     },
     {
       "from": "place-value-tens-ones",
       "to": "compare-two-digit",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "compare-numbers-k",
       "to": "compare-two-digit",
-      "strength": 0.7
+      "strength": 0.7,
+      "type": "required"
     },
     {
       "from": "add-within-20",
       "to": "add-within-100",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "place-value-tens-ones",
       "to": "add-within-100",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "count-to-100",
       "to": "skip-count-2-5-10",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "add-within-10",
       "to": "skip-count-2-5-10",
-      "strength": 0.6
+      "strength": 0.6,
+      "type": "required"
     },
     {
       "from": "add-within-100",
       "to": "add-within-100-fluent",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "subtract-within-20",
       "to": "subtract-within-100-fluent",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "place-value-tens-ones",
       "to": "subtract-within-100-fluent",
-      "strength": 0.8
+      "strength": 0.8,
+      "type": "required"
     },
     {
       "from": "add-within-100-fluent",
       "to": "add-within-1000",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "place-value-tens-ones",
       "to": "place-value-hundreds",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "place-value-hundreds",
       "to": "add-within-1000",
-      "strength": 0.8
+      "strength": 0.8,
+      "type": "required"
     },
     {
       "from": "subtract-within-100-fluent",
       "to": "subtract-within-1000",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "place-value-hundreds",
       "to": "subtract-within-1000",
-      "strength": 0.8
+      "strength": 0.8,
+      "type": "required"
     },
     {
       "from": "skip-count-2-5-10",
       "to": "intro-arrays",
-      "strength": 0.7
+      "strength": 0.7,
+      "type": "required"
     },
     {
       "from": "add-within-20",
       "to": "intro-arrays",
-      "strength": 0.8
+      "strength": 0.8,
+      "type": "required"
     },
     {
       "from": "count-to-20",
       "to": "odd-even",
-      "strength": 0.8
+      "strength": 0.8,
+      "type": "required"
     },
     {
       "from": "skip-count-2-5-10",
       "to": "odd-even",
-      "strength": 0.6
+      "strength": 0.6,
+      "type": "required"
     },
     {
       "from": "intro-arrays",
       "to": "multiply-within-100",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "skip-count-2-5-10",
       "to": "multiply-within-100",
-      "strength": 0.7
+      "strength": 0.7,
+      "type": "required"
     },
     {
       "from": "multiply-within-100",
       "to": "divide-within-100",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "multiply-within-100",
       "to": "multiply-word-problems",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "divide-within-100",
       "to": "division-word-problems",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "multiply-within-100",
       "to": "properties-of-multiplication",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "multiply-within-100",
       "to": "patterns-arithmetic",
-      "strength": 0.7
+      "strength": 0.7,
+      "type": "required"
     },
     {
       "from": "add-within-100-fluent",
       "to": "patterns-arithmetic",
-      "strength": 0.5
+      "strength": 0.5,
+      "type": "required"
     },
     {
       "from": "place-value-hundreds",
       "to": "place-value-rounding",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "add-within-1000",
       "to": "multi-digit-add-sub",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "subtract-within-1000",
       "to": "multi-digit-add-sub",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "place-value-tens-ones",
       "to": "intro-fractions",
-      "strength": 0.5
+      "strength": 0.5,
+      "type": "required"
     },
     {
       "from": "divide-within-100",
       "to": "intro-fractions",
-      "strength": 0.6
+      "strength": 0.6,
+      "type": "required"
     },
     {
       "from": "intro-fractions",
       "to": "fractions-number-line",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "fractions-number-line",
       "to": "equivalent-fractions-3",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "fractions-number-line",
       "to": "compare-fractions-3",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "measure-length-nonstandard",
       "to": "measure-length-standard",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "multiply-within-100",
       "to": "area-intro",
-      "strength": 0.5
+      "strength": 0.5,
+      "type": "required"
     },
     {
       "from": "measure-length-standard",
       "to": "perimeter",
-      "strength": 0.8
+      "strength": 0.8,
+      "type": "required"
     },
     {
       "from": "add-within-100-fluent",
       "to": "perimeter",
-      "strength": 0.5
+      "strength": 0.5,
+      "type": "required"
     },
     {
       "from": "area-intro",
       "to": "area-multiply",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "multiply-within-100",
       "to": "area-multiply",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "tell-time-hour-half",
       "to": "tell-time-minute",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "add-within-100-fluent",
       "to": "money-coins-bills",
-      "strength": 0.7
+      "strength": 0.7,
+      "type": "required"
     },
     {
       "from": "multiply-within-100",
       "to": "multi-digit-multiply",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "properties-of-multiplication",
       "to": "multi-digit-multiply",
-      "strength": 0.8
+      "strength": 0.8,
+      "type": "required"
     },
     {
       "from": "multi-digit-add-sub",
       "to": "multi-digit-multiply",
-      "strength": 0.6
+      "strength": 0.6,
+      "type": "required"
     },
     {
       "from": "divide-within-100",
       "to": "long-division",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "multi-digit-add-sub",
       "to": "long-division",
-      "strength": 0.7
+      "strength": 0.7,
+      "type": "required"
     },
     {
       "from": "multiply-within-100",
       "to": "factors-multiples",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "divide-within-100",
       "to": "factors-multiples",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "equivalent-fractions-3",
       "to": "equivalent-fractions-4",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "multiply-within-100",
       "to": "equivalent-fractions-4",
-      "strength": 0.5
+      "strength": 0.5,
+      "type": "required"
     },
     {
       "from": "equivalent-fractions-4",
       "to": "compare-fractions-4",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "compare-fractions-3",
       "to": "compare-fractions-4",
-      "strength": 0.8
+      "strength": 0.8,
+      "type": "required"
     },
     {
       "from": "intro-fractions",
       "to": "add-subtract-fractions",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "add-within-20",
       "to": "add-subtract-fractions",
-      "strength": 0.3
+      "strength": 0.3,
+      "type": "required"
     },
     {
       "from": "intro-fractions",
       "to": "multiply-fraction-by-whole",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "multiply-within-100",
       "to": "multiply-fraction-by-whole",
-      "strength": 0.5
+      "strength": 0.5,
+      "type": "required"
     },
     {
       "from": "equivalent-fractions-4",
       "to": "decimals-intro",
-      "strength": 0.8
+      "strength": 0.8,
+      "type": "required"
     },
     {
       "from": "place-value-hundreds",
       "to": "decimals-intro",
-      "strength": 0.7
+      "strength": 0.7,
+      "type": "required"
     },
     {
       "from": "shapes-2d-k",
       "to": "angles-intro",
-      "strength": 0.5
+      "strength": 0.5,
+      "type": "required"
     },
     {
       "from": "measure-length-standard",
       "to": "angles-intro",
-      "strength": 0.3
+      "strength": 0.3,
+      "type": "required"
     },
     {
       "from": "shapes-2d-k",
       "to": "line-symmetry",
-      "strength": 0.7
+      "strength": 0.7,
+      "type": "required"
     },
     {
       "from": "multi-digit-multiply",
       "to": "multi-step-word-problems",
-      "strength": 0.8
+      "strength": 0.8,
+      "type": "required"
     },
     {
       "from": "long-division",
       "to": "multi-step-word-problems",
-      "strength": 0.8
+      "strength": 0.8,
+      "type": "required"
     },
     {
       "from": "multiply-word-problems",
       "to": "multi-step-word-problems",
-      "strength": 0.7
+      "strength": 0.7,
+      "type": "required"
     },
     {
       "from": "decimals-intro",
       "to": "place-value-decimals",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "multi-digit-multiply",
       "to": "multiply-multi-digit",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "long-division",
       "to": "divide-multi-digit",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "equivalent-fractions-4",
       "to": "add-subtract-fractions-unlike",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "add-subtract-fractions",
       "to": "add-subtract-fractions-unlike",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "multiply-fraction-by-whole",
       "to": "multiply-fractions",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "equivalent-fractions-4",
       "to": "multiply-fractions",
-      "strength": 0.6
+      "strength": 0.6,
+      "type": "required"
     },
     {
       "from": "multiply-fractions",
       "to": "divide-fractions",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "divide-within-100",
       "to": "divide-fractions",
-      "strength": 0.5
+      "strength": 0.5,
+      "type": "required"
     },
     {
       "from": "place-value-decimals",
       "to": "decimal-operations",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "multi-digit-add-sub",
       "to": "decimal-operations",
-      "strength": 0.5
+      "strength": 0.5,
+      "type": "required"
     },
     {
       "from": "multi-digit-multiply",
       "to": "order-of-operations",
-      "strength": 0.7
+      "strength": 0.7,
+      "type": "required"
     },
     {
       "from": "add-subtract-fractions-unlike",
       "to": "order-of-operations",
-      "strength": 0.3
+      "strength": 0.3,
+      "type": "required"
     },
     {
       "from": "order-of-operations",
       "to": "variables-expressions",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "place-value-decimals",
       "to": "coordinate-plane",
-      "strength": 0.3
+      "strength": 0.3,
+      "type": "required"
     },
     {
       "from": "add-within-100-fluent",
       "to": "coordinate-plane",
-      "strength": 0.5
+      "strength": 0.5,
+      "type": "required"
     },
     {
       "from": "multiply-multi-digit",
       "to": "volume",
-      "strength": 0.8
+      "strength": 0.8,
+      "type": "required"
     },
     {
       "from": "area-multiply",
       "to": "volume",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "shapes-2d-k",
       "to": "classify-2d-shapes",
-      "strength": 0.8
+      "strength": 0.8,
+      "type": "required"
     },
     {
       "from": "angles-intro",
       "to": "classify-2d-shapes",
-      "strength": 0.7
+      "strength": 0.7,
+      "type": "required"
     },
     {
       "from": "line-symmetry",
       "to": "classify-2d-shapes",
-      "strength": 0.3
+      "strength": 0.3,
+      "type": "required"
     },
     {
       "from": "add-subtract-fractions-unlike",
       "to": "line-plots",
-      "strength": 0.6
+      "strength": 0.6,
+      "type": "required"
     },
     {
       "from": "bar-graphs-picture-graphs",
       "to": "line-plots",
-      "strength": 0.7
+      "strength": 0.7,
+      "type": "required"
     },
     {
       "from": "multiply-multi-digit",
       "to": "unit-conversion",
-      "strength": 0.5
+      "strength": 0.5,
+      "type": "required"
     },
     {
       "from": "divide-multi-digit",
       "to": "unit-conversion",
-      "strength": 0.5
+      "strength": 0.5,
+      "type": "required"
     },
     {
       "from": "decimal-operations",
       "to": "unit-conversion",
-      "strength": 0.6
+      "strength": 0.6,
+      "type": "required"
     },
     {
       "from": "measure-length-standard",
       "to": "unit-conversion",
-      "strength": 0.7
+      "strength": 0.7,
+      "type": "required"
     },
     {
       "from": "factors-multiples",
       "to": "prime-composite-numbers",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "factors-multiples",
       "to": "greatest-common-factor",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "prime-composite-numbers",
       "to": "greatest-common-factor",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "factors-multiples",
       "to": "least-common-multiple",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "prime-composite-numbers",
       "to": "least-common-multiple",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "intro-fractions",
       "to": "improper-fractions-mixed-numbers",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "fractions-number-line",
       "to": "improper-fractions-mixed-numbers",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "add-subtract-fractions",
       "to": "add-subtract-mixed-numbers",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "improper-fractions-mixed-numbers",
       "to": "add-subtract-mixed-numbers",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "add-subtract-fractions-unlike",
       "to": "add-subtract-mixed-numbers-unlike",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "add-subtract-mixed-numbers",
       "to": "add-subtract-mixed-numbers-unlike",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "multiply-fractions",
       "to": "multiply-mixed-numbers",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "improper-fractions-mixed-numbers",
       "to": "multiply-mixed-numbers",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "decimals-intro",
       "to": "fraction-decimal-equivalence",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "equivalent-fractions-4",
       "to": "fraction-decimal-equivalence",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "decimals-intro",
       "to": "compare-decimals",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "place-value-decimals",
       "to": "compare-decimals",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "place-value-decimals",
       "to": "round-decimals",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "place-value-rounding",
       "to": "round-decimals",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "place-value-decimals",
       "to": "powers-of-ten",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "multiply-within-100",
       "to": "powers-of-ten",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "powers-of-ten",
       "to": "exponents-intro",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "multiply-within-100",
       "to": "exponents-intro",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "place-value-rounding",
       "to": "estimation-addition-subtraction",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "add-within-1000",
       "to": "estimation-addition-subtraction",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "place-value-rounding",
       "to": "estimation-multiplication-division",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "multiply-within-100",
       "to": "estimation-multiplication-division",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "shapes-2d-k",
       "to": "points-lines-rays",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "points-lines-rays",
       "to": "parallel-perpendicular-lines",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "angles-intro",
       "to": "classify-triangles",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "classify-2d-shapes",
       "to": "classify-triangles",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "area-multiply",
       "to": "area-composite-shapes",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "perimeter",
       "to": "area-composite-shapes",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "add-within-1000",
       "to": "mean-median-mode",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "long-division",
       "to": "mean-median-mode",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "patterns-arithmetic",
       "to": "number-patterns-sequences",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "multiply-within-100",
       "to": "number-patterns-sequences",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "order-of-operations",
       "to": "numerical-expressions-grouping",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "ela-k5:key-details",

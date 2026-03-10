@@ -1,0 +1,22 @@
+{
+  "id": "multi-all-subjects",
+  "name": "All Subjects",
+  "description": "Age 13, works across all 4 subjects, tests session mix diversity",
+  "age": 13,
+  "abilityCurve": {
+    "0": 0.92,
+    "1": 0.88,
+    "2": 0.83,
+    "3": 0.78,
+    "4": 0.68,
+    "5": 0.55,
+    "6": 0.45,
+    "7": 0.35,
+    "8": 0.28
+  },
+  "responseSpeed": { "meanMs": 6500, "stddevMs": 2500 },
+  "hintSeekingProbability": 0.15,
+  "confidenceTendency": "calibrated",
+  "misconceptions": [],
+  "subjects": ["math-foundations", "math-middle", "ela-k5", "us-history"]
+}

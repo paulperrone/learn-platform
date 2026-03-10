@@ -5,7 +5,7 @@ import type { DB } from "../../packages/api/src/db/index.js";
 import { createSessionService } from "../../packages/api/src/services/session.js";
 import { createDiagnosticService } from "../../packages/api/src/services/diagnostic.js";
 import { createSRSService } from "../../packages/api/src/services/srs.js";
-import { createSimulationDb, createSimUser } from "./db-setup.js";
+import { createSimulationDb, createMultiSubjectSimulationDb, createSimUser } from "./db-setup.js";
 import { resolveAnswer } from "./answer-engine.js";
 import { EventLogger } from "./event-logger.js";
 import { SeededRNG } from "./prng.js";
@@ -93,6 +93,7 @@ export class SimulationRunner {
   private simulatedTimeMs!: number;
   private simulationStartMs!: number;
   private topicGradeLevels = new Map<string, number>();
+  private topicSubjects = new Map<string, string>();
   private totalTopicCount = 0;
   private sessionSummaries: SessionSummary[] = [];
   private stateSnapshots: StateSnapshot[] = [];
@@ -111,17 +112,21 @@ export class SimulationRunner {
     const mathRandomRng = new SeededRNG(this.config.seed + 1000000);
     setSeededRandom(() => mathRandomRng.next());
 
-    console.log(`[sim] Setting up DB for ${this.config.subject}...`);
-    this.db = createSimulationDb(this.config.subject);
+    const subjects = this.config.subjects ?? [this.config.subject];
+    console.log(`[sim] Setting up DB for ${subjects.join(", ")}...`);
+    this.db = subjects.length > 1
+      ? createMultiSubjectSimulationDb(subjects)
+      : createSimulationDb(this.config.subject);
 
     // Create simulated user
     this.userId = `sim-${this.config.profile.id}-${this.config.seed}`;
     createSimUser(this.db, this.userId, this.config.profile.name, this.config.profile.age);
 
-    // Cache topic grade levels for the answer engine
+    // Cache topic grade levels and subject assignments for the answer engine
     const topics = await this.db.select().from(schema.topics);
     for (const t of topics) {
       this.topicGradeLevels.set(t.id, t.gradeLevel);
+      this.topicSubjects.set(t.id, t.subjectId);
     }
     this.totalTopicCount = topics.length;
 
@@ -129,9 +134,14 @@ export class SimulationRunner {
     this.simulatedTimeMs = new Date("2026-01-15T08:00:00Z").getTime();
     this.simulationStartMs = this.simulatedTimeMs;
 
-    console.log(`[sim] Running diagnostic for ${this.config.profile.id}...`);
-    const diagnosticQuestions = await this.runDiagnostic();
-    console.log(`[sim] Diagnostic complete: ${diagnosticQuestions} questions asked`);
+    // Run diagnostic for each subject
+    let diagnosticQuestions = 0;
+    for (const subj of subjects) {
+      console.log(`[sim] Running diagnostic for ${this.config.profile.id} (${subj})...`);
+      const qs = await this.runDiagnostic(subj);
+      diagnosticQuestions += qs;
+      console.log(`[sim] Diagnostic for ${subj}: ${qs} questions asked`);
+    }
 
     // Fix diagnostic materialization: mastered topics get state=Review but stability=0,
     // which causes FSRS to produce NaN on next scheduling. Set reasonable defaults.
@@ -238,13 +248,13 @@ export class SimulationRunner {
     return this.diagnosticResult;
   }
 
-  private async runDiagnostic(): Promise<number> {
+  private async runDiagnostic(subjectId?: string): Promise<number> {
     setSimulatedTime(this.simulatedTimeMs);
 
     const diagnostic = createDiagnosticService(this.db);
     const startResult = await diagnostic.startDiagnostic({
       userId: this.userId,
-      subjectId: this.getSubjectId(),
+      subjectId: subjectId ?? this.getSubjectId(),
     });
 
     if ("error" in startResult) {
@@ -268,7 +278,7 @@ export class SimulationRunner {
       const answer = resolveAnswer(
         this.rng,
         this.config.profile,
-        { id: topicId, gradeLevel },
+        { id: topicId, gradeLevel, subjectId: this.topicSubjects.get(topicId) },
         problem.difficulty ?? "medium",
         (problem as any).cognitiveDemand ?? null,
         "diagnostic",
@@ -528,7 +538,7 @@ export class SimulationRunner {
       const answerResult = resolveAnswer(
         this.rng,
         this.config.profile,
-        { id: topicId, gradeLevel },
+        { id: topicId, gradeLevel, subjectId: this.topicSubjects.get(topicId) },
         problem.difficulty ?? "medium",
         problem.cognitiveDemand ?? (currentItem as any).cognitiveDemand ?? null,
         (currentItem as any).phase ?? "independent",
@@ -620,11 +630,7 @@ export class SimulationRunner {
   }
 
   private getSubjectId(): string {
-    // Map subject name to ID
-    const subjectMap: Record<string, string> = {
-      "math-foundations": "math-foundations",
-    };
-    return subjectMap[this.config.subject] ?? this.config.subject;
+    return this.config.subject;
   }
 
   /** Get the time interval before session i (0-indexed) */

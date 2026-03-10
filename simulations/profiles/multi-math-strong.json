@@ -1,0 +1,22 @@
+{
+  "id": "multi-math-strong",
+  "name": "Strong Math (K-8)",
+  "description": "Age 14, strong math across K-8 — control profile for multi-subject math",
+  "age": 14,
+  "abilityCurve": {
+    "0": 0.98,
+    "1": 0.97,
+    "2": 0.95,
+    "3": 0.93,
+    "4": 0.90,
+    "5": 0.88,
+    "6": 0.82,
+    "7": 0.75,
+    "8": 0.65
+  },
+  "responseSpeed": { "meanMs": 5000, "stddevMs": 2000 },
+  "hintSeekingProbability": 0.05,
+  "confidenceTendency": "calibrated",
+  "misconceptions": [],
+  "subjects": ["math-foundations", "math-middle"]
+}

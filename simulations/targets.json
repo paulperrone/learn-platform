@@ -1,7 +1,7 @@
 {
-  "version": 3,
-  "lastUpdated": "2026-03-10T02:15:00Z",
-  "lastUpdatedReason": "Add 4 usage-habit profiles (binge, weekend, fading, completion-driven). Expand from 20 to 24 profiles.",
+  "version": 4,
+  "lastUpdated": "2026-03-10T18:15:00Z",
+  "lastUpdatedReason": "Add 5 multi-subject profiles (multi-math-strong, multi-average, multi-strong-math-weak-ela, multi-history-focus, multi-all-subjects). Update targets from 24 to 29 profile expectations.",
   "systems": {
     "mastery_convergence": {
       "name": "Mastery Convergence",
@@ -443,6 +443,61 @@
       "expected_remediation_events": "low",
       "mastery_growth_rate": 0.015,
       "difficulty_convergence_by": 150
+    },
+    "multi-math-strong": {
+      "description": "Age 14, strong math K-8, control for multi-subject math expansion",
+      "behavioral_signature": "Runs diagnostic on both math-foundations and math-middle. Placed at grade 5 frontier in foundations, grade 6-7 in middle. Sessions draw from both subjects. Should show continued progression into grade 6-8 content without frontier exhaustion. Presentation drifts to advanced.",
+      "min_final_mastery": 0.35,
+      "max_final_mastery": 0.80,
+      "expected_frontier_grade": 7,
+      "expected_presentation_center": "advanced",
+      "expected_remediation_events": "none",
+      "mastery_growth_rate": 0.005,
+      "difficulty_convergence_by": 100
+    },
+    "multi-average": {
+      "description": "Age 11, average ability across math + ELA, tests multi-subject session mix",
+      "behavioral_signature": "Diagnostics on math-foundations and ela-k5. Sessions interleave topics from both subjects. Should show parallel mastery growth in both subjects. ELA topics at lower grades should progress quickly. Standard presentation.",
+      "min_final_mastery": 0.30,
+      "max_final_mastery": 0.70,
+      "expected_frontier_grade": 3,
+      "expected_presentation_center": "standard",
+      "expected_remediation_events": "moderate",
+      "mastery_growth_rate": 0.015,
+      "difficulty_convergence_by": 200
+    },
+    "multi-strong-math-weak-ela": {
+      "description": "Age 10, strong math but weak ELA, tests cross-discipline prerequisite blocking",
+      "behavioral_signature": "Strong in math (90%+), weak in ELA (60% at grade 0). ELA diagnostic places at grade 0-1. Math word problem topics gated by ELA reading prerequisites should remain blocked until ELA mastery is established. Should show asymmetric mastery: high math, low ELA.",
+      "min_final_mastery": 0.25,
+      "max_final_mastery": 0.65,
+      "expected_frontier_grade": 3,
+      "expected_presentation_center": "intermediate",
+      "expected_remediation_events": "moderate",
+      "mastery_growth_rate": 0.01,
+      "difficulty_convergence_by": 300
+    },
+    "multi-history-focus": {
+      "description": "Age 12, ELA + US History, tests context-layered discipline progression",
+      "behavioral_signature": "Diagnostics on ela-k5 and us-history. History uses context-layered model: breadth-first at survey depth, then contextual depth. ELA provides reading comprehension prerequisites for history primary source analysis. Should show history topics progressing breadth-first before depth spiral.",
+      "min_final_mastery": 0.25,
+      "max_final_mastery": 0.65,
+      "expected_frontier_grade": 4,
+      "expected_presentation_center": "standard",
+      "expected_remediation_events": "low",
+      "mastery_growth_rate": 0.01,
+      "difficulty_convergence_by": 200
+    },
+    "multi-all-subjects": {
+      "description": "Age 13, all 4 subjects, tests full cross-discipline integration and session diversity",
+      "behavioral_signature": "Diagnostics on all 4 subjects. Sessions draw from math, ELA, and history. Should show diverse topic selection across subjects. Cross-discipline prerequisites respected. Mastery spread across all subjects rather than deep in one. Standard presentation.",
+      "min_final_mastery": 0.20,
+      "max_final_mastery": 0.55,
+      "expected_frontier_grade": 4,
+      "expected_presentation_center": "standard",
+      "expected_remediation_events": "moderate",
+      "mastery_growth_rate": 0.01,
+      "difficulty_convergence_by": 250
     }
   },
   "content_quality": {

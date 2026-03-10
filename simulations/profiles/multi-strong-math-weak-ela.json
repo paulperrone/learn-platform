@@ -1,0 +1,29 @@
+{
+  "id": "multi-strong-math-weak-ela",
+  "name": "Strong Math, Weak ELA",
+  "description": "Age 10, strong math (90%+) but weak ELA (60%), tests cross-discipline prerequisites",
+  "age": 10,
+  "abilityCurve": {
+    "0": 0.92,
+    "1": 0.90,
+    "2": 0.85,
+    "3": 0.80,
+    "4": 0.70,
+    "5": 0.55
+  },
+  "responseSpeed": { "meanMs": 6500, "stddevMs": 2500 },
+  "hintSeekingProbability": 0.15,
+  "confidenceTendency": "calibrated",
+  "misconceptions": [],
+  "subjects": ["math-foundations", "ela-k5"],
+  "subjectAbility": {
+    "ela-k5": {
+      "0": 0.70,
+      "1": 0.60,
+      "2": 0.50,
+      "3": 0.40,
+      "4": 0.30,
+      "5": 0.25
+    }
+  }
+}

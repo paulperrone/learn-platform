@@ -1309,3 +1309,23 @@ Tag each target in `targets.json` with `signal_source: "engine" | "content" | "b
 
 **Why separate directory:** Avoids merge conflicts with hand-authored content. `problems/` is human-curated, `problems-generated/` is machine output. Both are in git as source of truth.
 - Total target: ~300 topics across 3 subjects
+
+---
+
+### 2026-03-10: Multi-subject simulation via in-memory DB composition
+
+**Source:** Plan 018 Phase 6
+
+**Context:** Simulations were single-subject (math-foundations only). Multi-subject profiles needed to test cross-discipline prerequisites (ELA → math word problems, ELA → history primary sources) and validate the context-layered progression model for US History.
+
+**Decision:** `createMultiSubjectSimulationDb(subjects: string[])` loads all specified subjects into one in-memory SQLite DB. Cross-subject prerequisite edges (format `subject:topic-id`) are resolved by stripping the prefix. Edges referencing topics not loaded are silently skipped. Diagnostic runs once per subject. Session service automatically spans all loaded subjects via frontier computation.
+
+**Why:**
+- Session service is already subject-agnostic — it works on whatever's in the DB
+- Two-phase edge insertion (all topics first, then all edges) handles cross-subject FK ordering
+- Skipping dangling edges makes single-subject mode work without changes
+- Profile `subjects` field makes multi-subject opt-in, preserving backward compatibility
+
+**Alternatives rejected:**
+- Separate simulation per subject + aggregate: Misses cross-discipline prerequisites and unified session mix
+- Subject routing in session service: Over-engineering when the DB composition approach works cleanly

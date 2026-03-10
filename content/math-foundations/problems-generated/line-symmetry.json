@@ -89,7 +89,7 @@
     "answer": "2",
     "hints": [
       "Imagine folding a rectangle in half.",
-      "Can you fold it along the diagonals and get matching halves?"
+      "Would a line along the diagonals divide it into matching halves?"
     ],
     "solution": "A non-square rectangle has exactly 2 lines of symmetry: one vertical (through the middle of the long sides) and one horizontal (through the middle of the short sides). The diagonals are NOT lines of symmetry.",
     "cognitiveDemand": "conceptual",

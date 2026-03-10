@@ -1160,867 +1160,1040 @@
     {
       "from": "math-foundations:decimal-operations",
       "to": "integers-intro",
-      "strength": 0.8
+      "strength": 0.8,
+      "type": "required"
     },
     {
       "from": "math-foundations:decimal-operations",
       "to": "decimal-division-6",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "math-foundations:divide-multi-digit",
       "to": "divide-multi-digit-6",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "math-foundations:fraction-decimal-equivalence",
       "to": "rational-numbers-intro",
-      "strength": 0.8
+      "strength": 0.8,
+      "type": "required"
     },
     {
       "from": "math-foundations:divide-fractions",
       "to": "rational-numbers-intro",
-      "strength": 0.7
+      "strength": 0.7,
+      "type": "required"
     },
     {
       "from": "math-foundations:greatest-common-factor",
       "to": "gcf-lcm-applications",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "math-foundations:least-common-multiple",
       "to": "gcf-lcm-applications",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "integers-intro",
       "to": "absolute-value",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "integers-intro",
       "to": "compare-order-integers",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "integers-intro",
       "to": "number-line-opposites",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "absolute-value",
       "to": "compare-order-integers",
-      "strength": 0.7
+      "strength": 0.7,
+      "type": "required"
     },
     {
       "from": "compare-order-integers",
       "to": "integer-addition",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "number-line-opposites",
       "to": "integer-addition",
-      "strength": 0.8
+      "strength": 0.8,
+      "type": "required"
     },
     {
       "from": "integer-addition",
       "to": "integer-subtraction",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "integer-subtraction",
       "to": "integer-multiplication",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "integer-multiplication",
       "to": "integer-division",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "rational-numbers-intro",
       "to": "compare-order-rationals",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "compare-order-integers",
       "to": "compare-order-rationals",
-      "strength": 0.7
+      "strength": 0.7,
+      "type": "required"
     },
     {
       "from": "integer-subtraction",
       "to": "add-subtract-rationals",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "compare-order-rationals",
       "to": "add-subtract-rationals",
-      "strength": 0.8
+      "strength": 0.8,
+      "type": "required"
     },
     {
       "from": "integer-division",
       "to": "multiply-divide-rationals",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "add-subtract-rationals",
       "to": "multiply-divide-rationals",
-      "strength": 0.8
+      "strength": 0.8,
+      "type": "required"
     },
     {
       "from": "multiply-divide-rationals",
       "to": "convert-rational-forms",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "multiply-divide-rationals",
       "to": "operations-rational-practice",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "convert-rational-forms",
       "to": "operations-rational-practice",
-      "strength": 0.7
+      "strength": 0.7,
+      "type": "required"
     },
     {
       "from": "integer-multiplication",
       "to": "square-roots-intro",
-      "strength": 0.8
+      "strength": 0.8,
+      "type": "required"
     },
     {
       "from": "math-foundations:exponents-intro",
       "to": "square-roots-intro",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "math-foundations:divide-fractions",
       "to": "ratios-intro",
-      "strength": 0.6
+      "strength": 0.6,
+      "type": "required"
     },
     {
       "from": "math-foundations:decimal-operations",
       "to": "ratios-intro",
-      "strength": 0.7
+      "strength": 0.7,
+      "type": "required"
     },
     {
       "from": "math-foundations:multiply-fractions",
       "to": "equivalent-ratios",
-      "strength": 0.6
+      "strength": 0.6,
+      "type": "required"
     },
     {
       "from": "math-foundations:fraction-decimal-equivalence",
       "to": "percent-intro",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "math-foundations:unit-conversion",
       "to": "unit-rates",
-      "strength": 0.6
+      "strength": 0.6,
+      "type": "required"
     },
     {
       "from": "ratios-intro",
       "to": "equivalent-ratios",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "ratios-intro",
       "to": "unit-rates",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "equivalent-ratios",
       "to": "ratio-tables",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "unit-rates",
       "to": "ratio-word-problems",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "ratio-tables",
       "to": "ratio-word-problems",
-      "strength": 0.8
+      "strength": 0.8,
+      "type": "required"
     },
     {
       "from": "equivalent-ratios",
       "to": "proportions-intro",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "unit-rates",
       "to": "proportions-intro",
-      "strength": 0.8
+      "strength": 0.8,
+      "type": "required"
     },
     {
       "from": "proportions-intro",
       "to": "proportional-relationships",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "proportional-relationships",
       "to": "constant-of-proportionality",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "ratios-intro",
       "to": "percent-intro",
-      "strength": 0.8
+      "strength": 0.8,
+      "type": "required"
     },
     {
       "from": "percent-intro",
       "to": "percent-of-a-number",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "percent-of-a-number",
       "to": "percent-equations",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "percent-equations",
       "to": "percent-increase-decrease",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "percent-increase-decrease",
       "to": "tax-tip-markup",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "percent-increase-decrease",
       "to": "simple-interest",
-      "strength": 0.8
+      "strength": 0.8,
+      "type": "required"
     },
     {
       "from": "percent-increase-decrease",
       "to": "percent-error",
-      "strength": 0.8
+      "strength": 0.8,
+      "type": "required"
     },
     {
       "from": "proportions-intro",
       "to": "scale-drawings",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "multiply-divide-rationals",
       "to": "unit-rates-complex",
-      "strength": 0.8
+      "strength": 0.8,
+      "type": "required"
     },
     {
       "from": "unit-rates",
       "to": "unit-rates-complex",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "math-foundations:variables-expressions",
       "to": "algebraic-expressions-6",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "math-foundations:order-of-operations",
       "to": "evaluate-expressions-6",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "math-foundations:numerical-expressions-grouping",
       "to": "evaluate-expressions-6",
-      "strength": 0.8
+      "strength": 0.8,
+      "type": "required"
     },
     {
       "from": "math-foundations:exponents-intro",
       "to": "exponent-rules",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "algebraic-expressions-6",
       "to": "evaluate-expressions-6",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "evaluate-expressions-6",
       "to": "equivalent-expressions-6",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "equivalent-expressions-6",
       "to": "distributive-property",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "algebraic-expressions-6",
       "to": "one-step-equations-add-sub",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "one-step-equations-add-sub",
       "to": "one-step-equations-mult-div",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "one-step-equations-mult-div",
       "to": "one-step-inequalities",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "one-step-equations-mult-div",
       "to": "equations-word-problems-6",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "algebraic-expressions-6",
       "to": "dependent-independent-variables",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "one-step-equations-mult-div",
       "to": "two-step-equations",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "distributive-property",
       "to": "two-step-equations",
-      "strength": 0.8
+      "strength": 0.8,
+      "type": "required"
     },
     {
       "from": "two-step-equations",
       "to": "two-step-inequalities",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "one-step-inequalities",
       "to": "two-step-inequalities",
-      "strength": 0.8
+      "strength": 0.8,
+      "type": "required"
     },
     {
       "from": "distributive-property",
       "to": "combine-like-terms",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "combine-like-terms",
       "to": "expand-factor-expressions",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "two-step-equations",
       "to": "multi-step-equations",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "expand-factor-expressions",
       "to": "multi-step-equations",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "multi-step-equations",
       "to": "equations-no-one-infinite",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "two-step-equations",
       "to": "equations-word-problems-7",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "two-step-inequalities",
       "to": "equations-word-problems-7",
-      "strength": 0.7
+      "strength": 0.7,
+      "type": "required"
     },
     {
       "from": "exponent-rules",
       "to": "negative-exponents",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "exponent-rules",
       "to": "scientific-notation",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "scientific-notation",
       "to": "scientific-notation-operations",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "negative-exponents",
       "to": "scientific-notation-operations",
-      "strength": 0.7
+      "strength": 0.7,
+      "type": "required"
     },
     {
       "from": "convert-rational-forms",
       "to": "irrational-numbers",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "square-roots-intro",
       "to": "irrational-numbers",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "square-roots-intro",
       "to": "cube-roots",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "exponent-rules",
       "to": "cube-roots",
-      "strength": 0.7
+      "strength": 0.7,
+      "type": "required"
     },
     {
       "from": "math-foundations:coordinate-plane",
       "to": "coordinate-plane-four-quadrants",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "coordinate-plane-four-quadrants",
       "to": "graph-proportional-relationships",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "constant-of-proportionality",
       "to": "graph-proportional-relationships",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "integers-intro",
       "to": "coordinate-plane-four-quadrants",
-      "strength": 0.8
+      "strength": 0.8,
+      "type": "required"
     },
     {
       "from": "graph-proportional-relationships",
       "to": "slope-intro",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "add-subtract-rationals",
       "to": "slope-intro",
-      "strength": 0.7
+      "strength": 0.7,
+      "type": "required"
     },
     {
       "from": "slope-intro",
       "to": "slope-types",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "slope-intro",
       "to": "y-intercept",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "slope-types",
       "to": "slope-intercept-form",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "y-intercept",
       "to": "slope-intercept-form",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "slope-intercept-form",
       "to": "graph-linear-equations",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "slope-intercept-form",
       "to": "write-linear-equations",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "graph-linear-equations",
       "to": "compare-linear-functions",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "write-linear-equations",
       "to": "compare-linear-functions",
-      "strength": 0.8
+      "strength": 0.8,
+      "type": "required"
     },
     {
       "from": "dependent-independent-variables",
       "to": "functions-intro",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "coordinate-plane-four-quadrants",
       "to": "functions-intro",
-      "strength": 0.7
+      "strength": 0.7,
+      "type": "required"
     },
     {
       "from": "functions-intro",
       "to": "function-tables-rules",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "function-tables-rules",
       "to": "linear-vs-nonlinear",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "slope-intercept-form",
       "to": "linear-vs-nonlinear",
-      "strength": 0.8
+      "strength": 0.8,
+      "type": "required"
     },
     {
       "from": "linear-vs-nonlinear",
       "to": "qualitative-graphs",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "graph-linear-equations",
       "to": "systems-of-equations-intro",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "multi-step-equations",
       "to": "systems-of-equations-intro",
-      "strength": 0.8
+      "strength": 0.8,
+      "type": "required"
     },
     {
       "from": "systems-of-equations-intro",
       "to": "systems-substitution",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "systems-of-equations-intro",
       "to": "systems-elimination",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "systems-substitution",
       "to": "systems-word-problems",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "systems-elimination",
       "to": "systems-word-problems",
-      "strength": 0.8
+      "strength": 0.8,
+      "type": "required"
     },
     {
       "from": "math-foundations:area-composite-shapes",
       "to": "area-triangles",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "math-foundations:area-multiply",
       "to": "area-quadrilaterals",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "math-foundations:volume",
       "to": "volume-prisms",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "math-foundations:volume",
       "to": "surface-area-prisms",
-      "strength": 0.8
+      "strength": 0.8,
+      "type": "required"
     },
     {
       "from": "math-foundations:angles-intro",
       "to": "angle-relationships",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "math-foundations:classify-triangles",
       "to": "triangle-angle-sum",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "math-foundations:parallel-perpendicular-lines",
       "to": "parallel-lines-transversal",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "area-triangles",
       "to": "area-quadrilaterals",
-      "strength": 0.8
+      "strength": 0.8,
+      "type": "required"
     },
     {
       "from": "area-quadrilaterals",
       "to": "area-polygons",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "area-triangles",
       "to": "area-polygons",
-      "strength": 0.7
+      "strength": 0.7,
+      "type": "required"
     },
     {
       "from": "volume-prisms",
       "to": "surface-area-prisms",
-      "strength": 0.7
+      "strength": 0.7,
+      "type": "required"
     },
     {
       "from": "angle-relationships",
       "to": "triangle-angle-sum",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "triangle-angle-sum",
       "to": "exterior-angles",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "angle-relationships",
       "to": "parallel-lines-transversal",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "area-triangles",
       "to": "circumference",
-      "strength": 0.5
+      "strength": 0.5,
+      "type": "required"
     },
     {
       "from": "multiply-divide-rationals",
       "to": "circumference",
-      "strength": 0.6
+      "strength": 0.6,
+      "type": "required"
     },
     {
       "from": "circumference",
       "to": "area-circles",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "volume-prisms",
       "to": "cross-sections",
-      "strength": 0.8
+      "strength": 0.8,
+      "type": "required"
     },
     {
       "from": "area-circles",
       "to": "volume-cylinders",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "volume-prisms",
       "to": "volume-cylinders",
-      "strength": 0.8
+      "strength": 0.8,
+      "type": "required"
     },
     {
       "from": "volume-cylinders",
       "to": "volume-cones-spheres",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "square-roots-intro",
       "to": "pythagorean-theorem",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "triangle-angle-sum",
       "to": "pythagorean-theorem",
-      "strength": 0.8
+      "strength": 0.8,
+      "type": "required"
     },
     {
       "from": "pythagorean-theorem",
       "to": "pythagorean-converse",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "pythagorean-theorem",
       "to": "pythagorean-applications",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "coordinate-plane-four-quadrants",
       "to": "pythagorean-applications",
-      "strength": 0.7
+      "strength": 0.7,
+      "type": "required"
     },
     {
       "from": "coordinate-plane-four-quadrants",
       "to": "transformations-intro",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "angle-relationships",
       "to": "transformations-intro",
-      "strength": 0.7
+      "strength": 0.7,
+      "type": "required"
     },
     {
       "from": "transformations-intro",
       "to": "dilations",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "proportions-intro",
       "to": "dilations",
-      "strength": 0.8
+      "strength": 0.8,
+      "type": "required"
     },
     {
       "from": "dilations",
       "to": "congruence-similarity",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "transformations-intro",
       "to": "congruence-similarity",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "math-foundations:mean-median-mode",
       "to": "measures-of-center",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "math-foundations:bar-graphs-picture-graphs",
       "to": "dot-plots-histograms",
-      "strength": 0.8
+      "strength": 0.8,
+      "type": "required"
     },
     {
       "from": "math-foundations:line-plots",
       "to": "dot-plots-histograms",
-      "strength": 0.7
+      "strength": 0.7,
+      "type": "required"
     },
     {
       "from": "statistical-questions",
       "to": "measures-of-center",
-      "strength": 0.8
+      "strength": 0.8,
+      "type": "required"
     },
     {
       "from": "measures-of-center",
       "to": "measures-of-variability",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "measures-of-center",
       "to": "dot-plots-histograms",
-      "strength": 0.8
+      "strength": 0.8,
+      "type": "required"
     },
     {
       "from": "measures-of-variability",
       "to": "box-plots",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "dot-plots-histograms",
       "to": "box-plots",
-      "strength": 0.8
+      "strength": 0.8,
+      "type": "required"
     },
     {
       "from": "box-plots",
       "to": "summarize-data",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "measures-of-variability",
       "to": "summarize-data",
-      "strength": 0.7
+      "strength": 0.7,
+      "type": "required"
     },
     {
       "from": "divide-multi-digit-6",
       "to": "probability-intro",
-      "strength": 0.6
+      "strength": 0.6,
+      "type": "required"
     },
     {
       "from": "percent-intro",
       "to": "probability-intro",
-      "strength": 0.8
+      "strength": 0.8,
+      "type": "required"
     },
     {
       "from": "probability-intro",
       "to": "experimental-probability",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "experimental-probability",
       "to": "compound-probability",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "summarize-data",
       "to": "sampling-inference",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "sampling-inference",
       "to": "compare-populations",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "graph-linear-equations",
       "to": "scatter-plots",
-      "strength": 0.8
+      "strength": 0.8,
+      "type": "required"
     },
     {
       "from": "compare-populations",
       "to": "scatter-plots",
-      "strength": 0.7
+      "strength": 0.7,
+      "type": "required"
     },
     {
       "from": "scatter-plots",
       "to": "line-of-best-fit",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "slope-intercept-form",
       "to": "line-of-best-fit",
-      "strength": 0.8
+      "strength": 0.8,
+      "type": "required"
     },
     {
       "from": "compound-probability",
       "to": "two-way-tables",
-      "strength": 0.8
+      "strength": 0.8,
+      "type": "required"
     },
     {
       "from": "percent-intro",
       "to": "two-way-tables",
-      "strength": 0.7
+      "strength": 0.7,
+      "type": "required"
     },
     {
       "from": "exponent-rules",
       "to": "monomials",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "combine-like-terms",
       "to": "monomials",
-      "strength": 0.8
+      "strength": 0.8,
+      "type": "required"
     },
     {
       "from": "monomials",
       "to": "polynomials-classify",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "polynomials-classify",
       "to": "add-subtract-polynomials",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "add-subtract-polynomials",
       "to": "multiply-polynomials-monomial",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "distributive-property",
       "to": "multiply-polynomials-monomial",
-      "strength": 0.8
+      "strength": 0.8,
+      "type": "required"
     },
     {
       "from": "multiply-polynomials-monomial",
       "to": "multiply-binomials",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "multiply-binomials",
       "to": "special-products",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "multiply-polynomials-monomial",
       "to": "factor-gcf-polynomials",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     },
     {
       "from": "gcf-lcm-applications",
       "to": "factor-gcf-polynomials",
-      "strength": 0.6
+      "strength": 0.6,
+      "type": "required"
     },
     {
       "from": "math-foundations:mean-median-mode",
       "to": "statistical-questions",
-      "strength": 1.0
+      "strength": 1,
+      "type": "required"
     }
   ],
   "encompassings": [

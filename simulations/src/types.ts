@@ -49,6 +49,12 @@ export type LearnerProfile = {
     type: "daily" | "irregular" | "weekday" | "gap-and-return" | "burst" | "weekend-only" | "decay" | "completion-break";
     params?: Record<string, number>;
   };
+
+  /** Subjects this profile works on. If omitted, uses the CLI --subject flag. */
+  subjects?: string[];
+
+  /** Per-subject ability curve overrides. Key is subject ID, value overrides abilityCurve for that subject. */
+  subjectAbility?: Record<string, AbilityCurve>;
 };
 
 // --- Answer Result ---
@@ -160,6 +166,8 @@ export type TimeSchedule = {
 export type SimulationConfig = {
   profile: LearnerProfile;
   subject: string;
+  /** All subjects to load into the simulation DB. Defaults to [subject]. */
+  subjects?: string[];
   sessionCount: number;
   seed: number;
   /** Time between sessions in ms (default: 24 hours). Simple fixed interval. */

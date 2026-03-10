@@ -768,3 +768,21 @@ Common Core ELA phonics standards (RF.K.2a-d: rhyming, syllable counting, phonem
 When designing context-layered subjects (history), foundational skill topics (e.g., "primary sources intro", "cause and effect", "historical perspectives") tend to be created as standalone nodes disconnected from the chronological content graph. The graph validator flags these as orphans. These skill topics MUST have `recommended` edges pointing INTO the content topics that use those skills (e.g., `cause-and-effect-in-history` → `causes-of-revolution`). Without these edges, the skill topics are unreachable in the frontier and never served to learners.
 
 **Context:** Applies to any context-layered subject where methodological/analytical skill topics sit alongside content topics. The skill topics are prerequisites for deeper analysis but not for survey-depth content — use `recommended` edges, not `required`.
+
+---
+
+### 2026-03-10: Simulation DB DDL must be kept in sync with schema migrations
+
+**Source:** Plan 018 Phase 6
+**Area:** Simulation / DB setup
+
+`simulations/src/db-setup.ts` has hardcoded CREATE TABLE statements (not generated from Drizzle schema). When Phase 3.5 added the `source` column to `assessment_content`, the simulation DDL wasn't updated, causing "no such column: source" errors. Fix: manually added the column. Future schema migrations that add columns used by services must also update `db-setup.ts SCHEMA_STATEMENTS`.
+
+---
+
+### 2026-03-10: Math prerequisite edges were missing type field
+
+**Source:** Plan 018 Phase 6
+**Area:** Content / graph validation
+
+Both `math-foundations` (146/148 edges) and `math-middle` (173/173 edges) had prerequisite edges with no `type` field. Only the 2 cross-subject ELA edges in math-foundations had `type: "required"`. ELA and US History were fine. The edge insertion code defaulted to `"required"` but the field should be explicit for mastery-gated disciplines. Fixed by backfilling all missing types to `"required"`.
