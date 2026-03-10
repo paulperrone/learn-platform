@@ -69,11 +69,11 @@ def generate(graph_path: str, output_path: str):
     prereqs = g['prerequisites']
     encomp = g.get('encompassings', [])
 
-    # Assign strands and colors
+    # Assign strands and colors — use explicit strand field if present, else infer
     strands_seen = []
     strand_color = {}
     for t in topics:
-        s = infer_strand(t['id'])
+        s = t.get('strand') or infer_strand(t['id'])
         t['_strand'] = s
         if s not in strand_color:
             strand_color[s] = PALETTE[len(strands_seen) % len(PALETTE)]
@@ -181,7 +181,7 @@ const SC = {sc_json};
     nodeMap[t.id] = {{ ...t, displayName: label, w }};
   }});
 
-  graph.prerequisites.forEach(p => {{ dg.setEdge(p.from, p.to); }});
+  graph.prerequisites.forEach(p => {{ if (!p.from.includes(':')) dg.setEdge(p.from, p.to); }});
   dagre.layout(dg);
 
   const nodes = [];
@@ -193,8 +193,9 @@ const SC = {sc_json};
 
   const prereqEdges = [];
   graph.prerequisites.forEach(p => {{
+    if (p.from.includes(':')) return;
     const edge = dg.edge(p.from, p.to);
-    prereqEdges.push({{ source: p.from, target: p.to, points: edge.points }});
+    if (edge) prereqEdges.push({{ source: p.from, target: p.to, points: edge.points }});
   }});
 
   const nodePos = {{}};
@@ -212,6 +213,7 @@ const SC = {sc_json};
     (adjE[e.child] ??= []).push({{ id: e.parent, w: e.weight, dir: 'parent' }});
   }});
   graph.prerequisites.forEach(p => {{
+    if (p.from.includes(':')) return;
     (adjP[p.to] ??= []).push({{ id: p.from, dir: 'requires' }});
     (adjP[p.from] ??= []).push({{ id: p.to, dir: 'unlocks' }});
   }});
