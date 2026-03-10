@@ -14,5 +14,6 @@
   "responseSpeed": { "meanMs": 6500, "stddevMs": 2500 },
   "hintSeekingProbability": 0.15,
   "confidenceTendency": "calibrated",
-  "misconceptions": []
+  "misconceptions": [],
+  "scheduling": { "type": "gap-and-return", "params": { "sessions_before": 15, "gap_days": 14, "sessions_after": 15 } }
 }

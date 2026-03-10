@@ -14,5 +14,6 @@
   "responseSpeed": { "meanMs": 6500, "stddevMs": 2500 },
   "hintSeekingProbability": 0.15,
   "confidenceTendency": "calibrated",
-  "misconceptions": []
+  "misconceptions": [],
+  "scheduling": { "type": "burst", "params": { "burst_size": 3, "burst_interval_hours": 5, "gap_days_min": 2, "gap_days_max": 3 } }
 }

@@ -629,31 +629,108 @@ export class SimulationRunner {
 
   /** Get the time interval before session i (0-indexed) */
   private getSessionInterval(sessionIndex: number): number {
+    // 1. Existing timeSchedule config takes priority
     const schedule = this.config.timeSchedule;
-    if (!schedule) {
-      return this.config.sessionIntervalMs ?? ONE_DAY_MS;
-    }
+    if (schedule) {
+      const base = schedule.baseIntervalMs ?? ONE_DAY_MS;
 
-    const base = schedule.baseIntervalMs ?? ONE_DAY_MS;
+      if (schedule.type === "fixed") {
+        return base;
+      }
 
-    if (schedule.type === "fixed") {
+      if (schedule.type === "variable" && schedule.intervals) {
+        return schedule.intervals[sessionIndex] ?? base;
+      }
+
+      if (schedule.type === "weekdays") {
+        const currentDate = new Date(this.simulatedTimeMs);
+        const dayOfWeek = currentDate.getUTCDay(); // 0=Sun, 6=Sat
+        if (dayOfWeek === 5) return base * 3; // Friday → Monday (skip Sat+Sun)
+        if (dayOfWeek === 6) return base * 2; // Saturday → Monday (skip Sun)
+        return base;
+      }
+
       return base;
     }
 
-    if (schedule.type === "variable" && schedule.intervals) {
-      return schedule.intervals[sessionIndex] ?? base;
+    // 2. Profile scheduling presets
+    const preset = this.config.profile.scheduling;
+    if (preset) {
+      const p = preset.params ?? {};
+      switch (preset.type) {
+        case "daily":
+          return ONE_DAY_MS;
+
+        case "irregular": {
+          const minDays = p.min_days ?? 1;
+          const maxDays = p.max_days ?? 5;
+          return this.rng.intRange(minDays, maxDays) * ONE_DAY_MS;
+        }
+
+        case "weekday": {
+          const currentDate = new Date(this.simulatedTimeMs);
+          const dow = currentDate.getUTCDay(); // 0=Sun, 6=Sat
+          if (dow === 5) return ONE_DAY_MS * 3; // Friday → Monday
+          if (dow === 6) return ONE_DAY_MS * 2; // Saturday → Monday
+          return ONE_DAY_MS;
+        }
+
+        case "gap-and-return": {
+          const sessionsBefore = p.sessions_before ?? 15;
+          const gapDays = p.gap_days ?? 14;
+          if (sessionIndex < sessionsBefore) return ONE_DAY_MS;
+          if (sessionIndex === sessionsBefore) return gapDays * ONE_DAY_MS;
+          return ONE_DAY_MS;
+        }
+
+        case "burst": {
+          const burstSize = p.burst_size ?? 3;
+          const burstIntervalHours = p.burst_interval_hours ?? 5;
+          const gapDaysMin = p.gap_days_min ?? 2;
+          const gapDaysMax = p.gap_days_max ?? 3;
+          const posInCycle = sessionIndex % burstSize;
+          if (posInCycle === 0 && sessionIndex > 0) {
+            return this.rng.intRange(gapDaysMin, gapDaysMax) * ONE_DAY_MS;
+          }
+          return burstIntervalHours * 3600000;
+        }
+
+        case "weekend-only": {
+          const currentDate = new Date(this.simulatedTimeMs);
+          const dow = currentDate.getUTCDay(); // 0=Sun, 6=Sat
+          if (dow === 6) return ONE_DAY_MS; // Saturday → Sunday
+          if (dow === 0) return ONE_DAY_MS * 6; // Sunday → Saturday
+          // First session or mid-week: skip to next Saturday
+          return ((6 - dow + 7) % 7 || 7) * ONE_DAY_MS;
+        }
+
+        case "decay": {
+          const initialDays = p.initial_days ?? 1;
+          const decayRate = p.decay_rate ?? 0.15;
+          const maxDays = p.max_days ?? 7;
+          return Math.round(Math.min(initialDays + decayRate * sessionIndex, maxDays)) * ONE_DAY_MS;
+        }
+
+        case "completion-break": {
+          const breakDaysMin = p.break_days_min ?? 3;
+          const breakDaysMax = p.break_days_max ?? 7;
+          const masteryTriggerCount = p.mastery_trigger_count ?? 2;
+          const snapshots = this.stateSnapshots;
+          if (snapshots.length >= 2) {
+            const curr = snapshots[snapshots.length - 1];
+            const prev = snapshots[snapshots.length - 2];
+            const masteryGain = curr.materializedMasteryCount - prev.materializedMasteryCount;
+            if (masteryGain >= masteryTriggerCount) {
+              return this.rng.intRange(breakDaysMin, breakDaysMax) * ONE_DAY_MS;
+            }
+          }
+          return ONE_DAY_MS;
+        }
+      }
     }
 
-    if (schedule.type === "weekdays") {
-      // Simulate weekday-only practice: skip weekends
-      const currentDate = new Date(this.simulatedTimeMs);
-      const dayOfWeek = currentDate.getUTCDay(); // 0=Sun, 6=Sat
-      if (dayOfWeek === 5) return base * 3; // Friday → Monday (skip Sat+Sun)
-      if (dayOfWeek === 6) return base * 2; // Saturday → Monday (skip Sun)
-      return base;
-    }
-
-    return base;
+    // 3. Fallback
+    return this.config.sessionIntervalMs ?? ONE_DAY_MS;
   }
 
   /** Get current simulated day number (0-indexed from start) */

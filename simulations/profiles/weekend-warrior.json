@@ -14,5 +14,6 @@
   "responseSpeed": { "meanMs": 6000, "stddevMs": 2000 },
   "hintSeekingProbability": 0.12,
   "confidenceTendency": "calibrated",
-  "misconceptions": []
+  "misconceptions": [],
+  "scheduling": { "type": "weekend-only" }
 }

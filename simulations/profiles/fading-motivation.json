@@ -14,5 +14,6 @@
   "responseSpeed": { "meanMs": 7000, "stddevMs": 2500 },
   "hintSeekingProbability": 0.18,
   "confidenceTendency": "calibrated",
-  "misconceptions": []
+  "misconceptions": [],
+  "scheduling": { "type": "decay", "params": { "initial_days": 1, "decay_rate": 0.15, "max_days": 7 } }
 }

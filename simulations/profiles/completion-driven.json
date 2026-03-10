@@ -14,5 +14,6 @@
   "responseSpeed": { "meanMs": 5500, "stddevMs": 2000 },
   "hintSeekingProbability": 0.10,
   "confidenceTendency": "calibrated",
-  "misconceptions": []
+  "misconceptions": [],
+  "scheduling": { "type": "completion-break", "params": { "break_days_min": 3, "break_days_max": 7, "mastery_trigger_count": 2 } }
 }

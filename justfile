@@ -108,6 +108,14 @@ simulate-report sessions="30" seed="42":
 simulate-regression seed="42":
     npx tsx simulations/src/regression.ts --seed {{seed}}
 
+# Clean up old simulation runs (keep latest per profile by default)
+simulate-clean *args:
+    npx tsx simulations/src/clean.ts {{args}}
+
+# Show simulation runs disk usage
+simulate-size:
+    npx tsx simulations/src/clean.ts --dry-run --keep 999999
+
 # Evaluate simulation runs against targets.json (healing loop)
 evaluate *args:
     npx tsx simulations/src/evaluate.ts {{args}}

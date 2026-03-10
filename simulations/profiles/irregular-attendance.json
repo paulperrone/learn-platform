@@ -14,5 +14,6 @@
   "responseSpeed": { "meanMs": 7000, "stddevMs": 2500 },
   "hintSeekingProbability": 0.15,
   "confidenceTendency": "calibrated",
-  "misconceptions": []
+  "misconceptions": [],
+  "scheduling": { "type": "irregular", "params": { "min_days": 1, "max_days": 5 } }
 }

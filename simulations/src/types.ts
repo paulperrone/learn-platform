@@ -43,6 +43,12 @@ export type LearnerProfile = {
 
   /** Per-session learning gain: ability increases by this amount per N sessions */
   learningGain?: { abilityDeltaPerSession: number };
+
+  /** Scheduling preset for non-daily practice patterns */
+  scheduling?: {
+    type: "daily" | "irregular" | "weekday" | "gap-and-return" | "burst" | "weekend-only" | "decay" | "completion-break";
+    params?: Record<string, number>;
+  };
 };
 
 // --- Answer Result ---
