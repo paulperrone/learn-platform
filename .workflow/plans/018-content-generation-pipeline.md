@@ -72,9 +72,9 @@ Topic (graph node)
 
 ## Progress
 
-**Completed:** Phase 0 ✓, Phase 1 ✓, Phase 2 ✓, Phase 3 ✓
+**Completed:** Phase 0 ✓, Phase 1 ✓, Phase 2 ✓, Phase 3 ✓, Phase 3.5 ✓
 **In Progress:** —
-**Next:** Phase 3.5
+**Next:** Phase 4
 
 ---
 
@@ -279,19 +279,19 @@ Topic (graph node)
 
 ---
 
-## Phase 3.5: Content Pipeline Commands & Source Tracking
+## Phase 3.5: Content Pipeline Commands & Source Tracking ✓
 **Goal:** Codify the content generation workflow as reusable Claude Code commands (`/generate-content`, `/content-health`) and add problem source provenance to the DB schema. Makes Phases 4-6 faster and more consistent by encoding discipline-specific workflows, quality gates, and verification loops into executable commands.
 
 **Motivation:** Phase 3 took ~40 minutes of ad-hoc authoring. Future phases (ELA, US History) are LLM-heavy with no procedural generator shortcut. Encoding the workflow as commands ensures consistent quality gates, correct discipline-specific rules, and reproducible post-generation verification — regardless of which session executes the phase.
 
-1. [ ] [IMP] Add `source` column to `assessment_content` schema + migration:
+1. [x] [IMP] Add `source` column to `assessment_content` schema + migration:
    - Add `source TEXT NOT NULL DEFAULT 'hand-authored'` to Drizzle schema
    - Generate migration with `just db-generate`, manually add DEFAULT to SQL if needed (per LEARNINGS.md)
    - Update `import-content.ts` to read `p.source` from JSON, fallback `'hand-authored'` for legacy `problems/`
    - Update `generate-content-pack.ts` to include `problems-generated/` directory
    - Valid values: `procedural` (generators), `supplementary` (LLM-authored gap fill), `hand-authored` (original content)
 
-2. [ ] [IMP] Create `/generate-content` command (`.claude/commands/generate-content.md`):
+2. [x] [IMP] Create `/generate-content` command (`.claude/commands/generate-content.md`):
    - **Arguments:** `/generate-content <subject>` with optional `--graph-only`, `--problems-only`, `--examples-only`, `--dry-run`
    - **Discipline detection:** Read `graph.json` → `progressionModel` to select workflow
    - **Math (mastery-gated, computation-heavy) path:**
@@ -313,14 +313,14 @@ Topic (graph node)
    - **Platform-medium constraints:** Screen + text input only. Regex patterns from `validate-content.ts` listed as examples of what to avoid.
    - **Post-generation verification loop:** validate → fix warnings → re-validate → report
 
-3. [ ] [IMP] Create `/content-health` command (`.claude/commands/content-health.md`):
+3. [x] [IMP] Create `/content-health` command (`.claude/commands/content-health.md`):
    - Wraps `just validate-content`, `just content-status`, `just content-gaps` into single diagnostic
    - **Arguments:** `/content-health [subject]` with optional `--all`, `--fix` (auto-fix common issues)
    - Output: summary table of per-topic health, ranked gap list, validation errors/warnings
    - Actionable: "These N topics need attention" with specific remediation steps
    - References `just visualize <subject>` for graph inspection when structural issues found
 
-4. [ ] [TST] Validate against existing math content:
+4. [x] [TST] Validate against existing math content:
    - Run `just db-migrate` and `just import-content` — verify `source` column populated (`procedural` for generated, `hand-authored` for originals)
    - Dry-run `/generate-content math-foundations` workflow — verify it describes the same process Phase 3 actually executed
    - Run `/content-health math-foundations` and `/content-health math-middle` — verify output is accurate and actionable

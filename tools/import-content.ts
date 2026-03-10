@@ -61,6 +61,7 @@ type Problem = {
   contentDepth?: string;
   keyPrerequisiteId?: string;
   cognitiveDemand?: string;
+  source?: string;
 };
 
 type WorkedExample = {
@@ -212,7 +213,7 @@ function main() {
 
   // Insert assessment content (problems)
   const insertAssessment = db.prepare(
-    "INSERT INTO assessment_content (id, topic_id, flavor, locale, presentation, content_depth, version, type, difficulty, question, answer, hints_json, solution, cognitive_demand, key_prerequisite_id, created_at) VALUES (?, ?, ?, ?, ?, ?, 1, 'text-qa', ?, ?, ?, ?, ?, ?, ?, ?)"
+    "INSERT INTO assessment_content (id, topic_id, flavor, locale, presentation, content_depth, version, type, difficulty, question, answer, hints_json, solution, cognitive_demand, key_prerequisite_id, source, created_at) VALUES (?, ?, ?, ?, ?, ?, 1, 'text-qa', ?, ?, ?, ?, ?, ?, ?, ?, ?)"
   );
   let assessmentCount = 0;
   const insertAssessments = db.transaction(() => {
@@ -225,7 +226,7 @@ function main() {
           p.locale ?? "en",
           p.presentation ?? "standard",
           p.contentDepth ?? "survey",
-          p.difficulty, p.question, p.answer, JSON.stringify(p.hints), p.solution, p.cognitiveDemand ?? null, p.keyPrerequisiteId ?? null, now
+          p.difficulty, p.question, p.answer, JSON.stringify(p.hints), p.solution, p.cognitiveDemand ?? null, p.keyPrerequisiteId ?? null, p.source ?? "hand-authored", now
         );
         assessmentCount++;
       }
@@ -235,12 +236,14 @@ function main() {
   console.log(`Inserted ${assessmentCount} assessment content rows`);
 
   // Insert prerequisites
+  // Cross-subject references use "subject:topic-id" format — strip prefix to get actual topic ID
+  const resolveTopicId = (id: string) => id.includes(":") ? id.split(":").pop()! : id;
   const insertPrereq = db.prepare(
     "INSERT INTO prerequisites (from_topic_id, to_topic_id, strength, type) VALUES (?, ?, ?, ?)"
   );
   const insertPrereqs = db.transaction((prereqs: typeof graph.prerequisites) => {
     for (const p of prereqs) {
-      insertPrereq.run(p.from, p.to, p.strength, p.type ?? "required");
+      insertPrereq.run(resolveTopicId(p.from), resolveTopicId(p.to), p.strength, p.type ?? "required");
     }
   });
   insertPrereqs(graph.prerequisites);
@@ -269,6 +272,8 @@ function main() {
     adjacency.set(id, []);
   }
   for (const p of graph.prerequisites) {
+    // Skip cross-subject edges for local DAG validation (cycles can't span subjects)
+    if (!topicIds.has(p.from)) continue;
     adjacency.get(p.from)!.push(p.to);
     inDegree.set(p.to, (inDegree.get(p.to) ?? 0) + 1);
   }

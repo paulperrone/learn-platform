@@ -26,16 +26,19 @@ if (!existsSync(graphPath)) {
 
 const graph = JSON.parse(readFileSync(graphPath, "utf-8"));
 
-// Load all problems
-const problemsDir = join(contentDir, "problems");
+// Load all problems (hand-authored + generated)
+const problemsDirs = [join(contentDir, "problems"), join(contentDir, "problems-generated")];
 const problems: Record<string, unknown[]> = {};
 let totalProblems = 0;
-if (existsSync(problemsDir)) {
-  for (const file of readdirSync(problemsDir).filter((f) => f.endsWith(".json"))) {
-    const topicId = basename(file, ".json");
-    const data = JSON.parse(readFileSync(join(problemsDir, file), "utf-8"));
-    problems[topicId] = data;
-    totalProblems += data.length;
+for (const problemsDir of problemsDirs) {
+  if (existsSync(problemsDir)) {
+    for (const file of readdirSync(problemsDir).filter((f) => f.endsWith(".json"))) {
+      const topicId = basename(file, ".json");
+      const data = JSON.parse(readFileSync(join(problemsDir, file), "utf-8"));
+      if (!problems[topicId]) problems[topicId] = [];
+      problems[topicId].push(...data);
+      totalProblems += data.length;
+    }
   }
 }
 

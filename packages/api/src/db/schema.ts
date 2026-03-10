@@ -72,6 +72,7 @@ export const assessmentContent = sqliteTable("assessment_content", {
   typeProperties: text("type_properties"),
   cognitiveDemand: text("cognitive_demand"), // 'procedural' | 'conceptual' | 'application' | 'reasoning' | 'error_analysis'
   keyPrerequisiteId: text("key_prerequisite_id"), // optional: specific prereq topic most likely to cause failure
+  source: text("source").notNull().default("hand-authored"), // 'hand-authored' | 'procedural' | 'supplementary'
   createdAt: text("created_at").notNull().$defaultFn(() => new Date().toISOString()),
 }, (table) => [
   index("ac_topic_idx").on(table.topicId),

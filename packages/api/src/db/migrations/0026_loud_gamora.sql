@@ -1,0 +1,1 @@
+ALTER TABLE `assessment_content` ADD `source` text DEFAULT 'hand-authored' NOT NULL;
