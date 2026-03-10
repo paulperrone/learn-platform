@@ -1,0 +1,58 @@
+[
+  {
+    "id": "decimal-division-6-ex1",
+    "topicId": "decimal-division-6",
+    "title": "Dividing a Decimal by a Whole Number",
+    "steps": [
+      {
+        "subgoalLabel": "Set up the division",
+        "instruction": "Divide 9.36 ÷ 4.",
+        "work": "We are dividing 9.36 by 4.",
+        "explanation": "When the divisor is a whole number, we divide normally and keep the decimal point aligned."
+      },
+      {
+        "subgoalLabel": "Divide step by step",
+        "instruction": "Divide as if the decimal weren't there, then place it.",
+        "work": "936 ÷ 4 = 234. Place the decimal: 2.34.",
+        "explanation": "9.36 has two decimal places, so the answer has two decimal places: 2.34. Check: 4 × 2.34 = 9.36."
+      },
+      {
+        "subgoalLabel": "Verify",
+        "instruction": "Multiply to check.",
+        "work": "4 × 2.34 = 4 × 2 + 4 × 0.34 = 8 + 1.36 = 9.36 ✓",
+        "explanation": "Always verify division by multiplying the quotient by the divisor."
+      }
+    ]
+  },
+  {
+    "id": "decimal-division-6-ex2",
+    "topicId": "decimal-division-6",
+    "title": "Dividing When the Divisor Is a Decimal",
+    "steps": [
+      {
+        "subgoalLabel": "Identify the problem",
+        "instruction": "Divide 3.78 ÷ 0.9.",
+        "work": "The divisor (0.9) is a decimal, so we need to make it a whole number first.",
+        "explanation": "Division is easier when the divisor is a whole number."
+      },
+      {
+        "subgoalLabel": "Multiply to clear the decimal",
+        "instruction": "Multiply both dividend and divisor by 10.",
+        "work": "3.78 × 10 = 37.8 and 0.9 × 10 = 9. Now divide 37.8 ÷ 9.",
+        "explanation": "Multiplying both numbers by the same power of 10 doesn't change the quotient."
+      },
+      {
+        "subgoalLabel": "Perform the division",
+        "instruction": "Divide 37.8 by 9.",
+        "work": "37.8 ÷ 9 = 4.2",
+        "explanation": "9 × 4 = 36, remainder 1.8. 9 × 0.2 = 1.8. So the answer is 4.2."
+      },
+      {
+        "subgoalLabel": "Verify",
+        "instruction": "Check by multiplying.",
+        "work": "0.9 × 4.2 = 3.78 ✓",
+        "explanation": "The check confirms our answer: 3.78 ÷ 0.9 = 4.2."
+      }
+    ]
+  }
+]

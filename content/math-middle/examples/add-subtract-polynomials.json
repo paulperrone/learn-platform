@@ -1,0 +1,52 @@
+[
+  {
+    "id": "add-subtract-polynomials-ex1",
+    "topicId": "add-subtract-polynomials",
+    "title": "Adding Polynomials",
+    "steps": [
+      {
+        "subgoalLabel": "Identify like terms",
+        "instruction": "Like terms have the same variable raised to the same power.",
+        "work": "Add (3x² + 5x − 2) + (x² − 3x + 7). Like terms: 3x² and x², 5x and −3x, −2 and 7.",
+        "explanation": "You can only combine terms with exactly matching variable parts."
+      },
+      {
+        "subgoalLabel": "Combine like terms",
+        "instruction": "Add the coefficients of each group of like terms.",
+        "work": "x²: 3+1 = 4. x: 5+(−3) = 2. constants: −2+7 = 5.",
+        "explanation": "Only the coefficients change — the variable parts stay the same."
+      },
+      {
+        "subgoalLabel": "Write the result",
+        "instruction": "Combine into one polynomial in standard form.",
+        "work": "4x² + 2x + 5",
+        "explanation": "The sum of two polynomials is always a polynomial."
+      }
+    ]
+  },
+  {
+    "id": "add-subtract-polynomials-ex2",
+    "topicId": "add-subtract-polynomials",
+    "title": "Subtracting Polynomials",
+    "steps": [
+      {
+        "subgoalLabel": "Distribute the negative",
+        "instruction": "Subtract (5x² + 2x − 3) − (2x² − 4x + 1). First distribute the minus sign to every term in the second polynomial.",
+        "work": "5x² + 2x − 3 − 2x² + 4x − 1",
+        "explanation": "Subtraction means changing every sign in the second polynomial."
+      },
+      {
+        "subgoalLabel": "Combine like terms",
+        "instruction": "Group and add like terms.",
+        "work": "x²: 5−2 = 3. x: 2+4 = 6. constants: −3−1 = −4.",
+        "explanation": "After distributing the negative, it becomes an addition problem."
+      },
+      {
+        "subgoalLabel": "Write the result",
+        "instruction": "Final answer in standard form.",
+        "work": "3x² + 6x − 4",
+        "explanation": "Always double-check your signs when subtracting polynomials."
+      }
+    ]
+  }
+]

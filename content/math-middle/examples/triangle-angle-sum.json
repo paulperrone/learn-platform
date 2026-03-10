@@ -1,0 +1,52 @@
+[
+  {
+    "id": "triangle-angle-sum-ex1",
+    "topicId": "triangle-angle-sum",
+    "title": "Finding the Third Angle of a Triangle",
+    "steps": [
+      {
+        "subgoalLabel": "State the rule",
+        "instruction": "The three interior angles of any triangle sum to 180°.",
+        "work": "angle A + angle B + angle C = 180°",
+        "explanation": "This is true for all triangles — right, acute, or obtuse."
+      },
+      {
+        "subgoalLabel": "Substitute known angles",
+        "instruction": "A triangle has angles of 72° and 53°. Find the third.",
+        "work": "72 + 53 + C = 180 → 125 + C = 180",
+        "explanation": "Add the known angles and subtract from 180°."
+      },
+      {
+        "subgoalLabel": "Solve",
+        "instruction": "Subtract to find C.",
+        "work": "C = 180 − 125 = 55°",
+        "explanation": "The third angle is 55°."
+      }
+    ]
+  },
+  {
+    "id": "triangle-angle-sum-ex2",
+    "topicId": "triangle-angle-sum",
+    "title": "Using Algebra with Triangle Angle Sum",
+    "steps": [
+      {
+        "subgoalLabel": "Set up the equation",
+        "instruction": "A triangle has angles x°, (x + 20)°, and (2x − 10)°.",
+        "work": "x + (x + 20) + (2x − 10) = 180",
+        "explanation": "All three angle expressions must sum to 180°."
+      },
+      {
+        "subgoalLabel": "Combine like terms",
+        "instruction": "Simplify the left side.",
+        "work": "4x + 10 = 180",
+        "explanation": "Combine: x + x + 2x = 4x and 20 − 10 = 10."
+      },
+      {
+        "subgoalLabel": "Solve for x",
+        "instruction": "Subtract 10, then divide by 4.",
+        "work": "4x = 170 → x = 42.5",
+        "explanation": "The angles are 42.5°, 62.5°, and 75°. Check: 42.5 + 62.5 + 75 = 180."
+      }
+    ]
+  }
+]

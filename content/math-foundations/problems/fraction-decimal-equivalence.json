@@ -1,0 +1,67 @@
+[
+  {
+    "id": "fraction-decimal-equivalence-p1",
+    "topicId": "fraction-decimal-equivalence",
+    "difficulty": "easy",
+    "question": "Write 1/2 as a decimal.",
+    "answer": "0.5",
+    "hints": [
+      "Think about dividing 1 into 2 equal parts.",
+      "Half of 1 is the same as 5 tenths."
+    ],
+    "solution": "1/2 means 1 divided by 2. 1 ÷ 2 = 0.5.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "fraction-decimal-equivalence-p2",
+    "topicId": "fraction-decimal-equivalence",
+    "difficulty": "easy",
+    "question": "Write 0.25 as a fraction in simplest form.",
+    "answer": "1/4",
+    "hints": [
+      "0.25 means 25 hundredths, or 25/100.",
+      "Divide both the numerator and denominator by 25."
+    ],
+    "solution": "0.25 = 25/100. Simplify by dividing numerator and denominator by 25: 25 ÷ 25 = 1, 100 ÷ 25 = 4. So 0.25 = 1/4.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "fraction-decimal-equivalence-p3",
+    "topicId": "fraction-decimal-equivalence",
+    "difficulty": "medium",
+    "question": "Write 3/8 as a decimal.",
+    "answer": "0.375",
+    "hints": [
+      "Divide 3 by 8 using long division.",
+      "8 goes into 3.000 — start by seeing how many times 8 goes into 30."
+    ],
+    "solution": "3 ÷ 8: 8 goes into 30 three times (24), remainder 6. 8 goes into 60 seven times (56), remainder 4. 8 goes into 40 five times (40), remainder 0. So 3/8 = 0.375.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "fraction-decimal-equivalence-p4",
+    "topicId": "fraction-decimal-equivalence",
+    "difficulty": "medium",
+    "question": "Write 0.6 as a fraction in simplest form.",
+    "answer": "3/5",
+    "hints": [
+      "0.6 means 6 tenths, or 6/10.",
+      "Find the greatest common factor of 6 and 10."
+    ],
+    "solution": "0.6 = 6/10. The GCF of 6 and 10 is 2. Divide both by 2: 6 ÷ 2 = 3, 10 ÷ 2 = 5. So 0.6 = 3/5.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "fraction-decimal-equivalence-p5",
+    "topicId": "fraction-decimal-equivalence",
+    "difficulty": "hard",
+    "question": "A student says that 2/5 = 0.25 because 'two and five make 25.' Explain why this is wrong and give the correct decimal.",
+    "answer": "0.4",
+    "hints": [
+      "To convert a fraction to a decimal, divide the numerator by the denominator.",
+      "2 ÷ 5 = ? Think: how many times does 5 go into 20?"
+    ],
+    "solution": "The student incorrectly combined the digits instead of dividing. To convert 2/5 to a decimal, divide 2 by 5: 2 ÷ 5 = 0.4. You can verify: 0.4 = 4/10 = 2/5.",
+    "cognitiveDemand": "error-analysis"
+  }
+]

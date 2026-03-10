@@ -1,0 +1,64 @@
+[
+  {
+    "id": "one-step-equations-mult-div-ex1",
+    "topicId": "one-step-equations-mult-div",
+    "title": "Solving 7x = 56 by Dividing",
+    "steps": [
+      {
+        "subgoalLabel": "Identify the operation on x",
+        "instruction": "What is being done to x?",
+        "work": "x is being multiplied by 7.",
+        "explanation": "To undo multiplication, we divide."
+      },
+      {
+        "subgoalLabel": "Divide both sides by 7",
+        "instruction": "Divide each side by 7.",
+        "work": "7x / 7 = 56 / 7",
+        "explanation": "Keep the equation balanced."
+      },
+      {
+        "subgoalLabel": "Simplify",
+        "instruction": "Compute both sides.",
+        "work": "x = 8",
+        "explanation": "7x/7 = x on the left. 56/7 = 8 on the right."
+      },
+      {
+        "subgoalLabel": "Check",
+        "instruction": "Substitute x = 8 into the original equation.",
+        "work": "7(8) = 56. ✓",
+        "explanation": "The solution is verified."
+      }
+    ]
+  },
+  {
+    "id": "one-step-equations-mult-div-ex2",
+    "topicId": "one-step-equations-mult-div",
+    "title": "Solving y/4 = −3 by Multiplying",
+    "steps": [
+      {
+        "subgoalLabel": "Identify the operation",
+        "instruction": "What is being done to y?",
+        "work": "y is being divided by 4.",
+        "explanation": "To undo division, we multiply."
+      },
+      {
+        "subgoalLabel": "Multiply both sides by 4",
+        "instruction": "Multiply each side by 4.",
+        "work": "(y/4) × 4 = −3 × 4",
+        "explanation": "This cancels the division on the left."
+      },
+      {
+        "subgoalLabel": "Simplify",
+        "instruction": "Compute both sides.",
+        "work": "y = −12",
+        "explanation": "On the left, dividing and multiplying by 4 cancel. On the right, −3 × 4 = −12."
+      },
+      {
+        "subgoalLabel": "Check",
+        "instruction": "Substitute y = −12.",
+        "work": "−12/4 = −3. ✓",
+        "explanation": "The answer checks out."
+      }
+    ]
+  }
+]

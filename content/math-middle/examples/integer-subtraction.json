@@ -1,0 +1,52 @@
+[
+  {
+    "id": "integer-subtraction-ex1",
+    "topicId": "integer-subtraction",
+    "title": "Subtracting a Positive from a Negative",
+    "steps": [
+      {
+        "subgoalLabel": "Rewrite as addition",
+        "instruction": "Compute -5 - 8 by converting to addition.",
+        "work": "-5 - 8 = -5 + (-8)",
+        "explanation": "Subtraction is the same as adding the opposite. The opposite of 8 is -8."
+      },
+      {
+        "subgoalLabel": "Apply the addition rule",
+        "instruction": "Add -5 + (-8). Both are negative.",
+        "work": "Same sign: 5 + 8 = 13. Both negative → -13.",
+        "explanation": "When both numbers are negative, add the absolute values and keep the negative sign."
+      },
+      {
+        "subgoalLabel": "State the result",
+        "instruction": "Write the final answer.",
+        "work": "-5 - 8 = -13",
+        "explanation": "Starting at -5 and moving 8 more units left on the number line lands on -13."
+      }
+    ]
+  },
+  {
+    "id": "integer-subtraction-ex2",
+    "topicId": "integer-subtraction",
+    "title": "Subtracting a Negative Number (Double Negative)",
+    "steps": [
+      {
+        "subgoalLabel": "Rewrite as addition",
+        "instruction": "Compute 4 - (-6) by converting to addition.",
+        "work": "4 - (-6) = 4 + 6",
+        "explanation": "Subtracting a negative is the same as adding a positive. The opposite of -6 is +6."
+      },
+      {
+        "subgoalLabel": "Add the integers",
+        "instruction": "Compute 4 + 6.",
+        "work": "4 + 6 = 10",
+        "explanation": "Both numbers are positive, so simply add."
+      },
+      {
+        "subgoalLabel": "State the result",
+        "instruction": "Write the final answer.",
+        "work": "4 - (-6) = 10",
+        "explanation": "Subtracting a negative always increases the value. Think of it as removing a debt — it makes you richer."
+      }
+    ]
+  }
+]

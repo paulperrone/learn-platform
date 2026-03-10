@@ -3,7 +3,7 @@
  *
  * Usage: npx tsx tools/validate-graph.ts [subject]
  */
-import { readFileSync, existsSync } from "fs";
+import { readFileSync, existsSync, readdirSync } from "fs";
 import { join } from "path";
 
 const subject = process.argv[2] ?? "math-foundations";
@@ -16,6 +16,22 @@ if (!existsSync(graphPath)) {
 
 const graph = JSON.parse(readFileSync(graphPath, "utf-8"));
 const topicIds = new Set<string>(graph.topics.map((t: any) => t.id));
+
+// Build cross-subject topic index for resolving "subject:topic-id" references
+const crossSubjectTopics = new Set<string>();
+const contentDir = join(process.cwd(), "content");
+if (existsSync(contentDir)) {
+  for (const dir of readdirSync(contentDir)) {
+    if (dir === subject) continue;
+    const otherGraphPath = join(contentDir, dir, "graph.json");
+    if (existsSync(otherGraphPath)) {
+      const otherGraph = JSON.parse(readFileSync(otherGraphPath, "utf-8"));
+      for (const t of otherGraph.topics ?? []) {
+        crossSubjectTopics.add(`${dir}:${t.id}`);
+      }
+    }
+  }
+}
 
 let errors = 0;
 let warnings = 0;
@@ -40,7 +56,13 @@ for (const [id, count] of idCounts) {
 
 // Check prerequisites reference valid topics
 for (const p of graph.prerequisites) {
-  if (!topicIds.has(p.from)) {
+  const fromIsCrossSubject = p.from.includes(":");
+  if (fromIsCrossSubject) {
+    if (!crossSubjectTopics.has(p.from)) {
+      console.error(`ERROR: Cross-subject prerequisite from unknown topic "${p.from}"`);
+      errors++;
+    }
+  } else if (!topicIds.has(p.from)) {
     console.error(`ERROR: Prerequisite from unknown topic "${p.from}"`);
     errors++;
   }
@@ -80,6 +102,8 @@ for (const id of topicIds) {
   inDegree.set(id, 0);
 }
 for (const p of graph.prerequisites) {
+  // Skip cross-subject edges for DAG analysis (they reference other graphs)
+  if (p.from.includes(":")) continue;
   if (topicIds.has(p.from) && topicIds.has(p.to)) {
     adjacency.get(p.from)!.push(p.to);
     inDegree.set(p.to, (inDegree.get(p.to) ?? 0) + 1);
@@ -119,7 +143,7 @@ if (processed !== topicIds.size) {
 const hasIncoming = new Set<string>();
 const hasOutgoing = new Set<string>();
 for (const p of graph.prerequisites) {
-  hasOutgoing.add(p.from);
+  if (!p.from.includes(":")) hasOutgoing.add(p.from);
   hasIncoming.add(p.to);
 }
 const orphans = graph.topics.filter(

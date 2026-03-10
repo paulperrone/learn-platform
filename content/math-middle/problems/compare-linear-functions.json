@@ -1,0 +1,66 @@
+[
+  {
+    "id": "compare-linear-functions-p1",
+    "topicId": "compare-linear-functions",
+    "difficulty": "easy",
+    "question": "Function A: y = 3x + 2. Function B: y = 5x + 2. Which function has the greater rate of change?",
+    "answer": "Function B",
+    "hints": [
+      "The rate of change is the slope (m) in y = mx + b."
+    ],
+    "solution": "Function A slope = 3. Function B slope = 5. Since 5 > 3, Function B has the greater rate of change.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "compare-linear-functions-p2",
+    "topicId": "compare-linear-functions",
+    "difficulty": "easy",
+    "question": "Function A has y-intercept 8. Function B has y-intercept -3. Which function has the greater initial value?",
+    "answer": "Function A",
+    "hints": [
+      "The y-intercept represents the initial value (when x = 0)."
+    ],
+    "solution": "Function A starts at 8, Function B starts at -3. Since 8 > -3, Function A has the greater initial value.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "compare-linear-functions-p3",
+    "topicId": "compare-linear-functions",
+    "difficulty": "medium",
+    "question": "Function A: y = 2x + 10. Function B is given by the table: x = 0, y = 4; x = 1, y = 7; x = 2, y = 10. Which function has the greater rate of change?",
+    "answer": "Function B",
+    "hints": [
+      "Find Function B's rate of change from the table: (7 - 4) / (1 - 0).",
+      "Compare the slopes."
+    ],
+    "solution": "Function A slope = 2. Function B slope = (7 - 4) / (1 - 0) = 3. Since 3 > 2, Function B has the greater rate of change.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "compare-linear-functions-p4",
+    "topicId": "compare-linear-functions",
+    "difficulty": "medium",
+    "question": "Function A: y = 4x - 3. Function B: a line passes through (0, 5) and (2, 9). Which function has the greater y-intercept?",
+    "answer": "Function B",
+    "hints": [
+      "Function A's y-intercept is -3. What is Function B's y-intercept?",
+      "Function B passes through (0, 5), so its y-intercept is 5."
+    ],
+    "solution": "Function A: b = -3. Function B passes through (0, 5), so b = 5. Since 5 > -3, Function B has the greater y-intercept.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "compare-linear-functions-p5",
+    "topicId": "compare-linear-functions",
+    "difficulty": "hard",
+    "question": "Function A: y = 3x + 1. Function B is given by the table: x = 0, y = 5; x = 2, y = 9; x = 4, y = 13. For what value of x do both functions produce the same output?",
+    "answer": "4",
+    "hints": [
+      "First find Function B's equation from the table.",
+      "Function B: slope = (9 - 5) / (2 - 0) = 2. Y-intercept = 5. So Function B is y = 2x + 5.",
+      "Set the two equations equal: 3x + 1 = 2x + 5."
+    ],
+    "solution": "Function B: slope = (9 - 5)/(2 - 0) = 2, y-intercept = 5, so y = 2x + 5. Set equal: 3x + 1 = 2x + 5. Subtract 2x: x + 1 = 5. x = 4. Both give y = 13.",
+    "cognitiveDemand": "reasoning"
+  }
+]

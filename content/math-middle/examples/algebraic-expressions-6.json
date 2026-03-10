@@ -1,0 +1,58 @@
+[
+  {
+    "id": "algebraic-expressions-6-ex1",
+    "topicId": "algebraic-expressions-6",
+    "title": "Translating 'Eight more than triple a number' to an Expression",
+    "steps": [
+      {
+        "subgoalLabel": "Choose a variable",
+        "instruction": "Pick a letter to represent the unknown number.",
+        "work": "Let x = the number.",
+        "explanation": "We use a variable to stand for the unknown quantity."
+      },
+      {
+        "subgoalLabel": "Translate 'triple a number'",
+        "instruction": "Write 'triple x' in algebraic form.",
+        "work": "3x",
+        "explanation": "'Triple' means multiply by 3, so triple x is 3x."
+      },
+      {
+        "subgoalLabel": "Translate 'eight more than'",
+        "instruction": "Add 8 to the previous result.",
+        "work": "3x + 8",
+        "explanation": "'More than' means addition. We add 8 to 3x."
+      }
+    ]
+  },
+  {
+    "id": "algebraic-expressions-6-ex2",
+    "topicId": "algebraic-expressions-6",
+    "title": "Writing an Expression from a Real-World Situation",
+    "steps": [
+      {
+        "subgoalLabel": "Read the situation",
+        "instruction": "A taxi charges $4 plus $2 per mile. Write an expression for the cost of a ride of m miles.",
+        "work": "Fixed charge: $4. Per-mile charge: $2 per mile.",
+        "explanation": "Identify the constant part and the variable part."
+      },
+      {
+        "subgoalLabel": "Write the variable part",
+        "instruction": "Express the per-mile cost for m miles.",
+        "work": "2m",
+        "explanation": "Each mile costs $2, so m miles cost 2 × m = 2m dollars."
+      },
+      {
+        "subgoalLabel": "Combine into one expression",
+        "instruction": "Add the fixed charge and the variable charge.",
+        "work": "4 + 2m",
+        "explanation": "The total cost is the $4 base plus $2 per mile: 4 + 2m."
+      },
+      {
+        "subgoalLabel": "Verify with a test value",
+        "instruction": "Check: what is the cost for 3 miles?",
+        "work": "4 + 2(3) = 4 + 6 = 10. A $4 base plus $2 × 3 = $10. ✓",
+        "explanation": "Substituting a simple value confirms the expression matches the situation."
+      }
+    ]
+  }
+]

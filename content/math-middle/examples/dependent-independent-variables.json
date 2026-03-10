@@ -1,0 +1,58 @@
+[
+  {
+    "id": "dependent-independent-variables-ex1",
+    "topicId": "dependent-independent-variables",
+    "title": "Identifying Variables: Lemonade Stand Profit",
+    "steps": [
+      {
+        "subgoalLabel": "Read the scenario",
+        "instruction": "A lemonade stand earns $2 per cup sold. The equation is p = 2c, where c = cups sold and p = profit.",
+        "work": "c = cups sold, p = profit in dollars.",
+        "explanation": "Identify both variables and what they represent."
+      },
+      {
+        "subgoalLabel": "Determine which you control",
+        "instruction": "Which variable can you choose freely?",
+        "work": "You decide how many cups to sell (c).",
+        "explanation": "The independent variable is the input — what you choose or set."
+      },
+      {
+        "subgoalLabel": "Determine which depends on the other",
+        "instruction": "Which variable is calculated?",
+        "work": "Profit (p) is calculated from c. So p is dependent.",
+        "explanation": "The dependent variable changes based on the independent variable."
+      },
+      {
+        "subgoalLabel": "Make a table to confirm",
+        "instruction": "Compute p for c = 1, 2, 3.",
+        "work": "c = 1 → p = 2. c = 2 → p = 4. c = 3 → p = 6.",
+        "explanation": "As c changes, p changes accordingly — confirming p depends on c."
+      }
+    ]
+  },
+  {
+    "id": "dependent-independent-variables-ex2",
+    "topicId": "dependent-independent-variables",
+    "title": "Using a Table to Identify Variables and Write an Equation",
+    "steps": [
+      {
+        "subgoalLabel": "Examine the data",
+        "instruction": "Given: x = 1 → y = 5, x = 2 → y = 8, x = 3 → y = 11.",
+        "work": "As x increases by 1, y increases by 3.",
+        "explanation": "Look for a pattern in how y changes relative to x."
+      },
+      {
+        "subgoalLabel": "Write the equation",
+        "instruction": "y starts at 5 when x = 1, and increases by 3 each time.",
+        "work": "y = 3x + 2",
+        "explanation": "Check: 3(1) + 2 = 5. 3(2) + 2 = 8. 3(3) + 2 = 11. ✓"
+      },
+      {
+        "subgoalLabel": "Identify the variables",
+        "instruction": "Which is independent and which is dependent?",
+        "work": "x is independent (input). y is dependent (output, calculated from x).",
+        "explanation": "In an equation y = ..., x is typically independent and y is dependent."
+      }
+    ]
+  }
+]

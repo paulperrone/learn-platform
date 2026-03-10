@@ -1,0 +1,52 @@
+[
+  {
+    "id": "simple-interest-ex1",
+    "topicId": "simple-interest",
+    "title": "Calculating Simple Interest Using I = Prt",
+    "steps": [
+      {
+        "subgoalLabel": "Identify the variables",
+        "instruction": "You invest $600 at 5% simple interest for 4 years. Find the interest earned.",
+        "work": "P = $600, r = 5% = 0.05, t = 4 years.",
+        "explanation": "P is the principal (starting amount), r is the annual interest rate as a decimal, and t is time in years."
+      },
+      {
+        "subgoalLabel": "Substitute into the formula",
+        "instruction": "Plug the values into I = Prt.",
+        "work": "I = 600 × 0.05 × 4",
+        "explanation": "Multiply all three values together."
+      },
+      {
+        "subgoalLabel": "Calculate",
+        "instruction": "Compute the result.",
+        "work": "I = 600 × 0.05 = 30, then 30 × 4 = $120.",
+        "explanation": "The interest earned over 4 years is $120. The total in the account would be $600 + $120 = $720."
+      }
+    ]
+  },
+  {
+    "id": "simple-interest-ex2",
+    "topicId": "simple-interest",
+    "title": "Finding the Principal from Interest Earned",
+    "steps": [
+      {
+        "subgoalLabel": "Identify what's given and what's unknown",
+        "instruction": "A loan earned $180 in simple interest at 3% per year over 4 years. Find the principal.",
+        "work": "I = $180, r = 0.03, t = 4. P = unknown.",
+        "explanation": "We know the interest, rate, and time. We need to find the principal."
+      },
+      {
+        "subgoalLabel": "Rearrange the formula",
+        "instruction": "Solve I = Prt for P.",
+        "work": "P = I / (r × t)",
+        "explanation": "Divide both sides of the equation by rt to isolate P."
+      },
+      {
+        "subgoalLabel": "Calculate",
+        "instruction": "Substitute and compute.",
+        "work": "P = 180 / (0.03 × 4) = 180 / 0.12 = $1,500.",
+        "explanation": "The original principal was $1,500. Check: $1,500 × 0.03 × 4 = $180. Correct."
+      }
+    ]
+  }
+]

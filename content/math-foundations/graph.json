@@ -714,6 +714,216 @@
       "strand": "measurement-data",
       "contentDepth": "survey",
       "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "prime-composite-numbers",
+      "name": "Prime and Composite Numbers",
+      "description": "Determine whether a whole number is prime or composite by finding its factors.",
+      "gradeLevel": 4,
+      "standardCode": "4.OA.4",
+      "strand": "number-base",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "greatest-common-factor",
+      "name": "Greatest Common Factor",
+      "description": "Find the greatest common factor (GCF) of two whole numbers up to 100.",
+      "gradeLevel": 4,
+      "standardCode": "4.OA.4",
+      "strand": "number-base",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "least-common-multiple",
+      "name": "Least Common Multiple",
+      "description": "Find the least common multiple (LCM) of two whole numbers up to 12.",
+      "gradeLevel": 4,
+      "standardCode": "4.OA.4",
+      "strand": "number-base",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "improper-fractions-mixed-numbers",
+      "name": "Improper Fractions and Mixed Numbers",
+      "description": "Convert between improper fractions and mixed numbers.",
+      "gradeLevel": 4,
+      "standardCode": "4.NF.3b",
+      "strand": "fractions",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "add-subtract-mixed-numbers",
+      "name": "Add and Subtract Mixed Numbers",
+      "description": "Add and subtract mixed numbers with like denominators, including regrouping.",
+      "gradeLevel": 4,
+      "standardCode": "4.NF.3c",
+      "strand": "fractions",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "add-subtract-mixed-numbers-unlike",
+      "name": "Add and Subtract Mixed Numbers (Unlike Denominators)",
+      "description": "Add and subtract mixed numbers with unlike denominators using equivalent fractions.",
+      "gradeLevel": 5,
+      "standardCode": "5.NF.1",
+      "strand": "fractions",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "multiply-mixed-numbers",
+      "name": "Multiply Mixed Numbers",
+      "description": "Multiply mixed numbers by converting to improper fractions and simplifying.",
+      "gradeLevel": 5,
+      "standardCode": "5.NF.6",
+      "strand": "fractions",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "fraction-decimal-equivalence",
+      "name": "Fraction-Decimal Equivalence",
+      "description": "Convert between fractions and decimals, including common benchmark fractions.",
+      "gradeLevel": 4,
+      "standardCode": "4.NF.6",
+      "strand": "fractions",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "compare-decimals",
+      "name": "Compare Decimals",
+      "description": "Compare two decimals to hundredths using place value understanding and symbols <, >, =.",
+      "gradeLevel": 4,
+      "standardCode": "4.NF.7",
+      "strand": "number-base",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "round-decimals",
+      "name": "Round Decimals",
+      "description": "Round decimals to any place value using place value understanding.",
+      "gradeLevel": 5,
+      "standardCode": "5.NBT.4",
+      "strand": "number-base",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "powers-of-ten",
+      "name": "Powers of Ten",
+      "description": "Explain patterns when multiplying or dividing by powers of 10, and use whole-number exponents to denote powers of 10.",
+      "gradeLevel": 5,
+      "standardCode": "5.NBT.2",
+      "strand": "number-base",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "exponents-intro",
+      "name": "Exponents (Introduction)",
+      "description": "Evaluate numerical expressions involving whole-number exponents.",
+      "gradeLevel": 5,
+      "standardCode": "5.NBT.2",
+      "strand": "number-base",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "estimation-addition-subtraction",
+      "name": "Estimate Sums and Differences",
+      "description": "Use rounding and compatible numbers to estimate sums and differences.",
+      "gradeLevel": 3,
+      "standardCode": "3.OA.8",
+      "strand": "operations-addition",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "estimation-multiplication-division",
+      "name": "Estimate Products and Quotients",
+      "description": "Use rounding and compatible numbers to estimate products and quotients.",
+      "gradeLevel": 4,
+      "standardCode": "4.OA.3",
+      "strand": "operations-multiplication",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "points-lines-rays",
+      "name": "Points, Lines, Rays, and Segments",
+      "description": "Identify and describe points, lines, line segments, and rays.",
+      "gradeLevel": 4,
+      "standardCode": "4.G.1",
+      "strand": "geometry",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "parallel-perpendicular-lines",
+      "name": "Parallel and Perpendicular Lines",
+      "description": "Identify and draw parallel and perpendicular lines in two-dimensional figures.",
+      "gradeLevel": 4,
+      "standardCode": "4.G.1",
+      "strand": "geometry",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "classify-triangles",
+      "name": "Classify Triangles",
+      "description": "Classify triangles by their side lengths (equilateral, isosceles, scalene) and angle measures (acute, right, obtuse).",
+      "gradeLevel": 4,
+      "standardCode": "4.G.2",
+      "strand": "geometry",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "area-composite-shapes",
+      "name": "Area of Composite Shapes",
+      "description": "Find the area of composite figures by decomposing them into non-overlapping rectangles.",
+      "gradeLevel": 5,
+      "standardCode": "3.MD.7d",
+      "strand": "geometry",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "mean-median-mode",
+      "name": "Mean, Median, and Mode",
+      "description": "Find the mean, median, and mode of a data set and understand what each measure tells us.",
+      "gradeLevel": 5,
+      "standardCode": "6.SP.3",
+      "strand": "measurement-data",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "number-patterns-sequences",
+      "name": "Number Patterns and Sequences",
+      "description": "Generate and analyze number patterns using given rules, and identify relationships between corresponding terms.",
+      "gradeLevel": 4,
+      "standardCode": "4.OA.5",
+      "strand": "algebra-thinking",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "numerical-expressions-grouping",
+      "name": "Numerical Expressions with Grouping Symbols",
+      "description": "Evaluate numerical expressions containing parentheses, brackets, and braces.",
+      "gradeLevel": 5,
+      "standardCode": "5.OA.1",
+      "strand": "algebra-thinking",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
     }
   ],
   "prerequisites": [
@@ -1256,6 +1466,196 @@
       "from": "measure-length-standard",
       "to": "unit-conversion",
       "strength": 0.7
+    },
+    {
+      "from": "factors-multiples",
+      "to": "prime-composite-numbers",
+      "strength": 1.0
+    },
+    {
+      "from": "factors-multiples",
+      "to": "greatest-common-factor",
+      "strength": 1.0
+    },
+    {
+      "from": "prime-composite-numbers",
+      "to": "greatest-common-factor",
+      "strength": 1.0
+    },
+    {
+      "from": "factors-multiples",
+      "to": "least-common-multiple",
+      "strength": 1.0
+    },
+    {
+      "from": "prime-composite-numbers",
+      "to": "least-common-multiple",
+      "strength": 1.0
+    },
+    {
+      "from": "intro-fractions",
+      "to": "improper-fractions-mixed-numbers",
+      "strength": 1.0
+    },
+    {
+      "from": "fractions-number-line",
+      "to": "improper-fractions-mixed-numbers",
+      "strength": 1.0
+    },
+    {
+      "from": "add-subtract-fractions",
+      "to": "add-subtract-mixed-numbers",
+      "strength": 1.0
+    },
+    {
+      "from": "improper-fractions-mixed-numbers",
+      "to": "add-subtract-mixed-numbers",
+      "strength": 1.0
+    },
+    {
+      "from": "add-subtract-fractions-unlike",
+      "to": "add-subtract-mixed-numbers-unlike",
+      "strength": 1.0
+    },
+    {
+      "from": "add-subtract-mixed-numbers",
+      "to": "add-subtract-mixed-numbers-unlike",
+      "strength": 1.0
+    },
+    {
+      "from": "multiply-fractions",
+      "to": "multiply-mixed-numbers",
+      "strength": 1.0
+    },
+    {
+      "from": "improper-fractions-mixed-numbers",
+      "to": "multiply-mixed-numbers",
+      "strength": 1.0
+    },
+    {
+      "from": "decimals-intro",
+      "to": "fraction-decimal-equivalence",
+      "strength": 1.0
+    },
+    {
+      "from": "equivalent-fractions-4",
+      "to": "fraction-decimal-equivalence",
+      "strength": 1.0
+    },
+    {
+      "from": "decimals-intro",
+      "to": "compare-decimals",
+      "strength": 1.0
+    },
+    {
+      "from": "place-value-decimals",
+      "to": "compare-decimals",
+      "strength": 1.0
+    },
+    {
+      "from": "place-value-decimals",
+      "to": "round-decimals",
+      "strength": 1.0
+    },
+    {
+      "from": "place-value-rounding",
+      "to": "round-decimals",
+      "strength": 1.0
+    },
+    {
+      "from": "place-value-decimals",
+      "to": "powers-of-ten",
+      "strength": 1.0
+    },
+    {
+      "from": "multiply-within-100",
+      "to": "powers-of-ten",
+      "strength": 1.0
+    },
+    {
+      "from": "powers-of-ten",
+      "to": "exponents-intro",
+      "strength": 1.0
+    },
+    {
+      "from": "multiply-within-100",
+      "to": "exponents-intro",
+      "strength": 1.0
+    },
+    {
+      "from": "place-value-rounding",
+      "to": "estimation-addition-subtraction",
+      "strength": 1.0
+    },
+    {
+      "from": "add-within-1000",
+      "to": "estimation-addition-subtraction",
+      "strength": 1.0
+    },
+    {
+      "from": "place-value-rounding",
+      "to": "estimation-multiplication-division",
+      "strength": 1.0
+    },
+    {
+      "from": "multiply-within-100",
+      "to": "estimation-multiplication-division",
+      "strength": 1.0
+    },
+    {
+      "from": "shapes-2d-k",
+      "to": "points-lines-rays",
+      "strength": 1.0
+    },
+    {
+      "from": "points-lines-rays",
+      "to": "parallel-perpendicular-lines",
+      "strength": 1.0
+    },
+    {
+      "from": "angles-intro",
+      "to": "classify-triangles",
+      "strength": 1.0
+    },
+    {
+      "from": "classify-2d-shapes",
+      "to": "classify-triangles",
+      "strength": 1.0
+    },
+    {
+      "from": "area-multiply",
+      "to": "area-composite-shapes",
+      "strength": 1.0
+    },
+    {
+      "from": "perimeter",
+      "to": "area-composite-shapes",
+      "strength": 1.0
+    },
+    {
+      "from": "add-within-1000",
+      "to": "mean-median-mode",
+      "strength": 1.0
+    },
+    {
+      "from": "long-division",
+      "to": "mean-median-mode",
+      "strength": 1.0
+    },
+    {
+      "from": "patterns-arithmetic",
+      "to": "number-patterns-sequences",
+      "strength": 1.0
+    },
+    {
+      "from": "multiply-within-100",
+      "to": "number-patterns-sequences",
+      "strength": 1.0
+    },
+    {
+      "from": "order-of-operations",
+      "to": "numerical-expressions-grouping",
+      "strength": 1.0
     }
   ],
   "encompassings": [
@@ -1923,6 +2323,156 @@
       "parent": "teen-numbers",
       "child": "count-to-10",
       "weight": 0.5
+    },
+    {
+      "parent": "greatest-common-factor",
+      "child": "factors-multiples",
+      "weight": 0.7
+    },
+    {
+      "parent": "least-common-multiple",
+      "child": "factors-multiples",
+      "weight": 0.7
+    },
+    {
+      "parent": "greatest-common-factor",
+      "child": "prime-composite-numbers",
+      "weight": 0.5
+    },
+    {
+      "parent": "least-common-multiple",
+      "child": "prime-composite-numbers",
+      "weight": 0.5
+    },
+    {
+      "parent": "add-subtract-mixed-numbers",
+      "child": "add-subtract-fractions",
+      "weight": 0.7
+    },
+    {
+      "parent": "add-subtract-mixed-numbers",
+      "child": "improper-fractions-mixed-numbers",
+      "weight": 0.6
+    },
+    {
+      "parent": "add-subtract-mixed-numbers-unlike",
+      "child": "add-subtract-mixed-numbers",
+      "weight": 0.8
+    },
+    {
+      "parent": "add-subtract-mixed-numbers-unlike",
+      "child": "add-subtract-fractions-unlike",
+      "weight": 0.6
+    },
+    {
+      "parent": "multiply-mixed-numbers",
+      "child": "multiply-fractions",
+      "weight": 0.7
+    },
+    {
+      "parent": "multiply-mixed-numbers",
+      "child": "improper-fractions-mixed-numbers",
+      "weight": 0.6
+    },
+    {
+      "parent": "fraction-decimal-equivalence",
+      "child": "decimals-intro",
+      "weight": 0.5
+    },
+    {
+      "parent": "fraction-decimal-equivalence",
+      "child": "equivalent-fractions-4",
+      "weight": 0.5
+    },
+    {
+      "parent": "compare-decimals",
+      "child": "decimals-intro",
+      "weight": 0.6
+    },
+    {
+      "parent": "round-decimals",
+      "child": "place-value-decimals",
+      "weight": 0.6
+    },
+    {
+      "parent": "round-decimals",
+      "child": "place-value-rounding",
+      "weight": 0.5
+    },
+    {
+      "parent": "powers-of-ten",
+      "child": "place-value-decimals",
+      "weight": 0.6
+    },
+    {
+      "parent": "exponents-intro",
+      "child": "multiply-within-100",
+      "weight": 0.5
+    },
+    {
+      "parent": "exponents-intro",
+      "child": "powers-of-ten",
+      "weight": 0.7
+    },
+    {
+      "parent": "estimation-addition-subtraction",
+      "child": "place-value-rounding",
+      "weight": 0.5
+    },
+    {
+      "parent": "estimation-multiplication-division",
+      "child": "estimation-addition-subtraction",
+      "weight": 0.6
+    },
+    {
+      "parent": "estimation-multiplication-division",
+      "child": "place-value-rounding",
+      "weight": 0.5
+    },
+    {
+      "parent": "parallel-perpendicular-lines",
+      "child": "points-lines-rays",
+      "weight": 0.7
+    },
+    {
+      "parent": "classify-triangles",
+      "child": "angles-intro",
+      "weight": 0.5
+    },
+    {
+      "parent": "classify-triangles",
+      "child": "classify-2d-shapes",
+      "weight": 0.6
+    },
+    {
+      "parent": "area-composite-shapes",
+      "child": "area-multiply",
+      "weight": 0.7
+    },
+    {
+      "parent": "area-composite-shapes",
+      "child": "perimeter",
+      "weight": 0.5
+    },
+    {
+      "parent": "mean-median-mode",
+      "child": "add-within-1000",
+      "weight": 0.3
+    },
+    {
+      "parent": "mean-median-mode",
+      "child": "long-division",
+      "weight": 0.3
+    },
+    {
+      "parent": "number-patterns-sequences",
+      "child": "patterns-arithmetic",
+      "weight": 0.7
+    },
+    {
+      "parent": "numerical-expressions-grouping",
+      "child": "order-of-operations",
+      "weight": 0.8
     }
   ]
 }

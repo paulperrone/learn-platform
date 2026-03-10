@@ -1,0 +1,58 @@
+[
+  {
+    "id": "distributive-property-ex1",
+    "topicId": "distributive-property",
+    "title": "Expanding 6(2x − 3) Using the Distributive Property",
+    "steps": [
+      {
+        "subgoalLabel": "Identify the multiplier and terms",
+        "instruction": "What is being multiplied, and what are the terms inside?",
+        "work": "Multiplier: 6. Terms inside: 2x and −3.",
+        "explanation": "The distributive property says a(b + c) = ab + ac."
+      },
+      {
+        "subgoalLabel": "Multiply the first term",
+        "instruction": "Multiply 6 by 2x.",
+        "work": "6 · 2x = 12x",
+        "explanation": "Multiply the coefficients: 6 × 2 = 12. The variable x stays."
+      },
+      {
+        "subgoalLabel": "Multiply the second term",
+        "instruction": "Multiply 6 by −3.",
+        "work": "6 · (−3) = −18",
+        "explanation": "A positive times a negative is negative."
+      },
+      {
+        "subgoalLabel": "Write the expanded form",
+        "instruction": "Combine the results.",
+        "work": "6(2x − 3) = 12x − 18",
+        "explanation": "The expanded expression is 12x − 18."
+      }
+    ]
+  },
+  {
+    "id": "distributive-property-ex2",
+    "topicId": "distributive-property",
+    "title": "Factoring 15y + 10 Using the Distributive Property in Reverse",
+    "steps": [
+      {
+        "subgoalLabel": "Find the GCF",
+        "instruction": "Find the greatest common factor of 15y and 10.",
+        "work": "Factors of 15: 1, 3, 5, 15. Factors of 10: 1, 2, 5, 10. GCF = 5.",
+        "explanation": "The GCF is the largest number that divides both terms."
+      },
+      {
+        "subgoalLabel": "Divide each term by the GCF",
+        "instruction": "Divide 15y and 10 each by 5.",
+        "work": "15y ÷ 5 = 3y. 10 ÷ 5 = 2.",
+        "explanation": "These become the terms inside the parentheses."
+      },
+      {
+        "subgoalLabel": "Write the factored form",
+        "instruction": "Put the GCF outside and the quotients inside.",
+        "work": "15y + 10 = 5(3y + 2)",
+        "explanation": "Factoring is the reverse of distributing. You can check by expanding: 5(3y + 2) = 15y + 10."
+      }
+    ]
+  }
+]

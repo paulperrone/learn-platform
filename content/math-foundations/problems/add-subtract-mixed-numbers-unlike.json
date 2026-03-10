@@ -1,0 +1,67 @@
+[
+  {
+    "id": "add-subtract-mixed-numbers-unlike-p1",
+    "topicId": "add-subtract-mixed-numbers-unlike",
+    "difficulty": "easy",
+    "question": "What is 1 1/2 + 2 1/4?",
+    "answer": "3 3/4",
+    "hints": [
+      "Find a common denominator for 1/2 and 1/4. The LCD is 4.",
+      "Rewrite 1/2 as 2/4. Now add: 1 2/4 + 2 1/4."
+    ],
+    "solution": "Find a common denominator: LCD of 2 and 4 is 4. Rewrite: 1 2/4 + 2 1/4. Add whole numbers: 1 + 2 = 3. Add fractions: 2/4 + 1/4 = 3/4. The answer is 3 3/4.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "add-subtract-mixed-numbers-unlike-p2",
+    "topicId": "add-subtract-mixed-numbers-unlike",
+    "difficulty": "easy",
+    "question": "What is 4 2/3 - 1 1/6?",
+    "answer": "3 3/6",
+    "hints": [
+      "Find a common denominator for 2/3 and 1/6. The LCD is 6.",
+      "Rewrite 2/3 as 4/6. Now subtract: 4 4/6 - 1 1/6."
+    ],
+    "solution": "Find a common denominator: LCD of 3 and 6 is 6. Rewrite: 4 4/6 - 1 1/6. Subtract whole numbers: 4 - 1 = 3. Subtract fractions: 4/6 - 1/6 = 3/6. The answer is 3 3/6 (or equivalently 3 1/2).",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "add-subtract-mixed-numbers-unlike-p3",
+    "topicId": "add-subtract-mixed-numbers-unlike",
+    "difficulty": "medium",
+    "question": "What is 3 2/3 + 4 3/4?",
+    "answer": "8 5/12",
+    "hints": [
+      "The LCD of 3 and 4 is 12. Rewrite the fractions: 2/3 = 8/12 and 3/4 = 9/12.",
+      "Add: 3 8/12 + 4 9/12. The fractions sum to 17/12, which is more than 1."
+    ],
+    "solution": "LCD of 3 and 4 is 12. Rewrite: 3 8/12 + 4 9/12. Add whole numbers: 3 + 4 = 7. Add fractions: 8/12 + 9/12 = 17/12 = 1 5/12. Combine: 7 + 1 5/12 = 8 5/12.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "add-subtract-mixed-numbers-unlike-p4",
+    "topicId": "add-subtract-mixed-numbers-unlike",
+    "difficulty": "medium",
+    "question": "What is 6 1/4 - 2 2/3?",
+    "answer": "3 7/12",
+    "hints": [
+      "LCD of 4 and 3 is 12. Rewrite: 6 3/12 - 2 8/12. Since 3/12 < 8/12, you need to regroup.",
+      "Borrow 1 from the 6: 6 3/12 = 5 15/12. Now subtract: 5 15/12 - 2 8/12."
+    ],
+    "solution": "LCD of 4 and 3 is 12. Rewrite: 6 3/12 - 2 8/12. Since 3/12 < 8/12, regroup: 6 3/12 = 5 15/12. Subtract: 5 - 2 = 3, and 15/12 - 8/12 = 7/12. The answer is 3 7/12.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "add-subtract-mixed-numbers-unlike-p5",
+    "topicId": "add-subtract-mixed-numbers-unlike",
+    "difficulty": "hard",
+    "question": "A carpenter has a board that is 9 1/3 feet long. She cuts off two pieces: one that is 2 3/4 feet and one that is 3 1/6 feet. How much board is left? Give your answer as a mixed number with a denominator of 12.",
+    "answer": "3 5/12",
+    "hints": [
+      "First find the total length cut: 2 3/4 + 3 1/6. Then subtract that from 9 1/3.",
+      "LCD of 3, 4, and 6 is 12. Convert all fractions to twelfths: 1/3 = 4/12, 3/4 = 9/12, 1/6 = 2/12."
+    ],
+    "solution": "Convert to twelfths (LCD = 12): 9 4/12 - 2 9/12 - 3 2/12. First subtract: 2 9/12 + 3 2/12 = 5 11/12. Then: 9 4/12 - 5 11/12. Regroup: 9 4/12 = 8 16/12. Subtract: 8 16/12 - 5 11/12 = 3 5/12.",
+    "cognitiveDemand": "application"
+  }
+]

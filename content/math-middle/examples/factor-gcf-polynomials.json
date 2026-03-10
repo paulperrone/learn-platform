@@ -1,0 +1,52 @@
+[
+  {
+    "id": "factor-gcf-polynomials-ex1",
+    "topicId": "factor-gcf-polynomials",
+    "title": "Factoring Out the GCF",
+    "steps": [
+      {
+        "subgoalLabel": "Find the GCF",
+        "instruction": "For 8x³ + 12x², find the greatest common factor of all terms.",
+        "work": "GCF of 8 and 12 = 4. Both have at least x². GCF = 4x².",
+        "explanation": "The GCF includes the largest number that divides all coefficients and the lowest power of each variable."
+      },
+      {
+        "subgoalLabel": "Divide each term",
+        "instruction": "Divide each term by the GCF.",
+        "work": "8x³ ÷ 4x² = 2x. 12x² ÷ 4x² = 3.",
+        "explanation": "These quotients go inside the parentheses."
+      },
+      {
+        "subgoalLabel": "Write the factored form",
+        "instruction": "GCF × (quotients).",
+        "work": "4x²(2x + 3)",
+        "explanation": "Verify by distributing: 4x²(2x) + 4x²(3) = 8x³ + 12x². Correct!"
+      }
+    ]
+  },
+  {
+    "id": "factor-gcf-polynomials-ex2",
+    "topicId": "factor-gcf-polynomials",
+    "title": "Factoring a Three-Term Polynomial",
+    "steps": [
+      {
+        "subgoalLabel": "Find the GCF",
+        "instruction": "Factor 6x⁴ − 9x³ + 3x².",
+        "work": "GCF of 6, 9, 3 = 3. Lowest x power = x². GCF = 3x².",
+        "explanation": "Check each coefficient and each variable separately."
+      },
+      {
+        "subgoalLabel": "Divide each term",
+        "instruction": "Divide every term by 3x².",
+        "work": "6x⁴ ÷ 3x² = 2x². −9x³ ÷ 3x² = −3x. 3x² ÷ 3x² = 1.",
+        "explanation": "Don't forget the last term becomes 1, not 0."
+      },
+      {
+        "subgoalLabel": "Write and verify",
+        "instruction": "Write the factored form and check by distributing.",
+        "work": "3x²(2x² − 3x + 1). Check: 3x²(2x²) − 3x²(3x) + 3x²(1) = 6x⁴ − 9x³ + 3x².",
+        "explanation": "Always verify your factoring by multiplying back out."
+      }
+    ]
+  }
+]

@@ -1,0 +1,52 @@
+[
+  {
+    "id": "volume-prisms-ex1",
+    "topicId": "volume-prisms",
+    "title": "Volume of a Rectangular Prism",
+    "steps": [
+      {
+        "subgoalLabel": "Recall the formula",
+        "instruction": "Volume of a rectangular prism = length × width × height.",
+        "work": "V = l × w × h",
+        "explanation": "Volume measures how much space a 3D shape occupies, in cubic units."
+      },
+      {
+        "subgoalLabel": "Substitute",
+        "instruction": "A box is 8 cm long, 5 cm wide, and 3 cm tall.",
+        "work": "V = 8 × 5 × 3",
+        "explanation": "Plug in the three dimensions."
+      },
+      {
+        "subgoalLabel": "Calculate",
+        "instruction": "Multiply.",
+        "work": "V = 120 cu cm",
+        "explanation": "The box holds 120 cubic centimeters."
+      }
+    ]
+  },
+  {
+    "id": "volume-prisms-ex2",
+    "topicId": "volume-prisms",
+    "title": "Volume of a Triangular Prism",
+    "steps": [
+      {
+        "subgoalLabel": "Find the base area",
+        "instruction": "A triangular prism has a triangular cross-section with base 6 cm and height 4 cm.",
+        "work": "Base area = 1/2 × 6 × 4 = 12 sq cm",
+        "explanation": "First find the area of the triangular face."
+      },
+      {
+        "subgoalLabel": "Multiply by length",
+        "instruction": "The prism is 15 cm long.",
+        "work": "V = 12 × 15 = 180 cu cm",
+        "explanation": "Volume of any prism = base area × length (or height of the prism)."
+      },
+      {
+        "subgoalLabel": "State the answer",
+        "instruction": "Write the volume with cubic units.",
+        "work": "V = 180 cu cm",
+        "explanation": "Always use cubic units for volume."
+      }
+    ]
+  }
+]

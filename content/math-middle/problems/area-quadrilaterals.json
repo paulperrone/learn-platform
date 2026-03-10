@@ -1,0 +1,65 @@
+[
+  {
+    "id": "area-quadrilaterals-p1",
+    "topicId": "area-quadrilaterals",
+    "difficulty": "easy",
+    "question": "A parallelogram has a base of 9 cm and a height of 5 cm. What is its area?",
+    "answer": "45 sq cm",
+    "hints": [
+      "Area of a parallelogram = base × height."
+    ],
+    "solution": "Area = 9 × 5 = 45 sq cm.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "area-quadrilaterals-p2",
+    "topicId": "area-quadrilaterals",
+    "difficulty": "easy",
+    "question": "A parallelogram has a base of 12 in and a height of 4 in. What is its area?",
+    "answer": "48 sq in",
+    "hints": [
+      "Area = base × height. The slanted side is not the height."
+    ],
+    "solution": "Area = 12 × 4 = 48 sq in.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "area-quadrilaterals-p3",
+    "topicId": "area-quadrilaterals",
+    "difficulty": "medium",
+    "question": "A trapezoid has parallel sides (bases) of 6 cm and 10 cm, and a height of 4 cm. What is its area?",
+    "answer": "32 sq cm",
+    "hints": [
+      "Area of a trapezoid = 1/2 × (base1 + base2) × height.",
+      "1/2 × (6 + 10) × 4 = ?"
+    ],
+    "solution": "Area = 1/2 × (6 + 10) × 4 = 1/2 × 16 × 4 = 32 sq cm.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "area-quadrilaterals-p4",
+    "topicId": "area-quadrilaterals",
+    "difficulty": "medium",
+    "question": "A parallelogram has an area of 60 sq cm and a height of 6 cm. What is the length of its base?",
+    "answer": "10 cm",
+    "hints": [
+      "Area = base × height. Solve for base.",
+      "60 = base × 6."
+    ],
+    "solution": "60 = base × 6 → base = 60 ÷ 6 = 10 cm.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "area-quadrilaterals-p5",
+    "topicId": "area-quadrilaterals",
+    "difficulty": "hard",
+    "question": "A trapezoid has an area of 54 sq cm, a height of 6 cm, and one base of 7 cm. What is the length of the other base?",
+    "answer": "11 cm",
+    "hints": [
+      "Area = 1/2 × (b1 + b2) × h. Plug in what you know and solve.",
+      "54 = 1/2 × (7 + b2) × 6 → 54 = 3(7 + b2)."
+    ],
+    "solution": "54 = 1/2 × (7 + b2) × 6 → 54 = 3(7 + b2) → 18 = 7 + b2 → b2 = 11 cm.",
+    "cognitiveDemand": "conceptual"
+  }
+]

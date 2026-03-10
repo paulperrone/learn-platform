@@ -1,0 +1,65 @@
+[
+  {
+    "id": "proportions-intro-p1",
+    "topicId": "proportions-intro",
+    "difficulty": "easy",
+    "question": "Solve for x: 3/4 = x/12",
+    "answer": "9",
+    "hints": [
+      "Cross-multiply: 3 × 12 = 4 × x."
+    ],
+    "solution": "Cross-multiply: 3 × 12 = 4x → 36 = 4x → x = 9.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "proportions-intro-p2",
+    "topicId": "proportions-intro",
+    "difficulty": "easy",
+    "question": "Solve for x: x/5 = 6/10",
+    "answer": "3",
+    "hints": [
+      "Cross-multiply: x × 10 = 5 × 6."
+    ],
+    "solution": "Cross-multiply: 10x = 30 → x = 3.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "proportions-intro-p3",
+    "topicId": "proportions-intro",
+    "difficulty": "medium",
+    "question": "Solve for x: 5/8 = 15/x",
+    "answer": "24",
+    "hints": [
+      "Cross-multiply: 5 × x = 8 × 15.",
+      "5x = 120. Divide both sides by 5."
+    ],
+    "solution": "5x = 8 × 15 = 120. x = 120 ÷ 5 = 24.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "proportions-intro-p4",
+    "topicId": "proportions-intro",
+    "difficulty": "medium",
+    "question": "Solve for x: 7/x = 21/27",
+    "answer": "9",
+    "hints": [
+      "Cross-multiply: 7 × 27 = x × 21.",
+      "189 = 21x. Divide both sides by 21."
+    ],
+    "solution": "7 × 27 = 21x → 189 = 21x → x = 9.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "proportions-intro-p5",
+    "topicId": "proportions-intro",
+    "difficulty": "hard",
+    "question": "A map shows that 2 inches represents 35 miles. Two cities are 5.5 inches apart on the map. How many miles apart are the cities?",
+    "answer": "96.25",
+    "hints": [
+      "Set up a proportion: 2/35 = 5.5/x.",
+      "Cross-multiply: 2x = 35 × 5.5."
+    ],
+    "solution": "2/35 = 5.5/x. Cross-multiply: 2x = 192.5. x = 96.25 miles.",
+    "cognitiveDemand": "application"
+  }
+]

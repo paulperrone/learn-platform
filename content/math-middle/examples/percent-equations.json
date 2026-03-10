@@ -1,0 +1,52 @@
+[
+  {
+    "id": "percent-equations-ex1",
+    "topicId": "percent-equations",
+    "title": "Finding the Whole When Given the Part and Percent",
+    "steps": [
+      {
+        "subgoalLabel": "Identify the known values",
+        "instruction": "24 is 60% of what number? Identify the part and the percent.",
+        "work": "Part = 24. Percent = 60% = 0.60. Whole = unknown.",
+        "explanation": "In percent problems there are three quantities: part, percent, and whole. We need to find the whole."
+      },
+      {
+        "subgoalLabel": "Set up the equation",
+        "instruction": "Use the formula: part = percent × whole.",
+        "work": "24 = 0.60 × whole",
+        "explanation": "We substitute the known values into the percent equation."
+      },
+      {
+        "subgoalLabel": "Solve for the whole",
+        "instruction": "Divide both sides by 0.60.",
+        "work": "whole = 24 ÷ 0.60 = 40",
+        "explanation": "24 is 60% of 40. Check: 0.60 × 40 = 24. Correct."
+      }
+    ]
+  },
+  {
+    "id": "percent-equations-ex2",
+    "topicId": "percent-equations",
+    "title": "Finding the Percent When Given the Part and Whole",
+    "steps": [
+      {
+        "subgoalLabel": "Identify the known values",
+        "instruction": "A class has 32 students. 8 of them are left-handed. What percent are left-handed?",
+        "work": "Part = 8. Whole = 32. Percent = unknown.",
+        "explanation": "We know the part (8 left-handed) and the whole (32 students)."
+      },
+      {
+        "subgoalLabel": "Divide part by whole",
+        "instruction": "Calculate the decimal.",
+        "work": "8 ÷ 32 = 0.25",
+        "explanation": "Dividing the part by the whole gives the percent as a decimal."
+      },
+      {
+        "subgoalLabel": "Convert to percent",
+        "instruction": "Multiply by 100.",
+        "work": "0.25 × 100 = 25%. So 25% of the class is left-handed.",
+        "explanation": "To convert a decimal to a percent, multiply by 100 (or move the decimal point two places right)."
+      }
+    ]
+  }
+]

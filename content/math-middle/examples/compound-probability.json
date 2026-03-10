@@ -1,0 +1,52 @@
+[
+  {
+    "id": "compound-probability-ex1",
+    "topicId": "compound-probability",
+    "title": "Independent Events",
+    "steps": [
+      {
+        "subgoalLabel": "Define independent events",
+        "instruction": "Two events are independent if the outcome of one does not affect the other.",
+        "work": "Example: flipping a coin and rolling a die. The coin result doesn't affect the die.",
+        "explanation": "For independent events, multiply probabilities: P(A and B) = P(A) × P(B)."
+      },
+      {
+        "subgoalLabel": "Calculate",
+        "instruction": "P(heads and rolling a 5)?",
+        "work": "P(heads) = 1/2. P(5) = 1/6. P(both) = 1/2 × 1/6 = 1/12.",
+        "explanation": "There are 12 equally likely outcomes (6 die × 2 coin), and only 1 is heads-and-5."
+      },
+      {
+        "subgoalLabel": "Another example",
+        "instruction": "Two dice are rolled. P(both show 6)?",
+        "work": "P(6 on first) = 1/6. P(6 on second) = 1/6. P(both) = 1/36.",
+        "explanation": "Each die is independent of the other."
+      }
+    ]
+  },
+  {
+    "id": "compound-probability-ex2",
+    "topicId": "compound-probability",
+    "title": "Dependent Events",
+    "steps": [
+      {
+        "subgoalLabel": "Define dependent events",
+        "instruction": "Events are dependent when the outcome of the first changes the probabilities for the second.",
+        "work": "Example: drawing two cards without replacement.",
+        "explanation": "After removing one item, the total and composition change."
+      },
+      {
+        "subgoalLabel": "Set up",
+        "instruction": "A bag has 6 red and 4 blue marbles. Draw two without replacement. P(both red)?",
+        "work": "P(1st red) = 6/10. After removing a red: 5 red, 4 blue remain. P(2nd red) = 5/9.",
+        "explanation": "The second probability depends on what happened first."
+      },
+      {
+        "subgoalLabel": "Calculate",
+        "instruction": "Multiply the probabilities.",
+        "work": "P(both red) = 6/10 × 5/9 = 30/90 = 1/3",
+        "explanation": "For dependent events: P(A and B) = P(A) × P(B given A)."
+      }
+    ]
+  }
+]

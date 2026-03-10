@@ -1,0 +1,52 @@
+[
+  {
+    "id": "scatter-plots-ex1",
+    "topicId": "scatter-plots",
+    "title": "Identifying Associations in Scatter Plots",
+    "steps": [
+      {
+        "subgoalLabel": "What is a scatter plot?",
+        "instruction": "A scatter plot shows the relationship between two numerical variables. Each point represents one data pair.",
+        "work": "x-axis: hours studied. y-axis: test score. Each dot is one student.",
+        "explanation": "Scatter plots help visualize whether two variables are related."
+      },
+      {
+        "subgoalLabel": "Types of association",
+        "instruction": "Look at the overall pattern of the dots.",
+        "work": "Positive: dots go up-right. Negative: dots go down-right. None: random scatter.",
+        "explanation": "The direction tells you whether variables increase or decrease together."
+      },
+      {
+        "subgoalLabel": "Strength",
+        "instruction": "How tightly do the dots follow a pattern?",
+        "work": "Tight cluster around a line = strong association. Wide scatter = weak association.",
+        "explanation": "Strong associations allow better predictions."
+      }
+    ]
+  },
+  {
+    "id": "scatter-plots-ex2",
+    "topicId": "scatter-plots",
+    "title": "Identifying Outliers and Clusters",
+    "steps": [
+      {
+        "subgoalLabel": "Look for outliers",
+        "instruction": "An outlier is a point far away from the general pattern.",
+        "work": "If most points cluster between (1,10) and (8,40), a point at (5,80) would be an outlier.",
+        "explanation": "Outliers may represent errors, unusual cases, or different subgroups."
+      },
+      {
+        "subgoalLabel": "Look for clusters",
+        "instruction": "Sometimes data forms distinct groups rather than one continuous trend.",
+        "work": "Example: a scatter plot might show two clusters — one group of young low-earners and one group of older high-earners.",
+        "explanation": "Clusters suggest the data may represent different subpopulations."
+      },
+      {
+        "subgoalLabel": "Describe the overall pattern",
+        "instruction": "Summarize: direction, form, strength, and any unusual features.",
+        "work": "'There is a strong, positive, linear association between study time and test score, with one outlier at (2, 95).'",
+        "explanation": "A complete description mentions direction, form, strength, and outliers."
+      }
+    ]
+  }
+]

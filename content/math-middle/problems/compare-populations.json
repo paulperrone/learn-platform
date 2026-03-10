@@ -1,0 +1,64 @@
+[
+  {
+    "id": "compare-populations-p1",
+    "topicId": "compare-populations",
+    "difficulty": "easy",
+    "question": "Class A has a mean test score of 78. Class B has a mean test score of 85. Which class performed better on average?",
+    "answer": "Class B",
+    "hints": [
+      "Compare the means — the higher mean indicates better average performance."
+    ],
+    "solution": "Class B performed better on average (mean 85 vs 78).",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "compare-populations-p2",
+    "topicId": "compare-populations",
+    "difficulty": "easy",
+    "question": "Team A has a median height of 165 cm with IQR 10 cm. Team B has a median height of 170 cm with IQR 20 cm. Which team has more consistent heights?",
+    "answer": "Team A",
+    "hints": [
+      "A smaller IQR means the middle 50% of data is more tightly grouped."
+    ],
+    "solution": "Team A has IQR 10 vs Team B's IQR 20. Team A has more consistent heights.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "compare-populations-p3",
+    "topicId": "compare-populations",
+    "difficulty": "medium",
+    "question": "Group A: mean = 50, MAD = 4. Group B: mean = 55, MAD = 4. The difference in means is 5 and the MAD is 4. Express the difference in means as a multiple of the MAD.",
+    "answer": "1.25",
+    "hints": [
+      "Divide the difference in means by the MAD."
+    ],
+    "solution": "Difference/MAD = 5/4 = 1.25. The means are 1.25 MADs apart.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "compare-populations-p4",
+    "topicId": "compare-populations",
+    "difficulty": "medium",
+    "question": "School A sample: median = 72, IQR = 15. School B sample: median = 80, IQR = 12. Which school likely has a higher typical score, and is the difference meaningful given the variability?",
+    "answer": "School B, and the 8-point difference is meaningful since it is larger than either IQR divided by 2",
+    "hints": [
+      "Compare medians for typical score. Consider whether the difference is large relative to the spread.",
+      "Difference = 80 − 72 = 8."
+    ],
+    "solution": "School B has a higher typical score (median 80 vs 72). The 8-point gap compared to IQRs of 12-15 suggests a meaningful difference.",
+    "cognitiveDemand": "reasoning"
+  },
+  {
+    "id": "compare-populations-p5",
+    "topicId": "compare-populations",
+    "difficulty": "hard",
+    "question": "Sample from City A: mean daily temperature = 68°F, MAD = 5. Sample from City B: mean = 72°F, MAD = 12. The difference in means is 4°F. Is this difference likely significant? Explain using the MADs.",
+    "answer": "no, the difference (4) is less than either MAD",
+    "hints": [
+      "Compare the difference in means to the variability (MAD) of each group.",
+      "If the difference is small compared to the MADs, the populations overlap a lot."
+    ],
+    "solution": "Difference = 4°F. City A MAD = 5, City B MAD = 12. The difference (4) is less than City A's MAD and much less than City B's. The distributions likely overlap significantly, so the difference is probably not meaningful.",
+    "cognitiveDemand": "reasoning"
+  }
+]

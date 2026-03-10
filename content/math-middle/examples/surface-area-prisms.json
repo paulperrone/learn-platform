@@ -1,0 +1,52 @@
+[
+  {
+    "id": "surface-area-prisms-ex1",
+    "topicId": "surface-area-prisms",
+    "title": "Surface Area of a Rectangular Prism",
+    "steps": [
+      {
+        "subgoalLabel": "Identify the faces",
+        "instruction": "A rectangular prism has 6 faces: 3 pairs of identical rectangles.",
+        "work": "Dimensions: l = 6 cm, w = 4 cm, h = 3 cm.",
+        "explanation": "Each pair of opposite faces has the same area."
+      },
+      {
+        "subgoalLabel": "Find each pair's area",
+        "instruction": "Calculate: top/bottom = l×w, front/back = l×h, left/right = w×h.",
+        "work": "6×4=24, 6×3=18, 4×3=12",
+        "explanation": "These are the areas of one face from each pair."
+      },
+      {
+        "subgoalLabel": "Double and add",
+        "instruction": "SA = 2(lw + lh + wh).",
+        "work": "SA = 2(24 + 18 + 12) = 2(54) = 108 sq cm",
+        "explanation": "Multiply by 2 because each rectangle appears twice."
+      }
+    ]
+  },
+  {
+    "id": "surface-area-prisms-ex2",
+    "topicId": "surface-area-prisms",
+    "title": "Surface Area Using a Net",
+    "steps": [
+      {
+        "subgoalLabel": "Unfold the prism",
+        "instruction": "Imagine unfolding a triangular prism into its net: 2 triangles and 3 rectangles.",
+        "work": "Triangle: base 6 cm, height 4 cm. Three rectangles with widths 6, 5, 5 cm and all height 10 cm.",
+        "explanation": "A net shows all faces laid flat."
+      },
+      {
+        "subgoalLabel": "Calculate each face",
+        "instruction": "Find the area of each face.",
+        "work": "Triangles: 2 × (1/2 × 6 × 4) = 24. Rectangles: 60 + 50 + 50 = 160.",
+        "explanation": "There are two identical triangular faces and three rectangular faces."
+      },
+      {
+        "subgoalLabel": "Total",
+        "instruction": "Add all face areas.",
+        "work": "SA = 24 + 160 = 184 sq cm",
+        "explanation": "The total surface area is the sum of all faces in the net."
+      }
+    ]
+  }
+]

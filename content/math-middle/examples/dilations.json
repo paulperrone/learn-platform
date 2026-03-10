@@ -1,0 +1,52 @@
+[
+  {
+    "id": "dilations-ex1",
+    "topicId": "dilations",
+    "title": "Dilating a Point from the Origin",
+    "steps": [
+      {
+        "subgoalLabel": "Understand dilation",
+        "instruction": "A dilation resizes a figure by a scale factor from a center point. Scale factor > 1 enlarges; between 0 and 1 shrinks.",
+        "work": "Center of dilation: origin (0, 0). Scale factor: k.",
+        "explanation": "Each coordinate is multiplied by the scale factor."
+      },
+      {
+        "subgoalLabel": "Apply scale factor 3",
+        "instruction": "Dilate point (2, 5) by scale factor 3 from the origin.",
+        "work": "(2 × 3, 5 × 3) = (6, 15)",
+        "explanation": "Both coordinates are multiplied by 3. The point moves farther from the origin."
+      },
+      {
+        "subgoalLabel": "Apply scale factor 1/2",
+        "instruction": "Dilate point (8, 4) by scale factor 1/2 from the origin.",
+        "work": "(8 × 1/2, 4 × 1/2) = (4, 2)",
+        "explanation": "The point moves closer to the origin. The figure shrinks."
+      }
+    ]
+  },
+  {
+    "id": "dilations-ex2",
+    "topicId": "dilations",
+    "title": "How Dilation Affects Lengths and Areas",
+    "steps": [
+      {
+        "subgoalLabel": "Effect on lengths",
+        "instruction": "When you dilate by scale factor k, all lengths are multiplied by k.",
+        "work": "Original side = 5. Scale factor = 3. New side = 5 × 3 = 15.",
+        "explanation": "Every linear measurement changes by the scale factor."
+      },
+      {
+        "subgoalLabel": "Effect on area",
+        "instruction": "Area changes by k² (the square of the scale factor).",
+        "work": "Original area = 12 sq cm. Scale factor = 3. New area = 12 × 3² = 12 × 9 = 108 sq cm.",
+        "explanation": "Area is two-dimensional, so the scale factor applies twice."
+      },
+      {
+        "subgoalLabel": "Key takeaway",
+        "instruction": "Dilation preserves shape (angles stay the same) but changes size.",
+        "work": "Angles: unchanged. Lengths: × k. Area: × k².",
+        "explanation": "Dilated figures are similar to the original."
+      }
+    ]
+  }
+]

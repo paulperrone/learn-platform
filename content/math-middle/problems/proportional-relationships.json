@@ -1,0 +1,65 @@
+[
+  {
+    "id": "proportional-relationships-p1",
+    "topicId": "proportional-relationships",
+    "difficulty": "easy",
+    "question": "A table shows: x: 1, 2, 3, 4 and y: 3, 6, 9, 12. Is this a proportional relationship? Answer yes or no.",
+    "answer": "yes",
+    "hints": [
+      "Check if y/x is the same for every pair."
+    ],
+    "solution": "3/1 = 3, 6/2 = 3, 9/3 = 3, 12/4 = 3. The ratio is constant (3), so yes, it is proportional.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "proportional-relationships-p2",
+    "topicId": "proportional-relationships",
+    "difficulty": "easy",
+    "question": "A table shows: x: 2, 4, 6, 8 and y: 5, 9, 13, 17. Is this a proportional relationship? Answer yes or no.",
+    "answer": "no",
+    "hints": [
+      "Check if y/x is the same for every pair.",
+      "5/2 = 2.5, but 9/4 = 2.25. Are they equal?"
+    ],
+    "solution": "5/2 = 2.5, 9/4 = 2.25. The ratios are not equal, so this is not proportional.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "proportional-relationships-p3",
+    "topicId": "proportional-relationships",
+    "difficulty": "medium",
+    "question": "The equation y = 4x represents a relationship. Is it proportional? Answer yes or no.",
+    "answer": "yes",
+    "hints": [
+      "A proportional relationship has the form y = kx, where k is a constant."
+    ],
+    "solution": "y = 4x is in the form y = kx with k = 4. It passes through the origin (when x = 0, y = 0). So yes, it is proportional.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "proportional-relationships-p4",
+    "topicId": "proportional-relationships",
+    "difficulty": "medium",
+    "question": "Does the equation y = 2x + 1 represent a proportional relationship? Answer yes or no.",
+    "answer": "no",
+    "hints": [
+      "A proportional relationship must pass through the origin (0, 0).",
+      "When x = 0, what is y?"
+    ],
+    "solution": "When x = 0, y = 2(0) + 1 = 1, not 0. Since the graph doesn't pass through the origin, it is not proportional.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "proportional-relationships-p5",
+    "topicId": "proportional-relationships",
+    "difficulty": "hard",
+    "question": "Two workers are paid by the hour. Worker A earns $45 for 3 hours. Worker B earns $72 for 4.5 hours. Do they earn at the same proportional rate? Answer yes or no.",
+    "answer": "no",
+    "hints": [
+      "Find the unit rate (hourly wage) for each worker.",
+      "Worker A: $45 ÷ 3 = $15/hr. Worker B: $72 ÷ 4.5 = $16/hr."
+    ],
+    "solution": "Worker A: $45 ÷ 3 = $15/hr. Worker B: $72 ÷ 4.5 = $16/hr. $15 ≠ $16, so no, they are not at the same rate.",
+    "cognitiveDemand": "application"
+  }
+]

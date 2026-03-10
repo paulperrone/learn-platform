@@ -1,0 +1,64 @@
+[
+  {
+    "id": "statistical-questions-p1",
+    "topicId": "statistical-questions",
+    "difficulty": "easy",
+    "question": "Is this a statistical question? 'How old are the students in Mrs. Smith's class?' Answer yes or no.",
+    "answer": "yes",
+    "hints": [
+      "A statistical question expects variability in the answers — different data points."
+    ],
+    "solution": "Yes. Different students have different ages, so the answers vary. This is a statistical question.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "statistical-questions-p2",
+    "topicId": "statistical-questions",
+    "difficulty": "easy",
+    "question": "Is this a statistical question? 'How many days are in January?' Answer yes or no.",
+    "answer": "no",
+    "hints": [
+      "Does this question have only one answer, or would you expect variability?"
+    ],
+    "solution": "No. January always has 31 days. There is no variability, so this is not a statistical question.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "statistical-questions-p3",
+    "topicId": "statistical-questions",
+    "difficulty": "medium",
+    "question": "Which of these is a statistical question? (A) What is the boiling point of water? (B) How many hours of sleep do sixth graders get on school nights? Answer A or B.",
+    "answer": "B",
+    "hints": [
+      "Which question would produce data that varies from person to person?"
+    ],
+    "solution": "B is statistical because different sixth graders sleep different amounts. A has one fixed answer (100°C).",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "statistical-questions-p4",
+    "topicId": "statistical-questions",
+    "difficulty": "medium",
+    "question": "Rewrite this non-statistical question as a statistical question: 'How tall is the school building?'",
+    "answer": "How tall are the buildings in our city?",
+    "hints": [
+      "To make it statistical, the question must produce data that varies.",
+      "Ask about multiple buildings or multiple measurements."
+    ],
+    "solution": "One possible answer: 'How tall are the buildings in our city?' This expects different heights for different buildings, creating variability.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "statistical-questions-p5",
+    "topicId": "statistical-questions",
+    "difficulty": "hard",
+    "question": "A student says 'How many pets do you have?' is not a statistical question because it only asks one person. Is the student correct? Answer yes or no, and explain.",
+    "answer": "no",
+    "hints": [
+      "Think about who the question is intended for. Is it asking one specific person or a group?",
+      "Statistical questions are meant to be asked to many people to collect data."
+    ],
+    "solution": "No. The question is understood as being asked to many people. Different people have different numbers of pets, so it anticipates variability and is statistical.",
+    "cognitiveDemand": "reasoning"
+  }
+]

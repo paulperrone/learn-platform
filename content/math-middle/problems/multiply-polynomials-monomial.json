@@ -1,0 +1,64 @@
+[
+  {
+    "id": "multiply-polynomials-monomial-p1",
+    "topicId": "multiply-polynomials-monomial",
+    "difficulty": "easy",
+    "question": "Multiply: 3(2x + 5).",
+    "answer": "6x + 15",
+    "hints": [
+      "Distribute 3 to each term inside the parentheses."
+    ],
+    "solution": "3(2x) + 3(5) = 6x + 15.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-polynomials-monomial-p2",
+    "topicId": "multiply-polynomials-monomial",
+    "difficulty": "easy",
+    "question": "Multiply: 2x(x + 4).",
+    "answer": "2x^2 + 8x",
+    "hints": [
+      "Distribute 2x to each term."
+    ],
+    "solution": "2x(x) + 2x(4) = 2x² + 8x.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-polynomials-monomial-p3",
+    "topicId": "multiply-polynomials-monomial",
+    "difficulty": "medium",
+    "question": "Multiply: 4x²(3x² − 2x + 5).",
+    "answer": "12x^4 - 8x^3 + 20x^2",
+    "hints": [
+      "Distribute 4x² to each of the three terms.",
+      "Remember: when multiplying variables, add exponents."
+    ],
+    "solution": "4x²(3x²) − 4x²(2x) + 4x²(5) = 12x⁴ − 8x³ + 20x².",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-polynomials-monomial-p4",
+    "topicId": "multiply-polynomials-monomial",
+    "difficulty": "medium",
+    "question": "Multiply: −3x(x² + 5x − 2).",
+    "answer": "-3x^3 - 15x^2 + 6x",
+    "hints": [
+      "Distribute −3x to each term. Watch the signs carefully."
+    ],
+    "solution": "−3x(x²) + (−3x)(5x) + (−3x)(−2) = −3x³ − 15x² + 6x.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-polynomials-monomial-p5",
+    "topicId": "multiply-polynomials-monomial",
+    "difficulty": "hard",
+    "question": "A rectangle has width 2x and length (3x² + x − 4). Write a polynomial expression for its area.",
+    "answer": "6x^3 + 2x^2 - 8x",
+    "hints": [
+      "Area = width × length = 2x(3x² + x − 4).",
+      "Distribute 2x to each term."
+    ],
+    "solution": "2x(3x²) + 2x(x) + 2x(−4) = 6x³ + 2x² − 8x.",
+    "cognitiveDemand": "application"
+  }
+]

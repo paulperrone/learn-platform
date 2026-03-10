@@ -1,0 +1,52 @@
+[
+  {
+    "id": "linear-vs-nonlinear-ex1",
+    "topicId": "linear-vs-nonlinear",
+    "title": "Using a Table to Determine Linear vs. Nonlinear",
+    "steps": [
+      {
+        "subgoalLabel": "Compute the differences in y",
+        "instruction": "Given x = 0, y = 5; x = 1, y = 8; x = 2, y = 11; x = 3, y = 14, find the change in y between consecutive rows.",
+        "work": "8 - 5 = 3, 11 - 8 = 3, 14 - 11 = 3.",
+        "explanation": "We are checking whether y changes by the same amount each time x increases by 1."
+      },
+      {
+        "subgoalLabel": "Check for a constant rate of change",
+        "instruction": "Are all the differences the same?",
+        "work": "Yes, all differences are 3.",
+        "explanation": "A constant rate of change is the defining feature of a linear function."
+      },
+      {
+        "subgoalLabel": "State the conclusion",
+        "instruction": "Classify the function.",
+        "work": "The function is linear. Its equation is y = 3x + 5.",
+        "explanation": "Linear functions produce straight lines when graphed and always have a constant rate of change."
+      }
+    ]
+  },
+  {
+    "id": "linear-vs-nonlinear-ex2",
+    "topicId": "linear-vs-nonlinear",
+    "title": "Recognizing a Nonlinear Equation",
+    "steps": [
+      {
+        "subgoalLabel": "Examine the equation",
+        "instruction": "Consider y = x^2 - 3. What is the highest power of x?",
+        "work": "The highest power is 2 (x squared).",
+        "explanation": "Linear equations have x to the first power only, as in y = mx + b."
+      },
+      {
+        "subgoalLabel": "Test with values",
+        "instruction": "Compute y for x = 1, 2, 3, 4 and check the differences.",
+        "work": "x=1: y=-2. x=2: y=1. x=3: y=6. x=4: y=13. Differences: 3, 5, 7 — not constant.",
+        "explanation": "The changing differences confirm this is nonlinear. The differences themselves increase by 2 each time."
+      },
+      {
+        "subgoalLabel": "State the conclusion",
+        "instruction": "Classify the function and explain why.",
+        "work": "Nonlinear. The x^2 term causes the rate of change to increase as x increases.",
+        "explanation": "Any equation where x has an exponent other than 1 (or appears in a denominator, under a radical, etc.) is nonlinear."
+      }
+    ]
+  }
+]

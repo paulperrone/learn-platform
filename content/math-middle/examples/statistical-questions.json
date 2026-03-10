@@ -1,0 +1,52 @@
+[
+  {
+    "id": "statistical-questions-ex1",
+    "topicId": "statistical-questions",
+    "title": "Identifying Statistical Questions",
+    "steps": [
+      {
+        "subgoalLabel": "Define statistical question",
+        "instruction": "A statistical question is one that anticipates variability in the data — different answers from different sources.",
+        "work": "Key test: Would you expect different answers if you asked many people or observed many instances?",
+        "explanation": "Statistical questions are about groups, not single fixed facts."
+      },
+      {
+        "subgoalLabel": "Example: statistical",
+        "instruction": "'How many hours do students in our school sleep each night?'",
+        "work": "Different students sleep different amounts → variability → statistical.",
+        "explanation": "This question expects a range of answers."
+      },
+      {
+        "subgoalLabel": "Example: non-statistical",
+        "instruction": "'How many hours are in a day?'",
+        "work": "Always 24 → no variability → NOT statistical.",
+        "explanation": "This has one fixed answer, so there is nothing to analyze statistically."
+      }
+    ]
+  },
+  {
+    "id": "statistical-questions-ex2",
+    "topicId": "statistical-questions",
+    "title": "Converting Non-Statistical to Statistical Questions",
+    "steps": [
+      {
+        "subgoalLabel": "Start with a non-statistical question",
+        "instruction": "'What is the height of the Statue of Liberty?'",
+        "work": "This has one answer (305 feet) — no variability.",
+        "explanation": "It asks about a single, fixed measurement."
+      },
+      {
+        "subgoalLabel": "Introduce variability",
+        "instruction": "Change it to ask about a group or expect variation.",
+        "work": "'How tall are famous monuments around the world?'",
+        "explanation": "Now different monuments have different heights — variability exists."
+      },
+      {
+        "subgoalLabel": "Verify",
+        "instruction": "Check: would you expect different data values? Yes — monuments vary in height.",
+        "work": "This is now a statistical question that can be answered with data analysis.",
+        "explanation": "The key change was moving from one specific thing to a collection of things."
+      }
+    ]
+  }
+]

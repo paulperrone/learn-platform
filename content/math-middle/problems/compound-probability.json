@@ -1,0 +1,66 @@
+[
+  {
+    "id": "compound-probability-p1",
+    "topicId": "compound-probability",
+    "difficulty": "easy",
+    "question": "A coin is flipped and a die is rolled. What is the probability of getting heads AND rolling a 3? Write as a fraction.",
+    "answer": "1/12",
+    "hints": [
+      "These are independent events. Multiply the probabilities.",
+      "P(heads) = 1/2. P(3) = 1/6."
+    ],
+    "solution": "P(heads and 3) = 1/2 × 1/6 = 1/12.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "compound-probability-p2",
+    "topicId": "compound-probability",
+    "difficulty": "easy",
+    "question": "Two coins are flipped. What is the probability of getting heads on both? Write as a fraction.",
+    "answer": "1/4",
+    "hints": [
+      "P(heads) × P(heads) for independent events."
+    ],
+    "solution": "P(both heads) = 1/2 × 1/2 = 1/4.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "compound-probability-p3",
+    "topicId": "compound-probability",
+    "difficulty": "medium",
+    "question": "A bag has 5 red and 3 blue marbles. You draw one marble, keep it, then draw another. What is the probability of drawing two red marbles? Write as a fraction.",
+    "answer": "5/14",
+    "hints": [
+      "These are dependent events — the second draw changes after the first.",
+      "P(1st red) = 5/8. P(2nd red | 1st red) = 4/7."
+    ],
+    "solution": "P(red then red) = 5/8 × 4/7 = 20/56 = 5/14.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "compound-probability-p4",
+    "topicId": "compound-probability",
+    "difficulty": "medium",
+    "question": "A spinner has sections: 1, 2, 3, 4 (equally likely). It is spun twice. What is the probability that both spins land on an even number? Write as a fraction.",
+    "answer": "1/4",
+    "hints": [
+      "P(even) = 2/4 = 1/2 on each spin.",
+      "Independent events: multiply."
+    ],
+    "solution": "P(even) = 1/2. P(both even) = 1/2 × 1/2 = 1/4.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "compound-probability-p5",
+    "topicId": "compound-probability",
+    "difficulty": "hard",
+    "question": "A bag has 4 red, 3 blue, and 2 green marbles. Two marbles are drawn without replacement. What is the probability that the first is red and the second is blue? Write as a fraction.",
+    "answer": "1/6",
+    "hints": [
+      "P(1st red) = 4/9. After removing a red, P(2nd blue) = 3/8.",
+      "Multiply for dependent events."
+    ],
+    "solution": "P(red then blue) = 4/9 × 3/8 = 12/72 = 1/6.",
+    "cognitiveDemand": "application"
+  }
+]

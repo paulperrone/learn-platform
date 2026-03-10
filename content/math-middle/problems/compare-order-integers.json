@@ -1,0 +1,67 @@
+[
+  {
+    "id": "compare-order-integers-p1",
+    "topicId": "compare-order-integers",
+    "difficulty": "easy",
+    "question": "Fill in the blank with <, >, or =: -5 ___ 2",
+    "answer": "<",
+    "hints": [
+      "Negative numbers are always less than positive numbers.",
+      "-5 is to the left of 2 on the number line."
+    ],
+    "solution": "-5 < 2. Any negative number is less than any positive number.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "compare-order-integers-p2",
+    "topicId": "compare-order-integers",
+    "difficulty": "easy",
+    "question": "Fill in the blank with <, >, or =: -3 ___ -7",
+    "answer": ">",
+    "hints": [
+      "For negative numbers, the one closer to 0 is greater.",
+      "-3 is to the right of -7 on the number line."
+    ],
+    "solution": "-3 > -7. On a number line, -3 is to the right of -7, so -3 is greater.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "compare-order-integers-p3",
+    "topicId": "compare-order-integers",
+    "difficulty": "medium",
+    "question": "Order these integers from least to greatest: 4, -8, 0, -1, 6. Separate with commas.",
+    "answer": "-8, -1, 0, 4, 6",
+    "hints": [
+      "Start with the most negative number (farthest left on the number line).",
+      "-8 is the smallest. Then find the next smallest."
+    ],
+    "solution": "On a number line from left to right: -8, -1, 0, 4, 6. This is least to greatest.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "compare-order-integers-p4",
+    "topicId": "compare-order-integers",
+    "difficulty": "medium",
+    "question": "Which is greater: the integer 12 below zero, or the integer 5 below zero? Type the greater integer.",
+    "answer": "-5",
+    "hints": [
+      "Convert to integers first: 12 below zero is -12, 5 below zero is -5.",
+      "Which is closer to 0?"
+    ],
+    "solution": "12 below zero = -12. 5 below zero = -5. Since -5 is closer to 0, -5 > -12. The greater integer is -5.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "compare-order-integers-p5",
+    "topicId": "compare-order-integers",
+    "difficulty": "hard",
+    "question": "City A has a temperature of -14°F. City B has -6°F. City C has 3°F. Order the cities from coldest to warmest. Type the letters separated by commas.",
+    "answer": "A, B, C",
+    "hints": [
+      "Lower temperature = colder. Compare the integers: -14, -6, 3.",
+      "Order from least to greatest: -14 < -6 < 3."
+    ],
+    "solution": "Temperatures: A = -14°F, B = -6°F, C = 3°F. Ordering from least to greatest: -14 < -6 < 3, so coldest to warmest is A, B, C.",
+    "cognitiveDemand": "application"
+  }
+]

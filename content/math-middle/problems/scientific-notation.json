@@ -1,0 +1,66 @@
+[
+  {
+    "id": "scientific-notation-p1",
+    "topicId": "scientific-notation",
+    "difficulty": "easy",
+    "question": "Write 4,500 in scientific notation.",
+    "answer": "4.5 x 10^3",
+    "hints": [
+      "Move the decimal point to get a number between 1 and 10.",
+      "4500 → 4.5, and you moved the decimal 3 places left."
+    ],
+    "solution": "4,500 = 4.5 × 10^3.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "scientific-notation-p2",
+    "topicId": "scientific-notation",
+    "difficulty": "easy",
+    "question": "Write 3.7 x 10^4 in standard form.",
+    "answer": "37000",
+    "hints": [
+      "Move the decimal 4 places to the right."
+    ],
+    "solution": "3.7 × 10^4 = 37,000.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "scientific-notation-p3",
+    "topicId": "scientific-notation",
+    "difficulty": "medium",
+    "question": "Write 0.00062 in scientific notation.",
+    "answer": "6.2 x 10^-4",
+    "hints": [
+      "Move the decimal to get 6.2.",
+      "You moved 4 places to the right, so the exponent is −4."
+    ],
+    "solution": "0.00062 = 6.2 × 10^(−4).",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "scientific-notation-p4",
+    "topicId": "scientific-notation",
+    "difficulty": "medium",
+    "question": "Write 8.01 x 10^(-3) in standard form.",
+    "answer": "0.00801",
+    "hints": [
+      "Negative exponent means the number is less than 1.",
+      "Move the decimal 3 places to the left."
+    ],
+    "solution": "8.01 × 10^(−3) = 0.00801.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "scientific-notation-p5",
+    "topicId": "scientific-notation",
+    "difficulty": "hard",
+    "question": "Which is larger: 3.2 x 10^5 or 8.9 x 10^4? Type the larger value in scientific notation.",
+    "answer": "3.2 x 10^5",
+    "hints": [
+      "Compare the exponents first. 10^5 > 10^4.",
+      "3.2 × 10^5 = 320,000. 8.9 × 10^4 = 89,000."
+    ],
+    "solution": "3.2 × 10^5 = 320,000 and 8.9 × 10^4 = 89,000. 320,000 > 89,000, so 3.2 × 10^5 is larger.",
+    "cognitiveDemand": "conceptual"
+  }
+]

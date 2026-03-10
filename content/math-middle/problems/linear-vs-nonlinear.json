@@ -1,0 +1,64 @@
+[
+  {
+    "id": "linear-vs-nonlinear-p1",
+    "topicId": "linear-vs-nonlinear",
+    "difficulty": "easy",
+    "question": "A table shows: x = 1, y = 3; x = 2, y = 6; x = 3, y = 9; x = 4, y = 12. Is this function linear or nonlinear?",
+    "answer": "linear",
+    "hints": [
+      "Check if the rate of change (difference in y for each 1-unit increase in x) is constant."
+    ],
+    "solution": "Differences in y: 6-3=3, 9-6=3, 12-9=3. The rate of change is constant at 3, so the function is linear.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "linear-vs-nonlinear-p2",
+    "topicId": "linear-vs-nonlinear",
+    "difficulty": "easy",
+    "question": "Is the equation y = x^2 + 1 linear or nonlinear?",
+    "answer": "nonlinear",
+    "hints": [
+      "A linear equation has x raised to the first power only (like y = mx + b). What power is x raised to here?"
+    ],
+    "solution": "The equation has x^2 (x squared). Since x is raised to the second power, this is nonlinear.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "linear-vs-nonlinear-p3",
+    "topicId": "linear-vs-nonlinear",
+    "difficulty": "medium",
+    "question": "A table shows: x = 0, y = 1; x = 1, y = 2; x = 2, y = 4; x = 3, y = 8. Is this function linear or nonlinear?",
+    "answer": "nonlinear",
+    "hints": [
+      "Check the differences: 2-1=1, 4-2=2, 8-4=4. Are they constant?",
+      "If the rate of change is not constant, the function is nonlinear."
+    ],
+    "solution": "Differences in y: 1, 2, 4. The rate of change is not constant (it keeps doubling), so the function is nonlinear.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "linear-vs-nonlinear-p4",
+    "topicId": "linear-vs-nonlinear",
+    "difficulty": "medium",
+    "question": "Which equation represents a linear function: (A) y = 3/x, (B) y = 3x - 7, (C) y = 3x^2? Enter A, B, or C.",
+    "answer": "B",
+    "hints": [
+      "A linear function has the form y = mx + b, where x has an exponent of 1 and is not in a denominator."
+    ],
+    "solution": "y = 3/x has x in the denominator (nonlinear). y = 3x^2 has x squared (nonlinear). y = 3x - 7 is in the form y = mx + b (linear). Answer: B.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "linear-vs-nonlinear-p5",
+    "topicId": "linear-vs-nonlinear",
+    "difficulty": "hard",
+    "question": "Two functions are described. Function A: every time x increases by 2, y increases by 6. Function B: when x = 1, y = 2; when x = 2, y = 6; when x = 3, y = 18. Which function is linear? Enter A or B.",
+    "answer": "A",
+    "hints": [
+      "A constant rate of change means linear. Check if each function has a constant rate of change.",
+      "Function A: y increases by 6 for every 2 in x. Function B: check the differences or ratios."
+    ],
+    "solution": "Function A has a constant rate of change: 6/2 = 3 per unit of x. Linear. Function B: differences are 4, then 12 — not constant. Function B is nonlinear (it triples each time). Answer: A.",
+    "cognitiveDemand": "reasoning"
+  }
+]

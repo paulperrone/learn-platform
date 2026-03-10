@@ -1,0 +1,64 @@
+[
+  {
+    "id": "systems-word-problems-ex1",
+    "topicId": "systems-word-problems",
+    "title": "Setting Up a System from a Purchase Problem",
+    "steps": [
+      {
+        "subgoalLabel": "Define variables",
+        "instruction": "Sandwiches cost $6 and drinks cost $2. You buy 5 items for $22 total. Let s = sandwiches and d = drinks.",
+        "work": "s = number of sandwiches, d = number of drinks.",
+        "explanation": "Always start by clearly defining what each variable represents."
+      },
+      {
+        "subgoalLabel": "Write the equations",
+        "instruction": "Write one equation for the number of items and one for the total cost.",
+        "work": "s + d = 5 (total items). 6s + 2d = 22 (total cost).",
+        "explanation": "The first equation uses counts. The second multiplies each count by its price."
+      },
+      {
+        "subgoalLabel": "Solve the system",
+        "instruction": "From equation 1: d = 5 - s. Substitute into equation 2.",
+        "work": "6s + 2(5 - s) = 22. 6s + 10 - 2s = 22. 4s = 12. s = 3.",
+        "explanation": "Substitution converts two equations into one equation with one variable."
+      },
+      {
+        "subgoalLabel": "Find the second variable and answer",
+        "instruction": "Find d and verify.",
+        "work": "d = 5 - 3 = 2. Check: 6(3) + 2(2) = 18 + 4 = 22. Correct. 3 sandwiches and 2 drinks.",
+        "explanation": "Always check that your answer satisfies both the item count and the total cost."
+      }
+    ]
+  },
+  {
+    "id": "systems-word-problems-ex2",
+    "topicId": "systems-word-problems",
+    "title": "Setting Up a System from an Age Problem",
+    "steps": [
+      {
+        "subgoalLabel": "Read and define variables",
+        "instruction": "Maria is 4 years older than twice Juan's age. The sum of their ages is 25. Let m = Maria's age and j = Juan's age.",
+        "work": "m = Maria's age, j = Juan's age.",
+        "explanation": "Translate the English sentences into algebra, one at a time."
+      },
+      {
+        "subgoalLabel": "Write the equations",
+        "instruction": "Translate each sentence.",
+        "work": "\"Maria is 4 years older than twice Juan's age\": m = 2j + 4. \"Sum of their ages is 25\": m + j = 25.",
+        "explanation": "'Older than' means add. 'Twice Juan's age' is 2j. So Maria's age = 2j + 4."
+      },
+      {
+        "subgoalLabel": "Solve by substitution",
+        "instruction": "Replace m in the second equation with (2j + 4).",
+        "work": "(2j + 4) + j = 25. 3j + 4 = 25. 3j = 21. j = 7.",
+        "explanation": "Since m is already isolated in equation 1, substitution is the natural method."
+      },
+      {
+        "subgoalLabel": "Find Maria's age and verify",
+        "instruction": "Substitute j = 7 into m = 2j + 4.",
+        "work": "m = 2(7) + 4 = 18. Check: 18 + 7 = 25. And 18 = 2(7) + 4. Both true.",
+        "explanation": "Juan is 7 and Maria is 18. The answer satisfies both conditions."
+      }
+    ]
+  }
+]

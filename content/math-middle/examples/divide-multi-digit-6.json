@@ -1,0 +1,76 @@
+[
+  {
+    "id": "divide-multi-digit-6-ex1",
+    "topicId": "divide-multi-digit-6",
+    "title": "Dividing a 4-Digit Number by a 2-Digit Number",
+    "steps": [
+      {
+        "subgoalLabel": "Set up the problem",
+        "instruction": "Divide 2,856 ÷ 17.",
+        "work": "We use long division: 17 ) 2856",
+        "explanation": "We will divide digit by digit from left to right, bringing down digits as needed."
+      },
+      {
+        "subgoalLabel": "Divide the first group",
+        "instruction": "How many times does 17 go into 28?",
+        "work": "17 × 1 = 17, 17 × 2 = 34 (too big). So 17 goes into 28 one time. 28 - 17 = 11.",
+        "explanation": "We try multiples of 17 until we find the largest one that fits into 28."
+      },
+      {
+        "subgoalLabel": "Continue dividing",
+        "instruction": "Bring down 5 to make 115. Divide 115 by 17.",
+        "work": "17 × 6 = 102, 17 × 7 = 119 (too big). So 17 goes into 115 six times. 115 - 102 = 13.",
+        "explanation": "Bring down the next digit and repeat the process."
+      },
+      {
+        "subgoalLabel": "Finish the division",
+        "instruction": "Bring down 6 to make 136. Divide 136 by 17.",
+        "work": "17 × 8 = 136. 136 - 136 = 0. No remainder.",
+        "explanation": "The division comes out evenly."
+      },
+      {
+        "subgoalLabel": "State the answer",
+        "instruction": "Write the quotient.",
+        "work": "2,856 ÷ 17 = 168. Check: 17 × 168 = 2,856 ✓",
+        "explanation": "Always verify by multiplying quotient × divisor to confirm."
+      }
+    ]
+  },
+  {
+    "id": "divide-multi-digit-6-ex2",
+    "topicId": "divide-multi-digit-6",
+    "title": "Division with a Zero in the Quotient",
+    "steps": [
+      {
+        "subgoalLabel": "Set up the problem",
+        "instruction": "Divide 6,384 ÷ 21.",
+        "work": "21 ) 6384",
+        "explanation": "Sometimes a digit in the quotient is 0. Watch for this carefully."
+      },
+      {
+        "subgoalLabel": "Divide the first group",
+        "instruction": "How many times does 21 go into 63?",
+        "work": "21 × 3 = 63. Exactly 3 times with no remainder.",
+        "explanation": "63 ÷ 21 = 3 exactly."
+      },
+      {
+        "subgoalLabel": "Handle the next digit",
+        "instruction": "Bring down 8. How many times does 21 go into 8?",
+        "work": "21 does not go into 8 at all. Write 0 in the quotient. Bring down 4 to get 84.",
+        "explanation": "When the divisor is larger than the current number, the quotient digit is 0. Don't skip it!"
+      },
+      {
+        "subgoalLabel": "Complete the division",
+        "instruction": "Divide 84 by 21.",
+        "work": "21 × 4 = 84. Remainder 0.",
+        "explanation": "84 ÷ 21 = 4 exactly."
+      },
+      {
+        "subgoalLabel": "State the answer",
+        "instruction": "Write the quotient.",
+        "work": "6,384 ÷ 21 = 304. Check: 21 × 304 = 6,384 ✓",
+        "explanation": "The zero in the middle of 304 is essential. A common error is writing 34 instead of 304."
+      }
+    ]
+  }
+]

@@ -1,0 +1,52 @@
+[
+  {
+    "id": "experimental-probability-ex1",
+    "topicId": "experimental-probability",
+    "title": "Calculating Experimental Probability",
+    "steps": [
+      {
+        "subgoalLabel": "Understand the concept",
+        "instruction": "Experimental probability is based on actual data from trials, not theoretical calculation.",
+        "work": "P(event) = times event occurred / total trials",
+        "explanation": "Unlike theoretical probability, this comes from actually doing the experiment."
+      },
+      {
+        "subgoalLabel": "Calculate from data",
+        "instruction": "A coin was flipped 80 times. Heads appeared 46 times.",
+        "work": "P(heads) = 46/80 = 0.575",
+        "explanation": "The experimental probability is 0.575, which is close to but not exactly 0.5."
+      },
+      {
+        "subgoalLabel": "Compare to theoretical",
+        "instruction": "Theoretical P(heads) = 0.5. Experimental = 0.575.",
+        "work": "Difference: 0.575 − 0.5 = 0.075",
+        "explanation": "Small differences are normal. With more trials, experimental probability gets closer to theoretical."
+      }
+    ]
+  },
+  {
+    "id": "experimental-probability-ex2",
+    "topicId": "experimental-probability",
+    "title": "Making Predictions from Experimental Probability",
+    "steps": [
+      {
+        "subgoalLabel": "Find the experimental probability",
+        "instruction": "In 50 spins, a spinner landed on red 15 times.",
+        "work": "P(red) = 15/50 = 0.3",
+        "explanation": "This is our best estimate of the probability of red."
+      },
+      {
+        "subgoalLabel": "Make a prediction",
+        "instruction": "Predict how many reds in 200 spins.",
+        "work": "Expected reds = 0.3 × 200 = 60",
+        "explanation": "Multiply the experimental probability by the number of new trials."
+      },
+      {
+        "subgoalLabel": "Understand limitations",
+        "instruction": "The prediction is an estimate, not exact. You might get 55 or 65 reds.",
+        "work": "Prediction ≈ 60, but actual results will vary.",
+        "explanation": "More original trials give more reliable experimental probability and better predictions."
+      }
+    ]
+  }
+]

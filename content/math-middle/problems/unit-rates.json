@@ -1,0 +1,65 @@
+[
+  {
+    "id": "unit-rates-p1",
+    "topicId": "unit-rates",
+    "difficulty": "easy",
+    "question": "A pack of 6 water bottles costs $4.50. What is the price per bottle?",
+    "answer": "$0.75",
+    "hints": [
+      "Divide the total cost by the number of bottles."
+    ],
+    "solution": "$4.50 ÷ 6 = $0.75 per bottle.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "unit-rates-p2",
+    "topicId": "unit-rates",
+    "difficulty": "easy",
+    "question": "A car travels 180 miles in 3 hours. What is the speed in miles per hour?",
+    "answer": "60",
+    "hints": [
+      "Divide the total miles by the number of hours."
+    ],
+    "solution": "180 ÷ 3 = 60 miles per hour.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "unit-rates-p3",
+    "topicId": "unit-rates",
+    "difficulty": "medium",
+    "question": "Store A sells 5 notebooks for $8.75. Store B sells 3 notebooks for $4.95. Which store has the better price per notebook? Answer A or B.",
+    "answer": "B",
+    "hints": [
+      "Find the unit rate for each store by dividing total cost by number of notebooks.",
+      "Store A: $8.75 ÷ 5 = $1.75. Store B: $4.95 ÷ 3 = $1.65."
+    ],
+    "solution": "Store A: $8.75 ÷ 5 = $1.75 per notebook. Store B: $4.95 ÷ 3 = $1.65 per notebook. Store B is cheaper.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "unit-rates-p4",
+    "topicId": "unit-rates",
+    "difficulty": "medium",
+    "question": "A runner covers 3.5 miles in 28 minutes. What is her pace in minutes per mile?",
+    "answer": "8",
+    "hints": [
+      "Divide the total minutes by the total miles.",
+      "28 ÷ 3.5 = ?"
+    ],
+    "solution": "28 ÷ 3.5 = 8 minutes per mile.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "unit-rates-p5",
+    "topicId": "unit-rates",
+    "difficulty": "hard",
+    "question": "A factory produces 256 widgets in an 8-hour shift. At that rate, how many widgets would be produced in a 5-hour shift?",
+    "answer": "160",
+    "hints": [
+      "First find the unit rate: widgets per hour.",
+      "256 ÷ 8 = 32 widgets per hour. Then multiply by 5."
+    ],
+    "solution": "Unit rate: 256 ÷ 8 = 32 widgets per hour. In 5 hours: 32 × 5 = 160 widgets.",
+    "cognitiveDemand": "application"
+  }
+]

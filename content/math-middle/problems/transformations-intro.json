@@ -1,0 +1,63 @@
+[
+  {
+    "id": "transformations-intro-p1",
+    "topicId": "transformations-intro",
+    "difficulty": "easy",
+    "question": "Point A is at (2, 3). It is translated 4 units right and 1 unit up. What are the new coordinates?",
+    "answer": "(6, 4)",
+    "hints": [
+      "Moving right adds to x. Moving up adds to y."
+    ],
+    "solution": "(2+4, 3+1) = (6, 4).",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "transformations-intro-p2",
+    "topicId": "transformations-intro",
+    "difficulty": "easy",
+    "question": "Point B is at (5, 2). It is reflected over the x-axis. What are the new coordinates?",
+    "answer": "(5, -2)",
+    "hints": [
+      "Reflecting over the x-axis changes the sign of the y-coordinate."
+    ],
+    "solution": "Reflect (5, 2) over x-axis: (5, −2).",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "transformations-intro-p3",
+    "topicId": "transformations-intro",
+    "difficulty": "medium",
+    "question": "Point C is at (3, -1). It is reflected over the y-axis. What are the new coordinates?",
+    "answer": "(-3, -1)",
+    "hints": [
+      "Reflecting over the y-axis changes the sign of the x-coordinate."
+    ],
+    "solution": "Reflect (3, −1) over y-axis: (−3, −1).",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "transformations-intro-p4",
+    "topicId": "transformations-intro",
+    "difficulty": "medium",
+    "question": "Point D is at (1, 4). It is rotated 90° clockwise about the origin. What are the new coordinates?",
+    "answer": "(4, -1)",
+    "hints": [
+      "A 90° clockwise rotation maps (x, y) to (y, −x)."
+    ],
+    "solution": "90° clockwise: (x, y) → (y, −x). (1, 4) → (4, −1).",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "transformations-intro-p5",
+    "topicId": "transformations-intro",
+    "difficulty": "hard",
+    "question": "Triangle PQR has vertices P(1, 2), Q(4, 2), and R(4, 5). It is translated 3 units left and 2 units down. What are the coordinates of the translated vertices?",
+    "answer": "P'(-2, 0), Q'(1, 0), R'(1, 3)",
+    "hints": [
+      "Subtract 3 from each x-coordinate and 2 from each y-coordinate.",
+      "Apply the same translation to every vertex."
+    ],
+    "solution": "P: (1−3, 2−2) = (−2, 0). Q: (4−3, 2−2) = (1, 0). R: (4−3, 5−2) = (1, 3).",
+    "cognitiveDemand": "procedural"
+  }
+]

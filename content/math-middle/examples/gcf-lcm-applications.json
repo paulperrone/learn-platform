@@ -1,0 +1,52 @@
+[
+  {
+    "id": "gcf-lcm-applications-ex1",
+    "topicId": "gcf-lcm-applications",
+    "title": "Using GCF to Solve a Grouping Problem",
+    "steps": [
+      {
+        "subgoalLabel": "Read the problem",
+        "instruction": "You have 30 pencils and 45 erasers. You want to make identical gift bags with no items left over. What is the greatest number of bags you can make?",
+        "work": "We need the largest number that divides evenly into both 30 and 45 — the GCF.",
+        "explanation": "The GCF tells us the maximum number of equal groups where both quantities are divided evenly."
+      },
+      {
+        "subgoalLabel": "Find the GCF",
+        "instruction": "Find GCF(30, 45) using prime factorization.",
+        "work": "30 = 2 × 3 × 5. 45 = 3² × 5. Common prime factors: 3 and 5. GCF = 3 × 5 = 15.",
+        "explanation": "Take the lowest power of each common prime factor and multiply them."
+      },
+      {
+        "subgoalLabel": "Answer the question",
+        "instruction": "How many bags, and what goes in each?",
+        "work": "15 bags. Each bag gets 30 ÷ 15 = 2 pencils and 45 ÷ 15 = 3 erasers.",
+        "explanation": "The GCF (15) is the number of bags. Dividing each total by 15 tells us the contents per bag."
+      }
+    ]
+  },
+  {
+    "id": "gcf-lcm-applications-ex2",
+    "topicId": "gcf-lcm-applications",
+    "title": "Using LCM to Find When Events Coincide",
+    "steps": [
+      {
+        "subgoalLabel": "Read the problem",
+        "instruction": "Mia waters her plants every 6 days and feeds them every 10 days. She did both today. In how many days will she do both again?",
+        "work": "We need the smallest number that is a multiple of both 6 and 10 — the LCM.",
+        "explanation": "The LCM tells us when two repeating cycles will align again."
+      },
+      {
+        "subgoalLabel": "Find the LCM",
+        "instruction": "Find LCM(6, 10) using prime factorization.",
+        "work": "6 = 2 × 3. 10 = 2 × 5. LCM = 2 × 3 × 5 = 30.",
+        "explanation": "Take the highest power of each prime factor that appears in either number."
+      },
+      {
+        "subgoalLabel": "Answer the question",
+        "instruction": "State the result.",
+        "work": "Mia will water and feed on the same day again in 30 days.",
+        "explanation": "30 is divisible by both 6 (30 ÷ 6 = 5) and 10 (30 ÷ 10 = 3), and no smaller number works."
+      }
+    ]
+  }
+]

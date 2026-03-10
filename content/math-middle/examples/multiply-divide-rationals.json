@@ -1,0 +1,52 @@
+[
+  {
+    "id": "multiply-divide-rationals-ex1",
+    "topicId": "multiply-divide-rationals",
+    "title": "Multiplying Two Negative Fractions",
+    "steps": [
+      {
+        "subgoalLabel": "Determine the sign",
+        "instruction": "Multiply (-3/8) × (-4/9). Both factors are negative.",
+        "work": "Negative × negative = positive. The result will be positive.",
+        "explanation": "Same sign rules apply to fractions just as they do to integers."
+      },
+      {
+        "subgoalLabel": "Multiply numerators and denominators",
+        "instruction": "Compute the product ignoring signs.",
+        "work": "3 × 4 = 12. 8 × 9 = 72. Product = 12/72.",
+        "explanation": "Multiply straight across: numerator × numerator, denominator × denominator."
+      },
+      {
+        "subgoalLabel": "Simplify",
+        "instruction": "Reduce 12/72.",
+        "work": "GCF(12, 72) = 12. 12/72 = 1/6.",
+        "explanation": "Divide both by 12. The final answer is positive: +1/6."
+      }
+    ]
+  },
+  {
+    "id": "multiply-divide-rationals-ex2",
+    "topicId": "multiply-divide-rationals",
+    "title": "Dividing a Negative Fraction by a Positive Fraction",
+    "steps": [
+      {
+        "subgoalLabel": "Rewrite as multiplication",
+        "instruction": "Compute -7/10 ÷ 2/5.",
+        "work": "-7/10 ÷ 2/5 = -7/10 × 5/2",
+        "explanation": "To divide by a fraction, multiply by its reciprocal (flip the second fraction)."
+      },
+      {
+        "subgoalLabel": "Determine the sign",
+        "instruction": "Negative × positive = ?",
+        "work": "The result will be negative.",
+        "explanation": "Different signs produce a negative result."
+      },
+      {
+        "subgoalLabel": "Multiply and simplify",
+        "instruction": "Compute -7/10 × 5/2.",
+        "work": "7 × 5 = 35. 10 × 2 = 20. Result = -35/20. Simplify: GCF(35, 20) = 5. -35/20 = -7/4.",
+        "explanation": "Reduce by dividing both by 5. As a mixed number: -1 3/4."
+      }
+    ]
+  }
+]

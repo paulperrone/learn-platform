@@ -1,0 +1,64 @@
+[
+  {
+    "id": "monomials-p1",
+    "topicId": "monomials",
+    "difficulty": "easy",
+    "question": "What is the coefficient of the monomial 7x³?",
+    "answer": "7",
+    "hints": [
+      "The coefficient is the numerical part in front of the variable."
+    ],
+    "solution": "The coefficient of 7x³ is 7.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "monomials-p2",
+    "topicId": "monomials",
+    "difficulty": "easy",
+    "question": "What is the degree of the monomial 4x²y³?",
+    "answer": "5",
+    "hints": [
+      "The degree of a monomial is the sum of the exponents of all variables."
+    ],
+    "solution": "Degree = 2 + 3 = 5.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "monomials-p3",
+    "topicId": "monomials",
+    "difficulty": "medium",
+    "question": "Which of these is a monomial? (A) 3x + 2 (B) 5x²y (C) 1/x. Answer A, B, or C.",
+    "answer": "B",
+    "hints": [
+      "A monomial is a single term — a number, variable, or product of numbers and variables with whole number exponents.",
+      "3x + 2 has two terms. 1/x = x^(-1) has a negative exponent."
+    ],
+    "solution": "B. 5x²y is a single term with whole number exponents. A has two terms, C has a negative exponent.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "monomials-p4",
+    "topicId": "monomials",
+    "difficulty": "medium",
+    "question": "Multiply the monomials: (3x²)(5x⁴). Write your answer as a monomial.",
+    "answer": "15x^6",
+    "hints": [
+      "Multiply coefficients: 3 × 5. Add exponents of x: 2 + 4."
+    ],
+    "solution": "(3x²)(5x⁴) = 15x^(2+4) = 15x^6.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "monomials-p5",
+    "topicId": "monomials",
+    "difficulty": "hard",
+    "question": "Simplify: (2x³y²)³. Write your answer as a monomial.",
+    "answer": "8x^9y^6",
+    "hints": [
+      "Apply the power rule: raise each factor to the third power.",
+      "2³ = 8, (x³)³ = x^9, (y²)³ = y^6."
+    ],
+    "solution": "(2x³y²)³ = 2³ × x^(3×3) × y^(2×3) = 8x^9y^6.",
+    "cognitiveDemand": "procedural"
+  }
+]

@@ -1,0 +1,52 @@
+[
+  {
+    "id": "number-line-opposites-ex1",
+    "topicId": "number-line-opposites",
+    "title": "Finding the Opposite of an Integer",
+    "steps": [
+      {
+        "subgoalLabel": "Recall what opposite means",
+        "instruction": "Define the opposite of a number.",
+        "work": "The opposite of a number is the number that is the same distance from 0 but on the other side of the number line.",
+        "explanation": "Every number has exactly one opposite. The opposite of 0 is 0."
+      },
+      {
+        "subgoalLabel": "Find the opposite of -6",
+        "instruction": "Determine the distance from 0 and flip the direction.",
+        "work": "-6 is 6 units to the left of 0. Its opposite is 6 units to the right of 0, which is 6.",
+        "explanation": "To find the opposite, change the sign: negative becomes positive, positive becomes negative."
+      },
+      {
+        "subgoalLabel": "Verify with the additive inverse property",
+        "instruction": "Check: does -6 + 6 = 0?",
+        "work": "-6 + 6 = 0 ✓",
+        "explanation": "A number plus its opposite always equals zero. This confirms that 6 is the opposite of -6."
+      }
+    ]
+  },
+  {
+    "id": "number-line-opposites-ex2",
+    "topicId": "number-line-opposites",
+    "title": "Simplifying the Opposite of an Opposite",
+    "steps": [
+      {
+        "subgoalLabel": "Understand the notation",
+        "instruction": "What does -(-4) mean?",
+        "work": "-(-4) means 'the opposite of -4.'",
+        "explanation": "The outer negative sign means 'take the opposite of.' The inner part is -4."
+      },
+      {
+        "subgoalLabel": "Apply the rule",
+        "instruction": "Find the opposite of -4.",
+        "work": "The opposite of -4 is 4. So -(-4) = 4.",
+        "explanation": "Taking the opposite of a negative number gives a positive number."
+      },
+      {
+        "subgoalLabel": "State the general rule",
+        "instruction": "What pattern do you notice?",
+        "work": "For any number a, -(-a) = a. The opposite of the opposite is the original number.",
+        "explanation": "Two negatives cancel out. This is like doing an 'undo' — flip once to get the opposite, flip again to return."
+      }
+    ]
+  }
+]

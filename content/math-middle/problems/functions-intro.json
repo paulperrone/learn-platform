@@ -1,0 +1,64 @@
+[
+  {
+    "id": "functions-intro-p1",
+    "topicId": "functions-intro",
+    "difficulty": "easy",
+    "question": "A rule says: \"Multiply the input by 2 and add 1.\" What is the output when the input is 5?",
+    "answer": "11",
+    "hints": [
+      "Apply the rule step by step: first multiply 5 by 2, then add 1."
+    ],
+    "solution": "5 * 2 = 10, then 10 + 1 = 11.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "functions-intro-p2",
+    "topicId": "functions-intro",
+    "difficulty": "easy",
+    "question": "True or false: A function can give two different outputs for the same input.",
+    "answer": "false",
+    "hints": [
+      "Think about what makes a rule a function — each input maps to exactly one output."
+    ],
+    "solution": "False. By definition, a function assigns exactly one output to each input. If an input gave two different outputs, it would not be a function.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "functions-intro-p3",
+    "topicId": "functions-intro",
+    "difficulty": "medium",
+    "question": "A set of ordered pairs is: (1, 4), (2, 7), (3, 10), (1, 5). Does this set represent a function? Answer yes or no.",
+    "answer": "no",
+    "hints": [
+      "Check if any input (first number) appears more than once with different outputs.",
+      "The input 1 appears twice. Does it give the same output both times?"
+    ],
+    "solution": "The input 1 maps to both 4 and 5. Since one input gives two different outputs, this is not a function.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "functions-intro-p4",
+    "topicId": "functions-intro",
+    "difficulty": "medium",
+    "question": "A vertical line drawn on a graph crosses a curve at three points. Could this curve represent a function? Answer yes or no.",
+    "answer": "no",
+    "hints": [
+      "The vertical line test says: if any vertical line crosses the graph more than once, it is NOT a function."
+    ],
+    "solution": "No. The vertical line test fails because the vertical line crosses the curve at three points. This means one x-value has three y-values, so it is not a function.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "functions-intro-p5",
+    "topicId": "functions-intro",
+    "difficulty": "hard",
+    "question": "A machine takes a number, squares it, then subtracts 4. Using the notation f(x) = x^2 - 4, what is f(-3)?",
+    "answer": "5",
+    "hints": [
+      "Replace x with -3 in the expression x^2 - 4.",
+      "Remember: (-3)^2 means (-3) * (-3), which is positive."
+    ],
+    "solution": "f(-3) = (-3)^2 - 4 = 9 - 4 = 5.",
+    "cognitiveDemand": "procedural"
+  }
+]

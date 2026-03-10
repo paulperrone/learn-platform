@@ -1,0 +1,67 @@
+[
+  {
+    "id": "number-line-opposites-p1",
+    "topicId": "number-line-opposites",
+    "difficulty": "easy",
+    "question": "What is the opposite of 8?",
+    "answer": "-8",
+    "hints": [
+      "The opposite of a number is the same distance from 0 but on the other side.",
+      "The opposite of a positive number is negative."
+    ],
+    "solution": "The opposite of 8 is -8. Both are 8 units from 0 but in opposite directions.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "number-line-opposites-p2",
+    "topicId": "number-line-opposites",
+    "difficulty": "easy",
+    "question": "What is the opposite of -5?",
+    "answer": "5",
+    "hints": [
+      "The opposite of a negative number is positive.",
+      "-5 is 5 units left of 0; its opposite is 5 units right of 0."
+    ],
+    "solution": "The opposite of -5 is 5.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "number-line-opposites-p3",
+    "topicId": "number-line-opposites",
+    "difficulty": "medium",
+    "question": "What is the sum of a number and its opposite? For example, what is 13 + (-13)?",
+    "answer": "0",
+    "hints": [
+      "A number and its opposite are the same distance from 0 in opposite directions.",
+      "When you add them, they cancel out."
+    ],
+    "solution": "13 + (-13) = 0. A number and its opposite always sum to 0. This is the additive inverse property.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "number-line-opposites-p4",
+    "topicId": "number-line-opposites",
+    "difficulty": "medium",
+    "question": "What is -(-7)? Simplify to a single integer.",
+    "answer": "7",
+    "hints": [
+      "The opposite of the opposite brings you back to the original.",
+      "-(-7) means the opposite of -7."
+    ],
+    "solution": "-(-7) = 7. Taking the opposite of -7 gives 7.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "number-line-opposites-p5",
+    "topicId": "number-line-opposites",
+    "difficulty": "hard",
+    "question": "If a number and its opposite are 18 units apart on the number line, what are the two numbers? Type them separated by a comma, smaller first.",
+    "answer": "-9, 9",
+    "hints": [
+      "The two numbers are equal distance from 0, one on each side.",
+      "If they are 18 apart, each is 18 ÷ 2 = 9 units from 0."
+    ],
+    "solution": "If a number and its opposite are 18 units apart, each is 18 ÷ 2 = 9 units from 0. The numbers are -9 and 9.",
+    "cognitiveDemand": "reasoning"
+  }
+]

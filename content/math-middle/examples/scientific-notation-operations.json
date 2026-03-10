@@ -1,0 +1,52 @@
+[
+  {
+    "id": "scientific-notation-operations-ex1",
+    "topicId": "scientific-notation-operations",
+    "title": "Multiplying in Scientific Notation: (6 x 10^3)(7 x 10^4)",
+    "steps": [
+      {
+        "subgoalLabel": "Multiply the coefficients",
+        "instruction": "Multiply 6 × 7.",
+        "work": "6 × 7 = 42",
+        "explanation": "Handle coefficients and powers of 10 separately."
+      },
+      {
+        "subgoalLabel": "Add the exponents",
+        "instruction": "Add the powers of 10: 10^3 × 10^4.",
+        "work": "10^(3+4) = 10^7",
+        "explanation": "Product rule for exponents."
+      },
+      {
+        "subgoalLabel": "Adjust to proper scientific notation",
+        "instruction": "42 × 10^7 is not in proper form. Fix the coefficient.",
+        "work": "42 = 4.2 × 10^1. So 4.2 × 10^1 × 10^7 = 4.2 × 10^8.",
+        "explanation": "The coefficient must be between 1 and 10. Move the decimal and adjust the exponent."
+      }
+    ]
+  },
+  {
+    "id": "scientific-notation-operations-ex2",
+    "topicId": "scientific-notation-operations",
+    "title": "Adding with Different Exponents: (2.5 x 10^5) + (4.0 x 10^4)",
+    "steps": [
+      {
+        "subgoalLabel": "Make the exponents match",
+        "instruction": "Rewrite the smaller exponent to match the larger.",
+        "work": "4.0 × 10^4 = 0.40 × 10^5",
+        "explanation": "To increase the exponent by 1, divide the coefficient by 10."
+      },
+      {
+        "subgoalLabel": "Add the coefficients",
+        "instruction": "Now both have 10^5. Add the coefficients.",
+        "work": "2.5 + 0.40 = 2.9",
+        "explanation": "With matching exponents, just add the front numbers."
+      },
+      {
+        "subgoalLabel": "Write the result",
+        "instruction": "Combine with the common power of 10.",
+        "work": "2.9 × 10^5",
+        "explanation": "2.9 is between 1 and 10, so this is already in proper scientific notation."
+      }
+    ]
+  }
+]

@@ -1,0 +1,58 @@
+[
+  {
+    "id": "one-step-inequalities-ex1",
+    "topicId": "one-step-inequalities",
+    "title": "Solving x + 4 <= 11",
+    "steps": [
+      {
+        "subgoalLabel": "Identify the operation",
+        "instruction": "4 is added to x. To isolate x, subtract 4.",
+        "work": "x + 4 − 4 <= 11 − 4",
+        "explanation": "Subtracting the same number from both sides keeps the inequality true."
+      },
+      {
+        "subgoalLabel": "Simplify",
+        "instruction": "Simplify both sides.",
+        "work": "x <= 7",
+        "explanation": "The solution is all values of x that are 7 or less."
+      },
+      {
+        "subgoalLabel": "Check a value in the solution",
+        "instruction": "Try x = 5 (which is <= 7).",
+        "work": "5 + 4 = 9. Is 9 <= 11? Yes. ✓",
+        "explanation": "Testing a value from the solution set confirms our answer."
+      }
+    ]
+  },
+  {
+    "id": "one-step-inequalities-ex2",
+    "topicId": "one-step-inequalities",
+    "title": "Solving −3m < 15 (Dividing by a Negative)",
+    "steps": [
+      {
+        "subgoalLabel": "Identify the operation",
+        "instruction": "m is being multiplied by −3. Divide by −3 to isolate m.",
+        "work": "−3m / (−3) ? 15 / (−3)",
+        "explanation": "When dividing by a negative, we must flip the inequality sign."
+      },
+      {
+        "subgoalLabel": "Flip the inequality and simplify",
+        "instruction": "Divide and reverse the < to >.",
+        "work": "m > −5",
+        "explanation": "Dividing both sides by −3 reverses the direction: < becomes >."
+      },
+      {
+        "subgoalLabel": "Check a value",
+        "instruction": "Try m = 0 (which is > −5).",
+        "work": "−3(0) = 0. Is 0 < 15? Yes. ✓",
+        "explanation": "m = 0 satisfies the original inequality, confirming our solution."
+      },
+      {
+        "subgoalLabel": "Check a value NOT in the solution",
+        "instruction": "Try m = −6 (which is NOT > −5).",
+        "work": "−3(−6) = 18. Is 18 < 15? No. ✓",
+        "explanation": "m = −6 does not satisfy the inequality, which confirms our boundary is correct."
+      }
+    ]
+  }
+]

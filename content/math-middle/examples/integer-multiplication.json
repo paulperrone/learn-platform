@@ -1,0 +1,58 @@
+[
+  {
+    "id": "integer-multiplication-ex1",
+    "topicId": "integer-multiplication",
+    "title": "Multiplying Two Integers with Different Signs",
+    "steps": [
+      {
+        "subgoalLabel": "Identify the signs",
+        "instruction": "Multiply -9 × 4. What are the signs?",
+        "work": "-9 is negative, 4 is positive. Different signs.",
+        "explanation": "The sign rules: same signs → positive, different signs → negative."
+      },
+      {
+        "subgoalLabel": "Multiply the absolute values",
+        "instruction": "Compute 9 × 4.",
+        "work": "9 × 4 = 36",
+        "explanation": "Ignore signs and multiply the magnitudes."
+      },
+      {
+        "subgoalLabel": "Apply the sign rule",
+        "instruction": "Different signs give a negative product.",
+        "work": "-9 × 4 = -36",
+        "explanation": "One negative and one positive always yields a negative product."
+      }
+    ]
+  },
+  {
+    "id": "integer-multiplication-ex2",
+    "topicId": "integer-multiplication",
+    "title": "Multiplying Three Integers",
+    "steps": [
+      {
+        "subgoalLabel": "Count the negative factors",
+        "instruction": "Multiply (-3) × (-5) × 2. How many negatives?",
+        "work": "Two negative factors: -3 and -5. One positive factor: 2.",
+        "explanation": "Even number of negatives → positive result. Odd number → negative result."
+      },
+      {
+        "subgoalLabel": "Predict the sign",
+        "instruction": "With 2 negative factors, what is the sign?",
+        "work": "2 is even, so the product will be positive.",
+        "explanation": "Each pair of negatives cancels out to a positive."
+      },
+      {
+        "subgoalLabel": "Compute the magnitude",
+        "instruction": "Multiply the absolute values: 3 × 5 × 2.",
+        "work": "3 × 5 = 15, then 15 × 2 = 30.",
+        "explanation": "Multiply step by step."
+      },
+      {
+        "subgoalLabel": "Combine sign and magnitude",
+        "instruction": "Write the final answer.",
+        "work": "(-3) × (-5) × 2 = +30",
+        "explanation": "Positive sign, magnitude 30. The shortcut: count negatives, determine sign, then multiply absolute values."
+      }
+    ]
+  }
+]

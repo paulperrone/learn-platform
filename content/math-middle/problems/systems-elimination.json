@@ -1,0 +1,65 @@
+[
+  {
+    "id": "systems-elimination-p1",
+    "topicId": "systems-elimination",
+    "difficulty": "easy",
+    "question": "Solve by elimination: x + y = 7 and x - y = 3. Write your answer as an ordered pair.",
+    "answer": "(5, 2)",
+    "hints": [
+      "Add the two equations to eliminate y: (x + y) + (x - y) = 7 + 3."
+    ],
+    "solution": "Add equations: 2x = 10, so x = 5. Substitute into x + y = 7: 5 + y = 7, y = 2. Solution: (5, 2).",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "systems-elimination-p2",
+    "topicId": "systems-elimination",
+    "difficulty": "easy",
+    "question": "Solve by elimination: 2x + y = 9 and 2x - y = 1. Write your answer as an ordered pair.",
+    "answer": "(2.5, 4)",
+    "hints": [
+      "Add the equations: the y-terms cancel because +y and -y add to zero."
+    ],
+    "solution": "Add: 4x = 10, so x = 2.5. Substitute: 2(2.5) + y = 9, 5 + y = 9, y = 4. Solution: (2.5, 4).",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "systems-elimination-p3",
+    "topicId": "systems-elimination",
+    "difficulty": "medium",
+    "question": "Solve by elimination: 3x + 2y = 16 and x + 2y = 10. Write your answer as an ordered pair.",
+    "answer": "(3, 3.5)",
+    "hints": [
+      "Subtract the second equation from the first to eliminate 2y.",
+      "(3x + 2y) - (x + 2y) = 16 - 10."
+    ],
+    "solution": "Subtract: 2x = 6, so x = 3. Substitute: 3 + 2y = 10, 2y = 7, y = 3.5. Solution: (3, 3.5).",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "systems-elimination-p4",
+    "topicId": "systems-elimination",
+    "difficulty": "medium",
+    "question": "Solve by elimination: 2x + 3y = 13 and 4x - 3y = 5. Write your answer as an ordered pair.",
+    "answer": "(3, 7/3)",
+    "hints": [
+      "Add the equations: the 3y terms cancel (+3y and -3y).",
+      "6x = 18, so x = 3."
+    ],
+    "solution": "Add: 6x = 18, x = 3. Substitute into 2(3) + 3y = 13: 6 + 3y = 13, 3y = 7, y = 7/3. Solution: (3, 7/3).",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "systems-elimination-p5",
+    "topicId": "systems-elimination",
+    "difficulty": "hard",
+    "question": "Solve by elimination: 3x + 2y = 16 and 2x + 5y = 29. Write your answer as an ordered pair.",
+    "answer": "(2, 5)",
+    "hints": [
+      "Neither variable cancels directly. Multiply the first equation by 5 and the second by -2 to eliminate y.",
+      "5(3x + 2y) = 80 gives 15x + 10y = 80. -2(2x + 5y) = -58 gives -4x - 10y = -58."
+    ],
+    "solution": "Multiply eq1 by 5: 15x + 10y = 80. Multiply eq2 by -2: -4x - 10y = -58. Add: 11x = 22, x = 2. Substitute: 3(2) + 2y = 16, 6 + 2y = 16, 2y = 10, y = 5. Solution: (2, 5).",
+    "cognitiveDemand": "application"
+  }
+]

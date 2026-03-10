@@ -1,0 +1,52 @@
+[
+  {
+    "id": "volume-cylinders-ex1",
+    "topicId": "volume-cylinders",
+    "title": "Volume of a Cylinder",
+    "steps": [
+      {
+        "subgoalLabel": "Recall the formula",
+        "instruction": "Volume of a cylinder = πr²h (base area × height).",
+        "work": "V = πr²h",
+        "explanation": "A cylinder is like a stack of circles. Its base is a circle with area πr²."
+      },
+      {
+        "subgoalLabel": "Substitute",
+        "instruction": "A cylinder has radius 4 cm and height 7 cm.",
+        "work": "V = π × 4² × 7 = π × 16 × 7 = 112π cu cm",
+        "explanation": "Square the radius first, then multiply by height and π."
+      },
+      {
+        "subgoalLabel": "Approximate if needed",
+        "instruction": "Using π ≈ 3.14:",
+        "work": "V ≈ 112 × 3.14 = 351.68 cu cm",
+        "explanation": "Exact answer: 112π cu cm. Approximate: 351.68 cu cm."
+      }
+    ]
+  },
+  {
+    "id": "volume-cylinders-ex2",
+    "topicId": "volume-cylinders",
+    "title": "Finding the Height of a Cylinder from Volume",
+    "steps": [
+      {
+        "subgoalLabel": "Start with the formula",
+        "instruction": "V = πr²h. A cylinder has volume 150π cu cm and radius 5 cm. Find h.",
+        "work": "150π = π × 5² × h → 150π = 25πh",
+        "explanation": "Substitute known values."
+      },
+      {
+        "subgoalLabel": "Divide both sides by 25π",
+        "instruction": "Simplify.",
+        "work": "h = 150π ÷ 25π = 6 cm",
+        "explanation": "The π cancels out."
+      },
+      {
+        "subgoalLabel": "Verify",
+        "instruction": "Check: V = π × 25 × 6 = 150π. Correct.",
+        "work": "150π = 150π ✓",
+        "explanation": "Always verify by plugging back into the original formula."
+      }
+    ]
+  }
+]

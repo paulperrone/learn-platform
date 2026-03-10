@@ -1,0 +1,65 @@
+[
+  {
+    "id": "one-step-inequalities-p1",
+    "topicId": "one-step-inequalities",
+    "difficulty": "easy",
+    "question": "Solve: x + 3 > 10.",
+    "answer": "x > 7",
+    "hints": [
+      "Subtract 3 from both sides."
+    ],
+    "solution": "x + 3 > 10. Subtract 3: x > 7.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "one-step-inequalities-p2",
+    "topicId": "one-step-inequalities",
+    "difficulty": "easy",
+    "question": "Solve: y − 5 < 8.",
+    "answer": "y < 13",
+    "hints": [
+      "Add 5 to both sides."
+    ],
+    "solution": "y − 5 < 8. Add 5: y < 13.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "one-step-inequalities-p3",
+    "topicId": "one-step-inequalities",
+    "difficulty": "medium",
+    "question": "Solve: 4n >= 24.",
+    "answer": "n >= 6",
+    "hints": [
+      "Divide both sides by 4.",
+      "Since 4 is positive, the inequality direction stays the same."
+    ],
+    "solution": "4n >= 24. Divide by 4: n >= 6.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "one-step-inequalities-p4",
+    "topicId": "one-step-inequalities",
+    "difficulty": "medium",
+    "question": "Solve: -2x > 10.",
+    "answer": "x < -5",
+    "hints": [
+      "Divide both sides by −2.",
+      "When you divide by a negative number, flip the inequality sign."
+    ],
+    "solution": "−2x > 10. Divide by −2 and flip: x < −5.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "one-step-inequalities-p5",
+    "topicId": "one-step-inequalities",
+    "difficulty": "hard",
+    "question": "Write an inequality for this situation, then solve: 'A number divided by 3 is at most 9.'",
+    "answer": "n <= 27",
+    "hints": [
+      "'At most 9' means less than or equal to 9.",
+      "The inequality is n/3 <= 9. Multiply both sides by 3."
+    ],
+    "solution": "n/3 <= 9. Multiply by 3: n <= 27.",
+    "cognitiveDemand": "application"
+  }
+]

@@ -1,0 +1,64 @@
+[
+  {
+    "id": "y-intercept-p1",
+    "topicId": "y-intercept",
+    "difficulty": "easy",
+    "question": "What is the y-intercept of the equation y = 4x + 7?",
+    "answer": "7",
+    "hints": [
+      "In y = mx + b, the y-intercept is b — the number added at the end."
+    ],
+    "solution": "In y = 4x + 7, the y-intercept is b = 7. The line crosses the y-axis at (0, 7).",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "y-intercept-p2",
+    "topicId": "y-intercept",
+    "difficulty": "easy",
+    "question": "What is the y-intercept of the equation y = -3x?",
+    "answer": "0",
+    "hints": [
+      "Rewrite as y = -3x + 0. What is the value of b?"
+    ],
+    "solution": "y = -3x + 0, so the y-intercept is 0. The line passes through the origin (0, 0).",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "y-intercept-p3",
+    "topicId": "y-intercept",
+    "difficulty": "medium",
+    "question": "A table shows: x = 0, y = -2; x = 1, y = 1; x = 2, y = 4; x = 3, y = 7. What is the y-intercept?",
+    "answer": "-2",
+    "hints": [
+      "The y-intercept is the y-value when x = 0."
+    ],
+    "solution": "When x = 0, y = -2. The y-intercept is -2.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "y-intercept-p4",
+    "topicId": "y-intercept",
+    "difficulty": "medium",
+    "question": "The equation 2x + y = 10 is in standard form. What is the y-intercept?",
+    "answer": "10",
+    "hints": [
+      "The y-intercept occurs when x = 0. Substitute x = 0 into the equation.",
+      "2(0) + y = 10."
+    ],
+    "solution": "Substitute x = 0: 2(0) + y = 10, so y = 10. The y-intercept is 10.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "y-intercept-p5",
+    "topicId": "y-intercept",
+    "difficulty": "hard",
+    "question": "A line passes through (3, 11) with slope 4. What is the y-intercept?",
+    "answer": "-1",
+    "hints": [
+      "Use y = mx + b. Substitute m = 4 and the point (3, 11) to solve for b.",
+      "11 = 4(3) + b."
+    ],
+    "solution": "11 = 4(3) + b. 11 = 12 + b. b = -1. The y-intercept is -1.",
+    "cognitiveDemand": "application"
+  }
+]

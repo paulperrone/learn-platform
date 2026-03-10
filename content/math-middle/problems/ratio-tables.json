@@ -1,0 +1,65 @@
+[
+  {
+    "id": "ratio-tables-p1",
+    "topicId": "ratio-tables",
+    "difficulty": "easy",
+    "question": "A ratio table shows: Apples: 2, 4, 6, ? and Oranges: 3, 6, 9, 12. What is the missing number of apples?",
+    "answer": "8",
+    "hints": [
+      "Look at the pattern in the apples row. Each time, 2 is added."
+    ],
+    "solution": "The apples increase by 2 each column: 2, 4, 6, 8. The missing value is 8.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "ratio-tables-p2",
+    "topicId": "ratio-tables",
+    "difficulty": "easy",
+    "question": "A ratio table shows: Miles: 5, 10, 15 and Hours: 1, 2, ?. What is the missing number of hours?",
+    "answer": "3",
+    "hints": [
+      "The hours increase by 1 for every 5 miles added."
+    ],
+    "solution": "The pattern is +1 hour for each +5 miles: 1, 2, 3. The missing value is 3.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "ratio-tables-p3",
+    "topicId": "ratio-tables",
+    "difficulty": "medium",
+    "question": "A ratio table for a recipe shows: Sugar (cups): 3, 6, ?, 12 and Butter (cups): 2, 4, 6, 8. What is the missing amount of sugar?",
+    "answer": "9",
+    "hints": [
+      "Look at the butter row — it goes 2, 4, 6, 8 (adding 2 each time).",
+      "The sugar row adds 3 each time: 3, 6, ?, 12."
+    ],
+    "solution": "Sugar increases by 3 each column: 3, 6, 9, 12. The missing value is 9.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "ratio-tables-p4",
+    "topicId": "ratio-tables",
+    "difficulty": "medium",
+    "question": "The ratio of cats to dogs at a shelter is 4:5. Use a ratio table to find how many dogs there are if there are 20 cats.",
+    "answer": "25",
+    "hints": [
+      "Build the table: Cats: 4, 8, 12, 16, 20. Dogs: 5, 10, 15, 20, ?.",
+      "Each row is multiplied by the same factor. 4 × 5 = 20, so multiply 5 by 5."
+    ],
+    "solution": "Cats: 4 × 5 = 20. Dogs: 5 × 5 = 25. There are 25 dogs.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "ratio-tables-p5",
+    "topicId": "ratio-tables",
+    "difficulty": "hard",
+    "question": "A lemonade recipe uses cups of water and lemons in the ratio 8:3. You have 7 lemons. Using a ratio table, how many cups of water do you need? Express your answer as a fraction if needed.",
+    "answer": "56/3",
+    "hints": [
+      "You need to find the multiplier: 3 × ? = 7, so ? = 7/3.",
+      "Multiply 8 by 7/3."
+    ],
+    "solution": "Multiplier = 7 ÷ 3 = 7/3. Water = 8 × 7/3 = 56/3 cups.",
+    "cognitiveDemand": "application"
+  }
+]

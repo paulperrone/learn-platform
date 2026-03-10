@@ -1,0 +1,65 @@
+[
+  {
+    "id": "triangle-angle-sum-p1",
+    "topicId": "triangle-angle-sum",
+    "difficulty": "easy",
+    "question": "A triangle has angles of 60° and 80°. What is the measure of the third angle?",
+    "answer": "40",
+    "hints": [
+      "The three angles of a triangle add up to 180°."
+    ],
+    "solution": "180° − 60° − 80° = 40°.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "triangle-angle-sum-p2",
+    "topicId": "triangle-angle-sum",
+    "difficulty": "easy",
+    "question": "A right triangle has one angle of 90° and another of 45°. What is the third angle?",
+    "answer": "45",
+    "hints": [
+      "Sum of angles = 180°. Subtract the known angles."
+    ],
+    "solution": "180° − 90° − 45° = 45°.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "triangle-angle-sum-p3",
+    "topicId": "triangle-angle-sum",
+    "difficulty": "medium",
+    "question": "In a triangle, one angle is twice the smallest angle, and the third angle is three times the smallest angle. What is the measure of the largest angle?",
+    "answer": "90",
+    "hints": [
+      "Let the smallest angle be x. Then the angles are x, 2x, and 3x.",
+      "x + 2x + 3x = 180."
+    ],
+    "solution": "x + 2x + 3x = 180 → 6x = 180 → x = 30. Largest angle = 3 × 30 = 90°.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "triangle-angle-sum-p4",
+    "topicId": "triangle-angle-sum",
+    "difficulty": "medium",
+    "question": "An isosceles triangle has a vertex angle of 50°. What is the measure of each base angle?",
+    "answer": "65",
+    "hints": [
+      "An isosceles triangle has two equal base angles.",
+      "50 + 2b = 180."
+    ],
+    "solution": "50 + 2b = 180 → 2b = 130 → b = 65°.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "triangle-angle-sum-p5",
+    "topicId": "triangle-angle-sum",
+    "difficulty": "hard",
+    "question": "In a triangle, angle A = (2x + 5)°, angle B = (3x − 10)°, and angle C = (x + 35)°. Find the value of x and the measure of each angle.",
+    "answer": "x = 25, angles are 55, 65, 60",
+    "hints": [
+      "Set up: (2x+5) + (3x−10) + (x+35) = 180.",
+      "Combine like terms: 6x + 30 = 180."
+    ],
+    "solution": "6x + 30 = 180 → 6x = 150 → x = 25. A = 55°, B = 65°, C = 60°.",
+    "cognitiveDemand": "reasoning"
+  }
+]

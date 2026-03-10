@@ -1,0 +1,67 @@
+[
+  {
+    "id": "points-lines-rays-p1",
+    "topicId": "points-lines-rays",
+    "difficulty": "easy",
+    "question": "Which geometric figure has two endpoints?\n\nA) Line\nB) Ray\nC) Line segment\nD) Point",
+    "answer": "C",
+    "hints": [
+      "Think about which figure starts AND stops.",
+      "A line goes on forever in both directions. A ray goes on forever in one direction. Which one is limited on both ends?"
+    ],
+    "solution": "A line segment has exactly two endpoints — it starts at one point and ends at another. A line extends forever in both directions (no endpoints). A ray has one endpoint and extends forever in one direction. A point has no length at all. The answer is C.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "points-lines-rays-p2",
+    "topicId": "points-lines-rays",
+    "difficulty": "easy",
+    "question": "A ray starts at point A and passes through point B, continuing forever past B. How many endpoints does this ray have?",
+    "answer": "1",
+    "hints": [
+      "A ray starts at one point and keeps going in one direction.",
+      "The starting point A is the endpoint. Does the ray stop at B?"
+    ],
+    "solution": "A ray has exactly 1 endpoint. It begins at point A (the endpoint) and passes through B, continuing infinitely in that direction. Since it never stops on the other end, it has only 1 endpoint.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "points-lines-rays-p3",
+    "topicId": "points-lines-rays",
+    "difficulty": "medium",
+    "question": "Sort each description into the correct category. For each item, write \"point\", \"line\", \"line segment\", or \"ray\".\n\n1. The tip of a pencil touching paper represents a ___.\n2. A laser beam shining from a flashlight into the sky represents a ___.\n3. The edge of a ruler from the 0 mark to the 12-inch mark represents a ___.\n4. A straight road that stretches infinitely in both directions represents a ___.",
+    "answer": "1. point, 2. ray, 3. line segment, 4. line",
+    "hints": [
+      "Think about whether each example has 0, 1, or 2 endpoints, and whether it extends forever.",
+      "A point is a single location. A ray starts at one place and goes forever one way. A line segment connects two specific points. A line goes forever in both directions."
+    ],
+    "solution": "1. The tip of a pencil is a single location with no length — that is a point. 2. A laser beam starts at the flashlight (one endpoint) and goes infinitely in one direction — that is a ray. 3. The edge of a ruler from 0 to 12 inches has two endpoints — that is a line segment. 4. A road stretching infinitely in both directions has no endpoints — that is a line.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "points-lines-rays-p4",
+    "topicId": "points-lines-rays",
+    "difficulty": "medium",
+    "question": "Points A, B, and C lie on the same straight line, with B between A and C. How many different line segments can be named using these three points?",
+    "answer": "3",
+    "hints": [
+      "List all pairs of points: AB, AC, BC.",
+      "Each pair of points defines one line segment."
+    ],
+    "solution": "With three points on a line, we can form a line segment between each pair: AB, BC, and AC. That gives us 3 line segments.",
+    "cognitiveDemand": "reasoning"
+  },
+  {
+    "id": "points-lines-rays-p5",
+    "topicId": "points-lines-rays",
+    "difficulty": "hard",
+    "question": "Maya says: \"A line segment is just a short line, so they are the same thing.\" Explain why Maya is incorrect. What is the key difference between a line and a line segment?",
+    "answer": "A line extends infinitely in both directions and has no endpoints. A line segment has two endpoints and a fixed length. They are not the same.",
+    "hints": [
+      "Think about endpoints. How many does each one have?",
+      "Can you measure the length of a line? Can you measure the length of a line segment?"
+    ],
+    "solution": "Maya is incorrect because a line and a line segment are fundamentally different. A line has no endpoints — it extends infinitely in both directions, so it has no measurable length. A line segment has exactly two endpoints and a definite, measurable length. Saying a line segment is a \"short line\" is misleading because no matter how long a line segment is, it always has a fixed length, while a line never does.",
+    "cognitiveDemand": "error-analysis"
+  }
+]

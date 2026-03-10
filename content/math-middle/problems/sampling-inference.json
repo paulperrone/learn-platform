@@ -1,0 +1,65 @@
+[
+  {
+    "id": "sampling-inference-p1",
+    "topicId": "sampling-inference",
+    "difficulty": "easy",
+    "question": "A school has 500 students. A researcher surveys 50 students chosen randomly. Is this a random sample? Answer yes or no.",
+    "answer": "yes",
+    "hints": [
+      "A random sample gives every member of the population an equal chance of being selected."
+    ],
+    "solution": "Yes. If the 50 students were chosen randomly (each student had an equal chance), this is a random sample.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "sampling-inference-p2",
+    "topicId": "sampling-inference",
+    "difficulty": "easy",
+    "question": "A researcher surveys only students in the school band about their favorite subject. Is this likely a representative sample of the whole school? Answer yes or no.",
+    "answer": "no",
+    "hints": [
+      "Band students may have different preferences than the general student body."
+    ],
+    "solution": "No. Band students are a specific group and may prefer music more than the average student. This is a biased sample.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "sampling-inference-p3",
+    "topicId": "sampling-inference",
+    "difficulty": "medium",
+    "question": "In a random sample of 60 students, 15 said they prefer math. The school has 600 students total. How many students in the whole school would you predict prefer math?",
+    "answer": "150",
+    "hints": [
+      "Find the proportion in the sample: 15/60 = 1/4.",
+      "Apply that proportion to the whole school."
+    ],
+    "solution": "Sample proportion = 15/60 = 1/4. Predicted = 1/4 × 600 = 150 students.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "sampling-inference-p4",
+    "topicId": "sampling-inference",
+    "difficulty": "medium",
+    "question": "A factory produces 10,000 light bulbs per day. A random sample of 200 bulbs found 6 defective. How many defective bulbs would you expect in the full daily production?",
+    "answer": "300",
+    "hints": [
+      "Defective rate = 6/200 = 0.03.",
+      "Expected defective = 0.03 × 10,000."
+    ],
+    "solution": "Rate = 6/200 = 0.03. Expected = 0.03 × 10,000 = 300 defective bulbs.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "sampling-inference-p5",
+    "topicId": "sampling-inference",
+    "difficulty": "hard",
+    "question": "Two random samples of 100 students each found that 35 and 40 students, respectively, prefer pizza for lunch. What can you infer about the whole school's preference? Give a reasonable estimate as a percentage.",
+    "answer": "about 35% to 40%",
+    "hints": [
+      "Multiple random samples give a range of estimates.",
+      "The true proportion is likely near the average of the two samples."
+    ],
+    "solution": "Sample 1: 35%. Sample 2: 40%. A reasonable inference is that about 35-40% of the school prefers pizza. The average estimate is 37.5%.",
+    "cognitiveDemand": "reasoning"
+  }
+]

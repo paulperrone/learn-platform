@@ -1,0 +1,52 @@
+[
+  {
+    "id": "multiply-polynomials-monomial-ex1",
+    "topicId": "multiply-polynomials-monomial",
+    "title": "Distributing a Monomial",
+    "steps": [
+      {
+        "subgoalLabel": "Apply the distributive property",
+        "instruction": "To multiply a monomial by a polynomial, distribute the monomial to each term.",
+        "work": "3x(4x² − 2x + 5) = 3x(4x²) + 3x(−2x) + 3x(5)",
+        "explanation": "Each term in the polynomial gets multiplied by the monomial."
+      },
+      {
+        "subgoalLabel": "Multiply each term",
+        "instruction": "Multiply coefficients and add exponents.",
+        "work": "3x(4x²) = 12x³. 3x(−2x) = −6x². 3x(5) = 15x.",
+        "explanation": "Remember: x = x¹, so x · x² = x³."
+      },
+      {
+        "subgoalLabel": "Write the result",
+        "instruction": "Combine the products.",
+        "work": "12x³ − 6x² + 15x",
+        "explanation": "The result has the same number of terms as the original polynomial."
+      }
+    ]
+  },
+  {
+    "id": "multiply-polynomials-monomial-ex2",
+    "topicId": "multiply-polynomials-monomial",
+    "title": "Distributing with Negative Coefficients",
+    "steps": [
+      {
+        "subgoalLabel": "Set up",
+        "instruction": "Multiply −2x²(3x³ + x − 4).",
+        "work": "Distribute −2x² to each of the three terms.",
+        "explanation": "Be careful with signs — a negative times a positive is negative, negative times negative is positive."
+      },
+      {
+        "subgoalLabel": "Multiply each term",
+        "instruction": "Apply the rules.",
+        "work": "−2x²(3x³) = −6x⁵. −2x²(x) = −2x³. −2x²(−4) = 8x².",
+        "explanation": "For the last term, negative times negative gives positive."
+      },
+      {
+        "subgoalLabel": "Write the result",
+        "instruction": "Combine in standard form.",
+        "work": "−6x⁵ − 2x³ + 8x²",
+        "explanation": "Double-check each sign carefully."
+      }
+    ]
+  }
+]

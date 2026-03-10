@@ -1,0 +1,67 @@
+[
+  {
+    "id": "least-common-multiple-p1",
+    "topicId": "least-common-multiple",
+    "difficulty": "easy",
+    "question": "What is the least common multiple (LCM) of 3 and 5?",
+    "answer": "15",
+    "hints": [
+      "List the first several multiples of 3 and the first several multiples of 5.",
+      "Multiples of 3: 3, 6, 9, 12, 15, 18... Multiples of 5: 5, 10, 15, 20... What is the smallest number that appears in both lists?"
+    ],
+    "solution": "Multiples of 3: 3, 6, 9, 12, 15, 18... Multiples of 5: 5, 10, 15, 20... The smallest number in both lists is 15. The LCM of 3 and 5 is 15.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "least-common-multiple-p2",
+    "topicId": "least-common-multiple",
+    "difficulty": "easy",
+    "question": "What is the least common multiple (LCM) of 4 and 6?",
+    "answer": "12",
+    "hints": [
+      "List multiples of 4 and multiples of 6 until you find a match.",
+      "Multiples of 4: 4, 8, 12... Multiples of 6: 6, 12..."
+    ],
+    "solution": "Multiples of 4: 4, 8, 12, 16... Multiples of 6: 6, 12, 18... The smallest number in both lists is 12. The LCM of 4 and 6 is 12.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "least-common-multiple-p3",
+    "topicId": "least-common-multiple",
+    "difficulty": "medium",
+    "question": "What is the least common multiple (LCM) of 8 and 12?",
+    "answer": "24",
+    "hints": [
+      "List multiples of 8 and multiples of 12.",
+      "Multiples of 8: 8, 16, 24, 32... Multiples of 12: 12, 24, 36..."
+    ],
+    "solution": "Multiples of 8: 8, 16, 24, 32... Multiples of 12: 12, 24, 36... The smallest common multiple is 24. The LCM of 8 and 12 is 24.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "least-common-multiple-p4",
+    "topicId": "least-common-multiple",
+    "difficulty": "medium",
+    "question": "Hot dogs come in packs of 8 and buns come in packs of 6. What is the smallest number of each you need to buy so that you have exactly one bun for each hot dog with none left over?",
+    "answer": "24",
+    "hints": [
+      "You need a number that is a multiple of both 8 and 6.",
+      "Find the LCM of 8 and 6."
+    ],
+    "solution": "You need the same number of hot dogs and buns, and that number must be a multiple of both 8 (hot dog pack size) and 6 (bun pack size). The LCM of 8 and 6 is 24. You need to buy 3 packs of hot dogs (3 × 8 = 24) and 4 packs of buns (4 × 6 = 24). The answer is 24.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "least-common-multiple-p5",
+    "topicId": "least-common-multiple",
+    "difficulty": "hard",
+    "question": "What is the least common multiple (LCM) of 9 and 12?",
+    "answer": "36",
+    "hints": [
+      "Prime factorization can help: 9 = 3 × 3 and 12 = 2 × 2 × 3.",
+      "The LCM uses the highest power of each prime factor: 2² × 3²."
+    ],
+    "solution": "Prime factorization: 9 = 3² and 12 = 2² × 3. For the LCM, take the highest power of each prime: 2² × 3² = 4 × 9 = 36. The LCM of 9 and 12 is 36.",
+    "cognitiveDemand": "conceptual"
+  }
+]

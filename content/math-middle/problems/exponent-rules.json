@@ -1,0 +1,65 @@
+[
+  {
+    "id": "exponent-rules-p1",
+    "topicId": "exponent-rules",
+    "difficulty": "easy",
+    "question": "Simplify: x^3 * x^4.",
+    "answer": "x^7",
+    "hints": [
+      "Product rule: when multiplying same bases, add exponents."
+    ],
+    "solution": "x^3 · x^4 = x^(3+4) = x^7.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "exponent-rules-p2",
+    "topicId": "exponent-rules",
+    "difficulty": "easy",
+    "question": "Simplify: y^8 / y^3.",
+    "answer": "y^5",
+    "hints": [
+      "Quotient rule: when dividing same bases, subtract exponents."
+    ],
+    "solution": "y^8 / y^3 = y^(8−3) = y^5.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "exponent-rules-p3",
+    "topicId": "exponent-rules",
+    "difficulty": "medium",
+    "question": "Simplify: (a^2)^5.",
+    "answer": "a^10",
+    "hints": [
+      "Power rule: when raising a power to a power, multiply exponents."
+    ],
+    "solution": "(a^2)^5 = a^(2×5) = a^10.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "exponent-rules-p4",
+    "topicId": "exponent-rules",
+    "difficulty": "medium",
+    "question": "Simplify: (3x^2)^3.",
+    "answer": "27x^6",
+    "hints": [
+      "Raise each factor to the power: 3^3 and (x^2)^3.",
+      "3^3 = 27. (x^2)^3 = x^6."
+    ],
+    "solution": "(3x^2)^3 = 3^3 · (x^2)^3 = 27x^6.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "exponent-rules-p5",
+    "topicId": "exponent-rules",
+    "difficulty": "hard",
+    "question": "Simplify: (2x^3 * x^2)^2 / x^4.",
+    "answer": "4x^6",
+    "hints": [
+      "First simplify inside: 2x^3 · x^2 = 2x^5.",
+      "Then (2x^5)^2 = 4x^10.",
+      "Finally 4x^10 / x^4."
+    ],
+    "solution": "2x^3 · x^2 = 2x^5. (2x^5)^2 = 4x^10. 4x^10 / x^4 = 4x^6.",
+    "cognitiveDemand": "procedural"
+  }
+]

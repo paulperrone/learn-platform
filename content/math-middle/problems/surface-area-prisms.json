@@ -1,0 +1,66 @@
+[
+  {
+    "id": "surface-area-prisms-p1",
+    "topicId": "surface-area-prisms",
+    "difficulty": "easy",
+    "question": "A rectangular prism has length 4 cm, width 3 cm, and height 2 cm. What is its surface area?",
+    "answer": "52 sq cm",
+    "hints": [
+      "Surface area = 2(lw + lh + wh).",
+      "2(4×3 + 4×2 + 3×2) = 2(12 + 8 + 6)."
+    ],
+    "solution": "SA = 2(4×3 + 4×2 + 3×2) = 2(12 + 8 + 6) = 2(26) = 52 sq cm.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "surface-area-prisms-p2",
+    "topicId": "surface-area-prisms",
+    "difficulty": "easy",
+    "question": "A cube has side length 5 cm. What is its surface area?",
+    "answer": "150 sq cm",
+    "hints": [
+      "A cube has 6 identical square faces. SA = 6 × s²."
+    ],
+    "solution": "SA = 6 × 5² = 6 × 25 = 150 sq cm.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "surface-area-prisms-p3",
+    "topicId": "surface-area-prisms",
+    "difficulty": "medium",
+    "question": "A triangular prism has two triangular faces, each with base 6 cm and height 4 cm, and three rectangular faces with dimensions 6 cm × 10 cm, 5 cm × 10 cm, and 5 cm × 10 cm. What is the total surface area?",
+    "answer": "184 sq cm",
+    "hints": [
+      "Find the area of the two triangles: 2 × (1/2 × 6 × 4).",
+      "Find the area of the three rectangles and add everything together."
+    ],
+    "solution": "Triangles: 2 × (1/2 × 6 × 4) = 24. Rectangles: 60 + 50 + 50 = 160. Total: 24 + 160 = 184 sq cm.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "surface-area-prisms-p4",
+    "topicId": "surface-area-prisms",
+    "difficulty": "medium",
+    "question": "A cube has a surface area of 96 sq cm. What is the length of one side?",
+    "answer": "4 cm",
+    "hints": [
+      "SA = 6s². Set 6s² = 96 and solve for s.",
+      "s² = 16."
+    ],
+    "solution": "6s² = 96 → s² = 16 → s = 4 cm.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "surface-area-prisms-p5",
+    "topicId": "surface-area-prisms",
+    "difficulty": "hard",
+    "question": "A gift box is a rectangular prism with dimensions 12 in by 8 in by 5 in. Wrapping paper costs $0.02 per square inch. How much does it cost to wrap the box (no overlap)?",
+    "answer": "$7.84",
+    "hints": [
+      "Find the surface area first: 2(12×8 + 12×5 + 8×5).",
+      "Then multiply the surface area by $0.02."
+    ],
+    "solution": "SA = 2(96 + 60 + 40) = 2(196) = 392 sq in. Cost = 392 × $0.02 = $7.84.",
+    "cognitiveDemand": "application"
+  }
+]

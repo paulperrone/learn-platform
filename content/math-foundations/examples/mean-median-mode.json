@@ -1,0 +1,76 @@
+[
+  {
+    "id": "mean-median-mode-ex1",
+    "topicId": "mean-median-mode",
+    "title": "Finding Mean, Median, and Mode of {3, 5, 7, 5, 10}",
+    "steps": [
+      {
+        "subgoalLabel": "Find the mean",
+        "instruction": "The mean is the sum of all values divided by how many values there are.",
+        "work": "Sum = 3 + 5 + 7 + 5 + 10 = 30. Count = 5. Mean = 30 ÷ 5 = 6.",
+        "explanation": "The mean (average) tells us what each value would be if the total were shared equally."
+      },
+      {
+        "subgoalLabel": "Order the data for median",
+        "instruction": "Arrange the values from least to greatest.",
+        "work": "Ordered: 3, 5, 5, 7, 10.",
+        "explanation": "The median requires the data to be sorted first."
+      },
+      {
+        "subgoalLabel": "Find the median",
+        "instruction": "The median is the middle value. With 5 values, the middle is the 3rd value.",
+        "work": "Position: 1st=3, 2nd=5, 3rd=5, 4th=7, 5th=10. Median = 5.",
+        "explanation": "With an odd number of values, the median is the single middle value."
+      },
+      {
+        "subgoalLabel": "Find the mode",
+        "instruction": "The mode is the value that appears most often.",
+        "work": "3 appears 1 time. 5 appears 2 times. 7 appears 1 time. 10 appears 1 time. Mode = 5.",
+        "explanation": "The number 5 appears more than any other value, making it the mode."
+      },
+      {
+        "subgoalLabel": "Summarize",
+        "instruction": "State all three measures.",
+        "work": "Mean = 6, Median = 5, Mode = 5.",
+        "explanation": "These three measures each describe the center of the data in a different way."
+      }
+    ]
+  },
+  {
+    "id": "mean-median-mode-ex2",
+    "topicId": "mean-median-mode",
+    "title": "Finding Mean, Median, and Mode of {12, 15, 18, 20, 15, 22}",
+    "steps": [
+      {
+        "subgoalLabel": "Find the mean",
+        "instruction": "Add all the values and divide by the count.",
+        "work": "Sum = 12 + 15 + 18 + 20 + 15 + 22 = 102. Count = 6. Mean = 102 ÷ 6 = 17.",
+        "explanation": "The total of all six values is 102, and dividing equally among 6 gives 17."
+      },
+      {
+        "subgoalLabel": "Order the data for median",
+        "instruction": "Arrange the values from least to greatest.",
+        "work": "Ordered: 12, 15, 15, 18, 20, 22.",
+        "explanation": "Sorting is required before finding the median."
+      },
+      {
+        "subgoalLabel": "Find the median",
+        "instruction": "With 6 values (even count), the median is the average of the 3rd and 4th values.",
+        "work": "3rd value = 15, 4th value = 18. Median = (15 + 18) ÷ 2 = 33 ÷ 2 = 16.5.",
+        "explanation": "With an even number of values, there is no single middle value, so we average the two middle values."
+      },
+      {
+        "subgoalLabel": "Find the mode",
+        "instruction": "Identify which value appears most frequently.",
+        "work": "12: once. 15: twice. 18: once. 20: once. 22: once. Mode = 15.",
+        "explanation": "15 appears twice while every other value appears only once, so 15 is the mode."
+      },
+      {
+        "subgoalLabel": "Summarize",
+        "instruction": "State all three measures.",
+        "work": "Mean = 17, Median = 16.5, Mode = 15.",
+        "explanation": "Notice that mean, median, and mode can all be different values for the same data set."
+      }
+    ]
+  }
+]

@@ -1,0 +1,64 @@
+[
+  {
+    "id": "irrational-numbers-ex1",
+    "topicId": "irrational-numbers",
+    "title": "Classifying Numbers as Rational or Irrational",
+    "steps": [
+      {
+        "subgoalLabel": "Define the terms",
+        "instruction": "What makes a number rational vs. irrational?",
+        "work": "Rational: can be written as a/b where a, b are integers and b is not 0. Irrational: cannot.",
+        "explanation": "Rational numbers have terminating or repeating decimals. Irrational decimals go on forever without repeating."
+      },
+      {
+        "subgoalLabel": "Classify the square root of 9",
+        "instruction": "Is 9 a perfect square?",
+        "work": "Yes. Square root of 9 = 3 = 3/1. Rational.",
+        "explanation": "Perfect squares have whole number square roots."
+      },
+      {
+        "subgoalLabel": "Classify the square root of 7",
+        "instruction": "Is 7 a perfect square?",
+        "work": "No. 2^2 = 4, 3^2 = 9. 7 is between them. Irrational.",
+        "explanation": "Non-perfect-square integers have irrational square roots."
+      },
+      {
+        "subgoalLabel": "Key takeaway",
+        "instruction": "Summarize the classification rule.",
+        "work": "Square root of n is rational only if n is a perfect square (0, 1, 4, 9, 16, 25, ...).",
+        "explanation": "This is a quick test for classifying square roots."
+      }
+    ]
+  },
+  {
+    "id": "irrational-numbers-ex2",
+    "topicId": "irrational-numbers",
+    "title": "Approximating the Square Root of 20",
+    "steps": [
+      {
+        "subgoalLabel": "Find the two perfect squares around 20",
+        "instruction": "Which perfect squares is 20 between?",
+        "work": "4^2 = 16, 5^2 = 25. So the square root of 20 is between 4 and 5.",
+        "explanation": "This gives us a rough estimate."
+      },
+      {
+        "subgoalLabel": "Narrow down",
+        "instruction": "Is it closer to 4 or 5? Try 4.5.",
+        "work": "4.5^2 = 20.25. That is very close to 20 but slightly too high.",
+        "explanation": "4.5^2 = 20.25, so the answer is just below 4.5."
+      },
+      {
+        "subgoalLabel": "Try 4.4",
+        "instruction": "Compute 4.4^2.",
+        "work": "4.4^2 = 19.36. Too low.",
+        "explanation": "The square root of 20 is between 4.4 and 4.5."
+      },
+      {
+        "subgoalLabel": "Estimate to the nearest tenth",
+        "instruction": "20 is closer to 20.25 (4.5^2) than to 19.36 (4.4^2).",
+        "work": "The square root of 20 is approximately 4.5.",
+        "explanation": "More precisely it is about 4.47, which rounds to 4.5."
+      }
+    ]
+  }
+]

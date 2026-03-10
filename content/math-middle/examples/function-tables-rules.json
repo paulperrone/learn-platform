@@ -1,0 +1,52 @@
+[
+  {
+    "id": "function-tables-rules-ex1",
+    "topicId": "function-tables-rules",
+    "title": "Finding a Rule from a Table",
+    "steps": [
+      {
+        "subgoalLabel": "Find the rate of change",
+        "instruction": "Given the table x = 1, y = 4; x = 2, y = 7; x = 3, y = 10; x = 4, y = 13, find how much y changes when x increases by 1.",
+        "work": "7 - 4 = 3, 10 - 7 = 3, 13 - 10 = 3. The rate of change is 3.",
+        "explanation": "A constant rate of change means the relationship is linear. This value becomes m in y = mx + b."
+      },
+      {
+        "subgoalLabel": "Find the y-intercept (b)",
+        "instruction": "Use one point and the rate of change. Substitute into y = mx + b and solve for b.",
+        "work": "Using (1, 4): 4 = 3(1) + b, so 4 = 3 + b, so b = 1.",
+        "explanation": "You can use any point from the table. They should all give the same b."
+      },
+      {
+        "subgoalLabel": "Write the rule",
+        "instruction": "Combine m and b into the equation y = mx + b.",
+        "work": "y = 3x + 1.",
+        "explanation": "Check: when x = 4, y = 3(4) + 1 = 13. This matches the table, confirming the rule."
+      }
+    ]
+  },
+  {
+    "id": "function-tables-rules-ex2",
+    "topicId": "function-tables-rules",
+    "title": "Completing a Function Table Using a Rule",
+    "steps": [
+      {
+        "subgoalLabel": "Understand the rule",
+        "instruction": "The rule is y = -2x + 5. What does it mean?",
+        "work": "Multiply the input by -2, then add 5.",
+        "explanation": "The coefficient -2 is the rate of change (y decreases by 2 for each 1-unit increase in x). The constant 5 is the starting value when x = 0."
+      },
+      {
+        "subgoalLabel": "Substitute each x-value",
+        "instruction": "Fill in the table for x = 0, 1, 2, 3.",
+        "work": "x = 0: y = -2(0) + 5 = 5. x = 1: y = -2(1) + 5 = 3. x = 2: y = -2(2) + 5 = 1. x = 3: y = -2(3) + 5 = -1.",
+        "explanation": "Each substitution replaces x with the given value and simplifies."
+      },
+      {
+        "subgoalLabel": "Verify the pattern",
+        "instruction": "Check that the outputs decrease by 2 each time.",
+        "work": "5, 3, 1, -1. Differences: 3 - 5 = -2, 1 - 3 = -2, -1 - 1 = -2. Confirmed.",
+        "explanation": "The constant difference of -2 matches the slope m = -2, confirming the table is correct."
+      }
+    ]
+  }
+]

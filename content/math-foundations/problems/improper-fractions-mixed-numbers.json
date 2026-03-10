@@ -1,0 +1,67 @@
+[
+  {
+    "id": "improper-fractions-mixed-numbers-p1",
+    "topicId": "improper-fractions-mixed-numbers",
+    "difficulty": "easy",
+    "question": "Convert 7/4 to a mixed number.",
+    "answer": "1 3/4",
+    "hints": [
+      "Divide 7 by 4. How many whole groups of 4 fit into 7?",
+      "7 ÷ 4 = 1 remainder 3. The whole number is 1 and the remainder goes over the denominator."
+    ],
+    "solution": "Divide 7 by 4: 7 ÷ 4 = 1 with a remainder of 3. Write the whole number (1) and put the remainder (3) over the original denominator (4). 7/4 = 1 3/4.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "improper-fractions-mixed-numbers-p2",
+    "topicId": "improper-fractions-mixed-numbers",
+    "difficulty": "easy",
+    "question": "Convert 2 1/3 to an improper fraction.",
+    "answer": "7/3",
+    "hints": [
+      "Multiply the whole number by the denominator, then add the numerator.",
+      "2 × 3 = 6, then 6 + 1 = 7. Put that over the denominator."
+    ],
+    "solution": "Multiply the whole number by the denominator: 2 × 3 = 6. Add the numerator: 6 + 1 = 7. Put the result over the original denominator: 7/3. So 2 1/3 = 7/3.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "improper-fractions-mixed-numbers-p3",
+    "topicId": "improper-fractions-mixed-numbers",
+    "difficulty": "medium",
+    "question": "Convert 17/5 to a mixed number.",
+    "answer": "3 2/5",
+    "hints": [
+      "Divide 17 by 5.",
+      "17 ÷ 5 = 3 remainder 2."
+    ],
+    "solution": "Divide 17 by 5: 17 ÷ 5 = 3 with a remainder of 2. The mixed number is 3 2/5.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "improper-fractions-mixed-numbers-p4",
+    "topicId": "improper-fractions-mixed-numbers",
+    "difficulty": "medium",
+    "question": "Convert 4 5/8 to an improper fraction.",
+    "answer": "37/8",
+    "hints": [
+      "Multiply the whole number by the denominator: 4 × 8 = ?",
+      "4 × 8 = 32, then add the numerator: 32 + 5 = 37."
+    ],
+    "solution": "Multiply the whole number by the denominator: 4 × 8 = 32. Add the numerator: 32 + 5 = 37. Put over the denominator: 37/8. So 4 5/8 = 37/8.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "improper-fractions-mixed-numbers-p5",
+    "topicId": "improper-fractions-mixed-numbers",
+    "difficulty": "hard",
+    "question": "A student converts 29/6 to a mixed number and writes 4 1/6. Is the student correct? Answer 'yes' or 'no', and if no, give the correct mixed number.",
+    "answer": "no, 4 5/6",
+    "hints": [
+      "Divide 29 by 6 carefully. What is the quotient and remainder?",
+      "29 ÷ 6 = 4 remainder 5, not remainder 1. Check: 4 × 6 = 24, and 29 - 24 = 5."
+    ],
+    "solution": "Divide 29 by 6: 29 ÷ 6 = 4 with a remainder of 5 (since 4 × 6 = 24 and 29 - 24 = 5). The correct mixed number is 4 5/6. The student made an error in computing the remainder. The answer is: no, 4 5/6.",
+    "cognitiveDemand": "error-analysis"
+  }
+]

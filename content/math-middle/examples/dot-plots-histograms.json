@@ -1,0 +1,52 @@
+[
+  {
+    "id": "dot-plots-histograms-ex1",
+    "topicId": "dot-plots-histograms",
+    "title": "Reading a Dot Plot",
+    "steps": [
+      {
+        "subgoalLabel": "Understand the display",
+        "instruction": "A dot plot shows one dot for each data value above a number line.",
+        "work": "Number of books read: 0 has 2 dots, 1 has 5 dots, 2 has 3 dots, 3 has 1 dot, 4 has 1 dot.",
+        "explanation": "Each dot represents one student's response."
+      },
+      {
+        "subgoalLabel": "Find the total",
+        "instruction": "Count all dots.",
+        "work": "2 + 5 + 3 + 1 + 1 = 12 students",
+        "explanation": "The total number of dots equals the total number of data points."
+      },
+      {
+        "subgoalLabel": "Find the median",
+        "instruction": "With 12 values, the median is the average of the 6th and 7th values.",
+        "work": "Counting up: values 1-2 are 0, values 3-7 are 1, values 8-10 are 2. The 6th and 7th values are both 1. Median = 1.",
+        "explanation": "Use the cumulative count of dots to find position."
+      }
+    ]
+  },
+  {
+    "id": "dot-plots-histograms-ex2",
+    "topicId": "dot-plots-histograms",
+    "title": "Reading a Histogram",
+    "steps": [
+      {
+        "subgoalLabel": "Understand the display",
+        "instruction": "A histogram groups data into intervals (bins). Each bar's height shows the frequency of that interval.",
+        "work": "Score 60-69: 3 students. 70-79: 7 students. 80-89: 10 students. 90-99: 5 students.",
+        "explanation": "Unlike bar charts, histogram bars touch because the data is continuous."
+      },
+      {
+        "subgoalLabel": "Analyze the shape",
+        "instruction": "Which interval has the most students?",
+        "work": "80-89 has the tallest bar (10 students).",
+        "explanation": "This is the mode class — the most frequent interval."
+      },
+      {
+        "subgoalLabel": "Make inferences",
+        "instruction": "What percentage scored 80 or above?",
+        "work": "80+: 10 + 5 = 15. Total: 3+7+10+5 = 25. Percentage = 15/25 = 60%.",
+        "explanation": "Add frequencies of relevant bins, then divide by total."
+      }
+    ]
+  }
+]

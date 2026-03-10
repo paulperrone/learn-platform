@@ -1,0 +1,64 @@
+[
+  {
+    "id": "slope-intro-p1",
+    "topicId": "slope-intro",
+    "difficulty": "easy",
+    "question": "Find the slope of the line that passes through (1, 2) and (3, 8).",
+    "answer": "3",
+    "hints": [
+      "Slope = rise / run = (y2 - y1) / (x2 - x1)."
+    ],
+    "solution": "Slope = (8 - 2) / (3 - 1) = 6 / 2 = 3.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "slope-intro-p2",
+    "topicId": "slope-intro",
+    "difficulty": "easy",
+    "question": "Find the slope of the line through (0, 5) and (4, 5).",
+    "answer": "0",
+    "hints": [
+      "Calculate rise: 5 - 5. What happens when the rise is zero?"
+    ],
+    "solution": "Slope = (5 - 5) / (4 - 0) = 0 / 4 = 0. The line is horizontal.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "slope-intro-p3",
+    "topicId": "slope-intro",
+    "difficulty": "medium",
+    "question": "Find the slope of the line through (-2, 4) and (3, -6).",
+    "answer": "-2",
+    "hints": [
+      "Slope = (y2 - y1) / (x2 - x1). Be careful with the negative numbers.",
+      "(-6 - 4) / (3 - (-2)) = (-10) / (5)."
+    ],
+    "solution": "Slope = (-6 - 4) / (3 - (-2)) = -10 / 5 = -2.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "slope-intro-p4",
+    "topicId": "slope-intro",
+    "difficulty": "medium",
+    "question": "Find the slope of the line through (-1, -3) and (2, 3). Express as a fraction or whole number.",
+    "answer": "2",
+    "hints": [
+      "Slope = (3 - (-3)) / (2 - (-1))."
+    ],
+    "solution": "Slope = (3 - (-3)) / (2 - (-1)) = 6 / 3 = 2.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "slope-intro-p5",
+    "topicId": "slope-intro",
+    "difficulty": "hard",
+    "question": "A line passes through (a, 1) and (5, 9) with slope 2. What is the value of a?",
+    "answer": "1",
+    "hints": [
+      "Use the slope formula: 2 = (9 - 1) / (5 - a).",
+      "Solve: 2 = 8 / (5 - a). So 5 - a = 4."
+    ],
+    "solution": "2 = (9 - 1) / (5 - a) = 8 / (5 - a). Multiply both sides by (5 - a): 2(5 - a) = 8. 10 - 2a = 8. 2a = 2. a = 1.",
+    "cognitiveDemand": "reasoning"
+  }
+]

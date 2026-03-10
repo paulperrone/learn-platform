@@ -1,0 +1,65 @@
+[
+  {
+    "id": "two-way-tables-p1",
+    "topicId": "two-way-tables",
+    "difficulty": "easy",
+    "question": "A two-way table shows: Boys who like pizza: 15, Boys who like tacos: 10, Girls who like pizza: 12, Girls who like tacos: 13. How many students total were surveyed?",
+    "answer": "50",
+    "hints": [
+      "Add all four cells."
+    ],
+    "solution": "15 + 10 + 12 + 13 = 50.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "two-way-tables-p2",
+    "topicId": "two-way-tables",
+    "difficulty": "easy",
+    "question": "Using the same table: Boys-pizza: 15, Boys-tacos: 10, Girls-pizza: 12, Girls-tacos: 13. How many boys were surveyed?",
+    "answer": "25",
+    "hints": [
+      "Add the boys row: boys who like pizza + boys who like tacos."
+    ],
+    "solution": "Boys total = 15 + 10 = 25.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "two-way-tables-p3",
+    "topicId": "two-way-tables",
+    "difficulty": "medium",
+    "question": "A two-way table: Plays sports and has pet: 20. Plays sports and no pet: 15. No sports and has pet: 10. No sports and no pet: 5. What fraction of students who play sports have a pet?",
+    "answer": "20/35",
+    "hints": [
+      "Total who play sports = 20 + 15 = 35.",
+      "Of those, 20 have a pet."
+    ],
+    "solution": "Sports total = 35. Fraction with pet = 20/35 = 4/7.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "two-way-tables-p4",
+    "topicId": "two-way-tables",
+    "difficulty": "medium",
+    "question": "A two-way table: Walk to school, grade 6: 12. Walk, grade 7: 8. Bus, grade 6: 18. Bus, grade 7: 22. What percentage of 7th graders take the bus? Round to the nearest percent.",
+    "answer": "73%",
+    "hints": [
+      "Total 7th graders = 8 + 22 = 30.",
+      "Percentage = 22/30 × 100."
+    ],
+    "solution": "7th graders total = 30. Bus = 22. Percentage = 22/30 × 100 ≈ 73%.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "two-way-tables-p5",
+    "topicId": "two-way-tables",
+    "difficulty": "hard",
+    "question": "A two-way table: Prefers cats, female: 30. Prefers cats, male: 15. Prefers dogs, female: 20. Prefers dogs, male: 35. Is there an association between gender and pet preference? Explain using the data.",
+    "answer": "yes, females prefer cats (60%) while males prefer dogs (70%)",
+    "hints": [
+      "Calculate the percentage of each gender that prefers each pet.",
+      "If the percentages differ notably between groups, there is an association."
+    ],
+    "solution": "Females: 30/50 = 60% prefer cats. Males: 15/50 = 30% prefer cats. The preferences differ significantly between genders, suggesting an association.",
+    "cognitiveDemand": "reasoning"
+  }
+]

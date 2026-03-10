@@ -1,0 +1,52 @@
+[
+  {
+    "id": "polynomials-classify-ex1",
+    "topicId": "polynomials-classify",
+    "title": "Classifying Polynomials by Terms",
+    "steps": [
+      {
+        "subgoalLabel": "Count the terms",
+        "instruction": "Terms are separated by + or − signs. Count them.",
+        "work": "5x: 1 term → monomial. 3x + 7: 2 terms → binomial. x² − 4x + 1: 3 terms → trinomial.",
+        "explanation": "Mono = 1, bi = 2, tri = 3. Four or more terms are just called 'polynomial.'"
+      },
+      {
+        "subgoalLabel": "Find the degree",
+        "instruction": "The degree of a polynomial is the highest degree of any single term.",
+        "work": "4x³ − 2x + 9: highest exponent is 3 → degree 3 (cubic).",
+        "explanation": "Degree 1 = linear, 2 = quadratic, 3 = cubic, 4 = quartic."
+      },
+      {
+        "subgoalLabel": "Classify fully",
+        "instruction": "Give both the term count and degree.",
+        "work": "4x³ − 2x + 9 → cubic trinomial.",
+        "explanation": "A complete classification names both the degree and the number of terms."
+      }
+    ]
+  },
+  {
+    "id": "polynomials-classify-ex2",
+    "topicId": "polynomials-classify",
+    "title": "Writing Polynomials in Standard Form",
+    "steps": [
+      {
+        "subgoalLabel": "What is standard form?",
+        "instruction": "Standard form arranges terms from highest degree to lowest degree.",
+        "work": "Standard form of 3 + 5x − 2x³ + x² is: −2x³ + x² + 5x + 3",
+        "explanation": "Descending order of exponents."
+      },
+      {
+        "subgoalLabel": "Identify the leading term",
+        "instruction": "The leading term is the first term in standard form. Its coefficient is the leading coefficient.",
+        "work": "Leading term: −2x³. Leading coefficient: −2.",
+        "explanation": "The leading term has the highest degree."
+      },
+      {
+        "subgoalLabel": "State the degree",
+        "instruction": "The degree comes from the leading term.",
+        "work": "Degree = 3 (from −2x³).",
+        "explanation": "In standard form, the degree is immediately visible as the exponent of the first term."
+      }
+    ]
+  }
+]

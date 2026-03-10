@@ -1,0 +1,52 @@
+[
+  {
+    "id": "unit-rates-complex-ex1",
+    "topicId": "unit-rates-complex",
+    "title": "Finding a Unit Rate with Complex Fractions",
+    "steps": [
+      {
+        "subgoalLabel": "Set up the complex fraction",
+        "instruction": "A hiker walks 3/4 of a mile in 1/3 of an hour. Find the speed in miles per hour.",
+        "work": "Speed = (3/4 mile) ÷ (1/3 hour)",
+        "explanation": "A unit rate with fractions in both the numerator and denominator is called a complex fraction."
+      },
+      {
+        "subgoalLabel": "Divide by multiplying by the reciprocal",
+        "instruction": "Rewrite the division as multiplication.",
+        "work": "(3/4) ÷ (1/3) = (3/4) × (3/1) = 9/4",
+        "explanation": "To divide by a fraction, multiply by its reciprocal. The reciprocal of 1/3 is 3/1."
+      },
+      {
+        "subgoalLabel": "Simplify and state the answer",
+        "instruction": "Write the unit rate with units.",
+        "work": "9/4 = 2.25 miles per hour.",
+        "explanation": "The hiker walks at 9/4 (or 2.25) miles per hour. The unit rate always has 1 in the denominator."
+      }
+    ]
+  },
+  {
+    "id": "unit-rates-complex-ex2",
+    "topicId": "unit-rates-complex",
+    "title": "Comparing Unit Rates with Complex Fractions",
+    "steps": [
+      {
+        "subgoalLabel": "Set up the first rate",
+        "instruction": "Brand X: 2/5 pound of cheese for $3. Find the price per pound.",
+        "work": "Price per pound = $3 ÷ (2/5) = $3 × (5/2) = $15/2 = $7.50/lb.",
+        "explanation": "Divide the price by the weight to find cost per pound."
+      },
+      {
+        "subgoalLabel": "Set up the second rate",
+        "instruction": "Brand Y: 3/4 pound of cheese for $5. Find the price per pound.",
+        "work": "Price per pound = $5 ÷ (3/4) = $5 × (4/3) = $20/3 ≈ $6.67/lb.",
+        "explanation": "Same process — divide price by weight."
+      },
+      {
+        "subgoalLabel": "Compare",
+        "instruction": "Which brand is cheaper per pound?",
+        "work": "$6.67 < $7.50, so Brand Y is cheaper per pound.",
+        "explanation": "Converting both to the same unit (dollars per pound) allows a direct comparison, even though the original quantities were different fractions."
+      }
+    ]
+  }
+]

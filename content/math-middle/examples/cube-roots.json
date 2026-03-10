@@ -1,0 +1,52 @@
+[
+  {
+    "id": "cube-roots-ex1",
+    "topicId": "cube-roots",
+    "title": "Finding the Cube Root of 64",
+    "steps": [
+      {
+        "subgoalLabel": "Understand what cube root means",
+        "instruction": "The cube root of 64 asks: what number cubed equals 64?",
+        "work": "We need n such that n × n × n = 64.",
+        "explanation": "A cube root is the inverse of cubing a number."
+      },
+      {
+        "subgoalLabel": "Test values",
+        "instruction": "Try small perfect cubes: 2^3 = 8, 3^3 = 27, 4^3 = ?",
+        "work": "4^3 = 4 × 4 × 4 = 64.",
+        "explanation": "Systematically try integers until you find the right one."
+      },
+      {
+        "subgoalLabel": "State the answer",
+        "instruction": "Write the cube root.",
+        "work": "The cube root of 64 is 4.",
+        "explanation": "Since 4^3 = 64, the cube root of 64 is 4."
+      }
+    ]
+  },
+  {
+    "id": "cube-roots-ex2",
+    "topicId": "cube-roots",
+    "title": "Cube Root of a Negative Number: Cube Root of −1000",
+    "steps": [
+      {
+        "subgoalLabel": "Note the sign",
+        "instruction": "Can we take the cube root of a negative number?",
+        "work": "Yes! Unlike square roots, cube roots of negative numbers are real.",
+        "explanation": "A negative number cubed is negative: (−a)^3 = −a^3."
+      },
+      {
+        "subgoalLabel": "Find the cube root of 1000",
+        "instruction": "Ignore the sign for now. What cubes to 1000?",
+        "work": "10^3 = 1000. So the cube root of 1000 is 10.",
+        "explanation": "10 × 10 × 10 = 1000."
+      },
+      {
+        "subgoalLabel": "Apply the sign",
+        "instruction": "Since the original number was negative, the cube root is negative.",
+        "work": "The cube root of −1000 is −10.",
+        "explanation": "Check: (−10)^3 = −10 × −10 × −10 = 100 × −10 = −1000. ✓"
+      }
+    ]
+  }
+]

@@ -1,0 +1,2528 @@
+{
+  "subjectId": "math-middle",
+  "subjectName": "Middle School Mathematics",
+  "description": "Middle school mathematics covering rational numbers, ratios & proportions, expressions & equations, linear functions, geometry, statistics & probability, and introductory polynomials. Grades 6-8.",
+  "gradeRange": "6-8",
+  "disciplineId": "math",
+  "topics": [
+    {
+      "id": "integers-intro",
+      "name": "Introduction to Integers",
+      "description": "Understand positive and negative integers and their position on the number line.",
+      "gradeLevel": 6,
+      "standardCode": "6.NS.5",
+      "strand": "rational-numbers",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "absolute-value",
+      "name": "Absolute Value",
+      "description": "Understand absolute value as distance from zero. Evaluate |a| for integers and rationals.",
+      "gradeLevel": 6,
+      "standardCode": "6.NS.7",
+      "strand": "rational-numbers",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "compare-order-integers",
+      "name": "Compare and Order Integers",
+      "description": "Compare and order positive and negative integers using a number line and inequality symbols.",
+      "gradeLevel": 6,
+      "standardCode": "6.NS.7",
+      "strand": "rational-numbers",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "integer-addition",
+      "name": "Add Integers",
+      "description": "Add positive and negative integers using number line models and rules for same/different signs.",
+      "gradeLevel": 7,
+      "standardCode": "7.NS.1",
+      "strand": "rational-numbers",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "integer-subtraction",
+      "name": "Subtract Integers",
+      "description": "Subtract integers by adding the additive inverse. Understand p - q = p + (-q).",
+      "gradeLevel": 7,
+      "standardCode": "7.NS.1",
+      "strand": "rational-numbers",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "integer-multiplication",
+      "name": "Multiply Integers",
+      "description": "Multiply positive and negative integers. Understand sign rules for products.",
+      "gradeLevel": 7,
+      "standardCode": "7.NS.2",
+      "strand": "rational-numbers",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "integer-division",
+      "name": "Divide Integers",
+      "description": "Divide positive and negative integers. Apply sign rules for quotients.",
+      "gradeLevel": 7,
+      "standardCode": "7.NS.2",
+      "strand": "rational-numbers",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "rational-numbers-intro",
+      "name": "Rational Numbers on the Number Line",
+      "description": "Represent fractions and decimals (positive and negative) on the number line. Understand rational numbers as a/b where b != 0.",
+      "gradeLevel": 6,
+      "standardCode": "6.NS.6",
+      "strand": "rational-numbers",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "compare-order-rationals",
+      "name": "Compare and Order Rational Numbers",
+      "description": "Compare and order positive and negative fractions and decimals using common denominators and number lines.",
+      "gradeLevel": 6,
+      "standardCode": "6.NS.7",
+      "strand": "rational-numbers",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "add-subtract-rationals",
+      "name": "Add and Subtract Rational Numbers",
+      "description": "Add and subtract positive and negative fractions and decimals.",
+      "gradeLevel": 7,
+      "standardCode": "7.NS.1",
+      "strand": "rational-numbers",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "multiply-divide-rationals",
+      "name": "Multiply and Divide Rational Numbers",
+      "description": "Multiply and divide positive and negative fractions and decimals.",
+      "gradeLevel": 7,
+      "standardCode": "7.NS.2",
+      "strand": "rational-numbers",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "convert-rational-forms",
+      "name": "Convert Between Rational Number Forms",
+      "description": "Convert between fractions, decimals, and percents. Identify repeating vs terminating decimals.",
+      "gradeLevel": 7,
+      "standardCode": "7.NS.2d",
+      "strand": "rational-numbers",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "operations-rational-practice",
+      "name": "Multi-Step Rational Number Operations",
+      "description": "Solve multi-step problems involving all four operations with rational numbers.",
+      "gradeLevel": 7,
+      "standardCode": "7.NS.3",
+      "strand": "rational-numbers",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "number-line-opposites",
+      "name": "Opposites and Additive Inverse",
+      "description": "Understand that every number has an opposite and that a + (-a) = 0.",
+      "gradeLevel": 6,
+      "standardCode": "6.NS.6a",
+      "strand": "rational-numbers",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "gcf-lcm-applications",
+      "name": "GCF and LCM Applications",
+      "description": "Use GCF and LCM to solve real-world problems. Apply distributive property with GCF: a + b = GCF(a,b)(a/GCF + b/GCF).",
+      "gradeLevel": 6,
+      "standardCode": "6.NS.4",
+      "strand": "rational-numbers",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "divide-multi-digit-6",
+      "name": "Fluent Multi-Digit Division",
+      "description": "Fluently divide multi-digit numbers using the standard algorithm.",
+      "gradeLevel": 6,
+      "standardCode": "6.NS.2",
+      "strand": "rational-numbers",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "decimal-division-6",
+      "name": "Divide Decimals",
+      "description": "Fluently add, subtract, multiply, and divide multi-digit decimals using standard algorithms.",
+      "gradeLevel": 6,
+      "standardCode": "6.NS.3",
+      "strand": "rational-numbers",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "square-roots-intro",
+      "name": "Square Roots",
+      "description": "Evaluate square roots of perfect squares. Estimate square roots of non-perfect squares between consecutive integers.",
+      "gradeLevel": 8,
+      "standardCode": "8.NS.2",
+      "strand": "rational-numbers",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "ratios-intro",
+      "name": "Introduction to Ratios",
+      "description": "Understand the concept of a ratio. Write ratios in three forms (a:b, a to b, a/b).",
+      "gradeLevel": 6,
+      "standardCode": "6.RP.1",
+      "strand": "ratios-proportions",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "equivalent-ratios",
+      "name": "Equivalent Ratios",
+      "description": "Generate equivalent ratios using ratio tables and multiplication/division.",
+      "gradeLevel": 6,
+      "standardCode": "6.RP.3a",
+      "strand": "ratios-proportions",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "unit-rates",
+      "name": "Unit Rates",
+      "description": "Find and interpret unit rates (including those with complex fractions in grade 7).",
+      "gradeLevel": 6,
+      "standardCode": "6.RP.2",
+      "strand": "ratios-proportions",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "ratio-tables",
+      "name": "Ratio Tables",
+      "description": "Use ratio tables to solve problems. Find missing values in ratio tables.",
+      "gradeLevel": 6,
+      "standardCode": "6.RP.3a",
+      "strand": "ratios-proportions",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "proportions-intro",
+      "name": "Proportions",
+      "description": "Determine if two ratios form a proportion. Solve proportions using cross multiplication.",
+      "gradeLevel": 7,
+      "standardCode": "7.RP.2",
+      "strand": "ratios-proportions",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "proportional-relationships",
+      "name": "Proportional Relationships",
+      "description": "Identify proportional relationships in tables, graphs, and equations. Understand y = kx.",
+      "gradeLevel": 7,
+      "standardCode": "7.RP.2",
+      "strand": "ratios-proportions",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "constant-of-proportionality",
+      "name": "Constant of Proportionality",
+      "description": "Identify the constant of proportionality (unit rate) in tables, graphs, equations, and verbal descriptions.",
+      "gradeLevel": 7,
+      "standardCode": "7.RP.2b",
+      "strand": "ratios-proportions",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "percent-intro",
+      "name": "Introduction to Percent",
+      "description": "Understand percent as a rate per 100. Convert between fractions, decimals, and percents.",
+      "gradeLevel": 6,
+      "standardCode": "6.RP.3c",
+      "strand": "ratios-proportions",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "percent-of-a-number",
+      "name": "Percent of a Number",
+      "description": "Find a percent of a quantity. Solve problems like 'What is 25% of 80?'",
+      "gradeLevel": 6,
+      "standardCode": "6.RP.3c",
+      "strand": "ratios-proportions",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "percent-increase-decrease",
+      "name": "Percent Increase and Decrease",
+      "description": "Calculate percent increase and percent decrease. Solve markup, discount, and tip problems.",
+      "gradeLevel": 7,
+      "standardCode": "7.RP.3",
+      "strand": "ratios-proportions",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "tax-tip-markup",
+      "name": "Tax, Tip, and Markup",
+      "description": "Solve real-world problems involving tax, tip, markup, markdown, and commission.",
+      "gradeLevel": 7,
+      "standardCode": "7.RP.3",
+      "strand": "ratios-proportions",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "simple-interest",
+      "name": "Simple Interest",
+      "description": "Calculate simple interest using I = Prt. Solve problems involving principal, rate, and time.",
+      "gradeLevel": 7,
+      "standardCode": "7.RP.3",
+      "strand": "ratios-proportions",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "scale-drawings",
+      "name": "Scale Drawings",
+      "description": "Solve problems involving scale drawings. Compute actual lengths and areas from scale factors.",
+      "gradeLevel": 7,
+      "standardCode": "7.G.1",
+      "strand": "ratios-proportions",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "unit-rates-complex",
+      "name": "Unit Rates with Complex Fractions",
+      "description": "Compute unit rates involving complex fractions (e.g., 1/2 mile per 1/4 hour = 2 mph).",
+      "gradeLevel": 7,
+      "standardCode": "7.RP.1",
+      "strand": "ratios-proportions",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "ratio-word-problems",
+      "name": "Ratio and Rate Word Problems",
+      "description": "Solve real-world ratio and rate problems using tables, diagrams, and equations.",
+      "gradeLevel": 6,
+      "standardCode": "6.RP.3",
+      "strand": "ratios-proportions",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "percent-equations",
+      "name": "Percent Equations",
+      "description": "Solve 'part = percent x whole' equations. Find the part, percent, or whole given the other two.",
+      "gradeLevel": 7,
+      "standardCode": "7.RP.3",
+      "strand": "ratios-proportions",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "percent-error",
+      "name": "Percent Error",
+      "description": "Calculate percent error as |measured - actual| / actual x 100.",
+      "gradeLevel": 7,
+      "standardCode": "7.RP.3",
+      "strand": "ratios-proportions",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "algebraic-expressions-6",
+      "name": "Write Algebraic Expressions",
+      "description": "Write algebraic expressions from verbal phrases. Identify parts of an expression (terms, coefficients, constants).",
+      "gradeLevel": 6,
+      "standardCode": "6.EE.2",
+      "strand": "expressions-equations",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "evaluate-expressions-6",
+      "name": "Evaluate Algebraic Expressions",
+      "description": "Evaluate expressions at specific values of their variables, including expressions with exponents.",
+      "gradeLevel": 6,
+      "standardCode": "6.EE.2c",
+      "strand": "expressions-equations",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "equivalent-expressions-6",
+      "name": "Equivalent Expressions",
+      "description": "Generate equivalent expressions using properties of operations (commutative, associative, distributive).",
+      "gradeLevel": 6,
+      "standardCode": "6.EE.3",
+      "strand": "expressions-equations",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "distributive-property",
+      "name": "Distributive Property",
+      "description": "Apply the distributive property to expand and factor expressions: a(b + c) = ab + ac.",
+      "gradeLevel": 6,
+      "standardCode": "6.EE.3",
+      "strand": "expressions-equations",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "one-step-equations-add-sub",
+      "name": "One-Step Equations (Add/Subtract)",
+      "description": "Solve one-step equations using addition and subtraction: x + a = b, x - a = b.",
+      "gradeLevel": 6,
+      "standardCode": "6.EE.7",
+      "strand": "expressions-equations",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "one-step-equations-mult-div",
+      "name": "One-Step Equations (Multiply/Divide)",
+      "description": "Solve one-step equations using multiplication and division: ax = b, x/a = b.",
+      "gradeLevel": 6,
+      "standardCode": "6.EE.7",
+      "strand": "expressions-equations",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "one-step-inequalities",
+      "name": "One-Step Inequalities",
+      "description": "Write and solve one-step inequalities. Graph solution sets on a number line.",
+      "gradeLevel": 6,
+      "standardCode": "6.EE.8",
+      "strand": "expressions-equations",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "two-step-equations",
+      "name": "Two-Step Equations",
+      "description": "Solve equations of the form px + q = r and p(x + q) = r using inverse operations.",
+      "gradeLevel": 7,
+      "standardCode": "7.EE.4a",
+      "strand": "expressions-equations",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "two-step-inequalities",
+      "name": "Two-Step Inequalities",
+      "description": "Solve two-step inequalities. Understand flipping the inequality when multiplying/dividing by a negative.",
+      "gradeLevel": 7,
+      "standardCode": "7.EE.4b",
+      "strand": "expressions-equations",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "combine-like-terms",
+      "name": "Combine Like Terms",
+      "description": "Simplify expressions by combining like terms. Identify like terms in multi-variable expressions.",
+      "gradeLevel": 7,
+      "standardCode": "7.EE.1",
+      "strand": "expressions-equations",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "expand-factor-expressions",
+      "name": "Expand and Factor Linear Expressions",
+      "description": "Use the distributive property to expand expressions and factor common factors from expressions.",
+      "gradeLevel": 7,
+      "standardCode": "7.EE.1",
+      "strand": "expressions-equations",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "multi-step-equations",
+      "name": "Multi-Step Equations",
+      "description": "Solve equations requiring distribution, combining like terms, and variables on both sides.",
+      "gradeLevel": 8,
+      "standardCode": "8.EE.7",
+      "strand": "expressions-equations",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "equations-no-one-infinite",
+      "name": "Equations with Special Solutions",
+      "description": "Determine whether a linear equation has one solution, no solution, or infinitely many solutions.",
+      "gradeLevel": 8,
+      "standardCode": "8.EE.7a",
+      "strand": "expressions-equations",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "dependent-independent-variables",
+      "name": "Dependent and Independent Variables",
+      "description": "Identify dependent and independent variables. Write equations to express one quantity in terms of another.",
+      "gradeLevel": 6,
+      "standardCode": "6.EE.9",
+      "strand": "expressions-equations",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "equations-word-problems-6",
+      "name": "Write and Solve Equations from Word Problems",
+      "description": "Translate word problems into one-step equations and solve them.",
+      "gradeLevel": 6,
+      "standardCode": "6.EE.7",
+      "strand": "expressions-equations",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "equations-word-problems-7",
+      "name": "Multi-Step Word Problems with Equations",
+      "description": "Translate complex word problems into two-step equations and inequalities, then solve.",
+      "gradeLevel": 7,
+      "standardCode": "7.EE.4",
+      "strand": "expressions-equations",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "exponent-rules",
+      "name": "Exponent Rules",
+      "description": "Apply product rule, quotient rule, power rule, and zero/negative exponent rules.",
+      "gradeLevel": 8,
+      "standardCode": "8.EE.1",
+      "strand": "expressions-equations",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "negative-exponents",
+      "name": "Negative Exponents",
+      "description": "Evaluate expressions with negative exponents. Understand a^(-n) = 1/a^n.",
+      "gradeLevel": 8,
+      "standardCode": "8.EE.1",
+      "strand": "expressions-equations",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "scientific-notation",
+      "name": "Scientific Notation",
+      "description": "Express very large and very small numbers in scientific notation. Convert between standard and scientific notation.",
+      "gradeLevel": 8,
+      "standardCode": "8.EE.3",
+      "strand": "expressions-equations",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "scientific-notation-operations",
+      "name": "Operations with Scientific Notation",
+      "description": "Add, subtract, multiply, and divide numbers in scientific notation.",
+      "gradeLevel": 8,
+      "standardCode": "8.EE.4",
+      "strand": "expressions-equations",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "irrational-numbers",
+      "name": "Irrational Numbers",
+      "description": "Understand that irrational numbers cannot be expressed as fractions. Classify numbers as rational or irrational.",
+      "gradeLevel": 8,
+      "standardCode": "8.NS.1",
+      "strand": "expressions-equations",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "cube-roots",
+      "name": "Cube Roots",
+      "description": "Evaluate cube roots of perfect cubes. Understand the relationship between cubes and cube roots.",
+      "gradeLevel": 8,
+      "standardCode": "8.EE.2",
+      "strand": "expressions-equations",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "coordinate-plane-four-quadrants",
+      "name": "Coordinate Plane (Four Quadrants)",
+      "description": "Plot and identify ordered pairs in all four quadrants. Reflect points across axes.",
+      "gradeLevel": 6,
+      "standardCode": "6.NS.8",
+      "strand": "linear-functions",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "graph-proportional-relationships",
+      "name": "Graph Proportional Relationships",
+      "description": "Graph proportional relationships on the coordinate plane. Identify the unit rate as the slope.",
+      "gradeLevel": 7,
+      "standardCode": "7.RP.2d",
+      "strand": "linear-functions",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "slope-intro",
+      "name": "Introduction to Slope",
+      "description": "Understand slope as rate of change (rise/run). Calculate slope from two points and from a graph.",
+      "gradeLevel": 8,
+      "standardCode": "8.EE.5",
+      "strand": "linear-functions",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "slope-types",
+      "name": "Types of Slope",
+      "description": "Identify positive, negative, zero, and undefined slopes. Relate slope direction to real-world contexts.",
+      "gradeLevel": 8,
+      "standardCode": "8.EE.5",
+      "strand": "linear-functions",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "y-intercept",
+      "name": "Y-Intercept",
+      "description": "Identify the y-intercept from equations, tables, and graphs. Understand its meaning in context.",
+      "gradeLevel": 8,
+      "standardCode": "8.F.4",
+      "strand": "linear-functions",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "slope-intercept-form",
+      "name": "Slope-Intercept Form (y = mx + b)",
+      "description": "Write linear equations in slope-intercept form. Identify slope and y-intercept from the equation.",
+      "gradeLevel": 8,
+      "standardCode": "8.F.3",
+      "strand": "linear-functions",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "graph-linear-equations",
+      "name": "Graph Linear Equations",
+      "description": "Graph linear equations using slope and y-intercept, tables of values, or intercepts.",
+      "gradeLevel": 8,
+      "standardCode": "8.EE.5",
+      "strand": "linear-functions",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "write-linear-equations",
+      "name": "Write Linear Equations",
+      "description": "Write linear equations from tables, graphs, two points, or verbal descriptions.",
+      "gradeLevel": 8,
+      "standardCode": "8.F.4",
+      "strand": "linear-functions",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "compare-linear-functions",
+      "name": "Compare Linear Functions",
+      "description": "Compare properties (slope, y-intercept) of two linear functions given in different forms.",
+      "gradeLevel": 8,
+      "standardCode": "8.F.2",
+      "strand": "linear-functions",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "functions-intro",
+      "name": "Introduction to Functions",
+      "description": "Understand that a function assigns each input exactly one output. Determine if a relation is a function.",
+      "gradeLevel": 8,
+      "standardCode": "8.F.1",
+      "strand": "linear-functions",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "function-tables-rules",
+      "name": "Function Tables and Rules",
+      "description": "Complete function tables given a rule. Write rules from input-output tables.",
+      "gradeLevel": 8,
+      "standardCode": "8.F.1",
+      "strand": "linear-functions",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "linear-vs-nonlinear",
+      "name": "Linear vs Nonlinear Functions",
+      "description": "Distinguish linear from nonlinear functions using tables, graphs, and equations.",
+      "gradeLevel": 8,
+      "standardCode": "8.F.3",
+      "strand": "linear-functions",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "qualitative-graphs",
+      "name": "Qualitative Graphs",
+      "description": "Describe functional relationships qualitatively from graphs (increasing/decreasing, linear/nonlinear).",
+      "gradeLevel": 8,
+      "standardCode": "8.F.5",
+      "strand": "linear-functions",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "systems-of-equations-intro",
+      "name": "Systems of Equations (Introduction)",
+      "description": "Understand systems of two linear equations. Solve by graphing and identify the intersection point.",
+      "gradeLevel": 8,
+      "standardCode": "8.EE.8",
+      "strand": "linear-functions",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "systems-substitution",
+      "name": "Systems of Equations: Substitution",
+      "description": "Solve systems of linear equations algebraically using the substitution method.",
+      "gradeLevel": 8,
+      "standardCode": "8.EE.8b",
+      "strand": "linear-functions",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "systems-elimination",
+      "name": "Systems of Equations: Elimination",
+      "description": "Solve systems of linear equations algebraically using the elimination (linear combination) method.",
+      "gradeLevel": 8,
+      "standardCode": "8.EE.8b",
+      "strand": "linear-functions",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "systems-word-problems",
+      "name": "Systems of Equations Word Problems",
+      "description": "Translate real-world problems into systems of two linear equations and solve them.",
+      "gradeLevel": 8,
+      "standardCode": "8.EE.8c",
+      "strand": "linear-functions",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "area-triangles",
+      "name": "Area of Triangles",
+      "description": "Find the area of triangles using A = 1/2 * b * h.",
+      "gradeLevel": 6,
+      "standardCode": "6.G.1",
+      "strand": "geometry-advanced",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "area-quadrilaterals",
+      "name": "Area of Quadrilaterals",
+      "description": "Find the area of parallelograms, trapezoids, and other special quadrilaterals.",
+      "gradeLevel": 6,
+      "standardCode": "6.G.1",
+      "strand": "geometry-advanced",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "area-polygons",
+      "name": "Area of Polygons",
+      "description": "Find the area of irregular polygons by decomposing into triangles and rectangles.",
+      "gradeLevel": 6,
+      "standardCode": "6.G.1",
+      "strand": "geometry-advanced",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "surface-area-prisms",
+      "name": "Surface Area of Prisms",
+      "description": "Find the surface area of rectangular prisms and triangular prisms using nets.",
+      "gradeLevel": 6,
+      "standardCode": "6.G.4",
+      "strand": "geometry-advanced",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "volume-prisms",
+      "name": "Volume of Prisms",
+      "description": "Find the volume of right rectangular prisms with fractional edge lengths. Use V = Bh.",
+      "gradeLevel": 6,
+      "standardCode": "6.G.2",
+      "strand": "geometry-advanced",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "angle-relationships",
+      "name": "Angle Relationships",
+      "description": "Identify and use complementary, supplementary, vertical, and adjacent angle relationships.",
+      "gradeLevel": 7,
+      "standardCode": "7.G.5",
+      "strand": "geometry-advanced",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "triangle-angle-sum",
+      "name": "Triangle Angle Sum",
+      "description": "Understand and apply the triangle angle sum theorem (angles sum to 180 degrees).",
+      "gradeLevel": 7,
+      "standardCode": "7.G.5",
+      "strand": "geometry-advanced",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "exterior-angles",
+      "name": "Exterior Angle Theorem",
+      "description": "Apply the exterior angle theorem for triangles: exterior angle = sum of remote interior angles.",
+      "gradeLevel": 8,
+      "standardCode": "8.G.5",
+      "strand": "geometry-advanced",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "parallel-lines-transversal",
+      "name": "Parallel Lines and Transversals",
+      "description": "Identify and use angle relationships formed by parallel lines cut by a transversal (corresponding, alternate interior, etc.).",
+      "gradeLevel": 8,
+      "standardCode": "8.G.5",
+      "strand": "geometry-advanced",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "circumference",
+      "name": "Circumference of Circles",
+      "description": "Calculate the circumference of circles using C = pi*d and C = 2*pi*r.",
+      "gradeLevel": 7,
+      "standardCode": "7.G.4",
+      "strand": "geometry-advanced",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "area-circles",
+      "name": "Area of Circles",
+      "description": "Calculate the area of circles using A = pi*r^2.",
+      "gradeLevel": 7,
+      "standardCode": "7.G.4",
+      "strand": "geometry-advanced",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "cross-sections",
+      "name": "Cross Sections of 3D Figures",
+      "description": "Describe the two-dimensional figure that results from slicing a three-dimensional figure.",
+      "gradeLevel": 7,
+      "standardCode": "7.G.3",
+      "strand": "geometry-advanced",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "volume-cylinders",
+      "name": "Volume of Cylinders",
+      "description": "Find the volume of cylinders using V = pi*r^2*h.",
+      "gradeLevel": 8,
+      "standardCode": "8.G.9",
+      "strand": "geometry-advanced",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "volume-cones-spheres",
+      "name": "Volume of Cones and Spheres",
+      "description": "Find the volume of cones (V = 1/3*pi*r^2*h) and spheres (V = 4/3*pi*r^3).",
+      "gradeLevel": 8,
+      "standardCode": "8.G.9",
+      "strand": "geometry-advanced",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "pythagorean-theorem",
+      "name": "Pythagorean Theorem",
+      "description": "Understand and apply the Pythagorean theorem: a^2 + b^2 = c^2.",
+      "gradeLevel": 8,
+      "standardCode": "8.G.7",
+      "strand": "geometry-advanced",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "pythagorean-converse",
+      "name": "Converse of the Pythagorean Theorem",
+      "description": "Use the converse of the Pythagorean theorem to determine if a triangle is a right triangle.",
+      "gradeLevel": 8,
+      "standardCode": "8.G.6",
+      "strand": "geometry-advanced",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "pythagorean-applications",
+      "name": "Pythagorean Theorem Applications",
+      "description": "Apply the Pythagorean theorem to find distances in coordinate planes and real-world 2D/3D problems.",
+      "gradeLevel": 8,
+      "standardCode": "8.G.8",
+      "strand": "geometry-advanced",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "transformations-intro",
+      "name": "Transformations: Translations, Reflections, Rotations",
+      "description": "Describe and perform translations, reflections, and rotations on the coordinate plane.",
+      "gradeLevel": 8,
+      "standardCode": "8.G.1",
+      "strand": "geometry-advanced",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "dilations",
+      "name": "Dilations",
+      "description": "Perform dilations with a given center and scale factor. Understand effect on coordinates.",
+      "gradeLevel": 8,
+      "standardCode": "8.G.3",
+      "strand": "geometry-advanced",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "congruence-similarity",
+      "name": "Congruence and Similarity",
+      "description": "Understand congruence via rigid motions and similarity via dilations. Identify similar and congruent figures.",
+      "gradeLevel": 8,
+      "standardCode": "8.G.4",
+      "strand": "geometry-advanced",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "statistical-questions",
+      "name": "Statistical Questions",
+      "description": "Distinguish statistical questions from non-statistical questions. Understand variability.",
+      "gradeLevel": 6,
+      "standardCode": "6.SP.1",
+      "strand": "statistics-probability",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "measures-of-center",
+      "name": "Measures of Center",
+      "description": "Calculate mean, median, and mode for data sets. Choose the appropriate measure of center.",
+      "gradeLevel": 6,
+      "standardCode": "6.SP.3",
+      "strand": "statistics-probability",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "measures-of-variability",
+      "name": "Measures of Variability",
+      "description": "Calculate range, interquartile range (IQR), and mean absolute deviation (MAD).",
+      "gradeLevel": 6,
+      "standardCode": "6.SP.3",
+      "strand": "statistics-probability",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "dot-plots-histograms",
+      "name": "Dot Plots and Histograms",
+      "description": "Display and interpret data using dot plots and histograms. Describe shape and distribution.",
+      "gradeLevel": 6,
+      "standardCode": "6.SP.4",
+      "strand": "statistics-probability",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "box-plots",
+      "name": "Box Plots",
+      "description": "Create and interpret box plots. Identify median, quartiles, and outliers.",
+      "gradeLevel": 6,
+      "standardCode": "6.SP.4",
+      "strand": "statistics-probability",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "summarize-data",
+      "name": "Summarize Data Distributions",
+      "description": "Summarize numerical data sets in relation to their context (shape, center, spread, outliers).",
+      "gradeLevel": 6,
+      "standardCode": "6.SP.5",
+      "strand": "statistics-probability",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "probability-intro",
+      "name": "Introduction to Probability",
+      "description": "Understand probability as a number between 0 and 1. Find probabilities of simple events.",
+      "gradeLevel": 7,
+      "standardCode": "7.SP.5",
+      "strand": "statistics-probability",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "experimental-probability",
+      "name": "Experimental Probability",
+      "description": "Calculate experimental probability from repeated trials. Compare experimental to theoretical probability.",
+      "gradeLevel": 7,
+      "standardCode": "7.SP.6",
+      "strand": "statistics-probability",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "compound-probability",
+      "name": "Compound Probability",
+      "description": "Find probabilities of compound events using organized lists, tables, tree diagrams, and simulation.",
+      "gradeLevel": 7,
+      "standardCode": "7.SP.8",
+      "strand": "statistics-probability",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "sampling-inference",
+      "name": "Sampling and Inference",
+      "description": "Understand random sampling. Use sample data to draw inferences about a population.",
+      "gradeLevel": 7,
+      "standardCode": "7.SP.1",
+      "strand": "statistics-probability",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "compare-populations",
+      "name": "Compare Two Populations",
+      "description": "Compare two data distributions using measures of center and variability. Draw informal inferences.",
+      "gradeLevel": 7,
+      "standardCode": "7.SP.4",
+      "strand": "statistics-probability",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "scatter-plots",
+      "name": "Scatter Plots",
+      "description": "Construct and interpret scatter plots. Describe patterns (clustering, outliers, positive/negative association, linear/nonlinear).",
+      "gradeLevel": 8,
+      "standardCode": "8.SP.1",
+      "strand": "statistics-probability",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "line-of-best-fit",
+      "name": "Line of Best Fit",
+      "description": "Informally fit a straight line to data in a scatter plot. Use the equation to make predictions.",
+      "gradeLevel": 8,
+      "standardCode": "8.SP.2",
+      "strand": "statistics-probability",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "two-way-tables",
+      "name": "Two-Way Frequency Tables",
+      "description": "Construct and interpret two-way tables of categorical data. Compute relative frequencies.",
+      "gradeLevel": 8,
+      "standardCode": "8.SP.4",
+      "strand": "statistics-probability",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "monomials",
+      "name": "Monomials",
+      "description": "Identify monomials and their degree. Multiply and divide monomials using exponent rules.",
+      "gradeLevel": 8,
+      "standardCode": "8.EE.1",
+      "strand": "polynomials-intro",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "polynomials-classify",
+      "name": "Classify Polynomials",
+      "description": "Identify polynomials by number of terms (monomial, binomial, trinomial) and degree. Write in standard form.",
+      "gradeLevel": 8,
+      "standardCode": "8.EE.1",
+      "strand": "polynomials-intro",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "add-subtract-polynomials",
+      "name": "Add and Subtract Polynomials",
+      "description": "Add and subtract polynomials by combining like terms.",
+      "gradeLevel": 8,
+      "standardCode": "8.EE.1",
+      "strand": "polynomials-intro",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "multiply-polynomials-monomial",
+      "name": "Multiply Polynomials by Monomials",
+      "description": "Multiply a polynomial by a monomial using the distributive property.",
+      "gradeLevel": 8,
+      "standardCode": "8.EE.1",
+      "strand": "polynomials-intro",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "multiply-binomials",
+      "name": "Multiply Binomials (FOIL)",
+      "description": "Multiply two binomials using FOIL or the distributive property.",
+      "gradeLevel": 8,
+      "standardCode": "8.EE.1",
+      "strand": "polynomials-intro",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "factor-gcf-polynomials",
+      "name": "Factor Out GCF from Polynomials",
+      "description": "Factor the greatest common factor from polynomial expressions.",
+      "gradeLevel": 8,
+      "standardCode": "8.EE.1",
+      "strand": "polynomials-intro",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "special-products",
+      "name": "Special Products",
+      "description": "Recognize and apply patterns for (a+b)^2, (a-b)^2, and (a+b)(a-b).",
+      "gradeLevel": 8,
+      "standardCode": "8.EE.1",
+      "strand": "polynomials-intro",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    }
+  ],
+  "prerequisites": [
+    {
+      "from": "math-foundations:decimal-operations",
+      "to": "integers-intro",
+      "strength": 0.8
+    },
+    {
+      "from": "math-foundations:decimal-operations",
+      "to": "decimal-division-6",
+      "strength": 1.0
+    },
+    {
+      "from": "math-foundations:divide-multi-digit",
+      "to": "divide-multi-digit-6",
+      "strength": 1.0
+    },
+    {
+      "from": "math-foundations:fraction-decimal-equivalence",
+      "to": "rational-numbers-intro",
+      "strength": 0.8
+    },
+    {
+      "from": "math-foundations:divide-fractions",
+      "to": "rational-numbers-intro",
+      "strength": 0.7
+    },
+    {
+      "from": "math-foundations:greatest-common-factor",
+      "to": "gcf-lcm-applications",
+      "strength": 1.0
+    },
+    {
+      "from": "math-foundations:least-common-multiple",
+      "to": "gcf-lcm-applications",
+      "strength": 1.0
+    },
+    {
+      "from": "integers-intro",
+      "to": "absolute-value",
+      "strength": 1.0
+    },
+    {
+      "from": "integers-intro",
+      "to": "compare-order-integers",
+      "strength": 1.0
+    },
+    {
+      "from": "integers-intro",
+      "to": "number-line-opposites",
+      "strength": 1.0
+    },
+    {
+      "from": "absolute-value",
+      "to": "compare-order-integers",
+      "strength": 0.7
+    },
+    {
+      "from": "compare-order-integers",
+      "to": "integer-addition",
+      "strength": 1.0
+    },
+    {
+      "from": "number-line-opposites",
+      "to": "integer-addition",
+      "strength": 0.8
+    },
+    {
+      "from": "integer-addition",
+      "to": "integer-subtraction",
+      "strength": 1.0
+    },
+    {
+      "from": "integer-subtraction",
+      "to": "integer-multiplication",
+      "strength": 1.0
+    },
+    {
+      "from": "integer-multiplication",
+      "to": "integer-division",
+      "strength": 1.0
+    },
+    {
+      "from": "rational-numbers-intro",
+      "to": "compare-order-rationals",
+      "strength": 1.0
+    },
+    {
+      "from": "compare-order-integers",
+      "to": "compare-order-rationals",
+      "strength": 0.7
+    },
+    {
+      "from": "integer-subtraction",
+      "to": "add-subtract-rationals",
+      "strength": 1.0
+    },
+    {
+      "from": "compare-order-rationals",
+      "to": "add-subtract-rationals",
+      "strength": 0.8
+    },
+    {
+      "from": "integer-division",
+      "to": "multiply-divide-rationals",
+      "strength": 1.0
+    },
+    {
+      "from": "add-subtract-rationals",
+      "to": "multiply-divide-rationals",
+      "strength": 0.8
+    },
+    {
+      "from": "multiply-divide-rationals",
+      "to": "convert-rational-forms",
+      "strength": 1.0
+    },
+    {
+      "from": "multiply-divide-rationals",
+      "to": "operations-rational-practice",
+      "strength": 1.0
+    },
+    {
+      "from": "convert-rational-forms",
+      "to": "operations-rational-practice",
+      "strength": 0.7
+    },
+    {
+      "from": "integer-multiplication",
+      "to": "square-roots-intro",
+      "strength": 0.8
+    },
+    {
+      "from": "math-foundations:exponents-intro",
+      "to": "square-roots-intro",
+      "strength": 1.0
+    },
+    {
+      "from": "math-foundations:divide-fractions",
+      "to": "ratios-intro",
+      "strength": 0.6
+    },
+    {
+      "from": "math-foundations:decimal-operations",
+      "to": "ratios-intro",
+      "strength": 0.7
+    },
+    {
+      "from": "math-foundations:multiply-fractions",
+      "to": "equivalent-ratios",
+      "strength": 0.6
+    },
+    {
+      "from": "math-foundations:fraction-decimal-equivalence",
+      "to": "percent-intro",
+      "strength": 1.0
+    },
+    {
+      "from": "math-foundations:unit-conversion",
+      "to": "unit-rates",
+      "strength": 0.6
+    },
+    {
+      "from": "ratios-intro",
+      "to": "equivalent-ratios",
+      "strength": 1.0
+    },
+    {
+      "from": "ratios-intro",
+      "to": "unit-rates",
+      "strength": 1.0
+    },
+    {
+      "from": "equivalent-ratios",
+      "to": "ratio-tables",
+      "strength": 1.0
+    },
+    {
+      "from": "unit-rates",
+      "to": "ratio-word-problems",
+      "strength": 1.0
+    },
+    {
+      "from": "ratio-tables",
+      "to": "ratio-word-problems",
+      "strength": 0.8
+    },
+    {
+      "from": "equivalent-ratios",
+      "to": "proportions-intro",
+      "strength": 1.0
+    },
+    {
+      "from": "unit-rates",
+      "to": "proportions-intro",
+      "strength": 0.8
+    },
+    {
+      "from": "proportions-intro",
+      "to": "proportional-relationships",
+      "strength": 1.0
+    },
+    {
+      "from": "proportional-relationships",
+      "to": "constant-of-proportionality",
+      "strength": 1.0
+    },
+    {
+      "from": "ratios-intro",
+      "to": "percent-intro",
+      "strength": 0.8
+    },
+    {
+      "from": "percent-intro",
+      "to": "percent-of-a-number",
+      "strength": 1.0
+    },
+    {
+      "from": "percent-of-a-number",
+      "to": "percent-equations",
+      "strength": 1.0
+    },
+    {
+      "from": "percent-equations",
+      "to": "percent-increase-decrease",
+      "strength": 1.0
+    },
+    {
+      "from": "percent-increase-decrease",
+      "to": "tax-tip-markup",
+      "strength": 1.0
+    },
+    {
+      "from": "percent-increase-decrease",
+      "to": "simple-interest",
+      "strength": 0.8
+    },
+    {
+      "from": "percent-increase-decrease",
+      "to": "percent-error",
+      "strength": 0.8
+    },
+    {
+      "from": "proportions-intro",
+      "to": "scale-drawings",
+      "strength": 1.0
+    },
+    {
+      "from": "multiply-divide-rationals",
+      "to": "unit-rates-complex",
+      "strength": 0.8
+    },
+    {
+      "from": "unit-rates",
+      "to": "unit-rates-complex",
+      "strength": 1.0
+    },
+    {
+      "from": "math-foundations:variables-expressions",
+      "to": "algebraic-expressions-6",
+      "strength": 1.0
+    },
+    {
+      "from": "math-foundations:order-of-operations",
+      "to": "evaluate-expressions-6",
+      "strength": 1.0
+    },
+    {
+      "from": "math-foundations:numerical-expressions-grouping",
+      "to": "evaluate-expressions-6",
+      "strength": 0.8
+    },
+    {
+      "from": "math-foundations:exponents-intro",
+      "to": "exponent-rules",
+      "strength": 1.0
+    },
+    {
+      "from": "algebraic-expressions-6",
+      "to": "evaluate-expressions-6",
+      "strength": 1.0
+    },
+    {
+      "from": "evaluate-expressions-6",
+      "to": "equivalent-expressions-6",
+      "strength": 1.0
+    },
+    {
+      "from": "equivalent-expressions-6",
+      "to": "distributive-property",
+      "strength": 1.0
+    },
+    {
+      "from": "algebraic-expressions-6",
+      "to": "one-step-equations-add-sub",
+      "strength": 1.0
+    },
+    {
+      "from": "one-step-equations-add-sub",
+      "to": "one-step-equations-mult-div",
+      "strength": 1.0
+    },
+    {
+      "from": "one-step-equations-mult-div",
+      "to": "one-step-inequalities",
+      "strength": 1.0
+    },
+    {
+      "from": "one-step-equations-mult-div",
+      "to": "equations-word-problems-6",
+      "strength": 1.0
+    },
+    {
+      "from": "algebraic-expressions-6",
+      "to": "dependent-independent-variables",
+      "strength": 1.0
+    },
+    {
+      "from": "one-step-equations-mult-div",
+      "to": "two-step-equations",
+      "strength": 1.0
+    },
+    {
+      "from": "distributive-property",
+      "to": "two-step-equations",
+      "strength": 0.8
+    },
+    {
+      "from": "two-step-equations",
+      "to": "two-step-inequalities",
+      "strength": 1.0
+    },
+    {
+      "from": "one-step-inequalities",
+      "to": "two-step-inequalities",
+      "strength": 0.8
+    },
+    {
+      "from": "distributive-property",
+      "to": "combine-like-terms",
+      "strength": 1.0
+    },
+    {
+      "from": "combine-like-terms",
+      "to": "expand-factor-expressions",
+      "strength": 1.0
+    },
+    {
+      "from": "two-step-equations",
+      "to": "multi-step-equations",
+      "strength": 1.0
+    },
+    {
+      "from": "expand-factor-expressions",
+      "to": "multi-step-equations",
+      "strength": 1.0
+    },
+    {
+      "from": "multi-step-equations",
+      "to": "equations-no-one-infinite",
+      "strength": 1.0
+    },
+    {
+      "from": "two-step-equations",
+      "to": "equations-word-problems-7",
+      "strength": 1.0
+    },
+    {
+      "from": "two-step-inequalities",
+      "to": "equations-word-problems-7",
+      "strength": 0.7
+    },
+    {
+      "from": "exponent-rules",
+      "to": "negative-exponents",
+      "strength": 1.0
+    },
+    {
+      "from": "exponent-rules",
+      "to": "scientific-notation",
+      "strength": 1.0
+    },
+    {
+      "from": "scientific-notation",
+      "to": "scientific-notation-operations",
+      "strength": 1.0
+    },
+    {
+      "from": "negative-exponents",
+      "to": "scientific-notation-operations",
+      "strength": 0.7
+    },
+    {
+      "from": "convert-rational-forms",
+      "to": "irrational-numbers",
+      "strength": 1.0
+    },
+    {
+      "from": "square-roots-intro",
+      "to": "irrational-numbers",
+      "strength": 1.0
+    },
+    {
+      "from": "square-roots-intro",
+      "to": "cube-roots",
+      "strength": 1.0
+    },
+    {
+      "from": "exponent-rules",
+      "to": "cube-roots",
+      "strength": 0.7
+    },
+    {
+      "from": "math-foundations:coordinate-plane",
+      "to": "coordinate-plane-four-quadrants",
+      "strength": 1.0
+    },
+    {
+      "from": "coordinate-plane-four-quadrants",
+      "to": "graph-proportional-relationships",
+      "strength": 1.0
+    },
+    {
+      "from": "constant-of-proportionality",
+      "to": "graph-proportional-relationships",
+      "strength": 1.0
+    },
+    {
+      "from": "integers-intro",
+      "to": "coordinate-plane-four-quadrants",
+      "strength": 0.8
+    },
+    {
+      "from": "graph-proportional-relationships",
+      "to": "slope-intro",
+      "strength": 1.0
+    },
+    {
+      "from": "add-subtract-rationals",
+      "to": "slope-intro",
+      "strength": 0.7
+    },
+    {
+      "from": "slope-intro",
+      "to": "slope-types",
+      "strength": 1.0
+    },
+    {
+      "from": "slope-intro",
+      "to": "y-intercept",
+      "strength": 1.0
+    },
+    {
+      "from": "slope-types",
+      "to": "slope-intercept-form",
+      "strength": 1.0
+    },
+    {
+      "from": "y-intercept",
+      "to": "slope-intercept-form",
+      "strength": 1.0
+    },
+    {
+      "from": "slope-intercept-form",
+      "to": "graph-linear-equations",
+      "strength": 1.0
+    },
+    {
+      "from": "slope-intercept-form",
+      "to": "write-linear-equations",
+      "strength": 1.0
+    },
+    {
+      "from": "graph-linear-equations",
+      "to": "compare-linear-functions",
+      "strength": 1.0
+    },
+    {
+      "from": "write-linear-equations",
+      "to": "compare-linear-functions",
+      "strength": 0.8
+    },
+    {
+      "from": "dependent-independent-variables",
+      "to": "functions-intro",
+      "strength": 1.0
+    },
+    {
+      "from": "coordinate-plane-four-quadrants",
+      "to": "functions-intro",
+      "strength": 0.7
+    },
+    {
+      "from": "functions-intro",
+      "to": "function-tables-rules",
+      "strength": 1.0
+    },
+    {
+      "from": "function-tables-rules",
+      "to": "linear-vs-nonlinear",
+      "strength": 1.0
+    },
+    {
+      "from": "slope-intercept-form",
+      "to": "linear-vs-nonlinear",
+      "strength": 0.8
+    },
+    {
+      "from": "linear-vs-nonlinear",
+      "to": "qualitative-graphs",
+      "strength": 1.0
+    },
+    {
+      "from": "graph-linear-equations",
+      "to": "systems-of-equations-intro",
+      "strength": 1.0
+    },
+    {
+      "from": "multi-step-equations",
+      "to": "systems-of-equations-intro",
+      "strength": 0.8
+    },
+    {
+      "from": "systems-of-equations-intro",
+      "to": "systems-substitution",
+      "strength": 1.0
+    },
+    {
+      "from": "systems-of-equations-intro",
+      "to": "systems-elimination",
+      "strength": 1.0
+    },
+    {
+      "from": "systems-substitution",
+      "to": "systems-word-problems",
+      "strength": 1.0
+    },
+    {
+      "from": "systems-elimination",
+      "to": "systems-word-problems",
+      "strength": 0.8
+    },
+    {
+      "from": "math-foundations:area-composite-shapes",
+      "to": "area-triangles",
+      "strength": 1.0
+    },
+    {
+      "from": "math-foundations:area-multiply",
+      "to": "area-quadrilaterals",
+      "strength": 1.0
+    },
+    {
+      "from": "math-foundations:volume",
+      "to": "volume-prisms",
+      "strength": 1.0
+    },
+    {
+      "from": "math-foundations:volume",
+      "to": "surface-area-prisms",
+      "strength": 0.8
+    },
+    {
+      "from": "math-foundations:angles-intro",
+      "to": "angle-relationships",
+      "strength": 1.0
+    },
+    {
+      "from": "math-foundations:classify-triangles",
+      "to": "triangle-angle-sum",
+      "strength": 1.0
+    },
+    {
+      "from": "math-foundations:parallel-perpendicular-lines",
+      "to": "parallel-lines-transversal",
+      "strength": 1.0
+    },
+    {
+      "from": "area-triangles",
+      "to": "area-quadrilaterals",
+      "strength": 0.8
+    },
+    {
+      "from": "area-quadrilaterals",
+      "to": "area-polygons",
+      "strength": 1.0
+    },
+    {
+      "from": "area-triangles",
+      "to": "area-polygons",
+      "strength": 0.7
+    },
+    {
+      "from": "volume-prisms",
+      "to": "surface-area-prisms",
+      "strength": 0.7
+    },
+    {
+      "from": "angle-relationships",
+      "to": "triangle-angle-sum",
+      "strength": 1.0
+    },
+    {
+      "from": "triangle-angle-sum",
+      "to": "exterior-angles",
+      "strength": 1.0
+    },
+    {
+      "from": "angle-relationships",
+      "to": "parallel-lines-transversal",
+      "strength": 1.0
+    },
+    {
+      "from": "area-triangles",
+      "to": "circumference",
+      "strength": 0.5
+    },
+    {
+      "from": "multiply-divide-rationals",
+      "to": "circumference",
+      "strength": 0.6
+    },
+    {
+      "from": "circumference",
+      "to": "area-circles",
+      "strength": 1.0
+    },
+    {
+      "from": "volume-prisms",
+      "to": "cross-sections",
+      "strength": 0.8
+    },
+    {
+      "from": "area-circles",
+      "to": "volume-cylinders",
+      "strength": 1.0
+    },
+    {
+      "from": "volume-prisms",
+      "to": "volume-cylinders",
+      "strength": 0.8
+    },
+    {
+      "from": "volume-cylinders",
+      "to": "volume-cones-spheres",
+      "strength": 1.0
+    },
+    {
+      "from": "square-roots-intro",
+      "to": "pythagorean-theorem",
+      "strength": 1.0
+    },
+    {
+      "from": "triangle-angle-sum",
+      "to": "pythagorean-theorem",
+      "strength": 0.8
+    },
+    {
+      "from": "pythagorean-theorem",
+      "to": "pythagorean-converse",
+      "strength": 1.0
+    },
+    {
+      "from": "pythagorean-theorem",
+      "to": "pythagorean-applications",
+      "strength": 1.0
+    },
+    {
+      "from": "coordinate-plane-four-quadrants",
+      "to": "pythagorean-applications",
+      "strength": 0.7
+    },
+    {
+      "from": "coordinate-plane-four-quadrants",
+      "to": "transformations-intro",
+      "strength": 1.0
+    },
+    {
+      "from": "angle-relationships",
+      "to": "transformations-intro",
+      "strength": 0.7
+    },
+    {
+      "from": "transformations-intro",
+      "to": "dilations",
+      "strength": 1.0
+    },
+    {
+      "from": "proportions-intro",
+      "to": "dilations",
+      "strength": 0.8
+    },
+    {
+      "from": "dilations",
+      "to": "congruence-similarity",
+      "strength": 1.0
+    },
+    {
+      "from": "transformations-intro",
+      "to": "congruence-similarity",
+      "strength": 1.0
+    },
+    {
+      "from": "math-foundations:mean-median-mode",
+      "to": "measures-of-center",
+      "strength": 1.0
+    },
+    {
+      "from": "math-foundations:bar-graphs-picture-graphs",
+      "to": "dot-plots-histograms",
+      "strength": 0.8
+    },
+    {
+      "from": "math-foundations:line-plots",
+      "to": "dot-plots-histograms",
+      "strength": 0.7
+    },
+    {
+      "from": "statistical-questions",
+      "to": "measures-of-center",
+      "strength": 0.8
+    },
+    {
+      "from": "measures-of-center",
+      "to": "measures-of-variability",
+      "strength": 1.0
+    },
+    {
+      "from": "measures-of-center",
+      "to": "dot-plots-histograms",
+      "strength": 0.8
+    },
+    {
+      "from": "measures-of-variability",
+      "to": "box-plots",
+      "strength": 1.0
+    },
+    {
+      "from": "dot-plots-histograms",
+      "to": "box-plots",
+      "strength": 0.8
+    },
+    {
+      "from": "box-plots",
+      "to": "summarize-data",
+      "strength": 1.0
+    },
+    {
+      "from": "measures-of-variability",
+      "to": "summarize-data",
+      "strength": 0.7
+    },
+    {
+      "from": "divide-multi-digit-6",
+      "to": "probability-intro",
+      "strength": 0.6
+    },
+    {
+      "from": "percent-intro",
+      "to": "probability-intro",
+      "strength": 0.8
+    },
+    {
+      "from": "probability-intro",
+      "to": "experimental-probability",
+      "strength": 1.0
+    },
+    {
+      "from": "experimental-probability",
+      "to": "compound-probability",
+      "strength": 1.0
+    },
+    {
+      "from": "summarize-data",
+      "to": "sampling-inference",
+      "strength": 1.0
+    },
+    {
+      "from": "sampling-inference",
+      "to": "compare-populations",
+      "strength": 1.0
+    },
+    {
+      "from": "graph-linear-equations",
+      "to": "scatter-plots",
+      "strength": 0.8
+    },
+    {
+      "from": "compare-populations",
+      "to": "scatter-plots",
+      "strength": 0.7
+    },
+    {
+      "from": "scatter-plots",
+      "to": "line-of-best-fit",
+      "strength": 1.0
+    },
+    {
+      "from": "slope-intercept-form",
+      "to": "line-of-best-fit",
+      "strength": 0.8
+    },
+    {
+      "from": "compound-probability",
+      "to": "two-way-tables",
+      "strength": 0.8
+    },
+    {
+      "from": "percent-intro",
+      "to": "two-way-tables",
+      "strength": 0.7
+    },
+    {
+      "from": "exponent-rules",
+      "to": "monomials",
+      "strength": 1.0
+    },
+    {
+      "from": "combine-like-terms",
+      "to": "monomials",
+      "strength": 0.8
+    },
+    {
+      "from": "monomials",
+      "to": "polynomials-classify",
+      "strength": 1.0
+    },
+    {
+      "from": "polynomials-classify",
+      "to": "add-subtract-polynomials",
+      "strength": 1.0
+    },
+    {
+      "from": "add-subtract-polynomials",
+      "to": "multiply-polynomials-monomial",
+      "strength": 1.0
+    },
+    {
+      "from": "distributive-property",
+      "to": "multiply-polynomials-monomial",
+      "strength": 0.8
+    },
+    {
+      "from": "multiply-polynomials-monomial",
+      "to": "multiply-binomials",
+      "strength": 1.0
+    },
+    {
+      "from": "multiply-binomials",
+      "to": "special-products",
+      "strength": 1.0
+    },
+    {
+      "from": "multiply-polynomials-monomial",
+      "to": "factor-gcf-polynomials",
+      "strength": 1.0
+    },
+    {
+      "from": "gcf-lcm-applications",
+      "to": "factor-gcf-polynomials",
+      "strength": 0.6
+    },
+    {
+      "from": "math-foundations:mean-median-mode",
+      "to": "statistical-questions",
+      "strength": 1.0
+    }
+  ],
+  "encompassings": [
+    {
+      "parent": "integer-subtraction",
+      "child": "integer-addition",
+      "weight": 0.7
+    },
+    {
+      "parent": "integer-multiplication",
+      "child": "integer-addition",
+      "weight": 0.5
+    },
+    {
+      "parent": "integer-multiplication",
+      "child": "integer-subtraction",
+      "weight": 0.5
+    },
+    {
+      "parent": "integer-division",
+      "child": "integer-multiplication",
+      "weight": 0.7
+    },
+    {
+      "parent": "add-subtract-rationals",
+      "child": "integer-addition",
+      "weight": 0.6
+    },
+    {
+      "parent": "add-subtract-rationals",
+      "child": "integer-subtraction",
+      "weight": 0.6
+    },
+    {
+      "parent": "multiply-divide-rationals",
+      "child": "integer-multiplication",
+      "weight": 0.6
+    },
+    {
+      "parent": "multiply-divide-rationals",
+      "child": "integer-division",
+      "weight": 0.6
+    },
+    {
+      "parent": "multiply-divide-rationals",
+      "child": "add-subtract-rationals",
+      "weight": 0.5
+    },
+    {
+      "parent": "operations-rational-practice",
+      "child": "add-subtract-rationals",
+      "weight": 0.7
+    },
+    {
+      "parent": "operations-rational-practice",
+      "child": "multiply-divide-rationals",
+      "weight": 0.7
+    },
+    {
+      "parent": "compare-order-rationals",
+      "child": "compare-order-integers",
+      "weight": 0.7
+    },
+    {
+      "parent": "compare-order-rationals",
+      "child": "absolute-value",
+      "weight": 0.4
+    },
+    {
+      "parent": "compare-order-integers",
+      "child": "absolute-value",
+      "weight": 0.5
+    },
+    {
+      "parent": "decimal-division-6",
+      "child": "divide-multi-digit-6",
+      "weight": 0.5
+    },
+    {
+      "parent": "equivalent-ratios",
+      "child": "ratios-intro",
+      "weight": 0.6
+    },
+    {
+      "parent": "proportions-intro",
+      "child": "equivalent-ratios",
+      "weight": 0.7
+    },
+    {
+      "parent": "proportions-intro",
+      "child": "unit-rates",
+      "weight": 0.5
+    },
+    {
+      "parent": "proportional-relationships",
+      "child": "proportions-intro",
+      "weight": 0.6
+    },
+    {
+      "parent": "constant-of-proportionality",
+      "child": "proportional-relationships",
+      "weight": 0.7
+    },
+    {
+      "parent": "constant-of-proportionality",
+      "child": "unit-rates",
+      "weight": 0.6
+    },
+    {
+      "parent": "percent-of-a-number",
+      "child": "percent-intro",
+      "weight": 0.7
+    },
+    {
+      "parent": "percent-equations",
+      "child": "percent-of-a-number",
+      "weight": 0.8
+    },
+    {
+      "parent": "percent-increase-decrease",
+      "child": "percent-equations",
+      "weight": 0.6
+    },
+    {
+      "parent": "tax-tip-markup",
+      "child": "percent-increase-decrease",
+      "weight": 0.7
+    },
+    {
+      "parent": "ratio-word-problems",
+      "child": "ratio-tables",
+      "weight": 0.5
+    },
+    {
+      "parent": "ratio-word-problems",
+      "child": "unit-rates",
+      "weight": 0.5
+    },
+    {
+      "parent": "unit-rates-complex",
+      "child": "unit-rates",
+      "weight": 0.8
+    },
+    {
+      "parent": "scale-drawings",
+      "child": "proportions-intro",
+      "weight": 0.5
+    },
+    {
+      "parent": "evaluate-expressions-6",
+      "child": "algebraic-expressions-6",
+      "weight": 0.6
+    },
+    {
+      "parent": "equivalent-expressions-6",
+      "child": "evaluate-expressions-6",
+      "weight": 0.5
+    },
+    {
+      "parent": "distributive-property",
+      "child": "equivalent-expressions-6",
+      "weight": 0.6
+    },
+    {
+      "parent": "one-step-equations-mult-div",
+      "child": "one-step-equations-add-sub",
+      "weight": 0.6
+    },
+    {
+      "parent": "two-step-equations",
+      "child": "one-step-equations-mult-div",
+      "weight": 0.8
+    },
+    {
+      "parent": "two-step-equations",
+      "child": "one-step-equations-add-sub",
+      "weight": 0.7
+    },
+    {
+      "parent": "multi-step-equations",
+      "child": "two-step-equations",
+      "weight": 0.8
+    },
+    {
+      "parent": "multi-step-equations",
+      "child": "one-step-equations-mult-div",
+      "weight": 0.5
+    },
+    {
+      "parent": "equations-no-one-infinite",
+      "child": "multi-step-equations",
+      "weight": 0.7
+    },
+    {
+      "parent": "two-step-inequalities",
+      "child": "one-step-inequalities",
+      "weight": 0.8
+    },
+    {
+      "parent": "expand-factor-expressions",
+      "child": "combine-like-terms",
+      "weight": 0.6
+    },
+    {
+      "parent": "expand-factor-expressions",
+      "child": "distributive-property",
+      "weight": 0.7
+    },
+    {
+      "parent": "equations-word-problems-7",
+      "child": "equations-word-problems-6",
+      "weight": 0.7
+    },
+    {
+      "parent": "negative-exponents",
+      "child": "exponent-rules",
+      "weight": 0.5
+    },
+    {
+      "parent": "scientific-notation-operations",
+      "child": "scientific-notation",
+      "weight": 0.7
+    },
+    {
+      "parent": "scientific-notation",
+      "child": "exponent-rules",
+      "weight": 0.5
+    },
+    {
+      "parent": "irrational-numbers",
+      "child": "convert-rational-forms",
+      "weight": 0.5
+    },
+    {
+      "parent": "cube-roots",
+      "child": "square-roots-intro",
+      "weight": 0.7
+    },
+    {
+      "parent": "graph-proportional-relationships",
+      "child": "coordinate-plane-four-quadrants",
+      "weight": 0.5
+    },
+    {
+      "parent": "slope-intro",
+      "child": "graph-proportional-relationships",
+      "weight": 0.6
+    },
+    {
+      "parent": "slope-types",
+      "child": "slope-intro",
+      "weight": 0.5
+    },
+    {
+      "parent": "slope-intercept-form",
+      "child": "slope-types",
+      "weight": 0.6
+    },
+    {
+      "parent": "slope-intercept-form",
+      "child": "y-intercept",
+      "weight": 0.7
+    },
+    {
+      "parent": "graph-linear-equations",
+      "child": "slope-intercept-form",
+      "weight": 0.6
+    },
+    {
+      "parent": "graph-linear-equations",
+      "child": "graph-proportional-relationships",
+      "weight": 0.5
+    },
+    {
+      "parent": "write-linear-equations",
+      "child": "slope-intercept-form",
+      "weight": 0.7
+    },
+    {
+      "parent": "compare-linear-functions",
+      "child": "graph-linear-equations",
+      "weight": 0.5
+    },
+    {
+      "parent": "compare-linear-functions",
+      "child": "write-linear-equations",
+      "weight": 0.5
+    },
+    {
+      "parent": "function-tables-rules",
+      "child": "functions-intro",
+      "weight": 0.6
+    },
+    {
+      "parent": "linear-vs-nonlinear",
+      "child": "function-tables-rules",
+      "weight": 0.5
+    },
+    {
+      "parent": "qualitative-graphs",
+      "child": "linear-vs-nonlinear",
+      "weight": 0.5
+    },
+    {
+      "parent": "systems-substitution",
+      "child": "systems-of-equations-intro",
+      "weight": 0.6
+    },
+    {
+      "parent": "systems-elimination",
+      "child": "systems-of-equations-intro",
+      "weight": 0.6
+    },
+    {
+      "parent": "systems-word-problems",
+      "child": "systems-substitution",
+      "weight": 0.6
+    },
+    {
+      "parent": "systems-word-problems",
+      "child": "systems-elimination",
+      "weight": 0.5
+    },
+    {
+      "parent": "area-quadrilaterals",
+      "child": "area-triangles",
+      "weight": 0.6
+    },
+    {
+      "parent": "area-polygons",
+      "child": "area-quadrilaterals",
+      "weight": 0.7
+    },
+    {
+      "parent": "area-polygons",
+      "child": "area-triangles",
+      "weight": 0.6
+    },
+    {
+      "parent": "surface-area-prisms",
+      "child": "area-quadrilaterals",
+      "weight": 0.5
+    },
+    {
+      "parent": "triangle-angle-sum",
+      "child": "angle-relationships",
+      "weight": 0.5
+    },
+    {
+      "parent": "exterior-angles",
+      "child": "triangle-angle-sum",
+      "weight": 0.7
+    },
+    {
+      "parent": "parallel-lines-transversal",
+      "child": "angle-relationships",
+      "weight": 0.7
+    },
+    {
+      "parent": "area-circles",
+      "child": "circumference",
+      "weight": 0.6
+    },
+    {
+      "parent": "volume-cylinders",
+      "child": "area-circles",
+      "weight": 0.5
+    },
+    {
+      "parent": "volume-cylinders",
+      "child": "volume-prisms",
+      "weight": 0.6
+    },
+    {
+      "parent": "volume-cones-spheres",
+      "child": "volume-cylinders",
+      "weight": 0.7
+    },
+    {
+      "parent": "pythagorean-converse",
+      "child": "pythagorean-theorem",
+      "weight": 0.6
+    },
+    {
+      "parent": "pythagorean-applications",
+      "child": "pythagorean-theorem",
+      "weight": 0.7
+    },
+    {
+      "parent": "pythagorean-applications",
+      "child": "pythagorean-converse",
+      "weight": 0.4
+    },
+    {
+      "parent": "dilations",
+      "child": "transformations-intro",
+      "weight": 0.5
+    },
+    {
+      "parent": "congruence-similarity",
+      "child": "transformations-intro",
+      "weight": 0.6
+    },
+    {
+      "parent": "congruence-similarity",
+      "child": "dilations",
+      "weight": 0.7
+    },
+    {
+      "parent": "measures-of-variability",
+      "child": "measures-of-center",
+      "weight": 0.5
+    },
+    {
+      "parent": "box-plots",
+      "child": "dot-plots-histograms",
+      "weight": 0.5
+    },
+    {
+      "parent": "box-plots",
+      "child": "measures-of-variability",
+      "weight": 0.6
+    },
+    {
+      "parent": "summarize-data",
+      "child": "box-plots",
+      "weight": 0.6
+    },
+    {
+      "parent": "summarize-data",
+      "child": "measures-of-center",
+      "weight": 0.5
+    },
+    {
+      "parent": "experimental-probability",
+      "child": "probability-intro",
+      "weight": 0.7
+    },
+    {
+      "parent": "compound-probability",
+      "child": "experimental-probability",
+      "weight": 0.5
+    },
+    {
+      "parent": "compound-probability",
+      "child": "probability-intro",
+      "weight": 0.4
+    },
+    {
+      "parent": "compare-populations",
+      "child": "sampling-inference",
+      "weight": 0.7
+    },
+    {
+      "parent": "compare-populations",
+      "child": "summarize-data",
+      "weight": 0.5
+    },
+    {
+      "parent": "line-of-best-fit",
+      "child": "scatter-plots",
+      "weight": 0.7
+    },
+    {
+      "parent": "polynomials-classify",
+      "child": "monomials",
+      "weight": 0.6
+    },
+    {
+      "parent": "add-subtract-polynomials",
+      "child": "polynomials-classify",
+      "weight": 0.5
+    },
+    {
+      "parent": "add-subtract-polynomials",
+      "child": "combine-like-terms",
+      "weight": 0.6
+    },
+    {
+      "parent": "multiply-polynomials-monomial",
+      "child": "monomials",
+      "weight": 0.6
+    },
+    {
+      "parent": "multiply-polynomials-monomial",
+      "child": "add-subtract-polynomials",
+      "weight": 0.4
+    },
+    {
+      "parent": "multiply-binomials",
+      "child": "multiply-polynomials-monomial",
+      "weight": 0.7
+    },
+    {
+      "parent": "special-products",
+      "child": "multiply-binomials",
+      "weight": 0.7
+    },
+    {
+      "parent": "factor-gcf-polynomials",
+      "child": "monomials",
+      "weight": 0.5
+    }
+  ]
+}

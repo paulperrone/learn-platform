@@ -1,0 +1,65 @@
+[
+  {
+    "id": "equivalent-ratios-p1",
+    "topicId": "equivalent-ratios",
+    "difficulty": "easy",
+    "question": "Find a ratio equivalent to 3:5 by multiplying both parts by 4.",
+    "answer": "12:20",
+    "hints": [
+      "Multiply the first number by 4 and the second number by 4."
+    ],
+    "solution": "3 × 4 = 12, 5 × 4 = 20. The equivalent ratio is 12:20.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "equivalent-ratios-p2",
+    "topicId": "equivalent-ratios",
+    "difficulty": "easy",
+    "question": "Are 6:9 and 2:3 equivalent ratios? Answer yes or no.",
+    "answer": "yes",
+    "hints": [
+      "Try dividing both parts of 6:9 by 3."
+    ],
+    "solution": "6 ÷ 3 = 2, 9 ÷ 3 = 3. So 6:9 = 2:3. Yes, they are equivalent.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "equivalent-ratios-p3",
+    "topicId": "equivalent-ratios",
+    "difficulty": "medium",
+    "question": "Find the missing number: 4:7 = 20:?",
+    "answer": "35",
+    "hints": [
+      "What was 4 multiplied by to get 20?",
+      "4 × 5 = 20, so multiply 7 by 5."
+    ],
+    "solution": "4 × 5 = 20, so the multiplier is 5. 7 × 5 = 35. The ratio is 20:35.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "equivalent-ratios-p4",
+    "topicId": "equivalent-ratios",
+    "difficulty": "medium",
+    "question": "Find the missing number: ?:18 = 5:6",
+    "answer": "15",
+    "hints": [
+      "What was 6 multiplied by to get 18?",
+      "6 × 3 = 18, so multiply 5 by 3."
+    ],
+    "solution": "6 × 3 = 18, so the multiplier is 3. 5 × 3 = 15. The ratio is 15:18.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "equivalent-ratios-p5",
+    "topicId": "equivalent-ratios",
+    "difficulty": "hard",
+    "question": "A paint mixture uses red and white paint in a ratio of 3:8. If you need 24 cups of red paint, how many cups of white paint do you need?",
+    "answer": "64",
+    "hints": [
+      "Find the multiplier: 3 × ? = 24.",
+      "3 × 8 = 24, so multiply 8 by the same number."
+    ],
+    "solution": "3 × 8 = 24, so the multiplier is 8. White paint: 8 × 8 = 64 cups.",
+    "cognitiveDemand": "application"
+  }
+]

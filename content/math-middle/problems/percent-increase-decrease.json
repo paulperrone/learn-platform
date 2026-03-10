@@ -1,0 +1,67 @@
+[
+  {
+    "id": "percent-increase-decrease-p1",
+    "topicId": "percent-increase-decrease",
+    "difficulty": "easy",
+    "question": "A price went from $50 to $60. What is the percent increase?",
+    "answer": "20%",
+    "hints": [
+      "Percent increase = (new - original) / original × 100.",
+      "Change = 60 - 50 = 10. Then 10/50 × 100."
+    ],
+    "solution": "Change = 60 - 50 = 10. Percent increase = (10/50) × 100 = 20%.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "percent-increase-decrease-p2",
+    "topicId": "percent-increase-decrease",
+    "difficulty": "easy",
+    "question": "A population dropped from 200 to 170. What is the percent decrease?",
+    "answer": "15%",
+    "hints": [
+      "Percent decrease = (original - new) / original × 100.",
+      "Change = 200 - 170 = 30. Then 30/200 × 100."
+    ],
+    "solution": "Change = 200 - 170 = 30. Percent decrease = (30/200) × 100 = 15%.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "percent-increase-decrease-p3",
+    "topicId": "percent-increase-decrease",
+    "difficulty": "medium",
+    "question": "A shirt originally costs $35. After a markup, it costs $45.50. What is the percent increase?",
+    "answer": "30%",
+    "hints": [
+      "Change = $45.50 - $35 = $10.50.",
+      "Percent increase = 10.50/35 × 100."
+    ],
+    "solution": "Change = $45.50 - $35 = $10.50. Percent increase = (10.50/35) × 100 = 30%.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "percent-increase-decrease-p4",
+    "topicId": "percent-increase-decrease",
+    "difficulty": "medium",
+    "question": "A laptop was $800 and is now on sale for $680. What is the percent decrease?",
+    "answer": "15%",
+    "hints": [
+      "Change = $800 - $680 = $120.",
+      "Percent decrease = 120/800 × 100."
+    ],
+    "solution": "Change = $800 - $680 = $120. Percent decrease = (120/800) × 100 = 15%.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "percent-increase-decrease-p5",
+    "topicId": "percent-increase-decrease",
+    "difficulty": "hard",
+    "question": "A stock price increased by 40% on Monday, then decreased by 25% on Tuesday. If the original price was $80, what is the price after both changes?",
+    "answer": "$84",
+    "hints": [
+      "After Monday: $80 × 1.40 = ?",
+      "After Monday: $112. After Tuesday: $112 × 0.75 = ?"
+    ],
+    "solution": "After Monday: $80 × 1.40 = $112. After Tuesday: $112 × 0.75 = $84.",
+    "cognitiveDemand": "reasoning"
+  }
+]

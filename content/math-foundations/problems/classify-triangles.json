@@ -1,0 +1,67 @@
+[
+  {
+    "id": "classify-triangles-p1",
+    "topicId": "classify-triangles",
+    "difficulty": "easy",
+    "question": "A triangle has all three sides the same length. What type of triangle is it by its sides?\n\nA) Scalene\nB) Isosceles\nC) Equilateral\nD) Right",
+    "answer": "C",
+    "hints": [
+      "The prefix \"equi-\" means equal, and \"lateral\" means side.",
+      "A triangle with all equal sides is called equilateral."
+    ],
+    "solution": "A triangle with all three sides equal in length is an equilateral triangle. An isosceles triangle has exactly two equal sides. A scalene triangle has no equal sides. \"Right\" describes an angle, not sides. The answer is C.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "classify-triangles-p2",
+    "topicId": "classify-triangles",
+    "difficulty": "easy",
+    "question": "A triangle has angles measuring 30 degrees, 60 degrees, and 90 degrees. Classify this triangle by its angles.\n\nA) Acute\nB) Right\nC) Obtuse",
+    "answer": "B",
+    "hints": [
+      "Look for any angle that is exactly 90 degrees.",
+      "A right triangle has one angle equal to 90 degrees."
+    ],
+    "solution": "This triangle has a 90-degree angle, so it is a right triangle. An acute triangle has all angles less than 90 degrees. An obtuse triangle has one angle greater than 90 degrees. Since one angle is exactly 90 degrees, the answer is B.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "classify-triangles-p3",
+    "topicId": "classify-triangles",
+    "difficulty": "medium",
+    "question": "A triangle has sides measuring 5 cm, 5 cm, and 8 cm. Its largest angle is 106 degrees. Classify this triangle two ways: by its sides and by its angles. Write your answer as: sides classification, angles classification.",
+    "answer": "isosceles, obtuse",
+    "hints": [
+      "Count how many sides are equal to classify by sides.",
+      "Is any angle greater than 90 degrees?"
+    ],
+    "solution": "By sides: Two sides are equal (5 cm and 5 cm), so it is isosceles. By angles: The largest angle is 106 degrees, which is greater than 90 degrees, so it is obtuse. Answer: isosceles, obtuse.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "classify-triangles-p4",
+    "topicId": "classify-triangles",
+    "difficulty": "medium",
+    "question": "A triangle has sides of length 3 cm, 7 cm, and 5 cm. All of its angles are less than 90 degrees. Classify this triangle by its sides and by its angles. Write your answer as: sides classification, angles classification.",
+    "answer": "scalene, acute",
+    "hints": [
+      "Are any of the three side lengths equal to each other?",
+      "If every angle is less than 90 degrees, what type is it by angles?"
+    ],
+    "solution": "By sides: All three sides are different lengths (3, 5, and 7), so it is scalene. By angles: All angles are less than 90 degrees, so it is acute. Answer: scalene, acute.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "classify-triangles-p5",
+    "topicId": "classify-triangles",
+    "difficulty": "hard",
+    "question": "Priya says: \"An equilateral triangle can also be a right triangle.\" Is Priya correct? Explain why or why not. (Hint: all angles in an equilateral triangle are equal, and the three angles of any triangle add up to 180 degrees.)",
+    "answer": "Priya is incorrect. An equilateral triangle has three equal angles, each 60 degrees (180 / 3 = 60). Since none of the angles is 90 degrees, an equilateral triangle cannot be a right triangle.",
+    "hints": [
+      "If all three angles are equal and must add to 180 degrees, what is each angle?",
+      "Is 60 degrees equal to 90 degrees?"
+    ],
+    "solution": "Priya is incorrect. In an equilateral triangle, all three angles are equal. Since the angles of any triangle sum to 180 degrees, each angle is 180 / 3 = 60 degrees. A right triangle requires one 90-degree angle, but 60 does not equal 90. Therefore, an equilateral triangle can never be a right triangle.",
+    "cognitiveDemand": "reasoning"
+  }
+]

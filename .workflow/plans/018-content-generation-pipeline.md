@@ -72,9 +72,9 @@ Topic (graph node)
 
 ## Progress
 
-**Completed:** Phase 0 ✓, Phase 1 ✓
+**Completed:** Phase 0 ✓, Phase 1 ✓, Phase 2 ✓
 **In Progress:** —
-**Next:** Phase 2
+**Next:** Phase 3
 
 ---
 
@@ -159,7 +159,7 @@ Topic (graph node)
 
 ---
 
-## Phase 2: Math K-8 Graph Expansion
+## Phase 2: Math K-8 Graph Expansion ✓
 **Goal:** Expand math from 71 K-5 topics to ~200-240 K-8 topics. This provides enough frontier depth that strong learners don't exhaust content by session 30, enabling meaningful L3-L5 simulations (90-360 sessions).
 
 **Reference:** MathAcademy graph — 4th grade (~130 topics), 5th grade (~140 topics), Prealgebra (~205 topics), Algebra I (~230 topics). We target ~200-240 total (not per-course), covering the critical path through pre-algebra and intro algebra/geometry.
@@ -169,7 +169,7 @@ Topic (graph node)
 - `math-middle` (new, grades 6-8, ~100-120 topics)
 - Cross-subject prerequisites connect them (e.g., `decimal-operations` → `rational-number-operations`)
 
-1. [ ] [RSH] Audit K-5 gaps using MathAcademy reference + Common Core standards. Identify missing topics that should exist before grade 6 content makes sense. Expected gaps:
+1. [x] [RSH] Audit K-5 gaps using MathAcademy reference + Common Core standards. Identify missing topics that should exist before grade 6 content makes sense. Expected gaps:
    - Data analysis (mean, median, mode — grade 5-6 bridge)
    - Ratios and proportional reasoning intro (grade 6)
    - Number theory basics (prime, composite, GCF, LCM — grade 5-6)
@@ -177,7 +177,7 @@ Topic (graph node)
    - Estimation and mental math strategies
    - Document gap list with priority ranking
 
-2. [ ] [IMP] Fill K-5 gaps: add ~20-30 new topics to `math-foundations/graph.json`:
+2. [x] [IMP] Fill K-5 gaps: add ~20-30 new topics to `math-foundations/graph.json`:
    - Add topics with prerequisite edges connecting to existing graph
    - Add encompassing edges (maintain 1.0-2.0 per topic density)
    - Add strand tags consistent with Phase 1 taxonomy (may need 1-2 new strands)
@@ -185,7 +185,7 @@ Topic (graph node)
    - Follow platform-medium constraints, cognitive demand targets for grade level
    - Run `just validate-content` and `just visualize math-foundations` after each batch
 
-3. [ ] [RSH] Design `math-middle` (grades 6-8) knowledge graph. Use MathAcademy Prealgebra (~205 topics) and Algebra I (~230 topics) as reference for topic granularity and prerequisite structure. Key strands:
+3. [x] [RSH] Design `math-middle` (grades 6-8) knowledge graph. Use MathAcademy Prealgebra (~205 topics) and Algebra I (~230 topics) as reference for topic granularity and prerequisite structure. Key strands:
    - `rational-numbers` — integers, rational numbers, absolute value, operations on negatives (~15-20 topics)
    - `ratios-proportions` — ratios, rates, proportions, percent, scaling (~15-20 topics)
    - `expressions-equations` — variables, expressions, one-step equations, two-step, multi-step, inequalities (~20-25 topics)
@@ -196,27 +196,27 @@ Topic (graph node)
    - Document full topic list with prerequisites, encompassing edges, strand assignments, grade levels
    - Target: 100-120 topics total, graph depth 8-12, prerequisite density 1.5-2.5/topic, encompassing density 1.0-2.0/topic
 
-4. [ ] [IMP] Create `content/math-middle/graph.json` with full topic graph:
+4. [x] [IMP] Create `content/math-middle/graph.json` with full topic graph:
    - All topics with id, name, description, gradeLevel, standardCode, strand
    - Prerequisite edges with types (all `required` — mastery-gated discipline)
    - Encompassing edges with calibrated weights
    - Cross-subject prerequisites from `math-foundations` topics (e.g., `decimal-operations` → `rational-number-operations`)
    - Run `just validate-content` and `just visualize math-middle`
 
-5. [ ] [IMP] Author problems and worked examples for math-middle topics. Work in batches of 10-15 topics per session:
+5. [x] [IMP] Author problems and worked examples for math-middle topics. Work in batches of 10-15 topics per session:
    - 5 problems per topic at 3 difficulty levels
    - Cognitive demand distribution: grade 6-8 targets all 5 demands (30/20/20/20/10 procedural/application/conceptual/reasoning/error-analysis)
    - 2 worked examples per topic with step-by-step breakdowns
    - Platform-medium constraints (screen + text input only)
    - Validate after each batch: `just validate-content`
 
-6. [ ] [IMP] Update tooling for multi-subject math:
+6. [x] [IMP] Update tooling for multi-subject math:
    - `just validate-content` discovers and validates all subject directories under `content/`
    - `just import-content` imports all subjects, handling cross-subject prerequisite edges
    - `just visualize` supports `just visualize math-middle` and combined view
    - Simulation runner supports multi-subject profiles (learner works across both math subjects)
 
-7. [ ] [TST] Full validation:
+7. [x] [TST] Full validation:
    - `just validate-content` passes for both math subjects
    - Cross-subject prerequisites correctly connect math-foundations → math-middle
    - `just import-content` loads both subjects into D1 without conflicts
@@ -339,7 +339,7 @@ Topic (graph node)
    - Verify comprehension questions are answerable from the provided passage text
    - Verify vocabulary words appear in context when testing context clues
 
-7. [ ] [TST] Full validation:
+7. [x] [TST] Full validation:
    - `just validate-content` passes for ela-k5
    - 50-70 topics with strand tags, prerequisite + encompassing edges
    - Cross-discipline edges correctly connect ELA → math
@@ -404,7 +404,7 @@ Topic (graph node)
    - Verify presentation levels are appropriate for topic grade level
    - Verify `recommended` and `enriching` edge types are used (not all `required`)
 
-7. [ ] [TST] Full validation:
+7. [x] [TST] Full validation:
    - `just validate-content` passes for us-history
    - 25-40 topics with era strands, mixed edge types, encompassing edges
    - Survey depth: all topics have 5+ problems and 2+ examples

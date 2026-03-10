@@ -1,0 +1,65 @@
+[
+  {
+    "id": "graph-proportional-relationships-p1",
+    "topicId": "graph-proportional-relationships",
+    "difficulty": "easy",
+    "question": "A proportional relationship passes through (0, 0) and (4, 12). What is the unit rate (slope)?",
+    "answer": "3",
+    "hints": [
+      "Unit rate = y divided by x for any point on the line (other than the origin)."
+    ],
+    "solution": "Unit rate = 12 / 4 = 3. For every 1 unit increase in x, y increases by 3.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "graph-proportional-relationships-p2",
+    "topicId": "graph-proportional-relationships",
+    "difficulty": "easy",
+    "question": "A line passes through the origin and has a unit rate of 5. What is the y-value when x = 3?",
+    "answer": "15",
+    "hints": [
+      "In a proportional relationship, y = (unit rate) * x."
+    ],
+    "solution": "y = 5 * 3 = 15.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "graph-proportional-relationships-p3",
+    "topicId": "graph-proportional-relationships",
+    "difficulty": "medium",
+    "question": "A graph of a proportional relationship passes through (0, 0) and (6, 9). Write the equation of the line.",
+    "answer": "y = 3/2 * x",
+    "hints": [
+      "Find the slope: rise / run = (9 - 0) / (6 - 0).",
+      "A proportional relationship has the form y = kx where k is the unit rate."
+    ],
+    "solution": "Slope = 9 / 6 = 3/2. Since the line passes through the origin, the equation is y = 3/2 * x.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "graph-proportional-relationships-p4",
+    "topicId": "graph-proportional-relationships",
+    "difficulty": "medium",
+    "question": "Two proportional relationships are described. Line A passes through (0, 0) and (2, 10). Line B passes through (0, 0) and (5, 10). Which line has the greater unit rate?",
+    "answer": "Line A",
+    "hints": [
+      "Find the unit rate for each line: divide y by x.",
+      "Line A: 10/2. Line B: 10/5."
+    ],
+    "solution": "Line A unit rate = 10/2 = 5. Line B unit rate = 10/5 = 2. Line A has the greater unit rate.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "graph-proportional-relationships-p5",
+    "topicId": "graph-proportional-relationships",
+    "difficulty": "hard",
+    "question": "A store sells apples at a constant price per pound. 3 pounds cost $4.50 and 7 pounds cost $10.50. Does this represent a proportional relationship? If so, what is the unit rate in dollars per pound?",
+    "answer": "1.50",
+    "hints": [
+      "Check: does 4.50/3 equal 10.50/7?",
+      "If the ratios are equal and the relationship passes through (0, 0) — zero pounds costs $0 — it is proportional."
+    ],
+    "solution": "4.50 / 3 = 1.50 and 10.50 / 7 = 1.50. The ratios are equal and 0 pounds costs $0, so it is proportional. The unit rate is $1.50 per pound.",
+    "cognitiveDemand": "application"
+  }
+]

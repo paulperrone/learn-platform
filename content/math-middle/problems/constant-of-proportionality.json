@@ -1,0 +1,65 @@
+[
+  {
+    "id": "constant-of-proportionality-p1",
+    "topicId": "constant-of-proportionality",
+    "difficulty": "easy",
+    "question": "The equation y = 7x describes a proportional relationship. What is the constant of proportionality?",
+    "answer": "7",
+    "hints": [
+      "In y = kx, the constant of proportionality is k."
+    ],
+    "solution": "In y = 7x, the constant of proportionality k = 7.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "constant-of-proportionality-p2",
+    "topicId": "constant-of-proportionality",
+    "difficulty": "easy",
+    "question": "A table shows: x: 3, 6, 9 and y: 12, 24, 36. What is the constant of proportionality?",
+    "answer": "4",
+    "hints": [
+      "Divide y by x for any pair."
+    ],
+    "solution": "12 ÷ 3 = 4, 24 ÷ 6 = 4, 36 ÷ 9 = 4. The constant of proportionality is 4.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "constant-of-proportionality-p3",
+    "topicId": "constant-of-proportionality",
+    "difficulty": "medium",
+    "question": "A car uses 2 gallons of gas for every 54 miles driven. What is the constant of proportionality in miles per gallon?",
+    "answer": "27",
+    "hints": [
+      "Divide miles by gallons.",
+      "54 ÷ 2 = ?"
+    ],
+    "solution": "k = 54 miles ÷ 2 gallons = 27 miles per gallon.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "constant-of-proportionality-p4",
+    "topicId": "constant-of-proportionality",
+    "difficulty": "medium",
+    "question": "A table shows: x: 4, 10, 14 and y: 6, 15, 21. Write the equation for this proportional relationship.",
+    "answer": "y = 1.5x",
+    "hints": [
+      "Find k by dividing y by x: 6/4 = ?",
+      "6/4 = 1.5. Check: 15/10 = 1.5, 21/14 = 1.5."
+    ],
+    "solution": "k = 6/4 = 1.5. The equation is y = 1.5x.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "constant-of-proportionality-p5",
+    "topicId": "constant-of-proportionality",
+    "difficulty": "hard",
+    "question": "A graph passes through the origin and the point (8, 14). What is the constant of proportionality? Write your answer as a fraction.",
+    "answer": "7/4",
+    "hints": [
+      "For a proportional relationship through the origin, k = y/x.",
+      "k = 14/8. Simplify."
+    ],
+    "solution": "k = y/x = 14/8 = 7/4. The equation is y = (7/4)x.",
+    "cognitiveDemand": "procedural"
+  }
+]

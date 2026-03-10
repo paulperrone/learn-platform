@@ -1,0 +1,70 @@
+[
+  {
+    "id": "parallel-perpendicular-lines-ex1",
+    "topicId": "parallel-perpendicular-lines",
+    "title": "Identifying Parallel and Perpendicular Lines in a Rectangle",
+    "steps": [
+      {
+        "subgoalLabel": "Recall the definitions",
+        "instruction": "Parallel lines never cross and are always the same distance apart. Perpendicular lines cross at a 90° angle.",
+        "work": "Parallel = never meet, same direction. Perpendicular = meet at 90°.",
+        "explanation": "These are the two special relationships between pairs of lines."
+      },
+      {
+        "subgoalLabel": "Label the rectangle",
+        "instruction": "Rectangle ABCD has corners A (top-left), B (top-right), C (bottom-right), D (bottom-left).",
+        "work": "Top side: AB. Right side: BC. Bottom side: DC. Left side: AD.",
+        "explanation": "Labeling the sides lets us refer to specific line pairs."
+      },
+      {
+        "subgoalLabel": "Find parallel pairs",
+        "instruction": "Look for sides that run in the same direction and never meet.",
+        "work": "AB is parallel to DC (both horizontal). AD is parallel to BC (both vertical).",
+        "explanation": "Opposite sides of a rectangle are always parallel — they go the same direction and stay the same distance apart."
+      },
+      {
+        "subgoalLabel": "Find perpendicular pairs",
+        "instruction": "Look for sides that meet at 90° angles.",
+        "work": "AB is perpendicular to BC. BC is perpendicular to DC. DC is perpendicular to AD. AD is perpendicular to AB.",
+        "explanation": "Every corner of a rectangle is a right angle (90°), so every pair of sides that share a corner is perpendicular."
+      },
+      {
+        "subgoalLabel": "Summarize",
+        "instruction": "State all the relationships found.",
+        "work": "2 pairs of parallel lines (AB ∥ DC, AD ∥ BC). 4 pairs of perpendicular lines (one at each corner).",
+        "explanation": "A rectangle always has exactly 2 pairs of parallel sides and 4 pairs of perpendicular sides."
+      }
+    ]
+  },
+  {
+    "id": "parallel-perpendicular-lines-ex2",
+    "topicId": "parallel-perpendicular-lines",
+    "title": "Determining the Relationship Between Two Described Lines",
+    "steps": [
+      {
+        "subgoalLabel": "Read the description",
+        "instruction": "Line 1 is horizontal, passing through the points (1, 3) and (5, 3). Line 2 is vertical, passing through (3, 1) and (3, 6).",
+        "work": "Line 1: horizontal (y stays at 3). Line 2: vertical (x stays at 3).",
+        "explanation": "A horizontal line has the same y-value for all points. A vertical line has the same x-value for all points."
+      },
+      {
+        "subgoalLabel": "Check for parallel",
+        "instruction": "Do the lines go in the same direction? Horizontal and vertical go in different directions.",
+        "work": "Horizontal ≠ vertical direction → not parallel.",
+        "explanation": "Parallel lines must run in the same direction. One horizontal and one vertical line cannot be parallel."
+      },
+      {
+        "subgoalLabel": "Check for perpendicular",
+        "instruction": "Do the lines meet at a 90° angle? A horizontal line and a vertical line always form a 90° angle where they cross.",
+        "work": "Horizontal meets vertical at 90° → perpendicular.",
+        "explanation": "Horizontal and vertical directions are exactly 90° apart, so these lines are perpendicular."
+      },
+      {
+        "subgoalLabel": "State the answer",
+        "instruction": "Classify the relationship between Line 1 and Line 2.",
+        "work": "Line 1 and Line 2 are perpendicular. They cross at the point (3, 3).",
+        "explanation": "We checked both possibilities: not parallel (different directions), but perpendicular (90° angle at crossing)."
+      }
+    ]
+  }
+]

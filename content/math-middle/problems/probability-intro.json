@@ -1,0 +1,65 @@
+[
+  {
+    "id": "probability-intro-p1",
+    "topicId": "probability-intro",
+    "difficulty": "easy",
+    "question": "A bag has 3 red marbles and 7 blue marbles. What is the probability of drawing a red marble? Write as a fraction.",
+    "answer": "3/10",
+    "hints": [
+      "Probability = favorable outcomes / total outcomes."
+    ],
+    "solution": "P(red) = 3/10.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "probability-intro-p2",
+    "topicId": "probability-intro",
+    "difficulty": "easy",
+    "question": "A standard number cube (die) is rolled. What is the probability of rolling an even number? Write as a fraction.",
+    "answer": "1/2",
+    "hints": [
+      "Even numbers on a die: 2, 4, 6. That's 3 out of 6."
+    ],
+    "solution": "P(even) = 3/6 = 1/2.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "probability-intro-p3",
+    "topicId": "probability-intro",
+    "difficulty": "medium",
+    "question": "A spinner has 5 equal sections: red, blue, green, yellow, orange. What is the probability of NOT landing on red? Write as a fraction.",
+    "answer": "4/5",
+    "hints": [
+      "P(not red) = 1 − P(red).",
+      "Or count the non-red sections: 4 out of 5."
+    ],
+    "solution": "P(not red) = 4/5.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "probability-intro-p4",
+    "topicId": "probability-intro",
+    "difficulty": "medium",
+    "question": "A bag has 4 red, 6 blue, and 2 green marbles. What is the probability of drawing a blue or green marble? Write as a fraction in simplest form.",
+    "answer": "2/3",
+    "hints": [
+      "Favorable outcomes = blue + green = 6 + 2 = 8. Total = 12.",
+      "Simplify 8/12."
+    ],
+    "solution": "P(blue or green) = 8/12 = 2/3.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "probability-intro-p5",
+    "topicId": "probability-intro",
+    "difficulty": "hard",
+    "question": "A card is drawn from a standard deck of 52 cards. What is the probability that it is a heart or a king? Write as a fraction.",
+    "answer": "4/13",
+    "hints": [
+      "There are 13 hearts and 4 kings, but the king of hearts is counted in both.",
+      "Use P(A or B) = P(A) + P(B) − P(A and B)."
+    ],
+    "solution": "Hearts: 13. Kings: 4. King of hearts: 1. P = (13+4−1)/52 = 16/52 = 4/13.",
+    "cognitiveDemand": "reasoning"
+  }
+]

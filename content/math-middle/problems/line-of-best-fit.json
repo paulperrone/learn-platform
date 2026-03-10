@@ -1,0 +1,63 @@
+[
+  {
+    "id": "line-of-best-fit-p1",
+    "topicId": "line-of-best-fit",
+    "difficulty": "easy",
+    "question": "A line of best fit for a scatter plot passes through (0, 2) and (4, 10). What is the slope of the line?",
+    "answer": "2",
+    "hints": [
+      "Slope = (y2 − y1)/(x2 − x1)."
+    ],
+    "solution": "Slope = (10 − 2)/(4 − 0) = 8/4 = 2.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "line-of-best-fit-p2",
+    "topicId": "line-of-best-fit",
+    "difficulty": "easy",
+    "question": "A line of best fit is y = 3x + 5. What is the predicted y-value when x = 4?",
+    "answer": "17",
+    "hints": [
+      "Substitute x = 4 into the equation."
+    ],
+    "solution": "y = 3(4) + 5 = 12 + 5 = 17.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "line-of-best-fit-p3",
+    "topicId": "line-of-best-fit",
+    "difficulty": "medium",
+    "question": "A line of best fit for study hours vs test score is y = 5x + 60. A student studies 6 hours. What score does the model predict?",
+    "answer": "90",
+    "hints": [
+      "Plug x = 6 into the equation."
+    ],
+    "solution": "y = 5(6) + 60 = 30 + 60 = 90.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "line-of-best-fit-p4",
+    "topicId": "line-of-best-fit",
+    "difficulty": "medium",
+    "question": "A line of best fit is y = -2x + 100, modeling the relationship between absences (x) and test score (y). What does the slope of -2 mean in context?",
+    "answer": "For each additional absence, the predicted test score decreases by 2 points",
+    "hints": [
+      "The slope tells you how much y changes for each 1-unit increase in x."
+    ],
+    "solution": "The slope of -2 means that for each additional absence, the model predicts the test score decreases by 2 points.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "line-of-best-fit-p5",
+    "topicId": "line-of-best-fit",
+    "difficulty": "hard",
+    "question": "A line of best fit for age (x) vs height in cm (y) is y = 6x + 50, based on data for children ages 2-10. Would it be appropriate to use this model to predict the height of a 30-year-old? Answer yes or no, and explain.",
+    "answer": "no, because 30 is far outside the range of the data (2-10)",
+    "hints": [
+      "Consider whether x = 30 falls within the range of data used to create the model.",
+      "Predicting outside the data range is called extrapolation."
+    ],
+    "solution": "No. The model is based on ages 2-10. Using it at age 30 would predict y = 6(30)+50 = 230 cm, which is unreasonable. Extrapolating far beyond the data is unreliable.",
+    "cognitiveDemand": "reasoning"
+  }
+]

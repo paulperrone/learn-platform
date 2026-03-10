@@ -1,0 +1,67 @@
+[
+  {
+    "id": "greatest-common-factor-p1",
+    "topicId": "greatest-common-factor",
+    "difficulty": "easy",
+    "question": "What is the greatest common factor (GCF) of 12 and 18?",
+    "answer": "6",
+    "hints": [
+      "List all the factors of 12 and all the factors of 18.",
+      "Factors of 12: 1, 2, 3, 4, 6, 12. Factors of 18: 1, 2, 3, 6, 9, 18. Which is the largest number in both lists?"
+    ],
+    "solution": "Factors of 12: 1, 2, 3, 4, 6, 12. Factors of 18: 1, 2, 3, 6, 9, 18. The common factors are 1, 2, 3, and 6. The greatest common factor is 6.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "greatest-common-factor-p2",
+    "topicId": "greatest-common-factor",
+    "difficulty": "easy",
+    "question": "What is the greatest common factor (GCF) of 8 and 20?",
+    "answer": "4",
+    "hints": [
+      "List the factors of 8 and the factors of 20.",
+      "Factors of 8: 1, 2, 4, 8. Factors of 20: 1, 2, 4, 5, 10, 20."
+    ],
+    "solution": "Factors of 8: 1, 2, 4, 8. Factors of 20: 1, 2, 4, 5, 10, 20. The common factors are 1, 2, and 4. The greatest common factor is 4.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "greatest-common-factor-p3",
+    "topicId": "greatest-common-factor",
+    "difficulty": "medium",
+    "question": "What is the greatest common factor (GCF) of 36 and 84?",
+    "answer": "12",
+    "hints": [
+      "Find the prime factorization of each number. 36 = 2 × 2 × 3 × 3 and 84 = 2 × 2 × 3 × 7.",
+      "The GCF uses the prime factors they share: two 2s and one 3."
+    ],
+    "solution": "Prime factorization of 36: 2 × 2 × 3 × 3. Prime factorization of 84: 2 × 2 × 3 × 7. The shared prime factors are 2 × 2 × 3 = 12. The GCF of 36 and 84 is 12.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "greatest-common-factor-p4",
+    "topicId": "greatest-common-factor",
+    "difficulty": "medium",
+    "question": "Maria has 48 red beads and 60 blue beads. She wants to make identical groups using all the beads, with each group having the same number of red beads and the same number of blue beads. What is the greatest number of groups she can make?",
+    "answer": "12",
+    "hints": [
+      "The number of groups must divide evenly into both 48 and 60.",
+      "You need to find the GCF of 48 and 60."
+    ],
+    "solution": "To find the greatest number of identical groups, find the GCF of 48 and 60. Factors of 48: 1, 2, 3, 4, 6, 8, 12, 16, 24, 48. Factors of 60: 1, 2, 3, 4, 5, 6, 10, 12, 15, 20, 30, 60. The GCF is 12. Maria can make 12 groups, each with 4 red beads and 5 blue beads.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "greatest-common-factor-p5",
+    "topicId": "greatest-common-factor",
+    "difficulty": "hard",
+    "question": "What is the greatest common factor (GCF) of 72 and 96?",
+    "answer": "24",
+    "hints": [
+      "Use prime factorization. 72 = 2 × 2 × 2 × 3 × 3 and 96 = 2 × 2 × 2 × 2 × 2 × 3.",
+      "Multiply the shared prime factors using the smaller exponent for each: 2³ × 3¹."
+    ],
+    "solution": "Prime factorization of 72: 2³ × 3². Prime factorization of 96: 2⁵ × 3¹. For each shared prime, take the smaller exponent: 2³ × 3¹ = 8 × 3 = 24. The GCF of 72 and 96 is 24.",
+    "cognitiveDemand": "procedural"
+  }
+]

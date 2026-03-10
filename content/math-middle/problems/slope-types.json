@@ -1,0 +1,64 @@
+[
+  {
+    "id": "slope-types-p1",
+    "topicId": "slope-types",
+    "difficulty": "easy",
+    "question": "A line passes through (1, 2) and (4, 8). Is the slope positive, negative, zero, or undefined?",
+    "answer": "positive",
+    "hints": [
+      "As x increases from 1 to 4, does y increase or decrease?"
+    ],
+    "solution": "y goes from 2 to 8 (increases) as x goes from 1 to 4 (increases). A line that rises from left to right has positive slope. Slope = 6/3 = 2.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "slope-types-p2",
+    "topicId": "slope-types",
+    "difficulty": "easy",
+    "question": "A line passes through (2, 7) and (6, 7). Is the slope positive, negative, zero, or undefined?",
+    "answer": "zero",
+    "hints": [
+      "Both y-coordinates are the same. What does that mean about the rise?"
+    ],
+    "solution": "Rise = 7 - 7 = 0. Slope = 0/4 = 0. The line is horizontal.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "slope-types-p3",
+    "topicId": "slope-types",
+    "difficulty": "medium",
+    "question": "A line passes through (3, 5) and (3, -2). Is the slope positive, negative, zero, or undefined?",
+    "answer": "undefined",
+    "hints": [
+      "Both x-coordinates are the same. What happens when you compute the run?",
+      "You would divide by zero, which is not allowed."
+    ],
+    "solution": "Run = 3 - 3 = 0. Slope = (-2 - 5) / 0 = -7/0, which is undefined. The line is vertical.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "slope-types-p4",
+    "topicId": "slope-types",
+    "difficulty": "medium",
+    "question": "A line passes through (-1, 6) and (4, -4). Is the slope positive, negative, zero, or undefined?",
+    "answer": "negative",
+    "hints": [
+      "As x increases from -1 to 4, y decreases from 6 to -4."
+    ],
+    "solution": "Slope = (-4 - 6) / (4 - (-1)) = -10 / 5 = -2. The slope is negative. The line falls from left to right.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "slope-types-p5",
+    "topicId": "slope-types",
+    "difficulty": "hard",
+    "question": "Line A passes through (0, 3) and (2, 3). Line B passes through (5, 1) and (5, 8). One line has slope 0 and the other has undefined slope. Which line has undefined slope — A or B?",
+    "answer": "B",
+    "hints": [
+      "Check which line has the same x-coordinates for both points (vertical line).",
+      "A vertical line has undefined slope because the run is zero."
+    ],
+    "solution": "Line A: x changes from 0 to 2, y stays at 3. Horizontal line, slope = 0. Line B: x stays at 5, y changes from 1 to 8. Vertical line, slope is undefined. Answer: B.",
+    "cognitiveDemand": "conceptual"
+  }
+]

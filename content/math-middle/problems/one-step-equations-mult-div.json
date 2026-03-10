@@ -1,0 +1,64 @@
+[
+  {
+    "id": "one-step-equations-mult-div-p1",
+    "topicId": "one-step-equations-mult-div",
+    "difficulty": "easy",
+    "question": "Solve: 4x = 20.",
+    "answer": "x = 5",
+    "hints": [
+      "Divide both sides by 4."
+    ],
+    "solution": "4x = 20. Divide by 4: x = 20 ÷ 4 = 5.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "one-step-equations-mult-div-p2",
+    "topicId": "one-step-equations-mult-div",
+    "difficulty": "easy",
+    "question": "Solve: n/3 = 7.",
+    "answer": "n = 21",
+    "hints": [
+      "Multiply both sides by 3."
+    ],
+    "solution": "n/3 = 7. Multiply by 3: n = 7 × 3 = 21.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "one-step-equations-mult-div-p3",
+    "topicId": "one-step-equations-mult-div",
+    "difficulty": "medium",
+    "question": "Solve: -6y = 42.",
+    "answer": "y = -7",
+    "hints": [
+      "Divide both sides by −6.",
+      "A positive divided by a negative is negative."
+    ],
+    "solution": "−6y = 42. Divide by −6: y = 42 ÷ (−6) = −7.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "one-step-equations-mult-div-p4",
+    "topicId": "one-step-equations-mult-div",
+    "difficulty": "medium",
+    "question": "Solve: m/5 = -4.",
+    "answer": "m = -20",
+    "hints": [
+      "Multiply both sides by 5."
+    ],
+    "solution": "m/5 = −4. Multiply by 5: m = −4 × 5 = −20.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "one-step-equations-mult-div-p5",
+    "topicId": "one-step-equations-mult-div",
+    "difficulty": "hard",
+    "question": "Solve: (2/3)x = 10.",
+    "answer": "x = 15",
+    "hints": [
+      "Multiply both sides by the reciprocal of 2/3.",
+      "The reciprocal of 2/3 is 3/2."
+    ],
+    "solution": "(2/3)x = 10. Multiply by 3/2: x = 10 × 3/2 = 30/2 = 15.",
+    "cognitiveDemand": "procedural"
+  }
+]

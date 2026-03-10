@@ -1,0 +1,63 @@
+[
+  {
+    "id": "scatter-plots-p1",
+    "topicId": "scatter-plots",
+    "difficulty": "easy",
+    "question": "A scatter plot shows hours studied (x-axis) and test scores (y-axis). As hours increase, scores increase. What type of association is this?",
+    "answer": "positive",
+    "hints": [
+      "When both variables increase together, the association is positive."
+    ],
+    "solution": "As x increases, y increases. This is a positive association.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "scatter-plots-p2",
+    "topicId": "scatter-plots",
+    "difficulty": "easy",
+    "question": "A scatter plot shows the age of a car (x-axis) and its value (y-axis). As age increases, value decreases. What type of association is this?",
+    "answer": "negative",
+    "hints": [
+      "When one variable increases while the other decreases, the association is negative."
+    ],
+    "solution": "As age increases, value decreases. This is a negative association.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "scatter-plots-p3",
+    "topicId": "scatter-plots",
+    "difficulty": "medium",
+    "question": "Data points: (1,3), (2,5), (3,4), (4,7), (5,8), (6,6), (7,10). Does this data show a linear or nonlinear association?",
+    "answer": "linear",
+    "hints": [
+      "Do the points generally follow a straight-line pattern (even if not perfectly)?"
+    ],
+    "solution": "Despite some scatter, the points generally trend upward in a straight-line pattern. The association is approximately linear.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "scatter-plots-p4",
+    "topicId": "scatter-plots",
+    "difficulty": "medium",
+    "question": "A scatter plot of shoe size and IQ shows dots spread randomly with no pattern. What type of association is this?",
+    "answer": "no association",
+    "hints": [
+      "If there is no visible pattern (no trend up, down, or curved), there is no association."
+    ],
+    "solution": "Random scatter with no pattern means there is no association between shoe size and IQ.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "scatter-plots-p5",
+    "topicId": "scatter-plots",
+    "difficulty": "hard",
+    "question": "Data: (1,2), (2,5), (3,7), (4,8), (5,12), (10,45). Five of the six points follow a roughly linear pattern. Which point is an outlier?",
+    "answer": "(10, 45)",
+    "hints": [
+      "An outlier is a point that is far from the general trend.",
+      "The first 5 points increase by roughly 2-3 per unit. Does (10, 45) fit that pattern?"
+    ],
+    "solution": "The first 5 points suggest y increases by about 2-3 per unit of x. At x=10, you'd expect roughly y = 20-25. The point (10, 45) is far above this trend, making it an outlier.",
+    "cognitiveDemand": "reasoning"
+  }
+]

@@ -1,0 +1,64 @@
+[
+  {
+    "id": "exponents-intro-ex1",
+    "topicId": "exponents-intro",
+    "title": "Evaluating a Single Exponent: 3⁴",
+    "steps": [
+      {
+        "subgoalLabel": "Read the exponent notation",
+        "instruction": "Identify the base and exponent in 3⁴.",
+        "work": "Base = 3, Exponent = 4. This means 3 multiplied by itself 4 times.",
+        "explanation": "The base is the number being multiplied. The exponent (or power) tells how many times to use the base as a factor."
+      },
+      {
+        "subgoalLabel": "Write out the repeated multiplication",
+        "instruction": "Expand the expression into a multiplication chain.",
+        "work": "3⁴ = 3 × 3 × 3 × 3",
+        "explanation": "Writing it out helps us see exactly what we need to compute and reduces mistakes."
+      },
+      {
+        "subgoalLabel": "Multiply step by step",
+        "instruction": "Multiply from left to right, two numbers at a time.",
+        "work": "3 × 3 = 9. Then 9 × 3 = 27. Then 27 × 3 = 81.",
+        "explanation": "Breaking the multiplication into steps makes it manageable. Each step uses the result of the previous multiplication."
+      },
+      {
+        "subgoalLabel": "State the answer",
+        "instruction": "Write the final result.",
+        "work": "3⁴ = 81",
+        "explanation": "3 multiplied by itself 4 times equals 81."
+      }
+    ]
+  },
+  {
+    "id": "exponents-intro-ex2",
+    "topicId": "exponents-intro",
+    "title": "Evaluating an Expression with Two Exponents: 2⁵ × 5²",
+    "steps": [
+      {
+        "subgoalLabel": "Evaluate the first exponent",
+        "instruction": "Calculate 2⁵.",
+        "work": "2⁵ = 2 × 2 × 2 × 2 × 2 = 4 × 2 × 2 × 2 = 8 × 2 × 2 = 16 × 2 = 32.",
+        "explanation": "Multiply 2 by itself 5 times by working through the chain step by step."
+      },
+      {
+        "subgoalLabel": "Evaluate the second exponent",
+        "instruction": "Calculate 5².",
+        "work": "5² = 5 × 5 = 25.",
+        "explanation": "5 multiplied by itself 2 times is 25."
+      },
+      {
+        "subgoalLabel": "Multiply the results",
+        "instruction": "Multiply the two values together.",
+        "work": "32 × 25 = 32 × 25. Break it down: 32 × 25 = 32 × 100 ÷ 4 = 3,200 ÷ 4 = 800.",
+        "explanation": "We can use the fact that 25 = 100 ÷ 4 to make the multiplication easier. Alternatively: 32 × 20 = 640, plus 32 × 5 = 160, totaling 800."
+      },
+      {
+        "subgoalLabel": "State the final answer",
+        "instruction": "Write the complete result.",
+        "work": "2⁵ × 5² = 32 × 25 = 800",
+        "explanation": "When an expression has multiple exponents, evaluate each exponent first, then perform the remaining operations."
+      }
+    ]
+  }
+]

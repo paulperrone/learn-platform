@@ -1,0 +1,67 @@
+[
+  {
+    "id": "numerical-expressions-grouping-p1",
+    "topicId": "numerical-expressions-grouping",
+    "difficulty": "easy",
+    "question": "Evaluate: (3 + 5) x 2",
+    "answer": "16",
+    "hints": [
+      "Always do what is inside parentheses first.",
+      "3 + 5 = 8. Then multiply: 8 x 2 = 16."
+    ],
+    "solution": "First, evaluate inside the parentheses: 3 + 5 = 8. Then multiply: 8 x 2 = 16.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "numerical-expressions-grouping-p2",
+    "topicId": "numerical-expressions-grouping",
+    "difficulty": "easy",
+    "question": "Evaluate: 20 - (4 + 9)",
+    "answer": "7",
+    "hints": [
+      "Start with the parentheses: 4 + 9 = ?",
+      "4 + 9 = 13. Then 20 - 13 = 7."
+    ],
+    "solution": "First, evaluate inside the parentheses: 4 + 9 = 13. Then subtract: 20 - 13 = 7.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "numerical-expressions-grouping-p3",
+    "topicId": "numerical-expressions-grouping",
+    "difficulty": "medium",
+    "question": "Evaluate: 3 x [(4 + 6) - 2]",
+    "answer": "24",
+    "hints": [
+      "Work from the innermost grouping outward. Start with the parentheses (4 + 6).",
+      "4 + 6 = 10. Inside the brackets: 10 - 2 = 8. Then 3 x 8 = 24."
+    ],
+    "solution": "Innermost first: (4 + 6) = 10. Then evaluate the brackets: [10 - 2] = 8. Finally: 3 x 8 = 24.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "numerical-expressions-grouping-p4",
+    "topicId": "numerical-expressions-grouping",
+    "difficulty": "medium",
+    "question": "Evaluate: {2 x [(8 - 3) + 5]} - 4",
+    "answer": "16",
+    "hints": [
+      "Start with the innermost grouping: (8 - 3) = 5.",
+      "Then brackets: [5 + 5] = 10. Then braces: {2 x 10} = 20. Finally: 20 - 4 = 16."
+    ],
+    "solution": "Step 1 — parentheses: (8 - 3) = 5. Step 2 — brackets: [5 + 5] = 10. Step 3 — braces: {2 x 10} = 20. Step 4 — subtract: 20 - 4 = 16.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "numerical-expressions-grouping-p5",
+    "topicId": "numerical-expressions-grouping",
+    "difficulty": "hard",
+    "question": "Sam evaluated 2 + 3 x (4 + 1) and got 25. Kim evaluated the same expression and got 17. Who is correct, and what mistake did the other person likely make?",
+    "answer": "Kim is correct (answer is 17). Sam likely added 2 + 3 first to get 5, then multiplied 5 x 5 = 25, instead of doing multiplication before addition.",
+    "hints": [
+      "First do parentheses: 4 + 1 = 5. Now the expression is 2 + 3 x 5.",
+      "Order of operations says multiply before adding: 3 x 5 = 15, then 2 + 15 = 17. Sam ignored order of operations."
+    ],
+    "solution": "Correct evaluation: Parentheses first: (4 + 1) = 5. Now we have 2 + 3 x 5. By order of operations, multiply before adding: 3 x 5 = 15, then 2 + 15 = 17. Kim is correct. Sam's mistake: he added 2 + 3 = 5 first (ignoring order of operations), then multiplied 5 x 5 = 25.",
+    "cognitiveDemand": "error-analysis"
+  }
+]

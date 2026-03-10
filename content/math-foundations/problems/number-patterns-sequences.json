@@ -1,0 +1,67 @@
+[
+  {
+    "id": "number-patterns-sequences-p1",
+    "topicId": "number-patterns-sequences",
+    "difficulty": "easy",
+    "question": "A pattern follows the rule \"add 6.\" The first term is 3. What are the first five terms of the pattern? Write them separated by commas.",
+    "answer": "3, 9, 15, 21, 27",
+    "hints": [
+      "Start with 3 and keep adding 6 each time.",
+      "3, 3+6=9, 9+6=15, 15+6=21, 21+6=27."
+    ],
+    "solution": "Start with 3. Apply the rule \"add 6\" repeatedly: 3, 9, 15, 21, 27.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "number-patterns-sequences-p2",
+    "topicId": "number-patterns-sequences",
+    "difficulty": "easy",
+    "question": "What is the rule for this pattern: 5, 10, 20, 40, 80?\n\nA) Add 5\nB) Multiply by 2\nC) Add 10\nD) Multiply by 3",
+    "answer": "B",
+    "hints": [
+      "Look at how each number relates to the one before it.",
+      "5 x 2 = 10, 10 x 2 = 20, 20 x 2 = 40."
+    ],
+    "solution": "Check each pair: 10/5 = 2, 20/10 = 2, 40/20 = 2, 80/40 = 2. Each term is multiplied by 2 to get the next. The rule is multiply by 2. Answer: B.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "number-patterns-sequences-p3",
+    "topicId": "number-patterns-sequences",
+    "difficulty": "medium",
+    "question": "A pattern starts at 2 and follows the rule \"multiply by 3, then subtract 1.\" What is the 4th term?",
+    "answer": "41",
+    "hints": [
+      "Apply the rule step by step: Term 1 = 2. Term 2 = (2 x 3) - 1 = 5.",
+      "Term 3 = (5 x 3) - 1 = 14. Term 4 = (14 x 3) - 1 = ?"
+    ],
+    "solution": "Term 1 = 2. Term 2 = (2 x 3) - 1 = 5. Term 3 = (5 x 3) - 1 = 14. Term 4 = (14 x 3) - 1 = 42 - 1 = 41.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "number-patterns-sequences-p4",
+    "topicId": "number-patterns-sequences",
+    "difficulty": "medium",
+    "question": "Look at this pattern: 1, 4, 9, 16, 25, ___. What is the next number?",
+    "answer": "36",
+    "hints": [
+      "Look at the differences between terms: 3, 5, 7, 9. What comes next?",
+      "These are perfect squares: 1x1, 2x2, 3x3, 4x4, 5x5. What is 6x6?"
+    ],
+    "solution": "The pattern is perfect squares: 1² = 1, 2² = 4, 3² = 9, 4² = 16, 5² = 25. The next term is 6² = 36.",
+    "cognitiveDemand": "reasoning"
+  },
+  {
+    "id": "number-patterns-sequences-p5",
+    "topicId": "number-patterns-sequences",
+    "difficulty": "hard",
+    "question": "Two patterns start at the same time. Pattern A starts at 0 and adds 3 each step. Pattern B starts at 0 and adds 6 each step. When Pattern A reaches its 5th term, what is the corresponding term in Pattern B? What do you notice about the relationship between corresponding terms?",
+    "answer": "Pattern A's 5th term is 12 and Pattern B's 5th term is 24. Each term in Pattern B is always twice the corresponding term in Pattern A.",
+    "hints": [
+      "List both patterns. Pattern A: 0, 3, 6, 9, 12. Pattern B: 0, 6, 12, 18, 24.",
+      "Compare each pair: 0 and 0, 3 and 6, 6 and 12, 9 and 18, 12 and 24. How are the B terms related to the A terms?"
+    ],
+    "solution": "Pattern A (add 3): 0, 3, 6, 9, 12. Pattern B (add 6): 0, 6, 12, 18, 24. The 5th term of A is 12, the 5th term of B is 24. Each term in B is exactly twice the corresponding term in A, because the rule for B (add 6) is twice the rule for A (add 3).",
+    "cognitiveDemand": "reasoning"
+  }
+]

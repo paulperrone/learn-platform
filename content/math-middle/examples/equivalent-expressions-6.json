@@ -1,0 +1,64 @@
+[
+  {
+    "id": "equivalent-expressions-6-ex1",
+    "topicId": "equivalent-expressions-6",
+    "title": "Simplifying by Combining Like Terms: 5a + 3 + 2a − 1",
+    "steps": [
+      {
+        "subgoalLabel": "Identify like terms",
+        "instruction": "Group the terms with variables together and the constants together.",
+        "work": "Variable terms: 5a, 2a. Constants: 3, −1.",
+        "explanation": "Like terms have the same variable part. Constants are like terms with each other."
+      },
+      {
+        "subgoalLabel": "Combine variable terms",
+        "instruction": "Add 5a + 2a.",
+        "work": "5a + 2a = 7a",
+        "explanation": "Add the coefficients: 5 + 2 = 7."
+      },
+      {
+        "subgoalLabel": "Combine constants",
+        "instruction": "Add 3 + (−1).",
+        "work": "3 − 1 = 2",
+        "explanation": "Combine the constant terms."
+      },
+      {
+        "subgoalLabel": "Write the simplified expression",
+        "instruction": "Put the results together.",
+        "work": "7a + 2",
+        "explanation": "The expression 5a + 3 + 2a − 1 simplifies to the equivalent expression 7a + 2."
+      }
+    ]
+  },
+  {
+    "id": "equivalent-expressions-6-ex2",
+    "topicId": "equivalent-expressions-6",
+    "title": "Verifying Equivalence by Substitution",
+    "steps": [
+      {
+        "subgoalLabel": "State the claim",
+        "instruction": "Are 4(x + 2) and 4x + 8 equivalent?",
+        "work": "We need to check whether these always give the same value.",
+        "explanation": "Equivalent expressions produce the same result for every value of the variable."
+      },
+      {
+        "subgoalLabel": "Test with x = 1",
+        "instruction": "Evaluate both expressions when x = 1.",
+        "work": "4(1 + 2) = 4(3) = 12. 4(1) + 8 = 4 + 8 = 12. Same!",
+        "explanation": "Both give 12 for x = 1."
+      },
+      {
+        "subgoalLabel": "Test with x = 5",
+        "instruction": "Evaluate both when x = 5.",
+        "work": "4(5 + 2) = 4(7) = 28. 4(5) + 8 = 20 + 8 = 28. Same!",
+        "explanation": "Both give 28 for x = 5."
+      },
+      {
+        "subgoalLabel": "Confirm with the distributive property",
+        "instruction": "Show algebraically why they are equivalent.",
+        "work": "4(x + 2) = 4 · x + 4 · 2 = 4x + 8.",
+        "explanation": "The distributive property proves they are equivalent for ALL values of x, not just the ones we tested."
+      }
+    ]
+  }
+]

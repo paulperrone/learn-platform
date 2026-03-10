@@ -1,0 +1,52 @@
+[
+  {
+    "id": "measures-of-variability-ex1",
+    "topicId": "measures-of-variability",
+    "title": "Finding Range and IQR",
+    "steps": [
+      {
+        "subgoalLabel": "Find the range",
+        "instruction": "Data: 4, 7, 10, 13, 16, 19, 22. Range = max − min.",
+        "work": "Range = 22 − 4 = 18",
+        "explanation": "Range measures the total spread but is affected by outliers."
+      },
+      {
+        "subgoalLabel": "Find quartiles",
+        "instruction": "Median = 13. Lower half: 4, 7, 10 → Q1 = 7. Upper half: 16, 19, 22 → Q3 = 19.",
+        "work": "Q1 = 7, Q3 = 19",
+        "explanation": "Q1 is the median of the lower half; Q3 is the median of the upper half."
+      },
+      {
+        "subgoalLabel": "Calculate IQR",
+        "instruction": "IQR = Q3 − Q1.",
+        "work": "IQR = 19 − 7 = 12",
+        "explanation": "IQR measures the spread of the middle 50% of the data. It resists outliers."
+      }
+    ]
+  },
+  {
+    "id": "measures-of-variability-ex2",
+    "topicId": "measures-of-variability",
+    "title": "Calculating MAD (Mean Absolute Deviation)",
+    "steps": [
+      {
+        "subgoalLabel": "Find the mean",
+        "instruction": "Data: 2, 4, 6, 8, 10. Mean = 30/5 = 6.",
+        "work": "Mean = 6",
+        "explanation": "First you need the mean to measure deviations from it."
+      },
+      {
+        "subgoalLabel": "Find absolute deviations",
+        "instruction": "Calculate |each value − mean|.",
+        "work": "|2−6|=4, |4−6|=2, |6−6|=0, |8−6|=2, |10−6|=4",
+        "explanation": "Absolute value ensures all deviations are positive."
+      },
+      {
+        "subgoalLabel": "Average the deviations",
+        "instruction": "MAD = sum of deviations ÷ count.",
+        "work": "MAD = (4+2+0+2+4)/5 = 12/5 = 2.4",
+        "explanation": "On average, each value is 2.4 away from the mean."
+      }
+    ]
+  }
+]

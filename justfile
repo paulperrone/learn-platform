@@ -18,10 +18,21 @@ test:
 typecheck:
     pnpm typecheck
 
-# Validate content (graph DAG + problem completeness)
+# Validate content (graph DAG + problem completeness) for all subjects
 validate-content:
-    npx tsx tools/validate-graph.ts
-    npx tsx tools/validate-content.ts
+    #!/usr/bin/env bash
+    set -euo pipefail
+    exit_code=0
+    for dir in content/*/; do
+        subject=$(basename "$dir")
+        if [ -f "$dir/graph.json" ]; then
+            echo "--- Validating $subject ---"
+            npx tsx tools/validate-graph.ts "$subject" || exit_code=1
+            npx tsx tools/validate-content.ts "$subject" || exit_code=1
+            echo ""
+        fi
+    done
+    exit $exit_code
 
 # Full validation
 validate: typecheck validate-content

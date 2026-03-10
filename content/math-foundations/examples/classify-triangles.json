@@ -1,0 +1,70 @@
+[
+  {
+    "id": "classify-triangles-ex1",
+    "topicId": "classify-triangles",
+    "title": "Classifying a Triangle with Sides 5 cm, 5 cm, 8 cm",
+    "steps": [
+      {
+        "subgoalLabel": "Recall classification by sides",
+        "instruction": "Equilateral = all 3 sides equal. Isosceles = exactly 2 sides equal. Scalene = no sides equal.",
+        "work": "3 equal → equilateral. 2 equal → isosceles. 0 equal → scalene.",
+        "explanation": "We classify by sides first by comparing all three side lengths."
+      },
+      {
+        "subgoalLabel": "Classify by sides",
+        "instruction": "Compare the three sides: 5 cm, 5 cm, 8 cm.",
+        "work": "5 = 5, but 5 ≠ 8. Two sides are equal → isosceles.",
+        "explanation": "Exactly two sides share the same length (5 cm), so this is an isosceles triangle."
+      },
+      {
+        "subgoalLabel": "Recall classification by angles",
+        "instruction": "Acute = all angles less than 90°. Right = one angle exactly 90°. Obtuse = one angle greater than 90°.",
+        "work": "All < 90° → acute. One = 90° → right. One > 90° → obtuse.",
+        "explanation": "We classify by angles by checking whether any angle is 90° or greater."
+      },
+      {
+        "subgoalLabel": "Classify by angles",
+        "instruction": "We are told all angles are less than 90°.",
+        "work": "All angles < 90° → acute triangle.",
+        "explanation": "Since no angle reaches 90°, the triangle is acute."
+      },
+      {
+        "subgoalLabel": "State the full classification",
+        "instruction": "Combine both classifications into a single description.",
+        "work": "This is an acute isosceles triangle.",
+        "explanation": "We describe triangles using both their angle type and side type together."
+      }
+    ]
+  },
+  {
+    "id": "classify-triangles-ex2",
+    "topicId": "classify-triangles",
+    "title": "Classifying a Triangle with Sides 3 cm, 4 cm, 5 cm and a Right Angle",
+    "steps": [
+      {
+        "subgoalLabel": "Classify by sides",
+        "instruction": "Compare the three sides: 3 cm, 4 cm, 5 cm.",
+        "work": "3 ≠ 4 ≠ 5, and 3 ≠ 5. No sides are equal → scalene.",
+        "explanation": "All three side lengths are different, making this a scalene triangle."
+      },
+      {
+        "subgoalLabel": "Classify by angles",
+        "instruction": "We are told one angle is exactly 90°.",
+        "work": "One angle = 90° → right triangle.",
+        "explanation": "A triangle with a 90° angle is always called a right triangle."
+      },
+      {
+        "subgoalLabel": "Note a famous pattern",
+        "instruction": "The sides 3, 4, 5 are a well-known set. Check: does 3² + 4² = 5²?",
+        "work": "3² + 4² = 9 + 16 = 25. 5² = 25. Yes, 9 + 16 = 25.",
+        "explanation": "When the squares of the two shorter sides add up to the square of the longest side, the triangle has a right angle. This is related to the Pythagorean theorem."
+      },
+      {
+        "subgoalLabel": "State the full classification",
+        "instruction": "Combine both classifications.",
+        "work": "This is a right scalene triangle.",
+        "explanation": "It has a right angle (90°) and all three sides are different lengths."
+      }
+    ]
+  }
+]

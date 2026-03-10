@@ -1,0 +1,65 @@
+[
+  {
+    "id": "area-polygons-p1",
+    "topicId": "area-polygons",
+    "difficulty": "easy",
+    "question": "An L-shaped figure can be split into two rectangles: one is 5 cm by 3 cm and the other is 4 cm by 2 cm. What is the total area?",
+    "answer": "23 sq cm",
+    "hints": [
+      "Find the area of each rectangle, then add them together."
+    ],
+    "solution": "Rectangle 1: 5 × 3 = 15 sq cm. Rectangle 2: 4 × 2 = 8 sq cm. Total: 15 + 8 = 23 sq cm.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "area-polygons-p2",
+    "topicId": "area-polygons",
+    "difficulty": "easy",
+    "question": "A T-shaped figure is made of two rectangles: a horizontal bar 8 cm by 2 cm and a vertical bar 2 cm by 5 cm. What is the total area?",
+    "answer": "26 sq cm",
+    "hints": [
+      "Area of horizontal bar = 8 × 2. Area of vertical bar = 2 × 5. Add them."
+    ],
+    "solution": "Horizontal: 8 × 2 = 16 sq cm. Vertical: 2 × 5 = 10 sq cm. Total: 16 + 10 = 26 sq cm.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "area-polygons-p3",
+    "topicId": "area-polygons",
+    "difficulty": "medium",
+    "question": "A figure is a 10 cm by 8 cm rectangle with a 3 cm by 4 cm rectangular notch cut from one corner. What is the area of the figure?",
+    "answer": "68 sq cm",
+    "hints": [
+      "Find the area of the full rectangle, then subtract the notch.",
+      "Full rectangle: 10 × 8 = 80. Notch: 3 × 4 = 12."
+    ],
+    "solution": "Full rectangle: 10 × 8 = 80 sq cm. Notch: 3 × 4 = 12 sq cm. Area: 80 − 12 = 68 sq cm.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "area-polygons-p4",
+    "topicId": "area-polygons",
+    "difficulty": "medium",
+    "question": "A pentagon can be decomposed into a rectangle (6 cm by 4 cm) and a triangle on top with base 6 cm and height 3 cm. What is the total area?",
+    "answer": "33 sq cm",
+    "hints": [
+      "Rectangle area = 6 × 4. Triangle area = 1/2 × 6 × 3.",
+      "Add the two areas together."
+    ],
+    "solution": "Rectangle: 6 × 4 = 24 sq cm. Triangle: 1/2 × 6 × 3 = 9 sq cm. Total: 24 + 9 = 33 sq cm.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "area-polygons-p5",
+    "topicId": "area-polygons",
+    "difficulty": "hard",
+    "question": "An irregular hexagon can be decomposed into a rectangle (8 cm by 5 cm), a triangle on top (base 8 cm, height 3 cm), and a triangle on the right (base 5 cm, height 2 cm). What is the total area?",
+    "answer": "57 sq cm",
+    "hints": [
+      "Find each piece: rectangle = 8 × 5, top triangle = 1/2 × 8 × 3, right triangle = 1/2 × 5 × 2.",
+      "Add all three areas."
+    ],
+    "solution": "Rectangle: 40. Top triangle: 12. Right triangle: 5. Total: 40 + 12 + 5 = 57 sq cm.",
+    "cognitiveDemand": "application"
+  }
+]

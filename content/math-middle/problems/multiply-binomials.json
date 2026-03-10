@@ -1,0 +1,64 @@
+[
+  {
+    "id": "multiply-binomials-p1",
+    "topicId": "multiply-binomials",
+    "difficulty": "easy",
+    "question": "Multiply: (x + 2)(x + 3).",
+    "answer": "x^2 + 5x + 6",
+    "hints": [
+      "Use FOIL: First, Outer, Inner, Last.",
+      "x·x + x·3 + 2·x + 2·3."
+    ],
+    "solution": "x² + 3x + 2x + 6 = x² + 5x + 6.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-binomials-p2",
+    "topicId": "multiply-binomials",
+    "difficulty": "easy",
+    "question": "Multiply: (x + 5)(x − 1).",
+    "answer": "x^2 + 4x - 5",
+    "hints": [
+      "FOIL: x·x + x(−1) + 5·x + 5(−1)."
+    ],
+    "solution": "x² − x + 5x − 5 = x² + 4x − 5.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-binomials-p3",
+    "topicId": "multiply-binomials",
+    "difficulty": "medium",
+    "question": "Multiply: (2x + 3)(x − 4).",
+    "answer": "2x^2 - 5x - 12",
+    "hints": [
+      "FOIL: 2x·x + 2x(−4) + 3·x + 3(−4)."
+    ],
+    "solution": "2x² − 8x + 3x − 12 = 2x² − 5x − 12.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-binomials-p4",
+    "topicId": "multiply-binomials",
+    "difficulty": "medium",
+    "question": "Multiply: (3x − 2)(2x + 5).",
+    "answer": "6x^2 + 11x - 10",
+    "hints": [
+      "FOIL: 3x·2x + 3x·5 + (−2)·2x + (−2)·5."
+    ],
+    "solution": "6x² + 15x − 4x − 10 = 6x² + 11x − 10.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-binomials-p5",
+    "topicId": "multiply-binomials",
+    "difficulty": "hard",
+    "question": "A square garden has side length (x + 7). Write a polynomial expression for its area.",
+    "answer": "x^2 + 14x + 49",
+    "hints": [
+      "Area = side × side = (x+7)(x+7).",
+      "FOIL or recognize this as (x+7)²."
+    ],
+    "solution": "(x+7)² = x² + 7x + 7x + 49 = x² + 14x + 49.",
+    "cognitiveDemand": "application"
+  }
+]

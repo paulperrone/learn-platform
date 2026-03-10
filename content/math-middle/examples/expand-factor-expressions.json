@@ -1,0 +1,52 @@
+[
+  {
+    "id": "expand-factor-expressions-ex1",
+    "topicId": "expand-factor-expressions",
+    "title": "Expanding −2(3x − 5)",
+    "steps": [
+      {
+        "subgoalLabel": "Distribute the −2",
+        "instruction": "Multiply −2 by each term inside the parentheses.",
+        "work": "−2 · 3x = −6x. −2 · (−5) = +10.",
+        "explanation": "Remember: negative times negative is positive."
+      },
+      {
+        "subgoalLabel": "Write the expanded form",
+        "instruction": "Combine the distributed terms.",
+        "work": "−2(3x − 5) = −6x + 10",
+        "explanation": "The expression is now written without parentheses."
+      },
+      {
+        "subgoalLabel": "Verify",
+        "instruction": "Check with x = 2.",
+        "work": "−2(3(2) − 5) = −2(6 − 5) = −2(1) = −2. Also: −6(2) + 10 = −12 + 10 = −2. ✓",
+        "explanation": "Both forms give the same result."
+      }
+    ]
+  },
+  {
+    "id": "expand-factor-expressions-ex2",
+    "topicId": "expand-factor-expressions",
+    "title": "Factoring 18x + 24",
+    "steps": [
+      {
+        "subgoalLabel": "Find the GCF",
+        "instruction": "List factors of 18 and 24 to find the greatest common factor.",
+        "work": "18 = 2 × 3 × 3. 24 = 2 × 2 × 2 × 3. GCF = 2 × 3 = 6.",
+        "explanation": "The GCF is the largest factor shared by both numbers."
+      },
+      {
+        "subgoalLabel": "Divide each term by the GCF",
+        "instruction": "Divide 18x and 24 each by 6.",
+        "work": "18x ÷ 6 = 3x. 24 ÷ 6 = 4.",
+        "explanation": "These quotients go inside the parentheses."
+      },
+      {
+        "subgoalLabel": "Write the factored form",
+        "instruction": "Place the GCF outside parentheses.",
+        "work": "18x + 24 = 6(3x + 4)",
+        "explanation": "Check: 6 · 3x + 6 · 4 = 18x + 24. ✓"
+      }
+    ]
+  }
+]

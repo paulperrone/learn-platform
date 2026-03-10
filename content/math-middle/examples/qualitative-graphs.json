@@ -1,0 +1,64 @@
+[
+  {
+    "id": "qualitative-graphs-ex1",
+    "topicId": "qualitative-graphs",
+    "title": "Reading a Distance-Time Graph",
+    "steps": [
+      {
+        "subgoalLabel": "Identify the sections",
+        "instruction": "A distance-from-home vs. time graph has three sections: Section 1 rises steeply, Section 2 is horizontal, Section 3 rises gently.",
+        "work": "Three distinct sections with different behaviors.",
+        "explanation": "Each section of a graph tells a different part of the story. The slope (steepness) and direction (up, flat, down) convey meaning."
+      },
+      {
+        "subgoalLabel": "Interpret Section 1 (steep rise)",
+        "instruction": "What does a steep upward line mean for distance from home?",
+        "work": "The person is moving away from home quickly.",
+        "explanation": "A steep positive slope means distance is increasing rapidly — the person is traveling fast."
+      },
+      {
+        "subgoalLabel": "Interpret Section 2 (horizontal)",
+        "instruction": "What does a flat line mean?",
+        "work": "The person has stopped moving. Distance stays the same.",
+        "explanation": "Zero slope means no change in distance. The person is at rest (perhaps at a store or friend's house)."
+      },
+      {
+        "subgoalLabel": "Interpret Section 3 (gentle rise)",
+        "instruction": "What does a gentle upward line mean?",
+        "work": "The person is moving away from home again, but slowly.",
+        "explanation": "A gentle positive slope means distance is still increasing, but at a slower rate than Section 1."
+      }
+    ]
+  },
+  {
+    "id": "qualitative-graphs-ex2",
+    "topicId": "qualitative-graphs",
+    "title": "Matching a Story to a Graph Shape",
+    "steps": [
+      {
+        "subgoalLabel": "Read the story",
+        "instruction": "A bathtub is filled at a constant rate, the water sits for a while, then it is drained quickly. Describe the graph of water level vs. time.",
+        "work": "Three phases: constant fill, rest, drain.",
+        "explanation": "Translate each phase of the story into a graph behavior."
+      },
+      {
+        "subgoalLabel": "Phase 1: Filling",
+        "instruction": "Water level increases at a constant rate. What does the graph look like?",
+        "work": "A straight line going upward with constant slope.",
+        "explanation": "Constant rate of increase = straight line with positive slope."
+      },
+      {
+        "subgoalLabel": "Phase 2: Sitting",
+        "instruction": "Water level stays the same. What does the graph look like?",
+        "work": "A horizontal line at the maximum water level.",
+        "explanation": "No change in water level = horizontal line (slope of zero)."
+      },
+      {
+        "subgoalLabel": "Phase 3: Draining quickly",
+        "instruction": "Water level decreases rapidly. What does the graph look like?",
+        "work": "A steep line going downward back toward zero.",
+        "explanation": "Rapid decrease = steep negative slope. The graph drops quickly. 'Quickly' means the line is steeper than the filling line was."
+      }
+    ]
+  }
+]

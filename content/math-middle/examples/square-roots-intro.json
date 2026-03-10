@@ -1,0 +1,52 @@
+[
+  {
+    "id": "square-roots-intro-ex1",
+    "topicId": "square-roots-intro",
+    "title": "Finding the Square Root of a Perfect Square",
+    "steps": [
+      {
+        "subgoalLabel": "Understand what square root means",
+        "instruction": "What does sqrt(81) mean?",
+        "work": "We need a number that, when multiplied by itself, gives 81.",
+        "explanation": "The square root is the inverse of squaring. If n^2 = 81, then sqrt(81) = n."
+      },
+      {
+        "subgoalLabel": "Find the number",
+        "instruction": "What number squared equals 81?",
+        "work": "9 × 9 = 81, so sqrt(81) = 9.",
+        "explanation": "Knowing the first 15 or so perfect squares helps: 1, 4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144."
+      },
+      {
+        "subgoalLabel": "Verify",
+        "instruction": "Check: 9^2 = ?",
+        "work": "9^2 = 9 × 9 = 81 ✓",
+        "explanation": "The check confirms: sqrt(81) = 9."
+      }
+    ]
+  },
+  {
+    "id": "square-roots-intro-ex2",
+    "topicId": "square-roots-intro",
+    "title": "Estimating the Square Root of a Non-Perfect Square",
+    "steps": [
+      {
+        "subgoalLabel": "Identify the nearest perfect squares",
+        "instruction": "Estimate sqrt(20).",
+        "work": "4^2 = 16 and 5^2 = 25. Since 16 < 20 < 25, sqrt(20) is between 4 and 5.",
+        "explanation": "Bracket the number between two perfect squares to narrow down the range."
+      },
+      {
+        "subgoalLabel": "Estimate where it falls",
+        "instruction": "Is sqrt(20) closer to 4 or 5?",
+        "work": "20 is 4 units above 16 and 5 units below 25. It is slightly closer to 16, so sqrt(20) is slightly closer to 4 — around 4.4 or 4.5.",
+        "explanation": "The proportion (4 out of 9 units from 16 to 25) gives a rough estimate of 4 + 4/9 ≈ 4.4."
+      },
+      {
+        "subgoalLabel": "Refine by testing",
+        "instruction": "Check 4.5: is 4.5^2 close to 20?",
+        "work": "4.5^2 = 20.25. That is very close to 20! Try 4.4: 4.4^2 = 19.36. So sqrt(20) is between 4.4 and 4.5, closer to 4.5.",
+        "explanation": "We can estimate sqrt(20) ≈ 4.5. The actual value is about 4.472."
+      }
+    ]
+  }
+]

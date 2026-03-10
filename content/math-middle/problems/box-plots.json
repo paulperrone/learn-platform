@@ -1,0 +1,65 @@
+[
+  {
+    "id": "box-plots-p1",
+    "topicId": "box-plots",
+    "difficulty": "easy",
+    "question": "A box plot has minimum 10, Q1 = 15, median = 20, Q3 = 30, maximum = 40. What is the IQR?",
+    "answer": "15",
+    "hints": [
+      "IQR = Q3 − Q1."
+    ],
+    "solution": "IQR = 30 − 15 = 15.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "box-plots-p2",
+    "topicId": "box-plots",
+    "difficulty": "easy",
+    "question": "A box plot has minimum 5, Q1 = 12, median = 18, Q3 = 25, maximum = 35. What is the range?",
+    "answer": "30",
+    "hints": [
+      "Range = maximum − minimum."
+    ],
+    "solution": "Range = 35 − 5 = 30.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "box-plots-p3",
+    "topicId": "box-plots",
+    "difficulty": "medium",
+    "question": "Data set: 3, 5, 7, 8, 10, 12, 14, 16, 20. Identify the five-number summary (min, Q1, median, Q3, max).",
+    "answer": "3, 6, 10, 15, 20",
+    "hints": [
+      "Median is the middle value. Q1 is median of lower half. Q3 is median of upper half.",
+      "Lower half: 3, 5, 7, 8. Upper half: 12, 14, 16, 20."
+    ],
+    "solution": "Min = 3. Lower half: 3,5,7,8 → Q1 = (5+7)/2 = 6. Median = 10. Upper half: 12,14,16,20 → Q3 = (14+16)/2 = 15. Max = 20.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "box-plots-p4",
+    "topicId": "box-plots",
+    "difficulty": "medium",
+    "question": "A box plot shows the middle 50% of data between 20 and 50. About what percent of the data falls above 50?",
+    "answer": "25%",
+    "hints": [
+      "The box contains the middle 50% (Q1 to Q3).",
+      "25% falls below Q1 and 25% falls above Q3."
+    ],
+    "solution": "Q3 = 50. 25% of the data falls above Q3.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "box-plots-p5",
+    "topicId": "box-plots",
+    "difficulty": "hard",
+    "question": "Two box plots compare test scores. Class A: min 55, Q1 65, median 75, Q3 85, max 95. Class B: min 60, Q1 70, median 78, Q3 82, max 90. Which class has more consistent scores, and how can you tell?",
+    "answer": "Class B, because it has a smaller IQR (12 vs 20)",
+    "hints": [
+      "Compare the IQR (spread of the middle 50%) for each class.",
+      "Class A IQR = 85−65 = 20. Class B IQR = 82−70 = 12."
+    ],
+    "solution": "Class A IQR = 20. Class B IQR = 12. Class B is more consistent because its middle 50% of scores is more tightly packed.",
+    "cognitiveDemand": "reasoning"
+  }
+]

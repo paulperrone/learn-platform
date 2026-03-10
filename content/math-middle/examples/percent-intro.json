@@ -1,0 +1,52 @@
+[
+  {
+    "id": "percent-intro-ex1",
+    "topicId": "percent-intro",
+    "title": "Converting a Percent to a Fraction and Decimal",
+    "steps": [
+      {
+        "subgoalLabel": "Write the percent as a fraction over 100",
+        "instruction": "Convert 75% to a fraction.",
+        "work": "75% = 75/100",
+        "explanation": "Percent means 'per hundred,' so 75% literally means 75 out of 100."
+      },
+      {
+        "subgoalLabel": "Simplify the fraction",
+        "instruction": "Find the GCF of 75 and 100 and simplify.",
+        "work": "GCF of 75 and 100 is 25. 75 ÷ 25 = 3, 100 ÷ 25 = 4. So 75/100 = 3/4.",
+        "explanation": "Dividing both numerator and denominator by 25 gives the simplest form."
+      },
+      {
+        "subgoalLabel": "Convert to a decimal",
+        "instruction": "Divide 75 by 100.",
+        "work": "75 ÷ 100 = 0.75",
+        "explanation": "Moving the decimal two places left is the same as dividing by 100. So 75% = 3/4 = 0.75."
+      }
+    ]
+  },
+  {
+    "id": "percent-intro-ex2",
+    "topicId": "percent-intro",
+    "title": "Converting a Fraction to a Percent",
+    "steps": [
+      {
+        "subgoalLabel": "Divide numerator by denominator",
+        "instruction": "Convert 7/8 to a percent. Start by dividing.",
+        "work": "7 ÷ 8 = 0.875",
+        "explanation": "First convert the fraction to a decimal by dividing the numerator by the denominator."
+      },
+      {
+        "subgoalLabel": "Multiply by 100",
+        "instruction": "Convert the decimal to a percent.",
+        "work": "0.875 × 100 = 87.5%",
+        "explanation": "Multiplying by 100 shifts the decimal two places right."
+      },
+      {
+        "subgoalLabel": "State the result",
+        "instruction": "Write the final answer with the percent symbol.",
+        "work": "7/8 = 87.5%",
+        "explanation": "To convert any fraction to a percent: divide, then multiply by 100. This works because percent means 'per hundred.'"
+      }
+    ]
+  }
+]

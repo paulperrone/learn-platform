@@ -1,0 +1,66 @@
+[
+  {
+    "id": "coordinate-plane-four-quadrants-p1",
+    "topicId": "coordinate-plane-four-quadrants",
+    "difficulty": "easy",
+    "question": "In which quadrant is the point (4, -3) located?",
+    "answer": "Quadrant IV",
+    "hints": [
+      "The x-coordinate is positive (right of the y-axis) and the y-coordinate is negative (below the x-axis)."
+    ],
+    "solution": "Positive x means right, negative y means down. Right and down is Quadrant IV.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "coordinate-plane-four-quadrants-p2",
+    "topicId": "coordinate-plane-four-quadrants",
+    "difficulty": "easy",
+    "question": "What are the signs of the x- and y-coordinates for any point in Quadrant II?",
+    "answer": "x is negative, y is positive",
+    "hints": [
+      "Quadrant II is to the left of the y-axis and above the x-axis."
+    ],
+    "solution": "Quadrant II is left (negative x) and up (positive y). So x is negative and y is positive.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "coordinate-plane-four-quadrants-p3",
+    "topicId": "coordinate-plane-four-quadrants",
+    "difficulty": "medium",
+    "question": "The point (-5, 2) is reflected across the x-axis. What are the coordinates of the reflected point?",
+    "answer": "(-5, -2)",
+    "hints": [
+      "Reflecting across the x-axis flips the point vertically. The x-coordinate stays the same.",
+      "The y-coordinate changes sign: positive becomes negative."
+    ],
+    "solution": "Reflecting (-5, 2) across the x-axis keeps x = -5 and flips y: 2 becomes -2. The reflected point is (-5, -2).",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "coordinate-plane-four-quadrants-p4",
+    "topicId": "coordinate-plane-four-quadrants",
+    "difficulty": "medium",
+    "question": "Point A is at (-3, -4) and Point B is at (-3, 6). What is the distance between them?",
+    "answer": "10",
+    "hints": [
+      "Both points have the same x-coordinate, so they lie on the same vertical line.",
+      "Find the distance by computing |6 - (-4)|."
+    ],
+    "solution": "Since both points have x = -3, the distance is |6 - (-4)| = |6 + 4| = 10 units.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "coordinate-plane-four-quadrants-p5",
+    "topicId": "coordinate-plane-four-quadrants",
+    "difficulty": "hard",
+    "question": "A rectangle has vertices at (2, 3), (-2, 3), (-2, -1), and (2, -1). What is its area?",
+    "answer": "16",
+    "hints": [
+      "Find the width using the x-coordinates: from -2 to 2.",
+      "Find the height using the y-coordinates: from -1 to 3.",
+      "Area = width times height."
+    ],
+    "solution": "Width = |2 - (-2)| = 4. Height = |3 - (-1)| = 4. Area = 4 * 4 = 16 square units.",
+    "cognitiveDemand": "application"
+  }
+]

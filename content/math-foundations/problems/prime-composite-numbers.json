@@ -1,0 +1,67 @@
+[
+  {
+    "id": "prime-composite-numbers-p1",
+    "topicId": "prime-composite-numbers",
+    "difficulty": "easy",
+    "question": "Is 7 a prime number or a composite number?",
+    "answer": "prime",
+    "hints": [
+      "Try dividing 7 by every whole number from 2 up to 6.",
+      "A prime number has exactly two factors: 1 and itself."
+    ],
+    "solution": "The factors of 7 are 1 and 7. Since 7 has exactly two factors, it is a prime number.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "prime-composite-numbers-p2",
+    "topicId": "prime-composite-numbers",
+    "difficulty": "easy",
+    "question": "Is 12 a prime number or a composite number?",
+    "answer": "composite",
+    "hints": [
+      "Can you find any number besides 1 and 12 that divides evenly into 12?",
+      "Try dividing 12 by 2."
+    ],
+    "solution": "12 ÷ 2 = 6, so 2 is a factor of 12. Since 12 has factors other than 1 and itself (1, 2, 3, 4, 6, 12), it is a composite number.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "prime-composite-numbers-p3",
+    "topicId": "prime-composite-numbers",
+    "difficulty": "medium",
+    "question": "List all the prime numbers between 20 and 30.",
+    "answer": "23, 29",
+    "hints": [
+      "Check each number from 21 to 29. Can any of them be divided evenly by a smaller number (other than 1)?",
+      "Even numbers are always composite (except 2). That eliminates 20, 22, 24, 26, 28, 30."
+    ],
+    "solution": "Eliminate even numbers: 22, 24, 26, 28. Check odd numbers: 21 = 3 × 7 (composite), 23 has no factors besides 1 and 23 (prime), 25 = 5 × 5 (composite), 27 = 3 × 9 (composite), 29 has no factors besides 1 and 29 (prime). The prime numbers between 20 and 30 are 23 and 29.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "prime-composite-numbers-p4",
+    "topicId": "prime-composite-numbers",
+    "difficulty": "medium",
+    "question": "A student says 51 is prime because it is odd and doesn't end in 0 or 5. Is the student correct? Answer 'yes' or 'no', and if no, give the two factors (other than 1 and 51) that prove it is composite, separated by a comma.",
+    "answer": "no, 3, 17",
+    "hints": [
+      "Just because a number is odd doesn't mean it's prime. Try checking if 3 divides evenly into 51.",
+      "Add the digits of 51: 5 + 1 = 6. Since 6 is divisible by 3, so is 51."
+    ],
+    "solution": "The student is incorrect. 51 ÷ 3 = 17, so 51 = 3 × 17. Since 51 has factors other than 1 and itself, it is composite. The answer is: no, 3, 17.",
+    "cognitiveDemand": "error-analysis"
+  },
+  {
+    "id": "prime-composite-numbers-p5",
+    "topicId": "prime-composite-numbers",
+    "difficulty": "hard",
+    "question": "What is the smallest prime number that is greater than 40?",
+    "answer": "41",
+    "hints": [
+      "Start at 41 and check if it has any factors besides 1 and itself.",
+      "You only need to test divisors up to the square root of the number. The square root of 41 is between 6 and 7, so test 2, 3, 4, 5, and 6."
+    ],
+    "solution": "Check 41: 41 ÷ 2 = 20.5 (not a factor), 41 ÷ 3 = 13.67 (not a factor), 41 ÷ 4 = 10.25 (not a factor), 41 ÷ 5 = 8.2 (not a factor), 41 ÷ 6 = 6.83 (not a factor). Since no whole number from 2 to 6 divides evenly into 41, it is prime. The smallest prime greater than 40 is 41.",
+    "cognitiveDemand": "reasoning"
+  }
+]

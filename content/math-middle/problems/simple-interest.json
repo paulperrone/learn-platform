@@ -1,0 +1,65 @@
+[
+  {
+    "id": "simple-interest-p1",
+    "topicId": "simple-interest",
+    "difficulty": "easy",
+    "question": "Find the simple interest on $500 at 4% per year for 2 years.",
+    "answer": "$40",
+    "hints": [
+      "Use the formula I = Prt where P = 500, r = 0.04, t = 2."
+    ],
+    "solution": "I = 500 × 0.04 × 2 = $40.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "simple-interest-p2",
+    "topicId": "simple-interest",
+    "difficulty": "easy",
+    "question": "Find the simple interest on $1,000 at 3% per year for 5 years.",
+    "answer": "$150",
+    "hints": [
+      "I = Prt = 1000 × 0.03 × 5."
+    ],
+    "solution": "I = 1,000 × 0.03 × 5 = $150.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "simple-interest-p3",
+    "topicId": "simple-interest",
+    "difficulty": "medium",
+    "question": "You deposit $800 in a savings account at 2.5% simple interest per year. How much money is in the account after 3 years (principal + interest)?",
+    "answer": "$860",
+    "hints": [
+      "First find the interest: I = 800 × 0.025 × 3.",
+      "Then add the interest to the principal."
+    ],
+    "solution": "I = 800 × 0.025 × 3 = $60. Total = $800 + $60 = $860.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "simple-interest-p4",
+    "topicId": "simple-interest",
+    "difficulty": "medium",
+    "question": "You borrow $1,200 at 6% simple interest for 18 months. How much interest do you owe?",
+    "answer": "$108",
+    "hints": [
+      "Convert 18 months to years: 18/12 = 1.5 years.",
+      "I = 1200 × 0.06 × 1.5."
+    ],
+    "solution": "t = 18/12 = 1.5 years. I = 1,200 × 0.06 × 1.5 = $108.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "simple-interest-p5",
+    "topicId": "simple-interest",
+    "difficulty": "hard",
+    "question": "An investment earned $270 in simple interest over 3 years at a rate of 4.5% per year. What was the principal?",
+    "answer": "$2000",
+    "hints": [
+      "Use I = Prt and solve for P.",
+      "P = I / (r × t) = 270 / (0.045 × 3)."
+    ],
+    "solution": "P = I / (rt) = 270 / (0.045 × 3) = 270 / 0.135 = $2,000.",
+    "cognitiveDemand": "reasoning"
+  }
+]

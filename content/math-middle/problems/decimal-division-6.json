@@ -1,0 +1,67 @@
+[
+  {
+    "id": "decimal-division-6-p1",
+    "topicId": "decimal-division-6",
+    "difficulty": "easy",
+    "question": "Divide: 4.8 ÷ 2",
+    "answer": "2.4",
+    "hints": [
+      "Divide as if there were no decimal: 48 ÷ 2 = 24.",
+      "Place the decimal point in the same position: 2.4."
+    ],
+    "solution": "4.8 ÷ 2 = 2.4. We can think of it as 48 tenths ÷ 2 = 24 tenths = 2.4.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "decimal-division-6-p2",
+    "topicId": "decimal-division-6",
+    "difficulty": "easy",
+    "question": "Divide: 6.3 ÷ 3",
+    "answer": "2.1",
+    "hints": [
+      "63 tenths ÷ 3 = 21 tenths.",
+      "21 tenths = 2.1."
+    ],
+    "solution": "6.3 ÷ 3 = 2.1.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "decimal-division-6-p3",
+    "topicId": "decimal-division-6",
+    "difficulty": "medium",
+    "question": "Divide: 7.56 ÷ 0.6",
+    "answer": "12.6",
+    "hints": [
+      "Multiply both numbers by 10 to eliminate the decimal in the divisor: 75.6 ÷ 6.",
+      "Now divide 75.6 by 6."
+    ],
+    "solution": "7.56 ÷ 0.6 → multiply both by 10 → 75.6 ÷ 6 = 12.6.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "decimal-division-6-p4",
+    "topicId": "decimal-division-6",
+    "difficulty": "medium",
+    "question": "Divide: 0.432 ÷ 0.08",
+    "answer": "5.4",
+    "hints": [
+      "Multiply both by 100 to remove the divisor's decimal: 43.2 ÷ 8.",
+      "Now divide: 43.2 ÷ 8."
+    ],
+    "solution": "0.432 ÷ 0.08 → multiply both by 100 → 43.2 ÷ 8 = 5.4.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "decimal-division-6-p5",
+    "topicId": "decimal-division-6",
+    "difficulty": "hard",
+    "question": "A rope 9.45 meters long is cut into pieces that are each 0.35 meters long. How many pieces are there?",
+    "answer": "27",
+    "hints": [
+      "Divide 9.45 by 0.35.",
+      "Multiply both by 100: 945 ÷ 35."
+    ],
+    "solution": "9.45 ÷ 0.35 → multiply both by 100 → 945 ÷ 35 = 27. There are 27 pieces.",
+    "cognitiveDemand": "application"
+  }
+]

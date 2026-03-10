@@ -1,0 +1,63 @@
+[
+  {
+    "id": "polynomials-classify-p1",
+    "topicId": "polynomials-classify",
+    "difficulty": "easy",
+    "question": "Classify 5x² + 3x − 7 by number of terms: monomial, binomial, or trinomial?",
+    "answer": "trinomial",
+    "hints": [
+      "Count the terms separated by + or −."
+    ],
+    "solution": "5x² + 3x − 7 has three terms, so it is a trinomial.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "polynomials-classify-p2",
+    "topicId": "polynomials-classify",
+    "difficulty": "easy",
+    "question": "What is the degree of the polynomial 4x³ − 2x + 9?",
+    "answer": "3",
+    "hints": [
+      "The degree is the highest exponent of any term."
+    ],
+    "solution": "The highest exponent is 3 (from 4x³), so the degree is 3.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "polynomials-classify-p3",
+    "topicId": "polynomials-classify",
+    "difficulty": "medium",
+    "question": "Classify 8x⁴ − x² by number of terms and degree.",
+    "answer": "binomial, degree 4",
+    "hints": [
+      "Count the terms. Then find the highest exponent."
+    ],
+    "solution": "Two terms → binomial. Highest exponent is 4 → degree 4.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "polynomials-classify-p4",
+    "topicId": "polynomials-classify",
+    "difficulty": "medium",
+    "question": "Write the polynomial 3 − 5x + 2x³ − x² in standard form (descending order of exponents).",
+    "answer": "2x^3 - x^2 - 5x + 3",
+    "hints": [
+      "Standard form arranges terms from highest to lowest degree."
+    ],
+    "solution": "Rearranged: 2x³ − x² − 5x + 3.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "polynomials-classify-p5",
+    "topicId": "polynomials-classify",
+    "difficulty": "hard",
+    "question": "Is 3x² + 2/x + 5 a polynomial? Answer yes or no, and explain.",
+    "answer": "no, because 2/x has a negative exponent",
+    "hints": [
+      "A polynomial only has whole number (non-negative) exponents.",
+      "2/x = 2x^(-1)."
+    ],
+    "solution": "No. 2/x = 2x^(-1), which has a negative exponent. Polynomials require whole number exponents.",
+    "cognitiveDemand": "conceptual"
+  }
+]

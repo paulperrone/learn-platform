@@ -1,0 +1,52 @@
+[
+  {
+    "id": "tax-tip-markup-ex1",
+    "topicId": "tax-tip-markup",
+    "title": "Calculating Sales Tax and Total Cost",
+    "steps": [
+      {
+        "subgoalLabel": "Identify the price and tax rate",
+        "instruction": "A video game costs $50. Sales tax is 6%. Find the total cost.",
+        "work": "Price: $50. Tax rate: 6% = 0.06.",
+        "explanation": "Sales tax is a percent of the purchase price added at checkout."
+      },
+      {
+        "subgoalLabel": "Calculate the tax",
+        "instruction": "Multiply the price by the tax rate.",
+        "work": "$50 × 0.06 = $3.00",
+        "explanation": "The tax amount is $3.00."
+      },
+      {
+        "subgoalLabel": "Find the total",
+        "instruction": "Add the tax to the original price.",
+        "work": "$50 + $3.00 = $53.00",
+        "explanation": "Alternatively, multiply by 1.06 directly: $50 × 1.06 = $53.00. Adding 1 to the tax rate gives a single-step multiplier."
+      }
+    ]
+  },
+  {
+    "id": "tax-tip-markup-ex2",
+    "topicId": "tax-tip-markup",
+    "title": "Calculating Markup and Selling Price",
+    "steps": [
+      {
+        "subgoalLabel": "Identify cost and markup rate",
+        "instruction": "A store buys a backpack for $25 and adds a 40% markup. Find the selling price.",
+        "work": "Cost: $25. Markup rate: 40% = 0.40.",
+        "explanation": "Markup is the amount added to the cost price to determine the selling price."
+      },
+      {
+        "subgoalLabel": "Calculate the markup amount",
+        "instruction": "Multiply the cost by the markup rate.",
+        "work": "$25 × 0.40 = $10.00",
+        "explanation": "The store adds $10 to cover expenses and profit."
+      },
+      {
+        "subgoalLabel": "Find the selling price",
+        "instruction": "Add the markup to the cost.",
+        "work": "$25 + $10 = $35. The selling price is $35.",
+        "explanation": "Shortcut: $25 × 1.40 = $35. Multiplying by 1 + markup rate gives the selling price directly."
+      }
+    ]
+  }
+]

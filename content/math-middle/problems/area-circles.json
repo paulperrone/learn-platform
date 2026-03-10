@@ -1,0 +1,65 @@
+[
+  {
+    "id": "area-circles-p1",
+    "topicId": "area-circles",
+    "difficulty": "easy",
+    "question": "A circle has a radius of 3 cm. What is its area? Use pi = 3.14.",
+    "answer": "28.26 sq cm",
+    "hints": [
+      "Area = pi × r²."
+    ],
+    "solution": "A = 3.14 × 3² = 3.14 × 9 = 28.26 sq cm.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "area-circles-p2",
+    "topicId": "area-circles",
+    "difficulty": "easy",
+    "question": "A circle has a radius of 5 cm. What is its exact area? Leave your answer in terms of pi.",
+    "answer": "25pi sq cm",
+    "hints": [
+      "Area = pi × r². Leave pi as a symbol."
+    ],
+    "solution": "A = pi × 5² = 25pi sq cm.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "area-circles-p3",
+    "topicId": "area-circles",
+    "difficulty": "medium",
+    "question": "A circle has a diameter of 14 cm. What is its area? Use pi = 3.14.",
+    "answer": "153.86 sq cm",
+    "hints": [
+      "First find the radius: r = d/2 = 7.",
+      "Then use A = pi × r²."
+    ],
+    "solution": "r = 14/2 = 7. A = 3.14 × 7² = 3.14 × 49 = 153.86 sq cm.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "area-circles-p4",
+    "topicId": "area-circles",
+    "difficulty": "medium",
+    "question": "A circle has an area of 78.5 sq cm. What is its radius? Use pi = 3.14.",
+    "answer": "5 cm",
+    "hints": [
+      "A = pi × r². Solve for r².",
+      "r² = 78.5 ÷ 3.14 = 25."
+    ],
+    "solution": "78.5 = 3.14 × r² → r² = 25 → r = 5 cm.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "area-circles-p5",
+    "topicId": "area-circles",
+    "difficulty": "hard",
+    "question": "A square has side length 10 cm. A circle with radius 5 cm is cut from the center of the square. What is the area of the remaining figure? Use pi = 3.14.",
+    "answer": "21.5 sq cm",
+    "hints": [
+      "Find the area of the square and subtract the area of the circle.",
+      "Square: 10² = 100. Circle: 3.14 × 5² = 78.5."
+    ],
+    "solution": "Square area = 100 sq cm. Circle area = 3.14 × 25 = 78.5 sq cm. Remaining = 100 − 78.5 = 21.5 sq cm.",
+    "cognitiveDemand": "application"
+  }
+]

@@ -1,0 +1,67 @@
+[
+  {
+    "id": "exponents-intro-p1",
+    "topicId": "exponents-intro",
+    "difficulty": "easy",
+    "question": "Evaluate 4^2.",
+    "answer": "16",
+    "hints": [
+      "4^2 means 4 multiplied by itself 2 times.",
+      "4 × 4 = ?"
+    ],
+    "solution": "4^2 = 4 × 4 = 16.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "exponents-intro-p2",
+    "topicId": "exponents-intro",
+    "difficulty": "easy",
+    "question": "Evaluate 2^4.",
+    "answer": "16",
+    "hints": [
+      "2^4 means 2 × 2 × 2 × 2.",
+      "Start step by step: 2 × 2 = 4, then 4 × 2 = 8, then 8 × 2 = ?"
+    ],
+    "solution": "2^4 = 2 × 2 × 2 × 2 = 4 × 4 = 16.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "exponents-intro-p3",
+    "topicId": "exponents-intro",
+    "difficulty": "medium",
+    "question": "Evaluate 3^3.",
+    "answer": "27",
+    "hints": [
+      "3^3 means 3 × 3 × 3.",
+      "3 × 3 = 9, then 9 × 3 = ?"
+    ],
+    "solution": "3^3 = 3 × 3 × 3 = 9 × 3 = 27.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "exponents-intro-p4",
+    "topicId": "exponents-intro",
+    "difficulty": "medium",
+    "question": "Which is greater, 2^5 or 5^2? Give both values in your answer.",
+    "answer": "2^5 = 32, 5^2 = 25, so 2^5 is greater",
+    "hints": [
+      "Calculate each one separately.",
+      "2^5 = 2 × 2 × 2 × 2 × 2 and 5^2 = 5 × 5."
+    ],
+    "solution": "2^5 = 2 × 2 × 2 × 2 × 2 = 32. 5^2 = 5 × 5 = 25. Since 32 > 25, 2^5 is greater.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "exponents-intro-p5",
+    "topicId": "exponents-intro",
+    "difficulty": "hard",
+    "question": "What whole number base makes this true: ___^3 = 125? Type just the number.",
+    "answer": "5",
+    "hints": [
+      "You need a number that, when multiplied by itself 3 times, equals 125.",
+      "Try small numbers: 3^3 = 27, 4^3 = 64, 5^3 = ?"
+    ],
+    "solution": "We need n^3 = 125. Testing values: 4^3 = 64 (too small), 5^3 = 5 × 5 × 5 = 125. So the base is 5.",
+    "cognitiveDemand": "reasoning"
+  }
+]

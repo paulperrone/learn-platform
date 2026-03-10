@@ -1,0 +1,67 @@
+[
+  {
+    "id": "powers-of-ten-p1",
+    "topicId": "powers-of-ten",
+    "difficulty": "easy",
+    "question": "What is 3.5 × 10?",
+    "answer": "35",
+    "hints": [
+      "When you multiply by 10, the decimal point moves one place to the right.",
+      "3.5 becomes 35."
+    ],
+    "solution": "Multiplying by 10 shifts each digit one place to the left (or moves the decimal point one place to the right). 3.5 × 10 = 35.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "powers-of-ten-p2",
+    "topicId": "powers-of-ten",
+    "difficulty": "easy",
+    "question": "What is 420 ÷ 100?",
+    "answer": "4.2",
+    "hints": [
+      "Dividing by 100 moves the decimal point two places to the left.",
+      "420 = 420.0 — move the decimal two places left."
+    ],
+    "solution": "Dividing by 100 shifts each digit two places to the right (moves the decimal point two places left). 420.0 → 4.20 = 4.2.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "powers-of-ten-p3",
+    "topicId": "powers-of-ten",
+    "difficulty": "medium",
+    "question": "What is 0.06 × 1,000?",
+    "answer": "60",
+    "hints": [
+      "1,000 = 10^3, so the decimal point moves 3 places to the right.",
+      "0.06 → 0.6 → 6 → 60."
+    ],
+    "solution": "Multiplying by 1,000 moves the decimal point 3 places to the right. 0.06 → 0.6 → 6.0 → 60. So 0.06 × 1,000 = 60.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "powers-of-ten-p4",
+    "topicId": "powers-of-ten",
+    "difficulty": "medium",
+    "question": "Write 10^4 as a standard number. How many zeros does it have?",
+    "answer": "10000, 4 zeros",
+    "hints": [
+      "10^4 means 10 × 10 × 10 × 10.",
+      "The exponent tells you how many times 10 is multiplied by itself — and how many zeros follow the 1."
+    ],
+    "solution": "10^4 = 10 × 10 × 10 × 10 = 10,000. The exponent 4 means there are 4 zeros after the 1.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "powers-of-ten-p5",
+    "topicId": "powers-of-ten",
+    "difficulty": "hard",
+    "question": "Fill in the blank with a power of 10: 0.047 × ___ = 4,700. Write your answer using an exponent (for example, 10^2).",
+    "answer": "10^5",
+    "hints": [
+      "How many places does the decimal point need to move to go from 0.047 to 4,700?",
+      "Count: 0.047 → 0.47 → 4.7 → 47 → 470 → 4,700. That's 5 moves."
+    ],
+    "solution": "From 0.047 to 4,700, the decimal point moves 5 places to the right. Each place represents multiplying by 10, so you multiply by 10^5 = 100,000. Check: 0.047 × 100,000 = 4,700.",
+    "cognitiveDemand": "reasoning"
+  }
+]

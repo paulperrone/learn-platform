@@ -1,0 +1,67 @@
+[
+  {
+    "id": "multi-step-equations-p1",
+    "topicId": "multi-step-equations",
+    "difficulty": "easy",
+    "question": "Solve: 3x + 2 = x + 10.",
+    "answer": "x = 4",
+    "hints": [
+      "Get all x terms on one side: subtract x from both sides.",
+      "3x − x + 2 = 10, then 2x + 2 = 10."
+    ],
+    "solution": "3x + 2 = x + 10. Subtract x: 2x + 2 = 10. Subtract 2: 2x = 8. Divide by 2: x = 4.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multi-step-equations-p2",
+    "topicId": "multi-step-equations",
+    "difficulty": "easy",
+    "question": "Solve: 5y − 3 = 2y + 9.",
+    "answer": "y = 4",
+    "hints": [
+      "Subtract 2y from both sides.",
+      "3y − 3 = 9."
+    ],
+    "solution": "5y − 3 = 2y + 9. Subtract 2y: 3y − 3 = 9. Add 3: 3y = 12. Divide by 3: y = 4.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multi-step-equations-p3",
+    "topicId": "multi-step-equations",
+    "difficulty": "medium",
+    "question": "Solve: 2(x + 3) = x + 11.",
+    "answer": "x = 5",
+    "hints": [
+      "Distribute first: 2x + 6 = x + 11.",
+      "Subtract x from both sides."
+    ],
+    "solution": "2(x + 3) = x + 11. Distribute: 2x + 6 = x + 11. Subtract x: x + 6 = 11. Subtract 6: x = 5.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multi-step-equations-p4",
+    "topicId": "multi-step-equations",
+    "difficulty": "medium",
+    "question": "Solve: 4(n − 1) = 2(n + 3).",
+    "answer": "n = 5",
+    "hints": [
+      "Distribute both sides: 4n − 4 = 2n + 6.",
+      "Subtract 2n from both sides."
+    ],
+    "solution": "4n − 4 = 2n + 6. Subtract 2n: 2n − 4 = 6. Add 4: 2n = 10. Divide by 2: n = 5.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multi-step-equations-p5",
+    "topicId": "multi-step-equations",
+    "difficulty": "hard",
+    "question": "Solve: 3(2x − 1) − 4 = 5x + 2.",
+    "answer": "x = 9",
+    "hints": [
+      "Distribute: 6x − 3 − 4 = 5x + 2.",
+      "Simplify: 6x − 7 = 5x + 2."
+    ],
+    "solution": "6x − 3 − 4 = 5x + 2. 6x − 7 = 5x + 2. Subtract 5x: x − 7 = 2. Add 7: x = 9.",
+    "cognitiveDemand": "procedural"
+  }
+]

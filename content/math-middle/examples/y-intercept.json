@@ -1,0 +1,52 @@
+[
+  {
+    "id": "y-intercept-ex1",
+    "topicId": "y-intercept",
+    "title": "Finding the Y-Intercept from an Equation",
+    "steps": [
+      {
+        "subgoalLabel": "Identify the form of the equation",
+        "instruction": "The equation is y = -2x + 5. Is it in slope-intercept form (y = mx + b)?",
+        "work": "Yes. m = -2 and b = 5.",
+        "explanation": "In y = mx + b, b is the y-intercept — the value of y when x = 0."
+      },
+      {
+        "subgoalLabel": "Read the y-intercept",
+        "instruction": "What is b?",
+        "work": "b = 5.",
+        "explanation": "The y-intercept is 5. The line crosses the y-axis at the point (0, 5)."
+      },
+      {
+        "subgoalLabel": "Verify by substitution",
+        "instruction": "Substitute x = 0 to confirm.",
+        "work": "y = -2(0) + 5 = 0 + 5 = 5. Confirmed: (0, 5) is on the line.",
+        "explanation": "Substituting x = 0 always gives you the y-intercept. This works for any form of a linear equation."
+      }
+    ]
+  },
+  {
+    "id": "y-intercept-ex2",
+    "topicId": "y-intercept",
+    "title": "Finding the Y-Intercept from a Table",
+    "steps": [
+      {
+        "subgoalLabel": "Look for x = 0 in the table",
+        "instruction": "Table: x = 1, y = 6; x = 2, y = 10; x = 3, y = 14. Is x = 0 in the table?",
+        "work": "No, x = 0 is not listed.",
+        "explanation": "If x = 0 were in the table, you could read the y-intercept directly."
+      },
+      {
+        "subgoalLabel": "Find the rate of change",
+        "instruction": "Calculate the change in y per unit change in x.",
+        "work": "10 - 6 = 4 and 14 - 10 = 4. Rate of change = 4.",
+        "explanation": "The constant difference of 4 confirms this is linear with slope 4."
+      },
+      {
+        "subgoalLabel": "Work backward to x = 0",
+        "instruction": "From x = 1 (y = 6), go back 1 unit to x = 0. Subtract the rate of change from y.",
+        "work": "y at x = 0: 6 - 4 = 2. The y-intercept is 2.",
+        "explanation": "Going backward by 1 unit in x means subtracting the slope from y. The equation is y = 4x + 2."
+      }
+    ]
+  }
+]

@@ -1,0 +1,58 @@
+[
+  {
+    "id": "exponent-rules-ex1",
+    "topicId": "exponent-rules",
+    "title": "Product and Quotient Rules: Simplify x^5 * x^2 / x^3",
+    "steps": [
+      {
+        "subgoalLabel": "Apply the product rule to the numerator",
+        "instruction": "Multiply x^5 · x^2.",
+        "work": "x^5 · x^2 = x^(5+2) = x^7",
+        "explanation": "When multiplying powers with the same base, add exponents."
+      },
+      {
+        "subgoalLabel": "Apply the quotient rule",
+        "instruction": "Divide x^7 by x^3.",
+        "work": "x^7 / x^3 = x^(7−3) = x^4",
+        "explanation": "When dividing powers with the same base, subtract exponents."
+      },
+      {
+        "subgoalLabel": "State the result",
+        "instruction": "Write the final simplified expression.",
+        "work": "x^5 · x^2 / x^3 = x^4",
+        "explanation": "Product rule, then quotient rule — both rely on the same base."
+      }
+    ]
+  },
+  {
+    "id": "exponent-rules-ex2",
+    "topicId": "exponent-rules",
+    "title": "Power of a Product: Simplify (2y^3)^4",
+    "steps": [
+      {
+        "subgoalLabel": "Distribute the exponent to each factor",
+        "instruction": "Apply the exponent 4 to both 2 and y^3.",
+        "work": "(2)^4 · (y^3)^4",
+        "explanation": "The power of a product rule says (ab)^n = a^n · b^n."
+      },
+      {
+        "subgoalLabel": "Evaluate 2^4",
+        "instruction": "Compute 2 to the 4th power.",
+        "work": "2^4 = 16",
+        "explanation": "2 × 2 × 2 × 2 = 16."
+      },
+      {
+        "subgoalLabel": "Apply power-of-a-power rule",
+        "instruction": "Simplify (y^3)^4.",
+        "work": "(y^3)^4 = y^(3×4) = y^12",
+        "explanation": "Multiply the exponents: 3 × 4 = 12."
+      },
+      {
+        "subgoalLabel": "Combine",
+        "instruction": "Write the final answer.",
+        "work": "(2y^3)^4 = 16y^12",
+        "explanation": "The simplified form is 16y^12."
+      }
+    ]
+  }
+]

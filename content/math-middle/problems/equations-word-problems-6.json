@@ -1,0 +1,66 @@
+[
+  {
+    "id": "equations-word-problems-6-p1",
+    "topicId": "equations-word-problems-6",
+    "difficulty": "easy",
+    "question": "Mia has some stickers. She gives away 5 and has 12 left. How many stickers did she start with? Write and solve an equation.",
+    "answer": "17",
+    "hints": [
+      "Let s = the starting number of stickers.",
+      "s − 5 = 12."
+    ],
+    "solution": "s − 5 = 12. Add 5: s = 17. Mia started with 17 stickers.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "equations-word-problems-6-p2",
+    "topicId": "equations-word-problems-6",
+    "difficulty": "easy",
+    "question": "A number multiplied by 6 equals 54. What is the number?",
+    "answer": "9",
+    "hints": [
+      "Let n be the number: 6n = 54."
+    ],
+    "solution": "6n = 54. Divide by 6: n = 9.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "equations-word-problems-6-p3",
+    "topicId": "equations-word-problems-6",
+    "difficulty": "medium",
+    "question": "Jake earned $48 mowing lawns. He earned $8 per lawn. How many lawns did he mow?",
+    "answer": "6",
+    "hints": [
+      "Let L = number of lawns.",
+      "8L = 48."
+    ],
+    "solution": "8L = 48. Divide by 8: L = 6 lawns.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "equations-word-problems-6-p4",
+    "topicId": "equations-word-problems-6",
+    "difficulty": "medium",
+    "question": "A book costs $14. After buying the book, Tina has $23 left. How much money did she have before buying the book?",
+    "answer": "37",
+    "hints": [
+      "Let m = money before buying.",
+      "m − 14 = 23."
+    ],
+    "solution": "m − 14 = 23. Add 14: m = 37. Tina had $37.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "equations-word-problems-6-p5",
+    "topicId": "equations-word-problems-6",
+    "difficulty": "hard",
+    "question": "Three friends split the cost of a gift equally. Each person paid $16. They also used a $7 coupon before splitting. What was the original price of the gift?",
+    "answer": "55",
+    "hints": [
+      "After the coupon, the total they paid was 3 × $16 = $48.",
+      "Let p = original price. p − 7 = 48."
+    ],
+    "solution": "Total paid: 3 × 16 = 48. Original price: p − 7 = 48, so p = 55.",
+    "cognitiveDemand": "application"
+  }
+]

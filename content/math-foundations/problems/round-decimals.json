@@ -1,0 +1,67 @@
+[
+  {
+    "id": "round-decimals-p1",
+    "topicId": "round-decimals",
+    "difficulty": "easy",
+    "question": "Round 3.67 to the nearest tenth.",
+    "answer": "3.7",
+    "hints": [
+      "Look at the hundredths digit (7) to decide whether to round up or down.",
+      "Since 7 ≥ 5, round the tenths digit up."
+    ],
+    "solution": "The tenths digit is 6. The hundredths digit is 7, which is 5 or greater, so round up. 3.67 rounded to the nearest tenth is 3.7.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "round-decimals-p2",
+    "topicId": "round-decimals",
+    "difficulty": "easy",
+    "question": "Round 12.34 to the nearest whole number.",
+    "answer": "12",
+    "hints": [
+      "Look at the tenths digit (3) to decide.",
+      "Since 3 < 5, round down — keep the ones digit the same."
+    ],
+    "solution": "The ones digit is 2. The tenths digit is 3, which is less than 5, so round down. 12.34 rounded to the nearest whole number is 12.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "round-decimals-p3",
+    "topicId": "round-decimals",
+    "difficulty": "medium",
+    "question": "Round 0.849 to the nearest hundredth.",
+    "answer": "0.85",
+    "hints": [
+      "The hundredths digit is 4. Look at the thousandths digit (9) to decide.",
+      "Since 9 ≥ 5, round the hundredths digit up from 4 to 5."
+    ],
+    "solution": "The hundredths digit is 4. The thousandths digit is 9, which is 5 or greater, so round the hundredths digit up. 0.849 rounded to the nearest hundredth is 0.85.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "round-decimals-p4",
+    "topicId": "round-decimals",
+    "difficulty": "medium",
+    "question": "Round 6.952 to the nearest tenth.",
+    "answer": "7.0",
+    "hints": [
+      "The tenths digit is 9. The hundredths digit is 5, so you round up.",
+      "Rounding 9 up means it becomes 10 — carry 1 to the ones place."
+    ],
+    "solution": "The tenths digit is 9. The hundredths digit is 5, so round up. 9 tenths rounds up to 10 tenths = 1 whole. Add 1 to the ones: 6 + 1 = 7. So 6.952 rounded to the nearest tenth is 7.0.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "round-decimals-p5",
+    "topicId": "round-decimals",
+    "difficulty": "hard",
+    "question": "A number rounded to the nearest tenth is 4.8. What is the smallest possible value that number could be? Give your answer to the hundredths place.",
+    "answer": "4.75",
+    "hints": [
+      "Think about which numbers round to 4.8 when rounded to the nearest tenth.",
+      "Numbers from 4.75 up to (but not including) 4.85 round to 4.8."
+    ],
+    "solution": "Any number that rounds to 4.8 must be at least 4.75 (since 4.75 rounds up to 4.8) and less than 4.85 (since 4.85 rounds up to 4.9). The smallest such value at the hundredths place is 4.75.",
+    "cognitiveDemand": "reasoning"
+  }
+]

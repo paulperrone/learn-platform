@@ -1,0 +1,52 @@
+[
+  {
+    "id": "scale-drawings-ex1",
+    "topicId": "scale-drawings",
+    "title": "Finding Actual Dimensions from a Scale Drawing",
+    "steps": [
+      {
+        "subgoalLabel": "Identify the scale",
+        "instruction": "A floor plan uses a scale of 1 inch = 4 feet. A bedroom is 3.5 inches by 4 inches on the plan. Find the actual dimensions.",
+        "work": "Scale: 1 in = 4 ft.",
+        "explanation": "The scale tells us the relationship between the drawing and reality."
+      },
+      {
+        "subgoalLabel": "Calculate actual length",
+        "instruction": "Multiply each drawing dimension by the scale factor.",
+        "work": "Length: 3.5 × 4 = 14 feet. Width: 4 × 4 = 16 feet.",
+        "explanation": "Each inch on the drawing represents 4 feet in real life."
+      },
+      {
+        "subgoalLabel": "State the actual dimensions",
+        "instruction": "Write the actual room dimensions.",
+        "work": "The bedroom is 14 feet by 16 feet.",
+        "explanation": "To go from drawing to actual, multiply by the scale factor. To go from actual to drawing, divide by the scale factor."
+      }
+    ]
+  },
+  {
+    "id": "scale-drawings-ex2",
+    "topicId": "scale-drawings",
+    "title": "Finding the Drawing Size from Actual Measurements",
+    "steps": [
+      {
+        "subgoalLabel": "Identify the scale and actual measurement",
+        "instruction": "A map uses a scale of 1 cm = 50 km. A road is 175 km long. How long is it on the map?",
+        "work": "Scale: 1 cm = 50 km. Actual distance: 175 km.",
+        "explanation": "We need to go from actual to map, so we divide by the scale."
+      },
+      {
+        "subgoalLabel": "Divide by the scale factor",
+        "instruction": "Divide the actual distance by 50.",
+        "work": "175 ÷ 50 = 3.5 cm",
+        "explanation": "The road is 3.5 cm on the map."
+      },
+      {
+        "subgoalLabel": "Verify",
+        "instruction": "Check by multiplying back.",
+        "work": "3.5 cm × 50 km/cm = 175 km. Correct.",
+        "explanation": "Always verify by converting back: drawing × scale = actual measurement."
+      }
+    ]
+  }
+]

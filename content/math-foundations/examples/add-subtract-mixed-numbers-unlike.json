@@ -1,0 +1,70 @@
+[
+  {
+    "id": "add-subtract-mixed-numbers-unlike-ex1",
+    "topicId": "add-subtract-mixed-numbers-unlike",
+    "title": "Adding Mixed Numbers with Unlike Denominators: 3 1/4 + 2 2/3",
+    "steps": [
+      {
+        "subgoalLabel": "Find the LCD of the fraction parts",
+        "instruction": "Determine the least common denominator of 4 and 3.",
+        "work": "Multiples of 4: 4, 8, 12, … Multiples of 3: 3, 6, 9, 12, … LCD = 12.",
+        "explanation": "We need a common denominator so the fractions can be added. The smallest one keeps numbers manageable."
+      },
+      {
+        "subgoalLabel": "Rewrite both fractions with the LCD",
+        "instruction": "Convert 1/4 and 2/3 to equivalent fractions with denominator 12.",
+        "work": "1/4 = 3/12 (multiply top and bottom by 3). 2/3 = 8/12 (multiply top and bottom by 4).",
+        "explanation": "Multiplying numerator and denominator by the same number creates an equivalent fraction."
+      },
+      {
+        "subgoalLabel": "Add the whole numbers and fractions separately",
+        "instruction": "Add the whole parts and the fraction parts.",
+        "work": "Whole numbers: 3 + 2 = 5. Fractions: 3/12 + 8/12 = 11/12.",
+        "explanation": "Now that the denominators match, add the numerators: 3 + 8 = 11."
+      },
+      {
+        "subgoalLabel": "Combine and simplify",
+        "instruction": "Put the whole-number and fraction results together. Simplify if needed.",
+        "work": "5 + 11/12 = 5 11/12. 11 and 12 share no common factors, so this is already simplified. 3 1/4 + 2 2/3 = 5 11/12.",
+        "explanation": "Since 11/12 < 1, no regrouping is needed. The GCF of 11 and 12 is 1, so the fraction is in lowest terms."
+      }
+    ]
+  },
+  {
+    "id": "add-subtract-mixed-numbers-unlike-ex2",
+    "topicId": "add-subtract-mixed-numbers-unlike",
+    "title": "Subtracting Mixed Numbers with Unlike Denominators: 5 1/3 − 1 3/4",
+    "steps": [
+      {
+        "subgoalLabel": "Find the LCD and convert fractions",
+        "instruction": "Find the LCD of 3 and 4, then rewrite both fractions.",
+        "work": "LCD of 3 and 4 is 12. 1/3 = 4/12. 3/4 = 9/12.",
+        "explanation": "Convert to the same denominator before subtracting: 1/3 × 4/4 = 4/12 and 3/4 × 3/3 = 9/12."
+      },
+      {
+        "subgoalLabel": "Check if borrowing is needed",
+        "instruction": "Compare the fraction parts: is 4/12 ≥ 9/12?",
+        "work": "4/12 < 9/12, so we need to borrow 1 whole from 5.",
+        "explanation": "The first fraction is smaller than the second, so we cannot subtract directly."
+      },
+      {
+        "subgoalLabel": "Borrow and adjust",
+        "instruction": "Take 1 from the whole number 5 and convert it to twelfths. Add to 4/12.",
+        "work": "5 4/12 becomes 4 + 4/12 + 12/12 = 4 16/12.",
+        "explanation": "1 whole = 12/12. Adding 12/12 + 4/12 = 16/12 gives us enough to subtract 9/12."
+      },
+      {
+        "subgoalLabel": "Subtract fractions and whole numbers",
+        "instruction": "Subtract the fraction parts, then the whole-number parts.",
+        "work": "Fractions: 16/12 − 9/12 = 7/12. Whole numbers: 4 − 1 = 3.",
+        "explanation": "16 − 9 = 7 twelfths. 4 − 1 = 3 wholes."
+      },
+      {
+        "subgoalLabel": "State the final answer",
+        "instruction": "Combine and simplify if possible.",
+        "work": "3 + 7/12 = 3 7/12. GCF of 7 and 12 is 1, so it is already simplified. 5 1/3 − 1 3/4 = 3 7/12.",
+        "explanation": "7 is prime and does not divide 12, so the fraction cannot be reduced further."
+      }
+    ]
+  }
+]

@@ -1,0 +1,65 @@
+[
+  {
+    "id": "percent-of-a-number-p1",
+    "topicId": "percent-of-a-number",
+    "difficulty": "easy",
+    "question": "What is 50% of 80?",
+    "answer": "40",
+    "hints": [
+      "50% means half. Divide 80 by 2."
+    ],
+    "solution": "50% of 80 = 0.50 × 80 = 40.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "percent-of-a-number-p2",
+    "topicId": "percent-of-a-number",
+    "difficulty": "easy",
+    "question": "What is 10% of 250?",
+    "answer": "25",
+    "hints": [
+      "10% means dividing by 10."
+    ],
+    "solution": "10% of 250 = 0.10 × 250 = 25.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "percent-of-a-number-p3",
+    "topicId": "percent-of-a-number",
+    "difficulty": "medium",
+    "question": "What is 35% of 200?",
+    "answer": "70",
+    "hints": [
+      "Convert 35% to a decimal: 0.35.",
+      "Multiply: 0.35 × 200."
+    ],
+    "solution": "35% of 200 = 0.35 × 200 = 70.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "percent-of-a-number-p4",
+    "topicId": "percent-of-a-number",
+    "difficulty": "medium",
+    "question": "A shirt costs $45. It is on sale for 20% off. How much is the discount?",
+    "answer": "$9",
+    "hints": [
+      "Find 20% of $45.",
+      "0.20 × 45 = ?"
+    ],
+    "solution": "Discount = 20% of $45 = 0.20 × 45 = $9.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "percent-of-a-number-p5",
+    "topicId": "percent-of-a-number",
+    "difficulty": "hard",
+    "question": "A school has 840 students. 65% of them participate in extracurricular activities. How many students do NOT participate?",
+    "answer": "294",
+    "hints": [
+      "If 65% participate, then 100% - 65% = 35% do not participate.",
+      "Find 35% of 840."
+    ],
+    "solution": "Students who don't participate: 100% - 65% = 35%. 0.35 × 840 = 294.",
+    "cognitiveDemand": "application"
+  }
+]

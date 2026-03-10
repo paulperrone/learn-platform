@@ -1,0 +1,66 @@
+[
+  {
+    "id": "pythagorean-applications-p1",
+    "topicId": "pythagorean-applications",
+    "difficulty": "easy",
+    "question": "A ladder leans against a wall. The base is 6 ft from the wall and the ladder is 10 ft long. How high up the wall does the ladder reach?",
+    "answer": "8 ft",
+    "hints": [
+      "The wall, ground, and ladder form a right triangle.",
+      "6² + h² = 10²."
+    ],
+    "solution": "h² = 10² − 6² = 100 − 36 = 64. h = 8 ft.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "pythagorean-applications-p2",
+    "topicId": "pythagorean-applications",
+    "difficulty": "easy",
+    "question": "A rectangular field is 40 m long and 30 m wide. What is the length of the diagonal?",
+    "answer": "50 m",
+    "hints": [
+      "The diagonal of a rectangle forms a right triangle with the length and width."
+    ],
+    "solution": "d² = 40² + 30² = 1600 + 900 = 2500. d = 50 m.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "pythagorean-applications-p3",
+    "topicId": "pythagorean-applications",
+    "difficulty": "medium",
+    "question": "Find the distance between points (1, 2) and (4, 6) on the coordinate plane.",
+    "answer": "5",
+    "hints": [
+      "Use the distance formula, which comes from the Pythagorean theorem.",
+      "Horizontal distance = 4−1 = 3. Vertical distance = 6−2 = 4."
+    ],
+    "solution": "d = sqrt((4−1)² + (6−2)²) = sqrt(9 + 16) = sqrt(25) = 5.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "pythagorean-applications-p4",
+    "topicId": "pythagorean-applications",
+    "difficulty": "medium",
+    "question": "A television screen is 24 inches wide and 10 inches tall. What is the diagonal screen size?",
+    "answer": "26 inches",
+    "hints": [
+      "The diagonal forms the hypotenuse of a right triangle.",
+      "d² = 24² + 10²."
+    ],
+    "solution": "d² = 576 + 100 = 676. d = 26 inches.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "pythagorean-applications-p5",
+    "topicId": "pythagorean-applications",
+    "difficulty": "hard",
+    "question": "A ship sails 15 km east and then 20 km north. How far is the ship from its starting point in a straight line?",
+    "answer": "25 km",
+    "hints": [
+      "The path east and north form the legs of a right triangle.",
+      "d² = 15² + 20²."
+    ],
+    "solution": "d² = 225 + 400 = 625. d = 25 km.",
+    "cognitiveDemand": "application"
+  }
+]

@@ -1,0 +1,65 @@
+[
+  {
+    "id": "systems-of-equations-intro-p1",
+    "topicId": "systems-of-equations-intro",
+    "difficulty": "easy",
+    "question": "Is (2, 5) a solution to the system: y = 2x + 1 and y = x + 3? Answer yes or no.",
+    "answer": "yes",
+    "hints": [
+      "A point is a solution if it satisfies BOTH equations. Test (2, 5) in each."
+    ],
+    "solution": "Equation 1: 5 = 2(2) + 1 = 5. True. Equation 2: 5 = 2 + 3 = 5. True. Since (2, 5) satisfies both, it is a solution.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "systems-of-equations-intro-p2",
+    "topicId": "systems-of-equations-intro",
+    "difficulty": "easy",
+    "question": "What does the solution to a system of two linear equations represent on a graph?",
+    "answer": "the intersection point",
+    "hints": [
+      "Each equation is a line. Where do the two lines meet?"
+    ],
+    "solution": "The solution is the point where the two lines cross (intersect). At that point, both equations give the same x and y values.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "systems-of-equations-intro-p3",
+    "topicId": "systems-of-equations-intro",
+    "difficulty": "medium",
+    "question": "Is (3, 1) a solution to the system: 2x + y = 7 and x - y = 4? Answer yes or no.",
+    "answer": "no",
+    "hints": [
+      "Test (3, 1) in both equations.",
+      "Equation 1: 2(3) + 1 = 7. Equation 2: 3 - 1 = 2. Does that equal 4?"
+    ],
+    "solution": "Equation 1: 2(3) + 1 = 7. True. Equation 2: 3 - 1 = 2, but we need 4. False. Since it fails one equation, (3, 1) is NOT a solution.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "systems-of-equations-intro-p4",
+    "topicId": "systems-of-equations-intro",
+    "difficulty": "medium",
+    "question": "Two lines are described: y = 2x + 1 and y = 2x - 3. How many solutions does this system have?",
+    "answer": "0",
+    "hints": [
+      "Both lines have the same slope (m = 2). What does that mean?",
+      "Lines with the same slope but different y-intercepts are parallel."
+    ],
+    "solution": "Both lines have slope 2 but different y-intercepts (1 and -3). They are parallel and never intersect. The system has 0 solutions.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "systems-of-equations-intro-p5",
+    "topicId": "systems-of-equations-intro",
+    "difficulty": "hard",
+    "question": "Line A: y = x + 2. Line B: y = -x + 6. Without solving algebraically, determine: will these lines intersect? If so, will the intersection point have a positive or negative x-coordinate?",
+    "answer": "yes, positive",
+    "hints": [
+      "Line A has positive slope, Line B has negative slope. Lines with different slopes always intersect.",
+      "Line A goes up, Line B goes down. At x = 0, Line A is at y = 2 and Line B is at y = 6. Line B is higher. As x increases, Line A rises and Line B falls — they must cross at some positive x."
+    ],
+    "solution": "Different slopes guarantee intersection. At x = 0, A gives 2 and B gives 6 (B is higher). Since A is rising and B is falling, they cross at some positive x. (Solving: x + 2 = -x + 6, 2x = 4, x = 2.) The intersection is at positive x.",
+    "cognitiveDemand": "reasoning"
+  }
+]

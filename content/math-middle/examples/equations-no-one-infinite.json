@@ -1,0 +1,52 @@
+[
+  {
+    "id": "equations-no-one-infinite-ex1",
+    "topicId": "equations-no-one-infinite",
+    "title": "Recognizing No Solution: 5x + 2 = 5x − 3",
+    "steps": [
+      {
+        "subgoalLabel": "Try to isolate x",
+        "instruction": "Subtract 5x from both sides.",
+        "work": "5x − 5x + 2 = 5x − 5x − 3 → 2 = −3",
+        "explanation": "The variable terms cancel out completely."
+      },
+      {
+        "subgoalLabel": "Interpret the result",
+        "instruction": "Is 2 = −3 true?",
+        "work": "No. 2 does not equal −3.",
+        "explanation": "When you get a false statement with no variable, the equation has no solution."
+      },
+      {
+        "subgoalLabel": "Explain why",
+        "instruction": "Why does this happen?",
+        "work": "Both sides have 5x, but different constants. No value of x can make them equal.",
+        "explanation": "The lines 5x + 2 and 5x − 3 are parallel — they never intersect."
+      }
+    ]
+  },
+  {
+    "id": "equations-no-one-infinite-ex2",
+    "topicId": "equations-no-one-infinite",
+    "title": "Recognizing Infinitely Many Solutions: 4(x − 1) = 4x − 4",
+    "steps": [
+      {
+        "subgoalLabel": "Distribute the left side",
+        "instruction": "Expand 4(x − 1).",
+        "work": "4x − 4 = 4x − 4",
+        "explanation": "After distributing, both sides look identical."
+      },
+      {
+        "subgoalLabel": "Subtract 4x from both sides",
+        "instruction": "Try to isolate x.",
+        "work": "−4 = −4",
+        "explanation": "The variable cancels, leaving a true statement."
+      },
+      {
+        "subgoalLabel": "Interpret the result",
+        "instruction": "What does a true statement (no variable) mean?",
+        "work": "The equation is true for every value of x. Infinitely many solutions.",
+        "explanation": "Both sides are the same expression. Any number you substitute for x will make it true."
+      }
+    ]
+  }
+]

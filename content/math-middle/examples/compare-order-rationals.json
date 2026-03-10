@@ -1,0 +1,58 @@
+[
+  {
+    "id": "compare-order-rationals-ex1",
+    "topicId": "compare-order-rationals",
+    "title": "Comparing Two Negative Fractions",
+    "steps": [
+      {
+        "subgoalLabel": "Identify the fractions",
+        "instruction": "Compare -3/5 and -2/3.",
+        "work": "We need to determine whether -3/5 < -2/3, -3/5 > -2/3, or -3/5 = -2/3.",
+        "explanation": "To compare fractions, we need a common denominator or we can convert to decimals."
+      },
+      {
+        "subgoalLabel": "Find a common denominator",
+        "instruction": "The denominators are 5 and 3. Find the LCD.",
+        "work": "LCD of 5 and 3 is 15. -3/5 = -9/15 and -2/3 = -10/15.",
+        "explanation": "Multiply -3/5 by 3/3 = -9/15. Multiply -2/3 by 5/5 = -10/15."
+      },
+      {
+        "subgoalLabel": "Compare the numerators",
+        "instruction": "Compare -9/15 and -10/15.",
+        "work": "-9 > -10, so -9/15 > -10/15, meaning -3/5 > -2/3.",
+        "explanation": "With the same positive denominator, the fraction with the larger numerator is greater. Since -9 > -10, -3/5 > -2/3."
+      }
+    ]
+  },
+  {
+    "id": "compare-order-rationals-ex2",
+    "topicId": "compare-order-rationals",
+    "title": "Ordering Mixed Rational Numbers",
+    "steps": [
+      {
+        "subgoalLabel": "List the numbers",
+        "instruction": "Order from least to greatest: 1/2, -3/4, 0.2, -0.1.",
+        "work": "Given: 1/2, -3/4, 0.2, -0.1",
+        "explanation": "These are a mix of fractions and decimals. Converting to one form makes comparison easier."
+      },
+      {
+        "subgoalLabel": "Convert to decimals",
+        "instruction": "Write each as a decimal.",
+        "work": "1/2 = 0.5, -3/4 = -0.75, 0.2 = 0.2, -0.1 = -0.1",
+        "explanation": "Decimals let us quickly see relative position on the number line."
+      },
+      {
+        "subgoalLabel": "Sort from least to greatest",
+        "instruction": "Arrange the decimals in order.",
+        "work": "-0.75, -0.1, 0.2, 0.5",
+        "explanation": "-0.75 is farthest left on the number line, 0.5 is farthest right."
+      },
+      {
+        "subgoalLabel": "Write in original form",
+        "instruction": "Express the answer using the original representations.",
+        "work": "-3/4, -0.1, 0.2, 1/2",
+        "explanation": "We report numbers in the form they were given, preserving fractions and decimals."
+      }
+    ]
+  }
+]

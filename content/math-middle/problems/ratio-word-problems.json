@@ -1,0 +1,65 @@
+[
+  {
+    "id": "ratio-word-problems-p1",
+    "topicId": "ratio-word-problems",
+    "difficulty": "easy",
+    "question": "The ratio of dogs to cats at a pet store is 3:5. If there are 15 cats, how many dogs are there?",
+    "answer": "9",
+    "hints": [
+      "5 × ? = 15, so the multiplier is 3. Multiply the dogs by 3."
+    ],
+    "solution": "Multiplier: 15 ÷ 5 = 3. Dogs: 3 × 3 = 9.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "ratio-word-problems-p2",
+    "topicId": "ratio-word-problems",
+    "difficulty": "easy",
+    "question": "A bike rider travels at 12 miles per hour. How far will she travel in 4 hours?",
+    "answer": "48",
+    "hints": [
+      "Multiply the rate by the time."
+    ],
+    "solution": "Distance = rate × time = 12 × 4 = 48 miles.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "ratio-word-problems-p3",
+    "topicId": "ratio-word-problems",
+    "difficulty": "medium",
+    "question": "A smoothie recipe calls for 2 cups of strawberries for every 3 cups of yogurt. If you use 9 cups of yogurt, how many cups of strawberries do you need?",
+    "answer": "6",
+    "hints": [
+      "Find the multiplier: 3 × ? = 9.",
+      "Multiplier is 3. Now multiply 2 by 3."
+    ],
+    "solution": "Multiplier: 9 ÷ 3 = 3. Strawberries: 2 × 3 = 6 cups.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "ratio-word-problems-p4",
+    "topicId": "ratio-word-problems",
+    "difficulty": "medium",
+    "question": "A printer prints 45 pages in 5 minutes. At that rate, how many minutes will it take to print 108 pages?",
+    "answer": "12",
+    "hints": [
+      "First find the unit rate: pages per minute.",
+      "45 ÷ 5 = 9 pages per minute. Then divide 108 by 9."
+    ],
+    "solution": "Rate: 45 ÷ 5 = 9 pages/min. Time: 108 ÷ 9 = 12 minutes.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "ratio-word-problems-p5",
+    "topicId": "ratio-word-problems",
+    "difficulty": "hard",
+    "question": "A school has boys and girls in the ratio 5:7. There are 36 more girls than boys. How many students are in the school in total?",
+    "answer": "216",
+    "hints": [
+      "The difference in ratio parts is 7 - 5 = 2 parts.",
+      "2 parts = 36, so 1 part = 18. Total parts = 5 + 7 = 12."
+    ],
+    "solution": "Difference in parts: 7 - 5 = 2. One part = 36 ÷ 2 = 18. Total students = 12 × 18 = 216.",
+    "cognitiveDemand": "reasoning"
+  }
+]

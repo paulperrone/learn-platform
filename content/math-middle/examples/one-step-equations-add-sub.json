@@ -1,0 +1,64 @@
+[
+  {
+    "id": "one-step-equations-add-sub-ex1",
+    "topicId": "one-step-equations-add-sub",
+    "title": "Solving x + 9 = 14 Using Subtraction",
+    "steps": [
+      {
+        "subgoalLabel": "Identify the operation",
+        "instruction": "What operation is being done to x?",
+        "work": "9 is being added to x.",
+        "explanation": "To isolate x, we need to undo the addition."
+      },
+      {
+        "subgoalLabel": "Use the inverse operation",
+        "instruction": "Subtract 9 from both sides.",
+        "work": "x + 9 − 9 = 14 − 9",
+        "explanation": "Whatever we do to one side, we must do to the other to keep the equation balanced."
+      },
+      {
+        "subgoalLabel": "Simplify",
+        "instruction": "Simplify both sides.",
+        "work": "x = 5",
+        "explanation": "On the left, +9 and −9 cancel. On the right, 14 − 9 = 5."
+      },
+      {
+        "subgoalLabel": "Check",
+        "instruction": "Substitute x = 5 back into the original equation.",
+        "work": "5 + 9 = 14. ✓",
+        "explanation": "The solution checks out."
+      }
+    ]
+  },
+  {
+    "id": "one-step-equations-add-sub-ex2",
+    "topicId": "one-step-equations-add-sub",
+    "title": "Solving m − 6 = −2 Using Addition",
+    "steps": [
+      {
+        "subgoalLabel": "Identify the operation",
+        "instruction": "What is being done to m?",
+        "work": "6 is being subtracted from m.",
+        "explanation": "To undo subtraction, we add."
+      },
+      {
+        "subgoalLabel": "Add 6 to both sides",
+        "instruction": "Add 6 to each side of the equation.",
+        "work": "m − 6 + 6 = −2 + 6",
+        "explanation": "Keep the equation balanced by doing the same thing to both sides."
+      },
+      {
+        "subgoalLabel": "Simplify",
+        "instruction": "Simplify both sides.",
+        "work": "m = 4",
+        "explanation": "−6 + 6 = 0 on the left. −2 + 6 = 4 on the right."
+      },
+      {
+        "subgoalLabel": "Check",
+        "instruction": "Verify: does 4 − 6 = −2?",
+        "work": "4 − 6 = −2. ✓",
+        "explanation": "The answer is correct."
+      }
+    ]
+  }
+]

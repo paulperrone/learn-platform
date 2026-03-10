@@ -1,0 +1,66 @@
+[
+  {
+    "id": "systems-word-problems-p1",
+    "topicId": "systems-word-problems",
+    "difficulty": "easy",
+    "question": "The sum of two numbers is 20 and their difference is 6. What are the two numbers? Write your answer as the larger number followed by the smaller number, separated by a comma.",
+    "answer": "13, 7",
+    "hints": [
+      "Let the numbers be x and y. Write: x + y = 20 and x - y = 6.",
+      "Add the equations to eliminate y."
+    ],
+    "solution": "x + y = 20 and x - y = 6. Add: 2x = 26, x = 13. Then y = 20 - 13 = 7. The numbers are 13 and 7.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "systems-word-problems-p2",
+    "topicId": "systems-word-problems",
+    "difficulty": "easy",
+    "question": "A store sells pencils for $0.50 each and pens for $1.00 each. You buy 8 items and spend $5.50 total. How many pencils did you buy?",
+    "answer": "5",
+    "hints": [
+      "Let p = pencils and n = pens. Write: p + n = 8 and 0.50p + 1.00n = 5.50."
+    ],
+    "solution": "p + n = 8, so n = 8 - p. Substitute: 0.50p + 1.00(8 - p) = 5.50. 0.50p + 8 - p = 5.50. -0.50p = -2.50. p = 5.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "systems-word-problems-p3",
+    "topicId": "systems-word-problems",
+    "difficulty": "medium",
+    "question": "Adult tickets cost $8 and child tickets cost $5. A group buys 12 tickets for $81 total. How many adult tickets were purchased?",
+    "answer": "7",
+    "hints": [
+      "Let a = adult tickets and c = child tickets. Write: a + c = 12 and 8a + 5c = 81.",
+      "From the first equation: c = 12 - a. Substitute into the second."
+    ],
+    "solution": "c = 12 - a. 8a + 5(12 - a) = 81. 8a + 60 - 5a = 81. 3a = 21. a = 7. Seven adult tickets.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "systems-word-problems-p4",
+    "topicId": "systems-word-problems",
+    "difficulty": "medium",
+    "question": "A boat travels 30 miles upstream in 3 hours and 30 miles downstream in 2 hours. What is the speed of the boat in still water, in miles per hour?",
+    "answer": "12.5",
+    "hints": [
+      "Let b = boat speed and c = current speed. Upstream speed = b - c, downstream speed = b + c.",
+      "Use distance = rate * time: b - c = 30/3 = 10 and b + c = 30/2 = 15."
+    ],
+    "solution": "b - c = 10 and b + c = 15. Add: 2b = 25, b = 12.5. The boat's speed in still water is 12.5 mph.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "systems-word-problems-p5",
+    "topicId": "systems-word-problems",
+    "difficulty": "hard",
+    "question": "A farmer has chickens and cows. Together there are 30 animals and 86 legs. How many cows are there? (Chickens have 2 legs, cows have 4 legs.)",
+    "answer": "13",
+    "hints": [
+      "Let c = chickens and w = cows. Write: c + w = 30 and 2c + 4w = 86.",
+      "From equation 1: c = 30 - w. Substitute into equation 2."
+    ],
+    "solution": "c + w = 30 and 2c + 4w = 86. Substitute c = 30 - w: 2(30 - w) + 4w = 86. 60 - 2w + 4w = 86. 2w = 26. w = 13. There are 13 cows.",
+    "cognitiveDemand": "application"
+  }
+]

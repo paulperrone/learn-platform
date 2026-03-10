@@ -1,0 +1,67 @@
+[
+  {
+    "id": "two-step-equations-p1",
+    "topicId": "two-step-equations",
+    "difficulty": "easy",
+    "question": "Solve: 2x + 3 = 11.",
+    "answer": "x = 4",
+    "hints": [
+      "Subtract 3 from both sides first.",
+      "Then divide by 2."
+    ],
+    "solution": "2x + 3 = 11. Subtract 3: 2x = 8. Divide by 2: x = 4.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "two-step-equations-p2",
+    "topicId": "two-step-equations",
+    "difficulty": "easy",
+    "question": "Solve: 5n − 10 = 25.",
+    "answer": "n = 7",
+    "hints": [
+      "Add 10 to both sides first.",
+      "Then divide by 5."
+    ],
+    "solution": "5n − 10 = 25. Add 10: 5n = 35. Divide by 5: n = 7.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "two-step-equations-p3",
+    "topicId": "two-step-equations",
+    "difficulty": "medium",
+    "question": "Solve: x/4 + 6 = 9.",
+    "answer": "x = 12",
+    "hints": [
+      "Subtract 6 from both sides.",
+      "Multiply both sides by 4."
+    ],
+    "solution": "x/4 + 6 = 9. Subtract 6: x/4 = 3. Multiply by 4: x = 12.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "two-step-equations-p4",
+    "topicId": "two-step-equations",
+    "difficulty": "medium",
+    "question": "Solve: -3y + 7 = 1.",
+    "answer": "y = 2",
+    "hints": [
+      "Subtract 7 from both sides: −3y = −6.",
+      "Divide by −3."
+    ],
+    "solution": "−3y + 7 = 1. Subtract 7: −3y = −6. Divide by −3: y = 2.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "two-step-equations-p5",
+    "topicId": "two-step-equations",
+    "difficulty": "hard",
+    "question": "Solve: (2x − 5)/3 = 7.",
+    "answer": "x = 13",
+    "hints": [
+      "Multiply both sides by 3 first.",
+      "Then add 5 and divide by 2."
+    ],
+    "solution": "Multiply by 3: 2x − 5 = 21. Add 5: 2x = 26. Divide by 2: x = 13.",
+    "cognitiveDemand": "procedural"
+  }
+]

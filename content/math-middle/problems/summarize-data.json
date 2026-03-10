@@ -1,0 +1,64 @@
+[
+  {
+    "id": "summarize-data-p1",
+    "topicId": "summarize-data",
+    "difficulty": "easy",
+    "question": "A data set of test scores has mean 82 and median 85. Is the distribution likely skewed left, skewed right, or symmetric?",
+    "answer": "skewed left",
+    "hints": [
+      "When the mean is less than the median, the distribution is pulled left by lower values."
+    ],
+    "solution": "Mean (82) < median (85), so the distribution is skewed left (some low scores pull the mean down).",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "summarize-data-p2",
+    "topicId": "summarize-data",
+    "difficulty": "easy",
+    "question": "A data set has values clustered around 50 with a range of 10. Would you describe the spread as large or small?",
+    "answer": "small",
+    "hints": [
+      "A small range means the data points are close together."
+    ],
+    "solution": "A range of only 10 with values around 50 means the data is tightly clustered — small spread.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "summarize-data-p3",
+    "topicId": "summarize-data",
+    "difficulty": "medium",
+    "question": "Data set: 2, 3, 3, 4, 4, 4, 5, 5, 5, 5, 6, 6, 7. Describe the shape of this distribution (symmetric, skewed left, or skewed right).",
+    "answer": "approximately symmetric",
+    "hints": [
+      "Look at whether values are balanced around the center.",
+      "The most frequent value (5) is near the center, with roughly equal spread on each side."
+    ],
+    "solution": "Values range from 2 to 7 with the peak around 4-5. The distribution is approximately symmetric.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "summarize-data-p4",
+    "topicId": "summarize-data",
+    "difficulty": "medium",
+    "question": "A distribution is skewed right with a few very high values. Which is a better measure of center for this data: mean or median?",
+    "answer": "median",
+    "hints": [
+      "The mean is pulled toward extreme values (outliers). The median is resistant to outliers."
+    ],
+    "solution": "The median is better because it is not pulled by the few very high values. The mean would be inflated by the right skew.",
+    "cognitiveDemand": "reasoning"
+  },
+  {
+    "id": "summarize-data-p5",
+    "topicId": "summarize-data",
+    "difficulty": "hard",
+    "question": "Data set A has mean 50, median 50, and MAD 3. Data set B has mean 50, median 48, and MAD 8. Compare the two distributions in terms of center, shape, and spread.",
+    "answer": "Same center (mean 50), A is symmetric while B is slightly right-skewed, A has less spread (MAD 3 vs 8)",
+    "hints": [
+      "Compare means for center, compare mean vs median for shape, compare MAD for spread.",
+      "When mean > median, the distribution is skewed right."
+    ],
+    "solution": "Center: both have mean 50. Shape: A is symmetric (mean = median), B is slightly right-skewed (mean > median). Spread: A is more consistent (MAD 3 vs 8).",
+    "cognitiveDemand": "reasoning"
+  }
+]

@@ -1,0 +1,67 @@
+[
+  {
+    "id": "integer-subtraction-p1",
+    "topicId": "integer-subtraction",
+    "difficulty": "easy",
+    "question": "Subtract: 5 - 9",
+    "answer": "-4",
+    "hints": [
+      "Rewrite as addition: 5 + (-9).",
+      "Different signs: 9 - 5 = 4. The larger absolute value is negative → -4."
+    ],
+    "solution": "5 - 9 = 5 + (-9) = -4.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "integer-subtraction-p2",
+    "topicId": "integer-subtraction",
+    "difficulty": "easy",
+    "question": "Subtract: -3 - 4",
+    "answer": "-7",
+    "hints": [
+      "Rewrite: -3 - 4 = -3 + (-4).",
+      "Same sign (both negative): 3 + 4 = 7 → -7."
+    ],
+    "solution": "-3 - 4 = -3 + (-4) = -7.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "integer-subtraction-p3",
+    "topicId": "integer-subtraction",
+    "difficulty": "medium",
+    "question": "Subtract: -8 - (-12)",
+    "answer": "4",
+    "hints": [
+      "Subtracting a negative means adding: -8 - (-12) = -8 + 12.",
+      "Different signs: 12 - 8 = 4. Positive wins → 4."
+    ],
+    "solution": "-8 - (-12) = -8 + 12 = 4.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "integer-subtraction-p4",
+    "topicId": "integer-subtraction",
+    "difficulty": "medium",
+    "question": "Subtract: -20 - (-7)",
+    "answer": "-13",
+    "hints": [
+      "Rewrite: -20 - (-7) = -20 + 7.",
+      "Different signs: 20 - 7 = 13. Negative has larger absolute value → -13."
+    ],
+    "solution": "-20 - (-7) = -20 + 7 = -13.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "integer-subtraction-p5",
+    "topicId": "integer-subtraction",
+    "difficulty": "hard",
+    "question": "The temperature at noon was 3°F. By midnight it had dropped to -11°F. What was the change in temperature?",
+    "answer": "-14",
+    "hints": [
+      "Change = final - initial = -11 - 3.",
+      "Rewrite: -11 + (-3) = -14."
+    ],
+    "solution": "Change = -11 - 3 = -11 + (-3) = -14. The temperature dropped 14 degrees.",
+    "cognitiveDemand": "application"
+  }
+]
