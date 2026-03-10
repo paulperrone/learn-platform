@@ -1329,3 +1329,40 @@ Tag each target in `targets.json` with `signal_source: "engine" | "content" | "b
 **Alternatives rejected:**
 - Separate simulation per subject + aggregate: Misses cross-discipline prerequisites and unified session mix
 - Subject routing in session service: Over-engineering when the DB composition approach works cleanly
+
+---
+
+### 2026-03-10: Graduated mastery model replacing binary mastery for FIRe
+
+**Source:** User session
+
+**Context:** FIRe compression was stuck at -1% to +8% despite correct algorithm implementation and good encompassing density (1.77 edges/topic). Root cause: binary `mastered: boolean` retires topics from SRS at stability ≥ 4 days, removing them from both the review queue and FIRe's scope. Topics spend only 5–10 sessions in FIRe's eligible pool before being mastered and invisible. Math Academy achieves "one review per topic" because topics stay in SRS with FIRe extending intervals indefinitely.
+
+**Decision:** Replace binary mastery with 5 graduated tiers based on FSRS stability: Learning (< 1 day), Practicing (1–4 days), Recently Mastered (4–30 days), Solidly Mastered (30–90 days), Permanently Mastered (> 90 days). Recently Mastered topics remain in the review queue at reduced priority. FIRe credit flows to all topics with stability < 90 days. Only Permanently Mastered topics are fully retired.
+
+**Why:**
+- FSRS naturally produces growing stability — we were discarding this by retiring topics at stability ≥ 4 days
+- FIRe's value comes from maintaining memory on mastered-but-not-permanent topics; binary mastery cuts off this mechanism
+- Learning science distinguishes mastery (can execute as component) from automaticity (no conscious effort) from permanent retention (years) — our binary model collapsed all three
+- The 90-day permanent mastery threshold aligns with FSRS scheduling (stability > 90 days means review intervals > 3 months)
+
+**Alternatives rejected:**
+- Adjusting mastery threshold higher (e.g., stability ≥ 30): Still binary, still cuts off FIRe at an arbitrary point
+- Removing mastery entirely: Topics would never leave the review queue, overwhelming sessions with low-value reviews
+- FIRe-only fix (remove mastery gate without graduated model): Mastered topics would receive FIRe credit but never be explicitly reviewed, creating scheduling inconsistency
+
+---
+
+### 2026-03-10: Make FIRe evaluation run by default (remove --run-fire flag)
+
+**Source:** User session
+
+**Context:** FIRe compression evaluation was gated behind `--run-fire` flag, meaning `just evaluate` always showed FIRe as FAIL with "use --run-fire flag" message. This was assumed to be a performance optimization. Actual measurement: FIRe paired evaluation (3 profiles × 2 modes × 15 sessions) takes ~10 seconds total.
+
+**Decision:** Merge FIRe evaluation into default `just evaluate`. Remove `--run-fire` flag and `evaluate-fire` justfile recipe. FIRe compression is validated on every evaluation run.
+
+**Why:**
+- 10 seconds is negligible — not worth skipping
+- Skipping FIRe trained us to ignore it, creating a blind spot where changes could break FIRe without detection
+- Every other system metric runs by default; FIRe should too
+- Paired simulation approach is the only way to measure FIRe — there's no shortcut that reuses existing run data

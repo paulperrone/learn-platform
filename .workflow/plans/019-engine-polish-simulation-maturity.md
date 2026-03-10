@@ -25,7 +25,7 @@ Fix the two remaining P1 evaluation failures (FIRe compression measurement, inte
 
 **Completed:** Phase 1 (FIRe: -3.1% → +8.4%, FAIL→FAIL but close to WARN), Phase 2 (Interleaving: 0.254 → 0.085, FAIL→PASS)
 **In Progress:** —
-**Next:** Phase 3
+**Next:** Phase 2.5
 
 ---
 
@@ -91,6 +91,111 @@ Fix the two remaining P1 evaluation failures (FIRe compression measurement, inte
    - All other metrics stable, no regressions
 
 **Validation:** ✓ Interleaving metric uses authoritative strand data from graph.json. Remediation events correctly excluded from interleaving measurement. `just evaluate` at L2 shows interleaving PASS. No regressions.
+
+---
+
+## Phase 2.5: Graduated Mastery & FIRe Structural Fix
+**Goal:** Replace binary mastery with a graduated model so FSRS stability continues growing naturally and FIRe credit operates on a much larger topic pool. Make FIRe evaluation run by default.
+
+**Root cause analysis:**
+- Binary `mastered: boolean` retires topics from SRS at stability ≥ 4 days (extremely low threshold)
+- `getDueTopics()` filters `mastered = false` — mastered topics never appear in review queue
+- `applyFIReCredit()` skips mastered topics — FIRe's pool shrinks as students learn
+- Mastery is achieved within 3–4 successful reviews → FIRe has a ~5–10 session window per topic
+- Math Academy achieves "one review per topic" because topics stay in SRS with FIRe extending intervals indefinitely — they don't retire topics early
+- FIRe evaluation takes 10 seconds but is gated behind `--run-fire` flag, meaning it's never validated during normal development
+
+**Design: Graduated mastery tiers (based on FSRS stability):**
+
+| Tier | Stability | Review behavior | FIRe eligible? |
+|------|-----------|----------------|----------------|
+| Learning | < 1 day | FSRS New/Learning, step-based | No (non-Review state) |
+| Practicing | 1–4 days | Standard SRS review queue | Yes |
+| Recently Mastered | 4–30 days | Reduced-priority review (after unmastered topics) | Yes |
+| Solidly Mastered | 30–90 days | Warmup pool only, FIRe maintains | Yes (FIRe only) |
+| Permanently Mastered | > 90 days | Fully retired, no review needed | No (truly learned) |
+
+1. [ ] [IMP] Make FIRe evaluation run by default:
+   - Remove `--run-fire` flag gating in `evaluate.ts` — always run `computeFIReCompression()`
+   - Remove `evaluate-fire` justfile recipe (merge into `evaluate`)
+   - Update `fire_compression` metric computer to call the real computation instead of returning 0
+   - Update documentation (`healing-system.md`, `heal.md`) to remove references to separate FIRe evaluation
+
+2. [ ] [RSH] Baseline current FIRe compression with default evaluation:
+   - Run `just evaluate` (now includes FIRe) — record baseline compression for each profile
+   - Run at 15, 30, and 60 sessions to establish compression-vs-session-count trend
+   - Document: at what session count does FIRe compression become meaningful?
+
+3. [ ] [IMP] Add `masteryTier` computed property to SRS service:
+   - Derive tier from FSRS stability: Learning (state != Review), Practicing (stability < 4), Recently Mastered (4–30), Solidly Mastered (30–90), Permanently Mastered (> 90)
+   - Keep `mastered: boolean` in DB for backward compat — it now means "stability ≥ 4" (tier ≥ Recently Mastered)
+   - Add `permanentlyMastered: boolean` column or use stability threshold directly
+   - Mastery criterion unchanged (2+ consecutive correct in Review + stability ≥ 4, or 3+ consecutive correct)
+
+4. [ ] [IMP] Modify `getDueTopics()` to include recently-mastered topics:
+   - Currently: `eq(mastered, false)` — excludes all mastered topics
+   - New: include mastered topics where stability < 90 days AND due date has passed
+   - These go at the END of the due list (lower priority than unmastered due topics)
+   - Effect: FSRS continues scheduling mastered topics with growing intervals until stability > 90 days
+   - Permanently mastered topics (stability > 90 days) remain fully retired
+
+5. [ ] [IMP] Remove mastery gate from `applyFIReCredit()`:
+   - Currently: `if (childState.mastered) continue` at line 366
+   - New: skip only if stability > 90 days (permanently mastered) or retrievability > 0.9
+   - FIRe credit now flows to Recently Mastered and Solidly Mastered topics
+   - This dramatically expands FIRe's pool — most topics spend 10–20 sessions in these tiers
+
+6. [ ] [IMP] Adjust session mix to handle graduated mastery:
+   - Warmup pool: draw from Solidly Mastered and Permanently Mastered (stability > 30 days)
+   - Review queue: unmastered topics first, then recently-mastered topics
+   - `compressReviews()` operates on the full queue (unmastered + recently-mastered)
+   - Cap recently-mastered reviews at 2 per session to prevent crowding out new topics
+
+7. [ ] [TST] Update tests for graduated mastery:
+   - Update mastery criterion tests — mastered topics should still appear in due queue if stability < 90
+   - Update FIRe tests — mastered topics with stability < 90 should receive credit
+   - Update session mix tests — recently-mastered topics appear at end of review list
+   - Add test: topic with stability > 90 is fully retired (not in due queue, not FIRe eligible)
+   - Verify warmup pool draws from solidly/permanently mastered only
+
+8. [ ] [VAL] Run evaluation with graduated mastery:
+   - Run `just evaluate` (includes FIRe by default now)
+   - Compare FIRe compression against Phase 2.5 step 2 baseline
+   - Verify no regressions in other metrics (mastery convergence, preservation, review balance)
+   - Document: how much did FIRe compression improve? Which profiles benefited most?
+
+**Validation:** FIRe evaluation runs by default in `just evaluate`. Graduated mastery implemented with 5 tiers. FIRe compression improved vs baseline. No regressions in other system metrics. Tests pass.
+
+---
+
+## Phase 2.6: FIRe Validation & Target Calibration
+**Goal:** Validate graduated mastery's impact across session counts, calibrate a realistic FIRe target, enrich cross-strand encompassing edges, and document the model.
+
+1. [ ] [VAL] Multi-session FIRe compression trend:
+   - Run FIRe paired evaluation at 15, 30, 60, and 90 sessions
+   - Plot compression trend: does it increase with session count as expected?
+   - Identify which profiles show most improvement from graduated mastery
+   - Compare against pre-graduated-mastery baseline from Phase 2.5 step 2
+
+2. [ ] [IMP] Calibrate FIRe compression target in `targets.json`:
+   - Set target based on actual achievable compression at 30 sessions (L2 maturity level)
+   - Set tolerance to account for profile variance
+   - Update rationale text with data from the trend analysis
+   - Goal: FIRe should be PASS or WARN at L2, not perpetually FAIL
+
+3. [ ] [IMP] Add cross-strand encompassing edges to math-foundations:
+   - Audit graph for missing cross-strand opportunities (highest compression value)
+   - Examples: word problems → computation, measurement → arithmetic, geometry area → multiplication
+   - Target: increase cross-strand edge ratio from ~30% to ~50%
+   - Run `just validate-content` after additions
+
+4. [ ] [DOC] Document graduated mastery model:
+   - Update `docs/learning-science.md` — add section on graduated mastery tiers and permanence
+   - Update `docs/content-system.md` — note FIRe implications of tier model
+   - Update `DECISIONS.md` — record graduated mastery decision with rationale
+   - Update `LEARNINGS.md` — record FIRe structural insights
+
+**Validation:** FIRe compression shows positive trend from 15→90 sessions. Target calibrated to achievable level (PASS or WARN at L2). Cross-strand edges added. Documentation complete. `just evaluate` shows FIRe ≥ WARN.
 
 ---
 

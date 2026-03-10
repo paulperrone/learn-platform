@@ -587,4 +587,37 @@ Key discoveries:
 
 **Conclusion:** The architecture is sound after the three code fixes. Remaining gap to 20% target is a content problem (encompassing graph density), not an engine problem. Need ~71-142 encompassing edges (1.0-2.0 per topic) with emphasis on cross-strand edges for maximum compression value.
 
-**Status:** Open — graph enrichment needed.
+**Status:** Superseded — further analysis (2026-03-10) identified binary mastery as the primary structural bottleneck, not just graph density. See "Graduated Mastery & FIRe Structural Analysis" below.
+
+---
+
+### 2026-03-10: Graduated Mastery & FIRe Structural Analysis
+
+**Source:** User session
+
+**Context:** After fixing FIRe's due date bug (Phase 1, -3.1% → +8.4%) and interleaving measurement (Phase 2), FIRe compression was still FAIL at -1.1% on latest evaluation. Needed to understand why compression remains flat despite good encompassing density (1.77 edges/topic).
+
+**Question:** Why does FIRe compression plateau near 0% despite correct algorithm and adequate graph density? What structural changes would unlock meaningful compression?
+
+**Discovery:**
+Binary `mastered: boolean` retires topics from SRS at stability ≥ 4 days. This creates a shrinking FIRe pool:
+
+| Session range | What happens | FIRe pool size |
+|---------------|-------------|----------------|
+| 1–5 | Topics acquired, entering Review state | Small (few in Review) |
+| 5–10 | More topics in Review → FIRe's best window | Medium |
+| 10–20 | Topics hit mastery → exit FIRe scope | Shrinking |
+| 20+ | Most early topics mastered | Near zero |
+
+FIRe can only operate on non-mastered topics in Review state with retrievability ≤ 0.9. The mastery threshold is easy to achieve (2 consecutive correct + stability ≥ 4 days, or 3 consecutive correct in any state). A moderate learner masters topics within 3–4 successful reviews, giving FIRe a window of ~5–10 sessions per topic.
+
+Math Academy's approach: topics stay in SRS with growing intervals. FIRe credit extends intervals without explicit reviews, eventually reaching very high stability (months → years). They don't retire topics at a low stability threshold — the combination of sparse explicit reviews and frequent implicit FIRe credit produces "one explicit review per topic" over a full course.
+
+**Implications:**
+- Graph density is necessary but not the primary bottleneck — 1.77 edges/topic is adequate
+- The 20% compression target is calibrated for systems where FIRe operates on a large, stable topic pool
+- Graduated mastery (5 tiers based on stability: Learning → Practicing → Recently Mastered → Solidly Mastered → Permanently Mastered) would keep topics in FIRe's scope until stability > 90 days
+- FIRe evaluation takes only 10 seconds — should run by default, not behind `--run-fire` flag
+- Cross-strand encompassing edges provide the highest compression value (different review schedules → more opportunity for implicit credit)
+
+**Status:** Active — Plan 019 Phases 2.5 and 2.6 implement graduated mastery and FIRe target calibration.

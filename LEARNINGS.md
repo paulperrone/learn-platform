@@ -786,3 +786,25 @@ When designing context-layered subjects (history), foundational skill topics (e.
 **Area:** Content / graph validation
 
 Both `math-foundations` (146/148 edges) and `math-middle` (173/173 edges) had prerequisite edges with no `type` field. Only the 2 cross-subject ELA edges in math-foundations had `type: "required"`. ELA and US History were fine. The edge insertion code defaulted to `"required"` but the field should be explicit for mastery-gated disciplines. Fixed by backfilling all missing types to `"required"`.
+
+---
+
+### 2026-03-10: Interleaving metric must exclude remediation events and measure per-session
+
+**Source:** User session — Plan 019 Phase 2
+**Area:** Simulation / evaluation metrics
+
+The interleaving quality metric was measuring same-strand adjacency across ALL events in ALL sessions as one continuous sequence. Two problems: (1) inter-session transitions are not controlled by the interleaving algorithm, and (2) remediation chains (90+ events bouncing between same-strand prerequisite topics like `count-to-10` ↔ `count-to-20`) dominated the metric. Remediation is pedagogically correct — it SHOULD focus on the struggling strand. Fix: group events by session number and exclude `phase === "remediation"` events. Result: 0.254 → 0.085 (PASS).
+
+**Context:** Applies to any evaluation metric that measures algorithm effectiveness — only count events the algorithm controls.
+
+---
+
+### 2026-03-10: Binary mastery creates a shrinking FIRe pool that limits compression
+
+**Source:** User session — Plan 019 Phase 2.5 design
+**Area:** SRS / FIRe compression
+
+FIRe compression is structurally limited because `mastered: boolean` retires topics from both the review queue (`getDueTopics` filters `mastered = false`) and FIRe credit (`applyFIReCredit` skips mastered). With mastery at stability ≥ 4 days (achieved in 3–4 successful reviews), topics spend only 5–10 sessions in FIRe's eligible pool. By session 20+, most early topics are mastered and invisible to FIRe. Math Academy's system keeps topics in SRS with growing intervals — FIRe extends those intervals without explicit reviews, achieving "one review per topic" over a full course.
+
+**Context:** This is the structural reason FIRe compression is hard to improve with constant tuning. The fix requires graduated mastery (keeping recently-mastered topics in the system).
