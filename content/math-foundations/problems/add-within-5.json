@@ -6,7 +6,7 @@
     "question": "What is 1 + 1?",
     "answer": "2",
     "hints": [
-      "Hold up 1 finger on each hand. How many fingers total?"
+      "Imagine 1 object on the left and 1 on the right. How many altogether?"
     ],
     "solution": "1 + 1 = 2. One finger plus one finger is two fingers.",
     "cognitiveDemand": "procedural"
@@ -30,7 +30,7 @@
     "question": "What is 2 + 3?",
     "answer": "5",
     "hints": [
-      "Hold up 2 fingers on one hand and 3 on the other."
+      "Picture 2 objects and 3 more objects. Count them all together."
     ],
     "solution": "2 + 3 = 5. Two fingers plus three fingers equals five fingers.",
     "cognitiveDemand": "procedural"
@@ -50,7 +50,7 @@
   {
     "id": "add-within-5-p5",
     "topicId": "add-within-5",
-    "difficulty": "hard",
+    "difficulty": "easy",
     "question": "What is 4 + 1?",
     "answer": "5",
     "hints": [

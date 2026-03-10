@@ -703,3 +703,18 @@ With only ~27 frontier topics in math-foundations, the frontier dries up by sess
 Profiles with very high ability (strong-older, strong-highschool, gifted-middle) complete sessions with far fewer events (~165-355 vs ~2000+ for average profiles) because the content ceiling is reached quickly. This means fewer topics are practiced and mastered in 30 sessions despite near-perfect accuracy. Final mastery of 0.70-0.80 (not 0.90+) is expected. Also, high ability across all grades pushes presentation drift toward "advanced" regardless of age — strong-older (14) and gifted-middle (10) both drift up because ability level maps to "standard"/"advanced" in the presentation drift logic.
 
 **Context:** Profile expectations (min/max final mastery, expected presentation center) must account for this ceiling effect when calibrating targets.
+
+---
+
+### 2026-03-10: Content quality patterns that cause low simulation accuracy
+
+**Source:** Plan 018 Phase 1
+**Area:** Content authoring / grading
+
+Three content patterns cause systematically low accuracy in simulations (and likely in production):
+
+1. **Multi-value answers** — "List all factor pairs: 1×12, 2×6, 3×4" — text-qa grading compares a single string, so list-format answers almost never match. Convert to count-based questions ("How many factor pairs does 12 have?" → "6").
+2. **Multi-part questions** — "What angle is this? What type?" — grader only checks the `answer` field (one value), so the second part is ungraded but confuses students who include both. Split into separate problems or remove the ungraded part.
+3. **Ambiguous fraction formats** — "1 3/20" could also be "23/20". Specify the expected format in the question ("Write your answer as an improper fraction").
+
+**Context:** These patterns were the root cause for 6 topics with <50% overall accuracy despite content being conceptually correct. The grading service (`grading.ts`) does text normalization + numeric fallback, but can't handle lists or multi-part answers.

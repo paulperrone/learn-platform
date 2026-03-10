@@ -50,7 +50,7 @@
   {
     "id": "subtract-within-10-p5",
     "topicId": "subtract-within-10",
-    "difficulty": "hard",
+    "difficulty": "easy",
     "question": "What is 10 - 7?",
     "answer": "3",
     "hints": [

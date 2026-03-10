@@ -15,7 +15,7 @@
   {
     "id": "bar-graphs-picture-graphs-p2",
     "topicId": "bar-graphs-picture-graphs",
-    "difficulty": "easy",
+    "difficulty": "medium",
     "question": "A picture graph shows each picture equals 1 pet. Dogs: 6 pictures, Cats: 4 pictures. How many more dogs than cats?",
     "answer": "2",
     "hints": [
@@ -54,13 +54,13 @@
     "id": "bar-graphs-picture-graphs-p5",
     "topicId": "bar-graphs-picture-graphs",
     "difficulty": "hard",
-    "question": "A picture graph uses a key where each picture = 5 books. The library shows: Fiction = 7 pictures, Nonfiction = 4 pictures, Comics = 3 pictures. How many more fiction books than comics?",
-    "answer": "20",
+    "question": "A picture graph uses a key where each picture = 2 books. Fiction has 6 pictures and Comics has 4 pictures. How many more fiction books than comics?",
+    "answer": "4",
     "hints": [
-      "Fiction: 7 × 5 = 35 books. Comics: 3 × 5 = 15 books.",
-      "35 − 15 = ?"
+      "Fiction: 6 × 2 = 12 books. Comics: 4 × 2 = 8 books.",
+      "12 − 8 = ?"
     ],
-    "solution": "Fiction: 7 × 5 = 35. Comics: 3 × 5 = 15. Difference: 35 − 15 = 20 more fiction books.",
+    "solution": "Fiction: 6 × 2 = 12. Comics: 4 × 2 = 8. Difference: 12 − 8 = 4 more fiction books.",
     "cognitiveDemand": "application"
   }
 ]

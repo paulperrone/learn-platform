@@ -13,7 +13,7 @@
     "steps": [
       {
         "subgoalLabel": "Show 1/2",
-        "instruction": "Draw a rectangle and divide it into 2 equal parts. Shade 1 part.",
+        "instruction": "Picture a rectangle divided into 2 equal parts with 1 part shaded.",
         "work": "[shaded][blank] — 1 out of 2 parts = 1/2",
         "explanation": "1/2 means one out of two equal parts."
       },

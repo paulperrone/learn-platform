@@ -18,7 +18,7 @@
     "question": "Count the stars: ⭐⭐⭐⭐⭐. How many stars are there?",
     "answer": "5",
     "hints": [
-      "Touch each star as you count."
+      "Count each star one by one on the screen."
     ],
     "solution": "There are 5 stars. Count: 1, 2, 3, 4, 5.",
     "cognitiveDemand": "application"
@@ -42,7 +42,7 @@
     "question": "How many fingers do you have on one hand?",
     "answer": "5",
     "hints": [
-      "Hold up one hand and count each finger."
+      "Picture one hand and count each finger: 1, 2, 3, 4, 5."
     ],
     "solution": "You have 5 fingers on one hand.",
     "cognitiveDemand": "application"

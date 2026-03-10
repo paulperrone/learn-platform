@@ -53,13 +53,13 @@
     "id": "long-division-p5",
     "topicId": "long-division",
     "difficulty": "hard",
-    "question": "A school has 1,827 books to distribute equally among 9 classrooms. How many books does each classroom get? Are there any left over?",
-    "answer": "203",
+    "question": "What is 966 ÷ 7?",
+    "answer": "138",
     "hints": [
-      "Divide 1,827 by 9 using long division.",
-      "9 goes into 18 two times. Then 9 goes into 2 zero times. Bring down the 7 to get 27."
+      "7 goes into 9 once with remainder 2. Bring down the 6 to make 26.",
+      "7 goes into 26 three times (21) with remainder 5. Bring down the 6 to make 56."
     ],
-    "solution": "1,827 ÷ 9: 18 ÷ 9 = 2. 2 ÷ 9 = 0 R2. 27 ÷ 9 = 3. Answer: 203 books per classroom with 0 left over.",
-    "cognitiveDemand": "application"
+    "solution": "966 ÷ 7: 9 ÷ 7 = 1 R2. 26 ÷ 7 = 3 R5. 56 ÷ 7 = 8. Answer: 138.",
+    "cognitiveDemand": "procedural"
   }
 ]

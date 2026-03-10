@@ -13,13 +13,13 @@
     "steps": [
       {
         "subgoalLabel": "Point to each object",
-        "instruction": "Touch or point to each object as you count. Let's count these stars: ⭐⭐⭐⭐.",
-        "work": "Point: ⭐(1) ⭐(2) ⭐(3) ⭐(4)",
-        "explanation": "Pointing helps us count each object exactly once, so we don't skip any or count one twice."
+        "instruction": "Count each object one by one on the screen. Let's count these stars: ⭐⭐⭐⭐.",
+        "work": "Count: ⭐(1) ⭐(2) ⭐(3) ⭐(4)",
+        "explanation": "Counting each object one by one helps us count exactly once, so we don't skip any or count one twice."
       },
       {
         "subgoalLabel": "Say the number for each object",
-        "instruction": "Say one number for each object you point to.",
+        "instruction": "Say one number for each object you count.",
         "work": "1, 2, 3, 4",
         "explanation": "Each object gets exactly one number. We say the numbers in order."
       },
@@ -38,21 +38,21 @@
     "steps": [
       {
         "subgoalLabel": "Use your fingers to count",
-        "instruction": "Hold up one finger at a time as you count to 8.",
-        "work": "Hold up fingers: 1, 2, 3, 4, 5 (one hand full!)",
-        "explanation": "One hand has 5 fingers. After 5 we need to use the other hand."
+        "instruction": "Imagine counting up one at a time to 8.",
+        "work": "Count: 1, 2, 3, 4, 5 (that's one group of five!)",
+        "explanation": "One hand has 5 fingers. After 5 we count the next group."
       },
       {
         "subgoalLabel": "Keep counting on the other hand",
-        "instruction": "Now use your other hand for the rest.",
-        "work": "6, 7, 8 (3 fingers on the second hand)",
-        "explanation": "We used all 5 fingers on one hand and 3 on the other."
+        "instruction": "Now keep counting from 5.",
+        "work": "6, 7, 8 (3 more after the first group of 5)",
+        "explanation": "We counted 5 in the first group and 3 more."
       },
       {
         "subgoalLabel": "Find the total",
         "instruction": "Count all the fingers that are up.",
-        "work": "5 + 3 = 8 fingers up. The answer is 8!",
-        "explanation": "We counted to 8 using our fingers: 5 on one hand and 3 on the other."
+        "work": "5 + 3 = 8. The answer is 8!",
+        "explanation": "We counted to 8: 5 in the first group and 3 in the second group."
       }
     ]
   }

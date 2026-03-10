@@ -13,21 +13,21 @@
     "steps": [
       {
         "subgoalLabel": "Show the first number",
-        "instruction": "Hold up fingers for the first number.",
-        "work": "Hold up 2 fingers on one hand. ✌️",
+        "instruction": "Picture the first number as objects.",
+        "work": "Imagine 2 objects: ⬤ ⬤",
         "explanation": "We start by showing the first number with our fingers."
       },
       {
         "subgoalLabel": "Show the second number",
-        "instruction": "On your other hand, hold up fingers for the second number.",
-        "work": "Hold up 3 fingers on the other hand. 🤟",
-        "explanation": "Now both hands show the numbers we want to add."
+        "instruction": "Now picture the second number as more objects.",
+        "work": "Imagine 3 more objects: ⬤ ⬤ ⬤",
+        "explanation": "Now we can see both groups of objects we want to add."
       },
       {
         "subgoalLabel": "Count all fingers",
         "instruction": "Count all the fingers that are up.",
         "work": "1, 2, 3, 4, 5. Total = 5!",
-        "explanation": "2 + 3 = 5. We counted all the raised fingers to find the total."
+        "explanation": "2 + 3 = 5. We counted all the objects to find the total."
       }
     ]
   },

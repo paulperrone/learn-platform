@@ -53,7 +53,7 @@
   {
     "id": "money-coins-bills-p5",
     "topicId": "money-coins-bills",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "question": "Emma has 3 dollar bills, 2 quarters, 4 dimes, and 1 nickel. How much money does she have in total?",
     "answer": "$3.95",
     "hints": [

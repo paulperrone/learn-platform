@@ -7,7 +7,7 @@
       {
         "subgoalLabel": "Start at the origin",
         "instruction": "Begin at (0, 0) where the axes cross.",
-        "work": "Place your finger at the origin.",
+        "work": "Look at the origin on the grid.",
         "explanation": "Every point is located by starting from the origin."
       },
       {
@@ -24,7 +24,7 @@
       },
       {
         "subgoalLabel": "Mark the point",
-        "instruction": "Draw a dot and label it (4, 7).",
+        "instruction": "Mark the point and label it (4, 7).",
         "work": "Point plotted at (4, 7).",
         "explanation": "Always label your points so you can identify them later."
       }

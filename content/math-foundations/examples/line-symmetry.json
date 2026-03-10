@@ -7,24 +7,24 @@
       {
         "subgoalLabel": "Understand line symmetry",
         "instruction": "A line of symmetry divides a shape into two halves that are mirror images of each other.",
-        "work": "If you fold the shape along the line, both sides match perfectly.",
-        "explanation": "Think of it like folding a piece of paper — if both halves line up exactly, that fold line is a line of symmetry."
+        "work": "If you imagine folding the shape along the line, both sides would match perfectly.",
+        "explanation": "Imagine folding the shape in half — if both halves would line up exactly, that fold line is a line of symmetry."
       },
       {
         "subgoalLabel": "Test horizontal fold",
-        "instruction": "Can you fold the rectangle horizontally so both halves match?",
+        "instruction": "Imagine folding the rectangle horizontally. Would both halves match?",
         "work": "Yes! A horizontal line through the middle divides it into two matching halves.",
         "explanation": "The top and bottom halves are the same size and shape."
       },
       {
         "subgoalLabel": "Test vertical fold",
-        "instruction": "Can you fold the rectangle vertically?",
+        "instruction": "Now imagine folding the rectangle vertically. Does it work?",
         "work": "Yes! A vertical line through the middle also works.",
         "explanation": "The left and right halves are mirror images."
       },
       {
         "subgoalLabel": "Test diagonal fold",
-        "instruction": "What about folding along a diagonal?",
+        "instruction": "What about imagining a diagonal fold?",
         "work": "No, the two halves do not match when folded along a diagonal (unless it is a square).",
         "explanation": "In a non-square rectangle, the diagonal fold creates two triangles that don't overlap perfectly."
       },

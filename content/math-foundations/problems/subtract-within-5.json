@@ -50,7 +50,7 @@
   {
     "id": "subtract-within-5-p5",
     "topicId": "subtract-within-5",
-    "difficulty": "hard",
+    "difficulty": "easy",
     "question": "What is 5 - 4?",
     "answer": "1",
     "hints": [

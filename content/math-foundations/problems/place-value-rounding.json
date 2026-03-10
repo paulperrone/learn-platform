@@ -55,13 +55,13 @@
     "id": "place-value-rounding-p5",
     "topicId": "place-value-rounding",
     "difficulty": "hard",
-    "question": "Round 965 to the nearest ten AND the nearest hundred.",
-    "answer": "970 and 1000",
+    "question": "Round 965 to the nearest hundred.",
+    "answer": "1000",
     "hints": [
-      "Nearest ten: look at the ones digit (5).",
-      "Nearest hundred: look at the tens digit (6)."
+      "965 is between 900 and 1000.",
+      "Look at the tens digit: 6 is 5 or more, so round up."
     ],
-    "solution": "Nearest ten: ones digit is 5, round up to 970. Nearest hundred: tens digit is 6 (5 or more), round up to 1000.",
+    "solution": "965 rounds to 1000. The tens digit is 6 (5 or more), so we round up to the next hundred.",
     "cognitiveDemand": "procedural"
   }
 ]

@@ -50,7 +50,7 @@
   {
     "id": "odd-even-p5",
     "topicId": "odd-even",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "question": "If you add two odd numbers together, is the result odd or even? Try 7 + 5.",
     "answer": "even",
     "hints": [

@@ -10,497 +10,710 @@
       "name": "Count to 10",
       "description": "Count objects from 1 to 10 with one-to-one correspondence.",
       "gradeLevel": 0,
-      "standardCode": "K.CC.4"
+      "standardCode": "K.CC.4",
+      "strand": "counting-cardinality",
+      "contentDepth": "survey",
+      "defaultPresentation": "primary"
     },
     {
       "id": "count-to-20",
       "name": "Count to 20",
       "description": "Count objects from 1 to 20.",
       "gradeLevel": 0,
-      "standardCode": "K.CC.5"
+      "standardCode": "K.CC.5",
+      "strand": "counting-cardinality",
+      "contentDepth": "survey",
+      "defaultPresentation": "primary"
     },
     {
       "id": "count-to-100",
       "name": "Count to 100",
       "description": "Count to 100 by ones and by tens.",
       "gradeLevel": 0,
-      "standardCode": "K.CC.1"
+      "standardCode": "K.CC.1",
+      "strand": "counting-cardinality",
+      "contentDepth": "survey",
+      "defaultPresentation": "primary"
     },
     {
       "id": "compare-numbers-k",
       "name": "Compare Numbers (K)",
       "description": "Compare two numbers between 1 and 10 using greater than, less than, equal to.",
       "gradeLevel": 0,
-      "standardCode": "K.CC.6"
+      "standardCode": "K.CC.6",
+      "strand": "counting-cardinality",
+      "contentDepth": "survey",
+      "defaultPresentation": "primary"
     },
     {
       "id": "add-within-5",
       "name": "Add Within 5",
       "description": "Add two numbers whose sum is 5 or less using objects or drawings.",
       "gradeLevel": 0,
-      "standardCode": "K.OA.1"
+      "standardCode": "K.OA.1",
+      "strand": "operations-addition",
+      "contentDepth": "survey",
+      "defaultPresentation": "primary"
     },
     {
       "id": "subtract-within-5",
       "name": "Subtract Within 5",
       "description": "Subtract within 5 using objects or drawings.",
       "gradeLevel": 0,
-      "standardCode": "K.OA.1"
+      "standardCode": "K.OA.1",
+      "strand": "operations-subtraction",
+      "contentDepth": "survey",
+      "defaultPresentation": "primary"
     },
     {
       "id": "add-within-10",
       "name": "Add Within 10",
       "description": "Fluently add within 10.",
       "gradeLevel": 0,
-      "standardCode": "K.OA.5"
+      "standardCode": "K.OA.5",
+      "strand": "operations-addition",
+      "contentDepth": "survey",
+      "defaultPresentation": "primary"
     },
     {
       "id": "subtract-within-10",
       "name": "Subtract Within 10",
       "description": "Fluently subtract within 10.",
       "gradeLevel": 0,
-      "standardCode": "K.OA.5"
+      "standardCode": "K.OA.5",
+      "strand": "operations-subtraction",
+      "contentDepth": "survey",
+      "defaultPresentation": "primary"
     },
     {
       "id": "teen-numbers",
       "name": "Teen Numbers (Place Value)",
       "description": "Understand teen numbers as ten ones and some more ones (10 + n).",
       "gradeLevel": 0,
-      "standardCode": "K.NBT.1"
+      "standardCode": "K.NBT.1",
+      "strand": "number-base",
+      "contentDepth": "survey",
+      "defaultPresentation": "primary"
     },
     {
       "id": "shapes-2d-k",
       "name": "2D Shapes (K)",
       "description": "Identify and describe squares, circles, triangles, rectangles.",
       "gradeLevel": 0,
-      "standardCode": "K.G.2"
+      "standardCode": "K.G.2",
+      "strand": "geometry",
+      "contentDepth": "survey",
+      "defaultPresentation": "primary"
     },
     {
       "id": "shapes-3d-k",
       "name": "3D Shapes (K)",
       "description": "Identify and describe cubes, cones, cylinders, spheres.",
       "gradeLevel": 0,
-      "standardCode": "K.G.1"
+      "standardCode": "K.G.1",
+      "strand": "geometry",
+      "contentDepth": "survey",
+      "defaultPresentation": "primary"
     },
     {
       "id": "add-within-20",
       "name": "Add Within 20",
       "description": "Add within 20 using strategies like making ten and counting on.",
       "gradeLevel": 1,
-      "standardCode": "1.OA.6"
+      "standardCode": "1.OA.6",
+      "strand": "operations-addition",
+      "contentDepth": "survey",
+      "defaultPresentation": "primary"
     },
     {
       "id": "subtract-within-20",
       "name": "Subtract Within 20",
       "description": "Subtract within 20 using strategies related to addition.",
       "gradeLevel": 1,
-      "standardCode": "1.OA.6"
+      "standardCode": "1.OA.6",
+      "strand": "operations-subtraction",
+      "contentDepth": "survey",
+      "defaultPresentation": "primary"
     },
     {
       "id": "add-subtract-word-problems-1",
       "name": "Word Problems (Add/Sub within 20)",
       "description": "Solve addition and subtraction word problems within 20.",
       "gradeLevel": 1,
-      "standardCode": "1.OA.1"
+      "standardCode": "1.OA.1",
+      "strand": "operations-addition",
+      "contentDepth": "survey",
+      "defaultPresentation": "primary"
     },
     {
       "id": "place-value-tens-ones",
       "name": "Place Value: Tens and Ones",
       "description": "Understand two-digit numbers as tens and ones.",
       "gradeLevel": 1,
-      "standardCode": "1.NBT.2"
+      "standardCode": "1.NBT.2",
+      "strand": "number-base",
+      "contentDepth": "survey",
+      "defaultPresentation": "primary"
     },
     {
       "id": "compare-two-digit",
       "name": "Compare Two-Digit Numbers",
       "description": "Compare two-digit numbers using >, <, = based on place value.",
       "gradeLevel": 1,
-      "standardCode": "1.NBT.3"
+      "standardCode": "1.NBT.3",
+      "strand": "number-base",
+      "contentDepth": "survey",
+      "defaultPresentation": "primary"
     },
     {
       "id": "add-within-100",
       "name": "Add Within 100",
       "description": "Add within 100 using place value strategies.",
       "gradeLevel": 1,
-      "standardCode": "1.NBT.4"
+      "standardCode": "1.NBT.4",
+      "strand": "operations-addition",
+      "contentDepth": "survey",
+      "defaultPresentation": "primary"
     },
     {
       "id": "measure-length-nonstandard",
       "name": "Measure Length (Nonstandard Units)",
       "description": "Measure length using nonstandard units like paper clips.",
       "gradeLevel": 1,
-      "standardCode": "1.MD.2"
+      "standardCode": "1.MD.2",
+      "strand": "measurement-data",
+      "contentDepth": "survey",
+      "defaultPresentation": "primary"
     },
     {
       "id": "tell-time-hour-half",
       "name": "Tell Time (Hour and Half Hour)",
       "description": "Tell and write time in hours and half-hours using analog and digital clocks.",
       "gradeLevel": 1,
-      "standardCode": "1.MD.3"
+      "standardCode": "1.MD.3",
+      "strand": "measurement-data",
+      "contentDepth": "survey",
+      "defaultPresentation": "primary"
     },
     {
       "id": "skip-count-2-5-10",
       "name": "Skip Count by 2s, 5s, 10s",
       "description": "Skip count by 2, 5, and 10 within 1000.",
       "gradeLevel": 2,
-      "standardCode": "2.NBT.2"
+      "standardCode": "2.NBT.2",
+      "strand": "number-base",
+      "contentDepth": "survey",
+      "defaultPresentation": "primary"
     },
     {
       "id": "add-within-100-fluent",
       "name": "Fluently Add Within 100",
       "description": "Fluently add within 100 using strategies based on place value.",
       "gradeLevel": 2,
-      "standardCode": "2.NBT.5"
+      "standardCode": "2.NBT.5",
+      "strand": "operations-addition",
+      "contentDepth": "survey",
+      "defaultPresentation": "primary"
     },
     {
       "id": "subtract-within-100-fluent",
       "name": "Fluently Subtract Within 100",
       "description": "Fluently subtract within 100 using strategies based on place value.",
       "gradeLevel": 2,
-      "standardCode": "2.NBT.5"
+      "standardCode": "2.NBT.5",
+      "strand": "operations-subtraction",
+      "contentDepth": "survey",
+      "defaultPresentation": "primary"
     },
     {
       "id": "add-within-1000",
       "name": "Add Within 1000",
       "description": "Add up to four two-digit numbers or add within 1000.",
       "gradeLevel": 2,
-      "standardCode": "2.NBT.6"
+      "standardCode": "2.NBT.6",
+      "strand": "operations-addition",
+      "contentDepth": "survey",
+      "defaultPresentation": "primary"
     },
     {
       "id": "subtract-within-1000",
       "name": "Subtract Within 1000",
       "description": "Subtract within 1000 using models and strategies.",
       "gradeLevel": 2,
-      "standardCode": "2.NBT.7"
+      "standardCode": "2.NBT.7",
+      "strand": "operations-subtraction",
+      "contentDepth": "survey",
+      "defaultPresentation": "primary"
     },
     {
       "id": "place-value-hundreds",
       "name": "Place Value: Hundreds",
       "description": "Understand three-digit numbers as hundreds, tens, and ones.",
       "gradeLevel": 2,
-      "standardCode": "2.NBT.1"
+      "standardCode": "2.NBT.1",
+      "strand": "number-base",
+      "contentDepth": "survey",
+      "defaultPresentation": "primary"
     },
     {
       "id": "measure-length-standard",
       "name": "Measure Length (Standard Units)",
       "description": "Measure and estimate lengths in standard units (inches, feet, centimeters, meters).",
       "gradeLevel": 2,
-      "standardCode": "2.MD.1"
+      "standardCode": "2.MD.1",
+      "strand": "measurement-data",
+      "contentDepth": "survey",
+      "defaultPresentation": "primary"
     },
     {
       "id": "money-coins-bills",
       "name": "Money: Coins and Bills",
       "description": "Solve word problems involving dollar bills, quarters, dimes, nickels, pennies.",
       "gradeLevel": 2,
-      "standardCode": "2.MD.8"
+      "standardCode": "2.MD.8",
+      "strand": "measurement-data",
+      "contentDepth": "survey",
+      "defaultPresentation": "primary"
     },
     {
       "id": "intro-arrays",
       "name": "Introduction to Arrays",
       "description": "Use arrays to understand repeated addition as a foundation for multiplication.",
       "gradeLevel": 2,
-      "standardCode": "2.OA.4"
+      "standardCode": "2.OA.4",
+      "strand": "operations-multiplication",
+      "contentDepth": "survey",
+      "defaultPresentation": "primary"
     },
     {
       "id": "odd-even",
       "name": "Odd and Even Numbers",
       "description": "Determine whether a group of objects has an odd or even number.",
       "gradeLevel": 2,
-      "standardCode": "2.OA.3"
+      "standardCode": "2.OA.3",
+      "strand": "number-base",
+      "contentDepth": "survey",
+      "defaultPresentation": "primary"
     },
     {
       "id": "multiply-within-100",
       "name": "Multiply Within 100",
       "description": "Fluently multiply within 100 (multiplication facts to 10\u00d710).",
       "gradeLevel": 3,
-      "standardCode": "3.OA.7"
+      "standardCode": "3.OA.7",
+      "strand": "operations-multiplication",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
     },
     {
       "id": "divide-within-100",
       "name": "Divide Within 100",
       "description": "Fluently divide within 100 (division facts related to multiplication).",
       "gradeLevel": 3,
-      "standardCode": "3.OA.7"
+      "standardCode": "3.OA.7",
+      "strand": "operations-division",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
     },
     {
       "id": "multiply-word-problems",
       "name": "Multiplication Word Problems",
       "description": "Solve word problems involving equal groups, arrays, and comparison.",
       "gradeLevel": 3,
-      "standardCode": "3.OA.3"
+      "standardCode": "3.OA.3",
+      "strand": "operations-multiplication",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
     },
     {
       "id": "division-word-problems",
       "name": "Division Word Problems",
       "description": "Solve word problems involving equal sharing and grouping.",
       "gradeLevel": 3,
-      "standardCode": "3.OA.3"
+      "standardCode": "3.OA.3",
+      "strand": "operations-division",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
     },
     {
       "id": "properties-of-multiplication",
       "name": "Properties of Multiplication",
       "description": "Apply commutative, associative, and distributive properties of multiplication.",
       "gradeLevel": 3,
-      "standardCode": "3.OA.5"
+      "standardCode": "3.OA.5",
+      "strand": "operations-multiplication",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
     },
     {
       "id": "patterns-arithmetic",
       "name": "Patterns in Arithmetic",
       "description": "Identify arithmetic patterns (including patterns in the addition and multiplication tables).",
       "gradeLevel": 3,
-      "standardCode": "3.OA.9"
+      "standardCode": "3.OA.9",
+      "strand": "algebra-thinking",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
     },
     {
       "id": "place-value-rounding",
       "name": "Round to Nearest 10 or 100",
       "description": "Use place value to round whole numbers to the nearest 10 or 100.",
       "gradeLevel": 3,
-      "standardCode": "3.NBT.1"
+      "standardCode": "3.NBT.1",
+      "strand": "number-base",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
     },
     {
       "id": "multi-digit-add-sub",
       "name": "Multi-Digit Addition and Subtraction",
       "description": "Fluently add and subtract within 1000 using algorithms.",
       "gradeLevel": 3,
-      "standardCode": "3.NBT.2"
+      "standardCode": "3.NBT.2",
+      "strand": "number-base",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
     },
     {
       "id": "intro-fractions",
       "name": "Introduction to Fractions",
       "description": "Understand a fraction 1/b as one part when a whole is partitioned into b equal parts.",
       "gradeLevel": 3,
-      "standardCode": "3.NF.1"
+      "standardCode": "3.NF.1",
+      "strand": "fractions",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
     },
     {
       "id": "fractions-number-line",
       "name": "Fractions on a Number Line",
       "description": "Represent fractions on a number line.",
       "gradeLevel": 3,
-      "standardCode": "3.NF.2"
+      "standardCode": "3.NF.2",
+      "strand": "fractions",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
     },
     {
       "id": "equivalent-fractions-3",
       "name": "Equivalent Fractions (Intro)",
       "description": "Understand and identify simple equivalent fractions (e.g., 1/2 = 2/4).",
       "gradeLevel": 3,
-      "standardCode": "3.NF.3"
+      "standardCode": "3.NF.3",
+      "strand": "fractions",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
     },
     {
       "id": "compare-fractions-3",
       "name": "Compare Fractions (Same Denominator/Numerator)",
       "description": "Compare fractions with same numerator or same denominator.",
       "gradeLevel": 3,
-      "standardCode": "3.NF.3d"
+      "standardCode": "3.NF.3d",
+      "strand": "fractions",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
     },
     {
       "id": "perimeter",
       "name": "Perimeter",
       "description": "Find the perimeter of polygons given side lengths. Solve perimeter word problems.",
       "gradeLevel": 3,
-      "standardCode": "3.MD.8"
+      "standardCode": "3.MD.8",
+      "strand": "geometry",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
     },
     {
       "id": "area-intro",
       "name": "Area (Introduction)",
       "description": "Measure areas by counting unit squares. Understand area as covering.",
       "gradeLevel": 3,
-      "standardCode": "3.MD.5"
+      "standardCode": "3.MD.5",
+      "strand": "geometry",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
     },
     {
       "id": "area-multiply",
       "name": "Area by Multiplying",
       "description": "Find area of rectangles by multiplying side lengths.",
       "gradeLevel": 3,
-      "standardCode": "3.MD.7"
+      "standardCode": "3.MD.7",
+      "strand": "geometry",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
     },
     {
       "id": "tell-time-minute",
       "name": "Tell Time to the Minute",
       "description": "Tell and write time to the nearest minute. Solve elapsed time problems.",
       "gradeLevel": 3,
-      "standardCode": "3.MD.1"
+      "standardCode": "3.MD.1",
+      "strand": "measurement-data",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
     },
     {
       "id": "bar-graphs-picture-graphs",
       "name": "Bar Graphs and Picture Graphs",
       "description": "Draw and interpret scaled bar graphs and picture graphs.",
       "gradeLevel": 3,
-      "standardCode": "3.MD.3"
+      "standardCode": "3.MD.3",
+      "strand": "measurement-data",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
     },
     {
       "id": "multi-digit-multiply",
       "name": "Multi-Digit Multiplication",
       "description": "Multiply a whole number up to four digits by a one-digit number, and two two-digit numbers.",
       "gradeLevel": 4,
-      "standardCode": "4.NBT.5"
+      "standardCode": "4.NBT.5",
+      "strand": "operations-multiplication",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
     },
     {
       "id": "long-division",
       "name": "Long Division",
       "description": "Divide up to four-digit dividends by one-digit divisors.",
       "gradeLevel": 4,
-      "standardCode": "4.NBT.6"
+      "standardCode": "4.NBT.6",
+      "strand": "operations-division",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
     },
     {
       "id": "factors-multiples",
       "name": "Factors and Multiples",
       "description": "Find factor pairs, determine if a number is prime or composite.",
       "gradeLevel": 4,
-      "standardCode": "4.OA.4"
+      "standardCode": "4.OA.4",
+      "strand": "number-base",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
     },
     {
       "id": "equivalent-fractions-4",
       "name": "Equivalent Fractions",
       "description": "Generate equivalent fractions using visual models and multiplication/division.",
       "gradeLevel": 4,
-      "standardCode": "4.NF.1"
+      "standardCode": "4.NF.1",
+      "strand": "fractions",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
     },
     {
       "id": "compare-fractions-4",
       "name": "Compare Fractions (Unlike Denominators)",
       "description": "Compare fractions with unlike denominators by finding common denominators.",
       "gradeLevel": 4,
-      "standardCode": "4.NF.2"
+      "standardCode": "4.NF.2",
+      "strand": "fractions",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
     },
     {
       "id": "add-subtract-fractions",
       "name": "Add and Subtract Fractions (Same Denominator)",
       "description": "Add and subtract fractions with the same denominator.",
       "gradeLevel": 4,
-      "standardCode": "4.NF.3"
+      "standardCode": "4.NF.3",
+      "strand": "fractions",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
     },
     {
       "id": "multiply-fraction-by-whole",
       "name": "Multiply Fraction by Whole Number",
       "description": "Multiply a fraction by a whole number (e.g., 3 \u00d7 2/5).",
       "gradeLevel": 4,
-      "standardCode": "4.NF.4"
+      "standardCode": "4.NF.4",
+      "strand": "fractions",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
     },
     {
       "id": "decimals-intro",
       "name": "Introduction to Decimals",
       "description": "Understand decimal notation for fractions with denominators 10 and 100.",
       "gradeLevel": 4,
-      "standardCode": "4.NF.6"
+      "standardCode": "4.NF.6",
+      "strand": "number-base",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
     },
     {
       "id": "angles-intro",
       "name": "Angles (Introduction)",
       "description": "Understand angles as a measure of rotation. Measure angles with a protractor.",
       "gradeLevel": 4,
-      "standardCode": "4.MD.5"
+      "standardCode": "4.MD.5",
+      "strand": "geometry",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
     },
     {
       "id": "line-symmetry",
       "name": "Line Symmetry",
       "description": "Identify line-symmetric figures and draw lines of symmetry.",
       "gradeLevel": 4,
-      "standardCode": "4.G.3"
+      "standardCode": "4.G.3",
+      "strand": "geometry",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
     },
     {
       "id": "multi-step-word-problems",
       "name": "Multi-Step Word Problems",
       "description": "Solve multi-step word problems using the four operations.",
       "gradeLevel": 4,
-      "standardCode": "4.OA.3"
+      "standardCode": "4.OA.3",
+      "strand": "algebra-thinking",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
     },
     {
       "id": "place-value-decimals",
       "name": "Place Value with Decimals",
       "description": "Understand the place value system extended to decimals (tenths, hundredths, thousandths).",
       "gradeLevel": 5,
-      "standardCode": "5.NBT.1"
+      "standardCode": "5.NBT.1",
+      "strand": "number-base",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
     },
     {
       "id": "multiply-multi-digit",
       "name": "Multiply Multi-Digit Whole Numbers",
       "description": "Fluently multiply multi-digit whole numbers using standard algorithm.",
       "gradeLevel": 5,
-      "standardCode": "5.NBT.5"
+      "standardCode": "5.NBT.5",
+      "strand": "operations-multiplication",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
     },
     {
       "id": "divide-multi-digit",
       "name": "Divide Multi-Digit Whole Numbers",
       "description": "Divide whole numbers with up to four-digit dividends and two-digit divisors.",
       "gradeLevel": 5,
-      "standardCode": "5.NBT.6"
+      "standardCode": "5.NBT.6",
+      "strand": "operations-division",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
     },
     {
       "id": "add-subtract-fractions-unlike",
       "name": "Add/Subtract Fractions (Unlike Denominators)",
       "description": "Add and subtract fractions with unlike denominators by finding common denominators.",
       "gradeLevel": 5,
-      "standardCode": "5.NF.1"
+      "standardCode": "5.NF.1",
+      "strand": "fractions",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
     },
     {
       "id": "multiply-fractions",
       "name": "Multiply Fractions",
       "description": "Multiply fractions and mixed numbers.",
       "gradeLevel": 5,
-      "standardCode": "5.NF.4"
+      "standardCode": "5.NF.4",
+      "strand": "fractions",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
     },
     {
       "id": "divide-fractions",
       "name": "Divide Fractions",
       "description": "Divide unit fractions by whole numbers and whole numbers by unit fractions.",
       "gradeLevel": 5,
-      "standardCode": "5.NF.7"
+      "standardCode": "5.NF.7",
+      "strand": "fractions",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
     },
     {
       "id": "decimal-operations",
       "name": "Decimal Operations",
       "description": "Add, subtract, multiply, and divide decimals to hundredths.",
       "gradeLevel": 5,
-      "standardCode": "5.NBT.7"
+      "standardCode": "5.NBT.7",
+      "strand": "number-base",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
     },
     {
       "id": "order-of-operations",
       "name": "Order of Operations",
       "description": "Evaluate expressions with parentheses, brackets, and braces (PEMDAS).",
       "gradeLevel": 5,
-      "standardCode": "5.OA.1"
+      "standardCode": "5.OA.1",
+      "strand": "algebra-thinking",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
     },
     {
       "id": "variables-expressions",
       "name": "Variables and Expressions",
       "description": "Write and evaluate simple expressions with variables.",
       "gradeLevel": 5,
-      "standardCode": "5.OA.2"
+      "standardCode": "5.OA.2",
+      "strand": "algebra-thinking",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
     },
     {
       "id": "coordinate-plane",
       "name": "Coordinate Plane (Introduction)",
       "description": "Graph points in the first quadrant of the coordinate plane.",
       "gradeLevel": 5,
-      "standardCode": "5.G.1"
+      "standardCode": "5.G.1",
+      "strand": "geometry",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
     },
     {
       "id": "volume",
       "name": "Volume",
       "description": "Find volumes of right rectangular prisms. Use V = l \u00d7 w \u00d7 h.",
       "gradeLevel": 5,
-      "standardCode": "5.MD.3"
+      "standardCode": "5.MD.3",
+      "strand": "geometry",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
     },
     {
       "id": "classify-2d-shapes",
       "name": "Classify 2D Shapes",
       "description": "Classify triangles and quadrilaterals based on properties.",
       "gradeLevel": 5,
-      "standardCode": "5.G.3"
+      "standardCode": "5.G.3",
+      "strand": "geometry",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
     },
     {
       "id": "line-plots",
       "name": "Line Plots with Fractions",
       "description": "Make line plots to display data measured in fractions.",
       "gradeLevel": 5,
-      "standardCode": "5.MD.2"
+      "standardCode": "5.MD.2",
+      "strand": "measurement-data",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
     },
     {
       "id": "unit-conversion",
       "name": "Unit Conversion",
       "description": "Convert among different-sized measurement units within a system.",
       "gradeLevel": 5,
-      "standardCode": "5.MD.1"
+      "standardCode": "5.MD.1",
+      "strand": "measurement-data",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
     }
   ],
   "prerequisites": [

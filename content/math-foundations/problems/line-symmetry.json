@@ -3,10 +3,10 @@
     "id": "line-symmetry-p1",
     "topicId": "line-symmetry",
     "difficulty": "easy",
-    "question": "Does a square have line symmetry? If yes, how many lines of symmetry does it have?",
+    "question": "How many lines of symmetry does a square have?",
     "answer": "4",
     "hints": [
-      "Think about folding a square in half. How many different ways can you fold it so both halves match?"
+      "Imagine a square split in half. How many different ways could you split it so both halves match?"
     ],
     "solution": "A square has 4 lines of symmetry: 2 through opposite sides (horizontal and vertical) and 2 through opposite corners (diagonals).",
     "cognitiveDemand": "procedural"
@@ -15,12 +15,13 @@
     "id": "line-symmetry-p2",
     "topicId": "line-symmetry",
     "difficulty": "easy",
-    "question": "How many lines of symmetry does a circle have?",
-    "answer": "infinite",
+    "question": "Does a regular hexagon (6 equal sides) have line symmetry? If yes, how many lines of symmetry does it have?",
+    "answer": "6",
     "hints": [
-      "A circle can be folded in half along any diameter."
+      "Imagine drawing a line through the center of a regular hexagon. How many different lines can you draw so both halves are mirror images?",
+      "Think about lines through opposite corners and lines through midpoints of opposite sides."
     ],
-    "solution": "A circle has infinitely many lines of symmetry. Any line through the center divides it into two matching halves.",
+    "solution": "A regular hexagon has 6 lines of symmetry: 3 through opposite vertices and 3 through midpoints of opposite sides.",
     "cognitiveDemand": "procedural"
   },
   {
@@ -43,7 +44,7 @@
     "question": "How many lines of symmetry does a rectangle (that is not a square) have?",
     "answer": "2",
     "hints": [
-      "A rectangle can be folded in half horizontally and vertically, but not diagonally."
+      "A rectangle can be split in half horizontally and vertically to make mirror halves, but not diagonally."
     ],
     "solution": "A non-square rectangle has 2 lines of symmetry: one horizontal and one vertical, each connecting midpoints of opposite sides.",
     "cognitiveDemand": "procedural"
@@ -52,13 +53,13 @@
     "id": "line-symmetry-p5",
     "topicId": "line-symmetry",
     "difficulty": "hard",
-    "question": "The letter 'A' has one line of symmetry. Is it vertical, horizontal, or diagonal? Does the letter 'B' have the same type of line of symmetry?",
-    "answer": "A has vertical; B has horizontal",
+    "question": "The letter 'A' has one line of symmetry. Is that line vertical, horizontal, or diagonal?",
+    "answer": "vertical",
     "hints": [
-      "Imagine folding the letter A in half. Which fold makes both sides match?",
-      "Now try the same with the letter B."
+      "Imagine drawing a line through the letter A to split it into two mirror halves. Would that line go left-right, or top-bottom?",
+      "The left side of 'A' is a mirror image of the right side."
     ],
-    "solution": "The letter A has a vertical line of symmetry (fold left to right). The letter B has a horizontal line of symmetry (fold top to bottom). They have different types.",
+    "solution": "The letter A has a vertical line of symmetry. The left side is a mirror image of the right side.",
     "cognitiveDemand": "procedural"
   }
 ]

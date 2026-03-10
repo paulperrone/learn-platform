@@ -54,7 +54,7 @@
   {
     "id": "multiply-word-problems-p5",
     "topicId": "multiply-word-problems",
-    "difficulty": "hard",
+    "difficulty": "medium",
     "question": "A parking lot has 8 rows of cars with 9 cars in each row. 5 more cars arrive. How many cars are in the lot now?",
     "answer": "77",
     "hints": [

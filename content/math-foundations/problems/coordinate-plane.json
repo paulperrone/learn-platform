@@ -53,13 +53,13 @@
     "id": "coordinate-plane-p5",
     "topicId": "coordinate-plane",
     "difficulty": "hard",
-    "question": "Two points are at (2, 3) and (8, 3). What is the distance between them? How do you know without counting?",
+    "question": "Two points are at (2, 3) and (8, 3). They are on the same horizontal line. What is the distance between them?",
     "answer": "6",
     "hints": [
-      "Both points have the same y-coordinate, so they are on the same horizontal line.",
+      "Both points have the same y-coordinate (3), so they sit on the same horizontal line.",
       "Subtract the x-coordinates: 8 − 2."
     ],
     "solution": "Since both points have y = 3, the distance is the difference in x-coordinates: 8 − 2 = 6 units.",
-    "cognitiveDemand": "reasoning"
+    "cognitiveDemand": "procedural"
   }
 ]

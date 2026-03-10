@@ -26,7 +26,7 @@
   {
     "id": "multiply-fraction-by-whole-p3",
     "topicId": "multiply-fraction-by-whole",
-    "difficulty": "medium",
+    "difficulty": "hard",
     "question": "What is 4 × 2/3? Give your answer as a mixed number.",
     "answer": "2 2/3",
     "hints": [
