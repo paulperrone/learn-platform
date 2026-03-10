@@ -717,4 +717,22 @@ Three content patterns cause systematically low accuracy in simulations (and lik
 2. **Multi-part questions** — "What angle is this? What type?" — grader only checks the `answer` field (one value), so the second part is ungraded but confuses students who include both. Split into separate problems or remove the ungraded part.
 3. **Ambiguous fraction formats** — "1 3/20" could also be "23/20". Specify the expected format in the question ("Write your answer as an improper fraction").
 
+---
+
+### 2026-03-09: Supplementary content agents can overwrite procedural generator output
+
+**Source:** Plan 018 Phase 3
+**Area:** Content pipeline / tooling
+
+When running parallel background agents to author supplementary problems for non-generatable topics, agents may also write files for topics that already have procedural generator output in `problems-generated/`. This silently replaces 50 procedural problems with 15 supplementary ones. Fix: after all supplementary agents complete, re-run `npx tsx tools/generate-problems.ts --count 50 --seed 42` to regenerate all procedural topics — generator output is deterministic and idempotent, so it safely overwrites any accidental replacements without affecting supplementary-only topics (which have no registered generator).
+
+---
+
+### 2026-03-09: problems-generated/ files must match topicId to filename for coverage detection
+
+**Source:** Plan 018 Phase 3
+**Area:** Content pipeline / validation
+
+The validate-content and content-status tools detect topic coverage by matching `<topic-id>.json` filenames against graph topic IDs. Problem files must be named exactly `<topicId>.json` (e.g., `add-within-5.json`) and contain problems where `p.topicId` matches. If the filename doesn't match the topicId, the topic will show as "missing problems" even though problems exist. This applies to both `problems/` and `problems-generated/` directories.
+
 **Context:** These patterns were the root cause for 6 topics with <50% overall accuracy despite content being conceptually correct. The grading service (`grading.ts`) does text normalization + numeric fallback, but can't handle lists or multi-part answers.

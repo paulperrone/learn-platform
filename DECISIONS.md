@@ -1292,4 +1292,20 @@ Tag each target in `targets.json` with `signal_source: "engine" | "content" | "b
 - ELA validates multi-subject routing + cross-discipline prerequisites
 - US History validates the untested context-layered progression model
 - Three subjects × three discipline models = comprehensive engine validation
+
+---
+
+### 2026-03-09: Procedural generators with seeded PRNG for assessment pool expansion
+
+**Source:** Plan 018 Phase 3
+
+**Context:** Simulations exposed question repetition — most topics had only 5-15 hand-authored problems. 30-session sims exhaust pools quickly, biasing accuracy metrics.
+
+**Decision:** Build parametric problem generators (`tools/generators/`) using seeded Mulberry32 PRNG. 143 generators cover K-8 math computation topics. Non-generatable topics (conceptual, application-heavy) get 15 supplementary hand-authored problems. Generated problems go in `problems-generated/` separate from `problems/`. All pipeline tools (validate, import, status, gaps) merge both directories transparently.
+
+**Capacity targets:** 50 problems per generatable topic, 15 per supplementary topic, minimum 20 per topic across all 207 topics. Achieved: 9,145 total problems.
+
+**Why seeded PRNG over LLM generation:** Reproducible (`--seed 42` produces identical output), fast (143 topics in <2s vs hours of LLM calls), no hallucinated math errors, git-diffable output. LLM-authored supplementary content still needed for topics requiring conceptual reasoning or word problems.
+
+**Why separate directory:** Avoids merge conflicts with hand-authored content. `problems/` is human-curated, `problems-generated/` is machine output. Both are in git as source of truth.
 - Total target: ~300 topics across 3 subjects
