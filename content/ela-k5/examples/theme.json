@@ -1,0 +1,52 @@
+[
+  {
+    "id": "theme-ex1",
+    "topicId": "theme",
+    "title": "Determining a Story's Theme",
+    "steps": [
+      {
+        "subgoalLabel": "Read the story",
+        "instruction": "Read: 'Rosa wanted to win the art contest. She worked on her painting every day after school for two weeks. Some kids finished in one day, but Rosa kept going. On contest day, Rosa won first place. She smiled and thought about all those afternoons of practice.'",
+        "work": "Rosa worked on her painting every day for two weeks while others rushed. She won first place.",
+        "explanation": "The theme is the lesson or message the story teaches. It is NOT the topic (art contest) — it is the bigger life lesson."
+      },
+      {
+        "subgoalLabel": "Think about what the character learned",
+        "instruction": "What did Rosa do that led to her success?",
+        "work": "Rosa kept working when others stopped. Her hard work and patience paid off.",
+        "explanation": "The character's actions and the result give us clues about the theme."
+      },
+      {
+        "subgoalLabel": "State the theme",
+        "instruction": "Write the lesson as a general statement — not about Rosa specifically, but about life.",
+        "work": "Theme: Hard work and patience lead to success.",
+        "explanation": "The theme applies to anyone, not just Rosa. It is a big idea like 'hard work pays off,' 'be kind to others,' or 'honesty is important.' The theme is never just one word like 'art' — it is a full message."
+      }
+    ]
+  },
+  {
+    "id": "theme-ex2",
+    "topicId": "theme",
+    "title": "Finding the Theme Using Character Actions",
+    "steps": [
+      {
+        "subgoalLabel": "Read the story",
+        "instruction": "Read: 'Tyler bragged that he was the fastest runner in school. At recess, a new student named Ava challenged him to a race. Tyler laughed and said it would be easy. But Ava won! Tyler was surprised and said, \"Wow, you are really fast. Good race!\"'",
+        "work": "Tyler bragged about being the fastest. Ava challenged him and won. Tyler congratulated her.",
+        "explanation": "Let's find the theme by looking at how Tyler changed."
+      },
+      {
+        "subgoalLabel": "Track how the character changed",
+        "instruction": "How did Tyler act at the beginning vs. the end?",
+        "work": "Beginning: bragged, laughed, overconfident. End: surprised, respectful, good sport.",
+        "explanation": "Tyler learned something from losing the race."
+      },
+      {
+        "subgoalLabel": "State the theme",
+        "instruction": "What life lesson did Tyler learn?",
+        "work": "Theme: Don't underestimate others. OR Being a good sport matters more than winning.",
+        "explanation": "A story can have more than one theme. Both lessons fit Tyler's experience. To find a theme, ask: 'What did the character learn?' and turn that into advice anyone could use."
+      }
+    ]
+  }
+]

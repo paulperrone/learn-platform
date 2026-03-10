@@ -1,0 +1,64 @@
+[
+  {
+    "id": "multisyllabic-decoding-ex1",
+    "topicId": "multisyllabic-decoding",
+    "title": "Breaking Down a Three-Syllable Word",
+    "steps": [
+      {
+        "subgoalLabel": "Count the vowel sounds",
+        "instruction": "Look at this word: fantastic. Find all the vowels.",
+        "work": "f-a-n-t-a-s-t-i-c → vowels: a, a, i (three vowel sounds)",
+        "explanation": "Each syllable has one vowel sound. Three vowel sounds means three syllables."
+      },
+      {
+        "subgoalLabel": "Split into syllables",
+        "instruction": "Use syllable division rules. Look for consonants between vowels and split accordingly.",
+        "work": "fan | tas | tic",
+        "explanation": "Between the first 'a' and second 'a' we have 'nt' (split between: fan-tas). Between the second 'a' and 'i' we have 'st' (split between: tas-tic). Each syllable is closed (ends in a consonant)."
+      },
+      {
+        "subgoalLabel": "Identify syllable types",
+        "instruction": "Determine if each syllable is open or closed to know the vowel sound.",
+        "work": "fan (closed → short a), tas (closed → short a), tic (closed → short i)",
+        "explanation": "All three syllables are closed (end in a consonant), so all vowels are short."
+      },
+      {
+        "subgoalLabel": "Blend the syllables",
+        "instruction": "Read each syllable, then blend them together.",
+        "work": "/fan/ + /tas/ + /tik/ → fantastic",
+        "explanation": "The word is 'fantastic'. Breaking long words into syllables makes them much easier to read."
+      }
+    ]
+  },
+  {
+    "id": "multisyllabic-decoding-ex2",
+    "topicId": "multisyllabic-decoding",
+    "title": "Decoding a Word with Mixed Syllable Types",
+    "steps": [
+      {
+        "subgoalLabel": "Find the vowel sounds",
+        "instruction": "Look at this word: complete. How many vowel sounds are there?",
+        "work": "c-o-m-p-l-e-t-e → vowels: o, e, e (but final 'e' is silent) → two vowel sounds",
+        "explanation": "Even though there are three vowel letters, the final 'e' is silent. That means there are two vowel sounds and two syllables."
+      },
+      {
+        "subgoalLabel": "Split into syllables",
+        "instruction": "Find the consonants between the vowels and split.",
+        "work": "com | plete",
+        "explanation": "Between 'o' and the first 'e' we have 'mpl'. We split after 'm' to keep the blend 'pl' together: com-plete."
+      },
+      {
+        "subgoalLabel": "Identify syllable types",
+        "instruction": "What type is each syllable?",
+        "work": "com = closed (short o), plete = VCe (long e)",
+        "explanation": "'Com' is closed (ends in consonant, short vowel). 'Plete' follows the VCe pattern (silent e makes the first 'e' long)."
+      },
+      {
+        "subgoalLabel": "Read the word",
+        "instruction": "Blend the syllables together.",
+        "work": "/kom/ + /pleet/ → complete",
+        "explanation": "The word is 'complete'. Knowing syllable types helps you figure out vowel sounds in longer words."
+      }
+    ]
+  }
+]

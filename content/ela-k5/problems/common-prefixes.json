@@ -1,0 +1,70 @@
+[
+  {
+    "id": "common-prefixes-p1",
+    "topicId": "common-prefixes",
+    "difficulty": "easy",
+    "question": "The prefix un- means 'not'. What does 'unsafe' mean?",
+    "answer": "not safe",
+    "hints": [
+      "Replace un- with 'not' and read the word."
+    ],
+    "solution": "'Unsafe' means 'not safe'. The prefix un- was added to 'safe' to make it mean the opposite.",
+    "cognitiveDemand": "recall",
+    "source": "hand-authored"
+  },
+  {
+    "id": "common-prefixes-p2",
+    "topicId": "common-prefixes",
+    "difficulty": "easy",
+    "question": "The prefix re- means 'again'. What does 'reread' mean?",
+    "answer": "read again",
+    "hints": [
+      "If re- means 'again', what would it mean to reread something?"
+    ],
+    "solution": "'Reread' means 'to read again'. The prefix re- was added to 'read' to show the action is being repeated.",
+    "cognitiveDemand": "recall",
+    "source": "hand-authored"
+  },
+  {
+    "id": "common-prefixes-p3",
+    "topicId": "common-prefixes",
+    "difficulty": "medium",
+    "question": "Which prefix would you add to 'agree' to make a word that means 'to not agree'? Choose from: un-, re-, pre-, dis-",
+    "answer": "dis-",
+    "hints": [
+      "Both un- and dis- can mean 'not' or 'opposite of'.",
+      "We say 'disagree', not 'unagree'. Some prefixes pair with certain words."
+    ],
+    "solution": "The correct prefix is dis-. 'Disagree' means 'to not agree' or 'to have a different opinion'. While un- also means 'not', dis- is the prefix that pairs with 'agree' in English.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "common-prefixes-p4",
+    "topicId": "common-prefixes",
+    "difficulty": "medium",
+    "question": "Read this sentence: 'I need to preheat the oven before baking cookies.' If pre- means 'before', what does 'preheat' mean?",
+    "answer": "heat before",
+    "hints": [
+      "Break the word into parts: pre + heat.",
+      "When do you preheat — before or after baking?"
+    ],
+    "solution": "'Preheat' means 'to heat before' or 'to heat ahead of time'. The prefix pre- means 'before', so preheating the oven means heating it before you put the cookies in.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "common-prefixes-p5",
+    "topicId": "common-prefixes",
+    "difficulty": "hard",
+    "question": "A student wrote: 'I misbehaved at the store.' Another student said the prefix mis- means 'wrong'. Using that meaning, explain what 'misbehaved' means in your own words.",
+    "answer": "behaved badly or behaved the wrong way",
+    "hints": [
+      "Break it into parts: mis + behaved.",
+      "If mis- means 'wrong' or 'badly', what does wrong behaving look like?"
+    ],
+    "solution": "'Misbehaved' means 'behaved in the wrong way' or 'behaved badly'. The prefix mis- means 'wrong' or 'badly', so adding it to 'behaved' turns good behavior into bad behavior. Other examples: misspell = spell wrong, misplace = place in the wrong spot.",
+    "cognitiveDemand": "reasoning",
+    "source": "hand-authored"
+  }
+]

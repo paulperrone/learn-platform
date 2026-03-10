@@ -1,0 +1,52 @@
+[
+  {
+    "id": "pronouns-ex1",
+    "topicId": "pronouns",
+    "title": "Choosing the Right Pronoun",
+    "steps": [
+      {
+        "subgoalLabel": "Read the sentences",
+        "instruction": "Read: 'Sam likes to draw. Sam draws every day.'",
+        "work": "Sam likes to draw. Sam draws every day.",
+        "explanation": "Using 'Sam' twice sounds repetitive. We can use a pronoun the second time."
+      },
+      {
+        "subgoalLabel": "Decide which pronoun fits",
+        "instruction": "Is Sam a boy or a girl? Pick the pronoun that replaces a boy's name: he, him, his.",
+        "work": "Sam is a boy → use 'He'",
+        "explanation": "'He' replaces a boy's name when it is the subject of the sentence (doing the action)."
+      },
+      {
+        "subgoalLabel": "Rewrite the sentence",
+        "instruction": "Replace the second 'Sam' with the pronoun.",
+        "work": "Sam likes to draw. He draws every day.",
+        "explanation": "'He' takes Sam's place so we don't repeat the name. 'She' would work if Sam were a girl."
+      }
+    ]
+  },
+  {
+    "id": "pronouns-ex2",
+    "topicId": "pronouns",
+    "title": "Subject Pronouns vs. Object Pronouns",
+    "steps": [
+      {
+        "subgoalLabel": "Read the sentence",
+        "instruction": "Which is correct? 'Mom drove Sarah and (I/me) to school.'",
+        "work": "Mom drove Sarah and _____ to school.",
+        "explanation": "We need to pick between 'I' and 'me.'"
+      },
+      {
+        "subgoalLabel": "Use the drop-the-other-person trick",
+        "instruction": "Remove 'Sarah and' and try each pronoun by itself.",
+        "work": "'Mom drove I to school' — sounds wrong! 'Mom drove me to school' — sounds right!",
+        "explanation": "When you take away the other person, it becomes easy to hear which pronoun is correct."
+      },
+      {
+        "subgoalLabel": "Explain why",
+        "instruction": "'I' is a subject pronoun (does the action). 'Me' is an object pronoun (receives the action). Who is being driven?",
+        "work": "Mom drove Sarah and me to school.",
+        "explanation": "'Me' is correct because Sarah and me are receiving the action (being driven). 'I' is only used when you are doing the action, like 'I drove to school.'"
+      }
+    ]
+  }
+]

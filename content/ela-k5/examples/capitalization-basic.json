@@ -1,0 +1,58 @@
+[
+  {
+    "id": "capitalization-basic-ex1",
+    "topicId": "capitalization-basic",
+    "title": "Capitalizing the First Word of a Sentence",
+    "steps": [
+      {
+        "subgoalLabel": "Read the sentence",
+        "instruction": "Read: 'the cat sat on the mat.'",
+        "work": "the cat sat on the mat.",
+        "explanation": "Something looks wrong. Let's check the capitalization rules."
+      },
+      {
+        "subgoalLabel": "Check the first word",
+        "instruction": "The first word of every sentence must start with a capital letter. Does it?",
+        "work": "'the' starts with a lowercase 't'.",
+        "explanation": "The first word 'the' needs a capital letter because it starts the sentence."
+      },
+      {
+        "subgoalLabel": "Fix the sentence",
+        "instruction": "Rewrite the sentence with the correct capital letter.",
+        "work": "The cat sat on the mat.",
+        "explanation": "Now the sentence starts with a capital 'T'. Every sentence must begin with a capital letter."
+      }
+    ]
+  },
+  {
+    "id": "capitalization-basic-ex2",
+    "topicId": "capitalization-basic",
+    "title": "Capitalizing the Word 'I'",
+    "steps": [
+      {
+        "subgoalLabel": "Read the sentence",
+        "instruction": "Read: 'Yesterday i went to the store and i bought milk.'",
+        "work": "Yesterday i went to the store and i bought milk.",
+        "explanation": "Let's look for capitalization errors in this sentence."
+      },
+      {
+        "subgoalLabel": "Check the first word",
+        "instruction": "Is the first word capitalized?",
+        "work": "'Yesterday' starts with a capital 'Y'. Correct!",
+        "explanation": "The first word is already capitalized, so that's fine."
+      },
+      {
+        "subgoalLabel": "Check the word 'I'",
+        "instruction": "The word 'I' by itself is ALWAYS capitalized. Find every 'i' that means 'me'.",
+        "work": "Found two: 'i went' and 'i bought'",
+        "explanation": "Both should be capital 'I' because the word 'I' is always uppercase."
+      },
+      {
+        "subgoalLabel": "Fix the sentence",
+        "instruction": "Rewrite with corrections.",
+        "work": "Yesterday I went to the store and I bought milk.",
+        "explanation": "Both 'I' words are now capitalized. Remember: the word 'I' is always a capital letter, no matter where it appears."
+      }
+    ]
+  }
+]

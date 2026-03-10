@@ -1,0 +1,52 @@
+[
+  {
+    "id": "context-clues-intermediate-ex1",
+    "topicId": "context-clues-intermediate",
+    "title": "Using a Definition Clue in a Sentence",
+    "steps": [
+      {
+        "subgoalLabel": "Read the sentence",
+        "instruction": "Read this sentence: The habitat, or natural home, of a polar bear is the Arctic.",
+        "work": "The habitat, or natural home, of a polar bear is the Arctic.",
+        "explanation": "The word 'habitat' might be unfamiliar. Look for clues that define it right in the sentence."
+      },
+      {
+        "subgoalLabel": "Find the definition clue",
+        "instruction": "Look for signal words like 'or', 'which means', 'that is', or commas that set off a definition.",
+        "work": "Clue: 'or natural home' → set off by commas",
+        "explanation": "The phrase 'or natural home' is placed right after 'habitat' and set off by commas. This is a definition clue — the author is telling you what the word means."
+      },
+      {
+        "subgoalLabel": "Determine the meaning",
+        "instruction": "Use the definition clue to state what 'habitat' means.",
+        "work": "habitat = natural home (the place where an animal lives in nature)",
+        "explanation": "A 'habitat' is an animal's natural home. Authors often include definitions right in the text using commas, dashes, or the word 'or' to help readers with unfamiliar words."
+      }
+    ]
+  },
+  {
+    "id": "context-clues-intermediate-ex2",
+    "topicId": "context-clues-intermediate",
+    "title": "Using an Example Clue to Find Meaning",
+    "steps": [
+      {
+        "subgoalLabel": "Read the passage",
+        "instruction": "Read this passage: Many reptiles, such as lizards, snakes, and turtles, are cold-blooded animals.",
+        "work": "Many reptiles, such as lizards, snakes, and turtles, are cold-blooded animals.",
+        "explanation": "The word 'reptiles' might be unfamiliar. Look for examples that help explain it."
+      },
+      {
+        "subgoalLabel": "Find the example clue",
+        "instruction": "Look for signal phrases like 'such as', 'for example', 'including', or 'like'.",
+        "work": "Signal phrase: 'such as' → examples: lizards, snakes, turtles",
+        "explanation": "The phrase 'such as' introduces examples. Lizards, snakes, and turtles are examples of reptiles."
+      },
+      {
+        "subgoalLabel": "Use examples to build meaning",
+        "instruction": "What do lizards, snakes, and turtles have in common? Use that to understand 'reptiles'.",
+        "work": "Lizards, snakes, turtles → scaly, cold-blooded animals → reptiles = a group of cold-blooded, scaly animals",
+        "explanation": "By thinking about what the examples share, you can figure out the category. Reptiles are cold-blooded animals with scales. Example clues give you specific members of a group to help you understand the group name."
+      }
+    ]
+  }
+]

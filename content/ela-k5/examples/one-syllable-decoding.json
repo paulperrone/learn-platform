@@ -1,0 +1,52 @@
+[
+  {
+    "id": "one-syllable-decoding-ex1",
+    "topicId": "one-syllable-decoding",
+    "title": "Reading a Word with a Beginning Blend",
+    "steps": [
+      {
+        "subgoalLabel": "Find the blend",
+        "instruction": "Look at this word: stop. The first two consonants are next to each other.",
+        "work": "st-o-p → 'st' is a consonant blend",
+        "explanation": "A blend is two consonants that each keep their own sound but are said quickly together. Unlike a digraph, you can still hear both sounds."
+      },
+      {
+        "subgoalLabel": "Say the blend",
+        "instruction": "Say /s/ and /t/ quickly together.",
+        "work": "/s/ + /t/ → /st/",
+        "explanation": "In a blend, you hear both sounds: /s/ and /t/. They slide together smoothly."
+      },
+      {
+        "subgoalLabel": "Blend all sounds",
+        "instruction": "Now blend /st/ with the vowel and final consonant.",
+        "work": "/st/ + /o/ + /p/ → stop",
+        "explanation": "The word is 'stop'. Other beginning blends include bl (black), cr (crab), gr (green), and fl (flag)."
+      }
+    ]
+  },
+  {
+    "id": "one-syllable-decoding-ex2",
+    "topicId": "one-syllable-decoding",
+    "title": "Reading a Word with an Ending Blend",
+    "steps": [
+      {
+        "subgoalLabel": "Look at the word",
+        "instruction": "Look at this word: best. Notice the last two consonants.",
+        "work": "b-e-st → 'st' is an ending blend",
+        "explanation": "This word ends with two consonants: 's' and 't'. These form an ending blend."
+      },
+      {
+        "subgoalLabel": "Sound out the beginning",
+        "instruction": "Start with the first letter and vowel: b-e.",
+        "work": "/b/ + /e/ → /be/",
+        "explanation": "The 'e' makes its short sound /e/ (like in 'bed')."
+      },
+      {
+        "subgoalLabel": "Add the ending blend",
+        "instruction": "Now add the ending blend /st/.",
+        "work": "/be/ + /st/ → best",
+        "explanation": "The word is 'best'. Common ending blends include -nd (band), -mp (jump), -nk (pink), and -lt (felt)."
+      }
+    ]
+  }
+]

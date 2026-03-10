@@ -1,0 +1,57 @@
+[
+  {
+    "id": "compare-contrast-advanced-p1",
+    "topicId": "compare-contrast-advanced",
+    "difficulty": "easy",
+    "question": "Read the two passages about wolves:\n\nPassage A: Wolves live in groups called packs. The pack works together to hunt large animals like deer and elk. Wolves communicate using howls, body language, and scent markings.\n\nPassage B: The wolf crept through the dark forest, its yellow eyes glowing. It lifted its head and howled at the moon. The sound echoed through the valley, sending shivers down the traveler's spine.\n\nBoth passages are about wolves. How are they different in the way they describe wolves?",
+    "answer": "Passage A describes wolves with facts and information. Passage B describes a wolf in a dramatic, story-like way that makes it seem scary.",
+    "hints": ["Is Passage A more like a textbook or a story? What about Passage B?"],
+    "solution": "Passage A is informational — it presents factual details about wolf behavior (packs, hunting, communication). Passage B is narrative/literary — it uses vivid imagery ('yellow eyes glowing,' 'shivers down the traveler's spine') to create a dramatic, almost scary scene. The same animal is presented very differently depending on the author's purpose.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "compare-contrast-advanced-p2",
+    "topicId": "compare-contrast-advanced",
+    "difficulty": "easy",
+    "question": "Read the two passages about rain:\n\nPassage A: Rain happens when water droplets in clouds get heavy enough to fall. Rain is important because it fills rivers, lakes, and reservoirs that provide drinking water.\n\nPassage B: Rain is the best kind of weather. There is nothing more relaxing than listening to raindrops on the roof. Everyone should learn to love rainy days instead of complaining about them.\n\nWhat is the main purpose of each passage?",
+    "answer": "Passage A is written to inform the reader about how rain works and why it matters. Passage B is written to persuade the reader to appreciate rainy days.",
+    "hints": ["Does Passage A share facts or opinions? What about Passage B?", "Look for persuasive language in Passage B."],
+    "solution": "Passage A's purpose is to inform — it explains the science of rain and its importance with facts. Passage B's purpose is to persuade — it uses opinion words ('best,' 'nothing more relaxing') and a call to action ('everyone should') to convince readers to like rain. Same topic, different purposes.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "compare-contrast-advanced-p3",
+    "topicId": "compare-contrast-advanced",
+    "difficulty": "medium",
+    "question": "Read the two passages about space exploration:\n\nPassage A: In 1969, astronauts Neil Armstrong and Buzz Aldrin became the first people to walk on the Moon. The Apollo 11 mission took about three days to travel from Earth to the Moon. Armstrong's famous words were, 'That's one small step for man, one giant leap for mankind.'\n\nPassage B: Sending people to the Moon was one of the greatest achievements in history, but we should now focus on Mars. Mars has water ice and could possibly support human life. Investing in a Mars mission would create new technologies that benefit everyone on Earth.\n\nCompare how these passages approach the topic of space exploration. How do their purposes and tones differ?",
+    "answer": "Passage A informs the reader about a past event (the Moon landing) using historical facts and a neutral tone. Passage B argues for future action (a Mars mission) using persuasive language and an enthusiastic tone. Passage A looks backward and Passage B looks forward.",
+    "hints": ["Is Passage A about the past or the future? What about Passage B?", "Does either passage try to convince you of something?"],
+    "solution": "Passage A is informational and historical, presenting facts about the 1969 Moon landing in a neutral tone. Passage B is persuasive and forward-looking, arguing that resources should go toward Mars exploration. The tone differs: Passage A is objective ('astronauts became the first'), while Passage B uses persuasive language ('greatest achievements,' 'should now focus,' 'benefit everyone'). Both are about space exploration, but one reports what happened and the other argues for what should happen next.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "compare-contrast-advanced-p4",
+    "topicId": "compare-contrast-advanced",
+    "difficulty": "medium",
+    "question": "Read the two passages about honeybees:\n\nPassage A: Honeybees are essential for food production. They pollinate about one-third of the food we eat, including apples, almonds, and blueberries. Without bees, farmers would have to pollinate crops by hand, which would be slow and expensive. Bee populations have been declining due to pesticides and habitat loss.\n\nPassage B: Inside a beehive, every bee has a job. Worker bees fly from flower to flower collecting nectar. Guard bees protect the entrance. The queen bee lays up to 2,000 eggs per day. Together, the hive works like a tiny, perfectly organized city.\n\nBoth passages are about honeybees. What different aspect of bees does each author focus on? Why might a reader want to read both?",
+    "answer": "Passage A focuses on why bees matter to humans (pollination and food). Passage B focuses on how bees live and work inside the hive. A reader would want both because together they give a complete picture — why bees are important and how their colonies function.",
+    "hints": ["What is Passage A mainly about? What is Passage B mainly about?", "Does either passage cover what the other one is missing?"],
+    "solution": "Passage A focuses on the human impact of bees — their role in food production and the threat of population decline. Passage B focuses on bee behavior — the social structure and roles within a hive. A reader benefits from both because Passage A explains why bees matter to us, and Passage B explains how bees actually live. Together, they provide a fuller understanding of honeybees than either passage alone.",
+    "cognitiveDemand": "conceptual",
+    "source": "hand-authored"
+  },
+  {
+    "id": "compare-contrast-advanced-p5",
+    "topicId": "compare-contrast-advanced",
+    "difficulty": "hard",
+    "question": "Read the two passages about homework:\n\nPassage A: Studies show that homework can help students practice skills and remember what they learned in class. However, too much homework can cause stress and take away time for play and family. Researchers suggest that 10 minutes per grade level is a good guideline — so a fourth grader would do about 40 minutes per night.\n\nPassage B: Homework is a waste of students' time. Kids sit in school for seven hours and then have to do more work at home. They deserve to relax, play sports, and spend time with friends. Schools in Finland give very little homework, and their students are among the best in the world.\n\nAnalyze how each author approaches the topic of homework. Compare their use of evidence, tone, and possible bias. Which passage presents a more balanced view? Explain with details from both texts.",
+    "answer": "Passage A presents a balanced view — it gives both benefits (practice, memory) and drawbacks (stress, lost time) and cites research. Passage B presents a one-sided argument against homework using emotional language ('waste of time,' 'deserve to relax') and one example (Finland) without acknowledging any benefits. Passage A is more balanced because it considers both sides, while Passage B shows bias against homework.",
+    "hints": ["Does Passage A mention both good and bad things about homework?", "Does Passage B mention anything good about homework?", "Which passage uses more emotional language?"],
+    "solution": "Passage A takes a balanced approach: it acknowledges benefits ('practice skills,' 'remember what they learned') and drawbacks ('stress,' 'take away time') and cites researcher guidelines. Its tone is neutral and evidence-based. Passage B takes a one-sided approach against homework. It uses emotional language ('waste of time,' 'deserve to relax') and cites only one supporting example (Finland) without addressing any benefits. Passage A is more balanced because it presents multiple perspectives and evidence-based recommendations. Passage B shows bias — it only argues one side and uses persuasive language to influence the reader's feelings rather than presenting a complete picture.",
+    "cognitiveDemand": "reasoning",
+    "source": "hand-authored"
+  }
+]

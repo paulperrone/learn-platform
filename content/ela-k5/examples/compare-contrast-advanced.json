@@ -1,0 +1,58 @@
+[
+  {
+    "id": "compare-contrast-advanced-ex1",
+    "topicId": "compare-contrast-advanced",
+    "title": "Comparing Two Texts on the Same Topic",
+    "steps": [
+      {
+        "subgoalLabel": "Read both passages",
+        "instruction": "Text A: 'Dolphins are playful ocean animals. They jump out of the water and swim in groups called pods. Dolphins are very smart and can learn tricks.' Text B: 'Dolphins face many dangers in the ocean. Fishing nets can trap them. Pollution makes the water dirty and can make dolphins sick.'",
+        "work": "Text A: Dolphins are playful, smart, swim in pods. Text B: Dolphins face dangers — nets, pollution.",
+        "explanation": "Both texts are about dolphins, but they focus on different things."
+      },
+      {
+        "subgoalLabel": "Compare: What is the same?",
+        "instruction": "What do both texts have in common?",
+        "work": "Same topic: dolphins. Same type: nonfiction/informational.",
+        "explanation": "Both give facts about dolphins in the ocean."
+      },
+      {
+        "subgoalLabel": "Contrast: What is different?",
+        "instruction": "How do the two texts differ in focus, tone, or purpose?",
+        "work": "Text A focuses on fun facts (positive). Text B focuses on problems dolphins face (serious/concerned).",
+        "explanation": "Text A wants you to appreciate dolphins. Text B wants you to understand their challenges. Two texts on the same topic can have very different purposes and tones."
+      },
+      {
+        "subgoalLabel": "Explain what you learn from both",
+        "instruction": "What do you understand about dolphins by reading BOTH texts?",
+        "work": "Dolphins are smart, playful animals, but they face real dangers from humans. Reading both gives a more complete picture.",
+        "explanation": "Comparing two texts gives a fuller understanding than reading just one. Each text adds information the other leaves out."
+      }
+    ]
+  },
+  {
+    "id": "compare-contrast-advanced-ex2",
+    "topicId": "compare-contrast-advanced",
+    "title": "Comparing How Two Authors Treat the Same Event",
+    "steps": [
+      {
+        "subgoalLabel": "Read both passages",
+        "instruction": "Text A: 'The first day of school is exciting! You get to meet your new teacher and see your friends. There are new supplies and new things to learn.' Text B: 'The first day of school can be hard. Everything is new and unfamiliar. Some kids feel nervous about finding their classroom.'",
+        "work": "Text A: first day is exciting — friends, new supplies. Text B: first day can be hard — nervous, unfamiliar.",
+        "explanation": "Same event (first day of school), different perspectives."
+      },
+      {
+        "subgoalLabel": "Identify each author's viewpoint",
+        "instruction": "How does each author feel about the first day of school?",
+        "work": "Author A: positive, excited. Author B: understanding, acknowledges difficulty.",
+        "explanation": "Author A emphasizes the good parts. Author B emphasizes the challenging parts."
+      },
+      {
+        "subgoalLabel": "Analyze why they differ",
+        "instruction": "Why might two authors write about the same topic so differently?",
+        "work": "They may have had different experiences, or they may be writing for different purposes. Author A might want to get kids excited; Author B might want to help nervous kids feel understood.",
+        "explanation": "Authors make choices about what to include and how to present it. Comparing texts helps readers see that there are multiple ways to think about the same topic."
+      }
+    ]
+  }
+]

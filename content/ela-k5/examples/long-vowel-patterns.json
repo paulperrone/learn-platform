@@ -1,0 +1,52 @@
+[
+  {
+    "id": "long-vowel-patterns-ex1",
+    "topicId": "long-vowel-patterns",
+    "title": "Reading a Silent-E Word",
+    "steps": [
+      {
+        "subgoalLabel": "Look at the word",
+        "instruction": "Look at this word: cake. Notice the 'e' at the end.",
+        "work": "c-a-k-e",
+        "explanation": "This word ends with the letter 'e'. When a word has the pattern consonant-vowel-consonant-e (CVCe), the 'e' is usually silent."
+      },
+      {
+        "subgoalLabel": "Apply the silent-e rule",
+        "instruction": "The silent 'e' at the end makes the middle vowel say its name (long sound).",
+        "work": "cake: the 'e' is silent → the 'a' says its name → /ay/",
+        "explanation": "Without the 'e', this would be 'cak' with a short /a/. The silent 'e' changes the 'a' to its long sound /ay/."
+      },
+      {
+        "subgoalLabel": "Read the word",
+        "instruction": "Blend the sounds using the long vowel.",
+        "work": "/k/ + /ay/ + /k/ → cake",
+        "explanation": "The word is 'cake'. The silent-e rule works the same way in many words: made, bike, hope, cute."
+      }
+    ]
+  },
+  {
+    "id": "long-vowel-patterns-ex2",
+    "topicId": "long-vowel-patterns",
+    "title": "Reading a Vowel Team Word",
+    "steps": [
+      {
+        "subgoalLabel": "Spot the vowel team",
+        "instruction": "Look at this word: rain. Find two vowels next to each other.",
+        "work": "r-ai-n → 'ai' is a vowel team",
+        "explanation": "A vowel team is two vowels side by side that make one sound. In 'rain', the letters 'a' and 'i' form a vowel team."
+      },
+      {
+        "subgoalLabel": "Apply the vowel team rule",
+        "instruction": "In many vowel teams, the first vowel says its name and the second vowel is silent.",
+        "work": "ai → the 'a' says /ay/, the 'i' is silent",
+        "explanation": "A helpful saying is: 'When two vowels go walking, the first one does the talking.' The 'a' says its long sound /ay/."
+      },
+      {
+        "subgoalLabel": "Blend and read",
+        "instruction": "Blend all the sounds together.",
+        "work": "/r/ + /ay/ + /n/ → rain",
+        "explanation": "The word is 'rain'. Other vowel teams that work this way include 'ea' in 'read', 'oa' in 'boat', and 'ee' in 'tree'."
+      }
+    ]
+  }
+]

@@ -1,0 +1,73 @@
+[
+  {
+    "id": "prepositional-phrases-p1",
+    "topicId": "prepositional-phrases",
+    "difficulty": "easy",
+    "question": "What is the preposition in this sentence? 'The cat sat under the table.'",
+    "answer": "under",
+    "hints": [
+      "A preposition is a small word that shows location, time, or direction.",
+      "Where did the cat sit? The word that tells you the position is the preposition."
+    ],
+    "solution": "'Under' is the preposition. It shows where the cat sat in relation to the table.",
+    "cognitiveDemand": "recall",
+    "source": "hand-authored"
+  },
+  {
+    "id": "prepositional-phrases-p2",
+    "topicId": "prepositional-phrases",
+    "difficulty": "easy",
+    "question": "What is the prepositional phrase in this sentence? 'She went to the store.'",
+    "answer": "to the store",
+    "hints": [
+      "A prepositional phrase starts with a preposition and ends with a noun.",
+      "It answers where, when, or how."
+    ],
+    "solution": "'To the store' is the prepositional phrase. It starts with the preposition 'to' and ends with the noun 'store.' It tells where she went.",
+    "cognitiveDemand": "recall",
+    "source": "hand-authored"
+  },
+  {
+    "id": "prepositional-phrases-p3",
+    "topicId": "prepositional-phrases",
+    "difficulty": "medium",
+    "question": "Identify the prepositional phrase: 'Before lunch, we played outside.'",
+    "answer": "Before lunch",
+    "hints": [
+      "Look for a phrase that starts with a preposition (before, after, during, with, etc.).",
+      "This phrase tells you WHEN something happened."
+    ],
+    "solution": "'Before lunch' is the prepositional phrase. 'Before' is the preposition and 'lunch' is the object. It tells when they played.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "prepositional-phrases-p4",
+    "topicId": "prepositional-phrases",
+    "difficulty": "medium",
+    "question": "How many prepositional phrases are in this sentence? 'The bird in the tree sang with joy.'",
+    "answer": "2",
+    "hints": [
+      "Look for phrases that start with small words showing location, time, or manner.",
+      "One phrase tells WHERE the bird is. Another tells HOW it sang."
+    ],
+    "solution": "There are 2 prepositional phrases: 'in the tree' (tells where the bird is) and 'with joy' (tells how it sang).",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "prepositional-phrases-p5",
+    "topicId": "prepositional-phrases",
+    "difficulty": "hard",
+    "question": "Identify ALL prepositional phrases: 'During the storm, the dog hid under the bed with a blanket over its head.'",
+    "answer": "During the storm, under the bed, with a blanket, over its head",
+    "hints": [
+      "Each prepositional phrase starts with a preposition and ends with a noun or pronoun.",
+      "Common prepositions: during, under, with, over, in, on, at, by, for, between.",
+      "Count carefully — there are four phrases."
+    ],
+    "solution": "Four prepositional phrases: 'During the storm' (when), 'under the bed' (where the dog hid), 'with a blanket' (how/with what), 'over its head' (where the blanket was).",
+    "cognitiveDemand": "reasoning",
+    "source": "hand-authored"
+  }
+]

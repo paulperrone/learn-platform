@@ -1,0 +1,52 @@
+[
+  {
+    "id": "complete-sentences-ex1",
+    "topicId": "complete-sentences",
+    "title": "Checking if a Sentence is Complete",
+    "steps": [
+      {
+        "subgoalLabel": "Read the words",
+        "instruction": "Read: 'The big dog.'",
+        "work": "The big dog.",
+        "explanation": "We need to check if this is a complete sentence by looking for two parts."
+      },
+      {
+        "subgoalLabel": "Find the subject",
+        "instruction": "Ask: Who or what is this about?",
+        "work": "Subject = The big dog",
+        "explanation": "The subject tells us who or what the sentence is about. We found it!"
+      },
+      {
+        "subgoalLabel": "Find the predicate",
+        "instruction": "Ask: What does the subject do or what happens?",
+        "work": "Predicate = (missing!)",
+        "explanation": "There is no predicate — we don't know what the dog does. This is NOT a complete sentence. It is a fragment."
+      }
+    ]
+  },
+  {
+    "id": "complete-sentences-ex2",
+    "topicId": "complete-sentences",
+    "title": "Fixing a Fragment into a Complete Sentence",
+    "steps": [
+      {
+        "subgoalLabel": "Read the fragment",
+        "instruction": "Read: 'Ran to the park.'",
+        "work": "Ran to the park.",
+        "explanation": "Let's check if this has both a subject and a predicate."
+      },
+      {
+        "subgoalLabel": "Check for a subject",
+        "instruction": "Ask: Who or what ran to the park?",
+        "work": "Subject = (missing!)",
+        "explanation": "We know someone ran, but we don't know WHO. The subject is missing, so this is a fragment."
+      },
+      {
+        "subgoalLabel": "Add the missing part",
+        "instruction": "Add a subject to make it complete.",
+        "work": "My sister ran to the park.",
+        "explanation": "Now we have a subject (My sister) and a predicate (ran to the park). It is a complete sentence!"
+      }
+    ]
+  }
+]

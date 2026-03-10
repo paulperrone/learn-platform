@@ -1,0 +1,58 @@
+[
+  {
+    "id": "r-controlled-vowels-ex1",
+    "topicId": "r-controlled-vowels",
+    "title": "Reading a Word with 'ar'",
+    "steps": [
+      {
+        "subgoalLabel": "Spot the r-controlled vowel",
+        "instruction": "Look at this word: star. Find the vowel followed by 'r'.",
+        "work": "st-ar → 'ar' is an r-controlled vowel",
+        "explanation": "When the letter 'r' comes right after a vowel, it changes the vowel's sound. The vowel is 'controlled' by the 'r'."
+      },
+      {
+        "subgoalLabel": "Learn the 'ar' sound",
+        "instruction": "The pattern 'ar' makes the /ar/ sound.",
+        "work": "ar → /ar/ (like in 'car' and 'park')",
+        "explanation": "The 'a' does not make its short or long sound. Instead, 'ar' together make the /ar/ sound."
+      },
+      {
+        "subgoalLabel": "Blend and read",
+        "instruction": "Blend the beginning blend with the r-controlled vowel.",
+        "work": "/st/ + /ar/ → star",
+        "explanation": "The word is 'star'. Other 'ar' words include 'far', 'barn', 'dark', and 'shark'."
+      }
+    ]
+  },
+  {
+    "id": "r-controlled-vowels-ex2",
+    "topicId": "r-controlled-vowels",
+    "title": "Comparing Different R-Controlled Vowels",
+    "steps": [
+      {
+        "subgoalLabel": "Read a word with 'or'",
+        "instruction": "Look at the word: corn. Find the r-controlled vowel.",
+        "work": "c-or-n → 'or' → /or/",
+        "explanation": "The 'or' pattern makes the /or/ sound, like in 'fork', 'more', and 'store'."
+      },
+      {
+        "subgoalLabel": "Read a word with 'ir'",
+        "instruction": "Now look at: bird. Find the r-controlled vowel.",
+        "work": "b-ir-d → 'ir' → /er/",
+        "explanation": "The 'ir' pattern makes the /er/ sound. It sounds the same as 'er' and 'ur'."
+      },
+      {
+        "subgoalLabel": "Notice the pattern",
+        "instruction": "Three r-controlled patterns sound the same: er, ir, ur. Compare these words.",
+        "work": "her (er), bird (ir), burn (ur) → all say /er/",
+        "explanation": "The patterns 'er', 'ir', and 'ur' all make the same /er/ sound. You need to memorize which spelling each word uses."
+      },
+      {
+        "subgoalLabel": "Review all five r-controlled vowels",
+        "instruction": "There are five r-controlled vowel patterns.",
+        "work": "ar = /ar/ (car), or = /or/ (corn), er = /er/ (her), ir = /er/ (bird), ur = /er/ (burn)",
+        "explanation": "The 'ar' and 'or' each have their own sound. The 'er', 'ir', and 'ur' all share the same /er/ sound."
+      }
+    ]
+  }
+]

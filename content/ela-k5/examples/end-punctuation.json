@@ -1,0 +1,52 @@
+[
+  {
+    "id": "end-punctuation-ex1",
+    "topicId": "end-punctuation",
+    "title": "Choosing the Right End Mark",
+    "steps": [
+      {
+        "subgoalLabel": "Read the sentence",
+        "instruction": "Read: 'Where is the library'",
+        "work": "Where is the library",
+        "explanation": "This sentence is missing its end mark. We need to figure out which one to use."
+      },
+      {
+        "subgoalLabel": "Decide the sentence type",
+        "instruction": "Ask: Is this sentence telling something, asking something, or showing strong feeling?",
+        "work": "It is asking something — it wants to know where the library is.",
+        "explanation": "The word 'Where' is a clue. Sentences that ask questions need a question mark."
+      },
+      {
+        "subgoalLabel": "Add the correct end mark",
+        "instruction": "Put the correct punctuation at the end.",
+        "work": "Where is the library?",
+        "explanation": "A question mark (?) goes at the end of a question. A period (.) ends a telling sentence. An exclamation point (!) shows strong feeling."
+      }
+    ]
+  },
+  {
+    "id": "end-punctuation-ex2",
+    "topicId": "end-punctuation",
+    "title": "Matching Sentences to End Marks",
+    "steps": [
+      {
+        "subgoalLabel": "Read the sentence",
+        "instruction": "Read: 'Watch out for that car'",
+        "work": "Watch out for that car",
+        "explanation": "We need to add the right end mark."
+      },
+      {
+        "subgoalLabel": "Check the feeling",
+        "instruction": "Is this sentence calm, curious, or showing strong emotion or urgency?",
+        "work": "This is a warning — it shows urgency and strong feeling!",
+        "explanation": "Someone is shouting a warning. That is a strong feeling."
+      },
+      {
+        "subgoalLabel": "Add the correct end mark",
+        "instruction": "Sentences with strong feeling or excitement get an exclamation point.",
+        "work": "Watch out for that car!",
+        "explanation": "An exclamation point (!) is correct because this sentence shows strong emotion. If someone said it calmly, a period would work, but warnings are usually urgent."
+      }
+    ]
+  }
+]

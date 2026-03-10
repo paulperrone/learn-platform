@@ -1,0 +1,76 @@
+[
+  {
+    "id": "informational-writing-structured-p1",
+    "topicId": "informational-writing-structured",
+    "difficulty": "easy",
+    "question": "Which is the best topic sentence for an informational paragraph about volcanoes?\n\nA) Volcanoes are really scary.\nB) There are volcanoes in many countries.\nC) Volcanoes are openings in Earth's surface where hot melted rock escapes.",
+    "answer": "C",
+    "hints": [
+      "An informational topic sentence introduces the subject with facts, not opinions.",
+      "It should clearly tell the reader what the paragraph will explain."
+    ],
+    "solution": "C is the best topic sentence because it clearly defines what a volcano is using facts. A expresses an opinion ('scary'). B is a true fact but is too vague to introduce an informational paragraph about volcanoes.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "informational-writing-structured-p2",
+    "topicId": "informational-writing-structured",
+    "difficulty": "easy",
+    "question": "In an informational paragraph, what should supporting sentences do?\n\nA) Give the writer's opinion about the topic\nB) Provide facts, details, or examples about the topic\nC) Introduce a new, different topic",
+    "answer": "B",
+    "hints": [
+      "Supporting sentences come after the topic sentence.",
+      "They should help the reader learn more about the main idea."
+    ],
+    "solution": "Supporting sentences should provide facts, details, or examples about the topic. They explain and expand on the main idea from the topic sentence. Opinions (A) belong in opinion writing, and introducing a new topic (C) would make the paragraph unfocused.",
+    "cognitiveDemand": "recall",
+    "source": "hand-authored"
+  },
+  {
+    "id": "informational-writing-structured-p3",
+    "topicId": "informational-writing-structured",
+    "difficulty": "medium",
+    "question": "Read this informational paragraph. Which sentence is off-topic and should be removed?\n\n(1) The water cycle is the process of water moving between Earth and the sky. (2) First, the sun heats water in oceans and lakes, causing it to evaporate into the air. (3) My favorite place to swim is the lake near my house. (4) Then, the water vapor cools and forms clouds. (5) Finally, water falls back to Earth as rain or snow.\n\nType the sentence number.",
+    "answer": "3",
+    "hints": [
+      "Each sentence should give information about the water cycle.",
+      "Which sentence is about the writer instead of the water cycle?"
+    ],
+    "solution": "Sentence 3 ('My favorite place to swim is the lake near my house') is off-topic. It is a personal statement that has nothing to do with explaining the water cycle. All other sentences explain the steps of the water cycle.",
+    "cognitiveDemand": "error-analysis",
+    "source": "hand-authored"
+  },
+  {
+    "id": "informational-writing-structured-p4",
+    "topicId": "informational-writing-structured",
+    "difficulty": "medium",
+    "question": "Which organizational pattern does this paragraph use?\n\n\"There are three types of rocks. Igneous rocks form when melted rock cools. Sedimentary rocks form from layers of sand and mud. Metamorphic rocks form when heat and pressure change existing rocks.\"\n\nA) Cause and effect\nB) Compare and contrast\nC) Categories or types",
+    "answer": "C",
+    "hints": [
+      "Look at how the information is organized. Does it show causes, compare things, or sort things into groups?",
+      "The first sentence says 'three types' — what does that suggest about the structure?"
+    ],
+    "solution": "The paragraph uses a 'categories or types' structure. It introduces three types of rocks and then describes each one. It is not cause and effect (no 'because' or 'as a result') or compare and contrast (no 'however' or 'similarly').",
+    "cognitiveDemand": "conceptual",
+    "source": "hand-authored"
+  },
+  {
+    "id": "informational-writing-structured-p5",
+    "topicId": "informational-writing-structured",
+    "difficulty": "hard",
+    "question": "Rate this informational paragraph. How many of these 5 elements does it include? (1) clear topic sentence, (2) at least two supporting facts, (3) transition words, (4) facts stay on topic, (5) concluding sentence.\n\n\"Honeybees are important for growing food. They carry pollen from flower to flower, which helps plants produce fruits and vegetables. In addition, one hive of bees can pollinate thousands of plants in a single day. Without bees, many of the foods we eat would not exist.\"\n\nType a number from 0 to 5.",
+    "answer": "5",
+    "hints": [
+      "Check each element one by one against the paragraph.",
+      "(1) Does the first sentence introduce the topic clearly?",
+      "(2) Count the facts — are there at least two?",
+      "(3) Look for transition words like 'in addition,' 'also,' 'for example.'",
+      "(4) Do all sentences relate to the main topic?",
+      "(5) Does the last sentence wrap up the paragraph?"
+    ],
+    "solution": "The paragraph has all 5 elements: (1) Clear topic sentence: 'Honeybees are important for growing food.' (2) Two supporting facts: pollen carrying and pollinating thousands of plants daily. (3) Transition word: 'In addition.' (4) All facts stay on the topic of bees and food. (5) Concluding sentence: 'Without bees, many of the foods we eat would not exist.'",
+    "cognitiveDemand": "reasoning",
+    "source": "hand-authored"
+  }
+]

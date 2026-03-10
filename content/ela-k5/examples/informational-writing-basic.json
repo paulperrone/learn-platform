@@ -1,0 +1,64 @@
+[
+  {
+    "id": "informational-writing-basic-ex1",
+    "topicId": "informational-writing-basic",
+    "title": "Writing About Frogs",
+    "steps": [
+      {
+        "subgoalLabel": "Name your topic",
+        "instruction": "Choose a topic you know something about. Write a sentence that names it.",
+        "work": "Frogs are interesting animals.",
+        "explanation": "The first sentence tells the reader what your writing will be about. This is called the topic sentence."
+      },
+      {
+        "subgoalLabel": "Write a fact",
+        "instruction": "Write one true fact about your topic.",
+        "work": "Frogs are interesting animals. Frogs live near water.",
+        "explanation": "A fact is something that is true and can be checked. 'Frogs live near water' is a fact."
+      },
+      {
+        "subgoalLabel": "Add a detail",
+        "instruction": "Write another sentence that gives more information.",
+        "work": "Frogs are interesting animals. Frogs live near water. They use their long legs to jump and swim.",
+        "explanation": "This detail tells more about how frogs move. Adding details helps the reader learn more."
+      },
+      {
+        "subgoalLabel": "Write a closing sentence",
+        "instruction": "End your writing with a sentence that wraps up the topic.",
+        "work": "Frogs are interesting animals. Frogs live near water. They use their long legs to jump and swim. Frogs are amazing creatures!",
+        "explanation": "The closing sentence finishes your writing. It reminds the reader of your topic."
+      }
+    ]
+  },
+  {
+    "id": "informational-writing-basic-ex2",
+    "topicId": "informational-writing-basic",
+    "title": "Writing About the Sun",
+    "steps": [
+      {
+        "subgoalLabel": "Name your topic",
+        "instruction": "What will you teach the reader about? Write a sentence to introduce your topic.",
+        "work": "The sun is very important.",
+        "explanation": "This sentence introduces the topic: the sun. The reader knows what they are about to learn."
+      },
+      {
+        "subgoalLabel": "Share a fact",
+        "instruction": "Write one fact about the sun.",
+        "work": "The sun is very important. The sun gives us light and heat.",
+        "explanation": "'The sun gives us light and heat' is a fact. It tells the reader true information about the sun."
+      },
+      {
+        "subgoalLabel": "Add another detail",
+        "instruction": "Write one more sentence to give the reader extra information.",
+        "work": "The sun is very important. The sun gives us light and heat. Plants need sunlight to grow.",
+        "explanation": "This detail connects to the topic. It shows another reason why the sun is important."
+      },
+      {
+        "subgoalLabel": "Write a closing",
+        "instruction": "End with a sentence that wraps everything up.",
+        "work": "The sun is very important. The sun gives us light and heat. Plants need sunlight to grow. We could not live without the sun!",
+        "explanation": "The closing sentence 'We could not live without the sun!' ties back to the main idea that the sun is important."
+      }
+    ]
+  }
+]

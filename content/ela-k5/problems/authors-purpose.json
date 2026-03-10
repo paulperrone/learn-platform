@@ -1,0 +1,57 @@
+[
+  {
+    "id": "authors-purpose-p1",
+    "topicId": "authors-purpose",
+    "difficulty": "easy",
+    "question": "Read the passage:\n\nPenguins are birds that cannot fly. They live in cold places and are great swimmers. Baby penguins are covered in fluffy gray feathers.\n\nWhat is the author's purpose for writing this passage?\n(A) To entertain with a funny story\n(B) To inform readers about penguins\n(C) To persuade readers to visit penguins",
+    "answer": "B",
+    "hints": ["Is this passage a story? Is it trying to make you do something? Or is it teaching you facts?"],
+    "solution": "The answer is (B) To inform readers about penguins. The passage shares facts about penguins — where they live, that they swim, and what baby penguins look like. It is not telling a story or trying to convince the reader to do something.",
+    "cognitiveDemand": "recall",
+    "source": "hand-authored"
+  },
+  {
+    "id": "authors-purpose-p2",
+    "topicId": "authors-purpose",
+    "difficulty": "easy",
+    "question": "Read the passage:\n\nOnce there was a silly goat named Gary who wore a top hat everywhere he went. One day, his hat blew into a mud puddle. Gary jumped in after it and got mud all over himself. He did not care — he just wanted his hat back!\n\nWhat is the author's purpose?\n(A) To inform\n(B) To persuade\n(C) To entertain",
+    "answer": "C",
+    "hints": ["Is this a true story with facts? Or is it a funny made-up story?"],
+    "solution": "The answer is (C) To entertain. The passage is a funny, made-up story about a silly goat who wears a top hat. The author's purpose is to amuse and entertain the reader, not to teach facts or convince them of something.",
+    "cognitiveDemand": "recall",
+    "source": "hand-authored"
+  },
+  {
+    "id": "authors-purpose-p3",
+    "topicId": "authors-purpose",
+    "difficulty": "medium",
+    "question": "Read the passage:\n\nEvery student should have a library card. The library has thousands of free books to borrow. You can also use computers and join fun reading programs. Getting a library card is easy and costs nothing. Go to your local library today!\n\nWhat is the author's purpose? What words or phrases help you figure it out?",
+    "answer": "The author's purpose is to persuade readers to get a library card. Words like 'should,' 'free,' 'easy,' 'costs nothing,' and 'Go to your local library today!' try to convince the reader.",
+    "hints": ["Is the author trying to get you to do something?", "Look for words that sound like advice or a command."],
+    "solution": "The author's purpose is to persuade. The passage tries to convince readers to get a library card. Persuasive words and phrases include 'should,' 'free,' 'easy,' 'costs nothing,' and the call to action 'Go to your local library today!'",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "authors-purpose-p4",
+    "topicId": "authors-purpose",
+    "difficulty": "medium",
+    "question": "Read the passage:\n\nLightning is a giant spark of electricity in the sky. It happens when electrical charges build up inside clouds. Lightning can be very hot — up to five times hotter than the surface of the sun. That is why it is important to go inside during a thunderstorm.\n\nDoes this passage have more than one purpose? Explain.",
+    "answer": "Yes. The main purpose is to inform readers about lightning with facts. But the last sentence also has a persuasive purpose — it tries to convince readers to go inside during storms to stay safe.",
+    "hints": ["Most of the passage shares facts. But read the last sentence carefully.", "Does the last sentence teach a fact or tell you to do something?"],
+    "solution": "The passage has two purposes. The primary purpose is to inform — it teaches facts about lightning (what it is, how it forms, how hot it is). The secondary purpose is to persuade — the last sentence tries to convince the reader to go inside during thunderstorms. Authors sometimes combine purposes.",
+    "cognitiveDemand": "conceptual",
+    "source": "hand-authored"
+  },
+  {
+    "id": "authors-purpose-p5",
+    "topicId": "authors-purpose",
+    "difficulty": "hard",
+    "question": "Read Passage A:\n\nSea turtles travel thousands of miles through the ocean. They return to the same beach where they were born to lay their eggs. Scientists track them using tiny tags on their shells.\n\nRead Passage B:\n\nWe must protect sea turtles before it is too late. Trash in the ocean hurts these gentle animals. Bright lights on beaches confuse baby turtles. Everyone can help by keeping beaches clean and turning off unnecessary lights at night.\n\nBoth passages are about sea turtles. How are the authors' purposes different? Explain with evidence from each passage.",
+    "answer": "Passage A is written to inform — it shares facts about sea turtle travel and how scientists study them. Passage B is written to persuade — it uses words like 'must' and 'everyone can help' to convince readers to protect sea turtles.",
+    "hints": ["Ask yourself: is Passage A trying to teach me or convince me? What about Passage B?", "Look for persuasive language like 'must,' 'before it is too late,' and 'everyone can help.'"],
+    "solution": "Passage A's purpose is to inform. It states facts about sea turtles without trying to change the reader's behavior. Evidence: it describes migration, egg-laying, and scientific tracking. Passage B's purpose is to persuade. It urges readers to take action to protect sea turtles. Evidence: persuasive language includes 'must protect,' 'before it is too late,' 'everyone can help,' and specific actions readers should take.",
+    "cognitiveDemand": "reasoning",
+    "source": "hand-authored"
+  }
+]

@@ -1,0 +1,58 @@
+[
+  {
+    "id": "prefixes-suffixes-ex1",
+    "topicId": "prefixes-suffixes",
+    "title": "A Word with Both a Prefix and a Suffix",
+    "steps": [
+      {
+        "subgoalLabel": "Find all the word parts",
+        "instruction": "Look at this word: unbreakable. Can you find a prefix, root word, and suffix?",
+        "work": "un + break + able",
+        "explanation": "This word has three parts: the prefix 'un-', the root word 'break', and the suffix '-able'."
+      },
+      {
+        "subgoalLabel": "Start with root + suffix",
+        "instruction": "First, combine the root word with the suffix. What does 'breakable' mean?",
+        "work": "break + -able (can be done) = breakable = can be broken",
+        "explanation": "'Breakable' means 'can be broken'. A glass cup is breakable."
+      },
+      {
+        "subgoalLabel": "Add the prefix",
+        "instruction": "Now add the prefix 'un-' (meaning 'not'). What does the full word mean?",
+        "work": "un- (not) + breakable = unbreakable = cannot be broken",
+        "explanation": "'Unbreakable' means 'not able to be broken'. A word can have both a prefix and a suffix. Work from the root outward to build the meaning."
+      }
+    ]
+  },
+  {
+    "id": "prefixes-suffixes-ex2",
+    "topicId": "prefixes-suffixes",
+    "title": "Decoding an Unfamiliar Word Using Affixes",
+    "steps": [
+      {
+        "subgoalLabel": "Look for familiar parts",
+        "instruction": "You come across the word 'disagreement' in a text. Break it into parts you know.",
+        "work": "dis + agree + ment",
+        "explanation": "Even if you have never seen this exact word before, you can recognize three parts: the prefix 'dis-', the root 'agree', and the suffix '-ment'."
+      },
+      {
+        "subgoalLabel": "Recall prefix meaning",
+        "instruction": "What does the prefix 'dis-' mean?",
+        "work": "dis- = not, opposite of",
+        "explanation": "The prefix 'dis-' means 'not' or 'the opposite of'. Disagree means 'to not agree'."
+      },
+      {
+        "subgoalLabel": "Recall suffix meaning",
+        "instruction": "What does the suffix '-ment' mean?",
+        "work": "-ment = the act or result of doing something",
+        "explanation": "The suffix '-ment' turns a verb into a noun. It means 'the act of' or 'the result of' the action."
+      },
+      {
+        "subgoalLabel": "Build the full meaning",
+        "instruction": "Combine all three parts to figure out the meaning.",
+        "work": "dis- (not) + agree + -ment (act of) = the act of not agreeing",
+        "explanation": "'Disagreement' means 'the act of not agreeing' — when people have different opinions. Using prefixes and suffixes together is a powerful way to figure out new words."
+      }
+    ]
+  }
+]

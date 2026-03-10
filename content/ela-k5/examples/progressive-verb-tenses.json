@@ -1,0 +1,52 @@
+[
+  {
+    "id": "progressive-verb-tenses-ex1",
+    "topicId": "progressive-verb-tenses",
+    "title": "Forming the Present Progressive Tense",
+    "steps": [
+      {
+        "subgoalLabel": "Read the sentence",
+        "instruction": "Read: 'Right now, the cat (sleep) on the couch.' Fill in the correct form.",
+        "work": "Right now, the cat _____ on the couch.",
+        "explanation": "'Right now' means the action is happening at this moment. We need the present progressive."
+      },
+      {
+        "subgoalLabel": "Build the progressive form",
+        "instruction": "The progressive tense uses a helping verb (am/is/are) + the -ing form of the main verb.",
+        "work": "is + sleeping = is sleeping",
+        "explanation": "We use 'is' because the subject (cat) is singular. Then we add -ing to 'sleep' to get 'sleeping.'"
+      },
+      {
+        "subgoalLabel": "Complete the sentence",
+        "instruction": "Put the progressive form into the sentence.",
+        "work": "Right now, the cat is sleeping on the couch.",
+        "explanation": "'Is sleeping' shows the action is happening right now and is still going on. Compare: 'The cat sleeps' (a habit) vs. 'The cat is sleeping' (right now)."
+      }
+    ]
+  },
+  {
+    "id": "progressive-verb-tenses-ex2",
+    "topicId": "progressive-verb-tenses",
+    "title": "Forming the Past Progressive Tense",
+    "steps": [
+      {
+        "subgoalLabel": "Read the sentence",
+        "instruction": "Read: 'At 7 o'clock last night, we (eat) dinner.'",
+        "work": "At 7 o'clock last night, we _____ dinner.",
+        "explanation": "This action was happening at a specific time in the past. We need the past progressive."
+      },
+      {
+        "subgoalLabel": "Choose the correct helping verb",
+        "instruction": "For past progressive, use was (singular) or were (plural) + the -ing verb. 'We' is plural.",
+        "work": "were + eating = were eating",
+        "explanation": "We use 'were' because 'we' is plural. For 'I/he/she/it,' use 'was.'"
+      },
+      {
+        "subgoalLabel": "Complete the sentence",
+        "instruction": "Put the past progressive form into the sentence.",
+        "work": "At 7 o'clock last night, we were eating dinner.",
+        "explanation": "'Were eating' shows an action that was in progress at a certain time in the past. It was ongoing — not finished at that moment."
+      }
+    ]
+  }
+]

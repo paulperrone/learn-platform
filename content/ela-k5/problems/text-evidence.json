@@ -1,0 +1,57 @@
+[
+  {
+    "id": "text-evidence-p1",
+    "topicId": "text-evidence",
+    "difficulty": "easy",
+    "question": "Read the passage:\n\nButterflies are important to gardens. They carry pollen from one flower to another, which helps new plants grow. Without butterflies, many flowers would not be able to make seeds.\n\nWhy are butterflies important to gardens? Copy a sentence from the passage that supports your answer.",
+    "answer": "They carry pollen from one flower to another, which helps new plants grow.",
+    "hints": ["The question asks why butterflies are important. Find the sentence that explains what they do for gardens."],
+    "solution": "The text evidence is: 'They carry pollen from one flower to another, which helps new plants grow.' This sentence directly explains why butterflies matter — they help flowers make new plants by spreading pollen.",
+    "cognitiveDemand": "recall",
+    "source": "hand-authored"
+  },
+  {
+    "id": "text-evidence-p2",
+    "topicId": "text-evidence",
+    "difficulty": "easy",
+    "question": "Read the passage:\n\nThe Arctic fox is well suited for cold weather. Its thick white fur keeps it warm in freezing temperatures. The white color also helps it blend in with the snow so predators cannot spot it easily.\n\nHow does the Arctic fox's fur help it survive? Quote a sentence from the passage.",
+    "answer": "Its thick white fur keeps it warm in freezing temperatures.",
+    "hints": ["Find the sentence that tells what the fur does for the fox."],
+    "solution": "The supporting evidence is: 'Its thick white fur keeps it warm in freezing temperatures.' You could also quote the next sentence about blending in with snow. Both show how the fur helps the fox survive.",
+    "cognitiveDemand": "recall",
+    "source": "hand-authored"
+  },
+  {
+    "id": "text-evidence-p3",
+    "topicId": "text-evidence",
+    "difficulty": "medium",
+    "question": "Read the passage:\n\nThe Amazon rainforest is sometimes called the 'lungs of the Earth.' Its trees take in carbon dioxide and release oxygen that people and animals need to breathe. The rainforest is also home to millions of species of plants and animals. Scientists believe many species there have not even been discovered yet.\n\nA student says, 'The Amazon rainforest is important for the whole planet.' Find two pieces of evidence from the passage that support this claim.",
+    "answer": "1. 'Its trees take in carbon dioxide and release oxygen that people and animals need to breathe.' 2. 'The rainforest is also home to millions of species of plants and animals.'",
+    "hints": ["Look for sentences that show the rainforest helps the planet.", "One piece of evidence is about air. Another is about living things."],
+    "solution": "Two pieces of text evidence support the claim: (1) 'Its trees take in carbon dioxide and release oxygen that people and animals need to breathe' shows the rainforest is important for the air we breathe. (2) 'The rainforest is also home to millions of species of plants and animals' shows it is important for biodiversity. Both support the idea that the rainforest matters for the whole planet.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "text-evidence-p4",
+    "topicId": "text-evidence",
+    "difficulty": "medium",
+    "question": "Read the passage:\n\nBen Franklin was one of the most creative people in American history. He invented the lightning rod to protect buildings from lightning strikes. He also invented bifocal glasses so people could see both near and far with one pair. Franklin started the first public library in America and helped write the Declaration of Independence.\n\nA student says, 'Ben Franklin helped people in many different ways.' Explain whether you agree or disagree, and support your answer with evidence from the text.",
+    "answer": "I agree. The text says he invented the lightning rod to protect buildings, bifocal glasses to help people see, started the first public library, and helped write the Declaration of Independence. These are four different ways he helped people.",
+    "hints": ["List the things Franklin did. Did each one help people?", "Make sure you quote or refer to specific parts of the passage."],
+    "solution": "The claim is supported by the text. Evidence: (1) the lightning rod 'protect[ed] buildings from lightning strikes' — helping keep people safe, (2) bifocal glasses helped 'people could see both near and far' — an everyday invention, (3) he 'started the first public library' — helping people read, and (4) he 'helped write the Declaration of Independence' — shaping the nation. Each example shows a different way Franklin helped.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "text-evidence-p5",
+    "topicId": "text-evidence",
+    "difficulty": "hard",
+    "question": "Read the passage:\n\nOctopuses are among the smartest creatures in the ocean. In experiments, they have figured out how to open jars to get food inside. They can change their skin color and texture in less than a second to match their surroundings. Some octopuses have been seen carrying coconut shells to use as shelters later. Scientists are still learning about how these animals think and solve problems.\n\nA student says, 'Octopuses are just as smart as dogs.' Does the passage support this claim? Explain what the text does and does not tell us.",
+    "answer": "The passage does not support that exact claim. The text gives evidence that octopuses are smart — they open jars, change color, and use tools. But it never compares them to dogs. We cannot use this passage to say they are 'just as smart' as any other animal because no comparison is made.",
+    "hints": ["Does the passage mention dogs?", "The passage says octopuses are smart, but does it compare them to other animals?", "What is the difference between 'octopuses are smart' and 'octopuses are as smart as dogs'?"],
+    "solution": "The passage provides strong evidence that octopuses are intelligent: opening jars, changing skin, and using coconut shells as tools. However, it does not support the claim that they are 'just as smart as dogs' because the text never mentions dogs or makes any comparison to other animals. Good readers must distinguish between what the text actually says and claims that go beyond the evidence. The text supports 'octopuses are smart' but not the specific comparison.",
+    "cognitiveDemand": "reasoning",
+    "source": "hand-authored"
+  }
+]

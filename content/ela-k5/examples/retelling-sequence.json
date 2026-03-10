@@ -1,0 +1,52 @@
+[
+  {
+    "id": "retelling-sequence-ex1",
+    "topicId": "retelling-sequence",
+    "title": "Retelling a Story in Order",
+    "steps": [
+      {
+        "subgoalLabel": "Read the passage",
+        "instruction": "Read: 'Mia woke up late. She grabbed her backpack and ran to the bus stop. The bus had already left. Her mom drove her to school instead.'",
+        "work": "Mia woke up late. She grabbed her backpack and ran to the bus stop. The bus had already left. Her mom drove her to school instead.",
+        "explanation": "To retell a story, we put the events in the order they happened."
+      },
+      {
+        "subgoalLabel": "List the events in order",
+        "instruction": "What happened first, next, then, and last?",
+        "work": "First: Mia woke up late. Next: She grabbed her backpack and ran to the bus stop. Then: The bus had already left. Last: Her mom drove her to school.",
+        "explanation": "Using words like first, next, then, and last helps keep the events in order."
+      },
+      {
+        "subgoalLabel": "Retell in your own words",
+        "instruction": "Retell the story using the sequence words.",
+        "work": "First, Mia woke up late. Next, she ran to the bus stop. Then, she found out the bus had already left. Last, her mom gave her a ride to school.",
+        "explanation": "A good retelling includes the main events in the correct order. You don't need every tiny detail — just the important events."
+      }
+    ]
+  },
+  {
+    "id": "retelling-sequence-ex2",
+    "topicId": "retelling-sequence",
+    "title": "Putting Scrambled Events in Order",
+    "steps": [
+      {
+        "subgoalLabel": "Read the scrambled events",
+        "instruction": "These events are out of order: A) The caterpillar became a butterfly. B) A tiny egg sat on a leaf. C) The caterpillar built a cocoon. D) A caterpillar hatched from the egg.",
+        "work": "A) became a butterfly  B) egg on a leaf  C) built a cocoon  D) caterpillar hatched",
+        "explanation": "Let's think about what has to happen first in real life."
+      },
+      {
+        "subgoalLabel": "Think about what comes first",
+        "instruction": "What must happen before anything else? Then what?",
+        "work": "First there must be an egg (B). Then it hatches (D). Then the caterpillar makes a cocoon (C). Then it becomes a butterfly (A).",
+        "explanation": "Each step depends on the one before it. An egg comes before hatching, and a cocoon comes before a butterfly."
+      },
+      {
+        "subgoalLabel": "Write the correct order",
+        "instruction": "List the events in sequence.",
+        "work": "B → D → C → A. First, a tiny egg sat on a leaf. Next, a caterpillar hatched. Then, it built a cocoon. Last, it became a butterfly.",
+        "explanation": "Thinking about what has to happen first helps us put events in the right order."
+      }
+    ]
+  }
+]

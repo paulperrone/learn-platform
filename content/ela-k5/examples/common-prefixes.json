@@ -1,0 +1,58 @@
+[
+  {
+    "id": "common-prefixes-ex1",
+    "topicId": "common-prefixes",
+    "title": "Using the Prefix 'un-' to Find Meaning",
+    "steps": [
+      {
+        "subgoalLabel": "Find the prefix",
+        "instruction": "Look at this word: unkind. Can you find a prefix at the beginning?",
+        "work": "un + kind → prefix is 'un-'",
+        "explanation": "A prefix is a word part added to the beginning of a root word. Here, 'un-' is the prefix and 'kind' is the root word."
+      },
+      {
+        "subgoalLabel": "Learn what 'un-' means",
+        "instruction": "The prefix 'un-' means 'not' or 'the opposite of'.",
+        "work": "un- = not",
+        "explanation": "Whenever you see 'un-' at the start of a word, it usually means 'not' or 'the opposite'."
+      },
+      {
+        "subgoalLabel": "Figure out the word's meaning",
+        "instruction": "Combine the prefix meaning with the root word meaning.",
+        "work": "un- (not) + kind = not kind",
+        "explanation": "'Unkind' means 'not kind'. If someone is unkind, they are not being nice. This works with many words: unfair (not fair), unsafe (not safe), unlike (not like)."
+      }
+    ]
+  },
+  {
+    "id": "common-prefixes-ex2",
+    "topicId": "common-prefixes",
+    "title": "Using the Prefix 're-' to Find Meaning",
+    "steps": [
+      {
+        "subgoalLabel": "Find the prefix",
+        "instruction": "Look at this word: reread. What prefix do you see?",
+        "work": "re + read → prefix is 're-'",
+        "explanation": "The prefix 're-' is at the beginning of the word. The root word is 'read'."
+      },
+      {
+        "subgoalLabel": "Learn what 're-' means",
+        "instruction": "The prefix 're-' means 'again'.",
+        "work": "re- = again",
+        "explanation": "When you see 're-' at the start of a word, it usually means to do the action again."
+      },
+      {
+        "subgoalLabel": "Figure out the word's meaning",
+        "instruction": "Combine the prefix with the root word.",
+        "work": "re- (again) + read = read again",
+        "explanation": "'Reread' means to read something again. This works with many words: redo (do again), rewrite (write again), replay (play again)."
+      },
+      {
+        "subgoalLabel": "Try with 'dis-'",
+        "instruction": "The prefix 'dis-' means 'not' or 'opposite of'. What does 'disagree' mean?",
+        "work": "dis- (not/opposite) + agree = not agree",
+        "explanation": "'Disagree' means to not agree. Knowing just a few prefixes (un-, re-, dis-) helps you figure out the meanings of many new words."
+      }
+    ]
+  }
+]

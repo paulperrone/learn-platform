@@ -1,0 +1,52 @@
+[
+  {
+    "id": "adjectives-ex1",
+    "topicId": "adjectives",
+    "title": "Finding Adjectives in a Sentence",
+    "steps": [
+      {
+        "subgoalLabel": "Read the sentence",
+        "instruction": "Read: 'The small, fluffy kitten played with a red ball.'",
+        "work": "The small, fluffy kitten played with a red ball.",
+        "explanation": "Adjectives are words that describe nouns. Let's find them."
+      },
+      {
+        "subgoalLabel": "Find the nouns",
+        "instruction": "First, find the nouns (people, places, things).",
+        "work": "Nouns: kitten, ball",
+        "explanation": "We look at the words near each noun to find adjectives."
+      },
+      {
+        "subgoalLabel": "Find words that describe each noun",
+        "instruction": "What words tell us more about the kitten? About the ball?",
+        "work": "kitten → small, fluffy. ball → red.",
+        "explanation": "'Small' and 'fluffy' describe what the kitten is like. 'Red' describes the ball. These are all adjectives."
+      }
+    ]
+  },
+  {
+    "id": "adjectives-ex2",
+    "topicId": "adjectives",
+    "title": "Using Comparative Adjectives",
+    "steps": [
+      {
+        "subgoalLabel": "Read the problem",
+        "instruction": "Compare: 'The oak tree is tall. The pine tree is taller.' What if we add a redwood?",
+        "work": "Oak = tall. Pine = taller. Redwood = ?",
+        "explanation": "When comparing two things, we use -er. When comparing three or more, we use -est."
+      },
+      {
+        "subgoalLabel": "Choose the correct form",
+        "instruction": "We are comparing three trees. Use the -est form.",
+        "work": "tall → taller (2 things) → tallest (3 or more things)",
+        "explanation": "Add -er for comparing two. Add -est for comparing three or more."
+      },
+      {
+        "subgoalLabel": "Write the sentence",
+        "instruction": "Use the correct adjective form in a sentence about the redwood.",
+        "work": "The redwood is the tallest of the three trees.",
+        "explanation": "We use 'tallest' because we are comparing all three trees. 'The tallest' means no other tree in the group is taller."
+      }
+    ]
+  }
+]

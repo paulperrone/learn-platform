@@ -1,0 +1,52 @@
+[
+  {
+    "id": "sight-words-k-ex1",
+    "topicId": "sight-words-k",
+    "title": "Recognizing the Word 'the'",
+    "steps": [
+      {
+        "subgoalLabel": "Look at the word",
+        "instruction": "Look at this word: the",
+        "work": "the",
+        "explanation": "This is one of the most common words in English. We see it in almost every sentence."
+      },
+      {
+        "subgoalLabel": "Notice the tricky spelling",
+        "instruction": "Try to sound it out: t-h-e. Does it follow normal rules?",
+        "work": "t-h-e → /th/ + /e/? → That does not sound right!",
+        "explanation": "The word 'the' does not follow simple sounding-out rules. The 'e' at the end makes a /uh/ sound, not a short /e/. That is why we learn it as a sight word."
+      },
+      {
+        "subgoalLabel": "Remember it by sight",
+        "instruction": "Since 'the' is tricky, we memorize what it looks like. Spell it: t-h-e.",
+        "work": "t-h-e = 'the'",
+        "explanation": "Sight words are words we learn to recognize instantly without sounding them out. The word 'the' appears so often that fast recognition helps us read smoothly."
+      }
+    ]
+  },
+  {
+    "id": "sight-words-k-ex2",
+    "topicId": "sight-words-k",
+    "title": "Reading Sight Words in a Sentence",
+    "steps": [
+      {
+        "subgoalLabel": "Read the sentence",
+        "instruction": "Look at this sentence: I do like you.",
+        "work": "I do like you.",
+        "explanation": "This sentence has four words. Some can be sounded out and some are sight words."
+      },
+      {
+        "subgoalLabel": "Find the sight words",
+        "instruction": "Which words are sight words? Sight words are common words we memorize.",
+        "work": "Sight words: I, do, you",
+        "explanation": "'I', 'do', and 'you' are all kindergarten sight words. The word 'you' is tricky because the 'ou' does not make the sound you might expect."
+      },
+      {
+        "subgoalLabel": "Read the whole sentence",
+        "instruction": "Now read the full sentence using your sight word knowledge.",
+        "work": "I do like you.",
+        "explanation": "When you know sight words quickly, you can read sentences smoothly. Recognizing 'I', 'do', and 'you' right away lets you focus on the word 'like'."
+      }
+    ]
+  }
+]

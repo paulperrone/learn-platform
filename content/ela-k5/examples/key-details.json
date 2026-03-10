@@ -1,0 +1,52 @@
+[
+  {
+    "id": "key-details-ex1",
+    "topicId": "key-details",
+    "title": "Answering Who, What, Where, and When",
+    "steps": [
+      {
+        "subgoalLabel": "Read the passage",
+        "instruction": "Read: 'On Saturday morning, Emma and her dad went to the farmers' market. They bought fresh strawberries and corn.'",
+        "work": "On Saturday morning, Emma and her dad went to the farmers' market. They bought fresh strawberries and corn.",
+        "explanation": "We need to find key details by asking who, what, where, and when."
+      },
+      {
+        "subgoalLabel": "Ask the questions",
+        "instruction": "Ask: Who? What did they do? Where? When?",
+        "work": "Who = Emma and her dad. What = went shopping, bought strawberries and corn. Where = the farmers' market. When = Saturday morning.",
+        "explanation": "Each question pulls out a different key detail from the passage."
+      },
+      {
+        "subgoalLabel": "Answer in a complete sentence",
+        "instruction": "Put the details together to answer: 'What happened in this passage?'",
+        "work": "On Saturday morning, Emma and her dad went to the farmers' market and bought fresh strawberries and corn.",
+        "explanation": "Using who, what, where, and when helps us find and remember the most important information in a passage."
+      }
+    ]
+  },
+  {
+    "id": "key-details-ex2",
+    "topicId": "key-details",
+    "title": "Finding Key Details to Answer a Question",
+    "steps": [
+      {
+        "subgoalLabel": "Read the passage",
+        "instruction": "Read: 'Ben's puppy, Max, loves to play fetch. Every afternoon, Ben throws a tennis ball in the backyard and Max brings it back.'",
+        "work": "Ben's puppy, Max, loves to play fetch. Every afternoon, Ben throws a tennis ball in the backyard and Max brings it back.",
+        "explanation": "Let's answer the question: 'What does Max do every afternoon?'"
+      },
+      {
+        "subgoalLabel": "Find the key words in the question",
+        "instruction": "The question asks about 'Max' and 'every afternoon.' Look for those words in the passage.",
+        "work": "'Every afternoon' appears in the second sentence. 'Max brings it back.'",
+        "explanation": "Matching key words from the question to the passage helps us find the right detail."
+      },
+      {
+        "subgoalLabel": "Write the answer",
+        "instruction": "Answer the question using details from the passage.",
+        "work": "Every afternoon, Max plays fetch — he brings back the tennis ball that Ben throws.",
+        "explanation": "We found the answer by locating the key words from the question in the passage."
+      }
+    ]
+  }
+]

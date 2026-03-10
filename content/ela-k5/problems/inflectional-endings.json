@@ -1,0 +1,70 @@
+[
+  {
+    "id": "inflectional-endings-p1",
+    "topicId": "inflectional-endings",
+    "difficulty": "easy",
+    "question": "What is the base word in 'running'?",
+    "answer": "run",
+    "hints": [
+      "Take away the ending -ing to find the base word."
+    ],
+    "solution": "The base word is 'run'. The ending -ing was added to show the action is happening right now.",
+    "cognitiveDemand": "recall",
+    "source": "hand-authored"
+  },
+  {
+    "id": "inflectional-endings-p2",
+    "topicId": "inflectional-endings",
+    "difficulty": "easy",
+    "question": "Which ending was added to 'cat' to make 'cats'?",
+    "answer": "-s",
+    "hints": [
+      "Compare 'cat' and 'cats'. What letters were added at the end?"
+    ],
+    "solution": "The ending -s was added to 'cat' to make 'cats'. Adding -s means more than one.",
+    "cognitiveDemand": "recall",
+    "source": "hand-authored"
+  },
+  {
+    "id": "inflectional-endings-p3",
+    "topicId": "inflectional-endings",
+    "difficulty": "medium",
+    "question": "Add the correct ending to 'box' to mean more than one box. Write the whole word.",
+    "answer": "boxes",
+    "hints": [
+      "Words that end in x need -es, not just -s.",
+      "Try adding -es to the end of 'box'."
+    ],
+    "solution": "The answer is 'boxes'. When a word ends in x, s, sh, or ch, we add -es instead of just -s to make it plural.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "inflectional-endings-p4",
+    "topicId": "inflectional-endings",
+    "difficulty": "medium",
+    "question": "Read this sentence: 'She jumped over the puddle.' What is the base word in 'jumped'?",
+    "answer": "jump",
+    "hints": [
+      "The ending -ed was added to show something already happened.",
+      "Remove -ed from the end."
+    ],
+    "solution": "The base word is 'jump'. The ending -ed was added to make it past tense, meaning the action already happened.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "inflectional-endings-p5",
+    "topicId": "inflectional-endings",
+    "difficulty": "hard",
+    "question": "Look at these two sentences: 'The tall tree swayed.' and 'That tree is taller than the house.' What ending was added, and how did it change the meaning of 'tall'?",
+    "answer": "-er, it means more tall",
+    "hints": [
+      "Compare 'tall' and 'taller'. What letters were added?",
+      "The ending -er is used when comparing two things."
+    ],
+    "solution": "The ending -er was added to 'tall' to make 'taller'. Adding -er changes the word from describing one thing to comparing two things — the tree is more tall than the house.",
+    "cognitiveDemand": "reasoning",
+    "source": "hand-authored"
+  }
+]

@@ -1,0 +1,70 @@
+[
+  {
+    "id": "context-clues-basic-p1",
+    "topicId": "context-clues-basic",
+    "difficulty": "easy",
+    "question": "Read this sentence: 'The dog was famished, so it ate all its food very fast.' What does 'famished' most likely mean?",
+    "answer": "very hungry",
+    "hints": [
+      "What would make a dog eat all its food very fast?"
+    ],
+    "solution": "'Famished' means very hungry. The clue is that the dog 'ate all its food very fast' — that is what a very hungry dog would do.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "context-clues-basic-p2",
+    "topicId": "context-clues-basic",
+    "difficulty": "easy",
+    "question": "Read this sentence: 'It was sweltering outside, so we went swimming to cool off.' Does 'sweltering' mean cold or hot?",
+    "answer": "hot",
+    "hints": [
+      "Why would someone go swimming to cool off?"
+    ],
+    "solution": "'Sweltering' means very hot. The clue is that they 'went swimming to cool off' — you need to cool off when it is hot.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "context-clues-basic-p3",
+    "topicId": "context-clues-basic",
+    "difficulty": "medium",
+    "question": "Read this sentence: 'The timid rabbit hid behind the bush when it heard a loud noise.' What does 'timid' mean?",
+    "answer": "shy or scared",
+    "hints": [
+      "What kind of animal would hide when it hears a noise?",
+      "Think about how the rabbit is acting."
+    ],
+    "solution": "'Timid' means shy or easily frightened. The clue is that the rabbit 'hid behind the bush when it heard a loud noise' — hiding from noise is what a shy, scared animal does.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "context-clues-basic-p4",
+    "topicId": "context-clues-basic",
+    "difficulty": "medium",
+    "question": "Read this sentence: 'The enormous elephant was much bigger than the tiny mouse beside it.' What does 'enormous' mean?",
+    "answer": "very big",
+    "hints": [
+      "The sentence compares the elephant to a tiny mouse.",
+      "If the mouse is tiny, what is the opposite?"
+    ],
+    "solution": "'Enormous' means very big or huge. The clue is the comparison — the elephant is 'much bigger than the tiny mouse.' The word 'bigger' and the contrast with 'tiny' both tell us enormous means very large.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "context-clues-basic-p5",
+    "topicId": "context-clues-basic",
+    "difficulty": "hard",
+    "question": "Read these sentences: 'Sam felt jubilant when he won the race. He smiled, cheered, and gave everyone high fives.' What does 'jubilant' mean, and which words from the sentences helped you figure it out?",
+    "answer": "very happy",
+    "hints": [
+      "How does someone act when they win a race?",
+      "Look at what Sam did — smiled, cheered, and gave high fives. What feeling goes with those actions?"
+    ],
+    "solution": "'Jubilant' means extremely happy or joyful. The context clues are 'won the race' (a reason to be happy), 'smiled,' 'cheered,' and 'gave everyone high fives' (actions that show happiness).",
+    "cognitiveDemand": "reasoning",
+    "source": "hand-authored"
+  }
+]

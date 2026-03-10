@@ -85,19 +85,16 @@ type WorkedExample = {
   contentDepth?: string;
 };
 
-function main() {
-  const subject = process.argv[2] ?? "math-foundations";
-  const contentDir = join(process.cwd(), "content", subject);
+type SubjectData = {
+  graph: GraphDefinition;
+  problems: Map<string, Problem[]>;
+  examples: Map<string, WorkedExample[]>;
+};
+
+function loadSubject(contentDir: string): SubjectData {
   const graphPath = join(contentDir, "graph.json");
-
-  if (!existsSync(graphPath)) {
-    console.error(`graph.json not found at ${graphPath}`);
-    process.exit(1);
-  }
-
   const graph: GraphDefinition = JSON.parse(readFileSync(graphPath, "utf-8"));
 
-  // Load problems (hand-authored + generated)
   const problemsDirs = [join(contentDir, "problems"), join(contentDir, "problems-generated")];
   const problems = new Map<string, Problem[]>();
   for (const problemsDir of problemsDirs) {
@@ -113,7 +110,6 @@ function main() {
     }
   }
 
-  // Load examples
   const examplesDir = join(contentDir, "examples");
   const examples = new Map<string, WorkedExample[]>();
   if (existsSync(examplesDir)) {
@@ -127,197 +123,206 @@ function main() {
     }
   }
 
+  return { graph, problems, examples };
+}
+
+function clearSubject(db: InstanceType<typeof Database>, subjectId: string) {
+  db.exec(`DELETE FROM group_session_participants WHERE group_session_id IN (SELECT id FROM group_sessions WHERE topic_id IN (SELECT id FROM topics WHERE subject_id = '${subjectId}'))`);
+  db.exec(`DELETE FROM group_sessions WHERE topic_id IN (SELECT id FROM topics WHERE subject_id = '${subjectId}')`);
+  db.exec(`DELETE FROM diagnostic_sessions WHERE subject_id = '${subjectId}'`);
+  db.exec(`DELETE FROM assignment_responses WHERE assignment_id IN (SELECT id FROM assignments WHERE topic_id IN (SELECT id FROM topics WHERE subject_id = '${subjectId}'))`);
+  db.exec(`DELETE FROM assignments WHERE topic_id IN (SELECT id FROM topics WHERE subject_id = '${subjectId}')`);
+  db.exec(`DELETE FROM teach_sessions WHERE topic_id IN (SELECT id FROM topics WHERE subject_id = '${subjectId}')`);
+  db.exec(`DELETE FROM review_log WHERE topic_id IN (SELECT id FROM topics WHERE subject_id = '${subjectId}')`);
+  db.exec(`DELETE FROM user_topic_state WHERE topic_id IN (SELECT id FROM topics WHERE subject_id = '${subjectId}')`);
+  db.exec(`DELETE FROM assessment_content WHERE topic_id IN (SELECT id FROM topics WHERE subject_id = '${subjectId}')`);
+  db.exec(`DELETE FROM instructional_content WHERE topic_id IN (SELECT id FROM topics WHERE subject_id = '${subjectId}')`);
+  db.exec(`DELETE FROM encompassings WHERE parent_topic_id IN (SELECT id FROM topics WHERE subject_id = '${subjectId}')`);
+  db.exec(`DELETE FROM encompassings WHERE child_topic_id IN (SELECT id FROM topics WHERE subject_id = '${subjectId}')`);
+  db.exec(`DELETE FROM prerequisites WHERE from_topic_id IN (SELECT id FROM topics WHERE subject_id = '${subjectId}')`);
+  db.exec(`DELETE FROM prerequisites WHERE to_topic_id IN (SELECT id FROM topics WHERE subject_id = '${subjectId}')`);
+  db.exec(`DELETE FROM topics WHERE subject_id = '${subjectId}'`);
+  db.exec(`DELETE FROM subjects WHERE id = '${subjectId}'`);
+}
+
+// Cross-subject references use "subject:topic-id" format — strip prefix to get actual topic ID
+const resolveTopicId = (id: string) => id.includes(":") ? id.split(":").pop()! : id;
+
+function main() {
+  // Discover all subjects
+  const contentRoot = join(process.cwd(), "content");
+  const subjectDirs = readdirSync(contentRoot)
+    .filter((d) => existsSync(join(contentRoot, d, "graph.json")))
+    .sort();
+
+  if (subjectDirs.length === 0) {
+    console.error("No subjects found in content/");
+    process.exit(1);
+  }
+
+  console.log(`Discovered ${subjectDirs.length} subjects: ${subjectDirs.join(", ")}`);
+
+  // Load all subjects
+  const subjects: SubjectData[] = subjectDirs.map((d) => loadSubject(join(contentRoot, d)));
+
   // Connect to D1 SQLite
   const dbPath = findDbFile();
   console.log(`Using database: ${dbPath}`);
   const db = new Database(dbPath);
 
-  // Clear existing data for this subject (order matters for foreign keys)
-  db.exec(`DELETE FROM group_session_participants WHERE group_session_id IN (SELECT id FROM group_sessions WHERE topic_id IN (SELECT id FROM topics WHERE subject_id = '${graph.subjectId}'))`);
-  db.exec(`DELETE FROM group_sessions WHERE topic_id IN (SELECT id FROM topics WHERE subject_id = '${graph.subjectId}')`);
-  db.exec(`DELETE FROM diagnostic_sessions WHERE subject_id = '${graph.subjectId}'`);
-  db.exec(`DELETE FROM assignment_responses WHERE assignment_id IN (SELECT id FROM assignments WHERE topic_id IN (SELECT id FROM topics WHERE subject_id = '${graph.subjectId}'))`);
-  db.exec(`DELETE FROM assignments WHERE topic_id IN (SELECT id FROM topics WHERE subject_id = '${graph.subjectId}')`);
-  db.exec(`DELETE FROM teach_sessions WHERE topic_id IN (SELECT id FROM topics WHERE subject_id = '${graph.subjectId}')`);
-  db.exec(`DELETE FROM review_log WHERE topic_id IN (SELECT id FROM topics WHERE subject_id = '${graph.subjectId}')`);
-  db.exec(`DELETE FROM user_topic_state WHERE topic_id IN (SELECT id FROM topics WHERE subject_id = '${graph.subjectId}')`);
-  db.exec(`DELETE FROM assessment_content WHERE topic_id IN (SELECT id FROM topics WHERE subject_id = '${graph.subjectId}')`);
-  db.exec(`DELETE FROM instructional_content WHERE topic_id IN (SELECT id FROM topics WHERE subject_id = '${graph.subjectId}')`);
-  db.exec(`DELETE FROM encompassings WHERE parent_topic_id IN (SELECT id FROM topics WHERE subject_id = '${graph.subjectId}')`);
-  db.exec(`DELETE FROM encompassings WHERE child_topic_id IN (SELECT id FROM topics WHERE subject_id = '${graph.subjectId}')`);
-  db.exec(`DELETE FROM prerequisites WHERE from_topic_id IN (SELECT id FROM topics WHERE subject_id = '${graph.subjectId}')`);
-  db.exec(`DELETE FROM prerequisites WHERE to_topic_id IN (SELECT id FROM topics WHERE subject_id = '${graph.subjectId}')`);
-  db.exec(`DELETE FROM topics WHERE subject_id = '${graph.subjectId}'`);
-  db.exec(`DELETE FROM subjects WHERE id = '${graph.subjectId}'`);
+  // Phase 1: Clear all subjects, insert subjects + topics + content
+  // (All topics must exist before inserting cross-subject prerequisites)
+  for (const { graph, problems, examples } of subjects) {
+    console.log(`\n--- Importing ${graph.subjectName} ---`);
+    clearSubject(db, graph.subjectId);
 
-  // Insert subject
-  const insertSubject = db.prepare(
-    "INSERT INTO subjects (id, name, description, grade_range, topic_count, discipline_id, created_at) VALUES (?, ?, ?, ?, ?, ?, ?)"
-  );
-  insertSubject.run(
-    graph.subjectId,
-    graph.subjectName,
-    graph.description ?? "",
-    graph.gradeRange ?? "K-5",
-    graph.topics.length,
-    graph.disciplineId ?? "math",
-    new Date().toISOString()
-  );
-  console.log(`Inserted subject: ${graph.subjectName} (discipline: ${graph.disciplineId ?? "math"})`);
+    // Insert subject
+    const insertSubject = db.prepare(
+      "INSERT INTO subjects (id, name, description, grade_range, topic_count, discipline_id, created_at) VALUES (?, ?, ?, ?, ?, ?, ?)"
+    );
+    insertSubject.run(
+      graph.subjectId,
+      graph.subjectName,
+      graph.description ?? "",
+      graph.gradeRange ?? "K-5",
+      graph.topics.length,
+      graph.disciplineId ?? "math",
+      new Date().toISOString()
+    );
+    console.log(`Inserted subject: ${graph.subjectName} (discipline: ${graph.disciplineId ?? "math"})`);
 
-  // Insert topics (graph nodes only — no content)
-  const insertTopic = db.prepare(
-    "INSERT INTO topics (id, subject_id, name, description, depth, grade_level, standard_code, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
-  );
-  const insertTopics = db.transaction((topics: typeof graph.topics) => {
-    for (const t of topics) {
-      insertTopic.run(
-        t.id,
-        graph.subjectId,
-        t.name,
-        t.description,
-        0, // depth computed later
-        t.gradeLevel,
-        t.standardCode,
-        new Date().toISOString()
-      );
-    }
-  });
-  insertTopics(graph.topics);
-  console.log(`Inserted ${graph.topics.length} topics`);
-
-  // Insert instructional content (worked examples)
-  const insertInstruction = db.prepare(
-    "INSERT INTO instructional_content (id, topic_id, flavor, locale, presentation, content_depth, version, title, steps_json, assets_json, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, 1, ?, ?, ?, ?, ?)"
-  );
-  let instructionCount = 0;
-  const insertInstructions = db.transaction(() => {
-    const now = new Date().toISOString();
-    for (const [, topicExamples] of examples) {
-      for (const e of topicExamples) {
-        const assetsJson = e.visuals?.length ? JSON.stringify(e.visuals) : null;
-        insertInstruction.run(
-          e.id, e.topicId,
-          e.flavor ?? "classic",
-          e.locale ?? "en",
-          e.presentation ?? "standard",
-          e.contentDepth ?? "survey",
-          e.title, JSON.stringify(e.steps), assetsJson, now, now
-        );
-        instructionCount++;
+    // Insert topics
+    const insertTopic = db.prepare(
+      "INSERT INTO topics (id, subject_id, name, description, depth, grade_level, standard_code, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
+    );
+    const insertTopics = db.transaction((topics: typeof graph.topics) => {
+      for (const t of topics) {
+        insertTopic.run(t.id, graph.subjectId, t.name, t.description, 0, t.gradeLevel, t.standardCode, new Date().toISOString());
       }
-    }
-  });
-  insertInstructions();
-  console.log(`Inserted ${instructionCount} instructional content rows`);
+    });
+    insertTopics(graph.topics);
+    console.log(`Inserted ${graph.topics.length} topics`);
 
-  // Insert assessment content (problems)
-  const insertAssessment = db.prepare(
-    "INSERT INTO assessment_content (id, topic_id, flavor, locale, presentation, content_depth, version, type, difficulty, question, answer, hints_json, solution, cognitive_demand, key_prerequisite_id, source, created_at) VALUES (?, ?, ?, ?, ?, ?, 1, 'text-qa', ?, ?, ?, ?, ?, ?, ?, ?, ?)"
-  );
-  let assessmentCount = 0;
-  const insertAssessments = db.transaction(() => {
-    const now = new Date().toISOString();
-    for (const [, topicProblems] of problems) {
-      for (const p of topicProblems) {
-        insertAssessment.run(
-          p.id, p.topicId,
-          p.flavor ?? "classic",
-          p.locale ?? "en",
-          p.presentation ?? "standard",
-          p.contentDepth ?? "survey",
-          p.difficulty, p.question, p.answer, JSON.stringify(p.hints), p.solution, p.cognitiveDemand ?? null, p.keyPrerequisiteId ?? null, p.source ?? "hand-authored", now
-        );
-        assessmentCount++;
+    // Insert instructional content (worked examples)
+    const insertInstruction = db.prepare(
+      "INSERT INTO instructional_content (id, topic_id, flavor, locale, presentation, content_depth, version, title, steps_json, assets_json, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, 1, ?, ?, ?, ?, ?)"
+    );
+    let instructionCount = 0;
+    const insertInstructions = db.transaction(() => {
+      const now = new Date().toISOString();
+      for (const [, topicExamples] of examples) {
+        for (const e of topicExamples) {
+          const assetsJson = e.visuals?.length ? JSON.stringify(e.visuals) : null;
+          insertInstruction.run(e.id, e.topicId, e.flavor ?? "classic", e.locale ?? "en", e.presentation ?? "standard", e.contentDepth ?? "survey", e.title, JSON.stringify(e.steps), assetsJson, now, now);
+          instructionCount++;
+        }
       }
-    }
-  });
-  insertAssessments();
-  console.log(`Inserted ${assessmentCount} assessment content rows`);
+    });
+    insertInstructions();
+    console.log(`Inserted ${instructionCount} instructional content rows`);
 
-  // Insert prerequisites
-  // Cross-subject references use "subject:topic-id" format — strip prefix to get actual topic ID
-  const resolveTopicId = (id: string) => id.includes(":") ? id.split(":").pop()! : id;
+    // Insert assessment content (problems)
+    const insertAssessment = db.prepare(
+      "INSERT INTO assessment_content (id, topic_id, flavor, locale, presentation, content_depth, version, type, difficulty, question, answer, hints_json, solution, cognitive_demand, key_prerequisite_id, source, created_at) VALUES (?, ?, ?, ?, ?, ?, 1, 'text-qa', ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+    );
+    let assessmentCount = 0;
+    const insertAssessments = db.transaction(() => {
+      const now = new Date().toISOString();
+      for (const [, topicProblems] of problems) {
+        for (const p of topicProblems) {
+          insertAssessment.run(p.id, p.topicId, p.flavor ?? "classic", p.locale ?? "en", p.presentation ?? "standard", p.contentDepth ?? "survey", p.difficulty, p.question, p.answer, JSON.stringify(p.hints), p.solution, p.cognitiveDemand ?? null, p.keyPrerequisiteId ?? null, p.source ?? "hand-authored", now);
+          assessmentCount++;
+        }
+      }
+    });
+    insertAssessments();
+    console.log(`Inserted ${assessmentCount} assessment content rows`);
+  }
+
+  // Phase 2: Insert prerequisites and encompassings for all subjects
+  // (Now all topics from all subjects exist, so cross-subject FKs resolve)
   const insertPrereq = db.prepare(
     "INSERT INTO prerequisites (from_topic_id, to_topic_id, strength, type) VALUES (?, ?, ?, ?)"
   );
-  const insertPrereqs = db.transaction((prereqs: typeof graph.prerequisites) => {
-    for (const p of prereqs) {
-      insertPrereq.run(resolveTopicId(p.from), resolveTopicId(p.to), p.strength, p.type ?? "required");
-    }
-  });
-  insertPrereqs(graph.prerequisites);
-  console.log(`Inserted ${graph.prerequisites.length} prerequisite edges`);
+  const insertEncomp = db.prepare(
+    "INSERT INTO encompassings (parent_topic_id, child_topic_id, weight) VALUES (?, ?, ?)"
+  );
 
-  // Insert encompassings
-  if (graph.encompassings && graph.encompassings.length > 0) {
-    const insertEncomp = db.prepare(
-      "INSERT INTO encompassings (parent_topic_id, child_topic_id, weight) VALUES (?, ?, ?)"
-    );
-    const insertEncomps = db.transaction((encompassings: NonNullable<typeof graph.encompassings>) => {
-      for (const e of encompassings) {
-        insertEncomp.run(e.parent, e.child, e.weight);
+  for (const { graph } of subjects) {
+    console.log(`\n--- Inserting edges for ${graph.subjectName} ---`);
+
+    const insertPrereqs = db.transaction((prereqs: typeof graph.prerequisites) => {
+      for (const p of prereqs) {
+        insertPrereq.run(resolveTopicId(p.from), resolveTopicId(p.to), p.strength, p.type ?? "required");
       }
     });
-    insertEncomps(graph.encompassings);
-    console.log(`Inserted ${graph.encompassings.length} encompassing edges`);
-  }
+    insertPrereqs(graph.prerequisites);
+    console.log(`Inserted ${graph.prerequisites.length} prerequisite edges`);
 
-  // Validate DAG
-  const topicIds = new Set(graph.topics.map((t) => t.id));
-  const adjacency = new Map<string, string[]>();
-  const inDegree = new Map<string, number>();
-  for (const id of topicIds) {
-    inDegree.set(id, 0);
-    adjacency.set(id, []);
-  }
-  for (const p of graph.prerequisites) {
-    // Skip cross-subject edges for local DAG validation (cycles can't span subjects)
-    if (!topicIds.has(p.from)) continue;
-    adjacency.get(p.from)!.push(p.to);
-    inDegree.set(p.to, (inDegree.get(p.to) ?? 0) + 1);
-  }
-
-  const queue: string[] = [];
-  for (const [id, deg] of inDegree) {
-    if (deg === 0) queue.push(id);
-  }
-
-  let processed = 0;
-  const depths = new Map<string, number>();
-  for (const id of topicIds) depths.set(id, 0);
-
-  while (queue.length > 0) {
-    const node = queue.shift()!;
-    processed++;
-    const nodeDepth = depths.get(node) ?? 0;
-    for (const child of adjacency.get(node) ?? []) {
-      depths.set(child, Math.max(depths.get(child) ?? 0, nodeDepth + 1));
-      const newDeg = (inDegree.get(child) ?? 1) - 1;
-      inDegree.set(child, newDeg);
-      if (newDeg === 0) queue.push(child);
+    if (graph.encompassings && graph.encompassings.length > 0) {
+      const insertEncomps = db.transaction((encompassings: NonNullable<typeof graph.encompassings>) => {
+        for (const e of encompassings) {
+          insertEncomp.run(e.parent, e.child, e.weight);
+        }
+      });
+      insertEncomps(graph.encompassings);
+      console.log(`Inserted ${graph.encompassings.length} encompassing edges`);
     }
-  }
 
-  if (processed !== topicIds.size) {
-    console.error(`DAG VALIDATION FAILED: ${topicIds.size - processed} topics in cycles`);
-    process.exit(1);
-  }
-
-  console.log("DAG validation passed (no cycles)");
-
-  // Update depths
-  const updateDepth = db.prepare("UPDATE topics SET depth = ? WHERE id = ?");
-  const updateDepths = db.transaction(() => {
-    for (const [id, depth] of depths) {
-      updateDepth.run(depth, id);
+    // Validate DAG and compute depths
+    const topicIds = new Set(graph.topics.map((t) => t.id));
+    const adjacency = new Map<string, string[]>();
+    const inDegree = new Map<string, number>();
+    for (const id of topicIds) {
+      inDegree.set(id, 0);
+      adjacency.set(id, []);
     }
-  });
-  updateDepths();
+    for (const p of graph.prerequisites) {
+      if (!topicIds.has(p.from)) continue;
+      adjacency.get(p.from)!.push(p.to);
+      inDegree.set(p.to, (inDegree.get(p.to) ?? 0) + 1);
+    }
 
-  const maxDepth = Math.max(...depths.values());
-  console.log(`Computed depths: max depth = ${maxDepth}`);
-  console.log("Import complete!");
+    const queue: string[] = [];
+    for (const [id, deg] of inDegree) {
+      if (deg === 0) queue.push(id);
+    }
+
+    let processed = 0;
+    const depths = new Map<string, number>();
+    for (const id of topicIds) depths.set(id, 0);
+
+    while (queue.length > 0) {
+      const node = queue.shift()!;
+      processed++;
+      const nodeDepth = depths.get(node) ?? 0;
+      for (const child of adjacency.get(node) ?? []) {
+        depths.set(child, Math.max(depths.get(child) ?? 0, nodeDepth + 1));
+        const newDeg = (inDegree.get(child) ?? 1) - 1;
+        inDegree.set(child, newDeg);
+        if (newDeg === 0) queue.push(child);
+      }
+    }
+
+    if (processed !== topicIds.size) {
+      console.error(`DAG VALIDATION FAILED: ${topicIds.size - processed} topics in cycles`);
+      process.exit(1);
+    }
+    console.log("DAG validation passed (no cycles)");
+
+    const updateDepth = db.prepare("UPDATE topics SET depth = ? WHERE id = ?");
+    const updateDepths = db.transaction(() => {
+      for (const [id, depth] of depths) {
+        updateDepth.run(depth, id);
+      }
+    });
+    updateDepths();
+
+    const maxDepth = Math.max(...depths.values());
+    console.log(`Computed depths: max depth = ${maxDepth}`);
+  }
+
+  console.log("\nImport complete!");
 }
 
 main();

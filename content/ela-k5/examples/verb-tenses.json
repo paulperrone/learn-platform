@@ -1,0 +1,52 @@
+[
+  {
+    "id": "verb-tenses-ex1",
+    "topicId": "verb-tenses",
+    "title": "Forming the Irregular Past Tense of 'go'",
+    "steps": [
+      {
+        "subgoalLabel": "Read the sentence",
+        "instruction": "Read: 'Yesterday we go to the zoo.' Is this correct?",
+        "work": "Yesterday we go to the zoo.",
+        "explanation": "'Yesterday' tells us this happened in the past, but 'go' is present tense. We need the past tense."
+      },
+      {
+        "subgoalLabel": "Try adding -ed",
+        "instruction": "Can we just add -ed? Let's check: 'goed.'",
+        "work": "goed — this is NOT a real word!",
+        "explanation": "'Go' is an irregular verb. It does not follow the normal -ed rule."
+      },
+      {
+        "subgoalLabel": "Use the correct irregular form",
+        "instruction": "The past tense of 'go' is a completely different word. It is 'went.'",
+        "work": "Yesterday we went to the zoo.",
+        "explanation": "Irregular verbs change in special ways: go → went, see → saw, eat → ate, run → ran. You have to memorize these — they don't follow a pattern."
+      }
+    ]
+  },
+  {
+    "id": "verb-tenses-ex2",
+    "topicId": "verb-tenses",
+    "title": "Choosing the Correct Irregular Past Tense",
+    "steps": [
+      {
+        "subgoalLabel": "Read the sentence",
+        "instruction": "Fill in the blank: 'Last night I _____ (eat) two slices of pizza.'",
+        "work": "Last night I _____ two slices of pizza.",
+        "explanation": "'Last night' means past tense. We need the past tense of 'eat.'"
+      },
+      {
+        "subgoalLabel": "Recall the irregular form",
+        "instruction": "Is it 'eated' or something else? Think about how it sounds.",
+        "work": "'eated' — not a word! The past tense of 'eat' is 'ate.'",
+        "explanation": "'Eat' is irregular: eat → ate (past), eaten (past participle)."
+      },
+      {
+        "subgoalLabel": "Complete the sentence",
+        "instruction": "Write the sentence with the correct verb.",
+        "work": "Last night I ate two slices of pizza.",
+        "explanation": "'Ate' is the irregular past tense of 'eat.' Common irregular verbs to know: eat → ate, drink → drank, write → wrote, think → thought."
+      }
+    ]
+  }
+]

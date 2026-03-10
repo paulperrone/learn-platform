@@ -1,0 +1,52 @@
+[
+  {
+    "id": "consonant-digraphs-ex1",
+    "topicId": "consonant-digraphs",
+    "title": "Reading a Word with 'sh'",
+    "steps": [
+      {
+        "subgoalLabel": "Find the digraph",
+        "instruction": "Look at this word: ship. Do you see two letters that work together?",
+        "work": "sh-i-p → 'sh' is a digraph",
+        "explanation": "A digraph is two letters that make one new sound together. The letters 's' and 'h' together make the /sh/ sound — a sound that neither letter makes on its own."
+      },
+      {
+        "subgoalLabel": "Sound out the digraph",
+        "instruction": "The digraph 'sh' makes the /sh/ sound (like when you say 'shhh').",
+        "work": "sh → /sh/",
+        "explanation": "Instead of saying /s/ and then /h/, you blend them into one smooth /sh/ sound."
+      },
+      {
+        "subgoalLabel": "Blend all sounds",
+        "instruction": "Now blend /sh/ with the rest of the word: i-p.",
+        "work": "/sh/ + /i/ + /p/ → ship",
+        "explanation": "Treat the digraph as one sound. Blend /sh/ + /i/ + /p/ to read 'ship'."
+      }
+    ]
+  },
+  {
+    "id": "consonant-digraphs-ex2",
+    "topicId": "consonant-digraphs",
+    "title": "Reading a Word with 'th'",
+    "steps": [
+      {
+        "subgoalLabel": "Spot the digraph",
+        "instruction": "Look at this word: thin. Find the two letters that make one sound.",
+        "work": "th-i-n → 'th' is the digraph",
+        "explanation": "The letters 't' and 'h' together make the /th/ sound. This is different from /t/ or /h/ alone."
+      },
+      {
+        "subgoalLabel": "Say the digraph sound",
+        "instruction": "The digraph 'th' in 'thin' makes the /th/ sound.",
+        "work": "th → /th/",
+        "explanation": "The /th/ sound is made by putting your tongue near your top teeth. In 'thin', it is a quiet /th/ (not the buzzy /th/ in 'the')."
+      },
+      {
+        "subgoalLabel": "Blend to read the word",
+        "instruction": "Blend the digraph with the remaining sounds.",
+        "work": "/th/ + /i/ + /n/ → thin",
+        "explanation": "The digraph /th/ counts as one sound. Blend /th/ + /i/ + /n/ together to read 'thin'. Other 'th' words include 'this', 'that', and 'them'."
+      }
+    ]
+  }
+]

@@ -1,0 +1,73 @@
+[
+  {
+    "id": "opinion-writing-basic-p1",
+    "topicId": "opinion-writing-basic",
+    "difficulty": "easy",
+    "question": "Which sentence tells an opinion?\n\nA) Dogs have four legs.\nB) Dogs are the best pets.",
+    "answer": "B",
+    "hints": [
+      "An opinion tells what someone thinks or feels. A fact is something that is always true.",
+      "Which sentence tells what someone believes, not something you can prove?"
+    ],
+    "solution": "B is an opinion because 'best' tells what someone thinks. Not everyone agrees that dogs are the best pets. A is a fact because all dogs do have four legs.",
+    "cognitiveDemand": "recall",
+    "source": "hand-authored"
+  },
+  {
+    "id": "opinion-writing-basic-p2",
+    "topicId": "opinion-writing-basic",
+    "difficulty": "easy",
+    "question": "Which word helps start an opinion?\n\nA) I think\nB) There are\nC) It has",
+    "answer": "A",
+    "hints": [
+      "An opinion tells what someone believes or feels.",
+      "Which words show that someone is sharing what they believe?"
+    ],
+    "solution": "'I think' is the best way to start an opinion because it tells the reader you are sharing your own belief. 'There are' and 'It has' are used for facts or descriptions.",
+    "cognitiveDemand": "recall",
+    "source": "hand-authored"
+  },
+  {
+    "id": "opinion-writing-basic-p3",
+    "topicId": "opinion-writing-basic",
+    "difficulty": "medium",
+    "question": "This opinion is missing a reason. Pick the best reason to add.\n\nOpinion: I think recess is the best part of school.\n\nA) Recess is 20 minutes long.\nB) We play outside during recess.\nC) It is fun because we get to run and play with friends.",
+    "answer": "C",
+    "hints": [
+      "A good reason tells WHY you have your opinion.",
+      "Which choice explains why recess is the BEST part of school?"
+    ],
+    "solution": "C is the best reason because it explains WHY recess is the best — it is fun, and you get to run and play with friends. A just states a fact about recess. B tells what happens but does not explain why it is the best.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "opinion-writing-basic-p4",
+    "topicId": "opinion-writing-basic",
+    "difficulty": "medium",
+    "question": "Read this opinion writing. What is missing?\n\n\"I think pizza is the best food. It has yummy cheese on top.\"\n\nA) An opinion\nB) A reason\nC) A closing sentence",
+    "answer": "C",
+    "hints": [
+      "Good opinion writing has three parts: opinion, reason, and a closing.",
+      "The opinion is 'pizza is the best food.' The reason is 'yummy cheese on top.' What is missing?"
+    ],
+    "solution": "The writing is missing a closing sentence. It has an opinion ('pizza is the best food') and a reason ('yummy cheese on top') but needs an ending like 'That is why pizza is my favorite!'",
+    "cognitiveDemand": "conceptual",
+    "source": "hand-authored"
+  },
+  {
+    "id": "opinion-writing-basic-p5",
+    "topicId": "opinion-writing-basic",
+    "difficulty": "hard",
+    "question": "Put these sentences in the correct order for opinion writing. Type the letter order (example: BCA).\n\nA) That is why summer is my favorite season.\nB) I think summer is the best season.\nC) We get to swim and play outside every day.",
+    "answer": "BCA",
+    "hints": [
+      "Opinion writing starts with your opinion, then gives a reason, then has a closing.",
+      "Which sentence states the opinion? That goes first.",
+      "Which sentence gives the reason? That goes in the middle. The closing sentence goes last."
+    ],
+    "solution": "The correct order is B-C-A. B states the opinion ('summer is the best season'), C gives the reason ('swim and play outside'), and A is the closing ('That is why summer is my favorite').",
+    "cognitiveDemand": "reasoning",
+    "source": "hand-authored"
+  }
+]

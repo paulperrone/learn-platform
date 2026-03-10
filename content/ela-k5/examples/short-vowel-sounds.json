@@ -1,0 +1,58 @@
+[
+  {
+    "id": "short-vowel-sounds-ex1",
+    "topicId": "short-vowel-sounds",
+    "title": "Identifying the Short Vowel in a Word",
+    "steps": [
+      {
+        "subgoalLabel": "Find the vowel",
+        "instruction": "Look at this word: hat. Which letter is the vowel?",
+        "work": "h-a-t → 'a' is the vowel",
+        "explanation": "The vowels are a, e, i, o, u. In the word 'hat', the letter 'a' is the vowel."
+      },
+      {
+        "subgoalLabel": "Identify the vowel sound",
+        "instruction": "The letter 'a' in 'hat' makes its short sound.",
+        "work": "a → /a/ (like in 'cat' and 'bat')",
+        "explanation": "Short 'a' sounds like the middle of 'cat'. When a vowel is between two consonants, it usually makes its short sound."
+      },
+      {
+        "subgoalLabel": "Try another word",
+        "instruction": "Does the word 'map' have the same short vowel sound?",
+        "work": "m-a-p → short /a/ → Yes!",
+        "explanation": "'Map' also has the short /a/ sound. Both 'hat' and 'map' have the vowel 'a' between two consonants."
+      }
+    ]
+  },
+  {
+    "id": "short-vowel-sounds-ex2",
+    "topicId": "short-vowel-sounds",
+    "title": "Comparing Different Short Vowel Sounds",
+    "steps": [
+      {
+        "subgoalLabel": "Read the first word",
+        "instruction": "Look at the word: sit. Find the vowel.",
+        "work": "s-i-t → 'i' is the vowel",
+        "explanation": "The letter 'i' is the vowel in 'sit'."
+      },
+      {
+        "subgoalLabel": "Identify the short vowel sound",
+        "instruction": "What short sound does 'i' make?",
+        "work": "i → /i/ (like in 'pig' and 'big')",
+        "explanation": "Short 'i' sounds like the middle of 'pig'. It is different from short 'a' in 'cat'."
+      },
+      {
+        "subgoalLabel": "Compare with a different vowel",
+        "instruction": "Now look at the word: sun. What vowel sound does it have?",
+        "work": "s-u-n → 'u' → /u/ (like in 'cup' and 'bug')",
+        "explanation": "Short 'u' sounds like the middle of 'cup'. Each of the five vowels (a, e, i, o, u) has its own short sound."
+      },
+      {
+        "subgoalLabel": "Review all five short vowels",
+        "instruction": "Here are all five short vowel sounds with example words.",
+        "work": "a = cat, e = bed, i = sit, o = hot, u = cup",
+        "explanation": "Each vowel has a short sound. Remembering a key word for each one helps you recognize the sound in new words."
+      }
+    ]
+  }
+]

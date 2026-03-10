@@ -1656,6 +1656,18 @@
       "from": "order-of-operations",
       "to": "numerical-expressions-grouping",
       "strength": 1.0
+    },
+    {
+      "from": "ela-k5:key-details",
+      "to": "add-subtract-word-problems-1",
+      "strength": 0.7,
+      "type": "required"
+    },
+    {
+      "from": "ela-k5:inference-basic",
+      "to": "multi-step-word-problems",
+      "strength": 0.7,
+      "type": "required"
     }
   ],
   "encompassings": [

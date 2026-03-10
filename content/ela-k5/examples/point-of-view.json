@@ -1,0 +1,52 @@
+[
+  {
+    "id": "point-of-view-ex1",
+    "topicId": "point-of-view",
+    "title": "Identifying First Person vs. Third Person",
+    "steps": [
+      {
+        "subgoalLabel": "Read two passages",
+        "instruction": "Passage A: 'I walked into the classroom and sat at my desk.' Passage B: 'Sam walked into the classroom and sat at his desk.'",
+        "work": "A: 'I walked... my desk.'  B: 'Sam walked... his desk.'",
+        "explanation": "These tell the same event but from different points of view."
+      },
+      {
+        "subgoalLabel": "Look for pronoun clues",
+        "instruction": "First person uses 'I,' 'me,' 'my.' Third person uses 'he,' 'she,' 'they,' or character names.",
+        "work": "Passage A uses 'I' and 'my' → first person. Passage B uses 'Sam' and 'his' → third person.",
+        "explanation": "The pronouns tell us who is narrating."
+      },
+      {
+        "subgoalLabel": "Explain the difference",
+        "instruction": "How does the point of view change what we know?",
+        "work": "First person: We know the narrator's thoughts and feelings directly. Third person: An outside narrator describes what Sam does.",
+        "explanation": "In first person, the character tells their own story. In third person, someone outside the story tells it. Checking the pronouns is the fastest way to identify point of view."
+      }
+    ]
+  },
+  {
+    "id": "point-of-view-ex2",
+    "topicId": "point-of-view",
+    "title": "Identifying Different Characters' Points of View",
+    "steps": [
+      {
+        "subgoalLabel": "Read the passage",
+        "instruction": "Read: 'Mom said the roller coaster would be fun. Jake thought it looked too scary. His little sister Ella could not wait to ride it.'",
+        "work": "Mom: it would be fun. Jake: too scary. Ella: can't wait to ride it.",
+        "explanation": "Each character sees the same thing differently. Let's compare their viewpoints."
+      },
+      {
+        "subgoalLabel": "List each character's point of view",
+        "instruction": "How does each character feel about the roller coaster?",
+        "work": "Mom: positive (fun). Jake: negative (scary). Ella: excited (can't wait).",
+        "explanation": "All three characters look at the same roller coaster but feel differently about it."
+      },
+      {
+        "subgoalLabel": "Explain why viewpoints differ",
+        "instruction": "Why might these characters see the same thing differently?",
+        "work": "Mom is an adult and has ridden coasters before. Jake might be afraid of heights. Ella might love thrills.",
+        "explanation": "Characters have different points of view based on their experiences, age, and personality. Understanding different viewpoints helps us understand characters better."
+      }
+    ]
+  }
+]

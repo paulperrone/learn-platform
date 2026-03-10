@@ -1,0 +1,73 @@
+[
+  {
+    "id": "paragraph-structure-p1",
+    "topicId": "paragraph-structure",
+    "difficulty": "easy",
+    "question": "What is the job of a topic sentence?\n\nA) To give a detail or example\nB) To tell the reader what the paragraph is about\nC) To end the paragraph",
+    "answer": "B",
+    "hints": [
+      "The topic sentence is usually the first sentence in a paragraph.",
+      "It introduces the main idea."
+    ],
+    "solution": "A topic sentence tells the reader what the paragraph is about. It introduces the main idea. Details and examples support the topic sentence, and the closing sentence ends the paragraph.",
+    "cognitiveDemand": "recall",
+    "source": "hand-authored"
+  },
+  {
+    "id": "paragraph-structure-p2",
+    "topicId": "paragraph-structure",
+    "difficulty": "easy",
+    "question": "Read this paragraph. Which sentence is the topic sentence?\n\n(1) Dolphins are amazing ocean animals. (2) They can swim very fast. (3) They talk to each other using clicks and whistles. (4) Dolphins are truly one of the smartest animals in the sea.\n\nType the sentence number.",
+    "answer": "1",
+    "hints": [
+      "The topic sentence tells the main idea of the whole paragraph.",
+      "It is usually the first sentence."
+    ],
+    "solution": "Sentence 1 ('Dolphins are amazing ocean animals') is the topic sentence. It tells the main idea. Sentences 2 and 3 are supporting details, and sentence 4 is the closing sentence.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "paragraph-structure-p3",
+    "topicId": "paragraph-structure",
+    "difficulty": "medium",
+    "question": "Read this paragraph. Which sentence is a supporting detail?\n\n(1) There are many fun things to do in winter. (2) You can build a snowman with your friends. (3) You can also go sledding down big hills. (4) Winter is full of exciting activities.\n\nA) Sentence 1 only\nB) Sentences 2 and 3\nC) Sentence 4 only",
+    "answer": "B",
+    "hints": [
+      "Supporting details give examples or facts that back up the main idea.",
+      "The main idea is about fun things to do in winter. Which sentences give examples of fun things?"
+    ],
+    "solution": "Sentences 2 and 3 are supporting details. They give specific examples of fun winter activities (building a snowman, sledding). Sentence 1 is the topic sentence and sentence 4 is the closing.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "paragraph-structure-p4",
+    "topicId": "paragraph-structure",
+    "difficulty": "medium",
+    "question": "Which sentence does NOT belong in this paragraph?\n\n(1) Dogs make great pets. (2) They are loyal and love to play. (3) My mom bought new shoes yesterday. (4) Dogs can also learn many tricks. (5) That is why dogs are wonderful companions.\n\nType the sentence number.",
+    "answer": "3",
+    "hints": [
+      "Every sentence in a paragraph should support the topic sentence.",
+      "The topic is about dogs making great pets. Which sentence is not about that?"
+    ],
+    "solution": "Sentence 3 ('My mom bought new shoes yesterday') does not belong because it has nothing to do with dogs or pets. All other sentences support the topic that dogs make great pets.",
+    "cognitiveDemand": "error-analysis",
+    "source": "hand-authored"
+  },
+  {
+    "id": "paragraph-structure-p5",
+    "topicId": "paragraph-structure",
+    "difficulty": "hard",
+    "question": "Label each sentence as T (topic sentence), D (supporting detail), or C (closing sentence). Type your answer as four letters separated by commas.\n\n(1) Riding a bike is good exercise.\n(2) It makes your legs strong.\n(3) It also helps your heart stay healthy.\n(4) Bike riding is a great way to keep your body fit.",
+    "answer": "T, D, D, C",
+    "hints": [
+      "The topic sentence states the main idea. The closing sentence restates it or wraps up.",
+      "Supporting details give facts or examples that support the main idea.",
+      "Which sentence introduces the idea? Which ones give examples? Which one wraps up?"
+    ],
+    "solution": "Sentence 1 is the topic sentence (T) — it introduces the main idea that biking is good exercise. Sentences 2 and 3 are supporting details (D) — they explain how biking helps your body. Sentence 4 is the closing (C) — it restates the main idea.",
+    "cognitiveDemand": "reasoning",
+    "source": "hand-authored"
+  }
+]

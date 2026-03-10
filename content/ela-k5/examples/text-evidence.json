@@ -1,0 +1,52 @@
+[
+  {
+    "id": "text-evidence-ex1",
+    "topicId": "text-evidence",
+    "title": "Finding Evidence to Support an Answer",
+    "steps": [
+      {
+        "subgoalLabel": "Read the passage and question",
+        "instruction": "Passage: 'Penguins cannot fly, but they are excellent swimmers. They use their wings like flippers to glide through water. Some penguins can swim up to 15 miles per hour.' Question: How do penguins use their wings?",
+        "work": "Passage about penguins. Question: How do penguins use their wings?",
+        "explanation": "We need to answer the question AND show where we found the answer in the text."
+      },
+      {
+        "subgoalLabel": "Find the sentence that answers the question",
+        "instruction": "Scan the passage for the words 'wings' or 'flippers.'",
+        "work": "Found it: 'They use their wings like flippers to glide through water.'",
+        "explanation": "This sentence directly answers the question."
+      },
+      {
+        "subgoalLabel": "Write your answer with evidence",
+        "instruction": "Answer the question and include a quote or detail from the text.",
+        "work": "Penguins use their wings like flippers to swim. The text says, 'They use their wings like flippers to glide through water.'",
+        "explanation": "Text evidence means pointing to the exact words in the passage that support your answer. Using phrases like 'The text says' or 'According to the passage' shows your teacher you found proof."
+      }
+    ]
+  },
+  {
+    "id": "text-evidence-ex2",
+    "topicId": "text-evidence",
+    "title": "Choosing the Best Evidence",
+    "steps": [
+      {
+        "subgoalLabel": "Read the passage and question",
+        "instruction": "Passage: 'The new playground has swings, a climbing wall, and a slide. The kids' favorite part is the climbing wall because it has different levels for beginners and experts.' Question: Why do kids like the climbing wall?",
+        "work": "The new playground has swings, a climbing wall, and a slide. The kids' favorite part is the climbing wall because it has different levels for beginners and experts.",
+        "explanation": "Let's find the best evidence."
+      },
+      {
+        "subgoalLabel": "Identify possible evidence",
+        "instruction": "Which sentences could help answer the question? There may be more than one detail.",
+        "work": "Option A: 'The new playground has swings, a climbing wall, and a slide.' Option B: 'The kids' favorite part is the climbing wall because it has different levels for beginners and experts.'",
+        "explanation": "Both mention the climbing wall, but only one explains WHY kids like it."
+      },
+      {
+        "subgoalLabel": "Choose the best evidence",
+        "instruction": "Pick the sentence that directly answers WHY.",
+        "work": "Best evidence: Option B — it explains the reason (different levels for beginners and experts).",
+        "explanation": "Option A only lists the climbing wall. Option B tells us WHY kids like it. The best evidence directly answers the question, not just mentions the topic."
+      }
+    ]
+  }
+]

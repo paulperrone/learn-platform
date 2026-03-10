@@ -1,0 +1,52 @@
+[
+  {
+    "id": "nouns-ex1",
+    "topicId": "nouns",
+    "title": "Finding Common and Proper Nouns",
+    "steps": [
+      {
+        "subgoalLabel": "Read the sentence",
+        "instruction": "Read: 'Maria walked her dog to Central Park.'",
+        "work": "Maria walked her dog to Central Park.",
+        "explanation": "We need to find all the nouns — words that name a person, place, thing, or animal."
+      },
+      {
+        "subgoalLabel": "Find the nouns",
+        "instruction": "Look at each word. Does it name a person, place, thing, or animal?",
+        "work": "Maria = person, dog = animal, Central Park = place",
+        "explanation": "We found three nouns: Maria, dog, and Central Park."
+      },
+      {
+        "subgoalLabel": "Sort into common and proper",
+        "instruction": "Proper nouns name a specific person, place, or thing and start with a capital letter. Common nouns are general.",
+        "work": "Proper nouns: Maria, Central Park. Common noun: dog.",
+        "explanation": "'Maria' is a specific person's name and 'Central Park' is a specific place — both are proper nouns. 'Dog' is just any dog, so it is a common noun."
+      }
+    ]
+  },
+  {
+    "id": "nouns-ex2",
+    "topicId": "nouns",
+    "title": "Identifying Nouns in a Sentence",
+    "steps": [
+      {
+        "subgoalLabel": "Read the sentence",
+        "instruction": "Read: 'The teacher put books on the shelf.'",
+        "work": "The teacher put books on the shelf.",
+        "explanation": "Let's find every noun in this sentence."
+      },
+      {
+        "subgoalLabel": "Test each word",
+        "instruction": "For each word, ask: Can I see it, touch it, or is it a person or place?",
+        "work": "teacher — yes, a person. books — yes, things. shelf — yes, a thing.",
+        "explanation": "The, put, on, and the are not nouns. 'Put' is an action (verb), and 'the' and 'on' are helper words."
+      },
+      {
+        "subgoalLabel": "List the nouns",
+        "instruction": "Write down all the nouns you found.",
+        "work": "Nouns: teacher, books, shelf",
+        "explanation": "All three are common nouns because they don't name a specific person or thing. If the teacher had a name like 'Mrs. Lee,' that would be a proper noun."
+      }
+    ]
+  }
+]

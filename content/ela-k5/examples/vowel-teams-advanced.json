@@ -1,0 +1,58 @@
+[
+  {
+    "id": "vowel-teams-advanced-ex1",
+    "topicId": "vowel-teams-advanced",
+    "title": "Reading a Word with 'oi'",
+    "steps": [
+      {
+        "subgoalLabel": "Find the vowel team",
+        "instruction": "Look at this word: coin. Find the two vowels together.",
+        "work": "c-oi-n → 'oi' is the vowel team",
+        "explanation": "The letters 'o' and 'i' form a vowel team. This team does not follow the 'first vowel talks' rule. It makes its own special sound."
+      },
+      {
+        "subgoalLabel": "Learn the sound",
+        "instruction": "The vowel team 'oi' makes the /oy/ sound.",
+        "work": "oi → /oy/",
+        "explanation": "The /oy/ sound is found in words like 'coin', 'point', and 'soil'. The spelling 'oy' makes the same sound (as in 'boy' and 'toy') but usually appears at the end of a word."
+      },
+      {
+        "subgoalLabel": "Blend and read",
+        "instruction": "Blend all the sounds in 'coin'.",
+        "work": "/k/ + /oy/ + /n/ → coin",
+        "explanation": "The word is 'coin'. Remember: 'oi' in the middle, 'oy' at the end — same sound, different position."
+      }
+    ]
+  },
+  {
+    "id": "vowel-teams-advanced-ex2",
+    "topicId": "vowel-teams-advanced",
+    "title": "Reading a Word with 'ou'",
+    "steps": [
+      {
+        "subgoalLabel": "Spot the vowel team",
+        "instruction": "Look at this word: cloud. Find the vowel team.",
+        "work": "cl-ou-d → 'ou' is the vowel team",
+        "explanation": "The letters 'o' and 'u' form a vowel team. Like 'oi', this team makes its own special sound."
+      },
+      {
+        "subgoalLabel": "Learn the sound",
+        "instruction": "The vowel team 'ou' often makes the /ow/ sound.",
+        "work": "ou → /ow/ (like when you say 'ouch!')",
+        "explanation": "The /ow/ sound is found in 'house', 'loud', and 'out'. The spelling 'ow' can make the same sound (as in 'cow' and 'how')."
+      },
+      {
+        "subgoalLabel": "Decode the blend and vowel team",
+        "instruction": "This word starts with a blend 'cl'. Blend everything together.",
+        "work": "/kl/ + /ow/ + /d/ → cloud",
+        "explanation": "The word is 'cloud'. First say the blend /kl/, then the vowel team sound /ow/, then the final /d/."
+      },
+      {
+        "subgoalLabel": "Watch for different 'oo' sounds",
+        "instruction": "Another advanced vowel team is 'oo'. It can make two different sounds.",
+        "work": "oo → /oo/ (moon, food) or /oo/ (book, look)",
+        "explanation": "The 'oo' team is tricky because it has two sounds: a long /oo/ (like 'moon') and a short /oo/ (like 'book'). Context and practice help you know which sound to use."
+      }
+    ]
+  }
+]

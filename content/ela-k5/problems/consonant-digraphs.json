@@ -1,0 +1,70 @@
+[
+  {
+    "id": "consonant-digraphs-p1",
+    "topicId": "consonant-digraphs",
+    "difficulty": "easy",
+    "question": "The word 'ship' starts with which two-letter combination: 'sh', 'ch', or 'th'?",
+    "answer": "sh",
+    "hints": [
+      "Look at the first two letters of 'ship'."
+    ],
+    "solution": "'Ship' starts with the digraph 'sh'. The letters S and H work together to make one sound: /sh/.",
+    "cognitiveDemand": "recall",
+    "source": "hand-authored"
+  },
+  {
+    "id": "consonant-digraphs-p2",
+    "topicId": "consonant-digraphs",
+    "difficulty": "easy",
+    "question": "Which word starts with the 'ch' sound: 'chair', 'shell', or 'three'?",
+    "answer": "chair",
+    "hints": [
+      "Look at the first two letters of each word. Which one begins with C-H?"
+    ],
+    "solution": "'Chair' starts with the digraph 'ch'. 'Shell' starts with 'sh' and 'three' starts with 'th'.",
+    "cognitiveDemand": "recall",
+    "source": "hand-authored"
+  },
+  {
+    "id": "consonant-digraphs-p3",
+    "topicId": "consonant-digraphs",
+    "difficulty": "medium",
+    "question": "What digraph do you see at the END of the word 'much'? Type the two letters.",
+    "answer": "ch",
+    "hints": [
+      "Look at the last two letters of 'much'.",
+      "This is the same digraph that starts 'chair' and 'chin'."
+    ],
+    "solution": "The word 'much' ends with the digraph 'ch'. Digraphs can appear at the beginning or end of words.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "consonant-digraphs-p4",
+    "topicId": "consonant-digraphs",
+    "difficulty": "medium",
+    "question": "Sort these words by their digraph. Which words have the 'th' digraph: 'think', 'shop', 'that', 'chip'? Type the 'th' words separated by a comma.",
+    "answer": "think, that",
+    "hints": [
+      "Look at the first two letters of each word. Which ones start with T-H?",
+      "'Shop' starts with 'sh' and 'chip' starts with 'ch'."
+    ],
+    "solution": "'Think' and 'that' both start with the digraph 'th'. 'Shop' has the 'sh' digraph and 'chip' has the 'ch' digraph.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "consonant-digraphs-p5",
+    "topicId": "consonant-digraphs",
+    "difficulty": "hard",
+    "question": "The word 'duck' ends with the digraph 'ck'. Which other word also ends with 'ck': 'dark', 'back', or 'desk'?",
+    "answer": "back",
+    "hints": [
+      "Look at the last two letters of each word.",
+      "'Dark' ends in R-K, 'desk' ends in S-K. What about 'back'?"
+    ],
+    "solution": "'Back' ends with the 'ck' digraph, just like 'duck'. The letters C and K work together at the end of short vowel words to make the /k/ sound. 'Dark' ends in 'rk' and 'desk' ends in 'sk' — those are blends, not digraphs.",
+    "cognitiveDemand": "conceptual",
+    "source": "hand-authored"
+  }
+]

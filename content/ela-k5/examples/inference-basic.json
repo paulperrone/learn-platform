@@ -1,0 +1,52 @@
+[
+  {
+    "id": "inference-basic-ex1",
+    "topicId": "inference-basic",
+    "title": "Making an Inference from Clues",
+    "steps": [
+      {
+        "subgoalLabel": "Read the passage",
+        "instruction": "Read: 'Anna put on her raincoat and grabbed her umbrella. She looked out the window and sighed.'",
+        "work": "Anna put on her raincoat and grabbed her umbrella. She looked out the window and sighed.",
+        "explanation": "The passage doesn't say what the weather is, but we can figure it out from the clues."
+      },
+      {
+        "subgoalLabel": "Find the clues",
+        "instruction": "What details give hints about something the author didn't say directly?",
+        "work": "Clues: raincoat, umbrella, sighed",
+        "explanation": "These are clues the author left for us."
+      },
+      {
+        "subgoalLabel": "Combine clues with what you know",
+        "instruction": "What do you already know about raincoats and umbrellas? Why would someone sigh?",
+        "work": "I know people use raincoats and umbrellas when it rains. Sighing means she is not happy about it.",
+        "explanation": "Inference = text clues + what you already know. It is probably raining outside, and Anna is not happy about it. The text never says 'it was raining,' but the clues tell us."
+      }
+    ]
+  },
+  {
+    "id": "inference-basic-ex2",
+    "topicId": "inference-basic",
+    "title": "Inferring How a Character Feels",
+    "steps": [
+      {
+        "subgoalLabel": "Read the passage",
+        "instruction": "Read: 'Leo's hands were shaking. He stared at the stage and took a deep breath. His heart was beating fast.'",
+        "work": "Leo's hands were shaking. He stared at the stage and took a deep breath. His heart was beating fast.",
+        "explanation": "The passage doesn't tell us how Leo feels, but we can figure it out."
+      },
+      {
+        "subgoalLabel": "List the clues",
+        "instruction": "What is Leo's body doing?",
+        "work": "Clues: shaking hands, staring at the stage, deep breath, fast heartbeat.",
+        "explanation": "These are physical signs of an emotion."
+      },
+      {
+        "subgoalLabel": "Make the inference",
+        "instruction": "What emotion causes shaking hands, a fast heartbeat, and deep breaths before going on stage?",
+        "work": "Leo is nervous (or scared) about going on stage.",
+        "explanation": "We inferred his feeling from body language clues. The author showed us Leo was nervous instead of telling us directly. This is called 'show, don't tell,' and good readers look for these clues."
+      }
+    ]
+  }
+]

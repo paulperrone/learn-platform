@@ -1,0 +1,72 @@
+[
+  {
+    "id": "complete-sentences-p1",
+    "topicId": "complete-sentences",
+    "difficulty": "easy",
+    "question": "Is this a complete sentence? 'The dog runs fast.'",
+    "answer": "yes",
+    "hints": [
+      "A complete sentence needs a subject (who or what) and a predicate (what they do).",
+      "Look for both a naming part and an action part."
+    ],
+    "solution": "'The dog runs fast.' is a complete sentence. 'The dog' is the subject and 'runs fast' is the predicate.",
+    "cognitiveDemand": "recall",
+    "source": "hand-authored"
+  },
+  {
+    "id": "complete-sentences-p2",
+    "topicId": "complete-sentences",
+    "difficulty": "easy",
+    "question": "Is this a complete sentence? 'Under the big tree.'",
+    "answer": "no",
+    "hints": [
+      "A complete sentence tells who or what AND what happens.",
+      "Does this group of words have an action?"
+    ],
+    "solution": "'Under the big tree.' is NOT a complete sentence. It tells where but not who or what happened. It is a fragment.",
+    "cognitiveDemand": "recall",
+    "source": "hand-authored"
+  },
+  {
+    "id": "complete-sentences-p3",
+    "topicId": "complete-sentences",
+    "difficulty": "medium",
+    "question": "Which is a complete sentence?\nA) Running very quickly.\nB) She runs very quickly.",
+    "answer": "B",
+    "hints": [
+      "One of these tells you WHO is doing something. The other does not.",
+      "A complete sentence needs a subject and a verb working together."
+    ],
+    "solution": "B is correct. 'She runs very quickly.' has a subject ('She') and a predicate ('runs very quickly'). Choice A is a fragment because it has no subject.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "complete-sentences-p4",
+    "topicId": "complete-sentences",
+    "difficulty": "medium",
+    "question": "Is this a complete sentence? 'Because it was raining.'",
+    "answer": "no",
+    "hints": [
+      "Read it carefully. Does it feel finished?",
+      "Words like 'because' often start a part that needs more to be complete."
+    ],
+    "solution": "'Because it was raining.' is a fragment. Even though it has a subject ('it') and a verb ('was raining'), the word 'because' makes it an incomplete thought that needs more information.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "complete-sentences-p5",
+    "topicId": "complete-sentences",
+    "difficulty": "hard",
+    "question": "Fix this fragment by adding words to make it a complete sentence: 'The little kitten with soft fur.'",
+    "answer": "The little kitten with soft fur sleeps on the bed.",
+    "hints": [
+      "This fragment has a subject but is missing an action.",
+      "What could the kitten be doing? Add a verb and finish the thought."
+    ],
+    "solution": "The fragment needs a predicate (verb phrase). Adding 'sleeps on the bed' (or any appropriate verb phrase) completes the sentence. Any answer that adds a verb telling what the kitten does is correct.",
+    "cognitiveDemand": "reasoning",
+    "source": "hand-authored"
+  }
+]

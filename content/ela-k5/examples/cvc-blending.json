@@ -1,0 +1,52 @@
+[
+  {
+    "id": "cvc-blending-ex1",
+    "topicId": "cvc-blending",
+    "title": "Blending Sounds to Read a CVC Word",
+    "steps": [
+      {
+        "subgoalLabel": "Identify each letter's sound",
+        "instruction": "Look at this word: d-o-g. Say each letter's sound one at a time.",
+        "work": "d = /d/, o = /o/, g = /g/",
+        "explanation": "Each letter in a CVC (consonant-vowel-consonant) word makes one sound. We start by figuring out each sound."
+      },
+      {
+        "subgoalLabel": "Blend the sounds slowly",
+        "instruction": "Now push the sounds together slowly: /d/... /o/... /g/",
+        "work": "/d/ - /o/ - /g/ → /d-o-g/",
+        "explanation": "Blending means connecting the sounds without stopping between them. Slide from one sound to the next."
+      },
+      {
+        "subgoalLabel": "Read the word",
+        "instruction": "Blend the sounds faster to read the word.",
+        "work": "/d-o-g/ → dog!",
+        "explanation": "When you blend the sounds together fast enough, you hear the word 'dog'. That is how we read CVC words!"
+      }
+    ]
+  },
+  {
+    "id": "cvc-blending-ex2",
+    "topicId": "cvc-blending",
+    "title": "Blending a CVC Word with Short E",
+    "steps": [
+      {
+        "subgoalLabel": "Look at the letters",
+        "instruction": "Look at this word: b-e-d. What sound does each letter make?",
+        "work": "b = /b/, e = /e/, d = /d/",
+        "explanation": "The first letter 'b' makes /b/. The vowel 'e' makes its short sound /e/ (like in 'pet'). The last letter 'd' makes /d/."
+      },
+      {
+        "subgoalLabel": "Start with the first two sounds",
+        "instruction": "Blend the first two sounds together: /b/ and /e/.",
+        "work": "/b/ + /e/ → /be/",
+        "explanation": "Start by blending just the first two sounds. This gives you /be/."
+      },
+      {
+        "subgoalLabel": "Add the last sound",
+        "instruction": "Now add the final sound /d/ to /be/.",
+        "work": "/be/ + /d/ → bed!",
+        "explanation": "Adding the last sound gives us the word 'bed'. Breaking blending into two steps can make it easier."
+      }
+    ]
+  }
+]

@@ -1,0 +1,70 @@
+[
+  {
+    "id": "two-syllable-words-p1",
+    "topicId": "two-syllable-words",
+    "difficulty": "easy",
+    "question": "How many syllables does the word 'rabbit' have: 1, 2, or 3?",
+    "answer": "2",
+    "hints": [
+      "Try clapping for each part of the word in your head: rab-bit."
+    ],
+    "solution": "'Rabbit' has 2 syllables: rab-bit. Each syllable has one vowel sound.",
+    "cognitiveDemand": "recall",
+    "source": "hand-authored"
+  },
+  {
+    "id": "two-syllable-words-p2",
+    "topicId": "two-syllable-words",
+    "difficulty": "easy",
+    "question": "The word 'sunset' is made of two smaller words put together. What are the two words? Type them separated by a comma.",
+    "answer": "sun, set",
+    "hints": [
+      "Look for two words you know hiding inside 'sunset'."
+    ],
+    "solution": "'Sunset' is a compound word made of 'sun' + 'set'. Each small word is one syllable, so 'sunset' has 2 syllables: sun-set.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "two-syllable-words-p3",
+    "topicId": "two-syllable-words",
+    "difficulty": "medium",
+    "question": "When two consonants are in the middle of a word, you usually split between them. Where would you divide the word 'napkin' into syllables: 'na-pkin', 'nap-kin', or 'napk-in'?",
+    "answer": "nap-kin",
+    "hints": [
+      "Find the two consonants in the middle: P and K. Split between them.",
+      "Each syllable needs at least one vowel sound."
+    ],
+    "solution": "'Napkin' divides as nap-kin. The two consonants P and K are in the middle, so we split between them. This is called the VCCV (vowel-consonant-consonant-vowel) pattern.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "two-syllable-words-p4",
+    "topicId": "two-syllable-words",
+    "difficulty": "medium",
+    "question": "Divide the word 'tiger' into its two syllables. Type them separated by a hyphen.",
+    "answer": "ti-ger",
+    "hints": [
+      "There's only one consonant (G) between the two vowels (I and E). When there's one consonant between vowels, try dividing before the consonant first.",
+      "The first syllable 'ti' has a long I sound because it's an open syllable (ends in a vowel)."
+    ],
+    "solution": "'Tiger' divides as ti-ger. With one consonant between two vowels (the VCV pattern), we first try splitting before the consonant: ti-ger. The first syllable 'ti' is open (ends in a vowel) so the I makes its long sound.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "two-syllable-words-p5",
+    "topicId": "two-syllable-words",
+    "difficulty": "hard",
+    "question": "Both 'robot' and 'lemon' have the VCV pattern (one consonant between two vowels). In 'robot', we split before the consonant: ro-bot. In 'lemon', we split after the consonant: lem-on. Why does the first syllable in 'robot' have a long O but the first syllable in 'lemon' has a short E?",
+    "answer": "ro is open so the vowel is long; lem is closed so the vowel is short",
+    "hints": [
+      "An open syllable ends in a vowel and makes a long sound. A closed syllable ends in a consonant and makes a short sound.",
+      "'Ro' ends in a vowel (open). 'Lem' ends in a consonant (closed)."
+    ],
+    "solution": "In 'ro-bot', the first syllable 'ro' is open — it ends in a vowel, so the O makes its long sound. In 'lem-on', the first syllable 'lem' is closed — it ends in a consonant, so the E makes its short sound. Open syllables have long vowels; closed syllables have short vowels.",
+    "cognitiveDemand": "reasoning",
+    "source": "hand-authored"
+  }
+]

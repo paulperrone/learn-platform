@@ -1,0 +1,57 @@
+[
+  {
+    "id": "theme-p1",
+    "topicId": "theme",
+    "difficulty": "easy",
+    "question": "Read the story:\n\nMia wanted to ride her bike without training wheels. She fell down many times. Her knees got scraped, but she kept trying. After a week of practice, Mia could ride all by herself.\n\nWhat is the theme of this story?\n(A) Bikes are dangerous.\n(B) If you keep trying, you can succeed.\n(C) Mia is good at sports.",
+    "answer": "B",
+    "hints": ["What did Mia do when she fell down? What happened because she did not give up?"],
+    "solution": "The theme is (B) If you keep trying, you can succeed. Mia fell many times but kept practicing, and eventually she learned to ride. The story teaches that persistence leads to success.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "theme-p2",
+    "topicId": "theme",
+    "difficulty": "easy",
+    "question": "Read the story:\n\nTwo friends, Kai and Dex, both wanted the last slice of pizza. Kai said, 'You take it.' Dex said, 'No, you take it.' They decided to split it in half so they could both enjoy it.\n\nWhat is the theme of this story?\n(A) Pizza is the best food.\n(B) Sharing solves problems.\n(C) Friends always agree.",
+    "answer": "B",
+    "hints": ["How did Kai and Dex solve their problem?", "What lesson does their solution teach?"],
+    "solution": "The theme is (B) Sharing solves problems. Both friends wanted the pizza, but instead of fighting over it, they shared. The story teaches that sharing is a good way to handle disagreements.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "theme-p3",
+    "topicId": "theme",
+    "difficulty": "medium",
+    "question": "Read the story:\n\nLeo bragged to everyone that he was the fastest runner in school. At the race, he did not warm up because he thought he would win easily. A quiet girl named Sara had been practicing every day after school. When the race started, Sara ran steadily and crossed the finish line first. Leo finished third.\n\nWhat is the theme? Use details from the story to support your answer.",
+    "answer": "The theme is that hard work and preparation matter more than natural talent or overconfidence. Sara practiced every day and won, while Leo was overconfident, did not prepare, and lost.",
+    "hints": ["Why did Leo lose? Why did Sara win?", "What did Leo do wrong? What did Sara do right?"],
+    "solution": "The theme is that hard work beats overconfidence. Leo bragged and did not warm up, showing he was overconfident. Sara practiced every day, showing dedication. Sara's preparation led to victory while Leo's carelessness led to defeat. The story teaches that effort and preparation are more important than boasting.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "theme-p4",
+    "topicId": "theme",
+    "difficulty": "medium",
+    "question": "Read the story:\n\nAnna was upset because her best friend Maya was playing with someone new at recess. Anna sat alone on a bench. Then she noticed another girl sitting alone too. Anna walked over and said hello. They played together and had a great time. By the end of recess, all four girls were playing together.\n\nWhat is the theme of this story? How do Anna's actions show the theme?",
+    "answer": "The theme is that being open to new friendships can turn a bad situation into a good one. Anna was sad about being left out, but instead of staying upset, she reached out to someone else. This led to all four girls playing together.",
+    "hints": ["Anna felt left out. What choice did she make?", "What was the result of her choice?"],
+    "solution": "The theme is that being open to new friendships leads to good things. Anna's actions show the theme: instead of staying upset about Maya, she reached out to another lonely girl. Her willingness to make a new friend turned a sad moment into a happy one, and eventually all four girls ended up together.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "theme-p5",
+    "topicId": "theme",
+    "difficulty": "hard",
+    "question": "Read the story:\n\nMarcus found a wallet on the ground near the grocery store. It had forty dollars inside and no name. He thought about keeping the money — he really wanted a new video game. But then he imagined how he would feel if he lost his own wallet. Marcus brought the wallet to the store manager. The next day, an elderly woman came to his house with a plate of cookies to thank him. She told him that forty dollars was her grocery money for the whole week.\n\nWhat is the theme of this story? Explain how at least two details from the story develop this theme.",
+    "answer": "The theme is that doing the right thing, even when it is hard, is worth it. Detail 1: Marcus wanted to keep the money for a video game but imagined how he would feel, showing the internal struggle of choosing honesty. Detail 2: The woman said forty dollars was her grocery money for the week, showing that his honest choice had a big positive impact on someone else.",
+    "hints": ["What was the hard choice Marcus faced?", "Why did he decide to return the wallet?", "What did we learn about the woman that made his choice even more important?"],
+    "solution": "The theme is that doing the right thing, even when it is difficult, matters. Several details develop this theme: (1) Marcus wanted the money for a video game, showing the temptation was real. (2) He imagined losing his own wallet, showing he used empathy to make his decision. (3) The woman's revelation that forty dollars was her weekly grocery money shows that what seemed like a small choice had a huge impact on someone else's life. Together, these details show that honest choices can make a real difference.",
+    "cognitiveDemand": "reasoning",
+    "source": "hand-authored"
+  }
+]

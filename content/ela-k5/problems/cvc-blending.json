@@ -1,0 +1,70 @@
+[
+  {
+    "id": "cvc-blending-p1",
+    "topicId": "cvc-blending",
+    "difficulty": "easy",
+    "question": "Blend these sounds together to make a word: /d/ /o/ /g/. What word do they make?",
+    "answer": "dog",
+    "hints": [
+      "Put the three sounds together quickly: d...o...g."
+    ],
+    "solution": "The sounds /d/ /o/ /g/ blend together to make the word 'dog'.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "cvc-blending-p2",
+    "topicId": "cvc-blending",
+    "difficulty": "easy",
+    "question": "Blend these sounds together: /s/ /u/ /n/. What word do they make?",
+    "answer": "sun",
+    "hints": [
+      "Start with /s/, then add /u/, then /n/. What word is that?"
+    ],
+    "solution": "The sounds /s/ /u/ /n/ blend together to make the word 'sun'.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "cvc-blending-p3",
+    "topicId": "cvc-blending",
+    "difficulty": "medium",
+    "question": "The word 'pan' has three sounds. What is the middle sound? Type the vowel letter.",
+    "answer": "a",
+    "hints": [
+      "Break 'pan' into three sounds: /p/ ... /a/ ... /n/. What's in the middle?",
+      "The middle sound in a CVC word is always the vowel."
+    ],
+    "solution": "The middle sound in 'pan' is /a/ (short A). The three sounds are: /p/ - /a/ - /n/.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "cvc-blending-p4",
+    "topicId": "cvc-blending",
+    "difficulty": "medium",
+    "question": "Which of these is a real CVC word: 'zup', 'mop', or 'bly'?",
+    "answer": "mop",
+    "hints": [
+      "A CVC word has a consonant, then a vowel, then a consonant — and it's a real word.",
+      "'Mop' is something you use to clean the floor."
+    ],
+    "solution": "'Mop' is the real CVC word (M-O-P: consonant-vowel-consonant). 'Zup' follows the CVC pattern but isn't a real word. 'Bly' has the pattern consonant-consonant-vowel, not CVC.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "cvc-blending-p5",
+    "topicId": "cvc-blending",
+    "difficulty": "hard",
+    "question": "Start with the word 'mat'. Change the first sound to /s/. What new word did you make?",
+    "answer": "sat",
+    "hints": [
+      "Take 'mat' and remove the /m/ at the beginning. Replace it with /s/.",
+      "The new word is: s + at = ?"
+    ],
+    "solution": "Changing the first sound in 'mat' from /m/ to /s/ gives us 'sat'. The '-at' part stays the same: m-at → s-at.",
+    "cognitiveDemand": "conceptual",
+    "source": "hand-authored"
+  }
+]

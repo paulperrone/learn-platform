@@ -736,3 +736,23 @@ When running parallel background agents to author supplementary problems for non
 The validate-content and content-status tools detect topic coverage by matching `<topic-id>.json` filenames against graph topic IDs. Problem files must be named exactly `<topicId>.json` (e.g., `add-within-5.json`) and contain problems where `p.topicId` matches. If the filename doesn't match the topicId, the topic will show as "missing problems" even though problems exist. This applies to both `problems/` and `problems-generated/` directories.
 
 **Context:** These patterns were the root cause for 6 topics with <50% overall accuracy despite content being conceptually correct. The grading service (`grading.ts`) does text normalization + numeric fallback, but can't handle lists or multi-part answers.
+
+### 2026-03-10: import-content.ts must import all subjects before inserting edges
+
+**Source:** Plan 018 Phase 4 — ELA cross-subject prerequisites failed FK constraints
+**Area:** Content pipeline / import
+
+When subjects have cross-subject prerequisite edges (e.g., `ela-k5:key-details` → `math-foundations:add-subtract-word-problems-1`), the import script must insert ALL subjects' topics before inserting ANY prerequisites. The previous single-subject import failed because `from` topic IDs referenced topics not yet imported.
+
+Fix: Two-phase import — (1) iterate subjects inserting subjects + topics + content, (2) iterate again inserting prerequisites + encompassings. Cross-subject edges are stored in the *target* subject's `graph.json` using `"subject:topic-id"` format for the `from` field.
+
+---
+
+### 2026-03-10: Audio-dependent ELA standards adapted to text-only
+
+**Source:** Plan 018 Phase 4
+**Area:** Content / ELA
+
+Common Core ELA phonics standards (RF.K.2a-d: rhyming, syllable counting, phoneme blending/segmenting) and fluency standards (RF.x.4: timed oral reading) require audio. These cannot be assessed on a screen + text platform. Adaptations: oral phoneme manipulation → visual letter-sound blending (CVC words); oral fluency → omitted entirely. Text-based decoding accuracy is the platform's strength.
+
+---

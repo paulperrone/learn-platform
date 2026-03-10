@@ -1,0 +1,71 @@
+[
+  {
+    "id": "capitalization-basic-p1",
+    "topicId": "capitalization-basic",
+    "difficulty": "easy",
+    "question": "Which word should be capitalized? 'the ball is red.'",
+    "answer": "the",
+    "hints": [
+      "The first word of a sentence always starts with a capital letter."
+    ],
+    "solution": "The word 'the' should be capitalized to 'The' because it is the first word of the sentence: 'The ball is red.'",
+    "cognitiveDemand": "recall",
+    "source": "hand-authored"
+  },
+  {
+    "id": "capitalization-basic-p2",
+    "topicId": "capitalization-basic",
+    "difficulty": "easy",
+    "question": "Rewrite this sentence with correct capitalization: 'i like apples.'",
+    "answer": "I like apples.",
+    "hints": [
+      "The word 'I' is always capitalized, no matter where it appears in a sentence."
+    ],
+    "solution": "The letter 'i' when used as a word about yourself is always written as a capital 'I': 'I like apples.'",
+    "cognitiveDemand": "recall",
+    "source": "hand-authored"
+  },
+  {
+    "id": "capitalization-basic-p3",
+    "topicId": "capitalization-basic",
+    "difficulty": "medium",
+    "question": "How many capitalization errors are in this sentence? 'my friend and i went to the park.'",
+    "answer": "2",
+    "hints": [
+      "Check the first word of the sentence.",
+      "Check if the word 'i' needs to be capitalized."
+    ],
+    "solution": "There are 2 errors: 'my' should be 'My' (first word of the sentence) and 'i' should be 'I' (the pronoun I is always capitalized).",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "capitalization-basic-p4",
+    "topicId": "capitalization-basic",
+    "difficulty": "medium",
+    "question": "Rewrite with correct capitalization: 'can i play with you and i will share?'",
+    "answer": "Can I play with you and I will share?",
+    "hints": [
+      "Find the first word of the sentence.",
+      "The word 'i' appears twice — both need to be capitalized."
+    ],
+    "solution": "'can' becomes 'Can' (first word) and both instances of 'i' become 'I' (always capitalized): 'Can I play with you and I will share?'",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "capitalization-basic-p5",
+    "topicId": "capitalization-basic",
+    "difficulty": "hard",
+    "question": "Find and fix all capitalization errors: 'yesterday i told mom that i would help. she said i was kind.'",
+    "answer": "Yesterday I told mom that I would help. She said I was kind.",
+    "hints": [
+      "Look at the first word of each sentence.",
+      "Count how many times 'i' appears and capitalize each one.",
+      "There are two sentences here — each one starts with a capital."
+    ],
+    "solution": "Five fixes: 'yesterday' → 'Yesterday' (first word of sentence 1), both 'i' → 'I' in sentence 1, 'she' → 'She' (first word of sentence 2), and 'i' → 'I' in sentence 2.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  }
+]

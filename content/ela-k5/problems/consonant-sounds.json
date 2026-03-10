@@ -1,0 +1,69 @@
+[
+  {
+    "id": "consonant-sounds-p1",
+    "topicId": "consonant-sounds",
+    "difficulty": "easy",
+    "question": "The word 'ball' starts with the same sound as which word: 'dog', 'bat', or 'sun'?",
+    "answer": "bat",
+    "hints": [
+      "Say the beginning of 'ball' in your head. Which other word starts the same way?"
+    ],
+    "solution": "'Ball' and 'bat' both start with the /b/ sound. The letter B makes the /b/ sound.",
+    "cognitiveDemand": "recall",
+    "source": "hand-authored"
+  },
+  {
+    "id": "consonant-sounds-p2",
+    "topicId": "consonant-sounds",
+    "difficulty": "easy",
+    "question": "What is the first letter in the word 'map'?",
+    "answer": "m",
+    "hints": [
+      "Look at the very beginning of the word 'map'."
+    ],
+    "solution": "The first letter in 'map' is M. The letter M makes the /m/ sound, like in 'map', 'moon', and 'milk'.",
+    "cognitiveDemand": "recall",
+    "source": "hand-authored"
+  },
+  {
+    "id": "consonant-sounds-p3",
+    "topicId": "consonant-sounds",
+    "difficulty": "medium",
+    "question": "Which two words start with the same consonant sound: 'table', 'penny', 'turtle', 'lamp'? Type both words separated by a comma.",
+    "answer": "table, turtle",
+    "hints": [
+      "Look at the first letter of each word.",
+      "Two of these words start with the letter T."
+    ],
+    "solution": "'Table' and 'turtle' both start with the consonant T, which makes the /t/ sound.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "consonant-sounds-p4",
+    "topicId": "consonant-sounds",
+    "difficulty": "medium",
+    "question": "What is the last consonant sound in the word 'rug'? Type the letter.",
+    "answer": "g",
+    "hints": [
+      "Look at the end of the word 'rug'. What letter do you see last?"
+    ],
+    "solution": "The last letter in 'rug' is G. The letter G makes the /g/ sound at the end of this word.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "consonant-sounds-p5",
+    "topicId": "consonant-sounds",
+    "difficulty": "hard",
+    "question": "Look at these words: 'kite', 'cat', 'king', 'cup'. Two of these words start with the /k/ sound but use the letter K. Which two? Type them separated by a comma.",
+    "answer": "kite, king",
+    "hints": [
+      "Both C and K can make the /k/ sound. Which words use the letter K specifically?",
+      "Look at the first letter of each word carefully."
+    ],
+    "solution": "'Kite' and 'king' both start with the letter K making the /k/ sound. 'Cat' and 'cup' also start with the /k/ sound, but they use the letter C instead.",
+    "cognitiveDemand": "conceptual",
+    "source": "hand-authored"
+  }
+]

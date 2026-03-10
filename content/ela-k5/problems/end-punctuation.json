@@ -1,0 +1,72 @@
+[
+  {
+    "id": "end-punctuation-p1",
+    "topicId": "end-punctuation",
+    "difficulty": "easy",
+    "question": "What punctuation mark goes at the end? 'The cat is sleeping'",
+    "answer": ".",
+    "hints": [
+      "This sentence tells you something. It is a statement.",
+      "Statements end with a period."
+    ],
+    "solution": "'The cat is sleeping' is a telling sentence (statement), so it ends with a period: 'The cat is sleeping.'",
+    "cognitiveDemand": "recall",
+    "source": "hand-authored"
+  },
+  {
+    "id": "end-punctuation-p2",
+    "topicId": "end-punctuation",
+    "difficulty": "easy",
+    "question": "What punctuation mark goes at the end? 'Where is my book'",
+    "answer": "?",
+    "hints": [
+      "This sentence is asking something.",
+      "Questions end with a question mark."
+    ],
+    "solution": "'Where is my book' is an asking sentence (question), so it ends with a question mark: 'Where is my book?'",
+    "cognitiveDemand": "recall",
+    "source": "hand-authored"
+  },
+  {
+    "id": "end-punctuation-p3",
+    "topicId": "end-punctuation",
+    "difficulty": "medium",
+    "question": "What punctuation mark goes at the end? 'Watch out for that car'",
+    "answer": "!",
+    "hints": [
+      "Think about how you would say this. Would you say it calmly or with strong feeling?",
+      "Sentences with strong feeling or excitement end with an exclamation point."
+    ],
+    "solution": "'Watch out for that car' expresses urgency and strong feeling, so it ends with an exclamation point: 'Watch out for that car!'",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "end-punctuation-p4",
+    "topicId": "end-punctuation",
+    "difficulty": "medium",
+    "question": "Add the correct end punctuation to each sentence: 'Do you like pizza_ I love pizza_'",
+    "answer": "? !",
+    "hints": [
+      "The first sentence asks something. The second shows strong feeling.",
+      "Use ? for questions and ! for excitement or strong feelings."
+    ],
+    "solution": "'Do you like pizza?' is a question (question mark). 'I love pizza!' shows strong feeling (exclamation point).",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "end-punctuation-p5",
+    "topicId": "end-punctuation",
+    "difficulty": "hard",
+    "question": "Which sentence uses the WRONG end punctuation? \nA) The sky is blue.\nB) Can we go now?\nC) I am so happy.",
+    "answer": "C",
+    "hints": [
+      "Read each sentence and think about the feeling behind it.",
+      "'I am so happy' expresses a strong feeling. What punctuation shows strong feeling?"
+    ],
+    "solution": "C should end with an exclamation point because 'I am so happy' expresses strong emotion: 'I am so happy!' Sentences A and B are punctuated correctly.",
+    "cognitiveDemand": "error-analysis",
+    "source": "hand-authored"
+  }
+]

@@ -1,0 +1,73 @@
+[
+  {
+    "id": "sentence-writing-p1",
+    "topicId": "sentence-writing",
+    "difficulty": "easy",
+    "question": "Fix this sentence so it starts with a capital letter and ends with a period:\n\nthe cat sat on the mat",
+    "answer": "The cat sat on the mat.",
+    "hints": [
+      "Every sentence starts with a capital letter.",
+      "A telling sentence ends with a period."
+    ],
+    "solution": "The corrected sentence is 'The cat sat on the mat.' The first letter 't' becomes capital 'T', and a period goes at the end.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "sentence-writing-p2",
+    "topicId": "sentence-writing",
+    "difficulty": "easy",
+    "question": "Fix this sentence so it starts with a capital letter and ends with the correct punctuation:\n\nis it raining outside",
+    "answer": "Is it raining outside?",
+    "hints": [
+      "Every sentence starts with a capital letter.",
+      "This sentence is asking something. What punctuation mark goes at the end of a question?"
+    ],
+    "solution": "The corrected sentence is 'Is it raining outside?' It starts with a capital 'I' and ends with a question mark because it asks something.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "sentence-writing-p3",
+    "topicId": "sentence-writing",
+    "difficulty": "medium",
+    "question": "Which of these is a correct sentence?\n\nA) the bird can fly.\nB) The bird can fly.\nC) The bird can fly",
+    "answer": "B",
+    "hints": [
+      "A correct sentence starts with a capital letter.",
+      "A correct sentence also ends with the right punctuation mark."
+    ],
+    "solution": "B is correct: 'The bird can fly.' It starts with a capital 'T' and ends with a period. A is missing the capital letter. C is missing the period.",
+    "cognitiveDemand": "recall",
+    "source": "hand-authored"
+  },
+  {
+    "id": "sentence-writing-p4",
+    "topicId": "sentence-writing",
+    "difficulty": "medium",
+    "question": "This sentence has two mistakes. Find and fix both:\n\nmy friend likes to read books",
+    "answer": "My friend likes to read books.",
+    "hints": [
+      "Check the beginning of the sentence. What rule applies to the first word?",
+      "Check the end of the sentence. What is missing?"
+    ],
+    "solution": "The two mistakes are: (1) 'my' should be capitalized to 'My' because it starts the sentence, and (2) a period is needed at the end. The corrected sentence is 'My friend likes to read books.'",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "sentence-writing-p5",
+    "topicId": "sentence-writing",
+    "difficulty": "hard",
+    "question": "Rewrite these two sentences correctly. Fix all capitalization and punctuation errors:\n\nwhere is the library  i want to find a book",
+    "answer": "Where is the library? I want to find a book.",
+    "hints": [
+      "There are two separate sentences here. Figure out where one ends and the next begins.",
+      "The first sentence is asking a question. The second sentence is telling something.",
+      "Each sentence needs a capital letter at the start and the correct punctuation at the end."
+    ],
+    "solution": "The two corrected sentences are: 'Where is the library? I want to find a book.' The first is a question (capital W, question mark). The second is a statement (capital I, period).",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  }
+]

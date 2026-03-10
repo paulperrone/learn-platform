@@ -1,0 +1,57 @@
+[
+  {
+    "id": "key-details-p1",
+    "topicId": "key-details",
+    "difficulty": "easy",
+    "question": "Read the story:\n\nSam has a big red ball. He plays with it at the park.\n\nWho has the ball?",
+    "answer": "Sam",
+    "hints": ["Look at the first sentence. Who is the story about?"],
+    "solution": "The story says 'Sam has a big red ball.' Sam is the person who has the ball.",
+    "cognitiveDemand": "recall",
+    "source": "hand-authored"
+  },
+  {
+    "id": "key-details-p2",
+    "topicId": "key-details",
+    "difficulty": "easy",
+    "question": "Read the story:\n\nMia got a new cat. The cat is black and white. Mia named it Spot.\n\nWhat is the cat's name?",
+    "answer": "Spot",
+    "hints": ["Read the last sentence. What did Mia name the cat?"],
+    "solution": "The story says 'Mia named it Spot.' The cat's name is Spot.",
+    "cognitiveDemand": "recall",
+    "source": "hand-authored"
+  },
+  {
+    "id": "key-details-p3",
+    "topicId": "key-details",
+    "difficulty": "medium",
+    "question": "Read the story:\n\nLily went to the pond. She saw three ducks. The ducks were swimming in the water.\n\nWhere did Lily see the ducks?",
+    "answer": "at the pond",
+    "hints": ["Where did Lily go?", "What were the ducks doing there?"],
+    "solution": "The story says 'Lily went to the pond' and 'She saw three ducks.' Lily saw the ducks at the pond.",
+    "cognitiveDemand": "recall",
+    "source": "hand-authored"
+  },
+  {
+    "id": "key-details-p4",
+    "topicId": "key-details",
+    "difficulty": "medium",
+    "question": "Read the story:\n\nOn Monday, Ben helped his mom bake cookies. They made chocolate chip cookies. Ben ate two cookies after dinner.\n\nWhen did Ben eat the cookies?",
+    "answer": "after dinner",
+    "hints": ["Look at the last sentence. When did Ben eat the cookies?"],
+    "solution": "The story says 'Ben ate two cookies after dinner.' He ate them after dinner.",
+    "cognitiveDemand": "recall",
+    "source": "hand-authored"
+  },
+  {
+    "id": "key-details-p5",
+    "topicId": "key-details",
+    "difficulty": "hard",
+    "question": "Read the story:\n\nRosa and her dad walked to the library on Saturday morning. Rosa picked out two books about animals. Her dad helped her get a library card.\n\nWhat two things happened at the library? Name both.",
+    "answer": "Rosa picked out two books and her dad helped her get a library card",
+    "hints": ["Read the second and third sentences. What did Rosa do? What did her dad do?"],
+    "solution": "Two things happened at the library: Rosa picked out two books about animals, and her dad helped her get a library card.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  }
+]

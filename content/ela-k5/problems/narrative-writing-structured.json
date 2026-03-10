@@ -1,0 +1,73 @@
+[
+  {
+    "id": "narrative-writing-structured-p1",
+    "topicId": "narrative-writing-structured",
+    "difficulty": "easy",
+    "question": "Which sentence best sets up a narrative situation (beginning of a story)?\n\nA) And then they lived happily ever after.\nB) One sunny morning, Maya found a mysterious letter in her mailbox.\nC) Running, jumping, and swimming.",
+    "answer": "B",
+    "hints": [
+      "A good story beginning introduces a character and a situation.",
+      "It should make the reader want to know what happens next."
+    ],
+    "solution": "B is the best narrative situation because it introduces a character (Maya), a setting (one sunny morning, at her mailbox), and an event that starts the story (finding a mysterious letter). A is an ending, and C is a fragment, not a sentence.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "narrative-writing-structured-p2",
+    "topicId": "narrative-writing-structured",
+    "difficulty": "easy",
+    "question": "Which sentence contains dialogue (a character speaking)?\n\nA) Sam was very excited about the field trip.\nB) \"I can't wait to see the dinosaur bones!\" said Sam.\nC) The bus drove to the museum.",
+    "answer": "B",
+    "hints": [
+      "Dialogue is when a character's exact words are written down.",
+      "Look for quotation marks (\") around the words a character says."
+    ],
+    "solution": "B contains dialogue because it shows Sam's exact words inside quotation marks: 'I can't wait to see the dinosaur bones!' A tells how Sam feels (narration) and C describes an action — neither uses dialogue.",
+    "cognitiveDemand": "recall",
+    "source": "hand-authored"
+  },
+  {
+    "id": "narrative-writing-structured-p3",
+    "topicId": "narrative-writing-structured",
+    "difficulty": "medium",
+    "question": "Read this story. Which narrative element is missing?\n\n\"One day, Liam's dog ran out of the yard. Liam chased the dog down the street. He looked behind bushes and under cars.\"\n\nA) A situation (beginning)\nB) Events (middle)\nC) A resolution (ending)",
+    "answer": "C",
+    "hints": [
+      "A complete narrative has three parts: situation (beginning), events (middle), and resolution (ending).",
+      "The story has a beginning (the dog ran away) and events (Liam searching). What is missing?"
+    ],
+    "solution": "The story is missing a resolution (ending). It has a situation (Liam's dog ran out) and events (chasing, looking behind bushes and under cars), but we never find out what happened. A good ending might be: 'Finally, Liam found his dog hiding under the neighbor's porch.'",
+    "cognitiveDemand": "conceptual",
+    "source": "hand-authored"
+  },
+  {
+    "id": "narrative-writing-structured-p4",
+    "topicId": "narrative-writing-structured",
+    "difficulty": "medium",
+    "question": "Which revision adds the best descriptive detail to this sentence?\n\nOriginal: The girl walked through the forest.\n\nA) The girl walked through the forest quickly.\nB) The nervous girl crept through the dark, misty forest.\nC) A girl walked through a forest that was there.",
+    "answer": "B",
+    "hints": [
+      "Good descriptive details help the reader picture the scene and feel the mood.",
+      "Which revision creates the strongest image in your mind?"
+    ],
+    "solution": "B is the best revision because it adds vivid details: 'nervous' tells how the girl feels, 'crept' is a more specific verb than 'walked,' and 'dark, misty' describes the forest. A only adds 'quickly.' C adds no meaningful detail ('that was there').",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "narrative-writing-structured-p5",
+    "topicId": "narrative-writing-structured",
+    "difficulty": "hard",
+    "question": "Rate this narrative paragraph. How many of these 5 elements does it include? (1) situation with a character, (2) a sequence of events, (3) dialogue, (4) descriptive details, (5) a resolution or ending.\n\n\"It was the first day at a new school, and Ava felt butterflies in her stomach. She walked into the classroom and looked for an empty seat. A girl with curly red hair smiled at her. 'You can sit here!' the girl said cheerfully. Ava smiled back, sat down, and thought that maybe this new school would not be so bad after all.\"\n\nType a number from 0 to 5.",
+    "answer": "5",
+    "hints": [
+      "Check each element one by one.",
+      "(1) Is there a character in a situation? (2) Do events happen in order? (3) Does a character speak? (4) Are there descriptive details? (5) Is there an ending?",
+      "Read carefully — some elements may be in just one sentence."
+    ],
+    "solution": "The paragraph has all 5 elements: (1) Situation: Ava at a new school, feeling nervous. (2) Events in sequence: walking in, looking for a seat, a girl smiling, sitting down. (3) Dialogue: 'You can sit here!' (4) Descriptive details: 'butterflies in her stomach,' 'curly red hair,' 'cheerfully.' (5) Resolution: Ava thinks the new school might not be so bad.",
+    "cognitiveDemand": "reasoning",
+    "source": "hand-authored"
+  }
+]

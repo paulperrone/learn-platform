@@ -1,0 +1,72 @@
+[
+  {
+    "id": "progressive-verb-tenses-p1",
+    "topicId": "progressive-verb-tenses",
+    "difficulty": "easy",
+    "question": "What is the present progressive form of 'walk'? Example: 'I ___ right now.'",
+    "answer": "am walking",
+    "hints": [
+      "Present progressive uses am/is/are + verb ending in -ing.",
+      "The subject is 'I,' so use 'am.'"
+    ],
+    "solution": "The present progressive is 'am walking.' It shows an action happening right now: 'I am walking right now.'",
+    "cognitiveDemand": "recall",
+    "source": "hand-authored"
+  },
+  {
+    "id": "progressive-verb-tenses-p2",
+    "topicId": "progressive-verb-tenses",
+    "difficulty": "easy",
+    "question": "Identify the tense: 'She was reading a book.' Is it past progressive, present progressive, or future progressive?",
+    "answer": "past progressive",
+    "hints": [
+      "Look at the helping verb. 'Was' is past tense of 'be.'",
+      "Past progressive = was/were + -ing verb."
+    ],
+    "solution": "'Was reading' is past progressive. It uses 'was' (past tense of be) + 'reading' (-ing form). It shows an ongoing action in the past.",
+    "cognitiveDemand": "recall",
+    "source": "hand-authored"
+  },
+  {
+    "id": "progressive-verb-tenses-p3",
+    "topicId": "progressive-verb-tenses",
+    "difficulty": "medium",
+    "question": "Change to future progressive: 'They play soccer.' → 'Tomorrow at 3 PM, they ___.'",
+    "answer": "will be playing",
+    "hints": [
+      "Future progressive = will be + verb ending in -ing.",
+      "It shows an action that will be ongoing at a future time."
+    ],
+    "solution": "The future progressive is 'will be playing': 'Tomorrow at 3 PM, they will be playing soccer.' It shows an ongoing action at a specific future time.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "progressive-verb-tenses-p4",
+    "topicId": "progressive-verb-tenses",
+    "difficulty": "medium",
+    "question": "Choose the correct form: 'While I (was eating / ate) dinner, the phone rang.'",
+    "answer": "was eating",
+    "hints": [
+      "The action of eating was ongoing when the phone rang and interrupted it.",
+      "Use the progressive form to show an action in progress when something else happened."
+    ],
+    "solution": "'Was eating' (past progressive) is correct because the eating was an ongoing action that was interrupted by the phone ringing.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "progressive-verb-tenses-p5",
+    "topicId": "progressive-verb-tenses",
+    "difficulty": "hard",
+    "question": "Name the progressive tense used in each sentence:\n1) 'He is sleeping.'\n2) 'They were laughing.'\n3) 'She will be running.'",
+    "answer": "present progressive, past progressive, future progressive",
+    "hints": [
+      "Look at the helping verb before the -ing word in each sentence.",
+      "is = present, were = past, will be = future."
+    ],
+    "solution": "1) 'Is sleeping' = present progressive (is + -ing). 2) 'Were laughing' = past progressive (were + -ing). 3) 'Will be running' = future progressive (will be + -ing).",
+    "cognitiveDemand": "conceptual",
+    "source": "hand-authored"
+  }
+]

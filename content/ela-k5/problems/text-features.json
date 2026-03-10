@@ -1,0 +1,57 @@
+[
+  {
+    "id": "text-features-p1",
+    "topicId": "text-features",
+    "difficulty": "easy",
+    "question": "Read the passage:\n\n**All About Frogs**\n\nFrogs live near water. They have smooth, wet skin. Baby frogs are called tadpoles.\n\nWhat is the heading of this passage?",
+    "answer": "All About Frogs",
+    "hints": ["A heading is the title at the top that tells you what the passage is about. Look at the bold text."],
+    "solution": "The heading is 'All About Frogs.' A heading appears at the top and tells the reader what the section is about.",
+    "cognitiveDemand": "recall",
+    "source": "hand-authored"
+  },
+  {
+    "id": "text-features-p2",
+    "topicId": "text-features",
+    "difficulty": "easy",
+    "question": "Read the passage:\n\nThe ocean is full of sea life. A **coral reef** is a structure made by tiny sea animals. Many colorful fish live near coral reefs.\n\nWhat does the bold text tell you to pay attention to?",
+    "answer": "coral reef",
+    "hints": ["Bold words are printed darker and thicker than the other words. What words are in bold?"],
+    "solution": "The bold words are 'coral reef.' Authors use bold text to highlight important words or vocabulary that the reader should notice and learn.",
+    "cognitiveDemand": "recall",
+    "source": "hand-authored"
+  },
+  {
+    "id": "text-features-p3",
+    "topicId": "text-features",
+    "difficulty": "medium",
+    "question": "Read the passage:\n\n**What Bees Eat**\n\nBees drink a sweet liquid from flowers called **nectar**. They also collect **pollen**, a yellow powder found on flowers. Bees use nectar and pollen to make honey.\n\nHow do the bold words help you as a reader?",
+    "answer": "The bold words show important vocabulary words like nectar and pollen that the reader should learn.",
+    "hints": ["Why would an author make certain words stand out?", "Are nectar and pollen everyday words or special science words?"],
+    "solution": "The bold words 'nectar' and 'pollen' are key vocabulary. The author makes them bold so readers notice these important terms and pay attention to their definitions in the text.",
+    "cognitiveDemand": "conceptual",
+    "source": "hand-authored"
+  },
+  {
+    "id": "text-features-p4",
+    "topicId": "text-features",
+    "difficulty": "medium",
+    "question": "Look at this table of contents:\n\nTable of Contents\nChapter 1: Baby Animals . . . . . page 2\nChapter 2: What Animals Eat . . . page 8\nChapter 3: Where Animals Live . . page 14\n\nYou want to learn what food a bear eats. Which chapter should you turn to?",
+    "answer": "Chapter 2: What Animals Eat",
+    "hints": ["A table of contents tells you what each chapter is about.", "Which chapter title matches the topic of food?"],
+    "solution": "You should turn to Chapter 2: What Animals Eat (page 8). A table of contents helps readers find information quickly by listing the topics covered in each chapter.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "text-features-p5",
+    "topicId": "text-features",
+    "difficulty": "hard",
+    "question": "Read the passage:\n\n**Types of Clouds**\n\n**Cumulus Clouds**\nThese are the big, fluffy clouds that look like cotton balls. You usually see them on nice days.\n\n**Stratus Clouds**\nThese clouds are flat and gray. They cover the whole sky like a blanket. Rain may come from stratus clouds.\n\nHow do the headings help you understand this passage? What would be harder without them?",
+    "answer": "The headings tell you that the passage is about types of clouds, and each smaller heading introduces a different cloud type. Without them, it would be harder to tell where the information about one cloud type ends and the next begins.",
+    "hints": ["Count how many headings there are. What does each one tell you?", "Imagine reading the text with no headings. Would it be easy to find information about stratus clouds?"],
+    "solution": "The main heading 'Types of Clouds' tells you the overall topic. The subheadings 'Cumulus Clouds' and 'Stratus Clouds' organize the passage by cloud type. Without headings, it would be harder to scan the text and find specific information about each type of cloud.",
+    "cognitiveDemand": "reasoning",
+    "source": "hand-authored"
+  }
+]

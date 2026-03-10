@@ -1,0 +1,72 @@
+[
+  {
+    "id": "figurative-language-p1",
+    "topicId": "figurative-language",
+    "difficulty": "easy",
+    "question": "Is this a simile or a metaphor? 'Her smile was like sunshine.'",
+    "answer": "simile",
+    "hints": [
+      "A simile uses the words 'like' or 'as' to compare two things.",
+      "Look for the word 'like' or 'as' in the sentence."
+    ],
+    "solution": "This is a simile because it uses the word 'like' to compare her smile to sunshine. Similes always use 'like' or 'as'. A metaphor would say 'Her smile was sunshine' — without 'like' or 'as'.",
+    "cognitiveDemand": "recall",
+    "source": "hand-authored"
+  },
+  {
+    "id": "figurative-language-p2",
+    "topicId": "figurative-language",
+    "difficulty": "easy",
+    "question": "Read this sentence: 'Time is money.' Is this literal (actually true) or figurative (a comparison to make a point)?",
+    "answer": "figurative",
+    "hints": [
+      "Is time actually made of money? Can you hold time like coins?",
+      "This is comparing time to money to make a point about value."
+    ],
+    "solution": "This is figurative language — specifically, a metaphor. Time is not literally money, but the comparison means that time is valuable, just like money is valuable. If you waste time, it is like wasting something precious.",
+    "cognitiveDemand": "recall",
+    "source": "hand-authored"
+  },
+  {
+    "id": "figurative-language-p3",
+    "topicId": "figurative-language",
+    "difficulty": "medium",
+    "question": "Read this sentence: 'The classroom was a zoo after the teacher left.' What does this metaphor mean?",
+    "answer": "the classroom was wild and noisy",
+    "hints": [
+      "The classroom is not literally a zoo with animals.",
+      "What is a zoo like? Think about the noise and activity."
+    ],
+    "solution": "The metaphor 'The classroom was a zoo' means the classroom was loud, wild, and chaotic — just like a zoo full of noisy animals. The writer compares the classroom to a zoo to help you picture how out of control it was.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "figurative-language-p4",
+    "topicId": "figurative-language",
+    "difficulty": "medium",
+    "question": "What does the idiom 'break the ice' mean? (Hint: it has nothing to do with actual ice.)",
+    "answer": "start a conversation or make people feel comfortable",
+    "hints": [
+      "Idioms mean something different from the individual words.",
+      "Think about an awkward silence between people who just met. What would help?"
+    ],
+    "solution": "'Break the ice' means to start a conversation or do something to make people feel comfortable in a new or awkward social situation. This is an idiom — its meaning cannot be figured out from the individual words 'break' and 'ice'. Idioms must be learned as whole phrases.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "figurative-language-p5",
+    "topicId": "figurative-language",
+    "difficulty": "hard",
+    "question": "Read this passage: 'The wind howled through the empty streets. The old house groaned under the weight of the storm, and the trees danced wildly in the rain.' Identify two examples of figurative language and explain what each one means.",
+    "answer": "personification: wind howled, house groaned, or trees danced",
+    "hints": [
+      "Can wind actually howl? Can a house groan? Can trees dance?",
+      "When we give human actions to non-human things, that is called personification — a type of figurative language."
+    ],
+    "solution": "The passage contains personification (giving human qualities to non-human things). Examples: 'wind howled' — wind does not have a voice, but this makes us hear a loud, eerie sound. 'House groaned' — houses cannot groan, but this makes us feel the strain of the storm. 'Trees danced' — trees cannot dance, but this helps us picture branches swaying wildly. Any two of these are correct.",
+    "cognitiveDemand": "reasoning",
+    "source": "hand-authored"
+  }
+]

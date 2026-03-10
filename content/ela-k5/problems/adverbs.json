@@ -1,0 +1,72 @@
+[
+  {
+    "id": "adverbs-p1",
+    "topicId": "adverbs",
+    "difficulty": "easy",
+    "question": "What is the adverb in this sentence? 'She ran quickly to the door.'",
+    "answer": "quickly",
+    "hints": [
+      "An adverb describes a verb — it tells how, when, or where.",
+      "How did she run?"
+    ],
+    "solution": "'Quickly' is the adverb. It describes the verb 'ran' by telling how she ran.",
+    "cognitiveDemand": "recall",
+    "source": "hand-authored"
+  },
+  {
+    "id": "adverbs-p2",
+    "topicId": "adverbs",
+    "difficulty": "easy",
+    "question": "What is the adverb in this sentence? 'We will go outside later.'",
+    "answer": "later",
+    "hints": [
+      "Adverbs can tell when something happens.",
+      "When will they go outside?"
+    ],
+    "solution": "'Later' is the adverb. It describes the verb 'will go' by telling when.",
+    "cognitiveDemand": "recall",
+    "source": "hand-authored"
+  },
+  {
+    "id": "adverbs-p3",
+    "topicId": "adverbs",
+    "difficulty": "medium",
+    "question": "Choose the correct word: 'She sings (beautiful / beautifully).'",
+    "answer": "beautifully",
+    "hints": [
+      "Is the word describing a noun or a verb?",
+      "Adverbs (describing verbs) often end in -ly. Adjectives (describing nouns) do not."
+    ],
+    "solution": "'Beautifully' is correct because it describes the verb 'sings' (how she sings). 'Beautiful' is an adjective and would describe a noun.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "adverbs-p4",
+    "topicId": "adverbs",
+    "difficulty": "medium",
+    "question": "Fill in the comparative adverb: 'She runs (fast) ___ than her brother.'",
+    "answer": "faster",
+    "hints": [
+      "To compare two actions, use the comparative form of the adverb.",
+      "Short adverbs like 'fast' add -er, just like adjectives."
+    ],
+    "solution": "The comparative form is 'faster': 'She runs faster than her brother.' Short adverbs form comparatives by adding -er.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "adverbs-p5",
+    "topicId": "adverbs",
+    "difficulty": "hard",
+    "question": "Fix the error: 'He did really good on the test.'",
+    "answer": "well",
+    "hints": [
+      "'Good' is an adjective. What adverb should describe how he did?",
+      "The adverb form of 'good' is an irregular word — it does not end in -ly."
+    ],
+    "solution": "'Good' should be 'well.' 'Well' is the adverb that describes the verb 'did': 'He did really well on the test.' 'Good' is an adjective and cannot describe a verb.",
+    "cognitiveDemand": "error-analysis",
+    "source": "hand-authored"
+  }
+]

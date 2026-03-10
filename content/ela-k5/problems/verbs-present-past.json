@@ -1,0 +1,72 @@
+[
+  {
+    "id": "verbs-present-past-p1",
+    "topicId": "verbs-present-past",
+    "difficulty": "easy",
+    "question": "What is the verb in this sentence? 'The boy kicked the ball.'",
+    "answer": "kicked",
+    "hints": [
+      "A verb is an action word — it tells what someone does.",
+      "What did the boy do?"
+    ],
+    "solution": "'Kicked' is the verb. It tells the action the boy performed.",
+    "cognitiveDemand": "recall",
+    "source": "hand-authored"
+  },
+  {
+    "id": "verbs-present-past-p2",
+    "topicId": "verbs-present-past",
+    "difficulty": "easy",
+    "question": "Is the verb in past tense or present tense? 'She walks to school.'",
+    "answer": "present tense",
+    "hints": [
+      "Past tense means it already happened. Present tense means it is happening now.",
+      "'Walks' — is this happening now or did it already happen?"
+    ],
+    "solution": "'Walks' is present tense. It tells what she does now. The past tense would be 'walked.'",
+    "cognitiveDemand": "recall",
+    "source": "hand-authored"
+  },
+  {
+    "id": "verbs-present-past-p3",
+    "topicId": "verbs-present-past",
+    "difficulty": "medium",
+    "question": "Change the verb to past tense: 'I jump over the puddle.'",
+    "answer": "jumped",
+    "hints": [
+      "Past tense tells about something that already happened.",
+      "For most verbs, add -ed to make them past tense."
+    ],
+    "solution": "'Jump' becomes 'jumped' in past tense. Add -ed to regular verbs: 'I jumped over the puddle.'",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "verbs-present-past-p4",
+    "topicId": "verbs-present-past",
+    "difficulty": "medium",
+    "question": "Change the verb to future tense: 'She paints a picture.'",
+    "answer": "will paint",
+    "hints": [
+      "Future tense tells about something that has not happened yet.",
+      "Add the word 'will' before the base form of the verb."
+    ],
+    "solution": "'Paints' becomes 'will paint' in future tense. Use 'will' + the base verb: 'She will paint a picture.'",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "verbs-present-past-p5",
+    "topicId": "verbs-present-past",
+    "difficulty": "hard",
+    "question": "Which sentence has the verb in the WRONG tense? The story is about yesterday.\nA) We played at the park.\nB) Mom cooked dinner.\nC) Dad drives us home.",
+    "answer": "C",
+    "hints": [
+      "If the story is about yesterday, all verbs should be in past tense.",
+      "Look for a verb that sounds like it is happening right now instead of yesterday."
+    ],
+    "solution": "C is wrong. 'Drives' is present tense, but the story is about yesterday, so it should be past tense: 'Dad drove us home.'",
+    "cognitiveDemand": "error-analysis",
+    "source": "hand-authored"
+  }
+]

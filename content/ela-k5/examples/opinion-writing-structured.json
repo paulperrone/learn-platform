@@ -1,0 +1,64 @@
+[
+  {
+    "id": "opinion-writing-structured-ex1",
+    "topicId": "opinion-writing-structured",
+    "title": "Should Students Have Longer Lunch Breaks?",
+    "steps": [
+      {
+        "subgoalLabel": "Write an introduction",
+        "instruction": "Write 2-3 sentences that introduce the topic and clearly state your opinion.",
+        "work": "Many students feel rushed during lunch. I believe lunch breaks should be longer because students need time to eat, relax, and be ready to learn.",
+        "explanation": "The introduction does two things: it tells the reader what the topic is (lunch breaks) and states your opinion clearly (they should be longer)."
+      },
+      {
+        "subgoalLabel": "Write a body paragraph with your first reason",
+        "instruction": "Write a paragraph that gives your first reason with supporting facts or examples.",
+        "work": "First, longer lunches give students time to eat a full meal. When lunch is too short, many kids throw away food because they run out of time. Eating a good lunch helps kids have energy for the rest of the day.",
+        "explanation": "This body paragraph has one clear reason ('time to eat a full meal') and supports it with a fact and an explanation. The transition 'First' signals this is reason number one."
+      },
+      {
+        "subgoalLabel": "Write a body paragraph with your second reason",
+        "instruction": "Write another paragraph with a different reason. Use a transition to connect it.",
+        "work": "In addition, students need a break to recharge their brains. Studies show that breaks help people focus better. After a longer lunch, students can pay attention in class and do better work.",
+        "explanation": "'In addition' links this paragraph to the first. A second reason makes the argument stronger. Supporting it with a fact ('studies show...') adds evidence."
+      },
+      {
+        "subgoalLabel": "Write a conclusion",
+        "instruction": "Write 2-3 sentences that restate your opinion and leave the reader thinking.",
+        "work": "For these reasons, schools should give students longer lunch breaks. When kids eat well and take a real break, they learn better all afternoon. Longer lunches are good for students and good for learning.",
+        "explanation": "The conclusion restates the opinion without copying the introduction word for word. It wraps up the reasons and gives the reader a final thought."
+      }
+    ]
+  },
+  {
+    "id": "opinion-writing-structured-ex2",
+    "topicId": "opinion-writing-structured",
+    "title": "Should Schools Have More Art Classes?",
+    "steps": [
+      {
+        "subgoalLabel": "Write an introduction",
+        "instruction": "Introduce the topic and state your opinion in 2-3 sentences.",
+        "work": "Some schools are cutting art classes to add more time for math and reading. I think this is a mistake. Schools should have more art classes, not fewer.",
+        "explanation": "The introduction gives background (schools cutting art) and then clearly states the opinion (schools should have more art). The reader knows exactly where the writer stands."
+      },
+      {
+        "subgoalLabel": "Write a body paragraph with your first reason",
+        "instruction": "Give your first reason with facts or examples to support it.",
+        "work": "For one thing, art helps students be creative. When students draw, paint, or build, they learn to think in new ways. Creativity is a skill they will use in every subject and in life.",
+        "explanation": "'For one thing' introduces the first reason. The paragraph explains how art builds creativity and why that matters."
+      },
+      {
+        "subgoalLabel": "Write a body paragraph with your second reason",
+        "instruction": "Give another reason. Use a transition word to connect it to the first paragraph.",
+        "work": "Furthermore, art class gives students who struggle with reading or math a chance to shine. Not every student learns the same way. In art, students can show what they know through pictures and projects instead of just words and numbers.",
+        "explanation": "'Furthermore' connects this paragraph to the previous one. This reason shows that art helps a different group of students, which broadens the argument."
+      },
+      {
+        "subgoalLabel": "Write a conclusion",
+        "instruction": "Restate your opinion and leave the reader with a strong final thought.",
+        "work": "In conclusion, schools should offer more art classes. Art builds creativity and gives every student a way to succeed. Cutting art hurts students more than it helps them.",
+        "explanation": "The conclusion uses 'In conclusion' to signal the ending. It restates the opinion and summarizes the two reasons in a fresh way."
+      }
+    ]
+  }
+]

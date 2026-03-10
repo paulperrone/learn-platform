@@ -1,0 +1,57 @@
+[
+  {
+    "id": "compare-contrast-basic-p1",
+    "topicId": "compare-contrast-basic",
+    "difficulty": "easy",
+    "question": "Read the passage:\n\nCats and dogs are both popular pets. Cats are quiet and like to nap. Dogs are loud and like to run.\n\nHow are cats and dogs the same?",
+    "answer": "They are both popular pets",
+    "hints": ["Look for something that is true about both cats and dogs."],
+    "solution": "The passage says 'Cats and dogs are both popular pets.' This is how they are the same — they are both popular pets.",
+    "cognitiveDemand": "recall",
+    "source": "hand-authored"
+  },
+  {
+    "id": "compare-contrast-basic-p2",
+    "topicId": "compare-contrast-basic",
+    "difficulty": "easy",
+    "question": "Read the passage:\n\nLeo likes to ride his bike. His sister Mia likes to swim. They both enjoy playing outside after school.\n\nHow are Leo and Mia different?",
+    "answer": "Leo likes to ride his bike and Mia likes to swim",
+    "hints": ["What does Leo like to do? What does Mia like to do? Are those the same or different?"],
+    "solution": "Leo and Mia are different because Leo likes to ride his bike while Mia likes to swim. They do different activities, even though both enjoy playing outside.",
+    "cognitiveDemand": "recall",
+    "source": "hand-authored"
+  },
+  {
+    "id": "compare-contrast-basic-p3",
+    "topicId": "compare-contrast-basic",
+    "difficulty": "medium",
+    "question": "Read about two characters:\n\nRuby is in second grade. She loves reading books about space. She is shy and has two close friends.\n\nMarco is also in second grade. He loves reading books about dinosaurs. He is outgoing and has many friends.\n\nName one way Ruby and Marco are alike and one way they are different.",
+    "answer": "Alike: They are both in second grade and both love reading. Different: Ruby is shy with two friends and Marco is outgoing with many friends (or they like different book topics).",
+    "hints": ["Look for things that are the same about both characters.", "Look for things that are different. Compare their personalities or what they like to read."],
+    "solution": "Ruby and Marco are alike because they are both in second grade and both love reading. They are different because Ruby is shy with two close friends while Marco is outgoing with many friends. They also read about different topics.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "compare-contrast-basic-p4",
+    "topicId": "compare-contrast-basic",
+    "difficulty": "medium",
+    "question": "Read about two events:\n\nLast summer, the town had a fair. There were rides, games, and cotton candy. Everyone laughed and played all day.\n\nThis winter, the town had a festival. There were ice sculptures, hot cocoa, and sled races. Everyone laughed and played all day.\n\nWhat was the same about both events? What was different?",
+    "answer": "Same: Everyone laughed and played all day at both events. Different: The fair was in summer with rides and cotton candy, but the festival was in winter with ice sculptures and sled races.",
+    "hints": ["Look at the last sentence of each passage.", "Compare the seasons and the activities."],
+    "solution": "Both events were town celebrations where everyone laughed and played all day. The difference is the season and activities: the fair had rides, games, and cotton candy in summer, while the festival had ice sculptures, hot cocoa, and sled races in winter.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "compare-contrast-basic-p5",
+    "topicId": "compare-contrast-basic",
+    "difficulty": "hard",
+    "question": "Read about two characters:\n\nIn one story, a little ant worked hard all summer carrying food to her home. She stored the food to eat during winter. When winter came, the ant was warm and had plenty to eat.\n\nIn another story, a grasshopper played and sang all summer. He did not save any food. When winter came, the grasshopper was cold and hungry.\n\nCompare the ant and the grasshopper. What lesson does this comparison teach?",
+    "answer": "The ant worked hard and saved food, so she was ready for winter. The grasshopper played and did not prepare, so he was cold and hungry. The lesson is that it is important to plan ahead and work hard.",
+    "hints": ["What did the ant do in summer? What did the grasshopper do?", "What happened to each one in winter? What does that teach us?"],
+    "solution": "The ant and grasshopper both had the whole summer, but they spent it differently. The ant worked hard and prepared, while the grasshopper played and did not. In winter, the ant was fine but the grasshopper suffered. The comparison teaches that planning ahead and working hard leads to better results.",
+    "cognitiveDemand": "reasoning",
+    "source": "hand-authored"
+  }
+]

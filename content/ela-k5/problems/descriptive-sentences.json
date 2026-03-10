@@ -1,0 +1,73 @@
+[
+  {
+    "id": "descriptive-sentences-p1",
+    "topicId": "descriptive-sentences",
+    "difficulty": "easy",
+    "question": "Which sentence is more descriptive?\n\nA) I have a dog.\nB) I have a big, fluffy dog.",
+    "answer": "B",
+    "hints": [
+      "A descriptive sentence uses words that help you picture what something looks like, sounds like, or feels like.",
+      "Which sentence helps you imagine the dog better?"
+    ],
+    "solution": "B is more descriptive because 'big' and 'fluffy' are adjectives that help the reader picture the dog. Sentence A tells us nothing about what the dog looks or feels like.",
+    "cognitiveDemand": "recall",
+    "source": "hand-authored"
+  },
+  {
+    "id": "descriptive-sentences-p2",
+    "topicId": "descriptive-sentences",
+    "difficulty": "easy",
+    "question": "Pick the best describing word to fill in the blank:\n\nThe ___ sun made us feel warm.\n\nA) bright\nB) some\nC) the",
+    "answer": "A",
+    "hints": [
+      "A describing word (adjective) tells about a noun — what it looks like, sounds like, or feels like.",
+      "Which word tells you something about the sun?"
+    ],
+    "solution": "'Bright' is the best choice because it is an adjective that describes the sun. 'Some' and 'the' do not describe what the sun is like.",
+    "cognitiveDemand": "recall",
+    "source": "hand-authored"
+  },
+  {
+    "id": "descriptive-sentences-p3",
+    "topicId": "descriptive-sentences",
+    "difficulty": "medium",
+    "question": "Add one describing word (adjective) to make this sentence more descriptive. Write the full new sentence.\n\nThe flower grew in the garden.",
+    "answer": "The red flower grew in the garden.",
+    "hints": [
+      "Think about what the flower might look like — its color, size, or shape.",
+      "Put your describing word before the word 'flower'."
+    ],
+    "solution": "Any adjective describing the flower works, such as: 'The red flower grew in the garden,' 'The tall flower grew in the garden,' or 'The pretty flower grew in the garden.' The adjective goes before the noun it describes.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "descriptive-sentences-p4",
+    "topicId": "descriptive-sentences",
+    "difficulty": "medium",
+    "question": "How many describing words (adjectives) are in this sentence?\n\nThe tiny, gray kitten played with a round, red ball.\n\nType a number.",
+    "answer": "4",
+    "hints": [
+      "Describing words tell about a noun — what color, size, or shape something is.",
+      "Look at the words before 'kitten' and before 'ball'."
+    ],
+    "solution": "There are 4 adjectives: 'tiny' and 'gray' describe the kitten; 'round' and 'red' describe the ball.",
+    "cognitiveDemand": "conceptual",
+    "source": "hand-authored"
+  },
+  {
+    "id": "descriptive-sentences-p5",
+    "topicId": "descriptive-sentences",
+    "difficulty": "hard",
+    "question": "Rewrite this sentence to make it more descriptive. Add at least two describing words.\n\nThe boy ate a sandwich.",
+    "answer": "The hungry boy ate a large sandwich.",
+    "hints": [
+      "Think about describing words for the boy (tall? young? hungry?) and the sandwich (big? warm? tasty?).",
+      "Put each describing word before the noun it tells about.",
+      "Make sure the sentence still makes sense and is complete."
+    ],
+    "solution": "Many answers are correct as long as two or more adjectives are added. Examples: 'The hungry, little boy ate a large, tasty sandwich.' The key is that each adjective describes a noun and the sentence stays complete.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  }
+]

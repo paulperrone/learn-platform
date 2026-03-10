@@ -1,0 +1,57 @@
+[
+  {
+    "id": "cause-effect-p1",
+    "topicId": "cause-effect",
+    "difficulty": "easy",
+    "question": "Read the passage:\n\nIt rained all morning. The soccer game was canceled.\n\nWhat caused the soccer game to be canceled?",
+    "answer": "It rained all morning",
+    "hints": ["The cause is the reason something happened. Why was the game canceled?"],
+    "solution": "The cause is that it rained all morning. The effect is that the soccer game was canceled. The rain caused the cancellation.",
+    "cognitiveDemand": "recall",
+    "source": "hand-authored"
+  },
+  {
+    "id": "cause-effect-p2",
+    "topicId": "cause-effect",
+    "difficulty": "easy",
+    "question": "Read the passage:\n\nLucy forgot to water her plant. After a week, the plant's leaves turned brown.\n\nWhat happened because Lucy forgot to water her plant?",
+    "answer": "The plant's leaves turned brown",
+    "hints": ["The effect is what happened as a result. What happened to the plant?"],
+    "solution": "The cause is that Lucy forgot to water her plant. The effect is that the plant's leaves turned brown. Forgetting to water caused the leaves to turn brown.",
+    "cognitiveDemand": "recall",
+    "source": "hand-authored"
+  },
+  {
+    "id": "cause-effect-p3",
+    "topicId": "cause-effect",
+    "difficulty": "medium",
+    "question": "Read the passage:\n\nThe wind blew very hard during the night. In the morning, branches and leaves covered the yard. Dad had to rake for an hour before the yard was clean.\n\nWhat is the cause and what is the effect in this passage?",
+    "answer": "Cause: The wind blew very hard. Effect: Branches and leaves covered the yard.",
+    "hints": ["The cause is what happened first. The effect is what happened because of it.", "What made the branches fall?"],
+    "solution": "The cause is the strong wind during the night. The effect is that branches and leaves covered the yard. The wind caused the mess, and then Dad had to clean it up.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "cause-effect-p4",
+    "topicId": "cause-effect",
+    "difficulty": "medium",
+    "question": "Read the passage:\n\nNoah practiced his spelling words every night for a week. On Friday, he got every word right on the test. His teacher gave him a gold star sticker.\n\nThere are two effects in this story. What are they, and what caused them?",
+    "answer": "Cause: Noah practiced every night. Effects: He got every word right on the test, and his teacher gave him a gold star sticker.",
+    "hints": ["What did Noah do that led to good results?", "Two good things happened because he practiced. What were they?"],
+    "solution": "The cause is that Noah practiced his spelling words every night. The first effect is that he got every word right on the test. The second effect is that his teacher gave him a gold star sticker. His practice caused both good results.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "cause-effect-p5",
+    "topicId": "cause-effect",
+    "difficulty": "hard",
+    "question": "Read the passage:\n\nThe town built a new park with a playground, walking paths, and a garden. More families started coming outside on weekends. Kids made new friends at the playground. People began to know their neighbors better.\n\nExplain the chain of cause and effect in this passage. What was the first cause, and what effects followed?",
+    "answer": "The first cause was the town building a new park. This caused more families to come outside. That led to kids making new friends and people getting to know their neighbors.",
+    "hints": ["Start with what happened first. Then trace what happened because of it.", "One cause can lead to several effects."],
+    "solution": "The first cause is the town building a new park. This caused more families to come outside on weekends (first effect). Because more families came outside, kids made new friends (second effect) and people began to know their neighbors (third effect). This is a cause-and-effect chain where one event leads to several results.",
+    "cognitiveDemand": "reasoning",
+    "source": "hand-authored"
+  }
+]

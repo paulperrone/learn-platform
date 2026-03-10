@@ -1,0 +1,73 @@
+[
+  {
+    "id": "commas-series-p1",
+    "topicId": "commas-series",
+    "difficulty": "easy",
+    "question": "Where do commas go in this sentence? 'I bought apples bananas and grapes.'",
+    "answer": "I bought apples, bananas, and grapes.",
+    "hints": [
+      "When you list three or more items, put a comma after each item except the last.",
+      "The list items are: apples, bananas, grapes."
+    ],
+    "solution": "Add commas after each item in the list except the last: 'I bought apples, bananas, and grapes.'",
+    "cognitiveDemand": "recall",
+    "source": "hand-authored"
+  },
+  {
+    "id": "commas-series-p2",
+    "topicId": "commas-series",
+    "difficulty": "easy",
+    "question": "How many commas are needed? 'She likes to swim run and jump.'",
+    "answer": "2",
+    "hints": [
+      "Count the items in the list: swim, run, jump. That's 3 items.",
+      "For a list of 3 items, you need 2 commas."
+    ],
+    "solution": "Two commas: 'She likes to swim, run, and jump.' For N items in a series, use N-1 commas.",
+    "cognitiveDemand": "recall",
+    "source": "hand-authored"
+  },
+  {
+    "id": "commas-series-p3",
+    "topicId": "commas-series",
+    "difficulty": "medium",
+    "question": "Add commas correctly: 'The flag is red white and blue.'",
+    "answer": "The flag is red, white, and blue.",
+    "hints": [
+      "The list items are colors: red, white, blue.",
+      "Commas separate items in a list of three or more."
+    ],
+    "solution": "'The flag is red, white, and blue.' Place commas after 'red' and 'white' to separate the three colors in the series.",
+    "cognitiveDemand": "application",
+    "source": "hand-authored"
+  },
+  {
+    "id": "commas-series-p4",
+    "topicId": "commas-series",
+    "difficulty": "medium",
+    "question": "Does this sentence need commas? 'I like peanut butter and jelly sandwiches.'",
+    "answer": "no",
+    "hints": [
+      "Commas in a series are for lists of THREE or more items.",
+      "How many items are being listed here? Is 'peanut butter and jelly' a list or a single thing?"
+    ],
+    "solution": "No commas are needed. 'Peanut butter and jelly' is one combined item (a type of sandwich), not a list of separate things. The word 'and' here joins two parts of one item, not items in a series.",
+    "cognitiveDemand": "conceptual",
+    "source": "hand-authored"
+  },
+  {
+    "id": "commas-series-p5",
+    "topicId": "commas-series",
+    "difficulty": "hard",
+    "question": "Fix the comma errors: 'We need eggs, milk and, bread and butter, for breakfast.'",
+    "answer": "We need eggs, milk, bread, and butter for breakfast.",
+    "hints": [
+      "First identify the list items: eggs, milk, bread, butter.",
+      "Put a comma after each item except the last. Remove commas that are in the wrong place.",
+      "Is 'for breakfast' part of the list or does it tell when?"
+    ],
+    "solution": "The list has four items: eggs, milk, bread, butter. Commas go between items: 'We need eggs, milk, bread, and butter for breakfast.' The comma after 'breakfast' was wrong — 'for breakfast' is not a list item.",
+    "cognitiveDemand": "error-analysis",
+    "source": "hand-authored"
+  }
+]
