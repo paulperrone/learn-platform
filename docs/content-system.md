@@ -15,10 +15,10 @@
 5. [Content Depth](#5-content-depth)
 6. [Presentation Levels](#6-presentation-levels)
 7. [Content Selection Algorithm](#7-content-selection-algorithm)
-8. [Building Mastery-Gated Subjects](#8-building-mastery-gated-subjects)
-9. [Building Context-Layered Subjects](#9-building-context-layered-subjects)
-10. [Building Hybrid Subjects](#10-building-hybrid-subjects)
-11. [Building Flexible Subjects](#11-building-flexible-subjects)
+8. [Building Mastery-Gated Disciplines](#8-building-mastery-gated-disciplines)
+9. [Building Context-Layered Disciplines](#9-building-context-layered-disciplines)
+10. [Building Hybrid Disciplines](#10-building-hybrid-disciplines)
+11. [Building Flexible Disciplines](#11-building-flexible-disciplines)
 12. [Cross-Discipline Prerequisites](#12-cross-discipline-prerequisites)
 13. [Graph Design Guidelines](#13-graph-design-guidelines)
 14. [Graph Design Checklist](#14-graph-design-checklist)
@@ -213,14 +213,14 @@ Paths with cumulative weight below 0.05 are pruned as negligible.
 
 ### Validation Checklist
 
-Run after adding encompassing edges to any subject:
+Run after adding encompassing edges to any discipline graph:
 
 1. `just validate-content` passes (DAG integrity, all topic IDs valid)
 2. Every leaf topic (no children in the prerequisite graph) is encompassed by at least one parent
 3. Multi-hop chains exist for deep graph regions (3+ hops)
 4. Weight distribution is reasonable (mostly 0.3-0.6 with some 0.7-0.9 within-strand)
-5. `just visualize <subject>` shows clear hierarchical structure
-6. FIRe compression test passes (`fire-compression.test.ts` can be parameterized for new subjects)
+5. `just visualize <discipline>` shows clear hierarchical structure
+6. FIRe compression test passes (`fire-compression.test.ts` can be parameterized for new disciplines)
 
 ### Anti-Patterns
 
@@ -352,7 +352,7 @@ When the session service needs content for a learner on a given topic:
 
 ---
 
-## 8. Building Mastery-Gated Subjects
+## 8. Building Mastery-Gated Disciplines
 
 For math, CS, grammar, music technique, etc.
 
@@ -376,7 +376,7 @@ For math, CS, grammar, music technique, etc.
 
 ---
 
-## 9. Building Context-Layered Subjects
+## 9. Building Context-Layered Disciplines
 
 For history, philosophy, literature, political science, etc.
 
@@ -388,7 +388,7 @@ For history, philosophy, literature, political science, etc.
 
 ### The Spiral Curriculum
 
-Content-layered subjects use a **spiral progression**:
+Context-layered disciplines use a **spiral progression**:
 
 ```
 Pass 1 (survey):     Topic A → Topic B → Topic C → Topic D → ...
@@ -424,7 +424,7 @@ The 14-year-old's survey is NOT baby content. It's a crisp, age-appropriate summ
 
 These are NOT rigid grade assignments — a gifted 10-year-old might work at analytical depth, and an adult learner starts at survey. The depth tracks analytical capability, not age.
 
-### Content Creation Order for Context-Layered Subjects
+### Content Creation Order for Context-Layered Disciplines
 
 1. **Survey layer for ALL topics, ALL presentation levels** — This is the skeleton. Every learner needs it. Build this first.
 2. **Contextual layer for anchor topics, standard + intermediate presentation** — Focus on the most important topics that everything else connects to.
@@ -443,7 +443,7 @@ These are NOT rigid grade assignments — a gifted 10-year-old might work at ana
 
 ---
 
-## 10. Building Hybrid Subjects
+## 10. Building Hybrid Disciplines
 
 Economics, some sciences, and advanced language courses have both compounding skills and contextual knowledge.
 
@@ -467,7 +467,7 @@ The mastery-gated progression model ensures skill prerequisites are enforced whi
 
 ---
 
-## 11. Building Flexible Subjects
+## 11. Building Flexible Disciplines
 
 Vocabulary, geography, anatomy, etc.
 
@@ -527,7 +527,7 @@ Rule of thumb:
 ### Validation
 - Target model: validate a full discipline graph at once, not arbitrary same-discipline subgraphs
 - Full-graph validation must still catch cross-discipline cycles
-- During migration, some tooling/endpoints may still expose legacy subject-scoped validation
+- Validate the full discipline graph at once, not arbitrary subgraphs
 
 ---
 
@@ -543,7 +543,7 @@ When designing a knowledge graph for a new discipline or expanding an existing d
 | **Context-layered** | Medium | One coherent historical/conceptual question, theme, or analytical lens per topic | Broader than math, but still much narrower than textbook chapters or whole units. Topics are revisited across depth levels; density comes from layers plus multiple perspectives, not from tiny procedural skills. |
 | **Flexible** | Medium-high | Independent recall unit or a very tight natural cluster | Topics are mostly standalone, but they still need to stay small enough for targeted assessment and quick retrieval practice. Group only when the cluster is genuinely learned together. |
 
-**Do not use fixed per-subject topic counts as the primary design target.** Collections are packaging views and may vary widely in size. The real target is whether the graph has enough atomic topics for accurate placement, targeted remediation, and meaningful FIRe relationships.
+**Do not use fixed per-discipline topic counts as the primary design target.** Collections are packaging views and may vary widely in size. The real target is whether the graph has enough atomic topics for accurate placement, targeted remediation, and meaningful FIRe relationships.
 
 #### Topic Split Heuristics
 
@@ -573,7 +573,7 @@ For mastery-gated disciplines, benchmark density against the strongest known ext
 | **Context-layered** | Wide, shallow layers | 0.5-1.0 | 3-5 | Wide at every level (8-15 per level), few deep chains |
 | **Flexible** | Sparse, mostly disconnected | 0.2-0.5 | 1-2 | Nearly flat — most topics at depth 0-1 |
 
-**Reference shape:** A healthy mastery-gated math graph has multiple parallel strands, deep enough chains for skill progression, and late capstones that integrate earlier skills. The exact topic count depends on how broadly the discipline is packaged into collections, not on a fixed "topics per subject" target.
+**Reference shape:** A healthy mastery-gated math graph has multiple parallel strands, deep enough chains for skill progression, and late capstones that integrate earlier skills. The exact topic count depends on how broadly the discipline is packaged into collections, not on a fixed topic count target.
 
 #### Mastery-Gated Shape Details
 
@@ -731,7 +731,7 @@ All generated content must pass:
 1. **Platform-medium constraints** — Screen-only delivery. No physical objects, drawing, speaking aloud.
 2. **Presentation-level appropriateness** — Vocabulary and sentence complexity match the target audience.
 3. **Depth-level accuracy** — Survey content doesn't sneak in analytical concepts. Analytical content doesn't oversimplify.
-4. **Factual accuracy** — Especially critical for context-layered subjects where content is knowledge-based, not skill-based.
+4. **Factual accuracy** — Especially critical for context-layered disciplines where content is knowledge-based, not skill-based.
 5. **Bias review** — History and social studies content must present multiple perspectives fairly.
 
 ### Content Pack Format
@@ -858,7 +858,7 @@ Query `review_log` and `user_topic_state` to identify topics that need attention
 | **Moderate low accuracy** | `review_log.correct` by `topicId` | 50-70% across 20+ attempts | May be appropriate difficulty, or may indicate a minor issue |
 | **Confidence miscalibration: overconfident-wrong** | `review_log.confidence` vs `review_log.correct` | High confidence (4-5) + incorrect > 25% of attempts | Students think they know it but don't — misleading instruction or ambiguous problems |
 | **Confidence miscalibration: underconfident-right** | `review_log.confidence` vs `review_log.correct` | Low confidence (1-2) + correct > 40% of attempts | Students know it but don't feel confident — instruction may not build understanding |
-| **Slow response times** | `review_log.responseMs` by `topicId` | Median > 2x the subject average | Problems may be confusingly worded or require too many steps |
+| **Slow response times** | `review_log.responseMs` by `topicId` | Median > 2x the discipline average | Problems may be confusingly worded or require too many steps |
 | **Cognitive demand imbalance** | `review_log` joined with `assessment_content` | A topic has > 80% of one demand type | Missing variety — sessions feel repetitive on this topic |
 
 #### Minimum Sample Size
@@ -920,7 +920,7 @@ Topic flagged
 
 | Root Cause | Fix | Scope |
 |---|---|---|
-| **Content quality issue** | Edit the specific problem/example in `content/<subject>/problems/<topic>.json` or `examples/<topic>.json`. Fix wording, correct answer, add missing hints. | Single content item |
+| **Content quality issue** | Edit the specific problem/example in `content/<discipline>/problems/<topic>.json` or `examples/<topic>.json`. Fix wording, correct answer, add missing hints. | Single content item |
 | **Instruction gap** | Add or revise worked examples to cover the exact skill pattern tested by problems. | `examples/<topic>.json` |
 | **Prerequisite gap** | Add a missing prerequisite edge in `graph.json`, or move the topic deeper in the graph. | `graph.json` |
 | **Difficulty miscalibration** | Adjust `difficulty` tags on problems (1-3 scale). Ensure the topic has problems at all 3 levels. | `problems/<topic>.json` |
@@ -934,9 +934,9 @@ Once the root cause is identified and the content JSON is edited:
 
 ```
 1. Edit content files
-   └── content/<subject>/problems/<topic>.json   (problem fixes)
-   └── content/<subject>/examples/<topic>.json   (instruction fixes)
-   └── content/<subject>/graph.json              (prerequisite fixes)
+   └── content/<discipline>/problems/<topic>.json   (problem fixes)
+   └── content/<discipline>/examples/<topic>.json   (instruction fixes)
+   └── content/<discipline>/graph.json              (prerequisite fixes)
 
 2. Validate
    └── just validate-content
@@ -953,7 +953,7 @@ Once the root cause is identified and the content JSON is edited:
    └── Run a learning session on the topic if possible
 
 5. Commit and deploy
-   └── git add content/<subject>/...
+   └── git add content/<discipline>/...
    └── git commit -m "fix(content): <description of what was fixed and why>"
    └── git push origin main
    └── Cloudflare Pages deploys automatically

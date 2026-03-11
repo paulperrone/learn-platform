@@ -433,7 +433,7 @@ Fix the two remaining P1 evaluation failures (FIRe compression measurement, inte
 
 > **MOVED:** This phase and all subsequent phases (4.5C, 5, 5.5, 6) are deferred to Plan 022 (Post-Expansion Engine Validation & Calibration). Running problem density expansion on the current 207-topic graph would be wasted work — Plan 021 will split these into ~800-1000 atomic topics, requiring problem regeneration. See Plan 022 for the updated versions of these phases.
 
-**Dependency note:** Phases 4.5B-6 are blocked pending Plan 020 completion. Problem-density expansion, L3/L4/L5 re-baselining, and FIRe implementation decisions should run on the discipline-owned graph and collection packaging model introduced there, not the current subject-split topology.
+**Dependency note:** ~~Phases 4.5B-6 are blocked pending Plan 020 completion.~~ **Plan 020 is complete (2026-03-11).** Work continues in Plan 021 (topic expansion) and Plan 022 (post-expansion validation).
 
 **Context:** `tools/generate-problems.ts` has 143 topic-specific generators covering most math-foundations and math-middle topics. Currently unused — all content is hand-authored at 5 problems/topic. Generated problems go to `content/<subject>/problems-generated/<topic>.json` with `source: "generated"`.
 

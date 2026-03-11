@@ -1503,3 +1503,19 @@ Tag each target in `targets.json` with `signal_source: "engine" | "content" | "b
 - Keep the model simple for now: use cross-discipline collections with a `primaryDisciplineId`
 - Do not add a separate `programs` or `tracks` layer yet, but do not block that future path either
 - Example: an `econometrics` collection may package statistics topics from `math` plus application topics from `economics`, while canonical topic ownership remains singular
+
+---
+
+### 2026-03-11: Plan 020 complete — discipline-owned graphs are the canonical model
+
+**Source:** Plan 020 Phase 7
+**Area:** Content architecture / graph model
+
+**Decision:** Plan 020 (Discipline Graphs, Collections, and Content Granularity) is complete. The `subjects` table and all `subjectId` references have been removed from schema, services, routes, frontend, simulations, and content files. Topics belong directly to disciplines. Collections provide the user-facing packaging layer. Diagnostic, FIRe, and session planning are all discipline-scoped.
+
+**Consequences:**
+- Plan 021 (Math Topic Expansion) is unblocked — expand the unified `math` discipline graph
+- Plan 022 (Post-Expansion Validation) is unblocked — validate and calibrate against the expanded graph
+- Content creation workflow uses `content/<discipline>/graph.json`, not per-subject graphs
+- Cross-discipline prerequisite edges (e.g., `ela:reading-comprehension` → math word problems) use `discipline:topic-id` format in `graph.json`
+- L2 simulation baseline (9P/1W/0F) was maintained through the migration — topology is stable

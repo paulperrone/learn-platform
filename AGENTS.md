@@ -29,7 +29,8 @@ packages/
     components/      # ProblemView, WorkedExample, ConfidenceSlider
     composables/     # useApi
   shared/src/        # Shared TypeScript types
-content/math-foundations/  # Knowledge graph + problem banks (JSON, source of truth)
+content/<discipline>/     # Knowledge graph + problem banks (JSON, source of truth)
+  collections/       # Collection definitions (grade bands, strands, tracks)
 tools/               # Content pipeline (validate, import, visualize)
 ```
 
@@ -58,7 +59,8 @@ just import-content   # Import content/ → local D1
 - Services are factory functions: `createXService(db)` returning method objects
 - Content is pre-generated offline, validated, then imported — LLM at runtime is for tutoring/grading only
 - **Content generation happens in Claude Code sessions** (not via OpenRouter pipelines). Claude Code is the workhorse for graph design, problem/example generation, encompassing analysis, and content review. OpenRouter is only for in-app runtime LLM features (tutoring, grading, self-explanation evaluation).
-- Subjects belong to disciplines; disciplines define progression models (`mastery-gated`, `context-layered`, `flexible`)
+- Topics belong directly to disciplines; disciplines define progression models (`mastery-gated`, `context-layered`, `flexible`)
+- Collections are packaging views (grade bands, strands, exam-prep tracks) — they don't own topics
 - Prerequisite edges have types: `required` (hard gate), `recommended` (context), `enriching` (suggestion)
 - Content has depth (`survey`, `contextual`, `analytical`, `synthesis`) and presentation (`primary`, `intermediate`, `standard`, `advanced`) dimensions. See `docs/content-system.md`.
 - FSRS state per user per topic; FIRe credit via virtual FSRS reviews for encompassing relationships
@@ -67,19 +69,20 @@ just import-content   # Import content/ → local D1
 
 ## Content Pipeline
 
-**Source of truth:** `content/<subject>/graph.json` + `problems/*.json` + `examples/*.json` (all in git).
+**Source of truth:** `content/<discipline>/graph.json` + `problems/*.json` + `examples/*.json` + `collections/*.json` (all in git).
 **D1 is a disposable read model** — rebuilt from content files via `just import-content`.
 
 ### How content is created
 
 All content authoring happens in **Claude Code sessions**. The workflow:
 
-1. **Design the knowledge graph** — Define topics, prerequisites, and encompassing edges in `graph.json`. Follow the discipline's progression model (below) and the encompassing methodology in `docs/content-system.md`. Use `just visualize <subject>` to inspect the DAG structure.
-2. **Generate problems** — Write `content/<subject>/problems/<topic-id>.json` files. 5 problems per topic at 3 difficulty levels. Follow platform-medium constraints (screen + text input only).
-3. **Generate worked examples** — Write `content/<subject>/examples/<topic-id>.json` files. 2 examples per topic with step-by-step breakdowns.
-4. **Validate** — `just validate-content` checks DAG integrity, topic coverage, and platform-incompatible instructions.
-5. **Import** — `just import-content` loads everything into local D1.
-6. **Visualize** — `just visualize <subject>` generates an interactive graph visualization.
+1. **Design the knowledge graph** — Define topics, prerequisites, and encompassing edges in `graph.json`. Follow the discipline's progression model (below) and the encompassing methodology in `docs/content-system.md`. Use `just visualize <discipline>` to inspect the DAG structure.
+2. **Generate problems** — Write `content/<discipline>/problems/<topic-id>.json` files. 5 problems per topic at 3 difficulty levels. Follow platform-medium constraints (screen + text input only).
+3. **Generate worked examples** — Write `content/<discipline>/examples/<topic-id>.json` files. 2 examples per topic with step-by-step breakdowns.
+4. **Define collections** — Write `content/<discipline>/collections/<collection-id>.json` to package topics into grade bands, strands, or tracks.
+5. **Validate** — `just validate-content` checks DAG integrity, topic coverage, and platform-incompatible instructions.
+6. **Import** — `just import-content` loads everything into local D1.
+7. **Visualize** — `just visualize <discipline>` generates an interactive graph visualization.
 
 **OpenRouter is NOT used for content generation.** Claude Code produces higher quality content with better iteration — it can read the graph, understand prerequisites, check consistency, and fix issues in the same session.
 
@@ -87,7 +90,7 @@ All content authoring happens in **Claude Code sessions**. The workflow:
 
 ## Content Creation by Discipline
 
-When creating content (graphs, problems, worked examples) for any subject, follow the rules for its discipline's progression model.
+When creating content (graphs, problems, worked examples) for a discipline, follow the rules for its progression model.
 
 ### Mastery-Gated Disciplines (math, cs, languages grammar, music technique)
 
@@ -129,7 +132,7 @@ When creating content (graphs, problems, worked examples) for any subject, follo
 - Cross-discipline edges are valid and encouraged where genuine dependencies exist
 - Examples: basic reading comprehension (`ela`) → math word problems (`math`), algebra (`math`) → physics (`science`)
 - Cross-discipline edges should almost always be `type: "required"` — if the dependency is soft enough to be `recommended`, it probably shouldn't be a cross-discipline edge at all
-- The diagnostic should eventually place students across the full connected graph, not just within one subject
+- The diagnostic should eventually place students across the full connected graph, not just within one discipline
 
 ---
 

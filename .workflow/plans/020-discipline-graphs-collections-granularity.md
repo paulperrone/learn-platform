@@ -1,7 +1,7 @@
 # Plan 020: Discipline Graphs, Collections, and Content Granularity v2
 
 > **Created:** 2026-03-11T16:46:19Z
-> **Completed:** —
+> **Completed:** 2026-03-11
 >
 > For project context, see [CLAUDE.md](../../CLAUDE.md)
 > For product vision, see [SPEC.md](./SPEC.md)
@@ -404,29 +404,29 @@ Current routes with `subjectId`:
 
 ---
 
-## Phase 7: Finalize and Unblock Plan 019
+## Phase 7: Finalize and Unblock Plan 019 ✓
 **Goal:** Clean up documentation, update CLAUDE.md, and formally unblock Plan 019.
 
-1. [ ] [DOC] Update `CLAUDE.md`:
+1. [x] [DOC] Update `CLAUDE.md`:
    - Remove all subject references from conventions, structure, and content pipeline sections
    - Add collections to the structure section
    - Update content creation workflow to reflect discipline-owned graphs
    - Remove cross-subject edge documentation (no longer needed within a discipline)
    - Preserve cross-discipline edge documentation
 
-2. [ ] [DOC] Update `docs/content-system.md`:
+2. [x] [DOC] Update `docs/content-system.md`:
    - Verify hierarchy section reflects reality
    - Update any remaining subject references
 
-3. [ ] [DOC] Record go-forward decision in `DECISIONS.md`:
+3. [x] [DOC] Record go-forward decision in `DECISIONS.md`:
    - If topology is stable (L2 maintains 9P/1W/0F), explicitly unblock Plan 019 Phases 4.5B-6
    - If content is still too coarse for L3, flag that graph expansion (not just problem density) is needed
 
-4. [ ] [DOC] Update Plan 019 references:
+4. [x] [DOC] Update Plan 019 references:
    - Mark 020 dependency satisfied
    - Resume with problem density expansion on the discipline-owned graph
 
-5. [ ] [DOC] Update `MEMORY.md`:
+5. [x] [DOC] Update `MEMORY.md`:
    - Replace subject-related patterns with discipline-owned equivalents
    - Note: cross-subject edges are now cross-discipline edges
    - Note: `resolveTopicId()` prefix stripping is removed for same-discipline edges
