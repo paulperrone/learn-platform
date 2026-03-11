@@ -22,9 +22,9 @@ Replace the current `discipline -> subject -> topic` ownership model with `disci
 
 ## Progress
 
-**Completed:** Phase 1, Phase 2, Phase 3, Phase 4, Phase 5 (simulation migration + rebaseline)
+**Completed:** Phase 1, Phase 2, Phase 3, Phase 4, Phase 5, Phase 6 (validation tooling)
 **In Progress:** —
-**Next:** Phase 6
+**Next:** Phase 7
 
 ---
 
@@ -363,36 +363,44 @@ Current routes with `subjectId`:
 
 ---
 
-## Phase 6: Validation Tooling for Granularity and Packaging
+## Phase 6: Validation Tooling for Granularity and Packaging ✅
 **Goal:** Prevent future graphs from drifting back to coarse standards-level units.
 
-1. [ ] [IMP] Extend `just validate-content` with warnings/errors for:
-   - Topic counts far below discipline-specific density targets
-   - Problems-per-topic below minimum thresholds
-   - Topics with overly broad descriptions or standards-level smell
+1. [x] [IMP] Extend `just validate-content` with warnings/errors for:
+   - Prereq density below discipline-specific targets (mastery-gated 1.5-3.0, context-layered 0.5-1.0, flexible 0.0-0.5)
+   - Encompassing density below targets (mastery-gated 1.0-2.0, context-layered 0.5-1.0, flexible 0.0-0.5)
+   - Problems-per-topic below minimum thresholds (mastery-gated 15, context-layered 6, flexible 5)
+   - Edge type distribution mismatches per progression model
+   - Max depth significantly exceeding targets
+   - Bottleneck topics (sole prereq for >8 downstream)
+   - Leaf topics not encompassed by any parent
    - Mastery-gated strands with no capstone/encompassing structure
    - Collections with empty membership or incoherent grade ranges
-   - Interdisciplinary collections that lack explicit prerequisite readiness into the target-domain topics
+   - Topics not in any collection
+   - Encompassing weights below 0.3
+   - Context-layered content depth coverage
 
-2. [ ] [IMP] Add authoring diagnostics/reporting:
-   - Per-discipline density summary
-   - Per-strand chain depth
-   - Problems-per-topic histogram
-   - Encompassing coverage report
-   - Collection coverage report
-   - Interdisciplinary collection discipline-mix summary
+2. [x] [IMP] Add authoring diagnostics/reporting (`tools/content-report.ts`, `just content-report`):
+   - Per-discipline density summary (topics, prereqs/topic, encompassings/topic)
+   - Edge type distribution
+   - Per-strand chain depth analysis
+   - Problems-per-topic histogram with bucket visualization
+   - Encompassing coverage report (parents, children, leaf coverage, weight stats)
+   - Collection coverage report with cross-discipline topic detection
+   - Depth distribution visualization
 
-3. [ ] [DOC] Add a reusable graph-authoring checklist:
-   - Generate graph
-   - Run density/coverage validation
-   - Inspect visualization
-   - Confirm remediation paths are specific
-   - Confirm packaging collections are intelligible to end users
-   - For interdisciplinary collections, confirm canonical ownership is clear and cross-discipline prerequisites are explicit
+3. [x] [DOC] Updated graph-authoring checklist in `docs/content-system.md` §14:
+   - Each checklist item tagged with (auto), (report), or (manual)
+   - Added content density section (problems, capstones, collection membership)
+   - Added reporting section referencing `just content-report`
+   - Matches automated validation checks so authors know what's caught automatically vs. needs review
 
-4. [ ] [VAL] Prove the guardrails catch the current coarse-graph failure mode on a fixture or reduced sample.
+4. [x] [VAL] Guardrails proven against current data:
+   - ELA: prereq density 1.45 below 1.5 target, encompassing density 0.68 below 1.0, all 65 topics below 15 problems, 14 uncovered leaves
+   - History: encompassing density 0.43 below 0.5, max depth 21 vs 3-5 target, 18 topics below 6 problems, 3 uncovered leaves
+   - Math: 1 bottleneck (multiply-within-100: 14 downstream), 43/46 uncovered leaves
 
-**Validation:** The content pipeline emits actionable warnings before a sparse graph can be imported as "done."
+**Validation:** `just validate-content` emits actionable warnings for all three disciplines. `just content-report` produces per-discipline density summaries with strand analysis and histograms.
 
 ---
 

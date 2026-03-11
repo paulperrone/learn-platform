@@ -61,6 +61,10 @@ content-status *args:
 content-gaps *args:
     npx tsx tools/content-gaps.ts {{args}}
 
+# Content density and coverage report
+content-report *args:
+    npx tsx tools/content-report.ts {{args}}
+
 # Visualize knowledge graph (default: math-foundations, or pass subject name)
 visualize subject="math":
     python3 tools/visualize-graph.py content/{{subject}}/graph.json --open

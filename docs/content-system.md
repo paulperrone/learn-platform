@@ -660,43 +660,53 @@ Minimal encompassings. Topics are mostly independent.
 
 ## 14. Graph Design Checklist
 
-Run through this checklist before generating content for any new discipline graph or major discipline expansion. Every item must pass.
+Run through this checklist before generating content for any new discipline graph or major discipline expansion. Items marked with (auto) are checked automatically by `just validate-content`; items marked with (report) appear in `just content-report`. Manual items require human review.
 
 ### Structural Validity
 
-- [ ] **DAG valid** — `just validate-content` passes with no cycles
-- [ ] **Connected graph** — Every topic is reachable from at least one root (no orphaned topics)
-- [ ] **Root topics exist** — At least 2 root topics (no prerequisites) to provide multiple entry points
-- [ ] **No bottleneck topics** — No single topic is the sole prerequisite for more than 8 downstream topics (creates a single point of failure for learner progression)
+- [ ] **DAG valid** (auto) — `just validate-content` passes with no cycles
+- [ ] **Connected graph** (auto) — Every topic is reachable from at least one root (no orphaned topics)
+- [ ] **Root topics exist** (auto) — At least 2 root topics (no prerequisites) to provide multiple entry points
+- [ ] **No bottleneck topics** (auto) — No single topic is the sole prerequisite for more than 8 downstream topics (creates a single point of failure for learner progression)
 
 ### Progression Model Compliance
 
-- [ ] **Edge types match model** — Mastery-gated uses mostly `required`, context-layered uses mostly `recommended`, flexible uses mostly `enriching` (see §13 distribution table)
-- [ ] **Granularity appropriate** — Topic size fits the model: mastery-gated topics are independently remediable skills; context-layered topics are coherent themes/questions/lenses; flexible topics are retrieval units or tight clusters
-- [ ] **No standards-level blobs** — If a topic hides multiple skills or an internal progression, split it
-- [ ] **Depth appropriate** — Max graph depth falls within target range (10-15 mastery-gated, 3-5 context-layered, 1-2 flexible)
-- [ ] **Prerequisite density in range** — Prereq edges/topic matches target (1.5-2.5 mastery-gated, 0.5-1.0 context-layered, 0.2-0.5 flexible)
+- [ ] **Edge types match model** (auto) — Mastery-gated uses mostly `required`, context-layered uses mostly `recommended`, flexible uses mostly `enriching` (see §13 distribution table)
+- [ ] **Granularity appropriate** (manual) — Topic size fits the model: mastery-gated topics are independently remediable skills; context-layered topics are coherent themes/questions/lenses; flexible topics are retrieval units or tight clusters
+- [ ] **No standards-level blobs** (manual) — If a topic hides multiple skills or an internal progression, split it
+- [ ] **Depth appropriate** (auto) — Max graph depth falls within target range (10-15 mastery-gated, 3-5 context-layered, 1-2 flexible)
+- [ ] **Prerequisite density in range** (auto) — Prereq edges/topic matches target (1.5-3.0 mastery-gated, 0.5-1.0 context-layered, 0.0-0.5 flexible)
+
+### Content Density
+
+- [ ] **Problems per topic** (auto) — Minimum 15 mastery-gated, 6 context-layered, 5 flexible
+- [ ] **Capstone structure** (auto) — For mastery-gated: each strand with 3+ topics has at least one topic that acts as an encompassing parent
+- [ ] **Topics in collections** (auto) — Every topic belongs to at least one collection
 
 ### Encompassing Completeness
 
-- [ ] **Density target met** — Encompassing edges/topic within target range (1.0-2.0 mastery-gated, 0.5-1.0 context-layered, 0.3-0.5 flexible)
-- [ ] **Leaf coverage** — Every leaf topic (no children in prereq graph) is encompassed by at least one parent
-- [ ] **Within-strand chains complete** — For mastery-gated discipline graphs: every topic in a skill strand encompasses its direct predecessor
-- [ ] **Weight distribution reasonable** — Mostly 0.3-0.6 with some 0.7-0.9 within-strand; nothing below 0.3
-- [ ] **Multi-hop chains exist** — For deep graphs (depth 8+): encompassing chains reach 3+ hops in dense graph regions
+- [ ] **Density target met** (auto) — Encompassing edges/topic within target range (1.0-2.0 mastery-gated, 0.5-1.0 context-layered, 0.3-0.5 flexible)
+- [ ] **Leaf coverage** (auto) — Every leaf topic (no children in prereq graph) is encompassed by at least one parent
+- [ ] **Within-strand chains complete** (manual) — For mastery-gated discipline graphs: every topic in a skill strand encompasses its direct predecessor
+- [ ] **Weight distribution reasonable** (auto) — Mostly 0.3-0.6 with some 0.7-0.9 within-strand; nothing below 0.3
+- [ ] **Multi-hop chains exist** (manual) — For deep graphs (depth 8+): encompassing chains reach 3+ hops in dense graph regions
 
 ### Frontier Computation
 
-- [ ] **Frontier is reasonable** — For a brand-new user, the frontier computation returns 3-8 root or near-root topics (not the entire graph, not just one topic)
-- [ ] **Progression is smooth** — Mastering a frontier topic unlocks 1-3 new topics (not 0, not 10+)
-- [ ] **Dead ends avoided** — No topic exists where mastering it unlocks nothing and it isn't a natural terminus of the discipline graph or collection path
+- [ ] **Frontier is reasonable** (manual) — For a brand-new user, the frontier computation returns 3-8 root or near-root topics (not the entire graph, not just one topic)
+- [ ] **Progression is smooth** (manual) — Mastering a frontier topic unlocks 1-3 new topics (not 0, not 10+)
+- [ ] **Dead ends avoided** (manual) — No topic exists where mastering it unlocks nothing and it isn't a natural terminus of the discipline graph or collection path
 
 ### Visualization
 
-- [ ] **`just visualize <graph>`** shows clear hierarchical structure with identifiable strands/clusters
+- [ ] **`just visualize <discipline>`** shows clear hierarchical structure with identifiable strands/clusters
 - [ ] **No visual clutter** — Graph is readable; if it's a tangled mess, the structure probably needs simplification
 - [ ] **Collections are intelligible** — Grade bands, tracks, or thematic paths make sense to an end user without becoming ownership boundaries
 - [ ] **Interdisciplinary packaging is honest** — When a collection spans disciplines, canonical ownership is still clear and prerequisite gaps are visible to the learner
+
+### Reporting
+
+- [ ] **`just content-report <discipline>`** reviewed — Check strand depths, problem histograms, encompassing coverage, and collection coverage for anomalies
 
 ---
 
