@@ -15,9 +15,9 @@
   "hintSeekingProbability": 0.15,
   "confidenceTendency": "calibrated",
   "misconceptions": [],
-  "subjects": ["math-foundations", "ela-k5"],
-  "subjectAbility": {
-    "ela-k5": {
+  "disciplines": ["math", "ela"],
+  "disciplineAbility": {
+    "ela": {
       "0": 0.70,
       "1": 0.60,
       "2": 0.50,

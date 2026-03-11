@@ -228,7 +228,7 @@ function assessTargetImpact(
     impacts.push({
       targetId: "_content",
       targetName: "Content Quality",
-      reason: `Content changed in: ${[...newSubjects].join(", ")}. Run expansion checklist if new subjects.`,
+      reason: `Content changed in: ${[...newSubjects].join(", ")}. Run expansion checklist if new disciplines.`,
       severity: contentChanges.length > 10 ? "high" : "medium",
       affectedFiles: contentChanges.map((c) => c.file),
     });

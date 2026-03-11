@@ -50,11 +50,11 @@ export type LearnerProfile = {
     params?: Record<string, number>;
   };
 
-  /** Subjects this profile works on. If omitted, uses the CLI --subject flag. */
-  subjects?: string[];
+  /** Disciplines this profile works on. If omitted, uses the CLI --discipline flag. */
+  disciplines?: string[];
 
-  /** Per-subject ability curve overrides. Key is subject ID, value overrides abilityCurve for that subject. */
-  subjectAbility?: Record<string, AbilityCurve>;
+  /** Per-discipline ability curve overrides. Key is discipline ID, value overrides abilityCurve for that discipline. */
+  disciplineAbility?: Record<string, AbilityCurve>;
 };
 
 // --- Answer Result ---
@@ -168,9 +168,9 @@ export type FIReMode = "both" | "credit-only" | "ordering-only" | "neither";
 
 export type SimulationConfig = {
   profile: LearnerProfile;
-  subject: string;
-  /** All subjects to load into the simulation DB. Defaults to [subject]. */
-  subjects?: string[];
+  discipline: string;
+  /** All disciplines to load into the simulation DB. Defaults to [discipline]. */
+  disciplines?: string[];
   sessionCount: number;
   seed: number;
   /** Time between sessions in ms (default: 24 hours). Simple fixed interval. */
@@ -183,7 +183,7 @@ export type SimulationConfig = {
 
 export type SimulationResult = {
   profileId: string;
-  subject: string;
+  discipline: string;
   sessionsCompleted: number;
   diagnosticQuestionsAsked: number;
   totalEvents: number;

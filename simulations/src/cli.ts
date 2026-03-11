@@ -9,7 +9,6 @@
 import { readFileSync, readdirSync, existsSync, statSync } from "fs";
 import { join } from "path";
 import { SimulationRunner } from "./runner.js";
-import { createMultiSubjectSimulationDb } from "./db-setup.js";
 import type { LearnerProfile, SimulationConfig } from "./types.js";
 
 function loadProfile(profileId: string): LearnerProfile {
@@ -30,14 +29,14 @@ function loadAllProfiles(): LearnerProfile[] {
     .map((f) => JSON.parse(readFileSync(join(profilesDir, f), "utf-8")));
 }
 
-function parseArgs(): { profiles: string[]; sessions: number; seed: number; all: boolean; schedule: string | undefined; subject: string | undefined } {
+function parseArgs(): { profiles: string[]; sessions: number; seed: number; all: boolean; schedule: string | undefined; discipline: string | undefined } {
   const args = process.argv.slice(2);
   let profiles: string[] = [];
   let sessions = 5;
   let seed = 42;
   let all = false;
   let schedule: string | undefined;
-  let subject: string | undefined;
+  let discipline: string | undefined;
 
   for (let i = 0; i < args.length; i++) {
     if (args[i] === "--all") {
@@ -51,25 +50,25 @@ function parseArgs(): { profiles: string[]; sessions: number; seed: number; all:
     } else if (args[i] === "--schedule" && args[i + 1]) {
       schedule = args[i + 1];
       i++;
-    } else if (args[i] === "--subject" && args[i + 1]) {
-      subject = args[i + 1];
+    } else if (args[i] === "--discipline" && args[i + 1]) {
+      discipline = args[i + 1];
       i++;
     } else if (!args[i].startsWith("--")) {
       profiles.push(args[i]);
     }
   }
 
-  return { profiles, sessions, seed, all, schedule, subject };
+  return { profiles, sessions, seed, all, schedule, discipline };
 }
 
 async function main() {
-  const { profiles, sessions, seed, all, schedule, subject } = parseArgs();
+  const { profiles, sessions, seed, all, schedule, discipline } = parseArgs();
 
   if (!all && profiles.length === 0) {
-    console.log("Usage: npx tsx simulations/src/cli.ts <profile> [--sessions N] [--seed S] [--schedule TYPE] [--subject SUBJECT]");
-    console.log("       npx tsx simulations/src/cli.ts --all [--sessions N] [--seed S] [--schedule TYPE] [--subject SUBJECT]");
+    console.log("Usage: npx tsx simulations/src/cli.ts <profile> [--sessions N] [--seed S] [--schedule TYPE] [--discipline DISCIPLINE]");
+    console.log("       npx tsx simulations/src/cli.ts --all [--sessions N] [--seed S] [--schedule TYPE] [--discipline DISCIPLINE]");
     console.log("\nSchedule types: daily, irregular, weekday, gap-and-return, burst, weekend-only, decay, completion-break");
-    console.log("\nSubject: math-foundations (default), math-middle, ela-k5, us-history, or comma-separated for multi-subject");
+    console.log("\nDiscipline: math (default), ela, history, or comma-separated for multi-discipline");
     console.log("\nAvailable profiles:");
     const profilesDir = join(process.cwd(), "simulations", "profiles");
     if (existsSync(profilesDir)) {
@@ -87,8 +86,8 @@ async function main() {
 
   console.log(`Running ${profilesToRun.length} profile(s), ${sessions} sessions each, seed=${seed}\n`);
 
-  // Parse --subject flag: comma-separated list or single subject
-  const cliSubjects = subject ? subject.split(",").map(s => s.trim()) : undefined;
+  // Parse --discipline flag: comma-separated list or single discipline
+  const cliDisciplines = discipline ? discipline.split(",").map(s => s.trim()) : undefined;
 
   const results = [];
   for (const profile of profilesToRun) {
@@ -96,14 +95,14 @@ async function main() {
       profile.scheduling = { type: schedule as any };
     }
 
-    // Determine subjects: profile.subjects > --subject flag > default "math-foundations"
-    const subjects = profile.subjects ?? cliSubjects ?? ["math-foundations"];
-    const primarySubject = subjects[0];
+    // Determine disciplines: profile.disciplines > --discipline flag > default "math"
+    const disciplines = profile.disciplines ?? cliDisciplines ?? ["math"];
+    const primaryDiscipline = disciplines[0];
 
     const config: SimulationConfig = {
       profile,
-      subject: primarySubject,
-      subjects: subjects.length > 1 ? subjects : undefined,
+      discipline: primaryDiscipline,
+      disciplines: disciplines.length > 1 ? disciplines : undefined,
       sessionCount: sessions,
       seed,
     };

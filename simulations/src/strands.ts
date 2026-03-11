@@ -6,13 +6,13 @@
 import { readFileSync, existsSync } from "fs";
 import { join } from "path";
 
-const SUBJECTS = ["math-foundations", "math-middle", "ela-k5", "us-history"];
+const DISCIPLINES = ["math", "ela", "history"];
 
 let strandMap: Map<string, string> | null = null;
 
 /**
- * Build a topicId → strand map from all subject graph.json files.
- * Prefixes strands with subject to avoid cross-subject collisions.
+ * Build a topicId → strand map from all discipline graph.json files.
+ * Prefixes strands with discipline to avoid cross-discipline collisions.
  * Caches the result for subsequent calls.
  */
 export function loadStrandMap(): Map<string, string> {
@@ -21,14 +21,14 @@ export function loadStrandMap(): Map<string, string> {
   strandMap = new Map();
   const contentDir = join(process.cwd(), "content");
 
-  for (const subject of SUBJECTS) {
-    const graphPath = join(contentDir, subject, "graph.json");
+  for (const discipline of DISCIPLINES) {
+    const graphPath = join(contentDir, discipline, "graph.json");
     if (!existsSync(graphPath)) continue;
 
     const graph = JSON.parse(readFileSync(graphPath, "utf-8"));
     for (const topic of graph.topics) {
       if (topic.strand) {
-        strandMap.set(topic.id, `${subject}:${topic.strand}`);
+        strandMap.set(topic.id, `${discipline}:${topic.strand}`);
       }
     }
   }

@@ -1062,7 +1062,7 @@ async function computeFIReEfficiency(
     const profile: LearnerProfile = JSON.parse(readFileSync(profilePath, "utf-8"));
 
     console.log(`  [fire] ${profileId} with encompassing (${sessionCount} sessions)...`);
-    const withRunner = new SimulationRunner({ profile, subject: "math-foundations", sessionCount, seed });
+    const withRunner = new SimulationRunner({ profile, discipline: "math", sessionCount, seed });
     const withResult = await withRunner.run();
     const withReviews = withResult.sessionSummaries.reduce((s, sm) => s + sm.reviewsCompleted, 0);
     // Read final state snapshot for mastery count
@@ -1073,14 +1073,14 @@ async function computeFIReEfficiency(
 
     console.log(`  [fire] ${profileId} without encompassing (${sessionCount} sessions)...`);
     // Clear encompassing edges temporarily
-    const graphPath = join(process.cwd(), "content", "math-foundations", "graph.json");
+    const graphPath = join(process.cwd(), "content", "math", "graph.json");
     const originalContent = readFileSync(graphPath, "utf-8");
     const graph = JSON.parse(originalContent);
     graph.encompassings = [];
     writeFileSync(graphPath, JSON.stringify(graph, null, 2) + "\n");
 
     try {
-      const withoutRunner = new SimulationRunner({ profile, subject: "math-foundations", sessionCount, seed });
+      const withoutRunner = new SimulationRunner({ profile, discipline: "math", sessionCount, seed });
       const withoutResult = await withoutRunner.run();
       const withoutReviews = withoutResult.sessionSummaries.reduce((s, sm) => s + sm.reviewsCompleted, 0);
       const withoutSnapshots: StateSnapshot[] = JSON.parse(
@@ -1146,7 +1146,7 @@ async function computeFIReIsolation(seed: number = 42): Promise<void> {
       console.log(`  [fire-isolation] ${profileId} Mode ${mode.id}: ${mode.label} (${sessionCount} sessions)...`);
       const runner = new SimulationRunner({
         profile,
-        subject: "math-foundations",
+        discipline: "math",
         sessionCount,
         seed,
         fireMode: mode.fireMode,

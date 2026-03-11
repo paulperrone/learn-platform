@@ -14,8 +14,11 @@ const SCHEMA_STATEMENTS = [
   'CREATE TABLE users (id text PRIMARY KEY NOT NULL, name text NOT NULL, email text NOT NULL, email_verified integer DEFAULT 0 NOT NULL, image text, birth_year integer, managed_by text, role text, banned integer, ban_reason text, ban_expires text, created_at text NOT NULL, updated_at text NOT NULL)',
   'CREATE UNIQUE INDEX users_email_idx ON users (email)',
   'CREATE TABLE disciplines (id text PRIMARY KEY NOT NULL, name text NOT NULL, description text NOT NULL, progression_model text DEFAULT \'mastery-gated\' NOT NULL, created_at text NOT NULL)',
-  'CREATE TABLE subjects (id text PRIMARY KEY NOT NULL, discipline_id text DEFAULT \'math\' NOT NULL, name text NOT NULL, description text NOT NULL, grade_range text NOT NULL, topic_count integer DEFAULT 0 NOT NULL, created_at text NOT NULL, FOREIGN KEY (discipline_id) REFERENCES disciplines(id))',
-  'CREATE INDEX subjects_discipline_idx ON subjects (discipline_id)',
+  'CREATE TABLE collections (id text PRIMARY KEY NOT NULL, primary_discipline_id text NOT NULL, name text NOT NULL, description text NOT NULL, kind text DEFAULT \'grade-band\' NOT NULL, grade_range text, display_order integer DEFAULT 0 NOT NULL, visibility text DEFAULT \'published\' NOT NULL, created_at text NOT NULL, FOREIGN KEY (primary_discipline_id) REFERENCES disciplines(id))',
+  'CREATE INDEX collections_discipline_idx ON collections (primary_discipline_id)',
+  'CREATE TABLE collection_topics (id integer PRIMARY KEY AUTOINCREMENT NOT NULL, collection_id text NOT NULL, topic_id text NOT NULL, FOREIGN KEY (collection_id) REFERENCES collections(id), FOREIGN KEY (topic_id) REFERENCES topics(id))',
+  'CREATE UNIQUE INDEX ct_collection_topic_idx ON collection_topics (collection_id, topic_id)',
+  'CREATE INDEX ct_topic_idx ON collection_topics (topic_id)',
   'CREATE TABLE verifications (id text PRIMARY KEY NOT NULL, identifier text NOT NULL, value text NOT NULL, expires_at text NOT NULL, created_at text NOT NULL, updated_at text NOT NULL)',
   'CREATE TABLE organization (id text PRIMARY KEY NOT NULL, name text NOT NULL, slug text NOT NULL, logo text, metadata text, created_at text NOT NULL)',
   'CREATE UNIQUE INDEX org_slug_idx ON organization (slug)',
@@ -23,8 +26,8 @@ const SCHEMA_STATEMENTS = [
   'CREATE UNIQUE INDEX sessions_token_idx ON sessions (token)',
   'CREATE INDEX sessions_user_idx ON sessions (user_id)',
   'CREATE TABLE accounts (id text PRIMARY KEY NOT NULL, user_id text NOT NULL, account_id text NOT NULL, provider_id text NOT NULL, access_token text, refresh_token text, access_token_expires_at text, refresh_token_expires_at text, scope text, id_token text, password text, created_at text NOT NULL, updated_at text NOT NULL, FOREIGN KEY (user_id) REFERENCES users(id))',
-  'CREATE TABLE topics (id text PRIMARY KEY NOT NULL, subject_id text NOT NULL, name text NOT NULL, description text NOT NULL, depth integer DEFAULT 0 NOT NULL, grade_level integer NOT NULL, strand text, standard_code text, created_at text NOT NULL, FOREIGN KEY (subject_id) REFERENCES subjects(id))',
-  'CREATE INDEX topics_subject_idx ON topics (subject_id)',
+  'CREATE TABLE topics (id text PRIMARY KEY NOT NULL, discipline_id text NOT NULL, name text NOT NULL, description text NOT NULL, depth integer DEFAULT 0 NOT NULL, grade_level integer NOT NULL, strand text, standard_code text, created_at text NOT NULL, FOREIGN KEY (discipline_id) REFERENCES disciplines(id))',
+  'CREATE INDEX topics_discipline_idx ON topics (discipline_id)',
   'CREATE INDEX topics_depth_idx ON topics (depth)',
   'CREATE TABLE instructional_content (id text PRIMARY KEY NOT NULL, topic_id text NOT NULL, flavor text DEFAULT \'classic\' NOT NULL, locale text DEFAULT \'en\' NOT NULL, presentation text DEFAULT \'standard\' NOT NULL, content_depth text DEFAULT \'survey\' NOT NULL, version integer DEFAULT 1 NOT NULL, title text NOT NULL, steps_json text NOT NULL, assets_json text, created_at text NOT NULL, updated_at text NOT NULL, FOREIGN KEY (topic_id) REFERENCES topics(id))',
   'CREATE INDEX ic_topic_idx ON instructional_content (topic_id)',
@@ -59,10 +62,10 @@ const SCHEMA_STATEMENTS = [
   'CREATE INDEX learn_sessions_anon_idx ON learn_sessions (anonymous_token)',
   'CREATE TABLE llm_usage (id text PRIMARY KEY NOT NULL, user_id text NOT NULL, model text NOT NULL, input_tokens integer NOT NULL, output_tokens integer NOT NULL, cost_cents real NOT NULL, purpose text NOT NULL, created_at text NOT NULL, FOREIGN KEY (user_id) REFERENCES users(id))',
   'CREATE INDEX llm_usage_user_idx ON llm_usage (user_id)',
-  'CREATE TABLE user_subject_presentation (id integer PRIMARY KEY AUTOINCREMENT NOT NULL, user_id text NOT NULL, subject_id text NOT NULL, primary_weight real DEFAULT 0 NOT NULL, intermediate_weight real DEFAULT 0 NOT NULL, standard_weight real DEFAULT 0 NOT NULL, advanced_weight real DEFAULT 0 NOT NULL, center_level text DEFAULT \'standard\' NOT NULL, drift_signal real DEFAULT 0 NOT NULL, last_adjusted_at text NOT NULL, FOREIGN KEY (user_id) REFERENCES users(id), FOREIGN KEY (subject_id) REFERENCES subjects(id))',
-  'CREATE UNIQUE INDEX usp_user_subject_idx ON user_subject_presentation (user_id, subject_id)',
-  'CREATE TABLE presentation_drift_log (id integer PRIMARY KEY AUTOINCREMENT NOT NULL, user_id text NOT NULL, subject_id text NOT NULL, from_weights text NOT NULL, to_weights text NOT NULL, from_center text NOT NULL, to_center text NOT NULL, trigger text NOT NULL, created_at text NOT NULL, FOREIGN KEY (user_id) REFERENCES users(id), FOREIGN KEY (subject_id) REFERENCES subjects(id))',
-  'CREATE INDEX pdl_user_subject_idx ON presentation_drift_log (user_id, subject_id)',
+  'CREATE TABLE user_discipline_presentation (id integer PRIMARY KEY AUTOINCREMENT NOT NULL, user_id text NOT NULL, discipline_id text NOT NULL, primary_weight real DEFAULT 0 NOT NULL, intermediate_weight real DEFAULT 0 NOT NULL, standard_weight real DEFAULT 0 NOT NULL, advanced_weight real DEFAULT 0 NOT NULL, center_level text DEFAULT \'standard\' NOT NULL, drift_signal real DEFAULT 0 NOT NULL, last_adjusted_at text NOT NULL, FOREIGN KEY (user_id) REFERENCES users(id), FOREIGN KEY (discipline_id) REFERENCES disciplines(id))',
+  'CREATE UNIQUE INDEX udp_user_discipline_idx ON user_discipline_presentation (user_id, discipline_id)',
+  'CREATE TABLE presentation_drift_log (id integer PRIMARY KEY AUTOINCREMENT NOT NULL, user_id text NOT NULL, discipline_id text NOT NULL, from_weights text NOT NULL, to_weights text NOT NULL, from_center text NOT NULL, to_center text NOT NULL, trigger text NOT NULL, created_at text NOT NULL, FOREIGN KEY (user_id) REFERENCES users(id), FOREIGN KEY (discipline_id) REFERENCES disciplines(id))',
+  'CREATE INDEX pdl_user_discipline_idx ON presentation_drift_log (user_id, discipline_id)',
   'CREATE TABLE user_preferences (user_id text PRIMARY KEY NOT NULL, tts_enabled integer DEFAULT true NOT NULL, tts_rate real DEFAULT 0.9 NOT NULL, tts_voice_name text, tts_auto_read integer DEFAULT false NOT NULL, stt_enabled integer DEFAULT true NOT NULL, presentation_override text, daily_goal_type text DEFAULT \'minutes\' NOT NULL, daily_goal_target integer DEFAULT 20 NOT NULL, created_at text NOT NULL, updated_at text NOT NULL, FOREIGN KEY (user_id) REFERENCES users(id))',
   'CREATE TABLE user_fsrs_params (user_id text PRIMARY KEY NOT NULL, request_retention real DEFAULT 0.9 NOT NULL, w_json text, review_count integer DEFAULT 0 NOT NULL, computed_at text, created_at text NOT NULL, updated_at text NOT NULL, FOREIGN KEY (user_id) REFERENCES users(id))',
   'CREATE TABLE llm_model_config (tier text PRIMARY KEY NOT NULL, model_id text NOT NULL, cost_input_per_m real NOT NULL, cost_output_per_m real NOT NULL, updated_at text NOT NULL)',
@@ -84,7 +87,7 @@ const SCHEMA_STATEMENTS = [
   'CREATE TABLE assignment_responses (id text PRIMARY KEY NOT NULL, assignment_id text NOT NULL, user_id text, anonymous_token text, question_id text NOT NULL, answer text NOT NULL, correct integer, created_at text NOT NULL, FOREIGN KEY (assignment_id) REFERENCES assignments(id))',
   'CREATE INDEX ar_assignment_idx ON assignment_responses (assignment_id)',
   'CREATE INDEX ar_user_idx ON assignment_responses (user_id)',
-  'CREATE TABLE diagnostic_sessions (id text PRIMARY KEY NOT NULL, user_id text, anonymous_token text, subject_id text NOT NULL, status text DEFAULT \'active\' NOT NULL, questions_asked integer DEFAULT 0 NOT NULL, questions_correct integer DEFAULT 0 NOT NULL, estimated_frontier_json text, topic_estimates_json text, state_json text, is_taste integer DEFAULT 0 NOT NULL, created_at text NOT NULL, completed_at text, FOREIGN KEY (user_id) REFERENCES users(id), FOREIGN KEY (subject_id) REFERENCES subjects(id))',
+  'CREATE TABLE diagnostic_sessions (id text PRIMARY KEY NOT NULL, user_id text, anonymous_token text, discipline_id text NOT NULL, status text DEFAULT \'active\' NOT NULL, questions_asked integer DEFAULT 0 NOT NULL, questions_correct integer DEFAULT 0 NOT NULL, estimated_frontier_json text, topic_estimates_json text, state_json text, is_taste integer DEFAULT 0 NOT NULL, created_at text NOT NULL, completed_at text, FOREIGN KEY (user_id) REFERENCES users(id), FOREIGN KEY (discipline_id) REFERENCES disciplines(id))',
   'CREATE INDEX diag_user_idx ON diagnostic_sessions (user_id)',
   'CREATE INDEX diag_anon_idx ON diagnostic_sessions (anonymous_token)',
   'CREATE TABLE onboarding_state (user_id text PRIMARY KEY NOT NULL, step integer DEFAULT 0 NOT NULL, diagnostic_session_id text, completed_at text, created_at text NOT NULL, FOREIGN KEY (user_id) REFERENCES users(id))',
@@ -101,11 +104,9 @@ const SCHEMA_STATEMENTS = [
 ];
 
 type GraphDefinition = {
-  subjectId: string;
-  subjectName: string;
+  disciplineId: string;
+  name: string;
   description?: string;
-  gradeRange?: string;
-  disciplineId?: string;
   topics: {
     id: string;
     name: string;
@@ -154,8 +155,8 @@ type WorkedExample = {
   contentDepth?: string;
 };
 
-export function createSimulationDb(subject: string): DB {
-  return createMultiSubjectSimulationDb([subject]);
+export function createSimulationDb(discipline: string): DB {
+  return createSimulationDbMulti([discipline]);
 }
 
 /** Discipline metadata for inserting into the DB */
@@ -166,12 +167,12 @@ const DISCIPLINE_METADATA: Record<string, { name: string; description: string; p
 };
 
 /**
- * Create an in-memory simulation DB with one or more subjects loaded.
- * Cross-subject prerequisite edges (e.g. "math-foundations:decimal-operations")
- * are resolved by stripping the subject prefix — the referenced topic must be
- * loaded in one of the specified subjects.
+ * Create an in-memory simulation DB with one or more disciplines loaded.
+ * Cross-discipline prerequisite edges (e.g. "ela:reading-comprehension")
+ * are resolved by stripping the discipline prefix — the referenced topic must be
+ * loaded in one of the specified disciplines.
  */
-export function createMultiSubjectSimulationDb(subjects: string[]): DB {
+export function createSimulationDbMulti(disciplines: string[]): DB {
   const sqlite = new Database(":memory:");
   sqlite.pragma("journal_mode = WAL");
   sqlite.pragma("foreign_keys = ON");
@@ -182,7 +183,7 @@ export function createMultiSubjectSimulationDb(subjects: string[]): DB {
 
   const now = new Date().toISOString();
   const insertTopic = sqlite.prepare(
-    "INSERT INTO topics (id, subject_id, name, description, depth, grade_level, strand, standard_code, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"
+    "INSERT INTO topics (id, discipline_id, name, description, depth, grade_level, strand, standard_code, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"
   );
   const insertProblem = sqlite.prepare(
     "INSERT INTO assessment_content (id, topic_id, flavor, locale, presentation, content_depth, version, type, difficulty, question, answer, hints_json, solution, type_properties, cognitive_demand, key_prerequisite_id, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
@@ -191,10 +192,10 @@ export function createMultiSubjectSimulationDb(subjects: string[]): DB {
     "INSERT INTO instructional_content (id, topic_id, flavor, locale, presentation, content_depth, version, title, steps_json, assets_json, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
   );
 
-  // Phase 1: Load all subjects — topics, problems, examples
+  // Phase 1: Load all disciplines — topics, problems, examples
   const allGraphs: GraphDefinition[] = [];
-  for (const subject of subjects) {
-    const contentDir = join(process.cwd(), "content", subject);
+  for (const discipline of disciplines) {
+    const contentDir = join(process.cwd(), "content", discipline);
     const graphPath = join(contentDir, "graph.json");
     if (!existsSync(graphPath)) {
       throw new Error(`graph.json not found at ${graphPath}`);
@@ -204,20 +205,15 @@ export function createMultiSubjectSimulationDb(subjects: string[]): DB {
     allGraphs.push(graph);
 
     // Insert discipline
-    const discId = graph.disciplineId ?? "math";
+    const discId = graph.disciplineId;
     const discMeta = DISCIPLINE_METADATA[discId] ?? { name: discId, description: discId, progressionModel: "mastery-gated" };
     sqlite.prepare(
       "INSERT OR IGNORE INTO disciplines (id, name, description, progression_model, created_at) VALUES (?, ?, ?, ?, ?)"
     ).run(discId, discMeta.name, discMeta.description, discMeta.progressionModel, now);
 
-    // Insert subject
-    sqlite.prepare(
-      "INSERT INTO subjects (id, discipline_id, name, description, grade_range, topic_count, created_at) VALUES (?, ?, ?, ?, ?, ?, ?)"
-    ).run(graph.subjectId, discId, graph.subjectName, graph.description ?? "", graph.gradeRange ?? "K-5", graph.topics.length, now);
-
     // Insert topics
     for (const t of graph.topics) {
-      insertTopic.run(t.id, graph.subjectId, t.name, t.description, t.gradeLevel, t.gradeLevel, t.strand ?? null, t.standardCode, now);
+      insertTopic.run(t.id, discId, t.name, t.description, t.gradeLevel, t.gradeLevel, t.strand ?? null, t.standardCode, now);
     }
 
     // Import problems from both hand-authored and generated directories
@@ -260,8 +256,8 @@ export function createMultiSubjectSimulationDb(subjects: string[]): DB {
   }
 
   // Phase 2: Insert all edges (prerequisites + encompassings) after all topics are loaded
-  // This ensures cross-subject FKs resolve correctly
-  // Build set of loaded topic IDs to skip dangling cross-subject edges
+  // This ensures cross-discipline FKs resolve correctly
+  // Build set of loaded topic IDs to skip dangling cross-discipline edges
   const loadedTopicIds = new Set<string>();
   for (const graph of allGraphs) {
     for (const t of graph.topics) {
@@ -278,10 +274,10 @@ export function createMultiSubjectSimulationDb(subjects: string[]): DB {
 
   for (const graph of allGraphs) {
     for (const p of graph.prerequisites) {
-      // Resolve cross-subject topic IDs: "math-foundations:decimal-operations" → "decimal-operations"
+      // Resolve cross-discipline topic IDs: "ela:reading-comprehension" → "reading-comprehension"
       const fromId = resolveTopicId(p.from);
       const toId = resolveTopicId(p.to);
-      // Skip edges referencing topics not loaded (cross-subject edges in single-subject mode)
+      // Skip edges referencing topics not loaded (cross-discipline edges in single-discipline mode)
       if (!loadedTopicIds.has(fromId) || !loadedTopicIds.has(toId)) continue;
       insertPrereq.run(fromId, toId, p.strength, p.type ?? "required");
     }
@@ -300,7 +296,7 @@ export function createMultiSubjectSimulationDb(subjects: string[]): DB {
   return db;
 }
 
-/** Strip cross-subject prefix: "math-foundations:decimal-operations" → "decimal-operations" */
+/** Strip cross-discipline prefix: "ela:reading-comprehension" → "reading-comprehension" */
 function resolveTopicId(id: string): string {
   const colonIdx = id.indexOf(":");
   return colonIdx >= 0 ? id.substring(colonIdx + 1) : id;

@@ -5,7 +5,7 @@ import type { DB } from "../../packages/api/src/db/index.js";
 import { createSessionService } from "../../packages/api/src/services/session.js";
 import { createDiagnosticService, IMPLICIT_MASTERY_THRESHOLD } from "../../packages/api/src/services/diagnostic.js";
 import { createSRSService } from "../../packages/api/src/services/srs.js";
-import { createSimulationDb, createMultiSubjectSimulationDb, createSimUser } from "./db-setup.js";
+import { createSimulationDb, createSimulationDbMulti, createSimUser } from "./db-setup.js";
 import { resolveAnswer } from "./answer-engine.js";
 import { EventLogger } from "./event-logger.js";
 import { SeededRNG } from "./prng.js";
@@ -93,7 +93,7 @@ export class SimulationRunner {
   private simulatedTimeMs!: number;
   private simulationStartMs!: number;
   private topicGradeLevels = new Map<string, number>();
-  private topicSubjects = new Map<string, string>();
+  private topicDisciplines = new Map<string, string>();
   private totalTopicCount = 0;
   private sessionSummaries: SessionSummary[] = [];
   private stateSnapshots: StateSnapshot[] = [];
@@ -112,21 +112,21 @@ export class SimulationRunner {
     const mathRandomRng = new SeededRNG(this.config.seed + 1000000);
     setSeededRandom(() => mathRandomRng.next());
 
-    const subjects = this.config.subjects ?? [this.config.subject];
-    console.log(`[sim] Setting up DB for ${subjects.join(", ")}...`);
-    this.db = subjects.length > 1
-      ? createMultiSubjectSimulationDb(subjects)
-      : createSimulationDb(this.config.subject);
+    const disciplines = this.config.disciplines ?? [this.config.discipline];
+    console.log(`[sim] Setting up DB for ${disciplines.join(", ")}...`);
+    this.db = disciplines.length > 1
+      ? createSimulationDbMulti(disciplines)
+      : createSimulationDb(this.config.discipline);
 
     // Create simulated user
     this.userId = `sim-${this.config.profile.id}-${this.config.seed}`;
     createSimUser(this.db, this.userId, this.config.profile.name, this.config.profile.age);
 
-    // Cache topic grade levels and subject assignments for the answer engine
+    // Cache topic grade levels and discipline assignments for the answer engine
     const topics = await this.db.select().from(schema.topics);
     for (const t of topics) {
       this.topicGradeLevels.set(t.id, t.gradeLevel);
-      this.topicSubjects.set(t.id, t.subjectId);
+      this.topicDisciplines.set(t.id, t.disciplineId);
     }
     this.totalTopicCount = topics.length;
 
@@ -134,13 +134,13 @@ export class SimulationRunner {
     this.simulatedTimeMs = new Date("2026-01-15T08:00:00Z").getTime();
     this.simulationStartMs = this.simulatedTimeMs;
 
-    // Run diagnostic for each subject
+    // Run diagnostic for each discipline
     let diagnosticQuestions = 0;
-    for (const subj of subjects) {
-      console.log(`[sim] Running diagnostic for ${this.config.profile.id} (${subj})...`);
-      const qs = await this.runDiagnostic(subj);
+    for (const disc of disciplines) {
+      console.log(`[sim] Running diagnostic for ${this.config.profile.id} (${disc})...`);
+      const qs = await this.runDiagnostic(disc);
       diagnosticQuestions += qs;
-      console.log(`[sim] Diagnostic for ${subj}: ${qs} questions asked`);
+      console.log(`[sim] Diagnostic for ${disc}: ${qs} questions asked`);
     }
 
     // Fix diagnostic materialization: mastered topics get state=Review but stability=0,
@@ -205,7 +205,7 @@ export class SimulationRunner {
     // Write summary
     this.logger.writeSummary({
       profileId: this.config.profile.id,
-      subject: this.config.subject,
+      discipline: this.config.discipline,
       seed: this.config.seed,
       sessionsCompleted,
       diagnosticQuestionsAsked: diagnosticQuestions,
@@ -227,7 +227,7 @@ export class SimulationRunner {
 
     const result: SimulationResult = {
       profileId: this.config.profile.id,
-      subject: this.config.subject,
+      discipline: this.config.discipline,
       sessionsCompleted,
       diagnosticQuestionsAsked: diagnosticQuestions,
       totalEvents: this.logger.getTick(),
@@ -248,13 +248,13 @@ export class SimulationRunner {
     return this.diagnosticResult;
   }
 
-  private async runDiagnostic(subjectId?: string): Promise<number> {
+  private async runDiagnostic(disciplineId?: string): Promise<number> {
     setSimulatedTime(this.simulatedTimeMs);
 
     const diagnostic = createDiagnosticService(this.db);
     const startResult = await diagnostic.startDiagnostic({
       userId: this.userId,
-      subjectId: subjectId ?? this.getSubjectId(),
+      disciplineId: disciplineId ?? this.getDisciplineId(),
     });
 
     if ("error" in startResult) {
@@ -278,7 +278,7 @@ export class SimulationRunner {
       const answer = resolveAnswer(
         this.rng,
         this.config.profile,
-        { id: topicId, gradeLevel, subjectId: this.topicSubjects.get(topicId) },
+        { id: topicId, gradeLevel, disciplineId: this.topicDisciplines.get(topicId) },
         problem.difficulty ?? "medium",
         (problem as any).cognitiveDemand ?? null,
         "diagnostic",
@@ -396,8 +396,8 @@ export class SimulationRunner {
     // Get presentation distribution
     const presRows = await this.db
       .select()
-      .from(schema.userSubjectPresentation)
-      .where(eq(schema.userSubjectPresentation.userId, this.userId));
+      .from(schema.userDisciplinePresentation)
+      .where(eq(schema.userDisciplinePresentation.userId, this.userId));
     const presRow = presRows[0] ?? null;
 
     const presentationDistribution = presRow
@@ -543,7 +543,7 @@ export class SimulationRunner {
       const answerResult = resolveAnswer(
         this.rng,
         this.config.profile,
-        { id: topicId, gradeLevel, subjectId: this.topicSubjects.get(topicId) },
+        { id: topicId, gradeLevel, disciplineId: this.topicDisciplines.get(topicId) },
         problem.difficulty ?? "medium",
         problem.cognitiveDemand ?? (currentItem as any).cognitiveDemand ?? null,
         (currentItem as any).phase ?? "independent",
@@ -634,8 +634,8 @@ export class SimulationRunner {
     return rows.find((r) => r.topicId === topicId) ?? null;
   }
 
-  private getSubjectId(): string {
-    return this.config.subject;
+  private getDisciplineId(): string {
+    return this.config.discipline;
   }
 
   /** Get the time interval before session i (0-indexed) */
@@ -772,8 +772,8 @@ export class SimulationRunner {
 
     const presRows = await this.db
       .select()
-      .from(schema.userSubjectPresentation)
-      .where(eq(schema.userSubjectPresentation.userId, this.userId));
+      .from(schema.userDisciplinePresentation)
+      .where(eq(schema.userDisciplinePresentation.userId, this.userId));
     const presRow = presRows[0] ?? null;
 
     const presentation: PresentationSnapshot | null = presRow

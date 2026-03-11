@@ -513,7 +513,7 @@ async function runFIReComparison(seed: number): Promise<FIReResult[]> {
     console.log(`[fire] Running WITH encompassing for ${profile.id}...`);
     const withRunner = new SimulationRunner({
       profile,
-      subject: "math-foundations",
+      discipline: "math",
       sessionCount: 15,
       seed,
     });
@@ -530,7 +530,7 @@ async function runFIReComparison(seed: number): Promise<FIReResult[]> {
     // We do this by running with a modified db-setup that skips encompassings
     const withoutRunner = new SimulationRunner({
       profile,
-      subject: "math-foundations",
+      discipline: "math",
       sessionCount: 15,
       seed,
     });
@@ -591,7 +591,7 @@ async function runWithoutEncompassings(runner: any): Promise<any> {
   // To truly compare, we need to modify createSimulationDb.
   // Let's take a different approach: modify the graph JSON temporarily.
 
-  const graphPath = join(process.cwd(), "content", "math-foundations", "graph.json");
+  const graphPath = join(process.cwd(), "content", "math", "graph.json");
   const originalContent = readFileSync(graphPath, "utf-8");
   const graph = JSON.parse(originalContent);
   graph.encompassings = [];

@@ -47,7 +47,7 @@ async function runProfiles(seed: number) {
     const profile = loadProfile(profileId);
     const config: SimulationConfig = {
       profile,
-      subject: "math-foundations",
+      discipline: "math",
       sessionCount: REGRESSION_SESSIONS,
       seed,
     };

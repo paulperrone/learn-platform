@@ -87,7 +87,7 @@ async function runDiagnosticAnalysis(seed: number): Promise<ProfileAnalysis[]> {
 
     const runner = new SimulationRunner({
       profile,
-      subject: "math-foundations",
+      discipline: "math",
       sessionCount: 0, // Diagnostic only
       seed,
     });

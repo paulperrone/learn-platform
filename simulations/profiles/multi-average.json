@@ -1,7 +1,7 @@
 {
   "id": "multi-average",
-  "name": "Multi-Subject Average",
-  "description": "Age 11, average ability across math + ELA, daily schedule",
+  "name": "Multi-Discipline Average",
+  "description": "Age 11, average ability across math + ELA disciplines, daily schedule",
   "age": 11,
   "abilityCurve": {
     "0": 0.90,
@@ -15,5 +15,5 @@
   "hintSeekingProbability": 0.20,
   "confidenceTendency": "calibrated",
   "misconceptions": [],
-  "subjects": ["math-foundations", "ela-k5"]
+  "disciplines": ["math", "ela"]
 }

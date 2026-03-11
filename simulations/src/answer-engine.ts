@@ -11,16 +11,16 @@ import { SeededRNG } from "./prng.js";
 export function resolveAnswer(
   rng: SeededRNG,
   profile: LearnerProfile,
-  topic: { id: string; gradeLevel: number; subjectId?: string },
+  topic: { id: string; gradeLevel: number; disciplineId?: string },
   difficulty: string,
   cognitiveDemand: string | null,
   phase: string,
   sessionNumber: number
 ): AnswerResult {
-  // Base accuracy from ability curve — use subject-specific curve if available
-  const subjectCurve = topic.subjectId && profile.subjectAbility?.[topic.subjectId];
-  let accuracy = subjectCurve
-    ? getBaseAccuracyFromCurve(subjectCurve, topic.gradeLevel)
+  // Base accuracy from ability curve — use discipline-specific curve if available
+  const disciplineCurve = topic.disciplineId && profile.disciplineAbility?.[topic.disciplineId];
+  let accuracy = disciplineCurve
+    ? getBaseAccuracyFromCurve(disciplineCurve, topic.gradeLevel)
     : getBaseAccuracy(profile, topic.gradeLevel);
 
   // Check for misconceptions

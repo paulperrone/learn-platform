@@ -18,5 +18,5 @@
   "hintSeekingProbability": 0.20,
   "confidenceTendency": "calibrated",
   "misconceptions": [],
-  "subjects": ["ela-k5", "us-history"]
+  "disciplines": ["ela", "history"]
 }

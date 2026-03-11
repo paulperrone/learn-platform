@@ -18,5 +18,5 @@
   "hintSeekingProbability": 0.05,
   "confidenceTendency": "calibrated",
   "misconceptions": [],
-  "subjects": ["math-foundations", "math-middle"]
+  "disciplines": ["math"]
 }
