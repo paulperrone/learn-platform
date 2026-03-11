@@ -25,7 +25,7 @@ Fix the two remaining P1 evaluation failures (FIRe compression measurement, inte
 
 **Completed:** Phase 1 (FIRe: -3.1% → +8.4%, FAIL→FAIL but close to WARN), Phase 2 (Interleaving: 0.254 → 0.085, FAIL→PASS), Phase 2.5 (FIRe default eval, mastery gate removal, graduated mastery model added but getDueTopics/session changes reverted after making FIRe worse), Phase 2.6 (FIRe metric rewritten: reviews-per-mastered-topic efficiency, FAIL→WARN), Phase 2.7 (FIRe isolation: credit hurts -25.5% avg, ordering neutral for 2/3 profiles, non-additive interaction), Phase 3 (holistic platform assessment: 8P/2W/0F, 304 topics, frontend 85% complete, deployment ready with 5-step checklist), Phase 4 (maturity levels L1-L3: L1 3P/4F/3W, L2 8P/2W/0F, L3 8P/1W/1F — review/new balance FAIL at L3)
 **In Progress:** —
-**Next:** Phase 5
+**Next:** Phase 4.5A
 
 ---
 
@@ -370,6 +370,118 @@ Fix the two remaining P1 evaluation failures (FIRe compression measurement, inte
    - What each level tests and profile coverage matrix
 
 **Validation:** ✓ All three levels run successfully with all 29 profiles. Baselines established in `simulations/baselines/`. L3 reveals review/new balance degradation (WARN→FAIL) and entropy decay — both invisible at L2. `just evaluate-compare-levels` shows metric trends across levels.
+
+---
+
+## Phase 4.5A: Mastery Calibration
+**Goal:** Fix the three compounding issues that let strong learners exhaust K-8 math in 9 sessions: diagnostic gives away mastery too freely (0.6 threshold + broad credit propagation), mastery criterion is too lenient (2 correct + 4d stability), and topics get "completed" after 1-2 problems.
+
+**Root cause analysis:**
+- Diagnostic credit propagation: +0.2 to ALL lower-grade topics on each correct answer. After 8 questions, strong learners have ≥0.6 estimate on all 92 math-foundations topics → implicitly mastered
+- Mastery criterion: 2 consecutive correct in Review state + stability ≥ 4 days. Achievable in a single session
+- Combined effect: strong-older exhausts math-foundations at session 9 (0 new topics introduced sessions 10-90). 120:1 compression vs real K-5 instruction time
+- Review/New Balance FAIL at L3 (0.86) is partly a content ceiling artifact — review queue fills because there's nothing new to introduce
+
+**Design targets:**
+- Strong profile should take 30+ sessions to plateau on math-foundations (not 9)
+- Average profile should take 50+ sessions (not 20)
+- Mastery convergence must still PASS at L2 for non-struggling profiles
+
+1. [ ] [RSH] Baseline current progression rate:
+   - Document sessions-to-plateau per profile category (strong, average, struggling)
+   - Count new topics introduced per session over time for strong-older, average-older, fast-learner
+   - Calculate: at current rate, how many "school days" does one simulation session represent?
+
+2. [ ] [IMP] Tighten diagnostic credit propagation:
+   - Reduce lower-grade credit from +0.2 to +0.05 (weak signal — answering a grade 5 question doesn't prove grade 1 mastery)
+   - Reduce same-grade credit from +0.1 to +0.03
+   - Raise implicit mastery threshold from 0.6 to 0.85 (require strong evidence before assuming mastery)
+   - Keep direct prerequisite credit at +0.15 (these are genuinely implied by correct answers on dependents)
+
+3. [ ] [IMP] Raise mastery criterion:
+   - Increase from 2 consecutive correct to 4 consecutive correct reviews
+   - Raise stability threshold from 4 days to 21 days (requires genuine spaced repetition across multiple sessions)
+   - Update `getMasteryTier()` thresholds accordingly: practicing < 21d, recently-mastered 21-60d, solidly-mastered 60-120d, permanently 120d+
+
+4. [ ] [TST] Update SRS and diagnostic tests for new thresholds:
+   - Update mastery criterion tests in srs.test.ts
+   - Update diagnostic placement tests in diagnostic.test.ts
+   - Update test helpers (helpers.ts) if they seed mastery state
+   - Update regression baseline (`just simulate-regression --update-baseline`)
+
+5. [ ] [VAL] Run L2 evaluation — verify no P0 regressions:
+   - Mastery convergence should still PASS (non-struggling profiles reach 50% by session 30)
+   - If convergence drops too far, tune thresholds (e.g., 3 correct instead of 4, or 14 days instead of 21)
+   - Check strong-older sessions-to-plateau: target ≥ 25 sessions on math-foundations
+
+**Validation:** Strong profiles plateau at session 25+ (not 9). L2 evaluation: all P0 PASS. Regression baseline updated. Mastery calibration numbers documented.
+
+---
+
+## Phase 4.5B: Problem Density Expansion
+**Goal:** Expand math problem sets from 5 per topic to 20-30 using the existing procedural generators. More problems per topic means each topic requires more engagement before all problems are exhausted.
+
+**Context:** `tools/generate-problems.ts` has 143 topic-specific generators covering most math-foundations and math-middle topics. Currently unused — all content is hand-authored at 5 problems/topic. Generated problems go to `content/<subject>/problems-generated/<topic>.json` with `source: "generated"`.
+
+1. [ ] [RSH] Audit generator coverage:
+   - List which of the 207 math topics (92 foundations + 115 middle) have generators
+   - Identify gaps — topics with no generator that need hand-authored expansion or new generators
+   - Document coverage percentage
+
+2. [ ] [IMP] Run generators for all covered math topics:
+   - `just generate-problems --count 25` for math-foundations and math-middle
+   - Target: 25 generated problems per covered topic (easy/medium/hard distribution)
+   - Verify output in `content/*/problems-generated/`
+
+3. [ ] [IMP] Merge generated problems into import pipeline:
+   - Update `import-content.ts` to load both `problems/*.json` (hand-authored) and `problems-generated/*.json` (procedural)
+   - Tag generated problems with `source: "generated"` to distinguish from hand-authored
+   - Hand-authored problems take priority when duplicates exist
+
+4. [ ] [VAL] Validate and import expanded problem sets:
+   - `just validate-content` — verify all generated problems pass validation
+   - `just import-content` — load into local D1
+   - Spot-check: average problems per topic should be ≥ 20
+
+5. [ ] [VAL] Quick L2 sanity check:
+   - Run `just evaluate-l2` with expanded problems
+   - Verify no regressions from problem expansion
+   - Check if per-topic engagement depth increased (more problems seen per topic per session)
+
+**Validation:** Average problems per math topic ≥ 20. `just validate-content` passes. L2 evaluation shows no regressions. Generated problems properly tagged with `source: "generated"`.
+
+---
+
+## Phase 4.5C: L3 Re-evaluation & Content Sufficiency Gate
+**Goal:** Re-run L3 with calibrated mastery + expanded problems. Determine whether content is sufficient for L4 (180 sessions) or if more content is needed first.
+
+1. [ ] [VAL] Run L3 (90 sessions) with calibrated mastery + expanded problems:
+   - `just evaluate-l3`
+   - Compare against pre-calibration L3 baseline (saved in Phase 4)
+
+2. [ ] [RSH] Compare progression rates before vs after:
+   - Sessions-to-plateau: before (session 8 avg) vs after (target: session 40+)
+   - Final mastery %: before (77%) vs after (expect lower due to harder mastery)
+   - Review/New Balance: before (0.86 FAIL) vs after (expect improvement — more new content to introduce)
+   - Topics introduced per session in sessions 30-90: before (0) vs after (should still be > 0)
+
+3. [ ] [RSH] Content sufficiency assessment for L4/L5:
+   - At the new progression rate, how many sessions until strong profiles exhaust all math content?
+   - If plateau < 60 sessions: need more content before L4 (add math-high-school)
+   - If plateau ≥ 60 sessions: multi-subject profiles have runway for 180 sessions
+   - If plateau ≥ 120 sessions: sufficient for L5 (360 sessions) with multi-subject profiles
+
+4. [ ] [DOC] Document calibration results:
+   - Before/after comparison table in `docs/simulation-maturity.md`
+   - Update L3 baseline (`simulations/baselines/l3.json`)
+   - Record calibration decision in `DECISIONS.md`
+
+5. [ ] [VAL] Decision gate:
+   - **Proceed to Phase 5** if multi-subject profiles have runway for 180+ sessions
+   - **Add Phase 4.6 (math-high-school content)** if content is still insufficient
+   - Document decision with supporting data
+
+**Validation:** L3 re-run shows realistic progression (strong profiles plateau ≥ session 40). Before/after comparison documented. Clear go/no-go decision for L4/L5 with supporting data.
 
 ---
 
