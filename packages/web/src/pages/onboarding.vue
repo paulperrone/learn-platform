@@ -58,10 +58,10 @@ async function startDiagnostic() {
   step.value = 2;
   loading.value = true;
 
-  // Get first subject
-  const subjects = await withErrorToast(() => api.getPublicSubjects());
-  const subjectId = subjects?.subjects?.[0]?.id;
-  if (!subjectId) {
+  // Get first discipline
+  const result = await withErrorToast(() => api.getPublicDisciplines());
+  const disciplineId = result?.disciplines?.[0]?.id;
+  if (!disciplineId) {
     step.value = 3;
     loading.value = false;
     return;
@@ -69,7 +69,7 @@ async function startDiagnostic() {
 
   const userId = await api.getUserId().catch(() => undefined);
   const data = await withErrorToast(
-    () => api.startDiagnostic({ userId, subjectId, isTaste: false }),
+    () => api.startDiagnostic({ userId, disciplineId, isTaste: false }),
     t("errors.failedToStart", { action: "diagnostic" })
   );
 

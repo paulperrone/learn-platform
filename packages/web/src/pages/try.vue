@@ -21,25 +21,25 @@ const questionNumber = ref(0);
 const totalQuestions = ref(0);
 const result = ref<DiagnosticResult | null>(null);
 const loading = ref(false);
-const subjects = ref<{ id: string; name: string }[]>([]);
-const selectedSubject = ref<string | null>(null);
+const disciplines = ref<{ id: string; name: string }[]>([]);
+const selectedDiscipline = ref<string | null>(null);
 
 const progressPercent = computed(() =>
   totalQuestions.value > 0 ? Math.round((questionNumber.value / totalQuestions.value) * 100) : 0
 );
 
 onMounted(async () => {
-  const data = await withErrorToast(() => api.getPublicSubjects(), t("errors.failedToLoad", { resource: "subjects" }));
-  if (data?.subjects) {
-    subjects.value = data.subjects;
-    if (data.subjects.length === 1) {
-      selectedSubject.value = data.subjects[0].id;
+  const data = await withErrorToast(() => api.getPublicDisciplines(), t("errors.failedToLoad", { resource: "disciplines" }));
+  if (data?.disciplines) {
+    disciplines.value = data.disciplines;
+    if (data.disciplines.length === 1) {
+      selectedDiscipline.value = data.disciplines[0].id;
     }
   }
 });
 
 async function startDiagnostic() {
-  if (!selectedSubject.value) return;
+  if (!selectedDiscipline.value) return;
   loading.value = true;
   phase.value = "diagnostic";
 
@@ -49,7 +49,7 @@ async function startDiagnostic() {
     () => api.startDiagnostic({
       userId,
       anonymousToken: userId ? undefined : anon.token.value,
-      subjectId: selectedSubject.value!,
+      disciplineId: selectedDiscipline.value!,
       isTaste: true,
     }),
     t("errors.failedToStart", { action: "diagnostic" })
@@ -108,19 +108,19 @@ function goToSignup() {
         {{ t('tryPage.subtitle') }}
       </p>
 
-      <div v-if="subjects.length > 1" class="mb-8">
+      <div v-if="disciplines.length > 1" class="mb-8">
         <label class="block text-sm font-medium text-gray-700 mb-2">{{ t('tryPage.chooseSubject') }}</label>
         <select
-          v-model="selectedSubject"
+          v-model="selectedDiscipline"
           class="block w-64 mx-auto px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
         >
-          <option v-for="s in subjects" :key="s.id" :value="s.id">{{ s.name }}</option>
+          <option v-for="s in disciplines" :key="s.id" :value="s.id">{{ s.name }}</option>
         </select>
       </div>
 
       <button
         @click="startDiagnostic"
-        :disabled="!selectedSubject || loading"
+        :disabled="!selectedDiscipline || loading"
         class="px-8 py-3 bg-blue-600 text-white rounded-lg text-lg font-semibold hover:bg-blue-700 disabled:opacity-50 transition-colors"
       >
         {{ loading ? t('common.loading') : t('tryPage.startAssessment') }}

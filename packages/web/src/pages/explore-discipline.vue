@@ -9,9 +9,9 @@ import type { Topic, Discipline } from "@learn/shared";
 const route = useRoute();
 const api = useApi();
 const auth = useAuth();
-const subjectId = route.params.subjectId as string;
+const disciplineId = route.params.disciplineId as string;
 
-const subject = ref<(Discipline & { gradeRange?: string }) | null>(null);
+const discipline = ref<(Discipline & { gradeRange?: string }) | null>(null);
 const topics = ref<Topic[]>([]);
 const prerequisites = ref<{ from: string; to: string; strength: number }[]>([]);
 const loading = ref(true);
@@ -22,23 +22,23 @@ const masterySummary = ref<{ total: number; mastered: number; inProgress: number
 
 onMounted(async () => {
   const [graphResult, topicsResult] = await Promise.all([
-    withErrorToast(() => api.getPublicGraph(subjectId), "Failed to load graph"),
-    withErrorToast(() => api.getPublicTopics(subjectId), "Failed to load topics"),
+    withErrorToast(() => api.getPublicGraph(disciplineId), "Failed to load graph"),
+    withErrorToast(() => api.getPublicTopics(disciplineId), "Failed to load topics"),
   ]);
 
   if (graphResult) {
-    subject.value = graphResult.subject;
+    discipline.value = graphResult.discipline;
     topics.value = graphResult.topics;
     prerequisites.value = graphResult.prerequisites;
 
     useMeta({
-      title: `${graphResult.subject.name} — Explore`,
-      description: `Browse ${graphResult.topics.length} topics in ${graphResult.subject.name}. See prerequisites, grade levels, and how topics connect.`,
+      title: `${graphResult.discipline.name} — Explore`,
+      description: `Browse ${graphResult.topics.length} topics in ${graphResult.discipline.name}. See prerequisites, grade levels, and how topics connect.`,
     });
 
     // Load user mastery state if authenticated
     if (auth.isAuthenticated.value) {
-      const userState = await api.getUserGraphState(subjectId).catch(() => null);
+      const userState = await api.getUserGraphState(disciplineId).catch(() => null);
       if (userState) {
         masterySummary.value = userState.summary;
         for (const t of userState.topics) {
@@ -116,7 +116,7 @@ function statusBorderClass(topicId: string) {
     <nav class="mb-4 text-sm text-gray-500">
       <RouterLink to="/explore" class="hover:text-blue-600">Explore</RouterLink>
       <span class="mx-2">/</span>
-      <span class="text-gray-900">{{ subject?.name ?? "..." }}</span>
+      <span class="text-gray-900">{{ discipline?.name ?? "..." }}</span>
     </nav>
 
     <!-- Loading -->
@@ -130,18 +130,18 @@ function statusBorderClass(topicId: string) {
 
     <!-- Error -->
     <div v-else-if="error" class="text-center py-12">
-      <p class="text-gray-500 mb-4">Subject not found or unavailable.</p>
-      <RouterLink to="/explore" class="text-blue-600 hover:underline text-sm">&larr; Back to subjects</RouterLink>
+      <p class="text-gray-500 mb-4">Discipline not found or unavailable.</p>
+      <RouterLink to="/explore" class="text-blue-600 hover:underline text-sm">&larr; Back to disciplines</RouterLink>
     </div>
 
-    <template v-else-if="subject">
+    <template v-else-if="discipline">
       <!-- Header -->
       <div class="mb-6">
-        <h1 class="text-3xl font-bold text-gray-900 mb-2">{{ subject.name }}</h1>
-        <p class="text-gray-600">{{ subject.description }}</p>
+        <h1 class="text-3xl font-bold text-gray-900 mb-2">{{ discipline.name }}</h1>
+        <p class="text-gray-600">{{ discipline.description }}</p>
         <div class="flex items-center gap-4 mt-3 text-sm text-gray-500">
           <span>{{ topics.length }} topics</span>
-          <span>{{ subject.gradeRange }}</span>
+          <span>{{ discipline.gradeRange }}</span>
           <span>{{ prerequisites.length }} prerequisite connections</span>
         </div>
       </div>
@@ -207,7 +207,7 @@ function statusBorderClass(topicId: string) {
           <RouterLink
             v-for="topic in gradeTopics"
             :key="topic.id"
-            :to="`/explore/${subjectId}/${topic.id}`"
+            :to="`/explore/${disciplineId}/${topic.id}`"
             class="rounded-lg border p-4 hover:shadow-sm transition-all group"
             :class="statusBorderClass(topic.id)"
           >

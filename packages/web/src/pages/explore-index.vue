@@ -9,10 +9,10 @@ import type { Discipline } from "@learn/shared";
 const api = useApi();
 const auth = useAuth();
 const { t } = useI18n();
-const subjects = ref<(Discipline & { gradeRange?: string; topicCount?: number })[]>([]);
+const disciplines = ref<(Discipline & { gradeRange?: string; topicCount?: number })[]>([]);
 const loading = ref(true);
 const error = ref(false);
-const subjectProgress = ref<Map<string, { mastered: number; total: number; progress: number }>>(new Map());
+const disciplineProgress = ref<Map<string, { mastered: number; total: number; progress: number }>>(new Map());
 
 onMounted(async () => {
   useMeta({
@@ -20,20 +20,20 @@ onMounted(async () => {
     description: "Browse our free, open math curriculum. See every topic, problem, and worked example — full transparency into how we teach.",
   });
 
-  const result = await withErrorToast(() => api.getPublicSubjects(), "Failed to load subjects");
+  const result = await withErrorToast(() => api.getPublicDisciplines(), "Failed to load disciplines");
   if (result) {
-    subjects.value = result.subjects;
+    disciplines.value = result.disciplines;
 
-    // Load per-subject mastery for authenticated users
+    // Load per-discipline mastery for authenticated users
     if (auth.isAuthenticated.value) {
-      const statePromises = result.subjects.map((s) =>
+      const statePromises = result.disciplines.map((s) =>
         api.getUserGraphState(s.id).catch(() => null)
       );
       const states = await Promise.all(statePromises);
-      for (let i = 0; i < result.subjects.length; i++) {
+      for (let i = 0; i < result.disciplines.length; i++) {
         const state = states[i];
         if (state) {
-          subjectProgress.value.set(result.subjects[i].id, {
+          disciplineProgress.value.set(result.disciplines[i].id, {
             mastered: state.summary.mastered,
             total: state.summary.total,
             progress: state.summary.progress,
@@ -68,55 +68,55 @@ function gradeLabel(range: string) {
         <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
         <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
       </svg>
-      <span>Loading subjects...</span>
+      <span>Loading disciplines...</span>
     </div>
 
     <!-- Error -->
     <div v-else-if="error" class="text-center py-12">
-      <p class="text-gray-500 mb-4">Unable to load subjects.</p>
+      <p class="text-gray-500 mb-4">Unable to load disciplines.</p>
       <button @click="$router.go(0)" class="text-blue-600 hover:underline text-sm">{{ t('explore.retry') }}</button>
     </div>
 
     <!-- Empty -->
-    <div v-else-if="subjects.length === 0" class="text-center py-12">
-      <p class="text-gray-500">No subjects available yet. Content is being prepared.</p>
+    <div v-else-if="disciplines.length === 0" class="text-center py-12">
+      <p class="text-gray-500">No disciplines available yet. Content is being prepared.</p>
     </div>
 
-    <!-- Subject cards -->
+    <!-- Discipline cards -->
     <div v-else class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
       <RouterLink
-        v-for="subject in subjects"
-        :key="subject.id"
-        :to="`/explore/${subject.id}`"
+        v-for="discipline in disciplines"
+        :key="discipline.id"
+        :to="`/explore/${discipline.id}`"
         class="bg-white rounded-lg border border-gray-200 p-6 hover:border-blue-300 hover:shadow-md transition-all group"
       >
         <div class="flex items-start justify-between mb-3">
           <h2 class="text-xl font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
-            {{ subject.name }}
+            {{ discipline.name }}
           </h2>
           <span class="text-xs font-medium bg-blue-50 text-blue-700 px-2 py-1 rounded-full whitespace-nowrap">
-            {{ gradeLabel(subject.gradeRange ?? '') }}
+            {{ gradeLabel(discipline.gradeRange ?? '') }}
           </span>
         </div>
-        <p class="text-gray-600 text-sm mb-4">{{ subject.description }}</p>
+        <p class="text-gray-600 text-sm mb-4">{{ discipline.description }}</p>
         <div class="flex items-center gap-4 text-sm text-gray-500">
           <span class="flex items-center gap-1">
             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h7" />
             </svg>
-            {{ subject.topicCount }} topics
+            {{ discipline.topicCount }} topics
           </span>
           <span class="text-blue-600 group-hover:underline ml-auto">Browse &rarr;</span>
         </div>
         <!-- User progress (authenticated only) -->
-        <div v-if="subjectProgress.get(subject.id)" class="mt-3 pt-3 border-t border-gray-100">
+        <div v-if="disciplineProgress.get(discipline.id)" class="mt-3 pt-3 border-t border-gray-100">
           <div class="flex items-center gap-2 text-xs text-gray-500 mb-1">
-            <span>{{ subjectProgress.get(subject.id)!.mastered }}/{{ subjectProgress.get(subject.id)!.total }} mastered</span>
+            <span>{{ disciplineProgress.get(discipline.id)!.mastered }}/{{ disciplineProgress.get(discipline.id)!.total }} mastered</span>
           </div>
           <div class="h-1.5 bg-gray-100 rounded-full overflow-hidden">
             <div
               class="h-full bg-green-500 rounded-full transition-all"
-              :style="{ width: `${Math.round(subjectProgress.get(subject.id)!.progress * 100)}%` }"
+              :style="{ width: `${Math.round(disciplineProgress.get(discipline.id)!.progress * 100)}%` }"
             />
           </div>
         </div>

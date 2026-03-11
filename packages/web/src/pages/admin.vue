@@ -50,13 +50,13 @@ const contentVersions = ref<{
   versionComparison: { topicId: string; topicName: string; version: number; contentUpdatedAt: string; attemptsBefore: number; accuracyBefore: number; attemptsAfter: number; accuracyAfter: number }[];
 } | null>(null);
 const contentMatrix = ref<{
-  subjects: { id: string; name: string; gradeRange: string }[];
+  disciplines: { id: string; name: string; gradeRange: string }[];
   matrix: {
     topicId: string;
     topicName: string;
     gradeLevel: number;
-    subjectId: string;
-    subjectName: string;
+    disciplineId: string;
+    disciplineName: string;
     totalInstructional: number;
     totalAssessment: number;
     hasAssets: boolean;
@@ -78,8 +78,8 @@ const contentMatrix = ref<{
     topicsWithLowQuality: number;
   };
 } | null>(null);
-const matrixFilter = ref<{ subject: string | null; grade: number | null; flavor: string | null; locale: string | null; gapsOnly: boolean }>({
-  subject: null,
+const matrixFilter = ref<{ discipline: string | null; grade: number | null; flavor: string | null; locale: string | null; gapsOnly: boolean }>({
+  discipline: null,
   grade: null,
   flavor: null,
   locale: null,
@@ -219,7 +219,7 @@ const filteredMatrix = computed(() => {
   let rows = contentMatrix.value.matrix;
   const f = matrixFilter.value;
 
-  if (f.subject) rows = rows.filter((r) => r.subjectId === f.subject);
+  if (f.discipline) rows = rows.filter((r) => r.disciplineId === f.discipline);
   if (f.grade !== null) rows = rows.filter((r) => r.gradeLevel === f.grade);
   if (f.flavor) rows = rows.filter((r) =>
     r.instructional.some((i) => i.flavor === f.flavor) || r.assessment.some((a) => a.flavor === f.flavor)
@@ -245,7 +245,7 @@ const filteredMatrix = computed(() => {
 const uniqueGrades = computed(() => {
   if (!contentMatrix.value) return [];
   let rows = contentMatrix.value.matrix;
-  if (matrixFilter.value.subject) rows = rows.filter((r) => r.subjectId === matrixFilter.value.subject);
+  if (matrixFilter.value.discipline) rows = rows.filter((r) => r.disciplineId === matrixFilter.value.discipline);
   return [...new Set(rows.map((m) => m.gradeLevel))].sort((a, b) => a - b);
 });
 
@@ -946,9 +946,9 @@ const tabs = [
 
         <!-- Filters -->
         <div class="flex flex-wrap gap-3 items-center">
-          <select v-model="matrixFilter.subject" class="text-sm border border-gray-300 rounded px-2 py-1 font-medium">
-            <option :value="null">All Subjects</option>
-            <option v-for="s in contentMatrix.subjects" :key="s.id" :value="s.id">{{ s.name }}</option>
+          <select v-model="matrixFilter.discipline" class="text-sm border border-gray-300 rounded px-2 py-1 font-medium">
+            <option :value="null">All Disciplines</option>
+            <option v-for="s in contentMatrix.disciplines" :key="s.id" :value="s.id">{{ s.name }}</option>
           </select>
           <select v-model="matrixFilter.grade" class="text-sm border border-gray-300 rounded px-2 py-1">
             <option :value="null">All Levels</option>
@@ -1056,7 +1056,7 @@ const tabs = [
                 <div class="flex justify-between items-start">
                   <div>
                     <h3 class="text-base font-semibold">{{ row.topicName }}</h3>
-                    <p class="text-sm text-gray-500">{{ gradeLabel(row.gradeLevel) }} - {{ row.subjectName }}</p>
+                    <p class="text-sm text-gray-500">{{ gradeLabel(row.gradeLevel) }} - {{ row.disciplineName }}</p>
                   </div>
                   <button @click="selectedMatrixTopic = null" class="text-gray-400 hover:text-gray-600 p-1">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>

@@ -9,7 +9,7 @@ import type { Topic, Problem, WorkedExample } from "@learn/shared";
 const route = useRoute();
 const api = useApi();
 const auth = useAuth();
-const subjectId = route.params.subjectId as string;
+const disciplineId = route.params.disciplineId as string;
 const topicId = route.params.topicId as string;
 
 const topic = ref<(Topic & { problems: Problem[]; examples: WorkedExample[] }) | null>(null);
@@ -25,7 +25,7 @@ const prereqStatusMap = ref<Map<string, string>>(new Map());
 onMounted(async () => {
   const [topicResult, graphResult] = await Promise.all([
     withErrorToast(() => api.getPublicTopic(topicId), "Failed to load topic"),
-    withErrorToast(() => api.getPublicGraph(subjectId), "Failed to load graph"),
+    withErrorToast(() => api.getPublicGraph(disciplineId), "Failed to load graph"),
   ]);
 
   if (topicResult) {
@@ -48,7 +48,7 @@ onMounted(async () => {
 
   // Load user state for this topic if authenticated
   if (auth.isAuthenticated.value) {
-    const userState = await api.getUserGraphState(subjectId).catch(() => null);
+    const userState = await api.getUserGraphState(disciplineId).catch(() => null);
     if (userState) {
       const thisTopicState = userState.topics.find((t) => t.id === topicId);
       if (thisTopicState) {
@@ -96,7 +96,7 @@ function toggleExample(id: string) {
     <nav class="mb-4 text-sm text-gray-500">
       <RouterLink to="/explore" class="hover:text-blue-600">Explore</RouterLink>
       <span class="mx-2">/</span>
-      <RouterLink :to="`/explore/${subjectId}`" class="hover:text-blue-600">{{ topic?.disciplineId ?? subjectId }}</RouterLink>
+      <RouterLink :to="`/explore/${disciplineId}`" class="hover:text-blue-600">{{ topic?.disciplineId ?? disciplineId }}</RouterLink>
       <span class="mx-2">/</span>
       <span class="text-gray-900">{{ topic?.name ?? "..." }}</span>
     </nav>
@@ -113,7 +113,7 @@ function toggleExample(id: string) {
     <!-- Error -->
     <div v-else-if="error" class="text-center py-12">
       <p class="text-gray-500 mb-4">Topic not found.</p>
-      <RouterLink :to="`/explore/${subjectId}`" class="text-blue-600 hover:underline text-sm">&larr; Back to subject</RouterLink>
+      <RouterLink :to="`/explore/${disciplineId}`" class="text-blue-600 hover:underline text-sm">&larr; Back to discipline</RouterLink>
     </div>
 
     <template v-else-if="topic">
@@ -174,7 +174,7 @@ function toggleExample(id: string) {
           <RouterLink
             v-for="prereq in prereqTopics"
             :key="prereq.id"
-            :to="`/explore/${subjectId}/${prereq.id}`"
+            :to="`/explore/${disciplineId}/${prereq.id}`"
             class="text-sm border px-3 py-1 rounded-full hover:opacity-80 transition-colors flex items-center gap-1"
             :class="prereqStatusMap.get(prereq.id) === 'mastered'
               ? 'bg-green-50 border-green-300 text-green-700'

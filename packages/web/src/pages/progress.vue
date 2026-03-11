@@ -21,7 +21,7 @@ onMounted(async () => {
   const result = await withErrorToast(async () => {
     const [statesData, topicsData, presData, calData] = await Promise.all([
       api.getTopicStates(),
-      api.getTopics("math-foundations"),
+      api.getTopics("math"),
       api.getPresentationDistributions(),
       api.getCalibration(),
     ]);
@@ -135,11 +135,11 @@ const LEVELS = ["primary", "intermediate", "standard", "advanced"] as const;
         <div class="space-y-3">
           <div
             v-for="dist in distributions"
-            :key="dist.subjectId"
+            :key="dist.disciplineId"
             class="bg-white rounded-lg border border-gray-200 p-4"
           >
             <div class="flex items-center justify-between mb-2">
-              <span class="text-sm font-medium text-gray-800">{{ dist.subjectName }}</span>
+              <span class="text-sm font-medium text-gray-800">{{ dist.disciplineName }}</span>
               <span class="text-xs text-gray-500">{{ dist.label }}</span>
             </div>
             <div class="flex h-3 rounded-full overflow-hidden bg-gray-100">

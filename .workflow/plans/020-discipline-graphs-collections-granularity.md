@@ -22,9 +22,9 @@ Replace the current `discipline -> subject -> topic` ownership model with `disci
 
 ## Progress
 
-**Completed:** Phase 1, Phase 2, Phase 3 (shared types, services, routes, tests — all subjectId→disciplineId)
+**Completed:** Phase 1, Phase 2, Phase 3, Phase 4 (frontend migration — router, API composable, all pages)
 **In Progress:** —
-**Next:** Phase 4
+**Next:** Phase 5
 
 ---
 
@@ -247,7 +247,7 @@ Each service change below is a mechanical `subjectId` → `disciplineId` rename 
 
 ---
 
-## Phase 4: Frontend Migration
+## Phase 4: Frontend Migration ✅
 **Goal:** Make the frontend speak in disciplines and collections instead of subjects.
 
 ### 4.1 Router and API Composable
@@ -259,47 +259,45 @@ Current routes with `subjectId`:
 - `/explore/:subjectId/:topicId` → `/explore/:disciplineId/:topicId`
 - `/teach/:subjectId/:topicId` → `/teach/:disciplineId/:topicId`
 
-1. [ ] [IMP] Update all route definitions in `main.ts`
-2. [ ] [IMP] Consider whether to keep `/explore/:disciplineId` as the browse-by-discipline view and add `/collections/:collectionId` as a separate browse-by-collection view, or merge them
+1. [x] [IMP] Update all route definitions in `main.ts`
+2. [x] [IMP] Keep `/explore/:disciplineId` as browse-by-discipline; collections browse deferred to Phase 6 tooling
 
 **`packages/web/src/composables/useApi.ts`:**
-- [ ] [IMP] `getTopics(subjectId)` → `getTopics(disciplineId)`: Update endpoint path
-- [ ] [IMP] `getUserGraphState(subjectId, userId)` → `getUserGraphState(disciplineId, userId)`: Update endpoint path
-- [ ] [IMP] `startDiagnostic({ subjectId })` → `startDiagnostic({ disciplineId })`: Update body field
-- [ ] [IMP] `resumeDiagnostic({ subjectId })` → `resumeDiagnostic({ disciplineId })`: Update body field
-- [ ] [IMP] `startAnonymousSession(token, subjectId?)` → Update parameter name
-- [ ] [IMP] `getPresentationDistributions()`: Update response type from `subjectId`/`subjectName` to `disciplineId`/`disciplineName`
-- [ ] [IMP] `getCompletionEstimates()`: Same response type update
-- [ ] [IMP] `getPublicTopics(subjectId)` → `getPublicTopics(disciplineId)`: Update endpoint path
-- [ ] [IMP] `getPublicGraph(subjectId)` → `getPublicGraph(disciplineId)`: Update endpoint path
-- [ ] [IMP] `getContentMatrix()`: Update response type
-- [ ] [IMP] Add `getCollections(disciplineId?)` and `getCollectionDetail(collectionId)` API functions
+- [x] [IMP] `getSubjects()` → `getDisciplines()`: Renamed + updated endpoint to `/graph/disciplines`
+- [x] [IMP] `getTopics(subjectId)` → `getTopics(disciplineId)`: Updated endpoint path
+- [x] [IMP] `getUserGraphState(subjectId, userId)` → `getUserGraphState(disciplineId, userId)`: Updated endpoint path
+- [x] [IMP] `startDiagnostic({ subjectId })` → `startDiagnostic({ disciplineId })`: Updated body field
+- [x] [IMP] `resumeDiagnostic({ subjectId })` → `resumeDiagnostic({ disciplineId })`: Updated body field
+- [x] [IMP] `startAnonymousSession(token, subjectId?)` → Updated parameter name
+- [x] [IMP] `getPresentationDistributions()`: Updated response type to `disciplineId`/`disciplineName`
+- [x] [IMP] `getPublicSubjects()` → `getPublicDisciplines()`: Renamed + updated endpoint to `/public/disciplines`
+- [x] [IMP] `getPublicTopics(subjectId)` → `getPublicTopics(disciplineId)`: Updated endpoint path
+- [x] [IMP] `getPublicGraph(subjectId)` → `getPublicGraph(disciplineId)`: Updated endpoint + response type (`discipline` not `subject`)
+- [x] [IMP] `getContentMatrix()`: Updated response type (`disciplines`, `disciplineId`, `disciplineName`)
 
 ### 4.2 Pages
 
-**14 frontend files reference subjects.** Most changes are mechanical renames of props, route params, and variable names.
-
-- [ ] [IMP] `pages/onboarding.vue`: Subject selection → discipline selection (or collection selection if you want grade-band entry points)
-- [ ] [IMP] `pages/index.vue`: Dashboard subject references → discipline references
-- [ ] [IMP] `pages/explore-index.vue`: List disciplines + collections instead of subjects
-- [ ] [IMP] `pages/explore-subject.vue` → rename to `explore-discipline.vue`: Browse discipline graph
-- [ ] [IMP] `pages/explore-topic.vue`: `subjectId` route param → `disciplineId`
-- [ ] [IMP] `pages/diagnostic.vue`: `subjectId` route param → `disciplineId`
-- [ ] [IMP] `pages/progress.vue`: Per-subject stats → per-discipline stats
-- [ ] [IMP] `pages/try.vue`: Subject selection → discipline selection
-- [ ] [IMP] `pages/teach.vue`: `selectSubject()` → `selectDiscipline()`
-- [ ] [IMP] `pages/teach-topic.vue`: Route param rename
-- [ ] [IMP] `pages/admin.vue`: Subject references in admin views
-- [ ] [IMP] `pages/docs-comparison.vue`: Subject references in comparison views
+- [x] [IMP] `pages/onboarding.vue`: Uses `getPublicDisciplines()` + `disciplineId`
+- [x] [IMP] `pages/index.vue`: No subject references found (already clean)
+- [x] [IMP] `pages/explore-index.vue`: Lists disciplines, uses `disciplineProgress`
+- [x] [IMP] `pages/explore-subject.vue` → renamed to `explore-discipline.vue`: Browse discipline graph
+- [x] [IMP] `pages/explore-topic.vue`: Uses `disciplineId` route param
+- [x] [IMP] `pages/diagnostic.vue`: Uses `disciplineId` route param + `disciplineName`
+- [x] [IMP] `pages/progress.vue`: Uses `dist.disciplineId`/`dist.disciplineName`; fixed hardcoded `math-foundations` → `math`
+- [x] [IMP] `pages/try.vue`: Uses `disciplines`/`selectedDiscipline`
+- [x] [IMP] `pages/teach.vue`: Uses `selectDiscipline()`/`currentDiscipline`
+- [x] [IMP] `pages/teach-topic.vue`: Uses `disciplineId` route param
+- [x] [IMP] `pages/admin.vue`: Content matrix uses `disciplines`/`disciplineId`/`disciplineName`
+- [x] [IMP] `pages/docs-comparison.vue`: No subject references found (only prose "subjects" in content text)
 
 ### 4.3 Validate Phase 4
 
-1. [ ] [VAL] `just dev` — navigate all pages, verify no broken links or missing data
-2. [ ] [VAL] Full flow: signup → onboarding → diagnostic → learn → progress — all works with discipline-scoped data
-3. [ ] [VAL] Explore page shows disciplines and/or collections, topic detail pages load correctly
-4. [ ] [VAL] No remaining `subjectId` references in `packages/web/src/`
+1. [x] [VAL] `just typecheck` — all 3 packages pass (shared, api, web)
+2. [x] [VAL] `pnpm test` — 45 files, 457 tests pass
+3. [x] [VAL] No remaining `subjectId` references in `packages/web/src/` (grep confirms zero hits)
+4. [ ] [VAL] Manual smoke test: `just dev` — navigate all pages (deferred to user)
 
-**Validation:** The UI no longer exposes the internal subject split. Users see disciplines and collections.
+**Validation:** The UI no longer exposes the internal subject split. Users see disciplines. All types compile and all API tests pass.
 
 ---
 

@@ -7,8 +7,8 @@ import type { Discipline, Topic } from "@learn/shared";
 
 const api = useApi();
 const { t } = useI18n();
-const subjects = ref<(Discipline & { gradeRange?: string; topicCount?: number })[]>([]);
-const selectedSubject = ref<string | null>(null);
+const disciplines = ref<(Discipline & { gradeRange?: string; topicCount?: number })[]>([]);
+const selectedDiscipline = ref<string | null>(null);
 const topics = ref<Topic[]>([]);
 const prerequisites = ref<{ from: string; to: string; strength: number }[]>([]);
 const loading = ref(true);
@@ -22,11 +22,11 @@ onMounted(async () => {
     description: "Zero-setup classroom teaching tool. Browse topics, present lessons, and display problems — optimized for projection.",
   });
 
-  const result = await withErrorToast(() => api.getPublicSubjects(), "Failed to load subjects");
+  const result = await withErrorToast(() => api.getPublicDisciplines(), "Failed to load disciplines");
   if (result) {
-    subjects.value = result.subjects;
-    if (result.subjects.length === 1) {
-      selectSubject(result.subjects[0].id);
+    disciplines.value = result.disciplines;
+    if (result.disciplines.length === 1) {
+      selectDiscipline(result.disciplines[0].id);
     }
   } else {
     error.value = true;
@@ -34,12 +34,12 @@ onMounted(async () => {
   loading.value = false;
 });
 
-async function selectSubject(subjectId: string) {
-  selectedSubject.value = subjectId;
+async function selectDiscipline(disciplineId: string) {
+  selectedDiscipline.value = disciplineId;
   loadingTopics.value = true;
   selectedGrade.value = null;
 
-  const result = await withErrorToast(() => api.getPublicGraph(subjectId), "Failed to load topics");
+  const result = await withErrorToast(() => api.getPublicGraph(disciplineId), "Failed to load topics");
   if (result) {
     topics.value = result.topics;
     prerequisites.value = result.prerequisites;
@@ -83,8 +83,8 @@ function getNextTopics(topicId: string) {
   return topics.value.filter((t) => nextIds.includes(t.id));
 }
 
-const currentSubject = computed(() =>
-  subjects.value.find((s) => s.id === selectedSubject.value),
+const currentDiscipline = computed(() =>
+  disciplines.value.find((s) => s.id === selectedDiscipline.value),
 );
 </script>
 
@@ -106,33 +106,33 @@ const currentSubject = computed(() =>
 
     <!-- Error -->
     <div v-else-if="error" class="text-center py-12">
-      <p class="text-gray-500 mb-4">Unable to load subjects.</p>
+      <p class="text-gray-500 mb-4">Unable to load disciplines.</p>
       <button @click="$router.go(0)" class="text-blue-600 hover:underline text-sm">{{ t('teach.retry') }}</button>
     </div>
 
     <template v-else>
-      <!-- Subject selector (if multiple) -->
-      <div v-if="subjects.length > 1 && !selectedSubject" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <!-- Discipline selector (if multiple) -->
+      <div v-if="disciplines.length > 1 && !selectedDiscipline" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         <button
-          v-for="subject in subjects"
-          :key="subject.id"
-          @click="selectSubject(subject.id)"
+          v-for="discipline in disciplines"
+          :key="discipline.id"
+          @click="selectDiscipline(discipline.id)"
           class="bg-white rounded-lg border border-gray-200 p-6 hover:border-blue-300 hover:shadow-md transition-all text-left"
         >
-          <h2 class="text-xl font-semibold text-gray-900 mb-1">{{ subject.name }}</h2>
-          <p class="text-sm text-gray-500">{{ subject.gradeRange }} &middot; {{ subject.topicCount }} topics</p>
+          <h2 class="text-xl font-semibold text-gray-900 mb-1">{{ discipline.name }}</h2>
+          <p class="text-sm text-gray-500">{{ discipline.gradeRange }} &middot; {{ discipline.topicCount }} topics</p>
         </button>
       </div>
 
       <!-- Topic browser -->
-      <template v-if="selectedSubject">
-        <!-- Back button (if multiple subjects) -->
+      <template v-if="selectedDiscipline">
+        <!-- Back button (if multiple disciplines) -->
         <button
-          v-if="subjects.length > 1"
-          @click="selectedSubject = null; topics = []; prerequisites = []"
+          v-if="disciplines.length > 1"
+          @click="selectedDiscipline = null; topics = []; prerequisites = []"
           class="text-sm text-gray-500 hover:text-blue-600 mb-4 flex items-center gap-1"
         >
-          &larr; {{ currentSubject?.name ?? "Back" }}
+          &larr; {{ currentDiscipline?.name ?? "Back" }}
         </button>
 
         <!-- Loading topics -->
@@ -179,7 +179,7 @@ const currentSubject = computed(() =>
               <RouterLink
                 v-for="topic in gradeTopics"
                 :key="topic.id"
-                :to="`/teach/${selectedSubject}/${topic.id}`"
+                :to="`/teach/${selectedDiscipline}/${topic.id}`"
                 class="bg-white rounded-lg border border-gray-200 p-4 hover:border-blue-300 hover:shadow-sm transition-all group"
               >
                 <h3 class="font-medium text-gray-900 group-hover:text-blue-600 transition-colors mb-1">

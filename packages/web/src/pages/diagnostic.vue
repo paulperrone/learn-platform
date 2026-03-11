@@ -13,24 +13,24 @@ const router = useRouter();
 const route = useRoute();
 const { t } = useI18n();
 
-const subjectId = computed(() => route.params.subjectId as string);
+const disciplineId = computed(() => route.params.disciplineId as string);
 
 type Phase = "intro" | "running" | "complete";
 const phase = ref<Phase>("intro");
 const loading = ref(false);
-const subjectName = ref("");
+const disciplineName = ref("");
 const diagnosticSessionId = ref<string | null>(null);
 const currentQuestion = ref<any>(null);
 const questionNumber = ref(0);
 const diagnosticResult = ref<DiagnosticResult | null>(null);
 
-const storageKey = computed(() => `diagnostic-session-${subjectId.value}`);
+const storageKey = computed(() => `diagnostic-session-${disciplineId.value}`);
 
 onMounted(async () => {
-  // Load subject name for display
-  const subjects = await withErrorToast(() => api.getPublicSubjects());
-  const subject = subjects?.subjects?.find((s: any) => s.id === subjectId.value);
-  subjectName.value = subject?.name ?? subjectId.value;
+  // Load discipline name for display
+  const result = await withErrorToast(() => api.getPublicDisciplines());
+  const discipline = result?.disciplines?.find((s: any) => s.id === disciplineId.value);
+  disciplineName.value = discipline?.name ?? disciplineId.value;
 
   // Try to resume an active session
   const savedSessionId = sessionStorage.getItem(storageKey.value);
@@ -44,7 +44,7 @@ onMounted(async () => {
 
     const resumed = await api.resumeDiagnostic({
       userId,
-      subjectId: subjectId.value,
+      disciplineId: disciplineId.value,
     }).catch(() => null);
 
     if (resumed?.sessionId && resumed?.question) {
@@ -71,7 +71,7 @@ async function startDiagnostic() {
     : undefined;
 
   const data = await withErrorToast(
-    () => api.startDiagnostic({ userId, subjectId: subjectId.value, isTaste: false }),
+    () => api.startDiagnostic({ userId, disciplineId: disciplineId.value, isTaste: false }),
     t("errors.failedToStart", { action: "diagnostic" })
   );
 
@@ -127,7 +127,7 @@ function retake() {
     <!-- Intro -->
     <div v-if="phase === 'intro'" class="text-center">
       <h1 class="text-3xl font-bold mb-4">{{ t('diagnostic.title') }}</h1>
-      <p class="text-lg text-gray-600 mb-2">{{ subjectName }}</p>
+      <p class="text-lg text-gray-600 mb-2">{{ disciplineName }}</p>
       <p class="text-gray-500 mb-8">{{ t('diagnostic.description') }}</p>
 
       <div class="bg-blue-50 rounded-xl p-6 mb-8 text-left">

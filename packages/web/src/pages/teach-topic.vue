@@ -8,7 +8,7 @@ import VisualAid from "@/components/visuals/VisualAid.vue";
 
 const route = useRoute();
 const api = useApi();
-const subjectId = route.params.subjectId as string;
+const disciplineId = route.params.disciplineId as string;
 const topicId = route.params.topicId as string;
 
 const topic = ref<(Topic & { problems: Problem[]; examples: WorkedExample[] }) | null>(null);
@@ -37,7 +37,7 @@ const containerRef = ref<HTMLElement | null>(null);
 onMounted(async () => {
   const [topicResult, graphResult] = await Promise.all([
     withErrorToast(() => api.getPublicTopic(topicId), "Failed to load topic"),
-    withErrorToast(() => api.getPublicGraph(subjectId), "Failed to load graph"),
+    withErrorToast(() => api.getPublicGraph(disciplineId), "Failed to load graph"),
   ]);
 
   if (topicResult) {
@@ -433,7 +433,7 @@ ${problems
           <RouterLink
             v-for="t in nextTopics"
             :key="t.id"
-            :to="`/teach/${subjectId}/${t.id}`"
+            :to="`/teach/${disciplineId}/${t.id}`"
             class="bg-white border border-green-200 text-green-700 px-4 py-2 rounded-lg text-sm hover:bg-green-50 transition-colors"
           >
             {{ t.name }} &rarr;
@@ -448,7 +448,7 @@ ${problems
           <RouterLink
             v-for="t in prereqTopics"
             :key="t.id"
-            :to="`/teach/${subjectId}/${t.id}`"
+            :to="`/teach/${disciplineId}/${t.id}`"
             class="bg-white border border-orange-200 text-orange-700 px-4 py-2 rounded-lg text-sm hover:bg-orange-50 transition-colors"
           >
             &larr; {{ t.name }}

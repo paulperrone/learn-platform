@@ -68,20 +68,20 @@ export function useApi() {
     getUserId,
 
     // Graph
-    getSubjects: () => request<{ subjects: any[] }>("/graph/subjects"),
-    getTopics: (subjectId: string) =>
-      request<{ topics: any[] }>(`/graph/subjects/${subjectId}/topics`),
+    getDisciplines: () => request<{ disciplines: any[] }>("/graph/disciplines"),
+    getTopics: (disciplineId: string) =>
+      request<{ topics: any[] }>(`/graph/disciplines/${disciplineId}/topics`),
     getTopic: (topicId: string) => request<{ topic: any }>(`/graph/topics/${topicId}`),
     getFrontier: async () => {
       const userId = await getUserId();
       return request<any>(`/graph/frontier/${userId}`);
     },
-    getUserGraphState: async (subjectId: string) => {
+    getUserGraphState: async (disciplineId: string) => {
       const userId = await getUserId();
       return request<{
         topics: (Topic & { status: "not-started" | "in-progress" | "mastered" | "frontier"; repetitions: number; stability: number | null; lastReviewedAt: string | null })[];
         summary: { total: number; mastered: number; inProgress: number; frontier: number; progress: number };
-      }>(`/graph/${subjectId}/user-state/${userId}`);
+      }>(`/graph/${disciplineId}/user-state/${userId}`);
     },
 
     // Sessions
@@ -105,19 +105,19 @@ export function useApi() {
     // Anonymous Sessions (no auth required)
     getActiveAnonymousSession: (anonymousToken: string) =>
       request<any>(`/learn/sessions/active?anonymousToken=${anonymousToken}`),
-    startAnonymousSession: (anonymousToken: string, subjectId?: string) =>
+    startAnonymousSession: (anonymousToken: string, disciplineId?: string) =>
       request<any>("/learn/sessions", {
         method: "POST",
-        body: JSON.stringify({ anonymousToken, subjectId }),
+        body: JSON.stringify({ anonymousToken, disciplineId }),
       }),
 
     // Diagnostic (no auth required)
-    startDiagnostic: (params: { userId?: string; anonymousToken?: string; subjectId: string; isTaste?: boolean }) =>
+    startDiagnostic: (params: { userId?: string; anonymousToken?: string; disciplineId: string; isTaste?: boolean }) =>
       request<{ sessionId: string; question: any }>("/learn/diagnostic/start", {
         method: "POST",
         body: JSON.stringify(params),
       }),
-    resumeDiagnostic: (params: { userId?: string; anonymousToken?: string; subjectId: string }) =>
+    resumeDiagnostic: (params: { userId?: string; anonymousToken?: string; disciplineId: string }) =>
       request<{ sessionId: string; question: any } | null>("/learn/diagnostic/resume", {
         method: "POST",
         body: JSON.stringify(params),
@@ -169,8 +169,8 @@ export function useApi() {
       const userId = await getUserId();
       return request<{
         distributions: {
-          subjectId: string;
-          subjectName: string;
+          disciplineId: string;
+          disciplineName: string;
           centerLevel: string;
           weights: { primary: number; intermediate: number; standard: number; advanced: number };
           label: string;
@@ -341,19 +341,19 @@ export function useApi() {
       request<{ topUsers: { userId: string; userName: string; calls: number; totalCostCents: number }[] }>("/admin/llm/usage/top-users"),
 
     // Public content (no auth required)
-    getPublicSubjects: () =>
-      request<{ subjects: (Discipline & { gradeRange?: string; topicCount?: number })[] }>("/public/subjects"),
-    getPublicTopics: (subjectId: string) =>
-      request<{ subjectId: string; topics: (Topic & { problemCount?: number; exampleCount?: number })[] }>(`/public/subjects/${subjectId}/topics`),
+    getPublicDisciplines: () =>
+      request<{ disciplines: (Discipline & { gradeRange?: string; topicCount?: number })[] }>("/public/disciplines"),
+    getPublicTopics: (disciplineId: string) =>
+      request<{ disciplineId: string; topics: (Topic & { problemCount?: number; exampleCount?: number })[] }>(`/public/disciplines/${disciplineId}/topics`),
     getPublicTopic: (topicId: string) =>
       request<{ topic: Topic & { problems: Problem[]; examples: WorkedExample[] } }>(`/public/topics/${topicId}`),
-    getPublicGraph: (subjectId: string) =>
+    getPublicGraph: (disciplineId: string) =>
       request<{
-        subject: Discipline & { gradeRange?: string };
+        discipline: Discipline & { gradeRange?: string };
         topics: Topic[];
         prerequisites: { from: string; to: string; strength: number }[];
         encompassings: { parent: string; child: string; weight: number }[];
-      }>(`/public/graph/${subjectId}`),
+      }>(`/public/graph/${disciplineId}`),
 
     getContentQuality: () =>
       request<{
@@ -385,13 +385,13 @@ export function useApi() {
 
     getContentMatrix: () =>
       request<{
-        subjects: { id: string; name: string; gradeRange: string }[];
+        disciplines: { id: string; name: string; gradeRange: string }[];
         matrix: {
           topicId: string;
           topicName: string;
           gradeLevel: number;
-          subjectId: string;
-          subjectName: string;
+          disciplineId: string;
+          disciplineName: string;
           totalInstructional: number;
           totalAssessment: number;
           hasAssets: boolean;
