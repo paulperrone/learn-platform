@@ -9,7 +9,11 @@
 
 ## Summary
 
-Expand the math knowledge graph from 207 → ~450 atomic skill topics (2.2x), applying the split heuristics from `docs/content-system.md`. Current topics are roughly standards-level; the target is Math Academy-style granularity where each topic represents one independently placeable, teachable, and remediable skill. Three expansion waves by strand group (foundational operations → K-5 domains → 6-8 domains), each followed by content generation and validation. Self-contained rebaselining at L2 after each major wave.
+Expand the math knowledge graph from 207 → ~800-1000 atomic skill topics, reaching Math Academy-caliber granularity for K-8 content. Each topic should represent one independently placeable, teachable, and remediable skill — the level where a learner could pass one skill and fail the adjacent one.
+
+The expansion uses Math Academy's knowledge graph (`~/source/mathacademy-graph/`) as a **reference baseline**, not a copy target. MA has ~1277 unique topics across their K-8-relevant courses (Foundations I/II/III + 4th/5th Grade + Prealgebra), but ~40% of those are high-school content (trig, calculus, linear algebra, conic sections) included in their "Foundations" pathway. Our target scope is genuine K-8 skills, putting the realistic target at ~800-1000 topics.
+
+**Approach:** For each strand, cross-reference MA's topic decomposition to identify splits we're missing, then apply our own split heuristics to decide which to adopt, adapt, or skip. We're building our own graph informed by MA's density, not importing theirs.
 
 **Depends on:**
 - Plan 020 Phase 2 ✅ (discipline-owned topics, unified math graph)
@@ -17,41 +21,75 @@ Expand the math knowledge graph from 207 → ~450 atomic skill topics (2.2x), ap
 **Unblocks:**
 - Plan 019 Phases 4.5B-6 (problem density expansion runs better on a granular graph)
 
+## Reference: Math Academy K-8 Graph
+
+**Source:** `~/source/mathacademy-graph/export/graph.json` (3688 nodes, 5622 edges)
+
+| Metric | MA (full) | MA (K-8 courses) | Our Current | Our Target |
+|--------|-----------|-------------------|-------------|------------|
+| Total topics | 3688 | 1277 | 207 | ~800-1000 |
+| Prereq edges | 5622 | 2804 | 321 | ~1500-2000 |
+| Edge density | 1.52/topic | 1.85/topic | 1.55/topic | 1.5-2.5/topic |
+
+**MA K-8 unit sizes (for calibration):**
+
+| MA Unit | MA Topics | Our Strand Equivalent | Our Current | Expansion Factor |
+|---------|-----------|----------------------|-------------|------------------|
+| Fractions & Decimals + Adding/Subtracting/Multiplying/Dividing Fractions | 83+14+26 = 123 | fractions + number-base (partial) | 35 | ~3.5x |
+| Geometry + Measurement & Data | 81+33 = 114 | geometry + geometry-advanced + measurement-data | 43 | ~2.7x |
+| The Number System + Decimals | 50+18 = 68 | number-base + rational-numbers (partial) | 37 | ~1.8x |
+| Equations & Inequalities + Algebraic Expressions + Two-Variable Equations | 44+17+19 = 80 | expressions-equations + linear-functions + algebra-thinking | 45 | ~1.8x |
+| Ratios & Percentages | 42 | ratios-proportions | 17 | ~2.5x |
+| Statistics + Probability | 36+18+20 = 74 | statistics-probability | 14 | ~5.3x |
+| Multiplication + Division + Addition & Subtraction | 20+16+13 = 49 | operations-* (all 4 strands) | 28 | ~1.8x |
+| Exponents & Radicals + Exponents | 35+10 = 45 | (new strand or extend algebra-thinking) | 0 | new |
+| Operations & Algebraic Thinking | 9 | algebra-thinking | 6 | ~1.5x |
+
+**Key MA decompositions to reference (examples of atomic skill level):**
+- Fractions: "Adding Fractions With Unlike Denominators" and "Adding Fractions With Unlike Denominators Using Models" are separate topics
+- Division: "Dividing by Two-Digit Numbers With Remainders" vs "Dividing by Two-Digit Numbers Without Remainders" are separate
+- Geometry: "Angles and Measures of Angles" is separate from "Acute, Obtuse, and Reflex Angles"
+- Number System: "Adding a Negative Number" and "Adding a Positive Number to a Negative Number" are separate
+
 ## Current State
 
 | Metric | Current | Target | Gap |
 |--------|---------|--------|-----|
-| Total math topics | 207 | ~450 | 2.2x |
-| Topics/grade (K-8 avg) | 23 | ~50 | 2.2x |
-| Prereq density | 1.55/topic | 1.5-3.0/topic | At floor — will improve with splits |
-| Encompassing density | 1.27/topic | 1.0-2.0/topic | In range — needs capstone pass |
-| Math Academy benchmark | ~100-150/grade | — | Still 2-3x below after expansion |
+| Total math topics | 207 | ~800-1000 | 4-5x |
+| Topics/grade (K-8 avg) | 23 | ~90-110 | 4-5x |
+| Prereq density | 1.55/topic | 1.5-2.5/topic | Will improve with splits |
+| Encompassing density | 1.27/topic | 1.0-2.0/topic | Needs capstone pass |
 
 ### Strand-Level Expansion Targets
 
-| Wave | Strand | Current | Target | Delta |
-|------|--------|---------|--------|-------|
-| 1 | counting-cardinality | 4 | 10 | +6 |
-| 1 | operations-addition | 8 | 18 | +10 |
-| 1 | operations-subtraction | 5 | 12 | +7 |
-| 1 | operations-multiplication | 7 | 18 | +11 |
-| 1 | operations-division | 4 | 12 | +8 |
-| **1 total** | | **28** | **70** | **+42** |
-| 2 | number-base | 19 | 40 | +21 |
-| 2 | fractions | 16 | 35 | +19 |
-| 2 | algebra-thinking | 6 | 15 | +9 |
-| 2 | measurement-data | 9 | 22 | +13 |
-| 2 | geometry | 14 | 30 | +16 |
-| **2 total** | | **64** | **142** | **+78** |
-| 3 | rational-numbers | 18 | 38 | +20 |
-| 3 | ratios-proportions | 17 | 35 | +18 |
-| 3 | expressions-equations | 22 | 45 | +23 |
-| 3 | linear-functions | 17 | 35 | +18 |
-| 3 | geometry-advanced | 20 | 40 | +20 |
-| 3 | statistics-probability | 14 | 30 | +16 |
-| 3 | polynomials-intro | 7 | 15 | +8 |
-| **3 total** | | **115** | **238** | **+123** |
-| **Grand total** | | **207** | **450** | **+243** |
+Targets calibrated against MA unit sizes, adjusted for our K-8 scope (excluding MA's HS content).
+
+| Wave | Strand | Current | Target | Delta | MA Reference |
+|------|--------|---------|--------|-------|--------------|
+| 1 | counting-cardinality | 4 | 15 | +11 | MA doesn't break this out (embedded in Number System) |
+| 1 | operations-addition | 8 | 25 | +17 | MA Addition & Subtraction: 13 + overlap |
+| 1 | operations-subtraction | 5 | 20 | +15 | MA splits regrouping, multi-digit, estimation separately |
+| 1 | operations-multiplication | 7 | 30 | +23 | MA Multiplication: 20 + Multiplying Whole Numbers: 18 |
+| 1 | operations-division | 4 | 25 | +21 | MA Division: 16 + long division steps |
+| **1 total** | | **28** | **115** | **+87** | |
+| 2 | number-base | 19 | 55 | +36 | MA Number System: 50 + Decimals: 18 |
+| 2 | fractions | 16 | 70 | +54 | MA Fractions: 43 + Add/Sub/Mult/Div Fractions: 66 |
+| 2 | algebra-thinking | 6 | 25 | +19 | MA Ops & Algebraic Thinking: 9 + Algebraic Expressions: 17 |
+| 2 | measurement-data | 9 | 35 | +26 | MA Measurement & Data: 33 |
+| 2 | geometry | 14 | 50 | +36 | MA Geometry (K-5 subset): ~40 + Polygons |
+| **2 total** | | **64** | **235** | **+171** | |
+| 3 | rational-numbers | 18 | 50 | +32 | MA Number System (6-8 subset): ~30 + extensions |
+| 3 | ratios-proportions | 17 | 45 | +28 | MA Ratios & Percentages: 42 |
+| 3 | expressions-equations | 22 | 55 | +33 | MA Equations & Inequalities: 44 + Algebraic Expressions: 17 |
+| 3 | linear-functions | 17 | 45 | +28 | MA Two-Variable Equations: 19 + Functions: ~15 (K-8 subset) |
+| 3 | geometry-advanced | 20 | 55 | +35 | MA Geometry (6-8 subset): ~40 + Trigonometry basics |
+| 3 | statistics-probability | 14 | 45 | +31 | MA Statistics: 36 + Probability: 20 |
+| 3 | polynomials-intro | 7 | 20 | +13 | MA Polynomials (K-8 subset): ~15 |
+| 3 | exponents-radicals (new) | 0 | 35 | +35 | MA Exponents & Radicals: 35 + Exponents: 10 |
+| **3 total** | | **115** | **350** | **+235** | |
+| **Grand total** | | **207** | **~700** | **+~493** | |
+
+**Note:** Targets are calibrated estimates. The Phase 1 audit will refine these per-strand based on actual MA cross-reference. Final count expected in 800-1000 range after cross-strand and gap-fill topics are added in later phases.
 
 ## Progress
 
@@ -61,115 +99,148 @@ Expand the math knowledge graph from 207 → ~450 atomic skill topics (2.2x), ap
 
 ---
 
-## Phase 1: Audit & Expansion Map
-**Goal:** Produce a concrete split plan for every strand before touching content files.
+## Phase 1: Audit & Expansion Map (MA Cross-Reference)
+**Goal:** Produce a concrete split plan for every strand, cross-referencing MA's graph as a density baseline.
 
-For each of 17 strands, apply the split heuristics from `docs/content-system.md` §13 to every existing topic:
-- **Pass-one-fail-another:** Can a learner master part of this topic and fail another part?
-- **Hidden prerequisite chain:** Does this topic contain an internal step sequence?
-- **Remediation intermediate step:** Would remediation naturally point to a sub-skill not currently a topic?
-- **Capstone encompassing:** Would splitting create a meaningful parent-child encompassing?
+**Process per strand:**
+1. List all our current topics
+2. Load MA topics from the equivalent unit(s) via `~/source/mathacademy-graph/export/graph.json`
+3. For each MA topic, classify: **adopt** (we're missing this atomic skill), **adapt** (similar concept but our framing differs), **skip** (out of K-8 scope or doesn't match our pedagogy)
+4. Apply our split heuristics to any of our topics that MA doesn't decompose but we should
+5. Draft new topic IDs, names, descriptions, prerequisite edges, encompassing edges
 
-1. [ ] [RSH] Audit Wave 1 strands (counting-cardinality, operations-addition, operations-subtraction, operations-multiplication, operations-division): List every existing topic, identify splits, name new topics, draft prerequisite edges
-2. [ ] [RSH] Audit Wave 2 strands (number-base, fractions, algebra-thinking, measurement-data, geometry): Same process
-3. [ ] [RSH] Audit Wave 3 strands (rational-numbers, ratios-proportions, expressions-equations, linear-functions, geometry-advanced, statistics-probability, polynomials-intro): Same process
-4. [ ] [DOC] Write `docs/expansion-map.md`: For each strand, document before/after topic lists, new prerequisite edges, new encompassing edges, and rationale for each split. Include a summary table with per-strand counts.
-5. [ ] [VAL] Review expansion map against split heuristics — verify no topic splits that violate "genuinely atomic" criterion, no splits that create trivial 1-problem topics
+1. [ ] [RSH] Cross-reference Wave 1 strands against MA:
+   - counting-cardinality: no direct MA equivalent — apply split heuristics from our pedagogy
+   - operations-addition: compare against MA "Addition & Subtraction" unit (13 topics)
+   - operations-subtraction: same MA unit, identify regrouping/estimation/multi-digit splits
+   - operations-multiplication: compare against MA "Multiplication" (20) + "Multiplying Whole Numbers" (18)
+   - operations-division: compare against MA "Division" (16)
+2. [ ] [RSH] Cross-reference Wave 2 strands against MA:
+   - number-base: compare against MA "The Number System" (50) + "Decimals" (18)
+   - fractions: compare against MA "Fractions & Decimals" (43) + "Adding & Subtracting Fractions" (14) + "Multiplying & Dividing Fractions" (26)
+   - algebra-thinking: compare against MA "Operations & Algebraic Thinking" (9) + "Algebraic Expressions" (17)
+   - measurement-data: compare against MA "Measurement & Data" (33)
+   - geometry: compare against MA "Geometry" K-5 subset + "Geometry Fundamentals" + "Polygons"
+3. [ ] [RSH] Cross-reference Wave 3 strands against MA:
+   - rational-numbers: compare against MA "The Number System" 6-8 subset
+   - ratios-proportions: compare against MA "Ratios & Percentages" (42)
+   - expressions-equations: compare against MA "Equations & Inequalities" (44) + "Algebraic Expressions" (17)
+   - linear-functions: compare against MA "Two-Variable Equations" (19) + "Functions" K-8 subset
+   - geometry-advanced: compare against MA "Geometry" 6-8 subset + "Trigonometry" basics
+   - statistics-probability: compare against MA "Statistics" (36) + "Probability" (20)
+   - polynomials-intro: compare against MA "Polynomials" K-8 subset
+   - exponents-radicals (new strand): compare against MA "Exponents & Radicals" (35) + "Exponents" (10)
+4. [ ] [DOC] Write `docs/expansion-map.md`: For each strand, document:
+   - Current topics (ours)
+   - MA reference topics (with adopt/adapt/skip classification)
+   - New topics to add (with split heuristic justification)
+   - New prerequisite and encompassing edges
+   - Per-strand summary counts
+5. [ ] [VAL] Review expansion map: verify no trivial topics, all splits cite a heuristic, per-strand targets are realistic
 
-**Validation:** `docs/expansion-map.md` exists with concrete split decisions for all 17 strands. Each split cites at least one split heuristic. Target topic counts per strand are within ±10% of the targets in the table above.
+**Validation:** `docs/expansion-map.md` exists with concrete split decisions for all strands including MA cross-references. Estimated total is in the 800-1000 range.
 
 ---
 
-## Phase 2: Wave 1 — Foundational Operations (28 → 70 topics)
+## Phase 2: Wave 1 — Foundational Operations (28 → ~115 topics)
 **Goal:** Expand counting, addition, subtraction, multiplication, and division strands to atomic skill granularity.
 
-These are the smallest strands with the biggest expansion ratios. Starting here gives early signal on the split quality and content generation workflow.
+These are the foundational K-3 strands. Starting here tests the expansion workflow and gives immediate signal on content generation quality at the atomic skill level.
 
 1. [ ] [IMP] Split topics and update `content/math/graph.json` for Wave 1 strands per expansion map:
    - Add new topic entries with `id`, `name`, `description`, `gradeLevel`, `strand`, `standardCode`
-   - Rewire existing prerequisite edges (some existing edges become transitive through new intermediate topics)
-   - Add new prerequisite edges between split topics
-   - Add new encompassing edges (capstone topics encompass their component skills)
-2. [ ] [IMP] Generate problems for new topics: 15 problems per topic (5 easy / 5 medium / 5 hard), with cognitive demand distribution per grade-level targets
-3. [ ] [IMP] Generate worked examples for new topics: 2 examples per topic with step-by-step breakdowns
-4. [ ] [IMP] Update collection membership: add new topics to appropriate grade-band collections (`math-k-2`, `math-3-5`)
+   - Rewire existing prerequisite edges through new intermediate topics
+   - Add new prerequisite and encompassing edges
+2. [ ] [IMP] Generate problems for new topics: 15 problems per topic (5 easy / 5 medium / 5 hard), cognitive demand distribution per grade-level targets
+3. [ ] [IMP] Generate worked examples for new topics: 2 examples per topic
+4. [ ] [IMP] Update collection membership: add new topics to `math-k-2`, `math-3-5`
 5. [ ] [VAL] Run `just validate-content` — 0 errors, collection membership valid
 6. [ ] [VAL] Run `just import-content` — all new topics load, edges intact
 7. [ ] [VAL] Verify strand density: each Wave 1 strand has ≥1.5 prereq edges/topic
 
-**Validation:** Math graph has ~249 topics (207 + 42). Wave 1 strands match expansion map. `just validate-content` passes. `just import-content` succeeds.
+**Validation:** Math graph has ~294 topics (207 + 87). Wave 1 strands match expansion map. `just validate-content` and `just import-content` pass.
 
 ---
 
-## Phase 3: Wave 2 — K-5 Domain Strands (64 → 142 topics)
+## Phase 3: Wave 2 — K-5 Domain Strands (64 → ~235 topics)
 **Goal:** Expand number-base, fractions, algebra-thinking, measurement-data, and geometry strands.
 
-Fractions and number-base are the densest K-5 strands and hide the most internal prerequisite chains (e.g., "fraction addition" hides finding common denominators, converting, adding, simplifying).
+Fractions is the largest expansion in this wave (~16 → 70 topics). MA decomposes fractions into 4+ separate units with individual topics for "adding fractions with like denominators using models" vs "adding fractions with unlike denominators" etc. Our current graph lumps many of these into single topics.
 
 1. [ ] [IMP] Split topics and update `content/math/graph.json` for Wave 2 strands per expansion map
 2. [ ] [IMP] Generate problems for new topics: 15 per topic, grade-appropriate cognitive demands
 3. [ ] [IMP] Generate worked examples for new topics: 2 per topic
 4. [ ] [IMP] Update collection membership for `math-k-2`, `math-3-5`
 5. [ ] [VAL] Run `just validate-content` — 0 errors
-6. [ ] [VAL] Run `just import-content` — ~327 topics loaded
-7. [ ] [VAL] L2 rebaseline: `just evaluate-l2` — first checkpoint with enough new mass to be meaningful
-8. [ ] [DOC] Record L2 comparison: any regressions from pre-expansion baseline? Document in DECISIONS.md
+6. [ ] [VAL] Run `just import-content` — ~465 topics loaded
+7. [ ] [VAL] L2 rebaseline: `just evaluate-l2` — first checkpoint with enough mass to be meaningful
+8. [ ] [DOC] Record L2 comparison in DECISIONS.md
 
-**Validation:** Math graph has ~327 topics. L2 results: no P0 regressions (9P/1W/0F or better). K-5 strand density within guardrail range.
+**Validation:** Math graph has ~465 topics. L2 results: no P0 regressions (9P/1W/0F or better). K-5 strand density within guardrail range.
 
 ---
 
-## Phase 4: Wave 3 — 6-8 Domain Strands (115 → 238 topics)
-**Goal:** Expand all middle school strands — the largest wave (7 strands, +123 topics).
+## Phase 4: Wave 3 — 6-8 Domain Strands (115 → ~350 topics)
+**Goal:** Expand all middle school strands plus add the new exponents-radicals strand.
 
-Expressions-equations and linear-functions have the most hidden prerequisite chains (solving one-step → two-step → multi-step, graphing → slope → intercept → systems).
+This is the largest wave — 8 strands, ~235 new topics. Expressions-equations and linear-functions have the most hidden prerequisite chains. The new exponents-radicals strand fills a gap that MA covers extensively but we currently don't break out.
 
 1. [ ] [IMP] Split topics and update `content/math/graph.json` for Wave 3 strands per expansion map
-2. [ ] [IMP] Generate problems for new topics: 15 per topic
-3. [ ] [IMP] Generate worked examples for new topics: 2 per topic
-4. [ ] [IMP] Update collection membership for `math-6-8`
-5. [ ] [VAL] Run `just validate-content` — 0 errors
-6. [ ] [VAL] Run `just import-content` — ~450 topics loaded
-7. [ ] [VAL] L2 rebaseline: `just evaluate-l2`
-8. [ ] [DOC] Record L2 comparison
+2. [ ] [IMP] Create new exponents-radicals strand topics (from expansion map — ~35 topics)
+3. [ ] [IMP] Generate problems for new topics: 15 per topic
+4. [ ] [IMP] Generate worked examples for new topics: 2 per topic
+5. [ ] [IMP] Update collection membership for `math-6-8`
+6. [ ] [VAL] Run `just validate-content` — 0 errors
+7. [ ] [VAL] Run `just import-content` — ~700 topics loaded
+8. [ ] [VAL] L2 rebaseline: `just evaluate-l2`
+9. [ ] [DOC] Record L2 comparison
 
-**Validation:** Math graph has ~450 topics. L2 results: no P0 regressions. 6-8 strand density within guardrail range.
+**Validation:** Math graph has ~700 topics. L2 results: no P0 regressions. 6-8 strand density within guardrail range.
 
 ---
 
-## Phase 5: Cross-strand Wiring & Encompassing Pass
-**Goal:** Add cross-strand prerequisites and encompassing edges that only make sense at the new granularity level.
+## Phase 5: Gap-Fill & Cross-Strand Wiring
+**Goal:** Add topics the MA cross-reference revealed that don't fit neatly into existing strands, and wire cross-strand prerequisite + encompassing edges.
 
-At standards-level granularity, cross-strand links were sparse because topics were too coarse to express precise dependencies. With atomic skills, connections like "multiply fractions" requiring "multiply whole numbers" become explicit.
+At the strand-expansion level, we add topics within strands. This phase adds the connective tissue: cross-strand prerequisites (e.g., "multiply fractions" requiring "multiply whole numbers"), capstone encompassings, and any gap topics identified during Waves 1-3 that were deferred.
 
-1. [ ] [RSH] Audit cross-strand prerequisites: For each strand pair, identify new edges where an atomic skill in one strand is a genuine prerequisite for a skill in another strand
+1. [ ] [RSH] Audit cross-strand prerequisites: For each strand pair, identify edges where an atomic skill in one strand is a genuine prerequisite for a skill in another
 2. [ ] [IMP] Add cross-strand prerequisite edges to `content/math/graph.json`
-3. [ ] [RSH] Audit capstone encompassing coverage: Identify mature strand endpoints that should encompass their component skills but currently don't
+3. [ ] [RSH] Audit capstone encompassing coverage: Identify mature strand endpoints that should encompass component skills
 4. [ ] [IMP] Add capstone encompassing edges
-5. [ ] [VAL] Verify density metrics:
-   - Prereq density: 1.5-3.0 edges/topic (target)
-   - Encompassing density: 1.0-2.0 edges/topic (target)
+5. [ ] [IMP] Add gap-fill topics from expansion map deferred list (topics that didn't fit a single strand wave)
+6. [ ] [IMP] Generate problems and examples for gap-fill topics
+7. [ ] [VAL] Verify density metrics:
+   - Prereq density: 1.5-2.5 edges/topic
+   - Encompassing density: 1.0-2.0 edges/topic
    - Every mature strand has at least one capstone with encompassing children
-6. [ ] [VAL] Run `just validate-content` — 0 errors, DAG valid (no cycles from new cross-strand edges)
+8. [ ] [VAL] Run `just validate-content` — 0 errors, DAG valid (no cycles from new cross-strand edges)
 
-**Validation:** Prereq and encompassing density within guardrail ranges. No cycles. Every strand has capstone coverage.
+**Validation:** Edge density within guardrail ranges. No cycles. Every strand has capstone coverage. Gap topics addressed.
 
 ---
 
-## Phase 6: Final Rebaseline & Collection Update
-**Goal:** Confirm engine stability at new density and update packaging.
+## Phase 6: Final Rebaseline, Collections & Documentation
+**Goal:** Confirm engine stability at full density, update packaging, document the end state.
 
-1. [ ] [VAL] Full L2 evaluation: `just evaluate-l2` with all ~450 topics
+1. [ ] [VAL] Full L2 evaluation: `just evaluate-l2` with all ~800-1000 topics
 2. [ ] [RSH] Compare against pre-021 baseline:
    - Diagnostic placement accuracy across the denser graph
    - Sessions-to-mastery for strong/average/weak profiles
    - FIRe compression with higher encompassing density
    - Review/new balance at L2
-3. [ ] [IMP] Update grade-band collections with final topic lists (some new topics may have shifted collection boundaries)
-4. [ ] [DOC] Record final decision in DECISIONS.md:
-   - Expansion stable? Formally unblock Plan 019 Phases 4.5B-6 on the expanded graph
+3. [ ] [RSH] Compare our final graph density against MA:
+   - Per-strand topic counts vs MA equivalent units
+   - Edge density comparison
+   - Identify remaining coverage gaps (if any) for future work
+4. [ ] [IMP] Update grade-band collections with final topic lists
+5. [ ] [IMP] Consider adding strand-based collections now that strands are large enough to be meaningful (e.g., `math-fractions`, `math-geometry`)
+6. [ ] [DOC] Record final decision in DECISIONS.md:
+   - Expansion stable? Formally unblock Plan 019 Phases 4.5B-6
+   - Document per-strand final counts vs MA comparison
    - If FIRe compression improved, note the encompassing density that drove it
-   - If any strands are still below density floor, flag for a future expansion pass
-5. [ ] [DOC] Update CLAUDE.md content pipeline section with new topic counts and density expectations
+   - Flag any remaining coverage gaps for future expansion
+7. [ ] [DOC] Update CLAUDE.md: new topic counts, density expectations, strand list, MA reference
+8. [ ] [DOC] Update `docs/content-system.md`: revise density targets based on what we actually achieved
 
-**Validation:** L2 maintains 9P/1W/0F or better. Final topic count documented. Plan 019 formally unblocked.
+**Validation:** L2 maintains 9P/1W/0F or better. Final topic count in 800-1000 range. MA comparison documented. Plan 019 formally unblocked.
