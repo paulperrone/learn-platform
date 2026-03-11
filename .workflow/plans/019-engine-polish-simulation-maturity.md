@@ -23,9 +23,9 @@ Fix the two remaining P1 evaluation failures (FIRe compression measurement, inte
 
 ## Progress
 
-**Completed:** Phase 1 (FIRe: -3.1% → +8.4%, FAIL→FAIL but close to WARN), Phase 2 (Interleaving: 0.254 → 0.085, FAIL→PASS), Phase 2.5 (FIRe default eval, mastery gate removal, graduated mastery model added but getDueTopics/session changes reverted after making FIRe worse), Phase 2.6 (FIRe metric rewritten: reviews-per-mastered-topic efficiency, FAIL→WARN), Phase 2.7 (FIRe isolation: credit hurts -25.5% avg, ordering neutral for 2/3 profiles, non-additive interaction)
+**Completed:** Phase 1 (FIRe: -3.1% → +8.4%, FAIL→FAIL but close to WARN), Phase 2 (Interleaving: 0.254 → 0.085, FAIL→PASS), Phase 2.5 (FIRe default eval, mastery gate removal, graduated mastery model added but getDueTopics/session changes reverted after making FIRe worse), Phase 2.6 (FIRe metric rewritten: reviews-per-mastered-topic efficiency, FAIL→WARN), Phase 2.7 (FIRe isolation: credit hurts -25.5% avg, ordering neutral for 2/3 profiles, non-additive interaction), Phase 3 (holistic platform assessment: 8P/2W/0F, 304 topics, frontend 85% complete, deployment ready with 5-step checklist)
 **In Progress:** —
-**Next:** Phase 3
+**Next:** Phase 4
 
 ---
 
@@ -290,36 +290,34 @@ Fix the two remaining P1 evaluation failures (FIRe compression measurement, inte
 ## Phase 3: Holistic System Assessment
 **Goal:** Step back from individual metrics and assess the platform holistically. Identify top blockers for real user testing and produce a prioritized next-work list.
 
-1. [ ] [RSH] Engine assessment:
-   - Run `just evaluate` at L2 — summarize all 10 system targets and 29 profile behavioral matches
-   - Inventory: 302 topics, 4 subjects, 3 discipline models, 29 simulation profiles, 5 maturity levels defined
-   - Document known limitations: content ceiling effects, frontier exhaustion timing, scheduling edge cases
-   - Assess: is the engine ready for real users? What would break first?
+1. [x] [RSH] Engine assessment:
+   - L2 evaluation: 8 PASS, 2 WARN (Review/New 0.718, FIRe -25%), 0 FAIL — 27/29 behavioral match
+   - Inventory: 304 topics, 4 subjects, 3 discipline models (mastery-gated, context-layered), 29 profiles, 10 system targets
+   - Limitations: FIRe hurts at 15 sessions, content ceiling for fast learners, L2-only validation
+   - Ready for alpha users — content gaps and LLM grading edge cases would break first
 
-2. [ ] [RSH] Frontend assessment:
-   - Audit `packages/web/src/pages/` — which pages exist, which are functional, which are stubs
-   - Check: can a real user sign up, run diagnostic, start a learning session, see progress?
-   - Identify UI gaps: missing pages, broken flows, missing error handling
-   - Check mobile responsiveness, accessibility basics
+2. [x] [RSH] Frontend assessment:
+   - 28 routes, 18 components, 11 composables — core learning loop production-ready
+   - Full flow works: signup → onboarding → diagnostic → learn → progress
+   - Stub pages (docs, teach, group) don't block MVP
+   - Gaps: error recovery in learn.vue, network error handling, form validation, loading skeletons
+   - Mobile: responsive Tailwind, child mode touch targets, partial RTL. Missing: skip-to-main, ARIA landmarks
 
-3. [ ] [RSH] Deployment & infrastructure assessment:
-   - Can the app be deployed to Cloudflare Pages right now?
-   - D1 migration state — are all migrations applied? Any pending?
-   - Auth flow: does Better-Auth work end-to-end in production?
-   - Content import: can `import-content` run against production D1?
-   - OpenRouter integration: is tutoring/grading wired up?
+3. [x] [RSH] Deployment & infrastructure assessment:
+   - wrangler.toml configured with production D1 ID, Workers AI, SPA assets
+   - 28 migrations ready for remote apply. Content import via export-sql.ts → wrangler d1 execute
+   - Better-Auth needs BETTER_AUTH_SECRET secret only. OpenRouter needs OPENROUTER_API_KEY
+   - CORS configured for learn.perrone.dev. In-code rate limiting. WAF rules documented but not applied
+   - 5-step deployment checklist: secrets → migrations → content → build → deploy
 
-4. [ ] [DOC] Produce "State of the Platform" document (`docs/platform-assessment.md`):
-   - Section 1: Engine — what works, what's validated, known limitations
-   - Section 2: Content — coverage, quality signals, gaps
-   - Section 3: Frontend — functional flows, missing pieces
-   - Section 4: Infrastructure — deployment readiness, production blockers
-   - Section 5: Prioritized next-work list — what to build next to get to real user testing
+4. [x] [DOC] Platform assessment document: `docs/platform-assessment.md`
+   - 5 sections: Engine, Content, Frontend, Infrastructure, Prioritized Next-Work
+   - Covers all 10 system targets, 304 topics across 4 subjects, full frontend audit, deployment checklist
 
-5. [ ] [DOC] Based on assessment, recommend whether to:
-   - Continue simulation maturity (Phases 4-6) before users
-   - Pivot to frontend/deployment work to get real users sooner
-   - Some combination (e.g., L3 validation + frontend MVP in parallel)
+5. [x] [DOC] Recommendation: **Deploy now, validate in parallel**
+   - Platform ready for alpha users today (5-10 testers)
+   - Run L3 validation (Phase 4) in parallel — doesn't block alpha launch
+   - Real user feedback will reveal issues simulations can't
 
 **Validation:** Assessment document exists with all 5 sections. Prioritized next-work list is actionable. Recommendation is clear.
 

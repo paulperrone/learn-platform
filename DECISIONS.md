@@ -1425,3 +1425,25 @@ Tag each target in `targets.json` with `signal_source: "engine" | "content" | "b
 **Alternatives rejected:**
 - Tight target (5% with ±5%): Would show permanent FAIL at L2, masking improvement tracking
 - Negative target (e.g., -10%): Accepts FIRe hurting efficiency as normal — wrong signal for development
+
+---
+
+### 2026-03-11: Deploy to alpha users now, run L3 validation in parallel
+
+**Source:** User session — Plan 019 Phase 3
+
+**Context:** Holistic platform assessment at L2 (15 sessions, 29 profiles): 8 PASS / 2 WARN / 0 FAIL, 27/29 behavioral match. Frontend supports full user journey (signup → diagnostic → learn → progress). Deployment is a 5-step checklist (secrets, migrations, content, build, deploy). 304 topics across 4 subjects.
+
+**Decision:** Ship to alpha users (5-10 testers) immediately. Run L3 simulation validation (90 sessions) in parallel. Do not block launch on simulation maturity Phases 4-6.
+
+**Why:**
+- All P0 engine systems PASS with 0 FAILs — core learning loop is validated
+- The 2 WARNs (Review/New balance 0.718, FIRe -25%) are optimization concerns, not correctness issues
+- L2 validation (15 sessions) is sufficient for alpha users who will do <30 sessions initially
+- Real user data will reveal issues simulations can't: confusing UI, unexpected answer formats, mobile UX, content clarity
+- Continuing simulation maturity without real users risks optimizing in a vacuum
+
+**Alternatives rejected:**
+- Complete Phases 4-6 before any users: Delays real feedback by weeks; diminishing returns from simulation-only validation
+- Frontend polish first: Error handling gaps exist but don't block the happy path; alpha testers can tolerate rough edges
+- Pivot entirely to frontend/deployment: Would abandon L3 validation that could reveal long-term engine bugs
