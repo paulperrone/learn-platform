@@ -886,3 +886,14 @@ Reducing diagnostic credit AND tightening mastery criterion simultaneously cause
 
 Strong-older plateauing at session 9 is a **content ceiling** problem (92 math-foundations topics), not a calibration problem. A 14-year-old who answers grade-5 math correctly genuinely knows K-5 math — giving them grade-0 topics to "prove" mastery is pedagogically wrong. Fix: multi-subject profiles + content expansion (Phase 4.5B), not stricter mastery.
 
+
+---
+
+### 2026-03-11: Math Academy graph structure — K-8 content is spread across 6 courses with significant HS overlap
+
+**Source:** User session — Plan 021 Phase 1
+**Area:** Content / MA cross-reference
+
+MA's K-8 relevant content spans 6 courses: 4th Grade Math (137 topics), 5th Grade Math (132), Mathematical Foundations I (352), Foundations II (357), Foundations III (323), and Prealgebra (205). However, Foundations I-III contain substantial high school content (trigonometry, conic sections, calculus intro, linear algebra) mixed with K-8 material. To get genuine K-8 topics, filter by unit names — units like "Fractions", "The Number System", "Ratios & Percentages" are K-8; units like "Trigonometry", "Conic Sections", "Integration Techniques" are HS. Many topics appear in multiple courses (dedup by `node.id`). Edge data uses numeric IDs (`from`/`to`), not string slugs.
+
+**Context:** When cross-referencing MA for future strands or disciplines, always dedup by topic ID and filter by unit-level K-8 relevance rather than course-level.

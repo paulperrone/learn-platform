@@ -1519,3 +1519,25 @@ Tag each target in `targets.json` with `signal_source: "engine" | "content" | "b
 - Content creation workflow uses `content/<discipline>/graph.json`, not per-subject graphs
 - Cross-discipline prerequisite edges (e.g., `ela:reading-comprehension` → math word problems) use `discipline:topic-id` format in `graph.json`
 - L2 simulation baseline (9P/1W/0F) was maintained through the migration — topology is stable
+
+---
+
+### 2026-03-11: Math expansion targets ~695-850 topics via MA cross-reference, not MA copy
+
+**Source:** User session — Plan 021 Phase 1
+**Area:** Content architecture / knowledge graph density
+
+**Decision:** Expand math graph from 207 to ~695 base topics (750-850 after gap-fill) by cross-referencing Math Academy's K-8 graph as a density baseline, not a copy target. Applied 5 split heuristics (testable-in-isolation, distinct-cognitive-demand, platform-compatible, grade-boundary-natural, remediation-useful) to determine which MA splits to adopt, adapt, or skip.
+
+**Why:**
+- MA has ~1277 K-8-relevant topics but ~40% is HS content in their "Foundations" courses — genuine K-8 target is ~750-800
+- MA splits model-based and procedural variants aggressively (e.g., "Adding Fractions Unlike Denom Using Models" separate from "Adding Fractions Unlike Denom") — we consolidate when the model isn't independently testable on our platform
+- MA has word problem variants for nearly every procedural topic — we include selectively where language adds cognitive demand
+- One new strand (exponents-radicals, 35 topics) fills a gap MA covers that we didn't break out
+
+**Alternatives rejected:**
+- Copy MA's graph directly: Different pedagogy (we're K-8, they include HS), different platform constraints (screen+text only), different assessment philosophy
+- Conservative expansion (~400 topics): Would leave fractions and division under-split, making remediation imprecise
+- Aggressive expansion (~1200 topics): Would include trivial digit-count progressions and model-only variants that don't add remediable skill differentiation
+
+**Reference:** Full expansion map in `docs/expansion-map.md`

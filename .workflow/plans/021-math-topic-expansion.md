@@ -93,9 +93,9 @@ Targets calibrated against MA unit sizes, adjusted for our K-8 scope (excluding 
 
 ## Progress
 
-**Completed:** None yet
+**Completed:** Phase 1 ✓
 **In Progress:** —
-**Next:** Phase 1
+**Next:** Phase 2
 
 ---
 
@@ -109,36 +109,36 @@ Targets calibrated against MA unit sizes, adjusted for our K-8 scope (excluding 
 4. Apply our split heuristics to any of our topics that MA doesn't decompose but we should
 5. Draft new topic IDs, names, descriptions, prerequisite edges, encompassing edges
 
-1. [ ] [RSH] Cross-reference Wave 1 strands against MA:
-   - counting-cardinality: no direct MA equivalent — apply split heuristics from our pedagogy
-   - operations-addition: compare against MA "Addition & Subtraction" unit (13 topics)
-   - operations-subtraction: same MA unit, identify regrouping/estimation/multi-digit splits
-   - operations-multiplication: compare against MA "Multiplication" (20) + "Multiplying Whole Numbers" (18)
-   - operations-division: compare against MA "Division" (16)
-2. [ ] [RSH] Cross-reference Wave 2 strands against MA:
-   - number-base: compare against MA "The Number System" (50) + "Decimals" (18)
-   - fractions: compare against MA "Fractions & Decimals" (43) + "Adding & Subtracting Fractions" (14) + "Multiplying & Dividing Fractions" (26)
-   - algebra-thinking: compare against MA "Operations & Algebraic Thinking" (9) + "Algebraic Expressions" (17)
-   - measurement-data: compare against MA "Measurement & Data" (33)
-   - geometry: compare against MA "Geometry" K-5 subset + "Geometry Fundamentals" + "Polygons"
-3. [ ] [RSH] Cross-reference Wave 3 strands against MA:
-   - rational-numbers: compare against MA "The Number System" 6-8 subset
-   - ratios-proportions: compare against MA "Ratios & Percentages" (42)
-   - expressions-equations: compare against MA "Equations & Inequalities" (44) + "Algebraic Expressions" (17)
-   - linear-functions: compare against MA "Two-Variable Equations" (19) + "Functions" K-8 subset
-   - geometry-advanced: compare against MA "Geometry" 6-8 subset + "Trigonometry" basics
-   - statistics-probability: compare against MA "Statistics" (36) + "Probability" (20)
-   - polynomials-intro: compare against MA "Polynomials" K-8 subset
-   - exponents-radicals (new strand): compare against MA "Exponents & Radicals" (35) + "Exponents" (10)
-4. [ ] [DOC] Write `docs/expansion-map.md`: For each strand, document:
+1. [x] [RSH] Cross-reference Wave 1 strands against MA:
+   - counting-cardinality: no direct MA equivalent — applied split heuristics from our pedagogy (+11 topics)
+   - operations-addition: compared against MA "Addition & Subtraction" unit (13 topics) (+17 topics)
+   - operations-subtraction: same MA unit, identified regrouping/estimation/multi-digit splits (+15 topics)
+   - operations-multiplication: compared against MA "Multiplication" (20) + "Multiplying Whole Numbers" (18) (+23 topics)
+   - operations-division: compared against MA "Division" (16) (+21 topics)
+2. [x] [RSH] Cross-reference Wave 2 strands against MA:
+   - number-base: compared against MA "The Number System" (50) + "Decimals" (18) (+36 topics)
+   - fractions: compared against MA "Fractions & Decimals" (43) + "Adding & Subtracting Fractions" (14) + "Multiplying & Dividing Fractions" (26) (+54 topics)
+   - algebra-thinking: compared against MA "Operations & Algebraic Thinking" (9) + "Algebraic Expressions" (17) (+19 topics)
+   - measurement-data: compared against MA "Measurement & Data" (33) (+26 topics)
+   - geometry: compared against MA "Geometry" K-5 subset + "Geometry Fundamentals" + "Polygons" (+36 topics)
+3. [x] [RSH] Cross-reference Wave 3 strands against MA:
+   - rational-numbers: compared against MA "The Number System" 6-8 subset (+32 topics)
+   - ratios-proportions: compared against MA "Ratios & Percentages" (42) (+28 topics)
+   - expressions-equations: compared against MA "Equations & Inequalities" (44) + "Algebraic Expressions" (17) (+33 topics)
+   - linear-functions: compared against MA "Two-Variable Equations" (19) + "Functions" K-8 subset (+28 topics)
+   - geometry-advanced: compared against MA "Geometry" 6-8 subset + "Trigonometry" basics (+35 topics)
+   - statistics-probability: compared against MA "Statistics" (36) + "Probability" (20) (+31 topics)
+   - polynomials-intro: compared against MA "Polynomials" K-8 subset (+13 topics)
+   - exponents-radicals (new strand): compared against MA "Exponents & Radicals" (35) + "Exponents" (10) (+35 topics)
+4. [x] [DOC] Write `docs/expansion-map.md`: For each strand, documented:
    - Current topics (ours)
    - MA reference topics (with adopt/adapt/skip classification)
    - New topics to add (with split heuristic justification)
    - New prerequisite and encompassing edges
    - Per-strand summary counts
-5. [ ] [VAL] Review expansion map: verify no trivial topics, all splits cite a heuristic, per-strand targets are realistic
+5. [x] [VAL] Review expansion map: 488 new topics, 0 duplicate IDs, 0 conflicts with existing graph, all splits cite heuristics, per-strand targets realistic
 
-**Validation:** `docs/expansion-map.md` exists with concrete split decisions for all strands including MA cross-references. Estimated total is in the 800-1000 range.
+**Validation:** ✓ `docs/expansion-map.md` exists with concrete split decisions for all 17 strands (+ 1 new) including MA cross-references. 488 new topics → 695 base total, ~750-850 after Phase 5 gap-fill.
 
 ---
 
