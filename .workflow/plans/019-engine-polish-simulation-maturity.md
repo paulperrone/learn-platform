@@ -14,6 +14,7 @@ Fix the two remaining P1 evaluation failures (FIRe compression measurement, inte
 **Depends on:**
 - Plan 018 Phase 6 ✅ (multi-subject content + simulation support)
 - Plan 017.9 Phases 1-2 ✅ (24 profiles, scheduling presets, cleanup tooling)
+- Plan 020 (discipline graphs, collections, and granularity v2) for Phases 4.5B-6
 
 **Current evaluation state (L2, 30 sessions, 29 profiles):**
 - 7 PASS, 1 WARN, 2 FAIL
@@ -25,7 +26,7 @@ Fix the two remaining P1 evaluation failures (FIRe compression measurement, inte
 
 **Completed:** Phase 1 (FIRe: -3.1% → +8.4%, FAIL→FAIL but close to WARN), Phase 2 (Interleaving: 0.254 → 0.085, FAIL→PASS), Phase 2.5 (FIRe default eval, mastery gate removal, graduated mastery model added but getDueTopics/session changes reverted after making FIRe worse), Phase 2.6 (FIRe metric rewritten: reviews-per-mastered-topic efficiency, FAIL→WARN), Phase 2.7 (FIRe isolation: credit hurts -25.5% avg, ordering neutral for 2/3 profiles, non-additive interaction), Phase 3 (holistic platform assessment: 8P/2W/0F, 304 topics, frontend 85% complete, deployment ready with 5-step checklist), Phase 4 (maturity levels L1-L3: L1 3P/4F/3W, L2 8P/2W/0F, L3 8P/1W/1F — review/new balance FAIL at L3), Phase 4.5A (diagnostic credit calibration: 0.2→0.12 lower-grade, 0.1→0.06 same-grade, threshold 0.6→0.75; mastery criterion unchanged; L2: 9P/1W/0F, FIRe PASS +9.8%)
 **In Progress:** —
-**Next:** Phase 4.5B
+**Next:** Plan 020 completion, then Phase 4.5B
 
 ---
 
@@ -428,6 +429,8 @@ Fix the two remaining P1 evaluation failures (FIRe compression measurement, inte
 
 ## Phase 4.5B: Problem Density Expansion
 **Goal:** Expand math problem sets from 5 per topic to 20-30 using the existing procedural generators. More problems per topic means each topic requires more engagement before all problems are exhausted.
+
+**Dependency note:** Phases 4.5B-6 are blocked pending Plan 020 completion. Problem-density expansion, L3/L4/L5 re-baselining, and FIRe implementation decisions should run on the discipline-owned graph and collection packaging model introduced there, not the current subject-split topology.
 
 **Context:** `tools/generate-problems.ts` has 143 topic-specific generators covering most math-foundations and math-middle topics. Currently unused — all content is hand-authored at 5 problems/topic. Generated problems go to `content/<subject>/problems-generated/<topic>.json` with `source: "generated"`.
 
