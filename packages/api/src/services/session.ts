@@ -3,7 +3,7 @@ import { Rating, type Grade } from "ts-fsrs";
 import type { DB } from "../db/index.js";
 import * as schema from "../db/schema.js";
 import { createGraphService } from "./graph.js";
-import { createSRSService } from "./srs.js";
+import { createSRSService, type FireDiagnosticConfig } from "./srs.js";
 import { createContentService, type ContentQuery } from "./content.js";
 import type { Problem, WorkedExample, SessionPhase, AssessmentType, VisualAsset, PresentationLevel, ContentDepthLevel, BlendRole, MasteryEvent, CognitiveDemand, DemandDistribution } from "@learn/shared";
 import { DEMAND_PROFILES } from "@learn/shared";
@@ -61,9 +61,9 @@ export function applyDifficultyBias(baseDifficulty: string, bias: DifficultyBias
   return levels[Math.max(idx - 1, 0)];
 }
 
-export function createSessionService(db: DB) {
+export function createSessionService(db: DB, fireDiagnostic?: FireDiagnosticConfig) {
   const graph = createGraphService(db);
-  const srs = createSRSService(db);
+  const srs = createSRSService(db, fireDiagnostic);
   const content = createContentService(db);
   const activity = createActivityService(db);
 

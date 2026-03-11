@@ -104,7 +104,12 @@ export function interleaveByStrand(
   return result;
 }
 
-export function createSRSService(db: DB) {
+export type FireDiagnosticConfig = {
+  disableCredit?: boolean;
+  disableOrdering?: boolean;
+};
+
+export function createSRSService(db: DB, fireDiagnostic?: FireDiagnosticConfig) {
   const graph = createGraphService(db);
 
   async function getUserFsrs(userId: string) {
@@ -347,6 +352,7 @@ export function createSRSService(db: DB) {
      * Skip if retrievability > 0.9 (child is fresh, no marginal benefit).
      */
     async applyFIReCredit(userId: string, topicId: string, rating: Grade) {
+      if (fireDiagnostic?.disableCredit) return [];
       if (rating < Rating.Good) return [];
 
       // Multi-hop BFS: collect all reachable children with cumulative weights
@@ -544,6 +550,11 @@ export function createSRSService(db: DB) {
       const candidates = dueTopics.filter((t) => !excludeIds.has(t.topicId));
       if (candidates.length === 0 || budget <= 0) {
         return { selected: [], coveredCount: 0 };
+      }
+
+      // Diagnostic: skip set-cover ordering, use most-overdue only
+      if (fireDiagnostic?.disableOrdering) {
+        return { selected: candidates.slice(0, budget), coveredCount: 0 };
       }
 
       const dueSet = new Set(candidates.map((t) => t.topicId));

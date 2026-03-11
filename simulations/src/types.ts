@@ -163,6 +163,9 @@ export type TimeSchedule = {
   intervals?: number[];
 };
 
+/** Diagnostic mode for FIRe isolation experiments (Phase 2.7). */
+export type FIReMode = "both" | "credit-only" | "ordering-only" | "neither";
+
 export type SimulationConfig = {
   profile: LearnerProfile;
   subject: string;
@@ -174,6 +177,8 @@ export type SimulationConfig = {
   sessionIntervalMs?: number;
   /** Advanced time schedule. Overrides sessionIntervalMs if provided. */
   timeSchedule?: TimeSchedule;
+  /** Diagnostic: control FIRe credit and ordering independently. Default: "both". */
+  fireMode?: FIReMode;
 };
 
 export type SimulationResult = {

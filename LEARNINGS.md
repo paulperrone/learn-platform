@@ -852,3 +852,14 @@ The FIRe paired comparison measures `(withoutReviews - withReviews) / withoutRev
 Removing encompassing edges for the "without FIRe" comparison changes TWO things: (1) `applyFIReCredit()` has no edges to traverse, and (2) `compressReviews()` falls back from set-cover optimization to simple most-overdue ordering. The second effect is arguably larger — review ordering determines which topics get practiced and when they reach mastery. At 15 sessions, the simpler ordering (no set-cover) consistently produces MORE mastered topics, suggesting the set-cover optimization may be counterproductive at short horizons.
 
 **Context:** When analyzing FIRe efficiency results, consider that the measurement captures the full encompassing system (credit + ordering), not just the credit mechanism. To isolate FIRe credit alone, you'd need to disable only `applyFIReCredit()` while keeping encompassing edges for `compressReviews()`.
+
+---
+
+### 2026-03-11: FIRe virtual credit hurts efficiency at short horizons (15 sessions)
+
+**Source:** User session — Plan 019 Phase 2.7
+**Area:** SRS / FIRe algorithm
+
+Isolation experiments (4 modes × 3 profiles) show that `applyFIReCredit()` virtual FSRS reviews are the primary cause of negative FIRe efficiency at 15 sessions (-25.5% avg across profiles). The credit extends child topic stability, which delays their natural mastery through actual reviews. Set-cover ordering in `compressReviews()` is neutral for 2/3 profiles — it selects the same topics as simple most-overdue at this horizon. Large non-additive interactions (+29.6% for fast-learner) mean the mechanisms partially cancel each other when combined.
+
+**Context:** FIRe diagnostic available via `npx tsx simulations/src/evaluate.ts --fire-isolation`. `FireDiagnosticConfig` (`disableCredit`, `disableOrdering`) passed through `createSessionService` → `createSRSService` — optional params that default to current production behavior.

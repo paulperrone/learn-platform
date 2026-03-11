@@ -11,6 +11,7 @@
  *   npx tsx simulations/src/evaluate.ts --profiles average-older,strong-older
  *   npx tsx simulations/src/evaluate.ts --json                       # JSON-only output
  *   npx tsx simulations/src/evaluate.ts --skip-fire                  # skip FIRe comparison (~10s)
+ *   npx tsx simulations/src/evaluate.ts --fire-isolation              # run FIRe isolation diagnostic (4 modes × 3 profiles)
  */
 import {
   readFileSync,
@@ -890,6 +891,124 @@ async function computeFIReEfficiency(
   return { actual: avgEfficiency, contributing };
 }
 
+// ── FIRe Isolation Diagnostic (Phase 2.7) ─────────────────────────────
+// Runs 4 modes to attribute FIRe efficiency to credit vs ordering:
+//   A: Both (current production)   B: Credit only   C: Ordering only   D: Neither
+
+type FIReIsolationMode = "A" | "B" | "C" | "D";
+type FIReModeResult = { reviews: number; mastery: number; rpm: number };
+type FIReProfileResult = Record<FIReIsolationMode, FIReModeResult>;
+
+async function computeFIReIsolation(seed: number = 42): Promise<void> {
+  const { SimulationRunner } = await import("./runner.js");
+  const profilesDir = join(process.cwd(), "simulations", "profiles");
+  const testProfileIds = ["average-older", "misconception-fractions", "fast-learner"];
+  const sessionCount = 15;
+  const modes: { id: FIReIsolationMode; label: string; fireMode: "both" | "credit-only" | "ordering-only" | "neither" }[] = [
+    { id: "A", label: "Both (credit + ordering)", fireMode: "both" },
+    { id: "B", label: "Credit only", fireMode: "credit-only" },
+    { id: "C", label: "Ordering only", fireMode: "ordering-only" },
+    { id: "D", label: "Neither (control)", fireMode: "neither" },
+  ];
+
+  const allResults = new Map<string, FIReProfileResult>();
+
+  for (const profileId of testProfileIds) {
+    const profilePath = join(profilesDir, `${profileId}.json`);
+    if (!existsSync(profilePath)) continue;
+    const profile: LearnerProfile = JSON.parse(readFileSync(profilePath, "utf-8"));
+
+    const profileResult: Partial<FIReProfileResult> = {};
+
+    for (const mode of modes) {
+      console.log(`  [fire-isolation] ${profileId} Mode ${mode.id}: ${mode.label} (${sessionCount} sessions)...`);
+      const runner = new SimulationRunner({
+        profile,
+        subject: "math-foundations",
+        sessionCount,
+        seed,
+        fireMode: mode.fireMode,
+      });
+      const result = await runner.run();
+      const reviews = result.sessionSummaries.reduce((s, sm) => s + sm.reviewsCompleted, 0);
+      const snapshots: StateSnapshot[] = JSON.parse(
+        readFileSync(join(result.runDir, "state-snapshots.json"), "utf-8")
+      );
+      const mastery = snapshots[snapshots.length - 1]?.materializedMasteryCount ?? 0;
+      const rpm = mastery > 0 ? reviews / mastery : Infinity;
+      profileResult[mode.id] = { reviews, mastery, rpm };
+      console.log(`  [fire-isolation]   → ${reviews} rev / ${mastery} mastered (${rpm.toFixed(2)} r/m)`);
+    }
+
+    allResults.set(profileId, profileResult as FIReProfileResult);
+  }
+
+  // Print results table
+  console.log("\n╔══════════════════════════════════════════════════════════════════════════╗");
+  console.log("║                    FIRe Isolation Experiment Results                    ║");
+  console.log("╠══════════════════════════════════════════════════════════════════════════╣");
+  console.log(`║ Sessions: ${sessionCount}    Seed: ${seed}    Date: ${new Date().toISOString().slice(0, 10)}${" ".repeat(24)}║`);
+  console.log("╠═══════════════════════╦══════════════╦══════════════╦══════════════╦═════╣");
+  console.log("║ Profile               ║ A: Both      ║ B: Credit    ║ C: Ordering  ║ D   ║");
+  console.log("╠═══════════════════════╬══════════════╬══════════════╬══════════════╬═════╣");
+
+  for (const [profileId, result] of allResults) {
+    const a = result.A, b = result.B, c = result.C, d = result.D;
+    console.log(`║ ${profileId.padEnd(21)} ║ ${a.reviews}r/${a.mastery}m ${a.rpm.toFixed(1).padStart(5)} ║ ${b.reviews}r/${b.mastery}m ${b.rpm.toFixed(1).padStart(5)} ║ ${c.reviews}r/${c.mastery}m ${c.rpm.toFixed(1).padStart(5)} ║ ${d.reviews}r/${d.mastery}m ${d.rpm.toFixed(1).padStart(5)} ║`);
+  }
+  console.log("╚═══════════════════════╩══════════════╩══════════════╩══════════════╩═════╝");
+
+  // Attribution analysis
+  console.log("\n── Attribution Analysis ──");
+  for (const [profileId, result] of allResults) {
+    const dRpm = result.D.rpm;
+    if (!isFinite(dRpm) || dRpm === 0) {
+      console.log(`  ${profileId}: Mode D RPM is ${dRpm}, skipping attribution`);
+      continue;
+    }
+
+    const creditEffect = 1 - (result.B.rpm / dRpm);    // B vs D: isolates credit
+    const orderingEffect = 1 - (result.C.rpm / dRpm);  // C vs D: isolates ordering
+    const combinedEffect = 1 - (result.A.rpm / dRpm);  // A vs D: both together
+    const interaction = combinedEffect - (creditEffect + orderingEffect); // non-additive
+
+    console.log(`  ${profileId}:`);
+    console.log(`    Credit effect (B vs D):   ${(creditEffect * 100).toFixed(1)}%`);
+    console.log(`    Ordering effect (C vs D): ${(orderingEffect * 100).toFixed(1)}%`);
+    console.log(`    Combined effect (A vs D): ${(combinedEffect * 100).toFixed(1)}%`);
+    console.log(`    Interaction:              ${(interaction * 100).toFixed(1)}%`);
+    console.log(`    → ${creditEffect > 0 ? "Credit HELPS" : "Credit HURTS"} (${(creditEffect * 100).toFixed(1)}%)`);
+    console.log(`    → ${orderingEffect > 0 ? "Ordering HELPS" : "Ordering HURTS"} (${(orderingEffect * 100).toFixed(1)}%)`);
+  }
+
+  // Write results to a JSON file for Phase 5.5 reference
+  const reportsDir = join(process.cwd(), "simulations", "reports");
+  mkdirSync(reportsDir, { recursive: true });
+  const isolationReport = {
+    date: new Date().toISOString(),
+    sessionCount,
+    seed,
+    profiles: Object.fromEntries(allResults),
+    attribution: Object.fromEntries(
+      [...allResults].map(([profileId, result]) => {
+        const dRpm = result.D.rpm;
+        if (!isFinite(dRpm) || dRpm === 0) return [profileId, null];
+        return [profileId, {
+          creditEffect: 1 - (result.B.rpm / dRpm),
+          orderingEffect: 1 - (result.C.rpm / dRpm),
+          combinedEffect: 1 - (result.A.rpm / dRpm),
+          interaction: (1 - result.A.rpm / dRpm) - (1 - result.B.rpm / dRpm) - (1 - result.C.rpm / dRpm),
+        }];
+      })
+    ),
+  };
+  writeFileSync(
+    join(reportsDir, "fire-isolation.json"),
+    JSON.stringify(isolationReport, null, 2) + "\n"
+  );
+  console.log(`\nResults written to ${join(reportsDir, "fire-isolation.json")}`);
+}
+
 // ── Report generation ─────────────────────────────────────────────────
 
 function buildHealingReport(
@@ -1112,6 +1231,7 @@ async function main() {
   const args = process.argv.slice(2);
   const jsonOnly = args.includes("--json");
   const skipFire = args.includes("--skip-fire");
+  const fireIsolation = args.includes("--fire-isolation");
 
   const runsDirIdx = args.indexOf("--runs-dir");
   const runsDir = runsDirIdx >= 0
@@ -1164,6 +1284,12 @@ async function main() {
         };
       }
     }
+  }
+
+  // FIRe isolation diagnostic — runs 4 modes × 3 profiles (~2 min). Use --fire-isolation to run.
+  if (fireIsolation) {
+    if (!jsonOnly) console.log("Running FIRe isolation diagnostic (4 modes × 3 profiles)...");
+    await computeFIReIsolation();
   }
 
   // Evaluate profiles
@@ -1232,6 +1358,7 @@ export {
   generateMarkdownReport,
   printConsoleReport,
   computeFIReEfficiency,
+  computeFIReIsolation,
   classifyResult,
   findLatestRuns,
   type ProfileRun,

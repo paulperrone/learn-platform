@@ -1,0 +1,93 @@
+{
+  "date": "2026-03-11T01:34:08.515Z",
+  "sessionCount": 15,
+  "seed": 42,
+  "profiles": {
+    "average-older": {
+      "A": {
+        "reviews": 82,
+        "mastery": 49,
+        "rpm": 1.6734693877551021
+      },
+      "B": {
+        "reviews": 82,
+        "mastery": 49,
+        "rpm": 1.6734693877551021
+      },
+      "C": {
+        "reviews": 68,
+        "mastery": 56,
+        "rpm": 1.2142857142857142
+      },
+      "D": {
+        "reviews": 68,
+        "mastery": 56,
+        "rpm": 1.2142857142857142
+      }
+    },
+    "misconception-fractions": {
+      "A": {
+        "reviews": 64,
+        "mastery": 62,
+        "rpm": 1.032258064516129
+      },
+      "B": {
+        "reviews": 70,
+        "mastery": 64,
+        "rpm": 1.09375
+      },
+      "C": {
+        "reviews": 72,
+        "mastery": 71,
+        "rpm": 1.0140845070422535
+      },
+      "D": {
+        "reviews": 72,
+        "mastery": 71,
+        "rpm": 1.0140845070422535
+      }
+    },
+    "fast-learner": {
+      "A": {
+        "reviews": 82,
+        "mastery": 34,
+        "rpm": 2.411764705882353
+      },
+      "B": {
+        "reviews": 77,
+        "mastery": 33,
+        "rpm": 2.3333333333333335
+      },
+      "C": {
+        "reviews": 86,
+        "mastery": 36,
+        "rpm": 2.388888888888889
+      },
+      "D": {
+        "reviews": 82,
+        "mastery": 46,
+        "rpm": 1.7826086956521738
+      }
+    }
+  },
+  "attribution": {
+    "average-older": {
+      "creditEffect": -0.3781512605042019,
+      "orderingEffect": 0,
+      "combinedEffect": -0.3781512605042019,
+      "interaction": 0
+    },
+    "misconception-fractions": {
+      "creditEffect": -0.0785590277777779,
+      "orderingEffect": 0,
+      "combinedEffect": -0.017921146953405076,
+      "interaction": 0.060637880824372825
+    },
+    "fast-learner": {
+      "creditEffect": -0.30894308943089444,
+      "orderingEffect": -0.34010840108401097,
+      "combinedEffect": -0.3529411764705883,
+      "interaction": 0.2961103140443171
+    }
+  }
+}

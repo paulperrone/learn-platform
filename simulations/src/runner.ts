@@ -434,7 +434,12 @@ export class SimulationRunner {
   private async runLearningSession(sessionNumber: number): Promise<void> {
     setSimulatedTime(this.simulatedTimeMs);
 
-    const sessionSvc = createSessionService(this.db);
+    const fireMode = this.config.fireMode ?? "both";
+    const fireDiagnostic = {
+      disableCredit: fireMode === "ordering-only" || fireMode === "neither",
+      disableOrdering: fireMode === "credit-only" || fireMode === "neither",
+    };
+    const sessionSvc = createSessionService(this.db, fireDiagnostic);
 
     const { sessionId, firstItem } = await sessionSvc.startSession(this.userId);
 

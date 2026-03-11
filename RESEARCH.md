@@ -620,4 +620,49 @@ Math Academy's approach: topics stay in SRS with growing intervals. FIRe credit 
 - FIRe evaluation takes only 10 seconds — should run by default, not behind `--run-fire` flag
 - Cross-strand encompassing edges provide the highest compression value (different review schedules → more opportunity for implicit credit)
 
-**Status:** Active — Phase 2.5 complete: FIRe gate removal shipped, getDueTopics/session changes attempted and reverted (worsened compression to -30.6%). Phase 2.6 will calibrate targets and test at longer horizons.
+**Status:** Resolved — Phase 2.7 isolation experiments completed. See below.
+
+---
+
+### 2026-03-11: FIRe Isolation Experiment — Credit vs Ordering Attribution
+
+**Source:** User session — Plan 019 Phase 2.7
+
+**Context:** FIRe efficiency at -25% (L2, 15 sessions). The "without FIRe" baseline disables TWO mechanisms simultaneously: (1) `applyFIReCredit()` virtual FSRS reviews and (2) `compressReviews()` set-cover ordering. Needed to attribute the negative efficiency to each mechanism independently.
+
+**Question:** Is the -25% FIRe efficiency caused by virtual credit, set-cover ordering, or both?
+
+**Method:** 4-mode isolation experiment via `--fire-isolation` flag:
+- Mode A: Both credit + ordering (current production)
+- Mode B: Credit only (ordering disabled via `disableOrdering` flag)
+- Mode C: Ordering only (credit disabled via `disableCredit` flag)
+- Mode D: Neither (control baseline)
+
+**Findings:**
+
+| Profile | A: Both (r/m) | B: Credit (r/m) | C: Ordering (r/m) | D: Neither (r/m) |
+|---------|---------------|-----------------|-------------------|-------------------|
+| average-older | 82/49 (1.67) | 82/49 (1.67) | 68/56 (1.21) | 68/56 (1.21) |
+| misconception-fractions | 64/62 (1.03) | 70/64 (1.09) | 72/71 (1.01) | 72/71 (1.01) |
+| fast-learner | 82/34 (2.41) | 77/33 (2.33) | 86/36 (2.39) | 82/46 (1.78) |
+
+| Profile | Credit effect | Ordering effect | Combined | Interaction |
+|---------|--------------|-----------------|----------|-------------|
+| average-older | -37.8% | 0.0% | -37.8% | 0.0% |
+| misconception-fractions | -7.9% | 0.0% | -1.8% | +6.1% |
+| fast-learner | -30.9% | -34.0% | -35.3% | +29.6% |
+
+**Discovery:**
+1. **Credit hurts all 3 profiles** (avg -25.5%). Virtual FSRS stability boosts on child topics delay their natural mastery at 15 sessions by extending stability without actual practice.
+2. **Ordering is neutral for 2/3 profiles** but hurts fast-learner (-34.0%). For average-older, set-cover selects the SAME reviews as most-overdue (Mode A = B exactly, Mode C = D exactly).
+3. **Large non-additive interaction** in fast-learner (+29.6%): when both mechanisms are active, they partially cancel each other's damage. Credit's stability boosts compensate for ordering's suboptimal selection.
+4. The mechanisms are NOT independent — measuring them separately overestimates total damage.
+
+**Implications:**
+- At 15 sessions, FIRe credit is counterproductive — stability extension delays mastery instead of accelerating it
+- Set-cover ordering rarely matters because at this short horizon, the most-overdue topic is usually also the best coverage candidate
+- L3+ data (90+ sessions) needed to determine if credit helps at longer horizons where stability compounds more meaningfully
+- If credit still hurts at L3: implement retrieval-dependent credit (only apply when post-credit R > 0.85)
+- If credit helps at L3: the short-horizon penalty is acceptable — recalibrate L2 target accordingly
+
+**Status:** Complete. Results in `simulations/reports/fire-isolation.json`. Phase 5.5 will use L3/L4/L5 data to make implementation decision.
