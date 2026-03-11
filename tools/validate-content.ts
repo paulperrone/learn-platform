@@ -6,7 +6,7 @@
 import { readFileSync, existsSync, readdirSync } from "fs";
 import { join } from "path";
 
-const subject = process.argv[2] ?? "math-foundations";
+const subject = process.argv[2] ?? "math";
 const contentDir = join(process.cwd(), "content", subject);
 
 let errors = 0;
@@ -195,6 +195,27 @@ if (existsSync(graphPath)) {
       console.log(`  - ${t.id}`);
     }
     if (missingExamples.length > 10) console.log(`  ... and ${missingExamples.length - 10} more`);
+  }
+
+  // Validate collections
+  if (graph.collections && graph.collections.length > 0) {
+    const graphTopicSet = new Set(graph.topics.map((t: any) => t.id));
+    for (const c of graph.collections) {
+      if (!c.id) { console.error(`ERROR: Collection missing id`); errors++; }
+      if (!c.name) { console.error(`ERROR: Collection "${c.id}" missing name`); errors++; }
+      if (!c.topicIds || c.topicIds.length === 0) {
+        console.error(`ERROR: Collection "${c.id}" has no topics`);
+        errors++;
+      } else {
+        for (const tid of c.topicIds) {
+          if (!graphTopicSet.has(tid)) {
+            console.error(`ERROR: Collection "${c.id}" references unknown topic "${tid}"`);
+            errors++;
+          }
+        }
+      }
+    }
+    console.log(`\nCollections validated: ${graph.collections.length}`);
   }
 }
 

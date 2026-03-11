@@ -62,7 +62,7 @@ content-gaps *args:
     npx tsx tools/content-gaps.ts {{args}}
 
 # Visualize knowledge graph (default: math-foundations, or pass subject name)
-visualize subject="math-foundations":
+visualize subject="math":
     python3 tools/visualize-graph.py content/{{subject}}/graph.json --open
 
 # Build web app

@@ -10,21 +10,33 @@ export const disciplines = sqliteTable("disciplines", {
   createdAt: text("created_at").notNull().$defaultFn(() => new Date().toISOString()),
 });
 
-export const subjects = sqliteTable("subjects", {
+export const collections = sqliteTable("collections", {
   id: text("id").primaryKey(),
-  disciplineId: text("discipline_id").notNull().references(() => disciplines.id),
+  primaryDisciplineId: text("primary_discipline_id").notNull().references(() => disciplines.id),
   name: text("name").notNull(),
   description: text("description").notNull(),
-  gradeRange: text("grade_range").notNull(),
-  topicCount: integer("topic_count").notNull().default(0),
+  kind: text("kind").notNull().default("grade-band"), // 'grade-band' | 'strand' | 'remediation' | 'exam-prep' | 'thematic'
+  gradeRange: text("grade_range"),
+  displayOrder: integer("display_order").notNull().default(0),
+  visibility: text("visibility").notNull().default("published"), // 'published' | 'draft' | 'archived'
   createdAt: text("created_at").notNull().$defaultFn(() => new Date().toISOString()),
 }, (table) => [
-  index("subjects_discipline_idx").on(table.disciplineId),
+  index("collections_discipline_idx").on(table.primaryDisciplineId),
+]);
+
+export const collectionTopics = sqliteTable("collection_topics", {
+  id: integer("id").primaryKey({ autoIncrement: true }),
+  collectionId: text("collection_id").notNull().references(() => collections.id),
+  topicId: text("topic_id").notNull().references(() => topics.id),
+  sortOrder: integer("sort_order").notNull().default(0),
+}, (table) => [
+  uniqueIndex("ct_collection_topic_idx").on(table.collectionId, table.topicId),
+  index("ct_topic_idx").on(table.topicId),
 ]);
 
 export const topics = sqliteTable("topics", {
   id: text("id").primaryKey(),
-  subjectId: text("subject_id").notNull().references(() => subjects.id),
+  disciplineId: text("discipline_id").notNull().references(() => disciplines.id),
   name: text("name").notNull(),
   description: text("description").notNull(),
   depth: integer("depth").notNull().default(0),
@@ -33,7 +45,7 @@ export const topics = sqliteTable("topics", {
   standardCode: text("standard_code"),
   createdAt: text("created_at").notNull().$defaultFn(() => new Date().toISOString()),
 }, (table) => [
-  index("topics_subject_idx").on(table.subjectId),
+  index("topics_discipline_idx").on(table.disciplineId),
   index("topics_depth_idx").on(table.depth),
 ]);
 
@@ -299,10 +311,10 @@ export const userFsrsParams = sqliteTable("user_fsrs_params", {
   updatedAt: text("updated_at").notNull().$defaultFn(() => new Date().toISOString()),
 });
 
-export const userSubjectPresentation = sqliteTable("user_subject_presentation", {
+export const userDisciplinePresentation = sqliteTable("user_discipline_presentation", {
   id: integer("id").primaryKey({ autoIncrement: true }),
   userId: text("user_id").notNull().references(() => users.id),
-  subjectId: text("subject_id").notNull().references(() => subjects.id),
+  disciplineId: text("discipline_id").notNull().references(() => disciplines.id),
   primaryWeight: real("primary_weight").notNull().default(0),
   intermediateWeight: real("intermediate_weight").notNull().default(0),
   standardWeight: real("standard_weight").notNull().default(0),
@@ -311,13 +323,13 @@ export const userSubjectPresentation = sqliteTable("user_subject_presentation", 
   driftSignal: real("drift_signal").notNull().default(0),
   lastAdjustedAt: text("last_adjusted_at").notNull().$defaultFn(() => new Date().toISOString()),
 }, (table) => [
-  uniqueIndex("usp_user_subject_idx").on(table.userId, table.subjectId),
+  uniqueIndex("udp_user_discipline_idx").on(table.userId, table.disciplineId),
 ]);
 
 export const presentationDriftLog = sqliteTable("presentation_drift_log", {
   id: integer("id").primaryKey({ autoIncrement: true }),
   userId: text("user_id").notNull().references(() => users.id),
-  subjectId: text("subject_id").notNull().references(() => subjects.id),
+  disciplineId: text("discipline_id").notNull().references(() => disciplines.id),
   fromWeights: text("from_weights").notNull(), // JSON: {primary, intermediate, standard, advanced}
   toWeights: text("to_weights").notNull(), // JSON: {primary, intermediate, standard, advanced}
   fromCenter: text("from_center").notNull(),
@@ -325,7 +337,7 @@ export const presentationDriftLog = sqliteTable("presentation_drift_log", {
   trigger: text("trigger").notNull(), // 'center_shift' | 'level_emerged' | 'level_dropped'
   createdAt: text("created_at").notNull().$defaultFn(() => new Date().toISOString()),
 }, (table) => [
-  index("pdl_user_subject_idx").on(table.userId, table.subjectId),
+  index("pdl_user_discipline_idx").on(table.userId, table.disciplineId),
 ]);
 
 export const llmModelConfig = sqliteTable("llm_model_config", {
@@ -414,7 +426,7 @@ export const diagnosticSessions = sqliteTable("diagnostic_sessions", {
   id: text("id").primaryKey(),
   userId: text("user_id").references(() => users.id),
   anonymousToken: text("anonymous_token"),
-  subjectId: text("subject_id").notNull().references(() => subjects.id),
+  disciplineId: text("discipline_id").notNull().references(() => disciplines.id),
   status: text("status").notNull().default("active"), // 'active' | 'completed'
   questionsAsked: integer("questions_asked").notNull().default(0),
   questionsCorrect: integer("questions_correct").notNull().default(0),

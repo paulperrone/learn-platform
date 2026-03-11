@@ -1,5 +1,6 @@
 /**
  * Import validated content/ JSON files into local D1 database.
+ * Content is organized by discipline (one directory per discipline).
  * Usage: npx tsx tools/import-content.ts
  */
 import { readFileSync, existsSync, readdirSync } from "fs";
@@ -20,17 +21,16 @@ function findDbFile(): string {
 }
 
 type GraphDefinition = {
-  subjectId: string;
-  subjectName: string;
+  disciplineId: string;
+  name: string;
   description?: string;
-  gradeRange?: string;
-  disciplineId?: string;
   topics: {
     id: string;
     name: string;
     description: string;
     gradeLevel: number;
     standardCode: string | null;
+    strand?: string;
     problemIds?: string[];
     exampleIds?: string[];
   }[];
@@ -44,6 +44,14 @@ type GraphDefinition = {
     parent: string;
     child: string;
     weight: number;
+  }[];
+  collections?: {
+    id: string;
+    name: string;
+    description?: string;
+    kind?: string;
+    gradeRange?: string;
+    topicIds: string[];
   }[];
 };
 
@@ -85,13 +93,13 @@ type WorkedExample = {
   contentDepth?: string;
 };
 
-type SubjectData = {
+type DisciplineData = {
   graph: GraphDefinition;
   problems: Map<string, Problem[]>;
   examples: Map<string, WorkedExample[]>;
 };
 
-function loadSubject(contentDir: string): SubjectData {
+function loadDiscipline(contentDir: string): DisciplineData {
   const graphPath = join(contentDir, "graph.json");
   const graph: GraphDefinition = JSON.parse(readFileSync(graphPath, "utf-8"));
 
@@ -126,82 +134,114 @@ function loadSubject(contentDir: string): SubjectData {
   return { graph, problems, examples };
 }
 
-function clearSubject(db: InstanceType<typeof Database>, subjectId: string) {
-  db.exec(`DELETE FROM group_session_participants WHERE group_session_id IN (SELECT id FROM group_sessions WHERE topic_id IN (SELECT id FROM topics WHERE subject_id = '${subjectId}'))`);
-  db.exec(`DELETE FROM group_sessions WHERE topic_id IN (SELECT id FROM topics WHERE subject_id = '${subjectId}')`);
-  db.exec(`DELETE FROM diagnostic_sessions WHERE subject_id = '${subjectId}'`);
-  db.exec(`DELETE FROM assignment_responses WHERE assignment_id IN (SELECT id FROM assignments WHERE topic_id IN (SELECT id FROM topics WHERE subject_id = '${subjectId}'))`);
-  db.exec(`DELETE FROM assignments WHERE topic_id IN (SELECT id FROM topics WHERE subject_id = '${subjectId}')`);
-  db.exec(`DELETE FROM teach_sessions WHERE topic_id IN (SELECT id FROM topics WHERE subject_id = '${subjectId}')`);
-  db.exec(`DELETE FROM review_log WHERE topic_id IN (SELECT id FROM topics WHERE subject_id = '${subjectId}')`);
-  db.exec(`DELETE FROM user_topic_state WHERE topic_id IN (SELECT id FROM topics WHERE subject_id = '${subjectId}')`);
-  db.exec(`DELETE FROM assessment_content WHERE topic_id IN (SELECT id FROM topics WHERE subject_id = '${subjectId}')`);
-  db.exec(`DELETE FROM instructional_content WHERE topic_id IN (SELECT id FROM topics WHERE subject_id = '${subjectId}')`);
-  db.exec(`DELETE FROM encompassings WHERE parent_topic_id IN (SELECT id FROM topics WHERE subject_id = '${subjectId}')`);
-  db.exec(`DELETE FROM encompassings WHERE child_topic_id IN (SELECT id FROM topics WHERE subject_id = '${subjectId}')`);
-  db.exec(`DELETE FROM prerequisites WHERE from_topic_id IN (SELECT id FROM topics WHERE subject_id = '${subjectId}')`);
-  db.exec(`DELETE FROM prerequisites WHERE to_topic_id IN (SELECT id FROM topics WHERE subject_id = '${subjectId}')`);
-  db.exec(`DELETE FROM topics WHERE subject_id = '${subjectId}'`);
-  db.exec(`DELETE FROM subjects WHERE id = '${subjectId}'`);
+function clearDiscipline(db: InstanceType<typeof Database>, disciplineId: string) {
+  db.exec(`DELETE FROM collection_topics WHERE collection_id IN (SELECT id FROM collections WHERE primary_discipline_id = '${disciplineId}')`);
+  db.exec(`DELETE FROM collections WHERE primary_discipline_id = '${disciplineId}'`);
+  db.exec(`DELETE FROM group_session_participants WHERE group_session_id IN (SELECT id FROM group_sessions WHERE topic_id IN (SELECT id FROM topics WHERE discipline_id = '${disciplineId}'))`);
+  db.exec(`DELETE FROM group_sessions WHERE topic_id IN (SELECT id FROM topics WHERE discipline_id = '${disciplineId}')`);
+  db.exec(`DELETE FROM diagnostic_sessions WHERE discipline_id = '${disciplineId}'`);
+  db.exec(`DELETE FROM assignment_responses WHERE assignment_id IN (SELECT id FROM assignments WHERE topic_id IN (SELECT id FROM topics WHERE discipline_id = '${disciplineId}'))`);
+  db.exec(`DELETE FROM assignments WHERE topic_id IN (SELECT id FROM topics WHERE discipline_id = '${disciplineId}')`);
+  db.exec(`DELETE FROM teach_sessions WHERE topic_id IN (SELECT id FROM topics WHERE discipline_id = '${disciplineId}')`);
+  db.exec(`DELETE FROM review_log WHERE topic_id IN (SELECT id FROM topics WHERE discipline_id = '${disciplineId}')`);
+  db.exec(`DELETE FROM user_topic_state WHERE topic_id IN (SELECT id FROM topics WHERE discipline_id = '${disciplineId}')`);
+  db.exec(`DELETE FROM assessment_content WHERE topic_id IN (SELECT id FROM topics WHERE discipline_id = '${disciplineId}')`);
+  db.exec(`DELETE FROM instructional_content WHERE topic_id IN (SELECT id FROM topics WHERE discipline_id = '${disciplineId}')`);
+  db.exec(`DELETE FROM encompassings WHERE parent_topic_id IN (SELECT id FROM topics WHERE discipline_id = '${disciplineId}')`);
+  db.exec(`DELETE FROM encompassings WHERE child_topic_id IN (SELECT id FROM topics WHERE discipline_id = '${disciplineId}')`);
+  db.exec(`DELETE FROM prerequisites WHERE from_topic_id IN (SELECT id FROM topics WHERE discipline_id = '${disciplineId}')`);
+  db.exec(`DELETE FROM prerequisites WHERE to_topic_id IN (SELECT id FROM topics WHERE discipline_id = '${disciplineId}')`);
+  db.exec(`DELETE FROM topics WHERE discipline_id = '${disciplineId}'`);
 }
 
-// Cross-subject references use "subject:topic-id" format — strip prefix to get actual topic ID
-const resolveTopicId = (id: string) => id.includes(":") ? id.split(":").pop()! : id;
+// Cross-discipline references use "discipline:topic-id" format — strip prefix to get actual topic ID
+const resolveTopicId = (id: string, currentDiscipline: string): string => {
+  if (!id.includes(":")) return id;
+  const [prefix, topicId] = id.split(":", 2);
+  // If the prefix matches the current discipline, it's a same-discipline ref — just use the topic ID
+  if (prefix === currentDiscipline) return topicId;
+  // Cross-discipline ref — strip prefix since all topics are in one DB
+  return topicId;
+};
+
+// Known discipline metadata (progression model lookup)
+const DISCIPLINE_META: Record<string, { name: string; description: string; progressionModel: string }> = {
+  math: { name: "Mathematics", description: "Mathematics from counting through algebra and statistics", progressionModel: "mastery-gated" },
+  ela: { name: "English Language Arts", description: "Reading, writing, grammar, and vocabulary", progressionModel: "mastery-gated" },
+  history: { name: "History", description: "Historical events, causes, and analysis", progressionModel: "context-layered" },
+};
 
 function main() {
-  // Discover all subjects
+  // Discover all disciplines
   const contentRoot = join(process.cwd(), "content");
-  const subjectDirs = readdirSync(contentRoot)
+  const disciplineDirs = readdirSync(contentRoot)
     .filter((d) => existsSync(join(contentRoot, d, "graph.json")))
     .sort();
 
-  if (subjectDirs.length === 0) {
-    console.error("No subjects found in content/");
+  if (disciplineDirs.length === 0) {
+    console.error("No disciplines found in content/");
     process.exit(1);
   }
 
-  console.log(`Discovered ${subjectDirs.length} subjects: ${subjectDirs.join(", ")}`);
+  console.log(`Discovered ${disciplineDirs.length} disciplines: ${disciplineDirs.join(", ")}`);
 
-  // Load all subjects
-  const subjects: SubjectData[] = subjectDirs.map((d) => loadSubject(join(contentRoot, d)));
+  // Load all disciplines
+  const disciplines: DisciplineData[] = disciplineDirs.map((d) => loadDiscipline(join(contentRoot, d)));
 
   // Connect to D1 SQLite
   const dbPath = findDbFile();
   console.log(`Using database: ${dbPath}`);
   const db = new Database(dbPath);
 
-  // Phase 1: Clear all subjects, insert subjects + topics + content
-  // (All topics must exist before inserting cross-subject prerequisites)
-  for (const { graph, problems, examples } of subjects) {
-    console.log(`\n--- Importing ${graph.subjectName} ---`);
-    clearSubject(db, graph.subjectId);
+  // Phase 1: Clear all disciplines, upsert discipline rows, insert topics + content
+  // (All topics must exist before inserting cross-discipline prerequisites)
+  const upsertDiscipline = db.prepare(
+    "INSERT INTO disciplines (id, name, description, progression_model, created_at) VALUES (?, ?, ?, ?, ?) ON CONFLICT(id) DO UPDATE SET name = excluded.name, description = excluded.description, progression_model = excluded.progression_model"
+  );
 
-    // Insert subject
-    const insertSubject = db.prepare(
-      "INSERT INTO subjects (id, name, description, grade_range, topic_count, discipline_id, created_at) VALUES (?, ?, ?, ?, ?, ?, ?)"
-    );
-    insertSubject.run(
-      graph.subjectId,
-      graph.subjectName,
-      graph.description ?? "",
-      graph.gradeRange ?? "K-5",
-      graph.topics.length,
-      graph.disciplineId ?? "math",
-      new Date().toISOString()
-    );
-    console.log(`Inserted subject: ${graph.subjectName} (discipline: ${graph.disciplineId ?? "math"})`);
+  for (const { graph, problems, examples } of disciplines) {
+    const disciplineId = graph.disciplineId;
+    console.log(`\n--- Importing ${graph.name} (${disciplineId}) ---`);
+    clearDiscipline(db, disciplineId);
+
+    // Upsert discipline
+    const meta = DISCIPLINE_META[disciplineId] ?? { name: graph.name, description: graph.description ?? "", progressionModel: "mastery-gated" };
+    upsertDiscipline.run(disciplineId, meta.name, meta.description, meta.progressionModel, new Date().toISOString());
+    console.log(`Upserted discipline: ${meta.name} (${meta.progressionModel})`);
 
     // Insert topics
     const insertTopic = db.prepare(
-      "INSERT INTO topics (id, subject_id, name, description, depth, grade_level, strand, standard_code, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"
+      "INSERT INTO topics (id, discipline_id, name, description, depth, grade_level, strand, standard_code, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"
     );
     const insertTopics = db.transaction((topics: typeof graph.topics) => {
       for (const t of topics) {
-        insertTopic.run(t.id, graph.subjectId, t.name, t.description, 0, t.gradeLevel, t.strand ?? null, t.standardCode, new Date().toISOString());
+        insertTopic.run(t.id, disciplineId, t.name, t.description, 0, t.gradeLevel, t.strand ?? null, t.standardCode, new Date().toISOString());
       }
     });
     insertTopics(graph.topics);
     console.log(`Inserted ${graph.topics.length} topics`);
+
+    // Insert collections
+    if (graph.collections && graph.collections.length > 0) {
+      const insertCollection = db.prepare(
+        "INSERT INTO collections (id, primary_discipline_id, name, description, kind, grade_range, display_order, visibility, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, 'published', ?)"
+      );
+      const insertCollectionTopic = db.prepare(
+        "INSERT INTO collection_topics (collection_id, topic_id, sort_order) VALUES (?, ?, ?)"
+      );
+      const insertCollections = db.transaction(() => {
+        const now = new Date().toISOString();
+        for (let i = 0; i < graph.collections!.length; i++) {
+          const c = graph.collections![i];
+          insertCollection.run(c.id, disciplineId, c.name, c.description ?? "", c.kind ?? "grade-band", c.gradeRange ?? null, i, now);
+          for (let j = 0; j < c.topicIds.length; j++) {
+            insertCollectionTopic.run(c.id, c.topicIds[j], j);
+          }
+        }
+      });
+      insertCollections();
+      console.log(`Inserted ${graph.collections.length} collections`);
+    }
 
     // Insert instructional content (worked examples)
     const insertInstruction = db.prepare(
@@ -239,8 +279,8 @@ function main() {
     console.log(`Inserted ${assessmentCount} assessment content rows`);
   }
 
-  // Phase 2: Insert prerequisites and encompassings for all subjects
-  // (Now all topics from all subjects exist, so cross-subject FKs resolve)
+  // Phase 2: Insert prerequisites and encompassings for all disciplines
+  // (Now all topics from all disciplines exist, so cross-discipline FKs resolve)
   const insertPrereq = db.prepare(
     "INSERT INTO prerequisites (from_topic_id, to_topic_id, strength, type) VALUES (?, ?, ?, ?)"
   );
@@ -248,12 +288,12 @@ function main() {
     "INSERT INTO encompassings (parent_topic_id, child_topic_id, weight) VALUES (?, ?, ?)"
   );
 
-  for (const { graph } of subjects) {
-    console.log(`\n--- Inserting edges for ${graph.subjectName} ---`);
+  for (const { graph } of disciplines) {
+    console.log(`\n--- Inserting edges for ${graph.name} ---`);
 
     const insertPrereqs = db.transaction((prereqs: typeof graph.prerequisites) => {
       for (const p of prereqs) {
-        insertPrereq.run(resolveTopicId(p.from), resolveTopicId(p.to), p.strength, p.type ?? "required");
+        insertPrereq.run(resolveTopicId(p.from, graph.disciplineId), resolveTopicId(p.to, graph.disciplineId), p.strength, p.type ?? "required");
       }
     });
     insertPrereqs(graph.prerequisites);
@@ -278,9 +318,10 @@ function main() {
       adjacency.set(id, []);
     }
     for (const p of graph.prerequisites) {
-      if (!topicIds.has(p.from)) continue;
-      adjacency.get(p.from)!.push(p.to);
-      inDegree.set(p.to, (inDegree.get(p.to) ?? 0) + 1);
+      const fromId = resolveTopicId(p.from, graph.disciplineId);
+      if (!topicIds.has(fromId)) continue;
+      adjacency.get(fromId)!.push(resolveTopicId(p.to, graph.disciplineId));
+      inDegree.set(resolveTopicId(p.to, graph.disciplineId), (inDegree.get(resolveTopicId(p.to, graph.disciplineId)) ?? 0) + 1);
     }
 
     const queue: string[] = [];

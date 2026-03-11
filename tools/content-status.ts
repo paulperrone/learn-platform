@@ -35,9 +35,8 @@ type Topic = {
 };
 
 type Graph = {
-  subjectId: string;
-  subjectName: string;
   disciplineId: string;
+  name: string;
   topics: Topic[];
   prerequisites: { from: string; to: string }[];
   encompassings: { parent: string; child: string; weight: number }[];
@@ -87,7 +86,7 @@ function getDemandTarget(gradeLevel: number): Record<string, number> {
 const args = process.argv.slice(2);
 const jsonOutput = args.includes("--json");
 const filteredArgs = args.filter(a => a !== "--json");
-const subject = filteredArgs[0] ?? "math-foundations";
+const subject = filteredArgs[0] ?? "math";
 
 const contentDir = join(process.cwd(), "content", subject);
 
@@ -312,8 +311,8 @@ for (const topic of graph.topics) {
 
 if (jsonOutput) {
   const summary = {
-    subject: graph.subjectId,
-    subjectName: graph.subjectName,
+    discipline: graph.disciplineId,
+    disciplineName: graph.name,
     topicCount: graph.topics.length,
     totalProblems: Array.from(problemsByTopic.values()).reduce((s, ps) => s + ps.length, 0),
     totalExamples: Array.from(examplesByTopic.values()).reduce((s, es) => s + es.length, 0),
@@ -329,7 +328,7 @@ if (jsonOutput) {
   console.log(JSON.stringify(summary, null, 2));
 } else {
   // Terminal table output
-  console.log(`\n📊 Content Health: ${graph.subjectName} (${graph.subjectId})`);
+  console.log(`\n📊 Content Health: ${graph.name} (${graph.disciplineId})`);
   console.log(`${"=".repeat(90)}`);
   console.log(`Topics: ${graph.topics.length} | Problems: ${Array.from(problemsByTopic.values()).reduce((s, ps) => s + ps.length, 0)} | Examples: ${Array.from(examplesByTopic.values()).reduce((s, es) => s + es.length, 0)}`);
   console.log(`Prerequisites: ${graph.prerequisites.length} | Encompassings: ${graph.encompassings.length}`);

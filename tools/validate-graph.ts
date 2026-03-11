@@ -6,7 +6,7 @@
 import { readFileSync, existsSync, readdirSync } from "fs";
 import { join } from "path";
 
-const subject = process.argv[2] ?? "math-foundations";
+const subject = process.argv[2] ?? "math";
 const graphPath = join(process.cwd(), "content", subject, "graph.json");
 
 if (!existsSync(graphPath)) {
@@ -17,8 +17,8 @@ if (!existsSync(graphPath)) {
 const graph = JSON.parse(readFileSync(graphPath, "utf-8"));
 const topicIds = new Set<string>(graph.topics.map((t: any) => t.id));
 
-// Build cross-subject topic index for resolving "subject:topic-id" references
-const crossSubjectTopics = new Set<string>();
+// Build cross-discipline topic index for resolving "discipline:topic-id" references
+const crossDisciplineTopics = new Set<string>();
 const contentDir = join(process.cwd(), "content");
 if (existsSync(contentDir)) {
   for (const dir of readdirSync(contentDir)) {
@@ -27,7 +27,7 @@ if (existsSync(contentDir)) {
     if (existsSync(otherGraphPath)) {
       const otherGraph = JSON.parse(readFileSync(otherGraphPath, "utf-8"));
       for (const t of otherGraph.topics ?? []) {
-        crossSubjectTopics.add(`${dir}:${t.id}`);
+        crossDisciplineTopics.add(`${dir}:${t.id}`);
       }
     }
   }
@@ -36,7 +36,7 @@ if (existsSync(contentDir)) {
 let errors = 0;
 let warnings = 0;
 
-console.log(`Validating graph: ${graph.subjectName}`);
+console.log(`Validating graph: ${graph.name ?? graph.subjectName}`);
 console.log(`Topics: ${graph.topics.length}`);
 console.log(`Prerequisites: ${graph.prerequisites.length}`);
 console.log(`Encompassings: ${graph.encompassings?.length ?? 0}`);
@@ -56,10 +56,10 @@ for (const [id, count] of idCounts) {
 
 // Check prerequisites reference valid topics
 for (const p of graph.prerequisites) {
-  const fromIsCrossSubject = p.from.includes(":");
-  if (fromIsCrossSubject) {
-    if (!crossSubjectTopics.has(p.from)) {
-      console.error(`ERROR: Cross-subject prerequisite from unknown topic "${p.from}"`);
+  const fromIsCrossDiscipline = p.from.includes(":");
+  if (fromIsCrossDiscipline) {
+    if (!crossDisciplineTopics.has(p.from)) {
+      console.error(`ERROR: Cross-discipline prerequisite from unknown topic "${p.from}"`);
       errors++;
     }
   } else if (!topicIds.has(p.from)) {
@@ -165,12 +165,13 @@ for (const t of roots) {
 }
 
 // Discipline-specific validation
-if (graph.disciplineId) {
+const disciplineId = graph.disciplineId ?? subject;
+if (disciplineId) {
   // Detect progression model from known disciplines
   const contextLayeredDisciplines = ["history", "philosophy"];
   const flexibleDisciplines: string[] = [];
-  const isContextLayered = contextLayeredDisciplines.includes(graph.disciplineId);
-  const isFlexible = flexibleDisciplines.includes(graph.disciplineId);
+  const isContextLayered = contextLayeredDisciplines.includes(disciplineId);
+  const isFlexible = flexibleDisciplines.includes(disciplineId);
 
   if (isContextLayered) {
     console.log("\n--- Context-layered discipline checks ---");
@@ -184,11 +185,11 @@ if (graph.disciplineId) {
     console.log(`  Edge types: ${requiredCount} required (${total > 0 ? Math.round(100 * requiredCount / total) : 0}%), ${recommendedCount} recommended (${total > 0 ? Math.round(100 * recommendedCount / total) : 0}%), ${enrichingCount} enriching (${total > 0 ? Math.round(100 * enrichingCount / total) : 0}%)`);
 
     if (total > 0 && requiredCount / total > 0.3) {
-      console.warn(`  WARN: Context-layered subject has >30% required edges (${Math.round(100 * requiredCount / total)}%). Most edges should be recommended or enriching.`);
+      console.warn(`  WARN: Context-layered discipline has >30% required edges (${Math.round(100 * requiredCount / total)}%). Most edges should be recommended or enriching.`);
       warnings++;
     }
     if (total > 0 && (recommendedCount + enrichingCount) / total < 0.5) {
-      console.warn(`  WARN: Context-layered subject has <50% recommended+enriching edges. Expected mostly soft prerequisites.`);
+      console.warn(`  WARN: Context-layered discipline has <50% recommended+enriching edges. Expected mostly soft prerequisites.`);
       warnings++;
     }
 

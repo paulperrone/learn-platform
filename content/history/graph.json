@@ -1,8 +1,5 @@
 {
-  "subjectId": "us-history",
-  "subjectName": "US History",
   "description": "United States history from pre-colonial Indigenous peoples through contemporary America. Context-layered progression: survey depth covers key events and figures, contextual depth explores causes and connections. Aligned to C3 Framework and state social studies standards.",
-  "gradeRange": "3-8",
   "disciplineId": "history",
   "topics": [
     {
@@ -307,68 +304,383 @@
     }
   ],
   "prerequisites": [
-    {"from": "indigenous-peoples", "to": "european-exploration", "strength": 0.6, "type": "recommended"},
-    {"from": "european-exploration", "to": "colonial-life", "strength": 0.7, "type": "recommended"},
-    {"from": "colonial-life", "to": "colonial-economies", "strength": 0.7, "type": "recommended"},
-    {"from": "colonial-life", "to": "causes-of-revolution", "strength": 0.7, "type": "recommended"},
-    {"from": "colonial-economies", "to": "causes-of-revolution", "strength": 0.6, "type": "recommended"},
-    {"from": "causes-of-revolution", "to": "revolutionary-war", "strength": 0.8, "type": "recommended"},
-    {"from": "revolutionary-war", "to": "constitution-government", "strength": 0.8, "type": "recommended"},
-    {"from": "constitution-government", "to": "early-republic", "strength": 0.7, "type": "recommended"},
-    {"from": "early-republic", "to": "westward-expansion", "strength": 0.6, "type": "recommended"},
-    {"from": "colonial-economies", "to": "slavery-in-america", "strength": 0.6, "type": "recommended"},
-    {"from": "slavery-in-america", "to": "causes-of-civil-war", "strength": 0.8, "type": "recommended"},
-    {"from": "westward-expansion", "to": "causes-of-civil-war", "strength": 0.6, "type": "recommended"},
-    {"from": "causes-of-civil-war", "to": "civil-war", "strength": 0.8, "type": "recommended"},
-    {"from": "civil-war", "to": "reconstruction", "strength": 0.8, "type": "recommended"},
-    {"from": "reconstruction", "to": "industrial-revolution", "strength": 0.5, "type": "recommended"},
-    {"from": "industrial-revolution", "to": "immigration-urbanization", "strength": 0.7, "type": "recommended"},
-    {"from": "industrial-revolution", "to": "progressive-era", "strength": 0.6, "type": "recommended"},
-    {"from": "immigration-urbanization", "to": "progressive-era", "strength": 0.6, "type": "recommended"},
-    {"from": "progressive-era", "to": "world-war-i", "strength": 0.5, "type": "recommended"},
-    {"from": "world-war-i", "to": "roaring-twenties", "strength": 0.7, "type": "recommended"},
-    {"from": "roaring-twenties", "to": "great-depression", "strength": 0.7, "type": "recommended"},
-    {"from": "great-depression", "to": "world-war-ii", "strength": 0.6, "type": "recommended"},
-    {"from": "world-war-ii", "to": "cold-war", "strength": 0.7, "type": "recommended"},
-    {"from": "cold-war", "to": "vietnam-war", "strength": 0.7, "type": "recommended"},
-    {"from": "reconstruction", "to": "civil-rights-movement", "strength": 0.6, "type": "recommended"},
-    {"from": "cold-war", "to": "civil-rights-movement", "strength": 0.5, "type": "recommended"},
-    {"from": "civil-rights-movement", "to": "social-movements", "strength": 0.7, "type": "recommended"},
-    {"from": "vietnam-war", "to": "social-movements", "strength": 0.5, "type": "recommended"},
-    {"from": "cold-war", "to": "end-of-cold-war", "strength": 0.8, "type": "recommended"},
-    {"from": "end-of-cold-war", "to": "september-11-war-on-terror", "strength": 0.6, "type": "recommended"},
-
-    {"from": "ela-k5:key-details", "to": "primary-sources-intro", "strength": 0.7, "type": "required"},
-    {"from": "primary-sources-intro", "to": "analyzing-historical-documents", "strength": 0.8, "type": "required"},
-    {"from": "ela-k5:text-evidence", "to": "analyzing-historical-documents", "strength": 0.7, "type": "required"},
-
-    {"from": "indigenous-peoples", "to": "westward-expansion", "strength": 0.5, "type": "enriching"},
-    {"from": "causes-of-revolution", "to": "causes-of-civil-war", "strength": 0.5, "type": "enriching"},
-    {"from": "slavery-in-america", "to": "civil-rights-movement", "strength": 0.6, "type": "enriching"},
-    {"from": "progressive-era", "to": "social-movements", "strength": 0.5, "type": "enriching"},
-    {"from": "world-war-i", "to": "world-war-ii", "strength": 0.5, "type": "enriching"},
-    {"from": "constitution-government", "to": "civil-rights-movement", "strength": 0.5, "type": "enriching"},
-    {"from": "immigration-urbanization", "to": "social-movements", "strength": 0.4, "type": "enriching"},
-    {"from": "reconstruction", "to": "progressive-era", "strength": 0.4, "type": "enriching"},
-
-    {"from": "cause-and-effect-in-history", "to": "causes-of-revolution", "strength": 0.5, "type": "recommended"},
-    {"from": "cause-and-effect-in-history", "to": "causes-of-civil-war", "strength": 0.5, "type": "recommended"},
-    {"from": "historical-perspectives", "to": "civil-rights-movement", "strength": 0.5, "type": "recommended"},
-    {"from": "historical-perspectives", "to": "analyzing-historical-documents", "strength": 0.6, "type": "recommended"}
+    {
+      "from": "indigenous-peoples",
+      "to": "european-exploration",
+      "strength": 0.6,
+      "type": "recommended"
+    },
+    {
+      "from": "european-exploration",
+      "to": "colonial-life",
+      "strength": 0.7,
+      "type": "recommended"
+    },
+    {
+      "from": "colonial-life",
+      "to": "colonial-economies",
+      "strength": 0.7,
+      "type": "recommended"
+    },
+    {
+      "from": "colonial-life",
+      "to": "causes-of-revolution",
+      "strength": 0.7,
+      "type": "recommended"
+    },
+    {
+      "from": "colonial-economies",
+      "to": "causes-of-revolution",
+      "strength": 0.6,
+      "type": "recommended"
+    },
+    {
+      "from": "causes-of-revolution",
+      "to": "revolutionary-war",
+      "strength": 0.8,
+      "type": "recommended"
+    },
+    {
+      "from": "revolutionary-war",
+      "to": "constitution-government",
+      "strength": 0.8,
+      "type": "recommended"
+    },
+    {
+      "from": "constitution-government",
+      "to": "early-republic",
+      "strength": 0.7,
+      "type": "recommended"
+    },
+    {
+      "from": "early-republic",
+      "to": "westward-expansion",
+      "strength": 0.6,
+      "type": "recommended"
+    },
+    {
+      "from": "colonial-economies",
+      "to": "slavery-in-america",
+      "strength": 0.6,
+      "type": "recommended"
+    },
+    {
+      "from": "slavery-in-america",
+      "to": "causes-of-civil-war",
+      "strength": 0.8,
+      "type": "recommended"
+    },
+    {
+      "from": "westward-expansion",
+      "to": "causes-of-civil-war",
+      "strength": 0.6,
+      "type": "recommended"
+    },
+    {
+      "from": "causes-of-civil-war",
+      "to": "civil-war",
+      "strength": 0.8,
+      "type": "recommended"
+    },
+    {
+      "from": "civil-war",
+      "to": "reconstruction",
+      "strength": 0.8,
+      "type": "recommended"
+    },
+    {
+      "from": "reconstruction",
+      "to": "industrial-revolution",
+      "strength": 0.5,
+      "type": "recommended"
+    },
+    {
+      "from": "industrial-revolution",
+      "to": "immigration-urbanization",
+      "strength": 0.7,
+      "type": "recommended"
+    },
+    {
+      "from": "industrial-revolution",
+      "to": "progressive-era",
+      "strength": 0.6,
+      "type": "recommended"
+    },
+    {
+      "from": "immigration-urbanization",
+      "to": "progressive-era",
+      "strength": 0.6,
+      "type": "recommended"
+    },
+    {
+      "from": "progressive-era",
+      "to": "world-war-i",
+      "strength": 0.5,
+      "type": "recommended"
+    },
+    {
+      "from": "world-war-i",
+      "to": "roaring-twenties",
+      "strength": 0.7,
+      "type": "recommended"
+    },
+    {
+      "from": "roaring-twenties",
+      "to": "great-depression",
+      "strength": 0.7,
+      "type": "recommended"
+    },
+    {
+      "from": "great-depression",
+      "to": "world-war-ii",
+      "strength": 0.6,
+      "type": "recommended"
+    },
+    {
+      "from": "world-war-ii",
+      "to": "cold-war",
+      "strength": 0.7,
+      "type": "recommended"
+    },
+    {
+      "from": "cold-war",
+      "to": "vietnam-war",
+      "strength": 0.7,
+      "type": "recommended"
+    },
+    {
+      "from": "reconstruction",
+      "to": "civil-rights-movement",
+      "strength": 0.6,
+      "type": "recommended"
+    },
+    {
+      "from": "cold-war",
+      "to": "civil-rights-movement",
+      "strength": 0.5,
+      "type": "recommended"
+    },
+    {
+      "from": "civil-rights-movement",
+      "to": "social-movements",
+      "strength": 0.7,
+      "type": "recommended"
+    },
+    {
+      "from": "vietnam-war",
+      "to": "social-movements",
+      "strength": 0.5,
+      "type": "recommended"
+    },
+    {
+      "from": "cold-war",
+      "to": "end-of-cold-war",
+      "strength": 0.8,
+      "type": "recommended"
+    },
+    {
+      "from": "end-of-cold-war",
+      "to": "september-11-war-on-terror",
+      "strength": 0.6,
+      "type": "recommended"
+    },
+    {
+      "from": "ela:key-details",
+      "to": "primary-sources-intro",
+      "strength": 0.7,
+      "type": "required"
+    },
+    {
+      "from": "primary-sources-intro",
+      "to": "analyzing-historical-documents",
+      "strength": 0.8,
+      "type": "required"
+    },
+    {
+      "from": "ela:text-evidence",
+      "to": "analyzing-historical-documents",
+      "strength": 0.7,
+      "type": "required"
+    },
+    {
+      "from": "indigenous-peoples",
+      "to": "westward-expansion",
+      "strength": 0.5,
+      "type": "enriching"
+    },
+    {
+      "from": "causes-of-revolution",
+      "to": "causes-of-civil-war",
+      "strength": 0.5,
+      "type": "enriching"
+    },
+    {
+      "from": "slavery-in-america",
+      "to": "civil-rights-movement",
+      "strength": 0.6,
+      "type": "enriching"
+    },
+    {
+      "from": "progressive-era",
+      "to": "social-movements",
+      "strength": 0.5,
+      "type": "enriching"
+    },
+    {
+      "from": "world-war-i",
+      "to": "world-war-ii",
+      "strength": 0.5,
+      "type": "enriching"
+    },
+    {
+      "from": "constitution-government",
+      "to": "civil-rights-movement",
+      "strength": 0.5,
+      "type": "enriching"
+    },
+    {
+      "from": "immigration-urbanization",
+      "to": "social-movements",
+      "strength": 0.4,
+      "type": "enriching"
+    },
+    {
+      "from": "reconstruction",
+      "to": "progressive-era",
+      "strength": 0.4,
+      "type": "enriching"
+    },
+    {
+      "from": "cause-and-effect-in-history",
+      "to": "causes-of-revolution",
+      "strength": 0.5,
+      "type": "recommended"
+    },
+    {
+      "from": "cause-and-effect-in-history",
+      "to": "causes-of-civil-war",
+      "strength": 0.5,
+      "type": "recommended"
+    },
+    {
+      "from": "historical-perspectives",
+      "to": "civil-rights-movement",
+      "strength": 0.5,
+      "type": "recommended"
+    },
+    {
+      "from": "historical-perspectives",
+      "to": "analyzing-historical-documents",
+      "strength": 0.6,
+      "type": "recommended"
+    }
   ],
   "encompassings": [
-    {"parent": "causes-of-revolution", "child": "colonial-economies", "weight": 0.4},
-    {"parent": "causes-of-civil-war", "child": "slavery-in-america", "weight": 0.5},
-    {"parent": "causes-of-civil-war", "child": "westward-expansion", "weight": 0.3},
-    {"parent": "civil-war", "child": "causes-of-civil-war", "weight": 0.4},
-    {"parent": "reconstruction", "child": "civil-war", "weight": 0.3},
-    {"parent": "world-war-ii", "child": "world-war-i", "weight": 0.3},
-    {"parent": "cold-war", "child": "world-war-ii", "weight": 0.3},
-    {"parent": "civil-rights-movement", "child": "reconstruction", "weight": 0.3},
-    {"parent": "social-movements", "child": "civil-rights-movement", "weight": 0.4},
-    {"parent": "progressive-era", "child": "immigration-urbanization", "weight": 0.3},
-    {"parent": "analyzing-historical-documents", "child": "primary-sources-intro", "weight": 0.5},
-    {"parent": "historical-perspectives", "child": "cause-and-effect-in-history", "weight": 0.3},
-    {"parent": "end-of-cold-war", "child": "cold-war", "weight": 0.4}
+    {
+      "parent": "causes-of-revolution",
+      "child": "colonial-economies",
+      "weight": 0.4
+    },
+    {
+      "parent": "causes-of-civil-war",
+      "child": "slavery-in-america",
+      "weight": 0.5
+    },
+    {
+      "parent": "causes-of-civil-war",
+      "child": "westward-expansion",
+      "weight": 0.3
+    },
+    {
+      "parent": "civil-war",
+      "child": "causes-of-civil-war",
+      "weight": 0.4
+    },
+    {
+      "parent": "reconstruction",
+      "child": "civil-war",
+      "weight": 0.3
+    },
+    {
+      "parent": "world-war-ii",
+      "child": "world-war-i",
+      "weight": 0.3
+    },
+    {
+      "parent": "cold-war",
+      "child": "world-war-ii",
+      "weight": 0.3
+    },
+    {
+      "parent": "civil-rights-movement",
+      "child": "reconstruction",
+      "weight": 0.3
+    },
+    {
+      "parent": "social-movements",
+      "child": "civil-rights-movement",
+      "weight": 0.4
+    },
+    {
+      "parent": "progressive-era",
+      "child": "immigration-urbanization",
+      "weight": 0.3
+    },
+    {
+      "parent": "analyzing-historical-documents",
+      "child": "primary-sources-intro",
+      "weight": 0.5
+    },
+    {
+      "parent": "historical-perspectives",
+      "child": "cause-and-effect-in-history",
+      "weight": 0.3
+    },
+    {
+      "parent": "end-of-cold-war",
+      "child": "cold-war",
+      "weight": 0.4
+    }
+  ],
+  "name": "History",
+  "collections": [
+    {
+      "id": "us-history-survey",
+      "name": "US History Survey",
+      "kind": "grade-band",
+      "gradeRange": "3-8",
+      "topicIds": [
+        "indigenous-peoples",
+        "european-exploration",
+        "colonial-life",
+        "colonial-economies",
+        "causes-of-revolution",
+        "revolutionary-war",
+        "constitution-government",
+        "early-republic",
+        "westward-expansion",
+        "slavery-in-america",
+        "causes-of-civil-war",
+        "civil-war",
+        "reconstruction",
+        "industrial-revolution",
+        "immigration-urbanization",
+        "progressive-era",
+        "world-war-i",
+        "roaring-twenties",
+        "great-depression",
+        "world-war-ii",
+        "cold-war",
+        "civil-rights-movement",
+        "vietnam-war",
+        "social-movements",
+        "end-of-cold-war",
+        "september-11-war-on-terror",
+        "primary-sources-intro",
+        "analyzing-historical-documents",
+        "cause-and-effect-in-history",
+        "historical-perspectives"
+      ]
+    }
   ]
 }

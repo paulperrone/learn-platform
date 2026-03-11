@@ -1,8 +1,5 @@
 {
-  "subjectId": "ela-k5",
-  "subjectName": "English Language Arts K-5",
   "description": "English Language Arts covering phonics & decoding, vocabulary, grammar & conventions, reading comprehension, and writing basics. Grades K-5, aligned to Common Core ELA standards.",
-  "gradeRange": "0-5",
   "disciplineId": "ela",
   "topics": [
     {
@@ -657,153 +654,867 @@
     }
   ],
   "prerequisites": [
-    {"from": "letter-names", "to": "consonant-sounds", "strength": 1.0, "type": "required"},
-    {"from": "letter-names", "to": "short-vowel-sounds", "strength": 1.0, "type": "required"},
-    {"from": "consonant-sounds", "to": "cvc-blending", "strength": 1.0, "type": "required"},
-    {"from": "short-vowel-sounds", "to": "cvc-blending", "strength": 1.0, "type": "required"},
-    {"from": "letter-names", "to": "sight-words-k", "strength": 0.8, "type": "required"},
-    {"from": "cvc-blending", "to": "consonant-digraphs", "strength": 1.0, "type": "required"},
-    {"from": "cvc-blending", "to": "long-vowel-patterns", "strength": 1.0, "type": "required"},
-    {"from": "consonant-digraphs", "to": "one-syllable-decoding", "strength": 1.0, "type": "required"},
-    {"from": "long-vowel-patterns", "to": "one-syllable-decoding", "strength": 1.0, "type": "required"},
-    {"from": "sight-words-k", "to": "sight-words-1", "strength": 1.0, "type": "required"},
-    {"from": "long-vowel-patterns", "to": "vowel-teams-advanced", "strength": 1.0, "type": "required"},
-    {"from": "one-syllable-decoding", "to": "two-syllable-words", "strength": 1.0, "type": "required"},
-    {"from": "vowel-teams-advanced", "to": "two-syllable-words", "strength": 0.8, "type": "required"},
-    {"from": "long-vowel-patterns", "to": "r-controlled-vowels", "strength": 1.0, "type": "required"},
-    {"from": "two-syllable-words", "to": "multisyllabic-decoding", "strength": 1.0, "type": "required"},
-    {"from": "r-controlled-vowels", "to": "multisyllabic-decoding", "strength": 0.8, "type": "required"},
-    {"from": "multisyllabic-decoding", "to": "morphological-decoding", "strength": 1.0, "type": "required"},
-    {"from": "prefixes-suffixes", "to": "morphological-decoding", "strength": 0.8, "type": "required"},
-
-    {"from": "cvc-blending", "to": "inflectional-endings", "strength": 0.8, "type": "required"},
-    {"from": "sight-words-k", "to": "context-clues-basic", "strength": 0.7, "type": "required"},
-    {"from": "inflectional-endings", "to": "root-words", "strength": 1.0, "type": "required"},
-    {"from": "root-words", "to": "common-prefixes", "strength": 1.0, "type": "required"},
-    {"from": "root-words", "to": "common-suffixes", "strength": 1.0, "type": "required"},
-    {"from": "common-prefixes", "to": "prefixes-suffixes", "strength": 1.0, "type": "required"},
-    {"from": "common-suffixes", "to": "prefixes-suffixes", "strength": 1.0, "type": "required"},
-    {"from": "context-clues-basic", "to": "context-clues-intermediate", "strength": 1.0, "type": "required"},
-    {"from": "prefixes-suffixes", "to": "greek-latin-roots", "strength": 1.0, "type": "required"},
-    {"from": "context-clues-intermediate", "to": "figurative-language", "strength": 0.8, "type": "required"},
-    {"from": "greek-latin-roots", "to": "academic-vocabulary", "strength": 1.0, "type": "required"},
-    {"from": "context-clues-intermediate", "to": "academic-vocabulary", "strength": 0.8, "type": "required"},
-
-    {"from": "complete-sentences", "to": "capitalization-basic", "strength": 1.0, "type": "required"},
-    {"from": "complete-sentences", "to": "end-punctuation", "strength": 1.0, "type": "required"},
-    {"from": "complete-sentences", "to": "nouns", "strength": 0.8, "type": "required"},
-    {"from": "complete-sentences", "to": "verbs-present-past", "strength": 0.8, "type": "required"},
-    {"from": "nouns", "to": "singular-plural-nouns", "strength": 1.0, "type": "required"},
-    {"from": "singular-plural-nouns", "to": "subject-verb-agreement", "strength": 1.0, "type": "required"},
-    {"from": "verbs-present-past", "to": "subject-verb-agreement", "strength": 1.0, "type": "required"},
-    {"from": "nouns", "to": "pronouns", "strength": 0.8, "type": "required"},
-    {"from": "nouns", "to": "adjectives", "strength": 0.8, "type": "required"},
-    {"from": "verbs-present-past", "to": "adverbs", "strength": 0.8, "type": "required"},
-    {"from": "adjectives", "to": "adverbs", "strength": 0.7, "type": "required"},
-    {"from": "complete-sentences", "to": "conjunctions-basic", "strength": 0.8, "type": "required"},
-    {"from": "end-punctuation", "to": "commas-series", "strength": 0.8, "type": "required"},
-    {"from": "verbs-present-past", "to": "verb-tenses", "strength": 1.0, "type": "required"},
-    {"from": "nouns", "to": "possessives-apostrophes", "strength": 0.8, "type": "required"},
-    {"from": "conjunctions-basic", "to": "complex-sentences", "strength": 1.0, "type": "required"},
-    {"from": "subject-verb-agreement", "to": "complex-sentences", "strength": 0.8, "type": "required"},
-    {"from": "verb-tenses", "to": "progressive-verb-tenses", "strength": 1.0, "type": "required"},
-    {"from": "complex-sentences", "to": "prepositional-phrases", "strength": 0.8, "type": "required"},
-    {"from": "adverbs", "to": "prepositional-phrases", "strength": 0.7, "type": "required"},
-
-    {"from": "cvc-blending", "to": "key-details", "strength": 0.8, "type": "required"},
-    {"from": "key-details", "to": "retelling-sequence", "strength": 1.0, "type": "required"},
-    {"from": "key-details", "to": "story-elements", "strength": 1.0, "type": "required"},
-    {"from": "retelling-sequence", "to": "main-idea-details", "strength": 1.0, "type": "required"},
-    {"from": "key-details", "to": "text-features", "strength": 0.7, "type": "recommended"},
-    {"from": "story-elements", "to": "compare-contrast-basic", "strength": 0.7, "type": "recommended"},
-    {"from": "main-idea-details", "to": "compare-contrast-basic", "strength": 0.7, "type": "recommended"},
-    {"from": "retelling-sequence", "to": "cause-effect", "strength": 1.0, "type": "required"},
-    {"from": "main-idea-details", "to": "inference-basic", "strength": 1.0, "type": "required"},
-    {"from": "story-elements", "to": "inference-basic", "strength": 0.7, "type": "recommended"},
-    {"from": "cause-effect", "to": "text-structure", "strength": 1.0, "type": "required"},
-    {"from": "compare-contrast-basic", "to": "text-structure", "strength": 0.7, "type": "recommended"},
-    {"from": "main-idea-details", "to": "authors-purpose", "strength": 1.0, "type": "required"},
-    {"from": "text-features", "to": "authors-purpose", "strength": 0.7, "type": "recommended"},
-    {"from": "story-elements", "to": "point-of-view", "strength": 1.0, "type": "required"},
-    {"from": "inference-basic", "to": "point-of-view", "strength": 0.7, "type": "recommended"},
-    {"from": "inference-basic", "to": "text-evidence", "strength": 1.0, "type": "required"},
-    {"from": "inference-basic", "to": "theme", "strength": 1.0, "type": "required"},
-    {"from": "point-of-view", "to": "theme", "strength": 0.7, "type": "recommended"},
-    {"from": "text-evidence", "to": "compare-contrast-advanced", "strength": 1.0, "type": "required"},
-    {"from": "authors-purpose", "to": "compare-contrast-advanced", "strength": 0.7, "type": "recommended"},
-    {"from": "text-structure", "to": "compare-contrast-advanced", "strength": 0.7, "type": "recommended"},
-
-    {"from": "complete-sentences", "to": "sentence-writing", "strength": 1.0, "type": "required"},
-    {"from": "capitalization-basic", "to": "sentence-writing", "strength": 1.0, "type": "required"},
-    {"from": "end-punctuation", "to": "sentence-writing", "strength": 1.0, "type": "required"},
-    {"from": "sentence-writing", "to": "descriptive-sentences", "strength": 1.0, "type": "required"},
-    {"from": "adjectives", "to": "descriptive-sentences", "strength": 0.8, "type": "required"},
-    {"from": "sentence-writing", "to": "opinion-writing-basic", "strength": 1.0, "type": "required"},
-    {"from": "sentence-writing", "to": "informational-writing-basic", "strength": 1.0, "type": "required"},
-    {"from": "sentence-writing", "to": "narrative-writing-basic", "strength": 1.0, "type": "required"},
-    {"from": "opinion-writing-basic", "to": "paragraph-structure", "strength": 1.0, "type": "required"},
-    {"from": "informational-writing-basic", "to": "paragraph-structure", "strength": 1.0, "type": "required"},
-    {"from": "conjunctions-basic", "to": "paragraph-structure", "strength": 0.7, "type": "required"},
-    {"from": "commas-series", "to": "paragraph-structure", "strength": 0.7, "type": "required"},
-    {"from": "paragraph-structure", "to": "linking-words-transitions", "strength": 1.0, "type": "required"},
-    {"from": "complex-sentences", "to": "linking-words-transitions", "strength": 0.8, "type": "required"},
-    {"from": "paragraph-structure", "to": "opinion-writing-structured", "strength": 1.0, "type": "required"},
-    {"from": "linking-words-transitions", "to": "opinion-writing-structured", "strength": 1.0, "type": "required"},
-    {"from": "text-evidence", "to": "opinion-writing-structured", "strength": 0.7, "type": "recommended"},
-    {"from": "paragraph-structure", "to": "informational-writing-structured", "strength": 1.0, "type": "required"},
-    {"from": "linking-words-transitions", "to": "informational-writing-structured", "strength": 1.0, "type": "required"},
-    {"from": "paragraph-structure", "to": "narrative-writing-structured", "strength": 1.0, "type": "required"},
-    {"from": "linking-words-transitions", "to": "narrative-writing-structured", "strength": 1.0, "type": "required"},
-    {"from": "narrative-writing-basic", "to": "narrative-writing-structured", "strength": 1.0, "type": "required"}
+    {
+      "from": "letter-names",
+      "to": "consonant-sounds",
+      "strength": 1.0,
+      "type": "required"
+    },
+    {
+      "from": "letter-names",
+      "to": "short-vowel-sounds",
+      "strength": 1.0,
+      "type": "required"
+    },
+    {
+      "from": "consonant-sounds",
+      "to": "cvc-blending",
+      "strength": 1.0,
+      "type": "required"
+    },
+    {
+      "from": "short-vowel-sounds",
+      "to": "cvc-blending",
+      "strength": 1.0,
+      "type": "required"
+    },
+    {
+      "from": "letter-names",
+      "to": "sight-words-k",
+      "strength": 0.8,
+      "type": "required"
+    },
+    {
+      "from": "cvc-blending",
+      "to": "consonant-digraphs",
+      "strength": 1.0,
+      "type": "required"
+    },
+    {
+      "from": "cvc-blending",
+      "to": "long-vowel-patterns",
+      "strength": 1.0,
+      "type": "required"
+    },
+    {
+      "from": "consonant-digraphs",
+      "to": "one-syllable-decoding",
+      "strength": 1.0,
+      "type": "required"
+    },
+    {
+      "from": "long-vowel-patterns",
+      "to": "one-syllable-decoding",
+      "strength": 1.0,
+      "type": "required"
+    },
+    {
+      "from": "sight-words-k",
+      "to": "sight-words-1",
+      "strength": 1.0,
+      "type": "required"
+    },
+    {
+      "from": "long-vowel-patterns",
+      "to": "vowel-teams-advanced",
+      "strength": 1.0,
+      "type": "required"
+    },
+    {
+      "from": "one-syllable-decoding",
+      "to": "two-syllable-words",
+      "strength": 1.0,
+      "type": "required"
+    },
+    {
+      "from": "vowel-teams-advanced",
+      "to": "two-syllable-words",
+      "strength": 0.8,
+      "type": "required"
+    },
+    {
+      "from": "long-vowel-patterns",
+      "to": "r-controlled-vowels",
+      "strength": 1.0,
+      "type": "required"
+    },
+    {
+      "from": "two-syllable-words",
+      "to": "multisyllabic-decoding",
+      "strength": 1.0,
+      "type": "required"
+    },
+    {
+      "from": "r-controlled-vowels",
+      "to": "multisyllabic-decoding",
+      "strength": 0.8,
+      "type": "required"
+    },
+    {
+      "from": "multisyllabic-decoding",
+      "to": "morphological-decoding",
+      "strength": 1.0,
+      "type": "required"
+    },
+    {
+      "from": "prefixes-suffixes",
+      "to": "morphological-decoding",
+      "strength": 0.8,
+      "type": "required"
+    },
+    {
+      "from": "cvc-blending",
+      "to": "inflectional-endings",
+      "strength": 0.8,
+      "type": "required"
+    },
+    {
+      "from": "sight-words-k",
+      "to": "context-clues-basic",
+      "strength": 0.7,
+      "type": "required"
+    },
+    {
+      "from": "inflectional-endings",
+      "to": "root-words",
+      "strength": 1.0,
+      "type": "required"
+    },
+    {
+      "from": "root-words",
+      "to": "common-prefixes",
+      "strength": 1.0,
+      "type": "required"
+    },
+    {
+      "from": "root-words",
+      "to": "common-suffixes",
+      "strength": 1.0,
+      "type": "required"
+    },
+    {
+      "from": "common-prefixes",
+      "to": "prefixes-suffixes",
+      "strength": 1.0,
+      "type": "required"
+    },
+    {
+      "from": "common-suffixes",
+      "to": "prefixes-suffixes",
+      "strength": 1.0,
+      "type": "required"
+    },
+    {
+      "from": "context-clues-basic",
+      "to": "context-clues-intermediate",
+      "strength": 1.0,
+      "type": "required"
+    },
+    {
+      "from": "prefixes-suffixes",
+      "to": "greek-latin-roots",
+      "strength": 1.0,
+      "type": "required"
+    },
+    {
+      "from": "context-clues-intermediate",
+      "to": "figurative-language",
+      "strength": 0.8,
+      "type": "required"
+    },
+    {
+      "from": "greek-latin-roots",
+      "to": "academic-vocabulary",
+      "strength": 1.0,
+      "type": "required"
+    },
+    {
+      "from": "context-clues-intermediate",
+      "to": "academic-vocabulary",
+      "strength": 0.8,
+      "type": "required"
+    },
+    {
+      "from": "complete-sentences",
+      "to": "capitalization-basic",
+      "strength": 1.0,
+      "type": "required"
+    },
+    {
+      "from": "complete-sentences",
+      "to": "end-punctuation",
+      "strength": 1.0,
+      "type": "required"
+    },
+    {
+      "from": "complete-sentences",
+      "to": "nouns",
+      "strength": 0.8,
+      "type": "required"
+    },
+    {
+      "from": "complete-sentences",
+      "to": "verbs-present-past",
+      "strength": 0.8,
+      "type": "required"
+    },
+    {
+      "from": "nouns",
+      "to": "singular-plural-nouns",
+      "strength": 1.0,
+      "type": "required"
+    },
+    {
+      "from": "singular-plural-nouns",
+      "to": "subject-verb-agreement",
+      "strength": 1.0,
+      "type": "required"
+    },
+    {
+      "from": "verbs-present-past",
+      "to": "subject-verb-agreement",
+      "strength": 1.0,
+      "type": "required"
+    },
+    {
+      "from": "nouns",
+      "to": "pronouns",
+      "strength": 0.8,
+      "type": "required"
+    },
+    {
+      "from": "nouns",
+      "to": "adjectives",
+      "strength": 0.8,
+      "type": "required"
+    },
+    {
+      "from": "verbs-present-past",
+      "to": "adverbs",
+      "strength": 0.8,
+      "type": "required"
+    },
+    {
+      "from": "adjectives",
+      "to": "adverbs",
+      "strength": 0.7,
+      "type": "required"
+    },
+    {
+      "from": "complete-sentences",
+      "to": "conjunctions-basic",
+      "strength": 0.8,
+      "type": "required"
+    },
+    {
+      "from": "end-punctuation",
+      "to": "commas-series",
+      "strength": 0.8,
+      "type": "required"
+    },
+    {
+      "from": "verbs-present-past",
+      "to": "verb-tenses",
+      "strength": 1.0,
+      "type": "required"
+    },
+    {
+      "from": "nouns",
+      "to": "possessives-apostrophes",
+      "strength": 0.8,
+      "type": "required"
+    },
+    {
+      "from": "conjunctions-basic",
+      "to": "complex-sentences",
+      "strength": 1.0,
+      "type": "required"
+    },
+    {
+      "from": "subject-verb-agreement",
+      "to": "complex-sentences",
+      "strength": 0.8,
+      "type": "required"
+    },
+    {
+      "from": "verb-tenses",
+      "to": "progressive-verb-tenses",
+      "strength": 1.0,
+      "type": "required"
+    },
+    {
+      "from": "complex-sentences",
+      "to": "prepositional-phrases",
+      "strength": 0.8,
+      "type": "required"
+    },
+    {
+      "from": "adverbs",
+      "to": "prepositional-phrases",
+      "strength": 0.7,
+      "type": "required"
+    },
+    {
+      "from": "cvc-blending",
+      "to": "key-details",
+      "strength": 0.8,
+      "type": "required"
+    },
+    {
+      "from": "key-details",
+      "to": "retelling-sequence",
+      "strength": 1.0,
+      "type": "required"
+    },
+    {
+      "from": "key-details",
+      "to": "story-elements",
+      "strength": 1.0,
+      "type": "required"
+    },
+    {
+      "from": "retelling-sequence",
+      "to": "main-idea-details",
+      "strength": 1.0,
+      "type": "required"
+    },
+    {
+      "from": "key-details",
+      "to": "text-features",
+      "strength": 0.7,
+      "type": "recommended"
+    },
+    {
+      "from": "story-elements",
+      "to": "compare-contrast-basic",
+      "strength": 0.7,
+      "type": "recommended"
+    },
+    {
+      "from": "main-idea-details",
+      "to": "compare-contrast-basic",
+      "strength": 0.7,
+      "type": "recommended"
+    },
+    {
+      "from": "retelling-sequence",
+      "to": "cause-effect",
+      "strength": 1.0,
+      "type": "required"
+    },
+    {
+      "from": "main-idea-details",
+      "to": "inference-basic",
+      "strength": 1.0,
+      "type": "required"
+    },
+    {
+      "from": "story-elements",
+      "to": "inference-basic",
+      "strength": 0.7,
+      "type": "recommended"
+    },
+    {
+      "from": "cause-effect",
+      "to": "text-structure",
+      "strength": 1.0,
+      "type": "required"
+    },
+    {
+      "from": "compare-contrast-basic",
+      "to": "text-structure",
+      "strength": 0.7,
+      "type": "recommended"
+    },
+    {
+      "from": "main-idea-details",
+      "to": "authors-purpose",
+      "strength": 1.0,
+      "type": "required"
+    },
+    {
+      "from": "text-features",
+      "to": "authors-purpose",
+      "strength": 0.7,
+      "type": "recommended"
+    },
+    {
+      "from": "story-elements",
+      "to": "point-of-view",
+      "strength": 1.0,
+      "type": "required"
+    },
+    {
+      "from": "inference-basic",
+      "to": "point-of-view",
+      "strength": 0.7,
+      "type": "recommended"
+    },
+    {
+      "from": "inference-basic",
+      "to": "text-evidence",
+      "strength": 1.0,
+      "type": "required"
+    },
+    {
+      "from": "inference-basic",
+      "to": "theme",
+      "strength": 1.0,
+      "type": "required"
+    },
+    {
+      "from": "point-of-view",
+      "to": "theme",
+      "strength": 0.7,
+      "type": "recommended"
+    },
+    {
+      "from": "text-evidence",
+      "to": "compare-contrast-advanced",
+      "strength": 1.0,
+      "type": "required"
+    },
+    {
+      "from": "authors-purpose",
+      "to": "compare-contrast-advanced",
+      "strength": 0.7,
+      "type": "recommended"
+    },
+    {
+      "from": "text-structure",
+      "to": "compare-contrast-advanced",
+      "strength": 0.7,
+      "type": "recommended"
+    },
+    {
+      "from": "complete-sentences",
+      "to": "sentence-writing",
+      "strength": 1.0,
+      "type": "required"
+    },
+    {
+      "from": "capitalization-basic",
+      "to": "sentence-writing",
+      "strength": 1.0,
+      "type": "required"
+    },
+    {
+      "from": "end-punctuation",
+      "to": "sentence-writing",
+      "strength": 1.0,
+      "type": "required"
+    },
+    {
+      "from": "sentence-writing",
+      "to": "descriptive-sentences",
+      "strength": 1.0,
+      "type": "required"
+    },
+    {
+      "from": "adjectives",
+      "to": "descriptive-sentences",
+      "strength": 0.8,
+      "type": "required"
+    },
+    {
+      "from": "sentence-writing",
+      "to": "opinion-writing-basic",
+      "strength": 1.0,
+      "type": "required"
+    },
+    {
+      "from": "sentence-writing",
+      "to": "informational-writing-basic",
+      "strength": 1.0,
+      "type": "required"
+    },
+    {
+      "from": "sentence-writing",
+      "to": "narrative-writing-basic",
+      "strength": 1.0,
+      "type": "required"
+    },
+    {
+      "from": "opinion-writing-basic",
+      "to": "paragraph-structure",
+      "strength": 1.0,
+      "type": "required"
+    },
+    {
+      "from": "informational-writing-basic",
+      "to": "paragraph-structure",
+      "strength": 1.0,
+      "type": "required"
+    },
+    {
+      "from": "conjunctions-basic",
+      "to": "paragraph-structure",
+      "strength": 0.7,
+      "type": "required"
+    },
+    {
+      "from": "commas-series",
+      "to": "paragraph-structure",
+      "strength": 0.7,
+      "type": "required"
+    },
+    {
+      "from": "paragraph-structure",
+      "to": "linking-words-transitions",
+      "strength": 1.0,
+      "type": "required"
+    },
+    {
+      "from": "complex-sentences",
+      "to": "linking-words-transitions",
+      "strength": 0.8,
+      "type": "required"
+    },
+    {
+      "from": "paragraph-structure",
+      "to": "opinion-writing-structured",
+      "strength": 1.0,
+      "type": "required"
+    },
+    {
+      "from": "linking-words-transitions",
+      "to": "opinion-writing-structured",
+      "strength": 1.0,
+      "type": "required"
+    },
+    {
+      "from": "text-evidence",
+      "to": "opinion-writing-structured",
+      "strength": 0.7,
+      "type": "recommended"
+    },
+    {
+      "from": "paragraph-structure",
+      "to": "informational-writing-structured",
+      "strength": 1.0,
+      "type": "required"
+    },
+    {
+      "from": "linking-words-transitions",
+      "to": "informational-writing-structured",
+      "strength": 1.0,
+      "type": "required"
+    },
+    {
+      "from": "paragraph-structure",
+      "to": "narrative-writing-structured",
+      "strength": 1.0,
+      "type": "required"
+    },
+    {
+      "from": "linking-words-transitions",
+      "to": "narrative-writing-structured",
+      "strength": 1.0,
+      "type": "required"
+    },
+    {
+      "from": "narrative-writing-basic",
+      "to": "narrative-writing-structured",
+      "strength": 1.0,
+      "type": "required"
+    }
   ],
   "encompassings": [
-    {"parent": "one-syllable-decoding", "child": "cvc-blending", "weight": 0.7},
-    {"parent": "one-syllable-decoding", "child": "consonant-digraphs", "weight": 0.6},
-    {"parent": "two-syllable-words", "child": "one-syllable-decoding", "weight": 0.7},
-    {"parent": "multisyllabic-decoding", "child": "two-syllable-words", "weight": 0.7},
-    {"parent": "multisyllabic-decoding", "child": "r-controlled-vowels", "weight": 0.5},
-    {"parent": "morphological-decoding", "child": "multisyllabic-decoding", "weight": 0.6},
-    {"parent": "morphological-decoding", "child": "prefixes-suffixes", "weight": 0.5},
-    {"parent": "sight-words-1", "child": "sight-words-k", "weight": 0.8},
-
-    {"parent": "prefixes-suffixes", "child": "common-prefixes", "weight": 0.8},
-    {"parent": "prefixes-suffixes", "child": "common-suffixes", "weight": 0.8},
-    {"parent": "academic-vocabulary", "child": "greek-latin-roots", "weight": 0.6},
-    {"parent": "academic-vocabulary", "child": "context-clues-intermediate", "weight": 0.5},
-    {"parent": "context-clues-intermediate", "child": "context-clues-basic", "weight": 0.7},
-    {"parent": "greek-latin-roots", "child": "root-words", "weight": 0.5},
-
-    {"parent": "subject-verb-agreement", "child": "singular-plural-nouns", "weight": 0.6},
-    {"parent": "subject-verb-agreement", "child": "verbs-present-past", "weight": 0.6},
-    {"parent": "complex-sentences", "child": "conjunctions-basic", "weight": 0.7},
-    {"parent": "complex-sentences", "child": "subject-verb-agreement", "weight": 0.5},
-    {"parent": "prepositional-phrases", "child": "adverbs", "weight": 0.4},
-    {"parent": "progressive-verb-tenses", "child": "verb-tenses", "weight": 0.7},
-    {"parent": "verb-tenses", "child": "verbs-present-past", "weight": 0.7},
-
-    {"parent": "main-idea-details", "child": "key-details", "weight": 0.7},
-    {"parent": "main-idea-details", "child": "retelling-sequence", "weight": 0.6},
-    {"parent": "inference-basic", "child": "main-idea-details", "weight": 0.6},
-    {"parent": "inference-basic", "child": "story-elements", "weight": 0.4},
-    {"parent": "text-evidence", "child": "inference-basic", "weight": 0.7},
-    {"parent": "theme", "child": "inference-basic", "weight": 0.6},
-    {"parent": "theme", "child": "point-of-view", "weight": 0.4},
-    {"parent": "compare-contrast-advanced", "child": "compare-contrast-basic", "weight": 0.6},
-    {"parent": "compare-contrast-advanced", "child": "text-evidence", "weight": 0.5},
-    {"parent": "compare-contrast-advanced", "child": "authors-purpose", "weight": 0.4},
-    {"parent": "text-structure", "child": "cause-effect", "weight": 0.6},
-    {"parent": "text-structure", "child": "compare-contrast-basic", "weight": 0.5},
-
-    {"parent": "paragraph-structure", "child": "sentence-writing", "weight": 0.6},
-    {"parent": "paragraph-structure", "child": "opinion-writing-basic", "weight": 0.5},
-    {"parent": "paragraph-structure", "child": "informational-writing-basic", "weight": 0.5},
-    {"parent": "opinion-writing-structured", "child": "paragraph-structure", "weight": 0.6},
-    {"parent": "opinion-writing-structured", "child": "opinion-writing-basic", "weight": 0.5},
-    {"parent": "informational-writing-structured", "child": "paragraph-structure", "weight": 0.6},
-    {"parent": "informational-writing-structured", "child": "informational-writing-basic", "weight": 0.5},
-    {"parent": "narrative-writing-structured", "child": "paragraph-structure", "weight": 0.6},
-    {"parent": "narrative-writing-structured", "child": "narrative-writing-basic", "weight": 0.6},
-    {"parent": "linking-words-transitions", "child": "conjunctions-basic", "weight": 0.5},
-    {"parent": "descriptive-sentences", "child": "sentence-writing", "weight": 0.6}
+    {
+      "parent": "one-syllable-decoding",
+      "child": "cvc-blending",
+      "weight": 0.7
+    },
+    {
+      "parent": "one-syllable-decoding",
+      "child": "consonant-digraphs",
+      "weight": 0.6
+    },
+    {
+      "parent": "two-syllable-words",
+      "child": "one-syllable-decoding",
+      "weight": 0.7
+    },
+    {
+      "parent": "multisyllabic-decoding",
+      "child": "two-syllable-words",
+      "weight": 0.7
+    },
+    {
+      "parent": "multisyllabic-decoding",
+      "child": "r-controlled-vowels",
+      "weight": 0.5
+    },
+    {
+      "parent": "morphological-decoding",
+      "child": "multisyllabic-decoding",
+      "weight": 0.6
+    },
+    {
+      "parent": "morphological-decoding",
+      "child": "prefixes-suffixes",
+      "weight": 0.5
+    },
+    {
+      "parent": "sight-words-1",
+      "child": "sight-words-k",
+      "weight": 0.8
+    },
+    {
+      "parent": "prefixes-suffixes",
+      "child": "common-prefixes",
+      "weight": 0.8
+    },
+    {
+      "parent": "prefixes-suffixes",
+      "child": "common-suffixes",
+      "weight": 0.8
+    },
+    {
+      "parent": "academic-vocabulary",
+      "child": "greek-latin-roots",
+      "weight": 0.6
+    },
+    {
+      "parent": "academic-vocabulary",
+      "child": "context-clues-intermediate",
+      "weight": 0.5
+    },
+    {
+      "parent": "context-clues-intermediate",
+      "child": "context-clues-basic",
+      "weight": 0.7
+    },
+    {
+      "parent": "greek-latin-roots",
+      "child": "root-words",
+      "weight": 0.5
+    },
+    {
+      "parent": "subject-verb-agreement",
+      "child": "singular-plural-nouns",
+      "weight": 0.6
+    },
+    {
+      "parent": "subject-verb-agreement",
+      "child": "verbs-present-past",
+      "weight": 0.6
+    },
+    {
+      "parent": "complex-sentences",
+      "child": "conjunctions-basic",
+      "weight": 0.7
+    },
+    {
+      "parent": "complex-sentences",
+      "child": "subject-verb-agreement",
+      "weight": 0.5
+    },
+    {
+      "parent": "prepositional-phrases",
+      "child": "adverbs",
+      "weight": 0.4
+    },
+    {
+      "parent": "progressive-verb-tenses",
+      "child": "verb-tenses",
+      "weight": 0.7
+    },
+    {
+      "parent": "verb-tenses",
+      "child": "verbs-present-past",
+      "weight": 0.7
+    },
+    {
+      "parent": "main-idea-details",
+      "child": "key-details",
+      "weight": 0.7
+    },
+    {
+      "parent": "main-idea-details",
+      "child": "retelling-sequence",
+      "weight": 0.6
+    },
+    {
+      "parent": "inference-basic",
+      "child": "main-idea-details",
+      "weight": 0.6
+    },
+    {
+      "parent": "inference-basic",
+      "child": "story-elements",
+      "weight": 0.4
+    },
+    {
+      "parent": "text-evidence",
+      "child": "inference-basic",
+      "weight": 0.7
+    },
+    {
+      "parent": "theme",
+      "child": "inference-basic",
+      "weight": 0.6
+    },
+    {
+      "parent": "theme",
+      "child": "point-of-view",
+      "weight": 0.4
+    },
+    {
+      "parent": "compare-contrast-advanced",
+      "child": "compare-contrast-basic",
+      "weight": 0.6
+    },
+    {
+      "parent": "compare-contrast-advanced",
+      "child": "text-evidence",
+      "weight": 0.5
+    },
+    {
+      "parent": "compare-contrast-advanced",
+      "child": "authors-purpose",
+      "weight": 0.4
+    },
+    {
+      "parent": "text-structure",
+      "child": "cause-effect",
+      "weight": 0.6
+    },
+    {
+      "parent": "text-structure",
+      "child": "compare-contrast-basic",
+      "weight": 0.5
+    },
+    {
+      "parent": "paragraph-structure",
+      "child": "sentence-writing",
+      "weight": 0.6
+    },
+    {
+      "parent": "paragraph-structure",
+      "child": "opinion-writing-basic",
+      "weight": 0.5
+    },
+    {
+      "parent": "paragraph-structure",
+      "child": "informational-writing-basic",
+      "weight": 0.5
+    },
+    {
+      "parent": "opinion-writing-structured",
+      "child": "paragraph-structure",
+      "weight": 0.6
+    },
+    {
+      "parent": "opinion-writing-structured",
+      "child": "opinion-writing-basic",
+      "weight": 0.5
+    },
+    {
+      "parent": "informational-writing-structured",
+      "child": "paragraph-structure",
+      "weight": 0.6
+    },
+    {
+      "parent": "informational-writing-structured",
+      "child": "informational-writing-basic",
+      "weight": 0.5
+    },
+    {
+      "parent": "narrative-writing-structured",
+      "child": "paragraph-structure",
+      "weight": 0.6
+    },
+    {
+      "parent": "narrative-writing-structured",
+      "child": "narrative-writing-basic",
+      "weight": 0.6
+    },
+    {
+      "parent": "linking-words-transitions",
+      "child": "conjunctions-basic",
+      "weight": 0.5
+    },
+    {
+      "parent": "descriptive-sentences",
+      "child": "sentence-writing",
+      "weight": 0.6
+    }
+  ],
+  "name": "English Language Arts",
+  "collections": [
+    {
+      "id": "ela-k5",
+      "name": "ELA K-5",
+      "kind": "grade-band",
+      "gradeRange": "K-5",
+      "topicIds": [
+        "letter-names",
+        "consonant-sounds",
+        "short-vowel-sounds",
+        "cvc-blending",
+        "sight-words-k",
+        "consonant-digraphs",
+        "long-vowel-patterns",
+        "one-syllable-decoding",
+        "sight-words-1",
+        "vowel-teams-advanced",
+        "two-syllable-words",
+        "r-controlled-vowels",
+        "multisyllabic-decoding",
+        "morphological-decoding",
+        "inflectional-endings",
+        "context-clues-basic",
+        "root-words",
+        "common-prefixes",
+        "common-suffixes",
+        "prefixes-suffixes",
+        "context-clues-intermediate",
+        "greek-latin-roots",
+        "figurative-language",
+        "academic-vocabulary",
+        "complete-sentences",
+        "capitalization-basic",
+        "end-punctuation",
+        "nouns",
+        "verbs-present-past",
+        "singular-plural-nouns",
+        "subject-verb-agreement",
+        "pronouns",
+        "adjectives",
+        "adverbs",
+        "conjunctions-basic",
+        "commas-series",
+        "verb-tenses",
+        "possessives-apostrophes",
+        "complex-sentences",
+        "progressive-verb-tenses",
+        "prepositional-phrases",
+        "key-details",
+        "retelling-sequence",
+        "story-elements",
+        "main-idea-details",
+        "text-features",
+        "compare-contrast-basic",
+        "cause-effect",
+        "inference-basic",
+        "text-structure",
+        "authors-purpose",
+        "point-of-view",
+        "text-evidence",
+        "theme",
+        "compare-contrast-advanced",
+        "sentence-writing",
+        "descriptive-sentences",
+        "opinion-writing-basic",
+        "informational-writing-basic",
+        "narrative-writing-basic",
+        "paragraph-structure",
+        "linking-words-transitions",
+        "opinion-writing-structured",
+        "informational-writing-structured",
+        "narrative-writing-structured"
+      ]
+    }
   ]
 }

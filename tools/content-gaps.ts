@@ -40,8 +40,8 @@ type Topic = {
 };
 
 type Graph = {
-  subjectId: string;
-  subjectName: string;
+  disciplineId: string;
+  name: string;
   topics: Topic[];
   prerequisites: { from: string; to: string }[];
   encompassings: { parent: string; child: string; weight: number }[];
@@ -67,7 +67,7 @@ function getExpectedDemands(gradeLevel: number): string[] {
 const args = process.argv.slice(2);
 const jsonOutput = args.includes("--json");
 const filteredArgs = args.filter(a => a !== "--json");
-const subject = filteredArgs[0] ?? "math-foundations";
+const subject = filteredArgs[0] ?? "math";
 
 const contentDir = join(process.cwd(), "content", subject);
 
@@ -289,8 +289,8 @@ gaps.sort((a, b) => b.impact - a.impact);
 
 if (jsonOutput) {
   const summary = {
-    subject: graph.subjectId,
-    subjectName: graph.subjectName,
+    discipline: graph.disciplineId,
+    disciplineName: graph.name,
     totalGaps: gaps.length,
     byPriority: {
       critical: gaps.filter(g => g.priority === "critical").length,
@@ -306,7 +306,7 @@ if (jsonOutput) {
   };
   console.log(JSON.stringify(summary, null, 2));
 } else {
-  console.log(`\n🔍 Content Gaps: ${graph.subjectName} (${graph.subjectId})`);
+  console.log(`\n🔍 Content Gaps: ${graph.name} (${graph.disciplineId})`);
   console.log(`${"=".repeat(90)}`);
 
   const byPriority = {

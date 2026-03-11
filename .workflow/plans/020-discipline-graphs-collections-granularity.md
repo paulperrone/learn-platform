@@ -22,9 +22,9 @@ Replace the current `discipline -> subject -> topic` ownership model with `disci
 
 ## Progress
 
-**Completed:** Phase 1 (architecture decision recorded, hierarchy updated to discipline-owned topics + collections, stale fixed-count granularity guidance replaced with split heuristics and density guardrails, collections clarified as cross-discipline-capable packaging)
+**Completed:** Phase 1, Phase 2 (schema migration, content directory restructure, import pipeline update, graph merge, validation)
 **In Progress:** —
-**Next:** Phase 2
+**Next:** Phase 3
 
 ---
 
@@ -74,7 +74,7 @@ Replace the current `discipline -> subject -> topic` ownership model with `disci
 
 ---
 
-## Phase 2: Schema, Content Pipeline, and Graph Merge
+## Phase 2: Schema, Content Pipeline, and Graph Merge ✅
 **Goal:** Implement the new data model end-to-end: schema migration, content directory restructure, import pipeline update, and graph merge — so that `just import-content` loads discipline-owned topics with collections.
 
 **Why this is implementation, not research:** The full `subjectId` inventory was completed during planning. Every callsite is catalogued below in the Reference Appendix. The schema design, API shape, and migration semantics are all determined. This phase executes against that inventory.
@@ -87,165 +87,37 @@ subjects: id, disciplineId, name, description, gradeRange, topicCount, createdAt
 ```
 The only attribute unique to `subjects` is `gradeRange`, which is derived data (every topic already has `gradeLevel`, and collections carry their own `gradeRange`). `topicCount` is a derived count. `name` and `description` move to collections.
 
-1. [ ] [IMP] Modify `topics` table (`schema.ts` lines 25-38):
-   - Replace `subjectId` column with `disciplineId` referencing `disciplines.id`
-   - Rename index `topics_subject_idx` → `topics_discipline_idx` on `disciplineId`
-   - Topic columns unchanged: `id, disciplineId, name, description, depth, gradeLevel, strand, standardCode, createdAt`
-
-2. [ ] [IMP] Add `collections` table:
-   ```
-   collections: id (text PK), primaryDisciplineId (text FK→disciplines, NOT NULL),
-     name (text NOT NULL), description (text NOT NULL),
-     kind (text NOT NULL DEFAULT 'grade-band'),  -- 'grade-band' | 'strand' | 'remediation' | 'exam-prep' | 'thematic'
-     gradeRange (text),  -- e.g. "3-5", nullable for strand/thematic collections
-     displayOrder (integer NOT NULL DEFAULT 0),
-     visibility (text NOT NULL DEFAULT 'published'),  -- 'published' | 'draft' | 'archived'
-     createdAt (text NOT NULL)
-   ```
-   - Index on `primaryDisciplineId`
-   - `primaryDisciplineId` indicates the main discipline; interdisciplinary collections still have one primary but their topics may come from other disciplines
-
-3. [ ] [IMP] Add `collection_topics` join table:
-   ```
-   collection_topics: id (integer PK autoincrement),
-     collectionId (text FK→collections NOT NULL),
-     topicId (text FK→topics NOT NULL),
-     sortOrder (integer NOT NULL DEFAULT 0)
-   ```
-   - Unique index on `(collectionId, topicId)`
-   - Index on `topicId` for reverse lookups ("which collections contain this topic?")
-   - No discipline constraint — topics from any discipline can join any collection
-
-4. [ ] [IMP] Replace `user_subject_presentation` (`schema.ts` lines 302-315) with `user_discipline_presentation`:
-   - Same columns but `subjectId` → `disciplineId` referencing `disciplines.id`
-   - Rename unique index `usp_user_subject_idx` → `udp_user_discipline_idx` on `(userId, disciplineId)`
-   - **Rationale:** Presentation level (primary/intermediate/standard/advanced) is inherently per-discipline — a student's reading level in math is different from history, and it shouldn't reset at an arbitrary grade boundary within the same discipline
-
-5. [ ] [IMP] Replace `presentation_drift_log` (`schema.ts` lines 317-329):
-   - `subjectId` → `disciplineId` referencing `disciplines.id`
-   - Rename index `pdl_user_subject_idx` → `pdl_user_discipline_idx`
-
-6. [ ] [IMP] Update `diagnostic_sessions` (`schema.ts` lines 413-430):
-   - `subjectId` → `disciplineId` referencing `disciplines.id`
-   - **Semantic change:** Diagnostics scope to the entire discipline graph (all of math K-8), not a subject slice (just K-5). This is the correct behavior — one adaptive binary search across all grade levels.
-
-7. [ ] [IMP] Drop `subjects` table entirely:
-   - Remove the table definition from `schema.ts` (lines 13-23)
-   - Remove the `subjects_discipline_idx` index
-   - Remove all `references(() => subjects.id)` foreign keys throughout the schema
-   - **D1 is disposable** — we don't need a data migration for existing rows; `just import-content` rebuilds everything
-
-8. [ ] [IMP] Generate Drizzle migration:
-   - Run `just db-generate` to create the migration SQL
-   - **Remember:** `$defaultFn()` is app-level only. Check generated SQL for NOT NULL columns and add `DEFAULT` clauses manually where needed (see LEARNINGS.md).
-   - Run `just db-migrate` to apply
+1. [x] [IMP] Modify `topics` table: `subjectId` → `disciplineId` referencing `disciplines.id`, index renamed
+2. [x] [IMP] Add `collections` table with `primaryDisciplineId`, `kind`, `gradeRange`, `displayOrder`, `visibility`
+3. [x] [IMP] Add `collection_topics` join table with unique `(collectionId, topicId)` and `topicId` reverse index
+4. [x] [IMP] Replace `user_subject_presentation` with `user_discipline_presentation`
+5. [x] [IMP] Replace `presentation_drift_log` `subjectId` → `disciplineId`
+6. [x] [IMP] Update `diagnostic_sessions` `subjectId` → `disciplineId`
+7. [x] [IMP] Drop `subjects` table entirely from schema
+8. [x] [IMP] Hand-wrote migration SQL (`0028_discipline_owned_topics.sql`), applied via `just db-migrate`
 
 ### 2.2 Content Directory Restructure
 
-**Current content directories:**
-- `content/math-foundations/` (92 topics, K-5, discipline: math)
-- `content/math-middle/` (115 topics, 6-8, discipline: math)
-- `content/ela-k5/` (65 topics, discipline: ela)
-- `content/us-history/` (30 topics, discipline: history)
-
-**Target content directories** (one directory per discipline):
-- `content/math/` (207 topics, K-8, one graph.json)
-- `content/ela/` (65 topics)
-- `content/history/` (30 topics)
-
-1. [ ] [IMP] Merge `content/math-foundations/` and `content/math-middle/` into `content/math/`:
-   - Create `content/math/graph.json` by combining both graph definitions:
-     - Union all topics (check for ID collisions — topic IDs should be unique since they encode the skill, not the subject)
-     - Union all prerequisite edges
-     - Union all encompassing edges
-     - **Remove cross-subject prefix syntax:** Any `from` values like `math-foundations:decimal-operations` become just `decimal-operations` since they're now same-discipline edges
-   - Merge `problems/` and `problems-generated/` directories from both sources into `content/math/problems/` and `content/math/problems-generated/`
-   - Merge `examples/` directories
-   - **graph.json top-level fields change:**
-     - `subjectId` → removed (or kept temporarily for backward compat during transition)
-     - Add `disciplineId: "math"`
-     - `subjectName` → `disciplineName: "Mathematics"` (or just `name`)
-     - `gradeRange` moves to collection definitions
-   - **New graph.json field: `collections`** — define initial collections inline:
-     ```json
-     "collections": [
-       { "id": "math-k-2", "name": "Math K-2", "kind": "grade-band", "gradeRange": "K-2", "topicIds": ["count-to-10", ...] },
-       { "id": "math-3-5", "name": "Math 3-5", "kind": "grade-band", "gradeRange": "3-5", "topicIds": ["..."] },
-       { "id": "math-6-8", "name": "Math 6-8", "kind": "grade-band", "gradeRange": "6-8", "topicIds": ["..."] }
-     ]
-     ```
-   - **Keep collections minimal (3 proof-of-concept):** `math-k-2`, `math-3-5`, `math-6-8`. Granular per-grade and per-strand collections are deferred until after the topic expansion in Plan 019 Phase 4.5B, when there are enough fine-grained topics to meaningfully package.
-
-2. [ ] [IMP] Rename `content/ela-k5/` → `content/ela/`:
-   - Update graph.json: add `disciplineId: "ela"`, remove `subjectId`/`subjectName`
-   - Add a single collection: `ela-k5` (all topics, `gradeRange: "K-5"`)
-
-3. [ ] [IMP] Rename `content/us-history/` → `content/history/`:
-   - Update graph.json: add `disciplineId: "history"`, remove `subjectId`/`subjectName`
-   - Add a single collection: `us-history-survey` (all topics)
-
-4. [ ] [IMP] Remove old content directories after merge is validated:
-   - Delete `content/math-foundations/` and `content/math-middle/`
+1. [x] [IMP] Merged `math-foundations/` + `math-middle/` → `content/math/`: 207 topics, 321 prereqs, 263 encompassings, 3 collections (K-2, 3-5, 6-8). Cross-subject prefixes stripped, cross-discipline refs updated (`ela-k5:` → `ela:`)
+2. [x] [IMP] Renamed `ela-k5/` → `content/ela/`: `disciplineId: "ela"`, 1 collection (`ela-k5`)
+3. [x] [IMP] Renamed `us-history/` → `content/history/`: `disciplineId: "history"`, 1 collection (`us-history-survey`). Cross-discipline refs updated (`ela-k5:` → `ela:`)
+4. [x] [IMP] Removed old content directories
 
 ### 2.3 Import Pipeline Update
 
-**File:** `tools/import-content.ts` (329 lines)
-
-The import pipeline currently: discovers `content/*/graph.json` → inserts into `subjects` table → inserts topics with `subject_id` → inserts edges → validates DAG → computes depths.
-
-1. [ ] [IMP] Update `GraphDefinition` type (`import-content.ts` lines 22-48):
-   ```typescript
-   type GraphDefinition = {
-     disciplineId: string;
-     name: string;
-     description?: string;
-     topics: { ... }[];
-     prerequisites: { ... }[];
-     encompassings?: { ... }[];
-     collections?: {
-       id: string;
-       name: string;
-       description?: string;
-       kind?: string;
-       gradeRange?: string;
-       topicIds: string[];
-     }[];
-   };
-   ```
-   - Remove `subjectId`, `subjectName`, `gradeRange` from top level
-   - Add `collections` array
-
-2. [ ] [IMP] Update `clearSubject()` → `clearDiscipline()` (`import-content.ts` lines 129-146):
-   - All DELETE queries change from `WHERE subject_id = ?` to `WHERE discipline_id = ?` on the topics table
-   - Remove `DELETE FROM subjects` — no subjects table to clear
-   - Add `DELETE FROM collection_topics` and `DELETE FROM collections` for the discipline
-
-3. [ ] [IMP] Update main import logic (`import-content.ts` lines 151-326):
-   - Remove subject insert (`INSERT INTO subjects`)
-   - Change topic insert from `INSERT INTO topics (id, subject_id, ...)` to `INSERT INTO topics (id, discipline_id, ...)`
-   - Add collection insert: `INSERT INTO collections` then `INSERT INTO collection_topics`
-   - Ensure discipline row exists before inserting topics (upsert into `disciplines` table — the import should create/update the discipline from graph.json metadata)
-   - **Remove `resolveTopicId()` cross-subject prefix stripping** (`import-content.ts` line 149): No longer needed since all math topics are in one graph. Keep cross-discipline prefix support if `from` contains a colon where the prefix doesn't match the current discipline.
-
-4. [ ] [IMP] Update `tools/content-status.ts` and `tools/content-gaps.ts`:
-   - Replace subject references with discipline references
-   - Update content-status to report per-discipline and per-collection stats
-
-5. [ ] [IMP] Update `tools/validate-content.ts`:
-   - Validate discipline-owned graph structure (no `subjectId` references)
-   - Validate collection membership (all topicIds in collections exist in the graph)
-   - Validate no duplicate topic IDs within a discipline
-   - Cross-discipline edge validation: prefix must reference an existing discipline, not a subject
-
-6. [ ] [IMP] Update `tools/generate-content-pack.ts`:
-   - Replace subject-scoped download logic with discipline-scoped
+1. [x] [IMP] Rewrote `import-content.ts`: `GraphDefinition` with `disciplineId`, `collections`; `clearDiscipline()`; discipline upsert; collection insert; topic `discipline_id`; updated `resolveTopicId()` for cross-discipline only
+2. [x] [IMP] Updated `content-status.ts` and `content-gaps.ts`: replaced `subjectId`/`subjectName` with `disciplineId`/`name`
+3. [x] [IMP] Updated `validate-content.ts`: collection membership validation added
+4. [x] [IMP] Updated `validate-graph.ts`: cross-discipline ref handling, discipline terminology
+5. [x] [IMP] Updated `generate-content-pack.ts`: discipline-scoped metadata
+6. [x] [IMP] Updated `justfile`: default visualize subject → `math`
 
 ### 2.4 Validate Phase 2
 
-1. [ ] [VAL] Run `just validate-content` — all 3 disciplines pass DAG validation
-2. [ ] [VAL] Run `just db-migrate && just import-content` — all topics load under disciplines, collections populated
-3. [ ] [VAL] Verify merged math graph: 207 topics, all prerequisite edges intact, no orphaned cross-subject references
-4. [ ] [VAL] Run `just visualize math` — one connected graph spanning K-8
+1. [x] [VAL] `just validate-content` — all 3 disciplines pass DAG validation (0 errors)
+2. [x] [VAL] `just db-migrate && just import-content` — 302 topics loaded, 5 collections populated, 460 edges inserted
+3. [x] [VAL] Merged math graph verified: 207 topics, 321 prereqs, 263 encompassings, no orphaned cross-subject refs
+4. [x] [VAL] Database confirmed: no `subjects` table, `user_discipline_presentation` exists, `collections`/`collection_topics` populated
 
 **Validation:** `just import-content` succeeds with discipline-owned topics and collection memberships. No `subjects` table exists in the schema.
 

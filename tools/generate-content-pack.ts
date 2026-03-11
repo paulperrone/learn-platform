@@ -10,7 +10,7 @@
 import { readFileSync, writeFileSync, existsSync, readdirSync } from "fs";
 import { join, basename } from "path";
 
-const subject = process.argv[2] || "math-foundations";
+const subject = process.argv[2] || "math";
 const contentDir = join(process.cwd(), "content", subject);
 
 if (!existsSync(contentDir)) {
@@ -59,11 +59,10 @@ const pack = {
   meta: {
     version: "1.0.0",
     generatedAt: new Date().toISOString(),
-    subject: {
-      id: graph.subjectId,
-      name: graph.subjectName,
+    discipline: {
+      id: graph.disciplineId,
+      name: graph.name,
       description: graph.description,
-      gradeRange: graph.gradeRange,
     },
     counts: {
       topics: graph.topics.length,
@@ -92,7 +91,7 @@ writeFileSync(outPath, JSON.stringify(pack, null, 2));
 
 const sizeKB = Math.round(readFileSync(outPath).length / 1024);
 console.log(`Content pack generated: ${outPath}`);
-console.log(`  Subject: ${graph.subjectName}`);
+console.log(`  Discipline: ${graph.name}`);
 console.log(`  Topics: ${graph.topics.length}`);
 console.log(`  Problems: ${totalProblems}`);
 console.log(`  Worked Examples: ${totalExamples}`);
