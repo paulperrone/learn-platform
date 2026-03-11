@@ -1,6 +1,7 @@
 import { eq, and, sql } from "drizzle-orm";
 import type { DB } from "../db/index.js";
 import * as schema from "../db/schema.js";
+import { IMPLICIT_MASTERY_THRESHOLD } from "./diagnostic.js";
 
 type TopicEstimates = Record<string, number>;
 
@@ -19,7 +20,7 @@ export function createAccountMergeService(db: DB) {
     let created = 0;
 
     for (const [topicId, prob] of Object.entries(topicEstimates)) {
-      const isMastered = prob >= 0.6;
+      const isMastered = prob >= IMPLICIT_MASTERY_THRESHOLD;
       const isFrontier = frontierSet.has(topicId);
 
       if (!isMastered && !isFrontier) continue;

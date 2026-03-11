@@ -1,28 +1,28 @@
 {
-  "generatedAt": "2026-03-10T20:33:19.623Z",
+  "generatedAt": "2026-03-11T04:25:16.568Z",
   "seed": 42,
   "sessions": 5,
   "profiles": {
     "average-older": {
       "placementAccuracy": 0,
-      "finalMasteryPercent": 0.42391304347826086,
-      "sessionsTo50Mastery": 0,
-      "difficultyConvergencePoint": 86,
-      "sameStrandAdjacencyRate": 0.5700934579439252,
-      "reviewNewRatio": 0.04294478527607362,
-      "demandEntropy": 0.8936726197999104,
-      "remediationEvents": 199,
+      "finalMasteryPercent": 0.3695652173913043,
+      "sessionsTo50Mastery": null,
+      "difficultyConvergencePoint": 125,
+      "sameStrandAdjacencyRate": 0.7247386759581882,
+      "reviewNewRatio": 0.04794520547945205,
+      "demandEntropy": 1.1752680519992234,
+      "remediationEvents": 145,
       "fireReviewsSkipped": 0
     },
     "misconception-fractions": {
       "placementAccuracy": 0,
-      "finalMasteryPercent": 0.6521739130434783,
+      "finalMasteryPercent": 0.6847826086956522,
       "sessionsTo50Mastery": 0,
-      "difficultyConvergencePoint": null,
-      "sameStrandAdjacencyRate": 0.6486486486486487,
-      "reviewNewRatio": 0.0881057268722467,
-      "demandEntropy": 1.5119326690431394,
-      "remediationEvents": 77,
+      "difficultyConvergencePoint": 86,
+      "sameStrandAdjacencyRate": 0.6941176470588235,
+      "reviewNewRatio": 0.06285714285714286,
+      "demandEntropy": 1.5753684502119127,
+      "remediationEvents": 17,
       "fireReviewsSkipped": 0
     },
     "strong-older": {

@@ -3,6 +3,7 @@ import { createEmptyCard, fsrs, generatorParameters, type Card, type Grade, type
 import type { DB } from "../db/index.js";
 import * as schema from "../db/schema.js";
 import { createGraphService } from "./graph.js";
+import { IMPLICIT_MASTERY_THRESHOLD } from "./diagnostic.js";
 
 const defaultParams = generatorParameters({ enable_fuzz: true });
 const defaultFsrs = fsrs(defaultParams);
@@ -827,7 +828,7 @@ export function createSRSService(db: DB, fireDiagnostic?: FireDiagnosticConfig) 
       if (diagSession?.topicEstimatesJson) {
         const estimates: Record<string, number> = JSON.parse(diagSession.topicEstimatesJson);
         for (const [topicId, prob] of Object.entries(estimates)) {
-          if (prob >= 0.6 && !materializedIds.has(topicId)) {
+          if (prob >= IMPLICIT_MASTERY_THRESHOLD && !materializedIds.has(topicId)) {
             implicitMastered++;
           }
         }

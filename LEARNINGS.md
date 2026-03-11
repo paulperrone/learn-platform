@@ -874,3 +874,15 @@ Isolation experiments (4 modes × 3 profiles) show that `applyFIReCredit()` virt
 At L2 (30 sessions), Review/New Balance is WARN at 0.729 (target: 0.600 ± 0.05). At L3 (90 sessions), it degrades to FAIL at 0.860 — 86% reviews vs 14% new content. The review queue grows as topics enter SRS faster than students master them. This is a structural scaling issue: once a topic enters the review queue, it generates future review obligations. At shorter horizons, new topic introductions dilute the ratio; at longer horizons, the accumulated review backlog dominates.
 
 **Context:** This insight is only visible at L3 (90 sessions). L2 baselines mask the problem. Use `just evaluate-l3` and `just evaluate-compare-levels` to monitor cross-level trends. Fix options: more aggressive mastery thresholds, review compression, or review queue caps.
+
+---
+
+### 2026-03-11: Diagnostic credit propagation and mastery criterion are multiplicative — tune one at a time
+
+**Source:** Plan 019 Phase 4.5A
+**Area:** Diagnostic / mastery calibration
+
+Reducing diagnostic credit AND tightening mastery criterion simultaneously caused catastrophic mastery convergence failure (17→1 profiles reaching 50% at L2). Each change alone was viable (diagnostic reduction: 17→14, mastery tightening alone: untested in isolation because the interaction was discovered first). The correct approach: change diagnostic credit first, evaluate, then consider mastery criterion adjustment IF still needed.
+
+Strong-older plateauing at session 9 is a **content ceiling** problem (92 math-foundations topics), not a calibration problem. A 14-year-old who answers grade-5 math correctly genuinely knows K-5 math — giving them grade-0 topics to "prove" mastery is pedagogically wrong. Fix: multi-subject profiles + content expansion (Phase 4.5B), not stricter mastery.
+

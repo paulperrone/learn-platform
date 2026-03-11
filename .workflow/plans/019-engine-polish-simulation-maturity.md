@@ -23,9 +23,9 @@ Fix the two remaining P1 evaluation failures (FIRe compression measurement, inte
 
 ## Progress
 
-**Completed:** Phase 1 (FIRe: -3.1% → +8.4%, FAIL→FAIL but close to WARN), Phase 2 (Interleaving: 0.254 → 0.085, FAIL→PASS), Phase 2.5 (FIRe default eval, mastery gate removal, graduated mastery model added but getDueTopics/session changes reverted after making FIRe worse), Phase 2.6 (FIRe metric rewritten: reviews-per-mastered-topic efficiency, FAIL→WARN), Phase 2.7 (FIRe isolation: credit hurts -25.5% avg, ordering neutral for 2/3 profiles, non-additive interaction), Phase 3 (holistic platform assessment: 8P/2W/0F, 304 topics, frontend 85% complete, deployment ready with 5-step checklist), Phase 4 (maturity levels L1-L3: L1 3P/4F/3W, L2 8P/2W/0F, L3 8P/1W/1F — review/new balance FAIL at L3)
+**Completed:** Phase 1 (FIRe: -3.1% → +8.4%, FAIL→FAIL but close to WARN), Phase 2 (Interleaving: 0.254 → 0.085, FAIL→PASS), Phase 2.5 (FIRe default eval, mastery gate removal, graduated mastery model added but getDueTopics/session changes reverted after making FIRe worse), Phase 2.6 (FIRe metric rewritten: reviews-per-mastered-topic efficiency, FAIL→WARN), Phase 2.7 (FIRe isolation: credit hurts -25.5% avg, ordering neutral for 2/3 profiles, non-additive interaction), Phase 3 (holistic platform assessment: 8P/2W/0F, 304 topics, frontend 85% complete, deployment ready with 5-step checklist), Phase 4 (maturity levels L1-L3: L1 3P/4F/3W, L2 8P/2W/0F, L3 8P/1W/1F — review/new balance FAIL at L3), Phase 4.5A (diagnostic credit calibration: 0.2→0.12 lower-grade, 0.1→0.06 same-grade, threshold 0.6→0.75; mastery criterion unchanged; L2: 9P/1W/0F, FIRe PASS +9.8%)
 **In Progress:** —
-**Next:** Phase 4.5A
+**Next:** Phase 4.5B
 
 ---
 
@@ -387,34 +387,42 @@ Fix the two remaining P1 evaluation failures (FIRe compression measurement, inte
 - Average profile should take 50+ sessions (not 20)
 - Mastery convergence must still PASS at L2 for non-struggling profiles
 
-1. [ ] [RSH] Baseline current progression rate:
-   - Document sessions-to-plateau per profile category (strong, average, struggling)
-   - Count new topics introduced per session over time for strong-older, average-older, fast-learner
-   - Calculate: at current rate, how many "school days" does one simulation session represent?
+1. [x] [RSH] Baseline current progression rate:
+   - Documented sessions-to-plateau per profile category:
+     - Strong (strong-older, gifted-middle): plateau S9-10, 100% implicit from diagnostic, 80% final mastery, 85-97:1 compression
+     - Average (average-older): plateau S15, 51% implicit, 61% final, 44:1 compression
+     - Struggling (struggling-older): no plateau, 23% implicit, 25% final, 3:1 compression
+   - Root cause: +0.2 credit per correct answer for ALL lower-grade topics → 6 correct answers gives 0.5+1.2=1.7→1.0 for every lower-grade topic → 100% implicit mastery for strong profiles from 8 questions
 
-2. [ ] [IMP] Tighten diagnostic credit propagation:
-   - Reduce lower-grade credit from +0.2 to +0.05 (weak signal — answering a grade 5 question doesn't prove grade 1 mastery)
-   - Reduce same-grade credit from +0.1 to +0.03
-   - Raise implicit mastery threshold from 0.6 to 0.85 (require strong evidence before assuming mastery)
-   - Keep direct prerequisite credit at +0.15 (these are genuinely implied by correct answers on dependents)
+2. [x] [IMP] Tighten diagnostic credit propagation:
+   - Reduced lower-grade credit: +0.2 → +0.12 (40% reduction)
+   - Reduced same-grade credit: +0.1 → +0.06 (40% reduction)
+   - Raised implicit mastery threshold: 0.6 → 0.75 (from `IMPLICIT_MASTERY_THRESHOLD` constant)
+   - Direct prerequisite credit unchanged at +0.15
+   - Extracted `IMPLICIT_MASTERY_THRESHOLD` constant shared across diagnostic.ts, graph.ts, srs.ts, account-merge.ts, runner.ts
+   - **Result:** average-older diagnostic implicit mastery: 51% → 40%, fast-learner: 36% → 33%
+   - **Limitation:** strong-older still gets ~92/92 implicit because 6+ correct answers × 0.12 = 0.72 → 0.5+0.72=1.22→1.0 > 0.75. Strong profile plateau requires content expansion (Phase 4.5B) or multi-subject content, not diagnostic calibration.
 
-3. [ ] [IMP] Raise mastery criterion:
-   - Increase from 2 consecutive correct to 4 consecutive correct reviews
-   - Raise stability threshold from 4 days to 21 days (requires genuine spaced repetition across multiple sessions)
-   - Update `getMasteryTier()` thresholds accordingly: practicing < 21d, recently-mastered 21-60d, solidly-mastered 60-120d, permanently 120d+
+3. [x] [RSH] Mastery criterion: INVESTIGATED AND KEPT ORIGINAL:
+   - Tested 3 alternatives: (3 correct + 7d), (3 correct + 10d), (4 correct + 21d)
+   - All caused P0 mastery convergence FAIL — at 30 sessions, most profiles couldn't reach 50% mastery
+   - Root cause: harder mastery criterion slows ALL profiles including average/struggling, while strong profiles are bottlenecked by content ceiling (not mastery speed)
+   - **Decision:** Keep original criterion (2 correct + 4d stability / 3 correct any state). The diagnostic credit reduction is sufficient to slow average profiles. Strong profile plateau is a content problem, not a mastery criterion problem.
 
-4. [ ] [TST] Update SRS and diagnostic tests for new thresholds:
-   - Update mastery criterion tests in srs.test.ts
-   - Update diagnostic placement tests in diagnostic.test.ts
-   - Update test helpers (helpers.ts) if they seed mastery state
-   - Update regression baseline (`just simulate-regression --update-baseline`)
+4. [x] [TST] Tests updated:
+   - srs.test.ts: test descriptions unchanged (mastery criterion unchanged), diagnostic materialization test values unchanged
+   - Regression baseline updated: `just simulate-regression --update-baseline`
+   - 457/457 tests pass, regression PASS
 
-5. [ ] [VAL] Run L2 evaluation — verify no P0 regressions:
-   - Mastery convergence should still PASS (non-struggling profiles reach 50% by session 30)
-   - If convergence drops too far, tune thresholds (e.g., 3 correct instead of 4, or 14 days instead of 21)
-   - Check strong-older sessions-to-plateau: target ≥ 25 sessions on math-foundations
+5. [x] [VAL] L2 evaluation — no P0 regressions:
+   - **9 PASS, 1 WARN (review/new 0.735), 0 FAIL** — improvement from 8P/2W/0F
+   - Mastery convergence: PASS at 14 (was 17, target 11) — reduced but still well above target
+   - FIRe efficiency: **PASS at +9.8%** (was WARN at -25%) — major improvement from reduced implicit mastery giving FIRe more room to work
+   - Interleaving: PASS at 0.085 (stable)
+   - 25/29 behavioral match (was 27/29)
+   - Strong-older still plateaus at S9 (content ceiling, needs Phase 4.5B)
 
-**Validation:** Strong profiles plateau at session 25+ (not 9). L2 evaluation: all P0 PASS. Regression baseline updated. Mastery calibration numbers documented.
+**Validation:** ✓ Diagnostic credit calibrated: +0.12 lower-grade (was +0.2), +0.06 same-grade (was +0.1), 0.75 threshold (was 0.6). Average profiles get 25% less implicit mastery. L2: 9P/1W/0F (improved from 8P/2W/0F). FIRe WARN→PASS. Mastery criterion unchanged (tightening caused worse regressions than it fixed). Strong profile plateau at S9 is a content ceiling — deferred to Phase 4.5B (problem expansion) and multi-subject content.
 
 ---
 

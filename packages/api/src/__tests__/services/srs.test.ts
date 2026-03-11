@@ -267,7 +267,7 @@ describe("createSRSService", () => {
       const subj = await seedSubject({ id: "srs-mastery-diag-subj-1" });
       const topic = await seedTopic(subj.id, { id: "srs-mastery-diag-topic-1" });
 
-      // Simulate diagnostic materialization (now sets stability=15, ccr=3)
+      // Simulate diagnostic materialization (sets stability=15, ccr=3)
       await db.insert(schema.userTopicState).values({
         userId: user.id,
         topicId: topic.id,

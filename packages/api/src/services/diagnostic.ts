@@ -7,6 +7,14 @@ import type { PresentationDistribution } from "./content.js";
 import { gradeProblem } from "./grading.js";
 import type { Problem, DiagnosticResult, PresentationLevel } from "@learn/shared";
 
+/** Diagnostic estimate threshold for implicit mastery. Topics with estimate >= this
+ *  value are considered mastered without explicit SRS materialization. Raised from
+ *  0.6 to 0.75 to require stronger evidence before assuming mastery — with the
+ *  reduced credit propagation (+0.12 per correct answer for lower grades, down from
+ *  +0.2), a lower-grade topic needs ~3 confirming correct answers at higher grades
+ *  to reach implicit mastery (was 1-2 answers at 0.6). */
+export const IMPLICIT_MASTERY_THRESHOLD = 0.75;
+
 type TopicEstimates = Record<string, number>; // topicId -> probability of mastery (0-1)
 
 type DiagnosticState = {
@@ -193,20 +201,21 @@ export function createDiagnosticService(db: DB) {
     const topicGrade = topic?.gradeLevel ?? 0;
 
     if (correct) {
-      // Correct: credit this topic and all prerequisites (transitively by grade)
+      // Correct: credit this topic and propagate moderate signal to related topics.
+      // Lower-grade credit reduced from 0.2→0.12 and same-grade from 0.1→0.06.
+      // Combined with 0.75 implicit mastery threshold (up from 0.6), a lower-grade
+      // topic needs ~3 confirming correct answers at higher grades to reach implicit
+      // mastery (was 1-2 at previous settings).
       updated[topicId] = Math.min(1, (updated[topicId] ?? 0.5) + 0.35);
-      // Credit all topics at same or lower grade
       for (const t of allTopics) {
         if (t.id === topicId) continue;
         if (t.gradeLevel < topicGrade) {
-          // Strong credit for lower grades
-          updated[t.id] = Math.min(1, (updated[t.id] ?? 0.5) + 0.2);
+          updated[t.id] = Math.min(1, (updated[t.id] ?? 0.5) + 0.12);
         } else if (t.gradeLevel === topicGrade) {
-          // Mild credit for same grade
-          updated[t.id] = Math.min(1, (updated[t.id] ?? 0.5) + 0.1);
+          updated[t.id] = Math.min(1, (updated[t.id] ?? 0.5) + 0.06);
         }
       }
-      // Direct prereqs get extra credit
+      // Direct prereqs get stronger credit (genuinely implied by correct dependents)
       const prereqs = prereqMap.get(topicId) ?? [];
       for (const pid of prereqs) {
         updated[pid] = Math.min(1, (updated[pid] ?? 0.5) + 0.15);
@@ -301,7 +310,7 @@ export function createDiagnosticService(db: DB) {
   function computeEstimatedFrontier(
     estimates: TopicEstimates,
     prereqMap: Map<string, string[]>,
-    threshold = 0.6
+    threshold = IMPLICIT_MASTERY_THRESHOLD
   ): string[] {
     const frontier: string[] = [];
     for (const [topicId, prob] of Object.entries(estimates)) {
@@ -319,7 +328,7 @@ export function createDiagnosticService(db: DB) {
     const topicMap = new Map(allTopics.map((t) => [t.id, t]));
     let highestMasteredGrade = -1;
     for (const [topicId, prob] of Object.entries(estimates)) {
-      if (prob >= 0.6) {
+      if (prob >= IMPLICIT_MASTERY_THRESHOLD) {
         const topic = topicMap.get(topicId);
         if (topic && topic.gradeLevel > highestMasteredGrade) {
           highestMasteredGrade = topic.gradeLevel;
@@ -364,7 +373,7 @@ export function createDiagnosticService(db: DB) {
 
       // Check if all prerequisites are mastered (high estimate)
       const allPrereqsMastered = prereqs.length > 0 &&
-        prereqs.every((pId) => (estimates[pId] ?? 0.5) >= 0.6);
+        prereqs.every((pId) => (estimates[pId] ?? 0.5) >= IMPLICIT_MASTERY_THRESHOLD);
 
       if (allPrereqsMastered) {
         prereqMasteredTotal++;
@@ -455,18 +464,18 @@ export function createDiagnosticService(db: DB) {
     let mastered = 0;
     let frontierCount = 0;
 
-    // Compute placement grade: highest grade with mastery estimate >= 0.6
+    // Compute placement grade: highest grade with mastery estimate >= threshold
     let placementGrade = 0;
     for (const topic of allTopics) {
       const prob = estimates[topic.id] ?? 0.5;
-      if (prob >= 0.6 && topic.gradeLevel > placementGrade) {
+      if (prob >= IMPLICIT_MASTERY_THRESHOLD && topic.gradeLevel > placementGrade) {
         placementGrade = topic.gradeLevel;
       }
     }
 
     for (const topic of allTopics) {
       const prob = estimates[topic.id] ?? 0.5;
-      const isMastered = prob >= 0.6;
+      const isMastered = prob >= IMPLICIT_MASTERY_THRESHOLD;
       const isFrontier = frontierSet.has(topic.id);
 
       if (!isMastered && !isFrontier) continue;
@@ -505,6 +514,7 @@ export function createDiagnosticService(db: DB) {
             stability: isMastered ? 15 : 0,
             difficulty: isMastered ? 5 : 0,
             consecutiveCorrectReviews: isMastered ? 3 : 0,
+
             lastReview: isMastered ? now : null,
           })
           .where(eq(schema.userTopicState.id, existing.id));

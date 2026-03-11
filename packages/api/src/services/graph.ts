@@ -1,6 +1,7 @@
 import { eq, and, inArray, sql, desc } from "drizzle-orm";
 import type { DrizzleD1Database } from "drizzle-orm/d1";
 import * as schema from "../db/schema.js";
+import { IMPLICIT_MASTERY_THRESHOLD } from "./diagnostic.js";
 
 type DB = DrizzleD1Database<typeof schema>;
 
@@ -36,7 +37,7 @@ export function createGraphService(db: DB) {
       if (diagnosticSession?.topicEstimatesJson) {
         const estimates: Record<string, number> = JSON.parse(diagnosticSession.topicEstimatesJson);
         for (const [topicId, prob] of Object.entries(estimates)) {
-          if (prob >= 0.6) {
+          if (prob >= IMPLICIT_MASTERY_THRESHOLD) {
             masteredIds.add(topicId);
           }
         }
@@ -236,7 +237,7 @@ export function createGraphService(db: DB) {
       if (diagSession?.topicEstimatesJson) {
         const estimates: Record<string, number> = JSON.parse(diagSession.topicEstimatesJson);
         for (const [topicId, prob] of Object.entries(estimates)) {
-          if (prob >= 0.6) masteredIds.add(topicId);
+          if (prob >= IMPLICIT_MASTERY_THRESHOLD) masteredIds.add(topicId);
         }
       }
 

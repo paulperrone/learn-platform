@@ -3,7 +3,7 @@
  */
 import type { DB } from "../../packages/api/src/db/index.js";
 import { createSessionService } from "../../packages/api/src/services/session.js";
-import { createDiagnosticService } from "../../packages/api/src/services/diagnostic.js";
+import { createDiagnosticService, IMPLICIT_MASTERY_THRESHOLD } from "../../packages/api/src/services/diagnostic.js";
 import { createSRSService } from "../../packages/api/src/services/srs.js";
 import { createSimulationDb, createMultiSubjectSimulationDb, createSimUser } from "./db-setup.js";
 import { resolveAnswer } from "./answer-engine.js";
@@ -388,7 +388,7 @@ export class SimulationRunner {
     // Include implicitly mastered topics from diagnostic estimates
     const materializedIds = new Set(allState.map((r) => r.topicId));
     for (const [topicId, prob] of Object.entries(estimates)) {
-      if (prob >= 0.6 && !materializedIds.has(topicId) && !masteredTopicIds.includes(topicId)) {
+      if (prob >= IMPLICIT_MASTERY_THRESHOLD && !materializedIds.has(topicId) && !masteredTopicIds.includes(topicId)) {
         masteredTopicIds.push(topicId);
       }
     }
@@ -803,7 +803,7 @@ export class SimulationRunner {
       const estimates: Record<string, number> = JSON.parse(diagnosticSession.topicEstimatesJson);
       const materializedIds = new Set(topicStates.map((t) => t.topicId));
       for (const [topicId, prob] of Object.entries(estimates)) {
-        if (prob >= 0.6 && !materializedIds.has(topicId)) {
+        if (prob >= IMPLICIT_MASTERY_THRESHOLD && !materializedIds.has(topicId)) {
           implicitMastered++;
         }
       }

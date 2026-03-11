@@ -1447,3 +1447,25 @@ Tag each target in `targets.json` with `signal_source: "engine" | "content" | "b
 - Complete Phases 4-6 before any users: Delays real feedback by weeks; diminishing returns from simulation-only validation
 - Frontend polish first: Error handling gaps exist but don't block the happy path; alpha testers can tolerate rough edges
 - Pivot entirely to frontend/deployment: Would abandon L3 validation that could reveal long-term engine bugs
+
+---
+
+### 2026-03-11: Diagnostic credit calibration: moderate reduction + raised threshold, mastery criterion unchanged
+
+**Source:** Plan 019 Phase 4.5A
+**Area:** Diagnostic / SRS mastery calibration
+
+**Decision:** Reduce diagnostic credit propagation (+0.2→+0.12 lower-grade, +0.1→+0.06 same-grade) and raise implicit mastery threshold (0.6→0.75). Keep mastery criterion at 2 consecutive correct + 4d stability.
+
+**Why:**
+- Strong-older got 100% implicit mastery from 8 diagnostic questions (92/92 topics), plateauing at session 9 with 97:1 compression vs real instruction time
+- The +0.2 credit per correct answer for ALL lower-grade topics was too generous — a single correct grade-5 answer gave every grade-0 topic 40% credit toward mastery
+- Reduced credit + higher threshold means a lower-grade topic needs ~3 confirming correct answers at higher grades (was 1-2)
+- Mastery criterion tightening (tested 3 alternatives: 3+7d, 3+10d, 4+21d) caused P0 mastery convergence FAIL — harder mastery slows ALL profiles while strong profiles are bottlenecked by content ceiling, not mastery speed
+- Average-older diagnostic implicit mastery: 51% → 40%, FIRe efficiency: WARN -25% → PASS +9.8%
+- Strong-older still plateaus at S9 — this is a content ceiling problem (92 math-foundations topics) that needs Phase 4.5B or multi-subject profiles, not calibration
+
+**Alternatives rejected:**
+- Aggressive credit reduction (0.05/0.03 + 0.85 threshold): Only 1/29 profiles reached 50% mastery at L2. Diagnostic accuracy was destroyed — average profiles started with near-zero implicit mastery.
+- Distance-weighted credit (exponential decay by grade distance): Slightly better for strong profiles (79% vs 92% implicit) but pushed review/new balance from WARN to FAIL.
+- Mastery criterion tightening: All variants (3+7d, 3+10d, 4+21d) caused mastery convergence FAIL. The interaction between harder mastery and reduced diagnostic credit was multiplicative — each change alone was borderline, together they were catastrophic.
