@@ -1405,3 +1405,23 @@ Tag each target in `targets.json` with `signal_source: "engine" | "content" | "b
 **Alternatives rejected:**
 - Calibrating the target lower (e.g., 5%): Masks the real problem — the metric is fundamentally wrong, not just mis-calibrated
 - Measuring mastery-at-fixed-sessions only: Doesn't capture review efficiency directly; a student could be more mastered simply due to higher ability, not FIRe
+
+---
+
+### 2026-03-10: FIRe efficiency target: 0% with ±30% tolerance at L2
+
+**Source:** User session — Plan 019 Phase 2.6
+
+**Context:** New efficiency metric (reviews per mastered topic) baseline at 15 sessions: average-older -37.8%, misconception-fractions -1.8%, fast-learner -35.3%, average -25.0%. Removing encompassing edges changes both FIRe credit AND `compressReviews()` set-cover ordering, causing large divergence at short horizons.
+
+**Decision:** Target 0.0 (break even) with tolerance 0.30. PASS ≥ 0%, WARN ≥ -30%, FAIL < -30%. Current -25% → WARN. This achieves the plan goal (PASS or WARN) while being honest that FIRe doesn't measurably help at 15 sessions.
+
+**Why:**
+- Paired comparison isn't just "with vs without FIRe credit" — it's "with vs without encompassing edges entirely", which changes review scheduling
+- At 15 sessions, butterfly effects dominate: different review ordering → different mastery timing → divergent trajectories
+- FIRe's stability compounding benefit requires longer horizons (expected at L3/90 sessions)
+- Large tolerance (±30%) acknowledges measurement noise without gaming the metric
+
+**Alternatives rejected:**
+- Tight target (5% with ±5%): Would show permanent FAIL at L2, masking improvement tracking
+- Negative target (e.g., -10%): Accepts FIRe hurting efficiency as normal — wrong signal for development

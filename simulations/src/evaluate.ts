@@ -505,7 +505,7 @@ const METRIC_COMPUTERS: Record<string, MetricComputer> = {
   interleaving: (runs) => computeInterleaving(runs),
   fire_compression: () => ({
     actual: 0,
-    contributing: ["placeholder — replaced by computeFIReCompression() in main()"],
+    contributing: ["placeholder — replaced by computeFIReEfficiency() in main()"],
   }),
   remediation_routing: (runs) => computeRemediationRouting(runs),
   presentation_drift: (runs) => computePresentationDrift(runs),
@@ -574,7 +574,7 @@ const INVESTIGATION_MAP: Record<string, {
   fire_compression: {
     files: ["packages/api/src/services/srs.ts", "packages/api/src/services/diagnostic.ts"],
     functions: ["applyFIReCredit()", "compressReviews()", "materializeMastery()"],
-    relevantEvents: ["Review count with vs without FIRe, diagnostic materialization count"],
+    relevantEvents: ["Reviews per mastered topic with vs without FIRe"],
   },
   remediation_routing: {
     files: ["packages/api/src/services/session.ts"],
@@ -811,9 +811,16 @@ function evaluateContentQuality(
   return { tooHard, tooEasy, miscalibrated };
 }
 
-// ── FIRe compression (requires running simulations) ───────────────────
+// ── FIRe efficiency (requires running paired simulations) ─────────────
+//
+// Measures reviews-per-mastered-topic with vs without encompassing edges.
+// FIRe doesn't reduce total reviews — it replaces child reviews with new
+// topic introductions, so students progress faster. The old "compression"
+// metric (total review count comparison) punished FIRe for working correctly.
+// Efficiency = 1 - (withReviewsPerMastery / withoutReviewsPerMastery).
+// Positive means FIRe achieves mastery with fewer reviews per topic.
 
-async function computeFIReCompression(
+async function computeFIReEfficiency(
   seed: number = 42
 ): Promise<{ actual: number; contributing: string[] }> {
   const { SimulationRunner } = await import("./runner.js");
@@ -824,7 +831,7 @@ async function computeFIReCompression(
   const testProfileIds = ["average-older", "misconception-fractions", "fast-learner"];
   const sessionCount = 15;
 
-  const results: { profileId: string; compression: number }[] = [];
+  const results: { profileId: string; efficiency: number; withRPM: number; withoutRPM: number; withMastery: number; withoutMastery: number }[] = [];
 
   for (const profileId of testProfileIds) {
     const profilePath = join(profilesDir, `${profileId}.json`);
@@ -835,6 +842,11 @@ async function computeFIReCompression(
     const withRunner = new SimulationRunner({ profile, subject: "math-foundations", sessionCount, seed });
     const withResult = await withRunner.run();
     const withReviews = withResult.sessionSummaries.reduce((s, sm) => s + sm.reviewsCompleted, 0);
+    // Read final state snapshot for mastery count
+    const withSnapshots: StateSnapshot[] = JSON.parse(
+      readFileSync(join(withResult.runDir, "state-snapshots.json"), "utf-8")
+    );
+    const withMastery = withSnapshots[withSnapshots.length - 1]?.materializedMasteryCount ?? 0;
 
     console.log(`  [fire] ${profileId} without encompassing (${sessionCount} sessions)...`);
     // Clear encompassing edges temporarily
@@ -848,21 +860,34 @@ async function computeFIReCompression(
       const withoutRunner = new SimulationRunner({ profile, subject: "math-foundations", sessionCount, seed });
       const withoutResult = await withoutRunner.run();
       const withoutReviews = withoutResult.sessionSummaries.reduce((s, sm) => s + sm.reviewsCompleted, 0);
+      const withoutSnapshots: StateSnapshot[] = JSON.parse(
+        readFileSync(join(withoutResult.runDir, "state-snapshots.json"), "utf-8")
+      );
+      const withoutMastery = withoutSnapshots[withoutSnapshots.length - 1]?.materializedMasteryCount ?? 0;
 
-      const compression = withoutReviews > 0 ? (withoutReviews - withReviews) / withoutReviews : 0;
-      results.push({ profileId, compression });
-      console.log(`  [fire] ${profileId}: with=${withReviews}, without=${withoutReviews}, compression=${(compression * 100).toFixed(1)}%`);
+      // Reviews per mastered topic (lower is better)
+      const withRPM = withMastery > 0 ? withReviews / withMastery : Infinity;
+      const withoutRPM = withoutMastery > 0 ? withoutReviews / withoutMastery : Infinity;
+
+      // Efficiency: positive means FIRe needs fewer reviews per mastered topic
+      // Guard: if both are Infinity or withoutRPM is 0, efficiency is 0
+      const efficiency = (withoutRPM > 0 && isFinite(withoutRPM))
+        ? 1 - (withRPM / withoutRPM)
+        : 0;
+
+      results.push({ profileId, efficiency, withRPM, withoutRPM, withMastery, withoutMastery });
+      console.log(`  [fire] ${profileId}: with=${withReviews}rev/${withMastery}mastered (${withRPM.toFixed(2)} r/m), without=${withoutReviews}rev/${withoutMastery}mastered (${withoutRPM.toFixed(2)} r/m), efficiency=${(efficiency * 100).toFixed(1)}%`);
     } finally {
       writeFileSync(graphPath, originalContent);
     }
   }
 
-  const avgCompression = results.length > 0
-    ? results.reduce((s, r) => s + r.compression, 0) / results.length
+  const avgEfficiency = results.length > 0
+    ? results.reduce((s, r) => s + r.efficiency, 0) / results.length
     : 0;
 
-  const contributing = results.filter((r) => r.compression < 0.20).map((r) => r.profileId);
-  return { actual: avgCompression, contributing };
+  const contributing = results.filter((r) => r.efficiency < 0.05).map((r) => r.profileId);
+  return { actual: avgEfficiency, contributing };
 }
 
 // ── Report generation ─────────────────────────────────────────────────
@@ -1121,10 +1146,10 @@ async function main() {
   if (!jsonOnly) console.log("Evaluating systems...");
   const systemResults = evaluateSystems(runs, targets);
 
-  // FIRe compression — runs paired simulations (~10s). Use --skip-fire to skip.
+  // FIRe efficiency — runs paired simulations (~10s). Use --skip-fire to skip.
   if (!skipFire) {
-    if (!jsonOnly) console.log("Running FIRe compression evaluation...");
-    const fireResult = await computeFIReCompression();
+    if (!jsonOnly) console.log("Running FIRe efficiency evaluation...");
+    const fireResult = await computeFIReEfficiency();
     const fireTarget = targets.systems["fire_compression"];
     if (fireTarget) {
       const fireIdx = systemResults.findIndex((s) => s.systemId === "fire_compression");
@@ -1206,7 +1231,7 @@ export {
   buildHealingReport,
   generateMarkdownReport,
   printConsoleReport,
-  computeFIReCompression,
+  computeFIReEfficiency,
   classifyResult,
   findLatestRuns,
   type ProfileRun,

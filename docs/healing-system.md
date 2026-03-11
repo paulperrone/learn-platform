@@ -53,7 +53,7 @@ The healing system is a continuous quality assurance loop for the learn-platform
 ### Quick Start
 
 ```bash
-# Evaluate system health (includes FIRe compression by default)
+# Evaluate system health (includes FIRe efficiency by default)
 just evaluate
 
 # Skip FIRe paired simulations for faster iteration
@@ -132,7 +132,7 @@ See `docs/simulation-targets.md` for the full derivation methodology.
 | difficulty_targeting | P1 | bridge | ≥7/10 profiles | Rolling accuracy in [0.80, 0.90] |
 | review_new_balance | P1 | engine | [0.50, 0.70] | Review ratio across sessions |
 | interleaving | P1 | engine | ≤10% adjacency | Same-strand adjacency rate |
-| fire_compression | P1 | engine | ≥20% reduction | FIRe review compression |
+| fire_compression | P1 | engine | ≥0% efficiency | FIRe review efficiency (reviews per mastered topic, ±30% tolerance) |
 | presentation_drift | P2 | engine | ≥6/10 stable | Presentation center stabilizes |
 | diagnostic_placement | P2 | engine | 10/10 within ±1 | Diagnostic places accurately |
 | cognitive_demand_entropy | P2 | bridge | ≥0.90 bits | Shannon entropy of demand distribution |

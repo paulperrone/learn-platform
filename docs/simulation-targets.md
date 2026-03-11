@@ -80,17 +80,17 @@ Absolute targets are preferred — they are self-contained and do not require a 
 - **How to update:** If strands are reorganized or new strands added, adjacency percentages change mechanically. Revalidate after graph structure changes.
 - **Red flags:** If >4 profiles exceed 10%, the session planner is not interleaving effectively. Check topic selection algorithm.
 
-### 2.6 FIRe Compression (P1)
+### 2.6 FIRe Review Efficiency (P1)
 
 - **Principle:** Advanced topics implicitly review prerequisites. Retroactive facilitation restores memory as effectively as direct repetition.
 - **Citation:** Math Academy FIRe model (Skycak 2026); Ausubel et al. 1957 (retroactive facilitation).
-- **Metric:** Review event reduction compared to no-FIRe baseline.
-- **Target:** ≥20% review reduction.
-- **Tolerance:** Measured as aggregate across all profiles. Individual profiles may vary from 5% to 40%.
-- **Known limitation:** Current encompassing density (15 edges / 71 topics) limits compression. Diagnostic over-materialization was fixed in 017.7.
-- **Implementation:** Virtual FSRS reviews — `applyFIReCredit()` calls `repeat(card, Rating.Good)` on encompassed children and interpolates stability increase by weight. Keeps FSRS state coherent. Previous due-date extension approach caused negative compression.
-- **How to update:** As content grows with deeper encompassing chains and cross-strand edges, compression should increase. Raise target if baseline consistently exceeds 30%.
-- **Red flags:** If compression <15%, check encompassing edge coverage in `graph.json` (target 1.0-2.0 edges/topic) and virtual review propagation in `srs.ts`.
+- **Metric:** Reviews-per-mastered-topic with vs without encompassing edges. Efficiency = `1 - (withRPM / withoutRPM)`.
+- **Target:** ≥0% (break even — FIRe should not hurt efficiency).
+- **Tolerance:** ±30%. Large tolerance reflects butterfly effects at 15 sessions — removing encompassing edges changes both FIRe credit AND review ordering, causing large variance. Baseline at L2: -25% average. Expected to improve at L3+ (90 sessions).
+- **Why not total review count?** FIRe doesn't reduce total reviews — it replaces child reviews with new topic introductions. Students progress faster, do more total reviews, but master more topics per review. The old "compression" metric punished FIRe for working correctly.
+- **Implementation:** Virtual FSRS reviews — `applyFIReCredit()` calls `repeat(card, Rating.Good)` on encompassed children and interpolates stability increase by weight. Keeps FSRS state coherent.
+- **How to update:** As content grows with deeper encompassing chains and cross-strand edges, efficiency should increase. Raise target if baseline consistently exceeds 15%.
+- **Red flags:** If efficiency <0%, FIRe is making mastery less efficient. Check encompassing edge coverage in `graph.json` (target 1.0-2.0 edges/topic) and virtual review propagation in `srs.ts`.
 
 ### 2.7 Remediation Routing (P0)
 

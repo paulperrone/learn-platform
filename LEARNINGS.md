@@ -841,3 +841,14 @@ The FIRe paired comparison (with vs without encompassing edges) diverges after ~
 The FIRe paired comparison measures `(withoutReviews - withReviews) / withoutReviews` — total review count across all sessions. But `compressReviews()` doesn't reduce reviews per session. It uses greedy set-cover to select parent topics, then removes covered children from the candidate pool. The freed slots go to NEW topic introductions (`mainNewCount = mainSlots - actualReviewCount`). So FIRe students progress faster → encounter more topics → more topics enter the SRS system → more future reviews → negative "compression". The metric punishes FIRe for working correctly. The correct metric is efficiency: reviews per mastered topic, or mastery achieved at a fixed session count.
 
 **Context:** This explains why FIRe compression has been stuck at -1% to -3% despite correct algorithm implementation and good encompassing density. The engine is working — the measurement is wrong.
+
+---
+
+### 2026-03-10: FIRe paired comparison tests more than just FIRe credit
+
+**Source:** User session — Plan 019 Phase 2.6
+**Area:** SRS / FIRe evaluation methodology
+
+Removing encompassing edges for the "without FIRe" comparison changes TWO things: (1) `applyFIReCredit()` has no edges to traverse, and (2) `compressReviews()` falls back from set-cover optimization to simple most-overdue ordering. The second effect is arguably larger — review ordering determines which topics get practiced and when they reach mastery. At 15 sessions, the simpler ordering (no set-cover) consistently produces MORE mastered topics, suggesting the set-cover optimization may be counterproductive at short horizons.
+
+**Context:** When analyzing FIRe efficiency results, consider that the measurement captures the full encompassing system (credit + ordering), not just the credit mechanism. To isolate FIRe credit alone, you'd need to disable only `applyFIReCredit()` while keeping encompassing edges for `compressReviews()`.
