@@ -22,9 +22,9 @@ Replace the current `discipline -> subject -> topic` ownership model with `disci
 
 ## Progress
 
-**Completed:** Phase 1, Phase 2 (schema migration, content directory restructure, import pipeline update, graph merge, validation)
+**Completed:** Phase 1, Phase 2, Phase 3 (shared types, services, routes, tests — all subjectId→disciplineId)
 **In Progress:** —
-**Next:** Phase 3
+**Next:** Phase 4
 
 ---
 
@@ -123,18 +123,18 @@ The only attribute unique to `subjects` is `gradeRange`, which is derived data (
 
 ---
 
-## Phase 3: Backend Services and Route Migration
+## Phase 3: Backend Services and Route Migration ✅
 **Goal:** Update all services, routes, and tests to use `disciplineId` instead of `subjectId`. This is a mechanical rename pass — the logic doesn't change, only the column/parameter names.
 
 ### 3.1 Shared Types
 
 **File:** `packages/shared/src/types.ts`
 
-1. [ ] [IMP] Remove `Subject` type (lines 3-9)
-2. [ ] [IMP] Update `Topic` type (lines 11-19): `subjectId: string` → `disciplineId: string`
-3. [ ] [IMP] Update `CompletionEstimate` type (lines 404-413): `subjectId`/`subjectName` → `disciplineId`/`disciplineName`
-4. [ ] [IMP] Update `DiagnosticSession` type (lines 434-446): `subjectId` → `disciplineId`
-5. [ ] [IMP] Add new types:
+1. [x] [IMP] Remove `Subject` type (lines 3-9)
+2. [x] [IMP] Update `Topic` type (lines 11-19): `subjectId: string` → `disciplineId: string`
+3. [x] [IMP] Update `CompletionEstimate` type (lines 404-413): `subjectId`/`subjectName` → `disciplineId`/`disciplineName`
+4. [x] [IMP] Update `DiagnosticSession` type (lines 434-446): `subjectId` → `disciplineId`
+5. [x] [IMP] Add new types:
    ```typescript
    export type Collection = {
      id: string;
@@ -160,77 +160,77 @@ The only attribute unique to `subjects` is `gradeRange`, which is derived data (
 Each service change below is a mechanical `subjectId` → `disciplineId` rename unless noted otherwise.
 
 **`packages/api/src/services/diagnostic.ts`:**
-- [ ] [IMP] `loadAllTopicsAndEdges(subjectId)` → `loadAllTopicsAndEdges(disciplineId)`: Change WHERE clause from `eq(schema.topics.subjectId, subjectId)` to `eq(schema.topics.disciplineId, disciplineId)`
-- [ ] [IMP] `startDiagnostic({ subjectId })` → `startDiagnostic({ disciplineId })`: Update parameter type and pass-through
-- [ ] [IMP] `resume({ subjectId })` → `resume({ disciplineId })`: Update parameter type
+- [x] [IMP] `loadAllTopicsAndEdges(subjectId)` → `loadAllTopicsAndEdges(disciplineId)`: Change WHERE clause from `eq(schema.topics.subjectId, subjectId)` to `eq(schema.topics.disciplineId, disciplineId)`
+- [x] [IMP] `startDiagnostic({ subjectId })` → `startDiagnostic({ disciplineId })`: Update parameter type and pass-through
+- [x] [IMP] `resume({ subjectId })` → `resume({ disciplineId })`: Update parameter type
 
 **`packages/api/src/services/graph.ts`:**
-- [ ] [IMP] `getSubjectTopics(subjectId)` → `getDisciplineTopics(disciplineId)`: Rename function and change WHERE clause
-- [ ] [IMP] `getSubjects()` → `getDisciplines()`: Query `disciplines` table instead of `subjects` table
-- [ ] [IMP] `validateDAG(subjectId?)` → `validateDAG(disciplineId?)`: Optional filter parameter rename
-- [ ] [IMP] `computeDepths(subjectId)` → `computeDepths(disciplineId)`: Filter rename
-- [ ] [IMP] `getTopicStrands()`: Remove subject prefix logic if present
-- [ ] [IMP] Add `getCollections(disciplineId?)`: New function to query collections with optional discipline filter
-- [ ] [IMP] Add `getCollectionTopics(collectionId)`: New function returning topics in a collection
+- [x] [IMP] `getSubjectTopics(subjectId)` → `getDisciplineTopics(disciplineId)`: Rename function and change WHERE clause
+- [x] [IMP] `getSubjects()` → `getDisciplines()`: Query `disciplines` table instead of `subjects` table
+- [x] [IMP] `validateDAG(subjectId?)` → `validateDAG(disciplineId?)`: Optional filter parameter rename
+- [x] [IMP] `computeDepths(subjectId)` → `computeDepths(disciplineId)`: Filter rename
+- [x] [IMP] `getTopicStrands()`: Remove subject prefix logic if present
+- [x] [IMP] Add `getCollections(disciplineId?)`: New function to query collections with optional discipline filter
+- [x] [IMP] Add `getCollectionTopics(collectionId)`: New function returning topics in a collection
 
 **`packages/api/src/services/session.ts`:**
-- [ ] [IMP] `resolveContentQuery()` (lines ~144-174): Currently gets `topic.subjectId` then queries `subjects` table to find the discipline. Simplify: get `topic.disciplineId` directly, query `disciplines` table for `progressionModel`. This removes the subject→discipline join entirely.
-- [ ] [IMP] `startAnonymousSession(token, subjectId?)` → `startAnonymousSession(token, disciplineId?)`: Optional scope filter on topics changes from subject to discipline
-- [ ] [IMP] Remove `lastServedSubjectId` from session state type if unused; rename to `lastServedDisciplineId` if used
+- [x] [IMP] `resolveContentQuery()` (lines ~144-174): Currently gets `topic.subjectId` then queries `subjects` table to find the discipline. Simplify: get `topic.disciplineId` directly, query `disciplines` table for `progressionModel`. This removes the subject→discipline join entirely.
+- [x] [IMP] `startAnonymousSession(token, subjectId?)` → `startAnonymousSession(token, disciplineId?)`: Optional scope filter on topics changes from subject to discipline
+- [x] [IMP] Remove `lastServedSubjectId` from session state type if unused; rename to `lastServedDisciplineId` if used
 
 **`packages/api/src/services/content.ts`:**
-- [ ] [IMP] `resolvePresentation(subjectId?)` → `resolvePresentation(disciplineId?)`: Optional parameter rename
-- [ ] [IMP] `getSubjectDistribution(userId, subjectId)` → `getDisciplineDistribution(userId, disciplineId)`: Query `user_discipline_presentation` instead of `user_subject_presentation`
-- [ ] [IMP] `upsertSubjectDistribution()` → `upsertDisciplineDistribution()`: Same table swap
-- [ ] [IMP] `applyNudge(userId, subjectId)` → `applyNudge(userId, disciplineId)`: Same table swap
-- [ ] [IMP] `getAllSubjectDistributions()` → `getAllDisciplineDistributions()`: Same table swap
+- [x] [IMP] `resolvePresentation(subjectId?)` → `resolvePresentation(disciplineId?)`: Optional parameter rename
+- [x] [IMP] `getSubjectDistribution(userId, subjectId)` → `getDisciplineDistribution(userId, disciplineId)`: Query `user_discipline_presentation` instead of `user_subject_presentation`
+- [x] [IMP] `upsertSubjectDistribution()` → `upsertDisciplineDistribution()`: Same table swap
+- [x] [IMP] `applyNudge(userId, subjectId)` → `applyNudge(userId, disciplineId)`: Same table swap
+- [x] [IMP] `getAllSubjectDistributions()` → `getAllDisciplineDistributions()`: Same table swap
 
 **`packages/api/src/services/srs.ts`:**
-- [ ] [IMP] Session mixing logic: Currently extracts `subjectIds` from frontier topics, queries `subjects` table to find `disciplineId`, then filters by progression model. Simplify: extract `disciplineId` directly from `topic.disciplineId`, query `disciplines` table. Removes the subject→discipline join.
+- [x] [IMP] Session mixing logic: Currently extracts `subjectIds` from frontier topics, queries `subjects` table to find `disciplineId`, then filters by progression model. Simplify: extract `disciplineId` directly from `topic.disciplineId`, query `disciplines` table. Removes the subject→discipline join.
 
 ### 3.3 API Routes
 
 **`packages/api/src/routes/public.ts`:**
-- [ ] [IMP] `GET /api/public/subjects` → `GET /api/public/disciplines`: Return disciplines list (plus collections nested or as separate endpoint)
-- [ ] [IMP] `GET /api/public/subjects/:id/topics` → `GET /api/public/disciplines/:id/topics`: Parameter rename
-- [ ] [IMP] `GET /api/public/graph/:subjectId` → `GET /api/public/graph/:disciplineId`: Parameter rename, query change
-- [ ] [IMP] `GET /api/public/download/:subject` → `GET /api/public/download/:discipline`: Parameter rename
-- [ ] [IMP] Add `GET /api/public/collections`: List all published collections (optionally filtered by `?discipline=math`)
-- [ ] [IMP] Add `GET /api/public/collections/:id`: Collection detail with topic list
+- [x] [IMP] `GET /api/public/subjects` → `GET /api/public/disciplines`: Return disciplines list (plus collections nested or as separate endpoint)
+- [x] [IMP] `GET /api/public/subjects/:id/topics` → `GET /api/public/disciplines/:id/topics`: Parameter rename
+- [x] [IMP] `GET /api/public/graph/:subjectId` → `GET /api/public/graph/:disciplineId`: Parameter rename, query change
+- [x] [IMP] `GET /api/public/download/:subject` → `GET /api/public/download/:discipline`: Parameter rename
+- [x] [IMP] Add `GET /api/public/collections`: List all published collections (optionally filtered by `?discipline=math`)
+- [x] [IMP] Add `GET /api/public/collections/:id`: Collection detail with topic list
 
 **`packages/api/src/routes/learn.ts`:**
-- [ ] [IMP] `POST /learn/diagnostic/start`: body `subjectId` → `disciplineId`
-- [ ] [IMP] `POST /learn/diagnostic/resume`: body `subjectId` → `disciplineId`
-- [ ] [IMP] `POST /learn/sessions`: optional body `subjectId` → `disciplineId`
+- [x] [IMP] `POST /learn/diagnostic/start`: body `subjectId` → `disciplineId`
+- [x] [IMP] `POST /learn/diagnostic/resume`: body `subjectId` → `disciplineId`
+- [x] [IMP] `POST /learn/sessions`: optional body `subjectId` → `disciplineId`
 
 **`packages/api/src/routes/progress.ts`:**
-- [ ] [IMP] `GET /progress/:userId/presentation`: Return per-discipline distributions instead of per-subject. Response shape: `{ disciplineId, disciplineName, weights, centerLevel }[]`
-- [ ] [IMP] `GET /progress/:userId/completion`: Group by discipline instead of subject. Response shape: `{ disciplineId, disciplineName, mastered, total, ... }[]`
+- [x] [IMP] `GET /progress/:userId/presentation`: Return per-discipline distributions instead of per-subject. Response shape: `{ disciplineId, disciplineName, weights, centerLevel }[]`
+- [x] [IMP] `GET /progress/:userId/completion`: Group by discipline instead of subject. Response shape: `{ disciplineId, disciplineName, mastered, total, ... }[]`
 
 **`packages/api/src/routes/graph.ts`:**
-- [ ] [IMP] `GET /graph/:subjectId/user-state/:userId` → `GET /graph/:disciplineId/user-state/:userId`: Parameter rename
+- [x] [IMP] `GET /graph/:subjectId/user-state/:userId` → `GET /graph/:disciplineId/user-state/:userId`: Parameter rename
 
 **`packages/api/src/routes/admin.ts`:**
-- [ ] [IMP] Replace subject joins with discipline joins in admin queries
+- [x] [IMP] Replace subject joins with discipline joins in admin queries
 
 ### 3.4 Test Updates
 
 **`packages/api/src/__tests__/helpers.ts`:**
-- [ ] [IMP] Remove `seedSubject()` helper (lines ~144-164) — no subjects table to seed
-- [ ] [IMP] Update `seedTopic(subjectId, ...)` → `seedTopic(disciplineId, ...)`: Insert with `discipline_id` instead of `subject_id`
-- [ ] [IMP] Ensure `seedDiscipline()` exists or is created for test setup
+- [x] [IMP] Remove `seedSubject()` helper (lines ~144-164) — no subjects table to seed
+- [x] [IMP] Update `seedTopic(subjectId, ...)` → `seedTopic(disciplineId, ...)`: Insert with `discipline_id` instead of `subject_id`
+- [x] [IMP] Ensure `seedDiscipline()` exists or is created for test setup
 - [ ] [IMP] Add `seedCollection(disciplineId, topicIds)` helper
 
 **Test files to update (mechanical `subjectId` → `disciplineId` in seed calls and assertions):**
-- [ ] [IMP] `__tests__/diagnostic.test.ts`: `seedGradedTopics()` returns `{ disciplineId }` instead of `{ subjectId }`
-- [ ] [IMP] `__tests__/session-mix.test.ts`: `setupFrontierTopics(disciplineId, ...)`
-- [ ] [IMP] `__tests__/presentation-drift.test.ts`: Drift log queries by `disciplineId`
-- [ ] [IMP] `__tests__/services/diagnostic-presentation.test.ts`
-- [ ] [IMP] `__tests__/integration/presentation-drift-content.test.ts`
-- [ ] [IMP] `__tests__/progress-presentation.test.ts`
-- [ ] [IMP] `__tests__/content.test.ts`
-- [ ] [IMP] `__tests__/routes/public.test.ts`: Update endpoint paths and response assertions
-- [ ] [IMP] `__tests__/routes/anonymous-diagnostic.test.ts`
+- [x] [IMP] `__tests__/diagnostic.test.ts`: `seedGradedTopics()` returns `{ disciplineId }` instead of `{ subjectId }`
+- [x] [IMP] `__tests__/session-mix.test.ts`: `setupFrontierTopics(disciplineId, ...)`
+- [x] [IMP] `__tests__/presentation-drift.test.ts`: Drift log queries by `disciplineId`
+- [x] [IMP] `__tests__/services/diagnostic-presentation.test.ts`
+- [x] [IMP] `__tests__/integration/presentation-drift-content.test.ts`
+- [x] [IMP] `__tests__/progress-presentation.test.ts`
+- [x] [IMP] `__tests__/content.test.ts`
+- [x] [IMP] `__tests__/routes/public.test.ts`: Update endpoint paths and response assertions
+- [x] [IMP] `__tests__/routes/anonymous-diagnostic.test.ts`
 
 **New tests:**
 - [ ] [TST] Collection membership: create collection, add topics, query topics by collection
@@ -239,9 +239,9 @@ Each service change below is a mechanical `subjectId` → `disciplineId` rename 
 
 ### 3.5 Validate Phase 3
 
-1. [ ] [VAL] `just test` — all existing tests pass with discipline-scoped queries
-2. [ ] [VAL] `just typecheck` — no remaining `subjectId` references in source (excluding git history)
-3. [ ] [VAL] Grep for leftover `subjectId`/`subject_id`/`subjects` in `packages/` and `tools/` — should be zero hits outside of comments/docs
+1. [x] [VAL] `just test` — all existing tests pass with discipline-scoped queries
+2. [x] [VAL] `just typecheck` — no remaining `subjectId` references in source (excluding git history)
+3. [x] [VAL] Grep for leftover `subjectId`/`subject_id`/`subjects` in `packages/` and `tools/` — should be zero hits outside of comments/docs
 
 **Validation:** `just test` passes. No runtime code references `subjects` or `subjectId`. All engine logic operates on discipline-owned topics.
 
