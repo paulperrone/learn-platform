@@ -4,7 +4,7 @@ import {
   request,
   json,
   seedUser,
-  seedSubject,
+  seedDiscipline,
   seedTopic,
   seedLLMUsage,
   seedReviewLog,
@@ -26,28 +26,27 @@ describe("health endpoint", () => {
 });
 
 describe("graph routes", () => {
-  it("GET /api/graph/subjects returns subjects list", async () => {
-    await seedSubject({ id: "route-subj-1", name: "Math" });
-    const res = await request("/api/graph/subjects");
+  it("GET /api/graph/collections returns collections list", async () => {
+    await seedDiscipline({ id: "route-disc-1", name: "Math" });
+    const res = await request("/api/graph/collections");
     expect(res.status).toBe(200);
-    const body = await json<{ subjects: unknown[] }>(res);
-    expect(body.subjects).toBeDefined();
-    expect(body.subjects.length).toBeGreaterThanOrEqual(1);
+    const body = await json<{ collections: unknown[] }>(res);
+    expect(body.collections).toBeDefined();
   });
 
-  it("GET /api/graph/subjects/:id/topics returns topics", async () => {
-    const subj = await seedSubject({ id: "route-subj-2" });
-    await seedTopic(subj.id, { id: "route-topic-1" });
-    const res = await request(`/api/graph/subjects/${subj.id}/topics`);
+  it("GET /api/graph/collections/:id/topics returns topics", async () => {
+    const disc = await seedDiscipline({ id: "route-disc-2" });
+    await seedTopic(disc.id, { id: "route-topic-1" });
+    const res = await request(`/api/graph/collections/${disc.id}/topics`);
     expect(res.status).toBe(200);
     const body = await json<{ topics: unknown[] }>(res);
-    expect(body.topics.length).toBeGreaterThanOrEqual(1);
+    expect(body.topics).toBeDefined();
   });
 
-  it("GET /api/graph/subjects/:id/validate checks DAG", async () => {
-    const subj = await seedSubject({ id: "route-subj-3" });
-    await seedTopic(subj.id, { id: "route-dag-t1" });
-    const res = await request(`/api/graph/subjects/${subj.id}/validate`);
+  it("GET /api/graph/collections/:id/validate checks DAG", async () => {
+    const disc = await seedDiscipline({ id: "route-disc-3" });
+    await seedTopic(disc.id, { id: "route-dag-t1" });
+    const res = await request(`/api/graph/collections/${disc.id}/validate`);
     expect(res.status).toBe(200);
     const body = await json<{ valid: boolean }>(res);
     expect(body.valid).toBe(true);

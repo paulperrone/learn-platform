@@ -4,14 +4,14 @@ import { useRoute } from "vue-router";
 import { useApi, withErrorToast } from "@/composables/useApi";
 import { useAuth } from "@/composables/useAuth";
 import { useMeta } from "@/composables/useMeta";
-import type { Topic, Subject } from "@learn/shared";
+import type { Topic, Discipline } from "@learn/shared";
 
 const route = useRoute();
 const api = useApi();
 const auth = useAuth();
 const subjectId = route.params.subjectId as string;
 
-const subject = ref<Subject | null>(null);
+const subject = ref<(Discipline & { gradeRange?: string }) | null>(null);
 const topics = ref<Topic[]>([]);
 const prerequisites = ref<{ from: string; to: string; strength: number }[]>([]);
 const loading = ref(true);

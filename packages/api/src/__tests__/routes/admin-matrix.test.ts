@@ -3,7 +3,7 @@ import { sql } from "drizzle-orm";
 import {
   applyMigrations,
   getTestDb,
-  seedSubject,
+  seedDiscipline,
   seedTopic,
   seedInstructionalContent,
   seedAssessmentContent,
@@ -27,8 +27,8 @@ describe("content matrix route auth gating", () => {
 describe("content matrix queries (service-level)", () => {
   it("aggregates instructional content by topic × flavor × locale", async () => {
     const db = getTestDb();
-    const subj = await seedSubject({ id: "mx-subj" });
-    const topic = await seedTopic(subj.id, { id: "mx-topic-1", name: "Matrix Test Topic", gradeLevel: 1 });
+    const disc = await seedDiscipline({ id: "mx-subj" });
+    const topic = await seedTopic(disc.id, { id: "mx-topic-1", name: "Matrix Test Topic", gradeLevel: 1 });
 
     await seedInstructionalContent(topic.id, { id: "mx-ic-1", flavor: "classic", locale: "en" });
     await seedInstructionalContent(topic.id, { id: "mx-ic-2", flavor: "adventure", locale: "en" });
@@ -56,8 +56,8 @@ describe("content matrix queries (service-level)", () => {
 
   it("aggregates assessment pool with difficulty breakdown", async () => {
     const db = getTestDb();
-    const subj = await seedSubject({ id: "mx-subj-2" });
-    const topic = await seedTopic(subj.id, { id: "mx-topic-2", name: "Pool Test Topic" });
+    const disc = await seedDiscipline({ id: "mx-subj-2" });
+    const topic = await seedTopic(disc.id, { id: "mx-topic-2", name: "Pool Test Topic" });
 
     await seedAssessmentContent(topic.id, { id: "mx-ac-1", difficulty: "easy", flavor: "classic", locale: "en" });
     await seedAssessmentContent(topic.id, { id: "mx-ac-2", difficulty: "easy", flavor: "classic", locale: "en" });
@@ -90,8 +90,8 @@ describe("content matrix queries (service-level)", () => {
 
   it("aggregates question type distribution per topic", async () => {
     const db = getTestDb();
-    const subj = await seedSubject({ id: "mx-subj-3" });
-    const topic = await seedTopic(subj.id, { id: "mx-topic-3" });
+    const disc = await seedDiscipline({ id: "mx-subj-3" });
+    const topic = await seedTopic(disc.id, { id: "mx-topic-3" });
 
     await seedAssessmentContent(topic.id, { id: "mx-ac-t1", type: "text-qa" });
     await seedAssessmentContent(topic.id, { id: "mx-ac-t2", type: "text-qa" });
@@ -115,8 +115,8 @@ describe("content matrix queries (service-level)", () => {
 
   it("computes per-topic accuracy from review_log", async () => {
     const db = getTestDb();
-    const subj = await seedSubject({ id: "mx-subj-4" });
-    const topic = await seedTopic(subj.id, { id: "mx-topic-4" });
+    const disc = await seedDiscipline({ id: "mx-subj-4" });
+    const topic = await seedTopic(disc.id, { id: "mx-topic-4" });
     const user = await seedUser({ id: "mx-user-1" });
 
     await seedReviewLog(user.id, topic.id, { id: "mx-rev-1", correct: true });
@@ -139,8 +139,8 @@ describe("content matrix queries (service-level)", () => {
   });
 
   it("identifies pool below target and missing difficulties", async () => {
-    const subj = await seedSubject({ id: "mx-subj-5" });
-    const topic = await seedTopic(subj.id, { id: "mx-topic-5" });
+    const disc = await seedDiscipline({ id: "mx-subj-5" });
+    const topic = await seedTopic(disc.id, { id: "mx-topic-5" });
 
     // Only 2 problems, both easy — below target (15) and missing medium/hard
     await seedAssessmentContent(topic.id, { id: "mx-ac-gap-1", difficulty: "easy" });

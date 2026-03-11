@@ -4,7 +4,7 @@ import {
   applyMigrations,
   resetDb,
   seedUser,
-  seedSubject,
+  seedDiscipline,
   seedTopic,
   seedAssessmentContent,
   seedInstructionalContent,
@@ -35,10 +35,10 @@ describe("session-activity integration", () => {
   async function setupGraph() {
     const db = getTestDb();
     const user = await seedUser();
-    const subject = await seedSubject({ id: "math-test" });
+    const discipline = await seedDiscipline({ id: "math-test" });
 
-    await seedTopic(subject.id, { id: "counting", name: "Counting", depth: 0 });
-    await seedTopic(subject.id, { id: "addition", name: "Addition", depth: 1 });
+    await seedTopic(discipline.id, { id: "counting", name: "Counting", depth: 0 });
+    await seedTopic(discipline.id, { id: "addition", name: "Addition", depth: 1 });
     await seedPrerequisite("counting", "addition");
 
     for (const topicId of ["counting", "addition"]) {
@@ -68,7 +68,7 @@ describe("session-activity integration", () => {
       });
     }
 
-    return { db, user, subject };
+    return { db, user, discipline };
   }
 
   it("records problemsCompleted in dailyActivity after each respond()", async () => {

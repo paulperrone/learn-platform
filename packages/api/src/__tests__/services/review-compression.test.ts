@@ -4,7 +4,7 @@ import {
   applyMigrations,
   getTestDb,
   seedUser,
-  seedSubject,
+  seedDiscipline,
   seedTopic,
   seedEncompassing,
 } from "../helpers.js";
@@ -42,9 +42,9 @@ describe("FIRe review compression", () => {
     it("returns empty map when no encompassing edges exist", async () => {
       const db = getTestDb();
       const user = await seedUser({ id: "rc-cov-1" });
-      const subj = await seedSubject({ id: "rc-cov-subj-1" });
-      const t1 = await seedTopic(subj.id, { id: "rc-cov-t1" });
-      const t2 = await seedTopic(subj.id, { id: "rc-cov-t2" });
+      const disc = await seedDiscipline({ id: "rc-cov-subj-1" });
+      const t1 = await seedTopic(disc.id, { id: "rc-cov-t1" });
+      const t2 = await seedTopic(disc.id, { id: "rc-cov-t2" });
 
       const srs = createSRSService(db);
       const dueSet = new Set([t1.id, t2.id]);
@@ -55,9 +55,9 @@ describe("FIRe review compression", () => {
 
     it("finds direct encompassing coverage", async () => {
       const db = getTestDb();
-      const subj = await seedSubject({ id: "rc-cov-subj-2" });
-      const parent = await seedTopic(subj.id, { id: "rc-cov-parent" });
-      const child = await seedTopic(subj.id, { id: "rc-cov-child" });
+      const disc = await seedDiscipline({ id: "rc-cov-subj-2" });
+      const parent = await seedTopic(disc.id, { id: "rc-cov-parent" });
+      const child = await seedTopic(disc.id, { id: "rc-cov-child" });
       await seedEncompassing(parent.id, child.id, 0.6);
 
       const srs = createSRSService(db);
@@ -71,10 +71,10 @@ describe("FIRe review compression", () => {
 
     it("finds multi-hop coverage", async () => {
       const db = getTestDb();
-      const subj = await seedSubject({ id: "rc-cov-subj-3" });
-      const gp = await seedTopic(subj.id, { id: "rc-cov-gp" });
-      const p = await seedTopic(subj.id, { id: "rc-cov-p" });
-      const c = await seedTopic(subj.id, { id: "rc-cov-c" });
+      const disc = await seedDiscipline({ id: "rc-cov-subj-3" });
+      const gp = await seedTopic(disc.id, { id: "rc-cov-gp" });
+      const p = await seedTopic(disc.id, { id: "rc-cov-p" });
+      const c = await seedTopic(disc.id, { id: "rc-cov-c" });
       await seedEncompassing(gp.id, p.id, 0.7);
       await seedEncompassing(p.id, c.id, 0.8);
 
@@ -91,9 +91,9 @@ describe("FIRe review compression", () => {
 
     it("skips negligible weight paths", async () => {
       const db = getTestDb();
-      const subj = await seedSubject({ id: "rc-cov-subj-4" });
-      const parent = await seedTopic(subj.id, { id: "rc-cov-weak-p" });
-      const child = await seedTopic(subj.id, { id: "rc-cov-weak-c" });
+      const disc = await seedDiscipline({ id: "rc-cov-subj-4" });
+      const parent = await seedTopic(disc.id, { id: "rc-cov-weak-p" });
+      const child = await seedTopic(disc.id, { id: "rc-cov-weak-c" });
       // Weight below 0.05 threshold
       await seedEncompassing(parent.id, child.id, 0.03);
 
@@ -106,9 +106,9 @@ describe("FIRe review compression", () => {
 
     it("ignores non-due topics in coverage", async () => {
       const db = getTestDb();
-      const subj = await seedSubject({ id: "rc-cov-subj-5" });
-      const parent = await seedTopic(subj.id, { id: "rc-cov-ndue-p" });
-      const child = await seedTopic(subj.id, { id: "rc-cov-ndue-c" });
+      const disc = await seedDiscipline({ id: "rc-cov-subj-5" });
+      const parent = await seedTopic(disc.id, { id: "rc-cov-ndue-p" });
+      const child = await seedTopic(disc.id, { id: "rc-cov-ndue-c" });
       await seedEncompassing(parent.id, child.id, 0.6);
 
       const srs = createSRSService(db);
@@ -125,13 +125,13 @@ describe("FIRe review compression", () => {
     it("selects high-coverage topic over merely overdue ones", async () => {
       const db = getTestDb();
       const user = await seedUser({ id: "rc-comp-1" });
-      const subj = await seedSubject({ id: "rc-comp-subj-1" });
+      const disc = await seedDiscipline({ id: "rc-comp-subj-1" });
 
       // Create a parent that encompasses two children
-      const parent = await seedTopic(subj.id, { id: "rc-comp-parent" });
-      const child1 = await seedTopic(subj.id, { id: "rc-comp-child1" });
-      const child2 = await seedTopic(subj.id, { id: "rc-comp-child2" });
-      const standalone = await seedTopic(subj.id, { id: "rc-comp-standalone" });
+      const parent = await seedTopic(disc.id, { id: "rc-comp-parent" });
+      const child1 = await seedTopic(disc.id, { id: "rc-comp-child1" });
+      const child2 = await seedTopic(disc.id, { id: "rc-comp-child2" });
+      const standalone = await seedTopic(disc.id, { id: "rc-comp-standalone" });
 
       await seedEncompassing(parent.id, child1.id, 0.6);
       await seedEncompassing(parent.id, child2.id, 0.6);
@@ -161,11 +161,11 @@ describe("FIRe review compression", () => {
     it("falls back to most-overdue when no encompassing edges exist", async () => {
       const db = getTestDb();
       const user = await seedUser({ id: "rc-comp-2" });
-      const subj = await seedSubject({ id: "rc-comp-subj-2" });
+      const disc = await seedDiscipline({ id: "rc-comp-subj-2" });
 
-      const t1 = await seedTopic(subj.id, { id: "rc-comp-fb-1" });
-      const t2 = await seedTopic(subj.id, { id: "rc-comp-fb-2" });
-      const t3 = await seedTopic(subj.id, { id: "rc-comp-fb-3" });
+      const t1 = await seedTopic(disc.id, { id: "rc-comp-fb-1" });
+      const t2 = await seedTopic(disc.id, { id: "rc-comp-fb-2" });
+      const t3 = await seedTopic(disc.id, { id: "rc-comp-fb-3" });
 
       // t1 most overdue, t3 least
       await seedDueState(user.id, t1.id, 180);
@@ -191,10 +191,10 @@ describe("FIRe review compression", () => {
     it("excludes warmup topic IDs", async () => {
       const db = getTestDb();
       const user = await seedUser({ id: "rc-comp-3" });
-      const subj = await seedSubject({ id: "rc-comp-subj-3" });
+      const disc = await seedDiscipline({ id: "rc-comp-subj-3" });
 
-      const t1 = await seedTopic(subj.id, { id: "rc-comp-excl-1" });
-      const t2 = await seedTopic(subj.id, { id: "rc-comp-excl-2" });
+      const t1 = await seedTopic(disc.id, { id: "rc-comp-excl-1" });
+      const t2 = await seedTopic(disc.id, { id: "rc-comp-excl-2" });
 
       await seedDueState(user.id, t1.id, 60);
       await seedDueState(user.id, t2.id, 30);
@@ -217,8 +217,8 @@ describe("FIRe review compression", () => {
     it("returns empty when budget is 0", async () => {
       const db = getTestDb();
       const user = await seedUser({ id: "rc-comp-4" });
-      const subj = await seedSubject({ id: "rc-comp-subj-4" });
-      const t1 = await seedTopic(subj.id, { id: "rc-comp-zero-1" });
+      const disc = await seedDiscipline({ id: "rc-comp-subj-4" });
+      const t1 = await seedTopic(disc.id, { id: "rc-comp-zero-1" });
 
       await seedDueState(user.id, t1.id, 60);
 
@@ -234,11 +234,11 @@ describe("FIRe review compression", () => {
     it("includes compressionStats in session mix", async () => {
       const db = getTestDb();
       const user = await seedUser({ id: "rc-mix-1" });
-      const subj = await seedSubject({ id: "rc-mix-subj-1" });
+      const disc = await seedDiscipline({ id: "rc-mix-subj-1" });
 
       // Create some frontier topics
       for (let i = 0; i < 5; i++) {
-        await seedTopic(subj.id, { id: `rc-mix-t-${i}`, depth: i });
+        await seedTopic(disc.id, { id: `rc-mix-t-${i}`, depth: i });
       }
 
       const srs = createSRSService(db);
@@ -253,13 +253,13 @@ describe("FIRe review compression", () => {
     it("reports compression ratio > 1 when encompassing edges allow compression", async () => {
       const db = getTestDb();
       const user = await seedUser({ id: "rc-mix-2" });
-      const subj = await seedSubject({ id: "rc-mix-subj-2" });
+      const disc = await seedDiscipline({ id: "rc-mix-subj-2" });
 
       // Parent encompasses 3 children, all due — 4 due topics total
-      const parent = await seedTopic(subj.id, { id: "rc-mix-parent" });
-      const child1 = await seedTopic(subj.id, { id: "rc-mix-c1" });
-      const child2 = await seedTopic(subj.id, { id: "rc-mix-c2" });
-      const child3 = await seedTopic(subj.id, { id: "rc-mix-c3" });
+      const parent = await seedTopic(disc.id, { id: "rc-mix-parent" });
+      const child1 = await seedTopic(disc.id, { id: "rc-mix-c1" });
+      const child2 = await seedTopic(disc.id, { id: "rc-mix-c2" });
+      const child3 = await seedTopic(disc.id, { id: "rc-mix-c3" });
 
       await seedEncompassing(parent.id, child1.id, 0.7);
       await seedEncompassing(parent.id, child2.id, 0.7);
@@ -294,12 +294,12 @@ describe("FIRe review compression", () => {
     it("sessions still feel natural — not just hardest topics", async () => {
       const db = getTestDb();
       const user = await seedUser({ id: "rc-mix-3" });
-      const subj = await seedSubject({ id: "rc-mix-subj-3" });
+      const disc = await seedDiscipline({ id: "rc-mix-subj-3" });
 
       // Multiple standalone due topics with no encompassing
       const topics = [];
       for (let i = 0; i < 6; i++) {
-        const t = await seedTopic(subj.id, { id: `rc-mix-natural-${i}`, depth: i });
+        const t = await seedTopic(disc.id, { id: `rc-mix-natural-${i}`, depth: i });
         await seedDueState(user.id, t.id, (6 - i) * 30); // Varying overdues
         topics.push(t);
       }

@@ -3,11 +3,11 @@ import { ref, computed, onMounted } from "vue";
 import { useApi, withErrorToast } from "@/composables/useApi";
 import { useMeta } from "@/composables/useMeta";
 import { useI18n } from "vue-i18n";
-import type { Subject, Topic } from "@learn/shared";
+import type { Discipline, Topic } from "@learn/shared";
 
 const api = useApi();
 const { t } = useI18n();
-const subjects = ref<Subject[]>([]);
+const subjects = ref<(Discipline & { gradeRange?: string; topicCount?: number })[]>([]);
 const selectedSubject = ref<string | null>(null);
 const topics = ref<Topic[]>([]);
 const prerequisites = ref<{ from: string; to: string; strength: number }[]>([]);

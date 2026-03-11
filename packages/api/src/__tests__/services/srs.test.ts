@@ -4,7 +4,7 @@ import {
   applyMigrations,
   getTestDb,
   seedUser,
-  seedSubject,
+  seedDiscipline,
   seedTopic,
   seedEncompassing,
 } from "../helpers.js";
@@ -21,8 +21,8 @@ describe("createSRSService", () => {
     it("creates new state for unseen topic", async () => {
       const db = getTestDb();
       const user = await seedUser({ id: "srs-user-1" });
-      const subj = await seedSubject({ id: "srs-subj-1" });
-      const topic = await seedTopic(subj.id, { id: "srs-topic-1" });
+      const disc = await seedDiscipline({ id: "srs-subj-1" });
+      const topic = await seedTopic(disc.id, { id: "srs-topic-1" });
 
       const srs = createSRSService(db);
       const state = await srs.getOrCreateState(user.id, topic.id);
@@ -37,8 +37,8 @@ describe("createSRSService", () => {
     it("returns existing state on second call", async () => {
       const db = getTestDb();
       const user = await seedUser({ id: "srs-user-2" });
-      const subj = await seedSubject({ id: "srs-subj-2" });
-      const topic = await seedTopic(subj.id, { id: "srs-topic-2" });
+      const disc = await seedDiscipline({ id: "srs-subj-2" });
+      const topic = await seedTopic(disc.id, { id: "srs-topic-2" });
 
       const srs = createSRSService(db);
       const first = await srs.getOrCreateState(user.id, topic.id);
@@ -51,8 +51,8 @@ describe("createSRSService", () => {
     it("updates FSRS state and logs review", async () => {
       const db = getTestDb();
       const user = await seedUser({ id: "srs-user-3" });
-      const subj = await seedSubject({ id: "srs-subj-3" });
-      const topic = await seedTopic(subj.id, { id: "srs-topic-3" });
+      const disc = await seedDiscipline({ id: "srs-subj-3" });
+      const topic = await seedTopic(disc.id, { id: "srs-topic-3" });
 
       const srs = createSRSService(db);
       const result = await srs.scheduleReview(
@@ -84,8 +84,8 @@ describe("createSRSService", () => {
     it("tracks confidence accuracy", async () => {
       const db = getTestDb();
       const user = await seedUser({ id: "srs-user-4" });
-      const subj = await seedSubject({ id: "srs-subj-4" });
-      const topic = await seedTopic(subj.id, { id: "srs-topic-4" });
+      const disc = await seedDiscipline({ id: "srs-subj-4" });
+      const topic = await seedTopic(disc.id, { id: "srs-topic-4" });
 
       const srs = createSRSService(db);
       await srs.scheduleReview(user.id, topic.id, Rating.Good, 1500, "guided", 5);
@@ -105,8 +105,8 @@ describe("createSRSService", () => {
     it("tracks hint usage in review log", async () => {
       const db = getTestDb();
       const user = await seedUser({ id: "srs-user-5" });
-      const subj = await seedSubject({ id: "srs-subj-5" });
-      const topic = await seedTopic(subj.id, { id: "srs-topic-5" });
+      const disc = await seedDiscipline({ id: "srs-subj-5" });
+      const topic = await seedTopic(disc.id, { id: "srs-topic-5" });
 
       const srs = createSRSService(db);
       await srs.scheduleReview(user.id, topic.id, Rating.Good, 1000, "independent", undefined, 2);
@@ -123,8 +123,8 @@ describe("createSRSService", () => {
     it("masters topic after 2 consecutive correct reviews at Review state with stability >= 4", async () => {
       const db = getTestDb();
       const user = await seedUser({ id: "srs-mastery-1" });
-      const subj = await seedSubject({ id: "srs-mastery-subj-1" });
-      const topic = await seedTopic(subj.id, { id: "srs-mastery-topic-1" });
+      const disc = await seedDiscipline({ id: "srs-mastery-subj-1" });
+      const topic = await seedTopic(disc.id, { id: "srs-mastery-topic-1" });
 
       // Seed state at Review state (state=2) with high stability and 1 consecutive correct
       await db.insert(schema.userTopicState).values({
@@ -161,8 +161,8 @@ describe("createSRSService", () => {
     it("lapse resets consecutive counter but not mastery flag", async () => {
       const db = getTestDb();
       const user = await seedUser({ id: "srs-mastery-2" });
-      const subj = await seedSubject({ id: "srs-mastery-subj-2" });
-      const topic = await seedTopic(subj.id, { id: "srs-mastery-topic-2" });
+      const disc = await seedDiscipline({ id: "srs-mastery-subj-2" });
+      const topic = await seedTopic(disc.id, { id: "srs-mastery-topic-2" });
 
       // Topic already mastered with high consecutive count
       await db.insert(schema.userTopicState).values({
@@ -200,8 +200,8 @@ describe("createSRSService", () => {
     it("mastery hysteresis: single incorrect does not clear mastery", async () => {
       const db = getTestDb();
       const user = await seedUser({ id: "srs-mastery-hyst-1" });
-      const subj = await seedSubject({ id: "srs-mastery-hyst-subj-1" });
-      const topic = await seedTopic(subj.id, { id: "srs-mastery-hyst-topic-1" });
+      const disc = await seedDiscipline({ id: "srs-mastery-hyst-subj-1" });
+      const topic = await seedTopic(disc.id, { id: "srs-mastery-hyst-topic-1" });
 
       await db.insert(schema.userTopicState).values({
         userId: user.id,
@@ -232,8 +232,8 @@ describe("createSRSService", () => {
     it("mastery hysteresis: 2 consecutive incorrect clears mastery", async () => {
       const db = getTestDb();
       const user = await seedUser({ id: "srs-mastery-hyst-2" });
-      const subj = await seedSubject({ id: "srs-mastery-hyst-subj-2" });
-      const topic = await seedTopic(subj.id, { id: "srs-mastery-hyst-topic-2" });
+      const disc = await seedDiscipline({ id: "srs-mastery-hyst-subj-2" });
+      const topic = await seedTopic(disc.id, { id: "srs-mastery-hyst-topic-2" });
 
       await db.insert(schema.userTopicState).values({
         userId: user.id,
@@ -264,8 +264,8 @@ describe("createSRSService", () => {
     it("diagnostic mastery survives first warmup review", async () => {
       const db = getTestDb();
       const user = await seedUser({ id: "srs-mastery-diag-1" });
-      const subj = await seedSubject({ id: "srs-mastery-diag-subj-1" });
-      const topic = await seedTopic(subj.id, { id: "srs-mastery-diag-topic-1" });
+      const disc = await seedDiscipline({ id: "srs-mastery-diag-subj-1" });
+      const topic = await seedTopic(disc.id, { id: "srs-mastery-diag-topic-1" });
 
       // Simulate diagnostic materialization (sets stability=15, ccr=3)
       await db.insert(schema.userTopicState).values({
@@ -302,8 +302,8 @@ describe("createSRSService", () => {
     it("mastery via alternative path: 3+ consecutive correct regardless of stability", async () => {
       const db = getTestDb();
       const user = await seedUser({ id: "srs-mastery-alt-1" });
-      const subj = await seedSubject({ id: "srs-mastery-alt-subj-1" });
-      const topic = await seedTopic(subj.id, { id: "srs-mastery-alt-topic-1" });
+      const disc = await seedDiscipline({ id: "srs-mastery-alt-subj-1" });
+      const topic = await seedTopic(disc.id, { id: "srs-mastery-alt-topic-1" });
 
       // Low stability but 2 consecutive correct
       await db.insert(schema.userTopicState).values({
@@ -328,8 +328,8 @@ describe("createSRSService", () => {
     it("does not master with only 1 consecutive correct review", async () => {
       const db = getTestDb();
       const user = await seedUser({ id: "srs-mastery-3" });
-      const subj = await seedSubject({ id: "srs-mastery-subj-3" });
-      const topic = await seedTopic(subj.id, { id: "srs-mastery-topic-3" });
+      const disc = await seedDiscipline({ id: "srs-mastery-subj-3" });
+      const topic = await seedTopic(disc.id, { id: "srs-mastery-topic-3" });
 
       await db.insert(schema.userTopicState).values({
         userId: user.id,
@@ -366,8 +366,8 @@ describe("createSRSService", () => {
     it("returns topics that are due", async () => {
       const db = getTestDb();
       const user = await seedUser({ id: "srs-user-6" });
-      const subj = await seedSubject({ id: "srs-subj-6" });
-      const topic = await seedTopic(subj.id, { id: "srs-topic-6" });
+      const disc = await seedDiscipline({ id: "srs-subj-6" });
+      const topic = await seedTopic(disc.id, { id: "srs-topic-6" });
 
       // Create a state that's due now (reps > 0 = actually reviewed, not just diagnostic)
       await db.insert(schema.userTopicState).values({
@@ -388,8 +388,8 @@ describe("createSRSService", () => {
     it("excludes mastered topics", async () => {
       const db = getTestDb();
       const user = await seedUser({ id: "srs-user-7" });
-      const subj = await seedSubject({ id: "srs-subj-7" });
-      const topic = await seedTopic(subj.id, { id: "srs-topic-7" });
+      const disc = await seedDiscipline({ id: "srs-subj-7" });
+      const topic = await seedTopic(disc.id, { id: "srs-topic-7" });
 
       await db.insert(schema.userTopicState).values({
         userId: user.id,
@@ -410,9 +410,9 @@ describe("createSRSService", () => {
     it("applies virtual FSRS review with interpolated stability", async () => {
       const db = getTestDb();
       const user = await seedUser({ id: "srs-user-8" });
-      const subj = await seedSubject({ id: "srs-subj-8" });
-      const parent = await seedTopic(subj.id, { id: "srs-parent-8" });
-      const child = await seedTopic(subj.id, { id: "srs-child-8" });
+      const disc = await seedDiscipline({ id: "srs-subj-8" });
+      const parent = await seedTopic(disc.id, { id: "srs-parent-8" });
+      const child = await seedTopic(disc.id, { id: "srs-child-8" });
       await seedEncompassing(parent.id, child.id, 0.5);
 
       // Child has low retrievability (reviewed 10 days ago, stability 5 → R ≈ 0.69)
@@ -459,10 +459,10 @@ describe("createSRSService", () => {
     it("flows credit through multi-hop encompassing", async () => {
       const db = getTestDb();
       const user = await seedUser({ id: "srs-multihop-1" });
-      const subj = await seedSubject({ id: "srs-multihop-subj" });
-      const grandparent = await seedTopic(subj.id, { id: "srs-gp-1" });
-      const parent = await seedTopic(subj.id, { id: "srs-p-1" });
-      const child = await seedTopic(subj.id, { id: "srs-c-1" });
+      const disc = await seedDiscipline({ id: "srs-multihop-subj" });
+      const grandparent = await seedTopic(disc.id, { id: "srs-gp-1" });
+      const parent = await seedTopic(disc.id, { id: "srs-p-1" });
+      const child = await seedTopic(disc.id, { id: "srs-c-1" });
 
       // grandparent → parent → child
       await seedEncompassing(grandparent.id, parent.id, 0.7);
@@ -513,9 +513,9 @@ describe("createSRSService", () => {
     it("skips fresh topics with high retrievability", async () => {
       const db = getTestDb();
       const user = await seedUser({ id: "srs-fresh-1" });
-      const subj = await seedSubject({ id: "srs-fresh-subj" });
-      const parent = await seedTopic(subj.id, { id: "srs-fresh-p" });
-      const freshChild = await seedTopic(subj.id, { id: "srs-fresh-c" });
+      const disc = await seedDiscipline({ id: "srs-fresh-subj" });
+      const parent = await seedTopic(disc.id, { id: "srs-fresh-p" });
+      const freshChild = await seedTopic(disc.id, { id: "srs-fresh-c" });
 
       await seedEncompassing(parent.id, freshChild.id, 0.8);
 
@@ -542,11 +542,11 @@ describe("createSRSService", () => {
     it("scales stability increase by encompassing weight", async () => {
       const db = getTestDb();
       const user = await seedUser({ id: "srs-cap-1" });
-      const subj = await seedSubject({ id: "srs-cap-subj" });
-      const parentHigh = await seedTopic(subj.id, { id: "srs-cap-ph" });
-      const parentLow = await seedTopic(subj.id, { id: "srs-cap-pl" });
-      const childHigh = await seedTopic(subj.id, { id: "srs-cap-ch" });
-      const childLow = await seedTopic(subj.id, { id: "srs-cap-cl" });
+      const disc = await seedDiscipline({ id: "srs-cap-subj" });
+      const parentHigh = await seedTopic(disc.id, { id: "srs-cap-ph" });
+      const parentLow = await seedTopic(disc.id, { id: "srs-cap-pl" });
+      const childHigh = await seedTopic(disc.id, { id: "srs-cap-ch" });
+      const childLow = await seedTopic(disc.id, { id: "srs-cap-cl" });
       await seedEncompassing(parentHigh.id, childHigh.id, 0.9); // High weight
       await seedEncompassing(parentLow.id, childLow.id, 0.3); // Low weight
 
@@ -599,9 +599,9 @@ describe("createSRSService", () => {
     it("does not apply credit on failure rating", async () => {
       const db = getTestDb();
       const user = await seedUser({ id: "srs-nofail-1" });
-      const subj = await seedSubject({ id: "srs-nofail-subj" });
-      const parent = await seedTopic(subj.id, { id: "srs-nofail-p" });
-      const child = await seedTopic(subj.id, { id: "srs-nofail-c" });
+      const disc = await seedDiscipline({ id: "srs-nofail-subj" });
+      const parent = await seedTopic(disc.id, { id: "srs-nofail-p" });
+      const child = await seedTopic(disc.id, { id: "srs-nofail-c" });
       await seedEncompassing(parent.id, child.id, 0.5);
 
       const futureDue = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString();
@@ -625,9 +625,9 @@ describe("createSRSService", () => {
     it("moves parent due date closer when child fails", async () => {
       const db = getTestDb();
       const user = await seedUser({ id: "srs-penalty-1" });
-      const subj = await seedSubject({ id: "srs-penalty-subj" });
-      const parent = await seedTopic(subj.id, { id: "srs-penalty-p" });
-      const child = await seedTopic(subj.id, { id: "srs-penalty-c" });
+      const disc = await seedDiscipline({ id: "srs-penalty-subj" });
+      const parent = await seedTopic(disc.id, { id: "srs-penalty-p" });
+      const child = await seedTopic(disc.id, { id: "srs-penalty-c" });
       await seedEncompassing(parent.id, child.id, 0.8);
 
       const futureDue = new Date(Date.now() + 10 * 24 * 60 * 60 * 1000).toISOString();
@@ -662,9 +662,9 @@ describe("createSRSService", () => {
     it("does not penalize on success rating", async () => {
       const db = getTestDb();
       const user = await seedUser({ id: "srs-penalty-2" });
-      const subj = await seedSubject({ id: "srs-penalty-subj-2" });
-      const parent = await seedTopic(subj.id, { id: "srs-penalty-p-2" });
-      const child = await seedTopic(subj.id, { id: "srs-penalty-c-2" });
+      const disc = await seedDiscipline({ id: "srs-penalty-subj-2" });
+      const parent = await seedTopic(disc.id, { id: "srs-penalty-p-2" });
+      const child = await seedTopic(disc.id, { id: "srs-penalty-c-2" });
       await seedEncompassing(parent.id, child.id, 0.8);
 
       const futureDue = new Date(Date.now() + 10 * 24 * 60 * 60 * 1000).toISOString();
@@ -686,9 +686,9 @@ describe("createSRSService", () => {
     it("skips parents not yet started", async () => {
       const db = getTestDb();
       const user = await seedUser({ id: "srs-penalty-3" });
-      const subj = await seedSubject({ id: "srs-penalty-subj-3" });
-      const parent = await seedTopic(subj.id, { id: "srs-penalty-p-3" });
-      const child = await seedTopic(subj.id, { id: "srs-penalty-c-3" });
+      const disc = await seedDiscipline({ id: "srs-penalty-subj-3" });
+      const parent = await seedTopic(disc.id, { id: "srs-penalty-p-3" });
+      const child = await seedTopic(disc.id, { id: "srs-penalty-c-3" });
       await seedEncompassing(parent.id, child.id, 0.8);
 
       // Parent has no state (not started)
@@ -702,11 +702,11 @@ describe("createSRSService", () => {
     it("returns mix of review and new topics", async () => {
       const db = getTestDb();
       const user = await seedUser({ id: "srs-user-9" });
-      const subj = await seedSubject({ id: "srs-subj-9" });
+      const disc = await seedDiscipline({ id: "srs-subj-9" });
 
       // Create some topics on the frontier (no prereqs, not started)
       for (let i = 0; i < 5; i++) {
-        await seedTopic(subj.id, {
+        await seedTopic(disc.id, {
           id: `srs-mix-${i}`,
           depth: i,
         });
@@ -724,9 +724,9 @@ describe("createSRSService", () => {
     it("returns correct stat counts", async () => {
       const db = getTestDb();
       const user = await seedUser({ id: "srs-user-10" });
-      const subj = await seedSubject({ id: "srs-subj-10" });
-      const t1 = await seedTopic(subj.id, { id: "srs-stat-1" });
-      const t2 = await seedTopic(subj.id, { id: "srs-stat-2" });
+      const disc = await seedDiscipline({ id: "srs-subj-10" });
+      const t1 = await seedTopic(disc.id, { id: "srs-stat-1" });
+      const t2 = await seedTopic(disc.id, { id: "srs-stat-2" });
 
       await db.insert(schema.userTopicState).values({
         userId: user.id,

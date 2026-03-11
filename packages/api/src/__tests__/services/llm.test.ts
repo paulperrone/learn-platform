@@ -3,7 +3,6 @@ import {
   applyMigrations,
   getTestDb,
   seedUser,
-  seedSubject,
   seedTopic,
   seedLLMUsage,
   seedReviewLog,
@@ -54,8 +53,7 @@ describe("buildStudentProfile", () => {
     const db = getTestDb();
     const user = await seedUser({ id: "profile-new-user" });
     const disc = await seedDiscipline();
-    const subj = await seedSubject({ disciplineId: disc.id });
-    const topic = await seedTopic(subj.id, { name: "Counting" });
+    const topic = await seedTopic(disc.id, { name: "Counting" });
 
     const profile = await buildStudentProfile(db, user.id, topic.id);
     expect(profile).toContain("STUDENT PROFILE:");
@@ -68,8 +66,7 @@ describe("buildStudentProfile", () => {
     const db = getTestDb();
     const user = await seedUser({ id: "profile-active-user" });
     const disc = await seedDiscipline();
-    const subj = await seedSubject({ disciplineId: disc.id });
-    const topic = await seedTopic(subj.id, { name: "Addition Within 10" });
+    const topic = await seedTopic(disc.id, { name: "Addition Within 10" });
 
     // Seed user_topic_state
     const now = new Date().toISOString();
@@ -106,8 +103,7 @@ describe("buildStudentProfile", () => {
     const db = getTestDb();
     const user = await seedUser({ id: "profile-mastered-user" });
     const disc = await seedDiscipline();
-    const subj = await seedSubject({ disciplineId: disc.id });
-    const topic = await seedTopic(subj.id, { name: "Counting to 10" });
+    const topic = await seedTopic(disc.id, { name: "Counting to 10" });
 
     const now = new Date().toISOString();
     await db.insert(schema.userTopicState).values({

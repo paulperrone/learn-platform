@@ -4,10 +4,9 @@ import {
   applyMigrations,
   resetDb,
   seedUser,
-  seedSubject,
-  seedTopic,
   seedDiscipline,
-  seedUserSubjectPresentation,
+  seedTopic,
+  seedUserDisciplinePresentation,
 } from "./helpers.js";
 import {
   nudgeDistribution,
@@ -339,20 +338,20 @@ describe("applyNudge (integration)", () => {
 
   it("nudges stored distribution and persists", async () => {
     const user = await seedUser({ birthYear: 2012 });
-    const subject = await seedSubject();
-    await seedUserSubjectPresentation(
+    const discipline = await seedDiscipline();
+    await seedUserDisciplinePresentation(
       user.id,
-      subject.id,
+      discipline.id,
       { primary: 0.10, intermediate: 0.15, standard: 0.65, advanced: 0.10 },
       "standard"
     );
 
     // Multiple nudges to build signal above threshold
     for (let i = 0; i < 5; i++) {
-      await content.applyNudge(user.id, subject.id, "standard", true);
+      await content.applyNudge(user.id, discipline.id, "standard", true);
     }
 
-    const updated = await content.getSubjectDistribution(user.id, subject.id);
+    const updated = await content.getDisciplineDistribution(user.id, discipline.id);
     expect(updated).not.toBeNull();
     expect(updated!.advanced).toBeGreaterThan(0.10);
     expect(updated!.standard).toBeLessThan(0.65);
@@ -363,48 +362,48 @@ describe("applyNudge (integration)", () => {
 
   it("persists driftSignal across nudges", async () => {
     const user = await seedUser({ birthYear: 2012 });
-    const subject = await seedSubject();
-    await seedUserSubjectPresentation(
+    const discipline = await seedDiscipline();
+    await seedUserDisciplinePresentation(
       user.id,
-      subject.id,
+      discipline.id,
       { primary: 0.10, intermediate: 0.15, standard: 0.65, advanced: 0.10 },
       "standard"
     );
 
-    await content.applyNudge(user.id, subject.id, "standard", true);
+    await content.applyNudge(user.id, discipline.id, "standard", true);
 
-    const updated = await content.getSubjectDistribution(user.id, subject.id);
+    const updated = await content.getDisciplineDistribution(user.id, discipline.id);
     expect(updated).not.toBeNull();
     expect(updated!.driftSignal).toBeGreaterThan(0);
   });
 
   it("does nothing when no distribution exists", async () => {
     const user = await seedUser({});
-    const subject = await seedSubject();
+    const discipline = await seedDiscipline();
 
-    await content.applyNudge(user.id, subject.id, "standard", true);
+    await content.applyNudge(user.id, discipline.id, "standard", true);
 
-    const dist = await content.getSubjectDistribution(user.id, subject.id);
+    const dist = await content.getDisciplineDistribution(user.id, discipline.id);
     expect(dist).toBeNull();
   });
 
   it("logs drift when center shifts", async () => {
     const user = await seedUser({ birthYear: 2016 });
-    const subject = await seedSubject();
+    const discipline = await seedDiscipline();
     // Standard already exceeds hysteresis threshold (0.60 > 0.40) and exceeds intermediate (0.15) by > margin
-    await seedUserSubjectPresentation(
+    await seedUserDisciplinePresentation(
       user.id,
-      subject.id,
+      discipline.id,
       { primary: 0, intermediate: 0.15, standard: 0.60, advanced: 0.25 },
       "intermediate"
     );
 
     // Build strong upward signal to trigger center shift
     for (let i = 0; i < 5; i++) {
-      await content.applyNudge(user.id, subject.id, "standard", true);
+      await content.applyNudge(user.id, discipline.id, "standard", true);
     }
 
-    const updated = await content.getSubjectDistribution(user.id, subject.id);
+    const updated = await content.getDisciplineDistribution(user.id, discipline.id);
     expect(updated!.centerLevel).toBe("standard");
 
     // Check drift log was created
@@ -414,7 +413,7 @@ describe("applyNudge (integration)", () => {
       .where(
         and(
           eq(schema.presentationDriftLog.userId, user.id),
-          eq(schema.presentationDriftLog.subjectId, subject.id),
+          eq(schema.presentationDriftLog.disciplineId, discipline.id),
         )
       );
     expect(logs.length).toBeGreaterThan(0);

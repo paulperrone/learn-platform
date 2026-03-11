@@ -4,7 +4,7 @@ import {
   resetDb,
   request,
   json,
-  seedSubject,
+  seedDiscipline,
   seedTopic,
   seedPrerequisite,
   seedEncompassing,
@@ -22,41 +22,40 @@ describe("Public API - /api/public", () => {
     await applyMigrations();
   });
 
-  describe("GET /api/public/subjects", () => {
-    it("returns empty list when no subjects exist", async () => {
-      const res = await request("/api/public/subjects");
+  describe("GET /api/public/disciplines (list)", () => {
+    it("returns empty list when no disciplines exist", async () => {
+      const res = await request("/api/public/disciplines");
       expect(res.status).toBe(200);
-      const body = await json<{ subjects: unknown[] }>(res);
-      expect(body.subjects).toEqual([]);
+      const body = await json<{ disciplines: unknown[] }>(res);
+      expect(body.disciplines).toEqual([]);
     });
 
-    it("returns subjects without auth", async () => {
-      await seedSubject({ id: "math-foundations", name: "Foundational Mathematics", description: "Elementary math", gradeRange: "K-5", topicCount: 3 });
-      const res = await request("/api/public/subjects");
+    it("returns disciplines without auth", async () => {
+      await seedDiscipline({ id: "math-foundations", name: "Foundational Mathematics", description: "Elementary math" });
+      const res = await request("/api/public/disciplines");
       expect(res.status).toBe(200);
-      const body = await json<{ subjects: Array<{ id: string; name: string; topicCount: number }> }>(res);
-      expect(body.subjects).toHaveLength(1);
-      expect(body.subjects[0].id).toBe("math-foundations");
-      expect(body.subjects[0].name).toBe("Foundational Mathematics");
-      expect(body.subjects[0].topicCount).toBe(3);
+      const body = await json<{ disciplines: Array<{ id: string; name: string }> }>(res);
+      expect(body.disciplines).toHaveLength(1);
+      expect(body.disciplines[0].id).toBe("math-foundations");
+      expect(body.disciplines[0].name).toBe("Foundational Mathematics");
     });
   });
 
-  describe("GET /api/public/subjects/:id/topics", () => {
-    it("returns 404 for unknown subject", async () => {
-      const res = await request("/api/public/subjects/nonexistent/topics");
+  describe("GET /api/public/disciplines/:id/topics", () => {
+    it("returns 404 for unknown discipline", async () => {
+      const res = await request("/api/public/disciplines/nonexistent/topics");
       expect(res.status).toBe(404);
     });
 
     it("returns topics ordered by depth", async () => {
-      const subject = await seedSubject({ id: "math-foundations" });
-      await seedTopic(subject.id, { id: "count-10", name: "Count to 10", depth: 0, gradeLevel: 0, standardCode: "K.CC.4" });
-      await seedTopic(subject.id, { id: "add-10", name: "Add Within 10", depth: 1, gradeLevel: 1 });
+      const discipline = await seedDiscipline({ id: "math-foundations" });
+      await seedTopic(discipline.id, { id: "count-10", name: "Count to 10", depth: 0, gradeLevel: 0, standardCode: "K.CC.4" });
+      await seedTopic(discipline.id, { id: "add-10", name: "Add Within 10", depth: 1, gradeLevel: 1 });
 
-      const res = await request("/api/public/subjects/math-foundations/topics");
+      const res = await request("/api/public/disciplines/math-foundations/topics");
       expect(res.status).toBe(200);
-      const body = await json<{ subjectId: string; topics: Array<{ id: string; depth: number }> }>(res);
-      expect(body.subjectId).toBe("math-foundations");
+      const body = await json<{ disciplineId: string; topics: Array<{ id: string; depth: number }> }>(res);
+      expect(body.disciplineId).toBe("math-foundations");
       expect(body.topics).toHaveLength(2);
       expect(body.topics[0].id).toBe("count-10");
       expect(body.topics[1].id).toBe("add-10");
@@ -72,8 +71,8 @@ describe("Public API - /api/public", () => {
     });
 
     it("returns topic with problems and examples from content tables", async () => {
-      const subject = await seedSubject({ id: "math-foundations" });
-      await seedTopic(subject.id, {
+      const discipline = await seedDiscipline({ id: "math-foundations" });
+      await seedTopic(discipline.id, {
         id: "add-10",
         name: "Add Within 10",
         gradeLevel: 1,
@@ -101,8 +100,8 @@ describe("Public API - /api/public", () => {
     });
 
     it("returns empty arrays when no problems/examples", async () => {
-      const subject = await seedSubject({ id: "math-foundations" });
-      await seedTopic(subject.id, { id: "empty-topic", gradeLevel: 0 });
+      const discipline = await seedDiscipline({ id: "math-foundations" });
+      await seedTopic(discipline.id, { id: "empty-topic", gradeLevel: 0 });
 
       const res = await request("/api/public/topics/empty-topic");
       expect(res.status).toBe(200);
@@ -112,17 +111,17 @@ describe("Public API - /api/public", () => {
     });
   });
 
-  describe("GET /api/public/graph/:subjectId", () => {
-    it("returns 404 for unknown subject", async () => {
+  describe("GET /api/public/graph/:disciplineId", () => {
+    it("returns 404 for unknown discipline", async () => {
       const res = await request("/api/public/graph/nonexistent");
       expect(res.status).toBe(404);
     });
 
     it("returns full graph with topics, prerequisites, and encompassings", async () => {
-      const subject = await seedSubject({ id: "math-foundations", name: "Foundational Mathematics" });
-      const t1 = await seedTopic(subject.id, { id: "count-10", depth: 0, gradeLevel: 0 });
-      const t2 = await seedTopic(subject.id, { id: "add-10", depth: 1, gradeLevel: 1 });
-      const t3 = await seedTopic(subject.id, { id: "add-20", depth: 2, gradeLevel: 1 });
+      const discipline = await seedDiscipline({ id: "math-foundations", name: "Foundational Mathematics" });
+      const t1 = await seedTopic(discipline.id, { id: "count-10", depth: 0, gradeLevel: 0 });
+      const t2 = await seedTopic(discipline.id, { id: "add-10", depth: 1, gradeLevel: 1 });
+      const t3 = await seedTopic(discipline.id, { id: "add-20", depth: 2, gradeLevel: 1 });
       await seedPrerequisite(t1.id, t2.id, 1.0);
       await seedPrerequisite(t2.id, t3.id, 1.0);
       await seedEncompassing(t3.id, t2.id, 0.5);
@@ -130,12 +129,12 @@ describe("Public API - /api/public", () => {
       const res = await request("/api/public/graph/math-foundations");
       expect(res.status).toBe(200);
       const body = await json<{
-        subject: { id: string };
+        discipline: { id: string };
         topics: Array<{ id: string }>;
         prerequisites: Array<{ from: string; to: string }>;
         encompassings: Array<{ parent: string; child: string }>;
       }>(res);
-      expect(body.subject.id).toBe("math-foundations");
+      expect(body.discipline.id).toBe("math-foundations");
       expect(body.topics).toHaveLength(3);
       expect(body.prerequisites).toHaveLength(2);
       expect(body.prerequisites[0]).toEqual({ from: "count-10", to: "add-10", strength: 1.0 });
@@ -152,21 +151,21 @@ describe("Public API - /api/public", () => {
       expect(body.name).toBe("Learn Platform Public API");
       expect(body.endpoints.length).toBeGreaterThanOrEqual(5);
       const paths = body.endpoints.map((e) => e.path);
-      expect(paths).toContain("/api/public/subjects");
+      expect(paths).toContain("/api/public/disciplines");
       expect(paths).toContain("/api/public/topics/:id");
-      expect(paths).toContain("/api/public/graph/:subjectId");
+      expect(paths).toContain("/api/public/graph/:disciplineId");
       expect(paths).toContain("/api/public/schema");
     });
   });
 
   describe("CORS", () => {
     it("includes Access-Control-Allow-Origin: * on responses", async () => {
-      const res = await request("/api/public/subjects");
+      const res = await request("/api/public/disciplines");
       expect(res.headers.get("access-control-allow-origin")).toBe("*");
     });
 
     it("handles CORS preflight", async () => {
-      const res = await request("/api/public/subjects", {
+      const res = await request("/api/public/disciplines", {
         method: "OPTIONS",
         headers: {
           Origin: "https://example.com",
@@ -182,7 +181,7 @@ describe("Public API - /api/public", () => {
 
   describe("Rate Limiting", () => {
     it("includes rate limit headers", async () => {
-      const res = await request("/api/public/subjects");
+      const res = await request("/api/public/disciplines");
       expect(res.headers.get("x-ratelimit-limit")).toBeTruthy();
       expect(res.headers.get("x-ratelimit-remaining")).toBeTruthy();
       expect(res.headers.get("x-ratelimit-reset")).toBeTruthy();
@@ -200,7 +199,7 @@ describe("Public API - /api/public", () => {
       ];
 
       for (const ua of blockedUAs) {
-        const res = await request("/api/public/subjects", {
+        const res = await request("/api/public/disciplines", {
           headers: { "User-Agent": ua },
         });
         expect(res.status).toBe(403);
@@ -210,7 +209,7 @@ describe("Public API - /api/public", () => {
     });
 
     it("allows legitimate browsers and search engines", async () => {
-      await seedSubject({ id: "math-foundations" });
+      await seedDiscipline({ id: "math-foundations" });
 
       const allowedUAs = [
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
@@ -219,7 +218,7 @@ describe("Public API - /api/public", () => {
       ];
 
       for (const ua of allowedUAs) {
-        const res = await request("/api/public/subjects", {
+        const res = await request("/api/public/disciplines", {
           headers: { "User-Agent": ua },
         });
         expect(res.status).toBe(200);

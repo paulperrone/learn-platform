@@ -4,7 +4,7 @@ import {
   applyMigrations,
   resetDb,
   seedUser,
-  seedSubject,
+  seedDiscipline,
   seedTopic,
   seedAssessmentContent,
   seedInstructionalContent,
@@ -55,23 +55,23 @@ describe("remediation-interleaving integration", () => {
   async function setupReviewGraph() {
     const db = getTestDb();
     const user = await seedUser();
-    const subject = await seedSubject({ id: "math-test" });
+    const discipline = await seedDiscipline({ id: "math-test" });
 
     // Strand 1: counting → addition → multiplication
-    await seedTopic(subject.id, { id: "counting", name: "Counting", depth: 0 });
-    await seedTopic(subject.id, { id: "addition", name: "Addition", depth: 1 });
-    await seedTopic(subject.id, { id: "multiplication", name: "Multiplication", depth: 2 });
+    await seedTopic(discipline.id, { id: "counting", name: "Counting", depth: 0 });
+    await seedTopic(discipline.id, { id: "addition", name: "Addition", depth: 1 });
+    await seedTopic(discipline.id, { id: "multiplication", name: "Multiplication", depth: 2 });
     await seedPrerequisite("counting", "addition");
     await seedPrerequisite("addition", "multiplication");
 
     // Strand 2: shapes → area
-    await seedTopic(subject.id, { id: "shapes", name: "Shapes", depth: 0 });
-    await seedTopic(subject.id, { id: "area", name: "Area", depth: 1 });
+    await seedTopic(discipline.id, { id: "shapes", name: "Shapes", depth: 0 });
+    await seedTopic(discipline.id, { id: "area", name: "Area", depth: 1 });
     await seedPrerequisite("shapes", "area");
 
     // Strand 3: data → patterns
-    await seedTopic(subject.id, { id: "data", name: "Data", depth: 0 });
-    await seedTopic(subject.id, { id: "patterns", name: "Patterns", depth: 1 });
+    await seedTopic(discipline.id, { id: "data", name: "Data", depth: 0 });
+    await seedTopic(discipline.id, { id: "patterns", name: "Patterns", depth: 1 });
     await seedPrerequisite("data", "patterns");
 
     // Content for all topics
@@ -117,7 +117,7 @@ describe("remediation-interleaving integration", () => {
     // Multiplication, area, patterns — these will appear as new learning topics
     // No userTopicState seeded → they're frontier
 
-    return { db, user, subject };
+    return { db, user, discipline };
   }
 
   it("remediation inserts prerequisite review then returns to original topic", async () => {
@@ -236,11 +236,11 @@ describe("remediation-interleaving integration", () => {
   it("remediation does not crash session when prerequisite has no content", async () => {
     const db = getTestDb();
     const user = await seedUser();
-    const subject = await seedSubject({ id: "math-test" });
+    const discipline = await seedDiscipline({ id: "math-test" });
 
     // Topic with prerequisite that has NO assessment content
-    await seedTopic(subject.id, { id: "prereq-empty", name: "Empty Prereq", depth: 0 });
-    await seedTopic(subject.id, { id: "child-topic", name: "Child Topic", depth: 1 });
+    await seedTopic(discipline.id, { id: "prereq-empty", name: "Empty Prereq", depth: 0 });
+    await seedTopic(discipline.id, { id: "child-topic", name: "Child Topic", depth: 1 });
     await seedPrerequisite("prereq-empty", "child-topic");
 
     // Only seed content for child, not prereq

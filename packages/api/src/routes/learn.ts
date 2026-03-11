@@ -38,10 +38,10 @@ learnRoutes.get("/sessions/active", async (c) => {
 learnRoutes.post("/sessions", async (c) => {
   const db = getDb(c.env.DB);
   const session = createSessionService(db);
-  const body = await c.req.json<{ userId?: string; anonymousToken?: string; subjectId?: string }>();
+  const body = await c.req.json<{ userId?: string; anonymousToken?: string; disciplineId?: string }>();
 
   if (body.anonymousToken && !body.userId) {
-    const result = await session.startAnonymousSession(body.anonymousToken, body.subjectId);
+    const result = await session.startAnonymousSession(body.anonymousToken, body.disciplineId);
     return c.json(result);
   }
 
@@ -81,11 +81,11 @@ learnRoutes.post("/diagnostic/start", async (c) => {
   const body = await c.req.json<{
     userId?: string;
     anonymousToken?: string;
-    subjectId: string;
+    disciplineId: string;
     isTaste?: boolean;
   }>();
 
-  if (!body.subjectId) return c.json({ error: "subjectId required" }, 400);
+  if (!body.disciplineId) return c.json({ error: "disciplineId required" }, 400);
   const result = await diagnostic.startDiagnostic(body);
   if ("error" in result) return c.json(result, 400);
   return c.json(result);
@@ -97,10 +97,10 @@ learnRoutes.post("/diagnostic/resume", async (c) => {
   const body = await c.req.json<{
     userId?: string;
     anonymousToken?: string;
-    subjectId: string;
+    disciplineId: string;
   }>();
 
-  if (!body.subjectId) return c.json({ error: "subjectId required" }, 400);
+  if (!body.disciplineId) return c.json({ error: "disciplineId required" }, 400);
   const result = await diagnostic.resume(body);
   return c.json(result);
 });

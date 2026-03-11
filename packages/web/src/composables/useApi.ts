@@ -1,6 +1,6 @@
 import { authClient } from "./useAuth";
 import { useToast } from "./useToast";
-import type { SpeechSettings, Subject, Topic, Problem, WorkedExample, DiagnosticResult, TodayProgress, WeeklySummary, DailyGoalConfig, DailyActivityDay, StreakInfo, CompletionEstimate } from "@learn/shared";
+import type { SpeechSettings, Discipline, Topic, Problem, WorkedExample, DiagnosticResult, TodayProgress, WeeklySummary, DailyGoalConfig, DailyActivityDay, StreakInfo, CompletionEstimate } from "@learn/shared";
 
 const API_BASE = "/api";
 
@@ -342,14 +342,14 @@ export function useApi() {
 
     // Public content (no auth required)
     getPublicSubjects: () =>
-      request<{ subjects: Subject[] }>("/public/subjects"),
+      request<{ subjects: (Discipline & { gradeRange?: string; topicCount?: number })[] }>("/public/subjects"),
     getPublicTopics: (subjectId: string) =>
       request<{ subjectId: string; topics: (Topic & { problemCount?: number; exampleCount?: number })[] }>(`/public/subjects/${subjectId}/topics`),
     getPublicTopic: (topicId: string) =>
       request<{ topic: Topic & { problems: Problem[]; examples: WorkedExample[] } }>(`/public/topics/${topicId}`),
     getPublicGraph: (subjectId: string) =>
       request<{
-        subject: Subject;
+        subject: Discipline & { gradeRange?: string };
         topics: Topic[];
         prerequisites: { from: string; to: string; strength: number }[];
         encompassings: { parent: string; child: string; weight: number }[];

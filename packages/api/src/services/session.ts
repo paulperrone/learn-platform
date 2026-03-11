@@ -24,7 +24,7 @@ type SessionState = {
   totalCorrect: number;
   totalAttempts: number;
   lastServedPresentation?: PresentationLevel;
-  lastServedSubjectId?: string;
+  lastServedDisciplineId?: string;
   currentBlendRole?: BlendRole;
   rollingResults: boolean[]; // Sliding window of last N problem correctness results (for adaptive difficulty)
   lastProblemId?: string; // Last problem ID responded to (for targeted remediation lookup)
@@ -34,7 +34,7 @@ type SessionState = {
   sessionFailures?: Record<string, number>; // Per-topic failure count within this session (for remediation trigger)
   servedDemands?: CognitiveDemand[]; // Cognitive demands served this session (for demand mixing)
   totalResponseMs?: number; // Accumulated response time for activity minutes recording
-  sessionMix?: { topicId: string; type: "review" | "new"; blendRole: string }[]; // Cached session mix from getSessionMix
+  sessionMix?: { topicId: string; type: "review" | "new"; blendRole: BlendRole }[]; // Cached session mix from getSessionMix
   remediatedTopics?: string[]; // Topics that have already been remediated this session (prevent re-entry)
 };
 
@@ -143,17 +143,13 @@ export function createSessionService(db: DB, fireDiagnostic?: FireDiagnosticConf
 
   async function resolveContentQuery(state: SessionState, topicId: string): Promise<ContentQuery> {
     const topic = await graph.getTopic(topicId);
-    const subjectId = topic?.subjectId;
-    const subject = subjectId
-      ? await db.query.subjects.findFirst({ where: eq(schema.subjects.id, subjectId) })
-      : null;
-    const disciplineId = subject?.disciplineId ?? "math";
+    const disciplineId = topic?.disciplineId ?? "math";
 
     let presentation: PresentationLevel = "standard";
     let contentDepth: ContentDepthLevel = "survey";
 
     if (!state.isAnonymous) {
-      presentation = await content.resolvePresentation(state.userId, subjectId);
+      presentation = await content.resolvePresentation(state.userId, disciplineId);
       contentDepth = await content.resolveContentDepth(state.userId, topicId, disciplineId);
     }
 
@@ -168,7 +164,7 @@ export function createSessionService(db: DB, fireDiagnostic?: FireDiagnosticConf
 
     // Track served presentation for drift nudging in respond()
     state.lastServedPresentation = presentation;
-    state.lastServedSubjectId = subjectId ?? undefined;
+    state.lastServedDisciplineId = disciplineId;
 
     return { topicId, contentDepth, presentation };
   }
@@ -347,7 +343,7 @@ export function createSessionService(db: DB, fireDiagnostic?: FireDiagnosticConf
      * Start an anonymous learning session (no auth, no FSRS).
      * Uses simple sequential topic ordering by depth.
      */
-    async startAnonymousSession(anonymousToken: string, subjectId?: string): Promise<{
+    async startAnonymousSession(anonymousToken: string, disciplineId?: string): Promise<{
       sessionId: string;
       firstItem: SessionItem;
     }> {
@@ -365,8 +361,8 @@ export function createSessionService(db: DB, fireDiagnostic?: FireDiagnosticConf
       }
 
       // Get frontier topics by depth (simplest first)
-      const allTopics = subjectId
-        ? await db.select().from(schema.topics).where(eq(schema.topics.subjectId, subjectId))
+      const allTopics = disciplineId
+        ? await db.select().from(schema.topics).where(eq(schema.topics.disciplineId, disciplineId))
         : await db.select().from(schema.topics);
 
       const sorted = [...allTopics].sort((a, b) => a.depth - b.depth || a.gradeLevel - b.gradeLevel);
@@ -537,10 +533,10 @@ export function createSessionService(db: DB, fireDiagnostic?: FireDiagnosticConf
         await srs.applyFIReCredit(state.userId, state.currentTopicId, rating);
 
         // Nudge presentation distribution based on performance
-        if (state.lastServedPresentation && state.lastServedSubjectId) {
+        if (state.lastServedPresentation && state.lastServedDisciplineId) {
           await content.applyNudge(
             state.userId,
-            state.lastServedSubjectId,
+            state.lastServedDisciplineId,
             state.lastServedPresentation,
             isCorrect,
           );
@@ -819,13 +815,8 @@ export function createSessionService(db: DB, fireDiagnostic?: FireDiagnosticConf
       const topic = await graph.getTopic(state.currentTopicId);
       if (!topic) return;
 
-      const subject = await db.query.subjects.findFirst({
-        where: eq(schema.subjects.id, topic.subjectId),
-      });
-      if (!subject) return;
-
       const disc = await db.query.disciplines.findFirst({
-        where: eq(schema.disciplines.id, subject.disciplineId),
+        where: eq(schema.disciplines.id, topic.disciplineId),
       });
       if (!disc || disc.progressionModel !== "context-layered") return;
 
@@ -833,7 +824,7 @@ export function createSessionService(db: DB, fireDiagnostic?: FireDiagnosticConf
       const currentDepth = await content.resolveContentDepth(
         state.userId,
         state.currentTopicId,
-        subject.disciplineId
+        topic.disciplineId
       );
 
       await content.markDepthCompleted(state.userId, state.currentTopicId, currentDepth);

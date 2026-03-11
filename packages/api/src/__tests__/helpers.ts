@@ -33,9 +33,10 @@ export async function resetDb() {
     "assignments",
     "teach_sessions",
     "account_links",
+    "collection_topics",
     "presentation_drift_log",
     "user_fsrs_params",
-    "user_subject_presentation",
+    "user_discipline_presentation",
     "llm_model_config",
     "llm_usage",
     "review_log",
@@ -54,7 +55,7 @@ export async function resetDb() {
     "encompassings",
     "prerequisites",
     "topics",
-    "subjects",
+    "collections",
     "disciplines",
     "users",
   ];
@@ -141,40 +142,21 @@ export async function seedDiscipline(overrides: Partial<typeof schema.discipline
   return disc;
 }
 
-export async function seedSubject(overrides: Partial<typeof schema.subjects.$inferInsert> = {}) {
-  const db = getTestDb();
-  const id = overrides.id ?? `subj-${crypto.randomUUID().slice(0, 8)}`;
-  const disciplineId = overrides.disciplineId ?? "math";
-  // Ensure discipline exists
-  await seedDiscipline({ id: disciplineId });
-  const now = new Date().toISOString();
-  const [subj] = await db
-    .insert(schema.subjects)
-    .values({
-      id,
-      name: overrides.name ?? "Foundational Mathematics",
-      description: overrides.description ?? "Test subject",
-      disciplineId,
-      gradeRange: overrides.gradeRange ?? "K-5",
-      createdAt: now,
-      ...overrides,
-    })
-    .returning();
-  return subj;
-}
 
 export async function seedTopic(
-  subjectId: string,
+  disciplineId: string,
   overrides: Partial<typeof schema.topics.$inferInsert> = {}
 ) {
   const db = getTestDb();
   const id = overrides.id ?? `topic-${crypto.randomUUID().slice(0, 8)}`;
   const now = new Date().toISOString();
+  // Ensure discipline exists
+  await seedDiscipline({ id: disciplineId });
   const [topic] = await db
     .insert(schema.topics)
     .values({
       id,
-      subjectId,
+      disciplineId,
       name: overrides.name ?? "Counting to 10",
       description: overrides.description ?? "Test topic",
       gradeLevel: overrides.gradeLevel ?? 0,
@@ -281,19 +263,19 @@ export async function seedUserTopicDepth(
   return row;
 }
 
-export async function seedUserSubjectPresentation(
+export async function seedUserDisciplinePresentation(
   userId: string,
-  subjectId: string,
+  disciplineId: string,
   weights: { primary: number; intermediate: number; standard: number; advanced: number },
   centerLevel = "standard"
 ) {
   const db = getTestDb();
   const now = new Date().toISOString();
   const [row] = await db
-    .insert(schema.userSubjectPresentation)
+    .insert(schema.userDisciplinePresentation)
     .values({
       userId,
-      subjectId,
+      disciplineId,
       primaryWeight: weights.primary,
       intermediateWeight: weights.intermediate,
       standardWeight: weights.standard,
@@ -304,6 +286,9 @@ export async function seedUserSubjectPresentation(
     .returning();
   return row;
 }
+
+/** @deprecated Use seedUserDisciplinePresentation() */
+export const seedUserSubjectPresentation = seedUserDisciplinePresentation;
 
 export async function seedLLMUsage(userId: string, overrides: Partial<typeof schema.llmUsage.$inferInsert> = {}) {
   const db = getTestDb();
@@ -497,10 +482,6 @@ const SCHEMA_STATEMENTS = [
   // disciplines (no FK deps)
   'CREATE TABLE disciplines (id text PRIMARY KEY NOT NULL, name text NOT NULL, description text NOT NULL, progression_model text DEFAULT \'mastery-gated\' NOT NULL, created_at text NOT NULL)',
 
-  // subjects (FK → disciplines)
-  'CREATE TABLE subjects (id text PRIMARY KEY NOT NULL, discipline_id text DEFAULT \'math\' NOT NULL, name text NOT NULL, description text NOT NULL, grade_range text NOT NULL, topic_count integer DEFAULT 0 NOT NULL, created_at text NOT NULL, FOREIGN KEY (discipline_id) REFERENCES disciplines(id))',
-  'CREATE INDEX subjects_discipline_idx ON subjects (discipline_id)',
-
   // verifications (no FK deps)
   'CREATE TABLE verifications (id text PRIMARY KEY NOT NULL, identifier text NOT NULL, value text NOT NULL, expires_at text NOT NULL, created_at text NOT NULL, updated_at text NOT NULL)',
 
@@ -516,10 +497,19 @@ const SCHEMA_STATEMENTS = [
   // accounts (FK → users)
   'CREATE TABLE accounts (id text PRIMARY KEY NOT NULL, user_id text NOT NULL, account_id text NOT NULL, provider_id text NOT NULL, access_token text, refresh_token text, access_token_expires_at text, refresh_token_expires_at text, scope text, id_token text, password text, created_at text NOT NULL, updated_at text NOT NULL, FOREIGN KEY (user_id) REFERENCES users(id))',
 
-  // topics (FK → subjects) — graph nodes only, no content
-  'CREATE TABLE topics (id text PRIMARY KEY NOT NULL, subject_id text NOT NULL, name text NOT NULL, description text NOT NULL, depth integer DEFAULT 0 NOT NULL, grade_level integer NOT NULL, strand text, standard_code text, created_at text NOT NULL, FOREIGN KEY (subject_id) REFERENCES subjects(id))',
-  'CREATE INDEX topics_subject_idx ON topics (subject_id)',
+  // collections (FK → disciplines)
+  'CREATE TABLE collections (id text PRIMARY KEY NOT NULL, primary_discipline_id text NOT NULL, name text NOT NULL, description text NOT NULL, kind text DEFAULT \'grade-band\' NOT NULL, grade_range text, display_order integer DEFAULT 0 NOT NULL, visibility text DEFAULT \'published\' NOT NULL, created_at text NOT NULL, FOREIGN KEY (primary_discipline_id) REFERENCES disciplines(id))',
+  'CREATE INDEX collections_discipline_idx ON collections (primary_discipline_id)',
+
+  // topics (FK → disciplines) — graph nodes only, no content
+  'CREATE TABLE topics (id text PRIMARY KEY NOT NULL, discipline_id text NOT NULL, name text NOT NULL, description text NOT NULL, depth integer DEFAULT 0 NOT NULL, grade_level integer NOT NULL, strand text, standard_code text, created_at text NOT NULL, FOREIGN KEY (discipline_id) REFERENCES disciplines(id))',
+  'CREATE INDEX topics_discipline_idx ON topics (discipline_id)',
   'CREATE INDEX topics_depth_idx ON topics (depth)',
+
+  // collection_topics (FK → collections, topics)
+  'CREATE TABLE collection_topics (id integer PRIMARY KEY AUTOINCREMENT NOT NULL, collection_id text NOT NULL, topic_id text NOT NULL, sort_order integer DEFAULT 0 NOT NULL, FOREIGN KEY (collection_id) REFERENCES collections(id), FOREIGN KEY (topic_id) REFERENCES topics(id))',
+  'CREATE UNIQUE INDEX ct_collection_topic_idx ON collection_topics (collection_id, topic_id)',
+  'CREATE INDEX ct_topic_idx ON collection_topics (topic_id)',
 
   // instructional_content (FK → topics)
   'CREATE TABLE instructional_content (id text PRIMARY KEY NOT NULL, topic_id text NOT NULL, flavor text DEFAULT \'classic\' NOT NULL, locale text DEFAULT \'en\' NOT NULL, presentation text DEFAULT \'standard\' NOT NULL, content_depth text DEFAULT \'survey\' NOT NULL, version integer DEFAULT 1 NOT NULL, title text NOT NULL, steps_json text NOT NULL, assets_json text, created_at text NOT NULL, updated_at text NOT NULL, FOREIGN KEY (topic_id) REFERENCES topics(id))',
@@ -572,13 +562,13 @@ const SCHEMA_STATEMENTS = [
   'CREATE TABLE llm_usage (id text PRIMARY KEY NOT NULL, user_id text NOT NULL, model text NOT NULL, input_tokens integer NOT NULL, output_tokens integer NOT NULL, cost_cents real NOT NULL, purpose text NOT NULL, created_at text NOT NULL, FOREIGN KEY (user_id) REFERENCES users(id))',
   'CREATE INDEX llm_usage_user_idx ON llm_usage (user_id)',
 
-  // user_subject_presentation (FK → users, subjects)
-  'CREATE TABLE user_subject_presentation (id integer PRIMARY KEY AUTOINCREMENT NOT NULL, user_id text NOT NULL, subject_id text NOT NULL, primary_weight real DEFAULT 0 NOT NULL, intermediate_weight real DEFAULT 0 NOT NULL, standard_weight real DEFAULT 0 NOT NULL, advanced_weight real DEFAULT 0 NOT NULL, center_level text DEFAULT \'standard\' NOT NULL, drift_signal real DEFAULT 0 NOT NULL, last_adjusted_at text NOT NULL, FOREIGN KEY (user_id) REFERENCES users(id), FOREIGN KEY (subject_id) REFERENCES subjects(id))',
-  'CREATE UNIQUE INDEX usp_user_subject_idx ON user_subject_presentation (user_id, subject_id)',
+  // user_discipline_presentation (FK → users, disciplines)
+  'CREATE TABLE user_discipline_presentation (id integer PRIMARY KEY AUTOINCREMENT NOT NULL, user_id text NOT NULL, discipline_id text NOT NULL, primary_weight real DEFAULT 0 NOT NULL, intermediate_weight real DEFAULT 0 NOT NULL, standard_weight real DEFAULT 0 NOT NULL, advanced_weight real DEFAULT 0 NOT NULL, center_level text DEFAULT \'standard\' NOT NULL, drift_signal real DEFAULT 0 NOT NULL, last_adjusted_at text NOT NULL, FOREIGN KEY (user_id) REFERENCES users(id), FOREIGN KEY (discipline_id) REFERENCES disciplines(id))',
+  'CREATE UNIQUE INDEX udp_user_discipline_idx ON user_discipline_presentation (user_id, discipline_id)',
 
-  // presentation_drift_log (FK → users, subjects)
-  'CREATE TABLE presentation_drift_log (id integer PRIMARY KEY AUTOINCREMENT NOT NULL, user_id text NOT NULL, subject_id text NOT NULL, from_weights text NOT NULL, to_weights text NOT NULL, from_center text NOT NULL, to_center text NOT NULL, trigger text NOT NULL, created_at text NOT NULL, FOREIGN KEY (user_id) REFERENCES users(id), FOREIGN KEY (subject_id) REFERENCES subjects(id))',
-  'CREATE INDEX pdl_user_subject_idx ON presentation_drift_log (user_id, subject_id)',
+  // presentation_drift_log (FK → users, disciplines)
+  'CREATE TABLE presentation_drift_log (id integer PRIMARY KEY AUTOINCREMENT NOT NULL, user_id text NOT NULL, discipline_id text NOT NULL, from_weights text NOT NULL, to_weights text NOT NULL, from_center text NOT NULL, to_center text NOT NULL, trigger text NOT NULL, created_at text NOT NULL, FOREIGN KEY (user_id) REFERENCES users(id), FOREIGN KEY (discipline_id) REFERENCES disciplines(id))',
+  'CREATE INDEX pdl_user_discipline_idx ON presentation_drift_log (user_id, discipline_id)',
 
   // user_preferences (FK → users)
   'CREATE TABLE user_preferences (user_id text PRIMARY KEY NOT NULL, tts_enabled integer DEFAULT true NOT NULL, tts_rate real DEFAULT 0.9 NOT NULL, tts_voice_name text, tts_auto_read integer DEFAULT false NOT NULL, stt_enabled integer DEFAULT true NOT NULL, presentation_override text, daily_goal_type text DEFAULT \'minutes\' NOT NULL, daily_goal_target integer DEFAULT 20 NOT NULL, created_at text NOT NULL, updated_at text NOT NULL, FOREIGN KEY (user_id) REFERENCES users(id))',
@@ -619,8 +609,8 @@ const SCHEMA_STATEMENTS = [
   'CREATE INDEX ar_assignment_idx ON assignment_responses (assignment_id)',
   'CREATE INDEX ar_user_idx ON assignment_responses (user_id)',
 
-  // diagnostic_sessions (FK → users, subjects)
-  'CREATE TABLE diagnostic_sessions (id text PRIMARY KEY NOT NULL, user_id text, anonymous_token text, subject_id text NOT NULL, status text DEFAULT \'active\' NOT NULL, questions_asked integer DEFAULT 0 NOT NULL, questions_correct integer DEFAULT 0 NOT NULL, estimated_frontier_json text, topic_estimates_json text, state_json text, is_taste integer DEFAULT 0 NOT NULL, created_at text NOT NULL, completed_at text, FOREIGN KEY (user_id) REFERENCES users(id), FOREIGN KEY (subject_id) REFERENCES subjects(id))',
+  // diagnostic_sessions (FK → users, disciplines)
+  'CREATE TABLE diagnostic_sessions (id text PRIMARY KEY NOT NULL, user_id text, anonymous_token text, discipline_id text NOT NULL, status text DEFAULT \'active\' NOT NULL, questions_asked integer DEFAULT 0 NOT NULL, questions_correct integer DEFAULT 0 NOT NULL, estimated_frontier_json text, topic_estimates_json text, state_json text, is_taste integer DEFAULT 0 NOT NULL, created_at text NOT NULL, completed_at text, FOREIGN KEY (user_id) REFERENCES users(id), FOREIGN KEY (discipline_id) REFERENCES disciplines(id))',
   'CREATE INDEX diag_user_idx ON diagnostic_sessions (user_id)',
   'CREATE INDEX diag_anon_idx ON diagnostic_sessions (anonymous_token)',
 

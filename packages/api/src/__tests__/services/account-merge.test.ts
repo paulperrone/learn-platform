@@ -6,7 +6,7 @@ import {
   request,
   json,
   seedUser,
-  seedSubject,
+  seedDiscipline,
   seedTopic,
   seedAssessmentContent,
   seedInstructionalContent,
@@ -16,7 +16,7 @@ import {
 import * as schema from "../../db/schema.js";
 import { createAccountMergeService } from "../../services/account-merge.js";
 
-const SUBJECT_ID = "merge-subj";
+const DISCIPLINE_ID = "merge-disc";
 const TOPICS = ["merge-t1", "merge-t2", "merge-t3", "merge-t4"];
 
 beforeAll(async () => {
@@ -37,11 +37,11 @@ beforeEach(async () => {
 let contentSeeded = false;
 beforeAll(async () => {
   if (contentSeeded) return;
-  const subj = await seedSubject({ id: SUBJECT_ID, name: "Merge Math" });
-  const t1 = await seedTopic(subj.id, { id: TOPICS[0], name: "Counting", depth: 0, gradeLevel: 0 });
-  const t2 = await seedTopic(subj.id, { id: TOPICS[1], name: "Addition", depth: 1, gradeLevel: 1 });
-  const t3 = await seedTopic(subj.id, { id: TOPICS[2], name: "Subtraction", depth: 1, gradeLevel: 1 });
-  const t4 = await seedTopic(subj.id, { id: TOPICS[3], name: "Multiplication", depth: 2, gradeLevel: 2 });
+  const disc = await seedDiscipline({ id: DISCIPLINE_ID, name: "Merge Math" });
+  const t1 = await seedTopic(disc.id, { id: TOPICS[0], name: "Counting", depth: 0, gradeLevel: 0 });
+  const t2 = await seedTopic(disc.id, { id: TOPICS[1], name: "Addition", depth: 1, gradeLevel: 1 });
+  const t3 = await seedTopic(disc.id, { id: TOPICS[2], name: "Subtraction", depth: 1, gradeLevel: 1 });
+  const t4 = await seedTopic(disc.id, { id: TOPICS[3], name: "Multiplication", depth: 2, gradeLevel: 2 });
   await seedPrerequisite(t1.id, t2.id);
   await seedPrerequisite(t1.id, t3.id);
   await seedPrerequisite(t2.id, t4.id);
@@ -58,7 +58,7 @@ async function runAnonymousDiagnostic(anonymousToken: string): Promise<string> {
   const startRes = await request("/api/learn/diagnostic/start", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ anonymousToken, subjectId: SUBJECT_ID, isTaste: true }),
+    body: JSON.stringify({ anonymousToken, disciplineId: DISCIPLINE_ID, isTaste: true }),
   });
   let { sessionId, question } = await json<{ sessionId: string; question: any }>(startRes);
 

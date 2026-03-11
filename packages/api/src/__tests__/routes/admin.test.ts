@@ -6,7 +6,7 @@ import {
   json,
   seedUser,
   seedAdminUser,
-  seedSubject,
+  seedDiscipline,
   seedTopic,
   seedLLMUsage,
   seedReviewLog,
@@ -39,8 +39,8 @@ describe("admin stats queries (service-level)", () => {
     const db = getTestDb();
 
     // Seed data
-    const subj = await seedSubject({ id: "admin-q-subj" });
-    const topic = await seedTopic(subj.id, { id: "admin-q-topic" });
+    const disc = await seedDiscipline({ id: "admin-q-subj" });
+    const topic = await seedTopic(disc.id, { id: "admin-q-topic" });
     await seedOrg({ id: "admin-q-org" });
     await seedInstructionalContent(topic.id, { id: "admin-q-ic-1", locale: "en", flavor: "classic" });
     await seedInstructionalContent(topic.id, { id: "admin-q-ic-2", locale: "es", flavor: "adventure" });
@@ -82,8 +82,8 @@ describe("admin stats queries (service-level)", () => {
 describe("system stats queries (service-level)", () => {
   it("counts active users from review data", async () => {
     const db = getTestDb();
-    const subj = await seedSubject({ id: "admin-sys-subj" });
-    const topic = await seedTopic(subj.id, { id: "admin-sys-topic" });
+    const disc = await seedDiscipline({ id: "admin-sys-subj" });
+    const topic = await seedTopic(disc.id, { id: "admin-sys-topic" });
     const learner = await seedUser({ id: "admin-sys-learner" });
     await seedReviewLog(learner.id, topic.id, { id: "admin-sys-rev-1" });
 

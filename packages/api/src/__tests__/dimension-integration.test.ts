@@ -4,7 +4,6 @@ import {
   applyMigrations,
   resetDb,
   seedUser,
-  seedSubject,
   seedTopic,
   seedDiscipline,
   seedAssessmentContent,
@@ -38,10 +37,9 @@ describe("dimension system integration", () => {
 
     beforeAll(async () => {
       const disc = await seedDiscipline({ id: "integ-math", progressionModel: "mastery-gated" });
-      const subj = await seedSubject({ id: "integ-subj", disciplineId: disc.id });
 
       for (const topicId of topicIds) {
-        await seedTopic(subj.id, { id: topicId });
+        await seedTopic(disc.id, { id: topicId });
 
         // Primary presentation (for young learners)
         await seedAssessmentContent(topicId, {
@@ -171,8 +169,8 @@ describe("dimension system integration", () => {
     let topicId: string;
 
     beforeAll(async () => {
-      const subj = await seedSubject({ id: "integ-fallback-subj" });
-      const topic = await seedTopic(subj.id, { id: "integ-fallback-topic" });
+      const disc = await seedDiscipline({ id: "integ-fallback-disc" });
+      const topic = await seedTopic(disc.id, { id: "integ-fallback-topic" });
       topicId = topic.id;
 
       // Only seed standard/survey content — no primary, no contextual
@@ -234,8 +232,7 @@ describe("dimension system integration", () => {
     beforeAll(async () => {
       const disc = await seedDiscipline({ id: "integ-history", progressionModel: "context-layered" });
       discId = disc.id;
-      const subj = await seedSubject({ id: "integ-hist-subj", disciplineId: disc.id });
-      const topic = await seedTopic(subj.id, { id: "integ-spiral-topic" });
+      const topic = await seedTopic(disc.id, { id: "integ-spiral-topic" });
       topicId = topic.id;
       const user = await seedUser({ id: "integ-spiral-user" });
       userId = user.id;
@@ -333,15 +330,12 @@ describe("dimension system integration", () => {
       const mathDisc = await seedDiscipline({ id: "integ-math-dag", progressionModel: "mastery-gated" });
       const elaDisc = await seedDiscipline({ id: "integ-ela-dag", progressionModel: "mastery-gated" });
 
-      const mathSubj = await seedSubject({ id: "integ-math-s", disciplineId: mathDisc.id });
-      const elaSubj = await seedSubject({ id: "integ-ela-s", disciplineId: elaDisc.id });
-
       // ELA topics
-      const reading = await seedTopic(elaSubj.id, { id: "integ-reading-comp" });
+      const reading = await seedTopic(elaDisc.id, { id: "integ-reading-comp" });
 
       // Math topics
-      const basicMath = await seedTopic(mathSubj.id, { id: "integ-basic-math" });
-      const wordProblems = await seedTopic(mathSubj.id, { id: "integ-word-problems" });
+      const basicMath = await seedTopic(mathDisc.id, { id: "integ-basic-math" });
+      const wordProblems = await seedTopic(mathDisc.id, { id: "integ-word-problems" });
 
       // Intra-subject prereq
       await seedPrerequisite(basicMath.id, wordProblems.id);
@@ -350,10 +344,10 @@ describe("dimension system integration", () => {
       await seedPrerequisite(reading.id, wordProblems.id);
 
       // Single-subject validation should still work (ignores cross-subject edges)
-      const mathResult = await graph.validateDAG(mathSubj.id);
+      const mathResult = await graph.validateDAG(mathDisc.id);
       expect(mathResult.valid).toBe(true);
 
-      const elaResult = await graph.validateDAG(elaSubj.id);
+      const elaResult = await graph.validateDAG(elaDisc.id);
       expect(elaResult.valid).toBe(true);
 
       // Full graph validation includes cross-subject edges
@@ -362,19 +356,18 @@ describe("dimension system integration", () => {
     });
 
     it("detects cycles in full graph validation", async () => {
-      const disc = await seedDiscipline({ id: "integ-cycle-disc", progressionModel: "mastery-gated" });
-      const subj1 = await seedSubject({ id: "integ-cycle-s1", disciplineId: disc.id });
-      const subj2 = await seedSubject({ id: "integ-cycle-s2", disciplineId: disc.id });
+      const disc1 = await seedDiscipline({ id: "integ-cycle-d1", progressionModel: "mastery-gated" });
+      const disc2 = await seedDiscipline({ id: "integ-cycle-d2", progressionModel: "mastery-gated" });
 
-      const t1 = await seedTopic(subj1.id, { id: "integ-cycle-t1" });
-      const t2 = await seedTopic(subj2.id, { id: "integ-cycle-t2" });
+      const t1 = await seedTopic(disc1.id, { id: "integ-cycle-t1" });
+      const t2 = await seedTopic(disc2.id, { id: "integ-cycle-t2" });
 
       // Create a cross-subject cycle: t1 → t2 → t1
       await seedPrerequisite(t1.id, t2.id);
       await seedPrerequisite(t2.id, t1.id);
 
       // Single-subject validation won't see the cycle (edges are cross-subject)
-      const s1Result = await graph.validateDAG(subj1.id);
+      const s1Result = await graph.validateDAG(disc1.id);
       expect(s1Result.valid).toBe(true);
 
       // Full graph validation detects the cross-subject cycle
@@ -388,11 +381,8 @@ describe("dimension system integration", () => {
       const histDisc = await seedDiscipline({ id: "integ-hist-dag", progressionModel: "context-layered" });
       const philDisc = await seedDiscipline({ id: "integ-phil-dag", progressionModel: "context-layered" });
 
-      const histSubj = await seedSubject({ id: "integ-hist-s", disciplineId: histDisc.id });
-      const philSubj = await seedSubject({ id: "integ-phil-s", disciplineId: philDisc.id });
-
-      const greece = await seedTopic(histSubj.id, { id: "integ-ancient-greece" });
-      const philosophy = await seedTopic(philSubj.id, { id: "integ-greek-philosophy" });
+      const greece = await seedTopic(histDisc.id, { id: "integ-ancient-greece" });
+      const philosophy = await seedTopic(philDisc.id, { id: "integ-greek-philosophy" });
 
       // Cross-discipline recommended edge
       await seedPrerequisite(greece.id, philosophy.id, 0.8, "recommended");

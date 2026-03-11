@@ -276,9 +276,9 @@ const progressMilestone = computed(() => {
 
       <!-- Completion Estimate -->
       <div v-if="completionEstimates.length > 0" class="bg-white rounded-lg shadow-sm border border-gray-200 p-5 mb-8">
-        <div v-for="est in completionEstimates" :key="est.subjectId">
+        <div v-for="est in completionEstimates" :key="est.disciplineId">
           <div class="flex justify-between items-baseline mb-2">
-            <span class="font-semibold text-gray-800">{{ est.subjectName }}</span>
+            <span class="font-semibold text-gray-800">{{ est.disciplineName }}</span>
             <span class="text-sm text-gray-500">
               {{ t('completion.progress', { mastered: est.mastered, total: est.total }) }}
             </span>

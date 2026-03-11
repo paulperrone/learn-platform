@@ -4,7 +4,7 @@ import type { Env } from "../index.js";
 import { getDb } from "../db/index.js";
 import { createGraphService } from "../services/graph.js";
 import * as schema from "../db/schema.js";
-import { eq, inArray } from "drizzle-orm";
+import { eq, and, inArray } from "drizzle-orm";
 
 export const publicRoutes = new Hono<Env>();
 
@@ -135,36 +135,34 @@ publicRoutes.use("/graph/*", rateLimit(RATE_LIMITS.graph, "graph"));
 // Everything else gets default rate limit
 publicRoutes.use("*", rateLimit(RATE_LIMITS.default, "api"));
 
-// GET /api/public/subjects — list all subjects
-publicRoutes.get("/subjects", async (c) => {
+// GET /api/public/disciplines — list all disciplines
+publicRoutes.get("/disciplines", async (c) => {
   const db = getDb(c.env.DB);
   const graph = createGraphService(db);
-  const subjects = await graph.getSubjects();
+  const disciplines = await graph.getDisciplines();
   return c.json({
-    subjects: subjects.map((s) => ({
-      id: s.id,
-      name: s.name,
-      description: s.description,
-      gradeRange: s.gradeRange,
-      topicCount: s.topicCount,
-      disciplineId: s.disciplineId,
+    disciplines: disciplines.map((d) => ({
+      id: d.id,
+      name: d.name,
+      description: d.description,
+      progressionModel: d.progressionModel,
     })),
   });
 });
 
-// GET /api/public/subjects/:id/topics — topics for a subject
-publicRoutes.get("/subjects/:id/topics", async (c) => {
+// GET /api/public/disciplines/:id/topics — topics for a discipline
+publicRoutes.get("/disciplines/:id/topics", async (c) => {
   const db = getDb(c.env.DB);
   const graph = createGraphService(db);
-  const subjectId = c.req.param("id");
+  const disciplineId = c.req.param("id");
 
-  const topics = await graph.getSubjectTopics(subjectId);
+  const topics = await graph.getDisciplineTopics(disciplineId);
   if (topics.length === 0) {
-    return c.json({ error: "Subject not found or has no topics" }, 404);
+    return c.json({ error: "Discipline not found or has no topics" }, 404);
   }
 
   return c.json({
-    subjectId,
+    disciplineId,
     topics: topics.map((t) => ({
       id: t.id,
       name: t.name,
@@ -197,7 +195,7 @@ publicRoutes.get("/topics/:id", async (c) => {
   return c.json({
     topic: {
       id: topic.id,
-      subjectId: topic.subjectId,
+      disciplineId: topic.disciplineId,
       name: topic.name,
       description: topic.description,
       gradeLevel: topic.gradeLevel,
@@ -223,17 +221,17 @@ publicRoutes.get("/topics/:id", async (c) => {
   });
 });
 
-// GET /api/public/graph/:subjectId — full graph structure
-publicRoutes.get("/graph/:subjectId", async (c) => {
+// GET /api/public/graph/:disciplineId — full graph structure
+publicRoutes.get("/graph/:disciplineId", async (c) => {
   const db = getDb(c.env.DB);
-  const subjectId = c.req.param("subjectId");
+  const disciplineId = c.req.param("disciplineId");
 
-  const [subject] = await db
+  const [discipline] = await db
     .select()
-    .from(schema.subjects)
-    .where(eq(schema.subjects.id, subjectId));
+    .from(schema.disciplines)
+    .where(eq(schema.disciplines.id, disciplineId));
 
-  if (!subject) return c.json({ error: "Subject not found" }, 404);
+  if (!discipline) return c.json({ error: "Discipline not found" }, 404);
 
   const topics = await db
     .select({
@@ -245,7 +243,7 @@ publicRoutes.get("/graph/:subjectId", async (c) => {
       standardCode: schema.topics.standardCode,
     })
     .from(schema.topics)
-    .where(eq(schema.topics.subjectId, subjectId))
+    .where(eq(schema.topics.disciplineId, disciplineId))
     .orderBy(schema.topics.depth);
 
   const topicIds = new Set(topics.map((t) => t.id));
@@ -269,12 +267,11 @@ publicRoutes.get("/graph/:subjectId", async (c) => {
     }));
 
   return c.json({
-    subject: {
-      id: subject.id,
-      name: subject.name,
-      description: subject.description,
-      gradeRange: subject.gradeRange,
-      topicCount: subject.topicCount,
+    discipline: {
+      id: discipline.id,
+      name: discipline.name,
+      description: discipline.description,
+      progressionModel: discipline.progressionModel,
     },
     topics,
     prerequisites: prereqEdges,
@@ -282,22 +279,22 @@ publicRoutes.get("/graph/:subjectId", async (c) => {
   });
 });
 
-// GET /api/public/download/:subject — downloadable content pack
-publicRoutes.get("/download/:subject", async (c) => {
+// GET /api/public/download/:discipline — downloadable content pack
+publicRoutes.get("/download/:discipline", async (c) => {
   const db = getDb(c.env.DB);
-  const subjectId = c.req.param("subject");
+  const disciplineId = c.req.param("discipline");
 
-  const [subject] = await db
+  const [discipline] = await db
     .select()
-    .from(schema.subjects)
-    .where(eq(schema.subjects.id, subjectId));
+    .from(schema.disciplines)
+    .where(eq(schema.disciplines.id, disciplineId));
 
-  if (!subject) return c.json({ error: "Subject not found" }, 404);
+  if (!discipline) return c.json({ error: "Discipline not found" }, 404);
 
   const topics = await db
     .select()
     .from(schema.topics)
-    .where(eq(schema.topics.subjectId, subjectId))
+    .where(eq(schema.topics.disciplineId, disciplineId))
     .orderBy(schema.topics.depth);
 
   const topicIdList = topics.map((t) => t.id);
@@ -350,11 +347,11 @@ publicRoutes.get("/download/:subject", async (c) => {
     meta: {
       version: "1.0.0",
       generatedAt: new Date().toISOString(),
-      subject: {
-        id: subject.id,
-        name: subject.name,
-        description: subject.description,
-        gradeRange: subject.gradeRange,
+      discipline: {
+        id: discipline.id,
+        name: discipline.name,
+        description: discipline.description,
+        progressionModel: discipline.progressionModel,
       },
       counts: {
         topics: topics.length,
@@ -390,9 +387,82 @@ publicRoutes.get("/download/:subject", async (c) => {
   return new Response(json, {
     headers: {
       "Content-Type": "application/json",
-      "Content-Disposition": `attachment; filename="${subjectId}-content-pack.json"`,
+      "Content-Disposition": `attachment; filename="${disciplineId}-content-pack.json"`,
       "Cache-Control": "public, max-age=86400",
     },
+  });
+});
+
+// GET /api/public/collections — list collections, optional ?discipline= filter
+publicRoutes.get("/collections", async (c) => {
+  const db = getDb(c.env.DB);
+  const disciplineFilter = c.req.query("discipline");
+
+  const query = db
+    .select({
+      id: schema.collections.id,
+      name: schema.collections.name,
+      description: schema.collections.description,
+      kind: schema.collections.kind,
+      gradeRange: schema.collections.gradeRange,
+      disciplineId: schema.collections.primaryDisciplineId,
+      displayOrder: schema.collections.displayOrder,
+    })
+    .from(schema.collections)
+    .where(
+      disciplineFilter
+        ? and(eq(schema.collections.primaryDisciplineId, disciplineFilter), eq(schema.collections.visibility, "published"))
+        : eq(schema.collections.visibility, "published")
+    )
+    .orderBy(schema.collections.displayOrder);
+
+  const collections = await query;
+  return c.json({ collections });
+});
+
+// GET /api/public/collections/:id — collection detail with topics
+publicRoutes.get("/collections/:id", async (c) => {
+  const db = getDb(c.env.DB);
+  const collectionId = c.req.param("id");
+
+  const [collection] = await db
+    .select()
+    .from(schema.collections)
+    .where(eq(schema.collections.id, collectionId));
+
+  if (!collection) return c.json({ error: "Collection not found" }, 404);
+
+  const topicRows = await db
+    .select({
+      topicId: schema.collectionTopics.topicId,
+      sortOrder: schema.collectionTopics.sortOrder,
+      name: schema.topics.name,
+      description: schema.topics.description,
+      gradeLevel: schema.topics.gradeLevel,
+      depth: schema.topics.depth,
+    })
+    .from(schema.collectionTopics)
+    .innerJoin(schema.topics, eq(schema.collectionTopics.topicId, schema.topics.id))
+    .where(eq(schema.collectionTopics.collectionId, collectionId))
+    .orderBy(schema.collectionTopics.sortOrder);
+
+  return c.json({
+    collection: {
+      id: collection.id,
+      name: collection.name,
+      description: collection.description,
+      kind: collection.kind,
+      gradeRange: collection.gradeRange,
+      disciplineId: collection.primaryDisciplineId,
+    },
+    topics: topicRows.map((t) => ({
+      id: t.topicId,
+      name: t.name,
+      description: t.description,
+      gradeLevel: t.gradeLevel,
+      depth: t.depth,
+      sortOrder: t.sortOrder,
+    })),
   });
 });
 
@@ -415,22 +485,43 @@ publicRoutes.get("/schema", (c) => {
     endpoints: [
       {
         method: "GET",
-        path: "/api/public/subjects",
-        description: "List all subjects with metadata",
+        path: "/api/public/disciplines",
+        description: "List all disciplines with metadata",
         rateLimit: "default",
         response: {
-          subjects: [{ id: "string", name: "string", description: "string", gradeRange: "string", topicCount: "number" }],
+          disciplines: [{ id: "string", name: "string", description: "string", progressionModel: "string" }],
         },
       },
       {
         method: "GET",
-        path: "/api/public/subjects/:id/topics",
-        description: "List all topics for a subject, ordered by depth",
+        path: "/api/public/disciplines/:id/topics",
+        description: "List all topics for a discipline, ordered by depth",
         rateLimit: "default",
-        params: { id: "Subject ID" },
+        params: { id: "Discipline ID" },
         response: {
-          subjectId: "string",
+          disciplineId: "string",
           topics: [{ id: "string", name: "string", description: "string", gradeLevel: "number", depth: "number", standardCode: "string | null" }],
+        },
+      },
+      {
+        method: "GET",
+        path: "/api/public/collections",
+        description: "List collections, optionally filtered by discipline",
+        rateLimit: "default",
+        query: { discipline: "Discipline ID (optional filter)" },
+        response: {
+          collections: [{ id: "string", name: "string", description: "string", kind: "string", gradeRange: "string | null", disciplineId: "string" }],
+        },
+      },
+      {
+        method: "GET",
+        path: "/api/public/collections/:id",
+        description: "Get collection detail with topics",
+        rateLimit: "default",
+        params: { id: "Collection ID" },
+        response: {
+          collection: { id: "string", name: "string", description: "string", kind: "string", gradeRange: "string | null", disciplineId: "string" },
+          topics: [{ id: "string", name: "string", sortOrder: "number" }],
         },
       },
       {
@@ -441,7 +532,7 @@ publicRoutes.get("/schema", (c) => {
         params: { id: "Topic ID" },
         response: {
           topic: {
-            id: "string", subjectId: "string", name: "string", description: "string",
+            id: "string", disciplineId: "string", name: "string", description: "string",
             gradeLevel: "number", depth: "number", standardCode: "string | null",
             problems: "Problem[]", examples: "WorkedExample[]",
           },
@@ -449,12 +540,12 @@ publicRoutes.get("/schema", (c) => {
       },
       {
         method: "GET",
-        path: "/api/public/graph/:subjectId",
+        path: "/api/public/graph/:disciplineId",
         description: "Full knowledge graph: topics, prerequisite edges, and encompassing edges",
         rateLimit: "graph",
-        params: { subjectId: "Subject ID" },
+        params: { disciplineId: "Discipline ID" },
         response: {
-          subject: { id: "string", name: "string", description: "string", gradeRange: "string", topicCount: "number" },
+          discipline: { id: "string", name: "string", description: "string", progressionModel: "string" },
           topics: "Topic[]",
           prerequisites: [{ from: "string", to: "string", strength: "number" }],
           encompassings: [{ parent: "string", child: "string", weight: "number" }],
@@ -462,10 +553,10 @@ publicRoutes.get("/schema", (c) => {
       },
       {
         method: "GET",
-        path: "/api/public/download/:subject",
+        path: "/api/public/download/:discipline",
         description: "Download complete content pack as JSON file (graph + all problems + all examples + license)",
         rateLimit: "graph",
-        params: { subject: "Subject ID" },
+        params: { discipline: "Discipline ID" },
         response: "JSON file download with Content-Disposition header",
       },
       {

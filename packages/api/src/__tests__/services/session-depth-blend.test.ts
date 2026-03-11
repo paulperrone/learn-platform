@@ -4,7 +4,6 @@ import {
   applyMigrations,
   getTestDb,
   seedUser,
-  seedSubject,
   seedTopic,
   seedDiscipline,
   seedAssessmentContent,
@@ -21,7 +20,7 @@ describe("session depth blending", () => {
     it("includes mastered topics as warmup items at start of mix", async () => {
       const db = getTestDb();
       const user = await seedUser({ id: "blend-warmup-1" });
-      const subj = await seedSubject({ id: "blend-warmup-subj" });
+      const subj = await seedDiscipline({ id: "blend-warmup-subj" });
 
       // Create mastered topics
       const mastered1 = await seedTopic(subj.id, { id: "blend-mastered-1", depth: 0 });
@@ -70,7 +69,7 @@ describe("session depth blending", () => {
     it("skips warmup when no mastered topics exist", async () => {
       const db = getTestDb();
       const user = await seedUser({ id: "blend-nowarmup-1" });
-      const subj = await seedSubject({ id: "blend-nowarmup-subj" });
+      const subj = await seedDiscipline({ id: "blend-nowarmup-subj" });
 
       // Only frontier topics, no mastered
       for (let i = 0; i < 5; i++) {
@@ -90,7 +89,7 @@ describe("session depth blending", () => {
     it("caps warmup at 3 items even with many mastered topics", async () => {
       const db = getTestDb();
       const user = await seedUser({ id: "blend-cap-1" });
-      const subj = await seedSubject({ id: "blend-cap-subj" });
+      const subj = await seedDiscipline({ id: "blend-cap-subj" });
 
       // Create 10 mastered topics
       for (let i = 0; i < 10; i++) {
@@ -125,7 +124,7 @@ describe("session depth blending", () => {
       const db = getTestDb();
       const user = await seedUser({ id: "blend-nostretch-1" });
       // math discipline is mastery-gated by default
-      const subj = await seedSubject({ id: "blend-nostretch-subj" });
+      const subj = await seedDiscipline({ id: "blend-nostretch-subj" });
 
       for (let i = 0; i < 5; i++) {
         await seedTopic(subj.id, { id: `blend-ns-${i}`, depth: i });
@@ -146,14 +145,10 @@ describe("session depth blending", () => {
         name: "History",
         progressionModel: "context-layered",
       });
-      const subj = await seedSubject({
-        id: "blend-stretch-subj",
-        disciplineId: disc.id,
-      });
 
-      // Create frontier topics for context-layered subject
+      // Create frontier topics for context-layered discipline
       for (let i = 0; i < 5; i++) {
-        await seedTopic(subj.id, { id: `blend-cl-${i}`, depth: i });
+        await seedTopic(disc.id, { id: `blend-cl-${i}`, depth: i });
       }
 
       const srs = createSRSService(db);
@@ -174,7 +169,7 @@ describe("session depth blending", () => {
     it("all mix items have a blendRole", async () => {
       const db = getTestDb();
       const user = await seedUser({ id: "blend-role-1" });
-      const subj = await seedSubject({ id: "blend-role-subj" });
+      const subj = await seedDiscipline({ id: "blend-role-subj" });
 
       // Mastered + frontier
       const m = await seedTopic(subj.id, { id: "blend-role-m", depth: 0 });
@@ -205,7 +200,7 @@ describe("session depth blending", () => {
     it("works with small count (leaves room for main)", async () => {
       const db = getTestDb();
       const user = await seedUser({ id: "blend-small-1" });
-      const subj = await seedSubject({ id: "blend-small-subj" });
+      const subj = await seedDiscipline({ id: "blend-small-subj" });
 
       // Mastered topic
       const m = await seedTopic(subj.id, { id: "blend-small-m", depth: 0 });

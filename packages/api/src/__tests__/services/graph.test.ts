@@ -3,7 +3,7 @@ import {
   applyMigrations,
   getTestDb,
   seedUser,
-  seedSubject,
+  seedDiscipline,
   seedTopic,
   seedPrerequisite,
   seedEncompassing,
@@ -21,9 +21,9 @@ describe("createGraphService", () => {
     it("returns root topics when user has no state", async () => {
       const db = getTestDb();
       const user = await seedUser({ id: "gf-user-1" });
-      const subj = await seedSubject({ id: "gf-subj-1" });
-      const t1 = await seedTopic(subj.id, { id: "gf-t1", depth: 0 });
-      const t2 = await seedTopic(subj.id, { id: "gf-t2", depth: 1 });
+      const disc = await seedDiscipline({ id: "gf-subj-1" });
+      const t1 = await seedTopic(disc.id, { id: "gf-t1", depth: 0 });
+      const t2 = await seedTopic(disc.id, { id: "gf-t2", depth: 1 });
       await seedPrerequisite(t1.id, t2.id);
 
       const graph = createGraphService(db);
@@ -38,9 +38,9 @@ describe("createGraphService", () => {
     it("unlocks next topics when prereqs are mastered", async () => {
       const db = getTestDb();
       const user = await seedUser({ id: "gf-user-2" });
-      const subj = await seedSubject({ id: "gf-subj-2" });
-      const t1 = await seedTopic(subj.id, { id: "gf-t3", depth: 0 });
-      const t2 = await seedTopic(subj.id, { id: "gf-t4", depth: 1 });
+      const disc = await seedDiscipline({ id: "gf-subj-2" });
+      const t1 = await seedTopic(disc.id, { id: "gf-t3", depth: 0 });
+      const t2 = await seedTopic(disc.id, { id: "gf-t4", depth: 1 });
       await seedPrerequisite(t1.id, t2.id);
 
       // Master t1
@@ -64,10 +64,10 @@ describe("createGraphService", () => {
   describe("getPrerequisiteChain", () => {
     it("traces full prerequisite chain", async () => {
       const db = getTestDb();
-      const subj = await seedSubject({ id: "gpc-subj" });
-      const t1 = await seedTopic(subj.id, { id: "gpc-t1" });
-      const t2 = await seedTopic(subj.id, { id: "gpc-t2" });
-      const t3 = await seedTopic(subj.id, { id: "gpc-t3" });
+      const disc = await seedDiscipline({ id: "gpc-subj" });
+      const t1 = await seedTopic(disc.id, { id: "gpc-t1" });
+      const t2 = await seedTopic(disc.id, { id: "gpc-t2" });
+      const t3 = await seedTopic(disc.id, { id: "gpc-t3" });
       await seedPrerequisite(t1.id, t2.id);
       await seedPrerequisite(t2.id, t3.id);
 
@@ -82,9 +82,9 @@ describe("createGraphService", () => {
   describe("getEncompassingTopics / getEncompassedTopics", () => {
     it("returns encompassing relationships", async () => {
       const db = getTestDb();
-      const subj = await seedSubject({ id: "ge-subj" });
-      const parent = await seedTopic(subj.id, { id: "ge-parent" });
-      const child = await seedTopic(subj.id, { id: "ge-child" });
+      const disc = await seedDiscipline({ id: "ge-subj" });
+      const parent = await seedTopic(disc.id, { id: "ge-parent" });
+      const child = await seedTopic(disc.id, { id: "ge-child" });
       await seedEncompassing(parent.id, child.id, 0.3);
 
       const graph = createGraphService(db);
@@ -101,13 +101,13 @@ describe("createGraphService", () => {
   describe("validateDAG", () => {
     it("reports valid for acyclic graph", async () => {
       const db = getTestDb();
-      const subj = await seedSubject({ id: "dag-subj-1" });
-      const t1 = await seedTopic(subj.id, { id: "dag-t1" });
-      const t2 = await seedTopic(subj.id, { id: "dag-t2" });
+      const disc = await seedDiscipline({ id: "dag-subj-1" });
+      const t1 = await seedTopic(disc.id, { id: "dag-t1" });
+      const t2 = await seedTopic(disc.id, { id: "dag-t2" });
       await seedPrerequisite(t1.id, t2.id);
 
       const graph = createGraphService(db);
-      const result = await graph.validateDAG(subj.id);
+      const result = await graph.validateDAG(disc.id);
       expect(result.valid).toBe(true);
     });
   });
@@ -115,15 +115,15 @@ describe("createGraphService", () => {
   describe("computeDepths", () => {
     it("assigns correct depths based on prereq chain", async () => {
       const db = getTestDb();
-      const subj = await seedSubject({ id: "depth-subj" });
-      const t1 = await seedTopic(subj.id, { id: "depth-t1", depth: 0 });
-      const t2 = await seedTopic(subj.id, { id: "depth-t2", depth: 0 });
-      const t3 = await seedTopic(subj.id, { id: "depth-t3", depth: 0 });
+      const disc = await seedDiscipline({ id: "depth-subj" });
+      const t1 = await seedTopic(disc.id, { id: "depth-t1", depth: 0 });
+      const t2 = await seedTopic(disc.id, { id: "depth-t2", depth: 0 });
+      const t3 = await seedTopic(disc.id, { id: "depth-t3", depth: 0 });
       await seedPrerequisite(t1.id, t2.id);
       await seedPrerequisite(t2.id, t3.id);
 
       const graph = createGraphService(db);
-      const depths = await graph.computeDepths(subj.id);
+      const depths = await graph.computeDepths(disc.id);
 
       expect(depths["depth-t1"]).toBe(0);
       expect(depths["depth-t2"]).toBe(1);
@@ -131,11 +131,11 @@ describe("createGraphService", () => {
     });
   });
 
-  describe("getTopic / getSubjectTopics / getSubjects", () => {
-    it("retrieves topics and subjects", async () => {
+  describe("getTopic / getDisciplineTopics / getDisciplines", () => {
+    it("retrieves topics and disciplines", async () => {
       const db = getTestDb();
-      const subj = await seedSubject({ id: "get-subj" });
-      const topic = await seedTopic(subj.id, { id: "get-topic" });
+      const disc = await seedDiscipline({ id: "get-subj" });
+      const topic = await seedTopic(disc.id, { id: "get-topic" });
 
       const graph = createGraphService(db);
 
@@ -143,10 +143,10 @@ describe("createGraphService", () => {
       expect(fetched).not.toBeNull();
       expect(fetched!.name).toBe(topic.name);
 
-      const subjects = await graph.getSubjects();
-      expect(subjects.map((s) => s.id)).toContain(subj.id);
+      const disciplines = await graph.getDisciplines();
+      expect(disciplines.map((s) => s.id)).toContain(disc.id);
 
-      const topics = await graph.getSubjectTopics(subj.id);
+      const topics = await graph.getDisciplineTopics(disc.id);
       expect(topics.map((t) => t.id)).toContain(topic.id);
     });
 

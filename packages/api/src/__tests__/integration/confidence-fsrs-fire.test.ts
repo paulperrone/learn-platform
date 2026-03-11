@@ -4,7 +4,7 @@ import {
   applyMigrations,
   resetDb,
   seedUser,
-  seedSubject,
+  seedDiscipline,
   seedTopic,
   seedAssessmentContent,
   seedInstructionalContent,
@@ -37,15 +37,15 @@ describe("confidence-fsrs-fire integration", () => {
   async function setupGraph() {
     const db = getTestDb();
     const user = await seedUser();
-    const subject = await seedSubject({ id: "math-test" });
+    const discipline = await seedDiscipline({ id: "math-test" });
 
     // Parent topic encompasses two children
     // parent → child1 (weight 0.5), parent → child2 (weight 0.3)
     // child2 → grandchild (weight 0.4) — tests multi-hop
-    await seedTopic(subject.id, { id: "parent", name: "Parent Topic", depth: 2 });
-    await seedTopic(subject.id, { id: "child1", name: "Child 1", depth: 1 });
-    await seedTopic(subject.id, { id: "child2", name: "Child 2", depth: 1 });
-    await seedTopic(subject.id, { id: "grandchild", name: "Grandchild", depth: 0 });
+    await seedTopic(discipline.id, { id: "parent", name: "Parent Topic", depth: 2 });
+    await seedTopic(discipline.id, { id: "child1", name: "Child 1", depth: 1 });
+    await seedTopic(discipline.id, { id: "child2", name: "Child 2", depth: 1 });
+    await seedTopic(discipline.id, { id: "grandchild", name: "Grandchild", depth: 0 });
 
     await seedPrerequisite("child1", "parent");
     await seedPrerequisite("child2", "parent");
@@ -81,7 +81,7 @@ describe("confidence-fsrs-fire integration", () => {
       lastReview: new Date(Date.now() - 8 * 24 * 60 * 60 * 1000).toISOString(),
     });
 
-    return { db, user, subject };
+    return { db, user, discipline };
   }
 
   it("high confidence + correct → Easy rating → extended interval, FIRe extends child due dates", async () => {

@@ -4,7 +4,7 @@ import {
   applyMigrations,
   resetDb,
   seedUser,
-  seedSubject,
+  seedDiscipline,
   seedTopic,
   seedAssessmentContent,
   seedInstructionalContent,
@@ -38,13 +38,13 @@ describe("session-state-coherence integration", () => {
   async function setupRichGraph() {
     const db = getTestDb();
     const user = await seedUser();
-    const subject = await seedSubject({ id: "math-test" });
+    const discipline = await seedDiscipline({ id: "math-test" });
 
     // 4 topics with prereqs and encompassing
-    await seedTopic(subject.id, { id: "t1", name: "Topic 1", depth: 0 });
-    await seedTopic(subject.id, { id: "t2", name: "Topic 2", depth: 1 });
-    await seedTopic(subject.id, { id: "t3", name: "Topic 3", depth: 1 });
-    await seedTopic(subject.id, { id: "t4", name: "Topic 4", depth: 2 });
+    await seedTopic(discipline.id, { id: "t1", name: "Topic 1", depth: 0 });
+    await seedTopic(discipline.id, { id: "t2", name: "Topic 2", depth: 1 });
+    await seedTopic(discipline.id, { id: "t3", name: "Topic 3", depth: 1 });
+    await seedTopic(discipline.id, { id: "t4", name: "Topic 4", depth: 2 });
 
     await seedPrerequisite("t1", "t2");
     await seedPrerequisite("t1", "t3");
@@ -72,11 +72,11 @@ describe("session-state-coherence integration", () => {
     }
 
     // Seed presentation distribution
-    await seedUserSubjectPresentation(user.id, subject.id, {
+    await seedUserSubjectPresentation(user.id, discipline.id, {
       primary: 0.05, intermediate: 0.30, standard: 0.50, advanced: 0.15,
     }, "standard");
 
-    return { db, user, subject };
+    return { db, user, discipline };
   }
 
   it("session state round-trips through D1 with all fields intact", async () => {

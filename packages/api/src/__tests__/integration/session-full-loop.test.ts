@@ -4,7 +4,7 @@ import {
   applyMigrations,
   resetDb,
   seedUser,
-  seedSubject,
+  seedDiscipline,
   seedTopic,
   seedAssessmentContent,
   seedInstructionalContent,
@@ -45,13 +45,13 @@ describe("session-full-loop integration", () => {
   async function setupFullGraph() {
     const db = getTestDb();
     const user = await seedUser();
-    const subject = await seedSubject({ id: "math-test" });
+    const discipline = await seedDiscipline({ id: "math-test" });
 
     // Topics: counting → addition → multiplication, counting → skip-counting → multiplication
-    await seedTopic(subject.id, { id: "counting", name: "Counting to 10", depth: 0 });
-    await seedTopic(subject.id, { id: "addition", name: "Addition within 10", depth: 1 });
-    await seedTopic(subject.id, { id: "skip-counting", name: "Skip Counting", depth: 1 });
-    await seedTopic(subject.id, { id: "multiplication", name: "Multiplication", depth: 2 });
+    await seedTopic(discipline.id, { id: "counting", name: "Counting to 10", depth: 0 });
+    await seedTopic(discipline.id, { id: "addition", name: "Addition within 10", depth: 1 });
+    await seedTopic(discipline.id, { id: "skip-counting", name: "Skip Counting", depth: 1 });
+    await seedTopic(discipline.id, { id: "multiplication", name: "Multiplication", depth: 2 });
 
     await seedPrerequisite("counting", "addition");
     await seedPrerequisite("counting", "skip-counting");
@@ -95,7 +95,7 @@ describe("session-full-loop integration", () => {
       });
     }
 
-    return { db, user, subject };
+    return { db, user, discipline };
   }
 
   // --- Type assertion helpers ---

@@ -4,7 +4,7 @@ import {
   applyMigrations,
   getTestDb,
   seedUser,
-  seedSubject,
+  seedDiscipline,
   seedTopic,
   seedAssessmentContent,
   seedInstructionalContent,
@@ -39,8 +39,8 @@ const MULTI_STEP_EXAMPLE = JSON.stringify([
 ]);
 
 async function setupTopicWithSteps(id: string, stepsJson = MULTI_STEP_EXAMPLE) {
-  const subj = await seedSubject({ id: `${PREFIX}-subj-${id}` });
-  const topic = await seedTopic(subj.id, {
+  const disc = await seedDiscipline({ id: `${PREFIX}-subj-${id}` });
+  const topic = await seedTopic(disc.id, {
     id: `${PREFIX}-topic-${id}`,
     name: `Fading Topic ${id}`,
   });
@@ -56,7 +56,7 @@ async function setupTopicWithSteps(id: string, stepsJson = MULTI_STEP_EXAMPLE) {
     id: `${PREFIX}-ic-${id}`,
     stepsJson,
   });
-  return { subj, topic };
+  return { disc, topic };
 }
 
 describe("Worked Example Fading", () => {

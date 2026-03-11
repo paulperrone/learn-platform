@@ -1,16 +1,26 @@
 // === API Types ===
 
-export type Subject = {
+export type Discipline = {
   id: string;
   name: string;
   description: string;
-  gradeRange: string;
-  topicCount: number;
+  progressionModel: string;
+};
+
+export type Collection = {
+  id: string;
+  primaryDisciplineId: string;
+  name: string;
+  description: string;
+  kind: string;
+  gradeRange: string | null;
+  displayOrder: number;
+  visibility: string;
 };
 
 export type Topic = {
   id: string;
-  subjectId: string;
+  disciplineId: string;
   name: string;
   description: string;
   depth: number;
@@ -402,8 +412,8 @@ export type MasteryEvent = {
 };
 
 export type CompletionEstimate = {
-  subjectId: string;
-  subjectName: string;
+  disciplineId: string;
+  disciplineName: string;
   mastered: number;
   total: number;
   percentComplete: number;
@@ -413,7 +423,7 @@ export type CompletionEstimate = {
 };
 
 export type ProgressMilestone = {
-  type: "subject_progress";
+  type: "discipline_progress";
   threshold: 25 | 50 | 75 | 100;
   mastered: number;
   total: number;
@@ -435,7 +445,7 @@ export type DiagnosticSession = {
   id: string;
   userId: string | null;
   anonymousToken: string | null;
-  subjectId: string;
+  disciplineId: string;
   status: "active" | "completed";
   questionsAsked: number;
   questionsCorrect: number;

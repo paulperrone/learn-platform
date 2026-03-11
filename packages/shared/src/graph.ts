@@ -1,8 +1,8 @@
 // === Graph Data Types (for content/ JSON files) ===
 
 export type GraphDefinition = {
-  subjectId: string;
-  subjectName: string;
+  disciplineId: string;
+  name: string;
   topics: GraphTopic[];
   prerequisites: GraphEdge[];
   encompassings: GraphEncompassing[];

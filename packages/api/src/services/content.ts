@@ -210,7 +210,7 @@ export type ContentQuery = {
 };
 
 export function createContentService(db: DB) {
-  async function resolvePresentation(userId: string, subjectId?: string): Promise<PresentationLevel> {
+  async function resolvePresentation(userId: string, disciplineId?: string): Promise<PresentationLevel> {
     // Check for explicit override in preferences
     const prefs = await db.query.userPreferences.findFirst({
       where: eq(schema.userPreferences.userId, userId),
@@ -219,12 +219,12 @@ export function createContentService(db: DB) {
       return prefs.presentationOverride as PresentationLevel;
     }
 
-    // If subjectId provided, check for per-subject distribution
-    if (subjectId) {
-      const dist = await db.query.userSubjectPresentation.findFirst({
+    // If disciplineId provided, check for per-discipline distribution
+    if (disciplineId) {
+      const dist = await db.query.userDisciplinePresentation.findFirst({
         where: and(
-          eq(schema.userSubjectPresentation.userId, userId),
-          eq(schema.userSubjectPresentation.subjectId, subjectId),
+          eq(schema.userDisciplinePresentation.userId, userId),
+          eq(schema.userDisciplinePresentation.disciplineId, disciplineId),
         ),
       });
       if (dist) {
@@ -234,6 +234,7 @@ export function createContentService(db: DB) {
           standard: dist.standardWeight,
           advanced: dist.advancedWeight,
           centerLevel: dist.centerLevel as PresentationLevel,
+          driftSignal: dist.driftSignal ?? 0,
         });
       }
     }
@@ -242,12 +243,12 @@ export function createContentService(db: DB) {
     const user = await db.query.users.findFirst({
       where: eq(schema.users.id, userId),
     });
-    if (subjectId) {
-      // Subject provided but no stored distribution — sample from age default
+    if (disciplineId) {
+      // Discipline provided but no stored distribution — sample from age default
       const defaultDist = buildDefaultDistribution(user?.birthYear);
       return sampleFromDistribution(defaultDist);
     }
-    // No subjectId — deterministic age-based (backwards compatible)
+    // No disciplineId — deterministic age-based (backwards compatible)
     if (!user?.birthYear) return "standard";
     const age = CURRENT_YEAR - user.birthYear;
     if (age <= 8) return "primary";
@@ -443,14 +444,14 @@ export function createContentService(db: DB) {
     return rows.map((r) => r.contentDepth as ContentDepthLevel);
   }
 
-  async function getSubjectDistribution(
+  async function getDisciplineDistribution(
     userId: string,
-    subjectId: string
+    disciplineId: string
   ): Promise<PresentationDistribution | null> {
-    const row = await db.query.userSubjectPresentation.findFirst({
+    const row = await db.query.userDisciplinePresentation.findFirst({
       where: and(
-        eq(schema.userSubjectPresentation.userId, userId),
-        eq(schema.userSubjectPresentation.subjectId, subjectId),
+        eq(schema.userDisciplinePresentation.userId, userId),
+        eq(schema.userDisciplinePresentation.disciplineId, disciplineId),
       ),
     });
     if (!row) return null;
@@ -464,21 +465,21 @@ export function createContentService(db: DB) {
     };
   }
 
-  async function upsertSubjectDistribution(
+  async function upsertDisciplineDistribution(
     userId: string,
-    subjectId: string,
+    disciplineId: string,
     dist: PresentationDistribution
   ): Promise<void> {
     const now = new Date().toISOString();
-    const existing = await db.query.userSubjectPresentation.findFirst({
+    const existing = await db.query.userDisciplinePresentation.findFirst({
       where: and(
-        eq(schema.userSubjectPresentation.userId, userId),
-        eq(schema.userSubjectPresentation.subjectId, subjectId),
+        eq(schema.userDisciplinePresentation.userId, userId),
+        eq(schema.userDisciplinePresentation.disciplineId, disciplineId),
       ),
     });
     if (existing) {
       await db
-        .update(schema.userSubjectPresentation)
+        .update(schema.userDisciplinePresentation)
         .set({
           primaryWeight: dist.primary,
           intermediateWeight: dist.intermediate,
@@ -488,11 +489,11 @@ export function createContentService(db: DB) {
           driftSignal: dist.driftSignal,
           lastAdjustedAt: now,
         })
-        .where(eq(schema.userSubjectPresentation.id, existing.id));
+        .where(eq(schema.userDisciplinePresentation.id, existing.id));
     } else {
-      await db.insert(schema.userSubjectPresentation).values({
+      await db.insert(schema.userDisciplinePresentation).values({
         userId,
-        subjectId,
+        disciplineId,
         primaryWeight: dist.primary,
         intermediateWeight: dist.intermediate,
         standardWeight: dist.standard,
@@ -506,11 +507,11 @@ export function createContentService(db: DB) {
 
   async function applyNudge(
     userId: string,
-    subjectId: string,
+    disciplineId: string,
     servedLevel: PresentationLevel,
     success: boolean
   ): Promise<void> {
-    const current = await getSubjectDistribution(userId, subjectId);
+    const current = await getDisciplineDistribution(userId, disciplineId);
     if (!current) return; // No distribution to nudge (anonymous or no diagnostic yet)
 
     const updated = nudgeDistribution(current, servedLevel, success);
@@ -530,7 +531,7 @@ export function createContentService(db: DB) {
       const fromWeights = { primary: current.primary, intermediate: current.intermediate, standard: current.standard, advanced: current.advanced };
       await db.insert(schema.presentationDriftLog).values({
         userId,
-        subjectId,
+        disciplineId,
         fromWeights: JSON.stringify(fromWeights),
         toWeights: JSON.stringify(toWeights),
         fromCenter: current.centerLevel,
@@ -540,17 +541,17 @@ export function createContentService(db: DB) {
       });
     }
 
-    await upsertSubjectDistribution(userId, subjectId, updated);
+    await upsertDisciplineDistribution(userId, disciplineId, updated);
   }
 
-  async function getAllSubjectDistributions(userId: string) {
+  async function getAllDisciplineDistributions(userId: string) {
     const rows = await db
       .select()
-      .from(schema.userSubjectPresentation)
-      .where(eq(schema.userSubjectPresentation.userId, userId));
+      .from(schema.userDisciplinePresentation)
+      .where(eq(schema.userDisciplinePresentation.userId, userId));
 
     return rows.map((row) => ({
-      subjectId: row.subjectId,
+      disciplineId: row.disciplineId,
       weights: {
         primary: row.primaryWeight,
         intermediate: row.intermediateWeight,
@@ -565,9 +566,9 @@ export function createContentService(db: DB) {
   return {
     resolvePresentation,
     resolveContentDepth,
-    getSubjectDistribution,
-    getAllSubjectDistributions,
-    upsertSubjectDistribution,
+    getDisciplineDistribution,
+    getAllDisciplineDistributions,
+    upsertDisciplineDistribution,
     applyNudge,
     markDepthCompleted,
     getCompletedDepths,

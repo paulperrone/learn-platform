@@ -4,10 +4,10 @@ import {
   applyMigrations,
   resetDb,
   seedUser,
-  seedSubject,
+  seedDiscipline,
   seedTopic,
   seedAssessmentContent,
-  seedUserSubjectPresentation,
+  seedUserDisciplinePresentation,
 } from "../helpers.js";
 import { createContentService, nudgeDistribution, type PresentationDistribution } from "../../services/content.js";
 import * as schema from "../../db/schema.js";
@@ -33,8 +33,8 @@ describe("presentation-drift-content integration", () => {
   async function setupContentWithPresentations() {
     const db = getTestDb();
     const user = await seedUser();
-    const subject = await seedSubject({ id: "math-test" });
-    await seedTopic(subject.id, { id: "topic-a", name: "Topic A", depth: 0 });
+    const discipline = await seedDiscipline({ id: "math-test" });
+    await seedTopic(discipline.id, { id: "topic-a", name: "Topic A", depth: 0 });
 
     // Seed content at multiple presentation levels
     await seedAssessmentContent("topic-a", {
@@ -58,7 +58,7 @@ describe("presentation-drift-content integration", () => {
       presentation: "advanced",
     });
 
-    return { db, user, subject };
+    return { db, user, discipline };
   }
 
   it("nudgeDistribution shifts weights toward higher level on success", () => {
@@ -115,11 +115,11 @@ describe("presentation-drift-content integration", () => {
   });
 
   it("applyNudge persists updated distribution and logs center shift", async () => {
-    const { db, user, subject } = await setupContentWithPresentations();
+    const { db, user, discipline } = await setupContentWithPresentations();
     const content = createContentService(db);
 
     // Start with intermediate-centered distribution
-    await seedUserSubjectPresentation(user.id, subject.id, {
+    await seedUserDisciplinePresentation(user.id, discipline.id, {
       primary: 0.05,
       intermediate: 0.50,
       standard: 0.35,
@@ -129,15 +129,15 @@ describe("presentation-drift-content integration", () => {
     // Repeatedly succeed above center to shift distribution
     // With driftRate=0.008 and EMA gating, need enough nudges for signal buildup + drift
     for (let i = 0; i < 15; i++) {
-      await content.applyNudge(user.id, subject.id, "standard", true);
+      await content.applyNudge(user.id, discipline.id, "standard", true);
     }
 
     // Check the distribution shifted
     const [row] = await db.select()
-      .from(schema.userSubjectPresentation)
+      .from(schema.userDisciplinePresentation)
       .where(and(
-        eq(schema.userSubjectPresentation.userId, user.id),
-        eq(schema.userSubjectPresentation.subjectId, subject.id),
+        eq(schema.userDisciplinePresentation.userId, user.id),
+        eq(schema.userDisciplinePresentation.disciplineId, discipline.id),
       ));
 
     expect(row.intermediateWeight).toBeLessThan(0.50);
@@ -145,11 +145,11 @@ describe("presentation-drift-content integration", () => {
   });
 
   it("drift log records center_shift transitions", async () => {
-    const { db, user, subject } = await setupContentWithPresentations();
+    const { db, user, discipline } = await setupContentWithPresentations();
     const content = createContentService(db);
 
     // Start near the tipping point: standard exceeds threshold and margin over intermediate
-    await seedUserSubjectPresentation(user.id, subject.id, {
+    await seedUserDisciplinePresentation(user.id, discipline.id, {
       primary: 0.05,
       intermediate: 0.20,
       standard: 0.60,
@@ -158,7 +158,7 @@ describe("presentation-drift-content integration", () => {
 
     // Multiple nudges above center to build EMA signal and trigger center shift
     for (let i = 0; i < 3; i++) {
-      await content.applyNudge(user.id, subject.id, "standard", true);
+      await content.applyNudge(user.id, discipline.id, "standard", true);
     }
 
     // Check drift log
@@ -213,11 +213,11 @@ describe("presentation-drift-content integration", () => {
   });
 
   it("resolvePresentation samples from updated distribution", async () => {
-    const { db, user, subject } = await setupContentWithPresentations();
+    const { db, user, discipline } = await setupContentWithPresentations();
     const content = createContentService(db);
 
     // Set distribution heavily favoring standard
-    await seedUserSubjectPresentation(user.id, subject.id, {
+    await seedUserDisciplinePresentation(user.id, discipline.id, {
       primary: 0,
       intermediate: 0,
       standard: 1.0,
@@ -225,7 +225,7 @@ describe("presentation-drift-content integration", () => {
     }, "standard");
 
     // resolvePresentation should always return standard with this distribution
-    const level = await content.resolvePresentation(user.id, subject.id);
+    const level = await content.resolvePresentation(user.id, discipline.id);
     expect(level).toBe("standard");
   });
 });

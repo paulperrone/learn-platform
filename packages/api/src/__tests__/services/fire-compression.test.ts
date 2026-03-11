@@ -4,7 +4,7 @@ import {
   applyMigrations,
   getTestDb,
   seedUser,
-  seedSubject,
+  seedDiscipline,
   seedTopic,
   seedEncompassing,
   seedUserTopicState,
@@ -71,31 +71,31 @@ describe("FIRe compression with enriched graph", () => {
   it("enriched graph (133 edges) compresses better than sparse graph (42 edges)", async () => {
     const db = getTestDb();
     const user = await seedUser({ id: "fire-enrich-1" });
-    const subj = await seedSubject({ id: "fire-enrich-subj" });
+    const disc = await seedDiscipline({ id: "fire-enrich-subj" });
 
     // Simulate a realistic strand: addition progression (within-strand)
     // plus cross-strand word-problem links
     const topics = {
-      addW5: await seedTopic(subj.id, { id: "fe-add-5" }),
-      addW10: await seedTopic(subj.id, { id: "fe-add-10" }),
-      addW20: await seedTopic(subj.id, { id: "fe-add-20" }),
-      addW100: await seedTopic(subj.id, { id: "fe-add-100" }),
-      addFluent: await seedTopic(subj.id, { id: "fe-add-fluent" }),
-      subW10: await seedTopic(subj.id, { id: "fe-sub-10" }),
-      subW20: await seedTopic(subj.id, { id: "fe-sub-20" }),
-      subW100: await seedTopic(subj.id, { id: "fe-sub-100" }),
-      subFluent: await seedTopic(subj.id, { id: "fe-sub-fluent" }),
-      mulW100: await seedTopic(subj.id, { id: "fe-mul-100" }),
-      divW100: await seedTopic(subj.id, { id: "fe-div-100" }),
-      orderOps: await seedTopic(subj.id, { id: "fe-order-ops" }),
-      wordAdd: await seedTopic(subj.id, { id: "fe-word-add" }),
-      wordSub: await seedTopic(subj.id, { id: "fe-word-sub" }),
-      wordMulti: await seedTopic(subj.id, { id: "fe-word-multi" }),
-      multiStep: await seedTopic(subj.id, { id: "fe-multi-step" }),
-      skipCount: await seedTopic(subj.id, { id: "fe-skip-count" }),
-      placeVal: await seedTopic(subj.id, { id: "fe-place-val" }),
-      placeHun: await seedTopic(subj.id, { id: "fe-place-hun" }),
-      fractions: await seedTopic(subj.id, { id: "fe-fractions" }),
+      addW5: await seedTopic(disc.id, { id: "fe-add-5" }),
+      addW10: await seedTopic(disc.id, { id: "fe-add-10" }),
+      addW20: await seedTopic(disc.id, { id: "fe-add-20" }),
+      addW100: await seedTopic(disc.id, { id: "fe-add-100" }),
+      addFluent: await seedTopic(disc.id, { id: "fe-add-fluent" }),
+      subW10: await seedTopic(disc.id, { id: "fe-sub-10" }),
+      subW20: await seedTopic(disc.id, { id: "fe-sub-20" }),
+      subW100: await seedTopic(disc.id, { id: "fe-sub-100" }),
+      subFluent: await seedTopic(disc.id, { id: "fe-sub-fluent" }),
+      mulW100: await seedTopic(disc.id, { id: "fe-mul-100" }),
+      divW100: await seedTopic(disc.id, { id: "fe-div-100" }),
+      orderOps: await seedTopic(disc.id, { id: "fe-order-ops" }),
+      wordAdd: await seedTopic(disc.id, { id: "fe-word-add" }),
+      wordSub: await seedTopic(disc.id, { id: "fe-word-sub" }),
+      wordMulti: await seedTopic(disc.id, { id: "fe-word-multi" }),
+      multiStep: await seedTopic(disc.id, { id: "fe-multi-step" }),
+      skipCount: await seedTopic(disc.id, { id: "fe-skip-count" }),
+      placeVal: await seedTopic(disc.id, { id: "fe-place-val" }),
+      placeHun: await seedTopic(disc.id, { id: "fe-place-hun" }),
+      fractions: await seedTopic(disc.id, { id: "fe-fractions" }),
     };
 
     // All 20 topics are due for review
@@ -163,13 +163,13 @@ describe("FIRe multi-hop credit flow", () => {
   it("credit flows 3 hops deep with diminishing weight", async () => {
     const db = getTestDb();
     const user = await seedUser({ id: "fire-hop-1" });
-    const subj = await seedSubject({ id: "fire-hop-subj" });
+    const disc = await seedDiscipline({ id: "fire-hop-subj" });
 
     // Chain: orderOps → mulDigit → mul100 → skipCount (3 hops)
-    const orderOps = await seedTopic(subj.id, { id: "fh-order-ops" });
-    const mulDigit = await seedTopic(subj.id, { id: "fh-mul-digit" });
-    const mul100 = await seedTopic(subj.id, { id: "fh-mul-100" });
-    const skipCount = await seedTopic(subj.id, { id: "fh-skip-count" });
+    const orderOps = await seedTopic(disc.id, { id: "fh-order-ops" });
+    const mulDigit = await seedTopic(disc.id, { id: "fh-mul-digit" });
+    const mul100 = await seedTopic(disc.id, { id: "fh-mul-100" });
+    const skipCount = await seedTopic(disc.id, { id: "fh-skip-count" });
 
     await seedEncompassing(orderOps.id, mulDigit.id, 0.4);
     await seedEncompassing(mulDigit.id, mul100.id, 0.6);
@@ -220,13 +220,13 @@ describe("FIRe multi-hop credit flow", () => {
   it("cumulative weight diminishes through hops (0.4 → 0.24 → 0.096)", async () => {
     const db = getTestDb();
     const user = await seedUser({ id: "fire-hop-2" });
-    const subj = await seedSubject({ id: "fire-hop-subj-2" });
+    const disc = await seedDiscipline({ id: "fire-hop-subj-2" });
 
     // Chain with known weights: A → B (0.4) → C (0.6) → D (0.4)
-    const topicA = await seedTopic(subj.id, { id: "fh2-a" });
-    const topicB = await seedTopic(subj.id, { id: "fh2-b" });
-    const topicC = await seedTopic(subj.id, { id: "fh2-c" });
-    const topicD = await seedTopic(subj.id, { id: "fh2-d" });
+    const topicA = await seedTopic(disc.id, { id: "fh2-a" });
+    const topicB = await seedTopic(disc.id, { id: "fh2-b" });
+    const topicC = await seedTopic(disc.id, { id: "fh2-c" });
+    const topicD = await seedTopic(disc.id, { id: "fh2-d" });
 
     await seedEncompassing(topicA.id, topicB.id, 0.4);
     await seedEncompassing(topicB.id, topicC.id, 0.6);
@@ -261,14 +261,14 @@ describe("FIRe multi-hop credit flow", () => {
 
   it("prunes paths below 0.05 threshold at hop 3", async () => {
     const db = getTestDb();
-    const subj = await seedSubject({ id: "fire-hop-subj-3" });
+    const disc = await seedDiscipline({ id: "fire-hop-subj-3" });
 
     // Chain with low weights: A → B (0.3) → C (0.3) → D (0.3)
     // Cumulative to D = 0.3 * 0.3 * 0.3 = 0.027 < 0.05 → should be pruned
-    const topicA = await seedTopic(subj.id, { id: "fh3-a" });
-    const topicB = await seedTopic(subj.id, { id: "fh3-b" });
-    const topicC = await seedTopic(subj.id, { id: "fh3-c" });
-    const topicD = await seedTopic(subj.id, { id: "fh3-d" });
+    const topicA = await seedTopic(disc.id, { id: "fh3-a" });
+    const topicB = await seedTopic(disc.id, { id: "fh3-b" });
+    const topicC = await seedTopic(disc.id, { id: "fh3-c" });
+    const topicD = await seedTopic(disc.id, { id: "fh3-d" });
 
     await seedEncompassing(topicA.id, topicB.id, 0.3);
     await seedEncompassing(topicB.id, topicC.id, 0.3);
@@ -290,11 +290,11 @@ describe("FIRe multi-hop credit flow", () => {
   it("upward penalty flows from failed child to parents", async () => {
     const db = getTestDb();
     const user = await seedUser({ id: "fire-hop-penalty" });
-    const subj = await seedSubject({ id: "fire-hop-subj-p" });
+    const disc = await seedDiscipline({ id: "fire-hop-subj-p" });
 
     // addW10 is encompassed by addW20 (w=0.8) and addW100 (w=0.5 via addW20)
-    const addW10 = await seedTopic(subj.id, { id: "fhp-add10" });
-    const addW20 = await seedTopic(subj.id, { id: "fhp-add20" });
+    const addW10 = await seedTopic(disc.id, { id: "fhp-add10" });
+    const addW20 = await seedTopic(disc.id, { id: "fhp-add20" });
 
     // addW20 encompasses addW10
     await seedEncompassing(addW20.id, addW10.id, 0.8);
@@ -343,16 +343,16 @@ describe("FIRe cross-strand coverage", () => {
   it("multi-step word problems cover four computation skills", async () => {
     const db = getTestDb();
     const user = await seedUser({ id: "fire-cross-1" });
-    const subj = await seedSubject({ id: "fire-cross-subj" });
+    const disc = await seedDiscipline({ id: "fire-cross-subj" });
 
     // Computation topics
-    const addFluent = await seedTopic(subj.id, { id: "fc-add-fluent" });
-    const subFluent = await seedTopic(subj.id, { id: "fc-sub-fluent" });
-    const mul100 = await seedTopic(subj.id, { id: "fc-mul-100" });
-    const div100 = await seedTopic(subj.id, { id: "fc-div-100" });
+    const addFluent = await seedTopic(disc.id, { id: "fc-add-fluent" });
+    const subFluent = await seedTopic(disc.id, { id: "fc-sub-fluent" });
+    const mul100 = await seedTopic(disc.id, { id: "fc-mul-100" });
+    const div100 = await seedTopic(disc.id, { id: "fc-div-100" });
 
     // Word problem topic encompassing all four
-    const multiStep = await seedTopic(subj.id, { id: "fc-multi-step" });
+    const multiStep = await seedTopic(disc.id, { id: "fc-multi-step" });
 
     await seedEncompassing(multiStep.id, addFluent.id, 0.3);
     await seedEncompassing(multiStep.id, subFluent.id, 0.3);
@@ -403,20 +403,20 @@ describe("FIRe cross-strand coverage", () => {
   it("word-problem reviews cascade through within-strand chains", async () => {
     const db = getTestDb();
     const user = await seedUser({ id: "fire-cross-2" });
-    const subj = await seedSubject({ id: "fire-cross-subj-2" });
+    const disc = await seedDiscipline({ id: "fire-cross-subj-2" });
 
     // Within-strand chain: addFluent → add100 → add20 → add10
-    const addFluent = await seedTopic(subj.id, { id: "fc2-add-fluent" });
-    const add100 = await seedTopic(subj.id, { id: "fc2-add-100" });
-    const add20 = await seedTopic(subj.id, { id: "fc2-add-20" });
-    const add10 = await seedTopic(subj.id, { id: "fc2-add-10" });
+    const addFluent = await seedTopic(disc.id, { id: "fc2-add-fluent" });
+    const add100 = await seedTopic(disc.id, { id: "fc2-add-100" });
+    const add20 = await seedTopic(disc.id, { id: "fc2-add-20" });
+    const add10 = await seedTopic(disc.id, { id: "fc2-add-10" });
 
     await seedEncompassing(addFluent.id, add100.id, 0.8);
     await seedEncompassing(add100.id, add20.id, 0.7);
     await seedEncompassing(add20.id, add10.id, 0.8);
 
     // Cross-strand: wordAdd → addFluent
-    const wordAdd = await seedTopic(subj.id, { id: "fc2-word-add" });
+    const wordAdd = await seedTopic(disc.id, { id: "fc2-word-add" });
     await seedEncompassing(wordAdd.id, addFluent.id, 0.5);
 
     // All topics due

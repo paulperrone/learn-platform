@@ -3,8 +3,8 @@ import {
   applyMigrations,
   resetDb,
   seedUser,
-  seedSubject,
-  seedUserSubjectPresentation,
+  seedDiscipline,
+  seedUserDisciplinePresentation,
   request,
   json,
 } from "./helpers.js";
@@ -22,8 +22,8 @@ describe("GET /api/progress/:userId/presentation", () => {
 
   it("returns stored distribution for user with presentation data", async () => {
     const user = await seedUser({ birthYear: 2016 });
-    const subject = await seedSubject({ id: "math-foundations", name: "Math Foundations" });
-    await seedUserSubjectPresentation(user.id, subject.id, {
+    const discipline = await seedDiscipline({ id: "math-foundations", name: "Math Foundations" });
+    await seedUserDisciplinePresentation(user.id, discipline.id, {
       primary: 0.1,
       intermediate: 0.75,
       standard: 0.15,
@@ -34,7 +34,7 @@ describe("GET /api/progress/:userId/presentation", () => {
     expect(res.status).toBe(200);
     const body = await json<any>(res);
 
-    const mathDist = body.distributions.find((d: any) => d.subjectId === "math-foundations");
+    const mathDist = body.distributions.find((d: any) => d.disciplineId === "math-foundations");
     expect(mathDist).toBeDefined();
     expect(mathDist.centerLevel).toBe("intermediate");
     expect(mathDist.weights.primary).toBe(0.1);
@@ -47,13 +47,13 @@ describe("GET /api/progress/:userId/presentation", () => {
 
   it("returns age-default distribution for user without stored data", async () => {
     const user = await seedUser({ birthYear: 2020 }); // age ~6 → primary
-    await seedSubject({ id: "test-subject", name: "Test Subject" });
+    await seedDiscipline({ id: "test-discipline", name: "Test Discipline" });
 
     const res = await request(`/api/progress/${user.id}/presentation`);
     expect(res.status).toBe(200);
     const body = await json<any>(res);
 
-    const dist = body.distributions.find((d: any) => d.subjectId === "test-subject");
+    const dist = body.distributions.find((d: any) => d.disciplineId === "test-discipline");
     expect(dist).toBeDefined();
     expect(dist.centerLevel).toBe("primary");
     expect(dist.weights.primary).toBeGreaterThan(0.5);

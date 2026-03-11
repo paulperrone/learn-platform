@@ -96,7 +96,7 @@ function toggleExample(id: string) {
     <nav class="mb-4 text-sm text-gray-500">
       <RouterLink to="/explore" class="hover:text-blue-600">Explore</RouterLink>
       <span class="mx-2">/</span>
-      <RouterLink :to="`/explore/${subjectId}`" class="hover:text-blue-600">{{ topic?.subjectId ?? subjectId }}</RouterLink>
+      <RouterLink :to="`/explore/${subjectId}`" class="hover:text-blue-600">{{ topic?.disciplineId ?? subjectId }}</RouterLink>
       <span class="mx-2">/</span>
       <span class="text-gray-900">{{ topic?.name ?? "..." }}</span>
     </nav>

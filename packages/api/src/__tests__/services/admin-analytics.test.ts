@@ -5,7 +5,7 @@ import {
   getTestDb,
   seedUser,
   seedAdminUser,
-  seedSubject,
+  seedDiscipline,
   seedTopic,
   seedLLMUsage,
   seedReviewLog,
@@ -21,8 +21,8 @@ describe("admin: platform stats queries", () => {
   it("counts users, topics, and reviews", async () => {
     const db = getTestDb();
     const user = await seedUser({ id: "admin-stats-user" });
-    const subj = await seedSubject({ id: "admin-stats-subj" });
-    const topic = await seedTopic(subj.id, { id: "admin-stats-topic" });
+    const disc = await seedDiscipline({ id: "admin-stats-subj" });
+    const topic = await seedTopic(disc.id, { id: "admin-stats-topic" });
     await seedReviewLog(user.id, topic.id);
 
     const [userCount] = await db.select({ count: sql<number>`count(*)` }).from(schema.users);
@@ -176,8 +176,8 @@ describe("admin: content effectiveness analytics", () => {
   it("calculates per-topic review stats", async () => {
     const db = getTestDb();
     const user = await seedUser({ id: "effectiveness-user" });
-    const subj = await seedSubject({ id: "effectiveness-subj" });
-    const topic = await seedTopic(subj.id, { id: "effectiveness-topic", name: "Fractions" });
+    const disc = await seedDiscipline({ id: "effectiveness-subj" });
+    const topic = await seedTopic(disc.id, { id: "effectiveness-topic", name: "Fractions" });
 
     await seedReviewLog(user.id, topic.id, { correct: true, responseMs: 1500 });
     await seedReviewLog(user.id, topic.id, { correct: false, responseMs: 3000, hintsUsed: 2 });
@@ -207,9 +207,9 @@ describe("admin: content effectiveness analytics", () => {
   it("identifies struggling topics by low accuracy", async () => {
     const db = getTestDb();
     const user = await seedUser({ id: "struggle-user" });
-    const subj = await seedSubject({ id: "struggle-subj" });
-    const easyTopic = await seedTopic(subj.id, { id: "easy-topic", name: "Counting" });
-    const hardTopic = await seedTopic(subj.id, { id: "hard-topic", name: "Long Division" });
+    const disc = await seedDiscipline({ id: "struggle-subj" });
+    const easyTopic = await seedTopic(disc.id, { id: "easy-topic", name: "Counting" });
+    const hardTopic = await seedTopic(disc.id, { id: "hard-topic", name: "Long Division" });
 
     // Easy topic: all correct
     for (let i = 0; i < 5; i++) {
@@ -252,8 +252,8 @@ describe("admin: learning pattern analytics", () => {
   it("tracks hint escalation patterns", async () => {
     const db = getTestDb();
     const user = await seedUser({ id: "hint-pattern-user" });
-    const subj = await seedSubject({ id: "hint-pattern-subj" });
-    const topic = await seedTopic(subj.id, { id: "hint-pattern-topic" });
+    const disc = await seedDiscipline({ id: "hint-pattern-subj" });
+    const topic = await seedTopic(disc.id, { id: "hint-pattern-topic" });
 
     await seedReviewLog(user.id, topic.id, { hintsUsed: 0, correct: true });
     await seedReviewLog(user.id, topic.id, { hintsUsed: 1, correct: true });
@@ -276,8 +276,8 @@ describe("admin: learning pattern analytics", () => {
   it("tracks response time by phase", async () => {
     const db = getTestDb();
     const user = await seedUser({ id: "phase-time-user" });
-    const subj = await seedSubject({ id: "phase-time-subj" });
-    const topic = await seedTopic(subj.id, { id: "phase-time-topic" });
+    const disc = await seedDiscipline({ id: "phase-time-subj" });
+    const topic = await seedTopic(disc.id, { id: "phase-time-topic" });
 
     await seedReviewLog(user.id, topic.id, { phase: "pretest", responseMs: 5000, correct: false });
     await seedReviewLog(user.id, topic.id, { phase: "guided", responseMs: 3000, correct: true });

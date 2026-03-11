@@ -4,13 +4,12 @@ import {
   applyMigrations,
   resetDb,
   seedUser,
-  seedSubject,
-  seedTopic,
   seedDiscipline,
+  seedTopic,
   seedAssessmentContent,
   seedInstructionalContent,
   seedUserTopicDepth,
-  seedUserSubjectPresentation,
+  seedUserDisciplinePresentation,
 } from "./helpers.js";
 import { createContentService } from "../services/content.js";
 import { buildDefaultDistribution, sampleFromDistribution } from "../services/content.js";
@@ -91,8 +90,7 @@ describe("content service", () => {
     it("returns 'survey' for context-layered discipline with no depth history", async () => {
       const disc = await seedDiscipline({ id: "history-test", progressionModel: "context-layered" });
       const user = await seedUser({});
-      const subj = await seedSubject({ id: "subj-hist-depth", disciplineId: disc.id });
-      const topic = await seedTopic(subj.id, { id: "topic-hist-depth" });
+      const topic = await seedTopic(disc.id, { id: "topic-hist-depth" });
       const result = await content.resolveContentDepth(user.id, topic.id, disc.id);
       expect(result).toBe("survey");
     });
@@ -100,8 +98,7 @@ describe("content service", () => {
     it("returns 'contextual' after survey is completed for context-layered", async () => {
       const disc = await seedDiscipline({ id: "history-depth-2", progressionModel: "context-layered" });
       const user = await seedUser({});
-      const subj = await seedSubject({ id: "subj-hist-d2", disciplineId: disc.id });
-      const topic = await seedTopic(subj.id, { id: "topic-hist-d2" });
+      const topic = await seedTopic(disc.id, { id: "topic-hist-d2" });
       await seedUserTopicDepth(user.id, topic.id, "survey", true);
       const result = await content.resolveContentDepth(user.id, topic.id, disc.id);
       expect(result).toBe("contextual");
@@ -110,8 +107,7 @@ describe("content service", () => {
     it("returns 'analytical' after survey+contextual completed", async () => {
       const disc = await seedDiscipline({ id: "history-depth-3", progressionModel: "context-layered" });
       const user = await seedUser({});
-      const subj = await seedSubject({ id: "subj-hist-d3", disciplineId: disc.id });
-      const topic = await seedTopic(subj.id, { id: "topic-hist-d3" });
+      const topic = await seedTopic(disc.id, { id: "topic-hist-d3" });
       await seedUserTopicDepth(user.id, topic.id, "survey", true);
       await seedUserTopicDepth(user.id, topic.id, "contextual", true);
       const result = await content.resolveContentDepth(user.id, topic.id, disc.id);
@@ -121,8 +117,7 @@ describe("content service", () => {
     it("returns 'synthesis' when all lower depths completed", async () => {
       const disc = await seedDiscipline({ id: "history-depth-4", progressionModel: "context-layered" });
       const user = await seedUser({});
-      const subj = await seedSubject({ id: "subj-hist-d4", disciplineId: disc.id });
-      const topic = await seedTopic(subj.id, { id: "topic-hist-d4" });
+      const topic = await seedTopic(disc.id, { id: "topic-hist-d4" });
       await seedUserTopicDepth(user.id, topic.id, "survey", true);
       await seedUserTopicDepth(user.id, topic.id, "contextual", true);
       await seedUserTopicDepth(user.id, topic.id, "analytical", true);
@@ -134,8 +129,8 @@ describe("content service", () => {
   describe("markDepthCompleted", () => {
     it("creates depth completion record", async () => {
       const user = await seedUser({});
-      const subj = await seedSubject({ id: "subj-mark-depth" });
-      const topic = await seedTopic(subj.id, { id: "topic-mark-depth" });
+      const disc = await seedDiscipline({ id: "disc-mark-depth" });
+      const topic = await seedTopic(disc.id, { id: "topic-mark-depth" });
       await content.markDepthCompleted(user.id, topic.id, "survey");
       const depths = await content.getCompletedDepths(user.id, topic.id);
       expect(depths).toContain("survey");
@@ -143,8 +138,8 @@ describe("content service", () => {
 
     it("is idempotent — marking same depth twice does not error", async () => {
       const user = await seedUser({});
-      const subj = await seedSubject({ id: "subj-mark-idem" });
-      const topic = await seedTopic(subj.id, { id: "topic-mark-idem" });
+      const disc = await seedDiscipline({ id: "disc-mark-idem" });
+      const topic = await seedTopic(disc.id, { id: "topic-mark-idem" });
       await content.markDepthCompleted(user.id, topic.id, "survey");
       await content.markDepthCompleted(user.id, topic.id, "survey");
       const depths = await content.getCompletedDepths(user.id, topic.id);
@@ -153,8 +148,8 @@ describe("content service", () => {
 
     it("tracks multiple depths independently", async () => {
       const user = await seedUser({});
-      const subj = await seedSubject({ id: "subj-multi-depth" });
-      const topic = await seedTopic(subj.id, { id: "topic-multi-depth" });
+      const disc = await seedDiscipline({ id: "disc-multi-depth" });
+      const topic = await seedTopic(disc.id, { id: "topic-multi-depth" });
       await content.markDepthCompleted(user.id, topic.id, "survey");
       await content.markDepthCompleted(user.id, topic.id, "contextual");
       const depths = await content.getCompletedDepths(user.id, topic.id);
@@ -168,8 +163,8 @@ describe("content service", () => {
     let topicId: string;
 
     beforeAll(async () => {
-      const subj = await seedSubject({ id: "subj-content-test" });
-      const topic = await seedTopic(subj.id, { id: "topic-dim-test" });
+      const disc = await seedDiscipline({ id: "disc-content-test" });
+      const topic = await seedTopic(disc.id, { id: "topic-dim-test" });
       topicId = topic.id;
 
       // Seed content at different presentation levels
@@ -233,8 +228,8 @@ describe("content service", () => {
     let topicId: string;
 
     beforeAll(async () => {
-      const subj = await seedSubject({ id: "subj-ex-test" });
-      const topic = await seedTopic(subj.id, { id: "topic-ex-dim" });
+      const disc = await seedDiscipline({ id: "disc-ex-test" });
+      const topic = await seedTopic(disc.id, { id: "topic-ex-dim" });
       topicId = topic.id;
 
       await seedInstructionalContent(topicId, {
@@ -339,34 +334,34 @@ describe("content service", () => {
     });
   });
 
-  describe("resolvePresentation with subjectId", () => {
-    it("uses stored distribution when subjectId provided", async () => {
+  describe("resolvePresentation with disciplineId", () => {
+    it("uses stored distribution when disciplineId provided", async () => {
       const user = await seedUser({ birthYear: 2020 }); // Would be 'primary' by age
-      const subj = await seedSubject({ id: "subj-pres-dist" });
+      const disc = await seedDiscipline({ id: "disc-pres-dist" });
       // Store a distribution centered on advanced
-      await seedUserSubjectPresentation(
+      await seedUserDisciplinePresentation(
         user.id,
-        subj.id,
+        disc.id,
         { primary: 0, intermediate: 0, standard: 0, advanced: 1.0 },
         "advanced"
       );
-      // With subjectId, should always return advanced (weight=1.0)
-      const result = await content.resolvePresentation(user.id, subj.id);
+      // With disciplineId, should always return advanced (weight=1.0)
+      const result = await content.resolvePresentation(user.id, disc.id);
       expect(result).toBe("advanced");
     });
 
     it("falls back to age-default when no distribution stored", async () => {
       const user = await seedUser({ birthYear: 2020 }); // primary by age
       // No distribution stored — should sample from age-default (90% primary)
-      const subj = await seedSubject({ id: "subj-pres-no-dist" });
+      const disc = await seedDiscipline({ id: "disc-pres-no-dist" });
       const counts: Record<string, number> = { primary: 0, intermediate: 0, standard: 0, advanced: 0 };
       for (let i = 0; i < 100; i++) {
-        counts[await content.resolvePresentation(user.id, subj.id)]++;
+        counts[await content.resolvePresentation(user.id, disc.id)]++;
       }
       expect(counts.primary).toBeGreaterThan(70);
     });
 
-    it("returns deterministic age-based level without subjectId (backwards compatible)", async () => {
+    it("returns deterministic age-based level without disciplineId (backwards compatible)", async () => {
       const user = await seedUser({ birthYear: 2020 });
       const result = await content.resolvePresentation(user.id);
       expect(result).toBe("primary");
@@ -380,30 +375,31 @@ describe("content service", () => {
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString(),
       });
-      const subj = await seedSubject({ id: "subj-pres-override" });
-      await seedUserSubjectPresentation(
+      const disc = await seedDiscipline({ id: "disc-pres-override" });
+      await seedUserDisciplinePresentation(
         user.id,
-        subj.id,
+        disc.id,
         { primary: 1.0, intermediate: 0, standard: 0, advanced: 0 },
         "primary"
       );
-      const result = await content.resolvePresentation(user.id, subj.id);
+      const result = await content.resolvePresentation(user.id, disc.id);
       expect(result).toBe("standard"); // Override wins
     });
   });
 
-  describe("upsertSubjectDistribution", () => {
+  describe("upsertDisciplineDistribution", () => {
     it("creates new distribution", async () => {
       const user = await seedUser({});
-      const subj = await seedSubject({ id: "subj-upsert-new" });
-      await content.upsertSubjectDistribution(user.id, subj.id, {
+      const disc = await seedDiscipline({ id: "disc-upsert-new" });
+      await content.upsertDisciplineDistribution(user.id, disc.id, {
         primary: 0.1,
         intermediate: 0.7,
         standard: 0.15,
         advanced: 0.05,
         centerLevel: "intermediate",
+        driftSignal: 0,
       });
-      const dist = await content.getSubjectDistribution(user.id, subj.id);
+      const dist = await content.getDisciplineDistribution(user.id, disc.id);
       expect(dist).not.toBeNull();
       expect(dist!.centerLevel).toBe("intermediate");
       expect(dist!.intermediate).toBeCloseTo(0.7);
@@ -411,32 +407,34 @@ describe("content service", () => {
 
     it("updates existing distribution", async () => {
       const user = await seedUser({});
-      const subj = await seedSubject({ id: "subj-upsert-update" });
-      await content.upsertSubjectDistribution(user.id, subj.id, {
+      const disc = await seedDiscipline({ id: "disc-upsert-update" });
+      await content.upsertDisciplineDistribution(user.id, disc.id, {
         primary: 0.1,
         intermediate: 0.7,
         standard: 0.15,
         advanced: 0.05,
         centerLevel: "intermediate",
+        driftSignal: 0,
       });
-      await content.upsertSubjectDistribution(user.id, subj.id, {
+      await content.upsertDisciplineDistribution(user.id, disc.id, {
         primary: 0,
         intermediate: 0.2,
         standard: 0.7,
         advanced: 0.1,
         centerLevel: "standard",
+        driftSignal: 0,
       });
-      const dist = await content.getSubjectDistribution(user.id, subj.id);
+      const dist = await content.getDisciplineDistribution(user.id, disc.id);
       expect(dist!.centerLevel).toBe("standard");
       expect(dist!.standard).toBeCloseTo(0.7);
     });
 
     it("distribution weights sum to 1.0", async () => {
       const user = await seedUser({});
-      const subj = await seedSubject({ id: "subj-upsert-sum" });
-      const d = { primary: 0.1, intermediate: 0.7, standard: 0.15, advanced: 0.05, centerLevel: "intermediate" as const };
-      await content.upsertSubjectDistribution(user.id, subj.id, d);
-      const dist = await content.getSubjectDistribution(user.id, subj.id);
+      const disc = await seedDiscipline({ id: "disc-upsert-sum" });
+      const d = { primary: 0.1, intermediate: 0.7, standard: 0.15, advanced: 0.05, centerLevel: "intermediate" as const, driftSignal: 0 };
+      await content.upsertDisciplineDistribution(user.id, disc.id, d);
+      const dist = await content.getDisciplineDistribution(user.id, disc.id);
       const sum = dist!.primary + dist!.intermediate + dist!.standard + dist!.advanced;
       expect(sum).toBeCloseTo(1.0, 10);
     });

@@ -6,7 +6,7 @@ import {
   applyMigrations,
   resetDb,
   seedUser,
-  seedSubject,
+  seedDiscipline,
   seedTopic,
   seedAssessmentContent,
   seedInstructionalContent,
@@ -28,20 +28,20 @@ describe("targeted remediation", () => {
   async function setupGraph() {
     const db = getTestDb();
     const user = await seedUser();
-    const subject = await seedSubject();
+    const discipline = await seedDiscipline();
 
     // Create topic chain: counting → addition → multiplication
-    await seedTopic(subject.id, {
+    await seedTopic(discipline.id, {
       id: "counting",
       name: "Counting to 10",
       depth: 0,
     });
-    await seedTopic(subject.id, {
+    await seedTopic(discipline.id, {
       id: "addition",
       name: "Addition within 10",
       depth: 1,
     });
-    await seedTopic(subject.id, {
+    await seedTopic(discipline.id, {
       id: "multiplication",
       name: "Multiplication",
       depth: 2,
@@ -97,7 +97,7 @@ describe("targeted remediation", () => {
       title: "Counting Basics",
     });
 
-    return { db, user, subject };
+    return { db, user, discipline };
   }
 
   /**
@@ -261,8 +261,8 @@ describe("targeted remediation", () => {
 
   it("falls back to same-topic remediation for anonymous users", async () => {
     const db = getTestDb();
-    const subject = await seedSubject();
-    await seedTopic(subject.id, {
+    const discipline = await seedDiscipline();
+    await seedTopic(discipline.id, {
       id: "anon-topic",
       name: "Test Topic",
     });
@@ -373,9 +373,9 @@ describe("targeted remediation", () => {
   it("falls back to same-topic remediation when no prerequisites exist", async () => {
     const db = getTestDb();
     const user = await seedUser();
-    const subject = await seedSubject();
+    const discipline = await seedDiscipline();
 
-    await seedTopic(subject.id, {
+    await seedTopic(discipline.id, {
       id: "standalone",
       name: "Standalone Topic",
     });
@@ -539,11 +539,11 @@ describe("targeted remediation", () => {
   it("identifyKeyPrerequisite returns correct weak prerequisite for fraction topics", async () => {
     const db = getTestDb();
     const user = await seedUser();
-    const subject = await seedSubject();
+    const discipline = await seedDiscipline();
 
     // Create a mini graph: whole-number-ops → fraction-addition
-    await seedTopic(subject.id, { id: "whole-number-ops", name: "Whole Number Operations", depth: 1 });
-    await seedTopic(subject.id, { id: "fraction-addition", name: "Fraction Addition", depth: 3 });
+    await seedTopic(discipline.id, { id: "whole-number-ops", name: "Whole Number Operations", depth: 1 });
+    await seedTopic(discipline.id, { id: "fraction-addition", name: "Fraction Addition", depth: 3 });
     await seedPrerequisite("whole-number-ops", "fraction-addition");
 
     // Whole number ops has low stability (weak knowledge)

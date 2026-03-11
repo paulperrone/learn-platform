@@ -4,7 +4,7 @@ import {
   resetDb,
   getTestDb,
   seedUser,
-  seedSubject,
+  seedDiscipline,
   seedTopic,
   seedPrerequisite,
 } from "./helpers.js";
@@ -120,11 +120,11 @@ describe("Non-Interference Interleaving", () => {
       db = getTestDb();
       await db.delete(schema.prerequisites);
       await db.delete(schema.topics);
-      await db.delete(schema.subjects);
+      await db.delete(schema.disciplines);
     });
 
     it("reads strand from DB column for topics with strand set", async () => {
-      const subject = await seedSubject({ id: "math-test" });
+      const subject = await seedDiscipline({ id: "math-test" });
       await seedTopic(subject.id, { id: "counting", depth: 0, strand: "counting-cardinality" });
       await seedTopic(subject.id, { id: "add-5", depth: 1, strand: "counting-cardinality" });
       await seedTopic(subject.id, { id: "add-10", depth: 2, strand: "counting-cardinality" });
@@ -139,7 +139,7 @@ describe("Non-Interference Interleaving", () => {
     });
 
     it("assigns same strand to sibling topics with same strand value", async () => {
-      const subject = await seedSubject({ id: "math-test" });
+      const subject = await seedDiscipline({ id: "math-test" });
       await seedTopic(subject.id, { id: "add-5", depth: 1, strand: "operations" });
       await seedTopic(subject.id, { id: "sub-5", depth: 1, strand: "operations" });
 
@@ -150,7 +150,7 @@ describe("Non-Interference Interleaving", () => {
     });
 
     it("assigns different strands to topics with different strand values", async () => {
-      const subject = await seedSubject({ id: "math-test" });
+      const subject = await seedDiscipline({ id: "math-test" });
       await seedTopic(subject.id, { id: "add-5", depth: 1, strand: "counting" });
       await seedTopic(subject.id, { id: "angles", depth: 1, strand: "geometry" });
 
@@ -163,7 +163,7 @@ describe("Non-Interference Interleaving", () => {
     });
 
     it("falls back to topic ID when strand column is null", async () => {
-      const subject = await seedSubject({ id: "math-test" });
+      const subject = await seedDiscipline({ id: "math-test" });
       await seedTopic(subject.id, { id: "standalone", depth: 0 });
 
       const graphService = createGraphService(db);
@@ -192,14 +192,14 @@ describe("Non-Interference Interleaving", () => {
       await db.delete(schema.prerequisites);
       await db.delete(schema.assessmentContent);
       await db.delete(schema.topics);
-      await db.delete(schema.subjects);
+      await db.delete(schema.disciplines);
       await db.delete(schema.users);
 
       user = await seedUser({ id: "test-user" });
     });
 
     it("interleaves topics from different strands in session mix", async () => {
-      const subject = await seedSubject({ id: "math-test" });
+      const subject = await seedDiscipline({ id: "math-test" });
 
       // Two strands: arithmetic and geometry
       const counting = await seedTopic(subject.id, { id: "counting", depth: 0, strand: "arithmetic" });

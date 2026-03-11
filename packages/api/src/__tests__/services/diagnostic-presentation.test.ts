@@ -2,7 +2,7 @@ import { describe, it, expect, beforeAll } from "vitest";
 import {
   applyMigrations,
   seedUser,
-  seedSubject,
+  seedDiscipline,
   seedTopic,
   seedAssessmentContent,
   seedInstructionalContent,
@@ -19,14 +19,14 @@ let seeded = false;
 beforeAll(async () => {
   await applyMigrations();
   if (!seeded) {
-    // Subject with a discipline
-    await seedSubject({ id: "pres-subj", name: "Math Pres Test" });
+    // Discipline for presentation tests
+    await seedDiscipline({ id: "pres-disc", name: "Math Pres Test" });
 
     // 4 topics with prerequisites: t1 -> t2 -> t3, t1 -> t4
-    await seedTopic("pres-subj", { id: "pres-t1", name: "Counting", depth: 0, gradeLevel: 0 });
-    await seedTopic("pres-subj", { id: "pres-t2", name: "Addition", depth: 1, gradeLevel: 1 });
-    await seedTopic("pres-subj", { id: "pres-t3", name: "Multiplication", depth: 2, gradeLevel: 2 });
-    await seedTopic("pres-subj", { id: "pres-t4", name: "Subtraction", depth: 1, gradeLevel: 1 });
+    await seedTopic("pres-disc", { id: "pres-t1", name: "Counting", depth: 0, gradeLevel: 0 });
+    await seedTopic("pres-disc", { id: "pres-t2", name: "Addition", depth: 1, gradeLevel: 1 });
+    await seedTopic("pres-disc", { id: "pres-t3", name: "Multiplication", depth: 2, gradeLevel: 2 });
+    await seedTopic("pres-disc", { id: "pres-t4", name: "Subtraction", depth: 1, gradeLevel: 1 });
     await seedPrerequisite("pres-t1", "pres-t2");
     await seedPrerequisite("pres-t2", "pres-t3");
     await seedPrerequisite("pres-t1", "pres-t4");
@@ -45,14 +45,14 @@ beforeAll(async () => {
 });
 
 describe("diagnostic presentation distribution seeding", () => {
-  it("authenticated diagnostic creates user_subject_presentation row", async () => {
+  it("authenticated diagnostic creates user_discipline_presentation row", async () => {
     const db = getTestDb();
     const user = await seedUser({ id: `pres-user-${Date.now()}` });
     const diagnostic = createDiagnosticService(db);
 
     const startResult = await diagnostic.startDiagnostic({
       userId: user.id,
-      subjectId: "pres-subj",
+      disciplineId: "pres-disc",
       isTaste: true,
     });
     expect(startResult).not.toHaveProperty("error");
@@ -75,10 +75,10 @@ describe("diagnostic presentation distribution seeding", () => {
     expect(done).toBe(true);
 
     // Check that a distribution row was created
-    const distRow = await db.query.userSubjectPresentation.findFirst({
+    const distRow = await db.query.userDisciplinePresentation.findFirst({
       where: and(
-        eq(schema.userSubjectPresentation.userId, user.id),
-        eq(schema.userSubjectPresentation.subjectId, "pres-subj"),
+        eq(schema.userDisciplinePresentation.userId, user.id),
+        eq(schema.userDisciplinePresentation.disciplineId, "pres-disc"),
       ),
     });
     expect(distRow).toBeDefined();
@@ -100,7 +100,7 @@ describe("diagnostic presentation distribution seeding", () => {
 
     const startResult = await diagnostic.startDiagnostic({
       anonymousToken: token,
-      subjectId: "pres-subj",
+      disciplineId: "pres-disc",
       isTaste: true,
     });
     expect(startResult).not.toHaveProperty("error");
@@ -121,7 +121,7 @@ describe("diagnostic presentation distribution seeding", () => {
     expect(done).toBe(true);
 
     // No distribution row should exist (anonymous users can't persist)
-    const rows = await db.select().from(schema.userSubjectPresentation);
+    const rows = await db.select().from(schema.userDisciplinePresentation);
     const anonRows = rows.filter((r) => r.userId === null);
     expect(anonRows.length).toBe(0);
   });
@@ -133,7 +133,7 @@ describe("diagnostic presentation distribution seeding", () => {
 
     const startResult = await diagnostic.startDiagnostic({
       userId: user.id,
-      subjectId: "pres-subj",
+      disciplineId: "pres-disc",
       isTaste: true,
     });
     const { sessionId, question } = startResult as { sessionId: string; question: any };
@@ -152,10 +152,10 @@ describe("diagnostic presentation distribution seeding", () => {
       }
     }
 
-    const distRow = await db.query.userSubjectPresentation.findFirst({
+    const distRow = await db.query.userDisciplinePresentation.findFirst({
       where: and(
-        eq(schema.userSubjectPresentation.userId, user.id),
-        eq(schema.userSubjectPresentation.subjectId, "pres-subj"),
+        eq(schema.userDisciplinePresentation.userId, user.id),
+        eq(schema.userDisciplinePresentation.disciplineId, "pres-disc"),
       ),
     });
     expect(distRow).toBeDefined();
@@ -171,7 +171,7 @@ describe("diagnostic presentation distribution seeding", () => {
     // Run first diagnostic
     const start1 = await diagnostic.startDiagnostic({
       userId: user.id,
-      subjectId: "pres-subj",
+      disciplineId: "pres-disc",
       isTaste: true,
     });
     const { sessionId: sid1, question: q1 } = start1 as { sessionId: string; question: any };
@@ -186,10 +186,10 @@ describe("diagnostic presentation distribution seeding", () => {
       if (!done && resp.question) answer = resp.question.problem?.answer ?? "0";
     }
 
-    const dist1 = await db.query.userSubjectPresentation.findFirst({
+    const dist1 = await db.query.userDisciplinePresentation.findFirst({
       where: and(
-        eq(schema.userSubjectPresentation.userId, user.id),
-        eq(schema.userSubjectPresentation.subjectId, "pres-subj"),
+        eq(schema.userDisciplinePresentation.userId, user.id),
+        eq(schema.userDisciplinePresentation.disciplineId, "pres-disc"),
       ),
     });
     const firstAdjustedAt = dist1!.lastAdjustedAt;
@@ -197,7 +197,7 @@ describe("diagnostic presentation distribution seeding", () => {
     // Run second diagnostic (small delay for timestamp difference)
     const start2 = await diagnostic.startDiagnostic({
       userId: user.id,
-      subjectId: "pres-subj",
+      disciplineId: "pres-disc",
       isTaste: true,
     });
     const { sessionId: sid2, question: q2 } = start2 as { sessionId: string; question: any };
@@ -215,11 +215,11 @@ describe("diagnostic presentation distribution seeding", () => {
     // Should still have exactly ONE distribution row (overwritten, not duplicated)
     const allDists = await db
       .select()
-      .from(schema.userSubjectPresentation)
+      .from(schema.userDisciplinePresentation)
       .where(
         and(
-          eq(schema.userSubjectPresentation.userId, user.id),
-          eq(schema.userSubjectPresentation.subjectId, "pres-subj"),
+          eq(schema.userDisciplinePresentation.userId, user.id),
+          eq(schema.userDisciplinePresentation.disciplineId, "pres-disc"),
         ),
       );
     expect(allDists.length).toBe(1);

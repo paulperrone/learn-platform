@@ -35,21 +35,21 @@ progressRoutes.get("/:userId/presentation", async (c) => {
 
   // Get user's birth year for default fallback
   const { eq } = await import("drizzle-orm");
-  const { users, subjects } = await import("../db/schema.js");
+  const { users, disciplines } = await import("../db/schema.js");
   const user = await db.select().from(users).where(eq(users.id, userId)).get();
   if (!user) return c.json({ error: "User not found" }, 404);
 
-  const distributions = await content.getAllSubjectDistributions(userId);
+  const distributions = await content.getAllDisciplineDistributions(userId);
 
-  // Get all subjects to include those without stored distributions
-  const allSubjects = await db.select().from(subjects);
+  // Get all disciplines to include those without stored distributions
+  const allDisciplines = await db.select().from(disciplines);
 
-  const result = allSubjects.map((subject) => {
-    const stored = distributions.find((d) => d.subjectId === subject.id);
+  const result = allDisciplines.map((discipline) => {
+    const stored = distributions.find((d) => d.disciplineId === discipline.id);
     if (stored) {
       return {
-        subjectId: subject.id,
-        subjectName: subject.name,
+        disciplineId: discipline.id,
+        disciplineName: discipline.name,
         centerLevel: stored.centerLevel,
         weights: stored.weights,
         label: describePresentationDistribution(stored.centerLevel, stored.weights),
@@ -59,8 +59,8 @@ progressRoutes.get("/:userId/presentation", async (c) => {
     // Fall back to age-default
     const defaultDist = buildDefaultDistribution(user.birthYear);
     return {
-      subjectId: subject.id,
-      subjectName: subject.name,
+      disciplineId: discipline.id,
+      disciplineName: discipline.name,
       centerLevel: defaultDist.centerLevel,
       weights: {
         primary: defaultDist.primary,
@@ -170,11 +170,11 @@ progressRoutes.get("/:userId/completion", async (c) => {
   const db = getDb(c.env.DB);
   const userId = c.req.param("userId");
 
-  // Get all subjects
-  const subjects = await db.select().from(schema.subjects);
+  // Get all disciplines
+  const allDisciplines = await db.select().from(schema.disciplines);
 
-  // Get all topics grouped by subject
-  const allTopics = await db.select({ id: schema.topics.id, subjectId: schema.topics.subjectId }).from(schema.topics);
+  // Get all topics grouped by discipline
+  const allTopics = await db.select({ id: schema.topics.id, disciplineId: schema.topics.disciplineId }).from(schema.topics);
 
   // Get all mastered topics for user (materialized + implicit)
   const masteredRows = await db
@@ -223,18 +223,18 @@ progressRoutes.get("/:userId/completion", async (c) => {
   const totalMasteredRecent = recentActivity[0]?.totalMastered ?? 0;
   const topicsPerWeek = totalMasteredRecent / 4;
 
-  // Build per-subject estimates
-  const topicsBySubject = new Map<string, string[]>();
+  // Build per-discipline estimates
+  const topicsByDiscipline = new Map<string, string[]>();
   for (const t of allTopics) {
-    const list = topicsBySubject.get(t.subjectId) ?? [];
+    const list = topicsByDiscipline.get(t.disciplineId) ?? [];
     list.push(t.id);
-    topicsBySubject.set(t.subjectId, list);
+    topicsByDiscipline.set(t.disciplineId, list);
   }
 
-  const estimates = subjects.map((subject) => {
-    const subjectTopics = topicsBySubject.get(subject.id) ?? [];
-    const total = subjectTopics.length;
-    const mastered = subjectTopics.filter((id) => masteredIds.has(id)).length;
+  const estimates = allDisciplines.map((discipline) => {
+    const disciplineTopics = topicsByDiscipline.get(discipline.id) ?? [];
+    const total = disciplineTopics.length;
+    const mastered = disciplineTopics.filter((id) => masteredIds.has(id)).length;
     const remaining = total - mastered;
     const percentComplete = total > 0 ? Math.round((mastered / total) * 100) : 0;
 
@@ -246,8 +246,8 @@ progressRoutes.get("/:userId/completion", async (c) => {
     else if (percentComplete >= 25) milestoneReached = 25;
 
     return {
-      subjectId: subject.id,
-      subjectName: subject.name,
+      disciplineId: discipline.id,
+      disciplineName: discipline.name,
       mastered,
       total,
       percentComplete,

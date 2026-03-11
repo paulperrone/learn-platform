@@ -3,7 +3,7 @@ import {
   applyMigrations,
   getTestDb,
   seedUser,
-  seedSubject,
+  seedDiscipline,
   seedTopic,
   seedPrerequisite,
 } from "../helpers.js";
@@ -18,10 +18,10 @@ describe("getNewlyUnlockedTopics", () => {
   it("returns topics whose prerequisites are now all met", async () => {
     const db = getTestDb();
     const user = await seedUser({ id: "unlock-user-1" });
-    const subj = await seedSubject({ id: "unlock-subj-1" });
-    const t1 = await seedTopic(subj.id, { id: "unlock-t1", name: "Topic A" });
-    const t2 = await seedTopic(subj.id, { id: "unlock-t2", name: "Topic B" });
-    const t3 = await seedTopic(subj.id, { id: "unlock-t3", name: "Topic C" });
+    const disc = await seedDiscipline({ id: "unlock-subj-1" });
+    const t1 = await seedTopic(disc.id, { id: "unlock-t1", name: "Topic A" });
+    const t2 = await seedTopic(disc.id, { id: "unlock-t2", name: "Topic B" });
+    const t3 = await seedTopic(disc.id, { id: "unlock-t3", name: "Topic C" });
     await seedPrerequisite(t1.id, t2.id); // t1 → t2
     await seedPrerequisite(t1.id, t3.id); // t1 → t3
 
@@ -45,10 +45,10 @@ describe("getNewlyUnlockedTopics", () => {
   it("does not return topics with unmet prerequisites", async () => {
     const db = getTestDb();
     const user = await seedUser({ id: "unlock-user-2" });
-    const subj = await seedSubject({ id: "unlock-subj-2" });
-    const t1 = await seedTopic(subj.id, { id: "unlock-t4" });
-    const t2 = await seedTopic(subj.id, { id: "unlock-t5" });
-    const t3 = await seedTopic(subj.id, { id: "unlock-t6" });
+    const disc = await seedDiscipline({ id: "unlock-subj-2" });
+    const t1 = await seedTopic(disc.id, { id: "unlock-t4" });
+    const t2 = await seedTopic(disc.id, { id: "unlock-t5" });
+    const t3 = await seedTopic(disc.id, { id: "unlock-t6" });
     await seedPrerequisite(t1.id, t3.id); // t1 → t3
     await seedPrerequisite(t2.id, t3.id); // t2 → t3 (both needed)
 
@@ -72,9 +72,9 @@ describe("getNewlyUnlockedTopics", () => {
   it("does not return already-started topics", async () => {
     const db = getTestDb();
     const user = await seedUser({ id: "unlock-user-3" });
-    const subj = await seedSubject({ id: "unlock-subj-3" });
-    const t1 = await seedTopic(subj.id, { id: "unlock-t7" });
-    const t2 = await seedTopic(subj.id, { id: "unlock-t8" });
+    const disc = await seedDiscipline({ id: "unlock-subj-3" });
+    const t1 = await seedTopic(disc.id, { id: "unlock-t7" });
+    const t2 = await seedTopic(disc.id, { id: "unlock-t8" });
     await seedPrerequisite(t1.id, t2.id);
 
     // Master t1 and start t2
@@ -95,8 +95,8 @@ describe("getNewlyUnlockedTopics", () => {
   it("returns empty array when no dependents exist", async () => {
     const db = getTestDb();
     const user = await seedUser({ id: "unlock-user-4" });
-    const subj = await seedSubject({ id: "unlock-subj-4" });
-    const t1 = await seedTopic(subj.id, { id: "unlock-t9" });
+    const disc = await seedDiscipline({ id: "unlock-subj-4" });
+    const t1 = await seedTopic(disc.id, { id: "unlock-t9" });
 
     await db.insert(schema.userTopicState).values({
       userId: user.id,
@@ -116,10 +116,10 @@ describe("getNewlyUnlockedTopics", () => {
   it("ignores enriching prerequisites when checking unlock", async () => {
     const db = getTestDb();
     const user = await seedUser({ id: "unlock-user-5" });
-    const subj = await seedSubject({ id: "unlock-subj-5" });
-    const t1 = await seedTopic(subj.id, { id: "unlock-t10" });
-    const t2 = await seedTopic(subj.id, { id: "unlock-t11" });
-    const t3 = await seedTopic(subj.id, { id: "unlock-t12" });
+    const disc = await seedDiscipline({ id: "unlock-subj-5" });
+    const t1 = await seedTopic(disc.id, { id: "unlock-t10" });
+    const t2 = await seedTopic(disc.id, { id: "unlock-t11" });
+    const t3 = await seedTopic(disc.id, { id: "unlock-t12" });
     await seedPrerequisite(t1.id, t3.id); // t1 → t3 (required)
     // t2 → t3 as enriching
     await db.insert(schema.prerequisites).values({
@@ -151,10 +151,10 @@ describe("completion estimate", () => {
   it("calculates progress milestone correctly", async () => {
     const db = getTestDb();
     const user = await seedUser({ id: "comp-user-1" });
-    const subj = await seedSubject({ id: "comp-subj-1" });
+    const disc = await seedDiscipline({ id: "comp-subj-1" });
     const topics = [];
     for (let i = 0; i < 4; i++) {
-      topics.push(await seedTopic(subj.id, { id: `comp-t${i}` }));
+      topics.push(await seedTopic(disc.id, { id: `comp-t${i}` }));
     }
 
     // Master 2 of 4 = 50%
@@ -169,9 +169,9 @@ describe("completion estimate", () => {
       });
     }
 
-    // Check that subjects, topics, and mastery state can be computed
-    const allTopics = await db.select({ id: schema.topics.id, subjectId: schema.topics.subjectId }).from(schema.topics);
-    const subjectTopics = allTopics.filter((t) => t.subjectId === subj.id);
+    // Check that disciplines, topics, and mastery state can be computed
+    const allTopics = await db.select({ id: schema.topics.id, disciplineId: schema.topics.disciplineId }).from(schema.topics);
+    const disciplineTopics = allTopics.filter((t) => t.disciplineId === disc.id);
     const masteredRows = await db
       .select({ topicId: schema.userTopicState.topicId })
       .from(schema.userTopicState)
@@ -182,11 +182,11 @@ describe("completion estimate", () => {
         )
       );
     const masteredIds = new Set(masteredRows.map((r) => r.topicId));
-    const mastered = subjectTopics.filter((t) => masteredIds.has(t.id)).length;
+    const mastered = disciplineTopics.filter((t) => masteredIds.has(t.id)).length;
 
     expect(mastered).toBe(2);
-    expect(subjectTopics.length).toBe(4);
-    const percentComplete = Math.round((mastered / subjectTopics.length) * 100);
+    expect(disciplineTopics.length).toBe(4);
+    const percentComplete = Math.round((mastered / disciplineTopics.length) * 100);
     expect(percentComplete).toBe(50);
   });
 });

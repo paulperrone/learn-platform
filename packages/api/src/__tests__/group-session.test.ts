@@ -4,7 +4,7 @@ import {
   resetDb,
   getTestDb,
   seedUser,
-  seedSubject,
+  seedDiscipline,
   seedTopic,
   seedAssessmentContent,
   seedAccountLink,
@@ -35,7 +35,7 @@ describe("Group Session Service", () => {
     await db.delete((await import("../db/schema.js")).accountLinks);
     await db.delete((await import("../db/schema.js")).assessmentContent);
     await db.delete((await import("../db/schema.js")).topics);
-    await db.delete((await import("../db/schema.js")).subjects);
+    await db.delete((await import("../db/schema.js")).disciplines);
     await db.delete((await import("../db/schema.js")).users);
 
     // Seed users
@@ -51,7 +51,7 @@ describe("Group Session Service", () => {
     await seedAccountLink(parent.id, child3.id, "parent");
 
     // Seed content
-    subject = await seedSubject({ id: "math-foundations" });
+    subject = await seedDiscipline({ id: "math-foundations" });
     topicA = await seedTopic(subject.id, { id: "topic-a", name: "Counting to 10", depth: 0 });
     topicB = await seedTopic(subject.id, { id: "topic-b", name: "Addition to 5", depth: 1 });
     await seedAssessmentContent(topicA.id, { difficulty: "easy", question: "Count to 3", answer: "3" });

@@ -512,17 +512,17 @@ adminRoutes.get("/analytics/learning-patterns", async (c) => {
 adminRoutes.get("/content-matrix", async (c) => {
   const d1 = c.env.DB;
 
-  // Get all subjects
-  const subjectsResult = await d1.prepare(
-    `SELECT id, name, grade_range AS gradeRange FROM subjects ORDER BY name`
-  ).all<{ id: string; name: string; gradeRange: string }>();
+  // Get all disciplines
+  const disciplinesResult = await d1.prepare(
+    `SELECT id, name, progression_model AS progressionModel FROM disciplines ORDER BY name`
+  ).all<{ id: string; name: string; progressionModel: string }>();
 
-  // Get all topics with subject info
+  // Get all topics with discipline info
   const topicsResult = await d1.prepare(
-    `SELECT t.id, t.name, t.grade_level AS gradeLevel, t.subject_id AS subjectId, s.name AS subjectName
-     FROM topics t JOIN subjects s ON t.subject_id = s.id
+    `SELECT t.id, t.name, t.grade_level AS gradeLevel, t.discipline_id AS disciplineId, d.name AS disciplineName
+     FROM topics t JOIN disciplines d ON t.discipline_id = d.id
      ORDER BY t.grade_level, t.name`
-  ).all<{ id: string; name: string; gradeLevel: number; subjectId: string; subjectName: string }>();
+  ).all<{ id: string; name: string; gradeLevel: number; disciplineId: string; disciplineName: string }>();
 
   // Instructional content: count per topic × flavor × locale × presentation
   const instructionalResult = await d1.prepare(
@@ -641,8 +641,8 @@ adminRoutes.get("/content-matrix", async (c) => {
       topicId: t.id,
       topicName: t.name,
       gradeLevel: t.gradeLevel,
-      subjectId: t.subjectId,
-      subjectName: t.subjectName,
+      disciplineId: t.disciplineId,
+      disciplineName: t.disciplineName,
       totalInstructional,
       totalAssessment,
       hasAssets,
@@ -688,10 +688,10 @@ adminRoutes.get("/content-matrix", async (c) => {
   const topicsWithLowQuality = matrix.filter((m) => m.quality && m.quality.accuracy < 0.8).length;
 
   return c.json({
-    subjects: (subjectsResult.results ?? []).map((s) => ({
-      id: s.id,
-      name: s.name,
-      gradeRange: s.gradeRange,
+    disciplines: (disciplinesResult.results ?? []).map((d) => ({
+      id: d.id,
+      name: d.name,
+      progressionModel: d.progressionModel,
     })),
     matrix,
     dimensions: {

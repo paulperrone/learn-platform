@@ -3,7 +3,7 @@ import {
   applyMigrations,
   getTestDb,
   seedUser,
-  seedSubject,
+  seedDiscipline,
   seedTopic,
   seedReviewLog,
   seedAssessmentContent,
@@ -21,8 +21,8 @@ describe("content quality: topic-level accuracy", () => {
   it("computes per-topic accuracy, hint usage, and response time", async () => {
     const db = getTestDb();
     const user = await seedUser({ id: "cq-user-1" });
-    const subj = await seedSubject({ id: "cq-subj-1" });
-    const topic = await seedTopic(subj.id, { id: "cq-topic-1", name: "Counting" });
+    const disc = await seedDiscipline({ id: "cq-subj-1" });
+    const topic = await seedTopic(disc.id, { id: "cq-topic-1", name: "Counting" });
 
     // 3 correct, 2 incorrect
     await seedReviewLog(user.id, topic.id, { correct: true, hintsUsed: 0, responseMs: 1000 });
@@ -55,8 +55,8 @@ describe("content quality: per-problem accuracy", () => {
   it("tracks accuracy per assessment_content_id", async () => {
     const db = getTestDb();
     const user = await seedUser({ id: "cq-user-2" });
-    const subj = await seedSubject({ id: "cq-subj-2" });
-    const topic = await seedTopic(subj.id, { id: "cq-topic-2", name: "Addition" });
+    const disc = await seedDiscipline({ id: "cq-subj-2" });
+    const topic = await seedTopic(disc.id, { id: "cq-topic-2", name: "Addition" });
 
     const problem1 = await seedAssessmentContent(topic.id, {
       id: "cq-ac-1",
@@ -107,10 +107,10 @@ describe("content quality: difficulty spikes", () => {
     const db = getTestDb();
     const user1 = await seedUser({ id: "cq-spike-user1" });
     const user2 = await seedUser({ id: "cq-spike-user2" });
-    const subj = await seedSubject({ id: "cq-spike-subj" });
+    const disc = await seedDiscipline({ id: "cq-spike-subj" });
 
-    const easyTopic = await seedTopic(subj.id, { id: "cq-spike-easy", name: "Easy Counting" });
-    const hardTopic = await seedTopic(subj.id, { id: "cq-spike-hard", name: "Hard Division" });
+    const easyTopic = await seedTopic(disc.id, { id: "cq-spike-easy", name: "Easy Counting" });
+    const hardTopic = await seedTopic(disc.id, { id: "cq-spike-hard", name: "Hard Division" });
     await seedPrerequisite(easyTopic.id, hardTopic.id);
 
     // Easy topic: 90% accuracy (9/10)
@@ -164,8 +164,8 @@ describe("content quality: version comparison", () => {
   it("compares accuracy before and after content updates", async () => {
     const db = getTestDb();
     const user = await seedUser({ id: "cq-ver-user" });
-    const subj = await seedSubject({ id: "cq-ver-subj" });
-    const topic = await seedTopic(subj.id, { id: "cq-ver-topic", name: "Fractions" });
+    const disc = await seedDiscipline({ id: "cq-ver-subj" });
+    const topic = await seedTopic(disc.id, { id: "cq-ver-topic", name: "Fractions" });
 
     // Content updated at a known point
     const updateTime = "2026-02-15T00:00:00.000Z";

@@ -14,21 +14,21 @@ graphRoutes.get("/disciplines", async (c) => {
   return c.json({ disciplines });
 });
 
-graphRoutes.get("/subjects", async (c) => {
+graphRoutes.get("/collections", async (c) => {
   const db = getDb(c.env.DB);
   const graph = createGraphService(db);
-  const subjects = await graph.getSubjects();
-  return c.json({ subjects });
+  const collections = await graph.getCollections();
+  return c.json({ collections });
 });
 
-graphRoutes.get("/subjects/:id/topics", async (c) => {
+graphRoutes.get("/collections/:id/topics", async (c) => {
   const db = getDb(c.env.DB);
   const graph = createGraphService(db);
-  const topics = await graph.getSubjectTopics(c.req.param("id"));
+  const topics = await graph.getDisciplineTopics(c.req.param("id"));
   return c.json({ topics });
 });
 
-graphRoutes.get("/subjects/:id/validate", async (c) => {
+graphRoutes.get("/collections/:id/validate", async (c) => {
   const db = getDb(c.env.DB);
   const graph = createGraphService(db);
   const result = await graph.validateDAG(c.req.param("id"));
@@ -42,7 +42,7 @@ graphRoutes.get("/graph/validate", async (c) => {
   return c.json(result);
 });
 
-graphRoutes.post("/subjects/:id/compute-depths", async (c) => {
+graphRoutes.post("/collections/:id/compute-depths", async (c) => {
   const db = getDb(c.env.DB);
   const graph = createGraphService(db);
   const depths = await graph.computeDepths(c.req.param("id"));
@@ -71,14 +71,14 @@ graphRoutes.get("/frontier/:userId", async (c) => {
   return c.json(frontier);
 });
 
-// GET /graph/:subjectId/user-state/:userId — topics merged with user mastery state
-graphRoutes.get("/:subjectId/user-state/:userId", async (c) => {
+// GET /graph/:disciplineId/user-state/:userId — topics merged with user mastery state
+graphRoutes.get("/:disciplineId/user-state/:userId", async (c) => {
   const db = getDb(c.env.DB);
   const graph = createGraphService(db);
-  const subjectId = c.req.param("subjectId");
+  const disciplineId = c.req.param("disciplineId");
   const userId = c.req.param("userId");
 
-  const topics = await graph.getSubjectTopics(subjectId);
+  const topics = await graph.getDisciplineTopics(disciplineId);
   const states = await db
     .select()
     .from(schema.userTopicState)

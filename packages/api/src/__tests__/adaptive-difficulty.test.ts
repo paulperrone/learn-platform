@@ -7,7 +7,6 @@ import {
   resetDb,
   seedUser,
   seedDiscipline,
-  seedSubject,
   seedTopic,
   seedAssessmentContent,
   seedReviewLog,
@@ -91,8 +90,8 @@ describe("Per-user FSRS optimization", () => {
     const db = getTestDb();
     const srs = createSRSService(db);
     const user = await seedUser();
-    const subject = await seedSubject();
-    const topic = await seedTopic(subject.id);
+    const discipline = await seedDiscipline();
+    const topic = await seedTopic(discipline.id);
 
     // Seed 10 reviews — below threshold
     for (let i = 0; i < 10; i++) {
@@ -107,8 +106,8 @@ describe("Per-user FSRS optimization", () => {
     const db = getTestDb();
     const srs = createSRSService(db);
     const user = await seedUser();
-    const subject = await seedSubject();
-    const topic = await seedTopic(subject.id);
+    const discipline = await seedDiscipline();
+    const topic = await seedTopic(discipline.id);
 
     // Seed 60 reviews: 48 correct, 12 incorrect = 80% retention
     for (let i = 0; i < 48; i++) {
@@ -129,8 +128,8 @@ describe("Per-user FSRS optimization", () => {
     const db = getTestDb();
     const srs = createSRSService(db);
     const user = await seedUser();
-    const subject = await seedSubject();
-    const topic = await seedTopic(subject.id);
+    const discipline = await seedDiscipline();
+    const topic = await seedTopic(discipline.id);
 
     // Seed 50 reviews: all correct = 100% → clamped to 0.97
     for (let i = 0; i < 50; i++) {
@@ -146,8 +145,8 @@ describe("Per-user FSRS optimization", () => {
     const db = getTestDb();
     const srs = createSRSService(db);
     const user = await seedUser();
-    const subject = await seedSubject();
-    const topic = await seedTopic(subject.id);
+    const discipline = await seedDiscipline();
+    const topic = await seedTopic(discipline.id);
 
     // Before optimization: defaults
     const defaults = await srs.getUserFsrsParams(user.id);

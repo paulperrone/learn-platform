@@ -3,7 +3,7 @@ import {
   applyMigrations,
   resetDb,
   seedUser,
-  seedSubject,
+  seedDiscipline,
   seedTopic,
   seedAssignment,
   seedAssessmentContent,
@@ -29,8 +29,8 @@ describe("Teach Data Model", () => {
   describe("teach_sessions table", () => {
     it("logs a teach session", async () => {
       const teacher = await seedUser({ name: "Teacher" });
-      const subject = await seedSubject();
-      const topic = await seedTopic(subject.id);
+      const discipline = await seedDiscipline();
+      const topic = await seedTopic(discipline.id);
 
       const db = getTestDb();
       const now = new Date().toISOString();
@@ -51,8 +51,8 @@ describe("Teach Data Model", () => {
 
     it("ends a teach session with notes", async () => {
       const teacher = await seedUser({ name: "Teacher" });
-      const subject = await seedSubject();
-      const topic = await seedTopic(subject.id);
+      const discipline = await seedDiscipline();
+      const topic = await seedTopic(discipline.id);
 
       const db = getTestDb();
       const now = new Date().toISOString();
@@ -81,8 +81,8 @@ describe("Teach Data Model", () => {
   describe("assignments table", () => {
     it("creates an assignment with share code", async () => {
       const teacher = await seedUser({ name: "Teacher" });
-      const subject = await seedSubject();
-      const topic = await seedTopic(subject.id);
+      const discipline = await seedDiscipline();
+      const topic = await seedTopic(discipline.id);
 
       const assignment = await seedAssignment(teacher.id, topic.id, {
         shareCode: "ABC123",
@@ -96,8 +96,8 @@ describe("Teach Data Model", () => {
 
     it("enforces unique share codes", async () => {
       const teacher = await seedUser({ name: "Teacher" });
-      const subject = await seedSubject();
-      const topic = await seedTopic(subject.id);
+      const discipline = await seedDiscipline();
+      const topic = await seedTopic(discipline.id);
 
       await seedAssignment(teacher.id, topic.id, { shareCode: "UNIQUE1" });
 
@@ -108,8 +108,8 @@ describe("Teach Data Model", () => {
 
     it("looks up assignment by share code", async () => {
       const teacher = await seedUser({ name: "Teacher" });
-      const subject = await seedSubject();
-      const topic = await seedTopic(subject.id);
+      const discipline = await seedDiscipline();
+      const topic = await seedTopic(discipline.id);
 
       await seedAssignment(teacher.id, topic.id, {
         shareCode: "FIND01",
@@ -130,8 +130,8 @@ describe("Teach Data Model", () => {
     it("stores an authenticated response", async () => {
       const teacher = await seedUser({ name: "Teacher" });
       const student = await seedUser({ name: "Student" });
-      const subject = await seedSubject();
-      const topic = await seedTopic(subject.id);
+      const discipline = await seedDiscipline();
+      const topic = await seedTopic(discipline.id);
       const problem = await seedAssessmentContent(topic.id);
       const assignment = await seedAssignment(teacher.id, topic.id, { shareCode: "RESP01" });
 
@@ -155,8 +155,8 @@ describe("Teach Data Model", () => {
 
     it("stores an anonymous response", async () => {
       const teacher = await seedUser({ name: "Teacher" });
-      const subject = await seedSubject();
-      const topic = await seedTopic(subject.id);
+      const discipline = await seedDiscipline();
+      const topic = await seedTopic(discipline.id);
       const problem = await seedAssessmentContent(topic.id);
       const assignment = await seedAssignment(teacher.id, topic.id, { shareCode: "ANON01" });
 
@@ -180,8 +180,8 @@ describe("Teach Data Model", () => {
 
     it("queries responses per assignment", async () => {
       const teacher = await seedUser({ name: "Teacher" });
-      const subject = await seedSubject();
-      const topic = await seedTopic(subject.id);
+      const discipline = await seedDiscipline();
+      const topic = await seedTopic(discipline.id);
       const problem = await seedAssessmentContent(topic.id);
       const assignment = await seedAssignment(teacher.id, topic.id, { shareCode: "MULTI1" });
 
@@ -259,8 +259,8 @@ describe("Teach Data Model", () => {
       expect(memberships).toHaveLength(0);
 
       // User can still have learning state
-      const subject = await seedSubject();
-      const topic = await seedTopic(subject.id);
+      const discipline = await seedDiscipline();
+      const topic = await seedTopic(discipline.id);
       await db.insert(schema.userTopicState).values({
         userId: user.id,
         topicId: topic.id,

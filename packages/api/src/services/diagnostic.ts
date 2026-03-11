@@ -90,11 +90,11 @@ export function createDiagnosticService(db: DB) {
     return { problems, presentation };
   }
 
-  async function loadAllTopicsAndEdges(subjectId: string) {
+  async function loadAllTopicsAndEdges(disciplineId: string) {
     const allTopics = await db
       .select()
       .from(schema.topics)
-      .where(eq(schema.topics.subjectId, subjectId));
+      .where(eq(schema.topics.disciplineId, disciplineId));
     const allPrereqs = await db.select().from(schema.prerequisites);
     const allEncompassings = await db.select().from(schema.encompassings);
 
@@ -455,7 +455,7 @@ export function createDiagnosticService(db: DB) {
     estimates: TopicEstimates,
     frontier: string[],
     allTopics: { id: string; gradeLevel: number }[],
-    subjectId: string,
+    disciplineId: string,
     state: DiagnosticState,
     prereqMap: Map<string, string[]>
   ): Promise<{ mastered: number; frontierCount: number }> {
@@ -542,7 +542,7 @@ export function createDiagnosticService(db: DB) {
     const estimatedDist = estimatePresentationDistribution(
       state, user?.birthYear, estimates, prereqMap
     );
-    await content.upsertSubjectDistribution(userId, subjectId, estimatedDist);
+    await content.upsertDisciplineDistribution(userId, disciplineId, estimatedDist);
 
     return { mastered, frontierCount };
   }
@@ -551,11 +551,11 @@ export function createDiagnosticService(db: DB) {
     async startDiagnostic(params: {
       userId?: string;
       anonymousToken?: string;
-      subjectId: string;
+      disciplineId: string;
       isTaste?: boolean;
     }) {
       const sessionId = crypto.randomUUID();
-      const { allTopics, prereqMap, dependentMap } = await loadAllTopicsAndEdges(params.subjectId);
+      const { allTopics, prereqMap, dependentMap } = await loadAllTopicsAndEdges(params.disciplineId);
       const isTaste = params.isTaste ?? false;
 
       // Cancel any active diagnostic for this user/token
@@ -630,7 +630,7 @@ export function createDiagnosticService(db: DB) {
         id: sessionId,
         userId: params.userId ?? null,
         anonymousToken: params.anonymousToken ?? null,
-        subjectId: params.subjectId,
+        disciplineId: params.disciplineId,
         isTaste: isTaste,
         stateJson: JSON.stringify(state),
       });
@@ -657,7 +657,7 @@ export function createDiagnosticService(db: DB) {
       const state: DiagnosticState = JSON.parse(row.stateJson!);
       const isTaste = row.isTaste;
 
-      const { allTopics, prereqMap, dependentMap } = await loadAllTopicsAndEdges(row.subjectId);
+      const { allTopics, prereqMap, dependentMap } = await loadAllTopicsAndEdges(row.disciplineId);
 
       // Grade the answer
       const currentTopicId = state.currentTopicId;
@@ -722,7 +722,7 @@ export function createDiagnosticService(db: DB) {
         if (row.userId) {
           materializeStats = await materializeMastery(
             row.userId, state.topicEstimates, estimatedFrontier, allTopics,
-            row.subjectId, state, prereqMap
+            row.disciplineId, state, prereqMap
           );
         }
 
@@ -762,7 +762,7 @@ export function createDiagnosticService(db: DB) {
         if (row.userId) {
           materializeStats = await materializeMastery(
             row.userId, state.topicEstimates, estimatedFrontier, allTopics,
-            row.subjectId, state, prereqMap
+            row.disciplineId, state, prereqMap
           );
         }
 
@@ -824,7 +824,7 @@ export function createDiagnosticService(db: DB) {
       };
     },
 
-    async resume(params: { userId?: string; anonymousToken?: string; subjectId: string }) {
+    async resume(params: { userId?: string; anonymousToken?: string; disciplineId: string }) {
       const userFilter = params.userId
         ? eq(schema.diagnosticSessions.userId, params.userId)
         : params.anonymousToken
@@ -835,7 +835,7 @@ export function createDiagnosticService(db: DB) {
       const row = await db.query.diagnosticSessions.findFirst({
         where: and(
           userFilter,
-          eq(schema.diagnosticSessions.subjectId, params.subjectId),
+          eq(schema.diagnosticSessions.disciplineId, params.disciplineId),
           eq(schema.diagnosticSessions.status, "active")
         ),
       });
@@ -876,7 +876,7 @@ export function createDiagnosticService(db: DB) {
       const allTopics = await db
         .select()
         .from(schema.topics)
-        .where(eq(schema.topics.subjectId, row.subjectId));
+        .where(eq(schema.topics.disciplineId, row.disciplineId));
       const estimates: TopicEstimates = row.topicEstimatesJson
         ? JSON.parse(row.topicEstimatesJson)
         : {};

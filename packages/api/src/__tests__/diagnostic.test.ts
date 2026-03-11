@@ -4,7 +4,7 @@ import {
   resetDb,
   getTestDb,
   seedUser,
-  seedSubject,
+  seedDiscipline,
   seedTopic,
   seedAssessmentContent,
 } from "./helpers.js";
@@ -24,12 +24,11 @@ describe("Diagnostic Bounds & Presentation Seeding", () => {
     db = getTestDb();
     // Clean diagnostic-related tables
     await db.delete(schema.diagnosticSessions);
-    await db.delete(schema.userSubjectPresentation);
+    await db.delete(schema.userDisciplinePresentation);
     await db.delete(schema.userTopicState);
     await db.delete(schema.assessmentContent);
     await db.delete(schema.prerequisites);
     await db.delete(schema.topics);
-    await db.delete(schema.subjects);
     await db.delete(schema.users);
   });
 
@@ -38,7 +37,7 @@ describe("Diagnostic Bounds & Presentation Seeding", () => {
    * All problems at a given grade have the answer "correct-{grade}" for easy matching.
    */
   async function seedGradedTopics(gradeCount = 6) {
-    const subject = await seedSubject({ id: "diag-test-subj" });
+    const discipline = await seedDiscipline({ id: "diag-test-disc" });
 
     const topicsByGrade: Record<number, string[]> = {};
     for (let g = 0; g < gradeCount; g++) {
@@ -46,7 +45,7 @@ describe("Diagnostic Bounds & Presentation Seeding", () => {
       // 3 topics per grade for variety
       for (let t = 0; t < 3; t++) {
         const topicId = `g${g}-t${t}`;
-        await seedTopic(subject.id, {
+        await seedTopic(discipline.id, {
           id: topicId,
           name: `Grade ${g} Topic ${t}`,
           gradeLevel: g,
@@ -61,13 +60,13 @@ describe("Diagnostic Bounds & Presentation Seeding", () => {
           question: `What is the answer for grade ${g}?`,
           answer: `correct-${g}`,
           difficulty: "medium",
-          depth: 0,
-          presentationLevel: g <= 1 ? "primary" : g <= 2 ? "intermediate" : "standard",
+          contentDepth: "survey",
+          presentation: g <= 1 ? "primary" : g <= 2 ? "intermediate" : "standard",
         });
       }
     }
 
-    return { subjectId: subject.id, topicsByGrade };
+    return { disciplineId: discipline.id, topicsByGrade };
   }
 
   /**
@@ -76,11 +75,11 @@ describe("Diagnostic Bounds & Presentation Seeding", () => {
    */
   async function runDiagnostic(
     userId: string,
-    subjectId: string,
+    disciplineId: string,
     shouldAnswer: (topicGrade: number, questionNum: number) => string | null
   ) {
     const diag = createDiagnosticService(db);
-    const start = await diag.startDiagnostic({ userId, subjectId });
+    const start = await diag.startDiagnostic({ userId, disciplineId });
 
     if ("error" in start) throw new Error(start.error);
 
@@ -100,7 +99,7 @@ describe("Diagnostic Bounds & Presentation Seeding", () => {
     answers.push({
       topicId: lastTopicId,
       grade: firstGrade,
-      correct: response.correct,
+      correct: response.correct ?? false,
     });
 
     while (!response.done && questionsAsked < 20) {
@@ -118,7 +117,7 @@ describe("Diagnostic Bounds & Presentation Seeding", () => {
       answers.push({
         topicId: nextTopicId,
         grade,
-        correct: response.correct,
+        correct: response.correct ?? false,
       });
     }
 
@@ -140,12 +139,12 @@ describe("Diagnostic Bounds & Presentation Seeding", () => {
   describe("Bounds don't lock in", () => {
     it("incorrect answer at searchLow decreases the floor", async () => {
       const user = await seedUser({ id: "bounds-test", birthYear: 2012 });
-      const { subjectId } = await seedGradedTopics();
+      const { disciplineId } = await seedGradedTopics();
 
       // Track what happens: answer correctly at low grades to raise searchLow,
       // then fail at grades at or below searchLow to test the unlock
       const gradesSeen: number[] = [];
-      const result = await runDiagnostic(user.id, subjectId, (grade, num) => {
+      const result = await runDiagnostic(user.id, disciplineId, (grade, num) => {
         gradesSeen.push(grade);
         // Correct for first 2 questions to raise searchLow
         if (num <= 2) return `correct-${grade}`;
@@ -166,9 +165,9 @@ describe("Diagnostic Bounds & Presentation Seeding", () => {
   describe("Struggling profile placement", () => {
     it("places struggling student within ±1 of expected frontier", async () => {
       const user = await seedUser({ id: "struggling-test", birthYear: 2020 });
-      const { subjectId } = await seedGradedTopics();
+      const { disciplineId } = await seedGradedTopics();
 
-      const result = await runDiagnostic(user.id, subjectId, (grade) => {
+      const result = await runDiagnostic(user.id, disciplineId, (grade) => {
         // Struggling: only correct at grade 0, wrong at everything else
         if (grade === 0) return `correct-${grade}`;
         return "wrong";
@@ -183,11 +182,11 @@ describe("Diagnostic Bounds & Presentation Seeding", () => {
   describe("MAX_QUESTIONS enforcement", () => {
     it("diagnostic terminates even if bounds haven't converged", async () => {
       const user = await seedUser({ id: "maxq-test", birthYear: 2012 });
-      const { subjectId } = await seedGradedTopics();
+      const { disciplineId } = await seedGradedTopics();
 
       // Alternating correct/incorrect to prevent convergence
       let toggle = true;
-      const result = await runDiagnostic(user.id, subjectId, (grade, num) => {
+      const result = await runDiagnostic(user.id, disciplineId, (grade, num) => {
         toggle = !toggle;
         return toggle ? `correct-${grade}` : "wrong";
       });
@@ -201,11 +200,11 @@ describe("Diagnostic Bounds & Presentation Seeding", () => {
   describe("Convergence confidence", () => {
     it("continues past MIN_QUESTIONS if bounds are wide", async () => {
       const user = await seedUser({ id: "converge-test", birthYear: 2012 });
-      const { subjectId } = await seedGradedTopics();
+      const { disciplineId } = await seedGradedTopics();
 
       // Alternate in a way that keeps bounds wide initially
       let callCount = 0;
-      const result = await runDiagnostic(user.id, subjectId, (grade, num) => {
+      const result = await runDiagnostic(user.id, disciplineId, (grade, num) => {
         callCount++;
         // Correct at low grades, wrong at high — should converge eventually
         if (grade <= 2) return `correct-${grade}`;
@@ -230,9 +229,9 @@ describe("Diagnostic Bounds & Presentation Seeding", () => {
         id: "pres-up-test",
         birthYear: currentYear - 6,
       });
-      const { subjectId } = await seedGradedTopics();
+      const { disciplineId } = await seedGradedTopics();
 
-      const result = await runDiagnostic(user.id, subjectId, (grade) => {
+      const result = await runDiagnostic(user.id, disciplineId, (grade) => {
         // Strong performer: correct through grade 4
         if (grade <= 4) return `correct-${grade}`;
         return "wrong";
@@ -241,10 +240,10 @@ describe("Diagnostic Bounds & Presentation Seeding", () => {
       expect(result.done).toBe(true);
 
       // Check presentation was seeded above primary (age-default for 6yo)
-      const presRow = await db.query.userSubjectPresentation.findFirst({
+      const presRow = await db.query.userDisciplinePresentation.findFirst({
         where: and(
-          eq(schema.userSubjectPresentation.userId, user.id),
-          eq(schema.userSubjectPresentation.subjectId, subjectId)
+          eq(schema.userDisciplinePresentation.userId, user.id),
+          eq(schema.userDisciplinePresentation.disciplineId, disciplineId)
         ),
       });
 
@@ -261,7 +260,7 @@ describe("Diagnostic Bounds & Presentation Seeding", () => {
         id: "pres-down-test",
         birthYear: currentYear - 14,
       });
-      const { subjectId } = await seedGradedTopics();
+      const { disciplineId } = await seedGradedTopics();
 
       // Add some prerequisite edges so the "prereq mastered but failed" logic fires
       await db.insert(schema.prerequisites).values([
@@ -273,7 +272,7 @@ describe("Diagnostic Bounds & Presentation Seeding", () => {
         { fromTopicId: "g1-t2", toTopicId: "g2-t2", strength: 1.0, type: "required" },
       ]);
 
-      const result = await runDiagnostic(user.id, subjectId, (grade) => {
+      const result = await runDiagnostic(user.id, disciplineId, (grade) => {
         // Correct at grade 0-1, but fails at grade 2+ despite prereqs being known
         if (grade <= 1) return `correct-${grade}`;
         return "wrong";
@@ -281,10 +280,10 @@ describe("Diagnostic Bounds & Presentation Seeding", () => {
 
       expect(result.done).toBe(true);
 
-      const presRow = await db.query.userSubjectPresentation.findFirst({
+      const presRow = await db.query.userDisciplinePresentation.findFirst({
         where: and(
-          eq(schema.userSubjectPresentation.userId, user.id),
-          eq(schema.userSubjectPresentation.subjectId, subjectId)
+          eq(schema.userDisciplinePresentation.userId, user.id),
+          eq(schema.userDisciplinePresentation.disciplineId, disciplineId)
         ),
       });
 

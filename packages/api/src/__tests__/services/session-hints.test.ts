@@ -3,7 +3,7 @@ import {
   applyMigrations,
   getTestDb,
   seedUser,
-  seedSubject,
+  seedDiscipline,
   seedTopic,
   seedAssessmentContent,
   seedInstructionalContent,
@@ -32,8 +32,8 @@ describe("Progressive Hint Reveal", () => {
 
   async function setupTopicWithHints(id: string, hints: string[]) {
     const db = getTestDb();
-    const subj = await seedSubject({ id: `${PREFIX}-subj-${id}` });
-    const topic = await seedTopic(subj.id, {
+    const disc = await seedDiscipline({ id: `${PREFIX}-subj-${id}` });
+    const topic = await seedTopic(disc.id, {
       id: `${PREFIX}-topic-${id}`,
       name: `Hint Topic ${id}`,
     });
@@ -56,7 +56,7 @@ describe("Progressive Hint Reveal", () => {
     await seedInstructionalContent(topic.id, {
       id: `${PREFIX}-ic-${id}`,
     });
-    return { subj, topic, db };
+    return { disc, topic, db };
   }
 
   describe("pretest phase — no hints initially", () => {

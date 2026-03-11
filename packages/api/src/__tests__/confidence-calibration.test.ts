@@ -7,7 +7,6 @@ import {
   resetDb,
   seedUser,
   seedDiscipline,
-  seedSubject,
   seedTopic,
   seedAssessmentContent,
   seedReviewLog,
@@ -33,15 +32,14 @@ describe("confidence calibration", () => {
     await db.delete(schema.userTopicState);
     await db.delete(schema.assessmentContent);
     await db.delete(schema.topics);
-    await db.delete(schema.subjects);
     await db.delete(schema.disciplines);
     await db.delete(schema.users);
     srs = createSRSService(db);
 
     const user = await seedUser();
     userId = user.id;
-    const subject = await seedSubject();
-    const topic = await seedTopic(subject.id, { id: "addition" });
+    const discipline = await seedDiscipline();
+    const topic = await seedTopic(discipline.id, { id: "addition" });
     topicId = topic.id;
     await seedAssessmentContent(topicId);
   });

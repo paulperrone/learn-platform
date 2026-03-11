@@ -4,7 +4,6 @@ import {
   applyMigrations,
   resetDb,
   seedUser,
-  seedSubject,
   seedTopic,
   seedDiscipline,
   seedPrerequisite,
@@ -29,8 +28,7 @@ describe("spiral depth tracking in frontier", () => {
 
   it("context-layered: mastered topic re-enters frontier when depths remain", async () => {
     const disc = await seedDiscipline({ id: "history-spiral", progressionModel: "context-layered" });
-    const subj = await seedSubject({ id: "subj-spiral", disciplineId: disc.id });
-    const topic = await seedTopic(subj.id, { id: "topic-spiral-1" });
+    const topic = await seedTopic(disc.id, { id: "topic-spiral-1" });
     const user = await seedUser({});
 
     // Mark topic as started/mastered in user_topic_state
@@ -53,8 +51,7 @@ describe("spiral depth tracking in frontier", () => {
 
   it("context-layered: topic leaves frontier when all depths completed", async () => {
     const disc = await seedDiscipline({ id: "history-spiral-2", progressionModel: "context-layered" });
-    const subj = await seedSubject({ id: "subj-spiral-2", disciplineId: disc.id });
-    const topic = await seedTopic(subj.id, { id: "topic-spiral-all" });
+    const topic = await seedTopic(disc.id, { id: "topic-spiral-all" });
     const user = await seedUser({});
 
     // Mark topic as mastered
@@ -80,8 +77,7 @@ describe("spiral depth tracking in frontier", () => {
 
   it("mastery-gated: mastered topic does NOT re-enter frontier", async () => {
     const disc = await seedDiscipline({ id: "math-no-spiral", progressionModel: "mastery-gated" });
-    const subj = await seedSubject({ id: "subj-no-spiral", disciplineId: disc.id });
-    const topic = await seedTopic(subj.id, { id: "topic-no-spiral" });
+    const topic = await seedTopic(disc.id, { id: "topic-no-spiral" });
     const user = await seedUser({});
 
     // Mark mastered
@@ -101,9 +97,8 @@ describe("spiral depth tracking in frontier", () => {
 
   it("context-layered: unstarted topic with met required prereqs is in frontier", async () => {
     const disc = await seedDiscipline({ id: "history-prereq", progressionModel: "context-layered" });
-    const subj = await seedSubject({ id: "subj-prereq-cl", disciplineId: disc.id });
-    const prereqTopic = await seedTopic(subj.id, { id: "topic-prereq-base" });
-    const dependentTopic = await seedTopic(subj.id, { id: "topic-prereq-dep" });
+    const prereqTopic = await seedTopic(disc.id, { id: "topic-prereq-base" });
+    const dependentTopic = await seedTopic(disc.id, { id: "topic-prereq-dep" });
     const user = await seedUser({});
 
     await seedPrerequisite(prereqTopic.id, dependentTopic.id);

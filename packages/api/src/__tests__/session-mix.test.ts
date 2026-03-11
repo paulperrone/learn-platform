@@ -4,7 +4,7 @@ import {
   resetDb,
   getTestDb,
   seedUser,
-  seedSubject,
+  seedDiscipline,
   seedTopic,
   seedPrerequisite,
   seedUserTopicState,
@@ -30,34 +30,33 @@ describe("Session Mix - Interleaving and Review Balance", () => {
     await db.delete(schema.prerequisites);
     await db.delete(schema.assessmentContent);
     await db.delete(schema.topics);
-    await db.delete(schema.subjects);
     await db.delete(schema.users);
 
     user = await seedUser({ id: "mix-user" });
-    subjectCreated = false;
+    disciplineCreated = false;
   });
 
-  let subjectCreated = false;
-  let sharedSubject: Awaited<ReturnType<typeof seedSubject>>;
+  let disciplineCreated = false;
+  let sharedDiscipline: Awaited<ReturnType<typeof seedDiscipline>>;
 
-  async function getOrCreateSubject() {
-    if (!subjectCreated) {
-      sharedSubject = await seedSubject({ id: "math-test" });
-      subjectCreated = true;
+  async function getOrCreateDiscipline() {
+    if (!disciplineCreated) {
+      sharedDiscipline = await seedDiscipline({ id: "math-test" });
+      disciplineCreated = true;
     }
-    return sharedSubject;
+    return sharedDiscipline;
   }
 
   async function setupTopicsWithDueReviews(
     count: number,
     options: { strand?: string; mastered?: boolean } = {}
   ) {
-    const subject = await getOrCreateSubject();
+    const discipline = await getOrCreateDiscipline();
     const pastDue = new Date(Date.now() - 86400000).toISOString();
     const topics = [];
 
     for (let i = 0; i < count; i++) {
-      const topic = await seedTopic(subject.id, {
+      const topic = await seedTopic(discipline.id, {
         id: `topic-${options.strand ?? "a"}-${i}`,
         depth: i,
       });
@@ -81,11 +80,11 @@ describe("Session Mix - Interleaving and Review Balance", () => {
       await seedPrerequisite(topics[i].id, topics[i + 1].id);
     }
 
-    return { subject, topics };
+    return { discipline, topics };
   }
 
   async function setupFrontierTopics(
-    subjectId: string,
+    disciplineId: string,
     count: number,
     options: { prefix?: string; depthStart?: number } = {}
   ) {
@@ -94,7 +93,7 @@ describe("Session Mix - Interleaving and Review Balance", () => {
     const depthStart = options.depthStart ?? 0;
 
     for (let i = 0; i < count; i++) {
-      const topic = await seedTopic(subjectId, {
+      const topic = await seedTopic(disciplineId, {
         id: `${prefix}-${i}`,
         depth: depthStart + i,
       });
@@ -108,10 +107,10 @@ describe("Session Mix - Interleaving and Review Balance", () => {
   describe("new-topic minimum guarantee", () => {
     it("includes at least 2 new topics even with large review queue", async () => {
       // 15 topics due for review — much more than a 10-item session can fit
-      const { subject } = await setupTopicsWithDueReviews(15);
+      const { discipline } = await setupTopicsWithDueReviews(15);
 
       // Add frontier topics (no user state = available as new)
-      await setupFrontierTopics(subject.id, 5, { prefix: "frontier", depthStart: 20 });
+      await setupFrontierTopics(discipline.id, 5, { prefix: "frontier", depthStart: 20 });
 
       const srs = createSRSService(db);
       const mix = await srs.getSessionMix(user.id, 10);
@@ -120,10 +119,10 @@ describe("Session Mix - Interleaving and Review Balance", () => {
     });
 
     it("handles case where fewer than 2 frontier topics exist", async () => {
-      const { subject } = await setupTopicsWithDueReviews(15);
+      const { discipline } = await setupTopicsWithDueReviews(15);
 
       // Only 1 frontier topic available
-      await setupFrontierTopics(subject.id, 1, { prefix: "frontier", depthStart: 20 });
+      await setupFrontierTopics(discipline.id, 1, { prefix: "frontier", depthStart: 20 });
 
       const srs = createSRSService(db);
       const mix = await srs.getSessionMix(user.id, 10);
@@ -136,11 +135,11 @@ describe("Session Mix - Interleaving and Review Balance", () => {
   describe("review cap at 70%", () => {
     it("caps total reviews (warmup + main) at 70% of session size", async () => {
       // 20 due topics and some mastered for warmup
-      const { subject } = await setupTopicsWithDueReviews(10);
+      const { discipline } = await setupTopicsWithDueReviews(10);
       await setupTopicsWithDueReviews(5, { strand: "b", mastered: true });
 
       // Add frontier topics
-      await setupFrontierTopics(subject.id, 5, { prefix: "frontier", depthStart: 20 });
+      await setupFrontierTopics(discipline.id, 5, { prefix: "frontier", depthStart: 20 });
 
       const srs = createSRSService(db);
       const mix = await srs.getSessionMix(user.id, 10);
@@ -150,8 +149,8 @@ describe("Session Mix - Interleaving and Review Balance", () => {
     });
 
     it("review cap works with different session sizes", async () => {
-      const { subject } = await setupTopicsWithDueReviews(20);
-      await setupFrontierTopics(subject.id, 10, { prefix: "frontier", depthStart: 25 });
+      const { discipline } = await setupTopicsWithDueReviews(20);
+      await setupFrontierTopics(discipline.id, 10, { prefix: "frontier", depthStart: 25 });
 
       const srs = createSRSService(db);
       const mix = await srs.getSessionMix(user.id, 15);
@@ -164,10 +163,10 @@ describe("Session Mix - Interleaving and Review Balance", () => {
   describe("warmup reduction", () => {
     it("reduces warmup to 1 when review queue exceeds main slots", async () => {
       // Many due topics + mastered topics for warmup pool
-      const { subject } = await setupTopicsWithDueReviews(5, { mastered: true });
+      const { discipline } = await setupTopicsWithDueReviews(5, { mastered: true });
       await setupTopicsWithDueReviews(10, { strand: "b" });
 
-      await setupFrontierTopics(subject.id, 5, { prefix: "frontier", depthStart: 20 });
+      await setupFrontierTopics(discipline.id, 5, { prefix: "frontier", depthStart: 20 });
 
       const srs = createSRSService(db);
       const mix = await srs.getSessionMix(user.id, 10);
@@ -179,9 +178,9 @@ describe("Session Mix - Interleaving and Review Balance", () => {
 
     it("allows full warmup when review queue is small", async () => {
       // Only 3 due topics — small queue
-      const { subject } = await setupTopicsWithDueReviews(3, { mastered: true });
+      const { discipline } = await setupTopicsWithDueReviews(3, { mastered: true });
 
-      await setupFrontierTopics(subject.id, 5, { prefix: "frontier", depthStart: 10 });
+      await setupFrontierTopics(discipline.id, 5, { prefix: "frontier", depthStart: 10 });
 
       const srs = createSRSService(db);
       const mix = await srs.getSessionMix(user.id, 10);
@@ -194,21 +193,21 @@ describe("Session Mix - Interleaving and Review Balance", () => {
 
   describe("strand adjacency", () => {
     it("avoids consecutive same-strand items in main mix", async () => {
-      const subject = await seedSubject({ id: "math-test" });
+      const discipline = await seedDiscipline({ id: "math-test" });
 
       // Create two distinct strands
       const pastDue = new Date(Date.now() - 86400000).toISOString();
 
       // Strand 1: counting chain
-      const counting = await seedTopic(subject.id, { id: "counting", depth: 0 });
-      const add5 = await seedTopic(subject.id, { id: "add-5", depth: 1 });
-      const add10 = await seedTopic(subject.id, { id: "add-10", depth: 2 });
+      const counting = await seedTopic(discipline.id, { id: "counting", depth: 0 });
+      const add5 = await seedTopic(discipline.id, { id: "add-5", depth: 1 });
+      const add10 = await seedTopic(discipline.id, { id: "add-10", depth: 2 });
       await seedPrerequisite(counting.id, add5.id);
       await seedPrerequisite(add5.id, add10.id);
 
       // Strand 2: geometry chain
-      const shapes = await seedTopic(subject.id, { id: "shapes", depth: 0 });
-      const angles = await seedTopic(subject.id, { id: "angles", depth: 1 });
+      const shapes = await seedTopic(discipline.id, { id: "shapes", depth: 0 });
+      const angles = await seedTopic(discipline.id, { id: "angles", depth: 1 });
       await seedPrerequisite(shapes.id, angles.id);
 
       // Make all due for review

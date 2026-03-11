@@ -3,7 +3,7 @@ import {
   applyMigrations,
   getTestDb,
   seedUser,
-  seedSubject,
+  seedDiscipline,
   seedTopic,
   seedAssessmentContent,
   seedInstructionalContent,
@@ -28,8 +28,8 @@ describe("Cognitive Demand Mixing", () => {
 
   async function setupTopicWithDemands(id: string, demands: CognitiveDemand[]) {
     const db = getTestDb();
-    const subj = await seedSubject({ id: `${PREFIX}-subj-${id}` });
-    const topic = await seedTopic(subj.id, {
+    const disc = await seedDiscipline({ id: `${PREFIX}-subj-${id}` });
+    const topic = await seedTopic(disc.id, {
       id: `${PREFIX}-topic-${id}`,
       name: `Demand Topic ${id}`,
     });
@@ -50,7 +50,7 @@ describe("Cognitive Demand Mixing", () => {
       id: `${PREFIX}-ic-${id}`,
     });
 
-    return { subj, topic, db };
+    return { disc, topic, db };
   }
 
   describe("cognitiveDemand field propagation", () => {
@@ -127,8 +127,8 @@ describe("Cognitive Demand Mixing", () => {
   describe("null cognitiveDemand treated as procedural", () => {
     it("treats problems without cognitiveDemand as procedural", async () => {
       const db = getTestDb();
-      const subj = await seedSubject({ id: `${PREFIX}-subj-null` });
-      const topic = await seedTopic(subj.id, {
+      const disc = await seedDiscipline({ id: `${PREFIX}-subj-null` });
+      const topic = await seedTopic(disc.id, {
         id: `${PREFIX}-topic-null`,
         name: "Null Demand Topic",
       });

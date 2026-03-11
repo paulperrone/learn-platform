@@ -4,12 +4,12 @@ import { useApi, withErrorToast } from "@/composables/useApi";
 import { useAuth } from "@/composables/useAuth";
 import { useMeta } from "@/composables/useMeta";
 import { useI18n } from "vue-i18n";
-import type { Subject } from "@learn/shared";
+import type { Discipline } from "@learn/shared";
 
 const api = useApi();
 const auth = useAuth();
 const { t } = useI18n();
-const subjects = ref<Subject[]>([]);
+const subjects = ref<(Discipline & { gradeRange?: string; topicCount?: number })[]>([]);
 const loading = ref(true);
 const error = ref(false);
 const subjectProgress = ref<Map<string, { mastered: number; total: number; progress: number }>>(new Map());
@@ -95,7 +95,7 @@ function gradeLabel(range: string) {
             {{ subject.name }}
           </h2>
           <span class="text-xs font-medium bg-blue-50 text-blue-700 px-2 py-1 rounded-full whitespace-nowrap">
-            {{ gradeLabel(subject.gradeRange) }}
+            {{ gradeLabel(subject.gradeRange ?? '') }}
           </span>
         </div>
         <p class="text-gray-600 text-sm mb-4">{{ subject.description }}</p>

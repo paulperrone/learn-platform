@@ -655,38 +655,28 @@ export function createSRSService(db: DB, fireDiagnostic?: FireDiagnosticConfig) 
 
       // --- Stretch: context-layered disciplines only ---
       let stretchItems: MixItem[] = [];
-      const subjectIds = [...new Set(frontier.topics.map((t) => t.subjectId))];
-      if (subjectIds.length > 0) {
-        const subjects = await db
+      const disciplineIds = [...new Set(frontier.topics.map((t) => t.disciplineId))];
+      if (disciplineIds.length > 0) {
+        const discs = await db
           .select()
-          .from(schema.subjects)
-          .where(inArray(schema.subjects.id, subjectIds));
-        const discIds = [...new Set(subjects.map((s) => s.disciplineId))];
-        if (discIds.length > 0) {
-          const discs = await db
-            .select()
-            .from(schema.disciplines)
-            .where(inArray(schema.disciplines.id, discIds));
-          const contextLayeredDiscIds = new Set(
-            discs.filter((d) => d.progressionModel === "context-layered").map((d) => d.id)
-          );
-          const contextLayeredSubjectIds = new Set(
-            subjects.filter((s) => contextLayeredDiscIds.has(s.disciplineId)).map((s) => s.id)
-          );
+          .from(schema.disciplines)
+          .where(inArray(schema.disciplines.id, disciplineIds));
+        const contextLayeredDiscIds = new Set(
+          discs.filter((d) => d.progressionModel === "context-layered").map((d) => d.id)
+        );
 
-          if (contextLayeredSubjectIds.size > 0) {
-            const stretchCandidates = frontier.topics.filter((t) =>
-              contextLayeredSubjectIds.has(t.subjectId)
-            );
-            // Leave at least 3 slots for main after warmup + stretch
-            const maxStretch = Math.max(0, count - warmupCount - 3);
-            const stretchCount = Math.min(stretchCandidates.length, 2, maxStretch);
-            stretchItems = stretchCandidates.slice(0, stretchCount).map((t) => ({
-              topicId: t.id,
-              type: "review" as const, // single question, no full learning loop
-              blendRole: "stretch" as const,
-            }));
-          }
+        if (contextLayeredDiscIds.size > 0) {
+          const stretchCandidates = frontier.topics.filter((t) =>
+            contextLayeredDiscIds.has(t.disciplineId)
+          );
+          // Leave at least 3 slots for main after warmup + stretch
+          const maxStretch = Math.max(0, count - warmupCount - 3);
+          const stretchCount = Math.min(stretchCandidates.length, 2, maxStretch);
+          stretchItems = stretchCandidates.slice(0, stretchCount).map((t) => ({
+            topicId: t.id,
+            type: "review" as const, // single question, no full learning loop
+            blendRole: "stretch" as const,
+          }));
         }
       }
       const stretchTopicIds = new Set(stretchItems.map((s) => s.topicId));

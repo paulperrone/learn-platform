@@ -4,7 +4,7 @@ import {
   request,
   json,
   seedUser,
-  seedSubject,
+  seedDiscipline,
   seedTopic,
   seedAssessmentContent,
   seedInstructionalContent,
@@ -20,11 +20,11 @@ beforeAll(async () => {
   await applyMigrations();
   // Seed once for all tests
   if (!seeded) {
-    const subj = await seedSubject({ id: "diag-subj", name: "Math" });
-    const t1 = await seedTopic(subj.id, { id: "diag-t1", name: "Counting", depth: 0, gradeLevel: 0 });
-    const t2 = await seedTopic(subj.id, { id: "diag-t2", name: "Addition", depth: 1, gradeLevel: 1 });
-    const t3 = await seedTopic(subj.id, { id: "diag-t3", name: "Subtraction", depth: 1, gradeLevel: 1 });
-    const t4 = await seedTopic(subj.id, { id: "diag-t4", name: "Multiplication", depth: 2, gradeLevel: 2 });
+    const disc = await seedDiscipline({ id: "diag-disc", name: "Math" });
+    const t1 = await seedTopic(disc.id, { id: "diag-t1", name: "Counting", depth: 0, gradeLevel: 0 });
+    const t2 = await seedTopic(disc.id, { id: "diag-t2", name: "Addition", depth: 1, gradeLevel: 1 });
+    const t3 = await seedTopic(disc.id, { id: "diag-t3", name: "Subtraction", depth: 1, gradeLevel: 1 });
+    const t4 = await seedTopic(disc.id, { id: "diag-t4", name: "Multiplication", depth: 2, gradeLevel: 2 });
     await seedPrerequisite(t1.id, t2.id);
     await seedPrerequisite(t1.id, t3.id);
     await seedPrerequisite(t2.id, t4.id);
@@ -93,7 +93,7 @@ describe("diagnostic endpoints", () => {
     const res = await request("/api/learn/diagnostic/start", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ anonymousToken: token, subjectId: "diag-subj", isTaste: true }),
+      body: JSON.stringify({ anonymousToken: token, disciplineId: "diag-disc", isTaste: true }),
     });
 
     expect(res.status).toBe(200);
@@ -111,7 +111,7 @@ describe("diagnostic endpoints", () => {
     const startRes = await request("/api/learn/diagnostic/start", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ anonymousToken: token, subjectId: "diag-subj", isTaste: true }),
+      body: JSON.stringify({ anonymousToken: token, disciplineId: "diag-disc", isTaste: true }),
     });
     const { sessionId, question } = await json<{ sessionId: string; question: any }>(startRes);
 
@@ -134,7 +134,7 @@ describe("diagnostic endpoints", () => {
     const startRes = await request("/api/learn/diagnostic/start", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ anonymousToken: token, subjectId: "diag-subj", isTaste: true }),
+      body: JSON.stringify({ anonymousToken: token, disciplineId: "diag-disc", isTaste: true }),
     });
     let { sessionId, question } = await json<{ sessionId: string; question: any }>(startRes);
 
@@ -179,7 +179,7 @@ describe("diagnostic endpoints", () => {
     const res = await request("/api/learn/diagnostic/start", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ userId: user.id, subjectId: "diag-subj" }),
+      body: JSON.stringify({ userId: user.id, disciplineId: "diag-disc" }),
     });
 
     expect(res.status).toBe(200);
@@ -187,7 +187,7 @@ describe("diagnostic endpoints", () => {
     expect(body.sessionId).toBeDefined();
   });
 
-  it("requires subjectId", async () => {
+  it("requires disciplineId", async () => {
     const res = await request("/api/learn/diagnostic/start", {
       method: "POST",
       headers: { "Content-Type": "application/json" },

@@ -4,7 +4,7 @@ import {
   applyMigrations,
   resetDb,
   seedUser,
-  seedSubject,
+  seedDiscipline,
   seedTopic,
   seedPrerequisite,
   seedUserTopicState,
@@ -14,7 +14,7 @@ import { eq } from "drizzle-orm";
 import * as schema from "../../db/schema.js";
 
 /**
- * Test: GET /graph/:subjectId/user-state/:userId
+ * Test: GET /graph/:disciplineId/user-state/:userId
  * Tests the endpoint logic directly via the graph service + DB queries
  * (same logic as the route handler).
  */
@@ -31,15 +31,15 @@ describe("graph user-state endpoint logic", () => {
   async function setupGraph() {
     const db = getTestDb();
     const user = await seedUser();
-    const subject = await seedSubject({ id: "math-test" });
+    const discipline = await seedDiscipline({ id: "math-test" });
 
-    await seedTopic(subject.id, { id: "counting", name: "Counting", depth: 0 });
-    await seedTopic(subject.id, { id: "addition", name: "Addition", depth: 1 });
-    await seedTopic(subject.id, { id: "multiplication", name: "Multiplication", depth: 2 });
+    await seedTopic(discipline.id, { id: "counting", name: "Counting", depth: 0 });
+    await seedTopic(discipline.id, { id: "addition", name: "Addition", depth: 1 });
+    await seedTopic(discipline.id, { id: "multiplication", name: "Multiplication", depth: 2 });
     await seedPrerequisite("counting", "addition");
     await seedPrerequisite("addition", "multiplication");
 
-    return { db, user, subject };
+    return { db, user, discipline };
   }
 
   it("returns all topics with status for an authenticated user", async () => {
@@ -50,7 +50,7 @@ describe("graph user-state endpoint logic", () => {
     await seedUserTopicState(user.id, "counting", { mastered: true, reps: 5, stability: 10 });
     await seedUserTopicState(user.id, "addition", { mastered: false, reps: 2, stability: 3 });
 
-    const topics = await graph.getSubjectTopics("math-test");
+    const topics = await graph.getDisciplineTopics("math-test");
     const states = await db
       .select()
       .from(schema.userTopicState)
@@ -83,7 +83,7 @@ describe("graph user-state endpoint logic", () => {
     const { db, user } = await setupGraph();
     const graph = createGraphService(db);
 
-    const topics = await graph.getSubjectTopics("math-test");
+    const topics = await graph.getDisciplineTopics("math-test");
     const states = await db
       .select()
       .from(schema.userTopicState)
@@ -117,7 +117,7 @@ describe("graph user-state endpoint logic", () => {
     await seedUserTopicState(user.id, "counting", { mastered: true });
     await seedUserTopicState(user.id, "addition", { mastered: true });
 
-    const topics = await graph.getSubjectTopics("math-test");
+    const topics = await graph.getDisciplineTopics("math-test");
     const states = await db
       .select()
       .from(schema.userTopicState)

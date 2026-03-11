@@ -68,11 +68,9 @@ export function createGraphService(db: DB) {
       // Get all prerequisites
       const allPrereqs = await db.select().from(schema.prerequisites);
 
-      // Get discipline progression models for subjects
-      const subjectRows = await db.select({ id: schema.subjects.id, disciplineId: schema.subjects.disciplineId }).from(schema.subjects);
+      // Get discipline progression models
       const discRows = await db.select({ id: schema.disciplines.id, progressionModel: schema.disciplines.progressionModel }).from(schema.disciplines);
       const discModelMap = new Map(discRows.map((d) => [d.id, d.progressionModel]));
-      const subjectDiscMap = new Map(subjectRows.map((s) => [s.id, s.disciplineId]));
 
       // Build prereq map: topicId → list of { fromTopicId, type }
       const prereqMap = new Map<string, { fromTopicId: string; type: string }[]>();
@@ -82,8 +80,8 @@ export function createGraphService(db: DB) {
         prereqMap.set(p.toTopicId, list);
       }
 
-      // Build topic → subject map
-      const topicSubjectMap = new Map(allTopics.map((t) => [t.id, t.subjectId]));
+      // Build topic → discipline map
+      const topicDisciplineMap = new Map(allTopics.map((t) => [t.id, t.disciplineId]));
 
       // For context-layered spiral: load depth completion data
       const depthRows = await db
@@ -107,8 +105,7 @@ export function createGraphService(db: DB) {
 
       // Frontier: gating depends on discipline progression model
       const frontier = allTopics.filter((topic) => {
-        const disciplineId = subjectDiscMap.get(topic.subjectId);
-        const model = disciplineId ? discModelMap.get(disciplineId) : "mastery-gated";
+        const model = topic.disciplineId ? discModelMap.get(topic.disciplineId) : "mastery-gated";
 
         if (model === "context-layered") {
           // Context-layered spiral: topic is in frontier if:
@@ -299,19 +296,19 @@ export function createGraphService(db: DB) {
 
     /**
      * Validate that the prerequisite graph is a DAG (no cycles).
-     * When subjectId is provided, validates only within that subject (ignoring cross-subject edges).
-     * When subjectId is omitted, validates the full graph across all subjects,
-     * including cross-subject prerequisite edges.
+     * When disciplineId is provided, validates only within that discipline (ignoring cross-discipline edges).
+     * When disciplineId is omitted, validates the full graph across all disciplines,
+     * including cross-discipline prerequisite edges.
      * Returns { valid: true } or { valid: false, cycle: string[] }.
      */
-    async validateDAG(subjectId?: string) {
-      const subjectTopics = subjectId
+    async validateDAG(disciplineId?: string) {
+      const disciplineTopics = disciplineId
         ? await db
             .select({ id: schema.topics.id })
             .from(schema.topics)
-            .where(eq(schema.topics.subjectId, subjectId))
+            .where(eq(schema.topics.disciplineId, disciplineId))
         : await db.select({ id: schema.topics.id }).from(schema.topics);
-      const topicIds = new Set(subjectTopics.map((t) => t.id));
+      const topicIds = new Set(disciplineTopics.map((t) => t.id));
 
       const allPrereqs = await db.select().from(schema.prerequisites);
       const adjacency = new Map<string, string[]>();
@@ -362,12 +359,12 @@ export function createGraphService(db: DB) {
      * Compute depth for each topic via topological sort.
      * Depth = longest path from any root (no prereqs) to this topic.
      */
-    async computeDepths(subjectId: string) {
-      const subjectTopics = await db
+    async computeDepths(disciplineId: string) {
+      const disciplineTopics = await db
         .select()
         .from(schema.topics)
-        .where(eq(schema.topics.subjectId, subjectId));
-      const topicIds = new Set(subjectTopics.map((t) => t.id));
+        .where(eq(schema.topics.disciplineId, disciplineId));
+      const topicIds = new Set(disciplineTopics.map((t) => t.id));
 
       const allPrereqs = await db.select().from(schema.prerequisites);
 
@@ -413,7 +410,7 @@ export function createGraphService(db: DB) {
       }
 
       // Update depths in database
-      for (const topic of subjectTopics) {
+      for (const topic of disciplineTopics) {
         const depth = depths.get(topic.id) ?? 0;
         if (depth !== topic.depth) {
           await db
@@ -438,31 +435,14 @@ export function createGraphService(db: DB) {
     },
 
     /**
-     * Get all topics for a subject, ordered by depth.
+     * Get all topics for a discipline, ordered by depth.
      */
-    async getSubjectTopics(subjectId: string) {
+    async getDisciplineTopics(disciplineId: string) {
       return db
         .select()
         .from(schema.topics)
-        .where(eq(schema.topics.subjectId, subjectId))
+        .where(eq(schema.topics.disciplineId, disciplineId))
         .orderBy(schema.topics.depth);
-    },
-
-    /**
-     * Get all subjects with discipline info.
-     */
-    async getSubjects() {
-      return db
-        .select({
-          id: schema.subjects.id,
-          name: schema.subjects.name,
-          description: schema.subjects.description,
-          gradeRange: schema.subjects.gradeRange,
-          topicCount: schema.subjects.topicCount,
-          disciplineId: schema.subjects.disciplineId,
-          createdAt: schema.subjects.createdAt,
-        })
-        .from(schema.subjects);
     },
 
     /**
@@ -473,8 +453,36 @@ export function createGraphService(db: DB) {
     },
 
     /**
+     * Get all collections, optionally filtered by disciplineId.
+     */
+    async getCollections(disciplineId?: string) {
+      if (disciplineId) {
+        return db
+          .select()
+          .from(schema.collections)
+          .where(eq(schema.collections.primaryDisciplineId, disciplineId))
+          .orderBy(schema.collections.displayOrder);
+      }
+      return db
+        .select()
+        .from(schema.collections)
+        .orderBy(schema.collections.displayOrder);
+    },
+
+    /**
+     * Get topics in a collection via the join table.
+     */
+    async getCollectionTopics(collectionId: string) {
+      return db
+        .select()
+        .from(schema.collectionTopics)
+        .where(eq(schema.collectionTopics.collectionId, collectionId))
+        .orderBy(schema.collectionTopics.sortOrder);
+    },
+
+    /**
      * Get strand assignments for topics from the DB (imported from graph.json).
-     * Strands are prefixed with subject ID for cross-subject uniqueness.
+     * Strands are prefixed with discipline ID for cross-discipline uniqueness.
      * Falls back to topic ID itself if no strand is assigned.
      */
     async getTopicStrands(topicIds: string[]): Promise<Map<string, string>> {
@@ -485,7 +493,7 @@ export function createGraphService(db: DB) {
       // Batch fetch all requested topics
       const allTopics = await db.select({
         id: schema.topics.id,
-        subjectId: schema.topics.subjectId,
+        disciplineId: schema.topics.disciplineId,
         strand: schema.topics.strand,
       }).from(schema.topics);
 
@@ -494,7 +502,7 @@ export function createGraphService(db: DB) {
       for (const topicId of topicIds) {
         const topic = topicLookup.get(topicId);
         if (topic?.strand) {
-          strandMap.set(topicId, `${topic.subjectId}:${topic.strand}`);
+          strandMap.set(topicId, `${topic.disciplineId}:${topic.strand}`);
         } else {
           strandMap.set(topicId, topicId); // fallback
         }
