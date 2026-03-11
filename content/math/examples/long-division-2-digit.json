@@ -1,0 +1,64 @@
+[
+  {
+    "id": "long-division-2-digit-ex1",
+    "topicId": "long-division-2-digit",
+    "title": "Long Division by a 2-Digit Divisor",
+    "steps": [
+      {
+        "subgoalLabel": "Set up",
+        "instruction": "Divide 672 ÷ 21.",
+        "work": "Write 21 outside and 672 inside the division bracket.",
+        "explanation": "With a 2-digit divisor, we often need to estimate quotient digits."
+      },
+      {
+        "subgoalLabel": "Estimate the first quotient digit",
+        "instruction": "How many times does 21 go into 67?",
+        "work": "Estimate: 20 × 3 = 60, 20 × 4 = 80. Try 3: 21 × 3 = 63. 67 - 63 = 4.",
+        "explanation": "Round the divisor to the nearest ten (20) to help estimate. 21 × 3 = 63 fits; 21 × 4 = 84 is too big."
+      },
+      {
+        "subgoalLabel": "Bring down and divide again",
+        "instruction": "Bring down the 2. How many times does 21 go into 42?",
+        "work": "Bring down 2 → 42. 21 × 2 = 42. 42 - 42 = 0.",
+        "explanation": "21 goes into 42 exactly 2 times."
+      },
+      {
+        "subgoalLabel": "State the answer",
+        "instruction": "Write the final quotient.",
+        "work": "672 ÷ 21 = 32.",
+        "explanation": "Check: 32 × 21 = 672 ✓."
+      }
+    ]
+  },
+  {
+    "id": "long-division-2-digit-ex2",
+    "topicId": "long-division-2-digit",
+    "title": "Adjusting an Estimate in 2-Digit Long Division",
+    "steps": [
+      {
+        "subgoalLabel": "Set up",
+        "instruction": "Divide 851 ÷ 23.",
+        "work": "Write 23 outside and 851 inside.",
+        "explanation": "Sometimes your first estimate is too high or too low. That is normal — just adjust."
+      },
+      {
+        "subgoalLabel": "Estimate first digit",
+        "instruction": "How many times does 23 go into 85?",
+        "work": "Estimate with 20: 85 ÷ 20 ≈ 4. Try 4: 23 × 4 = 92. Too big! Try 3: 23 × 3 = 69. 85 - 69 = 16.",
+        "explanation": "Our first estimate of 4 was too high (92 > 85), so we adjust down to 3."
+      },
+      {
+        "subgoalLabel": "Bring down and divide",
+        "instruction": "Bring down 1. How many times does 23 go into 161?",
+        "work": "Bring down 1 → 161. Estimate: 160 ÷ 20 = 8. Try 7: 23 × 7 = 161. Exact fit!",
+        "explanation": "23 × 7 = 161 with no remainder."
+      },
+      {
+        "subgoalLabel": "State the answer",
+        "instruction": "Write the final quotient.",
+        "work": "851 ÷ 23 = 37.",
+        "explanation": "Check: 37 × 23 = 851 ✓. Adjusting estimates is a normal part of 2-digit long division."
+      }
+    ]
+  }
+]

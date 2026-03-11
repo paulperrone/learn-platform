@@ -1,0 +1,197 @@
+[
+  {
+    "id": "divide-by-2-5-10-p1",
+    "topicId": "divide-by-2-5-10",
+    "difficulty": "easy",
+    "question": "14 ÷ 2 = ?",
+    "answer": "7",
+    "hints": [
+      "Think: what number doubled is 14?",
+      "Half of 14 is the answer."
+    ],
+    "solution": "14 ÷ 2 = 7. Half of 14 is 7.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "divide-by-2-5-10-p2",
+    "topicId": "divide-by-2-5-10",
+    "difficulty": "easy",
+    "question": "25 ÷ 5 = ?",
+    "answer": "5",
+    "hints": [
+      "Count by 5s up to 25.",
+      "5, 10, 15, 20, 25 — how many counts?"
+    ],
+    "solution": "25 ÷ 5 = 5. Five groups of 5 make 25.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "divide-by-2-5-10-p3",
+    "topicId": "divide-by-2-5-10",
+    "difficulty": "easy",
+    "question": "40 ÷ 10 = ?",
+    "answer": "4",
+    "hints": [
+      "Dividing by 10 removes the zero at the end.",
+      "How many tens are in 40?"
+    ],
+    "solution": "40 ÷ 10 = 4. There are 4 tens in 40.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "divide-by-2-5-10-p4",
+    "topicId": "divide-by-2-5-10",
+    "difficulty": "easy",
+    "question": "18 ÷ 2 = ?",
+    "answer": "9",
+    "hints": [
+      "What is half of 18?",
+      "Think: 9 + 9 = 18."
+    ],
+    "solution": "18 ÷ 2 = 9. Half of 18 is 9.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "divide-by-2-5-10-p5",
+    "topicId": "divide-by-2-5-10",
+    "difficulty": "easy",
+    "question": "30 ÷ 5 = ?",
+    "answer": "6",
+    "hints": [
+      "Count by 5s: 5, 10, 15, 20, 25, 30.",
+      "How many fives are in 30?"
+    ],
+    "solution": "30 ÷ 5 = 6. There are 6 groups of 5 in 30.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "divide-by-2-5-10-p6",
+    "topicId": "divide-by-2-5-10",
+    "difficulty": "medium",
+    "question": "A bag has 45 marbles shared equally between 5 friends. How many marbles does each friend get?",
+    "answer": "9",
+    "hints": [
+      "Divide 45 by 5.",
+      "Think: 5 × ? = 45."
+    ],
+    "solution": "45 ÷ 5 = 9. Each friend gets 9 marbles.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "divide-by-2-5-10-p7",
+    "topicId": "divide-by-2-5-10",
+    "difficulty": "medium",
+    "question": "There are 70 chairs arranged in rows of 10. How many rows are there?",
+    "answer": "7",
+    "hints": [
+      "Divide 70 by 10.",
+      "How many tens in 70?"
+    ],
+    "solution": "70 ÷ 10 = 7. There are 7 rows of 10 chairs.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "divide-by-2-5-10-p8",
+    "topicId": "divide-by-2-5-10",
+    "difficulty": "medium",
+    "question": "A box of 16 donuts is split equally between 2 classes. How many donuts does each class get?",
+    "answer": "8",
+    "hints": [
+      "Divide 16 by 2.",
+      "Half of 16 is the answer."
+    ],
+    "solution": "16 ÷ 2 = 8. Each class gets 8 donuts.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "divide-by-2-5-10-p9",
+    "topicId": "divide-by-2-5-10",
+    "difficulty": "medium",
+    "question": "90 ÷ 10 = ?",
+    "answer": "9",
+    "hints": [
+      "Dividing by 10 removes one zero.",
+      "How many groups of 10 fit in 90?"
+    ],
+    "solution": "90 ÷ 10 = 9. There are 9 tens in 90.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "divide-by-2-5-10-p10",
+    "topicId": "divide-by-2-5-10",
+    "difficulty": "medium",
+    "question": "A rope is 50 centimeters long. It is cut into pieces that are each 5 cm. How many pieces are there?",
+    "answer": "10",
+    "hints": [
+      "Divide 50 by 5.",
+      "Count by 5 up to 50."
+    ],
+    "solution": "50 ÷ 5 = 10. There are 10 pieces.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "divide-by-2-5-10-p11",
+    "topicId": "divide-by-2-5-10",
+    "difficulty": "hard",
+    "question": "Which gives a larger answer: 60 ÷ 5 or 60 ÷ 10? Type the division expression that gives the larger answer.",
+    "answer": "60 ÷ 5",
+    "hints": [
+      "Calculate both: 60 ÷ 5 and 60 ÷ 10.",
+      "Dividing by a smaller number gives a larger quotient."
+    ],
+    "solution": "60 ÷ 5 = 12 and 60 ÷ 10 = 6. Since 12 > 6, 60 ÷ 5 gives the larger answer. Dividing by a smaller divisor gives more per group.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "divide-by-2-5-10-p12",
+    "topicId": "divide-by-2-5-10",
+    "difficulty": "hard",
+    "question": "I am a number. When you divide me by 2, you get 7. When you divide me by 7, you get 2. What number am I?",
+    "answer": "14",
+    "hints": [
+      "If ? ÷ 2 = 7, then ? = 7 × 2.",
+      "Multiply to undo division."
+    ],
+    "solution": "The number is 14. Check: 14 ÷ 2 = 7 and 14 ÷ 7 = 2. ✓",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "divide-by-2-5-10-p13",
+    "topicId": "divide-by-2-5-10",
+    "difficulty": "hard",
+    "question": "True or false: dividing a number by 2 always gives the same result as multiplying it by 5 and then dividing by 10. Type 'true' or 'false'.",
+    "answer": "true",
+    "hints": [
+      "Try an example: start with 20. 20 ÷ 2 = 10. Now 20 × 5 ÷ 10 = 100 ÷ 10 = 10.",
+      "Multiplying by 5 and dividing by 10 is the same as dividing by 2."
+    ],
+    "solution": "True. Multiplying by 5 then dividing by 10 is the same as multiplying by 5/10 = 1/2, which is the same as dividing by 2.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "divide-by-2-5-10-p14",
+    "topicId": "divide-by-2-5-10",
+    "difficulty": "hard",
+    "question": "A store has 110 stickers. Half go to one shelf, and the rest are put in packs of 5. How many packs are made?",
+    "answer": "11",
+    "hints": [
+      "First find half of 110.",
+      "Then divide that half by 5."
+    ],
+    "solution": "Half of 110 = 110 ÷ 2 = 55. Then 55 ÷ 5 = 11 packs.",
+    "cognitiveDemand": "synthesis"
+  },
+  {
+    "id": "divide-by-2-5-10-p15",
+    "topicId": "divide-by-2-5-10",
+    "difficulty": "hard",
+    "question": "Fill in the blank: ___ ÷ 5 = 12. What is the missing number?",
+    "answer": "60",
+    "hints": [
+      "To find the missing dividend, multiply the quotient by the divisor.",
+      "12 × 5 = ?"
+    ],
+    "solution": "12 × 5 = 60, so 60 ÷ 5 = 12. The missing number is 60.",
+    "cognitiveDemand": "analysis"
+  }
+]

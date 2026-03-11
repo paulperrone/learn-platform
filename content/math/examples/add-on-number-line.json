@@ -1,0 +1,58 @@
+[
+  {
+    "id": "add-on-number-line-ex1",
+    "topicId": "add-on-number-line",
+    "title": "Adding on a Number Line: 5 + 4",
+    "steps": [
+      {
+        "subgoalLabel": "Find your starting point",
+        "instruction": "Start at 5 on the number line.",
+        "work": "Start at 5.",
+        "explanation": "The first number tells you where to start on the number line."
+      },
+      {
+        "subgoalLabel": "Jump forward",
+        "instruction": "Jump 4 spaces to the right. Count each jump.",
+        "work": "Jump 1: land on 6. Jump 2: land on 7. Jump 3: land on 8. Jump 4: land on 9.",
+        "explanation": "Moving right on a number line means adding. Each jump is +1."
+      },
+      {
+        "subgoalLabel": "Read where you landed",
+        "instruction": "What number did you land on?",
+        "work": "You landed on 9. So 5 + 4 = 9.",
+        "explanation": "The number where you stop is the sum."
+      }
+    ]
+  },
+  {
+    "id": "add-on-number-line-ex2",
+    "topicId": "add-on-number-line",
+    "title": "Using Two Jumps on a Number Line: 7 + 5",
+    "steps": [
+      {
+        "subgoalLabel": "Start at 7",
+        "instruction": "Place your marker at 7.",
+        "work": "Start at 7.",
+        "explanation": "Begin at the first addend."
+      },
+      {
+        "subgoalLabel": "Jump to 10 first",
+        "instruction": "How many spaces from 7 to 10?",
+        "work": "7 to 10 is 3 spaces. Jump 3.",
+        "explanation": "Jumping to 10 first makes the second jump easier (this is the make-ten idea on a number line)."
+      },
+      {
+        "subgoalLabel": "Jump the remaining amount",
+        "instruction": "You needed to jump 5 total. You jumped 3. How many more?",
+        "work": "5 − 3 = 2. Jump 2 more from 10. Land on 12.",
+        "explanation": "Breaking a jump into two smaller jumps through 10 is a useful strategy."
+      },
+      {
+        "subgoalLabel": "Write the answer",
+        "instruction": "Where did you land?",
+        "work": "7 + 5 = 12",
+        "explanation": "Two jumps: 7 → 10 → 12. This shows make-ten on a number line!"
+      }
+    ]
+  }
+]

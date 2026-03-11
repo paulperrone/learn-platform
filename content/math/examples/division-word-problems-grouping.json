@@ -1,0 +1,52 @@
+[
+  {
+    "id": "division-word-problems-grouping-ex1",
+    "topicId": "division-word-problems-grouping",
+    "title": "Grouping Word Problem — How Many Groups?",
+    "steps": [
+      {
+        "subgoalLabel": "Read and understand",
+        "instruction": "You have 36 oranges and put 9 in each bag. How many bags do you fill?",
+        "work": "Total: 36 oranges. Group size: 9 per bag. Unknown: number of bags (groups).",
+        "explanation": "This is a grouping problem — we know the size of each group and need to find how many groups."
+      },
+      {
+        "subgoalLabel": "Write the equation",
+        "instruction": "Set up the division.",
+        "work": "36 ÷ 9 = ?",
+        "explanation": "Divide the total by the group size to find the number of groups."
+      },
+      {
+        "subgoalLabel": "Solve and check",
+        "instruction": "Divide and verify.",
+        "work": "36 ÷ 9 = 4. Check: 4 × 9 = 36 ✓.",
+        "explanation": "You fill 4 bags."
+      }
+    ]
+  },
+  {
+    "id": "division-word-problems-grouping-ex2",
+    "topicId": "division-word-problems-grouping",
+    "title": "Telling Grouping Apart from Equal Sharing",
+    "steps": [
+      {
+        "subgoalLabel": "Compare two problems",
+        "instruction": "Problem A: 24 cookies shared equally among 6 friends. Problem B: 24 cookies, 6 in each box. How are they different?",
+        "work": "Both are 24 ÷ 6 = 4, but the meaning differs.",
+        "explanation": "The math is the same, but the interpretation is different."
+      },
+      {
+        "subgoalLabel": "Identify the type",
+        "instruction": "Which is sharing and which is grouping?",
+        "work": "Problem A: sharing — we know the number of groups (6 friends), finding per-group amount (4 each). Problem B: grouping — we know the per-group amount (6 per box), finding the number of groups (4 boxes).",
+        "explanation": "In sharing, you know how many people. In grouping, you know how many per group."
+      },
+      {
+        "subgoalLabel": "Key takeaway",
+        "instruction": "What is the same about both?",
+        "work": "Both use 24 ÷ 6 = 4. Division solves both types.",
+        "explanation": "Whether you are finding the number of groups or the size of each group, division gives you the answer."
+      }
+    ]
+  }
+]

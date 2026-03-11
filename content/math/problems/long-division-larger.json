@@ -1,0 +1,197 @@
+[
+  {
+    "id": "long-division-larger-p1",
+    "topicId": "long-division-larger",
+    "difficulty": "easy",
+    "question": "Use long division: 7500 ÷ 25 = ?",
+    "answer": "300",
+    "hints": [
+      "75 ÷ 25 = 3. Bring down 0 → 0 ÷ 25 = 0. Bring down 0 → 0 ÷ 25 = 0.",
+      "Answer: 300."
+    ],
+    "solution": "75 ÷ 25 = 3. Two zeros bring down to give 0 twice. Answer: 300. Check: 300 × 25 = 7500 ✓.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "long-division-larger-p2",
+    "topicId": "long-division-larger",
+    "difficulty": "easy",
+    "question": "Use long division: 10000 ÷ 50 = ?",
+    "answer": "200",
+    "hints": [
+      "100 ÷ 50 = 2. Bring down two zeros.",
+      "Answer: 200."
+    ],
+    "solution": "100 ÷ 50 = 2. Bring down 0 → 0 ÷ 50 = 0 twice. Answer: 200. Check: 200 × 50 = 10000 ✓.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "long-division-larger-p3",
+    "topicId": "long-division-larger",
+    "difficulty": "easy",
+    "question": "Use long division: 8640 ÷ 32 = ?",
+    "answer": "270",
+    "hints": [
+      "86 ÷ 32 = 2 R 22. Bring down 4 → 224 ÷ 32 = 7.",
+      "Bring down 0 → 0 ÷ 32 = 0."
+    ],
+    "solution": "86 ÷ 32 = 2 R 22. 224 ÷ 32 = 7. 0 ÷ 32 = 0. Answer: 270. Check: 270 × 32 = 8640 ✓.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "long-division-larger-p4",
+    "topicId": "long-division-larger",
+    "difficulty": "easy",
+    "question": "Use long division: 12600 ÷ 42 = ?",
+    "answer": "300",
+    "hints": [
+      "126 ÷ 42 = 3. Bring down two zeros.",
+      "Answer: 300."
+    ],
+    "solution": "126 ÷ 42 = 3. 00 remaining. Answer: 300. Check: 300 × 42 = 12600 ✓.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "long-division-larger-p5",
+    "topicId": "long-division-larger",
+    "difficulty": "easy",
+    "question": "Use long division: 9100 ÷ 13 = ?",
+    "answer": "700",
+    "hints": [
+      "91 ÷ 13 = 7. Bring down two zeros.",
+      "Answer: 700."
+    ],
+    "solution": "91 ÷ 13 = 7. 00 → answer: 700. Check: 700 × 13 = 9100 ✓.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "long-division-larger-p6",
+    "topicId": "long-division-larger",
+    "difficulty": "medium",
+    "question": "Use long division: 15625 ÷ 25 = ?",
+    "answer": "625",
+    "hints": [
+      "156 ÷ 25 = 6 R 6. Bring down 2 → 62 ÷ 25 = 2 R 12.",
+      "Bring down 5 → 125 ÷ 25 = 5."
+    ],
+    "solution": "156 ÷ 25 = 6 R 6. 62 ÷ 25 = 2 R 12. 125 ÷ 25 = 5. Answer: 625. Check: 625 × 25 = 15625 ✓.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "long-division-larger-p7",
+    "topicId": "long-division-larger",
+    "difficulty": "medium",
+    "question": "Use long division: 23184 ÷ 36 = ?",
+    "answer": "644",
+    "hints": [
+      "231 ÷ 36 = 6 R 15. Bring down 8 → 158 ÷ 36 = 4 R 14.",
+      "Bring down 4 → 144 ÷ 36 = 4."
+    ],
+    "solution": "231 ÷ 36 = 6 R 15. 158 ÷ 36 = 4 R 14. 144 ÷ 36 = 4. Answer: 644. Check: 644 × 36 = 23184 ✓.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "long-division-larger-p8",
+    "topicId": "long-division-larger",
+    "difficulty": "medium",
+    "question": "A farm produces 18720 eggs in a month. They pack 48 eggs per tray. How many trays?",
+    "answer": "390",
+    "hints": [
+      "187 ÷ 48 = 3 R 43. Bring down 2 → 432 ÷ 48 = 9.",
+      "Bring down 0 → 0 ÷ 48 = 0."
+    ],
+    "solution": "187 ÷ 48 = 3 R 43. 432 ÷ 48 = 9. 0 ÷ 48 = 0. Answer: 390 trays. Check: 390 × 48 = 18720 ✓.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "long-division-larger-p9",
+    "topicId": "long-division-larger",
+    "difficulty": "medium",
+    "question": "Use long division: 34560 ÷ 64 = ?",
+    "answer": "540",
+    "hints": [
+      "345 ÷ 64 = 5 R 25. Bring down 6 → 256 ÷ 64 = 4.",
+      "Bring down 0 → 0 ÷ 64 = 0."
+    ],
+    "solution": "345 ÷ 64 = 5 R 25. 256 ÷ 64 = 4. 0 ÷ 64 = 0. Answer: 540. Check: 540 × 64 = 34560 ✓.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "long-division-larger-p10",
+    "topicId": "long-division-larger",
+    "difficulty": "medium",
+    "question": "Use long division: 50400 ÷ 72 = ?",
+    "answer": "700",
+    "hints": [
+      "504 ÷ 72 = 7. Bring down two zeros.",
+      "Answer: 700."
+    ],
+    "solution": "504 ÷ 72 = 7. 00 remaining. Answer: 700. Check: 700 × 72 = 50400 ✓.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "long-division-larger-p11",
+    "topicId": "long-division-larger",
+    "difficulty": "hard",
+    "question": "Use long division: 87654 ÷ 54 = ? R ?",
+    "answer": "1623 R 12",
+    "hints": [
+      "87 ÷ 54 = 1 R 33. Bring down 6 → 336 ÷ 54 = 6 R 12.",
+      "Bring down 5 → 125 ÷ 54 = 2 R 17. Bring down 4 → 174 ÷ 54 = 3 R 12."
+    ],
+    "solution": "87 ÷ 54 = 1 R 33. 336 ÷ 54 = 6 R 12. 125 ÷ 54 = 2 R 17. 174 ÷ 54 = 3 R 12. Answer: 1623 R 12. Check: 1623 × 54 + 12 = 87654 ✓.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "long-division-larger-p12",
+    "topicId": "long-division-larger",
+    "difficulty": "hard",
+    "question": "A school district distributes 45000 notebooks equally among 75 schools. How many per school?",
+    "answer": "600",
+    "hints": [
+      "450 ÷ 75 = 6. Bring down two zeros.",
+      "Answer: 600."
+    ],
+    "solution": "450 ÷ 75 = 6. 00 remaining. Answer: 600 notebooks per school. Check: 600 × 75 = 45000 ✓.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "long-division-larger-p13",
+    "topicId": "long-division-larger",
+    "difficulty": "hard",
+    "question": "Use long division: 100000 ÷ 48 = ? R ?",
+    "answer": "2083 R 16",
+    "hints": [
+      "100 ÷ 48 = 2 R 4. Bring down 0 → 40 ÷ 48 = 0 R 40.",
+      "Bring down 0 → 400 ÷ 48 = 8 R 16. Bring down 0 → 160 ÷ 48 = 3 R 16."
+    ],
+    "solution": "100 ÷ 48 = 2 R 4. 40 ÷ 48 = 0 R 40. 400 ÷ 48 = 8 R 16. 160 ÷ 48 = 3 R 16. Answer: 2083 R 16. Check: 2083 × 48 + 16 = 100000 ✓.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "long-division-larger-p14",
+    "topicId": "long-division-larger",
+    "difficulty": "hard",
+    "question": "Use long division: 67890 ÷ 85 = ? R ?",
+    "answer": "798 R 60",
+    "hints": [
+      "678 ÷ 85 = 7 R 83. Bring down 9 → 839 ÷ 85 = 9 R 74.",
+      "Bring down 0 → 740 ÷ 85 = 8 R 60."
+    ],
+    "solution": "678 ÷ 85 = 7 R 83. 839 ÷ 85 = 9 R 74. 740 ÷ 85 = 8 R 60. Answer: 798 R 60. Check: 798 × 85 + 60 = 67890 ✓.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "long-division-larger-p15",
+    "topicId": "long-division-larger",
+    "difficulty": "hard",
+    "question": "Use long division: 99999 ÷ 99 = ? R ?",
+    "answer": "1010 R 9",
+    "hints": [
+      "99 ÷ 99 = 1. Bring down 9 → 9 ÷ 99 = 0 R 9.",
+      "Bring down 9 → 99 ÷ 99 = 1. Bring down 9 → 9 ÷ 99 = 0 R 9."
+    ],
+    "solution": "99 ÷ 99 = 1. 9 ÷ 99 = 0 R 9. 99 ÷ 99 = 1. 9 ÷ 99 = 0 R 9. Answer: 1010 R 9. Check: 1010 × 99 + 9 = 99999 ✓.",
+    "cognitiveDemand": "synthesis"
+  }
+]

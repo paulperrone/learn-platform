@@ -1,0 +1,52 @@
+[
+  {
+    "id": "division-word-problems-interpret-ex1",
+    "topicId": "division-word-problems-interpret",
+    "title": "When to Round Up the Remainder",
+    "steps": [
+      {
+        "subgoalLabel": "Read the problem",
+        "instruction": "43 children need to cross a river. Each boat holds 6 children. How many boat trips are needed?",
+        "work": "43 ÷ 6 = 7 R 1.",
+        "explanation": "7 full trips carry 42 children. 1 child is left."
+      },
+      {
+        "subgoalLabel": "Interpret the remainder",
+        "instruction": "Can we leave the 1 child behind?",
+        "work": "No — every child must cross. We need one more trip.",
+        "explanation": "When all items or people must be included, round UP."
+      },
+      {
+        "subgoalLabel": "Answer",
+        "instruction": "How many trips?",
+        "work": "7 + 1 = 8 trips.",
+        "explanation": "Round up when the question asks 'how many are needed' and leaving the remainder behind is not an option."
+      }
+    ]
+  },
+  {
+    "id": "division-word-problems-interpret-ex2",
+    "topicId": "division-word-problems-interpret",
+    "title": "When to Drop the Remainder vs. Use It",
+    "steps": [
+      {
+        "subgoalLabel": "Drop scenario",
+        "instruction": "You have 23 beads and each bracelet needs 5 beads. How many bracelets can you make?",
+        "work": "23 ÷ 5 = 4 R 3. You make 4 bracelets. The 3 leftover beads are not enough for another.",
+        "explanation": "DROP the remainder when only complete groups count."
+      },
+      {
+        "subgoalLabel": "Use the remainder scenario",
+        "instruction": "Same beads: how many beads are left over after making bracelets?",
+        "work": "The remainder IS the answer: 3 beads left over.",
+        "explanation": "USE the remainder when the question asks about the leftover amount."
+      },
+      {
+        "subgoalLabel": "Key decision",
+        "instruction": "How do you decide?",
+        "work": "Read the question carefully. 'How many complete groups?' → drop. 'How many needed?' → round up. 'How many left over?' → use the remainder.",
+        "explanation": "The math is always the same (divide and find the remainder). The difference is how you interpret the remainder based on the context."
+      }
+    ]
+  }
+]

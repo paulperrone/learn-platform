@@ -1,0 +1,52 @@
+[
+  {
+    "id": "add-word-problems-compare-ex1",
+    "topicId": "add-word-problems-compare",
+    "title": "Compare Problem: 'More Than'",
+    "steps": [
+      {
+        "subgoalLabel": "Read and understand",
+        "instruction": "Jake has 5 toy cars. Ben has 3 more toy cars than Jake. How many toy cars does Ben have?",
+        "work": "Jake: 5 cars. Ben: 3 MORE than Jake.",
+        "explanation": "The words 'more than' tell us Ben has a greater amount. We need to add."
+      },
+      {
+        "subgoalLabel": "Write the number sentence",
+        "instruction": "Start with Jake's amount and add the difference.",
+        "work": "5 + 3 = ?",
+        "explanation": "We add 3 to Jake's 5 because Ben has 3 more."
+      },
+      {
+        "subgoalLabel": "Solve",
+        "instruction": "Find 5 + 3.",
+        "work": "5 + 3 = 8. Ben has 8 toy cars.",
+        "explanation": "In compare problems, look for words like 'more than,' 'taller,' 'longer,' or 'older' to know you need to add."
+      }
+    ]
+  },
+  {
+    "id": "add-word-problems-compare-ex2",
+    "topicId": "add-word-problems-compare",
+    "title": "Compare Problem: 'Fewer Than' (Tricky!)",
+    "steps": [
+      {
+        "subgoalLabel": "Read and understand",
+        "instruction": "Anna has 7 books. She has 4 fewer books than Carlos. How many books does Carlos have?",
+        "work": "Anna: 7 books. Anna has FEWER than Carlos.",
+        "explanation": "This is tricky! Anna has fewer, which means Carlos has more."
+      },
+      {
+        "subgoalLabel": "Think about who has more",
+        "instruction": "If Anna has fewer, does Carlos have more or less?",
+        "work": "Carlos has MORE. He has 4 more than Anna.",
+        "explanation": "Fewer for Anna means more for Carlos. We still add!"
+      },
+      {
+        "subgoalLabel": "Solve",
+        "instruction": "Add the difference to Anna's amount.",
+        "work": "7 + 4 = 11. Carlos has 11 books.",
+        "explanation": "When a problem says someone has fewer, the OTHER person has more. Add to find their amount."
+      }
+    ]
+  }
+]

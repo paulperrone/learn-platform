@@ -1,0 +1,197 @@
+[
+  {
+    "id": "commutative-property-mult-p1",
+    "topicId": "commutative-property-mult",
+    "difficulty": "easy",
+    "question": "Is 3 × 5 the same as 5 × 3? Type yes or no.",
+    "answer": "yes",
+    "hints": [
+      "3 × 5 = 15 and 5 × 3 = 15.",
+      "The order does not change the product."
+    ],
+    "solution": "Yes. 3 × 5 = 15 and 5 × 3 = 15. The commutative property says a × b = b × a.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "commutative-property-mult-p2",
+    "topicId": "commutative-property-mult",
+    "difficulty": "easy",
+    "question": "If 7 × 4 = 28, what is 4 × 7?",
+    "answer": "28",
+    "hints": [
+      "The commutative property: a × b = b × a.",
+      "Switching the order does not change the answer."
+    ],
+    "solution": "4 × 7 = 28. Same as 7 × 4.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "commutative-property-mult-p3",
+    "topicId": "commutative-property-mult",
+    "difficulty": "easy",
+    "question": "Fill in the blank: 6 × 9 = 9 × ?. What is the missing number?",
+    "answer": "6",
+    "hints": [
+      "The commutative property swaps the factors.",
+      "6 × 9 = 9 × 6."
+    ],
+    "solution": "The missing number is 6. By the commutative property, 6 × 9 = 9 × 6.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "commutative-property-mult-p4",
+    "topicId": "commutative-property-mult",
+    "difficulty": "easy",
+    "question": "If 2 × 8 = 16, what is 8 × 2?",
+    "answer": "16",
+    "hints": [
+      "Switching the order gives the same product.",
+      "8 × 2 = 2 × 8 = 16."
+    ],
+    "solution": "8 × 2 = 16.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "commutative-property-mult-p5",
+    "topicId": "commutative-property-mult",
+    "difficulty": "easy",
+    "question": "Fill in the blank: 5 × ? = 8 × 5. What is the missing number?",
+    "answer": "8",
+    "hints": [
+      "By the commutative property, 5 × 8 = 8 × 5.",
+      "The missing number is 8."
+    ],
+    "solution": "5 × 8 = 8 × 5 = 40. The missing number is 8.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "commutative-property-mult-p6",
+    "topicId": "commutative-property-mult",
+    "difficulty": "medium",
+    "question": "You know 7 × 3 = 21. Without calculating, what is 3 × 7?",
+    "answer": "21",
+    "hints": [
+      "The commutative property means you do not need to recalculate.",
+      "3 × 7 = 7 × 3 = 21."
+    ],
+    "solution": "3 × 7 = 21. The commutative property lets us use known facts to find related ones instantly.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "commutative-property-mult-p7",
+    "topicId": "commutative-property-mult",
+    "difficulty": "medium",
+    "question": "A student needs to memorize all multiplication facts from 1×1 to 9×9. Because of the commutative property, she only needs to memorize about half. How many unique facts does she need to memorize? (Include facts where both factors are the same.)",
+    "answer": "45",
+    "hints": [
+      "Without the property: 9 × 9 = 81 facts. With it, pairs like 3 × 7 and 7 × 3 count as one.",
+      "Count: 9 facts with the same factors (1×1, 2×2, ..., 9×9) plus pairs. Total unique: 9 + 36 = 45."
+    ],
+    "solution": "There are 45 unique facts: 9 squares (a×a) plus 36 pairs where a < b (since a×b = b×a).",
+    "cognitiveDemand": "reasoning"
+  },
+  {
+    "id": "commutative-property-mult-p8",
+    "topicId": "commutative-property-mult",
+    "difficulty": "medium",
+    "question": "Which property does this show: 12 × 5 = 5 × 12? Type commutative, associative, or distributive.",
+    "answer": "commutative",
+    "hints": [
+      "The commutative property swaps the order of factors.",
+      "Associative changes grouping, distributive breaks apart a factor."
+    ],
+    "solution": "This is the commutative property of multiplication: a × b = b × a.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "commutative-property-mult-p9",
+    "topicId": "commutative-property-mult",
+    "difficulty": "medium",
+    "question": "Is 15 ÷ 3 the same as 3 ÷ 15? Type yes or no.",
+    "answer": "no",
+    "hints": [
+      "15 ÷ 3 = 5, but 3 ÷ 15 is less than 1.",
+      "The commutative property works for multiplication but NOT for division."
+    ],
+    "solution": "No. 15 ÷ 3 = 5 but 3 ÷ 15 = 0.2. Division is not commutative.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "commutative-property-mult-p10",
+    "topicId": "commutative-property-mult",
+    "difficulty": "medium",
+    "question": "If 25 × 14 = 350, what is 14 × 25?",
+    "answer": "350",
+    "hints": [
+      "The commutative property applies to all numbers, not just single digits.",
+      "14 × 25 = 25 × 14 = 350."
+    ],
+    "solution": "14 × 25 = 350. The commutative property works for any numbers.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "commutative-property-mult-p11",
+    "topicId": "commutative-property-mult",
+    "difficulty": "hard",
+    "question": "Which of these operations is commutative: addition, subtraction, multiplication, division? List all that are, separated by a comma.",
+    "answer": "addition, multiplication",
+    "hints": [
+      "Test each: is a + b = b + a always? Is a − b = b − a always?",
+      "Addition and multiplication are commutative. Subtraction and division are not."
+    ],
+    "solution": "Addition and multiplication are commutative (a + b = b + a and a × b = b × a). Subtraction and division are not.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "commutative-property-mult-p12",
+    "topicId": "commutative-property-mult",
+    "difficulty": "hard",
+    "question": "Tyler says that since 6 × 0 = 0 and 0 × 6 = 0, the commutative property proves that anything times zero is zero. Is Tyler's reasoning correct? Type yes or no.",
+    "answer": "no",
+    "hints": [
+      "The commutative property only says a × b = b × a. It does not prove that a × 0 = 0.",
+      "The zero property is a separate property."
+    ],
+    "solution": "No. The commutative property says 6 × 0 = 0 × 6, but it does not prove either equals 0. The zero property of multiplication is a different property.",
+    "cognitiveDemand": "reasoning"
+  },
+  {
+    "id": "commutative-property-mult-p13",
+    "topicId": "commutative-property-mult",
+    "difficulty": "hard",
+    "question": "If a × b = 144 and a = 12, what is b × a?",
+    "answer": "144",
+    "hints": [
+      "b × a = a × b by the commutative property.",
+      "So b × a = 144."
+    ],
+    "solution": "b × a = a × b = 144. The commutative property means the order does not matter.",
+    "cognitiveDemand": "reasoning"
+  },
+  {
+    "id": "commutative-property-mult-p14",
+    "topicId": "commutative-property-mult",
+    "difficulty": "hard",
+    "question": "You are told that 37 × 48 = 1,776. Without computing, what is 48 × 37?",
+    "answer": "1776",
+    "hints": [
+      "Commutative property: swap the factors.",
+      "48 × 37 = 37 × 48 = 1,776."
+    ],
+    "solution": "48 × 37 = 1,776. No calculation needed — just apply the commutative property.",
+    "cognitiveDemand": "reasoning"
+  },
+  {
+    "id": "commutative-property-mult-p15",
+    "topicId": "commutative-property-mult",
+    "difficulty": "hard",
+    "question": "A student finds that 8 × 7 = 56 is easier to compute as 7 × 8. Does the commutative property guarantee both give the same answer? Type yes or no.",
+    "answer": "yes",
+    "hints": [
+      "The commutative property says a × b = b × a for all numbers.",
+      "7 × 8 = 8 × 7 = 56."
+    ],
+    "solution": "Yes. The commutative property guarantees that 8 × 7 = 7 × 8 = 56.",
+    "cognitiveDemand": "conceptual"
+  }
+]

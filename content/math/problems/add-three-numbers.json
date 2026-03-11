@@ -1,0 +1,191 @@
+[
+  {
+    "id": "add-three-numbers-p1",
+    "topicId": "add-three-numbers",
+    "difficulty": "easy",
+    "question": "What is 2 + 3 + 1?",
+    "answer": "6",
+    "hints": [
+      "Add the first two numbers: 2 + 3 = 5.",
+      "Then add 1 more."
+    ],
+    "solution": "2 + 3 = 5. Then 5 + 1 = 6.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "add-three-numbers-p2",
+    "topicId": "add-three-numbers",
+    "difficulty": "easy",
+    "question": "What is 4 + 1 + 5?",
+    "answer": "10",
+    "hints": [
+      "Add 4 + 1 = 5 first.",
+      "Then 5 + 5 = 10."
+    ],
+    "solution": "4 + 1 = 5. Then 5 + 5 = 10.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "add-three-numbers-p3",
+    "topicId": "add-three-numbers",
+    "difficulty": "easy",
+    "question": "What is 3 + 3 + 2?",
+    "answer": "8",
+    "hints": [
+      "3 + 3 = 6. Then add 2."
+    ],
+    "solution": "3 + 3 = 6. Then 6 + 2 = 8.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "add-three-numbers-p4",
+    "topicId": "add-three-numbers",
+    "difficulty": "easy",
+    "question": "What is 1 + 2 + 4?",
+    "answer": "7",
+    "hints": [
+      "Start by adding 1 + 2 = 3."
+    ],
+    "solution": "1 + 2 = 3. Then 3 + 4 = 7.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "add-three-numbers-p5",
+    "topicId": "add-three-numbers",
+    "difficulty": "easy",
+    "question": "What is 5 + 2 + 3?",
+    "answer": "10",
+    "hints": [
+      "5 + 2 = 7. Then 7 + 3 = 10."
+    ],
+    "solution": "5 + 2 = 7. Then 7 + 3 = 10.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "add-three-numbers-p6",
+    "topicId": "add-three-numbers",
+    "difficulty": "medium",
+    "question": "What is 6 + 4 + 3?",
+    "answer": "13",
+    "hints": [
+      "Look for two numbers that make 10.",
+      "6 + 4 = 10. Then add 3."
+    ],
+    "solution": "6 + 4 = 10 (make ten!). Then 10 + 3 = 13.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "add-three-numbers-p7",
+    "topicId": "add-three-numbers",
+    "difficulty": "medium",
+    "question": "What is 7 + 3 + 5?",
+    "answer": "15",
+    "hints": [
+      "7 + 3 = 10. Then add 5."
+    ],
+    "solution": "7 + 3 = 10. Then 10 + 5 = 15.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "add-three-numbers-p8",
+    "topicId": "add-three-numbers",
+    "difficulty": "medium",
+    "question": "What is 5 + 5 + 6?",
+    "answer": "16",
+    "hints": [
+      "5 + 5 = 10, a doubles fact!",
+      "Then add 6."
+    ],
+    "solution": "5 + 5 = 10 (doubles). Then 10 + 6 = 16.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "add-three-numbers-p9",
+    "topicId": "add-three-numbers",
+    "difficulty": "medium",
+    "question": "What is 8 + 2 + 7?",
+    "answer": "17",
+    "hints": [
+      "8 + 2 = 10. Then 10 + 7 = 17."
+    ],
+    "solution": "8 + 2 = 10. Then 10 + 7 = 17.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "add-three-numbers-p10",
+    "topicId": "add-three-numbers",
+    "difficulty": "medium",
+    "question": "What is 4 + 6 + 5?",
+    "answer": "15",
+    "hints": [
+      "4 + 6 = 10."
+    ],
+    "solution": "4 + 6 = 10. Then 10 + 5 = 15.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "add-three-numbers-p11",
+    "topicId": "add-three-numbers",
+    "difficulty": "hard",
+    "question": "Zoe found 8 shells, 5 shells, and 2 shells at the beach. How many shells does she have?",
+    "answer": "15",
+    "hints": [
+      "Add all three numbers: 8 + 5 + 2.",
+      "Look for pairs that make 10: 8 + 2 = 10."
+    ],
+    "solution": "8 + 2 = 10. Then 10 + 5 = 15. Zoe has 15 shells.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "add-three-numbers-p12",
+    "topicId": "add-three-numbers",
+    "difficulty": "hard",
+    "question": "Add 3 + 9 + 7. Which two numbers would you add first to make it easier? What is the sum?",
+    "answer": "19",
+    "hints": [
+      "Look for numbers that make 10.",
+      "3 + 7 = 10."
+    ],
+    "solution": "Add 3 + 7 = 10 first (they make 10). Then 10 + 9 = 19.",
+    "cognitiveDemand": "reasoning"
+  },
+  {
+    "id": "add-three-numbers-p13",
+    "topicId": "add-three-numbers",
+    "difficulty": "hard",
+    "question": "What is 6 + 6 + 4?",
+    "answer": "16",
+    "hints": [
+      "You could use doubles: 6 + 6 = 12.",
+      "Or make ten: 6 + 4 = 10."
+    ],
+    "solution": "One way: 6 + 4 = 10, then 10 + 6 = 16. Another way: 6 + 6 = 12, then 12 + 4 = 16.",
+    "cognitiveDemand": "reasoning"
+  },
+  {
+    "id": "add-three-numbers-p14",
+    "topicId": "add-three-numbers",
+    "difficulty": "hard",
+    "question": "A box has 7 red crayons, 4 blue crayons, and 6 green crayons. How many crayons are in the box?",
+    "answer": "17",
+    "hints": [
+      "Add 7 + 4 + 6.",
+      "Try: 4 + 6 = 10, then 10 + 7 = 17."
+    ],
+    "solution": "4 + 6 = 10. Then 10 + 7 = 17. There are 17 crayons.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "add-three-numbers-p15",
+    "topicId": "add-three-numbers",
+    "difficulty": "hard",
+    "question": "What is 9 + 1 + 8?",
+    "answer": "18",
+    "hints": [
+      "9 + 1 = 10.",
+      "Then add 8."
+    ],
+    "solution": "9 + 1 = 10. Then 10 + 8 = 18.",
+    "cognitiveDemand": "application"
+  }
+]

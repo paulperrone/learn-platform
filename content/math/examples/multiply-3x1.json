@@ -1,0 +1,76 @@
+[
+  {
+    "id": "multiply-3x1-ex1",
+    "topicId": "multiply-3x1",
+    "title": "Multiplying a 3-Digit Number by a 1-Digit Number",
+    "steps": [
+      {
+        "subgoalLabel": "State the problem",
+        "instruction": "Find 254 × 3.",
+        "work": "254 × 3",
+        "explanation": "Multiply each digit of 254 by 3, starting from the ones place. Regroup when needed."
+      },
+      {
+        "subgoalLabel": "Multiply the ones",
+        "instruction": "Find 4 × 3.",
+        "work": "4 × 3 = 12. Write 2, carry 1.",
+        "explanation": "12 ones = 1 ten and 2 ones. Carry the 1 ten to the tens column."
+      },
+      {
+        "subgoalLabel": "Multiply the tens",
+        "instruction": "Find 5 × 3, then add the carry.",
+        "work": "5 × 3 = 15, plus 1 = 16. Write 6, carry 1.",
+        "explanation": "16 tens = 1 hundred and 6 tens. Carry the 1 hundred."
+      },
+      {
+        "subgoalLabel": "Multiply the hundreds",
+        "instruction": "Find 2 × 3, then add the carry.",
+        "work": "2 × 3 = 6, plus 1 = 7. Write 7.",
+        "explanation": "7 hundreds. No more carrying needed."
+      },
+      {
+        "subgoalLabel": "State the answer",
+        "instruction": "What is 254 × 3?",
+        "work": "254 × 3 = 762",
+        "explanation": "Work right to left: ones, tens, hundreds. Carry whenever a product is 10 or more."
+      }
+    ]
+  },
+  {
+    "id": "multiply-3x1-ex2",
+    "topicId": "multiply-3x1",
+    "title": "3-Digit Multiplication With Multiple Regroupings",
+    "steps": [
+      {
+        "subgoalLabel": "State the problem",
+        "instruction": "Find 486 × 7.",
+        "work": "486 × 7",
+        "explanation": "This problem will require regrouping at every step."
+      },
+      {
+        "subgoalLabel": "Multiply the ones",
+        "instruction": "Find 6 × 7.",
+        "work": "6 × 7 = 42. Write 2, carry 4.",
+        "explanation": "42 ones = 4 tens and 2 ones."
+      },
+      {
+        "subgoalLabel": "Multiply the tens",
+        "instruction": "Find 8 × 7, then add the carry.",
+        "work": "8 × 7 = 56, plus 4 = 60. Write 0, carry 6.",
+        "explanation": "60 tens = 6 hundreds and 0 tens."
+      },
+      {
+        "subgoalLabel": "Multiply the hundreds",
+        "instruction": "Find 4 × 7, then add the carry.",
+        "work": "4 × 7 = 28, plus 6 = 34. Write 34.",
+        "explanation": "34 hundreds = 3 thousands and 4 hundreds."
+      },
+      {
+        "subgoalLabel": "State the answer",
+        "instruction": "What is 486 × 7?",
+        "work": "486 × 7 = 3,402",
+        "explanation": "Even with heavy regrouping, the process is the same: multiply, add carry, write and carry."
+      }
+    ]
+  }
+]

@@ -1,0 +1,197 @@
+[
+  {
+    "id": "subtract-two-digit-regroup-p1",
+    "topicId": "subtract-two-digit-regroup",
+    "difficulty": "easy",
+    "question": "What is 42 − 17?",
+    "answer": "25",
+    "hints": [
+      "You cannot subtract 7 from 2, so you need to regroup.",
+      "Borrow 1 ten from the 4 tens to make 12 ones."
+    ],
+    "solution": "Ones: 2 < 7, so regroup. Borrow 1 ten: 12 − 7 = 5. Tens: 3 − 1 = 2. Answer: 25.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "subtract-two-digit-regroup-p2",
+    "topicId": "subtract-two-digit-regroup",
+    "difficulty": "easy",
+    "question": "What is 53 − 28?",
+    "answer": "25",
+    "hints": [
+      "3 < 8, so you need to regroup.",
+      "Borrow 1 ten: 13 − 8 = 5. Then 4 − 2 = 2."
+    ],
+    "solution": "Ones: 3 < 8, regroup. 13 − 8 = 5. Tens: 4 − 2 = 2. Answer: 25.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "subtract-two-digit-regroup-p3",
+    "topicId": "subtract-two-digit-regroup",
+    "difficulty": "easy",
+    "question": "What is 61 − 35?",
+    "answer": "26",
+    "hints": [
+      "1 < 5, so regroup.",
+      "Borrow 1 ten: 11 − 5 = 6. Then 5 − 3 = 2."
+    ],
+    "solution": "Ones: 1 < 5, regroup. 11 − 5 = 6. Tens: 5 − 3 = 2. Answer: 26.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "subtract-two-digit-regroup-p4",
+    "topicId": "subtract-two-digit-regroup",
+    "difficulty": "easy",
+    "question": "What is 74 − 39?",
+    "answer": "35",
+    "hints": [
+      "4 < 9, so regroup.",
+      "Borrow 1 ten: 14 − 9 = 5. Then 6 − 3 = 3."
+    ],
+    "solution": "Ones: 4 < 9, regroup. 14 − 9 = 5. Tens: 6 − 3 = 3. Answer: 35.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "subtract-two-digit-regroup-p5",
+    "topicId": "subtract-two-digit-regroup",
+    "difficulty": "easy",
+    "question": "What is 80 − 46?",
+    "answer": "34",
+    "hints": [
+      "0 < 6, so regroup.",
+      "Borrow 1 ten: 10 − 6 = 4. Then 7 − 4 = 3."
+    ],
+    "solution": "Ones: 0 < 6, regroup. 10 − 6 = 4. Tens: 7 − 4 = 3. Answer: 34.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "subtract-two-digit-regroup-p6",
+    "topicId": "subtract-two-digit-regroup",
+    "difficulty": "medium",
+    "question": "What is 92 − 58?",
+    "answer": "34",
+    "hints": [
+      "2 < 8, so regroup.",
+      "Borrow 1 ten: 12 − 8 = 4. Then 8 − 5 = 3."
+    ],
+    "solution": "Ones: 2 < 8, regroup. 12 − 8 = 4. Tens: 8 − 5 = 3. Answer: 34.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "subtract-two-digit-regroup-p7",
+    "topicId": "subtract-two-digit-regroup",
+    "difficulty": "medium",
+    "question": "There are 63 birds. 27 fly away. How many are left?",
+    "answer": "36",
+    "hints": [
+      "Subtract: 63 − 27. You need to regroup because 3 < 7.",
+      "Borrow 1 ten: 13 − 7 = 6. Then 5 − 2 = 3."
+    ],
+    "solution": "63 − 27: Ones: 3 < 7, regroup. 13 − 7 = 6. Tens: 5 − 2 = 3. Answer: 36 birds are left.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "subtract-two-digit-regroup-p8",
+    "topicId": "subtract-two-digit-regroup",
+    "difficulty": "medium",
+    "question": "What is 71 − 44?",
+    "answer": "27",
+    "hints": [
+      "1 < 4, so regroup.",
+      "Borrow 1 ten: 11 − 4 = 7. Then 6 − 4 = 2."
+    ],
+    "solution": "Ones: 1 < 4, regroup. 11 − 4 = 7. Tens: 6 − 4 = 2. Answer: 27.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "subtract-two-digit-regroup-p9",
+    "topicId": "subtract-two-digit-regroup",
+    "difficulty": "medium",
+    "question": "A bag has 85 marbles. You take out 49. How many are left?",
+    "answer": "36",
+    "hints": [
+      "85 − 49. Since 5 < 9, regroup.",
+      "Borrow 1 ten: 15 − 9 = 6. Then 7 − 4 = 3."
+    ],
+    "solution": "85 − 49: Ones: 5 < 9, regroup. 15 − 9 = 6. Tens: 7 − 4 = 3. Answer: 36 marbles left.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "subtract-two-digit-regroup-p10",
+    "topicId": "subtract-two-digit-regroup",
+    "difficulty": "medium",
+    "question": "What is 56 − 29?",
+    "answer": "27",
+    "hints": [
+      "6 < 9, so regroup.",
+      "Borrow 1 ten: 16 − 9 = 7. Then 4 − 2 = 2."
+    ],
+    "solution": "Ones: 6 < 9, regroup. 16 − 9 = 7. Tens: 4 − 2 = 2. Answer: 27.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "subtract-two-digit-regroup-p11",
+    "topicId": "subtract-two-digit-regroup",
+    "difficulty": "hard",
+    "question": "Tom says 52 − 28 = 36. Is he correct? If not, find the right answer and explain the mistake.",
+    "answer": "No, the correct answer is 24",
+    "hints": [
+      "Check the ones: 12 − 8 = 4, not 6.",
+      "Check the tens after regrouping: 4 − 2 = 2."
+    ],
+    "solution": "Tom is wrong. Ones: 2 < 8, regroup. 12 − 8 = 4 (not 6). Tens: 4 − 2 = 2. Correct answer: 24. Tom likely subtracted 8 − 2 instead of 12 − 8 in the ones place.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "subtract-two-digit-regroup-p12",
+    "topicId": "subtract-two-digit-regroup",
+    "difficulty": "hard",
+    "question": "Fill in the blank: 73 − ___ = 48.",
+    "answer": "25",
+    "hints": [
+      "Think: 73 − ? = 48, so ? = 73 − 48.",
+      "Ones: 3 < 8, regroup. 13 − 8 = 5. Tens: 6 − 4 = 2."
+    ],
+    "solution": "73 − 48: Ones: 3 < 8, regroup. 13 − 8 = 5. Tens: 6 − 4 = 2. The missing number is 25.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "subtract-two-digit-regroup-p13",
+    "topicId": "subtract-two-digit-regroup",
+    "difficulty": "hard",
+    "question": "Does 64 − 38 need regrouping? How do you know? Solve it.",
+    "answer": "Yes, it needs regrouping. 64 − 38 = 26.",
+    "hints": [
+      "Compare the ones digits: 4 < 8, so regrouping is needed.",
+      "Borrow 1 ten: 14 − 8 = 6. Then 5 − 3 = 2."
+    ],
+    "solution": "Yes, regrouping is needed because 4 < 8 in the ones place. Regroup: 14 − 8 = 6. Tens: 5 − 3 = 2. Answer: 26.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "subtract-two-digit-regroup-p14",
+    "topicId": "subtract-two-digit-regroup",
+    "difficulty": "hard",
+    "question": "___ − 37 = 45. What is the missing number?",
+    "answer": "82",
+    "hints": [
+      "Add to find the missing number: 45 + 37 = ?",
+      "5 + 7 = 12, write 2 carry 1. 4 + 3 + 1 = 8."
+    ],
+    "solution": "Add: 45 + 37 = 82. Check: 82 − 37: Ones: 2 < 7, regroup. 12 − 7 = 5. Tens: 7 − 3 = 4. Answer: 45. Correct!",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "subtract-two-digit-regroup-p15",
+    "topicId": "subtract-two-digit-regroup",
+    "difficulty": "hard",
+    "question": "A student subtracted 90 − 53 and wrote these steps: 10 − 3 = 7, 8 − 5 = 3. Answer: 37. Is this correct? Explain what the student did.",
+    "answer": "Yes, 90 − 53 = 37",
+    "hints": [
+      "0 < 3, so regrouping is needed. The student regrouped correctly.",
+      "After regrouping: 10 − 3 = 7 in the ones, and 8 − 5 = 3 in the tens."
+    ],
+    "solution": "The student is correct. Since 0 < 3, they regrouped 9 tens 0 ones into 8 tens 10 ones. Then: 10 − 3 = 7 (ones), 8 − 5 = 3 (tens). Answer: 37.",
+    "cognitiveDemand": "synthesis"
+  }
+]

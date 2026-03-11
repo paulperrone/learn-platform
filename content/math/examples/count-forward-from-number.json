@@ -1,0 +1,52 @@
+[
+  {
+    "id": "count-forward-from-number-ex1",
+    "topicId": "count-forward-from-number",
+    "title": "Counting Forward from 5",
+    "steps": [
+      {
+        "subgoalLabel": "Find your starting number",
+        "instruction": "We want to count forward starting at 5. We do NOT start at 1.",
+        "work": "Start: 5",
+        "explanation": "When counting forward from a number, begin at that number, not at 1."
+      },
+      {
+        "subgoalLabel": "Say the next numbers",
+        "instruction": "Starting at 5, say the numbers that come next: 6, 7, 8, 9, 10.",
+        "work": "5 → 6 → 7 → 8 → 9 → 10",
+        "explanation": "Each number is one more than the one before it."
+      },
+      {
+        "subgoalLabel": "Practice the pattern",
+        "instruction": "You can count forward from any number. The rule is always the same: say the next number.",
+        "work": "From 5: 5, 6, 7, 8, 9, 10",
+        "explanation": "You do not need to start at 1 every time. Just pick up where you start and keep going."
+      }
+    ]
+  },
+  {
+    "id": "count-forward-from-number-ex2",
+    "topicId": "count-forward-from-number",
+    "title": "Filling in Missing Numbers",
+    "steps": [
+      {
+        "subgoalLabel": "Read the sequence",
+        "instruction": "Look at this sequence: 11, 12, ___, 14, 15. One number is missing.",
+        "work": "11, 12, ___, 14, 15",
+        "explanation": "We need to figure out what number goes in the blank."
+      },
+      {
+        "subgoalLabel": "Count forward to find the gap",
+        "instruction": "Start at 11 and count forward: 11, 12... what comes after 12?",
+        "work": "11, 12, 13 ← this is the missing number",
+        "explanation": "After 12 comes 13. That is the number that fills the blank."
+      },
+      {
+        "subgoalLabel": "Check your answer",
+        "instruction": "Put 13 in the blank and read the whole sequence.",
+        "work": "11, 12, 13, 14, 15 ✓",
+        "explanation": "The sequence is correct. Each number is one more than the last."
+      }
+    ]
+  }
+]

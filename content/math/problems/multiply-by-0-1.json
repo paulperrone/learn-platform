@@ -1,0 +1,197 @@
+[
+  {
+    "id": "multiply-by-0-1-p1",
+    "topicId": "multiply-by-0-1",
+    "difficulty": "easy",
+    "question": "What is 1 × 5?",
+    "answer": "5",
+    "hints": [
+      "Any number times 1 stays the same.",
+      "1 group of 5 is just 5."
+    ],
+    "solution": "1 × 5 = 5. The identity property says any number times 1 equals itself.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-by-0-1-p2",
+    "topicId": "multiply-by-0-1",
+    "difficulty": "easy",
+    "question": "What is 0 × 7?",
+    "answer": "0",
+    "hints": [
+      "Any number times 0 equals 0.",
+      "0 groups of 7 means no groups at all."
+    ],
+    "solution": "0 × 7 = 0. Zero groups of anything is zero.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-by-0-1-p3",
+    "topicId": "multiply-by-0-1",
+    "difficulty": "easy",
+    "question": "What is 1 × 9?",
+    "answer": "9",
+    "hints": [
+      "Multiplying by 1 does not change the number.",
+      "1 group of 9 = 9."
+    ],
+    "solution": "1 × 9 = 9. One group of 9 is 9.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-by-0-1-p4",
+    "topicId": "multiply-by-0-1",
+    "difficulty": "easy",
+    "question": "What is 4 × 0?",
+    "answer": "0",
+    "hints": [
+      "Any number times 0 equals 0.",
+      "4 groups of 0 = 0."
+    ],
+    "solution": "4 × 0 = 0. No matter how many groups, if each group has 0 items, the total is 0.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-by-0-1-p5",
+    "topicId": "multiply-by-0-1",
+    "difficulty": "easy",
+    "question": "What is 0 × 0?",
+    "answer": "0",
+    "hints": [
+      "Zero times anything is zero.",
+      "0 groups of 0 is still 0."
+    ],
+    "solution": "0 × 0 = 0.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-by-0-1-p6",
+    "topicId": "multiply-by-0-1",
+    "difficulty": "medium",
+    "question": "A child has 1 box with 12 crayons. How many crayons does the child have?",
+    "answer": "12",
+    "hints": [
+      "1 group of 12.",
+      "1 × 12 = ?"
+    ],
+    "solution": "1 × 12 = 12. One group of 12 is 12.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "multiply-by-0-1-p7",
+    "topicId": "multiply-by-0-1",
+    "difficulty": "medium",
+    "question": "There are 6 empty jars with 0 marbles in each jar. How many marbles are there in all?",
+    "answer": "0",
+    "hints": [
+      "Each jar has 0 marbles.",
+      "6 × 0 = ?"
+    ],
+    "solution": "6 × 0 = 0. If each jar is empty, the total is 0 no matter how many jars.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "multiply-by-0-1-p8",
+    "topicId": "multiply-by-0-1",
+    "difficulty": "medium",
+    "question": "Fill in the blank: ? × 1 = 8. Type the missing number.",
+    "answer": "8",
+    "hints": [
+      "What number times 1 gives 8?",
+      "Anything times 1 stays the same."
+    ],
+    "solution": "8 × 1 = 8. The identity property tells us the answer is 8.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "multiply-by-0-1-p9",
+    "topicId": "multiply-by-0-1",
+    "difficulty": "medium",
+    "question": "What is 1 × 100?",
+    "answer": "100",
+    "hints": [
+      "Multiplying by 1 does not change the number.",
+      "1 group of 100 is 100."
+    ],
+    "solution": "1 × 100 = 100. The identity property works for any number.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "multiply-by-0-1-p10",
+    "topicId": "multiply-by-0-1",
+    "difficulty": "medium",
+    "question": "Fill in the blank: 0 × ? = 0. Is the missing number always 0? Type yes or no.",
+    "answer": "no",
+    "hints": [
+      "Try different numbers: 0 × 1, 0 × 5, 0 × 100.",
+      "Zero times any number equals zero."
+    ],
+    "solution": "No, the missing number can be any number because 0 times any number is always 0.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "multiply-by-0-1-p11",
+    "topicId": "multiply-by-0-1",
+    "difficulty": "hard",
+    "question": "Which property does this show: 1 × 15 = 15? Type identity or zero.",
+    "answer": "identity",
+    "hints": [
+      "The identity property says a × 1 = a.",
+      "The zero property says a × 0 = 0."
+    ],
+    "solution": "This shows the identity property of multiplication: any number times 1 equals itself.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "multiply-by-0-1-p12",
+    "topicId": "multiply-by-0-1",
+    "difficulty": "hard",
+    "question": "True or false: 0 × 1,000,000 = 0. Type true or false.",
+    "answer": "true",
+    "hints": [
+      "The zero property works for every number.",
+      "0 groups of anything is 0."
+    ],
+    "solution": "True. 0 × 1,000,000 = 0. The zero property works no matter how large the number.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "multiply-by-0-1-p13",
+    "topicId": "multiply-by-0-1",
+    "difficulty": "hard",
+    "question": "Jake says 0 × 5 = 5 because you start with 5. Is Jake correct? Type yes or no.",
+    "answer": "no",
+    "hints": [
+      "0 × 5 means 0 groups of 5.",
+      "If there are no groups, the total is 0."
+    ],
+    "solution": "No. 0 × 5 = 0, not 5. Zero groups of 5 means there are no items at all.",
+    "cognitiveDemand": "reasoning"
+  },
+  {
+    "id": "multiply-by-0-1-p14",
+    "topicId": "multiply-by-0-1",
+    "difficulty": "hard",
+    "question": "A number times 1 equals 47. What is the number?",
+    "answer": "47",
+    "hints": [
+      "The identity property: a × 1 = a.",
+      "The number does not change when multiplied by 1."
+    ],
+    "solution": "47 × 1 = 47. By the identity property, the number is 47.",
+    "cognitiveDemand": "reasoning"
+  },
+  {
+    "id": "multiply-by-0-1-p15",
+    "topicId": "multiply-by-0-1",
+    "difficulty": "hard",
+    "question": "How many different whole numbers can fill the blank to make this true: 0 × ___ = 0? Type your answer.",
+    "answer": "all",
+    "hints": [
+      "Try 0 × 1, 0 × 2, 0 × 99...",
+      "Zero times any whole number is zero."
+    ],
+    "solution": "All whole numbers work. 0 × (any number) = 0. There are infinitely many solutions.",
+    "cognitiveDemand": "reasoning"
+  }
+]

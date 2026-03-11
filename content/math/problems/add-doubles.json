@@ -1,0 +1,186 @@
+[
+  {
+    "id": "add-doubles-p1",
+    "topicId": "add-doubles",
+    "difficulty": "easy",
+    "question": "What is 2 + 2?",
+    "answer": "4",
+    "hints": [
+      "Think: 2 and 2 are the same number. That is a double!"
+    ],
+    "solution": "2 + 2 = 4. Two plus two equals four.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "add-doubles-p2",
+    "topicId": "add-doubles",
+    "difficulty": "easy",
+    "question": "What is 3 + 3?",
+    "answer": "6",
+    "hints": [
+      "You are adding 3 two times."
+    ],
+    "solution": "3 + 3 = 6.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "add-doubles-p3",
+    "topicId": "add-doubles",
+    "difficulty": "easy",
+    "question": "What is 1 + 1?",
+    "answer": "2",
+    "hints": [
+      "One and one more is two."
+    ],
+    "solution": "1 + 1 = 2.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "add-doubles-p4",
+    "topicId": "add-doubles",
+    "difficulty": "easy",
+    "question": "What is 4 + 4?",
+    "answer": "8",
+    "hints": [
+      "Think about 4 fingers on each hand."
+    ],
+    "solution": "4 + 4 = 8.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "add-doubles-p5",
+    "topicId": "add-doubles",
+    "difficulty": "easy",
+    "question": "What is 5 + 5?",
+    "answer": "10",
+    "hints": [
+      "5 and 5 make 10."
+    ],
+    "solution": "5 + 5 = 10.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "add-doubles-p6",
+    "topicId": "add-doubles",
+    "difficulty": "medium",
+    "question": "What is 7 + 7?",
+    "answer": "14",
+    "hints": [
+      "Try counting on from 7: 8, 9, 10, 11, 12, 13, 14.",
+      "Or think: 7 + 7 is the same as double 7."
+    ],
+    "solution": "7 + 7 = 14.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "add-doubles-p7",
+    "topicId": "add-doubles",
+    "difficulty": "medium",
+    "question": "What is 8 + 8?",
+    "answer": "16",
+    "hints": [
+      "Double 8 means two groups of 8."
+    ],
+    "solution": "8 + 8 = 16.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "add-doubles-p8",
+    "topicId": "add-doubles",
+    "difficulty": "medium",
+    "question": "What is 9 + 9?",
+    "answer": "18",
+    "hints": [
+      "Think: 10 + 10 = 20, so 9 + 9 is 2 less."
+    ],
+    "solution": "9 + 9 = 18.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "add-doubles-p9",
+    "topicId": "add-doubles",
+    "difficulty": "medium",
+    "question": "What is 6 + 6?",
+    "answer": "12",
+    "hints": [
+      "Double 6 means 6 + 6."
+    ],
+    "solution": "6 + 6 = 12.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "add-doubles-p10",
+    "topicId": "add-doubles",
+    "difficulty": "medium",
+    "question": "What is 10 + 10?",
+    "answer": "20",
+    "hints": [
+      "Double 10!"
+    ],
+    "solution": "10 + 10 = 20.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "add-doubles-p11",
+    "topicId": "add-doubles",
+    "difficulty": "hard",
+    "question": "Sam has 6 stickers. He gets the same number of stickers from his friend. How many stickers does Sam have now?",
+    "answer": "12",
+    "hints": [
+      "The same number means another 6.",
+      "So you need to find 6 + 6."
+    ],
+    "solution": "Sam had 6 stickers and got 6 more. 6 + 6 = 12. Sam has 12 stickers.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "add-doubles-p12",
+    "topicId": "add-doubles",
+    "difficulty": "hard",
+    "question": "There are two teams. Each team has 8 players. How many players are there in all?",
+    "answer": "16",
+    "hints": [
+      "Each team has 8, so you add 8 + 8."
+    ],
+    "solution": "8 + 8 = 16. There are 16 players in all.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "add-doubles-p13",
+    "topicId": "add-doubles",
+    "difficulty": "hard",
+    "question": "Fill in the blank: ___ + ___ = 14. Both numbers are the same. What is each number?",
+    "answer": "7",
+    "hints": [
+      "You need a doubles fact that equals 14.",
+      "What number doubled gives 14?"
+    ],
+    "solution": "7 + 7 = 14. Each number is 7.",
+    "cognitiveDemand": "reasoning"
+  },
+  {
+    "id": "add-doubles-p14",
+    "topicId": "add-doubles",
+    "difficulty": "hard",
+    "question": "Which doubles fact has a sum of 16? Write the addition sentence.",
+    "answer": "8 + 8 = 16",
+    "hints": [
+      "Think: what number plus itself equals 16?"
+    ],
+    "solution": "8 + 8 = 16.",
+    "cognitiveDemand": "reasoning"
+  },
+  {
+    "id": "add-doubles-p15",
+    "topicId": "add-doubles",
+    "difficulty": "hard",
+    "question": "A ladybug has the same number of spots on each wing. It has 18 spots in all. How many spots are on each wing?",
+    "answer": "9",
+    "hints": [
+      "Both wings have the same number, so it is a doubles fact.",
+      "What doubles fact equals 18?"
+    ],
+    "solution": "9 + 9 = 18. Each wing has 9 spots.",
+    "cognitiveDemand": "reasoning"
+  }
+]

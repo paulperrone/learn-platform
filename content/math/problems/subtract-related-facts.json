@@ -1,0 +1,197 @@
+[
+  {
+    "id": "subtract-related-facts-p1",
+    "topicId": "subtract-related-facts",
+    "difficulty": "easy",
+    "question": "If 3 + 4 = 7, what is 7 − 4?",
+    "answer": "3",
+    "hints": [
+      "Addition and subtraction are related.",
+      "If 3 + 4 = 7, then 7 − 4 must give back the 3."
+    ],
+    "solution": "Since 3 + 4 = 7, we know 7 − 4 = 3. Subtraction undoes addition.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "subtract-related-facts-p2",
+    "topicId": "subtract-related-facts",
+    "difficulty": "easy",
+    "question": "If 5 + 6 = 11, what is 11 − 6?",
+    "answer": "5",
+    "hints": [
+      "Think about the addition fact: 5 + 6 = 11.",
+      "Take the 6 away from 11 and you get the other part."
+    ],
+    "solution": "Since 5 + 6 = 11, we know 11 − 6 = 5.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "subtract-related-facts-p3",
+    "topicId": "subtract-related-facts",
+    "difficulty": "easy",
+    "question": "If 2 + 9 = 11, what is 11 − 9?",
+    "answer": "2",
+    "hints": [
+      "Use the addition fact to help.",
+      "2 + 9 = 11, so 11 − 9 = ?"
+    ],
+    "solution": "Since 2 + 9 = 11, we know 11 − 9 = 2.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "subtract-related-facts-p4",
+    "topicId": "subtract-related-facts",
+    "difficulty": "easy",
+    "question": "If 8 + 4 = 12, what is 12 − 8?",
+    "answer": "4",
+    "hints": [
+      "The three numbers in a fact family are 8, 4, and 12.",
+      "12 − 8 gives you the missing part."
+    ],
+    "solution": "Since 8 + 4 = 12, we know 12 − 8 = 4.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "subtract-related-facts-p5",
+    "topicId": "subtract-related-facts",
+    "difficulty": "easy",
+    "question": "If 7 + 3 = 10, what is 10 − 7?",
+    "answer": "3",
+    "hints": [
+      "Think: 7 + what = 10?",
+      "7 + 3 = 10, so 10 − 7 = 3."
+    ],
+    "solution": "Since 7 + 3 = 10, we know 10 − 7 = 3.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "subtract-related-facts-p6",
+    "topicId": "subtract-related-facts",
+    "difficulty": "medium",
+    "question": "What is 13 − 7? Think of an addition fact to help.",
+    "answer": "6",
+    "hints": [
+      "Ask yourself: 7 + what = 13?",
+      "7 + 6 = 13."
+    ],
+    "solution": "Think: 7 + ? = 13. Since 7 + 6 = 13, we know 13 − 7 = 6.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "subtract-related-facts-p7",
+    "topicId": "subtract-related-facts",
+    "difficulty": "medium",
+    "question": "What is 15 − 8? Use a related addition fact.",
+    "answer": "7",
+    "hints": [
+      "Think: 8 + what = 15?",
+      "8 + 7 = 15."
+    ],
+    "solution": "Think: 8 + ? = 15. Since 8 + 7 = 15, we know 15 − 8 = 7.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "subtract-related-facts-p8",
+    "topicId": "subtract-related-facts",
+    "difficulty": "medium",
+    "question": "What is 14 − 6? Think about what number plus 6 equals 14.",
+    "answer": "8",
+    "hints": [
+      "6 + ? = 14.",
+      "6 + 8 = 14."
+    ],
+    "solution": "Think: 6 + ? = 14. Since 6 + 8 = 14, we know 14 − 6 = 8.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "subtract-related-facts-p9",
+    "topicId": "subtract-related-facts",
+    "difficulty": "medium",
+    "question": "What is 16 − 9? Use a related addition fact.",
+    "answer": "7",
+    "hints": [
+      "Think: 9 + what = 16?",
+      "9 + 7 = 16."
+    ],
+    "solution": "Think: 9 + ? = 16. Since 9 + 7 = 16, we know 16 − 9 = 7.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "subtract-related-facts-p10",
+    "topicId": "subtract-related-facts",
+    "difficulty": "medium",
+    "question": "What is 12 − 5? Think of an addition fact that uses 5 and 12.",
+    "answer": "7",
+    "hints": [
+      "5 + ? = 12.",
+      "5 + 7 = 12."
+    ],
+    "solution": "Think: 5 + ? = 12. Since 5 + 7 = 12, we know 12 − 5 = 7.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "subtract-related-facts-p11",
+    "topicId": "subtract-related-facts",
+    "difficulty": "hard",
+    "question": "Write the complete fact family for 6, 9, and 15. List all four equations.",
+    "answer": "6 + 9 = 15, 9 + 6 = 15, 15 − 6 = 9, 15 − 9 = 6",
+    "hints": [
+      "A fact family has two addition facts and two subtraction facts.",
+      "Use the three numbers 6, 9, and 15 in every equation."
+    ],
+    "solution": "The fact family: 6 + 9 = 15, 9 + 6 = 15, 15 − 6 = 9, 15 − 9 = 6. These four facts all use the same three numbers.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "subtract-related-facts-p12",
+    "topicId": "subtract-related-facts",
+    "difficulty": "hard",
+    "question": "Maya says 14 − 8 = 5. Use an addition fact to check her answer. Is she correct? What is the right answer?",
+    "answer": "No, the correct answer is 6",
+    "hints": [
+      "Check: does 8 + 5 = 14?",
+      "8 + 5 = 13, not 14. Try 8 + 6."
+    ],
+    "solution": "Check: 8 + 5 = 13, not 14. So Maya is wrong. Since 8 + 6 = 14, the correct answer is 14 − 8 = 6.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "subtract-related-facts-p13",
+    "topicId": "subtract-related-facts",
+    "difficulty": "hard",
+    "question": "Fill in the blank: 17 − ___ = 9. Use a related addition fact to find the missing number.",
+    "answer": "8",
+    "hints": [
+      "Rewrite as: 9 + ___ = 17.",
+      "9 + 8 = 17."
+    ],
+    "solution": "Rewrite as addition: 9 + ? = 17. Since 9 + 8 = 17, the missing number is 8. So 17 − 8 = 9.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "subtract-related-facts-p14",
+    "topicId": "subtract-related-facts",
+    "difficulty": "hard",
+    "question": "If you know that 7 + 8 = 15, which TWO subtraction facts can you write?",
+    "answer": "15 − 7 = 8 and 15 − 8 = 7",
+    "hints": [
+      "Start with the sum (15) and subtract each addend.",
+      "15 − 7 = ? and 15 − 8 = ?"
+    ],
+    "solution": "From 7 + 8 = 15, we get two subtraction facts: 15 − 7 = 8 and 15 − 8 = 7.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "subtract-related-facts-p15",
+    "topicId": "subtract-related-facts",
+    "difficulty": "hard",
+    "question": "What is 18 − 9? Explain how you can use a doubles addition fact to find the answer.",
+    "answer": "9",
+    "hints": [
+      "What doubles fact makes 18?",
+      "9 + 9 = 18."
+    ],
+    "solution": "Since 9 + 9 = 18 (a doubles fact), we know 18 − 9 = 9. Doubles facts make subtraction quick because both addends are the same number.",
+    "cognitiveDemand": "synthesis"
+  }
+]

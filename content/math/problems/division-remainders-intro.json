@@ -1,0 +1,197 @@
+[
+  {
+    "id": "division-remainders-intro-p1",
+    "topicId": "division-remainders-intro",
+    "difficulty": "easy",
+    "question": "13 ÷ 4 = ? R ? (Type as 'Q R R', for example '3 R 1')",
+    "answer": "3 R 1",
+    "hints": [
+      "4 × 3 = 12, which is the closest multiple of 4 that does not exceed 13.",
+      "13 - 12 = 1 left over."
+    ],
+    "solution": "13 ÷ 4 = 3 R 1. Three groups of 4 use 12, leaving 1.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "division-remainders-intro-p2",
+    "topicId": "division-remainders-intro",
+    "difficulty": "easy",
+    "question": "10 ÷ 3 = ? R ?",
+    "answer": "3 R 1",
+    "hints": [
+      "3 × 3 = 9. That is the closest to 10.",
+      "10 - 9 = 1."
+    ],
+    "solution": "10 ÷ 3 = 3 R 1.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "division-remainders-intro-p3",
+    "topicId": "division-remainders-intro",
+    "difficulty": "easy",
+    "question": "17 ÷ 5 = ? R ?",
+    "answer": "3 R 2",
+    "hints": [
+      "5 × 3 = 15.",
+      "17 - 15 = 2."
+    ],
+    "solution": "17 ÷ 5 = 3 R 2.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "division-remainders-intro-p4",
+    "topicId": "division-remainders-intro",
+    "difficulty": "easy",
+    "question": "11 ÷ 2 = ? R ?",
+    "answer": "5 R 1",
+    "hints": [
+      "2 × 5 = 10.",
+      "11 - 10 = 1."
+    ],
+    "solution": "11 ÷ 2 = 5 R 1.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "division-remainders-intro-p5",
+    "topicId": "division-remainders-intro",
+    "difficulty": "easy",
+    "question": "22 ÷ 5 = ? R ?",
+    "answer": "4 R 2",
+    "hints": [
+      "5 × 4 = 20.",
+      "22 - 20 = 2."
+    ],
+    "solution": "22 ÷ 5 = 4 R 2.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "division-remainders-intro-p6",
+    "topicId": "division-remainders-intro",
+    "difficulty": "medium",
+    "question": "You have 19 stickers and put 6 on each page. How many full pages do you fill, and how many stickers are left? Type as 'pages R leftover'.",
+    "answer": "3 R 1",
+    "hints": [
+      "6 × 3 = 18.",
+      "19 - 18 = 1."
+    ],
+    "solution": "19 ÷ 6 = 3 R 1. You fill 3 pages with 1 sticker left over.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "division-remainders-intro-p7",
+    "topicId": "division-remainders-intro",
+    "difficulty": "medium",
+    "question": "25 ÷ 7 = ? R ?",
+    "answer": "3 R 4",
+    "hints": [
+      "7 × 3 = 21 and 7 × 4 = 28. 28 is too big.",
+      "25 - 21 = 4."
+    ],
+    "solution": "25 ÷ 7 = 3 R 4.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "division-remainders-intro-p8",
+    "topicId": "division-remainders-intro",
+    "difficulty": "medium",
+    "question": "38 ÷ 9 = ? R ?",
+    "answer": "4 R 2",
+    "hints": [
+      "9 × 4 = 36 and 9 × 5 = 45. 45 is too big.",
+      "38 - 36 = 2."
+    ],
+    "solution": "38 ÷ 9 = 4 R 2.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "division-remainders-intro-p9",
+    "topicId": "division-remainders-intro",
+    "difficulty": "medium",
+    "question": "You have 29 pencils and want to put them in cups of 8. How many full cups and how many left over?",
+    "answer": "3 R 5",
+    "hints": [
+      "8 × 3 = 24.",
+      "29 - 24 = 5."
+    ],
+    "solution": "29 ÷ 8 = 3 R 5. You fill 3 cups with 5 pencils left over.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "division-remainders-intro-p10",
+    "topicId": "division-remainders-intro",
+    "difficulty": "medium",
+    "question": "50 ÷ 8 = ? R ?",
+    "answer": "6 R 2",
+    "hints": [
+      "8 × 6 = 48.",
+      "50 - 48 = 2."
+    ],
+    "solution": "50 ÷ 8 = 6 R 2.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "division-remainders-intro-p11",
+    "topicId": "division-remainders-intro",
+    "difficulty": "hard",
+    "question": "When dividing by 6, what is the largest possible remainder? Type the number.",
+    "answer": "5",
+    "hints": [
+      "The remainder must be less than the divisor.",
+      "The divisor is 6, so the remainder can be 0, 1, 2, 3, 4, or 5."
+    ],
+    "solution": "The largest possible remainder when dividing by 6 is 5. The remainder must always be less than the divisor.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "division-remainders-intro-p12",
+    "topicId": "division-remainders-intro",
+    "difficulty": "hard",
+    "question": "A division has a quotient of 5, a divisor of 7, and a remainder of 3. What is the dividend?",
+    "answer": "38",
+    "hints": [
+      "Dividend = Quotient × Divisor + Remainder.",
+      "5 × 7 + 3 = ?"
+    ],
+    "solution": "Dividend = 5 × 7 + 3 = 35 + 3 = 38. Check: 38 ÷ 7 = 5 R 3 ✓.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "division-remainders-intro-p13",
+    "topicId": "division-remainders-intro",
+    "difficulty": "hard",
+    "question": "Is this correct: 32 ÷ 5 = 5 R 7? Type 'correct' or 'incorrect'.",
+    "answer": "incorrect",
+    "hints": [
+      "Check: is the remainder less than the divisor?",
+      "7 is not less than 5, so the answer is wrong."
+    ],
+    "solution": "Incorrect. The remainder (7) is larger than the divisor (5). The correct answer is 32 ÷ 5 = 6 R 2, because 5 × 6 = 30 and 32 - 30 = 2.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "division-remainders-intro-p14",
+    "topicId": "division-remainders-intro",
+    "difficulty": "hard",
+    "question": "I divided a number by 4 and got a quotient of 6 with remainder 3. What number did I divide?",
+    "answer": "27",
+    "hints": [
+      "Dividend = Quotient × Divisor + Remainder.",
+      "6 × 4 + 3 = ?"
+    ],
+    "solution": "Dividend = 6 × 4 + 3 = 24 + 3 = 27.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "division-remainders-intro-p15",
+    "topicId": "division-remainders-intro",
+    "difficulty": "hard",
+    "question": "Which of these division problems has no remainder: 25 ÷ 4, 25 ÷ 5, or 25 ÷ 6? Type the full expression.",
+    "answer": "25 ÷ 5",
+    "hints": [
+      "Check each: does 4, 5, or 6 divide evenly into 25?",
+      "25 ÷ 5 = 5 with no remainder."
+    ],
+    "solution": "25 ÷ 5 = 5 (no remainder). 25 ÷ 4 = 6 R 1 and 25 ÷ 6 = 4 R 1, both have remainders.",
+    "cognitiveDemand": "synthesis"
+  }
+]

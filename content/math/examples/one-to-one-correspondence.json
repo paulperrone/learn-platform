@@ -1,0 +1,52 @@
+[
+  {
+    "id": "one-to-one-correspondence-ex1",
+    "topicId": "one-to-one-correspondence",
+    "title": "Matching Dogs to Bones",
+    "steps": [
+      {
+        "subgoalLabel": "Look at what needs to be matched",
+        "instruction": "There are 4 dogs: 🐶 🐶 🐶 🐶. Each dog needs one bone.",
+        "work": "🐶 🐶 🐶 🐶\n🦴  🦴  🦴  🦴",
+        "explanation": "One-to-one means each dog gets exactly one bone — not zero, not two."
+      },
+      {
+        "subgoalLabel": "Match them one at a time",
+        "instruction": "Give the first bone to the first dog, the second bone to the second dog, and so on.",
+        "work": "🐶→🦴  🐶→🦴  🐶→🦴  🐶→🦴",
+        "explanation": "Each dog is paired with exactly one bone. No dog is skipped, and no dog gets two."
+      },
+      {
+        "subgoalLabel": "Check the match",
+        "instruction": "Count the dogs (4) and count the bones (4). They match!",
+        "work": "4 dogs, 4 bones → every dog has a bone",
+        "explanation": "When we have the same number of each, every object gets a match. This is one-to-one correspondence."
+      }
+    ]
+  },
+  {
+    "id": "one-to-one-correspondence-ex2",
+    "topicId": "one-to-one-correspondence",
+    "title": "Counting with One-to-One",
+    "steps": [
+      {
+        "subgoalLabel": "See the objects",
+        "instruction": "Here are some apples: 🍎 🍎 🍎 🍎 🍎. We will count them using one-to-one.",
+        "work": "🍎 🍎 🍎 🍎 🍎",
+        "explanation": "When counting, each object must be matched to exactly one number."
+      },
+      {
+        "subgoalLabel": "Say one number per apple",
+        "instruction": "Count each apple and assign the next number. Do not skip any apple. Do not count any apple twice.",
+        "work": "🍎(1)  🍎(2)  🍎(3)  🍎(4)  🍎(5)",
+        "explanation": "Each apple gets one number. We do not say two numbers for one apple, and we do not skip an apple."
+      },
+      {
+        "subgoalLabel": "Find the total",
+        "instruction": "The last number tells how many apples there are.",
+        "work": "Last number = 5, so there are 5 apples.",
+        "explanation": "One-to-one counting means matching each object to one number. The last number is the total."
+      }
+    ]
+  }
+]

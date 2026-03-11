@@ -1,0 +1,197 @@
+[
+  {
+    "id": "divide-by-6-7-8-9-p1",
+    "topicId": "divide-by-6-7-8-9",
+    "difficulty": "easy",
+    "question": "42 ÷ 6 = ?",
+    "answer": "7",
+    "hints": [
+      "Think: 6 × ? = 42.",
+      "6 × 7 = 42."
+    ],
+    "solution": "42 ÷ 6 = 7.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "divide-by-6-7-8-9-p2",
+    "topicId": "divide-by-6-7-8-9",
+    "difficulty": "easy",
+    "question": "56 ÷ 7 = ?",
+    "answer": "8",
+    "hints": [
+      "Think: 7 × ? = 56.",
+      "7 × 8 = 56."
+    ],
+    "solution": "56 ÷ 7 = 8.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "divide-by-6-7-8-9-p3",
+    "topicId": "divide-by-6-7-8-9",
+    "difficulty": "easy",
+    "question": "72 ÷ 8 = ?",
+    "answer": "9",
+    "hints": [
+      "Think: 8 × ? = 72.",
+      "8 × 9 = 72."
+    ],
+    "solution": "72 ÷ 8 = 9.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "divide-by-6-7-8-9-p4",
+    "topicId": "divide-by-6-7-8-9",
+    "difficulty": "easy",
+    "question": "63 ÷ 9 = ?",
+    "answer": "7",
+    "hints": [
+      "Think: 9 × ? = 63.",
+      "9 × 7 = 63."
+    ],
+    "solution": "63 ÷ 9 = 7.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "divide-by-6-7-8-9-p5",
+    "topicId": "divide-by-6-7-8-9",
+    "difficulty": "easy",
+    "question": "54 ÷ 6 = ?",
+    "answer": "9",
+    "hints": [
+      "Think: 6 × ? = 54.",
+      "6 × 9 = 54."
+    ],
+    "solution": "54 ÷ 6 = 9.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "divide-by-6-7-8-9-p6",
+    "topicId": "divide-by-6-7-8-9",
+    "difficulty": "medium",
+    "question": "A pack of 48 cards is dealt equally to 8 players. How many cards does each player get?",
+    "answer": "6",
+    "hints": [
+      "Divide 48 by 8.",
+      "8 × 6 = 48."
+    ],
+    "solution": "48 ÷ 8 = 6. Each player gets 6 cards.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "divide-by-6-7-8-9-p7",
+    "topicId": "divide-by-6-7-8-9",
+    "difficulty": "medium",
+    "question": "A week has 7 days. How many full weeks are in 49 days?",
+    "answer": "7",
+    "hints": [
+      "Divide 49 by 7.",
+      "7 × 7 = 49."
+    ],
+    "solution": "49 ÷ 7 = 7. There are 7 full weeks in 49 days.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "divide-by-6-7-8-9-p8",
+    "topicId": "divide-by-6-7-8-9",
+    "difficulty": "medium",
+    "question": "81 ÷ 9 = ?",
+    "answer": "9",
+    "hints": [
+      "Think: 9 × ? = 81.",
+      "9 × 9 = 81."
+    ],
+    "solution": "81 ÷ 9 = 9.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "divide-by-6-7-8-9-p9",
+    "topicId": "divide-by-6-7-8-9",
+    "difficulty": "medium",
+    "question": "A box holds 6 eggs. You have 66 eggs. How many boxes do you need?",
+    "answer": "11",
+    "hints": [
+      "Divide 66 by 6.",
+      "6 × 11 = 66."
+    ],
+    "solution": "66 ÷ 6 = 11. You need 11 boxes.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "divide-by-6-7-8-9-p10",
+    "topicId": "divide-by-6-7-8-9",
+    "difficulty": "medium",
+    "question": "Fill in the blank: ___ ÷ 8 = 7.",
+    "answer": "56",
+    "hints": [
+      "Multiply 7 × 8 to find the missing dividend.",
+      "7 × 8 = 56."
+    ],
+    "solution": "7 × 8 = 56, so 56 ÷ 8 = 7.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "divide-by-6-7-8-9-p11",
+    "topicId": "divide-by-6-7-8-9",
+    "difficulty": "hard",
+    "question": "Which gives a larger quotient: 72 ÷ 8 or 72 ÷ 9? Type the expression with the larger quotient.",
+    "answer": "72 ÷ 8",
+    "hints": [
+      "Calculate both: 72 ÷ 8 = 9 and 72 ÷ 9 = 8.",
+      "A smaller divisor gives a larger quotient."
+    ],
+    "solution": "72 ÷ 8 = 9 and 72 ÷ 9 = 8. Since 9 > 8, 72 ÷ 8 gives the larger quotient.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "divide-by-6-7-8-9-p12",
+    "topicId": "divide-by-6-7-8-9",
+    "difficulty": "hard",
+    "question": "I am thinking of a number. Dividing it by 6 gives 8, and dividing it by 8 gives 6. What is my number?",
+    "answer": "48",
+    "hints": [
+      "If ? ÷ 6 = 8, then ? = 6 × 8.",
+      "6 × 8 = 48."
+    ],
+    "solution": "The number is 48. Check: 48 ÷ 6 = 8 ✓ and 48 ÷ 8 = 6 ✓.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "divide-by-6-7-8-9-p13",
+    "topicId": "divide-by-6-7-8-9",
+    "difficulty": "hard",
+    "question": "Is dividing by 6 the same as dividing by 2 then dividing by 3? Test with 54. Type 'true' or 'false'.",
+    "answer": "true",
+    "hints": [
+      "54 ÷ 6 = 9.",
+      "54 ÷ 2 = 27, then 27 ÷ 3 = 9. Same result!"
+    ],
+    "solution": "True. 54 ÷ 6 = 9. Also 54 ÷ 2 = 27, then 27 ÷ 3 = 9. Since 6 = 2 × 3, dividing by 6 equals dividing by 2 then by 3.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "divide-by-6-7-8-9-p14",
+    "topicId": "divide-by-6-7-8-9",
+    "difficulty": "hard",
+    "question": "96 ÷ 8 = ?",
+    "answer": "12",
+    "hints": [
+      "Break 96 into parts: 80 + 16.",
+      "80 ÷ 8 = 10 and 16 ÷ 8 = 2. Add them."
+    ],
+    "solution": "96 ÷ 8 = 12. You can split: 80 ÷ 8 = 10 and 16 ÷ 8 = 2, so 10 + 2 = 12.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "divide-by-6-7-8-9-p15",
+    "topicId": "divide-by-6-7-8-9",
+    "difficulty": "hard",
+    "question": "A number between 50 and 60 is divisible by both 7 and 8. What is it? If no such number exists, type 'none'.",
+    "answer": "56",
+    "hints": [
+      "List multiples of 7 between 50 and 60: 56.",
+      "Check: is 56 divisible by 8? 56 ÷ 8 = 7. Yes!"
+    ],
+    "solution": "56 is between 50 and 60, and 56 ÷ 7 = 8 and 56 ÷ 8 = 7. So the answer is 56.",
+    "cognitiveDemand": "synthesis"
+  }
+]

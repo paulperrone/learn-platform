@@ -1,0 +1,76 @@
+[
+  {
+    "id": "subtract-three-digit-ex1",
+    "topicId": "subtract-three-digit",
+    "title": "Three-Digit Subtraction With One Regrouping",
+    "steps": [
+      {
+        "subgoalLabel": "Set up the problem",
+        "instruction": "Find 463 − 218.",
+        "work": "Line up: 463 on top, 218 below. Subtract from right to left.",
+        "explanation": "Always start with the ones place."
+      },
+      {
+        "subgoalLabel": "Check the ones",
+        "instruction": "Can we subtract 8 from 3?",
+        "work": "3 < 8, so we need to regroup.",
+        "explanation": "We borrow 1 ten from the tens place."
+      },
+      {
+        "subgoalLabel": "Regroup and subtract ones",
+        "instruction": "Borrow 1 ten, making 13 ones. Subtract.",
+        "work": "6 tens → 5 tens, 3 ones → 13 ones. 13 − 8 = 5.",
+        "explanation": "We traded 1 ten for 10 ones to make the subtraction possible."
+      },
+      {
+        "subgoalLabel": "Subtract tens and hundreds",
+        "instruction": "Subtract the remaining places.",
+        "work": "Tens: 5 − 1 = 4. Hundreds: 4 − 2 = 2.",
+        "explanation": "No more regrouping is needed since each top digit is larger."
+      },
+      {
+        "subgoalLabel": "State the answer",
+        "instruction": "What is 463 − 218?",
+        "work": "463 − 218 = 245.",
+        "explanation": "We only needed to regroup once — in the ones place."
+      }
+    ]
+  },
+  {
+    "id": "subtract-three-digit-ex2",
+    "topicId": "subtract-three-digit",
+    "title": "Three-Digit Subtraction With Two Regroupings",
+    "steps": [
+      {
+        "subgoalLabel": "Set up the problem",
+        "instruction": "Find 534 − 267.",
+        "work": "Line up: 534 on top, 267 below.",
+        "explanation": "We will need to regroup more than once in this problem."
+      },
+      {
+        "subgoalLabel": "Subtract the ones (regroup)",
+        "instruction": "4 < 7, so borrow from tens.",
+        "work": "3 tens → 2 tens, 4 ones → 14 ones. 14 − 7 = 7.",
+        "explanation": "First regrouping: borrow 1 ten to make 14 ones."
+      },
+      {
+        "subgoalLabel": "Subtract the tens (regroup again)",
+        "instruction": "Now we have 2 tens. Is 2 ≥ 6?",
+        "work": "2 < 6, so borrow from hundreds. 5 hundreds → 4 hundreds, 2 tens → 12 tens. 12 − 6 = 6.",
+        "explanation": "Second regrouping: borrow 1 hundred to make 12 tens."
+      },
+      {
+        "subgoalLabel": "Subtract the hundreds",
+        "instruction": "Now subtract hundreds: 4 − 2.",
+        "work": "4 − 2 = 2.",
+        "explanation": "After two regroupings, we finish with the hundreds."
+      },
+      {
+        "subgoalLabel": "State the answer",
+        "instruction": "What is 534 − 267?",
+        "work": "534 − 267 = 267.",
+        "explanation": "Two regroupings were needed because both the ones and tens digits on top were smaller."
+      }
+    ]
+  }
+]

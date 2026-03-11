@@ -1,0 +1,76 @@
+[
+  {
+    "id": "multiply-2x2-area-model-ex1",
+    "topicId": "multiply-2x2-area-model",
+    "title": "Using the Area Model for 2-Digit × 2-Digit",
+    "steps": [
+      {
+        "subgoalLabel": "State the problem",
+        "instruction": "Find 24 × 13 using the area model.",
+        "work": "24 × 13",
+        "explanation": "The area model breaks each factor into tens and ones, creating four smaller rectangles."
+      },
+      {
+        "subgoalLabel": "Break apart the factors",
+        "instruction": "Split 24 into 20 + 4 and 13 into 10 + 3.",
+        "work": "24 = 20 + 4, 13 = 10 + 3.",
+        "explanation": "This creates a grid with four sections: 20×10, 20×3, 4×10, 4×3."
+      },
+      {
+        "subgoalLabel": "Find each partial product",
+        "instruction": "Multiply each section.",
+        "work": "20 × 10 = 200, 20 × 3 = 60, 4 × 10 = 40, 4 × 3 = 12.",
+        "explanation": "Each section represents a partial product."
+      },
+      {
+        "subgoalLabel": "Add the partial products",
+        "instruction": "Add all four partial products.",
+        "work": "200 + 60 + 40 + 12 = 312.",
+        "explanation": "The total area equals the full product."
+      },
+      {
+        "subgoalLabel": "State the answer",
+        "instruction": "What is 24 × 13?",
+        "work": "24 × 13 = 312",
+        "explanation": "The area model helps you see where each part of the product comes from."
+      }
+    ]
+  },
+  {
+    "id": "multiply-2x2-area-model-ex2",
+    "topicId": "multiply-2x2-area-model",
+    "title": "Area Model with Larger Digits",
+    "steps": [
+      {
+        "subgoalLabel": "State the problem",
+        "instruction": "Find 36 × 27 using the area model.",
+        "work": "36 × 27",
+        "explanation": "Break each number into tens and ones."
+      },
+      {
+        "subgoalLabel": "Break apart the factors",
+        "instruction": "Split 36 = 30 + 6 and 27 = 20 + 7.",
+        "work": "Four sections: 30×20, 30×7, 6×20, 6×7.",
+        "explanation": "Each combination of tens/ones gives one partial product."
+      },
+      {
+        "subgoalLabel": "Find each partial product",
+        "instruction": "Multiply each section.",
+        "work": "30 × 20 = 600, 30 × 7 = 210, 6 × 20 = 120, 6 × 7 = 42.",
+        "explanation": "These are the four areas in the model."
+      },
+      {
+        "subgoalLabel": "Add the partial products",
+        "instruction": "Add all four.",
+        "work": "600 + 210 + 120 + 42 = 972.",
+        "explanation": "Add in any order. You might add 600 + 210 = 810, then 120 + 42 = 162, then 810 + 162 = 972."
+      },
+      {
+        "subgoalLabel": "State the answer",
+        "instruction": "What is 36 × 27?",
+        "work": "36 × 27 = 972",
+        "explanation": "The area model works for any 2-digit × 2-digit multiplication."
+      }
+    ]
+  }
+]

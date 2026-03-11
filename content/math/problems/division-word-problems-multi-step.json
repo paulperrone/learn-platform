@@ -1,0 +1,197 @@
+[
+  {
+    "id": "division-word-problems-multi-step-p1",
+    "topicId": "division-word-problems-multi-step",
+    "difficulty": "easy",
+    "question": "A store has 48 apples. Half are red and half are green. The red apples are put equally into 4 bags. How many red apples per bag?",
+    "answer": "6",
+    "hints": [
+      "First find half of 48: 48 ÷ 2 = 24 red apples.",
+      "Then divide: 24 ÷ 4 = 6."
+    ],
+    "solution": "Step 1: 48 ÷ 2 = 24 red apples. Step 2: 24 ÷ 4 = 6 red apples per bag.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "division-word-problems-multi-step-p2",
+    "topicId": "division-word-problems-multi-step",
+    "difficulty": "easy",
+    "question": "Emma earns $5 each day. After 6 days, she splits her earnings equally with her sister. How much does each person get?",
+    "answer": "$15",
+    "hints": [
+      "First find total: $5 × 6 = $30.",
+      "Then split: $30 ÷ 2 = $15."
+    ],
+    "solution": "Step 1: $5 × 6 = $30. Step 2: $30 ÷ 2 = $15 each.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "division-word-problems-multi-step-p3",
+    "topicId": "division-word-problems-multi-step",
+    "difficulty": "easy",
+    "question": "A teacher buys 3 packs of 12 markers. She divides all markers equally among 4 groups. How many markers per group?",
+    "answer": "9",
+    "hints": [
+      "Total markers: 3 × 12 = 36.",
+      "36 ÷ 4 = 9."
+    ],
+    "solution": "Step 1: 3 × 12 = 36 markers total. Step 2: 36 ÷ 4 = 9 markers per group.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "division-word-problems-multi-step-p4",
+    "topicId": "division-word-problems-multi-step",
+    "difficulty": "easy",
+    "question": "A box has 60 candies. 12 are given away. The rest are shared equally among 8 children. How many candies does each child get?",
+    "answer": "6",
+    "hints": [
+      "Remaining: 60 - 12 = 48.",
+      "48 ÷ 8 = 6."
+    ],
+    "solution": "Step 1: 60 - 12 = 48 remaining. Step 2: 48 ÷ 8 = 6 candies each.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "division-word-problems-multi-step-p5",
+    "topicId": "division-word-problems-multi-step",
+    "difficulty": "easy",
+    "question": "Sam has 25 stickers and buys 11 more. He shares all his stickers equally among 4 friends. How many does each friend get?",
+    "answer": "9",
+    "hints": [
+      "Total: 25 + 11 = 36.",
+      "36 ÷ 4 = 9."
+    ],
+    "solution": "Step 1: 25 + 11 = 36 stickers. Step 2: 36 ÷ 4 = 9 stickers each.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "division-word-problems-multi-step-p6",
+    "topicId": "division-word-problems-multi-step",
+    "difficulty": "medium",
+    "question": "A garden has 4 rows with 18 tomato plants each. The tomatoes are divided equally among 6 baskets. How many plants' tomatoes go in each basket?",
+    "answer": "12",
+    "hints": [
+      "Total plants: 4 × 18 = 72.",
+      "72 ÷ 6 = 12."
+    ],
+    "solution": "Step 1: 4 × 18 = 72 plants total. Step 2: 72 ÷ 6 = 12 plants' tomatoes per basket.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "division-word-problems-multi-step-p7",
+    "topicId": "division-word-problems-multi-step",
+    "difficulty": "medium",
+    "question": "A store received 240 books. They put 60 in the display. The rest are divided equally onto 9 shelves. How many books per shelf?",
+    "answer": "20",
+    "hints": [
+      "Remaining: 240 - 60 = 180.",
+      "180 ÷ 9 = 20."
+    ],
+    "solution": "Step 1: 240 - 60 = 180. Step 2: 180 ÷ 9 = 20 books per shelf.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "division-word-problems-multi-step-p8",
+    "topicId": "division-word-problems-multi-step",
+    "difficulty": "medium",
+    "question": "A school orders 8 boxes of 25 pencils. The pencils are shared equally among 5 classrooms. How many pencils does each classroom get?",
+    "answer": "40",
+    "hints": [
+      "Total: 8 × 25 = 200.",
+      "200 ÷ 5 = 40."
+    ],
+    "solution": "Step 1: 8 × 25 = 200 pencils. Step 2: 200 ÷ 5 = 40 per classroom.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "division-word-problems-multi-step-p9",
+    "topicId": "division-word-problems-multi-step",
+    "difficulty": "medium",
+    "question": "Maria has $100. She spends $28 on a book. She divides the rest equally among her 3 savings jars. How much goes in each jar?",
+    "answer": "$24",
+    "hints": [
+      "Remaining: $100 - $28 = $72.",
+      "$72 ÷ 3 = $24."
+    ],
+    "solution": "Step 1: $100 - $28 = $72. Step 2: $72 ÷ 3 = $24 per jar.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "division-word-problems-multi-step-p10",
+    "topicId": "division-word-problems-multi-step",
+    "difficulty": "medium",
+    "question": "There are 150 students. 30 walk to school. The rest take buses that hold 40 students each. How many buses are needed?",
+    "answer": "3",
+    "hints": [
+      "Students taking buses: 150 - 30 = 120.",
+      "120 ÷ 40 = 3."
+    ],
+    "solution": "Step 1: 150 - 30 = 120 bus riders. Step 2: 120 ÷ 40 = 3 buses.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "division-word-problems-multi-step-p11",
+    "topicId": "division-word-problems-multi-step",
+    "difficulty": "hard",
+    "question": "A bakery makes 360 rolls on Monday and 240 on Tuesday. They package all of them into bags of 8. How many bags?",
+    "answer": "75",
+    "hints": [
+      "Total: 360 + 240 = 600.",
+      "600 ÷ 8 = 75."
+    ],
+    "solution": "Step 1: 360 + 240 = 600 rolls. Step 2: 600 ÷ 8 = 75 bags.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "division-word-problems-multi-step-p12",
+    "topicId": "division-word-problems-multi-step",
+    "difficulty": "hard",
+    "question": "A company produced 1200 items. They sold 3/4 of them. The remaining items are shipped in boxes of 25. How many boxes are needed?",
+    "answer": "12",
+    "hints": [
+      "Sold: 3/4 of 1200 = 900. Remaining: 1200 - 900 = 300.",
+      "300 ÷ 25 = 12."
+    ],
+    "solution": "Step 1: 3/4 × 1200 = 900 sold, 300 remaining. Step 2: 300 ÷ 25 = 12 boxes.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "division-word-problems-multi-step-p13",
+    "topicId": "division-word-problems-multi-step",
+    "difficulty": "hard",
+    "question": "A pool holds 4500 liters. It is filled at 500 liters per hour for 3 hours, then 300 liters per hour after that. How many more hours to fill it?",
+    "answer": "10",
+    "hints": [
+      "After 3 hours: 500 × 3 = 1500 liters. Remaining: 4500 - 1500 = 3000.",
+      "3000 ÷ 300 = 10 more hours."
+    ],
+    "solution": "Step 1: 500 × 3 = 1500 liters filled. Step 2: 4500 - 1500 = 3000 remaining. Step 3: 3000 ÷ 300 = 10 more hours.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "division-word-problems-multi-step-p14",
+    "topicId": "division-word-problems-multi-step",
+    "difficulty": "hard",
+    "question": "Two classes have 28 and 32 students. They combine and form teams of 4. How many teams are there?",
+    "answer": "15",
+    "hints": [
+      "Total students: 28 + 32 = 60.",
+      "60 ÷ 4 = 15."
+    ],
+    "solution": "Step 1: 28 + 32 = 60 students. Step 2: 60 ÷ 4 = 15 teams.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "division-word-problems-multi-step-p15",
+    "topicId": "division-word-problems-multi-step",
+    "difficulty": "hard",
+    "question": "A farmer harvests 864 oranges from 6 trees (same amount per tree). He sells half and packs the rest into crates of 36. How many crates?",
+    "answer": "12",
+    "hints": [
+      "Total harvested: 864. Half kept: 864 ÷ 2 = 432.",
+      "432 ÷ 36 = 12."
+    ],
+    "solution": "Step 1: 864 ÷ 2 = 432 kept. Step 2: 432 ÷ 36 = 12 crates.",
+    "cognitiveDemand": "synthesis"
+  }
+]

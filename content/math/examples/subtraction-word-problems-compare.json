@@ -1,0 +1,64 @@
+[
+  {
+    "id": "subtraction-word-problems-compare-ex1",
+    "topicId": "subtraction-word-problems-compare",
+    "title": "Solving a 'How Many More' Comparison Problem",
+    "steps": [
+      {
+        "subgoalLabel": "Read the problem",
+        "instruction": "Sam has 11 stickers. Lily has 7 stickers. How many more stickers does Sam have?",
+        "work": "We are comparing two amounts: 11 and 7.",
+        "explanation": "The words 'how many more' tell us to find the difference."
+      },
+      {
+        "subgoalLabel": "Write the equation",
+        "instruction": "Subtract the smaller from the larger.",
+        "work": "11 − 7 = ?",
+        "explanation": "In comparison problems, we subtract to find the difference between two groups."
+      },
+      {
+        "subgoalLabel": "Solve",
+        "instruction": "Find 11 − 7.",
+        "work": "11 − 7 = 4.",
+        "explanation": "You can think: 7 + ? = 11. Since 7 + 4 = 11, the answer is 4."
+      },
+      {
+        "subgoalLabel": "Answer the question",
+        "instruction": "How many more stickers does Sam have?",
+        "work": "Sam has 4 more stickers than Lily.",
+        "explanation": "Nothing was taken away — we just compared two amounts."
+      }
+    ]
+  },
+  {
+    "id": "subtraction-word-problems-compare-ex2",
+    "topicId": "subtraction-word-problems-compare",
+    "title": "Finding the Smaller Amount in a Comparison",
+    "steps": [
+      {
+        "subgoalLabel": "Read the problem",
+        "instruction": "Emma has 15 crayons. She has 6 more crayons than Jake. How many crayons does Jake have?",
+        "work": "Emma has MORE. We need to find Jake's amount.",
+        "explanation": "When we know who has more and by how much, we subtract to find the other person's amount."
+      },
+      {
+        "subgoalLabel": "Write the equation",
+        "instruction": "Emma has 6 more, so Jake has 6 fewer.",
+        "work": "Jake's crayons = 15 − 6 = ?",
+        "explanation": "Since Emma has more, Jake's amount is Emma's minus the difference."
+      },
+      {
+        "subgoalLabel": "Solve",
+        "instruction": "15 − 6 = ?",
+        "work": "15 − 6 = 9.",
+        "explanation": "Jake has fewer crayons because Emma has 6 more."
+      },
+      {
+        "subgoalLabel": "Answer and check",
+        "instruction": "Does our answer make sense?",
+        "work": "Jake has 9 crayons. Check: 9 + 6 = 15. Yes, Emma has 6 more than Jake.",
+        "explanation": "Always check: the difference between 15 and 9 is indeed 6."
+      }
+    ]
+  }
+]

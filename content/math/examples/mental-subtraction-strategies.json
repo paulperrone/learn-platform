@@ -1,0 +1,58 @@
+[
+  {
+    "id": "mental-subtraction-strategies-ex1",
+    "topicId": "mental-subtraction-strategies",
+    "title": "Using Compensation to Subtract Mentally",
+    "steps": [
+      {
+        "subgoalLabel": "Identify a nearby round number",
+        "instruction": "Solve 63 − 28 mentally using compensation.",
+        "work": "28 is close to 30. Let's subtract 30 instead.",
+        "explanation": "Compensation means rounding the number being subtracted to make the math easier, then adjusting."
+      },
+      {
+        "subgoalLabel": "Subtract the round number",
+        "instruction": "63 − 30 = ?",
+        "work": "63 − 30 = 33.",
+        "explanation": "Subtracting a round number is easy mental math."
+      },
+      {
+        "subgoalLabel": "Adjust (compensate)",
+        "instruction": "We subtracted 30 but only needed to subtract 28. Did we subtract too much or too little?",
+        "work": "We subtracted 2 too many (30 − 28 = 2). Add 2 back: 33 + 2 = 35.",
+        "explanation": "Since we took away more than we should have, we put some back."
+      },
+      {
+        "subgoalLabel": "State the answer",
+        "instruction": "What is 63 − 28?",
+        "work": "63 − 28 = 35.",
+        "explanation": "Compensation: subtract a round number, then adjust. Quick and accurate."
+      }
+    ]
+  },
+  {
+    "id": "mental-subtraction-strategies-ex2",
+    "topicId": "mental-subtraction-strategies",
+    "title": "Using Counting Up to Find a Difference",
+    "steps": [
+      {
+        "subgoalLabel": "Read the problem",
+        "instruction": "Find 52 − 47 using counting up.",
+        "work": "The numbers are close, so counting up from 47 to 52 is efficient.",
+        "explanation": "Counting up works well when the difference is small."
+      },
+      {
+        "subgoalLabel": "Count from the smaller to the larger",
+        "instruction": "Start at 47 and count to 52.",
+        "work": "47 → 48 (1) → 49 (2) → 50 (3) → 51 (4) → 52 (5).",
+        "explanation": "Each step is one count. Keep track of how many steps you take."
+      },
+      {
+        "subgoalLabel": "State the answer",
+        "instruction": "How many did you count up?",
+        "work": "5 steps. So 52 − 47 = 5.",
+        "explanation": "Counting up turns subtraction into addition: 47 + 5 = 52."
+      }
+    ]
+  }
+]

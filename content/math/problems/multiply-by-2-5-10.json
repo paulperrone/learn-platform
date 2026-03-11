@@ -1,0 +1,197 @@
+[
+  {
+    "id": "multiply-by-2-5-10-p1",
+    "topicId": "multiply-by-2-5-10",
+    "difficulty": "easy",
+    "question": "What is 2 × 3?",
+    "answer": "6",
+    "hints": [
+      "Think of 2 groups of 3.",
+      "3 + 3 = ?"
+    ],
+    "solution": "2 × 3 = 6. Two groups of 3 is 6.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-by-2-5-10-p2",
+    "topicId": "multiply-by-2-5-10",
+    "difficulty": "easy",
+    "question": "What is 5 × 4?",
+    "answer": "20",
+    "hints": [
+      "Count by 5s: 5, 10, 15, 20.",
+      "5 groups of 4, or 4 groups of 5."
+    ],
+    "solution": "5 × 4 = 20. Count by 5s four times: 5, 10, 15, 20.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-by-2-5-10-p3",
+    "topicId": "multiply-by-2-5-10",
+    "difficulty": "easy",
+    "question": "What is 10 × 6?",
+    "answer": "60",
+    "hints": [
+      "Count by 10s: 10, 20, 30, 40, 50, 60.",
+      "Multiplying by 10 adds a zero to the end."
+    ],
+    "solution": "10 × 6 = 60. Put a 0 after the 6.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-by-2-5-10-p4",
+    "topicId": "multiply-by-2-5-10",
+    "difficulty": "easy",
+    "question": "What is 2 × 7?",
+    "answer": "14",
+    "hints": [
+      "Think of doubling 7.",
+      "7 + 7 = ?"
+    ],
+    "solution": "2 × 7 = 14. Double 7 is 14.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-by-2-5-10-p5",
+    "topicId": "multiply-by-2-5-10",
+    "difficulty": "easy",
+    "question": "What is 5 × 7?",
+    "answer": "35",
+    "hints": [
+      "Count by 5s seven times.",
+      "5, 10, 15, 20, 25, 30, 35."
+    ],
+    "solution": "5 × 7 = 35. Count by 5s: 5, 10, 15, 20, 25, 30, 35.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-by-2-5-10-p6",
+    "topicId": "multiply-by-2-5-10",
+    "difficulty": "medium",
+    "question": "A child buys 5 packs of stickers. Each pack has 8 stickers. How many stickers in all?",
+    "answer": "40",
+    "hints": [
+      "5 groups of 8.",
+      "Count by 5s eight times, or by 8s five times."
+    ],
+    "solution": "5 × 8 = 40 stickers.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "multiply-by-2-5-10-p7",
+    "topicId": "multiply-by-2-5-10",
+    "difficulty": "medium",
+    "question": "There are 10 rows of chairs with 9 chairs in each row. How many chairs are there?",
+    "answer": "90",
+    "hints": [
+      "10 groups of 9.",
+      "Multiplying by 10 puts a 0 at the end."
+    ],
+    "solution": "10 × 9 = 90 chairs.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "multiply-by-2-5-10-p8",
+    "topicId": "multiply-by-2-5-10",
+    "difficulty": "medium",
+    "question": "What is 2 × 9?",
+    "answer": "18",
+    "hints": [
+      "Double 9.",
+      "9 + 9 = ?"
+    ],
+    "solution": "2 × 9 = 18. Doubling 9 gives 18.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-by-2-5-10-p9",
+    "topicId": "multiply-by-2-5-10",
+    "difficulty": "medium",
+    "question": "Each hand has 5 fingers. How many fingers are on 6 hands?",
+    "answer": "30",
+    "hints": [
+      "6 groups of 5.",
+      "Count by 5s six times."
+    ],
+    "solution": "6 × 5 = 30 fingers.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "multiply-by-2-5-10-p10",
+    "topicId": "multiply-by-2-5-10",
+    "difficulty": "medium",
+    "question": "A store sells socks in pairs (groups of 2). If you buy 8 pairs, how many socks is that?",
+    "answer": "16",
+    "hints": [
+      "8 pairs means 8 groups of 2.",
+      "8 × 2 = ?"
+    ],
+    "solution": "8 × 2 = 16 socks.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "multiply-by-2-5-10-p11",
+    "topicId": "multiply-by-2-5-10",
+    "difficulty": "hard",
+    "question": "Which gives a bigger answer: 5 × 9 or 10 × 4? Type the bigger product.",
+    "answer": "45",
+    "hints": [
+      "Find both products.",
+      "5 × 9 = 45 and 10 × 4 = 40."
+    ],
+    "solution": "5 × 9 = 45 and 10 × 4 = 40. The bigger product is 45.",
+    "cognitiveDemand": "reasoning"
+  },
+  {
+    "id": "multiply-by-2-5-10-p12",
+    "topicId": "multiply-by-2-5-10",
+    "difficulty": "hard",
+    "question": "Fill in the missing number: 2 × ? = 18. Type the missing number.",
+    "answer": "9",
+    "hints": [
+      "What number doubled gives 18?",
+      "18 ÷ 2 = ?"
+    ],
+    "solution": "2 × 9 = 18, so the missing number is 9.",
+    "cognitiveDemand": "reasoning"
+  },
+  {
+    "id": "multiply-by-2-5-10-p13",
+    "topicId": "multiply-by-2-5-10",
+    "difficulty": "hard",
+    "question": "Fill in the missing number: 5 × ? = 45. Type the missing number.",
+    "answer": "9",
+    "hints": [
+      "Count by 5s until you reach 45.",
+      "5, 10, 15, 20, 25, 30, 35, 40, 45 — how many 5s?"
+    ],
+    "solution": "5 × 9 = 45, so the missing number is 9.",
+    "cognitiveDemand": "reasoning"
+  },
+  {
+    "id": "multiply-by-2-5-10-p14",
+    "topicId": "multiply-by-2-5-10",
+    "difficulty": "hard",
+    "question": "Mia says 10 × 7 is the same as adding 7 ten times. Is she correct? Type yes or no.",
+    "answer": "yes",
+    "hints": [
+      "Multiplication means repeated addition.",
+      "7 + 7 + 7 + 7 + 7 + 7 + 7 + 7 + 7 + 7 = 70, and 10 × 7 = 70."
+    ],
+    "solution": "Yes. 10 × 7 = 70, and 7 added 10 times also equals 70. Multiplication is repeated addition.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "multiply-by-2-5-10-p15",
+    "topicId": "multiply-by-2-5-10",
+    "difficulty": "hard",
+    "question": "A number multiplied by 10 gives 80. What is that number?",
+    "answer": "8",
+    "hints": [
+      "? × 10 = 80.",
+      "When you multiply by 10, you add a zero. What number with a zero at the end is 80?"
+    ],
+    "solution": "8 × 10 = 80, so the number is 8.",
+    "cognitiveDemand": "reasoning"
+  }
+]

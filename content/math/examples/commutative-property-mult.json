@@ -1,0 +1,64 @@
+[
+  {
+    "id": "commutative-property-mult-ex1",
+    "topicId": "commutative-property-mult",
+    "title": "The Commutative Property of Multiplication",
+    "steps": [
+      {
+        "subgoalLabel": "State the property",
+        "instruction": "What is the commutative property of multiplication?",
+        "work": "a × b = b × a for all numbers a and b.",
+        "explanation": "The word 'commutative' comes from 'commute,' meaning to move or swap."
+      },
+      {
+        "subgoalLabel": "Show an example",
+        "instruction": "Does 4 × 6 equal 6 × 4?",
+        "work": "4 × 6 = 24 and 6 × 4 = 24. Yes, they are equal.",
+        "explanation": "4 groups of 6 gives the same total as 6 groups of 4."
+      },
+      {
+        "subgoalLabel": "Explain why it works",
+        "instruction": "Why does the order not matter?",
+        "work": "Think of a grid: 4 rows of 6 has the same number of squares as 6 rows of 4.",
+        "explanation": "Rotating a rectangle does not change how many squares it contains."
+      },
+      {
+        "subgoalLabel": "Apply to learning facts",
+        "instruction": "How does this help with memorizing facts?",
+        "work": "If you know 3 × 8 = 24, you automatically know 8 × 3 = 24.",
+        "explanation": "The commutative property cuts the number of facts to memorize nearly in half."
+      }
+    ]
+  },
+  {
+    "id": "commutative-property-mult-ex2",
+    "topicId": "commutative-property-mult",
+    "title": "Using the Commutative Property to Make Multiplication Easier",
+    "steps": [
+      {
+        "subgoalLabel": "State the problem",
+        "instruction": "Find 2 × 47.",
+        "work": "2 × 47",
+        "explanation": "This might feel harder with 2 in front."
+      },
+      {
+        "subgoalLabel": "Apply the commutative property",
+        "instruction": "Rewrite with the larger number first.",
+        "work": "2 × 47 = 47 × 2",
+        "explanation": "It is often easier to think of doubling 47 than of 2 groups of 47."
+      },
+      {
+        "subgoalLabel": "Compute",
+        "instruction": "Double 47.",
+        "work": "47 × 2 = 94.",
+        "explanation": "47 + 47 = 94."
+      },
+      {
+        "subgoalLabel": "State the answer",
+        "instruction": "What is 2 × 47?",
+        "work": "2 × 47 = 94",
+        "explanation": "Swapping the order can make computation easier. The answer stays the same."
+      }
+    ]
+  }
+]

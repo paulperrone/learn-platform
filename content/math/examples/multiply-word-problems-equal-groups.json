@@ -1,0 +1,64 @@
+[
+  {
+    "id": "multiply-word-problems-equal-groups-ex1",
+    "topicId": "multiply-word-problems-equal-groups",
+    "title": "Solving an Equal Groups Word Problem",
+    "steps": [
+      {
+        "subgoalLabel": "Read and understand",
+        "instruction": "A classroom has 6 tables. Each table has 4 chairs. How many chairs are there in all?",
+        "work": "We need to find the total number of chairs.",
+        "explanation": "Look for the number of groups and the number in each group."
+      },
+      {
+        "subgoalLabel": "Identify the groups",
+        "instruction": "What are the groups and how many are in each?",
+        "work": "Groups: 6 tables. In each group: 4 chairs.",
+        "explanation": "The tables are the groups. Each table has the same number of chairs."
+      },
+      {
+        "subgoalLabel": "Write the equation",
+        "instruction": "Write a multiplication sentence.",
+        "work": "6 × 4 = ?",
+        "explanation": "Number of groups × size of each group = total."
+      },
+      {
+        "subgoalLabel": "Solve and answer",
+        "instruction": "Multiply and answer the question.",
+        "work": "6 × 4 = 24. There are 24 chairs in all.",
+        "explanation": "Always go back to the question and answer in a complete sentence with the correct units."
+      }
+    ]
+  },
+  {
+    "id": "multiply-word-problems-equal-groups-ex2",
+    "topicId": "multiply-word-problems-equal-groups",
+    "title": "Two-Step Equal Groups Problem",
+    "steps": [
+      {
+        "subgoalLabel": "Read and understand",
+        "instruction": "A farmer has 8 baskets of apples with 15 apples each. He eats 5 apples. How many apples are left?",
+        "work": "Two steps: find the total, then subtract.",
+        "explanation": "Some word problems need more than one operation."
+      },
+      {
+        "subgoalLabel": "Find the total",
+        "instruction": "How many apples does the farmer start with?",
+        "work": "8 × 15 = 120 apples.",
+        "explanation": "8 groups of 15."
+      },
+      {
+        "subgoalLabel": "Subtract",
+        "instruction": "He eats 5 apples. How many are left?",
+        "work": "120 − 5 = 115 apples.",
+        "explanation": "After eating 5, the remaining count decreases by 5."
+      },
+      {
+        "subgoalLabel": "State the answer",
+        "instruction": "How many apples are left?",
+        "work": "115 apples are left.",
+        "explanation": "In two-step problems, check that you answered the right question (apples left, not total)."
+      }
+    ]
+  }
+]

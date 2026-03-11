@@ -1,0 +1,197 @@
+[
+  {
+    "id": "division-with-zeros-p1",
+    "topicId": "division-with-zeros",
+    "difficulty": "easy",
+    "question": "612 ÷ 6 = ?",
+    "answer": "102",
+    "hints": [
+      "6 ÷ 6 = 1. Bring down 1. 1 ÷ 6 = 0 (can't go). Bring down 2 → 12 ÷ 6 = 2.",
+      "The zero in the middle is important!"
+    ],
+    "solution": "6 ÷ 6 = 1. 1 ÷ 6 = 0 R 1. 12 ÷ 6 = 2. Answer: 102. Check: 102 × 6 = 612 ✓.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "division-with-zeros-p2",
+    "topicId": "division-with-zeros",
+    "difficulty": "easy",
+    "question": "824 ÷ 8 = ?",
+    "answer": "103",
+    "hints": [
+      "8 ÷ 8 = 1. Bring down 2. 2 ÷ 8 = 0.",
+      "Bring down 4 → 24 ÷ 8 = 3."
+    ],
+    "solution": "8 ÷ 8 = 1. 2 ÷ 8 = 0 R 2. 24 ÷ 8 = 3. Answer: 103. Check: 103 × 8 = 824 ✓.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "division-with-zeros-p3",
+    "topicId": "division-with-zeros",
+    "difficulty": "easy",
+    "question": "515 ÷ 5 = ?",
+    "answer": "103",
+    "hints": [
+      "5 ÷ 5 = 1. Bring down 1. 1 ÷ 5 = 0.",
+      "Bring down 5 → 15 ÷ 5 = 3."
+    ],
+    "solution": "5 ÷ 5 = 1. 1 ÷ 5 = 0 R 1. 15 ÷ 5 = 3. Answer: 103.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "division-with-zeros-p4",
+    "topicId": "division-with-zeros",
+    "difficulty": "easy",
+    "question": "927 ÷ 9 = ?",
+    "answer": "103",
+    "hints": [
+      "9 ÷ 9 = 1. Bring down 2. 2 ÷ 9 = 0.",
+      "Bring down 7 → 27 ÷ 9 = 3."
+    ],
+    "solution": "9 ÷ 9 = 1. 2 ÷ 9 = 0 R 2. 27 ÷ 9 = 3. Answer: 103.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "division-with-zeros-p5",
+    "topicId": "division-with-zeros",
+    "difficulty": "easy",
+    "question": "420 ÷ 4 = ?",
+    "answer": "105",
+    "hints": [
+      "4 ÷ 4 = 1. Bring down 2. 2 ÷ 4 = 0.",
+      "Bring down 0 → 20 ÷ 4 = 5."
+    ],
+    "solution": "4 ÷ 4 = 1. 2 ÷ 4 = 0 R 2. 20 ÷ 4 = 5. Answer: 105.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "division-with-zeros-p6",
+    "topicId": "division-with-zeros",
+    "difficulty": "medium",
+    "question": "3024 ÷ 3 = ?",
+    "answer": "1008",
+    "hints": [
+      "3 ÷ 3 = 1. 0 ÷ 3 = 0. 2 ÷ 3 = 0.",
+      "Bring down 4 → 24 ÷ 3 = 8."
+    ],
+    "solution": "3 ÷ 3 = 1. 0 ÷ 3 = 0. 2 ÷ 3 = 0 R 2. 24 ÷ 3 = 8. Answer: 1008. Check: 1008 × 3 = 3024 ✓.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "division-with-zeros-p7",
+    "topicId": "division-with-zeros",
+    "difficulty": "medium",
+    "question": "4032 ÷ 4 = ?",
+    "answer": "1008",
+    "hints": [
+      "4 ÷ 4 = 1. 0 ÷ 4 = 0. 3 ÷ 4 = 0.",
+      "Bring down 2 → 32 ÷ 4 = 8."
+    ],
+    "solution": "4 ÷ 4 = 1. 0 ÷ 4 = 0. 3 ÷ 4 = 0 R 3. 32 ÷ 4 = 8. Answer: 1008.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "division-with-zeros-p8",
+    "topicId": "division-with-zeros",
+    "difficulty": "medium",
+    "question": "2107 ÷ 7 = ?",
+    "answer": "301",
+    "hints": [
+      "21 ÷ 7 = 3. Bring down 0. 0 ÷ 7 = 0.",
+      "Bring down 7 → 7 ÷ 7 = 1."
+    ],
+    "solution": "21 ÷ 7 = 3. 0 ÷ 7 = 0. 7 ÷ 7 = 1. Answer: 301. Check: 301 × 7 = 2107 ✓.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "division-with-zeros-p9",
+    "topicId": "division-with-zeros",
+    "difficulty": "medium",
+    "question": "5025 ÷ 5 = ?",
+    "answer": "1005",
+    "hints": [
+      "5 ÷ 5 = 1. 0 ÷ 5 = 0. 2 ÷ 5 = 0.",
+      "Bring down 5 → 25 ÷ 5 = 5."
+    ],
+    "solution": "5 ÷ 5 = 1. 0 ÷ 5 = 0. 2 ÷ 5 = 0 R 2. 25 ÷ 5 = 5. Answer: 1005. Check: 1005 × 5 = 5025 ✓.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "division-with-zeros-p10",
+    "topicId": "division-with-zeros",
+    "difficulty": "medium",
+    "question": "7014 ÷ 7 = ?",
+    "answer": "1002",
+    "hints": [
+      "7 ÷ 7 = 1. 0 ÷ 7 = 0. 1 ÷ 7 = 0.",
+      "Bring down 4 → 14 ÷ 7 = 2."
+    ],
+    "solution": "7 ÷ 7 = 1. 0 ÷ 7 = 0. 1 ÷ 7 = 0 R 1. 14 ÷ 7 = 2. Answer: 1002. Check: 1002 × 7 = 7014 ✓.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "division-with-zeros-p11",
+    "topicId": "division-with-zeros",
+    "difficulty": "hard",
+    "question": "A student wrote 612 ÷ 6 = 12. What mistake did they make?",
+    "answer": "They forgot the zero in the quotient",
+    "hints": [
+      "The correct answer is 102, not 12.",
+      "When a digit in the dividend is too small to divide, write 0 in the quotient."
+    ],
+    "solution": "The student skipped the zero. After 6 ÷ 6 = 1, the next digit is 1 which is less than 6, so the quotient digit is 0. The correct answer is 102.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "division-with-zeros-p12",
+    "topicId": "division-with-zeros",
+    "difficulty": "hard",
+    "question": "8016 ÷ 8 = ?",
+    "answer": "1002",
+    "hints": [
+      "8 ÷ 8 = 1. 0 ÷ 8 = 0. 1 ÷ 8 = 0.",
+      "Bring down 6 → 16 ÷ 8 = 2."
+    ],
+    "solution": "8 ÷ 8 = 1. 0 ÷ 8 = 0. 1 ÷ 8 = 0 R 1. 16 ÷ 8 = 2. Answer: 1002.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "division-with-zeros-p13",
+    "topicId": "division-with-zeros",
+    "difficulty": "hard",
+    "question": "6018 ÷ 6 = ?",
+    "answer": "1003",
+    "hints": [
+      "6 ÷ 6 = 1. 0 ÷ 6 = 0. 1 ÷ 6 = 0.",
+      "Bring down 8 → 18 ÷ 6 = 3."
+    ],
+    "solution": "6 ÷ 6 = 1. 0 ÷ 6 = 0. 1 ÷ 6 = 0 R 1. 18 ÷ 6 = 3. Answer: 1003.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "division-with-zeros-p14",
+    "topicId": "division-with-zeros",
+    "difficulty": "hard",
+    "question": "30060 ÷ 6 = ?",
+    "answer": "5010",
+    "hints": [
+      "30 ÷ 6 = 5. 0 ÷ 6 = 0. 6 ÷ 6 = 1. 0 ÷ 6 = 0.",
+      "Answer: 5010."
+    ],
+    "solution": "30 ÷ 6 = 5. 0 ÷ 6 = 0. 6 ÷ 6 = 1. 0 ÷ 6 = 0. Answer: 5010. Check: 5010 × 6 = 30060 ✓.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "division-with-zeros-p15",
+    "topicId": "division-with-zeros",
+    "difficulty": "hard",
+    "question": "Which has more zeros in the quotient: 4032 ÷ 4 or 4320 ÷ 4? Type '4032 ÷ 4' or '4320 ÷ 4'.",
+    "answer": "4032 ÷ 4",
+    "hints": [
+      "4032 ÷ 4 = 1008 (two zeros). 4320 ÷ 4 = 1080 (one zero).",
+      "1008 has two zeros, 1080 has one zero."
+    ],
+    "solution": "4032 ÷ 4 = 1008 (two zeros in quotient). 4320 ÷ 4 = 1080 (one zero). 4032 ÷ 4 has more zeros.",
+    "cognitiveDemand": "synthesis"
+  }
+]

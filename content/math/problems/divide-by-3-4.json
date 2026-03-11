@@ -1,0 +1,197 @@
+[
+  {
+    "id": "divide-by-3-4-p1",
+    "topicId": "divide-by-3-4",
+    "difficulty": "easy",
+    "question": "12 ÷ 3 = ?",
+    "answer": "4",
+    "hints": [
+      "Think: 3 × ? = 12.",
+      "Count by 3: 3, 6, 9, 12."
+    ],
+    "solution": "12 ÷ 3 = 4. There are 4 groups of 3 in 12.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "divide-by-3-4-p2",
+    "topicId": "divide-by-3-4",
+    "difficulty": "easy",
+    "question": "16 ÷ 4 = ?",
+    "answer": "4",
+    "hints": [
+      "Think: 4 × ? = 16.",
+      "Count by 4: 4, 8, 12, 16."
+    ],
+    "solution": "16 ÷ 4 = 4. There are 4 groups of 4 in 16.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "divide-by-3-4-p3",
+    "topicId": "divide-by-3-4",
+    "difficulty": "easy",
+    "question": "21 ÷ 3 = ?",
+    "answer": "7",
+    "hints": [
+      "What number times 3 gives 21?",
+      "3 × 7 = 21."
+    ],
+    "solution": "21 ÷ 3 = 7.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "divide-by-3-4-p4",
+    "topicId": "divide-by-3-4",
+    "difficulty": "easy",
+    "question": "28 ÷ 4 = ?",
+    "answer": "7",
+    "hints": [
+      "Think: 4 × ? = 28.",
+      "Count by 4: 4, 8, 12, 16, 20, 24, 28."
+    ],
+    "solution": "28 ÷ 4 = 7.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "divide-by-3-4-p5",
+    "topicId": "divide-by-3-4",
+    "difficulty": "easy",
+    "question": "24 ÷ 3 = ?",
+    "answer": "8",
+    "hints": [
+      "3 × 8 = ?",
+      "3 × 8 = 24."
+    ],
+    "solution": "24 ÷ 3 = 8.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "divide-by-3-4-p6",
+    "topicId": "divide-by-3-4",
+    "difficulty": "medium",
+    "question": "A baker made 36 muffins and puts 4 in each box. How many boxes does she fill?",
+    "answer": "9",
+    "hints": [
+      "Divide 36 by 4.",
+      "4 × 9 = 36."
+    ],
+    "solution": "36 ÷ 4 = 9. The baker fills 9 boxes.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "divide-by-3-4-p7",
+    "topicId": "divide-by-3-4",
+    "difficulty": "medium",
+    "question": "There are 27 students in a class. The teacher makes groups of 3. How many groups are there?",
+    "answer": "9",
+    "hints": [
+      "Divide 27 by 3.",
+      "3 × 9 = 27."
+    ],
+    "solution": "27 ÷ 3 = 9. There are 9 groups.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "divide-by-3-4-p8",
+    "topicId": "divide-by-3-4",
+    "difficulty": "medium",
+    "question": "A square table seats 4 people. You have 32 guests. How many tables do you need?",
+    "answer": "8",
+    "hints": [
+      "Divide 32 by 4.",
+      "4 × 8 = 32."
+    ],
+    "solution": "32 ÷ 4 = 8. You need 8 tables.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "divide-by-3-4-p9",
+    "topicId": "divide-by-3-4",
+    "difficulty": "medium",
+    "question": "Fill in the blank: ___ ÷ 3 = 9.",
+    "answer": "27",
+    "hints": [
+      "Multiply 9 by 3 to find the dividend.",
+      "9 × 3 = ?"
+    ],
+    "solution": "9 × 3 = 27, so 27 ÷ 3 = 9. The missing number is 27.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "divide-by-3-4-p10",
+    "topicId": "divide-by-3-4",
+    "difficulty": "medium",
+    "question": "48 ÷ 4 = ?",
+    "answer": "12",
+    "hints": [
+      "4 × 10 = 40 and 4 × 2 = 8.",
+      "So 4 × 12 = 48."
+    ],
+    "solution": "48 ÷ 4 = 12.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "divide-by-3-4-p11",
+    "topicId": "divide-by-3-4",
+    "difficulty": "hard",
+    "question": "Is it true that dividing by 4 is the same as dividing by 2 twice? Test with 24. Type 'true' or 'false'.",
+    "answer": "true",
+    "hints": [
+      "24 ÷ 4 = 6. Now try: 24 ÷ 2 = 12, then 12 ÷ 2 = 6.",
+      "Both give 6."
+    ],
+    "solution": "True. 24 ÷ 4 = 6. Also, 24 ÷ 2 = 12, then 12 ÷ 2 = 6. Dividing by 4 is the same as halving twice because 4 = 2 × 2.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "divide-by-3-4-p12",
+    "topicId": "divide-by-3-4",
+    "difficulty": "hard",
+    "question": "A number is divisible by both 3 and 4. What is the smallest such number greater than 0?",
+    "answer": "12",
+    "hints": [
+      "List multiples of 3: 3, 6, 9, 12, 15...",
+      "List multiples of 4: 4, 8, 12, 16... Find the first number in both lists."
+    ],
+    "solution": "Multiples of 3: 3, 6, 9, 12... Multiples of 4: 4, 8, 12... The smallest common multiple is 12.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "divide-by-3-4-p13",
+    "topicId": "divide-by-3-4",
+    "difficulty": "hard",
+    "question": "If 36 ÷ 3 = 12 and 36 ÷ 4 = 9, which quotient is larger and why? Type '36 ÷ 3' or '36 ÷ 4'.",
+    "answer": "36 ÷ 3",
+    "hints": [
+      "Compare 12 and 9.",
+      "When you divide by a smaller number, each group gets more."
+    ],
+    "solution": "36 ÷ 3 = 12 is larger than 36 ÷ 4 = 9. Dividing the same amount by fewer groups gives more per group.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "divide-by-3-4-p14",
+    "topicId": "divide-by-3-4",
+    "difficulty": "hard",
+    "question": "A class of students can be divided evenly into groups of 3 or groups of 4 with no one left over. The class has fewer than 30 students. How many students could be in the class? Give the two possible answers separated by a comma.",
+    "answer": "12, 24",
+    "hints": [
+      "The number must be divisible by both 3 and 4.",
+      "Multiples of 12 that are less than 30: 12 and 24."
+    ],
+    "solution": "The number must be a multiple of both 3 and 4, so a multiple of 12. Multiples of 12 under 30: 12 and 24.",
+    "cognitiveDemand": "synthesis"
+  },
+  {
+    "id": "divide-by-3-4-p15",
+    "topicId": "divide-by-3-4",
+    "difficulty": "hard",
+    "question": "Fill in both blanks: 60 ÷ 3 = ___ and 60 ÷ 4 = ___. Type both answers separated by a comma.",
+    "answer": "20, 15",
+    "hints": [
+      "For 60 ÷ 3: 3 × 20 = 60.",
+      "For 60 ÷ 4: 4 × 15 = 60."
+    ],
+    "solution": "60 ÷ 3 = 20 and 60 ÷ 4 = 15.",
+    "cognitiveDemand": "analysis"
+  }
+]

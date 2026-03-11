@@ -1,0 +1,64 @@
+[
+  {
+    "id": "count-objects-to-20-ex1",
+    "topicId": "count-objects-to-20",
+    "title": "Counting 14 Stars",
+    "steps": [
+      {
+        "subgoalLabel": "Look at the objects",
+        "instruction": "Here are some stars arranged in rows:\n⭐ ⭐ ⭐ ⭐ ⭐ ⭐ ⭐ ⭐ ⭐ ⭐\n⭐ ⭐ ⭐ ⭐",
+        "work": "Row 1: ⭐ ⭐ ⭐ ⭐ ⭐ ⭐ ⭐ ⭐ ⭐ ⭐\nRow 2: ⭐ ⭐ ⭐ ⭐",
+        "explanation": "With bigger groups, it helps to organize objects in rows of 10."
+      },
+      {
+        "subgoalLabel": "Count the first row",
+        "instruction": "Count the top row from left to right.",
+        "work": "⭐(1) ⭐(2) ⭐(3) ⭐(4) ⭐(5) ⭐(6) ⭐(7) ⭐(8) ⭐(9) ⭐(10)",
+        "explanation": "The first row has 10 stars."
+      },
+      {
+        "subgoalLabel": "Keep counting in the second row",
+        "instruction": "Do NOT start at 1 again. Keep counting from 11.",
+        "work": "⭐(11) ⭐(12) ⭐(13) ⭐(14)",
+        "explanation": "After 10, the numbers go: 11, 12, 13, 14. These are called the teen numbers."
+      },
+      {
+        "subgoalLabel": "Say the total",
+        "instruction": "The last number you said is the total.",
+        "work": "The last number is 14, so there are 14 stars.",
+        "explanation": "There are 14 stars in all. That is 10 and 4 more."
+      }
+    ]
+  },
+  {
+    "id": "count-objects-to-20-ex2",
+    "topicId": "count-objects-to-20",
+    "title": "Counting 20 Objects",
+    "steps": [
+      {
+        "subgoalLabel": "Look at the objects",
+        "instruction": "Here are some circles:\n🔵 🔵 🔵 🔵 🔵 🔵 🔵 🔵 🔵 🔵\n🔵 🔵 🔵 🔵 🔵 🔵 🔵 🔵 🔵 🔵",
+        "work": "Two rows of circles",
+        "explanation": "This is a large group. We will count row by row."
+      },
+      {
+        "subgoalLabel": "Count the first row",
+        "instruction": "Count the first row: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10.",
+        "work": "Row 1 = 10 circles",
+        "explanation": "The first row has 10."
+      },
+      {
+        "subgoalLabel": "Count the second row",
+        "instruction": "Keep counting: 11, 12, 13, 14, 15, 16, 17, 18, 19, 20.",
+        "work": "Row 2 = 10 more circles → total is 20",
+        "explanation": "After the teens (11-19), the next number is 20."
+      },
+      {
+        "subgoalLabel": "Say the total",
+        "instruction": "The last number is 20.",
+        "work": "There are 20 circles. That is 10 + 10 = 20.",
+        "explanation": "20 is the biggest number we count to in kindergarten. It means two groups of 10."
+      }
+    ]
+  }
+]

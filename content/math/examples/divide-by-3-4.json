@@ -1,0 +1,58 @@
+[
+  {
+    "id": "divide-by-3-4-ex1",
+    "topicId": "divide-by-3-4",
+    "title": "Dividing by 3 Using Multiplication Facts",
+    "steps": [
+      {
+        "subgoalLabel": "Set up the problem",
+        "instruction": "Find 27 ÷ 3.",
+        "work": "We need to find how many groups of 3 are in 27.",
+        "explanation": "Dividing by 3 means splitting into 3 equal groups or making groups of 3."
+      },
+      {
+        "subgoalLabel": "Use a multiplication fact",
+        "instruction": "Think: 3 × ? = 27.",
+        "work": "3 × 9 = 27, so 27 ÷ 3 = 9.",
+        "explanation": "Knowing your 3 times table makes division by 3 fast. Each multiplication fact has a matching division fact."
+      },
+      {
+        "subgoalLabel": "Check the answer",
+        "instruction": "Verify by multiplying.",
+        "work": "9 × 3 = 27 ✓",
+        "explanation": "Multiplication is the best way to check a division answer."
+      }
+    ]
+  },
+  {
+    "id": "divide-by-3-4-ex2",
+    "topicId": "divide-by-3-4",
+    "title": "Dividing by 4 by Halving Twice",
+    "steps": [
+      {
+        "subgoalLabel": "Set up the problem",
+        "instruction": "Find 44 ÷ 4.",
+        "work": "We need to split 44 into 4 equal groups.",
+        "explanation": "Dividing by 4 can be tricky, but there is a shortcut: divide by 2 twice."
+      },
+      {
+        "subgoalLabel": "First halving",
+        "instruction": "Divide 44 by 2.",
+        "work": "44 ÷ 2 = 22.",
+        "explanation": "Half of 44 is 22."
+      },
+      {
+        "subgoalLabel": "Second halving",
+        "instruction": "Divide 22 by 2.",
+        "work": "22 ÷ 2 = 11.",
+        "explanation": "Half of 22 is 11."
+      },
+      {
+        "subgoalLabel": "State the answer",
+        "instruction": "Write the final answer.",
+        "work": "44 ÷ 4 = 11.",
+        "explanation": "Dividing by 2 twice is the same as dividing by 4, because 2 × 2 = 4. Check: 11 × 4 = 44 ✓"
+      }
+    ]
+  }
+]

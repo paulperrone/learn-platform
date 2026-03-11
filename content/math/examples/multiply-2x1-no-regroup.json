@@ -1,0 +1,64 @@
+[
+  {
+    "id": "multiply-2x1-no-regroup-ex1",
+    "topicId": "multiply-2x1-no-regroup",
+    "title": "Multiplying 2-Digit by 1-Digit Without Regrouping",
+    "steps": [
+      {
+        "subgoalLabel": "State the problem",
+        "instruction": "Find 23 × 3.",
+        "work": "23 × 3",
+        "explanation": "We will multiply each digit of 23 by 3, starting with the ones."
+      },
+      {
+        "subgoalLabel": "Multiply the ones",
+        "instruction": "Multiply the ones digit: 3 × 3.",
+        "work": "3 × 3 = 9. Write 9 in the ones place.",
+        "explanation": "Since 9 is a single digit, there is no regrouping."
+      },
+      {
+        "subgoalLabel": "Multiply the tens",
+        "instruction": "Multiply the tens digit: 2 × 3.",
+        "work": "2 × 3 = 6. Write 6 in the tens place.",
+        "explanation": "This means 20 × 3 = 60."
+      },
+      {
+        "subgoalLabel": "State the answer",
+        "instruction": "What is 23 × 3?",
+        "work": "23 × 3 = 69",
+        "explanation": "When no digit product is 10 or more, there is no regrouping needed."
+      }
+    ]
+  },
+  {
+    "id": "multiply-2x1-no-regroup-ex2",
+    "topicId": "multiply-2x1-no-regroup",
+    "title": "Using Place Value to Multiply Without Regrouping",
+    "steps": [
+      {
+        "subgoalLabel": "State the problem",
+        "instruction": "Find 31 × 3 by breaking it into tens and ones.",
+        "work": "31 = 30 + 1",
+        "explanation": "We can use place value to split the problem into two easier multiplications."
+      },
+      {
+        "subgoalLabel": "Multiply the tens part",
+        "instruction": "Find 30 × 3.",
+        "work": "30 × 3 = 90.",
+        "explanation": "3 tens times 3 equals 9 tens, which is 90."
+      },
+      {
+        "subgoalLabel": "Multiply the ones part",
+        "instruction": "Find 1 × 3.",
+        "work": "1 × 3 = 3.",
+        "explanation": "1 one times 3 equals 3 ones."
+      },
+      {
+        "subgoalLabel": "Add the partial products",
+        "instruction": "Add 90 + 3.",
+        "work": "90 + 3 = 93.",
+        "explanation": "31 × 3 = (30 × 3) + (1 × 3) = 90 + 3 = 93."
+      }
+    ]
+  }
+]

@@ -1,0 +1,197 @@
+[
+  {
+    "id": "division-concept-p1",
+    "topicId": "division-concept",
+    "difficulty": "easy",
+    "question": "You have 8 stickers and share them equally among 2 friends. How many stickers does each friend get?",
+    "answer": "4",
+    "hints": [
+      "Division means splitting into equal groups.",
+      "Think: 8 split into 2 equal groups."
+    ],
+    "solution": "8 ÷ 2 = 4. Each friend gets 4 stickers.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "division-concept-p2",
+    "topicId": "division-concept",
+    "difficulty": "easy",
+    "question": "There are 10 apples shared equally among 5 baskets. How many apples are in each basket?",
+    "answer": "2",
+    "hints": [
+      "Put the same number in each basket.",
+      "10 split into 5 equal groups."
+    ],
+    "solution": "10 ÷ 5 = 2. Each basket gets 2 apples.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "division-concept-p3",
+    "topicId": "division-concept",
+    "difficulty": "easy",
+    "question": "6 ÷ 3 = ?",
+    "answer": "2",
+    "hints": [
+      "How many groups of 3 are in 6?",
+      "Count: 3, 6 — that is 2 groups."
+    ],
+    "solution": "6 ÷ 3 = 2. There are 2 groups of 3 in 6.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "division-concept-p4",
+    "topicId": "division-concept",
+    "difficulty": "easy",
+    "question": "12 cookies are shared equally among 4 children. How many cookies does each child get?",
+    "answer": "3",
+    "hints": [
+      "Division means equal sharing.",
+      "12 split into 4 equal groups."
+    ],
+    "solution": "12 ÷ 4 = 3. Each child gets 3 cookies.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "division-concept-p5",
+    "topicId": "division-concept",
+    "difficulty": "easy",
+    "question": "15 ÷ 5 = ?",
+    "answer": "3",
+    "hints": [
+      "How many groups of 5 are in 15?",
+      "Count by 5: 5, 10, 15 — that is 3 groups."
+    ],
+    "solution": "15 ÷ 5 = 3. There are 3 groups of 5 in 15.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "division-concept-p6",
+    "topicId": "division-concept",
+    "difficulty": "medium",
+    "question": "There are 18 pencils. You want to make groups of 6. How many groups can you make?",
+    "answer": "3",
+    "hints": [
+      "This is grouping division: how many groups of 6 fit in 18?",
+      "Count by 6: 6, 12, 18."
+    ],
+    "solution": "18 ÷ 6 = 3. You can make 3 groups of 6 pencils.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "division-concept-p7",
+    "topicId": "division-concept",
+    "difficulty": "medium",
+    "question": "A teacher has 20 markers and puts the same number on each of 4 tables. How many markers are on each table?",
+    "answer": "5",
+    "hints": [
+      "This is equal sharing: 20 shared among 4.",
+      "What number times 4 equals 20?"
+    ],
+    "solution": "20 ÷ 4 = 5. Each table gets 5 markers.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "division-concept-p8",
+    "topicId": "division-concept",
+    "difficulty": "medium",
+    "question": "Which division fact matches this: 7 × 3 = 21? Type the division equation using ÷ and =.",
+    "answer": "21 ÷ 3 = 7",
+    "hints": [
+      "Division undoes multiplication.",
+      "If 7 × 3 = 21, then 21 ÷ 3 = ?"
+    ],
+    "solution": "Since 7 × 3 = 21, we know 21 ÷ 3 = 7 (and also 21 ÷ 7 = 3).",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "division-concept-p9",
+    "topicId": "division-concept",
+    "difficulty": "medium",
+    "question": "You have 24 grapes and want each person to get 8 grapes. How many people can share?",
+    "answer": "3",
+    "hints": [
+      "This is grouping: how many groups of 8 in 24?",
+      "Think: 8 × ? = 24."
+    ],
+    "solution": "24 ÷ 8 = 3. Three people can each get 8 grapes.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "division-concept-p10",
+    "topicId": "division-concept",
+    "difficulty": "medium",
+    "question": "Write a multiplication fact that helps you solve 30 ÷ 5. Type just the multiplication equation.",
+    "answer": "6 × 5 = 30",
+    "hints": [
+      "Think: what number times 5 equals 30?",
+      "Use your times tables for 5."
+    ],
+    "solution": "6 × 5 = 30, so 30 ÷ 5 = 6. Multiplication and division are related.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "division-concept-p11",
+    "topicId": "division-concept",
+    "difficulty": "hard",
+    "question": "Sam says '12 ÷ 3 means making 3 groups.' Mia says '12 ÷ 3 means putting 3 in each group.' Who is correct? Type 'Sam', 'Mia', or 'both'.",
+    "answer": "both",
+    "hints": [
+      "Division can mean equal sharing OR equal grouping.",
+      "12 ÷ 3 can mean 3 groups of 4, or groups of 3 (making 4 groups)."
+    ],
+    "solution": "Both are correct. 12 ÷ 3 = 4 can mean 3 groups of 4 (sharing) or 4 groups of 3 (grouping). Division has two meanings.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "division-concept-p12",
+    "topicId": "division-concept",
+    "difficulty": "hard",
+    "question": "If you know that 9 × 4 = 36, write two different division facts. Separate them with a comma.",
+    "answer": "36 ÷ 4 = 9, 36 ÷ 9 = 4",
+    "hints": [
+      "Every multiplication fact gives two division facts.",
+      "Divide the product by each factor."
+    ],
+    "solution": "From 9 × 4 = 36: 36 ÷ 4 = 9 and 36 ÷ 9 = 4. A fact family links multiplication and division.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "division-concept-p13",
+    "topicId": "division-concept",
+    "difficulty": "hard",
+    "question": "True or false: 0 ÷ 5 = 0. Type 'true' or 'false'.",
+    "answer": "true",
+    "hints": [
+      "If you share 0 things among 5 people, how many does each get?",
+      "Zero divided by any number (except 0) is 0."
+    ],
+    "solution": "True. 0 ÷ 5 = 0 because sharing 0 things gives everyone 0.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "division-concept-p14",
+    "topicId": "division-concept",
+    "difficulty": "hard",
+    "question": "Can you divide a number by 0? Type 'yes' or 'no'.",
+    "answer": "no",
+    "hints": [
+      "Think: 6 ÷ 0 means splitting 6 into 0 groups. Does that make sense?",
+      "There is no number times 0 that equals 6."
+    ],
+    "solution": "No. Division by 0 is undefined. You cannot split things into 0 groups.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "division-concept-p15",
+    "topicId": "division-concept",
+    "difficulty": "hard",
+    "question": "A number divided by itself equals 1 (when the number is not 0). What is 8 ÷ 8?",
+    "answer": "1",
+    "hints": [
+      "Any nonzero number divided by itself is 1.",
+      "8 shared among 8 groups — each group gets 1."
+    ],
+    "solution": "8 ÷ 8 = 1. Any number divided by itself is 1 because each group gets exactly 1.",
+    "cognitiveDemand": "synthesis"
+  }
+]

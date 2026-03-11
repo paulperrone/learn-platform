@@ -296,7 +296,7 @@
     {
       "id": "multiply-within-100",
       "name": "Multiply Within 100",
-      "description": "Fluently multiply within 100 (multiplication facts to 10\u00d710).",
+      "description": "Fluently multiply within 100 (multiplication facts to 10×10).",
       "gradeLevel": 3,
       "standardCode": "3.OA.7",
       "strand": "operations-multiplication",
@@ -526,7 +526,7 @@
     {
       "id": "multiply-fraction-by-whole",
       "name": "Multiply Fraction by Whole Number",
-      "description": "Multiply a fraction by a whole number (e.g., 3 \u00d7 2/5).",
+      "description": "Multiply a fraction by a whole number (e.g., 3 × 2/5).",
       "gradeLevel": 4,
       "standardCode": "4.NF.4",
       "strand": "fractions",
@@ -676,7 +676,7 @@
     {
       "id": "volume",
       "name": "Volume",
-      "description": "Find volumes of right rectangular prisms. Use V = l \u00d7 w \u00d7 h.",
+      "description": "Find volumes of right rectangular prisms. Use V = l × w × h.",
       "gradeLevel": 5,
       "standardCode": "5.MD.3",
       "strand": "geometry",
@@ -2072,6 +2072,876 @@
       "strand": "polynomials-intro",
       "contentDepth": "survey",
       "defaultPresentation": "standard"
+    },
+    {
+      "id": "count-objects-to-5",
+      "name": "Count Objects to 5",
+      "description": "Count a set of up to 5 objects with one-to-one correspondence.",
+      "gradeLevel": 0,
+      "standardCode": "K.CC.4",
+      "strand": "counting-cardinality",
+      "contentDepth": "survey",
+      "defaultPresentation": "primary"
+    },
+    {
+      "id": "count-objects-to-10",
+      "name": "Count Objects to 10",
+      "description": "Count a set of up to 10 objects, saying number names in order.",
+      "gradeLevel": 0,
+      "standardCode": "K.CC.4",
+      "strand": "counting-cardinality",
+      "contentDepth": "survey",
+      "defaultPresentation": "primary"
+    },
+    {
+      "id": "count-objects-to-20",
+      "name": "Count Objects to 20",
+      "description": "Count a set of up to 20 objects arranged in various configurations.",
+      "gradeLevel": 0,
+      "standardCode": "K.CC.5",
+      "strand": "counting-cardinality",
+      "contentDepth": "survey",
+      "defaultPresentation": "primary"
+    },
+    {
+      "id": "one-to-one-correspondence",
+      "name": "One-to-One Correspondence",
+      "description": "Match each object in a set to exactly one number when counting.",
+      "gradeLevel": 0,
+      "standardCode": "K.CC.4a",
+      "strand": "counting-cardinality",
+      "contentDepth": "survey",
+      "defaultPresentation": "primary"
+    },
+    {
+      "id": "count-forward-from-number",
+      "name": "Count Forward from a Given Number",
+      "description": "Start counting from any number within 20, not just from 1.",
+      "gradeLevel": 0,
+      "standardCode": "K.CC.2",
+      "strand": "counting-cardinality",
+      "contentDepth": "survey",
+      "defaultPresentation": "primary"
+    },
+    {
+      "id": "count-backward-from-10",
+      "name": "Count Backward from 10",
+      "description": "Count backward from 10 to 0.",
+      "gradeLevel": 0,
+      "standardCode": "K.CC.2",
+      "strand": "counting-cardinality",
+      "contentDepth": "survey",
+      "defaultPresentation": "primary"
+    },
+    {
+      "id": "count-backward-from-20",
+      "name": "Count Backward from 20",
+      "description": "Count backward from 20 to 0.",
+      "gradeLevel": 0,
+      "standardCode": "K.CC.2",
+      "strand": "counting-cardinality",
+      "contentDepth": "survey",
+      "defaultPresentation": "primary"
+    },
+    {
+      "id": "compare-groups-more-less",
+      "name": "Compare Groups (More/Less/Same)",
+      "description": "Compare two groups of objects and determine which has more, fewer, or if they are the same.",
+      "gradeLevel": 0,
+      "standardCode": "K.CC.6",
+      "strand": "counting-cardinality",
+      "contentDepth": "survey",
+      "defaultPresentation": "primary"
+    },
+    {
+      "id": "order-numbers-to-10",
+      "name": "Order Numbers to 10",
+      "description": "Arrange numbers from 0 to 10 in order from least to greatest or greatest to least.",
+      "gradeLevel": 0,
+      "standardCode": "K.CC.7",
+      "strand": "counting-cardinality",
+      "contentDepth": "survey",
+      "defaultPresentation": "primary"
+    },
+    {
+      "id": "order-numbers-to-20",
+      "name": "Order Numbers to 20",
+      "description": "Arrange numbers from 0 to 20 in order from least to greatest or greatest to least.",
+      "gradeLevel": 0,
+      "standardCode": "K.CC.7",
+      "strand": "counting-cardinality",
+      "contentDepth": "survey",
+      "defaultPresentation": "primary"
+    },
+    {
+      "id": "number-bonds-to-10",
+      "name": "Number Bonds to 10 (Compose/Decompose)",
+      "description": "Break apart and put together numbers within 10 (e.g., 7 = 3 + 4).",
+      "gradeLevel": 0,
+      "standardCode": "K.OA.3",
+      "strand": "counting-cardinality",
+      "contentDepth": "survey",
+      "defaultPresentation": "primary"
+    },
+    {
+      "id": "add-doubles",
+      "name": "Addition Doubles (1+1 through 10+10)",
+      "description": "Add doubles facts from 1+1 to 10+10 as a mental math strategy.",
+      "gradeLevel": 0,
+      "standardCode": "K.OA.5",
+      "strand": "operations-addition",
+      "contentDepth": "survey",
+      "defaultPresentation": "primary"
+    },
+    {
+      "id": "add-near-doubles",
+      "name": "Addition Near-Doubles",
+      "description": "Use doubles facts to add near-doubles (e.g., 6+7 = 6+6+1).",
+      "gradeLevel": 1,
+      "standardCode": "1.OA.6",
+      "strand": "operations-addition",
+      "contentDepth": "survey",
+      "defaultPresentation": "primary"
+    },
+    {
+      "id": "add-make-ten",
+      "name": "Make Ten Strategy",
+      "description": "Decompose an addend to make a ten when adding (e.g., 8+5 = 8+2+3 = 10+3).",
+      "gradeLevel": 1,
+      "standardCode": "1.OA.6",
+      "strand": "operations-addition",
+      "contentDepth": "survey",
+      "defaultPresentation": "primary"
+    },
+    {
+      "id": "add-three-numbers",
+      "name": "Add Three Numbers (within 20)",
+      "description": "Add three single-digit or small numbers with a sum within 20.",
+      "gradeLevel": 1,
+      "standardCode": "1.OA.2",
+      "strand": "operations-addition",
+      "contentDepth": "survey",
+      "defaultPresentation": "primary"
+    },
+    {
+      "id": "add-two-digit-no-regroup",
+      "name": "Add Two-Digit Numbers (No Regrouping)",
+      "description": "Add two two-digit numbers without regrouping (e.g., 32 + 15).",
+      "gradeLevel": 1,
+      "standardCode": "1.NBT.4",
+      "strand": "operations-addition",
+      "contentDepth": "survey",
+      "defaultPresentation": "primary"
+    },
+    {
+      "id": "add-two-digit-regroup",
+      "name": "Add Two-Digit Numbers (With Regrouping)",
+      "description": "Add two two-digit numbers with regrouping ones to tens (e.g., 38 + 47).",
+      "gradeLevel": 1,
+      "standardCode": "1.NBT.4",
+      "strand": "operations-addition",
+      "contentDepth": "survey",
+      "defaultPresentation": "primary"
+    },
+    {
+      "id": "add-three-digit",
+      "name": "Add Three-Digit Numbers",
+      "description": "Add three-digit numbers using the standard algorithm with regrouping.",
+      "gradeLevel": 2,
+      "standardCode": "2.NBT.7",
+      "strand": "operations-addition",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "add-multi-digit",
+      "name": "Add Multi-Digit Numbers (4+ digits)",
+      "description": "Add numbers with four or more digits using the standard algorithm.",
+      "gradeLevel": 3,
+      "standardCode": "3.NBT.2",
+      "strand": "operations-addition",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "add-three-addends-multi-digit",
+      "name": "Add Three or More Multi-Digit Numbers",
+      "description": "Add three or more multi-digit numbers in a single problem.",
+      "gradeLevel": 3,
+      "standardCode": "3.NBT.2",
+      "strand": "operations-addition",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "estimation-addition",
+      "name": "Estimate Sums",
+      "description": "Use rounding and compatible numbers to estimate sums.",
+      "gradeLevel": 3,
+      "standardCode": "3.OA.8",
+      "strand": "operations-addition",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "addition-properties",
+      "name": "Properties of Addition (Commutative, Associative, Identity)",
+      "description": "Understand and apply commutative, associative, and identity properties of addition.",
+      "gradeLevel": 1,
+      "standardCode": "1.OA.3",
+      "strand": "operations-addition",
+      "contentDepth": "survey",
+      "defaultPresentation": "primary"
+    },
+    {
+      "id": "add-word-problems-join",
+      "name": "Addition Word Problems: Join/Combine",
+      "description": "Solve word problems involving joining or combining quantities.",
+      "gradeLevel": 1,
+      "standardCode": "1.OA.1",
+      "strand": "operations-addition",
+      "contentDepth": "survey",
+      "defaultPresentation": "primary"
+    },
+    {
+      "id": "add-word-problems-compare",
+      "name": "Addition Word Problems: Compare",
+      "description": "Solve word problems involving comparison using addition (how many more/fewer).",
+      "gradeLevel": 1,
+      "standardCode": "1.OA.1",
+      "strand": "operations-addition",
+      "contentDepth": "survey",
+      "defaultPresentation": "primary"
+    },
+    {
+      "id": "add-word-problems-multi-step",
+      "name": "Multi-Step Addition Word Problems",
+      "description": "Solve word problems requiring two or more addition steps.",
+      "gradeLevel": 3,
+      "standardCode": "3.OA.8",
+      "strand": "operations-addition",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "mental-addition-strategies",
+      "name": "Mental Addition Strategies (Compensation, Splitting)",
+      "description": "Use mental strategies like compensation (add 100, subtract 1) and splitting (break apart by place value) to add.",
+      "gradeLevel": 2,
+      "standardCode": "2.NBT.8",
+      "strand": "operations-addition",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "add-on-number-line",
+      "name": "Addition on a Number Line",
+      "description": "Represent and solve addition problems by making jumps on a number line.",
+      "gradeLevel": 1,
+      "standardCode": "1.OA.6",
+      "strand": "operations-addition",
+      "contentDepth": "survey",
+      "defaultPresentation": "primary"
+    },
+    {
+      "id": "missing-addend",
+      "name": "Missing Addend Problems",
+      "description": "Find the unknown addend in equations like 5 + ? = 12.",
+      "gradeLevel": 1,
+      "standardCode": "1.OA.8",
+      "strand": "operations-addition",
+      "contentDepth": "survey",
+      "defaultPresentation": "primary"
+    },
+    {
+      "id": "subtract-count-back",
+      "name": "Subtract by Counting Back",
+      "description": "Subtract small numbers by counting backward from the starting number.",
+      "gradeLevel": 0,
+      "standardCode": "K.OA.1",
+      "strand": "operations-subtraction",
+      "contentDepth": "survey",
+      "defaultPresentation": "primary"
+    },
+    {
+      "id": "subtract-related-facts",
+      "name": "Subtraction Related to Addition Facts",
+      "description": "Use known addition facts to solve subtraction (e.g., 15-8=? because 8+7=15).",
+      "gradeLevel": 1,
+      "standardCode": "1.OA.4",
+      "strand": "operations-subtraction",
+      "contentDepth": "survey",
+      "defaultPresentation": "primary"
+    },
+    {
+      "id": "subtract-two-digit-no-regroup",
+      "name": "Subtract Two-Digit Numbers (No Regrouping)",
+      "description": "Subtract two-digit numbers without regrouping (e.g., 67 - 23).",
+      "gradeLevel": 1,
+      "standardCode": "1.NBT.6",
+      "strand": "operations-subtraction",
+      "contentDepth": "survey",
+      "defaultPresentation": "primary"
+    },
+    {
+      "id": "subtract-two-digit-regroup",
+      "name": "Subtract Two-Digit Numbers (With Regrouping)",
+      "description": "Subtract two-digit numbers with regrouping (borrowing) from the tens place.",
+      "gradeLevel": 2,
+      "standardCode": "2.NBT.7",
+      "strand": "operations-subtraction",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "subtract-three-digit",
+      "name": "Subtract Three-Digit Numbers",
+      "description": "Subtract three-digit numbers using the standard algorithm with regrouping.",
+      "gradeLevel": 2,
+      "standardCode": "2.NBT.7",
+      "strand": "operations-subtraction",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "subtract-across-zeros",
+      "name": "Subtract Across Zeros",
+      "description": "Subtract from numbers with zeros in the middle or end (e.g., 400 - 167).",
+      "gradeLevel": 3,
+      "standardCode": "3.NBT.2",
+      "strand": "operations-subtraction",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "subtract-multi-digit",
+      "name": "Subtract Multi-Digit Numbers (4+ digits)",
+      "description": "Subtract numbers with four or more digits using the standard algorithm.",
+      "gradeLevel": 3,
+      "standardCode": "3.NBT.2",
+      "strand": "operations-subtraction",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "estimation-subtraction",
+      "name": "Estimate Differences",
+      "description": "Use rounding and compatible numbers to estimate differences.",
+      "gradeLevel": 3,
+      "standardCode": "3.OA.8",
+      "strand": "operations-subtraction",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "subtraction-word-problems-separate",
+      "name": "Subtraction Word Problems: Take-Away/Separate",
+      "description": "Solve word problems where a quantity is taken away from a starting amount.",
+      "gradeLevel": 1,
+      "standardCode": "1.OA.1",
+      "strand": "operations-subtraction",
+      "contentDepth": "survey",
+      "defaultPresentation": "primary"
+    },
+    {
+      "id": "subtraction-word-problems-compare",
+      "name": "Subtraction Word Problems: Compare",
+      "description": "Solve word problems involving comparison using subtraction.",
+      "gradeLevel": 1,
+      "standardCode": "1.OA.1",
+      "strand": "operations-subtraction",
+      "contentDepth": "survey",
+      "defaultPresentation": "primary"
+    },
+    {
+      "id": "subtraction-word-problems-missing",
+      "name": "Subtraction Word Problems: Missing Part",
+      "description": "Solve word problems where the subtrahend or difference is unknown.",
+      "gradeLevel": 2,
+      "standardCode": "2.OA.1",
+      "strand": "operations-subtraction",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "mental-subtraction-strategies",
+      "name": "Mental Subtraction Strategies",
+      "description": "Use mental strategies like counting up, compensation, and place-value splitting to subtract.",
+      "gradeLevel": 2,
+      "standardCode": "2.NBT.8",
+      "strand": "operations-subtraction",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "subtract-on-number-line",
+      "name": "Subtraction on a Number Line",
+      "description": "Represent and solve subtraction problems by making jumps backward on a number line.",
+      "gradeLevel": 1,
+      "standardCode": "1.OA.6",
+      "strand": "operations-subtraction",
+      "contentDepth": "survey",
+      "defaultPresentation": "primary"
+    },
+    {
+      "id": "check-subtraction-with-addition",
+      "name": "Check Subtraction Using Addition",
+      "description": "Verify subtraction answers by adding the difference and subtrahend.",
+      "gradeLevel": 2,
+      "standardCode": "2.NBT.9",
+      "strand": "operations-subtraction",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "subtract-word-problems-multi-step",
+      "name": "Multi-Step Subtraction Word Problems",
+      "description": "Solve word problems requiring two or more subtraction steps or mixed addition/subtraction.",
+      "gradeLevel": 3,
+      "standardCode": "3.OA.8",
+      "strand": "operations-subtraction",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "equal-groups",
+      "name": "Equal Groups (Introduction to Multiplication)",
+      "description": "Understand multiplication as combining equal groups of objects.",
+      "gradeLevel": 2,
+      "standardCode": "2.OA.4",
+      "strand": "operations-multiplication",
+      "contentDepth": "survey",
+      "defaultPresentation": "primary"
+    },
+    {
+      "id": "multiply-by-2-5-10",
+      "name": "Multiply by 2, 5, and 10",
+      "description": "Multiply using anchor facts: 2s, 5s, and 10s.",
+      "gradeLevel": 2,
+      "standardCode": "3.OA.7",
+      "strand": "operations-multiplication",
+      "contentDepth": "survey",
+      "defaultPresentation": "primary"
+    },
+    {
+      "id": "multiply-by-0-1",
+      "name": "Multiply by 0 and 1 (Identity and Zero Properties)",
+      "description": "Understand that any number times 0 is 0 and any number times 1 is itself.",
+      "gradeLevel": 3,
+      "standardCode": "3.OA.5",
+      "strand": "operations-multiplication",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "multiply-by-3-4",
+      "name": "Multiply by 3 and 4",
+      "description": "Learn multiplication facts for 3s and 4s.",
+      "gradeLevel": 3,
+      "standardCode": "3.OA.7",
+      "strand": "operations-multiplication",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "multiply-by-6-7-8-9",
+      "name": "Multiply by 6, 7, 8, and 9",
+      "description": "Learn the remaining single-digit multiplication facts.",
+      "gradeLevel": 3,
+      "standardCode": "3.OA.7",
+      "strand": "operations-multiplication",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "multiply-fluency-100",
+      "name": "Multiplication Fluency (Within 100)",
+      "description": "Fluently multiply single-digit numbers with speed and accuracy.",
+      "gradeLevel": 3,
+      "standardCode": "3.OA.7",
+      "strand": "operations-multiplication",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "multiply-by-10-100-1000",
+      "name": "Multiply by 10, 100, and 1,000",
+      "description": "Multiply whole numbers by 10, 100, and 1,000 using place-value patterns.",
+      "gradeLevel": 3,
+      "standardCode": "3.NBT.3",
+      "strand": "operations-multiplication",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "multiply-multiples-of-10",
+      "name": "Multiply Multiples of 10",
+      "description": "Multiply multiples of 10 (e.g., 30 × 40 = 1,200) using place-value reasoning.",
+      "gradeLevel": 3,
+      "standardCode": "3.NBT.3",
+      "strand": "operations-multiplication",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "multiply-2x1-no-regroup",
+      "name": "Multiply 2-Digit by 1-Digit (No Regrouping)",
+      "description": "Multiply a two-digit number by a one-digit number without regrouping (e.g., 23 × 3).",
+      "gradeLevel": 3,
+      "standardCode": "3.NBT.3",
+      "strand": "operations-multiplication",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "multiply-2x1-regroup",
+      "name": "Multiply 2-Digit by 1-Digit (With Regrouping)",
+      "description": "Multiply a two-digit number by a one-digit number with regrouping (e.g., 47 × 6).",
+      "gradeLevel": 3,
+      "standardCode": "3.NBT.3",
+      "strand": "operations-multiplication",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "multiply-3x1",
+      "name": "Multiply 3-Digit by 1-Digit",
+      "description": "Multiply a three-digit number by a one-digit number using the standard algorithm.",
+      "gradeLevel": 4,
+      "standardCode": "4.NBT.5",
+      "strand": "operations-multiplication",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "multiply-4x1",
+      "name": "Multiply 4+-Digit by 1-Digit",
+      "description": "Multiply a number with four or more digits by a one-digit number.",
+      "gradeLevel": 4,
+      "standardCode": "4.NBT.5",
+      "strand": "operations-multiplication",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "multiply-2x2-area-model",
+      "name": "Multiply 2-Digit by 2-Digit (Area Model)",
+      "description": "Multiply two two-digit numbers using the area model (box method).",
+      "gradeLevel": 4,
+      "standardCode": "4.NBT.5",
+      "strand": "operations-multiplication",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "multiply-2x2-standard",
+      "name": "Multiply 2-Digit by 2-Digit (Standard Algorithm)",
+      "description": "Multiply two two-digit numbers using the standard algorithm with partial products.",
+      "gradeLevel": 4,
+      "standardCode": "4.NBT.5",
+      "strand": "operations-multiplication",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "multiply-multi-digit-2",
+      "name": "Multiply Multi-Digit by 2-Digit",
+      "description": "Multiply a multi-digit number by a two-digit number.",
+      "gradeLevel": 5,
+      "standardCode": "5.NBT.5",
+      "strand": "operations-multiplication",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "multiply-3x3",
+      "name": "Multiply 3-Digit by 3-Digit",
+      "description": "Multiply two three-digit numbers using the standard algorithm.",
+      "gradeLevel": 5,
+      "standardCode": "5.NBT.5",
+      "strand": "operations-multiplication",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "estimation-multiplication",
+      "name": "Estimate Products",
+      "description": "Use rounding and compatible numbers to estimate products.",
+      "gradeLevel": 4,
+      "standardCode": "4.OA.3",
+      "strand": "operations-multiplication",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "multiply-word-problems-equal-groups",
+      "name": "Multiplication Word Problems: Equal Groups",
+      "description": "Solve word problems involving equal groups using multiplication.",
+      "gradeLevel": 3,
+      "standardCode": "3.OA.3",
+      "strand": "operations-multiplication",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "multiply-word-problems-comparison",
+      "name": "Multiplication Word Problems: Multiplicative Comparison",
+      "description": "Solve word problems involving multiplicative comparison (e.g., 3 times as many).",
+      "gradeLevel": 4,
+      "standardCode": "4.OA.2",
+      "strand": "operations-multiplication",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "multiply-word-problems-area",
+      "name": "Multiplication Word Problems: Area",
+      "description": "Solve word problems involving area using multiplication.",
+      "gradeLevel": 4,
+      "standardCode": "4.MD.3",
+      "strand": "operations-multiplication",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "multiplication-division-relationship",
+      "name": "Relationship Between Multiplication and Division",
+      "description": "Understand that multiplication and division are inverse operations and use fact families.",
+      "gradeLevel": 3,
+      "standardCode": "3.OA.6",
+      "strand": "operations-multiplication",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "commutative-property-mult",
+      "name": "Commutative Property of Multiplication",
+      "description": "Understand and apply the commutative property: a × b = b × a.",
+      "gradeLevel": 3,
+      "standardCode": "3.OA.5",
+      "strand": "operations-multiplication",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "associative-distributive-mult",
+      "name": "Associative and Distributive Properties",
+      "description": "Understand and apply associative and distributive properties of multiplication.",
+      "gradeLevel": 3,
+      "standardCode": "3.OA.5",
+      "strand": "operations-multiplication",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "division-concept",
+      "name": "Division as Equal Sharing/Grouping",
+      "description": "Understand division as splitting into equal groups or finding how many groups.",
+      "gradeLevel": 2,
+      "standardCode": "2.OA.4",
+      "strand": "operations-division",
+      "contentDepth": "survey",
+      "defaultPresentation": "primary"
+    },
+    {
+      "id": "divide-by-2-5-10",
+      "name": "Divide by 2, 5, and 10",
+      "description": "Divide using anchor divisors: 2, 5, and 10.",
+      "gradeLevel": 3,
+      "standardCode": "3.OA.7",
+      "strand": "operations-division",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "divide-by-3-4",
+      "name": "Divide by 3 and 4",
+      "description": "Divide by 3 and 4 using related multiplication facts.",
+      "gradeLevel": 3,
+      "standardCode": "3.OA.7",
+      "strand": "operations-division",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "divide-by-6-7-8-9",
+      "name": "Divide by 6 through 9",
+      "description": "Divide by 6, 7, 8, and 9 using known multiplication facts.",
+      "gradeLevel": 3,
+      "standardCode": "3.OA.7",
+      "strand": "operations-division",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "division-vocabulary",
+      "name": "Dividends, Divisors, Quotients, and Remainders",
+      "description": "Identify and use correct vocabulary for division components.",
+      "gradeLevel": 3,
+      "standardCode": "3.OA.7",
+      "strand": "operations-division",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "division-remainders-intro",
+      "name": "Division with Remainders (Introduction)",
+      "description": "Understand remainders and find quotients with remainders for single-digit divisors.",
+      "gradeLevel": 3,
+      "standardCode": "3.OA.7",
+      "strand": "operations-division",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "interpret-remainders",
+      "name": "Interpret Remainders in Context",
+      "description": "Decide what to do with a remainder based on the problem context (round up, drop, or express as fraction).",
+      "gradeLevel": 4,
+      "standardCode": "4.OA.3",
+      "strand": "operations-division",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "divide-by-10-100-1000",
+      "name": "Divide by 10, 100, and 1,000",
+      "description": "Divide whole numbers by 10, 100, and 1,000 using place-value patterns.",
+      "gradeLevel": 4,
+      "standardCode": "4.NBT.1",
+      "strand": "operations-division",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "estimation-division",
+      "name": "Estimate Quotients",
+      "description": "Use compatible numbers and rounding to estimate quotients.",
+      "gradeLevel": 4,
+      "standardCode": "4.OA.3",
+      "strand": "operations-division",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "long-division-1-digit-no-remainder",
+      "name": "Long Division by 1-Digit (No Remainder)",
+      "description": "Divide multi-digit numbers by a one-digit divisor with no remainder using the standard algorithm.",
+      "gradeLevel": 4,
+      "standardCode": "4.NBT.6",
+      "strand": "operations-division",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "long-division-1-digit-remainder",
+      "name": "Long Division by 1-Digit (With Remainder)",
+      "description": "Divide multi-digit numbers by a one-digit divisor with a remainder using the standard algorithm.",
+      "gradeLevel": 4,
+      "standardCode": "4.NBT.6",
+      "strand": "operations-division",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "long-division-2-digit",
+      "name": "Long Division by 2-Digit Divisor",
+      "description": "Divide multi-digit numbers by a two-digit divisor using the standard algorithm.",
+      "gradeLevel": 5,
+      "standardCode": "5.NBT.6",
+      "strand": "operations-division",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "long-division-larger",
+      "name": "Long Division (Larger Numbers)",
+      "description": "Divide larger multi-digit numbers using long division with multi-step regrouping.",
+      "gradeLevel": 5,
+      "standardCode": "5.NBT.6",
+      "strand": "operations-division",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "division-with-zeros",
+      "name": "Division with Zeros in Quotient",
+      "description": "Handle zeros in the quotient when dividing (e.g., 612 ÷ 6 = 102).",
+      "gradeLevel": 4,
+      "standardCode": "4.NBT.6",
+      "strand": "operations-division",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "fractions-as-division",
+      "name": "Fractions as Division",
+      "description": "Understand that a/b means a ÷ b and express division results as fractions.",
+      "gradeLevel": 5,
+      "standardCode": "5.NF.3",
+      "strand": "operations-division",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "division-word-problems-equal-sharing",
+      "name": "Division Word Problems: Equal Sharing",
+      "description": "Solve word problems where items are shared equally among groups.",
+      "gradeLevel": 3,
+      "standardCode": "3.OA.3",
+      "strand": "operations-division",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "division-word-problems-grouping",
+      "name": "Division Word Problems: How Many Groups",
+      "description": "Solve word problems asking how many groups can be formed from a total.",
+      "gradeLevel": 3,
+      "standardCode": "3.OA.3",
+      "strand": "operations-division",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "division-word-problems-multi-step",
+      "name": "Multi-Step Division Word Problems",
+      "description": "Solve word problems requiring division combined with other operations.",
+      "gradeLevel": 4,
+      "standardCode": "4.OA.3",
+      "strand": "operations-division",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "division-word-problems-interpret",
+      "name": "Division Word Problems: Interpret Remainder",
+      "description": "Solve word problems where the remainder must be interpreted in context.",
+      "gradeLevel": 4,
+      "standardCode": "4.OA.3",
+      "strand": "operations-division",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "divisibility-rules-2-5-10",
+      "name": "Divisibility Rules for 2, 5, 10",
+      "description": "Determine if a number is divisible by 2, 5, or 10 using divisibility rules.",
+      "gradeLevel": 4,
+      "standardCode": "4.OA.4",
+      "strand": "operations-division",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "divisibility-rules-3-9",
+      "name": "Divisibility Rules for 3, 6, 9",
+      "description": "Determine if a number is divisible by 3, 6, or 9 using digit-sum rules.",
+      "gradeLevel": 4,
+      "standardCode": "4.OA.4",
+      "strand": "operations-division",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
     }
   ],
   "prerequisites": [
@@ -2280,18 +3150,6 @@
       "type": "required"
     },
     {
-      "from": "intro-arrays",
-      "to": "multiply-within-100",
-      "strength": 1,
-      "type": "required"
-    },
-    {
-      "from": "skip-count-2-5-10",
-      "to": "multiply-within-100",
-      "strength": 0.7,
-      "type": "required"
-    },
-    {
       "from": "multiply-within-100",
       "to": "divide-within-100",
       "strength": 1,
@@ -2424,27 +3282,9 @@
       "type": "required"
     },
     {
-      "from": "multiply-within-100",
-      "to": "multi-digit-multiply",
-      "strength": 1,
-      "type": "required"
-    },
-    {
-      "from": "properties-of-multiplication",
-      "to": "multi-digit-multiply",
-      "strength": 0.8,
-      "type": "required"
-    },
-    {
       "from": "multi-digit-add-sub",
       "to": "multi-digit-multiply",
       "strength": 0.6,
-      "type": "required"
-    },
-    {
-      "from": "divide-within-100",
-      "to": "long-division",
-      "strength": 1,
       "type": "required"
     },
     {
@@ -2564,18 +3404,6 @@
     {
       "from": "decimals-intro",
       "to": "place-value-decimals",
-      "strength": 1,
-      "type": "required"
-    },
-    {
-      "from": "multi-digit-multiply",
-      "to": "multiply-multi-digit",
-      "strength": 1,
-      "type": "required"
-    },
-    {
-      "from": "long-division",
-      "to": "divide-multi-digit",
       "strength": 1,
       "type": "required"
     },
@@ -4000,6 +4828,738 @@
       "to": "statistical-questions",
       "strength": 1,
       "type": "required"
+    },
+    {
+      "from": "count-to-10",
+      "to": "count-objects-to-10",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "count-to-20",
+      "to": "count-objects-to-20",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "count-objects-to-10",
+      "to": "one-to-one-correspondence",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "count-to-20",
+      "to": "count-forward-from-number",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "count-to-10",
+      "to": "count-backward-from-10",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "count-to-20",
+      "to": "count-backward-from-20",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "count-backward-from-10",
+      "to": "count-backward-from-20",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "count-objects-to-10",
+      "to": "compare-groups-more-less",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "compare-numbers-k",
+      "to": "order-numbers-to-10",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "compare-numbers-k",
+      "to": "order-numbers-to-20",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "count-to-20",
+      "to": "order-numbers-to-20",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "count-to-10",
+      "to": "number-bonds-to-10",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "add-within-10",
+      "to": "add-doubles",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "add-doubles",
+      "to": "add-near-doubles",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "add-within-20",
+      "to": "add-near-doubles",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "add-within-20",
+      "to": "add-make-ten",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "number-bonds-to-10",
+      "to": "add-make-ten",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "add-within-20",
+      "to": "add-three-numbers",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "add-within-100",
+      "to": "add-two-digit-no-regroup",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "place-value-tens-ones",
+      "to": "add-two-digit-no-regroup",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "add-two-digit-no-regroup",
+      "to": "add-two-digit-regroup",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "add-within-1000",
+      "to": "add-three-digit",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "place-value-hundreds",
+      "to": "add-three-digit",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "add-three-digit",
+      "to": "add-multi-digit",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "add-multi-digit",
+      "to": "add-three-addends-multi-digit",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "place-value-rounding",
+      "to": "estimation-addition",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "add-within-1000",
+      "to": "estimation-addition",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "add-within-20",
+      "to": "addition-properties",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "add-within-20",
+      "to": "add-word-problems-join",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "add-word-problems-join",
+      "to": "add-word-problems-compare",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "add-multi-digit",
+      "to": "add-word-problems-multi-step",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "multi-step-word-problems",
+      "to": "add-word-problems-multi-step",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "add-within-100-fluent",
+      "to": "mental-addition-strategies",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "add-within-20",
+      "to": "add-on-number-line",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "add-within-20",
+      "to": "missing-addend",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "subtract-within-10",
+      "to": "subtract-count-back",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "subtract-within-20",
+      "to": "subtract-related-facts",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "add-within-20",
+      "to": "subtract-related-facts",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "subtract-within-100-fluent",
+      "to": "subtract-two-digit-no-regroup",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "place-value-tens-ones",
+      "to": "subtract-two-digit-no-regroup",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "subtract-two-digit-no-regroup",
+      "to": "subtract-two-digit-regroup",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "subtract-within-1000",
+      "to": "subtract-three-digit",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "place-value-hundreds",
+      "to": "subtract-three-digit",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "subtract-three-digit",
+      "to": "subtract-across-zeros",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "subtract-three-digit",
+      "to": "subtract-multi-digit",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "place-value-rounding",
+      "to": "estimation-subtraction",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "subtract-within-1000",
+      "to": "estimation-subtraction",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "subtract-within-20",
+      "to": "subtraction-word-problems-separate",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "subtraction-word-problems-separate",
+      "to": "subtraction-word-problems-compare",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "subtraction-word-problems-separate",
+      "to": "subtraction-word-problems-missing",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "subtract-within-100-fluent",
+      "to": "mental-subtraction-strategies",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "subtract-within-20",
+      "to": "subtract-on-number-line",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "subtract-two-digit-regroup",
+      "to": "check-subtraction-with-addition",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "add-two-digit-regroup",
+      "to": "check-subtraction-with-addition",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "subtract-multi-digit",
+      "to": "subtract-word-problems-multi-step",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "add-within-20",
+      "to": "equal-groups",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "equal-groups",
+      "to": "multiply-by-2-5-10",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "skip-count-2-5-10",
+      "to": "multiply-by-2-5-10",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "multiply-within-100",
+      "to": "multiply-by-0-1",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "multiply-by-2-5-10",
+      "to": "multiply-by-3-4",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "multiply-by-3-4",
+      "to": "multiply-by-6-7-8-9",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "multiply-by-6-7-8-9",
+      "to": "multiply-fluency-100",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "multiply-within-100",
+      "to": "multiply-by-10-100-1000",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "place-value-rounding",
+      "to": "multiply-by-10-100-1000",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "multiply-by-10-100-1000",
+      "to": "multiply-multiples-of-10",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "multiply-within-100",
+      "to": "multiply-2x1-no-regroup",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "place-value-tens-ones",
+      "to": "multiply-2x1-no-regroup",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "multiply-2x1-no-regroup",
+      "to": "multiply-2x1-regroup",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "multiply-2x1-regroup",
+      "to": "multiply-3x1",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "place-value-hundreds",
+      "to": "multiply-3x1",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "multiply-3x1",
+      "to": "multiply-4x1",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "multiply-2x1-regroup",
+      "to": "multiply-2x2-area-model",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "intro-arrays",
+      "to": "multiply-2x2-area-model",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "multiply-2x2-area-model",
+      "to": "multiply-2x2-standard",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "multiply-2x2-standard",
+      "to": "multiply-multi-digit-2",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "multiply-multi-digit-2",
+      "to": "multiply-3x3",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "place-value-rounding",
+      "to": "estimation-multiplication",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "multiply-2x1-regroup",
+      "to": "estimation-multiplication",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "multiply-within-100",
+      "to": "multiply-word-problems-equal-groups",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "multiply-word-problems-equal-groups",
+      "to": "multiply-word-problems-comparison",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "multi-digit-multiply",
+      "to": "multiply-word-problems-area",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "area-multiply",
+      "to": "multiply-word-problems-area",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "multiply-within-100",
+      "to": "multiplication-division-relationship",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "divide-within-100",
+      "to": "multiplication-division-relationship",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "multiply-within-100",
+      "to": "commutative-property-mult",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "commutative-property-mult",
+      "to": "associative-distributive-mult",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "equal-groups",
+      "to": "division-concept",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "division-concept",
+      "to": "divide-by-2-5-10",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "multiply-by-2-5-10",
+      "to": "divide-by-2-5-10",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "divide-by-2-5-10",
+      "to": "divide-by-3-4",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "divide-by-3-4",
+      "to": "divide-by-6-7-8-9",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "divide-within-100",
+      "to": "division-vocabulary",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "divide-within-100",
+      "to": "division-remainders-intro",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "division-remainders-intro",
+      "to": "interpret-remainders",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "divide-within-100",
+      "to": "divide-by-10-100-1000",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "multiply-by-10-100-1000",
+      "to": "divide-by-10-100-1000",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "place-value-rounding",
+      "to": "estimation-division",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "divide-within-100",
+      "to": "estimation-division",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "divide-within-100",
+      "to": "long-division-1-digit-no-remainder",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "place-value-hundreds",
+      "to": "long-division-1-digit-no-remainder",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "long-division-1-digit-no-remainder",
+      "to": "long-division-1-digit-remainder",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "division-remainders-intro",
+      "to": "long-division-1-digit-remainder",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "long-division-1-digit-remainder",
+      "to": "long-division-2-digit",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "long-division-2-digit",
+      "to": "long-division-larger",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "long-division-1-digit-no-remainder",
+      "to": "division-with-zeros",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "long-division",
+      "to": "fractions-as-division",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "intro-fractions",
+      "to": "fractions-as-division",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "divide-within-100",
+      "to": "division-word-problems-equal-sharing",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "division-word-problems-equal-sharing",
+      "to": "division-word-problems-grouping",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "long-division",
+      "to": "division-word-problems-multi-step",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "multi-step-word-problems",
+      "to": "division-word-problems-multi-step",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "interpret-remainders",
+      "to": "division-word-problems-interpret",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "division-word-problems-grouping",
+      "to": "division-word-problems-interpret",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "divide-within-100",
+      "to": "divisibility-rules-2-5-10",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "odd-even",
+      "to": "divisibility-rules-2-5-10",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "divisibility-rules-2-5-10",
+      "to": "divisibility-rules-3-9",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "multiply-by-6-7-8-9",
+      "to": "multiply-within-100",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "long-division-1-digit-remainder",
+      "to": "long-division",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "multiply-2x2-standard",
+      "to": "multi-digit-multiply",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "multiply-3x3",
+      "to": "multiply-multi-digit",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "long-division-larger",
+      "to": "divide-multi-digit",
+      "type": "required",
+      "strength": 1
+    },
+    {
+      "from": "multi-step-word-problems",
+      "to": "subtract-word-problems-multi-step",
+      "type": "required",
+      "strength": 1
     }
   ],
   "encompassings": [
@@ -5317,6 +6877,81 @@
       "parent": "factor-gcf-polynomials",
       "child": "monomials",
       "weight": 0.5
+    },
+    {
+      "parent": "compare-numbers-k",
+      "child": "compare-groups-more-less",
+      "weight": 0.8
+    },
+    {
+      "parent": "add-multi-digit",
+      "child": "add-three-digit",
+      "weight": 0.7
+    },
+    {
+      "parent": "add-multi-digit",
+      "child": "add-two-digit-regroup",
+      "weight": 0.6
+    },
+    {
+      "parent": "estimation-addition",
+      "child": "add-within-1000",
+      "weight": 0.3
+    },
+    {
+      "parent": "subtract-multi-digit",
+      "child": "subtract-three-digit",
+      "weight": 0.7
+    },
+    {
+      "parent": "subtract-multi-digit",
+      "child": "subtract-two-digit-regroup",
+      "weight": 0.6
+    },
+    {
+      "parent": "subtract-across-zeros",
+      "child": "subtract-two-digit-regroup",
+      "weight": 0.7
+    },
+    {
+      "parent": "multiply-3x3",
+      "child": "multiply-multi-digit-2",
+      "weight": 0.7
+    },
+    {
+      "parent": "multiply-3x3",
+      "child": "multiply-2x2-standard",
+      "weight": 0.6
+    },
+    {
+      "parent": "multiply-multi-digit",
+      "child": "multiply-4x1",
+      "weight": 0.6
+    },
+    {
+      "parent": "multiply-multi-digit",
+      "child": "multiply-3x1",
+      "weight": 0.5
+    },
+    {
+      "parent": "divide-multi-digit",
+      "child": "long-division-2-digit",
+      "weight": 0.7
+    },
+    {
+      "parent": "divide-multi-digit",
+      "child": "long-division-1-digit-remainder",
+      "weight": 0.6
+    },
+    {
+      "parent": "long-division",
+      "child": "long-division-1-digit-remainder",
+      "weight": 0.8
+    },
+    {
+      "parent": "long-division",
+      "child": "long-division-1-digit-no-remainder",
+      "weight": 0.9
     }
   ],
   "collections": [
@@ -5354,7 +6989,45 @@
         "subtract-within-20",
         "subtract-within-5",
         "teen-numbers",
-        "tell-time-hour-half"
+        "tell-time-hour-half",
+        "count-objects-to-5",
+        "count-objects-to-10",
+        "count-objects-to-20",
+        "one-to-one-correspondence",
+        "count-forward-from-number",
+        "count-backward-from-10",
+        "count-backward-from-20",
+        "compare-groups-more-less",
+        "order-numbers-to-10",
+        "order-numbers-to-20",
+        "number-bonds-to-10",
+        "add-doubles",
+        "add-near-doubles",
+        "add-make-ten",
+        "add-three-numbers",
+        "add-two-digit-no-regroup",
+        "add-two-digit-regroup",
+        "addition-properties",
+        "add-word-problems-join",
+        "add-word-problems-compare",
+        "add-on-number-line",
+        "missing-addend",
+        "subtract-count-back",
+        "subtract-related-facts",
+        "subtract-two-digit-no-regroup",
+        "subtract-two-digit-regroup",
+        "subtraction-word-problems-separate",
+        "subtraction-word-problems-compare",
+        "subtract-on-number-line",
+        "equal-groups",
+        "multiply-by-2-5-10",
+        "division-concept",
+        "add-three-digit",
+        "mental-addition-strategies",
+        "subtract-three-digit",
+        "subtraction-word-problems-missing",
+        "mental-subtraction-strategies",
+        "check-subtraction-with-addition"
       ]
     },
     {
@@ -5425,7 +7098,56 @@
         "tell-time-minute",
         "unit-conversion",
         "variables-expressions",
-        "volume"
+        "volume",
+        "add-multi-digit",
+        "add-three-addends-multi-digit",
+        "estimation-addition",
+        "add-word-problems-multi-step",
+        "subtract-across-zeros",
+        "subtract-multi-digit",
+        "estimation-subtraction",
+        "subtract-word-problems-multi-step",
+        "multiply-by-0-1",
+        "multiply-by-3-4",
+        "multiply-by-6-7-8-9",
+        "multiply-fluency-100",
+        "multiply-by-10-100-1000",
+        "multiply-multiples-of-10",
+        "multiply-2x1-no-regroup",
+        "multiply-2x1-regroup",
+        "multiply-3x1",
+        "multiply-4x1",
+        "multiply-2x2-area-model",
+        "multiply-2x2-standard",
+        "multiply-multi-digit-2",
+        "multiply-3x3",
+        "estimation-multiplication",
+        "multiply-word-problems-equal-groups",
+        "multiply-word-problems-comparison",
+        "multiply-word-problems-area",
+        "multiplication-division-relationship",
+        "commutative-property-mult",
+        "associative-distributive-mult",
+        "divide-by-2-5-10",
+        "divide-by-3-4",
+        "divide-by-6-7-8-9",
+        "division-vocabulary",
+        "division-remainders-intro",
+        "interpret-remainders",
+        "divide-by-10-100-1000",
+        "estimation-division",
+        "long-division-1-digit-no-remainder",
+        "long-division-1-digit-remainder",
+        "long-division-2-digit",
+        "long-division-larger",
+        "division-with-zeros",
+        "fractions-as-division",
+        "division-word-problems-equal-sharing",
+        "division-word-problems-grouping",
+        "division-word-problems-multi-step",
+        "division-word-problems-interpret",
+        "divisibility-rules-2-5-10",
+        "divisibility-rules-3-9"
       ]
     },
     {

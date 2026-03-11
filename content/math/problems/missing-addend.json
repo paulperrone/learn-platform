@@ -1,0 +1,188 @@
+[
+  {
+    "id": "missing-addend-p1",
+    "topicId": "missing-addend",
+    "difficulty": "easy",
+    "question": "5 + ? = 9. What is the missing number?",
+    "answer": "4",
+    "hints": [
+      "Count up from 5 to 9.",
+      "5, 6, 7, 8, 9 — that is 4 jumps."
+    ],
+    "solution": "5 + 4 = 9. The missing number is 4.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "missing-addend-p2",
+    "topicId": "missing-addend",
+    "difficulty": "easy",
+    "question": "3 + ? = 10. What is the missing number?",
+    "answer": "7",
+    "hints": [
+      "What do you add to 3 to get 10?"
+    ],
+    "solution": "3 + 7 = 10. The missing number is 7.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "missing-addend-p3",
+    "topicId": "missing-addend",
+    "difficulty": "easy",
+    "question": "? + 6 = 8. What is the missing number?",
+    "answer": "2",
+    "hints": [
+      "What number plus 6 equals 8?"
+    ],
+    "solution": "2 + 6 = 8. The missing number is 2.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "missing-addend-p4",
+    "topicId": "missing-addend",
+    "difficulty": "easy",
+    "question": "7 + ? = 7. What is the missing number?",
+    "answer": "0",
+    "hints": [
+      "The sum is the same as the first number. What number adds nothing?"
+    ],
+    "solution": "7 + 0 = 7. The missing number is 0.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "missing-addend-p5",
+    "topicId": "missing-addend",
+    "difficulty": "easy",
+    "question": "4 + ? = 11. What is the missing number?",
+    "answer": "7",
+    "hints": [
+      "Count up from 4 to 11."
+    ],
+    "solution": "4 + 7 = 11. The missing number is 7.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "missing-addend-p6",
+    "topicId": "missing-addend",
+    "difficulty": "medium",
+    "question": "5 + ? = 12. What is the missing number?",
+    "answer": "7",
+    "hints": [
+      "Think: 12 − 5 = ?"
+    ],
+    "solution": "5 + 7 = 12. You can find the missing addend by subtracting: 12 − 5 = 7.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "missing-addend-p7",
+    "topicId": "missing-addend",
+    "difficulty": "medium",
+    "question": "? + 8 = 15. What is the missing number?",
+    "answer": "7",
+    "hints": [
+      "15 − 8 = ?"
+    ],
+    "solution": "7 + 8 = 15. Missing addend: 15 − 8 = 7.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "missing-addend-p8",
+    "topicId": "missing-addend",
+    "difficulty": "medium",
+    "question": "9 + ? = 16. What is the missing number?",
+    "answer": "7",
+    "hints": [
+      "16 − 9 = ?"
+    ],
+    "solution": "9 + 7 = 16. Missing addend: 16 − 9 = 7.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "missing-addend-p9",
+    "topicId": "missing-addend",
+    "difficulty": "medium",
+    "question": "6 + ? = 14. What is the missing number?",
+    "answer": "8",
+    "hints": [
+      "14 − 6 = ?"
+    ],
+    "solution": "6 + 8 = 14. Missing addend: 14 − 6 = 8.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "missing-addend-p10",
+    "topicId": "missing-addend",
+    "difficulty": "medium",
+    "question": "? + 9 = 18. What is the missing number?",
+    "answer": "9",
+    "hints": [
+      "18 − 9 = ?"
+    ],
+    "solution": "9 + 9 = 18. Missing addend: 18 − 9 = 9.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "missing-addend-p11",
+    "topicId": "missing-addend",
+    "difficulty": "hard",
+    "question": "A jar has some marbles. 6 more marbles are added and now there are 15 marbles. How many marbles were in the jar at first?",
+    "answer": "9",
+    "hints": [
+      "? + 6 = 15.",
+      "15 − 6 = ?"
+    ],
+    "solution": "? + 6 = 15. The jar had 15 − 6 = 9 marbles at first.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "missing-addend-p12",
+    "topicId": "missing-addend",
+    "difficulty": "hard",
+    "question": "I am thinking of a number. When I add 8 to it, I get 17. What is my number?",
+    "answer": "9",
+    "hints": [
+      "? + 8 = 17.",
+      "17 − 8 = ?"
+    ],
+    "solution": "? + 8 = 17. The number is 17 − 8 = 9.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "missing-addend-p13",
+    "topicId": "missing-addend",
+    "difficulty": "hard",
+    "question": "Both boxes together hold 13 toys. The first box has 5 toys. The second box has some toys. How many toys are in the second box?",
+    "answer": "8",
+    "hints": [
+      "5 + ? = 13.",
+      "13 − 5 = ?"
+    ],
+    "solution": "5 + ? = 13. The second box has 13 − 5 = 8 toys.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "missing-addend-p14",
+    "topicId": "missing-addend",
+    "difficulty": "hard",
+    "question": "Find two different missing addend problems that have the answer 6. Write them both.",
+    "answer": "4 + 6 = 10 and 6 + 6 = 12",
+    "hints": [
+      "Think of any sum where one addend is 6.",
+      "Example: ? + ? = some number, and the missing part is 6."
+    ],
+    "solution": "Examples: 4 + 6 = 10 (missing 6, given 4 + ? = 10). Also: 6 + 6 = 12 (missing 6, given ? + 6 = 12). Any pair where the missing number is 6 works.",
+    "cognitiveDemand": "reasoning"
+  },
+  {
+    "id": "missing-addend-p15",
+    "topicId": "missing-addend",
+    "difficulty": "hard",
+    "question": "? + ? = 10. Both missing numbers are the same. What are they?",
+    "answer": "5",
+    "hints": [
+      "The two numbers are equal and add to 10.",
+      "What is half of 10?"
+    ],
+    "solution": "5 + 5 = 10. Both missing numbers are 5.",
+    "cognitiveDemand": "reasoning"
+  }
+]

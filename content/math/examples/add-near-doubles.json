@@ -1,0 +1,52 @@
+[
+  {
+    "id": "add-near-doubles-ex1",
+    "topicId": "add-near-doubles",
+    "title": "Using Near Doubles: 6 + 7",
+    "steps": [
+      {
+        "subgoalLabel": "Find the nearby double",
+        "instruction": "Look at 6 and 7. Which doubles fact is closest?",
+        "work": "6 and 7 are only 1 apart. The nearby double is 6 + 6 = 12.",
+        "explanation": "When two numbers are 1 apart, you can start with a doubles fact you know."
+      },
+      {
+        "subgoalLabel": "Adjust for the difference",
+        "instruction": "7 is 1 more than 6, so add 1 to the doubles answer.",
+        "work": "12 + 1 = 13",
+        "explanation": "Since we used 6 + 6 but the real problem has 7 (which is 1 more), we add 1."
+      },
+      {
+        "subgoalLabel": "State the answer",
+        "instruction": "Write the final answer.",
+        "work": "6 + 7 = 13",
+        "explanation": "The near-doubles strategy: double the smaller number, then add 1."
+      }
+    ]
+  },
+  {
+    "id": "add-near-doubles-ex2",
+    "topicId": "add-near-doubles",
+    "title": "Near Doubles with Larger Numbers: 8 + 9",
+    "steps": [
+      {
+        "subgoalLabel": "Identify the doubles fact",
+        "instruction": "8 and 9 are 1 apart. What is the doubles fact for the smaller number?",
+        "work": "8 + 8 = 16",
+        "explanation": "Start with the double of the smaller number (8)."
+      },
+      {
+        "subgoalLabel": "Add 1 more",
+        "instruction": "Since 9 is 1 more than 8, add 1 to 16.",
+        "work": "16 + 1 = 17",
+        "explanation": "We replaced 9 with 8 to make a double, so we need to add the extra 1 back."
+      },
+      {
+        "subgoalLabel": "Write the answer",
+        "instruction": "Complete the number sentence.",
+        "work": "8 + 9 = 17",
+        "explanation": "Near doubles make adding faster because you already know your doubles facts!"
+      }
+    ]
+  }
+]

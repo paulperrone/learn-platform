@@ -1,0 +1,197 @@
+[
+  {
+    "id": "subtract-three-digit-p1",
+    "topicId": "subtract-three-digit",
+    "difficulty": "easy",
+    "question": "What is 345 − 123?",
+    "answer": "222",
+    "hints": [
+      "Subtract each place: ones, tens, hundreds.",
+      "5 − 3 = 2, 4 − 2 = 2, 3 − 1 = 2."
+    ],
+    "solution": "Ones: 5 − 3 = 2. Tens: 4 − 2 = 2. Hundreds: 3 − 1 = 2. Answer: 222.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "subtract-three-digit-p2",
+    "topicId": "subtract-three-digit",
+    "difficulty": "easy",
+    "question": "What is 578 − 234?",
+    "answer": "344",
+    "hints": [
+      "Subtract place by place.",
+      "8 − 4 = 4, 7 − 3 = 4, 5 − 2 = 3."
+    ],
+    "solution": "Ones: 8 − 4 = 4. Tens: 7 − 3 = 4. Hundreds: 5 − 2 = 3. Answer: 344.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "subtract-three-digit-p3",
+    "topicId": "subtract-three-digit",
+    "difficulty": "easy",
+    "question": "What is 463 − 218?",
+    "answer": "245",
+    "hints": [
+      "Ones: 3 < 8, so regroup.",
+      "13 − 8 = 5. Tens: 5 − 1 = 4. Hundreds: 4 − 2 = 2."
+    ],
+    "solution": "Ones: 3 < 8, regroup. 13 − 8 = 5. Tens: 5 − 1 = 4. Hundreds: 4 − 2 = 2. Answer: 245.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "subtract-three-digit-p4",
+    "topicId": "subtract-three-digit",
+    "difficulty": "easy",
+    "question": "What is 752 − 319?",
+    "answer": "433",
+    "hints": [
+      "Ones: 2 < 9, regroup.",
+      "12 − 9 = 3. Tens: 4 − 1 = 3. Hundreds: 7 − 3 = 4."
+    ],
+    "solution": "Ones: 2 < 9, regroup. 12 − 9 = 3. Tens: 4 − 1 = 3. Hundreds: 7 − 3 = 4. Answer: 433.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "subtract-three-digit-p5",
+    "topicId": "subtract-three-digit",
+    "difficulty": "easy",
+    "question": "What is 896 − 453?",
+    "answer": "443",
+    "hints": [
+      "Subtract each place: 6 − 3, 9 − 5, 8 − 4.",
+      "No regrouping needed."
+    ],
+    "solution": "Ones: 6 − 3 = 3. Tens: 9 − 5 = 4. Hundreds: 8 − 4 = 4. Answer: 443.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "subtract-three-digit-p6",
+    "topicId": "subtract-three-digit",
+    "difficulty": "medium",
+    "question": "What is 534 − 267?",
+    "answer": "267",
+    "hints": [
+      "Ones: 4 < 7, regroup. 14 − 7 = 7.",
+      "Tens: 2 < 6, regroup again. 12 − 6 = 6. Hundreds: 4 − 2 = 2."
+    ],
+    "solution": "Ones: 4 < 7, regroup. 14 − 7 = 7. Tens: 2 < 6, regroup. 12 − 6 = 6. Hundreds: 4 − 2 = 2. Answer: 267.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "subtract-three-digit-p7",
+    "topicId": "subtract-three-digit",
+    "difficulty": "medium",
+    "question": "A school has 815 books. They give away 348. How many books are left?",
+    "answer": "467",
+    "hints": [
+      "815 − 348. Ones: 5 < 8, regroup.",
+      "15 − 8 = 7. Tens: 0 < 4, regroup. 10 − 4 = 6. Hundreds: 7 − 3 = 4."
+    ],
+    "solution": "815 − 348: Ones: 5 < 8, regroup. 15 − 8 = 7. Tens: 0 < 4, regroup. 10 − 4 = 6. Hundreds: 7 − 3 = 4. Answer: 467 books left.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "subtract-three-digit-p8",
+    "topicId": "subtract-three-digit",
+    "difficulty": "medium",
+    "question": "What is 621 − 385?",
+    "answer": "236",
+    "hints": [
+      "Ones: 1 < 5, regroup. 11 − 5 = 6.",
+      "Tens: 1 < 8, regroup. 11 − 8 = 3. Hundreds: 5 − 3 = 2."
+    ],
+    "solution": "Ones: 1 < 5, regroup. 11 − 5 = 6. Tens: 1 < 8, regroup. 11 − 8 = 3. Hundreds: 5 − 3 = 2. Answer: 236.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "subtract-three-digit-p9",
+    "topicId": "subtract-three-digit",
+    "difficulty": "medium",
+    "question": "What is 743 − 456?",
+    "answer": "287",
+    "hints": [
+      "Ones: 3 < 6, regroup. 13 − 6 = 7.",
+      "Tens: 3 < 5, regroup. 13 − 5 = 8. Hundreds: 6 − 4 = 2."
+    ],
+    "solution": "Ones: 3 < 6, regroup. 13 − 6 = 7. Tens: 3 < 5, regroup. 13 − 5 = 8. Hundreds: 6 − 4 = 2. Answer: 287.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "subtract-three-digit-p10",
+    "topicId": "subtract-three-digit",
+    "difficulty": "medium",
+    "question": "There are 500 seats in a theater. 276 are taken. How many are empty?",
+    "answer": "224",
+    "hints": [
+      "500 − 276. Ones: 0 < 6, but tens are also 0, so regroup from hundreds.",
+      "500 → 4 hundreds, 10 tens, 0 ones → 4 hundreds, 9 tens, 10 ones."
+    ],
+    "solution": "500 − 276: Regroup 500 to 4 hundreds, 9 tens, 10 ones. Ones: 10 − 6 = 4. Tens: 9 − 7 = 2. Hundreds: 4 − 2 = 2. Answer: 224 empty seats.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "subtract-three-digit-p11",
+    "topicId": "subtract-three-digit",
+    "difficulty": "hard",
+    "question": "A student solved 832 − 467 and got 435. Is this correct? Find the right answer.",
+    "answer": "No, the correct answer is 365",
+    "hints": [
+      "Check ones: 2 < 7, regroup. 12 − 7 = 5. That matches.",
+      "Check tens: 2 < 6, regroup. 12 − 6 = 6. The student wrote 3, not 6."
+    ],
+    "solution": "832 − 467: Ones: 12 − 7 = 5. Tens: 2 < 6, regroup. 12 − 6 = 6. Hundreds: 7 − 4 = 3. Correct answer: 365. The student made an error in the tens place.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "subtract-three-digit-p12",
+    "topicId": "subtract-three-digit",
+    "difficulty": "hard",
+    "question": "Fill in the blank: 912 − ___ = 547.",
+    "answer": "365",
+    "hints": [
+      "Find the missing number: 912 − 547 = ?",
+      "Ones: 2 < 7, regroup. 12 − 7 = 5. Tens: 0 < 4, regroup. 10 − 4 = 6. Hundreds: 8 − 5 = 3."
+    ],
+    "solution": "912 − 547: Ones: 12 − 7 = 5. Tens: 0 < 4, regroup. 10 − 4 = 6. Hundreds: 8 − 5 = 3. Missing number: 365.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "subtract-three-digit-p13",
+    "topicId": "subtract-three-digit",
+    "difficulty": "hard",
+    "question": "What is 700 − 358?",
+    "answer": "342",
+    "hints": [
+      "You need to regroup twice since the tens and ones are both 0.",
+      "700 → 6 hundreds, 9 tens, 10 ones."
+    ],
+    "solution": "700 → 6 hundreds, 9 tens, 10 ones. Ones: 10 − 8 = 2. Tens: 9 − 5 = 4. Hundreds: 6 − 3 = 3. Answer: 342.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "subtract-three-digit-p14",
+    "topicId": "subtract-three-digit",
+    "difficulty": "hard",
+    "question": "___ − 289 = 453. What is the missing number?",
+    "answer": "742",
+    "hints": [
+      "Add to find the missing number: 453 + 289.",
+      "Ones: 3 + 9 = 12, write 2 carry 1. Tens: 5 + 8 + 1 = 14, write 4 carry 1. Hundreds: 4 + 2 + 1 = 7."
+    ],
+    "solution": "Add: 453 + 289. Ones: 3 + 9 = 12 (write 2, carry 1). Tens: 5 + 8 + 1 = 14 (write 4, carry 1). Hundreds: 4 + 2 + 1 = 7. Missing number: 742.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "subtract-three-digit-p15",
+    "topicId": "subtract-three-digit",
+    "difficulty": "hard",
+    "question": "Explain why you sometimes need to regroup more than once in a three-digit subtraction problem. Give an example.",
+    "answer": "When both the ones and tens digits on top are smaller than the digits below, you need to regroup twice. Example: 524 − 367 requires regrouping in both the ones and tens places.",
+    "hints": [
+      "Think about what happens when you cannot subtract in the ones AND the tens.",
+      "In 524 − 367: 4 < 7 needs regrouping, and after that 1 < 6 also needs regrouping."
+    ],
+    "solution": "You regroup more than once when multiple places have a top digit smaller than the bottom. Example: 524 − 367. Ones: 4 < 7, regroup to get 14 − 7 = 7. Tens: now 1 < 6, regroup to get 11 − 6 = 5. Hundreds: 4 − 3 = 1. Answer: 157.",
+    "cognitiveDemand": "synthesis"
+  }
+]

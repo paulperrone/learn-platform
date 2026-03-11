@@ -1,0 +1,197 @@
+[
+  {
+    "id": "multiply-by-10-100-1000-p1",
+    "topicId": "multiply-by-10-100-1000",
+    "difficulty": "easy",
+    "question": "What is 5 × 10?",
+    "answer": "50",
+    "hints": [
+      "Multiplying by 10 adds one zero.",
+      "5 with a zero at the end."
+    ],
+    "solution": "5 × 10 = 50. Put one zero after 5.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-by-10-100-1000-p2",
+    "topicId": "multiply-by-10-100-1000",
+    "difficulty": "easy",
+    "question": "What is 3 × 100?",
+    "answer": "300",
+    "hints": [
+      "Multiplying by 100 adds two zeros.",
+      "3 with two zeros at the end."
+    ],
+    "solution": "3 × 100 = 300. Put two zeros after 3.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-by-10-100-1000-p3",
+    "topicId": "multiply-by-10-100-1000",
+    "difficulty": "easy",
+    "question": "What is 7 × 10?",
+    "answer": "70",
+    "hints": [
+      "Multiplying by 10 adds one zero.",
+      "7 becomes 70."
+    ],
+    "solution": "7 × 10 = 70.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-by-10-100-1000-p4",
+    "topicId": "multiply-by-10-100-1000",
+    "difficulty": "easy",
+    "question": "What is 4 × 1,000?",
+    "answer": "4000",
+    "hints": [
+      "Multiplying by 1,000 adds three zeros.",
+      "4 with three zeros."
+    ],
+    "solution": "4 × 1,000 = 4,000. Put three zeros after 4.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-by-10-100-1000-p5",
+    "topicId": "multiply-by-10-100-1000",
+    "difficulty": "easy",
+    "question": "What is 9 × 100?",
+    "answer": "900",
+    "hints": [
+      "Multiplying by 100 adds two zeros.",
+      "9 with two zeros."
+    ],
+    "solution": "9 × 100 = 900.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-by-10-100-1000-p6",
+    "topicId": "multiply-by-10-100-1000",
+    "difficulty": "medium",
+    "question": "What is 12 × 10?",
+    "answer": "120",
+    "hints": [
+      "Multiplying by 10 adds one zero to the number.",
+      "12 with a zero at the end."
+    ],
+    "solution": "12 × 10 = 120.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-by-10-100-1000-p7",
+    "topicId": "multiply-by-10-100-1000",
+    "difficulty": "medium",
+    "question": "What is 25 × 100?",
+    "answer": "2500",
+    "hints": [
+      "Multiplying by 100 adds two zeros.",
+      "25 with two zeros at the end."
+    ],
+    "solution": "25 × 100 = 2,500.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-by-10-100-1000-p8",
+    "topicId": "multiply-by-10-100-1000",
+    "difficulty": "medium",
+    "question": "What is 6 × 1,000?",
+    "answer": "6000",
+    "hints": [
+      "Multiplying by 1,000 adds three zeros.",
+      "6 followed by three zeros."
+    ],
+    "solution": "6 × 1,000 = 6,000.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-by-10-100-1000-p9",
+    "topicId": "multiply-by-10-100-1000",
+    "difficulty": "medium",
+    "question": "There are 10 teams with 15 players each. How many players in all?",
+    "answer": "150",
+    "hints": [
+      "10 × 15.",
+      "15 with one zero at the end."
+    ],
+    "solution": "10 × 15 = 150 players.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "multiply-by-10-100-1000-p10",
+    "topicId": "multiply-by-10-100-1000",
+    "difficulty": "medium",
+    "question": "A school ordered 100 boxes of pencils with 8 pencils in each box. How many pencils in all?",
+    "answer": "800",
+    "hints": [
+      "100 × 8.",
+      "8 with two zeros."
+    ],
+    "solution": "100 × 8 = 800 pencils.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "multiply-by-10-100-1000-p11",
+    "topicId": "multiply-by-10-100-1000",
+    "difficulty": "hard",
+    "question": "What is 50 × 100?",
+    "answer": "5000",
+    "hints": [
+      "50 × 100: think of 5 × 10 × 100 = 5 × 1,000.",
+      "Or add two zeros to 50."
+    ],
+    "solution": "50 × 100 = 5,000.",
+    "cognitiveDemand": "reasoning"
+  },
+  {
+    "id": "multiply-by-10-100-1000-p12",
+    "topicId": "multiply-by-10-100-1000",
+    "difficulty": "hard",
+    "question": "Fill in the blank: ? × 10 = 320. What is the missing number?",
+    "answer": "32",
+    "hints": [
+      "What number times 10 gives 320?",
+      "Remove the zero from 320."
+    ],
+    "solution": "32 × 10 = 320. Remove one zero to find the missing factor.",
+    "cognitiveDemand": "reasoning"
+  },
+  {
+    "id": "multiply-by-10-100-1000-p13",
+    "topicId": "multiply-by-10-100-1000",
+    "difficulty": "hard",
+    "question": "Fill in the blank: 7 × ? = 7,000. What is the missing number?",
+    "answer": "1000",
+    "hints": [
+      "How many zeros were added to 7?",
+      "Three zeros means multiply by 1,000."
+    ],
+    "solution": "7 × 1,000 = 7,000. Three zeros were added, so the missing factor is 1,000.",
+    "cognitiveDemand": "reasoning"
+  },
+  {
+    "id": "multiply-by-10-100-1000-p14",
+    "topicId": "multiply-by-10-100-1000",
+    "difficulty": "hard",
+    "question": "Which gives a larger product: 8 × 100 or 80 × 10? Type larger, smaller, or equal.",
+    "answer": "equal",
+    "hints": [
+      "Calculate both: 8 × 100 and 80 × 10.",
+      "8 × 100 = 800 and 80 × 10 = 800."
+    ],
+    "solution": "8 × 100 = 800 and 80 × 10 = 800. They are equal.",
+    "cognitiveDemand": "reasoning"
+  },
+  {
+    "id": "multiply-by-10-100-1000-p15",
+    "topicId": "multiply-by-10-100-1000",
+    "difficulty": "hard",
+    "question": "A factory makes 1,000 widgets per hour. How many widgets does it make in 8 hours?",
+    "answer": "8000",
+    "hints": [
+      "8 × 1,000.",
+      "8 with three zeros."
+    ],
+    "solution": "8 × 1,000 = 8,000 widgets.",
+    "cognitiveDemand": "application"
+  }
+]

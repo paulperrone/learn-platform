@@ -1,0 +1,64 @@
+[
+  {
+    "id": "subtraction-word-problems-missing-ex1",
+    "topicId": "subtraction-word-problems-missing",
+    "title": "Finding the Missing Part",
+    "steps": [
+      {
+        "subgoalLabel": "Read the problem",
+        "instruction": "There are 15 children at a park. 9 are on the swings. The rest are on the slide. How many are on the slide?",
+        "work": "Total: 15. On swings: 9. On slide: unknown.",
+        "explanation": "We know the whole (15) and one part (9). We need to find the other part."
+      },
+      {
+        "subgoalLabel": "Write the equation",
+        "instruction": "Set up a subtraction to find the missing part.",
+        "work": "15 − 9 = ?",
+        "explanation": "When we know the whole and one part, we subtract to find the missing part."
+      },
+      {
+        "subgoalLabel": "Solve",
+        "instruction": "Find 15 − 9.",
+        "work": "15 − 9 = 6.",
+        "explanation": "Think: 9 + ? = 15. Since 9 + 6 = 15, the answer is 6."
+      },
+      {
+        "subgoalLabel": "Answer",
+        "instruction": "How many children are on the slide?",
+        "work": "6 children are on the slide. Check: 9 + 6 = 15.",
+        "explanation": "The two parts (9 and 6) add up to the whole (15)."
+      }
+    ]
+  },
+  {
+    "id": "subtraction-word-problems-missing-ex2",
+    "topicId": "subtraction-word-problems-missing",
+    "title": "Missing Part With Larger Numbers",
+    "steps": [
+      {
+        "subgoalLabel": "Read the problem",
+        "instruction": "A jar has 45 jellybeans. 28 are red. The rest are blue. How many blue jellybeans?",
+        "work": "Total: 45. Red: 28. Blue: unknown.",
+        "explanation": "This is a missing-part problem with two-digit numbers."
+      },
+      {
+        "subgoalLabel": "Set up the subtraction",
+        "instruction": "Subtract the known part from the total.",
+        "work": "45 − 28 = ?",
+        "explanation": "We subtract the red count from the total to find blue."
+      },
+      {
+        "subgoalLabel": "Solve with regrouping",
+        "instruction": "5 < 8, so regroup.",
+        "work": "15 − 8 = 7 (ones). 3 − 2 = 1 (tens). Answer: 17.",
+        "explanation": "Borrow 1 ten to make 15 ones, then subtract normally."
+      },
+      {
+        "subgoalLabel": "Answer and verify",
+        "instruction": "How many blue jellybeans? Check your work.",
+        "work": "17 blue jellybeans. Check: 28 + 17 = 45. Correct!",
+        "explanation": "Always check by adding the two parts to see if they equal the total."
+      }
+    ]
+  }
+]

@@ -1,0 +1,197 @@
+[
+  {
+    "id": "multiply-4x1-p1",
+    "topicId": "multiply-4x1",
+    "difficulty": "easy",
+    "question": "What is 1,000 × 5?",
+    "answer": "5000",
+    "hints": [
+      "1 × 5 = 5, then add three zeros.",
+      "5,000."
+    ],
+    "solution": "1,000 × 5 = 5,000.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-4x1-p2",
+    "topicId": "multiply-4x1",
+    "difficulty": "easy",
+    "question": "What is 2,000 × 3?",
+    "answer": "6000",
+    "hints": [
+      "2 × 3 = 6, then add three zeros.",
+      "6,000."
+    ],
+    "solution": "2,000 × 3 = 6,000.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-4x1-p3",
+    "topicId": "multiply-4x1",
+    "difficulty": "easy",
+    "question": "What is 1,234 × 2?",
+    "answer": "2468",
+    "hints": [
+      "Double each digit: 1→2, 2→4, 3→6, 4→8.",
+      "No regrouping needed. Answer: 2,468."
+    ],
+    "solution": "1,234 × 2 = 2,468.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-4x1-p4",
+    "topicId": "multiply-4x1",
+    "difficulty": "easy",
+    "question": "What is 1,100 × 4?",
+    "answer": "4400",
+    "hints": [
+      "11 × 4 = 44, then add two zeros.",
+      "4,400."
+    ],
+    "solution": "1,100 × 4 = 4,400.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-4x1-p5",
+    "topicId": "multiply-4x1",
+    "difficulty": "easy",
+    "question": "What is 3,000 × 2?",
+    "answer": "6000",
+    "hints": [
+      "3 × 2 = 6, then add three zeros.",
+      "6,000."
+    ],
+    "solution": "3,000 × 2 = 6,000.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-4x1-p6",
+    "topicId": "multiply-4x1",
+    "difficulty": "medium",
+    "question": "What is 2,345 × 3?",
+    "answer": "7035",
+    "hints": [
+      "Ones: 5 × 3 = 15 (write 5, carry 1). Tens: 4 × 3 = 12 + 1 = 13 (write 3, carry 1).",
+      "Hundreds: 3 × 3 = 9 + 1 = 10 (write 0, carry 1). Thousands: 2 × 3 = 6 + 1 = 7."
+    ],
+    "solution": "2,345 × 3 = 7,035.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-4x1-p7",
+    "topicId": "multiply-4x1",
+    "difficulty": "medium",
+    "question": "What is 1,506 × 4?",
+    "answer": "6024",
+    "hints": [
+      "Ones: 6 × 4 = 24 (write 4, carry 2). Tens: 0 × 4 = 0 + 2 = 2.",
+      "Hundreds: 5 × 4 = 20 (write 0, carry 2). Thousands: 1 × 4 = 4 + 2 = 6."
+    ],
+    "solution": "1,506 × 4 = 6,024.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-4x1-p8",
+    "topicId": "multiply-4x1",
+    "difficulty": "medium",
+    "question": "A factory produces 1,250 widgets per day. How many does it produce in 6 days?",
+    "answer": "7500",
+    "hints": [
+      "1,250 × 6.",
+      "Ones: 0 × 6 = 0. Tens: 5 × 6 = 30 (write 0, carry 3). Hundreds: 2 × 6 = 12 + 3 = 15 (write 5, carry 1). Thousands: 1 × 6 = 6 + 1 = 7."
+    ],
+    "solution": "1,250 × 6 = 7,500 widgets.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "multiply-4x1-p9",
+    "topicId": "multiply-4x1",
+    "difficulty": "medium",
+    "question": "What is 4,012 × 2?",
+    "answer": "8024",
+    "hints": [
+      "Ones: 2 × 2 = 4. Tens: 1 × 2 = 2. Hundreds: 0 × 2 = 0. Thousands: 4 × 2 = 8.",
+      "Answer: 8,024."
+    ],
+    "solution": "4,012 × 2 = 8,024.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-4x1-p10",
+    "topicId": "multiply-4x1",
+    "difficulty": "medium",
+    "question": "What is 3,456 × 2?",
+    "answer": "6912",
+    "hints": [
+      "Ones: 6 × 2 = 12 (write 2, carry 1). Tens: 5 × 2 = 10 + 1 = 11 (write 1, carry 1).",
+      "Hundreds: 4 × 2 = 8 + 1 = 9. Thousands: 3 × 2 = 6."
+    ],
+    "solution": "3,456 × 2 = 6,912.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-4x1-p11",
+    "topicId": "multiply-4x1",
+    "difficulty": "hard",
+    "question": "What is 5,678 × 7?",
+    "answer": "39746",
+    "hints": [
+      "Ones: 8 × 7 = 56 (write 6, carry 5). Tens: 7 × 7 = 49 + 5 = 54 (write 4, carry 5).",
+      "Hundreds: 6 × 7 = 42 + 5 = 47 (write 7, carry 4). Thousands: 5 × 7 = 35 + 4 = 39."
+    ],
+    "solution": "5,678 × 7 = 39,746.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-4x1-p12",
+    "topicId": "multiply-4x1",
+    "difficulty": "hard",
+    "question": "What is 8,765 × 9?",
+    "answer": "78885",
+    "hints": [
+      "Ones: 5 × 9 = 45 (write 5, carry 4). Tens: 6 × 9 = 54 + 4 = 58 (write 8, carry 5).",
+      "Hundreds: 7 × 9 = 63 + 5 = 68 (write 8, carry 6). Thousands: 8 × 9 = 72 + 6 = 78."
+    ],
+    "solution": "8,765 × 9 = 78,885.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-4x1-p13",
+    "topicId": "multiply-4x1",
+    "difficulty": "hard",
+    "question": "An airline carries 2,475 passengers per day. How many passengers in 8 days?",
+    "answer": "19800",
+    "hints": [
+      "2,475 × 8.",
+      "Work right to left with carrying. Or estimate: 2,500 × 8 = 20,000, so the answer is close to 20,000."
+    ],
+    "solution": "2,475 × 8 = 19,800 passengers.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "multiply-4x1-p14",
+    "topicId": "multiply-4x1",
+    "difficulty": "hard",
+    "question": "What is 9,999 × 5?",
+    "answer": "49995",
+    "hints": [
+      "Think: 10,000 × 5 = 50,000. Then subtract 1 × 5 = 5.",
+      "50,000 − 5 = 49,995."
+    ],
+    "solution": "9,999 × 5 = 49,995. Shortcut: (10,000 − 1) × 5 = 50,000 − 5.",
+    "cognitiveDemand": "reasoning"
+  },
+  {
+    "id": "multiply-4x1-p15",
+    "topicId": "multiply-4x1",
+    "difficulty": "hard",
+    "question": "Tom says 3,057 × 4 = 12,228. Is he correct? Type yes or no.",
+    "answer": "yes",
+    "hints": [
+      "Check: ones: 7 × 4 = 28 (write 8, carry 2). Tens: 5 × 4 = 20 + 2 = 22 (write 2, carry 2).",
+      "Hundreds: 0 × 4 = 0 + 2 = 2. Thousands: 3 × 4 = 12."
+    ],
+    "solution": "Yes. 3,057 × 4 = 12,228. Tom is correct.",
+    "cognitiveDemand": "reasoning"
+  }
+]

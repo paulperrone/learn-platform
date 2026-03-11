@@ -1,0 +1,197 @@
+[
+  {
+    "id": "long-division-1-digit-remainder-p1",
+    "topicId": "long-division-1-digit-remainder",
+    "difficulty": "easy",
+    "question": "Use long division: 85 ÷ 4 = ? R ?",
+    "answer": "21 R 1",
+    "hints": [
+      "8 ÷ 4 = 2. Bring down 5. 5 ÷ 4 = 1 R 1.",
+      "Quotient: 21, Remainder: 1."
+    ],
+    "solution": "8 ÷ 4 = 2. Bring down 5. 5 ÷ 4 = 1 R 1. Answer: 21 R 1. Check: 21 × 4 + 1 = 85 ✓.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "long-division-1-digit-remainder-p2",
+    "topicId": "long-division-1-digit-remainder",
+    "difficulty": "easy",
+    "question": "Use long division: 67 ÷ 3 = ? R ?",
+    "answer": "22 R 1",
+    "hints": [
+      "6 ÷ 3 = 2. Bring down 7. 7 ÷ 3 = 2 R 1.",
+      "Quotient: 22, Remainder: 1."
+    ],
+    "solution": "6 ÷ 3 = 2. Bring down 7. 7 ÷ 3 = 2 R 1. Answer: 22 R 1.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "long-division-1-digit-remainder-p3",
+    "topicId": "long-division-1-digit-remainder",
+    "difficulty": "easy",
+    "question": "Use long division: 59 ÷ 7 = ? R ?",
+    "answer": "8 R 3",
+    "hints": [
+      "7 × 8 = 56. 59 - 56 = 3.",
+      "Quotient: 8, Remainder: 3."
+    ],
+    "solution": "59 ÷ 7 = 8 R 3. Check: 8 × 7 + 3 = 59 ✓.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "long-division-1-digit-remainder-p4",
+    "topicId": "long-division-1-digit-remainder",
+    "difficulty": "easy",
+    "question": "Use long division: 47 ÷ 5 = ? R ?",
+    "answer": "9 R 2",
+    "hints": [
+      "5 × 9 = 45. 47 - 45 = 2.",
+      "Quotient: 9, Remainder: 2."
+    ],
+    "solution": "47 ÷ 5 = 9 R 2.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "long-division-1-digit-remainder-p5",
+    "topicId": "long-division-1-digit-remainder",
+    "difficulty": "easy",
+    "question": "Use long division: 33 ÷ 4 = ? R ?",
+    "answer": "8 R 1",
+    "hints": [
+      "4 × 8 = 32. 33 - 32 = 1.",
+      "Quotient: 8, Remainder: 1."
+    ],
+    "solution": "33 ÷ 4 = 8 R 1.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "long-division-1-digit-remainder-p6",
+    "topicId": "long-division-1-digit-remainder",
+    "difficulty": "medium",
+    "question": "Use long division: 157 ÷ 4 = ? R ?",
+    "answer": "39 R 1",
+    "hints": [
+      "15 ÷ 4 = 3 R 3. Bring down 7 → 37. 37 ÷ 4 = 9 R 1.",
+      "Quotient: 39, Remainder: 1."
+    ],
+    "solution": "15 ÷ 4 = 3 R 3. Bring down 7 → 37. 37 ÷ 4 = 9 R 1. Answer: 39 R 1. Check: 39 × 4 + 1 = 157 ✓.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "long-division-1-digit-remainder-p7",
+    "topicId": "long-division-1-digit-remainder",
+    "difficulty": "medium",
+    "question": "Use long division: 289 ÷ 6 = ? R ?",
+    "answer": "48 R 1",
+    "hints": [
+      "28 ÷ 6 = 4 R 4. Bring down 9 → 49. 49 ÷ 6 = 8 R 1.",
+      "Quotient: 48, Remainder: 1."
+    ],
+    "solution": "28 ÷ 6 = 4 R 4. 49 ÷ 6 = 8 R 1. Answer: 48 R 1. Check: 48 × 6 + 1 = 289 ✓.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "long-division-1-digit-remainder-p8",
+    "topicId": "long-division-1-digit-remainder",
+    "difficulty": "medium",
+    "question": "Use long division: 500 ÷ 7 = ? R ?",
+    "answer": "71 R 3",
+    "hints": [
+      "50 ÷ 7 = 7 R 1. Bring down 0 → 10. 10 ÷ 7 = 1 R 3.",
+      "Quotient: 71, Remainder: 3."
+    ],
+    "solution": "50 ÷ 7 = 7 R 1. Bring down 0 → 10. 10 ÷ 7 = 1 R 3. Answer: 71 R 3. Check: 71 × 7 + 3 = 500 ✓.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "long-division-1-digit-remainder-p9",
+    "topicId": "long-division-1-digit-remainder",
+    "difficulty": "medium",
+    "question": "Use long division: 345 ÷ 8 = ? R ?",
+    "answer": "43 R 1",
+    "hints": [
+      "34 ÷ 8 = 4 R 2. Bring down 5 → 25. 25 ÷ 8 = 3 R 1.",
+      "Quotient: 43, Remainder: 1."
+    ],
+    "solution": "34 ÷ 8 = 4 R 2. 25 ÷ 8 = 3 R 1. Answer: 43 R 1. Check: 43 × 8 + 1 = 345 ✓.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "long-division-1-digit-remainder-p10",
+    "topicId": "long-division-1-digit-remainder",
+    "difficulty": "medium",
+    "question": "A baker has 253 cookies and packs 9 per box. How many full boxes and how many cookies left over?",
+    "answer": "28 R 1",
+    "hints": [
+      "25 ÷ 9 = 2 R 7. Bring down 3 → 73. 73 ÷ 9 = 8 R 1.",
+      "28 full boxes, 1 cookie left."
+    ],
+    "solution": "25 ÷ 9 = 2 R 7. 73 ÷ 9 = 8 R 1. Answer: 28 full boxes with 1 cookie left over.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "long-division-1-digit-remainder-p11",
+    "topicId": "long-division-1-digit-remainder",
+    "difficulty": "hard",
+    "question": "Use long division: 1457 ÷ 6 = ? R ?",
+    "answer": "242 R 5",
+    "hints": [
+      "14 ÷ 6 = 2 R 2. Bring down 5 → 25. 25 ÷ 6 = 4 R 1.",
+      "Bring down 7 → 17. 17 ÷ 6 = 2 R 5."
+    ],
+    "solution": "14 ÷ 6 = 2 R 2. 25 ÷ 6 = 4 R 1. 17 ÷ 6 = 2 R 5. Answer: 242 R 5. Check: 242 × 6 + 5 = 1457 ✓.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "long-division-1-digit-remainder-p12",
+    "topicId": "long-division-1-digit-remainder",
+    "difficulty": "hard",
+    "question": "Use long division: 2000 ÷ 3 = ? R ?",
+    "answer": "666 R 2",
+    "hints": [
+      "20 ÷ 3 = 6 R 2. Bring down 0 → 20. 20 ÷ 3 = 6 R 2. Bring down 0 → 20. 20 ÷ 3 = 6 R 2.",
+      "Quotient: 666, Remainder: 2."
+    ],
+    "solution": "Repeating pattern: 20 ÷ 3 = 6 R 2 three times. Answer: 666 R 2. Check: 666 × 3 + 2 = 2000 ✓.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "long-division-1-digit-remainder-p13",
+    "topicId": "long-division-1-digit-remainder",
+    "difficulty": "hard",
+    "question": "Use long division: 3789 ÷ 7 = ? R ?",
+    "answer": "541 R 2",
+    "hints": [
+      "37 ÷ 7 = 5 R 2. Bring down 8 → 28. 28 ÷ 7 = 4.",
+      "Bring down 9 → 9. 9 ÷ 7 = 1 R 2."
+    ],
+    "solution": "37 ÷ 7 = 5 R 2. 28 ÷ 7 = 4. 9 ÷ 7 = 1 R 2. Answer: 541 R 2. Check: 541 × 7 + 2 = 3789 ✓.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "long-division-1-digit-remainder-p14",
+    "topicId": "long-division-1-digit-remainder",
+    "difficulty": "hard",
+    "question": "A school orders 1250 pencils shared equally among 8 classes. How many does each class get, and how many are left?",
+    "answer": "156 R 2",
+    "hints": [
+      "12 ÷ 8 = 1 R 4. Bring down 5 → 45. 45 ÷ 8 = 5 R 5.",
+      "Bring down 0 → 50. 50 ÷ 8 = 6 R 2."
+    ],
+    "solution": "12 ÷ 8 = 1 R 4. 45 ÷ 8 = 5 R 5. 50 ÷ 8 = 6 R 2. Each class gets 156 pencils with 2 left over.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "long-division-1-digit-remainder-p15",
+    "topicId": "long-division-1-digit-remainder",
+    "difficulty": "hard",
+    "question": "Use long division: 4999 ÷ 9 = ? R ?",
+    "answer": "555 R 4",
+    "hints": [
+      "49 ÷ 9 = 5 R 4. Bring down 9 → 49. 49 ÷ 9 = 5 R 4.",
+      "Bring down 9 → 49. 49 ÷ 9 = 5 R 4."
+    ],
+    "solution": "Repeating: 49 ÷ 9 = 5 R 4 three times. Answer: 555 R 4. Check: 555 × 9 + 4 = 4999 ✓.",
+    "cognitiveDemand": "synthesis"
+  }
+]

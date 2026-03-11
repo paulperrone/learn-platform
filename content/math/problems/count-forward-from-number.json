@@ -1,0 +1,197 @@
+[
+  {
+    "id": "count-forward-from-number-p1",
+    "topicId": "count-forward-from-number",
+    "difficulty": "easy",
+    "question": "Start at 3. What is the next number?",
+    "answer": "4",
+    "hints": [
+      "Count: 1, 2, 3, ... what comes next?",
+      "After 3 comes 4."
+    ],
+    "solution": "The next number after 3 is 4. When counting forward: 3, 4.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "count-forward-from-number-p2",
+    "topicId": "count-forward-from-number",
+    "difficulty": "easy",
+    "question": "Start at 7. What is the next number?",
+    "answer": "8",
+    "hints": [
+      "Count: 5, 6, 7, ... what comes next?",
+      "After 7 comes 8."
+    ],
+    "solution": "The next number after 7 is 8.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "count-forward-from-number-p3",
+    "topicId": "count-forward-from-number",
+    "difficulty": "easy",
+    "question": "Start at 1. What is the next number?",
+    "answer": "2",
+    "hints": [
+      "Count: 1, ... what comes next?",
+      "After 1 comes 2."
+    ],
+    "solution": "The next number after 1 is 2.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "count-forward-from-number-p4",
+    "topicId": "count-forward-from-number",
+    "difficulty": "easy",
+    "question": "Start at 5. What is the next number?",
+    "answer": "6",
+    "hints": [
+      "Count: 3, 4, 5, ... what comes next?",
+      "After 5 comes 6."
+    ],
+    "solution": "The next number after 5 is 6.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "count-forward-from-number-p5",
+    "topicId": "count-forward-from-number",
+    "difficulty": "easy",
+    "question": "Start at 9. What is the next number?",
+    "answer": "10",
+    "hints": [
+      "Count: 7, 8, 9, ... what comes next?",
+      "After 9 comes 10."
+    ],
+    "solution": "The next number after 9 is 10.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "count-forward-from-number-p6",
+    "topicId": "count-forward-from-number",
+    "difficulty": "medium",
+    "question": "Start at 6 and count forward 3 numbers. What number do you land on?",
+    "answer": "9",
+    "hints": [
+      "Start at 6 and say the next 3 numbers.",
+      "6... then 7, 8, 9."
+    ],
+    "solution": "Starting at 6 and counting 3 more: 7, 8, 9. You land on 9.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "count-forward-from-number-p7",
+    "topicId": "count-forward-from-number",
+    "difficulty": "medium",
+    "question": "Start at 12 and count forward 3 numbers. What number do you land on?",
+    "answer": "15",
+    "hints": [
+      "Start at 12 and say the next 3 numbers.",
+      "12... then 13, 14, 15."
+    ],
+    "solution": "Starting at 12 and counting 3 more: 13, 14, 15. You land on 15.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "count-forward-from-number-p8",
+    "topicId": "count-forward-from-number",
+    "difficulty": "medium",
+    "question": "Fill in the missing number: 14, 15, ___, 17. What number is missing?",
+    "answer": "16",
+    "hints": [
+      "Count: 14, 15, ... then what?",
+      "After 15 comes 16."
+    ],
+    "solution": "The missing number is 16. The sequence is 14, 15, 16, 17.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "count-forward-from-number-p9",
+    "topicId": "count-forward-from-number",
+    "difficulty": "medium",
+    "question": "Fill in the missing number: 8, ___, 10, 11. What number is missing?",
+    "answer": "9",
+    "hints": [
+      "Count: 8, ... then what comes before 10?",
+      "After 8 comes 9."
+    ],
+    "solution": "The missing number is 9. The sequence is 8, 9, 10, 11.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "count-forward-from-number-p10",
+    "topicId": "count-forward-from-number",
+    "difficulty": "medium",
+    "question": "Start at 16 and count forward 4 numbers. What number do you land on?",
+    "answer": "20",
+    "hints": [
+      "Start at 16 and count 4 more.",
+      "16... then 17, 18, 19, 20."
+    ],
+    "solution": "Starting at 16 and counting 4 more: 17, 18, 19, 20. You land on 20.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "count-forward-from-number-p11",
+    "topicId": "count-forward-from-number",
+    "difficulty": "hard",
+    "question": "Fill in TWO missing numbers: 11, 12, ___, ___, 15. Type the two missing numbers separated by a comma.",
+    "answer": "13, 14",
+    "hints": [
+      "Count forward from 12.",
+      "After 12 comes 13, then 14."
+    ],
+    "solution": "The missing numbers are 13 and 14. The full sequence is 11, 12, 13, 14, 15.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "count-forward-from-number-p12",
+    "topicId": "count-forward-from-number",
+    "difficulty": "hard",
+    "question": "Amy counted: 4, 5, 6, 8, 9. She made a mistake. What number did she skip?",
+    "answer": "7",
+    "hints": [
+      "Look at the numbers carefully. Which one is missing?",
+      "After 6 should come 7, but Amy said 8."
+    ],
+    "solution": "Amy skipped 7. The correct sequence is 4, 5, 6, 7, 8, 9.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "count-forward-from-number-p13",
+    "topicId": "count-forward-from-number",
+    "difficulty": "hard",
+    "question": "Jake starts counting at 15. He counts 5 more numbers. What is the last number he says?",
+    "answer": "20",
+    "hints": [
+      "Start at 15 and count 5 more.",
+      "15... then 16, 17, 18, 19, 20."
+    ],
+    "solution": "Jake says 16, 17, 18, 19, 20. The last number is 20.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "count-forward-from-number-p14",
+    "topicId": "count-forward-from-number",
+    "difficulty": "hard",
+    "question": "Fill in TWO missing numbers: 17, ___, ___, 20. Type the two missing numbers separated by a comma.",
+    "answer": "18, 19",
+    "hints": [
+      "Count forward from 17.",
+      "After 17 comes 18, then 19."
+    ],
+    "solution": "The missing numbers are 18 and 19. The full sequence is 17, 18, 19, 20.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "count-forward-from-number-p15",
+    "topicId": "count-forward-from-number",
+    "difficulty": "hard",
+    "question": "Mia counted: 10, 11, 12, 13, 15, 16. She skipped a number. What number did she skip?",
+    "answer": "14",
+    "hints": [
+      "Look between 13 and 15.",
+      "After 13 should come 14."
+    ],
+    "solution": "Mia skipped 14. The correct sequence is 10, 11, 12, 13, 14, 15, 16.",
+    "cognitiveDemand": "analysis"
+  }
+]

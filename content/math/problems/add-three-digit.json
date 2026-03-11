@@ -1,0 +1,198 @@
+[
+  {
+    "id": "add-three-digit-p1",
+    "topicId": "add-three-digit",
+    "difficulty": "easy",
+    "question": "What is 123 + 245?",
+    "answer": "368",
+    "hints": [
+      "Add ones: 3 + 5 = 8.",
+      "Add tens: 2 + 4 = 6. Add hundreds: 1 + 2 = 3."
+    ],
+    "solution": "Ones: 3 + 5 = 8. Tens: 2 + 4 = 6. Hundreds: 1 + 2 = 3. Answer: 368.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "add-three-digit-p2",
+    "topicId": "add-three-digit",
+    "difficulty": "easy",
+    "question": "What is 312 + 456?",
+    "answer": "768",
+    "hints": [
+      "Add each place: ones, tens, hundreds."
+    ],
+    "solution": "Ones: 2 + 6 = 8. Tens: 1 + 5 = 6. Hundreds: 3 + 4 = 7. Answer: 768.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "add-three-digit-p3",
+    "topicId": "add-three-digit",
+    "difficulty": "easy",
+    "question": "What is 200 + 500?",
+    "answer": "700",
+    "hints": [
+      "2 hundreds + 5 hundreds = 7 hundreds."
+    ],
+    "solution": "200 + 500 = 700.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "add-three-digit-p4",
+    "topicId": "add-three-digit",
+    "difficulty": "easy",
+    "question": "What is 410 + 380?",
+    "answer": "790",
+    "hints": [
+      "Ones: 0 + 0 = 0. Tens: 1 + 8 = 9. Hundreds: 4 + 3 = 7."
+    ],
+    "solution": "Ones: 0. Tens: 1 + 8 = 9. Hundreds: 4 + 3 = 7. Answer: 790.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "add-three-digit-p5",
+    "topicId": "add-three-digit",
+    "difficulty": "easy",
+    "question": "What is 134 + 215?",
+    "answer": "349",
+    "hints": [
+      "4 + 5 = 9. 3 + 1 = 4. 1 + 2 = 3."
+    ],
+    "solution": "Ones: 4 + 5 = 9. Tens: 3 + 1 = 4. Hundreds: 1 + 2 = 3. Answer: 349.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "add-three-digit-p6",
+    "topicId": "add-three-digit",
+    "difficulty": "medium",
+    "question": "What is 257 + 168?",
+    "answer": "425",
+    "hints": [
+      "Ones: 7 + 8 = 15. Write 5, carry 1.",
+      "Tens: 5 + 6 + 1 = 12. Write 2, carry 1.",
+      "Hundreds: 2 + 1 + 1 = 4."
+    ],
+    "solution": "Ones: 7 + 8 = 15 (write 5, carry 1). Tens: 5 + 6 + 1 = 12 (write 2, carry 1). Hundreds: 2 + 1 + 1 = 4. Answer: 425.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "add-three-digit-p7",
+    "topicId": "add-three-digit",
+    "difficulty": "medium",
+    "question": "What is 483 + 259?",
+    "answer": "742",
+    "hints": [
+      "Ones: 3 + 9 = 12. Carry 1.",
+      "Tens: 8 + 5 + 1 = 14. Carry 1.",
+      "Hundreds: 4 + 2 + 1 = 7."
+    ],
+    "solution": "Ones: 3 + 9 = 12 (write 2, carry 1). Tens: 8 + 5 + 1 = 14 (write 4, carry 1). Hundreds: 4 + 2 + 1 = 7. Answer: 742.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "add-three-digit-p8",
+    "topicId": "add-three-digit",
+    "difficulty": "medium",
+    "question": "What is 375 + 246?",
+    "answer": "621",
+    "hints": [
+      "Ones: 5 + 6 = 11. Carry 1.",
+      "Tens: 7 + 4 + 1 = 12. Carry 1."
+    ],
+    "solution": "Ones: 5 + 6 = 11 (write 1, carry 1). Tens: 7 + 4 + 1 = 12 (write 2, carry 1). Hundreds: 3 + 2 + 1 = 6. Answer: 621.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "add-three-digit-p9",
+    "topicId": "add-three-digit",
+    "difficulty": "medium",
+    "question": "What is 594 + 138?",
+    "answer": "732",
+    "hints": [
+      "Ones: 4 + 8 = 12. Carry 1.",
+      "Tens: 9 + 3 + 1 = 13. Carry 1."
+    ],
+    "solution": "Ones: 4 + 8 = 12 (write 2, carry 1). Tens: 9 + 3 + 1 = 13 (write 3, carry 1). Hundreds: 5 + 1 + 1 = 7. Answer: 732.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "add-three-digit-p10",
+    "topicId": "add-three-digit",
+    "difficulty": "medium",
+    "question": "What is 467 + 355?",
+    "answer": "822",
+    "hints": [
+      "Ones: 7 + 5 = 12. Carry 1.",
+      "Tens: 6 + 5 + 1 = 12. Carry 1."
+    ],
+    "solution": "Ones: 7 + 5 = 12 (write 2, carry 1). Tens: 6 + 5 + 1 = 12 (write 2, carry 1). Hundreds: 4 + 3 + 1 = 8. Answer: 822.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "add-three-digit-p11",
+    "topicId": "add-three-digit",
+    "difficulty": "hard",
+    "question": "A school collected 347 cans in the first week and 486 cans in the second week. How many cans were collected in all?",
+    "answer": "833",
+    "hints": [
+      "Add 347 + 486.",
+      "Ones: 7 + 6 = 13. Carry 1."
+    ],
+    "solution": "347 + 486. Ones: 7 + 6 = 13 (write 3, carry 1). Tens: 4 + 8 + 1 = 13 (write 3, carry 1). Hundreds: 3 + 4 + 1 = 8. Answer: 833 cans.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "add-three-digit-p12",
+    "topicId": "add-three-digit",
+    "difficulty": "hard",
+    "question": "What is 596 + 278?",
+    "answer": "874",
+    "hints": [
+      "Ones: 6 + 8 = 14. Carry 1.",
+      "Tens: 9 + 7 + 1 = 17. Carry 1.",
+      "Hundreds: 5 + 2 + 1 = 8."
+    ],
+    "solution": "Ones: 6 + 8 = 14 (write 4, carry 1). Tens: 9 + 7 + 1 = 17 (write 7, carry 1). Hundreds: 5 + 2 + 1 = 8. Answer: 874.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "add-three-digit-p13",
+    "topicId": "add-three-digit",
+    "difficulty": "hard",
+    "question": "What is 748 + 165?",
+    "answer": "913",
+    "hints": [
+      "Ones: 8 + 5 = 13. Carry 1.",
+      "Tens: 4 + 6 + 1 = 11. Carry 1.",
+      "Hundreds: 7 + 1 + 1 = 9."
+    ],
+    "solution": "Ones: 8 + 5 = 13 (write 3, carry 1). Tens: 4 + 6 + 1 = 11 (write 1, carry 1). Hundreds: 7 + 1 + 1 = 9. Answer: 913.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "add-three-digit-p14",
+    "topicId": "add-three-digit",
+    "difficulty": "hard",
+    "question": "A student says 456 + 387 = 843. Is this correct? Find the actual sum.",
+    "answer": "843",
+    "hints": [
+      "Check: Ones: 6 + 7 = 13 (write 3, carry 1).",
+      "Tens: 5 + 8 + 1 = 14 (write 4, carry 1).",
+      "Hundreds: 4 + 3 + 1 = 8."
+    ],
+    "solution": "Ones: 6 + 7 = 13 (write 3, carry 1). Tens: 5 + 8 + 1 = 14 (write 4, carry 1). Hundreds: 4 + 3 + 1 = 8. The sum is 843. The student is correct.",
+    "cognitiveDemand": "reasoning"
+  },
+  {
+    "id": "add-three-digit-p15",
+    "topicId": "add-three-digit",
+    "difficulty": "hard",
+    "question": "What is 689 + 245?",
+    "answer": "934",
+    "hints": [
+      "Ones: 9 + 5 = 14. Carry 1.",
+      "Tens: 8 + 4 + 1 = 13. Carry 1."
+    ],
+    "solution": "Ones: 9 + 5 = 14 (write 4, carry 1). Tens: 8 + 4 + 1 = 13 (write 3, carry 1). Hundreds: 6 + 2 + 1 = 9. Answer: 934.",
+    "cognitiveDemand": "application"
+  }
+]

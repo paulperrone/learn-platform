@@ -1,0 +1,197 @@
+[
+  {
+    "id": "order-numbers-to-20-p1",
+    "topicId": "order-numbers-to-20",
+    "difficulty": "easy",
+    "question": "What number comes right after 14?",
+    "answer": "15",
+    "hints": [
+      "Count: 13, 14, ...",
+      "After 14 comes 15."
+    ],
+    "solution": "15 comes right after 14.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "order-numbers-to-20-p2",
+    "topicId": "order-numbers-to-20",
+    "difficulty": "easy",
+    "question": "What number comes right before 12?",
+    "answer": "11",
+    "hints": [
+      "Count: 10, 11, 12. What is just before 12?",
+      "11 comes right before 12."
+    ],
+    "solution": "11 comes right before 12.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "order-numbers-to-20-p3",
+    "topicId": "order-numbers-to-20",
+    "difficulty": "easy",
+    "question": "What number comes right after 19?",
+    "answer": "20",
+    "hints": [
+      "Count: 18, 19, ...",
+      "After 19 comes 20."
+    ],
+    "solution": "20 comes right after 19.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "order-numbers-to-20-p4",
+    "topicId": "order-numbers-to-20",
+    "difficulty": "easy",
+    "question": "What number is between 15 and 17?",
+    "answer": "16",
+    "hints": [
+      "Count: 15, ___, 17.",
+      "16 is between 15 and 17."
+    ],
+    "solution": "16 is between 15 and 17.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "order-numbers-to-20-p5",
+    "topicId": "order-numbers-to-20",
+    "difficulty": "easy",
+    "question": "What number comes right before 20?",
+    "answer": "19",
+    "hints": [
+      "Count: 18, 19, 20. What is just before 20?",
+      "19 comes right before 20."
+    ],
+    "solution": "19 comes right before 20.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "order-numbers-to-20-p6",
+    "topicId": "order-numbers-to-20",
+    "difficulty": "medium",
+    "question": "Put these numbers in order from smallest to biggest: 15, 11, 18. Type them separated by commas.",
+    "answer": "11, 15, 18",
+    "hints": [
+      "Find the smallest number first.",
+      "11 is smallest, then 15, then 18."
+    ],
+    "solution": "In order from smallest to biggest: 11, 15, 18.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "order-numbers-to-20-p7",
+    "topicId": "order-numbers-to-20",
+    "difficulty": "medium",
+    "question": "Put these numbers in order from biggest to smallest: 12, 19, 16. Type them separated by commas.",
+    "answer": "19, 16, 12",
+    "hints": [
+      "Find the biggest number first.",
+      "19 is biggest, then 16, then 12."
+    ],
+    "solution": "In order from biggest to smallest: 19, 16, 12.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "order-numbers-to-20-p8",
+    "topicId": "order-numbers-to-20",
+    "difficulty": "medium",
+    "question": "Fill in the missing number: 10, 11, ___, 13, 14. What number is missing?",
+    "answer": "12",
+    "hints": [
+      "What comes after 11?",
+      "After 11 comes 12."
+    ],
+    "solution": "The missing number is 12. In order: 10, 11, 12, 13, 14.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "order-numbers-to-20-p9",
+    "topicId": "order-numbers-to-20",
+    "difficulty": "medium",
+    "question": "Fill in the missing number: 16, 17, ___, 19, 20. What number is missing?",
+    "answer": "18",
+    "hints": [
+      "What comes after 17?",
+      "After 17 comes 18."
+    ],
+    "solution": "The missing number is 18. In order: 16, 17, 18, 19, 20.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "order-numbers-to-20-p10",
+    "topicId": "order-numbers-to-20",
+    "difficulty": "medium",
+    "question": "Put these numbers in order from smallest to biggest: 20, 10, 15. Type them separated by commas.",
+    "answer": "10, 15, 20",
+    "hints": [
+      "Find the smallest number first.",
+      "10 is smallest, then 15, then 20."
+    ],
+    "solution": "In order from smallest to biggest: 10, 15, 20.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "order-numbers-to-20-p11",
+    "topicId": "order-numbers-to-20",
+    "difficulty": "hard",
+    "question": "Put these numbers in order from smallest to biggest: 17, 11, 20, 14. Type them separated by commas.",
+    "answer": "11, 14, 17, 20",
+    "hints": [
+      "Find the smallest first, then the next smallest.",
+      "11, then 14, then 17, then 20."
+    ],
+    "solution": "In order from smallest to biggest: 11, 14, 17, 20.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "order-numbers-to-20-p12",
+    "topicId": "order-numbers-to-20",
+    "difficulty": "hard",
+    "question": "Put these numbers in order from biggest to smallest: 13, 19, 8, 16. Type them separated by commas.",
+    "answer": "19, 16, 13, 8",
+    "hints": [
+      "Find the biggest first.",
+      "19, then 16, then 13, then 8."
+    ],
+    "solution": "In order from biggest to smallest: 19, 16, 13, 8.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "order-numbers-to-20-p13",
+    "topicId": "order-numbers-to-20",
+    "difficulty": "hard",
+    "question": "Are these numbers in order from smallest to biggest? Type yes or no.\n\n11, 13, 15, 14, 17",
+    "answer": "no",
+    "hints": [
+      "Check each pair. Does each number get bigger?",
+      "15 then 14 goes down. That is out of order."
+    ],
+    "solution": "No. 15 comes before 14, but 14 is less than 15. The correct order would be 11, 13, 14, 15, 17.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "order-numbers-to-20-p14",
+    "topicId": "order-numbers-to-20",
+    "difficulty": "hard",
+    "question": "Fill in TWO missing numbers: 10, ___, 12, ___, 14, 15. Type the two missing numbers separated by a comma.",
+    "answer": "11, 13",
+    "hints": [
+      "Count from 10 to 15.",
+      "10, 11, 12, 13, 14, 15."
+    ],
+    "solution": "The missing numbers are 11 and 13. The full sequence is 10, 11, 12, 13, 14, 15.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "order-numbers-to-20-p15",
+    "topicId": "order-numbers-to-20",
+    "difficulty": "hard",
+    "question": "Put these five numbers in order from smallest to biggest: 18, 3, 12, 20, 7. Type them separated by commas.",
+    "answer": "3, 7, 12, 18, 20",
+    "hints": [
+      "Find the smallest: 3. Then the next smallest.",
+      "3, 7, 12, 18, 20."
+    ],
+    "solution": "In order from smallest to biggest: 3, 7, 12, 18, 20.",
+    "cognitiveDemand": "synthesis"
+  }
+]

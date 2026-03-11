@@ -1,0 +1,52 @@
+[
+  {
+    "id": "add-three-numbers-ex1",
+    "topicId": "add-three-numbers",
+    "title": "Adding Three Numbers by Making Ten: 6 + 4 + 7",
+    "steps": [
+      {
+        "subgoalLabel": "Look for a pair that makes 10",
+        "instruction": "Check if any two of the three numbers add up to 10.",
+        "work": "6 + 4 = 10. Yes!",
+        "explanation": "Finding pairs that make 10 makes adding easier."
+      },
+      {
+        "subgoalLabel": "Add the ten and the third number",
+        "instruction": "Now add 10 and the remaining number, 7.",
+        "work": "10 + 7 = 17",
+        "explanation": "Adding to 10 is quick because you just put the number after 1."
+      },
+      {
+        "subgoalLabel": "Write the answer",
+        "instruction": "State the final sum.",
+        "work": "6 + 4 + 7 = 17",
+        "explanation": "You can add numbers in any order. Picking pairs that make 10 is a smart strategy!"
+      }
+    ]
+  },
+  {
+    "id": "add-three-numbers-ex2",
+    "topicId": "add-three-numbers",
+    "title": "Adding Three Numbers Using Doubles: 5 + 5 + 3",
+    "steps": [
+      {
+        "subgoalLabel": "Find a doubles fact",
+        "instruction": "Do any two numbers form a doubles fact?",
+        "work": "5 + 5 = 10. That is a double!",
+        "explanation": "Doubles facts are quick to recall and give you a nice starting point."
+      },
+      {
+        "subgoalLabel": "Add the third number",
+        "instruction": "Add the remaining number to the doubles sum.",
+        "work": "10 + 3 = 13",
+        "explanation": "After using the doubles fact, just add what is left."
+      },
+      {
+        "subgoalLabel": "Write the answer",
+        "instruction": "State the final sum.",
+        "work": "5 + 5 + 3 = 13",
+        "explanation": "You can use doubles or make-ten — whichever you spot first!"
+      }
+    ]
+  }
+]

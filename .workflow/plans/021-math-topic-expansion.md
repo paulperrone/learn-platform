@@ -93,9 +93,9 @@ Targets calibrated against MA unit sizes, adjusted for our K-8 scope (excluding 
 
 ## Progress
 
-**Completed:** Phase 1 ✓
+**Completed:** Phase 1 ✓, Phase 2 ✓
 **In Progress:** —
-**Next:** Phase 2
+**Next:** Phase 3
 
 ---
 
@@ -147,16 +147,14 @@ Targets calibrated against MA unit sizes, adjusted for our K-8 scope (excluding 
 
 These are the foundational K-3 strands. Starting here tests the expansion workflow and gives immediate signal on content generation quality at the atomic skill level.
 
-1. [ ] [IMP] Split topics and update `content/math/graph.json` for Wave 1 strands per expansion map:
-   - Add new topic entries with `id`, `name`, `description`, `gradeLevel`, `strand`, `standardCode`
-   - Rewire existing prerequisite edges through new intermediate topics
-   - Add new prerequisite and encompassing edges
-2. [ ] [IMP] Generate problems for new topics: 15 problems per topic (5 easy / 5 medium / 5 hard), cognitive demand distribution per grade-level targets
-3. [ ] [IMP] Generate worked examples for new topics: 2 examples per topic
-4. [ ] [IMP] Update collection membership: add new topics to `math-k-2`, `math-3-5`
-5. [ ] [VAL] Run `just validate-content` — 0 errors, collection membership valid
-6. [ ] [VAL] Run `just import-content` — all new topics load, edges intact
-7. [ ] [VAL] Verify strand density: each Wave 1 strand has ≥1.5 prereq edges/topic
+1. [x] [IMP] Split topics and update `content/math/graph.json` for Wave 1 strands per expansion map:
+   - Added 87 new topics (294 total), rewired 7 coarse edges, added 122 new prereq edges (436 total), 15 new encompassing edges (278 total)
+2. [x] [IMP] Generate problems for new topics: 1,305 problems (15 per topic × 87 topics)
+3. [x] [IMP] Generate worked examples for new topics: 174 examples (2 per topic × 87 topics)
+4. [x] [IMP] Update collection membership: math-k-2 (29→67), math-3-5 (63→112)
+5. [x] [VAL] Run `just validate-content` — 0 errors
+6. [x] [VAL] Run `just import-content` — 294 topics loaded, DAG valid, no cycles, max depth 29
+7. [x] [VAL] Verify strand density: counting-cardinality 1.60, ops-addition 1.96, ops-subtraction 1.50, ops-multiplication 1.97, ops-division 1.72
 
 **Validation:** Math graph has ~294 topics (207 + 87). Wave 1 strands match expansion map. `just validate-content` and `just import-content` pass.
 

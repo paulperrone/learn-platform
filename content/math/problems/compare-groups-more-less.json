@@ -1,0 +1,197 @@
+[
+  {
+    "id": "compare-groups-more-less-p1",
+    "topicId": "compare-groups-more-less",
+    "difficulty": "easy",
+    "question": "Which group has MORE? Type A or B.\n\nGroup A: 🍎 🍎 🍎\nGroup B: 🍎 🍎 🍎 🍎 🍎",
+    "answer": "B",
+    "hints": [
+      "Count each group.",
+      "Group A has 3. Group B has 5. Which number is bigger?"
+    ],
+    "solution": "Group B has more. Group A has 3 apples and Group B has 5 apples. 5 is more than 3.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "compare-groups-more-less-p2",
+    "topicId": "compare-groups-more-less",
+    "difficulty": "easy",
+    "question": "Which group has FEWER? Type A or B.\n\nGroup A: ⭐ ⭐\nGroup B: ⭐ ⭐ ⭐ ⭐",
+    "answer": "A",
+    "hints": [
+      "Fewer means a smaller number.",
+      "Group A has 2. Group B has 4. Which is smaller?"
+    ],
+    "solution": "Group A has fewer. Group A has 2 stars and Group B has 4 stars. 2 is fewer than 4.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "compare-groups-more-less-p3",
+    "topicId": "compare-groups-more-less",
+    "difficulty": "easy",
+    "question": "Which group has MORE? Type A or B.\n\nGroup A: 🐟 🐟 🐟 🐟 🐟 🐟\nGroup B: 🐟 🐟 🐟",
+    "answer": "A",
+    "hints": [
+      "Count each group.",
+      "Group A has 6. Group B has 3."
+    ],
+    "solution": "Group A has more. Group A has 6 fish and Group B has 3 fish. 6 is more than 3.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "compare-groups-more-less-p4",
+    "topicId": "compare-groups-more-less",
+    "difficulty": "easy",
+    "question": "Do the groups have the SAME number? Type yes or no.\n\nGroup A: 🌸 🌸 🌸 🌸\nGroup B: 🌸 🌸 🌸 🌸",
+    "answer": "yes",
+    "hints": [
+      "Count each group.",
+      "Group A has 4. Group B has 4. Are they the same?"
+    ],
+    "solution": "Yes, both groups have the same number. Group A has 4 and Group B has 4.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "compare-groups-more-less-p5",
+    "topicId": "compare-groups-more-less",
+    "difficulty": "easy",
+    "question": "Which group has FEWER? Type A or B.\n\nGroup A: 🔵 🔵 🔵 🔵 🔵\nGroup B: 🔵 🔵",
+    "answer": "B",
+    "hints": [
+      "Fewer means less.",
+      "Group A has 5. Group B has 2. 2 is fewer."
+    ],
+    "solution": "Group B has fewer. Group B has 2 circles and Group A has 5 circles. 2 is fewer than 5.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "compare-groups-more-less-p6",
+    "topicId": "compare-groups-more-less",
+    "difficulty": "medium",
+    "question": "Which group has MORE? Type A or B.\n\nGroup A: 🍎 🍌 🍊 🍎 🍌 🍊 🍎\nGroup B: 🐶 🐱 🐶 🐱 🐶 🐱 🐶 🐱",
+    "answer": "B",
+    "hints": [
+      "Count all objects in each group, even if they are different.",
+      "Group A has 7. Group B has 8."
+    ],
+    "solution": "Group B has more. Group A has 7 objects and Group B has 8 objects. 8 is more than 7.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "compare-groups-more-less-p7",
+    "topicId": "compare-groups-more-less",
+    "difficulty": "medium",
+    "question": "How many MORE stars does Group B have than Group A?\n\nGroup A: ⭐ ⭐ ⭐\nGroup B: ⭐ ⭐ ⭐ ⭐ ⭐",
+    "answer": "2",
+    "hints": [
+      "Count each group. Group A: 3. Group B: 5.",
+      "How many extra does Group B have? 5 - 3 = ?"
+    ],
+    "solution": "Group B has 2 more stars. Group A has 3 and Group B has 5. The difference is 5 - 3 = 2.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "compare-groups-more-less-p8",
+    "topicId": "compare-groups-more-less",
+    "difficulty": "medium",
+    "question": "How many FEWER hearts does Group A have than Group B?\n\nGroup A: ❤️ ❤️\nGroup B: ❤️ ❤️ ❤️ ❤️ ❤️",
+    "answer": "3",
+    "hints": [
+      "Group A has 2. Group B has 5.",
+      "How many fewer? 5 - 2 = 3."
+    ],
+    "solution": "Group A has 3 fewer hearts. Group A has 2 and Group B has 5. 5 - 2 = 3.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "compare-groups-more-less-p9",
+    "topicId": "compare-groups-more-less",
+    "difficulty": "medium",
+    "question": "Do the groups have the SAME number? Type yes or no.\n\nGroup A: 🐛 🐛 🐛 🐛 🐛 🐛\nGroup B: 🦋 🦋 🦋 🦋 🦋 🦋 🦋",
+    "answer": "no",
+    "hints": [
+      "Count each group.",
+      "Group A has 6. Group B has 7. Are they the same?"
+    ],
+    "solution": "No, they are not the same. Group A has 6 and Group B has 7.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "compare-groups-more-less-p10",
+    "topicId": "compare-groups-more-less",
+    "difficulty": "medium",
+    "question": "Which group has MORE? Type A or B.\n\nGroup A: 🌙 🌙 🌙 🌙 🌙 🌙 🌙 🌙 🌙\nGroup B: 🌙 🌙 🌙 🌙 🌙 🌙 🌙 🌙 🌙 🌙",
+    "answer": "B",
+    "hints": [
+      "Count carefully! The groups are close in size.",
+      "Group A has 9. Group B has 10."
+    ],
+    "solution": "Group B has more. Group A has 9 moons and Group B has 10 moons. 10 is more than 9.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "compare-groups-more-less-p11",
+    "topicId": "compare-groups-more-less",
+    "difficulty": "hard",
+    "question": "There are 6 cookies and 8 children. Are there enough cookies so each child gets one? Type yes or no.",
+    "answer": "no",
+    "hints": [
+      "Compare: 6 cookies and 8 children.",
+      "6 is fewer than 8, so there are not enough."
+    ],
+    "solution": "No, there are not enough. There are 6 cookies but 8 children. 2 children would not get a cookie.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "compare-groups-more-less-p12",
+    "topicId": "compare-groups-more-less",
+    "difficulty": "hard",
+    "question": "There are 7 chairs and 5 people. How many extra chairs are there?",
+    "answer": "2",
+    "hints": [
+      "Each person sits in one chair.",
+      "7 chairs - 5 people = 2 extra chairs."
+    ],
+    "solution": "There are 2 extra chairs. 7 chairs minus 5 people = 2 chairs left over.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "compare-groups-more-less-p13",
+    "topicId": "compare-groups-more-less",
+    "difficulty": "hard",
+    "question": "Look at three groups. Which group has the MOST? Type A, B, or C.\n\nGroup A: 🍎 🍎 🍎 🍎\nGroup B: 🍎 🍎 🍎 🍎 🍎 🍎\nGroup C: 🍎 🍎 🍎",
+    "answer": "B",
+    "hints": [
+      "Count each group. A: 4, B: 6, C: 3.",
+      "Which number is the biggest?"
+    ],
+    "solution": "Group B has the most with 6 apples. Group A has 4 and Group C has 3.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "compare-groups-more-less-p14",
+    "topicId": "compare-groups-more-less",
+    "difficulty": "hard",
+    "question": "Look at three groups. Which group has the FEWEST? Type A, B, or C.\n\nGroup A: ⭐ ⭐ ⭐ ⭐ ⭐\nGroup B: ⭐ ⭐\nGroup C: ⭐ ⭐ ⭐ ⭐",
+    "answer": "B",
+    "hints": [
+      "Count each group. A: 5, B: 2, C: 4.",
+      "Which number is the smallest?"
+    ],
+    "solution": "Group B has the fewest with 2 stars. Group A has 5 and Group C has 4.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "compare-groups-more-less-p15",
+    "topicId": "compare-groups-more-less",
+    "difficulty": "hard",
+    "question": "Kim has 4 stickers. She wants to have the SAME number as Ben, who has 7. How many more stickers does Kim need?",
+    "answer": "3",
+    "hints": [
+      "Kim has 4 and wants 7.",
+      "How many more? 7 - 4 = 3."
+    ],
+    "solution": "Kim needs 3 more stickers. She has 4 and wants 7. 7 - 4 = 3.",
+    "cognitiveDemand": "synthesis"
+  }
+]

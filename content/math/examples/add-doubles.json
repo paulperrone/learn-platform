@@ -1,0 +1,46 @@
+[
+  {
+    "id": "add-doubles-ex1",
+    "topicId": "add-doubles",
+    "title": "Finding a Doubles Fact: 6 + 6",
+    "steps": [
+      {
+        "subgoalLabel": "Recognize the double",
+        "instruction": "Look at the two numbers being added. Are they the same?",
+        "work": "6 + 6 — yes, both numbers are 6.",
+        "explanation": "When both numbers are the same, we call it a doubles fact."
+      },
+      {
+        "subgoalLabel": "Add the doubles",
+        "instruction": "Add 6 + 6.",
+        "work": "6 + 6 = 12",
+        "explanation": "You can think of it as two groups of 6. Count: 6, then 6 more is 7, 8, 9, 10, 11, 12."
+      },
+      {
+        "subgoalLabel": "State the answer",
+        "instruction": "Write the complete doubles fact.",
+        "work": "6 + 6 = 12",
+        "explanation": "Memorizing doubles facts helps you add quickly!"
+      }
+    ]
+  },
+  {
+    "id": "add-doubles-ex2",
+    "topicId": "add-doubles",
+    "title": "Using Doubles in a Story: 7 + 7",
+    "steps": [
+      {
+        "subgoalLabel": "Read the problem",
+        "instruction": "Two friends each have 7 crayons. How many crayons are there in all?",
+        "work": "Each friend has 7 crayons. We need 7 + 7.",
+        "explanation": "The word 'each' tells us both amounts are the same — it's a doubles fact."
+      },
+      {
+        "subgoalLabel": "Use the doubles fact",
+        "instruction": "Find 7 + 7.",
+        "work": "7 + 7 = 14",
+        "explanation": "Double 7 is 14. There are 14 crayons in all."
+      }
+    ]
+  }
+]

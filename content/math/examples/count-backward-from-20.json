@@ -1,0 +1,52 @@
+[
+  {
+    "id": "count-backward-from-20-ex1",
+    "topicId": "count-backward-from-20",
+    "title": "Counting Backward from 15",
+    "steps": [
+      {
+        "subgoalLabel": "Start at the number",
+        "instruction": "We will count backward from 15. That means starting at 15 and going down by 1 each time.",
+        "work": "Start: 15",
+        "explanation": "Counting backward from bigger numbers works the same way — subtract 1 each time."
+      },
+      {
+        "subgoalLabel": "Count down through the teens",
+        "instruction": "From 15, count down: 15, 14, 13, 12, 11, 10.",
+        "work": "15 → 14 → 13 → 12 → 11 → 10",
+        "explanation": "The teen numbers go backward just like small numbers: 15, 14, 13, 12, 11."
+      },
+      {
+        "subgoalLabel": "Keep going to 0",
+        "instruction": "From 10, keep counting backward: 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0.",
+        "work": "10 → 9 → 8 → 7 → 6 → 5 → 4 → 3 → 2 → 1 → 0",
+        "explanation": "Once you pass 10, the numbers are ones you already know from counting backward from 10."
+      }
+    ]
+  },
+  {
+    "id": "count-backward-from-20-ex2",
+    "topicId": "count-backward-from-20",
+    "title": "Finding a Missing Number Counting Backward",
+    "steps": [
+      {
+        "subgoalLabel": "Read the sequence",
+        "instruction": "Look at this sequence: 18, 17, ___, 15, 14. A number is missing.",
+        "work": "18, 17, ___, 15, 14",
+        "explanation": "We need to find what goes in the blank."
+      },
+      {
+        "subgoalLabel": "Count backward to find the gap",
+        "instruction": "Start at 18 and count backward: 18, 17... what comes next?",
+        "work": "18, 17, 16 ← this is the missing number",
+        "explanation": "One less than 17 is 16."
+      },
+      {
+        "subgoalLabel": "Check your answer",
+        "instruction": "Put 16 in the blank and read the whole sequence.",
+        "work": "18, 17, 16, 15, 14 ✓",
+        "explanation": "The sequence is correct. Each number is one less than the last."
+      }
+    ]
+  }
+]

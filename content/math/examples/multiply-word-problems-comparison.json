@@ -1,0 +1,64 @@
+[
+  {
+    "id": "multiply-word-problems-comparison-ex1",
+    "topicId": "multiply-word-problems-comparison",
+    "title": "Solving a Multiplicative Comparison Problem",
+    "steps": [
+      {
+        "subgoalLabel": "Read and understand",
+        "instruction": "A kitten weighs 4 pounds. A puppy weighs 3 times as much. How much does the puppy weigh?",
+        "work": "We need to find the puppy's weight.",
+        "explanation": "The phrase 'times as much' tells us this is a multiplicative comparison."
+      },
+      {
+        "subgoalLabel": "Identify the comparison",
+        "instruction": "What is being compared and what is the multiplier?",
+        "work": "The puppy is 3 times as heavy as the kitten. Kitten = 4 pounds. Multiplier = 3.",
+        "explanation": "One amount is a multiple of the other."
+      },
+      {
+        "subgoalLabel": "Write the equation",
+        "instruction": "Write a multiplication sentence.",
+        "work": "Puppy = 3 × 4",
+        "explanation": "Multiplier × smaller amount = larger amount."
+      },
+      {
+        "subgoalLabel": "Solve",
+        "instruction": "Calculate the answer.",
+        "work": "3 × 4 = 12. The puppy weighs 12 pounds.",
+        "explanation": "The puppy weighs 3 times the kitten's weight."
+      }
+    ]
+  },
+  {
+    "id": "multiply-word-problems-comparison-ex2",
+    "topicId": "multiply-word-problems-comparison",
+    "title": "Finding the Smaller Amount in a Comparison",
+    "steps": [
+      {
+        "subgoalLabel": "Read and understand",
+        "instruction": "A tall building is 48 meters high. It is 6 times as tall as a house. How tall is the house?",
+        "work": "We know the taller amount and the multiplier. We need the smaller amount.",
+        "explanation": "Sometimes we need to find the smaller quantity, not the larger one."
+      },
+      {
+        "subgoalLabel": "Write the relationship",
+        "instruction": "Building = 6 × House.",
+        "work": "48 = 6 × ?",
+        "explanation": "The building (48 m) is 6 times the height of the house."
+      },
+      {
+        "subgoalLabel": "Solve using division",
+        "instruction": "Divide to find the unknown.",
+        "work": "48 ÷ 6 = 8. The house is 8 meters tall.",
+        "explanation": "When you know the total and the multiplier, divide to find the smaller amount."
+      },
+      {
+        "subgoalLabel": "Check",
+        "instruction": "Verify: is 48 really 6 times 8?",
+        "work": "6 × 8 = 48. Yes!",
+        "explanation": "Always check by multiplying back."
+      }
+    ]
+  }
+]

@@ -1,0 +1,76 @@
+[
+  {
+    "id": "multiply-4x1-ex1",
+    "topicId": "multiply-4x1",
+    "title": "Multiplying a 4-Digit Number by a 1-Digit Number",
+    "steps": [
+      {
+        "subgoalLabel": "State the problem",
+        "instruction": "Find 2,436 × 3.",
+        "work": "2,436 × 3",
+        "explanation": "The process is the same as 3-digit multiplication — just one more place value."
+      },
+      {
+        "subgoalLabel": "Multiply the ones",
+        "instruction": "Find 6 × 3.",
+        "work": "6 × 3 = 18. Write 8, carry 1.",
+        "explanation": "18 ones = 1 ten and 8 ones."
+      },
+      {
+        "subgoalLabel": "Multiply the tens",
+        "instruction": "Find 3 × 3, add the carry.",
+        "work": "3 × 3 = 9, plus 1 = 10. Write 0, carry 1.",
+        "explanation": "10 tens = 1 hundred and 0 tens."
+      },
+      {
+        "subgoalLabel": "Multiply the hundreds",
+        "instruction": "Find 4 × 3, add the carry.",
+        "work": "4 × 3 = 12, plus 1 = 13. Write 3, carry 1.",
+        "explanation": "13 hundreds = 1 thousand and 3 hundreds."
+      },
+      {
+        "subgoalLabel": "Multiply the thousands",
+        "instruction": "Find 2 × 3, add the carry.",
+        "work": "2 × 3 = 6, plus 1 = 7. Write 7.",
+        "explanation": "7 thousands."
+      },
+      {
+        "subgoalLabel": "State the answer",
+        "instruction": "What is 2,436 × 3?",
+        "work": "2,436 × 3 = 7,308",
+        "explanation": "Work right to left through all four digits, carrying as needed."
+      }
+    ]
+  },
+  {
+    "id": "multiply-4x1-ex2",
+    "topicId": "multiply-4x1",
+    "title": "Using a Shortcut for Numbers Close to a Round Number",
+    "steps": [
+      {
+        "subgoalLabel": "State the problem",
+        "instruction": "Find 1,999 × 4.",
+        "work": "1,999 × 4",
+        "explanation": "1,999 is very close to 2,000. We can use that to make this easier."
+      },
+      {
+        "subgoalLabel": "Round up to 2,000",
+        "instruction": "Find 2,000 × 4.",
+        "work": "2,000 × 4 = 8,000.",
+        "explanation": "Multiplying a round number is quick: 2 × 4 = 8, attach three zeros."
+      },
+      {
+        "subgoalLabel": "Adjust for the rounding",
+        "instruction": "We added 1 to get 2,000, so subtract 1 × 4.",
+        "work": "8,000 − 4 = 7,996.",
+        "explanation": "1,999 is 1 less than 2,000, so the product is 4 less (one group of 4 fewer)."
+      },
+      {
+        "subgoalLabel": "State the answer",
+        "instruction": "What is 1,999 × 4?",
+        "work": "1,999 × 4 = 7,996",
+        "explanation": "Compensation strategy: round, multiply, then adjust. Great for numbers near round values."
+      }
+    ]
+  }
+]

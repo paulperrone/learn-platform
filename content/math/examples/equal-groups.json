@@ -1,0 +1,64 @@
+[
+  {
+    "id": "equal-groups-ex1",
+    "topicId": "equal-groups",
+    "title": "Finding the Total in Equal Groups",
+    "steps": [
+      {
+        "subgoalLabel": "Identify the groups",
+        "instruction": "There are 3 baskets with 4 oranges in each basket. How many oranges are there in all?",
+        "work": "Number of groups = 3. Size of each group = 4.",
+        "explanation": "First, find how many groups there are and how many are in each group."
+      },
+      {
+        "subgoalLabel": "Write as repeated addition",
+        "instruction": "Add the groups together.",
+        "work": "4 + 4 + 4 = 12",
+        "explanation": "Since there are 3 groups of 4, we add 4 three times."
+      },
+      {
+        "subgoalLabel": "Write as multiplication",
+        "instruction": "Write a multiplication sentence for the same problem.",
+        "work": "3 × 4 = 12",
+        "explanation": "Multiplication is a shortcut for repeated addition. 3 groups of 4 is written as 3 × 4."
+      },
+      {
+        "subgoalLabel": "State the answer",
+        "instruction": "How many oranges are there in all?",
+        "work": "There are 12 oranges in all.",
+        "explanation": "3 baskets × 4 oranges = 12 oranges total."
+      }
+    ]
+  },
+  {
+    "id": "equal-groups-ex2",
+    "topicId": "equal-groups",
+    "title": "Finding the Number of Groups",
+    "steps": [
+      {
+        "subgoalLabel": "Understand the problem",
+        "instruction": "There are 20 crayons. Each box holds 5 crayons. How many boxes are needed?",
+        "work": "Total = 20. Each group has 5.",
+        "explanation": "We know the total and the size of each group. We need to find how many groups."
+      },
+      {
+        "subgoalLabel": "Think about equal groups",
+        "instruction": "How many groups of 5 make 20?",
+        "work": "5, 10, 15, 20 — that is 4 groups.",
+        "explanation": "Count by 5s until you reach 20. Each count is one group."
+      },
+      {
+        "subgoalLabel": "Write as multiplication",
+        "instruction": "Write a multiplication sentence.",
+        "work": "4 × 5 = 20",
+        "explanation": "4 groups of 5 equals 20. We found that 4 is the missing number of groups."
+      },
+      {
+        "subgoalLabel": "State the answer",
+        "instruction": "How many boxes are needed?",
+        "work": "4 boxes are needed.",
+        "explanation": "20 crayons ÷ 5 per box = 4 boxes. Equal groups connect multiplication and division."
+      }
+    ]
+  }
+]

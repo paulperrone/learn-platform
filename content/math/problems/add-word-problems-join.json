@@ -1,0 +1,188 @@
+[
+  {
+    "id": "add-word-problems-join-p1",
+    "topicId": "add-word-problems-join",
+    "difficulty": "easy",
+    "question": "Emma has 4 apples. She picks 3 more. How many apples does Emma have now?",
+    "answer": "7",
+    "hints": [
+      "She started with 4 and got 3 more.",
+      "Add: 4 + 3."
+    ],
+    "solution": "4 + 3 = 7. Emma has 7 apples.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "add-word-problems-join-p2",
+    "topicId": "add-word-problems-join",
+    "difficulty": "easy",
+    "question": "There are 6 birds on a branch. 5 more birds land on the branch. How many birds are on the branch now?",
+    "answer": "11",
+    "hints": [
+      "Start with 6, add 5 more."
+    ],
+    "solution": "6 + 5 = 11. There are 11 birds on the branch.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "add-word-problems-join-p3",
+    "topicId": "add-word-problems-join",
+    "difficulty": "easy",
+    "question": "Tom had 8 stickers. His mom gave him 4 more stickers. How many stickers does Tom have now?",
+    "answer": "12",
+    "hints": [
+      "8 + 4 = ?"
+    ],
+    "solution": "8 + 4 = 12. Tom has 12 stickers.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "add-word-problems-join-p4",
+    "topicId": "add-word-problems-join",
+    "difficulty": "easy",
+    "question": "A vase has 7 flowers. Someone puts 6 more flowers in the vase. How many flowers are in the vase?",
+    "answer": "13",
+    "hints": [
+      "7 flowers plus 6 more flowers."
+    ],
+    "solution": "7 + 6 = 13. There are 13 flowers in the vase.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "add-word-problems-join-p5",
+    "topicId": "add-word-problems-join",
+    "difficulty": "easy",
+    "question": "Mia has 9 books. She gets 2 more from the library. How many books does Mia have?",
+    "answer": "11",
+    "hints": [
+      "9 + 2 = ?"
+    ],
+    "solution": "9 + 2 = 11. Mia has 11 books.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "add-word-problems-join-p6",
+    "topicId": "add-word-problems-join",
+    "difficulty": "medium",
+    "question": "There are 8 children playing in the park. Then 7 more children come to play. How many children are playing now?",
+    "answer": "15",
+    "hints": [
+      "Combine 8 and 7."
+    ],
+    "solution": "8 + 7 = 15. There are 15 children playing.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "add-word-problems-join-p7",
+    "topicId": "add-word-problems-join",
+    "difficulty": "medium",
+    "question": "A toy store had 12 toy cars on a shelf. A worker adds 8 more. How many toy cars are on the shelf now?",
+    "answer": "20",
+    "hints": [
+      "12 + 8 = ?"
+    ],
+    "solution": "12 + 8 = 20. There are 20 toy cars on the shelf.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "add-word-problems-join-p8",
+    "topicId": "add-word-problems-join",
+    "difficulty": "medium",
+    "question": "Sam scored 9 points in the first half of a game and 6 points in the second half. How many points did Sam score in all?",
+    "answer": "15",
+    "hints": [
+      "Combine the points from both halves: 9 + 6."
+    ],
+    "solution": "9 + 6 = 15. Sam scored 15 points.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "add-word-problems-join-p9",
+    "topicId": "add-word-problems-join",
+    "difficulty": "medium",
+    "question": "A fish tank has 11 fish. 5 new fish are added. How many fish are in the tank?",
+    "answer": "16",
+    "hints": [
+      "11 + 5 = ?"
+    ],
+    "solution": "11 + 5 = 16. There are 16 fish.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "add-word-problems-join-p10",
+    "topicId": "add-word-problems-join",
+    "difficulty": "medium",
+    "question": "A basket has 7 red balls and 8 blue balls. How many balls are in the basket?",
+    "answer": "15",
+    "hints": [
+      "Combine red and blue: 7 + 8."
+    ],
+    "solution": "7 + 8 = 15. There are 15 balls in the basket.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "add-word-problems-join-p11",
+    "topicId": "add-word-problems-join",
+    "difficulty": "hard",
+    "question": "A parking lot has 9 cars. During the morning, 4 cars arrive. In the afternoon, 3 more cars arrive. How many cars are in the lot now?",
+    "answer": "16",
+    "hints": [
+      "Start with 9. Add 4 from morning, then 3 from afternoon.",
+      "9 + 4 + 3 = ?"
+    ],
+    "solution": "9 + 4 = 13. Then 13 + 3 = 16. There are 16 cars.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "add-word-problems-join-p12",
+    "topicId": "add-word-problems-join",
+    "difficulty": "hard",
+    "question": "Kim read 8 pages before lunch and 9 pages after lunch. Write a number sentence for this problem and solve it.",
+    "answer": "8 + 9 = 17",
+    "hints": [
+      "She read some pages, then more pages. This is joining.",
+      "Number sentence: 8 + 9 = ?"
+    ],
+    "solution": "Number sentence: 8 + 9 = 17. Kim read 17 pages.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "add-word-problems-join-p13",
+    "topicId": "add-word-problems-join",
+    "difficulty": "hard",
+    "question": "There are 6 ducks in a pond. Some more ducks swim over and now there are 14 ducks. How many ducks swam over?",
+    "answer": "8",
+    "hints": [
+      "6 + ? = 14.",
+      "Think: what do you add to 6 to get 14?"
+    ],
+    "solution": "6 + ? = 14. Count up from 6 to 14: that is 8 more. 8 ducks swam over.",
+    "cognitiveDemand": "reasoning"
+  },
+  {
+    "id": "add-word-problems-join-p14",
+    "topicId": "add-word-problems-join",
+    "difficulty": "hard",
+    "question": "Leo had some marbles. His friend gave him 5 more. Now Leo has 13 marbles. How many did Leo start with?",
+    "answer": "8",
+    "hints": [
+      "? + 5 = 13.",
+      "Think: 13 − 5 = ?"
+    ],
+    "solution": "? + 5 = 13. Leo started with 13 − 5 = 8 marbles.",
+    "cognitiveDemand": "reasoning"
+  },
+  {
+    "id": "add-word-problems-join-p15",
+    "topicId": "add-word-problems-join",
+    "difficulty": "hard",
+    "question": "A garden has 5 roses, 7 tulips, and 4 daisies. How many flowers are in the garden?",
+    "answer": "16",
+    "hints": [
+      "Add all three: 5 + 7 + 4.",
+      "5 + 7 = 12, then 12 + 4 = 16."
+    ],
+    "solution": "5 + 7 + 4 = 16. There are 16 flowers in the garden.",
+    "cognitiveDemand": "application"
+  }
+]

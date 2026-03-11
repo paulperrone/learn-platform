@@ -1,0 +1,52 @@
+[
+  {
+    "id": "add-make-ten-ex1",
+    "topicId": "add-make-ten",
+    "title": "Make Ten to Add: 8 + 5",
+    "steps": [
+      {
+        "subgoalLabel": "Figure out how many more to make 10",
+        "instruction": "Start with the larger number, 8. How many more do you need to get to 10?",
+        "work": "10 − 8 = 2. We need 2 more to make 10.",
+        "explanation": "We want to build up to 10 because adding with 10 is easy."
+      },
+      {
+        "subgoalLabel": "Break apart the other number",
+        "instruction": "Take 2 from the 5 to give to the 8.",
+        "work": "5 = 2 + 3. Now we have 8 + 2 + 3.",
+        "explanation": "We split 5 into 2 and 3 so we can pair 2 with 8 to make 10."
+      },
+      {
+        "subgoalLabel": "Make 10 and add the rest",
+        "instruction": "Add 8 + 2 first, then add the leftover.",
+        "work": "8 + 2 = 10. Then 10 + 3 = 13.",
+        "explanation": "Once you make 10, it is easy to add what is left. 8 + 5 = 13."
+      }
+    ]
+  },
+  {
+    "id": "add-make-ten-ex2",
+    "topicId": "add-make-ten",
+    "title": "Make Ten to Add: 9 + 6",
+    "steps": [
+      {
+        "subgoalLabel": "How many more to make 10?",
+        "instruction": "9 is close to 10. How many more do you need?",
+        "work": "10 − 9 = 1. We need 1 more.",
+        "explanation": "9 is just 1 away from 10, which makes this strategy very quick."
+      },
+      {
+        "subgoalLabel": "Break apart 6",
+        "instruction": "Take 1 from 6.",
+        "work": "6 = 1 + 5",
+        "explanation": "We split 6 into 1 and 5 so we can give 1 to the 9."
+      },
+      {
+        "subgoalLabel": "Add using 10",
+        "instruction": "Now compute: 9 + 1 + 5.",
+        "work": "9 + 1 = 10. Then 10 + 5 = 15.",
+        "explanation": "9 + 6 = 15. The make-ten strategy works great when one number is 8 or 9!"
+      }
+    ]
+  }
+]

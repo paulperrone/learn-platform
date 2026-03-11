@@ -1,0 +1,187 @@
+[
+  {
+    "id": "estimation-addition-p1",
+    "topicId": "estimation-addition",
+    "difficulty": "easy",
+    "question": "Round each number to the nearest ten and estimate the sum: 23 + 48.",
+    "answer": "70",
+    "hints": [
+      "23 rounds to 20. 48 rounds to 50.",
+      "20 + 50 = ?"
+    ],
+    "solution": "23 rounds to 20. 48 rounds to 50. Estimated sum: 20 + 50 = 70.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "estimation-addition-p2",
+    "topicId": "estimation-addition",
+    "difficulty": "easy",
+    "question": "Round each number to the nearest ten and estimate: 31 + 57.",
+    "answer": "90",
+    "hints": [
+      "31 rounds to 30. 57 rounds to 60."
+    ],
+    "solution": "31 rounds to 30. 57 rounds to 60. Estimated sum: 30 + 60 = 90.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "estimation-addition-p3",
+    "topicId": "estimation-addition",
+    "difficulty": "easy",
+    "question": "Round each number to the nearest ten and estimate: 45 + 32.",
+    "answer": "80",
+    "hints": [
+      "45 rounds to 50 (5 rounds up). 32 rounds to 30."
+    ],
+    "solution": "45 rounds to 50. 32 rounds to 30. Estimated sum: 50 + 30 = 80.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "estimation-addition-p4",
+    "topicId": "estimation-addition",
+    "difficulty": "easy",
+    "question": "Round each number to the nearest ten and estimate: 14 + 63.",
+    "answer": "70",
+    "hints": [
+      "14 rounds to 10. 63 rounds to 60."
+    ],
+    "solution": "14 rounds to 10. 63 rounds to 60. Estimated sum: 10 + 60 = 70.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "estimation-addition-p5",
+    "topicId": "estimation-addition",
+    "difficulty": "easy",
+    "question": "Round each number to the nearest hundred and estimate: 210 + 480.",
+    "answer": "700",
+    "hints": [
+      "210 rounds to 200. 480 rounds to 500."
+    ],
+    "solution": "210 rounds to 200. 480 rounds to 500. Estimated sum: 200 + 500 = 700.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "estimation-addition-p6",
+    "topicId": "estimation-addition",
+    "difficulty": "medium",
+    "question": "Round each number to the nearest hundred and estimate: 347 + 562.",
+    "answer": "900",
+    "hints": [
+      "347 rounds to 300. 562 rounds to 600."
+    ],
+    "solution": "347 rounds to 300. 562 rounds to 600. Estimated sum: 300 + 600 = 900.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "estimation-addition-p7",
+    "topicId": "estimation-addition",
+    "difficulty": "medium",
+    "question": "Round each number to the nearest hundred and estimate: 451 + 283.",
+    "answer": "800",
+    "hints": [
+      "451 rounds to 500. 283 rounds to 300."
+    ],
+    "solution": "451 rounds to 500. 283 rounds to 300. Estimated sum: 500 + 300 = 800.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "estimation-addition-p8",
+    "topicId": "estimation-addition",
+    "difficulty": "medium",
+    "question": "Round to the nearest hundred and estimate: 678 + 245.",
+    "answer": "900",
+    "hints": [
+      "678 rounds to 700. 245 rounds to 200."
+    ],
+    "solution": "678 rounds to 700. 245 rounds to 200. Estimated sum: 700 + 200 = 900.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "estimation-addition-p9",
+    "topicId": "estimation-addition",
+    "difficulty": "medium",
+    "question": "Estimate 1,385 + 2,742 by rounding to the nearest thousand.",
+    "answer": "4000",
+    "hints": [
+      "1,385 rounds to 1,000. 2,742 rounds to 3,000."
+    ],
+    "solution": "1,385 rounds to 1,000. 2,742 rounds to 3,000. Estimated sum: 1,000 + 3,000 = 4,000.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "estimation-addition-p10",
+    "topicId": "estimation-addition",
+    "difficulty": "medium",
+    "question": "Round to the nearest ten and estimate: 86 + 37.",
+    "answer": "130",
+    "hints": [
+      "86 rounds to 90. 37 rounds to 40."
+    ],
+    "solution": "86 rounds to 90. 37 rounds to 40. Estimated sum: 90 + 40 = 130.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "estimation-addition-p11",
+    "topicId": "estimation-addition",
+    "difficulty": "hard",
+    "question": "Carlos has 387 baseball cards and 512 football cards. About how many cards does he have? Estimate by rounding to the nearest hundred.",
+    "answer": "900",
+    "hints": [
+      "387 rounds to 400. 512 rounds to 500.",
+      "400 + 500 = ?"
+    ],
+    "solution": "387 rounds to 400. 512 rounds to 500. Estimated total: 400 + 500 = 900 cards.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "estimation-addition-p12",
+    "topicId": "estimation-addition",
+    "difficulty": "hard",
+    "question": "Estimate 2,465 + 3,518 by rounding to the nearest thousand. Then find the exact sum. How close was your estimate?",
+    "answer": "6000; 5983; 17",
+    "hints": [
+      "Round: 2,465 → 2,000. 3,518 → 4,000.",
+      "Exact: add 2,465 + 3,518 column by column."
+    ],
+    "solution": "Estimate: 2,000 + 4,000 = 6,000. Exact: 2,465 + 3,518 = 5,983. Difference: 6,000 − 5,983 = 17. The estimate was 17 away from the exact answer.",
+    "cognitiveDemand": "reasoning"
+  },
+  {
+    "id": "estimation-addition-p13",
+    "topicId": "estimation-addition",
+    "difficulty": "hard",
+    "question": "Is the sum of 478 + 315 closer to 700 or 800? Estimate to decide.",
+    "answer": "800",
+    "hints": [
+      "Round to nearest hundred: 478 → 500. 315 → 300.",
+      "500 + 300 = 800."
+    ],
+    "solution": "478 rounds to 500. 315 rounds to 300. Estimated sum: 800. The exact sum is 793, which is closer to 800.",
+    "cognitiveDemand": "reasoning"
+  },
+  {
+    "id": "estimation-addition-p14",
+    "topicId": "estimation-addition",
+    "difficulty": "hard",
+    "question": "A school needs 1,000 books. They have 438 books and will receive 489 more. Estimate whether they will have enough.",
+    "answer": "no",
+    "hints": [
+      "Round: 438 → 400. 489 → 500.",
+      "400 + 500 = 900. Is 900 enough?"
+    ],
+    "solution": "Estimate: 400 + 500 = 900. Since 900 < 1,000, they probably will not have enough. Exact: 438 + 489 = 927. They are 73 books short.",
+    "cognitiveDemand": "reasoning"
+  },
+  {
+    "id": "estimation-addition-p15",
+    "topicId": "estimation-addition",
+    "difficulty": "hard",
+    "question": "Estimate 749 + 851 by rounding to the nearest hundred.",
+    "answer": "1600",
+    "hints": [
+      "749 rounds to 700. 851 rounds to 900."
+    ],
+    "solution": "749 rounds to 700. 851 rounds to 900. Estimated sum: 700 + 900 = 1,600.",
+    "cognitiveDemand": "application"
+  }
+]

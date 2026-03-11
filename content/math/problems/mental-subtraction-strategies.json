@@ -1,0 +1,197 @@
+[
+  {
+    "id": "mental-subtraction-strategies-p1",
+    "topicId": "mental-subtraction-strategies",
+    "difficulty": "easy",
+    "question": "Use counting up to solve: 12 − 9. Start at 9 and count up to 12. How many did you count?",
+    "answer": "3",
+    "hints": [
+      "Start at 9: 10, 11, 12. That is 3 counts.",
+      "Counting up from 9 to 12 gives the difference."
+    ],
+    "solution": "Count up from 9 to 12: 10 (1), 11 (2), 12 (3). So 12 − 9 = 3.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "mental-subtraction-strategies-p2",
+    "topicId": "mental-subtraction-strategies",
+    "difficulty": "easy",
+    "question": "Use counting up to solve: 15 − 12.",
+    "answer": "3",
+    "hints": [
+      "Start at 12 and count to 15.",
+      "12 → 13 → 14 → 15. Three counts."
+    ],
+    "solution": "Count up from 12 to 15: 13 (1), 14 (2), 15 (3). So 15 − 12 = 3.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "mental-subtraction-strategies-p3",
+    "topicId": "mental-subtraction-strategies",
+    "difficulty": "easy",
+    "question": "What is 50 − 20? Use the splitting strategy: split into tens and ones.",
+    "answer": "30",
+    "hints": [
+      "Both numbers are tens, so subtract the tens.",
+      "5 tens − 2 tens = 3 tens = 30."
+    ],
+    "solution": "50 − 20: subtract the tens: 5 − 2 = 3. Answer: 30.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "mental-subtraction-strategies-p4",
+    "topicId": "mental-subtraction-strategies",
+    "difficulty": "easy",
+    "question": "What is 40 − 10?",
+    "answer": "30",
+    "hints": [
+      "4 tens minus 1 ten.",
+      "3 tens = 30."
+    ],
+    "solution": "40 − 10 = 30. Subtract the tens: 4 − 1 = 3 tens.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "mental-subtraction-strategies-p5",
+    "topicId": "mental-subtraction-strategies",
+    "difficulty": "easy",
+    "question": "What is 73 − 30? Think about the tens.",
+    "answer": "43",
+    "hints": [
+      "Subtract only the tens: 7 tens − 3 tens = 4 tens.",
+      "Keep the ones: 3. Answer: 43."
+    ],
+    "solution": "73 − 30: Tens: 7 − 3 = 4. Ones stay 3. Answer: 43.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "mental-subtraction-strategies-p6",
+    "topicId": "mental-subtraction-strategies",
+    "difficulty": "medium",
+    "question": "Use compensation to solve 56 − 29. (Hint: subtract 30, then adjust.)",
+    "answer": "27",
+    "hints": [
+      "29 is close to 30. Subtract 30 first: 56 − 30 = 26.",
+      "You subtracted 1 too many, so add 1 back: 26 + 1 = 27."
+    ],
+    "solution": "Compensation: 56 − 30 = 26. Since 30 is 1 more than 29, add 1: 26 + 1 = 27. So 56 − 29 = 27.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "mental-subtraction-strategies-p7",
+    "topicId": "mental-subtraction-strategies",
+    "difficulty": "medium",
+    "question": "Use compensation to solve 83 − 48.",
+    "answer": "35",
+    "hints": [
+      "48 is close to 50. Subtract 50 first: 83 − 50 = 33.",
+      "You subtracted 2 too many. Add 2 back: 33 + 2 = 35."
+    ],
+    "solution": "Compensation: 83 − 50 = 33. Add back 2 (since 50 − 48 = 2): 33 + 2 = 35.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "mental-subtraction-strategies-p8",
+    "topicId": "mental-subtraction-strategies",
+    "difficulty": "medium",
+    "question": "Use splitting to solve 67 − 34 mentally. Split both numbers into tens and ones.",
+    "answer": "33",
+    "hints": [
+      "67 = 60 + 7. 34 = 30 + 4.",
+      "Tens: 60 − 30 = 30. Ones: 7 − 4 = 3. Total: 33."
+    ],
+    "solution": "Split: 67 = 60 + 7, 34 = 30 + 4. Tens: 60 − 30 = 30. Ones: 7 − 4 = 3. Answer: 30 + 3 = 33.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "mental-subtraction-strategies-p9",
+    "topicId": "mental-subtraction-strategies",
+    "difficulty": "medium",
+    "question": "Use counting up to solve: 42 − 37.",
+    "answer": "5",
+    "hints": [
+      "Start at 37, count up to 42.",
+      "37 → 38 → 39 → 40 → 41 → 42. That is 5."
+    ],
+    "solution": "Count up from 37: 38, 39, 40, 41, 42. That is 5 counts. So 42 − 37 = 5.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "mental-subtraction-strategies-p10",
+    "topicId": "mental-subtraction-strategies",
+    "difficulty": "medium",
+    "question": "Solve 91 − 45 using any mental strategy. Show which strategy you used.",
+    "answer": "46",
+    "hints": [
+      "Compensation: 91 − 45 → 91 − 50 = 41, then add 5 → 46.",
+      "Or splitting: 91 − 40 = 51, then 51 − 5 = 46."
+    ],
+    "solution": "Using compensation: 91 − 50 = 41, add back 5: 41 + 5 = 46. Or splitting: 91 − 40 = 51, 51 − 5 = 46. Either way, the answer is 46.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "mental-subtraction-strategies-p11",
+    "topicId": "mental-subtraction-strategies",
+    "difficulty": "hard",
+    "question": "Which mental strategy works best for 100 − 97: counting up, compensation, or splitting? Explain and solve.",
+    "answer": "Counting up. 97 → 98 → 99 → 100, so the answer is 3.",
+    "hints": [
+      "The two numbers are very close together.",
+      "When numbers are close, counting up is quickest."
+    ],
+    "solution": "Counting up is best because 97 and 100 are only 3 apart. Count: 98 (1), 99 (2), 100 (3). Answer: 3. Splitting or compensation would work too, but counting up is simplest here.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "mental-subtraction-strategies-p12",
+    "topicId": "mental-subtraction-strategies",
+    "difficulty": "hard",
+    "question": "Solve 72 − 36 using two different mental strategies. Show both methods.",
+    "answer": "36",
+    "hints": [
+      "Compensation: 72 − 40 = 32, add 4 → 36.",
+      "Splitting: 72 − 30 = 42, 42 − 6 = 36."
+    ],
+    "solution": "Method 1 (compensation): 72 − 40 = 32, add back 4: 32 + 4 = 36. Method 2 (splitting): 72 − 30 = 42, then 42 − 6 = 36. Both give 36.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "mental-subtraction-strategies-p13",
+    "topicId": "mental-subtraction-strategies",
+    "difficulty": "hard",
+    "question": "A student uses compensation to solve 65 − 28: she does 65 − 30 = 35, then subtracts 2 to get 33. What is her mistake?",
+    "answer": "She should have added 2, not subtracted 2. The answer is 37.",
+    "hints": [
+      "She subtracted 30 instead of 28 — that is 2 too many.",
+      "To fix subtracting too much, you add back, not subtract more."
+    ],
+    "solution": "The student subtracted 30 (which is 2 more than 28). Since she subtracted too much, she should ADD 2 back: 35 + 2 = 37. She subtracted 2 instead, getting 33 (wrong). Correct answer: 37.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "mental-subtraction-strategies-p14",
+    "topicId": "mental-subtraction-strategies",
+    "difficulty": "hard",
+    "question": "Solve 203 − 198 mentally. Which strategy is fastest?",
+    "answer": "5",
+    "hints": [
+      "The numbers are very close. Count up from 198 to 203.",
+      "198 → 199 → 200 → 201 → 202 → 203. That is 5."
+    ],
+    "solution": "Counting up is fastest: 198 → 199 (1), 200 (2), 201 (3), 202 (4), 203 (5). Answer: 5. You could also think: 203 − 200 = 3, plus 200 − 198 = 2, total = 5.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "mental-subtraction-strategies-p15",
+    "topicId": "mental-subtraction-strategies",
+    "difficulty": "hard",
+    "question": "When is counting up a better strategy than compensation? Give an example of each.",
+    "answer": "Counting up is better when the two numbers are close together. Compensation is better when the number being subtracted is close to a round number.",
+    "hints": [
+      "Think about 41 − 38 (close numbers) vs. 85 − 49 (49 is near 50).",
+      "Counting up: 38 → 39 → 40 → 41 = 3. Compensation: 85 − 50 = 35, +1 = 36."
+    ],
+    "solution": "Counting up works best when the numbers are close (e.g., 41 − 38 = 3: just count 39, 40, 41). Compensation works best when one number is near a round number (e.g., 85 − 49: subtract 50 to get 35, add 1 to get 36). Choose the strategy that makes the math simplest.",
+    "cognitiveDemand": "synthesis"
+  }
+]

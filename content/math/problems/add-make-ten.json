@@ -1,0 +1,191 @@
+[
+  {
+    "id": "add-make-ten-p1",
+    "topicId": "add-make-ten",
+    "difficulty": "easy",
+    "question": "What is 8 + 2?",
+    "answer": "10",
+    "hints": [
+      "8 needs 2 more to make 10."
+    ],
+    "solution": "8 + 2 = 10.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "add-make-ten-p2",
+    "topicId": "add-make-ten",
+    "difficulty": "easy",
+    "question": "What is 9 + 1?",
+    "answer": "10",
+    "hints": [
+      "9 needs just 1 more to make 10."
+    ],
+    "solution": "9 + 1 = 10.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "add-make-ten-p3",
+    "topicId": "add-make-ten",
+    "difficulty": "easy",
+    "question": "What is 7 + 3?",
+    "answer": "10",
+    "hints": [
+      "7 and 3 are partners that make 10."
+    ],
+    "solution": "7 + 3 = 10.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "add-make-ten-p4",
+    "topicId": "add-make-ten",
+    "difficulty": "easy",
+    "question": "What is 6 + 4?",
+    "answer": "10",
+    "hints": [
+      "6 + 4 = 10."
+    ],
+    "solution": "6 + 4 = 10.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "add-make-ten-p5",
+    "topicId": "add-make-ten",
+    "difficulty": "easy",
+    "question": "What number do you add to 5 to make 10?",
+    "answer": "5",
+    "hints": [
+      "5 + ? = 10"
+    ],
+    "solution": "5 + 5 = 10. You add 5.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "add-make-ten-p6",
+    "topicId": "add-make-ten",
+    "difficulty": "medium",
+    "question": "Use the make-ten strategy to solve 8 + 5.",
+    "answer": "13",
+    "hints": [
+      "8 needs 2 to make 10. Take 2 from the 5.",
+      "8 + 2 = 10, and 5 − 2 = 3. Now add 10 + 3."
+    ],
+    "solution": "Break 5 into 2 and 3. 8 + 2 = 10. Then 10 + 3 = 13.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "add-make-ten-p7",
+    "topicId": "add-make-ten",
+    "difficulty": "medium",
+    "question": "Use the make-ten strategy to solve 9 + 4.",
+    "answer": "13",
+    "hints": [
+      "9 needs 1 to make 10. Take 1 from the 4.",
+      "9 + 1 = 10. Then 10 + 3 = ?"
+    ],
+    "solution": "Break 4 into 1 and 3. 9 + 1 = 10. Then 10 + 3 = 13.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "add-make-ten-p8",
+    "topicId": "add-make-ten",
+    "difficulty": "medium",
+    "question": "Use the make-ten strategy to solve 7 + 5.",
+    "answer": "12",
+    "hints": [
+      "7 needs 3 to make 10.",
+      "Break 5 into 3 and 2."
+    ],
+    "solution": "Break 5 into 3 and 2. 7 + 3 = 10. Then 10 + 2 = 12.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "add-make-ten-p9",
+    "topicId": "add-make-ten",
+    "difficulty": "medium",
+    "question": "Use the make-ten strategy to solve 9 + 6.",
+    "answer": "15",
+    "hints": [
+      "9 + 1 = 10. Take 1 from 6 to get 5.",
+      "10 + 5 = ?"
+    ],
+    "solution": "Break 6 into 1 and 5. 9 + 1 = 10. Then 10 + 5 = 15.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "add-make-ten-p10",
+    "topicId": "add-make-ten",
+    "difficulty": "medium",
+    "question": "Use the make-ten strategy to solve 8 + 6.",
+    "answer": "14",
+    "hints": [
+      "8 needs 2 to make 10. Break 6 into 2 and 4."
+    ],
+    "solution": "Break 6 into 2 and 4. 8 + 2 = 10. Then 10 + 4 = 14.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "add-make-ten-p11",
+    "topicId": "add-make-ten",
+    "difficulty": "hard",
+    "question": "Show how to use the make-ten strategy to solve 7 + 8. Write the two steps.",
+    "answer": "7 + 3 = 10, 10 + 5 = 15",
+    "hints": [
+      "7 needs 3 to make 10.",
+      "Break 8 into 3 and 5."
+    ],
+    "solution": "Break 8 into 3 and 5. Step 1: 7 + 3 = 10. Step 2: 10 + 5 = 15. So 7 + 8 = 15.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "add-make-ten-p12",
+    "topicId": "add-make-ten",
+    "difficulty": "hard",
+    "question": "Use the make-ten strategy to solve 6 + 8. Explain how you broke apart one number.",
+    "answer": "14",
+    "hints": [
+      "You can make 10 from either number.",
+      "Try: 8 + 2 = 10. Where does the 2 come from?"
+    ],
+    "solution": "Break 6 into 2 and 4. 8 + 2 = 10. Then 10 + 4 = 14. We broke 6 into 2 and 4 because 8 needs 2 to make 10.",
+    "cognitiveDemand": "reasoning"
+  },
+  {
+    "id": "add-make-ten-p13",
+    "topicId": "add-make-ten",
+    "difficulty": "hard",
+    "question": "Use the make-ten strategy to solve 5 + 8.",
+    "answer": "13",
+    "hints": [
+      "8 needs 2 to make 10.",
+      "Break 5 into 2 and 3."
+    ],
+    "solution": "Break 5 into 2 and 3. 8 + 2 = 10. Then 10 + 3 = 13.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "add-make-ten-p14",
+    "topicId": "add-make-ten",
+    "difficulty": "hard",
+    "question": "To solve 9 + 7, Maya wrote: 9 + 1 = 10, then 10 + 6 = 16. Is Maya correct? Why?",
+    "answer": "yes",
+    "hints": [
+      "Maya took 1 from 7 to make 10 with 9.",
+      "7 − 1 = 6, so the leftover is 6."
+    ],
+    "solution": "Yes, Maya is correct. She broke 7 into 1 and 6. 9 + 1 = 10, and 10 + 6 = 16. So 9 + 7 = 16.",
+    "cognitiveDemand": "reasoning"
+  },
+  {
+    "id": "add-make-ten-p15",
+    "topicId": "add-make-ten",
+    "difficulty": "hard",
+    "question": "Use the make-ten strategy to solve 6 + 9.",
+    "answer": "15",
+    "hints": [
+      "9 needs just 1 to make 10.",
+      "Take 1 from 6."
+    ],
+    "solution": "Break 6 into 1 and 5. 9 + 1 = 10. Then 10 + 5 = 15. So 6 + 9 = 15.",
+    "cognitiveDemand": "application"
+  }
+]

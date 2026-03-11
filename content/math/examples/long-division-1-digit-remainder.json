@@ -1,0 +1,64 @@
+[
+  {
+    "id": "long-division-1-digit-remainder-ex1",
+    "topicId": "long-division-1-digit-remainder",
+    "title": "Long Division with a Remainder (2-Digit Dividend)",
+    "steps": [
+      {
+        "subgoalLabel": "Set up",
+        "instruction": "Divide 53 ÷ 7 using long division.",
+        "work": "Write 7 outside the bracket and 53 inside.",
+        "explanation": "Since 53 is not a multiple of 7, we expect a remainder."
+      },
+      {
+        "subgoalLabel": "Divide",
+        "instruction": "How many times does 7 go into 53?",
+        "work": "7 × 7 = 49 and 7 × 8 = 56. Since 56 > 53, the quotient digit is 7.",
+        "explanation": "We pick the largest multiple of 7 that does not exceed 53."
+      },
+      {
+        "subgoalLabel": "Find the remainder",
+        "instruction": "Subtract: 53 - 49.",
+        "work": "53 - 49 = 4. There are no more digits to bring down.",
+        "explanation": "The remainder is 4."
+      },
+      {
+        "subgoalLabel": "Write the answer",
+        "instruction": "State the result.",
+        "work": "53 ÷ 7 = 7 R 4.",
+        "explanation": "Check: 7 × 7 + 4 = 49 + 4 = 53 ✓. The remainder (4) is less than the divisor (7) ✓."
+      }
+    ]
+  },
+  {
+    "id": "long-division-1-digit-remainder-ex2",
+    "topicId": "long-division-1-digit-remainder",
+    "title": "Long Division with a Remainder (3-Digit Dividend)",
+    "steps": [
+      {
+        "subgoalLabel": "Set up",
+        "instruction": "Divide 275 ÷ 8 using long division.",
+        "work": "Write 8 outside and 275 inside.",
+        "explanation": "We will divide from left to right, one step at a time."
+      },
+      {
+        "subgoalLabel": "Divide the first digits",
+        "instruction": "How many times does 8 go into 27?",
+        "work": "8 × 3 = 24. Write 3 above the 7. Subtract: 27 - 24 = 3.",
+        "explanation": "8 × 4 = 32 which is too big, so we use 3."
+      },
+      {
+        "subgoalLabel": "Bring down and divide",
+        "instruction": "Bring down the 5. How many times does 8 go into 35?",
+        "work": "Bring down 5 → 35. 8 × 4 = 32. Write 4 above the 5. Subtract: 35 - 32 = 3.",
+        "explanation": "8 × 5 = 40 which is too big, so we use 4."
+      },
+      {
+        "subgoalLabel": "State the answer",
+        "instruction": "No more digits to bring down. State the result.",
+        "work": "275 ÷ 8 = 34 R 3.",
+        "explanation": "Check: 34 × 8 + 3 = 272 + 3 = 275 ✓. Remainder (3) < Divisor (8) ✓."
+      }
+    ]
+  }
+]

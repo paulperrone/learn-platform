@@ -1,0 +1,196 @@
+[
+  {
+    "id": "mental-addition-strategies-p1",
+    "topicId": "mental-addition-strategies",
+    "difficulty": "easy",
+    "question": "Use compensation to add: 29 + 14. (Hint: round 29 up to 30.)",
+    "answer": "43",
+    "hints": [
+      "29 is close to 30.",
+      "30 + 14 = 44. But you added 1 too many, so subtract 1."
+    ],
+    "solution": "Round 29 to 30. 30 + 14 = 44. Then subtract 1 (because 30 is 1 more than 29). 44 − 1 = 43.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "mental-addition-strategies-p2",
+    "topicId": "mental-addition-strategies",
+    "difficulty": "easy",
+    "question": "Use splitting (break apart) to add: 35 + 24.",
+    "answer": "59",
+    "hints": [
+      "Split each number: 35 = 30 + 5, 24 = 20 + 4.",
+      "Add tens: 30 + 20. Add ones: 5 + 4."
+    ],
+    "solution": "Split: 30 + 20 = 50. 5 + 4 = 9. Combine: 50 + 9 = 59.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "mental-addition-strategies-p3",
+    "topicId": "mental-addition-strategies",
+    "difficulty": "easy",
+    "question": "Use compensation to add: 48 + 25.",
+    "answer": "73",
+    "hints": [
+      "Round 48 up to 50.",
+      "50 + 25 = 75. Subtract 2."
+    ],
+    "solution": "Round 48 to 50. 50 + 25 = 75. Subtract 2 (because 50 − 48 = 2). 75 − 2 = 73.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "mental-addition-strategies-p4",
+    "topicId": "mental-addition-strategies",
+    "difficulty": "easy",
+    "question": "Use splitting to add: 42 + 36.",
+    "answer": "78",
+    "hints": [
+      "40 + 30 = 70. 2 + 6 = 8."
+    ],
+    "solution": "Split: 40 + 30 = 70. 2 + 6 = 8. Combine: 70 + 8 = 78.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "mental-addition-strategies-p5",
+    "topicId": "mental-addition-strategies",
+    "difficulty": "easy",
+    "question": "Use compensation to add: 19 + 35.",
+    "answer": "54",
+    "hints": [
+      "Round 19 up to 20.",
+      "20 + 35 = 55. Subtract 1."
+    ],
+    "solution": "Round 19 to 20. 20 + 35 = 55. Subtract 1. 55 − 1 = 54.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "mental-addition-strategies-p6",
+    "topicId": "mental-addition-strategies",
+    "difficulty": "medium",
+    "question": "Use splitting to add 56 + 37 in your head.",
+    "answer": "93",
+    "hints": [
+      "Split: 50 + 30 = 80. 6 + 7 = 13.",
+      "80 + 13 = ?"
+    ],
+    "solution": "Split: 50 + 30 = 80. 6 + 7 = 13. Combine: 80 + 13 = 93.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "mental-addition-strategies-p7",
+    "topicId": "mental-addition-strategies",
+    "difficulty": "medium",
+    "question": "Use compensation to add 198 + 45.",
+    "answer": "243",
+    "hints": [
+      "198 is close to 200.",
+      "200 + 45 = 245. Subtract 2."
+    ],
+    "solution": "Round 198 to 200. 200 + 45 = 245. Subtract 2: 245 − 2 = 243.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "mental-addition-strategies-p8",
+    "topicId": "mental-addition-strategies",
+    "difficulty": "medium",
+    "question": "Use splitting to add 125 + 243.",
+    "answer": "368",
+    "hints": [
+      "Split by place: 100 + 200, 20 + 40, 5 + 3."
+    ],
+    "solution": "Hundreds: 100 + 200 = 300. Tens: 20 + 40 = 60. Ones: 5 + 3 = 8. Combine: 300 + 60 + 8 = 368.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "mental-addition-strategies-p9",
+    "topicId": "mental-addition-strategies",
+    "difficulty": "medium",
+    "question": "Use compensation to add 299 + 156.",
+    "answer": "455",
+    "hints": [
+      "299 is close to 300.",
+      "300 + 156 = 456. Subtract 1."
+    ],
+    "solution": "Round 299 to 300. 300 + 156 = 456. Subtract 1: 456 − 1 = 455.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "mental-addition-strategies-p10",
+    "topicId": "mental-addition-strategies",
+    "difficulty": "medium",
+    "question": "Add 67 + 28 mentally using any strategy.",
+    "answer": "95",
+    "hints": [
+      "Compensation: round 28 to 30. 67 + 30 = 97. Subtract 2.",
+      "Or splitting: 60 + 20 = 80. 7 + 8 = 15. 80 + 15 = 95."
+    ],
+    "solution": "Using compensation: 67 + 30 = 97, then 97 − 2 = 95. Or splitting: 80 + 15 = 95.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "mental-addition-strategies-p11",
+    "topicId": "mental-addition-strategies",
+    "difficulty": "hard",
+    "question": "Use compensation to add 397 + 248. Show your thinking.",
+    "answer": "645",
+    "hints": [
+      "397 is close to 400.",
+      "400 + 248 = 648. Subtract 3."
+    ],
+    "solution": "Round 397 to 400. 400 + 248 = 648. 397 is 3 less than 400, so subtract 3: 648 − 3 = 645.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "mental-addition-strategies-p12",
+    "topicId": "mental-addition-strategies",
+    "difficulty": "hard",
+    "question": "Solve 145 + 278 using splitting. Show each step.",
+    "answer": "423",
+    "hints": [
+      "Hundreds: 100 + 200 = 300.",
+      "Tens: 40 + 70 = 110. Ones: 5 + 8 = 13.",
+      "300 + 110 + 13 = ?"
+    ],
+    "solution": "Hundreds: 100 + 200 = 300. Tens: 40 + 70 = 110. Ones: 5 + 8 = 13. Total: 300 + 110 + 13 = 423.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "mental-addition-strategies-p13",
+    "topicId": "mental-addition-strategies",
+    "difficulty": "hard",
+    "question": "Which strategy would be better for 499 + 327: splitting or compensation? Why? Solve it.",
+    "answer": "826; compensation",
+    "hints": [
+      "499 is very close to 500, so compensation is efficient.",
+      "500 + 327 = 827. Subtract 1."
+    ],
+    "solution": "Compensation is better because 499 is just 1 away from 500. 500 + 327 = 827. Subtract 1: 827 − 1 = 826.",
+    "cognitiveDemand": "reasoning"
+  },
+  {
+    "id": "mental-addition-strategies-p14",
+    "topicId": "mental-addition-strategies",
+    "difficulty": "hard",
+    "question": "Add 250 + 375 mentally. Explain the strategy you used.",
+    "answer": "625",
+    "hints": [
+      "Splitting: 200 + 300 = 500, 50 + 75 = 125.",
+      "500 + 125 = 625."
+    ],
+    "solution": "Splitting: 200 + 300 = 500. 50 + 75 = 125. 500 + 125 = 625.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "mental-addition-strategies-p15",
+    "topicId": "mental-addition-strategies",
+    "difficulty": "hard",
+    "question": "Two strategies can solve 58 + 36: compensation (round 58 to 60) and splitting (50 + 30, 8 + 6). Try both. Do you get the same answer?",
+    "answer": "94; yes",
+    "hints": [
+      "Compensation: 60 + 36 = 96, subtract 2 = 94.",
+      "Splitting: 50 + 30 = 80, 8 + 6 = 14. 80 + 14 = 94."
+    ],
+    "solution": "Compensation: 60 + 36 = 96, subtract 2 = 94. Splitting: 80 + 14 = 94. Yes, both give 94. Different strategies always give the same correct answer.",
+    "cognitiveDemand": "reasoning"
+  }
+]

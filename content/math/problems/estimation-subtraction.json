@@ -1,0 +1,197 @@
+[
+  {
+    "id": "estimation-subtraction-p1",
+    "topicId": "estimation-subtraction",
+    "difficulty": "easy",
+    "question": "Round each number to the nearest ten, then estimate: 48 − 21.",
+    "answer": "30",
+    "hints": [
+      "48 rounds to 50. 21 rounds to 20.",
+      "50 − 20 = 30."
+    ],
+    "solution": "48 → 50, 21 → 20. Estimate: 50 − 20 = 30. (Exact answer: 27.)",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "estimation-subtraction-p2",
+    "topicId": "estimation-subtraction",
+    "difficulty": "easy",
+    "question": "Round to the nearest ten and estimate: 73 − 38.",
+    "answer": "30",
+    "hints": [
+      "73 rounds to 70. 38 rounds to 40.",
+      "70 − 40 = 30."
+    ],
+    "solution": "73 → 70, 38 → 40. Estimate: 70 − 40 = 30. (Exact: 35.)",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "estimation-subtraction-p3",
+    "topicId": "estimation-subtraction",
+    "difficulty": "easy",
+    "question": "Round to the nearest ten and estimate: 92 − 47.",
+    "answer": "40",
+    "hints": [
+      "92 rounds to 90. 47 rounds to 50.",
+      "90 − 50 = 40."
+    ],
+    "solution": "92 → 90, 47 → 50. Estimate: 90 − 50 = 40. (Exact: 45.)",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "estimation-subtraction-p4",
+    "topicId": "estimation-subtraction",
+    "difficulty": "easy",
+    "question": "Round to the nearest ten and estimate: 65 − 29.",
+    "answer": "40",
+    "hints": [
+      "65 rounds to 70. 29 rounds to 30.",
+      "70 − 30 = 40."
+    ],
+    "solution": "65 → 70, 29 → 30. Estimate: 70 − 30 = 40. (Exact: 36.)",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "estimation-subtraction-p5",
+    "topicId": "estimation-subtraction",
+    "difficulty": "easy",
+    "question": "Round to the nearest ten and estimate: 84 − 51.",
+    "answer": "30",
+    "hints": [
+      "84 rounds to 80. 51 rounds to 50.",
+      "80 − 50 = 30."
+    ],
+    "solution": "84 → 80, 51 → 50. Estimate: 80 − 50 = 30. (Exact: 33.)",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "estimation-subtraction-p6",
+    "topicId": "estimation-subtraction",
+    "difficulty": "medium",
+    "question": "Round to the nearest hundred and estimate: 782 − 315.",
+    "answer": "500",
+    "hints": [
+      "782 rounds to 800. 315 rounds to 300.",
+      "800 − 300 = 500."
+    ],
+    "solution": "782 → 800, 315 → 300. Estimate: 800 − 300 = 500. (Exact: 467.)",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "estimation-subtraction-p7",
+    "topicId": "estimation-subtraction",
+    "difficulty": "medium",
+    "question": "Round to the nearest hundred and estimate: 923 − 478.",
+    "answer": "400",
+    "hints": [
+      "923 rounds to 900. 478 rounds to 500.",
+      "900 − 500 = 400."
+    ],
+    "solution": "923 → 900, 478 → 500. Estimate: 900 − 500 = 400. (Exact: 445.)",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "estimation-subtraction-p8",
+    "topicId": "estimation-subtraction",
+    "difficulty": "medium",
+    "question": "A toy costs $6.89. You have $10.00. About how much change will you get? Round to the nearest dollar.",
+    "answer": "3",
+    "hints": [
+      "$6.89 rounds to $7. $10 stays $10.",
+      "$10 − $7 = $3."
+    ],
+    "solution": "$6.89 → $7, $10.00 → $10. Estimate: $10 − $7 = $3. (Exact: $3.11.)",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "estimation-subtraction-p9",
+    "topicId": "estimation-subtraction",
+    "difficulty": "medium",
+    "question": "Round to the nearest hundred and estimate: 651 − 198.",
+    "answer": "500",
+    "hints": [
+      "651 rounds to 700. 198 rounds to 200.",
+      "700 − 200 = 500."
+    ],
+    "solution": "651 → 700, 198 → 200. Estimate: 700 − 200 = 500. (Exact: 453.)",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "estimation-subtraction-p10",
+    "topicId": "estimation-subtraction",
+    "difficulty": "medium",
+    "question": "A library has 4,285 books. They remove 1,912. About how many are left? Round to the nearest thousand.",
+    "answer": "2000",
+    "hints": [
+      "4,285 rounds to 4,000. 1,912 rounds to 2,000.",
+      "4,000 − 2,000 = 2,000."
+    ],
+    "solution": "4,285 → 4,000, 1,912 → 2,000. Estimate: 4,000 − 2,000 = 2,000. (Exact: 2,373.)",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "estimation-subtraction-p11",
+    "topicId": "estimation-subtraction",
+    "difficulty": "hard",
+    "question": "Without solving exactly, is 843 − 397 closer to 400 or 500? Explain your reasoning using rounding.",
+    "answer": "Closer to 400",
+    "hints": [
+      "Round: 843 → 800, 397 → 400. Estimate: 800 − 400 = 400.",
+      "The exact answer is 446, which is closer to 400 than to 500."
+    ],
+    "solution": "Round: 843 → 800, 397 → 400. Estimate: 400. Since 843 rounds down and 397 rounds up, both adjustments push the estimate lower. The exact answer (446) confirms it is closer to 400.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "estimation-subtraction-p12",
+    "topicId": "estimation-subtraction",
+    "difficulty": "hard",
+    "question": "Sam estimates 712 − 289 by rounding to the nearest hundred: 700 − 300 = 400. The exact answer is 423. Is his estimate reasonable? Explain.",
+    "answer": "Yes, 400 is a reasonable estimate because it is close to the exact answer of 423",
+    "hints": [
+      "How far is 400 from 423?",
+      "The difference is only 23, which is small compared to the numbers involved."
+    ],
+    "solution": "Sam's estimate of 400 is reasonable. It is only 23 away from the exact answer of 423. When rounding to the nearest hundred, estimates within 50–100 of the exact answer are considered good.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "estimation-subtraction-p13",
+    "topicId": "estimation-subtraction",
+    "difficulty": "hard",
+    "question": "You want to know if you have enough money. You have $8.50 and want to buy items costing $3.25 and $2.89. Estimate whether you will have money left over.",
+    "answer": "Yes, about $2 left over",
+    "hints": [
+      "Round: $3.25 → $3, $2.89 → $3. Total: about $6.",
+      "$8.50 → about $9. $9 − $6 = $3. Or more precisely, $8.50 − $6 ≈ $2.50."
+    ],
+    "solution": "Estimate costs: $3.25 → $3, $2.89 → $3. Total ≈ $6. You have about $8.50. $8.50 − $6 = $2.50. Yes, you will have about $2–$3 left over.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "estimation-subtraction-p14",
+    "topicId": "estimation-subtraction",
+    "difficulty": "hard",
+    "question": "When you round 498 − 203, you get 500 − 200 = 300. But the exact answer is 295. Did rounding make the estimate too high, too low, or just right? Why?",
+    "answer": "Too high",
+    "hints": [
+      "498 was rounded up (to 500) and 203 was rounded down (to 200).",
+      "Rounding the first number up increases the difference. Rounding the second down also increases it."
+    ],
+    "solution": "The estimate (300) is too high. Rounding 498 up to 500 increased the difference by 2. Rounding 203 down to 200 increased it by another 3. Both adjustments pushed the estimate higher than the exact answer (295).",
+    "cognitiveDemand": "synthesis"
+  },
+  {
+    "id": "estimation-subtraction-p15",
+    "topicId": "estimation-subtraction",
+    "difficulty": "hard",
+    "question": "Is estimation useful when you need an exact answer, like counting money at a store? When is estimation most helpful?",
+    "answer": "Estimation is most helpful for quick checks, planning, and seeing if an exact answer makes sense. It is not a replacement for exact calculation when precision matters.",
+    "hints": [
+      "Think about when 'close enough' is good enough.",
+      "Estimation helps check if your exact answer is reasonable."
+    ],
+    "solution": "Estimation is best for: (1) quickly checking if an exact answer is reasonable, (2) making plans (do I have enough money?), (3) when exact precision is not needed. When exact amounts matter (counting change, paying bills), you need the precise answer, but estimation can verify it.",
+    "cognitiveDemand": "synthesis"
+  }
+]

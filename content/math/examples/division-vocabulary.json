@@ -1,0 +1,58 @@
+[
+  {
+    "id": "division-vocabulary-ex1",
+    "topicId": "division-vocabulary",
+    "title": "Identifying Parts of a Division Equation",
+    "steps": [
+      {
+        "subgoalLabel": "Read the equation",
+        "instruction": "Look at: 42 ÷ 7 = 6.",
+        "work": "This equation has three numbers: 42, 7, and 6.",
+        "explanation": "Every division equation has a dividend, a divisor, and a quotient."
+      },
+      {
+        "subgoalLabel": "Identify the dividend",
+        "instruction": "Which number is being divided?",
+        "work": "42 is the dividend — it is the total amount being split.",
+        "explanation": "The dividend always comes first (before the ÷ sign). It is the largest number when there is no remainder."
+      },
+      {
+        "subgoalLabel": "Identify the divisor",
+        "instruction": "Which number are we dividing by?",
+        "work": "7 is the divisor — it tells how many groups (or the size of each group).",
+        "explanation": "The divisor comes after the ÷ sign."
+      },
+      {
+        "subgoalLabel": "Identify the quotient",
+        "instruction": "What is the answer?",
+        "work": "6 is the quotient — the result of dividing.",
+        "explanation": "The quotient comes after the = sign. Remember: Dividend ÷ Divisor = Quotient."
+      }
+    ]
+  },
+  {
+    "id": "division-vocabulary-ex2",
+    "topicId": "division-vocabulary",
+    "title": "Understanding the Remainder",
+    "steps": [
+      {
+        "subgoalLabel": "Set up the problem",
+        "instruction": "Find 23 ÷ 5.",
+        "work": "5 × 4 = 20 and 5 × 5 = 25. Since 25 is more than 23, the quotient is 4.",
+        "explanation": "We find the largest multiple of 5 that does not exceed 23."
+      },
+      {
+        "subgoalLabel": "Find the remainder",
+        "instruction": "How much is left over after making 4 groups of 5?",
+        "work": "23 - 20 = 3. The remainder is 3.",
+        "explanation": "The remainder is what is left after dividing as evenly as possible."
+      },
+      {
+        "subgoalLabel": "Write using vocabulary",
+        "instruction": "Write the full answer with correct terms.",
+        "work": "23 ÷ 5 = 4 R 3. Dividend = 23, Divisor = 5, Quotient = 4, Remainder = 3.",
+        "explanation": "Check: Quotient × Divisor + Remainder = 4 × 5 + 3 = 23 = Dividend ✓. The remainder (3) is less than the divisor (5) ✓."
+      }
+    ]
+  }
+]

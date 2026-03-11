@@ -1,0 +1,197 @@
+[
+  {
+    "id": "subtraction-word-problems-compare-p1",
+    "topicId": "subtraction-word-problems-compare",
+    "difficulty": "easy",
+    "question": "Sam has 9 stickers. Lily has 5 stickers. How many more stickers does Sam have than Lily?",
+    "answer": "4",
+    "hints": [
+      "Compare the two amounts by subtracting.",
+      "9 − 5 = ?"
+    ],
+    "solution": "9 − 5 = 4. Sam has 4 more stickers than Lily.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "subtraction-word-problems-compare-p2",
+    "topicId": "subtraction-word-problems-compare",
+    "difficulty": "easy",
+    "question": "A red box has 7 toys. A blue box has 3 toys. How many fewer toys are in the blue box?",
+    "answer": "4",
+    "hints": [
+      "Find the difference between 7 and 3.",
+      "7 − 3 = ?"
+    ],
+    "solution": "7 − 3 = 4. The blue box has 4 fewer toys.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "subtraction-word-problems-compare-p3",
+    "topicId": "subtraction-word-problems-compare",
+    "difficulty": "easy",
+    "question": "Emma is 8 years old. Her brother is 5 years old. How many years older is Emma?",
+    "answer": "3",
+    "hints": [
+      "Subtract the smaller age from the larger.",
+      "8 − 5 = ?"
+    ],
+    "solution": "8 − 5 = 3. Emma is 3 years older.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "subtraction-word-problems-compare-p4",
+    "topicId": "subtraction-word-problems-compare",
+    "difficulty": "easy",
+    "question": "There are 10 cats and 6 dogs at a shelter. How many more cats are there than dogs?",
+    "answer": "4",
+    "hints": [
+      "Compare by subtracting: 10 − 6.",
+      "The difference tells you how many more."
+    ],
+    "solution": "10 − 6 = 4. There are 4 more cats than dogs.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "subtraction-word-problems-compare-p5",
+    "topicId": "subtraction-word-problems-compare",
+    "difficulty": "easy",
+    "question": "Jake read 6 books. Mia read 10 books. How many fewer books did Jake read?",
+    "answer": "4",
+    "hints": [
+      "Find the difference: 10 − 6.",
+      "Fewer means Jake has less."
+    ],
+    "solution": "10 − 6 = 4. Jake read 4 fewer books than Mia.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "subtraction-word-problems-compare-p6",
+    "topicId": "subtraction-word-problems-compare",
+    "difficulty": "medium",
+    "question": "Team A scored 14 points. Team B scored 8 points. How many more points did Team A score?",
+    "answer": "6",
+    "hints": [
+      "Subtract the smaller score from the larger.",
+      "14 − 8 = ?"
+    ],
+    "solution": "14 − 8 = 6. Team A scored 6 more points than Team B.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "subtraction-word-problems-compare-p7",
+    "topicId": "subtraction-word-problems-compare",
+    "difficulty": "medium",
+    "question": "A sunflower is 16 inches tall. A tulip is 9 inches tall. How much taller is the sunflower?",
+    "answer": "7",
+    "hints": [
+      "Find the difference in height.",
+      "16 − 9 = ?"
+    ],
+    "solution": "16 − 9 = 7. The sunflower is 7 inches taller.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "subtraction-word-problems-compare-p8",
+    "topicId": "subtraction-word-problems-compare",
+    "difficulty": "medium",
+    "question": "One bag weighs 13 pounds. Another weighs 7 pounds. What is the difference in weight?",
+    "answer": "6",
+    "hints": [
+      "Difference means subtract.",
+      "13 − 7 = ?"
+    ],
+    "solution": "13 − 7 = 6. The difference is 6 pounds.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "subtraction-word-problems-compare-p9",
+    "topicId": "subtraction-word-problems-compare",
+    "difficulty": "medium",
+    "question": "Monday's temperature was 17 degrees. Tuesday's was 11 degrees. How many degrees warmer was Monday?",
+    "answer": "6",
+    "hints": [
+      "Subtract to compare: 17 − 11.",
+      "The difference tells how many degrees warmer."
+    ],
+    "solution": "17 − 11 = 6. Monday was 6 degrees warmer.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "subtraction-word-problems-compare-p10",
+    "topicId": "subtraction-word-problems-compare",
+    "difficulty": "medium",
+    "question": "A store has 15 red shirts and 9 blue shirts. How many fewer blue shirts are there?",
+    "answer": "6",
+    "hints": [
+      "Compare: 15 − 9.",
+      "Fewer means the blue has less."
+    ],
+    "solution": "15 − 9 = 6. There are 6 fewer blue shirts.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "subtraction-word-problems-compare-p11",
+    "topicId": "subtraction-word-problems-compare",
+    "difficulty": "hard",
+    "question": "Amy has 12 grapes. She has 5 more grapes than Ben. How many grapes does Ben have?",
+    "answer": "7",
+    "hints": [
+      "Amy has MORE, so Ben has fewer.",
+      "Ben's amount = Amy's amount − 5 = 12 − 5."
+    ],
+    "solution": "Amy has 5 more than Ben, so Ben has 12 − 5 = 7 grapes.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "subtraction-word-problems-compare-p12",
+    "topicId": "subtraction-word-problems-compare",
+    "difficulty": "hard",
+    "question": "Carlos has 8 toy cars. He has 6 fewer toy cars than Dina. How many toy cars does Dina have?",
+    "answer": "14",
+    "hints": [
+      "Carlos has FEWER, so Dina has more.",
+      "Dina's amount = Carlos's amount + 6 = 8 + 6."
+    ],
+    "solution": "Carlos has 6 fewer than Dina, so Dina has 8 + 6 = 14 toy cars.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "subtraction-word-problems-compare-p13",
+    "topicId": "subtraction-word-problems-compare",
+    "difficulty": "hard",
+    "question": "Two classes collected cans. Class A collected 13 cans and Class B collected some cans. Class A collected 4 more cans than Class B. How many cans did Class B collect?",
+    "answer": "9",
+    "hints": [
+      "Class A has 4 MORE, so Class B has fewer.",
+      "Class B = 13 − 4."
+    ],
+    "solution": "Class A has 4 more: 13 − 4 = 9. Class B collected 9 cans.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "subtraction-word-problems-compare-p14",
+    "topicId": "subtraction-word-problems-compare",
+    "difficulty": "hard",
+    "question": "Is this a compare problem or a take-away problem? 'There are 11 red flowers and 7 yellow flowers. How many more red flowers are there?' Explain and solve.",
+    "answer": "Compare problem. 11 − 7 = 4 more red flowers.",
+    "hints": [
+      "Are flowers being removed, or are two groups being compared?",
+      "The words 'how many more' signal comparison."
+    ],
+    "solution": "This is a compare problem because we are comparing two groups (red and yellow flowers), not removing any. 11 − 7 = 4 more red flowers.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "subtraction-word-problems-compare-p15",
+    "topicId": "subtraction-word-problems-compare",
+    "difficulty": "hard",
+    "question": "Write a comparison word problem where the answer is 5. Use the numbers 13 and 8.",
+    "answer": "Answers vary. Example: Maria has 13 books and Kai has 8 books. How many more books does Maria have than Kai?",
+    "hints": [
+      "Use 'how many more' or 'how many fewer' to make it a comparison.",
+      "13 − 8 = 5, so the comparison should involve two groups of 13 and 8."
+    ],
+    "solution": "Example: Maria has 13 books and Kai has 8 books. How many more books does Maria have? 13 − 8 = 5. Maria has 5 more books.",
+    "cognitiveDemand": "synthesis"
+  }
+]

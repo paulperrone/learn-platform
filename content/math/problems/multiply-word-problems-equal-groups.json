@@ -1,0 +1,197 @@
+[
+  {
+    "id": "multiply-word-problems-equal-groups-p1",
+    "topicId": "multiply-word-problems-equal-groups",
+    "difficulty": "easy",
+    "question": "There are 4 bags with 6 marbles in each bag. How many marbles are there in all?",
+    "answer": "24",
+    "hints": [
+      "This is an equal groups problem: 4 groups of 6.",
+      "4 × 6 = ?"
+    ],
+    "solution": "4 groups of 6 = 4 × 6 = 24 marbles.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "multiply-word-problems-equal-groups-p2",
+    "topicId": "multiply-word-problems-equal-groups",
+    "difficulty": "easy",
+    "question": "A teacher gives 5 stickers to each of 7 students. How many stickers does she give out?",
+    "answer": "35",
+    "hints": [
+      "7 groups of 5 stickers.",
+      "7 × 5 = ?"
+    ],
+    "solution": "7 × 5 = 35 stickers.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "multiply-word-problems-equal-groups-p3",
+    "topicId": "multiply-word-problems-equal-groups",
+    "difficulty": "easy",
+    "question": "Each box holds 3 crayons. There are 8 boxes. How many crayons are there?",
+    "answer": "24",
+    "hints": [
+      "8 groups of 3.",
+      "8 × 3 = ?"
+    ],
+    "solution": "8 × 3 = 24 crayons.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "multiply-word-problems-equal-groups-p4",
+    "topicId": "multiply-word-problems-equal-groups",
+    "difficulty": "easy",
+    "question": "A pet store has 6 fish tanks. Each tank has 4 fish. How many fish are there?",
+    "answer": "24",
+    "hints": [
+      "6 groups of 4.",
+      "6 × 4 = ?"
+    ],
+    "solution": "6 × 4 = 24 fish.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "multiply-word-problems-equal-groups-p5",
+    "topicId": "multiply-word-problems-equal-groups",
+    "difficulty": "easy",
+    "question": "There are 9 rows of desks with 3 desks in each row. How many desks are there?",
+    "answer": "27",
+    "hints": [
+      "9 groups of 3.",
+      "9 × 3 = ?"
+    ],
+    "solution": "9 × 3 = 27 desks.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "multiply-word-problems-equal-groups-p6",
+    "topicId": "multiply-word-problems-equal-groups",
+    "difficulty": "medium",
+    "question": "A baker puts 12 cookies on each tray. She fills 5 trays. How many cookies did she bake?",
+    "answer": "60",
+    "hints": [
+      "5 groups of 12.",
+      "5 × 12 = ?"
+    ],
+    "solution": "5 × 12 = 60 cookies.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "multiply-word-problems-equal-groups-p7",
+    "topicId": "multiply-word-problems-equal-groups",
+    "difficulty": "medium",
+    "question": "A parking lot has 8 rows. Each row fits 15 cars. How many cars can the lot hold?",
+    "answer": "120",
+    "hints": [
+      "8 groups of 15.",
+      "8 × 15 = ?"
+    ],
+    "solution": "8 × 15 = 120 cars.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "multiply-word-problems-equal-groups-p8",
+    "topicId": "multiply-word-problems-equal-groups",
+    "difficulty": "medium",
+    "question": "A school bought 6 packs of paper. Each pack has 250 sheets. How many sheets did the school buy?",
+    "answer": "1500",
+    "hints": [
+      "6 groups of 250.",
+      "6 × 250 = ?"
+    ],
+    "solution": "6 × 250 = 1,500 sheets.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "multiply-word-problems-equal-groups-p9",
+    "topicId": "multiply-word-problems-equal-groups",
+    "difficulty": "medium",
+    "question": "There are 24 students in a class. Each student needs 3 pencils. How many pencils are needed?",
+    "answer": "72",
+    "hints": [
+      "24 groups of 3.",
+      "24 × 3 = ?"
+    ],
+    "solution": "24 × 3 = 72 pencils.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "multiply-word-problems-equal-groups-p10",
+    "topicId": "multiply-word-problems-equal-groups",
+    "difficulty": "medium",
+    "question": "A store has 7 shelves of books. Each shelf holds 32 books. How many books does the store have?",
+    "answer": "224",
+    "hints": [
+      "7 groups of 32.",
+      "7 × 32 = ?"
+    ],
+    "solution": "7 × 32 = 224 books.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "multiply-word-problems-equal-groups-p11",
+    "topicId": "multiply-word-problems-equal-groups",
+    "difficulty": "hard",
+    "question": "A farmer has 12 crates of eggs. Each crate holds 36 eggs. He sells 100 eggs. How many eggs does he have left?",
+    "answer": "332",
+    "hints": [
+      "First find the total: 12 × 36.",
+      "12 × 36 = 432. Then subtract 100."
+    ],
+    "solution": "12 × 36 = 432 eggs. After selling 100: 432 − 100 = 332 eggs left.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "multiply-word-problems-equal-groups-p12",
+    "topicId": "multiply-word-problems-equal-groups",
+    "difficulty": "hard",
+    "question": "A school has 9 classrooms with 28 chairs each and 3 classrooms with 32 chairs each. How many chairs are there in all?",
+    "answer": "348",
+    "hints": [
+      "Find each group separately: 9 × 28 and 3 × 32.",
+      "252 + 96 = 348."
+    ],
+    "solution": "9 × 28 = 252 chairs, 3 × 32 = 96 chairs. Total: 252 + 96 = 348 chairs.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "multiply-word-problems-equal-groups-p13",
+    "topicId": "multiply-word-problems-equal-groups",
+    "difficulty": "hard",
+    "question": "A bus can carry 45 passengers. A school needs to transport 315 students. How many buses are needed?",
+    "answer": "7",
+    "hints": [
+      "This is a grouping problem: 315 ÷ 45.",
+      "Think: ? × 45 = 315."
+    ],
+    "solution": "315 ÷ 45 = 7. The school needs 7 buses.",
+    "cognitiveDemand": "reasoning"
+  },
+  {
+    "id": "multiply-word-problems-equal-groups-p14",
+    "topicId": "multiply-word-problems-equal-groups",
+    "difficulty": "hard",
+    "question": "A candy shop packs 8 candies per box. They made 256 candies. How many full boxes can they make?",
+    "answer": "32",
+    "hints": [
+      "256 ÷ 8 = ?",
+      "Think: ? × 8 = 256."
+    ],
+    "solution": "256 ÷ 8 = 32 full boxes.",
+    "cognitiveDemand": "reasoning"
+  },
+  {
+    "id": "multiply-word-problems-equal-groups-p15",
+    "topicId": "multiply-word-problems-equal-groups",
+    "difficulty": "hard",
+    "question": "A library has 5 shelves with 48 books each on the first floor and 4 shelves with 52 books each on the second floor. How many more books are on the first floor than the second?",
+    "answer": "32",
+    "hints": [
+      "First floor: 5 × 48. Second floor: 4 × 52.",
+      "240 − 208 = 32."
+    ],
+    "solution": "First floor: 5 × 48 = 240. Second floor: 4 × 52 = 208. Difference: 240 − 208 = 32 more books on the first floor.",
+    "cognitiveDemand": "application"
+  }
+]

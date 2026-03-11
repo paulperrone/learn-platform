@@ -1,0 +1,64 @@
+[
+  {
+    "id": "multiply-word-problems-area-ex1",
+    "topicId": "multiply-word-problems-area",
+    "title": "Finding the Area of a Rectangle",
+    "steps": [
+      {
+        "subgoalLabel": "Read and understand",
+        "instruction": "A classroom floor is 9 meters long and 7 meters wide. What is the area?",
+        "work": "We need to find the area of a rectangle.",
+        "explanation": "Area measures how much surface a shape covers, in square units."
+      },
+      {
+        "subgoalLabel": "Recall the formula",
+        "instruction": "What is the formula for the area of a rectangle?",
+        "work": "Area = length × width",
+        "explanation": "Multiply the two side lengths that meet at a corner."
+      },
+      {
+        "subgoalLabel": "Substitute and solve",
+        "instruction": "Plug in the values.",
+        "work": "Area = 9 × 7 = 63 square meters.",
+        "explanation": "The units are 'square meters' because we are measuring area."
+      },
+      {
+        "subgoalLabel": "State the answer",
+        "instruction": "What is the area of the classroom floor?",
+        "work": "The area is 63 square meters.",
+        "explanation": "Always include the correct unit (square feet, square meters, etc.) for area."
+      }
+    ]
+  },
+  {
+    "id": "multiply-word-problems-area-ex2",
+    "topicId": "multiply-word-problems-area",
+    "title": "Finding a Missing Side Using Area",
+    "steps": [
+      {
+        "subgoalLabel": "Read and understand",
+        "instruction": "A rectangle has an area of 72 square inches and a width of 8 inches. What is the length?",
+        "work": "We know the area and one side. We need the other side.",
+        "explanation": "When area and one side are known, we can find the missing side."
+      },
+      {
+        "subgoalLabel": "Write the equation",
+        "instruction": "Use the area formula.",
+        "work": "72 = length × 8",
+        "explanation": "Area = length × width, so 72 = length × 8."
+      },
+      {
+        "subgoalLabel": "Solve for the missing side",
+        "instruction": "Divide to find the length.",
+        "work": "Length = 72 ÷ 8 = 9 inches.",
+        "explanation": "Division is the inverse of multiplication. If 9 × 8 = 72, then 72 ÷ 8 = 9."
+      },
+      {
+        "subgoalLabel": "Check",
+        "instruction": "Verify: 9 × 8 = ?",
+        "work": "9 × 8 = 72 square inches. Correct!",
+        "explanation": "Always verify by plugging back into the area formula."
+      }
+    ]
+  }
+]

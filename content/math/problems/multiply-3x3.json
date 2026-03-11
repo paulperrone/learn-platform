@@ -1,0 +1,197 @@
+[
+  {
+    "id": "multiply-3x3-p1",
+    "topicId": "multiply-3x3",
+    "difficulty": "easy",
+    "question": "What is 100 × 200?",
+    "answer": "20000",
+    "hints": [
+      "1 × 2 = 2, then add four zeros (two from each factor).",
+      "20,000."
+    ],
+    "solution": "100 × 200 = 20,000.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-3x3-p2",
+    "topicId": "multiply-3x3",
+    "difficulty": "easy",
+    "question": "What is 110 × 120?",
+    "answer": "13200",
+    "hints": [
+      "11 × 12 = 132, then add two zeros.",
+      "13,200."
+    ],
+    "solution": "110 × 120 = 13,200.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-3x3-p3",
+    "topicId": "multiply-3x3",
+    "difficulty": "easy",
+    "question": "What is 101 × 111?",
+    "answer": "11211",
+    "hints": [
+      "101 × 1 = 101. 101 × 10 = 1,010. 101 × 100 = 10,100.",
+      "101 + 1,010 + 10,100 = 11,211."
+    ],
+    "solution": "101 × 111 = 11,211.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-3x3-p4",
+    "topicId": "multiply-3x3",
+    "difficulty": "easy",
+    "question": "What is 200 × 300?",
+    "answer": "60000",
+    "hints": [
+      "2 × 3 = 6, then add four zeros.",
+      "60,000."
+    ],
+    "solution": "200 × 300 = 60,000.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-3x3-p5",
+    "topicId": "multiply-3x3",
+    "difficulty": "easy",
+    "question": "What is 111 × 100?",
+    "answer": "11100",
+    "hints": [
+      "Multiplying by 100 adds two zeros.",
+      "11,100."
+    ],
+    "solution": "111 × 100 = 11,100.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-3x3-p6",
+    "topicId": "multiply-3x3",
+    "difficulty": "medium",
+    "question": "What is 234 × 156?",
+    "answer": "36504",
+    "hints": [
+      "234 × 6 = 1,404. 234 × 50 = 11,700. 234 × 100 = 23,400.",
+      "1,404 + 11,700 + 23,400 = 36,504."
+    ],
+    "solution": "234 × 156 = 36,504.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-3x3-p7",
+    "topicId": "multiply-3x3",
+    "difficulty": "medium",
+    "question": "What is 312 × 214?",
+    "answer": "66768",
+    "hints": [
+      "312 × 4 = 1,248. 312 × 10 = 3,120. 312 × 200 = 62,400.",
+      "1,248 + 3,120 + 62,400 = 66,768."
+    ],
+    "solution": "312 × 214 = 66,768.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-3x3-p8",
+    "topicId": "multiply-3x3",
+    "difficulty": "medium",
+    "question": "A farm produces 425 pounds of apples per tree. There are 132 trees. How many pounds of apples in all?",
+    "answer": "56100",
+    "hints": [
+      "425 × 132.",
+      "425 × 2 = 850. 425 × 30 = 12,750. 425 × 100 = 42,500. Total: 56,100."
+    ],
+    "solution": "425 × 132 = 56,100 pounds.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "multiply-3x3-p9",
+    "topicId": "multiply-3x3",
+    "difficulty": "medium",
+    "question": "What is 256 × 125?",
+    "answer": "32000",
+    "hints": [
+      "256 × 5 = 1,280. 256 × 20 = 5,120. 256 × 100 = 25,600.",
+      "1,280 + 5,120 + 25,600 = 32,000."
+    ],
+    "solution": "256 × 125 = 32,000.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-3x3-p10",
+    "topicId": "multiply-3x3",
+    "difficulty": "medium",
+    "question": "What is 350 × 240?",
+    "answer": "84000",
+    "hints": [
+      "35 × 24 = 840, then add two zeros.",
+      "84,000."
+    ],
+    "solution": "350 × 240 = 84,000.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-3x3-p11",
+    "topicId": "multiply-3x3",
+    "difficulty": "hard",
+    "question": "What is 567 × 389?",
+    "answer": "220563",
+    "hints": [
+      "567 × 9 = 5,103. 567 × 80 = 45,360. 567 × 300 = 170,100.",
+      "5,103 + 45,360 + 170,100 = 220,563."
+    ],
+    "solution": "567 × 389 = 220,563.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-3x3-p12",
+    "topicId": "multiply-3x3",
+    "difficulty": "hard",
+    "question": "What is 748 × 256?",
+    "answer": "191488",
+    "hints": [
+      "748 × 6 = 4,488. 748 × 50 = 37,400. 748 × 200 = 149,600.",
+      "4,488 + 37,400 + 149,600 = 191,488."
+    ],
+    "solution": "748 × 256 = 191,488.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-3x3-p13",
+    "topicId": "multiply-3x3",
+    "difficulty": "hard",
+    "question": "A school district has 185 schools, each with 312 students. How many students are there in all?",
+    "answer": "57720",
+    "hints": [
+      "185 × 312.",
+      "185 × 2 = 370. 185 × 10 = 1,850. 185 × 300 = 55,500. Total: 57,720."
+    ],
+    "solution": "185 × 312 = 57,720 students.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "multiply-3x3-p14",
+    "topicId": "multiply-3x3",
+    "difficulty": "hard",
+    "question": "What is 999 × 999?",
+    "answer": "998001",
+    "hints": [
+      "Think: (1,000 − 1) × (1,000 − 1) = 1,000,000 − 2,000 + 1.",
+      "1,000,000 − 2,000 + 1 = 998,001."
+    ],
+    "solution": "999 × 999 = 998,001.",
+    "cognitiveDemand": "reasoning"
+  },
+  {
+    "id": "multiply-3x3-p15",
+    "topicId": "multiply-3x3",
+    "difficulty": "hard",
+    "question": "What is 500 × 864?",
+    "answer": "432000",
+    "hints": [
+      "864 × 5 = 4,320. Then add two zeros.",
+      "432,000."
+    ],
+    "solution": "500 × 864 = 432,000.",
+    "cognitiveDemand": "procedural"
+  }
+]

@@ -1,0 +1,197 @@
+[
+  {
+    "id": "division-word-problems-grouping-p1",
+    "topicId": "division-word-problems-grouping",
+    "difficulty": "easy",
+    "question": "You have 20 stickers and put 5 on each page. How many pages do you fill?",
+    "answer": "4",
+    "hints": [
+      "'How many pages' means how many groups.",
+      "20 ÷ 5 = ?"
+    ],
+    "solution": "20 ÷ 5 = 4 pages.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "division-word-problems-grouping-p2",
+    "topicId": "division-word-problems-grouping",
+    "difficulty": "easy",
+    "question": "A baker puts 3 muffins in each bag. She has 21 muffins. How many bags does she need?",
+    "answer": "7",
+    "hints": [
+      "How many groups of 3 are in 21?",
+      "21 ÷ 3 = ?"
+    ],
+    "solution": "21 ÷ 3 = 7 bags.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "division-word-problems-grouping-p3",
+    "topicId": "division-word-problems-grouping",
+    "difficulty": "easy",
+    "question": "There are 32 chairs. Each table gets 4 chairs. How many tables have chairs?",
+    "answer": "8",
+    "hints": [
+      "How many groups of 4 in 32?",
+      "32 ÷ 4 = ?"
+    ],
+    "solution": "32 ÷ 4 = 8 tables.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "division-word-problems-grouping-p4",
+    "topicId": "division-word-problems-grouping",
+    "difficulty": "easy",
+    "question": "A shelf holds 6 books. You have 42 books. How many shelves do you need?",
+    "answer": "7",
+    "hints": [
+      "How many groups of 6 in 42?",
+      "42 ÷ 6 = ?"
+    ],
+    "solution": "42 ÷ 6 = 7 shelves.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "division-word-problems-grouping-p5",
+    "topicId": "division-word-problems-grouping",
+    "difficulty": "easy",
+    "question": "Balloons come in packs of 10. You need 50 balloons. How many packs do you buy?",
+    "answer": "5",
+    "hints": [
+      "50 ÷ 10 = ?",
+      "How many 10s in 50?"
+    ],
+    "solution": "50 ÷ 10 = 5 packs.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "division-word-problems-grouping-p6",
+    "topicId": "division-word-problems-grouping",
+    "difficulty": "medium",
+    "question": "A farmer plants 8 seeds in each row. He has 96 seeds. How many rows can he plant?",
+    "answer": "12",
+    "hints": [
+      "96 ÷ 8 = ?",
+      "8 × 12 = 96."
+    ],
+    "solution": "96 ÷ 8 = 12 rows.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "division-word-problems-grouping-p7",
+    "topicId": "division-word-problems-grouping",
+    "difficulty": "medium",
+    "question": "A bus holds 45 passengers. There are 135 people waiting. How many buses are needed?",
+    "answer": "3",
+    "hints": [
+      "135 ÷ 45 = ?",
+      "45 × 3 = 135."
+    ],
+    "solution": "135 ÷ 45 = 3 buses.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "division-word-problems-grouping-p8",
+    "topicId": "division-word-problems-grouping",
+    "difficulty": "medium",
+    "question": "Juice boxes come in packs of 6. A class of 30 students each needs one. How many packs should the teacher buy?",
+    "answer": "5",
+    "hints": [
+      "30 ÷ 6 = ?",
+      "How many groups of 6 in 30?"
+    ],
+    "solution": "30 ÷ 6 = 5 packs.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "division-word-problems-grouping-p9",
+    "topicId": "division-word-problems-grouping",
+    "difficulty": "medium",
+    "question": "A ribbon is 84 cm long. It is cut into pieces that are 7 cm each. How many pieces are there?",
+    "answer": "12",
+    "hints": [
+      "84 ÷ 7 = ?",
+      "7 × 12 = 84."
+    ],
+    "solution": "84 ÷ 7 = 12 pieces.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "division-word-problems-grouping-p10",
+    "topicId": "division-word-problems-grouping",
+    "difficulty": "medium",
+    "question": "Eggs are packed 12 to a carton. A farm collected 144 eggs. How many cartons are filled?",
+    "answer": "12",
+    "hints": [
+      "144 ÷ 12 = ?",
+      "12 × 12 = 144."
+    ],
+    "solution": "144 ÷ 12 = 12 cartons.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "division-word-problems-grouping-p11",
+    "topicId": "division-word-problems-grouping",
+    "difficulty": "hard",
+    "question": "A factory makes 252 toys per day and packs 9 in each box. How many boxes are filled each day?",
+    "answer": "28",
+    "hints": [
+      "252 ÷ 9 = ?",
+      "9 × 28 = 252."
+    ],
+    "solution": "252 ÷ 9 = 28 boxes per day.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "division-word-problems-grouping-p12",
+    "topicId": "division-word-problems-grouping",
+    "difficulty": "hard",
+    "question": "A store has 375 cans. They display 25 cans on each shelf. How many shelves are used?",
+    "answer": "15",
+    "hints": [
+      "375 ÷ 25 = ?",
+      "25 × 15 = 375."
+    ],
+    "solution": "375 ÷ 25 = 15 shelves.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "division-word-problems-grouping-p13",
+    "topicId": "division-word-problems-grouping",
+    "difficulty": "hard",
+    "question": "A printer uses 4 sheets of paper per pamphlet. There are 500 sheets available. How many complete pamphlets can be made?",
+    "answer": "125",
+    "hints": [
+      "500 ÷ 4 = ?",
+      "4 × 125 = 500."
+    ],
+    "solution": "500 ÷ 4 = 125 pamphlets.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "division-word-problems-grouping-p14",
+    "topicId": "division-word-problems-grouping",
+    "difficulty": "hard",
+    "question": "A parking lot has spaces for 8 cars in each row. The lot has 264 spaces. How many rows are there?",
+    "answer": "33",
+    "hints": [
+      "264 ÷ 8 = ?",
+      "8 × 33 = 264."
+    ],
+    "solution": "264 ÷ 8 = 33 rows.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "division-word-problems-grouping-p15",
+    "topicId": "division-word-problems-grouping",
+    "difficulty": "hard",
+    "question": "How is this problem different from an equal sharing problem: 'You have 48 flowers and put 6 in each vase. How many vases?' Explain by choosing: (A) We know the group size and find the number of groups, or (B) We know the number of groups and find the group size. Type A or B.",
+    "answer": "A",
+    "hints": [
+      "In this problem, we know each vase gets 6 (group size).",
+      "We are finding how many vases (number of groups)."
+    ],
+    "solution": "A. In grouping problems, the group SIZE is known (6 per vase) and we find the NUMBER of groups (vases). In equal sharing, the number of groups is known and we find the size.",
+    "cognitiveDemand": "synthesis"
+  }
+]

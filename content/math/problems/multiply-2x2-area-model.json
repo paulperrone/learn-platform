@@ -1,0 +1,197 @@
+[
+  {
+    "id": "multiply-2x2-area-model-p1",
+    "topicId": "multiply-2x2-area-model",
+    "difficulty": "easy",
+    "question": "Use the area model to find 12 × 14. Break 12 into 10 + 2 and 14 into 10 + 4. What are the four partial products? Type only the final answer.",
+    "answer": "168",
+    "hints": [
+      "The four sections are: 10 × 10, 10 × 4, 2 × 10, 2 × 4.",
+      "100 + 40 + 20 + 8 = 168."
+    ],
+    "solution": "12 × 14: (10 × 10) + (10 × 4) + (2 × 10) + (2 × 4) = 100 + 40 + 20 + 8 = 168.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-2x2-area-model-p2",
+    "topicId": "multiply-2x2-area-model",
+    "difficulty": "easy",
+    "question": "Use the area model to find 11 × 13. Type only the final answer.",
+    "answer": "143",
+    "hints": [
+      "Break into: 10 × 10 = 100, 10 × 3 = 30, 1 × 10 = 10, 1 × 3 = 3.",
+      "100 + 30 + 10 + 3 = 143."
+    ],
+    "solution": "11 × 13 = 143. Partial products: 100 + 30 + 10 + 3.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-2x2-area-model-p3",
+    "topicId": "multiply-2x2-area-model",
+    "difficulty": "easy",
+    "question": "Use the area model to find 20 × 15. Type only the final answer.",
+    "answer": "300",
+    "hints": [
+      "Break 15 into 10 + 5: 20 × 10 = 200, 20 × 5 = 100.",
+      "200 + 100 = 300."
+    ],
+    "solution": "20 × 15 = 300. Partial products: 200 + 100.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-2x2-area-model-p4",
+    "topicId": "multiply-2x2-area-model",
+    "difficulty": "easy",
+    "question": "Use the area model: 13 × 12. What is 10 × 10?",
+    "answer": "100",
+    "hints": [
+      "The area model splits each factor by place value.",
+      "10 × 10 = 100."
+    ],
+    "solution": "The top-left section of the area model is 10 × 10 = 100.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-2x2-area-model-p5",
+    "topicId": "multiply-2x2-area-model",
+    "difficulty": "easy",
+    "question": "Use the area model to find 21 × 11. Type only the final answer.",
+    "answer": "231",
+    "hints": [
+      "Break into: 20 × 10 = 200, 20 × 1 = 20, 1 × 10 = 10, 1 × 1 = 1.",
+      "200 + 20 + 10 + 1 = 231."
+    ],
+    "solution": "21 × 11 = 231.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-2x2-area-model-p6",
+    "topicId": "multiply-2x2-area-model",
+    "difficulty": "medium",
+    "question": "Use the area model to find 23 × 16. Type only the final answer.",
+    "answer": "368",
+    "hints": [
+      "Break 23 = 20 + 3, 16 = 10 + 6.",
+      "20×10=200, 20×6=120, 3×10=30, 3×6=18. Total: 200+120+30+18=368."
+    ],
+    "solution": "23 × 16 = 368. Four partial products: 200 + 120 + 30 + 18.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-2x2-area-model-p7",
+    "topicId": "multiply-2x2-area-model",
+    "difficulty": "medium",
+    "question": "Use the area model to find 34 × 25. Type only the final answer.",
+    "answer": "850",
+    "hints": [
+      "Break 34 = 30 + 4, 25 = 20 + 5.",
+      "30×20=600, 30×5=150, 4×20=80, 4×5=20. Total: 600+150+80+20=850."
+    ],
+    "solution": "34 × 25 = 850.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-2x2-area-model-p8",
+    "topicId": "multiply-2x2-area-model",
+    "difficulty": "medium",
+    "question": "In the area model for 18 × 23, one partial product is 10 × 20 = 200. What are the other three partial products? Type their sum.",
+    "answer": "214",
+    "hints": [
+      "The other sections: 10 × 3 = 30, 8 × 20 = 160, 8 × 3 = 24.",
+      "30 + 160 + 24 = 214."
+    ],
+    "solution": "The other three partial products are 30 + 160 + 24 = 214. Total product: 200 + 214 = 414.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-2x2-area-model-p9",
+    "topicId": "multiply-2x2-area-model",
+    "difficulty": "medium",
+    "question": "Use the area model to find 45 × 12. Type only the final answer.",
+    "answer": "540",
+    "hints": [
+      "Break 45 = 40 + 5, 12 = 10 + 2.",
+      "40×10=400, 40×2=80, 5×10=50, 5×2=10. Total: 540."
+    ],
+    "solution": "45 × 12 = 540.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-2x2-area-model-p10",
+    "topicId": "multiply-2x2-area-model",
+    "difficulty": "medium",
+    "question": "Use the area model to find 27 × 31. Type only the final answer.",
+    "answer": "837",
+    "hints": [
+      "Break 27 = 20 + 7, 31 = 30 + 1.",
+      "20×30=600, 20×1=20, 7×30=210, 7×1=7. Total: 837."
+    ],
+    "solution": "27 × 31 = 837.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-2x2-area-model-p11",
+    "topicId": "multiply-2x2-area-model",
+    "difficulty": "hard",
+    "question": "Use the area model to find 56 × 38. Type only the final answer.",
+    "answer": "2128",
+    "hints": [
+      "Break 56 = 50 + 6, 38 = 30 + 8.",
+      "50×30=1500, 50×8=400, 6×30=180, 6×8=48. Total: 2,128."
+    ],
+    "solution": "56 × 38 = 2,128.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-2x2-area-model-p12",
+    "topicId": "multiply-2x2-area-model",
+    "difficulty": "hard",
+    "question": "Use the area model to find 67 × 45. Type only the final answer.",
+    "answer": "3015",
+    "hints": [
+      "Break 67 = 60 + 7, 45 = 40 + 5.",
+      "60×40=2400, 60×5=300, 7×40=280, 7×5=35. Total: 3,015."
+    ],
+    "solution": "67 × 45 = 3,015.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-2x2-area-model-p13",
+    "topicId": "multiply-2x2-area-model",
+    "difficulty": "hard",
+    "question": "A student uses the area model for 26 × 34. She has three partial products: 600, 80, and 24. What is the missing partial product?",
+    "answer": "180",
+    "hints": [
+      "Break 26 = 20 + 6, 34 = 30 + 4. The four sections: 20×30, 20×4, 6×30, 6×4.",
+      "She has 600 (20×30), 80 (20×4), and 24 (6×4). The missing section is 6×30."
+    ],
+    "solution": "The four partial products are 600, 80, 180, and 24. She is missing 6 × 30 = 180. Total: 600 + 80 + 180 + 24 = 884.",
+    "cognitiveDemand": "reasoning"
+  },
+  {
+    "id": "multiply-2x2-area-model-p14",
+    "topicId": "multiply-2x2-area-model",
+    "difficulty": "hard",
+    "question": "Use the area model to find 75 × 48. Type only the final answer.",
+    "answer": "3600",
+    "hints": [
+      "Break 75 = 70 + 5, 48 = 40 + 8.",
+      "70×40=2800, 70×8=560, 5×40=200, 5×8=40. Total: 3,600."
+    ],
+    "solution": "75 × 48 = 3,600.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-2x2-area-model-p15",
+    "topicId": "multiply-2x2-area-model",
+    "difficulty": "hard",
+    "question": "Use the area model to find 83 × 57. Type only the final answer.",
+    "answer": "4731",
+    "hints": [
+      "Break 83 = 80 + 3, 57 = 50 + 7.",
+      "80×50=4000, 80×7=560, 3×50=150, 3×7=21. Total: 4,731."
+    ],
+    "solution": "83 × 57 = 4,731.",
+    "cognitiveDemand": "procedural"
+  }
+]

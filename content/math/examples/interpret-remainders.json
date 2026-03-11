@@ -1,0 +1,52 @@
+[
+  {
+    "id": "interpret-remainders-ex1",
+    "topicId": "interpret-remainders",
+    "title": "Round Up — Everyone Must Fit",
+    "steps": [
+      {
+        "subgoalLabel": "Read the problem",
+        "instruction": "26 students go on a field trip. Each car holds 4 students. How many cars are needed?",
+        "work": "26 ÷ 4 = 6 R 2.",
+        "explanation": "6 cars hold 24 students, but 2 students are left without a car."
+      },
+      {
+        "subgoalLabel": "Decide what to do with the remainder",
+        "instruction": "Can we leave 2 students behind?",
+        "work": "No — every student must go. We need one more car for the remaining 2.",
+        "explanation": "When everyone must be included, round UP to the next whole number."
+      },
+      {
+        "subgoalLabel": "State the answer",
+        "instruction": "How many cars are needed?",
+        "work": "6 + 1 = 7 cars.",
+        "explanation": "We need 7 cars. The keyword is 'needed' — all students must have a seat, so we round up."
+      }
+    ]
+  },
+  {
+    "id": "interpret-remainders-ex2",
+    "topicId": "interpret-remainders",
+    "title": "Drop the Remainder — Only Complete Groups Count",
+    "steps": [
+      {
+        "subgoalLabel": "Read the problem",
+        "instruction": "You have 30 beads and need 7 for each bracelet. How many complete bracelets can you make?",
+        "work": "30 ÷ 7 = 4 R 2.",
+        "explanation": "4 bracelets use 28 beads, with 2 left over."
+      },
+      {
+        "subgoalLabel": "Decide what to do with the remainder",
+        "instruction": "Can you make a bracelet with 2 beads?",
+        "work": "No — a bracelet needs 7 beads. 2 is not enough.",
+        "explanation": "When only complete groups count, we drop the remainder."
+      },
+      {
+        "subgoalLabel": "State the answer",
+        "instruction": "How many complete bracelets?",
+        "work": "4 bracelets.",
+        "explanation": "The answer is just the quotient (4). The remainder is dropped because an incomplete bracelet does not count."
+      }
+    ]
+  }
+]

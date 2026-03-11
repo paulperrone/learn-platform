@@ -1,0 +1,197 @@
+[
+  {
+    "id": "count-objects-to-10-p1",
+    "topicId": "count-objects-to-10",
+    "difficulty": "easy",
+    "question": "How many stars are there?\n\n⭐ ⭐ ⭐ ⭐ ⭐ ⭐",
+    "answer": "6",
+    "hints": [
+      "Count each star from left to right.",
+      "Count: 1, 2, 3, 4, 5, 6."
+    ],
+    "solution": "There are 6 stars. Count: 1, 2, 3, 4, 5, 6.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "count-objects-to-10-p2",
+    "topicId": "count-objects-to-10",
+    "difficulty": "easy",
+    "question": "How many apples are there?\n\n🍎 🍎 🍎 🍎 🍎 🍎 🍎",
+    "answer": "7",
+    "hints": [
+      "Count each apple one at a time.",
+      "Count: 1, 2, 3, 4, 5, 6, 7."
+    ],
+    "solution": "There are 7 apples. Count: 1, 2, 3, 4, 5, 6, 7.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "count-objects-to-10-p3",
+    "topicId": "count-objects-to-10",
+    "difficulty": "easy",
+    "question": "How many hearts are there?\n\n❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️",
+    "answer": "8",
+    "hints": [
+      "Count each heart from left to right.",
+      "Count: 1, 2, 3, 4, 5, 6, 7, 8."
+    ],
+    "solution": "There are 8 hearts. Count: 1, 2, 3, 4, 5, 6, 7, 8.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "count-objects-to-10-p4",
+    "topicId": "count-objects-to-10",
+    "difficulty": "easy",
+    "question": "How many trees are there?\n\n🌲 🌲 🌲 🌲 🌲 🌲 🌲 🌲 🌲",
+    "answer": "9",
+    "hints": [
+      "Count each tree.",
+      "Count: 1, 2, 3, 4, 5, 6, 7, 8, 9."
+    ],
+    "solution": "There are 9 trees. Count: 1, 2, 3, 4, 5, 6, 7, 8, 9.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "count-objects-to-10-p5",
+    "topicId": "count-objects-to-10",
+    "difficulty": "easy",
+    "question": "How many circles are there?\n\n🔵 🔵 🔵 🔵 🔵 🔵 🔵 🔵 🔵 🔵",
+    "answer": "10",
+    "hints": [
+      "Count each circle.",
+      "Count: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10."
+    ],
+    "solution": "There are 10 circles. Count: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "count-objects-to-10-p6",
+    "topicId": "count-objects-to-10",
+    "difficulty": "medium",
+    "question": "How many animals are there in all?\n\n🐱 🐶 🐱 🐶 🐱 🐶 🐱",
+    "answer": "7",
+    "hints": [
+      "Count every animal, even if they are different.",
+      "Count: 1, 2, 3, 4, 5, 6, 7."
+    ],
+    "solution": "There are 7 animals. Count each one from left to right: 1, 2, 3, 4, 5, 6, 7.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "count-objects-to-10-p7",
+    "topicId": "count-objects-to-10",
+    "difficulty": "medium",
+    "question": "How many flowers are there in all?\n\n🌸 🌸 🌸 🌸 🌸\n🌸 🌸 🌸",
+    "answer": "8",
+    "hints": [
+      "Count the top row first, then keep counting with the bottom row.",
+      "Top: 1, 2, 3, 4, 5. Bottom: 6, 7, 8."
+    ],
+    "solution": "There are 8 flowers. Top row: 5, bottom row: 3. Total: 8.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "count-objects-to-10-p8",
+    "topicId": "count-objects-to-10",
+    "difficulty": "medium",
+    "question": "How many fruits are there in all?\n\n🍎 🍌 🍊 🍎 🍌\n🍊 🍎 🍌 🍊 🍎",
+    "answer": "10",
+    "hints": [
+      "Count every fruit no matter what kind.",
+      "Top row: 1, 2, 3, 4, 5. Bottom row: 6, 7, 8, 9, 10."
+    ],
+    "solution": "There are 10 fruits. Count all of them from left to right across both rows.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "count-objects-to-10-p9",
+    "topicId": "count-objects-to-10",
+    "difficulty": "medium",
+    "question": "How many bugs are there in all?\n\n🐛 🐛 🐛\n🐛 🐛 🐛\n🐛 🐛 🐛",
+    "answer": "9",
+    "hints": [
+      "Count each row, then add them together.",
+      "Row 1: 1, 2, 3. Row 2: 4, 5, 6. Row 3: 7, 8, 9."
+    ],
+    "solution": "There are 9 bugs. Count across all three rows: 1, 2, 3, 4, 5, 6, 7, 8, 9.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "count-objects-to-10-p10",
+    "topicId": "count-objects-to-10",
+    "difficulty": "medium",
+    "question": "How many shapes are there in all?\n\n🔴 🔵 🟢\n🔴 🔵 🟢",
+    "answer": "6",
+    "hints": [
+      "Count each shape, no matter the color.",
+      "Top: 1, 2, 3. Bottom: 4, 5, 6."
+    ],
+    "solution": "There are 6 shapes. Count each one across both rows: 1, 2, 3, 4, 5, 6.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "count-objects-to-10-p11",
+    "topicId": "count-objects-to-10",
+    "difficulty": "hard",
+    "question": "Jake says there are 8 birds. Is Jake right? Type yes or no.\n\n🐦 🐦 🐦 🐦 🐦 🐦 🐦",
+    "answer": "no",
+    "hints": [
+      "Count the birds yourself.",
+      "Count: 1, 2, 3, 4, 5, 6, 7. That is 7, not 8."
+    ],
+    "solution": "Jake is wrong. There are 7 birds, not 8.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "count-objects-to-10-p12",
+    "topicId": "count-objects-to-10",
+    "difficulty": "hard",
+    "question": "Emma says there are 9 fish. Is Emma right? Type yes or no.\n\n🐟 🐟 🐟 🐟 🐟 🐟 🐟 🐟 🐟",
+    "answer": "yes",
+    "hints": [
+      "Count the fish carefully.",
+      "Count: 1, 2, 3, 4, 5, 6, 7, 8, 9."
+    ],
+    "solution": "Emma is right! There are 9 fish. Count: 1, 2, 3, 4, 5, 6, 7, 8, 9.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "count-objects-to-10-p13",
+    "topicId": "count-objects-to-10",
+    "difficulty": "hard",
+    "question": "Which group has exactly 8? Type A or B.\n\nGroup A: 🌟 🌟 🌟 🌟 🌟 🌟 🌟 🌟\nGroup B: 🌟 🌟 🌟 🌟 🌟 🌟 🌟 🌟 🌟",
+    "answer": "A",
+    "hints": [
+      "Count each group carefully.",
+      "Group A has 8. Group B has 9."
+    ],
+    "solution": "Group A has exactly 8 stars. Group B has 9 stars.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "count-objects-to-10-p14",
+    "topicId": "count-objects-to-10",
+    "difficulty": "hard",
+    "question": "You counted some toys and stopped at 10. How many toys are there?",
+    "answer": "10",
+    "hints": [
+      "The last number you say when counting tells you the total.",
+      "You stopped counting at 10."
+    ],
+    "solution": "There are 10 toys. The last number you say when counting is the total number of objects.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "count-objects-to-10-p15",
+    "topicId": "count-objects-to-10",
+    "difficulty": "hard",
+    "question": "Lily counted these suns but she made a mistake: ☀️(1) ☀️(2) ☀️(4) ☀️(5) ☀️(6). She skipped a number! How many suns are there really?",
+    "answer": "5",
+    "hints": [
+      "Count the suns yourself without skipping.",
+      "Count: 1, 2, 3, 4, 5."
+    ],
+    "solution": "There are 5 suns. Lily skipped 3, but we must count each sun once: 1, 2, 3, 4, 5.",
+    "cognitiveDemand": "analysis"
+  }
+]

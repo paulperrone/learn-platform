@@ -1,0 +1,197 @@
+[
+  {
+    "id": "subtraction-word-problems-separate-p1",
+    "topicId": "subtraction-word-problems-separate",
+    "difficulty": "easy",
+    "question": "There are 8 cookies on a plate. You eat 3. How many cookies are left?",
+    "answer": "5",
+    "hints": [
+      "You start with 8 and take away 3.",
+      "8 − 3 = ?"
+    ],
+    "solution": "8 − 3 = 5. There are 5 cookies left.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "subtraction-word-problems-separate-p2",
+    "topicId": "subtraction-word-problems-separate",
+    "difficulty": "easy",
+    "question": "A dog has 6 bones. It buries 2 in the yard. How many bones does the dog still have?",
+    "answer": "4",
+    "hints": [
+      "The dog starts with 6 and gives up 2.",
+      "6 − 2 = ?"
+    ],
+    "solution": "6 − 2 = 4. The dog has 4 bones.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "subtraction-word-problems-separate-p3",
+    "topicId": "subtraction-word-problems-separate",
+    "difficulty": "easy",
+    "question": "There are 10 balloons. 4 pop. How many balloons are left?",
+    "answer": "6",
+    "hints": [
+      "Start with 10, take away 4.",
+      "10 − 4 = ?"
+    ],
+    "solution": "10 − 4 = 6. There are 6 balloons left.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "subtraction-word-problems-separate-p4",
+    "topicId": "subtraction-word-problems-separate",
+    "difficulty": "easy",
+    "question": "You have 7 stickers. You give 5 to a friend. How many stickers do you have now?",
+    "answer": "2",
+    "hints": [
+      "You start with 7 and give away 5.",
+      "7 − 5 = ?"
+    ],
+    "solution": "7 − 5 = 2. You have 2 stickers now.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "subtraction-word-problems-separate-p5",
+    "topicId": "subtraction-word-problems-separate",
+    "difficulty": "easy",
+    "question": "There are 9 fish in a tank. 3 are moved to another tank. How many fish are left?",
+    "answer": "6",
+    "hints": [
+      "Start with 9, remove 3.",
+      "9 − 3 = ?"
+    ],
+    "solution": "9 − 3 = 6. There are 6 fish left in the tank.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "subtraction-word-problems-separate-p6",
+    "topicId": "subtraction-word-problems-separate",
+    "difficulty": "medium",
+    "question": "There are 15 books on a shelf. A student takes 7. How many books are still on the shelf?",
+    "answer": "8",
+    "hints": [
+      "Start with 15 books, 7 are taken away.",
+      "15 − 7 = ?"
+    ],
+    "solution": "15 − 7 = 8. There are 8 books on the shelf.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "subtraction-word-problems-separate-p7",
+    "topicId": "subtraction-word-problems-separate",
+    "difficulty": "medium",
+    "question": "A farmer has 18 eggs. 9 eggs hatch into chicks. How many eggs are left?",
+    "answer": "9",
+    "hints": [
+      "18 eggs minus the 9 that hatched.",
+      "18 − 9 = ?"
+    ],
+    "solution": "18 − 9 = 9. There are 9 eggs left.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "subtraction-word-problems-separate-p8",
+    "topicId": "subtraction-word-problems-separate",
+    "difficulty": "medium",
+    "question": "A jar has 14 marbles. 6 roll out. How many marbles are in the jar now?",
+    "answer": "8",
+    "hints": [
+      "You start with 14 and lose 6.",
+      "14 − 6 = ?"
+    ],
+    "solution": "14 − 6 = 8. There are 8 marbles in the jar.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "subtraction-word-problems-separate-p9",
+    "topicId": "subtraction-word-problems-separate",
+    "difficulty": "medium",
+    "question": "There are 16 crayons in a box. 8 are used up. How many crayons are left?",
+    "answer": "8",
+    "hints": [
+      "16 crayons minus 8 used.",
+      "16 − 8 = ?"
+    ],
+    "solution": "16 − 8 = 8. There are 8 crayons left.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "subtraction-word-problems-separate-p10",
+    "topicId": "subtraction-word-problems-separate",
+    "difficulty": "medium",
+    "question": "A bus has 12 passengers. At the next stop, 5 get off. How many passengers are on the bus now?",
+    "answer": "7",
+    "hints": [
+      "12 passengers minus 5 who got off.",
+      "12 − 5 = ?"
+    ],
+    "solution": "12 − 5 = 7. There are 7 passengers on the bus.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "subtraction-word-problems-separate-p11",
+    "topicId": "subtraction-word-problems-separate",
+    "difficulty": "hard",
+    "question": "There are 13 birds in a tree. Some fly away. Now there are 5 birds. How many flew away?",
+    "answer": "8",
+    "hints": [
+      "You know the start (13) and end (5). Find what was taken away.",
+      "13 − ? = 5, so ? = 13 − 5."
+    ],
+    "solution": "13 − ? = 5. Find the missing part: 13 − 5 = 8. So 8 birds flew away.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "subtraction-word-problems-separate-p12",
+    "topicId": "subtraction-word-problems-separate",
+    "difficulty": "hard",
+    "question": "A child had some pennies. She spent 6 pennies. Now she has 9 pennies. How many did she start with?",
+    "answer": "15",
+    "hints": [
+      "She ended with 9 after spending 6.",
+      "? − 6 = 9, so ? = 9 + 6."
+    ],
+    "solution": "? − 6 = 9. Add to find the start: 9 + 6 = 15. She started with 15 pennies.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "subtraction-word-problems-separate-p13",
+    "topicId": "subtraction-word-problems-separate",
+    "difficulty": "hard",
+    "question": "Tom says this is a subtraction problem: 'I have 5 apples and my friend gives me 3 more.' Is he right? Why or why not?",
+    "answer": "No, this is an addition problem because apples are being added, not taken away",
+    "hints": [
+      "Does the number of apples go up or down?",
+      "Getting more means adding, not subtracting."
+    ],
+    "solution": "Tom is wrong. The word 'gives me more' means the amount increases, so this is addition: 5 + 3 = 8. Subtraction is used when something is taken away, lost, or removed.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "subtraction-word-problems-separate-p14",
+    "topicId": "subtraction-word-problems-separate",
+    "difficulty": "hard",
+    "question": "Write a take-away subtraction story for 11 − 4 = 7.",
+    "answer": "Answers vary. Example: There are 11 pencils on a desk. A student takes 4. Now there are 7 pencils.",
+    "hints": [
+      "Start with 11 of something. Then some are removed or taken away.",
+      "The story should end with 7 remaining."
+    ],
+    "solution": "Example story: There are 11 pencils on a desk. A student takes 4 pencils. There are 7 pencils left. The key is starting with 11, removing 4, and ending with 7.",
+    "cognitiveDemand": "synthesis"
+  },
+  {
+    "id": "subtraction-word-problems-separate-p15",
+    "topicId": "subtraction-word-problems-separate",
+    "difficulty": "hard",
+    "question": "There were 17 ducks at a pond. Some swam away. Then 3 more swam away. Now there are 8. How many swam away the first time?",
+    "answer": "6",
+    "hints": [
+      "Total ducks that left: 17 − 8 = 9.",
+      "Of the 9 that left, 3 left the second time. So the first time: 9 − 3 = 6."
+    ],
+    "solution": "Total that left: 17 − 8 = 9. The second group was 3, so the first group was 9 − 3 = 6. Six ducks swam away the first time.",
+    "cognitiveDemand": "analysis"
+  }
+]

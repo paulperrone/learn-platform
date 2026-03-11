@@ -1,0 +1,64 @@
+[
+  {
+    "id": "subtract-word-problems-multi-step-ex1",
+    "topicId": "subtract-word-problems-multi-step",
+    "title": "Solving a Two-Step Subtraction Word Problem",
+    "steps": [
+      {
+        "subgoalLabel": "Read the problem",
+        "instruction": "A store has 80 oranges. They sell 25 in the morning and 18 in the afternoon. How many are left?",
+        "work": "Two groups of oranges are sold. We need to find what remains.",
+        "explanation": "This is a multi-step problem: two subtractions (or add then subtract)."
+      },
+      {
+        "subgoalLabel": "Find total sold",
+        "instruction": "How many oranges were sold in total?",
+        "work": "25 + 18 = 43 oranges sold.",
+        "explanation": "Add both amounts sold before subtracting from the starting total."
+      },
+      {
+        "subgoalLabel": "Subtract from the starting amount",
+        "instruction": "Subtract the total sold from 80.",
+        "work": "80 − 43 = 37.",
+        "explanation": "Ones: 0 < 3, regroup. 10 − 3 = 7. Tens: 7 − 4 = 3."
+      },
+      {
+        "subgoalLabel": "Answer",
+        "instruction": "How many oranges are left?",
+        "work": "37 oranges are left.",
+        "explanation": "We combined two steps: first adding the sold amounts, then subtracting."
+      }
+    ]
+  },
+  {
+    "id": "subtract-word-problems-multi-step-ex2",
+    "topicId": "subtract-word-problems-multi-step",
+    "title": "Multi-Step Problem With Addition and Subtraction",
+    "steps": [
+      {
+        "subgoalLabel": "Read the problem",
+        "instruction": "A bookshelf has 150 books. 42 are borrowed. Then 15 are returned. How many books are on the shelf now?",
+        "work": "Books leave (subtraction) and then some come back (addition).",
+        "explanation": "This problem requires both subtraction and addition in sequence."
+      },
+      {
+        "subgoalLabel": "Step 1: Subtract borrowed books",
+        "instruction": "150 − 42 = ?",
+        "work": "150 − 42 = 108.",
+        "explanation": "0 < 2, regroup: 10 − 2 = 8. Tens: 4 − 4 = 0. Hundreds: 1."
+      },
+      {
+        "subgoalLabel": "Step 2: Add returned books",
+        "instruction": "108 + 15 = ?",
+        "work": "108 + 15 = 123.",
+        "explanation": "Some books came back, so we add."
+      },
+      {
+        "subgoalLabel": "Answer",
+        "instruction": "How many books are on the shelf now?",
+        "work": "There are 123 books on the shelf.",
+        "explanation": "Multi-step problems may mix addition and subtraction. Read carefully to know which operation to use at each step."
+      }
+    ]
+  }
+]

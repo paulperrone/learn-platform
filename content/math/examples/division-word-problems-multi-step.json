@@ -1,0 +1,52 @@
+[
+  {
+    "id": "division-word-problems-multi-step-ex1",
+    "topicId": "division-word-problems-multi-step",
+    "title": "Two-Step Problem: Multiply Then Divide",
+    "steps": [
+      {
+        "subgoalLabel": "Read and plan",
+        "instruction": "A store buys 5 boxes of 24 water bottles. The bottles are placed equally on 6 shelves. How many bottles per shelf?",
+        "work": "Step 1: Find the total. Step 2: Divide among shelves.",
+        "explanation": "This problem needs two operations: multiplication first, then division."
+      },
+      {
+        "subgoalLabel": "Step 1 — Find the total",
+        "instruction": "How many bottles in total?",
+        "work": "5 × 24 = 120 bottles.",
+        "explanation": "5 boxes of 24 gives the total."
+      },
+      {
+        "subgoalLabel": "Step 2 — Divide",
+        "instruction": "Share 120 equally among 6 shelves.",
+        "work": "120 ÷ 6 = 20 bottles per shelf.",
+        "explanation": "Check: 20 × 6 = 120 ✓."
+      }
+    ]
+  },
+  {
+    "id": "division-word-problems-multi-step-ex2",
+    "topicId": "division-word-problems-multi-step",
+    "title": "Two-Step Problem: Subtract Then Divide",
+    "steps": [
+      {
+        "subgoalLabel": "Read and plan",
+        "instruction": "A jar has 80 candies. 20 are given to a friend. The rest are divided equally among 4 children. How many candies does each child get?",
+        "work": "Step 1: Subtract what was given away. Step 2: Divide what remains.",
+        "explanation": "First we need the remaining amount, then we divide."
+      },
+      {
+        "subgoalLabel": "Step 1 — Subtract",
+        "instruction": "How many candies are left?",
+        "work": "80 - 20 = 60 candies remaining.",
+        "explanation": "We subtract the 20 that were given away."
+      },
+      {
+        "subgoalLabel": "Step 2 — Divide",
+        "instruction": "Share 60 among 4 children.",
+        "work": "60 ÷ 4 = 15 candies per child.",
+        "explanation": "Check: 15 × 4 = 60 ✓. Each child gets 15 candies."
+      }
+    ]
+  }
+]

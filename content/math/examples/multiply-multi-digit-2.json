@@ -1,0 +1,70 @@
+[
+  {
+    "id": "multiply-multi-digit-2-ex1",
+    "topicId": "multiply-multi-digit-2",
+    "title": "Multiplying a 3-Digit Number by a 2-Digit Number",
+    "steps": [
+      {
+        "subgoalLabel": "State the problem",
+        "instruction": "Find 234 × 45.",
+        "work": "  234\n×  45\n-----",
+        "explanation": "Use the standard algorithm: multiply by ones, multiply by tens, then add."
+      },
+      {
+        "subgoalLabel": "Multiply by the ones digit",
+        "instruction": "Find 234 × 5.",
+        "work": "4×5=20 (write 0, carry 2). 3×5=15+2=17 (write 7, carry 1). 2×5=10+1=11. First partial product: 1,170.",
+        "explanation": "Work right to left through each digit of 234."
+      },
+      {
+        "subgoalLabel": "Multiply by the tens digit",
+        "instruction": "Find 234 × 40.",
+        "work": "Write 0 placeholder. 4×4=16 (write 6, carry 1). 3×4=12+1=13 (write 3, carry 1). 2×4=8+1=9. Second partial product: 9,360.",
+        "explanation": "Place a 0 in the ones column, then multiply 234 by 4."
+      },
+      {
+        "subgoalLabel": "Add the partial products",
+        "instruction": "Add 1,170 + 9,360.",
+        "work": "1,170 + 9,360 = 10,530.",
+        "explanation": "The sum gives the final product."
+      },
+      {
+        "subgoalLabel": "State the answer",
+        "instruction": "What is 234 × 45?",
+        "work": "234 × 45 = 10,530",
+        "explanation": "The same two-step process works for any multi-digit × 2-digit multiplication."
+      }
+    ]
+  },
+  {
+    "id": "multiply-multi-digit-2-ex2",
+    "topicId": "multiply-multi-digit-2",
+    "title": "Using Compensation to Multiply",
+    "steps": [
+      {
+        "subgoalLabel": "State the problem",
+        "instruction": "Find 498 × 25.",
+        "work": "498 × 25",
+        "explanation": "498 is close to 500. We can use compensation to simplify."
+      },
+      {
+        "subgoalLabel": "Round up",
+        "instruction": "Find 500 × 25 instead.",
+        "work": "500 × 25 = 12,500.",
+        "explanation": "500 × 25 is easy: 5 × 25 = 125, then add two zeros."
+      },
+      {
+        "subgoalLabel": "Adjust for rounding",
+        "instruction": "We added 2 to get 500. Subtract 2 × 25.",
+        "work": "2 × 25 = 50. So 12,500 − 50 = 12,450.",
+        "explanation": "We had 2 extra groups of 25, so we remove them."
+      },
+      {
+        "subgoalLabel": "State the answer",
+        "instruction": "What is 498 × 25?",
+        "work": "498 × 25 = 12,450",
+        "explanation": "Compensation: round to a friendly number, multiply, then adjust."
+      }
+    ]
+  }
+]

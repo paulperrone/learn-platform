@@ -1,0 +1,197 @@
+[
+  {
+    "id": "equal-groups-p1",
+    "topicId": "equal-groups",
+    "difficulty": "easy",
+    "question": "There are 2 groups with 3 in each group. How many in all?",
+    "answer": "6",
+    "hints": [
+      "Count by 3s: 3, 6.",
+      "2 groups of 3 means 3 + 3."
+    ],
+    "solution": "2 groups of 3 = 3 + 3 = 6.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "equal-groups-p2",
+    "topicId": "equal-groups",
+    "difficulty": "easy",
+    "question": "There are 4 groups with 2 in each group. How many in all?",
+    "answer": "8",
+    "hints": [
+      "Count by 2s: 2, 4, 6, 8.",
+      "4 groups of 2 means 2 + 2 + 2 + 2."
+    ],
+    "solution": "4 groups of 2 = 2 + 2 + 2 + 2 = 8.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "equal-groups-p3",
+    "topicId": "equal-groups",
+    "difficulty": "easy",
+    "question": "There are 3 groups with 5 in each group. How many in all?",
+    "answer": "15",
+    "hints": [
+      "Count by 5s: 5, 10, 15.",
+      "3 groups of 5 means 5 + 5 + 5."
+    ],
+    "solution": "3 groups of 5 = 5 + 5 + 5 = 15.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "equal-groups-p4",
+    "topicId": "equal-groups",
+    "difficulty": "easy",
+    "question": "There are 5 groups with 2 in each group. How many in all?",
+    "answer": "10",
+    "hints": [
+      "Count by 2s five times.",
+      "5 groups of 2 means 2 + 2 + 2 + 2 + 2."
+    ],
+    "solution": "5 groups of 2 = 2 + 2 + 2 + 2 + 2 = 10.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "equal-groups-p5",
+    "topicId": "equal-groups",
+    "difficulty": "easy",
+    "question": "There are 2 groups with 4 in each group. How many in all?",
+    "answer": "8",
+    "hints": [
+      "Count by 4s: 4, 8.",
+      "2 groups of 4 means 4 + 4."
+    ],
+    "solution": "2 groups of 4 = 4 + 4 = 8.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "equal-groups-p6",
+    "topicId": "equal-groups",
+    "difficulty": "medium",
+    "question": "A child has 3 bags with 4 apples in each bag. Write a multiplication sentence and find the total. Type only the number.",
+    "answer": "12",
+    "hints": [
+      "How many bags? How many in each bag?",
+      "3 groups of 4 can be written as 3 × 4."
+    ],
+    "solution": "3 bags × 4 apples = 3 × 4 = 12 apples.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "equal-groups-p7",
+    "topicId": "equal-groups",
+    "difficulty": "medium",
+    "question": "There are 6 plates. Each plate has 3 cookies. How many cookies are there in all?",
+    "answer": "18",
+    "hints": [
+      "Find the number of groups and the size of each group.",
+      "6 groups of 3 = 6 × 3."
+    ],
+    "solution": "6 plates × 3 cookies = 6 × 3 = 18 cookies.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "equal-groups-p8",
+    "topicId": "equal-groups",
+    "difficulty": "medium",
+    "question": "Which multiplication sentence matches this: 5 groups of 4? Type the answer as a number times a number (e.g. 5 x 4).",
+    "answer": "5 x 4",
+    "hints": [
+      "The first number tells how many groups.",
+      "The second number tells how many in each group."
+    ],
+    "solution": "5 groups of 4 is written as 5 × 4 = 20.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "equal-groups-p9",
+    "topicId": "equal-groups",
+    "difficulty": "medium",
+    "question": "There are 4 fish tanks. Each tank has 5 fish. How many fish are there in all?",
+    "answer": "20",
+    "hints": [
+      "Number of groups = 4, size of each group = 5.",
+      "4 × 5 = ?"
+    ],
+    "solution": "4 tanks × 5 fish = 4 × 5 = 20 fish.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "equal-groups-p10",
+    "topicId": "equal-groups",
+    "difficulty": "medium",
+    "question": "A farmer puts 3 eggs in each box. He fills 7 boxes. How many eggs does he have?",
+    "answer": "21",
+    "hints": [
+      "Each box is a group of 3.",
+      "7 groups of 3 = 7 × 3."
+    ],
+    "solution": "7 boxes × 3 eggs = 7 × 3 = 21 eggs.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "equal-groups-p11",
+    "topicId": "equal-groups",
+    "difficulty": "hard",
+    "question": "Sam says 4 groups of 3 is the same total as 3 groups of 4. Is Sam correct? Type yes or no.",
+    "answer": "yes",
+    "hints": [
+      "Find 4 × 3 and 3 × 4.",
+      "Both equal 12."
+    ],
+    "solution": "4 × 3 = 12 and 3 × 4 = 12. Sam is correct — the order does not change the total.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "equal-groups-p12",
+    "topicId": "equal-groups",
+    "difficulty": "hard",
+    "question": "There are 24 stickers shared equally among 4 children. How many stickers does each child get?",
+    "answer": "6",
+    "hints": [
+      "Think: 4 groups of what number makes 24?",
+      "4 × ? = 24."
+    ],
+    "solution": "4 × 6 = 24, so each child gets 6 stickers.",
+    "cognitiveDemand": "reasoning"
+  },
+  {
+    "id": "equal-groups-p13",
+    "topicId": "equal-groups",
+    "difficulty": "hard",
+    "question": "A store has 5 shelves. Each shelf holds the same number of toys. There are 35 toys in all. How many toys are on each shelf?",
+    "answer": "7",
+    "hints": [
+      "5 groups of ? = 35.",
+      "Think about which number times 5 gives 35."
+    ],
+    "solution": "5 × ? = 35. Since 5 × 7 = 35, there are 7 toys on each shelf.",
+    "cognitiveDemand": "reasoning"
+  },
+  {
+    "id": "equal-groups-p14",
+    "topicId": "equal-groups",
+    "difficulty": "hard",
+    "question": "Emma made equal groups from 18 buttons. She could make 3 equal groups or 6 equal groups. How many buttons are in each group if she makes 3 groups? Type only that number.",
+    "answer": "6",
+    "hints": [
+      "3 groups of ? = 18.",
+      "18 ÷ 3 = ?"
+    ],
+    "solution": "3 × 6 = 18, so each of the 3 groups has 6 buttons.",
+    "cognitiveDemand": "reasoning"
+  },
+  {
+    "id": "equal-groups-p15",
+    "topicId": "equal-groups",
+    "difficulty": "hard",
+    "question": "A teacher has 30 pencils to give to students. She wants each student to get 5 pencils. How many students can she give pencils to?",
+    "answer": "6",
+    "hints": [
+      "How many groups of 5 are in 30?",
+      "? × 5 = 30."
+    ],
+    "solution": "? × 5 = 30. Since 6 × 5 = 30, she can give pencils to 6 students.",
+    "cognitiveDemand": "reasoning"
+  }
+]

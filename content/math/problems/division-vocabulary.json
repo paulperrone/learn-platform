@@ -1,0 +1,197 @@
+[
+  {
+    "id": "division-vocabulary-p1",
+    "topicId": "division-vocabulary",
+    "difficulty": "easy",
+    "question": "In 20 ÷ 4 = 5, what is the dividend?",
+    "answer": "20",
+    "hints": [
+      "The dividend is the number being divided.",
+      "It comes first, before the ÷ sign."
+    ],
+    "solution": "The dividend is 20. The dividend is the total being split up.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "division-vocabulary-p2",
+    "topicId": "division-vocabulary",
+    "difficulty": "easy",
+    "question": "In 20 ÷ 4 = 5, what is the divisor?",
+    "answer": "4",
+    "hints": [
+      "The divisor is the number you divide by.",
+      "It comes after the ÷ sign."
+    ],
+    "solution": "The divisor is 4. The divisor tells how many groups or the size of each group.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "division-vocabulary-p3",
+    "topicId": "division-vocabulary",
+    "difficulty": "easy",
+    "question": "In 20 ÷ 4 = 5, what is the quotient?",
+    "answer": "5",
+    "hints": [
+      "The quotient is the answer to a division problem.",
+      "It comes after the = sign."
+    ],
+    "solution": "The quotient is 5. The quotient is the result of division.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "division-vocabulary-p4",
+    "topicId": "division-vocabulary",
+    "difficulty": "easy",
+    "question": "In 17 ÷ 5 = 3 R 2, what is the remainder?",
+    "answer": "2",
+    "hints": [
+      "The remainder is what is left over after dividing evenly.",
+      "It comes after the R."
+    ],
+    "solution": "The remainder is 2. After making 3 groups of 5 (15), there are 2 left over.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "division-vocabulary-p5",
+    "topicId": "division-vocabulary",
+    "difficulty": "easy",
+    "question": "What do we call the answer to a division problem?",
+    "answer": "quotient",
+    "hints": [
+      "It starts with the letter Q.",
+      "Think: 12 ÷ 3 = 4. The 4 is the ___."
+    ],
+    "solution": "The answer to a division problem is called the quotient.",
+    "cognitiveDemand": "recall"
+  },
+  {
+    "id": "division-vocabulary-p6",
+    "topicId": "division-vocabulary",
+    "difficulty": "medium",
+    "question": "In 45 ÷ 9 = 5, identify the dividend, divisor, and quotient. Type them in order separated by commas.",
+    "answer": "45, 9, 5",
+    "hints": [
+      "Dividend ÷ Divisor = Quotient.",
+      "The dividend is the total, the divisor is what you divide by, the quotient is the answer."
+    ],
+    "solution": "Dividend = 45, Divisor = 9, Quotient = 5.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "division-vocabulary-p7",
+    "topicId": "division-vocabulary",
+    "difficulty": "medium",
+    "question": "The quotient is 8 and the divisor is 6. What is the dividend?",
+    "answer": "48",
+    "hints": [
+      "Dividend = Quotient × Divisor.",
+      "8 × 6 = ?"
+    ],
+    "solution": "Dividend = 8 × 6 = 48. Check: 48 ÷ 6 = 8 ✓.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "division-vocabulary-p8",
+    "topicId": "division-vocabulary",
+    "difficulty": "medium",
+    "question": "In 23 ÷ 7 = 3 R 2, what is the quotient?",
+    "answer": "3",
+    "hints": [
+      "The quotient is the whole-number part of the answer.",
+      "The remainder is separate from the quotient."
+    ],
+    "solution": "The quotient is 3. The remainder 2 is the leftover, not part of the quotient.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "division-vocabulary-p9",
+    "topicId": "division-vocabulary",
+    "difficulty": "medium",
+    "question": "The dividend is 35, the quotient is 5. What is the divisor?",
+    "answer": "7",
+    "hints": [
+      "Dividend ÷ Divisor = Quotient.",
+      "35 ÷ ? = 5. Think: 5 × ? = 35."
+    ],
+    "solution": "35 ÷ ? = 5, so ? = 35 ÷ 5 = 7. The divisor is 7.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "division-vocabulary-p10",
+    "topicId": "division-vocabulary",
+    "difficulty": "medium",
+    "question": "True or false: in the equation 56 ÷ 8 = 7, the number 8 is the dividend. Type 'true' or 'false'.",
+    "answer": "false",
+    "hints": [
+      "The dividend is the number being divided.",
+      "The dividend comes before the ÷ sign."
+    ],
+    "solution": "False. In 56 ÷ 8 = 7, the dividend is 56 (the total being divided), not 8. The number 8 is the divisor.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "division-vocabulary-p11",
+    "topicId": "division-vocabulary",
+    "difficulty": "hard",
+    "question": "Write a division equation where the dividend is 36, the divisor is 9, and state the quotient.",
+    "answer": "36 ÷ 9 = 4",
+    "hints": [
+      "Put the parts in order: dividend ÷ divisor = quotient.",
+      "36 ÷ 9 = ?"
+    ],
+    "solution": "36 ÷ 9 = 4. Dividend = 36, Divisor = 9, Quotient = 4.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "division-vocabulary-p12",
+    "topicId": "division-vocabulary",
+    "difficulty": "hard",
+    "question": "If the dividend is 29, the divisor is 6, what are the quotient and remainder? Type as 'Q R' (for example '4 R 5').",
+    "answer": "4 R 5",
+    "hints": [
+      "6 × 4 = 24 and 6 × 5 = 30. Which is closest without going over 29?",
+      "29 - 24 = 5, so the remainder is 5."
+    ],
+    "solution": "29 ÷ 6 = 4 R 5. Quotient = 4, Remainder = 5. Check: 4 × 6 + 5 = 24 + 5 = 29 ✓.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "division-vocabulary-p13",
+    "topicId": "division-vocabulary",
+    "difficulty": "hard",
+    "question": "True or false: the remainder must always be less than the divisor. Type 'true' or 'false'.",
+    "answer": "true",
+    "hints": [
+      "If the remainder were equal to or larger than the divisor, you could make another group.",
+      "Example: 14 ÷ 3 = 4 R 2. The remainder 2 is less than the divisor 3."
+    ],
+    "solution": "True. If the remainder were equal to or greater than the divisor, you could form another complete group, which means the quotient should be larger.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "division-vocabulary-p14",
+    "topicId": "division-vocabulary",
+    "difficulty": "hard",
+    "question": "Which equation is correct: Dividend = Quotient × Divisor + Remainder, or Dividend = Quotient + Divisor × Remainder? Type '1' or '2'.",
+    "answer": "1",
+    "hints": [
+      "Test with 17 ÷ 5 = 3 R 2.",
+      "Option 1: 3 × 5 + 2 = 17 ✓. Option 2: 3 + 5 × 2 = 13 ✗."
+    ],
+    "solution": "Option 1 is correct: Dividend = Quotient × Divisor + Remainder. For 17 ÷ 5 = 3 R 2: 3 × 5 + 2 = 17 ✓.",
+    "cognitiveDemand": "analysis"
+  },
+  {
+    "id": "division-vocabulary-p15",
+    "topicId": "division-vocabulary",
+    "difficulty": "hard",
+    "question": "A division problem has a quotient of 7, a divisor of 4, and a remainder of 3. What is the dividend?",
+    "answer": "31",
+    "hints": [
+      "Use the formula: Dividend = Quotient × Divisor + Remainder.",
+      "7 × 4 + 3 = ?"
+    ],
+    "solution": "Dividend = 7 × 4 + 3 = 28 + 3 = 31. Check: 31 ÷ 4 = 7 R 3 ✓.",
+    "cognitiveDemand": "synthesis"
+  }
+]

@@ -1,0 +1,197 @@
+[
+  {
+    "id": "multiply-2x1-no-regroup-p1",
+    "topicId": "multiply-2x1-no-regroup",
+    "difficulty": "easy",
+    "question": "What is 12 × 3?",
+    "answer": "36",
+    "hints": [
+      "Multiply the ones: 2 × 3 = 6.",
+      "Multiply the tens: 10 × 3 = 30. Then 30 + 6 = 36."
+    ],
+    "solution": "12 × 3: ones: 2 × 3 = 6, tens: 1 × 3 = 3 (meaning 30). Total = 36.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-2x1-no-regroup-p2",
+    "topicId": "multiply-2x1-no-regroup",
+    "difficulty": "easy",
+    "question": "What is 21 × 4?",
+    "answer": "84",
+    "hints": [
+      "Multiply the ones: 1 × 4 = 4.",
+      "Multiply the tens: 20 × 4 = 80. Total = 84."
+    ],
+    "solution": "21 × 4: ones: 1 × 4 = 4, tens: 2 × 4 = 8 (meaning 80). Total = 84.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-2x1-no-regroup-p3",
+    "topicId": "multiply-2x1-no-regroup",
+    "difficulty": "easy",
+    "question": "What is 11 × 7?",
+    "answer": "77",
+    "hints": [
+      "Multiply the ones: 1 × 7 = 7.",
+      "Multiply the tens: 10 × 7 = 70. Total = 77."
+    ],
+    "solution": "11 × 7: ones: 1 × 7 = 7, tens: 1 × 7 = 7 (meaning 70). Total = 77.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-2x1-no-regroup-p4",
+    "topicId": "multiply-2x1-no-regroup",
+    "difficulty": "easy",
+    "question": "What is 23 × 2?",
+    "answer": "46",
+    "hints": [
+      "Multiply the ones: 3 × 2 = 6.",
+      "Multiply the tens: 20 × 2 = 40. Total = 46."
+    ],
+    "solution": "23 × 2: ones: 3 × 2 = 6, tens: 2 × 2 = 4 (meaning 40). Total = 46.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-2x1-no-regroup-p5",
+    "topicId": "multiply-2x1-no-regroup",
+    "difficulty": "easy",
+    "question": "What is 31 × 3?",
+    "answer": "93",
+    "hints": [
+      "Multiply the ones: 1 × 3 = 3.",
+      "Multiply the tens: 30 × 3 = 90. Total = 93."
+    ],
+    "solution": "31 × 3: ones: 1 × 3 = 3, tens: 3 × 3 = 9 (meaning 90). Total = 93.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-2x1-no-regroup-p6",
+    "topicId": "multiply-2x1-no-regroup",
+    "difficulty": "medium",
+    "question": "What is 32 × 3?",
+    "answer": "96",
+    "hints": [
+      "Multiply ones: 2 × 3 = 6. Multiply tens: 3 × 3 = 9 (meaning 90).",
+      "90 + 6 = 96."
+    ],
+    "solution": "32 × 3 = 96. No regrouping needed because 2 × 3 = 6 (single digit) and 3 × 3 = 9.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-2x1-no-regroup-p7",
+    "topicId": "multiply-2x1-no-regroup",
+    "difficulty": "medium",
+    "question": "What is 43 × 2?",
+    "answer": "86",
+    "hints": [
+      "Multiply ones: 3 × 2 = 6. Multiply tens: 4 × 2 = 8 (meaning 80).",
+      "80 + 6 = 86."
+    ],
+    "solution": "43 × 2 = 86.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-2x1-no-regroup-p8",
+    "topicId": "multiply-2x1-no-regroup",
+    "difficulty": "medium",
+    "question": "A shelf has 22 books. There are 4 shelves. How many books in all?",
+    "answer": "88",
+    "hints": [
+      "22 × 4.",
+      "Ones: 2 × 4 = 8. Tens: 2 × 4 = 8 (meaning 80). Total = 88."
+    ],
+    "solution": "22 × 4 = 88 books.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "multiply-2x1-no-regroup-p9",
+    "topicId": "multiply-2x1-no-regroup",
+    "difficulty": "medium",
+    "question": "What is 14 × 2?",
+    "answer": "28",
+    "hints": [
+      "Ones: 4 × 2 = 8. Tens: 1 × 2 = 2 (meaning 20).",
+      "20 + 8 = 28."
+    ],
+    "solution": "14 × 2 = 28.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-2x1-no-regroup-p10",
+    "topicId": "multiply-2x1-no-regroup",
+    "difficulty": "medium",
+    "question": "Each row in a garden has 33 plants. There are 3 rows. How many plants in all?",
+    "answer": "99",
+    "hints": [
+      "33 × 3.",
+      "Ones: 3 × 3 = 9. Tens: 3 × 3 = 9 (meaning 90). Total = 99."
+    ],
+    "solution": "33 × 3 = 99 plants.",
+    "cognitiveDemand": "application"
+  },
+  {
+    "id": "multiply-2x1-no-regroup-p11",
+    "topicId": "multiply-2x1-no-regroup",
+    "difficulty": "hard",
+    "question": "What is 24 × 2? Show that you can break it into tens and ones. Type only the final answer.",
+    "answer": "48",
+    "hints": [
+      "Break 24 into 20 + 4.",
+      "20 × 2 = 40, 4 × 2 = 8. Total = 48."
+    ],
+    "solution": "24 × 2: (20 × 2) + (4 × 2) = 40 + 8 = 48.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "multiply-2x1-no-regroup-p12",
+    "topicId": "multiply-2x1-no-regroup",
+    "difficulty": "hard",
+    "question": "Fill in the blank: 1? × 3 = 39. What digit goes in the ones place of the first number?",
+    "answer": "3",
+    "hints": [
+      "The product is 39. The tens digit of the product is 3, from 1 × 3.",
+      "The ones digit of the product is 9, so ? × 3 = 9. What times 3 is 9?"
+    ],
+    "solution": "? × 3 = 9, so ? = 3. The number is 13. Check: 13 × 3 = 39.",
+    "cognitiveDemand": "reasoning"
+  },
+  {
+    "id": "multiply-2x1-no-regroup-p13",
+    "topicId": "multiply-2x1-no-regroup",
+    "difficulty": "hard",
+    "question": "Are there any 2-digit numbers times 4 that do not require regrouping AND give a product greater than 80? Type yes or no.",
+    "answer": "yes",
+    "hints": [
+      "For no regrouping, the ones digit × 4 must be less than 10 and the tens digit × 4 must be less than 10.",
+      "Try 22 × 4 = 88. Ones: 2 × 4 = 8, tens: 2 × 4 = 8. No regrouping and 88 > 80."
+    ],
+    "solution": "Yes. For example, 22 × 4 = 88. Both digit products (8 and 8) are single digits, so no regrouping.",
+    "cognitiveDemand": "reasoning"
+  },
+  {
+    "id": "multiply-2x1-no-regroup-p14",
+    "topicId": "multiply-2x1-no-regroup",
+    "difficulty": "hard",
+    "question": "Eva says 34 × 2 = 68 because 30 × 2 = 60 and 4 × 2 = 8. Is her method correct? Type yes or no.",
+    "answer": "yes",
+    "hints": [
+      "She broke 34 into 30 + 4.",
+      "60 + 8 = 68. Check: 34 × 2 = 68."
+    ],
+    "solution": "Yes. Eva used the distributive property: 34 × 2 = (30 + 4) × 2 = 60 + 8 = 68.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "multiply-2x1-no-regroup-p15",
+    "topicId": "multiply-2x1-no-regroup",
+    "difficulty": "hard",
+    "question": "What is 44 × 2?",
+    "answer": "88",
+    "hints": [
+      "40 × 2 = 80, 4 × 2 = 8.",
+      "80 + 8 = 88."
+    ],
+    "solution": "44 × 2 = 88. Tens: 40 × 2 = 80. Ones: 4 × 2 = 8. Total = 88.",
+    "cognitiveDemand": "procedural"
+  }
+]
