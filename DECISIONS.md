@@ -1469,3 +1469,37 @@ Tag each target in `targets.json` with `signal_source: "engine" | "content" | "b
 - Aggressive credit reduction (0.05/0.03 + 0.85 threshold): Only 1/29 profiles reached 50% mastery at L2. Diagnostic accuracy was destroyed — average profiles started with near-zero implicit mastery.
 - Distance-weighted credit (exponential decay by grade distance): Slightly better for strong profiles (79% vs 92% implicit) but pushed review/new balance from WARN to FAIL.
 - Mastery criterion tightening: All variants (3+7d, 3+10d, 4+21d) caused mastery convergence FAIL. The interaction between harder mastery and reduced diagnostic credit was multiplicative — each change alone was borderline, together they were catastrophic.
+
+---
+
+### 2026-03-11: Replace subject-owned graphs with discipline-owned graphs plus collections
+
+**Source:** User session — Plan 020 Phase 1
+**Area:** Content architecture / graph model / product packaging
+
+**Decision:** Topics should belong directly to disciplines. `subject` is no longer the canonical graph or runtime boundary. User-facing organization should move to `collections`, which package topics into grade bands, strands, exam-prep tracks, or thematic paths without owning the topics.
+
+**Why:**
+- `subject` was doing three jobs at once: graph ownership, content organization, and UI packaging
+- Those boundaries diverged as the graph matured: math needs one connected discipline graph, but users still need intelligible packages like Grade 3 Math or SAT Math Prep
+- Same-discipline `subject` boundaries created artificial runtime seams for diagnostic placement, FIRe compression, and session planning
+- Skill-level granularity is the real blocker; packaging should be flexible enough to present the same discipline graph in multiple ways
+- Collections match the product need better: a topic can appear in more than one user-facing path without duplication or cross-subject hacks
+
+**Consequences:**
+- Topics attach to disciplines, not subjects
+- Collections become the packaging/view layer
+- Presentation drift and diagnostic scope should be discipline-scoped
+- Same-discipline cross-subject prerequisite patterns should be eliminated as the model is migrated
+- Content guidance must stop using fixed "topics per subject" targets and instead define granularity in terms of independent mastery/remediation units
+
+**Alternatives rejected:**
+- Keep `subject` and add collections on top: Preserves the core modeling mistake. Topics would still be exclusively owned by an arbitrary packaging unit.
+- Keep subject = discipline permanently: Better than the current split, but still redundant once collections exist and topics can attach directly to disciplines.
+- Solve only with more problems per topic: Helps pacing, but does not fix coarse graph topology, weak remediation, or diagnostic over-crediting.
+
+**Clarification added later the same day:**
+- Collections should be allowed to span disciplines when the learner-facing path is genuinely interdisciplinary
+- Keep the model simple for now: use cross-discipline collections with a `primaryDisciplineId`
+- Do not add a separate `programs` or `tracks` layer yet, but do not block that future path either
+- Example: an `econometrics` collection may package statistics topics from `math` plus application topics from `economics`, while canonical topic ownership remains singular

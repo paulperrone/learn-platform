@@ -30,7 +30,7 @@
 
 ## 1. Content Hierarchy
 
-The platform organizes knowledge in a four-level hierarchy:
+The platform organizes knowledge in a discipline-owned graph with optional packaging views:
 
 ### Disciplines
 Broad knowledge domains. Each discipline has a **progression model** that defines how its prerequisite graph is traversed.
@@ -46,20 +46,28 @@ Broad knowledge domains. Each discipline has a **progression model** that define
 | `arts` | Arts & Music | `mastery-gated` | Technique compounds; appreciation is context-layered. |
 | `cs` | Computer Science | `mastery-gated` | Strongly compounding — can't write algorithms without control flow. |
 
-### Subjects
-A bounded curriculum within a discipline. Has a knowledge graph, grade range, and topic set.
+### Collections
+User-facing packaging views over one or more discipline graphs. Collections do **not** own topics; they group existing topics into intelligible units for browsing, onboarding, remediation, and reporting.
 
-Examples: "Foundational Mathematics" (math, levels 0-5), "Pre-Algebra" (math, levels 5-7), "US History" (history, levels 0-12), "Introduction to Philosophy" (philosophy, levels 0-8).
+Examples:
+- Grade-band collections: "Grade 3 Math", "Grade 7 Math"
+- Focused tracks: "Fractions Mastery", "Ratios & Proportions"
+- Exam packaging: "SAT Math Prep"
+- Chronological/thematic paths: "Colonial America", "Age of Revolutions"
+- Interdisciplinary paths: "Econometrics", "Data Science Foundations"
 
-Subjects within the same discipline can have cross-subject prerequisite edges (e.g., Foundational Math → Pre-Algebra).
+A topic may appear in multiple collections. The graph remains single-source; collections are views. A collection may have a **primary discipline** for navigation and display, but it may include topics from other disciplines when the learner-facing path is genuinely interdisciplinary.
 
 ### Topics
 Atomic learning nodes in the knowledge graph. Each topic has:
-- A subject it belongs to
+- A discipline it belongs to
 - A graph depth (computed from prerequisites)
 - A grade level (approximate educational stage)
 - Prerequisite edges (with types: required, recommended, enriching)
 - Encompassing relationships (parent topics that implicitly review child topics)
+- Optional memberships in one or more collections
+
+Canonical ownership stays singular even when packaging is interdisciplinary. For example, econometrics topics may belong to `economics`, statistics topics may belong to `math`, and an "Econometrics" collection may include both.
 
 ### Content
 The actual instructional and assessment material, attached to topics via foreign keys. Two tables:
@@ -352,10 +360,10 @@ For math, CS, grammar, music technique, etc.
 - Prerequisites are mostly `required` (hard gates)
 - Linear chains with some parallelism (addition and subtraction can be learned somewhat independently)
 - Depth levels in the graph represent skill progression
-- Cross-subject edges to prior subjects in the discipline (Foundational Math → Pre-Algebra)
+- Cross-collection or prior-grade dependencies inside the same discipline graph when they are genuinely required
 
 ### Content Strategy
-- **Content depth is always `survey`** — mastery-gated disciplines encode analytical progression in the topic graph itself. "Adding fractions" IS deeper than "adding whole numbers." The survey/contextual/analytical/synthesis depth layers are for context-layered disciplines only. Never create non-survey depth content for mastery-gated subjects.
+- **Content depth is always `survey`** — mastery-gated disciplines encode analytical progression in the topic graph itself. "Adding fractions" IS deeper than "adding whole numbers." The survey/contextual/analytical/synthesis depth layers are for context-layered disciplines only. Never create non-survey depth content for mastery-gated discipline graphs.
 - **Presentation matters a lot** — the same skill taught to a 6-year-old vs. a 14-year-old needs different examples, vocabulary, and scaffolding
 - **Assessment is binary** — right or wrong (with partial credit for multi-step)
 - **Build all presentation levels for each topic** — a late-starting teenager needs age-appropriate instruction on basic skills
@@ -490,28 +498,72 @@ Prerequisites can cross discipline boundaries:
 ### Rules for Cross-Discipline Edges
 - Almost always `required` — if the dependency is soft enough to be `recommended`, question whether it's truly a cross-discipline prerequisite
 - The diagnostic should eventually place students across the full connected graph
-- Cross-discipline edges create natural bridges that guide learners between subjects
+- Cross-discipline edges create natural bridges that guide learners between discipline graphs
+
+### Interdisciplinary Collections
+
+Cross-discipline edges handle the **knowledge dependency**. Interdisciplinary collections handle the **learner-facing packaging**.
+
+Use an interdisciplinary collection when:
+- Learners experience the path as one coherent offering
+- The path depends on multiple canonical disciplines
+- You want one browseable/remediable package without duplicating topics
+
+Example: `econometrics`
+- Canonical ownership:
+  - probability, sampling, estimation, hypothesis testing, regression foundations -> `math`
+  - economic modeling and domain-specific interpretation topics -> `economics`
+- Packaging:
+  - one `econometrics` collection with a primary discipline of `economics`
+- Dependencies:
+  - econometrics application topics use `required` cross-discipline edges to the relevant statistics topics
+
+Rule of thumb:
+- Put each topic in the discipline that best matches its core learning objective
+- Use cross-discipline prerequisite edges for genuine dependencies
+- Use interdisciplinary collections when the user should see one coherent path
+- Do **not** duplicate prerequisite topics into multiple disciplines just to make packaging easier
 
 ### Validation
-- `graph.validateDAG(subjectId)` validates within a single subject (ignores cross-subject edges)
-- `graph.validateDAG()` (no argument) validates the full graph across all subjects, detecting cross-subject cycles
-- API: `GET /api/subjects/:id/validate` for single-subject, `GET /api/graph/validate` for full graph
+- Target model: validate a full discipline graph at once, not arbitrary same-discipline subgraphs
+- Full-graph validation must still catch cross-discipline cycles
+- During migration, some tooling/endpoints may still expose legacy subject-scoped validation
 
 ---
 
 ## 13. Graph Design Guidelines
 
-When designing a knowledge graph for a new subject, follow these guidelines for topic granularity, graph shape, prerequisite density, and encompassing density based on the discipline's progression model.
+When designing a knowledge graph for a new discipline or expanding an existing discipline graph, follow these guidelines for topic granularity, graph shape, prerequisite density, and encompassing density based on the discipline's progression model.
 
 ### Topic Granularity
 
-| Progression Model | Topics per Subject | Granularity | Rationale |
+| Progression Model | Typical Density | Granularity | Rationale |
 |---|---|---|---|
-| **Mastery-gated** | 50-100 | ~1 discrete skill per topic | Each topic tests one thing with a clear right/wrong answer. "Add within 20" is one topic; "Add within 100" is another. Fine granularity enables precise mastery tracking and targeted remediation. |
-| **Context-layered** | 25-40 | Broader thematic units | Topics are entry points revisited at multiple depths. "Causes of the American Revolution" is one topic with survey, contextual, analytical, and synthesis content. Fewer topics because depth layers multiply content per topic. |
-| **Flexible** | 20-30 | Independent items or small clusters | Topics are mostly standalone. Group only when there's a natural cluster (e.g., "Latin root words" as a topic containing multiple roots). Fewer topics because there's little prerequisite structure to navigate. |
+| **Mastery-gated** | High | One independently placeable, teachable, and remediable skill per topic | This is the finest-grained model. A topic should be small enough that a learner can clearly know one part and fail another. In math, use Math Academy-style density as the benchmark and expect skill graphs to be roughly 4-6x finer than standards-level decomposition. |
+| **Context-layered** | Medium | One coherent historical/conceptual question, theme, or analytical lens per topic | Broader than math, but still much narrower than textbook chapters or whole units. Topics are revisited across depth levels; density comes from layers plus multiple perspectives, not from tiny procedural skills. |
+| **Flexible** | Medium-high | Independent recall unit or a very tight natural cluster | Topics are mostly standalone, but they still need to stay small enough for targeted assessment and quick retrieval practice. Group only when the cluster is genuinely learned together. |
 
-**Reference:** Math-foundations has 71 topics across grades K-5 (mastery-gated). A US History subject might have 30-35 topics covering the full timeline at 4 depth layers each.
+**Do not use fixed per-subject topic counts as the primary design target.** Collections are packaging views and may vary widely in size. The real target is whether the graph has enough atomic topics for accurate placement, targeted remediation, and meaningful FIRe relationships.
+
+#### Topic Split Heuristics
+
+Split a topic when any of these are true:
+- A learner could reasonably pass one part and fail another
+- Remediation would naturally point to an intermediate step that is currently hidden
+- The topic contains an internal prerequisite chain
+- A capstone topic would meaningfully encompass the hidden sub-skills
+
+Keep a topic combined only when it is genuinely atomic for placement, instruction, and review.
+
+#### Content Density Guardrails
+
+| Progression Model | Problems per Topic | Prereq Density | Encompassing Density | Structural Guardrail |
+|---|---|---|---|---|
+| **Mastery-gated** | Minimum 15, target 20-30+ | 1.5-3.0 edges/topic | 1.0-2.0 edges/topic | Each mature strand should have explicit capstones that encompass component skills; remediation should be able to step down one skill at a time. |
+| **Context-layered** | Minimum 6, target 8-15 | 0.5-1.0 edges/topic | 0.5-1.0 edges/topic | Each major era/theme should include integrative topics and methodological foundations, but avoid over-gating. |
+| **Flexible** | Minimum 5, target 8-12 | 0.0-0.5 edges/topic | 0.0-0.5 edges/topic | Prefer many small, independent retrieval units; clusters must still support targeted recall. |
+
+For mastery-gated disciplines, benchmark density against the strongest known external exemplars when available. For mathematics, Math Academy is the reference point. For ELA, CS, music technique, and similar domains, use the same skill-level principle even when no external ratio is available: the learner should be able to fail narrowly and be remediated narrowly.
 
 ### Recommended Graph Shape
 
@@ -521,10 +573,7 @@ When designing a knowledge graph for a new subject, follow these guidelines for 
 | **Context-layered** | Wide, shallow layers | 0.5-1.0 | 3-5 | Wide at every level (8-15 per level), few deep chains |
 | **Flexible** | Sparse, mostly disconnected | 0.2-0.5 | 1-2 | Nearly flat — most topics at depth 0-1 |
 
-**Reference:** Math-foundations graph shape:
-- 71 topics, 108 prerequisite edges (1.52 edges/topic), max depth 14
-- 6 roots (counting, comparison, shapes basics), widest at depths 4 and 6 (7-8 topics), single leaf at depth 14
-- Multiple parallel strands (addition, subtraction, multiplication, division, fractions, geometry) that converge at higher levels (word problems, order of operations)
+**Reference shape:** A healthy mastery-gated math graph has multiple parallel strands, deep enough chains for skill progression, and late capstones that integrate earlier skills. The exact topic count depends on how broadly the discipline is packaged into collections, not on a fixed "topics per subject" target.
 
 #### Mastery-Gated Shape Details
 
@@ -611,7 +660,7 @@ Minimal encompassings. Topics are mostly independent.
 
 ## 14. Graph Design Checklist
 
-Run through this checklist before generating content for any new subject. Every item must pass.
+Run through this checklist before generating content for any new discipline graph or major discipline expansion. Every item must pass.
 
 ### Structural Validity
 
@@ -623,7 +672,8 @@ Run through this checklist before generating content for any new subject. Every 
 ### Progression Model Compliance
 
 - [ ] **Edge types match model** — Mastery-gated uses mostly `required`, context-layered uses mostly `recommended`, flexible uses mostly `enriching` (see §13 distribution table)
-- [ ] **Granularity appropriate** — Topic count falls within the target range for the model (50-100 mastery-gated, 25-40 context-layered, 20-30 flexible)
+- [ ] **Granularity appropriate** — Topic size fits the model: mastery-gated topics are independently remediable skills; context-layered topics are coherent themes/questions/lenses; flexible topics are retrieval units or tight clusters
+- [ ] **No standards-level blobs** — If a topic hides multiple skills or an internal progression, split it
 - [ ] **Depth appropriate** — Max graph depth falls within target range (10-15 mastery-gated, 3-5 context-layered, 1-2 flexible)
 - [ ] **Prerequisite density in range** — Prereq edges/topic matches target (1.5-2.5 mastery-gated, 0.5-1.0 context-layered, 0.2-0.5 flexible)
 
@@ -631,7 +681,7 @@ Run through this checklist before generating content for any new subject. Every 
 
 - [ ] **Density target met** — Encompassing edges/topic within target range (1.0-2.0 mastery-gated, 0.5-1.0 context-layered, 0.3-0.5 flexible)
 - [ ] **Leaf coverage** — Every leaf topic (no children in prereq graph) is encompassed by at least one parent
-- [ ] **Within-strand chains complete** — For mastery-gated subjects: every topic in a skill strand encompasses its direct predecessor
+- [ ] **Within-strand chains complete** — For mastery-gated discipline graphs: every topic in a skill strand encompasses its direct predecessor
 - [ ] **Weight distribution reasonable** — Mostly 0.3-0.6 with some 0.7-0.9 within-strand; nothing below 0.3
 - [ ] **Multi-hop chains exist** — For deep graphs (depth 8+): encompassing chains reach 3+ hops in dense graph regions
 
@@ -639,12 +689,14 @@ Run through this checklist before generating content for any new subject. Every 
 
 - [ ] **Frontier is reasonable** — For a brand-new user, the frontier computation returns 3-8 root or near-root topics (not the entire graph, not just one topic)
 - [ ] **Progression is smooth** — Mastering a frontier topic unlocks 1-3 new topics (not 0, not 10+)
-- [ ] **Dead ends avoided** — No topic exists where mastering it unlocks nothing and it isn't a natural terminus of the subject
+- [ ] **Dead ends avoided** — No topic exists where mastering it unlocks nothing and it isn't a natural terminus of the discipline graph or collection path
 
 ### Visualization
 
-- [ ] **`just visualize <subject>`** shows clear hierarchical structure with identifiable strands/clusters
+- [ ] **`just visualize <graph>`** shows clear hierarchical structure with identifiable strands/clusters
 - [ ] **No visual clutter** — Graph is readable; if it's a tangled mess, the structure probably needs simplification
+- [ ] **Collections are intelligible** — Grade bands, tracks, or thematic paths make sense to an end user without becoming ownership boundaries
+- [ ] **Interdisciplinary packaging is honest** — When a collection spans disciplines, canonical ownership is still clear and prerequisite gaps are visible to the learner
 
 ---
 
@@ -652,7 +704,7 @@ Run through this checklist before generating content for any new subject. Every 
 
 ### Priority Matrix
 
-When building content for a new subject, follow this priority order:
+When building content for a new discipline graph or collection-packaged expansion, follow this priority order:
 
 | Priority | What | Why |
 |----------|------|-----|
@@ -674,7 +726,7 @@ All generated content must pass:
 
 ### Content Pack Format
 
-The `graph.json` for each subject includes:
+The `graph.json` for each discipline graph includes:
 - `disciplineId` — links to the parent discipline
 - Topics with `gradeLevel` for approximate educational stage
 - Prerequisites with `type` (required/recommended/enriching)
