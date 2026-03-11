@@ -863,3 +863,14 @@ Removing encompassing edges for the "without FIRe" comparison changes TWO things
 Isolation experiments (4 modes × 3 profiles) show that `applyFIReCredit()` virtual FSRS reviews are the primary cause of negative FIRe efficiency at 15 sessions (-25.5% avg across profiles). The credit extends child topic stability, which delays their natural mastery through actual reviews. Set-cover ordering in `compressReviews()` is neutral for 2/3 profiles — it selects the same topics as simple most-overdue at this horizon. Large non-additive interactions (+29.6% for fast-learner) mean the mechanisms partially cancel each other when combined.
 
 **Context:** FIRe diagnostic available via `npx tsx simulations/src/evaluate.ts --fire-isolation`. `FireDiagnosticConfig` (`disableCredit`, `disableOrdering`) passed through `createSessionService` → `createSRSService` — optional params that default to current production behavior.
+
+---
+
+### 2026-03-11: Review/New Balance degrades from WARN to FAIL at L3 (90 sessions)
+
+**Source:** User session — Plan 019 Phase 4
+**Area:** Simulation / evaluation metrics
+
+At L2 (30 sessions), Review/New Balance is WARN at 0.729 (target: 0.600 ± 0.05). At L3 (90 sessions), it degrades to FAIL at 0.860 — 86% reviews vs 14% new content. The review queue grows as topics enter SRS faster than students master them. This is a structural scaling issue: once a topic enters the review queue, it generates future review obligations. At shorter horizons, new topic introductions dilute the ratio; at longer horizons, the accumulated review backlog dominates.
+
+**Context:** This insight is only visible at L3 (90 sessions). L2 baselines mask the problem. Use `just evaluate-l3` and `just evaluate-compare-levels` to monitor cross-level trends. Fix options: more aggressive mastery thresholds, review compression, or review queue caps.

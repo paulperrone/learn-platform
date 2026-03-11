@@ -319,12 +319,41 @@ export type ContentQualityResult = {
   miscalibrated: { topicId: string; difficulty: string; expectedRange: [number, number]; actual: number }[];
 };
 
+export type MaturityLevel = "l1" | "l2" | "l3" | "l4" | "l5";
+
+export type L3Metrics = {
+  /** Session number where mastery % growth drops below 1% per session (0 = no plateau) */
+  masteryPlateauSession: number;
+  /** Content ceiling: final mastery % — is it capped by available content or system behavior? */
+  masteryPlateauPercent: number;
+  /** Average reviews per session in final third of sessions (trend indicator) */
+  reviewsPerSessionFinalThird: number;
+  /** Average reviews per session in first third (for trend comparison) */
+  reviewsPerSessionFirstThird: number;
+  /** Review scaling direction: "decreasing" | "stable" | "increasing" */
+  reviewScalingTrend: string;
+  /** Rolling accuracy in final third: should stay in [0.80, 0.90] if targeting works */
+  difficultyTargetingStabilityFinalThird: number;
+  /** Per-profile breakdown */
+  perProfile: Record<string, {
+    finalMastery: number;
+    plateauSession: number;
+    reviewTrend: string;
+    reviewsFirstThird: number;
+    reviewsFinalThird: number;
+    finalAccuracy: number;
+  }>;
+};
+
 export type HealingReport = {
   timestamp: string;
   targetVersion: number;
+  maturityLevel?: MaturityLevel;
+  sessionCount?: number;
   systems: SystemEvaluationResult[];
   profiles: ProfileEvaluationResult[];
   contentQuality: ContentQualityResult;
+  l3Metrics?: L3Metrics;
   summary: {
     passCount: number;
     warnCount: number;

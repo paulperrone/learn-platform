@@ -1,0 +1,252 @@
+{
+  "level": "l2",
+  "generatedAt": "2026-03-11T03:28:29.513Z",
+  "sessionCount": 30,
+  "seed": 42,
+  "systems": {
+    "mastery_convergence": {
+      "actual": 16,
+      "status": "PASS"
+    },
+    "mastery_preservation": {
+      "actual": 0,
+      "status": "PASS"
+    },
+    "difficulty_targeting": {
+      "actual": 29,
+      "status": "PASS"
+    },
+    "review_new_balance": {
+      "actual": 0.7290345313601128,
+      "status": "WARN"
+    },
+    "interleaving": {
+      "actual": 0.08118347465271514,
+      "status": "PASS"
+    },
+    "fire_compression": {
+      "actual": -0.24967119464273177,
+      "status": "WARN"
+    },
+    "remediation_routing": {
+      "actual": 2611,
+      "status": "PASS"
+    },
+    "presentation_drift": {
+      "actual": 19,
+      "status": "PASS"
+    },
+    "diagnostic_placement": {
+      "actual": 27,
+      "status": "PASS"
+    },
+    "cognitive_demand_entropy": {
+      "actual": 1.2511289233469896,
+      "status": "PASS"
+    }
+  },
+  "profileCount": 29,
+  "behavioralMatchCount": 27,
+  "l3Metrics": {
+    "masteryPlateauSession": 8,
+    "masteryPlateauPercent": 0.655,
+    "reviewsPerSessionFinalThird": 5,
+    "reviewsPerSessionFirstThird": 4,
+    "reviewScalingTrend": "increasing",
+    "difficultyTargetingStabilityFinalThird": 0.765,
+    "perProfile": {
+      "weekend-warrior": {
+        "finalMastery": 0.7065217391304348,
+        "plateauSession": 6,
+        "reviewTrend": "stable",
+        "reviewsFirstThird": 4.6,
+        "reviewsFinalThird": 5.2,
+        "finalAccuracy": 0.687
+      },
+      "underconfident": {
+        "finalMastery": 0.391304347826087,
+        "plateauSession": 11,
+        "reviewTrend": "decreasing",
+        "reviewsFirstThird": 4.6,
+        "reviewsFinalThird": 3.8,
+        "finalAccuracy": 0.967
+      },
+      "strong-young": {
+        "finalMastery": 0.5543478260869565,
+        "plateauSession": 14,
+        "reviewTrend": "stable",
+        "reviewsFirstThird": 4.9,
+        "reviewsFinalThird": 5.6,
+        "finalAccuracy": 0.612
+      },
+      "strong-older": {
+        "finalMastery": 0.8043478260869565,
+        "plateauSession": 6,
+        "reviewTrend": "decreasing",
+        "reviewsFirstThird": 2.6,
+        "reviewsFinalThird": 2,
+        "finalAccuracy": 0.963
+      },
+      "strong-highschool": {
+        "finalMastery": 0.8043478260869565,
+        "plateauSession": 6,
+        "reviewTrend": "stable",
+        "reviewsFirstThird": 2.3,
+        "reviewsFinalThird": 2,
+        "finalAccuracy": 0.926
+      },
+      "returning-after-gap": {
+        "finalMastery": 0.75,
+        "plateauSession": 6,
+        "reviewTrend": "increasing",
+        "reviewsFirstThird": 4,
+        "reviewsFinalThird": 6,
+        "finalAccuracy": 0.698
+      },
+      "overconfident": {
+        "finalMastery": 0.40217391304347827,
+        "plateauSession": 6,
+        "reviewTrend": "stable",
+        "reviewsFirstThird": 5.7,
+        "reviewsFinalThird": 5,
+        "finalAccuracy": 0.782
+      },
+      "multi-strong-math-weak-ela": {
+        "finalMastery": 0.6369426751592356,
+        "plateauSession": 6,
+        "reviewTrend": "increasing",
+        "reviewsFirstThird": 4.4,
+        "reviewsFinalThird": 5.3,
+        "finalAccuracy": 0.723
+      },
+      "multi-misconception": {
+        "finalMastery": 0.782608695652174,
+        "plateauSession": 6,
+        "reviewTrend": "increasing",
+        "reviewsFirstThird": 4.1,
+        "reviewsFinalThird": 6.3,
+        "finalAccuracy": 0.717
+      },
+      "multi-math-strong": {
+        "finalMastery": 0.9130434782608695,
+        "plateauSession": 6,
+        "reviewTrend": "increasing",
+        "reviewsFirstThird": 2.3,
+        "reviewsFinalThird": 2.8,
+        "finalAccuracy": 0.884
+      },
+      "multi-history-focus": {
+        "finalMastery": 0.7052631578947368,
+        "plateauSession": 6,
+        "reviewTrend": "increasing",
+        "reviewsFirstThird": 4.1,
+        "reviewsFinalThird": 4.8,
+        "finalAccuracy": 0.756
+      },
+      "multi-average": {
+        "finalMastery": 0.6878980891719745,
+        "plateauSession": 26,
+        "reviewTrend": "increasing",
+        "reviewsFirstThird": 3.1,
+        "reviewsFinalThird": 4.8,
+        "finalAccuracy": 0.813
+      },
+      "multi-all-subjects": {
+        "finalMastery": 0.38741721854304634,
+        "plateauSession": 6,
+        "reviewTrend": "increasing",
+        "reviewsFirstThird": 4.9,
+        "reviewsFinalThird": 6.3,
+        "finalAccuracy": 0.899
+      },
+      "misconception-fractions": {
+        "finalMastery": 0.8478260869565217,
+        "plateauSession": 6,
+        "reviewTrend": "increasing",
+        "reviewsFirstThird": 4.2,
+        "reviewsFinalThird": 6.8,
+        "finalAccuracy": 0.766
+      },
+      "irregular-attendance": {
+        "finalMastery": 0.6413043478260869,
+        "plateauSession": 6,
+        "reviewTrend": "stable",
+        "reviewsFirstThird": 5.9,
+        "reviewsFinalThird": 6.6,
+        "finalAccuracy": 0.679
+      },
+      "gifted-middle": {
+        "finalMastery": 0.782608695652174,
+        "plateauSession": 6,
+        "reviewTrend": "decreasing",
+        "reviewsFirstThird": 2.4,
+        "reviewsFinalThird": 2,
+        "finalAccuracy": 1
+      },
+      "fast-learner-older": {
+        "finalMastery": 0.6956521739130435,
+        "plateauSession": 6,
+        "reviewTrend": "increasing",
+        "reviewsFirstThird": 3.4,
+        "reviewsFinalThird": 6.6,
+        "finalAccuracy": 0.703
+      },
+      "fast-learner": {
+        "finalMastery": 0.5869565217391305,
+        "plateauSession": 6,
+        "reviewTrend": "increasing",
+        "reviewsFirstThird": 4.4,
+        "reviewsFinalThird": 5.7,
+        "finalAccuracy": 0.666
+      },
+      "fading-motivation": {
+        "finalMastery": 0.5760869565217391,
+        "plateauSession": 14,
+        "reviewTrend": "increasing",
+        "reviewsFirstThird": 4.3,
+        "reviewsFinalThird": 6.1,
+        "finalAccuracy": 0.628
+      },
+      "completion-driven": {
+        "finalMastery": 0.8586956521739131,
+        "plateauSession": 22,
+        "reviewTrend": "increasing",
+        "reviewsFirstThird": 3.8,
+        "reviewsFinalThird": 6.2,
+        "finalAccuracy": 0.694
+      },
+      "binge-learner": {
+        "finalMastery": 0.5760869565217391,
+        "plateauSession": 6,
+        "reviewTrend": "stable",
+        "reviewsFirstThird": 3.6,
+        "reviewsFinalThird": 3.9,
+        "finalAccuracy": 0.738
+      },
+      "average-young": {
+        "finalMastery": 0.30434782608695654,
+        "plateauSession": 6,
+        "reviewTrend": "increasing",
+        "reviewsFirstThird": 4.6,
+        "reviewsFinalThird": 6.9,
+        "finalAccuracy": 0.656
+      },
+      "average-undergraduate": {
+        "finalMastery": 0.5869565217391305,
+        "plateauSession": 6,
+        "reviewTrend": "stable",
+        "reviewsFirstThird": 4.1,
+        "reviewsFinalThird": 3.7,
+        "finalAccuracy": 0.65
+      },
+      "average-older": {
+        "finalMastery": 0.7282608695652174,
+        "plateauSession": 6,
+        "reviewTrend": "increasing",
+        "reviewsFirstThird": 4.8,
+        "reviewsFinalThird": 6.4,
+        "finalAccuracy": 0.748
+      }
+    }
+  }
+}

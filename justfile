@@ -127,6 +127,16 @@ simulate-report sessions="30" seed="42":
     just simulate-all {{sessions}} {{seed}}
     npx tsx simulations/src/analyze.ts --report --baseline --content-quality
 
+# Maturity level simulations (all profiles at each session count)
+simulate-l1 seed="42":
+    just simulate-all 5 {{seed}}
+
+simulate-l2 seed="42":
+    just simulate-all 30 {{seed}}
+
+simulate-l3 seed="42":
+    just simulate-all 90 {{seed}}
+
 # Fast simulation regression check (~15s, 3 profiles × 5 sessions)
 simulate-regression seed="42":
     npx tsx simulations/src/regression.ts --seed {{seed}}
@@ -142,6 +152,23 @@ simulate-size:
 # Evaluate simulation runs against targets.json (includes FIRe compression by default)
 evaluate *args:
     npx tsx simulations/src/evaluate.ts {{args}}
+
+# Evaluate at a specific maturity level (runs simulation + evaluation + saves baseline)
+evaluate-l1 seed="42":
+    just simulate-l1 {{seed}}
+    just evaluate --level l1
+
+evaluate-l2 seed="42":
+    just simulate-l2 {{seed}}
+    just evaluate --level l2
+
+evaluate-l3 seed="42":
+    just simulate-l3 {{seed}}
+    just evaluate --level l3
+
+# Compare metrics across maturity levels (requires baselines)
+evaluate-compare-levels:
+    npx tsx simulations/src/evaluate.ts --compare-levels
 
 # Run single healing epoch (simulate all → evaluate → report)
 heal-epoch sessions="30" seed="42":

@@ -12,6 +12,8 @@
  *   npx tsx simulations/src/evaluate.ts --json                       # JSON-only output
  *   npx tsx simulations/src/evaluate.ts --skip-fire                  # skip FIRe comparison (~10s)
  *   npx tsx simulations/src/evaluate.ts --fire-isolation              # run FIRe isolation diagnostic (4 modes × 3 profiles)
+ *   npx tsx simulations/src/evaluate.ts --level l2                   # tag report with maturity level + save baseline
+ *   npx tsx simulations/src/evaluate.ts --compare-levels             # compare baselines across maturity levels
  */
 import {
   readFileSync,
@@ -36,6 +38,8 @@ import type {
   ProfileEvaluationResult,
   ContentQualityResult,
   HealingReport,
+  MaturityLevel,
+  L3Metrics,
 } from "./types.js";
 
 // ── Data loading ──────────────────────────────────────────────────────
@@ -812,6 +816,224 @@ function evaluateContentQuality(
   return { tooHard, tooEasy, miscalibrated };
 }
 
+// ── L3 metrics (long-horizon analysis) ────────────────────────────────
+
+function computeL3Metrics(runs: ProfileRun[]): L3Metrics {
+  const nonStruggling = runs.filter((r) => !STRUGGLING_PROFILES.includes(r.profileId));
+  const perProfile: L3Metrics["perProfile"] = {};
+
+  let totalPlateauSession = 0;
+  let totalPlateauPercent = 0;
+  let totalReviewsFirst = 0;
+  let totalReviewsLast = 0;
+  let totalFinalAccuracy = 0;
+  let profileCount = 0;
+
+  for (const run of nonStruggling) {
+    if (run.snapshots.length < 6) continue; // Need enough sessions for trend analysis
+    profileCount++;
+
+    // Mastery plateau detection: find first session where growth drops below 1% per session
+    // over a 5-session rolling window
+    let plateauSession = 0;
+    const snaps = run.snapshots.filter((s) => s.sessionNumber >= 1); // skip diagnostic snapshot
+    for (let i = 5; i < snaps.length; i++) {
+      const windowStart = snaps[i - 5].masteryPercent;
+      const windowEnd = snaps[i].masteryPercent;
+      const growthPerSession = (windowEnd - windowStart) / 5;
+      if (growthPerSession < 0.01 && windowEnd > 0.10) {
+        plateauSession = snaps[i].sessionNumber;
+        break;
+      }
+    }
+
+    const finalMastery = snaps[snaps.length - 1]?.masteryPercent ?? 0;
+    totalPlateauSession += plateauSession;
+    totalPlateauPercent += finalMastery;
+
+    // Review scaling: compare reviews per session in first vs final third
+    const summaries = run.summaries.filter((s) => s.sessionNumber >= 2); // skip first session (warmup-heavy)
+    const thirdLen = Math.max(1, Math.floor(summaries.length / 3));
+    const firstThird = summaries.slice(0, thirdLen);
+    const finalThird = summaries.slice(-thirdLen);
+
+    const avgFirst = firstThird.length > 0
+      ? firstThird.reduce((s, sm) => s + sm.reviewsCompleted, 0) / firstThird.length
+      : 0;
+    const avgLast = finalThird.length > 0
+      ? finalThird.reduce((s, sm) => s + sm.reviewsCompleted, 0) / finalThird.length
+      : 0;
+
+    totalReviewsFirst += avgFirst;
+    totalReviewsLast += avgLast;
+
+    const reviewTrend = avgLast < avgFirst * 0.85 ? "decreasing"
+      : avgLast > avgFirst * 1.15 ? "increasing"
+      : "stable";
+
+    // Difficulty targeting stability in final third
+    const finalThirdEvents = run.events.filter(
+      (e) => e.sessionNumber > (run.summaries.length - thirdLen) && e.correct !== null
+    );
+    const finalAccuracy = finalThirdEvents.length > 0
+      ? finalThirdEvents.filter((e) => e.correct).length / finalThirdEvents.length
+      : 0;
+    totalFinalAccuracy += finalAccuracy;
+
+    perProfile[run.profileId] = {
+      finalMastery,
+      plateauSession,
+      reviewTrend,
+      reviewsFirstThird: Math.round(avgFirst * 10) / 10,
+      reviewsFinalThird: Math.round(avgLast * 10) / 10,
+      finalAccuracy: Math.round(finalAccuracy * 1000) / 1000,
+    };
+  }
+
+  const n = Math.max(1, profileCount);
+  const avgReviewsFirst = totalReviewsFirst / n;
+  const avgReviewsLast = totalReviewsLast / n;
+  const overallTrend = avgReviewsLast < avgReviewsFirst * 0.85 ? "decreasing"
+    : avgReviewsLast > avgReviewsFirst * 1.15 ? "increasing"
+    : "stable";
+
+  return {
+    masteryPlateauSession: Math.round(totalPlateauSession / n),
+    masteryPlateauPercent: Math.round((totalPlateauPercent / n) * 1000) / 1000,
+    reviewsPerSessionFinalThird: Math.round(avgReviewsLast * 10) / 10,
+    reviewsPerSessionFirstThird: Math.round(avgReviewsFirst * 10) / 10,
+    reviewScalingTrend: overallTrend,
+    difficultyTargetingStabilityFinalThird: Math.round((totalFinalAccuracy / n) * 1000) / 1000,
+    perProfile,
+  };
+}
+
+// ── Maturity level baselines ──────────────────────────────────────────
+
+type LevelBaseline = {
+  level: MaturityLevel;
+  generatedAt: string;
+  sessionCount: number;
+  seed: number;
+  systems: Record<string, { actual: number; status: EvaluationStatus }>;
+  profileCount: number;
+  behavioralMatchCount: number;
+  l3Metrics?: L3Metrics;
+};
+
+function saveLevelBaseline(
+  level: MaturityLevel,
+  report: HealingReport,
+  l3Metrics: L3Metrics | undefined,
+  seed: number,
+  sessionCount: number,
+): void {
+  const baselineDir = join(process.cwd(), "simulations", "baselines");
+  mkdirSync(baselineDir, { recursive: true });
+
+  const baseline: LevelBaseline = {
+    level,
+    generatedAt: new Date().toISOString(),
+    sessionCount,
+    seed,
+    systems: {},
+    profileCount: report.profiles.length,
+    behavioralMatchCount: report.profiles.filter((p) => p.behavioralMatch).length,
+    l3Metrics,
+  };
+
+  for (const s of report.systems) {
+    baseline.systems[s.systemId] = { actual: s.actual, status: s.status };
+  }
+
+  writeFileSync(
+    join(baselineDir, `${level}.json`),
+    JSON.stringify(baseline, null, 2) + "\n"
+  );
+  console.log(`Baseline saved: simulations/baselines/${level}.json`);
+}
+
+function compareLevels(): void {
+  const baselineDir = join(process.cwd(), "simulations", "baselines");
+  const levels: MaturityLevel[] = ["l1", "l2", "l3", "l4", "l5"];
+  const loaded: LevelBaseline[] = [];
+
+  for (const level of levels) {
+    const path = join(baselineDir, `${level}.json`);
+    if (existsSync(path)) {
+      loaded.push(JSON.parse(readFileSync(path, "utf-8")));
+    }
+  }
+
+  if (loaded.length < 2) {
+    console.log("Need at least 2 level baselines to compare. Run evaluate-l1, evaluate-l2, etc. first.");
+    return;
+  }
+
+  console.log("\n=== Maturity Level Comparison ===\n");
+
+  // Header
+  const header = "System".padEnd(28) + loaded.map((b) => `${b.level.toUpperCase()} (${b.sessionCount}s)`.padEnd(18)).join("");
+  console.log(header);
+  console.log("-".repeat(header.length));
+
+  // Collect all system IDs
+  const allSystems = new Set<string>();
+  for (const b of loaded) {
+    for (const id of Object.keys(b.systems)) allSystems.add(id);
+  }
+
+  for (const systemId of allSystems) {
+    let row = systemId.padEnd(28);
+    for (const b of loaded) {
+      const s = b.systems[systemId];
+      if (s) {
+        const status = s.status === "PASS" ? "✅" : s.status === "WARN" ? "⚠️ " : "❌";
+        row += `${status} ${s.actual.toFixed(3)}`.padEnd(18);
+      } else {
+        row += "—".padEnd(18);
+      }
+    }
+    console.log(row);
+  }
+
+  // Profile match summary
+  console.log("");
+  let matchRow = "Behavioral match".padEnd(28);
+  for (const b of loaded) {
+    matchRow += `${b.behavioralMatchCount}/${b.profileCount}`.padEnd(18);
+  }
+  console.log(matchRow);
+
+  // L3+ metrics if available
+  const l3Baselines = loaded.filter((b) => b.l3Metrics);
+  if (l3Baselines.length > 0) {
+    console.log("\n--- L3+ Metrics ---\n");
+    const l3Header = "Metric".padEnd(38) + l3Baselines.map((b) => `${b.level.toUpperCase()} (${b.sessionCount}s)`.padEnd(18)).join("");
+    console.log(l3Header);
+    console.log("-".repeat(l3Header.length));
+
+    const metrics = [
+      { label: "Mastery plateau session", fn: (m: L3Metrics) => m.masteryPlateauSession.toString() },
+      { label: "Final mastery %", fn: (m: L3Metrics) => `${(m.masteryPlateauPercent * 100).toFixed(1)}%` },
+      { label: "Reviews/session (first third)", fn: (m: L3Metrics) => m.reviewsPerSessionFirstThird.toFixed(1) },
+      { label: "Reviews/session (final third)", fn: (m: L3Metrics) => m.reviewsPerSessionFinalThird.toFixed(1) },
+      { label: "Review scaling trend", fn: (m: L3Metrics) => m.reviewScalingTrend },
+      { label: "Difficulty targeting (final)", fn: (m: L3Metrics) => m.difficultyTargetingStabilityFinalThird.toFixed(3) },
+    ];
+
+    for (const { label, fn } of metrics) {
+      let row = label.padEnd(38);
+      for (const b of l3Baselines) {
+        row += fn(b.l3Metrics!).padEnd(18);
+      }
+      console.log(row);
+    }
+  }
+
+  console.log("");
+}
+
 // ── FIRe efficiency (requires running paired simulations) ─────────────
 //
 // Measures reviews-per-mastered-topic with vs without encompassing edges.
@@ -1015,7 +1237,10 @@ function buildHealingReport(
   systems: SystemEvaluationResult[],
   profiles: ProfileEvaluationResult[],
   contentQuality: ContentQualityResult,
-  targetVersion: number
+  targetVersion: number,
+  maturityLevel?: MaturityLevel,
+  sessionCount?: number,
+  l3Metrics?: L3Metrics,
 ): HealingReport {
   const passCount = systems.filter((s) => s.status === "PASS").length;
   const warnCount = systems.filter((s) => s.status === "WARN").length;
@@ -1027,9 +1252,12 @@ function buildHealingReport(
   return {
     timestamp: new Date().toISOString(),
     targetVersion,
+    maturityLevel,
+    sessionCount,
     systems,
     profiles,
     contentQuality,
+    l3Metrics,
     summary: { passCount, warnCount, failCount, overallStatus },
   };
 }
@@ -1042,6 +1270,9 @@ function generateMarkdownReport(report: HealingReport): string {
   lines.push("");
   lines.push(`**Timestamp:** ${report.timestamp}`);
   lines.push(`**Target Version:** ${report.targetVersion}`);
+  if (report.maturityLevel) {
+    lines.push(`**Maturity Level:** ${report.maturityLevel.toUpperCase()} (${report.sessionCount ?? "?"} sessions)`);
+  }
   lines.push(`**Overall Status:** ${statusEmoji(report.summary.overallStatus)} ${report.summary.overallStatus}`);
   lines.push(`**Systems:** ${report.summary.passCount} PASS, ${report.summary.warnCount} WARN, ${report.summary.failCount} FAIL`);
   lines.push("");
@@ -1134,6 +1365,25 @@ function generateMarkdownReport(report: HealingReport): string {
     lines.push("");
   }
 
+  // L3+ metrics
+  if (report.l3Metrics) {
+    const m = report.l3Metrics;
+    lines.push("## L3+ Metrics (Long-Horizon Analysis)");
+    lines.push("");
+    lines.push(`- **Mastery plateau:** session ${m.masteryPlateauSession} at ${(m.masteryPlateauPercent * 100).toFixed(1)}%`);
+    lines.push(`- **Review scaling:** ${m.reviewScalingTrend} (${m.reviewsPerSessionFirstThird} → ${m.reviewsPerSessionFinalThird} reviews/session)`);
+    lines.push(`- **Difficulty targeting (final third):** ${m.difficultyTargetingStabilityFinalThird.toFixed(3)}`);
+    lines.push("");
+    lines.push("| Profile | Final Mastery | Plateau Session | Review Trend | Rev First/Last | Accuracy |");
+    lines.push("|---------|--------------|-----------------|--------------|----------------|----------|");
+    for (const [profileId, p] of Object.entries(m.perProfile)) {
+      lines.push(
+        `| ${profileId} | ${(p.finalMastery * 100).toFixed(1)}% | ${p.plateauSession || "none"} | ${p.reviewTrend} | ${p.reviewsFirstThird}/${p.reviewsFinalThird} | ${p.finalAccuracy.toFixed(3)} |`
+      );
+    }
+    lines.push("");
+  }
+
   return lines.join("\n");
 }
 
@@ -1163,7 +1413,10 @@ function printConsoleReport(report: HealingReport): void {
     s === "PASS" ? GREEN : s === "WARN" ? YELLOW : RED;
 
   console.log("");
-  console.log(`${BOLD}Evaluation Report${RESET} (targets v${report.targetVersion})`);
+  const levelLabel = report.maturityLevel
+    ? ` | ${report.maturityLevel.toUpperCase()} (${report.sessionCount ?? "?"}s)`
+    : "";
+  console.log(`${BOLD}Evaluation Report${RESET} (targets v${report.targetVersion}${levelLabel})`);
   console.log("");
 
   // Overall status
@@ -1232,6 +1485,16 @@ async function main() {
   const jsonOnly = args.includes("--json");
   const skipFire = args.includes("--skip-fire");
   const fireIsolation = args.includes("--fire-isolation");
+  const doCompareLevels = args.includes("--compare-levels");
+
+  // Maturity level (--level l1|l2|l3|l4|l5)
+  const levelIdx = args.indexOf("--level");
+  const maturityLevel = levelIdx >= 0 ? args[levelIdx + 1] as MaturityLevel : undefined;
+
+  if (doCompareLevels) {
+    compareLevels();
+    return;
+  }
 
   const runsDirIdx = args.indexOf("--runs-dir");
   const runsDir = runsDirIdx >= 0
@@ -1261,6 +1524,13 @@ async function main() {
     process.exit(1);
   }
   if (!jsonOnly) console.log(`Loaded ${runs.length} profile runs`);
+
+  // Detect session count from loaded runs
+  const maxSessions = Math.max(...runs.map((r) => r.summaries.length));
+
+  if (maturityLevel && !jsonOnly) {
+    console.log(`Maturity level: ${maturityLevel.toUpperCase()} (${maxSessions} sessions detected)`);
+  }
 
   // Evaluate systems
   if (!jsonOnly) console.log("Evaluating systems...");
@@ -1292,6 +1562,13 @@ async function main() {
     await computeFIReIsolation();
   }
 
+  // L3+ metrics — compute for sessions >= 30
+  let l3Metrics: L3Metrics | undefined;
+  if (maxSessions >= 30) {
+    if (!jsonOnly) console.log("Computing L3+ metrics (long-horizon analysis)...");
+    l3Metrics = computeL3Metrics(runs);
+  }
+
   // Evaluate profiles
   const profileResults = evaluateProfiles(runs, targets.profile_expectations);
 
@@ -1303,7 +1580,10 @@ async function main() {
     systemResults,
     profileResults,
     contentQuality,
-    targets.version
+    targets.version,
+    maturityLevel,
+    maxSessions,
+    l3Metrics,
   );
 
   // Output
@@ -1332,6 +1612,11 @@ async function main() {
   console.log(`  ${join(reportsDir, "evaluation.json")}`);
   console.log(`  ${join(reportsDir, "evaluation.md")}`);
 
+  // Save level baseline if --level specified
+  if (maturityLevel) {
+    saveLevelBaseline(maturityLevel, report, l3Metrics, 42, maxSessions);
+  }
+
   // Exit with failure code if any P0 system fails
   const p0Failures = systemResults.filter((s) => s.priority === "P0" && s.status === "FAIL");
   if (p0Failures.length > 0) {
@@ -1359,7 +1644,10 @@ export {
   printConsoleReport,
   computeFIReEfficiency,
   computeFIReIsolation,
+  computeL3Metrics,
   classifyResult,
   findLatestRuns,
+  compareLevels,
+  saveLevelBaseline,
   type ProfileRun,
 };
