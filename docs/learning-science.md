@@ -182,32 +182,45 @@ For the full primary source, see `~/Desktop/the-math-academy-way.pdf` (Skycak, 2
 
 ## 8. FIRe: Fractional Implicit Repetition
 
+> **Deep dive:** For a comprehensive analysis of 13 implementation approaches with stack rankings, see [`fire-implementation-analysis.md`](fire-implementation-analysis.md).
+
 **Principle:** In hierarchical knowledge, practicing an advanced topic implicitly reviews all its prerequisites. The system should credit these implicit repetitions and select reviews to maximize this "trickle-down" effect.
 
 **Research:**
 - Tasks exercising prior knowledge restore memory as effectively as direct repetition (Ausubel, Robbins, & Blake, 1957).
-- Novel algorithm developed by Math Academy (Skycak).
+- Novel algorithm developed by Math Academy (Skycak, 2026). Proven at scale: 3,688 topics, thousands of students.
+- Math Academy empirical result: most courses can be learned with roughly **only one explicit review per topic on average**.
+- The research supports the core claim (implicit practice maintains memory) but does NOT validate any specific credit mechanism — weight-interpolated virtual FSRS reviews, for instance, have no direct empirical basis. The interpolation is our approximation.
 
-**Mechanism:**
-- Successful work on an advanced topic "trickles down" credit to encompassed simpler topics via virtual FSRS reviews.
-- Multi-layer flow: credit travels many layers deep through the graph (up to 3 hops, pruned at 0.05 cumulative weight).
-- Partial encompassings: only a fraction of credit flows along partial edges. Credit travels unhindered along "trunk" of full encompassings but fades along partial branches.
+**Two distinct mechanisms (often conflated):**
+
+1. **Review elimination (scheduling):** Identify due reviews. Find the smallest set of parent topics whose encompassings cover all due children. Only review parents; children are removed from the review queue. This is the "domino toppling" metaphor — one push covers many. Implemented in `compressReviews()` via greedy set-cover.
+
+2. **Credit propagation (SRS state):** After reviewing a parent, update encompassed children's SRS state so future scheduling reflects the implicit practice. Implemented in `applyFIReCredit()` via virtual FSRS reviews with weight-interpolated stability increases.
+
+These mechanisms interact: set-cover changes which topics are reviewed, and credit propagation changes children's future scheduling. Removing encompassing edges disables BOTH simultaneously, making it hard to isolate each mechanism's contribution.
+
+**Our implementation details:**
+- Multi-layer flow: credit travels up to 3 hops, pruned at 0.05 cumulative weight.
+- Partial encompassings: only a fraction of credit flows along partial edges.
 - **No upward penalty:** An earlier design penalized parent topics when children failed, but this has no research basis in the FIRe model and empirically produced net negative compression for struggling profiles. Prerequisite-based remediation routing handles the "student can't do prerequisites" case instead.
 - Freshness gate: if the child topic was recently reviewed (retrievability > 0.9), implicit credit is skipped — the memory is already strong enough that additional reinforcement provides negligible benefit.
+- Virtual FSRS reviews: `repeat(card, Rating.Good)` with weight-interpolated stability increase. Updates `stability` and `due` but NOT `lastReview`, `reps`, `difficulty`, `state`, or `lapses`.
+- Previous approach (due-date extension without FSRS state update) was abandoned because FSRS interpreted the longer gap as memory decay.
 
-**Credit implementation — Virtual FSRS reviews:**
-- When a parent topic is reviewed successfully, each encompassed child receives a *virtual* FSRS review: the system calls `repeat(card, Rating.Good)` and interpolates the resulting stability increase by the encompassing weight.
-- Weight 0.8 → child receives 80% of the stability increase a real Good review would produce. Weight 0.4 → 40%.
-- The virtual review updates `stability`, `due`, and `lastReview` but NOT `reps`, `difficulty`, `state`, or `lapses` — these reflect actual student interactions only.
-- This keeps FSRS state internally consistent: no forgetting curve distortion, no gap-as-decay misinterpretation.
-- Previous approach (due-date extension without FSRS state update) was abandoned because FSRS interpreted the longer gap between `lastReview` and the extended `due` as memory decay, *increasing* review frequency.
+**Empirical findings (simulation, 2026-03-10):**
+- FIRe efficiency (reviews per mastered topic) at 15 sessions: **-25% average** — meaning the system achieves FEWER masteries per review with encompassing edges than without.
+- Root cause: removing encompassing edges changes both credit propagation AND review ordering (set-cover falls back to most-overdue). The simpler most-overdue ordering produces more masteries at short horizons, suggesting set-cover may be counterproductive at small graph scales.
+- Expected to improve at longer horizons (90+ sessions) where stability compounding matters.
+- Graph density is a critical factor: our 302 topics at 1.77 edges/topic may not have enough structure for set-cover to outperform simple ordering. MA's 3,688 topics operate in a fundamentally different regime.
 
-**Repetition compression:**
-- Gather all topics with due repetitions. Compress into a much smaller set of tasks that covers all due repetitions while maximizing overall gain (greedy set-cover algorithm).
-- Math Academy empirical result: most courses can be learned with roughly **only one explicit review per topic on average**.
-- Theoretical maximum efficiency: with sufficient encompassings, all spaced repetitions can be completed without ever explicitly reviewing. Standard flashcard systems implement the theoretical minimum.
+**Implementation evolution path (from analysis):**
+1. Near term: Test priority ordering without queue elimination (may outperform set-cover at short horizons)
+2. Medium term: Retrieval-dependent credit — only eliminate child reviews when post-credit R > 0.85
+3. Long term: Content-aware dynamic credit — tag problems with exercised prerequisite skills
+4. Eventual: Adaptive weight learning from real user performance data
 
-**Platform implication:** Select reviews whose encompassings "knock out" the most other due reviews. This is the key optimization that makes spaced repetition practical at scale. Our encompassing edges in the knowledge graph directly enable this. Virtual FSRS reviews ensure compression persists across sessions — children's updated stability means they genuinely need review less often.
+**Platform implication:** FIRe's value is proportional to encompassing density and session count. At our current scale (302 topics, 15-session evaluation), the benefit is not yet measurable. The architecture is correct for growth — as content expands and simulations run longer, FIRe should show increasing returns. The most faithful implementation would credit only the specific prerequisite skills exercised by each problem, not blanket topic-level credit.
 
 ---
 

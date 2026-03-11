@@ -82,6 +82,8 @@ Absolute targets are preferred — they are self-contained and do not require a 
 
 ### 2.6 FIRe Review Efficiency (P1)
 
+> See [`fire-implementation-analysis.md`](fire-implementation-analysis.md) for 13 implementation approaches and stack rankings.
+
 - **Principle:** Advanced topics implicitly review prerequisites. Retroactive facilitation restores memory as effectively as direct repetition.
 - **Citation:** Math Academy FIRe model (Skycak 2026); Ausubel et al. 1957 (retroactive facilitation).
 - **Metric:** Reviews-per-mastered-topic with vs without encompassing edges. Efficiency = `1 - (withRPM / withoutRPM)`.

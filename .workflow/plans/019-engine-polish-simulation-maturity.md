@@ -25,7 +25,7 @@ Fix the two remaining P1 evaluation failures (FIRe compression measurement, inte
 
 **Completed:** Phase 1 (FIRe: -3.1% → +8.4%, FAIL→FAIL but close to WARN), Phase 2 (Interleaving: 0.254 → 0.085, FAIL→PASS), Phase 2.5 (FIRe default eval, mastery gate removal, graduated mastery model added but getDueTopics/session changes reverted after making FIRe worse), Phase 2.6 (FIRe metric rewritten: reviews-per-mastered-topic efficiency, FAIL→WARN)
 **In Progress:** —
-**Next:** Phase 3
+**Next:** Phase 2.7
 
 ---
 
@@ -204,6 +204,81 @@ Fix the two remaining P1 evaluation failures (FIRe compression measurement, inte
 
 ---
 
+## Phase 2.7: FIRe Isolation Experiments
+**Goal:** Determine whether the -25% FIRe efficiency comes from set-cover ordering, virtual FSRS credit, or short horizon — by running 4 evaluation modes that isolate each mechanism. No production engine changes; diagnostic only.
+
+**Context:** Phase 2.6 revealed that the "without FIRe" baseline disables TWO mechanisms simultaneously: (1) `applyFIReCredit()` virtual reviews and (2) `compressReviews()` set-cover ordering. We cannot attribute the -25% to either mechanism without isolating them. See `docs/fire-implementation-analysis.md` for full analysis of 13 possible FIRe implementations.
+
+**The 4 modes to test:**
+
+| Mode | Credit | Ordering | What it tests |
+|------|--------|----------|---------------|
+| A: Both (current) | Yes | Set-cover | Current production behavior |
+| B: Credit only | Yes | Most-overdue | Is virtual FSRS credit helpful when ordering is simple? |
+| C: Ordering only | No | Set-cover | Does set-cover ordering help even without credit? |
+| D: Neither (current baseline) | No | Most-overdue | Control — no encompassing involvement |
+
+1. [ ] [IMP] Add `mode` parameter to `computeFIReEfficiency()`:
+   - Mode A: run with full encompassing (current "with" behavior)
+   - Mode B: keep encompassing edges in graph (for `applyFIReCredit`) but disable set-cover in `compressReviews` — pass a flag or temporarily override to most-overdue ordering
+   - Mode C: clear encompassing edges from graph (disables credit) but pre-compute the set-cover ordering from the original graph and apply it to the no-encompassing run
+   - Mode D: clear encompassing edges (current "without" behavior)
+   - Run all 4 modes for each test profile at 15 sessions
+
+2. [ ] [RSH] Analyze per-mode results — fill in this table with actual data:
+
+   **Results (to be filled during execution):**
+
+   | Profile | Mode A (both) | Mode B (credit only) | Mode C (ordering only) | Mode D (neither) |
+   |---------|---------------|---------------------|----------------------|------------------|
+   | average-older | rev/mastered (r/m) | | | |
+   | misconception-fractions | | | | |
+   | fast-learner | | | | |
+
+   **Attribution (to be filled):**
+   - Credit effect = Mode B vs Mode D (isolates credit, controls for ordering)
+   - Ordering effect = Mode C vs Mode D (isolates ordering, controls for credit)
+   - Interaction = Mode A - (Mode B + Mode C - Mode D) (non-additive effects)
+
+3. [ ] [RSH] Determine root cause:
+   - If Mode B ≈ Mode D but Mode C < Mode D: **set-cover ordering is the problem**, credit is neutral
+   - If Mode B < Mode D but Mode C ≈ Mode D: **virtual credit is the problem**, ordering is neutral
+   - If Mode B < Mode D AND Mode C < Mode D: **both hurt** at 15 sessions
+   - If Mode B > Mode D: **credit helps** (and current negative is from ordering)
+   - Document which mechanism to change and which to keep
+
+4. [ ] [DOC] Record findings directly in this plan file (Phase 2.7 results section below) so Phase 5.5 can reference them without reading evaluation reports:
+
+   **Phase 2.7 Results (to be filled during execution):**
+   ```
+   Date: [date]
+   Session count: 15
+   Seed: 42
+
+   Per-profile per-mode reviews/mastered (r/m):
+   [table from step 2]
+
+   Per-profile per-mode efficiency vs Mode D:
+   [computed deltas]
+
+   Attribution:
+   - Credit effect: [positive/negative/neutral, magnitude]
+   - Ordering effect: [positive/negative/neutral, magnitude]
+   - Interaction: [additive/non-additive]
+
+   Conclusion: [which mechanism to investigate further at L3+]
+   Recommendation for Phase 5.5: [keep current / change ordering / change credit / both]
+   ```
+
+5. [ ] [VAL] Verify no production code was changed:
+   - `just test` passes (all evaluation changes are in the diagnostic function, not the engine)
+   - `just evaluate` still shows same results as Phase 2.6 (8 PASS, 2 WARN, 0 FAIL)
+   - Any temporary mode infrastructure is behind a `--diagnostic` flag or separate function
+
+**Validation:** All 4 modes run for 3 profiles. Attribution table filled in. Root cause identified. Results recorded in plan file. No production engine changes.
+
+---
+
 ## Phase 3: Holistic System Assessment
 **Goal:** Step back from individual metrics and assess the platform holistically. Identify top blockers for real user testing and produce a prioritized next-work list.
 
@@ -331,6 +406,54 @@ Fix the two remaining P1 evaluation failures (FIRe compression measurement, inte
    - Recommendations for future engine improvements
 
 **Validation:** L4 and L5 complete without crashes. At least 2 insights discovered that were invisible at L3. No pathological behaviors. Gap resilience measured.
+
+---
+
+## Phase 5.5: FIRe Implementation Decision
+**Goal:** Using L3/L4/L5 FIRe efficiency data combined with Phase 2.7 isolation diagnostics, make a data-driven decision on whether to change the FIRe implementation or keep the current approach.
+
+**Depends on:**
+- Phase 2.7 results (isolation experiments — recorded in this plan file above)
+- Phase 4 L3 baseline (90 sessions — FIRe efficiency trend)
+- Phase 5 L4/L5 baselines (180/360 sessions — long-term FIRe behavior)
+
+**Decision framework:**
+
+| FIRe at L3+ | Phase 2.7 attribution | Action |
+|-------------|----------------------|--------|
+| Positive (>0%) | Any | Keep current implementation. FIRe works at scale. Calibrate target upward. |
+| Neutral (-5% to 0%) | Credit helps, ordering hurts | Switch to priority ordering only (Approach 3). Keep credit mechanism. |
+| Neutral | Both neutral | FIRe doesn't help but doesn't hurt. Keep for future content density improvement. |
+| Negative (<-5%) | Credit hurts | Implement retrieval-dependent credit (Approach 4) — only eliminate child reviews when post-credit R > 0.85. |
+| Negative | Ordering hurts | Replace set-cover with priority ordering. |
+| Negative | Both hurt | Consider disabling FIRe queue elimination entirely; keep credit-only for stability compounding. |
+
+1. [ ] [RSH] Compile FIRe efficiency data across maturity levels:
+   - L2 (15 sessions): -25% baseline (Phase 2.6)
+   - L3 (90 sessions): [from Phase 4 results]
+   - L4 (180 sessions): [from Phase 5 results]
+   - L5 (360 sessions): [from Phase 5 results]
+   - Cross-reference with Phase 2.7 isolation data (recorded above in this file)
+   - Is efficiency trending positive as session count increases? At what session count does it cross 0%?
+
+2. [ ] [IMP/RSH] Based on decision framework, implement changes if warranted:
+   - If keeping current: update targets.json with calibrated target from L3+ data
+   - If switching to priority ordering: modify `compressReviews()` to not remove covered children from `remaining`
+   - If implementing retrieval-dependent credit: add R > 0.85 check before removing children from queue in `compressReviews()`
+   - If disabling queue elimination: skip set-cover entirely, use most-overdue ordering, keep `applyFIReCredit()` for stability compounding only
+
+3. [ ] [VAL] Run `just evaluate` at L2 and L3 with the new implementation (if changed):
+   - Compare FIRe efficiency before and after
+   - Verify no regressions on other 9 system metrics
+   - Run `just test` — no failures
+
+4. [ ] [DOC] Update documentation:
+   - `docs/fire-implementation-analysis.md` — add "Implemented Decision" section with data and rationale
+   - `docs/learning-science.md` §8 — update FIRe section with final implementation details
+   - `docs/simulation-targets.md` §2.6 — update target/tolerance if recalibrated
+   - Record decision in `DECISIONS.md`
+
+**Validation:** Decision is documented with supporting data from multiple maturity levels. If implementation changed, FIRe efficiency improved or target recalibrated. No regressions. Documentation updated.
 
 ---
 
