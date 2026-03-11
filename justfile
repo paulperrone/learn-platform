@@ -139,13 +139,9 @@ simulate-clean *args:
 simulate-size:
     npx tsx simulations/src/clean.ts --dry-run --keep 999999
 
-# Evaluate simulation runs against targets.json (healing loop)
+# Evaluate simulation runs against targets.json (includes FIRe compression by default)
 evaluate *args:
     npx tsx simulations/src/evaluate.ts {{args}}
-
-# Evaluate with FIRe comparison (slow — runs paired simulations)
-evaluate-fire *args:
-    npx tsx simulations/src/evaluate.ts --run-fire {{args}}
 
 # Run single healing epoch (simulate all → evaluate → report)
 heal-epoch sessions="30" seed="42":

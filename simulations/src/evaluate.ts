@@ -10,7 +10,7 @@
  *   npx tsx simulations/src/evaluate.ts --runs-dir <dir>             # evaluate specific directory
  *   npx tsx simulations/src/evaluate.ts --profiles average-older,strong-older
  *   npx tsx simulations/src/evaluate.ts --json                       # JSON-only output
- *   npx tsx simulations/src/evaluate.ts --run-fire                   # include FIRe comparison (slow)
+ *   npx tsx simulations/src/evaluate.ts --skip-fire                  # skip FIRe comparison (~10s)
  */
 import {
   readFileSync,
@@ -505,7 +505,7 @@ const METRIC_COMPUTERS: Record<string, MetricComputer> = {
   interleaving: (runs) => computeInterleaving(runs),
   fire_compression: () => ({
     actual: 0,
-    contributing: ["requires paired FIRe simulation — use --run-fire flag"],
+    contributing: ["placeholder — replaced by computeFIReCompression() in main()"],
   }),
   remediation_routing: (runs) => computeRemediationRouting(runs),
   presentation_drift: (runs) => computePresentationDrift(runs),
@@ -1086,7 +1086,7 @@ function printConsoleReport(report: HealingReport): void {
 async function main() {
   const args = process.argv.slice(2);
   const jsonOnly = args.includes("--json");
-  const runFire = args.includes("--run-fire");
+  const skipFire = args.includes("--skip-fire");
 
   const runsDirIdx = args.indexOf("--runs-dir");
   const runsDir = runsDirIdx >= 0
@@ -1121,9 +1121,9 @@ async function main() {
   if (!jsonOnly) console.log("Evaluating systems...");
   const systemResults = evaluateSystems(runs, targets);
 
-  // FIRe compression (optional, requires running simulations)
-  if (runFire) {
-    if (!jsonOnly) console.log("Running FIRe comparison (this takes a few minutes)...");
+  // FIRe compression — runs paired simulations (~10s). Use --skip-fire to skip.
+  if (!skipFire) {
+    if (!jsonOnly) console.log("Running FIRe compression evaluation...");
     const fireResult = await computeFIReCompression();
     const fireTarget = targets.systems["fire_compression"];
     if (fireTarget) {

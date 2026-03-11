@@ -53,20 +53,17 @@ The healing system is a continuous quality assurance loop for the learn-platform
 ### Quick Start
 
 ```bash
-# Check system health (quick, skips FIRe paired runs)
+# Evaluate system health (includes FIRe compression by default)
 just evaluate
 
-# Full evaluation with paired FIRe simulations (slower, definitive)
-just evaluate-fire
+# Skip FIRe paired simulations for faster iteration
+just evaluate --skip-fire
 
 # Full heal cycle (simulate + evaluate + report)
 just heal-epoch
 
 # AI-assisted healing (diagnose + fix + verify)
 /heal
-
-# AI-assisted with full FIRe evaluation
-/heal --full
 
 # Just show status, don't fix
 /heal --evaluate-only
@@ -82,8 +79,7 @@ just heal-status
 
 | Recipe | Description |
 |--------|-------------|
-| `just evaluate` | Evaluate latest simulation runs against targets |
-| `just evaluate-fire` | Evaluate with FIRe comparison (runs paired simulations) |
+| `just evaluate` | Evaluate latest simulation runs against targets (includes FIRe) |
 | `just heal-epoch` | Full epoch: simulate all profiles × 30 sessions → evaluate → report |
 | `just heal-verify <system>` | Mini-simulation to verify a fix for a specific system |
 | `just heal-status` | Show healing loop status and epoch history |

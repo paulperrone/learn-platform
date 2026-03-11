@@ -808,3 +808,36 @@ The interleaving quality metric was measuring same-strand adjacency across ALL e
 FIRe compression is structurally limited because `mastered: boolean` retires topics from both the review queue (`getDueTopics` filters `mastered = false`) and FIRe credit (`applyFIReCredit` skips mastered). With mastery at stability ≥ 4 days (achieved in 3–4 successful reviews), topics spend only 5–10 sessions in FIRe's eligible pool. By session 20+, most early topics are mastered and invisible to FIRe. Math Academy's system keeps topics in SRS with growing intervals — FIRe extends those intervals without explicit reviews, achieving "one review per topic" over a full course.
 
 **Context:** This is the structural reason FIRe compression is hard to improve with constant tuning. The fix requires graduated mastery (keeping recently-mastered topics in the system).
+
+---
+
+### 2026-03-10: Adding mastered topics to review queue worsens FIRe compression
+
+**Source:** User session — Plan 019 Phase 2.5
+**Area:** SRS / FIRe compression / graduated mastery
+
+Adding recently-mastered topics (stability 4–90 days) back into `getDueTopics()` causes FIRe compression to drop from -1.1% to -30.6%. Root cause: FIRe credit accelerates mastery by extending stability → more topics cross the mastery threshold faster → more topics enter the recently-mastered review pool → MORE reviews in the "with FIRe" run than "without". misconception-fractions went from with=64/without=72 (11.1% compression) to with=66/without=36 (-83.3%). The correct approach: let FIRe credit maintain mastered topics implicitly (extend their stability toward permanent mastery) WITHOUT adding them to the explicit review queue.
+
+**Context:** This is the key interaction between graduated mastery and FIRe paired comparison. Any change that adds reviews must be carefully evaluated against the paired measurement methodology.
+
+---
+
+### 2026-03-10: FIRe paired comparison at 15 sessions is dominated by butterfly effects
+
+**Source:** User session — Plan 019 Phase 2.5
+**Area:** Simulation / FIRe evaluation methodology
+
+The FIRe paired comparison (with vs without encompassing edges) diverges after ~5 sessions because different topic mastery timing → different frontier → different session mixes. At 15 sessions, the measurement is noisy: average-older consistently shows -20.6% compression regardless of engine changes, driven by trajectory divergence rather than algorithmic failure. Meanwhile misconception-fractions and fast-learner show positive compression (6-11%). Longer horizons (30-90 sessions) should produce more stable measurements as the butterfly effects average out over more sessions.
+
+**Context:** When FIRe compression is stuck, check whether the measurement window is long enough before concluding the algorithm is broken.
+
+---
+
+### 2026-03-10: FIRe compression metric measures the wrong thing — total reviews vs efficiency
+
+**Source:** User session — Plan 019 Phase 2.5/2.6
+**Area:** SRS / FIRe evaluation methodology
+
+The FIRe paired comparison measures `(withoutReviews - withReviews) / withoutReviews` — total review count across all sessions. But `compressReviews()` doesn't reduce reviews per session. It uses greedy set-cover to select parent topics, then removes covered children from the candidate pool. The freed slots go to NEW topic introductions (`mainNewCount = mainSlots - actualReviewCount`). So FIRe students progress faster → encounter more topics → more topics enter the SRS system → more future reviews → negative "compression". The metric punishes FIRe for working correctly. The correct metric is efficiency: reviews per mastered topic, or mastery achieved at a fixed session count.
+
+**Context:** This explains why FIRe compression has been stuck at -1% to -3% despite correct algorithm implementation and good encompassing density. The engine is working — the measurement is wrong.

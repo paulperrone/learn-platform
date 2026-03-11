@@ -1366,3 +1366,42 @@ Tag each target in `targets.json` with `signal_source: "engine" | "content" | "b
 - Skipping FIRe trained us to ignore it, creating a blind spot where changes could break FIRe without detection
 - Every other system metric runs by default; FIRe should too
 - Paired simulation approach is the only way to measure FIRe — there's no shortcut that reuses existing run data
+
+---
+
+### 2026-03-10: Graduated mastery — FIRe gate removal only, no review queue changes
+
+**Source:** User session — Plan 019 Phase 2.5
+
+**Context:** Implemented the graduated mastery model (5 tiers). Attempted all planned changes: (1) FIRe mastery gate removal, (2) add recently-mastered to getDueTopics, (3) session mix caps, (4) warmup pool filtering. Steps 2-4 caused FIRe compression to drop from -1.1% to -30.6%.
+
+**Decision:** Keep only the FIRe mastery gate removal (`applyFIReCredit` skips permanently-mastered >90d stability instead of all mastered). Revert getDueTopics, session mix, and warmup changes. Mastered topics are maintained by FIRe credit implicitly, not by explicit reviews.
+
+**Why:**
+- Adding mastered topics to the review queue causes FIRe to accelerate mastery → more reviews in "with FIRe" runs → negative compression
+- FIRe credit extending stability of mastered topics IS the mechanism for growing toward permanent mastery — explicit reviews are redundant
+- The masteryTier model and getMasteryTier() function remain in the codebase for future use (warmup filtering, analytics, session mix refinement)
+
+**Alternatives rejected:**
+- Full graduated mastery (all 4 changes): Attempted, caused -30.6% FIRe compression
+- Removing all changes: FIRe gate removal is architecturally correct even if compression benefit isn't visible at 15 sessions
+
+---
+
+### 2026-03-10: FIRe metric: measure efficiency (reviews per mastered topic), not total review count
+
+**Source:** User session — Plan 019 Phase 2.6
+
+**Context:** FIRe compression metric consistently showed -1% to -3% despite correct algorithm. Investigation revealed `compressReviews()` doesn't reduce review count per session — it replaces child reviews with new topic slots. FIRe students progress faster, encounter more topics, and have more total reviews. The metric was punishing FIRe for working.
+
+**Decision:** Replace `fire_compression_ratio` (total review comparison) with `fire_efficiency_ratio` (reviews per mastered topic). Compression = `1 - (withReviewsPerMastery / withoutReviewsPerMastery)`. Positive means FIRe is more efficient.
+
+**Why:**
+- `compressReviews` uses greedy set-cover to skip child reviews, freeing slots for new topics — it changes WHICH topics get reviewed, not HOW MANY
+- Total review count increases with FIRe because faster progression → more topics in system → more reviews
+- Reviews-per-mastered-topic captures FIRe's actual value: reaching the same mastery with fewer reviews
+- Aligns with Math Academy's "one review per topic" framing — efficiency, not raw count
+
+**Alternatives rejected:**
+- Calibrating the target lower (e.g., 5%): Masks the real problem — the metric is fundamentally wrong, not just mis-calibrated
+- Measuring mastery-at-fixed-sessions only: Doesn't capture review efficiency directly; a student could be more mastered simply due to higher ability, not FIRe

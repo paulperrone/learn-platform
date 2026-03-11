@@ -42,20 +42,17 @@ If any prerequisite is missing, stop and report what's needed.
 Run evaluation to get the current system health:
 
 ```bash
-# Default: quick evaluation (uses cached simulation data, skips FIRe paired runs)
+# Evaluate system health (includes FIRe compression by default, ~10s)
 just evaluate
 
-# --full flag: comprehensive evaluation with paired FIRe simulations (slower, definitive)
-just evaluate-fire
+# Skip FIRe for faster iteration
+just evaluate --skip-fire
 
 # If no recent data exists (< 1 hour old), run a full epoch first:
 just heal-epoch
 ```
 
-**Choose evaluation mode:**
-- Default `/heal` or `/heal --evaluate-only`: uses `just evaluate` (fast, skips FIRe)
-- `/heal --full`: uses `just evaluate-fire` (runs paired with/without-FIRe simulations, gives definitive `fire_compression` metric)
-- When diagnosing `fire_compression` specifically, always use `--full` for accurate measurement
+**Note:** FIRe compression runs by default (~10s). Use `--skip-fire` only when iterating on non-FIRe metrics.
 
 Read the output:
 - `simulations/reports/evaluation.json` — machine-readable results
@@ -332,7 +329,7 @@ When escalating, provide:
 6. **Weight accuracy** — Inaccurate weights mean virtual reviews over- or under-credit stability. Audit weights using the rubric in `docs/content-system.md` §4.
 7. **Review pool too small** — FIRe compression = `1 - (fire_reviews / baseline_reviews)`. If few non-mastered topics are due for review, even good credit doesn't compress many reviews.
 
-**Evaluation note:** FIRe compression requires paired simulation runs (with/without FIRe). Use `/heal --full` or `just evaluate-fire` for the definitive metric. Quick evaluation skips FIRe.
+**Evaluation note:** FIRe compression runs paired simulations by default (~10s). Use `--skip-fire` only when iterating on non-FIRe metrics.
 
 ---
 

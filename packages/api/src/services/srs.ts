@@ -10,6 +10,28 @@ const defaultFsrs = fsrs(defaultParams);
 const MIN_REVIEWS_FOR_OPTIMIZATION = 50;
 const OPTIMIZATION_STALENESS_DAYS = 7;
 
+// Graduated mastery tiers based on FSRS stability (days).
+// Topics progress through tiers as stability grows, keeping them in
+// FIRe's scope and the review queue longer than binary mastery.
+export type MasteryTier =
+  | "learning"             // state != Review — step-based scheduling
+  | "practicing"           // stability < 4 days — standard SRS
+  | "recently-mastered"    // 4–30 days — reduced-priority reviews
+  | "solidly-mastered"     // 30–90 days — warmup pool only, FIRe maintains
+  | "permanently-mastered"; // > 90 days — fully retired
+
+const RECENTLY_MASTERED_THRESHOLD = 4;   // days
+const SOLIDLY_MASTERED_THRESHOLD = 30;   // days
+const PERMANENTLY_MASTERED_THRESHOLD = 90; // days
+
+export function getMasteryTier(row: { state: number; stability: number; reps: number }): MasteryTier {
+  if (row.reps === 0 || row.state !== State.Review) return "learning";
+  if (row.stability < RECENTLY_MASTERED_THRESHOLD) return "practicing";
+  if (row.stability < SOLIDLY_MASTERED_THRESHOLD) return "recently-mastered";
+  if (row.stability < PERMANENTLY_MASTERED_THRESHOLD) return "solidly-mastered";
+  return "permanently-mastered";
+}
+
 type UserTopicRow = typeof schema.userTopicState.$inferSelect;
 
 export type MixItem = {
@@ -289,6 +311,8 @@ export function createSRSService(db: DB) {
 
     /**
      * Get topics due for review.
+     * Returns unmastered topics only. Mastered topics are maintained by FIRe
+     * credit (virtual stability growth) rather than explicit reviews.
      */
     async getDueTopics(userId: string) {
       const now = new Date().toISOString();
@@ -363,9 +387,11 @@ export function createSRSService(db: DB) {
 
       for (const [childTopicId, weight] of visited) {
         const childState = await this.getOrCreateState(userId, childTopicId);
-        if (childState.mastered) continue;
         if (childState.reps === 0) continue;
         if (childState.stability <= 0) continue;
+        // Skip permanently mastered topics (stability > 90 days) — truly learned
+        const childTier = getMasteryTier(childState);
+        if (childTier === "permanently-mastered") continue;
         // Only apply virtual reviews to children in Review state.
         // Learning/Relearning use step-based scheduling (stability stays flat),
         // and New state can decrease stability. Virtual reviews on non-Review

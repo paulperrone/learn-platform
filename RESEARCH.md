@@ -620,4 +620,4 @@ Math Academy's approach: topics stay in SRS with growing intervals. FIRe credit 
 - FIRe evaluation takes only 10 seconds — should run by default, not behind `--run-fire` flag
 - Cross-strand encompassing edges provide the highest compression value (different review schedules → more opportunity for implicit credit)
 
-**Status:** Active — Plan 019 Phases 2.5 and 2.6 implement graduated mastery and FIRe target calibration.
+**Status:** Active — Phase 2.5 complete: FIRe gate removal shipped, getDueTopics/session changes attempted and reverted (worsened compression to -30.6%). Phase 2.6 will calibrate targets and test at longer horizons.
