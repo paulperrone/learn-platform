@@ -4,6 +4,7 @@ import type { Env } from "../index.js";
 import { getDb } from "../db/index.js";
 import * as schema from "../db/schema.js";
 import { createSessionService } from "../services/session.js";
+import { createAnalyticsService } from "../services/analytics.js";
 import { createDiagnosticService } from "../services/diagnostic.js";
 
 export const learnRoutes = new Hono<Env>();
@@ -28,7 +29,7 @@ learnRoutes.get("/sessions/active", async (c) => {
     return c.json({ active: false });
   }
 
-  const session = createSessionService(db, undefined, c.env.CONTENT);
+  const session = createSessionService(db, undefined, c.env.CONTENT, createAnalyticsService(c.env.ANALYTICS));
   const result = await session.getSession(active.id);
   if (!result) return c.json({ active: false });
 
@@ -37,7 +38,7 @@ learnRoutes.get("/sessions/active", async (c) => {
 
 learnRoutes.post("/sessions", async (c) => {
   const db = getDb(c.env.DB);
-  const session = createSessionService(db, undefined, c.env.CONTENT);
+  const session = createSessionService(db, undefined, c.env.CONTENT, createAnalyticsService(c.env.ANALYTICS));
   const body = await c.req.json<{ userId?: string; anonymousToken?: string; disciplineId?: string }>();
 
   if (body.anonymousToken && !body.userId) {
@@ -52,7 +53,7 @@ learnRoutes.post("/sessions", async (c) => {
 
 learnRoutes.get("/sessions/:id", async (c) => {
   const db = getDb(c.env.DB);
-  const session = createSessionService(db, undefined, c.env.CONTENT);
+  const session = createSessionService(db, undefined, c.env.CONTENT, createAnalyticsService(c.env.ANALYTICS));
   const result = await session.getSession(c.req.param("id"));
   if (!result) return c.json({ error: "Session not found" }, 404);
   return c.json(result);
@@ -60,7 +61,7 @@ learnRoutes.get("/sessions/:id", async (c) => {
 
 learnRoutes.post("/sessions/:id/respond", async (c) => {
   const db = getDb(c.env.DB);
-  const session = createSessionService(db, undefined, c.env.CONTENT);
+  const session = createSessionService(db, undefined, c.env.CONTENT, createAnalyticsService(c.env.ANALYTICS));
   const body = await c.req.json<{
     answer?: string;
     correct?: boolean;

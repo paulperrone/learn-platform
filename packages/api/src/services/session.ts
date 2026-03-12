@@ -6,6 +6,7 @@ import { createGraphService } from "./graph.js";
 import { createSRSService, type FireDiagnosticConfig } from "./srs.js";
 import { createContentService, type ContentQuery } from "./content.js";
 import type { ContentBucket } from "./content-r2.js";
+import type { AnalyticsService } from "./analytics.js";
 import type { Problem, WorkedExample, SessionPhase, AssessmentType, VisualAsset, PresentationLevel, ContentDepthLevel, BlendRole, MasteryEvent, CognitiveDemand, DemandDistribution } from "@learn/shared";
 import { DEMAND_PROFILES } from "@learn/shared";
 import { gradeProblem } from "./grading.js";
@@ -62,7 +63,7 @@ export function applyDifficultyBias(baseDifficulty: string, bias: DifficultyBias
   return levels[Math.max(idx - 1, 0)];
 }
 
-export function createSessionService(db: DB, fireDiagnostic?: FireDiagnosticConfig, contentBucket?: ContentBucket) {
+export function createSessionService(db: DB, fireDiagnostic?: FireDiagnosticConfig, contentBucket?: ContentBucket, analytics?: AnalyticsService) {
   const graph = createGraphService(db);
   const srs = createSRSService(db, fireDiagnostic);
   const content = createContentService(db, contentBucket);
@@ -541,6 +542,31 @@ export function createSessionService(db: DB, fireDiagnostic?: FireDiagnosticConf
             isCorrect,
           );
         }
+
+        // Record rich analytics event (fire-and-forget)
+        if (analytics) {
+          const bias = computeDifficultyBias(state.rollingResults);
+          analytics.recordProblemAttempt({
+            userId: state.userId,
+            topicId: state.currentTopicId,
+            problemId: (response as any).problemId ?? "",
+            contentVersion: versionRow?.contentHash ?? null,
+            phase: state.currentPhase,
+            difficulty: (response as any).difficulty ?? "medium",
+            cognitiveDemand: (response as any).cognitiveDemand ?? "procedural",
+            presentation: state.lastServedPresentation ?? "standard",
+            contentDepth: (response as any).contentDepth ?? "survey",
+            disciplineId: state.lastServedDisciplineId ?? topic.disciplineId ?? "math",
+            blendRole: state.currentBlendRole ?? "main",
+            difficultyBias: bias,
+            correct: isCorrect,
+            responseMs: response.responseMs,
+            hintsUsed,
+            confidence: response.confidence ?? 0,
+            rating,
+            misconception: reviewResult.misconception,
+          });
+        }
       }
 
       // Record activity for authenticated users (fire-and-forget, best-effort)
@@ -566,6 +592,27 @@ export function createSessionService(db: DB, fireDiagnostic?: FireDiagnosticConf
         } catch {
           // Best-effort — don't fail the session response
         }
+      }
+
+      // Record example view analytics when completing an instruction phase
+      if (analytics && state.currentPhase === "instruction" && state.currentTopicId) {
+        const [vRow] = await db
+          .select({ contentHash: schema.topicContentVersions.contentHash })
+          .from(schema.topicContentVersions)
+          .where(eq(schema.topicContentVersions.topicId, state.currentTopicId));
+        analytics.recordExampleView({
+          userId: state.userId,
+          topicId: state.currentTopicId,
+          exampleId: (response as any).exampleId ?? "",
+          contentVersion: vRow?.contentHash ?? null,
+          presentation: state.lastServedPresentation ?? "standard",
+          contentDepth: (response as any).contentDepth ?? "survey",
+          stepsViewed: (response as any).stepsViewed ?? 0,
+          totalSteps: (response as any).totalSteps ?? 0,
+          totalTimeMs: response.responseMs,
+          fadingLevel: (response as any).fadingLevel ?? 0,
+          selfExplanationQuality: (response as any).selfExplanationQuality ?? 0,
+        });
       }
 
       // Advance through learning phases

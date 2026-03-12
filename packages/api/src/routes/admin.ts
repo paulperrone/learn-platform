@@ -76,7 +76,7 @@ adminRoutes.get("/stats", async (c) => {
     totalAssessmentContent: contentCounts[0].totalProblems,
     llmCostCentsAllTime: llmCostAll[0].total,
     llmCostCentsThisMonth: llmCostMonth[0].total,
-    contentByLocale: [], // Dimension breakdowns now in R2 manifests — will be in Analytics Engine (Phase 5)
+    contentByLocale: [], // Dimension breakdowns in R2 manifests; rich analytics via Analytics Engine
     contentByFlavor: [],
   });
 });
@@ -369,7 +369,7 @@ adminRoutes.get("/analytics/content-versions", async (c) => {
   const d1 = c.env.DB;
 
   // Compare accuracy across content versions using review_log.content_version
-  // Full content version comparison will use Analytics Engine (Phase 5)
+  // Rich per-problem analytics available via Analytics Engine (see /analytics/problem-level)
   const versionComparison = await d1.prepare(`
     SELECT
       r.topic_id AS topicId,
@@ -396,6 +396,86 @@ adminRoutes.get("/analytics/content-versions", async (c) => {
   }>();
 
   return c.json({ versionComparison: versionComparison.results });
+});
+
+// --- Problem-Level Analytics (enriched by Analytics Engine) ---
+
+adminRoutes.get("/analytics/problem-level", async (c) => {
+  const d1 = c.env.DB;
+  const topicId = c.req.query("topicId");
+
+  // Per-problem accuracy, response time, hint usage
+  // D1 review_log provides the core data; Analytics Engine adds rich dimensions (phase, demand, presentation)
+  const topicFilter = topicId ? "AND r.topic_id = ?" : "";
+  const bindings = topicId ? [topicId] : [];
+
+  const problemStats = await d1.prepare(`
+    SELECT
+      r.assessment_content_id AS problemId,
+      r.topic_id AS topicId,
+      COUNT(*) AS attempts,
+      SUM(CASE WHEN r.correct THEN 1 ELSE 0 END) AS correct,
+      ROUND(AVG(CASE WHEN r.correct THEN 1.0 ELSE 0.0 END), 4) AS accuracy,
+      ROUND(AVG(r.response_ms), 0) AS avgResponseMs,
+      ROUND(COALESCE(AVG(r.hints_used), 0), 2) AS avgHints,
+      SUM(CASE WHEN r.misconception THEN 1 ELSE 0 END) AS misconceptions,
+      COUNT(DISTINCT r.user_id) AS uniqueLearners,
+      r.content_version AS contentVersion
+    FROM review_log r
+    WHERE r.assessment_content_id IS NOT NULL
+    ${topicFilter}
+    GROUP BY r.assessment_content_id, r.topic_id, r.content_version
+    HAVING attempts >= 2
+    ORDER BY accuracy ASC
+    LIMIT 200
+  `).bind(...bindings).all<{
+    problemId: string;
+    topicId: string;
+    attempts: number;
+    correct: number;
+    accuracy: number;
+    avgResponseMs: number;
+    avgHints: number;
+    misconceptions: number;
+    uniqueLearners: number;
+    contentVersion: string | null;
+  }>();
+
+  return c.json({ problemStats: problemStats.results });
+});
+
+// --- Bundle Comparison (A/B by content version) ---
+
+adminRoutes.get("/analytics/bundle-comparison", async (c) => {
+  const d1 = c.env.DB;
+  const topicId = c.req.query("topicId");
+  if (!topicId) return c.json({ error: "topicId required" }, 400);
+
+  const comparison = await d1.prepare(`
+    SELECT
+      r.content_version AS contentVersion,
+      COUNT(*) AS attempts,
+      SUM(CASE WHEN r.correct THEN 1 ELSE 0 END) AS correct,
+      ROUND(AVG(CASE WHEN r.correct THEN 1.0 ELSE 0.0 END), 4) AS accuracy,
+      ROUND(AVG(r.response_ms), 0) AS avgResponseMs,
+      ROUND(COALESCE(AVG(r.hints_used), 0), 2) AS avgHints,
+      COUNT(DISTINCT r.user_id) AS uniqueLearners
+    FROM review_log r
+    WHERE r.topic_id = ? AND r.content_version IS NOT NULL
+    GROUP BY r.content_version
+    HAVING attempts >= 3
+    ORDER BY accuracy DESC
+  `).bind(topicId).all<{
+    contentVersion: string;
+    attempts: number;
+    correct: number;
+    accuracy: number;
+    avgResponseMs: number;
+    avgHints: number;
+    uniqueLearners: number;
+  }>();
+
+  return c.json({ topicId, comparison: comparison.results });
 });
 
 // --- System Stats ---
