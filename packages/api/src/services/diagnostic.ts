@@ -44,9 +44,9 @@ const MIN_QUESTIONS = 8;
 /** Confidence threshold: stop when boundary is within this many grade levels */
 const BOUNDARY_PRECISION = 0.5;
 
-export function createDiagnosticService(db: DB) {
+export function createDiagnosticService(db: DB, r2Bucket?: R2Bucket) {
   const graph = createGraphService(db);
-  const content = createContentService(db);
+  const content = createContentService(db, r2Bucket);
 
   /**
    * Fetch problems for a topic during diagnostic using dimension-aware content selection.
@@ -54,7 +54,8 @@ export function createDiagnosticService(db: DB) {
    */
   async function getDiagnosticProblems(
     topicId: string,
-    birthYear: number | null | undefined
+    birthYear: number | null | undefined,
+    disciplineId?: string,
   ): Promise<{ problems: Problem[]; presentation: PresentationLevel }> {
     const defaultDist = buildDefaultDistribution(birthYear);
     // Use deterministic center level for diagnostic (not random sampling)
@@ -63,6 +64,7 @@ export function createDiagnosticService(db: DB) {
 
     const problems = await content.getTopicProblems({
       topicId,
+      discipline: disciplineId,
       contentDepth: "survey", // Diagnostic always uses survey depth
       presentation,
     });
@@ -617,7 +619,7 @@ export function createDiagnosticService(db: DB) {
         return { error: "No topics available for diagnostic" };
       }
 
-      const { problems, presentation: firstPresentation } = await getDiagnosticProblems(firstTopicId, birthYear);
+      const { problems, presentation: firstPresentation } = await getDiagnosticProblems(firstTopicId, birthYear, params.disciplineId);
       if (problems.length === 0) {
         return { error: "No problems available for diagnostic" };
       }
@@ -675,7 +677,7 @@ export function createDiagnosticService(db: DB) {
         birthYear = user?.birthYear ?? null;
       }
 
-      const { problems } = await getDiagnosticProblems(currentTopicId, birthYear);
+      const { problems } = await getDiagnosticProblems(currentTopicId, birthYear, row.disciplineId);
       const currentProblem = problems.find((p) => p.id === currentQuestionId) ?? problems[0];
       if (!currentProblem) {
         return { error: "No problem found" };
@@ -793,7 +795,7 @@ export function createDiagnosticService(db: DB) {
         };
       }
 
-      const { problems: nextProblems, presentation: nextPresentation } = await getDiagnosticProblems(nextTopicId, birthYear);
+      const { problems: nextProblems, presentation: nextPresentation } = await getDiagnosticProblems(nextTopicId, birthYear, row.disciplineId);
       state.servedPresentationLevels.push(nextPresentation);
       const unseenProblems = nextProblems.filter((p) => !state.askedQuestionIds.includes(p.id));
       const nextProblem = unseenProblems.length > 0
@@ -852,7 +854,7 @@ export function createDiagnosticService(db: DB) {
         birthYear = user?.birthYear ?? null;
       }
 
-      const { problems } = await getDiagnosticProblems(state.currentTopicId, birthYear);
+      const { problems } = await getDiagnosticProblems(state.currentTopicId, birthYear, row.disciplineId);
       const problem = problems.find((p) => p.id === state.currentQuestionId) ?? problems[0];
       if (!problem) return null;
 

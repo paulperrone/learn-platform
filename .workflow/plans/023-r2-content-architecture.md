@@ -377,9 +377,9 @@ Both need to be added to dev, production, and preview environments.
 
 ## Progress
 
-**Completed:** Phase 1 ✓
+**Completed:** Phase 1 ✓, Phase 2 ✓
 **In Progress:** —
-**Next:** Phase 2
+**Next:** Phase 3
 
 ---
 
@@ -477,7 +477,7 @@ Both need to be added to dev, production, and preview environments.
 
 ---
 
-## Phase 2: Content Service Migration
+## Phase 2: Content Service Migration ✓
 **Goal:** Rewrite the content service to fetch from R2 instead of D1, preserving all existing behavior (7-tier fallback ranking, presentation drift, demand mixing).
 
 ### Context for Execution
@@ -504,7 +504,7 @@ Both need to be added to dev, production, and preview environments.
 
 ### Steps
 
-1. [ ] [IMP] Create R2 content fetcher module (`packages/api/src/services/content-r2.ts`):
+1. [x] [IMP] Create R2 content fetcher module (`packages/api/src/services/content-r2.ts`):
    - `fetchTopicProblems(bucket: R2Bucket, discipline: string, topicId: string): Promise<Problem[]>`
    - `fetchTopicExamples(bucket: R2Bucket, discipline: string, topicId: string): Promise<WorkedExample[]>`
    - `fetchManifest(bucket: R2Bucket, discipline: string, topicId: string): Promise<Manifest>`
@@ -512,28 +512,28 @@ Both need to be added to dev, production, and preview environments.
    - Handle missing bundles gracefully (topic exists in graph but no content yet → empty array)
    - Parse JSON and validate against shared types
 
-2. [ ] [IMP] Rewrite `getTopicProblems()` in content service:
+2. [x] [IMP] Rewrite `getTopicProblems()` in content service:
    - Replace `db.select().from(schema.assessmentContent).where(eq(...topicId))` with `fetchTopicProblems(bucket, discipline, topicId)`
    - Apply same 7-tier fallback ranking on the fetched `Problem[]` array (filter by presentation, depth, locale, flavor)
    - Preserve difficulty bias, demand preference, and type diversity logic (these operate on the ranked array, unchanged)
    - Add `discipline` parameter (currently inferred from D1 join — now needed for R2 key)
 
-3. [ ] [IMP] Rewrite `getTopicExamples()` in content service:
+3. [x] [IMP] Rewrite `getTopicExamples()` in content service:
    - Same pattern: R2 fetch → in-memory fallback ranking
    - Preserve fading level logic (unchanged — operates on selected example)
 
-4. [ ] [IMP] Update service factory wiring:
+4. [x] [IMP] Update service factory wiring:
    - `createContentService(db, r2Bucket)` — add R2 bucket parameter
    - Update `packages/api/src/index.ts` to pass `env.CONTENT` binding
    - Update session service to pass R2 binding through to content service
    - Update any other callers (diagnostic service, assignment routes)
 
-5. [ ] [IMP] Update `scheduleReview()` in SRS service to record content_version:
+5. [x] [IMP] Update `scheduleReview()` in SRS service to record content_version:
    - Look up `topic_content_versions.content_hash` for the topic
    - Pass to `review_log` insert as `content_version`
    - Nullable fallback if version not yet populated
 
-6. [ ] [TST] Write/update content service tests:
+6. [x] [TST] Write/update content service tests:
    - Mock R2 bucket with in-memory implementation
    - Test: fetch problems, fallback ranking (exact match, partial match, any-content fallback)
    - Test: cache hit vs miss behavior
@@ -541,7 +541,7 @@ Both need to be added to dev, production, and preview environments.
    - Test: content_version recorded in review_log
    - Verify existing content service tests still pass (adapt D1 mocks → R2 mocks)
 
-7. [ ] [VAL] Integration test with local R2:
+7. [x] [VAL] Integration test with local R2:
    - Generate bundles from learn-content
    - Upload to local R2 (wrangler dev)
    - Start learning session, verify problems and examples load correctly

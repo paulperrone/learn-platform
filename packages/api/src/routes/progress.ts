@@ -30,7 +30,7 @@ progressRoutes.get("/:userId/topics", async (c) => {
 
 progressRoutes.get("/:userId/presentation", async (c) => {
   const db = getDb(c.env.DB);
-  const content = createContentService(db);
+  const content = createContentService(db, c.env.CONTENT);
   const userId = c.req.param("userId");
 
   // Get user's birth year for default fallback

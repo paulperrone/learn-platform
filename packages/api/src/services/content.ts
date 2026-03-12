@@ -2,6 +2,7 @@ import { eq, and } from "drizzle-orm";
 import type { DB } from "../db/index.js";
 import * as schema from "../db/schema.js";
 import type { Problem, WorkedExample, VisualAsset, PresentationLevel, ContentDepthLevel } from "@learn/shared";
+import { fetchTopicProblems, fetchTopicExamples, toBareProblems, toBareExamples, type BundledProblem, type BundledExample } from "./content-r2.js";
 
 const CURRENT_YEAR = new Date().getFullYear();
 
@@ -203,13 +204,14 @@ const DEPTH_FALLBACK: ContentDepthLevel[] = ["survey", "contextual", "analytical
 
 export type ContentQuery = {
   topicId: string;
+  discipline?: string;
   contentDepth: ContentDepthLevel;
   presentation: PresentationLevel;
   locale?: string;
   flavor?: string;
 };
 
-export function createContentService(db: DB) {
+export function createContentService(db: DB, r2Bucket?: R2Bucket) {
   async function resolvePresentation(userId: string, disciplineId?: string): Promise<PresentationLevel> {
     // Check for explicit override in preferences
     const prefs = await db.query.userPreferences.findFirst({
@@ -363,9 +365,18 @@ export function createContentService(db: DB) {
   }
 
   async function getTopicProblems(query: ContentQuery): Promise<Problem[]> {
-    const { topicId, contentDepth, presentation, locale = "en", flavor = "classic" } = query;
+    const { topicId, discipline, contentDepth, presentation, locale = "en", flavor = "classic" } = query;
 
-    // Single query: fetch all content for this topic, rank in application code
+    // R2 path: fetch bundled problems with dimension fields, rank in-memory
+    if (r2Bucket && discipline) {
+      const bundled = await fetchTopicProblems(r2Bucket, discipline, topicId);
+      if (bundled.length > 0) {
+        const best = selectBestRows(bundled, { presentation, contentDepth, locale, flavor });
+        return toBareProblems(best);
+      }
+    }
+
+    // D1 fallback (tests, local dev without R2, or missing bundle)
     const allRows = await db
       .select()
       .from(schema.assessmentContent)
@@ -376,9 +387,18 @@ export function createContentService(db: DB) {
   }
 
   async function getTopicExamples(query: ContentQuery): Promise<WorkedExample[]> {
-    const { topicId, contentDepth, presentation, locale = "en", flavor = "classic" } = query;
+    const { topicId, discipline, contentDepth, presentation, locale = "en", flavor = "classic" } = query;
 
-    // Single query: fetch all content for this topic, rank in application code
+    // R2 path: fetch bundled examples with dimension fields, rank in-memory
+    if (r2Bucket && discipline) {
+      const bundled = await fetchTopicExamples(r2Bucket, discipline, topicId);
+      if (bundled.length > 0) {
+        const best = selectBestRows(bundled, { presentation, contentDepth, locale, flavor });
+        return toBareExamples(best);
+      }
+    }
+
+    // D1 fallback
     const allRows = await db
       .select()
       .from(schema.instructionalContent)

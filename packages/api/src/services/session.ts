@@ -61,10 +61,10 @@ export function applyDifficultyBias(baseDifficulty: string, bias: DifficultyBias
   return levels[Math.max(idx - 1, 0)];
 }
 
-export function createSessionService(db: DB, fireDiagnostic?: FireDiagnosticConfig) {
+export function createSessionService(db: DB, fireDiagnostic?: FireDiagnosticConfig, r2Bucket?: R2Bucket) {
   const graph = createGraphService(db);
   const srs = createSRSService(db, fireDiagnostic);
-  const content = createContentService(db);
+  const content = createContentService(db, r2Bucket);
   const activity = createActivityService(db);
 
   /**
@@ -166,7 +166,7 @@ export function createSessionService(db: DB, fireDiagnostic?: FireDiagnosticConf
     state.lastServedPresentation = presentation;
     state.lastServedDisciplineId = disciplineId;
 
-    return { topicId, contentDepth, presentation };
+    return { topicId, discipline: disciplineId, contentDepth, presentation };
   }
 
   // Types that force retrieval practice (higher learning gain than text-qa)
@@ -501,6 +501,12 @@ export function createSessionService(db: DB, fireDiagnostic?: FireDiagnosticConf
       // Record review (skip for anonymous — no persistent SRS state)
       let masteryEvent: MasteryEvent | undefined;
       if (!state.isAnonymous) {
+        // Look up content version for this topic (nullable — may not exist yet)
+        const [versionRow] = await db
+          .select({ contentHash: schema.topicContentVersions.contentHash })
+          .from(schema.topicContentVersions)
+          .where(eq(schema.topicContentVersions.topicId, state.currentTopicId));
+
         const reviewResult = await srs.scheduleReview(
           state.userId,
           state.currentTopicId,
@@ -509,7 +515,8 @@ export function createSessionService(db: DB, fireDiagnostic?: FireDiagnosticConf
           state.currentPhase,
           response.confidence,
           hintsUsed,
-          (response as any).problemId
+          (response as any).problemId,
+          versionRow?.contentHash,
         );
 
         // Detect new mastery → find unlocked topics

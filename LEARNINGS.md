@@ -897,3 +897,14 @@ Strong-older plateauing at session 9 is a **content ceiling** problem (92 math-f
 MA's K-8 relevant content spans 6 courses: 4th Grade Math (137 topics), 5th Grade Math (132), Mathematical Foundations I (352), Foundations II (357), Foundations III (323), and Prealgebra (205). However, Foundations I-III contain substantial high school content (trigonometry, conic sections, calculus intro, linear algebra) mixed with K-8 material. To get genuine K-8 topics, filter by unit names — units like "Fractions", "The Number System", "Ratios & Percentages" are K-8; units like "Trigonometry", "Conic Sections", "Integration Techniques" are HS. Many topics appear in multiple courses (dedup by `node.id`). Edge data uses numeric IDs (`from`/`to`), not string slugs.
 
 **Context:** When cross-referencing MA for future strands or disciplines, always dedup by topic ID and filter by unit-level K-8 relevance rather than course-level.
+
+---
+
+### 2026-03-12: R2 content migration — optional R2 with D1 fallback preserves test compatibility
+
+**Source:** User session — Plan 023 Phase 2
+**Area:** Content architecture / testing
+
+When migrating content service from D1 to R2, making R2Bucket optional in factory signatures (`createContentService(db, r2Bucket?)`) with automatic D1 fallback avoids a big-bang test migration. Existing tests continue using D1-seeded content (no R2 passed), while production and new R2-specific tests exercise the R2 path. This pattern also keeps local dev working without R2 until Phase 4 wires up the deploy pipeline. Phase 3 will remove D1 content tables and the fallback.
+
+**Context:** Applied to `createContentService`, `createSessionService`, `createDiagnosticService`. The `ContentQuery` type gained an optional `discipline?: string` field — R2 needs it for key construction (`{discipline}/{topicId}/problems.json`) but D1 fallback doesn't.

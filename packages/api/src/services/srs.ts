@@ -180,7 +180,8 @@ export function createSRSService(db: DB, fireDiagnostic?: FireDiagnosticConfig) 
       phase: string,
       confidence?: number,
       hintsUsed?: number,
-      assessmentContentId?: string
+      assessmentContentId?: string,
+      contentVersion?: string,
     ) {
       const state = await this.getOrCreateState(userId, topicId);
       const card = cardFromRow(state);
@@ -304,6 +305,7 @@ export function createSRSService(db: DB, fireDiagnostic?: FireDiagnosticConfig) 
         phase,
         hintsUsed: hintsUsed ?? null,
         misconception: isMisconception,
+        contentVersion: contentVersion ?? null,
       });
 
       return {

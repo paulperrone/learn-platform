@@ -28,7 +28,7 @@ learnRoutes.get("/sessions/active", async (c) => {
     return c.json({ active: false });
   }
 
-  const session = createSessionService(db);
+  const session = createSessionService(db, undefined, c.env.CONTENT);
   const result = await session.getSession(active.id);
   if (!result) return c.json({ active: false });
 
@@ -37,7 +37,7 @@ learnRoutes.get("/sessions/active", async (c) => {
 
 learnRoutes.post("/sessions", async (c) => {
   const db = getDb(c.env.DB);
-  const session = createSessionService(db);
+  const session = createSessionService(db, undefined, c.env.CONTENT);
   const body = await c.req.json<{ userId?: string; anonymousToken?: string; disciplineId?: string }>();
 
   if (body.anonymousToken && !body.userId) {
@@ -52,7 +52,7 @@ learnRoutes.post("/sessions", async (c) => {
 
 learnRoutes.get("/sessions/:id", async (c) => {
   const db = getDb(c.env.DB);
-  const session = createSessionService(db);
+  const session = createSessionService(db, undefined, c.env.CONTENT);
   const result = await session.getSession(c.req.param("id"));
   if (!result) return c.json({ error: "Session not found" }, 404);
   return c.json(result);
@@ -60,7 +60,7 @@ learnRoutes.get("/sessions/:id", async (c) => {
 
 learnRoutes.post("/sessions/:id/respond", async (c) => {
   const db = getDb(c.env.DB);
-  const session = createSessionService(db);
+  const session = createSessionService(db, undefined, c.env.CONTENT);
   const body = await c.req.json<{
     answer?: string;
     correct?: boolean;
@@ -77,7 +77,7 @@ learnRoutes.post("/sessions/:id/respond", async (c) => {
 
 learnRoutes.post("/diagnostic/start", async (c) => {
   const db = getDb(c.env.DB);
-  const diagnostic = createDiagnosticService(db);
+  const diagnostic = createDiagnosticService(db, c.env.CONTENT);
   const body = await c.req.json<{
     userId?: string;
     anonymousToken?: string;
@@ -93,7 +93,7 @@ learnRoutes.post("/diagnostic/start", async (c) => {
 
 learnRoutes.post("/diagnostic/resume", async (c) => {
   const db = getDb(c.env.DB);
-  const diagnostic = createDiagnosticService(db);
+  const diagnostic = createDiagnosticService(db, c.env.CONTENT);
   const body = await c.req.json<{
     userId?: string;
     anonymousToken?: string;
@@ -107,7 +107,7 @@ learnRoutes.post("/diagnostic/resume", async (c) => {
 
 learnRoutes.post("/diagnostic/respond", async (c) => {
   const db = getDb(c.env.DB);
-  const diagnostic = createDiagnosticService(db);
+  const diagnostic = createDiagnosticService(db, c.env.CONTENT);
   const { sessionId, answer } = await c.req.json<{ sessionId: string; answer: string }>();
 
   if (!sessionId || answer == null) return c.json({ error: "sessionId and answer required" }, 400);
@@ -118,7 +118,7 @@ learnRoutes.post("/diagnostic/respond", async (c) => {
 
 learnRoutes.get("/diagnostic/result/:id", async (c) => {
   const db = getDb(c.env.DB);
-  const diagnostic = createDiagnosticService(db);
+  const diagnostic = createDiagnosticService(db, c.env.CONTENT);
   const result = await diagnostic.getResult(c.req.param("id"));
   if (!result) return c.json({ error: "Diagnostic not found or not completed" }, 404);
   return c.json(result);
