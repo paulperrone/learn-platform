@@ -229,7 +229,7 @@ At the strand-expansion level, we add topics within strands. This phase adds the
    - Sessions-to-mastery for strong/average/weak profiles
    - FIRe compression with higher encompassing density
    - Review/new balance at L2
-3. [ ] [VAL] Atomicity audit: `just atomicity-audit` — LLM-based topic granularity analysis
+3. [ ] [VAL] Atomicity audit: `/atomicity-audit` — Claude Code assesses each topic against 5 split heuristics
    - Run full audit, persist results to `docs/audits/`
    - Review split/merge recommendations
    - Act on high-confidence recommendations (optional — can defer to future plan)

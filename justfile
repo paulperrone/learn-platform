@@ -65,9 +65,9 @@ content-gaps *args:
 content-report *args:
     npx tsx tools/content-report.ts {{args}}
 
-# Atomicity audit (LLM-based topic granularity analysis)
-atomicity-audit *args:
-    npx tsx tools/atomicity-audit.ts {{args}}
+# Atomicity audit context assembler (use /atomicity-audit command for full audit)
+atomicity-context *args:
+    npx tsx tools/atomicity-context.ts {{args}}
 
 # Visualize knowledge graph (default: math-foundations, or pass subject name)
 visualize subject="math":
