@@ -565,6 +565,8 @@ Keep a topic combined only when it is genuinely atomic for placement, instructio
 
 For mastery-gated disciplines, benchmark density against the strongest known external exemplars when available. For mathematics, Math Academy is the reference point. For ELA, CS, music technique, and similar domains, use the same skill-level principle even when no external ratio is available: the learner should be able to fail narrowly and be remediated narrowly.
 
+**Achieved values (math, 705 topics, post-021 expansion):** Prereq density 1.42/topic (slightly below 1.5 target — acceptable at scale; MA K-8 equivalent is ~2.0/topic). Encompassing density 1.01/topic (within 1.0-2.0 target). Max depth 30 (exceeds 10-15 target due to long K-8 chains). Problems/topic avg 23.6 (above 15 minimum).
+
 ### Recommended Graph Shape
 
 | Progression Model | Shape | Prereq Edges/Topic | Max Depth | Width Profile |

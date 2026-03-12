@@ -1,6 +1,6 @@
 {
   "level": "l2",
-  "generatedAt": "2026-03-12T21:34:53.334Z",
+  "generatedAt": "2026-03-12T22:25:37.955Z",
   "sessionCount": 30,
   "seed": 42,
   "systems": {
@@ -17,19 +17,19 @@
       "status": "PASS"
     },
     "review_new_balance": {
-      "actual": 0.5612244897959183,
+      "actual": 0.5725746545832714,
       "status": "PASS"
     },
     "interleaving": {
-      "actual": 0.15333627927529828,
+      "actual": 0.16468166446110866,
       "status": "FAIL"
     },
     "fire_compression": {
-      "actual": -0.17172875568219745,
+      "actual": -0.1690325378697005,
       "status": "WARN"
     },
     "remediation_routing": {
-      "actual": 1913,
+      "actual": 2003,
       "status": "PASS"
     },
     "presentation_drift": {
@@ -41,7 +41,7 @@
       "status": "FAIL"
     },
     "cognitive_demand_entropy": {
-      "actual": 1.6418474766403053,
+      "actual": 1.5903840741454311,
       "status": "PASS"
     }
   },
@@ -49,78 +49,78 @@
   "behavioralMatchCount": 5,
   "l3Metrics": {
     "masteryPlateauSession": 7,
-    "masteryPlateauPercent": 0.344,
+    "masteryPlateauPercent": 0.327,
     "reviewsPerSessionFinalThird": 4.8,
     "reviewsPerSessionFirstThird": 3.2,
     "reviewScalingTrend": "increasing",
-    "difficultyTargetingStabilityFinalThird": 0.826,
+    "difficultyTargetingStabilityFinalThird": 0.825,
     "perProfile": {
       "weekend-warrior": {
-        "finalMastery": 0.2474820143884892,
+        "finalMastery": 0.22695035460992907,
         "plateauSession": 6,
         "reviewTrend": "increasing",
         "reviewsFirstThird": 2.7,
-        "reviewsFinalThird": 5.9,
-        "finalAccuracy": 0.817
+        "reviewsFinalThird": 5.4,
+        "finalAccuracy": 0.798
       },
       "underconfident": {
-        "finalMastery": 0.1669064748201439,
+        "finalMastery": 0.16879432624113475,
         "plateauSession": 6,
         "reviewTrend": "increasing",
-        "reviewsFirstThird": 2.8,
-        "reviewsFinalThird": 6.3,
-        "finalAccuracy": 0.748
+        "reviewsFirstThird": 2.3,
+        "reviewsFinalThird": 5.6,
+        "finalAccuracy": 0.758
       },
       "strong-young": {
-        "finalMastery": 0.1510791366906475,
+        "finalMastery": 0.15177304964539007,
         "plateauSession": 6,
         "reviewTrend": "increasing",
-        "reviewsFirstThird": 2.8,
-        "reviewsFinalThird": 5.3,
-        "finalAccuracy": 0.782
+        "reviewsFirstThird": 2.9,
+        "reviewsFinalThird": 6.9,
+        "finalAccuracy": 0.811
       },
       "strong-older": {
-        "finalMastery": 0.981294964028777,
+        "finalMastery": 0.902127659574468,
         "plateauSession": 6,
         "reviewTrend": "increasing",
         "reviewsFirstThird": 2,
-        "reviewsFinalThird": 3.8,
-        "finalAccuracy": 0.955
+        "reviewsFinalThird": 2.9,
+        "finalAccuracy": 0.919
       },
       "strong-highschool": {
-        "finalMastery": 0.9784172661870504,
+        "finalMastery": 0.8822695035460993,
         "plateauSession": 6,
         "reviewTrend": "stable",
         "reviewsFirstThird": 2.4,
-        "reviewsFinalThird": 2.2,
-        "finalAccuracy": 0.919
+        "reviewsFinalThird": 2.6,
+        "finalAccuracy": 0.936
       },
       "returning-after-gap": {
-        "finalMastery": 0.25323741007194245,
+        "finalMastery": 0.23546099290780143,
         "plateauSession": 6,
         "reviewTrend": "increasing",
         "reviewsFirstThird": 2.7,
-        "reviewsFinalThird": 4.9,
-        "finalAccuracy": 0.858
+        "reviewsFinalThird": 5.2,
+        "finalAccuracy": 0.782
       },
       "overconfident": {
-        "finalMastery": 0.11942446043165468,
+        "finalMastery": 0.10638297872340426,
         "plateauSession": 6,
         "reviewTrend": "stable",
         "reviewsFirstThird": 5.6,
-        "reviewsFinalThird": 6.1,
-        "finalAccuracy": 0.827
+        "reviewsFinalThird": 6,
+        "finalAccuracy": 0.817
       },
       "multi-strong-math-weak-ela": {
-        "finalMastery": 0.23157894736842105,
+        "finalMastery": 0.22207792207792207,
         "plateauSession": 6,
         "reviewTrend": "increasing",
         "reviewsFirstThird": 3.1,
-        "reviewsFinalThird": 4.2,
-        "finalAccuracy": 0.798
+        "reviewsFinalThird": 4.4,
+        "finalAccuracy": 0.766
       },
       "multi-misconception": {
-        "finalMastery": 0.16402877697841728,
+        "finalMastery": 0.16170212765957448,
         "plateauSession": 6,
         "reviewTrend": "increasing",
         "reviewsFirstThird": 2.9,
@@ -128,12 +128,12 @@
         "finalAccuracy": 0.902
       },
       "multi-math-strong": {
-        "finalMastery": 0.7971223021582734,
+        "finalMastery": 0.7617021276595745,
         "plateauSession": 6,
         "reviewTrend": "increasing",
         "reviewsFirstThird": 2,
         "reviewsFinalThird": 2.4,
-        "finalAccuracy": 0.928
+        "finalAccuracy": 0.931
       },
       "multi-history-focus": {
         "finalMastery": 0.6105263157894737,
@@ -144,108 +144,108 @@
         "finalAccuracy": 0.739
       },
       "multi-average": {
-        "finalMastery": 0.18157894736842106,
+        "finalMastery": 0.18961038961038962,
         "plateauSession": 6,
         "reviewTrend": "increasing",
         "reviewsFirstThird": 2.7,
-        "reviewsFinalThird": 4.1,
-        "finalAccuracy": 0.921
+        "reviewsFinalThird": 3.9,
+        "finalAccuracy": 0.898
       },
       "multi-all-disciplines": {
-        "finalMastery": 0.2481012658227848,
+        "finalMastery": 0.25375,
         "plateauSession": 6,
         "reviewTrend": "stable",
         "reviewsFirstThird": 4.6,
-        "reviewsFinalThird": 4.7,
-        "finalAccuracy": 0.919
+        "reviewsFinalThird": 4.6,
+        "finalAccuracy": 0.848
       },
       "misconception-fractions": {
-        "finalMastery": 0.22302158273381295,
+        "finalMastery": 0.20567375886524822,
         "plateauSession": 6,
-        "reviewTrend": "stable",
+        "reviewTrend": "increasing",
         "reviewsFirstThird": 3.1,
-        "reviewsFinalThird": 3.6,
-        "finalAccuracy": 0.936
+        "reviewsFinalThird": 4.8,
+        "finalAccuracy": 0.931
       },
       "irregular-attendance": {
-        "finalMastery": 0.2302158273381295,
+        "finalMastery": 0.22411347517730495,
         "plateauSession": 6,
         "reviewTrend": "increasing",
         "reviewsFirstThird": 3,
-        "reviewsFinalThird": 5,
-        "finalAccuracy": 0.728
+        "reviewsFinalThird": 4.3,
+        "finalAccuracy": 0.724
       },
       "gifted-middle": {
-        "finalMastery": 0.9798561151079137,
+        "finalMastery": 0.9319148936170213,
         "plateauSession": 6,
-        "reviewTrend": "stable",
-        "reviewsFirstThird": 2.2,
-        "reviewsFinalThird": 2.4,
-        "finalAccuracy": 0.953
+        "reviewTrend": "increasing",
+        "reviewsFirstThird": 2.1,
+        "reviewsFinalThird": 2.6,
+        "finalAccuracy": 0.946
       },
       "fast-learner-older": {
-        "finalMastery": 0.25467625899280577,
-        "plateauSession": 6,
-        "reviewTrend": "increasing",
-        "reviewsFirstThird": 2.8,
-        "reviewsFinalThird": 4.6,
-        "finalAccuracy": 0.809
-      },
-      "fast-learner": {
-        "finalMastery": 0.1697841726618705,
-        "plateauSession": 6,
-        "reviewTrend": "stable",
-        "reviewsFirstThird": 5.6,
-        "reviewsFinalThird": 5.7,
-        "finalAccuracy": 0.805
-      },
-      "fading-motivation": {
-        "finalMastery": 0.1669064748201439,
-        "plateauSession": 6,
-        "reviewTrend": "increasing",
-        "reviewsFirstThird": 3.4,
-        "reviewsFinalThird": 5.4,
-        "finalAccuracy": 0.797
-      },
-      "completion-driven": {
-        "finalMastery": 0.2633093525179856,
+        "finalMastery": 0.2397163120567376,
         "plateauSession": 6,
         "reviewTrend": "increasing",
         "reviewsFirstThird": 2.8,
         "reviewsFinalThird": 5.8,
-        "finalAccuracy": 0.764
+        "finalAccuracy": 0.813
       },
-      "binge-learner": {
-        "finalMastery": 0.23597122302158274,
+      "fast-learner": {
+        "finalMastery": 0.14326241134751774,
+        "plateauSession": 6,
+        "reviewTrend": "stable",
+        "reviewsFirstThird": 5.6,
+        "reviewsFinalThird": 5.6,
+        "finalAccuracy": 0.84
+      },
+      "fading-motivation": {
+        "finalMastery": 0.1673758865248227,
         "plateauSession": 6,
         "reviewTrend": "increasing",
-        "reviewsFirstThird": 2.9,
-        "reviewsFinalThird": 4.8,
-        "finalAccuracy": 0.727
+        "reviewsFirstThird": 3.4,
+        "reviewsFinalThird": 5.6,
+        "finalAccuracy": 0.863
+      },
+      "completion-driven": {
+        "finalMastery": 0.24397163120567375,
+        "plateauSession": 6,
+        "reviewTrend": "increasing",
+        "reviewsFirstThird": 2.8,
+        "reviewsFinalThird": 6,
+        "finalAccuracy": 0.774
+      },
+      "binge-learner": {
+        "finalMastery": 0.22411347517730495,
+        "plateauSession": 6,
+        "reviewTrend": "increasing",
+        "reviewsFirstThird": 3.1,
+        "reviewsFinalThird": 5.4,
+        "finalAccuracy": 0.676
       },
       "average-young": {
-        "finalMastery": 0.10503597122302158,
-        "plateauSession": 22,
+        "finalMastery": 0.1049645390070922,
+        "plateauSession": 27,
         "reviewTrend": "stable",
         "reviewsFirstThird": 4.7,
-        "reviewsFinalThird": 4.2,
-        "finalAccuracy": 0.644
+        "reviewsFinalThird": 4.7,
+        "finalAccuracy": 0.648
       },
       "average-undergraduate": {
-        "finalMastery": 0.23597122302158274,
+        "finalMastery": 0.22836879432624113,
         "plateauSession": 6,
         "reviewTrend": "increasing",
         "reviewsFirstThird": 3,
-        "reviewsFinalThird": 6.1,
-        "finalAccuracy": 0.735
+        "reviewsFinalThird": 4.2,
+        "finalAccuracy": 0.85
       },
       "average-older": {
-        "finalMastery": 0.26187050359712233,
+        "finalMastery": 0.2524822695035461,
         "plateauSession": 6,
         "reviewTrend": "increasing",
         "reviewsFirstThird": 2.9,
-        "reviewsFinalThird": 6.2,
-        "finalAccuracy": 0.822
+        "reviewsFinalThird": 5.6,
+        "finalAccuracy": 0.843
       }
     }
   }

@@ -941,3 +941,25 @@ The `prerequisites` table has `strength REAL NOT NULL DEFAULT 1.0` and `encompas
 After Phases 1-4 (Waves 1-3), encompassing density was 0.48/topic (333 edges / 695 topics) — far below the 1.0-2.0 target. The expansion map's encompassing sections only specified direct capstone-to-split edges (e.g., "add-subtract-fractions encompasses add-fractions-like-denom"). Systematic within-strand hierarchy (advanced topics encompassing their procedural prerequisites) was never added. This means FIRe credit barely fired in practice — only for the specific splits mentioned in the expansion map.
 
 **Context:** Phase 5 added 378 new encompassing edges through 5 systematic rounds, pushing density from 0.48 to 1.01/topic. For future content expansion waves, include systematic encompassing passes as part of the wave (not deferred to a gap-fill phase).
+
+---
+
+### 2026-03-12: Grade-band collection membership goes stale after gap-fill phases
+
+**Source:** User session — Plan 021 Phase 6
+**Area:** Content pipeline / collections
+
+Grade-band collections (math-k-2, math-3-5, math-6-8) are not auto-updated when new topics are added. After Phase 5 gap-fill added 10 bridge topics and 6 grade-5 exponent topics, the collections were missing those entries. Found in Phase 6: math-3-5 was missing 6 exponent topics; math-6-8 was missing 10 gap-fill topics and had 6 grade-5 topics incorrectly included. Fix: after any wave that adds topics, rebuild collection membership from grade-level assignments in graph.json. The validator doesn't catch this (collections are optional packaging views, not structural).
+
+**Context:** Run after every content wave: `python3 -c "rebuild grade-band collections from gradeLevel field"` or add to post-wave checklist.
+
+---
+
+### 2026-03-12: Atomicity audit at 705-topic scale — expected merge rate and dominant patterns
+
+**Source:** User session — Plan 021 Phase 6
+**Area:** Content graph / atomicity
+
+At 705 topics (MA-comparable density), the atomicity audit found 27.9% "should-merge" (197 topics). This is expected — the Wave 1-3 expansion deliberately added fine-grained sub-skill topics (slope-from-graph, slope-from-table, calculate-slope; add-fractions-like-denom, subtract-fractions-like-denom separately). The dominant merge pattern is **operation sub-splits**: separate add/subtract variants of the same operation already covered by a combined parent. Secondary patterns: skip-counting sub-topics (count-by-2s/5s/10s), fluency variants (fluent-level topics duplicate base topics), and statistics individual measures (mean, median, mode duplicating measures-of-center). Only 2.4% should-split. At this density, over-granularity is the more common failure mode, not under-granularity.
+
+**Context:** Audit results in `docs/audits/atomicity-latest.json`. Merges deferred to Plan 022 (post-expansion validation).

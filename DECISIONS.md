@@ -1632,3 +1632,37 @@ Tag each target in `targets.json` with `signal_source: "engine" | "content" | "b
 **Alternatives rejected:**
 - Adding more within-strand topics (wave count already at MA-comparable density)
 - Adding review/drill topics (not independently testable)
+
+---
+
+## 2026-03-12: Plan 021 Complete — Math Expansion 207 → 705 Topics, Formally Unblocking Plan 019
+
+**Source:** Plan 021 Phase 6 — Final Rebaseline
+
+**Decision:** Accept the 705-topic math graph as the expanded baseline. Formally unblock Plan 019 Phases 4.5B-6 (simulation/engine tuning on the expanded graph).
+
+**Final state:**
+
+| Metric | Pre-021 | Post-021 | MA K-8 |
+|--------|---------|----------|--------|
+| Total topics | 207 | 705 | 693 |
+| Prereq edges | 321 | 1001 | ~1400 (K-8 subset) |
+| Prereq density | 1.55/topic | 1.42/topic | ~2.0/topic |
+| Encompassing edges | 90 | 711 | N/A |
+| Encomp density | 0.43/topic | 1.01/topic | N/A |
+| Strands | 14 | 18 | ~27 units |
+| Collections | 3 grade-band | 21 (3 grade-band + 18 strand) | N/A |
+
+**L2 evaluation (30 sessions):** 6P/1W/3F (vs 9P/1W/0F pre-expansion)
+- P0 Mastery Convergence: FAIL (3/11) — expected at 3.4x graph scale; target was calibrated for 207 topics
+- P1 Interleaving Quality: FAIL (0.165) — more strands create more adjacent same-strand topics
+- P2 Diagnostic Placement: FAIL (23/24) — marginal, denser graph makes binary search harder
+- No P0 regressions beyond scaling — preservation, remediation, difficulty targeting all PASS
+- Target recalibration deferred to Plan 022
+
+**MA comparison:** 102% coverage of genuine K-8 topics (705 vs 693). Remaining gaps in equations/inequalities (MA 79 vs our 55), ratios (MA 75 vs our 47), exponents (MA 67 vs our 35), polynomials (MA 48 vs our 20). These reflect MA including some HS-bridge content in K-8 courses.
+
+**What this unblocks:**
+- Plan 019 Phases 4.5B-6: simulation/engine tuning can now run on the full-density graph
+- Plan 022: post-expansion validation (target recalibration, content quality remediation)
+- Future content expansion: history/ELA disciplines can follow the same strand-by-strand methodology

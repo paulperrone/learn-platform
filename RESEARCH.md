@@ -666,3 +666,18 @@ Math Academy's approach: topics stay in SRS with growing intervals. FIRe credit 
 - If credit helps at L3: the short-horizon penalty is acceptable — recalibrate L2 target accordingly
 
 **Status:** Complete. Results in `simulations/reports/fire-isolation.json`. Phase 5.5 will use L3/L4/L5 data to make implementation decision.
+
+---
+
+### 2026-03-12: MA K-8 Genuine Topic Count Methodology
+
+**Source:** User session — Plan 021 Phase 6
+
+**Context:** Plan 021 uses Math Academy K-8 as a density benchmark. We needed to know how many topics MA actually has in genuine K-8 content vs. HS content embedded in their "Foundations" courses.
+
+**Discovery:**
+MA's graph JSON (`~/source/mathacademy-graph/export/graph.json`) has 3688 total topics and 5622 edges. The `courses` field on each node is a list of objects with `course_name` and `unit_name`. Filtering by K-8 course names alone gives 1277 topics — but ~584 of those are HS-level units (Trigonometry: 104, Linear Algebra: 74, Differentiation: 57, Integration: 59, Conic Sections: 54, etc.) that MA includes in their "Foundations" curriculum for accelerated learners. Filtering to exclude those HS units yields **693 genuine K-8 topics** — matching our 705-topic expanded graph at 102% coverage.
+
+**HS units to exclude from K-8 courses:** Trigonometry, Linear Algebra, Integration Techniques, Differentiation, Conic Sections, Vectors, Limits & Continuity, Contextual Applications of Calculus, Definite Integrals, Quadratics, Complex Numbers, Exponentials & Logarithms, Introduction to Calculus, Parametric & Polar Coordinates, Radical & Rational Functions, Exponential Functions, Differential Equations, Radical & Rational Expressions, Sequences and Series, Probability & Combinatorics, Finite Series, Number Systems, Absolute Value, Inequalities.
+
+**Remaining gaps vs. genuine MA K-8:** Equations & Inequalities (MA 79 vs our 55), Ratios & Percentages (MA 75 vs our 47), Exponents & Radicals (MA 67 vs our 35), Polynomials (MA 48 vs our 20) — MA includes some HS-bridge content in these units even after filtering.
