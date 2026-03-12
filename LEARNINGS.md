@@ -955,6 +955,17 @@ Grade-band collections (math-k-2, math-3-5, math-6-8) are not auto-updated when 
 
 ---
 
+### 2026-03-12: problems-generated has 207 files but only 143 have procedural generators
+
+**Source:** User session — Plan 022 Phase 1
+**Area:** Content pipeline / problem generation
+
+The `problems-generated/` directory has 207 files (one per topic with < 15 hand-authored problems), but `generatorRegistry` only covers 143 topics. The remaining 64 files are hand-authored problems placed in `problems-generated/` for complex/conceptual topics that don't have procedural generators (word problems, qualitative graphs, bar-graph reading, etc.). These 64 topics have 15 problems each; the 143 with generators have 50. When `generate-bundles.ts` or `FileContentBucket` merges `problems/` + `problems-generated/`, effective counts are 20–65 per topic (avg 23.6 across all 705 math topics). Running `just generate-problems` regenerates the 143 covered topics but leaves the 64 hand-authored ones untouched.
+
+**Context:** Relevant when auditing coverage or adding new generators. The generator registry is the authoritative list of procedurally generated topics; `problems-generated/` may also contain hand-authored content for complex topics.
+
+---
+
 ### 2026-03-12: Atomicity audit at 705-topic scale — expected merge rate and dominant patterns
 
 **Source:** User session — Plan 021 Phase 6
