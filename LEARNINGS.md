@@ -919,3 +919,25 @@ When migrating content service from D1 to R2, making R2Bucket optional in factor
 When seeding content into R2 for tests, the `disciplineId` used in `seedAssessmentContent(topicId, { disciplineId: "x" })` determines the R2 key path (`x/{topicId}/problems.json`). If the test creates a topic under discipline "disc-foo" but seeds content with the default `disciplineId: "math"`, the content service can't find it because it looks at `disc-foo/{topicId}/problems.json`. Always pass the matching `disciplineId` override to seed helpers. This caused 47 test failures during the Phase 3 D1→R2 migration.
 
 **Context:** Applies whenever adding new tests that seed content, or when creating topics under non-default disciplines.
+
+---
+
+### 2026-03-12: graph.json prerequisites and encompassings require `strength` and `weight` fields
+
+**Source:** User session — Plan 021 Phase 5
+**Area:** Content pipeline / graph import
+
+The `prerequisites` table has `strength REAL NOT NULL DEFAULT 1.0` and `encompassings` has `weight REAL NOT NULL DEFAULT 1.0`. The D1 default saves you if you insert via raw SQL, but the import tool (`import-content.ts`) passes `p.strength` and `e.weight` directly — no fallback. When adding edges programmatically (e.g., via Python scripts), always include `"strength": 1.0` in prereq objects and `"weight": 0.5` in encompassing objects, or the import will fail with `SQLITE_CONSTRAINT_NOTNULL`.
+
+**Context:** Hit this when adding 24 new prerequisite edges and 378 new encompassing edges in Phase 5 gap-fill. Fixed by patching all missing fields before import.
+
+---
+
+### 2026-03-12: Expansion map encompassing specs were capstone-to-split only — systematic hierarchy coverage was missing
+
+**Source:** User session — Plan 021 Phase 5
+**Area:** Content graph / FIRe credit
+
+After Phases 1-4 (Waves 1-3), encompassing density was 0.48/topic (333 edges / 695 topics) — far below the 1.0-2.0 target. The expansion map's encompassing sections only specified direct capstone-to-split edges (e.g., "add-subtract-fractions encompasses add-fractions-like-denom"). Systematic within-strand hierarchy (advanced topics encompassing their procedural prerequisites) was never added. This means FIRe credit barely fired in practice — only for the specific splits mentioned in the expansion map.
+
+**Context:** Phase 5 added 378 new encompassing edges through 5 systematic rounds, pushing density from 0.48 to 1.01/topic. For future content expansion waves, include systematic encompassing passes as part of the wave (not deferred to a gap-fill phase).

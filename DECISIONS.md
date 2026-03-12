@@ -1612,3 +1612,23 @@ Tag each target in `targets.json` with `signal_source: "engine" | "content" | "b
 - Import pipeline: graph-only D1 import + separate R2 bundle upload
 
 **Paused plans:** 021 (math topic expansion) and 022 (post-expansion validation) paused until R2 migration complete, so all future content is deployed via R2 bundles. No changes needed to learn-content JSON format.
+
+---
+
+## 2026-03-12: Phase 5 gap-fill — 10 bridge/synthesis topics added; expansion map fully covered
+
+**Source:** User session — Plan 021 Phase 5
+
+**Context:** Phase 5 planned to add "gap-fill topics from expansion map deferred list." Investigation showed all 488 expansion map topics were already in the graph after Waves 1-4. Gap-fill needed to mean NEW bridge topics.
+
+**Decision:** Added 10 bridge/synthesis topics targeting genuine gaps: `fraction-decimal-percent`, `arithmetic-sequences`, `geometric-sequences`, `two-variable-inequalities`, `permutations-intro`, `combinations-intro`, `unit-analysis`, `area-irregular-shapes`, `negative-number-applications`, `proportional-reasoning-synthesis`. Each has 15 problems + 2 worked examples.
+
+**Why:**
+- These topics sit at strand intersections and synthesize multiple prior skills — high pedagogical value
+- arithmetic-sequences and geometric-sequences bridge algebra-thinking ↔ linear-functions ↔ exponents-radicals
+- permutations-intro and combinations-intro complete K-8 counting coverage (missing from all prior waves)
+- fraction-decimal-percent synthesizes the three representation strands students frequently confuse
+
+**Alternatives rejected:**
+- Adding more within-strand topics (wave count already at MA-comparable density)
+- Adding review/drill topics (not independently testable)
