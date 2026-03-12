@@ -52,6 +52,7 @@ export async function resetDb() {
     "user_preferences",
     "assessment_content",
     "instructional_content",
+    "topic_content_versions",
     "encompassings",
     "prerequisites",
     "topics",
@@ -524,6 +525,9 @@ const SCHEMA_STATEMENTS = [
   'CREATE INDEX ac_type_idx ON assessment_content (topic_id, type)',
   'CREATE INDEX ac_depth_idx ON assessment_content (topic_id, content_depth)',
 
+  // topic_content_versions (FK → topics)
+  'CREATE TABLE topic_content_versions (topic_id text PRIMARY KEY NOT NULL, content_hash text NOT NULL, bundle_version integer DEFAULT 1 NOT NULL, problems_count integer DEFAULT 0 NOT NULL, examples_count integer DEFAULT 0 NOT NULL, generated_at text NOT NULL, uploaded_at text, FOREIGN KEY (topic_id) REFERENCES topics(id))',
+
   // prerequisites (FK → topics)
   'CREATE TABLE prerequisites (id integer PRIMARY KEY AUTOINCREMENT NOT NULL, from_topic_id text NOT NULL, to_topic_id text NOT NULL, strength real DEFAULT 1 NOT NULL, type text DEFAULT \'required\' NOT NULL, FOREIGN KEY (from_topic_id) REFERENCES topics(id), FOREIGN KEY (to_topic_id) REFERENCES topics(id))',
   'CREATE UNIQUE INDEX prereq_unique_idx ON prerequisites (from_topic_id, to_topic_id)',
@@ -547,7 +551,7 @@ const SCHEMA_STATEMENTS = [
   'CREATE INDEX utd_user_topic_idx ON user_topic_depth (user_id, topic_id)',
 
   // review_log (FK → users, topics)
-  'CREATE TABLE review_log (id text PRIMARY KEY NOT NULL, user_id text NOT NULL, topic_id text NOT NULL, assessment_content_id text, rating integer NOT NULL, confidence integer, correct integer NOT NULL, response_ms integer NOT NULL, phase text NOT NULL, hints_used integer, misconception integer, created_at text NOT NULL, FOREIGN KEY (user_id) REFERENCES users(id), FOREIGN KEY (topic_id) REFERENCES topics(id))',
+  'CREATE TABLE review_log (id text PRIMARY KEY NOT NULL, user_id text NOT NULL, topic_id text NOT NULL, assessment_content_id text, rating integer NOT NULL, confidence integer, correct integer NOT NULL, response_ms integer NOT NULL, phase text NOT NULL, hints_used integer, misconception integer, content_version text, created_at text NOT NULL, FOREIGN KEY (user_id) REFERENCES users(id), FOREIGN KEY (topic_id) REFERENCES topics(id))',
   'CREATE INDEX review_user_idx ON review_log (user_id)',
   'CREATE INDEX review_topic_idx ON review_log (topic_id)',
   'CREATE INDEX review_assessment_idx ON review_log (assessment_content_id)',

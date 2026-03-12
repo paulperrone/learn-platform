@@ -24,6 +24,14 @@ database_name = "learn-db"
 database_id = "local"
 migrations_dir = "packages/api/src/db/migrations"
 
+[[r2_buckets]]
+binding = "CONTENT"
+bucket_name = "learn-content"
+
+[[analytics_engine_datasets]]
+binding = "ANALYTICS"
+dataset = "learn-analytics"
+
 # ── WAF / Abuse Protection ──────────────────────────
 # Cloudflare WAF rules are configured in the dashboard, not in wrangler.toml.
 # Recommended rules for production (dash.cloudflare.com > Security > WAF):
@@ -62,3 +70,11 @@ binding = "DB"
 database_name = "learn-db"
 database_id = "ba02fdb9-6c56-4722-89d6-f07eccd44479"
 migrations_dir = "packages/api/src/db/migrations"
+
+[[env.production.r2_buckets]]
+binding = "CONTENT"
+bucket_name = "learn-content"
+
+[[env.production.analytics_engine_datasets]]
+binding = "ANALYTICS"
+dataset = "learn-analytics"

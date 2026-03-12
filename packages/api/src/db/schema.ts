@@ -94,6 +94,16 @@ export const assessmentContent = sqliteTable("assessment_content", {
   index("ac_depth_idx").on(table.topicId, table.contentDepth),
 ]);
 
+export const topicContentVersions = sqliteTable("topic_content_versions", {
+  topicId: text("topic_id").primaryKey().references(() => topics.id),
+  contentHash: text("content_hash").notNull(),
+  bundleVersion: integer("bundle_version").notNull().default(1),
+  problemsCount: integer("problems_count").notNull().default(0),
+  examplesCount: integer("examples_count").notNull().default(0),
+  generatedAt: text("generated_at").notNull(),
+  uploadedAt: text("uploaded_at"),
+});
+
 export const prerequisites = sqliteTable("prerequisites", {
   id: integer("id").primaryKey({ autoIncrement: true }),
   fromTopicId: text("from_topic_id").notNull().references(() => topics.id),
@@ -262,6 +272,7 @@ export const reviewLog = sqliteTable("review_log", {
   phase: text("phase").notNull(), // SessionPhase
   hintsUsed: integer("hints_used"),
   misconception: integer("misconception", { mode: "boolean" }),
+  contentVersion: text("content_version"),
   createdAt: text("created_at").notNull().$defaultFn(() => new Date().toISOString()),
 }, (table) => [
   index("review_user_idx").on(table.userId),

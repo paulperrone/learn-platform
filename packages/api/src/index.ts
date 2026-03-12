@@ -22,6 +22,8 @@ import { activityRoutes } from "./routes/activity.js";
 export type Env = {
   Bindings: {
     DB: D1Database;
+    CONTENT?: R2Bucket;
+    ANALYTICS?: AnalyticsEngineDataset;
     AI?: Ai;
     BETTER_AUTH_SECRET: string;
     BETTER_AUTH_URL: string;
