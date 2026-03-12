@@ -24,7 +24,7 @@ After Plan 021 expands the math graph from 207 to ~800-1000 atomic skill topics,
 **Completed:** None yet
 **In Progress:** —
 **Next:** Phase 1 (after Plan 021 completion)
-**Status:** ⏸ PAUSED — Blocked on Plan 021 (paused for Plan 023 R2 migration). Analytics Engine instrumentation from Plan 023 will enhance evaluation capability when this plan resumes.
+**Status:** ⏸ PAUSED — Blocked on Plan 021. Plan 023 (R2 migration) is complete — Analytics Engine instrumentation and content version correlation are now available for evaluation phases.
 
 ---
 
@@ -43,13 +43,15 @@ After Plan 021 expands the math graph from 207 to ~800-1000 atomic skill topics,
 3. [ ] [IMP] Run generators for all covered topics:
    - Target: 20 generated problems per topic (easy/medium/hard distribution)
    - Verify output in `content/math/problems-generated/`
-4. [ ] [IMP] Merge generated problems into import pipeline:
-   - Update `import-content.ts` to load both `problems/*.json` (hand-authored) and `problems-generated/*.json` (procedural)
+4. [ ] [IMP] Verify generated problems merge into content pipeline:
+   - `FileContentBucket` already merges `problems/` and `problems-generated/` directories (implemented in Plan 023)
+   - `generate-bundles.ts` also merges both directories when building R2 bundles
    - Tag generated problems with `source: "generated"`
    - Hand-authored problems take priority when duplicates exist
 5. [ ] [VAL] Validate and import expanded problem sets:
    - `just validate-content` — all generated problems pass validation
-   - `just import-content` — load into local D1
+   - `just import-content` — graph structure loads cleanly
+   - Local testing uses `FileContentBucket` (reads directly from learn-content filesystem)
    - Verify: average problems per topic ≥ 15
 6. [ ] [VAL] Quick L2 sanity check:
    - `just evaluate-l2` with expanded problems
@@ -57,6 +59,8 @@ After Plan 021 expands the math graph from 207 to ~800-1000 atomic skill topics,
    - Check per-topic engagement depth increased
 
 **Validation:** Average problems per math topic ≥ 15. `just validate-content` passes. L2 evaluation shows no regressions. Generated problems properly tagged with `source: "generated"`.
+
+> **Post-023 note:** Content is now served from R2 bundles (production) or `FileContentBucket` (simulations/local dev). The `assessment_content` and `instructional_content` D1 tables no longer exist. `generate-bundles.ts` and `FileContentBucket` both merge `problems/` + `problems-generated/` directories automatically. `review_log` now has a `content_version` column for version correlation. Analytics Engine records rich per-problem events (accuracy, response time, hints, cognitive demand, content version) — available for content effectiveness analysis in later phases.
 
 ---
 
@@ -73,6 +77,7 @@ After Plan 021 expands the math graph from 207 to ~800-1000 atomic skill topics,
    - Final mastery %: before (77%) vs after (expect lower — 4x more topics)
    - Review/New Balance: before (0.86 FAIL) vs after (expect improvement — far more new content)
    - Topics introduced per session in sessions 30-90: before (0 for strong) vs after (should still be > 0)
+   - Content version correlation: use `review_log.content_version` to track which bundle version problems came from
 3. [ ] [RSH] Content sufficiency assessment for L4/L5:
    - At the new progression rate, how many sessions until strong profiles exhaust all math content?
    - If plateau < 60 sessions: need more content before L4
@@ -152,6 +157,7 @@ After Plan 021 expands the math graph from 207 to ~800-1000 atomic skill topics,
    - L5 (360 sessions): from Phase 3 results
    - Cross-reference with Plan 019 Phase 2.7 isolation data
    - Is efficiency trending positive? At what session count does it cross 0%?
+   - If production data exists: query Analytics Engine for per-problem accuracy/response-time by content version to supplement simulation data
 2. [ ] [IMP/RSH] Based on decision framework, implement changes if warranted
 3. [ ] [VAL] Run `just evaluate` at L2 and L3 with new implementation (if changed):
    - Compare FIRe efficiency before and after

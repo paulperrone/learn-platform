@@ -96,7 +96,7 @@ Targets calibrated against MA unit sizes, adjusted for our K-8 scope (excluding 
 **Completed:** Phase 1 ✓, Phase 2 ✓, Phase 3 ✓ (L2: 6P/1W/3F — expected regression from 2.2x graph expansion)
 **In Progress:** —
 **Next:** Phase 4
-**Status:** ⏸ PAUSED — Waiting on Plan 023 (R2 Content Architecture). Content generation resumes after R2 migration so all new content is deployed via R2 bundles. No changes needed to learn-content JSON format — bundles are a deploy artifact.
+**Status:** ▶ READY — Plan 023 (R2 Content Architecture) complete. Content generation continues writing to learn-content JSON files as before. Deploy pipeline now bundles to R2 (`just deploy-content`). Local dev/simulations use `FileContentBucket` (reads learn-content directly — no bundle upload needed for testing).
 
 ---
 
@@ -192,11 +192,13 @@ This is the largest wave — 8 strands, ~235 new topics. Expressions-equations a
 4. [ ] [IMP] Generate worked examples for new topics: 2 per topic
 5. [ ] [IMP] Update collection membership for `math-6-8`
 6. [ ] [VAL] Run `just validate-content` — 0 errors
-7. [ ] [VAL] Run `just import-content` — ~700 topics loaded
+7. [ ] [VAL] Run `just import-content` — ~700 topics loaded (graph-only import; content served from learn-content filesystem via `FileContentBucket` for local dev/simulations)
 8. [ ] [VAL] L2 rebaseline: `just evaluate-l2`
 9. [ ] [DOC] Record L2 comparison
 
 **Validation:** Math graph has ~700 topics. L2 results: no P0 regressions. 6-8 strand density within guardrail range.
+
+> **Post-023 note:** `just import-content` now imports graph structure only (topics, edges, collections) to D1. Content (problems, examples) is served from R2 bundles in production or read directly from learn-content filesystem in simulations/local dev via `FileContentBucket`. No changes to content authoring workflow — still write JSON files to `../learn-content/math/problems/` and `examples/`.
 
 ---
 
@@ -216,6 +218,7 @@ At the strand-expansion level, we add topics within strands. This phase adds the
    - Encompassing density: 1.0-2.0 edges/topic
    - Every mature strand has at least one capstone with encompassing children
 8. [ ] [VAL] Run `just validate-content` — 0 errors, DAG valid (no cycles from new cross-strand edges)
+9. [ ] [VAL] Run `just import-content` — graph structure loads cleanly
 
 **Validation:** Edge density within guardrail ranges. No cycles. Every strand has capstone coverage. Gap topics addressed.
 
@@ -248,5 +251,6 @@ At the strand-expansion level, we add topics within strands. This phase adds the
    - Flag any remaining coverage gaps for future expansion
 8. [ ] [DOC] Update CLAUDE.md: new topic counts, density expectations, strand list, MA reference
 9. [ ] [DOC] Update `docs/content-system.md`: revise density targets based on what we actually achieved
+10. [ ] [VAL] Deploy expanded content: `just deploy-content` — verify R2 bundles generated for all ~800-1000 topics
 
-**Validation:** L2 maintains 9P/1W/0F or better. Final topic count in 800-1000 range. Atomicity audit persisted. MA comparison documented. Plan 019 formally unblocked.
+**Validation:** L2 maintains 9P/1W/0F or better. Final topic count in 800-1000 range. Atomicity audit persisted. MA comparison documented. Plan 019 formally unblocked. R2 bundles deployed for all topics.
