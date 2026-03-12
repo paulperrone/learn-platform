@@ -859,7 +859,7 @@ Query `review_log` and `user_topic_state` to identify topics that need attention
 | **Confidence miscalibration: overconfident-wrong** | `review_log.confidence` vs `review_log.correct` | High confidence (4-5) + incorrect > 25% of attempts | Students think they know it but don't — misleading instruction or ambiguous problems |
 | **Confidence miscalibration: underconfident-right** | `review_log.confidence` vs `review_log.correct` | Low confidence (1-2) + correct > 40% of attempts | Students know it but don't feel confident — instruction may not build understanding |
 | **Slow response times** | `review_log.responseMs` by `topicId` | Median > 2x the discipline average | Problems may be confusingly worded or require too many steps |
-| **Cognitive demand imbalance** | `review_log` joined with `assessment_content` | A topic has > 80% of one demand type | Missing variety — sessions feel repetitive on this topic |
+| **Cognitive demand imbalance** | Analytics Engine problem attempts (blob7 = cognitiveDemand) | A topic has > 80% of one demand type | Missing variety — sessions feel repetitive on this topic |
 
 #### Minimum Sample Size
 
@@ -943,9 +943,9 @@ Once the root cause is identified and the content JSON is edited:
    └── Confirms: DAG integrity, topic coverage, platform-medium constraints,
        no physical/verbal instructions, all topic IDs valid
 
-3. Import to local D1
+3. Import graph to local D1
    └── just import-content
-   └── Rebuilds the D1 read model from content files
+   └── Rebuilds graph structure (topics, edges, collections) in D1
 
 4. Verify locally
    └── just dev
@@ -982,7 +982,7 @@ just import-content
 git push origin main
 ```
 
-D1 is a disposable read model — `just import-content` always rebuilds from the content files in git. Reverting the git commit and reimporting is a clean rollback with no residual state.
+D1 graph structure is a disposable read model — `just import-content` always rebuilds from the content files in git. Content bundles in R2 are rebuilt by `just deploy-content`. Reverting the git commit and redeploying is a clean rollback with no residual state.
 
 ### Worked Example: Fixing a Low-Accuracy Topic
 
@@ -999,6 +999,6 @@ D1 is a disposable read model — `just import-content` always rebuilds from the
 1. Edit `content/math-foundations/problems/subtract-within-100.json` — rewrite problem #3 hint: "83 has 8 tens and 3 ones. You can't take 7 ones from 3 ones. What if you broke one of the tens into 10 ones?"
 2. Edit `content/math-foundations/examples/subtract-within-100.json` — add a worked example showing 2-digit minus 2-digit borrowing (e.g., 72 - 38).
 3. Run `just validate-content` — passes.
-4. Run `just import-content` — content updated.
+4. Run `just import-content` — graph updated. For production, also run `just deploy-content`.
 5. Commit: `fix(content): improve subtract-within-100 borrowing hint and add 2-digit borrowing example`
 6. After 30 new attempts, accuracy rises to 68% — within acceptable range.

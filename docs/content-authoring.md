@@ -20,10 +20,12 @@ The `/generate-content` command is the canonical workflow. It encodes discipline
 Content flows through this pipeline:
 
 ```
-Design graph → Author problems → Author examples → Validate → Import → Visualize
+Design graph → Author problems → Author examples → Validate → Import graph → Deploy bundles → Visualize
 ```
 
 All content authoring happens in **Claude Code sessions**. OpenRouter is reserved for runtime tutoring/grading only.
+
+Content JSON files in `learn-content` are the source of truth. The deploy pipeline bundles them into per-topic R2 content bundles (a deploy artifact — not a source format). D1 stores only graph structure (topics, edges, collections) + user state. See `docs/r2-content-architecture.md` for full architecture.
 
 ## Content Structure
 
@@ -37,7 +39,7 @@ Content lives in a separate repo: [`paulperrone/learn-content`](https://github.c
   problems-generated/     # Procedural generator output (math only)
 ```
 
-**Source of truth:** Files in `learn-content` repo. D1 is a disposable read model rebuilt by `just import-content`. Tooling resolves content via `CONTENT_DIR` env var (default: `../learn-content`).
+**Source of truth:** Files in `learn-content` repo. D1 stores graph structure only (rebuilt by `just import-content`). Content (problems, examples) is served from R2 bundles (deployed by `just deploy-content`). Tooling resolves content via `CONTENT_DIR` env var (default: `../learn-content`).
 
 ## Step 1: Design the Knowledge Graph
 
@@ -109,13 +111,18 @@ just content-gaps        # Ranked gap list by impact
 
 Fix all errors before import. Warnings are advisory.
 
-## Step 5: Import and Visualize
+## Step 5: Import, Deploy, and Visualize
 
 ```bash
-just import-content              # Load all subjects into local D1
+just import-content              # Import graph structure into local D1
+just generate-bundles            # Generate R2 content bundles (local staging)
+just deploy-content              # Deploy content: R2 bundles + D1 graph (production)
+just deploy-content-preview      # Deploy content to preview environment
 just visualize <subject>         # Interactive graph HTML
 just visualize                   # Default: math-foundations
 ```
+
+For local development, the content service uses a `FileContentBucket` that reads directly from learn-content JSON files — no R2 upload needed.
 
 ## Simulation Validation
 
@@ -150,3 +157,4 @@ npx tsx simulations/src/cli.ts average-older --subject math-foundations,math-mid
 5. Create simulation profiles with `subjects: ["<subject>"]` in `simulations/profiles/`
 6. Add profile expectations to `simulations/targets.json`
 7. Run `just validate-content && just import-content`
+8. Deploy: `just deploy-content` (bundles content to R2 + graph to D1)

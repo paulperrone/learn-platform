@@ -1584,3 +1584,31 @@ Tag each target in `targets.json` with `signal_source: "engine" | "content" | "b
 - Struggling profiles at 3-16% — expected, these are the hardest profiles
 
 **Decision:** Accept these results as the Wave 2 checkpoint. Mastery convergence target recalibration deferred to Plan 022 (Post-Expansion Validation). No engine changes needed — the regressions are measurement artifacts of a larger graph, not algorithm failures.
+
+---
+
+## 2026-03-12: Migrate content from D1 to R2 bundles + Analytics Engine
+
+**Source:** Plan 023 — R2 Content Architecture & Analytics Engine
+
+**Decision:** Move assessment content (problems) and instructional content (examples) out of D1 into versioned R2 content bundles (one per topic). D1 stays lean: graph structure (topics, prerequisites, encompassings, collections) + user state (FSRS, mastery, diagnostic). Add Cloudflare Analytics Engine for granular per-problem/per-example event tracking with content version correlation.
+
+**Reasoning:**
+- D1 had 17K assessment_content rows and 1.4K instructional_content rows of static JSON — read-heavy, rarely joined, and growing with each content expansion wave
+- R2 bundles are edge-cached (Cache API + ETag), reducing D1 read load and latency
+- Analytics Engine provides 90-day auto-expiring high-volume event storage (50+ events/session) with SQL-like aggregation — too much granularity for D1 but essential for content effectiveness analysis
+- Bundle format (per-topic `problems.json` + `examples.json` + `manifest.json`) naturally extends to media content (images, diagrams, audio, video)
+- `ContentBucket` abstraction lets simulations and local dev use filesystem adapter while production uses R2 — no miniflare R2 dependency for tests
+- Content JSON files in learn-content repo remain the source of truth; R2 bundles are a deploy artifact
+
+**What changed:**
+- New Cloudflare bindings: `CONTENT` (R2 bucket), `ANALYTICS` (Analytics Engine dataset)
+- New D1 table: `topic_content_versions` (content hash tracking)
+- New D1 column: `review_log.content_version` (version correlation)
+- Dropped D1 tables: `assessment_content`, `instructional_content`
+- New tools: `generate-bundles.ts`, `upload-bundles.ts`, `deploy-content.ts`
+- Content service rewired: R2 fetch → in-memory 7-tier fallback ranking (was SQL query)
+- Analytics service: fire-and-forget AE writes for problem attempts and example views
+- Import pipeline: graph-only D1 import + separate R2 bundle upload
+
+**Paused plans:** 021 (math topic expansion) and 022 (post-expansion validation) paused until R2 migration complete, so all future content is deployed via R2 bundles. No changes needed to learn-content JSON format.

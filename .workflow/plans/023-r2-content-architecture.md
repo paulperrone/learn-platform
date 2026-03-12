@@ -377,9 +377,9 @@ Both need to be added to dev, production, and preview environments.
 
 ## Progress
 
-**Completed:** Phase 1 ✓, Phase 2 ✓, Phase 3 ✓, Phase 4 ✓, Phase 5 ✓
+**Completed:** Phase 1 ✓, Phase 2 ✓, Phase 3 ✓, Phase 4 ✓, Phase 5 ✓, Phase 6 ✓
 **In Progress:** —
-**Next:** Phase 6
+**Next:** Plan complete. Plans 021/022 unblocked for resumption.
 
 ---
 
@@ -747,7 +747,7 @@ env.ANALYTICS.writeDataPoint({
 
 ---
 
-## Phase 6: Simulation Compatibility & Validation
+## Phase 6: Simulation Compatibility & Validation ✓
 **Goal:** Ensure the simulation system works with R2 content architecture, run full validation, update all documentation, prepare 021/022 for resumption.
 
 ### Context for Execution
@@ -782,20 +782,20 @@ Option 3 (hybrid) is cleanest — the content service takes an abstract content 
    - Regression passes with updated baseline
    - Behavioral differences expected (D1 → filesystem content pipeline)
 
-4. [ ] [DOC] Update CLAUDE.md:
+4. [x] [DOC] Update CLAUDE.md:
    - Update Structure section: R2 bucket, Analytics Engine binding
    - Update Commands: new deploy recipes, bundle generation
    - Update Conventions: content is in R2, not D1
    - Update Content Pipeline section: generate → bundle → upload flow
    - Add Architecture section reference to `docs/r2-content-architecture.md`
 
-5. [ ] [DOC] Update supporting docs:
+5. [x] [DOC] Update supporting docs:
    - `docs/content-authoring.md` — content generation still writes to learn-content, deploy bundles to R2
    - `docs/content-system.md` — update content storage model
    - `.claude/commands/generate-content.md` — no changes needed (generates to learn-content JSON)
    - `justfile` comments — update recipe descriptions
 
-6. [ ] [DOC] Prepare 021/022 for resumption:
+6. [x] [DOC] Prepare 021/022 for resumption:
    - Update Plan 021 progress section: "Paused at Phase 4 for R2 migration (Plan 023)"
    - Update Plan 022 progress section: "Blocked on 021; R2 migration (Plan 023) in progress"
    - Add note to both: "Content generation and validation now target R2 bundle format. No changes to learn-content JSON structure — bundles are a deploy artifact."

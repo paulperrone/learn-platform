@@ -14,6 +14,8 @@ Free, open mastery-learning platform with knowledge graph, spaced repetition (FS
 | SRS | ts-fsrs v5 |
 | LLM (runtime) | OpenRouter (model-agnostic) — tutoring/grading only |
 | Monorepo | pnpm workspaces |
+| Content Storage | R2 (content bundles) + D1 (graph structure) |
+| Analytics | Cloudflare Analytics Engine |
 | Deploy | Cloudflare Pages |
 
 ## Structure
@@ -22,14 +24,15 @@ Free, open mastery-learning platform with knowledge graph, spaced repetition (FS
 packages/
   api/src/           # Hono API (Workers entry point)
     routes/          # auth, graph, learn, review, progress, llm
-    services/        # graph, srs, session, llm (core logic)
+    services/        # graph, srs, session, llm, analytics, content-r2 (core logic)
     db/              # Drizzle schema + migrations
   web/src/           # Vue 3 frontend
     pages/           # index, learn, progress, explore
     components/      # ProblemView, WorkedExample, ConfidenceSlider
     composables/     # useApi
   shared/src/        # Shared TypeScript types
-tools/               # Content pipeline (validate, import, visualize)
+tools/               # Content pipeline (validate, import, bundle, deploy)
+docs/                # Architecture docs (r2-content-architecture.md, content-system.md, etc.)
 
 # Content lives in a separate repo: paulperrone/learn-content (sibling directory)
 # ../learn-content/
@@ -39,6 +42,12 @@ tools/               # Content pipeline (validate, import, visualize)
 #     problems/        # Problem banks (15 per topic)
 #     examples/        # Worked examples (2 per topic)
 #     collections/     # Collection definitions (grade bands, strands, tracks)
+
+# Cloudflare bindings:
+# DB       — D1 (graph structure, user state, SRS history)
+# CONTENT  — R2 bucket (content bundles: problems.json, examples.json per topic)
+# ANALYTICS — Analytics Engine (problem attempt + example view events)
+# AI       — Workers AI (Whisper STT)
 ```
 
 ## Commands
@@ -53,9 +62,10 @@ just validate         # Full validation (typecheck + content)
 just validate-content # Validate content only (graph DAG + problems + cross-discipline edges)
 just db-generate      # Generate Drizzle migration
 just db-migrate       # Apply migration to local D1
-just import-content   # Import ../learn-content/ → local D1
+just import-content   # Import ../learn-content/ graph → local D1 (graph structure only)
+just generate-bundles # Generate R2 content bundles from learn-content JSON
 just deploy           # Deploy API + web + content to production
-just deploy-content   # Deploy content only to production D1
+just deploy-content   # Deploy content: R2 bundles + D1 graph (production)
 just deploy-preview   # Deploy everything to preview
 ```
 
@@ -67,7 +77,9 @@ just deploy-preview   # Deploy everything to preview
 - `type` over `interface` unless extending
 - Strict TypeScript, no `any`
 - Services are factory functions: `createXService(db)` returning method objects
-- Content is pre-generated offline, validated, then imported — LLM at runtime is for tutoring/grading only
+- Content is pre-generated offline, validated, then deployed to R2 as bundles — LLM at runtime is for tutoring/grading only
+- **D1 stores graph structure + user state only.** Content (problems, examples) lives in R2 bundles. See `docs/r2-content-architecture.md`.
+- Content service uses `ContentBucket` abstraction — R2 in production, filesystem adapter in simulations/local dev
 - **Content generation happens in Claude Code sessions** (not via OpenRouter pipelines). Claude Code is the workhorse for graph design, problem/example generation, encompassing analysis, and content review. OpenRouter is only for in-app runtime LLM features (tutoring, grading, self-explanation evaluation).
 - Topics belong directly to disciplines; disciplines define progression models (`mastery-gated`, `context-layered`, `flexible`)
 - Collections are packaging views (grade bands, strands, exam-prep tracks) — they don't own topics
@@ -75,12 +87,14 @@ just deploy-preview   # Deploy everything to preview
 - Content has depth (`survey`, `contextual`, `analytical`, `synthesis`) and presentation (`primary`, `intermediate`, `standard`, `advanced`) dimensions. See `docs/content-system.md`.
 - FSRS state per user per topic; FIRe credit via virtual FSRS reviews for encompassing relationships
 - Learning loop phases: pretest → instruction → guided → independent → review → remediation
+- Analytics Engine records rich per-problem events (problem attempts, example views) with content version correlation. D1 `review_log` continues as compact SRS history.
 - Tests: co-located `__tests__/` directory, `*.test.ts` naming, `@cloudflare/vitest-pool-workers` for API tests with miniflare D1. New services and routes must include vitest tests. Use helpers from `packages/api/src/__tests__/helpers.ts` for DB setup and seeding.
 
 ## Content Pipeline
 
 **Source of truth:** `../learn-content/<discipline>/graph.json` + `problems/*.json` + `examples/*.json` + `collections/*.json` (separate `learn-content` repo).
-**D1 is a disposable read model** — rebuilt from content files via `just import-content`.
+**D1 stores graph structure only** (topics, edges, collections) — rebuilt via `just import-content`.
+**R2 stores content bundles** (problems.json, examples.json per topic) — deployed via `just deploy-content`.
 
 ### Content repo setup
 
@@ -101,8 +115,18 @@ All content authoring happens in **Claude Code sessions**. The workflow:
 3. **Generate worked examples** — Write `../learn-content/<discipline>/examples/<topic-id>.json` files. 2 examples per topic with step-by-step breakdowns.
 4. **Define collections** — Write `../learn-content/<discipline>/collections/<collection-id>.json` to package topics into grade bands, strands, or tracks.
 5. **Validate** — `just validate-content` checks DAG integrity, topic coverage, and platform-incompatible instructions.
-6. **Import** — `just import-content` loads everything into local D1.
-7. **Visualize** — `just visualize <discipline>` generates an interactive graph visualization.
+6. **Import graph** — `just import-content` loads graph structure (topics, edges, collections) into local D1.
+7. **Deploy content** — `just deploy-content` bundles content JSON → R2 bundles + graph SQL → D1.
+8. **Visualize** — `just visualize <discipline>` generates an interactive graph visualization.
+
+### Content delivery architecture
+
+```
+learn-content/ (source JSON)  →  generate-bundles  →  R2 bundles (problems.json, examples.json per topic)
+                              →  export-sql        →  D1 (graph structure only)
+```
+
+At runtime, the content service fetches from R2 (with Cache API), applies 7-tier fallback ranking in-memory, and records rich events to Analytics Engine. See `docs/r2-content-architecture.md` for full architecture.
 
 **OpenRouter is NOT used for content generation.** Claude Code produces higher quality content with better iteration — it can read the graph, understand prerequisites, check consistency, and fix issues in the same session.
 
@@ -163,3 +187,4 @@ For past decisions, see DECISIONS.md.
 For gotchas, see LEARNINGS.md.
 For research, see RESEARCH.md.
 For learning science reference, see docs/learning-science.md (load relevant sections when making pedagogy/feature decisions).
+For content architecture details, see docs/r2-content-architecture.md (R2 bundles, Analytics Engine, cache strategy).
