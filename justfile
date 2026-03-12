@@ -87,36 +87,17 @@ visualize subject="math":
 build-web:
     pnpm --filter web exec vite build
 
-# Export content as SQL for remote D1 import
-export-content *args:
-    CONTENT_DIR="{{content_dir}}" npx tsx tools/export-sql.ts {{args}}
+# Generate R2 content bundles from learn-content
+generate-bundles *args:
+    CONTENT_DIR="{{content_dir}}" npx tsx tools/generate-bundles.ts {{args}}
 
-# Deploy content to remote D1 (production)
+# Deploy content to R2 + D1 (production)
 deploy-content:
-    #!/usr/bin/env bash
-    set -euo pipefail
-    export CONTENT_DIR="{{content_dir}}"
-    echo "Exporting content as batched SQL..."
-    npx tsx tools/export-sql.ts --dir /tmp/learn-content-deploy
-    echo "Applying to remote D1..."
-    for f in /tmp/learn-content-deploy/content-*.sql; do
-        echo "  Applying $(basename "$f")..."
-        npx wrangler d1 execute learn-db --remote --file="$f" --env production
-    done
-    rm -rf /tmp/learn-content-deploy
-    echo "Content deployed to production D1."
+    CONTENT_DIR="{{content_dir}}" npx tsx tools/deploy-content.ts --env production
 
-# Deploy content to remote D1 (preview)
+# Deploy content to R2 + D1 (preview)
 deploy-content-preview:
-    #!/usr/bin/env bash
-    set -euo pipefail
-    export CONTENT_DIR="{{content_dir}}"
-    npx tsx tools/export-sql.ts --dir /tmp/learn-content-deploy
-    for f in /tmp/learn-content-deploy/content-*.sql; do
-        npx wrangler d1 execute learn-db --remote --file="$f" --env preview
-    done
-    rm -rf /tmp/learn-content-deploy
-    echo "Content deployed to preview D1."
+    CONTENT_DIR="{{content_dir}}" npx tsx tools/deploy-content.ts --env preview
 
 # Deploy API to preview
 deploy-preview-api:

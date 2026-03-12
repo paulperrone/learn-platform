@@ -4,12 +4,13 @@ import * as schema from "../db/schema.js";
 import { createGraphService } from "./graph.js";
 import { createSRSService } from "./srs.js";
 import { createContentService } from "./content.js";
+import type { ContentBucket } from "./content-r2.js";
 import type { Problem, SessionPhase } from "@learn/shared";
 
-export function createGroupSessionService(db: DB, r2Bucket?: R2Bucket) {
+export function createGroupSessionService(db: DB, contentBucket?: ContentBucket) {
   const graph = createGraphService(db);
   const srs = createSRSService(db);
-  const content = createContentService(db, r2Bucket);
+  const content = createContentService(db, contentBucket);
 
   async function getTopicProblems(topicId: string): Promise<Problem[]> {
     const topic = await graph.getTopic(topicId);

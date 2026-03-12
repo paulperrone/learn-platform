@@ -2,7 +2,7 @@ import { eq, and } from "drizzle-orm";
 import type { DB } from "../db/index.js";
 import * as schema from "../db/schema.js";
 import type { Problem, WorkedExample, VisualAsset, PresentationLevel, ContentDepthLevel } from "@learn/shared";
-import { fetchTopicProblems, fetchTopicExamples, toBareProblems, toBareExamples, type BundledProblem, type BundledExample } from "./content-r2.js";
+import { fetchTopicProblems, fetchTopicExamples, toBareProblems, toBareExamples, type BundledProblem, type BundledExample, type ContentBucket } from "./content-r2.js";
 
 const CURRENT_YEAR = new Date().getFullYear();
 
@@ -211,7 +211,7 @@ export type ContentQuery = {
   flavor?: string;
 };
 
-export function createContentService(db: DB, r2Bucket?: R2Bucket) {
+export function createContentService(db: DB, contentBucket?: ContentBucket) {
   async function resolvePresentation(userId: string, disciplineId?: string): Promise<PresentationLevel> {
     // Check for explicit override in preferences
     const prefs = await db.query.userPreferences.findFirst({
@@ -367,9 +367,9 @@ export function createContentService(db: DB, r2Bucket?: R2Bucket) {
   async function getTopicProblems(query: ContentQuery): Promise<Problem[]> {
     const { topicId, discipline, contentDepth, presentation, locale = "en", flavor = "classic" } = query;
 
-    if (!r2Bucket || !discipline) return [];
+    if (!contentBucket || !discipline) return [];
 
-    const bundled = await fetchTopicProblems(r2Bucket, discipline, topicId);
+    const bundled = await fetchTopicProblems(contentBucket, discipline, topicId);
     if (bundled.length === 0) return [];
 
     const best = selectBestRows(bundled, { presentation, contentDepth, locale, flavor });
@@ -379,9 +379,9 @@ export function createContentService(db: DB, r2Bucket?: R2Bucket) {
   async function getTopicExamples(query: ContentQuery): Promise<WorkedExample[]> {
     const { topicId, discipline, contentDepth, presentation, locale = "en", flavor = "classic" } = query;
 
-    if (!r2Bucket || !discipline) return [];
+    if (!contentBucket || !discipline) return [];
 
-    const bundled = await fetchTopicExamples(r2Bucket, discipline, topicId);
+    const bundled = await fetchTopicExamples(contentBucket, discipline, topicId);
     if (bundled.length === 0) return [];
 
     const best = selectBestRows(bundled, { presentation, contentDepth, locale, flavor });

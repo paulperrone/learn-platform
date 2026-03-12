@@ -176,12 +176,18 @@ function processDiscipline(
   for (const topic of graph.topics) {
     const topicOutDir = join(outDir, disciplineId, topic.id);
 
-    // Read problems
+    // Read problems (hand-authored + generated)
     const problemsPath = join(problemsDir, `${topic.id}.json`);
+    const problemsGeneratedDir = join(contentDir, disciplineId, "problems-generated");
+    const problemsGeneratedPath = join(problemsGeneratedDir, `${topic.id}.json`);
     let problems: Problem[] = [];
     if (existsSync(problemsPath)) {
       const raw: Problem[] = JSON.parse(readFileSync(problemsPath, "utf-8"));
       problems = raw.map(applyProblemDefaults);
+    }
+    if (existsSync(problemsGeneratedPath)) {
+      const raw: Problem[] = JSON.parse(readFileSync(problemsGeneratedPath, "utf-8"));
+      problems = problems.concat(raw.map(applyProblemDefaults));
     }
 
     // Read examples

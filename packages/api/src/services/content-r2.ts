@@ -1,5 +1,5 @@
 /**
- * R2 content fetcher — reads problem/example bundles from Cloudflare R2.
+ * Content fetcher — reads problem/example bundles from R2 or filesystem.
  *
  * Bundle format (per topic):
  *   {discipline}/{topic-id}/problems.json  — BundledProblem[]
@@ -9,8 +9,18 @@
  * Dimension fields (flavor, locale, presentation, contentDepth) are stored
  * directly on each item in the JSON. The content service applies fallback
  * ranking on the parsed array.
+ *
+ * ContentBucket is the minimal interface used for fetching — satisfied by
+ * both Cloudflare R2Bucket and the file-based implementation below.
  */
 import type { Problem, WorkedExample, PresentationLevel, ContentDepthLevel } from "@learn/shared";
+
+// ── Content bucket abstraction ──
+
+/** Minimal interface for fetching content — R2Bucket satisfies this. */
+export type ContentBucket = {
+  get(key: string): Promise<{ text(): Promise<string> } | null>;
+};
 
 // ── R2 bundle types (superset of shared types — includes dimension fields) ──
 
@@ -64,7 +74,7 @@ export type BundleManifest = {
  * Returns empty array if the bundle doesn't exist (topic has no content yet).
  */
 export async function fetchTopicProblems(
-  bucket: R2Bucket,
+  bucket: ContentBucket,
   discipline: string,
   topicId: string,
 ): Promise<BundledProblem[]> {
@@ -81,7 +91,7 @@ export async function fetchTopicProblems(
  * Returns empty array if the bundle doesn't exist.
  */
 export async function fetchTopicExamples(
-  bucket: R2Bucket,
+  bucket: ContentBucket,
   discipline: string,
   topicId: string,
 ): Promise<BundledExample[]> {
@@ -98,7 +108,7 @@ export async function fetchTopicExamples(
  * Returns null if the bundle doesn't exist.
  */
 export async function fetchManifest(
-  bucket: R2Bucket,
+  bucket: ContentBucket,
   discipline: string,
   topicId: string,
 ): Promise<BundleManifest | null> {
@@ -120,4 +130,68 @@ export function toBareProblems(bundled: BundledProblem[]): Problem[] {
 /** Strip dimension fields to produce the shared WorkedExample type. */
 export function toBareExamples(bundled: BundledExample[]): WorkedExample[] {
   return bundled.map(({ flavor, locale, presentation, contentDepth, ...example }) => example);
+}
+
+// ── File-based content bucket (for simulations and local dev without R2) ──
+
+/**
+ * Create a ContentBucket that reads from the learn-content directory.
+ *
+ * Maps R2 keys like "math/add-within-20/problems.json" to filesystem paths:
+ *   {contentDir}/math/problems/add-within-20.json
+ *
+ * Applies the same dimension defaults as generate-bundles.ts.
+ */
+export function createFileContentBucket(contentDir: string): ContentBucket {
+  // Lazy import to avoid pulling Node fs into Workers runtime
+  const fs = require("fs") as typeof import("fs");
+  const path = require("path") as typeof import("path");
+
+  return {
+    async get(key: string): Promise<{ text(): Promise<string> } | null> {
+      // Key format: "{discipline}/{topic-id}/{file}.json"
+      const parts = key.split("/");
+      if (parts.length !== 3) return null;
+
+      const [discipline, topicId, file] = parts;
+
+      if (file === "manifest.json") return null;
+      if (file !== "problems.json" && file !== "examples.json") return null;
+
+      // Determine which subdirectories to check
+      const subdir = file === "problems.json" ? "problems" : "examples";
+      const filePath = path.join(contentDir, discipline, subdir, `${topicId}.json`);
+
+      // For problems, also check problems-generated (supplementary content)
+      const generatedPath = file === "problems.json"
+        ? path.join(contentDir, discipline, "problems-generated", `${topicId}.json`)
+        : null;
+
+      const hasMain = fs.existsSync(filePath);
+      const hasGenerated = generatedPath && fs.existsSync(generatedPath);
+      if (!hasMain && !hasGenerated) return null;
+
+      let items: Record<string, unknown>[] = [];
+      if (hasMain) {
+        items = JSON.parse(fs.readFileSync(filePath, "utf-8"));
+      }
+      if (hasGenerated) {
+        const generated = JSON.parse(fs.readFileSync(generatedPath, "utf-8")) as Record<string, unknown>[];
+        items = items.concat(generated);
+      }
+
+      // Apply dimension defaults (same as generate-bundles.ts)
+      const withDefaults = items.map((item) => ({
+        ...item,
+        flavor: (item.flavor as string) ?? "classic",
+        locale: (item.locale as string) ?? "en",
+        presentation: (item.presentation as string) ?? "standard",
+        contentDepth: (item.contentDepth as string) ?? "survey",
+        ...(file === "problems.json" ? { source: (item.source as string) ?? "hand-authored" } : {}),
+      }));
+
+      const text = JSON.stringify(withDefaults);
+      return { text: async () => text };
+    },
+  };
 }

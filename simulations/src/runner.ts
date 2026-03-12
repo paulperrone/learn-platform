@@ -5,7 +5,8 @@ import type { DB } from "../../packages/api/src/db/index.js";
 import { createSessionService } from "../../packages/api/src/services/session.js";
 import { createDiagnosticService, IMPLICIT_MASTERY_THRESHOLD } from "../../packages/api/src/services/diagnostic.js";
 import { createSRSService } from "../../packages/api/src/services/srs.js";
-import { createSimulationDb, createSimulationDbMulti, createSimUser } from "./db-setup.js";
+import { createFileContentBucket } from "../../packages/api/src/services/content-r2.js";
+import { createSimulationDb, createSimulationDbMulti, createSimUser, resolveContentDir } from "./db-setup.js";
 import { resolveAnswer } from "./answer-engine.js";
 import { EventLogger } from "./event-logger.js";
 import { SeededRNG } from "./prng.js";
@@ -88,6 +89,7 @@ export class SimulationRunner {
   private config: SimulationConfig;
   private rng: SeededRNG;
   private db!: DB;
+  private contentBucket = createFileContentBucket(resolveContentDir());
   private userId!: string;
   private logger!: EventLogger;
   private simulatedTimeMs!: number;
@@ -251,7 +253,7 @@ export class SimulationRunner {
   private async runDiagnostic(disciplineId?: string): Promise<number> {
     setSimulatedTime(this.simulatedTimeMs);
 
-    const diagnostic = createDiagnosticService(this.db);
+    const diagnostic = createDiagnosticService(this.db, this.contentBucket);
     const startResult = await diagnostic.startDiagnostic({
       userId: this.userId,
       disciplineId: disciplineId ?? this.getDisciplineId(),
@@ -439,7 +441,7 @@ export class SimulationRunner {
       disableCredit: fireMode === "ordering-only" || fireMode === "neither",
       disableOrdering: fireMode === "credit-only" || fireMode === "neither",
     };
-    const sessionSvc = createSessionService(this.db, fireDiagnostic);
+    const sessionSvc = createSessionService(this.db, fireDiagnostic, this.contentBucket);
 
     const { sessionId, firstItem } = await sessionSvc.startSession(this.userId);
 

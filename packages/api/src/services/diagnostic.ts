@@ -4,6 +4,7 @@ import * as schema from "../db/schema.js";
 import { createGraphService } from "./graph.js";
 import { createContentService, buildDefaultDistribution } from "./content.js";
 import type { PresentationDistribution } from "./content.js";
+import type { ContentBucket } from "./content-r2.js";
 import { gradeProblem } from "./grading.js";
 import type { Problem, DiagnosticResult, PresentationLevel } from "@learn/shared";
 
@@ -44,9 +45,9 @@ const MIN_QUESTIONS = 8;
 /** Confidence threshold: stop when boundary is within this many grade levels */
 const BOUNDARY_PRECISION = 0.5;
 
-export function createDiagnosticService(db: DB, r2Bucket?: R2Bucket) {
+export function createDiagnosticService(db: DB, contentBucket?: ContentBucket) {
   const graph = createGraphService(db);
-  const content = createContentService(db, r2Bucket);
+  const content = createContentService(db, contentBucket);
 
   /**
    * Fetch problems for a topic during diagnostic using dimension-aware content selection.

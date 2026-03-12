@@ -7,7 +7,7 @@ import { drizzle } from "drizzle-orm/better-sqlite3";
 import { readFileSync, existsSync, readdirSync } from "fs";
 import { join, resolve } from "path";
 
-function resolveContentDir(): string {
+export function resolveContentDir(): string {
   if (process.env.CONTENT_DIR) return resolve(process.env.CONTENT_DIR);
   const sibling = join(process.cwd(), "..", "learn-content");
   if (existsSync(sibling)) return sibling;
@@ -36,15 +36,7 @@ const SCHEMA_STATEMENTS = [
   'CREATE TABLE topics (id text PRIMARY KEY NOT NULL, discipline_id text NOT NULL, name text NOT NULL, description text NOT NULL, depth integer DEFAULT 0 NOT NULL, grade_level integer NOT NULL, strand text, standard_code text, created_at text NOT NULL, FOREIGN KEY (discipline_id) REFERENCES disciplines(id))',
   'CREATE INDEX topics_discipline_idx ON topics (discipline_id)',
   'CREATE INDEX topics_depth_idx ON topics (depth)',
-  'CREATE TABLE instructional_content (id text PRIMARY KEY NOT NULL, topic_id text NOT NULL, flavor text DEFAULT \'classic\' NOT NULL, locale text DEFAULT \'en\' NOT NULL, presentation text DEFAULT \'standard\' NOT NULL, content_depth text DEFAULT \'survey\' NOT NULL, version integer DEFAULT 1 NOT NULL, title text NOT NULL, steps_json text NOT NULL, assets_json text, created_at text NOT NULL, updated_at text NOT NULL, FOREIGN KEY (topic_id) REFERENCES topics(id))',
-  'CREATE INDEX ic_topic_idx ON instructional_content (topic_id)',
-  'CREATE INDEX ic_dimensions_idx ON instructional_content (topic_id, flavor, locale, presentation, version)',
-  'CREATE INDEX ic_depth_idx ON instructional_content (topic_id, content_depth)',
-  'CREATE TABLE assessment_content (id text PRIMARY KEY NOT NULL, topic_id text NOT NULL, flavor text DEFAULT \'classic\' NOT NULL, locale text DEFAULT \'en\' NOT NULL, presentation text DEFAULT \'standard\' NOT NULL, content_depth text DEFAULT \'survey\' NOT NULL, version integer DEFAULT 1 NOT NULL, type text DEFAULT \'text-qa\' NOT NULL, difficulty text NOT NULL, question text NOT NULL, answer text NOT NULL, hints_json text DEFAULT \'[]\' NOT NULL, solution text DEFAULT \'\' NOT NULL, type_properties text, cognitive_demand text, key_prerequisite_id text, source text DEFAULT \'hand-authored\' NOT NULL, created_at text NOT NULL, FOREIGN KEY (topic_id) REFERENCES topics(id))',
-  'CREATE INDEX ac_topic_idx ON assessment_content (topic_id)',
-  'CREATE INDEX ac_dimensions_idx ON assessment_content (topic_id, flavor, locale, presentation, version)',
-  'CREATE INDEX ac_type_idx ON assessment_content (topic_id, type)',
-  'CREATE INDEX ac_depth_idx ON assessment_content (topic_id, content_depth)',
+  'CREATE TABLE topic_content_versions (topic_id text PRIMARY KEY NOT NULL, content_hash text NOT NULL, bundle_version integer DEFAULT 1 NOT NULL, problems_count integer DEFAULT 0 NOT NULL, examples_count integer DEFAULT 0 NOT NULL, generated_at text NOT NULL, uploaded_at text, FOREIGN KEY (topic_id) REFERENCES topics(id))',
   'CREATE TABLE prerequisites (id integer PRIMARY KEY AUTOINCREMENT NOT NULL, from_topic_id text NOT NULL, to_topic_id text NOT NULL, strength real DEFAULT 1 NOT NULL, type text DEFAULT \'required\' NOT NULL, FOREIGN KEY (from_topic_id) REFERENCES topics(id), FOREIGN KEY (to_topic_id) REFERENCES topics(id))',
   'CREATE UNIQUE INDEX prereq_unique_idx ON prerequisites (from_topic_id, to_topic_id)',
   'CREATE INDEX prereq_to_idx ON prerequisites (to_topic_id)',
@@ -59,7 +51,7 @@ const SCHEMA_STATEMENTS = [
   'CREATE TABLE user_topic_depth (id integer PRIMARY KEY AUTOINCREMENT NOT NULL, user_id text NOT NULL, topic_id text NOT NULL, content_depth text NOT NULL, completed integer DEFAULT 0 NOT NULL, completed_at text, FOREIGN KEY (user_id) REFERENCES users(id), FOREIGN KEY (topic_id) REFERENCES topics(id))',
   'CREATE UNIQUE INDEX utd_user_topic_depth_idx ON user_topic_depth (user_id, topic_id, content_depth)',
   'CREATE INDEX utd_user_topic_idx ON user_topic_depth (user_id, topic_id)',
-  'CREATE TABLE review_log (id text PRIMARY KEY NOT NULL, user_id text NOT NULL, topic_id text NOT NULL, assessment_content_id text, rating integer NOT NULL, confidence integer, correct integer NOT NULL, response_ms integer NOT NULL, phase text NOT NULL, hints_used integer, misconception integer, created_at text NOT NULL, FOREIGN KEY (user_id) REFERENCES users(id), FOREIGN KEY (topic_id) REFERENCES topics(id))',
+  'CREATE TABLE review_log (id text PRIMARY KEY NOT NULL, user_id text NOT NULL, topic_id text NOT NULL, assessment_content_id text, rating integer NOT NULL, confidence integer, correct integer NOT NULL, response_ms integer NOT NULL, phase text NOT NULL, hints_used integer, misconception integer, content_version text, created_at text NOT NULL, FOREIGN KEY (user_id) REFERENCES users(id), FOREIGN KEY (topic_id) REFERENCES topics(id))',
   'CREATE INDEX review_user_idx ON review_log (user_id)',
   'CREATE INDEX review_topic_idx ON review_log (topic_id)',
   'CREATE INDEX review_assessment_idx ON review_log (assessment_content_id)',
@@ -134,34 +126,6 @@ type GraphDefinition = {
   }[];
 };
 
-type Problem = {
-  id: string;
-  topicId: string;
-  difficulty: string;
-  question: string;
-  answer: string;
-  hints: string[];
-  solution: string;
-  flavor?: string;
-  locale?: string;
-  presentation?: string;
-  contentDepth?: string;
-  keyPrerequisiteId?: string;
-  cognitiveDemand?: string;
-};
-
-type WorkedExample = {
-  id: string;
-  topicId: string;
-  title: string;
-  steps: { subgoalLabel: string; instruction: string; work: string; explanation: string }[];
-  visuals?: { type: string; params: Record<string, unknown>; alt: string }[];
-  flavor?: string;
-  locale?: string;
-  presentation?: string;
-  contentDepth?: string;
-};
-
 export function createSimulationDb(discipline: string): DB {
   return createSimulationDbMulti([discipline]);
 }
@@ -192,14 +156,11 @@ export function createSimulationDbMulti(disciplines: string[]): DB {
   const insertTopic = sqlite.prepare(
     "INSERT INTO topics (id, discipline_id, name, description, depth, grade_level, strand, standard_code, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"
   );
-  const insertProblem = sqlite.prepare(
-    "INSERT INTO assessment_content (id, topic_id, flavor, locale, presentation, content_depth, version, type, difficulty, question, answer, hints_json, solution, type_properties, cognitive_demand, key_prerequisite_id, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
-  );
-  const insertExample = sqlite.prepare(
-    "INSERT INTO instructional_content (id, topic_id, flavor, locale, presentation, content_depth, version, title, steps_json, assets_json, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+  const insertContentVersion = sqlite.prepare(
+    "INSERT OR REPLACE INTO topic_content_versions (topic_id, content_hash, bundle_version, problems_count, examples_count, generated_at) VALUES (?, ?, ?, ?, ?, ?)"
   );
 
-  // Phase 1: Load all disciplines — topics, problems, examples
+  // Phase 1: Load all disciplines — graph structure only (content fetched from filesystem via ContentBucket)
   const allGraphs: GraphDefinition[] = [];
   for (const discipline of disciplines) {
     const contentDir = join(resolveContentDir(), discipline);
@@ -218,46 +179,30 @@ export function createSimulationDbMulti(disciplines: string[]): DB {
       "INSERT OR IGNORE INTO disciplines (id, name, description, progression_model, created_at) VALUES (?, ?, ?, ?, ?)"
     ).run(discId, discMeta.name, discMeta.description, discMeta.progressionModel, now);
 
-    // Insert topics
+    // Insert topics and placeholder content versions
+    const problemsDir = join(contentDir, "problems");
+    const problemsGeneratedDir = join(contentDir, "problems-generated");
+    const examplesDir = join(contentDir, "examples");
     for (const t of graph.topics) {
       insertTopic.run(t.id, discId, t.name, t.description, t.gradeLevel, t.gradeLevel, t.strand ?? null, t.standardCode, now);
-    }
 
-    // Import problems from both hand-authored and generated directories
-    for (const dir of ["problems", "problems-generated"]) {
-      const problemsDir = join(contentDir, dir);
-      if (!existsSync(problemsDir)) continue;
-      for (const file of readdirSync(problemsDir).filter((f) => f.endsWith(".json"))) {
-        const problems: Problem[] = JSON.parse(readFileSync(join(problemsDir, file), "utf-8"));
-        for (const p of problems) {
-          insertProblem.run(
-            p.id, p.topicId,
-            p.flavor ?? "classic", p.locale ?? "en",
-            p.presentation ?? "standard", p.contentDepth ?? "survey",
-            1, "text-qa", p.difficulty, p.question, p.answer,
-            JSON.stringify(p.hints), p.solution,
-            null, p.cognitiveDemand ?? null, p.keyPrerequisiteId ?? null,
-            now
-          );
-        }
+      // Count problems/examples from filesystem for content version metadata
+      let problemsCount = 0;
+      let examplesCount = 0;
+      const pPath = join(problemsDir, `${t.id}.json`);
+      if (existsSync(pPath)) {
+        problemsCount = JSON.parse(readFileSync(pPath, "utf-8")).length;
       }
-    }
-
-    // Import worked examples
-    const examplesDir = join(contentDir, "examples");
-    if (existsSync(examplesDir)) {
-      for (const file of readdirSync(examplesDir).filter((f) => f.endsWith(".json"))) {
-        const examples: WorkedExample[] = JSON.parse(readFileSync(join(examplesDir, file), "utf-8"));
-        for (const e of examples) {
-          insertExample.run(
-            e.id, e.topicId,
-            e.flavor ?? "classic", e.locale ?? "en",
-            e.presentation ?? "standard", e.contentDepth ?? "survey",
-            1, e.title, JSON.stringify(e.steps),
-            e.visuals ? JSON.stringify(e.visuals) : null,
-            now, now
-          );
-        }
+      const pgPath = join(problemsGeneratedDir, `${t.id}.json`);
+      if (existsSync(pgPath)) {
+        problemsCount += JSON.parse(readFileSync(pgPath, "utf-8")).length;
+      }
+      const ePath = join(examplesDir, `${t.id}.json`);
+      if (existsSync(ePath)) {
+        examplesCount = JSON.parse(readFileSync(ePath, "utf-8")).length;
+      }
+      if (problemsCount > 0 || examplesCount > 0) {
+        insertContentVersion.run(t.id, `sim:${t.id}`, 1, problemsCount, examplesCount, now);
       }
     }
   }

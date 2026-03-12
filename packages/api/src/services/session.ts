@@ -5,6 +5,7 @@ import * as schema from "../db/schema.js";
 import { createGraphService } from "./graph.js";
 import { createSRSService, type FireDiagnosticConfig } from "./srs.js";
 import { createContentService, type ContentQuery } from "./content.js";
+import type { ContentBucket } from "./content-r2.js";
 import type { Problem, WorkedExample, SessionPhase, AssessmentType, VisualAsset, PresentationLevel, ContentDepthLevel, BlendRole, MasteryEvent, CognitiveDemand, DemandDistribution } from "@learn/shared";
 import { DEMAND_PROFILES } from "@learn/shared";
 import { gradeProblem } from "./grading.js";
@@ -61,10 +62,10 @@ export function applyDifficultyBias(baseDifficulty: string, bias: DifficultyBias
   return levels[Math.max(idx - 1, 0)];
 }
 
-export function createSessionService(db: DB, fireDiagnostic?: FireDiagnosticConfig, r2Bucket?: R2Bucket) {
+export function createSessionService(db: DB, fireDiagnostic?: FireDiagnosticConfig, contentBucket?: ContentBucket) {
   const graph = createGraphService(db);
   const srs = createSRSService(db, fireDiagnostic);
-  const content = createContentService(db, r2Bucket);
+  const content = createContentService(db, contentBucket);
   const activity = createActivityService(db);
 
   /**
