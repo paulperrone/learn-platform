@@ -905,6 +905,17 @@ MA's K-8 relevant content spans 6 courses: 4th Grade Math (137 topics), 5th Grad
 **Source:** User session — Plan 023 Phase 2
 **Area:** Content architecture / testing
 
-When migrating content service from D1 to R2, making R2Bucket optional in factory signatures (`createContentService(db, r2Bucket?)`) with automatic D1 fallback avoids a big-bang test migration. Existing tests continue using D1-seeded content (no R2 passed), while production and new R2-specific tests exercise the R2 path. This pattern also keeps local dev working without R2 until Phase 4 wires up the deploy pipeline. Phase 3 will remove D1 content tables and the fallback.
+When migrating content service from D1 to R2, making R2Bucket optional in factory signatures (`createContentService(db, r2Bucket?)`) with automatic D1 fallback avoids a big-bang test migration. Phase 3 removed the D1 fallback and content tables — all tests now seed content into R2 via miniflare's `r2Buckets: ["CONTENT"]` config. The `seedAssessmentContent`/`seedInstructionalContent` helpers write to `env.CONTENT` R2 bucket.
 
-**Context:** Applied to `createContentService`, `createSessionService`, `createDiagnosticService`. The `ContentQuery` type gained an optional `discipline?: string` field — R2 needs it for key construction (`{discipline}/{topicId}/problems.json`) but D1 fallback doesn't.
+**Context:** Applied to `createContentService`, `createSessionService`, `createDiagnosticService`. The `ContentQuery` type's `discipline` field is now effectively required — R2 needs it for key construction (`{discipline}/{topicId}/problems.json`). Without discipline, content service returns `[]`.
+
+---
+
+### 2026-03-12: R2 content test seeding — discipline path must match between seed and query
+
+**Source:** User session — Plan 023 Phase 3
+**Area:** Testing / R2 content
+
+When seeding content into R2 for tests, the `disciplineId` used in `seedAssessmentContent(topicId, { disciplineId: "x" })` determines the R2 key path (`x/{topicId}/problems.json`). If the test creates a topic under discipline "disc-foo" but seeds content with the default `disciplineId: "math"`, the content service can't find it because it looks at `disc-foo/{topicId}/problems.json`. Always pass the matching `disciplineId` override to seed helpers. This caused 47 test failures during the Phase 3 D1→R2 migration.
+
+**Context:** Applies whenever adding new tests that seed content, or when creating topics under non-default disciplines.

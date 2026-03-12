@@ -377,9 +377,9 @@ Both need to be added to dev, production, and preview environments.
 
 ## Progress
 
-**Completed:** Phase 1 ✓, Phase 2 ✓
+**Completed:** Phase 1 ✓, Phase 2 ✓, Phase 3 ✓
 **In Progress:** —
-**Next:** Phase 3
+**Next:** Phase 4
 
 ---
 
@@ -552,7 +552,7 @@ Both need to be added to dev, production, and preview environments.
 
 ---
 
-## Phase 3: D1 Schema Cleanup & Import Pipeline
+## Phase 3: D1 Schema Cleanup & Import Pipeline ✓
 **Goal:** Remove content tables from D1, update import/export tooling to handle graph-only D1 + R2 content separately.
 
 ### Context for Execution
@@ -578,7 +578,7 @@ Since nothing is live and we don't care about backwards compatibility, we can cr
 
 ### Steps
 
-1. [ ] [IMP] D1 migration: drop content tables:
+1. [x] [IMP] D1 migration: drop content tables:
    ```sql
    DROP TABLE IF EXISTS assessment_content;
    DROP TABLE IF EXISTS instructional_content;
@@ -588,18 +588,18 @@ Since nothing is live and we don't care about backwards compatibility, we can cr
    - Run `just db-generate` to produce migration
    - Verify migration applies cleanly
 
-2. [ ] [IMP] Rewrite `tools/import-content.ts` — graph-only import:
+2. [x] [IMP] Rewrite `tools/import-content.ts` — graph-only import:
    - Keep: discipline upsert, topic insert, prerequisite insert, encompassing insert, collection insert, cross-discipline edges
    - Remove: assessment_content insert, instructional_content insert
    - Add: populate `topic_content_versions` from manifest files (if bundles exist)
    - Update console output to reflect graph-only import
 
-3. [ ] [IMP] Rewrite `tools/export-sql.ts` — graph-only export:
+3. [x] [IMP] Rewrite `tools/export-sql.ts` — graph-only export:
    - Keep: discipline, topic, prerequisite, encompassing, collection SQL
    - Remove: assessment_content, instructional_content SQL
    - This dramatically reduces batch file count (44 batches → ~5 batches)
 
-4. [ ] [REF] Update admin analytics routes (`packages/api/src/routes/admin.ts`):
+4. [x] [REF] Update admin analytics routes (`packages/api/src/routes/admin.ts`):
    - `/admin/analytics/content-effectiveness` — currently joins `review_log` with `assessment_content`. Rewrite to:
      - Query `review_log` for per-topic aggregates (these don't need content text)
      - Or query Analytics Engine for rich content-level data
@@ -607,12 +607,12 @@ Since nothing is live and we don't care about backwards compatibility, we can cr
    - `/admin/analytics/content-versions` — rewrite to use `topic_content_versions` + AE data
    - Remove any route that directly queries `assessment_content` or `instructional_content`
 
-5. [ ] [REF] Update validation tooling:
+5. [x] [REF] Update validation tooling:
    - `tools/validate-content.ts` — content completeness checks now validate learn-content JSON files directly (they already do — no D1 dependency). Verify no D1 references remain.
    - `tools/validate-graph.ts` — graph-only, already correct
    - `tools/validate-cross-discipline.ts` — graph-only, already correct
 
-6. [ ] [VAL] Full validation pass:
+6. [x] [VAL] Full validation pass:
    - `just db-generate` — migration generates cleanly
    - `just db-migrate` — migration applies
    - `just import-content` — graph-only import succeeds

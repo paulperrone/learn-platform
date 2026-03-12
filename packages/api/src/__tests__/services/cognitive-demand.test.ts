@@ -7,6 +7,7 @@ import {
   seedTopic,
   seedAssessmentContent,
   seedInstructionalContent,
+  getTestR2Bucket,
 } from "../helpers.js";
 import { createSessionService } from "../../services/session.js";
 import type { SessionItem } from "../../services/session.js";
@@ -34,6 +35,7 @@ describe("Cognitive Demand Mixing", () => {
       name: `Demand Topic ${id}`,
     });
 
+    const discId = `${PREFIX}-subj-${id}`;
     for (let i = 0; i < demands.length; i++) {
       for (const difficulty of ["easy", "medium", "hard"] as const) {
         await seedAssessmentContent(topic.id, {
@@ -42,12 +44,14 @@ describe("Cognitive Demand Mixing", () => {
           question: `${demands[i]} question ${i} (${difficulty})`,
           answer: `answer-${i}`,
           cognitiveDemand: demands[i],
+          disciplineId: discId,
         });
       }
     }
 
     await seedInstructionalContent(topic.id, {
       id: `${PREFIX}-ic-${id}`,
+      disciplineId: discId,
     });
 
     return { disc, topic, db };
@@ -56,7 +60,7 @@ describe("Cognitive Demand Mixing", () => {
   describe("cognitiveDemand field propagation", () => {
     it("returns cognitiveDemand from content in problem items", async () => {
       const { db } = await setupTopicWithDemands("prop1", ["procedural", "application", "conceptual"]);
-      const session = createSessionService(db);
+      const session = createSessionService(db, undefined, getTestR2Bucket());
       const user = await seedUser({ id: `${PREFIX}-user-prop1` });
       const { firstItem } = await session.startSession(user.id);
 
@@ -72,7 +76,7 @@ describe("Cognitive Demand Mixing", () => {
       const { db } = await setupTopicWithDemands("pretest1", [
         "procedural", "application", "conceptual", "reasoning", "error_analysis",
       ]);
-      const session = createSessionService(db);
+      const session = createSessionService(db, undefined, getTestR2Bucket());
 
       // Run multiple sessions to collect demand distribution
       const demands: CognitiveDemand[] = [];
@@ -95,7 +99,7 @@ describe("Cognitive Demand Mixing", () => {
       const { db } = await setupTopicWithDemands("variety1", [
         "procedural", "application",
       ]);
-      const session = createSessionService(db);
+      const session = createSessionService(db, undefined, getTestR2Bucket());
 
       // Start multiple sessions with different users, check first item demands
       const demands = new Set<CognitiveDemand>();
@@ -114,7 +118,7 @@ describe("Cognitive Demand Mixing", () => {
   describe("graceful fallback with only procedural problems", () => {
     it("works when only procedural is available", async () => {
       const { db } = await setupTopicWithDemands("fallback1", ["procedural"]);
-      const session = createSessionService(db);
+      const session = createSessionService(db, undefined, getTestR2Bucket());
       const user = await seedUser({ id: `${PREFIX}-user-fallback1` });
       const { firstItem } = await session.startSession(user.id);
 
@@ -139,13 +143,15 @@ describe("Cognitive Demand Mixing", () => {
           difficulty,
           question: `No demand tagged (${difficulty})`,
           answer: "42",
+          disciplineId: `${PREFIX}-subj-null`,
         });
       }
       await seedInstructionalContent(topic.id, {
         id: `${PREFIX}-ic-null`,
+        disciplineId: `${PREFIX}-subj-null`,
       });
 
-      const session = createSessionService(db);
+      const session = createSessionService(db, undefined, getTestR2Bucket());
       const user = await seedUser({ id: `${PREFIX}-user-null` });
       const { firstItem } = await session.startSession(user.id);
 

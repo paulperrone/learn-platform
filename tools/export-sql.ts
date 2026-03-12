@@ -1,8 +1,8 @@
 /**
- * Export all content as SQL statements for remote D1 import.
- * Mirrors import-content.ts logic exactly but outputs SQL instead of using better-sqlite3.
+ * Export graph structure as SQL statements for remote D1 import.
+ * Content (problems, examples) now lives in R2 — this only exports graph structure.
  *
- * Handles all disciplines, cross-discipline edges, collections, and all content fields.
+ * Handles all disciplines, cross-discipline edges, and collections.
  * Outputs batched SQL files to avoid D1's 10MB execution limit.
  *
  * Usage:
@@ -22,35 +22,6 @@ const DISCIPLINE_META: Record<string, { name: string; description: string; progr
   math: { name: "Mathematics", description: "Mathematics from counting through algebra and statistics", progressionModel: "mastery-gated" },
   ela: { name: "English Language Arts", description: "Reading, writing, grammar, and vocabulary", progressionModel: "mastery-gated" },
   history: { name: "History", description: "Historical events, causes, and analysis", progressionModel: "context-layered" },
-};
-
-type Problem = {
-  id: string;
-  topicId: string;
-  difficulty: string;
-  question: string;
-  answer: string;
-  hints: string[];
-  solution: string;
-  flavor?: string;
-  locale?: string;
-  presentation?: string;
-  contentDepth?: string;
-  cognitiveDemand?: string;
-  keyPrerequisiteId?: string;
-  source?: string;
-};
-
-type WorkedExample = {
-  id: string;
-  topicId: string;
-  title: string;
-  steps: { subgoalLabel: string; instruction: string; work: string; explanation: string }[];
-  visuals?: { type: string; params: Record<string, unknown>; alt: string }[];
-  flavor?: string;
-  locale?: string;
-  presentation?: string;
-  contentDepth?: string;
 };
 
 function main() {
@@ -95,8 +66,7 @@ function main() {
     lines.push(`DELETE FROM teach_sessions WHERE topic_id IN (SELECT id FROM topics WHERE discipline_id = '${disciplineId}');`);
     lines.push(`DELETE FROM review_log WHERE topic_id IN (SELECT id FROM topics WHERE discipline_id = '${disciplineId}');`);
     lines.push(`DELETE FROM user_topic_state WHERE topic_id IN (SELECT id FROM topics WHERE discipline_id = '${disciplineId}');`);
-    lines.push(`DELETE FROM assessment_content WHERE topic_id IN (SELECT id FROM topics WHERE discipline_id = '${disciplineId}');`);
-    lines.push(`DELETE FROM instructional_content WHERE topic_id IN (SELECT id FROM topics WHERE discipline_id = '${disciplineId}');`);
+    lines.push(`DELETE FROM topic_content_versions WHERE topic_id IN (SELECT id FROM topics WHERE discipline_id = '${disciplineId}');`);
     lines.push(`DELETE FROM encompassings WHERE parent_topic_id IN (SELECT id FROM topics WHERE discipline_id = '${disciplineId}');`);
     lines.push(`DELETE FROM encompassings WHERE child_topic_id IN (SELECT id FROM topics WHERE discipline_id = '${disciplineId}');`);
     lines.push(`DELETE FROM prerequisites WHERE from_topic_id IN (SELECT id FROM topics WHERE discipline_id = '${disciplineId}');`);
@@ -167,44 +137,7 @@ function main() {
       lines.push("");
     }
 
-    // Load and insert worked examples
-    const examplesDir = join(contentRoot, dir, "examples");
-    let exampleCount = 0;
-    if (existsSync(examplesDir)) {
-      lines.push(`-- Worked examples`);
-      for (const file of readdirSync(examplesDir).filter((f) => f.endsWith(".json"))) {
-        const examples: WorkedExample[] = JSON.parse(readFileSync(join(examplesDir, file), "utf-8"));
-        for (const e of examples) {
-          const assetsVal = e.visuals?.length ? `'${esc(JSON.stringify(e.visuals))}'` : "NULL";
-          lines.push(
-            `INSERT INTO instructional_content (id, topic_id, flavor, locale, presentation, content_depth, version, title, steps_json, assets_json, created_at, updated_at) VALUES ('${esc(e.id)}', '${esc(e.topicId)}', '${esc(e.flavor ?? "classic")}', '${esc(e.locale ?? "en")}', '${esc(e.presentation ?? "standard")}', '${esc(e.contentDepth ?? "survey")}', 1, '${esc(e.title)}', '${esc(JSON.stringify(e.steps))}', ${assetsVal}, '${now}', '${now}');`
-          );
-          exampleCount++;
-        }
-      }
-      lines.push("");
-    }
-
-    // Load and insert problems (hand-authored + generated)
-    const problemsDirs = [join(contentRoot, dir, "problems"), join(contentRoot, dir, "problems-generated")];
-    let problemCount = 0;
-    lines.push(`-- Problems`);
-    for (const problemsDir of problemsDirs) {
-      if (existsSync(problemsDir)) {
-        for (const file of readdirSync(problemsDir).filter((f) => f.endsWith(".json"))) {
-          const problems: Problem[] = JSON.parse(readFileSync(join(problemsDir, file), "utf-8"));
-          for (const p of problems) {
-            lines.push(
-              `INSERT INTO assessment_content (id, topic_id, flavor, locale, presentation, content_depth, version, type, difficulty, question, answer, hints_json, solution, cognitive_demand, key_prerequisite_id, source, created_at) VALUES ('${esc(p.id)}', '${esc(p.topicId)}', '${esc(p.flavor ?? "classic")}', '${esc(p.locale ?? "en")}', '${esc(p.presentation ?? "standard")}', '${esc(p.contentDepth ?? "survey")}', 1, 'text-qa', '${esc(p.difficulty)}', '${esc(p.question)}', '${esc(p.answer)}', '${esc(JSON.stringify(p.hints))}', '${esc(p.solution)}', ${p.cognitiveDemand ? `'${esc(p.cognitiveDemand)}'` : "NULL"}, ${p.keyPrerequisiteId ? `'${esc(p.keyPrerequisiteId)}'` : "NULL"}, '${esc(p.source ?? "hand-authored")}', '${now}');`
-            );
-            problemCount++;
-          }
-        }
-      }
-    }
-    lines.push("");
-
-    console.error(`${disciplineId}: ${graph.topics.length} topics, ${problemCount} problems, ${exampleCount} examples`);
+    console.error(`${disciplineId}: ${graph.topics.length} topics (content now in R2)`);
   }
 
   // Phase 2: Insert prerequisites and encompassings for all disciplines

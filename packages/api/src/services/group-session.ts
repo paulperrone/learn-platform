@@ -3,29 +3,19 @@ import type { DB } from "../db/index.js";
 import * as schema from "../db/schema.js";
 import { createGraphService } from "./graph.js";
 import { createSRSService } from "./srs.js";
+import { createContentService } from "./content.js";
 import type { Problem, SessionPhase } from "@learn/shared";
 
-export function createGroupSessionService(db: DB) {
+export function createGroupSessionService(db: DB, r2Bucket?: R2Bucket) {
   const graph = createGraphService(db);
   const srs = createSRSService(db);
+  const content = createContentService(db, r2Bucket);
 
   async function getTopicProblems(topicId: string): Promise<Problem[]> {
-    const rows = await db
-      .select()
-      .from(schema.assessmentContent)
-      .where(eq(schema.assessmentContent.topicId, topicId));
-
-    return rows.map((r) => ({
-      id: r.id,
-      topicId: r.topicId,
-      difficulty: r.difficulty as Problem["difficulty"],
-      question: r.question,
-      answer: r.answer,
-      hints: JSON.parse(r.hintsJson) as string[],
-      solution: r.solution,
-      type: r.type as Problem["type"],
-      typeProperties: r.typeProperties ? JSON.parse(r.typeProperties) : undefined,
-    }));
+    const topic = await graph.getTopic(topicId);
+    const discipline = topic?.disciplineId;
+    if (!discipline) return [];
+    return content.getTopicProblems({ topicId, discipline, contentDepth: "survey", presentation: "standard" });
   }
 
   function generateJoinCode(): string {

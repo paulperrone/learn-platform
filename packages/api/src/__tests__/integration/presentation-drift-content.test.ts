@@ -8,6 +8,7 @@ import {
   seedTopic,
   seedAssessmentContent,
   seedUserDisciplinePresentation,
+  getTestR2Bucket,
 } from "../helpers.js";
 import { createContentService, nudgeDistribution, type PresentationDistribution } from "../../services/content.js";
 import * as schema from "../../db/schema.js";
@@ -116,7 +117,7 @@ describe("presentation-drift-content integration", () => {
 
   it("applyNudge persists updated distribution and logs center shift", async () => {
     const { db, user, discipline } = await setupContentWithPresentations();
-    const content = createContentService(db);
+    const content = createContentService(db, getTestR2Bucket());
 
     // Start with intermediate-centered distribution
     await seedUserDisciplinePresentation(user.id, discipline.id, {
@@ -146,7 +147,7 @@ describe("presentation-drift-content integration", () => {
 
   it("drift log records center_shift transitions", async () => {
     const { db, user, discipline } = await setupContentWithPresentations();
-    const content = createContentService(db);
+    const content = createContentService(db, getTestR2Bucket());
 
     // Start near the tipping point: standard exceeds threshold and margin over intermediate
     await seedUserDisciplinePresentation(user.id, discipline.id, {
@@ -214,7 +215,7 @@ describe("presentation-drift-content integration", () => {
 
   it("resolvePresentation samples from updated distribution", async () => {
     const { db, user, discipline } = await setupContentWithPresentations();
-    const content = createContentService(db);
+    const content = createContentService(db, getTestR2Bucket());
 
     // Set distribution heavily favoring standard
     await seedUserDisciplinePresentation(user.id, discipline.id, {

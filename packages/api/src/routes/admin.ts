@@ -47,16 +47,17 @@ adminRoutes.get("/stats", async (c) => {
 
   const [
     userCount, familyCount, topicCount, reviewCount,
-    instructionalCount, assessmentCount,
+    contentCounts,
     llmCostAll, llmCostMonth,
-    contentByLocale, contentByFlavor,
   ] = await Promise.all([
     db.select({ count: sql<number>`count(*)` }).from(schema.users),
     db.select({ count: sql<number>`count(*)` }).from(schema.organizations),
     db.select({ count: sql<number>`count(*)` }).from(schema.topics),
     db.select({ count: sql<number>`count(*)` }).from(schema.reviewLog),
-    db.select({ count: sql<number>`count(*)` }).from(schema.instructionalContent),
-    db.select({ count: sql<number>`count(*)` }).from(schema.assessmentContent),
+    db.select({
+      totalProblems: sql<number>`coalesce(sum(${schema.topicContentVersions.problemsCount}), 0)`,
+      totalExamples: sql<number>`coalesce(sum(${schema.topicContentVersions.examplesCount}), 0)`,
+    }).from(schema.topicContentVersions),
     db
       .select({ total: sql<number>`coalesce(sum(${schema.llmUsage.costCents}), 0)` })
       .from(schema.llmUsage),
@@ -64,10 +65,6 @@ adminRoutes.get("/stats", async (c) => {
       .select({ total: sql<number>`coalesce(sum(${schema.llmUsage.costCents}), 0)` })
       .from(schema.llmUsage)
       .where(gte(schema.llmUsage.createdAt, monthStart)),
-    d1.prepare("SELECT locale, SUM(CASE WHEN source = 'instructional' THEN cnt ELSE 0 END) AS instructional, SUM(CASE WHEN source = 'assessment' THEN cnt ELSE 0 END) AS assessment FROM (SELECT locale, count(*) as cnt, 'instructional' as source FROM instructional_content GROUP BY locale UNION ALL SELECT locale, count(*) as cnt, 'assessment' as source FROM assessment_content GROUP BY locale) GROUP BY locale ORDER BY (instructional + assessment) DESC")
-      .all<{ locale: string; instructional: number; assessment: number }>(),
-    d1.prepare("SELECT flavor, SUM(CASE WHEN source = 'instructional' THEN cnt ELSE 0 END) AS instructional, SUM(CASE WHEN source = 'assessment' THEN cnt ELSE 0 END) AS assessment FROM (SELECT flavor, count(*) as cnt, 'instructional' as source FROM instructional_content GROUP BY flavor UNION ALL SELECT flavor, count(*) as cnt, 'assessment' as source FROM assessment_content GROUP BY flavor) GROUP BY flavor ORDER BY (instructional + assessment) DESC")
-      .all<{ flavor: string; instructional: number; assessment: number }>(),
   ]);
 
   return c.json({
@@ -75,12 +72,12 @@ adminRoutes.get("/stats", async (c) => {
     totalFamilies: familyCount[0].count,
     totalTopics: topicCount[0].count,
     totalReviews: reviewCount[0].count,
-    totalInstructionalContent: instructionalCount[0].count,
-    totalAssessmentContent: assessmentCount[0].count,
+    totalInstructionalContent: contentCounts[0].totalExamples,
+    totalAssessmentContent: contentCounts[0].totalProblems,
     llmCostCentsAllTime: llmCostAll[0].total,
     llmCostCentsThisMonth: llmCostMonth[0].total,
-    contentByLocale: contentByLocale.results,
-    contentByFlavor: contentByFlavor.results,
+    contentByLocale: [], // Dimension breakdowns now in R2 manifests — will be in Analytics Engine (Phase 5)
+    contentByFlavor: [],
   });
 });
 
@@ -295,31 +292,24 @@ adminRoutes.get("/analytics/content-quality", async (c) => {
     uniqueLearners: number;
   }>();
 
-  // Per-problem accuracy breakdown (only for reviews that tracked assessmentContentId)
+  // Per-problem accuracy breakdown from review_log (problem text now in R2, not D1)
   const problemQuality = await d1.prepare(`
     SELECT
       r.assessment_content_id AS assessmentContentId,
       r.topic_id AS topicId,
-      ac.question,
-      ac.difficulty,
-      ac.type,
       COUNT(*) AS attempts,
       SUM(CASE WHEN r.correct THEN 1 ELSE 0 END) AS correct,
       ROUND(AVG(CASE WHEN r.correct THEN 1.0 ELSE 0.0 END), 4) AS accuracy,
       ROUND(COALESCE(AVG(r.hints_used), 0), 2) AS avgHints
     FROM review_log r
-    JOIN assessment_content ac ON r.assessment_content_id = ac.id
     WHERE r.assessment_content_id IS NOT NULL
-    GROUP BY r.assessment_content_id, r.topic_id, ac.question, ac.difficulty, ac.type
+    GROUP BY r.assessment_content_id, r.topic_id
     HAVING attempts >= 3
     ORDER BY accuracy ASC
     LIMIT 100
   `).all<{
     assessmentContentId: string;
     topicId: string;
-    question: string;
-    difficulty: string;
-    type: string;
     attempts: number;
     correct: number;
     accuracy: number;
@@ -378,34 +368,31 @@ adminRoutes.get("/analytics/difficulty-spikes", async (c) => {
 adminRoutes.get("/analytics/content-versions", async (c) => {
   const d1 = c.env.DB;
 
-  // Compare accuracy before vs after content updates
-  // Uses instructional_content updated_at as the "version change" timestamp
+  // Compare accuracy across content versions using review_log.content_version
+  // Full content version comparison will use Analytics Engine (Phase 5)
   const versionComparison = await d1.prepare(`
     SELECT
-      ic.topic_id AS topicId,
+      r.topic_id AS topicId,
       t.name AS topicName,
-      ic.version,
-      ic.updated_at AS contentUpdatedAt,
-      COUNT(CASE WHEN r.created_at < ic.updated_at THEN 1 END) AS attemptsBefore,
-      ROUND(AVG(CASE WHEN r.created_at < ic.updated_at THEN (CASE WHEN r.correct THEN 1.0 ELSE 0.0 END) END), 4) AS accuracyBefore,
-      COUNT(CASE WHEN r.created_at >= ic.updated_at THEN 1 END) AS attemptsAfter,
-      ROUND(AVG(CASE WHEN r.created_at >= ic.updated_at THEN (CASE WHEN r.correct THEN 1.0 ELSE 0.0 END) END), 4) AS accuracyAfter
-    FROM instructional_content ic
-    JOIN topics t ON ic.topic_id = t.id
-    JOIN review_log r ON r.topic_id = ic.topic_id
-    WHERE ic.version > 1
-    GROUP BY ic.topic_id, t.name, ic.version, ic.updated_at
-    HAVING attemptsBefore >= 3 AND attemptsAfter >= 3
-    ORDER BY (accuracyAfter - accuracyBefore) DESC
+      r.content_version AS contentVersion,
+      COUNT(*) AS attempts,
+      SUM(CASE WHEN r.correct THEN 1 ELSE 0 END) AS correct,
+      ROUND(AVG(CASE WHEN r.correct THEN 1.0 ELSE 0.0 END), 4) AS accuracy,
+      ROUND(AVG(r.response_ms), 0) AS avgResponseMs
+    FROM review_log r
+    JOIN topics t ON r.topic_id = t.id
+    WHERE r.content_version IS NOT NULL
+    GROUP BY r.topic_id, t.name, r.content_version
+    HAVING attempts >= 3
+    ORDER BY r.topic_id, accuracy DESC
   `).all<{
     topicId: string;
     topicName: string;
-    version: number;
-    contentUpdatedAt: string;
-    attemptsBefore: number;
-    accuracyBefore: number;
-    attemptsAfter: number;
-    accuracyAfter: number;
+    contentVersion: string;
+    attempts: number;
+    correct: number;
+    accuracy: number;
+    avgResponseMs: number;
   }>();
 
   return c.json({ versionComparison: versionComparison.results });
@@ -436,7 +423,7 @@ adminRoutes.get("/system-stats", async (c) => {
       .from(schema.reviewLog)
       .where(gte(schema.reviewLog.createdAt, thirtyDaysAgo)),
 
-    d1.prepare("SELECT type, count(*) as count FROM (SELECT 'instructional' as type FROM instructional_content UNION ALL SELECT type FROM assessment_content) GROUP BY type ORDER BY count DESC")
+    d1.prepare("SELECT 'problems' as type, coalesce(sum(problems_count), 0) as count FROM topic_content_versions UNION ALL SELECT 'examples' as type, coalesce(sum(examples_count), 0) as count FROM topic_content_versions")
       .all<{ type: string; count: number }>(),
 
     db.select({
@@ -449,8 +436,8 @@ adminRoutes.get("/system-stats", async (c) => {
       .from(schema.llmUsage)
       .where(gte(schema.llmUsage.createdAt, monthStart)),
 
-    d1.prepare("SELECT week, SUM(CASE WHEN source = 'instructional' THEN cnt ELSE 0 END) AS instructional, SUM(CASE WHEN source = 'assessment' THEN cnt ELSE 0 END) AS assessment FROM (SELECT strftime('%Y-W%W', created_at) as week, count(*) as cnt, 'instructional' as source FROM instructional_content WHERE created_at >= ? GROUP BY week UNION ALL SELECT strftime('%Y-W%W', created_at) as week, count(*) as cnt, 'assessment' as source FROM assessment_content WHERE created_at >= ? GROUP BY week) GROUP BY week ORDER BY week")
-      .bind(eightWeeksAgo, eightWeeksAgo)
+    d1.prepare("SELECT strftime('%Y-W%W', generated_at) as week, sum(problems_count) AS assessment, sum(examples_count) AS instructional FROM topic_content_versions WHERE generated_at >= ? GROUP BY week ORDER BY week")
+      .bind(eightWeeksAgo)
       .all<{ week: string; instructional: number; assessment: number }>(),
   ]);
 
@@ -524,32 +511,12 @@ adminRoutes.get("/content-matrix", async (c) => {
      ORDER BY t.grade_level, t.name`
   ).all<{ id: string; name: string; gradeLevel: number; disciplineId: string; disciplineName: string }>();
 
-  // Instructional content: count per topic × flavor × locale × presentation
-  const instructionalResult = await d1.prepare(
-    `SELECT topic_id AS topicId, flavor, locale, presentation,
-            COUNT(*) AS count, MAX(version) AS maxVersion,
-            MAX(CASE WHEN assets_json IS NOT NULL AND assets_json != '' AND assets_json != '[]' THEN 1 ELSE 0 END) AS hasAssets
-     FROM instructional_content
-     GROUP BY topic_id, flavor, locale, presentation`
-  ).all<{ topicId: string; flavor: string; locale: string; presentation: string; count: number; maxVersion: number; hasAssets: number }>();
-
-  // Assessment content: count per topic × flavor × locale, with difficulty + type breakdown
-  const assessmentResult = await d1.prepare(
-    `SELECT topic_id AS topicId, flavor, locale,
-            COUNT(*) AS poolSize,
-            SUM(CASE WHEN difficulty = 'easy' THEN 1 ELSE 0 END) AS easy,
-            SUM(CASE WHEN difficulty = 'medium' THEN 1 ELSE 0 END) AS medium,
-            SUM(CASE WHEN difficulty = 'hard' THEN 1 ELSE 0 END) AS hard
-     FROM assessment_content
-     GROUP BY topic_id, flavor, locale`
-  ).all<{ topicId: string; flavor: string; locale: string; poolSize: number; easy: number; medium: number; hard: number }>();
-
-  // Assessment type distribution per topic
-  const assessmentTypesResult = await d1.prepare(
-    `SELECT topic_id AS topicId, type, COUNT(*) AS count
-     FROM assessment_content
-     GROUP BY topic_id, type`
-  ).all<{ topicId: string; type: string; count: number }>();
+  // Content counts from topic_content_versions (content now in R2)
+  const contentVersionsResult = await d1.prepare(
+    `SELECT topic_id AS topicId, problems_count AS problemsCount, examples_count AS examplesCount,
+            content_hash AS contentHash, bundle_version AS bundleVersion
+     FROM topic_content_versions`
+  ).all<{ topicId: string; problemsCount: number; examplesCount: number; contentHash: string; bundleVersion: number }>();
 
   // Per-topic accuracy from review_log for quality overlay
   const accuracyResult = await d1.prepare(
@@ -560,33 +527,13 @@ adminRoutes.get("/content-matrix", async (c) => {
      GROUP BY topic_id`
   ).all<{ topicId: string; accuracy: number; attempts: number }>();
 
-  // Build per-topic summary
   const topics = topicsResult.results ?? [];
-  const instructionalRows = instructionalResult.results ?? [];
-  const assessmentRows = assessmentResult.results ?? [];
-  const typeRows = assessmentTypesResult.results ?? [];
+  const contentVersionRows = contentVersionsResult.results ?? [];
   const accuracyRows = accuracyResult.results ?? [];
 
-  // Index data by topicId
-  const instructionalByTopic = new Map<string, typeof instructionalRows>();
-  for (const row of instructionalRows) {
-    const arr = instructionalByTopic.get(row.topicId) ?? [];
-    arr.push(row);
-    instructionalByTopic.set(row.topicId, arr);
-  }
-
-  const assessmentByTopic = new Map<string, typeof assessmentRows>();
-  for (const row of assessmentRows) {
-    const arr = assessmentByTopic.get(row.topicId) ?? [];
-    arr.push(row);
-    assessmentByTopic.set(row.topicId, arr);
-  }
-
-  const typesByTopic = new Map<string, Record<string, number>>();
-  for (const row of typeRows) {
-    const map = typesByTopic.get(row.topicId) ?? {};
-    map[row.type] = row.count;
-    typesByTopic.set(row.topicId, map);
+  const contentByTopic = new Map<string, typeof contentVersionRows[0]>();
+  for (const row of contentVersionRows) {
+    contentByTopic.set(row.topicId, row);
   }
 
   const accuracyByTopic = new Map<string, { accuracy: number; attempts: number }>();
@@ -594,48 +541,13 @@ adminRoutes.get("/content-matrix", async (c) => {
     accuracyByTopic.set(row.topicId, { accuracy: row.accuracy, attempts: row.attempts });
   }
 
-  // Collect all unique flavors, locales, presentations
-  const allFlavors = new Set<string>();
-  const allLocales = new Set<string>();
-  for (const row of instructionalRows) {
-    allFlavors.add(row.flavor);
-    allLocales.add(row.locale);
-  }
-  for (const row of assessmentRows) {
-    allFlavors.add(row.flavor);
-    allLocales.add(row.locale);
-  }
-
   const TARGET_POOL_SIZE = 15;
 
   const matrix = topics.map((t) => {
-    const icRows = instructionalByTopic.get(t.id) ?? [];
-    const acRows = assessmentByTopic.get(t.id) ?? [];
-    const types = typesByTopic.get(t.id) ?? {};
+    const cv = contentByTopic.get(t.id);
     const quality = accuracyByTopic.get(t.id);
-
-    const totalInstructional = icRows.reduce((s, r) => s + r.count, 0);
-    const totalAssessment = acRows.reduce((s, r) => s + r.poolSize, 0);
-    const hasAssets = icRows.some((r) => r.hasAssets === 1);
-
-    // Count distinct flavor×locale combos that exist
-    const icCombos = new Set(icRows.map((r) => `${r.flavor}|${r.locale}`));
-    const acCombos = new Set(acRows.map((r) => `${r.flavor}|${r.locale}`));
-
-    // Total possible combos
-    const totalPossibleCombos = allFlavors.size * allLocales.size;
-
-    // Missing combos
-    const icMissing = totalPossibleCombos - icCombos.size;
-    const acMissing = totalPossibleCombos - acCombos.size;
-
-    // Pool below target?
-    const poolBelowTarget = acRows.some((r) => r.poolSize < TARGET_POOL_SIZE);
-
-    // Difficulty balance: flag if any locale×flavor has 0 of any difficulty
-    const missingDifficulties = acRows.filter(
-      (r) => r.easy === 0 || r.medium === 0 || r.hard === 0
-    ).length > 0;
+    const totalAssessment = cv?.problemsCount ?? 0;
+    const totalInstructional = cv?.examplesCount ?? 0;
 
     return {
       topicId: t.id,
@@ -645,46 +557,23 @@ adminRoutes.get("/content-matrix", async (c) => {
       disciplineName: t.disciplineName,
       totalInstructional,
       totalAssessment,
-      hasAssets,
-      instructional: icRows.map((r) => ({
-        flavor: r.flavor,
-        locale: r.locale,
-        presentation: r.presentation,
-        count: r.count,
-        maxVersion: r.maxVersion,
-        hasAssets: r.hasAssets === 1,
-      })),
-      assessment: acRows.map((r) => ({
-        flavor: r.flavor,
-        locale: r.locale,
-        poolSize: r.poolSize,
-        easy: r.easy,
-        medium: r.medium,
-        hard: r.hard,
-      })),
-      questionTypes: types,
+      hasAssets: false, // Asset tracking via R2 manifests (future)
+      instructional: [],  // Dimension breakdowns now in R2 manifests
+      assessment: [],
+      questionTypes: {},
       quality: quality ?? null,
       gaps: {
-        icMissing,
-        acMissing,
-        poolBelowTarget,
-        missingDifficulties,
+        icMissing: totalInstructional === 0 ? 1 : 0,
+        acMissing: totalAssessment === 0 ? 1 : 0,
+        poolBelowTarget: totalAssessment < TARGET_POOL_SIZE,
+        missingDifficulties: false, // Difficulty breakdown in R2 manifests
       },
     };
   });
 
-  // Gap analysis summary
   const totalTopics = topics.length;
-  const totalPossibleCombos = allFlavors.size * allLocales.size;
-  const totalMatrixCells = totalTopics * totalPossibleCombos * 2; // ×2 for IC + AC
-  const filledIcCells = instructionalRows.length;
-  const filledAcCells = assessmentRows.length;
-  const filledCells = filledIcCells + filledAcCells;
-  const fillPercentage = totalMatrixCells > 0 ? filledCells / totalMatrixCells : 0;
-
   const topicsWithPoolBelowTarget = matrix.filter((m) => m.gaps.poolBelowTarget).length;
-  const topicsWithMissingDifficulties = matrix.filter((m) => m.gaps.missingDifficulties).length;
-  const topicsWithNoAssets = matrix.filter((m) => !m.hasAssets).length;
+  const topicsWithNoContent = matrix.filter((m) => m.totalAssessment === 0 && m.totalInstructional === 0).length;
   const topicsWithLowQuality = matrix.filter((m) => m.quality && m.quality.accuracy < 0.8).length;
 
   return c.json({
@@ -695,18 +584,18 @@ adminRoutes.get("/content-matrix", async (c) => {
     })),
     matrix,
     dimensions: {
-      flavors: [...allFlavors].sort(),
-      locales: [...allLocales].sort(),
+      flavors: ["classic"],
+      locales: ["en"],
       targetPoolSize: TARGET_POOL_SIZE,
     },
     gapSummary: {
       totalTopics,
-      totalMatrixCells,
-      filledCells,
-      fillPercentage,
+      totalMatrixCells: totalTopics * 2,
+      filledCells: matrix.filter((m) => m.totalAssessment > 0).length + matrix.filter((m) => m.totalInstructional > 0).length,
+      fillPercentage: totalTopics > 0 ? (matrix.filter((m) => m.totalAssessment > 0).length + matrix.filter((m) => m.totalInstructional > 0).length) / (totalTopics * 2) : 0,
       topicsWithPoolBelowTarget,
-      topicsWithMissingDifficulties,
-      topicsWithNoAssets,
+      topicsWithMissingDifficulties: 0, // Now tracked in R2 manifests
+      topicsWithNoAssets: topicsWithNoContent,
       topicsWithLowQuality,
     },
   });

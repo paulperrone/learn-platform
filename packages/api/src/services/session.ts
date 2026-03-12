@@ -79,13 +79,16 @@ export function createSessionService(db: DB, fireDiagnostic?: FireDiagnosticConf
     excludeTopicIds: string[] = []
   ): Promise<string | null> {
     // Check if the last problem has an explicit keyPrerequisiteId
+    // Fetch topic's problems from R2 and look up by ID
     if (lastProblemId) {
-      const [ac] = await db
-        .select({ keyPrerequisiteId: schema.assessmentContent.keyPrerequisiteId })
-        .from(schema.assessmentContent)
-        .where(eq(schema.assessmentContent.id, lastProblemId));
-      if (ac?.keyPrerequisiteId && !excludeTopicIds.includes(ac.keyPrerequisiteId)) {
-        return ac.keyPrerequisiteId;
+      const topic = await graph.getTopic(topicId);
+      const discipline = topic?.disciplineId;
+      if (discipline) {
+        const problems = await content.getTopicProblems({ topicId, discipline, contentDepth: "survey", presentation: "standard" });
+        const match = problems.find((p) => p.id === lastProblemId);
+        if (match?.keyPrerequisiteId && !excludeTopicIds.includes(match.keyPrerequisiteId)) {
+          return match.keyPrerequisiteId;
+        }
       }
     }
 
@@ -122,23 +125,12 @@ export function createSessionService(db: DB, fireDiagnostic?: FireDiagnosticConf
     return prereqStates[0].topicId;
   }
 
-  // Legacy unfiltered queries — used only for grading (needs all problems for a topic)
+  // Fetch all problems for a topic from R2 — used for grading (needs full pool)
   async function getAllTopicProblems(topicId: string): Promise<Problem[]> {
-    const rows = await db
-      .select()
-      .from(schema.assessmentContent)
-      .where(eq(schema.assessmentContent.topicId, topicId));
-    return rows.map((r) => ({
-      id: r.id,
-      topicId: r.topicId,
-      difficulty: r.difficulty as Problem["difficulty"],
-      question: r.question,
-      answer: r.answer,
-      hints: JSON.parse(r.hintsJson),
-      solution: r.solution,
-      type: r.type as Problem["type"],
-      typeProperties: r.typeProperties ? JSON.parse(r.typeProperties) : undefined,
-    }));
+    const topic = await graph.getTopic(topicId);
+    const discipline = topic?.disciplineId;
+    if (!discipline) return [];
+    return content.getTopicProblems({ topicId, discipline, contentDepth: "survey", presentation: "standard" });
   }
 
   async function resolveContentQuery(state: SessionState, topicId: string): Promise<ContentQuery> {

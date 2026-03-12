@@ -11,8 +11,7 @@ import {
   seedLLMUsage,
   seedReviewLog,
   seedOrg,
-  seedInstructionalContent,
-  seedAssessmentContent,
+  seedTopicContentVersion,
   getTestDb,
 } from "../helpers.js";
 import * as schema from "../../db/schema.js";
@@ -35,47 +34,29 @@ describe("admin route auth gating", () => {
 });
 
 describe("admin stats queries (service-level)", () => {
-  it("returns expanded stats with content counts and breakdowns", async () => {
+  it("returns content version counts from topic_content_versions", async () => {
     const db = getTestDb();
 
     // Seed data
     const disc = await seedDiscipline({ id: "admin-q-subj" });
-    const topic = await seedTopic(disc.id, { id: "admin-q-topic" });
+    const topic1 = await seedTopic(disc.id, { id: "admin-q-topic-1" });
+    const topic2 = await seedTopic(disc.id, { id: "admin-q-topic-2" });
     await seedOrg({ id: "admin-q-org" });
-    await seedInstructionalContent(topic.id, { id: "admin-q-ic-1", locale: "en", flavor: "classic" });
-    await seedInstructionalContent(topic.id, { id: "admin-q-ic-2", locale: "es", flavor: "adventure" });
-    await seedAssessmentContent(topic.id, { id: "admin-q-ac-1", locale: "en", flavor: "classic" });
-    await seedAssessmentContent(topic.id, { id: "admin-q-ac-2", locale: "en", flavor: "classic" });
-    await seedAssessmentContent(topic.id, { id: "admin-q-ac-3", locale: "es", flavor: "adventure" });
+    await seedTopicContentVersion(topic1.id, { problemsCount: 15, examplesCount: 2 });
+    await seedTopicContentVersion(topic2.id, { problemsCount: 10, examplesCount: 1 });
 
-    // Verify counts
-    const [icCount] = await db.select({ count: sql<number>`count(*)` }).from(schema.instructionalContent);
-    expect(icCount.count).toBeGreaterThanOrEqual(2);
+    // Verify counts from topic_content_versions
+    const [tcvCount] = await db.select({ count: sql<number>`count(*)` }).from(schema.topicContentVersions);
+    expect(tcvCount.count).toBeGreaterThanOrEqual(2);
 
-    const [acCount] = await db.select({ count: sql<number>`count(*)` }).from(schema.assessmentContent);
-    expect(acCount.count).toBeGreaterThanOrEqual(3);
+    // Verify aggregate problems/examples counts
+    const [totals] = await db.select({
+      totalProblems: sql<number>`coalesce(sum(${schema.topicContentVersions.problemsCount}), 0)`,
+      totalExamples: sql<number>`coalesce(sum(${schema.topicContentVersions.examplesCount}), 0)`,
+    }).from(schema.topicContentVersions);
 
-    // Verify locale breakdown via Drizzle groupBy
-    const byLocaleIC = await db.select({
-      locale: schema.instructionalContent.locale,
-      count: sql<number>`count(*)`,
-    }).from(schema.instructionalContent).groupBy(schema.instructionalContent.locale);
-
-    const enIC = byLocaleIC.find((r) => r.locale === "en");
-    expect(enIC).toBeDefined();
-    expect(enIC!.count).toBeGreaterThanOrEqual(1);
-
-    const esIC = byLocaleIC.find((r) => r.locale === "es");
-    expect(esIC).toBeDefined();
-    expect(esIC!.count).toBeGreaterThanOrEqual(1);
-
-    // Verify flavor breakdown
-    const byFlavorAC = await db.select({
-      flavor: schema.assessmentContent.flavor,
-      count: sql<number>`count(*)`,
-    }).from(schema.assessmentContent).groupBy(schema.assessmentContent.flavor);
-
-    expect(byFlavorAC.length).toBeGreaterThanOrEqual(2);
+    expect(totals.totalProblems).toBeGreaterThanOrEqual(25);
+    expect(totals.totalExamples).toBeGreaterThanOrEqual(3);
   });
 });
 

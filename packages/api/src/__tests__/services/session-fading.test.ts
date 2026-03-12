@@ -9,6 +9,7 @@ import {
   seedAssessmentContent,
   seedInstructionalContent,
   seedReviewLog,
+  getTestR2Bucket,
 } from "../helpers.js";
 import { createSessionService } from "../../services/session.js";
 import type { SessionItem } from "../../services/session.js";
@@ -39,7 +40,8 @@ const MULTI_STEP_EXAMPLE = JSON.stringify([
 ]);
 
 async function setupTopicWithSteps(id: string, stepsJson = MULTI_STEP_EXAMPLE) {
-  const disc = await seedDiscipline({ id: `${PREFIX}-subj-${id}` });
+  const discId = `${PREFIX}-subj-${id}`;
+  const disc = await seedDiscipline({ id: discId });
   const topic = await seedTopic(disc.id, {
     id: `${PREFIX}-topic-${id}`,
     name: `Fading Topic ${id}`,
@@ -47,14 +49,17 @@ async function setupTopicWithSteps(id: string, stepsJson = MULTI_STEP_EXAMPLE) {
   await seedAssessmentContent(topic.id, {
     id: `${PREFIX}-ac-easy-${id}`,
     difficulty: "easy",
+    disciplineId: discId,
   });
   await seedAssessmentContent(topic.id, {
     id: `${PREFIX}-ac-med-${id}`,
     difficulty: "medium",
+    disciplineId: discId,
   });
   await seedInstructionalContent(topic.id, {
     id: `${PREFIX}-ic-${id}`,
     stepsJson,
+    disciplineId: discId,
   });
   return { disc, topic };
 }
@@ -65,7 +70,7 @@ describe("Worked Example Fading", () => {
       const db = getTestDb();
       const { topic } = await setupTopicWithSteps("first-0");
       const user = await seedUser({ id: `${PREFIX}-user-first-0` });
-      const session = createSessionService(db);
+      const session = createSessionService(db, undefined, getTestR2Bucket());
       const { sessionId, firstItem } = await session.startSession(user.id);
 
       // First item is pretest; respond to advance to instruction
@@ -92,7 +97,7 @@ describe("Worked Example Fading", () => {
       // Seed 1 prior instruction review log entry
       await seedReviewLog(user.id, topic.id, { phase: "instruction" });
 
-      const session = createSessionService(db);
+      const session = createSessionService(db, undefined, getTestR2Bucket());
       const { sessionId, firstItem } = await session.startSession(user.id);
 
       // Advance past pretest to instruction
@@ -116,7 +121,7 @@ describe("Worked Example Fading", () => {
       await seedReviewLog(user.id, topic.id, { phase: "instruction", id: `${PREFIX}-rev-2a` });
       await seedReviewLog(user.id, topic.id, { phase: "instruction", id: `${PREFIX}-rev-2b` });
 
-      const session = createSessionService(db);
+      const session = createSessionService(db, undefined, getTestR2Bucket());
       const { sessionId } = await session.startSession(user.id);
       const instructionItem = await session.respond(sessionId, {
         answer: "wrong",
@@ -142,7 +147,7 @@ describe("Worked Example Fading", () => {
         });
       }
 
-      const session = createSessionService(db);
+      const session = createSessionService(db, undefined, getTestR2Bucket());
       const { sessionId } = await session.startSession(user.id);
       const instructionItem = await session.respond(sessionId, {
         answer: "wrong",
@@ -172,7 +177,7 @@ describe("Worked Example Fading", () => {
         });
       }
 
-      const session = createSessionService(db);
+      const session = createSessionService(db, undefined, getTestR2Bucket());
       const { sessionId } = await session.startSession(user.id);
       const instructionItem = await session.respond(sessionId, {
         answer: "wrong",
@@ -193,7 +198,7 @@ describe("Worked Example Fading", () => {
       // Seed 1 prior instruction exposure → base fading = 1
       await seedReviewLog(user.id, topic.id, { phase: "instruction" });
 
-      const session = createSessionService(db);
+      const session = createSessionService(db, undefined, getTestR2Bucket());
       const { sessionId } = await session.startSession(user.id);
 
       // Respond to pretest → advances to instruction (scheduleReview creates UTS)
@@ -229,7 +234,7 @@ describe("Worked Example Fading", () => {
 
       await seedReviewLog(user.id, topic.id, { phase: "instruction" });
 
-      const session = createSessionService(db);
+      const session = createSessionService(db, undefined, getTestR2Bucket());
       const { sessionId } = await session.startSession(user.id);
 
       // Respond to pretest → advances to instruction
@@ -249,7 +254,7 @@ describe("Worked Example Fading", () => {
     it("returns fadingLevel 0 for anonymous users", async () => {
       const db = getTestDb();
       await setupTopicWithSteps("anon-1");
-      const session = createSessionService(db);
+      const session = createSessionService(db, undefined, getTestR2Bucket());
       const { sessionId, firstItem } = await session.startAnonymousSession(
         `${PREFIX}-anon-token-1`,
       );
@@ -272,7 +277,7 @@ describe("Worked Example Fading", () => {
       const db = getTestDb();
       await setupTopicWithSteps("meta-1");
       const user = await seedUser({ id: `${PREFIX}-user-meta-1` });
-      const session = createSessionService(db);
+      const session = createSessionService(db, undefined, getTestR2Bucket());
       const { sessionId } = await session.startSession(user.id);
 
       const instructionItem = await session.respond(sessionId, {

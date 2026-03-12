@@ -8,6 +8,7 @@ import {
   seedInstructionalContent,
   seedPrerequisite,
   getTestDb,
+  getTestR2Bucket,
 } from "../helpers.js";
 import * as schema from "../../db/schema.js";
 import { eq, and } from "drizzle-orm";
@@ -32,13 +33,13 @@ beforeAll(async () => {
     await seedPrerequisite("pres-t1", "pres-t4");
 
     // Assessment content for each topic
-    await seedAssessmentContent("pres-t1", { id: "pres-ac1", question: "Count to 3", answer: "3" });
-    await seedAssessmentContent("pres-t2", { id: "pres-ac2", question: "1 + 1 = ?", answer: "2" });
-    await seedAssessmentContent("pres-t3", { id: "pres-ac3", question: "2 x 3 = ?", answer: "6" });
-    await seedAssessmentContent("pres-t4", { id: "pres-ac4", question: "3 - 1 = ?", answer: "2" });
+    await seedAssessmentContent("pres-t1", { id: "pres-ac1", question: "Count to 3", answer: "3", disciplineId: "pres-disc" });
+    await seedAssessmentContent("pres-t2", { id: "pres-ac2", question: "1 + 1 = ?", answer: "2", disciplineId: "pres-disc" });
+    await seedAssessmentContent("pres-t3", { id: "pres-ac3", question: "2 x 3 = ?", answer: "6", disciplineId: "pres-disc" });
+    await seedAssessmentContent("pres-t4", { id: "pres-ac4", question: "3 - 1 = ?", answer: "2", disciplineId: "pres-disc" });
 
     // Instructional content
-    await seedInstructionalContent("pres-t1", { id: "pres-ic1" });
+    await seedInstructionalContent("pres-t1", { id: "pres-ic1", disciplineId: "pres-disc" });
 
     seeded = true;
   }
@@ -48,7 +49,7 @@ describe("diagnostic presentation distribution seeding", () => {
   it("authenticated diagnostic creates user_discipline_presentation row", async () => {
     const db = getTestDb();
     const user = await seedUser({ id: `pres-user-${Date.now()}` });
-    const diagnostic = createDiagnosticService(db);
+    const diagnostic = createDiagnosticService(db, getTestR2Bucket());
 
     const startResult = await diagnostic.startDiagnostic({
       userId: user.id,
@@ -95,7 +96,7 @@ describe("diagnostic presentation distribution seeding", () => {
 
   it("anonymous diagnostic does NOT create distribution row", async () => {
     const db = getTestDb();
-    const diagnostic = createDiagnosticService(db);
+    const diagnostic = createDiagnosticService(db, getTestR2Bucket());
     const token = `anon-pres-${Date.now()}`;
 
     const startResult = await diagnostic.startDiagnostic({
@@ -129,7 +130,7 @@ describe("diagnostic presentation distribution seeding", () => {
   it("user with no birthYear gets standard-centered distribution", async () => {
     const db = getTestDb();
     const user = await seedUser({ id: `pres-noage-${Date.now()}` });
-    const diagnostic = createDiagnosticService(db);
+    const diagnostic = createDiagnosticService(db, getTestR2Bucket());
 
     const startResult = await diagnostic.startDiagnostic({
       userId: user.id,
@@ -166,7 +167,7 @@ describe("diagnostic presentation distribution seeding", () => {
   it("re-running diagnostic overwrites previous distribution", async () => {
     const db = getTestDb();
     const user = await seedUser({ id: `pres-rerun-${Date.now()}` });
-    const diagnostic = createDiagnosticService(db);
+    const diagnostic = createDiagnosticService(db, getTestR2Bucket());
 
     // Run first diagnostic
     const start1 = await diagnostic.startDiagnostic({

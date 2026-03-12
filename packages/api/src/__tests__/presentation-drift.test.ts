@@ -7,6 +7,7 @@ import {
   seedDiscipline,
   seedTopic,
   seedUserDisciplinePresentation,
+  getTestR2Bucket,
 } from "./helpers.js";
 import {
   nudgeDistribution,
@@ -325,7 +326,7 @@ describe("drift convergence across sessions", () => {
 
 describe("applyNudge (integration)", () => {
   const db = getTestDb();
-  const content = createContentService(db);
+  const content = createContentService(db, getTestR2Bucket());
 
   beforeAll(async () => {
     await resetDb();

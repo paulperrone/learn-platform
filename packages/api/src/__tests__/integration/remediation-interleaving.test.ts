@@ -10,6 +10,7 @@ import {
   seedInstructionalContent,
   seedPrerequisite,
   seedUserTopicState,
+  getTestR2Bucket,
 } from "../helpers.js";
 import { createSessionService } from "../../services/session.js";
 import type { SessionItem } from "../../services/session.js";
@@ -122,7 +123,7 @@ describe("remediation-interleaving integration", () => {
 
   it("remediation inserts prerequisite review then returns to original topic", async () => {
     const { db, user } = await setupReviewGraph();
-    const session = createSessionService(db);
+    const session = createSessionService(db, undefined, getTestR2Bucket());
 
     const { sessionId, firstItem } = await session.startSession(user.id);
 
@@ -162,7 +163,7 @@ describe("remediation-interleaving integration", () => {
 
   it("remediation rotates to next prerequisite after 2 failures", async () => {
     const { db, user } = await setupReviewGraph();
-    const session = createSessionService(db);
+    const session = createSessionService(db, undefined, getTestR2Bucket());
 
     // Seed multiplication with both counting and addition as prereqs (both mastered)
     // counting has lower stability → should be targeted first
@@ -203,7 +204,7 @@ describe("remediation-interleaving integration", () => {
 
   it("session continues to next topic after remediation success", async () => {
     const { db, user } = await setupReviewGraph();
-    const session = createSessionService(db);
+    const session = createSessionService(db, undefined, getTestR2Bucket());
 
     const { sessionId, firstItem } = await session.startSession(user.id);
 
@@ -270,7 +271,7 @@ describe("remediation-interleaving integration", () => {
       due: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString(),
     });
 
-    const session = createSessionService(db);
+    const session = createSessionService(db, undefined, getTestR2Bucket());
     const { sessionId, firstItem } = await session.startSession(user.id);
 
     // Fast-forward to independent

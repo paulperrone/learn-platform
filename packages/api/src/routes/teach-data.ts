@@ -2,6 +2,7 @@ import { Hono } from "hono";
 import { createAuth } from "../lib/auth.js";
 import { getDb } from "../db/index.js";
 import * as schema from "../db/schema.js";
+import { createContentService } from "../services/content.js";
 import { eq, and, desc } from "drizzle-orm";
 import type { Env } from "../index.js";
 
@@ -243,12 +244,16 @@ teachDataRoutes.get("/assignments/code/:code", async (c) => {
     return c.json({ error: "Assignment has expired" }, 410);
   }
 
-  // Get problems for the topic
-  const problems = await db
-    .select()
-    .from(schema.assessmentContent)
-    .where(eq(schema.assessmentContent.topicId, assignment[0].topicId))
-    .limit(assignment[0].maxProblems ?? 10);
+  // Get problems for the topic from R2
+  const contentSvc = createContentService(db, c.env.CONTENT);
+  const [topicRow] = await db.select({ disciplineId: schema.topics.disciplineId }).from(schema.topics).where(eq(schema.topics.id, assignment[0].topicId));
+  const allProblems = await contentSvc.getTopicProblems({
+    topicId: assignment[0].topicId,
+    discipline: topicRow?.disciplineId,
+    contentDepth: "survey",
+    presentation: "standard",
+  });
+  const problems = allProblems.slice(0, assignment[0].maxProblems ?? 10);
 
   return c.json({ assignment: assignment[0], problems });
 });

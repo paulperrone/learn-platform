@@ -28,7 +28,6 @@ describe("Session Mix - Interleaving and Review Balance", () => {
     await db.delete(schema.userTopicState);
     await db.delete(schema.encompassings);
     await db.delete(schema.prerequisites);
-    await db.delete(schema.assessmentContent);
     await db.delete(schema.topics);
     await db.delete(schema.users);
 

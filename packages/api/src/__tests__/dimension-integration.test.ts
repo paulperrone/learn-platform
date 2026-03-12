@@ -10,6 +10,7 @@ import {
   seedInstructionalContent,
   seedPrerequisite,
   seedUserTopicDepth,
+  getTestR2Bucket,
 } from "./helpers.js";
 import { createContentService } from "../services/content.js";
 import { createGraphService } from "../services/graph.js";
@@ -17,7 +18,7 @@ import * as schema from "../db/schema.js";
 
 describe("dimension system integration", () => {
   const db = getTestDb();
-  const content = createContentService(db);
+  const content = createContentService(db, getTestR2Bucket());
   const graph = createGraphService(db);
 
   beforeAll(async () => {
@@ -49,12 +50,14 @@ describe("dimension system integration", () => {
           difficulty: "easy",
           question: `${topicId}: simple version`,
           answer: "1",
+          disciplineId: "integ-math",
         });
         await seedInstructionalContent(topicId, {
           id: `${topicId}-ic-primary`,
           presentation: "primary",
           contentDepth: "survey",
           title: `${topicId}: Counting for Little Ones`,
+          disciplineId: "integ-math",
         });
 
         // Intermediate presentation
@@ -65,12 +68,14 @@ describe("dimension system integration", () => {
           difficulty: "medium",
           question: `${topicId}: intermediate version`,
           answer: "2",
+          disciplineId: "integ-math",
         });
         await seedInstructionalContent(topicId, {
           id: `${topicId}-ic-intermediate`,
           presentation: "intermediate",
           contentDepth: "survey",
           title: `${topicId}: Learning to Count`,
+          disciplineId: "integ-math",
         });
 
         // Standard presentation
@@ -81,12 +86,14 @@ describe("dimension system integration", () => {
           difficulty: "medium",
           question: `${topicId}: standard version`,
           answer: "3",
+          disciplineId: "integ-math",
         });
         await seedInstructionalContent(topicId, {
           id: `${topicId}-ic-standard`,
           presentation: "standard",
           contentDepth: "survey",
           title: `${topicId}: Introduction to Counting`,
+          disciplineId: "integ-math",
         });
       }
 
@@ -101,6 +108,7 @@ describe("dimension system integration", () => {
       for (const topicId of topicIds) {
         const problems = await content.getTopicProblems({
           topicId,
+          discipline: "integ-math",
           contentDepth: "survey",
           presentation: pres,
         });
@@ -110,6 +118,7 @@ describe("dimension system integration", () => {
 
         const examples = await content.getTopicExamples({
           topicId,
+          discipline: "integ-math",
           contentDepth: "survey",
           presentation: pres,
         });
@@ -125,6 +134,7 @@ describe("dimension system integration", () => {
       for (const topicId of topicIds) {
         const problems = await content.getTopicProblems({
           topicId,
+          discipline: "integ-math",
           contentDepth: "survey",
           presentation: pres,
         });
@@ -134,6 +144,7 @@ describe("dimension system integration", () => {
 
         const examples = await content.getTopicExamples({
           topicId,
+          discipline: "integ-math",
           contentDepth: "survey",
           presentation: pres,
         });
@@ -150,11 +161,13 @@ describe("dimension system integration", () => {
 
       const youngProblems = await content.getTopicProblems({
         topicId,
+        discipline: "integ-math",
         contentDepth: "survey",
         presentation: youngPres,
       });
       const teenProblems = await content.getTopicProblems({
         topicId,
+        discipline: "integ-math",
         contentDepth: "survey",
         presentation: teenPres,
       });
@@ -180,18 +193,21 @@ describe("dimension system integration", () => {
         contentDepth: "survey",
         question: "Fallback question",
         answer: "42",
+        disciplineId: "integ-fallback-disc",
       });
       await seedInstructionalContent(topicId, {
         id: "integ-fb-ic",
         presentation: "standard",
         contentDepth: "survey",
         title: "Fallback example",
+        disciplineId: "integ-fallback-disc",
       });
     });
 
     it("falls back to standard when primary not available", async () => {
       const problems = await content.getTopicProblems({
         topicId,
+        discipline: "integ-fallback-disc",
         contentDepth: "survey",
         presentation: "primary",
       });
@@ -203,6 +219,7 @@ describe("dimension system integration", () => {
     it("falls back to survey depth when contextual not available", async () => {
       const problems = await content.getTopicProblems({
         topicId,
+        discipline: "integ-fallback-disc",
         contentDepth: "contextual",
         presentation: "standard",
       });
@@ -214,6 +231,7 @@ describe("dimension system integration", () => {
     it("falls back when locale and flavor mismatch", async () => {
       const problems = await content.getTopicProblems({
         topicId,
+        discipline: "integ-fallback-disc",
         contentDepth: "survey",
         presentation: "standard",
         locale: "ja",
@@ -244,6 +262,7 @@ describe("dimension system integration", () => {
         contentDepth: "survey",
         question: "What happened in 1776?",
         answer: "American Revolution",
+        disciplineId: "integ-history",
       });
       await seedAssessmentContent(topicId, {
         id: "integ-spiral-contextual",
@@ -251,18 +270,21 @@ describe("dimension system integration", () => {
         contentDepth: "contextual",
         question: "What caused the American Revolution?",
         answer: "Taxation without representation",
+        disciplineId: "integ-history",
       });
       await seedInstructionalContent(topicId, {
         id: "integ-spiral-ic-survey",
         presentation: "standard",
         contentDepth: "survey",
         title: "The American Revolution: What Happened",
+        disciplineId: "integ-history",
       });
       await seedInstructionalContent(topicId, {
         id: "integ-spiral-ic-contextual",
         presentation: "standard",
         contentDepth: "contextual",
         title: "The American Revolution: Why It Happened",
+        disciplineId: "integ-history",
       });
     });
 
@@ -272,6 +294,7 @@ describe("dimension system integration", () => {
 
       const problems = await content.getTopicProblems({
         topicId,
+        discipline: "integ-history",
         contentDepth: depth,
         presentation: "standard",
       });
@@ -286,6 +309,7 @@ describe("dimension system integration", () => {
 
       const problems = await content.getTopicProblems({
         topicId,
+        discipline: "integ-history",
         contentDepth: depth,
         presentation: "standard",
       });

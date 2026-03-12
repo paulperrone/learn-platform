@@ -3,6 +3,7 @@ import { cors } from "hono/cors";
 import type { Env } from "../index.js";
 import { getDb } from "../db/index.js";
 import { createGraphService } from "../services/graph.js";
+import { createContentService } from "../services/content.js";
 import * as schema from "../db/schema.js";
 import { eq, and, inArray } from "drizzle-orm";
 
@@ -178,19 +179,24 @@ publicRoutes.get("/disciplines/:id/topics", async (c) => {
 publicRoutes.get("/topics/:id", async (c) => {
   const db = getDb(c.env.DB);
   const graph = createGraphService(db);
+  const contentSvc = createContentService(db, c.env.CONTENT);
   const topic = await graph.getTopic(c.req.param("id"));
 
   if (!topic) return c.json({ error: "Topic not found" }, 404);
 
-  const problems = await db
-    .select()
-    .from(schema.assessmentContent)
-    .where(eq(schema.assessmentContent.topicId, topic.id));
+  const problems = await contentSvc.getTopicProblems({
+    topicId: topic.id,
+    discipline: topic.disciplineId,
+    contentDepth: "survey",
+    presentation: "standard",
+  });
 
-  const examples = await db
-    .select()
-    .from(schema.instructionalContent)
-    .where(eq(schema.instructionalContent.topicId, topic.id));
+  const examples = await contentSvc.getTopicExamples({
+    topicId: topic.id,
+    discipline: topic.disciplineId,
+    contentDepth: "survey",
+    presentation: "standard",
+  });
 
   return c.json({
     topic: {
@@ -201,22 +207,8 @@ publicRoutes.get("/topics/:id", async (c) => {
       gradeLevel: topic.gradeLevel,
       depth: topic.depth,
       standardCode: topic.standardCode,
-      problems: problems.map((p) => ({
-        id: p.id,
-        topicId: p.topicId,
-        difficulty: p.difficulty,
-        question: p.question,
-        answer: p.answer,
-        hints: JSON.parse(p.hintsJson),
-        solution: p.solution,
-        type: p.type,
-      })),
-      examples: examples.map((e) => ({
-        id: e.id,
-        topicId: e.topicId,
-        title: e.title,
-        steps: JSON.parse(e.stepsJson),
-      })),
+      problems,
+      examples,
     },
   });
 });
@@ -310,38 +302,27 @@ publicRoutes.get("/download/:discipline", async (c) => {
     .filter((e) => topicIdSet.has(e.parentTopicId) && topicIdSet.has(e.childTopicId))
     .map((e) => ({ parent: e.parentTopicId, child: e.childTopicId, weight: e.weight }));
 
-  const allProblems = topicIdList.length > 0
-    ? await db.select().from(schema.assessmentContent).where(inArray(schema.assessmentContent.topicId, topicIdList))
-    : [];
-  const allExamples = topicIdList.length > 0
-    ? await db.select().from(schema.instructionalContent).where(inArray(schema.instructionalContent.topicId, topicIdList))
-    : [];
-
+  // Fetch content from R2 for each topic
+  const contentSvc = createContentService(db, c.env.CONTENT);
   const problems: Record<string, unknown[]> = {};
   const workedExamples: Record<string, unknown[]> = {};
   let totalProblems = 0;
   let totalExamples = 0;
 
-  for (const p of allProblems) {
-    const list = problems[p.topicId] ?? [];
-    list.push({
-      id: p.id, topicId: p.topicId, difficulty: p.difficulty,
-      question: p.question, answer: p.answer,
-      hints: JSON.parse(p.hintsJson), solution: p.solution, type: p.type,
-    });
-    problems[p.topicId] = list;
-    totalProblems++;
-  }
-
-  for (const e of allExamples) {
-    const list = workedExamples[e.topicId] ?? [];
-    list.push({
-      id: e.id, topicId: e.topicId, title: e.title,
-      steps: JSON.parse(e.stepsJson),
-    });
-    workedExamples[e.topicId] = list;
-    totalExamples++;
-  }
+  await Promise.all(topicIdList.map(async (topicId) => {
+    const [topicProblems, topicExamples] = await Promise.all([
+      contentSvc.getTopicProblems({ topicId, discipline: disciplineId, contentDepth: "survey", presentation: "standard" }),
+      contentSvc.getTopicExamples({ topicId, discipline: disciplineId, contentDepth: "survey", presentation: "standard" }),
+    ]);
+    if (topicProblems.length > 0) {
+      problems[topicId] = topicProblems;
+      totalProblems += topicProblems.length;
+    }
+    if (topicExamples.length > 0) {
+      workedExamples[topicId] = topicExamples;
+      totalExamples += topicExamples.length;
+    }
+  }));
 
   const pack = {
     meta: {

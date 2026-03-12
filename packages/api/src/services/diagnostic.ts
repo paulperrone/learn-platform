@@ -69,26 +69,6 @@ export function createDiagnosticService(db: DB, r2Bucket?: R2Bucket) {
       presentation,
     });
 
-    // If dimension-aware query returns nothing, fall back to any content for topic
-    if (problems.length === 0) {
-      const fallbackRows = await db
-        .select()
-        .from(schema.assessmentContent)
-        .where(eq(schema.assessmentContent.topicId, topicId));
-      const fallbackProblems: Problem[] = fallbackRows.map((r) => ({
-        id: r.id,
-        topicId: r.topicId,
-        difficulty: r.difficulty as Problem["difficulty"],
-        question: r.question,
-        answer: r.answer,
-        hints: JSON.parse(r.hintsJson),
-        solution: r.solution,
-        type: r.type as Problem["type"],
-        typeProperties: r.typeProperties ? JSON.parse(r.typeProperties) : undefined,
-      }));
-      return { problems: fallbackProblems, presentation };
-    }
-
     return { problems, presentation };
   }
 

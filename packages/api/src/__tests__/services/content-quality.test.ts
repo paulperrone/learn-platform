@@ -6,9 +6,8 @@ import {
   seedDiscipline,
   seedTopic,
   seedReviewLog,
-  seedAssessmentContent,
   seedPrerequisite,
-  seedInstructionalContent,
+  seedTopicContentVersion,
 } from "../helpers.js";
 import * as schema from "../../db/schema.js";
 import { sql } from "drizzle-orm";
@@ -58,29 +57,20 @@ describe("content quality: per-problem accuracy", () => {
     const disc = await seedDiscipline({ id: "cq-subj-2" });
     const topic = await seedTopic(disc.id, { id: "cq-topic-2", name: "Addition" });
 
-    const problem1 = await seedAssessmentContent(topic.id, {
-      id: "cq-ac-1",
-      question: "2 + 3 = ?",
-      answer: "5",
-      difficulty: "easy",
-    });
-    const problem2 = await seedAssessmentContent(topic.id, {
-      id: "cq-ac-2",
-      question: "7 + 8 = ?",
-      answer: "15",
-      difficulty: "medium",
-    });
+    // Use plain string IDs for assessmentContentId (text column in review_log, no FK)
+    const problem1Id = "cq-ac-1";
+    const problem2Id = "cq-ac-2";
 
     // Problem 1: 3/4 correct
-    await seedReviewLog(user.id, topic.id, { assessmentContentId: problem1.id, correct: true });
-    await seedReviewLog(user.id, topic.id, { assessmentContentId: problem1.id, correct: true });
-    await seedReviewLog(user.id, topic.id, { assessmentContentId: problem1.id, correct: true });
-    await seedReviewLog(user.id, topic.id, { assessmentContentId: problem1.id, correct: false });
+    await seedReviewLog(user.id, topic.id, { assessmentContentId: problem1Id, correct: true });
+    await seedReviewLog(user.id, topic.id, { assessmentContentId: problem1Id, correct: true });
+    await seedReviewLog(user.id, topic.id, { assessmentContentId: problem1Id, correct: true });
+    await seedReviewLog(user.id, topic.id, { assessmentContentId: problem1Id, correct: false });
 
     // Problem 2: 1/3 correct
-    await seedReviewLog(user.id, topic.id, { assessmentContentId: problem2.id, correct: true });
-    await seedReviewLog(user.id, topic.id, { assessmentContentId: problem2.id, correct: false });
-    await seedReviewLog(user.id, topic.id, { assessmentContentId: problem2.id, correct: false });
+    await seedReviewLog(user.id, topic.id, { assessmentContentId: problem2Id, correct: true });
+    await seedReviewLog(user.id, topic.id, { assessmentContentId: problem2Id, correct: false });
+    await seedReviewLog(user.id, topic.id, { assessmentContentId: problem2Id, correct: false });
 
     const result = await db
       .select({
@@ -161,18 +151,18 @@ describe("content quality: difficulty spikes", () => {
 });
 
 describe("content quality: version comparison", () => {
-  it("compares accuracy before and after content updates", async () => {
+  it("compares accuracy before and after content updates using topic_content_versions", async () => {
     const db = getTestDb();
     const user = await seedUser({ id: "cq-ver-user" });
     const disc = await seedDiscipline({ id: "cq-ver-subj" });
     const topic = await seedTopic(disc.id, { id: "cq-ver-topic", name: "Fractions" });
 
-    // Content updated at a known point
+    // Content updated at a known point — tracked via topic_content_versions
     const updateTime = "2026-02-15T00:00:00.000Z";
-    await seedInstructionalContent(topic.id, {
-      id: "cq-ver-ic",
-      version: 2,
-      updatedAt: updateTime,
+    await seedTopicContentVersion(topic.id, {
+      contentHash: "hash-v2",
+      bundleVersion: 2,
+      generatedAt: updateTime,
     });
 
     // Reviews before update: 50% accuracy
@@ -190,17 +180,17 @@ describe("content quality: version comparison", () => {
     const env = (await import("cloudflare:test")).env;
     const result = await env.DB.prepare(`
       SELECT
-        ic.topic_id AS topicId,
-        ic.version,
-        COUNT(CASE WHEN r.created_at < ic.updated_at THEN 1 END) AS attemptsBefore,
-        ROUND(AVG(CASE WHEN r.created_at < ic.updated_at THEN (CASE WHEN r.correct THEN 1.0 ELSE 0.0 END) END), 4) AS accuracyBefore,
-        COUNT(CASE WHEN r.created_at >= ic.updated_at THEN 1 END) AS attemptsAfter,
-        ROUND(AVG(CASE WHEN r.created_at >= ic.updated_at THEN (CASE WHEN r.correct THEN 1.0 ELSE 0.0 END) END), 4) AS accuracyAfter
-      FROM instructional_content ic
-      JOIN review_log r ON r.topic_id = ic.topic_id
-      WHERE ic.id = ?
-      GROUP BY ic.topic_id, ic.version
-    `).bind("cq-ver-ic").all<{
+        tcv.topic_id AS topicId,
+        tcv.bundle_version AS version,
+        COUNT(CASE WHEN r.created_at < tcv.generated_at THEN 1 END) AS attemptsBefore,
+        ROUND(AVG(CASE WHEN r.created_at < tcv.generated_at THEN (CASE WHEN r.correct THEN 1.0 ELSE 0.0 END) END), 4) AS accuracyBefore,
+        COUNT(CASE WHEN r.created_at >= tcv.generated_at THEN 1 END) AS attemptsAfter,
+        ROUND(AVG(CASE WHEN r.created_at >= tcv.generated_at THEN (CASE WHEN r.correct THEN 1.0 ELSE 0.0 END) END), 4) AS accuracyAfter
+      FROM topic_content_versions tcv
+      JOIN review_log r ON r.topic_id = tcv.topic_id
+      WHERE tcv.topic_id = ?
+      GROUP BY tcv.topic_id, tcv.bundle_version
+    `).bind("cq-ver-topic").all<{
       topicId: string;
       version: number;
       attemptsBefore: number;

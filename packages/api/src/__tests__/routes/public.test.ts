@@ -84,11 +84,13 @@ describe("Public API - /api/public", () => {
         difficulty: "easy",
         hintsJson: "[]",
         solution: "1+1=2",
+        disciplineId: "math-foundations",
       });
       await seedInstructionalContent("add-10", {
         id: "e1",
         title: "Adding",
         stepsJson: JSON.stringify([{ subgoalLabel: "Step 1", instruction: "Add", work: "1+1", explanation: "equals 2" }]),
+        disciplineId: "math-foundations",
       });
 
       const res = await request("/api/public/topics/add-10");

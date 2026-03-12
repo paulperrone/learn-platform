@@ -12,6 +12,7 @@ import {
   seedEncompassing,
   seedUserTopicState,
   seedUserSubjectPresentation,
+  getTestR2Bucket,
 } from "../helpers.js";
 import { createSessionService } from "../../services/session.js";
 import type { SessionItem } from "../../services/session.js";
@@ -81,7 +82,7 @@ describe("session-state-coherence integration", () => {
 
   it("session state round-trips through D1 with all fields intact", async () => {
     const { db, user } = await setupRichGraph();
-    const session = createSessionService(db);
+    const session = createSessionService(db, undefined, getTestR2Bucket());
 
     const { sessionId, firstItem } = await session.startSession(user.id);
     expect(firstItem.type).not.toBe("error");
@@ -136,7 +137,7 @@ describe("session-state-coherence integration", () => {
 
   it("loadState correctly restores all fields after cache miss", async () => {
     const { db, user } = await setupRichGraph();
-    const session = createSessionService(db);
+    const session = createSessionService(db, undefined, getTestR2Bucket());
 
     const { sessionId } = await session.startSession(user.id);
 
@@ -153,7 +154,7 @@ describe("session-state-coherence integration", () => {
     const savedState = JSON.parse(row.stateJson!);
 
     // Create a fresh session service (new cache)
-    const session2 = createSessionService(db);
+    const session2 = createSessionService(db, undefined, getTestR2Bucket());
 
     // getSession should load from D1 and restore state
     const restored = await session2.getSession(sessionId);
@@ -170,7 +171,7 @@ describe("session-state-coherence integration", () => {
 
   it("session state tracks rollingResults for adaptive difficulty", async () => {
     const { db, user } = await setupRichGraph();
-    const session = createSessionService(db);
+    const session = createSessionService(db, undefined, getTestR2Bucket());
 
     const { sessionId } = await session.startSession(user.id);
 
@@ -202,7 +203,7 @@ describe("session-state-coherence integration", () => {
       due: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString(),
     });
 
-    const session = createSessionService(db);
+    const session = createSessionService(db, undefined, getTestR2Bucket());
     const { sessionId, firstItem } = await session.startSession(user.id);
 
     // Fast-forward to independent phase
@@ -235,7 +236,7 @@ describe("session-state-coherence integration", () => {
 
   it("multiple topics do not bloat state beyond 10KB", async () => {
     const { db, user } = await setupRichGraph();
-    const session = createSessionService(db);
+    const session = createSessionService(db, undefined, getTestR2Bucket());
 
     const { sessionId } = await session.startSession(user.id);
 

@@ -367,45 +367,25 @@ export function createContentService(db: DB, r2Bucket?: R2Bucket) {
   async function getTopicProblems(query: ContentQuery): Promise<Problem[]> {
     const { topicId, discipline, contentDepth, presentation, locale = "en", flavor = "classic" } = query;
 
-    // R2 path: fetch bundled problems with dimension fields, rank in-memory
-    if (r2Bucket && discipline) {
-      const bundled = await fetchTopicProblems(r2Bucket, discipline, topicId);
-      if (bundled.length > 0) {
-        const best = selectBestRows(bundled, { presentation, contentDepth, locale, flavor });
-        return toBareProblems(best);
-      }
-    }
+    if (!r2Bucket || !discipline) return [];
 
-    // D1 fallback (tests, local dev without R2, or missing bundle)
-    const allRows = await db
-      .select()
-      .from(schema.assessmentContent)
-      .where(eq(schema.assessmentContent.topicId, topicId));
+    const bundled = await fetchTopicProblems(r2Bucket, discipline, topicId);
+    if (bundled.length === 0) return [];
 
-    const best = selectBestRows(allRows, { presentation, contentDepth, locale, flavor });
-    return mapProblems(best);
+    const best = selectBestRows(bundled, { presentation, contentDepth, locale, flavor });
+    return toBareProblems(best);
   }
 
   async function getTopicExamples(query: ContentQuery): Promise<WorkedExample[]> {
     const { topicId, discipline, contentDepth, presentation, locale = "en", flavor = "classic" } = query;
 
-    // R2 path: fetch bundled examples with dimension fields, rank in-memory
-    if (r2Bucket && discipline) {
-      const bundled = await fetchTopicExamples(r2Bucket, discipline, topicId);
-      if (bundled.length > 0) {
-        const best = selectBestRows(bundled, { presentation, contentDepth, locale, flavor });
-        return toBareExamples(best);
-      }
-    }
+    if (!r2Bucket || !discipline) return [];
 
-    // D1 fallback
-    const allRows = await db
-      .select()
-      .from(schema.instructionalContent)
-      .where(eq(schema.instructionalContent.topicId, topicId));
+    const bundled = await fetchTopicExamples(r2Bucket, discipline, topicId);
+    if (bundled.length === 0) return [];
 
-    const best = selectBestRows(allRows, { presentation, contentDepth, locale, flavor });
-    return mapExamples(best);
+    const best = selectBestRows(bundled, { presentation, contentDepth, locale, flavor });
+    return toBareExamples(best);
   }
 
   async function getTopicVisuals(query: ContentQuery): Promise<VisualAsset[] | undefined> {
@@ -635,30 +615,3 @@ export function describePresentationDistribution(
   return `Mostly ${label.toLowerCase()}, ${direction} ${LEVEL_LABELS[secondaryLevel].toLowerCase()}`;
 }
 
-// --- Mappers ---
-
-function mapProblems(rows: (typeof schema.assessmentContent.$inferSelect)[]): Problem[] {
-  return rows.map((r) => ({
-    id: r.id,
-    topicId: r.topicId,
-    difficulty: r.difficulty as Problem["difficulty"],
-    question: r.question,
-    answer: r.answer,
-    hints: JSON.parse(r.hintsJson),
-    solution: r.solution,
-    type: r.type as Problem["type"],
-    typeProperties: r.typeProperties ? JSON.parse(r.typeProperties) : undefined,
-    keyPrerequisiteId: r.keyPrerequisiteId ?? undefined,
-    cognitiveDemand: (r.cognitiveDemand as Problem["cognitiveDemand"]) ?? undefined,
-  }));
-}
-
-function mapExamples(rows: (typeof schema.instructionalContent.$inferSelect)[]): WorkedExample[] {
-  return rows.map((r) => ({
-    id: r.id,
-    topicId: r.topicId,
-    title: r.title,
-    steps: JSON.parse(r.stepsJson),
-    visuals: r.assetsJson ? JSON.parse(r.assetsJson) : undefined,
-  }));
-}

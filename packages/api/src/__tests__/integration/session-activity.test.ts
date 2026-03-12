@@ -10,6 +10,7 @@ import {
   seedInstructionalContent,
   seedPrerequisite,
   seedUserTopicState,
+  getTestR2Bucket,
 } from "../helpers.js";
 import { createSessionService } from "../../services/session.js";
 import { createActivityService } from "../../services/activity.js";
@@ -73,7 +74,7 @@ describe("session-activity integration", () => {
 
   it("records problemsCompleted in dailyActivity after each respond()", async () => {
     const { db, user } = await setupGraph();
-    const session = createSessionService(db);
+    const session = createSessionService(db, undefined, getTestR2Bucket());
 
     const { sessionId, firstItem } = await session.startSession(user.id);
     expect(firstItem.type).toBe("problem");
@@ -102,7 +103,7 @@ describe("session-activity integration", () => {
 
   it("returns goalProgress in respond() payload", async () => {
     const { db, user } = await setupGraph();
-    const session = createSessionService(db);
+    const session = createSessionService(db, undefined, getTestR2Bucket());
 
     const { sessionId } = await session.startSession(user.id);
 
@@ -123,7 +124,7 @@ describe("session-activity integration", () => {
 
   it("records minutesActive on endSession()", async () => {
     const { db, user } = await setupGraph();
-    const session = createSessionService(db);
+    const session = createSessionService(db, undefined, getTestR2Bucket());
 
     const { sessionId } = await session.startSession(user.id);
 
@@ -152,7 +153,7 @@ describe("session-activity integration", () => {
 
   it("multiple responds in same session accumulate activity", async () => {
     const { db, user } = await setupGraph();
-    const session = createSessionService(db);
+    const session = createSessionService(db, undefined, getTestR2Bucket());
 
     const { sessionId } = await session.startSession(user.id);
 
@@ -180,7 +181,7 @@ describe("session-activity integration", () => {
 
   it("does not record activity for anonymous sessions", async () => {
     const { db } = await setupGraph();
-    const session = createSessionService(db);
+    const session = createSessionService(db, undefined, getTestR2Bucket());
 
     const { sessionId } = await session.startAnonymousSession("anon-token-123", "math-test");
 
@@ -193,7 +194,7 @@ describe("session-activity integration", () => {
 
   it("records topicsMastered when mastery event fires", async () => {
     const { db, user } = await setupGraph();
-    const session = createSessionService(db);
+    const session = createSessionService(db, undefined, getTestR2Bucket());
 
     // Seed counting as nearly-mastered so next correct answer triggers mastery
     await seedUserTopicState(user.id, "counting", {

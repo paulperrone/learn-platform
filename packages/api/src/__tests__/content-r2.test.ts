@@ -186,72 +186,18 @@ describe("content service with R2", () => {
       expect(problems).toHaveLength(0);
     });
 
-    it("falls back to D1 when R2 bundle is empty but D1 has content", async () => {
-      // Seed D1 content
-      const disc = await seedDiscipline({ id: "r2-fallback-disc" });
-      const topic = await seedTopic(disc.id, { id: "r2-fallback-topic" });
-
-      await db.insert((await import("../db/schema.js")).assessmentContent).values({
-        id: "d1-problem",
-        topicId: topic.id,
-        difficulty: "easy",
-        question: "D1 question",
-        answer: "D1 answer",
-        hintsJson: "[]",
-        solution: "D1 solution",
-        presentation: "standard",
-        contentDepth: "survey",
-        flavor: "classic",
-        locale: "en",
-      });
-
-      // R2 bucket has no content for this topic
+    it("returns empty when R2 bucket has no content and no discipline", async () => {
       const bucket = createMockR2Bucket({});
       const content = createContentService(db, bucket);
 
+      // No discipline → returns empty (R2-only, no D1 fallback)
       const problems = await content.getTopicProblems({
-        topicId: topic.id,
-        discipline: disc.id,
+        topicId: "no-disc-topic",
         contentDepth: "survey",
         presentation: "standard",
       });
 
-      expect(problems).toHaveLength(1);
-      expect(problems[0].id).toBe("d1-problem");
-    });
-
-    it("falls back to D1 when no discipline provided", async () => {
-      const disc = await seedDiscipline({ id: "r2-no-disc" });
-      const topic = await seedTopic(disc.id, { id: "r2-no-disc-topic" });
-
-      await db.insert((await import("../db/schema.js")).assessmentContent).values({
-        id: "d1-no-disc-problem",
-        topicId: topic.id,
-        difficulty: "easy",
-        question: "D1 no-disc question",
-        answer: "answer",
-        hintsJson: "[]",
-        solution: "solution",
-        presentation: "standard",
-        contentDepth: "survey",
-        flavor: "classic",
-        locale: "en",
-      });
-
-      const bucket = createMockR2Bucket({
-        "r2-no-disc/r2-no-disc-topic/problems.json": JSON.stringify(PROBLEMS),
-      });
-      const content = createContentService(db, bucket);
-
-      // No discipline → falls back to D1
-      const problems = await content.getTopicProblems({
-        topicId: topic.id,
-        contentDepth: "survey",
-        presentation: "standard",
-      });
-
-      expect(problems).toHaveLength(1);
-      expect(problems[0].id).toBe("d1-no-disc-problem");
+      expect(problems).toHaveLength(0);
     });
   });
 

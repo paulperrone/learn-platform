@@ -8,7 +8,6 @@ import {
   seedUser,
   seedDiscipline,
   seedTopic,
-  seedAssessmentContent,
   seedReviewLog,
 } from "./helpers.js";
 import * as schema from "../db/schema.js";
@@ -30,7 +29,6 @@ describe("confidence calibration", () => {
     // Clean relevant tables between tests
     await db.delete(schema.reviewLog);
     await db.delete(schema.userTopicState);
-    await db.delete(schema.assessmentContent);
     await db.delete(schema.topics);
     await db.delete(schema.disciplines);
     await db.delete(schema.users);
@@ -41,7 +39,6 @@ describe("confidence calibration", () => {
     const discipline = await seedDiscipline();
     const topic = await seedTopic(discipline.id, { id: "addition" });
     topicId = topic.id;
-    await seedAssessmentContent(topicId);
   });
 
   describe("confidence EMA tracking", () => {

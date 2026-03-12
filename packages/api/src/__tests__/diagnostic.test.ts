@@ -6,7 +6,9 @@ import {
   seedUser,
   seedDiscipline,
   seedTopic,
+  seedTopicContentVersion,
   seedAssessmentContent,
+  getTestR2Bucket,
 } from "./helpers.js";
 import { createDiagnosticService } from "../services/diagnostic.js";
 import * as schema from "../db/schema.js";
@@ -26,7 +28,6 @@ describe("Diagnostic Bounds & Presentation Seeding", () => {
     await db.delete(schema.diagnosticSessions);
     await db.delete(schema.userDisciplinePresentation);
     await db.delete(schema.userTopicState);
-    await db.delete(schema.assessmentContent);
     await db.delete(schema.prerequisites);
     await db.delete(schema.topics);
     await db.delete(schema.users);
@@ -54,14 +55,13 @@ describe("Diagnostic Bounds & Presentation Seeding", () => {
         });
         topicsByGrade[g].push(topicId);
 
-        // All problems at same grade share same answer for predictable testing
+        // Seed problems into R2 and content version metadata
         await seedAssessmentContent(topicId, {
-          id: `prob-${topicId}`,
-          question: `What is the answer for grade ${g}?`,
-          answer: `correct-${g}`,
+          id: `${topicId}-p1`,
           difficulty: "medium",
-          contentDepth: "survey",
-          presentation: g <= 1 ? "primary" : g <= 2 ? "intermediate" : "standard",
+          question: `What is the answer for ${topicId}?`,
+          answer: `correct-${g}`,
+          disciplineId: "diag-test-disc",
         });
       }
     }
@@ -78,7 +78,7 @@ describe("Diagnostic Bounds & Presentation Seeding", () => {
     disciplineId: string,
     shouldAnswer: (topicGrade: number, questionNum: number) => string | null
   ) {
-    const diag = createDiagnosticService(db);
+    const diag = createDiagnosticService(db, getTestR2Bucket());
     const start = await diag.startDiagnostic({ userId, disciplineId });
 
     if ("error" in start) throw new Error(start.error);

@@ -146,8 +146,7 @@ function clearDiscipline(db: InstanceType<typeof Database>, disciplineId: string
   db.exec(`DELETE FROM teach_sessions WHERE topic_id IN (SELECT id FROM topics WHERE discipline_id = '${disciplineId}')`);
   db.exec(`DELETE FROM review_log WHERE topic_id IN (SELECT id FROM topics WHERE discipline_id = '${disciplineId}')`);
   db.exec(`DELETE FROM user_topic_state WHERE topic_id IN (SELECT id FROM topics WHERE discipline_id = '${disciplineId}')`);
-  db.exec(`DELETE FROM assessment_content WHERE topic_id IN (SELECT id FROM topics WHERE discipline_id = '${disciplineId}')`);
-  db.exec(`DELETE FROM instructional_content WHERE topic_id IN (SELECT id FROM topics WHERE discipline_id = '${disciplineId}')`);
+  db.exec(`DELETE FROM topic_content_versions WHERE topic_id IN (SELECT id FROM topics WHERE discipline_id = '${disciplineId}')`);
   db.exec(`DELETE FROM encompassings WHERE parent_topic_id IN (SELECT id FROM topics WHERE discipline_id = '${disciplineId}')`);
   db.exec(`DELETE FROM encompassings WHERE child_topic_id IN (SELECT id FROM topics WHERE discipline_id = '${disciplineId}')`);
   db.exec(`DELETE FROM prerequisites WHERE from_topic_id IN (SELECT id FROM topics WHERE discipline_id = '${disciplineId}')`);
@@ -244,40 +243,26 @@ function main() {
       console.log(`Inserted ${graph.collections.length} collections`);
     }
 
-    // Insert instructional content (worked examples)
-    const insertInstruction = db.prepare(
-      "INSERT INTO instructional_content (id, topic_id, flavor, locale, presentation, content_depth, version, title, steps_json, assets_json, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, 1, ?, ?, ?, ?, ?)"
+    // Populate topic_content_versions from content files (content now lives in R2, not D1)
+    const upsertContentVersion = db.prepare(
+      "INSERT INTO topic_content_versions (topic_id, content_hash, bundle_version, problems_count, examples_count, generated_at) VALUES (?, ?, 1, ?, ?, ?) ON CONFLICT(topic_id) DO UPDATE SET content_hash = excluded.content_hash, problems_count = excluded.problems_count, examples_count = excluded.examples_count, generated_at = excluded.generated_at"
     );
-    let instructionCount = 0;
-    const insertInstructions = db.transaction(() => {
+    let contentVersionCount = 0;
+    const insertContentVersions = db.transaction(() => {
       const now = new Date().toISOString();
-      for (const [, topicExamples] of examples) {
-        for (const e of topicExamples) {
-          const assetsJson = e.visuals?.length ? JSON.stringify(e.visuals) : null;
-          insertInstruction.run(e.id, e.topicId, e.flavor ?? "classic", e.locale ?? "en", e.presentation ?? "standard", e.contentDepth ?? "survey", e.title, JSON.stringify(e.steps), assetsJson, now, now);
-          instructionCount++;
+      for (const t of graph.topics) {
+        const topicProblems = problems.get(t.id) ?? [];
+        const topicExamples = examples.get(t.id) ?? [];
+        if (topicProblems.length > 0 || topicExamples.length > 0) {
+          // Simple hash placeholder — real hash computed by generate-bundles.ts
+          const hash = `local-${now}`;
+          upsertContentVersion.run(t.id, hash, topicProblems.length, topicExamples.length, now);
+          contentVersionCount++;
         }
       }
     });
-    insertInstructions();
-    console.log(`Inserted ${instructionCount} instructional content rows`);
-
-    // Insert assessment content (problems)
-    const insertAssessment = db.prepare(
-      "INSERT INTO assessment_content (id, topic_id, flavor, locale, presentation, content_depth, version, type, difficulty, question, answer, hints_json, solution, cognitive_demand, key_prerequisite_id, source, created_at) VALUES (?, ?, ?, ?, ?, ?, 1, 'text-qa', ?, ?, ?, ?, ?, ?, ?, ?, ?)"
-    );
-    let assessmentCount = 0;
-    const insertAssessments = db.transaction(() => {
-      const now = new Date().toISOString();
-      for (const [, topicProblems] of problems) {
-        for (const p of topicProblems) {
-          insertAssessment.run(p.id, p.topicId, p.flavor ?? "classic", p.locale ?? "en", p.presentation ?? "standard", p.contentDepth ?? "survey", p.difficulty, p.question, p.answer, JSON.stringify(p.hints), p.solution, p.cognitiveDemand ?? null, p.keyPrerequisiteId ?? null, p.source ?? "hand-authored", now);
-          assessmentCount++;
-        }
-      }
-    });
-    insertAssessments();
-    console.log(`Inserted ${assessmentCount} assessment content rows`);
+    insertContentVersions();
+    console.log(`Populated ${contentVersionCount} topic_content_versions rows (${Array.from(problems.values()).reduce((s, p) => s + p.length, 0)} problems, ${Array.from(examples.values()).reduce((s, e) => s + e.length, 0)} examples)`);
   }
 
   // Phase 2: Insert prerequisites and encompassings for all disciplines

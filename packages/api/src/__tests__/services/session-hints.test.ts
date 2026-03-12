@@ -7,6 +7,7 @@ import {
   seedTopic,
   seedAssessmentContent,
   seedInstructionalContent,
+  getTestR2Bucket,
 } from "../helpers.js";
 import { createSessionService } from "../../services/session.js";
 import type { SessionItem } from "../../services/session.js";
@@ -32,7 +33,8 @@ describe("Progressive Hint Reveal", () => {
 
   async function setupTopicWithHints(id: string, hints: string[]) {
     const db = getTestDb();
-    const disc = await seedDiscipline({ id: `${PREFIX}-subj-${id}` });
+    const discId = `${PREFIX}-subj-${id}`;
+    const disc = await seedDiscipline({ id: discId });
     const topic = await seedTopic(disc.id, {
       id: `${PREFIX}-topic-${id}`,
       name: `Hint Topic ${id}`,
@@ -44,6 +46,7 @@ describe("Progressive Hint Reveal", () => {
       answer: "2",
       hintsJson: JSON.stringify(hints),
       solution: "1 + 1 = 2",
+      disciplineId: discId,
     });
     await seedAssessmentContent(topic.id, {
       id: `${PREFIX}-ac-med-${id}`,
@@ -52,9 +55,11 @@ describe("Progressive Hint Reveal", () => {
       answer: "5",
       hintsJson: JSON.stringify(hints),
       solution: "2 + 3 = 5",
+      disciplineId: discId,
     });
     await seedInstructionalContent(topic.id, {
       id: `${PREFIX}-ic-${id}`,
+      disciplineId: discId,
     });
     return { disc, topic, db };
   }
@@ -62,7 +67,7 @@ describe("Progressive Hint Reveal", () => {
   describe("pretest phase — no hints initially", () => {
     it("shows no hints on first attempt", async () => {
       const { db } = await setupTopicWithHints("pre1", ["hint-a", "hint-b", "hint-c"]);
-      const session = createSessionService(db);
+      const session = createSessionService(db, undefined, getTestR2Bucket());
       const user = await seedUser({ id: `${PREFIX}-user-pre1` });
       const { sessionId, firstItem } = await session.startSession(user.id);
 
@@ -77,7 +82,7 @@ describe("Progressive Hint Reveal", () => {
 
     it("reveals one hint after incorrect answer", async () => {
       const { db } = await setupTopicWithHints("pre2", ["hint-a", "hint-b", "hint-c"]);
-      const session = createSessionService(db);
+      const session = createSessionService(db, undefined, getTestR2Bucket());
       const user = await seedUser({ id: `${PREFIX}-user-pre2` });
       const { sessionId } = await session.startSession(user.id);
 
@@ -101,7 +106,7 @@ describe("Progressive Hint Reveal", () => {
     it("shows first hint pre-revealed in guided phase", async () => {
       const hints = ["nudge hint", "guiding question", "partial solution"];
       const { db } = await setupTopicWithHints("guided1", hints);
-      const session = createSessionService(db);
+      const session = createSessionService(db, undefined, getTestR2Bucket());
       const user = await seedUser({ id: `${PREFIX}-user-guided1` });
       const { sessionId } = await session.startSession(user.id);
 
@@ -128,7 +133,7 @@ describe("Progressive Hint Reveal", () => {
     it("shows no hints in independent phase", async () => {
       const hints = ["hint-a", "hint-b"];
       const { db } = await setupTopicWithHints("indep1", hints);
-      const session = createSessionService(db);
+      const session = createSessionService(db, undefined, getTestR2Bucket());
       const user = await seedUser({ id: `${PREFIX}-user-indep1` });
       const { sessionId } = await session.startSession(user.id);
 
@@ -153,7 +158,7 @@ describe("Progressive Hint Reveal", () => {
     it("reveals hints progressively in remediation", async () => {
       const hints = ["hint-1", "hint-2", "hint-3"];
       const { db } = await setupTopicWithHints("rem1", hints);
-      const session = createSessionService(db);
+      const session = createSessionService(db, undefined, getTestR2Bucket());
       const user = await seedUser({ id: `${PREFIX}-user-rem1` });
       const { sessionId } = await session.startSession(user.id);
 
@@ -216,7 +221,7 @@ describe("Progressive Hint Reveal", () => {
     it("uses hintIndex as hintsUsed for rating cap", async () => {
       const hints = ["hint-a", "hint-b", "hint-c", "hint-d"];
       const { db } = await setupTopicWithHints("rating1", hints);
-      const session = createSessionService(db);
+      const session = createSessionService(db, undefined, getTestR2Bucket());
       const user = await seedUser({ id: `${PREFIX}-user-rating1` });
       const { sessionId } = await session.startSession(user.id);
 
@@ -245,7 +250,7 @@ describe("Progressive Hint Reveal", () => {
     it("resets hints when moving between phases", async () => {
       const hints = ["h1", "h2"];
       const { db } = await setupTopicWithHints("reset1", hints);
-      const session = createSessionService(db);
+      const session = createSessionService(db, undefined, getTestR2Bucket());
       const user = await seedUser({ id: `${PREFIX}-user-reset1` });
       const { sessionId } = await session.startSession(user.id);
 
@@ -271,7 +276,7 @@ describe("Progressive Hint Reveal", () => {
   describe("empty hints array", () => {
     it("handles problems with no hints gracefully", async () => {
       const { db } = await setupTopicWithHints("empty1", []);
-      const session = createSessionService(db);
+      const session = createSessionService(db, undefined, getTestR2Bucket());
       const user = await seedUser({ id: `${PREFIX}-user-empty1` });
       const { sessionId, firstItem } = await session.startSession(user.id);
 

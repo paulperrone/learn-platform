@@ -8,6 +8,7 @@ import {
   seedTopic,
   seedAssessmentContent,
   seedAccountLink,
+  getTestR2Bucket,
 } from "./helpers.js";
 import { createGroupSessionService } from "../services/group-session.js";
 
@@ -33,7 +34,6 @@ describe("Group Session Service", () => {
     await db.delete((await import("../db/schema.js")).groupSessionParticipants);
     await db.delete((await import("../db/schema.js")).groupSessions);
     await db.delete((await import("../db/schema.js")).accountLinks);
-    await db.delete((await import("../db/schema.js")).assessmentContent);
     await db.delete((await import("../db/schema.js")).topics);
     await db.delete((await import("../db/schema.js")).disciplines);
     await db.delete((await import("../db/schema.js")).users);
@@ -54,14 +54,23 @@ describe("Group Session Service", () => {
     subject = await seedDiscipline({ id: "math-foundations" });
     topicA = await seedTopic(subject.id, { id: "topic-a", name: "Counting to 10", depth: 0 });
     topicB = await seedTopic(subject.id, { id: "topic-b", name: "Addition to 5", depth: 1 });
-    await seedAssessmentContent(topicA.id, { difficulty: "easy", question: "Count to 3", answer: "3" });
-    await seedAssessmentContent(topicA.id, { difficulty: "medium", question: "Count to 7", answer: "7" });
-    await seedAssessmentContent(topicB.id, { difficulty: "medium", question: "2 + 3 = ?", answer: "5" });
+    await seedAssessmentContent(topicA.id, {
+      id: "topic-a-p1", difficulty: "easy", question: "Count to 3", answer: "3",
+      disciplineId: "math-foundations",
+    });
+    await seedAssessmentContent(topicA.id, {
+      id: "topic-a-p2", difficulty: "medium", question: "Count to 5", answer: "5",
+      disciplineId: "math-foundations",
+    });
+    await seedAssessmentContent(topicB.id, {
+      id: "topic-b-p1", difficulty: "medium", question: "2 + 3?", answer: "5",
+      disciplineId: "math-foundations",
+    });
   });
 
   describe("Family Co-Learning", () => {
     it("creates a family session and auto-adds linked children", async () => {
-      const service = createGroupSessionService(db);
+      const service = createGroupSessionService(db, getTestR2Bucket());
       const { sessionId } = await service.createSession(parent.id, "family", { topicId: topicA.id });
 
       expect(sessionId).toBeTruthy();
@@ -74,7 +83,7 @@ describe("Group Session Service", () => {
     });
 
     it("gets different difficulty problems for different participants", async () => {
-      const service = createGroupSessionService(db);
+      const service = createGroupSessionService(db, getTestR2Bucket());
       const { sessionId } = await service.createSession(parent.id, "family", { topicId: topicA.id });
 
       const dashboard = await service.getDashboard(sessionId);
@@ -89,7 +98,7 @@ describe("Group Session Service", () => {
     });
 
     it("tracks per-child progress independently", async () => {
-      const service = createGroupSessionService(db);
+      const service = createGroupSessionService(db, getTestR2Bucket());
       const { sessionId } = await service.createSession(parent.id, "family", { topicId: topicA.id });
 
       const dashboard = await service.getDashboard(sessionId);
@@ -115,7 +124,7 @@ describe("Group Session Service", () => {
 
   describe("Connected Classroom", () => {
     it("creates classroom session with join code", async () => {
-      const service = createGroupSessionService(db);
+      const service = createGroupSessionService(db, getTestR2Bucket());
       const { sessionId, joinCode } = await service.createSession(teacher.id, "classroom", { topicId: topicA.id });
 
       expect(joinCode).toBeTruthy();
@@ -126,7 +135,7 @@ describe("Group Session Service", () => {
     });
 
     it("students join via code", async () => {
-      const service = createGroupSessionService(db);
+      const service = createGroupSessionService(db, getTestR2Bucket());
       const { joinCode } = await service.createSession(teacher.id, "classroom", { topicId: topicA.id });
 
       // Authenticated student joins
@@ -139,7 +148,7 @@ describe("Group Session Service", () => {
     });
 
     it("shows real-time class progress dashboard", async () => {
-      const service = createGroupSessionService(db);
+      const service = createGroupSessionService(db, getTestR2Bucket());
       const { sessionId, joinCode } = await service.createSession(teacher.id, "classroom", { topicId: topicA.id });
 
       await service.joinByCode(joinCode!, { userId: child1.id });
@@ -151,7 +160,7 @@ describe("Group Session Service", () => {
     });
 
     it("returns error for invalid join code", async () => {
-      const service = createGroupSessionService(db);
+      const service = createGroupSessionService(db, getTestR2Bucket());
       const result = await service.joinByCode("BADCODE", { anonymousToken: "anon" });
       expect("error" in result).toBe(true);
     });
@@ -159,7 +168,7 @@ describe("Group Session Service", () => {
 
   describe("Peer Pair Mode", () => {
     it("creates peer-pair session with 2 students", async () => {
-      const service = createGroupSessionService(db);
+      const service = createGroupSessionService(db, getTestR2Bucket());
       const { sessionId } = await service.createSession(teacher.id, "peer-pair", {
         topicId: topicA.id,
         studentIds: [child1.id, child2.id],
@@ -172,7 +181,7 @@ describe("Group Session Service", () => {
     });
 
     it("alternates turns between students", async () => {
-      const service = createGroupSessionService(db);
+      const service = createGroupSessionService(db, getTestR2Bucket());
       const { sessionId } = await service.createSession(teacher.id, "peer-pair", {
         topicId: topicA.id,
         studentIds: [child1.id, child2.id],
@@ -197,7 +206,7 @@ describe("Group Session Service", () => {
 
   describe("Session Lifecycle", () => {
     it("ends session and marks all participants as left", async () => {
-      const service = createGroupSessionService(db);
+      const service = createGroupSessionService(db, getTestR2Bucket());
       const { sessionId } = await service.createSession(parent.id, "family", { topicId: topicA.id });
 
       await service.endSession(sessionId);
@@ -209,7 +218,7 @@ describe("Group Session Service", () => {
     });
 
     it("lists sessions for facilitator", async () => {
-      const service = createGroupSessionService(db);
+      const service = createGroupSessionService(db, getTestR2Bucket());
       await service.createSession(parent.id, "family", { topicId: topicA.id });
       await service.createSession(parent.id, "family", { topicId: topicB.id });
 
@@ -220,7 +229,7 @@ describe("Group Session Service", () => {
 
   describe("Topic Suggestions", () => {
     it("suggests topics from frontier intersection", async () => {
-      const service = createGroupSessionService(db);
+      const service = createGroupSessionService(db, getTestR2Bucket());
       // No FSRS state means all root-level topics are on frontier
       const suggestions = await service.suggestTopics([child1.id, child2.id, child3.id]);
       expect(suggestions.length).toBeGreaterThan(0);

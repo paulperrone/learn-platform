@@ -12,6 +12,7 @@ import {
   seedEncompassing,
   seedUserTopicState,
   seedReviewLog,
+  getTestR2Bucket,
 } from "../helpers.js";
 import { createSessionService } from "../../services/session.js";
 import type { SessionItem } from "../../services/session.js";
@@ -68,18 +69,21 @@ describe("session-full-loop integration", () => {
         question: `Easy ${topicId}?`, answer: "1",
         hintsJson: JSON.stringify(["Hint 1", "Hint 2", "Hint 3"]),
         solution: `${topicId} easy solution`,
+        disciplineId: "math-test",
       });
       await seedAssessmentContent(topicId, {
         id: `${topicId}-med`, difficulty: "medium",
         question: `Medium ${topicId}?`, answer: "2",
         hintsJson: JSON.stringify(["Hint 1", "Hint 2", "Hint 3"]),
         solution: `${topicId} medium solution`,
+        disciplineId: "math-test",
       });
       await seedAssessmentContent(topicId, {
         id: `${topicId}-hard`, difficulty: "hard",
         question: `Hard ${topicId}?`, answer: "3",
         hintsJson: JSON.stringify(["Hint 1", "Hint 2"]),
         solution: `${topicId} hard solution`,
+        disciplineId: "math-test",
       });
     }
 
@@ -92,6 +96,7 @@ describe("session-full-loop integration", () => {
           { subgoalLabel: "Compute", instruction: "Do the operation", work: "2 + 3 = 5", explanation: "Apply the rule." },
           { subgoalLabel: "Check", instruction: "Verify", work: "5 is correct", explanation: "Confirm answer." },
         ]),
+        disciplineId: "math-test",
       });
     }
 
@@ -114,9 +119,9 @@ describe("session-full-loop integration", () => {
 
   // --- Tests ---
 
-  it("progresses through pretest → instruction → guided → independent for a new topic", async () => {
+  it("progresses through pretest > instruction > guided > independent for a new topic", async () => {
     const { db, user } = await setupFullGraph();
-    const session = createSessionService(db);
+    const session = createSessionService(db, undefined, getTestR2Bucket());
 
     // No userTopicState seeded → counting (no prereqs) is the frontier topic
     const { sessionId, firstItem } = await session.startSession(user.id);
@@ -149,7 +154,7 @@ describe("session-full-loop integration", () => {
 
   it("routes to targeted remediation on independent failure", async () => {
     const { db, user } = await setupFullGraph();
-    const session = createSessionService(db);
+    const session = createSessionService(db, undefined, getTestR2Bucket());
 
     // Counting mastered with low stability (fragile) — addition becomes frontier
     await seedUserTopicState(user.id, "counting", {
@@ -190,7 +195,7 @@ describe("session-full-loop integration", () => {
 
   it("worked example fading increases with prior instruction exposures", async () => {
     const { db, user } = await setupFullGraph();
-    const session = createSessionService(db);
+    const session = createSessionService(db, undefined, getTestR2Bucket());
 
     // Seed 2 prior instruction exposures for counting
     await seedReviewLog(user.id, "counting", { phase: "instruction", rating: 3 });
@@ -210,7 +215,7 @@ describe("session-full-loop integration", () => {
 
   it("progressive hints reveal on repeated failures in remediation", async () => {
     const { db, user } = await setupFullGraph();
-    const session = createSessionService(db);
+    const session = createSessionService(db, undefined, getTestR2Bucket());
 
     // No userTopicState → counting is frontier
     const { sessionId } = await session.startSession(user.id);
@@ -238,7 +243,7 @@ describe("session-full-loop integration", () => {
 
   it("adaptive difficulty bias shifts with rolling accuracy", async () => {
     const { db, user } = await setupFullGraph();
-    const session = createSessionService(db);
+    const session = createSessionService(db, undefined, getTestR2Bucket());
 
     // No userTopicState → counting is frontier
     const { sessionId } = await session.startSession(user.id);
@@ -259,7 +264,7 @@ describe("session-full-loop integration", () => {
 
   it("review phase includes blend roles (warmup/main/stretch)", async () => {
     const { db, user } = await setupFullGraph();
-    const session = createSessionService(db);
+    const session = createSessionService(db, undefined, getTestR2Bucket());
 
     // Two topics mastered with reviews due in the past
     const pastDue = new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString();
@@ -281,7 +286,7 @@ describe("session-full-loop integration", () => {
 
   it("confidence rating captured in independent phase", async () => {
     const { db, user } = await setupFullGraph();
-    const session = createSessionService(db);
+    const session = createSessionService(db, undefined, getTestR2Bucket());
 
     // No userTopicState → counting is frontier
     const { sessionId } = await session.startSession(user.id);
@@ -305,9 +310,9 @@ describe("session-full-loop integration", () => {
     expect(result.type).not.toBe("error");
   });
 
-  it("complete golden path: pretest → instruction → guided → independent → next topic", async () => {
+  it("complete golden path: pretest > instruction > guided > independent > next topic", async () => {
     const { db, user } = await setupFullGraph();
-    const session = createSessionService(db);
+    const session = createSessionService(db, undefined, getTestR2Bucket());
 
     // No userTopicState → counting (depth 0, no prereqs) is the first frontier topic
     const { sessionId, firstItem } = await session.startSession(user.id);

@@ -39,7 +39,7 @@ const requireAuth = async (c: any, next: () => Promise<void>) => {
 // POST /api/group-sessions — create a group session
 groupSessionRoutes.post("/", requireAuth, async (c) => {
   const db = getDb(c.env.DB);
-  const service = createGroupSessionService(db);
+  const service = createGroupSessionService(db, c.env.CONTENT);
   const user = c.get("user");
   const body = await c.req.json<{
     type: "family" | "classroom" | "peer-pair";
@@ -66,7 +66,7 @@ groupSessionRoutes.post("/", requireAuth, async (c) => {
 // POST /api/group-sessions/join — join via code (auth optional)
 groupSessionRoutes.post("/join", async (c) => {
   const db = getDb(c.env.DB);
-  const service = createGroupSessionService(db);
+  const service = createGroupSessionService(db, c.env.CONTENT);
   const body = await c.req.json<{
     joinCode: string;
     displayName?: string;
@@ -95,7 +95,7 @@ groupSessionRoutes.post("/join", async (c) => {
 // GET /api/group-sessions — list facilitator's sessions
 groupSessionRoutes.get("/", requireAuth, async (c) => {
   const db = getDb(c.env.DB);
-  const service = createGroupSessionService(db);
+  const service = createGroupSessionService(db, c.env.CONTENT);
   const user = c.get("user");
 
   const sessions = await service.listSessions(user.id);
@@ -105,7 +105,7 @@ groupSessionRoutes.get("/", requireAuth, async (c) => {
 // GET /api/group-sessions/:id/dashboard — real-time dashboard
 groupSessionRoutes.get("/:id/dashboard", requireAuth, async (c) => {
   const db = getDb(c.env.DB);
-  const service = createGroupSessionService(db);
+  const service = createGroupSessionService(db, c.env.CONTENT);
   const sessionId = c.req.param("id");
 
   const dashboard = await service.getDashboard(sessionId);
@@ -119,7 +119,7 @@ groupSessionRoutes.get("/:id/dashboard", requireAuth, async (c) => {
 // GET /api/group-sessions/:id/suggest-topics — suggest topics for group
 groupSessionRoutes.get("/:id/suggest-topics", requireAuth, async (c) => {
   const db = getDb(c.env.DB);
-  const service = createGroupSessionService(db);
+  const service = createGroupSessionService(db, c.env.CONTENT);
   const sessionId = c.req.param("id");
 
   const dashboard = await service.getDashboard(sessionId);
@@ -164,7 +164,7 @@ groupSessionRoutes.post("/:id/set-topic", requireAuth, async (c) => {
 // GET /api/group-sessions/:id/problem/:participantId — get problem for participant
 groupSessionRoutes.get("/:id/problem/:participantId", async (c) => {
   const db = getDb(c.env.DB);
-  const service = createGroupSessionService(db);
+  const service = createGroupSessionService(db, c.env.CONTENT);
   const sessionId = c.req.param("id");
   const participantId = c.req.param("participantId");
 
@@ -179,7 +179,7 @@ groupSessionRoutes.get("/:id/problem/:participantId", async (c) => {
 // POST /api/group-sessions/:id/respond/:participantId — record response
 groupSessionRoutes.post("/:id/respond/:participantId", async (c) => {
   const db = getDb(c.env.DB);
-  const service = createGroupSessionService(db);
+  const service = createGroupSessionService(db, c.env.CONTENT);
   const participantId = c.req.param("participantId");
   const body = await c.req.json<{
     correct: boolean;
@@ -203,7 +203,7 @@ groupSessionRoutes.post("/:id/respond/:participantId", async (c) => {
 // GET /api/group-sessions/:id/peer-pair — get peer pair turn state
 groupSessionRoutes.get("/:id/peer-pair", async (c) => {
   const db = getDb(c.env.DB);
-  const service = createGroupSessionService(db);
+  const service = createGroupSessionService(db, c.env.CONTENT);
   const sessionId = c.req.param("id");
 
   const state = await service.getPeerPairState(sessionId);
@@ -217,7 +217,7 @@ groupSessionRoutes.get("/:id/peer-pair", async (c) => {
 // POST /api/group-sessions/:id/end — end the session
 groupSessionRoutes.post("/:id/end", requireAuth, async (c) => {
   const db = getDb(c.env.DB);
-  const service = createGroupSessionService(db);
+  const service = createGroupSessionService(db, c.env.CONTENT);
   const sessionId = c.req.param("id");
 
   const result = await service.endSession(sessionId);

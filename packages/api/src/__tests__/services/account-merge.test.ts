@@ -45,11 +45,11 @@ beforeAll(async () => {
   await seedPrerequisite(t1.id, t2.id);
   await seedPrerequisite(t1.id, t3.id);
   await seedPrerequisite(t2.id, t4.id);
-  await seedAssessmentContent(t1.id, { id: "merge-ac-1", question: "Count to 5", answer: "5" });
-  await seedAssessmentContent(t2.id, { id: "merge-ac-2", question: "2 + 3 = ?", answer: "5" });
-  await seedAssessmentContent(t3.id, { id: "merge-ac-3", question: "5 - 2 = ?", answer: "3" });
-  await seedAssessmentContent(t4.id, { id: "merge-ac-4", question: "3 x 4 = ?", answer: "12" });
-  await seedInstructionalContent(t1.id, { id: "merge-ic-1" });
+  await seedAssessmentContent(t1.id, { id: "merge-ac-1", question: "Count to 5", answer: "5", disciplineId: DISCIPLINE_ID });
+  await seedAssessmentContent(t2.id, { id: "merge-ac-2", question: "2 + 3 = ?", answer: "5", disciplineId: DISCIPLINE_ID });
+  await seedAssessmentContent(t3.id, { id: "merge-ac-3", question: "5 - 2 = ?", answer: "3", disciplineId: DISCIPLINE_ID });
+  await seedAssessmentContent(t4.id, { id: "merge-ac-4", question: "3 x 4 = ?", answer: "12", disciplineId: DISCIPLINE_ID });
+  await seedInstructionalContent(t1.id, { id: "merge-ic-1", disciplineId: DISCIPLINE_ID });
   contentSeeded = true;
 });
 

@@ -10,6 +10,7 @@ import {
   seedInstructionalContent,
   seedUserTopicDepth,
   seedUserDisciplinePresentation,
+  getTestR2Bucket,
 } from "./helpers.js";
 import { createContentService } from "../services/content.js";
 import { buildDefaultDistribution, sampleFromDistribution } from "../services/content.js";
@@ -17,7 +18,7 @@ import * as schema from "../db/schema.js";
 
 describe("content service", () => {
   const db = getTestDb();
-  const content = createContentService(db);
+  const content = createContentService(db, getTestR2Bucket());
 
   beforeAll(async () => {
     await resetDb();
@@ -174,6 +175,7 @@ describe("content service", () => {
         contentDepth: "survey",
         question: "Count to 3",
         answer: "3",
+        disciplineId: "disc-content-test",
       });
       await seedAssessmentContent(topicId, {
         id: "ac-standard",
@@ -181,6 +183,7 @@ describe("content service", () => {
         contentDepth: "survey",
         question: "What is 2 + 2?",
         answer: "4",
+        disciplineId: "disc-content-test",
       });
       await seedAssessmentContent(topicId, {
         id: "ac-advanced",
@@ -188,12 +191,14 @@ describe("content service", () => {
         contentDepth: "survey",
         question: "Prove that addition is commutative for natural numbers",
         answer: "By induction",
+        disciplineId: "disc-content-test",
       });
     });
 
     it("returns exact presentation match", async () => {
       const problems = await content.getTopicProblems({
         topicId,
+        discipline: "disc-content-test",
         contentDepth: "survey",
         presentation: "primary",
       });
@@ -204,6 +209,7 @@ describe("content service", () => {
     it("falls back to adjacent presentation when exact match missing", async () => {
       const problems = await content.getTopicProblems({
         topicId,
+        discipline: "disc-content-test",
         contentDepth: "survey",
         presentation: "intermediate", // Not seeded — should fall back to standard
       });
@@ -214,6 +220,7 @@ describe("content service", () => {
     it("falls back to any content when no dimension matches", async () => {
       const problems = await content.getTopicProblems({
         topicId,
+        discipline: "disc-content-test",
         contentDepth: "analytical", // Not seeded
         presentation: "primary",
         locale: "ja", // Not seeded
@@ -237,18 +244,21 @@ describe("content service", () => {
         presentation: "primary",
         contentDepth: "survey",
         title: "Counting for Little Ones",
+        disciplineId: "disc-ex-test",
       });
       await seedInstructionalContent(topicId, {
         id: "ic-standard",
         presentation: "standard",
         contentDepth: "survey",
         title: "Introduction to Counting",
+        disciplineId: "disc-ex-test",
       });
     });
 
     it("returns exact presentation match", async () => {
       const examples = await content.getTopicExamples({
         topicId,
+        discipline: "disc-ex-test",
         contentDepth: "survey",
         presentation: "primary",
       });
@@ -259,6 +269,7 @@ describe("content service", () => {
     it("falls back to adjacent presentation", async () => {
       const examples = await content.getTopicExamples({
         topicId,
+        discipline: "disc-ex-test",
         contentDepth: "survey",
         presentation: "intermediate", // Not seeded
       });

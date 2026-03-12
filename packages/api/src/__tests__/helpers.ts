@@ -50,9 +50,9 @@ export async function resetDb() {
     "verifications",
     "sessions",
     "user_preferences",
+    "topic_content_versions",
     "assessment_content",
     "instructional_content",
-    "topic_content_versions",
     "encompassings",
     "prerequisites",
     "topics",
@@ -63,6 +63,59 @@ export async function resetDb() {
   for (const t of tables) {
     await env.DB.exec(`DROP TABLE IF EXISTS "${t}"`);
   }
+}
+
+// --- R2 Mock ---
+
+/**
+ * Create an in-memory R2 bucket mock for testing.
+ * Pass a map of R2 key → JSON content.
+ */
+export function createMockR2Bucket(objects: Record<string, string> = {}): R2Bucket {
+  return {
+    get(key: string) {
+      const data = objects[key];
+      if (!data) return Promise.resolve(null);
+      return Promise.resolve({
+        text: () => Promise.resolve(data),
+        json: () => Promise.resolve(JSON.parse(data)),
+        body: null,
+        bodyUsed: false,
+        arrayBuffer: () => Promise.resolve(new ArrayBuffer(0)),
+        blob: () => Promise.resolve(new Blob()),
+      } as unknown as R2ObjectBody);
+    },
+    put: () => Promise.resolve(null as any),
+    delete: () => Promise.resolve(),
+    list: () => Promise.resolve({ objects: [], truncated: false, delimitedPrefixes: [] } as any),
+    head: () => Promise.resolve(null),
+    createMultipartUpload: () => Promise.resolve(null as any),
+    resumeMultipartUpload: () => Promise.resolve(null as any),
+  } as unknown as R2Bucket;
+}
+
+/**
+ * Create a mock R2 bucket pre-populated with standard test problems for a topic.
+ * Problems have easy/medium/hard difficulties with standard presentation.
+ */
+export function createTestR2Bucket(topicId: string, disciplineId = "math"): R2Bucket {
+  const problems = [
+    { id: `${topicId}-p1`, topicId, difficulty: "easy", question: "What is 2 + 2?", answer: "4", hints: ["Think about counting."], solution: "2 + 2 = 4", flavor: "classic", locale: "en", presentation: "standard", contentDepth: "survey", type: "text-qa", cognitiveDemand: "procedural" },
+    { id: `${topicId}-p2`, topicId, difficulty: "medium", question: "What is 5 + 3?", answer: "8", hints: ["Count on from 5."], solution: "5 + 3 = 8", flavor: "classic", locale: "en", presentation: "standard", contentDepth: "survey", type: "text-qa", cognitiveDemand: "procedural" },
+    { id: `${topicId}-p3`, topicId, difficulty: "hard", question: "What is 7 + 8?", answer: "15", hints: ["Make a 10 first."], solution: "7 + 3 + 5 = 15", flavor: "classic", locale: "en", presentation: "standard", contentDepth: "survey", type: "text-qa", cognitiveDemand: "procedural" },
+  ];
+  const examples = [
+    { id: `${topicId}-ex1`, topicId, title: "Example", steps: [{ subgoalLabel: "Step 1", instruction: "Count", work: "1, 2, 3", explanation: "Count one at a time." }], flavor: "classic", locale: "en", presentation: "standard", contentDepth: "survey" },
+  ];
+  return createMockR2Bucket({
+    [`${disciplineId}/${topicId}/problems.json`]: JSON.stringify(problems),
+    [`${disciplineId}/${topicId}/examples.json`]: JSON.stringify(examples),
+  });
+}
+
+/** Get the test R2 bucket (miniflare in-memory R2) */
+export function getTestR2Bucket(): R2Bucket {
+  return env.CONTENT;
 }
 
 // --- Request Helpers ---
@@ -169,55 +222,119 @@ export async function seedTopic(
   return topic;
 }
 
-export async function seedAssessmentContent(
+export async function seedTopicContentVersion(
   topicId: string,
-  overrides: Partial<typeof schema.assessmentContent.$inferInsert> = {}
+  overrides: Partial<typeof schema.topicContentVersions.$inferInsert> = {}
 ) {
   const db = getTestDb();
-  const id = overrides.id ?? `ac-${crypto.randomUUID().slice(0, 8)}`;
   const now = new Date().toISOString();
   const [row] = await db
-    .insert(schema.assessmentContent)
+    .insert(schema.topicContentVersions)
     .values({
-      id,
       topicId,
-      difficulty: overrides.difficulty ?? "medium",
-      question: overrides.question ?? "What is 2 + 2?",
-      answer: overrides.answer ?? "4",
-      hintsJson: overrides.hintsJson ?? JSON.stringify(["Think about counting."]),
-      solution: overrides.solution ?? "2 + 2 = 4",
-      createdAt: now,
+      contentHash: overrides.contentHash ?? `hash-${topicId}`,
+      bundleVersion: overrides.bundleVersion ?? 1,
+      problemsCount: overrides.problemsCount ?? 15,
+      examplesCount: overrides.examplesCount ?? 2,
+      generatedAt: overrides.generatedAt ?? now,
       ...overrides,
+    })
+    .onConflictDoUpdate({
+      target: schema.topicContentVersions.topicId,
+      set: {
+        contentHash: overrides.contentHash ?? `hash-${topicId}`,
+        problemsCount: overrides.problemsCount ?? 15,
+        examplesCount: overrides.examplesCount ?? 2,
+      },
     })
     .returning();
   return row;
 }
 
+/**
+ * Seed test content into R2 + topic_content_versions for a topic.
+ * This populates the miniflare R2 bucket so content is available via the content service.
+ * Also backward-compatible with seedAssessmentContent/seedInstructionalContent call sites.
+ */
+export async function seedAssessmentContent(
+  topicId: string,
+  overrides: Record<string, unknown> = {}
+) {
+  const disciplineId = (overrides.disciplineId as string) ?? "math";
+  const difficulty = (overrides.difficulty as string) ?? "medium";
+  const id = (overrides.id as string) ?? `ac-${crypto.randomUUID().slice(0, 8)}`;
+  const problems = [{
+    id,
+    topicId,
+    difficulty,
+    question: (overrides.question as string) ?? "What is 2 + 2?",
+    answer: (overrides.answer as string) ?? "4",
+    hints: overrides.hintsJson ? JSON.parse(overrides.hintsJson as string) : ["Think about counting."],
+    solution: (overrides.solution as string) ?? "2 + 2 = 4",
+    flavor: "classic",
+    locale: "en",
+    presentation: (overrides.presentation as string) ?? "standard",
+    contentDepth: (overrides.contentDepth as string) ?? "survey",
+    type: "text-qa",
+    cognitiveDemand: (overrides.cognitiveDemand as string | undefined) ?? undefined,
+    keyPrerequisiteId: (overrides.keyPrerequisiteId as string) ?? undefined,
+    source: (overrides.source as string) ?? "hand-authored",
+  }];
+
+  // Merge with existing R2 content (so multiple calls for same topic accumulate)
+  const r2Key = `${disciplineId}/${topicId}/problems.json`;
+  const existing = await env.CONTENT.get(r2Key);
+  if (existing) {
+    const prev = await existing.json() as unknown[];
+    prev.push(...problems);
+    await env.CONTENT.put(r2Key, JSON.stringify(prev));
+  } else {
+    await env.CONTENT.put(r2Key, JSON.stringify(problems));
+  }
+
+  // Also update topic_content_versions
+  const result = await seedTopicContentVersion(topicId, {
+    problemsCount: existing ? ((await (await env.CONTENT.get(r2Key))!.json()) as unknown[]).length : 1,
+  });
+
+  return { ...result, id, topicId };
+}
+
+/**
+ * Seed worked example into R2 + topic_content_versions for a topic.
+ */
 export async function seedInstructionalContent(
   topicId: string,
-  overrides: Partial<typeof schema.instructionalContent.$inferInsert> = {}
+  overrides: Record<string, unknown> = {}
 ) {
-  const db = getTestDb();
-  const id = overrides.id ?? `ic-${crypto.randomUUID().slice(0, 8)}`;
-  const now = new Date().toISOString();
-  const [row] = await db
-    .insert(schema.instructionalContent)
-    .values({
-      id,
-      topicId,
-      title: overrides.title ?? "Example: Counting",
-      stepsJson: overrides.stepsJson ?? JSON.stringify([{
-        subgoalLabel: "Step 1",
-        instruction: "Count objects",
-        work: "1, 2, 3",
-        explanation: "We count one at a time.",
-      }]),
-      createdAt: now,
-      updatedAt: now,
-      ...overrides,
-    })
-    .returning();
-  return row;
+  const disciplineId = (overrides.disciplineId as string) ?? "math";
+  const id = (overrides.id as string) ?? `ic-${crypto.randomUUID().slice(0, 8)}`;
+  const examples = [{
+    id,
+    topicId,
+    title: (overrides.title as string) ?? "Example: Counting",
+    steps: overrides.stepsJson ? JSON.parse(overrides.stepsJson as string) : [{ subgoalLabel: "Step 1", instruction: "Count objects", work: "1, 2, 3", explanation: "We count one at a time." }],
+    flavor: "classic",
+    locale: "en",
+    presentation: (overrides.presentation as string) ?? "standard",
+    contentDepth: (overrides.contentDepth as string) ?? "survey",
+  }];
+
+  const r2Key = `${disciplineId}/${topicId}/examples.json`;
+  const existing = await env.CONTENT.get(r2Key);
+  if (existing) {
+    const prev = await existing.json() as unknown[];
+    prev.push(...examples);
+    await env.CONTENT.put(r2Key, JSON.stringify(prev));
+  } else {
+    await env.CONTENT.put(r2Key, JSON.stringify(examples));
+  }
+
+  const result = await seedTopicContentVersion(topicId, {
+    examplesCount: existing ? ((await (await env.CONTENT.get(r2Key))!.json()) as unknown[]).length : 1,
+  });
+
+  return { ...result, id, topicId };
 }
 
 export async function seedPrerequisite(

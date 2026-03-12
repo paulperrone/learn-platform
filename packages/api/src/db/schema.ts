@@ -49,50 +49,8 @@ export const topics = sqliteTable("topics", {
   index("topics_depth_idx").on(table.depth),
 ]);
 
-export const instructionalContent = sqliteTable("instructional_content", {
-  id: text("id").primaryKey(),
-  topicId: text("topic_id").notNull().references(() => topics.id),
-  flavor: text("flavor").notNull().default("classic"),
-  locale: text("locale").notNull().default("en"),
-  presentation: text("presentation").notNull().default("standard"),
-  contentDepth: text("content_depth").notNull().default("survey"), // 'survey' | 'contextual' | 'analytical' | 'synthesis'
-  version: integer("version").notNull().default(1),
-  title: text("title").notNull(),
-  stepsJson: text("steps_json").notNull(),
-  assetsJson: text("assets_json"),
-  createdAt: text("created_at").notNull().$defaultFn(() => new Date().toISOString()),
-  updatedAt: text("updated_at").notNull().$defaultFn(() => new Date().toISOString()),
-}, (table) => [
-  index("ic_topic_idx").on(table.topicId),
-  index("ic_dimensions_idx").on(table.topicId, table.flavor, table.locale, table.presentation, table.version),
-  index("ic_depth_idx").on(table.topicId, table.contentDepth),
-]);
-
-export const assessmentContent = sqliteTable("assessment_content", {
-  id: text("id").primaryKey(),
-  topicId: text("topic_id").notNull().references(() => topics.id),
-  flavor: text("flavor").notNull().default("classic"),
-  locale: text("locale").notNull().default("en"),
-  presentation: text("presentation").notNull().default("standard"),
-  contentDepth: text("content_depth").notNull().default("survey"), // 'survey' | 'contextual' | 'analytical' | 'synthesis'
-  version: integer("version").notNull().default(1),
-  type: text("type").notNull().default("text-qa"),
-  difficulty: text("difficulty").notNull(),
-  question: text("question").notNull(),
-  answer: text("answer").notNull(),
-  hintsJson: text("hints_json").notNull().default("[]"),
-  solution: text("solution").notNull().default(""),
-  typeProperties: text("type_properties"),
-  cognitiveDemand: text("cognitive_demand"), // 'procedural' | 'conceptual' | 'application' | 'reasoning' | 'error_analysis'
-  keyPrerequisiteId: text("key_prerequisite_id"), // optional: specific prereq topic most likely to cause failure
-  source: text("source").notNull().default("hand-authored"), // 'hand-authored' | 'procedural' | 'supplementary'
-  createdAt: text("created_at").notNull().$defaultFn(() => new Date().toISOString()),
-}, (table) => [
-  index("ac_topic_idx").on(table.topicId),
-  index("ac_dimensions_idx").on(table.topicId, table.flavor, table.locale, table.presentation, table.version),
-  index("ac_type_idx").on(table.topicId, table.type),
-  index("ac_depth_idx").on(table.topicId, table.contentDepth),
-]);
+// assessment_content and instructional_content tables removed — content now lives in R2 bundles.
+// See docs/r2-content-architecture.md for the migration rationale.
 
 export const topicContentVersions = sqliteTable("topic_content_versions", {
   topicId: text("topic_id").primaryKey().references(() => topics.id),

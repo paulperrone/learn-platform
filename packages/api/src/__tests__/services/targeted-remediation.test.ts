@@ -12,6 +12,7 @@ import {
   seedInstructionalContent,
   seedPrerequisite,
   seedUserTopicState,
+  getTestR2Bucket,
 } from "../helpers.js";
 import { createSessionService } from "../../services/session.js";
 
@@ -150,7 +151,7 @@ describe("targeted remediation", () => {
       currentPhase: "independent",
     });
 
-    const session = createSessionService(db);
+    const session = createSessionService(db, undefined, getTestR2Bucket());
 
     // First failure → stays in independent (retry)
     const retry = await session.respond(sessionId, {
@@ -205,7 +206,7 @@ describe("targeted remediation", () => {
       lastProblemId: "mult-with-key-prereq",
     });
 
-    const session = createSessionService(db);
+    const session = createSessionService(db, undefined, getTestR2Bucket());
 
     // First failure → stays in independent (retry)
     await session.respond(sessionId, {
@@ -244,7 +245,7 @@ describe("targeted remediation", () => {
       remediationOriginalPhase: "independent",
     });
 
-    const session = createSessionService(db);
+    const session = createSessionService(db, undefined, getTestR2Bucket());
 
     // Respond correctly → should return to addition's independent phase
     const result = await session.respond(sessionId, {
@@ -309,7 +310,7 @@ describe("targeted remediation", () => {
       updatedAt: now,
     });
 
-    const session = createSessionService(db);
+    const session = createSessionService(db, undefined, getTestR2Bucket());
 
     // First failure → stays in independent (retry)
     await session.respond(sessionId, {
@@ -355,7 +356,7 @@ describe("targeted remediation", () => {
       remediationOriginalTopicId: "multiplication",
     });
 
-    const session = createSessionService(db);
+    const session = createSessionService(db, undefined, getTestR2Bucket());
 
     // Fail again → phaseIndex becomes 2 → should switch to next weakest (addition)
     const result = await session.respond(sessionId, {
@@ -401,7 +402,7 @@ describe("targeted remediation", () => {
       currentPhase: "independent",
     });
 
-    const session = createSessionService(db);
+    const session = createSessionService(db, undefined, getTestR2Bucket());
 
     // First failure → stays in independent (retry)
     await session.respond(sessionId, {
@@ -439,7 +440,7 @@ describe("targeted remediation", () => {
       currentPhase: "pretest",
     });
 
-    const session = createSessionService(db);
+    const session = createSessionService(db, undefined, getTestR2Bucket());
 
     // Fail pretest → advances to instruction (failure tracked: count=1)
     const preResult = await session.respond(sessionId, {
@@ -481,7 +482,7 @@ describe("targeted remediation", () => {
       currentPhase: "review",
     });
 
-    const session = createSessionService(db);
+    const session = createSessionService(db, undefined, getTestR2Bucket());
 
     // First review failure → retry (failure tracked: count=1)
     const retry = await session.respond(sessionId, {
@@ -521,7 +522,7 @@ describe("targeted remediation", () => {
       remediationOriginalPhase: "review",
     });
 
-    const session = createSessionService(db);
+    const session = createSessionService(db, undefined, getTestR2Bucket());
 
     // Succeed in remediation → should return to original topic's review phase
     const result = await session.respond(sessionId, {
@@ -571,7 +572,7 @@ describe("targeted remediation", () => {
       currentPhase: "independent",
     });
 
-    const session = createSessionService(db);
+    const session = createSessionService(db, undefined, getTestR2Bucket());
 
     // Fail twice → triggers remediation
     await session.respond(sessionId, { correct: false, responseMs: 2000 });

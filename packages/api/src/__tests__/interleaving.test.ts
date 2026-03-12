@@ -190,7 +190,6 @@ describe("Non-Interference Interleaving", () => {
       await db.delete(schema.userTopicState);
       await db.delete(schema.encompassings);
       await db.delete(schema.prerequisites);
-      await db.delete(schema.assessmentContent);
       await db.delete(schema.topics);
       await db.delete(schema.disciplines);
       await db.delete(schema.users);

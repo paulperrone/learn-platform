@@ -167,8 +167,10 @@ describe("Activity Routes", () => {
 
   describe("GET /api/activity/history", () => {
     it("returns activity history", async () => {
-      await seedDailyActivity(userId, "2026-03-05", { minutesActive: 20 });
-      await seedDailyActivity(userId, "2026-03-06", { minutesActive: 15 });
+      const today = new Date().toISOString().slice(0, 10);
+      const yesterday = new Date(Date.now() - 86400000).toISOString().slice(0, 10);
+      await seedDailyActivity(userId, yesterday, { minutesActive: 20 });
+      await seedDailyActivity(userId, today, { minutesActive: 15 });
 
       const res = await request("/api/activity/history?days=7", { headers });
       expect(res.status).toBe(200);

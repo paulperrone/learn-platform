@@ -10,6 +10,7 @@ export default defineWorkersConfig({
         },
         miniflare: {
           d1Databases: ["DB"],
+          r2Buckets: ["CONTENT"],
         },
       },
     },

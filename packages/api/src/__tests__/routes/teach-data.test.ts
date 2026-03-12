@@ -142,7 +142,7 @@ describe("Teach Data Model", () => {
           id: "ar-1",
           assignmentId: assignment.id,
           userId: student.id,
-          questionId: problem.id,
+          questionId: problem.topicId,
           answer: "4",
           correct: true,
           createdAt: new Date().toISOString(),
@@ -167,7 +167,7 @@ describe("Teach Data Model", () => {
           id: "ar-2",
           assignmentId: assignment.id,
           anonymousToken: "anon-uuid-123",
-          questionId: problem.id,
+          questionId: problem.topicId,
           answer: "5",
           correct: false,
           createdAt: new Date().toISOString(),
@@ -188,9 +188,9 @@ describe("Teach Data Model", () => {
       const db = getTestDb();
       const now = new Date().toISOString();
       await db.insert(schema.assignmentResponses).values([
-        { id: "ar-3", assignmentId: assignment.id, anonymousToken: "t1", questionId: problem.id, answer: "4", correct: true, createdAt: now },
-        { id: "ar-4", assignmentId: assignment.id, anonymousToken: "t2", questionId: problem.id, answer: "3", correct: false, createdAt: now },
-        { id: "ar-5", assignmentId: assignment.id, userId: "some-user", questionId: problem.id, answer: "4", correct: true, createdAt: now },
+        { id: "ar-3", assignmentId: assignment.id, anonymousToken: "t1", questionId: problem.topicId, answer: "4", correct: true, createdAt: now },
+        { id: "ar-4", assignmentId: assignment.id, anonymousToken: "t2", questionId: problem.topicId, answer: "3", correct: false, createdAt: now },
+        { id: "ar-5", assignmentId: assignment.id, userId: "some-user", questionId: problem.topicId, answer: "4", correct: true, createdAt: now },
       ]);
 
       const responses = await db

@@ -1,6 +1,7 @@
 declare module "cloudflare:test" {
   interface ProvidedEnv {
     DB: D1Database;
+    CONTENT: R2Bucket;
     AI?: Ai;
     BETTER_AUTH_SECRET: string;
     BETTER_AUTH_URL: string;
