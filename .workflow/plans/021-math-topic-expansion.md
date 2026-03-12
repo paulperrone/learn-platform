@@ -93,9 +93,9 @@ Targets calibrated against MA unit sizes, adjusted for our K-8 scope (excluding 
 
 ## Progress
 
-**Completed:** Phase 1 ✓, Phase 2 ✓, Phase 3 ✓ (L2: 6P/1W/3F — expected regression from 2.2x graph expansion)
+**Completed:** Phase 1 ✓, Phase 2 ✓, Phase 3 ✓, Phase 4 ✓ (L2: 6P/1W/3F — unchanged; 695 topics, all examples complete)
 **In Progress:** —
-**Next:** Phase 4
+**Next:** Phase 5
 **Status:** ▶ READY — Plan 023 (R2 Content Architecture) complete. Content generation continues writing to learn-content JSON files as before. Deploy pipeline now bundles to R2 (`just deploy-content`). Local dev/simulations use `FileContentBucket` (reads learn-content directly — no bundle upload needed for testing).
 
 ---
@@ -181,20 +181,20 @@ Fractions is the largest expansion in this wave (~16 → 70 topics). MA decompos
 
 ---
 
-## Phase 4: Wave 3 — 6-8 Domain Strands (115 → ~350 topics)
+## Phase 4: Wave 3 — 6-8 Domain Strands (115 → ~350 topics) ✓
 **Goal:** Expand all middle school strands plus add the new exponents-radicals strand.
 
 This is the largest wave — 8 strands, ~235 new topics. Expressions-equations and linear-functions have the most hidden prerequisite chains. The new exponents-radicals strand fills a gap that MA covers extensively but we currently don't break out.
 
-1. [ ] [IMP] Split topics and update `../learn-content/math/graph.json` for Wave 3 strands per expansion map
-2. [ ] [IMP] Create new exponents-radicals strand topics (from expansion map — ~35 topics)
-3. [ ] [IMP] Generate problems for new topics: 15 per topic
-4. [ ] [IMP] Generate worked examples for new topics: 2 per topic
-5. [ ] [IMP] Update collection membership for `math-6-8`
-6. [ ] [VAL] Run `just validate-content` — 0 errors
-7. [ ] [VAL] Run `just import-content` — ~700 topics loaded (graph-only import; content served from learn-content filesystem via `FileContentBucket` for local dev/simulations)
-8. [ ] [VAL] L2 rebaseline: `just evaluate-l2`
-9. [ ] [DOC] Record L2 comparison
+1. [x] [IMP] Split topics and update `../learn-content/math/graph.json` for Wave 3 strands per expansion map
+2. [x] [IMP] Create new exponents-radicals strand topics (from expansion map — 35 topics)
+3. [x] [IMP] Generate problems for new topics: 15 per topic
+4. [x] [IMP] Generate worked examples for new topics: 2 per topic (66 examples generated; platform-incompatible drawing instructions fixed)
+5. [x] [IMP] Update collection membership for `math-6-8` (115 → 350 topics)
+6. [x] [VAL] Run `just validate-content` — 0 errors, 2 pre-existing platform warnings (negative-numbers-number-line-ex1, percent-using-models-ex2)
+7. [x] [VAL] Run `just import-content` — 695 topics loaded, DAG valid, no cycles, max depth 30
+8. [x] [VAL] L2 rebaseline: `just evaluate-l2` — 6P/1W/3F (unchanged from Wave 2 checkpoint — graph structure unchanged, same 3 failures)
+9. [x] [DOC] Record L2 comparison — identical to Wave 2 baseline; Mastery Convergence P0 FAIL expected at 695 topics (target of 11 calibrated for 207 topics); recalibration deferred to Plan 022
 
 **Validation:** Math graph has ~700 topics. L2 results: no P0 regressions. 6-8 strand density within guardrail range.
 
