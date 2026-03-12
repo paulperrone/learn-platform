@@ -1,7 +1,7 @@
 # Plan: Engagement & Habit Features
 
 > **Created:** 2026-03-05T19:42:15Z
-> **Completed:** —
+> **Completed:** 2026-03-07
 >
 > For project context, see [CLAUDE.md](../../CLAUDE.md)
 > For product vision, see [SPEC.md](./SPEC.md)

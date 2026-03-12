@@ -1,7 +1,7 @@
 # Plan: Content Personalization, Access & Group Learning
 
 > **Created:** 2026-03-05T18:32:31Z
-> **Completed:** —
+> **Completed:** 2026-03-05
 >
 > For project context, see [CLAUDE.md](../../CLAUDE.md)
 > For product vision, see [SPEC.md](./SPEC.md)

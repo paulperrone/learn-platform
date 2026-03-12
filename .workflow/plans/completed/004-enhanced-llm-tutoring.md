@@ -1,7 +1,7 @@
 # Epic: Enhanced LLM Tutoring
 
 > **Created:** 2026-03-04T23:26:01Z
-> **Completed:** —
+> **Completed:** 2026-03-04
 >
 > For project context, see [CLAUDE.md](../../CLAUDE.md)
 > For product vision, see [SPEC.md](./SPEC.md)
