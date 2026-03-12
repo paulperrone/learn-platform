@@ -1666,3 +1666,36 @@ Tag each target in `targets.json` with `signal_source: "engine" | "content" | "b
 - Plan 019 Phases 4.5B-6: simulation/engine tuning can now run on the full-density graph
 - Plan 022: post-expansion validation (target recalibration, content quality remediation)
 - Future content expansion: history/ELA disciplines can follow the same strand-by-strand methodology
+
+---
+
+## 2026-03-12: Post-Expansion L3 Re-evaluation — Proceed to Phase 3 (L4/L5)
+
+**Source:** Plan 022 Phase 2
+
+**Decision:** Proceed to Phase 3 (L4/L5 long-horizon simulations). Content runway is sufficient for average/struggling profiles at L4 (180 sessions). Strong profiles exhaust math content around session 70-72 — expected for students who've mastered all K-8 math content, not a system failure.
+
+**Data:**
+
+| Profile type | Content ceiling (post-expansion L3) |
+|-------------|-------------------------------------|
+| Strong (strong-older, gifted-middle) | Session 67-72 |
+| Fast learners, average | Session 90+ (still learning at L3 end) |
+| Struggling | Session 89+ |
+
+**Key findings:**
+- Review/New Balance: FAIL (0.86) → PASS (0.694) — expansion fixed the review domination problem
+- Mastery convergence: PASS (17/29) → FAIL (3/29) — **target recalibration needed**, not an engine regression; "≥50% total mastery" was designed for 207 topics, doesn't apply to 705-topic graph
+- Interleaving quality: PASS (0.092) → FAIL (0.141) — regression under investigation, does not block L4
+- Behavioral match: 27/29 → 8/29 — all profile expectations need recalibration for 705-topic graph
+- FIRe efficiency improved from -25% to -16.9%
+
+**Content sufficiency gate:**
+- Plan criteria: plateau ≥ 60 sessions → sufficient for L4 (180 sessions)
+- Strong profiles plateau at session 67-72 ✅ (≥ 60)
+- Average/struggling profiles: session 90+ ✅
+- **Gate passes** — proceed to Phase 3
+
+**What strong profiles do after session 70:** Pure FSRS review of ~430 mastered math topics. Pedagogically valid (spaced repetition continues). Multi-subject content (ELA/history) would give them new learning; consider after Phase 3.
+
+**Target recalibration deferred to:** Phase 5 (Final Baselines & Documentation), after L4/L5 data informs the right target levels.

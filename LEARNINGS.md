@@ -974,3 +974,36 @@ The `problems-generated/` directory has 207 files (one per topic with < 15 hand-
 At 705 topics (MA-comparable density), the atomicity audit found 27.9% "should-merge" (197 topics). This is expected — the Wave 1-3 expansion deliberately added fine-grained sub-skill topics (slope-from-graph, slope-from-table, calculate-slope; add-fractions-like-denom, subtract-fractions-like-denom separately). The dominant merge pattern is **operation sub-splits**: separate add/subtract variants of the same operation already covered by a combined parent. Secondary patterns: skip-counting sub-topics (count-by-2s/5s/10s), fluency variants (fluent-level topics duplicate base topics), and statistics individual measures (mean, median, mode duplicating measures-of-center). Only 2.4% should-split. At this density, over-granularity is the more common failure mode, not under-granularity.
 
 **Context:** Audit results in `docs/audits/atomicity-latest.json`. Merges deferred to Plan 022 (post-expansion validation).
+
+---
+
+### 2026-03-12: evaluate-l3 FIRe runs mask the 90-session L3 runs in latest-run lookups
+
+**Source:** User session
+**Area:** Simulation / analysis
+
+`just evaluate-l3` runs the 90-session L3 simulation for all profiles, then immediately runs FIRe paired comparison simulations (15 sessions each, with and without encompassing). The FIRe runs create NEW run directories that become the "latest" timestamp for each profile. If you then look for "the latest average-older run" to analyze L3 behavior, you'll find the 15-session FIRe run, not the 90-session L3 run. This causes confusing results: only 15 sessions, early content cutoff, FIRe-specific topic selection. Fix: always filter by session count when analyzing specific profiles after a `evaluate-l3` call (e.g., `len(sessions) == 90`).
+
+**Context:** Affects any post-evaluate-l3 per-profile analysis. The evaluation pipeline (`evaluate-l3`) correctly uses the 90-session data — this only affects ad-hoc analysis of individual profiles.
+
+---
+
+### 2026-03-12: masteryPlateauSession metric measures rate stabilization, not content exhaustion
+
+**Source:** User session
+**Area:** Simulation / L3 metrics
+
+The `masteryPlateauSession` field in L3 metrics reports when the mastery RATE stabilizes (delta-mastery per session stops changing significantly) — NOT when content is exhausted. A profile reporting `plateauSession: 6` may still have 70+ sessions of new content available. To find the actual content ceiling (last session where new topics are introduced), look at `newTopicsIntroduced` per session in `session-summaries.json`. For strong-older at post-expansion L3: plateauSession=6, but `newTopicsIntroduced` drops to 0 only at session 72.
+
+**Context:** The plateau metric was originally useful for the 207-topic graph where content exhaustion and rate stabilization coincided at session 6-8. With 705 topics, the two measurements diverge significantly.
+
+---
+
+### 2026-03-12: Mastery convergence target breaks for large topic graphs — implicit mastery dominates
+
+**Source:** User session
+**Area:** Simulation targets / evaluation
+
+The mastery convergence metric ("≥50% of non-struggling profiles reach 50% total mastery") was calibrated for a 207-topic graph. With 705 topics, the measure becomes inconsistent: high-placement profiles (strong-older, gifted-middle) immediately "pass" because the diagnostic gives them implicit mastery for 60-80% of topics before session 1. Average profiles genuinely making good progress (170 topics mastered in 90 sessions) "fail" because 170/705 < 50%. The metric doesn't distinguish between "implicit mastery from diagnostic" and "mastery earned through learning sessions." At 705 topics, 3/29 profiles pass — not because the engine is broken, but because the metric measures the wrong thing. Recalibration needed: measure progress within accessible content, or count topics mastered during the simulation only.
+
+**Context:** This is the primary cause of the mastery_convergence FAIL in the post-expansion L3 evaluation. Deferred recalibration to Plan 022 Phase 5.
