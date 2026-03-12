@@ -87,6 +87,37 @@ visualize subject="math":
 build-web:
     pnpm --filter web exec vite build
 
+# Export content as SQL for remote D1 import
+export-content *args:
+    CONTENT_DIR="{{content_dir}}" npx tsx tools/export-sql.ts {{args}}
+
+# Deploy content to remote D1 (production)
+deploy-content:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    export CONTENT_DIR="{{content_dir}}"
+    echo "Exporting content as batched SQL..."
+    npx tsx tools/export-sql.ts --dir /tmp/learn-content-deploy
+    echo "Applying to remote D1..."
+    for f in /tmp/learn-content-deploy/content-*.sql; do
+        echo "  Applying $(basename "$f")..."
+        npx wrangler d1 execute learn-db --remote --file="$f" --env production
+    done
+    rm -rf /tmp/learn-content-deploy
+    echo "Content deployed to production D1."
+
+# Deploy content to remote D1 (preview)
+deploy-content-preview:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    export CONTENT_DIR="{{content_dir}}"
+    npx tsx tools/export-sql.ts --dir /tmp/learn-content-deploy
+    for f in /tmp/learn-content-deploy/content-*.sql; do
+        npx wrangler d1 execute learn-db --remote --file="$f" --env preview
+    done
+    rm -rf /tmp/learn-content-deploy
+    echo "Content deployed to preview D1."
+
 # Deploy API to preview
 deploy-preview-api:
     npx wrangler deploy --env preview
@@ -95,14 +126,15 @@ deploy-preview-api:
 deploy-preview-web: build-web
     npx wrangler pages deploy packages/web/dist --project-name learn-platform-web-preview --commit-dirty=true
 
-# Deploy all to preview
-deploy-preview: deploy-preview-api deploy-preview-web
+# Deploy all to preview (code + content)
+deploy-preview: deploy-preview-api deploy-preview-web deploy-content-preview
 
-# Deploy to production
+# Deploy to production (code + content)
 deploy:
     npx wrangler deploy
     pnpm --filter web exec vite build
     npx wrangler pages deploy packages/web/dist --project-name learn-platform-web --commit-dirty=true
+    just deploy-content
 
 # Run simulation for a single profile
 simulate profile sessions="5" seed="42":

@@ -6,7 +6,7 @@
     "build": "pnpm --filter web build && pnpm --filter api build",
     "deploy": "pnpm build && npx wrangler deploy --env production",
     "deploy:migrate": "npx wrangler d1 migrations apply learn-db --remote --env production",
-    "deploy:content": "npx tsx tools/export-sql.ts > /tmp/content-import.sql && npx wrangler d1 execute learn-db --remote --file=/tmp/content-import.sql --env production",
+    "deploy:content": "just deploy-content",
     "db:generate": "pnpm --filter api db:generate",
     "db:migrate": "pnpm --filter api db:migrate",
     "typecheck": "pnpm -r typecheck",
