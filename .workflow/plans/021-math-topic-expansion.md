@@ -229,18 +229,23 @@ At the strand-expansion level, we add topics within strands. This phase adds the
    - Sessions-to-mastery for strong/average/weak profiles
    - FIRe compression with higher encompassing density
    - Review/new balance at L2
-3. [ ] [RSH] Compare our final graph density against MA:
+3. [ ] [VAL] Atomicity audit: `just atomicity-audit` — LLM-based topic granularity analysis
+   - Run full audit, persist results to `docs/audits/`
+   - Review split/merge recommendations
+   - Act on high-confidence recommendations (optional — can defer to future plan)
+4. [ ] [RSH] Compare our final graph density against MA:
    - Per-strand topic counts vs MA equivalent units
    - Edge density comparison
    - Identify remaining coverage gaps (if any) for future work
-4. [ ] [IMP] Update grade-band collections with final topic lists
-5. [ ] [IMP] Consider adding strand-based collections now that strands are large enough to be meaningful (e.g., `math-fractions`, `math-geometry`)
-6. [ ] [DOC] Record final decision in DECISIONS.md:
+5. [ ] [IMP] Update grade-band collections with final topic lists
+6. [ ] [IMP] Consider adding strand-based collections now that strands are large enough to be meaningful (e.g., `math-fractions`, `math-geometry`)
+7. [ ] [DOC] Record final decision in DECISIONS.md:
    - Expansion stable? Formally unblock Plan 019 Phases 4.5B-6
    - Document per-strand final counts vs MA comparison
+   - Atomicity audit results summary (% atomic, key split/merge recommendations)
    - If FIRe compression improved, note the encompassing density that drove it
    - Flag any remaining coverage gaps for future expansion
-7. [ ] [DOC] Update CLAUDE.md: new topic counts, density expectations, strand list, MA reference
-8. [ ] [DOC] Update `docs/content-system.md`: revise density targets based on what we actually achieved
+8. [ ] [DOC] Update CLAUDE.md: new topic counts, density expectations, strand list, MA reference
+9. [ ] [DOC] Update `docs/content-system.md`: revise density targets based on what we actually achieved
 
-**Validation:** L2 maintains 9P/1W/0F or better. Final topic count in 800-1000 range. MA comparison documented. Plan 019 formally unblocked.
+**Validation:** L2 maintains 9P/1W/0F or better. Final topic count in 800-1000 range. Atomicity audit persisted. MA comparison documented. Plan 019 formally unblocked.
