@@ -1,5 +1,19 @@
 {
   "version": "1.0",
+  "permissions": {
+    "additionalDirectories": [
+      "../learn-content"
+    ],
+    "allow": [
+      "Read(../learn-content/**)",
+      "Write(../learn-content/**)",
+      "Edit(../learn-content/**)",
+      "Glob(../learn-content/**)",
+      "Grep(../learn-content/**)",
+      "Bash(cd ../learn-content:*)",
+      "Bash(cd /Users/paulperrone/source/learn-content:*)"
+    ]
+  },
   "providers": {
     "claude-code": {
       "symlink": ".claude"
