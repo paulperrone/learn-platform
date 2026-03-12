@@ -1,0 +1,152 @@
+[
+  {
+    "id": "evaluate-expressions-four-ops-p1",
+    "topicId": "evaluate-expressions-four-ops",
+    "difficulty": "easy",
+    "question": "What is 6 + 3 × 2?",
+    "answer": "12",
+    "hints": ["Remember order of operations: multiply before adding. 3 × 2 = 6, then 6 + 6."],
+    "solution": "3 × 2 = 6. Then 6 + 6 = 12.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "evaluate-expressions-four-ops-p2",
+    "topicId": "evaluate-expressions-four-ops",
+    "difficulty": "easy",
+    "question": "What is 10 − 4 + 3?",
+    "answer": "9",
+    "hints": ["Work left to right: 10 − 4 = 6, then 6 + 3."],
+    "solution": "10 − 4 = 6. 6 + 3 = 9.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "evaluate-expressions-four-ops-p3",
+    "topicId": "evaluate-expressions-four-ops",
+    "difficulty": "easy",
+    "question": "What is 5 × 4 + 1?",
+    "answer": "21",
+    "hints": ["Multiply first: 5 × 4 = 20. Then add 1."],
+    "solution": "5 × 4 = 20. 20 + 1 = 21.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "evaluate-expressions-four-ops-p4",
+    "topicId": "evaluate-expressions-four-ops",
+    "difficulty": "easy",
+    "question": "What is 12 ÷ 3 + 5?",
+    "answer": "9",
+    "hints": ["Divide first: 12 ÷ 3 = 4. Then add 5."],
+    "solution": "12 ÷ 3 = 4. 4 + 5 = 9.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "evaluate-expressions-four-ops-p5",
+    "topicId": "evaluate-expressions-four-ops",
+    "difficulty": "easy",
+    "question": "What is 8 + 2 × 3?",
+    "answer": "14",
+    "hints": ["Multiply first: 2 × 3 = 6. Then 8 + 6."],
+    "solution": "2 × 3 = 6. 8 + 6 = 14.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "evaluate-expressions-four-ops-p6",
+    "topicId": "evaluate-expressions-four-ops",
+    "difficulty": "medium",
+    "question": "What is 20 − 3 × 4 + 2?",
+    "answer": "10",
+    "hints": ["Multiply first: 3 × 4 = 12. Then left to right: 20 − 12 + 2."],
+    "solution": "3 × 4 = 12. 20 − 12 = 8. 8 + 2 = 10.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "evaluate-expressions-four-ops-p7",
+    "topicId": "evaluate-expressions-four-ops",
+    "difficulty": "medium",
+    "question": "What is 24 ÷ 6 + 5 × 3?",
+    "answer": "19",
+    "hints": ["Do multiplication and division first (left to right), then addition."],
+    "solution": "24 ÷ 6 = 4. 5 × 3 = 15. 4 + 15 = 19.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "evaluate-expressions-four-ops-p8",
+    "topicId": "evaluate-expressions-four-ops",
+    "difficulty": "medium",
+    "question": "What is 7 × 3 − 15 ÷ 5?",
+    "answer": "18",
+    "hints": ["Multiply and divide first: 7 × 3 = 21, 15 ÷ 5 = 3. Then subtract."],
+    "solution": "7 × 3 = 21. 15 ÷ 5 = 3. 21 − 3 = 18.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "evaluate-expressions-four-ops-p9",
+    "topicId": "evaluate-expressions-four-ops",
+    "difficulty": "medium",
+    "question": "What is 100 − 8 × 9 − 18 ÷ 6?",
+    "answer": "25",
+    "hints": ["Multiply and divide first: 8 × 9 = 72, 18 ÷ 6 = 3. Then: 100 − 72 − 3."],
+    "solution": "8 × 9 = 72. 18 ÷ 6 = 3. 100 − 72 − 3 = 25.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "evaluate-expressions-four-ops-p10",
+    "topicId": "evaluate-expressions-four-ops",
+    "difficulty": "medium",
+    "question": "What is 4 × 5 + 6 × 2 − 10?",
+    "answer": "22",
+    "hints": ["Multiply first: 4 × 5 = 20, 6 × 2 = 12. Then: 20 + 12 − 10."],
+    "solution": "4 × 5 = 20. 6 × 2 = 12. 20 + 12 − 10 = 22.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "evaluate-expressions-four-ops-p11",
+    "topicId": "evaluate-expressions-four-ops",
+    "difficulty": "hard",
+    "question": "What is 36 ÷ 4 + 8 × 3 − 15 ÷ 3?",
+    "answer": "28",
+    "hints": ["Division and multiplication first: 36÷4=9, 8×3=24, 15÷3=5. Then: 9+24−5."],
+    "solution": "36 ÷ 4 = 9. 8 × 3 = 24. 15 ÷ 3 = 5. 9 + 24 − 5 = 28.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "evaluate-expressions-four-ops-p12",
+    "topicId": "evaluate-expressions-four-ops",
+    "difficulty": "hard",
+    "question": "What is 5 × 6 + 48 ÷ 8 − 7 × 2 + 1?",
+    "answer": "23",
+    "hints": ["Mult/div first: 5×6=30, 48÷8=6, 7×2=14. Then: 30+6−14+1."],
+    "solution": "5×6=30, 48÷8=6, 7×2=14. 30+6−14+1=23.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "evaluate-expressions-four-ops-p13",
+    "topicId": "evaluate-expressions-four-ops",
+    "difficulty": "hard",
+    "question": "Insert one pair of parentheses to make this true: 3 + 5 × 2 − 1 = 15. Where do the parentheses go?",
+    "answer": "(3 + 5) × 2 − 1",
+    "hints": ["Without parentheses: 3 + 10 − 1 = 12. You need 15. Try grouping the addition first."],
+    "solution": "(3 + 5) × 2 − 1 = 8 × 2 − 1 = 16 − 1 = 15.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "evaluate-expressions-four-ops-p14",
+    "topicId": "evaluate-expressions-four-ops",
+    "difficulty": "hard",
+    "question": "What is 2 × 3 × 4 − 6 × 3 + 12 ÷ 4?",
+    "answer": "9",
+    "hints": ["Left to right for same-level ops: 2×3=6, 6×4=24, 6×3=18, 12÷4=3. Then: 24−18+3."],
+    "solution": "2×3×4=24. 6×3=18. 12÷4=3. 24−18+3=9.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "evaluate-expressions-four-ops-p15",
+    "topicId": "evaluate-expressions-four-ops",
+    "difficulty": "hard",
+    "question": "Is the following true or false? 4 + 8 ÷ 2 = 6",
+    "answer": "false",
+    "hints": ["Apply order of operations: divide first, then add."],
+    "solution": "8 ÷ 2 = 4. 4 + 4 = 8 ≠ 6. False.",
+    "cognitiveDemand": "conceptual"
+  }
+]

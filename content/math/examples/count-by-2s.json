@@ -1,0 +1,52 @@
+[
+  {
+    "id": "count-by-2s-ex1",
+    "topicId": "count-by-2s",
+    "title": "Skip Counting by 2s from 2 to 14",
+    "steps": [
+      {
+        "subgoalLabel": "Start at 2",
+        "instruction": "Begin with the number 2.",
+        "work": "2",
+        "explanation": "When we skip count by 2s, we start at 2."
+      },
+      {
+        "subgoalLabel": "Add 2 each time",
+        "instruction": "Add 2 to get the next number. Keep going.",
+        "work": "2, 4, 6, 8, 10, 12, 14",
+        "explanation": "Each time we add 2 to the last number: 2+2=4, 4+2=6, 6+2=8, and so on."
+      },
+      {
+        "subgoalLabel": "Check the pattern",
+        "instruction": "Look at the numbers. Do they go up by 2 each time?",
+        "work": "2 → 4 → 6 → 8 → 10 → 12 → 14. Yes!",
+        "explanation": "Every number is 2 more than the one before. That means we counted by 2s correctly."
+      }
+    ]
+  },
+  {
+    "id": "count-by-2s-ex2",
+    "topicId": "count-by-2s",
+    "title": "Using Skip Counting by 2s to Count Pairs of Socks",
+    "steps": [
+      {
+        "subgoalLabel": "Understand the problem",
+        "instruction": "There are 6 pairs of socks. Each pair has 2 socks. How many socks in all?",
+        "work": "6 pairs, 2 socks in each pair.",
+        "explanation": "We need to count 2, six times."
+      },
+      {
+        "subgoalLabel": "Skip count by 2s",
+        "instruction": "Count by 2s six times.",
+        "work": "2, 4, 6, 8, 10, 12",
+        "explanation": "Each pair adds 2 socks. After 6 pairs, we reach 12."
+      },
+      {
+        "subgoalLabel": "State the answer",
+        "instruction": "How many socks are there?",
+        "work": "12 socks",
+        "explanation": "Skip counting by 2s is a quick way to count groups of 2."
+      }
+    ]
+  }
+]

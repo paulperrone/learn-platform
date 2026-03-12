@@ -1,0 +1,24 @@
+[
+  {
+    "id": "growing-patterns-ex1",
+    "topicId": "growing-patterns",
+    "title": "Extending a Growing Number Pattern",
+    "steps": [
+      {"subgoalLabel": "Read the pattern", "instruction": "List the given numbers.", "work": "3, 7, 11, 15, __", "explanation": "We need to find what comes next."},
+      {"subgoalLabel": "Find the growth", "instruction": "Subtract consecutive numbers to find how much the pattern grows.", "work": "7 − 3 = 4, 11 − 7 = 4, 15 − 11 = 4", "explanation": "The pattern grows by 4 each time."},
+      {"subgoalLabel": "Extend the pattern", "instruction": "Add 4 to the last number.", "work": "15 + 4 = 19", "explanation": "The next number is 19."},
+      {"subgoalLabel": "Write the result", "instruction": "Complete the pattern.", "work": "3, 7, 11, 15, 19", "explanation": "Each number is 4 more than the previous one."}
+    ]
+  },
+  {
+    "id": "growing-patterns-ex2",
+    "topicId": "growing-patterns",
+    "title": "Growing Pattern with Changing Differences",
+    "steps": [
+      {"subgoalLabel": "Read the pattern", "instruction": "List the numbers.", "work": "1, 3, 6, 10, __", "explanation": "The differences between terms aren't always the same."},
+      {"subgoalLabel": "Find the differences", "instruction": "Calculate the difference between each pair.", "work": "3 − 1 = 2, 6 − 3 = 3, 10 − 6 = 4", "explanation": "The differences are 2, 3, 4 — they increase by 1 each time."},
+      {"subgoalLabel": "Predict the next difference", "instruction": "Continue the pattern of differences.", "work": "Next difference: 5", "explanation": "The differences go 2, 3, 4, 5."},
+      {"subgoalLabel": "Find the next number", "instruction": "Add 5 to the last number.", "work": "10 + 5 = 15", "explanation": "The pattern continues: 1, 3, 6, 10, 15 (these are called triangular numbers)."}
+    ]
+  }
+]

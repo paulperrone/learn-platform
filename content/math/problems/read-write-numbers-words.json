@@ -1,0 +1,182 @@
+[
+  {
+    "id": "read-write-numbers-words-p1",
+    "topicId": "read-write-numbers-words",
+    "difficulty": "easy",
+    "question": "Write the number 45 in words.",
+    "answer": "forty-five",
+    "hints": [
+      "40 is forty. 5 is five."
+    ],
+    "solution": "45 = forty-five.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "read-write-numbers-words-p2",
+    "topicId": "read-write-numbers-words",
+    "difficulty": "easy",
+    "question": "Write the number for \"two hundred sixteen.\"",
+    "answer": "216",
+    "hints": [
+      "Two hundred = 200. Sixteen = 16."
+    ],
+    "solution": "Two hundred sixteen = 200 + 16 = 216.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "read-write-numbers-words-p3",
+    "topicId": "read-write-numbers-words",
+    "difficulty": "easy",
+    "question": "Write the number 300 in words.",
+    "answer": "three hundred",
+    "hints": [
+      "300 is 3 hundreds."
+    ],
+    "solution": "300 = three hundred.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "read-write-numbers-words-p4",
+    "topicId": "read-write-numbers-words",
+    "difficulty": "easy",
+    "question": "Write the number for \"seventy.\"",
+    "answer": "70",
+    "hints": [
+      "Seventy means 7 tens."
+    ],
+    "solution": "Seventy = 70.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "read-write-numbers-words-p5",
+    "topicId": "read-write-numbers-words",
+    "difficulty": "easy",
+    "question": "Write the number 109 in words.",
+    "answer": "one hundred nine",
+    "hints": [
+      "100 is one hundred. 9 is nine."
+    ],
+    "solution": "109 = one hundred nine.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "read-write-numbers-words-p6",
+    "topicId": "read-write-numbers-words",
+    "difficulty": "medium",
+    "question": "Write the number 4,825 in words.",
+    "answer": "four thousand, eight hundred twenty-five",
+    "hints": [
+      "Break it up: 4 thousand, 8 hundred, 25 is twenty-five."
+    ],
+    "solution": "4,825 = four thousand, eight hundred twenty-five.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "read-write-numbers-words-p7",
+    "topicId": "read-write-numbers-words",
+    "difficulty": "medium",
+    "question": "Write the number for \"six thousand, three hundred forty.\"",
+    "answer": "6340",
+    "hints": [
+      "Six thousand = 6,000. Three hundred = 300. Forty = 40."
+    ],
+    "solution": "6,000 + 300 + 40 = 6,340.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "read-write-numbers-words-p8",
+    "topicId": "read-write-numbers-words",
+    "difficulty": "medium",
+    "question": "Write the number 7,003 in words.",
+    "answer": "seven thousand, three",
+    "hints": [
+      "7,000 is seven thousand. There are 0 hundreds and 0 tens. 3 is three."
+    ],
+    "solution": "7,003 = seven thousand, three.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "read-write-numbers-words-p9",
+    "topicId": "read-write-numbers-words",
+    "difficulty": "medium",
+    "question": "Write the number for \"nine thousand, fifty.\"",
+    "answer": "9050",
+    "hints": [
+      "Nine thousand = 9,000. Fifty = 50."
+    ],
+    "solution": "9,000 + 50 = 9,050.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "read-write-numbers-words-p10",
+    "topicId": "read-write-numbers-words",
+    "difficulty": "medium",
+    "question": "Write the number 1,618 in words.",
+    "answer": "one thousand, six hundred eighteen",
+    "hints": [
+      "1 thousand, 6 hundred, 18 is eighteen."
+    ],
+    "solution": "1,618 = one thousand, six hundred eighteen.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "read-write-numbers-words-p11",
+    "topicId": "read-write-numbers-words",
+    "difficulty": "hard",
+    "question": "Write the number for \"eight thousand, nine hundred eleven.\"",
+    "answer": "8911",
+    "hints": [
+      "8,000 + 900 + 11."
+    ],
+    "solution": "Eight thousand, nine hundred eleven = 8,000 + 900 + 11 = 8,911.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "read-write-numbers-words-p12",
+    "topicId": "read-write-numbers-words",
+    "difficulty": "hard",
+    "question": "Write the number 5,070 in words.",
+    "answer": "five thousand, seventy",
+    "hints": [
+      "5 thousands, 0 hundreds, 7 tens, 0 ones."
+    ],
+    "solution": "5,070 = five thousand, seventy.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "read-write-numbers-words-p13",
+    "topicId": "read-write-numbers-words",
+    "difficulty": "hard",
+    "question": "Which is greater: \"three thousand, nine hundred\" or 3,850?",
+    "answer": "three thousand, nine hundred",
+    "hints": [
+      "Write both as numbers: three thousand, nine hundred = 3,900."
+    ],
+    "solution": "Three thousand, nine hundred = 3,900. Since 3,900 > 3,850, three thousand nine hundred is greater.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "read-write-numbers-words-p14",
+    "topicId": "read-write-numbers-words",
+    "difficulty": "hard",
+    "question": "Write the number for \"two thousand, four hundred six.\"",
+    "answer": "2406",
+    "hints": [
+      "Two thousand = 2,000. Four hundred = 400. Six = 6. Note: there are zero tens."
+    ],
+    "solution": "2,000 + 400 + 6 = 2,406.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "read-write-numbers-words-p15",
+    "topicId": "read-write-numbers-words",
+    "difficulty": "hard",
+    "question": "A sign says the town has \"four thousand, two hundred eight\" people. Write this as a number.",
+    "answer": "4208",
+    "hints": [
+      "Four thousand = 4,000. Two hundred = 200. Eight = 8."
+    ],
+    "solution": "4,000 + 200 + 8 = 4,208.",
+    "cognitiveDemand": "problem-solving"
+  }
+]

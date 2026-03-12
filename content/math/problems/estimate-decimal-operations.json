@@ -1,0 +1,152 @@
+[
+  {
+    "id": "estimate-decimal-operations-p1",
+    "topicId": "estimate-decimal-operations",
+    "difficulty": "easy",
+    "question": "Estimate 3.8 + 5.2 by rounding each to the nearest whole number.",
+    "answer": "9",
+    "hints": ["3.8 rounds to 4. 5.2 rounds to 5. 4 + 5 = 9."],
+    "solution": "4 + 5 = 9.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "estimate-decimal-operations-p2",
+    "topicId": "estimate-decimal-operations",
+    "difficulty": "easy",
+    "question": "Estimate 7.9 - 2.1 by rounding each to the nearest whole number.",
+    "answer": "6",
+    "hints": ["8 - 2 = 6."],
+    "solution": "7.9 ≈ 8, 2.1 ≈ 2. 8 - 2 = 6.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "estimate-decimal-operations-p3",
+    "topicId": "estimate-decimal-operations",
+    "difficulty": "easy",
+    "question": "Estimate 4.3 × 2.9 by rounding each to the nearest whole number.",
+    "answer": "12",
+    "hints": ["4 × 3 = 12."],
+    "solution": "4.3 ≈ 4, 2.9 ≈ 3. 4 × 3 = 12.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "estimate-decimal-operations-p4",
+    "topicId": "estimate-decimal-operations",
+    "difficulty": "easy",
+    "question": "Estimate 9.7 + 0.3 by rounding.",
+    "answer": "10",
+    "hints": ["10 + 0 = 10."],
+    "solution": "9.7 ≈ 10, 0.3 ≈ 0. 10 + 0 = 10.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "estimate-decimal-operations-p5",
+    "topicId": "estimate-decimal-operations",
+    "difficulty": "easy",
+    "question": "Estimate 6.5 - 3.4 by rounding.",
+    "answer": "4",
+    "hints": ["7 - 3 = 4."],
+    "solution": "6.5 ≈ 7, 3.4 ≈ 3. 7 - 3 = 4.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "estimate-decimal-operations-p6",
+    "topicId": "estimate-decimal-operations",
+    "difficulty": "medium",
+    "question": "Estimate 12.45 + 8.72 by rounding to the nearest whole number.",
+    "answer": "21",
+    "hints": ["12 + 9 = 21."],
+    "solution": "12.45 ≈ 12, 8.72 ≈ 9. 12 + 9 = 21.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "estimate-decimal-operations-p7",
+    "topicId": "estimate-decimal-operations",
+    "difficulty": "medium",
+    "question": "Estimate 24.6 × 3.2 by rounding.",
+    "answer": "75",
+    "hints": ["25 × 3 = 75."],
+    "solution": "24.6 ≈ 25, 3.2 ≈ 3. 25 × 3 = 75.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "estimate-decimal-operations-p8",
+    "topicId": "estimate-decimal-operations",
+    "difficulty": "medium",
+    "question": "Estimate 47.89 ÷ 8.1 by rounding.",
+    "answer": "6",
+    "hints": ["48 ÷ 8 = 6."],
+    "solution": "47.89 ≈ 48, 8.1 ≈ 8. 48 ÷ 8 = 6.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "estimate-decimal-operations-p9",
+    "topicId": "estimate-decimal-operations",
+    "difficulty": "medium",
+    "question": "A shirt costs $14.95 and pants cost $24.89. Estimate the total cost.",
+    "answer": "$40",
+    "hints": ["$15 + $25 = $40."],
+    "solution": "$14.95 ≈ $15, $24.89 ≈ $25. $15 + $25 = $40.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "estimate-decimal-operations-p10",
+    "topicId": "estimate-decimal-operations",
+    "difficulty": "medium",
+    "question": "Estimate 5.1 × 9.8 by rounding.",
+    "answer": "50",
+    "hints": ["5 × 10 = 50."],
+    "solution": "5.1 ≈ 5, 9.8 ≈ 10. 5 × 10 = 50.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "estimate-decimal-operations-p11",
+    "topicId": "estimate-decimal-operations",
+    "difficulty": "hard",
+    "question": "Estimate 3.78 + 6.15 + 2.94 by rounding each to the nearest whole number.",
+    "answer": "13",
+    "hints": ["4 + 6 + 3 = 13."],
+    "solution": "3.78 ≈ 4, 6.15 ≈ 6, 2.94 ≈ 3. 4 + 6 + 3 = 13.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "estimate-decimal-operations-p12",
+    "topicId": "estimate-decimal-operations",
+    "difficulty": "hard",
+    "question": "A student computed 4.2 × 6.8 and got 285.6. Use estimation to determine if this is reasonable.",
+    "answer": "not reasonable",
+    "hints": ["4 × 7 = 28. The answer should be close to 28, not 285.6."],
+    "solution": "Estimate: 4 × 7 = 28. The answer 285.6 is way too large. (Actual: 4.2 × 6.8 = 28.56.)",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "estimate-decimal-operations-p13",
+    "topicId": "estimate-decimal-operations",
+    "difficulty": "hard",
+    "question": "Estimate 99.5 × 4.02. Choose the best estimate: 40, 400, or 4000.",
+    "answer": "400",
+    "hints": ["100 × 4 = 400."],
+    "solution": "99.5 ≈ 100, 4.02 ≈ 4. 100 × 4 = 400.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "estimate-decimal-operations-p14",
+    "topicId": "estimate-decimal-operations",
+    "difficulty": "hard",
+    "question": "You buy 3 items priced at $7.89, $12.15, and $4.99. Estimate the total. Is $30 enough?",
+    "answer": "yes",
+    "hints": ["$8 + $12 + $5 = $25. $30 is enough."],
+    "solution": "Estimate: $8 + $12 + $5 = $25. Since $25 < $30, yes, $30 is enough.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "estimate-decimal-operations-p15",
+    "topicId": "estimate-decimal-operations",
+    "difficulty": "hard",
+    "question": "Estimate 156.3 ÷ 7.8 by rounding to compatible numbers.",
+    "answer": "20",
+    "hints": ["156 ÷ 8 = 19.5, or use 160 ÷ 8 = 20."],
+    "solution": "156.3 ≈ 160, 7.8 ≈ 8. 160 ÷ 8 = 20.",
+    "cognitiveDemand": "procedural"
+  }
+]

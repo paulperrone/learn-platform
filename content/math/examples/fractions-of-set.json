@@ -1,0 +1,58 @@
+[
+  {
+    "id": "fractions-of-set-ex1",
+    "topicId": "fractions-of-set",
+    "title": "Finding 1/3 of 12 Objects",
+    "steps": [
+      {
+        "subgoalLabel": "Understand the problem",
+        "instruction": "Find 1/3 of 12 crayons.",
+        "work": "We need to find what 1/3 of 12 is.",
+        "explanation": "Finding a fraction of a set means dividing the set into equal groups and taking some of those groups."
+      },
+      {
+        "subgoalLabel": "Divide into equal groups",
+        "instruction": "The denominator is 3, so divide 12 into 3 equal groups.",
+        "work": "12 ÷ 3 = 4 crayons per group",
+        "explanation": "The denominator tells us how many equal groups to make."
+      },
+      {
+        "subgoalLabel": "Take the right number of groups",
+        "instruction": "The numerator is 1, so take 1 group.",
+        "work": "1 group = 4 crayons",
+        "explanation": "The numerator tells us how many groups to take. 1/3 of 12 = 4."
+      }
+    ]
+  },
+  {
+    "id": "fractions-of-set-ex2",
+    "topicId": "fractions-of-set",
+    "title": "Finding 2/5 of 20 Stickers",
+    "steps": [
+      {
+        "subgoalLabel": "Understand what is being asked",
+        "instruction": "You have 20 stickers and want to give away 2/5 of them. How many do you give away?",
+        "work": "Find 2/5 of 20.",
+        "explanation": "We need to divide 20 into 5 equal groups, then take 2 of those groups."
+      },
+      {
+        "subgoalLabel": "Find one-fifth",
+        "instruction": "Divide 20 by the denominator (5).",
+        "work": "20 ÷ 5 = 4 stickers in each group",
+        "explanation": "First we find 1/5 of 20 by dividing into 5 equal parts."
+      },
+      {
+        "subgoalLabel": "Multiply by the numerator",
+        "instruction": "The numerator is 2, so take 2 groups of 4.",
+        "work": "2 × 4 = 8 stickers",
+        "explanation": "Since we want 2/5, we multiply one-fifth by 2."
+      },
+      {
+        "subgoalLabel": "State the answer",
+        "instruction": "Write the final answer.",
+        "work": "2/5 of 20 = 8 stickers given away",
+        "explanation": "To find a fraction of a set: divide by the denominator, then multiply by the numerator."
+      }
+    ]
+  }
+]

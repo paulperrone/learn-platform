@@ -1,0 +1,58 @@
+[
+  {
+    "id": "divisibility-rules-full-ex1",
+    "topicId": "divisibility-rules-full",
+    "title": "Testing 378 for Divisibility by 2, 3, 6, and 9",
+    "steps": [
+      {
+        "subgoalLabel": "Check divisibility by 2",
+        "instruction": "Look at the last digit. Is it even?",
+        "work": "Last digit is 8. 8 is even. ✓ Divisible by 2.",
+        "explanation": "Rule for 2: the last digit must be even (0, 2, 4, 6, or 8)."
+      },
+      {
+        "subgoalLabel": "Check divisibility by 3",
+        "instruction": "Add the digits. Is the sum divisible by 3?",
+        "work": "3 + 7 + 8 = 18. 18 ÷ 3 = 6. ✓ Divisible by 3.",
+        "explanation": "Rule for 3: the sum of the digits must be divisible by 3."
+      },
+      {
+        "subgoalLabel": "Check divisibility by 6",
+        "instruction": "Is it divisible by both 2 AND 3?",
+        "work": "Divisible by 2 ✓ and by 3 ✓. So divisible by 6 ✓.",
+        "explanation": "Rule for 6: the number must pass both the test for 2 and the test for 3."
+      },
+      {
+        "subgoalLabel": "Check divisibility by 9",
+        "instruction": "Is the digit sum divisible by 9?",
+        "work": "Digit sum = 18. 18 ÷ 9 = 2. ✓ Divisible by 9.",
+        "explanation": "Rule for 9: the sum of the digits must be divisible by 9."
+      }
+    ]
+  },
+  {
+    "id": "divisibility-rules-full-ex2",
+    "topicId": "divisibility-rules-full",
+    "title": "Testing 532 for Divisibility by 4 and 8",
+    "steps": [
+      {
+        "subgoalLabel": "Check divisibility by 4",
+        "instruction": "Look at the last two digits. Is that number divisible by 4?",
+        "work": "Last two digits: 32. 32 ÷ 4 = 8. ✓ Divisible by 4.",
+        "explanation": "Rule for 4: the number formed by the last two digits must be divisible by 4."
+      },
+      {
+        "subgoalLabel": "Check divisibility by 8",
+        "instruction": "Look at the last three digits. Is that number divisible by 8?",
+        "work": "Last three digits: 532. 532 ÷ 8 = 66.5. ✗ Not divisible by 8.",
+        "explanation": "Rule for 8: the number formed by the last three digits must be divisible by 8. 532 ÷ 8 = 66.5, so it does not divide evenly."
+      },
+      {
+        "subgoalLabel": "Summarize",
+        "instruction": "State the results.",
+        "work": "532 is divisible by 4 but NOT by 8.",
+        "explanation": "A number can be divisible by 4 without being divisible by 8."
+      }
+    ]
+  }
+]

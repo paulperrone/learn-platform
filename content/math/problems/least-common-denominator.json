@@ -1,0 +1,183 @@
+[
+  {
+    "id": "least-common-denominator-p1",
+    "topicId": "least-common-denominator",
+    "difficulty": "easy",
+    "question": "Find the LCD of 1/2 and 1/4.",
+    "answer": "4",
+    "hints": [
+      "List multiples of 2 and 4. What is the smallest number in both lists?"
+    ],
+    "solution": "Multiples of 2: 2, 4, 6... Multiples of 4: 4, 8, 12... LCD = 4.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "least-common-denominator-p2",
+    "topicId": "least-common-denominator",
+    "difficulty": "easy",
+    "question": "Find the LCD of 1/3 and 1/6.",
+    "answer": "6",
+    "hints": [
+      "Is 6 a multiple of 3?"
+    ],
+    "solution": "Multiples of 3: 3, 6, 9... Multiples of 6: 6, 12... LCD = 6.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "least-common-denominator-p3",
+    "topicId": "least-common-denominator",
+    "difficulty": "easy",
+    "question": "Find the LCD of 1/2 and 1/3.",
+    "answer": "6",
+    "hints": [
+      "List multiples of 2 and multiples of 3."
+    ],
+    "solution": "Multiples of 2: 2, 4, 6... Multiples of 3: 3, 6, 9... LCD = 6.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "least-common-denominator-p4",
+    "topicId": "least-common-denominator",
+    "difficulty": "easy",
+    "question": "Find the LCD of 1/4 and 1/8.",
+    "answer": "8",
+    "hints": [
+      "Is 8 a multiple of 4?"
+    ],
+    "solution": "8 is a multiple of both 4 and 8. LCD = 8.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "least-common-denominator-p5",
+    "topicId": "least-common-denominator",
+    "difficulty": "easy",
+    "question": "Find the LCD of 1/5 and 1/10.",
+    "answer": "10",
+    "hints": [
+      "10 is already a multiple of 5."
+    ],
+    "solution": "10 is a multiple of both 5 and 10. LCD = 10.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "least-common-denominator-p6",
+    "topicId": "least-common-denominator",
+    "difficulty": "medium",
+    "question": "Find the LCD of 2/3 and 3/4.",
+    "answer": "12",
+    "hints": [
+      "List multiples of 3: 3, 6, 9, 12... and multiples of 4: 4, 8, 12..."
+    ],
+    "solution": "LCM(3, 4) = 12. LCD = 12.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "least-common-denominator-p7",
+    "topicId": "least-common-denominator",
+    "difficulty": "medium",
+    "question": "Find the LCD of 3/5 and 1/4.",
+    "answer": "20",
+    "hints": [
+      "Multiples of 5: 5, 10, 15, 20... Multiples of 4: 4, 8, 12, 16, 20..."
+    ],
+    "solution": "LCM(5, 4) = 20. LCD = 20.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "least-common-denominator-p8",
+    "topicId": "least-common-denominator",
+    "difficulty": "medium",
+    "question": "Find the LCD of 5/6 and 1/4.",
+    "answer": "12",
+    "hints": [
+      "Multiples of 6: 6, 12... Multiples of 4: 4, 8, 12..."
+    ],
+    "solution": "LCM(6, 4) = 12. LCD = 12.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "least-common-denominator-p9",
+    "topicId": "least-common-denominator",
+    "difficulty": "medium",
+    "question": "Find the LCD of 2/9 and 1/6.",
+    "answer": "18",
+    "hints": [
+      "Multiples of 9: 9, 18... Multiples of 6: 6, 12, 18..."
+    ],
+    "solution": "LCM(9, 6) = 18. LCD = 18.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "least-common-denominator-p10",
+    "topicId": "least-common-denominator",
+    "difficulty": "medium",
+    "question": "Find the LCD of 1/3 and 2/5.",
+    "answer": "15",
+    "hints": [
+      "3 and 5 share no common factors, so LCD = 3 × 5."
+    ],
+    "solution": "LCM(3, 5) = 15. LCD = 15.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "least-common-denominator-p11",
+    "topicId": "least-common-denominator",
+    "difficulty": "hard",
+    "question": "Find the LCD of 5/8 and 7/12.",
+    "answer": "24",
+    "hints": [
+      "Multiples of 8: 8, 16, 24... Multiples of 12: 12, 24..."
+    ],
+    "solution": "LCM(8, 12) = 24. LCD = 24.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "least-common-denominator-p12",
+    "topicId": "least-common-denominator",
+    "difficulty": "hard",
+    "question": "Find the LCD of 3/10 and 7/15.",
+    "answer": "30",
+    "hints": [
+      "Multiples of 10: 10, 20, 30... Multiples of 15: 15, 30..."
+    ],
+    "solution": "LCM(10, 15) = 30. LCD = 30.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "least-common-denominator-p13",
+    "topicId": "least-common-denominator",
+    "difficulty": "hard",
+    "question": "Find the LCD of 1/6, 1/4, and 1/3.",
+    "answer": "12",
+    "hints": [
+      "Find the LCM of all three denominators.",
+      "LCM(6, 4) = 12. Is 12 also a multiple of 3?"
+    ],
+    "solution": "LCM(6, 4, 3) = 12. LCD = 12.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "least-common-denominator-p14",
+    "topicId": "least-common-denominator",
+    "difficulty": "hard",
+    "question": "Find the LCD of 5/9 and 2/15.",
+    "answer": "45",
+    "hints": [
+      "9 = 3². 15 = 3 × 5. LCM = 3² × 5."
+    ],
+    "solution": "LCM(9, 15) = 45. LCD = 45.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "least-common-denominator-p15",
+    "topicId": "least-common-denominator",
+    "difficulty": "hard",
+    "question": "Find the LCD of 7/12 and 5/18.",
+    "answer": "36",
+    "hints": [
+      "12 = 2² × 3. 18 = 2 × 3². LCM = 2² × 3² = 36."
+    ],
+    "solution": "LCM(12, 18) = 36. LCD = 36.",
+    "cognitiveDemand": "procedural"
+  }
+]

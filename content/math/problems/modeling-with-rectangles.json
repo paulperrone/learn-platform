@@ -1,0 +1,152 @@
+[
+  {
+    "id": "modeling-with-rectangles-p1",
+    "topicId": "modeling-with-rectangles",
+    "difficulty": "easy",
+    "question": "A classroom floor is shaped like a rectangle, 9 m by 7 m. What is the area of the floor?",
+    "answer": "63 sq m",
+    "hints": ["Area = 9 × 7."],
+    "solution": "9 × 7 = 63 sq m.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "modeling-with-rectangles-p2",
+    "topicId": "modeling-with-rectangles",
+    "difficulty": "easy",
+    "question": "A book cover is 25 cm long and 18 cm wide. What is its area?",
+    "answer": "450 sq cm",
+    "hints": ["25 × 18 = ?"],
+    "solution": "25 × 18 = 450 sq cm.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "modeling-with-rectangles-p3",
+    "topicId": "modeling-with-rectangles",
+    "difficulty": "easy",
+    "question": "A rectangular table is 120 cm long and 60 cm wide. What is the area of the table top?",
+    "answer": "7200 sq cm",
+    "hints": ["120 × 60 = ?"],
+    "solution": "120 × 60 = 7,200 sq cm.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "modeling-with-rectangles-p4",
+    "topicId": "modeling-with-rectangles",
+    "difficulty": "easy",
+    "question": "A phone screen is about 14 cm by 7 cm. What is its area?",
+    "answer": "98 sq cm",
+    "hints": ["14 × 7 = ?"],
+    "solution": "14 × 7 = 98 sq cm.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "modeling-with-rectangles-p5",
+    "topicId": "modeling-with-rectangles",
+    "difficulty": "easy",
+    "question": "A rectangular parking space is 5 m by 2.5 m. What is its area?",
+    "answer": "12.5 sq m",
+    "hints": ["5 × 2.5 = ?"],
+    "solution": "5 × 2.5 = 12.5 sq m.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "modeling-with-rectangles-p6",
+    "topicId": "modeling-with-rectangles",
+    "difficulty": "medium",
+    "question": "A wall is 4 m tall and 6 m wide. A rectangular window takes up 1 m × 1.5 m. How much wall area needs to be painted?",
+    "answer": "22.5 sq m",
+    "hints": ["Wall area − window area."],
+    "solution": "Wall: 4 × 6 = 24 sq m. Window: 1 × 1.5 = 1.5 sq m. Paint area: 24 − 1.5 = 22.5 sq m.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "modeling-with-rectangles-p7",
+    "topicId": "modeling-with-rectangles",
+    "difficulty": "medium",
+    "question": "A rectangular yard is 20 m × 15 m. A rectangular shed (3 m × 4 m) sits in the yard. How much yard space is left for grass?",
+    "answer": "288 sq m",
+    "hints": ["Yard area − shed area."],
+    "solution": "Yard: 20 × 15 = 300 sq m. Shed: 3 × 4 = 12 sq m. Grass: 300 − 12 = 288 sq m.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "modeling-with-rectangles-p8",
+    "topicId": "modeling-with-rectangles",
+    "difficulty": "medium",
+    "question": "A rectangular driveway is 10 m long and 3 m wide. Paving costs $15 per square meter. What is the total cost?",
+    "answer": "$450",
+    "hints": ["Area = 30 sq m. 30 × $15 = ?"],
+    "solution": "Area = 10 × 3 = 30 sq m. Cost = 30 × $15 = $450.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "modeling-with-rectangles-p9",
+    "topicId": "modeling-with-rectangles",
+    "difficulty": "medium",
+    "question": "A flag is 3 ft tall and 5 ft wide. It is divided into two equal horizontal stripes. What is the area of each stripe?",
+    "answer": "7.5 sq ft",
+    "hints": ["Total area = 15 sq ft. Divided by 2."],
+    "solution": "Total: 3 × 5 = 15 sq ft. Each stripe: 15 ÷ 2 = 7.5 sq ft.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "modeling-with-rectangles-p10",
+    "topicId": "modeling-with-rectangles",
+    "difficulty": "medium",
+    "question": "A rectangular garden is divided into 4 equal plots. The whole garden is 12 m × 8 m. What is the area of each plot?",
+    "answer": "24 sq m",
+    "hints": ["Total area ÷ 4."],
+    "solution": "Total: 12 × 8 = 96 sq m. Each plot: 96 ÷ 4 = 24 sq m.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "modeling-with-rectangles-p11",
+    "topicId": "modeling-with-rectangles",
+    "difficulty": "hard",
+    "question": "A room has two rectangular windows (each 1 m × 1.5 m) and one door (0.8 m × 2 m). The room is 4 m × 3 m × 3 m (length × width × height). What is the total wall area to paint (4 walls minus windows and door)?",
+    "answer": "38.4 sq m",
+    "hints": ["Total wall area = 2(4×3) + 2(3×3). Subtract window and door areas."],
+    "solution": "Walls: 2(4×3) + 2(3×3) = 24 + 18 = 42 sq m. Windows: 2 × (1 × 1.5) = 3 sq m. Door: 0.8 × 2 = 1.6 sq m. Paint: 42 − 3 − 1.6 = 37.4 sq m.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "modeling-with-rectangles-p12",
+    "topicId": "modeling-with-rectangles",
+    "difficulty": "hard",
+    "question": "A rectangular plot is 40 m × 30 m. A rectangular swimming pool (10 m × 5 m) and a rectangular patio (8 m × 6 m) are inside. How much area is left for lawn?",
+    "answer": "1102 sq m",
+    "hints": ["Plot − pool − patio."],
+    "solution": "Plot: 40 × 30 = 1,200 sq m. Pool: 10 × 5 = 50 sq m. Patio: 8 × 6 = 48 sq m. Lawn: 1,200 − 50 − 48 = 1,102 sq m.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "modeling-with-rectangles-p13",
+    "topicId": "modeling-with-rectangles",
+    "difficulty": "hard",
+    "question": "You need to tile a kitchen floor that is 4 m × 3 m. Each tile is 50 cm × 50 cm. How many tiles do you need?",
+    "answer": "48",
+    "hints": ["Floor: 400 cm × 300 cm. Tiles along length: 400 ÷ 50 = 8. Tiles along width: 300 ÷ 50 = 6."],
+    "solution": "Along length: 400 ÷ 50 = 8 tiles. Along width: 300 ÷ 50 = 6 tiles. Total: 8 × 6 = 48 tiles.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "modeling-with-rectangles-p14",
+    "topicId": "modeling-with-rectangles",
+    "difficulty": "hard",
+    "question": "A school hallway is 30 m long and 2 m wide. It costs $8 per square meter to wax the floor. What is the total cost?",
+    "answer": "$480",
+    "hints": ["Area = 30 × 2 = 60 sq m. Cost = 60 × $8."],
+    "solution": "Area = 60 sq m. Cost = 60 × $8 = $480.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "modeling-with-rectangles-p15",
+    "topicId": "modeling-with-rectangles",
+    "difficulty": "hard",
+    "question": "A rectangular field is 100 m × 60 m. A 5-m-wide running track goes around the inside edge. What is the area of the track?",
+    "answer": "1500 sq m",
+    "hints": ["Outer: 100 × 60. Inner: 90 × 50. Track = outer − inner."],
+    "solution": "Outer: 100 × 60 = 6,000. Inner: (100-10) × (60-10) = 90 × 50 = 4,500. Track: 6,000 − 4,500 = 1,500 sq m.",
+    "cognitiveDemand": "problem-solving"
+  }
+]

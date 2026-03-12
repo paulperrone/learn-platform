@@ -1,0 +1,182 @@
+[
+  {
+    "id": "decimal-place-value-hundredths-p1",
+    "topicId": "decimal-place-value-hundredths",
+    "difficulty": "easy",
+    "question": "What decimal represents 7 hundredths?",
+    "answer": "0.07",
+    "hints": [
+      "Hundredths is the second place after the decimal point."
+    ],
+    "solution": "7 hundredths = 7/100 = 0.07.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "decimal-place-value-hundredths-p2",
+    "topicId": "decimal-place-value-hundredths",
+    "difficulty": "easy",
+    "question": "Write 23/100 as a decimal.",
+    "answer": "0.23",
+    "hints": [
+      "23 hundredths uses both the tenths and hundredths places."
+    ],
+    "solution": "23/100 = 0.23.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "decimal-place-value-hundredths-p3",
+    "topicId": "decimal-place-value-hundredths",
+    "difficulty": "easy",
+    "question": "In the number 0.45, what digit is in the hundredths place?",
+    "answer": "5",
+    "hints": [
+      "The hundredths place is the second digit after the decimal point."
+    ],
+    "solution": "In 0.45, the 4 is in the tenths place and the 5 is in the hundredths place.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "decimal-place-value-hundredths-p4",
+    "topicId": "decimal-place-value-hundredths",
+    "difficulty": "easy",
+    "question": "Write 5/100 as a decimal.",
+    "answer": "0.05",
+    "hints": [
+      "5 hundredths needs a 0 in the tenths place."
+    ],
+    "solution": "5/100 = 0.05.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "decimal-place-value-hundredths-p5",
+    "topicId": "decimal-place-value-hundredths",
+    "difficulty": "easy",
+    "question": "What fraction does 0.61 represent?",
+    "answer": "61/100",
+    "hints": [
+      "Two decimal places means hundredths."
+    ],
+    "solution": "0.61 = 61 hundredths = 61/100.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "decimal-place-value-hundredths-p6",
+    "topicId": "decimal-place-value-hundredths",
+    "difficulty": "medium",
+    "question": "In the number 3.48, what is the value of the 8?",
+    "answer": "0.08",
+    "hints": [
+      "The 8 is in the hundredths place."
+    ],
+    "solution": "The 8 is in the hundredths place: 8 × 0.01 = 0.08.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "decimal-place-value-hundredths-p7",
+    "topicId": "decimal-place-value-hundredths",
+    "difficulty": "medium",
+    "question": "Compare: 0.3 ___ 0.28. Use >, <, or =.",
+    "answer": ">",
+    "hints": [
+      "0.3 = 0.30. Compare 0.30 to 0.28."
+    ],
+    "solution": "0.3 = 0.30. Since 30 hundredths > 28 hundredths, 0.3 > 0.28.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "decimal-place-value-hundredths-p8",
+    "topicId": "decimal-place-value-hundredths",
+    "difficulty": "medium",
+    "question": "Write 150/100 as a decimal.",
+    "answer": "1.50",
+    "hints": [
+      "150 hundredths = 1 whole and 50 hundredths."
+    ],
+    "solution": "150/100 = 1.50 (or 1.5).",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "decimal-place-value-hundredths-p9",
+    "topicId": "decimal-place-value-hundredths",
+    "difficulty": "medium",
+    "question": "How many hundredths are in 0.7?",
+    "answer": "70",
+    "hints": [
+      "0.7 = 0.70 = 70 hundredths."
+    ],
+    "solution": "0.7 = 70/100 = 70 hundredths.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "decimal-place-value-hundredths-p10",
+    "topicId": "decimal-place-value-hundredths",
+    "difficulty": "medium",
+    "question": "A pencil costs $0.75. What is the value of the 5 in this price?",
+    "answer": "5 hundredths or $0.05",
+    "hints": [
+      "The 5 is in the hundredths place, which means 5 cents."
+    ],
+    "solution": "The 5 is in the hundredths place: 5 hundredths of a dollar = $0.05 = 5 cents.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "decimal-place-value-hundredths-p11",
+    "topicId": "decimal-place-value-hundredths",
+    "difficulty": "hard",
+    "question": "Order from least to greatest: 0.09, 0.9, 0.19, 0.91.",
+    "answer": "0.09, 0.19, 0.9, 0.91",
+    "hints": [
+      "Convert all to hundredths: 9, 90, 19, 91."
+    ],
+    "solution": "0.09 (9 hundredths) < 0.19 (19 hundredths) < 0.9 (90 hundredths) < 0.91 (91 hundredths).",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "decimal-place-value-hundredths-p12",
+    "topicId": "decimal-place-value-hundredths",
+    "difficulty": "hard",
+    "question": "How many hundredths are in 2.35?",
+    "answer": "235",
+    "hints": [
+      "2.35 = 235/100."
+    ],
+    "solution": "2.35 = 235 hundredths. (2 × 100 + 3 × 10 + 5 = 235).",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "decimal-place-value-hundredths-p13",
+    "topicId": "decimal-place-value-hundredths",
+    "difficulty": "hard",
+    "question": "The 4 in 0.42 is worth how many times more than the 2 in 0.42?",
+    "answer": "20",
+    "hints": [
+      "The 4 is in tenths (value = 0.4). The 2 is in hundredths (value = 0.02). Divide: 0.4 ÷ 0.02."
+    ],
+    "solution": "The 4 = 0.4. The 2 = 0.02. 0.4 ÷ 0.02 = 20. The 4 is worth 20 times more than the 2.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "decimal-place-value-hundredths-p14",
+    "topicId": "decimal-place-value-hundredths",
+    "difficulty": "hard",
+    "question": "You have $0.85. How many more cents do you need to make $1.00?",
+    "answer": "15",
+    "hints": [
+      "1.00 - 0.85 = ?"
+    ],
+    "solution": "$1.00 − $0.85 = $0.15 = 15 cents.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "decimal-place-value-hundredths-p15",
+    "topicId": "decimal-place-value-hundredths",
+    "difficulty": "hard",
+    "question": "What decimal is halfway between 0.4 and 0.5?",
+    "answer": "0.45",
+    "hints": [
+      "0.4 = 0.40 and 0.5 = 0.50. Halfway between 40 and 50 hundredths is 45 hundredths."
+    ],
+    "solution": "Halfway between 0.40 and 0.50 is 0.45.",
+    "cognitiveDemand": "conceptual"
+  }
+]

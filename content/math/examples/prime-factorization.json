@@ -1,0 +1,58 @@
+[
+  {
+    "id": "prime-factorization-ex1",
+    "topicId": "prime-factorization",
+    "title": "Finding the Prime Factorization of 24 Using a Factor Tree",
+    "steps": [
+      {
+        "subgoalLabel": "Start with the number",
+        "instruction": "Write 24 at the top. Find any two factors.",
+        "work": "24 = 2 × 12",
+        "explanation": "We can split 24 into 2 and 12. Since 2 is prime, we circle it."
+      },
+      {
+        "subgoalLabel": "Continue splitting",
+        "instruction": "12 is not prime. Split it.",
+        "work": "12 = 2 × 6",
+        "explanation": "2 is prime (circle it). 6 is not prime, so keep going."
+      },
+      {
+        "subgoalLabel": "Split 6",
+        "instruction": "6 is not prime. Split it.",
+        "work": "6 = 2 × 3",
+        "explanation": "Both 2 and 3 are prime. Circle them both. We are done."
+      },
+      {
+        "subgoalLabel": "Write the prime factorization",
+        "instruction": "Collect all the circled primes.",
+        "work": "24 = 2 × 2 × 2 × 3",
+        "explanation": "The prime factorization of 24 is 2 × 2 × 2 × 3."
+      }
+    ]
+  },
+  {
+    "id": "prime-factorization-ex2",
+    "topicId": "prime-factorization",
+    "title": "Finding the Prime Factorization of 30",
+    "steps": [
+      {
+        "subgoalLabel": "Split with smallest prime",
+        "instruction": "Is 30 divisible by 2?",
+        "work": "30 ÷ 2 = 15. So 30 = 2 × 15.",
+        "explanation": "Always try the smallest prime first: 2."
+      },
+      {
+        "subgoalLabel": "Split 15",
+        "instruction": "Is 15 divisible by 2? No. By 3?",
+        "work": "15 ÷ 3 = 5. So 15 = 3 × 5.",
+        "explanation": "3 and 5 are both prime, so we stop here."
+      },
+      {
+        "subgoalLabel": "Write the result",
+        "instruction": "Combine all prime factors.",
+        "work": "30 = 2 × 3 × 5",
+        "explanation": "The prime factorization of 30 is 2 × 3 × 5."
+      }
+    ]
+  }
+]

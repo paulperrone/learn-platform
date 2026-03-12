@@ -1,0 +1,152 @@
+[
+  {
+    "id": "gcf-using-prime-factorization-p1",
+    "topicId": "gcf-using-prime-factorization",
+    "difficulty": "easy",
+    "question": "Find the GCF of 12 and 8 using prime factorization.",
+    "answer": "4",
+    "hints": ["12 = 2 × 2 × 3. 8 = 2 × 2 × 2. Common: 2 × 2 = 4."],
+    "solution": "12 = 2 × 2 × 3. 8 = 2 × 2 × 2. Common factors: 2 × 2 = 4. GCF = 4.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "gcf-using-prime-factorization-p2",
+    "topicId": "gcf-using-prime-factorization",
+    "difficulty": "easy",
+    "question": "Find the GCF of 6 and 9.",
+    "answer": "3",
+    "hints": ["6 = 2 × 3. 9 = 3 × 3. Common: 3."],
+    "solution": "6 = 2 × 3. 9 = 3 × 3. Common factor: 3. GCF = 3.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "gcf-using-prime-factorization-p3",
+    "topicId": "gcf-using-prime-factorization",
+    "difficulty": "easy",
+    "question": "Find the GCF of 10 and 15.",
+    "answer": "5",
+    "hints": ["10 = 2 × 5. 15 = 3 × 5. Common: 5."],
+    "solution": "10 = 2 × 5. 15 = 3 × 5. Common factor: 5. GCF = 5.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "gcf-using-prime-factorization-p4",
+    "topicId": "gcf-using-prime-factorization",
+    "difficulty": "easy",
+    "question": "Find the GCF of 14 and 21.",
+    "answer": "7",
+    "hints": ["14 = 2 × 7. 21 = 3 × 7. Common: 7."],
+    "solution": "14 = 2 × 7. 21 = 3 × 7. Common factor: 7. GCF = 7.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "gcf-using-prime-factorization-p5",
+    "topicId": "gcf-using-prime-factorization",
+    "difficulty": "easy",
+    "question": "Find the GCF of 4 and 6.",
+    "answer": "2",
+    "hints": ["4 = 2 × 2. 6 = 2 × 3. Common: 2."],
+    "solution": "4 = 2 × 2. 6 = 2 × 3. Common: 2. GCF = 2.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "gcf-using-prime-factorization-p6",
+    "topicId": "gcf-using-prime-factorization",
+    "difficulty": "medium",
+    "question": "Find the GCF of 24 and 36.",
+    "answer": "12",
+    "hints": ["24 = 2×2×2×3. 36 = 2×2×3×3. Common: 2×2×3 = 12."],
+    "solution": "24 = 2³ × 3. 36 = 2² × 3². Common: 2² × 3 = 12.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "gcf-using-prime-factorization-p7",
+    "topicId": "gcf-using-prime-factorization",
+    "difficulty": "medium",
+    "question": "Find the GCF of 30 and 45.",
+    "answer": "15",
+    "hints": ["30 = 2×3×5. 45 = 3×3×5. Common: 3×5 = 15."],
+    "solution": "30 = 2 × 3 × 5. 45 = 3 × 3 × 5. Common: 3 × 5 = 15.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "gcf-using-prime-factorization-p8",
+    "topicId": "gcf-using-prime-factorization",
+    "difficulty": "medium",
+    "question": "Find the GCF of 16 and 40.",
+    "answer": "8",
+    "hints": ["16 = 2×2×2×2. 40 = 2×2×2×5. Common: 2×2×2 = 8."],
+    "solution": "16 = 2⁴. 40 = 2³ × 5. Common: 2³ = 8.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "gcf-using-prime-factorization-p9",
+    "topicId": "gcf-using-prime-factorization",
+    "difficulty": "medium",
+    "question": "Find the GCF of 18 and 27.",
+    "answer": "9",
+    "hints": ["18 = 2×3×3. 27 = 3×3×3. Common: 3×3 = 9."],
+    "solution": "18 = 2 × 3². 27 = 3³. Common: 3² = 9.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "gcf-using-prime-factorization-p10",
+    "topicId": "gcf-using-prime-factorization",
+    "difficulty": "medium",
+    "question": "Find the GCF of 25 and 35.",
+    "answer": "5",
+    "hints": ["25 = 5×5. 35 = 5×7. Common: 5."],
+    "solution": "25 = 5². 35 = 5 × 7. Common: 5. GCF = 5.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "gcf-using-prime-factorization-p11",
+    "topicId": "gcf-using-prime-factorization",
+    "difficulty": "hard",
+    "question": "Find the GCF of 48 and 72.",
+    "answer": "24",
+    "hints": ["48 = 2×2×2×2×3. 72 = 2×2×2×3×3. Common: 2×2×2×3 = 24."],
+    "solution": "48 = 2⁴ × 3. 72 = 2³ × 3². Common: 2³ × 3 = 24.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "gcf-using-prime-factorization-p12",
+    "topicId": "gcf-using-prime-factorization",
+    "difficulty": "hard",
+    "question": "Find the GCF of 60 and 84.",
+    "answer": "12",
+    "hints": ["60 = 2×2×3×5. 84 = 2×2×3×7. Common: 2×2×3 = 12."],
+    "solution": "60 = 2² × 3 × 5. 84 = 2² × 3 × 7. Common: 2² × 3 = 12.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "gcf-using-prime-factorization-p13",
+    "topicId": "gcf-using-prime-factorization",
+    "difficulty": "hard",
+    "question": "You have 36 red beads and 48 blue beads. You want to make identical bags with the same number of red and blue beads. What is the greatest number of bags you can make?",
+    "answer": "12",
+    "hints": ["Find GCF(36, 48). 36 = 2×2×3×3. 48 = 2×2×2×2×3."],
+    "solution": "GCF(36, 48) = 2² × 3 = 12. You can make 12 bags (3 red and 4 blue in each).",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "gcf-using-prime-factorization-p14",
+    "topicId": "gcf-using-prime-factorization",
+    "difficulty": "hard",
+    "question": "Find the GCF of 90 and 120.",
+    "answer": "30",
+    "hints": ["90 = 2×3×3×5. 120 = 2×2×2×3×5. Common: 2×3×5 = 30."],
+    "solution": "90 = 2 × 3² × 5. 120 = 2³ × 3 × 5. Common: 2 × 3 × 5 = 30.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "gcf-using-prime-factorization-p15",
+    "topicId": "gcf-using-prime-factorization",
+    "difficulty": "hard",
+    "question": "Find the GCF of 56 and 98.",
+    "answer": "14",
+    "hints": ["56 = 2×2×2×7. 98 = 2×7×7. Common: 2×7 = 14."],
+    "solution": "56 = 2³ × 7. 98 = 2 × 7². Common: 2 × 7 = 14.",
+    "cognitiveDemand": "procedural"
+  }
+]

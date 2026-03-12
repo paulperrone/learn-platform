@@ -296,7 +296,7 @@
     {
       "id": "multiply-within-100",
       "name": "Multiply Within 100",
-      "description": "Fluently multiply within 100 (multiplication facts to 10×10).",
+      "description": "Fluently multiply within 100 (multiplication facts to 10\u00d710).",
       "gradeLevel": 3,
       "standardCode": "3.OA.7",
       "strand": "operations-multiplication",
@@ -526,7 +526,7 @@
     {
       "id": "multiply-fraction-by-whole",
       "name": "Multiply Fraction by Whole Number",
-      "description": "Multiply a fraction by a whole number (e.g., 3 × 2/5).",
+      "description": "Multiply a fraction by a whole number (e.g., 3 \u00d7 2/5).",
       "gradeLevel": 4,
       "standardCode": "4.NF.4",
       "strand": "fractions",
@@ -676,7 +676,7 @@
     {
       "id": "volume",
       "name": "Volume",
-      "description": "Find volumes of right rectangular prisms. Use V = l × w × h.",
+      "description": "Find volumes of right rectangular prisms. Use V = l \u00d7 w \u00d7 h.",
       "gradeLevel": 5,
       "standardCode": "5.MD.3",
       "strand": "geometry",
@@ -2576,7 +2576,7 @@
     {
       "id": "multiply-multiples-of-10",
       "name": "Multiply Multiples of 10",
-      "description": "Multiply multiples of 10 (e.g., 30 × 40 = 1,200) using place-value reasoning.",
+      "description": "Multiply multiples of 10 (e.g., 30 \u00d7 40 = 1,200) using place-value reasoning.",
       "gradeLevel": 3,
       "standardCode": "3.NBT.3",
       "strand": "operations-multiplication",
@@ -2586,7 +2586,7 @@
     {
       "id": "multiply-2x1-no-regroup",
       "name": "Multiply 2-Digit by 1-Digit (No Regrouping)",
-      "description": "Multiply a two-digit number by a one-digit number without regrouping (e.g., 23 × 3).",
+      "description": "Multiply a two-digit number by a one-digit number without regrouping (e.g., 23 \u00d7 3).",
       "gradeLevel": 3,
       "standardCode": "3.NBT.3",
       "strand": "operations-multiplication",
@@ -2596,7 +2596,7 @@
     {
       "id": "multiply-2x1-regroup",
       "name": "Multiply 2-Digit by 1-Digit (With Regrouping)",
-      "description": "Multiply a two-digit number by a one-digit number with regrouping (e.g., 47 × 6).",
+      "description": "Multiply a two-digit number by a one-digit number with regrouping (e.g., 47 \u00d7 6).",
       "gradeLevel": 3,
       "standardCode": "3.NBT.3",
       "strand": "operations-multiplication",
@@ -2716,7 +2716,7 @@
     {
       "id": "commutative-property-mult",
       "name": "Commutative Property of Multiplication",
-      "description": "Understand and apply the commutative property: a × b = b × a.",
+      "description": "Understand and apply the commutative property: a \u00d7 b = b \u00d7 a.",
       "gradeLevel": 3,
       "standardCode": "3.OA.5",
       "strand": "operations-multiplication",
@@ -2866,7 +2866,7 @@
     {
       "id": "division-with-zeros",
       "name": "Division with Zeros in Quotient",
-      "description": "Handle zeros in the quotient when dividing (e.g., 612 ÷ 6 = 102).",
+      "description": "Handle zeros in the quotient when dividing (e.g., 612 \u00f7 6 = 102).",
       "gradeLevel": 4,
       "standardCode": "4.NBT.6",
       "strand": "operations-division",
@@ -2876,7 +2876,7 @@
     {
       "id": "fractions-as-division",
       "name": "Fractions as Division",
-      "description": "Understand that a/b means a ÷ b and express division results as fractions.",
+      "description": "Understand that a/b means a \u00f7 b and express division results as fractions.",
       "gradeLevel": 5,
       "standardCode": "5.NF.3",
       "strand": "operations-division",
@@ -2940,6 +2940,1666 @@
       "gradeLevel": 4,
       "standardCode": "4.OA.4",
       "strand": "operations-division",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "count-by-2s",
+      "name": "Count by 2s",
+      "description": "Skip count by 2s to at least 20.",
+      "gradeLevel": 1,
+      "standardCode": "1.OA.5",
+      "strand": "number-base",
+      "contentDepth": "survey",
+      "defaultPresentation": "primary"
+    },
+    {
+      "id": "count-by-5s",
+      "name": "Count by 5s",
+      "description": "Skip count by 5s to at least 100.",
+      "gradeLevel": 1,
+      "standardCode": "1.OA.5",
+      "strand": "number-base",
+      "contentDepth": "survey",
+      "defaultPresentation": "primary"
+    },
+    {
+      "id": "count-by-10s",
+      "name": "Count by 10s",
+      "description": "Skip count by 10s to 100.",
+      "gradeLevel": 1,
+      "standardCode": "1.NBT.1",
+      "strand": "number-base",
+      "contentDepth": "survey",
+      "defaultPresentation": "primary"
+    },
+    {
+      "id": "place-value-thousands",
+      "name": "Place Value: Thousands",
+      "description": "Understand place value for numbers up to 9,999 including the thousands place.",
+      "gradeLevel": 3,
+      "standardCode": "3.NBT.1",
+      "strand": "number-base",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "place-value-millions",
+      "name": "Place Value: Millions (Large Numbers)",
+      "description": "Read, write, and understand place value for numbers through millions.",
+      "gradeLevel": 4,
+      "standardCode": "4.NBT.1",
+      "strand": "number-base",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "read-write-numbers-words",
+      "name": "Read and Write Numbers in Words",
+      "description": "Read and write multi-digit numbers using base-ten numerals, number names, and expanded form.",
+      "gradeLevel": 3,
+      "standardCode": "3.NBT.1",
+      "strand": "number-base",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "standard-expanded-form",
+      "name": "Standard Form and Expanded Form",
+      "description": "Write numbers in standard form and expanded form (e.g., 3,456 = 3,000 + 400 + 50 + 6).",
+      "gradeLevel": 3,
+      "standardCode": "3.NBT.1",
+      "strand": "number-base",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "compare-multi-digit",
+      "name": "Compare Multi-Digit Whole Numbers",
+      "description": "Compare multi-digit whole numbers using >, <, = based on place value.",
+      "gradeLevel": 3,
+      "standardCode": "3.NBT.1",
+      "strand": "number-base",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "round-to-nearest-thousand",
+      "name": "Round to Nearest 1,000 and Beyond",
+      "description": "Round numbers to the nearest thousand, ten thousand, and hundred thousand.",
+      "gradeLevel": 4,
+      "standardCode": "4.NBT.3",
+      "strand": "number-base",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "equivalent-place-value",
+      "name": "Equivalent Place Value Representations",
+      "description": "Recognize that the same number can be represented with different place value groupings (e.g., 24 tens = 240).",
+      "gradeLevel": 3,
+      "standardCode": "3.NBT.1",
+      "strand": "number-base",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "decimal-place-value-tenths",
+      "name": "Decimal Place Value: Tenths",
+      "description": "Understand tenths as a fractional part and represent them as decimals.",
+      "gradeLevel": 4,
+      "standardCode": "4.NF.6",
+      "strand": "number-base",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "decimal-place-value-hundredths",
+      "name": "Decimal Place Value: Hundredths",
+      "description": "Understand hundredths and represent them as decimals.",
+      "gradeLevel": 4,
+      "standardCode": "4.NF.6",
+      "strand": "number-base",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "decimal-place-value-thousandths",
+      "name": "Decimal Place Value: Thousandths",
+      "description": "Understand thousandths place and read/write decimals to thousandths.",
+      "gradeLevel": 5,
+      "standardCode": "5.NBT.3",
+      "strand": "number-base",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "read-write-decimals",
+      "name": "Read and Write Decimals in Words",
+      "description": "Read and write decimals to thousandths using base-ten numerals, number names, and expanded form.",
+      "gradeLevel": 5,
+      "standardCode": "5.NBT.3",
+      "strand": "number-base",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "equivalent-decimals",
+      "name": "Equivalent Decimals",
+      "description": "Recognize that 0.5 = 0.50 = 0.500 and explain why using place value.",
+      "gradeLevel": 5,
+      "standardCode": "5.NBT.3",
+      "strand": "number-base",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "standard-expanded-form-decimals",
+      "name": "Standard and Expanded Form with Decimals",
+      "description": "Write decimals in standard form and expanded form using fractions or decimals.",
+      "gradeLevel": 5,
+      "standardCode": "5.NBT.3",
+      "strand": "number-base",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "add-decimals",
+      "name": "Add Decimals",
+      "description": "Add decimals to hundredths using place value strategies and algorithms.",
+      "gradeLevel": 5,
+      "standardCode": "5.NBT.7",
+      "strand": "number-base",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "subtract-decimals",
+      "name": "Subtract Decimals",
+      "description": "Subtract decimals to hundredths using place value strategies and algorithms.",
+      "gradeLevel": 5,
+      "standardCode": "5.NBT.7",
+      "strand": "number-base",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "add-decimals-unequal-places",
+      "name": "Add Decimals with Unequal Decimal Places",
+      "description": "Add decimals where the addends have different numbers of decimal places (e.g., 3.4 + 2.15).",
+      "gradeLevel": 5,
+      "standardCode": "5.NBT.7",
+      "strand": "number-base",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "subtract-decimals-unequal-places",
+      "name": "Subtract Decimals with Unequal Decimal Places",
+      "description": "Subtract decimals where the numbers have different numbers of decimal places.",
+      "gradeLevel": 5,
+      "standardCode": "5.NBT.7",
+      "strand": "number-base",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "multiply-decimals-whole",
+      "name": "Multiply Decimals by Whole Numbers",
+      "description": "Multiply a decimal number by a whole number using place value understanding.",
+      "gradeLevel": 5,
+      "standardCode": "5.NBT.7",
+      "strand": "number-base",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "multiply-decimals",
+      "name": "Multiply Decimals by Decimals",
+      "description": "Multiply two decimal numbers and place the decimal point correctly in the product.",
+      "gradeLevel": 5,
+      "standardCode": "5.NBT.7",
+      "strand": "number-base",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "divide-decimals-whole",
+      "name": "Divide Decimals by Whole Numbers",
+      "description": "Divide a decimal number by a whole number.",
+      "gradeLevel": 5,
+      "standardCode": "5.NBT.7",
+      "strand": "number-base",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "divide-decimals",
+      "name": "Divide Decimals by Decimals",
+      "description": "Divide a decimal by a decimal by converting the divisor to a whole number.",
+      "gradeLevel": 5,
+      "standardCode": "5.NBT.7",
+      "strand": "number-base",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "multiply-decimals-powers-of-ten",
+      "name": "Multiply Decimals by Powers of Ten",
+      "description": "Use patterns to multiply decimals by 10, 100, and 1,000.",
+      "gradeLevel": 5,
+      "standardCode": "5.NBT.2",
+      "strand": "number-base",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "divide-decimals-powers-of-ten",
+      "name": "Divide Decimals by Powers of Ten",
+      "description": "Use patterns to divide decimals by 10, 100, and 1,000.",
+      "gradeLevel": 5,
+      "standardCode": "5.NBT.2",
+      "strand": "number-base",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "estimate-decimal-operations",
+      "name": "Estimate Decimal Sums, Differences, Products",
+      "description": "Use rounding and estimation to check reasonableness of decimal computations.",
+      "gradeLevel": 5,
+      "standardCode": "5.NBT.7",
+      "strand": "number-base",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "decimal-division-with-rounding",
+      "name": "Decimal Division with Rounding",
+      "description": "Divide decimals and round the quotient to a specified place.",
+      "gradeLevel": 5,
+      "standardCode": "5.NBT.7",
+      "strand": "number-base",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "factors-and-factor-pairs",
+      "name": "Factor Pairs",
+      "description": "Find all factor pairs for a whole number.",
+      "gradeLevel": 4,
+      "standardCode": "4.OA.4",
+      "strand": "number-base",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "multiples-of-number",
+      "name": "Multiples of a Number",
+      "description": "Determine whether a given whole number is a multiple of a given one-digit number.",
+      "gradeLevel": 4,
+      "standardCode": "4.OA.4",
+      "strand": "number-base",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "prime-factorization",
+      "name": "Prime Factorization",
+      "description": "Find the prime factorization of a number using factor trees.",
+      "gradeLevel": 5,
+      "standardCode": "5.OA.2",
+      "strand": "number-base",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "gcf-using-prime-factorization",
+      "name": "GCF Using Prime Factorization",
+      "description": "Find the greatest common factor using prime factorization.",
+      "gradeLevel": 5,
+      "standardCode": "6.NS.4",
+      "strand": "number-base",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "lcm-using-prime-factorization",
+      "name": "LCM Using Prime Factorization",
+      "description": "Find the least common multiple using prime factorization.",
+      "gradeLevel": 5,
+      "standardCode": "6.NS.4",
+      "strand": "number-base",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "divisibility-rules-full",
+      "name": "Divisibility Rules (All)",
+      "description": "Apply divisibility rules for 2, 3, 4, 5, 6, 8, 9, and 10.",
+      "gradeLevel": 5,
+      "standardCode": "5.OA.2",
+      "strand": "number-base",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "negative-numbers-intro",
+      "name": "Introduction to Negative Numbers",
+      "description": "Understand negative numbers as values below zero on a number line.",
+      "gradeLevel": 5,
+      "standardCode": "5.NF.1",
+      "strand": "number-base",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "compare-negative-numbers",
+      "name": "Compare Negative Numbers",
+      "description": "Compare and order negative numbers using a number line.",
+      "gradeLevel": 5,
+      "standardCode": "5.NF.1",
+      "strand": "number-base",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "unit-fractions",
+      "name": "Unit Fractions",
+      "description": "Understand unit fractions (1/b) as one part of a whole divided into b equal parts.",
+      "gradeLevel": 3,
+      "standardCode": "3.NF.1",
+      "strand": "fractions",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "fractions-of-set",
+      "name": "Fractions of a Set",
+      "description": "Find a fraction of a set of objects (e.g., 1/3 of 12 objects).",
+      "gradeLevel": 3,
+      "standardCode": "3.NF.1",
+      "strand": "fractions",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "write-fractions-words",
+      "name": "Read and Write Fractions in Words",
+      "description": "Read and write fractions using words (e.g., three fourths).",
+      "gradeLevel": 3,
+      "standardCode": "3.NF.1",
+      "strand": "fractions",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "fractions-equal-parts",
+      "name": "Equal Parts and Fractions",
+      "description": "Partition shapes and sets into equal parts and name the parts using fractions.",
+      "gradeLevel": 2,
+      "standardCode": "2.G.3",
+      "strand": "fractions",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "equivalent-fractions-models",
+      "name": "Equivalent Fractions Using Models",
+      "description": "Use visual models (area models, number lines) to recognize and generate equivalent fractions.",
+      "gradeLevel": 3,
+      "standardCode": "3.NF.3",
+      "strand": "fractions",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "simplify-fractions",
+      "name": "Simplify Fractions (Lowest Terms)",
+      "description": "Simplify fractions to lowest terms by dividing numerator and denominator by their GCF.",
+      "gradeLevel": 4,
+      "standardCode": "4.NF.1",
+      "strand": "fractions",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "least-common-denominator",
+      "name": "Least Common Denominator",
+      "description": "Find the least common denominator of two fractions.",
+      "gradeLevel": 4,
+      "standardCode": "4.NF.2",
+      "strand": "fractions",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "compare-fractions-benchmarks",
+      "name": "Compare Fractions Using Benchmarks",
+      "description": "Compare fractions to benchmark values 0, 1/2, and 1 to determine relative size.",
+      "gradeLevel": 4,
+      "standardCode": "4.NF.2",
+      "strand": "fractions",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "order-fractions",
+      "name": "Order Fractions on a Number Line",
+      "description": "Place and order fractions on a number line.",
+      "gradeLevel": 4,
+      "standardCode": "4.NF.2",
+      "strand": "fractions",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "decompose-fractions",
+      "name": "Decompose Fractions into Sums",
+      "description": "Write a fraction as a sum of fractions with the same denominator (e.g., 3/4 = 1/4 + 1/4 + 1/4).",
+      "gradeLevel": 4,
+      "standardCode": "4.NF.3",
+      "strand": "fractions",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "add-fractions-like-denom",
+      "name": "Add Fractions with Like Denominators",
+      "description": "Add two fractions that have the same denominator.",
+      "gradeLevel": 3,
+      "standardCode": "3.NF.3",
+      "strand": "fractions",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "subtract-fractions-like-denom",
+      "name": "Subtract Fractions with Like Denominators",
+      "description": "Subtract fractions that have the same denominator.",
+      "gradeLevel": 3,
+      "standardCode": "3.NF.3",
+      "strand": "fractions",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "add-fractions-like-word-problems",
+      "name": "Add/Subtract Fractions Word Problems (Like Denom)",
+      "description": "Solve word problems involving addition and subtraction of fractions with like denominators.",
+      "gradeLevel": 4,
+      "standardCode": "4.NF.3",
+      "strand": "fractions",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "add-mixed-numbers-like-denom",
+      "name": "Add Mixed Numbers with Like Denominators",
+      "description": "Add mixed numbers that have the same denominator.",
+      "gradeLevel": 4,
+      "standardCode": "4.NF.3",
+      "strand": "fractions",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "subtract-mixed-numbers-like-denom",
+      "name": "Subtract Mixed Numbers with Like Denominators",
+      "description": "Subtract mixed numbers that have the same denominator.",
+      "gradeLevel": 4,
+      "standardCode": "4.NF.3",
+      "strand": "fractions",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "subtract-mixed-numbers-regroup",
+      "name": "Subtract Mixed Numbers (Regrouping)",
+      "description": "Subtract mixed numbers that require regrouping from the whole number part.",
+      "gradeLevel": 4,
+      "standardCode": "4.NF.3",
+      "strand": "fractions",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "add-fractions-unlike-denom",
+      "name": "Add Fractions with Unlike Denominators",
+      "description": "Add fractions with different denominators by finding a common denominator.",
+      "gradeLevel": 5,
+      "standardCode": "5.NF.1",
+      "strand": "fractions",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "subtract-fractions-unlike-denom",
+      "name": "Subtract Fractions with Unlike Denominators",
+      "description": "Subtract fractions with different denominators by finding a common denominator.",
+      "gradeLevel": 5,
+      "standardCode": "5.NF.1",
+      "strand": "fractions",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "estimate-fraction-sums",
+      "name": "Estimate Fraction Sums and Differences",
+      "description": "Use benchmark fractions to estimate sums and differences of fractions.",
+      "gradeLevel": 5,
+      "standardCode": "5.NF.2",
+      "strand": "fractions",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "add-fractions-whole-numbers",
+      "name": "Add Fractions and Whole Numbers",
+      "description": "Add a fraction to a whole number or a whole number to a fraction.",
+      "gradeLevel": 5,
+      "standardCode": "5.NF.1",
+      "strand": "fractions",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "subtract-fractions-whole-numbers",
+      "name": "Subtract Fractions from Whole Numbers",
+      "description": "Subtract a fraction from a whole number.",
+      "gradeLevel": 5,
+      "standardCode": "5.NF.1",
+      "strand": "fractions",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "add-mixed-numbers-unlike",
+      "name": "Add Mixed Numbers with Unlike Denominators",
+      "description": "Add mixed numbers with different denominators.",
+      "gradeLevel": 5,
+      "standardCode": "5.NF.1",
+      "strand": "fractions",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "subtract-mixed-numbers-unlike",
+      "name": "Subtract Mixed Numbers with Unlike Denominators",
+      "description": "Subtract mixed numbers with different denominators, including regrouping.",
+      "gradeLevel": 5,
+      "standardCode": "5.NF.1",
+      "strand": "fractions",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "fraction-add-sub-word-problems-unlike",
+      "name": "Add/Subtract Fractions Word Problems (Unlike Denom)",
+      "description": "Solve word problems involving addition and subtraction of fractions with unlike denominators.",
+      "gradeLevel": 5,
+      "standardCode": "5.NF.2",
+      "strand": "fractions",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "mixed-number-word-problems",
+      "name": "Mixed Number Word Problems",
+      "description": "Solve word problems involving addition, subtraction, and multiplication of mixed numbers.",
+      "gradeLevel": 5,
+      "standardCode": "5.NF.2",
+      "strand": "fractions",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "multiply-unit-fraction-whole",
+      "name": "Multiply Unit Fraction by Whole Number",
+      "description": "Multiply a unit fraction by a whole number (e.g., 4 \u00d7 1/3).",
+      "gradeLevel": 4,
+      "standardCode": "4.NF.4",
+      "strand": "fractions",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "multiply-fraction-whole-word-problems",
+      "name": "Multiply Fractions by Whole Numbers: Word Problems",
+      "description": "Solve word problems involving multiplication of a fraction by a whole number.",
+      "gradeLevel": 4,
+      "standardCode": "4.NF.4",
+      "strand": "fractions",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "multiply-fractions-procedural",
+      "name": "Multiply Fractions (Procedural)",
+      "description": "Multiply two fractions by multiplying numerators and denominators.",
+      "gradeLevel": 5,
+      "standardCode": "5.NF.4",
+      "strand": "fractions",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "multiply-fractions-word-problems",
+      "name": "Multiply Fractions: Word Problems",
+      "description": "Solve word problems involving multiplication of fractions.",
+      "gradeLevel": 5,
+      "standardCode": "5.NF.6",
+      "strand": "fractions",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "multiply-fractions-area",
+      "name": "Fraction Multiplication and Area",
+      "description": "Use fraction multiplication to find areas of rectangles with fractional side lengths.",
+      "gradeLevel": 5,
+      "standardCode": "5.NF.4",
+      "strand": "fractions",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "multiply-mixed-whole",
+      "name": "Multiply Mixed Numbers by Whole Numbers",
+      "description": "Multiply a mixed number by a whole number.",
+      "gradeLevel": 5,
+      "standardCode": "5.NF.6",
+      "strand": "fractions",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "multiply-mixed-fractions",
+      "name": "Multiply Mixed Numbers by Fractions",
+      "description": "Multiply a mixed number by a fraction.",
+      "gradeLevel": 5,
+      "standardCode": "5.NF.6",
+      "strand": "fractions",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "multiply-mixed-word-problems",
+      "name": "Multiply Mixed Numbers: Word Problems",
+      "description": "Solve word problems involving multiplication of mixed numbers.",
+      "gradeLevel": 5,
+      "standardCode": "5.NF.6",
+      "strand": "fractions",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "reciprocals",
+      "name": "Reciprocals",
+      "description": "Find the reciprocal of a fraction and understand that a number times its reciprocal equals 1.",
+      "gradeLevel": 5,
+      "standardCode": "5.NF.7",
+      "strand": "fractions",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "divide-whole-by-unit-fraction",
+      "name": "Divide Whole Number by Unit Fraction",
+      "description": "Divide a whole number by a unit fraction (e.g., 6 \u00f7 1/3).",
+      "gradeLevel": 5,
+      "standardCode": "5.NF.7",
+      "strand": "fractions",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "divide-unit-fraction-by-whole",
+      "name": "Divide Unit Fraction by Whole Number",
+      "description": "Divide a unit fraction by a whole number (e.g., 1/4 \u00f7 3).",
+      "gradeLevel": 5,
+      "standardCode": "5.NF.7",
+      "strand": "fractions",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "divide-whole-by-fraction",
+      "name": "Divide Whole Number by Fraction",
+      "description": "Divide a whole number by any fraction using the reciprocal.",
+      "gradeLevel": 5,
+      "standardCode": "5.NF.7",
+      "strand": "fractions",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "divide-fraction-by-whole",
+      "name": "Divide Fraction by Whole Number",
+      "description": "Divide any fraction by a whole number.",
+      "gradeLevel": 5,
+      "standardCode": "5.NF.7",
+      "strand": "fractions",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "divide-fractions-procedural",
+      "name": "Divide Fractions (Procedural)",
+      "description": "Divide fractions using the invert-and-multiply method.",
+      "gradeLevel": 5,
+      "standardCode": "5.NF.7",
+      "strand": "fractions",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "divide-fractions-word-problems",
+      "name": "Divide Fractions and Whole Numbers: Word Problems",
+      "description": "Solve word problems involving division of fractions and whole numbers.",
+      "gradeLevel": 5,
+      "standardCode": "5.NF.7",
+      "strand": "fractions",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "convert-fraction-to-decimal",
+      "name": "Convert Fractions to Decimals",
+      "description": "Convert fractions to decimals by dividing numerator by denominator.",
+      "gradeLevel": 4,
+      "standardCode": "4.NF.6",
+      "strand": "fractions",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "convert-decimal-to-fraction",
+      "name": "Convert Decimals to Fractions",
+      "description": "Convert decimals to fractions and simplify.",
+      "gradeLevel": 4,
+      "standardCode": "4.NF.6",
+      "strand": "fractions",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "convert-mixed-to-decimal",
+      "name": "Convert Mixed Numbers to Decimals",
+      "description": "Convert mixed numbers to decimal form.",
+      "gradeLevel": 4,
+      "standardCode": "4.NF.6",
+      "strand": "fractions",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "fractions-as-division-concept",
+      "name": "Fractions as Division",
+      "description": "Understand that a/b means a divided by b.",
+      "gradeLevel": 5,
+      "standardCode": "5.NF.3",
+      "strand": "fractions",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "decimal-fractions",
+      "name": "Decimal Fractions",
+      "description": "Express fractions with denominators 10 and 100 as decimals.",
+      "gradeLevel": 4,
+      "standardCode": "4.NF.6",
+      "strand": "fractions",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "simplify-before-multiply",
+      "name": "Simplify Before Multiplying Fractions",
+      "description": "Cross-cancel common factors before multiplying fractions to simplify computation.",
+      "gradeLevel": 5,
+      "standardCode": "5.NF.4",
+      "strand": "fractions",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "cross-multiply-fractions",
+      "name": "Cross-Multiplication for Comparing Fractions",
+      "description": "Use cross-multiplication as a strategy for comparing two fractions.",
+      "gradeLevel": 5,
+      "standardCode": "5.NF.2",
+      "strand": "fractions",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "mixed-number-conversions",
+      "name": "Convert Between Improper Fractions and Mixed Numbers",
+      "description": "Fluently convert between improper fractions and mixed numbers in both directions.",
+      "gradeLevel": 4,
+      "standardCode": "4.NF.3",
+      "strand": "fractions",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "fraction-number-sense",
+      "name": "Fraction Number Sense",
+      "description": "Determine reasonableness of fraction computations using estimation and benchmarks.",
+      "gradeLevel": 5,
+      "standardCode": "5.NF.2",
+      "strand": "fractions",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "input-output-tables",
+      "name": "Input-Output Tables",
+      "description": "Complete input-output tables and identify the rule.",
+      "gradeLevel": 3,
+      "standardCode": "3.OA.9",
+      "strand": "algebra-thinking",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "growing-patterns",
+      "name": "Growing Patterns (Visual and Numeric)",
+      "description": "Identify and extend growing patterns using shapes and numbers.",
+      "gradeLevel": 3,
+      "standardCode": "3.OA.9",
+      "strand": "algebra-thinking",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "number-rules",
+      "name": "Describe Number Rules",
+      "description": "Generate and describe number patterns following a given rule.",
+      "gradeLevel": 4,
+      "standardCode": "4.OA.5",
+      "strand": "algebra-thinking",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "comparison-problems-additive",
+      "name": "Additive Comparison Word Problems",
+      "description": "Solve word problems using additive comparison (how many more/fewer).",
+      "gradeLevel": 3,
+      "standardCode": "3.OA.8",
+      "strand": "algebra-thinking",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "comparison-problems-multiplicative",
+      "name": "Multiplicative Comparison Word Problems",
+      "description": "Solve word problems using multiplicative comparison (times as many).",
+      "gradeLevel": 4,
+      "standardCode": "4.OA.2",
+      "strand": "algebra-thinking",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "evaluate-expressions-four-ops",
+      "name": "Evaluate Expressions with Four Operations",
+      "description": "Evaluate numerical expressions involving all four operations.",
+      "gradeLevel": 4,
+      "standardCode": "4.OA.3",
+      "strand": "algebra-thinking",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "multi-step-word-problems-4ops",
+      "name": "Multi-Step Word Problems with Four Operations",
+      "description": "Solve multi-step word problems using addition, subtraction, multiplication, and division.",
+      "gradeLevel": 4,
+      "standardCode": "4.OA.3",
+      "strand": "algebra-thinking",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "write-expressions",
+      "name": "Write Numerical Expressions from Words",
+      "description": "Translate verbal phrases into numerical expressions.",
+      "gradeLevel": 5,
+      "standardCode": "5.OA.2",
+      "strand": "algebra-thinking",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "evaluate-expressions-grouping",
+      "name": "Evaluate Expressions with Grouping Symbols",
+      "description": "Evaluate expressions containing parentheses, brackets, or braces.",
+      "gradeLevel": 5,
+      "standardCode": "5.OA.1",
+      "strand": "algebra-thinking",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "intro-algebraic-expressions",
+      "name": "Introduction to Algebraic Expressions",
+      "description": "Understand that letters represent unknown quantities in expressions.",
+      "gradeLevel": 5,
+      "standardCode": "5.OA.2",
+      "strand": "algebra-thinking",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "construct-algebraic-expressions",
+      "name": "Construct Algebraic Expressions from Words",
+      "description": "Write algebraic expressions from verbal descriptions.",
+      "gradeLevel": 5,
+      "standardCode": "5.OA.2",
+      "strand": "algebra-thinking",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "evaluate-algebraic-expressions",
+      "name": "Evaluate Algebraic Expressions",
+      "description": "Substitute values for variables and evaluate the expression.",
+      "gradeLevel": 5,
+      "standardCode": "5.OA.2",
+      "strand": "algebra-thinking",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "identify-terms-coefficients",
+      "name": "Identify Terms, Coefficients, and Constants",
+      "description": "Identify the parts of an algebraic expression: terms, coefficients, and constants.",
+      "gradeLevel": 5,
+      "standardCode": "5.OA.2",
+      "strand": "algebra-thinking",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "like-terms",
+      "name": "Identify and Collect Like Terms",
+      "description": "Identify like terms and combine them to simplify expressions.",
+      "gradeLevel": 5,
+      "standardCode": "5.OA.2",
+      "strand": "algebra-thinking",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "distributive-property-intro",
+      "name": "Distributive Property (Introduction)",
+      "description": "Apply the distributive property to rewrite expressions (e.g., 3 \u00d7 (4 + 2) = 3 \u00d7 4 + 3 \u00d7 2).",
+      "gradeLevel": 5,
+      "standardCode": "5.OA.2",
+      "strand": "algebra-thinking",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "simplify-expressions-distributive",
+      "name": "Simplify Expressions Using Distributive Property",
+      "description": "Use the distributive property and combining like terms to simplify expressions.",
+      "gradeLevel": 5,
+      "standardCode": "5.OA.2",
+      "strand": "algebra-thinking",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "factor-numerical-expressions",
+      "name": "Factor Numerical Expressions",
+      "description": "Factor numerical expressions using the GCF (e.g., 36 + 24 = 12(3 + 2)).",
+      "gradeLevel": 5,
+      "standardCode": "5.OA.2",
+      "strand": "algebra-thinking",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "expressions-with-exponents",
+      "name": "Evaluate Expressions with Exponents",
+      "description": "Evaluate numerical expressions that include exponents.",
+      "gradeLevel": 5,
+      "standardCode": "5.OA.1",
+      "strand": "algebra-thinking",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "two-step-word-problems",
+      "name": "Two-Step Word Problems",
+      "description": "Solve word problems requiring exactly two steps.",
+      "gradeLevel": 2,
+      "standardCode": "2.OA.1",
+      "strand": "algebra-thinking",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "measure-length-inches",
+      "name": "Measure Length in Inches",
+      "description": "Measure the length of an object in inches using a ruler.",
+      "gradeLevel": 2,
+      "standardCode": "2.MD.1",
+      "strand": "measurement-data",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "measure-length-cm",
+      "name": "Measure Length in Centimeters",
+      "description": "Measure the length of an object in centimeters using a ruler.",
+      "gradeLevel": 2,
+      "standardCode": "2.MD.1",
+      "strand": "measurement-data",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "measure-length-rulers",
+      "name": "Measure Length Using Rulers (Half/Quarter Inch)",
+      "description": "Measure objects to the nearest half inch and quarter inch.",
+      "gradeLevel": 3,
+      "standardCode": "3.MD.4",
+      "strand": "measurement-data",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "weight-mass-intro",
+      "name": "Weight and Mass (Introduction)",
+      "description": "Compare and measure weight using non-standard and standard units.",
+      "gradeLevel": 2,
+      "standardCode": "2.MD.3",
+      "strand": "measurement-data",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "capacity-intro",
+      "name": "Capacity and Volume (Liquid Measurement)",
+      "description": "Compare and measure liquid volumes using standard units.",
+      "gradeLevel": 2,
+      "standardCode": "2.MD.3",
+      "strand": "measurement-data",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "tell-time-5-minutes",
+      "name": "Tell Time to 5 Minutes",
+      "description": "Tell and write time to the nearest 5 minutes using analog and digital clocks.",
+      "gradeLevel": 2,
+      "standardCode": "2.MD.7",
+      "strand": "measurement-data",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "elapsed-time",
+      "name": "Elapsed Time",
+      "description": "Calculate elapsed time in hours and minutes.",
+      "gradeLevel": 3,
+      "standardCode": "3.MD.1",
+      "strand": "measurement-data",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "picture-graphs",
+      "name": "Picture Graphs",
+      "description": "Read and interpret picture graphs with single-unit and multi-unit scales.",
+      "gradeLevel": 1,
+      "standardCode": "1.MD.4",
+      "strand": "measurement-data",
+      "contentDepth": "survey",
+      "defaultPresentation": "primary"
+    },
+    {
+      "id": "bar-graphs-read",
+      "name": "Read and Interpret Bar Graphs",
+      "description": "Read bar graphs and answer questions about the data.",
+      "gradeLevel": 2,
+      "standardCode": "2.MD.10",
+      "strand": "measurement-data",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "bar-graphs-create",
+      "name": "Create Bar Graphs",
+      "description": "Organize data and create bar graphs with appropriate scales and labels.",
+      "gradeLevel": 3,
+      "standardCode": "3.MD.3",
+      "strand": "measurement-data",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "line-plots-intro",
+      "name": "Line Plots (Introduction)",
+      "description": "Create and interpret line plots with whole-number data.",
+      "gradeLevel": 3,
+      "standardCode": "3.MD.4",
+      "strand": "measurement-data",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "line-plots-fractions",
+      "name": "Line Plots with Fractions",
+      "description": "Create and interpret line plots with fractional data (halves, quarters, eighths).",
+      "gradeLevel": 5,
+      "standardCode": "5.MD.2",
+      "strand": "measurement-data",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "units-of-length-customary",
+      "name": "Units of Length (Customary)",
+      "description": "Know and use relationships among inches, feet, yards, and miles.",
+      "gradeLevel": 3,
+      "standardCode": "3.MD.2",
+      "strand": "measurement-data",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "units-of-length-metric",
+      "name": "Units of Length (Metric)",
+      "description": "Know and use relationships among millimeters, centimeters, meters, and kilometers.",
+      "gradeLevel": 3,
+      "standardCode": "3.MD.2",
+      "strand": "measurement-data",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "units-of-mass",
+      "name": "Units of Mass",
+      "description": "Know and convert among ounces, pounds, grams, and kilograms.",
+      "gradeLevel": 4,
+      "standardCode": "4.MD.1",
+      "strand": "measurement-data",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "units-of-time",
+      "name": "Units of Time",
+      "description": "Know and convert among seconds, minutes, hours, days, weeks, and years.",
+      "gradeLevel": 4,
+      "standardCode": "4.MD.1",
+      "strand": "measurement-data",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "units-of-volume-liquid",
+      "name": "Units of Volume (Liquid)",
+      "description": "Know and convert among cups, pints, quarts, gallons, milliliters, and liters.",
+      "gradeLevel": 4,
+      "standardCode": "4.MD.1",
+      "strand": "measurement-data",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "convert-length-smaller",
+      "name": "Convert Length to Smaller Units",
+      "description": "Convert larger length units to smaller units (e.g., feet to inches).",
+      "gradeLevel": 4,
+      "standardCode": "4.MD.1",
+      "strand": "measurement-data",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "convert-length-larger",
+      "name": "Convert Length to Larger Units",
+      "description": "Convert smaller length units to larger units (e.g., inches to feet) including fractions/decimals.",
+      "gradeLevel": 5,
+      "standardCode": "5.MD.1",
+      "strand": "measurement-data",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "convert-mass",
+      "name": "Convert Units of Mass",
+      "description": "Convert between units of mass within a system.",
+      "gradeLevel": 4,
+      "standardCode": "4.MD.1",
+      "strand": "measurement-data",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "convert-time",
+      "name": "Convert Units of Time",
+      "description": "Convert between units of time (e.g., hours to minutes, days to hours).",
+      "gradeLevel": 4,
+      "standardCode": "4.MD.1",
+      "strand": "measurement-data",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "convert-volume",
+      "name": "Convert Units of Volume",
+      "description": "Convert between units of liquid volume within a system.",
+      "gradeLevel": 4,
+      "standardCode": "4.MD.1",
+      "strand": "measurement-data",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "metric-vs-customary",
+      "name": "Compare Metric and Customary Units",
+      "description": "Compare corresponding units across metric and customary systems.",
+      "gradeLevel": 5,
+      "standardCode": "5.MD.1",
+      "strand": "measurement-data",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "money-make-change",
+      "name": "Make Change",
+      "description": "Determine the correct change when paying for items.",
+      "gradeLevel": 2,
+      "standardCode": "2.MD.8",
+      "strand": "measurement-data",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "money-word-problems",
+      "name": "Money Word Problems",
+      "description": "Solve word problems involving dollars and cents using addition, subtraction, and multiplication.",
+      "gradeLevel": 3,
+      "standardCode": "3.MD.2",
+      "strand": "measurement-data",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "data-tables",
+      "name": "Read and Create Data Tables",
+      "description": "Read, interpret, and create data tables to organize information.",
+      "gradeLevel": 3,
+      "standardCode": "3.MD.3",
+      "strand": "measurement-data",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "shapes-attributes",
+      "name": "Describe Shape Attributes",
+      "description": "Describe 2D shapes by their attributes (number of sides, corners, straight/curved).",
+      "gradeLevel": 0,
+      "standardCode": "K.G.4",
+      "strand": "geometry",
+      "contentDepth": "survey",
+      "defaultPresentation": "primary"
+    },
+    {
+      "id": "compose-shapes",
+      "name": "Compose and Decompose Shapes",
+      "description": "Combine simple shapes to form larger shapes and break shapes into smaller parts.",
+      "gradeLevel": 1,
+      "standardCode": "1.G.2",
+      "strand": "geometry",
+      "contentDepth": "survey",
+      "defaultPresentation": "primary"
+    },
+    {
+      "id": "partition-shapes",
+      "name": "Partition Shapes into Equal Parts",
+      "description": "Partition circles and rectangles into two and four equal parts and describe the parts.",
+      "gradeLevel": 1,
+      "standardCode": "1.G.3",
+      "strand": "geometry",
+      "contentDepth": "survey",
+      "defaultPresentation": "primary"
+    },
+    {
+      "id": "sides-vertices",
+      "name": "Count Sides and Vertices",
+      "description": "Count the sides and vertices of 2D shapes.",
+      "gradeLevel": 1,
+      "standardCode": "1.G.1",
+      "strand": "geometry",
+      "contentDepth": "survey",
+      "defaultPresentation": "primary"
+    },
+    {
+      "id": "quadrilaterals-intro",
+      "name": "Quadrilaterals (Introduction)",
+      "description": "Identify and classify quadrilaterals by their properties.",
+      "gradeLevel": 3,
+      "standardCode": "3.G.1",
+      "strand": "geometry",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "rectangles-rhombuses-squares",
+      "name": "Rectangles, Rhombuses, and Squares",
+      "description": "Understand properties of rectangles, rhombuses, and squares and their relationships.",
+      "gradeLevel": 3,
+      "standardCode": "3.G.1",
+      "strand": "geometry",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "classify-quadrilaterals",
+      "name": "Classify Quadrilaterals (Hierarchy)",
+      "description": "Classify quadrilaterals in a hierarchy based on properties (parallelogram, rectangle, rhombus, square, trapezoid).",
+      "gradeLevel": 5,
+      "standardCode": "5.G.3",
+      "strand": "geometry",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "polygons-intro",
+      "name": "Polygons (Introduction)",
+      "description": "Identify polygons, name them by number of sides, and distinguish from non-polygons.",
+      "gradeLevel": 5,
+      "standardCode": "5.G.3",
+      "strand": "geometry",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "regular-polygons",
+      "name": "Regular Polygons",
+      "description": "Identify regular polygons and understand that all sides and angles are equal.",
+      "gradeLevel": 5,
+      "standardCode": "5.G.3",
+      "strand": "geometry",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "angles-measure",
+      "name": "Measuring Angles with a Protractor",
+      "description": "Measure angles in degrees using a protractor.",
+      "gradeLevel": 4,
+      "standardCode": "4.MD.6",
+      "strand": "geometry",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "angle-types",
+      "name": "Types of Angles",
+      "description": "Classify angles as acute, obtuse, right, straight, or reflex.",
+      "gradeLevel": 4,
+      "standardCode": "4.MD.5",
+      "strand": "geometry",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "complementary-angles",
+      "name": "Complementary Angles",
+      "description": "Identify complementary angles (sum to 90\u00b0) and find missing angle measures.",
+      "gradeLevel": 4,
+      "standardCode": "4.MD.7",
+      "strand": "geometry",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "supplementary-angles",
+      "name": "Supplementary Angles",
+      "description": "Identify supplementary angles (sum to 180\u00b0) and find missing angle measures.",
+      "gradeLevel": 4,
+      "standardCode": "4.MD.7",
+      "strand": "geometry",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "angle-sums",
+      "name": "Sums of Angles",
+      "description": "Use the additive property of angle measure to find unknown angles.",
+      "gradeLevel": 4,
+      "standardCode": "4.MD.7",
+      "strand": "geometry",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "solve-angle-problems",
+      "name": "Solve Angle Problems",
+      "description": "Solve multi-step problems involving angle relationships.",
+      "gradeLevel": 4,
+      "standardCode": "4.MD.7",
+      "strand": "geometry",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "perimeter-regular-shapes",
+      "name": "Perimeter of Regular Shapes",
+      "description": "Find the perimeter of regular shapes using multiplication.",
+      "gradeLevel": 3,
+      "standardCode": "3.MD.8",
+      "strand": "geometry",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "perimeter-irregular-shapes",
+      "name": "Perimeter of Irregular Shapes",
+      "description": "Find the perimeter of irregular shapes by adding all side lengths.",
+      "gradeLevel": 3,
+      "standardCode": "3.MD.8",
+      "strand": "geometry",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "area-counting-squares",
+      "name": "Area by Counting Unit Squares",
+      "description": "Find the area of a shape by counting unit squares.",
+      "gradeLevel": 3,
+      "standardCode": "3.MD.5",
+      "strand": "geometry",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "area-rectangles",
+      "name": "Area of Rectangles",
+      "description": "Find the area of rectangles using the formula length \u00d7 width.",
+      "gradeLevel": 3,
+      "standardCode": "3.MD.7",
+      "strand": "geometry",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "area-related-to-perimeter",
+      "name": "Relate Area and Perimeter",
+      "description": "Understand that shapes with the same area can have different perimeters and vice versa.",
+      "gradeLevel": 3,
+      "standardCode": "3.MD.8",
+      "strand": "geometry",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "congruent-figures",
+      "name": "Congruent Figures",
+      "description": "Identify congruent figures and understand that congruent shapes have the same size and shape.",
+      "gradeLevel": 3,
+      "standardCode": "3.G.1",
+      "strand": "geometry",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "volume-unit-cubes",
+      "name": "Volume Using Unit Cubes",
+      "description": "Find volume by counting unit cubes.",
+      "gradeLevel": 5,
+      "standardCode": "5.MD.3",
+      "strand": "geometry",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "volume-rectangular-prisms",
+      "name": "Volume of Rectangular Prisms (Formula)",
+      "description": "Find volume of rectangular prisms using V = l \u00d7 w \u00d7 h.",
+      "gradeLevel": 5,
+      "standardCode": "5.MD.5",
+      "strand": "geometry",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "volume-word-problems",
+      "name": "Volume Word Problems",
+      "description": "Solve word problems involving volume of rectangular prisms.",
+      "gradeLevel": 5,
+      "standardCode": "5.MD.5",
+      "strand": "geometry",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "coordinate-plane-plot-points",
+      "name": "Plot Points on the Coordinate Plane",
+      "description": "Plot ordered pairs on the first-quadrant coordinate plane.",
+      "gradeLevel": 5,
+      "standardCode": "5.G.1",
+      "strand": "geometry",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "coordinate-plane-read-points",
+      "name": "Read Points from the Coordinate Plane",
+      "description": "Read and identify coordinates of points on a coordinate plane.",
+      "gradeLevel": 5,
+      "standardCode": "5.G.1",
+      "strand": "geometry",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "coordinate-plane-real-world",
+      "name": "Real World Problems Using Coordinates",
+      "description": "Solve real-world problems by graphing points on the coordinate plane.",
+      "gradeLevel": 5,
+      "standardCode": "5.G.2",
+      "strand": "geometry",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "symmetry-rotational",
+      "name": "Rotational Symmetry",
+      "description": "Identify rotational symmetry and the order of rotational symmetry.",
+      "gradeLevel": 4,
+      "standardCode": "4.G.3",
+      "strand": "geometry",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "classify-triangles-sides",
+      "name": "Classify Triangles by Sides",
+      "description": "Classify triangles as equilateral, isosceles, or scalene based on side lengths.",
+      "gradeLevel": 4,
+      "standardCode": "4.G.2",
+      "strand": "geometry",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "classify-triangles-angles",
+      "name": "Classify Triangles by Angles",
+      "description": "Classify triangles as acute, right, or obtuse based on their angles.",
+      "gradeLevel": 4,
+      "standardCode": "4.G.2",
+      "strand": "geometry",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "draw-geometric-shapes",
+      "name": "Draw Geometric Shapes with Given Attributes",
+      "description": "Draw shapes with specified attributes (e.g., parallel sides, specific angle measures).",
+      "gradeLevel": 4,
+      "standardCode": "4.G.1",
+      "strand": "geometry",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "3d-shapes-attributes",
+      "name": "3D Shape Attributes",
+      "description": "Identify faces, edges, and vertices of 3D shapes.",
+      "gradeLevel": 1,
+      "standardCode": "1.G.2",
+      "strand": "geometry",
+      "contentDepth": "survey",
+      "defaultPresentation": "primary"
+    },
+    {
+      "id": "3d-shape-nets",
+      "name": "Nets of 3D Shapes",
+      "description": "Identify nets that fold into 3D shapes.",
+      "gradeLevel": 5,
+      "standardCode": "5.G.3",
+      "strand": "geometry",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "units-of-area",
+      "name": "Units of Area",
+      "description": "Understand and convert between units of area (sq in, sq ft, sq cm, sq m).",
+      "gradeLevel": 5,
+      "standardCode": "5.MD.1",
+      "strand": "geometry",
+      "contentDepth": "survey",
+      "defaultPresentation": "standard"
+    },
+    {
+      "id": "area-and-perimeter-word-problems",
+      "name": "Area and Perimeter Word Problems",
+      "description": "Solve word problems involving area and perimeter of rectangles.",
+      "gradeLevel": 4,
+      "standardCode": "4.MD.3",
+      "strand": "geometry",
+      "contentDepth": "survey",
+      "defaultPresentation": "intermediate"
+    },
+    {
+      "id": "modeling-with-rectangles",
+      "name": "Modeling with Rectangles",
+      "description": "Use rectangles to model and solve real-world problems involving area.",
+      "gradeLevel": 4,
+      "standardCode": "4.MD.3",
+      "strand": "geometry",
       "contentDepth": "survey",
       "defaultPresentation": "intermediate"
     }
@@ -5560,6 +7220,1350 @@
       "to": "subtract-word-problems-multi-step",
       "type": "required",
       "strength": 1
+    },
+    {
+      "from": "count-to-100",
+      "to": "count-by-2s",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "count-to-100",
+      "to": "count-by-5s",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "count-to-100",
+      "to": "count-by-10s",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "place-value-tens-ones",
+      "to": "count-by-10s",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "place-value-hundreds",
+      "to": "place-value-thousands",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "place-value-thousands",
+      "to": "place-value-millions",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "place-value-thousands",
+      "to": "read-write-numbers-words",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "place-value-thousands",
+      "to": "standard-expanded-form",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "compare-two-digit",
+      "to": "compare-multi-digit",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "place-value-thousands",
+      "to": "compare-multi-digit",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "place-value-rounding",
+      "to": "round-to-nearest-thousand",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "place-value-thousands",
+      "to": "round-to-nearest-thousand",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "place-value-thousands",
+      "to": "equivalent-place-value",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "decimals-intro",
+      "to": "decimal-place-value-tenths",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "decimal-place-value-tenths",
+      "to": "decimal-place-value-hundredths",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "decimal-place-value-hundredths",
+      "to": "decimal-place-value-thousandths",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "place-value-decimals",
+      "to": "read-write-decimals",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "place-value-decimals",
+      "to": "equivalent-decimals",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "place-value-decimals",
+      "to": "standard-expanded-form-decimals",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "place-value-decimals",
+      "to": "add-decimals",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "place-value-decimals",
+      "to": "subtract-decimals",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "add-decimals",
+      "to": "add-decimals-unequal-places",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "subtract-decimals",
+      "to": "subtract-decimals-unequal-places",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "place-value-decimals",
+      "to": "multiply-decimals-whole",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "multiply-multi-digit",
+      "to": "multiply-decimals-whole",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "multiply-decimals-whole",
+      "to": "multiply-decimals",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "place-value-decimals",
+      "to": "divide-decimals-whole",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "divide-multi-digit",
+      "to": "divide-decimals-whole",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "divide-decimals-whole",
+      "to": "divide-decimals",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "place-value-decimals",
+      "to": "multiply-decimals-powers-of-ten",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "powers-of-ten",
+      "to": "multiply-decimals-powers-of-ten",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "place-value-decimals",
+      "to": "divide-decimals-powers-of-ten",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "powers-of-ten",
+      "to": "divide-decimals-powers-of-ten",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "round-decimals",
+      "to": "estimate-decimal-operations",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "add-decimals",
+      "to": "estimate-decimal-operations",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "divide-decimals",
+      "to": "decimal-division-with-rounding",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "round-decimals",
+      "to": "decimal-division-with-rounding",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "factors-multiples",
+      "to": "factors-and-factor-pairs",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "factors-multiples",
+      "to": "multiples-of-number",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "prime-composite-numbers",
+      "to": "prime-factorization",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "greatest-common-factor",
+      "to": "gcf-using-prime-factorization",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "prime-factorization",
+      "to": "gcf-using-prime-factorization",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "least-common-multiple",
+      "to": "lcm-using-prime-factorization",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "prime-factorization",
+      "to": "lcm-using-prime-factorization",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "divisibility-rules-3-9",
+      "to": "divisibility-rules-full",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "compare-multi-digit",
+      "to": "negative-numbers-intro",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "negative-numbers-intro",
+      "to": "compare-negative-numbers",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "intro-fractions",
+      "to": "unit-fractions",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "intro-fractions",
+      "to": "fractions-of-set",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "intro-fractions",
+      "to": "write-fractions-words",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "equivalent-fractions-3",
+      "to": "equivalent-fractions-models",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "equivalent-fractions-4",
+      "to": "simplify-fractions",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "greatest-common-factor",
+      "to": "simplify-fractions",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "least-common-multiple",
+      "to": "least-common-denominator",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "equivalent-fractions-4",
+      "to": "least-common-denominator",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "compare-fractions-4",
+      "to": "compare-fractions-benchmarks",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "compare-fractions-4",
+      "to": "order-fractions",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "fractions-number-line",
+      "to": "order-fractions",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "add-subtract-fractions",
+      "to": "decompose-fractions",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "intro-fractions",
+      "to": "add-fractions-like-denom",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "add-within-20",
+      "to": "add-fractions-like-denom",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "add-fractions-like-denom",
+      "to": "subtract-fractions-like-denom",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "add-subtract-fractions",
+      "to": "add-fractions-like-word-problems",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "improper-fractions-mixed-numbers",
+      "to": "add-mixed-numbers-like-denom",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "add-subtract-fractions",
+      "to": "add-mixed-numbers-like-denom",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "add-mixed-numbers-like-denom",
+      "to": "subtract-mixed-numbers-like-denom",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "subtract-mixed-numbers-like-denom",
+      "to": "subtract-mixed-numbers-regroup",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "improper-fractions-mixed-numbers",
+      "to": "subtract-mixed-numbers-regroup",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "least-common-denominator",
+      "to": "add-fractions-unlike-denom",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "add-subtract-fractions",
+      "to": "add-fractions-unlike-denom",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "add-fractions-unlike-denom",
+      "to": "subtract-fractions-unlike-denom",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "compare-fractions-benchmarks",
+      "to": "estimate-fraction-sums",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "add-fractions-unlike-denom",
+      "to": "estimate-fraction-sums",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "add-fractions-unlike-denom",
+      "to": "add-fractions-whole-numbers",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "add-fractions-whole-numbers",
+      "to": "subtract-fractions-whole-numbers",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "add-fractions-unlike-denom",
+      "to": "add-mixed-numbers-unlike",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "add-mixed-numbers-like-denom",
+      "to": "add-mixed-numbers-unlike",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "add-mixed-numbers-unlike",
+      "to": "subtract-mixed-numbers-unlike",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "subtract-mixed-numbers-regroup",
+      "to": "subtract-mixed-numbers-unlike",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "add-subtract-fractions-unlike",
+      "to": "fraction-add-sub-word-problems-unlike",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "add-subtract-mixed-numbers-unlike",
+      "to": "mixed-number-word-problems",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "unit-fractions",
+      "to": "multiply-unit-fraction-whole",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "multiply-within-100",
+      "to": "multiply-unit-fraction-whole",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "multiply-fraction-by-whole",
+      "to": "multiply-fraction-whole-word-problems",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "multiply-fraction-by-whole",
+      "to": "multiply-fractions-procedural",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "multiply-fractions",
+      "to": "multiply-fractions-word-problems",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "multiply-fractions",
+      "to": "multiply-fractions-area",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "area-multiply",
+      "to": "multiply-fractions-area",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "multiply-fraction-by-whole",
+      "to": "multiply-mixed-whole",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "improper-fractions-mixed-numbers",
+      "to": "multiply-mixed-whole",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "multiply-fractions",
+      "to": "multiply-mixed-fractions",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "improper-fractions-mixed-numbers",
+      "to": "multiply-mixed-fractions",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "multiply-mixed-numbers",
+      "to": "multiply-mixed-word-problems",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "multiply-fractions",
+      "to": "reciprocals",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "unit-fractions",
+      "to": "divide-whole-by-unit-fraction",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "divide-within-100",
+      "to": "divide-whole-by-unit-fraction",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "divide-whole-by-unit-fraction",
+      "to": "divide-unit-fraction-by-whole",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "divide-unit-fraction-by-whole",
+      "to": "divide-whole-by-fraction",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "reciprocals",
+      "to": "divide-whole-by-fraction",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "divide-whole-by-fraction",
+      "to": "divide-fraction-by-whole",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "divide-fraction-by-whole",
+      "to": "divide-fractions-procedural",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "divide-fractions",
+      "to": "divide-fractions-word-problems",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "fraction-decimal-equivalence",
+      "to": "convert-fraction-to-decimal",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "fraction-decimal-equivalence",
+      "to": "convert-decimal-to-fraction",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "improper-fractions-mixed-numbers",
+      "to": "convert-mixed-to-decimal",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "convert-fraction-to-decimal",
+      "to": "convert-mixed-to-decimal",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "divide-fractions",
+      "to": "fractions-as-division-concept",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "fractions-as-division",
+      "to": "fractions-as-division-concept",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "decimals-intro",
+      "to": "decimal-fractions",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "intro-fractions",
+      "to": "decimal-fractions",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "simplify-fractions",
+      "to": "simplify-before-multiply",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "multiply-fractions",
+      "to": "simplify-before-multiply",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "compare-fractions-4",
+      "to": "cross-multiply-fractions",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "multiply-within-100",
+      "to": "cross-multiply-fractions",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "improper-fractions-mixed-numbers",
+      "to": "mixed-number-conversions",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "compare-fractions-benchmarks",
+      "to": "fraction-number-sense",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "multiply-fractions",
+      "to": "fraction-number-sense",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "patterns-arithmetic",
+      "to": "input-output-tables",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "patterns-arithmetic",
+      "to": "growing-patterns",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "number-patterns-sequences",
+      "to": "number-rules",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "add-subtract-word-problems-1",
+      "to": "comparison-problems-additive",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "comparison-problems-additive",
+      "to": "comparison-problems-multiplicative",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "multiply-word-problems",
+      "to": "comparison-problems-multiplicative",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "order-of-operations",
+      "to": "evaluate-expressions-four-ops",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "multi-step-word-problems",
+      "to": "multi-step-word-problems-4ops",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "order-of-operations",
+      "to": "multi-step-word-problems-4ops",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "numerical-expressions-grouping",
+      "to": "write-expressions",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "numerical-expressions-grouping",
+      "to": "evaluate-expressions-grouping",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "order-of-operations",
+      "to": "evaluate-expressions-grouping",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "variables-expressions",
+      "to": "intro-algebraic-expressions",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "intro-algebraic-expressions",
+      "to": "construct-algebraic-expressions",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "intro-algebraic-expressions",
+      "to": "evaluate-algebraic-expressions",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "intro-algebraic-expressions",
+      "to": "identify-terms-coefficients",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "identify-terms-coefficients",
+      "to": "like-terms",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "multiply-within-100",
+      "to": "distributive-property-intro",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "intro-algebraic-expressions",
+      "to": "distributive-property-intro",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "distributive-property-intro",
+      "to": "simplify-expressions-distributive",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "like-terms",
+      "to": "simplify-expressions-distributive",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "greatest-common-factor",
+      "to": "factor-numerical-expressions",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "numerical-expressions-grouping",
+      "to": "factor-numerical-expressions",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "exponents-intro",
+      "to": "expressions-with-exponents",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "order-of-operations",
+      "to": "expressions-with-exponents",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "add-subtract-word-problems-1",
+      "to": "two-step-word-problems",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "measure-length-standard",
+      "to": "measure-length-inches",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "measure-length-standard",
+      "to": "measure-length-cm",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "measure-length-standard",
+      "to": "measure-length-rulers",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "intro-fractions",
+      "to": "measure-length-rulers",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "measure-length-standard",
+      "to": "weight-mass-intro",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "measure-length-standard",
+      "to": "capacity-intro",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "tell-time-hour-half",
+      "to": "tell-time-5-minutes",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "tell-time-minute",
+      "to": "elapsed-time",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "count-to-20",
+      "to": "picture-graphs",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "bar-graphs-picture-graphs",
+      "to": "bar-graphs-read",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "bar-graphs-read",
+      "to": "bar-graphs-create",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "bar-graphs-read",
+      "to": "line-plots-intro",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "line-plots-intro",
+      "to": "line-plots-fractions",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "add-subtract-fractions-unlike",
+      "to": "line-plots-fractions",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "measure-length-standard",
+      "to": "units-of-length-customary",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "measure-length-cm",
+      "to": "units-of-length-metric",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "weight-mass-intro",
+      "to": "units-of-mass",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "tell-time-minute",
+      "to": "units-of-time",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "capacity-intro",
+      "to": "units-of-volume-liquid",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "unit-conversion",
+      "to": "convert-length-smaller",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "units-of-length-customary",
+      "to": "convert-length-smaller",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "convert-length-smaller",
+      "to": "convert-length-larger",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "unit-conversion",
+      "to": "convert-mass",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "units-of-mass",
+      "to": "convert-mass",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "unit-conversion",
+      "to": "convert-time",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "units-of-time",
+      "to": "convert-time",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "unit-conversion",
+      "to": "convert-volume",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "units-of-volume-liquid",
+      "to": "convert-volume",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "units-of-length-metric",
+      "to": "metric-vs-customary",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "units-of-length-customary",
+      "to": "metric-vs-customary",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "money-coins-bills",
+      "to": "money-make-change",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "subtract-within-100-fluent",
+      "to": "money-make-change",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "money-coins-bills",
+      "to": "money-word-problems",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "add-within-1000",
+      "to": "money-word-problems",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "bar-graphs-read",
+      "to": "data-tables",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "shapes-2d-k",
+      "to": "shapes-attributes",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "shapes-2d-k",
+      "to": "compose-shapes",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "shapes-2d-k",
+      "to": "partition-shapes",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "shapes-2d-k",
+      "to": "sides-vertices",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "classify-2d-shapes",
+      "to": "quadrilaterals-intro",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "quadrilaterals-intro",
+      "to": "rectangles-rhombuses-squares",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "rectangles-rhombuses-squares",
+      "to": "classify-quadrilaterals",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "parallel-perpendicular-lines",
+      "to": "classify-quadrilaterals",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "classify-2d-shapes",
+      "to": "polygons-intro",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "polygons-intro",
+      "to": "regular-polygons",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "angles-intro",
+      "to": "angles-measure",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "angles-intro",
+      "to": "angle-types",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "angle-types",
+      "to": "complementary-angles",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "angle-types",
+      "to": "supplementary-angles",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "angles-measure",
+      "to": "angle-sums",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "angle-sums",
+      "to": "solve-angle-problems",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "complementary-angles",
+      "to": "solve-angle-problems",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "supplementary-angles",
+      "to": "solve-angle-problems",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "perimeter",
+      "to": "perimeter-regular-shapes",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "sides-vertices",
+      "to": "perimeter-regular-shapes",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "perimeter",
+      "to": "perimeter-irregular-shapes",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "area-intro",
+      "to": "area-counting-squares",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "area-multiply",
+      "to": "area-rectangles",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "area-rectangles",
+      "to": "area-related-to-perimeter",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "perimeter",
+      "to": "area-related-to-perimeter",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "shapes-2d-k",
+      "to": "congruent-figures",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "volume",
+      "to": "volume-unit-cubes",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "volume",
+      "to": "volume-rectangular-prisms",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "area-rectangles",
+      "to": "volume-rectangular-prisms",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "volume-rectangular-prisms",
+      "to": "volume-word-problems",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "coordinate-plane",
+      "to": "coordinate-plane-plot-points",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "coordinate-plane",
+      "to": "coordinate-plane-read-points",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "coordinate-plane-plot-points",
+      "to": "coordinate-plane-real-world",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "line-symmetry",
+      "to": "symmetry-rotational",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "classify-triangles",
+      "to": "classify-triangles-sides",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "classify-triangles",
+      "to": "classify-triangles-angles",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "angle-types",
+      "to": "classify-triangles-angles",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "angles-measure",
+      "to": "draw-geometric-shapes",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "parallel-perpendicular-lines",
+      "to": "draw-geometric-shapes",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "shapes-3d-k",
+      "to": "3d-shapes-attributes",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "3d-shapes-attributes",
+      "to": "3d-shape-nets",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "area-rectangles",
+      "to": "units-of-area",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "unit-conversion",
+      "to": "units-of-area",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "area-rectangles",
+      "to": "area-and-perimeter-word-problems",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "perimeter",
+      "to": "area-and-perimeter-word-problems",
+      "strength": 1,
+      "type": "required"
+    },
+    {
+      "from": "area-rectangles",
+      "to": "modeling-with-rectangles",
+      "strength": 1,
+      "type": "required"
     }
   ],
   "encompassings": [
@@ -6952,6 +9956,161 @@
       "parent": "long-division",
       "child": "long-division-1-digit-no-remainder",
       "weight": 0.9
+    },
+    {
+      "parent": "place-value-millions",
+      "child": "place-value-thousands",
+      "weight": 0.7
+    },
+    {
+      "parent": "place-value-millions",
+      "child": "place-value-hundreds",
+      "weight": 0.6
+    },
+    {
+      "parent": "decimal-operations",
+      "child": "add-decimals",
+      "weight": 0.7
+    },
+    {
+      "parent": "decimal-operations",
+      "child": "subtract-decimals",
+      "weight": 0.7
+    },
+    {
+      "parent": "decimal-operations",
+      "child": "multiply-decimals",
+      "weight": 0.7
+    },
+    {
+      "parent": "decimal-operations",
+      "child": "divide-decimals",
+      "weight": 0.7
+    },
+    {
+      "parent": "prime-factorization",
+      "child": "prime-composite-numbers",
+      "weight": 0.8
+    },
+    {
+      "parent": "prime-factorization",
+      "child": "factors-multiples",
+      "weight": 0.6
+    },
+    {
+      "parent": "add-subtract-fractions",
+      "child": "add-fractions-like-denom",
+      "weight": 0.8
+    },
+    {
+      "parent": "add-subtract-fractions",
+      "child": "subtract-fractions-like-denom",
+      "weight": 0.8
+    },
+    {
+      "parent": "add-subtract-fractions-unlike",
+      "child": "add-fractions-unlike-denom",
+      "weight": 0.8
+    },
+    {
+      "parent": "add-subtract-fractions-unlike",
+      "child": "subtract-fractions-unlike-denom",
+      "weight": 0.8
+    },
+    {
+      "parent": "multiply-fractions",
+      "child": "multiply-fractions-procedural",
+      "weight": 0.8
+    },
+    {
+      "parent": "multiply-fractions",
+      "child": "multiply-unit-fraction-whole",
+      "weight": 0.6
+    },
+    {
+      "parent": "divide-fractions",
+      "child": "divide-fractions-procedural",
+      "weight": 0.8
+    },
+    {
+      "parent": "divide-fractions",
+      "child": "divide-whole-by-fraction",
+      "weight": 0.7
+    },
+    {
+      "parent": "multiply-mixed-numbers",
+      "child": "multiply-mixed-whole",
+      "weight": 0.8
+    },
+    {
+      "parent": "multiply-mixed-numbers",
+      "child": "multiply-mixed-fractions",
+      "weight": 0.8
+    },
+    {
+      "parent": "multi-step-word-problems",
+      "child": "two-step-word-problems",
+      "weight": 0.8
+    },
+    {
+      "parent": "multi-step-word-problems",
+      "child": "comparison-problems-additive",
+      "weight": 0.6
+    },
+    {
+      "parent": "variables-expressions",
+      "child": "intro-algebraic-expressions",
+      "weight": 0.8
+    },
+    {
+      "parent": "unit-conversion",
+      "child": "convert-length-smaller",
+      "weight": 0.7
+    },
+    {
+      "parent": "unit-conversion",
+      "child": "convert-mass",
+      "weight": 0.7
+    },
+    {
+      "parent": "unit-conversion",
+      "child": "convert-time",
+      "weight": 0.7
+    },
+    {
+      "parent": "mean-median-mode",
+      "child": "bar-graphs-read",
+      "weight": 0.5
+    },
+    {
+      "parent": "mean-median-mode",
+      "child": "data-tables",
+      "weight": 0.5
+    },
+    {
+      "parent": "area-composite-shapes",
+      "child": "area-rectangles",
+      "weight": 0.7
+    },
+    {
+      "parent": "area-composite-shapes",
+      "child": "area-counting-squares",
+      "weight": 0.6
+    },
+    {
+      "parent": "classify-2d-shapes",
+      "child": "quadrilaterals-intro",
+      "weight": 0.7
+    },
+    {
+      "parent": "classify-2d-shapes",
+      "child": "classify-triangles",
+      "weight": 0.8
+    },
+    {
+      "parent": "volume",
+      "child": "volume-unit-cubes",
+      "weight": 0.8
     }
   ],
   "collections": [
@@ -6961,73 +10120,91 @@
       "kind": "grade-band",
       "gradeRange": "K-2",
       "topicIds": [
+        "3d-shapes-attributes",
+        "add-doubles",
+        "add-make-ten",
+        "add-near-doubles",
+        "add-on-number-line",
         "add-subtract-word-problems-1",
+        "add-three-digit",
+        "add-three-numbers",
+        "add-two-digit-no-regroup",
+        "add-two-digit-regroup",
         "add-within-10",
         "add-within-100",
         "add-within-100-fluent",
         "add-within-1000",
         "add-within-20",
         "add-within-5",
+        "add-word-problems-compare",
+        "add-word-problems-join",
+        "addition-properties",
+        "bar-graphs-read",
+        "capacity-intro",
+        "check-subtraction-with-addition",
+        "compare-groups-more-less",
         "compare-numbers-k",
         "compare-two-digit",
+        "compose-shapes",
+        "count-backward-from-10",
+        "count-backward-from-20",
+        "count-by-10s",
+        "count-by-2s",
+        "count-by-5s",
+        "count-forward-from-number",
+        "count-objects-to-10",
+        "count-objects-to-20",
+        "count-objects-to-5",
         "count-to-10",
         "count-to-100",
         "count-to-20",
+        "division-concept",
+        "equal-groups",
+        "fractions-equal-parts",
         "intro-arrays",
+        "measure-length-cm",
+        "measure-length-inches",
         "measure-length-nonstandard",
         "measure-length-standard",
+        "mental-addition-strategies",
+        "mental-subtraction-strategies",
+        "missing-addend",
         "money-coins-bills",
+        "money-make-change",
+        "multiply-by-2-5-10",
+        "number-bonds-to-10",
         "odd-even",
+        "one-to-one-correspondence",
+        "order-numbers-to-10",
+        "order-numbers-to-20",
+        "partition-shapes",
+        "picture-graphs",
         "place-value-hundreds",
         "place-value-tens-ones",
         "shapes-2d-k",
         "shapes-3d-k",
+        "shapes-attributes",
+        "sides-vertices",
         "skip-count-2-5-10",
+        "subtract-count-back",
+        "subtract-on-number-line",
+        "subtract-related-facts",
+        "subtract-three-digit",
+        "subtract-two-digit-no-regroup",
+        "subtract-two-digit-regroup",
         "subtract-within-10",
         "subtract-within-100-fluent",
         "subtract-within-1000",
         "subtract-within-20",
         "subtract-within-5",
-        "teen-numbers",
-        "tell-time-hour-half",
-        "count-objects-to-5",
-        "count-objects-to-10",
-        "count-objects-to-20",
-        "one-to-one-correspondence",
-        "count-forward-from-number",
-        "count-backward-from-10",
-        "count-backward-from-20",
-        "compare-groups-more-less",
-        "order-numbers-to-10",
-        "order-numbers-to-20",
-        "number-bonds-to-10",
-        "add-doubles",
-        "add-near-doubles",
-        "add-make-ten",
-        "add-three-numbers",
-        "add-two-digit-no-regroup",
-        "add-two-digit-regroup",
-        "addition-properties",
-        "add-word-problems-join",
-        "add-word-problems-compare",
-        "add-on-number-line",
-        "missing-addend",
-        "subtract-count-back",
-        "subtract-related-facts",
-        "subtract-two-digit-no-regroup",
-        "subtract-two-digit-regroup",
-        "subtraction-word-problems-separate",
         "subtraction-word-problems-compare",
-        "subtract-on-number-line",
-        "equal-groups",
-        "multiply-by-2-5-10",
-        "division-concept",
-        "add-three-digit",
-        "mental-addition-strategies",
-        "subtract-three-digit",
         "subtraction-word-problems-missing",
-        "mental-subtraction-strategies",
-        "check-subtraction-with-addition"
+        "subtraction-word-problems-separate",
+        "teen-numbers",
+        "tell-time-5-minutes",
+        "tell-time-hour-half",
+        "two-step-word-problems",
+        "weight-mass-intro"
       ]
     },
     {
@@ -7036,118 +10213,266 @@
       "kind": "grade-band",
       "gradeRange": "3-5",
       "topicIds": [
+        "3d-shape-nets",
+        "add-decimals",
+        "add-decimals-unequal-places",
+        "add-fractions-like-denom",
+        "add-fractions-like-word-problems",
+        "add-fractions-unlike-denom",
+        "add-fractions-whole-numbers",
+        "add-mixed-numbers-like-denom",
+        "add-mixed-numbers-unlike",
+        "add-multi-digit",
         "add-subtract-fractions",
         "add-subtract-fractions-unlike",
         "add-subtract-mixed-numbers",
         "add-subtract-mixed-numbers-unlike",
+        "add-three-addends-multi-digit",
+        "add-word-problems-multi-step",
+        "angle-sums",
+        "angle-types",
         "angles-intro",
+        "angles-measure",
+        "area-and-perimeter-word-problems",
         "area-composite-shapes",
+        "area-counting-squares",
         "area-intro",
         "area-multiply",
+        "area-rectangles",
+        "area-related-to-perimeter",
+        "associative-distributive-mult",
+        "bar-graphs-create",
         "bar-graphs-picture-graphs",
         "classify-2d-shapes",
+        "classify-quadrilaterals",
         "classify-triangles",
+        "classify-triangles-angles",
+        "classify-triangles-sides",
+        "commutative-property-mult",
         "compare-decimals",
         "compare-fractions-3",
         "compare-fractions-4",
+        "compare-fractions-benchmarks",
+        "compare-multi-digit",
+        "compare-negative-numbers",
+        "comparison-problems-additive",
+        "comparison-problems-multiplicative",
+        "complementary-angles",
+        "congruent-figures",
+        "construct-algebraic-expressions",
+        "convert-decimal-to-fraction",
+        "convert-fraction-to-decimal",
+        "convert-length-larger",
+        "convert-length-smaller",
+        "convert-mass",
+        "convert-mixed-to-decimal",
+        "convert-time",
+        "convert-volume",
         "coordinate-plane",
+        "coordinate-plane-plot-points",
+        "coordinate-plane-read-points",
+        "coordinate-plane-real-world",
+        "cross-multiply-fractions",
+        "data-tables",
+        "decimal-division-with-rounding",
+        "decimal-fractions",
         "decimal-operations",
+        "decimal-place-value-hundredths",
+        "decimal-place-value-tenths",
+        "decimal-place-value-thousandths",
         "decimals-intro",
-        "divide-fractions",
-        "divide-multi-digit",
-        "divide-within-100",
-        "division-word-problems",
-        "equivalent-fractions-3",
-        "equivalent-fractions-4",
-        "estimation-addition-subtraction",
-        "estimation-multiplication-division",
-        "exponents-intro",
-        "factors-multiples",
-        "fraction-decimal-equivalence",
-        "fractions-number-line",
-        "greatest-common-factor",
-        "improper-fractions-mixed-numbers",
-        "intro-fractions",
-        "least-common-multiple",
-        "line-plots",
-        "line-symmetry",
-        "long-division",
-        "mean-median-mode",
-        "multi-digit-add-sub",
-        "multi-digit-multiply",
-        "multi-step-word-problems",
-        "multiply-fraction-by-whole",
-        "multiply-fractions",
-        "multiply-mixed-numbers",
-        "multiply-multi-digit",
-        "multiply-within-100",
-        "multiply-word-problems",
-        "number-patterns-sequences",
-        "numerical-expressions-grouping",
-        "order-of-operations",
-        "parallel-perpendicular-lines",
-        "patterns-arithmetic",
-        "perimeter",
-        "place-value-decimals",
-        "place-value-rounding",
-        "points-lines-rays",
-        "powers-of-ten",
-        "prime-composite-numbers",
-        "properties-of-multiplication",
-        "round-decimals",
-        "tell-time-minute",
-        "unit-conversion",
-        "variables-expressions",
-        "volume",
-        "add-multi-digit",
-        "add-three-addends-multi-digit",
-        "estimation-addition",
-        "add-word-problems-multi-step",
-        "subtract-across-zeros",
-        "subtract-multi-digit",
-        "estimation-subtraction",
-        "subtract-word-problems-multi-step",
-        "multiply-by-0-1",
-        "multiply-by-3-4",
-        "multiply-by-6-7-8-9",
-        "multiply-fluency-100",
-        "multiply-by-10-100-1000",
-        "multiply-multiples-of-10",
-        "multiply-2x1-no-regroup",
-        "multiply-2x1-regroup",
-        "multiply-3x1",
-        "multiply-4x1",
-        "multiply-2x2-area-model",
-        "multiply-2x2-standard",
-        "multiply-multi-digit-2",
-        "multiply-3x3",
-        "estimation-multiplication",
-        "multiply-word-problems-equal-groups",
-        "multiply-word-problems-comparison",
-        "multiply-word-problems-area",
-        "multiplication-division-relationship",
-        "commutative-property-mult",
-        "associative-distributive-mult",
+        "decompose-fractions",
+        "distributive-property-intro",
+        "divide-by-10-100-1000",
         "divide-by-2-5-10",
         "divide-by-3-4",
         "divide-by-6-7-8-9",
-        "division-vocabulary",
+        "divide-decimals",
+        "divide-decimals-powers-of-ten",
+        "divide-decimals-whole",
+        "divide-fraction-by-whole",
+        "divide-fractions",
+        "divide-fractions-procedural",
+        "divide-fractions-word-problems",
+        "divide-multi-digit",
+        "divide-unit-fraction-by-whole",
+        "divide-whole-by-fraction",
+        "divide-whole-by-unit-fraction",
+        "divide-within-100",
+        "divisibility-rules-2-5-10",
+        "divisibility-rules-3-9",
+        "divisibility-rules-full",
         "division-remainders-intro",
-        "interpret-remainders",
-        "divide-by-10-100-1000",
+        "division-vocabulary",
+        "division-with-zeros",
+        "division-word-problems",
+        "division-word-problems-equal-sharing",
+        "division-word-problems-grouping",
+        "division-word-problems-interpret",
+        "division-word-problems-multi-step",
+        "draw-geometric-shapes",
+        "elapsed-time",
+        "equivalent-decimals",
+        "equivalent-fractions-3",
+        "equivalent-fractions-4",
+        "equivalent-fractions-models",
+        "equivalent-place-value",
+        "estimate-decimal-operations",
+        "estimate-fraction-sums",
+        "estimation-addition",
+        "estimation-addition-subtraction",
         "estimation-division",
+        "estimation-multiplication",
+        "estimation-multiplication-division",
+        "estimation-subtraction",
+        "evaluate-algebraic-expressions",
+        "evaluate-expressions-four-ops",
+        "evaluate-expressions-grouping",
+        "exponents-intro",
+        "expressions-with-exponents",
+        "factor-numerical-expressions",
+        "factors-and-factor-pairs",
+        "factors-multiples",
+        "fraction-add-sub-word-problems-unlike",
+        "fraction-decimal-equivalence",
+        "fraction-number-sense",
+        "fractions-as-division",
+        "fractions-as-division-concept",
+        "fractions-number-line",
+        "fractions-of-set",
+        "gcf-using-prime-factorization",
+        "greatest-common-factor",
+        "growing-patterns",
+        "identify-terms-coefficients",
+        "improper-fractions-mixed-numbers",
+        "input-output-tables",
+        "interpret-remainders",
+        "intro-algebraic-expressions",
+        "intro-fractions",
+        "lcm-using-prime-factorization",
+        "least-common-denominator",
+        "least-common-multiple",
+        "like-terms",
+        "line-plots",
+        "line-plots-fractions",
+        "line-plots-intro",
+        "line-symmetry",
+        "long-division",
         "long-division-1-digit-no-remainder",
         "long-division-1-digit-remainder",
         "long-division-2-digit",
         "long-division-larger",
-        "division-with-zeros",
-        "fractions-as-division",
-        "division-word-problems-equal-sharing",
-        "division-word-problems-grouping",
-        "division-word-problems-multi-step",
-        "division-word-problems-interpret",
-        "divisibility-rules-2-5-10",
-        "divisibility-rules-3-9"
+        "mean-median-mode",
+        "measure-length-rulers",
+        "metric-vs-customary",
+        "mixed-number-conversions",
+        "mixed-number-word-problems",
+        "modeling-with-rectangles",
+        "money-word-problems",
+        "multi-digit-add-sub",
+        "multi-digit-multiply",
+        "multi-step-word-problems",
+        "multi-step-word-problems-4ops",
+        "multiples-of-number",
+        "multiplication-division-relationship",
+        "multiply-2x1-no-regroup",
+        "multiply-2x1-regroup",
+        "multiply-2x2-area-model",
+        "multiply-2x2-standard",
+        "multiply-3x1",
+        "multiply-3x3",
+        "multiply-4x1",
+        "multiply-by-0-1",
+        "multiply-by-10-100-1000",
+        "multiply-by-3-4",
+        "multiply-by-6-7-8-9",
+        "multiply-decimals",
+        "multiply-decimals-powers-of-ten",
+        "multiply-decimals-whole",
+        "multiply-fluency-100",
+        "multiply-fraction-by-whole",
+        "multiply-fraction-whole-word-problems",
+        "multiply-fractions",
+        "multiply-fractions-area",
+        "multiply-fractions-procedural",
+        "multiply-fractions-word-problems",
+        "multiply-mixed-fractions",
+        "multiply-mixed-numbers",
+        "multiply-mixed-whole",
+        "multiply-mixed-word-problems",
+        "multiply-multi-digit",
+        "multiply-multi-digit-2",
+        "multiply-multiples-of-10",
+        "multiply-unit-fraction-whole",
+        "multiply-within-100",
+        "multiply-word-problems",
+        "multiply-word-problems-area",
+        "multiply-word-problems-comparison",
+        "multiply-word-problems-equal-groups",
+        "negative-numbers-intro",
+        "number-patterns-sequences",
+        "number-rules",
+        "numerical-expressions-grouping",
+        "order-fractions",
+        "order-of-operations",
+        "parallel-perpendicular-lines",
+        "patterns-arithmetic",
+        "perimeter",
+        "perimeter-irregular-shapes",
+        "perimeter-regular-shapes",
+        "place-value-decimals",
+        "place-value-millions",
+        "place-value-rounding",
+        "place-value-thousands",
+        "points-lines-rays",
+        "polygons-intro",
+        "powers-of-ten",
+        "prime-composite-numbers",
+        "prime-factorization",
+        "properties-of-multiplication",
+        "quadrilaterals-intro",
+        "read-write-decimals",
+        "read-write-numbers-words",
+        "reciprocals",
+        "rectangles-rhombuses-squares",
+        "regular-polygons",
+        "round-decimals",
+        "round-to-nearest-thousand",
+        "simplify-before-multiply",
+        "simplify-expressions-distributive",
+        "simplify-fractions",
+        "solve-angle-problems",
+        "standard-expanded-form",
+        "standard-expanded-form-decimals",
+        "subtract-across-zeros",
+        "subtract-decimals",
+        "subtract-decimals-unequal-places",
+        "subtract-fractions-like-denom",
+        "subtract-fractions-unlike-denom",
+        "subtract-fractions-whole-numbers",
+        "subtract-mixed-numbers-like-denom",
+        "subtract-mixed-numbers-regroup",
+        "subtract-mixed-numbers-unlike",
+        "subtract-multi-digit",
+        "subtract-word-problems-multi-step",
+        "supplementary-angles",
+        "symmetry-rotational",
+        "tell-time-minute",
+        "unit-conversion",
+        "unit-fractions",
+        "units-of-area",
+        "units-of-length-customary",
+        "units-of-length-metric",
+        "units-of-mass",
+        "units-of-time",
+        "units-of-volume-liquid",
+        "variables-expressions",
+        "volume",
+        "volume-rectangular-prisms",
+        "volume-unit-cubes",
+        "volume-word-problems",
+        "write-expressions",
+        "write-fractions-words"
       ]
     },
     {

@@ -1,0 +1,182 @@
+[
+  {
+    "id": "standard-expanded-form-decimals-p1",
+    "topicId": "standard-expanded-form-decimals",
+    "difficulty": "easy",
+    "question": "Write 3.4 in expanded form.",
+    "answer": "3 + 0.4",
+    "hints": [
+      "3 ones and 4 tenths."
+    ],
+    "solution": "3.4 = 3 + 0.4.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "standard-expanded-form-decimals-p2",
+    "topicId": "standard-expanded-form-decimals",
+    "difficulty": "easy",
+    "question": "Write 0.56 in expanded form.",
+    "answer": "0.5 + 0.06",
+    "hints": [
+      "5 tenths and 6 hundredths."
+    ],
+    "solution": "0.56 = 0.5 + 0.06.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "standard-expanded-form-decimals-p3",
+    "topicId": "standard-expanded-form-decimals",
+    "difficulty": "easy",
+    "question": "Write the standard form of 2 + 0.7.",
+    "answer": "2.7",
+    "hints": [
+      "Combine the whole and decimal parts."
+    ],
+    "solution": "2 + 0.7 = 2.7.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "standard-expanded-form-decimals-p4",
+    "topicId": "standard-expanded-form-decimals",
+    "difficulty": "easy",
+    "question": "Write 1.8 in expanded form.",
+    "answer": "1 + 0.8",
+    "hints": [
+      "1 one and 8 tenths."
+    ],
+    "solution": "1.8 = 1 + 0.8.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "standard-expanded-form-decimals-p5",
+    "topicId": "standard-expanded-form-decimals",
+    "difficulty": "easy",
+    "question": "Write the standard form of 0.3 + 0.02.",
+    "answer": "0.32",
+    "hints": [
+      "Add the tenths and hundredths."
+    ],
+    "solution": "0.3 + 0.02 = 0.32.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "standard-expanded-form-decimals-p6",
+    "topicId": "standard-expanded-form-decimals",
+    "difficulty": "medium",
+    "question": "Write 5.23 in expanded form.",
+    "answer": "5 + 0.2 + 0.03",
+    "hints": [
+      "5 ones, 2 tenths, 3 hundredths."
+    ],
+    "solution": "5.23 = 5 + 0.2 + 0.03.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "standard-expanded-form-decimals-p7",
+    "topicId": "standard-expanded-form-decimals",
+    "difficulty": "medium",
+    "question": "Write the standard form of 10 + 4 + 0.6 + 0.09.",
+    "answer": "14.69",
+    "hints": [
+      "10 + 4 = 14, 0.6 + 0.09 = 0.69."
+    ],
+    "solution": "10 + 4 + 0.6 + 0.09 = 14.69.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "standard-expanded-form-decimals-p8",
+    "topicId": "standard-expanded-form-decimals",
+    "difficulty": "medium",
+    "question": "Write 0.305 in expanded form.",
+    "answer": "0.3 + 0.005",
+    "hints": [
+      "3 tenths, 0 hundredths, 5 thousandths."
+    ],
+    "solution": "0.305 = 0.3 + 0.005. The hundredths place is 0, so it is not included.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "standard-expanded-form-decimals-p9",
+    "topicId": "standard-expanded-form-decimals",
+    "difficulty": "medium",
+    "question": "Write 7.149 in expanded form.",
+    "answer": "7 + 0.1 + 0.04 + 0.009",
+    "hints": [
+      "7 ones, 1 tenth, 4 hundredths, 9 thousandths."
+    ],
+    "solution": "7.149 = 7 + 0.1 + 0.04 + 0.009.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "standard-expanded-form-decimals-p10",
+    "topicId": "standard-expanded-form-decimals",
+    "difficulty": "medium",
+    "question": "Write the standard form of 20 + 3 + 0.5 + 0.08 + 0.001.",
+    "answer": "23.581",
+    "hints": [
+      "Combine whole numbers and decimal parts."
+    ],
+    "solution": "20 + 3 = 23, 0.5 + 0.08 + 0.001 = 0.581. Standard form: 23.581.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "standard-expanded-form-decimals-p11",
+    "topicId": "standard-expanded-form-decimals",
+    "difficulty": "hard",
+    "question": "Write 102.07 in expanded form.",
+    "answer": "100 + 2 + 0.07",
+    "hints": [
+      "1 hundred, 0 tens, 2 ones, 0 tenths, 7 hundredths."
+    ],
+    "solution": "102.07 = 100 + 2 + 0.07.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "standard-expanded-form-decimals-p12",
+    "topicId": "standard-expanded-form-decimals",
+    "difficulty": "hard",
+    "question": "Write 0.008 in expanded form using multiplication: ___ × ___.",
+    "answer": "8 × 0.001",
+    "hints": [
+      "0.008 = 8 thousandths = 8 × one thousandth."
+    ],
+    "solution": "0.008 = 8 × 0.001.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "standard-expanded-form-decimals-p13",
+    "topicId": "standard-expanded-form-decimals",
+    "difficulty": "hard",
+    "question": "Write 45.602 in expanded form.",
+    "answer": "40 + 5 + 0.6 + 0.002",
+    "hints": [
+      "4 tens, 5 ones, 6 tenths, 0 hundredths, 2 thousandths."
+    ],
+    "solution": "45.602 = 40 + 5 + 0.6 + 0.002.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "standard-expanded-form-decimals-p14",
+    "topicId": "standard-expanded-form-decimals",
+    "difficulty": "hard",
+    "question": "What is the standard form of (3 × 10) + (5 × 1) + (2 × 0.1) + (4 × 0.01) + (7 × 0.001)?",
+    "answer": "35.247",
+    "hints": [
+      "30 + 5 + 0.2 + 0.04 + 0.007."
+    ],
+    "solution": "30 + 5 + 0.2 + 0.04 + 0.007 = 35.247.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "standard-expanded-form-decimals-p15",
+    "topicId": "standard-expanded-form-decimals",
+    "difficulty": "hard",
+    "question": "Write 800.080 in expanded form.",
+    "answer": "800 + 0.08",
+    "hints": [
+      "8 hundreds, 0 tens, 0 ones, 0 tenths, 8 hundredths, 0 thousandths."
+    ],
+    "solution": "800.080 = 800 + 0.08. The trailing zero (thousandths) and the zero tenths are not included.",
+    "cognitiveDemand": "procedural"
+  }
+]

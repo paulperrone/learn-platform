@@ -1,0 +1,152 @@
+[
+  {
+    "id": "rectangles-rhombuses-squares-p1",
+    "topicId": "rectangles-rhombuses-squares",
+    "difficulty": "easy",
+    "question": "How many right angles does a rectangle have?",
+    "answer": "4",
+    "hints": ["Each corner of a rectangle is a right angle (90°)."],
+    "solution": "A rectangle has 4 right angles, one at each corner.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "rectangles-rhombuses-squares-p2",
+    "topicId": "rectangles-rhombuses-squares",
+    "difficulty": "easy",
+    "question": "True or false: A square has 4 equal sides.",
+    "answer": "true",
+    "hints": ["Think about what makes a square special."],
+    "solution": "True. All 4 sides of a square are the same length.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "rectangles-rhombuses-squares-p3",
+    "topicId": "rectangles-rhombuses-squares",
+    "difficulty": "easy",
+    "question": "A rhombus has 4 equal sides. True or false?",
+    "answer": "true",
+    "hints": ["A rhombus is like a tilted square."],
+    "solution": "True. A rhombus has 4 sides that are all the same length.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "rectangles-rhombuses-squares-p4",
+    "topicId": "rectangles-rhombuses-squares",
+    "difficulty": "easy",
+    "question": "Does a rectangle have 2 pairs of parallel sides?",
+    "answer": "yes",
+    "hints": ["The top and bottom are parallel. The left and right are parallel."],
+    "solution": "Yes. A rectangle has 2 pairs of parallel sides: top/bottom and left/right.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "rectangles-rhombuses-squares-p5",
+    "topicId": "rectangles-rhombuses-squares",
+    "difficulty": "easy",
+    "question": "Which shape has 4 equal sides and 4 right angles?",
+    "answer": "square",
+    "hints": ["It is both a rectangle and a rhombus."],
+    "solution": "A square has 4 equal sides and 4 right angles.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "rectangles-rhombuses-squares-p6",
+    "topicId": "rectangles-rhombuses-squares",
+    "difficulty": "medium",
+    "question": "True or false: Every square is a rectangle.",
+    "answer": "true",
+    "hints": ["A rectangle has 4 right angles and opposite sides equal. Does a square have these?"],
+    "solution": "True. A square has 4 right angles and opposite sides that are equal, so it meets the definition of a rectangle.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "rectangles-rhombuses-squares-p7",
+    "topicId": "rectangles-rhombuses-squares",
+    "difficulty": "medium",
+    "question": "True or false: Every rectangle is a square.",
+    "answer": "false",
+    "hints": ["Does every rectangle have all 4 sides equal?"],
+    "solution": "False. A rectangle only needs opposite sides equal. A square needs ALL 4 sides equal. A 3 cm × 5 cm rectangle is not a square.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "rectangles-rhombuses-squares-p8",
+    "topicId": "rectangles-rhombuses-squares",
+    "difficulty": "medium",
+    "question": "True or false: Every square is a rhombus.",
+    "answer": "true",
+    "hints": ["A rhombus has 4 equal sides. Does a square have 4 equal sides?"],
+    "solution": "True. A square has 4 equal sides, which is exactly the defining property of a rhombus.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "rectangles-rhombuses-squares-p9",
+    "topicId": "rectangles-rhombuses-squares",
+    "difficulty": "medium",
+    "question": "A rhombus has sides of 5 cm each but no right angles. Is it a square?",
+    "answer": "no",
+    "hints": ["A square needs both 4 equal sides AND 4 right angles."],
+    "solution": "No. A square needs 4 equal sides AND 4 right angles. This rhombus has equal sides but no right angles, so it is not a square.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "rectangles-rhombuses-squares-p10",
+    "topicId": "rectangles-rhombuses-squares",
+    "difficulty": "medium",
+    "question": "What property do rectangles, rhombuses, and squares all share?",
+    "answer": "2 pairs of parallel sides",
+    "hints": ["Think about what is true for ALL three shapes."],
+    "solution": "They all have 2 pairs of parallel sides. They are all parallelograms.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "rectangles-rhombuses-squares-p11",
+    "topicId": "rectangles-rhombuses-squares",
+    "difficulty": "hard",
+    "question": "A shape has 4 sides, all equal, and 4 right angles. Is it a rectangle, a rhombus, a square, or all three?",
+    "answer": "all three",
+    "hints": ["Check each definition: rectangle needs 4 right angles, rhombus needs 4 equal sides, square needs both."],
+    "solution": "It is all three. It has 4 right angles (rectangle), 4 equal sides (rhombus), and both properties together (square). A square is always both a rectangle and a rhombus.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "rectangles-rhombuses-squares-p12",
+    "topicId": "rectangles-rhombuses-squares",
+    "difficulty": "hard",
+    "question": "A rectangle has a length of 8 cm and a width of 3 cm. Could this rectangle be a rhombus? Explain.",
+    "answer": "No, because its sides are not all equal",
+    "hints": ["A rhombus needs all 4 sides to be the same length."],
+    "solution": "No. A rhombus requires all 4 sides to be equal. This rectangle has sides of 8 cm and 3 cm, which are not all equal.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "rectangles-rhombuses-squares-p13",
+    "topicId": "rectangles-rhombuses-squares",
+    "difficulty": "hard",
+    "question": "Fill in the blank: A square is a special _____ where all sides are equal, and a special _____ where all angles are right angles.",
+    "answer": "rectangle, rhombus",
+    "hints": ["Which shape requires right angles? Which requires equal sides?"],
+    "solution": "A square is a special rectangle (where all sides are equal) and a special rhombus (where all angles are right angles).",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "rectangles-rhombuses-squares-p14",
+    "topicId": "rectangles-rhombuses-squares",
+    "difficulty": "hard",
+    "question": "True or false: Every rhombus is a rectangle.",
+    "answer": "false",
+    "hints": ["Does every rhombus have right angles?"],
+    "solution": "False. A rhombus only requires 4 equal sides. It does not need right angles. Only a special rhombus (a square) is also a rectangle.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "rectangles-rhombuses-squares-p15",
+    "topicId": "rectangles-rhombuses-squares",
+    "difficulty": "hard",
+    "question": "Name a quadrilateral that is a parallelogram but is NEITHER a rectangle NOR a rhombus. What must be true about its sides and angles?",
+    "answer": "A general parallelogram with unequal adjacent sides and no right angles",
+    "hints": ["It needs 2 pairs of parallel sides but cannot have all sides equal or all right angles."],
+    "solution": "A general parallelogram (like one with sides 4 cm and 6 cm and no right angles) is neither a rectangle (no right angles) nor a rhombus (sides not all equal).",
+    "cognitiveDemand": "problem-solving"
+  }
+]

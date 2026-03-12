@@ -1,0 +1,152 @@
+[
+  {
+    "id": "comparison-problems-multiplicative-p1",
+    "topicId": "comparison-problems-multiplicative",
+    "difficulty": "easy",
+    "question": "Sara has 3 dolls. Tina has 4 times as many dolls as Sara. How many dolls does Tina have?",
+    "answer": "12",
+    "hints": ["Multiply: 3 × 4."],
+    "solution": "3 × 4 = 12. Tina has 12 dolls.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "comparison-problems-multiplicative-p2",
+    "topicId": "comparison-problems-multiplicative",
+    "difficulty": "easy",
+    "question": "A dog weighs 5 pounds. A cat weighs 2 times as much. How much does the cat weigh?",
+    "answer": "10 pounds",
+    "hints": ["Multiply: 5 × 2."],
+    "solution": "5 × 2 = 10. The cat weighs 10 pounds.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "comparison-problems-multiplicative-p3",
+    "topicId": "comparison-problems-multiplicative",
+    "difficulty": "easy",
+    "question": "A rope is 6 feet long. Another rope is 3 times as long. How long is the second rope?",
+    "answer": "18 feet",
+    "hints": ["Multiply: 6 × 3."],
+    "solution": "6 × 3 = 18. The second rope is 18 feet long.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "comparison-problems-multiplicative-p4",
+    "topicId": "comparison-problems-multiplicative",
+    "difficulty": "easy",
+    "question": "Max has 8 crayons. Zoe has 2 times as many. How many crayons does Zoe have?",
+    "answer": "16",
+    "hints": ["Multiply: 8 × 2."],
+    "solution": "8 × 2 = 16. Zoe has 16 crayons.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "comparison-problems-multiplicative-p5",
+    "topicId": "comparison-problems-multiplicative",
+    "difficulty": "easy",
+    "question": "A box has 7 apples. A crate has 5 times as many apples. How many apples are in the crate?",
+    "answer": "35",
+    "hints": ["Multiply: 7 × 5."],
+    "solution": "7 × 5 = 35. The crate has 35 apples.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "comparison-problems-multiplicative-p6",
+    "topicId": "comparison-problems-multiplicative",
+    "difficulty": "medium",
+    "question": "A father is 36 years old. He is 4 times as old as his daughter. How old is his daughter?",
+    "answer": "9",
+    "hints": ["Divide: 36 ÷ 4."],
+    "solution": "36 ÷ 4 = 9. His daughter is 9 years old.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "comparison-problems-multiplicative-p7",
+    "topicId": "comparison-problems-multiplicative",
+    "difficulty": "medium",
+    "question": "Lily earned $15. That is 3 times as much as Ryan earned. How much did Ryan earn?",
+    "answer": "$5",
+    "hints": ["Lily earned 3 times Ryan's amount. Divide: 15 ÷ 3."],
+    "solution": "15 ÷ 3 = 5. Ryan earned $5.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "comparison-problems-multiplicative-p8",
+    "topicId": "comparison-problems-multiplicative",
+    "difficulty": "medium",
+    "question": "A blue whale is 90 feet long. A dolphin is 6 feet long. How many times longer is the whale than the dolphin?",
+    "answer": "15",
+    "hints": ["Divide: 90 ÷ 6."],
+    "solution": "90 ÷ 6 = 15. The whale is 15 times longer than the dolphin.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "comparison-problems-multiplicative-p9",
+    "topicId": "comparison-problems-multiplicative",
+    "difficulty": "medium",
+    "question": "A tree is 24 feet tall. A bush is 8 feet tall. The tree is how many times as tall as the bush?",
+    "answer": "3",
+    "hints": ["Divide: 24 ÷ 8."],
+    "solution": "24 ÷ 8 = 3. The tree is 3 times as tall as the bush.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "comparison-problems-multiplicative-p10",
+    "topicId": "comparison-problems-multiplicative",
+    "difficulty": "medium",
+    "question": "Anna read 42 pages. That is 6 times as many pages as Bo read. How many pages did Bo read?",
+    "answer": "7",
+    "hints": ["Divide: 42 ÷ 6."],
+    "solution": "42 ÷ 6 = 7. Bo read 7 pages.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "comparison-problems-multiplicative-p11",
+    "topicId": "comparison-problems-multiplicative",
+    "difficulty": "hard",
+    "question": "A park has 48 oak trees and 8 maple trees. The park has how many times as many oak trees as maple trees? If 16 more maple trees are planted, how many times as many oak trees as maple trees will there be then?",
+    "answer": "6 times; then 2 times",
+    "hints": ["First: 48 ÷ 8. After planting: 8 + 16 = 24 maples. Then 48 ÷ 24."],
+    "solution": "Now: 48 ÷ 8 = 6 times. After planting: 48 ÷ 24 = 2 times.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "comparison-problems-multiplicative-p12",
+    "topicId": "comparison-problems-multiplicative",
+    "difficulty": "hard",
+    "question": "Mom is 5 times as old as her daughter. Mom is 30 years old. In 6 years, how many times as old will Mom be compared to her daughter?",
+    "answer": "3",
+    "hints": ["Daughter now: 30 ÷ 5 = 6. In 6 years: Mom = 36, daughter = 12. Then divide."],
+    "solution": "Daughter now: 30 ÷ 5 = 6. In 6 years: Mom = 36, daughter = 12. 36 ÷ 12 = 3 times as old.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "comparison-problems-multiplicative-p13",
+    "topicId": "comparison-problems-multiplicative",
+    "difficulty": "hard",
+    "question": "Alex has 3 times as many stickers as Bella. Bella has 4 times as many stickers as Cody. Cody has 5 stickers. How many stickers does Alex have?",
+    "answer": "60",
+    "hints": ["Start from Cody: Bella = 4 × 5 = 20. Alex = 3 × 20."],
+    "solution": "Cody: 5. Bella: 4 × 5 = 20. Alex: 3 × 20 = 60.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "comparison-problems-multiplicative-p14",
+    "topicId": "comparison-problems-multiplicative",
+    "difficulty": "hard",
+    "question": "A large pizza costs $18. That is 3 times the cost of a small pizza. If you buy 2 large pizzas and 3 small pizzas, what is the total cost?",
+    "answer": "$54",
+    "hints": ["Small pizza: 18 ÷ 3 = $6. Total: 2 × 18 + 3 × 6."],
+    "solution": "Small: 18 ÷ 3 = $6. Total: (2 × 18) + (3 × 6) = 36 + 18 = $54.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "comparison-problems-multiplicative-p15",
+    "topicId": "comparison-problems-multiplicative",
+    "difficulty": "hard",
+    "question": "A building is 7 times as tall as a fence. The fence is 8 feet tall. A tree is half as tall as the building. How tall is the tree?",
+    "answer": "28 feet",
+    "hints": ["Building: 7 × 8 = 56 feet. Tree: 56 ÷ 2."],
+    "solution": "Building: 7 × 8 = 56 feet. Tree: 56 ÷ 2 = 28 feet.",
+    "cognitiveDemand": "problem-solving"
+  }
+]

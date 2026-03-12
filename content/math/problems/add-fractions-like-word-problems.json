@@ -1,0 +1,184 @@
+[
+  {
+    "id": "add-fractions-like-word-problems-p1",
+    "topicId": "add-fractions-like-word-problems",
+    "difficulty": "easy",
+    "question": "Sam ate 1/8 of a pizza and his sister ate 3/8 of the same pizza. What fraction of the pizza did they eat together?",
+    "answer": "4/8",
+    "hints": [
+      "Add 1/8 + 3/8."
+    ],
+    "solution": "1/8 + 3/8 = 4/8 = 1/2. They ate half the pizza.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "add-fractions-like-word-problems-p2",
+    "topicId": "add-fractions-like-word-problems",
+    "difficulty": "easy",
+    "question": "Maya walked 2/5 of a mile in the morning and 1/5 of a mile in the afternoon. How far did she walk in total?",
+    "answer": "3/5",
+    "hints": [
+      "Add the two distances: 2/5 + 1/5."
+    ],
+    "solution": "2/5 + 1/5 = 3/5 of a mile.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "add-fractions-like-word-problems-p3",
+    "topicId": "add-fractions-like-word-problems",
+    "difficulty": "easy",
+    "question": "A recipe uses 1/4 cup of oil and 2/4 cup of water. How much liquid is used in total?",
+    "answer": "3/4",
+    "hints": [
+      "Add: 1/4 + 2/4."
+    ],
+    "solution": "1/4 + 2/4 = 3/4 cup of liquid.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "add-fractions-like-word-problems-p4",
+    "topicId": "add-fractions-like-word-problems",
+    "difficulty": "easy",
+    "question": "Tom read 3/6 of a book on Monday and 2/6 on Tuesday. What fraction has he read so far?",
+    "answer": "5/6",
+    "hints": [
+      "Add: 3/6 + 2/6."
+    ],
+    "solution": "3/6 + 2/6 = 5/6 of the book.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "add-fractions-like-word-problems-p5",
+    "topicId": "add-fractions-like-word-problems",
+    "difficulty": "easy",
+    "question": "A garden is 1/3 roses and 1/3 tulips. What fraction of the garden is roses or tulips?",
+    "answer": "2/3",
+    "hints": [
+      "1/3 + 1/3 = ?"
+    ],
+    "solution": "1/3 + 1/3 = 2/3 of the garden.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "add-fractions-like-word-problems-p6",
+    "topicId": "add-fractions-like-word-problems",
+    "difficulty": "medium",
+    "question": "Ava drank 3/10 of a liter of juice in the morning and 4/10 of a liter at lunch. How much juice did she drink? Simplify.",
+    "answer": "7/10",
+    "hints": [
+      "3/10 + 4/10 = 7/10."
+    ],
+    "solution": "3/10 + 4/10 = 7/10 liter. This is already in simplest form.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "add-fractions-like-word-problems-p7",
+    "topicId": "add-fractions-like-word-problems",
+    "difficulty": "medium",
+    "question": "A tank is 5/12 full. More water is added until it is 9/12 full. What fraction of the tank was added?",
+    "answer": "4/12",
+    "hints": [
+      "What was added? 9/12 − 5/12."
+    ],
+    "solution": "9/12 − 5/12 = 4/12 = 1/3 of the tank was added.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "add-fractions-like-word-problems-p8",
+    "topicId": "add-fractions-like-word-problems",
+    "difficulty": "medium",
+    "question": "Ben used 2/8 of a roll of tape for one project and 5/8 for another. How much tape did he use in all? Simplify.",
+    "answer": "7/8",
+    "hints": [
+      "2/8 + 5/8 = 7/8."
+    ],
+    "solution": "2/8 + 5/8 = 7/8 of the roll.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "add-fractions-like-word-problems-p9",
+    "topicId": "add-fractions-like-word-problems",
+    "difficulty": "medium",
+    "question": "Sara filled 3/6 of a bucket, then added another 2/6. What fraction is now full? Simplify.",
+    "answer": "5/6",
+    "hints": [
+      "3/6 + 2/6 = 5/6."
+    ],
+    "solution": "3/6 + 2/6 = 5/6 of the bucket.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "add-fractions-like-word-problems-p10",
+    "topicId": "add-fractions-like-word-problems",
+    "difficulty": "medium",
+    "question": "A trail is 4/10 mile of flat ground and 3/10 mile uphill. How long is the trail? Simplify.",
+    "answer": "7/10",
+    "hints": [
+      "4/10 + 3/10 = 7/10 mile."
+    ],
+    "solution": "4/10 + 3/10 = 7/10 mile.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "add-fractions-like-word-problems-p11",
+    "topicId": "add-fractions-like-word-problems",
+    "difficulty": "hard",
+    "question": "Kim ate 3/8 of a cake, Lee ate 4/8, and Jo ate 2/8. How much cake was eaten in total? Write as a mixed number.",
+    "answer": "1 1/8",
+    "hints": [
+      "3/8 + 4/8 + 2/8 = 9/8.",
+      "Convert: 9/8 = 1 1/8."
+    ],
+    "solution": "3/8 + 4/8 + 2/8 = 9/8 = 1 1/8. More than one whole cake was eaten (they must have had more than one cake).",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "add-fractions-like-word-problems-p12",
+    "topicId": "add-fractions-like-word-problems",
+    "difficulty": "hard",
+    "question": "A recipe calls for 5/6 cup of flour. You have already added 2/6 cup. How much more flour do you need?",
+    "answer": "3/6",
+    "hints": [
+      "Subtract: 5/6 − 2/6 = 3/6."
+    ],
+    "solution": "5/6 − 2/6 = 3/6 = 1/2 cup more flour needed.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "add-fractions-like-word-problems-p13",
+    "topicId": "add-fractions-like-word-problems",
+    "difficulty": "hard",
+    "question": "On a trip, the family drove 5/12 of the distance in the morning, 4/12 in the afternoon, and 3/12 in the evening. Did they complete the trip?",
+    "answer": "yes",
+    "hints": [
+      "Add all three fractions: 5/12 + 4/12 + 3/12.",
+      "12/12 = 1 whole."
+    ],
+    "solution": "5/12 + 4/12 + 3/12 = 12/12 = 1. Yes, they completed the entire trip.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "add-fractions-like-word-problems-p14",
+    "topicId": "add-fractions-like-word-problems",
+    "difficulty": "hard",
+    "question": "Amy ran 7/10 km and then walked 5/10 km. How far did she go in total? Write as a mixed number.",
+    "answer": "1 2/10",
+    "hints": [
+      "7/10 + 5/10 = 12/10 = 1 2/10."
+    ],
+    "solution": "7/10 + 5/10 = 12/10 = 1 2/10 = 1 1/5 km.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "add-fractions-like-word-problems-p15",
+    "topicId": "add-fractions-like-word-problems",
+    "difficulty": "hard",
+    "question": "A painter used 3/8 gallon of blue paint and some green paint. Together he used 7/8 gallon. How much green paint did he use?",
+    "answer": "4/8",
+    "hints": [
+      "7/8 − 3/8 = ? (Find the missing addend.)"
+    ],
+    "solution": "7/8 − 3/8 = 4/8 = 1/2 gallon of green paint.",
+    "cognitiveDemand": "problem-solving"
+  }
+]

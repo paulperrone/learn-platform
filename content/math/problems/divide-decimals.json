@@ -1,0 +1,152 @@
+[
+  {
+    "id": "divide-decimals-p1",
+    "topicId": "divide-decimals",
+    "difficulty": "easy",
+    "question": "What is 0.6 ÷ 0.2?",
+    "answer": "3",
+    "hints": ["How many groups of 0.2 fit into 0.6? Multiply both by 10: 6 ÷ 2 = 3."],
+    "solution": "Multiply both by 10: 6 ÷ 2 = 3.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "divide-decimals-p2",
+    "topicId": "divide-decimals",
+    "difficulty": "easy",
+    "question": "What is 0.8 ÷ 0.4?",
+    "answer": "2",
+    "hints": ["Multiply both by 10: 8 ÷ 4 = 2."],
+    "solution": "8 ÷ 4 = 2.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "divide-decimals-p3",
+    "topicId": "divide-decimals",
+    "difficulty": "easy",
+    "question": "What is 1.5 ÷ 0.5?",
+    "answer": "3",
+    "hints": ["Multiply both by 10: 15 ÷ 5 = 3."],
+    "solution": "15 ÷ 5 = 3.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "divide-decimals-p4",
+    "topicId": "divide-decimals",
+    "difficulty": "easy",
+    "question": "What is 2.4 ÷ 0.6?",
+    "answer": "4",
+    "hints": ["Multiply both by 10: 24 ÷ 6 = 4."],
+    "solution": "24 ÷ 6 = 4.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "divide-decimals-p5",
+    "topicId": "divide-decimals",
+    "difficulty": "easy",
+    "question": "What is 3.5 ÷ 0.7?",
+    "answer": "5",
+    "hints": ["Multiply both by 10: 35 ÷ 7 = 5."],
+    "solution": "35 ÷ 7 = 5.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "divide-decimals-p6",
+    "topicId": "divide-decimals",
+    "difficulty": "medium",
+    "question": "What is 4.68 ÷ 0.6?",
+    "answer": "7.8",
+    "hints": ["Multiply both by 10: 46.8 ÷ 6 = 7.8."],
+    "solution": "46.8 ÷ 6 = 7.8.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "divide-decimals-p7",
+    "topicId": "divide-decimals",
+    "difficulty": "medium",
+    "question": "What is 0.72 ÷ 0.08?",
+    "answer": "9",
+    "hints": ["Multiply both by 100: 72 ÷ 8 = 9."],
+    "solution": "72 ÷ 8 = 9.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "divide-decimals-p8",
+    "topicId": "divide-decimals",
+    "difficulty": "medium",
+    "question": "What is 3.75 ÷ 0.25?",
+    "answer": "15",
+    "hints": ["Multiply both by 100: 375 ÷ 25 = 15."],
+    "solution": "375 ÷ 25 = 15.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "divide-decimals-p9",
+    "topicId": "divide-decimals",
+    "difficulty": "medium",
+    "question": "A ribbon is 4.5 meters long. If you cut pieces that are each 0.75 meters long, how many pieces can you make?",
+    "answer": "6",
+    "hints": ["4.5 ÷ 0.75. Multiply both by 100: 450 ÷ 75 = 6."],
+    "solution": "450 ÷ 75 = 6 pieces.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "divide-decimals-p10",
+    "topicId": "divide-decimals",
+    "difficulty": "medium",
+    "question": "What is 6.3 ÷ 0.9?",
+    "answer": "7",
+    "hints": ["Multiply both by 10: 63 ÷ 9 = 7."],
+    "solution": "63 ÷ 9 = 7.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "divide-decimals-p11",
+    "topicId": "divide-decimals",
+    "difficulty": "hard",
+    "question": "What is 12.5 ÷ 0.25?",
+    "answer": "50",
+    "hints": ["Multiply both by 100: 1250 ÷ 25 = 50."],
+    "solution": "1250 ÷ 25 = 50.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "divide-decimals-p12",
+    "topicId": "divide-decimals",
+    "difficulty": "hard",
+    "question": "What is 8.1 ÷ 0.27?",
+    "answer": "30",
+    "hints": ["Multiply both by 100: 810 ÷ 27 = 30."],
+    "solution": "810 ÷ 27 = 30.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "divide-decimals-p13",
+    "topicId": "divide-decimals",
+    "difficulty": "hard",
+    "question": "What is 5.46 ÷ 0.42?",
+    "answer": "13",
+    "hints": ["Multiply both by 100: 546 ÷ 42 = 13."],
+    "solution": "546 ÷ 42 = 13.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "divide-decimals-p14",
+    "topicId": "divide-decimals",
+    "difficulty": "hard",
+    "question": "A tank holds 22.5 liters. If cups hold 0.375 liters each, how many cups can be filled?",
+    "answer": "60",
+    "hints": ["22.5 ÷ 0.375. Multiply both by 1000: 22500 ÷ 375 = 60."],
+    "solution": "22500 ÷ 375 = 60 cups.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "divide-decimals-p15",
+    "topicId": "divide-decimals",
+    "difficulty": "hard",
+    "question": "What is 9.45 ÷ 1.5?",
+    "answer": "6.3",
+    "hints": ["Multiply both by 10: 94.5 ÷ 15 = 6.3."],
+    "solution": "94.5 ÷ 15 = 6.3.",
+    "cognitiveDemand": "procedural"
+  }
+]

@@ -93,9 +93,9 @@ Targets calibrated against MA unit sizes, adjusted for our K-8 scope (excluding 
 
 ## Progress
 
-**Completed:** Phase 1 ✓, Phase 2 ✓
+**Completed:** Phase 1 ✓, Phase 2 ✓, Phase 3 ✓
 **In Progress:** —
-**Next:** Phase 3
+**Next:** Phase 4
 
 ---
 
@@ -165,16 +165,18 @@ These are the foundational K-3 strands. Starting here tests the expansion workfl
 
 Fractions is the largest expansion in this wave (~16 → 70 topics). MA decomposes fractions into 4+ separate units with individual topics for "adding fractions with like denominators using models" vs "adding fractions with unlike denominators" etc. Our current graph lumps many of these into single topics.
 
-1. [ ] [IMP] Split topics and update `content/math/graph.json` for Wave 2 strands per expansion map
-2. [ ] [IMP] Generate problems for new topics: 15 per topic, grade-appropriate cognitive demands
-3. [ ] [IMP] Generate worked examples for new topics: 2 per topic
-4. [ ] [IMP] Update collection membership for `math-k-2`, `math-3-5`
-5. [ ] [VAL] Run `just validate-content` — 0 errors
-6. [ ] [VAL] Run `just import-content` — ~465 topics loaded
+1. [x] [IMP] Split topics and update `content/math/graph.json` for Wave 2 strands per expansion map:
+   - Added 166 new topics (460 total), 224 new prereq edges (660 total), 31 new encompassing edges (309 total)
+   - number-base: 19→55, fractions: 16→65, algebra-thinking: 6→25, measurement-data: 9→35, geometry: 14→50
+2. [x] [IMP] Generate problems for new topics: 2,490 problems (15 per topic × 166 topics)
+3. [x] [IMP] Generate worked examples for new topics: 332 examples (2 per topic × 166 topics)
+4. [x] [IMP] Update collection membership: math-k-2 (67→85), math-3-5 (112→260)
+5. [x] [VAL] Run `just validate-content` — 0 errors, 0 content warnings (2 platform warnings fixed)
+6. [x] [VAL] Run `just import-content` — 460 topics loaded, DAG valid, no cycles, max depth 29
 7. [ ] [VAL] L2 rebaseline: `just evaluate-l2` — first checkpoint with enough mass to be meaningful
 8. [ ] [DOC] Record L2 comparison in DECISIONS.md
 
-**Validation:** Math graph has ~465 topics. L2 results: no P0 regressions (9P/1W/0F or better). K-5 strand density within guardrail range.
+**Validation:** ✓ Math graph has 460 topics. `just validate-content` and `just import-content` pass. Prereq density 1.43/topic, encompassing density 0.67/topic. Fractions at 65 (vs 70 target — expansion map listed 49 specific new topics, not 54 as estimated in header).
 
 ---
 

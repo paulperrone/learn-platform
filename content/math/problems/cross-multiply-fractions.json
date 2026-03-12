@@ -1,0 +1,182 @@
+[
+  {
+    "id": "cross-multiply-fractions-p1",
+    "topicId": "cross-multiply-fractions",
+    "difficulty": "easy",
+    "question": "Which is greater: 1/3 or 1/4? Use cross-multiplication to compare.",
+    "answer": "1/3",
+    "hints": [
+      "Cross-multiply: 1 × 4 = 4 and 1 × 3 = 3. Since 4 > 3, 1/3 > 1/4."
+    ],
+    "solution": "Cross-multiply: 1 × 4 = 4 and 1 × 3 = 3. Since 4 > 3, 1/3 is greater.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "cross-multiply-fractions-p2",
+    "topicId": "cross-multiply-fractions",
+    "difficulty": "easy",
+    "question": "Which is greater: 2/5 or 1/3?",
+    "answer": "2/5",
+    "hints": [
+      "Cross-multiply: 2 × 3 = 6 and 1 × 5 = 5. Since 6 > 5, 2/5 > 1/3."
+    ],
+    "solution": "Cross-multiply: 2 × 3 = 6, 1 × 5 = 5. Since 6 > 5, 2/5 is greater.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "cross-multiply-fractions-p3",
+    "topicId": "cross-multiply-fractions",
+    "difficulty": "easy",
+    "question": "Which is greater: 3/4 or 2/3?",
+    "answer": "3/4",
+    "hints": [
+      "Cross-multiply: 3 × 3 = 9 and 2 × 4 = 8."
+    ],
+    "solution": "Cross-multiply: 3 × 3 = 9, 2 × 4 = 8. Since 9 > 8, 3/4 is greater.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "cross-multiply-fractions-p4",
+    "topicId": "cross-multiply-fractions",
+    "difficulty": "easy",
+    "question": "Are 2/6 and 1/3 equal? Use cross-multiplication to check.",
+    "answer": "yes",
+    "hints": [
+      "Cross-multiply: 2 × 3 = 6 and 1 × 6 = 6. Equal!"
+    ],
+    "solution": "Cross-multiply: 2 × 3 = 6, 1 × 6 = 6. Since both products are 6, the fractions are equal.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "cross-multiply-fractions-p5",
+    "topicId": "cross-multiply-fractions",
+    "difficulty": "easy",
+    "question": "Which is greater: 1/2 or 3/5?",
+    "answer": "3/5",
+    "hints": [
+      "Cross-multiply: 1 × 5 = 5 and 3 × 2 = 6."
+    ],
+    "solution": "Cross-multiply: 1 × 5 = 5, 3 × 2 = 6. Since 6 > 5, 3/5 is greater.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "cross-multiply-fractions-p6",
+    "topicId": "cross-multiply-fractions",
+    "difficulty": "medium",
+    "question": "Which is greater: 5/8 or 7/12?",
+    "answer": "5/8",
+    "hints": [
+      "Cross-multiply: 5 × 12 = 60 and 7 × 8 = 56."
+    ],
+    "solution": "Cross-multiply: 5 × 12 = 60, 7 × 8 = 56. Since 60 > 56, 5/8 is greater.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "cross-multiply-fractions-p7",
+    "topicId": "cross-multiply-fractions",
+    "difficulty": "medium",
+    "question": "Which is greater: 4/7 or 5/9?",
+    "answer": "4/7",
+    "hints": [
+      "Cross-multiply: 4 × 9 = 36 and 5 × 7 = 35."
+    ],
+    "solution": "Cross-multiply: 4 × 9 = 36, 5 × 7 = 35. Since 36 > 35, 4/7 is greater.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "cross-multiply-fractions-p8",
+    "topicId": "cross-multiply-fractions",
+    "difficulty": "medium",
+    "question": "Are 3/8 and 9/24 equal? Use cross-multiplication.",
+    "answer": "yes",
+    "hints": [
+      "Cross-multiply: 3 × 24 = 72 and 9 × 8 = 72."
+    ],
+    "solution": "Cross-multiply: 3 × 24 = 72, 9 × 8 = 72. Equal products mean equal fractions.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "cross-multiply-fractions-p9",
+    "topicId": "cross-multiply-fractions",
+    "difficulty": "medium",
+    "question": "Which is greater: 7/10 or 5/7?",
+    "answer": "5/7",
+    "hints": [
+      "Cross-multiply: 7 × 7 = 49 and 5 × 10 = 50."
+    ],
+    "solution": "Cross-multiply: 7 × 7 = 49, 5 × 10 = 50. Since 50 > 49, 5/7 is greater.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "cross-multiply-fractions-p10",
+    "topicId": "cross-multiply-fractions",
+    "difficulty": "medium",
+    "question": "Which is greater: 2/9 or 3/14?",
+    "answer": "2/9",
+    "hints": [
+      "Cross-multiply: 2 × 14 = 28 and 3 × 9 = 27."
+    ],
+    "solution": "Cross-multiply: 2 × 14 = 28, 3 × 9 = 27. Since 28 > 27, 2/9 is greater.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "cross-multiply-fractions-p11",
+    "topicId": "cross-multiply-fractions",
+    "difficulty": "hard",
+    "question": "Order from least to greatest: 3/5, 5/8, 7/12.",
+    "answer": "7/12, 3/5, 5/8",
+    "hints": [
+      "Compare pairs using cross-multiplication. Start with 3/5 vs 5/8, then compare with 7/12."
+    ],
+    "solution": "3/5 vs 5/8: 24 vs 25, so 3/5 < 5/8. 3/5 vs 7/12: 36 vs 35, so 7/12 < 3/5. Order: 7/12, 3/5, 5/8.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "cross-multiply-fractions-p12",
+    "topicId": "cross-multiply-fractions",
+    "difficulty": "hard",
+    "question": "Which fraction is closest to 1/2: 5/9 or 4/7?",
+    "answer": "5/9",
+    "hints": [
+      "1/2 = 0.5. Find the distance of each from 1/2: 5/9 - 1/2 = 1/18, 4/7 - 1/2 = 1/14. Which distance is smaller?"
+    ],
+    "solution": "5/9 - 1/2 = 1/18. 4/7 - 1/2 = 1/14. Since 1/18 < 1/14, 5/9 is closer to 1/2.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "cross-multiply-fractions-p13",
+    "topicId": "cross-multiply-fractions",
+    "difficulty": "hard",
+    "question": "Which is greater: 11/15 or 13/18?",
+    "answer": "11/15",
+    "hints": [
+      "Cross-multiply: 11 × 18 = 198 and 13 × 15 = 195."
+    ],
+    "solution": "Cross-multiply: 11 × 18 = 198, 13 × 15 = 195. Since 198 > 195, 11/15 is greater.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "cross-multiply-fractions-p14",
+    "topicId": "cross-multiply-fractions",
+    "difficulty": "hard",
+    "question": "Order from least to greatest: 2/3, 5/7, 7/10.",
+    "answer": "2/3, 7/10, 5/7",
+    "hints": [
+      "Compare each pair using cross-multiplication."
+    ],
+    "solution": "2/3 vs 5/7: 14 vs 15, so 2/3 < 5/7. 2/3 vs 7/10: 20 vs 21, so 2/3 < 7/10. 7/10 vs 5/7: 49 vs 50, so 7/10 < 5/7. Order: 2/3, 7/10, 5/7.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "cross-multiply-fractions-p15",
+    "topicId": "cross-multiply-fractions",
+    "difficulty": "hard",
+    "question": "Are 15/35 and 12/28 equal? Use cross-multiplication to check.",
+    "answer": "yes",
+    "hints": [
+      "Cross-multiply: 15 × 28 and 12 × 35."
+    ],
+    "solution": "15 × 28 = 420. 12 × 35 = 420. Equal products, so the fractions are equal (both simplify to 3/7).",
+    "cognitiveDemand": "procedural"
+  }
+]

@@ -1,0 +1,52 @@
+[
+  {
+    "id": "subtract-fractions-whole-numbers-ex1",
+    "topicId": "subtract-fractions-whole-numbers",
+    "title": "Subtracting a Fraction from a Whole Number: 3 − 2/5",
+    "steps": [
+      {
+        "subgoalLabel": "Rewrite the whole number",
+        "instruction": "Borrow 1 from 3 and convert it to fifths.",
+        "work": "3 = 2 + 1 = 2 + 5/5 = 2 5/5",
+        "explanation": "We need a fraction with denominator 5 to subtract from, so we convert one whole into 5/5."
+      },
+      {
+        "subgoalLabel": "Subtract the fraction",
+        "instruction": "Subtract: 2 5/5 − 2/5.",
+        "work": "5/5 − 2/5 = 3/5. Whole part stays 2.",
+        "explanation": "Now we can subtract the fraction parts."
+      },
+      {
+        "subgoalLabel": "Write the answer",
+        "instruction": "Combine.",
+        "work": "3 − 2/5 = 2 3/5",
+        "explanation": "The answer is 2 3/5."
+      }
+    ]
+  },
+  {
+    "id": "subtract-fractions-whole-numbers-ex2",
+    "topicId": "subtract-fractions-whole-numbers",
+    "title": "Subtracting a Fraction from 1: 1 − 3/8",
+    "steps": [
+      {
+        "subgoalLabel": "Rewrite 1 as a fraction",
+        "instruction": "Write 1 with denominator 8.",
+        "work": "1 = 8/8",
+        "explanation": "1 whole equals 8 eighths."
+      },
+      {
+        "subgoalLabel": "Subtract",
+        "instruction": "8/8 − 3/8 = ?",
+        "work": "8/8 − 3/8 = 5/8",
+        "explanation": "Subtract numerators: 8 − 3 = 5. The denominator stays 8."
+      },
+      {
+        "subgoalLabel": "State the answer",
+        "instruction": "Write the final answer.",
+        "work": "1 − 3/8 = 5/8",
+        "explanation": "This strategy works for any 1 − a/b: the answer is (b−a)/b."
+      }
+    ]
+  }
+]

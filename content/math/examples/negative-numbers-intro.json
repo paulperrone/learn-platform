@@ -1,0 +1,52 @@
+[
+  {
+    "id": "negative-numbers-intro-ex1",
+    "topicId": "negative-numbers-intro",
+    "title": "Understanding Negative Numbers on a Number Line",
+    "steps": [
+      {
+        "subgoalLabel": "Locate zero",
+        "instruction": "On a number line, find 0. Numbers to the right are positive, numbers to the left are negative.",
+        "work": "... -3, -2, -1, 0, 1, 2, 3 ...",
+        "explanation": "Zero is the dividing point. Positive numbers are right, negative numbers are left."
+      },
+      {
+        "subgoalLabel": "Understand negative numbers",
+        "instruction": "What does -4 mean?",
+        "work": "-4 is 4 units to the left of 0.",
+        "explanation": "Negative numbers represent values less than zero. They are used for temperatures below zero, depths below sea level, debts, etc."
+      },
+      {
+        "subgoalLabel": "Find opposites",
+        "instruction": "What is the opposite of -4?",
+        "work": "The opposite of -4 is 4. Both are 4 units from 0.",
+        "explanation": "Every number has an opposite. The opposite has the same distance from 0 but on the other side."
+      }
+    ]
+  },
+  {
+    "id": "negative-numbers-intro-ex2",
+    "topicId": "negative-numbers-intro",
+    "title": "Temperature Below Zero: -8°C",
+    "steps": [
+      {
+        "subgoalLabel": "Interpret the situation",
+        "instruction": "The weather report says the temperature is -8°C. What does this mean?",
+        "work": "-8°C means 8 degrees below zero.",
+        "explanation": "The negative sign tells us the temperature is below the freezing/zero point."
+      },
+      {
+        "subgoalLabel": "Compare to other temperatures",
+        "instruction": "Is -8°C warmer or colder than -2°C?",
+        "work": "-8 is farther below 0 than -2, so -8°C is colder.",
+        "explanation": "With negative temperatures, the number with the larger absolute value is colder (farther below zero)."
+      },
+      {
+        "subgoalLabel": "Apply to a scenario",
+        "instruction": "If the temperature rises 12 degrees from -8°C, what is the new temperature?",
+        "work": "-8 + 12 = 4°C",
+        "explanation": "Starting at -8 and going up 12 brings us to 4°C (above zero)."
+      }
+    ]
+  }
+]

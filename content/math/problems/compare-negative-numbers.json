@@ -1,0 +1,152 @@
+[
+  {
+    "id": "compare-negative-numbers-p1",
+    "topicId": "compare-negative-numbers",
+    "difficulty": "easy",
+    "question": "Compare: -3 ___ -7. Use >, <, or =.",
+    "answer": ">",
+    "hints": ["-3 is closer to 0 than -7, so it is greater."],
+    "solution": "-3 > -7. On a number line, -3 is to the right of -7.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "compare-negative-numbers-p2",
+    "topicId": "compare-negative-numbers",
+    "difficulty": "easy",
+    "question": "Compare: -5 ___ 2. Use >, <, or =.",
+    "answer": "<",
+    "hints": ["Any negative number is less than any positive number."],
+    "solution": "-5 < 2. Negative numbers are always less than positive numbers.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "compare-negative-numbers-p3",
+    "topicId": "compare-negative-numbers",
+    "difficulty": "easy",
+    "question": "Compare: -1 ___ -10. Use >, <, or =.",
+    "answer": ">",
+    "hints": ["-1 is closer to 0."],
+    "solution": "-1 > -10. The closer a negative number is to 0, the greater it is.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "compare-negative-numbers-p4",
+    "topicId": "compare-negative-numbers",
+    "difficulty": "easy",
+    "question": "Compare: -4 ___ 0. Use >, <, or =.",
+    "answer": "<",
+    "hints": ["All negative numbers are less than 0."],
+    "solution": "-4 < 0.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "compare-negative-numbers-p5",
+    "topicId": "compare-negative-numbers",
+    "difficulty": "easy",
+    "question": "Which is greater: -2 or -9?",
+    "answer": "-2",
+    "hints": ["-2 is closer to 0, so it is greater."],
+    "solution": "-2 > -9. A number closer to zero is greater.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "compare-negative-numbers-p6",
+    "topicId": "compare-negative-numbers",
+    "difficulty": "medium",
+    "question": "Order from least to greatest: 3, -5, 0, -1, 7.",
+    "answer": "-5, -1, 0, 3, 7",
+    "hints": ["Negative numbers come first, then 0, then positive numbers."],
+    "solution": "-5 < -1 < 0 < 3 < 7.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "compare-negative-numbers-p7",
+    "topicId": "compare-negative-numbers",
+    "difficulty": "medium",
+    "question": "Order from greatest to least: -8, -2, -15, -6.",
+    "answer": "-2, -6, -8, -15",
+    "hints": ["The negative number closest to 0 is the greatest."],
+    "solution": "-2 > -6 > -8 > -15.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "compare-negative-numbers-p8",
+    "topicId": "compare-negative-numbers",
+    "difficulty": "medium",
+    "question": "Which temperature is colder: -14°F or -6°F?",
+    "answer": "-14",
+    "hints": ["-14 is farther from 0 in the negative direction."],
+    "solution": "-14°F is colder than -6°F because -14 < -6.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "compare-negative-numbers-p9",
+    "topicId": "compare-negative-numbers",
+    "difficulty": "medium",
+    "question": "True or false: -100 > -1.",
+    "answer": "false",
+    "hints": ["-100 is much farther from 0 in the negative direction."],
+    "solution": "False. -100 < -1. Even though 100 is a bigger number, -100 is less than -1.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "compare-negative-numbers-p10",
+    "topicId": "compare-negative-numbers",
+    "difficulty": "medium",
+    "question": "Place these on a number line in order: -3, 5, -7, 2, -1.",
+    "answer": "-7, -3, -1, 2, 5",
+    "hints": ["Start from the most negative and go to the most positive."],
+    "solution": "From left to right: -7, -3, -1, 2, 5.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "compare-negative-numbers-p11",
+    "topicId": "compare-negative-numbers",
+    "difficulty": "hard",
+    "question": "Order from least to greatest: -25, 18, -3, 0, -30, 4, -12.",
+    "answer": "-30, -25, -12, -3, 0, 4, 18",
+    "hints": ["Most negative first, then ascending to positive."],
+    "solution": "-30 < -25 < -12 < -3 < 0 < 4 < 18.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "compare-negative-numbers-p12",
+    "topicId": "compare-negative-numbers",
+    "difficulty": "hard",
+    "question": "Find an integer between -5 and -3.",
+    "answer": "-4",
+    "hints": ["What number is between -5 and -3 on a number line?"],
+    "solution": "-4 is between -5 and -3 on the number line.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "compare-negative-numbers-p13",
+    "topicId": "compare-negative-numbers",
+    "difficulty": "hard",
+    "question": "City A had a low of -18°C. City B had a low of -9°C. City C had a low of -24°C. Order the cities from coldest to warmest.",
+    "answer": "City C, City A, City B",
+    "hints": ["More negative = colder."],
+    "solution": "-24 < -18 < -9. Coldest to warmest: City C (-24°C), City A (-18°C), City B (-9°C).",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "compare-negative-numbers-p14",
+    "topicId": "compare-negative-numbers",
+    "difficulty": "hard",
+    "question": "How many integers are between -6 and 4 (not including -6 and 4)?",
+    "answer": "9",
+    "hints": ["List them: -5, -4, -3, -2, -1, 0, 1, 2, 3."],
+    "solution": "-5, -4, -3, -2, -1, 0, 1, 2, 3. That is 9 integers.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "compare-negative-numbers-p15",
+    "topicId": "compare-negative-numbers",
+    "difficulty": "hard",
+    "question": "Which has a greater absolute value: -17 or 12?",
+    "answer": "-17",
+    "hints": ["Absolute value is the distance from 0. |-17| = 17, |12| = 12."],
+    "solution": "|-17| = 17 and |12| = 12. Since 17 > 12, -17 has the greater absolute value.",
+    "cognitiveDemand": "conceptual"
+  }
+]

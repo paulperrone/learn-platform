@@ -1,0 +1,194 @@
+[
+  {
+    "id": "add-mixed-numbers-unlike-p1",
+    "topicId": "add-mixed-numbers-unlike",
+    "difficulty": "easy",
+    "question": "What is 1 1/2 + 2 1/4?",
+    "answer": "3 3/4",
+    "hints": [
+      "Add wholes: 1 + 2 = 3. Add fractions: 1/2 + 1/4.",
+      "1/2 = 2/4. So 2/4 + 1/4 = 3/4."
+    ],
+    "solution": "Wholes: 3. Fractions: 1/2 + 1/4 = 2/4 + 1/4 = 3/4. Answer: 3 3/4.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "add-mixed-numbers-unlike-p2",
+    "topicId": "add-mixed-numbers-unlike",
+    "difficulty": "easy",
+    "question": "What is 2 1/3 + 1 1/6?",
+    "answer": "3 1/2",
+    "hints": [
+      "Wholes: 2 + 1 = 3. Fractions: 1/3 + 1/6.",
+      "1/3 = 2/6. 2/6 + 1/6 = 3/6 = 1/2."
+    ],
+    "solution": "Wholes: 3. Fractions: 1/3 + 1/6 = 2/6 + 1/6 = 3/6 = 1/2. Answer: 3 1/2.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "add-mixed-numbers-unlike-p3",
+    "topicId": "add-mixed-numbers-unlike",
+    "difficulty": "easy",
+    "question": "What is 3 1/4 + 1 1/2?",
+    "answer": "4 3/4",
+    "hints": [
+      "LCD = 4. 1/2 = 2/4. Then 1/4 + 2/4 = 3/4."
+    ],
+    "solution": "Wholes: 4. Fractions: 1/4 + 2/4 = 3/4. Answer: 4 3/4.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "add-mixed-numbers-unlike-p4",
+    "topicId": "add-mixed-numbers-unlike",
+    "difficulty": "easy",
+    "question": "What is 1 1/2 + 1 1/3?",
+    "answer": "2 5/6",
+    "hints": [
+      "LCD = 6. 1/2 = 3/6, 1/3 = 2/6.",
+      "3/6 + 2/6 = 5/6."
+    ],
+    "solution": "Wholes: 2. Fractions: 3/6 + 2/6 = 5/6. Answer: 2 5/6.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "add-mixed-numbers-unlike-p5",
+    "topicId": "add-mixed-numbers-unlike",
+    "difficulty": "easy",
+    "question": "What is 4 1/5 + 2 1/10?",
+    "answer": "6 3/10",
+    "hints": [
+      "LCD = 10. 1/5 = 2/10. Then 2/10 + 1/10 = 3/10."
+    ],
+    "solution": "Wholes: 6. Fractions: 2/10 + 1/10 = 3/10. Answer: 6 3/10.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "add-mixed-numbers-unlike-p6",
+    "topicId": "add-mixed-numbers-unlike",
+    "difficulty": "medium",
+    "question": "What is 2 2/3 + 3 3/4?",
+    "answer": "6 5/12",
+    "hints": [
+      "LCD = 12. 2/3 = 8/12, 3/4 = 9/12.",
+      "8/12 + 9/12 = 17/12 = 1 5/12."
+    ],
+    "solution": "Wholes: 5. Fractions: 8/12 + 9/12 = 17/12 = 1 5/12. Total: 5 + 1 5/12 = 6 5/12.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "add-mixed-numbers-unlike-p7",
+    "topicId": "add-mixed-numbers-unlike",
+    "difficulty": "medium",
+    "question": "What is 3 3/5 + 2 1/2?",
+    "answer": "6 1/10",
+    "hints": [
+      "LCD = 10. 3/5 = 6/10, 1/2 = 5/10.",
+      "6/10 + 5/10 = 11/10 = 1 1/10."
+    ],
+    "solution": "Wholes: 5. Fractions: 6/10 + 5/10 = 11/10 = 1 1/10. Total: 6 1/10.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "add-mixed-numbers-unlike-p8",
+    "topicId": "add-mixed-numbers-unlike",
+    "difficulty": "medium",
+    "question": "What is 4 1/3 + 2 1/4?",
+    "answer": "6 7/12",
+    "hints": [
+      "LCD = 12. 1/3 = 4/12, 1/4 = 3/12.",
+      "4/12 + 3/12 = 7/12."
+    ],
+    "solution": "Wholes: 6. Fractions: 4/12 + 3/12 = 7/12. Answer: 6 7/12.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "add-mixed-numbers-unlike-p9",
+    "topicId": "add-mixed-numbers-unlike",
+    "difficulty": "medium",
+    "question": "What is 5 5/6 + 1 1/4?",
+    "answer": "7 1/12",
+    "hints": [
+      "LCD = 12. 5/6 = 10/12, 1/4 = 3/12.",
+      "10/12 + 3/12 = 13/12 = 1 1/12."
+    ],
+    "solution": "Wholes: 6. Fractions: 10/12 + 3/12 = 13/12 = 1 1/12. Total: 7 1/12.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "add-mixed-numbers-unlike-p10",
+    "topicId": "add-mixed-numbers-unlike",
+    "difficulty": "medium",
+    "question": "What is 1 2/5 + 3 3/10?",
+    "answer": "4 7/10",
+    "hints": [
+      "LCD = 10. 2/5 = 4/10. Then 4/10 + 3/10 = 7/10."
+    ],
+    "solution": "Wholes: 4. Fractions: 4/10 + 3/10 = 7/10. Answer: 4 7/10.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "add-mixed-numbers-unlike-p11",
+    "topicId": "add-mixed-numbers-unlike",
+    "difficulty": "hard",
+    "question": "What is 6 5/8 + 3 2/3?",
+    "answer": "10 7/24",
+    "hints": [
+      "LCD = 24. 5/8 = 15/24, 2/3 = 16/24.",
+      "15/24 + 16/24 = 31/24 = 1 7/24."
+    ],
+    "solution": "Wholes: 9. Fractions: 15/24 + 16/24 = 31/24 = 1 7/24. Total: 10 7/24.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "add-mixed-numbers-unlike-p12",
+    "topicId": "add-mixed-numbers-unlike",
+    "difficulty": "hard",
+    "question": "What is 7 3/4 + 4 5/6?",
+    "answer": "12 7/12",
+    "hints": [
+      "LCD = 12. 3/4 = 9/12, 5/6 = 10/12.",
+      "9/12 + 10/12 = 19/12 = 1 7/12."
+    ],
+    "solution": "Wholes: 11. Fractions: 19/12 = 1 7/12. Total: 12 7/12.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "add-mixed-numbers-unlike-p13",
+    "topicId": "add-mixed-numbers-unlike",
+    "difficulty": "hard",
+    "question": "What is 8 4/5 + 5 7/10?",
+    "answer": "14 1/2",
+    "hints": [
+      "LCD = 10. 4/5 = 8/10.",
+      "8/10 + 7/10 = 15/10 = 1 5/10 = 1 1/2."
+    ],
+    "solution": "Wholes: 13. Fractions: 15/10 = 1 1/2. Total: 14 1/2.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "add-mixed-numbers-unlike-p14",
+    "topicId": "add-mixed-numbers-unlike",
+    "difficulty": "hard",
+    "question": "A carpenter has boards 3 5/8 feet and 2 3/4 feet long. What is the total length?",
+    "answer": "6 3/8",
+    "hints": [
+      "LCD = 8. 3/4 = 6/8.",
+      "5/8 + 6/8 = 11/8 = 1 3/8."
+    ],
+    "solution": "Wholes: 5. Fractions: 5/8 + 6/8 = 11/8 = 1 3/8. Total: 6 3/8 feet.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "add-mixed-numbers-unlike-p15",
+    "topicId": "add-mixed-numbers-unlike",
+    "difficulty": "hard",
+    "question": "What is 9 7/12 + 6 5/8? Simplify.",
+    "answer": "16 5/24",
+    "hints": [
+      "LCD = 24. 7/12 = 14/24, 5/8 = 15/24.",
+      "14/24 + 15/24 = 29/24 = 1 5/24."
+    ],
+    "solution": "Wholes: 15. Fractions: 14/24 + 15/24 = 29/24 = 1 5/24. Total: 16 5/24.",
+    "cognitiveDemand": "procedural"
+  }
+]

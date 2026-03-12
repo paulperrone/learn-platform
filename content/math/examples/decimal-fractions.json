@@ -1,0 +1,46 @@
+[
+  {
+    "id": "decimal-fractions-ex1",
+    "topicId": "decimal-fractions",
+    "title": "Writing Tenths as Decimals",
+    "steps": [
+      {
+        "subgoalLabel": "Understand tenths",
+        "instruction": "A fraction with denominator 10 represents tenths.",
+        "work": "6/10 = 6 tenths",
+        "explanation": "The denominator 10 means the whole is divided into 10 equal parts."
+      },
+      {
+        "subgoalLabel": "Write as a decimal",
+        "instruction": "Place the numerator in the tenths place.",
+        "work": "6/10 = 0.6",
+        "explanation": "The 6 goes in the tenths place (first place after the decimal point)."
+      }
+    ]
+  },
+  {
+    "id": "decimal-fractions-ex2",
+    "topicId": "decimal-fractions",
+    "title": "Adding Tenths and Hundredths",
+    "steps": [
+      {
+        "subgoalLabel": "Set up the problem",
+        "instruction": "Write 3/10 + 9/100 as a single decimal.",
+        "work": "3/10 + 9/100",
+        "explanation": "We need a common denominator to add."
+      },
+      {
+        "subgoalLabel": "Convert to hundredths",
+        "instruction": "Convert 3/10 to hundredths by multiplying by 10/10.",
+        "work": "3/10 = 30/100",
+        "explanation": "3 tenths equals 30 hundredths."
+      },
+      {
+        "subgoalLabel": "Add and convert",
+        "instruction": "Add 30/100 + 9/100 = 39/100.",
+        "work": "39/100 = 0.39",
+        "explanation": "39 hundredths is written as 0.39."
+      }
+    ]
+  }
+]

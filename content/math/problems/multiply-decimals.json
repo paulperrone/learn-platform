@@ -1,0 +1,152 @@
+[
+  {
+    "id": "multiply-decimals-p1",
+    "topicId": "multiply-decimals",
+    "difficulty": "easy",
+    "question": "What is 0.2 × 0.3?",
+    "answer": "0.06",
+    "hints": ["2 × 3 = 6. Total decimal places: 1 + 1 = 2. So 0.06."],
+    "solution": "2 × 3 = 6. Two decimal places: 0.06.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-decimals-p2",
+    "topicId": "multiply-decimals",
+    "difficulty": "easy",
+    "question": "What is 0.5 × 0.5?",
+    "answer": "0.25",
+    "hints": ["5 × 5 = 25. Two decimal places: 0.25."],
+    "solution": "5 × 5 = 25. Two decimal places: 0.25.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-decimals-p3",
+    "topicId": "multiply-decimals",
+    "difficulty": "easy",
+    "question": "What is 0.1 × 0.1?",
+    "answer": "0.01",
+    "hints": ["1 × 1 = 1. Two decimal places: 0.01."],
+    "solution": "1 × 1 = 1. Two decimal places: 0.01.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-decimals-p4",
+    "topicId": "multiply-decimals",
+    "difficulty": "easy",
+    "question": "What is 0.4 × 0.2?",
+    "answer": "0.08",
+    "hints": ["4 × 2 = 8. Two decimal places: 0.08."],
+    "solution": "4 × 2 = 8. Two decimal places: 0.08.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-decimals-p5",
+    "topicId": "multiply-decimals",
+    "difficulty": "easy",
+    "question": "What is 0.6 × 0.5?",
+    "answer": "0.30",
+    "hints": ["6 × 5 = 30. Two decimal places: 0.30."],
+    "solution": "6 × 5 = 30. Two decimal places: 0.30.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-decimals-p6",
+    "topicId": "multiply-decimals",
+    "difficulty": "medium",
+    "question": "What is 1.2 × 0.5?",
+    "answer": "0.60",
+    "hints": ["12 × 5 = 60. Two decimal places: 0.60."],
+    "solution": "12 × 5 = 60. Two decimal places: 0.60.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-decimals-p7",
+    "topicId": "multiply-decimals",
+    "difficulty": "medium",
+    "question": "What is 2.5 × 0.4?",
+    "answer": "1.00",
+    "hints": ["25 × 4 = 100. Two decimal places: 1.00."],
+    "solution": "25 × 4 = 100. Two decimal places: 1.00.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-decimals-p8",
+    "topicId": "multiply-decimals",
+    "difficulty": "medium",
+    "question": "What is 0.25 × 0.4?",
+    "answer": "0.100",
+    "hints": ["25 × 4 = 100. Three decimal places: 0.100."],
+    "solution": "25 × 4 = 100. Three decimal places: 0.100 (or 0.1).",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-decimals-p9",
+    "topicId": "multiply-decimals",
+    "difficulty": "medium",
+    "question": "What is 3.5 × 1.2?",
+    "answer": "4.20",
+    "hints": ["35 × 12 = 420. Two decimal places: 4.20."],
+    "solution": "35 × 12 = 420. Two decimal places: 4.20.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-decimals-p10",
+    "topicId": "multiply-decimals",
+    "difficulty": "medium",
+    "question": "What is 0.15 × 0.3?",
+    "answer": "0.045",
+    "hints": ["15 × 3 = 45. Three decimal places: 0.045."],
+    "solution": "15 × 3 = 45. Three decimal places: 0.045.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-decimals-p11",
+    "topicId": "multiply-decimals",
+    "difficulty": "hard",
+    "question": "What is 4.5 × 2.5?",
+    "answer": "11.25",
+    "hints": ["45 × 25 = 1125. Two decimal places: 11.25."],
+    "solution": "45 × 25 = 1,125. Two decimal places: 11.25.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-decimals-p12",
+    "topicId": "multiply-decimals",
+    "difficulty": "hard",
+    "question": "What is 0.12 × 0.15?",
+    "answer": "0.0180",
+    "hints": ["12 × 15 = 180. Four decimal places: 0.0180."],
+    "solution": "12 × 15 = 180. Four decimal places: 0.0180 (or 0.018).",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-decimals-p13",
+    "topicId": "multiply-decimals",
+    "difficulty": "hard",
+    "question": "A rectangle is 3.6 m long and 2.5 m wide. What is its area?",
+    "answer": "9.00",
+    "hints": ["Area = length × width = 3.6 × 2.5."],
+    "solution": "36 × 25 = 900. Two decimal places: 9.00 square meters.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "multiply-decimals-p14",
+    "topicId": "multiply-decimals",
+    "difficulty": "hard",
+    "question": "What is 6.25 × 0.08?",
+    "answer": "0.5000",
+    "hints": ["625 × 8 = 5000. Four decimal places: 0.5000."],
+    "solution": "625 × 8 = 5,000. Four decimal places: 0.5000 (or 0.5).",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-decimals-p15",
+    "topicId": "multiply-decimals",
+    "difficulty": "hard",
+    "question": "What is 1.25 × 0.75?",
+    "answer": "0.9375",
+    "hints": ["125 × 75 = 9375. Four decimal places: 0.9375."],
+    "solution": "125 × 75 = 9,375. Four decimal places: 0.9375.",
+    "cognitiveDemand": "procedural"
+  }
+]

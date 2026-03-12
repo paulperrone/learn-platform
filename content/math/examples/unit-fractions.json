@@ -1,0 +1,64 @@
+[
+  {
+    "id": "unit-fractions-ex1",
+    "topicId": "unit-fractions",
+    "title": "Understanding Unit Fractions: One Part of a Whole",
+    "steps": [
+      {
+        "subgoalLabel": "Identify the whole and its parts",
+        "instruction": "A pie is cut into 6 equal slices. You take 1 slice. What fraction of the pie is that?",
+        "work": "The whole pie = 6 equal slices. You took 1 slice.",
+        "explanation": "To write a fraction, we need to know the total number of equal parts (denominator) and how many parts we're talking about (numerator)."
+      },
+      {
+        "subgoalLabel": "Write the denominator",
+        "instruction": "The denominator is the total number of equal parts the whole is divided into.",
+        "work": "Denominator = 6 (the pie has 6 equal slices)",
+        "explanation": "The bottom number of a fraction tells us how many equal parts make up the whole."
+      },
+      {
+        "subgoalLabel": "Write the numerator",
+        "instruction": "A unit fraction always has 1 as the numerator because we are talking about one part.",
+        "work": "Numerator = 1 (you took 1 slice)",
+        "explanation": "The top number tells how many parts we have. In a unit fraction, it is always 1."
+      },
+      {
+        "subgoalLabel": "Write the unit fraction",
+        "instruction": "Combine the numerator and denominator.",
+        "work": "1/6",
+        "explanation": "One slice out of six equal slices is 1/6 of the pie. This is a unit fraction because the numerator is 1."
+      }
+    ]
+  },
+  {
+    "id": "unit-fractions-ex2",
+    "topicId": "unit-fractions",
+    "title": "Comparing Unit Fractions: Which Piece Is Bigger?",
+    "steps": [
+      {
+        "subgoalLabel": "Understand the problem",
+        "instruction": "Which is larger: 1/4 or 1/6?",
+        "work": "We need to compare two unit fractions: 1/4 and 1/6.",
+        "explanation": "Both fractions have 1 in the numerator, so we only need to think about what the denominators tell us."
+      },
+      {
+        "subgoalLabel": "Think about what the denominator means",
+        "instruction": "A denominator of 4 means the whole is cut into 4 equal parts. A denominator of 6 means 6 equal parts.",
+        "work": "1/4 → whole split into 4 parts. 1/6 → whole split into 6 parts.",
+        "explanation": "The more parts you cut a whole into, the smaller each part becomes."
+      },
+      {
+        "subgoalLabel": "Compare the sizes",
+        "instruction": "Which gives bigger pieces: cutting into 4 parts or cutting into 6 parts?",
+        "work": "4 parts → bigger pieces. 6 parts → smaller pieces. So 1/4 > 1/6.",
+        "explanation": "Fewer parts means each part is larger. Since 4 < 6, each fourth is larger than each sixth."
+      },
+      {
+        "subgoalLabel": "State the answer",
+        "instruction": "Write your conclusion.",
+        "work": "1/4 is larger than 1/6.",
+        "explanation": "For unit fractions, the one with the smaller denominator is always the larger fraction."
+      }
+    ]
+  }
+]

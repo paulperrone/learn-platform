@@ -1,0 +1,190 @@
+[
+  {
+    "id": "simplify-fractions-p1",
+    "topicId": "simplify-fractions",
+    "difficulty": "easy",
+    "question": "Simplify 2/4.",
+    "answer": "1/2",
+    "hints": [
+      "What is the greatest common factor of 2 and 4?",
+      "Divide both by 2."
+    ],
+    "solution": "GCF(2, 4) = 2. 2/4 = (2÷2)/(4÷2) = 1/2.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "simplify-fractions-p2",
+    "topicId": "simplify-fractions",
+    "difficulty": "easy",
+    "question": "Simplify 3/6.",
+    "answer": "1/2",
+    "hints": [
+      "Both 3 and 6 are divisible by 3."
+    ],
+    "solution": "GCF(3, 6) = 3. 3/6 = (3÷3)/(6÷3) = 1/2.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "simplify-fractions-p3",
+    "topicId": "simplify-fractions",
+    "difficulty": "easy",
+    "question": "Simplify 4/8.",
+    "answer": "1/2",
+    "hints": [
+      "Divide numerator and denominator by 4."
+    ],
+    "solution": "GCF(4, 8) = 4. 4/8 = (4÷4)/(8÷4) = 1/2.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "simplify-fractions-p4",
+    "topicId": "simplify-fractions",
+    "difficulty": "easy",
+    "question": "Simplify 6/9.",
+    "answer": "2/3",
+    "hints": [
+      "Both 6 and 9 are divisible by 3."
+    ],
+    "solution": "GCF(6, 9) = 3. 6/9 = (6÷3)/(9÷3) = 2/3.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "simplify-fractions-p5",
+    "topicId": "simplify-fractions",
+    "difficulty": "easy",
+    "question": "Simplify 5/10.",
+    "answer": "1/2",
+    "hints": [
+      "Both are divisible by 5."
+    ],
+    "solution": "GCF(5, 10) = 5. 5/10 = (5÷5)/(10÷5) = 1/2.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "simplify-fractions-p6",
+    "topicId": "simplify-fractions",
+    "difficulty": "medium",
+    "question": "Simplify 8/12.",
+    "answer": "2/3",
+    "hints": [
+      "Find the GCF of 8 and 12.",
+      "GCF = 4."
+    ],
+    "solution": "GCF(8, 12) = 4. 8/12 = (8÷4)/(12÷4) = 2/3.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "simplify-fractions-p7",
+    "topicId": "simplify-fractions",
+    "difficulty": "medium",
+    "question": "Simplify 10/15.",
+    "answer": "2/3",
+    "hints": [
+      "The GCF of 10 and 15 is 5."
+    ],
+    "solution": "GCF(10, 15) = 5. 10/15 = (10÷5)/(15÷5) = 2/3.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "simplify-fractions-p8",
+    "topicId": "simplify-fractions",
+    "difficulty": "medium",
+    "question": "Simplify 12/16.",
+    "answer": "3/4",
+    "hints": [
+      "Find the GCF of 12 and 16.",
+      "GCF = 4."
+    ],
+    "solution": "GCF(12, 16) = 4. 12/16 = (12÷4)/(16÷4) = 3/4.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "simplify-fractions-p9",
+    "topicId": "simplify-fractions",
+    "difficulty": "medium",
+    "question": "Simplify 9/12.",
+    "answer": "3/4",
+    "hints": [
+      "GCF of 9 and 12 is 3."
+    ],
+    "solution": "GCF(9, 12) = 3. 9/12 = (9÷3)/(12÷3) = 3/4.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "simplify-fractions-p10",
+    "topicId": "simplify-fractions",
+    "difficulty": "medium",
+    "question": "Is 7/9 already in simplest form?",
+    "answer": "yes",
+    "hints": [
+      "What factors do 7 and 9 share?",
+      "7 is prime. Is 9 divisible by 7?"
+    ],
+    "solution": "GCF(7, 9) = 1. Since the only common factor is 1, 7/9 is already in simplest form.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "simplify-fractions-p11",
+    "topicId": "simplify-fractions",
+    "difficulty": "hard",
+    "question": "Simplify 18/24.",
+    "answer": "3/4",
+    "hints": [
+      "Find the GCF of 18 and 24.",
+      "Factors of 18: 1, 2, 3, 6, 9, 18. Factors of 24: 1, 2, 3, 4, 6, 8, 12, 24. GCF = 6."
+    ],
+    "solution": "GCF(18, 24) = 6. 18/24 = (18÷6)/(24÷6) = 3/4.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "simplify-fractions-p12",
+    "topicId": "simplify-fractions",
+    "difficulty": "hard",
+    "question": "Simplify 24/36.",
+    "answer": "2/3",
+    "hints": [
+      "Find the GCF of 24 and 36.",
+      "GCF = 12."
+    ],
+    "solution": "GCF(24, 36) = 12. 24/36 = (24÷12)/(36÷12) = 2/3.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "simplify-fractions-p13",
+    "topicId": "simplify-fractions",
+    "difficulty": "hard",
+    "question": "Simplify 15/35.",
+    "answer": "3/7",
+    "hints": [
+      "Both are divisible by 5."
+    ],
+    "solution": "GCF(15, 35) = 5. 15/35 = (15÷5)/(35÷5) = 3/7.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "simplify-fractions-p14",
+    "topicId": "simplify-fractions",
+    "difficulty": "hard",
+    "question": "Simplify 28/42.",
+    "answer": "2/3",
+    "hints": [
+      "Find the GCF of 28 and 42.",
+      "Both are divisible by 14."
+    ],
+    "solution": "GCF(28, 42) = 14. 28/42 = (28÷14)/(42÷14) = 2/3.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "simplify-fractions-p15",
+    "topicId": "simplify-fractions",
+    "difficulty": "hard",
+    "question": "Simplify 30/48.",
+    "answer": "5/8",
+    "hints": [
+      "Find the GCF of 30 and 48.",
+      "GCF = 6."
+    ],
+    "solution": "GCF(30, 48) = 6. 30/48 = (30÷6)/(48÷6) = 5/8.",
+    "cognitiveDemand": "procedural"
+  }
+]

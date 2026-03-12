@@ -1,0 +1,52 @@
+[
+  {
+    "id": "decimal-place-value-tenths-ex1",
+    "topicId": "decimal-place-value-tenths",
+    "title": "Writing 3/10 as a Decimal",
+    "steps": [
+      {
+        "subgoalLabel": "Understand the fraction",
+        "instruction": "What does 3/10 mean?",
+        "work": "3 out of 10 equal parts",
+        "explanation": "The fraction 3/10 means we have 3 parts when a whole is divided into 10 equal pieces."
+      },
+      {
+        "subgoalLabel": "Connect to decimal places",
+        "instruction": "Tenths go in the first place after the decimal point.",
+        "work": "0._\nThe tenths digit is 3.",
+        "explanation": "The denominator 10 tells us this is the tenths place."
+      },
+      {
+        "subgoalLabel": "Write the decimal",
+        "instruction": "Write the complete decimal.",
+        "work": "3/10 = 0.3",
+        "explanation": "0.3 means 3 tenths. The 0 before the decimal shows there are no whole numbers."
+      }
+    ]
+  },
+  {
+    "id": "decimal-place-value-tenths-ex2",
+    "topicId": "decimal-place-value-tenths",
+    "title": "Understanding the Tenths Digit in 5.7",
+    "steps": [
+      {
+        "subgoalLabel": "Identify the parts",
+        "instruction": "Break 5.7 into its whole number and decimal parts.",
+        "work": "5.7 = 5 + 0.7",
+        "explanation": "The 5 is the whole number. The .7 is the decimal part."
+      },
+      {
+        "subgoalLabel": "Name the decimal digit's place",
+        "instruction": "What place is the 7 in?",
+        "work": "The 7 is in the tenths place.",
+        "explanation": "The first digit after the decimal point is always the tenths place."
+      },
+      {
+        "subgoalLabel": "State the value",
+        "instruction": "What is the value of the 7?",
+        "work": "7 tenths = 7/10 = 0.7",
+        "explanation": "5.7 means 5 ones and 7 tenths. You can also think of it as 5 and 7/10."
+      }
+    ]
+  }
+]

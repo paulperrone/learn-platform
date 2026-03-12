@@ -1,0 +1,58 @@
+[
+  {
+    "id": "partition-shapes-ex1",
+    "topicId": "partition-shapes",
+    "title": "Splitting a Rectangle into Equal Halves",
+    "steps": [
+      {
+        "subgoalLabel": "Understand partitioning",
+        "instruction": "What does it mean to partition a shape?",
+        "work": "Partitioning means splitting a shape into equal parts with no gaps and no overlaps.",
+        "explanation": "The key word is 'equal' — every part must be the same size."
+      },
+      {
+        "subgoalLabel": "Split into 2 equal parts",
+        "instruction": "Split a rectangle into 2 equal parts.",
+        "work": "We can split the rectangle with a line down the middle (vertically) or across the middle (horizontally). Either way gives 2 equal parts.",
+        "explanation": "As long as the line divides the rectangle into two pieces of equal area, we have halves."
+      },
+      {
+        "subgoalLabel": "Name each part",
+        "instruction": "What do we call each part?",
+        "work": "Each part is one half, or 1/2.",
+        "explanation": "When a whole is split into 2 equal parts, each part is 'one half.' Together, the 2 halves make the whole."
+      }
+    ]
+  },
+  {
+    "id": "partition-shapes-ex2",
+    "topicId": "partition-shapes",
+    "title": "Splitting a Circle into Fourths",
+    "steps": [
+      {
+        "subgoalLabel": "Decide how many parts",
+        "instruction": "We want to split a circle into 4 equal parts. How can we do this?",
+        "work": "We split the circle in half with one line through the center, then split each half again with another line through the center, perpendicular to the first.",
+        "explanation": "Two lines through the center of the circle, crossing at right angles, create 4 equal parts."
+      },
+      {
+        "subgoalLabel": "Verify equal parts",
+        "instruction": "Are all 4 parts the same size?",
+        "work": "Yes. Each part is exactly the same size and shape — they are 4 equal wedges.",
+        "explanation": "Since both lines go through the center and are perpendicular, each wedge is identical."
+      },
+      {
+        "subgoalLabel": "Name the parts",
+        "instruction": "What is each part called?",
+        "work": "Each part is one fourth (or one quarter), written as 1/4.",
+        "explanation": "Four equal parts of a whole are called fourths or quarters. Each piece is 1/4 of the circle."
+      },
+      {
+        "subgoalLabel": "Connect halves and fourths",
+        "instruction": "How do fourths relate to halves?",
+        "work": "Two fourths equal one half: 1/4 + 1/4 = 2/4 = 1/2.",
+        "explanation": "This shows that halves and fourths are related. Splitting halves in half gives fourths."
+      }
+    ]
+  }
+]

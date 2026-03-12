@@ -1,0 +1,182 @@
+[
+  {
+    "id": "equivalent-place-value-p1",
+    "topicId": "equivalent-place-value",
+    "difficulty": "easy",
+    "question": "How many tens are in 30?",
+    "answer": "3",
+    "hints": [
+      "30 ÷ 10 = ?"
+    ],
+    "solution": "30 ÷ 10 = 3. There are 3 tens in 30.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "equivalent-place-value-p2",
+    "topicId": "equivalent-place-value",
+    "difficulty": "easy",
+    "question": "5 tens = how many ones?",
+    "answer": "50",
+    "hints": [
+      "1 ten = 10 ones. So 5 tens = 5 × 10."
+    ],
+    "solution": "5 × 10 = 50. Five tens equals 50.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "equivalent-place-value-p3",
+    "topicId": "equivalent-place-value",
+    "difficulty": "easy",
+    "question": "How many hundreds are in 400?",
+    "answer": "4",
+    "hints": [
+      "400 ÷ 100 = ?"
+    ],
+    "solution": "400 ÷ 100 = 4. There are 4 hundreds in 400.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "equivalent-place-value-p4",
+    "topicId": "equivalent-place-value",
+    "difficulty": "easy",
+    "question": "7 hundreds = how many ones?",
+    "answer": "700",
+    "hints": [
+      "1 hundred = 100 ones."
+    ],
+    "solution": "7 × 100 = 700.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "equivalent-place-value-p5",
+    "topicId": "equivalent-place-value",
+    "difficulty": "easy",
+    "question": "20 tens = ___. How many?",
+    "answer": "200",
+    "hints": [
+      "20 × 10 = ?"
+    ],
+    "solution": "20 × 10 = 200. Twenty tens equals 200.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "equivalent-place-value-p6",
+    "topicId": "equivalent-place-value",
+    "difficulty": "medium",
+    "question": "24 tens = ___?",
+    "answer": "240",
+    "hints": [
+      "24 × 10 = ?"
+    ],
+    "solution": "24 × 10 = 240. Twenty-four tens equals 240.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "equivalent-place-value-p7",
+    "topicId": "equivalent-place-value",
+    "difficulty": "medium",
+    "question": "How many tens are in 350?",
+    "answer": "35",
+    "hints": [
+      "350 ÷ 10 = ?"
+    ],
+    "solution": "350 ÷ 10 = 35. There are 35 tens in 350.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "equivalent-place-value-p8",
+    "topicId": "equivalent-place-value",
+    "difficulty": "medium",
+    "question": "15 hundreds = ___?",
+    "answer": "1500",
+    "hints": [
+      "15 × 100 = ?"
+    ],
+    "solution": "15 × 100 = 1,500.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "equivalent-place-value-p9",
+    "topicId": "equivalent-place-value",
+    "difficulty": "medium",
+    "question": "How many hundreds are in 2,300?",
+    "answer": "23",
+    "hints": [
+      "2,300 ÷ 100 = ?"
+    ],
+    "solution": "2,300 ÷ 100 = 23. There are 23 hundreds in 2,300.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "equivalent-place-value-p10",
+    "topicId": "equivalent-place-value",
+    "difficulty": "medium",
+    "question": "60 tens equals how many hundreds?",
+    "answer": "6",
+    "hints": [
+      "60 tens = 600. 600 ÷ 100 = 6."
+    ],
+    "solution": "60 tens = 600 = 6 hundreds.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "equivalent-place-value-p11",
+    "topicId": "equivalent-place-value",
+    "difficulty": "hard",
+    "question": "How many tens are in 4,560?",
+    "answer": "456",
+    "hints": [
+      "4,560 ÷ 10 = ?"
+    ],
+    "solution": "4,560 ÷ 10 = 456. There are 456 tens in 4,560.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "equivalent-place-value-p12",
+    "topicId": "equivalent-place-value",
+    "difficulty": "hard",
+    "question": "32 hundreds = ___ tens?",
+    "answer": "320",
+    "hints": [
+      "32 hundreds = 3,200. 3,200 ÷ 10 = 320 tens."
+    ],
+    "solution": "32 hundreds = 3,200. 3,200 ÷ 10 = 320 tens.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "equivalent-place-value-p13",
+    "topicId": "equivalent-place-value",
+    "difficulty": "hard",
+    "question": "Which is greater: 48 tens or 5 hundreds? Or are they equal?",
+    "answer": "5 hundreds",
+    "hints": [
+      "48 tens = 480. 5 hundreds = 500."
+    ],
+    "solution": "48 tens = 480 and 5 hundreds = 500. Since 500 > 480, 5 hundreds is greater.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "equivalent-place-value-p14",
+    "topicId": "equivalent-place-value",
+    "difficulty": "hard",
+    "question": "A box holds 10 pencils. If you have 157 pencils, how many full boxes can you fill?",
+    "answer": "15",
+    "hints": [
+      "157 ÷ 10 = 15 remainder 7. Only full boxes count."
+    ],
+    "solution": "157 ÷ 10 = 15 with 7 leftover. You can fill 15 full boxes.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "equivalent-place-value-p15",
+    "topicId": "equivalent-place-value",
+    "difficulty": "hard",
+    "question": "8 thousands = ___ hundreds?",
+    "answer": "80",
+    "hints": [
+      "8 thousands = 8,000. 8,000 ÷ 100 = 80."
+    ],
+    "solution": "8,000 ÷ 100 = 80. Eight thousands equals 80 hundreds.",
+    "cognitiveDemand": "conceptual"
+  }
+]

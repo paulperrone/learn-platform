@@ -1,0 +1,52 @@
+[
+  {
+    "id": "classify-triangles-sides-ex1",
+    "topicId": "classify-triangles-sides",
+    "title": "Classifying a Triangle by Its Sides",
+    "steps": [
+      {
+        "subgoalLabel": "Review the three types",
+        "instruction": "What are the three classifications based on sides?",
+        "work": "Equilateral: all 3 sides equal. Isosceles: exactly 2 sides equal. Scalene: no sides equal.",
+        "explanation": "Compare the side lengths to determine the type."
+      },
+      {
+        "subgoalLabel": "Classify the triangle",
+        "instruction": "A triangle has sides 8 cm, 8 cm, and 5 cm. What type is it?",
+        "work": "Two sides are 8 cm (equal). One side is 5 cm (different). This is isosceles.",
+        "explanation": "Exactly two sides are equal, so it is isosceles."
+      },
+      {
+        "subgoalLabel": "Check it is not equilateral",
+        "instruction": "Could it also be equilateral?",
+        "work": "No. Equilateral requires ALL 3 sides equal. The third side (5 cm) is different.",
+        "explanation": "Isosceles and equilateral are different: equilateral has 3 equal sides, isosceles has exactly 2."
+      }
+    ]
+  },
+  {
+    "id": "classify-triangles-sides-ex2",
+    "topicId": "classify-triangles-sides",
+    "title": "Finding Missing Side of an Isosceles Triangle",
+    "steps": [
+      {
+        "subgoalLabel": "Read the problem",
+        "instruction": "An isosceles triangle has a perimeter of 20 cm. The two equal sides are each 7 cm. Find the base.",
+        "work": "Perimeter = 7 + 7 + base = 20.",
+        "explanation": "We know two sides and the total perimeter."
+      },
+      {
+        "subgoalLabel": "Solve for the base",
+        "instruction": "Subtract the known sides from the perimeter.",
+        "work": "base = 20 − 7 − 7 = 6 cm.",
+        "explanation": "The base is 6 cm."
+      },
+      {
+        "subgoalLabel": "Verify",
+        "instruction": "Check the answer.",
+        "work": "7 + 7 + 6 = 20. ✓ Also check: 7 ≠ 6, so it is isosceles (not equilateral).",
+        "explanation": "The perimeter is correct and the triangle is properly classified as isosceles."
+      }
+    ]
+  }
+]

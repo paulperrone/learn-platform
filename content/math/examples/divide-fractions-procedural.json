@@ -1,0 +1,52 @@
+[
+  {
+    "id": "divide-fractions-procedural-ex1",
+    "topicId": "divide-fractions-procedural",
+    "title": "Dividing 3/4 ÷ 2/5 Using Invert-and-Multiply",
+    "steps": [
+      {
+        "subgoalLabel": "Find the reciprocal of the divisor",
+        "instruction": "The divisor is 2/5. Flip it to get 5/2.",
+        "work": "Reciprocal of 2/5 = 5/2",
+        "explanation": "To divide by a fraction, we multiply by its reciprocal."
+      },
+      {
+        "subgoalLabel": "Multiply the fractions",
+        "instruction": "Multiply 3/4 × 5/2.",
+        "work": "(3 × 5) / (4 × 2) = 15/8",
+        "explanation": "Multiply numerators and denominators."
+      },
+      {
+        "subgoalLabel": "Convert to mixed number",
+        "instruction": "15 ÷ 8 = 1 remainder 7.",
+        "work": "15/8 = 1 7/8",
+        "explanation": "3/4 ÷ 2/5 = 1 7/8."
+      }
+    ]
+  },
+  {
+    "id": "divide-fractions-procedural-ex2",
+    "topicId": "divide-fractions-procedural",
+    "title": "Dividing 5/6 ÷ 5/3",
+    "steps": [
+      {
+        "subgoalLabel": "Find the reciprocal",
+        "instruction": "The reciprocal of 5/3 is 3/5.",
+        "work": "Reciprocal of 5/3 = 3/5",
+        "explanation": "Flip the divisor."
+      },
+      {
+        "subgoalLabel": "Multiply",
+        "instruction": "Multiply 5/6 × 3/5.",
+        "work": "(5 × 3) / (6 × 5) = 15/30",
+        "explanation": "Multiply across."
+      },
+      {
+        "subgoalLabel": "Simplify",
+        "instruction": "Divide 15 and 30 by their GCF of 15.",
+        "work": "15/30 = 1/2",
+        "explanation": "5/6 ÷ 5/3 = 1/2."
+      }
+    ]
+  }
+]

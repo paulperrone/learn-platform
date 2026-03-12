@@ -1,0 +1,182 @@
+[
+  {
+    "id": "decimal-fractions-p1",
+    "topicId": "decimal-fractions",
+    "difficulty": "easy",
+    "question": "Write 3/10 as a decimal.",
+    "answer": "0.3",
+    "hints": [
+      "A fraction with denominator 10 is tenths. 3 tenths = 0.3."
+    ],
+    "solution": "3/10 = 0.3.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "decimal-fractions-p2",
+    "topicId": "decimal-fractions",
+    "difficulty": "easy",
+    "question": "Write 7/10 as a decimal.",
+    "answer": "0.7",
+    "hints": [
+      "7 tenths = 0.7."
+    ],
+    "solution": "7/10 = 0.7.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "decimal-fractions-p3",
+    "topicId": "decimal-fractions",
+    "difficulty": "easy",
+    "question": "Write 9/10 as a decimal.",
+    "answer": "0.9",
+    "hints": [
+      "9 tenths."
+    ],
+    "solution": "9/10 = 0.9.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "decimal-fractions-p4",
+    "topicId": "decimal-fractions",
+    "difficulty": "easy",
+    "question": "Write 50/100 as a decimal.",
+    "answer": "0.50",
+    "hints": [
+      "50 hundredths = 0.50."
+    ],
+    "solution": "50/100 = 0.50 (or 0.5).",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "decimal-fractions-p5",
+    "topicId": "decimal-fractions",
+    "difficulty": "easy",
+    "question": "Write 1/10 as a decimal.",
+    "answer": "0.1",
+    "hints": [
+      "1 tenth = 0.1."
+    ],
+    "solution": "1/10 = 0.1.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "decimal-fractions-p6",
+    "topicId": "decimal-fractions",
+    "difficulty": "medium",
+    "question": "Write 25/100 as a decimal.",
+    "answer": "0.25",
+    "hints": [
+      "25 hundredths."
+    ],
+    "solution": "25/100 = 0.25.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "decimal-fractions-p7",
+    "topicId": "decimal-fractions",
+    "difficulty": "medium",
+    "question": "Write 73/100 as a decimal.",
+    "answer": "0.73",
+    "hints": [
+      "73 hundredths."
+    ],
+    "solution": "73/100 = 0.73.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "decimal-fractions-p8",
+    "topicId": "decimal-fractions",
+    "difficulty": "medium",
+    "question": "Write 4/10 + 7/100 as a decimal.",
+    "answer": "0.47",
+    "hints": [
+      "4/10 = 40/100. So 40/100 + 7/100 = 47/100 = 0.47."
+    ],
+    "solution": "4/10 + 7/100 = 40/100 + 7/100 = 47/100 = 0.47.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "decimal-fractions-p9",
+    "topicId": "decimal-fractions",
+    "difficulty": "medium",
+    "question": "Write 6/10 as an equivalent fraction with denominator 100.",
+    "answer": "60/100",
+    "hints": [
+      "Multiply both numerator and denominator by 10."
+    ],
+    "solution": "6/10 = 60/100.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "decimal-fractions-p10",
+    "topicId": "decimal-fractions",
+    "difficulty": "medium",
+    "question": "Write 8/100 as a decimal.",
+    "answer": "0.08",
+    "hints": [
+      "8 hundredths. That is 0 tenths and 8 hundredths."
+    ],
+    "solution": "8/100 = 0.08.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "decimal-fractions-p11",
+    "topicId": "decimal-fractions",
+    "difficulty": "hard",
+    "question": "Which is greater: 3/10 or 29/100?",
+    "answer": "3/10",
+    "hints": [
+      "Convert 3/10 to hundredths: 3/10 = 30/100. Compare 30/100 to 29/100."
+    ],
+    "solution": "3/10 = 30/100. Since 30/100 > 29/100, 3/10 is greater.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "decimal-fractions-p12",
+    "topicId": "decimal-fractions",
+    "difficulty": "hard",
+    "question": "Write 3/10 + 45/100 as a decimal.",
+    "answer": "0.75",
+    "hints": [
+      "Convert 3/10 to 30/100. Then add 30/100 + 45/100."
+    ],
+    "solution": "3/10 = 30/100. 30/100 + 45/100 = 75/100 = 0.75.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "decimal-fractions-p13",
+    "topicId": "decimal-fractions",
+    "difficulty": "hard",
+    "question": "Express 0.62 as a fraction with denominator 100, then simplify.",
+    "answer": "31/50",
+    "hints": [
+      "0.62 = 62/100. Divide both by 2."
+    ],
+    "solution": "0.62 = 62/100 = 31/50.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "decimal-fractions-p14",
+    "topicId": "decimal-fractions",
+    "difficulty": "hard",
+    "question": "Write 5/10 + 3/100 as a single fraction with denominator 100, then as a decimal.",
+    "answer": "0.53",
+    "hints": [
+      "5/10 = 50/100. Add 50/100 + 3/100."
+    ],
+    "solution": "5/10 + 3/100 = 50/100 + 3/100 = 53/100 = 0.53.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "decimal-fractions-p15",
+    "topicId": "decimal-fractions",
+    "difficulty": "hard",
+    "question": "Order from least to greatest: 7/10, 67/100, 3/100.",
+    "answer": "3/100, 67/100, 7/10",
+    "hints": [
+      "Convert all to hundredths: 7/10 = 70/100, 67/100, 3/100."
+    ],
+    "solution": "3/100 = 0.03, 67/100 = 0.67, 7/10 = 0.70. Order: 3/100, 67/100, 7/10.",
+    "cognitiveDemand": "conceptual"
+  }
+]

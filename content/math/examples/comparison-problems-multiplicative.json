@@ -1,0 +1,24 @@
+[
+  {
+    "id": "comparison-problems-multiplicative-ex1",
+    "topicId": "comparison-problems-multiplicative",
+    "title": "Times As Many (Multiplying)",
+    "steps": [
+      {"subgoalLabel": "Read the problem", "instruction": "Identify the quantities.", "work": "A garden has 6 roses. It has 4 times as many daisies.", "explanation": "We need to find the number of daisies."},
+      {"subgoalLabel": "Set up multiplication", "instruction": "'Times as many' means multiply.", "work": "Daisies = 4 × 6", "explanation": "4 times as many as 6 means 4 × 6."},
+      {"subgoalLabel": "Calculate", "instruction": "Multiply.", "work": "4 × 6 = 24", "explanation": "There are 24 daisies."},
+      {"subgoalLabel": "Answer", "instruction": "Write the answer.", "work": "The garden has 24 daisies.", "explanation": "24 is 4 times as many as 6."}
+    ]
+  },
+  {
+    "id": "comparison-problems-multiplicative-ex2",
+    "topicId": "comparison-problems-multiplicative",
+    "title": "How Many Times As Many? (Dividing)",
+    "steps": [
+      {"subgoalLabel": "Read the problem", "instruction": "Identify the quantities.", "work": "A library has 36 fiction books and 9 nonfiction books.", "explanation": "We need to find how many times as many fiction books there are."},
+      {"subgoalLabel": "Set up division", "instruction": "'How many times as many' means divide.", "work": "36 ÷ 9 = ?", "explanation": "Divide the larger by the smaller."},
+      {"subgoalLabel": "Calculate", "instruction": "Divide.", "work": "36 ÷ 9 = 4", "explanation": "There are 4 times as many fiction books."},
+      {"subgoalLabel": "Verify", "instruction": "Check: 9 × 4 = 36?", "work": "9 × 4 = 36 ✓", "explanation": "Yes, 36 fiction books is 4 times 9 nonfiction books."}
+    ]
+  }
+]

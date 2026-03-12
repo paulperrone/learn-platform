@@ -1,0 +1,52 @@
+[
+  {
+    "id": "simplify-fractions-ex1",
+    "topicId": "simplify-fractions",
+    "title": "Simplifying 8/12 to Lowest Terms",
+    "steps": [
+      {
+        "subgoalLabel": "Find the GCF",
+        "instruction": "List the factors of 8 and 12, then find the greatest common factor.",
+        "work": "Factors of 8: 1, 2, 4, 8. Factors of 12: 1, 2, 3, 4, 6, 12. GCF = 4.",
+        "explanation": "The greatest common factor (GCF) is the largest number that divides evenly into both the numerator and denominator."
+      },
+      {
+        "subgoalLabel": "Divide numerator and denominator by the GCF",
+        "instruction": "Divide both 8 and 12 by 4.",
+        "work": "8 ÷ 4 = 2, 12 ÷ 4 = 3",
+        "explanation": "Dividing top and bottom by the same number gives an equivalent fraction."
+      },
+      {
+        "subgoalLabel": "Write the simplified fraction",
+        "instruction": "Write the result.",
+        "work": "8/12 = 2/3",
+        "explanation": "2/3 is in simplest form because the GCF of 2 and 3 is 1 — they share no common factors other than 1."
+      }
+    ]
+  },
+  {
+    "id": "simplify-fractions-ex2",
+    "topicId": "simplify-fractions",
+    "title": "Simplifying 18/24 Using the GCF",
+    "steps": [
+      {
+        "subgoalLabel": "Find the GCF of 18 and 24",
+        "instruction": "Think about what numbers divide evenly into both 18 and 24.",
+        "work": "Common factors: 1, 2, 3, 6. GCF = 6.",
+        "explanation": "You can list factors or use prime factorization. 18 = 2 × 3 × 3, 24 = 2 × 2 × 2 × 3. Shared: 2 × 3 = 6."
+      },
+      {
+        "subgoalLabel": "Divide by the GCF",
+        "instruction": "Divide both numerator and denominator by 6.",
+        "work": "18 ÷ 6 = 3, 24 ÷ 6 = 4",
+        "explanation": "This is equivalent to multiplying by 1/1, so the fraction's value does not change."
+      },
+      {
+        "subgoalLabel": "Check the result",
+        "instruction": "Is 3/4 in lowest terms?",
+        "work": "GCF(3, 4) = 1. Yes, 3/4 is fully simplified.",
+        "explanation": "A fraction is in lowest terms when the only common factor of the numerator and denominator is 1."
+      }
+    ]
+  }
+]

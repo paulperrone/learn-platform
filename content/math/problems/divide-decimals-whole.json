@@ -1,0 +1,152 @@
+[
+  {
+    "id": "divide-decimals-whole-p1",
+    "topicId": "divide-decimals-whole",
+    "difficulty": "easy",
+    "question": "What is 0.8 ÷ 2?",
+    "answer": "0.4",
+    "hints": ["8 tenths ÷ 2 = 4 tenths."],
+    "solution": "0.8 ÷ 2 = 0.4.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "divide-decimals-whole-p2",
+    "topicId": "divide-decimals-whole",
+    "difficulty": "easy",
+    "question": "What is 2.4 ÷ 3?",
+    "answer": "0.8",
+    "hints": ["24 tenths ÷ 3 = 8 tenths."],
+    "solution": "2.4 ÷ 3 = 0.8.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "divide-decimals-whole-p3",
+    "topicId": "divide-decimals-whole",
+    "difficulty": "easy",
+    "question": "What is 4.5 ÷ 5?",
+    "answer": "0.9",
+    "hints": ["45 tenths ÷ 5 = 9 tenths."],
+    "solution": "4.5 ÷ 5 = 0.9.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "divide-decimals-whole-p4",
+    "topicId": "divide-decimals-whole",
+    "difficulty": "easy",
+    "question": "What is 6.4 ÷ 4?",
+    "answer": "1.6",
+    "hints": ["64 tenths ÷ 4 = 16 tenths = 1.6."],
+    "solution": "6.4 ÷ 4 = 1.6.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "divide-decimals-whole-p5",
+    "topicId": "divide-decimals-whole",
+    "difficulty": "easy",
+    "question": "What is 1.25 ÷ 5?",
+    "answer": "0.25",
+    "hints": ["125 hundredths ÷ 5 = 25 hundredths."],
+    "solution": "1.25 ÷ 5 = 0.25.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "divide-decimals-whole-p6",
+    "topicId": "divide-decimals-whole",
+    "difficulty": "medium",
+    "question": "What is 7.56 ÷ 4?",
+    "answer": "1.89",
+    "hints": ["Use long division: 7.56 ÷ 4."],
+    "solution": "7.56 ÷ 4 = 1.89. (4 goes into 7 once with 3 remaining, 35÷4=8 R3, 36÷4=9.)",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "divide-decimals-whole-p7",
+    "topicId": "divide-decimals-whole",
+    "difficulty": "medium",
+    "question": "What is 9.36 ÷ 6?",
+    "answer": "1.56",
+    "hints": ["6 goes into 9 once (R3), 33÷6=5 R3, 36÷6=6."],
+    "solution": "9.36 ÷ 6 = 1.56.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "divide-decimals-whole-p8",
+    "topicId": "divide-decimals-whole",
+    "difficulty": "medium",
+    "question": "Three friends split a bill of $14.85 equally. How much does each person pay?",
+    "answer": "$4.95",
+    "hints": ["14.85 ÷ 3 = ?"],
+    "solution": "$14.85 ÷ 3 = $4.95.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "divide-decimals-whole-p9",
+    "topicId": "divide-decimals-whole",
+    "difficulty": "medium",
+    "question": "What is 15.75 ÷ 7?",
+    "answer": "2.25",
+    "hints": ["7 into 15 = 2 R1, 17÷7=2 R3, 35÷7=5."],
+    "solution": "15.75 ÷ 7 = 2.25.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "divide-decimals-whole-p10",
+    "topicId": "divide-decimals-whole",
+    "difficulty": "medium",
+    "question": "What is 0.48 ÷ 8?",
+    "answer": "0.06",
+    "hints": ["48 hundredths ÷ 8 = 6 hundredths."],
+    "solution": "0.48 ÷ 8 = 0.06.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "divide-decimals-whole-p11",
+    "topicId": "divide-decimals-whole",
+    "difficulty": "hard",
+    "question": "What is 25.5 ÷ 6?",
+    "answer": "4.25",
+    "hints": ["6 into 25 = 4 R1, 15÷6=2 R3, add 0: 30÷6=5."],
+    "solution": "25.5 ÷ 6 = 4.25.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "divide-decimals-whole-p12",
+    "topicId": "divide-decimals-whole",
+    "difficulty": "hard",
+    "question": "What is 37.44 ÷ 12?",
+    "answer": "3.12",
+    "hints": ["12 into 37 = 3 R1, 14÷12=1 R2, 24÷12=2."],
+    "solution": "37.44 ÷ 12 = 3.12.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "divide-decimals-whole-p13",
+    "topicId": "divide-decimals-whole",
+    "difficulty": "hard",
+    "question": "A 4.8 km trail is divided into 8 equal sections. How long is each section?",
+    "answer": "0.6",
+    "hints": ["4.8 ÷ 8 = ?"],
+    "solution": "4.8 ÷ 8 = 0.6 km.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "divide-decimals-whole-p14",
+    "topicId": "divide-decimals-whole",
+    "difficulty": "hard",
+    "question": "What is 100.8 ÷ 9?",
+    "answer": "11.2",
+    "hints": ["9 into 100 = 11 R1, 18÷9=2."],
+    "solution": "100.8 ÷ 9 = 11.2.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "divide-decimals-whole-p15",
+    "topicId": "divide-decimals-whole",
+    "difficulty": "hard",
+    "question": "A rope 16.25 meters long is cut into 5 equal pieces. How long is each piece?",
+    "answer": "3.25",
+    "hints": ["16.25 ÷ 5 = ?"],
+    "solution": "16.25 ÷ 5 = 3.25 meters.",
+    "cognitiveDemand": "problem-solving"
+  }
+]

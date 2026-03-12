@@ -1,0 +1,23 @@
+[
+  {
+    "id": "number-rules-ex1",
+    "topicId": "number-rules",
+    "title": "Generating a Pattern with the Rule 'Add 6'",
+    "steps": [
+      {"subgoalLabel": "Start with the first number", "instruction": "Begin at the starting number.", "work": "Start: 4", "explanation": "The rule says to start at 4 and add 6 each time."},
+      {"subgoalLabel": "Apply the rule repeatedly", "instruction": "Add 6 to get each new number.", "work": "4 + 6 = 10, 10 + 6 = 16, 16 + 6 = 22, 22 + 6 = 28", "explanation": "Each number is 6 more than the previous one."},
+      {"subgoalLabel": "Write the pattern", "instruction": "List the first 5 numbers.", "work": "4, 10, 16, 22, 28", "explanation": "The pattern starts at 4 and increases by 6 each time."}
+    ]
+  },
+  {
+    "id": "number-rules-ex2",
+    "topicId": "number-rules",
+    "title": "Comparing Two Patterns",
+    "steps": [
+      {"subgoalLabel": "Generate Pattern A", "instruction": "Start at 0, rule: Add 3.", "work": "0, 3, 6, 9, 12, 15, 18", "explanation": "Pattern A adds 3 each time."},
+      {"subgoalLabel": "Generate Pattern B", "instruction": "Start at 0, rule: Add 6.", "work": "0, 6, 12, 18", "explanation": "Pattern B adds 6 each time."},
+      {"subgoalLabel": "Find common numbers", "instruction": "Which numbers appear in both patterns?", "work": "Common: 0, 6, 12, 18", "explanation": "Numbers in both patterns are multiples of both 3 and 6, which means multiples of 6."},
+      {"subgoalLabel": "Observe the relationship", "instruction": "What do you notice?", "work": "Every number in B appears in A, but not vice versa.", "explanation": "Since 6 is a multiple of 3, every 'Add 6' step matches every 2nd 'Add 3' step."}
+    ]
+  }
+]

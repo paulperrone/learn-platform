@@ -1,0 +1,152 @@
+[
+  {
+    "id": "intro-algebraic-expressions-p1",
+    "topicId": "intro-algebraic-expressions",
+    "difficulty": "easy",
+    "question": "If n = 5, what is n + 3?",
+    "answer": "8",
+    "hints": ["Replace n with 5: 5 + 3."],
+    "solution": "n + 3 = 5 + 3 = 8.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "intro-algebraic-expressions-p2",
+    "topicId": "intro-algebraic-expressions",
+    "difficulty": "easy",
+    "question": "If x = 4, what is x − 2?",
+    "answer": "2",
+    "hints": ["Replace x with 4: 4 − 2."],
+    "solution": "x − 2 = 4 − 2 = 2.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "intro-algebraic-expressions-p3",
+    "topicId": "intro-algebraic-expressions",
+    "difficulty": "easy",
+    "question": "Which expression represents 'a number plus 7'? (a) 7n (b) n + 7 (c) n − 7",
+    "answer": "n + 7",
+    "hints": ["'Plus' means addition."],
+    "solution": "'A number plus 7' = n + 7.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "intro-algebraic-expressions-p4",
+    "topicId": "intro-algebraic-expressions",
+    "difficulty": "easy",
+    "question": "If y = 10, what is y ÷ 2?",
+    "answer": "5",
+    "hints": ["Replace y with 10: 10 ÷ 2."],
+    "solution": "y ÷ 2 = 10 ÷ 2 = 5.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "intro-algebraic-expressions-p5",
+    "topicId": "intro-algebraic-expressions",
+    "difficulty": "easy",
+    "question": "If m = 6, what is 3 × m?",
+    "answer": "18",
+    "hints": ["Replace m with 6: 3 × 6."],
+    "solution": "3 × m = 3 × 6 = 18.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "intro-algebraic-expressions-p6",
+    "topicId": "intro-algebraic-expressions",
+    "difficulty": "medium",
+    "question": "Write an expression using the variable n for: '9 less than a number.'",
+    "answer": "n - 9",
+    "hints": ["'Less than' means subtraction: n − 9."],
+    "solution": "9 less than a number = n − 9.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "intro-algebraic-expressions-p7",
+    "topicId": "intro-algebraic-expressions",
+    "difficulty": "medium",
+    "question": "If k = 8, what is 2k + 1? (Note: 2k means 2 × k)",
+    "answer": "17",
+    "hints": ["2k means 2 × k. Replace k with 8: 2 × 8 + 1."],
+    "solution": "2k + 1 = 2 × 8 + 1 = 16 + 1 = 17.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "intro-algebraic-expressions-p8",
+    "topicId": "intro-algebraic-expressions",
+    "difficulty": "medium",
+    "question": "Which expression represents 'triple a number, decreased by 4'? (a) 3n − 4 (b) 3(n − 4) (c) n × 3 + 4",
+    "answer": "3n - 4",
+    "hints": ["'Triple' means × 3. 'Decreased by 4' means − 4."],
+    "solution": "Triple a number: 3n. Decreased by 4: 3n − 4.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "intro-algebraic-expressions-p9",
+    "topicId": "intro-algebraic-expressions",
+    "difficulty": "medium",
+    "question": "If p = 7, what is 5p − 10?",
+    "answer": "25",
+    "hints": ["5p = 5 × 7 = 35. Then 35 − 10."],
+    "solution": "5p − 10 = 5 × 7 − 10 = 35 − 10 = 25.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "intro-algebraic-expressions-p10",
+    "topicId": "intro-algebraic-expressions",
+    "difficulty": "medium",
+    "question": "A box has n balls. You add 12 more balls. Write an expression for the total number of balls.",
+    "answer": "n + 12",
+    "hints": ["Start with n balls and add 12 more."],
+    "solution": "Total = n + 12.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "intro-algebraic-expressions-p11",
+    "topicId": "intro-algebraic-expressions",
+    "difficulty": "hard",
+    "question": "If a = 3 and b = 4, what is 2a + 3b?",
+    "answer": "18",
+    "hints": ["2a = 2 × 3 = 6. 3b = 3 × 4 = 12. Add them."],
+    "solution": "2a + 3b = 2(3) + 3(4) = 6 + 12 = 18.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "intro-algebraic-expressions-p12",
+    "topicId": "intro-algebraic-expressions",
+    "difficulty": "hard",
+    "question": "A rectangle has length l and width w. Write an expression for its perimeter (the distance around it).",
+    "answer": "2l + 2w",
+    "hints": ["A rectangle has 2 lengths and 2 widths. Add all four sides."],
+    "solution": "Perimeter = l + w + l + w = 2l + 2w.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "intro-algebraic-expressions-p13",
+    "topicId": "intro-algebraic-expressions",
+    "difficulty": "hard",
+    "question": "If x = 5, what is the value of 4x − 2x + 3?",
+    "answer": "13",
+    "hints": ["4x = 20, 2x = 10. Then 20 − 10 + 3."],
+    "solution": "4(5) − 2(5) + 3 = 20 − 10 + 3 = 13.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "intro-algebraic-expressions-p14",
+    "topicId": "intro-algebraic-expressions",
+    "difficulty": "hard",
+    "question": "Each bag holds t toys. You have 5 bags and then give away 8 toys. Write an expression for how many toys you have left.",
+    "answer": "5t - 8",
+    "hints": ["Total toys: 5 × t = 5t. Give away 8: 5t − 8."],
+    "solution": "5 bags of t toys = 5t. After giving away 8: 5t − 8.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "intro-algebraic-expressions-p15",
+    "topicId": "intro-algebraic-expressions",
+    "difficulty": "hard",
+    "question": "If n = 3, which is greater: 4n + 2 or 3n + 6?",
+    "answer": "3n + 6",
+    "hints": ["Calculate each: 4(3) + 2 = ? and 3(3) + 6 = ?"],
+    "solution": "4(3) + 2 = 12 + 2 = 14. 3(3) + 6 = 9 + 6 = 15. Since 15 > 14, 3n + 6 is greater.",
+    "cognitiveDemand": "conceptual"
+  }
+]

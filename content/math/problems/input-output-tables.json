@@ -1,0 +1,152 @@
+[
+  {
+    "id": "input-output-tables-p1",
+    "topicId": "input-output-tables",
+    "difficulty": "easy",
+    "question": "An input-output table has: Input 2 → Output 5, Input 3 → Output 6, Input 4 → Output 7. What is the rule?",
+    "answer": "Add 3",
+    "hints": ["Compare each input to its output. How much more is the output?"],
+    "solution": "Each output is 3 more than the input: 2+3=5, 3+3=6, 4+3=7. The rule is 'Add 3'.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "input-output-tables-p2",
+    "topicId": "input-output-tables",
+    "difficulty": "easy",
+    "question": "The rule is 'Add 4.' Input is 6. What is the output?",
+    "answer": "10",
+    "hints": ["Apply the rule: take the input and add 4."],
+    "solution": "6 + 4 = 10.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "input-output-tables-p3",
+    "topicId": "input-output-tables",
+    "difficulty": "easy",
+    "question": "The rule is 'Subtract 2.' Input is 9. What is the output?",
+    "answer": "7",
+    "hints": ["Take the input and subtract 2."],
+    "solution": "9 − 2 = 7.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "input-output-tables-p4",
+    "topicId": "input-output-tables",
+    "difficulty": "easy",
+    "question": "A table shows: Input 1 → Output 5, Input 2 → Output 10, Input 3 → Output 15. What is the rule?",
+    "answer": "Multiply by 5",
+    "hints": ["What do you multiply each input by to get the output?"],
+    "solution": "1×5=5, 2×5=10, 3×5=15. The rule is 'Multiply by 5'.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "input-output-tables-p5",
+    "topicId": "input-output-tables",
+    "difficulty": "easy",
+    "question": "The rule is 'Add 7.' Input is 3. What is the output?",
+    "answer": "10",
+    "hints": ["Apply the rule: 3 + 7."],
+    "solution": "3 + 7 = 10.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "input-output-tables-p6",
+    "topicId": "input-output-tables",
+    "difficulty": "medium",
+    "question": "A table shows: Input 4 → Output 12, Input 7 → Output 21, Input 9 → Output 27. What is the rule?",
+    "answer": "Multiply by 3",
+    "hints": ["Try dividing each output by its input."],
+    "solution": "12÷4=3, 21÷7=3, 27÷9=3. The rule is 'Multiply by 3'.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "input-output-tables-p7",
+    "topicId": "input-output-tables",
+    "difficulty": "medium",
+    "question": "The rule is 'Multiply by 4.' Complete the table: Input 3 → Output ?, Input 5 → Output ?, Input 8 → Output ?",
+    "answer": "12, 20, 32",
+    "hints": ["Multiply each input by 4."],
+    "solution": "3×4=12, 5×4=20, 8×4=32.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "input-output-tables-p8",
+    "topicId": "input-output-tables",
+    "difficulty": "medium",
+    "question": "A table shows: Input 10 → Output 5, Input 8 → Output 3, Input 14 → Output 9. What is the rule?",
+    "answer": "Subtract 5",
+    "hints": ["How much less is each output than its input?"],
+    "solution": "10−5=5, 8−5=3, 14−5=9. The rule is 'Subtract 5'.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "input-output-tables-p9",
+    "topicId": "input-output-tables",
+    "difficulty": "medium",
+    "question": "A table shows: Input 2 → Output 6, Input 5 → Output 15, Input ? → Output 30. What is the missing input?",
+    "answer": "10",
+    "hints": ["First find the rule, then work backwards from 30."],
+    "solution": "The rule is 'Multiply by 3' (2×3=6, 5×3=15). So ?×3=30, meaning ?=10.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "input-output-tables-p10",
+    "topicId": "input-output-tables",
+    "difficulty": "medium",
+    "question": "A table shows: Input 3 → Output 11, Input 6 → Output 14, Input 10 → Output 18. What is the rule?",
+    "answer": "Add 8",
+    "hints": ["Find the difference between each input and output."],
+    "solution": "3+8=11, 6+8=14, 10+8=18. The rule is 'Add 8'.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "input-output-tables-p11",
+    "topicId": "input-output-tables",
+    "difficulty": "hard",
+    "question": "A table shows: Input 1 → Output 3, Input 2 → Output 5, Input 3 → Output 7, Input 4 → Output 9. What is the rule?",
+    "answer": "Multiply by 2, then add 1",
+    "hints": ["The rule uses two operations. Try multiplying first, then adjusting."],
+    "solution": "1×2+1=3, 2×2+1=5, 3×2+1=7, 4×2+1=9. The rule is 'Multiply by 2, then add 1'.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "input-output-tables-p12",
+    "topicId": "input-output-tables",
+    "difficulty": "hard",
+    "question": "A table shows: Input 5 → Output 11, Input 8 → Output 17, Input 10 → Output 21. What is the rule?",
+    "answer": "Multiply by 2, then add 1",
+    "hints": ["Try doubling each input. How close is that to the output?"],
+    "solution": "5×2+1=11, 8×2+1=17, 10×2+1=21. The rule is 'Multiply by 2, then add 1'.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "input-output-tables-p13",
+    "topicId": "input-output-tables",
+    "difficulty": "hard",
+    "question": "A table shows: Input 3 → Output 7, Input 5 → Output 13, Input 7 → Output 19. What is the rule?",
+    "answer": "Multiply by 3, then subtract 2",
+    "hints": ["Try multiplying each input by 3. How does that compare to the output?"],
+    "solution": "3×3−2=7, 5×3−2=13, 7×3−2=19. The rule is 'Multiply by 3, then subtract 2'.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "input-output-tables-p14",
+    "topicId": "input-output-tables",
+    "difficulty": "hard",
+    "question": "A table shows: Input 2 → Output 9, Input 4 → Output 17, Input 6 → Output 25, Input ? → Output 33. Find the rule and the missing input.",
+    "answer": "Multiply by 4, then add 1; missing input is 8",
+    "hints": ["Find the rule first: try multiplying by 4 and adjusting. Then work backwards from 33."],
+    "solution": "2×4+1=9, 4×4+1=17, 6×4+1=25. Rule: Multiply by 4, add 1. For output 33: ?×4+1=33, ?×4=32, ?=8.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "input-output-tables-p15",
+    "topicId": "input-output-tables",
+    "difficulty": "hard",
+    "question": "A table shows: Input 12 → Output 5, Input 18 → Output 8, Input 24 → Output 11. What is the rule?",
+    "answer": "Subtract 2, then divide by 2",
+    "hints": ["The outputs are much smaller than the inputs. Try subtracting first, then dividing."],
+    "solution": "(12−2)÷2 = 10÷2 = 5 ✓, (18−2)÷2 = 16÷2 = 8 ✓, (24−2)÷2 = 22÷2 = 11 ✓. The rule is 'Subtract 2, then divide by 2'.",
+    "cognitiveDemand": "problem-solving"
+  }
+]

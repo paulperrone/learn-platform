@@ -1,0 +1,152 @@
+[
+  {
+    "id": "volume-unit-cubes-p1",
+    "topicId": "volume-unit-cubes",
+    "difficulty": "easy",
+    "question": "A shape is made of 8 unit cubes. What is its volume?",
+    "answer": "8 cubic units",
+    "hints": ["Each unit cube = 1 cubic unit. Count them."],
+    "solution": "8 unit cubes = 8 cubic units.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "volume-unit-cubes-p2",
+    "topicId": "volume-unit-cubes",
+    "difficulty": "easy",
+    "question": "A rectangular prism has a bottom layer of 6 unit cubes and is 1 layer tall. What is its volume?",
+    "answer": "6 cubic units",
+    "hints": ["1 layer of 6 cubes = 6 total."],
+    "solution": "6 × 1 = 6 cubic units.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "volume-unit-cubes-p3",
+    "topicId": "volume-unit-cubes",
+    "difficulty": "easy",
+    "question": "A cube is made of unit cubes. It is 2 cubes long, 2 cubes wide, and 2 cubes tall. What is its volume?",
+    "answer": "8 cubic units",
+    "hints": ["2 × 2 × 2 = ?"],
+    "solution": "2 × 2 × 2 = 8 cubic units.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "volume-unit-cubes-p4",
+    "topicId": "volume-unit-cubes",
+    "difficulty": "easy",
+    "question": "A shape is built from 12 unit cubes. What is its volume?",
+    "answer": "12 cubic units",
+    "hints": ["Count the cubes."],
+    "solution": "12 unit cubes = volume of 12 cubic units.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "volume-unit-cubes-p5",
+    "topicId": "volume-unit-cubes",
+    "difficulty": "easy",
+    "question": "A single unit cube has a volume of how many cubic units?",
+    "answer": "1 cubic unit",
+    "hints": ["One cube = one unit of volume."],
+    "solution": "A single unit cube has a volume of 1 cubic unit.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "volume-unit-cubes-p6",
+    "topicId": "volume-unit-cubes",
+    "difficulty": "medium",
+    "question": "A rectangular prism has a bottom layer of 10 unit cubes. It is 3 layers tall. What is its volume?",
+    "answer": "30 cubic units",
+    "hints": ["10 cubes per layer × 3 layers."],
+    "solution": "10 × 3 = 30 cubic units.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "volume-unit-cubes-p7",
+    "topicId": "volume-unit-cubes",
+    "difficulty": "medium",
+    "question": "A rectangular prism is 4 cubes long, 3 cubes wide, and 2 cubes tall. What is its volume?",
+    "answer": "24 cubic units",
+    "hints": ["4 × 3 × 2 = ?"],
+    "solution": "4 × 3 × 2 = 24 cubic units.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "volume-unit-cubes-p8",
+    "topicId": "volume-unit-cubes",
+    "difficulty": "medium",
+    "question": "A rectangular prism is 5 cubes long, 2 cubes wide, and 3 cubes tall. How many unit cubes are in the bottom layer?",
+    "answer": "10",
+    "hints": ["Bottom layer = length × width."],
+    "solution": "5 × 2 = 10 unit cubes in the bottom layer.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "volume-unit-cubes-p9",
+    "topicId": "volume-unit-cubes",
+    "difficulty": "medium",
+    "question": "Two shapes are made of unit cubes. Shape A has 15 cubes. Shape B has 20 cubes. What is the difference in their volumes?",
+    "answer": "5 cubic units",
+    "hints": ["20 − 15 = ?"],
+    "solution": "20 − 15 = 5 cubic units.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "volume-unit-cubes-p10",
+    "topicId": "volume-unit-cubes",
+    "difficulty": "medium",
+    "question": "A cube is 3 cubes on each edge. How many unit cubes make up this larger cube?",
+    "answer": "27",
+    "hints": ["3 × 3 × 3 = ?"],
+    "solution": "3 × 3 × 3 = 27 unit cubes.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "volume-unit-cubes-p11",
+    "topicId": "volume-unit-cubes",
+    "difficulty": "hard",
+    "question": "An L-shaped solid is made from two rectangular prisms. Prism 1 is 4 × 2 × 2 cubes. Prism 2 is 2 × 2 × 2 cubes. What is the total volume?",
+    "answer": "24 cubic units",
+    "hints": ["Find each volume and add them."],
+    "solution": "Prism 1: 4 × 2 × 2 = 16. Prism 2: 2 × 2 × 2 = 8. Total: 16 + 8 = 24 cubic units.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "volume-unit-cubes-p12",
+    "topicId": "volume-unit-cubes",
+    "difficulty": "hard",
+    "question": "A rectangular prism has a volume of 36 cubic units. The bottom layer has 12 unit cubes. How many layers tall is it?",
+    "answer": "3",
+    "hints": ["36 ÷ 12 = ?"],
+    "solution": "36 ÷ 12 = 3 layers tall.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "volume-unit-cubes-p13",
+    "topicId": "volume-unit-cubes",
+    "difficulty": "hard",
+    "question": "A rectangular prism is 6 × 4 × 3 cubes. A 2 × 2 × 3 section is removed from one corner. What is the remaining volume?",
+    "answer": "60 cubic units",
+    "hints": ["Original − removed = remaining."],
+    "solution": "Original: 6 × 4 × 3 = 72. Removed: 2 × 2 × 3 = 12. Remaining: 72 − 12 = 60 cubic units.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "volume-unit-cubes-p14",
+    "topicId": "volume-unit-cubes",
+    "difficulty": "hard",
+    "question": "A cube has 4 unit cubes on each edge. What is its volume? What is its surface area in square units? (Each face of a unit cube is 1 square unit.)",
+    "answer": "volume: 64 cubic units, surface area: 96 sq units",
+    "hints": ["Volume: 4 × 4 × 4. Surface area: 6 faces, each 4 × 4."],
+    "solution": "Volume: 4 × 4 × 4 = 64 cubic units. Surface area: 6 × (4 × 4) = 6 × 16 = 96 square units.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "volume-unit-cubes-p15",
+    "topicId": "volume-unit-cubes",
+    "difficulty": "hard",
+    "question": "You have 48 unit cubes. Give two different sets of dimensions for rectangular prisms you could build.",
+    "answer": "4 × 4 × 3 and 6 × 4 × 2",
+    "hints": ["Find three numbers that multiply to 48."],
+    "solution": "48 = 4 × 4 × 3, or 6 × 4 × 2, or 8 × 3 × 2, or 6 × 2 × 4, etc.",
+    "cognitiveDemand": "problem-solving"
+  }
+]

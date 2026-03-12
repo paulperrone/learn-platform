@@ -1,0 +1,58 @@
+[
+  {
+    "id": "3d-shapes-attributes-ex1",
+    "topicId": "3d-shapes-attributes",
+    "title": "Counting Faces, Edges, and Vertices of a Cube",
+    "steps": [
+      {
+        "subgoalLabel": "Define the terms",
+        "instruction": "What are faces, edges, and vertices?",
+        "work": "Face: a flat surface. Edge: where two faces meet (a line). Vertex: where edges meet (a corner point).",
+        "explanation": "These three attributes describe any 3D shape."
+      },
+      {
+        "subgoalLabel": "Count faces",
+        "instruction": "How many faces does a cube have?",
+        "work": "Top, bottom, front, back, left, right = 6 faces. Each is a square.",
+        "explanation": "A cube has 6 square faces."
+      },
+      {
+        "subgoalLabel": "Count edges",
+        "instruction": "How many edges does a cube have?",
+        "work": "4 on top + 4 on bottom + 4 vertical = 12 edges.",
+        "explanation": "Each edge is where two faces meet."
+      },
+      {
+        "subgoalLabel": "Count vertices",
+        "instruction": "How many vertices does a cube have?",
+        "work": "4 on top + 4 on bottom = 8 vertices.",
+        "explanation": "Each vertex is a corner where 3 edges meet."
+      }
+    ]
+  },
+  {
+    "id": "3d-shapes-attributes-ex2",
+    "topicId": "3d-shapes-attributes",
+    "title": "Comparing 3D Shapes",
+    "steps": [
+      {
+        "subgoalLabel": "List attributes of a cone",
+        "instruction": "Describe a cone's faces, edges, and vertices.",
+        "work": "Faces: 1 flat (circle) + 1 curved. Edges: 1 (circular). Vertices: 1 (point).",
+        "explanation": "A cone has a circular base and comes to a point."
+      },
+      {
+        "subgoalLabel": "List attributes of a cylinder",
+        "instruction": "Describe a cylinder's faces, edges, and vertices.",
+        "work": "Faces: 2 flat (circles) + 1 curved. Edges: 2 (circular). Vertices: 0.",
+        "explanation": "A cylinder has two circular ends connected by a curved surface."
+      },
+      {
+        "subgoalLabel": "Compare",
+        "instruction": "How are the cone and cylinder alike and different?",
+        "work": "Both have circular faces and curved surfaces. The cone has 1 vertex; the cylinder has 0. The cone has 1 flat face; the cylinder has 2.",
+        "explanation": "Comparing attributes helps us understand how 3D shapes relate to each other."
+      }
+    ]
+  }
+]

@@ -1,0 +1,152 @@
+[
+  {
+    "id": "polygons-intro-p1",
+    "topicId": "polygons-intro",
+    "difficulty": "easy",
+    "question": "Is a shape with 3 straight sides a polygon?",
+    "answer": "yes",
+    "hints": ["A polygon is a closed shape with straight sides."],
+    "solution": "Yes. A triangle is a polygon — it is a closed shape with 3 straight sides.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "polygons-intro-p2",
+    "topicId": "polygons-intro",
+    "difficulty": "easy",
+    "question": "Is a circle a polygon?",
+    "answer": "no",
+    "hints": ["Does a circle have straight sides?"],
+    "solution": "No. A polygon must have straight sides. A circle has a curved edge, so it is not a polygon.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "polygons-intro-p3",
+    "topicId": "polygons-intro",
+    "difficulty": "easy",
+    "question": "What is the name of a polygon with 5 sides?",
+    "answer": "pentagon",
+    "hints": ["'Penta' means five."],
+    "solution": "A 5-sided polygon is called a pentagon.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "polygons-intro-p4",
+    "topicId": "polygons-intro",
+    "difficulty": "easy",
+    "question": "What is the name of a polygon with 6 sides?",
+    "answer": "hexagon",
+    "hints": ["'Hex' means six."],
+    "solution": "A 6-sided polygon is called a hexagon.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "polygons-intro-p5",
+    "topicId": "polygons-intro",
+    "difficulty": "easy",
+    "question": "What is a polygon with 4 sides called?",
+    "answer": "quadrilateral",
+    "hints": ["'Quad' means four."],
+    "solution": "A 4-sided polygon is called a quadrilateral.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "polygons-intro-p6",
+    "topicId": "polygons-intro",
+    "difficulty": "medium",
+    "question": "What is the name of a polygon with 8 sides?",
+    "answer": "octagon",
+    "hints": ["Think of a stop sign shape. 'Oct' means eight."],
+    "solution": "An 8-sided polygon is called an octagon.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "polygons-intro-p7",
+    "topicId": "polygons-intro",
+    "difficulty": "medium",
+    "question": "How many sides does a decagon have?",
+    "answer": "10",
+    "hints": ["'Deca' means ten."],
+    "solution": "A decagon has 10 sides.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "polygons-intro-p8",
+    "topicId": "polygons-intro",
+    "difficulty": "medium",
+    "question": "What is the fewest number of sides a polygon can have?",
+    "answer": "3",
+    "hints": ["Can you make a closed shape with 2 straight sides?"],
+    "solution": "The fewest sides a polygon can have is 3 (a triangle). You cannot make a closed shape with only 2 straight sides.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "polygons-intro-p9",
+    "topicId": "polygons-intro",
+    "difficulty": "medium",
+    "question": "A shape has 7 straight sides. What is it called?",
+    "answer": "heptagon",
+    "hints": ["'Hepta' means seven."],
+    "solution": "A 7-sided polygon is called a heptagon.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "polygons-intro-p10",
+    "topicId": "polygons-intro",
+    "difficulty": "medium",
+    "question": "True or false: An open shape (where the sides don't connect completely) is a polygon.",
+    "answer": "false",
+    "hints": ["A polygon must be a closed shape."],
+    "solution": "False. A polygon must be a closed shape — all sides must connect with no gaps.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "polygons-intro-p11",
+    "topicId": "polygons-intro",
+    "difficulty": "hard",
+    "question": "How many sides does a dodecagon have?",
+    "answer": "12",
+    "hints": ["'Dodeca' means twelve."],
+    "solution": "A dodecagon has 12 sides.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "polygons-intro-p12",
+    "topicId": "polygons-intro",
+    "difficulty": "hard",
+    "question": "A polygon has the same number of sides as vertices. If it has 9 vertices, how many sides does it have and what is it called?",
+    "answer": "9 sides, nonagon",
+    "hints": ["Sides always equal vertices in a polygon. 'Nona' means nine."],
+    "solution": "It has 9 sides. A 9-sided polygon is called a nonagon.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "polygons-intro-p13",
+    "topicId": "polygons-intro",
+    "difficulty": "hard",
+    "question": "Which of these is NOT a polygon: hexagon, oval, triangle, octagon?",
+    "answer": "oval",
+    "hints": ["Which shape has curved sides?"],
+    "solution": "An oval is not a polygon because it has curved sides. All polygons have only straight sides.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "polygons-intro-p14",
+    "topicId": "polygons-intro",
+    "difficulty": "hard",
+    "question": "A polygon has 2 more sides than an octagon. What is it called?",
+    "answer": "decagon",
+    "hints": ["An octagon has 8 sides. 8 + 2 = ?"],
+    "solution": "An octagon has 8 sides. 8 + 2 = 10 sides. A 10-sided polygon is a decagon.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "polygons-intro-p15",
+    "topicId": "polygons-intro",
+    "difficulty": "hard",
+    "question": "List all polygons from 3 sides to 6 sides by their names.",
+    "answer": "triangle, quadrilateral, pentagon, hexagon",
+    "hints": ["3 sides = triangle, 4 = quadrilateral, 5 = ?, 6 = ?"],
+    "solution": "3 sides: triangle. 4 sides: quadrilateral. 5 sides: pentagon. 6 sides: hexagon.",
+    "cognitiveDemand": "procedural"
+  }
+]

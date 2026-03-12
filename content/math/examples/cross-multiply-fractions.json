@@ -1,0 +1,52 @@
+[
+  {
+    "id": "cross-multiply-fractions-ex1",
+    "topicId": "cross-multiply-fractions",
+    "title": "Comparing 3/5 and 4/7 Using Cross-Multiplication",
+    "steps": [
+      {
+        "subgoalLabel": "Set up the cross products",
+        "instruction": "To compare 3/5 and 4/7, cross-multiply: multiply each numerator by the other's denominator.",
+        "work": "3 × 7 = 21 (left side), 4 × 5 = 20 (right side)",
+        "explanation": "The left product goes with the left fraction, the right product with the right fraction."
+      },
+      {
+        "subgoalLabel": "Compare the products",
+        "instruction": "Compare 21 and 20.",
+        "work": "21 > 20",
+        "explanation": "Since the left product is greater, the left fraction is greater."
+      },
+      {
+        "subgoalLabel": "State the answer",
+        "instruction": "Write the comparison.",
+        "work": "3/5 > 4/7",
+        "explanation": "3/5 is greater than 4/7."
+      }
+    ]
+  },
+  {
+    "id": "cross-multiply-fractions-ex2",
+    "topicId": "cross-multiply-fractions",
+    "title": "Checking if 4/6 and 6/9 Are Equal",
+    "steps": [
+      {
+        "subgoalLabel": "Cross-multiply",
+        "instruction": "Multiply each numerator by the other denominator.",
+        "work": "4 × 9 = 36, 6 × 6 = 36",
+        "explanation": "We get two products to compare."
+      },
+      {
+        "subgoalLabel": "Compare",
+        "instruction": "Are the two products equal?",
+        "work": "36 = 36",
+        "explanation": "Equal products mean the fractions are equivalent."
+      },
+      {
+        "subgoalLabel": "Verify",
+        "instruction": "Both simplify to the same fraction.",
+        "work": "4/6 = 2/3 and 6/9 = 2/3 ✓",
+        "explanation": "Both equal 2/3, confirming they are equivalent."
+      }
+    ]
+  }
+]

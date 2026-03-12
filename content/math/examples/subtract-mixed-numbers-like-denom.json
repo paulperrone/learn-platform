@@ -1,0 +1,58 @@
+[
+  {
+    "id": "subtract-mixed-numbers-like-denom-ex1",
+    "topicId": "subtract-mixed-numbers-like-denom",
+    "title": "Subtracting Mixed Numbers: 5 3/4 − 2 1/4",
+    "steps": [
+      {
+        "subgoalLabel": "Subtract the whole numbers",
+        "instruction": "Subtract: 5 − 2.",
+        "work": "5 − 2 = 3",
+        "explanation": "Handle whole numbers and fractions separately."
+      },
+      {
+        "subgoalLabel": "Subtract the fractions",
+        "instruction": "Subtract: 3/4 − 1/4.",
+        "work": "3/4 − 1/4 = 2/4",
+        "explanation": "Same denominator, so subtract the numerators: 3 − 1 = 2."
+      },
+      {
+        "subgoalLabel": "Combine and simplify",
+        "instruction": "Put the parts together and simplify if possible.",
+        "work": "3 + 2/4 = 3 2/4 = 3 1/2",
+        "explanation": "2/4 simplifies to 1/2. The final answer is 3 1/2."
+      }
+    ]
+  },
+  {
+    "id": "subtract-mixed-numbers-like-denom-ex2",
+    "topicId": "subtract-mixed-numbers-like-denom",
+    "title": "Word Problem: Ribbon Lengths",
+    "steps": [
+      {
+        "subgoalLabel": "Read the problem",
+        "instruction": "You have 8 5/6 meters of ribbon. You use 3 1/6 meters. How much is left?",
+        "work": "8 5/6 − 3 1/6 = ?",
+        "explanation": "We subtract because we are finding how much remains after using some."
+      },
+      {
+        "subgoalLabel": "Subtract whole numbers",
+        "instruction": "8 − 3 = ?",
+        "work": "8 − 3 = 5",
+        "explanation": "Subtract the whole-number parts first."
+      },
+      {
+        "subgoalLabel": "Subtract fractions",
+        "instruction": "5/6 − 1/6 = ?",
+        "work": "5/6 − 1/6 = 4/6 = 2/3",
+        "explanation": "Subtract numerators, keep denominator. Then simplify: 4/6 = 2/3."
+      },
+      {
+        "subgoalLabel": "State the answer",
+        "instruction": "Combine and write the answer in context.",
+        "work": "5 + 2/3 = 5 2/3 meters of ribbon left.",
+        "explanation": "You have 5 2/3 meters of ribbon remaining."
+      }
+    ]
+  }
+]

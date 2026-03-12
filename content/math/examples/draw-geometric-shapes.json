@@ -1,0 +1,52 @@
+[
+  {
+    "id": "draw-geometric-shapes-ex1",
+    "topicId": "draw-geometric-shapes",
+    "title": "Identifying a Shape from Given Attributes",
+    "steps": [
+      {
+        "subgoalLabel": "List the attributes",
+        "instruction": "A shape has: 4 sides, 2 pairs of parallel sides, 4 right angles, and all sides are 5 cm.",
+        "work": "Attributes: 4 sides, parallel sides, right angles, equal sides.",
+        "explanation": "We need to match these attributes to a known shape."
+      },
+      {
+        "subgoalLabel": "Check each candidate",
+        "instruction": "Could it be a rectangle? A rhombus? A square?",
+        "work": "Rectangle: 4 right angles ✓, but not all sides equal in general. Rhombus: all sides equal ✓, but no right angles in general. Square: all sides equal ✓ AND 4 right angles ✓.",
+        "explanation": "Only a square satisfies ALL the given attributes."
+      },
+      {
+        "subgoalLabel": "State the answer",
+        "instruction": "Name the shape.",
+        "work": "The shape is a square with 5 cm sides.",
+        "explanation": "A square is the only shape that has 4 equal sides AND 4 right angles."
+      }
+    ]
+  },
+  {
+    "id": "draw-geometric-shapes-ex2",
+    "topicId": "draw-geometric-shapes",
+    "title": "Describing a Shape with Specific Properties",
+    "steps": [
+      {
+        "subgoalLabel": "Read the requirements",
+        "instruction": "Describe a triangle with no equal sides and no right angles, where all angles are less than 90°.",
+        "work": "No equal sides → scalene. All angles < 90° → acute.",
+        "explanation": "We need a scalene acute triangle."
+      },
+      {
+        "subgoalLabel": "Give specific measurements",
+        "instruction": "Choose angles and sides that fit.",
+        "work": "Angles: 50°, 60°, 70° (all < 90°, sum to 180°). Sides: all different lengths.",
+        "explanation": "These angles are all acute and all different, giving a scalene acute triangle."
+      },
+      {
+        "subgoalLabel": "Verify all conditions",
+        "instruction": "Check each requirement.",
+        "work": "No equal sides ✓ (scalene). No right angles ✓ (all < 90°). All angles < 90° ✓ (acute).",
+        "explanation": "The shape meets every requirement."
+      }
+    ]
+  }
+]

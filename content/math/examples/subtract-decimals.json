@@ -1,0 +1,52 @@
+[
+  {
+    "id": "subtract-decimals-ex1",
+    "topicId": "subtract-decimals",
+    "title": "Subtracting 5.82 - 2.47",
+    "steps": [
+      {
+        "subgoalLabel": "Line up the decimal points",
+        "instruction": "Write the numbers with decimals aligned.",
+        "work": "  5.82\n- 2.47\n------",
+        "explanation": "Always align decimal points when subtracting decimals."
+      },
+      {
+        "subgoalLabel": "Subtract hundredths",
+        "instruction": "Subtract: 2 - 7. We need to borrow.",
+        "work": "Borrow 1 tenth → 12 - 7 = 5 hundredths",
+        "explanation": "Since 2 < 7, borrow 1 from the tenths. 12 - 7 = 5."
+      },
+      {
+        "subgoalLabel": "Subtract tenths and ones",
+        "instruction": "Tenths: 7 - 4 = 3 (8 became 7 after borrowing). Ones: 5 - 2 = 3.",
+        "work": "5.82 - 2.47 = 3.35",
+        "explanation": "After borrowing, subtract each column. The answer is 3.35."
+      }
+    ]
+  },
+  {
+    "id": "subtract-decimals-ex2",
+    "topicId": "subtract-decimals",
+    "title": "Subtracting from a Whole Number: 8.00 - 3.25",
+    "steps": [
+      {
+        "subgoalLabel": "Write with decimal places",
+        "instruction": "Write 8 as 8.00 so both numbers have the same decimal places.",
+        "work": "  8.00\n- 3.25\n------",
+        "explanation": "Adding .00 to 8 makes it easier to subtract."
+      },
+      {
+        "subgoalLabel": "Borrow and subtract",
+        "instruction": "Hundredths: 0-5, borrow. Tenths: 9-2=7 (after borrow from ones).",
+        "work": "Hundredths: 10-5=5. Tenths: 9-2=7. Ones: 7-3=4.",
+        "explanation": "We borrow 1 one into 10 tenths, then 1 tenth into 10 hundredths."
+      },
+      {
+        "subgoalLabel": "Write the answer",
+        "instruction": "Place the decimal point.",
+        "work": "8.00 - 3.25 = 4.75",
+        "explanation": "The answer is 4.75."
+      }
+    ]
+  }
+]

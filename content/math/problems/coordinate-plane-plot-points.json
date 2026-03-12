@@ -1,0 +1,152 @@
+[
+  {
+    "id": "coordinate-plane-plot-points-p1",
+    "topicId": "coordinate-plane-plot-points",
+    "difficulty": "easy",
+    "question": "What is the ordered pair for the origin on a coordinate plane?",
+    "answer": "(0, 0)",
+    "hints": ["The origin is where the x-axis and y-axis cross."],
+    "solution": "The origin is at (0, 0).",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "coordinate-plane-plot-points-p2",
+    "topicId": "coordinate-plane-plot-points",
+    "difficulty": "easy",
+    "question": "To plot the point (3, 5), you start at the origin. How far do you move right and how far up?",
+    "answer": "3 right, 5 up",
+    "hints": ["The first number is x (right), the second is y (up)."],
+    "solution": "Move 3 units right along the x-axis, then 5 units up.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "coordinate-plane-plot-points-p3",
+    "topicId": "coordinate-plane-plot-points",
+    "difficulty": "easy",
+    "question": "To plot (0, 4), how far right and how far up do you go from the origin?",
+    "answer": "0 right, 4 up",
+    "hints": ["x = 0 means don't move right at all."],
+    "solution": "Move 0 right (stay on the y-axis) and 4 up. The point is on the y-axis.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "coordinate-plane-plot-points-p4",
+    "topicId": "coordinate-plane-plot-points",
+    "difficulty": "easy",
+    "question": "To plot (7, 0), how far right and how far up do you go?",
+    "answer": "7 right, 0 up",
+    "hints": ["y = 0 means don't move up at all."],
+    "solution": "Move 7 right along the x-axis and 0 up. The point is on the x-axis.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "coordinate-plane-plot-points-p5",
+    "topicId": "coordinate-plane-plot-points",
+    "difficulty": "easy",
+    "question": "In the ordered pair (x, y), which comes first: the horizontal or vertical value?",
+    "answer": "horizontal",
+    "hints": ["x is the horizontal axis."],
+    "solution": "The horizontal value (x) comes first in an ordered pair.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "coordinate-plane-plot-points-p6",
+    "topicId": "coordinate-plane-plot-points",
+    "difficulty": "medium",
+    "question": "Which point is farther from the origin: (3, 4) or (5, 1)?",
+    "answer": "(5, 1)",
+    "hints": ["Compare distances. For (3,4): 3² + 4² = 25, √25 = 5. For (5,1): 5² + 1² = 26, √26 ≈ 5.1."],
+    "solution": "Distance of (3,4) = √25 = 5. Distance of (5,1) = √26 ≈ 5.1. (5, 1) is slightly farther from the origin.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "coordinate-plane-plot-points-p7",
+    "topicId": "coordinate-plane-plot-points",
+    "difficulty": "medium",
+    "question": "Plot these points in order: (1, 2), (4, 2), (4, 5), (1, 5). What shape do they form?",
+    "answer": "rectangle",
+    "hints": ["Connect the points in order. Notice the horizontal and vertical sides."],
+    "solution": "The points form a rectangle with width 3 and height 3 (actually a square, which is a special rectangle).",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "coordinate-plane-plot-points-p8",
+    "topicId": "coordinate-plane-plot-points",
+    "difficulty": "medium",
+    "question": "A point is 6 units right of the origin and 2 units up. What is its ordered pair?",
+    "answer": "(6, 2)",
+    "hints": ["x = how far right, y = how far up."],
+    "solution": "6 right and 2 up = (6, 2).",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "coordinate-plane-plot-points-p9",
+    "topicId": "coordinate-plane-plot-points",
+    "difficulty": "medium",
+    "question": "True or false: The points (2, 3) and (3, 2) are the same location.",
+    "answer": "false",
+    "hints": ["(2, 3) means 2 right, 3 up. (3, 2) means 3 right, 2 up."],
+    "solution": "False. (2, 3) and (3, 2) are different points. Order matters in ordered pairs.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "coordinate-plane-plot-points-p10",
+    "topicId": "coordinate-plane-plot-points",
+    "difficulty": "medium",
+    "question": "What are the coordinates of a point that is on the x-axis, 8 units from the origin?",
+    "answer": "(8, 0)",
+    "hints": ["On the x-axis means y = 0."],
+    "solution": "On the x-axis: y = 0. Eight units right: x = 8. The point is (8, 0).",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "coordinate-plane-plot-points-p11",
+    "topicId": "coordinate-plane-plot-points",
+    "difficulty": "hard",
+    "question": "Three corners of a rectangle are (1, 1), (1, 5), and (6, 1). What is the fourth corner?",
+    "answer": "(6, 5)",
+    "hints": ["A rectangle has opposite sides equal. What x and y values complete the pattern?"],
+    "solution": "The fourth corner must match x = 6 (from the third point) and y = 5 (from the second point). Answer: (6, 5).",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "coordinate-plane-plot-points-p12",
+    "topicId": "coordinate-plane-plot-points",
+    "difficulty": "hard",
+    "question": "A triangle has vertices at (0, 0), (6, 0), and (3, 4). What is the base length along the x-axis?",
+    "answer": "6 units",
+    "hints": ["The base goes from (0,0) to (6,0). How far apart are they?"],
+    "solution": "From (0, 0) to (6, 0): the distance is 6 − 0 = 6 units.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "coordinate-plane-plot-points-p13",
+    "topicId": "coordinate-plane-plot-points",
+    "difficulty": "hard",
+    "question": "Plot the points (2, 1), (2, 7). What is the distance between them?",
+    "answer": "6 units",
+    "hints": ["Same x-coordinate, so the distance is just the difference in y."],
+    "solution": "7 − 1 = 6 units. When points share an x-coordinate, distance = difference in y-coordinates.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "coordinate-plane-plot-points-p14",
+    "topicId": "coordinate-plane-plot-points",
+    "difficulty": "hard",
+    "question": "A square has one corner at (2, 3) and the opposite corner at (6, 7). What are the other two corners?",
+    "answer": "(2, 7) and (6, 3)",
+    "hints": ["The sides are parallel to the axes. Match x and y values."],
+    "solution": "The other corners share coordinates: (2, 7) and (6, 3).",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "coordinate-plane-plot-points-p15",
+    "topicId": "coordinate-plane-plot-points",
+    "difficulty": "hard",
+    "question": "Points (1, 3), (4, 3), and (4, 7) form three corners of a rectangle. What is the area of the rectangle?",
+    "answer": "12 sq units",
+    "hints": ["Width = 4 − 1 = 3. Height = 7 − 3 = 4."],
+    "solution": "Width: 4 − 1 = 3. Height: 7 − 3 = 4. Area = 3 × 4 = 12 square units.",
+    "cognitiveDemand": "problem-solving"
+  }
+]

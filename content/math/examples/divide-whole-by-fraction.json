@@ -1,0 +1,52 @@
+[
+  {
+    "id": "divide-whole-by-fraction-ex1",
+    "topicId": "divide-whole-by-fraction",
+    "title": "Dividing 6 ÷ 2/3",
+    "steps": [
+      {
+        "subgoalLabel": "Find the reciprocal",
+        "instruction": "The reciprocal of 2/3 is 3/2.",
+        "work": "Reciprocal of 2/3 = 3/2",
+        "explanation": "Flip the fraction to find the reciprocal."
+      },
+      {
+        "subgoalLabel": "Multiply",
+        "instruction": "Multiply 6 by the reciprocal.",
+        "work": "6 × 3/2 = 18/2",
+        "explanation": "6 times 3 is 18, over 2."
+      },
+      {
+        "subgoalLabel": "Simplify",
+        "instruction": "Divide 18 by 2.",
+        "work": "18/2 = 9",
+        "explanation": "6 ÷ 2/3 = 9. There are 9 groups of 2/3 in 6."
+      }
+    ]
+  },
+  {
+    "id": "divide-whole-by-fraction-ex2",
+    "topicId": "divide-whole-by-fraction",
+    "title": "Cutting Rope into 3/4 Foot Pieces",
+    "steps": [
+      {
+        "subgoalLabel": "Set up the problem",
+        "instruction": "A rope is 5 feet long. Each piece is 3/4 foot. How many pieces?",
+        "work": "5 ÷ 3/4",
+        "explanation": "We divide the total by the piece size."
+      },
+      {
+        "subgoalLabel": "Multiply by the reciprocal",
+        "instruction": "Multiply 5 by 4/3.",
+        "work": "5 × 4/3 = 20/3",
+        "explanation": "5 times 4 is 20, over 3."
+      },
+      {
+        "subgoalLabel": "Convert to mixed number",
+        "instruction": "20 ÷ 3 = 6 remainder 2.",
+        "work": "20/3 = 6 2/3",
+        "explanation": "You can cut 6 full pieces with 2/3 of a piece left over."
+      }
+    ]
+  }
+]

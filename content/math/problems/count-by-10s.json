@@ -1,0 +1,182 @@
+[
+  {
+    "id": "count-by-10s-p1",
+    "topicId": "count-by-10s",
+    "difficulty": "easy",
+    "question": "Count by 10s: 10, 20, 30, __. What comes next?",
+    "answer": "40",
+    "hints": [
+      "Add 10 to 30."
+    ],
+    "solution": "30 + 10 = 40.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "count-by-10s-p2",
+    "topicId": "count-by-10s",
+    "difficulty": "easy",
+    "question": "Count by 10s: 50, 60, 70, __. What comes next?",
+    "answer": "80",
+    "hints": [
+      "Add 10 to 70."
+    ],
+    "solution": "70 + 10 = 80.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "count-by-10s-p3",
+    "topicId": "count-by-10s",
+    "difficulty": "easy",
+    "question": "Fill in the blank: 10, 20, __, 40. What number is missing?",
+    "answer": "30",
+    "hints": [
+      "What is 20 + 10?"
+    ],
+    "solution": "20 + 10 = 30. The missing number is 30.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "count-by-10s-p4",
+    "topicId": "count-by-10s",
+    "difficulty": "easy",
+    "question": "Count by 10s: 60, 70, 80, __. What comes next?",
+    "answer": "90",
+    "hints": [
+      "Add 10 to 80."
+    ],
+    "solution": "80 + 10 = 90.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "count-by-10s-p5",
+    "topicId": "count-by-10s",
+    "difficulty": "easy",
+    "question": "Count by 10s: 80, 90, __. What comes next?",
+    "answer": "100",
+    "hints": [
+      "Add 10 to 90."
+    ],
+    "solution": "90 + 10 = 100.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "count-by-10s-p6",
+    "topicId": "count-by-10s",
+    "difficulty": "medium",
+    "question": "Count by 10s from 10 to 100. How many numbers do you say?",
+    "answer": "10",
+    "hints": [
+      "List them: 10, 20, 30, 40, 50, 60, 70, 80, 90, 100."
+    ],
+    "solution": "10, 20, 30, 40, 50, 60, 70, 80, 90, 100. That is 10 numbers.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "count-by-10s-p7",
+    "topicId": "count-by-10s",
+    "difficulty": "medium",
+    "question": "Is 45 a number you say when counting by 10s? Answer yes or no.",
+    "answer": "no",
+    "hints": [
+      "Numbers you say when counting by 10s end in 0."
+    ],
+    "solution": "No. 45 does not end in 0, so it is not in the count-by-10s pattern.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "count-by-10s-p8",
+    "topicId": "count-by-10s",
+    "difficulty": "medium",
+    "question": "Fill in the blanks: 20, __, 40, __, 60. What are the two missing numbers?",
+    "answer": "30 and 50",
+    "hints": [
+      "Add 10 each time."
+    ],
+    "solution": "20 + 10 = 30, and 40 + 10 = 50. The missing numbers are 30 and 50.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "count-by-10s-p9",
+    "topicId": "count-by-10s",
+    "difficulty": "medium",
+    "question": "Count by 10s starting from 10. What is the 7th number you say?",
+    "answer": "70",
+    "hints": [
+      "The 7th number is 7 times 10."
+    ],
+    "solution": "10, 20, 30, 40, 50, 60, 70. The 7th number is 70.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "count-by-10s-p10",
+    "topicId": "count-by-10s",
+    "difficulty": "medium",
+    "question": "What do all numbers you say when counting by 10s have in common?",
+    "answer": "They all end in 0",
+    "hints": [
+      "Look at 10, 20, 30, 40, 50. What digit do they end with?"
+    ],
+    "solution": "All numbers when counting by 10s end in 0: 10, 20, 30, 40, 50, 60, 70, 80, 90, 100.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "count-by-10s-p11",
+    "topicId": "count-by-10s",
+    "difficulty": "hard",
+    "question": "Each bag has 10 apples. If there are 6 bags, how many apples are there in all? Count by 10s.",
+    "answer": "60",
+    "hints": [
+      "Count by 10s six times."
+    ],
+    "solution": "10, 20, 30, 40, 50, 60. There are 60 apples.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "count-by-10s-p12",
+    "topicId": "count-by-10s",
+    "difficulty": "hard",
+    "question": "Dimes are worth 10 cents each. If you have 9 dimes, how many cents do you have?",
+    "answer": "90",
+    "hints": [
+      "Count by 10s nine times."
+    ],
+    "solution": "10, 20, 30, 40, 50, 60, 70, 80, 90. You have 90 cents.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "count-by-10s-p13",
+    "topicId": "count-by-10s",
+    "difficulty": "hard",
+    "question": "Start at 10 and count by 10s. What number do you reach after counting 10 times?",
+    "answer": "100",
+    "hints": [
+      "10 × 10 = 100."
+    ],
+    "solution": "Counting by 10s ten times: 10, 20, 30, 40, 50, 60, 70, 80, 90, 100. You reach 100.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "count-by-10s-p14",
+    "topicId": "count-by-10s",
+    "difficulty": "hard",
+    "question": "You count by 10s and stop at 50. Then you count by 10s from 50 and say 3 more numbers. What is the last number you say?",
+    "answer": "80",
+    "hints": [
+      "From 50, count: 60, 70, 80."
+    ],
+    "solution": "Starting at 50 and counting 3 more: 60, 70, 80. The last number is 80.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "count-by-10s-p15",
+    "topicId": "count-by-10s",
+    "difficulty": "hard",
+    "question": "There are 10 crayons in each box. How many boxes do you need to have exactly 100 crayons?",
+    "answer": "10",
+    "hints": [
+      "Count by 10s until you reach 100: 10, 20, 30, ... How many times did you count?"
+    ],
+    "solution": "10, 20, 30, 40, 50, 60, 70, 80, 90, 100. You count 10 times, so you need 10 boxes.",
+    "cognitiveDemand": "problem-solving"
+  }
+]

@@ -1,0 +1,58 @@
+[
+  {
+    "id": "compare-multi-digit-ex1",
+    "topicId": "compare-multi-digit",
+    "title": "Comparing 3,456 and 3,465",
+    "steps": [
+      {
+        "subgoalLabel": "Compare thousands",
+        "instruction": "Look at the thousands digit of each number.",
+        "work": "3,456 → thousands digit is 3\n3,465 → thousands digit is 3\nThey are equal.",
+        "explanation": "When the highest place digits are equal, move to the next place."
+      },
+      {
+        "subgoalLabel": "Compare hundreds",
+        "instruction": "Look at the hundreds digit of each number.",
+        "work": "3,456 → hundreds digit is 4\n3,465 → hundreds digit is 4\nThey are equal.",
+        "explanation": "Still equal, so we move to the tens place."
+      },
+      {
+        "subgoalLabel": "Compare tens",
+        "instruction": "Look at the tens digit of each number.",
+        "work": "3,456 → tens digit is 5\n3,465 → tens digit is 6\n5 < 6",
+        "explanation": "5 is less than 6, so 3,456 is less than 3,465."
+      },
+      {
+        "subgoalLabel": "Write the comparison",
+        "instruction": "Use the correct symbol.",
+        "work": "3,456 < 3,465",
+        "explanation": "The < symbol points to the smaller number. We compare place by place from left to right until we find a difference."
+      }
+    ]
+  },
+  {
+    "id": "compare-multi-digit-ex2",
+    "topicId": "compare-multi-digit",
+    "title": "Ordering 892, 928, and 289 from Least to Greatest",
+    "steps": [
+      {
+        "subgoalLabel": "Compare hundreds digits",
+        "instruction": "Look at the hundreds digit of each number.",
+        "work": "892 → 8\n928 → 9\n289 → 2",
+        "explanation": "The hundreds digit tells us the most about the size of a 3-digit number."
+      },
+      {
+        "subgoalLabel": "Order by hundreds",
+        "instruction": "Which hundreds digit is smallest? Largest?",
+        "work": "2 < 8 < 9, so 289 < 892 < 928",
+        "explanation": "Since all three hundreds digits are different, we can fully order the numbers just from the hundreds place."
+      },
+      {
+        "subgoalLabel": "Write the final order",
+        "instruction": "List from least to greatest.",
+        "work": "289, 892, 928",
+        "explanation": "From least to greatest: 289, 892, 928."
+      }
+    ]
+  }
+]

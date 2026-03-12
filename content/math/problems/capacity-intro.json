@@ -1,0 +1,152 @@
+[
+  {
+    "id": "capacity-intro-p1",
+    "topicId": "capacity-intro",
+    "difficulty": "easy",
+    "question": "Which holds more liquid: a cup or a bathtub?",
+    "answer": "bathtub",
+    "hints": ["Think about which one you could fill with many cups of water."],
+    "solution": "A bathtub holds much more liquid than a cup.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "capacity-intro-p2",
+    "topicId": "capacity-intro",
+    "difficulty": "easy",
+    "question": "Which holds less: a teaspoon or a bucket?",
+    "answer": "teaspoon",
+    "hints": ["A teaspoon is tiny; a bucket is large."],
+    "solution": "A teaspoon holds much less than a bucket.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "capacity-intro-p3",
+    "topicId": "capacity-intro",
+    "difficulty": "easy",
+    "question": "A glass holds 1 cup of juice. How many cups of juice do 4 glasses hold?",
+    "answer": "4 cups",
+    "hints": ["4 glasses × 1 cup each."],
+    "solution": "4 × 1 = 4 cups.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "capacity-intro-p4",
+    "topicId": "capacity-intro",
+    "difficulty": "easy",
+    "question": "A small bottle holds 2 cups of water. A large bottle holds 5 cups. Which holds more?",
+    "answer": "the large bottle",
+    "hints": ["5 > 2."],
+    "solution": "The large bottle holds more (5 cups > 2 cups).",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "capacity-intro-p5",
+    "topicId": "capacity-intro",
+    "difficulty": "easy",
+    "question": "Would you use cups or gallons to measure the water in a swimming pool?",
+    "answer": "gallons",
+    "hints": ["A swimming pool holds a LOT of water. Gallons are for large amounts."],
+    "solution": "Gallons (a pool holds thousands of gallons, far too many cups to count easily).",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "capacity-intro-p6",
+    "topicId": "capacity-intro",
+    "difficulty": "medium",
+    "question": "A pitcher holds 8 cups of lemonade. You pour out 3 cups. How many cups are left?",
+    "answer": "5 cups",
+    "hints": ["Subtract: 8 − 3."],
+    "solution": "8 − 3 = 5 cups remaining.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "capacity-intro-p7",
+    "topicId": "capacity-intro",
+    "difficulty": "medium",
+    "question": "A fish tank holds 10 liters of water. It currently has 6 liters. How many more liters are needed to fill it?",
+    "answer": "4 liters",
+    "hints": ["Subtract: 10 − 6."],
+    "solution": "10 − 6 = 4 more liters needed.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "capacity-intro-p8",
+    "topicId": "capacity-intro",
+    "difficulty": "medium",
+    "question": "A water bottle holds 2 liters. How many liters do 5 bottles hold altogether?",
+    "answer": "10 liters",
+    "hints": ["Multiply: 2 × 5."],
+    "solution": "2 × 5 = 10 liters.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "capacity-intro-p9",
+    "topicId": "capacity-intro",
+    "difficulty": "medium",
+    "question": "Order from least capacity to greatest: a spoon, a mug, a gallon jug.",
+    "answer": "spoon, mug, gallon jug",
+    "hints": ["A spoon holds the least, a gallon jug holds the most."],
+    "solution": "Spoon (smallest), mug (medium), gallon jug (largest).",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "capacity-intro-p10",
+    "topicId": "capacity-intro",
+    "difficulty": "medium",
+    "question": "A jug holds 12 cups of water. If each person drinks 2 cups, how many people can be served?",
+    "answer": "6",
+    "hints": ["Divide: 12 ÷ 2."],
+    "solution": "12 ÷ 2 = 6 people.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "capacity-intro-p11",
+    "topicId": "capacity-intro",
+    "difficulty": "hard",
+    "question": "A recipe calls for 3 cups of milk. You only have a 1-cup measure. How many times do you need to fill and pour it?",
+    "answer": "3 times",
+    "hints": ["You need 3 cups and can measure 1 cup at a time."],
+    "solution": "3 cups ÷ 1 cup = 3 times.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "capacity-intro-p12",
+    "topicId": "capacity-intro",
+    "difficulty": "hard",
+    "question": "A watering can holds 5 liters. Each plant needs 1 liter of water. You have 13 plants. How many times do you need to fill the watering can?",
+    "answer": "3 times",
+    "hints": ["13 plants need 13 liters. 13 ÷ 5 = 2 remainder 3. You need one more fill."],
+    "solution": "First fill: 5 plants. Second fill: 5 more. Third fill: 3 remaining. Total: 3 fills.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "capacity-intro-p13",
+    "topicId": "capacity-intro",
+    "difficulty": "hard",
+    "question": "A pot holds 6 liters. A bucket holds 4 times as much. How many liters does the bucket hold?",
+    "answer": "24 liters",
+    "hints": ["Multiply: 6 × 4."],
+    "solution": "6 × 4 = 24 liters.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "capacity-intro-p14",
+    "topicId": "capacity-intro",
+    "difficulty": "hard",
+    "question": "You have 20 liters of juice and pour equal amounts into 4 containers. How many liters does each container get?",
+    "answer": "5 liters",
+    "hints": ["Divide: 20 ÷ 4."],
+    "solution": "20 ÷ 4 = 5 liters each.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "capacity-intro-p15",
+    "topicId": "capacity-intro",
+    "difficulty": "hard",
+    "question": "A sink holds 15 liters of water. Water flows in at 3 liters per minute. The drain lets out 1 liter per minute. How many minutes until the sink is full?",
+    "answer": "7.5 minutes",
+    "hints": ["Net fill rate: 3 − 1 = 2 liters per minute. 15 ÷ 2."],
+    "solution": "Net rate: 3 − 1 = 2 liters/minute. 15 ÷ 2 = 7.5 minutes.",
+    "cognitiveDemand": "problem-solving"
+  }
+]

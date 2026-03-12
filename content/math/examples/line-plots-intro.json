@@ -1,0 +1,58 @@
+[
+  {
+    "id": "line-plots-intro-ex1",
+    "topicId": "line-plots-intro",
+    "title": "Creating a Line Plot from Data",
+    "steps": [
+      {
+        "subgoalLabel": "List the data",
+        "instruction": "Heights of plants in inches: 3, 4, 3, 5, 4, 4, 3, 5.",
+        "work": "Data: 3, 3, 3, 4, 4, 4, 5, 5",
+        "explanation": "Sort or tally the data first."
+      },
+      {
+        "subgoalLabel": "Set up number line",
+        "instruction": "Set up a number line from 3 to 5.",
+        "work": "3 \u2014\u2014\u2014 4 \u2014\u2014\u2014 5",
+        "explanation": "Include all values that appear in the data."
+      },
+      {
+        "subgoalLabel": "Place Xs",
+        "instruction": "Put one X above the number for each data point.",
+        "work": "3: XXX (3 Xs), 4: XXX (3 Xs), 5: XX (2 Xs)",
+        "explanation": "Stack Xs vertically above each number."
+      },
+      {
+        "subgoalLabel": "Read the plot",
+        "instruction": "Which height is most common?",
+        "work": "3 and 4 are tied with 3 Xs each.",
+        "explanation": "The tallest column(s) of Xs show the most common value(s)."
+      }
+    ]
+  },
+  {
+    "id": "line-plots-intro-ex2",
+    "topicId": "line-plots-intro",
+    "title": "Reading a Line Plot to Find the Total",
+    "steps": [
+      {
+        "subgoalLabel": "Read each column",
+        "instruction": "Count the Xs above each number.",
+        "work": "Value 2: 1 X, Value 3: 4 Xs, Value 4: 2 Xs, Value 5: 3 Xs",
+        "explanation": "Each X is one data point."
+      },
+      {
+        "subgoalLabel": "Count total data points",
+        "instruction": "Add all Xs.",
+        "work": "1 + 4 + 2 + 3 = 10 data points",
+        "explanation": "10 items were measured."
+      },
+      {
+        "subgoalLabel": "Find the sum",
+        "instruction": "Multiply each value by its frequency and add.",
+        "work": "2(1) + 3(4) + 4(2) + 5(3) = 2 + 12 + 8 + 15 = 37",
+        "explanation": "The sum of all values is 37."
+      }
+    ]
+  }
+]

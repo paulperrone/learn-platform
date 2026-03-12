@@ -1,0 +1,52 @@
+[
+  {
+    "id": "add-fractions-like-denom-ex1",
+    "topicId": "add-fractions-like-denom",
+    "title": "Adding Fractions with the Same Denominator: 2/5 + 1/5",
+    "steps": [
+      {
+        "subgoalLabel": "Check the denominators",
+        "instruction": "Are the denominators the same?",
+        "work": "Both fractions have denominator 5. Yes!",
+        "explanation": "When denominators match, we can add the fractions directly."
+      },
+      {
+        "subgoalLabel": "Add the numerators",
+        "instruction": "Add the top numbers (numerators) and keep the denominator.",
+        "work": "2/5 + 1/5 = (2+1)/5 = 3/5",
+        "explanation": "2 fifths plus 1 fifth equals 3 fifths, just like 2 apples + 1 apple = 3 apples."
+      },
+      {
+        "subgoalLabel": "Check if you can simplify",
+        "instruction": "Is 3/5 in simplest form?",
+        "work": "GCF(3, 5) = 1. Yes, 3/5 is already simplified.",
+        "explanation": "Always check if the answer can be simplified. Since 3 and 5 share no common factors, 3/5 is the final answer."
+      }
+    ]
+  },
+  {
+    "id": "add-fractions-like-denom-ex2",
+    "topicId": "add-fractions-like-denom",
+    "title": "Adding Fractions That Make More Than a Whole: 5/6 + 3/6",
+    "steps": [
+      {
+        "subgoalLabel": "Add the numerators",
+        "instruction": "Both have denominator 6. Add 5 + 3.",
+        "work": "5/6 + 3/6 = 8/6",
+        "explanation": "5 sixths plus 3 sixths equals 8 sixths."
+      },
+      {
+        "subgoalLabel": "Convert to a mixed number",
+        "instruction": "8/6 is an improper fraction (8 > 6). Convert it.",
+        "work": "8 ÷ 6 = 1 remainder 2. So 8/6 = 1 2/6.",
+        "explanation": "When the numerator is larger than the denominator, the fraction is greater than 1."
+      },
+      {
+        "subgoalLabel": "Simplify",
+        "instruction": "Can 2/6 be simplified?",
+        "work": "2/6 = 1/3. Final answer: 1 1/3.",
+        "explanation": "GCF(2, 6) = 2. Divide both by 2 to get 1/3. The final answer is 1 1/3."
+      }
+    ]
+  }
+]

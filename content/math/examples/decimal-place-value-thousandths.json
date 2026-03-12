@@ -1,0 +1,52 @@
+[
+  {
+    "id": "decimal-place-value-thousandths-ex1",
+    "topicId": "decimal-place-value-thousandths",
+    "title": "Identifying the Thousandths Place in 0.847",
+    "steps": [
+      {
+        "subgoalLabel": "Name each decimal place",
+        "instruction": "Label each digit after the decimal point in 0.847.",
+        "work": "8 → tenths\n4 → hundredths\n7 → thousandths",
+        "explanation": "The three places after the decimal are tenths, hundredths, and thousandths."
+      },
+      {
+        "subgoalLabel": "Find the value of the thousandths digit",
+        "instruction": "What is the value of the 7?",
+        "work": "7 × 0.001 = 0.007",
+        "explanation": "Each unit in the thousandths place is worth 0.001 (one thousandth)."
+      },
+      {
+        "subgoalLabel": "Express as a fraction",
+        "instruction": "Write 0.847 as a fraction over 1000.",
+        "work": "0.847 = 847/1000",
+        "explanation": "Three decimal places means we can write it as a fraction with denominator 1000."
+      }
+    ]
+  },
+  {
+    "id": "decimal-place-value-thousandths-ex2",
+    "topicId": "decimal-place-value-thousandths",
+    "title": "Comparing 0.25 and 0.205",
+    "steps": [
+      {
+        "subgoalLabel": "Make the decimals the same length",
+        "instruction": "Write both numbers with three decimal places.",
+        "work": "0.25 = 0.250\n0.205 = 0.205",
+        "explanation": "Adding a zero to 0.25 makes it 0.250. This does not change its value but makes comparison easier."
+      },
+      {
+        "subgoalLabel": "Compare as thousandths",
+        "instruction": "Convert both to thousandths and compare.",
+        "work": "0.250 = 250 thousandths\n0.205 = 205 thousandths\n250 > 205",
+        "explanation": "When both are in thousandths, we just compare whole numbers: 250 > 205."
+      },
+      {
+        "subgoalLabel": "Write the result",
+        "instruction": "State the comparison.",
+        "work": "0.25 > 0.205",
+        "explanation": "Even though 0.205 has more digits, 0.25 is actually greater because 250 thousandths > 205 thousandths."
+      }
+    ]
+  }
+]

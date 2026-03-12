@@ -1,0 +1,52 @@
+[
+  {
+    "id": "divide-unit-fraction-by-whole-ex1",
+    "topicId": "divide-unit-fraction-by-whole",
+    "title": "Dividing 1/4 ÷ 3",
+    "steps": [
+      {
+        "subgoalLabel": "Understand the problem",
+        "instruction": "We need to split 1/4 into 3 equal parts.",
+        "work": "1/4 ÷ 3",
+        "explanation": "Dividing a fraction by a whole number makes each part smaller."
+      },
+      {
+        "subgoalLabel": "Multiply by the reciprocal",
+        "instruction": "Dividing by 3 is the same as multiplying by 1/3.",
+        "work": "1/4 × 1/3 = 1/12",
+        "explanation": "1 × 1 = 1 for the numerator, 4 × 3 = 12 for the denominator."
+      },
+      {
+        "subgoalLabel": "State the answer",
+        "instruction": "Each part is 1/12.",
+        "work": "1/4 ÷ 3 = 1/12",
+        "explanation": "Splitting one-fourth into 3 pieces gives one-twelfth each."
+      }
+    ]
+  },
+  {
+    "id": "divide-unit-fraction-by-whole-ex2",
+    "topicId": "divide-unit-fraction-by-whole",
+    "title": "Sharing 1/2 Among 5 People",
+    "steps": [
+      {
+        "subgoalLabel": "Set up the division",
+        "instruction": "There is 1/2 of a pie. Five people share it equally.",
+        "work": "1/2 ÷ 5",
+        "explanation": "We need to divide 1/2 by 5."
+      },
+      {
+        "subgoalLabel": "Multiply by the reciprocal",
+        "instruction": "Dividing by 5 means multiplying by 1/5.",
+        "work": "1/2 × 1/5 = 1/10",
+        "explanation": "Each person gets 1/10 of the whole pie."
+      },
+      {
+        "subgoalLabel": "Check reasonableness",
+        "instruction": "Does 1/10 make sense?",
+        "work": "5 × 1/10 = 5/10 = 1/2 ✓",
+        "explanation": "5 people each getting 1/10 is 5/10 = 1/2. Correct."
+      }
+    ]
+  }
+]

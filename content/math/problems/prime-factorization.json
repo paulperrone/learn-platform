@@ -1,0 +1,152 @@
+[
+  {
+    "id": "prime-factorization-p1",
+    "topicId": "prime-factorization",
+    "difficulty": "easy",
+    "question": "Find the prime factorization of 12.",
+    "answer": "2 x 2 x 3",
+    "hints": ["12 = 2 × 6, and 6 = 2 × 3."],
+    "solution": "12 = 2 × 6 = 2 × 2 × 3.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "prime-factorization-p2",
+    "topicId": "prime-factorization",
+    "difficulty": "easy",
+    "question": "Find the prime factorization of 18.",
+    "answer": "2 x 3 x 3",
+    "hints": ["18 = 2 × 9, and 9 = 3 × 3."],
+    "solution": "18 = 2 × 9 = 2 × 3 × 3.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "prime-factorization-p3",
+    "topicId": "prime-factorization",
+    "difficulty": "easy",
+    "question": "Find the prime factorization of 8.",
+    "answer": "2 x 2 x 2",
+    "hints": ["8 = 2 × 4, and 4 = 2 × 2."],
+    "solution": "8 = 2 × 4 = 2 × 2 × 2.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "prime-factorization-p4",
+    "topicId": "prime-factorization",
+    "difficulty": "easy",
+    "question": "Find the prime factorization of 15.",
+    "answer": "3 x 5",
+    "hints": ["15 = 3 × 5. Both 3 and 5 are prime."],
+    "solution": "15 = 3 × 5.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "prime-factorization-p5",
+    "topicId": "prime-factorization",
+    "difficulty": "easy",
+    "question": "Is 7 prime or composite?",
+    "answer": "prime",
+    "hints": ["Check: is 7 divisible by 2? No. By 3? No. By 5? No."],
+    "solution": "7 is prime. Its only factors are 1 and 7.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "prime-factorization-p6",
+    "topicId": "prime-factorization",
+    "difficulty": "medium",
+    "question": "Find the prime factorization of 36.",
+    "answer": "2 x 2 x 3 x 3",
+    "hints": ["36 = 2 × 18 = 2 × 2 × 9 = 2 × 2 × 3 × 3."],
+    "solution": "36 = 2 × 2 × 3 × 3.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "prime-factorization-p7",
+    "topicId": "prime-factorization",
+    "difficulty": "medium",
+    "question": "Find the prime factorization of 40.",
+    "answer": "2 x 2 x 2 x 5",
+    "hints": ["40 = 2 × 20 = 2 × 2 × 10 = 2 × 2 × 2 × 5."],
+    "solution": "40 = 2 × 2 × 2 × 5.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "prime-factorization-p8",
+    "topicId": "prime-factorization",
+    "difficulty": "medium",
+    "question": "Find the prime factorization of 50.",
+    "answer": "2 x 5 x 5",
+    "hints": ["50 = 2 × 25 = 2 × 5 × 5."],
+    "solution": "50 = 2 × 5 × 5.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "prime-factorization-p9",
+    "topicId": "prime-factorization",
+    "difficulty": "medium",
+    "question": "Find the prime factorization of 60.",
+    "answer": "2 x 2 x 3 x 5",
+    "hints": ["60 = 2 × 30 = 2 × 2 × 15 = 2 × 2 × 3 × 5."],
+    "solution": "60 = 2 × 2 × 3 × 5.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "prime-factorization-p10",
+    "topicId": "prime-factorization",
+    "difficulty": "medium",
+    "question": "Find the prime factorization of 45.",
+    "answer": "3 x 3 x 5",
+    "hints": ["45 = 5 × 9 = 5 × 3 × 3."],
+    "solution": "45 = 3 × 3 × 5.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "prime-factorization-p11",
+    "topicId": "prime-factorization",
+    "difficulty": "hard",
+    "question": "Find the prime factorization of 72.",
+    "answer": "2 x 2 x 2 x 3 x 3",
+    "hints": ["72 = 2 × 36 = 2 × 2 × 18 = 2 × 2 × 2 × 9 = 2 × 2 × 2 × 3 × 3."],
+    "solution": "72 = 2 × 2 × 2 × 3 × 3.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "prime-factorization-p12",
+    "topicId": "prime-factorization",
+    "difficulty": "hard",
+    "question": "Find the prime factorization of 100.",
+    "answer": "2 x 2 x 5 x 5",
+    "hints": ["100 = 2 × 50 = 2 × 2 × 25 = 2 × 2 × 5 × 5."],
+    "solution": "100 = 2 × 2 × 5 × 5.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "prime-factorization-p13",
+    "topicId": "prime-factorization",
+    "difficulty": "hard",
+    "question": "Find the prime factorization of 84.",
+    "answer": "2 x 2 x 3 x 7",
+    "hints": ["84 = 2 × 42 = 2 × 2 × 21 = 2 × 2 × 3 × 7."],
+    "solution": "84 = 2 × 2 × 3 × 7.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "prime-factorization-p14",
+    "topicId": "prime-factorization",
+    "difficulty": "hard",
+    "question": "Two numbers have prime factorizations 2 × 2 × 3 and 2 × 3 × 3. What are the two numbers?",
+    "answer": "12 and 18",
+    "hints": ["2 × 2 × 3 = 12. 2 × 3 × 3 = 18."],
+    "solution": "2 × 2 × 3 = 12 and 2 × 3 × 3 = 18.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "prime-factorization-p15",
+    "topicId": "prime-factorization",
+    "difficulty": "hard",
+    "question": "Find the prime factorization of 120.",
+    "answer": "2 x 2 x 2 x 3 x 5",
+    "hints": ["120 = 2 × 60 = 2 × 2 × 30 = 2 × 2 × 2 × 15 = 2 × 2 × 2 × 3 × 5."],
+    "solution": "120 = 2 × 2 × 2 × 3 × 5.",
+    "cognitiveDemand": "procedural"
+  }
+]

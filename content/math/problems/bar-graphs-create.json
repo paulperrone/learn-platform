@@ -1,0 +1,152 @@
+[
+  {
+    "id": "bar-graphs-create-p1",
+    "topicId": "bar-graphs-create",
+    "difficulty": "easy",
+    "question": "You survey classmates about their favorite sport. Soccer: 8 votes, Basketball: 5 votes, Baseball: 3 votes. If each grid square on the graph represents 1 vote, how tall should the Soccer bar be?",
+    "answer": "8 squares",
+    "hints": ["Each square = 1 vote. Soccer has 8 votes."],
+    "solution": "Soccer has 8 votes, so the bar should be 8 squares tall.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "bar-graphs-create-p2",
+    "topicId": "bar-graphs-create",
+    "difficulty": "easy",
+    "question": "You are making a bar graph. The data is: Apples = 6, Oranges = 9, Bananas = 4. What should the title of the graph be?",
+    "answer": "Favorite Fruits",
+    "hints": ["The title should describe what the graph shows."],
+    "solution": "A good title is 'Favorite Fruits' since the data shows fruit preferences.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "bar-graphs-create-p3",
+    "topicId": "bar-graphs-create",
+    "difficulty": "easy",
+    "question": "The data shows: Red = 4, Blue = 7, Green = 2. On a bar graph, which bar should be the tallest?",
+    "answer": "Blue",
+    "hints": ["The tallest bar represents the largest value."],
+    "solution": "Blue (7) is the largest, so the Blue bar should be tallest.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "bar-graphs-create-p4",
+    "topicId": "bar-graphs-create",
+    "difficulty": "easy",
+    "question": "A bar graph needs a scale that goes up to at least 15. The scale counts by 5s. What numbers should be on the scale?",
+    "answer": "0, 5, 10, 15",
+    "hints": ["Start at 0, count by 5s until you reach or pass 15."],
+    "solution": "0, 5, 10, 15.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "bar-graphs-create-p5",
+    "topicId": "bar-graphs-create",
+    "difficulty": "easy",
+    "question": "You made a bar graph and forgot to label the axes. One axis has numbers (0, 2, 4, 6, 8). The other has the names of animals. What label goes on the axis with numbers?",
+    "answer": "Number of students",
+    "hints": ["The number axis shows how many of something."],
+    "solution": "The number axis should be labeled 'Number of students' (or 'Number of votes').",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "bar-graphs-create-p6",
+    "topicId": "bar-graphs-create",
+    "difficulty": "medium",
+    "question": "The data is: Dogs = 12, Cats = 8, Birds = 4, Fish = 6. The scale counts by 2s. How many grid lines up should the Dogs bar reach?",
+    "answer": "6",
+    "hints": ["Scale: 0, 2, 4, 6, 8, 10, 12. Dogs = 12 = the 6th grid line."],
+    "solution": "12 ÷ 2 = 6 grid lines.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "bar-graphs-create-p7",
+    "topicId": "bar-graphs-create",
+    "difficulty": "medium",
+    "question": "The highest value in your data is 45 and the lowest is 5. Would a scale counting by 1s, 5s, or 10s work best?",
+    "answer": "5s",
+    "hints": ["Counting by 1s would need 45 lines (too many). By 10s gives only 5 lines (too few detail). By 5s gives 9 lines (just right)."],
+    "solution": "Counting by 5s (0, 5, 10, ..., 45) gives good detail without too many lines.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "bar-graphs-create-p8",
+    "topicId": "bar-graphs-create",
+    "difficulty": "medium",
+    "question": "Data: Mon = 15, Tue = 10, Wed = 20, Thu = 5, Fri = 25. The scale counts by 5s. How tall should the Wednesday bar be (in grid squares)?",
+    "answer": "4 squares",
+    "hints": ["Scale by 5: each grid square = 5. Wed = 20. 20 ÷ 5 = 4 squares."],
+    "solution": "20 ÷ 5 = 4 grid squares tall.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "bar-graphs-create-p9",
+    "topicId": "bar-graphs-create",
+    "difficulty": "medium",
+    "question": "You made a vertical bar graph but one bar goes above the top of your grid. The scale goes to 20, but your data has a value of 24. What should you do?",
+    "answer": "Extend the scale to at least 24 or 25",
+    "hints": ["The scale must go high enough to show all data."],
+    "solution": "Extend the scale. If counting by 2s, go to 24 or 26. If by 5s, go to 25.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "bar-graphs-create-p10",
+    "topicId": "bar-graphs-create",
+    "difficulty": "medium",
+    "question": "You want to create a bar graph showing how many students walk, bike, or ride a bus to school. You surveyed 30 students. Walk = 12, Bike = 8, Bus = 10. What should the x-axis show?",
+    "answer": "the ways to get to school (walk, bike, bus)",
+    "hints": ["The x-axis shows the categories being compared."],
+    "solution": "The x-axis should show the categories: Walk, Bike, Bus.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "bar-graphs-create-p11",
+    "topicId": "bar-graphs-create",
+    "difficulty": "hard",
+    "question": "Data: Grade 1 = 35, Grade 2 = 42, Grade 3 = 28, Grade 4 = 50, Grade 5 = 45. What would be a good scale for a bar graph of this data?",
+    "answer": "count by 5s from 0 to 50",
+    "hints": ["Highest value is 50. Counting by 5s: 0, 5, 10, ..., 50 (11 grid lines)."],
+    "solution": "Count by 5s from 0 to 50. This gives 10 intervals, enough detail to read values.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "bar-graphs-create-p12",
+    "topicId": "bar-graphs-create",
+    "difficulty": "hard",
+    "question": "You collect data on daily steps: Mon = 4,500, Tue = 6,200, Wed = 5,800, Thu = 3,900, Fri = 7,100. Would a scale counting by 500 or 1,000 be more appropriate?",
+    "answer": "1000",
+    "hints": ["By 500: need 0 to 7,500 = 15 lines. By 1,000: 0 to 8,000 = 8 lines. Both work, but 1,000 is cleaner for these values."],
+    "solution": "Counting by 1,000 is more appropriate. It goes from 0 to 8,000 (8 lines) and gives enough detail.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "bar-graphs-create-p13",
+    "topicId": "bar-graphs-create",
+    "difficulty": "hard",
+    "question": "You need to make a bar graph from this tally: Soccer |||| |||| || (12), Tennis |||| ||| (8), Swimming |||| |||| (10), Running |||| (5). What is the range of the data?",
+    "answer": "7",
+    "hints": ["Range = highest − lowest = 12 − 5."],
+    "solution": "Highest: 12 (Soccer). Lowest: 5 (Running). Range: 12 − 5 = 7.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "bar-graphs-create-p14",
+    "topicId": "bar-graphs-create",
+    "difficulty": "hard",
+    "question": "A horizontal bar graph shows the same data as a vertical bar graph. If a vertical bar graph has 'Number of students' on the y-axis and 'Favorite season' on the x-axis, what goes on each axis in the horizontal version?",
+    "answer": "Number of students on x-axis, Favorite season on y-axis",
+    "hints": ["In horizontal bar graphs, the axes swap compared to vertical."],
+    "solution": "In a horizontal bar graph, the categories (seasons) go on the y-axis and the numbers go on the x-axis.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "bar-graphs-create-p15",
+    "topicId": "bar-graphs-create",
+    "difficulty": "hard",
+    "question": "Data: January = 18, February = 22, March = 15, April = 30. On a bar graph with a scale counting by 5s, between which two scale marks would the January bar end?",
+    "answer": "between 15 and 20",
+    "hints": ["January = 18. Scale marks: ..., 15, 20, 25, ... 18 is between 15 and 20."],
+    "solution": "18 falls between 15 and 20 on the scale.",
+    "cognitiveDemand": "conceptual"
+  }
+]

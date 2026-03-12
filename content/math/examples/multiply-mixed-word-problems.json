@@ -1,0 +1,58 @@
+[
+  {
+    "id": "multiply-mixed-word-problems-ex1",
+    "topicId": "multiply-mixed-word-problems",
+    "title": "Scaling a Recipe with Mixed Numbers",
+    "steps": [
+      {
+        "subgoalLabel": "Understand the problem",
+        "instruction": "A recipe calls for 1 3/4 cups of flour. You want to triple the recipe. How much flour?",
+        "work": "1 3/4 × 3",
+        "explanation": "Tripling means multiplying by 3."
+      },
+      {
+        "subgoalLabel": "Convert to improper fraction",
+        "instruction": "Convert 1 3/4 to an improper fraction.",
+        "work": "1 3/4 = (1 × 4 + 3)/4 = 7/4",
+        "explanation": "1 whole is 4 fourths, plus 3 more is 7 fourths."
+      },
+      {
+        "subgoalLabel": "Multiply",
+        "instruction": "Multiply 7/4 × 3.",
+        "work": "7/4 × 3 = 21/4",
+        "explanation": "7 × 3 = 21, keep the denominator 4."
+      },
+      {
+        "subgoalLabel": "Convert back",
+        "instruction": "Convert 21/4 to a mixed number.",
+        "work": "21/4 = 5 1/4",
+        "explanation": "You need 5 1/4 cups of flour."
+      }
+    ]
+  },
+  {
+    "id": "multiply-mixed-word-problems-ex2",
+    "topicId": "multiply-mixed-word-problems",
+    "title": "Distance Problem with Mixed Numbers",
+    "steps": [
+      {
+        "subgoalLabel": "Understand the problem",
+        "instruction": "A cyclist rides 3 1/3 miles each day for 6 days. How far does she ride in total?",
+        "work": "3 1/3 × 6",
+        "explanation": "Multiply daily distance by number of days."
+      },
+      {
+        "subgoalLabel": "Convert to improper fraction",
+        "instruction": "Convert 3 1/3 to 10/3.",
+        "work": "3 1/3 = (3 × 3 + 1)/3 = 10/3",
+        "explanation": "3 wholes is 9 thirds, plus 1 is 10 thirds."
+      },
+      {
+        "subgoalLabel": "Multiply and simplify",
+        "instruction": "Multiply 10/3 × 6 and simplify.",
+        "work": "10/3 × 6 = 60/3 = 20",
+        "explanation": "She rides 20 miles in 6 days."
+      }
+    ]
+  }
+]

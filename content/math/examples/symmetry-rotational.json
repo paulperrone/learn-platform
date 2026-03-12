@@ -1,0 +1,52 @@
+[
+  {
+    "id": "symmetry-rotational-ex1",
+    "topicId": "symmetry-rotational",
+    "title": "Understanding Rotational Symmetry",
+    "steps": [
+      {
+        "subgoalLabel": "Define rotational symmetry",
+        "instruction": "What is rotational symmetry?",
+        "work": "A shape has rotational symmetry if it looks exactly the same after being rotated less than a full turn (360°).",
+        "explanation": "Imagine spinning the shape around its center. If it matches itself before completing a full spin, it has rotational symmetry."
+      },
+      {
+        "subgoalLabel": "Test a square",
+        "instruction": "Does a square have rotational symmetry?",
+        "work": "Rotate a square 90° — it looks the same. Rotate 180° — same. Rotate 270° — same. It matches 4 times before 360°.",
+        "explanation": "The square has rotational symmetry of order 4."
+      },
+      {
+        "subgoalLabel": "Find the angle",
+        "instruction": "What is the smallest rotation angle for the square?",
+        "work": "360° ÷ 4 = 90°.",
+        "explanation": "The smallest angle of rotation = 360° divided by the order of symmetry."
+      }
+    ]
+  },
+  {
+    "id": "symmetry-rotational-ex2",
+    "topicId": "symmetry-rotational",
+    "title": "Finding Order of Rotational Symmetry",
+    "steps": [
+      {
+        "subgoalLabel": "Identify the shape",
+        "instruction": "Find the order of rotational symmetry of a regular hexagon.",
+        "work": "A regular hexagon has 6 equal sides.",
+        "explanation": "We need to find how many times it matches itself in a full 360° rotation."
+      },
+      {
+        "subgoalLabel": "Calculate the smallest angle",
+        "instruction": "Divide 360° by the number of sides.",
+        "work": "360° ÷ 6 = 60°.",
+        "explanation": "The hexagon first matches itself after a 60° rotation."
+      },
+      {
+        "subgoalLabel": "List all matching angles",
+        "instruction": "What are all the angles where it matches?",
+        "work": "60°, 120°, 180°, 240°, 300°, 360°. That's 6 positions.",
+        "explanation": "The order of rotational symmetry is 6. For any regular polygon, the order equals the number of sides."
+      }
+    ]
+  }
+]

@@ -1,0 +1,52 @@
+[
+  {
+    "id": "divide-whole-by-unit-fraction-ex1",
+    "topicId": "divide-whole-by-unit-fraction",
+    "title": "Dividing 6 ÷ 1/3",
+    "steps": [
+      {
+        "subgoalLabel": "Understand the question",
+        "instruction": "We need to find how many 1/3s fit into 6.",
+        "work": "6 ÷ 1/3 = ?",
+        "explanation": "Dividing by a unit fraction asks: how many of that fraction fit into the whole number?"
+      },
+      {
+        "subgoalLabel": "Use the reciprocal",
+        "instruction": "Dividing by 1/3 is the same as multiplying by its reciprocal, 3.",
+        "work": "6 ÷ 1/3 = 6 × 3",
+        "explanation": "Invert the divisor and multiply."
+      },
+      {
+        "subgoalLabel": "Calculate",
+        "instruction": "Multiply 6 × 3.",
+        "work": "6 × 3 = 18",
+        "explanation": "There are 18 thirds in 6."
+      }
+    ]
+  },
+  {
+    "id": "divide-whole-by-unit-fraction-ex2",
+    "topicId": "divide-whole-by-unit-fraction",
+    "title": "Cutting Rope into Pieces",
+    "steps": [
+      {
+        "subgoalLabel": "Set up the problem",
+        "instruction": "A rope is 4 feet long. Each piece is 1/5 foot. How many pieces?",
+        "work": "4 ÷ 1/5",
+        "explanation": "We divide the total length by the piece length."
+      },
+      {
+        "subgoalLabel": "Multiply by the reciprocal",
+        "instruction": "Multiply 4 by the reciprocal of 1/5, which is 5.",
+        "work": "4 × 5 = 20",
+        "explanation": "There are 5 fifths in each whole, and 4 wholes, so 20 pieces."
+      },
+      {
+        "subgoalLabel": "State the answer",
+        "instruction": "Write the final answer.",
+        "work": "4 ÷ 1/5 = 20 pieces",
+        "explanation": "The rope can be cut into 20 pieces."
+      }
+    ]
+  }
+]

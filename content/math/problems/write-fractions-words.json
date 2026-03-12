@@ -1,0 +1,182 @@
+[
+  {
+    "id": "write-fractions-words-p1",
+    "topicId": "write-fractions-words",
+    "difficulty": "easy",
+    "question": "Write the fraction 1/2 in words.",
+    "answer": "one half",
+    "hints": [
+      "The top number is 'one' and the bottom number 2 is read as 'half'."
+    ],
+    "solution": "1/2 is written as 'one half'.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "write-fractions-words-p2",
+    "topicId": "write-fractions-words",
+    "difficulty": "easy",
+    "question": "Write the fraction 1/4 in words.",
+    "answer": "one fourth",
+    "hints": [
+      "The numerator is one. The denominator 4 becomes 'fourth'."
+    ],
+    "solution": "1/4 is written as 'one fourth'.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "write-fractions-words-p3",
+    "topicId": "write-fractions-words",
+    "difficulty": "easy",
+    "question": "Write the fraction 1/3 in words.",
+    "answer": "one third",
+    "hints": [
+      "The denominator 3 becomes 'third'."
+    ],
+    "solution": "1/3 is written as 'one third'.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "write-fractions-words-p4",
+    "topicId": "write-fractions-words",
+    "difficulty": "easy",
+    "question": "Write 'three fourths' as a fraction.",
+    "answer": "3/4",
+    "hints": [
+      "'Three' is the numerator. 'Fourths' means the denominator is 4."
+    ],
+    "solution": "'Three fourths' = 3/4.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "write-fractions-words-p5",
+    "topicId": "write-fractions-words",
+    "difficulty": "easy",
+    "question": "Write the fraction 2/3 in words.",
+    "answer": "two thirds",
+    "hints": [
+      "The numerator 2 is 'two'. The denominator 3 becomes 'thirds' (plural because numerator > 1)."
+    ],
+    "solution": "2/3 is written as 'two thirds'.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "write-fractions-words-p6",
+    "topicId": "write-fractions-words",
+    "difficulty": "medium",
+    "question": "Write 'five eighths' as a fraction.",
+    "answer": "5/8",
+    "hints": [
+      "'Five' is the numerator. 'Eighths' means the denominator is 8."
+    ],
+    "solution": "'Five eighths' = 5/8.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "write-fractions-words-p7",
+    "topicId": "write-fractions-words",
+    "difficulty": "medium",
+    "question": "Write the fraction 7/10 in words.",
+    "answer": "seven tenths",
+    "hints": [
+      "The denominator 10 becomes 'tenths'."
+    ],
+    "solution": "7/10 is written as 'seven tenths'.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "write-fractions-words-p8",
+    "topicId": "write-fractions-words",
+    "difficulty": "medium",
+    "question": "Write 'four sixths' as a fraction.",
+    "answer": "4/6",
+    "hints": [
+      "'Four' → numerator 4. 'Sixths' → denominator 6."
+    ],
+    "solution": "'Four sixths' = 4/6.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "write-fractions-words-p9",
+    "topicId": "write-fractions-words",
+    "difficulty": "medium",
+    "question": "Write the fraction 3/8 in words.",
+    "answer": "three eighths",
+    "hints": [
+      "The denominator 8 becomes 'eighths'."
+    ],
+    "solution": "3/8 is written as 'three eighths'.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "write-fractions-words-p10",
+    "topicId": "write-fractions-words",
+    "difficulty": "medium",
+    "question": "Write 'nine tenths' as a fraction.",
+    "answer": "9/10",
+    "hints": [
+      "'Nine' → 9. 'Tenths' → denominator is 10."
+    ],
+    "solution": "'Nine tenths' = 9/10.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "write-fractions-words-p11",
+    "topicId": "write-fractions-words",
+    "difficulty": "hard",
+    "question": "Write the fraction 11/12 in words.",
+    "answer": "eleven twelfths",
+    "hints": [
+      "The denominator 12 becomes 'twelfths'."
+    ],
+    "solution": "11/12 is written as 'eleven twelfths'.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "write-fractions-words-p12",
+    "topicId": "write-fractions-words",
+    "difficulty": "hard",
+    "question": "Write 'six hundredths' as a fraction.",
+    "answer": "6/100",
+    "hints": [
+      "'Hundredths' means the denominator is 100."
+    ],
+    "solution": "'Six hundredths' = 6/100.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "write-fractions-words-p13",
+    "topicId": "write-fractions-words",
+    "difficulty": "hard",
+    "question": "Write 'two and three fifths' as a mixed number.",
+    "answer": "2 3/5",
+    "hints": [
+      "'Two and' means 2 wholes. 'Three fifths' is the fraction part."
+    ],
+    "solution": "'Two and three fifths' = 2 3/5.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "write-fractions-words-p14",
+    "topicId": "write-fractions-words",
+    "difficulty": "hard",
+    "question": "Write the mixed number 3 1/4 in words.",
+    "answer": "three and one fourth",
+    "hints": [
+      "Read the whole number first, say 'and', then read the fraction."
+    ],
+    "solution": "3 1/4 is written as 'three and one fourth'.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "write-fractions-words-p15",
+    "topicId": "write-fractions-words",
+    "difficulty": "hard",
+    "question": "Write 'fifteen sixteenths' as a fraction.",
+    "answer": "15/16",
+    "hints": [
+      "'Fifteen' → 15. 'Sixteenths' → denominator is 16."
+    ],
+    "solution": "'Fifteen sixteenths' = 15/16.",
+    "cognitiveDemand": "procedural"
+  }
+]

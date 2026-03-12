@@ -1,0 +1,182 @@
+[
+  {
+    "id": "multiply-fractions-procedural-p1",
+    "topicId": "multiply-fractions-procedural",
+    "difficulty": "easy",
+    "question": "What is 1/2 × 1/3?",
+    "answer": "1/6",
+    "hints": [
+      "Multiply the numerators: 1 × 1. Multiply the denominators: 2 × 3."
+    ],
+    "solution": "1/2 × 1/3 = (1×1)/(2×3) = 1/6.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-fractions-procedural-p2",
+    "topicId": "multiply-fractions-procedural",
+    "difficulty": "easy",
+    "question": "What is 1/4 × 1/2?",
+    "answer": "1/8",
+    "hints": [
+      "Multiply numerators together and denominators together."
+    ],
+    "solution": "1/4 × 1/2 = (1×1)/(4×2) = 1/8.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-fractions-procedural-p3",
+    "topicId": "multiply-fractions-procedural",
+    "difficulty": "easy",
+    "question": "What is 2/3 × 1/4?",
+    "answer": "1/6",
+    "hints": [
+      "Multiply 2 × 1 for the numerator and 3 × 4 for the denominator."
+    ],
+    "solution": "2/3 × 1/4 = (2×1)/(3×4) = 2/12 = 1/6.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-fractions-procedural-p4",
+    "topicId": "multiply-fractions-procedural",
+    "difficulty": "easy",
+    "question": "What is 1/3 × 1/5?",
+    "answer": "1/15",
+    "hints": [
+      "Multiply across: 1 × 1 = 1, 3 × 5 = 15."
+    ],
+    "solution": "1/3 × 1/5 = 1/15.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-fractions-procedural-p5",
+    "topicId": "multiply-fractions-procedural",
+    "difficulty": "easy",
+    "question": "What is 3/4 × 1/2?",
+    "answer": "3/8",
+    "hints": [
+      "Multiply numerators: 3 × 1 = 3. Multiply denominators: 4 × 2 = 8."
+    ],
+    "solution": "3/4 × 1/2 = 3/8.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-fractions-procedural-p6",
+    "topicId": "multiply-fractions-procedural",
+    "difficulty": "medium",
+    "question": "What is 2/3 × 3/5?",
+    "answer": "2/5",
+    "hints": [
+      "Multiply numerators: 2 × 3 = 6. Multiply denominators: 3 × 5 = 15. Then simplify."
+    ],
+    "solution": "2/3 × 3/5 = 6/15 = 2/5.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-fractions-procedural-p7",
+    "topicId": "multiply-fractions-procedural",
+    "difficulty": "medium",
+    "question": "What is 3/4 × 2/3?",
+    "answer": "1/2",
+    "hints": [
+      "Multiply across: 3 × 2 = 6, 4 × 3 = 12. Simplify 6/12."
+    ],
+    "solution": "3/4 × 2/3 = 6/12 = 1/2.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-fractions-procedural-p8",
+    "topicId": "multiply-fractions-procedural",
+    "difficulty": "medium",
+    "question": "What is 4/5 × 3/8? Simplify your answer.",
+    "answer": "3/10",
+    "hints": [
+      "Multiply: 4 × 3 = 12, 5 × 8 = 40. Simplify 12/40."
+    ],
+    "solution": "4/5 × 3/8 = 12/40 = 3/10.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-fractions-procedural-p9",
+    "topicId": "multiply-fractions-procedural",
+    "difficulty": "medium",
+    "question": "What is 5/6 × 2/5? Simplify your answer.",
+    "answer": "1/3",
+    "hints": [
+      "Multiply: 5 × 2 = 10, 6 × 5 = 30. Simplify 10/30."
+    ],
+    "solution": "5/6 × 2/5 = 10/30 = 1/3.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-fractions-procedural-p10",
+    "topicId": "multiply-fractions-procedural",
+    "difficulty": "medium",
+    "question": "What is 2/7 × 3/4? Simplify your answer.",
+    "answer": "3/14",
+    "hints": [
+      "Multiply: 2 × 3 = 6, 7 × 4 = 28. Simplify 6/28."
+    ],
+    "solution": "2/7 × 3/4 = 6/28 = 3/14.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-fractions-procedural-p11",
+    "topicId": "multiply-fractions-procedural",
+    "difficulty": "hard",
+    "question": "What is 5/8 × 4/9? Simplify your answer.",
+    "answer": "5/18",
+    "hints": [
+      "Multiply: 5 × 4 = 20, 8 × 9 = 72. Simplify 20/72."
+    ],
+    "solution": "5/8 × 4/9 = 20/72 = 5/18.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-fractions-procedural-p12",
+    "topicId": "multiply-fractions-procedural",
+    "difficulty": "hard",
+    "question": "What is 7/10 × 5/14? Simplify your answer.",
+    "answer": "1/4",
+    "hints": [
+      "Multiply: 7 × 5 = 35, 10 × 14 = 140. Simplify 35/140."
+    ],
+    "solution": "7/10 × 5/14 = 35/140 = 1/4.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-fractions-procedural-p13",
+    "topicId": "multiply-fractions-procedural",
+    "difficulty": "hard",
+    "question": "What is 9/10 × 2/3? Simplify your answer.",
+    "answer": "3/5",
+    "hints": [
+      "Multiply: 9 × 2 = 18, 10 × 3 = 30. Simplify 18/30."
+    ],
+    "solution": "9/10 × 2/3 = 18/30 = 3/5.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-fractions-procedural-p14",
+    "topicId": "multiply-fractions-procedural",
+    "difficulty": "hard",
+    "question": "What is 6/7 × 7/12? Simplify your answer.",
+    "answer": "1/2",
+    "hints": [
+      "Notice the 7s cancel. Then simplify 6/12."
+    ],
+    "solution": "6/7 × 7/12 = 42/84 = 1/2.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-fractions-procedural-p15",
+    "topicId": "multiply-fractions-procedural",
+    "difficulty": "hard",
+    "question": "What is 8/15 × 5/6? Simplify your answer.",
+    "answer": "4/9",
+    "hints": [
+      "Multiply: 8 × 5 = 40, 15 × 6 = 90. Simplify 40/90."
+    ],
+    "solution": "8/15 × 5/6 = 40/90 = 4/9.",
+    "cognitiveDemand": "procedural"
+  }
+]

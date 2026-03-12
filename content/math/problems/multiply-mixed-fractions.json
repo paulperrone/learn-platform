@@ -1,0 +1,182 @@
+[
+  {
+    "id": "multiply-mixed-fractions-p1",
+    "topicId": "multiply-mixed-fractions",
+    "difficulty": "easy",
+    "question": "What is 1 1/2 × 1/3?",
+    "answer": "1/2",
+    "hints": [
+      "Convert 1 1/2 to 3/2, then multiply by 1/3."
+    ],
+    "solution": "1 1/2 = 3/2. 3/2 × 1/3 = 3/6 = 1/2.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-mixed-fractions-p2",
+    "topicId": "multiply-mixed-fractions",
+    "difficulty": "easy",
+    "question": "What is 2 1/2 × 1/5?",
+    "answer": "1/2",
+    "hints": [
+      "Convert 2 1/2 to 5/2, then multiply by 1/5."
+    ],
+    "solution": "2 1/2 = 5/2. 5/2 × 1/5 = 5/10 = 1/2.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-mixed-fractions-p3",
+    "topicId": "multiply-mixed-fractions",
+    "difficulty": "easy",
+    "question": "What is 1 1/4 × 2/5?",
+    "answer": "1/2",
+    "hints": [
+      "Convert 1 1/4 to 5/4. Multiply 5/4 × 2/5."
+    ],
+    "solution": "1 1/4 = 5/4. 5/4 × 2/5 = 10/20 = 1/2.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-mixed-fractions-p4",
+    "topicId": "multiply-mixed-fractions",
+    "difficulty": "easy",
+    "question": "What is 1 1/3 × 1/2?",
+    "answer": "2/3",
+    "hints": [
+      "Convert 1 1/3 to 4/3. Multiply 4/3 × 1/2."
+    ],
+    "solution": "1 1/3 = 4/3. 4/3 × 1/2 = 4/6 = 2/3.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-mixed-fractions-p5",
+    "topicId": "multiply-mixed-fractions",
+    "difficulty": "easy",
+    "question": "What is 1 1/2 × 2/3?",
+    "answer": "1",
+    "hints": [
+      "Convert 1 1/2 to 3/2. Multiply 3/2 × 2/3."
+    ],
+    "solution": "1 1/2 = 3/2. 3/2 × 2/3 = 6/6 = 1.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-mixed-fractions-p6",
+    "topicId": "multiply-mixed-fractions",
+    "difficulty": "medium",
+    "question": "What is 2 1/4 × 2/3? Give your answer as a mixed number.",
+    "answer": "1 1/2",
+    "hints": [
+      "Convert 2 1/4 to 9/4. Multiply 9/4 × 2/3."
+    ],
+    "solution": "2 1/4 = 9/4. 9/4 × 2/3 = 18/12 = 3/2 = 1 1/2.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-mixed-fractions-p7",
+    "topicId": "multiply-mixed-fractions",
+    "difficulty": "medium",
+    "question": "What is 1 2/3 × 3/5?",
+    "answer": "1",
+    "hints": [
+      "Convert 1 2/3 to 5/3. Multiply 5/3 × 3/5."
+    ],
+    "solution": "1 2/3 = 5/3. 5/3 × 3/5 = 15/15 = 1.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-mixed-fractions-p8",
+    "topicId": "multiply-mixed-fractions",
+    "difficulty": "medium",
+    "question": "What is 3 1/3 × 3/4? Give your answer as a mixed number.",
+    "answer": "2 1/2",
+    "hints": [
+      "Convert 3 1/3 to 10/3. Multiply 10/3 × 3/4."
+    ],
+    "solution": "3 1/3 = 10/3. 10/3 × 3/4 = 30/12 = 5/2 = 2 1/2.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-mixed-fractions-p9",
+    "topicId": "multiply-mixed-fractions",
+    "difficulty": "medium",
+    "question": "What is 2 1/2 × 3/10? Simplify your answer.",
+    "answer": "3/4",
+    "hints": [
+      "Convert 2 1/2 to 5/2. Multiply 5/2 × 3/10."
+    ],
+    "solution": "2 1/2 = 5/2. 5/2 × 3/10 = 15/20 = 3/4.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-mixed-fractions-p10",
+    "topicId": "multiply-mixed-fractions",
+    "difficulty": "medium",
+    "question": "What is 1 3/4 × 4/7?",
+    "answer": "1",
+    "hints": [
+      "Convert 1 3/4 to 7/4. Multiply 7/4 × 4/7."
+    ],
+    "solution": "1 3/4 = 7/4. 7/4 × 4/7 = 28/28 = 1.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-mixed-fractions-p11",
+    "topicId": "multiply-mixed-fractions",
+    "difficulty": "hard",
+    "question": "What is 3 3/4 × 2/5? Give your answer as a mixed number.",
+    "answer": "1 1/2",
+    "hints": [
+      "Convert 3 3/4 to 15/4. Multiply 15/4 × 2/5."
+    ],
+    "solution": "3 3/4 = 15/4. 15/4 × 2/5 = 30/20 = 3/2 = 1 1/2.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-mixed-fractions-p12",
+    "topicId": "multiply-mixed-fractions",
+    "difficulty": "hard",
+    "question": "What is 4 1/6 × 3/5? Give your answer as a mixed number.",
+    "answer": "2 1/2",
+    "hints": [
+      "Convert 4 1/6 to 25/6. Multiply 25/6 × 3/5."
+    ],
+    "solution": "4 1/6 = 25/6. 25/6 × 3/5 = 75/30 = 5/2 = 2 1/2.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-mixed-fractions-p13",
+    "topicId": "multiply-mixed-fractions",
+    "difficulty": "hard",
+    "question": "What is 2 5/8 × 4/7? Give your answer as a mixed number.",
+    "answer": "1 1/2",
+    "hints": [
+      "Convert 2 5/8 to 21/8. Multiply 21/8 × 4/7."
+    ],
+    "solution": "2 5/8 = 21/8. 21/8 × 4/7 = 84/56 = 3/2 = 1 1/2.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-mixed-fractions-p14",
+    "topicId": "multiply-mixed-fractions",
+    "difficulty": "hard",
+    "question": "A recipe calls for 2 2/3 cups of flour. You want to make 3/8 of the recipe. How many cups of flour do you need?",
+    "answer": "1",
+    "hints": [
+      "Multiply 2 2/3 × 3/8. Convert 2 2/3 to 8/3 first."
+    ],
+    "solution": "2 2/3 = 8/3. 8/3 × 3/8 = 24/24 = 1 cup.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "multiply-mixed-fractions-p15",
+    "topicId": "multiply-mixed-fractions",
+    "difficulty": "hard",
+    "question": "A wall is 5 1/3 feet tall. Paint covers 3/4 of the wall. How many feet of wall are painted?",
+    "answer": "4",
+    "hints": [
+      "Multiply 5 1/3 × 3/4. Convert 5 1/3 to 16/3."
+    ],
+    "solution": "5 1/3 = 16/3. 16/3 × 3/4 = 48/12 = 4 feet.",
+    "cognitiveDemand": "problem-solving"
+  }
+]

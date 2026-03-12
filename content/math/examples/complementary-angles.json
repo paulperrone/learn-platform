@@ -1,0 +1,58 @@
+[
+  {
+    "id": "complementary-angles-ex1",
+    "topicId": "complementary-angles",
+    "title": "Finding the Complement of an Angle",
+    "steps": [
+      {
+        "subgoalLabel": "Recall the definition",
+        "instruction": "What are complementary angles?",
+        "work": "Two angles are complementary if they add up to 90°.",
+        "explanation": "Think of two angles fitting together to form a right angle."
+      },
+      {
+        "subgoalLabel": "Set up the problem",
+        "instruction": "One angle is 35°. Find its complement.",
+        "work": "complement = 90° − 35°",
+        "explanation": "Since both angles sum to 90°, subtract the known angle from 90°."
+      },
+      {
+        "subgoalLabel": "Calculate",
+        "instruction": "Solve the subtraction.",
+        "work": "90° − 35° = 55°. The complement is 55°.",
+        "explanation": "Check: 35° + 55° = 90°. Confirmed they are complementary."
+      }
+    ]
+  },
+  {
+    "id": "complementary-angles-ex2",
+    "topicId": "complementary-angles",
+    "title": "Solving a Complementary Angles Word Problem",
+    "steps": [
+      {
+        "subgoalLabel": "Read the problem",
+        "instruction": "Two complementary angles are in the ratio 1:4. Find both angles.",
+        "work": "The angles are in ratio 1:4 and sum to 90°.",
+        "explanation": "We need to split 90° into parts in a 1:4 ratio."
+      },
+      {
+        "subgoalLabel": "Find the total parts",
+        "instruction": "Add the ratio parts.",
+        "work": "1 + 4 = 5 parts total.",
+        "explanation": "The 90° is divided into 5 equal parts."
+      },
+      {
+        "subgoalLabel": "Find one part",
+        "instruction": "Divide 90° by the number of parts.",
+        "work": "90° ÷ 5 = 18° per part.",
+        "explanation": "Each ratio part equals 18°."
+      },
+      {
+        "subgoalLabel": "Calculate each angle",
+        "instruction": "Multiply by the ratio numbers.",
+        "work": "Angle 1: 1 × 18° = 18°. Angle 2: 4 × 18° = 72°.",
+        "explanation": "Check: 18° + 72° = 90°. The angles are complementary and in ratio 1:4."
+      }
+    ]
+  }
+]

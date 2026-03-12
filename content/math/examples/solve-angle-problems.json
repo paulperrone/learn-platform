@@ -1,0 +1,64 @@
+[
+  {
+    "id": "solve-angle-problems-ex1",
+    "topicId": "solve-angle-problems",
+    "title": "Finding Missing Triangle Angles",
+    "steps": [
+      {
+        "subgoalLabel": "Recall the triangle angle sum",
+        "instruction": "What do the angles of a triangle add up to?",
+        "work": "The three angles of any triangle always sum to 180°.",
+        "explanation": "This is a key fact used to find missing angles in triangles."
+      },
+      {
+        "subgoalLabel": "Set up the equation",
+        "instruction": "A triangle has angles of 70° and 45°. Find the third angle.",
+        "work": "70° + 45° + x = 180°.",
+        "explanation": "Write an equation using the angle sum property."
+      },
+      {
+        "subgoalLabel": "Solve",
+        "instruction": "Subtract the known angles from 180°.",
+        "work": "70 + 45 = 115. x = 180 − 115 = 65°.",
+        "explanation": "The third angle is 65°."
+      },
+      {
+        "subgoalLabel": "Verify",
+        "instruction": "Check that all angles sum to 180°.",
+        "work": "70° + 45° + 65° = 180°. ✓",
+        "explanation": "Always verify by adding all angles."
+      }
+    ]
+  },
+  {
+    "id": "solve-angle-problems-ex2",
+    "topicId": "solve-angle-problems",
+    "title": "Multi-Step Angle Problem with Ratios",
+    "steps": [
+      {
+        "subgoalLabel": "Read the problem",
+        "instruction": "A triangle has angles in the ratio 2:3:4. Find all three angles.",
+        "work": "The ratio 2:3:4 means 2 parts, 3 parts, and 4 parts.",
+        "explanation": "We need to split 180° according to this ratio."
+      },
+      {
+        "subgoalLabel": "Find total parts",
+        "instruction": "Add the ratio numbers.",
+        "work": "2 + 3 + 4 = 9 parts total.",
+        "explanation": "The 180° will be divided into 9 equal portions."
+      },
+      {
+        "subgoalLabel": "Find one part",
+        "instruction": "Divide 180° by 9.",
+        "work": "180° ÷ 9 = 20° per part.",
+        "explanation": "Each portion of the ratio equals 20°."
+      },
+      {
+        "subgoalLabel": "Calculate each angle",
+        "instruction": "Multiply each ratio number by 20°.",
+        "work": "Angle 1: 2 × 20° = 40°. Angle 2: 3 × 20° = 60°. Angle 3: 4 × 20° = 80°.",
+        "explanation": "Check: 40° + 60° + 80° = 180°. ✓ The angles satisfy both the ratio and the angle sum."
+      }
+    ]
+  }
+]

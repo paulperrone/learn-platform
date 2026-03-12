@@ -1,0 +1,182 @@
+[
+  {
+    "id": "convert-decimal-to-fraction-p1",
+    "topicId": "convert-decimal-to-fraction",
+    "difficulty": "easy",
+    "question": "Convert 0.5 to a fraction in simplest form.",
+    "answer": "1/2",
+    "hints": [
+      "0.5 = 5/10. Simplify by dividing both by 5."
+    ],
+    "solution": "0.5 = 5/10 = 1/2.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "convert-decimal-to-fraction-p2",
+    "topicId": "convert-decimal-to-fraction",
+    "difficulty": "easy",
+    "question": "Convert 0.25 to a fraction in simplest form.",
+    "answer": "1/4",
+    "hints": [
+      "0.25 = 25/100. Simplify."
+    ],
+    "solution": "0.25 = 25/100 = 1/4.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "convert-decimal-to-fraction-p3",
+    "topicId": "convert-decimal-to-fraction",
+    "difficulty": "easy",
+    "question": "Convert 0.75 to a fraction in simplest form.",
+    "answer": "3/4",
+    "hints": [
+      "0.75 = 75/100. Divide both by 25."
+    ],
+    "solution": "0.75 = 75/100 = 3/4.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "convert-decimal-to-fraction-p4",
+    "topicId": "convert-decimal-to-fraction",
+    "difficulty": "easy",
+    "question": "Convert 0.2 to a fraction in simplest form.",
+    "answer": "1/5",
+    "hints": [
+      "0.2 = 2/10. Simplify."
+    ],
+    "solution": "0.2 = 2/10 = 1/5.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "convert-decimal-to-fraction-p5",
+    "topicId": "convert-decimal-to-fraction",
+    "difficulty": "easy",
+    "question": "Convert 0.1 to a fraction.",
+    "answer": "1/10",
+    "hints": [
+      "One decimal place means tenths."
+    ],
+    "solution": "0.1 = 1/10.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "convert-decimal-to-fraction-p6",
+    "topicId": "convert-decimal-to-fraction",
+    "difficulty": "medium",
+    "question": "Convert 0.4 to a fraction in simplest form.",
+    "answer": "2/5",
+    "hints": [
+      "0.4 = 4/10. Simplify by dividing by 2."
+    ],
+    "solution": "0.4 = 4/10 = 2/5.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "convert-decimal-to-fraction-p7",
+    "topicId": "convert-decimal-to-fraction",
+    "difficulty": "medium",
+    "question": "Convert 0.6 to a fraction in simplest form.",
+    "answer": "3/5",
+    "hints": [
+      "0.6 = 6/10. Simplify."
+    ],
+    "solution": "0.6 = 6/10 = 3/5.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "convert-decimal-to-fraction-p8",
+    "topicId": "convert-decimal-to-fraction",
+    "difficulty": "medium",
+    "question": "Convert 0.35 to a fraction in simplest form.",
+    "answer": "7/20",
+    "hints": [
+      "0.35 = 35/100. Divide both by 5."
+    ],
+    "solution": "0.35 = 35/100 = 7/20.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "convert-decimal-to-fraction-p9",
+    "topicId": "convert-decimal-to-fraction",
+    "difficulty": "medium",
+    "question": "Convert 0.15 to a fraction in simplest form.",
+    "answer": "3/20",
+    "hints": [
+      "0.15 = 15/100. Divide both by 5."
+    ],
+    "solution": "0.15 = 15/100 = 3/20.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "convert-decimal-to-fraction-p10",
+    "topicId": "convert-decimal-to-fraction",
+    "difficulty": "medium",
+    "question": "Convert 0.125 to a fraction in simplest form.",
+    "answer": "1/8",
+    "hints": [
+      "0.125 = 125/1000. Divide both by 125."
+    ],
+    "solution": "0.125 = 125/1000 = 1/8.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "convert-decimal-to-fraction-p11",
+    "topicId": "convert-decimal-to-fraction",
+    "difficulty": "hard",
+    "question": "Convert 0.875 to a fraction in simplest form.",
+    "answer": "7/8",
+    "hints": [
+      "0.875 = 875/1000. Divide both by 125."
+    ],
+    "solution": "0.875 = 875/1000 = 7/8.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "convert-decimal-to-fraction-p12",
+    "topicId": "convert-decimal-to-fraction",
+    "difficulty": "hard",
+    "question": "Convert 0.45 to a fraction in simplest form.",
+    "answer": "9/20",
+    "hints": [
+      "0.45 = 45/100. Divide both by 5."
+    ],
+    "solution": "0.45 = 45/100 = 9/20.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "convert-decimal-to-fraction-p13",
+    "topicId": "convert-decimal-to-fraction",
+    "difficulty": "hard",
+    "question": "Convert 0.375 to a fraction in simplest form.",
+    "answer": "3/8",
+    "hints": [
+      "0.375 = 375/1000. Divide both by 125."
+    ],
+    "solution": "0.375 = 375/1000 = 3/8.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "convert-decimal-to-fraction-p14",
+    "topicId": "convert-decimal-to-fraction",
+    "difficulty": "hard",
+    "question": "Convert 0.08 to a fraction in simplest form.",
+    "answer": "2/25",
+    "hints": [
+      "0.08 = 8/100. Divide both by 4."
+    ],
+    "solution": "0.08 = 8/100 = 2/25.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "convert-decimal-to-fraction-p15",
+    "topicId": "convert-decimal-to-fraction",
+    "difficulty": "hard",
+    "question": "Convert 0.625 to a fraction in simplest form.",
+    "answer": "5/8",
+    "hints": [
+      "0.625 = 625/1000. Divide both by 125."
+    ],
+    "solution": "0.625 = 625/1000 = 5/8.",
+    "cognitiveDemand": "procedural"
+  }
+]

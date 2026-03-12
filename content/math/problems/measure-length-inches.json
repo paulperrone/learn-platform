@@ -1,0 +1,152 @@
+[
+  {
+    "id": "measure-length-inches-p1",
+    "topicId": "measure-length-inches",
+    "difficulty": "easy",
+    "question": "A pencil is 7 inches long. A crayon is 4 inches long. How much longer is the pencil?",
+    "answer": "3 inches",
+    "hints": ["Subtract: 7 − 4."],
+    "solution": "7 − 4 = 3 inches longer.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "measure-length-inches-p2",
+    "topicId": "measure-length-inches",
+    "difficulty": "easy",
+    "question": "A ribbon is 10 inches long. You cut off 3 inches. How long is the remaining ribbon?",
+    "answer": "7 inches",
+    "hints": ["Subtract: 10 − 3."],
+    "solution": "10 − 3 = 7 inches.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "measure-length-inches-p3",
+    "topicId": "measure-length-inches",
+    "difficulty": "easy",
+    "question": "A book is 9 inches tall. Is it closer to 5 inches or 10 inches?",
+    "answer": "10 inches",
+    "hints": ["9 is only 1 away from 10, but 4 away from 5."],
+    "solution": "9 is closer to 10 (difference of 1) than to 5 (difference of 4).",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "measure-length-inches-p4",
+    "topicId": "measure-length-inches",
+    "difficulty": "easy",
+    "question": "A marker is 5 inches long. A pen is 6 inches long. What is their combined length?",
+    "answer": "11 inches",
+    "hints": ["Add: 5 + 6."],
+    "solution": "5 + 6 = 11 inches.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "measure-length-inches-p5",
+    "topicId": "measure-length-inches",
+    "difficulty": "easy",
+    "question": "Which is longer: an object that is 8 inches or an object that is 12 inches?",
+    "answer": "12 inches",
+    "hints": ["Compare the numbers: 12 > 8."],
+    "solution": "12 inches is longer than 8 inches.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "measure-length-inches-p6",
+    "topicId": "measure-length-inches",
+    "difficulty": "medium",
+    "question": "A piece of string is 15 inches long. If you divide it into two equal parts, how long is each part?",
+    "answer": "7 and 1/2 inches",
+    "hints": ["Divide by 2: 15 ÷ 2."],
+    "solution": "15 ÷ 2 = 7½ inches.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "measure-length-inches-p7",
+    "topicId": "measure-length-inches",
+    "difficulty": "medium",
+    "question": "Three sticks measure 4 inches, 6 inches, and 8 inches. What is their total length placed end to end?",
+    "answer": "18 inches",
+    "hints": ["Add all three: 4 + 6 + 8."],
+    "solution": "4 + 6 + 8 = 18 inches.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "measure-length-inches-p8",
+    "topicId": "measure-length-inches",
+    "difficulty": "medium",
+    "question": "A caterpillar is 2 inches long. An earthworm is 3 times as long. How long is the earthworm?",
+    "answer": "6 inches",
+    "hints": ["Multiply: 2 × 3."],
+    "solution": "2 × 3 = 6 inches.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "measure-length-inches-p9",
+    "topicId": "measure-length-inches",
+    "difficulty": "medium",
+    "question": "A shelf is 24 inches wide. A box is 7 inches wide. How many boxes can fit side by side on the shelf?",
+    "answer": "3",
+    "hints": ["24 ÷ 7 = 3 remainder 3. Only full boxes count."],
+    "solution": "24 ÷ 7 = 3 with remainder 3. Three boxes fit (using 21 inches).",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "measure-length-inches-p10",
+    "topicId": "measure-length-inches",
+    "difficulty": "medium",
+    "question": "A board is 20 inches long. You need to cut it into 4 equal pieces. How long is each piece?",
+    "answer": "5 inches",
+    "hints": ["Divide: 20 ÷ 4."],
+    "solution": "20 ÷ 4 = 5 inches each.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "measure-length-inches-p11",
+    "topicId": "measure-length-inches",
+    "difficulty": "hard",
+    "question": "A picture frame has sides measuring 8 inches and 11 inches. What is the total distance around the frame (perimeter)?",
+    "answer": "38 inches",
+    "hints": ["A rectangle has two pairs of sides: 2 × 8 + 2 × 11."],
+    "solution": "Perimeter = 2(8) + 2(11) = 16 + 22 = 38 inches.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "measure-length-inches-p12",
+    "topicId": "measure-length-inches",
+    "difficulty": "hard",
+    "question": "A rope is 36 inches long. You cut off a piece that is 14 inches and another that is 9 inches. How much rope is left?",
+    "answer": "13 inches",
+    "hints": ["36 − 14 − 9."],
+    "solution": "36 − 14 = 22. 22 − 9 = 13 inches left.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "measure-length-inches-p13",
+    "topicId": "measure-length-inches",
+    "difficulty": "hard",
+    "question": "A nail is 3 inches long. How many nails placed end to end would you need to reach 2 feet?",
+    "answer": "8",
+    "hints": ["2 feet = 24 inches. 24 ÷ 3 = 8."],
+    "solution": "2 feet = 24 inches. 24 ÷ 3 = 8 nails.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "measure-length-inches-p14",
+    "topicId": "measure-length-inches",
+    "difficulty": "hard",
+    "question": "Four pieces of tape measure 5 inches, 3 inches, 7 inches, and 9 inches. You need 30 inches total. How many more inches of tape do you need?",
+    "answer": "6 inches",
+    "hints": ["Total so far: 5 + 3 + 7 + 9 = 24. Need 30 − 24."],
+    "solution": "5 + 3 + 7 + 9 = 24 inches. 30 − 24 = 6 more inches needed.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "measure-length-inches-p15",
+    "topicId": "measure-length-inches",
+    "difficulty": "hard",
+    "question": "A worm moves 2 inches per minute. How far will it travel in 15 minutes?",
+    "answer": "30 inches",
+    "hints": ["Distance = rate × time = 2 × 15."],
+    "solution": "2 inches/minute × 15 minutes = 30 inches.",
+    "cognitiveDemand": "problem-solving"
+  }
+]

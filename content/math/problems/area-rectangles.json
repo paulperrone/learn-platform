@@ -1,0 +1,152 @@
+[
+  {
+    "id": "area-rectangles-p1",
+    "topicId": "area-rectangles",
+    "difficulty": "easy",
+    "question": "A rectangle has a length of 5 cm and a width of 3 cm. What is its area?",
+    "answer": "15 sq cm",
+    "hints": ["Area = length × width."],
+    "solution": "5 × 3 = 15 sq cm.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "area-rectangles-p2",
+    "topicId": "area-rectangles",
+    "difficulty": "easy",
+    "question": "A rectangle is 7 m long and 2 m wide. What is its area?",
+    "answer": "14 sq m",
+    "hints": ["7 × 2 = ?"],
+    "solution": "7 × 2 = 14 sq m.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "area-rectangles-p3",
+    "topicId": "area-rectangles",
+    "difficulty": "easy",
+    "question": "A square has sides of 4 cm. What is its area?",
+    "answer": "16 sq cm",
+    "hints": ["A square is a rectangle with equal sides: 4 × 4."],
+    "solution": "4 × 4 = 16 sq cm.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "area-rectangles-p4",
+    "topicId": "area-rectangles",
+    "difficulty": "easy",
+    "question": "A rectangle is 10 cm by 1 cm. What is its area?",
+    "answer": "10 sq cm",
+    "hints": ["10 × 1 = ?"],
+    "solution": "10 × 1 = 10 sq cm.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "area-rectangles-p5",
+    "topicId": "area-rectangles",
+    "difficulty": "easy",
+    "question": "A rectangle is 6 in long and 6 in wide. What is its area?",
+    "answer": "36 sq in",
+    "hints": ["6 × 6 = ?"],
+    "solution": "6 × 6 = 36 sq in. This rectangle is actually a square!",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "area-rectangles-p6",
+    "topicId": "area-rectangles",
+    "difficulty": "medium",
+    "question": "A rectangle has an area of 24 sq cm and a length of 8 cm. What is its width?",
+    "answer": "3 cm",
+    "hints": ["Area = length × width. So width = area ÷ length."],
+    "solution": "24 ÷ 8 = 3 cm.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "area-rectangles-p7",
+    "topicId": "area-rectangles",
+    "difficulty": "medium",
+    "question": "A room is 12 feet long and 9 feet wide. What is the area of the floor?",
+    "answer": "108 sq ft",
+    "hints": ["12 × 9 = ?"],
+    "solution": "12 × 9 = 108 sq ft.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "area-rectangles-p8",
+    "topicId": "area-rectangles",
+    "difficulty": "medium",
+    "question": "A rectangle has an area of 36 sq m and a width of 4 m. What is its length?",
+    "answer": "9 m",
+    "hints": ["36 ÷ 4 = ?"],
+    "solution": "36 ÷ 4 = 9 m.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "area-rectangles-p9",
+    "topicId": "area-rectangles",
+    "difficulty": "medium",
+    "question": "Which has a greater area: a 5 cm by 8 cm rectangle or a 6 cm by 7 cm rectangle?",
+    "answer": "6 cm by 7 cm rectangle",
+    "hints": ["Calculate each: 5 × 8 and 6 × 7."],
+    "solution": "5 × 8 = 40 sq cm. 6 × 7 = 42 sq cm. The 6 × 7 rectangle has a greater area.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "area-rectangles-p10",
+    "topicId": "area-rectangles",
+    "difficulty": "medium",
+    "question": "A square garden has an area of 49 sq m. What is the length of each side?",
+    "answer": "7 m",
+    "hints": ["What number times itself equals 49?"],
+    "solution": "7 × 7 = 49. Each side is 7 m.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "area-rectangles-p11",
+    "topicId": "area-rectangles",
+    "difficulty": "hard",
+    "question": "A wall is 3 m tall and 5 m wide. You want to paint it. Each can of paint covers 10 sq m. How many cans do you need?",
+    "answer": "2",
+    "hints": ["Area = 3 × 5 = 15 sq m. 15 ÷ 10 = ?"],
+    "solution": "Area = 3 × 5 = 15 sq m. 15 ÷ 10 = 1.5, so you need 2 cans (round up).",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "area-rectangles-p12",
+    "topicId": "area-rectangles",
+    "difficulty": "hard",
+    "question": "A rectangle's length is doubled while its width stays the same. How does the area change?",
+    "answer": "The area doubles",
+    "hints": ["Original: l × w. New: 2l × w = 2(l × w)."],
+    "solution": "New area = 2l × w = 2 × (l × w). The area doubles.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "area-rectangles-p13",
+    "topicId": "area-rectangles",
+    "difficulty": "hard",
+    "question": "A rectangle has an area of 48 sq cm. Give two possible sets of whole-number dimensions (length and width).",
+    "answer": "6 by 8 and 4 by 12",
+    "hints": ["Find factor pairs of 48."],
+    "solution": "Possible dimensions: 6 × 8, 4 × 12, 3 × 16, 2 × 24, 1 × 48. Any two are correct.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "area-rectangles-p14",
+    "topicId": "area-rectangles",
+    "difficulty": "hard",
+    "question": "A rectangular playground is 25 m by 16 m. What is its area in square meters?",
+    "answer": "400 sq m",
+    "hints": ["25 × 16 = ?"],
+    "solution": "25 × 16 = 400 sq m.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "area-rectangles-p15",
+    "topicId": "area-rectangles",
+    "difficulty": "hard",
+    "question": "Both the length and width of a rectangle are doubled. The original area was 20 sq cm. What is the new area?",
+    "answer": "80 sq cm",
+    "hints": ["New area = (2l)(2w) = 4lw. So the area quadruples."],
+    "solution": "Doubling both dimensions: area × 4 = 20 × 4 = 80 sq cm.",
+    "cognitiveDemand": "conceptual"
+  }
+]

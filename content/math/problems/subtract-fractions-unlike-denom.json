@@ -1,0 +1,184 @@
+[
+  {
+    "id": "subtract-fractions-unlike-denom-p1",
+    "topicId": "subtract-fractions-unlike-denom",
+    "difficulty": "easy",
+    "question": "What is 1/2 − 1/4?",
+    "answer": "1/4",
+    "hints": [
+      "LCD = 4. 1/2 = 2/4. Then 2/4 − 1/4."
+    ],
+    "solution": "1/2 = 2/4. 2/4 − 1/4 = 1/4.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "subtract-fractions-unlike-denom-p2",
+    "topicId": "subtract-fractions-unlike-denom",
+    "difficulty": "easy",
+    "question": "What is 1/2 − 1/3?",
+    "answer": "1/6",
+    "hints": [
+      "LCD = 6. 1/2 = 3/6, 1/3 = 2/6."
+    ],
+    "solution": "1/2 = 3/6, 1/3 = 2/6. 3/6 − 2/6 = 1/6.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "subtract-fractions-unlike-denom-p3",
+    "topicId": "subtract-fractions-unlike-denom",
+    "difficulty": "easy",
+    "question": "What is 3/4 − 1/2?",
+    "answer": "1/4",
+    "hints": [
+      "1/2 = 2/4. Then 3/4 − 2/4."
+    ],
+    "solution": "1/2 = 2/4. 3/4 − 2/4 = 1/4.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "subtract-fractions-unlike-denom-p4",
+    "topicId": "subtract-fractions-unlike-denom",
+    "difficulty": "easy",
+    "question": "What is 2/3 − 1/6?",
+    "answer": "3/6",
+    "hints": [
+      "LCD = 6. 2/3 = 4/6."
+    ],
+    "solution": "2/3 = 4/6. 4/6 − 1/6 = 3/6 = 1/2.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "subtract-fractions-unlike-denom-p5",
+    "topicId": "subtract-fractions-unlike-denom",
+    "difficulty": "easy",
+    "question": "What is 5/6 − 1/2?",
+    "answer": "2/6",
+    "hints": [
+      "1/2 = 3/6. Then 5/6 − 3/6."
+    ],
+    "solution": "1/2 = 3/6. 5/6 − 3/6 = 2/6 = 1/3.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "subtract-fractions-unlike-denom-p6",
+    "topicId": "subtract-fractions-unlike-denom",
+    "difficulty": "medium",
+    "question": "What is 3/4 − 2/3?",
+    "answer": "1/12",
+    "hints": [
+      "LCD = 12. 3/4 = 9/12, 2/3 = 8/12."
+    ],
+    "solution": "3/4 = 9/12, 2/3 = 8/12. 9/12 − 8/12 = 1/12.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "subtract-fractions-unlike-denom-p7",
+    "topicId": "subtract-fractions-unlike-denom",
+    "difficulty": "medium",
+    "question": "What is 4/5 − 1/3?",
+    "answer": "7/15",
+    "hints": [
+      "LCD = 15. 4/5 = 12/15, 1/3 = 5/15."
+    ],
+    "solution": "4/5 = 12/15, 1/3 = 5/15. 12/15 − 5/15 = 7/15.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "subtract-fractions-unlike-denom-p8",
+    "topicId": "subtract-fractions-unlike-denom",
+    "difficulty": "medium",
+    "question": "What is 5/6 − 1/4?",
+    "answer": "7/12",
+    "hints": [
+      "LCD = 12. 5/6 = 10/12, 1/4 = 3/12."
+    ],
+    "solution": "5/6 = 10/12, 1/4 = 3/12. 10/12 − 3/12 = 7/12.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "subtract-fractions-unlike-denom-p9",
+    "topicId": "subtract-fractions-unlike-denom",
+    "difficulty": "medium",
+    "question": "What is 7/8 − 1/3?",
+    "answer": "13/24",
+    "hints": [
+      "LCD = 24. 7/8 = 21/24, 1/3 = 8/24."
+    ],
+    "solution": "7/8 = 21/24, 1/3 = 8/24. 21/24 − 8/24 = 13/24.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "subtract-fractions-unlike-denom-p10",
+    "topicId": "subtract-fractions-unlike-denom",
+    "difficulty": "medium",
+    "question": "What is 7/10 − 1/4?",
+    "answer": "9/20",
+    "hints": [
+      "LCD = 20. 7/10 = 14/20, 1/4 = 5/20."
+    ],
+    "solution": "7/10 = 14/20, 1/4 = 5/20. 14/20 − 5/20 = 9/20.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "subtract-fractions-unlike-denom-p11",
+    "topicId": "subtract-fractions-unlike-denom",
+    "difficulty": "hard",
+    "question": "What is 7/8 − 2/3?",
+    "answer": "5/24",
+    "hints": [
+      "LCD = 24. 7/8 = 21/24, 2/3 = 16/24."
+    ],
+    "solution": "7/8 = 21/24, 2/3 = 16/24. 21/24 − 16/24 = 5/24.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "subtract-fractions-unlike-denom-p12",
+    "topicId": "subtract-fractions-unlike-denom",
+    "difficulty": "hard",
+    "question": "What is 5/6 − 3/10? Simplify.",
+    "answer": "8/15",
+    "hints": [
+      "LCD = 30. 5/6 = 25/30, 3/10 = 9/30.",
+      "25/30 − 9/30 = 16/30. Simplify."
+    ],
+    "solution": "5/6 = 25/30, 3/10 = 9/30. 25/30 − 9/30 = 16/30 = 8/15.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "subtract-fractions-unlike-denom-p13",
+    "topicId": "subtract-fractions-unlike-denom",
+    "difficulty": "hard",
+    "question": "What is 11/12 − 3/8?",
+    "answer": "13/24",
+    "hints": [
+      "LCD = 24. 11/12 = 22/24, 3/8 = 9/24."
+    ],
+    "solution": "11/12 = 22/24, 3/8 = 9/24. 22/24 − 9/24 = 13/24.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "subtract-fractions-unlike-denom-p14",
+    "topicId": "subtract-fractions-unlike-denom",
+    "difficulty": "hard",
+    "question": "What is 9/10 − 2/15?",
+    "answer": "23/30",
+    "hints": [
+      "LCD = 30. 9/10 = 27/30, 2/15 = 4/30.",
+      "27/30 − 4/30 = 23/30."
+    ],
+    "solution": "9/10 = 27/30, 2/15 = 4/30. 27/30 − 4/30 = 23/30.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "subtract-fractions-unlike-denom-p15",
+    "topicId": "subtract-fractions-unlike-denom",
+    "difficulty": "hard",
+    "question": "What is 7/9 − 5/12?",
+    "answer": "13/36",
+    "hints": [
+      "LCD = 36. 7/9 = 28/36, 5/12 = 15/36."
+    ],
+    "solution": "7/9 = 28/36, 5/12 = 15/36. 28/36 − 15/36 = 13/36.",
+    "cognitiveDemand": "procedural"
+  }
+]

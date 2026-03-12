@@ -1,0 +1,58 @@
+[
+  {
+    "id": "equivalent-fractions-models-ex1",
+    "topicId": "equivalent-fractions-models",
+    "title": "Finding an Equivalent Fraction: 1/3 = 2/6",
+    "steps": [
+      {
+        "subgoalLabel": "Start with the original fraction",
+        "instruction": "We want to find a fraction equivalent to 1/3 with a denominator of 6.",
+        "work": "1/3 = ?/6",
+        "explanation": "Equivalent fractions represent the same amount, just with different-sized parts."
+      },
+      {
+        "subgoalLabel": "Find the multiplier",
+        "instruction": "What number do you multiply 3 by to get 6?",
+        "work": "3 × 2 = 6, so the multiplier is 2.",
+        "explanation": "We need to multiply both the numerator and denominator by the same number to keep the fraction equivalent."
+      },
+      {
+        "subgoalLabel": "Multiply numerator and denominator",
+        "instruction": "Multiply both top and bottom by 2.",
+        "work": "1/3 = (1×2)/(3×2) = 2/6",
+        "explanation": "Multiplying top and bottom by the same number is like multiplying by 1 (since 2/2 = 1), so the value does not change."
+      },
+      {
+        "subgoalLabel": "Verify",
+        "instruction": "Check: does 2/6 equal 1/3?",
+        "work": "2/6 ÷ 2/2 = 1/3. Yes!",
+        "explanation": "You can always check by dividing back. 2/6 simplifies to 1/3, confirming they are equivalent."
+      }
+    ]
+  },
+  {
+    "id": "equivalent-fractions-models-ex2",
+    "topicId": "equivalent-fractions-models",
+    "title": "Checking if Two Fractions Are Equivalent: 3/4 and 6/8",
+    "steps": [
+      {
+        "subgoalLabel": "Look at the two fractions",
+        "instruction": "Are 3/4 and 6/8 equivalent?",
+        "work": "Compare 3/4 and 6/8.",
+        "explanation": "Two fractions are equivalent if they represent the same portion of a whole."
+      },
+      {
+        "subgoalLabel": "Try to convert one to the other",
+        "instruction": "Multiply 3/4 by 2/2.",
+        "work": "3/4 × 2/2 = (3×2)/(4×2) = 6/8",
+        "explanation": "Since multiplying 3/4 by 2/2 gives 6/8, they are equivalent."
+      },
+      {
+        "subgoalLabel": "State the conclusion",
+        "instruction": "Write your answer.",
+        "work": "Yes, 3/4 = 6/8.",
+        "explanation": "Both fractions name the same amount. Three fourths of a whole is the same as six eighths of the same whole."
+      }
+    ]
+  }
+]

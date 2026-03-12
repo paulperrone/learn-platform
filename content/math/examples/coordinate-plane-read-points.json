@@ -1,0 +1,52 @@
+[
+  {
+    "id": "coordinate-plane-read-points-ex1",
+    "topicId": "coordinate-plane-read-points",
+    "title": "Reading Coordinates from a Point",
+    "steps": [
+      {
+        "subgoalLabel": "Find the x-coordinate",
+        "instruction": "A point is plotted on a coordinate plane. To find its x-coordinate, look straight down to the x-axis.",
+        "work": "The point is directly above the 4 on the x-axis. So x = 4.",
+        "explanation": "The x-coordinate tells how far right the point is from the origin."
+      },
+      {
+        "subgoalLabel": "Find the y-coordinate",
+        "instruction": "To find the y-coordinate, look straight left to the y-axis.",
+        "work": "The point is level with the 3 on the y-axis. So y = 3.",
+        "explanation": "The y-coordinate tells how far up the point is from the origin."
+      },
+      {
+        "subgoalLabel": "Write the ordered pair",
+        "instruction": "Combine x and y into an ordered pair.",
+        "work": "The point is at (4, 3).",
+        "explanation": "Always write x first, then y: (x, y)."
+      }
+    ]
+  },
+  {
+    "id": "coordinate-plane-read-points-ex2",
+    "topicId": "coordinate-plane-read-points",
+    "title": "Finding Distance Between Two Points",
+    "steps": [
+      {
+        "subgoalLabel": "Check if points share a coordinate",
+        "instruction": "Point A is (2, 3) and Point B is (2, 8). Do they share an x or y value?",
+        "work": "Both have x = 2. They are on the same vertical line.",
+        "explanation": "When points share an x-value, they are vertically aligned."
+      },
+      {
+        "subgoalLabel": "Find the distance",
+        "instruction": "Subtract the y-coordinates.",
+        "work": "Distance = 8 − 3 = 5 units.",
+        "explanation": "For vertical distances, subtract the y-coordinates. For horizontal distances, subtract the x-coordinates."
+      },
+      {
+        "subgoalLabel": "State the answer",
+        "instruction": "How far apart are Points A and B?",
+        "work": "Points A and B are 5 units apart vertically.",
+        "explanation": "This method works when points share either an x or y coordinate."
+      }
+    ]
+  }
+]

@@ -1,0 +1,58 @@
+[
+  {
+    "id": "add-mixed-numbers-like-denom-ex1",
+    "topicId": "add-mixed-numbers-like-denom",
+    "title": "Adding Mixed Numbers Without Regrouping: 2 1/5 + 3 2/5",
+    "steps": [
+      {
+        "subgoalLabel": "Add the whole numbers",
+        "instruction": "Add the whole-number parts: 2 + 3.",
+        "work": "2 + 3 = 5",
+        "explanation": "Handle the whole numbers and fractions separately."
+      },
+      {
+        "subgoalLabel": "Add the fractions",
+        "instruction": "Add the fraction parts: 1/5 + 2/5.",
+        "work": "1/5 + 2/5 = 3/5",
+        "explanation": "Same denominator, so add the numerators: 1 + 2 = 3."
+      },
+      {
+        "subgoalLabel": "Combine",
+        "instruction": "Put the whole number and fraction together.",
+        "work": "5 + 3/5 = 5 3/5",
+        "explanation": "The answer is 5 3/5. Since 3/5 < 1, no regrouping is needed."
+      }
+    ]
+  },
+  {
+    "id": "add-mixed-numbers-like-denom-ex2",
+    "topicId": "add-mixed-numbers-like-denom",
+    "title": "Adding Mixed Numbers With Regrouping: 3 3/4 + 2 3/4",
+    "steps": [
+      {
+        "subgoalLabel": "Add the whole numbers",
+        "instruction": "Add: 3 + 2.",
+        "work": "3 + 2 = 5",
+        "explanation": "Start with the whole-number parts."
+      },
+      {
+        "subgoalLabel": "Add the fractions",
+        "instruction": "Add: 3/4 + 3/4.",
+        "work": "3/4 + 3/4 = 6/4",
+        "explanation": "6/4 is an improper fraction (numerator > denominator), so we need to regroup."
+      },
+      {
+        "subgoalLabel": "Regroup the improper fraction",
+        "instruction": "Convert 6/4 to a mixed number.",
+        "work": "6/4 = 1 2/4 = 1 1/2",
+        "explanation": "6 ÷ 4 = 1 remainder 2. So 6/4 = 1 whole and 2/4."
+      },
+      {
+        "subgoalLabel": "Combine everything",
+        "instruction": "Add the regrouped whole to the whole-number sum.",
+        "work": "5 + 1 1/2 = 6 1/2",
+        "explanation": "The extra whole from the fraction sum gets added to the whole-number total."
+      }
+    ]
+  }
+]

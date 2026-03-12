@@ -1,0 +1,152 @@
+[
+  {
+    "id": "tell-time-5-minutes-p1",
+    "topicId": "tell-time-5-minutes",
+    "difficulty": "easy",
+    "question": "The hour hand points to 3 and the minute hand points to 12. What time is it?",
+    "answer": "3:00",
+    "hints": ["When the minute hand is on 12, it's exactly on the hour."],
+    "solution": "The time is 3:00.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "tell-time-5-minutes-p2",
+    "topicId": "tell-time-5-minutes",
+    "difficulty": "easy",
+    "question": "The hour hand is between 7 and 8, and the minute hand points to 6. What time is it?",
+    "answer": "7:30",
+    "hints": ["The 6 on the clock represents 30 minutes. The hour hand is past 7."],
+    "solution": "The time is 7:30.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "tell-time-5-minutes-p3",
+    "topicId": "tell-time-5-minutes",
+    "difficulty": "easy",
+    "question": "The minute hand points to the 3 on a clock. How many minutes past the hour is that?",
+    "answer": "15 minutes",
+    "hints": ["Each number on the clock represents 5 minutes. 3 × 5 = 15."],
+    "solution": "The 3 represents 15 minutes (3 × 5 = 15).",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "tell-time-5-minutes-p4",
+    "topicId": "tell-time-5-minutes",
+    "difficulty": "easy",
+    "question": "What time is shown when the hour hand is on 9 and the minute hand is on 12?",
+    "answer": "9:00",
+    "hints": ["Minute hand on 12 means exactly on the hour."],
+    "solution": "The time is 9:00.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "tell-time-5-minutes-p5",
+    "topicId": "tell-time-5-minutes",
+    "difficulty": "easy",
+    "question": "How many minutes does the minute hand travel when it moves from the 12 to the 2?",
+    "answer": "10 minutes",
+    "hints": ["Each number = 5 minutes. From 12 to 2 is 2 numbers: 2 × 5 = 10."],
+    "solution": "2 × 5 = 10 minutes.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "tell-time-5-minutes-p6",
+    "topicId": "tell-time-5-minutes",
+    "difficulty": "medium",
+    "question": "The hour hand is between 4 and 5, and the minute hand points to 9. What time is it?",
+    "answer": "4:45",
+    "hints": ["Minute hand on 9: 9 × 5 = 45 minutes. Hour hand past 4."],
+    "solution": "The time is 4:45.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "tell-time-5-minutes-p7",
+    "topicId": "tell-time-5-minutes",
+    "difficulty": "medium",
+    "question": "The hour hand is between 11 and 12, and the minute hand points to 7. What time is it?",
+    "answer": "11:35",
+    "hints": ["Minute hand on 7: 7 × 5 = 35 minutes. Hour hand past 11."],
+    "solution": "The time is 11:35.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "tell-time-5-minutes-p8",
+    "topicId": "tell-time-5-minutes",
+    "difficulty": "medium",
+    "question": "It is 2:15. Where does the minute hand point?",
+    "answer": "3",
+    "hints": ["15 minutes ÷ 5 = 3. The minute hand is on the 3."],
+    "solution": "15 ÷ 5 = 3. The minute hand points to 3.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "tell-time-5-minutes-p9",
+    "topicId": "tell-time-5-minutes",
+    "difficulty": "medium",
+    "question": "School starts at 8:30. It is now 8:15. How many more minutes until school starts?",
+    "answer": "15 minutes",
+    "hints": ["From 8:15 to 8:30 is how many minutes?"],
+    "solution": "8:30 − 8:15 = 15 minutes.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "tell-time-5-minutes-p10",
+    "topicId": "tell-time-5-minutes",
+    "difficulty": "medium",
+    "question": "It is 6:50. How many minutes until 7:00?",
+    "answer": "10 minutes",
+    "hints": ["Count from 50 to 60 (the next hour)."],
+    "solution": "60 − 50 = 10 minutes until 7:00.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "tell-time-5-minutes-p11",
+    "topicId": "tell-time-5-minutes",
+    "difficulty": "hard",
+    "question": "A movie starts at 3:45 and ends at 5:15. How long is the movie?",
+    "answer": "1 hour 30 minutes",
+    "hints": ["From 3:45 to 4:45 is 1 hour. From 4:45 to 5:15 is 30 minutes."],
+    "solution": "3:45 to 4:45 = 1 hour. 4:45 to 5:15 = 30 minutes. Total: 1 hour 30 minutes.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "tell-time-5-minutes-p12",
+    "topicId": "tell-time-5-minutes",
+    "difficulty": "hard",
+    "question": "You start reading at 7:20. You read for 45 minutes. What time do you stop?",
+    "answer": "8:05",
+    "hints": ["7:20 + 40 minutes = 8:00. Then 5 more minutes = 8:05."],
+    "solution": "7:20 + 45 minutes = 8:05.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "tell-time-5-minutes-p13",
+    "topicId": "tell-time-5-minutes",
+    "difficulty": "hard",
+    "question": "Dinner is at 6:30. It is now 5:45. How many minutes until dinner?",
+    "answer": "45 minutes",
+    "hints": ["5:45 to 6:00 = 15 minutes. 6:00 to 6:30 = 30 minutes. Total?"],
+    "solution": "5:45 to 6:00 = 15 minutes. 6:00 to 6:30 = 30 minutes. 15 + 30 = 45 minutes.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "tell-time-5-minutes-p14",
+    "topicId": "tell-time-5-minutes",
+    "difficulty": "hard",
+    "question": "A train leaves at 9:10 and arrives at 11:25. How long is the train ride?",
+    "answer": "2 hours 15 minutes",
+    "hints": ["9:10 to 11:10 = 2 hours. 11:10 to 11:25 = 15 minutes."],
+    "solution": "9:10 to 11:10 = 2 hours. 11:10 to 11:25 = 15 minutes. Total: 2 hours 15 minutes.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "tell-time-5-minutes-p15",
+    "topicId": "tell-time-5-minutes",
+    "difficulty": "hard",
+    "question": "It is 10:50. What time will it be in 25 minutes?",
+    "answer": "11:15",
+    "hints": ["10:50 + 10 minutes = 11:00. 11:00 + 15 minutes = 11:15."],
+    "solution": "10:50 + 25 = 11:15.",
+    "cognitiveDemand": "procedural"
+  }
+]

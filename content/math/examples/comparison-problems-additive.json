@@ -1,0 +1,24 @@
+[
+  {
+    "id": "comparison-problems-additive-ex1",
+    "topicId": "comparison-problems-additive",
+    "title": "How Many More? (Finding the Difference)",
+    "steps": [
+      {"subgoalLabel": "Read the problem", "instruction": "Identify the two quantities.", "work": "Sam has 14 stickers. Mia has 9 stickers.", "explanation": "We need to find how many more Sam has than Mia."},
+      {"subgoalLabel": "Set up subtraction", "instruction": "Subtract the smaller from the larger.", "work": "14 − 9 = ?", "explanation": "'How many more' means find the difference."},
+      {"subgoalLabel": "Calculate", "instruction": "Subtract.", "work": "14 − 9 = 5", "explanation": "Sam has 5 more stickers than Mia."},
+      {"subgoalLabel": "Write the answer", "instruction": "Answer the question in a sentence.", "work": "Sam has 5 more stickers than Mia.", "explanation": "Always answer with the correct label."}
+    ]
+  },
+  {
+    "id": "comparison-problems-additive-ex2",
+    "topicId": "comparison-problems-additive",
+    "title": "Finding the Unknown Smaller Quantity",
+    "steps": [
+      {"subgoalLabel": "Read the problem", "instruction": "Understand what is given.", "work": "Jake has 23 marbles. He has 8 more than Lily.", "explanation": "Jake has more. We need to find how many Lily has."},
+      {"subgoalLabel": "Decide the operation", "instruction": "Since Jake has MORE, Lily has fewer — subtract.", "work": "Lily's marbles = 23 − 8", "explanation": "'8 more than Lily' means Jake's amount minus 8 gives Lily's."},
+      {"subgoalLabel": "Calculate", "instruction": "Subtract.", "work": "23 − 8 = 15", "explanation": "Lily has 15 marbles."},
+      {"subgoalLabel": "Check", "instruction": "Verify: does Lily + 8 = Jake?", "work": "15 + 8 = 23 ✓", "explanation": "Yes, Jake has 8 more than Lily's 15."}
+    ]
+  }
+]

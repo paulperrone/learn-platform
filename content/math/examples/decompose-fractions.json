@@ -1,0 +1,52 @@
+[
+  {
+    "id": "decompose-fractions-ex1",
+    "topicId": "decompose-fractions",
+    "title": "Decomposing 3/4 as a Sum of Unit Fractions",
+    "steps": [
+      {
+        "subgoalLabel": "Understand the fraction",
+        "instruction": "What does 3/4 mean?",
+        "work": "3/4 means 3 parts, each of size 1/4.",
+        "explanation": "Any fraction a/b can be thought of as 'a' copies of the unit fraction 1/b."
+      },
+      {
+        "subgoalLabel": "Write as repeated addition",
+        "instruction": "Write 3 copies of 1/4 as an addition expression.",
+        "work": "3/4 = 1/4 + 1/4 + 1/4",
+        "explanation": "Since 3/4 is three fourths, we add 1/4 three times."
+      },
+      {
+        "subgoalLabel": "Verify",
+        "instruction": "Check: does 1/4 + 1/4 + 1/4 = 3/4?",
+        "work": "1/4 + 1/4 + 1/4 = (1+1+1)/4 = 3/4. Yes!",
+        "explanation": "When adding fractions with the same denominator, add the numerators and keep the denominator."
+      }
+    ]
+  },
+  {
+    "id": "decompose-fractions-ex2",
+    "topicId": "decompose-fractions",
+    "title": "Decomposing an Improper Fraction: 7/3",
+    "steps": [
+      {
+        "subgoalLabel": "Recognize the improper fraction",
+        "instruction": "7/3 is greater than 1 because 7 > 3. How many wholes are inside?",
+        "work": "3/3 = 1 whole. 7 ÷ 3 = 2 remainder 1.",
+        "explanation": "When the numerator is larger than the denominator, the fraction contains one or more wholes."
+      },
+      {
+        "subgoalLabel": "Separate the wholes",
+        "instruction": "Take out as many groups of 3/3 as possible.",
+        "work": "7/3 = 3/3 + 3/3 + 1/3 = 2 + 1/3",
+        "explanation": "We can remove two groups of 3/3 (two wholes), leaving 1/3."
+      },
+      {
+        "subgoalLabel": "Write as a mixed number",
+        "instruction": "Combine the whole number and the leftover fraction.",
+        "work": "7/3 = 2 1/3",
+        "explanation": "The decomposition shows that 7/3 equals 2 whole and 1/3 more."
+      }
+    ]
+  }
+]

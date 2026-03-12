@@ -1,0 +1,58 @@
+[
+  {
+    "id": "angle-sums-ex1",
+    "topicId": "angle-sums",
+    "title": "Adding Angles That Share a Vertex",
+    "steps": [
+      {
+        "subgoalLabel": "Understand the additive property",
+        "instruction": "If two angles share a side and a vertex (no overlap), what can we say about the total?",
+        "work": "The measure of the whole angle equals the sum of the parts: total = angle 1 + angle 2.",
+        "explanation": "This is the angle addition postulate — angles add up just like lengths do."
+      },
+      {
+        "subgoalLabel": "Apply to an example",
+        "instruction": "A ray splits a 90° angle into two parts: 35° and what?",
+        "work": "35° + missing angle = 90°. Missing angle = 90° − 35° = 55°.",
+        "explanation": "Since the parts must add up to the whole, we subtract the known part."
+      },
+      {
+        "subgoalLabel": "Verify",
+        "instruction": "Check the answer.",
+        "work": "35° + 55° = 90°. ✓",
+        "explanation": "The two parts add back to the original angle."
+      }
+    ]
+  },
+  {
+    "id": "angle-sums-ex2",
+    "topicId": "angle-sums",
+    "title": "Finding a Missing Angle on a Straight Line",
+    "steps": [
+      {
+        "subgoalLabel": "State the rule",
+        "instruction": "What do angles on a straight line sum to?",
+        "work": "Angles on a straight line sum to 180°.",
+        "explanation": "A straight line is a straight angle = 180°."
+      },
+      {
+        "subgoalLabel": "Set up the equation",
+        "instruction": "Three angles on a line are 45°, 85°, and x°. Find x.",
+        "work": "45° + 85° + x° = 180°.",
+        "explanation": "All angles on the line must add to 180°."
+      },
+      {
+        "subgoalLabel": "Solve",
+        "instruction": "Add known angles and subtract from 180°.",
+        "work": "45 + 85 = 130. x = 180 − 130 = 50°.",
+        "explanation": "The missing angle is 50°."
+      },
+      {
+        "subgoalLabel": "Verify",
+        "instruction": "Check all angles sum to 180°.",
+        "work": "45° + 85° + 50° = 180°. ✓",
+        "explanation": "Confirmed: all angles on the line add to a straight angle."
+      }
+    ]
+  }
+]

@@ -1,0 +1,152 @@
+[
+  {
+    "id": "perimeter-regular-shapes-p1",
+    "topicId": "perimeter-regular-shapes",
+    "difficulty": "easy",
+    "question": "A square has sides of 5 cm. What is its perimeter?",
+    "answer": "20 cm",
+    "hints": ["A square has 4 equal sides. Multiply: 4 × 5."],
+    "solution": "4 × 5 = 20 cm.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "perimeter-regular-shapes-p2",
+    "topicId": "perimeter-regular-shapes",
+    "difficulty": "easy",
+    "question": "An equilateral triangle has sides of 6 cm. What is its perimeter?",
+    "answer": "18 cm",
+    "hints": ["3 equal sides × 6 cm."],
+    "solution": "3 × 6 = 18 cm.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "perimeter-regular-shapes-p3",
+    "topicId": "perimeter-regular-shapes",
+    "difficulty": "easy",
+    "question": "A regular hexagon has sides of 3 cm. What is its perimeter?",
+    "answer": "18 cm",
+    "hints": ["6 sides × 3 cm."],
+    "solution": "6 × 3 = 18 cm.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "perimeter-regular-shapes-p4",
+    "topicId": "perimeter-regular-shapes",
+    "difficulty": "easy",
+    "question": "A square has sides of 10 m. What is its perimeter?",
+    "answer": "40 m",
+    "hints": ["4 × 10 = ?"],
+    "solution": "4 × 10 = 40 m.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "perimeter-regular-shapes-p5",
+    "topicId": "perimeter-regular-shapes",
+    "difficulty": "easy",
+    "question": "A regular pentagon has sides of 4 cm. What is its perimeter?",
+    "answer": "20 cm",
+    "hints": ["5 sides × 4 cm."],
+    "solution": "5 × 4 = 20 cm.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "perimeter-regular-shapes-p6",
+    "topicId": "perimeter-regular-shapes",
+    "difficulty": "medium",
+    "question": "A regular octagon has a perimeter of 40 cm. What is the length of each side?",
+    "answer": "5 cm",
+    "hints": ["An octagon has 8 sides. 40 ÷ 8 = ?"],
+    "solution": "40 ÷ 8 = 5 cm per side.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "perimeter-regular-shapes-p7",
+    "topicId": "perimeter-regular-shapes",
+    "difficulty": "medium",
+    "question": "A square garden has a perimeter of 36 m. What is the length of one side?",
+    "answer": "9 m",
+    "hints": ["36 ÷ 4 = ?"],
+    "solution": "36 ÷ 4 = 9 m per side.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "perimeter-regular-shapes-p8",
+    "topicId": "perimeter-regular-shapes",
+    "difficulty": "medium",
+    "question": "Which has a greater perimeter: a square with sides of 7 cm or an equilateral triangle with sides of 10 cm?",
+    "answer": "equilateral triangle with sides of 10 cm",
+    "hints": ["Square: 4 × 7. Triangle: 3 × 10."],
+    "solution": "Square: 4 × 7 = 28 cm. Triangle: 3 × 10 = 30 cm. The triangle has the greater perimeter.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "perimeter-regular-shapes-p9",
+    "topicId": "perimeter-regular-shapes",
+    "difficulty": "medium",
+    "question": "A square and a regular hexagon have the same perimeter of 24 cm. What is the side length of each?",
+    "answer": "square: 6 cm, hexagon: 4 cm",
+    "hints": ["Square: 24 ÷ 4. Hexagon: 24 ÷ 6."],
+    "solution": "Square: 24 ÷ 4 = 6 cm. Hexagon: 24 ÷ 6 = 4 cm.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "perimeter-regular-shapes-p10",
+    "topicId": "perimeter-regular-shapes",
+    "difficulty": "medium",
+    "question": "You want to put ribbon around a regular pentagon picture frame. Each side is 8 inches. How many inches of ribbon do you need?",
+    "answer": "40 inches",
+    "hints": ["5 × 8 = ?"],
+    "solution": "5 × 8 = 40 inches of ribbon.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "perimeter-regular-shapes-p11",
+    "topicId": "perimeter-regular-shapes",
+    "difficulty": "hard",
+    "question": "A square field has a perimeter of 200 m. A farmer walks around it 3 times. How far does the farmer walk?",
+    "answer": "600 m",
+    "hints": ["3 × 200 = ?"],
+    "solution": "3 × 200 = 600 m.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "perimeter-regular-shapes-p12",
+    "topicId": "perimeter-regular-shapes",
+    "difficulty": "hard",
+    "question": "A regular polygon has a perimeter of 42 cm and sides of 7 cm. How many sides does it have? Name the polygon.",
+    "answer": "6 sides, hexagon",
+    "hints": ["42 ÷ 7 = ?"],
+    "solution": "42 ÷ 7 = 6 sides. A 6-sided polygon is a hexagon.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "perimeter-regular-shapes-p13",
+    "topicId": "perimeter-regular-shapes",
+    "difficulty": "hard",
+    "question": "You need 120 cm of fence to surround a square pen. Then you decide to make a regular hexagonal pen with the same amount of fence. What will each side of the hexagonal pen be?",
+    "answer": "20 cm",
+    "hints": ["Same perimeter: 120 cm. Hexagon: 120 ÷ 6 = ?"],
+    "solution": "120 ÷ 6 = 20 cm per side.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "perimeter-regular-shapes-p14",
+    "topicId": "perimeter-regular-shapes",
+    "difficulty": "hard",
+    "question": "Two squares are placed side by side to form a rectangle. Each square has sides of 4 cm. What is the perimeter of the rectangle?",
+    "answer": "24 cm",
+    "hints": ["The rectangle is 8 cm long and 4 cm wide."],
+    "solution": "Rectangle: length = 4 + 4 = 8 cm, width = 4 cm. Perimeter = 2 × (8 + 4) = 2 × 12 = 24 cm.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "perimeter-regular-shapes-p15",
+    "topicId": "perimeter-regular-shapes",
+    "difficulty": "hard",
+    "question": "An equilateral triangle has a perimeter of 27 cm. What is the length of each side? If you tripled each side, what would the new perimeter be?",
+    "answer": "9 cm; new perimeter 81 cm",
+    "hints": ["27 ÷ 3 = 9. New side = 9 × 3 = 27. New perimeter = 3 × 27."],
+    "solution": "Side = 27 ÷ 3 = 9 cm. Tripled side = 27 cm. New perimeter = 3 × 27 = 81 cm.",
+    "cognitiveDemand": "problem-solving"
+  }
+]

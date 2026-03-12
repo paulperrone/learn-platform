@@ -1,0 +1,58 @@
+[
+  {
+    "id": "standard-expanded-form-decimals-ex1",
+    "topicId": "standard-expanded-form-decimals",
+    "title": "Expanding 6.35 into Place Values",
+    "steps": [
+      {
+        "subgoalLabel": "Identify the whole number part",
+        "instruction": "What is the ones digit worth?",
+        "work": "6 ones = 6",
+        "explanation": "The digit before the decimal point is 6."
+      },
+      {
+        "subgoalLabel": "Identify the tenths",
+        "instruction": "What is the tenths digit worth?",
+        "work": "3 tenths = 0.3",
+        "explanation": "The first digit after the decimal is 3, worth 0.3."
+      },
+      {
+        "subgoalLabel": "Identify the hundredths",
+        "instruction": "What is the hundredths digit worth?",
+        "work": "5 hundredths = 0.05",
+        "explanation": "The second digit after the decimal is 5, worth 0.05."
+      },
+      {
+        "subgoalLabel": "Write the expanded form",
+        "instruction": "Combine with addition.",
+        "work": "6.35 = 6 + 0.3 + 0.05",
+        "explanation": "Expanded form shows each digit's contribution to the number."
+      }
+    ]
+  },
+  {
+    "id": "standard-expanded-form-decimals-ex2",
+    "topicId": "standard-expanded-form-decimals",
+    "title": "Converting Expanded Form to Standard: 40 + 2 + 0.7 + 0.03 + 0.006",
+    "steps": [
+      {
+        "subgoalLabel": "Combine the whole number parts",
+        "instruction": "Add the whole number values.",
+        "work": "40 + 2 = 42",
+        "explanation": "The whole number part is 42."
+      },
+      {
+        "subgoalLabel": "Combine the decimal parts",
+        "instruction": "Add the decimal values.",
+        "work": "0.7 + 0.03 + 0.006 = 0.736",
+        "explanation": "Line up the places: 7 tenths + 3 hundredths + 6 thousandths = 0.736."
+      },
+      {
+        "subgoalLabel": "Write standard form",
+        "instruction": "Combine whole and decimal parts.",
+        "work": "42 + 0.736 = 42.736",
+        "explanation": "The standard form is 42.736."
+      }
+    ]
+  }
+]

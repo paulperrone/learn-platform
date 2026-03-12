@@ -1,0 +1,70 @@
+[
+  {
+    "id": "classify-quadrilaterals-ex1",
+    "topicId": "classify-quadrilaterals",
+    "title": "The Quadrilateral Hierarchy",
+    "steps": [
+      {
+        "subgoalLabel": "Start with the broadest category",
+        "instruction": "What is the most general category?",
+        "work": "Quadrilateral — any shape with 4 sides.",
+        "explanation": "Every shape we discuss here is a quadrilateral."
+      },
+      {
+        "subgoalLabel": "Add parallelogram",
+        "instruction": "What additional property makes a quadrilateral a parallelogram?",
+        "work": "A parallelogram is a quadrilateral with 2 pairs of parallel sides (opposite sides are parallel and equal).",
+        "explanation": "Not all quadrilaterals are parallelograms — trapezoids have only 1 pair of parallel sides."
+      },
+      {
+        "subgoalLabel": "Branch into rectangle and rhombus",
+        "instruction": "How do rectangles and rhombuses specialize parallelograms?",
+        "work": "Rectangle: parallelogram + 4 right angles. Rhombus: parallelogram + 4 equal sides.",
+        "explanation": "These are two different ways to add a special property to a parallelogram."
+      },
+      {
+        "subgoalLabel": "Converge at square",
+        "instruction": "What happens when both properties are present?",
+        "work": "Square = rectangle + rhombus = 4 right angles + 4 equal sides.",
+        "explanation": "The square is the most specific — it inherits all properties from both branches. Hierarchy: quadrilateral → parallelogram → rectangle/rhombus → square."
+      }
+    ]
+  },
+  {
+    "id": "classify-quadrilaterals-ex2",
+    "topicId": "classify-quadrilaterals",
+    "title": "Finding the Most Specific Name",
+    "steps": [
+      {
+        "subgoalLabel": "Read the properties",
+        "instruction": "A shape has 4 sides, 2 pairs of parallel sides, all sides 5 cm, and no right angles.",
+        "work": "Properties: 4 sides, 2 pairs parallel, all sides equal, no right angles.",
+        "explanation": "We list all given properties before classifying."
+      },
+      {
+        "subgoalLabel": "Check quadrilateral",
+        "instruction": "Is it a quadrilateral?",
+        "work": "4 sides → Yes, it is a quadrilateral.",
+        "explanation": "This is the broadest category it fits."
+      },
+      {
+        "subgoalLabel": "Check parallelogram and rhombus",
+        "instruction": "Is it a parallelogram? A rhombus?",
+        "work": "2 pairs of parallel sides → parallelogram. All sides equal → rhombus.",
+        "explanation": "It qualifies as both because a rhombus is a special parallelogram."
+      },
+      {
+        "subgoalLabel": "Check rectangle and square",
+        "instruction": "Is it a rectangle or square?",
+        "work": "No right angles → NOT a rectangle. NOT a square (square needs right angles).",
+        "explanation": "Without right angles, it cannot be a rectangle, and therefore cannot be a square."
+      },
+      {
+        "subgoalLabel": "Give the most specific name",
+        "instruction": "What is the most specific name?",
+        "work": "Rhombus. It is a quadrilateral, parallelogram, and rhombus — but 'rhombus' is the most specific that applies.",
+        "explanation": "Always give the most specific name in the hierarchy that fits all the properties."
+      }
+    ]
+  }
+]

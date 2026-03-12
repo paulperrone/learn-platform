@@ -1,0 +1,182 @@
+[
+  {
+    "id": "place-value-millions-p1",
+    "topicId": "place-value-millions",
+    "difficulty": "easy",
+    "question": "In the number 3,456,789, what digit is in the millions place?",
+    "answer": "3",
+    "hints": [
+      "The millions place is the 7th digit from the right, or the leftmost digit in this number."
+    ],
+    "solution": "In 3,456,789, the digit 3 is in the millions place. It represents 3,000,000.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "place-value-millions-p2",
+    "topicId": "place-value-millions",
+    "difficulty": "easy",
+    "question": "What is the value of the 5 in 2,500,000?",
+    "answer": "500000",
+    "hints": [
+      "The 5 is in the hundred-thousands place."
+    ],
+    "solution": "The 5 is in the hundred-thousands place, so its value is 500,000.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "place-value-millions-p3",
+    "topicId": "place-value-millions",
+    "difficulty": "easy",
+    "question": "In the number 8,123,456, what digit is in the ten-thousands place?",
+    "answer": "2",
+    "hints": [
+      "Count from the right: ones, tens, hundreds, thousands, ten-thousands."
+    ],
+    "solution": "In 8,123,456: the 2 is in the ten-thousands place.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "place-value-millions-p4",
+    "topicId": "place-value-millions",
+    "difficulty": "easy",
+    "question": "What is the value of the 7 in 7,000,000?",
+    "answer": "7000000",
+    "hints": [
+      "The 7 is in the millions place."
+    ],
+    "solution": "The 7 is in the millions place, so its value is 7,000,000.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "place-value-millions-p5",
+    "topicId": "place-value-millions",
+    "difficulty": "easy",
+    "question": "In 4,567,890, what digit is in the hundred-thousands place?",
+    "answer": "5",
+    "hints": [
+      "The hundred-thousands place is the 6th digit from the right."
+    ],
+    "solution": "In 4,567,890, the 5 is in the hundred-thousands place.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "place-value-millions-p6",
+    "topicId": "place-value-millions",
+    "difficulty": "medium",
+    "question": "Write the number that has 6 millions, 3 hundred-thousands, 0 ten-thousands, 5 thousands, 2 hundreds, 1 ten, and 4 ones.",
+    "answer": "6305214",
+    "hints": [
+      "6,000,000 + 300,000 + 0 + 5,000 + 200 + 10 + 4."
+    ],
+    "solution": "6,000,000 + 300,000 + 0 + 5,000 + 200 + 10 + 4 = 6,305,214.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "place-value-millions-p7",
+    "topicId": "place-value-millions",
+    "difficulty": "medium",
+    "question": "What number is 100,000 more than 2,345,678?",
+    "answer": "2445678",
+    "hints": [
+      "Adding 100,000 increases the hundred-thousands digit by 1."
+    ],
+    "solution": "2,345,678 + 100,000 = 2,445,678.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "place-value-millions-p8",
+    "topicId": "place-value-millions",
+    "difficulty": "medium",
+    "question": "How many times greater is the value of the 4 in 4,000,000 than the value of the 4 in 400,000?",
+    "answer": "10",
+    "hints": [
+      "4,000,000 ÷ 400,000 = ?"
+    ],
+    "solution": "4,000,000 ÷ 400,000 = 10. The 4 in the millions place is 10 times greater.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "place-value-millions-p9",
+    "topicId": "place-value-millions",
+    "difficulty": "medium",
+    "question": "In 5,055,505, how many digits are 5?",
+    "answer": "4",
+    "hints": [
+      "Look at each digit: 5, 0, 5, 5, 5, 0, 5."
+    ],
+    "solution": "5,055,505 has the digits 5, 0, 5, 5, 5, 0, 5. Four of the digits are 5.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "place-value-millions-p10",
+    "topicId": "place-value-millions",
+    "difficulty": "medium",
+    "question": "What number is 1,000,000 less than 9,876,543?",
+    "answer": "8876543",
+    "hints": [
+      "Subtract 1 from the millions digit."
+    ],
+    "solution": "9,876,543 − 1,000,000 = 8,876,543.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "place-value-millions-p11",
+    "topicId": "place-value-millions",
+    "difficulty": "hard",
+    "question": "In 3,333,333, what is the difference between the value of the first 3 and the value of the last 3?",
+    "answer": "2999997",
+    "hints": [
+      "First 3 = 3,000,000. Last 3 = 3. Subtract."
+    ],
+    "solution": "3,000,000 − 3 = 2,999,997.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "place-value-millions-p12",
+    "topicId": "place-value-millions",
+    "difficulty": "hard",
+    "question": "What is the largest 7-digit number you can make using the digits 2, 8, 0, 5, 1, 9, and 4 (each used once)?",
+    "answer": "9854210",
+    "hints": [
+      "Arrange the digits from greatest to least."
+    ],
+    "solution": "From greatest to least: 9, 8, 5, 4, 2, 1, 0. The number is 9,854,210.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "place-value-millions-p13",
+    "topicId": "place-value-millions",
+    "difficulty": "hard",
+    "question": "How many thousands are in 3,500,000?",
+    "answer": "3500",
+    "hints": [
+      "Divide 3,500,000 by 1,000."
+    ],
+    "solution": "3,500,000 ÷ 1,000 = 3,500. There are 3,500 thousands in 3,500,000.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "place-value-millions-p14",
+    "topicId": "place-value-millions",
+    "difficulty": "hard",
+    "question": "I am a 7-digit number. My millions digit is 5. My ten-thousands digit is twice my ones digit. My ones digit is 3. All other digits are 0. What number am I?",
+    "answer": "5060003",
+    "hints": [
+      "Millions: 5. Ten-thousands: 2 × 3 = 6. Ones: 3. All others: 0."
+    ],
+    "solution": "Millions: 5, hundred-thousands: 0, ten-thousands: 6, thousands: 0, hundreds: 0, tens: 0, ones: 3. The number is 5,060,003.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "place-value-millions-p15",
+    "topicId": "place-value-millions",
+    "difficulty": "hard",
+    "question": "Which is greater: 3 millions or 30 hundred-thousands? Or are they equal?",
+    "answer": "equal",
+    "hints": [
+      "Convert both to standard form: 3,000,000 and 30 × 100,000."
+    ],
+    "solution": "3 millions = 3,000,000. 30 hundred-thousands = 30 × 100,000 = 3,000,000. They are equal.",
+    "cognitiveDemand": "conceptual"
+  }
+]

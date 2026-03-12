@@ -1,0 +1,152 @@
+[
+  {
+    "id": "volume-rectangular-prisms-p1",
+    "topicId": "volume-rectangular-prisms",
+    "difficulty": "easy",
+    "question": "A rectangular prism is 5 cm long, 3 cm wide, and 2 cm tall. What is its volume?",
+    "answer": "30 cu cm",
+    "hints": ["V = l × w × h = 5 × 3 × 2."],
+    "solution": "5 × 3 × 2 = 30 cubic cm.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "volume-rectangular-prisms-p2",
+    "topicId": "volume-rectangular-prisms",
+    "difficulty": "easy",
+    "question": "A cube has edges of 4 cm. What is its volume?",
+    "answer": "64 cu cm",
+    "hints": ["V = 4 × 4 × 4."],
+    "solution": "4 × 4 × 4 = 64 cubic cm.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "volume-rectangular-prisms-p3",
+    "topicId": "volume-rectangular-prisms",
+    "difficulty": "easy",
+    "question": "A box is 6 in long, 4 in wide, and 3 in tall. What is its volume?",
+    "answer": "72 cu in",
+    "hints": ["V = 6 × 4 × 3."],
+    "solution": "6 × 4 × 3 = 72 cubic inches.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "volume-rectangular-prisms-p4",
+    "topicId": "volume-rectangular-prisms",
+    "difficulty": "easy",
+    "question": "A rectangular prism is 10 m long, 1 m wide, and 1 m tall. What is its volume?",
+    "answer": "10 cu m",
+    "hints": ["10 × 1 × 1 = ?"],
+    "solution": "10 × 1 × 1 = 10 cubic meters.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "volume-rectangular-prisms-p5",
+    "topicId": "volume-rectangular-prisms",
+    "difficulty": "easy",
+    "question": "What is the formula for the volume of a rectangular prism?",
+    "answer": "V = length × width × height",
+    "hints": ["Multiply the three dimensions."],
+    "solution": "V = l × w × h (length times width times height).",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "volume-rectangular-prisms-p6",
+    "topicId": "volume-rectangular-prisms",
+    "difficulty": "medium",
+    "question": "A rectangular prism has a volume of 60 cu cm. Its length is 5 cm and width is 4 cm. What is its height?",
+    "answer": "3 cm",
+    "hints": ["V = l × w × h. 60 = 5 × 4 × h. Solve for h."],
+    "solution": "60 = 5 × 4 × h = 20h. h = 60 ÷ 20 = 3 cm.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "volume-rectangular-prisms-p7",
+    "topicId": "volume-rectangular-prisms",
+    "difficulty": "medium",
+    "question": "A cube has a volume of 125 cu cm. What is the edge length?",
+    "answer": "5 cm",
+    "hints": ["What number × itself × itself = 125?"],
+    "solution": "5 × 5 × 5 = 125. Edge length = 5 cm.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "volume-rectangular-prisms-p8",
+    "topicId": "volume-rectangular-prisms",
+    "difficulty": "medium",
+    "question": "A rectangular prism is 8 cm by 5 cm by 4 cm. If the height is doubled, what is the new volume?",
+    "answer": "320 cu cm",
+    "hints": ["New height = 8 cm. V = 8 × 5 × 8."],
+    "solution": "Original: 8 × 5 × 4 = 160. New: 8 × 5 × 8 = 320 cu cm. Volume doubles when one dimension doubles.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "volume-rectangular-prisms-p9",
+    "topicId": "volume-rectangular-prisms",
+    "difficulty": "medium",
+    "question": "Which has greater volume: a prism 3 × 4 × 5 or a prism 2 × 6 × 5?",
+    "answer": "both are equal at 60 cu units",
+    "hints": ["Calculate each: 3 × 4 × 5 and 2 × 6 × 5."],
+    "solution": "3 × 4 × 5 = 60. 2 × 6 × 5 = 60. They have equal volumes.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "volume-rectangular-prisms-p10",
+    "topicId": "volume-rectangular-prisms",
+    "difficulty": "medium",
+    "question": "A rectangular prism has a base area of 15 sq cm and a height of 7 cm. What is its volume?",
+    "answer": "105 cu cm",
+    "hints": ["V = base area × height = 15 × 7."],
+    "solution": "V = 15 × 7 = 105 cubic cm.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "volume-rectangular-prisms-p11",
+    "topicId": "volume-rectangular-prisms",
+    "difficulty": "hard",
+    "question": "A shipping box must hold 360 cubic inches. It is 12 in long and 6 in wide. How tall must it be?",
+    "answer": "5 in",
+    "hints": ["360 = 12 × 6 × h. Solve for h."],
+    "solution": "360 = 72h. h = 360 ÷ 72 = 5 inches.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "volume-rectangular-prisms-p12",
+    "topicId": "volume-rectangular-prisms",
+    "difficulty": "hard",
+    "question": "A rectangular prism has a volume of 240 cu cm. Give two possible sets of whole-number dimensions.",
+    "answer": "6 × 8 × 5 and 4 × 10 × 6",
+    "hints": ["Find three numbers that multiply to 240."],
+    "solution": "240 = 6 × 8 × 5, or 4 × 10 × 6, or 3 × 8 × 10, etc.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "volume-rectangular-prisms-p13",
+    "topicId": "volume-rectangular-prisms",
+    "difficulty": "hard",
+    "question": "A container is 20 cm × 10 cm × 15 cm. How many 1-cm cubes can fit inside?",
+    "answer": "3000",
+    "hints": ["Volume = 20 × 10 × 15."],
+    "solution": "20 × 10 × 15 = 3,000 unit cubes.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "volume-rectangular-prisms-p14",
+    "topicId": "volume-rectangular-prisms",
+    "difficulty": "hard",
+    "question": "Prism A is 3 × 4 × 5. Prism B is 6 × 4 × 5. What is the ratio of their volumes?",
+    "answer": "1:2",
+    "hints": ["A = 60. B = 120. Simplify 60:120."],
+    "solution": "A: 60. B: 120. Ratio: 60:120 = 1:2.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "volume-rectangular-prisms-p15",
+    "topicId": "volume-rectangular-prisms",
+    "difficulty": "hard",
+    "question": "All dimensions of a cube are tripled. The original cube has edges of 2 cm. What is the volume of the new cube? How many times larger is it?",
+    "answer": "216 cu cm; 27 times larger",
+    "hints": ["New edge = 6. Volume = 6³. Original = 2³ = 8. 216 ÷ 8 = ?"],
+    "solution": "Original: 2³ = 8. New: 6³ = 216. Ratio: 216 ÷ 8 = 27 times larger.",
+    "cognitiveDemand": "problem-solving"
+  }
+]

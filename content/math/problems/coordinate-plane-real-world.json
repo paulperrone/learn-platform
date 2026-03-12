@@ -1,0 +1,152 @@
+[
+  {
+    "id": "coordinate-plane-real-world-p1",
+    "topicId": "coordinate-plane-real-world",
+    "difficulty": "easy",
+    "question": "On a map grid, a school is at (2, 5) and a library is at (6, 5). How many blocks apart are they?",
+    "answer": "4 blocks",
+    "hints": ["Same y-coordinate. Distance = 6 − 2."],
+    "solution": "6 − 2 = 4 blocks apart.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "coordinate-plane-real-world-p2",
+    "topicId": "coordinate-plane-real-world",
+    "difficulty": "easy",
+    "question": "On a grid map, each unit represents 1 mile. The park is at (3, 1) and home is at (3, 4). How far is the park from home?",
+    "answer": "3 miles",
+    "hints": ["Same x-coordinate: 4 − 1 = 3."],
+    "solution": "4 − 1 = 3 miles.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "coordinate-plane-real-world-p3",
+    "topicId": "coordinate-plane-real-world",
+    "difficulty": "easy",
+    "question": "A treasure map uses a grid. The treasure is at (7, 3). You start at (0, 0). How far east (right) and how far north (up) do you go?",
+    "answer": "7 east, 3 north",
+    "hints": ["x = east, y = north."],
+    "solution": "Go 7 units east and 3 units north.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "coordinate-plane-real-world-p4",
+    "topicId": "coordinate-plane-real-world",
+    "difficulty": "easy",
+    "question": "A seating chart uses a grid. Row is x, column is y. Maya sits at (3, 5). Which row and column is she in?",
+    "answer": "row 3, column 5",
+    "hints": ["The first number is the row, the second is the column."],
+    "solution": "Maya is in row 3, column 5.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "coordinate-plane-real-world-p5",
+    "topicId": "coordinate-plane-real-world",
+    "difficulty": "easy",
+    "question": "On a grid, a store is at (4, 2) and a restaurant is at (4, 8). How far apart are they if each grid unit is 1 block?",
+    "answer": "6 blocks",
+    "hints": ["Same x: 8 − 2 = 6."],
+    "solution": "8 − 2 = 6 blocks.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "coordinate-plane-real-world-p6",
+    "topicId": "coordinate-plane-real-world",
+    "difficulty": "medium",
+    "question": "A hiking trail on a map goes from point (1, 2) to (1, 6) to (4, 6). Each grid unit is 1 km. How long is the trail?",
+    "answer": "7 km",
+    "hints": ["First leg: (1,2) to (1,6) = 4 km. Second leg: (1,6) to (4,6) = 3 km."],
+    "solution": "Leg 1: 6 − 2 = 4 km. Leg 2: 4 − 1 = 3 km. Total: 4 + 3 = 7 km.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "coordinate-plane-real-world-p7",
+    "topicId": "coordinate-plane-real-world",
+    "difficulty": "medium",
+    "question": "A rectangular garden has corners at (2, 1), (8, 1), (8, 5), (2, 5) on a grid where each unit is 1 meter. What is the area of the garden?",
+    "answer": "24 sq m",
+    "hints": ["Length = 8 − 2. Width = 5 − 1."],
+    "solution": "Length = 6 m. Width = 4 m. Area = 6 × 4 = 24 sq m.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "coordinate-plane-real-world-p8",
+    "topicId": "coordinate-plane-real-world",
+    "difficulty": "medium",
+    "question": "A delivery truck goes from a warehouse at (1, 1) to a store at (1, 7), then to another store at (5, 7). Each unit is 1 mile. How many miles does the truck drive?",
+    "answer": "10 miles",
+    "hints": ["First trip: vertical. Second trip: horizontal."],
+    "solution": "Leg 1: 7 − 1 = 6 miles. Leg 2: 5 − 1 = 4 miles. Total: 10 miles.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "coordinate-plane-real-world-p9",
+    "topicId": "coordinate-plane-real-world",
+    "difficulty": "medium",
+    "question": "On a classroom grid, desks are at every whole-number coordinate from (1, 1) to (5, 4). How many desks are there?",
+    "answer": "20",
+    "hints": ["x goes from 1 to 5 (5 positions). y goes from 1 to 4 (4 positions)."],
+    "solution": "5 × 4 = 20 desks.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "coordinate-plane-real-world-p10",
+    "topicId": "coordinate-plane-real-world",
+    "difficulty": "medium",
+    "question": "A fence goes around a rectangular yard with corners at (0, 0), (10, 0), (10, 6), and (0, 6). Each unit is 1 foot. How many feet of fencing are needed?",
+    "answer": "32 feet",
+    "hints": ["Perimeter = 2 × (length + width). Length = 10. Width = 6."],
+    "solution": "2 × (10 + 6) = 32 feet.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "coordinate-plane-real-world-p11",
+    "topicId": "coordinate-plane-real-world",
+    "difficulty": "hard",
+    "question": "Three friends live at coordinates: Alex at (2, 3), Ben at (2, 9), and Cara at (8, 3). They want to meet at a point that is the same distance from Alex and Cara along the grid lines. What is the midpoint of Alex and Cara's positions?",
+    "answer": "(5, 3)",
+    "hints": ["Same y-coordinate (3). Midpoint x = (2 + 8) / 2."],
+    "solution": "Midpoint x = (2 + 8) / 2 = 5. y = 3 (same for both). Midpoint: (5, 3).",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "coordinate-plane-real-world-p12",
+    "topicId": "coordinate-plane-real-world",
+    "difficulty": "hard",
+    "question": "A city park is shaped like a rectangle with corners at (1, 2), (9, 2), (9, 7), (1, 7). A path goes from (1, 2) to (9, 2) to (9, 7). How long is the path? How does it compare to the park's perimeter?",
+    "answer": "path: 13 units, perimeter: 26 units (path is half the perimeter)",
+    "hints": ["Path: 8 + 5 = 13. Perimeter: 2(8 + 5) = 26."],
+    "solution": "Path: (9-1) + (7-2) = 8 + 5 = 13. Perimeter: 2(8 + 5) = 26. The path is half the perimeter.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "coordinate-plane-real-world-p13",
+    "topicId": "coordinate-plane-real-world",
+    "difficulty": "hard",
+    "question": "A robot moves on a grid. It starts at (0, 0) and follows these commands: right 5, up 3, right 2, up 4. Where does it end up?",
+    "answer": "(7, 7)",
+    "hints": ["Add right moves to x, up moves to y."],
+    "solution": "x: 0 + 5 + 2 = 7. y: 0 + 3 + 4 = 7. The robot ends at (7, 7).",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "coordinate-plane-real-world-p14",
+    "topicId": "coordinate-plane-real-world",
+    "difficulty": "hard",
+    "question": "A farmer's rectangular field has corners at (0, 0), (12, 0), (12, 8), (0, 8). Each unit is 10 meters. What is the area of the field in square meters?",
+    "answer": "9600 sq m",
+    "hints": ["Grid dimensions: 12 × 8. Real dimensions: 120 m × 80 m."],
+    "solution": "Real length = 12 × 10 = 120 m. Real width = 8 × 10 = 80 m. Area = 120 × 80 = 9,600 sq m.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "coordinate-plane-real-world-p15",
+    "topicId": "coordinate-plane-real-world",
+    "difficulty": "hard",
+    "question": "A treasure hunt has 3 checkpoints: A(1, 1), B(1, 5), C(7, 5). You must visit them in order. What is the total distance traveled in grid units?",
+    "answer": "10 units",
+    "hints": ["A to B: 4 units. B to C: 6 units."],
+    "solution": "A to B: |5 − 1| = 4. B to C: |7 − 1| = 6. Total: 4 + 6 = 10 units.",
+    "cognitiveDemand": "problem-solving"
+  }
+]

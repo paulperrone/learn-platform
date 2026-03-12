@@ -1,0 +1,52 @@
+[
+  {
+    "id": "count-by-10s-ex1",
+    "topicId": "count-by-10s",
+    "title": "Skip Counting by 10s from 10 to 100",
+    "steps": [
+      {
+        "subgoalLabel": "Start at 10",
+        "instruction": "Begin with the number 10.",
+        "work": "10",
+        "explanation": "When we skip count by 10s, we start at 10."
+      },
+      {
+        "subgoalLabel": "Add 10 each time",
+        "instruction": "Keep adding 10 to get the next number until you reach 100.",
+        "work": "10, 20, 30, 40, 50, 60, 70, 80, 90, 100",
+        "explanation": "Each number is 10 more than the one before."
+      },
+      {
+        "subgoalLabel": "Notice the pattern",
+        "instruction": "What do all these numbers end with?",
+        "work": "They all end with 0.",
+        "explanation": "Every number when counting by 10s ends in 0. This helps you check your counting."
+      }
+    ]
+  },
+  {
+    "id": "count-by-10s-ex2",
+    "topicId": "count-by-10s",
+    "title": "Counting Dimes by 10s",
+    "steps": [
+      {
+        "subgoalLabel": "Understand the problem",
+        "instruction": "You have 5 dimes. Each dime is worth 10 cents. How many cents?",
+        "work": "5 dimes, each worth 10 cents.",
+        "explanation": "We count by 10s five times to find the total."
+      },
+      {
+        "subgoalLabel": "Count by 10s",
+        "instruction": "Count by 10s five times.",
+        "work": "10, 20, 30, 40, 50",
+        "explanation": "Each dime adds 10 cents. Five dimes make 50 cents."
+      },
+      {
+        "subgoalLabel": "State the answer",
+        "instruction": "How many cents do you have?",
+        "work": "50 cents",
+        "explanation": "5 dimes = 50 cents. Counting by 10s helps us count dimes quickly."
+      }
+    ]
+  }
+]

@@ -1,0 +1,52 @@
+[
+  {
+    "id": "equivalent-place-value-ex1",
+    "topicId": "equivalent-place-value",
+    "title": "Understanding 24 Tens = 240",
+    "steps": [
+      {
+        "subgoalLabel": "Recall what a ten is worth",
+        "instruction": "How much is 1 ten?",
+        "work": "1 ten = 10",
+        "explanation": "Each 'ten' represents the number 10."
+      },
+      {
+        "subgoalLabel": "Multiply",
+        "instruction": "Find 24 tens by multiplying 24 × 10.",
+        "work": "24 × 10 = 240",
+        "explanation": "To find the total, multiply the number of tens by 10."
+      },
+      {
+        "subgoalLabel": "Verify with place value",
+        "instruction": "Check: does 240 have 24 tens?",
+        "work": "240 = 200 + 40 = 20 tens + 4 tens = 24 tens ✓",
+        "explanation": "The 2 in the hundreds place is worth 20 tens, and the 4 in the tens place is 4 tens. Together, 24 tens."
+      }
+    ]
+  },
+  {
+    "id": "equivalent-place-value-ex2",
+    "topicId": "equivalent-place-value",
+    "title": "Finding How Many Hundreds Are in 3,600",
+    "steps": [
+      {
+        "subgoalLabel": "Set up the division",
+        "instruction": "To find how many hundreds, divide by 100.",
+        "work": "3,600 ÷ 100 = ?",
+        "explanation": "Since each hundred is worth 100, we divide the total by 100."
+      },
+      {
+        "subgoalLabel": "Divide",
+        "instruction": "Compute 3,600 ÷ 100.",
+        "work": "3,600 ÷ 100 = 36",
+        "explanation": "Dividing by 100 removes two zeros: 3,600 becomes 36."
+      },
+      {
+        "subgoalLabel": "Verify",
+        "instruction": "Check: 36 × 100 = ?",
+        "work": "36 × 100 = 3,600 ✓",
+        "explanation": "36 hundreds = 3,600. Our answer is correct."
+      }
+    ]
+  }
+]

@@ -1,0 +1,58 @@
+[
+  {
+    "id": "quadrilaterals-intro-ex1",
+    "topicId": "quadrilaterals-intro",
+    "title": "Identifying Quadrilaterals",
+    "steps": [
+      {
+        "subgoalLabel": "Define quadrilateral",
+        "instruction": "What makes a shape a quadrilateral?",
+        "work": "A quadrilateral is any shape with exactly 4 straight sides and 4 vertices.",
+        "explanation": "'Quad' means four and 'lateral' means side. Any 4-sided closed shape is a quadrilateral."
+      },
+      {
+        "subgoalLabel": "Test a rectangle",
+        "instruction": "Is a rectangle a quadrilateral?",
+        "work": "A rectangle has 4 straight sides and 4 vertices. Yes, it is a quadrilateral.",
+        "explanation": "We check the definition: 4 straight sides? Yes. So it qualifies."
+      },
+      {
+        "subgoalLabel": "Test a triangle",
+        "instruction": "Is a triangle a quadrilateral?",
+        "work": "A triangle has 3 sides. It does NOT have 4 sides. No, it is not a quadrilateral.",
+        "explanation": "A triangle fails the definition because it has 3 sides, not 4."
+      },
+      {
+        "subgoalLabel": "List common quadrilaterals",
+        "instruction": "Name some common quadrilaterals.",
+        "work": "Square, rectangle, rhombus, parallelogram, trapezoid — all have 4 sides.",
+        "explanation": "These are all quadrilaterals because they all have exactly 4 straight sides, even though they look different from each other."
+      }
+    ]
+  },
+  {
+    "id": "quadrilaterals-intro-ex2",
+    "topicId": "quadrilaterals-intro",
+    "title": "Classifying a Shape as a Quadrilateral",
+    "steps": [
+      {
+        "subgoalLabel": "Read the description",
+        "instruction": "A shape has 4 sides. Two sides are parallel and two are not. What type of quadrilateral is it?",
+        "work": "The shape has 4 sides, so it is a quadrilateral.",
+        "explanation": "First we confirm it is a quadrilateral by counting sides."
+      },
+      {
+        "subgoalLabel": "Check parallel sides",
+        "instruction": "How many pairs of parallel sides does it have?",
+        "work": "It has exactly 1 pair of parallel sides.",
+        "explanation": "Parallel sides go in the same direction and never meet."
+      },
+      {
+        "subgoalLabel": "Identify the specific type",
+        "instruction": "What quadrilateral has exactly one pair of parallel sides?",
+        "work": "A trapezoid has exactly one pair of parallel sides.",
+        "explanation": "This distinguishes a trapezoid from a parallelogram (which has 2 pairs of parallel sides)."
+      }
+    ]
+  }
+]

@@ -1,0 +1,52 @@
+[
+  {
+    "id": "convert-mixed-to-decimal-ex1",
+    "topicId": "convert-mixed-to-decimal",
+    "title": "Converting 3 1/4 to a Decimal",
+    "steps": [
+      {
+        "subgoalLabel": "Separate whole and fraction",
+        "instruction": "Break 3 1/4 into the whole number 3 and the fraction 1/4.",
+        "work": "3 1/4 = 3 + 1/4",
+        "explanation": "A mixed number is a whole number plus a fraction."
+      },
+      {
+        "subgoalLabel": "Convert the fraction to a decimal",
+        "instruction": "Divide 1 by 4.",
+        "work": "1 ÷ 4 = 0.25",
+        "explanation": "One-fourth equals 0.25."
+      },
+      {
+        "subgoalLabel": "Add together",
+        "instruction": "Add the whole number and the decimal.",
+        "work": "3 + 0.25 = 3.25",
+        "explanation": "3 1/4 = 3.25."
+      }
+    ]
+  },
+  {
+    "id": "convert-mixed-to-decimal-ex2",
+    "topicId": "convert-mixed-to-decimal",
+    "title": "Converting 5 3/8 to a Decimal",
+    "steps": [
+      {
+        "subgoalLabel": "Separate whole and fraction",
+        "instruction": "Break 5 3/8 into 5 + 3/8.",
+        "work": "5 3/8 = 5 + 3/8",
+        "explanation": "Convert the fraction part separately."
+      },
+      {
+        "subgoalLabel": "Convert 3/8 to a decimal",
+        "instruction": "Divide 3 by 8.",
+        "work": "3 ÷ 8 = 0.375",
+        "explanation": "8 goes into 3.000: 0.375."
+      },
+      {
+        "subgoalLabel": "Combine",
+        "instruction": "Add 5 + 0.375.",
+        "work": "5 + 0.375 = 5.375",
+        "explanation": "5 3/8 = 5.375."
+      }
+    ]
+  }
+]

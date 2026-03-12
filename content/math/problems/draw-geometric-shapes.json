@@ -1,0 +1,152 @@
+[
+  {
+    "id": "draw-geometric-shapes-p1",
+    "topicId": "draw-geometric-shapes",
+    "difficulty": "easy",
+    "question": "Describe a shape that has 4 sides, all the same length, and 4 right angles. What is it?",
+    "answer": "square",
+    "hints": ["4 equal sides + 4 right angles."],
+    "solution": "A square has 4 equal sides and 4 right angles (90° each).",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "draw-geometric-shapes-p2",
+    "topicId": "draw-geometric-shapes",
+    "difficulty": "easy",
+    "question": "Name a shape that has 3 sides and 1 right angle.",
+    "answer": "right triangle",
+    "hints": ["A triangle with a 90° angle."],
+    "solution": "A right triangle has 3 sides and exactly one right angle.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "draw-geometric-shapes-p3",
+    "topicId": "draw-geometric-shapes",
+    "difficulty": "easy",
+    "question": "What shape has exactly 2 pairs of parallel sides and 4 right angles, but NOT all sides equal?",
+    "answer": "rectangle",
+    "hints": ["It's like a square but longer in one direction."],
+    "solution": "A rectangle has 2 pairs of parallel sides, 4 right angles, but its length and width are different.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "draw-geometric-shapes-p4",
+    "topicId": "draw-geometric-shapes",
+    "difficulty": "easy",
+    "question": "Name a shape that has 4 equal sides but NO right angles.",
+    "answer": "rhombus",
+    "hints": ["It's like a tilted square."],
+    "solution": "A rhombus (that isn't a square) has 4 equal sides but no right angles.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "draw-geometric-shapes-p5",
+    "topicId": "draw-geometric-shapes",
+    "difficulty": "easy",
+    "question": "What shape has no sides and no corners?",
+    "answer": "circle",
+    "hints": ["It is perfectly round."],
+    "solution": "A circle has no straight sides and no corners.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "draw-geometric-shapes-p6",
+    "topicId": "draw-geometric-shapes",
+    "difficulty": "medium",
+    "question": "Describe a quadrilateral with exactly one pair of parallel sides.",
+    "answer": "trapezoid",
+    "hints": ["Not a parallelogram — just one pair of parallel sides."],
+    "solution": "A trapezoid has exactly one pair of parallel sides.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "draw-geometric-shapes-p7",
+    "topicId": "draw-geometric-shapes",
+    "difficulty": "medium",
+    "question": "What shape has 5 sides, all equal, and all angles equal?",
+    "answer": "regular pentagon",
+    "hints": ["5 equal sides + 5 equal angles = regular pentagon."],
+    "solution": "A regular pentagon has 5 equal sides and 5 equal angles (each 108°).",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "draw-geometric-shapes-p8",
+    "topicId": "draw-geometric-shapes",
+    "difficulty": "medium",
+    "question": "Describe a triangle with exactly two equal sides and one angle of 90°.",
+    "answer": "isosceles right triangle",
+    "hints": ["Two equal sides (isosceles) and one right angle."],
+    "solution": "An isosceles right triangle has two equal sides meeting at a 90° angle, with two 45° angles.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "draw-geometric-shapes-p9",
+    "topicId": "draw-geometric-shapes",
+    "difficulty": "medium",
+    "question": "What shape has 6 equal sides and 6 equal angles?",
+    "answer": "regular hexagon",
+    "hints": ["6 equal sides, 6 equal angles."],
+    "solution": "A regular hexagon has 6 equal sides and 6 equal angles (each 120°).",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "draw-geometric-shapes-p10",
+    "topicId": "draw-geometric-shapes",
+    "difficulty": "medium",
+    "question": "Name a parallelogram that has 4 right angles but sides of two different lengths.",
+    "answer": "rectangle",
+    "hints": ["A parallelogram with right angles but not a square."],
+    "solution": "A rectangle is a parallelogram with 4 right angles and opposite sides equal (but not all sides equal).",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "draw-geometric-shapes-p11",
+    "topicId": "draw-geometric-shapes",
+    "difficulty": "hard",
+    "question": "Describe a polygon with 8 sides where all sides and angles are equal. What is each interior angle?",
+    "answer": "regular octagon; each angle is 135°",
+    "hints": ["Sum of interior angles = (8-2) × 180° = 1080°. Divide by 8."],
+    "solution": "Regular octagon. Interior angle sum = 1080°. Each angle = 1080° ÷ 8 = 135°.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "draw-geometric-shapes-p12",
+    "topicId": "draw-geometric-shapes",
+    "difficulty": "hard",
+    "question": "Can you have a quadrilateral with exactly 3 right angles? Explain.",
+    "answer": "Yes, the fourth angle would be 90° too (making it a rectangle)",
+    "hints": ["3 × 90° = 270°. Quadrilateral angle sum = 360°."],
+    "solution": "If 3 angles are 90°, the fourth = 360° − 270° = 90°. So a quadrilateral with 3 right angles must have 4 right angles (it's a rectangle).",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "draw-geometric-shapes-p13",
+    "topicId": "draw-geometric-shapes",
+    "difficulty": "hard",
+    "question": "A triangle has one angle of 120° and two equal sides. What are the other two angles?",
+    "answer": "30° each",
+    "hints": ["180° − 120° = 60°, split equally between 2 angles."],
+    "solution": "The other two angles: (180° − 120°) ÷ 2 = 30° each. This is an isosceles obtuse triangle.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "draw-geometric-shapes-p14",
+    "topicId": "draw-geometric-shapes",
+    "difficulty": "hard",
+    "question": "Describe a quadrilateral that has 2 pairs of parallel sides, no right angles, and all sides equal. What is it called?",
+    "answer": "rhombus (that is not a square)",
+    "hints": ["All sides equal → rhombus. No right angles → not a square."],
+    "solution": "A rhombus has 2 pairs of parallel sides and all sides equal. Without right angles, it is a non-square rhombus.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "draw-geometric-shapes-p15",
+    "topicId": "draw-geometric-shapes",
+    "difficulty": "hard",
+    "question": "Is it possible to have a triangle with two obtuse angles? Explain why or why not.",
+    "answer": "No, two obtuse angles would exceed 180°",
+    "hints": ["Each obtuse angle > 90°. 90 + 90 = 180 already."],
+    "solution": "No. Each obtuse angle is > 90°, so two would sum to > 180°. Since triangle angles sum to exactly 180°, there is no room for a third positive angle.",
+    "cognitiveDemand": "conceptual"
+  }
+]

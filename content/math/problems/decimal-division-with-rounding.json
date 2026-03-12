@@ -1,0 +1,152 @@
+[
+  {
+    "id": "decimal-division-with-rounding-p1",
+    "topicId": "decimal-division-with-rounding",
+    "difficulty": "easy",
+    "question": "Divide 7 ÷ 3 and round to the nearest tenth.",
+    "answer": "2.3",
+    "hints": ["7 ÷ 3 = 2.333... The hundredths digit is 3, which is < 5, so round down."],
+    "solution": "7 ÷ 3 = 2.333... ≈ 2.3.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "decimal-division-with-rounding-p2",
+    "topicId": "decimal-division-with-rounding",
+    "difficulty": "easy",
+    "question": "Divide 10 ÷ 3 and round to the nearest tenth.",
+    "answer": "3.3",
+    "hints": ["10 ÷ 3 = 3.333..."],
+    "solution": "10 ÷ 3 = 3.333... ≈ 3.3.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "decimal-division-with-rounding-p3",
+    "topicId": "decimal-division-with-rounding",
+    "difficulty": "easy",
+    "question": "Divide 5 ÷ 3 and round to the nearest hundredth.",
+    "answer": "1.67",
+    "hints": ["5 ÷ 3 = 1.666... The thousandths digit is 6, round up."],
+    "solution": "5 ÷ 3 = 1.666... ≈ 1.67.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "decimal-division-with-rounding-p4",
+    "topicId": "decimal-division-with-rounding",
+    "difficulty": "easy",
+    "question": "Divide 1 ÷ 6 and round to the nearest tenth.",
+    "answer": "0.2",
+    "hints": ["1 ÷ 6 = 0.166... Round to 0.2."],
+    "solution": "1 ÷ 6 = 0.1666... ≈ 0.2.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "decimal-division-with-rounding-p5",
+    "topicId": "decimal-division-with-rounding",
+    "difficulty": "easy",
+    "question": "Divide 4 ÷ 7 and round to the nearest hundredth.",
+    "answer": "0.57",
+    "hints": ["4 ÷ 7 = 0.571... Round to 0.57."],
+    "solution": "4 ÷ 7 = 0.5714... ≈ 0.57.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "decimal-division-with-rounding-p6",
+    "topicId": "decimal-division-with-rounding",
+    "difficulty": "medium",
+    "question": "Divide 22 ÷ 7 and round to the nearest hundredth.",
+    "answer": "3.14",
+    "hints": ["22 ÷ 7 = 3.1428..."],
+    "solution": "22 ÷ 7 = 3.1428... ≈ 3.14.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "decimal-division-with-rounding-p7",
+    "topicId": "decimal-division-with-rounding",
+    "difficulty": "medium",
+    "question": "Divide 8.5 ÷ 3 and round to the nearest tenth.",
+    "answer": "2.8",
+    "hints": ["8.5 ÷ 3 = 2.833..."],
+    "solution": "8.5 ÷ 3 = 2.833... ≈ 2.8.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "decimal-division-with-rounding-p8",
+    "topicId": "decimal-division-with-rounding",
+    "difficulty": "medium",
+    "question": "Three friends split $10 evenly. How much does each get, rounded to the nearest cent?",
+    "answer": "$3.33",
+    "hints": ["10 ÷ 3 = 3.333..."],
+    "solution": "$10 ÷ 3 = $3.333... ≈ $3.33.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "decimal-division-with-rounding-p9",
+    "topicId": "decimal-division-with-rounding",
+    "difficulty": "medium",
+    "question": "Divide 15.7 ÷ 6 and round to the nearest hundredth.",
+    "answer": "2.62",
+    "hints": ["15.7 ÷ 6 = 2.6166..."],
+    "solution": "15.7 ÷ 6 = 2.6166... ≈ 2.62.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "decimal-division-with-rounding-p10",
+    "topicId": "decimal-division-with-rounding",
+    "difficulty": "medium",
+    "question": "Divide 11 ÷ 9 and round to the nearest thousandth.",
+    "answer": "1.222",
+    "hints": ["11 ÷ 9 = 1.2222..."],
+    "solution": "11 ÷ 9 = 1.2222... ≈ 1.222.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "decimal-division-with-rounding-p11",
+    "topicId": "decimal-division-with-rounding",
+    "difficulty": "hard",
+    "question": "Divide 100 ÷ 7 and round to the nearest hundredth.",
+    "answer": "14.29",
+    "hints": ["100 ÷ 7 = 14.2857..."],
+    "solution": "100 ÷ 7 = 14.2857... ≈ 14.29.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "decimal-division-with-rounding-p12",
+    "topicId": "decimal-division-with-rounding",
+    "difficulty": "hard",
+    "question": "A 25-meter rope is cut into 6 equal pieces. How long is each piece, rounded to the nearest hundredth?",
+    "answer": "4.17",
+    "hints": ["25 ÷ 6 = 4.1666..."],
+    "solution": "25 ÷ 6 = 4.1666... ≈ 4.17 meters.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "decimal-division-with-rounding-p13",
+    "topicId": "decimal-division-with-rounding",
+    "difficulty": "hard",
+    "question": "Divide 50 ÷ 11 and round to the nearest tenth.",
+    "answer": "4.5",
+    "hints": ["50 ÷ 11 = 4.5454..."],
+    "solution": "50 ÷ 11 = 4.5454... ≈ 4.5.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "decimal-division-with-rounding-p14",
+    "topicId": "decimal-division-with-rounding",
+    "difficulty": "hard",
+    "question": "Seven students equally share a $50 pizza bill. What does each person pay, rounded to the nearest cent?",
+    "answer": "$7.14",
+    "hints": ["50 ÷ 7 = 7.1428..."],
+    "solution": "$50 ÷ 7 = $7.1428... ≈ $7.14.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "decimal-division-with-rounding-p15",
+    "topicId": "decimal-division-with-rounding",
+    "difficulty": "hard",
+    "question": "Divide 17.5 ÷ 0.3 and round to the nearest tenth.",
+    "answer": "58.3",
+    "hints": ["Multiply both by 10: 175 ÷ 3 = 58.333..."],
+    "solution": "175 ÷ 3 = 58.333... ≈ 58.3.",
+    "cognitiveDemand": "procedural"
+  }
+]

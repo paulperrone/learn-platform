@@ -1,0 +1,152 @@
+[
+  {
+    "id": "multiply-decimals-powers-of-ten-p1",
+    "topicId": "multiply-decimals-powers-of-ten",
+    "difficulty": "easy",
+    "question": "What is 3.5 × 10?",
+    "answer": "35",
+    "hints": ["Move the decimal point 1 place to the right."],
+    "solution": "3.5 × 10 = 35. The decimal moves 1 place right.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-decimals-powers-of-ten-p2",
+    "topicId": "multiply-decimals-powers-of-ten",
+    "difficulty": "easy",
+    "question": "What is 0.7 × 10?",
+    "answer": "7",
+    "hints": ["Move the decimal 1 place right."],
+    "solution": "0.7 × 10 = 7.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-decimals-powers-of-ten-p3",
+    "topicId": "multiply-decimals-powers-of-ten",
+    "difficulty": "easy",
+    "question": "What is 2.4 × 100?",
+    "answer": "240",
+    "hints": ["Move the decimal 2 places right."],
+    "solution": "2.4 × 100 = 240.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-decimals-powers-of-ten-p4",
+    "topicId": "multiply-decimals-powers-of-ten",
+    "difficulty": "easy",
+    "question": "What is 0.05 × 10?",
+    "answer": "0.5",
+    "hints": ["Move the decimal 1 place right."],
+    "solution": "0.05 × 10 = 0.5.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-decimals-powers-of-ten-p5",
+    "topicId": "multiply-decimals-powers-of-ten",
+    "difficulty": "easy",
+    "question": "What is 1.6 × 10?",
+    "answer": "16",
+    "hints": ["Move the decimal 1 place right."],
+    "solution": "1.6 × 10 = 16.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-decimals-powers-of-ten-p6",
+    "topicId": "multiply-decimals-powers-of-ten",
+    "difficulty": "medium",
+    "question": "What is 0.45 × 100?",
+    "answer": "45",
+    "hints": ["Move the decimal 2 places right."],
+    "solution": "0.45 × 100 = 45.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-decimals-powers-of-ten-p7",
+    "topicId": "multiply-decimals-powers-of-ten",
+    "difficulty": "medium",
+    "question": "What is 0.006 × 1000?",
+    "answer": "6",
+    "hints": ["Move the decimal 3 places right."],
+    "solution": "0.006 × 1000 = 6.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-decimals-powers-of-ten-p8",
+    "topicId": "multiply-decimals-powers-of-ten",
+    "difficulty": "medium",
+    "question": "What is 3.14 × 100?",
+    "answer": "314",
+    "hints": ["Move the decimal 2 places right."],
+    "solution": "3.14 × 100 = 314.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-decimals-powers-of-ten-p9",
+    "topicId": "multiply-decimals-powers-of-ten",
+    "difficulty": "medium",
+    "question": "What is 0.125 × 1000?",
+    "answer": "125",
+    "hints": ["Move the decimal 3 places right."],
+    "solution": "0.125 × 1000 = 125.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-decimals-powers-of-ten-p10",
+    "topicId": "multiply-decimals-powers-of-ten",
+    "difficulty": "medium",
+    "question": "What is 7.8 × 1000?",
+    "answer": "7800",
+    "hints": ["Move the decimal 3 places right, adding zeros as needed."],
+    "solution": "7.8 × 1000 = 7,800.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-decimals-powers-of-ten-p11",
+    "topicId": "multiply-decimals-powers-of-ten",
+    "difficulty": "hard",
+    "question": "What is 0.0045 × 1000?",
+    "answer": "4.5",
+    "hints": ["Move the decimal 3 places right."],
+    "solution": "0.0045 × 1000 = 4.5.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-decimals-powers-of-ten-p12",
+    "topicId": "multiply-decimals-powers-of-ten",
+    "difficulty": "hard",
+    "question": "What pattern do you notice? 0.56 × 10 = 5.6, 0.56 × 100 = 56, 0.56 × 1000 = ?",
+    "answer": "560",
+    "hints": ["Each time you multiply by 10, the decimal moves 1 place right."],
+    "solution": "0.56 × 1000 = 560. Each multiplication by 10 shifts the decimal one place right.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "multiply-decimals-powers-of-ten-p13",
+    "topicId": "multiply-decimals-powers-of-ten",
+    "difficulty": "hard",
+    "question": "A single tablet weighs 0.325 grams. What is the weight of 100 tablets?",
+    "answer": "32.5",
+    "hints": ["0.325 × 100: move decimal 2 places right."],
+    "solution": "0.325 × 100 = 32.5 grams.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "multiply-decimals-powers-of-ten-p14",
+    "topicId": "multiply-decimals-powers-of-ten",
+    "difficulty": "hard",
+    "question": "What is 12.345 × 100?",
+    "answer": "1234.5",
+    "hints": ["Move the decimal 2 places right."],
+    "solution": "12.345 × 100 = 1,234.5.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-decimals-powers-of-ten-p15",
+    "topicId": "multiply-decimals-powers-of-ten",
+    "difficulty": "hard",
+    "question": "You multiply a number by 10, then by 100. That is the same as multiplying by what single number?",
+    "answer": "1000",
+    "hints": ["10 × 100 = ?"],
+    "solution": "10 × 100 = 1,000. Multiplying by 10 then 100 is the same as multiplying by 1,000.",
+    "cognitiveDemand": "conceptual"
+  }
+]

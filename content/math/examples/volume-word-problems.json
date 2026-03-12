@@ -1,0 +1,52 @@
+[
+  {
+    "id": "volume-word-problems-ex1",
+    "topicId": "volume-word-problems",
+    "title": "Finding Volume of a Real-World Box",
+    "steps": [
+      {
+        "subgoalLabel": "Read the problem",
+        "instruction": "A storage bin is 15 in long, 10 in wide, and 8 in tall. How much can it hold?",
+        "work": "We need to find the volume: V = l × w × h.",
+        "explanation": "'How much can it hold' is asking for volume."
+      },
+      {
+        "subgoalLabel": "Substitute and calculate",
+        "instruction": "Plug in the dimensions.",
+        "work": "V = 15 × 10 × 8 = 1,200 cu in.",
+        "explanation": "Multiply the three dimensions."
+      },
+      {
+        "subgoalLabel": "Answer with units",
+        "instruction": "State the answer.",
+        "work": "The bin can hold 1,200 cubic inches.",
+        "explanation": "Always include cubic units when reporting volume."
+      }
+    ]
+  },
+  {
+    "id": "volume-word-problems-ex2",
+    "topicId": "volume-word-problems",
+    "title": "Composite Volume Word Problem",
+    "steps": [
+      {
+        "subgoalLabel": "Read the problem",
+        "instruction": "An L-shaped closet has two sections. Section A is 5 ft × 3 ft × 8 ft. Section B is 4 ft × 2 ft × 8 ft. Find the total volume.",
+        "work": "This is a composite shape — add the volumes of the two sections.",
+        "explanation": "Break the L-shape into rectangular prisms."
+      },
+      {
+        "subgoalLabel": "Find each volume",
+        "instruction": "Calculate Section A and Section B separately.",
+        "work": "A: 5 × 3 × 8 = 120 cu ft. B: 4 × 2 × 8 = 64 cu ft.",
+        "explanation": "Use V = l × w × h for each section."
+      },
+      {
+        "subgoalLabel": "Add the volumes",
+        "instruction": "Find the total.",
+        "work": "120 + 64 = 184 cu ft.",
+        "explanation": "The total closet space is 184 cubic feet."
+      }
+    ]
+  }
+]

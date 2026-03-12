@@ -1,0 +1,182 @@
+[
+  {
+    "id": "multiply-fractions-area-p1",
+    "topicId": "multiply-fractions-area",
+    "difficulty": "easy",
+    "question": "A rectangle has a length of 1/2 foot and a width of 1/3 foot. What is its area in square feet?",
+    "answer": "1/6",
+    "hints": [
+      "Area = length × width. Multiply 1/2 × 1/3."
+    ],
+    "solution": "Area = 1/2 × 1/3 = 1/6 square foot.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-fractions-area-p2",
+    "topicId": "multiply-fractions-area",
+    "difficulty": "easy",
+    "question": "A rectangle is 1/4 meter long and 1/2 meter wide. What is its area?",
+    "answer": "1/8",
+    "hints": [
+      "Area = length × width."
+    ],
+    "solution": "Area = 1/4 × 1/2 = 1/8 square meter.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-fractions-area-p3",
+    "topicId": "multiply-fractions-area",
+    "difficulty": "easy",
+    "question": "A tile is 1/3 foot long and 1/3 foot wide. What is its area in square feet?",
+    "answer": "1/9",
+    "hints": [
+      "Multiply 1/3 × 1/3."
+    ],
+    "solution": "Area = 1/3 × 1/3 = 1/9 square foot.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-fractions-area-p4",
+    "topicId": "multiply-fractions-area",
+    "difficulty": "easy",
+    "question": "A rectangle is 1/2 inch long and 1/5 inch wide. What is its area?",
+    "answer": "1/10",
+    "hints": [
+      "Multiply the two fractions."
+    ],
+    "solution": "Area = 1/2 × 1/5 = 1/10 square inch.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-fractions-area-p5",
+    "topicId": "multiply-fractions-area",
+    "difficulty": "easy",
+    "question": "A rectangle is 1/4 yard long and 1/3 yard wide. What is its area?",
+    "answer": "1/12",
+    "hints": [
+      "Area = length × width = 1/4 × 1/3."
+    ],
+    "solution": "Area = 1/4 × 1/3 = 1/12 square yard.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-fractions-area-p6",
+    "topicId": "multiply-fractions-area",
+    "difficulty": "medium",
+    "question": "A rectangle is 3/4 meter long and 2/3 meter wide. What is its area? Simplify your answer.",
+    "answer": "1/2",
+    "hints": [
+      "Multiply 3/4 × 2/3 and simplify."
+    ],
+    "solution": "Area = 3/4 × 2/3 = 6/12 = 1/2 square meter.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-fractions-area-p7",
+    "topicId": "multiply-fractions-area",
+    "difficulty": "medium",
+    "question": "A poster is 2/3 foot long and 3/5 foot wide. What is the area of the poster?",
+    "answer": "2/5",
+    "hints": [
+      "Multiply 2/3 × 3/5."
+    ],
+    "solution": "Area = 2/3 × 3/5 = 6/15 = 2/5 square foot.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-fractions-area-p8",
+    "topicId": "multiply-fractions-area",
+    "difficulty": "medium",
+    "question": "A tabletop is 5/6 meter long and 3/4 meter wide. What is its area? Simplify your answer.",
+    "answer": "5/8",
+    "hints": [
+      "Multiply 5/6 × 3/4 and simplify."
+    ],
+    "solution": "Area = 5/6 × 3/4 = 15/24 = 5/8 square meter.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-fractions-area-p9",
+    "topicId": "multiply-fractions-area",
+    "difficulty": "medium",
+    "question": "A garden bed is 4/5 yard long and 1/2 yard wide. What is its area?",
+    "answer": "2/5",
+    "hints": [
+      "Multiply 4/5 × 1/2."
+    ],
+    "solution": "Area = 4/5 × 1/2 = 4/10 = 2/5 square yard.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-fractions-area-p10",
+    "topicId": "multiply-fractions-area",
+    "difficulty": "medium",
+    "question": "A window is 2/5 meter wide and 3/4 meter tall. What is the area of the window?",
+    "answer": "3/10",
+    "hints": [
+      "Multiply 2/5 × 3/4."
+    ],
+    "solution": "Area = 2/5 × 3/4 = 6/20 = 3/10 square meter.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-fractions-area-p11",
+    "topicId": "multiply-fractions-area",
+    "difficulty": "hard",
+    "question": "A rectangular field is 7/8 mile long and 4/7 mile wide. What is its area? Simplify your answer.",
+    "answer": "1/2",
+    "hints": [
+      "Multiply 7/8 × 4/7 and simplify."
+    ],
+    "solution": "Area = 7/8 × 4/7 = 28/56 = 1/2 square mile.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-fractions-area-p12",
+    "topicId": "multiply-fractions-area",
+    "difficulty": "hard",
+    "question": "A banner is 5/6 yard long and 2/5 yard wide. What is its area? Simplify your answer.",
+    "answer": "1/3",
+    "hints": [
+      "Multiply 5/6 × 2/5."
+    ],
+    "solution": "Area = 5/6 × 2/5 = 10/30 = 1/3 square yard.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "multiply-fractions-area-p13",
+    "topicId": "multiply-fractions-area",
+    "difficulty": "hard",
+    "question": "A rectangle has sides of 5/8 inch and 4/5 inch. Another rectangle has sides of 3/4 inch and 2/3 inch. Which rectangle has the greater area, and by how much?",
+    "answer": "1/2",
+    "hints": [
+      "Find each area separately, then compare. First: 5/8 × 4/5. Second: 3/4 × 2/3."
+    ],
+    "solution": "First: 5/8 × 4/5 = 20/40 = 1/2. Second: 3/4 × 2/3 = 6/12 = 1/2. They have the same area: 1/2 square inch.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "multiply-fractions-area-p14",
+    "topicId": "multiply-fractions-area",
+    "difficulty": "hard",
+    "question": "A floor tile is 3/4 foot by 2/3 foot. How many tiles are needed to cover a 1 square foot area?",
+    "answer": "2",
+    "hints": [
+      "First find the area of one tile, then divide 1 by that area."
+    ],
+    "solution": "Tile area = 3/4 × 2/3 = 6/12 = 1/2 sq ft. Tiles needed: 1 ÷ 1/2 = 2 tiles.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "multiply-fractions-area-p15",
+    "topicId": "multiply-fractions-area",
+    "difficulty": "hard",
+    "question": "A rectangular painting is 7/10 meter long and 5/7 meter wide. What is its area? Simplify your answer.",
+    "answer": "1/2",
+    "hints": [
+      "Multiply 7/10 × 5/7 and simplify."
+    ],
+    "solution": "Area = 7/10 × 5/7 = 35/70 = 1/2 square meter.",
+    "cognitiveDemand": "procedural"
+  }
+]

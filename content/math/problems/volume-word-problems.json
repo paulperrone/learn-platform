@@ -1,0 +1,152 @@
+[
+  {
+    "id": "volume-word-problems-p1",
+    "topicId": "volume-word-problems",
+    "difficulty": "easy",
+    "question": "A fish tank is 10 inches long, 8 inches wide, and 6 inches tall. What is its volume?",
+    "answer": "480 cu in",
+    "hints": ["V = 10 × 8 × 6."],
+    "solution": "10 × 8 × 6 = 480 cubic inches.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "volume-word-problems-p2",
+    "topicId": "volume-word-problems",
+    "difficulty": "easy",
+    "question": "A shoe box is 12 in long, 6 in wide, and 4 in tall. How many cubic inches of space does it have?",
+    "answer": "288 cu in",
+    "hints": ["V = 12 × 6 × 4."],
+    "solution": "12 × 6 × 4 = 288 cubic inches.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "volume-word-problems-p3",
+    "topicId": "volume-word-problems",
+    "difficulty": "easy",
+    "question": "A toy box is 3 ft long, 2 ft wide, and 2 ft tall. What is its volume?",
+    "answer": "12 cu ft",
+    "hints": ["3 × 2 × 2 = ?"],
+    "solution": "3 × 2 × 2 = 12 cubic feet.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "volume-word-problems-p4",
+    "topicId": "volume-word-problems",
+    "difficulty": "easy",
+    "question": "A block of cheese is 5 cm by 4 cm by 3 cm. What is its volume?",
+    "answer": "60 cu cm",
+    "hints": ["5 × 4 × 3 = ?"],
+    "solution": "5 × 4 × 3 = 60 cubic cm.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "volume-word-problems-p5",
+    "topicId": "volume-word-problems",
+    "difficulty": "easy",
+    "question": "A planter box is 8 ft long, 2 ft wide, and 1 ft deep. How many cubic feet of soil does it need?",
+    "answer": "16 cu ft",
+    "hints": ["8 × 2 × 1 = ?"],
+    "solution": "8 × 2 × 1 = 16 cubic feet of soil.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "volume-word-problems-p6",
+    "topicId": "volume-word-problems",
+    "difficulty": "medium",
+    "question": "A sandbox is 6 ft long, 4 ft wide, and 1 ft deep. Sand costs $3 per cubic foot. How much does it cost to fill the sandbox?",
+    "answer": "$72",
+    "hints": ["V = 6 × 4 × 1 = 24. Cost = 24 × $3."],
+    "solution": "Volume = 24 cu ft. Cost = 24 × $3 = $72.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "volume-word-problems-p7",
+    "topicId": "volume-word-problems",
+    "difficulty": "medium",
+    "question": "A moving box holds 4,800 cubic inches. It is 20 inches long and 16 inches wide. How tall is it?",
+    "answer": "15 in",
+    "hints": ["4800 = 20 × 16 × h."],
+    "solution": "20 × 16 = 320. h = 4800 ÷ 320 = 15 inches.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "volume-word-problems-p8",
+    "topicId": "volume-word-problems",
+    "difficulty": "medium",
+    "question": "A swimming pool is 25 m long, 10 m wide, and 2 m deep. What is its volume in cubic meters?",
+    "answer": "500 cu m",
+    "hints": ["25 × 10 × 2 = ?"],
+    "solution": "25 × 10 × 2 = 500 cubic meters.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "volume-word-problems-p9",
+    "topicId": "volume-word-problems",
+    "difficulty": "medium",
+    "question": "A gift box is a cube with edges of 6 inches. How much wrapping space (volume) is inside?",
+    "answer": "216 cu in",
+    "hints": ["6 × 6 × 6 = ?"],
+    "solution": "6 × 6 × 6 = 216 cubic inches.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "volume-word-problems-p10",
+    "topicId": "volume-word-problems",
+    "difficulty": "medium",
+    "question": "Box A is 10 × 5 × 4 cm. Box B is 8 × 6 × 5 cm. Which holds more, and by how much?",
+    "answer": "Box B holds more, by 40 cu cm",
+    "hints": ["A = 200. B = 240."],
+    "solution": "A: 10 × 5 × 4 = 200. B: 8 × 6 × 5 = 240. B holds 40 cu cm more.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "volume-word-problems-p11",
+    "topicId": "volume-word-problems",
+    "difficulty": "hard",
+    "question": "A room is 12 ft long, 10 ft wide, and 8 ft tall. An air conditioner can cool 500 cu ft. How many air conditioners are needed?",
+    "answer": "2",
+    "hints": ["Room volume = 960 cu ft. 960 ÷ 500 = ?"],
+    "solution": "12 × 10 × 8 = 960. 960 ÷ 500 = 1.92. Round up: 2 air conditioners.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "volume-word-problems-p12",
+    "topicId": "volume-word-problems",
+    "difficulty": "hard",
+    "question": "A warehouse has two rooms. Room 1 is 20 × 15 × 10 ft. Room 2 is 25 × 10 × 10 ft. What is the total volume?",
+    "answer": "5500 cu ft",
+    "hints": ["Calculate each room and add."],
+    "solution": "Room 1: 20 × 15 × 10 = 3000. Room 2: 25 × 10 × 10 = 2500. Total: 5500 cu ft.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "volume-word-problems-p13",
+    "topicId": "volume-word-problems",
+    "difficulty": "hard",
+    "question": "A concrete patio is 15 ft long, 12 ft wide, and 4 inches thick. What is its volume in cubic feet? (Hint: convert 4 inches to feet first.)",
+    "answer": "60 cu ft",
+    "hints": ["4 inches = 1/3 foot. V = 15 × 12 × 1/3."],
+    "solution": "4 in = 4/12 = 1/3 ft. V = 15 × 12 × 1/3 = 60 cubic feet.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "volume-word-problems-p14",
+    "topicId": "volume-word-problems",
+    "difficulty": "hard",
+    "question": "Small cubes with 2 cm edges are packed into a box that is 10 cm × 8 cm × 6 cm. How many small cubes fit?",
+    "answer": "60",
+    "hints": ["How many fit along each dimension? 10÷2, 8÷2, 6÷2."],
+    "solution": "Along length: 10 ÷ 2 = 5. Width: 8 ÷ 2 = 4. Height: 6 ÷ 2 = 3. Total: 5 × 4 × 3 = 60 cubes.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "volume-word-problems-p15",
+    "topicId": "volume-word-problems",
+    "difficulty": "hard",
+    "question": "A garden bed shaped like an L is made of two rectangular sections. Section 1 is 8 ft × 3 ft × 1 ft. Section 2 is 4 ft × 3 ft × 1 ft. How many cubic feet of soil are needed to fill it?",
+    "answer": "36 cu ft",
+    "hints": ["Find each volume and add them."],
+    "solution": "Section 1: 8 × 3 × 1 = 24. Section 2: 4 × 3 × 1 = 12. Total: 24 + 12 = 36 cu ft.",
+    "cognitiveDemand": "problem-solving"
+  }
+]

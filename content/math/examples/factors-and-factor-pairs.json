@@ -1,0 +1,52 @@
+[
+  {
+    "id": "factors-and-factor-pairs-ex1",
+    "topicId": "factors-and-factor-pairs",
+    "title": "Finding All Factor Pairs of 20",
+    "steps": [
+      {
+        "subgoalLabel": "Start with 1",
+        "instruction": "Does 1 divide 20? What is its pair?",
+        "work": "1 × 20 = 20. Factor pair: (1, 20).",
+        "explanation": "1 is always a factor. Its pair is the number itself."
+      },
+      {
+        "subgoalLabel": "Try 2, 3, 4...",
+        "instruction": "Check 2: 20 ÷ 2 = 10. Check 3: 20 ÷ 3 = 6 R2 (not a factor). Check 4: 20 ÷ 4 = 5.",
+        "work": "2 × 10 = 20. Factor pair: (2, 10).\n3 is not a factor.\n4 × 5 = 20. Factor pair: (4, 5).",
+        "explanation": "Keep checking until the factor equals or exceeds its pair."
+      },
+      {
+        "subgoalLabel": "Stop and list",
+        "instruction": "5 is already paired with 4. We can stop here. List all factors.",
+        "work": "Factor pairs: (1,20), (2,10), (4,5).\nAll factors: 1, 2, 4, 5, 10, 20.",
+        "explanation": "Once the smaller factor meets or exceeds the larger, we have found all pairs."
+      }
+    ]
+  },
+  {
+    "id": "factors-and-factor-pairs-ex2",
+    "topicId": "factors-and-factor-pairs",
+    "title": "Checking if 6 Is a Factor of 42",
+    "steps": [
+      {
+        "subgoalLabel": "Divide",
+        "instruction": "Compute 42 ÷ 6.",
+        "work": "42 ÷ 6 = 7",
+        "explanation": "If the division has no remainder, then 6 is a factor."
+      },
+      {
+        "subgoalLabel": "Check for remainder",
+        "instruction": "Is there a remainder?",
+        "work": "No remainder. 6 × 7 = 42 exactly.",
+        "explanation": "Since 42 ÷ 6 = 7 with no remainder, 6 is indeed a factor of 42."
+      },
+      {
+        "subgoalLabel": "State the conclusion",
+        "instruction": "Is 6 a factor of 42?",
+        "work": "Yes, 6 is a factor of 42.",
+        "explanation": "A factor divides the number evenly (no remainder)."
+      }
+    ]
+  }
+]

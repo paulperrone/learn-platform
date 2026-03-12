@@ -1,0 +1,64 @@
+[
+  {
+    "id": "add-mixed-numbers-unlike-ex1",
+    "topicId": "add-mixed-numbers-unlike",
+    "title": "Adding Mixed Numbers with Unlike Denominators: 2 1/3 + 1 1/4",
+    "steps": [
+      {
+        "subgoalLabel": "Add the whole numbers",
+        "instruction": "Add: 2 + 1.",
+        "work": "2 + 1 = 3",
+        "explanation": "Handle whole numbers separately from fractions."
+      },
+      {
+        "subgoalLabel": "Find LCD and convert fractions",
+        "instruction": "LCD of 3 and 4 is 12. Convert both fractions.",
+        "work": "1/3 = 4/12, 1/4 = 3/12",
+        "explanation": "Rewrite both fractions with the common denominator 12."
+      },
+      {
+        "subgoalLabel": "Add the fractions",
+        "instruction": "Add: 4/12 + 3/12.",
+        "work": "4/12 + 3/12 = 7/12",
+        "explanation": "With matching denominators, add the numerators."
+      },
+      {
+        "subgoalLabel": "Combine",
+        "instruction": "Put the whole number and fraction together.",
+        "work": "3 + 7/12 = 3 7/12",
+        "explanation": "Since 7/12 < 1, no regrouping is needed. The answer is 3 7/12."
+      }
+    ]
+  },
+  {
+    "id": "add-mixed-numbers-unlike-ex2",
+    "topicId": "add-mixed-numbers-unlike",
+    "title": "Adding Mixed Numbers with Regrouping: 3 2/3 + 2 3/4",
+    "steps": [
+      {
+        "subgoalLabel": "Add whole numbers",
+        "instruction": "3 + 2 = 5.",
+        "work": "Whole sum = 5",
+        "explanation": "Start with the whole number parts."
+      },
+      {
+        "subgoalLabel": "Find LCD and convert",
+        "instruction": "LCD(3, 4) = 12. Convert: 2/3 = 8/12, 3/4 = 9/12.",
+        "work": "2/3 = 8/12, 3/4 = 9/12",
+        "explanation": "Both fractions now have denominator 12."
+      },
+      {
+        "subgoalLabel": "Add fractions and regroup",
+        "instruction": "8/12 + 9/12 = 17/12. This is improper — regroup.",
+        "work": "17/12 = 1 5/12",
+        "explanation": "17/12 is more than 1 whole. Convert to a mixed number."
+      },
+      {
+        "subgoalLabel": "Combine everything",
+        "instruction": "5 + 1 5/12 = ?",
+        "work": "5 + 1 5/12 = 6 5/12",
+        "explanation": "Add the extra whole from the fraction sum to the whole number total."
+      }
+    ]
+  }
+]

@@ -1,0 +1,152 @@
+[
+  {
+    "id": "classify-quadrilaterals-p1",
+    "topicId": "classify-quadrilaterals",
+    "difficulty": "easy",
+    "question": "True or false: Every square is a rectangle.",
+    "answer": "true",
+    "hints": ["A rectangle needs 4 right angles and opposite sides equal. Does a square have these?"],
+    "solution": "True. A square has 4 right angles and opposite sides are equal, so it is a rectangle.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "classify-quadrilaterals-p2",
+    "topicId": "classify-quadrilaterals",
+    "difficulty": "easy",
+    "question": "True or false: Every rectangle is a parallelogram.",
+    "answer": "true",
+    "hints": ["A parallelogram has 2 pairs of parallel sides."],
+    "solution": "True. A rectangle has 2 pairs of parallel sides, so it is a parallelogram.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "classify-quadrilaterals-p3",
+    "topicId": "classify-quadrilaterals",
+    "difficulty": "easy",
+    "question": "True or false: Every parallelogram is a rectangle.",
+    "answer": "false",
+    "hints": ["Does every parallelogram have 4 right angles?"],
+    "solution": "False. A parallelogram only needs 2 pairs of parallel sides. It does not need right angles. Only special parallelograms (rectangles) have right angles.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "classify-quadrilaterals-p4",
+    "topicId": "classify-quadrilaterals",
+    "difficulty": "easy",
+    "question": "Is a rhombus a parallelogram?",
+    "answer": "yes",
+    "hints": ["Does a rhombus have 2 pairs of parallel sides?"],
+    "solution": "Yes. A rhombus has 2 pairs of parallel sides, so it is a parallelogram.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "classify-quadrilaterals-p5",
+    "topicId": "classify-quadrilaterals",
+    "difficulty": "easy",
+    "question": "Which is more specific: quadrilateral or parallelogram?",
+    "answer": "parallelogram",
+    "hints": ["Every parallelogram is a quadrilateral, but not every quadrilateral is a parallelogram."],
+    "solution": "Parallelogram is more specific. All parallelograms are quadrilaterals, but not all quadrilaterals are parallelograms (e.g., trapezoids).",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "classify-quadrilaterals-p6",
+    "topicId": "classify-quadrilaterals",
+    "difficulty": "medium",
+    "question": "Put these in order from most general to most specific: square, quadrilateral, parallelogram, rectangle.",
+    "answer": "quadrilateral, parallelogram, rectangle, square",
+    "hints": ["Start with the shape that includes all the others."],
+    "solution": "Quadrilateral (most general) → parallelogram → rectangle → square (most specific). Each is a special case of the one before it.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "classify-quadrilaterals-p7",
+    "topicId": "classify-quadrilaterals",
+    "difficulty": "medium",
+    "question": "A shape has 4 sides, 2 pairs of parallel sides, and no right angles. All sides are different lengths. Is it a parallelogram?",
+    "answer": "no",
+    "hints": ["A parallelogram requires opposite sides to be equal."],
+    "solution": "No. A parallelogram must have opposite sides equal and parallel. If all sides are different lengths, opposite sides cannot be equal, so it is not a parallelogram. It would be a general quadrilateral (or possibly a trapezoid if it has at least one pair of parallel sides).",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "classify-quadrilaterals-p8",
+    "topicId": "classify-quadrilaterals",
+    "difficulty": "medium",
+    "question": "Name all the categories a square belongs to from this list: quadrilateral, parallelogram, rectangle, rhombus, trapezoid.",
+    "answer": "quadrilateral, parallelogram, rectangle, rhombus",
+    "hints": ["Check each definition against the properties of a square."],
+    "solution": "A square is a quadrilateral (4 sides), parallelogram (2 pairs of parallel sides), rectangle (4 right angles), and rhombus (4 equal sides). It is not typically classified as a trapezoid in the exclusive definition.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "classify-quadrilaterals-p9",
+    "topicId": "classify-quadrilaterals",
+    "difficulty": "medium",
+    "question": "True or false: A trapezoid is a parallelogram.",
+    "answer": "false",
+    "hints": ["A trapezoid has exactly one pair of parallel sides. A parallelogram has two."],
+    "solution": "False. A trapezoid has exactly one pair of parallel sides, while a parallelogram requires two pairs.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "classify-quadrilaterals-p10",
+    "topicId": "classify-quadrilaterals",
+    "difficulty": "medium",
+    "question": "A shape is a rhombus with 4 right angles. What is the most specific name for this shape?",
+    "answer": "square",
+    "hints": ["A rhombus with right angles has both 4 equal sides and 4 right angles."],
+    "solution": "A rhombus with 4 right angles is a square. 'Square' is the most specific name.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "classify-quadrilaterals-p11",
+    "topicId": "classify-quadrilaterals",
+    "difficulty": "hard",
+    "question": "Give the most specific name: a quadrilateral with 2 pairs of parallel sides, 4 right angles, and sides of 5 cm and 8 cm.",
+    "answer": "rectangle",
+    "hints": ["Are all sides equal? If not, it can't be a square."],
+    "solution": "It is a rectangle. It has right angles and parallel sides, but its sides are not all equal (5 cm and 8 cm), so it is not a square or rhombus.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "classify-quadrilaterals-p12",
+    "topicId": "classify-quadrilaterals",
+    "difficulty": "hard",
+    "question": "Why is a square always a rhombus, but a rhombus is not always a square?",
+    "answer": "A square has 4 equal sides (making it a rhombus), but a rhombus does not need right angles (which a square requires)",
+    "hints": ["Compare the requirements: what does a square need that a rhombus doesn't?"],
+    "solution": "A square has 4 equal sides, satisfying the rhombus definition. But a rhombus only requires 4 equal sides — it doesn't need right angles. Since a square requires right angles AND equal sides, a rhombus without right angles is not a square.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "classify-quadrilaterals-p13",
+    "topicId": "classify-quadrilaterals",
+    "difficulty": "hard",
+    "question": "How many of these statements are true? (1) All squares are rhombuses. (2) All rhombuses are squares. (3) All rectangles are parallelograms. (4) All parallelograms are rectangles.",
+    "answer": "2",
+    "hints": ["Check each statement. Statements 1 and 3 are about going from specific to general."],
+    "solution": "Two statements are true: (1) All squares are rhombuses — true. (2) All rhombuses are squares — false (rhombuses don't need right angles). (3) All rectangles are parallelograms — true. (4) All parallelograms are rectangles — false (parallelograms don't need right angles).",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "classify-quadrilaterals-p14",
+    "topicId": "classify-quadrilaterals",
+    "difficulty": "hard",
+    "question": "A parallelogram has all sides equal to 7 cm and angles of 60° and 120°. What is the most specific name?",
+    "answer": "rhombus",
+    "hints": ["4 equal sides makes it a rhombus. No right angles, so it's not a square."],
+    "solution": "It is a rhombus. It has 4 equal sides (rhombus), but its angles are not 90° so it is not a rectangle or square.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "classify-quadrilaterals-p15",
+    "topicId": "classify-quadrilaterals",
+    "difficulty": "hard",
+    "question": "True or false: A shape can be both a rectangle and a rhombus at the same time.",
+    "answer": "true",
+    "hints": ["What shape has both 4 right angles and 4 equal sides?"],
+    "solution": "True. A square is both a rectangle (4 right angles) and a rhombus (4 equal sides) at the same time.",
+    "cognitiveDemand": "conceptual"
+  }
+]

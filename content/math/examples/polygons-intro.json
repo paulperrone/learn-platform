@@ -1,0 +1,58 @@
+[
+  {
+    "id": "polygons-intro-ex1",
+    "topicId": "polygons-intro",
+    "title": "What Makes a Shape a Polygon?",
+    "steps": [
+      {
+        "subgoalLabel": "Define polygon",
+        "instruction": "What is a polygon?",
+        "work": "A polygon is a closed, flat shape made of straight sides.",
+        "explanation": "Three rules: (1) closed (no gaps), (2) flat (2D), (3) all sides straight (no curves)."
+      },
+      {
+        "subgoalLabel": "Test a triangle",
+        "instruction": "Is a triangle a polygon?",
+        "work": "Closed? Yes. Flat? Yes. Straight sides? Yes. A triangle IS a polygon.",
+        "explanation": "A triangle passes all three tests."
+      },
+      {
+        "subgoalLabel": "Test a circle",
+        "instruction": "Is a circle a polygon?",
+        "work": "Closed? Yes. Flat? Yes. Straight sides? NO — it is curved. A circle is NOT a polygon.",
+        "explanation": "The circle fails the straight-sides test."
+      }
+    ]
+  },
+  {
+    "id": "polygons-intro-ex2",
+    "topicId": "polygons-intro",
+    "title": "Naming Polygons by Number of Sides",
+    "steps": [
+      {
+        "subgoalLabel": "Learn the naming pattern",
+        "instruction": "How are polygons named?",
+        "work": "Polygons are named by their number of sides using Greek prefixes: tri (3), quad (4), penta (5), hexa (6), hepta (7), octa (8).",
+        "explanation": "The prefix tells you the number of sides."
+      },
+      {
+        "subgoalLabel": "Apply to an example",
+        "instruction": "A shape has 8 straight sides and is closed. Name it.",
+        "work": "8 sides → prefix 'octa' → octagon.",
+        "explanation": "Count the sides, then use the prefix for that number."
+      },
+      {
+        "subgoalLabel": "Verify it's a polygon",
+        "instruction": "Confirm this shape is a polygon.",
+        "work": "8 straight sides, closed shape, flat → yes, it is a polygon.",
+        "explanation": "Always check: straight sides, closed, and flat."
+      },
+      {
+        "subgoalLabel": "Practice another",
+        "instruction": "Name a polygon with 5 sides.",
+        "work": "5 sides → prefix 'penta' → pentagon.",
+        "explanation": "The pattern is consistent: match the number of sides to its Greek prefix."
+      }
+    ]
+  }
+]

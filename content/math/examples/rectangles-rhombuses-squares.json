@@ -1,0 +1,64 @@
+[
+  {
+    "id": "rectangles-rhombuses-squares-ex1",
+    "topicId": "rectangles-rhombuses-squares",
+    "title": "Comparing Properties of Rectangles, Rhombuses, and Squares",
+    "steps": [
+      {
+        "subgoalLabel": "List rectangle properties",
+        "instruction": "What are the key properties of a rectangle?",
+        "work": "A rectangle has 4 right angles, opposite sides are equal and parallel.",
+        "explanation": "The defining feature of a rectangle is its 4 right angles."
+      },
+      {
+        "subgoalLabel": "List rhombus properties",
+        "instruction": "What are the key properties of a rhombus?",
+        "work": "A rhombus has 4 equal sides, opposite sides are parallel, opposite angles are equal.",
+        "explanation": "The defining feature of a rhombus is its 4 equal sides."
+      },
+      {
+        "subgoalLabel": "List square properties",
+        "instruction": "What are the key properties of a square?",
+        "work": "A square has 4 equal sides AND 4 right angles.",
+        "explanation": "A square has the properties of BOTH a rectangle and a rhombus."
+      },
+      {
+        "subgoalLabel": "Understand the relationship",
+        "instruction": "How are these three shapes related?",
+        "work": "A square is both a rectangle and a rhombus. Every square is a rectangle. Every square is a rhombus. But not every rectangle or rhombus is a square.",
+        "explanation": "The square is the 'overlap' — it satisfies the requirements of both rectangles and rhombuses."
+      }
+    ]
+  },
+  {
+    "id": "rectangles-rhombuses-squares-ex2",
+    "topicId": "rectangles-rhombuses-squares",
+    "title": "Is This Shape a Rectangle, Rhombus, or Square?",
+    "steps": [
+      {
+        "subgoalLabel": "Read the description",
+        "instruction": "A shape has 4 sides, all 6 cm long, and 4 right angles. Classify it.",
+        "work": "Sides: all 6 cm (equal). Angles: all right angles (90°).",
+        "explanation": "We need to check this against each shape's definition."
+      },
+      {
+        "subgoalLabel": "Check if rectangle",
+        "instruction": "Does it meet the rectangle definition?",
+        "work": "Rectangle needs 4 right angles and opposite sides equal. This shape has both. Yes, it is a rectangle.",
+        "explanation": "Having all sides equal means opposite sides are certainly equal too."
+      },
+      {
+        "subgoalLabel": "Check if rhombus",
+        "instruction": "Does it meet the rhombus definition?",
+        "work": "Rhombus needs 4 equal sides. All sides are 6 cm. Yes, it is a rhombus.",
+        "explanation": "All four sides being equal satisfies the rhombus definition."
+      },
+      {
+        "subgoalLabel": "Conclude",
+        "instruction": "What is the most specific name?",
+        "work": "It is a rectangle AND a rhombus, so it must be a square. A square is the shape that is both.",
+        "explanation": "When a shape has 4 equal sides AND 4 right angles, the most specific name is 'square.'"
+      }
+    ]
+  }
+]

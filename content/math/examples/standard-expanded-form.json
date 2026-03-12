@@ -1,0 +1,52 @@
+[
+  {
+    "id": "standard-expanded-form-ex1",
+    "topicId": "standard-expanded-form",
+    "title": "Converting 2,753 to Expanded Form",
+    "steps": [
+      {
+        "subgoalLabel": "Identify each digit's value",
+        "instruction": "Find the value of each digit in 2,753.",
+        "work": "2 = 2,000 (thousands)\n7 = 700 (hundreds)\n5 = 50 (tens)\n3 = 3 (ones)",
+        "explanation": "Each digit's value depends on its place."
+      },
+      {
+        "subgoalLabel": "Write in expanded form",
+        "instruction": "Write the number as a sum of each digit's value.",
+        "work": "2,753 = 2,000 + 700 + 50 + 3",
+        "explanation": "Expanded form shows the value each digit contributes to the number."
+      },
+      {
+        "subgoalLabel": "Verify",
+        "instruction": "Add the expanded form back together to check.",
+        "work": "2,000 + 700 + 50 + 3 = 2,753 ✓",
+        "explanation": "Adding the parts gives us the original number, so our expanded form is correct."
+      }
+    ]
+  },
+  {
+    "id": "standard-expanded-form-ex2",
+    "topicId": "standard-expanded-form",
+    "title": "Converting Expanded Form to Standard: 5,000 + 60 + 1",
+    "steps": [
+      {
+        "subgoalLabel": "Identify what's present and what's missing",
+        "instruction": "Look at 5,000 + 60 + 1. Which place value is missing?",
+        "work": "Thousands: 5,000 ✓\nHundreds: missing (0)\nTens: 60 ✓\nOnes: 1 ✓",
+        "explanation": "There is no hundreds value, which means the hundreds digit is 0."
+      },
+      {
+        "subgoalLabel": "Write in standard form",
+        "instruction": "Combine all values, using 0 for the missing hundreds place.",
+        "work": "5,000 + 0 + 60 + 1 = 5,061",
+        "explanation": "We must include the 0 in the hundreds place to write the number correctly."
+      },
+      {
+        "subgoalLabel": "Check your work",
+        "instruction": "Expand 5,061 to verify it matches.",
+        "work": "5,061 = 5,000 + 60 + 1 ✓",
+        "explanation": "The expanded form matches, so 5,061 is correct."
+      }
+    ]
+  }
+]

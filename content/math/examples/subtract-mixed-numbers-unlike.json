@@ -1,0 +1,52 @@
+[
+  {
+    "id": "subtract-mixed-numbers-unlike-ex1",
+    "topicId": "subtract-mixed-numbers-unlike",
+    "title": "Subtracting Mixed Numbers with Unlike Denominators: 5 3/4 − 2 1/3",
+    "steps": [
+      {
+        "subgoalLabel": "Find the LCD",
+        "instruction": "LCD of 4 and 3 is 12.",
+        "work": "LCD = 12",
+        "explanation": "We need a common denominator to subtract the fractions."
+      },
+      {
+        "subgoalLabel": "Convert fractions",
+        "instruction": "3/4 = 9/12, 1/3 = 4/12.",
+        "work": "5 9/12 − 2 4/12",
+        "explanation": "Rewrite both mixed numbers with the common denominator."
+      },
+      {
+        "subgoalLabel": "Subtract",
+        "instruction": "Since 9/12 > 4/12, no regrouping needed.",
+        "work": "5 − 2 = 3. 9/12 − 4/12 = 5/12. Answer: 3 5/12.",
+        "explanation": "Subtract whole numbers and fractions separately."
+      }
+    ]
+  },
+  {
+    "id": "subtract-mixed-numbers-unlike-ex2",
+    "topicId": "subtract-mixed-numbers-unlike",
+    "title": "Subtracting with Regrouping: 4 1/3 − 1 3/4",
+    "steps": [
+      {
+        "subgoalLabel": "Find LCD and convert",
+        "instruction": "LCD(3, 4) = 12. Convert: 1/3 = 4/12, 3/4 = 9/12.",
+        "work": "4 4/12 − 1 9/12",
+        "explanation": "After converting, we see 4/12 < 9/12, so we need to regroup."
+      },
+      {
+        "subgoalLabel": "Regroup",
+        "instruction": "Borrow 1 whole from 4 and add it to 4/12.",
+        "work": "4 4/12 = 3 + 12/12 + 4/12 = 3 16/12",
+        "explanation": "Take 1 from the whole number (converting it to 12/12) and add to the fraction."
+      },
+      {
+        "subgoalLabel": "Subtract",
+        "instruction": "3 16/12 − 1 9/12.",
+        "work": "3 − 1 = 2. 16/12 − 9/12 = 7/12. Answer: 2 7/12.",
+        "explanation": "Now the fraction subtraction works. The answer is 2 7/12."
+      }
+    ]
+  }
+]

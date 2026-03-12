@@ -1,0 +1,152 @@
+[
+  {
+    "id": "units-of-area-p1",
+    "topicId": "units-of-area",
+    "difficulty": "easy",
+    "question": "What unit would you use to measure the area of a sheet of paper: square centimeters, square meters, or square kilometers?",
+    "answer": "square centimeters",
+    "hints": ["A sheet of paper is small. Choose the smallest unit."],
+    "solution": "Square centimeters. A sheet of paper is about 600 sq cm.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "units-of-area-p2",
+    "topicId": "units-of-area",
+    "difficulty": "easy",
+    "question": "What unit would you use to measure the area of a soccer field?",
+    "answer": "square meters",
+    "hints": ["A soccer field is large but not city-sized."],
+    "solution": "Square meters. A soccer field is about 7,000 sq m.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "units-of-area-p3",
+    "topicId": "units-of-area",
+    "difficulty": "easy",
+    "question": "How many square centimeters are in 1 square meter?",
+    "answer": "10000",
+    "hints": ["1 m = 100 cm. 1 sq m = 100 × 100."],
+    "solution": "1 sq m = 100 cm × 100 cm = 10,000 sq cm.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "units-of-area-p4",
+    "topicId": "units-of-area",
+    "difficulty": "easy",
+    "question": "How many square feet are in 1 square yard?",
+    "answer": "9",
+    "hints": ["1 yard = 3 feet. 1 sq yd = 3 × 3."],
+    "solution": "1 sq yd = 3 ft × 3 ft = 9 sq ft.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "units-of-area-p5",
+    "topicId": "units-of-area",
+    "difficulty": "easy",
+    "question": "True or false: Square meters are used to measure volume.",
+    "answer": "false",
+    "hints": ["Square meters measure area (flat space). Volume uses cubic meters."],
+    "solution": "False. Square meters measure area. Cubic meters measure volume.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "units-of-area-p6",
+    "topicId": "units-of-area",
+    "difficulty": "medium",
+    "question": "Convert 3 square meters to square centimeters.",
+    "answer": "30000 sq cm",
+    "hints": ["1 sq m = 10,000 sq cm. Multiply 3 × 10,000."],
+    "solution": "3 × 10,000 = 30,000 sq cm.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "units-of-area-p7",
+    "topicId": "units-of-area",
+    "difficulty": "medium",
+    "question": "Convert 36 square feet to square yards.",
+    "answer": "4 sq yd",
+    "hints": ["1 sq yd = 9 sq ft. 36 ÷ 9 = ?"],
+    "solution": "36 ÷ 9 = 4 sq yd.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "units-of-area-p8",
+    "topicId": "units-of-area",
+    "difficulty": "medium",
+    "question": "How many square inches are in 1 square foot?",
+    "answer": "144",
+    "hints": ["1 foot = 12 inches. 1 sq ft = 12 × 12."],
+    "solution": "1 sq ft = 12 × 12 = 144 sq in.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "units-of-area-p9",
+    "topicId": "units-of-area",
+    "difficulty": "medium",
+    "question": "A rectangle is 2 m by 3 m. Express its area in both square meters and square centimeters.",
+    "answer": "6 sq m = 60000 sq cm",
+    "hints": ["Area = 6 sq m. Convert: 6 × 10,000."],
+    "solution": "6 sq m = 6 × 10,000 = 60,000 sq cm.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "units-of-area-p10",
+    "topicId": "units-of-area",
+    "difficulty": "medium",
+    "question": "Which is larger: 1 square meter or 1 square yard?",
+    "answer": "1 square meter",
+    "hints": ["1 meter ≈ 1.09 yards. So 1 sq m ≈ 1.19 sq yd."],
+    "solution": "1 square meter is slightly larger than 1 square yard (1 sq m ≈ 1.19 sq yd).",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "units-of-area-p11",
+    "topicId": "units-of-area",
+    "difficulty": "hard",
+    "question": "A room is 4 m by 5 m. How many square tiles with sides of 50 cm are needed to cover the floor?",
+    "answer": "80",
+    "hints": ["Room: 400 cm × 500 cm. Tile: 50 cm × 50 cm = 2,500 sq cm. 200,000 ÷ 2,500 = ?"],
+    "solution": "Room area: 400 × 500 = 200,000 sq cm. Tile area: 50 × 50 = 2,500 sq cm. Tiles: 200,000 ÷ 2,500 = 80.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "units-of-area-p12",
+    "topicId": "units-of-area",
+    "difficulty": "hard",
+    "question": "Convert 50,000 square centimeters to square meters.",
+    "answer": "5 sq m",
+    "hints": ["Divide by 10,000."],
+    "solution": "50,000 ÷ 10,000 = 5 sq m.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "units-of-area-p13",
+    "topicId": "units-of-area",
+    "difficulty": "hard",
+    "question": "A field is 100 m by 200 m. Express its area in square kilometers.",
+    "answer": "0.02 sq km",
+    "hints": ["Area = 20,000 sq m. 1 sq km = 1,000,000 sq m."],
+    "solution": "100 × 200 = 20,000 sq m. 20,000 ÷ 1,000,000 = 0.02 sq km.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "units-of-area-p14",
+    "topicId": "units-of-area",
+    "difficulty": "hard",
+    "question": "A square has an area of 1 square foot. What is its area in square inches?",
+    "answer": "144 sq in",
+    "hints": ["1 sq ft = 144 sq in."],
+    "solution": "1 sq ft = 12 in × 12 in = 144 sq in.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "units-of-area-p15",
+    "topicId": "units-of-area",
+    "difficulty": "hard",
+    "question": "Why is 1 square meter NOT equal to 100 square centimeters?",
+    "answer": "Because 1 m = 100 cm, so 1 sq m = 100 × 100 = 10,000 sq cm, not 100",
+    "hints": ["When converting area, you must square the conversion factor."],
+    "solution": "Length converts 1:100 (m to cm), but area converts 1:10,000 because you multiply both dimensions. 1 sq m = 100 cm × 100 cm = 10,000 sq cm.",
+    "cognitiveDemand": "conceptual"
+  }
+]

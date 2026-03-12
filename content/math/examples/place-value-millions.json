@@ -1,0 +1,52 @@
+[
+  {
+    "id": "place-value-millions-ex1",
+    "topicId": "place-value-millions",
+    "title": "Finding the Value of Each Digit in 4,728,351",
+    "steps": [
+      {
+        "subgoalLabel": "Label each place",
+        "instruction": "Write each digit and its place name from left to right.",
+        "work": "4 = millions, 7 = hundred-thousands, 2 = ten-thousands, 8 = thousands, 3 = hundreds, 5 = tens, 1 = ones",
+        "explanation": "A 7-digit number has places from millions down to ones."
+      },
+      {
+        "subgoalLabel": "Find each digit's value",
+        "instruction": "Multiply each digit by its place value.",
+        "work": "4 × 1,000,000 = 4,000,000\n7 × 100,000 = 700,000\n2 × 10,000 = 20,000\n8 × 1,000 = 8,000\n3 × 100 = 300\n5 × 10 = 50\n1 × 1 = 1",
+        "explanation": "Each place is 10 times the value of the place to its right."
+      },
+      {
+        "subgoalLabel": "Verify",
+        "instruction": "Add all values to check.",
+        "work": "4,000,000 + 700,000 + 20,000 + 8,000 + 300 + 50 + 1 = 4,728,351",
+        "explanation": "The sum matches the original number, confirming our place values are correct."
+      }
+    ]
+  },
+  {
+    "id": "place-value-millions-ex2",
+    "topicId": "place-value-millions",
+    "title": "Comparing Digit Values in 6,606,066",
+    "steps": [
+      {
+        "subgoalLabel": "Identify the 6s",
+        "instruction": "Find every 6 in the number 6,606,066 and name its place.",
+        "work": "6 in millions, 6 in ten-thousands, 6 in tens, 6 in ones... Wait, let me recount: 6,606,066 → 6(millions), 6(hundred-thousands), 0(ten-thousands), 6(thousands), 0(hundreds), 6(tens), 6(ones).",
+        "explanation": "Be careful to identify each digit's place. It helps to write one digit at a time."
+      },
+      {
+        "subgoalLabel": "Find the value of each 6",
+        "instruction": "Write the value of each 6.",
+        "work": "Millions: 6,000,000\nHundred-thousands: 600,000\nThousands: 6,000\nTens: 60\nOnes: 6",
+        "explanation": "The same digit (6) has different values depending on its place."
+      },
+      {
+        "subgoalLabel": "Compare",
+        "instruction": "How many times greater is the millions 6 than the ones 6?",
+        "work": "6,000,000 ÷ 6 = 1,000,000",
+        "explanation": "The 6 in the millions place is one million times greater than the 6 in the ones place."
+      }
+    ]
+  }
+]

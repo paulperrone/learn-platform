@@ -1,0 +1,58 @@
+[
+  {
+    "id": "read-write-decimals-ex1",
+    "topicId": "read-write-decimals",
+    "title": "Reading 4.32 in Words",
+    "steps": [
+      {
+        "subgoalLabel": "Read the whole number part",
+        "instruction": "What is the number before the decimal point?",
+        "work": "4 → four",
+        "explanation": "The whole number part is read normally."
+      },
+      {
+        "subgoalLabel": "Say 'and' for the decimal point",
+        "instruction": "The decimal point is read as 'and.'",
+        "work": "four and ...",
+        "explanation": "The word 'and' tells the reader where the decimal point is."
+      },
+      {
+        "subgoalLabel": "Read the decimal part",
+        "instruction": "Read the digits after the decimal as a number, then name the last place.",
+        "work": "32 → thirty-two; last place is hundredths",
+        "explanation": "There are two decimal places, so the last place is hundredths."
+      },
+      {
+        "subgoalLabel": "Put it together",
+        "instruction": "Combine all parts.",
+        "work": "four and thirty-two hundredths",
+        "explanation": "4.32 is read as 'four and thirty-two hundredths.'"
+      }
+    ]
+  },
+  {
+    "id": "read-write-decimals-ex2",
+    "topicId": "read-write-decimals",
+    "title": "Writing 'Seven and Nine Hundredths' as a Decimal",
+    "steps": [
+      {
+        "subgoalLabel": "Write the whole number",
+        "instruction": "What number does 'seven' represent?",
+        "work": "7",
+        "explanation": "The word before 'and' is the whole number."
+      },
+      {
+        "subgoalLabel": "Place the decimal point",
+        "instruction": "'And' means we place a decimal point.",
+        "work": "7.",
+        "explanation": "Everything after 'and' goes to the right of the decimal point."
+      },
+      {
+        "subgoalLabel": "Write the decimal part",
+        "instruction": "'Nine hundredths' — nine needs to be in the hundredths place.",
+        "work": "7.09",
+        "explanation": "Nine hundredths = 0.09. We need a 0 in the tenths place so the 9 lands in the hundredths place."
+      }
+    ]
+  }
+]

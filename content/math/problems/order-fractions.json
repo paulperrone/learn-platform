@@ -1,0 +1,189 @@
+[
+  {
+    "id": "order-fractions-p1",
+    "topicId": "order-fractions",
+    "difficulty": "easy",
+    "question": "Place these fractions in order from least to greatest: 1/4, 3/4, 2/4.",
+    "answer": "1/4, 2/4, 3/4",
+    "hints": [
+      "All have the same denominator. Just compare numerators."
+    ],
+    "solution": "Same denominator, so compare numerators: 1 < 2 < 3. Order: 1/4, 2/4, 3/4.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "order-fractions-p2",
+    "topicId": "order-fractions",
+    "difficulty": "easy",
+    "question": "Place these fractions in order from least to greatest: 1/2, 1/4, 1/3.",
+    "answer": "1/4, 1/3, 1/2",
+    "hints": [
+      "For unit fractions, larger denominator = smaller fraction."
+    ],
+    "solution": "1/4 < 1/3 < 1/2. Larger denominator means smaller pieces.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "order-fractions-p3",
+    "topicId": "order-fractions",
+    "difficulty": "easy",
+    "question": "Which fraction is closest to 0 on the number line: 1/8, 1/2, or 3/4?",
+    "answer": "1/8",
+    "hints": [
+      "The smallest fraction is closest to 0."
+    ],
+    "solution": "1/8 is the smallest fraction, so it is closest to 0.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "order-fractions-p4",
+    "topicId": "order-fractions",
+    "difficulty": "easy",
+    "question": "Order from greatest to least: 5/6, 1/6, 3/6.",
+    "answer": "5/6, 3/6, 1/6",
+    "hints": [
+      "Same denominator — just compare numerators in reverse."
+    ],
+    "solution": "5 > 3 > 1, so 5/6 > 3/6 > 1/6.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "order-fractions-p5",
+    "topicId": "order-fractions",
+    "difficulty": "easy",
+    "question": "Where does 1/2 go on a number line between 0 and 1?",
+    "answer": "exactly in the middle",
+    "hints": [
+      "1/2 means halfway between 0 and 1."
+    ],
+    "solution": "1/2 is exactly in the middle between 0 and 1 on the number line.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "order-fractions-p6",
+    "topicId": "order-fractions",
+    "difficulty": "medium",
+    "question": "Order from least to greatest: 2/3, 1/2, 3/4.",
+    "answer": "1/2, 2/3, 3/4",
+    "hints": [
+      "Convert to a common denominator of 12.",
+      "1/2 = 6/12, 2/3 = 8/12, 3/4 = 9/12."
+    ],
+    "solution": "1/2 = 6/12, 2/3 = 8/12, 3/4 = 9/12. Order: 6/12 < 8/12 < 9/12.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "order-fractions-p7",
+    "topicId": "order-fractions",
+    "difficulty": "medium",
+    "question": "Order from least to greatest: 3/5, 1/3, 2/5.",
+    "answer": "1/3, 2/5, 3/5",
+    "hints": [
+      "Find a common denominator for 5 and 3.",
+      "LCD = 15. 3/5 = 9/15, 1/3 = 5/15, 2/5 = 6/15."
+    ],
+    "solution": "Common denominator 15: 1/3 = 5/15, 2/5 = 6/15, 3/5 = 9/15. Order: 1/3, 2/5, 3/5.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "order-fractions-p8",
+    "topicId": "order-fractions",
+    "difficulty": "medium",
+    "question": "Place 5/8 on the number line. Is it between 0 and 1/2, or between 1/2 and 1?",
+    "answer": "between 1/2 and 1",
+    "hints": [
+      "1/2 = 4/8. Is 5/8 greater than 4/8?"
+    ],
+    "solution": "5/8 > 4/8 = 1/2, so 5/8 is between 1/2 and 1 on the number line.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "order-fractions-p9",
+    "topicId": "order-fractions",
+    "difficulty": "medium",
+    "question": "Order from least to greatest: 5/6, 3/4, 7/8.",
+    "answer": "3/4, 5/6, 7/8",
+    "hints": [
+      "All are close to 1. Compare distances from 1.",
+      "3/4 is 1/4 from 1, 5/6 is 1/6 from 1, 7/8 is 1/8 from 1."
+    ],
+    "solution": "Distance from 1: 3/4 → 1/4, 5/6 → 1/6, 7/8 → 1/8. Farthest from 1 is smallest: 3/4 < 5/6 < 7/8.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "order-fractions-p10",
+    "topicId": "order-fractions",
+    "difficulty": "medium",
+    "question": "Order from greatest to least: 2/3, 5/6, 1/2.",
+    "answer": "5/6, 2/3, 1/2",
+    "hints": [
+      "Common denominator is 6: 2/3 = 4/6, 5/6 = 5/6, 1/2 = 3/6."
+    ],
+    "solution": "5/6 = 5/6 > 2/3 = 4/6 > 1/2 = 3/6. Greatest to least: 5/6, 2/3, 1/2.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "order-fractions-p11",
+    "topicId": "order-fractions",
+    "difficulty": "hard",
+    "question": "Order from least to greatest: 3/8, 2/5, 1/3, 5/12.",
+    "answer": "1/3, 3/8, 2/5, 5/12",
+    "hints": [
+      "Find a common denominator. LCD(8,5,3,12) = 120.",
+      "3/8 = 45/120, 2/5 = 48/120, 1/3 = 40/120, 5/12 = 50/120."
+    ],
+    "solution": "Common denom 120: 1/3 = 40/120, 3/8 = 45/120, 2/5 = 48/120, 5/12 = 50/120. Order: 1/3, 3/8, 2/5, 5/12.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "order-fractions-p12",
+    "topicId": "order-fractions",
+    "difficulty": "hard",
+    "question": "Name a fraction between 1/3 and 1/2.",
+    "answer": "2/5",
+    "hints": [
+      "Convert to a common denominator: 1/3 = 2/6, 1/2 = 3/6. There's no fraction with denominator 6 between them, so try larger denominators.",
+      "1/3 = 4/12, 1/2 = 6/12. What about 5/12?"
+    ],
+    "solution": "1/3 = 4/12 and 1/2 = 6/12. So 5/12 is between them. Also 2/5 works (2/5 = 0.4, between 0.333 and 0.5).",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "order-fractions-p13",
+    "topicId": "order-fractions",
+    "difficulty": "hard",
+    "question": "Order from least to greatest: 7/10, 2/3, 5/8, 3/4.",
+    "answer": "5/8, 2/3, 7/10, 3/4",
+    "hints": [
+      "LCD(10,3,8,4) = 120.",
+      "7/10 = 84/120, 2/3 = 80/120, 5/8 = 75/120, 3/4 = 90/120."
+    ],
+    "solution": "Common denom 120: 5/8 = 75/120, 2/3 = 80/120, 7/10 = 84/120, 3/4 = 90/120.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "order-fractions-p14",
+    "topicId": "order-fractions",
+    "difficulty": "hard",
+    "question": "Name a fraction between 3/4 and 4/5.",
+    "answer": "7/9",
+    "hints": [
+      "3/4 = 15/20 and 4/5 = 16/20. What fraction fits between?",
+      "Try 31/40 or 7/9."
+    ],
+    "solution": "3/4 = 0.75 and 4/5 = 0.80. A fraction like 7/9 ≈ 0.778 or 15.5/20 works. 7/9 is between 3/4 and 4/5.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "order-fractions-p15",
+    "topicId": "order-fractions",
+    "difficulty": "hard",
+    "question": "Place these fractions in order on a number line from 0 to 2: 1/4, 3/2, 5/4, 1, 1/2.",
+    "answer": "1/4, 1/2, 1, 5/4, 3/2",
+    "hints": [
+      "Convert to fourths: 1/4, 2/4, 4/4, 5/4, 6/4."
+    ],
+    "solution": "In fourths: 1/4, 2/4 (1/2), 4/4 (1), 5/4, 6/4 (3/2). Order: 1/4, 1/2, 1, 5/4, 3/2.",
+    "cognitiveDemand": "procedural"
+  }
+]

@@ -1,0 +1,58 @@
+[
+  {
+    "id": "least-common-denominator-ex1",
+    "topicId": "least-common-denominator",
+    "title": "Finding the LCD of 1/3 and 1/4",
+    "steps": [
+      {
+        "subgoalLabel": "Identify the denominators",
+        "instruction": "What are the denominators of 1/3 and 1/4?",
+        "work": "Denominators: 3 and 4",
+        "explanation": "The LCD is the least common multiple (LCM) of the denominators."
+      },
+      {
+        "subgoalLabel": "List multiples",
+        "instruction": "List multiples of each denominator until you find a match.",
+        "work": "Multiples of 3: 3, 6, 9, 12, 15...\nMultiples of 4: 4, 8, 12, 16...",
+        "explanation": "We look for the smallest number that appears in both lists."
+      },
+      {
+        "subgoalLabel": "Identify the LCD",
+        "instruction": "What is the smallest number in both lists?",
+        "work": "12 appears in both lists. LCD = 12.",
+        "explanation": "12 is the least common denominator because it is the smallest number that both 3 and 4 divide into evenly."
+      }
+    ]
+  },
+  {
+    "id": "least-common-denominator-ex2",
+    "topicId": "least-common-denominator",
+    "title": "Finding the LCD of 5/6 and 3/8",
+    "steps": [
+      {
+        "subgoalLabel": "Identify the denominators",
+        "instruction": "The denominators are 6 and 8.",
+        "work": "We need to find LCM(6, 8).",
+        "explanation": "The LCD is the LCM of the denominators, regardless of the numerators."
+      },
+      {
+        "subgoalLabel": "Use prime factorization",
+        "instruction": "Find the prime factorization of each denominator.",
+        "work": "6 = 2 × 3\n8 = 2 × 2 × 2 = 2³",
+        "explanation": "Prime factorization helps find the LCM by taking the highest power of each prime."
+      },
+      {
+        "subgoalLabel": "Compute the LCM",
+        "instruction": "Take the highest power of each prime factor.",
+        "work": "Highest power of 2: 2³ = 8\nHighest power of 3: 3¹ = 3\nLCM = 8 × 3 = 24",
+        "explanation": "The LCM must include enough of each prime factor to cover both numbers."
+      },
+      {
+        "subgoalLabel": "State the LCD",
+        "instruction": "Write the LCD.",
+        "work": "LCD of 5/6 and 3/8 = 24",
+        "explanation": "Now both fractions can be rewritten with 24 as the denominator: 5/6 = 20/24 and 3/8 = 9/24."
+      }
+    ]
+  }
+]

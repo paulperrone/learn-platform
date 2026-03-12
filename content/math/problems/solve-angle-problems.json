@@ -1,0 +1,152 @@
+[
+  {
+    "id": "solve-angle-problems-p1",
+    "topicId": "solve-angle-problems",
+    "difficulty": "easy",
+    "question": "Two angles form a right angle. One is 35°. What is the other?",
+    "answer": "55",
+    "hints": ["Right angle = 90°. Subtract 35°."],
+    "solution": "90° − 35° = 55°.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "solve-angle-problems-p2",
+    "topicId": "solve-angle-problems",
+    "difficulty": "easy",
+    "question": "Two angles are on a straight line. One is 115°. What is the other?",
+    "answer": "65",
+    "hints": ["Angles on a line sum to 180°."],
+    "solution": "180° − 115° = 65°.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "solve-angle-problems-p3",
+    "topicId": "solve-angle-problems",
+    "difficulty": "easy",
+    "question": "A triangle has angles of 60°, 80°, and x°. What is x?",
+    "answer": "40",
+    "hints": ["Triangle angles sum to 180°."],
+    "solution": "60° + 80° + x = 180°. x = 180° − 140° = 40°.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "solve-angle-problems-p4",
+    "topicId": "solve-angle-problems",
+    "difficulty": "easy",
+    "question": "A square has 4 angles. What is the sum of all its angles?",
+    "answer": "360",
+    "hints": ["Each angle is 90°. There are 4 angles."],
+    "solution": "4 × 90° = 360°.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "solve-angle-problems-p5",
+    "topicId": "solve-angle-problems",
+    "difficulty": "easy",
+    "question": "An equilateral triangle has all equal angles. If the angle sum is 180°, what is each angle?",
+    "answer": "60",
+    "hints": ["180° ÷ 3 = ?"],
+    "solution": "180° ÷ 3 = 60°. Each angle is 60°.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "solve-angle-problems-p6",
+    "topicId": "solve-angle-problems",
+    "difficulty": "medium",
+    "question": "In a quadrilateral, three angles are 90°, 90°, and 110°. What is the fourth angle?",
+    "answer": "70",
+    "hints": ["Quadrilateral angles sum to 360°."],
+    "solution": "90 + 90 + 110 = 290°. Fourth angle = 360° − 290° = 70°.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "solve-angle-problems-p7",
+    "topicId": "solve-angle-problems",
+    "difficulty": "medium",
+    "question": "A right triangle has one angle of 90° and another of 35°. What is the third angle?",
+    "answer": "55",
+    "hints": ["90° + 35° + x = 180°."],
+    "solution": "90 + 35 = 125. x = 180 − 125 = 55°.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "solve-angle-problems-p8",
+    "topicId": "solve-angle-problems",
+    "difficulty": "medium",
+    "question": "Two angles in a triangle are equal, and the third angle is 50°. What are the equal angles?",
+    "answer": "65",
+    "hints": ["180° − 50° = 130°. Split equally between two angles."],
+    "solution": "180° − 50° = 130°. 130° ÷ 2 = 65°. Each equal angle is 65°.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "solve-angle-problems-p9",
+    "topicId": "solve-angle-problems",
+    "difficulty": "medium",
+    "question": "Two supplementary angles differ by 30°. What are they?",
+    "answer": "105 and 75",
+    "hints": ["x + (x + 30) = 180."],
+    "solution": "x + (x + 30) = 180. 2x = 150. x = 75°. The other = 105°.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "solve-angle-problems-p10",
+    "topicId": "solve-angle-problems",
+    "difficulty": "medium",
+    "question": "A rectangle has one corner cut off, creating a new angle. The two angles at the cut are 130° and x°. Find x, given the two cut angles must sum to the original 90° corner plus 180° (a straight line across the cut).",
+    "answer": "50",
+    "hints": ["The original corner was 90°. After cutting, the two angles at that location still relate to 180°."],
+    "solution": "The two angles at the cut form a straight line: 130° + x = 180°. x = 50°.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "solve-angle-problems-p11",
+    "topicId": "solve-angle-problems",
+    "difficulty": "hard",
+    "question": "A triangle has angles in the ratio 1:2:3. Find all three angles.",
+    "answer": "30, 60, 90",
+    "hints": ["1 + 2 + 3 = 6 parts. 180° ÷ 6 = ?"],
+    "solution": "180° ÷ 6 = 30°. Angles: 1 × 30° = 30°, 2 × 30° = 60°, 3 × 30° = 90°.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "solve-angle-problems-p12",
+    "topicId": "solve-angle-problems",
+    "difficulty": "hard",
+    "question": "In a quadrilateral, the angles are x°, 2x°, 3x°, and 4x°. Find all four angles.",
+    "answer": "36, 72, 108, 144",
+    "hints": ["x + 2x + 3x + 4x = 360°."],
+    "solution": "10x = 360°. x = 36°. Angles: 36°, 72°, 108°, 144°.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "solve-angle-problems-p13",
+    "topicId": "solve-angle-problems",
+    "difficulty": "hard",
+    "question": "Two angles are complementary. The larger angle is 20° more than the smaller. Find both.",
+    "answer": "35 and 55",
+    "hints": ["x + (x + 20) = 90°."],
+    "solution": "x + (x + 20) = 90. 2x + 20 = 90. 2x = 70. x = 35°. The larger = 55°.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "solve-angle-problems-p14",
+    "topicId": "solve-angle-problems",
+    "difficulty": "hard",
+    "question": "A triangle has one angle of 90° and another angle that is twice the third angle. Find all three angles.",
+    "answer": "90, 60, 30",
+    "hints": ["90 + 2x + x = 180."],
+    "solution": "90 + 2x + x = 180. 3x = 90. x = 30°. Angles: 90°, 60°, 30°.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "solve-angle-problems-p15",
+    "topicId": "solve-angle-problems",
+    "difficulty": "hard",
+    "question": "Four angles around a point are: (x + 10)°, (2x − 20)°, (x + 30)°, and (3x)°. Find x and all four angles.",
+    "answer": "x = approximately 48.6; angles approximately 58.6, 77.1, 78.6, 145.7",
+    "hints": ["All four angles sum to 360°."],
+    "solution": "(x + 10) + (2x − 20) + (x + 30) + 3x = 360. 7x + 20 = 360. 7x = 340. x ≈ 48.6°. Angles ≈ 58.6°, 77.1°, 78.6°, 145.7°.",
+    "cognitiveDemand": "problem-solving"
+  }
+]

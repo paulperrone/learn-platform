@@ -1,0 +1,182 @@
+[
+  {
+    "id": "decimal-place-value-thousandths-p1",
+    "topicId": "decimal-place-value-thousandths",
+    "difficulty": "easy",
+    "question": "What decimal represents 4 thousandths?",
+    "answer": "0.004",
+    "hints": [
+      "Thousandths is the third place after the decimal point."
+    ],
+    "solution": "4 thousandths = 4/1000 = 0.004.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "decimal-place-value-thousandths-p2",
+    "topicId": "decimal-place-value-thousandths",
+    "difficulty": "easy",
+    "question": "In 0.529, what digit is in the thousandths place?",
+    "answer": "9",
+    "hints": [
+      "Count places after the decimal: tenths, hundredths, thousandths."
+    ],
+    "solution": "In 0.529: 5 is tenths, 2 is hundredths, 9 is thousandths.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "decimal-place-value-thousandths-p3",
+    "topicId": "decimal-place-value-thousandths",
+    "difficulty": "easy",
+    "question": "Write 15/1000 as a decimal.",
+    "answer": "0.015",
+    "hints": [
+      "15 thousandths. The 1 goes in hundredths, the 5 in thousandths."
+    ],
+    "solution": "15/1000 = 0.015.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "decimal-place-value-thousandths-p4",
+    "topicId": "decimal-place-value-thousandths",
+    "difficulty": "easy",
+    "question": "What is the value of the 3 in 0.123?",
+    "answer": "0.003",
+    "hints": [
+      "The 3 is in the thousandths place."
+    ],
+    "solution": "The 3 is in the thousandths place: 3 × 0.001 = 0.003.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "decimal-place-value-thousandths-p5",
+    "topicId": "decimal-place-value-thousandths",
+    "difficulty": "easy",
+    "question": "Write 0.008 as a fraction.",
+    "answer": "8/1000",
+    "hints": [
+      "Three decimal places means thousandths."
+    ],
+    "solution": "0.008 = 8 thousandths = 8/1000.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "decimal-place-value-thousandths-p6",
+    "topicId": "decimal-place-value-thousandths",
+    "difficulty": "medium",
+    "question": "Compare: 0.125 ___ 0.15. Use >, <, or =.",
+    "answer": "<",
+    "hints": [
+      "0.15 = 0.150. Compare 0.125 to 0.150."
+    ],
+    "solution": "0.125 = 125 thousandths. 0.15 = 150 thousandths. 125 < 150, so 0.125 < 0.15.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "decimal-place-value-thousandths-p7",
+    "topicId": "decimal-place-value-thousandths",
+    "difficulty": "medium",
+    "question": "Write 375/1000 as a decimal.",
+    "answer": "0.375",
+    "hints": [
+      "375 thousandths uses all three decimal places."
+    ],
+    "solution": "375/1000 = 0.375.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "decimal-place-value-thousandths-p8",
+    "topicId": "decimal-place-value-thousandths",
+    "difficulty": "medium",
+    "question": "How many thousandths are in 0.5?",
+    "answer": "500",
+    "hints": [
+      "0.5 = 0.500 = 500 thousandths."
+    ],
+    "solution": "0.5 = 500/1000 = 500 thousandths.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "decimal-place-value-thousandths-p9",
+    "topicId": "decimal-place-value-thousandths",
+    "difficulty": "medium",
+    "question": "In 6.482, what is the value of each digit after the decimal?",
+    "answer": "4 tenths, 8 hundredths, 2 thousandths",
+    "hints": [
+      "4 is in tenths (0.4), 8 is in hundredths (0.08), 2 is in thousandths (0.002)."
+    ],
+    "solution": "4 = 0.4 (tenths), 8 = 0.08 (hundredths), 2 = 0.002 (thousandths).",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "decimal-place-value-thousandths-p10",
+    "topicId": "decimal-place-value-thousandths",
+    "difficulty": "medium",
+    "question": "Order from least to greatest: 0.302, 0.032, 0.320.",
+    "answer": "0.032, 0.302, 0.320",
+    "hints": [
+      "Convert to thousandths: 302, 32, 320."
+    ],
+    "solution": "0.032 (32 thousandths) < 0.302 (302 thousandths) < 0.320 (320 thousandths).",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "decimal-place-value-thousandths-p11",
+    "topicId": "decimal-place-value-thousandths",
+    "difficulty": "hard",
+    "question": "How many thousandths are in 2.75?",
+    "answer": "2750",
+    "hints": [
+      "2.75 = 2.750 = 2750/1000."
+    ],
+    "solution": "2.75 = 2750/1000 = 2,750 thousandths.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "decimal-place-value-thousandths-p12",
+    "topicId": "decimal-place-value-thousandths",
+    "difficulty": "hard",
+    "question": "The value of the 6 in 0.006 is what fraction of the value of the 6 in 0.06?",
+    "answer": "1/10",
+    "hints": [
+      "0.006 = 6 thousandths. 0.06 = 6 hundredths. Thousandths is 1/10 of hundredths."
+    ],
+    "solution": "0.006 ÷ 0.06 = 0.1 = 1/10. A thousandth is one-tenth of a hundredth.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "decimal-place-value-thousandths-p13",
+    "topicId": "decimal-place-value-thousandths",
+    "difficulty": "hard",
+    "question": "What decimal is halfway between 0.124 and 0.126?",
+    "answer": "0.125",
+    "hints": [
+      "Add them and divide by 2, or just find the middle thousandth."
+    ],
+    "solution": "Halfway between 124 thousandths and 126 thousandths is 125 thousandths = 0.125.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "decimal-place-value-thousandths-p14",
+    "topicId": "decimal-place-value-thousandths",
+    "difficulty": "hard",
+    "question": "Order from greatest to least: 0.5, 0.509, 0.051, 0.59.",
+    "answer": "0.59, 0.509, 0.5, 0.051",
+    "hints": [
+      "As thousandths: 500, 509, 51, 590."
+    ],
+    "solution": "0.59 (590) > 0.509 (509) > 0.5 (500) > 0.051 (51).",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "decimal-place-value-thousandths-p15",
+    "topicId": "decimal-place-value-thousandths",
+    "difficulty": "hard",
+    "question": "A measurement is 3.456 meters. Round to the nearest hundredth.",
+    "answer": "3.46",
+    "hints": [
+      "Look at the thousandths digit (6). Since 6 >= 5, round the hundredths digit up."
+    ],
+    "solution": "The thousandths digit is 6 (>= 5), so round up: 3.456 → 3.46.",
+    "cognitiveDemand": "procedural"
+  }
+]

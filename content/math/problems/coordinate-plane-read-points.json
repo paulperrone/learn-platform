@@ -1,0 +1,152 @@
+[
+  {
+    "id": "coordinate-plane-read-points-p1",
+    "topicId": "coordinate-plane-read-points",
+    "difficulty": "easy",
+    "question": "A point on the coordinate plane is 3 units right of the origin and 5 units up. What are its coordinates?",
+    "answer": "(3, 5)",
+    "hints": ["x = right distance, y = up distance."],
+    "solution": "3 right and 5 up = (3, 5).",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "coordinate-plane-read-points-p2",
+    "topicId": "coordinate-plane-read-points",
+    "difficulty": "easy",
+    "question": "A point is at the intersection of the line x = 4 and the line y = 2. What are its coordinates?",
+    "answer": "(4, 2)",
+    "hints": ["x = 4 means 4 units right. y = 2 means 2 units up."],
+    "solution": "The point is at (4, 2).",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "coordinate-plane-read-points-p3",
+    "topicId": "coordinate-plane-read-points",
+    "difficulty": "easy",
+    "question": "A point is on the y-axis, 6 units above the origin. What are its coordinates?",
+    "answer": "(0, 6)",
+    "hints": ["On the y-axis means x = 0."],
+    "solution": "On the y-axis: x = 0. Six units up: y = 6. The point is (0, 6).",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "coordinate-plane-read-points-p4",
+    "topicId": "coordinate-plane-read-points",
+    "difficulty": "easy",
+    "question": "A point is at (5, 0). Describe where it is.",
+    "answer": "5 units right of the origin, on the x-axis",
+    "hints": ["y = 0 means the point is on the x-axis."],
+    "solution": "The point is 5 units to the right of the origin, sitting on the x-axis.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "coordinate-plane-read-points-p5",
+    "topicId": "coordinate-plane-read-points",
+    "difficulty": "easy",
+    "question": "In the ordered pair (7, 3), what is the x-coordinate and what is the y-coordinate?",
+    "answer": "x = 7, y = 3",
+    "hints": ["The first number is x, the second is y."],
+    "solution": "x-coordinate = 7. y-coordinate = 3.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "coordinate-plane-read-points-p6",
+    "topicId": "coordinate-plane-read-points",
+    "difficulty": "medium",
+    "question": "Point A is at (2, 8) and Point B is at (2, 3). What is the distance between them?",
+    "answer": "5 units",
+    "hints": ["Same x-coordinate: distance = difference in y."],
+    "solution": "8 − 3 = 5 units.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "coordinate-plane-read-points-p7",
+    "topicId": "coordinate-plane-read-points",
+    "difficulty": "medium",
+    "question": "Point P is at (1, 6) and Point Q is at (9, 6). What is the distance between them?",
+    "answer": "8 units",
+    "hints": ["Same y-coordinate: distance = difference in x."],
+    "solution": "9 − 1 = 8 units.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "coordinate-plane-read-points-p8",
+    "topicId": "coordinate-plane-read-points",
+    "difficulty": "medium",
+    "question": "A point moves from (3, 2) to (3, 7). In which direction did it move and how far?",
+    "answer": "up, 5 units",
+    "hints": ["x didn't change. y increased."],
+    "solution": "The x-coordinate stayed 3, so the point moved vertically. 7 − 2 = 5 units up.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "coordinate-plane-read-points-p9",
+    "topicId": "coordinate-plane-read-points",
+    "difficulty": "medium",
+    "question": "A point moves from (1, 4) to (6, 4). In which direction did it move and how far?",
+    "answer": "right, 5 units",
+    "hints": ["y didn't change. x increased."],
+    "solution": "The y-coordinate stayed 4, so the point moved horizontally. 6 − 1 = 5 units right.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "coordinate-plane-read-points-p10",
+    "topicId": "coordinate-plane-read-points",
+    "difficulty": "medium",
+    "question": "Which point is higher on the coordinate plane: (3, 8) or (7, 5)?",
+    "answer": "(3, 8)",
+    "hints": ["Compare the y-coordinates. Higher y = higher point."],
+    "solution": "(3, 8) has y = 8, which is higher than y = 5 for (7, 5).",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "coordinate-plane-read-points-p11",
+    "topicId": "coordinate-plane-read-points",
+    "difficulty": "hard",
+    "question": "Four points form a rectangle: (2, 1), (8, 1), (8, 5), (2, 5). What are the length and width?",
+    "answer": "length 6, width 4",
+    "hints": ["Length: 8 − 2 = 6. Width: 5 − 1 = 4."],
+    "solution": "Length = 8 − 2 = 6 units. Width = 5 − 1 = 4 units.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "coordinate-plane-read-points-p12",
+    "topicId": "coordinate-plane-read-points",
+    "difficulty": "hard",
+    "question": "A rectangle has corners at (1, 2) and (7, 6). What is its area?",
+    "answer": "24 sq units",
+    "hints": ["These are opposite corners. Length = 7 − 1. Width = 6 − 2."],
+    "solution": "Length = 7 − 1 = 6. Width = 6 − 2 = 4. Area = 6 × 4 = 24 square units.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "coordinate-plane-read-points-p13",
+    "topicId": "coordinate-plane-read-points",
+    "difficulty": "hard",
+    "question": "Point A is at (3, 2). It is moved 4 units right and 3 units up. What are the new coordinates?",
+    "answer": "(7, 5)",
+    "hints": ["Add 4 to x, add 3 to y."],
+    "solution": "New x = 3 + 4 = 7. New y = 2 + 3 = 5. New point: (7, 5).",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "coordinate-plane-read-points-p14",
+    "topicId": "coordinate-plane-read-points",
+    "difficulty": "hard",
+    "question": "Points (0, 0), (4, 0), (4, 3) form a right triangle. What is the area of this triangle?",
+    "answer": "6 sq units",
+    "hints": ["Base = 4, height = 3. Triangle area = 1/2 × base × height."],
+    "solution": "Area = 1/2 × 4 × 3 = 6 square units.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "coordinate-plane-read-points-p15",
+    "topicId": "coordinate-plane-read-points",
+    "difficulty": "hard",
+    "question": "A point is at (5, 9). It moves 3 units left and 4 units down. What are the new coordinates?",
+    "answer": "(2, 5)",
+    "hints": ["Left means subtract from x. Down means subtract from y."],
+    "solution": "New x = 5 − 3 = 2. New y = 9 − 4 = 5. New point: (2, 5).",
+    "cognitiveDemand": "procedural"
+  }
+]

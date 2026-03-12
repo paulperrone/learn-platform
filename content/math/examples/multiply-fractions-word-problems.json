@@ -1,0 +1,52 @@
+[
+  {
+    "id": "multiply-fractions-word-problems-ex1",
+    "topicId": "multiply-fractions-word-problems",
+    "title": "Finding a Fraction of a Fraction: Garden Plot",
+    "steps": [
+      {
+        "subgoalLabel": "Understand the problem",
+        "instruction": "A garden is 3/4 acre. Vegetables cover 2/3 of the garden. Find the area covered by vegetables.",
+        "work": "2/3 of 3/4 = 2/3 × 3/4",
+        "explanation": "'Of' in fraction problems means multiply."
+      },
+      {
+        "subgoalLabel": "Multiply numerators and denominators",
+        "instruction": "Multiply across: numerators together, denominators together.",
+        "work": "(2 × 3) / (3 × 4) = 6/12",
+        "explanation": "2 times 3 is 6; 3 times 4 is 12."
+      },
+      {
+        "subgoalLabel": "Simplify",
+        "instruction": "Divide both 6 and 12 by their GCF, which is 6.",
+        "work": "6/12 = 1/2",
+        "explanation": "The vegetable area is 1/2 acre."
+      }
+    ]
+  },
+  {
+    "id": "multiply-fractions-word-problems-ex2",
+    "topicId": "multiply-fractions-word-problems",
+    "title": "Scaling a Recipe Down",
+    "steps": [
+      {
+        "subgoalLabel": "Understand the problem",
+        "instruction": "A recipe needs 4/5 cup of milk. You want to make 1/2 of the recipe. How much milk?",
+        "work": "1/2 × 4/5",
+        "explanation": "Making half the recipe means multiplying each ingredient by 1/2."
+      },
+      {
+        "subgoalLabel": "Multiply the fractions",
+        "instruction": "Multiply numerators and denominators.",
+        "work": "(1 × 4) / (2 × 5) = 4/10",
+        "explanation": "1 times 4 is 4; 2 times 5 is 10."
+      },
+      {
+        "subgoalLabel": "Simplify the answer",
+        "instruction": "Divide both by 2.",
+        "work": "4/10 = 2/5",
+        "explanation": "You need 2/5 cup of milk."
+      }
+    ]
+  }
+]

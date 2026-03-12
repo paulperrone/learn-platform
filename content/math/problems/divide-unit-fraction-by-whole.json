@@ -1,0 +1,182 @@
+[
+  {
+    "id": "divide-unit-fraction-by-whole-p1",
+    "topicId": "divide-unit-fraction-by-whole",
+    "difficulty": "easy",
+    "question": "What is 1/2 ÷ 3?",
+    "answer": "1/6",
+    "hints": [
+      "Dividing a fraction by a whole number: multiply the denominator by the whole number."
+    ],
+    "solution": "1/2 ÷ 3 = 1/(2 × 3) = 1/6.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "divide-unit-fraction-by-whole-p2",
+    "topicId": "divide-unit-fraction-by-whole",
+    "difficulty": "easy",
+    "question": "What is 1/3 ÷ 2?",
+    "answer": "1/6",
+    "hints": [
+      "Multiply the denominator by 2."
+    ],
+    "solution": "1/3 ÷ 2 = 1/(3 × 2) = 1/6.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "divide-unit-fraction-by-whole-p3",
+    "topicId": "divide-unit-fraction-by-whole",
+    "difficulty": "easy",
+    "question": "What is 1/4 ÷ 2?",
+    "answer": "1/8",
+    "hints": [
+      "Divide 1/4 into 2 equal parts."
+    ],
+    "solution": "1/4 ÷ 2 = 1/(4 × 2) = 1/8.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "divide-unit-fraction-by-whole-p4",
+    "topicId": "divide-unit-fraction-by-whole",
+    "difficulty": "easy",
+    "question": "What is 1/5 ÷ 3?",
+    "answer": "1/15",
+    "hints": [
+      "Multiply the denominator 5 by 3."
+    ],
+    "solution": "1/5 ÷ 3 = 1/(5 × 3) = 1/15.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "divide-unit-fraction-by-whole-p5",
+    "topicId": "divide-unit-fraction-by-whole",
+    "difficulty": "easy",
+    "question": "What is 1/2 ÷ 4?",
+    "answer": "1/8",
+    "hints": [
+      "Divide 1/2 into 4 equal parts."
+    ],
+    "solution": "1/2 ÷ 4 = 1/(2 × 4) = 1/8.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "divide-unit-fraction-by-whole-p6",
+    "topicId": "divide-unit-fraction-by-whole",
+    "difficulty": "medium",
+    "question": "What is 1/3 ÷ 5?",
+    "answer": "1/15",
+    "hints": [
+      "Multiply the denominator 3 by 5."
+    ],
+    "solution": "1/3 ÷ 5 = 1/(3 × 5) = 1/15.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "divide-unit-fraction-by-whole-p7",
+    "topicId": "divide-unit-fraction-by-whole",
+    "difficulty": "medium",
+    "question": "What is 1/6 ÷ 4?",
+    "answer": "1/24",
+    "hints": [
+      "Multiply 6 × 4 for the denominator."
+    ],
+    "solution": "1/6 ÷ 4 = 1/(6 × 4) = 1/24.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "divide-unit-fraction-by-whole-p8",
+    "topicId": "divide-unit-fraction-by-whole",
+    "difficulty": "medium",
+    "question": "A pizza has 1/4 left. Three friends share it equally. How much does each friend get?",
+    "answer": "1/12",
+    "hints": [
+      "Divide 1/4 by 3."
+    ],
+    "solution": "1/4 ÷ 3 = 1/12 of the pizza each.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "divide-unit-fraction-by-whole-p9",
+    "topicId": "divide-unit-fraction-by-whole",
+    "difficulty": "medium",
+    "question": "What is 1/8 ÷ 2?",
+    "answer": "1/16",
+    "hints": [
+      "Multiply the denominator by 2."
+    ],
+    "solution": "1/8 ÷ 2 = 1/(8 × 2) = 1/16.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "divide-unit-fraction-by-whole-p10",
+    "topicId": "divide-unit-fraction-by-whole",
+    "difficulty": "medium",
+    "question": "There is 1/3 of a cake left. It is shared equally among 4 people. How much cake does each person get?",
+    "answer": "1/12",
+    "hints": [
+      "Divide 1/3 by 4."
+    ],
+    "solution": "1/3 ÷ 4 = 1/12 of the cake.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "divide-unit-fraction-by-whole-p11",
+    "topicId": "divide-unit-fraction-by-whole",
+    "difficulty": "hard",
+    "question": "What is 1/5 ÷ 8?",
+    "answer": "1/40",
+    "hints": [
+      "Multiply 5 × 8 for the denominator."
+    ],
+    "solution": "1/5 ÷ 8 = 1/(5 × 8) = 1/40.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "divide-unit-fraction-by-whole-p12",
+    "topicId": "divide-unit-fraction-by-whole",
+    "difficulty": "hard",
+    "question": "A bottle contains 1/6 gallon of juice. It is poured equally into 5 glasses. How much juice is in each glass?",
+    "answer": "1/30",
+    "hints": [
+      "Divide 1/6 by 5."
+    ],
+    "solution": "1/6 ÷ 5 = 1/(6 × 5) = 1/30 gallon.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "divide-unit-fraction-by-whole-p13",
+    "topicId": "divide-unit-fraction-by-whole",
+    "difficulty": "hard",
+    "question": "What is 1/4 ÷ 10?",
+    "answer": "1/40",
+    "hints": [
+      "Multiply 4 × 10."
+    ],
+    "solution": "1/4 ÷ 10 = 1/(4 × 10) = 1/40.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "divide-unit-fraction-by-whole-p14",
+    "topicId": "divide-unit-fraction-by-whole",
+    "difficulty": "hard",
+    "question": "A wire is 1/3 meter long. It is cut into 9 equal pieces. How long is each piece?",
+    "answer": "1/27",
+    "hints": [
+      "Divide 1/3 by 9."
+    ],
+    "solution": "1/3 ÷ 9 = 1/(3 × 9) = 1/27 meter.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "divide-unit-fraction-by-whole-p15",
+    "topicId": "divide-unit-fraction-by-whole",
+    "difficulty": "hard",
+    "question": "What is 1/7 ÷ 6?",
+    "answer": "1/42",
+    "hints": [
+      "Multiply 7 × 6."
+    ],
+    "solution": "1/7 ÷ 6 = 1/(7 × 6) = 1/42.",
+    "cognitiveDemand": "procedural"
+  }
+]

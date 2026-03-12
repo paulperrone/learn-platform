@@ -1,0 +1,182 @@
+[
+  {
+    "id": "decimal-place-value-tenths-p1",
+    "topicId": "decimal-place-value-tenths",
+    "difficulty": "easy",
+    "question": "What decimal represents 3 tenths?",
+    "answer": "0.3",
+    "hints": [
+      "Tenths go in the first place after the decimal point."
+    ],
+    "solution": "3 tenths = 3/10 = 0.3.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "decimal-place-value-tenths-p2",
+    "topicId": "decimal-place-value-tenths",
+    "difficulty": "easy",
+    "question": "Write 7/10 as a decimal.",
+    "answer": "0.7",
+    "hints": [
+      "7 out of 10 parts. The denominator is 10, so it goes in the tenths place."
+    ],
+    "solution": "7/10 = 0.7.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "decimal-place-value-tenths-p3",
+    "topicId": "decimal-place-value-tenths",
+    "difficulty": "easy",
+    "question": "In the number 4.6, what does the 6 represent?",
+    "answer": "6 tenths",
+    "hints": [
+      "The digit after the decimal point is in the tenths place."
+    ],
+    "solution": "The 6 is in the tenths place, so it represents 6 tenths (or 6/10).",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "decimal-place-value-tenths-p4",
+    "topicId": "decimal-place-value-tenths",
+    "difficulty": "easy",
+    "question": "Write 1/10 as a decimal.",
+    "answer": "0.1",
+    "hints": [
+      "One tenth."
+    ],
+    "solution": "1/10 = 0.1.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "decimal-place-value-tenths-p5",
+    "topicId": "decimal-place-value-tenths",
+    "difficulty": "easy",
+    "question": "What fraction does 0.9 represent?",
+    "answer": "9/10",
+    "hints": [
+      "The 9 is in the tenths place."
+    ],
+    "solution": "0.9 = 9 tenths = 9/10.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "decimal-place-value-tenths-p6",
+    "topicId": "decimal-place-value-tenths",
+    "difficulty": "medium",
+    "question": "In the number 2.8, what is the value of each digit?",
+    "answer": "2 ones and 8 tenths",
+    "hints": [
+      "The 2 is in the ones place. The 8 is in the tenths place."
+    ],
+    "solution": "2 = 2 ones (value 2), 8 = 8 tenths (value 0.8). Together: 2 + 0.8 = 2.8.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "decimal-place-value-tenths-p7",
+    "topicId": "decimal-place-value-tenths",
+    "difficulty": "medium",
+    "question": "Place 0.4 on a number line. Is it closer to 0 or closer to 1?",
+    "answer": "closer to 0",
+    "hints": [
+      "0.4 is less than 0.5, which is the halfway point."
+    ],
+    "solution": "0.4 < 0.5, so 0.4 is closer to 0 than to 1.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "decimal-place-value-tenths-p8",
+    "topicId": "decimal-place-value-tenths",
+    "difficulty": "medium",
+    "question": "Write 15/10 as a decimal.",
+    "answer": "1.5",
+    "hints": [
+      "15 tenths = 1 whole and 5 tenths."
+    ],
+    "solution": "15/10 = 1 + 5/10 = 1.5.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "decimal-place-value-tenths-p9",
+    "topicId": "decimal-place-value-tenths",
+    "difficulty": "medium",
+    "question": "Compare: 0.6 ___ 0.8. Use >, <, or =.",
+    "answer": "<",
+    "hints": [
+      "6 tenths is less than 8 tenths."
+    ],
+    "solution": "0.6 < 0.8 because 6 tenths is less than 8 tenths.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "decimal-place-value-tenths-p10",
+    "topicId": "decimal-place-value-tenths",
+    "difficulty": "medium",
+    "question": "What decimal is halfway between 0 and 1?",
+    "answer": "0.5",
+    "hints": [
+      "Half of 1 is 5 tenths."
+    ],
+    "solution": "Halfway between 0 and 1 is 0.5 (or 5/10).",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "decimal-place-value-tenths-p11",
+    "topicId": "decimal-place-value-tenths",
+    "difficulty": "hard",
+    "question": "Order from least to greatest: 3.2, 2.9, 3.0, 2.5.",
+    "answer": "2.5, 2.9, 3.0, 3.2",
+    "hints": [
+      "Compare ones first, then tenths."
+    ],
+    "solution": "2.5 < 2.9 < 3.0 < 3.2.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "decimal-place-value-tenths-p12",
+    "topicId": "decimal-place-value-tenths",
+    "difficulty": "hard",
+    "question": "What decimal is 3 tenths more than 4.6?",
+    "answer": "4.9",
+    "hints": [
+      "Add 0.3 to 4.6."
+    ],
+    "solution": "4.6 + 0.3 = 4.9.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "decimal-place-value-tenths-p13",
+    "topicId": "decimal-place-value-tenths",
+    "difficulty": "hard",
+    "question": "How many tenths are in 3.0?",
+    "answer": "30",
+    "hints": [
+      "Each whole is 10 tenths. 3 wholes = 3 × 10 tenths."
+    ],
+    "solution": "3.0 = 30 tenths because 3 × 10 = 30.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "decimal-place-value-tenths-p14",
+    "topicId": "decimal-place-value-tenths",
+    "difficulty": "hard",
+    "question": "A ribbon is 2.4 meters long. Another is 1.8 meters long. Which is longer and by how many tenths of a meter?",
+    "answer": "2.4 is longer by 6 tenths",
+    "hints": [
+      "2.4 - 1.8 = 0.6 meters = 6 tenths."
+    ],
+    "solution": "2.4 − 1.8 = 0.6. The first ribbon is longer by 6 tenths of a meter.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "decimal-place-value-tenths-p15",
+    "topicId": "decimal-place-value-tenths",
+    "difficulty": "hard",
+    "question": "Write 42/10 as a decimal.",
+    "answer": "4.2",
+    "hints": [
+      "42 ÷ 10 = 4 remainder 2. That means 4 ones and 2 tenths."
+    ],
+    "solution": "42/10 = 4.2.",
+    "cognitiveDemand": "procedural"
+  }
+]

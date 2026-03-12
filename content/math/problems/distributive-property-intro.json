@@ -1,0 +1,152 @@
+[
+  {
+    "id": "distributive-property-intro-p1",
+    "topicId": "distributive-property-intro",
+    "difficulty": "easy",
+    "question": "Use the distributive property to rewrite: 3 × (4 + 2)",
+    "answer": "3 × 4 + 3 × 2",
+    "hints": ["Distribute the 3 to both numbers inside: 3 × 4 and 3 × 2."],
+    "solution": "3 × (4 + 2) = 3 × 4 + 3 × 2 = 12 + 6 = 18.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "distributive-property-intro-p2",
+    "topicId": "distributive-property-intro",
+    "difficulty": "easy",
+    "question": "What is 5 × (3 + 7)? Use the distributive property.",
+    "answer": "50",
+    "hints": ["5 × 3 + 5 × 7 = 15 + 35."],
+    "solution": "5 × (3 + 7) = 5 × 3 + 5 × 7 = 15 + 35 = 50.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "distributive-property-intro-p3",
+    "topicId": "distributive-property-intro",
+    "difficulty": "easy",
+    "question": "Use the distributive property: 2 × (6 + 1)",
+    "answer": "2 × 6 + 2 × 1",
+    "hints": ["Multiply 2 by each number inside the parentheses."],
+    "solution": "2 × (6 + 1) = 2 × 6 + 2 × 1 = 12 + 2 = 14.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "distributive-property-intro-p4",
+    "topicId": "distributive-property-intro",
+    "difficulty": "easy",
+    "question": "What is 4 × (5 + 3)? Use the distributive property.",
+    "answer": "32",
+    "hints": ["4 × 5 + 4 × 3 = 20 + 12."],
+    "solution": "4 × (5 + 3) = 4 × 5 + 4 × 3 = 20 + 12 = 32.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "distributive-property-intro-p5",
+    "topicId": "distributive-property-intro",
+    "difficulty": "easy",
+    "question": "Use the distributive property: 6 × (2 + 5)",
+    "answer": "6 × 2 + 6 × 5",
+    "hints": ["Distribute the 6 to both 2 and 5."],
+    "solution": "6 × (2 + 5) = 6 × 2 + 6 × 5 = 12 + 30 = 42.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "distributive-property-intro-p6",
+    "topicId": "distributive-property-intro",
+    "difficulty": "medium",
+    "question": "Use the distributive property to rewrite: 7 × (10 − 3)",
+    "answer": "7 × 10 - 7 × 3",
+    "hints": ["The distributive property also works with subtraction: distribute 7 to both terms."],
+    "solution": "7 × (10 − 3) = 7 × 10 − 7 × 3 = 70 − 21 = 49.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "distributive-property-intro-p7",
+    "topicId": "distributive-property-intro",
+    "difficulty": "medium",
+    "question": "Fill in the blank: 8 × 6 + 8 × 4 = 8 × (__ + __)",
+    "answer": "6 + 4",
+    "hints": ["Factor out the common 8: 8 × (6 + 4)."],
+    "solution": "8 × 6 + 8 × 4 = 8 × (6 + 4) = 8 × 10 = 80.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "distributive-property-intro-p8",
+    "topicId": "distributive-property-intro",
+    "difficulty": "medium",
+    "question": "Use the distributive property to calculate 6 × 13 mentally.",
+    "answer": "78",
+    "hints": ["Break 13 into 10 + 3: 6 × (10 + 3) = 6 × 10 + 6 × 3."],
+    "solution": "6 × 13 = 6 × (10 + 3) = 60 + 18 = 78.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "distributive-property-intro-p9",
+    "topicId": "distributive-property-intro",
+    "difficulty": "medium",
+    "question": "True or false: 5 × (8 − 2) = 5 × 8 − 5 × 2",
+    "answer": "true",
+    "hints": ["The distributive property works with subtraction too."],
+    "solution": "True. 5 × (8 − 2) = 5 × 8 − 5 × 2 = 40 − 10 = 30. Also: 5 × 6 = 30. ✓",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "distributive-property-intro-p10",
+    "topicId": "distributive-property-intro",
+    "difficulty": "medium",
+    "question": "Use the distributive property to calculate 9 × 15.",
+    "answer": "135",
+    "hints": ["Break 15 into 10 + 5: 9 × 10 + 9 × 5."],
+    "solution": "9 × 15 = 9 × (10 + 5) = 90 + 45 = 135.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "distributive-property-intro-p11",
+    "topicId": "distributive-property-intro",
+    "difficulty": "hard",
+    "question": "Use the distributive property with variables: 3(x + 4)",
+    "answer": "3x + 12",
+    "hints": ["Distribute 3 to both x and 4: 3 × x + 3 × 4."],
+    "solution": "3(x + 4) = 3x + 12.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "distributive-property-intro-p12",
+    "topicId": "distributive-property-intro",
+    "difficulty": "hard",
+    "question": "Use the distributive property: 5(2n − 3)",
+    "answer": "10n - 15",
+    "hints": ["Distribute 5: 5 × 2n − 5 × 3."],
+    "solution": "5(2n − 3) = 10n − 15.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "distributive-property-intro-p13",
+    "topicId": "distributive-property-intro",
+    "difficulty": "hard",
+    "question": "Use the distributive property to calculate 8 × 99 mentally.",
+    "answer": "792",
+    "hints": ["99 = 100 − 1. So 8 × 99 = 8 × 100 − 8 × 1."],
+    "solution": "8 × 99 = 8 × (100 − 1) = 800 − 8 = 792.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "distributive-property-intro-p14",
+    "topicId": "distributive-property-intro",
+    "difficulty": "hard",
+    "question": "Rewrite using the distributive property: 4a + 4b + 4c",
+    "answer": "4(a + b + c)",
+    "hints": ["Factor out the common factor of 4."],
+    "solution": "4a + 4b + 4c = 4(a + b + c).",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "distributive-property-intro-p15",
+    "topicId": "distributive-property-intro",
+    "difficulty": "hard",
+    "question": "Which expression is equivalent to 6(x + 2) − 3? (a) 6x − 1 (b) 6x + 9 (c) 6x + 15",
+    "answer": "6x + 9",
+    "hints": ["Distribute: 6x + 12. Then subtract 3: 6x + 12 − 3."],
+    "solution": "6(x + 2) − 3 = 6x + 12 − 3 = 6x + 9.",
+    "cognitiveDemand": "procedural"
+  }
+]

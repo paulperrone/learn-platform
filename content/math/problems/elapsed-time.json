@@ -1,0 +1,152 @@
+[
+  {
+    "id": "elapsed-time-p1",
+    "topicId": "elapsed-time",
+    "difficulty": "easy",
+    "question": "A show starts at 2:00 and ends at 3:00. How long is the show?",
+    "answer": "1 hour",
+    "hints": ["Count from 2:00 to 3:00."],
+    "solution": "3:00 − 2:00 = 1 hour.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "elapsed-time-p2",
+    "topicId": "elapsed-time",
+    "difficulty": "easy",
+    "question": "You start homework at 4:00 and finish at 4:30. How long did it take?",
+    "answer": "30 minutes",
+    "hints": ["From 4:00 to 4:30."],
+    "solution": "4:30 − 4:00 = 30 minutes.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "elapsed-time-p3",
+    "topicId": "elapsed-time",
+    "difficulty": "easy",
+    "question": "It is 1:00. What time will it be in 2 hours?",
+    "answer": "3:00",
+    "hints": ["1:00 + 2 hours = 3:00."],
+    "solution": "1:00 + 2 hours = 3:00.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "elapsed-time-p4",
+    "topicId": "elapsed-time",
+    "difficulty": "easy",
+    "question": "Lunch starts at 12:00 and lasts 45 minutes. What time does lunch end?",
+    "answer": "12:45",
+    "hints": ["12:00 + 45 minutes."],
+    "solution": "12:00 + 45 minutes = 12:45.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "elapsed-time-p5",
+    "topicId": "elapsed-time",
+    "difficulty": "easy",
+    "question": "A game started at 3:00 and lasted 1 hour and 30 minutes. What time did it end?",
+    "answer": "4:30",
+    "hints": ["3:00 + 1 hour = 4:00. Then + 30 minutes = 4:30."],
+    "solution": "3:00 + 1:30 = 4:30.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "elapsed-time-p6",
+    "topicId": "elapsed-time",
+    "difficulty": "medium",
+    "question": "A movie starts at 7:15 and ends at 9:00. How long is the movie?",
+    "answer": "1 hour 45 minutes",
+    "hints": ["7:15 to 8:15 = 1 hour. 8:15 to 9:00 = 45 minutes."],
+    "solution": "7:15 to 8:15 = 1 hour. 8:15 to 9:00 = 45 minutes. Total: 1 hour 45 minutes.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "elapsed-time-p7",
+    "topicId": "elapsed-time",
+    "difficulty": "medium",
+    "question": "School starts at 8:20 and ends at 3:05. How long is the school day?",
+    "answer": "6 hours 45 minutes",
+    "hints": ["8:20 to 3:20 = 7 hours. But it ends at 3:05, so subtract 15 minutes: 6 hours 45 minutes."],
+    "solution": "8:20 to 3:20 = 7 hours. 3:05 is 15 minutes before 3:20. So 7 hours − 15 minutes = 6 hours 45 minutes.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "elapsed-time-p8",
+    "topicId": "elapsed-time",
+    "difficulty": "medium",
+    "question": "You start baking at 10:45. The recipe takes 1 hour 20 minutes. What time will you be done?",
+    "answer": "12:05",
+    "hints": ["10:45 + 1 hour = 11:45. 11:45 + 20 minutes = 12:05."],
+    "solution": "10:45 + 1:20 = 12:05.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "elapsed-time-p9",
+    "topicId": "elapsed-time",
+    "difficulty": "medium",
+    "question": "A bus leaves at 6:30 AM and arrives at 8:15 AM. How long is the trip?",
+    "answer": "1 hour 45 minutes",
+    "hints": ["6:30 to 7:30 = 1 hour. 7:30 to 8:15 = 45 minutes."],
+    "solution": "6:30 to 8:15 = 1 hour 45 minutes.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "elapsed-time-p10",
+    "topicId": "elapsed-time",
+    "difficulty": "medium",
+    "question": "It is 11:50 AM. What time was it 2 hours and 30 minutes ago?",
+    "answer": "9:20 AM",
+    "hints": ["11:50 − 2 hours = 9:50. 9:50 − 30 minutes = 9:20."],
+    "solution": "11:50 − 2:30 = 9:20 AM.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "elapsed-time-p11",
+    "topicId": "elapsed-time",
+    "difficulty": "hard",
+    "question": "A flight departs at 10:45 AM and arrives at 2:20 PM. How long is the flight?",
+    "answer": "3 hours 35 minutes",
+    "hints": ["10:45 to 1:45 = 3 hours. 1:45 to 2:20 = 35 minutes."],
+    "solution": "10:45 to 1:45 PM = 3 hours. 1:45 to 2:20 = 35 minutes. Total: 3 hours 35 minutes.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "elapsed-time-p12",
+    "topicId": "elapsed-time",
+    "difficulty": "hard",
+    "question": "Practice starts at 3:45 PM. You need to arrive 15 minutes early. It takes 25 minutes to get there. What time should you leave?",
+    "answer": "3:05 PM",
+    "hints": ["Arrive by 3:30 (15 min early). Leave 25 min before: 3:30 − 25 = 3:05."],
+    "solution": "Arrive by: 3:45 − 15 = 3:30. Leave by: 3:30 − 25 = 3:05 PM.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "elapsed-time-p13",
+    "topicId": "elapsed-time",
+    "difficulty": "hard",
+    "question": "A cake goes in the oven at 5:35 PM and needs to bake for 55 minutes. What time should you take it out?",
+    "answer": "6:30 PM",
+    "hints": ["5:35 + 25 minutes = 6:00. Then + 30 more minutes = 6:30."],
+    "solution": "5:35 + 55 minutes = 6:30 PM.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "elapsed-time-p14",
+    "topicId": "elapsed-time",
+    "difficulty": "hard",
+    "question": "You studied for 1 hour 15 minutes in the morning and 45 minutes in the evening. How long did you study in total?",
+    "answer": "2 hours",
+    "hints": ["1 hour 15 min + 45 min = 1 hour + (15 + 45) min = 1 hour + 60 min."],
+    "solution": "1 hour 15 min + 45 min = 1 hour + 60 minutes = 2 hours.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "elapsed-time-p15",
+    "topicId": "elapsed-time",
+    "difficulty": "hard",
+    "question": "A concert has 3 acts. The first is 35 minutes, the second is 45 minutes, and the third is 40 minutes. There is a 10-minute break between each act. If the concert starts at 7:00 PM, what time does it end?",
+    "answer": "9:20 PM",
+    "hints": ["Total time: acts (35 + 45 + 40 = 120 min) + 2 breaks (10 + 10 = 20 min) = 140 min = 2 hours 20 minutes."],
+    "solution": "Acts: 35 + 45 + 40 = 120 min. Breaks: 10 + 10 = 20 min. Total: 140 min = 2 hr 20 min. 7:00 + 2:20 = 9:20 PM.",
+    "cognitiveDemand": "problem-solving"
+  }
+]

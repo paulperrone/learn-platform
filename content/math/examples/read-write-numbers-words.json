@@ -1,0 +1,64 @@
+[
+  {
+    "id": "read-write-numbers-words-ex1",
+    "topicId": "read-write-numbers-words",
+    "title": "Writing 3,547 in Words",
+    "steps": [
+      {
+        "subgoalLabel": "Break the number into place values",
+        "instruction": "Identify each digit's place in 3,547.",
+        "work": "3 thousands, 5 hundreds, 4 tens, 7 ones",
+        "explanation": "We read each group of digits from left to right."
+      },
+      {
+        "subgoalLabel": "Write the thousands",
+        "instruction": "Write the thousands part in words.",
+        "work": "three thousand",
+        "explanation": "3 in the thousands place is written as 'three thousand.'"
+      },
+      {
+        "subgoalLabel": "Write the rest",
+        "instruction": "Write the hundreds, tens, and ones in words.",
+        "work": "five hundred forty-seven",
+        "explanation": "547 is five hundred forty-seven. Remember the hyphen in forty-seven."
+      },
+      {
+        "subgoalLabel": "Combine",
+        "instruction": "Put it all together.",
+        "work": "three thousand, five hundred forty-seven",
+        "explanation": "3,547 in words is 'three thousand, five hundred forty-seven.'"
+      }
+    ]
+  },
+  {
+    "id": "read-write-numbers-words-ex2",
+    "topicId": "read-write-numbers-words",
+    "title": "Converting Words to a Number: Six Thousand, Two Hundred Nine",
+    "steps": [
+      {
+        "subgoalLabel": "Identify the thousands",
+        "instruction": "What does 'six thousand' mean as a number?",
+        "work": "6,000",
+        "explanation": "Six thousand means 6 in the thousands place."
+      },
+      {
+        "subgoalLabel": "Identify the hundreds",
+        "instruction": "What does 'two hundred' mean?",
+        "work": "200",
+        "explanation": "Two hundred means 2 in the hundreds place."
+      },
+      {
+        "subgoalLabel": "Identify the rest",
+        "instruction": "What does 'nine' mean? Note there is no tens word.",
+        "work": "9 (with 0 tens)",
+        "explanation": "Just 'nine' means 0 tens and 9 ones, which is 09."
+      },
+      {
+        "subgoalLabel": "Combine",
+        "instruction": "Add all parts together.",
+        "work": "6,000 + 200 + 9 = 6,209",
+        "explanation": "Six thousand, two hundred nine = 6,209."
+      }
+    ]
+  }
+]

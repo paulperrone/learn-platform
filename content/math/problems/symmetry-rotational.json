@@ -1,0 +1,152 @@
+[
+  {
+    "id": "symmetry-rotational-p1",
+    "topicId": "symmetry-rotational",
+    "difficulty": "easy",
+    "question": "If you rotate a square 90° around its center, does it look the same?",
+    "answer": "yes",
+    "hints": ["A square looks identical after a quarter turn."],
+    "solution": "Yes. A square has rotational symmetry. It looks the same after a 90° rotation.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "symmetry-rotational-p2",
+    "topicId": "symmetry-rotational",
+    "difficulty": "easy",
+    "question": "A shape has rotational symmetry if it looks the same after being rotated less than 360°. True or false?",
+    "answer": "true",
+    "hints": ["360° brings everything back to start. Rotational symmetry means it matches BEFORE a full turn."],
+    "solution": "True. A shape has rotational symmetry if it looks the same after a rotation of less than 360°.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "symmetry-rotational-p3",
+    "topicId": "symmetry-rotational",
+    "difficulty": "easy",
+    "question": "Does the letter 'S' have rotational symmetry?",
+    "answer": "yes",
+    "hints": ["Rotate S by 180°. Does it look the same?"],
+    "solution": "Yes. The letter S looks the same when rotated 180°.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "symmetry-rotational-p4",
+    "topicId": "symmetry-rotational",
+    "difficulty": "easy",
+    "question": "An equilateral triangle looks the same after a rotation of 120°. What is its order of rotational symmetry?",
+    "answer": "3",
+    "hints": ["How many times does it match itself in a full 360° turn? 360 ÷ 120 = ?"],
+    "solution": "360° ÷ 120° = 3. The order of rotational symmetry is 3.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "symmetry-rotational-p5",
+    "topicId": "symmetry-rotational",
+    "difficulty": "easy",
+    "question": "A circle rotated by any amount looks the same. Does it have rotational symmetry?",
+    "answer": "yes",
+    "hints": ["A circle looks identical no matter how much you rotate it."],
+    "solution": "Yes. A circle has infinite rotational symmetry — it looks the same at any angle of rotation.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "symmetry-rotational-p6",
+    "topicId": "symmetry-rotational",
+    "difficulty": "medium",
+    "question": "What is the order of rotational symmetry of a regular pentagon?",
+    "answer": "5",
+    "hints": ["A regular pentagon matches itself 5 times in a full rotation. 360 ÷ 5 = 72°."],
+    "solution": "A regular pentagon has order 5. It matches itself every 72° (360° ÷ 5 = 72°).",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "symmetry-rotational-p7",
+    "topicId": "symmetry-rotational",
+    "difficulty": "medium",
+    "question": "A regular hexagon has what order of rotational symmetry?",
+    "answer": "6",
+    "hints": ["360° ÷ 6 = 60°. It matches every 60°."],
+    "solution": "Order 6. A regular hexagon looks the same after rotations of 60°, 120°, 180°, 240°, 300°, and 360°.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "symmetry-rotational-p8",
+    "topicId": "symmetry-rotational",
+    "difficulty": "medium",
+    "question": "A rectangle (not a square) has order of rotational symmetry of 2. What rotation angles make it match itself?",
+    "answer": "180° and 360°",
+    "hints": ["360° ÷ 2 = 180°. So it matches at 180° and 360°."],
+    "solution": "A rectangle matches itself at 180° (half turn) and 360° (full turn).",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "symmetry-rotational-p9",
+    "topicId": "symmetry-rotational",
+    "difficulty": "medium",
+    "question": "Does the letter 'F' have rotational symmetry?",
+    "answer": "no",
+    "hints": ["Rotate F by any amount less than 360°. Does it look the same?"],
+    "solution": "No. The letter F does not look the same at any rotation less than 360°.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "symmetry-rotational-p10",
+    "topicId": "symmetry-rotational",
+    "difficulty": "medium",
+    "question": "A square has what order of rotational symmetry?",
+    "answer": "4",
+    "hints": ["360° ÷ 4 = 90°. A square matches at 90°, 180°, 270°, and 360°."],
+    "solution": "Order 4. A square matches itself at 90°, 180°, 270°, and 360°.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "symmetry-rotational-p11",
+    "topicId": "symmetry-rotational",
+    "difficulty": "hard",
+    "question": "A shape has order of rotational symmetry 8. What is the smallest angle of rotation that maps it onto itself?",
+    "answer": "45",
+    "hints": ["360° ÷ 8 = ?"],
+    "solution": "360° ÷ 8 = 45°.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "symmetry-rotational-p12",
+    "topicId": "symmetry-rotational",
+    "difficulty": "hard",
+    "question": "A shape matches itself after a rotation of 72°. What is its order of rotational symmetry?",
+    "answer": "5",
+    "hints": ["360° ÷ 72° = ?"],
+    "solution": "360° ÷ 72° = 5. The order is 5 (like a regular pentagon).",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "symmetry-rotational-p13",
+    "topicId": "symmetry-rotational",
+    "difficulty": "hard",
+    "question": "Which has a higher order of rotational symmetry: a regular hexagon or a regular octagon?",
+    "answer": "regular octagon",
+    "hints": ["Hexagon: order 6. Octagon: order 8."],
+    "solution": "Octagon has order 8, hexagon has order 6. The octagon has higher order of rotational symmetry.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "symmetry-rotational-p14",
+    "topicId": "symmetry-rotational",
+    "difficulty": "hard",
+    "question": "An isosceles triangle (two equal sides, one different) has what order of rotational symmetry?",
+    "answer": "1",
+    "hints": ["Does it look the same at any rotation less than 360°?"],
+    "solution": "Order 1. An isosceles triangle only matches itself at 360° (a full turn). It has no rotational symmetry.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "symmetry-rotational-p15",
+    "topicId": "symmetry-rotational",
+    "difficulty": "hard",
+    "question": "True or false: All regular polygons have rotational symmetry with order equal to their number of sides.",
+    "answer": "true",
+    "hints": ["A regular n-sided polygon matches itself n times in a full rotation."],
+    "solution": "True. A regular polygon with n sides has rotational symmetry of order n, matching itself every 360°/n degrees.",
+    "cognitiveDemand": "conceptual"
+  }
+]

@@ -1,0 +1,152 @@
+[
+  {
+    "id": "line-plots-intro-p1",
+    "topicId": "line-plots-intro",
+    "difficulty": "easy",
+    "question": "A line plot shows Xs above a number line. The number 3 has 4 Xs above it. What does that mean?",
+    "answer": "4 data points have the value 3",
+    "hints": ["Each X represents one piece of data at that value."],
+    "solution": "4 Xs above 3 means 4 items in the data set have the value 3.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "line-plots-intro-p2",
+    "topicId": "line-plots-intro",
+    "difficulty": "easy",
+    "question": "A line plot of shoe sizes shows: size 1 has 2 Xs, size 2 has 5 Xs, size 3 has 3 Xs. Which shoe size is most common?",
+    "answer": "size 2",
+    "hints": ["The value with the most Xs is the most common."],
+    "solution": "Size 2 has 5 Xs, the most, so it is the most common.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "line-plots-intro-p3",
+    "topicId": "line-plots-intro",
+    "difficulty": "easy",
+    "question": "A line plot shows: 5 has 1 X, 6 has 3 Xs, 7 has 2 Xs, 8 has 4 Xs. How many data points are there in total?",
+    "answer": "10",
+    "hints": ["Add all the Xs: 1 + 3 + 2 + 4."],
+    "solution": "1 + 3 + 2 + 4 = 10 data points.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "line-plots-intro-p4",
+    "topicId": "line-plots-intro",
+    "difficulty": "easy",
+    "question": "On a line plot, the value 4 has 0 Xs. What does that mean?",
+    "answer": "no data points have the value 4",
+    "hints": ["0 Xs means that value doesn't appear in the data."],
+    "solution": "No items in the data set have the value 4.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "line-plots-intro-p5",
+    "topicId": "line-plots-intro",
+    "difficulty": "easy",
+    "question": "You measured the lengths of 5 pencils in inches: 6, 7, 6, 8, 6. How many Xs would go above the number 6 on a line plot?",
+    "answer": "3",
+    "hints": ["Count how many times 6 appears: 6, _, 6, _, 6."],
+    "solution": "6 appears 3 times, so 3 Xs go above 6.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "line-plots-intro-p6",
+    "topicId": "line-plots-intro",
+    "difficulty": "medium",
+    "question": "A line plot shows plant heights in inches: 3 (2 Xs), 4 (5 Xs), 5 (3 Xs), 6 (1 X). What is the most common height?",
+    "answer": "4 inches",
+    "hints": ["4 inches has the most Xs (5)."],
+    "solution": "4 inches has 5 Xs, more than any other height. It is the mode.",
+    "cognitiveDemand": "conceptual"
+  },
+  {
+    "id": "line-plots-intro-p7",
+    "topicId": "line-plots-intro",
+    "difficulty": "medium",
+    "question": "A line plot shows hours of sleep: 7 (1 X), 8 (4 Xs), 9 (6 Xs), 10 (3 Xs), 11 (1 X). How many people were surveyed?",
+    "answer": "15",
+    "hints": ["Add: 1 + 4 + 6 + 3 + 1."],
+    "solution": "1 + 4 + 6 + 3 + 1 = 15 people.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "line-plots-intro-p8",
+    "topicId": "line-plots-intro",
+    "difficulty": "medium",
+    "question": "A line plot shows: 2 (3 Xs), 3 (0 Xs), 4 (5 Xs), 5 (2 Xs). What is the range of the data?",
+    "answer": "3",
+    "hints": ["Range = highest value − lowest value = 5 − 2."],
+    "solution": "Range = 5 − 2 = 3.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "line-plots-intro-p9",
+    "topicId": "line-plots-intro",
+    "difficulty": "medium",
+    "question": "Data set: 4, 5, 5, 6, 6, 6, 7, 7, 8. How many Xs go above each number on a line plot?",
+    "answer": "4: 1 X, 5: 2 Xs, 6: 3 Xs, 7: 2 Xs, 8: 1 X",
+    "hints": ["Count the frequency of each number."],
+    "solution": "4 appears 1 time, 5 appears 2 times, 6 appears 3 times, 7 appears 2 times, 8 appears 1 time.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "line-plots-intro-p10",
+    "topicId": "line-plots-intro",
+    "difficulty": "medium",
+    "question": "A line plot of test scores shows: 70 (1 X), 80 (3 Xs), 90 (5 Xs), 100 (2 Xs). How many students scored 80 or above?",
+    "answer": "10",
+    "hints": ["Add Xs at 80, 90, 100: 3 + 5 + 2."],
+    "solution": "3 + 5 + 2 = 10 students scored 80 or above.",
+    "cognitiveDemand": "procedural"
+  },
+  {
+    "id": "line-plots-intro-p11",
+    "topicId": "line-plots-intro",
+    "difficulty": "hard",
+    "question": "A line plot shows ages at a party: 5 (2 Xs), 6 (4 Xs), 7 (3 Xs), 8 (1 X). What is the sum of all the ages?",
+    "answer": "63",
+    "hints": ["5×2 + 6×4 + 7×3 + 8×1."],
+    "solution": "5(2) + 6(4) + 7(3) + 8(1) = 10 + 24 + 21 + 8 = 63.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "line-plots-intro-p12",
+    "topicId": "line-plots-intro",
+    "difficulty": "hard",
+    "question": "A line plot shows how many books students read: 1 (3 Xs), 2 (5 Xs), 3 (4 Xs), 4 (2 Xs), 5 (1 X). What is the total number of books read?",
+    "answer": "38",
+    "hints": ["1(3) + 2(5) + 3(4) + 4(2) + 5(1)."],
+    "solution": "3 + 10 + 12 + 8 + 5 = 38.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "line-plots-intro-p13",
+    "topicId": "line-plots-intro",
+    "difficulty": "hard",
+    "question": "A line plot shows lengths in inches: 10 (1 X), 11 (2 Xs), 12 (4 Xs), 13 (2 Xs), 14 (1 X). What is the median length?",
+    "answer": "12 inches",
+    "hints": ["Total data points: 10. The median is the average of the 5th and 6th values when sorted."],
+    "solution": "10 data points sorted: 10, 11, 11, 12, 12, 12, 12, 13, 13, 14. Middle values (5th and 6th): both 12. Median = 12.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "line-plots-intro-p14",
+    "topicId": "line-plots-intro",
+    "difficulty": "hard",
+    "question": "Two line plots compare Class A and Class B quiz scores. Class A: 7 (2 Xs), 8 (3 Xs), 9 (5 Xs). Class B: 7 (4 Xs), 8 (4 Xs), 9 (2 Xs). Which class had a higher average score?",
+    "answer": "Class A",
+    "hints": ["Class A total: 7(2)+8(3)+9(5) = 83, 10 students, avg 8.3. Class B: 7(4)+8(4)+9(2) = 78, 10 students, avg 7.8."],
+    "solution": "Class A: (14+24+45)/10 = 83/10 = 8.3. Class B: (28+32+18)/10 = 78/10 = 7.8. Class A is higher.",
+    "cognitiveDemand": "problem-solving"
+  },
+  {
+    "id": "line-plots-intro-p15",
+    "topicId": "line-plots-intro",
+    "difficulty": "hard",
+    "question": "You have 12 data values and are making a line plot. The data: 3, 5, 4, 3, 6, 5, 3, 4, 5, 5, 6, 4. How many Xs should be above each number?",
+    "answer": "3: 3 Xs, 4: 3 Xs, 5: 4 Xs, 6: 2 Xs",
+    "hints": ["Count each: 3 appears 3 times, 4 appears 3 times, 5 appears 4 times, 6 appears 2 times."],
+    "solution": "3: 3 times, 4: 3 times, 5: 4 times, 6: 2 times. Total: 12 ✓.",
+    "cognitiveDemand": "procedural"
+  }
+]

@@ -1,0 +1,52 @@
+[
+  {
+    "id": "area-related-to-perimeter-ex1",
+    "topicId": "area-related-to-perimeter",
+    "title": "Same Perimeter, Different Area",
+    "steps": [
+      {
+        "subgoalLabel": "Set up two rectangles with the same perimeter",
+        "instruction": "Find two rectangles with a perimeter of 16 cm.",
+        "work": "l + w = 8. Options: 1 × 7, 2 × 6, 3 × 5, 4 × 4.",
+        "explanation": "Perimeter = 2(l + w) = 16 means l + w = 8."
+      },
+      {
+        "subgoalLabel": "Calculate areas",
+        "instruction": "Find the area of each.",
+        "work": "1 × 7 = 7 sq cm. 2 × 6 = 12 sq cm. 3 × 5 = 15 sq cm. 4 × 4 = 16 sq cm.",
+        "explanation": "Even though the perimeter is the same (16 cm), the areas are very different."
+      },
+      {
+        "subgoalLabel": "Identify the pattern",
+        "instruction": "Which shape has the largest area?",
+        "work": "The 4 × 4 square has the largest area (16 sq cm). The closer to a square, the larger the area.",
+        "explanation": "For a fixed perimeter, a square always gives the maximum area among rectangles."
+      }
+    ]
+  },
+  {
+    "id": "area-related-to-perimeter-ex2",
+    "topicId": "area-related-to-perimeter",
+    "title": "Same Area, Different Perimeter",
+    "steps": [
+      {
+        "subgoalLabel": "Find rectangles with area 18 sq cm",
+        "instruction": "List all whole-number rectangles with area 18.",
+        "work": "Factor pairs of 18: 1 × 18, 2 × 9, 3 × 6.",
+        "explanation": "Each factor pair gives a rectangle with area 18 sq cm."
+      },
+      {
+        "subgoalLabel": "Calculate perimeters",
+        "instruction": "Find the perimeter of each rectangle.",
+        "work": "1 × 18: P = 38 cm. 2 × 9: P = 22 cm. 3 × 6: P = 18 cm.",
+        "explanation": "The perimeters vary widely even though all areas equal 18."
+      },
+      {
+        "subgoalLabel": "Draw conclusions",
+        "instruction": "Which has the smallest perimeter?",
+        "work": "The 3 × 6 rectangle (closest to square) has the smallest perimeter of 18 cm.",
+        "explanation": "For a fixed area, the shape closest to a square has the smallest perimeter. The long, thin shape (1 × 18) has the largest perimeter."
+      }
+    ]
+  }
+]

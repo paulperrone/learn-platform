@@ -1,0 +1,52 @@
+[
+  {
+    "id": "perimeter-regular-shapes-ex1",
+    "topicId": "perimeter-regular-shapes",
+    "title": "Finding the Perimeter of a Square Using Multiplication",
+    "steps": [
+      {
+        "subgoalLabel": "Identify the shape",
+        "instruction": "A square has sides of 7 cm. Find its perimeter.",
+        "work": "A square has 4 equal sides, each 7 cm.",
+        "explanation": "Perimeter is the total distance around a shape."
+      },
+      {
+        "subgoalLabel": "Use multiplication shortcut",
+        "instruction": "Since all sides are equal, use multiplication.",
+        "work": "Perimeter = 4 × 7 = 28 cm.",
+        "explanation": "Instead of adding 7 + 7 + 7 + 7, multiply the number of sides by the side length."
+      },
+      {
+        "subgoalLabel": "State the answer",
+        "instruction": "What is the perimeter?",
+        "work": "The perimeter is 28 cm.",
+        "explanation": "For any regular shape: perimeter = number of sides × side length."
+      }
+    ]
+  },
+  {
+    "id": "perimeter-regular-shapes-ex2",
+    "topicId": "perimeter-regular-shapes",
+    "title": "Finding the Side Length from a Perimeter",
+    "steps": [
+      {
+        "subgoalLabel": "Read the problem",
+        "instruction": "A regular pentagon has a perimeter of 35 cm. Find the side length.",
+        "work": "A pentagon has 5 equal sides. Total perimeter = 35 cm.",
+        "explanation": "We know the total and the number of sides — we need to find one side."
+      },
+      {
+        "subgoalLabel": "Divide perimeter by number of sides",
+        "instruction": "Use division to find one side.",
+        "work": "35 ÷ 5 = 7 cm per side.",
+        "explanation": "Since perimeter = sides × length, then length = perimeter ÷ sides."
+      },
+      {
+        "subgoalLabel": "Verify",
+        "instruction": "Check by multiplying back.",
+        "work": "5 × 7 = 35 cm. ✓",
+        "explanation": "The side length of 7 cm gives the correct perimeter of 35 cm."
+      }
+    ]
+  }
+]
