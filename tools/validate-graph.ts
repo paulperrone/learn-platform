@@ -5,9 +5,11 @@
  */
 import { readFileSync, existsSync, readdirSync } from "fs";
 import { join } from "path";
+import { getContentDir } from "./content-dir.js";
 
 const subject = process.argv[2] ?? "math";
-const graphPath = join(process.cwd(), "content", subject, "graph.json");
+const contentRoot = getContentDir();
+const graphPath = join(contentRoot, subject, "graph.json");
 
 if (!existsSync(graphPath)) {
   console.error(`graph.json not found at ${graphPath}`);
@@ -19,11 +21,10 @@ const topicIds = new Set<string>(graph.topics.map((t: any) => t.id));
 
 // Build cross-discipline topic index for resolving "discipline:topic-id" references
 const crossDisciplineTopics = new Set<string>();
-const contentDir = join(process.cwd(), "content");
-if (existsSync(contentDir)) {
-  for (const dir of readdirSync(contentDir)) {
+if (existsSync(contentRoot)) {
+  for (const dir of readdirSync(contentRoot)) {
     if (dir === subject) continue;
-    const otherGraphPath = join(contentDir, dir, "graph.json");
+    const otherGraphPath = join(contentRoot, dir, "graph.json");
     if (existsSync(otherGraphPath)) {
       const otherGraph = JSON.parse(readFileSync(otherGraphPath, "utf-8"));
       for (const t of otherGraph.topics ?? []) {
@@ -358,7 +359,7 @@ if (progressionModel === "mastery-gated") {
 }
 
 // 9. Problems-per-topic check
-const problemsDirs = [join(process.cwd(), "content", subject, "problems"), join(process.cwd(), "content", subject, "problems-generated")];
+const problemsDirs = [join(contentRoot, subject, "problems"), join(contentRoot, subject, "problems-generated")];
 const topicProblemCounts = new Map<string, number>();
 for (const dir of problemsDirs) {
   if (existsSync(dir)) {
@@ -426,7 +427,7 @@ if (graph.collections && graph.collections.length > 0) {
 // 11. Context-layered content depth coverage
 if (progressionModel === "context-layered") {
   console.log("\n--- Context-layered depth checks ---");
-  const problemsDir = join(process.cwd(), "content", subject, "problems");
+  const problemsDir = join(contentRoot, subject, "problems");
   if (existsSync(problemsDir)) {
     const depthCounts = new Map<string, Set<string>>();
     for (const file of readdirSync(problemsDir).filter((f: string) => f.endsWith(".json"))) {

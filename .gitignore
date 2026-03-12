@@ -4,7 +4,8 @@ dist/
 .dev.vars
 *.local
 .DS_Store
-content/*/content-pack.json
+# Content lives in separate learn-content repo
+content/
 tools/visualize-graph.html
 simulations/runs/
 simulations/reports/evaluation.json

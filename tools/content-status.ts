@@ -6,6 +6,7 @@
  */
 import { readFileSync, existsSync, readdirSync } from "fs";
 import { join } from "path";
+import { getContentDir } from "./content-dir.js";
 
 // --- Types ---
 
@@ -88,7 +89,7 @@ const jsonOutput = args.includes("--json");
 const filteredArgs = args.filter(a => a !== "--json");
 const subject = filteredArgs[0] ?? "math";
 
-const contentDir = join(process.cwd(), "content", subject);
+const contentDir = join(getContentDir(), subject);
 
 if (!existsSync(contentDir)) {
   console.error(`Content directory not found: ${contentDir}`);

@@ -5,7 +5,14 @@
 import Database from "better-sqlite3";
 import { drizzle } from "drizzle-orm/better-sqlite3";
 import { readFileSync, existsSync, readdirSync } from "fs";
-import { join } from "path";
+import { join, resolve } from "path";
+
+function resolveContentDir(): string {
+  if (process.env.CONTENT_DIR) return resolve(process.env.CONTENT_DIR);
+  const sibling = join(process.cwd(), "..", "learn-content");
+  if (existsSync(sibling)) return sibling;
+  return join(process.cwd(), "content");
+}
 import * as schema from "../../packages/api/src/db/schema.js";
 import type { DB } from "../../packages/api/src/db/index.js";
 
@@ -195,7 +202,7 @@ export function createSimulationDbMulti(disciplines: string[]): DB {
   // Phase 1: Load all disciplines — topics, problems, examples
   const allGraphs: GraphDefinition[] = [];
   for (const discipline of disciplines) {
-    const contentDir = join(process.cwd(), "content", discipline);
+    const contentDir = join(resolveContentDir(), discipline);
     const graphPath = join(contentDir, "graph.json");
     if (!existsSync(graphPath)) {
       throw new Error(`graph.json not found at ${graphPath}`);

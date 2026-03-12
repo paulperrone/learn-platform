@@ -5,9 +5,10 @@
  */
 import { readFileSync, existsSync, readdirSync } from "fs";
 import { join } from "path";
+import { getContentDir } from "./content-dir.js";
 
 const subject = process.argv[2] ?? "math";
-const contentDir = join(process.cwd(), "content", subject);
+const contentDir = join(getContentDir(), subject);
 
 let errors = 0;
 let warnings = 0;

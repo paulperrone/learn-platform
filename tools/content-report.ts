@@ -9,9 +9,10 @@
  */
 import { readFileSync, existsSync, readdirSync } from "fs";
 import { join } from "path";
+import { getContentDir } from "./content-dir.js";
 
 const targetDiscipline = process.argv[2];
-const contentDir = join(process.cwd(), "content");
+const contentDir = getContentDir();
 
 const PROGRESSION_MODELS: Record<string, string> = {
   math: "mastery-gated",

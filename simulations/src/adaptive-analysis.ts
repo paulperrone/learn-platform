@@ -12,7 +12,7 @@
  *   npx tsx simulations/src/adaptive-analysis.ts --run-fire-comparison [seed]
  */
 import { readFileSync, readdirSync, existsSync, mkdirSync, writeFileSync } from "fs";
-import { join } from "path";
+import { join, resolve } from "path";
 import type {
   SimulationEvent,
   SessionSummary,
@@ -591,7 +591,8 @@ async function runWithoutEncompassings(runner: any): Promise<any> {
   // To truly compare, we need to modify createSimulationDb.
   // Let's take a different approach: modify the graph JSON temporarily.
 
-  const graphPath = join(process.cwd(), "content", "math", "graph.json");
+  const contentDir = process.env.CONTENT_DIR ? resolve(process.env.CONTENT_DIR) : existsSync(join(process.cwd(), "..", "learn-content")) ? join(process.cwd(), "..", "learn-content") : join(process.cwd(), "content");
+  const graphPath = join(contentDir, "math", "graph.json");
   const originalContent = readFileSync(graphPath, "utf-8");
   const graph = JSON.parse(originalContent);
   graph.encompassings = [];

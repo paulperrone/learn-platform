@@ -5,6 +5,7 @@
  */
 import { readFileSync, existsSync, readdirSync } from "fs";
 import { join } from "path";
+import { getContentDir } from "./content-dir.js";
 
 type GraphDefinition = {
   subjectId: string;
@@ -55,7 +56,7 @@ function esc(s: string): string {
 
 function main() {
   const subject = process.argv[2] ?? "math-foundations";
-  const contentDir = join(process.cwd(), "content", subject);
+  const contentDir = join(getContentDir(), subject);
   const graphPath = join(contentDir, "graph.json");
 
   if (!existsSync(graphPath)) {

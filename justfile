@@ -18,12 +18,16 @@ test:
 typecheck:
     pnpm typecheck
 
+# Content directory (sibling learn-content repo or CONTENT_DIR env var)
+content_dir := env("CONTENT_DIR", justfile_directory() / ".." / "learn-content")
+
 # Validate content (graph DAG + problem completeness) for all subjects
 validate-content:
     #!/usr/bin/env bash
     set -euo pipefail
+    export CONTENT_DIR="{{content_dir}}"
     exit_code=0
-    for dir in content/*/; do
+    for dir in "$CONTENT_DIR"/*/; do
         subject=$(basename "$dir")
         if [ -f "$dir/graph.json" ]; then
             echo "--- Validating $subject ---"
@@ -47,7 +51,7 @@ db-migrate:
 
 # Import content into local D1
 import-content:
-    npx tsx tools/import-content.ts
+    CONTENT_DIR="{{content_dir}}" npx tsx tools/import-content.ts
 
 # Generate procedural problems (seeded, reproducible)
 generate-problems *args:
@@ -71,7 +75,7 @@ atomicity-context *args:
 
 # Visualize knowledge graph (default: math-foundations, or pass subject name)
 visualize subject="math":
-    python3 tools/visualize-graph.py content/{{subject}}/graph.json --open
+    python3 tools/visualize-graph.py "{{content_dir}}/{{subject}}/graph.json" --open
 
 # Build web app
 build-web:

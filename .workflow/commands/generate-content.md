@@ -12,7 +12,7 @@ Generate problems, worked examples, or full content for a subject. Encodes disci
 /generate-content <subject> --dry-run
 ```
 
-- `<subject>`: Subject directory name under `content/` (e.g., `math-foundations`, `math-middle`, `ela-k5`, `us-history`)
+- `<subject>`: Subject directory name in `learn-content` repo (e.g., `math`, `ela`, `history`)
 - `--graph-only`: Only design/update the knowledge graph (`graph.json`)
 - `--problems-only`: Only author problems for existing topics
 - `--examples-only`: Only author worked examples for existing topics
@@ -23,7 +23,7 @@ Generate problems, worked examples, or full content for a subject. Encodes disci
 ### 1. Load Subject Context
 
 ```bash
-cat content/$SUBJECT/graph.json | head -20   # Get subjectId, disciplineId, progressionModel
+cat ../learn-content/$SUBJECT/graph.json | head -20   # Get subjectId, disciplineId, progressionModel
 just content-status $SUBJECT                  # Current health
 just content-gaps $SUBJECT                    # Known gaps
 ```
@@ -125,7 +125,7 @@ For every topic, generate 2+ worked examples with step-by-step breakdowns:
 }
 ```
 
-Save to `content/<subject>/examples/<topic-id>.json`.
+Save to `../learn-content/<subject>/examples/<topic-id>.json`.
 
 ### 6. Post-Generation Verification Loop
 
@@ -156,10 +156,10 @@ just import-content   # Load into local D1 — verify source column populated
 
 | Content | Path |
 |---|---|
-| Knowledge graph | `content/<subject>/graph.json` |
-| Hand-authored problems | `content/<subject>/problems/<topic-id>.json` |
-| Generated problems | `content/<subject>/problems-generated/<topic-id>.json` |
-| Worked examples | `content/<subject>/examples/<topic-id>.json` |
+| Knowledge graph | `../learn-content/<subject>/graph.json` |
+| Hand-authored problems | `../learn-content/<subject>/problems/<topic-id>.json` |
+| Generated problems | `../learn-content/<subject>/problems-generated/<topic-id>.json` |
+| Worked examples | `../learn-content/<subject>/examples/<topic-id>.json` |
 | Procedural generators | `tools/generators/` |
 | Validation | `tools/validate-content.ts`, `tools/validate-graph.ts` |
 

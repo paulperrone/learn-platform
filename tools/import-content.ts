@@ -6,6 +6,7 @@
 import { readFileSync, existsSync, readdirSync } from "fs";
 import { join } from "path";
 import Database from "better-sqlite3";
+import { getContentDir } from "./content-dir.js";
 
 const DB_PATH = ".wrangler/state/v3/d1/miniflare-D1DatabaseObject";
 
@@ -173,7 +174,7 @@ const DISCIPLINE_META: Record<string, { name: string; description: string; progr
 
 function main() {
   // Discover all disciplines
-  const contentRoot = join(process.cwd(), "content");
+  const contentRoot = getContentDir();
   const disciplineDirs = readdirSync(contentRoot)
     .filter((d) => existsSync(join(contentRoot, d, "graph.json")))
     .sort();

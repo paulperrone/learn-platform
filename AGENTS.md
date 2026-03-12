@@ -29,9 +29,15 @@ packages/
     components/      # ProblemView, WorkedExample, ConfidenceSlider
     composables/     # useApi
   shared/src/        # Shared TypeScript types
-content/<discipline>/     # Knowledge graph + problem banks (JSON, source of truth)
-  collections/       # Collection definitions (grade bands, strands, tracks)
 tools/               # Content pipeline (validate, import, visualize)
+
+# Content lives in a separate repo: paulperrone/learn-content (sibling directory)
+# ../learn-content/
+#   <discipline>/     # Knowledge graph + problem banks (JSON, source of truth)
+#     graph.json       # Topics, prerequisites, encompassings, collections
+#     problems/        # Problem banks (15 per topic)
+#     examples/        # Worked examples (2 per topic)
+#     collections/     # Collection definitions (grade bands, strands, tracks)
 ```
 
 ## Commands
@@ -46,7 +52,7 @@ just validate         # Full validation (typecheck + content)
 just validate-content # Validate content only (graph DAG + problems)
 just db-generate      # Generate Drizzle migration
 just db-migrate       # Apply migration to local D1
-just import-content   # Import content/ → local D1
+just import-content   # Import ../learn-content/ → local D1
 ```
 
 > **IMPORTANT:** Never run `pnpm vitest run` or `npx vitest` directly. Workers-pool tests import `cloudflare:test` which only resolves through the `@cloudflare/vitest-pool-workers` runner configured in `packages/api/vitest.config.ts`. Use `just test` (or `pnpm test`) which invokes the correct runner. Running vitest directly will show 15+ false failures.
@@ -69,17 +75,27 @@ just import-content   # Import content/ → local D1
 
 ## Content Pipeline
 
-**Source of truth:** `content/<discipline>/graph.json` + `problems/*.json` + `examples/*.json` + `collections/*.json` (all in git).
+**Source of truth:** `../learn-content/<discipline>/graph.json` + `problems/*.json` + `examples/*.json` + `collections/*.json` (separate `learn-content` repo).
 **D1 is a disposable read model** — rebuilt from content files via `just import-content`.
+
+### Content repo setup
+
+Content lives in a sibling repo: `paulperrone/learn-content`. Clone it alongside learn-platform:
+```
+source/
+  learn-platform/    # This repo (code, tooling)
+  learn-content/     # Content repo (graphs, problems, examples)
+```
+Tooling resolves content via `CONTENT_DIR` env var (default: `../learn-content`).
 
 ### How content is created
 
 All content authoring happens in **Claude Code sessions**. The workflow:
 
 1. **Design the knowledge graph** — Define topics, prerequisites, and encompassing edges in `graph.json`. Follow the discipline's progression model (below) and the encompassing methodology in `docs/content-system.md`. Use `just visualize <discipline>` to inspect the DAG structure.
-2. **Generate problems** — Write `content/<discipline>/problems/<topic-id>.json` files. 5 problems per topic at 3 difficulty levels. Follow platform-medium constraints (screen + text input only).
-3. **Generate worked examples** — Write `content/<discipline>/examples/<topic-id>.json` files. 2 examples per topic with step-by-step breakdowns.
-4. **Define collections** — Write `content/<discipline>/collections/<collection-id>.json` to package topics into grade bands, strands, or tracks.
+2. **Generate problems** — Write `../learn-content/<discipline>/problems/<topic-id>.json` files. 5 problems per topic at 3 difficulty levels. Follow platform-medium constraints (screen + text input only).
+3. **Generate worked examples** — Write `../learn-content/<discipline>/examples/<topic-id>.json` files. 2 examples per topic with step-by-step breakdowns.
+4. **Define collections** — Write `../learn-content/<discipline>/collections/<collection-id>.json` to package topics into grade bands, strands, or tracks.
 5. **Validate** — `just validate-content` checks DAG integrity, topic coverage, and platform-incompatible instructions.
 6. **Import** — `just import-content` loads everything into local D1.
 7. **Visualize** — `just visualize <discipline>` generates an interactive graph visualization.

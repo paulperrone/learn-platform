@@ -9,9 +9,10 @@
  */
 import { readFileSync, writeFileSync, existsSync, readdirSync } from "fs";
 import { join, basename } from "path";
+import { getContentDir } from "./content-dir.js";
 
 const subject = process.argv[2] || "math";
-const contentDir = join(process.cwd(), "content", subject);
+const contentDir = join(getContentDir(), subject);
 
 if (!existsSync(contentDir)) {
   console.error(`Content directory not found: ${contentDir}`);

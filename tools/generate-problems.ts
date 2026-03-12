@@ -6,6 +6,7 @@
  */
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from "fs";
 import { join } from "path";
+import { getContentDir } from "./content-dir.js";
 import { generatorRegistry, createRng } from "./generators/index.js";
 import type { Difficulty, Problem } from "./generators/index.js";
 
@@ -27,7 +28,7 @@ function parseArgs() {
 }
 
 function getSubjectForTopic(topicId: string): string | null {
-  const contentDir = join(process.cwd(), "content");
+  const contentDir = getContentDir();
   for (const dir of readdirSync(contentDir)) {
     const graphPath = join(contentDir, dir, "graph.json");
     if (!existsSync(graphPath)) continue;
@@ -123,7 +124,7 @@ function main() {
     }
 
     // Write to problems-generated directory
-    const outDir = join(process.cwd(), "content", subject, "problems-generated");
+    const outDir = join(getContentDir(), subject, "problems-generated");
     mkdirSync(outDir, { recursive: true });
     const outPath = join(outDir, `${topicId}.json`);
     writeFileSync(outPath, JSON.stringify(problems, null, 2) + "\n");

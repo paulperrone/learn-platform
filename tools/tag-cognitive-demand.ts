@@ -8,12 +8,12 @@
  * - reasoning: "without computing", "which is bigger", "compare", "estimate", "predict"
  * - error_analysis: "what went wrong", "find the mistake", "correct the error"
  *
- * Usage: npx tsx tools/tag-cognitive-demand.ts [--dry-run]
+ * Usage: npx tsx tools/tag-cognitive-demand.ts [subject] [--dry-run]
  */
 
 import { readFileSync, writeFileSync, readdirSync } from "fs";
 import { join } from "path";
-import { readFileSync as readGraphFile } from "fs";
+import { getContentDir } from "./content-dir.js";
 
 type CognitiveDemand = "procedural" | "conceptual" | "application" | "reasoning" | "error_analysis";
 
@@ -34,8 +34,10 @@ type TopicInfo = {
   gradeLevel: number;
 };
 
-const PROBLEMS_DIR = join(__dirname, "../content/math-foundations/problems");
-const GRAPH_PATH = join(__dirname, "../content/math-foundations/graph.json");
+const subject = process.argv.find((a) => !a.startsWith("-") && a !== process.argv[0] && a !== process.argv[1]) ?? "math";
+const contentDir = join(getContentDir(), subject);
+const PROBLEMS_DIR = join(contentDir, "problems");
+const GRAPH_PATH = join(contentDir, "graph.json");
 
 // Load topic grade levels
 function loadTopicGrades(): Map<string, number> {

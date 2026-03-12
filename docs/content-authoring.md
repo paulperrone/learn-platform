@@ -27,19 +27,21 @@ All content authoring happens in **Claude Code sessions**. OpenRouter is reserve
 
 ## Content Structure
 
+Content lives in a separate repo: [`paulperrone/learn-content`](https://github.com/paulperrone/learn-content) (sibling directory `../learn-content/`).
+
 ```
-content/<subject>/
+../learn-content/<subject>/
   graph.json              # Knowledge graph: topics, prerequisites, encompassings
   problems/<topic>.json   # Hand-authored problems (5+ per topic)
   examples/<topic>.json   # Worked examples (2+ per topic)
   problems-generated/     # Procedural generator output (math only)
 ```
 
-**Source of truth:** Files in `content/` (committed to git). D1 is a disposable read model rebuilt by `just import-content`.
+**Source of truth:** Files in `learn-content` repo. D1 is a disposable read model rebuilt by `just import-content`. Tooling resolves content via `CONTENT_DIR` env var (default: `../learn-content`).
 
 ## Step 1: Design the Knowledge Graph
 
-Create `content/<subject>/graph.json` with:
+Create `../learn-content/<subject>/graph.json` with:
 
 - **Topics**: id, name, description, gradeLevel, standardCode, strand
 - **Prerequisites**: edges between topics (from → to) with type and strength
@@ -66,7 +68,7 @@ The import system resolves the prefix. Cross-subject edges should almost always 
 
 ## Step 2: Author Problems
 
-Create `content/<subject>/problems/<topic-id>.json`:
+Create `../learn-content/<subject>/problems/<topic-id>.json`:
 
 - 5+ problems per topic at 3 difficulty levels (easy/medium/hard)
 - Target distribution: 30% easy / 40% medium / 30% hard
@@ -90,7 +92,7 @@ Output goes to `problems-generated/`. Import merges both directories.
 
 ## Step 3: Author Worked Examples
 
-Create `content/<subject>/examples/<topic-id>.json`:
+Create `../learn-content/<subject>/examples/<topic-id>.json`:
 
 - 2+ examples per topic
 - 3-5 steps each with subgoalLabel, instruction, work, explanation
@@ -141,7 +143,7 @@ npx tsx simulations/src/cli.ts average-older --subject math-foundations,math-mid
 
 ## Adding a New Subject
 
-1. Create `content/<subject>/graph.json` following the discipline model
+1. Create `../learn-content/<subject>/graph.json` following the discipline model
 2. Run `/generate-content <subject>` to author problems and examples
 3. Run `/content-health <subject>` to verify
 4. Add cross-discipline prerequisite edges if needed

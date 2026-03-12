@@ -4,11 +4,18 @@
  */
 
 import { readFileSync, existsSync } from "fs";
-import { join } from "path";
+import { join, resolve } from "path";
 
 const DISCIPLINES = ["math", "ela", "history"];
 
 let strandMap: Map<string, string> | null = null;
+
+function resolveContentDir(): string {
+  if (process.env.CONTENT_DIR) return resolve(process.env.CONTENT_DIR);
+  const sibling = join(process.cwd(), "..", "learn-content");
+  if (existsSync(sibling)) return sibling;
+  return join(process.cwd(), "content");
+}
 
 /**
  * Build a topicId → strand map from all discipline graph.json files.
@@ -19,7 +26,7 @@ export function loadStrandMap(): Map<string, string> {
   if (strandMap) return strandMap;
 
   strandMap = new Map();
-  const contentDir = join(process.cwd(), "content");
+  const contentDir = resolveContentDir();
 
   for (const discipline of DISCIPLINES) {
     const graphPath = join(contentDir, discipline, "graph.json");

@@ -15,6 +15,7 @@
  */
 import { readFileSync, writeFileSync, existsSync, readdirSync, mkdirSync } from "fs";
 import { join, resolve } from "path";
+import { getContentDir } from "./content-dir.js";
 
 // --- Types ---
 
@@ -65,7 +66,7 @@ const discipline = "math";
 
 // --- Load data ---
 
-const contentDir = join(process.cwd(), "content", discipline);
+const contentDir = join(getContentDir(), discipline);
 const graph: Graph = JSON.parse(readFileSync(join(contentDir, "graph.json"), "utf-8"));
 
 // Load problems

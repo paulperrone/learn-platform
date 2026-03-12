@@ -22,7 +22,8 @@ import {
   mkdirSync,
   writeFileSync,
 } from "fs";
-import { join } from "path";
+import { join, resolve } from "path";
+import { existsSync } from "fs";
 import { loadTargets } from "./load-targets.js";
 import type {
   SimulationEvent,
@@ -1073,7 +1074,8 @@ async function computeFIReEfficiency(
 
     console.log(`  [fire] ${profileId} without encompassing (${sessionCount} sessions)...`);
     // Clear encompassing edges temporarily
-    const graphPath = join(process.cwd(), "content", "math", "graph.json");
+    const contentDir = process.env.CONTENT_DIR ? resolve(process.env.CONTENT_DIR) : existsSync(join(process.cwd(), "..", "learn-content")) ? join(process.cwd(), "..", "learn-content") : join(process.cwd(), "content");
+    const graphPath = join(contentDir, "math", "graph.json");
     const originalContent = readFileSync(graphPath, "utf-8");
     const graph = JSON.parse(originalContent);
     graph.encompassings = [];

@@ -73,6 +73,7 @@ const HISTORY_PATH = join(HEALING_DIR, "history.json");
 function categorizeFile(filePath: string): ChangeCategory {
   if (filePath.startsWith("packages/api/src/services/")) return "service";
   if (filePath.startsWith("packages/api/src/db/")) return "schema";
+  // Content now lives in separate learn-content repo — this catches legacy paths
   if (filePath.startsWith("content/")) return "content";
   if (filePath.startsWith("simulations/")) return "simulation";
   if (

@@ -3,7 +3,7 @@
 > **Plan 021 Phase 1 — MA Cross-Reference Audit**
 > **Created:** 2026-03-11
 > **Source:** `~/source/mathacademy-graph/export/graph.json` (3688 nodes, 5622 edges)
-> **Our graph:** `content/math/graph.json` (207 topics, 321 prereq edges)
+> **Our graph:** `../learn-content/math/graph.json` (207 topics, 321 prereq edges)
 
 ## Split Heuristics
 

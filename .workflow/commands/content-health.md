@@ -19,7 +19,7 @@ Run structural and content validation:
 
 ```bash
 # Single subject
-just validate-content   # Validates all subjects under content/
+just validate-content   # Validates all subjects in learn-content repo
 
 # Or target specific subject if provided
 npx tsx tools/validate-graph.ts $SUBJECT

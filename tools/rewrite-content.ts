@@ -7,6 +7,7 @@
  */
 import { readFileSync, writeFileSync, existsSync, readdirSync } from "fs";
 import { join } from "path";
+import { getContentDir } from "./content-dir.js";
 
 const subject = process.argv.find((a) => !a.startsWith("-") && a !== process.argv[0] && a !== process.argv[1]) ?? "math-foundations";
 const dryRun = process.argv.includes("--dry-run");
@@ -94,7 +95,7 @@ Preserve: the mathematical content, difficulty level, pedagogical scaffolding, e
 Output valid JSON only, no markdown fences. Return the COMPLETE object with all fields preserved.`;
 
 async function rewriteExamples() {
-  const dir = join(process.cwd(), "content", subject, "examples");
+  const dir = join(getContentDir(), subject, "examples");
   if (!existsSync(dir)) return;
 
   const files = readdirSync(dir).filter((f) => f.endsWith(".json"));
@@ -166,7 +167,7 @@ Return the full JSON array with ONLY the incompatible instructions rewritten. Pr
 }
 
 async function rewriteProblems() {
-  const dir = join(process.cwd(), "content", subject, "problems");
+  const dir = join(getContentDir(), subject, "problems");
   if (!existsSync(dir)) return;
 
   const files = readdirSync(dir).filter((f) => f.endsWith(".json"));
