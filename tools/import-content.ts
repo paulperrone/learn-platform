@@ -364,6 +364,26 @@ function main() {
     console.log(`Computed depths: max depth = ${maxDepth}`);
   }
 
+  // Phase 3: Insert cross-discipline edges from centralized file
+  const crossEdgePath = join(contentRoot, "cross-discipline-edges.json");
+  if (existsSync(crossEdgePath)) {
+    const crossFile = JSON.parse(readFileSync(crossEdgePath, "utf-8"));
+    const crossEdges: { from: string; to: string; type: string; strength: number; rationale: string }[] = crossFile.edges ?? [];
+
+    if (crossEdges.length > 0) {
+      console.log(`\n--- Inserting cross-discipline edges ---`);
+      const insertCrossEdges = db.transaction(() => {
+        for (const edge of crossEdges) {
+          const fromId = edge.from.split(":", 2)[1];
+          const toId = edge.to.split(":", 2)[1];
+          insertPrereq.run(fromId, toId, edge.strength, edge.type ?? "required");
+        }
+      });
+      insertCrossEdges();
+      console.log(`Inserted ${crossEdges.length} cross-discipline prerequisite edges`);
+    }
+  }
+
   console.log("\nImport complete!");
 }
 

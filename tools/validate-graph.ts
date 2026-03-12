@@ -19,21 +19,6 @@ if (!existsSync(graphPath)) {
 const graph = JSON.parse(readFileSync(graphPath, "utf-8"));
 const topicIds = new Set<string>(graph.topics.map((t: any) => t.id));
 
-// Build cross-discipline topic index for resolving "discipline:topic-id" references
-const crossDisciplineTopics = new Set<string>();
-if (existsSync(contentRoot)) {
-  for (const dir of readdirSync(contentRoot)) {
-    if (dir === subject) continue;
-    const otherGraphPath = join(contentRoot, dir, "graph.json");
-    if (existsSync(otherGraphPath)) {
-      const otherGraph = JSON.parse(readFileSync(otherGraphPath, "utf-8"));
-      for (const t of otherGraph.topics ?? []) {
-        crossDisciplineTopics.add(`${dir}:${t.id}`);
-      }
-    }
-  }
-}
-
 let errors = 0;
 let warnings = 0;
 
@@ -57,13 +42,13 @@ for (const [id, count] of idCounts) {
 
 // Check prerequisites reference valid topics
 for (const p of graph.prerequisites) {
-  const fromIsCrossDiscipline = p.from.includes(":");
-  if (fromIsCrossDiscipline) {
-    if (!crossDisciplineTopics.has(p.from)) {
-      console.error(`ERROR: Cross-discipline prerequisite from unknown topic "${p.from}"`);
-      errors++;
-    }
-  } else if (!topicIds.has(p.from)) {
+  if (p.from.includes(":")) {
+    // Cross-discipline edges should be in cross-discipline-edges.json, not inline
+    console.error(`ERROR: Stale inline cross-discipline edge: "${p.from}" → "${p.to}". Move to cross-discipline-edges.json.`);
+    errors++;
+    continue;
+  }
+  if (!topicIds.has(p.from)) {
     console.error(`ERROR: Prerequisite from unknown topic "${p.from}"`);
     errors++;
   }

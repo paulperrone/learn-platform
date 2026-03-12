@@ -36,6 +36,12 @@ validate-content:
             echo ""
         fi
     done
+    # Cross-discipline edge validation (unified DAG, granularity heuristics)
+    if [ -f "$CONTENT_DIR/cross-discipline-edges.json" ]; then
+        echo "--- Validating cross-discipline edges ---"
+        npx tsx tools/validate-cross-discipline.ts || exit_code=1
+        echo ""
+    fi
     exit $exit_code
 
 # Full validation

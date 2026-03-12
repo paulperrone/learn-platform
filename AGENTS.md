@@ -33,8 +33,9 @@ tools/               # Content pipeline (validate, import, visualize)
 
 # Content lives in a separate repo: paulperrone/learn-content (sibling directory)
 # ../learn-content/
+#   cross-discipline-edges.json  # Cross-discipline prerequisite edges (centralized)
 #   <discipline>/     # Knowledge graph + problem banks (JSON, source of truth)
-#     graph.json       # Topics, prerequisites, encompassings, collections
+#     graph.json       # Topics, prerequisites (intra-discipline only), encompassings, collections
 #     problems/        # Problem banks (15 per topic)
 #     examples/        # Worked examples (2 per topic)
 #     collections/     # Collection definitions (grade bands, strands, tracks)
@@ -145,9 +146,12 @@ When creating content (graphs, problems, worked examples) for a discipline, foll
 
 ### Cross-Discipline Prerequisite Rules
 
-- Cross-discipline edges are valid and encouraged where genuine dependencies exist
-- Examples: basic reading comprehension (`ela`) → math word problems (`math`), algebra (`math`) → physics (`science`)
+- Cross-discipline edges live in `../learn-content/cross-discipline-edges.json` (NOT inline in per-discipline `graph.json` files)
+- Each edge requires a `rationale` field explaining why this specific edge exists
+- Both `from` and `to` use `discipline:topic-id` format (e.g., `"from": "ela:key-details", "to": "math:word-problems"`)
 - Cross-discipline edges should almost always be `type: "required"` — if the dependency is soft enough to be `recommended`, it probably shouldn't be a cross-discipline edge at all
+- **Granularity rules:** The `from` topic should be the most specific topic that provides the prerequisite skill. The `to` topic should be the most general topic that genuinely requires the skill. Don't skip levels in either direction.
+- `just validate-content` runs unified DAG cycle detection across all disciplines and checks edge granularity
 - The diagnostic should eventually place students across the full connected graph, not just within one discipline
 
 ---
