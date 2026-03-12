@@ -82,7 +82,8 @@ just deploy-preview   # Deploy everything to preview
 - Content service uses `ContentBucket` abstraction — R2 in production, filesystem adapter in simulations/local dev
 - **Content generation happens in Claude Code sessions** (not via OpenRouter pipelines). Claude Code is the workhorse for graph design, problem/example generation, encompassing analysis, and content review. OpenRouter is only for in-app runtime LLM features (tutoring, grading, self-explanation evaluation).
 - Topics belong directly to disciplines; disciplines define progression models (`mastery-gated`, `context-layered`, `flexible`)
-- Collections are packaging views (grade bands, strands, exam-prep tracks) — they don't own topics
+- Math graph: 705 topics across 18 strands (K-8, MA-caliber density). Prereq density 1.42/topic, encompassing density 1.01/topic. See `docs/expansion-map.md` for MA cross-reference.
+- Collections are packaging views (grade bands, strands, exam-prep tracks) — they don't own topics. Math has 3 grade-band (K-2, 3-5, 6-8) + 18 strand collections.
 - Prerequisite edges have types: `required` (hard gate), `recommended` (context), `enriching` (suggestion)
 - Content has depth (`survey`, `contextual`, `analytical`, `synthesis`) and presentation (`primary`, `intermediate`, `standard`, `advanced`) dimensions. See `docs/content-system.md`.
 - FSRS state per user per topic; FIRe credit via virtual FSRS reviews for encompassing relationships
