@@ -488,8 +488,8 @@
       "mastery_growth_rate": 0.01,
       "difficulty_convergence_by": 200
     },
-    "multi-all-subjects": {
-      "description": "Age 13, all 4 subjects, tests full cross-discipline integration and session diversity",
+    "multi-all-disciplines": {
+      "description": "Age 13, all 3 disciplines, tests full cross-discipline integration and session diversity",
       "behavioral_signature": "Diagnostics on all 4 subjects. Sessions draw from math, ELA, and history. Should show diverse topic selection across subjects. Cross-discipline prerequisites respected. Mastery spread across all subjects rather than deep in one. Standard presentation.",
       "min_final_mastery": 0.20,
       "max_final_mastery": 0.55,

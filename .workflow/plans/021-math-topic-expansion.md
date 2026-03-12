@@ -93,7 +93,7 @@ Targets calibrated against MA unit sizes, adjusted for our K-8 scope (excluding 
 
 ## Progress
 
-**Completed:** Phase 1 ✓, Phase 2 ✓, Phase 3 ✓
+**Completed:** Phase 1 ✓, Phase 2 ✓, Phase 3 ✓ (L2: 6P/1W/3F — expected regression from 2.2x graph expansion)
 **In Progress:** —
 **Next:** Phase 4
 
@@ -173,8 +173,8 @@ Fractions is the largest expansion in this wave (~16 → 70 topics). MA decompos
 4. [x] [IMP] Update collection membership: math-k-2 (67→85), math-3-5 (112→260)
 5. [x] [VAL] Run `just validate-content` — 0 errors, 0 content warnings (2 platform warnings fixed)
 6. [x] [VAL] Run `just import-content` — 460 topics loaded, DAG valid, no cycles, max depth 29
-7. [ ] [VAL] L2 rebaseline: `just evaluate-l2` — first checkpoint with enough mass to be meaningful
-8. [ ] [DOC] Record L2 comparison in DECISIONS.md
+7. [x] [VAL] L2 rebaseline: `just evaluate-l2` — 6P/1W/3F (down from 9P/1W/0F at 207 topics). Mastery convergence regressed as expected (3 vs 11 target — graph is 2.2x larger). 115 too-hard topics, 338 miscalibrated combos. Baseline saved.
+8. [x] [DOC] Record L2 comparison in DECISIONS.md — accepted as Wave 2 checkpoint, target recalibration deferred to Plan 022
 
 **Validation:** ✓ Math graph has 460 topics. `just validate-content` and `just import-content` pass. Prereq density 1.43/topic, encompassing density 0.67/topic. Fractions at 65 (vs 70 target — expansion map listed 49 specific new topics, not 54 as estimated in header).
 

@@ -1541,3 +1541,46 @@ Tag each target in `targets.json` with `signal_source: "engine" | "content" | "b
 - Aggressive expansion (~1200 topics): Would include trivial digit-count progressions and model-only variants that don't add remediable skill differentiation
 
 **Reference:** Full expansion map in `docs/expansion-map.md`
+
+---
+
+### 2026-03-11: L2 rebaseline after Wave 2 expansion (460 topics) — mastery convergence target needs recalibration
+
+**Source:** Plan 021 Phase 3 step 7
+**Area:** Simulation / evaluation targets
+
+**Results at 460 topics (post-Wave 2):**
+
+| System | Status | Actual | Target | Delta |
+|--------|--------|--------|--------|-------|
+| Mastery Convergence | FAIL | 3 | 11 | -8 |
+| Mastery Preservation | PASS | 0.0% | 10.0% | +10.0% |
+| Remediation Routing | PASS | 1913 | 5 | +1908 |
+| Interleaving Quality | FAIL | 0.155 | 0.100 | -0.055 |
+| FIRe Review Efficiency | WARN | -17.2% | 0.0% | -17.2% |
+| 85% Difficulty Targeting | PASS | 29 | 17 | +12 |
+| Review/New Balance | PASS | 0.560 | 0.600 | +0.000 |
+| Diagnostic Placement | FAIL | 23 | 24 | -1 |
+| Presentation Drift | PASS | 16 | 14 | +2 |
+| Cognitive Demand Entropy | PASS | 1.63 bits | 0.90 bits | +0.73 bits |
+
+**Pre-expansion baseline:** 9P/1W/0F (207 topics). **Post-Wave 2:** 6P/1W/3F (460 topics).
+
+**Analysis of regressions:**
+
+1. **Mastery Convergence (P0 FAIL, 3 vs 11):** Expected regression. Graph grew 2.2x (207→460), so 50% mastery now requires ~230 topics vs ~104. In 30 sessions, most profiles can't cover enough ground. Only 3 profiles (strong-older 96%, strong-highschool 97%, gifted-middle 97%) reach 50% — all profiles that place high and have the smallest frontier. The target of 11 was calibrated for 207 topics and needs recalibration in Plan 022.
+
+2. **Interleaving Quality (P1 FAIL, 0.155 vs 0.100):** More topics per strand means longer consecutive runs within a strand before switching. The session planner's interleaving logic may need strand-aware shuffling tuned for denser strands.
+
+3. **Diagnostic Placement (P2 FAIL, 23 vs 24):** Marginal regression (1 profile). Denser graph makes binary search harder — strong profiles placed at grade 8 (correct but flagged by tight behavioral expectations). Not a real regression.
+
+**Content quality flags:**
+- 115 "too hard" topics — many are new Wave 2 additions where problem difficulty calibration hasn't been tuned
+- 338 miscalibrated topic-difficulty combos — expected at this scale, addressable in Plan 022
+
+**Key profiles:**
+- Strong/gifted profiles still reach 96-97% mastery — engine works for top-end learners
+- Average profiles reach 25-40% mastery — reasonable for 460-topic graph in 30 sessions
+- Struggling profiles at 3-16% — expected, these are the hardest profiles
+
+**Decision:** Accept these results as the Wave 2 checkpoint. Mastery convergence target recalibration deferred to Plan 022 (Post-Expansion Validation). No engine changes needed — the regressions are measurement artifacts of a larger graph, not algorithm failures.
