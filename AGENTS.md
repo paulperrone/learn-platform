@@ -50,10 +50,13 @@ just dev              # Start API (8787) + frontend (5173) concurrently
 just test             # Run tests (Workers pool + miniflare D1) — ALWAYS use this, never `pnpm vitest run`
 just typecheck        # TypeCheck all packages
 just validate         # Full validation (typecheck + content)
-just validate-content # Validate content only (graph DAG + problems)
+just validate-content # Validate content only (graph DAG + problems + cross-discipline edges)
 just db-generate      # Generate Drizzle migration
 just db-migrate       # Apply migration to local D1
 just import-content   # Import ../learn-content/ → local D1
+just deploy           # Deploy API + web + content to production
+just deploy-content   # Deploy content only to production D1
+just deploy-preview   # Deploy everything to preview
 ```
 
 > **IMPORTANT:** Never run `pnpm vitest run` or `npx vitest` directly. Workers-pool tests import `cloudflare:test` which only resolves through the `@cloudflare/vitest-pool-workers` runner configured in `packages/api/vitest.config.ts`. Use `just test` (or `pnpm test`) which invokes the correct runner. Running vitest directly will show 15+ false failures.

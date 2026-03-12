@@ -96,6 +96,7 @@ Targets calibrated against MA unit sizes, adjusted for our K-8 scope (excluding 
 **Completed:** Phase 1 ✓, Phase 2 ✓, Phase 3 ✓ (L2: 6P/1W/3F — expected regression from 2.2x graph expansion)
 **In Progress:** —
 **Next:** Phase 4
+**Status:** ⏸ PAUSED — Waiting on Plan 023 (R2 Content Architecture). Content generation resumes after R2 migration so all new content is deployed via R2 bundles. No changes needed to learn-content JSON format — bundles are a deploy artifact.
 
 ---
 
@@ -147,7 +148,7 @@ Targets calibrated against MA unit sizes, adjusted for our K-8 scope (excluding 
 
 These are the foundational K-3 strands. Starting here tests the expansion workflow and gives immediate signal on content generation quality at the atomic skill level.
 
-1. [x] [IMP] Split topics and update `content/math/graph.json` for Wave 1 strands per expansion map:
+1. [x] [IMP] Split topics and update `../learn-content/math/graph.json` for Wave 1 strands per expansion map:
    - Added 87 new topics (294 total), rewired 7 coarse edges, added 122 new prereq edges (436 total), 15 new encompassing edges (278 total)
 2. [x] [IMP] Generate problems for new topics: 1,305 problems (15 per topic × 87 topics)
 3. [x] [IMP] Generate worked examples for new topics: 174 examples (2 per topic × 87 topics)
@@ -165,7 +166,7 @@ These are the foundational K-3 strands. Starting here tests the expansion workfl
 
 Fractions is the largest expansion in this wave (~16 → 70 topics). MA decomposes fractions into 4+ separate units with individual topics for "adding fractions with like denominators using models" vs "adding fractions with unlike denominators" etc. Our current graph lumps many of these into single topics.
 
-1. [x] [IMP] Split topics and update `content/math/graph.json` for Wave 2 strands per expansion map:
+1. [x] [IMP] Split topics and update `../learn-content/math/graph.json` for Wave 2 strands per expansion map:
    - Added 166 new topics (460 total), 224 new prereq edges (660 total), 31 new encompassing edges (309 total)
    - number-base: 19→55, fractions: 16→65, algebra-thinking: 6→25, measurement-data: 9→35, geometry: 14→50
 2. [x] [IMP] Generate problems for new topics: 2,490 problems (15 per topic × 166 topics)
@@ -185,7 +186,7 @@ Fractions is the largest expansion in this wave (~16 → 70 topics). MA decompos
 
 This is the largest wave — 8 strands, ~235 new topics. Expressions-equations and linear-functions have the most hidden prerequisite chains. The new exponents-radicals strand fills a gap that MA covers extensively but we currently don't break out.
 
-1. [ ] [IMP] Split topics and update `content/math/graph.json` for Wave 3 strands per expansion map
+1. [ ] [IMP] Split topics and update `../learn-content/math/graph.json` for Wave 3 strands per expansion map
 2. [ ] [IMP] Create new exponents-radicals strand topics (from expansion map — ~35 topics)
 3. [ ] [IMP] Generate problems for new topics: 15 per topic
 4. [ ] [IMP] Generate worked examples for new topics: 2 per topic
@@ -205,7 +206,7 @@ This is the largest wave — 8 strands, ~235 new topics. Expressions-equations a
 At the strand-expansion level, we add topics within strands. This phase adds the connective tissue: cross-strand prerequisites (e.g., "multiply fractions" requiring "multiply whole numbers"), capstone encompassings, and any gap topics identified during Waves 1-3 that were deferred.
 
 1. [ ] [RSH] Audit cross-strand prerequisites: For each strand pair, identify edges where an atomic skill in one strand is a genuine prerequisite for a skill in another
-2. [ ] [IMP] Add cross-strand prerequisite edges to `content/math/graph.json`
+2. [ ] [IMP] Add cross-strand prerequisite edges to `../learn-content/math/graph.json`
 3. [ ] [RSH] Audit capstone encompassing coverage: Identify mature strand endpoints that should encompass component skills
 4. [ ] [IMP] Add capstone encompassing edges
 5. [ ] [IMP] Add gap-fill topics from expansion map deferred list (topics that didn't fit a single strand wave)
