@@ -212,15 +212,51 @@ This is a measurement confound, not necessarily evidence that FIRe credit is har
 
 ---
 
-## Recommended Evolution Path
+## Implemented Decision (Plan 022 Phase 4)
 
-### Near Term (current plan phases)
-**Test Approach 3 (priority ordering only)** as an alternative evaluation. If parent-first ordering without queue elimination outperforms set-cover, the set-cover is the bottleneck, not FIRe credit itself. This is a ~5 line code change in `compressReviews()`.
+**Date:** 2026-03-12
+**Change:** Switched from Approach 2 (unconditional set-cover) to Approach 4 (retrieval-dependent credit).
 
-### Medium Term (next plan)
-**Implement Approach 4 (retrieval-dependent credit)** — only eliminate child reviews when post-credit R > 0.85. Small code change, adds a principled safety valve. Also: isolate the FIRe credit measurement by testing credit-only vs ordering-only vs both.
+### Decision Data
 
-### Long Term (content maturity)
+Phase 2.7 isolation diagnostics revealed the root cause of negative FIRe efficiency:
+
+| Profile | Credit Effect | Ordering Effect | Combined |
+|---------|--------------|-----------------|----------|
+| average-older | -37.8% | 0% | -37.8% |
+| misconception-fractions | -7.9% | 0% | -1.8% |
+| fast-learner | -30.9% | -34.0% | -35.3% |
+
+**Root cause:** Unconditional queue elimination removed children that genuinely needed review. The set-cover algorithm prioritized parent topics (often harder), delaying child reviews that would have led to faster mastery.
+
+**FIRe efficiency was flat at -16.9% across all evaluation levels (L2-L5).** Note: the efficiency metric always runs at 15 sessions regardless of evaluation level — the identical values across levels reflect the fixed measurement window, not a genuine trend analysis.
+
+### Implementation
+
+In `compressReviews()`, added a retrievability gate (R > 0.85) before eliminating covered children from the review queue. Children with R ≤ 0.85 stay in the queue — they need explicit review regardless of implicit credit from parent practice. Virtual credit (`applyFIReCredit()`) is unchanged.
+
+### Results
+
+| Metric | Before (Approach 2) | After (Approach 4) | Change |
+|--------|---------------------|-------------------|--------|
+| FIRe efficiency (L2) | -16.9% | -12.7% | +4.2pp |
+| fast-learner efficiency | -35.3% | +6.5% | +41.8pp |
+| Review/New Balance (L3) | 0.694 PASS | 0.694 PASS | same |
+| Mastery convergence | 3 FAIL | 3 FAIL | same |
+| L2 overall | 6P/1W/3F | 5P/2W/3F | pres. drift noise |
+| L3 overall | 5P/2W/3F | 6P/1W/3F | improved |
+
+The fast-learner profile showed the largest improvement because unconditional queue elimination was most harmful for fast-progressing students — it removed children they could have quickly mastered.
+
+---
+
+## Evolution Path
+
+### Completed
+- ~~Approach 3 (priority ordering only)~~ — tested in Phase 2.7 isolation (Mode C). Neutral for average/misconception profiles, negative for fast-learner.
+- ~~Approach 4 (retrieval-dependent credit)~~ — **implemented** in Plan 022 Phase 4. R > 0.85 gate on queue elimination.
+
+### Next (content maturity)
 **Move toward Approach 10 (content-aware dynamic credit)** as content matures. During problem authoring in Claude Code sessions, tag problems with which prerequisite skills they exercise and at what intensity. This is the most faithful implementation of Ausubel's finding.
 
 ### Eventual (real users)
@@ -230,12 +266,12 @@ This is a measurement confound, not necessarily evidence that FIRe credit is har
 
 ## Key Takeaways
 
-1. **FIRe's core insight is review elimination, not just credit.** The learning science says implicit practice CAN replace explicit review. MA proved this at scale. Our system does eliminate reviews via set-cover, but the elimination may be counterproductive at small graph scales.
+1. **Unconditional queue elimination hurts at moderate graph density.** MA's 3,688 topics with dense encompassings make unconditional elimination effective. Our 705 topics with ~1.01 encompassing edges/topic don't have enough density for aggressive elimination.
 
-2. **Our FSRS adaptation is reasonable but unvalidated.** Weight-interpolated virtual FSRS reviews are a principled approximation of MA's half-life extension, but "80% of a Good rating" has no empirical basis.
+2. **Retrieval-dependent gating is the right middle ground.** Only skip child reviews when R > 0.85 (child is well-retained). This preserves FIRe's core insight while preventing the harm from skipping needed reviews.
 
-3. **Graph density matters enormously.** MA's 3,688 topics with dense encompassings make set-cover highly effective. Our 302 topics with moderate density (1.77 edges/topic in math-foundations) may not have enough structure for set-cover to outperform simple ordering.
+3. **The FIRe efficiency metric has a measurement limitation.** It always runs at 15 sessions regardless of evaluation level. A longer-horizon version (90+ sessions) would better capture stability compounding effects. The flat -16.9% across levels was a measurement artifact, not evidence that FIRe never improves.
 
-4. **Measurement is hard.** The paired simulation (with/without encompassing) tests the ENTIRE encompassing system (credit + ordering + queue management), not just FIRe credit. Isolating the credit mechanism requires more targeted experiments.
+4. **Virtual credit is theoretically sound but empirically marginal.** The weight-interpolated virtual FSRS reviews are a reasonable approximation, but at current graph density, the credit mechanism is neutral-to-slightly-negative. It should improve as encompassing density increases.
 
-5. **Short horizons don't tell the full story.** FIRe's stability compounding should produce larger benefits at 90+ sessions (L3) where accumulated virtual stability boosts prevent child topics from becoming due. The -25% at 15 sessions may flip positive at longer horizons.
+5. **Graph density matters enormously.** Target 1.5-2.0 encompassing edges/topic for FIRe to become consistently positive. Current math graph: ~1.01 edges/topic.

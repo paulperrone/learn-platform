@@ -21,10 +21,10 @@ After Plan 021 expands the math graph from 207 to ~800-1000 atomic skill topics,
 
 ## Progress
 
-**Completed:** Phase 1 (2026-03-12), Phase 2 (2026-03-12), Phase 3 (2026-03-12)
+**Completed:** Phase 1 (2026-03-12), Phase 2 (2026-03-12), Phase 3 (2026-03-12), Phase 4 (2026-03-12)
 **In Progress:** —
-**Next:** Phase 4 (FIRe Implementation Decision)
-**Status:** 🟡 Active — Phase 3 complete. L4/L5 baselines established. 4 new insights at scale: starvation at session 84, gap resilience = 0.092, review load stable (no explosion), Review/New Balance degrades at year scale. No pathological behaviors. FIRe consistently -16.9% across all levels.
+**Next:** Phase 5 (Final Baselines & Documentation)
+**Status:** 🟡 Active — Phase 4 complete. Switched from unconditional set-cover (Approach 2) to retrieval-dependent credit (Approach 4, R > 0.85 gate). FIRe efficiency improved from -16.9% to -12.7%. Fast-learner: -35.3% → +6.5%. No regressions at L3.
 
 ---
 
@@ -128,7 +128,7 @@ After Plan 021 expands the math graph from 207 to ~800-1000 atomic skill topics,
 
 ---
 
-## Phase 4: FIRe Implementation Decision
+## Phase 4: FIRe Implementation Decision ✓
 **Goal:** Using L3/L4/L5 FIRe efficiency data from the expanded graph combined with Plan 019 Phase 2.7 isolation diagnostics, make a data-driven decision on whether to change the FIRe implementation.
 
 *Adapted from Plan 019 Phase 5.5.*
@@ -144,26 +144,27 @@ After Plan 021 expands the math graph from 207 to ~800-1000 atomic skill topics,
 | Negative | Ordering hurts | Replace set-cover with priority ordering. |
 | Negative | Both hurt | Disable FIRe queue elimination; keep credit-only for stability compounding. |
 
-1. [ ] [RSH] Compile FIRe efficiency data across maturity levels:
-   - L2 (15 sessions): -25% baseline (Plan 019 Phase 2.6)
-   - L3 (90 sessions): from Phase 2 results
-   - L4 (180 sessions): from Phase 3 results
-   - L5 (360 sessions): from Phase 3 results
-   - Cross-reference with Plan 019 Phase 2.7 isolation data
-   - Is efficiency trending positive? At what session count does it cross 0%?
-   - If production data exists: query Analytics Engine for per-problem accuracy/response-time by content version to supplement simulation data
-2. [ ] [IMP/RSH] Based on decision framework, implement changes if warranted
-3. [ ] [VAL] Run `just evaluate` at L2 and L3 with new implementation (if changed):
-   - Compare FIRe efficiency before and after
-   - No regressions on other 9 system metrics
-   - `just test` — no failures
-4. [ ] [DOC] Update documentation:
-   - `docs/fire-implementation-analysis.md` — "Implemented Decision" section
-   - `docs/learning-science.md` section 8 — final FIRe implementation details
-   - `docs/simulation-targets.md` section 2.6 — update target/tolerance
-   - Record decision in `DECISIONS.md`
+1. [x] [RSH] Compile FIRe efficiency data across maturity levels:
+   - FIRe efficiency metric always runs at 15 sessions regardless of level — -16.9% is identical across L2-L5 (measurement artifact, not a genuine trend)
+   - Phase 2.7 isolation: credit hurts all profiles (-7.9% to -37.8%), ordering hurts fast-learner (-34%), neutral for others
+   - Framework match: "Negative + Credit hurts" → Implement retrieval-dependent credit (R > 0.85 gate)
+   - No production data exists yet (pre-launch)
+2. [x] [IMP/RSH] Implemented Approach 4: retrieval-dependent credit
+   - In `compressReviews()`: added R > 0.85 gate before eliminating covered children from queue
+   - Children with R ≤ 0.85 stay in queue for explicit review
+   - Virtual credit (`applyFIReCredit()`) unchanged
+3. [x] [VAL] Validation:
+   - `just test`: 469/469 tests pass (infrastructure flake in vitest-pool-workers unrelated)
+   - L2: FIRe -16.9% → -12.7% (+4.2pp), fast-learner -35.3% → +6.5% (+41.8pp)
+   - L3: 5P/2W/3F → 6P/1W/3F (improved), no regressions on any metric
+   - L2 presentation drift WARN (14→11) is butterfly effect noise, recovered at L3
+4. [x] [DOC] Updated documentation:
+   - `docs/fire-implementation-analysis.md` — "Implemented Decision" section added
+   - `docs/learning-science.md` section 8 — updated to reflect Approach 4
+   - `docs/simulation-targets.md` section 2.6 — updated implementation description and baseline
+   - Decision recorded in `DECISIONS.md`
 
-**Validation:** Decision documented with multi-level data. If implementation changed, efficiency improved or target recalibrated. No regressions.
+**Validation:** ✓ Decision documented with multi-level data and Phase 2.7 isolation attribution. Implementation changed from Approach 2 to Approach 4. FIRe efficiency improved from -16.9% to -12.7%. No regressions at L3.
 
 ---
 

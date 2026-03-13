@@ -1040,3 +1040,21 @@ The mastery convergence metric ("≥50% of non-struggling profiles reach 50% tot
 A key concern before running L4/L5 was whether the FSRS review queue would grow unboundedly at scale (180+ sessions). It does not. Reviews/session stays at 4.1-4.3 from session 60 to session 360 on the 705-topic math graph. New topic starvation (first session with 5+ consecutive zero-new-topic sessions) occurs at session 84 on average for the 7 key profiles. After that, profiles are in pure FSRS review mode, but the queue size stabilizes. This confirms FSRS scheduling equilibrium is reached and maintained.
 
 **Context:** This is the primary insight from L4/L5 that was invisible at L3.
+
+---
+
+### 2026-03-12: FIRe efficiency metric always runs at 15 sessions — identical values across levels are a measurement artifact
+
+**Source:** User session — Plan 022 Phase 4
+**Area:** Simulation / FIRe evaluation
+
+The `computeFIReEfficiency()` function hardcodes `sessionCount = 15` regardless of whether the evaluation runs at L2, L3, L4, or L5. The -16.9% value reported at all levels was NOT evidence that FIRe doesn't improve at longer horizons — it was the same 15-session measurement repeated. Any trend analysis of FIRe across maturity levels requires modifying the metric to run at the level's session count.
+
+---
+
+### 2026-03-12: Unconditional set-cover queue elimination hurts more than it helps at current encompassing density
+
+**Source:** User session — Plan 022 Phase 4
+**Area:** FIRe / review compression
+
+Phase 2.7 isolation showed that removing children from the review queue unconditionally (based on set-cover coverage) hurts mastery rates because children with low retrievability need explicit review. The R > 0.85 gate in Approach 4 fixes this: only skip children whose memory is genuinely strong enough that skipping is safe. Fast-learner profile went from -35.3% to +6.5% FIRe efficiency. The key insight is that queue elimination effectiveness scales with encompassing density — at ~1.01 edges/topic, aggressive elimination is counterproductive.

@@ -1,6 +1,6 @@
 {
   "level": "l2",
-  "generatedAt": "2026-03-12T23:27:40.871Z",
+  "generatedAt": "2026-03-13T00:26:47.638Z",
   "sessionCount": 30,
   "seed": 42,
   "systems": {
@@ -17,15 +17,15 @@
       "status": "PASS"
     },
     "review_new_balance": {
-      "actual": 0.5725746545832714,
+      "actual": 0.5687881949619914,
       "status": "PASS"
     },
     "interleaving": {
-      "actual": 0.16468166446110866,
+      "actual": 0.15522343888724474,
       "status": "FAIL"
     },
     "fire_compression": {
-      "actual": -0.1690325378697005,
+      "actual": -0.12680096548385042,
       "status": "WARN"
     },
     "remediation_routing": {
@@ -33,15 +33,15 @@
       "status": "PASS"
     },
     "presentation_drift": {
-      "actual": 14,
-      "status": "PASS"
+      "actual": 11,
+      "status": "WARN"
     },
     "diagnostic_placement": {
       "actual": 23,
       "status": "FAIL"
     },
     "cognitive_demand_entropy": {
-      "actual": 1.5903840741454311,
+      "actual": 1.6287452030819887,
       "status": "PASS"
     }
   },
@@ -49,11 +49,11 @@
   "behavioralMatchCount": 5,
   "l3Metrics": {
     "masteryPlateauSession": 7,
-    "masteryPlateauPercent": 0.327,
-    "reviewsPerSessionFinalThird": 4.8,
-    "reviewsPerSessionFirstThird": 3.2,
+    "masteryPlateauPercent": 0.329,
+    "reviewsPerSessionFinalThird": 4.9,
+    "reviewsPerSessionFirstThird": 3.1,
     "reviewScalingTrend": "increasing",
-    "difficultyTargetingStabilityFinalThird": 0.825,
+    "difficultyTargetingStabilityFinalThird": 0.821,
     "perProfile": {
       "weekend-warrior": {
         "finalMastery": 0.22695035460992907,
@@ -88,12 +88,12 @@
         "finalAccuracy": 0.919
       },
       "strong-highschool": {
-        "finalMastery": 0.8822695035460993,
+        "finalMastery": 0.8879432624113475,
         "plateauSession": 6,
         "reviewTrend": "stable",
-        "reviewsFirstThird": 2.4,
+        "reviewsFirstThird": 2.6,
         "reviewsFinalThird": 2.6,
-        "finalAccuracy": 0.936
+        "finalAccuracy": 0.944
       },
       "returning-after-gap": {
         "finalMastery": 0.23546099290780143,
@@ -136,12 +136,12 @@
         "finalAccuracy": 0.931
       },
       "multi-history-focus": {
-        "finalMastery": 0.6105263157894737,
+        "finalMastery": 0.6526315789473685,
         "plateauSession": 6,
-        "reviewTrend": "increasing",
+        "reviewTrend": "stable",
         "reviewsFirstThird": 4.9,
-        "reviewsFinalThird": 5.8,
-        "finalAccuracy": 0.739
+        "reviewsFinalThird": 5.4,
+        "finalAccuracy": 0.734
       },
       "multi-average": {
         "finalMastery": 0.18961038961038962,
@@ -168,11 +168,11 @@
         "finalAccuracy": 0.931
       },
       "irregular-attendance": {
-        "finalMastery": 0.22411347517730495,
+        "finalMastery": 0.23829787234042554,
         "plateauSession": 6,
         "reviewTrend": "increasing",
         "reviewsFirstThird": 3,
-        "reviewsFinalThird": 4.3,
+        "reviewsFinalThird": 6.2,
         "finalAccuracy": 0.724
       },
       "gifted-middle": {
@@ -192,20 +192,20 @@
         "finalAccuracy": 0.813
       },
       "fast-learner": {
-        "finalMastery": 0.14326241134751774,
+        "finalMastery": 0.14184397163120568,
         "plateauSession": 6,
-        "reviewTrend": "stable",
-        "reviewsFirstThird": 5.6,
-        "reviewsFinalThird": 5.6,
-        "finalAccuracy": 0.84
+        "reviewTrend": "increasing",
+        "reviewsFirstThird": 3.9,
+        "reviewsFinalThird": 6.9,
+        "finalAccuracy": 0.828
       },
       "fading-motivation": {
-        "finalMastery": 0.1673758865248227,
+        "finalMastery": 0.16170212765957448,
         "plateauSession": 6,
         "reviewTrend": "increasing",
         "reviewsFirstThird": 3.4,
-        "reviewsFinalThird": 5.6,
-        "finalAccuracy": 0.863
+        "reviewsFinalThird": 4.6,
+        "finalAccuracy": 0.766
       },
       "completion-driven": {
         "finalMastery": 0.24397163120567375,

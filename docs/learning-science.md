@@ -194,33 +194,34 @@ For the full primary source, see `~/Desktop/the-math-academy-way.pdf` (Skycak, 2
 
 **Two distinct mechanisms (often conflated):**
 
-1. **Review elimination (scheduling):** Identify due reviews. Find the smallest set of parent topics whose encompassings cover all due children. Only review parents; children are removed from the review queue. This is the "domino toppling" metaphor — one push covers many. Implemented in `compressReviews()` via greedy set-cover.
+1. **Review elimination (scheduling):** Identify due reviews. Find the smallest set of parent topics whose encompassings cover all due children. Only review parents; children with high retrievability (R > 0.85) are removed from the review queue. Children with low R stay — they need explicit review. Implemented in `compressReviews()` via greedy set-cover with retrievability gate (Approach 4: retrieval-dependent credit).
 
 2. **Credit propagation (SRS state):** After reviewing a parent, update encompassed children's SRS state so future scheduling reflects the implicit practice. Implemented in `applyFIReCredit()` via virtual FSRS reviews with weight-interpolated stability increases.
 
 These mechanisms interact: set-cover changes which topics are reviewed, and credit propagation changes children's future scheduling. Removing encompassing edges disables BOTH simultaneously, making it hard to isolate each mechanism's contribution.
 
-**Our implementation details:**
+**Our implementation details (Approach 4 — retrieval-dependent credit, since Plan 022 Phase 4):**
 - Multi-layer flow: credit travels up to 3 hops, pruned at 0.05 cumulative weight.
 - Partial encompassings: only a fraction of credit flows along partial edges.
+- **Retrieval gate for queue elimination:** Children are only removed from the review queue if their current retrievability > 0.85 (RETRIEVAL_GATE constant). Low-R children stay in the queue and get explicit review. This addresses Phase 2.7's finding that unconditional elimination hurt mastery rates.
 - **No upward penalty:** An earlier design penalized parent topics when children failed, but this has no research basis in the FIRe model and empirically produced net negative compression for struggling profiles. Prerequisite-based remediation routing handles the "student can't do prerequisites" case instead.
-- Freshness gate: if the child topic was recently reviewed (retrievability > 0.9), implicit credit is skipped — the memory is already strong enough that additional reinforcement provides negligible benefit.
+- Freshness gate for credit: if the child topic was recently reviewed (retrievability > 0.9), implicit credit is skipped — the memory is already strong enough that additional reinforcement provides negligible benefit.
 - Virtual FSRS reviews: `repeat(card, Rating.Good)` with weight-interpolated stability increase. Updates `stability` and `due` but NOT `lastReview`, `reps`, `difficulty`, `state`, or `lapses`.
-- Previous approach (due-date extension without FSRS state update) was abandoned because FSRS interpreted the longer gap as memory decay.
+- Previous approaches: unconditional set-cover (Approach 2) abandoned in Plan 022 Phase 4 due to -16.9% efficiency. Due-date extension without FSRS state update (Approach 7) abandoned earlier because FSRS interpreted the longer gap as memory decay.
 
-**Empirical findings (simulation, 2026-03-10):**
-- FIRe efficiency (reviews per mastered topic) at 15 sessions: **-25% average** — meaning the system achieves FEWER masteries per review with encompassing edges than without.
-- Root cause: removing encompassing edges changes both credit propagation AND review ordering (set-cover falls back to most-overdue). The simpler most-overdue ordering produces more masteries at short horizons, suggesting set-cover may be counterproductive at small graph scales.
-- Expected to improve at longer horizons (90+ sessions) where stability compounding matters.
-- Graph density is a critical factor: our 302 topics at 1.77 edges/topic may not have enough structure for set-cover to outperform simple ordering. MA's 3,688 topics operate in a fundamentally different regime.
+**Empirical findings (simulation):**
+- **Approach 2 (unconditional set-cover, pre-022):** -16.9% average efficiency at 15 sessions. Phase 2.7 isolation: credit hurt all profiles (-7.9% to -37.8%), ordering hurt fast-learner (-34%).
+- **Approach 4 (retrieval-dependent, post-022):** -12.7% average (+4.2pp improvement). Fast-learner profile: -35.3% → +6.5% (+41.8pp). No regressions on other metrics at L3.
+- Graph density is a critical factor: our 705 topics at ~1.01 encompassing edges/topic don't have enough density for aggressive elimination. MA's 3,688 topics operate in a fundamentally different regime.
+- The FIRe efficiency metric always runs at 15 sessions — longer-horizon measurement would better capture stability compounding.
 
-**Implementation evolution path (from analysis):**
-1. Near term: Test priority ordering without queue elimination (may outperform set-cover at short horizons)
-2. Medium term: Retrieval-dependent credit — only eliminate child reviews when post-credit R > 0.85
-3. Long term: Content-aware dynamic credit — tag problems with exercised prerequisite skills
+**Implementation evolution path:**
+1. ~~Priority ordering without queue elimination~~ — tested, neutral-to-negative
+2. ~~Retrieval-dependent credit (R > 0.85 gate)~~ — **implemented** (Plan 022 Phase 4)
+3. Next: Content-aware dynamic credit — tag problems with exercised prerequisite skills
 4. Eventual: Adaptive weight learning from real user performance data
 
-**Platform implication:** FIRe's value is proportional to encompassing density and session count. At our current scale (302 topics, 15-session evaluation), the benefit is not yet measurable. The architecture is correct for growth — as content expands and simulations run longer, FIRe should show increasing returns. The most faithful implementation would credit only the specific prerequisite skills exercised by each problem, not blanket topic-level credit.
+**Platform implication:** FIRe's value is proportional to encompassing density. At our current scale (705 topics, ~1.01 edges/topic), the retrieval-gated approach minimizes harm while preserving the architecture for growth. As encompassing density increases toward 1.5-2.0 edges/topic, FIRe efficiency should become consistently positive.
 
 ---
 

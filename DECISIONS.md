@@ -1726,3 +1726,31 @@ Tag each target in `targets.json` with `signal_source: "engine" | "content" | "b
 **No pathological behaviors:** Review queue doesn't explode, mastery preservation holds at 0%, no scheduling anomalies at 360 sessions.
 
 **Next:** Phase 4 (FIRe Implementation Decision) with L4/L5 data now available.
+
+---
+
+## 2026-03-12: FIRe Implementation — Switch to Retrieval-Dependent Credit (Approach 4)
+
+**Source:** Plan 022 Phase 4
+
+**Decision:** Replace unconditional set-cover queue elimination (Approach 2) with retrieval-dependent credit (Approach 4). In `compressReviews()`, only eliminate covered children from the review queue when their retrievability R > 0.85. Children with R ≤ 0.85 stay in the queue for explicit review.
+
+**Data:**
+
+Phase 2.7 isolation diagnostics (15 sessions, 3 profiles):
+- Credit effect: -7.9% to -37.8% (hurts all profiles)
+- Ordering effect: 0% (average, misconception), -34% (fast-learner)
+- Combined: -16.9% average (flat across L2-L5 — metric always runs at 15 sessions)
+
+Post-implementation results:
+
+| Metric | Before (Approach 2) | After (Approach 4) |
+|--------|---------------------|-------------------|
+| FIRe efficiency (L2) | -16.9% | -12.7% |
+| fast-learner efficiency | -35.3% | +6.5% |
+| L3 evaluation | 5P/2W/3F | 6P/1W/3F |
+| No metric regressions at L3 | — | confirmed |
+
+**Rationale:** Unconditional queue elimination removed children that genuinely needed review. The R > 0.85 gate ensures elimination only occurs when the child's memory is strong enough that skipping review is safe. This is the minimum viable fix — more sophisticated approaches (content-aware credit, adaptive weights) require higher encompassing density or real user data.
+
+**Key insight:** The FIRe efficiency metric always runs at 15 sessions regardless of evaluation level. The identical -16.9% across L2-L5 was a measurement artifact, not evidence that FIRe never improves at longer horizons.

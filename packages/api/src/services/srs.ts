@@ -570,12 +570,17 @@ export function createSRSService(db: DB, fireDiagnostic?: FireDiagnosticConfig) 
         return { selected: candidates.slice(0, budget), coveredCount: 0 };
       }
 
-      // Greedy set cover: select topics that maximize implicit FIRe coverage.
-      // Covered children are removed from the queue — they get virtual stability
-      // boosts from applyFIReCredit when the parent is reviewed.
+      // Retrieval-dependent set cover (Approach 4): select topics that maximize
+      // FIRe coverage, but only eliminate covered children whose retrievability
+      // is already high (R > 0.85). Low-R children stay in the queue — they need
+      // explicit review regardless of implicit credit from parent practice.
+      // This addresses the Phase 2.7 finding that unconditional queue elimination
+      // hurts mastery rates by removing children that genuinely need review.
+      const RETRIEVAL_GATE = 0.85;
       const selected: UserTopicRow[] = [];
       const covered = new Set<string>();
       const remaining = new Set(dueSet);
+      const candidateMap = new Map(candidates.map((c) => [c.topicId, c]));
 
       while (selected.length < budget && remaining.size > 0) {
         let bestTopic: UserTopicRow | null = null;
@@ -586,10 +591,15 @@ export function createSRSService(db: DB, fireDiagnostic?: FireDiagnosticConfig) 
           if (!remaining.has(topic.topicId)) continue;
 
           const coverage = coverageMap.get(topic.topicId);
-          const uncoveredCount = coverage
-            ? [...coverage].filter((id) => remaining.has(id) && !covered.has(id)).length
+          // Only count children that would actually be eliminated (R > gate)
+          const eliminableCount = coverage
+            ? [...coverage].filter((id) => {
+                if (!remaining.has(id) || covered.has(id)) return false;
+                const child = candidateMap.get(id);
+                return child ? computeRetrievability(child) > RETRIEVAL_GATE : false;
+              }).length
             : 0;
-          const score = uncoveredCount + 1; // +1 for the topic itself
+          const score = eliminableCount + 1; // +1 for the topic itself
 
           const overdueMs = Date.now() - new Date(topic.due).getTime();
 
@@ -605,11 +615,15 @@ export function createSRSService(db: DB, fireDiagnostic?: FireDiagnosticConfig) 
         remaining.delete(bestTopic.topicId);
         covered.add(bestTopic.topicId);
 
+        // Only eliminate children with high retrievability (safe to skip)
         const coverage = coverageMap.get(bestTopic.topicId);
         if (coverage) {
           for (const id of coverage) {
-            covered.add(id);
-            remaining.delete(id);
+            const child = candidateMap.get(id);
+            if (child && computeRetrievability(child) > RETRIEVAL_GATE) {
+              covered.add(id);
+              remaining.delete(id);
+            }
           }
         }
       }
