@@ -81,9 +81,44 @@ export function renderAuditMarkdown(report: AuditReport): string {
   lines.push(`| Topics with examples | ${s.contentQuality.topicsWithExamples}/${s.contentQuality.totalTopics} |`);
   lines.push(`| Average health | ${s.contentQuality.healthDistribution.average}/100 |`);
   lines.push(`| Demand diversity | ${s.contentQuality.demandDiversity} |`);
+  if (s.contentQuality.manifestCount > 0) {
+    lines.push(`| Bundle manifests | ${s.contentQuality.manifestCount} |`);
+    lines.push(`| Stale deploys | ${s.contentQuality.staleDeployCount} |`);
+  }
   lines.push(``);
   lines.push(renderItems(s.contentQuality.items));
   lines.push(``);
+
+  // Dimension coverage from R2 manifests
+  if (s.contentQuality.dimensionCoverage) {
+    const dc = s.contentQuality.dimensionCoverage;
+    lines.push(`**Dimension coverage (from bundles):**`);
+    lines.push(``);
+    const renderDim = (label: string, data: Record<string, number>) => {
+      const entries = Object.entries(data).sort((a, b) => b[1] - a[1]);
+      if (entries.length > 0) {
+        lines.push(`*${label}:* ${entries.map(([k, v]) => `${k} (${v})`).join(", ")}`);
+      }
+    };
+    renderDim("Presentation", dc.presentation);
+    renderDim("Depth", dc.depth);
+    renderDim("Locale", dc.locale);
+    renderDim("Flavor", dc.flavor);
+    lines.push(``);
+  }
+
+  // Stale deploy warnings
+  if (s.contentQuality.staleDeployCount > 0) {
+    const stale = s.contentQuality.contentVersions.filter(v => v.stale).slice(0, 10);
+    lines.push(`**Stale deploys** (source newer than bundle):`);
+    for (const v of stale) {
+      lines.push(`- \`${v.discipline}/${v.topicId}\``);
+    }
+    if (s.contentQuality.staleDeployCount > 10) {
+      lines.push(`- ... and ${s.contentQuality.staleDeployCount - 10} more`);
+    }
+    lines.push(``);
+  }
 
   if (s.contentQuality.topGaps.length > 0) {
     lines.push(`**Top content gaps:**`);
@@ -131,8 +166,39 @@ export function renderAuditMarkdown(report: AuditReport): string {
   lines.push(`---`);
   lines.push(`## 4. Content Effectiveness ${statusIcon(s.contentEffectiveness.status)}`);
   lines.push(``);
+  lines.push(`- **Mode:** ${s.contentEffectiveness.mode}`);
+
+  if (s.contentEffectiveness.mode === "live" && s.contentEffectiveness.overallAccuracy != null) {
+    lines.push(``);
+    lines.push(`| Metric | Value |`);
+    lines.push(`|--------|-------|`);
+    lines.push(`| Overall accuracy | ${(s.contentEffectiveness.overallAccuracy * 100).toFixed(0)}% |`);
+    if (s.contentEffectiveness.topicAccuracyRange) {
+      lines.push(`| Accuracy range | ${(s.contentEffectiveness.topicAccuracyRange.min * 100).toFixed(0)}%–${(s.contentEffectiveness.topicAccuracyRange.max * 100).toFixed(0)}% |`);
+    }
+    if (s.contentEffectiveness.difficultySpikeCount != null) {
+      lines.push(`| Difficulty spikes | ${s.contentEffectiveness.difficultySpikeCount} |`);
+    }
+    if (s.contentEffectiveness.hintEscalationRate != null) {
+      lines.push(`| Hint escalation rate | ${(s.contentEffectiveness.hintEscalationRate * 100).toFixed(0)}% |`);
+    }
+    lines.push(`| Total users | ${s.contentEffectiveness.totalUsers ?? "—"} |`);
+    lines.push(`| Total reviews | ${s.contentEffectiveness.totalReviews ?? "—"} |`);
+  }
+  lines.push(``);
   lines.push(renderItems(s.contentEffectiveness.items));
   lines.push(``);
+
+  // Struggling topics
+  if (s.contentEffectiveness.strugglingTopics.length > 0) {
+    lines.push(`**Struggling topics:**`);
+    lines.push(`| Topic | Accuracy | Attempts |`);
+    lines.push(`|-------|----------|----------|`);
+    for (const t of s.contentEffectiveness.strugglingTopics) {
+      lines.push(`| \`${t.topicId}\` | ${(t.accuracy * 100).toFixed(0)}% | ${t.attempts} |`);
+    }
+    lines.push(``);
+  }
 
   // Section 5: LLM Tracking
   lines.push(`---`);
@@ -203,8 +269,14 @@ export function renderAuditMarkdown(report: AuditReport): string {
   if (!s.llmTracking.instrumentationComplete) {
     recs.push(`LLM instrumentation incomplete — verify Plan 024 was executed`);
   }
+  if (s.contentQuality.staleDeployCount > 0) {
+    recs.push(`${s.contentQuality.staleDeployCount} stale deploy(s) — run \`just deploy-content\` to update bundles`);
+  }
   if (s.contentEffectiveness.status === "pending") {
     recs.push(`Content effectiveness data pending — deploy and collect user data, then run \`just audit --live\``);
+  }
+  if (s.contentEffectiveness.strugglingTopics.length > 3) {
+    recs.push(`${s.contentEffectiveness.strugglingTopics.length} struggling topics — investigate with \`/content-health\``);
   }
 
   const incompleteDiscs = s.multiDiscipline.disciplines.filter(d => !d.contentComplete);

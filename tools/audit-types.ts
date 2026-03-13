@@ -37,6 +37,42 @@ export type GraphIntegritySection = {
   progressionModel: string;
 };
 
+// ── R2 Manifest Data ──
+
+export type ManifestSummary = {
+  topicId: string;
+  discipline: string;
+  problemCount: number;
+  exampleCount: number;
+  contentHash: string;
+  generatedAt: string;
+  dimensions: {
+    presentations: string[];
+    depths: string[];
+    locales: string[];
+    flavors: string[];
+  };
+  difficulties: Record<string, number>;
+  demands: Record<string, number>;
+  types: Record<string, number>;
+};
+
+export type DimensionCoverage = {
+  presentation: Record<string, number>; // presentation level → topic count
+  depth: Record<string, number>;
+  locale: Record<string, number>;
+  flavor: Record<string, number>;
+};
+
+export type ContentVersionStatus = {
+  topicId: string;
+  discipline: string;
+  bundleExists: boolean;
+  sourceModified: string | null; // ISO date of source file mtime
+  bundleGenerated: string | null; // from manifest generatedAt
+  stale: boolean; // source newer than bundle
+};
+
 // ── Section 2: Content Quality ──
 
 export type HealthDistribution = {
@@ -64,6 +100,11 @@ export type ContentQualitySection = {
   };
   topGaps: { topicId: string; gapType: string; impact: number; priority: string }[];
   demandDiversity: number; // average across topics
+  // R2 manifest data (populated when bundles exist)
+  dimensionCoverage: DimensionCoverage | null;
+  manifestCount: number;
+  staleDeployCount: number;
+  contentVersions: ContentVersionStatus[];
 };
 
 // ── Section 3: Simulation Results ──
@@ -101,6 +142,10 @@ export type ContentEffectivenessSection = {
   topicAccuracyRange: { min: number; max: number } | null;
   difficultySpikeCount: number | null;
   hintEscalationRate: number | null;
+  // Live stats
+  totalUsers: number | null;
+  totalReviews: number | null;
+  strugglingTopics: { topicId: string; accuracy: number; attempts: number }[];
 };
 
 // ── Section 5: LLM Tracking ──

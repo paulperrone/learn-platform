@@ -6,8 +6,9 @@
  *   npx tsx tools/audit.ts              # Markdown to stdout + JSON to simulations/reports/audit-latest.json
  *   npx tsx tools/audit.ts --json       # JSON only
  *   npx tsx tools/audit.ts --save       # Also saves timestamped snapshot
+ *   npx tsx tools/audit.ts --live       # Query deployed API for live analytics (requires AUDIT_API_URL)
  */
-import { readFileSync, writeFileSync, existsSync, readdirSync, mkdirSync } from "fs";
+import { readFileSync, writeFileSync, existsSync, readdirSync, mkdirSync, statSync } from "fs";
 import { join } from "path";
 import { getContentDir } from "./content-dir.js";
 import { generateContentStatus } from "./content-status.js";
@@ -19,6 +20,7 @@ import type {
   GraphIntegritySection, ContentQualitySection, SimulationResultsSection,
   ContentEffectivenessSection, LLMTrackingSection, MediaReadinessSection,
   MultiDisciplineSection, SimulationSystem,
+  ManifestSummary, DimensionCoverage, ContentVersionStatus,
 } from "./audit-types.js";
 
 // ── Graph integrity (computed directly — avoids refactoring 577-line validate-graph.ts) ──
@@ -149,6 +151,97 @@ function auditGraphIntegrity(subject: string): GraphIntegritySection {
   };
 }
 
+// ── R2 manifest scanner ──
+
+function scanManifests(): { manifests: ManifestSummary[]; dimensionCoverage: DimensionCoverage; versions: ContentVersionStatus[] } {
+  const contentDir = getContentDir();
+  const disciplines = listDisciplines();
+  const manifests: ManifestSummary[] = [];
+  const versions: ContentVersionStatus[] = [];
+  const dimCov: DimensionCoverage = { presentation: {}, depth: {}, locale: {}, flavor: {} };
+
+  // Check for generated bundles
+  const bundleDir = "/tmp/learn-content-bundles";
+  const hasBundles = existsSync(bundleDir);
+
+  for (const disc of disciplines) {
+    const graphPath = join(contentDir, disc, "graph.json");
+    if (!existsSync(graphPath)) continue;
+    const graph = JSON.parse(readFileSync(graphPath, "utf-8"));
+    const topics: any[] = graph.topics ?? [];
+
+    for (const topic of topics) {
+      // Check bundle manifest
+      const manifestPath = hasBundles ? join(bundleDir, disc, topic.id, "manifest.json") : null;
+      let bundleGenerated: string | null = null;
+
+      if (manifestPath && existsSync(manifestPath)) {
+        const manifest = JSON.parse(readFileSync(manifestPath, "utf-8"));
+        bundleGenerated = manifest.generatedAt ?? null;
+
+        manifests.push({
+          topicId: topic.id,
+          discipline: disc,
+          problemCount: manifest.items?.problems?.count ?? 0,
+          exampleCount: manifest.items?.examples?.count ?? 0,
+          contentHash: manifest.contentHash ?? "",
+          generatedAt: manifest.generatedAt ?? "",
+          dimensions: manifest.dimensions ?? { presentations: [], depths: [], locales: [], flavors: [] },
+          difficulties: manifest.items?.problems?.difficulties ?? {},
+          demands: manifest.items?.problems?.demands ?? {},
+          types: manifest.items?.problems?.types ?? {},
+        });
+
+        // Aggregate dimension coverage
+        for (const p of manifest.dimensions?.presentations ?? []) dimCov.presentation[p] = (dimCov.presentation[p] ?? 0) + 1;
+        for (const d of manifest.dimensions?.depths ?? []) dimCov.depth[d] = (dimCov.depth[d] ?? 0) + 1;
+        for (const l of manifest.dimensions?.locales ?? []) dimCov.locale[l] = (dimCov.locale[l] ?? 0) + 1;
+        for (const f of manifest.dimensions?.flavors ?? []) dimCov.flavor[f] = (dimCov.flavor[f] ?? 0) + 1;
+      }
+
+      // Content version tracking — compare source file mtime vs bundle generatedAt
+      const sourcePaths = [
+        join(contentDir, disc, "problems", `${topic.id}.json`),
+        join(contentDir, disc, "problems-generated", `${topic.id}.json`),
+      ];
+      let sourceModified: string | null = null;
+      for (const sp of sourcePaths) {
+        if (existsSync(sp)) {
+          const mtime = statSync(sp).mtime.toISOString();
+          if (!sourceModified || mtime > sourceModified) sourceModified = mtime;
+        }
+      }
+
+      const stale = !!(sourceModified && bundleGenerated && sourceModified > bundleGenerated);
+
+      versions.push({
+        topicId: topic.id,
+        discipline: disc,
+        bundleExists: !!bundleGenerated,
+        sourceModified,
+        bundleGenerated,
+        stale,
+      });
+    }
+  }
+
+  return { manifests, dimensionCoverage: dimCov, versions };
+}
+
+// ── Live API query helper ──
+
+async function fetchLiveAPI(baseUrl: string, path: string, token?: string): Promise<any | null> {
+  try {
+    const headers: Record<string, string> = { "Content-Type": "application/json" };
+    if (token) headers["Cookie"] = `better-auth.session_token=${token}`;
+    const res = await fetch(`${baseUrl}${path}`, { headers, signal: AbortSignal.timeout(10000) });
+    if (!res.ok) return null;
+    return await res.json();
+  } catch {
+    return null;
+  }
+}
+
 // ── Content quality ──
 
 function auditContentQuality(subject: string): ContentQualitySection {
@@ -162,8 +255,13 @@ function auditContentQuality(subject: string): ContentQualitySection {
       healthDistribution: { below50: 0, below70: 0, above70: 0, average: 0 },
       gapSummary: { total: 0, critical: 0, high: 0, medium: 0, low: 0 },
       topGaps: [], demandDiversity: 0,
+      dimensionCoverage: null, manifestCount: 0, staleDeployCount: 0, contentVersions: [],
     };
   }
+
+  // Scan manifests for dimension coverage and version tracking
+  const { manifests, dimensionCoverage, versions } = scanManifests();
+  const staleCount = versions.filter(v => v.stale).length;
 
   const topicsWithProblems = statusResult.topics.filter(t => t.problemCount > 0).length;
   const topicsWithExamples = statusResult.topics.filter(t => t.exampleCount > 0).length;
@@ -190,6 +288,8 @@ function auditContentQuality(subject: string): ContentQualitySection {
     { label: "Critical gaps", status: gapSummary.critical === 0 ? "pass" : "fail", value: gapSummary.critical },
     { label: "Topics below 50 health", status: below50 === 0 ? "pass" : below50 <= 10 ? "warn" : "fail", value: below50 },
     { label: "Demand diversity", status: avgDemandDiversity >= 0.6 ? "pass" : avgDemandDiversity >= 0.3 ? "warn" : "fail", value: avgDemandDiversity },
+    { label: "Bundle manifests", status: manifests.length > 0 ? "info" : "pending", value: manifests.length, detail: manifests.length > 0 ? undefined : "Run `just generate-bundles` to create" },
+    ...(staleCount > 0 ? [{ label: "Stale deploys", status: "warn" as ItemStatus, value: staleCount, detail: "Source changed since last bundle generation" }] : []),
   ];
 
   const failItems = items.filter(i => i.status === "fail");
@@ -204,6 +304,10 @@ function auditContentQuality(subject: string): ContentQualitySection {
     totalTopics: statusResult.topicCount,
     healthDistribution: { below50, below70, above70, average: statusResult.averageHealth },
     gapSummary, topGaps, demandDiversity: avgDemandDiversity,
+    dimensionCoverage: manifests.length > 0 ? dimensionCoverage : null,
+    manifestCount: manifests.length,
+    staleDeployCount: staleCount,
+    contentVersions: versions.filter(v => v.stale), // only include stale ones to keep report compact
   };
 }
 
@@ -254,23 +358,101 @@ function auditSimulationResults(): SimulationResultsSection {
   };
 }
 
-// ── Content effectiveness (offline placeholder) ──
+// ── Content effectiveness ──
 
-function auditContentEffectiveness(): ContentEffectivenessSection {
+async function auditContentEffectiveness(apiUrl?: string, apiToken?: string): Promise<ContentEffectivenessSection> {
+  if (!apiUrl) {
+    return {
+      status: "pending",
+      items: [{ label: "Content effectiveness", status: "pending", detail: "Awaiting user data — use --live for live analytics" }],
+      mode: "offline",
+      overallAccuracy: null, topicAccuracyRange: null,
+      difficultySpikeCount: null, hintEscalationRate: null,
+      totalUsers: null, totalReviews: null, strugglingTopics: [],
+    };
+  }
+
+  // Live mode — query admin API
+  const items: StatusItem[] = [];
+  let overallAccuracy: number | null = null;
+  let topicAccuracyRange: { min: number; max: number } | null = null;
+  let difficultySpikeCount: number | null = null;
+  let hintEscalationRate: number | null = null;
+  let totalUsers: number | null = null;
+  let totalReviews: number | null = null;
+  const strugglingTopics: { topicId: string; accuracy: number; attempts: number }[] = [];
+
+  // Stats
+  const stats = await fetchLiveAPI(apiUrl, "/admin/stats", apiToken);
+  if (stats) {
+    totalUsers = stats.totalUsers ?? null;
+    totalReviews = stats.totalReviews ?? null;
+    items.push({ label: "Total users", status: "info", value: totalUsers ?? 0 });
+    items.push({ label: "Total reviews", status: "info", value: totalReviews ?? 0 });
+  } else {
+    items.push({ label: "Stats endpoint", status: "fail", detail: "Could not reach API" });
+  }
+
+  // Content effectiveness
+  const effectiveness = await fetchLiveAPI(apiUrl, "/admin/analytics/content-effectiveness", apiToken);
+  if (effectiveness?.topicReviewStats?.length > 0) {
+    const topicStats = effectiveness.topicReviewStats as any[];
+    const accuracies = topicStats
+      .filter((t: any) => t.totalAttempts >= 10)
+      .map((t: any) => t.correctAttempts / t.totalAttempts);
+
+    if (accuracies.length > 0) {
+      overallAccuracy = Math.round((accuracies.reduce((a: number, b: number) => a + b, 0) / accuracies.length) * 100) / 100;
+      topicAccuracyRange = { min: Math.round(Math.min(...accuracies) * 100) / 100, max: Math.round(Math.max(...accuracies) * 100) / 100 };
+      items.push({ label: "Overall accuracy", status: overallAccuracy >= 0.7 ? "pass" : overallAccuracy >= 0.5 ? "warn" : "fail", value: `${(overallAccuracy * 100).toFixed(0)}%` });
+    }
+
+    // Struggling topics
+    if (effectiveness.strugglingTopics?.length > 0) {
+      for (const t of effectiveness.strugglingTopics.slice(0, 10)) {
+        strugglingTopics.push({ topicId: t.topicId, accuracy: t.accuracy, attempts: t.totalAttempts });
+      }
+      items.push({ label: "Struggling topics", status: strugglingTopics.length > 5 ? "warn" : "info", value: effectiveness.strugglingTopics.length });
+    }
+  }
+
+  // Difficulty spikes
+  const spikes = await fetchLiveAPI(apiUrl, "/admin/analytics/difficulty-spikes", apiToken);
+  if (spikes?.spikes) {
+    difficultySpikeCount = spikes.spikes.length;
+    items.push({ label: "Difficulty spikes", status: difficultySpikeCount > 10 ? "warn" : difficultySpikeCount > 0 ? "info" : "pass", value: difficultySpikeCount });
+  }
+
+  // Learning patterns (hint escalation)
+  const patterns = await fetchLiveAPI(apiUrl, "/admin/analytics/learning-patterns", apiToken);
+  if (patterns?.hintPatterns?.length > 0) {
+    const totalHinted = patterns.hintPatterns.reduce((s: number, p: any) => s + (p.hintsUsed > 0 ? p.count : 0), 0);
+    const totalAttempts = patterns.hintPatterns.reduce((s: number, p: any) => s + p.count, 0);
+    if (totalAttempts > 0) {
+      hintEscalationRate = Math.round((totalHinted / totalAttempts) * 100) / 100;
+      items.push({ label: "Hint escalation rate", status: hintEscalationRate > 0.4 ? "warn" : "info", value: `${(hintEscalationRate * 100).toFixed(0)}%` });
+    }
+  }
+
+  if (items.length === 0) {
+    items.push({ label: "Live data", status: "pending", detail: "No data available from API yet" });
+  }
+
+  const hasFailures = items.some(i => i.status === "fail");
+  const hasWarnings = items.some(i => i.status === "warn");
+  const status: ItemStatus = hasFailures ? "fail" : hasWarnings ? "warn" : totalReviews && totalReviews > 0 ? "pass" : "pending";
+
   return {
-    status: "pending",
-    items: [{ label: "Content effectiveness", status: "pending", detail: "Awaiting user data — use --live for live analytics" }],
-    mode: "offline",
-    overallAccuracy: null,
-    topicAccuracyRange: null,
-    difficultySpikeCount: null,
-    hintEscalationRate: null,
+    status, items, mode: "live",
+    overallAccuracy, topicAccuracyRange,
+    difficultySpikeCount, hintEscalationRate,
+    totalUsers, totalReviews, strugglingTopics,
   };
 }
 
 // ── LLM tracking ──
 
-function auditLLMTracking(): LLMTrackingSection {
+async function auditLLMTracking(apiUrl?: string, apiToken?: string): Promise<LLMTrackingSection> {
   // Check schema completeness by reading the Drizzle schema file
   const schemaPath = join(process.cwd(), "packages", "api", "src", "db", "schema.ts");
   let schemaContent = "";
@@ -303,11 +485,38 @@ function auditLLMTracking(): LLMTrackingSection {
     { label: "Instrumentation complete", status: instrumentationComplete ? "pass" : "warn", detail: instrumentationComplete ? "All fields present" : "Some fields missing" },
   ];
 
+  // Live data
+  let totalCost: number | null = null;
+  let totalCalls: number | null = null;
+  let llmAccuracyDelta: number | null = null;
+
+  if (apiUrl) {
+    const stats = await fetchLiveAPI(apiUrl, "/admin/stats", apiToken);
+    if (stats?.llmSummary) {
+      totalCost = stats.llmSummary.totalCost ?? null;
+      totalCalls = stats.llmSummary.totalCalls ?? null;
+      if (totalCost != null) items.push({ label: "Total LLM cost", status: "info", value: `$${totalCost.toFixed(2)}` });
+      if (totalCalls != null) items.push({ label: "Total LLM calls", status: "info", value: totalCalls });
+    }
+
+    const llmEff = await fetchLiveAPI(apiUrl, "/admin/analytics/llm-effectiveness", apiToken);
+    if (llmEff?.overall) {
+      llmAccuracyDelta = llmEff.overall.accuracyDelta ?? null;
+      if (llmAccuracyDelta != null) {
+        items.push({
+          label: "LLM accuracy delta",
+          status: llmAccuracyDelta >= 0.05 ? "pass" : llmAccuracyDelta >= -0.05 ? "warn" : "fail",
+          value: `${llmAccuracyDelta >= 0 ? "+" : ""}${(llmAccuracyDelta * 100).toFixed(1)}%`,
+        });
+      }
+    }
+  }
+
   const status: ItemStatus = instrumentationComplete ? "pass" : "warn";
 
   return {
     status, items, instrumentation, instrumentationComplete,
-    totalCost: null, totalCalls: null, llmAccuracyDelta: null,
+    totalCost, totalCalls, llmAccuracyDelta,
   };
 }
 
@@ -431,15 +640,17 @@ function auditMultiDiscipline(): MultiDisciplineSection {
 
 // ── Main orchestrator ──
 
-export function runAudit(opts: { mode?: "offline" | "live"; primarySubject?: string } = {}): AuditReport {
+export async function runAudit(opts: { mode?: "offline" | "live"; primarySubject?: string; apiUrl?: string; apiToken?: string } = {}): Promise<AuditReport> {
   const mode = opts.mode ?? "offline";
   const primarySubject = opts.primarySubject ?? "math";
+  const apiUrl = mode === "live" ? opts.apiUrl : undefined;
+  const apiToken = opts.apiToken;
 
   const graphIntegrity = auditGraphIntegrity(primarySubject);
   const contentQuality = auditContentQuality(primarySubject);
   const simulationResults = auditSimulationResults();
-  const contentEffectiveness = auditContentEffectiveness();
-  const llmTracking = auditLLMTracking();
+  const contentEffectiveness = await auditContentEffectiveness(apiUrl, apiToken);
+  const llmTracking = await auditLLMTracking(apiUrl, apiToken);
   const mediaReadiness = auditMediaReadiness();
   const multiDiscipline = auditMultiDiscipline();
 
@@ -483,29 +694,44 @@ export function runAudit(opts: { mode?: "offline" | "live"; primarySubject?: str
 
 const isCLI = process.argv[1]?.includes("audit") && !process.argv[1]?.includes("audit-");
 if (isCLI) {
-  const args = process.argv.slice(2);
-  const jsonOnly = args.includes("--json");
-  const save = args.includes("--save");
+  (async () => {
+    const args = process.argv.slice(2);
+    const jsonOnly = args.includes("--json");
+    const save = args.includes("--save");
+    const live = args.includes("--live");
 
-  const report = runAudit();
+    const apiUrl = live ? (process.env.AUDIT_API_URL || undefined) : undefined;
+    const apiToken = process.env.AUDIT_API_TOKEN || undefined;
 
-  // Always save latest JSON
-  const reportsDir = join(process.cwd(), "simulations", "reports");
-  if (existsSync(reportsDir)) {
-    writeFileSync(join(reportsDir, "audit-latest.json"), JSON.stringify(report, null, 2));
-  }
+    if (live && !apiUrl) {
+      console.error("Error: --live requires AUDIT_API_URL environment variable");
+      process.exit(1);
+    }
 
-  // Save timestamped snapshot
-  if (save) {
-    const auditsDir = join(reportsDir, "audits");
-    if (!existsSync(auditsDir)) mkdirSync(auditsDir, { recursive: true });
-    const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
-    writeFileSync(join(auditsDir, `${timestamp}.json`), JSON.stringify(report, null, 2));
-  }
+    const report = await runAudit({
+      mode: live ? "live" : "offline",
+      apiUrl,
+      apiToken,
+    });
 
-  if (jsonOnly) {
-    console.log(JSON.stringify(report, null, 2));
-  } else {
-    console.log(renderAuditMarkdown(report));
-  }
+    // Always save latest JSON
+    const reportsDir = join(process.cwd(), "simulations", "reports");
+    if (existsSync(reportsDir)) {
+      writeFileSync(join(reportsDir, "audit-latest.json"), JSON.stringify(report, null, 2));
+    }
+
+    // Save timestamped snapshot
+    if (save) {
+      const auditsDir = join(reportsDir, "audits");
+      if (!existsSync(auditsDir)) mkdirSync(auditsDir, { recursive: true });
+      const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
+      writeFileSync(join(auditsDir, `${timestamp}.json`), JSON.stringify(report, null, 2));
+    }
+
+    if (jsonOnly) {
+      console.log(JSON.stringify(report, null, 2));
+    } else {
+      console.log(renderAuditMarkdown(report));
+    }
+  })();
 }

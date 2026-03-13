@@ -21,9 +21,9 @@ Create a unified `just audit` command that orchestrates all validation, content 
 
 ## Progress
 
-**Completed:** Phase 1
+**Completed:** Phase 1, Phase 2
 **In Progress:** —
-**Next:** Phase 2
+**Next:** Phase 3
 
 ---
 
@@ -97,7 +97,7 @@ Create a unified `just audit` command that orchestrates all validation, content 
 
 ---
 
-## Phase 2: R2 Manifest & Live Analytics Integration
+## Phase 2: R2 Manifest & Live Analytics Integration ✓
 **Goal:** Add R2/ContentBucket manifest inventory for content dimension coverage, and live analytics sections that query D1 + AE when `--live` flag is passed.
 
 ### Context for Execution
@@ -116,7 +116,7 @@ Create a unified `just audit` command that orchestrates all validation, content 
 
 **Design decision:** For `--live` mode, query the deployed admin API endpoints directly (requires `AUDIT_API_URL` env var). This avoids duplicating query logic and works with any environment (preview, production). Alternative: direct D1 access via wrangler — but admin endpoints already have the right aggregation logic.
 
-1. [ ] [IMP] Build R2 manifest scanner:
+1. [x] [IMP] Build R2 manifest scanner:
    - Use `createFileContentBucket()` to iterate all disciplines and topics
    - For each topic: read manifest.json (if exists), extract:
      - Problem count, example count, media asset count
@@ -130,7 +130,7 @@ Create a unified `just audit` command that orchestrates all validation, content 
      - Media type inventory (number-line, fraction-bar, etc.)
    - Integrate into audit report section 6 (Media Readiness) and section 2 (Content Quality)
 
-2. [ ] [IMP] Add `--live` mode to audit orchestrator:
+2. [x] [IMP] Add `--live` mode to audit orchestrator:
    - Accept `AUDIT_API_URL` env var (e.g., `https://learn.perrone.dev/api` or `http://localhost:8787/api`)
    - Accept `AUDIT_API_TOKEN` env var (admin auth token)
    - When `--live` passed:
@@ -142,20 +142,20 @@ Create a unified `just audit` command that orchestrates all validation, content 
    - Populate Content Effectiveness section (4) and LLM Tracking section (5) with real data
    - Handle API errors gracefully (timeout, auth failure → mark section as `error` with message)
 
-3. [ ] [IMP] Add content version tracking to report:
+3. [x] [IMP] Add content version tracking to report:
    - Compare `topic_content_versions` (D1 or from manifest scan) with learn-content source files
    - Flag topics where source has changed but bundles haven't been regenerated (stale deploys)
    - Flag topics with no content version (never deployed)
    - Include in Content Quality section
 
-4. [ ] [IMP] Add LLM instrumentation completeness check:
+4. [x] [IMP] Add LLM instrumentation completeness check:
    - Verify `llm_usage` table has `topic_id` and `problem_id` columns (Plan 024 Phase 1)
    - Verify `review_log` has `llm_assisted` column (Plan 024 Phase 1)
    - Verify AE event schema includes `llmAssisted` blob
    - If any are missing: report LLM Tracking section as `warn` with "instrumentation incomplete"
    - If Plan 024 not yet executed: report as `pending` with actionable note
 
-5. [ ] [TST] Test manifest scanner and live mode:
+5. [x] [TST] Test manifest scanner and live mode:
    - Unit test: manifest scanner aggregates dimension coverage correctly
    - Unit test: stale deploy detection flags outdated content versions
    - Unit test: live mode handles API errors gracefully (returns error status, not crash)

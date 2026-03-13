@@ -24,11 +24,13 @@ function assert(condition: boolean, message: string) {
   }
 }
 
+async function main() {
+
 // ── Report schema tests ──
 
 console.log("\n=== Audit Report Schema ===");
 
-const report = runAudit();
+const report = await runAudit();
 
 assert(report.metadata !== undefined, "report has metadata");
 assert(report.metadata.timestamp.length > 0, "metadata has timestamp");
@@ -183,8 +185,59 @@ const disciplines = listDisciplines();
 assert(disciplines.length > 0, "listDisciplines returns disciplines");
 assert(disciplines.includes("math"), "listDisciplines includes math");
 
+// ── Phase 2: R2 manifest & live analytics tests ──
+
+console.log("\n=== R2 Manifest Scanner ===");
+
+// Content quality should include manifest/version fields
+assert(typeof content.manifestCount === "number", "content quality has manifestCount");
+assert(typeof content.staleDeployCount === "number", "content quality has staleDeployCount");
+assert(Array.isArray(content.contentVersions), "content quality has contentVersions array");
+// dimensionCoverage may or may not be populated depending on whether bundles exist
+assert(content.dimensionCoverage === null || typeof content.dimensionCoverage === "object", "dimensionCoverage is null or object");
+
+console.log("\n=== Content Effectiveness (offline) ===");
+
+assert(eff.totalUsers === null, "totalUsers is null in offline mode");
+assert(eff.totalReviews === null, "totalReviews is null in offline mode");
+assert(Array.isArray(eff.strugglingTopics), "strugglingTopics is array in offline mode");
+assert(eff.strugglingTopics.length === 0, "no struggling topics in offline mode");
+
+console.log("\n=== LLM Tracking (offline) ===");
+
+assert(llm.totalCost === null, "totalCost is null in offline mode");
+assert(llm.totalCalls === null, "totalCalls is null in offline mode");
+assert(llm.llmAccuracyDelta === null, "llmAccuracyDelta is null in offline mode");
+
+console.log("\n=== Markdown Renderer (Phase 2 fields) ===");
+
+const markdown2 = renderAuditMarkdown(report);
+assert(markdown2.includes("Mode:") && markdown2.includes("offline"), "renderer shows mode");
+// Stale deploy rendering (may or may not have stale deploys)
+if (content.staleDeployCount > 0) {
+  assert(markdown2.includes("Stale deploys"), "renderer shows stale deploys when present");
+}
+
+// Test that live mode report structure works with mock-like data
+const liveReport = await runAudit({ mode: "live", apiUrl: "http://localhost:99999" });
+assert(liveReport.metadata.mode === "live", "live report has live mode");
+// The API is unreachable, so live sections should gracefully degrade
+const liveEff = liveReport.sections.contentEffectiveness;
+assert(liveEff.mode === "live", "live effectiveness section has live mode");
+// Should not crash even with unreachable API
+
+console.log("\n=== LLM Instrumentation Completeness ===");
+
+// Verify instrumentation checks detect schema columns
+assert(typeof llm.instrumentation.llmUsageTopicId === "boolean", "llmUsageTopicId check is boolean");
+assert(typeof llm.instrumentation.aeBlob13LlmAssisted === "boolean", "aeBlob13LlmAssisted check is boolean");
+
 // ── Summary ──
 
 console.log(`\n${"=".repeat(40)}`);
 console.log(`Results: ${passed} passed, ${failed} failed`);
 process.exit(failed > 0 ? 1 : 0);
+
+} // end main
+
+main().catch(err => { console.error(err); process.exit(1); });
