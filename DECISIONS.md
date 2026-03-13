@@ -1840,3 +1840,44 @@ Post-implementation results:
 - Behavioral match: 5-9/29 profiles match — expectations need full recalibration for 705-topic graph
 - L4/L5 baselines: stale (pre-FIRe-disable, pre-interleaving-fix). Refresh with `just evaluate-l4` / `just evaluate-l5`
 - FIRe re-enablement: when encompassing density ≥1.5 edges/topic AND graph ≥1,500 topics
+
+---
+
+### 2026-03-13: Three-tier LLM feature gating via org metadata
+
+**Source:** User session — Plan 024 Phase 3
+
+**Context:** Need to measure premium AI feature value by enabling different feature sets for different organizations, creating natural cohorts for quasi-experimental comparison.
+
+**Decision:** Store `llmTier` in `organizations.metadata` JSON with three levels: `free` (static hints only), `basic` (+ LLM hints/grading), `full` (+ Socratic tutoring/self-explanation). Route-level gating checks tier before budget. Default: `full` for orgs with budget > 0, `free` for budget = 0.
+
+**Why:**
+- No schema migration needed — metadata JSON column already exists
+- Three tiers map cleanly to feature value tiers (static → AI-augmented → full AI tutoring)
+- Route-level gating is simpler and more explicit than middleware-based gating
+- Natural cohorts emerge from org tier assignment without randomization
+
+**Alternatives rejected:**
+- Per-user tier (too granular, families share a tier)
+- Binary on/off (loses ability to measure incremental value of each feature)
+- Separate `llm_tier` column on organizations (unnecessary migration for a JSON property)
+
+---
+
+### 2026-03-13: LLM session flag via direct stateJson write from LLM routes
+
+**Source:** User session — Plan 024 Phase 1
+
+**Context:** Need to mark each problem attempt with whether LLM was used, but LLM routes and session service are decoupled (different endpoints, no shared state).
+
+**Decision:** LLM route handlers write `llmAssistedThisProblem` and `hintSourceThisProblem` directly into `learn_sessions.stateJson` via a helper function `markSessionLLMAssisted()`. Best-effort, non-blocking (catch errors silently). Session service reads these flags when recording review_log entries.
+
+**Why:**
+- Avoids coupling LLM routes to the session service's in-memory state Map
+- stateJson is the durable session state — works across Worker restarts
+- Best-effort is correct because failing to set a flag shouldn't break the LLM response
+- Session service already reads stateJson on each `respond()` call, so it naturally picks up the flag
+
+**Alternatives rejected:**
+- Shared in-memory state (fragile across Workers, would require the session Map to be accessible from LLM routes)
+- Separate tracking table (over-engineering for a boolean flag per problem)

@@ -1098,3 +1098,14 @@ On a 705-topic graph with 18 strands, the `interleaveByStrand()` greedy algorith
 `.claude/` in learn-platform is a symlink to `.workflow/`. Running `git add .claude/plans/...` fails with `fatal: pathspec '...' is beyond a symbolic link`. Always stage workflow plan files via their real path: `git add .workflow/plans/...`.
 
 **Context:** Any time you commit plan changes (marking phases complete, updating progress).
+
+---
+
+### 2026-03-13: `drizzle-kit generate` hangs on interactive rename prompts — write migrations manually for ALTER TABLE
+
+**Source:** User session — Plan 024 Phase 1
+**Area:** Drizzle / D1 migrations
+
+When adding new columns to existing tables, `drizzle-kit generate` may prompt "Is X table created or renamed from Y?" with interactive arrow-key selection that hangs in non-interactive environments (CI, Claude Code). For simple ALTER TABLE additions, write the migration SQL manually and update `meta/_journal.json` with the new entry. Keep the Drizzle schema in sync so future generates work correctly.
+
+**Context:** Any time you add columns to existing D1 tables. Safe for nullable columns (no DEFAULT needed). For NOT NULL columns, add DEFAULT manually.
