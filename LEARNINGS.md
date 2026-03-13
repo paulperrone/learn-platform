@@ -1076,3 +1076,14 @@ Phase 2.7 isolation showed that removing children from the review queue uncondit
 When disabling FIRe via a constant, gate with `!FIRE_ENABLED && !fireDiagnostic` (not just `!FIRE_ENABLED`). The `fireDiagnostic` parameter allows the FIRe isolation diagnostic and paired evaluation to still exercise the full FIRe code path even when FIRe is globally disabled. This keeps the `--run-fire` and `--fire-isolation` evaluation flags working for future density analysis without requiring a code change. Tests use `describe.skipIf(!FIRE_ENABLED)` / `it.skipIf(!FIRE_ENABLED)` to cleanly skip FIRe-specific tests.
 
 **Context:** Any future feature disable should follow this pattern — global constant + diagnostic bypass + test gating via `skipIf`.
+
+---
+
+### 2026-03-12: Interleaving degrades when frontier clusters in same strand — fix via strand cap, not algorithm
+
+**Source:** User session — Plan 022 Phase 4.6
+**Area:** Session planning / interleaving
+
+On a 705-topic graph with 18 strands, the `interleaveByStrand()` greedy algorithm works correctly but can't diversify when the input session mix has 6-7 topics from one strand. Root cause: frontier topics cluster by strand because prerequisite chains are intra-strand. The fix is upstream — cap new topics per strand (MAX_PER_STRAND=2) in `getSessionMix()` before interleaving. This guarantees strand diversity in the input, making the interleaving algorithm effective again.
+
+**Context:** When interleaving quality regresses, check input composition (session mix) before tuning the algorithm. The algorithm is O(n²) greedy and handles its input correctly — the problem is always upstream.

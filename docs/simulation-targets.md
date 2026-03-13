@@ -35,11 +35,11 @@ Absolute targets are preferred — they are self-contained and do not require a 
 
 - **Principle:** Bloom's mastery learning — with sufficient time and instruction, most students can achieve mastery. The system must drive genuine proficiency, not just exposure.
 - **Citation:** Bloom 1984 (2-sigma problem), Kulik et al. 1990 (~0.5–1.0 SD effect), Math Academy 95% first-attempt pass rate.
-- **Metric:** Count of non-struggling profiles (8 of 10) reaching ≥50% mastery by session 30.
-- **Target:** ≥4 of 8 (50%).
-- **Tolerance:** ±1 profile. Accounts for profile variance (some profiles have low ceilings), review-budget saturation limiting new topic introduction, and stochastic session ordering.
-- **How to update:** If new profiles are added, adjust the denominator. If content grows or frontier progression improves (e.g., reduced diagnostic materialization), consider raising back toward 6/8. If FSRS parameters change, mastery thresholds may need recalibration.
-- **Red flags:** If fewer than 3 non-struggling profiles reach 50%, check mastery criterion strictness, session mix allocation, and diagnostic materialization scope. The primary bottleneck is frontier stall (new topics stop being introduced after ~session 7).
+- **Metric:** Count of non-struggling profiles (25 total) reaching ≥15% mastery by session 30.
+- **Target:** ≥17 of 25. Threshold recalibrated from 50% for 705-topic graph (was 207 topics). 15% ≈ 106 topics is meaningful progress in 30 sessions.
+- **Tolerance:** ±3 profiles. Accounts for young/overconfident profiles that progress slower due to ability or calibration.
+- **How to update:** If graph grows significantly (1,500+ topics), the 15% threshold may need lowering. Strong profiles exceed 85% via diagnostic placement — the threshold mainly tests average/moderate profiles.
+- **Red flags:** If fewer than 14 non-struggling profiles reach 15%, check mastery criterion strictness, session mix allocation, and frontier progression.
 
 ### 2.2 Mastery Preservation (P0)
 

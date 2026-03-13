@@ -737,16 +737,44 @@ export function createSRSService(db: DB, fireDiagnostic?: FireDiagnosticConfig) 
         blendRole: "main" as const,
       }));
 
-      const newTopics: MixItem[] = frontier.topics
+      // Select new frontier topics with strand diversity: cap at 2 topics per
+      // strand to prevent same-strand clustering (e.g., 6 counting topics in
+      // one session). Remaining slots filled round-robin across strands.
+      const frontierCandidates = frontier.topics
         .filter((t) => !stretchTopicIds.has(t.id))
-        .sort((a, b) => a.depth - b.depth)
-        .slice(0, mainNewCount)
-        .map((t) => ({
-          topicId: t.id,
-          depth: t.depth,
-          type: "new" as const,
-          blendRole: "main" as const,
-        }));
+        .sort((a, b) => a.depth - b.depth);
+      const frontierStrandMap = await graph.getTopicStrands(
+        frontierCandidates.map((t) => t.id)
+      );
+      const MAX_PER_STRAND = 2;
+      const strandCounts = new Map<string, number>();
+      const diverseNew: typeof frontierCandidates = [];
+      for (const t of frontierCandidates) {
+        if (diverseNew.length >= mainNewCount) break;
+        const strand = frontierStrandMap.get(t.id) ?? "unknown";
+        const cnt = strandCounts.get(strand) ?? 0;
+        if (cnt < MAX_PER_STRAND) {
+          diverseNew.push(t);
+          strandCounts.set(strand, cnt + 1);
+        }
+      }
+      // If we still need more topics (all strands hit cap), fill remaining
+      if (diverseNew.length < mainNewCount) {
+        const selectedIds = new Set(diverseNew.map((t) => t.id));
+        for (const t of frontierCandidates) {
+          if (diverseNew.length >= mainNewCount) break;
+          if (!selectedIds.has(t.id)) {
+            diverseNew.push(t);
+          }
+        }
+      }
+
+      const newTopics: MixItem[] = diverseNew.map((t) => ({
+        topicId: t.id,
+        depth: t.depth,
+        type: "new" as const,
+        blendRole: "main" as const,
+      }));
 
       // Interleave main items: review, new, review, review, new pattern
       const rawMainItems: MixItem[] = [];

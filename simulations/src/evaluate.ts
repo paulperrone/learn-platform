@@ -166,14 +166,16 @@ function computeMasteryConvergence(runs: ProfileRun[]): {
   actual: number;
   contributing: string[];
 } {
-  // Count non-struggling profiles with ≥50% mastery at final snapshot
+  // Count non-struggling profiles with ≥15% mastery at final snapshot.
+  // Threshold recalibrated for 705-topic graph: 15% ≈ 106 topics in 30
+  // sessions is meaningful progress. Old 50% target was set for 207 topics.
   const nonStruggling = runs.filter((r) => !STRUGGLING_PROFILES.includes(r.profileId));
   let passCount = 0;
   const contributing: string[] = [];
 
   for (const run of nonStruggling) {
     const finalSnapshot = run.snapshots[run.snapshots.length - 1];
-    if (finalSnapshot && finalSnapshot.masteryPercent >= 0.50) {
+    if (finalSnapshot && finalSnapshot.masteryPercent >= 0.15) {
       passCount++;
     } else {
       contributing.push(run.profileId);
