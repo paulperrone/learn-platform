@@ -1043,12 +1043,19 @@ A key concern before running L4/L5 was whether the FSRS review queue would grow 
 
 ---
 
-### 2026-03-12: FIRe efficiency metric always runs at 15 sessions — identical values across levels are a measurement artifact
+### 2026-03-12: FIRe efficiency gets WORSE at longer horizons — stability compounding hypothesis disproven
 
 **Source:** User session — Plan 022 Phase 4
 **Area:** Simulation / FIRe evaluation
 
-The `computeFIReEfficiency()` function hardcodes `sessionCount = 15` regardless of whether the evaluation runs at L2, L3, L4, or L5. The -16.9% value reported at all levels was NOT evidence that FIRe doesn't improve at longer horizons — it was the same 15-session measurement repeated. Any trend analysis of FIRe across maturity levels requires modifying the metric to run at the level's session count.
+After fixing the `computeFIReEfficiency()` function to use the evaluation's session count (was hardcoded to 15), FIRe efficiency is now properly measured per level:
+
+| Level | Sessions | FIRe Efficiency |
+|-------|----------|-----------------|
+| L2 | 30 | -12.6% |
+| L3 | 60 (capped) | -19.8% |
+
+FIRe gets MORE negative at longer horizons. The hypothesis that "stability compounding from virtual credit would produce larger benefits at 90+ sessions" is disproven at current encompassing density (1.01 edges/topic). The problem is structural: not enough encompassing edges for set-cover to meaningfully reduce redundant reviews. Virtual credit extends due dates on topics that still need explicit review, and the harm accumulates over time.
 
 ---
 

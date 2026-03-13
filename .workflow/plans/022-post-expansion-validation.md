@@ -9,7 +9,7 @@
 
 ## Summary
 
-After Plan 021 expands the math graph from 207 to ~800-1000 atomic skill topics, this plan validates the expanded graph with problem density expansion, long-horizon simulations (L3-L5), and a data-driven FIRe implementation decision. All content-dependent evaluation and calibration work is deferred here from Plan 019 Phases 4.5B-6, because running it on the pre-expansion graph would produce results invalidated by the topology change.
+After Plan 021 expands the math graph from 207 to ~800-1000 atomic skill topics, this plan validates the expanded graph with problem density expansion, long-horizon simulations (L3-L5), a data-driven FIRe implementation decision, FIRe deprecation (premature at current graph scale), metric recalibration for the 705-topic graph, and final production baselines. All content-dependent evaluation and calibration work is deferred here from Plan 019 Phases 4.5B-6, because running it on the pre-expansion graph would produce results invalidated by the topology change.
 
 **Depends on:**
 - Plan 021 (math topic expansion to ~800-1000 topics)
@@ -17,14 +17,15 @@ After Plan 021 expands the math graph from 207 to ~800-1000 atomic skill topics,
 
 **Unblocks:**
 - Production readiness for expanded math content
-- FIRe implementation decision with sufficient data
+- Clean evaluation baselines without FIRe noise
+- Recalibrated metrics for 705-topic graph
 
 ## Progress
 
 **Completed:** Phase 1 (2026-03-12), Phase 2 (2026-03-12), Phase 3 (2026-03-12), Phase 4 (2026-03-12)
 **In Progress:** —
-**Next:** Phase 5 (Final Baselines & Documentation)
-**Status:** 🟡 Active — Phase 4 complete. Switched from unconditional set-cover (Approach 2) to retrieval-dependent credit (Approach 4, R > 0.85 gate). FIRe efficiency improved from -16.9% to -12.7%. Fast-learner: -35.3% → +6.5%. No regressions at L3.
+**Next:** Phase 4.5 (FIRe Deprecation & Documentation Consolidation)
+**Status:** 🟡 Active — Phase 4 complete. FIRe decision: disable (premature at 1.01 edges/topic, gets worse at longer horizons). Phases 4.5-4.6 added for FIRe deprecation and metric tuning before final baselines.
 
 ---
 
@@ -168,16 +169,46 @@ After Plan 021 expands the math graph from 207 to ~800-1000 atomic skill topics,
 
 ---
 
+## Phase 4.5: FIRe Deprecation & Documentation Consolidation
+**Goal:** Disable FIRe in the engine, consolidate all FIRe learnings into a single master document, and update all references across the codebase. Keep code and encompassing edges intact for future re-enablement.
+
+1. [ ] [IMP] Add `FIRE_ENABLED = false` constant to `srs.ts`. Gate `applyFIReCredit()` (return `[]` immediately) and `compressReviews()` (skip set-cover, use most-overdue ordering) behind it. Keep all code intact for future re-enablement.
+2. [ ] [IMP] Gate FIRe efficiency metric in `evaluate.ts` — skip `computeFIReEfficiency()` when FIRe is disabled. Remove FIRe from default evaluation report output (no more misleading WARN).
+3. [ ] [IMP] Update FIRe-related tests: gate `fire-compression.test.ts` tests behind `FIRE_ENABLED`. Update `review-compression.test.ts` to expect most-overdue ordering (no set-cover) when disabled.
+4. [ ] [DOC] Consolidate into master document `docs/fire.md` — merge content from `fire-implementation-analysis.md` (13 approaches, rankings), `learning-science.md` §8 (research basis), simulation findings (L2-L5 efficiency data, Phase 2.7 isolation), and all FIRe-related DECISIONS.md / LEARNINGS.md entries. Single authoritative reference.
+5. [ ] [DOC] Update `docs/content-system.md` §4 — mark encompassing edges as "retained for future FIRe re-enablement" with re-evaluation criteria (density ≥1.5 edges/topic, graph ≥1,500 topics). Remove FIRe from active workflow guidance.
+6. [ ] [DOC] Update `docs/learning-science.md` §8 — replace implementation details with summary pointing to `fire.md`. Note: "FIRe is architecturally sound but premature at current graph scale. Disabled as of Plan 022."
+7. [ ] [DOC] Update `CLAUDE.md` — remove FIRe from active conventions (FIRe credit, compression, upward penalty references). Add note under conventions that FIRe is disabled with pointer to `docs/fire.md`.
+8. [ ] [DOC] Update `docs/simulation-targets.md` §2.6 — mark FIRe metric as disabled. Document re-enablement criteria.
+9. [ ] [VAL] `just test` passes. `just evaluate-l2` runs clean without FIRe metric noise. `just validate-content` still reports encompassing quality heuristics (retained for future density tracking).
+
+**Validation:** FIRe is fully disabled in engine. All docs consolidated. No FIRe WARN/FAIL in evaluation reports. Encompassing edges and infrastructure preserved for future.
+
+---
+
+## Phase 4.6: Metric Recalibration & Interleaving Tuning
+**Goal:** Address the three remaining failing metrics with the system now running without FIRe. Recalibrate targets for the 705-topic graph and investigate/fix interleaving regression.
+
+1. [ ] [RSH] Mastery convergence target recalibration: compute what % mastery is achievable in 30 sessions on 705 topics for each profile archetype. Set new target based on data (likely ~15-20% instead of 50%).
+2. [ ] [IMP] Update `simulations/targets.json` mastery convergence target and tolerance for 705-topic graph. Document rationale.
+3. [ ] [RSH] Interleaving regression investigation: why did same-strand repetition increase from target <0.10 to 0.136-0.155 after the 705-topic expansion? Analyze strand distribution, session planner topic selection, and whether certain strands dominate the frontier.
+4. [ ] [IMP] Fix interleaving if root cause is addressable — likely in `interleaveByStrand()` or session mix composition in `srs.ts`.
+5. [ ] [RSH] Diagnostic placement assessment: investigate the 1-profile miss (23/24). Determine if it's noise, a specific profile edge case, or a systematic issue worth fixing.
+6. [ ] [IMP] If diagnostic fix is warranted, implement. If noise, adjust target or document as acceptable.
+7. [ ] [VAL] Run `just evaluate-l2` and `just evaluate-l3` — verify improved pass rates across recalibrated metrics. Target: 7+ PASS, 0-1 WARN, ≤2 FAIL.
+
+**Validation:** Mastery convergence target reflects 705-topic reality. Interleaving ≤0.10 or documented reason for tolerance adjustment. Diagnostic placement at 24/24 or documented acceptable miss.
+
+---
+
 ## Phase 5: Final Baselines & Documentation
-**Goal:** Run the complete evaluation pipeline at each maturity level on the production graph, establish multi-level regression baselines, and produce a comprehensive simulation capability report.
+**Goal:** Run the complete evaluation pipeline without FIRe at each maturity level, establish post-FIRe multi-level baselines, and produce a comprehensive post-expansion report.
 
-*Adapted from Plan 019 Phase 6.*
+*Adapted from Plan 019 Phase 6. Updated for post-FIRe system.*
 
-1. [ ] [VAL] Multi-level regression validation:
+1. [ ] [VAL] Multi-level regression validation (without FIRe):
    - Run L1 → L2 → L3 sequentially, verify metrics improve monotonically where expected
-   - Mastery convergence: should increase L1→L2→L3
-   - Review balance: should normalize by L2, stay stable at L3
-   - FIRe efficiency: should increase L2→L3
+   - Confirm no regressions from FIRe removal at any level
 2. [ ] [IMP] Create multi-level baseline file: `simulations/baselines/multi-level.json`
    - Contains L1-L5 baselines for trend comparison
    - `just simulate-compare-levels` recipe
@@ -189,6 +220,8 @@ After Plan 021 expands the math graph from 207 to ~800-1000 atomic skill topics,
    - Profile coverage matrix
    - What each level reveals
    - When to run each level
-5. [ ] [VAL] Final validation: `just test`, `just evaluate` at L2 with all profiles
+   - Note FIRe status: disabled, re-evaluation criteria
+5. [ ] [DOC] Record final state in DECISIONS.md: post-expansion system summary, metric profile, FIRe status, what's production-ready vs what needs more work
+6. [ ] [VAL] Final validation: `just test`, `just evaluate` at L2 with all profiles
 
-**Validation:** Multi-level baselines established. Evaluation reports include maturity level context. Documentation complete. Simulation infrastructure production-ready.
+**Validation:** Multi-level baselines established without FIRe. Evaluation reports include maturity level context. Documentation complete. System is production-ready with clear FIRe re-enablement path.

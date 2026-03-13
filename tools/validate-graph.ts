@@ -343,6 +343,141 @@ if (progressionModel === "mastery-gated") {
   }
 }
 
+// --- Encompassing quality heuristics (FIRe effectiveness) ---
+// Density alone doesn't make FIRe work. These checks assess whether
+// encompassings are distributed well enough for set-cover and virtual
+// credit to reduce redundant reviews.
+
+if (encompassings.length > 0 && progressionModel === "mastery-gated") {
+  console.log(`\n--- Encompassing quality (FIRe effectiveness) ---`);
+
+  // Build encompassing adjacency for analysis
+  const encParentToChildren = new Map<string, { child: string; weight: number }[]>();
+  const encChildToParents = new Map<string, string[]>();
+  for (const e of encompassings) {
+    if (!encParentToChildren.has(e.parent)) encParentToChildren.set(e.parent, []);
+    encParentToChildren.get(e.parent)!.push({ child: e.child, weight: e.weight });
+    if (!encChildToParents.has(e.child)) encChildToParents.set(e.child, []);
+    encChildToParents.get(e.child)!.push(e.parent);
+  }
+
+  const topicsAsParent = encParentToChildren.size;
+  const topicsAsChild = encChildToParents.size;
+  const parentPct = Math.round(100 * topicsAsParent / topicCount);
+  const childPct = Math.round(100 * topicsAsChild / topicCount);
+  console.log(`  Coverage: ${topicsAsParent} parents (${parentPct}%), ${topicsAsChild} children (${childPct}%)`);
+
+  // H1: Parent concentration — edges shouldn't cluster on a few parent topics.
+  // If top 10% of parents hold >50% of edges, FIRe's set-cover can't spread credit.
+  const parentEdgeCounts = [...encParentToChildren.entries()].map(([, children]) => children.length).sort((a, b) => b - a);
+  const top10Pct = Math.max(1, Math.ceil(topicsAsParent * 0.1));
+  const top10PctEdges = parentEdgeCounts.slice(0, top10Pct).reduce((s, c) => s + c, 0);
+  const concentrationRatio = encompassings.length > 0 ? top10PctEdges / encompassings.length : 0;
+  console.log(`  Parent concentration: top ${top10Pct} parents hold ${Math.round(100 * concentrationRatio)}% of edges`);
+  if (concentrationRatio > 0.5) {
+    console.warn(`  WARN: Encompassing edges are concentrated on a few parents (${Math.round(100 * concentrationRatio)}% in top 10%). Spread encompassings across more topics for better FIRe coverage.`);
+    warnings++;
+  }
+
+  // H2: Cross-strand edges — these provide the most FIRe value because
+  // one review covers skills from multiple strands.
+  const strandMap = new Map<string, string>();
+  for (const t of graph.topics) {
+    if (t.strand) strandMap.set(t.id, t.strand);
+  }
+  let crossStrandCount = 0;
+  let withinStrandCount = 0;
+  for (const e of encompassings) {
+    const parentStrand = strandMap.get(e.parent);
+    const childStrand = strandMap.get(e.child);
+    if (parentStrand && childStrand) {
+      if (parentStrand !== childStrand) crossStrandCount++;
+      else withinStrandCount++;
+    }
+  }
+  const crossStrandPct = encompassings.length > 0 ? Math.round(100 * crossStrandCount / encompassings.length) : 0;
+  console.log(`  Cross-strand edges: ${crossStrandCount}/${encompassings.length} (${crossStrandPct}%)`);
+  if (crossStrandPct < 15 && topicCount > 50) {
+    console.warn(`  WARN: Only ${crossStrandPct}% of encompassing edges cross strands. Cross-strand edges provide the most FIRe value — target ≥15%.`);
+    warnings++;
+  }
+
+  // H3: Multi-hop chain depth — FIRe credit propagates 3 hops.
+  // Check that chains of depth ≥2 exist (parent → child → grandchild).
+  let maxChainDepth = 0;
+  let chainsDepth2Plus = 0;
+  for (const parentId of encParentToChildren.keys()) {
+    // BFS from this parent
+    const visited = new Set<string>();
+    const bfs: { id: string; depth: number }[] = [{ id: parentId, depth: 0 }];
+    let localMax = 0;
+    while (bfs.length > 0) {
+      const { id, depth } = bfs.shift()!;
+      if (visited.has(id)) continue;
+      visited.add(id);
+      localMax = Math.max(localMax, depth);
+      const children = encParentToChildren.get(id);
+      if (children && depth < 3) {
+        for (const c of children) {
+          if (!visited.has(c.child)) {
+            bfs.push({ id: c.child, depth: depth + 1 });
+          }
+        }
+      }
+    }
+    if (localMax >= 2) chainsDepth2Plus++;
+    maxChainDepth = Math.max(maxChainDepth, localMax);
+  }
+  console.log(`  Multi-hop chains: max depth ${maxChainDepth}, ${chainsDepth2Plus} parents with depth ≥2`);
+  if (maxChainDepth < 2 && topicCount > 50) {
+    console.warn(`  WARN: No multi-hop encompassing chains (max depth ${maxChainDepth}). FIRe credit propagates 3 hops — add chains where advanced skills build on intermediate skills that build on foundations.`);
+    warnings++;
+  }
+
+  // H4: Strand coverage — each strand with 5+ topics should participate
+  // in encompassings (either as parent or child).
+  const strands = new Map<string, string[]>();
+  for (const t of graph.topics) {
+    if (t.strand) {
+      if (!strands.has(t.strand)) strands.set(t.strand, []);
+      strands.get(t.strand)!.push(t.id);
+    }
+  }
+  const allEncTopics = new Set([...encParentToChildren.keys(), ...encChildToParents.keys()]);
+  const strandsWithoutEnc: string[] = [];
+  for (const [strand, topics] of strands) {
+    if (topics.length < 5) continue;
+    const hasEnc = topics.some(id => allEncTopics.has(id));
+    if (!hasEnc) strandsWithoutEnc.push(strand);
+  }
+  if (strandsWithoutEnc.length > 0) {
+    console.warn(`  WARN: ${strandsWithoutEnc.length} strand(s) with 5+ topics have zero encompassing edges:`);
+    for (const s of strandsWithoutEnc) {
+      console.warn(`    - ${s} (${strands.get(s)!.length} topics)`);
+    }
+    console.warn(`  Add within-strand chains (successor encompasses predecessor, weight 0.6-0.8).`);
+    warnings++;
+  }
+
+  // Summary assessment
+  const issues: string[] = [];
+  if (encompDensity < 1.5) issues.push(`density ${encompDensity.toFixed(2)} below 1.5 target`);
+  if (concentrationRatio > 0.5) issues.push(`edges concentrated on few parents`);
+  if (crossStrandPct < 15) issues.push(`only ${crossStrandPct}% cross-strand`);
+  if (maxChainDepth < 2) issues.push(`no multi-hop chains`);
+  if (strandsWithoutEnc.length > 0) issues.push(`${strandsWithoutEnc.length} strands unconnected`);
+
+  if (issues.length === 0) {
+    console.log(`  FIRe readiness: GOOD — density and distribution support effective FIRe credit`);
+  } else if (issues.length <= 2) {
+    console.log(`  FIRe readiness: PARTIAL — ${issues.join("; ")}`);
+  } else {
+    console.log(`  FIRe readiness: LOW — ${issues.join("; ")}`);
+    console.log(`  Action: Expand encompassing edges before expecting positive FIRe efficiency.`);
+    console.log(`  Priority: within-strand chains first, then cross-strand bridges, then multi-hop depth.`);
+  }
+}
+
 // 9. Problems-per-topic check
 const problemsDirs = [join(contentRoot, subject, "problems"), join(contentRoot, subject, "problems-generated")];
 const topicProblemCounts = new Map<string, number>();

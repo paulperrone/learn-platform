@@ -192,11 +192,11 @@ Encompassing weights represent how much practicing the parent topic exercises th
 
 | Discipline type | Target edges/topic | Rationale |
 |---|---|---|
-| **Mastery-gated** (math, CS) | 1.0-2.0 | Dense within-strand chains + cross-strand links. Skills compound heavily. |
+| **Mastery-gated** (math, CS) | 1.0-2.0 (≥1.5 for positive FIRe) | Dense within-strand chains + cross-strand links. Skills compound heavily. Below 1.5, FIRe set-cover doesn't have enough structure to reduce redundant reviews. |
 | **Context-layered** (history, philosophy) | 0.5-1.0 | "Causes of Civil War" encompasses "Slavery in America" (~0.4). Less direct skill transfer. |
 | **Flexible** (vocabulary, geography) | 0.3-0.5 | Root words encompass derived words (~0.3). Topics are mostly independent. |
 
-Math-foundations achieved 1.9 edges/topic (133 edges across 71 topics) with measurable FIRe compression improvement.
+Math at 705 topics has 1.01 edges/topic (711 edges) — at the lower bound. FIRe efficiency is -12.7% at this density. Priority for improvement: within-strand chains first (each successor encompasses predecessors), then cross-strand bridges (word problems encompass computation skills), then verify with `just validate-content` FIRe readiness output.
 
 ### Multi-Hop Credit
 
@@ -222,12 +222,31 @@ Run after adding encompassing edges to any discipline graph:
 5. `just visualize <discipline>` shows clear hierarchical structure
 6. FIRe compression test passes (`fire-compression.test.ts` can be parameterized for new disciplines)
 
+### When Encompassing Edges Help vs Don't
+
+Encompassing edges are **not universally beneficial.** FIRe's value depends on density, distribution, and whether edges reflect genuine skill overlap. Adding bad edges is worse than having fewer good ones.
+
+**Encompassings help when:**
+- The parent problem *genuinely exercises* the child skill in every problem. "Multiplying two-digit numbers" always exercises "multiplying one-digit numbers."
+- Edges are well-distributed across the graph — many parents each covering a few children, not a few mega-parents covering everything.
+- Cross-strand edges exist — these provide the most compression because one review refreshes skills from multiple areas.
+- Multi-hop chains exist (A encompasses B encompasses C) — credit propagates 3 hops, compounding stability gains.
+
+**Encompassings don't help (or actively hurt) when:**
+- The skill overlap is only conceptual, not procedural. "Understanding fractions" doesn't mean every fraction problem exercises "understanding division" at a level that maintains memory.
+- Density is below ~1.5 edges/topic for mastery-gated disciplines. The set-cover algorithm needs enough edges to find meaningful parent sets. Below this density, FIRe mostly just reorders reviews without compressing them.
+- Edges are concentrated on a few parent topics. If 10% of parents hold 50%+ of edges, the set-cover degenerates.
+- Weights are inflated. If a parent gets weight 0.8 but the child skill is only incidentally exercised, the system will skip reviews the student actually needs.
+
+**The test:** For each potential encompassing edge, ask: *"If a student solves 5 problems about the parent topic, will they have actually performed the child skill enough to maintain their memory of it?"* If the answer is "sometimes" or "indirectly," use weight 0.3-0.4 or skip the edge entirely.
+
 ### Anti-Patterns
 
 - **Too indirect:** Don't add encompassings where the exercise is tangential. Reading a word problem doesn't encompass phonics.
 - **Inflated weights:** Don't inflate weights to game compression. Inaccurate weights mean students skip reviews they actually need.
 - **Below threshold:** Don't create edges below 0.3. The FIRe credit is negligible and adds graph complexity.
 - **Missing cross-strand:** Don't skip cross-strand edges. They provide the most compression value — one review covering multiple skill areas.
+- **Bulk density chasing:** Don't add edges just to hit a density target. 50 accurate edges at 0.07/topic are more useful than 300 inflated edges at 0.4/topic. Quality of overlap matters more than count.
 
 ---
 
@@ -565,7 +584,7 @@ Keep a topic combined only when it is genuinely atomic for placement, instructio
 
 For mastery-gated disciplines, benchmark density against the strongest known external exemplars when available. For mathematics, Math Academy is the reference point. For ELA, CS, music technique, and similar domains, use the same skill-level principle even when no external ratio is available: the learner should be able to fail narrowly and be remediated narrowly.
 
-**Achieved values (math, 705 topics, post-021 expansion):** Prereq density 1.42/topic (slightly below 1.5 target — acceptable at scale; MA K-8 equivalent is ~2.0/topic). Encompassing density 1.01/topic (within 1.0-2.0 target). Max depth 30 (exceeds 10-15 target due to long K-8 chains). Problems/topic avg 23.6 (above 15 minimum).
+**Achieved values (math, 705 topics, post-021 expansion):** Prereq density 1.42/topic (slightly below 1.5 target — acceptable at scale; MA K-8 equivalent is ~2.0/topic). Encompassing density 1.01/topic (at lower bound of 1.0-2.0 target — FIRe efficiency is currently -12.7%, suggesting density needs to reach ~1.5 for positive returns). Max depth 30 (exceeds 10-15 target due to long K-8 chains). Problems/topic avg 23.6 (above 15 minimum). Run `just validate-content` to see FIRe readiness heuristics (cross-strand %, multi-hop chains, strand coverage, parent concentration).
 
 ### Recommended Graph Shape
 

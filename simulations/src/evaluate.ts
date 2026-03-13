@@ -1123,7 +1123,8 @@ function compareLevels(): void {
 // Positive means FIRe achieves mastery with fewer reviews per topic.
 
 async function computeFIReEfficiency(
-  seed: number = 42
+  seed: number = 42,
+  evaluationSessions?: number
 ): Promise<{ actual: number; contributing: string[] }> {
   const { SimulationRunner } = await import("./runner.js");
   const profilesDir = join(process.cwd(), "simulations", "profiles");
@@ -1131,7 +1132,11 @@ async function computeFIReEfficiency(
   // state long enough for virtual reviews), not too strong (topics mastered too
   // quickly → FIRe skips → butterfly effect noise dominates the measurement).
   const testProfileIds = ["average-older", "misconception-fractions", "fast-learner"];
-  const sessionCount = 15;
+  // Use the evaluation's session count when available. At longer horizons,
+  // stability compounding from virtual credit has more time to accumulate,
+  // giving a more accurate picture of FIRe's real-world efficiency.
+  // Cap at 60 to keep paired simulations tractable (~2min per profile).
+  const sessionCount = Math.min(evaluationSessions ?? 15, 60);
 
   const results: { profileId: string; efficiency: number; withRPM: number; withoutRPM: number; withMastery: number; withoutMastery: number }[] = [];
 
@@ -1631,7 +1636,7 @@ async function main() {
   // FIRe efficiency — runs paired simulations (~10s). Use --skip-fire to skip.
   if (!skipFire) {
     if (!jsonOnly) console.log("Running FIRe efficiency evaluation...");
-    const fireResult = await computeFIReEfficiency();
+    const fireResult = await computeFIReEfficiency(42, maxSessions);
     const fireTarget = targets.systems["fire_compression"];
     if (fireTarget) {
       const fireIdx = systemResults.findIndex((s) => s.systemId === "fire_compression");

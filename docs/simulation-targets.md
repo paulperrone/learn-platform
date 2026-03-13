@@ -88,7 +88,7 @@ Absolute targets are preferred — they are self-contained and do not require a 
 - **Citation:** Math Academy FIRe model (Skycak 2026); Ausubel et al. 1957 (retroactive facilitation).
 - **Metric:** Reviews-per-mastered-topic with vs without encompassing edges. Efficiency = `1 - (withRPM / withoutRPM)`.
 - **Target:** ≥0% (break even — FIRe should not hurt efficiency).
-- **Tolerance:** ±30%. Large tolerance reflects butterfly effects at 15 sessions — removing encompassing edges changes both FIRe credit AND review ordering, causing large variance. Baseline at L2: -12.7% (post Approach 4 implementation).
+- **Tolerance:** ±30%. Large tolerance reflects butterfly effects — removing encompassing edges changes both FIRe credit AND review ordering, causing large variance. Metric now scales with evaluation session count (capped at 60). Baseline: -12.6% at L2 (30 sessions), -19.8% at L3 (60 sessions). FIRe gets worse at longer horizons at current density (1.01 edges/topic).
 - **Why not total review count?** FIRe doesn't reduce total reviews — it replaces child reviews with new topic introductions. Students progress faster, do more total reviews, but master more topics per review. The old "compression" metric punished FIRe for working correctly.
 - **Implementation:** Retrieval-dependent credit (Approach 4). `applyFIReCredit()` applies virtual FSRS reviews on encompassed children. `compressReviews()` uses greedy set-cover but only eliminates children with R > 0.85 (well-retained, safe to skip). Children with R ≤ 0.85 stay in the review queue.
 - **How to update:** As encompassing density increases (target 1.5-2.0 edges/topic, currently ~1.01), efficiency should improve. Raise target if baseline consistently exceeds 15%.

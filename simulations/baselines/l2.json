@@ -1,6 +1,6 @@
 {
   "level": "l2",
-  "generatedAt": "2026-03-13T00:26:47.638Z",
+  "generatedAt": "2026-03-13T04:02:51.076Z",
   "sessionCount": 30,
   "seed": 42,
   "systems": {
@@ -25,7 +25,7 @@
       "status": "FAIL"
     },
     "fire_compression": {
-      "actual": -0.12680096548385042,
+      "actual": -0.12586249946187955,
       "status": "WARN"
     },
     "remediation_routing": {
