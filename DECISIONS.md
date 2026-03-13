@@ -1540,7 +1540,7 @@ Tag each target in `targets.json` with `signal_source: "engine" | "content" | "b
 - Conservative expansion (~400 topics): Would leave fractions and division under-split, making remediation imprecise
 - Aggressive expansion (~1200 topics): Would include trivial digit-count progressions and model-only variants that don't add remediable skill differentiation
 
-**Reference:** Full expansion map in `docs/expansion-map.md`
+**Reference:** Full expansion map in `docs/archive/expansion-map.md`
 
 ---
 
