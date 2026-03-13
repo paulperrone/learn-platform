@@ -1,13 +1,28 @@
 /**
  * Validate problem banks: check solutions are correct, answers parse, no empty fields.
  *
- * Usage: npx tsx tools/validate-content.ts [subject]
+ * Usage: npx tsx tools/validate-content.ts [subject] [--strict] [--lenient]
+ *
+ * Modes:
+ *   --strict   Require dimension fields (presentation, contentDepth, locale, flavor),
+ *              cognitiveDemand, source, and type on every item. Fails on missing fields.
+ *   --lenient  Only validate dimension values when present (skip missing). Default until
+ *              Phase 2 backfill is complete.
  */
 import { readFileSync, existsSync, readdirSync } from "fs";
 import { join } from "path";
 import { getContentDir } from "./content-dir.js";
 
-const subject = process.argv[2] ?? "math";
+// Parse CLI args
+const args = process.argv.slice(2);
+const flagArgs = args.filter((a) => a.startsWith("--"));
+const positionalArgs = args.filter((a) => !a.startsWith("--"));
+
+const subject = positionalArgs[0] ?? "math";
+const strictMode = flagArgs.includes("--strict");
+// Default is lenient (until Phase 2 backfill completes)
+const lenientMode = !strictMode;
+
 const contentDir = join(getContentDir(), subject);
 
 let errors = 0;
@@ -15,15 +30,48 @@ let warnings = 0;
 let totalProblems = 0;
 let totalExamples = 0;
 
-// Platform-incompatible instruction patterns
-// These describe physical/verbal actions that can't be done on a screen
 // Valid dimension values
-const VALID_FLAVORS = ["classic", "story", "game", "visual"];
+const VALID_FLAVORS = ["classic", "story", "game", "visual", "adventure", "space"];
 const VALID_LOCALES = ["en", "es", "fr", "zh", "ar"];
 const VALID_PRESENTATIONS = ["primary", "intermediate", "standard", "advanced"];
 const VALID_CONTENT_DEPTHS = ["survey", "contextual", "analytical", "synthesis"];
+const VALID_DEMANDS = ["procedural", "conceptual", "application", "reasoning", "error_analysis", "recall"];
+const VALID_SOURCES = ["hand-authored", "generated", "supplementary"];
+const VALID_TYPES = ["text-qa", "numerical-input", "multi-step", "matching", "multi-select", "equation-builder"];
 
-function validateDimensions(item: Record<string, unknown>, context: string): void {
+function validateDimensions(item: Record<string, unknown>, context: string, itemKind: "problem" | "example"): void {
+  // In strict mode, missing dimension fields are errors
+  if (strictMode) {
+    if (item.presentation === undefined) {
+      console.error(`ERROR: Missing presentation in ${context}`);
+      errors++;
+    }
+    if (item.contentDepth === undefined) {
+      console.error(`ERROR: Missing contentDepth in ${context}`);
+      errors++;
+    }
+    if (item.locale === undefined) {
+      console.error(`ERROR: Missing locale in ${context}`);
+      errors++;
+    }
+    if (item.flavor === undefined) {
+      console.error(`ERROR: Missing flavor in ${context}`);
+      errors++;
+    }
+    if (itemKind === "problem") {
+      if (item.cognitiveDemand === undefined) {
+        console.error(`ERROR: Missing cognitiveDemand in ${context}`);
+        errors++;
+      }
+      if (item.source === undefined) {
+        console.error(`ERROR: Missing source in ${context}`);
+        errors++;
+      }
+    }
+  }
+
+  // Always validate dimension values when present (both strict and lenient)
+  // These were validated in the original code — backward compatible
   if (item.flavor !== undefined && !VALID_FLAVORS.includes(item.flavor as string)) {
     console.error(`ERROR: Invalid flavor "${item.flavor}" in ${context}. Valid: ${VALID_FLAVORS.join(", ")}`);
     errors++;
@@ -39,6 +87,22 @@ function validateDimensions(item: Record<string, unknown>, context: string): voi
   if (item.contentDepth !== undefined && !VALID_CONTENT_DEPTHS.includes(item.contentDepth as string)) {
     console.error(`ERROR: Invalid contentDepth "${item.contentDepth}" in ${context}. Valid: ${VALID_CONTENT_DEPTHS.join(", ")}`);
     errors++;
+  }
+  // Validate cognitiveDemand, source, type values only in strict mode
+  // (existing content uses non-standard values like "analysis", "problem-solving" — Phase 2 backfill will fix)
+  if (strictMode) {
+    if (item.cognitiveDemand !== undefined && !VALID_DEMANDS.includes(item.cognitiveDemand as string)) {
+      console.error(`ERROR: Invalid cognitiveDemand "${item.cognitiveDemand}" in ${context}. Valid: ${VALID_DEMANDS.join(", ")}`);
+      errors++;
+    }
+    if (item.source !== undefined && !VALID_SOURCES.includes(item.source as string)) {
+      console.error(`ERROR: Invalid source "${item.source}" in ${context}. Valid: ${VALID_SOURCES.join(", ")}`);
+      errors++;
+    }
+    if (item.type !== undefined && !VALID_TYPES.includes(item.type as string)) {
+      console.error(`ERROR: Invalid type "${item.type}" in ${context}. Valid: ${VALID_TYPES.join(", ")}`);
+      errors++;
+    }
   }
 }
 
@@ -67,6 +131,9 @@ function checkPlatformCompatibility(text: string, context: string): void {
     }
   }
 }
+
+console.log(`Mode: ${strictMode ? "strict" : "lenient"}`);
+console.log(`Subject: ${subject}\n`);
 
 // Load graph topic IDs for cross-referencing keyPrerequisiteId
 const graphTopicIds = new Set<string>();
@@ -105,7 +172,7 @@ if (existsSync(problemsDir)) {
         warnings++;
       }
       // Dimension validation
-      validateDimensions(p, `${p.id} in ${file}`);
+      validateDimensions(p, `${p.id} in ${file}`, "problem");
       // Platform compatibility checks
       checkPlatformCompatibility(p.question ?? "", `${p.id} question`);
       for (const hint of p.hints ?? []) {
@@ -140,7 +207,7 @@ if (existsSync(examplesDir)) {
         errors++;
       }
       // Dimension validation
-      validateDimensions(ex, `${ex.id} in ${file}`);
+      validateDimensions(ex, `${ex.id} in ${file}`, "example");
       for (let i = 0; i < (ex.steps ?? []).length; i++) {
         const step = ex.steps[i];
         if (!step.subgoalLabel?.trim()) {

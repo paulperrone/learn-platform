@@ -71,6 +71,32 @@ just visualize $SUBJECT
 
 Opens an interactive HTML visualization of the knowledge graph.
 
+### 4b. Dimension Completeness
+
+Check that all content items have required dimension fields:
+
+```
+## Dimension Completeness
+
+- Problems with all dimension fields: N/M (X%)
+  - presentation: N/M
+  - contentDepth: N/M
+  - locale: N/M
+  - flavor: N/M
+  - cognitiveDemand: N/M
+  - source: N/M
+  - type: N/M
+- Examples with all dimension fields: N/M (X%)
+  - presentation: N/M
+  - contentDepth: N/M
+  - locale: N/M
+  - flavor: N/M
+- Presentation mismatches (doesn't match topic defaultPresentation): [list]
+- ContentDepth mismatches (doesn't match topic contentDepth): [list]
+```
+
+If dimension completeness is below 100%, recommend: "Run backfill script or apply from topic metadata."
+
 ### 5. Summary Output
 
 Present a consolidated summary:

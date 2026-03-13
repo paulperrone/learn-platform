@@ -99,6 +99,48 @@ Dimensions are independent and compose multiplicatively. A single topic could ha
 
 Not every combination needs to exist. Build the most impactful combinations first (see §12).
 
+### Valid Flavors
+
+`classic`, `story`, `game`, `visual`, `adventure`, `space`
+
+### Required Fields Per Content Item
+
+Every content item in source JSON (`problems/*.json`, `examples/*.json`) MUST include dimension fields explicitly. The bundle generator applies defaults for missing dimensions, but source content SHOULD always include them explicitly to prevent silent drift.
+
+**Problems — required fields:**
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `id` | string | Unique problem identifier |
+| `topicId` | string | Parent topic |
+| `difficulty` | `easy` \| `medium` \| `hard` | Difficulty level |
+| `question` | string | Problem text |
+| `answer` | string | Correct answer |
+| `hints` | string[] | Progressive hint sequence |
+| `solution` | string | Full worked solution |
+| `cognitiveDemand` | CognitiveDemand | What kind of thinking is tested (see §16) |
+| `source` | `hand-authored` \| `generated` \| `supplementary` | Content provenance |
+| `type` | AssessmentType | `text-qa`, `numerical-input`, `multi-step`, `matching`, `multi-select`, `equation-builder` |
+| `presentation` | PresentationLevel | Must match topic's `defaultPresentation` unless multi-presentation |
+| `contentDepth` | ContentDepthLevel | Must match topic's `contentDepth` unless multi-depth |
+| `locale` | string | `en` default |
+| `flavor` | string | `classic` default |
+
+**Worked examples — required fields:**
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `id` | string | Unique example identifier |
+| `topicId` | string | Parent topic |
+| `title` | string | Example title |
+| `steps` | WorkedExampleStep[] | Step-by-step breakdown |
+| `presentation` | PresentationLevel | Must match topic's `defaultPresentation` |
+| `contentDepth` | ContentDepthLevel | Must match topic's `contentDepth` |
+| `locale` | string | `en` default |
+| `flavor` | string | `classic` default |
+
+**Note:** `recall` is a valid cognitive demand for context-layered disciplines (history, philosophy). It represents factual recall — distinct from `procedural` (skill execution).
+
 ---
 
 ## 3. Disciplines & Progression Models

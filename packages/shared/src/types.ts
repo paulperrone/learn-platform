@@ -115,7 +115,9 @@ export type SessionMix = {
 
 export type ProblemDifficulty = "easy" | "medium" | "hard";
 
-export type CognitiveDemand = "procedural" | "conceptual" | "application" | "reasoning" | "error_analysis";
+export type CognitiveDemand = "procedural" | "conceptual" | "application" | "reasoning" | "error_analysis" | "recall";
+
+export type ContentSource = "hand-authored" | "generated" | "supplementary";
 
 export type DemandDistribution = Partial<Record<CognitiveDemand, number>>;
 
@@ -179,6 +181,11 @@ export type Problem = {
   visuals?: VisualAsset[];
   keyPrerequisiteId?: string;
   cognitiveDemand?: CognitiveDemand;
+  source?: ContentSource;
+  presentation?: PresentationLevel;
+  contentDepth?: ContentDepthLevel;
+  locale?: string;
+  flavor?: string;
 };
 
 export type PresentationLevel = "primary" | "intermediate" | "standard" | "advanced";
@@ -252,6 +259,10 @@ export type WorkedExample = {
   title: string;
   steps: WorkedExampleStep[];
   visuals?: VisualAsset[];
+  presentation?: PresentationLevel;
+  contentDepth?: ContentDepthLevel;
+  locale?: string;
+  flavor?: string;
 };
 
 export type WorkedExampleStep = {

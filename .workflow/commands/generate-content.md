@@ -114,6 +114,10 @@ For every topic, generate 2+ worked examples with step-by-step breakdowns:
   "id": "<topic-id>-ex1",
   "topicId": "<topic-id>",
   "title": "Example title",
+  "presentation": "<from topic defaultPresentation>",
+  "contentDepth": "<from topic contentDepth>",
+  "locale": "en",
+  "flavor": "classic",
   "steps": [
     {
       "subgoalLabel": "Step label",
@@ -126,6 +130,23 @@ For every topic, generate 2+ worked examples with step-by-step breakdowns:
 ```
 
 Save to `../learn-content/<subject>/examples/<topic-id>.json`.
+
+### Dimension Field Rules
+
+Every problem MUST include these dimension and metadata fields:
+- `cognitiveDemand` — appropriate demand type (see §16 of content-system.md)
+- `source` — `"hand-authored"` for Claude Code sessions, `"generated"` for procedural generators, `"supplementary"` for LLM gap-fill
+- `type` — `"text-qa"` default, or appropriate `AssessmentType`
+- `presentation` — match the topic's `defaultPresentation` from graph.json
+- `contentDepth` — match the topic's `contentDepth` from graph.json
+- `locale` — `"en"` unless generating localized content
+- `flavor` — `"classic"` unless generating themed content
+
+Every worked example MUST include:
+- `presentation` — match the topic's `defaultPresentation` from graph.json
+- `contentDepth` — match the topic's `contentDepth` from graph.json
+- `locale` — `"en"` unless generating localized content
+- `flavor` — `"classic"` unless generating themed content
 
 ### 6. Post-Generation Verification Loop
 
