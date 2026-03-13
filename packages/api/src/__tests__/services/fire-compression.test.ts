@@ -9,7 +9,7 @@ import {
   seedEncompassing,
   seedUserTopicState,
 } from "../helpers.js";
-import { createSRSService } from "../../services/srs.js";
+import { createSRSService, FIRE_ENABLED } from "../../services/srs.js";
 import * as schema from "../../db/schema.js";
 import { eq } from "drizzle-orm";
 
@@ -67,7 +67,7 @@ async function seedFutureState(
 // ---------------------------------------------------------------------------
 // Test 1: Enriched encompassings improve compression ratio
 // ---------------------------------------------------------------------------
-describe("FIRe compression with enriched graph", () => {
+describe.skipIf(!FIRE_ENABLED)("FIRe compression with enriched graph", () => {
   it("enriched graph (133 edges) compresses better than sparse graph (42 edges)", async () => {
     const db = getTestDb();
     const user = await seedUser({ id: "fire-enrich-1" });
@@ -159,7 +159,7 @@ describe("FIRe compression with enriched graph", () => {
 // ---------------------------------------------------------------------------
 // Test 2: Multi-hop credit flow with diminishing weights
 // ---------------------------------------------------------------------------
-describe("FIRe multi-hop credit flow", () => {
+describe.skipIf(!FIRE_ENABLED)("FIRe multi-hop credit flow", () => {
   it("credit flows 3 hops deep with diminishing weight", async () => {
     const db = getTestDb();
     const user = await seedUser({ id: "fire-hop-1" });
@@ -339,7 +339,7 @@ describe("FIRe multi-hop credit flow", () => {
 // ---------------------------------------------------------------------------
 // Test 3: Cross-strand coverage
 // ---------------------------------------------------------------------------
-describe("FIRe cross-strand coverage", () => {
+describe.skipIf(!FIRE_ENABLED)("FIRe cross-strand coverage", () => {
   it("multi-step word problems cover four computation skills", async () => {
     const db = getTestDb();
     const user = await seedUser({ id: "fire-cross-1" });

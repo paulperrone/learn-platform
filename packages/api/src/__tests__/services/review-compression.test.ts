@@ -8,7 +8,7 @@ import {
   seedTopic,
   seedEncompassing,
 } from "../helpers.js";
-import { createSRSService } from "../../services/srs.js";
+import { createSRSService, FIRE_ENABLED } from "../../services/srs.js";
 import * as schema from "../../db/schema.js";
 
 beforeAll(async () => {
@@ -122,7 +122,7 @@ describe("FIRe review compression", () => {
   });
 
   describe("compressReviews", () => {
-    it("selects high-coverage topic over merely overdue ones", async () => {
+    it.skipIf(!FIRE_ENABLED)("selects high-coverage topic over merely overdue ones", async () => {
       const db = getTestDb();
       const user = await seedUser({ id: "rc-comp-1" });
       const disc = await seedDiscipline({ id: "rc-comp-subj-1" });
@@ -250,7 +250,7 @@ describe("FIRe review compression", () => {
       expect(typeof mix.compressionStats.ratio).toBe("number");
     });
 
-    it("reports compression ratio > 1 when encompassing edges allow compression", async () => {
+    it.skipIf(!FIRE_ENABLED)("reports compression ratio > 1 when encompassing edges allow compression", async () => {
       const db = getTestDb();
       const user = await seedUser({ id: "rc-mix-2" });
       const disc = await seedDiscipline({ id: "rc-mix-subj-2" });

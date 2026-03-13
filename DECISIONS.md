@@ -1754,3 +1754,25 @@ Post-implementation results:
 **Rationale:** Unconditional queue elimination removed children that genuinely needed review. The R > 0.85 gate ensures elimination only occurs when the child's memory is strong enough that skipping review is safe. This is the minimum viable fix — more sophisticated approaches (content-aware credit, adaptive weights) require higher encompassing density or real user data.
 
 **Key insight:** The FIRe efficiency metric always runs at 15 sessions regardless of evaluation level. The identical -16.9% across L2-L5 was a measurement artifact, not evidence that FIRe never improves at longer horizons.
+
+---
+
+## 2026-03-12: Disable FIRe — premature at current graph scale
+
+**Source:** User session — Plan 022 Phase 4.5
+
+**Context:** After implementing Approach 4 (retrieval-dependent credit), FIRe efficiency remained negative (-12.7% at L2, -19.8% at L3) and worsened at longer horizons. The hypothesis that stability compounding would improve at longer horizons was disproven at 1.01 encompassing edges/topic.
+
+**Decision:** Disable FIRe via `FIRE_ENABLED = false` in `srs.ts`. Gate `applyFIReCredit()` (return `[]`) and `compressReviews()` (most-overdue ordering, no set-cover). Keep all code and encompassing edges intact for future re-enablement. Consolidate all FIRe documentation into `docs/fire.md`. Default evaluation skips FIRe paired comparison (`--run-fire` to opt in).
+
+**Why:**
+- FIRe consistently produces negative efficiency at current encompassing density (1.01 edges/topic on 705 topics)
+- Gets worse at longer horizons, not better — stability compounding hypothesis disproven
+- Removing FIRe from default evaluation eliminates misleading WARN/FAIL noise
+- Code preservation means re-enablement is a one-line change when density reaches threshold
+
+**Re-enablement criteria:** Encompassing density ≥ 1.5 edges/topic AND graph ≥ 1,500 topics.
+
+**Alternatives rejected:**
+- Keep FIRe enabled with wider tolerance: still produces noise in evaluation, no benefit to learners
+- Delete FIRe code: premature — the architecture is sound, only the graph density is insufficient

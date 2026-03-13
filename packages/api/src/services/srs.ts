@@ -11,6 +11,12 @@ const defaultFsrs = fsrs(defaultParams);
 const MIN_REVIEWS_FOR_OPTIMIZATION = 50;
 const OPTIMIZATION_STALENESS_DAYS = 7;
 
+// FIRe (Fractional Implicit Repetition) is disabled at current graph scale.
+// Encompassing density (1.01 edges/topic on 705 topics) is too sparse for
+// meaningful compression. Re-enable when density ≥ 1.5 and graph ≥ 1,500 topics.
+// See docs/fire.md for full analysis.
+export const FIRE_ENABLED = false;
+
 // Graduated mastery tiers based on FSRS stability (days).
 // Topics progress through tiers as stability grows, keeping them in
 // FIRe's scope and the review queue longer than binary mastery.
@@ -319,8 +325,7 @@ export function createSRSService(db: DB, fireDiagnostic?: FireDiagnosticConfig) 
 
     /**
      * Get topics due for review.
-     * Returns unmastered topics only. Mastered topics are maintained by FIRe
-     * credit (virtual stability growth) rather than explicit reviews.
+     * Returns unmastered topics only.
      */
     async getDueTopics(userId: string) {
       const now = new Date().toISOString();
@@ -355,6 +360,7 @@ export function createSRSService(db: DB, fireDiagnostic?: FireDiagnosticConfig) 
      * Skip if retrievability > 0.9 (child is fresh, no marginal benefit).
      */
     async applyFIReCredit(userId: string, topicId: string, rating: Grade) {
+      if (!FIRE_ENABLED && !fireDiagnostic) return [];
       if (fireDiagnostic?.disableCredit) return [];
       if (rating < Rating.Good) return [];
 
@@ -555,8 +561,8 @@ export function createSRSService(db: DB, fireDiagnostic?: FireDiagnosticConfig) 
         return { selected: [], coveredCount: 0 };
       }
 
-      // Diagnostic: skip set-cover ordering, use most-overdue only
-      if (fireDiagnostic?.disableOrdering) {
+      // FIRe disabled or diagnostic: use most-overdue ordering (no set-cover)
+      if ((!FIRE_ENABLED && !fireDiagnostic) || fireDiagnostic?.disableOrdering) {
         return { selected: candidates.slice(0, budget), coveredCount: 0 };
       }
 
@@ -637,9 +643,6 @@ export function createSRSService(db: DB, fireDiagnostic?: FireDiagnosticConfig) 
      * - Warmup: mastered topics for survey-depth recall (builds confidence, activates prior knowledge)
      * - Main: ~60% review + ~40% new frontier topics (existing interleave logic)
      * - Stretch: context-layered frontier topics at next depth (productive failure / priming)
-     *
-     * Reviews use FIRe compression: selects reviews that maximize implicit
-     * repetition of other due topics through encompassing edges.
      */
     async getSessionMix(userId: string, count: number = 10) {
       const dueTopics = await this.getDueTopics(userId);
@@ -715,17 +718,15 @@ export function createSRSService(db: DB, fireDiagnostic?: FireDiagnosticConfig) 
         mainReviewCap
       );
 
-      // Use FIRe compression to select reviews that maximize implicit coverage.
-      // compressReviews may return fewer than budget if encompassing coverage
-      // lets us skip explicit reviews for covered child topics.
+      // Select reviews ordered by most-overdue (FIRe compression disabled).
+      // When FIRe is re-enabled, compressReviews will use set-cover ordering.
       const { selected: compressedReviews, coveredCount } = await this.compressReviews(
         dueTopics,
         mainReviewBudget,
         warmupTopicIds
       );
 
-      // Review count: compressReviews returns up to budget reviews, ordered
-      // so parents come before children (FIRe credit accumulates over sessions)
+      // Review count from compression (most-overdue when FIRe disabled)
       const actualReviewCount = compressedReviews.length;
       const mainNewCount = mainSlots - actualReviewCount;
 

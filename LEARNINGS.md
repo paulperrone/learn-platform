@@ -1065,3 +1065,14 @@ FIRe gets MORE negative at longer horizons. The hypothesis that "stability compo
 **Area:** FIRe / review compression
 
 Phase 2.7 isolation showed that removing children from the review queue unconditionally (based on set-cover coverage) hurts mastery rates because children with low retrievability need explicit review. The R > 0.85 gate in Approach 4 fixes this: only skip children whose memory is genuinely strong enough that skipping is safe. Fast-learner profile went from -35.3% to +6.5% FIRe efficiency. The key insight is that queue elimination effectiveness scales with encompassing density — at ~1.01 edges/topic, aggressive elimination is counterproductive.
+
+---
+
+### 2026-03-12: FIRe gating pattern — use `!FIRE_ENABLED && !fireDiagnostic` for clean disable
+
+**Source:** User session — Plan 022 Phase 4.5
+**Area:** SRS / FIRe architecture
+
+When disabling FIRe via a constant, gate with `!FIRE_ENABLED && !fireDiagnostic` (not just `!FIRE_ENABLED`). The `fireDiagnostic` parameter allows the FIRe isolation diagnostic and paired evaluation to still exercise the full FIRe code path even when FIRe is globally disabled. This keeps the `--run-fire` and `--fire-isolation` evaluation flags working for future density analysis without requiring a code change. Tests use `describe.skipIf(!FIRE_ENABLED)` / `it.skipIf(!FIRE_ENABLED)` to cleanly skip FIRe-specific tests.
+
+**Context:** Any future feature disable should follow this pattern — global constant + diagnostic bypass + test gating via `skipIf`.

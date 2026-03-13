@@ -136,11 +136,11 @@ Not every combination needs to exist. Build the most impactful combinations firs
 
 ## 4. Encompassing Relationships
 
-> See also: [`fire-implementation-analysis.md`](fire-implementation-analysis.md) for a comprehensive analysis of FIRe implementation approaches and empirical findings.
+> **FIRe is currently disabled** (insufficient encompassing density at 1.01 edges/topic on 705 topics). Encompassing edges are retained for future re-enablement when density ≥ 1.5 and graph ≥ 1,500 topics. See [`fire.md`](fire.md) for full analysis and re-enablement criteria.
 
 Encompassing edges are distinct from prerequisites. **Prerequisites** control sequencing — "you must learn A before B." **Encompassings** define implicit practice — "practicing B implicitly exercises A."
 
-When a student practices topic B and B encompasses A, the platform gives A a **virtual FSRS review** — updating its spaced-repetition state (stability, due date, last review) as if it were actually reviewed, scaled by the encompassing weight. This is FIRe (Fractional Implicit Repetition) credit. With sufficient encompassing density, most topics can be maintained through implicit repetition alone — Math Academy reports roughly one explicit review per topic on average.
+When FIRe is enabled, practicing topic B (which encompasses A) gives A a virtual FSRS review — updating its spaced-repetition state as if it were actually reviewed, scaled by the encompassing weight. With sufficient encompassing density, most topics can be maintained through implicit repetition alone — Math Academy reports roughly one explicit review per topic on average. At current graph scale, this mechanism is disabled but the edges are preserved for future use.
 
 ### How to Identify Encompassing Edges
 

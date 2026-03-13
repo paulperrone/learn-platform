@@ -8,7 +8,7 @@ import {
   seedTopic,
   seedEncompassing,
 } from "../helpers.js";
-import { createSRSService } from "../../services/srs.js";
+import { createSRSService, FIRE_ENABLED } from "../../services/srs.js";
 import * as schema from "../../db/schema.js";
 import { eq, and } from "drizzle-orm";
 
@@ -406,7 +406,7 @@ describe("createSRSService", () => {
     });
   });
 
-  describe("applyFIReCredit", () => {
+  describe.skipIf(!FIRE_ENABLED)("applyFIReCredit", () => {
     it("applies virtual FSRS review with interpolated stability", async () => {
       const db = getTestDb();
       const user = await seedUser({ id: "srs-user-8" });

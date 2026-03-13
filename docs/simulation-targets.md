@@ -80,19 +80,15 @@ Absolute targets are preferred — they are self-contained and do not require a 
 - **How to update:** If strands are reorganized or new strands added, adjacency percentages change mechanically. Revalidate after graph structure changes.
 - **Red flags:** If >4 profiles exceed 10%, the session planner is not interleaving effectively. Check topic selection algorithm.
 
-### 2.6 FIRe Review Efficiency (P1)
+### 2.6 FIRe Review Efficiency (P1) — DISABLED
 
-> See [`fire-implementation-analysis.md`](fire-implementation-analysis.md) for 13 implementation approaches and stack rankings.
+> **FIRe is disabled as of Plan 022.** This metric is skipped in default evaluation runs. Use `--run-fire` to explicitly evaluate. See [`fire.md`](fire.md) for full analysis.
 
-- **Principle:** Advanced topics implicitly review prerequisites. Retroactive facilitation restores memory as effectively as direct repetition.
-- **Citation:** Math Academy FIRe model (Skycak 2026); Ausubel et al. 1957 (retroactive facilitation).
-- **Metric:** Reviews-per-mastered-topic with vs without encompassing edges. Efficiency = `1 - (withRPM / withoutRPM)`.
-- **Target:** ≥0% (break even — FIRe should not hurt efficiency).
-- **Tolerance:** ±30%. Large tolerance reflects butterfly effects — removing encompassing edges changes both FIRe credit AND review ordering, causing large variance. Metric now scales with evaluation session count (capped at 60). Baseline: -12.6% at L2 (30 sessions), -19.8% at L3 (60 sessions). FIRe gets worse at longer horizons at current density (1.01 edges/topic).
-- **Why not total review count?** FIRe doesn't reduce total reviews — it replaces child reviews with new topic introductions. Students progress faster, do more total reviews, but master more topics per review. The old "compression" metric punished FIRe for working correctly.
-- **Implementation:** Retrieval-dependent credit (Approach 4). `applyFIReCredit()` applies virtual FSRS reviews on encompassed children. `compressReviews()` uses greedy set-cover but only eliminates children with R > 0.85 (well-retained, safe to skip). Children with R ≤ 0.85 stay in the review queue.
-- **How to update:** As encompassing density increases (target 1.5-2.0 edges/topic, currently ~1.01), efficiency should improve. Raise target if baseline consistently exceeds 15%.
-- **Red flags:** If efficiency <-30%, the retrieval gate may be too aggressive. Check RETRIEVAL_GATE constant in `srs.ts`. If efficiency >15%, consider lowering the gate threshold to eliminate more redundant reviews.
+- **Status:** Disabled. FIRe produced -12.7% efficiency at best, worsening at longer horizons (-19.8% at 60 sessions). Insufficient encompassing density (1.01 edges/topic on 705 topics).
+- **Re-enablement criteria:** Encompassing density ≥ 1.5 edges/topic AND graph ≥ 1,500 topics. Set `FIRE_ENABLED = true` in `srs.ts`.
+- **Metric (when enabled):** Reviews-per-mastered-topic with vs without encompassing edges. Efficiency = `1 - (withRPM / withoutRPM)`.
+- **Target (when enabled):** ≥0% with ±30% tolerance.
+- **Last baseline:** -12.6% at L2 (30 sessions), -19.8% at L3 (60 sessions).
 
 ### 2.7 Remediation Routing (P0)
 

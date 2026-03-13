@@ -10,7 +10,7 @@
  *   npx tsx simulations/src/evaluate.ts --runs-dir <dir>             # evaluate specific directory
  *   npx tsx simulations/src/evaluate.ts --profiles average-older,strong-older
  *   npx tsx simulations/src/evaluate.ts --json                       # JSON-only output
- *   npx tsx simulations/src/evaluate.ts --skip-fire                  # skip FIRe comparison (~10s)
+ *   npx tsx simulations/src/evaluate.ts --run-fire                    # run FIRe comparison (disabled by default)
  *   npx tsx simulations/src/evaluate.ts --fire-isolation              # run FIRe isolation diagnostic (4 modes × 3 profiles)
  *   npx tsx simulations/src/evaluate.ts --level l2                   # tag report with maturity level + save baseline
  *   npx tsx simulations/src/evaluate.ts --compare-levels             # compare baselines across maturity levels
@@ -511,7 +511,7 @@ const METRIC_COMPUTERS: Record<string, MetricComputer> = {
   interleaving: (runs) => computeInterleaving(runs),
   fire_compression: () => ({
     actual: 0,
-    contributing: ["placeholder — replaced by computeFIReEfficiency() in main()"],
+    contributing: ["FIRe disabled — use --run-fire to evaluate"],
   }),
   remediation_routing: (runs) => computeRemediationRouting(runs),
   presentation_drift: (runs) => computePresentationDrift(runs),
@@ -1580,7 +1580,8 @@ function printConsoleReport(report: HealingReport): void {
 async function main() {
   const args = process.argv.slice(2);
   const jsonOnly = args.includes("--json");
-  const skipFire = args.includes("--skip-fire");
+  // FIRe is disabled (see docs/fire.md). Use --run-fire to explicitly run FIRe evaluation.
+  const skipFire = !args.includes("--run-fire");
   const fireIsolation = args.includes("--fire-isolation");
   const doCompareLevels = args.includes("--compare-levels");
 

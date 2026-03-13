@@ -12,7 +12,7 @@ import {
   seedPrerequisite,
   seedUserTopicState,
 } from "../helpers.js";
-import { createSRSService } from "../../services/srs.js";
+import { createSRSService, FIRE_ENABLED } from "../../services/srs.js";
 import { Rating } from "ts-fsrs";
 import * as schema from "../../db/schema.js";
 import { eq, and } from "drizzle-orm";
@@ -24,7 +24,7 @@ import { eq, and } from "drizzle-orm";
  * and that the resulting intervals propagate correctly through FIRe credit
  * (Plan 010) to encompassed child topics.
  */
-describe("confidence-fsrs-fire integration", () => {
+describe.skipIf(!FIRE_ENABLED)("confidence-fsrs-fire integration", () => {
   beforeAll(async () => {
     await applyMigrations();
   });
