@@ -16,9 +16,9 @@ Add topic/problem attribution and outcome correlation to LLM usage tracking so p
 
 ## Progress
 
-**Completed:** Phase 1
+**Completed:** Phase 1, Phase 2
 **In Progress:** —
-**Next:** Phase 2
+**Next:** Phase 3
 
 ---
 
@@ -99,7 +99,7 @@ Add topic/problem attribution and outcome correlation to LLM usage tracking so p
 
 ---
 
-## Phase 2: Correlation Analytics
+## Phase 2: Correlation Analytics ✓
 **Goal:** Admin endpoints that join LLM usage with learning outcomes to measure whether premium features improve learning. Uses D1 review_log (long-term, permanent) and AE (granular per-problem, 90-day).
 
 ### Context for Execution
@@ -114,31 +114,31 @@ Add topic/problem attribution and outcome correlation to LLM usage tracking so p
 - D1 `user_topic_state` (has mastery, stability, lapses, reps)
 - AE (has per-problem granularity with `llmAssisted` blob13)
 
-1. [ ] [IMP] Add `/admin/analytics/llm-effectiveness` endpoint:
+1. [x] [IMP] Add `/admin/analytics/llm-effectiveness` endpoint:
    - Per-topic accuracy split: `llm_assisted = true` vs `llm_assisted = false`
    - Minimum sample size: 10 attempts per group per topic
    - Response: `{ topicId, llmAccuracy, baselineAccuracy, delta, llmAttempts, baselineAttempts }`
    - Sort by delta descending (topics where LLM helps most)
    - Also compute overall: "LLM-assisted accuracy: X% vs baseline: Y%"
 
-2. [ ] [IMP] Add `/admin/analytics/llm-hint-outcomes` endpoint:
+2. [x] [IMP] Add `/admin/analytics/llm-hint-outcomes` endpoint:
    - For each hint event: did the student get the NEXT attempt on the same topic correct?
    - Split by `hint_source` (static vs LLM)
    - Response: `{ hintSource, nextAttemptAccuracy, sampleSize }`
    - Also: per-purpose effectiveness (tutor vs grade vs hint L3 vs hint L4)
 
-3. [ ] [IMP] Add `/admin/analytics/llm-mastery-impact` endpoint:
+3. [x] [IMP] Add `/admin/analytics/llm-mastery-impact` endpoint:
    - Compare time-to-mastery (sessions from first attempt to mastered) for users who used LLM on a topic vs those who didn't
    - Compare lapse rate (post-mastery lapses) for LLM-assisted vs unassisted mastery
    - Requires joining `llm_usage` (by topicId, userId) with `user_topic_state` (mastery, lapses, reps)
    - Response: `{ llmAvgSessionsToMastery, baselineAvgSessionsToMastery, llmAvgLapses, baselineAvgLapses }`
 
-4. [ ] [IMP] Add budget exhaustion logging:
+4. [x] [IMP] Add budget exhaustion logging:
    - **Decision: Append to `llm_usage` with `purpose: "budget_exceeded"`** — no new table needed
    - When `checkBudget()` returns false (budget exceeded), insert a row into `llm_usage` with `purpose: "budget_exceeded"`, `inputTokens: 0`, `outputTokens: 0`, `costCents: 0`, plus `topicId` and `problemId` from request context
    - Admin endpoint: `/admin/analytics/llm-budget-impact` — what happens to accuracy AFTER budget exhaustion? (Compare pre- vs post-exhaustion accuracy for the same user by joining `llm_usage` WHERE `purpose = 'budget_exceeded'` with subsequent `review_log` entries)
 
-5. [ ] [TST] Test correlation analytics:
+5. [x] [TST] Test correlation analytics:
    - Unit test: effectiveness endpoint returns correct delta calculations
    - Unit test: hint outcomes correctly links hint event to next attempt
    - Unit test: mastery impact correctly joins llm_usage with user_topic_state

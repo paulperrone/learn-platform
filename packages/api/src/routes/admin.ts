@@ -3,7 +3,7 @@ import type { Context, Next } from "hono";
 import { createAuth } from "../lib/auth.js";
 import { getDb } from "../db/index.js";
 import * as schema from "../db/schema.js";
-import { eq, sql, gte, desc, and, countDistinct } from "drizzle-orm";
+import { eq, sql, gte, desc, and, countDistinct, inArray, lt } from "drizzle-orm";
 import type { Env } from "../index.js";
 
 type AuthUser = { id: string; name: string; email: string; role?: string | null };
@@ -677,6 +677,272 @@ adminRoutes.get("/content-matrix", async (c) => {
       topicsWithMissingDifficulties: 0, // Now tracked in R2 manifests
       topicsWithNoAssets: topicsWithNoContent,
       topicsWithLowQuality,
+    },
+  });
+});
+
+// --- LLM Effectiveness Analytics ---
+
+const MIN_SAMPLE_SIZE = 10;
+
+/** Per-topic accuracy split: LLM-assisted vs baseline */
+adminRoutes.get("/analytics/llm-effectiveness", async (c) => {
+  const db = getDb(c.env.DB);
+
+  // Get all review_log rows with the llm_assisted flag
+  const rows = await db
+    .select({
+      topicId: schema.reviewLog.topicId,
+      llmAssisted: schema.reviewLog.llmAssisted,
+      correct: schema.reviewLog.correct,
+    })
+    .from(schema.reviewLog);
+
+  // Group by topic and llm_assisted
+  const topicStats = new Map<string, { llm: { correct: number; total: number }; baseline: { correct: number; total: number } }>();
+
+  for (const row of rows) {
+    if (!topicStats.has(row.topicId)) {
+      topicStats.set(row.topicId, {
+        llm: { correct: 0, total: 0 },
+        baseline: { correct: 0, total: 0 },
+      });
+    }
+    const stats = topicStats.get(row.topicId)!;
+    const bucket = row.llmAssisted ? stats.llm : stats.baseline;
+    bucket.total++;
+    if (row.correct) bucket.correct++;
+  }
+
+  // Compute per-topic deltas (only when both groups have min sample size)
+  const topics: {
+    topicId: string;
+    llmAccuracy: number;
+    baselineAccuracy: number;
+    delta: number;
+    llmAttempts: number;
+    baselineAttempts: number;
+  }[] = [];
+
+  let overallLlmCorrect = 0;
+  let overallLlmTotal = 0;
+  let overallBaseCorrect = 0;
+  let overallBaseTotal = 0;
+
+  for (const [topicId, stats] of topicStats) {
+    overallLlmCorrect += stats.llm.correct;
+    overallLlmTotal += stats.llm.total;
+    overallBaseCorrect += stats.baseline.correct;
+    overallBaseTotal += stats.baseline.total;
+
+    if (stats.llm.total >= MIN_SAMPLE_SIZE && stats.baseline.total >= MIN_SAMPLE_SIZE) {
+      const llmAcc = stats.llm.correct / stats.llm.total;
+      const baseAcc = stats.baseline.correct / stats.baseline.total;
+      topics.push({
+        topicId,
+        llmAccuracy: Math.round(llmAcc * 1000) / 1000,
+        baselineAccuracy: Math.round(baseAcc * 1000) / 1000,
+        delta: Math.round((llmAcc - baseAcc) * 1000) / 1000,
+        llmAttempts: stats.llm.total,
+        baselineAttempts: stats.baseline.total,
+      });
+    }
+  }
+
+  // Sort by delta descending (topics where LLM helps most)
+  topics.sort((a, b) => b.delta - a.delta);
+
+  return c.json({
+    overall: {
+      llmAccuracy: overallLlmTotal > 0 ? Math.round((overallLlmCorrect / overallLlmTotal) * 1000) / 1000 : null,
+      baselineAccuracy: overallBaseTotal > 0 ? Math.round((overallBaseCorrect / overallBaseTotal) * 1000) / 1000 : null,
+      llmAttempts: overallLlmTotal,
+      baselineAttempts: overallBaseTotal,
+    },
+    topics,
+    minSampleSize: MIN_SAMPLE_SIZE,
+  });
+});
+
+/** Hint outcome analysis: did the student get the NEXT attempt correct after a hint? */
+adminRoutes.get("/analytics/llm-hint-outcomes", async (c) => {
+  const db = getDb(c.env.DB);
+
+  // Get all review_log rows ordered by user, topic, and time
+  const rows = await db
+    .select({
+      userId: schema.reviewLog.userId,
+      topicId: schema.reviewLog.topicId,
+      correct: schema.reviewLog.correct,
+      hintSource: schema.reviewLog.hintSource,
+      hintsUsed: schema.reviewLog.hintsUsed,
+      createdAt: schema.reviewLog.createdAt,
+    })
+    .from(schema.reviewLog)
+    .orderBy(schema.reviewLog.userId, schema.reviewLog.topicId, schema.reviewLog.createdAt);
+
+  // For each hint event, check if next attempt on same topic by same user was correct
+  const outcomes = new Map<string, { nextCorrect: number; total: number }>();
+
+  for (let i = 0; i < rows.length - 1; i++) {
+    const current = rows[i];
+    const hintSrc = current.hintSource;
+    if (!hintSrc) continue; // no hint used
+
+    // Find next attempt on same topic by same user
+    for (let j = i + 1; j < rows.length; j++) {
+      const next = rows[j];
+      if (next.userId === current.userId && next.topicId === current.topicId) {
+        if (!outcomes.has(hintSrc)) outcomes.set(hintSrc, { nextCorrect: 0, total: 0 });
+        const stats = outcomes.get(hintSrc)!;
+        stats.total++;
+        if (next.correct) stats.nextCorrect++;
+        break;
+      }
+    }
+  }
+
+  // Also compute per-purpose effectiveness from llm_usage
+  const purposeRows = await db
+    .select({
+      purpose: schema.llmUsage.purpose,
+      topicId: schema.llmUsage.topicId,
+      userId: schema.llmUsage.userId,
+    })
+    .from(schema.llmUsage)
+    .where(sql`${schema.llmUsage.topicId} IS NOT NULL`);
+
+  const purposeCounts = new Map<string, number>();
+  for (const row of purposeRows) {
+    purposeCounts.set(row.purpose, (purposeCounts.get(row.purpose) ?? 0) + 1);
+  }
+
+  const hintOutcomes = [...outcomes.entries()].map(([hintSource, stats]) => ({
+    hintSource,
+    nextAttemptAccuracy: stats.total > 0 ? Math.round((stats.nextCorrect / stats.total) * 1000) / 1000 : null,
+    sampleSize: stats.total,
+  }));
+
+  return c.json({
+    hintOutcomes,
+    purposeBreakdown: [...purposeCounts.entries()].map(([purpose, count]) => ({ purpose, count })),
+  });
+});
+
+/** Compare time-to-mastery and lapse rates for LLM-assisted vs unassisted */
+adminRoutes.get("/analytics/llm-mastery-impact", async (c) => {
+  const db = getDb(c.env.DB);
+
+  // Get all mastered topics with their stats
+  const masteredTopics = await db
+    .select({
+      userId: schema.userTopicState.userId,
+      topicId: schema.userTopicState.topicId,
+      reps: schema.userTopicState.reps,
+      lapses: schema.userTopicState.lapses,
+      mastered: schema.userTopicState.mastered,
+    })
+    .from(schema.userTopicState)
+    .where(eq(schema.userTopicState.mastered, true));
+
+  // Get LLM usage by user+topic to determine which mastery was LLM-assisted
+  const llmUsageByUserTopic = new Set<string>();
+  const llmRows = await db
+    .select({
+      userId: schema.llmUsage.userId,
+      topicId: schema.llmUsage.topicId,
+    })
+    .from(schema.llmUsage)
+    .where(sql`${schema.llmUsage.topicId} IS NOT NULL`);
+
+  for (const row of llmRows) {
+    llmUsageByUserTopic.add(`${row.userId}:${row.topicId}`);
+  }
+
+  let llmRepsSum = 0, llmRepsCount = 0, llmLapsesSum = 0;
+  let baseRepsSum = 0, baseRepsCount = 0, baseLapsesSum = 0;
+
+  for (const topic of masteredTopics) {
+    const key = `${topic.userId}:${topic.topicId}`;
+    if (llmUsageByUserTopic.has(key)) {
+      llmRepsSum += topic.reps;
+      llmLapsesSum += topic.lapses;
+      llmRepsCount++;
+    } else {
+      baseRepsSum += topic.reps;
+      baseLapsesSum += topic.lapses;
+      baseRepsCount++;
+    }
+  }
+
+  return c.json({
+    llmAssisted: {
+      avgRepsToMastery: llmRepsCount > 0 ? Math.round((llmRepsSum / llmRepsCount) * 100) / 100 : null,
+      avgLapses: llmRepsCount > 0 ? Math.round((llmLapsesSum / llmRepsCount) * 100) / 100 : null,
+      topicCount: llmRepsCount,
+    },
+    baseline: {
+      avgRepsToMastery: baseRepsCount > 0 ? Math.round((baseRepsSum / baseRepsCount) * 100) / 100 : null,
+      avgLapses: baseRepsCount > 0 ? Math.round((baseLapsesSum / baseRepsCount) * 100) / 100 : null,
+      topicCount: baseRepsCount,
+    },
+  });
+});
+
+/** Budget exhaustion impact: accuracy before vs after budget exhaustion */
+adminRoutes.get("/analytics/llm-budget-impact", async (c) => {
+  const db = getDb(c.env.DB);
+
+  // Find budget_exceeded events
+  const exhaustionEvents = await db
+    .select({
+      userId: schema.llmUsage.userId,
+      topicId: schema.llmUsage.topicId,
+      createdAt: schema.llmUsage.createdAt,
+    })
+    .from(schema.llmUsage)
+    .where(eq(schema.llmUsage.purpose, "budget_exceeded"));
+
+  if (exhaustionEvents.length === 0) {
+    return c.json({ message: "No budget exhaustion events recorded yet", data: null });
+  }
+
+  // For each exhaustion event, compare pre/post accuracy for that user
+  let preCorrect = 0, preTotal = 0;
+  let postCorrect = 0, postTotal = 0;
+
+  for (const event of exhaustionEvents) {
+    const reviews = await db
+      .select({
+        correct: schema.reviewLog.correct,
+        createdAt: schema.reviewLog.createdAt,
+      })
+      .from(schema.reviewLog)
+      .where(eq(schema.reviewLog.userId, event.userId))
+      .orderBy(schema.reviewLog.createdAt);
+
+    for (const review of reviews) {
+      if (review.createdAt < event.createdAt) {
+        preTotal++;
+        if (review.correct) preCorrect++;
+      } else {
+        postTotal++;
+        if (review.correct) postCorrect++;
+      }
+    }
+  }
+
+  return c.json({
+    data: {
+      preExhaustion: {
+        accuracy: preTotal > 0 ? Math.round((preCorrect / preTotal) * 1000) / 1000 : null,
+        attempts: preTotal,
+      },
+      postExhaustion: {
+        accuracy: postTotal > 0 ? Math.round((postCorrect / postTotal) * 1000) / 1000 : null,
+        attempts: postTotal,
+      },
+      exhaustionEvents: exhaustionEvents.length,
     },
   });
 });

@@ -108,6 +108,25 @@ async function checkBudget(db: ReturnType<typeof getDb>, userId: string): Promis
 
 const BUDGET_ERROR = { error: "LLM usage limit reached for this month. Learning continues without AI tutoring." };
 
+/** Log a budget_exceeded event to llm_usage for analytics */
+async function logBudgetExceeded(db: ReturnType<typeof getDb>, userId: string, topicId?: string, problemId?: string) {
+  try {
+    await db.insert(schema.llmUsage).values({
+      id: crypto.randomUUID(),
+      userId,
+      model: "",
+      inputTokens: 0,
+      outputTokens: 0,
+      costCents: 0,
+      purpose: "budget_exceeded",
+      topicId: topicId ?? null,
+      problemId: problemId ?? null,
+    });
+  } catch {
+    // Best-effort — don't fail the response
+  }
+}
+
 /** Resolve the API key for a user: family provisioned key → platform key fallback */
 async function resolveApiKey(db: ReturnType<typeof getDb>, userId: string, platformKey: string): Promise<string> {
   // Find user's parent (managed child) → parent's org → org metadata
@@ -168,7 +187,10 @@ llmRoutes.post("/evaluate", async (c) => {
     sessionId?: string;
     locale?: string;
   }>();
-  if (!(await checkBudget(db, body.userId))) return c.json(BUDGET_ERROR, 429);
+  if (!(await checkBudget(db, body.userId))) {
+    await logBudgetExceeded(db, body.userId, body.topicId);
+    return c.json(BUDGET_ERROR, 429);
+  }
   const llm = await createConfiguredLLM(db, body.userId, c.env.OPENROUTER_API_KEY);
 
   // Set LLM-assisted flag on session state if sessionId provided
@@ -199,7 +221,10 @@ llmRoutes.post("/tutor", async (c) => {
     sessionId?: string;
     locale?: string;
   }>();
-  if (!(await checkBudget(db, body.userId))) return c.json(BUDGET_ERROR, 429);
+  if (!(await checkBudget(db, body.userId))) {
+    await logBudgetExceeded(db, body.userId, body.topicId);
+    return c.json(BUDGET_ERROR, 429);
+  }
   if (body.sessionId) await markSessionLLMAssisted(db, body.sessionId);
   const llm = await createConfiguredLLM(db, body.userId, c.env.OPENROUTER_API_KEY);
   const result = await llm.socraticTutor(
@@ -226,7 +251,10 @@ llmRoutes.post("/tutor-stream", async (c) => {
     sessionId?: string;
     locale?: string;
   }>();
-  if (!(await checkBudget(db, body.userId))) return c.json(BUDGET_ERROR, 429);
+  if (!(await checkBudget(db, body.userId))) {
+    await logBudgetExceeded(db, body.userId, body.topicId);
+    return c.json(BUDGET_ERROR, 429);
+  }
   if (body.sessionId) await markSessionLLMAssisted(db, body.sessionId);
   const llm = await createConfiguredLLM(db, body.userId, c.env.OPENROUTER_API_KEY);
 
@@ -284,7 +312,10 @@ llmRoutes.post("/hint", async (c) => {
   const hasStaticHint = nextLevel <= 2 && body.staticHints.length >= nextLevel;
 
   if (!hasStaticHint) {
-    if (!(await checkBudget(db, body.userId))) return c.json(BUDGET_ERROR, 429);
+    if (!(await checkBudget(db, body.userId))) {
+      await logBudgetExceeded(db, body.userId, body.topicId, body.problemId);
+      return c.json(BUDGET_ERROR, 429);
+    }
   }
 
   if (body.sessionId) {
@@ -320,7 +351,10 @@ llmRoutes.post("/grade", async (c) => {
     sessionId?: string;
     locale?: string;
   }>();
-  if (!(await checkBudget(db, body.userId))) return c.json(BUDGET_ERROR, 429);
+  if (!(await checkBudget(db, body.userId))) {
+    await logBudgetExceeded(db, body.userId, body.topicId, body.problemId);
+    return c.json(BUDGET_ERROR, 429);
+  }
   if (body.sessionId) await markSessionLLMAssisted(db, body.sessionId);
   const llm = await createConfiguredLLM(db, body.userId, c.env.OPENROUTER_API_KEY);
   const result = await llm.gradeResponse(
