@@ -1,11 +1,11 @@
 {
   "level": "l1",
-  "generatedAt": "2026-03-11T03:26:36.993Z",
+  "generatedAt": "2026-03-13T06:10:03.764Z",
   "sessionCount": 5,
   "seed": 42,
   "systems": {
     "mastery_convergence": {
-      "actual": 5,
+      "actual": 11,
       "status": "FAIL"
     },
     "mastery_preservation": {
@@ -13,38 +13,38 @@
       "status": "PASS"
     },
     "difficulty_targeting": {
-      "actual": 23,
+      "actual": 22,
       "status": "PASS"
     },
     "review_new_balance": {
-      "actual": 0.43973941368078173,
+      "actual": 0.4017946161515454,
       "status": "FAIL"
     },
     "interleaving": {
-      "actual": 0.03556308213378493,
+      "actual": 0.04596774193548387,
       "status": "PASS"
     },
     "fire_compression": {
-      "actual": -0.24967119464273177,
-      "status": "WARN"
+      "actual": 0,
+      "status": "PASS"
     },
     "remediation_routing": {
-      "actual": 335,
+      "actual": 68,
       "status": "PASS"
     },
     "presentation_drift": {
-      "actual": 5,
+      "actual": 3,
       "status": "FAIL"
     },
     "diagnostic_placement": {
-      "actual": 27,
-      "status": "PASS"
+      "actual": 23,
+      "status": "WARN"
     },
     "cognitive_demand_entropy": {
-      "actual": 1.3513066030284224,
+      "actual": 1.7693842532399777,
       "status": "PASS"
     }
   },
   "profileCount": 29,
-  "behavioralMatchCount": 17
+  "behavioralMatchCount": 4
 }

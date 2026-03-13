@@ -1,0 +1,123 @@
+{
+  "description": "Consolidated multi-level baselines for trend comparison",
+  "generatedAt": "2026-03-13T06:20:00.000Z",
+  "graphTopics": 705,
+  "seed": 42,
+  "notes": {
+    "l1_l2_l3": "Fresh baselines post-FIRe-disable and interleaving fix (2026-03-13)",
+    "l4_l5": "Stale — generated pre-FIRe-disable and pre-interleaving-fix (2026-03-13T00:xx). Interleaving FAIL and FIRe WARN values are from old code. Re-run with evaluate-l4/evaluate-l5 to update."
+  },
+  "levels": {
+    "l1": {
+      "sessions": 5,
+      "profiles": 29,
+      "generatedAt": "2026-03-13T06:10:03.764Z",
+      "summary": { "pass": 5, "warn": 1, "fail": 3 },
+      "systems": {
+        "mastery_convergence": { "actual": 11, "status": "FAIL" },
+        "mastery_preservation": { "actual": 0, "status": "PASS" },
+        "difficulty_targeting": { "actual": 22, "status": "PASS" },
+        "review_new_balance": { "actual": 0.402, "status": "FAIL" },
+        "interleaving": { "actual": 0.046, "status": "PASS" },
+        "fire_compression": { "actual": 0, "status": "PASS" },
+        "remediation_routing": { "actual": 68, "status": "PASS" },
+        "presentation_drift": { "actual": 3, "status": "FAIL" },
+        "diagnostic_placement": { "actual": 23, "status": "WARN" },
+        "cognitive_demand_entropy": { "actual": 1.769, "status": "PASS" }
+      }
+    },
+    "l2": {
+      "sessions": 30,
+      "profiles": 29,
+      "generatedAt": "2026-03-13T06:08:09.525Z",
+      "summary": { "pass": 7, "warn": 3, "fail": 0 },
+      "systems": {
+        "mastery_convergence": { "actual": 16, "status": "WARN" },
+        "mastery_preservation": { "actual": 0, "status": "PASS" },
+        "difficulty_targeting": { "actual": 29, "status": "PASS" },
+        "review_new_balance": { "actual": 0.563, "status": "PASS" },
+        "interleaving": { "actual": 0.067, "status": "PASS" },
+        "fire_compression": { "actual": 0, "status": "PASS" },
+        "remediation_routing": { "actual": 2017, "status": "PASS" },
+        "presentation_drift": { "actual": 13, "status": "WARN" },
+        "diagnostic_placement": { "actual": 23, "status": "WARN" },
+        "cognitive_demand_entropy": { "actual": 1.624, "status": "PASS" }
+      }
+    },
+    "l3": {
+      "sessions": 90,
+      "profiles": 29,
+      "generatedAt": "2026-03-13T06:15:57.792Z",
+      "summary": { "pass": 9, "warn": 1, "fail": 0 },
+      "systems": {
+        "mastery_convergence": { "actual": 18, "status": "PASS" },
+        "mastery_preservation": { "actual": 0, "status": "PASS" },
+        "difficulty_targeting": { "actual": 29, "status": "PASS" },
+        "review_new_balance": { "actual": 0.690, "status": "PASS" },
+        "interleaving": { "actual": 0.074, "status": "PASS" },
+        "fire_compression": { "actual": 0, "status": "PASS" },
+        "remediation_routing": { "actual": 5469, "status": "PASS" },
+        "presentation_drift": { "actual": 19, "status": "PASS" },
+        "diagnostic_placement": { "actual": 23, "status": "WARN" },
+        "cognitive_demand_entropy": { "actual": 1.382, "status": "PASS" }
+      }
+    },
+    "l4": {
+      "sessions": 180,
+      "profiles": 29,
+      "generatedAt": "2026-03-13T00:06:38.808Z",
+      "stale": true,
+      "staleReason": "Pre-FIRe-disable, pre-interleaving-fix",
+      "summary": { "pass": 6, "warn": 2, "fail": 2 },
+      "systems": {
+        "mastery_convergence": { "actual": 4, "status": "FAIL" },
+        "mastery_preservation": { "actual": 0, "status": "PASS" },
+        "difficulty_targeting": { "actual": 29, "status": "PASS" },
+        "review_new_balance": { "actual": 0.715, "status": "WARN" },
+        "interleaving": { "actual": 0.137, "status": "FAIL" },
+        "fire_compression": { "actual": -0.169, "status": "WARN" },
+        "remediation_routing": { "actual": 6518, "status": "PASS" },
+        "presentation_drift": { "actual": 21, "status": "PASS" },
+        "diagnostic_placement": { "actual": 23, "status": "FAIL" },
+        "cognitive_demand_entropy": { "actual": 1.334, "status": "PASS" }
+      }
+    },
+    "l5": {
+      "sessions": 360,
+      "profiles": 29,
+      "generatedAt": "2026-03-13T00:12:12.102Z",
+      "stale": true,
+      "staleReason": "Pre-FIRe-disable, pre-interleaving-fix",
+      "summary": { "pass": 6, "warn": 1, "fail": 3 },
+      "systems": {
+        "mastery_convergence": { "actual": 5, "status": "FAIL" },
+        "mastery_preservation": { "actual": 0, "status": "PASS" },
+        "difficulty_targeting": { "actual": 29, "status": "PASS" },
+        "review_new_balance": { "actual": 0.761, "status": "FAIL" },
+        "interleaving": { "actual": 0.124, "status": "FAIL" },
+        "fire_compression": { "actual": -0.169, "status": "WARN" },
+        "remediation_routing": { "actual": 6518, "status": "PASS" },
+        "presentation_drift": { "actual": 22, "status": "PASS" },
+        "diagnostic_placement": { "actual": 23, "status": "FAIL" },
+        "cognitive_demand_entropy": { "actual": 1.324, "status": "PASS" }
+      }
+    }
+  },
+  "trends": {
+    "monotonic_improvement": [
+      "mastery_convergence: FAIL(11) → WARN(16) → PASS(18) — improves with session count",
+      "presentation_drift: FAIL(3) → WARN(13) → PASS(19) — needs >5 sessions to stabilize",
+      "remediation_routing: 68 → 2017 → 5469 — scales with sessions",
+      "interleaving: 0.046 → 0.067 → 0.074 — all PASS after strand diversity fix"
+    ],
+    "stable": [
+      "mastery_preservation: 0% at all levels",
+      "difficulty_targeting: PASS at all levels",
+      "diagnostic_placement: WARN at all levels (23/25 profiles)"
+    ],
+    "expected_degradation": [
+      "review_new_balance: 0.402 → 0.563 → 0.690 — shifts toward review as content consumed",
+      "cognitive_demand_entropy: 1.769 → 1.624 → 1.382 — variety decreases as review dominates"
+    ]
+  }
+}

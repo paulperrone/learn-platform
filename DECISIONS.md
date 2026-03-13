@@ -1812,3 +1812,31 @@ Post-implementation results:
 - Strand distribution is balanced (18 strands, max 9.4%) — the issue is prerequisite chain clustering
 - Cap of 2 per strand ensures 5+ strands per 10-topic session
 - Result: 0.155 → 0.067 (PASS, well under 0.10 target)
+
+---
+
+## 2026-03-13: Plan 022 Complete — Post-Expansion System Summary
+
+**Source:** Plan 022 Phase 5
+
+**Decision:** Accept the post-expansion, post-calibration system state as production-ready for the 705-topic math graph. Establish L1-L3 baselines as the canonical reference. L4/L5 baselines are stale and should be refreshed before next major release.
+
+**Final evaluation state (L2, 30 sessions, 29 profiles):**
+
+| Status | Count | Systems |
+|--------|-------|---------|
+| PASS | 7 | mastery_preservation, difficulty_targeting, review_new_balance, interleaving, fire_compression, remediation_routing, cognitive_demand_entropy |
+| WARN | 3 | mastery_convergence (16/17), presentation_drift (13/14), diagnostic_placement (23/25) |
+| FAIL | 0 | — |
+
+**What's production-ready:**
+- Adaptive engine: difficulty targeting, review/new balance, interleaving, remediation routing all PASS at L2-L3
+- Mastery system: preservation perfect (0% loss), convergence improving monotonically L1→L3
+- Content: 705 topics, 15+ problems each, adequate runway through L3 (90 sessions)
+- FIRe: cleanly disabled, no overhead, code preserved for future re-enablement
+
+**What needs more work (not blocking production):**
+- Diagnostic placement: 6 multi-discipline profiles miss placement (23/25). Tolerance adjusted, not a math-only issue
+- Behavioral match: 5-9/29 profiles match — expectations need full recalibration for 705-topic graph
+- L4/L5 baselines: stale (pre-FIRe-disable, pre-interleaving-fix). Refresh with `just evaluate-l4` / `just evaluate-l5`
+- FIRe re-enablement: when encompassing density ≥1.5 edges/topic AND graph ≥1,500 topics

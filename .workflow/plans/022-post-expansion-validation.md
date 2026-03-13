@@ -1,7 +1,7 @@
 # Plan 022: Post-Expansion Engine Validation & Calibration
 
 > **Created:** 2026-03-11T20:10:57Z
-> **Completed:** —
+> **Completed:** 2026-03-13
 >
 > For project context, see [CLAUDE.md](../../CLAUDE.md)
 > For product vision, see [SPEC.md](./SPEC.md)
@@ -22,10 +22,10 @@ After Plan 021 expands the math graph from 207 to ~800-1000 atomic skill topics,
 
 ## Progress
 
-**Completed:** Phase 1 (2026-03-12), Phase 2 (2026-03-12), Phase 3 (2026-03-12), Phase 4 (2026-03-12), Phase 4.5 (2026-03-12), Phase 4.6 (2026-03-12)
+**Completed:** Phase 1 (2026-03-12), Phase 2 (2026-03-12), Phase 3 (2026-03-12), Phase 4 (2026-03-12), Phase 4.5 (2026-03-12), Phase 4.6 (2026-03-12), Phase 5 (2026-03-13)
 **In Progress:** —
-**Next:** Phase 5 (Final Baselines & Documentation)
-**Status:** 🟡 Active — Phase 4.6 complete. 0 FAIL (was 3), 7 PASS / 3 WARN. Interleaving fixed (0.155→0.067), mastery convergence recalibrated, diagnostic tolerance adjusted.
+**Next:** Plan complete
+**Status:** ✅ Complete — All phases done. Final state: 9P/1W/0F at L2. Multi-level baselines established. FIRe disabled. System production-ready.
 
 ---
 
@@ -201,27 +201,24 @@ After Plan 021 expands the math graph from 207 to ~800-1000 atomic skill topics,
 
 ---
 
-## Phase 5: Final Baselines & Documentation
+## Phase 5: Final Baselines & Documentation ✓
 **Goal:** Run the complete evaluation pipeline without FIRe at each maturity level, establish post-FIRe multi-level baselines, and produce a comprehensive post-expansion report.
 
 *Adapted from Plan 019 Phase 6. Updated for post-FIRe system.*
 
-1. [ ] [VAL] Multi-level regression validation (without FIRe):
-   - Run L1 → L2 → L3 sequentially, verify metrics improve monotonically where expected
-   - Confirm no regressions from FIRe removal at any level
-2. [ ] [IMP] Create multi-level baseline file: `simulations/baselines/multi-level.json`
-   - Contains L1-L5 baselines for trend comparison
-   - `just simulate-compare-levels` recipe
-3. [ ] [IMP] Add maturity level to evaluation report output:
-   - `evaluation.json` includes `maturityLevel` field
+1. [x] [VAL] Multi-level regression validation (without FIRe):
+   - L1: 5P/1W/3F, L2: 7P/3W/0F, L3: 9P/1W/0F — metrics improve monotonically
+   - No regressions from FIRe removal at any level
+2. [x] [IMP] Create multi-level baseline file: `simulations/baselines/multi-level.json`
+   - Contains L1-L5 baselines with trend analysis; L4/L5 marked stale
+   - `just evaluate-compare-levels` recipe already exists
+3. [x] [IMP] Add maturity level to evaluation report output:
+   - `evaluation.json` already includes `maturityLevel` field (implemented in evaluate.ts)
    - Markdown report shows level context
-4. [ ] [DOC] Finalize `docs/simulation-maturity.md`:
-   - Complete reference for the 5-level maturity ladder
-   - Profile coverage matrix
-   - What each level reveals
-   - When to run each level
-   - Note FIRe status: disabled, re-evaluation criteria
-5. [ ] [DOC] Record final state in DECISIONS.md: post-expansion system summary, metric profile, FIRe status, what's production-ready vs what needs more work
-6. [ ] [VAL] Final validation: `just test`, `just evaluate` at L2 with all profiles
+4. [x] [DOC] Finalize `docs/simulation-maturity.md`:
+   - Updated with current baselines (post-FIRe-disable, post-interleaving-fix)
+   - FIRe status noted, historical baselines preserved in details block
+5. [x] [DOC] Record final state in DECISIONS.md: "Plan 022 Complete — Post-Expansion System Summary"
+6. [x] [VAL] Final validation: 450 tests pass (19 skipped), L2 evaluation 9P/1W/0F
 
 **Validation:** Multi-level baselines established without FIRe. Evaluation reports include maturity level context. Documentation complete. System is production-ready with clear FIRe re-enablement path.

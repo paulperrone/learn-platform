@@ -2,6 +2,9 @@
 
 Maturity levels define how many sessions to run and what insights each level reveals. Higher levels are more expensive but surface behaviors invisible at shorter horizons.
 
+> **FIRe status:** Disabled as of Plan 022 (encompassing density 1.01 edges/topic, needs ≥1.5). See [`fire.md`](fire.md). Re-evaluation when graph reaches 1,500+ topics with ≥1.5 encompassing density.
+> **Last updated:** 2026-03-13
+
 ## Level Summary
 
 | Level | Sessions | Time | What it reveals | When to run |
@@ -33,120 +36,73 @@ just evaluate --level l4  # evaluate + save baseline
 
 ## Baseline Results
 
-### Pre-Expansion Baseline (2026-03-11, 207 math topics, seed=42)
+### Current Baseline (2026-03-13, 705 math topics, seed=42, FIRe disabled)
+
+Post Plan 022 calibration: FIRe disabled, interleaving fixed (strand diversity cap), mastery convergence recalibrated to 15% threshold, diagnostic placement tolerance adjusted.
 
 | System | L1 (5s) | L2 (30s) | L3 (90s) | Trend |
 |--------|---------|----------|----------|-------|
-| Mastery Convergence (P0) | ❌ 5/11 | ✅ 16/11 | ✅ 17/11 | Improves L1→L2, plateaus L2→L3 |
+| Mastery Convergence (P0) | ❌ 11/17 | ⚠️ 16/17 | ✅ 18/17 | Improves monotonically |
 | Mastery Preservation (P0) | ✅ 0.0% | ✅ 0.0% | ✅ 0.0% | Stable |
-| Remediation Routing (P0) | ✅ 335 | ✅ 2611 | ✅ 3294 | Scales with session count |
-| Difficulty Targeting (P1) | ✅ 23/17 | ✅ 29/17 | ✅ 29/17 | Converges by L2 |
-| Review/New Balance (P1) | ❌ 0.44 | ⚠️ 0.73 | ❌ 0.86 | **Degrades** — review queue dominates at L3 |
-| Interleaving (P1) | ✅ 0.036 | ✅ 0.081 | ✅ 0.092 | Slight degradation, still PASS |
-| FIRe Efficiency (P1) | ⚠️ -25% | ⚠️ -25% | ⚠️ -25% | Stable |
-| Presentation Drift (P2) | ❌ 5/14 | ✅ 19/14 | ✅ 17/14 | Needs >5 sessions |
-| Diagnostic Placement (P2) | ✅ 27/24 | ✅ 27/24 | ✅ 27/24 | Stable |
-| Cognitive Demand Entropy (P2) | ✅ 1.35 | ✅ 1.25 | ✅ 1.14 | Decreasing |
-| **Behavioral Match** | 17/29 (59%) | 27/29 (93%) | 27/29 (93%) | Stabilizes at L2 |
+| Remediation Routing (P0) | ✅ 68 | ✅ 2017 | ✅ 5469 | Scales with sessions |
+| Difficulty Targeting (P1) | ✅ 22/17 | ✅ 29/17 | ✅ 29/17 | Converges by L2 |
+| Review/New Balance (P1) | ❌ 0.40 | ✅ 0.56 | ✅ 0.69 | Shifts toward review as content consumed |
+| Interleaving (P1) | ✅ 0.046 | ✅ 0.067 | ✅ 0.074 | All PASS after strand diversity fix |
+| FIRe Efficiency (P1) | ✅ 0 | ✅ 0 | ✅ 0 | Disabled — PASS (no FIRe overhead) |
+| Presentation Drift (P2) | ❌ 3/14 | ⚠️ 13/14 | ✅ 19/14 | Needs >5 sessions |
+| Diagnostic Placement (P2) | ⚠️ 23/25 | ⚠️ 23/25 | ⚠️ 23/25 | Stable (6 multi-discipline profiles miss) |
+| Cognitive Demand Entropy (P2) | ✅ 1.77 | ✅ 1.62 | ✅ 1.38 | Decreasing (review skews demand mix) |
+| **Behavioral Match** | 4/29 (14%) | 5/29 (17%) | 9/29 (31%) | Improving, needs further calibration |
 
-### Post-Expansion Baseline (2026-03-12, 705 math topics, seed=42)
+**Consolidated baselines:** `simulations/baselines/multi-level.json`
 
-*Run after Plan 021 math expansion (207 → 705 topics). L1/L2 baselines not yet updated (run against old graph). L3 is the first post-expansion baseline.*
+**L4/L5 baselines are stale** (pre-FIRe-disable, pre-interleaving-fix). Run `just evaluate-l4` and `just evaluate-l5` to refresh.
 
-| System | L3 (90s) post | L3 (90s) pre | Change |
-|--------|--------------|-------------|--------|
-| Mastery Convergence (P0) | ❌ 3/11 | ✅ 17/11 | **Regression** — target needs recalibration for 705-topic graph |
-| Mastery Preservation (P0) | ✅ 0.0% | ✅ 0.0% | Stable |
-| Remediation Routing (P0) | ✅ 6517 | ✅ 3294 | Increased (more topics = more remediation opportunities) |
-| Difficulty Targeting (P1) | ✅ 29/17 | ✅ 29/17 | Stable |
-| Review/New Balance (P1) | ✅ 0.694 | ❌ 0.86 | **Fixed** — 705 topics provides sufficient new content |
-| Interleaving (P1) | ❌ 0.141 | ✅ 0.092 | **Regressed** — more repetition; under investigation |
-| FIRe Efficiency (P1) | ⚠️ -16.9% | ⚠️ -25% | Slight improvement |
-| Presentation Drift (P2) | ✅ 23/14 | ✅ 17/14 | Improved |
-| Diagnostic Placement (P2) | ❌ 23/24 | ✅ 27/24 | Slight regression (marginal miss) |
-| Cognitive Demand Entropy (P2) | ✅ 1.30 | ✅ 1.14 | Improved — more variety with 705 topics |
-| **Behavioral Match** | 8/29 (28%) | 27/29 (93%) | **Regression** — expectations calibrated for 92-topic graph |
+### Key Trends (L1 → L2 → L3)
 
-### Content Runway Analysis (Post-Expansion L3)
+1. **Monotonic improvement.** Mastery convergence, presentation drift, remediation routing, and behavioral match all improve with session count. No metric regresses from L1 → L3.
+2. **Interleaving fixed.** Was FAIL (0.155) before strand diversity cap, now 0.046–0.074 (all PASS).
+3. **FIRe cleanly disabled.** Zero overhead at all levels. Re-enablement criteria: encompassing density ≥1.5 edges/topic AND graph ≥1,500 topics.
+4. **Review/New Balance shifts predictably.** 0.40 → 0.56 → 0.69. Will reach WARN at L4 as content is consumed. Expected behavior, not a bug.
+5. **Cognitive demand entropy decreases.** 1.77 → 1.62 → 1.38. As review dominates, demand variety drops. All levels still PASS (target ≥0.90).
 
-Key finding from per-session analysis: the 705-topic expansion dramatically extended the content ceiling.
+### Content Runway Analysis (Post-Expansion)
 
-| Profile type | Pre-expansion ceiling | Post-expansion ceiling | Change |
-|-------------|----------------------|----------------------|--------|
-| Strong (strong-older, gifted-middle) | Session 6-8 | Session 67-72 | **+60 sessions** |
-| Fast learners | Session 6-8 | Session 90+ | **+80 sessions** |
-| Average | Session 6-8 | Session 90+ | **+80 sessions** |
-| Struggling | Session 10-15 | Session 89+ | **+70 sessions** |
+| Profile type | Content ceiling | Notes |
+|-------------|----------------|-------|
+| Strong (strong-older, gifted-middle) | Session 67-72 | Exhaust math content, shift to review-only |
+| Fast learners | Session 90+ | Adequate for L3 |
+| Average | Session 90+ | Adequate for L3 |
+| Struggling | Session 89+ | Slow but steady progress |
 
-Strong profiles still exhaust math content around session 70-72. For L4 (180 sessions), strong profiles will shift to review-only mode after session ~70. Multi-subject content (ELA, history) would extend their runway.
+Strong profiles exhaust math content around session 70. Multi-subject content (ELA, history) extends runway. For L4+ (180+ sessions), strong profiles enter review-only mode.
 
-### L3 Insights (Post-Expansion)
-
-1. **Review/New Balance fixed.** Pre-expansion FAIL (0.86) → post-expansion PASS (0.694). The 705-topic graph ensures there's always new content to introduce, balancing the SRS review queue.
-
-2. **Content ceiling pushed from session 6 → session 70 for strong profiles.** The primary bottleneck was content volume, not engine behavior. 705 topics provides adequate runway for L3; strong profiles will reach review-only mode around session 70 in L4.
-
-3. **Mastery convergence target needs recalibration.** The "≥50% total mastery by session 30" target was designed for the 207-topic graph. With 705 topics, most profiles can't reach 50% of the full graph in 30 sessions — they're still making genuine progress. Target should be redefined as progress-within-accessible-content, not absolute graph coverage.
-
-4. **Interleaving quality regressed (PASS → FAIL).** Repetition frequency increased from 0.092 to 0.141. Possible cause: with 705 topics and daily FSRS scheduling, more topics fall due within the same short window. Under investigation for Phase 4.
-
-5. **Behavioral match dropped from 27/29 → 8/29.** Profile behavioral expectations (mastery percentages, timing) were calibrated for the old graph. Need full recalibration against the 705-topic baseline.
-
-### Post-Expansion L4/L5 Baseline (2026-03-12, 705 math topics, seed=42, 7 key profiles)
-
-| System | L3 (90s) | L4 (180s) | L5 (360s) | Trend |
-|--------|----------|-----------|-----------|-------|
-| Mastery Convergence (P0) | ❌ 3/11 | ❌ 4/11 | ❌ 5/11 | Slow improvement — target needs recalibration |
-| Mastery Preservation (P0) | ✅ 0.0% | ✅ 0.0% | ✅ 0.0% | Stable across all levels |
-| Remediation Routing (P0) | ✅ 6517 | ✅ 6518 | ✅ 6518 | Stable (plateaus as topics max out) |
-| Difficulty Targeting (P1) | ✅ 29/17 | ✅ 29/17 | ✅ 29/17 | Stable |
-| Review/New Balance (P1) | ✅ 0.694 | ⚠️ 0.715 | ❌ 0.761 | **Degrades** — content exhaustion at L4/L5 |
-| Interleaving (P1) | ❌ 0.141 | ❌ 0.137 | ❌ 0.124 | Slight improvement — not yet PASS |
-| FIRe Efficiency (P1) | ⚠️ -16.9% | ⚠️ -16.9% | ⚠️ -16.9% | Stable (unchanged) |
-| Presentation Drift (P2) | ✅ 23/14 | ✅ 21/14 | ✅ 22/14 | Stable |
-| Diagnostic Placement (P2) | ❌ 23/24 | ❌ 23/24 | ❌ 23/24 | Stable (marginal miss) |
-| Cognitive Demand Entropy (P2) | ✅ 1.30 | ✅ 1.33 | ✅ 1.32 | Stable |
-
-### L4/L5-Specific Metrics
+### L4/L5-Specific Metrics (from stale baselines — directional only)
 
 | Metric | L4 (180s) | L5 (360s) | Notes |
 |--------|-----------|-----------|-------|
-| Lapse rate after session 100 | 0.91/session | 0.80/session | Decreases slightly — FSRS scheduling improves with more history |
-| Reviews/session after session 60 | 4.3 | 4.2 | **No review explosion** — queue stays stable at scale |
-| New topic starvation session | 84 | 84 | Consistent across L4/L5 — starvation onset is topology-driven |
-| Gap resilience score | 0.092 | 0.092 | **Low** — post-gap recovery rate is only 9% of pre-gap learning rate |
+| Lapse rate after session 100 | 0.91/session | 0.80/session | FSRS scheduling improves with more history |
+| Reviews/session after session 60 | 4.3 | 4.2 | **No review explosion** — queue stable at scale |
+| New topic starvation session | 84 | 84 | Topology-driven, consistent |
+| Gap resilience score | 0.092 | 0.092 | Low — 9% of pre-gap learning rate |
 
-### L4/L5 Insights
+### Historical Baselines
 
-1. **No review queue explosion at scale.** Reviews/session stays at 4.1-4.3 from session 60 to session 360. FSRS scheduling is stable — the queue does not unbounded grow. This was the primary concern entering L4/L5.
+<details>
+<summary>Pre-Expansion Baseline (2026-03-11, 207 math topics)</summary>
 
-2. **New topic starvation detected at session 84.** Invisible at L3 (90 sessions, catches it only at the tail). Average across profiles: new topic introduction stalls at session 84. For the 7 L4/L5 profiles, this is dominated by the strong profiles (`strong-highschool`, `fast-learner-older`, `multi-math-strong`) which exhaust available frontier topics earlier. Weaker profiles continue introducing new topics past session 84.
+| System | L1 (5s) | L2 (30s) | L3 (90s) |
+|--------|---------|----------|----------|
+| Mastery Convergence | ❌ 5/11 | ✅ 16/11 | ✅ 17/11 |
+| Mastery Preservation | ✅ 0.0% | ✅ 0.0% | ✅ 0.0% |
+| Remediation Routing | ✅ 335 | ✅ 2611 | ✅ 3294 |
+| Difficulty Targeting | ✅ 23/17 | ✅ 29/17 | ✅ 29/17 |
+| Review/New Balance | ❌ 0.44 | ⚠️ 0.73 | ❌ 0.86 |
+| Interleaving | ✅ 0.036 | ✅ 0.081 | ✅ 0.092 |
+| FIRe Efficiency | ⚠️ -25% | ⚠️ -25% | ⚠️ -25% |
+| Behavioral Match | 17/29 | 27/29 | 27/29 |
 
-3. **Review/New Balance degrades progressively.** L3 PASS (0.694) → L4 WARN (0.715) → L5 FAIL (0.761). As content is exhausted, the ratio shifts toward pure review. Multi-subject content (ELA, history) would extend the runway; math alone runs out of new content at semester scale for fast learners.
-
-4. **Gap resilience is low (0.092).** After a 14-day gap, the returning-after-gap profile's mastery growth rate is only 9% of its pre-gap rate. This quantifies a known FSRS behavior: large gaps cause many topics to expire simultaneously, creating a catch-up review backlog that crowds out new topic introduction. No pathological behavior — system recovers gracefully — but gap management is an area for future improvement.
-
-5. **Mastery Preservation is perfect.** 0% mastery loss across all levels (L3/L4/L5). No mastered topics regress. This confirms FSRS stability is calibrated correctly for mastery threshold.
-
-6. **No pathological behaviors detected.** All 7 profiles complete 360 sessions without crashes, infinite loops, or scheduling anomalies.
-
-### L3 Insights (Pre-Expansion, for reference)
-
-1. **Review/New Balance degraded from WARN to FAIL at L3** on the small graph. Fixed by expansion.
-
-2. **Mastery plateaus very early** (session 8 avg, 77% final mastery) — content ceiling, not engine failure.
-
-3. **Review scaling stabilized at L3** (4.8 → 4.3 reviews/session). Queue equilibrium reached.
-
-### Behavioral Match
-
-| Level | Pre-expansion | Post-expansion |
-|-------|--------------|----------------|
-| L1 | 17/29 (59%) | (not yet re-run) |
-| L2 | 27/29 (93%) | (not yet re-run) |
-| L3 | 27/29 (93%) | 8/29 (28%) — needs recalibration |
-
-Post-expansion behavioral expectations need full recalibration for all profiles. The 705-topic graph changes expected mastery rates, plateau timing, and review patterns.
+</details>
 
 ## What Each Level Tests
 
@@ -162,7 +118,7 @@ Post-expansion behavioral expectations need full recalibration for all profiles.
 - Interleaving shuffles strands effectively
 - Presentation drifts toward expected level
 - Remediation fires for misconception profiles
-- FIRe efficiency (15-session paired eval)
+- FIRe efficiency (disabled — use `--run-fire` to evaluate explicitly)
 
 ### L3 (90 sessions) — Medium-Term Scaling
 - Does mastery % plateau? At what session? Content ceiling vs system bug?
