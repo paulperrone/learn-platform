@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "timestamp": "2026-03-13T21:17:12.006Z",
+    "timestamp": "2026-03-13T21:17:07.557Z",
     "mode": "offline",
     "contentDir": "/Users/paulperrone/source/learn-content",
     "platformVersion": "0.1.0",
@@ -6984,65 +6984,6 @@
       "totalTopics": 800,
       "totalProblems": 17150,
       "totalExamples": 1600
-    }
-  },
-  "delta": {
-    "previousTimestamp": "2026-03-13T21:17:07.557Z",
-    "sectionDeltas": [
-      {
-        "section": "Graph Integrity",
-        "previousStatus": "fail",
-        "currentStatus": "fail",
-        "trend": "unchanged",
-        "details": []
-      },
-      {
-        "section": "Content Quality",
-        "previousStatus": "warn",
-        "currentStatus": "warn",
-        "trend": "unchanged",
-        "details": []
-      },
-      {
-        "section": "Simulation Results",
-        "previousStatus": "pass",
-        "currentStatus": "pass",
-        "trend": "unchanged",
-        "details": []
-      },
-      {
-        "section": "Content Effectiveness",
-        "previousStatus": "pending",
-        "currentStatus": "pending",
-        "trend": "unchanged",
-        "details": []
-      },
-      {
-        "section": "LLM Tracking",
-        "previousStatus": "pass",
-        "currentStatus": "pass",
-        "trend": "unchanged",
-        "details": []
-      },
-      {
-        "section": "Media Readiness",
-        "previousStatus": "info",
-        "currentStatus": "info",
-        "trend": "unchanged",
-        "details": []
-      },
-      {
-        "section": "Multi-Discipline",
-        "previousStatus": "pass",
-        "currentStatus": "pass",
-        "trend": "unchanged",
-        "details": []
-      }
-    ],
-    "summary": {
-      "improved": 0,
-      "regressed": 0,
-      "unchanged": 7
     }
   }
 }

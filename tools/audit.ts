@@ -21,11 +21,159 @@ import type {
   ContentEffectivenessSection, LLMTrackingSection, MediaReadinessSection,
   MultiDisciplineSection, SimulationSystem,
   ManifestSummary, DimensionCoverage, ContentVersionStatus,
+  AuditThresholds, ThresholdLevel, AuditDelta,
 } from "./audit-types.js";
+
+// ── Thresholds ──
+
+const DEFAULT_THRESHOLDS_PATH = join(process.cwd(), "tools", "audit-thresholds.json");
+
+function loadThresholds(customPath?: string): AuditThresholds {
+  const path = customPath ?? DEFAULT_THRESHOLDS_PATH;
+  if (!existsSync(path)) {
+    throw new Error(`Thresholds file not found: ${path}`);
+  }
+  return JSON.parse(readFileSync(path, "utf-8"));
+}
+
+/** For "min" thresholds: value >= warn → pass, value >= fail → warn, else fail */
+function applyMinThreshold(value: number, t: ThresholdLevel): ItemStatus {
+  if (value >= t.warn) return "pass";
+  if (value >= t.fail) return "warn";
+  return "fail";
+}
+
+/** For "max" thresholds: value <= warn → pass, value <= fail → warn, else fail */
+function applyMaxThreshold(value: number, t: ThresholdLevel): ItemStatus {
+  if (value <= t.warn) return "pass";
+  if (value <= t.fail) return "warn";
+  return "fail";
+}
+
+// ── Historical comparison ──
+
+function compareAudits(current: AuditReport, previous: AuditReport): AuditDelta {
+  const sectionDeltas: AuditDelta["sectionDeltas"] = [];
+
+  const comparisons: { section: string; prev: ItemStatus; curr: ItemStatus; details: () => string[] }[] = [
+    {
+      section: "Graph Integrity",
+      prev: previous.sections.graphIntegrity.status,
+      curr: current.sections.graphIntegrity.status,
+      details: () => {
+        const d: string[] = [];
+        const pg = previous.sections.graphIntegrity;
+        const cg = current.sections.graphIntegrity;
+        if (cg.topicCount !== pg.topicCount) d.push(`Topics: ${pg.topicCount} → ${cg.topicCount}`);
+        if (cg.prereqDensity !== pg.prereqDensity) d.push(`Prereq density: ${pg.prereqDensity} → ${cg.prereqDensity}`);
+        if (cg.encompassingDensity !== pg.encompassingDensity) d.push(`Encompassing density: ${pg.encompassingDensity} → ${cg.encompassingDensity}`);
+        return d;
+      },
+    },
+    {
+      section: "Content Quality",
+      prev: previous.sections.contentQuality.status,
+      curr: current.sections.contentQuality.status,
+      details: () => {
+        const d: string[] = [];
+        const pc = previous.sections.contentQuality;
+        const cc = current.sections.contentQuality;
+        if (cc.totalProblems !== pc.totalProblems) d.push(`Problems: ${pc.totalProblems} → ${cc.totalProblems}`);
+        if (cc.healthDistribution.average !== pc.healthDistribution.average) d.push(`Avg health: ${pc.healthDistribution.average} → ${cc.healthDistribution.average}`);
+        if (cc.gapSummary.total !== pc.gapSummary.total) d.push(`Gaps: ${pc.gapSummary.total} → ${cc.gapSummary.total}`);
+        return d;
+      },
+    },
+    {
+      section: "Simulation Results",
+      prev: previous.sections.simulationResults.status,
+      curr: current.sections.simulationResults.status,
+      details: () => {
+        const d: string[] = [];
+        const ps = previous.sections.simulationResults;
+        const cs = current.sections.simulationResults;
+        if (cs.passCount !== ps.passCount) d.push(`Pass: ${ps.passCount} → ${cs.passCount}`);
+        if (cs.failCount !== ps.failCount) d.push(`Fail: ${ps.failCount} → ${cs.failCount}`);
+        return d;
+      },
+    },
+    {
+      section: "Content Effectiveness",
+      prev: previous.sections.contentEffectiveness.status,
+      curr: current.sections.contentEffectiveness.status,
+      details: () => {
+        const d: string[] = [];
+        const pe = previous.sections.contentEffectiveness;
+        const ce = current.sections.contentEffectiveness;
+        if (pe.overallAccuracy != null && ce.overallAccuracy != null && ce.overallAccuracy !== pe.overallAccuracy) {
+          d.push(`Accuracy: ${(pe.overallAccuracy * 100).toFixed(0)}% → ${(ce.overallAccuracy * 100).toFixed(0)}%`);
+        }
+        return d;
+      },
+    },
+    {
+      section: "LLM Tracking",
+      prev: previous.sections.llmTracking.status,
+      curr: current.sections.llmTracking.status,
+      details: () => {
+        const d: string[] = [];
+        const pl = previous.sections.llmTracking;
+        const cl = current.sections.llmTracking;
+        if (pl.totalCost != null && cl.totalCost != null && cl.totalCost !== pl.totalCost) {
+          d.push(`Cost: $${pl.totalCost.toFixed(2)} → $${cl.totalCost.toFixed(2)}`);
+        }
+        return d;
+      },
+    },
+    {
+      section: "Media Readiness",
+      prev: previous.sections.mediaReadiness.status,
+      curr: current.sections.mediaReadiness.status,
+      details: () => [],
+    },
+    {
+      section: "Multi-Discipline",
+      prev: previous.sections.multiDiscipline.status,
+      curr: current.sections.multiDiscipline.status,
+      details: () => {
+        const d: string[] = [];
+        const pm = previous.sections.multiDiscipline;
+        const cm = current.sections.multiDiscipline;
+        if (cm.totalTopics !== pm.totalTopics) d.push(`Topics: ${pm.totalTopics} → ${cm.totalTopics}`);
+        return d;
+      },
+    },
+  ];
+
+  let improved = 0, regressed = 0, unchanged = 0;
+  const statusRank: Record<ItemStatus, number> = { fail: 0, warn: 1, pending: 2, info: 3, pass: 4 };
+
+  for (const c of comparisons) {
+    const prevRank = statusRank[c.prev] ?? 2;
+    const currRank = statusRank[c.curr] ?? 2;
+    const trend = currRank > prevRank ? "improved" : currRank < prevRank ? "regressed" : "unchanged";
+    if (trend === "improved") improved++;
+    else if (trend === "regressed") regressed++;
+    else unchanged++;
+    sectionDeltas.push({
+      section: c.section,
+      previousStatus: c.prev,
+      currentStatus: c.curr,
+      trend,
+      details: c.details(),
+    });
+  }
+
+  return {
+    previousTimestamp: previous.metadata.timestamp,
+    sectionDeltas,
+    summary: { improved, regressed, unchanged },
+  };
+}
 
 // ── Graph integrity (computed directly — avoids refactoring 577-line validate-graph.ts) ──
 
-function auditGraphIntegrity(subject: string): GraphIntegritySection {
+function auditGraphIntegrity(subject: string, thresholds: AuditThresholds): GraphIntegritySection {
   const contentDir = getContentDir();
   const graphPath = join(contentDir, subject, "graph.json");
 
@@ -130,10 +278,10 @@ function auditGraphIntegrity(subject: string): GraphIntegritySection {
   const items: StatusItem[] = [
     { label: "DAG integrity", status: dagValid ? "pass" : "fail", detail: dagValid ? "No cycles" : `${cycleCount} topics in cycles` },
     { label: "Topic count", status: "info", value: topics.length },
-    { label: "Prereq density", status: prereqDensity >= 1.2 ? "pass" : prereqDensity >= 0.8 ? "warn" : "fail", value: prereqDensity, target: "1.5-3.0" },
-    { label: "Encompassing density", status: encompassingDensity >= 1.0 ? "pass" : encompassingDensity >= 0.5 ? "warn" : "fail", value: encompassingDensity, target: "1.0-2.0" },
+    { label: "Prereq density", status: applyMinThreshold(prereqDensity, thresholds.graph.prereqDensityMin), value: prereqDensity, target: "1.5-3.0" },
+    { label: "Encompassing density", status: applyMinThreshold(encompassingDensity, thresholds.graph.encompassingDensityMin), value: encompassingDensity, target: "1.0-2.0" },
     { label: "Orphan topics", status: orphanCount === 0 ? "pass" : "warn", value: orphanCount },
-    { label: "Bottlenecks (>8 downstream)", status: bottlenecks.length === 0 ? "pass" : bottlenecks.length <= 3 ? "warn" : "fail", value: bottlenecks.length },
+    { label: "Bottlenecks (>8 downstream)", status: applyMaxThreshold(bottlenecks.length, thresholds.graph.bottleneckMax), value: bottlenecks.length },
     { label: "Max depth", status: "info", value: maxDepth },
     { label: "FIRe readiness", status: fireReadiness === "GOOD" ? "pass" : fireReadiness === "PARTIAL" ? "warn" : "info", detail: fireReadiness },
   ];
@@ -244,7 +392,7 @@ async function fetchLiveAPI(baseUrl: string, path: string, token?: string): Prom
 
 // ── Content quality ──
 
-function auditContentQuality(subject: string): ContentQualitySection {
+function auditContentQuality(subject: string, thresholds: AuditThresholds): ContentQualitySection {
   const statusResult = generateContentStatus(subject);
   const gapResult = detectContentGaps(subject);
 
@@ -282,12 +430,12 @@ function auditContentQuality(subject: string): ContentQualitySection {
   }));
 
   const items: StatusItem[] = [
-    { label: "Average health", status: statusResult.averageHealth >= 70 ? "pass" : statusResult.averageHealth >= 50 ? "warn" : "fail", value: statusResult.averageHealth, target: "70+" },
+    { label: "Average health", status: applyMinThreshold(statusResult.averageHealth, thresholds.content.healthScoreMin), value: statusResult.averageHealth, target: "70+" },
     { label: "Topics with problems", status: topicsWithProblems === statusResult.topicCount ? "pass" : topicsWithProblems >= statusResult.topicCount * 0.9 ? "warn" : "fail", value: `${topicsWithProblems}/${statusResult.topicCount}` },
     { label: "Topics with examples", status: topicsWithExamples === statusResult.topicCount ? "pass" : topicsWithExamples >= statusResult.topicCount * 0.9 ? "warn" : "fail", value: `${topicsWithExamples}/${statusResult.topicCount}` },
     { label: "Critical gaps", status: gapSummary.critical === 0 ? "pass" : "fail", value: gapSummary.critical },
-    { label: "Topics below 50 health", status: below50 === 0 ? "pass" : below50 <= 10 ? "warn" : "fail", value: below50 },
-    { label: "Demand diversity", status: avgDemandDiversity >= 0.6 ? "pass" : avgDemandDiversity >= 0.3 ? "warn" : "fail", value: avgDemandDiversity },
+    { label: "Topics below 50 health", status: applyMinThreshold(below50 === 0 ? 100 : 100 - below50, { warn: 100, fail: 90 }), value: below50 },
+    { label: "Demand diversity", status: applyMinThreshold(avgDemandDiversity, thresholds.content.demandDiversityMin), value: avgDemandDiversity },
     { label: "Bundle manifests", status: manifests.length > 0 ? "info" : "pending", value: manifests.length, detail: manifests.length > 0 ? undefined : "Run `just generate-bundles` to create" },
     ...(staleCount > 0 ? [{ label: "Stale deploys", status: "warn" as ItemStatus, value: staleCount, detail: "Source changed since last bundle generation" }] : []),
   ];
@@ -360,7 +508,7 @@ function auditSimulationResults(): SimulationResultsSection {
 
 // ── Content effectiveness ──
 
-async function auditContentEffectiveness(apiUrl?: string, apiToken?: string): Promise<ContentEffectivenessSection> {
+async function auditContentEffectiveness(thresholds: AuditThresholds, apiUrl?: string, apiToken?: string): Promise<ContentEffectivenessSection> {
   if (!apiUrl) {
     return {
       status: "pending",
@@ -404,7 +552,7 @@ async function auditContentEffectiveness(apiUrl?: string, apiToken?: string): Pr
     if (accuracies.length > 0) {
       overallAccuracy = Math.round((accuracies.reduce((a: number, b: number) => a + b, 0) / accuracies.length) * 100) / 100;
       topicAccuracyRange = { min: Math.round(Math.min(...accuracies) * 100) / 100, max: Math.round(Math.max(...accuracies) * 100) / 100 };
-      items.push({ label: "Overall accuracy", status: overallAccuracy >= 0.7 ? "pass" : overallAccuracy >= 0.5 ? "warn" : "fail", value: `${(overallAccuracy * 100).toFixed(0)}%` });
+      items.push({ label: "Overall accuracy", status: applyMinThreshold(overallAccuracy, thresholds.live.topicAccuracyMin), value: `${(overallAccuracy * 100).toFixed(0)}%` });
     }
 
     // Struggling topics
@@ -430,7 +578,7 @@ async function auditContentEffectiveness(apiUrl?: string, apiToken?: string): Pr
     const totalAttempts = patterns.hintPatterns.reduce((s: number, p: any) => s + p.count, 0);
     if (totalAttempts > 0) {
       hintEscalationRate = Math.round((totalHinted / totalAttempts) * 100) / 100;
-      items.push({ label: "Hint escalation rate", status: hintEscalationRate > 0.4 ? "warn" : "info", value: `${(hintEscalationRate * 100).toFixed(0)}%` });
+      items.push({ label: "Hint escalation rate", status: applyMaxThreshold(hintEscalationRate, thresholds.live.hintRateMax), value: `${(hintEscalationRate * 100).toFixed(0)}%` });
     }
   }
 
@@ -452,7 +600,7 @@ async function auditContentEffectiveness(apiUrl?: string, apiToken?: string): Pr
 
 // ── LLM tracking ──
 
-async function auditLLMTracking(apiUrl?: string, apiToken?: string): Promise<LLMTrackingSection> {
+async function auditLLMTracking(thresholds: AuditThresholds, apiUrl?: string, apiToken?: string): Promise<LLMTrackingSection> {
   // Check schema completeness by reading the Drizzle schema file
   const schemaPath = join(process.cwd(), "packages", "api", "src", "db", "schema.ts");
   let schemaContent = "";
@@ -505,7 +653,7 @@ async function auditLLMTracking(apiUrl?: string, apiToken?: string): Promise<LLM
       if (llmAccuracyDelta != null) {
         items.push({
           label: "LLM accuracy delta",
-          status: llmAccuracyDelta >= 0.05 ? "pass" : llmAccuracyDelta >= -0.05 ? "warn" : "fail",
+          status: applyMinThreshold(llmAccuracyDelta, thresholds.llm.llmAccuracyDeltaMin),
           value: `${llmAccuracyDelta >= 0 ? "+" : ""}${(llmAccuracyDelta * 100).toFixed(1)}%`,
         });
       }
@@ -640,17 +788,25 @@ function auditMultiDiscipline(): MultiDisciplineSection {
 
 // ── Main orchestrator ──
 
-export async function runAudit(opts: { mode?: "offline" | "live"; primarySubject?: string; apiUrl?: string; apiToken?: string } = {}): Promise<AuditReport> {
+export async function runAudit(opts: {
+  mode?: "offline" | "live";
+  primarySubject?: string;
+  apiUrl?: string;
+  apiToken?: string;
+  thresholdsFile?: string;
+  compareWith?: string;
+} = {}): Promise<AuditReport> {
   const mode = opts.mode ?? "offline";
   const primarySubject = opts.primarySubject ?? "math";
   const apiUrl = mode === "live" ? opts.apiUrl : undefined;
   const apiToken = opts.apiToken;
+  const thresholds = loadThresholds(opts.thresholdsFile);
 
-  const graphIntegrity = auditGraphIntegrity(primarySubject);
-  const contentQuality = auditContentQuality(primarySubject);
+  const graphIntegrity = auditGraphIntegrity(primarySubject, thresholds);
+  const contentQuality = auditContentQuality(primarySubject, thresholds);
   const simulationResults = auditSimulationResults();
-  const contentEffectiveness = await auditContentEffectiveness(apiUrl, apiToken);
-  const llmTracking = await auditLLMTracking(apiUrl, apiToken);
+  const contentEffectiveness = await auditContentEffectiveness(thresholds, apiUrl, apiToken);
+  const llmTracking = await auditLLMTracking(thresholds, apiUrl, apiToken);
   const mediaReadiness = auditMediaReadiness();
   const multiDiscipline = auditMultiDiscipline();
 
@@ -668,13 +824,14 @@ export async function runAudit(opts: { mode?: "offline" | "live"; primarySubject
 
   const overallStatus: ItemStatus = failCount > 0 ? "fail" : warnCount > 0 ? "warn" : "pass";
 
-  return {
+  const report: AuditReport = {
     metadata: {
       timestamp: new Date().toISOString(),
       mode,
       contentDir: getContentDir(),
       platformVersion: "0.1.0",
-      auditVersion: 1,
+      auditVersion: 2,
+      thresholdsFile: opts.thresholdsFile,
     },
     overallStatus,
     summary: { passCount, warnCount, failCount, pendingCount },
@@ -688,6 +845,14 @@ export async function runAudit(opts: { mode?: "offline" | "live"; primarySubject
       multiDiscipline,
     },
   };
+
+  // Historical comparison
+  if (opts.compareWith && existsSync(opts.compareWith)) {
+    const previous: AuditReport = JSON.parse(readFileSync(opts.compareWith, "utf-8"));
+    report.delta = compareAudits(report, previous);
+  }
+
+  return report;
 }
 
 // ── CLI entry point ──
@@ -699,6 +864,14 @@ if (isCLI) {
     const jsonOnly = args.includes("--json");
     const save = args.includes("--save");
     const live = args.includes("--live");
+
+    // Parse --thresholds <file>
+    const thresholdsIdx = args.indexOf("--thresholds");
+    const thresholdsFile = thresholdsIdx >= 0 ? args[thresholdsIdx + 1] : undefined;
+
+    // Parse --compare <file>
+    const compareIdx = args.indexOf("--compare");
+    const compareWith = compareIdx >= 0 ? args[compareIdx + 1] : undefined;
 
     const apiUrl = live ? (process.env.AUDIT_API_URL || undefined) : undefined;
     const apiToken = process.env.AUDIT_API_TOKEN || undefined;
@@ -712,6 +885,8 @@ if (isCLI) {
       mode: live ? "live" : "offline",
       apiUrl,
       apiToken,
+      thresholdsFile,
+      compareWith,
     });
 
     // Always save latest JSON

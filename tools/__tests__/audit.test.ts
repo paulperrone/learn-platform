@@ -9,7 +9,9 @@ import { generateContentStatus } from "../content-status.js";
 import { detectContentGaps } from "../content-gaps.js";
 import { generateDisciplineReport, listDisciplines } from "../content-report.js";
 import { renderAuditMarkdown } from "../audit-render.js";
-import type { AuditReport, ItemStatus } from "../audit-types.js";
+import type { AuditReport, ItemStatus, EffectivenessRollup } from "../audit-types.js";
+import { existsSync, writeFileSync, readFileSync, unlinkSync } from "fs";
+import { join } from "path";
 
 let passed = 0;
 let failed = 0;
@@ -35,7 +37,7 @@ const report = await runAudit();
 assert(report.metadata !== undefined, "report has metadata");
 assert(report.metadata.timestamp.length > 0, "metadata has timestamp");
 assert(report.metadata.mode === "offline", "mode is offline");
-assert(report.metadata.auditVersion === 1, "audit version is 1");
+assert(report.metadata.auditVersion === 2, "audit version is 2");
 assert(typeof report.overallStatus === "string", "overall status is string");
 assert(["pass", "warn", "fail", "info", "pending"].includes(report.overallStatus), "overall status is valid ItemStatus");
 
@@ -231,6 +233,67 @@ console.log("\n=== LLM Instrumentation Completeness ===");
 // Verify instrumentation checks detect schema columns
 assert(typeof llm.instrumentation.llmUsageTopicId === "boolean", "llmUsageTopicId check is boolean");
 assert(typeof llm.instrumentation.aeBlob13LlmAssisted === "boolean", "aeBlob13LlmAssisted check is boolean");
+
+// ── Phase 3: Thresholds, comparison, rollup ──
+
+console.log("\n=== Configurable Thresholds ===");
+
+// Report uses thresholds (auditVersion bumped to 2)
+assert(report.metadata.auditVersion === 2, "audit version is 2 (thresholds support)");
+
+// Custom threshold test: make a strict threshold that would change graph status
+const tmpThresholds = "/tmp/test-thresholds.json";
+writeFileSync(tmpThresholds, JSON.stringify({
+  graph: { prereqDensityMin: { warn: 5.0, fail: 4.0 }, encompassingDensityMin: { warn: 5.0, fail: 4.0 }, bottleneckMax: { warn: 0, fail: 1 } },
+  content: { healthScoreMin: { warn: 99, fail: 90 }, problemsPerTopicMin: { warn: 100, fail: 50 }, demandDiversityMin: { warn: 0.99, fail: 0.9 } },
+  simulation: { masteryConvergenceMin: { warn: 15, fail: 10 }, difficultyTargetingMin: { warn: 15, fail: 10 } },
+  live: { topicAccuracyMin: { warn: 0.70, fail: 0.50 }, hintRateMax: { warn: 0.40, fail: 0.60 }, difficultySpikeDeltaMax: { warn: 0.15, fail: 0.25 } },
+  llm: { llmAccuracyDeltaMin: { warn: 0.05, fail: -0.05 } },
+}));
+
+const strictReport = await runAudit({ thresholdsFile: tmpThresholds });
+assert(strictReport.metadata.thresholdsFile === tmpThresholds, "custom thresholds file recorded in metadata");
+// With strict thresholds, graph density 1.42 < warn:5.0 should fail
+assert(strictReport.sections.graphIntegrity.status === "fail", "strict thresholds cause graph to fail");
+// Content demand diversity 0.37 < fail:0.9 should fail
+const strictDemandItem = strictReport.sections.contentQuality.items.find(i => i.label === "Demand diversity");
+assert(strictDemandItem?.status === "fail", "strict thresholds cause demand diversity to fail");
+unlinkSync(tmpThresholds);
+
+console.log("\n=== Historical Comparison ===");
+
+// Save current report, then compare with itself (should show all unchanged)
+const tmpPrevious = "/tmp/test-previous-audit.json";
+writeFileSync(tmpPrevious, JSON.stringify(report));
+
+const comparedReport = await runAudit({ compareWith: tmpPrevious });
+
+assert(comparedReport.delta !== undefined, "comparison produces delta");
+assert(comparedReport.delta!.sectionDeltas.length === 7, "delta has 7 section comparisons");
+assert(comparedReport.delta!.summary.unchanged === 7, "all sections unchanged when comparing with self");
+assert(comparedReport.delta!.summary.improved === 0, "no improvements when comparing with self");
+assert(comparedReport.delta!.summary.regressed === 0, "no regressions when comparing with self");
+assert(comparedReport.delta!.previousTimestamp === report.metadata.timestamp, "delta has correct previous timestamp");
+
+// Test delta rendering
+const comparedMarkdown = renderAuditMarkdown(comparedReport);
+assert(comparedMarkdown.includes("improved"), "comparison markdown shows improved count");
+assert(comparedMarkdown.includes("regressed"), "comparison markdown shows regressed count");
+assert(comparedMarkdown.includes("unchanged"), "comparison markdown shows unchanged count");
+assert(comparedMarkdown.includes("→"), "comparison markdown shows unchanged arrow");
+unlinkSync(tmpPrevious);
+
+console.log("\n=== Rollup Types ===");
+
+// Just verify the type structure exists (actual rollup needs live API)
+const mockRollup: EffectivenessRollup = {
+  timestamp: new Date().toISOString(),
+  period: { from: "2026-01-01", to: "2026-03-13" },
+  topics: [{ topicId: "test", accuracy: 0.8, hintRate: 0.1, avgResponseTime: 5000, attempts: 100, contentVersion: null }],
+  overall: { accuracy: 0.8, hintRate: 0.1, avgResponseTime: 5000, totalAttempts: 100 },
+};
+assert(mockRollup.topics.length === 1, "rollup type has correct structure");
+assert(mockRollup.overall.accuracy === 0.8, "rollup overall accuracy correct");
 
 // ── Summary ──
 

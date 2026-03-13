@@ -1,0 +1,24 @@
+{
+  "graph": {
+    "prereqDensityMin": { "warn": 1.2, "fail": 0.8 },
+    "encompassingDensityMin": { "warn": 1.0, "fail": 0.5 },
+    "bottleneckMax": { "warn": 3, "fail": 8 }
+  },
+  "content": {
+    "healthScoreMin": { "warn": 70, "fail": 50 },
+    "problemsPerTopicMin": { "warn": 10, "fail": 5 },
+    "demandDiversityMin": { "warn": 0.6, "fail": 0.3 }
+  },
+  "simulation": {
+    "masteryConvergenceMin": { "warn": 15, "fail": 10 },
+    "difficultyTargetingMin": { "warn": 15, "fail": 10 }
+  },
+  "live": {
+    "topicAccuracyMin": { "warn": 0.70, "fail": 0.50 },
+    "hintRateMax": { "warn": 0.40, "fail": 0.60 },
+    "difficultySpikeDeltaMax": { "warn": 0.15, "fail": 0.25 }
+  },
+  "llm": {
+    "llmAccuracyDeltaMin": { "warn": 0.05, "fail": -0.05 }
+  }
+}

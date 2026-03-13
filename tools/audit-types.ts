@@ -201,6 +201,70 @@ export type MultiDisciplineSection = {
   totalExamples: number;
 };
 
+// ── Thresholds ──
+
+export type ThresholdLevel = { warn: number; fail: number };
+
+export type AuditThresholds = {
+  graph: {
+    prereqDensityMin: ThresholdLevel;
+    encompassingDensityMin: ThresholdLevel;
+    bottleneckMax: ThresholdLevel;
+  };
+  content: {
+    healthScoreMin: ThresholdLevel;
+    problemsPerTopicMin: ThresholdLevel;
+    demandDiversityMin: ThresholdLevel;
+  };
+  simulation: {
+    masteryConvergenceMin: ThresholdLevel;
+    difficultyTargetingMin: ThresholdLevel;
+  };
+  live: {
+    topicAccuracyMin: ThresholdLevel;
+    hintRateMax: ThresholdLevel;
+    difficultySpikeDeltaMax: ThresholdLevel;
+  };
+  llm: {
+    llmAccuracyDeltaMin: ThresholdLevel;
+  };
+};
+
+// ── Effectiveness Rollup ──
+
+export type EffectivenessRollup = {
+  timestamp: string;
+  period: { from: string; to: string };
+  topics: {
+    topicId: string;
+    accuracy: number;
+    hintRate: number;
+    avgResponseTime: number;
+    attempts: number;
+    contentVersion: string | null;
+  }[];
+  overall: {
+    accuracy: number;
+    hintRate: number;
+    avgResponseTime: number;
+    totalAttempts: number;
+  };
+};
+
+// ── Audit Comparison ──
+
+export type AuditDelta = {
+  previousTimestamp: string;
+  sectionDeltas: {
+    section: string;
+    previousStatus: ItemStatus;
+    currentStatus: ItemStatus;
+    trend: "improved" | "regressed" | "unchanged";
+    details: string[];
+  }[];
+  summary: { improved: number; regressed: number; unchanged: number };
+};
+
 // ── Overall Report ──
 
 export type AuditReport = {
@@ -210,6 +274,7 @@ export type AuditReport = {
     contentDir: string;
     platformVersion: string;
     auditVersion: number;
+    thresholdsFile?: string;
   };
   overallStatus: ItemStatus;
   summary: {
@@ -227,4 +292,5 @@ export type AuditReport = {
     mediaReadiness: MediaReadinessSection;
     multiDiscipline: MultiDisciplineSection;
   };
+  delta?: AuditDelta;
 };

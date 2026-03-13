@@ -104,6 +104,11 @@ audit *args:
     export CONTENT_DIR="{{content_dir}}"
     npx tsx tools/audit.ts {{args}}
 
+rollup-effectiveness *args:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    npx tsx tools/rollup-effectiveness.ts {{args}}
+
 # Atomicity audit context assembler (use /atomicity-audit command for full audit)
 atomicity-context *args:
     npx tsx tools/atomicity-context.ts {{args}}

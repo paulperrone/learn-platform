@@ -1,7 +1,7 @@
 # Plan 025: Consolidated System Audit
 
 > **Created:** 2026-03-13T16:59:02Z
-> **Completed:** —
+> **Completed:** 2026-03-13
 >
 > For project context, see [CLAUDE.md](../../CLAUDE.md)
 > For product vision, see [SPEC.md](./SPEC.md)
@@ -21,9 +21,9 @@ Create a unified `just audit` command that orchestrates all validation, content 
 
 ## Progress
 
-**Completed:** Phase 1, Phase 2
+**Completed:** Phase 1, Phase 2, Phase 3
 **In Progress:** —
-**Next:** Phase 3
+**Next:** —
 
 ---
 
@@ -167,7 +167,7 @@ Create a unified `just audit` command that orchestrates all validation, content 
 
 ---
 
-## Phase 3: Effectiveness Rollups, Thresholds & History
+## Phase 3: Effectiveness Rollups, Thresholds & History ✓
 **Goal:** Configurable warning/error thresholds, AE data rollup for long-term effectiveness tracking (solves 90-day TTL), historical audit snapshots for trend comparison.
 
 ### Context for Execution
@@ -176,7 +176,7 @@ Create a unified `just audit` command that orchestrates all validation, content 
 
 **Threshold configurability:** Different stages of the project have different expectations. Pre-launch: graph density warnings are informational. Post-launch with 100 users: content accuracy below 70% is critical. Thresholds should be configurable without code changes.
 
-1. [ ] [IMP] Create threshold configuration (`tools/audit-thresholds.json`):
+1. [x] [IMP] Create threshold configuration (`tools/audit-thresholds.json`):
    - Per-section configurable thresholds:
      ```json
      {
@@ -207,7 +207,7 @@ Create a unified `just audit` command that orchestrates all validation, content 
    - Audit orchestrator reads thresholds and applies to all metrics
    - Override via `--thresholds <file>` flag
 
-2. [ ] [IMP] Build AE effectiveness rollup (`tools/rollup-effectiveness.ts`):
+2. [x] [IMP] Build AE effectiveness rollup (`tools/rollup-effectiveness.ts`):
    - Query AE for per-topic aggregates (accuracy, hint rate, misconception rate, avg response time)
    - Group by content version for version comparison
    - Save to `simulations/reports/effectiveness-rollups/{date}.json`
@@ -216,7 +216,7 @@ Create a unified `just audit` command that orchestrates all validation, content 
    - Optional: triggered by `just audit --rollup` (queries AE and saves before generating report)
    - Solves the 90-day TTL: rollup data persists indefinitely on filesystem
 
-3. [ ] [IMP] Add historical audit comparison:
+3. [x] [IMP] Add historical audit comparison:
    - `just audit --save` saves report to `simulations/reports/audits/{timestamp}.json`
    - `just audit --compare <previous>` loads a previous audit JSON and computes deltas:
      - Graph: density changed by ±X
@@ -227,7 +227,7 @@ Create a unified `just audit` command that orchestrates all validation, content 
    - Delta summary at top of report: "vs [previous date]: 3 improved, 1 regressed, 3 unchanged"
    - Markdown rendering includes delta indicators (↑ ↓ →)
 
-4. [ ] [TST] Test thresholds, rollups, and history:
+4. [x] [TST] Test thresholds, rollups, and history:
    - Unit test: threshold application correctly classifies pass/warn/fail
    - Unit test: custom threshold file overrides defaults
    - Unit test: rollup produces valid aggregation from mock AE data

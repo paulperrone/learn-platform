@@ -2,7 +2,7 @@
  * Markdown renderer for AuditReport — produces human-readable output with
  * pass/warn/fail indicators and actionable recommendations.
  */
-import type { AuditReport, ItemStatus, StatusItem } from "./audit-types.js";
+import type { AuditReport, AuditDelta, ItemStatus, StatusItem } from "./audit-types.js";
 
 const STATUS_ICON: Record<ItemStatus, string> = {
   pass: "✅",
@@ -41,7 +41,25 @@ export function renderAuditMarkdown(report: AuditReport): string {
   lines.push(`- **Mode:** ${report.metadata.mode}`);
   lines.push(`- **Timestamp:** ${report.metadata.timestamp}`);
   lines.push(`- **Content dir:** ${report.metadata.contentDir}`);
+  if (report.metadata.thresholdsFile) {
+    lines.push(`- **Thresholds:** ${report.metadata.thresholdsFile}`);
+  }
   lines.push(``);
+
+  // Delta comparison
+  if (report.delta) {
+    const d = report.delta;
+    const trendIcon = (t: string) => t === "improved" ? "↑" : t === "regressed" ? "↓" : "→";
+    lines.push(`### vs ${d.previousTimestamp.split("T")[0]}: ${d.summary.improved} improved, ${d.summary.regressed} regressed, ${d.summary.unchanged} unchanged`);
+    lines.push(``);
+    lines.push(`| Section | Previous | Current | Trend | Changes |`);
+    lines.push(`|---------|----------|---------|-------|---------|`);
+    for (const sd of d.sectionDeltas) {
+      const changes = sd.details.length > 0 ? sd.details.join("; ") : "—";
+      lines.push(`| ${sd.section} | ${statusIcon(sd.previousStatus)} ${sd.previousStatus} | ${statusIcon(sd.currentStatus)} ${sd.currentStatus} | ${trendIcon(sd.trend)} | ${changes} |`);
+    }
+    lines.push(``);
+  }
 
   // Section 1: Graph Integrity
   lines.push(`---`);
