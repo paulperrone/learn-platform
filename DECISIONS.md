@@ -1699,3 +1699,30 @@ Tag each target in `targets.json` with `signal_source: "engine" | "content" | "b
 **What strong profiles do after session 70:** Pure FSRS review of ~430 mastered math topics. Pedagogically valid (spaced repetition continues). Multi-subject content (ELA/history) would give them new learning; consider after Phase 3.
 
 **Target recalibration deferred to:** Phase 5 (Final Baselines & Documentation), after L4/L5 data informs the right target levels.
+
+---
+
+## 2026-03-12: L4/L5 simulation results — no pathological behaviors, starvation at session 84
+
+**Decision:** Accept L4/L5 results as the long-horizon baseline for 705-topic math graph.
+
+**Context:** Plan 022 Phase 3 ran 7 key profiles at 180 (L4) and 360 (L5) sessions on the post-expansion 705-topic math graph. All 7 profiles completed both runs without crashes or anomalies.
+
+**Key findings:**
+
+| Finding | L4 (180s) | L5 (360s) |
+|---------|-----------|-----------|
+| Review load (post-session-60) | 4.3/session | 4.2/session |
+| New topic starvation | Session 84 | Session 84 |
+| Lapse rate (post-session-100) | 0.91/session | 0.80/session |
+| Gap resilience score | 0.092 | 0.092 |
+| Review/New Balance | ⚠️ WARN (0.715) | ❌ FAIL (0.761) |
+
+**Insights invisible at L3:**
+1. New topic starvation at session 84 (visible only with 100+ sessions)
+2. Gap resilience = 0.092 — quantified post-gap recovery deficit
+3. Review/New Balance degrades from PASS (L3) to FAIL (L5) as math content is exhausted
+
+**No pathological behaviors:** Review queue doesn't explode, mastery preservation holds at 0%, no scheduling anomalies at 360 sessions.
+
+**Next:** Phase 4 (FIRe Implementation Decision) with L4/L5 data now available.

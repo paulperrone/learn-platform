@@ -168,6 +168,14 @@ simulate-l2 seed="42":
 simulate-l3 seed="42":
     just simulate-all 90 {{seed}}
 
+# L4: 7 key profiles × 180 sessions (semester simulation)
+simulate-l4 seed="42":
+    npx tsx simulations/src/cli.ts average-older fast-learner-older struggling-older returning-after-gap misconception-fractions strong-highschool multi-math-strong --sessions 180 --seed {{seed}}
+
+# L5: 7 key profiles × 360 sessions (full-year simulation)
+simulate-l5 seed="42":
+    npx tsx simulations/src/cli.ts average-older fast-learner-older struggling-older returning-after-gap misconception-fractions strong-highschool multi-math-strong --sessions 360 --seed {{seed}}
+
 # Fast simulation regression check (~15s, 3 profiles × 5 sessions)
 simulate-regression seed="42":
     npx tsx simulations/src/regression.ts --seed {{seed}}
@@ -196,6 +204,14 @@ evaluate-l2 seed="42":
 evaluate-l3 seed="42":
     just simulate-l3 {{seed}}
     just evaluate --level l3
+
+evaluate-l4 seed="42":
+    just simulate-l4 {{seed}}
+    just evaluate --level l4
+
+evaluate-l5 seed="42":
+    just simulate-l5 {{seed}}
+    just evaluate --level l5
 
 # Compare metrics across maturity levels (requires baselines)
 evaluate-compare-levels:

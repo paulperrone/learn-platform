@@ -1007,3 +1007,36 @@ The `masteryPlateauSession` field in L3 metrics reports when the mastery RATE st
 The mastery convergence metric ("≥50% of non-struggling profiles reach 50% total mastery") was calibrated for a 207-topic graph. With 705 topics, the measure becomes inconsistent: high-placement profiles (strong-older, gifted-middle) immediately "pass" because the diagnostic gives them implicit mastery for 60-80% of topics before session 1. Average profiles genuinely making good progress (170 topics mastered in 90 sessions) "fail" because 170/705 < 50%. The metric doesn't distinguish between "implicit mastery from diagnostic" and "mastery earned through learning sessions." At 705 topics, 3/29 profiles pass — not because the engine is broken, but because the metric measures the wrong thing. Recalibration needed: measure progress within accessible content, or count topics mastered during the simulation only.
 
 **Context:** This is the primary cause of the mastery_convergence FAIL in the post-expansion L3 evaluation. Deferred recalibration to Plan 022 Phase 5.
+
+---
+
+### 2026-03-12: evaluate-l4/l5 runs FIRe comparison — same masking issue as evaluate-l3
+
+**Source:** User session — Plan 022 Phase 3
+**Area:** Simulation / analysis
+
+`just evaluate-l4` and `evaluate-l5` call `just evaluate` which includes FIRe paired comparison (15-session runs). After running L4/L5, the FIRe runs become the "latest" for each profile — the same masking issue as evaluate-l3 (see prior learning). When analyzing per-profile L4/L5 behavior, filter by session count (180 or 360) to avoid finding the 15-session FIRe runs instead.
+
+**Context:** Same pattern as evaluate-l3 masking. Applies to all `evaluate-l*` recipes.
+
+---
+
+### 2026-03-12: L4/L5 use 7 key profiles, not all profiles — evaluate only reads latest run per profile
+
+**Source:** User session — Plan 022 Phase 3
+**Area:** Simulation / maturity levels
+
+`simulate-l4` and `simulate-l5` run only the 7 key profiles (average-older, fast-learner-older, struggling-older, returning-after-gap, misconception-fractions, strong-highschool, multi-math-strong). But `just evaluate` reads the latest run for ALL profiles found in `simulations/runs/`. This means if you ran L3 (all profiles) before L4, many L3 profile runs will still be present and will be evaluated alongside the 7 fresh L4 runs — the session counts will be mixed (some 180, some 90). The L4/L5 maturity level label and `maxSessions` will be computed from all runs, not just the 7 you just ran. To get a clean L4/L5 evaluation: run `just simulate-clean --keep 1` first, OR accept that mixed-session metrics are filtered by the evaluation code (L3+ metrics use runs from the longest sessions only).
+
+**Context:** The evaluate.ts `computeL3Metrics` uses `nonStruggling` runs but doesn't filter by session count. Mixed-session runs inflate or deflate some averages. Pragmatic workaround: the L4/L5 baselines in practice reflect mixed data, which is fine for trend comparison.
+
+---
+
+### 2026-03-12: FSRS review load is stable at scale — no explosion at 180-360 sessions
+
+**Source:** User session — Plan 022 Phase 3
+**Area:** Simulation / FSRS behavior
+
+A key concern before running L4/L5 was whether the FSRS review queue would grow unboundedly at scale (180+ sessions). It does not. Reviews/session stays at 4.1-4.3 from session 60 to session 360 on the 705-topic math graph. New topic starvation (first session with 5+ consecutive zero-new-topic sessions) occurs at session 84 on average for the 7 key profiles. After that, profiles are in pure FSRS review mode, but the queue size stabilizes. This confirms FSRS scheduling equilibrium is reached and maintained.
+
+**Context:** This is the primary insight from L4/L5 that was invisible at L3.

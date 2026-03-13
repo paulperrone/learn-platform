@@ -898,7 +898,7 @@ function computeL3Metrics(runs: ProfileRun[]): L3Metrics {
     : avgReviewsLast > avgReviewsFirst * 1.15 ? "increasing"
     : "stable";
 
-  return {
+  const result: L3Metrics = {
     masteryPlateauSession: Math.round(totalPlateauSession / n),
     masteryPlateauPercent: Math.round((totalPlateauPercent / n) * 1000) / 1000,
     reviewsPerSessionFinalThird: Math.round(avgReviewsLast * 10) / 10,
@@ -907,6 +907,80 @@ function computeL3Metrics(runs: ProfileRun[]): L3Metrics {
     difficultyTargetingStabilityFinalThird: Math.round((totalFinalAccuracy / n) * 1000) / 1000,
     perProfile,
   };
+
+  // L4+ metrics: only compute when sessions >= 100
+  const maxSessions = runs.reduce((max, r) => Math.max(max, r.summaries.length), 0);
+  if (maxSessions >= 100) {
+    // Lapse rate after session 100: avg lapses/session in sessions 101+
+    let totalLapseRate = 0;
+    let lapseProfileCount = 0;
+    for (const run of runs) {
+      const snap100 = run.snapshots.find((s) => s.sessionNumber >= 100);
+      const finalSnap = run.snapshots[run.snapshots.length - 1];
+      if (!snap100 || !finalSnap || finalSnap.sessionNumber <= 100) continue;
+      const lapses100 = snap100.topicStates.reduce((s, t) => s + t.lapses, 0);
+      const lapsesFinal = finalSnap.topicStates.reduce((s, t) => s + t.lapses, 0);
+      const sessionsDelta = finalSnap.sessionNumber - snap100.sessionNumber;
+      if (sessionsDelta > 0) {
+        totalLapseRate += (lapsesFinal - lapses100) / sessionsDelta;
+        lapseProfileCount++;
+      }
+    }
+    if (lapseProfileCount > 0) {
+      result.lapseRateAfterSession100 = Math.round((totalLapseRate / lapseProfileCount) * 100) / 100;
+    }
+
+    // Reviews/session after session 60: long-term review efficiency
+    let totalReviewsAfter60 = 0;
+    let reviewAfter60Count = 0;
+    for (const run of runs) {
+      const after60 = run.summaries.filter((s) => s.sessionNumber > 60);
+      if (after60.length === 0) continue;
+      const avg = after60.reduce((s, sm) => s + sm.reviewsCompleted, 0) / after60.length;
+      totalReviewsAfter60 += avg;
+      reviewAfter60Count++;
+    }
+    if (reviewAfter60Count > 0) {
+      result.reviewsPerSessionAfterSession60 = Math.round((totalReviewsAfter60 / reviewAfter60Count) * 10) / 10;
+    }
+
+    // New topic starvation: first session where newTopicsIntroduced = 0 for 5+ consecutive sessions
+    let starvationSession = 0;
+    for (const run of runs) {
+      if (run.summaries.length < 5) continue;
+      let zeroStreak = 0;
+      for (const s of run.summaries) {
+        if (s.newTopicsIntroduced === 0) {
+          zeroStreak++;
+          if (zeroStreak >= 5 && starvationSession === 0) {
+            starvationSession = s.sessionNumber - 4;
+          }
+        } else {
+          zeroStreak = 0;
+        }
+      }
+    }
+    result.newTopicStarvationSession = starvationSession;
+
+    // Gap resilience: for returning-after-gap profile only
+    const gapRun = runs.find((r) => r.profileId === "returning-after-gap");
+    if (gapRun && gapRun.snapshots.length > 30) {
+      const snapPre = gapRun.snapshots.find((s) => s.sessionNumber >= 15);
+      const snapPost = gapRun.snapshots.find((s) => s.sessionNumber >= 30);
+      const snapFinal = gapRun.snapshots[gapRun.snapshots.length - 1];
+      if (snapPre && snapPost && snapFinal) {
+        const preGapRate = snapPre.masteryPercent / Math.max(1, snapPre.sessionNumber);
+        const postGapSessions = snapPost.sessionNumber - snapPre.sessionNumber;
+        const postGapGrowth = (snapPost.masteryPercent - snapPre.masteryPercent);
+        const postGapRate = postGapSessions > 0 ? postGapGrowth / postGapSessions : 0;
+        result.gapResilienceScore = preGapRate > 0
+          ? Math.round((postGapRate / preGapRate) * 1000) / 1000
+          : 0;
+      }
+    }
+  }
+
+  return result;
 }
 
 // ── Maturity level baselines ──────────────────────────────────────────
@@ -1021,6 +1095,10 @@ function compareLevels(): void {
       { label: "Reviews/session (final third)", fn: (m: L3Metrics) => m.reviewsPerSessionFinalThird.toFixed(1) },
       { label: "Review scaling trend", fn: (m: L3Metrics) => m.reviewScalingTrend },
       { label: "Difficulty targeting (final)", fn: (m: L3Metrics) => m.difficultyTargetingStabilityFinalThird.toFixed(3) },
+      { label: "Lapse rate after session 100", fn: (m: L3Metrics) => m.lapseRateAfterSession100 !== undefined ? m.lapseRateAfterSession100.toFixed(2) : "—" },
+      { label: "Reviews/session after session 60", fn: (m: L3Metrics) => m.reviewsPerSessionAfterSession60 !== undefined ? m.reviewsPerSessionAfterSession60.toFixed(1) : "—" },
+      { label: "New topic starvation session", fn: (m: L3Metrics) => m.newTopicStarvationSession !== undefined ? (m.newTopicStarvationSession === 0 ? "none" : m.newTopicStarvationSession.toString()) : "—" },
+      { label: "Gap resilience score", fn: (m: L3Metrics) => m.gapResilienceScore !== undefined ? m.gapResilienceScore.toFixed(3) : "—" },
     ];
 
     for (const { label, fn } of metrics) {
@@ -1375,6 +1453,18 @@ function generateMarkdownReport(report: HealingReport): string {
     lines.push(`- **Mastery plateau:** session ${m.masteryPlateauSession} at ${(m.masteryPlateauPercent * 100).toFixed(1)}%`);
     lines.push(`- **Review scaling:** ${m.reviewScalingTrend} (${m.reviewsPerSessionFirstThird} → ${m.reviewsPerSessionFinalThird} reviews/session)`);
     lines.push(`- **Difficulty targeting (final third):** ${m.difficultyTargetingStabilityFinalThird.toFixed(3)}`);
+    if (m.lapseRateAfterSession100 !== undefined) {
+      lines.push(`- **Lapse rate after session 100:** ${m.lapseRateAfterSession100.toFixed(2)}/session`);
+    }
+    if (m.reviewsPerSessionAfterSession60 !== undefined) {
+      lines.push(`- **Reviews/session after session 60:** ${m.reviewsPerSessionAfterSession60.toFixed(1)}`);
+    }
+    if (m.newTopicStarvationSession !== undefined) {
+      lines.push(`- **New topic starvation:** ${m.newTopicStarvationSession === 0 ? "none detected" : `session ${m.newTopicStarvationSession}`}`);
+    }
+    if (m.gapResilienceScore !== undefined) {
+      lines.push(`- **Gap resilience score:** ${m.gapResilienceScore.toFixed(3)} (returning-after-gap; >0.5 = good recovery)`);
+    }
     lines.push("");
     lines.push("| Profile | Final Mastery | Plateau Session | Review Trend | Rev First/Last | Accuracy |");
     lines.push("|---------|--------------|-----------------|--------------|----------------|----------|");

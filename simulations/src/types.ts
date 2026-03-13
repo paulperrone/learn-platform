@@ -343,6 +343,15 @@ export type L3Metrics = {
     reviewsFinalThird: number;
     finalAccuracy: number;
   }>;
+  // L4+ fields (only populated when sessions >= 100)
+  /** Avg lapses per session after session 100 — long-term retention indicator */
+  lapseRateAfterSession100?: number;
+  /** Avg reviews/session after session 60 — long-term review efficiency */
+  reviewsPerSessionAfterSession60?: number;
+  /** Session at which new topic introduction stalls for 5+ consecutive sessions (0 = no starvation) */
+  newTopicStarvationSession?: number;
+  /** Gap resilience: post-gap recovery rate / pre-gap learning rate for returning-after-gap profile */
+  gapResilienceScore?: number;
 };
 
 export type HealingReport = {

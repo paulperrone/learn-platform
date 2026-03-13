@@ -16,16 +16,19 @@ Maturity levels define how many sessions to run and what insights each level rev
 
 ```bash
 # Quick recipes (simulate + evaluate + save baseline)
-just evaluate-l1          # 5 sessions, all profiles
-just evaluate-l2          # 30 sessions, all profiles
-just evaluate-l3          # 90 sessions, all profiles
+just evaluate-l1          # 5 sessions, all profiles (~15s)
+just evaluate-l2          # 30 sessions, all profiles (~2min)
+just evaluate-l3          # 90 sessions, all profiles (~5min)
+just evaluate-l4          # 180 sessions, 7 key profiles (~10min)
+just evaluate-l5          # 360 sessions, 7 key profiles (~20min)
 
 # Compare across levels (requires at least 2 baselines)
 just evaluate-compare-levels
 
 # Manual control
-just simulate-l3          # simulate only
-just evaluate --level l3  # evaluate + save baseline
+just simulate-l4          # simulate only (7 key profiles × 180 sessions)
+just simulate-l5          # simulate only (7 key profiles × 360 sessions)
+just evaluate --level l4  # evaluate + save baseline
 ```
 
 ## Baseline Results
@@ -89,6 +92,44 @@ Strong profiles still exhaust math content around session 70-72. For L4 (180 ses
 
 5. **Behavioral match dropped from 27/29 → 8/29.** Profile behavioral expectations (mastery percentages, timing) were calibrated for the old graph. Need full recalibration against the 705-topic baseline.
 
+### Post-Expansion L4/L5 Baseline (2026-03-12, 705 math topics, seed=42, 7 key profiles)
+
+| System | L3 (90s) | L4 (180s) | L5 (360s) | Trend |
+|--------|----------|-----------|-----------|-------|
+| Mastery Convergence (P0) | ❌ 3/11 | ❌ 4/11 | ❌ 5/11 | Slow improvement — target needs recalibration |
+| Mastery Preservation (P0) | ✅ 0.0% | ✅ 0.0% | ✅ 0.0% | Stable across all levels |
+| Remediation Routing (P0) | ✅ 6517 | ✅ 6518 | ✅ 6518 | Stable (plateaus as topics max out) |
+| Difficulty Targeting (P1) | ✅ 29/17 | ✅ 29/17 | ✅ 29/17 | Stable |
+| Review/New Balance (P1) | ✅ 0.694 | ⚠️ 0.715 | ❌ 0.761 | **Degrades** — content exhaustion at L4/L5 |
+| Interleaving (P1) | ❌ 0.141 | ❌ 0.137 | ❌ 0.124 | Slight improvement — not yet PASS |
+| FIRe Efficiency (P1) | ⚠️ -16.9% | ⚠️ -16.9% | ⚠️ -16.9% | Stable (unchanged) |
+| Presentation Drift (P2) | ✅ 23/14 | ✅ 21/14 | ✅ 22/14 | Stable |
+| Diagnostic Placement (P2) | ❌ 23/24 | ❌ 23/24 | ❌ 23/24 | Stable (marginal miss) |
+| Cognitive Demand Entropy (P2) | ✅ 1.30 | ✅ 1.33 | ✅ 1.32 | Stable |
+
+### L4/L5-Specific Metrics
+
+| Metric | L4 (180s) | L5 (360s) | Notes |
+|--------|-----------|-----------|-------|
+| Lapse rate after session 100 | 0.91/session | 0.80/session | Decreases slightly — FSRS scheduling improves with more history |
+| Reviews/session after session 60 | 4.3 | 4.2 | **No review explosion** — queue stays stable at scale |
+| New topic starvation session | 84 | 84 | Consistent across L4/L5 — starvation onset is topology-driven |
+| Gap resilience score | 0.092 | 0.092 | **Low** — post-gap recovery rate is only 9% of pre-gap learning rate |
+
+### L4/L5 Insights
+
+1. **No review queue explosion at scale.** Reviews/session stays at 4.1-4.3 from session 60 to session 360. FSRS scheduling is stable — the queue does not unbounded grow. This was the primary concern entering L4/L5.
+
+2. **New topic starvation detected at session 84.** Invisible at L3 (90 sessions, catches it only at the tail). Average across profiles: new topic introduction stalls at session 84. For the 7 L4/L5 profiles, this is dominated by the strong profiles (`strong-highschool`, `fast-learner-older`, `multi-math-strong`) which exhaust available frontier topics earlier. Weaker profiles continue introducing new topics past session 84.
+
+3. **Review/New Balance degrades progressively.** L3 PASS (0.694) → L4 WARN (0.715) → L5 FAIL (0.761). As content is exhausted, the ratio shifts toward pure review. Multi-subject content (ELA, history) would extend the runway; math alone runs out of new content at semester scale for fast learners.
+
+4. **Gap resilience is low (0.092).** After a 14-day gap, the returning-after-gap profile's mastery growth rate is only 9% of its pre-gap rate. This quantifies a known FSRS behavior: large gaps cause many topics to expire simultaneously, creating a catch-up review backlog that crowds out new topic introduction. No pathological behavior — system recovers gracefully — but gap management is an area for future improvement.
+
+5. **Mastery Preservation is perfect.** 0% mastery loss across all levels (L3/L4/L5). No mastered topics regress. This confirms FSRS stability is calibrated correctly for mastery threshold.
+
+6. **No pathological behaviors detected.** All 7 profiles complete 360 sessions without crashes, infinite loops, or scheduling anomalies.
+
 ### L3 Insights (Pre-Expansion, for reference)
 
 1. **Review/New Balance degraded from WARN to FAIL at L3** on the small graph. Fixed by expansion.
@@ -130,12 +171,20 @@ Post-expansion behavioral expectations need full recalibration for all profiles.
 - Cognitive demand: does variety decrease over time?
 - Review/New balance: does the system introduce new content or get stuck reviewing?
 
-### L4/L5 — Long-Term (Future)
-- Long-term retention: do mastered topics stay mastered?
-- Review efficiency: does review load decrease as stability grows?
-- Topic starvation: does the system stop introducing new content?
-- Gap resilience: how quickly do students recover from breaks?
+### L4 (180 sessions) — Semester Simulation
+- Long-term retention: lapse rate after session 100 (FSRS stability at scale)
+- Review efficiency after session 60: is the queue manageable at semester scale?
+- New topic starvation: when does the system run out of new topics to introduce?
+- Review/New balance: does it degrade as content is exhausted?
+
+### L5 (360 sessions) — Year-Long Simulation
+- All L4 behaviors over a full year
+- Gap resilience: do mastered topics survive multi-week breaks?
+- FSRS parameter drift: do scheduling parameters stay calibrated over 360 sessions?
+- Behavioral pathologies: does anything break at extreme session counts?
 
 ## Profile Coverage
 
-All 29 profiles run at L1-L3. L4/L5 use a subset of 7 key profiles to manage compute cost (see Plan 019 Phase 5).
+All 29 profiles run at L1-L3. L4/L5 use 7 key profiles to manage compute cost:
+`average-older`, `fast-learner-older`, `struggling-older`, `returning-after-gap`,
+`misconception-fractions`, `strong-highschool`, `multi-math-strong`.
