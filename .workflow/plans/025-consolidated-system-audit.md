@@ -21,13 +21,13 @@ Create a unified `just audit` command that orchestrates all validation, content 
 
 ## Progress
 
-**Completed:** None yet
+**Completed:** Phase 1
 **In Progress:** —
-**Next:** Phase 1
+**Next:** Phase 2
 
 ---
 
-## Phase 1: Audit Orchestrator & Static Report
+## Phase 1: Audit Orchestrator & Static Report ✓
 **Goal:** Build `tools/audit.ts` that runs all static validation and simulation checks, producing a structured JSON + markdown report. Works fully offline — no deployed API or user data needed.
 
 ### Context for Execution
@@ -51,13 +51,13 @@ Create a unified `just audit` command that orchestrates all validation, content 
 6. **Media Readiness** — visual component inventory, R2 media asset counts, future media gaps
 7. **Multi-Discipline Coverage** — per-discipline topic counts, content completeness, progression model status
 
-1. [ ] [IMP] Define audit report schema (`tools/audit-types.ts`):
+1. [x] [IMP] Define audit report schema (`tools/audit-types.ts`):
    - TypeScript types for each of the 7 report sections
    - Overall `AuditReport` type with metadata (timestamp, mode, versions)
    - Per-item status: `pass` | `warn` | `fail` | `info` | `pending` (for live-only sections)
    - Threshold definitions: what constitutes pass/warn/fail for each metric
 
-2. [ ] [IMP] Build `tools/audit.ts` — main orchestrator:
+2. [x] [IMP] Build `tools/audit.ts` — main orchestrator:
    - Import and call validation logic from existing tools (not subprocess — direct function calls)
    - Graph section: call validate-graph logic, extract counts, density, bottlenecks
    - Content section: call content-status logic for health scores, content-gaps for gap summary
@@ -67,24 +67,24 @@ Create a unified `just audit` command that orchestrates all validation, content 
    - Multi-discipline section: iterate disciplines in learn-content, count topics/problems/examples per discipline
    - Handle missing data gracefully (no simulation runs yet, no content for a discipline, etc.)
 
-3. [ ] [IMP] Build markdown renderer (`tools/audit-render.ts`):
+3. [x] [IMP] Build markdown renderer (`tools/audit-render.ts`):
    - Takes `AuditReport` JSON, produces formatted markdown
    - Pass/warn/fail indicators: ✅ / ⚠️ / ❌
    - Summary section at top with overall health
    - Expandable detail sections for each of the 7 areas
    - Actionable recommendations at bottom (e.g., "42 topics below 50 health — run `/content-health math` to investigate")
 
-4. [ ] [IMP] Add `just audit` recipe to justfile:
+4. [x] [IMP] Add `just audit` recipe to justfile:
    - `just audit` — runs static-only audit, outputs markdown to stdout + JSON to `simulations/reports/audit-latest.json`
    - `just audit --json` — JSON only (for programmatic consumption)
    - `just audit --save` — saves to `simulations/reports/audits/{timestamp}.json`
 
-5. [ ] [IMP] Refactor existing tools for importability:
+5. [x] [IMP] Refactor existing tools for importability:
    - Ensure `validate-graph.ts`, `content-status.ts`, `content-gaps.ts` export their core logic as functions (not just CLI entry points)
    - If they currently only run as scripts, extract the logic into exported functions with a CLI wrapper
    - Keep CLI entry points working (backward compat with existing `just validate-content`, etc.)
 
-6. [ ] [TST] Test audit orchestrator:
+6. [x] [TST] Test audit orchestrator:
    - Unit test: report schema validates correctly
    - Unit test: graph section populates from learn-content math graph
    - Unit test: content section populates health scores

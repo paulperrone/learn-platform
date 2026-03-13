@@ -1,0 +1,185 @@
+/**
+ * Audit report types — structured schema for the unified `just audit` report.
+ *
+ * 7 sections: Graph Integrity, Content Quality, Simulation Results,
+ * Content Effectiveness, LLM Tracking, Media Readiness, Multi-Discipline Coverage.
+ */
+
+// ── Status types ──
+
+export type ItemStatus = "pass" | "warn" | "fail" | "info" | "pending";
+
+export type StatusItem = {
+  label: string;
+  status: ItemStatus;
+  value?: string | number;
+  target?: string | number;
+  detail?: string;
+};
+
+// ── Section 1: Graph Integrity ──
+
+export type GraphIntegritySection = {
+  status: ItemStatus;
+  items: StatusItem[];
+  topicCount: number;
+  prerequisiteCount: number;
+  encompassingCount: number;
+  prereqDensity: number;
+  encompassingDensity: number;
+  dagValid: boolean;
+  cycleCount: number;
+  orphanCount: number;
+  bottlenecks: { topicId: string; downstreamCount: number }[];
+  maxDepth: number;
+  fireReadiness: string; // "GOOD" | "PARTIAL" | "LOW"
+  edgeTypes: { required: number; recommended: number; enriching: number };
+  progressionModel: string;
+};
+
+// ── Section 2: Content Quality ──
+
+export type HealthDistribution = {
+  below50: number;
+  below70: number;
+  above70: number;
+  average: number;
+};
+
+export type ContentQualitySection = {
+  status: ItemStatus;
+  items: StatusItem[];
+  totalProblems: number;
+  totalExamples: number;
+  topicsWithProblems: number;
+  topicsWithExamples: number;
+  totalTopics: number;
+  healthDistribution: HealthDistribution;
+  gapSummary: {
+    total: number;
+    critical: number;
+    high: number;
+    medium: number;
+    low: number;
+  };
+  topGaps: { topicId: string; gapType: string; impact: number; priority: string }[];
+  demandDiversity: number; // average across topics
+};
+
+// ── Section 3: Simulation Results ──
+
+export type SimulationSystem = {
+  systemId: string;
+  name: string;
+  status: "PASS" | "FAIL";
+  actual: number;
+  target: number;
+  tolerance: number;
+  priority: string;
+  unit: string;
+};
+
+export type SimulationResultsSection = {
+  status: ItemStatus;
+  items: StatusItem[];
+  evaluationTimestamp: string | null;
+  targetVersion: number | null;
+  maturityLevel: string | null;
+  systems: SimulationSystem[];
+  passCount: number;
+  failCount: number;
+};
+
+// ── Section 4: Content Effectiveness (live only) ──
+
+export type ContentEffectivenessSection = {
+  status: ItemStatus;
+  items: StatusItem[];
+  mode: "offline" | "live";
+  // Live data (null in offline mode)
+  overallAccuracy: number | null;
+  topicAccuracyRange: { min: number; max: number } | null;
+  difficultySpikeCount: number | null;
+  hintEscalationRate: number | null;
+};
+
+// ── Section 5: LLM Tracking ──
+
+export type LLMTrackingSection = {
+  status: ItemStatus;
+  items: StatusItem[];
+  instrumentation: {
+    llmUsageTopicId: boolean;
+    llmUsageProblemId: boolean;
+    reviewLogLlmAssisted: boolean;
+    reviewLogHintSource: boolean;
+    aeBlob13LlmAssisted: boolean;
+  };
+  instrumentationComplete: boolean;
+  // Live data (null in offline mode)
+  totalCost: number | null;
+  totalCalls: number | null;
+  llmAccuracyDelta: number | null;
+};
+
+// ── Section 6: Media Readiness ──
+
+export type MediaReadinessSection = {
+  status: ItemStatus;
+  items: StatusItem[];
+  visualComponents: { type: string; count: number }[];
+  totalMediaReferences: number;
+  topicsWithMedia: number;
+};
+
+// ── Section 7: Multi-Discipline Coverage ──
+
+export type DisciplineSummary = {
+  disciplineId: string;
+  name: string;
+  progressionModel: string;
+  topicCount: number;
+  problemCount: number;
+  exampleCount: number;
+  prereqDensity: number;
+  encompassingDensity: number;
+  collectionCount: number;
+  contentComplete: boolean; // all topics have problems + examples
+};
+
+export type MultiDisciplineSection = {
+  status: ItemStatus;
+  items: StatusItem[];
+  disciplines: DisciplineSummary[];
+  totalTopics: number;
+  totalProblems: number;
+  totalExamples: number;
+};
+
+// ── Overall Report ──
+
+export type AuditReport = {
+  metadata: {
+    timestamp: string;
+    mode: "offline" | "live";
+    contentDir: string;
+    platformVersion: string;
+    auditVersion: number;
+  };
+  overallStatus: ItemStatus;
+  summary: {
+    passCount: number;
+    warnCount: number;
+    failCount: number;
+    pendingCount: number;
+  };
+  sections: {
+    graphIntegrity: GraphIntegritySection;
+    contentQuality: ContentQualitySection;
+    simulationResults: SimulationResultsSection;
+    contentEffectiveness: ContentEffectivenessSection;
+    llmTracking: LLMTrackingSection;
+    mediaReadiness: MediaReadinessSection;
+    multiDiscipline: MultiDisciplineSection;
+  };
+};

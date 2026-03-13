@@ -97,6 +97,13 @@ content-gaps *args:
 content-report *args:
     npx tsx tools/content-report.ts {{args}}
 
+# Unified system audit (graph + content + simulation + LLM tracking + media)
+audit *args:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    export CONTENT_DIR="{{content_dir}}"
+    npx tsx tools/audit.ts {{args}}
+
 # Atomicity audit context assembler (use /atomicity-audit command for full audit)
 atomicity-context *args:
     npx tsx tools/atomicity-context.ts {{args}}

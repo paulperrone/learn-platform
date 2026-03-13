@@ -1109,3 +1109,14 @@ On a 705-topic graph with 18 strands, the `interleaveByStrand()` greedy algorith
 When adding new columns to existing tables, `drizzle-kit generate` may prompt "Is X table created or renamed from Y?" with interactive arrow-key selection that hangs in non-interactive environments (CI, Claude Code). For simple ALTER TABLE additions, write the migration SQL manually and update `meta/_journal.json` with the new entry. Keep the Drizzle schema in sync so future generates work correctly.
 
 **Context:** Any time you add columns to existing D1 tables. Safe for nullable columns (no DEFAULT needed). For NOT NULL columns, add DEFAULT manually.
+
+---
+
+### 2026-03-13: Making tsx CLI scripts importable without side effects
+
+**Source:** User session — Plan 025 Phase 1
+**Area:** TypeScript / Node tooling
+
+To make a `npx tsx` script importable as a module: (1) wrap all computation in an exported function, (2) guard CLI output with `const isCLI = process.argv[1]?.includes('script-name'); if (isCLI) { ... }`. This prevents the script from executing on import while keeping `npx tsx tools/script.ts` working. Don't use `import.meta.url` comparison — it doesn't work reliably with tsx.
+
+**Context:** Any time you need to import logic from an existing CLI tool. See content-status.ts, content-gaps.ts, content-report.ts for examples.

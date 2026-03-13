@@ -1881,3 +1881,24 @@ Post-implementation results:
 **Alternatives rejected:**
 - Shared in-memory state (fragile across Workers, would require the session Map to be accessible from LLM routes)
 - Separate tracking table (over-engineering for a boolean flag per problem)
+
+---
+
+### 2026-03-13: Dual-purpose CLI tools — `isCLI` guard pattern for importability
+
+**Source:** User session — Plan 025 Phase 1
+
+**Context:** The audit orchestrator needs to import core logic from existing CLI tools (content-status, content-gaps, content-report), but they were all standalone scripts that run on import.
+
+**Decision:** Refactored tools to export functions and use `process.argv[1]?.includes('tool-name')` guard for CLI entry points. For validate-graph.ts (577 lines, deeply procedural), computed graph metrics directly in audit.ts instead of refactoring.
+
+**Why:**
+- Keeps existing CLI behavior intact (`npx tsx tools/content-status.ts` still works)
+- Allows `import { generateContentStatus } from "./content-status.js"` without side effects
+- Refactoring validate-graph.ts would be high-risk for low value — audit only needs a subset of its metrics
+- Direct graph computation in audit.ts is ~80 lines vs refactoring 577 lines
+
+**Alternatives rejected:**
+- Subprocess execution (`child_process.exec`) — slow, loses type safety, fragile output parsing
+- Full refactor of all tools (including validate-graph) — high risk, delayed delivery
+- Shared output capture (redirect console) — fragile, untyped

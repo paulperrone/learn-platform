@@ -6,13 +6,12 @@
  *
  * Usage: npx tsx tools/content-report.ts [discipline]
  *        npx tsx tools/content-report.ts           # all disciplines
+ *
+ * Also importable: `import { generateDisciplineReport } from "./content-report.js"`
  */
 import { readFileSync, existsSync, readdirSync } from "fs";
 import { join } from "path";
 import { getContentDir } from "./content-dir.js";
-
-const targetDiscipline = process.argv[2];
-const contentDir = getContentDir();
 
 const PROGRESSION_MODELS: Record<string, string> = {
   math: "mastery-gated",
@@ -21,12 +20,46 @@ const PROGRESSION_MODELS: Record<string, string> = {
   philosophy: "context-layered",
 };
 
-function reportDiscipline(discipline: string): void {
+// --- Types ---
+
+export type DisciplineReport = {
+  discipline: string;
+  name: string;
+  progressionModel: string;
+  topicCount: number;
+  prerequisiteCount: number;
+  prereqDensity: number;
+  encompassingCount: number;
+  encompassingDensity: number;
+  edgeTypes: { required: number; recommended: number; enriching: number };
+  strands: { name: string; count: number; minDepth: number; maxDepth: number }[];
+  problemStats: {
+    totalTopicsWithProblems: number;
+    min: number;
+    max: number;
+    avg: number;
+    median: number;
+  } | null;
+  encompassingCoverage: {
+    parentsCount: number;
+    childrenCount: number;
+    leafTopics: number;
+    uncoveredLeaves: number;
+    weightAvg: number | null;
+    weightMin: number | null;
+    weightMax: number | null;
+  };
+  collections: { id: string; topicCount: number; gradeRange: string; kind: string }[];
+  uncoveredByCollection: number;
+  maxDepth: number;
+};
+
+// --- Exported function ---
+
+export function generateDisciplineReport(discipline: string): DisciplineReport | null {
+  const contentDir = getContentDir();
   const graphPath = join(contentDir, discipline, "graph.json");
-  if (!existsSync(graphPath)) {
-    console.log(`Skipping ${discipline} — no graph.json`);
-    return;
-  }
+  if (!existsSync(graphPath)) return null;
 
   const graph = JSON.parse(readFileSync(graphPath, "utf-8"));
   const topics: any[] = graph.topics ?? [];
@@ -35,23 +68,14 @@ function reportDiscipline(discipline: string): void {
   const collections: any[] = graph.collections ?? [];
   const model = graph.progressionModel ?? PROGRESSION_MODELS[discipline] ?? "unknown";
 
-  console.log(`\n${"═".repeat(60)}`);
-  console.log(`  ${graph.name ?? discipline} (${discipline}) — ${model}`);
-  console.log(`${"═".repeat(60)}`);
+  const topicIds = new Set(topics.map((t: any) => t.id));
 
-  // --- Density summary ---
-  console.log(`\n  Topics: ${topics.length}`);
-  console.log(`  Prerequisites: ${localPrereqs.length} (${topics.length > 0 ? (localPrereqs.length / topics.length).toFixed(2) : "0"}/topic)`);
-  console.log(`  Encompassings: ${encompassings.length} (${topics.length > 0 ? (encompassings.length / topics.length).toFixed(2) : "0"}/topic)`);
-
-  // --- Edge type distribution ---
+  // Edge types
   const requiredCount = localPrereqs.filter((p: any) => p.type === "required").length;
   const recommendedCount = localPrereqs.filter((p: any) => p.type === "recommended").length;
   const enrichingCount = localPrereqs.filter((p: any) => p.type === "enriching").length;
-  const total = localPrereqs.length;
-  console.log(`  Edge types: ${requiredCount} required (${total > 0 ? Math.round(100 * requiredCount / total) : 0}%) | ${recommendedCount} recommended (${total > 0 ? Math.round(100 * recommendedCount / total) : 0}%) | ${enrichingCount} enriching (${total > 0 ? Math.round(100 * enrichingCount / total) : 0}%)`);
 
-  // --- Strand analysis ---
+  // Strands + depth via BFS
   const strands = new Map<string, any[]>();
   for (const t of topics) {
     const strand = t.strand ?? "(no strand)";
@@ -59,8 +83,6 @@ function reportDiscipline(discipline: string): void {
     strands.get(strand)!.push(t);
   }
 
-  // Compute topic depths via BFS
-  const topicIds = new Set(topics.map((t: any) => t.id));
   const adj = new Map<string, string[]>();
   const hasIncoming = new Set<string>();
   for (const id of topicIds) adj.set(id, []);
@@ -70,6 +92,7 @@ function reportDiscipline(discipline: string): void {
       hasIncoming.add(p.to);
     }
   }
+
   const depthMap = new Map<string, number>();
   const queue: string[] = [];
   for (const t of topics) {
@@ -89,15 +112,14 @@ function reportDiscipline(discipline: string): void {
     }
   }
 
-  console.log(`\n  Strands (${strands.size}):`);
-  for (const [strand, strandTopics] of [...strands.entries()].sort((a, b) => b[1].length - a[1].length)) {
-    const depths = strandTopics.map(t => depthMap.get(t.id) ?? 0);
-    const maxD = Math.max(...depths);
-    const minD = Math.min(...depths);
-    console.log(`    ${strand}: ${strandTopics.length} topics, depth ${minD}-${maxD}`);
-  }
+  const strandData = [...strands.entries()]
+    .sort((a, b) => b[1].length - a[1].length)
+    .map(([name, strandTopics]) => {
+      const depths = strandTopics.map(t => depthMap.get(t.id) ?? 0);
+      return { name, count: strandTopics.length, minDepth: Math.min(...depths), maxDepth: Math.max(...depths) };
+    });
 
-  // --- Problems-per-topic histogram ---
+  // Problems stats
   const probDirs = [join(contentDir, discipline, "problems"), join(contentDir, discipline, "problems-generated")];
   const topicProbCounts = new Map<string, number>();
   for (const dir of probDirs) {
@@ -110,107 +132,152 @@ function reportDiscipline(discipline: string): void {
     }
   }
 
+  let problemStats: DisciplineReport["problemStats"] = null;
   if (topicProbCounts.size > 0) {
     const counts = [...topicProbCounts.values()].sort((a, b) => a - b);
-    const min = counts[0];
-    const max = counts[counts.length - 1];
-    const avg = counts.reduce((a, b) => a + b, 0) / counts.length;
-    const median = counts[Math.floor(counts.length / 2)];
-
-    console.log(`\n  Problems/topic: min=${min}, max=${max}, avg=${avg.toFixed(1)}, median=${median}`);
-    console.log(`  Coverage: ${topicProbCounts.size}/${topics.length} topics have problems`);
-
-    // Histogram buckets
-    const buckets = [
-      { label: "0-4", min: 0, max: 4 },
-      { label: "5-9", min: 5, max: 9 },
-      { label: "10-14", min: 10, max: 14 },
-      { label: "15-19", min: 15, max: 19 },
-      { label: "20-29", min: 20, max: 29 },
-      { label: "30-49", min: 30, max: 49 },
-      { label: "50+", min: 50, max: Infinity },
-    ];
-    console.log(`\n  Problems histogram:`);
-    for (const b of buckets) {
-      const count = counts.filter(c => c >= b.min && c <= b.max).length;
-      if (count > 0) {
-        const bar = "█".repeat(Math.ceil(count / Math.max(1, Math.ceil(counts.length / 40))));
-        console.log(`    ${b.label.padStart(5)}: ${bar} ${count}`);
-      }
-    }
-  } else {
-    console.log(`\n  Problems: NONE`);
+    problemStats = {
+      totalTopicsWithProblems: topicProbCounts.size,
+      min: counts[0],
+      max: counts[counts.length - 1],
+      avg: Math.round((counts.reduce((a, b) => a + b, 0) / counts.length) * 10) / 10,
+      median: counts[Math.floor(counts.length / 2)],
+    };
   }
 
-  // --- Encompassing coverage ---
+  // Encompassing coverage
   const encompassedChildren = new Set(encompassings.map((e: any) => e.child));
   const encompassingParents = new Set(encompassings.map((e: any) => e.parent));
   const leafTopics = topics.filter(t => !localPrereqs.some((p: any) => p.from === t.id));
   const uncoveredLeaves = leafTopics.filter(t => !encompassedChildren.has(t.id));
 
-  console.log(`\n  Encompassing coverage:`);
-  console.log(`    Topics as parent: ${encompassingParents.size}/${topics.length}`);
-  console.log(`    Topics as child: ${encompassedChildren.size}/${topics.length}`);
-  console.log(`    Leaf topics: ${leafTopics.length}, uncovered: ${uncoveredLeaves.length}`);
-
+  let weightAvg: number | null = null;
+  let weightMin: number | null = null;
+  let weightMax: number | null = null;
   if (encompassings.length > 0) {
     const weights = encompassings.map((e: any) => e.weight);
-    const avgW = weights.reduce((a: number, b: number) => a + b, 0) / weights.length;
-    const minW = Math.min(...weights);
-    const maxW = Math.max(...weights);
-    console.log(`    Weight: avg=${avgW.toFixed(2)}, min=${minW.toFixed(2)}, max=${maxW.toFixed(2)}`);
+    weightAvg = Math.round((weights.reduce((a: number, b: number) => a + b, 0) / weights.length) * 100) / 100;
+    weightMin = Math.round(Math.min(...weights) * 100) / 100;
+    weightMax = Math.round(Math.max(...weights) * 100) / 100;
   }
 
-  // --- Collection coverage ---
-  if (collections.length > 0) {
-    console.log(`\n  Collections (${collections.length}):`);
-    const allCollTopics = new Set<string>();
-    for (const c of collections) {
-      const tids = c.topicIds ?? [];
-      for (const tid of tids) allCollTopics.add(tid);
-      console.log(`    ${c.id}: ${tids.length} topics, grade ${c.gradeRange ?? "?"}, ${c.kind ?? "grade-band"}`);
+  // Collections
+  const allCollTopics = new Set<string>();
+  const collectionData = collections.map((c: any) => {
+    const tids = c.topicIds ?? [];
+    for (const tid of tids) allCollTopics.add(tid);
+    return { id: c.id, topicCount: tids.length, gradeRange: c.gradeRange ?? "?", kind: c.kind ?? "grade-band" };
+  });
+  const uncoveredByCollection = topics.filter(t => !allCollTopics.has(t.id)).length;
 
-      // Cross-discipline check
-      const foreignTopics = tids.filter((tid: string) => !topicIds.has(tid));
-      if (foreignTopics.length > 0) {
-        console.log(`      ↳ ${foreignTopics.length} cross-discipline topics`);
+  const maxDepth = depthMap.size > 0 ? Math.max(...depthMap.values()) : 0;
+
+  return {
+    discipline,
+    name: graph.name ?? discipline,
+    progressionModel: model,
+    topicCount: topics.length,
+    prerequisiteCount: localPrereqs.length,
+    prereqDensity: topics.length > 0 ? Math.round((localPrereqs.length / topics.length) * 100) / 100 : 0,
+    encompassingCount: encompassings.length,
+    encompassingDensity: topics.length > 0 ? Math.round((encompassings.length / topics.length) * 100) / 100 : 0,
+    edgeTypes: { required: requiredCount, recommended: recommendedCount, enriching: enrichingCount },
+    strands: strandData,
+    problemStats,
+    encompassingCoverage: {
+      parentsCount: encompassingParents.size,
+      childrenCount: encompassedChildren.size,
+      leafTopics: leafTopics.length,
+      uncoveredLeaves: uncoveredLeaves.length,
+      weightAvg, weightMin, weightMax,
+    },
+    collections: collectionData,
+    uncoveredByCollection,
+    maxDepth,
+  };
+}
+
+export function listDisciplines(): string[] {
+  const contentDir = getContentDir();
+  if (!existsSync(contentDir)) return [];
+  return readdirSync(contentDir).filter(d => existsSync(join(contentDir, d, "graph.json")));
+}
+
+// --- CLI entry point ---
+
+const isCLI = process.argv[1]?.includes("content-report");
+if (isCLI) {
+  const targetDiscipline = process.argv[2];
+  const contentDir = getContentDir();
+
+  if (!existsSync(contentDir)) {
+    console.error("content/ directory not found");
+    process.exit(1);
+  }
+
+  const disciplines = targetDiscipline
+    ? [targetDiscipline]
+    : readdirSync(contentDir).filter(d => existsSync(join(contentDir, d, "graph.json")));
+
+  for (const disc of disciplines) {
+    const report = generateDisciplineReport(disc);
+    if (!report) {
+      console.log(`Skipping ${disc} — no graph.json`);
+      continue;
+    }
+
+    console.log(`\n${"═".repeat(60)}`);
+    console.log(`  ${report.name} (${disc}) — ${report.progressionModel}`);
+    console.log(`${"═".repeat(60)}`);
+
+    console.log(`\n  Topics: ${report.topicCount}`);
+    console.log(`  Prerequisites: ${report.prerequisiteCount} (${report.prereqDensity}/topic)`);
+    console.log(`  Encompassings: ${report.encompassingCount} (${report.encompassingDensity}/topic)`);
+
+    const total = report.prerequisiteCount;
+    const rPct = total > 0 ? Math.round(100 * report.edgeTypes.required / total) : 0;
+    const rcPct = total > 0 ? Math.round(100 * report.edgeTypes.recommended / total) : 0;
+    const ePct = total > 0 ? Math.round(100 * report.edgeTypes.enriching / total) : 0;
+    console.log(`  Edge types: ${report.edgeTypes.required} required (${rPct}%) | ${report.edgeTypes.recommended} recommended (${rcPct}%) | ${report.edgeTypes.enriching} enriching (${ePct}%)`);
+
+    console.log(`\n  Strands (${report.strands.length}):`);
+    for (const s of report.strands) {
+      console.log(`    ${s.name}: ${s.count} topics, depth ${s.minDepth}-${s.maxDepth}`);
+    }
+
+    if (report.problemStats) {
+      const ps = report.problemStats;
+      console.log(`\n  Problems/topic: min=${ps.min}, max=${ps.max}, avg=${ps.avg}, median=${ps.median}`);
+      console.log(`  Coverage: ${ps.totalTopicsWithProblems}/${report.topicCount} topics have problems`);
+    } else {
+      console.log(`\n  Problems: NONE`);
+    }
+
+    const ec = report.encompassingCoverage;
+    console.log(`\n  Encompassing coverage:`);
+    console.log(`    Topics as parent: ${ec.parentsCount}/${report.topicCount}`);
+    console.log(`    Topics as child: ${ec.childrenCount}/${report.topicCount}`);
+    console.log(`    Leaf topics: ${ec.leafTopics}, uncovered: ${ec.uncoveredLeaves}`);
+    if (ec.weightAvg !== null) {
+      console.log(`    Weight: avg=${ec.weightAvg}, min=${ec.weightMin}, max=${ec.weightMax}`);
+    }
+
+    if (report.collections.length > 0) {
+      console.log(`\n  Collections (${report.collections.length}):`);
+      for (const c of report.collections) {
+        console.log(`    ${c.id}: ${c.topicCount} topics, grade ${c.gradeRange}, ${c.kind}`);
       }
-    }
-    const uncoveredByCollection = topics.filter(t => !allCollTopics.has(t.id));
-    if (uncoveredByCollection.length > 0) {
-      console.log(`    ⚠ ${uncoveredByCollection.length} topics not in any collection`);
-    }
-  } else {
-    console.log(`\n  Collections: NONE`);
-  }
-
-  // --- Depth distribution ---
-  if (depthMap.size > 0) {
-    const maxDepth = Math.max(...depthMap.values());
-    console.log(`\n  Depth distribution (max: ${maxDepth}):`);
-    for (let d = 0; d <= maxDepth; d++) {
-      const count = [...depthMap.values()].filter(v => v === d).length;
-      if (count > 0) {
-        const bar = "█".repeat(Math.ceil(count / Math.max(1, Math.ceil(topics.length / 40))));
-        console.log(`    ${String(d).padStart(3)}: ${bar} ${count}`);
+      if (report.uncoveredByCollection > 0) {
+        console.log(`    ⚠ ${report.uncoveredByCollection} topics not in any collection`);
       }
+    } else {
+      console.log(`\n  Collections: NONE`);
+    }
+
+    if (report.maxDepth > 0) {
+      console.log(`\n  Max depth: ${report.maxDepth}`);
     }
   }
+
+  console.log(`\n${"═".repeat(60)}`);
+  console.log(`Report complete for ${disciplines.length} discipline(s).`);
 }
-
-// Main
-if (!existsSync(contentDir)) {
-  console.error("content/ directory not found");
-  process.exit(1);
-}
-
-const disciplines = targetDiscipline
-  ? [targetDiscipline]
-  : readdirSync(contentDir).filter(d => existsSync(join(contentDir, d, "graph.json")));
-
-for (const disc of disciplines) {
-  reportDiscipline(disc);
-}
-
-console.log(`\n${"═".repeat(60)}`);
-console.log(`Report complete for ${disciplines.length} discipline(s).`);
