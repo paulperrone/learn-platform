@@ -7,7 +7,11 @@
  *   - examples.json  (all worked examples with dimension defaults applied)
  *
  * Usage:
- *   npx tsx tools/generate-bundles.ts [--discipline <name>] [--dry-run] [--out <dir>]
+ *   npx tsx tools/generate-bundles.ts [--discipline <name>] [--dry-run] [--out <dir>] [--lenient]
+ *
+ * Modes:
+ *   --strict   (default) Warn when dimension defaults are applied. Exit non-zero if any defaults needed.
+ *   --lenient  Apply defaults silently without warnings or failure. Use during migration only.
  */
 import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync } from "fs";
 import { join, basename } from "path";
@@ -97,25 +101,44 @@ function sha256(data: string): string {
   return `sha256:${createHash("sha256").update(data).digest("hex")}`;
 }
 
+let totalDefaultsApplied = 0;
+let lenientMode = false; // set by parseArgs()
+
 function applyProblemDefaults(problem: Problem): Problem {
-  return {
-    ...problem,
-    flavor: problem.flavor ?? "classic",
-    locale: problem.locale ?? "en",
-    presentation: problem.presentation ?? "standard",
-    contentDepth: problem.contentDepth ?? "survey",
-    source: problem.source ?? "hand-authored",
-  };
+  const result = { ...problem };
+  const missing: string[] = [];
+  if (!result.flavor) { result.flavor = "classic"; missing.push("flavor"); }
+  if (!result.locale) { result.locale = "en"; missing.push("locale"); }
+  if (!result.presentation) { result.presentation = "standard"; missing.push("presentation"); }
+  if (!result.contentDepth) { result.contentDepth = "survey"; missing.push("contentDepth"); }
+  if (!result.source) { result.source = "hand-authored"; missing.push("source"); }
+  if (missing.length > 0) {
+    totalDefaultsApplied += missing.length;
+    if (!lenientMode) {
+      for (const field of missing) {
+        console.warn(`WARN: ${problem.id} missing ${field}, defaulting to ${(result as Record<string, unknown>)[field]}`);
+      }
+    }
+  }
+  return result;
 }
 
 function applyExampleDefaults(example: WorkedExample): WorkedExample {
-  return {
-    ...example,
-    flavor: example.flavor ?? "classic",
-    locale: example.locale ?? "en",
-    presentation: example.presentation ?? "standard",
-    contentDepth: example.contentDepth ?? "survey",
-  };
+  const result = { ...example };
+  const missing: string[] = [];
+  if (!result.flavor) { result.flavor = "classic"; missing.push("flavor"); }
+  if (!result.locale) { result.locale = "en"; missing.push("locale"); }
+  if (!result.presentation) { result.presentation = "standard"; missing.push("presentation"); }
+  if (!result.contentDepth) { result.contentDepth = "survey"; missing.push("contentDepth"); }
+  if (missing.length > 0) {
+    totalDefaultsApplied += missing.length;
+    if (!lenientMode) {
+      for (const field of missing) {
+        console.warn(`WARN: ${example.id} missing ${field}, defaulting to ${(result as Record<string, unknown>)[field]}`);
+      }
+    }
+  }
+  return result;
 }
 
 function countBy<T>(items: T[], key: (item: T) => string): Record<string, number> {
@@ -133,11 +156,12 @@ function unique(items: (string | undefined)[]): string[] {
 
 // ── Main ──
 
-function parseArgs(): { discipline?: string; dryRun: boolean; outDir: string } {
+function parseArgs(): { discipline?: string; dryRun: boolean; outDir: string; strict: boolean } {
   const args = process.argv.slice(2);
   let discipline: string | undefined;
   let dryRun = false;
   let outDir = "/tmp/learn-content-bundles";
+  let strict = true; // default is strict
 
   for (let i = 0; i < args.length; i++) {
     if (args[i] === "--discipline" && args[i + 1]) {
@@ -146,10 +170,16 @@ function parseArgs(): { discipline?: string; dryRun: boolean; outDir: string } {
       dryRun = true;
     } else if (args[i] === "--out" && args[i + 1]) {
       outDir = args[++i];
+    } else if (args[i] === "--lenient") {
+      strict = false;
+      lenientMode = true;
+    } else if (args[i] === "--strict") {
+      strict = true;
+      lenientMode = false;
     }
   }
 
-  return { discipline, dryRun, outDir };
+  return { discipline, dryRun, outDir, strict };
 }
 
 function processDiscipline(
@@ -265,11 +295,12 @@ function processDiscipline(
 }
 
 function main() {
-  const { discipline, dryRun, outDir } = parseArgs();
+  const { discipline, dryRun, outDir, strict } = parseArgs();
   const contentDir = getContentDir();
 
   console.log(`Content dir: ${contentDir}`);
   console.log(`Output dir:  ${outDir}`);
+  console.log(`Mode: ${strict ? "strict" : "lenient"}`);
   if (dryRun) console.log("(dry run — no files written)");
   console.log();
 
@@ -307,6 +338,17 @@ function main() {
   console.log(`Problems:    ${grandTotalProblems}`);
   console.log(`Examples:    ${grandTotalExamples}`);
   console.log(`Total size:  ${(grandTotalBytes / 1024 / 1024).toFixed(2)} MB`);
+
+  if (totalDefaultsApplied > 0) {
+    console.log(`\nDefaults applied: ${totalDefaultsApplied} (use --lenient to suppress warnings)`);
+    if (strict) {
+      console.error(`\nERROR: ${totalDefaultsApplied} dimension defaults were applied in strict mode.`);
+      console.error("Run validate-content --strict to identify missing fields, then backfill before bundling.");
+      process.exit(1);
+    }
+  } else {
+    console.log("Defaults applied: 0 — all content is fully specified");
+  }
 }
 
 main();

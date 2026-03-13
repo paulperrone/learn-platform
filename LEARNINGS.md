@@ -1087,3 +1087,14 @@ When disabling FIRe via a constant, gate with `!FIRE_ENABLED && !fireDiagnostic`
 On a 705-topic graph with 18 strands, the `interleaveByStrand()` greedy algorithm works correctly but can't diversify when the input session mix has 6-7 topics from one strand. Root cause: frontier topics cluster by strand because prerequisite chains are intra-strand. The fix is upstream — cap new topics per strand (MAX_PER_STRAND=2) in `getSessionMix()` before interleaving. This guarantees strand diversity in the input, making the interleaving algorithm effective again.
 
 **Context:** When interleaving quality regresses, check input composition (session mix) before tuning the algorithm. The algorithm is O(n²) greedy and handles its input correctly — the problem is always upstream.
+
+---
+
+### 2026-03-13: `.claude` is a symlink — `git add` must use real path
+
+**Source:** User session
+**Area:** Git / project tooling
+
+`.claude/` in learn-platform is a symlink to `.workflow/`. Running `git add .claude/plans/...` fails with `fatal: pathspec '...' is beyond a symbolic link`. Always stage workflow plan files via their real path: `git add .workflow/plans/...`.
+
+**Context:** Any time you commit plan changes (marking phases complete, updating progress).

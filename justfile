@@ -44,6 +44,28 @@ validate-content:
     fi
     exit $exit_code
 
+# Validate content in strict mode (requires dimension fields on all items)
+validate-content-strict:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    export CONTENT_DIR="{{content_dir}}"
+    exit_code=0
+    for dir in "$CONTENT_DIR"/*/; do
+        subject=$(basename "$dir")
+        if [ -f "$dir/graph.json" ]; then
+            echo "--- Validating $subject (strict) ---"
+            npx tsx tools/validate-graph.ts "$subject" || exit_code=1
+            npx tsx tools/validate-content.ts "$subject" --strict || exit_code=1
+            echo ""
+        fi
+    done
+    if [ -f "$CONTENT_DIR/cross-discipline-edges.json" ]; then
+        echo "--- Validating cross-discipline edges ---"
+        npx tsx tools/validate-cross-discipline.ts || exit_code=1
+        echo ""
+    fi
+    exit $exit_code
+
 # Full validation
 validate: typecheck validate-content
 

@@ -180,15 +180,22 @@ export function createFileContentBucket(contentDir: string): ContentBucket {
         items = items.concat(generated);
       }
 
-      // Apply dimension defaults (same as generate-bundles.ts)
-      const withDefaults = items.map((item) => ({
-        ...item,
-        flavor: (item.flavor as string) ?? "classic",
-        locale: (item.locale as string) ?? "en",
-        presentation: (item.presentation as string) ?? "standard",
-        contentDepth: (item.contentDepth as string) ?? "survey",
-        ...(file === "problems.json" ? { source: (item.source as string) ?? "hand-authored" } : {}),
-      }));
+      // Apply dimension defaults (same as generate-bundles.ts).
+      // Warn in dev mode when defaults are needed — indicates content is missing fields.
+      const isDev = process.env.NODE_ENV !== "production";
+      const withDefaults = items.map((item) => {
+        const result: Record<string, unknown> = { ...item };
+        const missing: string[] = [];
+        if (!result.flavor) { result.flavor = "classic"; missing.push("flavor"); }
+        if (!result.locale) { result.locale = "en"; missing.push("locale"); }
+        if (!result.presentation) { result.presentation = "standard"; missing.push("presentation"); }
+        if (!result.contentDepth) { result.contentDepth = "survey"; missing.push("contentDepth"); }
+        if (file === "problems.json" && !result.source) { result.source = "hand-authored"; missing.push("source"); }
+        if (missing.length > 0 && isDev) {
+          console.warn(`[content-r2] WARN: ${item.id} missing ${missing.join(", ")}, defaulting`);
+        }
+        return result;
+      });
 
       const text = JSON.stringify(withDefaults);
       return { text: async () => text };
