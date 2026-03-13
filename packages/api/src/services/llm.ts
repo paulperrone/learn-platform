@@ -151,7 +151,8 @@ export function createLLMService(db: DB, apiKey: string, config?: ModelConfig) {
     userId: string,
     purpose: string,
     inputTokens: number,
-    outputTokens: number
+    outputTokens: number,
+    context?: { topicId?: string; problemId?: string; sessionId?: string }
   ) {
     const costs = COST_PER_M[model] ?? { input: 0, output: 0 };
     const costCents =
@@ -166,6 +167,9 @@ export function createLLMService(db: DB, apiKey: string, config?: ModelConfig) {
       outputTokens,
       costCents,
       purpose,
+      topicId: context?.topicId ?? null,
+      problemId: context?.problemId ?? null,
+      sessionId: context?.sessionId ?? null,
     });
   }
 
@@ -174,7 +178,8 @@ export function createLLMService(db: DB, apiKey: string, config?: ModelConfig) {
     tier: ModelTier,
     userId: string,
     purpose: string,
-    maxTokens: number = 1024
+    maxTokens: number = 1024,
+    context?: { topicId?: string; problemId?: string; sessionId?: string }
   ): Promise<{ content: string; inputTokens: number; outputTokens: number }> {
     const model = MODEL_MAP[tier];
 
@@ -203,7 +208,7 @@ export function createLLMService(db: DB, apiKey: string, config?: ModelConfig) {
     const inputTokens = data.usage?.prompt_tokens ?? 0;
     const outputTokens = data.usage?.completion_tokens ?? 0;
 
-    await trackUsage(model, userId, purpose, inputTokens, outputTokens);
+    await trackUsage(model, userId, purpose, inputTokens, outputTokens, context);
     return { content, inputTokens, outputTokens };
   }
 
@@ -216,7 +221,8 @@ export function createLLMService(db: DB, apiKey: string, config?: ModelConfig) {
     tier: ModelTier,
     userId: string,
     purpose: string,
-    maxTokens: number = 1024
+    maxTokens: number = 1024,
+    context?: { topicId?: string; problemId?: string; sessionId?: string }
   ): Promise<{ stream: ReadableStream<Uint8Array>; response: Response }> {
     const model = MODEL_MAP[tier];
 
@@ -290,7 +296,7 @@ export function createLLMService(db: DB, apiKey: string, config?: ModelConfig) {
           const promptText = messages.map((m) => m.content).join(" ");
           inputTokens = Math.ceil(promptText.length / 4);
         }
-        await trackUsage(model, userId, purpose, inputTokens, outputTokens);
+        await trackUsage(model, userId, purpose, inputTokens, outputTokens, context);
       },
     });
 
@@ -333,7 +339,9 @@ Respond in JSON: {"quality": "strong"|"partial"|"weak"|"misconception", "feedbac
         ],
         "cheap",
         userId,
-        "evaluate-explanation"
+        "evaluate-explanation",
+        1024,
+        { topicId }
       );
 
       try {
@@ -377,7 +385,7 @@ Rules:
         },
       ];
 
-      const result = await call(messages, "capable", userId, "socratic-tutor");
+      const result = await call(messages, "capable", userId, "socratic-tutor", 1024, { topicId });
       return { response: result.content };
     },
 
@@ -414,7 +422,7 @@ Rules:
         },
       ];
 
-      return callStream(messages, "capable", userId, "socratic-tutor");
+      return callStream(messages, "capable", userId, "socratic-tutor", 1024, { topicId });
     },
 
     /**
@@ -426,7 +434,8 @@ Rules:
       question: string,
       correctAnswer: string,
       studentAnswer: string,
-      locale?: string
+      locale?: string,
+      context?: { topicId?: string; problemId?: string }
     ) {
       const result = await call(
         [
@@ -445,7 +454,9 @@ Respond in JSON: {"correct": true|false, "feedback": "brief feedback"}${localeIn
         ],
         "cheap",
         userId,
-        "grade-response"
+        "grade-response",
+        1024,
+        { topicId: context?.topicId, problemId: context?.problemId }
       );
 
       try {
@@ -473,7 +484,8 @@ Respond in JSON: {"correct": true|false, "feedback": "brief feedback"}${localeIn
       staticHints: string[],
       currentHintLevel: number,
       studentResponse?: string,
-      locale?: string
+      locale?: string,
+      context?: { topicId?: string; problemId?: string }
     ): Promise<{ level: number; hint: string; source: "static" | "llm"; isMaxLevel: boolean }> {
       const nextLevel = currentHintLevel + 1;
 
@@ -500,7 +512,8 @@ Respond in JSON: {"correct": true|false, "feedback": "brief feedback"}${localeIn
           "cheap",
           userId,
           "hint-nudge",
-          256
+          256,
+          { topicId: context?.topicId, problemId: context?.problemId }
         );
         return { level: 1, hint: result.content, source: "llm", isMaxLevel: false };
       }
@@ -521,7 +534,8 @@ Respond in JSON: {"correct": true|false, "feedback": "brief feedback"}${localeIn
           "cheap",
           userId,
           "hint-guide",
-          256
+          256,
+          { topicId: context?.topicId, problemId: context?.problemId }
         );
         return { level: 2, hint: result.content, source: "llm", isMaxLevel: false };
       }
@@ -542,7 +556,8 @@ Respond in JSON: {"correct": true|false, "feedback": "brief feedback"}${localeIn
           "cheap",
           userId,
           "hint-partial",
-          256
+          256,
+          { topicId: context?.topicId, problemId: context?.problemId }
         );
         return { level: 3, hint: result.content, source: "llm", isMaxLevel: false };
       }
@@ -562,7 +577,8 @@ Respond in JSON: {"correct": true|false, "feedback": "brief feedback"}${localeIn
         "cheap",
         userId,
         "hint-worked",
-        512
+        512,
+        { topicId: context?.topicId, problemId: context?.problemId }
       );
       return { level: 4, hint: result.content, source: "llm", isMaxLevel: true };
     },

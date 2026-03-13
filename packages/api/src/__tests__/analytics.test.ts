@@ -16,6 +16,7 @@ describe("Analytics Service", () => {
     disciplineId: "math",
     blendRole: "main",
     difficultyBias: "on-target",
+    llmAssisted: false,
     correct: true,
     responseMs: 5000,
     hintsUsed: 0,
@@ -48,8 +49,8 @@ describe("Analytics Service", () => {
     expect(writeDataPoint).toHaveBeenCalledOnce();
     const call = writeDataPoint.mock.calls[0][0];
 
-    // 12 blob dimensions
-    expect(call.blobs).toHaveLength(12);
+    // 13 blob dimensions
+    expect(call.blobs).toHaveLength(13);
     expect(call.blobs[0]).toBe("user-1");
     expect(call.blobs[1]).toBe("add-within-20");
     expect(call.blobs[2]).toBe("add-within-20-p1");
@@ -62,6 +63,7 @@ describe("Analytics Service", () => {
     expect(call.blobs[9]).toBe("math");
     expect(call.blobs[10]).toBe("main");
     expect(call.blobs[11]).toBe("on-target");
+    expect(call.blobs[12]).toBe("false"); // llmAssisted
 
     // 6 double measures
     expect(call.doubles).toHaveLength(6);
@@ -130,6 +132,17 @@ describe("Analytics Service", () => {
     const call = writeDataPoint.mock.calls[0][0];
     expect(call.doubles[0]).toBe(0); // incorrect
     expect(call.doubles[5]).toBe(1); // misconception
+  });
+
+  it("records llmAssisted blob as 'true' when LLM was used", () => {
+    const writeDataPoint = vi.fn();
+    const ae = { writeDataPoint } as unknown as AnalyticsEngineDataset;
+    const analytics = createAnalyticsService(ae);
+
+    analytics.recordProblemAttempt({ ...baseProblemEvent, llmAssisted: true });
+
+    const call = writeDataPoint.mock.calls[0][0];
+    expect(call.blobs[12]).toBe("true");
   });
 
   it("gracefully degrades when AE binding is null", () => {

@@ -231,6 +231,8 @@ export const reviewLog = sqliteTable("review_log", {
   hintsUsed: integer("hints_used"),
   misconception: integer("misconception", { mode: "boolean" }),
   contentVersion: text("content_version"),
+  llmAssisted: integer("llm_assisted", { mode: "boolean" }).default(false),
+  hintSource: text("hint_source"), // 'static' | 'llm' | null
   createdAt: text("created_at").notNull().$defaultFn(() => new Date().toISOString()),
 }, (table) => [
   index("review_user_idx").on(table.userId),
@@ -325,9 +327,13 @@ export const llmUsage = sqliteTable("llm_usage", {
   outputTokens: integer("output_tokens").notNull(),
   costCents: real("cost_cents").notNull(),
   purpose: text("purpose").notNull(),
+  topicId: text("topic_id"),
+  problemId: text("problem_id"),
+  sessionId: text("session_id"),
   createdAt: text("created_at").notNull().$defaultFn(() => new Date().toISOString()),
 }, (table) => [
   index("llm_usage_user_idx").on(table.userId),
+  index("llm_usage_topic_idx").on(table.topicId),
 ]);
 
 // === Account Links (visibility/tracking layer) ===

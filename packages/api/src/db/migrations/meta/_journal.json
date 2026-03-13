@@ -218,6 +218,13 @@
       "when": 1773619200000,
       "tag": "0030_drop_content_tables",
       "breakpoints": true
+    },
+    {
+      "idx": 31,
+      "version": "6",
+      "when": 1773705600000,
+      "tag": "0031_llm_effectiveness_attribution",
+      "breakpoints": true
     }
   ]
 }

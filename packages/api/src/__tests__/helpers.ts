@@ -668,7 +668,7 @@ const SCHEMA_STATEMENTS = [
   'CREATE INDEX utd_user_topic_idx ON user_topic_depth (user_id, topic_id)',
 
   // review_log (FK → users, topics)
-  'CREATE TABLE review_log (id text PRIMARY KEY NOT NULL, user_id text NOT NULL, topic_id text NOT NULL, assessment_content_id text, rating integer NOT NULL, confidence integer, correct integer NOT NULL, response_ms integer NOT NULL, phase text NOT NULL, hints_used integer, misconception integer, content_version text, created_at text NOT NULL, FOREIGN KEY (user_id) REFERENCES users(id), FOREIGN KEY (topic_id) REFERENCES topics(id))',
+  'CREATE TABLE review_log (id text PRIMARY KEY NOT NULL, user_id text NOT NULL, topic_id text NOT NULL, assessment_content_id text, rating integer NOT NULL, confidence integer, correct integer NOT NULL, response_ms integer NOT NULL, phase text NOT NULL, hints_used integer, misconception integer, content_version text, llm_assisted integer DEFAULT 0, hint_source text, created_at text NOT NULL, FOREIGN KEY (user_id) REFERENCES users(id), FOREIGN KEY (topic_id) REFERENCES topics(id))',
   'CREATE INDEX review_user_idx ON review_log (user_id)',
   'CREATE INDEX review_topic_idx ON review_log (topic_id)',
   'CREATE INDEX review_assessment_idx ON review_log (assessment_content_id)',
@@ -680,8 +680,9 @@ const SCHEMA_STATEMENTS = [
   'CREATE INDEX learn_sessions_anon_idx ON learn_sessions (anonymous_token)',
 
   // llm_usage (FK → users)
-  'CREATE TABLE llm_usage (id text PRIMARY KEY NOT NULL, user_id text NOT NULL, model text NOT NULL, input_tokens integer NOT NULL, output_tokens integer NOT NULL, cost_cents real NOT NULL, purpose text NOT NULL, created_at text NOT NULL, FOREIGN KEY (user_id) REFERENCES users(id))',
+  'CREATE TABLE llm_usage (id text PRIMARY KEY NOT NULL, user_id text NOT NULL, model text NOT NULL, input_tokens integer NOT NULL, output_tokens integer NOT NULL, cost_cents real NOT NULL, purpose text NOT NULL, topic_id text, problem_id text, session_id text, created_at text NOT NULL, FOREIGN KEY (user_id) REFERENCES users(id))',
   'CREATE INDEX llm_usage_user_idx ON llm_usage (user_id)',
+  'CREATE INDEX llm_usage_topic_idx ON llm_usage (topic_id)',
 
   // user_discipline_presentation (FK → users, disciplines)
   'CREATE TABLE user_discipline_presentation (id integer PRIMARY KEY AUTOINCREMENT NOT NULL, user_id text NOT NULL, discipline_id text NOT NULL, primary_weight real DEFAULT 0 NOT NULL, intermediate_weight real DEFAULT 0 NOT NULL, standard_weight real DEFAULT 0 NOT NULL, advanced_weight real DEFAULT 0 NOT NULL, center_level text DEFAULT \'standard\' NOT NULL, drift_signal real DEFAULT 0 NOT NULL, last_adjusted_at text NOT NULL, FOREIGN KEY (user_id) REFERENCES users(id), FOREIGN KEY (discipline_id) REFERENCES disciplines(id))',

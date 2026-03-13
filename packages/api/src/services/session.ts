@@ -38,6 +38,8 @@ type SessionState = {
   totalResponseMs?: number; // Accumulated response time for activity minutes recording
   sessionMix?: { topicId: string; type: "review" | "new"; blendRole: BlendRole }[]; // Cached session mix from getSessionMix
   remediatedTopics?: string[]; // Topics that have already been remediated this session (prevent re-entry)
+  llmAssistedThisProblem?: boolean; // Set by LLM routes when any LLM feature used on current problem
+  hintSourceThisProblem?: "static" | "llm" | null; // Hint source for current problem
 };
 
 // In-memory cache — D1 is the source of truth
@@ -511,6 +513,8 @@ export function createSessionService(db: DB, fireDiagnostic?: FireDiagnosticConf
           hintsUsed,
           (response as any).problemId,
           versionRow?.contentHash,
+          state.llmAssistedThisProblem ?? false,
+          state.hintSourceThisProblem ?? null,
         );
 
         // Detect new mastery → find unlocked topics
@@ -559,6 +563,7 @@ export function createSessionService(db: DB, fireDiagnostic?: FireDiagnosticConf
             disciplineId: state.lastServedDisciplineId ?? topic.disciplineId ?? "math",
             blendRole: state.currentBlendRole ?? "main",
             difficultyBias: bias,
+            llmAssisted: state.llmAssistedThisProblem ?? false,
             correct: isCorrect,
             responseMs: response.responseMs,
             hintsUsed,
@@ -775,6 +780,8 @@ export function createSessionService(db: DB, fireDiagnostic?: FireDiagnosticConf
         state.currentPhase = phases[currentIdx + 1];
         state.phaseIndex = 0;
         state.hintIndex = 0;
+        state.llmAssistedThisProblem = false;
+        state.hintSourceThisProblem = null;
         return await this.buildPhaseItem(state);
       }
 
@@ -818,6 +825,8 @@ export function createSessionService(db: DB, fireDiagnostic?: FireDiagnosticConf
       state.currentPhase = next.type === "review" ? "review" : "pretest";
       state.phaseIndex = 0;
       state.currentBlendRole = next.blendRole;
+      state.llmAssistedThisProblem = false;
+      state.hintSourceThisProblem = null;
 
       return await this.buildPhaseItem(state);
     },
@@ -848,6 +857,8 @@ export function createSessionService(db: DB, fireDiagnostic?: FireDiagnosticConf
       state.currentTopicId = next.id;
       state.currentPhase = "pretest";
       state.phaseIndex = 0;
+      state.llmAssistedThisProblem = false;
+      state.hintSourceThisProblem = null;
 
       return await this.buildPhaseItem(state);
     },

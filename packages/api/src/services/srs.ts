@@ -188,6 +188,8 @@ export function createSRSService(db: DB, fireDiagnostic?: FireDiagnosticConfig) 
       hintsUsed?: number,
       assessmentContentId?: string,
       contentVersion?: string,
+      llmAssisted?: boolean,
+      hintSource?: string | null,
     ) {
       const state = await this.getOrCreateState(userId, topicId);
       const card = cardFromRow(state);
@@ -312,6 +314,8 @@ export function createSRSService(db: DB, fireDiagnostic?: FireDiagnosticConfig) 
         hintsUsed: hintsUsed ?? null,
         misconception: isMisconception,
         contentVersion: contentVersion ?? null,
+        llmAssisted: llmAssisted ?? false,
+        hintSource: hintSource ?? null,
       });
 
       return {

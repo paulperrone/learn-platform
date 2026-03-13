@@ -10,6 +10,26 @@ export const llmRoutes = new Hono<Env>();
 
 const LLM_UNAVAILABLE = { available: false, error: "AI tutoring is not configured" };
 
+/** Mark a learn session as LLM-assisted for the current problem */
+async function markSessionLLMAssisted(db: ReturnType<typeof getDb>, sessionId: string, hintSource?: "llm") {
+  const row = await db.query.learnSessions.findFirst({
+    where: eq(schema.learnSessions.id, sessionId),
+    columns: { stateJson: true, endedAt: true },
+  });
+  if (!row?.stateJson || row.endedAt) return;
+  try {
+    const state = JSON.parse(row.stateJson);
+    state.llmAssistedThisProblem = true;
+    if (hintSource) state.hintSourceThisProblem = hintSource;
+    await db
+      .update(schema.learnSessions)
+      .set({ stateJson: JSON.stringify(state), updatedAt: new Date().toISOString() })
+      .where(eq(schema.learnSessions.id, sessionId));
+  } catch {
+    // Best-effort — don't fail the LLM response
+  }
+}
+
 /** Middleware: check if LLM is available (API key configured) */
 llmRoutes.use("*", async (c, next) => {
   // Status and usage endpoints work without an API key
@@ -145,10 +165,17 @@ llmRoutes.post("/evaluate", async (c) => {
     topicName: string;
     stepDescription: string;
     studentExplanation: string;
+    sessionId?: string;
     locale?: string;
   }>();
   if (!(await checkBudget(db, body.userId))) return c.json(BUDGET_ERROR, 429);
   const llm = await createConfiguredLLM(db, body.userId, c.env.OPENROUTER_API_KEY);
+
+  // Set LLM-assisted flag on session state if sessionId provided
+  if (body.sessionId) {
+    await markSessionLLMAssisted(db, body.sessionId);
+  }
+
   const result = await llm.evaluateExplanation(
     body.userId,
     body.topicName,
@@ -169,9 +196,11 @@ llmRoutes.post("/tutor", async (c) => {
     problemQuestion: string;
     studentResponse: string;
     conversationHistory?: { role: "system" | "user" | "assistant"; content: string }[];
+    sessionId?: string;
     locale?: string;
   }>();
   if (!(await checkBudget(db, body.userId))) return c.json(BUDGET_ERROR, 429);
+  if (body.sessionId) await markSessionLLMAssisted(db, body.sessionId);
   const llm = await createConfiguredLLM(db, body.userId, c.env.OPENROUTER_API_KEY);
   const result = await llm.socraticTutor(
     body.userId,
@@ -194,9 +223,11 @@ llmRoutes.post("/tutor-stream", async (c) => {
     problemQuestion: string;
     studentResponse: string;
     conversationHistory?: { role: "system" | "user" | "assistant"; content: string }[];
+    sessionId?: string;
     locale?: string;
   }>();
   if (!(await checkBudget(db, body.userId))) return c.json(BUDGET_ERROR, 429);
+  if (body.sessionId) await markSessionLLMAssisted(db, body.sessionId);
   const llm = await createConfiguredLLM(db, body.userId, c.env.OPENROUTER_API_KEY);
 
   try {
@@ -236,12 +267,15 @@ llmRoutes.post("/hint", async (c) => {
   const db = getDb(c.env.DB);
   const body = await c.req.json<{
     userId: string;
+    topicId?: string;
+    problemId?: string;
     topicName: string;
     problemQuestion: string;
     problemSolution: string;
     staticHints: string[];
     currentHintLevel: number;
     studentResponse?: string;
+    sessionId?: string;
     locale?: string;
   }>();
 
@@ -253,6 +287,11 @@ llmRoutes.post("/hint", async (c) => {
     if (!(await checkBudget(db, body.userId))) return c.json(BUDGET_ERROR, 429);
   }
 
+  if (body.sessionId) {
+    const hintSource = hasStaticHint ? undefined : "llm" as const;
+    await markSessionLLMAssisted(db, body.sessionId, hintSource);
+  }
+
   const llm = await createConfiguredLLM(db, body.userId, c.env.OPENROUTER_API_KEY);
   const result = await llm.generateHint(
     body.userId,
@@ -262,7 +301,8 @@ llmRoutes.post("/hint", async (c) => {
     body.staticHints,
     body.currentHintLevel,
     body.studentResponse,
-    body.locale
+    body.locale,
+    { topicId: body.topicId, problemId: body.problemId }
   );
   return c.json(result);
 });
@@ -271,13 +311,17 @@ llmRoutes.post("/grade", async (c) => {
   const db = getDb(c.env.DB);
   const body = await c.req.json<{
     userId: string;
+    topicId?: string;
+    problemId?: string;
     topicName: string;
     question: string;
     correctAnswer: string;
     studentAnswer: string;
+    sessionId?: string;
     locale?: string;
   }>();
   if (!(await checkBudget(db, body.userId))) return c.json(BUDGET_ERROR, 429);
+  if (body.sessionId) await markSessionLLMAssisted(db, body.sessionId);
   const llm = await createConfiguredLLM(db, body.userId, c.env.OPENROUTER_API_KEY);
   const result = await llm.gradeResponse(
     body.userId,
@@ -285,7 +329,8 @@ llmRoutes.post("/grade", async (c) => {
     body.question,
     body.correctAnswer,
     body.studentAnswer,
-    body.locale
+    body.locale,
+    { topicId: body.topicId, problemId: body.problemId }
   );
   return c.json(result);
 });

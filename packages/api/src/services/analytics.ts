@@ -20,6 +20,7 @@ export type ProblemAttemptEvent = {
   disciplineId: string;
   blendRole: string;
   difficultyBias: string;
+  llmAssisted: boolean;
   correct: boolean;
   responseMs: number;
   hintsUsed: number;
@@ -62,6 +63,7 @@ export function createAnalyticsService(ae: AnalyticsEngineDataset | null | undef
           event.disciplineId,
           event.blendRole,
           event.difficultyBias,
+          event.llmAssisted ? "true" : "false",
         ],
         doubles: [
           event.correct ? 1 : 0,

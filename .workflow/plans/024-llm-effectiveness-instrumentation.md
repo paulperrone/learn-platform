@@ -16,13 +16,13 @@ Add topic/problem attribution and outcome correlation to LLM usage tracking so p
 
 ## Progress
 
-**Completed:** None yet
+**Completed:** Phase 1
 **In Progress:** —
-**Next:** Phase 1
+**Next:** Phase 2
 
 ---
 
-## Phase 1: Schema & Attribution
+## Phase 1: Schema & Attribution ✓
 **Goal:** Add topic/problem context to every LLM usage record, and mark every problem attempt with whether LLM assistance was received. Extend Analytics Engine event schema with LLM flag.
 
 ### Context for Execution
@@ -42,7 +42,7 @@ Add topic/problem attribution and outcome correlation to LLM usage tracking so p
 - `trackUsage()` signature gains optional `topicId` and `problemId` parameters
 - Session state tracks `llmAssistedThisProblem: boolean` per-problem (reset on each new problem)
 
-1. [ ] [IMP] D1 migration: add columns to `llm_usage`:
+1. [x] [IMP] D1 migration: add columns to `llm_usage`:
    ```sql
    ALTER TABLE llm_usage ADD COLUMN topic_id TEXT;
    ALTER TABLE llm_usage ADD COLUMN problem_id TEXT;
@@ -53,7 +53,7 @@ Add topic/problem attribution and outcome correlation to LLM usage tracking so p
    - Run `just db-generate` and verify migration SQL
    - Manually add `DEFAULT` clauses if needed (nullable columns should be fine without)
 
-2. [ ] [IMP] D1 migration: add columns to `review_log`:
+2. [x] [IMP] D1 migration: add columns to `review_log`:
    ```sql
    ALTER TABLE review_log ADD COLUMN llm_assisted INTEGER DEFAULT 0;
    ALTER TABLE review_log ADD COLUMN hint_source TEXT;
@@ -63,7 +63,7 @@ Add topic/problem attribution and outcome correlation to LLM usage tracking so p
    - Update Drizzle schema
    - Run `just db-generate`
 
-3. [ ] [IMP] Update `trackUsage()` in `packages/api/src/services/llm.ts`:
+3. [x] [IMP] Update `trackUsage()` in `packages/api/src/services/llm.ts`:
    - Add optional `topicId?: string`, `problemId?: string`, `sessionId?: string` parameters
    - Pass through to `db.insert(schema.llmUsage).values({ ... })`
    - Update all callers:
@@ -73,20 +73,20 @@ Add topic/problem attribution and outcome correlation to LLM usage tracking so p
      - Hint generation endpoints — pass topicId and problemId
    - Update LLM route handlers (`packages/api/src/routes/llm.ts`) to extract and pass topic/problem context
 
-4. [ ] [IMP] Add LLM tracking to session state and review_log:
+4. [x] [IMP] Add LLM tracking to session state and review_log:
    - **Decision: Option (a) — LLM route sets flag in `learn_sessions.stateJson`**
    - In `packages/api/src/services/session.ts`: add `llmAssistedThisProblem: boolean` and `hintSourceThisProblem: 'static' | 'llm' | null` to `SessionState` type (line ~15-41), reset both on each new problem (in phase advancement)
    - In LLM route handlers (`packages/api/src/routes/llm.ts`): when any LLM endpoint is called with a `sessionId`, load session state via `loadState()`, set `llmAssistedThisProblem = true` (and `hintSourceThisProblem = 'llm'` for hint endpoints), then `persistState()`
    - In `session.respond()` (line ~504): read `state.llmAssistedThisProblem` and `state.hintSourceThisProblem`, pass to `srs.scheduleReview()` as `llmAssisted` and `hintSource`
    - In `packages/api/src/services/srs.ts` `scheduleReview()` (line ~302): add `llmAssisted` and `hintSource` to the `review_log` INSERT values
 
-5. [ ] [IMP] Extend Analytics Engine event schema:
+5. [x] [IMP] Extend Analytics Engine event schema:
    - Add blob13 = `llmAssisted` ("true" | "false") to `ProblemAttemptEvent`
    - Update `recordProblemAttempt()` in analytics.ts to include the new blob
    - Update type definition `ProblemAttemptEvent` with `llmAssisted: boolean`
    - Verify we stay within AE's 20-blob limit (currently 12 → 13)
 
-6. [ ] [TST] Test LLM attribution:
+6. [x] [TST] Test LLM attribution:
    - Unit test: `trackUsage()` records topicId and problemId
    - Unit test: review_log includes `llm_assisted` flag
    - Unit test: AE event includes `llmAssisted` blob
