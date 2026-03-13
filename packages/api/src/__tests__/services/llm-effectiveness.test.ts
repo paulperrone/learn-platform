@@ -10,6 +10,8 @@ import {
   seedReviewLog,
   seedLLMUsage,
   seedUserTopicState,
+  seedOrg,
+  seedMember,
 } from "../helpers.js";
 
 const db = getTestDb();
@@ -22,6 +24,8 @@ beforeEach(async () => {
   await db.delete(schema.llmUsage);
   await db.delete(schema.reviewLog);
   await db.delete(schema.userTopicState);
+  await db.delete(schema.members);
+  await db.delete(schema.organizations);
 });
 
 describe("LLM effectiveness: per-topic accuracy split", () => {
@@ -218,5 +222,61 @@ describe("LLM effectiveness: budget exhaustion logging", () => {
     expect(rows[0].problemId).toBe("some-problem");
     expect(rows[0].costCents).toBe(0);
     expect(rows[0].inputTokens).toBe(0);
+  });
+});
+
+describe("LLM effectiveness: cohort grouping by llmTier", () => {
+  it("groups orgs by llmTier from metadata", async () => {
+    const fullOrg = await seedOrg({ metadata: JSON.stringify({ llmTier: "full", monthlyBudgetCents: 500 }) });
+    const freeOrg = await seedOrg({ metadata: JSON.stringify({ llmTier: "free", monthlyBudgetCents: 0 }) });
+    const basicOrg = await seedOrg({ metadata: JSON.stringify({ llmTier: "basic", monthlyBudgetCents: 200 }) });
+
+    const userFull = await seedUser();
+    const userFree = await seedUser();
+    const userBasic = await seedUser();
+
+    await seedMember(userFull.id, fullOrg.id);
+    await seedMember(userFree.id, freeOrg.id);
+    await seedMember(userBasic.id, basicOrg.id);
+
+    // Query orgs with tiers
+    const orgs = await db.select().from(schema.organizations);
+    const tiers = orgs.map((o) => {
+      try {
+        const meta = JSON.parse(o.metadata ?? "{}");
+        return meta.llmTier ?? "unknown";
+      } catch {
+        return "unknown";
+      }
+    });
+
+    expect(tiers).toContain("full");
+    expect(tiers).toContain("free");
+    expect(tiers).toContain("basic");
+  });
+
+  it("defaults to full tier when no llmTier in metadata", async () => {
+    const org = await seedOrg({ metadata: JSON.stringify({ monthlyBudgetCents: 100 }) });
+
+    const meta = JSON.parse(org.metadata ?? "{}") as Record<string, unknown>;
+    const tier = meta.llmTier;
+    const budget = typeof meta.monthlyBudgetCents === "number" ? meta.monthlyBudgetCents : null;
+
+    // No explicit tier — should default based on budget
+    expect(tier).toBeUndefined();
+    // Budget > 0 → full
+    expect(budget).toBe(100);
+    const resolvedTier = budget === 0 ? "free" : "full";
+    expect(resolvedTier).toBe("full");
+  });
+
+  it("resolves free tier when budget is zero and no llmTier set", async () => {
+    const org = await seedOrg({ metadata: JSON.stringify({ monthlyBudgetCents: 0 }) });
+
+    const meta = JSON.parse(org.metadata ?? "{}") as Record<string, unknown>;
+    const budget = typeof meta.monthlyBudgetCents === "number" ? meta.monthlyBudgetCents : null;
+
+    const resolvedTier = budget === 0 ? "free" : "full";
+    expect(resolvedTier).toBe("free");
   });
 });

@@ -414,6 +414,28 @@ export function useApi() {
         };
       }>("/admin/content-matrix"),
 
+    // LLM Effectiveness
+    getLLMEffectiveness: () =>
+      request<{
+        overall: { llmAccuracy: number | null; baselineAccuracy: number | null; llmAttempts: number; baselineAttempts: number };
+        topics: { topicId: string; llmAccuracy: number; baselineAccuracy: number; delta: number; llmAttempts: number; baselineAttempts: number }[];
+        minSampleSize: number;
+      }>("/admin/analytics/llm-effectiveness"),
+    getLLMHintOutcomes: () =>
+      request<{
+        hintOutcomes: { hintSource: string; nextAttemptAccuracy: number | null; sampleSize: number }[];
+        purposeBreakdown: { purpose: string; count: number }[];
+      }>("/admin/analytics/llm-hint-outcomes"),
+    getLLMMasteryImpact: () =>
+      request<{
+        llmAssisted: { avgRepsToMastery: number | null; avgLapses: number | null; topicCount: number };
+        baseline: { avgRepsToMastery: number | null; avgLapses: number | null; topicCount: number };
+      }>("/admin/analytics/llm-mastery-impact"),
+    getLLMCohortComparison: () =>
+      request<{
+        cohorts: { cohort: string; userCount: number; avgAccuracy: number | null; totalAttempts: number; masteredTopics: number; avgRepsToMastery: number | null; avgLapseRate: number | null }[];
+      }>("/admin/analytics/llm-cohort-comparison"),
+
     // Activity
     getTodayProgress: async (date?: string) => {
       const userId = await getUserId();

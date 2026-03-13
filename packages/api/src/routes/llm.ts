@@ -108,6 +108,53 @@ async function checkBudget(db: ReturnType<typeof getDb>, userId: string): Promis
 
 const BUDGET_ERROR = { error: "LLM usage limit reached for this month. Learning continues without AI tutoring." };
 
+type LLMTier = "free" | "basic" | "full";
+
+/** Resolve the LLM feature tier for a user based on their org metadata */
+async function resolveUserTier(db: ReturnType<typeof getDb>, userId: string): Promise<LLMTier> {
+  // Find user's org (direct or via parent)
+  const userRow = await db
+    .select({ managedBy: schema.users.managedBy })
+    .from(schema.users)
+    .where(eq(schema.users.id, userId))
+    .limit(1);
+
+  const lookupId = userRow[0]?.managedBy ?? userId;
+  const membership = await db
+    .select({ organizationId: schema.members.organizationId })
+    .from(schema.members)
+    .where(eq(schema.members.userId, lookupId))
+    .limit(1);
+
+  if (!membership.length) return "full"; // No org = platform default (full)
+
+  const org = await db
+    .select({ metadata: schema.organizations.metadata })
+    .from(schema.organizations)
+    .where(eq(schema.organizations.id, membership[0].organizationId))
+    .limit(1);
+
+  if (!org.length || !org[0].metadata) return "full";
+
+  try {
+    const meta = JSON.parse(org[0].metadata) as Record<string, unknown>;
+    const tier = meta.llmTier;
+    if (tier === "free" || tier === "basic" || tier === "full") return tier;
+    // Default: full if budget > 0, free if budget = 0
+    const budget = typeof meta.monthlyBudgetCents === "number" ? meta.monthlyBudgetCents : null;
+    return budget === 0 ? "free" : "full";
+  } catch {
+    return "full";
+  }
+}
+
+const TIER_ERRORS: Record<string, { error: string }> = {
+  tutor: { error: "Socratic tutoring requires the full AI tier." },
+  evaluate: { error: "Self-explanation evaluation requires the full AI tier." },
+  hint: { error: "AI-powered hints require the basic or full AI tier." },
+  grade: { error: "AI grading requires the basic or full AI tier." },
+};
+
 /** Log a budget_exceeded event to llm_usage for analytics */
 async function logBudgetExceeded(db: ReturnType<typeof getDb>, userId: string, topicId?: string, problemId?: string) {
   try {
@@ -187,6 +234,8 @@ llmRoutes.post("/evaluate", async (c) => {
     sessionId?: string;
     locale?: string;
   }>();
+  const tier = await resolveUserTier(db, body.userId);
+  if (tier !== "full") return c.json(TIER_ERRORS.evaluate, 403);
   if (!(await checkBudget(db, body.userId))) {
     await logBudgetExceeded(db, body.userId, body.topicId);
     return c.json(BUDGET_ERROR, 429);
@@ -221,6 +270,8 @@ llmRoutes.post("/tutor", async (c) => {
     sessionId?: string;
     locale?: string;
   }>();
+  const tutorTier = await resolveUserTier(db, body.userId);
+  if (tutorTier !== "full") return c.json(TIER_ERRORS.tutor, 403);
   if (!(await checkBudget(db, body.userId))) {
     await logBudgetExceeded(db, body.userId, body.topicId);
     return c.json(BUDGET_ERROR, 429);
@@ -251,6 +302,8 @@ llmRoutes.post("/tutor-stream", async (c) => {
     sessionId?: string;
     locale?: string;
   }>();
+  const streamTier = await resolveUserTier(db, body.userId);
+  if (streamTier !== "full") return c.json(TIER_ERRORS.tutor, 403);
   if (!(await checkBudget(db, body.userId))) {
     await logBudgetExceeded(db, body.userId, body.topicId);
     return c.json(BUDGET_ERROR, 429);
@@ -312,6 +365,8 @@ llmRoutes.post("/hint", async (c) => {
   const hasStaticHint = nextLevel <= 2 && body.staticHints.length >= nextLevel;
 
   if (!hasStaticHint) {
+    const hintTier = await resolveUserTier(db, body.userId);
+    if (hintTier === "free") return c.json(TIER_ERRORS.hint, 403);
     if (!(await checkBudget(db, body.userId))) {
       await logBudgetExceeded(db, body.userId, body.topicId, body.problemId);
       return c.json(BUDGET_ERROR, 429);
@@ -351,6 +406,8 @@ llmRoutes.post("/grade", async (c) => {
     sessionId?: string;
     locale?: string;
   }>();
+  const gradeTier = await resolveUserTier(db, body.userId);
+  if (gradeTier === "free") return c.json(TIER_ERRORS.grade, 403);
   if (!(await checkBudget(db, body.userId))) {
     await logBudgetExceeded(db, body.userId, body.topicId, body.problemId);
     return c.json(BUDGET_ERROR, 429);

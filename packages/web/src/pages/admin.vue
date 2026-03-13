@@ -6,7 +6,7 @@ const api = useApi();
 
 const loading = ref(true);
 const error = ref(false);
-const activeTab = ref<"overview" | "models" | "usage" | "content" | "quality" | "patterns" | "system" | "matrix">("overview");
+const activeTab = ref<"overview" | "models" | "usage" | "content" | "quality" | "patterns" | "system" | "matrix" | "llm-effectiveness">("overview");
 
 // Data
 const stats = ref<{
@@ -113,6 +113,22 @@ function gradeLabel(level: number): string {
   return gradeLabels[gradeFramework.value](level);
 }
 const selectedQualityTopic = ref<string | null>(null);
+
+// LLM Effectiveness data
+const llmEffectiveness = ref<{
+  overall: { llmAccuracy: number | null; baselineAccuracy: number | null; llmAttempts: number; baselineAttempts: number };
+  topics: { topicId: string; llmAccuracy: number; baselineAccuracy: number; delta: number; llmAttempts: number; baselineAttempts: number }[];
+} | null>(null);
+const llmHintOutcomes = ref<{
+  hintOutcomes: { hintSource: string; nextAttemptAccuracy: number | null; sampleSize: number }[];
+} | null>(null);
+const llmMasteryImpact = ref<{
+  llmAssisted: { avgRepsToMastery: number | null; avgLapses: number | null; topicCount: number };
+  baseline: { avgRepsToMastery: number | null; avgLapses: number | null; topicCount: number };
+} | null>(null);
+const llmCohorts = ref<{
+  cohorts: { cohort: string; userCount: number; avgAccuracy: number | null; totalAttempts: number; masteredTopics: number; avgRepsToMastery: number | null; avgLapseRate: number | null }[];
+} | null>(null);
 const learningPatterns = ref<{
   hintPatterns: { hintsUsed: number; count: number; avgCorrect: number }[];
   responseByPhase: { phase: string; avgResponseMs: number; count: number; accuracy: number }[];
@@ -126,7 +142,7 @@ const saving = ref(false);
 
 onMounted(async () => {
   const result = await withErrorToast(async () => {
-    const [s, sys, configs, usage, users, content, patterns, quality, spikes, versions, matrix] = await Promise.all([
+    const [s, sys, configs, usage, users, content, patterns, quality, spikes, versions, matrix, llmEff, llmHints, llmMastery, llmCohort] = await Promise.all([
       api.getAdminStats(),
       api.getAdminSystemStats(),
       api.getAdminLLMConfig(),
@@ -138,8 +154,12 @@ onMounted(async () => {
       api.getDifficultySpikes(),
       api.getContentVersions(),
       api.getContentMatrix(),
+      api.getLLMEffectiveness(),
+      api.getLLMHintOutcomes(),
+      api.getLLMMasteryImpact(),
+      api.getLLMCohortComparison(),
     ]);
-    return { s, sys, configs, usage, users, content, patterns, quality, spikes, versions, matrix };
+    return { s, sys, configs, usage, users, content, patterns, quality, spikes, versions, matrix, llmEff, llmHints, llmMastery, llmCohort };
   }, "Failed to load admin data");
 
   if (result) {
@@ -154,6 +174,10 @@ onMounted(async () => {
     difficultySpikes.value = result.spikes;
     contentVersions.value = result.versions;
     contentMatrix.value = result.matrix;
+    llmEffectiveness.value = result.llmEff;
+    llmHintOutcomes.value = result.llmHints;
+    llmMasteryImpact.value = result.llmMastery;
+    llmCohorts.value = result.llmCohort;
   } else {
     error.value = true;
   }
@@ -266,6 +290,7 @@ const tabs = [
   { id: "content" as const, label: "Content Effectiveness" },
   { id: "patterns" as const, label: "Learning Patterns" },
   { id: "matrix" as const, label: "Content Matrix" },
+  { id: "llm-effectiveness" as const, label: "LLM Effectiveness" },
 ];
 </script>
 
@@ -1141,6 +1166,161 @@ const tabs = [
             </div>
           </div>
         </div>
+      </div>
+      <!-- LLM Effectiveness Tab -->
+      <div v-if="activeTab === 'llm-effectiveness'" class="space-y-6">
+        <!-- No data state -->
+        <div v-if="!llmEffectiveness && !llmHintOutcomes && !llmMasteryImpact && !llmCohorts" class="text-center py-12 text-gray-400">
+          <p class="text-lg font-medium">No LLM effectiveness data yet</p>
+          <p class="text-sm mt-1">Data will appear as students use AI tutoring features.</p>
+        </div>
+
+        <template v-else>
+          <!-- Summary Cards -->
+          <div v-if="llmEffectiveness" class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="bg-white rounded-lg border border-gray-200 p-4">
+              <div class="text-sm text-gray-500">LLM-Assisted Accuracy</div>
+              <div class="text-2xl font-bold" :class="llmEffectiveness.overall.llmAccuracy !== null ? 'text-blue-600' : 'text-gray-300'">
+                {{ llmEffectiveness.overall.llmAccuracy !== null ? formatPct(llmEffectiveness.overall.llmAccuracy) : '-' }}
+              </div>
+              <div class="text-xs text-gray-400">{{ llmEffectiveness.overall.llmAttempts }} attempts</div>
+            </div>
+            <div class="bg-white rounded-lg border border-gray-200 p-4">
+              <div class="text-sm text-gray-500">Baseline Accuracy</div>
+              <div class="text-2xl font-bold" :class="llmEffectiveness.overall.baselineAccuracy !== null ? 'text-gray-700' : 'text-gray-300'">
+                {{ llmEffectiveness.overall.baselineAccuracy !== null ? formatPct(llmEffectiveness.overall.baselineAccuracy) : '-' }}
+              </div>
+              <div class="text-xs text-gray-400">{{ llmEffectiveness.overall.baselineAttempts }} attempts</div>
+            </div>
+            <div class="bg-white rounded-lg border border-gray-200 p-4">
+              <div class="text-sm text-gray-500">Delta</div>
+              <div class="text-2xl font-bold" :class="llmEffectiveness.overall.llmAccuracy !== null && llmEffectiveness.overall.baselineAccuracy !== null
+                ? (llmEffectiveness.overall.llmAccuracy - llmEffectiveness.overall.baselineAccuracy > 0 ? 'text-green-600' : 'text-red-600')
+                : 'text-gray-300'">
+                {{ llmEffectiveness.overall.llmAccuracy !== null && llmEffectiveness.overall.baselineAccuracy !== null
+                  ? (llmEffectiveness.overall.llmAccuracy - llmEffectiveness.overall.baselineAccuracy > 0 ? '+' : '') + formatPct(llmEffectiveness.overall.llmAccuracy - llmEffectiveness.overall.baselineAccuracy)
+                  : '-' }}
+              </div>
+              <div class="text-xs text-gray-400">LLM vs baseline</div>
+            </div>
+            <div v-if="llmMasteryImpact" class="bg-white rounded-lg border border-gray-200 p-4">
+              <div class="text-sm text-gray-500">LLM Mastery Topics</div>
+              <div class="text-2xl font-bold text-blue-600">{{ llmMasteryImpact.llmAssisted.topicCount }}</div>
+              <div class="text-xs text-gray-400">vs {{ llmMasteryImpact.baseline.topicCount }} baseline</div>
+            </div>
+          </div>
+
+          <!-- Topic Effectiveness Table -->
+          <div v-if="llmEffectiveness && llmEffectiveness.topics.length > 0">
+            <h2 class="text-lg font-semibold mb-3">Per-Topic LLM Impact</h2>
+            <div class="bg-white rounded-lg border border-gray-200 overflow-hidden">
+              <div class="max-h-[50vh] overflow-auto">
+                <table class="w-full text-sm">
+                  <thead class="bg-gray-50 sticky top-0">
+                    <tr>
+                      <th class="text-left px-4 py-2 font-medium text-gray-600">Topic</th>
+                      <th class="text-right px-3 py-2 font-medium text-gray-600">LLM Accuracy</th>
+                      <th class="text-right px-3 py-2 font-medium text-gray-600">Baseline</th>
+                      <th class="text-right px-3 py-2 font-medium text-gray-600">Delta</th>
+                      <th class="text-right px-3 py-2 font-medium text-gray-600">LLM N</th>
+                      <th class="text-right px-3 py-2 font-medium text-gray-600">Base N</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr v-for="t in llmEffectiveness.topics" :key="t.topicId" class="border-t border-gray-100">
+                      <td class="px-4 py-2 font-medium">{{ t.topicId }}</td>
+                      <td class="px-3 py-2 text-right text-blue-600">{{ formatPct(t.llmAccuracy) }}</td>
+                      <td class="px-3 py-2 text-right">{{ formatPct(t.baselineAccuracy) }}</td>
+                      <td class="px-3 py-2 text-right font-semibold" :class="t.delta > 0 ? 'text-green-600' : 'text-red-600'">
+                        {{ t.delta > 0 ? '+' : '' }}{{ formatPct(t.delta) }}
+                      </td>
+                      <td class="px-3 py-2 text-right text-gray-500">{{ t.llmAttempts }}</td>
+                      <td class="px-3 py-2 text-right text-gray-500">{{ t.baselineAttempts }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hint Outcomes -->
+          <div v-if="llmHintOutcomes && llmHintOutcomes.hintOutcomes.length > 0">
+            <h2 class="text-lg font-semibold mb-3">Hint Outcome Comparison</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div v-for="h in llmHintOutcomes.hintOutcomes" :key="h.hintSource" class="bg-white rounded-lg border border-gray-200 p-4">
+                <div class="text-sm text-gray-500 capitalize">{{ h.hintSource }} Hints</div>
+                <div class="text-2xl font-bold" :class="h.nextAttemptAccuracy !== null ? 'text-gray-800' : 'text-gray-300'">
+                  {{ h.nextAttemptAccuracy !== null ? formatPct(h.nextAttemptAccuracy) : '-' }}
+                </div>
+                <div class="text-xs text-gray-400">next-attempt accuracy (n={{ h.sampleSize }})</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mastery Impact -->
+          <div v-if="llmMasteryImpact && (llmMasteryImpact.llmAssisted.topicCount > 0 || llmMasteryImpact.baseline.topicCount > 0)">
+            <h2 class="text-lg font-semibold mb-3">Mastery Impact</h2>
+            <div class="bg-white rounded-lg border border-gray-200 overflow-hidden">
+              <table class="w-full text-sm">
+                <thead class="bg-gray-50">
+                  <tr>
+                    <th class="text-left px-4 py-2 font-medium text-gray-600">Cohort</th>
+                    <th class="text-right px-3 py-2 font-medium text-gray-600">Avg Reps to Mastery</th>
+                    <th class="text-right px-3 py-2 font-medium text-gray-600">Avg Lapses</th>
+                    <th class="text-right px-3 py-2 font-medium text-gray-600">Topic Count</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="border-t border-gray-100">
+                    <td class="px-4 py-2 font-medium text-blue-600">LLM-Assisted</td>
+                    <td class="px-3 py-2 text-right">{{ llmMasteryImpact.llmAssisted.avgRepsToMastery?.toFixed(1) ?? '-' }}</td>
+                    <td class="px-3 py-2 text-right">{{ llmMasteryImpact.llmAssisted.avgLapses?.toFixed(1) ?? '-' }}</td>
+                    <td class="px-3 py-2 text-right">{{ llmMasteryImpact.llmAssisted.topicCount }}</td>
+                  </tr>
+                  <tr class="border-t border-gray-100">
+                    <td class="px-4 py-2 font-medium">Baseline</td>
+                    <td class="px-3 py-2 text-right">{{ llmMasteryImpact.baseline.avgRepsToMastery?.toFixed(1) ?? '-' }}</td>
+                    <td class="px-3 py-2 text-right">{{ llmMasteryImpact.baseline.avgLapses?.toFixed(1) ?? '-' }}</td>
+                    <td class="px-3 py-2 text-right">{{ llmMasteryImpact.baseline.topicCount }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Cohort Comparison -->
+          <div v-if="llmCohorts && llmCohorts.cohorts.length > 0">
+            <h2 class="text-lg font-semibold mb-3">Cohort Comparison (by LLM Tier)</h2>
+            <div class="bg-white rounded-lg border border-gray-200 overflow-hidden">
+              <table class="w-full text-sm">
+                <thead class="bg-gray-50">
+                  <tr>
+                    <th class="text-left px-4 py-2 font-medium text-gray-600">Tier</th>
+                    <th class="text-right px-3 py-2 font-medium text-gray-600">Users</th>
+                    <th class="text-right px-3 py-2 font-medium text-gray-600">Accuracy</th>
+                    <th class="text-right px-3 py-2 font-medium text-gray-600">Attempts</th>
+                    <th class="text-right px-3 py-2 font-medium text-gray-600">Mastered</th>
+                    <th class="text-right px-3 py-2 font-medium text-gray-600">Reps/Mastery</th>
+                    <th class="text-right px-3 py-2 font-medium text-gray-600">Lapse Rate</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-for="c in llmCohorts.cohorts" :key="c.cohort" class="border-t border-gray-100">
+                    <td class="px-4 py-2 font-medium capitalize">{{ c.cohort }}</td>
+                    <td class="px-3 py-2 text-right">{{ c.userCount }}</td>
+                    <td class="px-3 py-2 text-right" :class="c.avgAccuracy !== null ? healthColor(c.avgAccuracy) : 'text-gray-300'">
+                      {{ c.avgAccuracy !== null ? formatPct(c.avgAccuracy) : '-' }}
+                    </td>
+                    <td class="px-3 py-2 text-right">{{ c.totalAttempts }}</td>
+                    <td class="px-3 py-2 text-right">{{ c.masteredTopics }}</td>
+                    <td class="px-3 py-2 text-right">{{ c.avgRepsToMastery?.toFixed(1) ?? '-' }}</td>
+                    <td class="px-3 py-2 text-right">{{ c.avgLapseRate !== null ? formatPct(c.avgLapseRate) : '-' }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </template>
       </div>
     </template>
   </div>

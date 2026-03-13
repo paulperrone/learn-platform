@@ -1,7 +1,7 @@
 # Plan 024: LLM Effectiveness Instrumentation
 
 > **Created:** 2026-03-13T16:59:02Z
-> **Completed:** —
+> **Completed:** 2026-03-13
 >
 > For project context, see [CLAUDE.md](../../CLAUDE.md)
 > For product vision, see [SPEC.md](./SPEC.md)
@@ -16,9 +16,9 @@ Add topic/problem attribution and outcome correlation to LLM usage tracking so p
 
 ## Progress
 
-**Completed:** Phase 1, Phase 2
+**Completed:** Phase 1, Phase 2, Phase 3
 **In Progress:** —
-**Next:** Phase 3
+**Next:** —
 
 ---
 
@@ -149,7 +149,7 @@ Add topic/problem attribution and outcome correlation to LLM usage tracking so p
 
 ---
 
-## Phase 3: Cohort Comparison & Dashboard
+## Phase 3: Cohort Comparison & Dashboard ✓
 **Goal:** Organization-level feature tiering for quasi-experimental comparison. Admin dashboard view showing LLM ROI. Natural cohort analysis.
 
 ### Context for Execution
@@ -162,7 +162,7 @@ Add topic/problem attribution and outcome correlation to LLM usage tracking so p
 - `packages/api/src/routes/admin.ts` — cohort comparison endpoint
 - `packages/web/src/pages/admin.vue` — LLM effectiveness dashboard section
 
-1. [ ] [IMP] Add `llmTier` to organization metadata:
+1. [x] [IMP] Add `llmTier` to organization metadata:
    - Extend org metadata JSON: `{ ..., llmTier: "free" | "basic" | "full" }`
    - `free`: static hints only (L1-2), no LLM features
    - `basic`: LLM hints (L3-4) + grading
@@ -170,13 +170,13 @@ Add topic/problem attribution and outcome correlation to LLM usage tracking so p
    - Default: `"full"` for orgs with budget > 0, `"free"` for budget = 0
    - Update LLM route middleware to check tier before checking budget
 
-2. [ ] [IMP] Add `/admin/analytics/llm-cohort-comparison` endpoint:
+2. [x] [IMP] Add `/admin/analytics/llm-cohort-comparison` endpoint:
    - Group organizations by `llmTier` (or by natural budget: $0 vs >$0)
    - Compare per-cohort: mastery rate, average accuracy, sessions-to-mastery, lapse rate, daily activity
    - Response: `{ cohort, userCount, avgMasteryRate, avgAccuracy, avgSessionsToMastery, avgLapseRate }`
    - Include statistical significance indicator (minimum N per cohort)
 
-3. [ ] [IMP] Add LLM effectiveness section to admin dashboard:
+3. [x] [IMP] Add LLM effectiveness section to admin dashboard:
    - Summary cards: "LLM-assisted accuracy: X% vs baseline: Y% (Δ+Z%)"
    - Top 10 topics where LLM helps most / least
    - Hint outcome comparison (static vs LLM conversion rates)
@@ -184,7 +184,7 @@ Add topic/problem attribution and outcome correlation to LLM usage tracking so p
    - Monthly LLM cost vs learning outcome chart
    - Cost-effectiveness: "Each $1 of LLM spend improves mastery by X topics"
 
-4. [ ] [TST] Test cohort comparison and dashboard:
+4. [x] [TST] Test cohort comparison and dashboard:
    - Unit test: cohort grouping by llmTier works correctly
    - Unit test: feature gating respects tier (free user can't access tutoring)
    - Verify admin dashboard renders with mock data

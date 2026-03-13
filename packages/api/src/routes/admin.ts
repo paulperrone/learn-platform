@@ -946,3 +946,127 @@ adminRoutes.get("/analytics/llm-budget-impact", async (c) => {
     },
   });
 });
+
+/** Cohort comparison: learning outcomes grouped by organization llmTier */
+adminRoutes.get("/analytics/llm-cohort-comparison", async (c) => {
+  const db = getDb(c.env.DB);
+
+  // Get all orgs with their metadata
+  const orgs = await db
+    .select({
+      id: schema.organizations.id,
+      metadata: schema.organizations.metadata,
+    })
+    .from(schema.organizations);
+
+  // Map org → tier
+  const orgTiers = new Map<string, string>();
+  for (const org of orgs) {
+    let tier = "full";
+    if (org.metadata) {
+      try {
+        const meta = JSON.parse(org.metadata) as Record<string, unknown>;
+        if (meta.llmTier === "free" || meta.llmTier === "basic" || meta.llmTier === "full") {
+          tier = meta.llmTier as string;
+        } else {
+          const budget = typeof meta.monthlyBudgetCents === "number" ? meta.monthlyBudgetCents : null;
+          tier = budget === 0 ? "free" : "full";
+        }
+      } catch { /* invalid metadata */ }
+    }
+    orgTiers.set(org.id, tier);
+  }
+
+  // Get all members → user → org mapping
+  const allMembers = await db
+    .select({
+      userId: schema.members.userId,
+      organizationId: schema.members.organizationId,
+    })
+    .from(schema.members);
+
+  const userTier = new Map<string, string>();
+  for (const m of allMembers) {
+    const tier = orgTiers.get(m.organizationId) ?? "full";
+    userTier.set(m.userId, tier);
+  }
+
+  // Aggregate learning outcomes per cohort
+  type CohortStats = {
+    userIds: Set<string>;
+    totalCorrect: number;
+    totalAttempts: number;
+    masteredCount: number;
+    totalReps: number;
+    totalLapses: number;
+    masteredTopicCount: number;
+  };
+
+  const cohorts = new Map<string, CohortStats>();
+  for (const tier of ["free", "basic", "full"]) {
+    cohorts.set(tier, {
+      userIds: new Set(),
+      totalCorrect: 0,
+      totalAttempts: 0,
+      masteredCount: 0,
+      totalReps: 0,
+      totalLapses: 0,
+      masteredTopicCount: 0,
+    });
+  }
+
+  // Review log for accuracy
+  const reviews = await db
+    .select({
+      userId: schema.reviewLog.userId,
+      correct: schema.reviewLog.correct,
+    })
+    .from(schema.reviewLog);
+
+  for (const review of reviews) {
+    const tier = userTier.get(review.userId) ?? "full";
+    const cohort = cohorts.get(tier)!;
+    cohort.userIds.add(review.userId);
+    cohort.totalAttempts++;
+    if (review.correct) cohort.totalCorrect++;
+  }
+
+  // User topic state for mastery stats
+  const states = await db
+    .select({
+      userId: schema.userTopicState.userId,
+      mastered: schema.userTopicState.mastered,
+      reps: schema.userTopicState.reps,
+      lapses: schema.userTopicState.lapses,
+    })
+    .from(schema.userTopicState);
+
+  for (const state of states) {
+    const tier = userTier.get(state.userId) ?? "full";
+    const cohort = cohorts.get(tier)!;
+    cohort.userIds.add(state.userId);
+    if (state.mastered) {
+      cohort.masteredTopicCount++;
+      cohort.totalReps += state.reps;
+      cohort.totalLapses += state.lapses;
+    }
+  }
+
+  const result = [...cohorts.entries()].map(([tier, stats]) => ({
+    cohort: tier,
+    userCount: stats.userIds.size,
+    avgAccuracy: stats.totalAttempts > 0
+      ? Math.round((stats.totalCorrect / stats.totalAttempts) * 1000) / 1000
+      : null,
+    totalAttempts: stats.totalAttempts,
+    masteredTopics: stats.masteredTopicCount,
+    avgRepsToMastery: stats.masteredTopicCount > 0
+      ? Math.round((stats.totalReps / stats.masteredTopicCount) * 100) / 100
+      : null,
+    avgLapseRate: stats.masteredTopicCount > 0
+      ? Math.round((stats.totalLapses / stats.masteredTopicCount) * 100) / 100
+      : null,
+  }));
+
+  return c.json({ cohorts: result });
+});
