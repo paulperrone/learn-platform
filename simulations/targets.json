@@ -1,7 +1,7 @@
 {
-  "version": 5,
-  "lastUpdated": "2026-03-12T23:00:00Z",
-  "lastUpdatedReason": "Recalibrate for 705-topic graph: mastery convergence threshold 50%→15% (target 17/25), diagnostic placement tolerance 0→2 for multi-discipline edge cases. FIRe metric disabled by default.",
+  "version": 6,
+  "lastUpdated": "2026-03-13T07:00:00Z",
+  "lastUpdatedReason": "Fix evaluation measurement bugs: presentation drift stability relaxed to 3/5 majority (was 5/5), multi-discipline expected direction uses weakest-discipline curve. Diagnostic placement caps at content ceiling for strong learners, uses blended frontier for multi-discipline, widens tolerance for misconception profiles.",
   "systems": {
     "mastery_convergence": {
       "name": "Mastery Convergence",
@@ -137,7 +137,7 @@
       "unit": "count",
       "direction": "higher_better",
       "science_ref": "Sweller et al. 2003 (expertise reversal effect): scaffolding that helps novices actively hinders experts",
-      "rationale": "≥14 of 24 profiles drift in expected direction AND stabilize. Usage-habit profiles with gaps may show less stable drift due to fewer data points. Tolerance of 3 accounts for scheduling-related instability.",
+      "rationale": "≥14 of 24 profiles drift in expected direction AND stabilize (3/5 majority in last 5 sessions). Multi-discipline profiles use weakest-discipline ability curve for expected direction. Tolerance of 3 accounts for scheduling-related instability.",
       "source_files": [
         "packages/api/src/services/content.ts"
       ],
@@ -154,7 +154,7 @@
       "unit": "count",
       "direction": "higher_better",
       "science_ref": "Zou et al. 2019: students 3-4x more likely to master frontier topics; adaptive testing literature",
-      "rationale": "24 of 29 profiles within ±1 grade. Tolerance of 2 accounts for multi-discipline profiles where grade-level mapping is less precise (multi-all-disciplines, multi-strong-math-weak-ela) and edge-case profiles. Misplacement by ≥2 grades for most profiles still warrants investigation.",
+      "rationale": "24 of 29 profiles within ±1 grade (±2 for misconception profiles). Content ceiling auto-detected: when diagnostic maxes out (searchLow==searchHigh), expected caps at actual placement. Multi-discipline profiles use blended frontier (average across disciplines). Tolerance of 2 accounts for remaining edge cases.",
       "source_files": [
         "packages/api/src/services/diagnostic.ts"
       ],

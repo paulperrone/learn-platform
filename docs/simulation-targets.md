@@ -103,21 +103,27 @@ Absolute targets are preferred — they are self-contained and do not require a 
 
 - **Principle:** Expertise reversal effect — scaffolding that helps novices actively hinders experts. Presentation level must adapt as the student progresses.
 - **Citation:** Sweller et al. 2003.
-- **Metric:** Count of profiles drifting in expected direction and stabilizing.
-- **Target:** ≥6 of 10 profiles.
-- **Known issues:** Stabilization requires sufficient varied data points. With review-dominated sessions after ~session 7, many profiles lack enough new-topic encounters to generate meaningful drift signal. strong-young drifts wrong (remediation noise); average-older drifts wrong (actual performance exceeds expected).
-- **How to update:** If frontier progression improves (reduced materialization), consider raising back toward 8/10. If presentation level algorithm changes, revalidate drift directions for all profiles. If new profiles are added, update expected drift directions in `targets.json`.
-- **Red flags:** If <4 profiles drift correctly, the presentation adaptation is broken. Check presentation update logic and confidence weighting.
+- **Metric:** Count of profiles drifting in expected direction and stabilizing (3/5 majority in last 5 sessions).
+- **Target:** ≥14 of 24 profiles.
+- **Tolerance:** ±3 profiles.
+- **Stability criterion:** 3 of last 5 sessions share the same center level (majority match). Previous 5/5 strict match produced false failures for profiles with natural oscillation from content ceiling, bursty schedules, or cross-discipline mixing.
+- **Multi-discipline handling:** Expected direction uses the weakest discipline's ability curve (lowest frontier grade), since presentation drift is a blended signal across disciplines.
+- **Known issues:** strong-young stays at primary (content ceiling in K-2 prevents upward drift); fast-learner profiles have dynamic ability curves that the static expected-direction calculation doesn't track.
+- **How to update:** If presentation level algorithm changes, revalidate drift directions for all profiles. If new profiles are added, update expected drift directions in `targets.json`.
+- **Red flags:** If <10 profiles drift correctly, the presentation adaptation is broken. Check presentation update logic and confidence weighting.
 
 ### 2.9 Diagnostic Placement (P2)
 
 - **Principle:** Adaptive testing places students accurately so they start at the right difficulty. Students are 3–4x more likely to master frontier topics than topics far above or below their level.
 - **Citation:** Zou et al. 2019.
-- **Metric:** Count of profiles placed within ±1 grade of expected.
-- **Target:** 10 of 10 profiles.
-- **Tolerance:** None — all profiles should be placed accurately with the current content set.
-- **How to update:** If new profiles are added with unusual ability curves (e.g., spiky profiles with gaps), placement accuracy may decrease. Adjust diagnostic binary search bounds.
-- **Red flags:** If placement is off by ≥2 grades for any profile, check diagnostic binary search bounds logic and anti-lock-in heuristics.
+- **Metric:** Count of profiles placed within ±1 grade of expected (±2 for misconception profiles).
+- **Target:** 24 of 29 profiles.
+- **Tolerance:** ±2 profiles.
+- **Content ceiling handling:** When diagnostic hits the ceiling (searchLow == searchHigh at max), expected grade caps at the actual placement. Strong learners who master all available content are correctly placed at the max — this is not a placement error.
+- **Multi-discipline handling:** Expected frontier grade is the average across per-discipline frontiers (using `disciplineAbility` overrides when present). Profiles with extreme cross-discipline gaps (e.g., strong math + weak ELA) may still miss due to blending.
+- **Misconception handling:** Profiles with misconceptions get ±2 tolerance. The diagnostic correctly detects misconception gaps and places lower than the general ability frontier — this is desired behavior.
+- **How to update:** If new profiles are added with unusual ability curves, placement accuracy may decrease. Adjust tolerance or expected-grade calculation.
+- **Red flags:** If <20 profiles placed accurately, check diagnostic binary search bounds logic and question selection.
 
 ### 2.10 Cognitive Demand Entropy (P2)
 

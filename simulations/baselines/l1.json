@@ -1,6 +1,6 @@
 {
   "level": "l1",
-  "generatedAt": "2026-03-13T06:10:03.764Z",
+  "generatedAt": "2026-03-13T15:20:29.100Z",
   "sessionCount": 5,
   "seed": 42,
   "systems": {
@@ -33,12 +33,12 @@
       "status": "PASS"
     },
     "presentation_drift": {
-      "actual": 3,
-      "status": "FAIL"
+      "actual": 17,
+      "status": "PASS"
     },
     "diagnostic_placement": {
-      "actual": 23,
-      "status": "WARN"
+      "actual": 28,
+      "status": "PASS"
     },
     "cognitive_demand_entropy": {
       "actual": 1.7693842532399777,
