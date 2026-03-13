@@ -78,6 +78,7 @@ just deploy-preview   # Deploy everything to preview
 - Strict TypeScript, no `any`
 - Services are factory functions: `createXService(db)` returning method objects
 - Content is pre-generated offline, validated, then deployed to R2 as bundles — LLM at runtime is for tutoring/grading only
+- All problems must include dimension fields (`presentation`, `contentDepth`, `locale`, `flavor`) and metadata (`source`, `cognitiveDemand`, `type`). Dimension values should match the topic's `defaultPresentation` and `contentDepth` from graph.json unless intentionally creating multi-presentation or multi-depth content. See `docs/content-system.md` §2 for the full required fields list.
 - **D1 stores graph structure + user state only.** Content (problems, examples) lives in R2 bundles. See `docs/r2-content-architecture.md`.
 - Content service uses `ContentBucket` abstraction — R2 in production, filesystem adapter in simulations/local dev
 - **Content generation happens in Claude Code sessions** (not via OpenRouter pipelines). Claude Code is the workhorse for graph design, problem/example generation, encompassing analysis, and content review. OpenRouter is only for in-app runtime LLM features (tutoring, grading, self-explanation evaluation).
