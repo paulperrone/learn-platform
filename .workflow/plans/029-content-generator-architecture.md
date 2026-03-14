@@ -336,7 +336,33 @@ Interpretive disciplines can't use deterministic generators — there's no code 
 
 ### Context for Execution
 
-The existing `tools/generators/` has generators for many K-5 topics but they're organized by strand in bulk files. This phase ports them into per-topic files and fills gaps. Execute per-strand, validating after each. Every generator uses `defineGenerator` and the shared utility stack — generators should be small (~20-50 lines of math logic).
+**⚠️ READ FIRST — Before writing any generators, read these files to understand the pattern:**
+1. `../learn-content/math/generators/equivalent-fractions-3.ts` — **Reference generator.** This is the canonical example of how every generator should look: `defineGenerator({ topicId, generate(rng) → RawProblem, conceptText })`. ~40 lines. Study this first.
+2. `../learn-content/math/generators/types.ts` — `RawProblem`, `TopicGenerator`, `defineGenerator`, `SeededRng` types.
+3. `../learn-content/math/generators/builders/` — Shared builders. Do NOT duplicate their work in generators. Generators produce `{ question, answer, solution, steps?, variant? }` only.
+4. `../learn-content/math/generators/math-utils.ts` — Shared math functions (gcd, lcm, simplifyFraction, etc.). Import from here, don't rewrite.
+5. `docs/generator-architecture.md` — Full architecture reference.
+
+**Key rules for writing generators:**
+- Each generator is one file: `../learn-content/math/generators/<topic-id>.ts`
+- Default export via `defineGenerator({ topicId, generate, conceptText? })`
+- `generate(rng)` returns `RawProblem` only — NO IDs, NO hints, NO dimensions, NO cognitiveDemand, NO source
+- Include `conceptText` (2-4 sentences explaining the concept) — this becomes the lesson's explanation section. Without it, the lesson falls back to the bare topic description from graph.json, which is too terse.
+- Use `rng.int()`, `rng.pick()`, `rng.shuffle()`, `rng.chance()` for randomization — never `Math.random()`
+- Provide `steps[]` (2-4 strings) for good hint generation and worked example quality
+- Provide `variant` when a generator has meaningfully different question shapes (e.g., "find-equivalent" vs "find-missing")
+- **After writing each generator file, add its import to `../learn-content/math/generators/index.ts`** — unregistered generators won't be found by the runner
+
+**Running generators (from learn-content/ directory):**
+```bash
+cd ../learn-content
+npx tsx math/generators/run.ts --topic <topic-id>          # single topic
+npx tsx math/generators/run.ts --strand counting-cardinality  # all topics in strand
+npx tsx math/generators/run.ts --grade 0                    # all grade K topics
+npx tsx math/generators/run.ts --seed 42                    # all registered generators
+```
+
+The existing `tools/generators/` has generators for many K-5 topics but they're organized by strand in bulk files. This phase ports them into per-topic files and fills gaps. Execute per-strand, validating after each.
 
 **Strand coverage targets (current counts, may change after Phase 0):**
 - counting-cardinality: ~15 topics (grade K) — no existing generators
@@ -347,25 +373,31 @@ The existing `tools/generators/` has generators for many K-5 topics but they're 
 ### Steps
 
 1. [ ] [IMP] Write generators for counting-cardinality (all topics in strand):
-   - One file per topic under `learn-content/math/generators/`, each using `defineGenerator`
+   - One file per topic under `../learn-content/math/generators/`, each using `defineGenerator`
+   - Add each generator's import to `../learn-content/math/generators/index.ts` registry
    - No existing generators for this strand — write from scratch
    - Generator produces `{ question, answer, solution, steps }` only — shared utilities do the rest
+   - Include `conceptText` for each (2-4 sentences explaining the concept for the lesson)
    - Each produces 15 problems + 2 worked examples + 1 lesson (via shared stack)
+   - Run: `cd ../learn-content && npx tsx math/generators/run.ts --strand counting-cardinality`
    - Validate: `just validate-content`
 
 2. [ ] [IMP] Port `tools/generators/k5-arithmetic.ts` into per-topic files for addition + subtraction:
-   - One file per topic under `learn-content/math/generators/`
+   - One file per topic under `../learn-content/math/generators/`
+   - Add each to `../learn-content/math/generators/index.ts` registry
    - Strip difficulty logic — generators no longer differentiate easy/medium/hard
    - Strip hint generation, ID generation, dimension fields, cognitiveDemand — shared stack handles all
    - What remains: the pure math (number ranges, operation logic, solution step text)
+   - Add `conceptText` for each generator
    - Validate: `just validate-content`
 
 3. [ ] [IMP] Port `tools/generators/k5-numbers.ts` place-value generators into per-topic files:
    - Same refactoring pattern: strip everything except math, let shared utilities handle the rest
+   - Add each to `../learn-content/math/generators/index.ts` registry, include `conceptText`
    - Validate: `just validate-content`
 
 4. [ ] [VAL] Run generation and validation for K-2:
-   - `npx tsx learn-content/math/generators/run.ts --grade 0 --grade 1 --grade 2 --seed 42`
+   - `cd ../learn-content && npx tsx math/generators/run.ts --grade 0 --seed 42 && npx tsx math/generators/run.ts --grade 1 --seed 42 && npx tsx math/generators/run.ts --grade 2 --seed 42`
    - `just validate-content` — 0 errors
    - Spot-check 5 topics across strands: verify problems are correct, examples make sense, lessons are coherent
    - Verify lesson pipeline: `just generate-bundles --discipline math --lenient` includes lessons
@@ -380,6 +412,8 @@ The existing `tools/generators/` has generators for many K-5 topics but they're 
 
 ### Context for Execution
 
+**Same generator pattern as Phase 3.** Read the Phase 3 "Context for Execution" section if resuming from here — it has the full reference file list, key rules, and CLI instructions. All generators use `defineGenerator`, include `conceptText`, and are registered in `../learn-content/math/generators/index.ts`.
+
 The content review found fractions have 19 error findings (unsimplified answers, wrong answer fields). Generators fix these by construction — the shared ProblemBuilder uses `simplifyFraction` from math-utils, and the answer verifier catches any remaining issues.
 
 **Strand coverage targets (current counts, may change after Phase 0):**
@@ -393,23 +427,27 @@ The content review found fractions have 19 error findings (unsimplified answers,
 ### Steps
 
 1. [ ] [IMP] Port `tools/generators/k5-fractions.ts` into per-topic files (all fraction topics):
+   - One file per topic in `../learn-content/math/generators/`, register each in `index.ts`
    - Specifically address the 19 error findings (wrong answers in fraction-number-sense, fraction-decimal-percent; unsimplified answer patterns; missing prerequisite assumptions)
    - Strip difficulty/hint/dimension logic — shared utilities handle these
    - Fraction generators should use math-utils `simplifyFraction` for all answers
+   - Include `conceptText` for each generator
    - Validate: `just validate-content`
 
 2. [ ] [IMP] Port remaining `k5-arithmetic.ts` generators for multiplication-division:
    - Same per-topic refactoring pattern: strip to pure math, let shared stack handle the rest
+   - Register each in `../learn-content/math/generators/index.ts`, include `conceptText`
    - Validate: `just validate-content`
 
 3. [ ] [IMP] Write new generators for measurement-data (~35 topics) and algebra-thinking (~26 topics):
    - No existing generators for these strands — write from scratch
    - Measurement: unit conversion, perimeter, area, volume, time, money
    - Algebra thinking: patterns, equations, unknowns (pre-algebra concepts)
+   - Register each in `../learn-content/math/generators/index.ts`, include `conceptText`
    - Validate: `just validate-content`
 
 4. [ ] [VAL] Run generation and validation for 3-5:
-   - Generate all 3-5 topics
+   - `cd ../learn-content && npx tsx math/generators/run.ts --grade 3 --seed 42 && npx tsx math/generators/run.ts --grade 4 --seed 42 && npx tsx math/generators/run.ts --grade 5 --seed 42`
    - `just validate-content` — 0 errors
    - Spot-check 10 topics across strands (prioritize fractions)
    - Run `/content-review math --strand fractions` on generated content — expect all A/B grades, 0 answer-correctness errors
@@ -424,6 +462,8 @@ The content review found fractions have 19 error findings (unsimplified answers,
 
 ### Context for Execution
 
+**Same generator pattern as Phase 3.** Read the Phase 3 "Context for Execution" section if resuming from here — it has the full reference file list, key rules, and CLI instructions.
+
 The content review found expressions-equations had 37 error findings (most critical). The dominant issue was wrong answer fields — answer/solution mismatches where the solution was correct but the answer field had stale/wrong values. Generators eliminate this entirely since the answer is computed, not copy-pasted.
 
 **Strand coverage targets (current counts, may change after Phase 0):**
@@ -434,17 +474,20 @@ The content review found expressions-equations had 37 error findings (most criti
 ### Steps
 
 1. [ ] [IMP] Port `tools/generators/middle-algebra.ts` and `middle-rational.ts` into per-topic files:
+   - One file per topic in `../learn-content/math/generators/`, register each in `index.ts`
    - Specifically address the 37 error findings (wrong answer fields in equations-variables-both-sides, multi-step-equations-combining, combining-exponent-rules, etc.)
    - For topics involving symbolic algebra: generators produce the equation/expression structure, compute the answer, then template the question text
    - Strip difficulty/hint/dimension logic — shared utilities handle these
+   - Include `conceptText` for each generator
    - Validate: `just validate-content`
 
 2. [ ] [IMP] Write generators for ratios-proportions:
    - Port existing generators where available, write new ones for gaps
+   - Register each in `../learn-content/math/generators/index.ts`, include `conceptText`
    - Validate: `just validate-content`
 
 3. [ ] [VAL] Run generation and validation:
-   - Generate all algebra/equation/ratio topics
+   - `cd ../learn-content && npx tsx math/generators/run.ts --strand expressions-equations --seed 42 && npx tsx math/generators/run.ts --strand ratios-proportions --seed 42 && npx tsx math/generators/run.ts --strand rational-numbers --seed 42`
    - `just validate-content` — 0 errors
    - Run `/content-review math --strand expressions-equations` on generated content
    - Compare error count: should be 0 answer-correctness errors (was 19 across the strand)
@@ -459,6 +502,8 @@ The content review found expressions-equations had 37 error findings (most criti
 
 ### Context for Execution
 
+**Same generator pattern as Phase 3.** Read the Phase 3 "Context for Execution" section if resuming from here — it has the full reference file list, key rules, and CLI instructions.
+
 **Strand coverage targets (current counts, may change after Phase 0):**
 - geometry: ~51 topics — existing generators in middle-geometry.ts
 - geometry-advanced: ~55 topics (grade 8)
@@ -470,12 +515,14 @@ The content review found expressions-equations had 37 error findings (most criti
 ### Steps
 
 1. [ ] [IMP] Port `tools/generators/middle-geometry.ts` into per-topic files for geometry + geometry-advanced:
-   - Same per-topic refactoring pattern
-   - Geometry generators may need additional math-utils: area formulas, Pythagorean theorem, trig ratios
+   - One file per topic in `../learn-content/math/generators/`, register each in `index.ts`
+   - Same per-topic refactoring pattern: `defineGenerator`, `conceptText`, `steps[]`, `variant`
+   - Geometry generators may need additional math-utils: area formulas, Pythagorean theorem, trig ratios — add to `../learn-content/math/generators/math-utils.ts`
    - Validate: `just validate-content`
 
 2. [ ] [IMP] Write generators for statistics-probability, exponents-radicals, polynomials-intro, linear-functions:
    - Port existing generators where available, write new ones for gaps
+   - Register each in `../learn-content/math/generators/index.ts`, include `conceptText`
    - Statistics: mean, median, mode, range, probability, data representation
    - Exponents: rules of exponents, scientific notation, radicals
    - Polynomials: basic polynomial operations, factoring
@@ -483,7 +530,7 @@ The content review found expressions-equations had 37 error findings (most criti
    - Validate after each strand: `just validate-content`
 
 3. [ ] [VAL] Run generation and validation for all 6-8:
-   - Generate all remaining 6-8 topics
+   - `cd ../learn-content && npx tsx math/generators/run.ts --grade 6 --seed 42 && npx tsx math/generators/run.ts --grade 7 --seed 42 && npx tsx math/generators/run.ts --grade 8 --seed 42`
    - `just validate-content` — 0 errors
    - Spot-check 10 topics across strands
 
@@ -509,7 +556,7 @@ After Phases 3-6, every math topic has a generator. This phase runs them all at 
 ### Steps
 
 1. [ ] [IMP] Full regeneration:
-   - `npx tsx learn-content/math/generators/run.ts --seed 42 --verify` — generate all topics
+   - `cd ../learn-content && npx tsx math/generators/run.ts --seed 42 --verify` — generate all topics
    - `just validate-content` — 0 errors, 0 warnings
    - Commit all regenerated content: "feat(content): regenerate all math from generators (problems + examples + lessons)"
 
@@ -525,22 +572,22 @@ After Phases 3-6, every math topic has a generator. This phase runs them all at 
    - Remove difficulty validation from `tools/validate-content.ts`
    - Remove `difficulties` from manifest type and computation in `tools/generate-bundles.ts`
    - Set analytics `difficulty` blob to `""` — backward-compatible
-   - Remove difficulty distribution targets from `/generate-content` command
+   - Note: difficulty distribution targets already removed from `/generate-content` command (done in Phase 1)
    - Run `just typecheck && just test` — fix any type errors or test references
 
 4. [ ] [IMP] Remove legacy `tools/generators/` directory:
-   - All generators now live in `learn-content/math/generators/`
+   - All generators now live in `../learn-content/math/generators/`
    - Remove `tools/generators/*.ts` (all 9 files)
    - Remove `tools/generate-problems.ts` (legacy runner)
    - Update justfile recipes: remove `just generate-problems`, ensure `just generate-content` delegates to new runner
    - Remove `problems-generated/` directory from learn-content (generators write directly to `problems/`)
 
 5. [ ] [DOC] Record the migration in DECISIONS.md:
-   - Decision: all content is generator-produced, hand-authoring is deprecated
-   - Rationale: content review found 56 errors in 121 topics (46% error rate), mostly wrong answer fields
-   - Impact: generators guarantee answer correctness by construction
-   - Decision: difficulty field removed from Problem type
+   - Note: the architecture decision (generator-produced content, hand-authoring deprecated) was already recorded in Phase 1 (2026-03-14)
+   - Record: difficulty field removed from Problem type
    - Rationale: per-topic difficulty is a graph decomposition smell; all problems within a properly atomic topic test the same skill
+   - Record: legacy `tools/generators/` removed, `learn-content/math/generators/` is sole source
+   - Update CLAUDE.md generator references if needed
 
 **Validation:** All math topics have generator-produced content (problems + examples + lessons). Content review shows dramatic quality improvement. Difficulty field fully removed. Legacy generator code removed. `just typecheck && just test` pass. Decisions documented.
 
