@@ -7,6 +7,7 @@ import { useSpeech } from "@/composables/useSpeech";
 import { useSpeechPrefs } from "@/composables/useSpeechPrefs";
 import ProblemView from "@/components/ProblemView.vue";
 import WorkedExample from "@/components/WorkedExample.vue";
+import LessonView from "@/components/LessonView.vue";
 import MasteryCelebration from "@/components/MasteryCelebration.vue";
 import { useI18n } from "vue-i18n";
 
@@ -26,6 +27,9 @@ const sessionActive = ref(false);
 const recovering = ref(true);
 const isAnonymous = ref(false);
 const masteryEvent = ref<{ topicId: string; topicName: string; unlockedTopics: { id: string; name: string }[] } | null>(null);
+const scaffolding = ref<"none" | "lesson-referenced" | "llm-assisted" | "lesson-and-llm">("none");
+const lessonPanelOpen = ref(false);
+const showLessonWarning = ref(false);
 const goalProgress = ref<{
   problemsCompleted: number;
   minutesActive: number;
@@ -113,8 +117,12 @@ async function handleProblemSubmit(data: {
 }) {
   if (!sessionId.value) return;
   loading.value = true;
+  const submitData = {
+    ...data,
+    scaffolding: scaffolding.value,
+  };
   const result = await withErrorToast(
-    () => api.respondToSession(sessionId.value!, data),
+    () => api.respondToSession(sessionId.value!, submitData),
     t("errors.failedToSubmit", { action: "response" })
   );
   if (result) {
@@ -123,6 +131,8 @@ async function handleProblemSubmit(data: {
       masteryEvent.value = result.masteryEvent;
     }
     currentItem.value = result;
+    scaffolding.value = "none";
+    lessonPanelOpen.value = false;
     if (result.type === "complete") {
       sessionActive.value = false;
     }
@@ -136,6 +146,41 @@ async function handleProblemSubmit(data: {
     }
   }
   loading.value = false;
+}
+
+async function handleLessonDone() {
+  if (!sessionId.value) return;
+  loading.value = true;
+  const result = await withErrorToast(
+    () => api.respondToSession(sessionId.value!, {
+      correct: true,
+      responseMs: 0,
+    }),
+    t("errors.failedToSubmit", { action: "response" })
+  );
+  if (result) {
+    if (result.masteryEvent) {
+      masteryEvent.value = result.masteryEvent;
+    }
+    if (result.goalProgress) {
+      goalProgress.value = result.goalProgress;
+    }
+    currentItem.value = result;
+    if (result.type === "complete") {
+      sessionActive.value = false;
+    }
+  }
+  loading.value = false;
+}
+
+function openLessonPanel() {
+  showLessonWarning.value = true;
+}
+
+function confirmLessonPanel() {
+  showLessonWarning.value = false;
+  lessonPanelOpen.value = true;
+  scaffolding.value = scaffolding.value === "llm-assisted" ? "lesson-and-llm" : "lesson-referenced";
 }
 
 async function handleExampleDone() {
@@ -266,23 +311,61 @@ async function handleExampleDone() {
         <span>{{ t('learn.loading') }}</span>
       </div>
 
-      <!-- Problem -->
-      <ProblemView
-        v-else-if="currentItem?.type === 'problem' || currentItem?.type === 'remediation'"
-        :problem="currentItem.problem"
+      <!-- Lesson -->
+      <LessonView
+        v-else-if="currentItem?.type === 'lesson'"
+        :lesson="currentItem.lesson"
+        :practice-problems="currentItem.practiceProblems ?? []"
         :topic-name="currentItem.topicName"
-        :available-hints="currentItem.availableHints ?? []"
-        :show-solution="currentItem.showSolution ?? false"
-        :hints-revealed="currentItem.hintsRevealed ?? 0"
-        :ask-confidence="currentItem.askConfidence ?? false"
-        :presentation-level="currentItem.presentationLevel"
-        :phase="currentItem.phase"
-        :message="currentItem.message"
-        :key="currentItem.problem.id + currentItem.phase"
-        @submit="handleProblemSubmit"
+        :topic-id="currentItem.topicId"
+        :key="currentItem.lesson.id"
+        @done="handleLessonDone"
       />
 
-      <!-- Worked Example -->
+      <!-- Problem (review or legacy phase) -->
+      <div v-else-if="currentItem?.type === 'problem' || currentItem?.type === 'remediation'" class="relative">
+        <!-- Lesson reference panel (collapsible, review only) -->
+        <div v-if="lessonPanelOpen && currentItem?.phase === 'review'" class="mb-4 bg-amber-50 border border-amber-200 rounded-lg p-4">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-sm font-medium text-amber-800">Lesson Reference</span>
+            <button @click="lessonPanelOpen = false" class="text-amber-600 hover:text-amber-800 text-sm">Close</button>
+          </div>
+          <p class="text-sm text-amber-700">Lesson content is available as reference. This problem counts as guided practice.</p>
+        </div>
+
+        <!-- Show lesson button for review -->
+        <div v-if="currentItem?.phase === 'review' && !lessonPanelOpen" class="mb-3 flex justify-end">
+          <button
+            @click="openLessonPanel"
+            class="text-sm text-blue-600 hover:text-blue-800 font-medium"
+          >
+            Show Lesson
+          </button>
+        </div>
+
+        <!-- Guided mode badge -->
+        <div v-if="scaffolding !== 'none'" class="mb-3">
+          <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-100 text-amber-800">
+            Guided
+          </span>
+        </div>
+
+        <ProblemView
+          :problem="currentItem.problem"
+          :topic-name="currentItem.topicName"
+          :available-hints="currentItem.availableHints ?? []"
+          :show-solution="currentItem.showSolution ?? false"
+          :hints-revealed="currentItem.hintsRevealed ?? 0"
+          :ask-confidence="currentItem.askConfidence ?? false"
+          :presentation-level="currentItem.presentationLevel"
+          :phase="currentItem.phase"
+          :message="currentItem.message"
+          :key="currentItem.problem.id + currentItem.phase"
+          @submit="handleProblemSubmit"
+        />
+      </div>
+
+      <!-- Worked Example (legacy instruction fallback) -->
       <WorkedExample
         v-else-if="currentItem?.type === 'instruction'"
         :example="currentItem.example"
@@ -291,6 +374,28 @@ async function handleExampleDone() {
         :key="currentItem.example.id"
         @done="handleExampleDone"
       />
+
+      <!-- Lesson warning modal -->
+      <div v-if="showLessonWarning" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+        <div class="bg-white rounded-xl p-6 max-w-md mx-4 shadow-xl">
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">Open Lesson?</h3>
+          <p class="text-gray-600 mb-4">Opening the lesson will change this to guided practice. You'll need additional pure reviews to earn full credit.</p>
+          <div class="flex gap-3 justify-end">
+            <button
+              @click="showLessonWarning = false"
+              class="px-4 py-2 text-gray-700 border border-gray-300 rounded-lg hover:bg-gray-50"
+            >
+              Cancel
+            </button>
+            <button
+              @click="confirmLessonPanel"
+              class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+            >
+              Open Lesson
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Mastery Celebration Overlay -->

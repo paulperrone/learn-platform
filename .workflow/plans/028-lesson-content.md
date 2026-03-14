@@ -1,7 +1,7 @@
 # Plan 028: Lesson Content & Learning Loop Simplification
 
 > **Created:** 2026-03-14T16:02:04Z
-> **Completed:** —
+> **Completed:** 2026-03-14
 >
 > For project context, see [CLAUDE.md](../../CLAUDE.md)
 > For product vision, see [SPEC.md](./SPEC.md)
@@ -160,9 +160,9 @@ confidenceAccuracy, lastReview
 
 ## Progress
 
-**Completed:** Phase 1, Phase 2, Phase 3
+**Completed:** Phase 1, Phase 2, Phase 3, Phase 4
 **In Progress:** —
-**Next:** Phase 4
+**Next:** —
 
 ---
 
@@ -401,7 +401,7 @@ For remediation (consecutive failures on a topic):
 
 ---
 
-## Phase 4: Frontend
+## Phase 4: Frontend ✓
 
 **Goal:** Render lessons in the learning UI. Support guided practice mode (lesson visible alongside problems). Support review mode with optional lesson reference and credit downgrade warning.
 
@@ -429,7 +429,7 @@ The frontend currently dispatches on `currentItem.type` in `learn.vue` (lines 27
 
 ### Steps
 
-1. [ ] [IMP] Create `LessonView.vue` component (`packages/web/src/components/LessonView.vue`):
+1. [x] [IMP] Create `LessonView.vue` component (`packages/web/src/components/LessonView.vue`):
    - Props: `lesson: Lesson`, `practiceProblems: Problem[]`, `topicName: string`, `topicId: string`
    - Renders sections sequentially with a progress bar (similar to WorkedExample step progress)
    - `explanation` section: prose text with markdown rendering, optional media placeholder image/text
@@ -439,13 +439,13 @@ The frontend currently dispatches on `currentItem.type` in `learn.vue` (lines 27
    - `practice` section: renders `<ProblemView>` for each practice problem, with the lesson sections still visible above as reference
    - Emits: `done` (all sections viewed + practice completed), `practice-submit` (individual practice problem submission)
 
-2. [ ] [IMP] Update `learn.vue` to dispatch lesson items:
+2. [x] [IMP] Update `learn.vue` to dispatch lesson items:
    - Add `v-else-if="currentItem?.type === 'lesson'"` branch → renders `<LessonView>`
    - Wire `@done` to a handler that calls `/respond` with `{ correct: true, responseMs }` (similar to `handleExampleDone`)
    - Wire `@practice-submit` to send individual practice results to the API
    - Remove the `v-else-if="currentItem?.type === 'instruction'"` branch (lessons replace it)
 
-3. [ ] [IMP] Add lesson reference side panel to review mode:
+3. [x] [IMP] Add lesson reference side panel to review mode:
    - When `currentItem.type === "problem"` and `currentItem.phase === "review"`, show a "Show Lesson" button
    - The button fetches the topic's lesson (can be included in the session item response, or fetched lazily)
    - Clicking opens a **collapsible side panel** showing the lesson sections (read-only, no practice). Side panel keeps the problem visible alongside the lesson content.
@@ -453,16 +453,16 @@ The frontend currently dispatches on `currentItem.type` in `learn.vue` (lines 27
    - If confirmed, set a local `scaffolding` state that's sent with the problem response
    - Style the problem area to indicate guided mode (e.g., lighter background, "Guided" badge)
 
-4. [ ] [IMP] Update problem submission to include scaffolding:
+4. [x] [IMP] Update problem submission to include scaffolding:
    - Modify `handleProblemSubmit` in `learn.vue` to include `scaffolding` in the POST body
    - Default: `"none"`. If lesson panel was opened: `"lesson-referenced"`. If LLM hints were used: `"llm-assisted"`. If both: `"lesson-and-llm"`.
    - The `ProblemView` component already tracks `hintsUsed` — add LLM hint detection to set `llm-assisted`
 
-5. [ ] [IMP] Update `useApi.ts` to handle new session item types:
+5. [x] [IMP] Update `useApi.ts` to handle new session item types:
    - The API calls are untyped (`any`) so no breaking changes, but add TypeScript interfaces for the new response shapes for developer clarity
    - Add `fetchTopicLesson(topicId: string, discipline: string): Promise<Lesson | null>` for lazy lesson fetching in review mode (if not included in session item)
 
-6. [ ] [TST] Manual testing in dev:
+6. [ ] [TST] Manual testing in dev (deferred — needs `just dev`):
    - Start dev: `just dev`
    - Start a session, navigate to a new topic → should see `LessonView` with sections
    - Complete the lesson + practice → should transition to next item
