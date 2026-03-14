@@ -160,9 +160,9 @@ confidenceAccuracy, lastReview
 
 ## Progress
 
-**Completed:** Phase 1, Phase 2
+**Completed:** Phase 1, Phase 2, Phase 3
 **In Progress:** —
-**Next:** Phase 3
+**Next:** Phase 4
 
 ---
 
@@ -295,7 +295,7 @@ The pipeline currently processes `problems/` and `examples/` directories per dis
 
 ---
 
-## Phase 3: Session Engine Simplification
+## Phase 3: Session Engine Simplification ✓
 
 **Goal:** Replace the 6-phase learning loop with the lesson/review model. Serve lessons via the content service. Track scaffolding on reviews. This is the most complex phase.
 

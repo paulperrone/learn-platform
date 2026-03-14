@@ -643,7 +643,7 @@ const SCHEMA_STATEMENTS = [
   'CREATE INDEX ac_depth_idx ON assessment_content (topic_id, content_depth)',
 
   // topic_content_versions (FK → topics)
-  'CREATE TABLE topic_content_versions (topic_id text PRIMARY KEY NOT NULL, content_hash text NOT NULL, bundle_version integer DEFAULT 1 NOT NULL, problems_count integer DEFAULT 0 NOT NULL, examples_count integer DEFAULT 0 NOT NULL, generated_at text NOT NULL, uploaded_at text, FOREIGN KEY (topic_id) REFERENCES topics(id))',
+  'CREATE TABLE topic_content_versions (topic_id text PRIMARY KEY NOT NULL, content_hash text NOT NULL, bundle_version integer DEFAULT 1 NOT NULL, problems_count integer DEFAULT 0 NOT NULL, examples_count integer DEFAULT 0 NOT NULL, lessons_count integer DEFAULT 0 NOT NULL, generated_at text NOT NULL, uploaded_at text, FOREIGN KEY (topic_id) REFERENCES topics(id))',
 
   // prerequisites (FK → topics)
   'CREATE TABLE prerequisites (id integer PRIMARY KEY AUTOINCREMENT NOT NULL, from_topic_id text NOT NULL, to_topic_id text NOT NULL, strength real DEFAULT 1 NOT NULL, type text DEFAULT \'required\' NOT NULL, FOREIGN KEY (from_topic_id) REFERENCES topics(id), FOREIGN KEY (to_topic_id) REFERENCES topics(id))',

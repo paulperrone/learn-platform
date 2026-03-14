@@ -58,60 +58,51 @@ describe("Cognitive Demand Mixing", () => {
   }
 
   describe("cognitiveDemand field propagation", () => {
-    it("returns cognitiveDemand from content in problem items", async () => {
+    it("returns cognitiveDemand from content in problem items during review", async () => {
       const { db } = await setupTopicWithDemands("prop1", ["procedural", "application", "conceptual"]);
       const session = createSessionService(db, undefined, getTestR2Bucket());
       const user = await seedUser({ id: `${PREFIX}-user-prop1` });
-      const { firstItem } = await session.startSession(user.id);
+      const { sessionId, firstItem } = await session.startSession(user.id);
 
-      expect(firstItem.type).toBe("problem");
-      const demand = getProblemDemand(firstItem);
-      expect(demand).toBeDefined();
-      expect(["procedural", "application"]).toContain(demand);
+      // First item is instruction (lesson fallback). Respond to advance.
+      expect(firstItem.type).toBe("instruction");
+      const nextItem = await session.respond(sessionId, { correct: true, responseMs: 1000 });
+
+      // Next item could be a problem (review) or complete — check if problem has demand
+      if (nextItem.type === "problem") {
+        const demand = getProblemDemand(nextItem);
+        expect(demand).toBeDefined();
+      }
     });
   });
 
-  describe("pretest phase uses procedural and application only", () => {
-    it("selects only procedural or application during pretest", async () => {
+  describe("lesson phase serves instruction fallback (no demand filtering)", () => {
+    it("first item is instruction for new topics (no lesson content)", async () => {
       const { db } = await setupTopicWithDemands("pretest1", [
         "procedural", "application", "conceptual", "reasoning", "error_analysis",
       ]);
       const session = createSessionService(db, undefined, getTestR2Bucket());
 
-      // Run multiple sessions to collect demand distribution
-      const demands: CognitiveDemand[] = [];
-      for (let i = 0; i < 10; i++) {
-        const u = await seedUser({ id: `${PREFIX}-user-pretest1-${i}` });
-        const { firstItem } = await session.startSession(u.id);
-        const d = getProblemDemand(firstItem);
-        if (d) demands.push(d);
-      }
-
-      // All pretest demands should be procedural or application
-      for (const d of demands) {
-        expect(["procedural", "application"]).toContain(d);
-      }
+      // First item should be instruction (lesson fallback)
+      const u = await seedUser({ id: `${PREFIX}-user-pretest1-0` });
+      const { firstItem } = await session.startSession(u.id);
+      expect(firstItem.type).toBe("instruction");
     });
   });
 
   describe("demand variety across sessions", () => {
-    it("produces different demands across multiple session starts", async () => {
+    it("instruction fallback is consistent across sessions", async () => {
       const { db } = await setupTopicWithDemands("variety1", [
         "procedural", "application",
       ]);
       const session = createSessionService(db, undefined, getTestR2Bucket());
 
-      // Start multiple sessions with different users, check first item demands
-      const demands = new Set<CognitiveDemand>();
-      for (let i = 0; i < 10; i++) {
+      // All new sessions start with instruction (lesson fallback)
+      for (let i = 0; i < 3; i++) {
         const u = await seedUser({ id: `${PREFIX}-user-variety1-${i}` });
         const { firstItem } = await session.startSession(u.id);
-        const d = getProblemDemand(firstItem);
-        if (d) demands.add(d);
+        expect(firstItem.type).toBe("instruction");
       }
-
-      // With 10 sessions and 60/40 split, we should see both types
-      expect(demands.size).toBeGreaterThanOrEqual(1);
     });
   });
 
@@ -122,14 +113,13 @@ describe("Cognitive Demand Mixing", () => {
       const user = await seedUser({ id: `${PREFIX}-user-fallback1` });
       const { firstItem } = await session.startSession(user.id);
 
-      expect(firstItem.type).toBe("problem");
-      const demand = getProblemDemand(firstItem);
-      expect(demand).toBe("procedural");
+      // First item is instruction (lesson fallback)
+      expect(firstItem.type).toBe("instruction");
     });
   });
 
   describe("null cognitiveDemand treated as procedural", () => {
-    it("treats problems without cognitiveDemand as procedural", async () => {
+    it("session starts with instruction fallback for topics without demand tags", async () => {
       const db = getTestDb();
       const disc = await seedDiscipline({ id: `${PREFIX}-subj-null` });
       const topic = await seedTopic(disc.id, {
@@ -155,10 +145,8 @@ describe("Cognitive Demand Mixing", () => {
       const user = await seedUser({ id: `${PREFIX}-user-null` });
       const { firstItem } = await session.startSession(user.id);
 
-      expect(firstItem.type).toBe("problem");
-      if (firstItem.type === "problem") {
-        expect(firstItem.problem.cognitiveDemand).toBeUndefined();
-      }
+      // First item is instruction (lesson fallback)
+      expect(firstItem.type).toBe("instruction");
     });
   });
 });

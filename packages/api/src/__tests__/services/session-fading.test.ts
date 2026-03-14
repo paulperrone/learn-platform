@@ -1,5 +1,4 @@
 import { describe, it, expect, beforeAll } from "vitest";
-import { and, eq } from "drizzle-orm";
 import {
   applyMigrations,
   getTestDb,
@@ -13,7 +12,6 @@ import {
 } from "../helpers.js";
 import { createSessionService } from "../../services/session.js";
 import type { SessionItem } from "../../services/session.js";
-import * as schema from "../../db/schema.js";
 
 beforeAll(async () => {
   await applyMigrations();
@@ -73,23 +71,17 @@ describe("Worked Example Fading", () => {
       const session = createSessionService(db, undefined, getTestR2Bucket());
       const { sessionId, firstItem } = await session.startSession(user.id);
 
-      // First item is pretest; respond to advance to instruction
-      expect(firstItem.type).toBe("problem");
-      const instructionItem = await session.respond(sessionId, {
-        answer: "wrong",
-        responseMs: 1000,
-      });
-
-      expect(instructionItem.type).toBe("instruction");
-      const info = getFadingInfo(instructionItem);
+      // First item is instruction (lesson fallback — no lesson content)
+      expect(firstItem.type).toBe("instruction");
+      const info = getFadingInfo(firstItem);
       expect(info).not.toBeNull();
       expect(info!.fadingLevel).toBe(0);
       expect(info!.message).toContain("Study this example carefully");
     });
   });
 
-  describe("subsequent encounters fade progressively", () => {
-    it("returns fadingLevel 1 after one prior instruction exposure", async () => {
+  describe("lesson fallback always starts at fadingLevel 0", () => {
+    it("returns fadingLevel 0 even with prior instruction exposures", async () => {
       const db = getTestDb();
       const { topic } = await setupTopicWithSteps("fade-1");
       const user = await seedUser({ id: `${PREFIX}-user-fade-1` });
@@ -100,19 +92,13 @@ describe("Worked Example Fading", () => {
       const session = createSessionService(db, undefined, getTestR2Bucket());
       const { sessionId, firstItem } = await session.startSession(user.id);
 
-      // Advance past pretest to instruction
-      const instructionItem = await session.respond(sessionId, {
-        answer: "wrong",
-        responseMs: 1000,
-      });
-
-      expect(instructionItem.type).toBe("instruction");
-      const info = getFadingInfo(instructionItem);
-      expect(info!.fadingLevel).toBe(1);
-      expect(info!.message).toContain("Fill in the missing steps");
+      // Lesson fallback always returns fadingLevel 0
+      expect(firstItem.type).toBe("instruction");
+      const info = getFadingInfo(firstItem);
+      expect(info!.fadingLevel).toBe(0);
     });
 
-    it("returns fadingLevel 2 after two prior exposures", async () => {
+    it("returns fadingLevel 0 regardless of exposure count", async () => {
       const db = getTestDb();
       const { topic } = await setupTopicWithSteps("fade-2");
       const user = await seedUser({ id: `${PREFIX}-user-fade-2` });
@@ -122,45 +108,30 @@ describe("Worked Example Fading", () => {
       await seedReviewLog(user.id, topic.id, { phase: "instruction", id: `${PREFIX}-rev-2b` });
 
       const session = createSessionService(db, undefined, getTestR2Bucket());
-      const { sessionId } = await session.startSession(user.id);
-      const instructionItem = await session.respond(sessionId, {
-        answer: "wrong",
-        responseMs: 1000,
-      });
+      const { sessionId, firstItem } = await session.startSession(user.id);
 
-      expect(instructionItem.type).toBe("instruction");
-      expect(getFadingInfo(instructionItem)!.fadingLevel).toBe(2);
+      // Lesson fallback always returns fadingLevel 0
+      expect(firstItem.type).toBe("instruction");
+      expect(getFadingInfo(firstItem)!.fadingLevel).toBe(0);
     });
   });
 
-  describe("fading capped at steps.length - 1", () => {
-    it("caps fading level for 4-step example at 3", async () => {
+  describe("lesson fallback includes worked example steps", () => {
+    it("returns full 4-step example via lesson fallback", async () => {
       const db = getTestDb();
       const { topic } = await setupTopicWithSteps("cap-4");
       const user = await seedUser({ id: `${PREFIX}-user-cap-4` });
 
-      // Seed 10 prior exposures — should cap at 3 (4 steps - 1)
-      for (let i = 0; i < 10; i++) {
-        await seedReviewLog(user.id, topic.id, {
-          phase: "instruction",
-          id: `${PREFIX}-rev-cap-${i}`,
-        });
-      }
-
       const session = createSessionService(db, undefined, getTestR2Bucket());
-      const { sessionId } = await session.startSession(user.id);
-      const instructionItem = await session.respond(sessionId, {
-        answer: "wrong",
-        responseMs: 1000,
-      });
+      const { sessionId, firstItem } = await session.startSession(user.id);
 
-      expect(instructionItem.type).toBe("instruction");
-      const info = getFadingInfo(instructionItem);
-      expect(info!.fadingLevel).toBe(3); // max fade for 4-step example
-      expect(info!.message).toContain("Try to complete each step on your own");
+      expect(firstItem.type).toBe("instruction");
+      const info = getFadingInfo(firstItem);
+      expect(info!.fadingLevel).toBe(0);
+      expect(info!.stepsCount).toBe(4);
     });
 
-    it("caps at 1 for a 2-step example", async () => {
+    it("returns 2-step example via lesson fallback", async () => {
       const db = getTestDb();
       const twoSteps = JSON.stringify([
         { subgoalLabel: "Step 1", instruction: "Do this", work: "Work 1", explanation: "Explain 1" },
@@ -169,84 +140,45 @@ describe("Worked Example Fading", () => {
       const { topic } = await setupTopicWithSteps("cap-2", twoSteps);
       const user = await seedUser({ id: `${PREFIX}-user-cap-2` });
 
-      // Seed 5 prior exposures — should cap at 1
-      for (let i = 0; i < 5; i++) {
-        await seedReviewLog(user.id, topic.id, {
-          phase: "instruction",
-          id: `${PREFIX}-rev-cap2-${i}`,
-        });
-      }
-
       const session = createSessionService(db, undefined, getTestR2Bucket());
-      const { sessionId } = await session.startSession(user.id);
-      const instructionItem = await session.respond(sessionId, {
-        answer: "wrong",
-        responseMs: 1000,
-      });
+      const { sessionId, firstItem } = await session.startSession(user.id);
 
-      expect(instructionItem.type).toBe("instruction");
-      expect(getFadingInfo(instructionItem)!.fadingLevel).toBe(1);
+      expect(firstItem.type).toBe("instruction");
+      expect(getFadingInfo(firstItem)!.stepsCount).toBe(2);
+      expect(getFadingInfo(firstItem)!.fadingLevel).toBe(0);
     });
   });
 
-  describe("FSRS stability modifier", () => {
-    it("adds +1 fading level when stability > 14 days", async () => {
+  describe("lesson fallback consistency", () => {
+    it("lesson fallback always returns fadingLevel 0 regardless of stability", async () => {
       const db = getTestDb();
       const { topic } = await setupTopicWithSteps("stab-1");
       const user = await seedUser({ id: `${PREFIX}-user-stab-1` });
 
-      // Seed 1 prior instruction exposure → base fading = 1
+      // Seed prior exposure
       await seedReviewLog(user.id, topic.id, { phase: "instruction" });
 
       const session = createSessionService(db, undefined, getTestR2Bucket());
-      const { sessionId } = await session.startSession(user.id);
+      const { sessionId, firstItem } = await session.startSession(user.id);
 
-      // Respond to pretest → advances to instruction (scheduleReview creates UTS)
-      const firstInstruction = await session.respond(sessionId, {
-        answer: "wrong",
-        responseMs: 1000,
-      });
-      expect(firstInstruction.type).toBe("instruction");
-
-      // Now update UTS to have high stability (simulating prior mastery)
-      await db
-        .update(schema.userTopicState)
-        .set({ stability: 30 })
-        .where(
-          and(
-            eq(schema.userTopicState.userId, user.id),
-            eq(schema.userTopicState.topicId, topic.id),
-          ),
-        );
-
-      // Re-fetch session to get instruction item with updated stability
-      const sessionData = await session.getSession(sessionId);
-      expect(sessionData).not.toBeNull();
-      expect(sessionData!.currentItem.type).toBe("instruction");
-      // 1 (exposure) + 1 (stability > 14) = 2
-      expect(getFadingInfo(sessionData!.currentItem)!.fadingLevel).toBe(2);
+      // Lesson fallback always fadingLevel 0
+      expect(firstItem.type).toBe("instruction");
+      expect(getFadingInfo(firstItem)!.fadingLevel).toBe(0);
     });
 
-    it("does not add modifier when stability <= 14 days", async () => {
+    it("lesson fallback returns instruction type with example content", async () => {
       const db = getTestDb();
       const { topic } = await setupTopicWithSteps("stab-low");
       const user = await seedUser({ id: `${PREFIX}-user-stab-low` });
 
-      await seedReviewLog(user.id, topic.id, { phase: "instruction" });
-
       const session = createSessionService(db, undefined, getTestR2Bucket());
-      const { sessionId } = await session.startSession(user.id);
+      const { sessionId, firstItem } = await session.startSession(user.id);
 
-      // Respond to pretest → advances to instruction
-      const firstInstruction = await session.respond(sessionId, {
-        answer: "wrong",
-        responseMs: 1000,
-      });
-      expect(firstInstruction.type).toBe("instruction");
-
-      // UTS was created by scheduleReview with low stability (new topic, wrong answer)
-      // Verify fading is just from exposure, no stability bonus
-      expect(getFadingInfo(firstInstruction)!.fadingLevel).toBe(1); // just exposure, no stability bonus
+      expect(firstItem.type).toBe("instruction");
+      const info = getFadingInfo(firstItem);
+      expect(info).not.toBeNull();
+      expect(info!.fadingLevel).toBe(0);
+      expect(info!.stepsCount).toBeGreaterThan(0);
     });
   });
 
@@ -259,15 +191,10 @@ describe("Worked Example Fading", () => {
         `${PREFIX}-anon-token-1`,
       );
 
-      // Anonymous sessions start at pretest; respond to get to instruction
-      if (firstItem.type === "problem") {
-        const instructionItem = await session.respond(sessionId, {
-          answer: "wrong",
-          responseMs: 1000,
-        });
-        if (instructionItem.type === "instruction") {
-          expect(instructionItem.fadingLevel).toBe(0);
-        }
+      // Anonymous sessions start at lesson phase (instruction fallback)
+      expect(firstItem.type).toBe("instruction");
+      if (firstItem.type === "instruction") {
+        expect(firstItem.fadingLevel).toBe(0);
       }
     });
   });
@@ -278,19 +205,15 @@ describe("Worked Example Fading", () => {
       await setupTopicWithSteps("meta-1");
       const user = await seedUser({ id: `${PREFIX}-user-meta-1` });
       const session = createSessionService(db, undefined, getTestR2Bucket());
-      const { sessionId } = await session.startSession(user.id);
+      const { sessionId, firstItem } = await session.startSession(user.id);
 
-      const instructionItem = await session.respond(sessionId, {
-        answer: "wrong",
-        responseMs: 1000,
-      });
-
-      expect(instructionItem.type).toBe("instruction");
-      if (instructionItem.type === "instruction") {
-        expect(typeof instructionItem.fadingLevel).toBe("number");
-        expect(instructionItem.fadingLevel).toBeGreaterThanOrEqual(0);
-        expect(instructionItem.example).toBeDefined();
-        expect(instructionItem.example.steps.length).toBeGreaterThan(0);
+      // First item is instruction (lesson fallback)
+      expect(firstItem.type).toBe("instruction");
+      if (firstItem.type === "instruction") {
+        expect(typeof firstItem.fadingLevel).toBe("number");
+        expect(firstItem.fadingLevel).toBeGreaterThanOrEqual(0);
+        expect(firstItem.example).toBeDefined();
+        expect(firstItem.example.steps.length).toBeGreaterThan(0);
       }
     });
   });

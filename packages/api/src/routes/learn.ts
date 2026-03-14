@@ -69,6 +69,7 @@ learnRoutes.post("/sessions/:id/respond", async (c) => {
     responseMs: number;
     selfExplanation?: string;
     hintsUsed?: number;
+    scaffolding?: "none" | "lesson-referenced" | "llm-assisted" | "lesson-and-llm";
   }>();
   const result = await session.respond(c.req.param("id"), body);
   return c.json(result);

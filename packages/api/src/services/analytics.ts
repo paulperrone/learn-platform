@@ -43,6 +43,20 @@ export type ExampleViewEvent = {
   selfExplanationQuality: number;
 };
 
+export type LessonViewEvent = {
+  userId: string;
+  topicId: string;
+  lessonId: string;
+  contentVersion: string | null;
+  presentation: string;
+  contentDepth: string;
+  sectionsViewed: number;
+  totalSections: number;
+  totalTimeMs: number;
+  practiceProblemsAttempted: number;
+  practiceProblemsCorrect: number;
+};
+
 // ── Service factory ──
 
 export function createAnalyticsService(ae: AnalyticsEngineDataset | null | undefined) {
@@ -72,6 +86,29 @@ export function createAnalyticsService(ae: AnalyticsEngineDataset | null | undef
           event.confidence,
           event.rating,
           event.misconception ? 1 : 0,
+        ],
+        indexes: [event.topicId],
+      });
+    },
+
+    recordLessonView(event: LessonViewEvent): void {
+      if (!ae) return;
+      ae.writeDataPoint({
+        blobs: [
+          event.userId,
+          event.topicId,
+          event.lessonId,
+          event.contentVersion ?? "",
+          event.presentation,
+          event.contentDepth,
+          "lesson-view",
+        ],
+        doubles: [
+          event.sectionsViewed,
+          event.totalSections,
+          event.totalTimeMs,
+          event.practiceProblemsAttempted,
+          event.practiceProblemsCorrect,
         ],
         indexes: [event.topicId],
       });

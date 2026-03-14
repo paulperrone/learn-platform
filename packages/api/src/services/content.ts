@@ -1,8 +1,8 @@
 import { eq, and } from "drizzle-orm";
 import type { DB } from "../db/index.js";
 import * as schema from "../db/schema.js";
-import type { Problem, WorkedExample, VisualAsset, PresentationLevel, ContentDepthLevel } from "@learn/shared";
-import { fetchTopicProblems, fetchTopicExamples, toBareProblems, toBareExamples, type BundledProblem, type BundledExample, type ContentBucket } from "./content-r2.js";
+import type { Problem, WorkedExample, Lesson, VisualAsset, PresentationLevel, ContentDepthLevel } from "@learn/shared";
+import { fetchTopicProblems, fetchTopicExamples, fetchTopicLessons, toBareProblems, toBareExamples, toBareLessons, type BundledProblem, type BundledExample, type BundledLesson, type ContentBucket } from "./content-r2.js";
 
 const CURRENT_YEAR = new Date().getFullYear();
 
@@ -393,6 +393,18 @@ export function createContentService(db: DB, contentBucket?: ContentBucket) {
     return examples[0]?.visuals;
   }
 
+  async function getTopicLessons(query: ContentQuery): Promise<Lesson[]> {
+    const { topicId, discipline, contentDepth, presentation, locale = "en", flavor = "classic" } = query;
+
+    if (!contentBucket || !discipline) return [];
+
+    const bundled = await fetchTopicLessons(contentBucket, discipline, topicId);
+    if (bundled.length === 0) return [];
+
+    const best = selectBestRows(bundled, { presentation, contentDepth, locale, flavor });
+    return toBareLessons(best);
+  }
+
   async function markDepthCompleted(
     userId: string,
     topicId: string,
@@ -574,6 +586,7 @@ export function createContentService(db: DB, contentBucket?: ContentBucket) {
     getCompletedDepths,
     getTopicProblems,
     getTopicExamples,
+    getTopicLessons,
     getTopicVisuals,
   };
 }

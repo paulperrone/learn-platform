@@ -13,7 +13,7 @@
  * ContentBucket is the minimal interface used for fetching — satisfied by
  * both Cloudflare R2Bucket and the file-based implementation below.
  */
-import type { Problem, WorkedExample, PresentationLevel, ContentDepthLevel } from "@learn/shared";
+import type { Problem, WorkedExample, Lesson, PresentationLevel, ContentDepthLevel } from "@learn/shared";
 
 // ── Content bucket abstraction ──
 
@@ -39,6 +39,13 @@ export type BundledExample = WorkedExample & {
   contentDepth: string;
 };
 
+export type BundledLesson = Lesson & {
+  flavor: string;
+  locale: string;
+  presentation: string;
+  contentDepth: string;
+};
+
 export type BundleManifest = {
   version: number;
   contentHash: string;
@@ -54,6 +61,10 @@ export type BundleManifest = {
       demands: Record<string, number>;
     };
     examples: {
+      count: number;
+      hash: string;
+    };
+    lessons?: {
       count: number;
       hash: string;
     };
@@ -120,6 +131,23 @@ export async function fetchManifest(
   return JSON.parse(text) as BundleManifest;
 }
 
+/**
+ * Fetch all lessons for a topic from R2.
+ * Returns empty array if the bundle doesn't exist.
+ */
+export async function fetchTopicLessons(
+  bucket: ContentBucket,
+  discipline: string,
+  topicId: string,
+): Promise<BundledLesson[]> {
+  const key = `${discipline}/${topicId}/lessons.json`;
+  const obj = await bucket.get(key);
+  if (!obj) return [];
+
+  const text = await obj.text();
+  return JSON.parse(text) as BundledLesson[];
+}
+
 // ── Mappers: BundledProblem → Problem, BundledExample → WorkedExample ──
 
 /** Strip dimension fields to produce the shared Problem type. */
@@ -130,6 +158,11 @@ export function toBareProblems(bundled: BundledProblem[]): Problem[] {
 /** Strip dimension fields to produce the shared WorkedExample type. */
 export function toBareExamples(bundled: BundledExample[]): WorkedExample[] {
   return bundled.map(({ flavor, locale, presentation, contentDepth, ...example }) => example);
+}
+
+/** Strip dimension fields to produce the shared Lesson type. */
+export function toBareLessons(bundled: BundledLesson[]): Lesson[] {
+  return bundled.map(({ flavor, locale, presentation, contentDepth, ...lesson }) => lesson);
 }
 
 // ── File-based content bucket (for simulations and local dev without R2) ──
@@ -156,10 +189,15 @@ export function createFileContentBucket(contentDir: string): ContentBucket {
       const [discipline, topicId, file] = parts;
 
       if (file === "manifest.json") return null;
-      if (file !== "problems.json" && file !== "examples.json") return null;
+      if (file !== "problems.json" && file !== "examples.json" && file !== "lessons.json") return null;
 
       // Determine which subdirectories to check
-      const subdir = file === "problems.json" ? "problems" : "examples";
+      const subdirMap: Record<string, string> = {
+        "problems.json": "problems",
+        "examples.json": "examples",
+        "lessons.json": "lessons",
+      };
+      const subdir = subdirMap[file];
       const filePath = path.join(contentDir, discipline, subdir, `${topicId}.json`);
 
       // For problems, also check problems-generated (supplementary content)

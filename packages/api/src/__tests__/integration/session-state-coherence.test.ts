@@ -82,6 +82,13 @@ describe("session-state-coherence integration", () => {
 
   it("session state round-trips through D1 with all fields intact", async () => {
     const { db, user } = await setupRichGraph();
+
+    // Seed t1 as mastered so t2/t3 are frontier (more topics in mix)
+    await seedUserTopicState(user.id, "t1", {
+      mastered: true, stability: 10, reps: 5, state: 2,
+      due: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString(),
+    });
+
     const session = createSessionService(db, undefined, getTestR2Bucket());
 
     const { sessionId, firstItem } = await session.startSession(user.id);
@@ -95,20 +102,14 @@ describe("session-state-coherence integration", () => {
     const initialState = JSON.parse(initialRow.stateJson!);
     expect(initialState.sessionId).toBe(sessionId);
 
-    // Exercise a few phases: fail pretest → instruction → guided
-    // These keep us on the same topic without completing the session
+    // First item is instruction (lesson fallback). Respond to advance.
     let item: SessionItem = firstItem;
     expect(item.type).not.toBe("complete");
 
-    // Fail pretest → should get instruction
-    item = await session.respond(sessionId, { correct: false, responseMs: 1000 });
-    expect(item.type).not.toBe("complete");
-
-    // Respond to instruction → should get guided
+    // Respond to lesson → should advance to next topic
     item = await session.respond(sessionId, { correct: true, responseMs: 1000 });
-    expect(item.type).not.toBe("complete");
 
-    // Now read state JSON from D1 (session is still active)
+    // Now read state JSON from D1 (session may still be active or complete)
     const [row] = await db.select()
       .from(schema.learnSessions)
       .where(eq(schema.learnSessions.id, sessionId));
@@ -137,14 +138,18 @@ describe("session-state-coherence integration", () => {
 
   it("loadState correctly restores all fields after cache miss", async () => {
     const { db, user } = await setupRichGraph();
-    const session = createSessionService(db, undefined, getTestR2Bucket());
 
+    // Seed t1 as mastered so t2/t3 are frontier (more topics in mix)
+    await seedUserTopicState(user.id, "t1", {
+      mastered: true, stability: 10, reps: 5, state: 2,
+      due: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString(),
+    });
+
+    const session = createSessionService(db, undefined, getTestR2Bucket());
     const { sessionId } = await session.startSession(user.id);
 
-    // Progress through a few phases
-    await session.respond(sessionId, { correct: false, responseMs: 1000 }); // fail pretest
-    await session.respond(sessionId, { correct: true, responseMs: 1000 }); // instruction
-    await session.respond(sessionId, { correct: true, responseMs: 1000 }); // guided
+    // Progress through first topic lesson
+    await session.respond(sessionId, { correct: true, responseMs: 1000 });
 
     // Read state from D1 directly (simulates cache miss)
     const [row] = await db.select()
@@ -163,7 +168,7 @@ describe("session-state-coherence integration", () => {
     if (restored) {
       // Restored session should be functional — respond should work
       const item = await session2.respond(sessionId, {
-        correct: true, responseMs: 1500, confidence: 3,
+        correct: true, responseMs: 1500,
       });
       expect(item.type).not.toBe("error");
     }
@@ -171,13 +176,17 @@ describe("session-state-coherence integration", () => {
 
   it("session state tracks rollingResults for adaptive difficulty", async () => {
     const { db, user } = await setupRichGraph();
-    const session = createSessionService(db, undefined, getTestR2Bucket());
 
+    // Seed t1 as mastered so t2/t3 are frontier
+    await seedUserTopicState(user.id, "t1", {
+      mastered: true, stability: 10, reps: 5, state: 2,
+      due: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString(),
+    });
+
+    const session = createSessionService(db, undefined, getTestR2Bucket());
     const { sessionId } = await session.startSession(user.id);
 
-    // Progress: fail pretest → instruction → guided → independent
-    await session.respond(sessionId, { correct: false, responseMs: 1000 });
-    await session.respond(sessionId, { correct: true, responseMs: 1000 });
+    // Progress through lesson phases
     await session.respond(sessionId, { correct: true, responseMs: 1000 });
 
     // Read rollingResults from state
@@ -197,30 +206,33 @@ describe("session-state-coherence integration", () => {
   it("session state preserves remediation fields during D1 round-trip", async () => {
     const { db, user } = await setupRichGraph();
 
-    // Seed t1 as mastered with low stability so it's targeted for remediation
+    // Seed t1 as mastered with low stability, t2 due for review
+    const pastDue = new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString();
     await seedUserTopicState(user.id, "t1", {
       mastered: true, stability: 2.0, reps: 3, state: 2,
       due: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString(),
+    });
+    await seedUserTopicState(user.id, "t2", {
+      mastered: true, stability: 3.0, reps: 3, state: 2,
+      due: pastDue,
     });
 
     const session = createSessionService(db, undefined, getTestR2Bucket());
     const { sessionId, firstItem } = await session.startSession(user.id);
 
-    // Fast-forward to independent phase
+    // Keep failing to trigger remediation (needs 2+ failures on same topic)
     let item: SessionItem = firstItem;
+    let hitRemediation = false;
     for (let i = 0; i < 10; i++) {
-      if (item.type === "problem" && item.phase === "independent") break;
       if (item.type === "complete" || item.type === "error") break;
-      const correct = item.type === "instruction" || (item.type === "problem" && item.phase !== "pretest");
-      item = await session.respond(sessionId, { correct, responseMs: 1000 });
+      if (item.type === "remediation") {
+        hitRemediation = true;
+        break;
+      }
+      item = await session.respond(sessionId, { correct: false, responseMs: 1000 });
     }
 
-    if (item.type !== "problem" || item.phase !== "independent") return;
-
-    // Fail independent to trigger remediation
-    item = await session.respond(sessionId, { correct: false, responseMs: 2000 });
-
-    if (item.type !== "remediation") return;
+    if (!hitRemediation) return;
 
     // Read state from D1 — should have remediation fields
     const [row] = await db.select()

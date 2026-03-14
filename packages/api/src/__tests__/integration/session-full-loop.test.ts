@@ -20,17 +20,15 @@ import type { SessionItem } from "../../services/session.js";
 /**
  * Full-loop integration test for the session learning loop.
  *
- * Exercises a complete multi-topic learning session through all phases:
- *   pretest → instruction → guided → independent → review → remediation
+ * Exercises the lesson-based session model:
+ *   lesson (or instruction fallback) → next topic → review
  *
- * Verifies Plan 010 features are wired end-to-end:
- * - Phase progression (pretest → instruction → guided → independent)
- * - Worked example fading (increases with prior instruction exposures)
- * - Hint system (guided pre-reveals in availableHints, remediation reveals progressively)
- * - Confidence capture (independent phase)
- * - Adaptive difficulty (bias shifts with rolling accuracy)
- * - FIRe compression + depth blending (warmup/main/stretch blend roles)
- * - Targeted remediation (routes to prerequisite on independent failure)
+ * Verifies:
+ * - New topic starts with "lesson" phase (falls back to "instruction" without lesson content)
+ * - Lesson completion advances to next topic
+ * - Review phase for due topics
+ * - Targeted remediation on repeated review failures
+ * - Blend roles (warmup/main/stretch) in review
  */
 describe("session-full-loop integration", () => {
   beforeAll(async () => {
@@ -119,147 +117,115 @@ describe("session-full-loop integration", () => {
 
   // --- Tests ---
 
-  it("progresses through pretest > instruction > guided > independent for a new topic", async () => {
+  it("starts new topic with lesson phase (instruction fallback when no lesson content)", async () => {
     const { db, user } = await setupFullGraph();
     const session = createSessionService(db, undefined, getTestR2Bucket());
 
     // No userTopicState seeded → counting (no prereqs) is the frontier topic
     const { sessionId, firstItem } = await session.startSession(user.id);
 
-    // PRETEST: medium difficulty, no hints
-    assertProblem(firstItem);
-    expect(firstItem.phase).toBe("pretest");
-    expect(firstItem.availableHints).toEqual([]);
-    expect(firstItem.showSolution).toBe(false);
+    // First item should be instruction (lesson fallback — no lesson content seeded)
+    assertInstruction(firstItem);
+    expect(firstItem.phase).toBe("instruction");
+    expect(firstItem.fadingLevel).toBe(0); // First encounter
 
-    // Fail pretest → instruction
-    const instrItem = await session.respond(sessionId, { correct: false, responseMs: 3000 });
-    assertInstruction(instrItem);
-    expect(instrItem.phase).toBe("instruction");
-    expect(instrItem.fadingLevel).toBe(0); // First encounter
-
-    // Respond to instruction → guided
-    const guidedItem = await session.respond(sessionId, { correct: true, responseMs: 5000 });
-    assertProblem(guidedItem);
-    expect(guidedItem.phase).toBe("guided");
-    // Guided: base reveal adds 1 hint to availableHints, hintsRevealed stays at hintIndex
-    expect(guidedItem.availableHints.length).toBeGreaterThanOrEqual(1);
-
-    // Pass guided → independent
-    const indepItem = await session.respond(sessionId, { correct: true, responseMs: 2000 });
-    assertProblem(indepItem);
-    expect(indepItem.phase).toBe("independent");
-    expect(indepItem.askConfidence).toBe(true);
+    // Respond to instruction → advances to next topic (lesson completion)
+    const nextItem = await session.respond(sessionId, { correct: true, responseMs: 3000 });
+    // Should be on next topic or complete
+    expect(nextItem.type).not.toBe("error");
   });
 
-  it("routes to targeted remediation on independent failure", async () => {
+  it("routes to targeted remediation on repeated review failure", async () => {
     const { db, user } = await setupFullGraph();
     const session = createSessionService(db, undefined, getTestR2Bucket());
 
-    // Counting mastered with low stability (fragile) — addition becomes frontier
+    // Counting mastered with low stability (fragile), addition due for review
+    const pastDue = new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString();
     await seedUserTopicState(user.id, "counting", {
       mastered: true, frontier: false,
       stability: 2.0, reps: 3, state: 2,
       due: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString(),
     });
+    await seedUserTopicState(user.id, "addition", {
+      mastered: true, frontier: false,
+      stability: 3.0, reps: 3, state: 2,
+      due: pastDue,
+    });
 
-    const { sessionId } = await session.startSession(user.id);
+    const { sessionId, firstItem } = await session.startSession(user.id);
 
-    // Fast-forward to independent (max 10 steps safety limit)
-    let item: SessionItem = { type: "complete", message: "" };
+    // Should start with review for addition (due)
+    // Keep failing to trigger remediation (needs 2+ failures on same topic)
+    let item: SessionItem = firstItem;
+    let hitRemediation = false;
     for (let i = 0; i < 10; i++) {
-      const state = await session.getSession(sessionId);
-      if (!state) break;
-      item = state.currentItem;
-      if (item.type === "problem" && item.phase === "independent") break;
       if (item.type === "complete" || item.type === "error") break;
-
-      const correct = item.type === "instruction" || (item.type === "problem" && item.phase !== "pretest");
-      item = await session.respond(sessionId, { correct, responseMs: 1000 });
+      if (item.type === "remediation") {
+        hitRemediation = true;
+        break;
+      }
+      item = await session.respond(sessionId, { correct: false, responseMs: 1000 });
     }
 
-    // Should be at independent now — fail it
-    if (item.type === "problem" && item.phase === "independent") {
-      const remItem = await session.respond(sessionId, { correct: false, responseMs: 2000 });
-
-      assertRemediation(remItem);
-      expect(remItem.remediationTargetTopicId).toBe("counting");
-      expect(remItem.originalTopicId).toBeDefined();
-
-      // Pass remediation → return to independent on original topic
-      const backItem = await session.respond(sessionId, { correct: true, responseMs: 1500 });
-      assertProblem(backItem);
-      expect(backItem.phase).toBe("independent");
+    if (hitRemediation) {
+      assertRemediation(item);
+      expect(item.remediationTargetTopicId).toBeDefined();
     }
   });
 
-  it("worked example fading increases with prior instruction exposures", async () => {
+  it("lesson fallback to instruction includes worked example", async () => {
     const { db, user } = await setupFullGraph();
     const session = createSessionService(db, undefined, getTestR2Bucket());
-
-    // Seed 2 prior instruction exposures for counting
-    await seedReviewLog(user.id, "counting", { phase: "instruction", rating: 3 });
-    await seedReviewLog(user.id, "counting", { phase: "instruction", rating: 3 });
 
     // No userTopicState → counting is frontier
     const { sessionId, firstItem } = await session.startSession(user.id);
 
-    // Fail pretest to reach instruction
-    assertProblem(firstItem);
-    const instrItem = await session.respond(sessionId, { correct: false, responseMs: 1000 });
-
-    // Instruction should have fadingLevel >= 2 due to prior exposures
-    assertInstruction(instrItem);
-    expect(instrItem.fadingLevel).toBeGreaterThanOrEqual(2);
+    // First item is instruction (lesson fallback — no lesson content)
+    assertInstruction(firstItem);
+    expect(firstItem.fadingLevel).toBe(0); // First encounter, no prior exposures
+    expect(firstItem.example).toBeDefined();
+    expect(firstItem.example.steps.length).toBeGreaterThan(0);
   });
 
-  it("progressive hints reveal on repeated failures in remediation", async () => {
+  it("lesson completion advances to next topic in session mix", async () => {
     const { db, user } = await setupFullGraph();
     const session = createSessionService(db, undefined, getTestR2Bucket());
 
-    // No userTopicState → counting is frontier
-    const { sessionId } = await session.startSession(user.id);
+    // No userTopicState → counting is frontier, then addition, skip-counting, etc.
+    const { sessionId, firstItem } = await session.startSession(user.id);
 
-    // pretest → instruction → guided → independent
-    await session.respond(sessionId, { correct: false, responseMs: 1000 }); // fail pretest
-    await session.respond(sessionId, { correct: true, responseMs: 1000 }); // instruction
-    await session.respond(sessionId, { correct: true, responseMs: 1000 }); // guided → independent
+    // First item is instruction for counting (lesson fallback)
+    assertInstruction(firstItem);
+    expect(firstItem.topicId).toBe("counting");
 
-    // Fail independent → remediation (same-topic fallback since no prereqs for counting)
-    const remItem = await session.respond(sessionId, { correct: false, responseMs: 2000 });
+    // Respond to lesson → should advance to next topic
+    const nextItem = await session.respond(sessionId, { correct: true, responseMs: 1000 });
 
-    // In remediation: first hint should be pre-revealed (base=1)
-    if (remItem.type === "remediation") {
-      expect(remItem.availableHints.length).toBeGreaterThanOrEqual(1);
-
-      // Fail remediation → reveals more hints
-      const rem2 = await session.respond(sessionId, { correct: false, responseMs: 2000 });
-      if (rem2.type === "remediation" || rem2.type === "problem") {
-        // hintsRevealed or availableHints should have increased
-        expect(rem2).toBeDefined();
+    // Should be on a different topic (or complete if only one in mix)
+    if (nextItem.type !== "complete") {
+      expect(nextItem).toBeDefined();
+      if (nextItem.type === "instruction" || nextItem.type === "lesson") {
+        // Next topic should be different from counting
+        expect(nextItem.topicId).not.toBe("counting");
       }
     }
   });
 
-  it("adaptive difficulty bias shifts with rolling accuracy", async () => {
+  it("session completes after all topics in mix are done", async () => {
     const { db, user } = await setupFullGraph();
     const session = createSessionService(db, undefined, getTestR2Bucket());
 
-    // No userTopicState → counting is frontier
     const { sessionId } = await session.startSession(user.id);
 
-    // pretest → instruction → guided → independent
-    await session.respond(sessionId, { correct: false, responseMs: 1000 }); // fail pretest
-    await session.respond(sessionId, { correct: true, responseMs: 1000 }); // instruction
-    await session.respond(sessionId, { correct: true, responseMs: 1000 }); // guided pass
-
-    // Now at independent. Pass it → advances to next topic.
-    // rollingResults = [false, true, true, true] → 75% < 80% → "easier" bias
-    const nextItem = await session.respond(sessionId, { correct: true, responseMs: 1000 });
-
-    if (nextItem.type === "problem" || nextItem.type === "remediation") {
-      expect(nextItem.difficultyBias).toBeDefined();
+    // Keep responding until session completes (max 30 safety limit)
+    let item: SessionItem = { type: "complete", message: "" };
+    for (let i = 0; i < 30; i++) {
+      item = await session.respond(sessionId, { correct: true, responseMs: 1000 });
+      if (item.type === "complete") break;
     }
+
+    // Should eventually complete
+    expect(item.type).toBe("complete");
   });
 
   it("review phase includes blend roles (warmup/main/stretch)", async () => {
@@ -284,68 +250,54 @@ describe("session-full-loop integration", () => {
     }
   });
 
-  it("confidence rating captured in independent phase", async () => {
+  it("respond to lesson does not error", async () => {
     const { db, user } = await setupFullGraph();
     const session = createSessionService(db, undefined, getTestR2Bucket());
 
     // No userTopicState → counting is frontier
-    const { sessionId } = await session.startSession(user.id);
+    const { sessionId, firstItem } = await session.startSession(user.id);
 
-    // pretest → instruction → guided → independent
-    await session.respond(sessionId, { correct: false, responseMs: 1000 }); // fail pretest
-    await session.respond(sessionId, { correct: true, responseMs: 1000 }); // instruction
-    const indepItem = await session.respond(sessionId, { correct: true, responseMs: 1000 }); // guided → independent
+    // First item is instruction (lesson fallback)
+    assertInstruction(firstItem);
 
-    // Should be at independent with askConfidence = true
-    assertProblem(indepItem);
-    expect(indepItem.phase).toBe("independent");
-    expect(indepItem.askConfidence).toBe(true);
-
-    // Respond with confidence — should not error
+    // Respond to instruction — should not error
     const result = await session.respond(sessionId, {
       correct: true,
-      confidence: 4,
       responseMs: 2000,
     });
     expect(result.type).not.toBe("error");
   });
 
-  it("complete golden path: pretest > instruction > guided > independent > next topic", async () => {
+  it("complete golden path: lesson → next topic → lesson → complete", async () => {
     const { db, user } = await setupFullGraph();
     const session = createSessionService(db, undefined, getTestR2Bucket());
 
     // No userTopicState → counting (depth 0, no prereqs) is the first frontier topic
     const { sessionId, firstItem } = await session.startSession(user.id);
 
-    const phases: string[] = [];
+    const types: string[] = [];
 
-    function trackPhase(item: SessionItem) {
-      if (item.type === "problem" || item.type === "instruction" || item.type === "remediation") {
-        phases.push(item.phase);
-      }
+    function trackType(item: SessionItem) {
+      types.push(item.type);
     }
 
-    // First item: pretest for counting
-    assertProblem(firstItem);
-    expect(firstItem.phase).toBe("pretest");
-    trackPhase(firstItem);
+    // First item: instruction (lesson fallback) for counting
+    assertInstruction(firstItem);
+    trackType(firstItem);
 
-    // pretest (fail) → instruction → guided (pass) → independent (pass) → next topic
-    let item = await session.respond(sessionId, { correct: false, responseMs: 1000 });
-    trackPhase(item);
-    item = await session.respond(sessionId, { correct: true, responseMs: 1000 });
-    trackPhase(item);
-    item = await session.respond(sessionId, { correct: true, responseMs: 1000 });
-    trackPhase(item);
-    item = await session.respond(sessionId, { correct: true, responseMs: 1000, confidence: 4 });
-    trackPhase(item);
+    // Respond to lesson → next topic
+    let item = await session.respond(sessionId, { correct: true, responseMs: 1000 });
+    trackType(item);
 
-    // Full phase progression on first topic
-    expect(phases.slice(0, 4)).toEqual(["pretest", "instruction", "guided", "independent"]);
-
-    // After independent pass, should be on next topic or session complete
-    if (item.type !== "complete") {
-      expect(phases.length).toBeGreaterThan(4);
+    // Keep going until complete (safety limit)
+    for (let i = 0; i < 20; i++) {
+      if (item.type === "complete") break;
+      item = await session.respond(sessionId, { correct: true, responseMs: 1000 });
+      trackType(item);
     }
+
+    // Should have started with instruction and eventually completed
+    expect(types[0]).toBe("instruction");
+    expect(types[types.length - 1]).toBe("complete");
   });
 });

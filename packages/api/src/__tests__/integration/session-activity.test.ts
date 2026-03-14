@@ -77,11 +77,11 @@ describe("session-activity integration", () => {
     const session = createSessionService(db, undefined, getTestR2Bucket());
 
     const { sessionId, firstItem } = await session.startSession(user.id);
-    expect(firstItem.type).toBe("problem");
+    // First item is instruction (lesson fallback — no lesson content)
+    expect(firstItem.type).toBe("instruction");
 
-    // Respond to the first problem
+    // Respond to instruction (lesson completion)
     const result = await session.respond(sessionId, {
-      answer: "1",
       correct: true,
       responseMs: 5000,
     });
@@ -124,13 +124,19 @@ describe("session-activity integration", () => {
 
   it("records minutesActive on endSession()", async () => {
     const { db, user } = await setupGraph();
-    const session = createSessionService(db, undefined, getTestR2Bucket());
 
+    // Seed counting as mastered so addition is frontier too
+    await seedUserTopicState(user.id, "counting", {
+      mastered: true, stability: 10, reps: 5, state: 2,
+      due: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString(),
+    });
+
+    const session = createSessionService(db, undefined, getTestR2Bucket());
     const { sessionId } = await session.startSession(user.id);
 
     // Respond with 90 seconds total (should round up to 2 minutes)
-    await session.respond(sessionId, { answer: "1", correct: true, responseMs: 45_000 });
-    await session.respond(sessionId, { answer: "2", correct: true, responseMs: 45_000 });
+    await session.respond(sessionId, { correct: true, responseMs: 45_000 });
+    await session.respond(sessionId, { correct: true, responseMs: 45_000 });
 
     await session.endSession(sessionId);
 
@@ -153,16 +159,20 @@ describe("session-activity integration", () => {
 
   it("multiple responds in same session accumulate activity", async () => {
     const { db, user } = await setupGraph();
-    const session = createSessionService(db, undefined, getTestR2Bucket());
 
+    // Seed counting as mastered so addition is frontier too
+    await seedUserTopicState(user.id, "counting", {
+      mastered: true, stability: 10, reps: 5, state: 2,
+      due: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString(),
+    });
+
+    const session = createSessionService(db, undefined, getTestR2Bucket());
     const { sessionId } = await session.startSession(user.id);
 
-    // Respond twice (both correct to pretest then instruction phase)
-    await session.respond(sessionId, { answer: "1", correct: true, responseMs: 5000 });
-    // After pretest, we get instruction (worked example) — respond to advance
+    // Respond to lesson (instruction fallback) for first topic → advances to next topic
     await session.respond(sessionId, { correct: true, responseMs: 5000 });
-    // Now in guided phase — respond with answer
-    const r3 = await session.respond(sessionId, { answer: "1", correct: true, responseMs: 5000 });
+    // Respond to lesson for second topic → advances
+    await session.respond(sessionId, { correct: true, responseMs: 5000 });
 
     const today = new Date().toISOString().slice(0, 10);
     const activity = await db
@@ -175,8 +185,8 @@ describe("session-activity integration", () => {
       .get();
 
     expect(activity).toBeDefined();
-    // 3 responds = 3 problems recorded (including instruction phase)
-    expect(activity!.problemsCompleted).toBeGreaterThanOrEqual(3);
+    // 2 responds = 2 problems recorded
+    expect(activity!.problemsCompleted).toBeGreaterThanOrEqual(2);
   });
 
   it("does not record activity for anonymous sessions", async () => {

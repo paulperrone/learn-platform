@@ -7,7 +7,7 @@ import { createSRSService, type FireDiagnosticConfig } from "./srs.js";
 import { createContentService, type ContentQuery } from "./content.js";
 import type { ContentBucket } from "./content-r2.js";
 import type { AnalyticsService } from "./analytics.js";
-import type { Problem, WorkedExample, SessionPhase, AssessmentType, VisualAsset, PresentationLevel, ContentDepthLevel, BlendRole, MasteryEvent, CognitiveDemand, DemandDistribution } from "@learn/shared";
+import type { Problem, WorkedExample, Lesson, SessionPhase, ReviewScaffolding, AssessmentType, VisualAsset, PresentationLevel, ContentDepthLevel, BlendRole, MasteryEvent, CognitiveDemand, DemandDistribution } from "@learn/shared";
 import { DEMAND_PROFILES } from "@learn/shared";
 import { gradeProblem } from "./grading.js";
 import { createActivityService } from "./activity.js";
@@ -211,28 +211,23 @@ export function createSessionService(db: DB, fireDiagnostic?: FireDiagnosticConf
 
   function selectProblem(
     problems: Problem[],
-    difficulty: string,
     exclude: string[] = [],
-    bias: DifficultyBias = "on-target",
     demandPreference?: CognitiveDemand | null,
   ): Problem | null {
     const available = problems.filter((p) => !exclude.includes(p.id));
     if (available.length === 0) return null;
 
-    const targetDifficulty = applyDifficultyBias(difficulty, bias);
-    const byDifficulty = available.filter((p) => p.difficulty === targetDifficulty);
-    const pool = byDifficulty.length > 0 ? byDifficulty : available;
-
+    // All problems within a topic are equivalent (no difficulty filtering).
     // Apply cognitive demand preference (soft — falls back if not available)
-    let demandFiltered = pool;
+    let pool = available;
     if (demandPreference) {
       const matching = pool.filter((p) => (p.cognitiveDemand ?? "procedural") === demandPreference);
-      if (matching.length > 0) demandFiltered = matching;
+      if (matching.length > 0) pool = matching;
     }
 
     // Prefer diverse question types when available
-    const preferred = demandFiltered.filter((p) => p.type && preferredTypes.includes(p.type));
-    const candidates = preferred.length > 0 ? preferred : demandFiltered;
+    const preferred = pool.filter((p) => p.type && preferredTypes.includes(p.type));
+    const candidates = preferred.length > 0 ? preferred : pool;
 
     return candidates[Math.floor(Math.random() * candidates.length)];
   }
@@ -309,7 +304,7 @@ export function createSessionService(db: DB, fireDiagnostic?: FireDiagnosticConf
         sessionId,
         userId,
         currentTopicId: firstTopic.topicId,
-        currentPhase: firstTopic.type === "review" ? "review" : "pretest",
+        currentPhase: firstTopic.type === "review" ? "review" : "lesson",
         phaseIndex: 0,
         hintIndex: 0,
         topicsCompleted: [],
@@ -382,7 +377,7 @@ export function createSessionService(db: DB, fireDiagnostic?: FireDiagnosticConf
         anonymousToken,
         isAnonymous: true,
         currentTopicId: firstTopic.id,
-        currentPhase: "pretest",
+        currentPhase: "lesson",
         phaseIndex: 0,
         hintIndex: 0,
         topicsCompleted: [],
@@ -432,6 +427,7 @@ export function createSessionService(db: DB, fireDiagnostic?: FireDiagnosticConf
         responseMs: number;
         selfExplanation?: string;
         hintsUsed?: number;
+        scaffolding?: ReviewScaffolding;
       }
     ): Promise<SessionItem> {
       let state = activeSessions.get(sessionId);
@@ -655,6 +651,15 @@ export function createSessionService(db: DB, fireDiagnostic?: FireDiagnosticConf
     async advancePhase(state: SessionState, wasCorrect: boolean): Promise<SessionItem> {
       const phases: SessionPhase[] = ["pretest", "instruction", "guided", "independent"];
 
+      // Lesson phase: completion moves to next topic (lesson includes practice)
+      if (state.currentPhase === "lesson") {
+        if (!state.isAnonymous) {
+          await this.markDepthCompletionIfNeeded(state);
+        }
+        state.topicsCompleted.push(state.currentTopicId!);
+        return await this.nextTopic(state);
+      }
+
       // Track per-topic failure accumulation within this session
       if (!wasCorrect && state.currentTopicId && state.currentPhase !== "instruction") {
         if (!state.sessionFailures) state.sessionFailures = {};
@@ -822,7 +827,7 @@ export function createSessionService(db: DB, fireDiagnostic?: FireDiagnosticConf
       }
 
       state.currentTopicId = next.topicId;
-      state.currentPhase = next.type === "review" ? "review" : "pretest";
+      state.currentPhase = next.type === "review" ? "review" : "lesson";
       state.phaseIndex = 0;
       state.currentBlendRole = next.blendRole;
       state.llmAssistedThisProblem = false;
@@ -855,7 +860,7 @@ export function createSessionService(db: DB, fireDiagnostic?: FireDiagnosticConf
       }
 
       state.currentTopicId = next.id;
-      state.currentPhase = "pretest";
+      state.currentPhase = "lesson";
       state.phaseIndex = 0;
       state.llmAssistedThisProblem = false;
       state.hintSourceThisProblem = null;
@@ -904,6 +909,7 @@ export function createSessionService(db: DB, fireDiagnostic?: FireDiagnosticConf
       const query = await resolveContentQuery(state, topic.id);
       const problems = await content.getTopicProblems(query);
       const examples = await content.getTopicExamples(query);
+      const lessons = await content.getTopicLessons(query);
       const visuals = await content.getTopicVisuals(query);
 
       function withVisuals(problem: Problem): Problem {
@@ -947,11 +953,52 @@ export function createSessionService(db: DB, fireDiagnostic?: FireDiagnosticConf
       }
 
       switch (state.currentPhase) {
+        case "lesson": {
+          // Serve lesson content for first encounter with a topic
+          const lesson = lessons[0];
+          if (lesson) {
+            // Select 2-3 practice problems to include with the lesson
+            const practiceCount = Math.min(3, problems.length);
+            const practiceProblems: Problem[] = [];
+            const used: string[] = [];
+            for (let i = 0; i < practiceCount; i++) {
+              const p = selectProblem(problems, used);
+              if (p) {
+                practiceProblems.push(withVisuals(p));
+                used.push(p.id);
+              }
+            }
+            return {
+              type: "lesson",
+              phase: "lesson",
+              topicId: topic.id,
+              topicName: topic.name,
+              lesson,
+              practiceProblems,
+              presentationLevel: state.lastServedPresentation,
+              blendRole: state.currentBlendRole ?? "main",
+              message: `Let's learn about ${topic.name}.`,
+            };
+          }
+          // No lesson content — fall back to worked example (instruction) for backward compat
+          const example = examples[0];
+          const ex = example ?? makeFallbackExample(topic);
+          return {
+            type: "instruction",
+            phase: "instruction",
+            topicId: topic.id,
+            topicName: topic.name,
+            example: ex,
+            fadingLevel: 0,
+            blendRole: state.currentBlendRole ?? "main",
+            message: "Study this example carefully.",
+          };
+        }
+
         case "pretest": {
-          // 1-2 problems, student likely fails — primes learning
-          // Always procedural/application — quick check, not "explain why"
+          // Legacy pretest — kept for backward compatibility with existing sessions
           const pretestDemand = selectTargetDemand({ procedural: 0.60, application: 0.40 }, recentDemands);
-          const problem = selectProblem(problems, "medium", [], "on-target", pretestDemand);
+          const problem = selectProblem(problems, [], pretestDemand);
           const p = withVisuals(problem ?? makeFallbackProblem(topic));
           trackDemand(p);
           return {
@@ -964,17 +1011,16 @@ export function createSessionService(db: DB, fireDiagnostic?: FireDiagnosticConf
             showSolution: shouldShowSolution(p, state.currentPhase, state.hintIndex),
             hintsRevealed: state.hintIndex,
             blendRole: state.currentBlendRole ?? "main",
-            difficultyBias: bias,
+            difficultyBias: "on-target",
             message: "Let's see what you already know. Try your best!",
           };
         }
 
         case "instruction": {
-          // Worked example with progressive fading
+          // Legacy instruction — kept for backward compatibility with existing sessions
           const example = examples[0];
           const ex = example ?? makeFallbackExample(topic);
 
-          // Compute fading level from prior exposure count + FSRS stability
           let fadingLevel = 0;
           if (!state.isAnonymous) {
             const [{ count }] = await db
@@ -988,29 +1034,16 @@ export function createSessionService(db: DB, fireDiagnostic?: FireDiagnosticConf
                 )
               );
             fadingLevel = count;
-
-            // FSRS stability modifier: high stability → more fading
             const uts = await db.query.userTopicState.findFirst({
               where: and(
                 eq(schema.userTopicState.userId, state.userId),
                 eq(schema.userTopicState.topicId, state.currentTopicId!),
               ),
             });
-            if (uts && uts.stability > 14) {
-              fadingLevel++;
-            }
+            if (uts && uts.stability > 14) fadingLevel++;
           }
-
-          // Cap: always show at least the first step
           const maxFade = Math.max(0, ex.steps.length - 1);
           fadingLevel = Math.min(fadingLevel, maxFade);
-
-          const fadingMessage =
-            fadingLevel === 0
-              ? "Study this example carefully. You'll explain it in your own words."
-              : fadingLevel >= maxFade
-                ? "You've seen this before. Try to complete each step on your own."
-                : "Fill in the missing steps. The structure is here to guide you.";
 
           return {
             type: "instruction",
@@ -1020,61 +1053,44 @@ export function createSessionService(db: DB, fireDiagnostic?: FireDiagnosticConf
             example: ex,
             fadingLevel,
             blendRole: state.currentBlendRole ?? "main",
-            message: fadingMessage,
+            message: fadingLevel === 0
+              ? "Study this example carefully. You'll explain it in your own words."
+              : fadingLevel >= maxFade
+                ? "You've seen this before. Try to complete each step on your own."
+                : "Fill in the missing steps. The structure is here to guide you.",
           };
         }
 
-        case "guided": {
-          // Partially scaffolded — start with first hint revealed (adaptive bias applies)
-          // Favor conceptual — "why does this work?" pairs with self-explanation
-          const guidedDemand = profile.conceptual ? "conceptual" as CognitiveDemand : null;
-          const problem = selectProblem(problems, "easy", [], bias, guidedDemand);
-          const p = withVisuals(problem ?? makeFallbackProblem(topic));
-          trackDemand(p);
-          return {
-            type: "problem",
-            phase: "guided",
-            topicId: topic.id,
-            topicName: topic.name,
-            problem: p,
-            availableHints: getAvailableHints(p, "guided", state.hintIndex),
-            showSolution: shouldShowSolution(p, state.currentPhase, state.hintIndex),
-            hintsRevealed: state.hintIndex,
-            blendRole: state.currentBlendRole ?? "main",
-            difficultyBias: bias,
-            message: "Now try it with some help. Hints are available if you need them.",
-          };
-        }
-
+        case "guided":
         case "independent": {
-          // Full problems, confidence judgment (adaptive bias applies)
-          // Full demand mixing per the learner's profile — this is the primary mixing phase
-          const independentDemand = selectTargetDemand(profile, recentDemands);
-          const problem = selectProblem(problems, "medium", [], bias, independentDemand);
+          // Legacy guided/independent — kept for backward compatibility
+          const demand = selectTargetDemand(profile, recentDemands);
+          const problem = selectProblem(problems, [], demand);
           const p = withVisuals(problem ?? makeFallbackProblem(topic));
           trackDemand(p);
           return {
             type: "problem",
-            phase: "independent",
+            phase: state.currentPhase,
             topicId: topic.id,
             topicName: topic.name,
             problem: p,
-            availableHints: getAvailableHints(p, "independent", state.hintIndex),
+            availableHints: getAvailableHints(p, state.currentPhase, state.hintIndex),
             showSolution: shouldShowSolution(p, state.currentPhase, state.hintIndex),
             hintsRevealed: state.hintIndex,
-            askConfidence: true,
+            askConfidence: state.currentPhase === "independent",
             presentationLevel: state.lastServedPresentation,
             blendRole: state.currentBlendRole ?? "main",
-            difficultyBias: bias,
-            message: "Solve this on your own. Rate your confidence after.",
+            difficultyBias: "on-target",
+            message: state.currentPhase === "guided"
+              ? "Now try it with some help. Hints are available if you need them."
+              : "Solve this on your own. Rate your confidence after.",
           };
         }
 
         case "review": {
-          // Spaced review — adaptive difficulty; message varies by blend role
-          // Favor procedural/application — retrieval practice is about recall
+          // Spaced review — all problems equivalent within a topic
           const reviewDemand = selectTargetDemand({ procedural: 0.55, application: 0.45 }, recentDemands);
-          const problem = selectProblem(problems, "medium", [], bias, reviewDemand);
+          const problem = selectProblem(problems, [], reviewDemand);
           const p = withVisuals(problem ?? makeFallbackProblem(topic));
           trackDemand(p);
           const blendRole = state.currentBlendRole ?? "main";
@@ -1094,25 +1110,26 @@ export function createSessionService(db: DB, fireDiagnostic?: FireDiagnosticConf
             showSolution: shouldShowSolution(p, state.currentPhase, state.hintIndex),
             hintsRevealed: state.hintIndex,
             askConfidence: blendRole !== "warmup",
+            scaffolding: "none" as ReviewScaffolding,
             presentationLevel: state.lastServedPresentation,
             blendRole,
-            difficultyBias: bias,
+            difficultyBias: "on-target",
             message: reviewMessage,
           };
         }
 
         case "remediation": {
-          // Targeted remediation: route to key prerequisite if identified
+          // Targeted remediation: serve prerequisite's lesson + problems
           const targetTopicId = state.remediationTargetTopicId;
           const prereqChain = await graph.getPrerequisiteChain(topic.id);
 
           if (targetTopicId) {
-            // Load problems from the prerequisite topic
             const prereqTopic = await graph.getTopic(targetTopicId);
             if (prereqTopic) {
               const prereqQuery = await resolveContentQuery(state, prereqTopic.id);
               const prereqProblems = await content.getTopicProblems(prereqQuery);
-              const prereqProblem = selectProblem(prereqProblems, "easy", [], "on-target", "procedural");
+              const prereqLessons = await content.getTopicLessons(prereqQuery);
+              const prereqProblem = selectProblem(prereqProblems, [], "procedural");
               const prereqVisuals = await content.getTopicVisuals(prereqQuery);
               const pv = prereqProblem
                 ? (prereqVisuals ? { ...prereqProblem, visuals: prereqVisuals } : prereqProblem)
@@ -1130,15 +1147,16 @@ export function createSessionService(db: DB, fireDiagnostic?: FireDiagnosticConf
                 remediationTargetTopicId: targetTopicId,
                 originalTopicId: state.remediationOriginalTopicId,
                 originalTopicName: topic.name,
+                lesson: prereqLessons[0],
                 blendRole: state.currentBlendRole ?? "main",
-                difficultyBias: bias,
+                difficultyBias: "on-target",
                 message: `Let's practice "${prereqTopic.name}" — this skill helps with "${topic.name}".`,
               };
             }
           }
 
-          // Fallback: same-topic remediation (no prereq identified or anonymous)
-          const problem = selectProblem(problems, "easy", [], "on-target", "procedural");
+          // Fallback: same-topic remediation
+          const problem = selectProblem(problems, [], "procedural");
           const p = withVisuals(problem ?? makeFallbackProblem(topic));
           return {
             type: "remediation",
@@ -1150,15 +1168,16 @@ export function createSessionService(db: DB, fireDiagnostic?: FireDiagnosticConf
             showSolution: shouldShowSolution(p, state.currentPhase, state.hintIndex),
             hintsRevealed: state.hintIndex,
             prerequisiteChain: prereqChain,
+            lesson: lessons[0],
             blendRole: state.currentBlendRole ?? "main",
-            difficultyBias: bias,
+            difficultyBias: "on-target",
             message: "Let's go back to basics. Here's an easier version.",
           };
         }
 
         default: {
           // diagnostic phase handled by diagnostic service, not session service
-          const problem = selectProblem(problems, "medium", [], bias);
+          const problem = selectProblem(problems);
           const p = withVisuals(problem ?? makeFallbackProblem(topic));
           return {
             type: "problem",
@@ -1170,7 +1189,7 @@ export function createSessionService(db: DB, fireDiagnostic?: FireDiagnosticConf
             showSolution: shouldShowSolution(p, state.currentPhase, state.hintIndex),
             hintsRevealed: state.hintIndex,
             blendRole: state.currentBlendRole ?? "main",
-            difficultyBias: bias,
+            difficultyBias: "on-target",
             message: "Answer this question.",
           };
         }
@@ -1250,9 +1269,21 @@ export type SessionItem =
       showSolution: boolean;
       hintsRevealed: number;
       askConfidence?: boolean;
+      scaffolding?: ReviewScaffolding;
       presentationLevel?: PresentationLevel;
       blendRole?: BlendRole;
       difficultyBias?: "easier" | "on-target" | "harder";
+      message: string;
+    } & MasteryEventField & GoalProgressField)
+  | ({
+      type: "lesson";
+      phase: "lesson";
+      topicId: string;
+      topicName: string;
+      lesson: Lesson;
+      practiceProblems: Problem[];
+      presentationLevel?: PresentationLevel;
+      blendRole?: BlendRole;
       message: string;
     } & MasteryEventField & GoalProgressField)
   | ({
@@ -1279,6 +1310,7 @@ export type SessionItem =
       remediationTargetTopicId?: string;
       originalTopicId?: string;
       originalTopicName?: string;
+      lesson?: Lesson;
       presentationLevel?: PresentationLevel;
       blendRole?: BlendRole;
       difficultyBias?: "easier" | "on-target" | "harder";
