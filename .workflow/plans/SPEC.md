@@ -71,7 +71,7 @@ These optimizations could cut per-user infrastructure cost by 50-70%, but are un
 
 3. **Adaptive Diagnostic** — Binary-search placement test that finds a student's level by jumping through the knowledge graph. Starts at middle grade, adapts based on answers, refines near the boundary. Materializes mastery estimates into SRS state on completion. Supports retake from dashboard.
 
-4. **Learning Loop** — 6-phase session: pretest → instruction (worked examples) → guided practice → independent practice → spaced review → remediation.
+4. **Learning Loop** — Simplified lesson/review model: diagnostic places the student → first encounter with a topic serves a **lesson** (explanation + worked example + guided practice) → subsequent encounters are **reviews** (problems only, with optional lesson reference as scaffolding) → **remediation** serves a prerequisite's lesson when a student struggles. Per-topic difficulty levels are eliminated — all problems within a properly atomic topic test the same skill. Scaffolding during review is tracked (`none`, `lesson-referenced`, `llm-assisted`, `lesson-and-llm`) and affects SRS credit.
 
 5. **LLM Integration** — Runtime: Socratic tutoring, self-explanation evaluation, response grading. Offline: content generation pipeline (graph, problems, examples). Platform-medium constraints ensure screen-native content.
 
@@ -81,7 +81,7 @@ These optimizations could cut per-user infrastructure cost by 50-70%, but are un
 
 ### Content Model
 
-All problems, worked examples, and graph structure are **pre-generated offline** by LLMs, **human-reviewed**, and **imported**. Runtime LLM is only for interactive tutoring/grading.
+All content — lessons, problems, worked examples, and graph structure — is **pre-generated offline** by LLMs, **human-reviewed**, and **imported**. Lessons are section-based (explanation, worked-example, diagram, video, practice) and serve as the primary instructional vehicle per topic. Runtime LLM is only for interactive tutoring/grading.
 
 ### Disciplines & Progression Models
 
@@ -148,7 +148,7 @@ Content depth maps roughly to educational stages, but the meaning of "depth" var
 
 ## Success Criteria
 
-- Full learning session works end-to-end (pretest through review)
+- Full learning session works end-to-end (lesson through review)
 - 71 Foundational Mathematics topics with validated problem banks and worked examples
 - SRS scheduling produces correct review intervals
 - FIRe credit reduces review burden measurably

@@ -70,6 +70,18 @@ export type ReviewLog = {
 };
 
 export type SessionPhase =
+  | "lesson"
+  | "review"
+  | "remediation"
+  | "diagnostic"
+  // Legacy phases — kept during migration, removed in Phase 3 of plan 028
+  | "pretest"
+  | "instruction"
+  | "guided"
+  | "independent";
+
+/** @deprecated Old 6-phase model — will be removed after plan 028 Phase 3 migration */
+export type LegacySessionPhase =
   | "pretest"
   | "instruction"
   | "guided"
@@ -77,6 +89,42 @@ export type SessionPhase =
   | "review"
   | "remediation"
   | "diagnostic";
+
+// === Lesson Types ===
+
+export type LessonSectionType =
+  | "explanation"
+  | "worked-example"
+  | "diagram"
+  | "video"
+  | "practice";
+
+export type LessonSection = {
+  type: LessonSectionType;
+  title?: string;
+  content: string;
+  example?: WorkedExample;
+  problems?: Problem[];
+  mediaAlt?: string;
+  mediaRef?: string;
+};
+
+export type Lesson = {
+  id: string;
+  topicId: string;
+  title: string;
+  sections: LessonSection[];
+  presentation?: PresentationLevel;
+  contentDepth?: ContentDepthLevel;
+  locale?: string;
+  flavor?: string;
+};
+
+export type ReviewScaffolding =
+  | "none"
+  | "lesson-referenced"
+  | "llm-assisted"
+  | "lesson-and-llm";
 
 export type Session = {
   id: string;
@@ -171,7 +219,8 @@ export type TypeProperties =
 export type Problem = {
   id: string;
   topicId: string;
-  difficulty: ProblemDifficulty;
+  /** @deprecated Use topic decomposition instead of difficulty levels */
+  difficulty?: ProblemDifficulty;
   question: string;
   answer: string;
   hints: string[];

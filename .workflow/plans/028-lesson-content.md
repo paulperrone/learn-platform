@@ -160,13 +160,13 @@ confidenceAccuracy, lastReview
 
 ## Progress
 
-**Completed:** None yet
+**Completed:** Phase 1
 **In Progress:** —
-**Next:** Phase 1
+**Next:** Phase 2
 
 ---
 
-## Phase 1: Design & Type Definitions
+## Phase 1: Design & Type Definitions ✓
 
 **Goal:** Define all new types, the lesson JSON schema, the simplified session phase model, and the review scaffolding model. Update the spec. No implementation beyond type definitions.
 
@@ -197,18 +197,18 @@ Tracked per problem attempt. `none` = pure review (full SRS credit). Any scaffol
 
 ### Steps
 
-1. [ ] [RSH] Review `docs/content-system.md` and `docs/learning-science.md` for any constraints on lesson structure or phase sequencing that affect the design. Document findings as comments in the type definitions.
+1. [x] [RSH] Review `docs/content-system.md` and `docs/learning-science.md` for any constraints on lesson structure or phase sequencing that affect the design. Document findings as comments in the type definitions.
 
-2. [ ] [IMP] Add lesson types to `packages/shared/src/types.ts`:
+2. [x] [IMP] Add lesson types to `packages/shared/src/types.ts`:
    - `LessonSectionType = "explanation" | "worked-example" | "diagram" | "video" | "practice"`
    - `LessonSection = { type: LessonSectionType; title?: string; content: string; example?: WorkedExample; problems?: Problem[]; mediaAlt?: string; mediaRef?: string }`
    - `Lesson = { id: string; topicId: string; title: string; sections: LessonSection[]; presentation?: PresentationLevel; contentDepth?: ContentDepthLevel; locale?: string; flavor?: string }`
    - `ReviewScaffolding = "none" | "lesson-referenced" | "llm-assisted" | "lesson-and-llm"`
-   - Update `SessionPhase` to `"lesson" | "review" | "remediation" | "diagnostic"` (keep old values as a deprecated alias type `LegacySessionPhase` for migration)
+   - Update `SessionPhase` to include `"lesson"` (legacy values kept during migration, narrowed in Phase 3)
    - Make `ProblemDifficulty` optional: `difficulty?: ProblemDifficulty` on `Problem` type
    - Add `/** @deprecated Use topic decomposition instead of difficulty levels */` JSDoc
 
-3. [ ] [IMP] Create the lesson JSON schema documentation at `docs/lesson-format.md`:
+3. [x] [IMP] Create the lesson JSON schema documentation at `docs/lesson-format.md`:
    - JSON structure for `../learn-content/<discipline>/lessons/<topic-id>.json`
    - A lesson file is a JSON array of `Lesson` objects (typically 1 per topic, but allows multi-presentation)
    - Section ordering rules (explanation first, practice last, worked-example in middle)
@@ -216,7 +216,7 @@ Tracked per problem attempt. `none` = pure review (full SRS credit). Any scaffol
    - Platform-medium constraints (same rules as problems — no physical actions, drawing, speaking)
    - Example JSON for a complete lesson
 
-4. [ ] [DOC] Update SPEC.md:
+4. [x] [DOC] Update SPEC.md:
    - Add lesson content to the product description
    - Update the learning model: diagnostic → lesson → review (not 6-phase)
    - Note that difficulty levels within topics are eliminated
