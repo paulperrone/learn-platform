@@ -63,9 +63,9 @@ OutputWriter (shared):
 
 ## Progress
 
-**Completed:** Phase 0 (Graph Audit & Expansion), Phase 1 (Generator Architecture & Shared Utilities)
+**Completed:** Phase 0 (Graph Audit & Expansion), Phase 1 (Generator Architecture & Shared Utilities), Phase 2 (Prompt-Template Spec)
 **In Progress:** —
-**Next:** Phase 2
+**Next:** Phase 3
 
 **Model assignments:**
 - Phases 0-2: Opus (architecture, research, design)
@@ -287,7 +287,7 @@ OutputWriter (shared)
 
 ---
 
-## Phase 2: Prompt-Template Spec for Interpretive Disciplines
+## Phase 2: Prompt-Template Spec for Interpretive Disciplines ✓
 
 **Goal:** Design and document the prompt-template generator pattern for non-deterministic disciplines (history, ELA, philosophy, vocabulary). Build one PoC. This completes the architecture design work before bulk generator writing begins.
 
@@ -301,30 +301,40 @@ Interpretive disciplines can't use deterministic generators — there's no code 
 
 ### Steps
 
-1. [ ] [RSH] Study the content-system.md rules for context-layered and flexible disciplines:
-   - How depth levels work (survey/contextual/analytical/synthesis)
-   - How presentation levels interact with depth for interpretive content
-   - What "rubric-based scoring" means for the platform's grading
+1. [x] [RSH] Study the content-system.md rules for context-layered and flexible disciplines:
+   - Studied §3 (progression models), §5 (depth levels), §9 (context-layered), §11 (flexible), §16 (cognitive demand)
+   - Context-layered: spiral curriculum, 4 depth levels, mostly `recommended` edges, rubric-based scoring at contextual+
+   - Flexible: `enriching` edges, recall-based, mainly survey depth
+   - Assessment scales from binary (survey) → rubric partial credit (contextual) → multi-dimensional rubric (analytical) → holistic rubric (synthesis)
+   - Presentation and depth are independent dimensions — a 14-year-old gets standard presentation at survey depth
 
-2. [ ] [IMP] Define the prompt-template generator types (already sketched in Phase 1 types):
-   - Flesh out `PromptTemplate` with concrete fields for fact anchoring, source requirements, perspective count targets
-   - Define `FactAnchor = { claim: string; source: string; confidence: "established" | "debated" | "interpretive" }`
-   - Define `DepthConstraint` per depth level: what the LLM must/must not include
-   - Define the review pass: how the generator self-checks its output against the template constraints
+2. [x] [IMP] Define the prompt-template generator types (already sketched in Phase 1 types):
+   - Fleshed out `PromptTemplate` with: `perspectives[]`, `rubricDimensions[]`, `sourceRequirements[]`
+   - Added `Perspective` type: `{ label, description, sourceExcerpt? }` for multi-viewpoint questions
+   - Added `RubricDimension` type: `{ name, description, levels[] }` for structured non-binary scoring
+   - Extended `DepthConstraint` with: `assessmentGuidance`, `minPerspectives` (0 for survey, 2+ for analytical)
+   - Added `definePromptTemplate()` convenience factory (parallel to `defineGenerator()`)
+   - Added `reviewChecklist` to `PromptTemplateGenerator` for post-generation quality checks
+   - Removed `postProcess` callback — prompt templates guide Claude Code sessions, not automated LLM calls
 
-3. [ ] [IMP] Build one PoC prompt-template generator:
-   - Choose a discipline (e.g., a small history or ELA topic)
-   - Write the template with fact anchors, depth constraints, and rubric
-   - Run it to produce problems + examples + lessons
-   - Validate output quality manually
+3. [x] [IMP] Build one PoC prompt-template generator:
+   - Chose history topic `causes-of-revolution` (Grade 4, D2.His.14.3-5)
+   - Created `../learn-content/history/generators/causes-of-revolution.ts` with 9 fact anchors, 3 perspectives, 4 depth constraints, 3 rubric dimensions
+   - Created `../learn-content/history/generators/prompt-builder.ts` — shared utility rendering templates into structured prompts
+   - Created `../learn-content/history/generators/render-prompt.ts` — CLI for rendering prompts at specific depth/presentation
+   - Tested: `npx tsx history/generators/render-prompt.ts causes-of-revolution survey` ✓
+   - Tested: `npx tsx history/generators/render-prompt.ts causes-of-revolution analytical --presentation advanced` ✓
 
-4. [ ] [DOC] Complete the prompt-template section of `docs/generator-architecture.md`:
-   - Full specification with examples
-   - How prompt templates interact with `/generate-content`
-   - Quality gates for prompt-template-generated content
+4. [x] [DOC] Complete the prompt-template section of `docs/generator-architecture.md`:
+   - Full architecture overview (PromptTemplateGenerator → PromptBuilder → Claude Code session)
+   - Complete type reference with all new types
+   - Step-by-step "writing a prompt-template generator" guide with code example
+   - Depth-assessment mapping table (survey → binary, contextual → rubric, etc.)
    - Comparison table: deterministic vs prompt-template generators
+   - File layout for prompt-template generators
+   - Updated migration plan to show Phase 2 complete
 
-**Validation:** Prompt-template generator spec is complete and documented. One PoC discipline has a working prompt-template generator. The pattern is ready for future discipline buildout.
+**Validation:** Prompt-template generator spec is complete and documented. History `causes-of-revolution` has a working PoC that renders structured prompts at all 4 depth levels. The pattern is ready for future discipline buildout.
 
 ---
 

@@ -1934,3 +1934,23 @@ Post-implementation results:
 **Alternatives rejected:**
 - Parameterized generators (one "fraction arithmetic" generator for 30 topics) — changing one topic risks breaking others
 - Generators producing full Problem objects (current pattern) — formatting logic duplicated in every generator, spec drift inevitable
+
+## 2026-03-14: Prompt-template generators are session guides, not automated LLM calls
+
+**Source:** User session — Plan 029 Phase 2
+
+**Context:** Designing content generation for interpretive disciplines (history, ELA, philosophy) where answers can't be computed by code.
+
+**Decision:** Prompt-template generators produce structured prompts that guide Claude Code content generation sessions — they do NOT make automated LLM calls. The template defines fact anchors (grounded claims with provenance), depth constraints (what to include/exclude per depth level), perspectives (named viewpoints with source excerpts), and rubric dimensions (structured scoring for non-binary assessment). A `buildPrompt()` utility renders the template into a formatted prompt for a specific depth and presentation level.
+
+**Why:**
+- Content generation already happens in Claude Code sessions (per project convention) — adding a separate automated LLM pipeline would be redundant
+- Claude Code can read the template, generate content, and validate against the review checklist in the same session — better iteration quality
+- Fact anchors prevent hallucination by constraining what claims the LLM can make
+- Depth constraints prevent the most common quality issue: survey-level content requiring analytical skills, or analytical content accepting recall answers
+- Rubric dimensions enable consistent grading of open-ended answers across sessions
+
+**Alternatives rejected:**
+- Automated LLM pipeline (generate at build time via OpenRouter) — loses iteration quality, can't self-review, contradicts project convention
+- Free-form prompting per session (no template) — inconsistent quality, fact drift, no provenance tracking
+- `postProcess` callback pattern (parse LLM output into structured types) — premature abstraction; Claude Code already produces correctly formatted JSON when given the output spec
