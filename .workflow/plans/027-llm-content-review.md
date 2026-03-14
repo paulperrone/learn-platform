@@ -485,33 +485,33 @@ Each criterion produces a finding: `pass`, `warn`, `error`, or `skip`.
 
 ---
 
-## Phase 4: Rubric Tuning & Feedback
+## Phase 4: Initial Rubric Validation (Pre-028)
 
-**Goal:** Validate the rubric (including atomicity criterion) against real content, tune criteria, feed recurring issues back into the generation pipeline.
+**Goal:** Run the review system on 1-2 more strands to validate the rubric infrastructure works at scale. Defer deep rubric tuning (especially around difficulty calibration and lesson quality) to after Plan 028, which eliminates per-topic difficulty levels and adds lesson content.
+
+**Why defer full tuning:** Plan 028 will (a) remove difficulty as a per-topic concept (criterion 3 becomes "problem equivalence"), (b) add a lesson quality criterion, and (c) change what `/generate-content` produces. Tuning the rubric deeply now would require re-tuning after those changes. This phase validates the *system* works; Plan 028 Phase 5 handles the rubric evolution.
 
 ### Steps
 
-1. [ ] [IMP] Run `/content-review math --strand <strand>` on 3 representative strands (~50 topics):
-   - Pick strands with diverse content: one early (counting/cardinality), one mid (fractions), one late (expressions-equations)
-   - Manually assess: are high-confidence findings real issues? Are obvious problems missed?
+1. [ ] [IMP] Run `/content-review math --strand fractions` and `/content-review math --strand expressions-equations`:
+   - Validate the batch review pipeline works at scale (~30-40 topics per strand)
+   - Spot-check findings: are high-confidence findings real? Are obvious problems missed?
    - Pay special attention to criterion 7 (atomicity) — does it flag real scope issues?
+   - Note: counting-cardinality was already reviewed in this session (15 topics, all A/B)
 
-2. [ ] [IMP] Tune rubric based on results:
-   - Adjust criteria where false positives are common (tighten wording, add exclusions)
-   - Adjust criteria where real issues are missed (add examples, clarify)
-   - Update `audit/content/review-rubric.md`
+2. [ ] [DOC] Document initial findings for Plan 028 input:
+   - Which criteria had high/low signal across the 3 strands
+   - Recurring content patterns that should inform lesson authoring
+   - Any false positives that are clearly rubric wording issues (fix obvious ones now, defer judgment calls)
+   - Record in DECISIONS.md: "Rubric tuning deferred to post-028 — difficulty model and lesson content will change what the rubric evaluates"
 
-3. [ ] [IMP] Extract recurring issues into generation feedback:
-   - Identify patterns across reviewed topics
-   - Add "common mistakes to avoid" section to `/generate-content` prompt
-   - Structure as concrete rules
+**Deferred to Plan 028 Phase 5:**
+- Criterion 3 (difficulty calibration) → replaced with "problem equivalence" criterion
+- New criterion 8 (lesson quality) → added when lesson content exists
+- Generation feedback integration → `/generate-content` will be updated for lesson authoring
+- Full rubric re-tuning against content that includes lessons
 
-4. [ ] [DOC] Document tuning results:
-   - Which criteria had high/low signal
-   - Rubric changes that improved accuracy
-   - Recurring content issues found
-
-**Validation:** Rubric produces fewer false positives after tuning. Recurring issues documented and fed into generation pipeline. Re-running on same strands shows improved grades after content fixes.
+**Validation:** Review pipeline runs successfully on 2 additional strands. Findings documented for Plan 028 input. No deep rubric changes — the system works, the criteria will evolve with the content model.
 
 ---
 
