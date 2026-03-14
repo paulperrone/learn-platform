@@ -8,9 +8,14 @@ dist/
 /content/
 tools/visualize-graph.html
 audit/learner-simulations/runs/
-audit/reports/evaluation.json
-audit/reports/evaluation.md
+# All audit reports are generated artifacts (just audit, just evaluate, /content-review, etc.)
+audit/reports/*.json
+audit/reports/*.md
+audit/reports/*.html
+audit/reports/snapshots/
 audit/reports/healing/
+audit/reports/training/latest-state.json
+audit/reports/content-reviews/
 
 # Workflow
 CLAUDE.local.md
