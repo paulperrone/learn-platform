@@ -1902,3 +1902,17 @@ Post-implementation results:
 - Subprocess execution (`child_process.exec`) — slow, loses type safety, fragile output parsing
 - Full refactor of all tools (including validate-graph) — high risk, delayed delivery
 - Shared output capture (redirect console) — fragile, untyped
+
+## 2026-03-14: Content review rubric tuning deferred to post-028/029
+
+**Decision:** Rubric tuning deferred to after Plan 028 (lesson content, difficulty elimination) and Plan 029 (generator architecture). The review system validates that the infrastructure works; the rubric criteria will evolve with the content model.
+
+**Reasoning:** Plan 028 eliminates per-topic difficulty levels (criterion 3 becomes "problem equivalence") and adds lesson content (new criterion 8). Plan 029 regenerates all content from generators, which will eliminate the dominant error class (answer/solution mismatches). Tuning the rubric now would require re-tuning after both plans complete.
+
+## 2026-03-14: All content will be generator-produced; hand-authoring deprecated
+
+**Decision:** Every topic gets a bespoke generator function (deterministic for math, prompt-template for interpretive disciplines). All existing hand-authored content will be regenerated. Generators are the single source of truth going forward.
+
+**Reasoning:** Content review of fractions (66 topics) and expressions-equations (55 topics) found 56 error-level findings in 121 topics (46% error rate). The dominant issue: answer fields contradicting their own solutions (23 wrong answers). These are LLM authoring copy-paste mistakes that a deterministic generator prevents entirely. Secondary issues (unsimplified answers, drafting artifacts, inconsistent ordering) are also eliminated. Per-topic generators provide direct provenance and are independently modifiable.
+
+**Plan:** 029 (Content Generator Architecture) — Phases 1-4 build math generators, Phase 5 specs prompt-templates for interpretive disciplines.

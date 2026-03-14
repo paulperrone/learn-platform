@@ -29,9 +29,9 @@ Consolidate all audit infrastructure under a top-level `audit/` directory organi
 
 ## Progress
 
-**Completed:** Phase 1, Phase 2, Phase 3
+**Completed:** Phase 1, Phase 2, Phase 3, Phase 4
 **In Progress:** —
-**Next:** Phase 4
+**Next:** Complete (all phases done)
 
 ---
 
@@ -493,13 +493,13 @@ Each criterion produces a finding: `pass`, `warn`, `error`, or `skip`.
 
 ### Steps
 
-1. [ ] [IMP] Run `/content-review math --strand fractions` and `/content-review math --strand expressions-equations`:
+1. [x] [IMP] Run `/content-review math --strand fractions` and `/content-review math --strand expressions-equations`:
    - Validate the batch review pipeline works at scale (~30-40 topics per strand)
    - Spot-check findings: are high-confidence findings real? Are obvious problems missed?
    - Pay special attention to criterion 7 (atomicity) — does it flag real scope issues?
    - Note: counting-cardinality was already reviewed in this session (15 topics, all A/B)
 
-2. [ ] [DOC] Document initial findings for Plan 028 input:
+2. [x] [DOC] Document initial findings for Plan 028/029 input:
    - Which criteria had high/low signal across the 3 strands
    - Recurring content patterns that should inform lesson authoring
    - Any false positives that are clearly rubric wording issues (fix obvious ones now, defer judgment calls)

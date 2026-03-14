@@ -475,7 +475,15 @@ The frontend currently dispatches on `currentItem.type` in `learn.vue` (lines 27
 
 ---
 
-## Phase 5: Vertical Slice — Counting & Cardinality
+## ~~Phase 5~~ and ~~Phase 6~~ — Moved to Plan 029
+
+**Content authoring** (was Phase 5: Vertical Slice) and **simulation/audit updates** (was Phase 6) have been moved to Plan 029 (Content Generator Architecture) as Phases 6 and 7. This ensures 028 can be fully completed without circling back, and that content authoring uses the generator infrastructure built in 029 Phases 1-4.
+
+See: [Plan 029](./029-content-generator-architecture.md)
+
+---
+
+## ~~Phase 5: Vertical Slice — Counting & Cardinality~~ (Moved to 029 Phase 6)
 
 **Goal:** Author lessons for the counting-cardinality strand (~15 topics), remove/flatten difficulty field from their problems, validate the full pipeline end-to-end.
 
@@ -532,7 +540,7 @@ The content review we ran in this session found several issues (hints revealing 
 
 ---
 
-## Phase 6: Simulation & Audit Updates
+## ~~Phase 6: Simulation & Audit Updates~~ (Moved to 029 Phase 7)
 
 **Goal:** Update the simulation runner, evaluation system, and audit infrastructure for the simplified learning loop. Establish new baselines.
 
