@@ -380,7 +380,7 @@ For remediation (consecutive failures on a topic):
 6. [ ] [IMP] Add scaffolding tracking to the review response path:
    - In the `/respond` endpoint handler: accept `scaffolding?: ReviewScaffolding` in the request body
    - In `session.respond()`: if `scaffolding !== "none"`, treat the response as guided (don't advance pure review counter, require additional pure reviews)
-   - Store scaffolding in `review_log` — add a `scaffolding` column or encode in the existing `hint_source` column
+   - Store scaffolding in `review_log` — add a new `scaffolding TEXT` column (cleaner than overloading `hint_source`; requires D1 migration)
    - This is how the frontend communicates that the student opened the lesson panel
 
 7. [ ] [IMP] Add `recordLessonView` to analytics.ts:
@@ -445,10 +445,10 @@ The frontend currently dispatches on `currentItem.type` in `learn.vue` (lines 27
    - Wire `@practice-submit` to send individual practice results to the API
    - Remove the `v-else-if="currentItem?.type === 'instruction'"` branch (lessons replace it)
 
-3. [ ] [IMP] Add lesson reference panel to review mode:
+3. [ ] [IMP] Add lesson reference side panel to review mode:
    - When `currentItem.type === "problem"` and `currentItem.phase === "review"`, show a "Show Lesson" button
    - The button fetches the topic's lesson (can be included in the session item response, or fetched lazily)
-   - Clicking opens a collapsible panel showing the lesson sections (read-only, no practice)
+   - Clicking opens a **collapsible side panel** showing the lesson sections (read-only, no practice). Side panel keeps the problem visible alongside the lesson content.
    - Show a warning modal first: "Opening the lesson will change this to guided practice. You'll need additional pure reviews. Continue?"
    - If confirmed, set a local `scaffolding` state that's sent with the problem response
    - Style the problem area to indicate guided mode (e.g., lighter background, "Guided" badge)
@@ -477,7 +477,7 @@ The frontend currently dispatches on `currentItem.type` in `learn.vue` (lines 27
 
 ## ~~Phase 5~~ and ~~Phase 6~~ — Moved to Plan 029
 
-**Content authoring** (was Phase 5: Vertical Slice) and **simulation/audit updates** (was Phase 6) have been moved to Plan 029 (Content Generator Architecture) as Phases 6 and 7. This ensures 028 can be fully completed without circling back, and that content authoring uses the generator infrastructure built in 029 Phases 1-4.
+**Content authoring** (was Phase 5: Vertical Slice) and **simulation/audit updates** (was Phase 6) have been moved to Plan 029 (Content Generator Architecture) as Phases 8 and 9. This ensures 028 can be fully completed without circling back, and that content authoring uses the generator infrastructure built in 029 Phases 1-6.
 
 See: [Plan 029](./029-content-generator-architecture.md)
 

@@ -35,7 +35,9 @@ Interpretive (history, ELA, philosophy):
 3. **All existing hand-authored content will be regenerated** — generators are the single source of truth going forward.
 4. **Existing `tools/generators/` (143 topics)** are the starting point — refactored into per-topic files in learn-content.
 
-**Depends on:** Plan 028 Phases 1-4 (for Phases 6-7 of this plan, which need lesson types, pipeline, engine, and frontend)
+**Depends on:** Plan 028 Phases 1-4 (for Phases 8-9 of this plan, which need lesson types, pipeline, engine, and frontend)
+
+**Execution order:** 029 Phases 1-7 are independent of 028 and can run in parallel. Phases 8-9 depend on 028 Phases 1-4 being complete. Recommended interleaving: 028 P1-P2 and 029 P1-P7 in any order, then 028 P3-P4 (critical path), then 029 P8-P9.
 
 ## Progress
 
@@ -77,8 +79,7 @@ The new architecture moves generators to `learn-content/math/generators/<topic-i
    - Export `SeededRng` and `createRng` (port from existing `tools/generators/types.ts`)
 
 3. [ ] [IMP] Create the generator registry and runner at `learn-content/math/generators/index.ts`:
-   - Auto-discover generator files: scan `learn-content/math/generators/*.ts` (excluding `types.ts`, `index.ts`, `utils.ts`)
-   - Each file exports a default `TopicGenerator`
+   - **Static registry** (not filesystem auto-discovery): each generator file exports a default `TopicGenerator`, and `index.ts` imports them explicitly into a `Record<string, TopicGenerator>` map. This is type-safe and avoids dynamic import complexity.
    - Registry maps `topicId → generator`
    - Runner: `generateForTopic(topicId, config) → GeneratedContent`
    - Batch runner: `generateAll(config) → Map<topicId, GeneratedContent>`
@@ -124,66 +125,125 @@ The new architecture moves generators to `learn-content/math/generators/<topic-i
 
 ---
 
-## Phase 2: Math Generators — K-5 Strands
+## Phase 2: Math Generators — K-2 Strands (counting, arithmetic, place-value)
 
-**Goal:** Write bespoke generators for ~200 K-5 math topics covering counting-cardinality, arithmetic, numbers, fractions, and measurement. Port existing bulk generators into per-topic files.
+**Goal:** Write bespoke generators for ~65 K-2 math topics. Port existing bulk generators into per-topic files.
 
 ### Context for Execution
 
-The existing `tools/generators/` has generators for many K-5 topics but they're organized by strand in bulk files. This phase ports them into per-topic files and fills gaps. The content review found these K-5 strands are generally high quality (mostly A/B grades) but have systemic issues:
-- Unsimplified answer fields across ~15 fraction topics
-- Missing prerequisite listings (mixed-number conversion assumed but not listed)
-- Difficulty ordering issues in a few topics
-
-Generators fix all of these by construction.
+The existing `tools/generators/` has generators for many K-5 topics but they're organized by strand in bulk files. This phase ports them into per-topic files and fills gaps. Execute per-strand, validating after each.
 
 **Strand coverage targets:**
 - counting-cardinality: ~15 topics (grade K)
 - addition-subtraction: ~30 topics (grades K-2)
-- multiplication-division: ~25 topics (grades 3-4)
-- place-value: ~20 topics (grades K-4)
+- place-value (K-2 subset): ~20 topics (grades K-2)
+
+### Steps
+
+1. [ ] [IMP] Write generators for counting-cardinality (~15 topics):
+   - One file per topic, each exporting a default `TopicGenerator`
+   - No existing generators for this strand — write from scratch
+   - Each produces 15 problems + 2 worked examples
+   - Add `cognitiveDemand` variation (not all procedural)
+   - Validate: `just validate-content`
+
+2. [ ] [IMP] Port `tools/generators/k5-arithmetic.ts` into per-topic files for addition-subtraction (~30 topics):
+   - One file per topic under `learn-content/math/generators/`
+   - Extend each to produce 2 worked examples (existing generators only produce problems)
+   - Update hint generation to use progressive hints (not single-hint pattern)
+   - Add `cognitiveDemand` variation
+   - Validate: `just validate-content`
+
+3. [ ] [IMP] Port `tools/generators/k5-numbers.ts` place-value generators into per-topic files (~20 topics):
+   - Same per-topic refactoring pattern
+   - Validate: `just validate-content`
+
+4. [ ] [VAL] Run generation and validation for K-2:
+   - `npx tsx learn-content/math/generators/run.ts --seed 42` (generate K-2 topics)
+   - `just validate-content` — 0 errors
+   - Spot-check 5 topics across strands for content quality
+
+**Validation:** All K-2 math topics have generators. Generated content passes validation.
+
+---
+
+## Phase 3: Math Generators — 3-5 Strands (fractions, measurement, data)
+
+**Goal:** Write bespoke generators for ~130 grade 3-5 math topics. Port existing fraction and arithmetic generators, fill gaps in measurement and data-statistics.
+
+### Context for Execution
+
+The content review found fractions have 19 error findings (unsimplified answers, wrong answer fields). Generators fix these by construction.
+
+**Strand coverage targets:**
 - fractions: ~66 topics (grades 3-5) — reviewed, 19 errors found
+- multiplication-division: ~25 topics (grades 3-4)
+- place-value (3-5 subset): remaining topics
 - measurement: ~25 topics (grades K-5)
 - data-statistics-k5: ~15 topics (grades K-5)
 
 ### Steps
 
-1. [ ] [IMP] Port existing `tools/generators/k5-arithmetic.ts` generators into per-topic files under `learn-content/math/generators/`:
-   - One file per topic, each exporting a default `TopicGenerator`
-   - Extend each to produce 2 worked examples (existing generators only produce problems)
-   - Update hint generation to use progressive hints (not single-hint pattern)
-   - Add `cognitiveDemand` variation (not all procedural)
+1. [ ] [IMP] Port `tools/generators/k5-fractions.ts` into per-topic files (~66 topics):
+   - Specifically address the 19 error findings (wrong answers in fraction-number-sense, fraction-decimal-percent; unsimplified answer patterns; missing prerequisite assumptions)
+   - Extend each to produce 2 worked examples
+   - Update hint generation to progressive hints
+   - Validate: `just validate-content`
 
-2. [ ] [IMP] Port existing `tools/generators/k5-numbers.ts` and `k5-fractions.ts` generators:
-   - Same per-topic refactoring as step 1
-   - For fractions: specifically address the 19 error findings from the content review (wrong answers in fraction-number-sense, fraction-decimal-percent; unsimplified answer patterns; missing prerequisite assumptions in hard problems)
+2. [ ] [IMP] Port remaining `k5-arithmetic.ts` generators for multiplication-division (~25 topics):
+   - Same per-topic refactoring pattern
+   - Validate: `just validate-content`
 
-3. [ ] [IMP] Write new generators for K-5 topics without existing generators:
-   - Identify uncovered topics by diffing the generator registry against `graph.json` topics with gradeLevel ≤ 5
-   - Write generators for each uncovered topic
-   - Focus on: counting-cardinality (all 15), measurement, data-statistics (these strands have no existing generators)
+3. [ ] [IMP] Write new generators for measurement (~25 topics) and data-statistics-k5 (~15 topics):
+   - No existing generators for these strands — write from scratch
+   - Validate: `just validate-content`
 
-4. [ ] [VAL] Run full generation and validation for K-5:
-   - `npx tsx learn-content/math/generators/run.ts --seed 42` (generate all K-5)
+4. [ ] [VAL] Run generation and validation for 3-5:
+   - Generate all 3-5 topics
    - `just validate-content` — 0 errors
-   - Spot-check 10 topics across strands for content quality
-   - Run `/content-review math --strand counting-cardinality` on generated content — expect all A/B grades
+   - Spot-check 10 topics across strands
+   - Run `/content-review math --strand fractions` on generated content — expect all A/B grades
 
-**Validation:** All K-5 math topics have generators. Generated content passes validation. Spot-check confirms quality improvement over hand-authored content.
+**Validation:** All 3-5 math topics have generators. Generated content passes validation. Spot-check confirms quality improvement over hand-authored content.
 
 ---
 
-## Phase 3: Math Generators — 6-8 Strands
+## Phase 4: Math Generators — 6-8 Algebra & Equations
 
-**Goal:** Complete generators for remaining ~500 grade 6-8 math topics covering ratios, geometry, statistics, expressions-equations, and functions.
+**Goal:** Write generators for expressions-equations (~55 topics) and ratios-proportions (~30 topics). These are the highest-error strands.
 
 ### Context for Execution
 
-The content review found significantly more issues in the 6-8 content (expressions-equations had 37 error findings vs 19 for fractions). The dominant issue was wrong answer fields — answer/solution mismatches where the solution was correct but the answer field had stale/wrong values. Generators eliminate this entirely since the answer is computed, not copy-pasted.
+The content review found expressions-equations had 37 error findings (most critical). The dominant issue was wrong answer fields — answer/solution mismatches where the solution was correct but the answer field had stale/wrong values. Generators eliminate this entirely since the answer is computed, not copy-pasted.
+
+### Steps
+
+1. [ ] [IMP] Port `tools/generators/middle-algebra.ts` and `middle-rational.ts` into per-topic files for expressions-equations (~55 topics):
+   - Specifically address the 37 error findings (wrong answer fields in equations-variables-both-sides, multi-step-equations-combining, combining-exponent-rules, etc.)
+   - For topics involving symbolic algebra: generators produce the equation/expression structure, compute the answer, then template the question text
+   - Validate: `just validate-content`
+
+2. [ ] [IMP] Write generators for ratios-proportions (~30 topics):
+   - Port existing generators where available, write new ones for gaps
+   - Validate: `just validate-content`
+
+3. [ ] [VAL] Run generation and validation:
+   - Generate all algebra/equation topics
+   - `just validate-content` — 0 errors
+   - Run `/content-review math --strand expressions-equations` on generated content
+   - Compare error count: should be 0 answer-correctness errors (was 19)
+
+**Validation:** All expressions-equations and ratios-proportions topics have generators. Content review shows zero answer-correctness errors.
+
+---
+
+## Phase 5: Math Generators — 6-8 Geometry, Stats, Functions
+
+**Goal:** Complete generators for remaining ~120 grade 6-8 math topics.
+
+### Context for Execution
 
 **Strand coverage targets:**
-- expressions-equations: ~55 topics — reviewed, 37 errors found (most critical)
-- ratios-proportions: ~30 topics
 - geometry: ~50 topics
 - statistics-probability: ~30 topics
 - number-system: ~25 topics
@@ -191,26 +251,24 @@ The content review found significantly more issues in the 6-8 content (expressio
 
 ### Steps
 
-1. [ ] [IMP] Port existing `tools/generators/middle-algebra.ts`, `middle-geometry.ts`, `middle-rational.ts` into per-topic files:
-   - Same pattern as Phase 2 step 1
-   - For expressions-equations: specifically address the 37 error findings (wrong answer fields in equations-variables-both-sides, multi-step-equations-combining, combining-exponent-rules, etc.)
+1. [ ] [IMP] Port `tools/generators/middle-geometry.ts` into per-topic files for geometry (~50 topics):
+   - Same per-topic refactoring pattern
+   - Validate: `just validate-content`
 
-2. [ ] [IMP] Write new generators for 6-8 topics without existing generators:
-   - Prioritize expressions-equations strand (most errors found)
-   - Then ratios-proportions, geometry, statistics, number-system, functions
-   - For topics involving symbolic algebra: generators produce the equation/expression structure, compute the answer, then template the question text
+2. [ ] [IMP] Write generators for statistics-probability (~30 topics), number-system (~25 topics), and functions (~15 topics):
+   - Port existing generators where available, write new ones for gaps
+   - Validate after each strand: `just validate-content`
 
-3. [ ] [VAL] Run full generation and validation for 6-8:
-   - Generate all 6-8 topics
+3. [ ] [VAL] Run generation and validation for all 6-8:
+   - Generate all remaining 6-8 topics
    - `just validate-content` — 0 errors
-   - Run `/content-review math --strand expressions-equations` on generated content
-   - Compare error count: should be 0 answer-correctness errors (was 19)
+   - Spot-check 10 topics across strands
 
-**Validation:** All 6-8 math topics have generators. Generated content passes validation. Content review shows zero answer-correctness errors in expressions-equations (was 19).
+**Validation:** All 6-8 math topics have generators. Generated content passes validation.
 
 ---
 
-## Phase 4: Full Regeneration & Validation
+## Phase 6: Full Regeneration & Validation
 
 **Goal:** Regenerate ALL math content from generators, run comprehensive content review, establish quality baselines.
 
@@ -243,7 +301,7 @@ The content review found significantly more issues in the 6-8 content (expressio
 
 ---
 
-## Phase 5: Prompt-Template Spec for Interpretive Disciplines
+## Phase 7: Prompt-Template Spec for Interpretive Disciplines
 
 **Goal:** Design and document the prompt-template generator pattern for non-deterministic disciplines (history, ELA, philosophy, vocabulary). Build one PoC.
 
@@ -284,11 +342,11 @@ Interpretive disciplines can't use deterministic generators — there's no code 
 
 ---
 
-## Phase 6: Vertical Slice — Lesson Authoring (was 028 Phase 5)
+## Phase 8: Vertical Slice — Lesson Authoring (was 028 Phase 5)
 
 **Goal:** Author lessons for the counting-cardinality strand (~15 topics) using generators, flatten difficulty fields, validate the full lesson pipeline end-to-end.
 
-**Depends on:** Plan 028 Phases 1-4 complete (lesson types, pipeline, engine, frontend).
+**Depends on:** Plan 028 Phases 1-4 complete (lesson types, pipeline, engine, frontend) + Phase 2 complete (counting-cardinality generators exist).
 
 ### Steps
 
@@ -326,11 +384,11 @@ Interpretive disciplines can't use deterministic generators — there's no code 
 
 ---
 
-## Phase 7: Simulation & Audit Updates (was 028 Phase 6)
+## Phase 9: Simulation & Audit Updates (was 028 Phase 6)
 
 **Goal:** Update simulation runner, evaluation system, and audit infrastructure for the simplified learning loop. Establish new baselines.
 
-**Depends on:** Plan 028 Phases 1-4 complete (new phase model in engine) + Phase 6 complete (content available).
+**Depends on:** Plan 028 Phases 1-4 complete (new phase model in engine) + Phase 8 complete (content available).
 
 ### Steps
 
