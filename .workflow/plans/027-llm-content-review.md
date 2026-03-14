@@ -29,9 +29,9 @@ Consolidate all audit infrastructure under a top-level `audit/` directory organi
 
 ## Progress
 
-**Completed:** Phase 1, Phase 2
+**Completed:** Phase 1, Phase 2, Phase 3
 **In Progress:** —
-**Next:** Phase 3
+**Next:** Phase 4
 
 ---
 
@@ -419,7 +419,7 @@ Each criterion produces a finding: `pass`, `warn`, `error`, or `skip`.
 
 ---
 
-## Phase 3: Audit Integration & Finalization
+## Phase 3: Audit Integration & Finalization ✓
 
 **Goal:** Wire content review into the unified audit report (Section 8). Update `/generate-content` pipeline. Deprecate standalone atomicity audit. Add justfile recipe.
 
@@ -439,7 +439,7 @@ Each criterion produces a finding: `pass`, `warn`, `error`, or `skip`.
 
 ### Steps
 
-1. [ ] [IMP] Add Section 8: Content Review to audit report:
+1. [x] [IMP] Add Section 8: Content Review to audit report:
    - New type in `audit/types.ts`: `ContentReviewSection`
    - Fields: `status`, `items`, `topicsReviewed`, `gradeDistribution`, `highConfidenceIssues`, `worstTopics: { topicId: string; discipline: string; grade: string; topFindings: string[] }[]`, `topRecurringIssues: { criterion: string; count: number; severity: string }[]`, `lastReviewTimestamp: string | null`
    - In `audit/orchestrator.ts`: `auditContentReview()` reads cached reviews from `audit/reports/content-reviews/`
@@ -447,33 +447,33 @@ Each criterion produces a finding: `pass`, `warn`, `error`, or `skip`.
    - Status: `pass` (all A/B), `warn` (any C), `fail` (any D/F), `pending` (no reviews)
    - If no cached reviews: `pending` with "Run `/content-review` to generate"
 
-2. [ ] [IMP] Add Section 8 rendering in `audit/render.ts`:
+2. [x] [IMP] Add Section 8 rendering in `audit/render.ts`:
    - Grade distribution table
    - High-confidence issues count
    - Worst topics table with top findings
    - Recurring issues summary (including atomicity findings)
    - Recommendations
 
-3. [ ] [IMP] Deprecate `/atomicity-audit`:
+3. [x] [IMP] Deprecate `/atomicity-audit`:
    - Update `.claude/commands/atomicity-audit.md`: redirect message explaining it's now part of `/content-review` (criterion 7)
    - Delete `audit/content/atomicity-context.ts` (logic absorbed into `review-context.ts`)
    - Remove `just atomicity-context` recipe from justfile
 
-4. [ ] [IMP] Update `/generate-content` post-verification loop:
+4. [x] [IMP] Update `/generate-content` post-verification loop:
    - Target: `.claude/commands/generate-content.md` Section "6. Post-Generation Verification Loop"
    - Add `/content-review <subject> --topic <topic-id>` after existing checks
    - Present review findings for user approval before proceeding to import
 
-5. [ ] [IMP] Add `just review-content` justfile recipe:
+5. [x] [IMP] Add `just review-content` justfile recipe:
    - Place under `# ── Auditing ──` section
    - `just review-content [discipline]` — renders cached review report (markdown to stdout)
    - Prints instructions to run `/content-review` in Claude Code if no cache exists
 
-6. [ ] [IMP] Update audit relevance mapping in `audit/relevance.ts`:
+6. [x] [IMP] Update audit relevance mapping in `audit/relevance.ts`:
    - Verify content file patterns (`problems/*.json`, `examples/*.json`, `graph.json`) map to Section 8
    - These mappings were partially set up in Plan 026 Phase 2 — verify they work with the new directory structure
 
-7. [ ] [TST] Test audit integration:
+7. [x] [TST] Test audit integration:
    - Update `audit/__tests__/audit.test.ts`: section count assertion from 7 → 8
    - Unit test: Section 8 populates from cached reviews
    - Unit test: empty cache → pending status

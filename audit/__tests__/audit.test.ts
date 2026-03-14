@@ -51,7 +51,7 @@ assert(typeof report.summary.failCount === "number", "summary has failCount");
 assert(report.summary.passCount + report.summary.warnCount + report.summary.failCount + report.summary.pendingCount > 0, "summary counts are non-zero total");
 
 assert(report.sections !== undefined, "report has sections");
-assert(Object.keys(report.sections).length === 7, "report has 7 sections");
+assert(Object.keys(report.sections).length === 8, "report has 8 sections");
 
 // ── Graph integrity tests ──
 
@@ -135,6 +135,20 @@ const mathDisc = multi.disciplines.find(d => d.disciplineId === "math");
 assert(mathDisc !== undefined, "has math discipline");
 assert(mathDisc!.topicCount === 705, "math has 705 topics");
 
+// ── Content Review Section (Section 8) ──
+
+console.log("\n=== Content Review Section ===");
+
+const review = report.sections.contentReview;
+assert(review !== undefined, "has contentReview section");
+assert(["pass", "warn", "fail", "pending"].includes(review.status), `status is valid (got ${review.status})`);
+assert(typeof review.topicsReviewed === "number", "has topicsReviewed");
+assert(review.gradeDistribution !== undefined, "has gradeDistribution");
+assert(Array.isArray(review.worstTopics), "has worstTopics array");
+assert(Array.isArray(review.topRecurringIssues), "has topRecurringIssues array");
+// With no cached reviews, status should be pending
+assert(review.status === "pending", "content review is pending (no cached reviews)");
+
 // ── Markdown renderer tests ──
 
 console.log("\n=== Markdown Renderer ===");
@@ -148,6 +162,7 @@ assert(markdown.includes("## 4. Content Effectiveness"), "has effectiveness sect
 assert(markdown.includes("## 5. LLM Tracking"), "has LLM section");
 assert(markdown.includes("## 6. Media Readiness"), "has media section");
 assert(markdown.includes("## 7. Multi-Discipline Coverage"), "has multi-discipline section");
+assert(markdown.includes("## 8. Content Review"), "has content review section");
 assert(markdown.includes("## Recommendations"), "has recommendations");
 assert(markdown.includes("✅") || markdown.includes("❌") || markdown.includes("⚠️"), "has status icons");
 
@@ -272,8 +287,8 @@ writeFileSync(tmpPrevious, JSON.stringify(report));
 const comparedReport = await runAudit({ compareWith: tmpPrevious });
 
 assert(comparedReport.delta !== undefined, "comparison produces delta");
-assert(comparedReport.delta!.sectionDeltas.length === 7, "delta has 7 section comparisons");
-assert(comparedReport.delta!.summary.unchanged === 7, "all sections unchanged when comparing with self");
+assert(comparedReport.delta!.sectionDeltas.length === 8, "delta has 8 section comparisons");
+assert(comparedReport.delta!.summary.unchanged === 8, "all sections unchanged when comparing with self");
 assert(comparedReport.delta!.summary.improved === 0, "no improvements when comparing with self");
 assert(comparedReport.delta!.summary.regressed === 0, "no regressions when comparing with self");
 assert(comparedReport.delta!.previousTimestamp === report.metadata.timestamp, "delta has correct previous timestamp");

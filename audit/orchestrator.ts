@@ -19,7 +19,7 @@ import type {
   AuditReport, ItemStatus, StatusItem,
   GraphIntegritySection, ContentQualitySection, SimulationResultsSection,
   ContentEffectivenessSection, LLMTrackingSection, MediaReadinessSection,
-  MultiDisciplineSection, SimulationSystem,
+  MultiDisciplineSection, ContentReviewSection, SimulationSystem,
   ManifestSummary, DimensionCoverage, ContentVersionStatus,
   AuditThresholds, ThresholdLevel, AuditDelta,
 } from "./types.js";
@@ -140,6 +140,20 @@ function compareAudits(current: AuditReport, previous: AuditReport): AuditDelta 
         const pm = previous.sections.multiDiscipline;
         const cm = current.sections.multiDiscipline;
         if (cm.totalTopics !== pm.totalTopics) d.push(`Topics: ${pm.totalTopics} → ${cm.totalTopics}`);
+        return d;
+      },
+    },
+    {
+      section: "Content Review",
+      prev: previous.sections.contentReview?.status ?? "pending",
+      curr: current.sections.contentReview?.status ?? "pending",
+      details: () => {
+        const d: string[] = [];
+        const pr = previous.sections.contentReview;
+        const cr = current.sections.contentReview;
+        if (pr && cr && cr.topicsReviewed !== pr.topicsReviewed) {
+          d.push(`Topics reviewed: ${pr.topicsReviewed} → ${cr.topicsReviewed}`);
+        }
         return d;
       },
     },
@@ -786,6 +800,132 @@ function auditMultiDiscipline(): MultiDisciplineSection {
   };
 }
 
+// ── Content Review (Section 8) ──
+
+function auditContentReview(): ContentReviewSection {
+  const reviewsDir = join(process.cwd(), "audit", "reports", "content-reviews");
+  if (!existsSync(reviewsDir)) {
+    return {
+      status: "pending",
+      items: [{ label: "Content Review", status: "pending", detail: "No reviews found — run `/content-review` to generate" }],
+      topicsReviewed: 0,
+      gradeDistribution: {},
+      highConfidenceIssues: 0,
+      worstTopics: [],
+      topRecurringIssues: [],
+      lastReviewTimestamp: null,
+    };
+  }
+
+  // Scan all discipline subdirectories
+  const disciplines = readdirSync(reviewsDir, { withFileTypes: true })
+    .filter(d => d.isDirectory())
+    .map(d => d.name);
+
+  let topicsReviewed = 0;
+  const gradeDistribution: Record<string, number> = { A: 0, B: 0, C: 0, D: 0, F: 0 };
+  let highConfidenceIssues = 0;
+  const worstTopics: ContentReviewSection["worstTopics"] = [];
+  const issueCounts = new Map<string, { count: number; severity: string }>();
+  let lastTimestamp: string | null = null;
+
+  for (const disc of disciplines) {
+    const discDir = join(reviewsDir, disc);
+    const files = readdirSync(discDir).filter(f => f.endsWith(".json") && !f.includes("-report"));
+
+    for (const file of files) {
+      const cache = JSON.parse(readFileSync(join(discDir, file), "utf-8"));
+      if (!cache.reviews || cache.reviews.length === 0) continue;
+
+      topicsReviewed++;
+      const latest = cache.reviews[cache.reviews.length - 1];
+      gradeDistribution[latest.overallGrade] = (gradeDistribution[latest.overallGrade] ?? 0) + 1;
+
+      if (latest.timestamp && (!lastTimestamp || latest.timestamp > lastTimestamp)) {
+        lastTimestamp = latest.timestamp;
+      }
+
+      // Aggregate findings for confidence
+      for (const review of cache.reviews) {
+        for (const f of review.findings) {
+          if (f.status === "error" || f.status === "warn") {
+            const key = `${f.criterion}|${f.status}`;
+            const existing = issueCounts.get(key);
+            if (existing) existing.count++;
+            else issueCounts.set(key, { count: 1, severity: f.status });
+          }
+        }
+      }
+
+      // High confidence: findings in 2+ reviews
+      if (cache.reviews.length >= 2) {
+        const findingKeys = new Map<string, number>();
+        for (const review of cache.reviews) {
+          const seen = new Set<string>();
+          for (const f of review.findings) {
+            if (f.status === "error" || f.status === "warn") {
+              const key = `${f.criterion}|${f.status}|${f.problemId ?? ""}`;
+              if (!seen.has(key)) {
+                seen.add(key);
+                findingKeys.set(key, (findingKeys.get(key) ?? 0) + 1);
+              }
+            }
+          }
+        }
+        highConfidenceIssues += [...findingKeys.values()].filter(c => c >= 2).length;
+      }
+
+      // Worst topics
+      if (latest.overallGrade === "D" || latest.overallGrade === "F") {
+        worstTopics.push({
+          topicId: latest.topicId,
+          discipline: latest.discipline ?? disc,
+          grade: latest.overallGrade,
+          topFindings: latest.findings
+            .filter((f: any) => f.status === "error")
+            .slice(0, 3)
+            .map((f: any) => `${f.criterion}: ${f.detail}`),
+        });
+      }
+    }
+  }
+
+  // Top recurring issues
+  const topRecurringIssues = [...issueCounts.entries()]
+    .sort((a, b) => b[1].count - a[1].count)
+    .slice(0, 5)
+    .map(([key, val]) => ({
+      criterion: key.split("|")[0],
+      count: val.count,
+      severity: val.severity,
+    }));
+
+  // Status
+  const hasErrors = (gradeDistribution["D"] ?? 0) + (gradeDistribution["F"] ?? 0) > 0;
+  const hasWarns = (gradeDistribution["C"] ?? 0) > 0;
+  const status: ItemStatus = topicsReviewed === 0 ? "pending" : hasErrors ? "fail" : hasWarns ? "warn" : "pass";
+
+  const items: StatusItem[] = [];
+  items.push({ label: "Topics Reviewed", status: "info", value: topicsReviewed });
+  if (topicsReviewed > 0) {
+    items.push({ label: "Grade A/B", status: "pass", value: (gradeDistribution["A"] ?? 0) + (gradeDistribution["B"] ?? 0) });
+    if (hasWarns) items.push({ label: "Grade C", status: "warn", value: gradeDistribution["C"] ?? 0 });
+    if (hasErrors) items.push({ label: "Grade D/F", status: "fail", value: (gradeDistribution["D"] ?? 0) + (gradeDistribution["F"] ?? 0) });
+    items.push({ label: "High Confidence Issues", status: highConfidenceIssues > 0 ? "warn" : "pass", value: highConfidenceIssues });
+  }
+
+  return {
+    status,
+    items,
+    topicsReviewed,
+    gradeDistribution,
+    highConfidenceIssues,
+    worstTopics: worstTopics.slice(0, 10),
+    topRecurringIssues,
+    lastReviewTimestamp: lastTimestamp,
+  };
+}
+
 // ── Main orchestrator ──
 
 export async function runAudit(opts: {
@@ -809,6 +949,7 @@ export async function runAudit(opts: {
   const llmTracking = await auditLLMTracking(thresholds, apiUrl, apiToken);
   const mediaReadiness = auditMediaReadiness();
   const multiDiscipline = auditMultiDiscipline();
+  const contentReview = auditContentReview();
 
   // Overall status
   const sectionStatuses = [
@@ -843,6 +984,7 @@ export async function runAudit(opts: {
       llmTracking,
       mediaReadiness,
       multiDiscipline,
+      contentReview,
     },
   };
 

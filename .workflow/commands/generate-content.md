@@ -167,6 +167,12 @@ just visualize $SUBJECT      # Visual inspection of graph structure
 - Cognitive demand distribution appropriate for grade level
 - No platform-incompatible instructions
 
+**Optional: LLM content review** (recommended for new topics):
+```
+/content-review $SUBJECT --topic <topic-id>   # Review specific topic
+```
+Review findings for answer correctness, prerequisite assumptions, difficulty calibration. Fix any errors before proceeding.
+
 ### 7. Import
 
 ```bash

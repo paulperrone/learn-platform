@@ -262,6 +262,58 @@ export function renderAuditMarkdown(report: AuditReport): string {
   lines.push(renderItems(s.multiDiscipline.items));
   lines.push(``);
 
+  // Section 8: Content Review
+  if (s.contentReview) {
+    lines.push(`## 8. Content Review ${statusIcon(s.contentReview.status)}`);
+    lines.push(``);
+
+    if (s.contentReview.topicsReviewed === 0) {
+      lines.push(`No content reviews found. Run \`/content-review\` in Claude Code to generate.`);
+    } else {
+      // Grade distribution
+      const gd = s.contentReview.gradeDistribution;
+      lines.push(`| Grade | Count |`);
+      lines.push(`|-------|-------|`);
+      for (const grade of ["A", "B", "C", "D", "F"]) {
+        if (gd[grade]) lines.push(`| ${grade} | ${gd[grade]} |`);
+      }
+      lines.push(``);
+      lines.push(`**Topics reviewed:** ${s.contentReview.topicsReviewed}`);
+      lines.push(`**High-confidence issues:** ${s.contentReview.highConfidenceIssues}`);
+      if (s.contentReview.lastReviewTimestamp) {
+        lines.push(`**Last review:** ${s.contentReview.lastReviewTimestamp}`);
+      }
+      lines.push(``);
+
+      // Worst topics
+      if (s.contentReview.worstTopics.length > 0) {
+        lines.push(`### Worst Topics`);
+        lines.push(``);
+        lines.push(`| Topic | Discipline | Grade | Top Issues |`);
+        lines.push(`|-------|-----------|-------|------------|`);
+        for (const t of s.contentReview.worstTopics) {
+          lines.push(`| ${t.topicId} | ${t.discipline} | ${t.grade} | ${t.topFindings.join("; ")} |`);
+        }
+        lines.push(``);
+      }
+
+      // Recurring issues
+      if (s.contentReview.topRecurringIssues.length > 0) {
+        lines.push(`### Recurring Issues`);
+        lines.push(``);
+        lines.push(`| Criterion | Count | Severity |`);
+        lines.push(`|-----------|-------|----------|`);
+        for (const i of s.contentReview.topRecurringIssues) {
+          lines.push(`| ${i.criterion} | ${i.count} | ${i.severity} |`);
+        }
+        lines.push(``);
+      }
+    }
+
+    lines.push(renderItems(s.contentReview.items));
+    lines.push(``);
+  }
+
   // Recommendations
   lines.push(`---`);
   lines.push(`## Recommendations`);
@@ -295,6 +347,13 @@ export function renderAuditMarkdown(report: AuditReport): string {
   }
   if (s.contentEffectiveness.strugglingTopics.length > 3) {
     recs.push(`${s.contentEffectiveness.strugglingTopics.length} struggling topics — investigate with \`/content-health\``);
+  }
+
+  if (s.contentReview?.status === "pending") {
+    recs.push(`Content review pending — run \`/content-review\` in Claude Code to evaluate content quality`);
+  }
+  if (s.contentReview && s.contentReview.worstTopics.length > 0) {
+    recs.push(`${s.contentReview.worstTopics.length} topics graded D/F — review findings and run \`/generate-content\` to fix`);
   }
 
   const incompleteDiscs = s.multiDiscipline.disciplines.filter(d => !d.contentComplete);

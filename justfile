@@ -166,9 +166,36 @@ rollup-effectiveness *args:
     set -euo pipefail
     npx tsx audit/rollup-effectiveness.ts {{args}}
 
-# Atomicity audit context assembler (use /atomicity-audit command for full audit)
+# Atomicity audit context assembler (deprecated — use /content-review criterion 7)
 atomicity-context *args:
     npx tsx audit/content/atomicity-context.ts {{args}}
+
+# Render cached content review report (run /content-review in Claude Code to generate)
+review-content *args:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    DISC="${1:-}"
+    if [ -z "$DISC" ]; then
+        echo "Usage: just review-content <discipline>"
+        echo ""
+        REVIEW_DIR="audit/reports/content-reviews"
+        if [ -d "$REVIEW_DIR" ]; then
+            echo "Available disciplines:"
+            for d in "$REVIEW_DIR"/*/; do
+                [ -d "$d" ] && echo "  - $(basename "$d")"
+            done
+        else
+            echo "No reviews found. Run /content-review in Claude Code to generate."
+        fi
+        exit 0
+    fi
+    REPORT="audit/reports/content-reviews/${DISC}-report.md"
+    if [ -f "$REPORT" ]; then
+        cat "$REPORT"
+    else
+        echo "No report found for '$DISC'."
+        echo "Run /content-review $DISC in Claude Code to generate."
+    fi
 
 # ── Simulations (auditing) ──
 # Run synthetic learners through the engine to evaluate system behavior.

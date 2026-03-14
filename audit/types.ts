@@ -1,8 +1,9 @@
 /**
  * Audit report types — structured schema for the unified `just audit` report.
  *
- * 7 sections: Graph Integrity, Content Quality, Simulation Results,
- * Content Effectiveness, LLM Tracking, Media Readiness, Multi-Discipline Coverage.
+ * 8 sections: Graph Integrity, Content Quality, Simulation Results,
+ * Content Effectiveness, LLM Tracking, Media Readiness, Multi-Discipline Coverage,
+ * Content Review.
  */
 
 // ── Status types ──
@@ -201,6 +202,19 @@ export type MultiDisciplineSection = {
   totalExamples: number;
 };
 
+// ── Section 8: Content Review ──
+
+export type ContentReviewSection = {
+  status: ItemStatus;
+  items: StatusItem[];
+  topicsReviewed: number;
+  gradeDistribution: Record<string, number>;
+  highConfidenceIssues: number;
+  worstTopics: { topicId: string; discipline: string; grade: string; topFindings: string[] }[];
+  topRecurringIssues: { criterion: string; count: number; severity: string }[];
+  lastReviewTimestamp: string | null;
+};
+
 // ── Thresholds ──
 
 export type ThresholdLevel = { warn: number; fail: number };
@@ -291,6 +305,7 @@ export type AuditReport = {
     llmTracking: LLMTrackingSection;
     mediaReadiness: MediaReadinessSection;
     multiDiscipline: MultiDisciplineSection;
+    contentReview: ContentReviewSection;
   };
   delta?: AuditDelta;
 };
