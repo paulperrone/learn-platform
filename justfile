@@ -123,11 +123,29 @@ content-report *args:
     npx tsx tools/content-report.ts {{args}}
 
 # Unified system audit (graph + content + simulation + LLM tracking + media + review)
+# Pass --check to run relevance guard first (shows which sections may be stale)
 audit *args:
     #!/usr/bin/env bash
     set -euo pipefail
     export CONTENT_DIR="{{content_dir}}"
-    npx tsx tools/audit.ts {{args}}
+    # If --check is among args, run relevance check first
+    for arg in {{args}}; do
+        if [ "$arg" = "--check" ]; then
+            echo "── Audit Relevance Check ──"
+            npx tsx tools/audit-relevance.ts --content-dir "{{content_dir}}"
+            echo ""
+            echo "── Full Audit Report ──"
+            break
+        fi
+    done
+    # Filter out --check before passing to audit.ts
+    filtered_args=""
+    for arg in {{args}}; do
+        if [ "$arg" != "--check" ]; then
+            filtered_args="$filtered_args $arg"
+        fi
+    done
+    npx tsx tools/audit.ts $filtered_args
 
 # Comprehensive audit: simulate + evaluate + audit report
 audit-all sessions="30" seed="42":
@@ -137,7 +155,10 @@ audit-all sessions="30" seed="42":
 
 # Check which audit sections are affected by current changes (advisory)
 audit-check:
-    @echo "audit-check not yet implemented — see Plan 026 Phase 2"
+    #!/usr/bin/env bash
+    set -euo pipefail
+    export CONTENT_DIR="{{content_dir}}"
+    npx tsx tools/audit-relevance.ts --content-dir "{{content_dir}}"
 
 # Effectiveness rollup from Analytics Engine
 rollup-effectiveness *args:

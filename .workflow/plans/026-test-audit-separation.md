@@ -1,7 +1,7 @@
 # Plan 026: Test/Audit Separation
 
 > **Created:** 2026-03-14T00:39:17Z
-> **Completed:** —
+> **Completed:** 2026-03-14T01:45:00Z
 >
 > For project context, see [CLAUDE.md](../../CLAUDE.md)
 > For product vision, see [SPEC.md](./SPEC.md)
@@ -18,9 +18,9 @@ Currently these are conflated: `just test` runs simulation regression alongside 
 
 ## Progress
 
-**Completed:** Phase 1
+**Completed:** Phase 1, Phase 2
 **In Progress:** —
-**Next:** Phase 2
+**Next:** —
 
 ---
 
@@ -127,7 +127,7 @@ These tool tests are reasonable as code tests. They should stay as test files bu
 
 ---
 
-## Phase 2: Audit Relevance Guard
+## Phase 2: Audit Relevance Guard ✓
 
 **Goal:** Build a lightweight tool that maps code changes to affected audit sections, so you know which parts of the audit are stale after making changes.
 
@@ -183,7 +183,7 @@ Unaffected sections: 1 (Graph), 4 (Effectiveness), 5 (LLM), 6 (Media), 7 (Multi-
 
 ### Steps
 
-1. [ ] [IMP] Build `tools/audit-relevance.ts`:
+1. [x] [IMP] Build `tools/audit-relevance.ts`:
    - Reads `git diff --name-only` (or accepts file list via stdin/args)
    - Also checks `git diff --name-only` against content dir (`CONTENT_DIR` env var)
    - Maps file patterns to audit sections using the rules above
@@ -191,18 +191,18 @@ Unaffected sections: 1 (Graph), 4 (Effectiveness), 5 (LLM), 6 (Media), 7 (Multi-
    - Exports `checkRelevance(changedFiles: string[]): AuditRelevance` for programmatic use
    - CLI entry: `npx tsx tools/audit-relevance.ts [--content-dir <path>]`
 
-2. [ ] [IMP] Wire up `just audit-check` recipe:
+2. [x] [IMP] Wire up `just audit-check` recipe:
    - Replace Phase 1 placeholder with actual implementation
    - Recipe runs `audit-relevance.ts` with git diff of uncommitted changes
    - Also checks content dir changes if content dir exists
    - Exits 0 always (advisory only)
 
-3. [ ] [IMP] Add `--check` flag to `just audit`:
+3. [x] [IMP] Add `--check` flag to `just audit`:
    - When `just audit --check` is passed, run relevance check first, then audit
    - Print which sections were flagged before the full report
    - This gives context when reading the audit: "these sections may be stale"
 
-4. [ ] [TST] Test audit relevance:
+4. [x] [TST] Test audit relevance:
    - Unit test: SRS file change maps to sections 3, 4
    - Unit test: problem file change maps to sections 2, 8
    - Unit test: schema change maps to all sections
