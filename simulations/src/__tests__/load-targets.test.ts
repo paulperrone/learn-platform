@@ -1,6 +1,8 @@
 #!/usr/bin/env npx tsx
 /**
- * Tests for target loading and validation.
+ * Tests for target loading and validation code (file parsing, schema
+ * validation). This is a CODE TEST — it validates that the target
+ * loader works correctly, not that targets are met.
  *
  * Usage: npx tsx simulations/src/__tests__/load-targets.test.ts
  */

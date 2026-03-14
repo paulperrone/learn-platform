@@ -1,6 +1,8 @@
 #!/usr/bin/env npx tsx
 /**
- * Tests for the healing loop orchestrator.
+ * Tests for the healing loop orchestrator code (delta computation,
+ * convergence detection, checkpoint generation). This is a CODE TEST —
+ * it validates that the healing tool works correctly, not system health.
  *
  * Usage: npx tsx simulations/src/__tests__/heal-loop.test.ts
  */

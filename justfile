@@ -4,22 +4,26 @@
 #   - npx wrangler <command> --cwd <directory>
 # This keeps CWD stable and makes commands copy-paste safe.
 
-# Development (run both API and web)
+# Content directory (sibling learn-content repo or CONTENT_DIR env var)
+content_dir := env("CONTENT_DIR", justfile_directory() / ".." / "learn-content")
+
+# ── Development ──
+
+# Run both API and web dev servers
 dev:
     pnpm dev
 
-# Run all tests (Workers pool + miniflare D1 + simulation regression)
+# ── Testing (automated, run on code changes) ──
+# Validates code correctness: unit tests, integration tests, types, content structure, engine regression.
+
+# Run unit + integration tests (Workers pool + miniflare D1)
 # IMPORTANT: Always use this, never `pnpm vitest run` directly — Workers tests need the pool runner
 test:
     pnpm test
-    npx tsx simulations/src/regression.ts
 
 # TypeScript validation
 typecheck:
     pnpm typecheck
-
-# Content directory (sibling learn-content repo or CONTENT_DIR env var)
-content_dir := env("CONTENT_DIR", justfile_directory() / ".." / "learn-content")
 
 # Validate content (graph DAG + problem completeness) for all subjects
 validate-content:
@@ -66,8 +70,14 @@ validate-content-strict:
     fi
     exit $exit_code
 
-# Full validation
-validate: typecheck validate-content
+# Fast simulation regression check (~15s, 3 profiles × 5 sessions)
+regression *args:
+    npx tsx simulations/src/regression.ts {{args}}
+
+# Full pre-commit validation gate (typecheck + tests + content + regression)
+validate: typecheck test validate-content regression
+
+# ── Content Pipeline ──
 
 # Generate Drizzle migration
 db-generate:
@@ -85,6 +95,21 @@ import-content:
 generate-problems *args:
     npx tsx tools/generate-problems.ts {{args}}
 
+# Generate R2 content bundles from learn-content
+generate-bundles *args:
+    CONTENT_DIR="{{content_dir}}" npx tsx tools/generate-bundles.ts {{args}}
+
+# Visualize knowledge graph (default: math, or pass subject name)
+visualize subject="math":
+    python3 tools/visualize-graph.py "{{content_dir}}/{{subject}}/graph.json" --open
+
+# Build web app
+build-web:
+    pnpm --filter web exec vite build
+
+# ── Auditing (manual, on-demand) ──
+# Evaluates system behavior: content quality, simulations, LLM review, system health. Run when needed.
+
 # Content health scoring (per-topic analysis)
 content-status *args:
     npx tsx tools/content-status.ts {{args}}
@@ -97,13 +122,24 @@ content-gaps *args:
 content-report *args:
     npx tsx tools/content-report.ts {{args}}
 
-# Unified system audit (graph + content + simulation + LLM tracking + media)
+# Unified system audit (graph + content + simulation + LLM tracking + media + review)
 audit *args:
     #!/usr/bin/env bash
     set -euo pipefail
     export CONTENT_DIR="{{content_dir}}"
     npx tsx tools/audit.ts {{args}}
 
+# Comprehensive audit: simulate + evaluate + audit report
+audit-all sessions="30" seed="42":
+    just simulate-all {{sessions}} {{seed}}
+    just evaluate
+    just audit
+
+# Check which audit sections are affected by current changes (advisory)
+audit-check:
+    @echo "audit-check not yet implemented — see Plan 026 Phase 2"
+
+# Effectiveness rollup from Analytics Engine
 rollup-effectiveness *args:
     #!/usr/bin/env bash
     set -euo pipefail
@@ -113,43 +149,8 @@ rollup-effectiveness *args:
 atomicity-context *args:
     npx tsx tools/atomicity-context.ts {{args}}
 
-# Visualize knowledge graph (default: math-foundations, or pass subject name)
-visualize subject="math":
-    python3 tools/visualize-graph.py "{{content_dir}}/{{subject}}/graph.json" --open
-
-# Build web app
-build-web:
-    pnpm --filter web exec vite build
-
-# Generate R2 content bundles from learn-content
-generate-bundles *args:
-    CONTENT_DIR="{{content_dir}}" npx tsx tools/generate-bundles.ts {{args}}
-
-# Deploy content to R2 + D1 (production)
-deploy-content:
-    CONTENT_DIR="{{content_dir}}" npx tsx tools/deploy-content.ts --env production
-
-# Deploy content to R2 + D1 (preview)
-deploy-content-preview:
-    CONTENT_DIR="{{content_dir}}" npx tsx tools/deploy-content.ts --env preview
-
-# Deploy API to preview
-deploy-preview-api:
-    npx wrangler deploy --env preview
-
-# Deploy web to preview
-deploy-preview-web: build-web
-    npx wrangler pages deploy packages/web/dist --project-name learn-platform-web-preview --commit-dirty=true
-
-# Deploy all to preview (code + content)
-deploy-preview: deploy-preview-api deploy-preview-web deploy-content-preview
-
-# Deploy to production (code + content)
-deploy:
-    npx wrangler deploy
-    pnpm --filter web exec vite build
-    npx wrangler pages deploy packages/web/dist --project-name learn-platform-web --commit-dirty=true
-    just deploy-content
+# ── Simulations (auditing) ──
+# Run synthetic learners through the engine to evaluate system behavior.
 
 # Run simulation for a single profile
 simulate profile sessions="5" seed="42":
@@ -210,7 +211,7 @@ simulate-l4 seed="42":
 simulate-l5 seed="42":
     npx tsx simulations/src/cli.ts average-older fast-learner-older struggling-older returning-after-gap misconception-fractions strong-highschool multi-math-strong --sessions 360 --seed {{seed}}
 
-# Fast simulation regression check (~15s, 3 profiles × 5 sessions)
+# Standalone simulation regression check (also available as `just regression`)
 simulate-regression seed="42":
     npx tsx simulations/src/regression.ts --seed {{seed}}
 
@@ -266,6 +267,36 @@ heal-status:
 # Force a healing checkpoint
 heal-checkpoint:
     npx tsx simulations/src/heal-loop.ts --checkpoint
+
+# ── Deployment ──
+
+# Deploy content to R2 + D1 (production)
+deploy-content:
+    CONTENT_DIR="{{content_dir}}" npx tsx tools/deploy-content.ts --env production
+
+# Deploy content to R2 + D1 (preview)
+deploy-content-preview:
+    CONTENT_DIR="{{content_dir}}" npx tsx tools/deploy-content.ts --env preview
+
+# Deploy API to preview
+deploy-preview-api:
+    npx wrangler deploy --env preview
+
+# Deploy web to preview
+deploy-preview-web: build-web
+    npx wrangler pages deploy packages/web/dist --project-name learn-platform-web-preview --commit-dirty=true
+
+# Deploy all to preview (code + content)
+deploy-preview: deploy-preview-api deploy-preview-web deploy-content-preview
+
+# Deploy to production (code + content)
+deploy:
+    npx wrangler deploy
+    pnpm --filter web exec vite build
+    npx wrangler pages deploy packages/web/dist --project-name learn-platform-web --commit-dirty=true
+    just deploy-content
+
+# ── Maintenance ──
 
 # Clean up task execution state
 task-cleanup:

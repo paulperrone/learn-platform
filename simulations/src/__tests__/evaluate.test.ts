@@ -1,6 +1,8 @@
 #!/usr/bin/env npx tsx
 /**
- * Tests for the evaluation engine.
+ * Tests for the evaluation engine code (metric classification, direction
+ * handling, system evaluation). This is a CODE TEST — it validates that
+ * the evaluation tool works correctly, not that the system meets targets.
  *
  * Usage: npx tsx simulations/src/__tests__/evaluate.test.ts
  */

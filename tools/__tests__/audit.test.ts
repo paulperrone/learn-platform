@@ -1,6 +1,9 @@
 #!/usr/bin/env npx tsx
 /**
  * Tests for the audit orchestrator, report schema, and refactored tools.
+ * This is a CODE TEST — it validates that the audit tool works correctly
+ * (schema, rendering, thresholds, historical comparison). It does NOT
+ * evaluate whether the system is healthy. That's what `just audit` does.
  *
  * Usage: npx tsx tools/__tests__/audit.test.ts
  */

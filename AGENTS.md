@@ -54,12 +54,39 @@ docs/                # Architecture docs (r2-content-architecture.md, content-sy
 
 Use the justfile for all common operations. Run `just <recipe>` or `just --list` to see all recipes.
 
+**Testing** validates code correctness (run automatically on code changes):
+
 ```bash
 just dev              # Start API (8787) + frontend (5173) concurrently
-just test             # Run tests (Workers pool + miniflare D1) — ALWAYS use this, never `pnpm vitest run`
-just typecheck        # TypeCheck all packages
-just validate         # Full validation (typecheck + content)
-just validate-content # Validate content only (graph DAG + problems + cross-discipline edges)
+just test             # Unit + integration tests (Workers pool + miniflare D1)
+just typecheck        # TypeScript validation
+just validate-content # Content validation (graph DAG + problems + cross-discipline edges)
+just regression       # Simulation regression check (~15s, 3 profiles × 5 sessions)
+just validate         # Full pre-commit gate: typecheck + test + validate-content + regression
+```
+
+> **IMPORTANT:** Never run `pnpm vitest run` or `npx vitest` directly. Workers-pool tests import `cloudflare:test` which only resolves through the `@cloudflare/vitest-pool-workers` runner configured in `packages/api/vitest.config.ts`. Use `just test` (or `pnpm test`) which invokes the correct runner. Running vitest directly will show 15+ false failures.
+
+> **Note:** `just test` is vitest-only (fast, ~30s). Simulation regression is in `just validate` (not `just test`) because it tests cross-cutting engine behavior, not individual functions. `just validate` is the comprehensive gate to run before committing.
+
+**Auditing** evaluates system behavior (run on demand):
+
+```bash
+just audit            # System health report (graph + content + simulation + LLM + media + review)
+just audit-all        # Comprehensive: simulate + evaluate + audit
+just audit-check      # What audit sections are affected by current changes? (advisory)
+just evaluate         # Evaluate simulation runs against targets
+just heal-epoch       # Healing loop iteration
+/content-review       # LLM content review (Claude Code slash command)
+/content-health       # Deterministic content health scoring (Claude Code slash command)
+/atomicity-audit      # Topic atomicity assessment (Claude Code slash command)
+```
+
+> **Testing vs auditing:** Test files in `tools/__tests__/` and `simulations/src/__tests__/` test the audit *tool code* (schema, rendering, thresholds, evaluation engine). They are code tests ("does the tool work?"), not audits ("is the system healthy?").
+
+**Content pipeline:**
+
+```bash
 just db-generate      # Generate Drizzle migration
 just db-migrate       # Apply migration to local D1
 just import-content   # Import ../learn-content/ graph → local D1 (graph structure only)
@@ -68,8 +95,6 @@ just deploy           # Deploy API + web + content to production
 just deploy-content   # Deploy content: R2 bundles + D1 graph (production)
 just deploy-preview   # Deploy everything to preview
 ```
-
-> **IMPORTANT:** Never run `pnpm vitest run` or `npx vitest` directly. Workers-pool tests import `cloudflare:test` which only resolves through the `@cloudflare/vitest-pool-workers` runner configured in `packages/api/vitest.config.ts`. Use `just test` (or `pnpm test`) which invokes the correct runner. Running vitest directly will show 15+ false failures.
 
 ## Conventions
 

@@ -18,13 +18,13 @@ Currently these are conflated: `just test` runs simulation regression alongside 
 
 ## Progress
 
-**Completed:** —
+**Completed:** Phase 1
 **In Progress:** —
-**Next:** Phase 1
+**Next:** Phase 2
 
 ---
 
-## Phase 1: Command & Pipeline Separation
+## Phase 1: Command & Pipeline Separation ✓
 
 **Goal:** Make `just test` purely testing, create clear audit commands, document the boundary. No functional changes to any tool — only reorganization of how they're invoked and documented.
 
@@ -83,7 +83,7 @@ These tool tests are reasonable as code tests. They should stay as test files bu
 
 ### Steps
 
-1. [ ] [IMP] Restructure justfile test/validate/audit recipes:
+1. [x] [IMP] Restructure justfile test/validate/audit recipes:
    - **`just test`**: Remove `npx tsx simulations/src/regression.ts`. Keep only `pnpm test`.
    - **`just regression`**: New recipe — `npx tsx simulations/src/regression.ts {{args}}`. Standalone.
    - **`just validate`**: Change from `typecheck validate-content` to `typecheck test validate-content regression`. This is the full automated gate.
@@ -91,7 +91,7 @@ These tool tests are reasonable as code tests. They should stay as test files bu
    - **`just audit-check`**: New recipe — runs `npx tsx tools/audit-relevance.ts` (built in Phase 2). Placeholder for now that prints "audit-check not yet implemented".
    - Keep all existing `just simulate-*`, `just evaluate-*`, `just heal-*` recipes unchanged.
 
-2. [ ] [IMP] Add section comments to justfile for clarity:
+2. [x] [IMP] Add section comments to justfile for clarity:
    - Group recipes under clear headers:
      ```
      # ── Testing (automated, run on code changes) ──
@@ -102,20 +102,20 @@ These tool tests are reasonable as code tests. They should stay as test files bu
      ```
    - Each group gets a 1-line comment explaining when to use it.
 
-3. [ ] [DOC] Update CLAUDE.md Commands section:
+3. [x] [DOC] Update CLAUDE.md Commands section:
    - Replace the current flat command list with two sections: **Testing** and **Auditing**
    - Document the distinction: "Testing validates code correctness (run automatically). Auditing evaluates system behavior (run on demand)."
    - Document `just validate` as the pre-commit gate
    - Document that `tools/__tests__/audit.test.ts` tests the audit *tool code*, not the system
    - Note: simulation regression is in `just validate` (not `just test`) because it tests engine behavior, not individual functions
 
-4. [ ] [DOC] Add clarifying comments to test files that test audit tooling:
+4. [x] [DOC] Add clarifying comments to test files that test audit tooling:
    - `tools/__tests__/audit.test.ts` line 1-5: Add comment explaining this tests the audit tool's code (schema, rendering, thresholds), NOT whether the system is healthy
    - `simulations/src/__tests__/evaluate.test.ts`: Same — tests evaluation engine code
    - `simulations/src/__tests__/heal-loop.test.ts`: Same — tests healing orchestration code
    - `simulations/src/__tests__/load-targets.test.ts`: Same — tests target loading code
 
-5. [ ] [TST] Verify separation:
+5. [x] [TST] Verify separation:
    - `just test` runs in <60s with no simulation output
    - `just regression` runs standalone (~15s)
    - `just validate` runs test + typecheck + content validation + regression
