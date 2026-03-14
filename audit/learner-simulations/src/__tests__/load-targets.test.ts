@@ -4,7 +4,7 @@
  * validation). This is a CODE TEST — it validates that the target
  * loader works correctly, not that targets are met.
  *
- * Usage: npx tsx simulations/src/__tests__/load-targets.test.ts
+ * Usage: npx tsx audit/learner-simulations/src/__tests__/load-targets.test.ts
  */
 import { loadTargets } from "../load-targets.js";
 import { writeFileSync, mkdirSync, rmSync } from "fs";
@@ -121,7 +121,7 @@ console.log("\n6. Content quality thresholds");
 
 console.log("\n7. Missing required fields caught");
 {
-  const tmpDir = join(process.cwd(), "simulations", "src", "__tests__", "tmp");
+  const tmpDir = join(process.cwd(), "audit", "learner-simulations", "src", "__tests__", "tmp");
   mkdirSync(tmpDir, { recursive: true });
 
   const invalidTargets = {
@@ -172,7 +172,7 @@ console.log("\n7. Missing required fields caught");
 
 console.log("\n8. Invalid profile references caught");
 {
-  const tmpDir = join(process.cwd(), "simulations", "src", "__tests__", "tmp");
+  const tmpDir = join(process.cwd(), "audit", "learner-simulations", "src", "__tests__", "tmp");
   mkdirSync(tmpDir, { recursive: true });
 
   const badRefTargets: TargetFile = {
@@ -231,7 +231,7 @@ console.log("\n8. Invalid profile references caught");
 
 console.log("\n9. Staleness detection");
 {
-  const tmpDir = join(process.cwd(), "simulations", "src", "__tests__", "tmp");
+  const tmpDir = join(process.cwd(), "audit", "learner-simulations", "src", "__tests__", "tmp");
   mkdirSync(tmpDir, { recursive: true });
 
   const staleTargets: TargetFile = {

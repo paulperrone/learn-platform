@@ -7,8 +7,8 @@
  * Exits with code 1 if any metric regresses >10%.
  *
  * Usage:
- *   npx tsx simulations/src/regression.ts [--seed 42]
- *   npx tsx simulations/src/regression.ts --update-baseline   # Create/update regression baseline
+ *   npx tsx audit/learner-simulations/src/regression.ts [--seed 42]
+ *   npx tsx audit/learner-simulations/src/regression.ts --update-baseline   # Create/update regression baseline
  */
 import { existsSync, readFileSync, writeFileSync } from "fs";
 import { join } from "path";
@@ -32,7 +32,8 @@ const REGRESSION_SESSIONS = 5;
 function loadProfile(profileId: string): LearnerProfile {
   const path = join(
     process.cwd(),
-    "simulations",
+    "audit",
+    "learner-simulations",
     "profiles",
     `${profileId}.json`
   );
@@ -76,7 +77,8 @@ async function main() {
 
   const baselinePath = join(
     process.cwd(),
-    "simulations",
+    "audit",
+    "learner-simulations",
     "regression-baseline.json"
   );
 

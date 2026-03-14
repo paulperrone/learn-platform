@@ -1,11 +1,11 @@
 /**
  * Simulation runner — drives synthetic learners through the real learning engine.
  */
-import type { DB } from "../../packages/api/src/db/index.js";
-import { createSessionService } from "../../packages/api/src/services/session.js";
-import { createDiagnosticService, IMPLICIT_MASTERY_THRESHOLD } from "../../packages/api/src/services/diagnostic.js";
-import { createSRSService } from "../../packages/api/src/services/srs.js";
-import { createFileContentBucket } from "../../packages/api/src/services/content-r2.js";
+import type { DB } from "../../../packages/api/src/db/index.js";
+import { createSessionService } from "../../../packages/api/src/services/session.js";
+import { createDiagnosticService, IMPLICIT_MASTERY_THRESHOLD } from "../../../packages/api/src/services/diagnostic.js";
+import { createSRSService } from "../../../packages/api/src/services/srs.js";
+import { createFileContentBucket } from "../../../packages/api/src/services/content-r2.js";
 import { createSimulationDb, createSimulationDbMulti, createSimUser, resolveContentDir } from "./db-setup.js";
 import { resolveAnswer } from "./answer-engine.js";
 import { EventLogger } from "./event-logger.js";
@@ -14,7 +14,7 @@ import type { SimulationConfig, SimulationResult, SimulationEvent, LearnerProfil
 import { join } from "path";
 import { eq, and, desc } from "drizzle-orm";
 import { writeFileSync, readFileSync } from "fs";
-import * as schema from "../../packages/api/src/db/schema.js";
+import * as schema from "../../../packages/api/src/db/schema.js";
 
 const ONE_DAY_MS = 24 * 60 * 60 * 1000;
 
@@ -106,7 +106,7 @@ export class SimulationRunner {
   }
 
   async run(): Promise<SimulationResult> {
-    const runsDir = join(process.cwd(), "simulations", "runs");
+    const runsDir = join(process.cwd(), "audit", "learner-simulations", "runs");
     this.logger = new EventLogger(this.config.profile.id, runsDir);
 
     // Patch Math.random with a separate seeded PRNG for deterministic

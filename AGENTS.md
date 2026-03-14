@@ -31,8 +31,20 @@ packages/
     components/      # ProblemView, WorkedExample, ConfidenceSlider
     composables/     # useApi
   shared/src/        # Shared TypeScript types
+audit/               # System health evaluation (three pillars)
+  learner-simulations/ # Pillar 1: synthetic learner runs
+    src/             # runner, evaluate, heal-loop, regression, analysis
+    profiles/        # learner profile definitions
+    targets.json     # evaluation targets
+  content/           # Pillar 2: content evaluation
+    status.ts, gaps.ts, report.ts, atomicity-context.ts
+  reports/           # Pillar 3: all audit output
+    latest.json      # most recent audit report
+    snapshots/       # timestamped audit history
+  orchestrator.ts    # unified audit runner
+  render.ts, types.ts, relevance.ts, thresholds.json
 tools/               # Content pipeline (validate, import, bundle, deploy)
-docs/                # Architecture docs (r2-content-architecture.md, content-system.md, etc.)
+docs/                # Architecture docs
 
 # Content lives in a separate repo: paulperrone/learn-content (sibling directory)
 # ../learn-content/
@@ -82,7 +94,7 @@ just heal-epoch       # Healing loop iteration
 /atomicity-audit      # Topic atomicity assessment (Claude Code slash command)
 ```
 
-> **Testing vs auditing:** Test files in `tools/__tests__/` and `simulations/src/__tests__/` test the audit *tool code* (schema, rendering, thresholds, evaluation engine). They are code tests ("does the tool work?"), not audits ("is the system healthy?").
+> **Testing vs auditing:** Test files in `audit/__tests__/` and `audit/learner-simulations/src/__tests__/` test the audit *tool code* (schema, rendering, thresholds, evaluation engine). They are code tests ("does the tool work?"), not audits ("is the system healthy?").
 
 **Content pipeline:**
 
@@ -105,7 +117,7 @@ just deploy-preview   # Deploy everything to preview
 - Content is pre-generated offline, validated, then deployed to R2 as bundles — LLM at runtime is for tutoring/grading only
 - All problems must include dimension fields (`presentation`, `contentDepth`, `locale`, `flavor`) and metadata (`source`, `cognitiveDemand`, `type`). Dimension values should match the topic's `defaultPresentation` and `contentDepth` from graph.json unless intentionally creating multi-presentation or multi-depth content. See `docs/content-system.md` §2 for the full required fields list.
 - **D1 stores graph structure + user state only.** Content (problems, examples) lives in R2 bundles. See `docs/r2-content-architecture.md`.
-- Content service uses `ContentBucket` abstraction — R2 in production, filesystem adapter in simulations/local dev
+- Content service uses `ContentBucket` abstraction — R2 in production, filesystem adapter in audit/learner-simulations and local dev
 - **Content generation happens in Claude Code sessions** (not via OpenRouter pipelines). Claude Code is the workhorse for graph design, problem/example generation, encompassing analysis, and content review. OpenRouter is only for in-app runtime LLM features (tutoring, grading, self-explanation evaluation).
 - Topics belong directly to disciplines; disciplines define progression models (`mastery-gated`, `context-layered`, `flexible`)
 - Math graph: 705 topics across 18 strands (K-8, MA-caliber density). Prereq density 1.42/topic, encompassing density 1.01/topic. See `docs/archive/expansion-map.md` for MA cross-reference.

@@ -13,8 +13,8 @@ export function resolveContentDir(): string {
   if (existsSync(sibling)) return sibling;
   return join(process.cwd(), "content");
 }
-import * as schema from "../../packages/api/src/db/schema.js";
-import type { DB } from "../../packages/api/src/db/index.js";
+import * as schema from "../../../packages/api/src/db/schema.js";
+import type { DB } from "../../../packages/api/src/db/index.js";
 
 // Full schema DDL extracted from test helpers
 const SCHEMA_STATEMENTS = [

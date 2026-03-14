@@ -2,7 +2,7 @@
  * Markdown renderer for AuditReport — produces human-readable output with
  * pass/warn/fail indicators and actionable recommendations.
  */
-import type { AuditReport, AuditDelta, ItemStatus, StatusItem } from "./audit-types.js";
+import type { AuditReport, AuditDelta, ItemStatus, StatusItem } from "./types.js";
 
 const STATUS_ICON: Record<ItemStatus, string> = {
   pass: "✅",

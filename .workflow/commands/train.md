@@ -43,9 +43,9 @@ Valid system IDs: mastery_convergence, mastery_preservation, difficulty_targetin
 Before starting, verify:
 
 ```bash
-ls simulations/targets.json          # Target definitions exist
-ls simulations/src/evaluate.ts       # Evaluation engine exists
-ls simulations/src/heal-loop.ts      # Orchestrator exists
+ls audit/learner-simulations/targets.json          # Target definitions exist
+ls audit/learner-simulations/src/evaluate.ts       # Evaluation engine exists
+ls audit/learner-simulations/src/heal-loop.ts      # Orchestrator exists
 just test 2>&1 | tail -5             # Unit tests pass (baseline sanity)
 git status --porcelain               # Working tree is clean (for rollback safety)
 ```
@@ -55,7 +55,7 @@ If working tree is dirty, warn: "Uncommitted changes detected. Commit or stash b
 If `CONTINUE`:
 ```bash
 # Load previous training state
-cat simulations/reports/training/latest-state.json 2>/dev/null
+cat audit/reports/training/latest-state.json 2>/dev/null
 ```
 If state exists: resume with `systems_fixed`, `systems_skipped`, `failed_approaches` from previous run. Set epoch counter to `epochs_completed + 1`.
 If no state: warn "No previous training state found. Starting fresh."
@@ -99,7 +99,7 @@ This runs all profiles (30 sessions, seed 42) and evaluates.
 
 **Step 2: Evaluate**
 ```bash
-cat simulations/reports/evaluation.json
+cat audit/reports/evaluation.json
 ```
 Parse the JSON — extract from `systems` array:
 - `systemId`, `status` (PASS/WARN/FAIL), `actual`, `target`, `delta`, `priority`, `contributingProfiles`
@@ -129,7 +129,7 @@ Priority ordering:
 1. Filter to FAIL systems only
 2. Sort by priority: P0 > P1 > P2
 3. Within same priority: sort by normalized delta magnitude (worst first)
-4. Skip `signal_source: "bridge"` or `"content"` systems — read from `simulations/targets.json`:
+4. Skip `signal_source: "bridge"` or `"content"` systems — read from `audit/learner-simulations/targets.json`:
    - Currently only `cognitive_demand_entropy` is `bridge` (all others are `engine`)
 5. Skip systems already in `failed_approaches` with 2+ failed attempts this session
 6. If `TARGET_SYSTEM` is set: override selection, use that system (if it's FAIL)
@@ -152,9 +152,9 @@ Follow the system-specific playbook from `/heal` (`.workflow/commands/heal.md` �
 3. **Inspect simulation events** for worst-contributing profile:
    ```bash
    # Find latest run for the contributing profile
-   ls -t simulations/runs/<profile>-* | head -1
-   cat simulations/runs/<latest>/events.jsonl | head -100
-   cat simulations/runs/<latest>/summary.json
+   ls -t audit/learner-simulations/runs/<profile>-* | head -1
+   cat audit/learner-simulations/runs/<latest>/events.jsonl | head -100
+   cat audit/learner-simulations/runs/<latest>/summary.json
    ```
 4. **Trace the metric** through the code path: evaluate.ts metric computation → service code that produces the behavior
 5. **Form hypothesis:** "The metric fails because [X] in [file:function] causes [Y behavior]"
@@ -194,11 +194,11 @@ Record in training state:
 
 Save training state after each epoch for `--continue` support:
 ```bash
-mkdir -p simulations/reports/training
+mkdir -p audit/reports/training
 ```
 Write the training state JSON (see [Training State](#training-state)) to:
-- `simulations/reports/training/train-<timestamp>.json` (permanent record)
-- `simulations/reports/training/latest-state.json` (overwritten each epoch for `--continue`)
+- `audit/reports/training/train-<timestamp>.json` (permanent record)
+- `audit/reports/training/latest-state.json` (overwritten each epoch for `--continue`)
 
 **Step 12: Loop or stop**
 - Increment epoch counter
@@ -306,7 +306,7 @@ Track progress across epochs within a single `/train` invocation:
 }
 ```
 
-Save to `simulations/reports/training/train-<timestamp>.json` on completion.
+Save to `audit/reports/training/train-<timestamp>.json` on completion.
 
 ---
 
@@ -353,8 +353,8 @@ Result: metric improved 2 → 3 (target: ≥4). Continuing.
 - interleaving: 2 approaches tried (warmup diversity, shuffle algorithm) — both insufficient
 
 ### Baselines
-- Updated simulations/baseline.json
-- Updated simulations/regression-baseline.json
+- Updated audit/learner-simulations/baseline.json
+- Updated audit/learner-simulations/regression-baseline.json
 
 ### Next Steps
 - Run `/train` again if systems remain (may need architectural changes)
@@ -380,7 +380,7 @@ Result: metric improved 2 → 3 (target: ≥4). Continuing.
 
 `/train --continue` resumes from previous training:
 
-1. Read `simulations/reports/healing/history.json`
+1. Read `audit/reports/healing/history.json`
 2. Load last epoch results
 3. Skip systems already in `systems_fixed` or `systems_skipped`
 4. Continue epoch counter from where it left off

@@ -6,9 +6,9 @@
  * which targets might need updating.
  *
  * Usage:
- *   npx tsx simulations/src/detect-changes.ts              # Full change detection
- *   npx tsx simulations/src/detect-changes.ts --json        # JSON-only output
- *   npx tsx simulations/src/detect-changes.ts --since <ISO> # Changes since specific date
+ *   npx tsx audit/learner-simulations/src/detect-changes.ts              # Full change detection
+ *   npx tsx audit/learner-simulations/src/detect-changes.ts --json        # JSON-only output
+ *   npx tsx audit/learner-simulations/src/detect-changes.ts --since <ISO> # Changes since specific date
  */
 import { readFileSync, existsSync } from "fs";
 import { join } from "path";
@@ -65,7 +65,7 @@ export type ChangeReport = {
 // ── Constants ────────────────────────────────────────────────────────
 
 const ROOT = process.cwd();
-const HEALING_DIR = join(ROOT, "simulations", "reports", "healing");
+const HEALING_DIR = join(ROOT, "audit", "reports", "healing");
 const HISTORY_PATH = join(HEALING_DIR, "history.json");
 
 // ── Category classification ──────────────────────────────────────────
@@ -75,7 +75,7 @@ function categorizeFile(filePath: string): ChangeCategory {
   if (filePath.startsWith("packages/api/src/db/")) return "schema";
   // Content now lives in separate learn-content repo — this catches legacy paths
   if (filePath.startsWith("content/")) return "content";
-  if (filePath.startsWith("simulations/")) return "simulation";
+  if (filePath.startsWith("audit/learner-simulations/")) return "simulation";
   if (
     filePath.includes("wrangler") ||
     filePath.includes("vitest.config") ||

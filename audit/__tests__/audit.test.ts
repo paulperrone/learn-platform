@@ -5,14 +5,14 @@
  * (schema, rendering, thresholds, historical comparison). It does NOT
  * evaluate whether the system is healthy. That's what `just audit` does.
  *
- * Usage: npx tsx tools/__tests__/audit.test.ts
+ * Usage: npx tsx audit/__tests__/audit.test.ts
  */
-import { runAudit } from "../audit.js";
-import { generateContentStatus } from "../content-status.js";
-import { detectContentGaps } from "../content-gaps.js";
-import { generateDisciplineReport, listDisciplines } from "../content-report.js";
-import { renderAuditMarkdown } from "../audit-render.js";
-import type { AuditReport, ItemStatus, EffectivenessRollup } from "../audit-types.js";
+import { runAudit } from "../orchestrator.js";
+import { generateContentStatus } from "../content/status.js";
+import { detectContentGaps } from "../content/gaps.js";
+import { generateDisciplineReport, listDisciplines } from "../content/report.js";
+import { renderAuditMarkdown } from "../render.js";
+import type { AuditReport, ItemStatus, EffectivenessRollup } from "../types.js";
 import { existsSync, writeFileSync, readFileSync, unlinkSync } from "fs";
 import { join } from "path";
 

@@ -8,8 +8,8 @@
  * and interleaving quality.
  *
  * Usage:
- *   npx tsx simulations/src/adaptive-analysis.ts --all-latest
- *   npx tsx simulations/src/adaptive-analysis.ts --run-fire-comparison [seed]
+ *   npx tsx audit/learner-simulations/src/adaptive-analysis.ts --all-latest
+ *   npx tsx audit/learner-simulations/src/adaptive-analysis.ts --run-fire-comparison [seed]
  */
 import { readFileSync, readdirSync, existsSync, mkdirSync, writeFileSync } from "fs";
 import { join, resolve } from "path";
@@ -51,7 +51,7 @@ function loadSummaryJson(runDir: string): Record<string, unknown> {
 }
 
 function loadProfile(profileId: string): LearnerProfile | null {
-  const path = join(process.cwd(), "simulations", "profiles", `${profileId}.json`);
+  const path = join(process.cwd(), "audit", "learner-simulations", "profiles", `${profileId}.json`);
   if (!existsSync(path)) return null;
   return JSON.parse(readFileSync(path, "utf-8"));
 }
@@ -497,7 +497,7 @@ async function runFIReComparison(seed: number): Promise<FIReResult[]> {
   const { SimulationRunner } = await import("./runner.js");
   const { createSimulationDb } = await import("./db-setup.js");
 
-  const profilesDir = join(process.cwd(), "simulations", "profiles");
+  const profilesDir = join(process.cwd(), "audit", "learner-simulations", "profiles");
   const profiles: LearnerProfile[] = readdirSync(profilesDir)
     .filter((f) => f.endsWith(".json"))
     .map((f) => JSON.parse(readFileSync(join(profilesDir, f), "utf-8")));
@@ -893,8 +893,8 @@ function generateReport(report: AdaptiveAnalysisReport): string {
 
 async function main() {
   const args = process.argv.slice(2);
-  const runsDir = join(process.cwd(), "simulations", "runs");
-  const reportsDir = join(process.cwd(), "simulations", "reports");
+  const runsDir = join(process.cwd(), "audit", "learner-simulations", "runs");
+  const reportsDir = join(process.cwd(), "audit", "reports");
   mkdirSync(reportsDir, { recursive: true });
 
   const runFireComparison = args.includes("--run-fire-comparison");

@@ -6,8 +6,8 @@
  * validates mastery curves, remediation chains, and worked example fading.
  *
  * Usage:
- *   npx tsx simulations/src/trajectory-analysis.ts [run-dir]
- *   npx tsx simulations/src/trajectory-analysis.ts --all-latest
+ *   npx tsx audit/learner-simulations/src/trajectory-analysis.ts [run-dir]
+ *   npx tsx audit/learner-simulations/src/trajectory-analysis.ts --all-latest
  */
 import { readFileSync, readdirSync, existsSync, writeFileSync } from "fs";
 import { join } from "path";
@@ -382,8 +382,8 @@ function formatReport(reports: TrajectoryReport[]): string {
 
 async function main() {
   const args = process.argv.slice(2);
-  const runsDir = join(process.cwd(), "simulations", "runs");
-  const reportsDir = join(process.cwd(), "simulations", "reports");
+  const runsDir = join(process.cwd(), "audit", "learner-simulations", "runs");
+  const reportsDir = join(process.cwd(), "audit", "reports");
 
   let runDirs: string[] = [];
 
@@ -403,8 +403,8 @@ async function main() {
     }
     runDirs = [dir];
   } else {
-    console.log("Usage: npx tsx simulations/src/trajectory-analysis.ts [run-dir]");
-    console.log("       npx tsx simulations/src/trajectory-analysis.ts --all-latest");
+    console.log("Usage: npx tsx audit/learner-simulations/src/trajectory-analysis.ts [run-dir]");
+    console.log("       npx tsx audit/learner-simulations/src/trajectory-analysis.ts --all-latest");
     process.exit(1);
   }
 

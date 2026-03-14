@@ -25,9 +25,9 @@ Run one or more healing iterations on the learn-platform adaptive engine. Reads 
 Before starting, verify:
 
 ```bash
-ls simulations/targets.json          # Target definitions exist
-ls simulations/src/evaluate.ts       # Evaluation engine exists
-ls simulations/src/heal-loop.ts      # Orchestrator exists
+ls audit/learner-simulations/targets.json          # Target definitions exist
+ls audit/learner-simulations/src/evaluate.ts       # Evaluation engine exists
+ls audit/learner-simulations/src/heal-loop.ts      # Orchestrator exists
 just test 2>&1 | tail -5             # Unit tests pass (baseline sanity)
 ```
 
@@ -55,8 +55,8 @@ just heal-epoch
 **Note:** FIRe compression runs by default (~10s). Use `--skip-fire` only when iterating on non-FIRe metrics.
 
 Read the output:
-- `simulations/reports/evaluation.json` — machine-readable results
-- `simulations/reports/evaluation.md` — human-readable report
+- `audit/reports/evaluation.json` — machine-readable results
+- `audit/reports/evaluation.md` — human-readable report
 
 **Parse the evaluation JSON:**
 - Sort systems by priority (P0 first, then P1, then P2)
@@ -75,7 +75,7 @@ Read the output:
 For the target failing system, read its `investigationArea` from the evaluation JSON:
 
 1. **Read the suggested source files** — use TLDR for structure first, then read specific functions
-2. **Read the relevant simulation events** — check `simulations/runs/` for the contributing profiles
+2. **Read the relevant simulation events** — check `audit/learner-simulations/runs/` for the contributing profiles
 3. **Inspect simulation data for the failing system** (see system-specific inspection below)
 4. **Trace the failing metric through the code path:**
    - Start at the metric computation in `evaluate.ts` — understand what's being measured
@@ -87,45 +87,45 @@ For the target failing system, read its `investigationArea` from the evaluation 
 
 When diagnosing a failing system, automatically inspect the relevant simulation data for the worst-contributing profile:
 
-Run structure: `simulations/runs/<profile>-<timestamp>/` contains `events.jsonl`, `summary.json`, `diagnostic-result.json`. Find the latest run for the worst-contributing profile:
+Run structure: `audit/learner-simulations/runs/<profile>-<timestamp>/` contains `events.jsonl`, `summary.json`, `diagnostic-result.json`. Find the latest run for the worst-contributing profile:
 
 ```bash
 # Find latest run for a profile (e.g., average-older)
-ls -t simulations/runs/<profile>-* | head -1
+ls -t audit/learner-simulations/runs/<profile>-* | head -1
 ```
 
 **For interleaving:**
 ```bash
 # Read events for worst-contributing profile — check strand adjacency
-cat simulations/runs/<latest-run>/events.jsonl | head -200
+cat audit/learner-simulations/runs/<latest-run>/events.jsonl | head -200
 ```
 Look for: consecutive same-topic problems, especially at session start (warmup phase). Count strand transitions vs same-strand adjacencies. If adjacency is clustered in warmup, the fix is warmup diversity; if spread throughout, the fix is shuffle algorithm.
 
 **For mastery_convergence:**
 ```bash
 # Read summary — check mastery trajectory across sessions
-cat simulations/runs/<latest-run>/summary.json
+cat audit/learner-simulations/runs/<latest-run>/summary.json
 ```
 Check `masteryCount` vs `materializedMasteryCount` in state snapshots. If `masteryCount` is flat but `materializedMasteryCount` grows, the student IS learning but total isn't updating. If both are flat, no progress.
 
 **For review_new_balance:**
 ```bash
 # Read events — check review vs new problem counts per session
-cat simulations/runs/<latest-run>/events.jsonl | grep '"type":"session"' | head -30
+cat audit/learner-simulations/runs/<latest-run>/events.jsonl | grep '"type":"session"' | head -30
 ```
 Look for: sessions with 0 new topics (all review), review ratio per session, whether new-topic count changes over time.
 
 **For fire_compression:**
 ```bash
 # Check evaluation results (requires --full for paired FIRe data)
-cat simulations/reports/evaluation.json
+cat audit/reports/evaluation.json
 ```
 Look at fire_compression metric details. Check fire-enabled vs fire-disabled review counts per profile. If counts are similar, FIRe credit is not meaningful enough. Also check encompassing edge density in `content/*/graph.json`.
 
 **For mastery_preservation:**
 ```bash
 # Read summary — check session 0 vs session 1 mastery counts
-cat simulations/runs/<latest-run>/summary.json
+cat audit/learner-simulations/runs/<latest-run>/summary.json
 ```
 Look for: mastery drop between session 0 (post-diagnostic) and session 1. If significant drop, check which topics lost mastery in `events.jsonl` and why (hard questions on warmup review).
 
@@ -424,4 +424,4 @@ When making fixes, follow these project conventions:
 - Run `just test` (never `pnpm vitest run` directly)
 - Tests in co-located `__tests__/` directories, `*.test.ts` naming
 - Content is source of truth in `content/` — D1 is disposable
-- Simulations use `simulations/src/` tooling with justfile recipes
+- Simulations use `audit/learner-simulations/src/` tooling with justfile recipes

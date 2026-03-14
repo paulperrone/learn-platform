@@ -7,10 +7,10 @@ dist/
 # Content lives in separate learn-content repo
 content/
 tools/visualize-graph.html
-simulations/runs/
-simulations/reports/evaluation.json
-simulations/reports/evaluation.md
-simulations/reports/healing/
+audit/learner-simulations/runs/
+audit/reports/evaluation.json
+audit/reports/evaluation.md
+audit/reports/healing/
 
 # Workflow
 CLAUDE.local.md

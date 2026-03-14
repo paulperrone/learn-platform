@@ -4,8 +4,8 @@
  * and produces a placement accuracy report with presentation seeding validation.
  *
  * Usage:
- *   npx tsx simulations/src/diagnostic-analysis.ts [--seed S]
- *   npx tsx simulations/src/diagnostic-analysis.ts --from-runs <dir1> [dir2...]
+ *   npx tsx audit/learner-simulations/src/diagnostic-analysis.ts [--seed S]
+ *   npx tsx audit/learner-simulations/src/diagnostic-analysis.ts --from-runs <dir1> [dir2...]
  */
 import { readFileSync, readdirSync, existsSync, mkdirSync, writeFileSync } from "fs";
 import { join, basename } from "path";
@@ -15,7 +15,7 @@ import type { LearnerProfile, DiagnosticRunResult } from "./types.js";
 // --- Profile loading ---
 
 function loadAllProfiles(): LearnerProfile[] {
-  const profilesDir = join(process.cwd(), "simulations", "profiles");
+  const profilesDir = join(process.cwd(), "audit", "learner-simulations", "profiles");
   return readdirSync(profilesDir)
     .filter((f) => f.endsWith(".json"))
     .map((f) => JSON.parse(readFileSync(join(profilesDir, f), "utf-8")));
@@ -427,7 +427,7 @@ async function main() {
 
   // Generate and save report
   const report = generateReport(results, assertions);
-  const reportsDir = join(process.cwd(), "simulations", "reports");
+  const reportsDir = join(process.cwd(), "audit", "reports");
   mkdirSync(reportsDir, { recursive: true });
   const reportPath = join(reportsDir, "diagnostic.md");
   writeFileSync(reportPath, report + "\n");

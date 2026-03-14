@@ -4,9 +4,9 @@
  * This is a CODE TEST — it validates that the relevance mapping works
  * correctly, not whether audit sections are stale.
  *
- * Usage: npx tsx tools/__tests__/audit-relevance.test.ts
+ * Usage: npx tsx audit/__tests__/audit-relevance.test.ts
  */
-import { checkRelevance, AUDIT_SECTIONS } from "../audit-relevance.js";
+import { checkRelevance, AUDIT_SECTIONS } from "../relevance.js";
 
 let passed = 0;
 let failed = 0;
@@ -79,7 +79,7 @@ assert(multiResult.recommendations.length > 0, "multi: has recommendations");
 
 console.log("\n=== Audit tool code change ===");
 
-const auditToolResult = checkRelevance(["tools/audit.ts"]);
+const auditToolResult = checkRelevance(["audit/orchestrator.ts"]);
 assert(sectionIds(auditToolResult).length === 8, "audit tool change maps to all sections");
 
 console.log("\n=== Graph service change ===");

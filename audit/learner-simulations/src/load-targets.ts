@@ -10,7 +10,7 @@ import type {
   TargetDirection,
 } from "./types.js";
 
-const TARGETS_PATH = join(process.cwd(), "simulations", "targets.json");
+const TARGETS_PATH = join(process.cwd(), "audit", "learner-simulations", "targets.json");
 
 type ValidationError = {
   field: string;
@@ -126,7 +126,7 @@ function validateProfileReferences(targets: TargetFile): ValidationError[] {
   }
 
   // Check that profile JSON files exist
-  const profilesDir = join(process.cwd(), "simulations", "profiles");
+  const profilesDir = join(process.cwd(), "audit", "learner-simulations", "profiles");
   for (const profileId of profileIds) {
     const profilePath = join(profilesDir, `${profileId}.json`);
     if (!existsSync(profilePath)) {

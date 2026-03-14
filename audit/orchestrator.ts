@@ -3,18 +3,18 @@
  * evaluation, LLM tracking, and media readiness checks into a single report.
  *
  * Usage:
- *   npx tsx tools/audit.ts              # Markdown to stdout + JSON to simulations/reports/audit-latest.json
- *   npx tsx tools/audit.ts --json       # JSON only
- *   npx tsx tools/audit.ts --save       # Also saves timestamped snapshot
- *   npx tsx tools/audit.ts --live       # Query deployed API for live analytics (requires AUDIT_API_URL)
+ *   npx tsx audit/orchestrator.ts              # Markdown to stdout + JSON to audit/reports/latest.json
+ *   npx tsx audit/orchestrator.ts --json       # JSON only
+ *   npx tsx audit/orchestrator.ts --save       # Also saves timestamped snapshot
+ *   npx tsx audit/orchestrator.ts --live       # Query deployed API for live analytics (requires AUDIT_API_URL)
  */
 import { readFileSync, writeFileSync, existsSync, readdirSync, mkdirSync, statSync } from "fs";
 import { join } from "path";
-import { getContentDir } from "./content-dir.js";
-import { generateContentStatus } from "./content-status.js";
-import { detectContentGaps } from "./content-gaps.js";
-import { generateDisciplineReport, listDisciplines } from "./content-report.js";
-import { renderAuditMarkdown } from "./audit-render.js";
+import { getContentDir } from "../tools/content-dir.js";
+import { generateContentStatus } from "./content/status.js";
+import { detectContentGaps } from "./content/gaps.js";
+import { generateDisciplineReport, listDisciplines } from "./content/report.js";
+import { renderAuditMarkdown } from "./render.js";
 import type {
   AuditReport, ItemStatus, StatusItem,
   GraphIntegritySection, ContentQualitySection, SimulationResultsSection,
@@ -22,11 +22,11 @@ import type {
   MultiDisciplineSection, SimulationSystem,
   ManifestSummary, DimensionCoverage, ContentVersionStatus,
   AuditThresholds, ThresholdLevel, AuditDelta,
-} from "./audit-types.js";
+} from "./types.js";
 
 // ── Thresholds ──
 
-const DEFAULT_THRESHOLDS_PATH = join(process.cwd(), "tools", "audit-thresholds.json");
+const DEFAULT_THRESHOLDS_PATH = join(process.cwd(), "audit", "thresholds.json");
 
 function loadThresholds(customPath?: string): AuditThresholds {
   const path = customPath ?? DEFAULT_THRESHOLDS_PATH;
@@ -462,7 +462,7 @@ function auditContentQuality(subject: string, thresholds: AuditThresholds): Cont
 // ── Simulation results ──
 
 function auditSimulationResults(): SimulationResultsSection {
-  const evalPath = join(process.cwd(), "simulations", "reports", "evaluation.json");
+  const evalPath = join(process.cwd(), "audit", "reports", "evaluation.json");
 
   if (!existsSync(evalPath)) {
     return {
@@ -857,7 +857,7 @@ export async function runAudit(opts: {
 
 // ── CLI entry point ──
 
-const isCLI = process.argv[1]?.includes("audit") && !process.argv[1]?.includes("audit-");
+const isCLI = process.argv[1]?.endsWith("orchestrator.ts") || process.argv[1]?.endsWith("orchestrator.js");
 if (isCLI) {
   (async () => {
     const args = process.argv.slice(2);
@@ -890,14 +890,13 @@ if (isCLI) {
     });
 
     // Always save latest JSON
-    const reportsDir = join(process.cwd(), "simulations", "reports");
-    if (existsSync(reportsDir)) {
-      writeFileSync(join(reportsDir, "audit-latest.json"), JSON.stringify(report, null, 2));
-    }
+    const reportsDir = join(process.cwd(), "audit", "reports");
+    if (!existsSync(reportsDir)) mkdirSync(reportsDir, { recursive: true });
+    writeFileSync(join(reportsDir, "latest.json"), JSON.stringify(report, null, 2));
 
     // Save timestamped snapshot
     if (save) {
-      const auditsDir = join(reportsDir, "audits");
+      const auditsDir = join(reportsDir, "snapshots");
       if (!existsSync(auditsDir)) mkdirSync(auditsDir, { recursive: true });
       const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
       writeFileSync(join(auditsDir, `${timestamp}.json`), JSON.stringify(report, null, 2));

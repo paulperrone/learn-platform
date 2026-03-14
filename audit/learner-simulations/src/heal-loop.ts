@@ -8,10 +8,10 @@
  * or by the user.
  *
  * Usage:
- *   npx tsx simulations/src/heal-loop.ts --epoch                    # Run single epoch
- *   npx tsx simulations/src/heal-loop.ts --status                   # Show healing status
- *   npx tsx simulations/src/heal-loop.ts --checkpoint               # Force checkpoint
- *   npx tsx simulations/src/heal-loop.ts --verify-fix --system <id> [--profiles <ids>] [--sessions <n>]
+ *   npx tsx audit/learner-simulations/src/heal-loop.ts --epoch                    # Run single epoch
+ *   npx tsx audit/learner-simulations/src/heal-loop.ts --status                   # Show healing status
+ *   npx tsx audit/learner-simulations/src/heal-loop.ts --checkpoint               # Force checkpoint
+ *   npx tsx audit/learner-simulations/src/heal-loop.ts --verify-fix --system <id> [--profiles <ids>] [--sessions <n>]
  */
 import {
   readFileSync,
@@ -47,9 +47,9 @@ import type {
 
 // ── Constants ────────────────────────────────────────────────────────
 
-const SIMULATIONS_DIR = join(process.cwd(), "simulations");
+const SIMULATIONS_DIR = join(process.cwd(), "audit", "learner-simulations");
 const RUNS_DIR = join(SIMULATIONS_DIR, "runs");
-const REPORTS_DIR = join(SIMULATIONS_DIR, "reports");
+const REPORTS_DIR = join(process.cwd(), "audit", "reports");
 const HEALING_DIR = join(REPORTS_DIR, "healing");
 const HISTORY_PATH = join(HEALING_DIR, "history.json");
 
@@ -238,7 +238,7 @@ async function runEpoch(
   const startSim = Date.now();
   try {
     execSync(
-      `npx tsx simulations/src/cli.ts --all --sessions ${sessions} --seed ${seed}`,
+      `npx tsx audit/learner-simulations/src/cli.ts --all --sessions ${sessions} --seed ${seed}`,
       { stdio: "inherit", cwd: process.cwd() }
     );
   } catch (err) {
@@ -425,7 +425,7 @@ async function verifyFix(
   // Run mini-sim for affected profiles
   console.log(`\n${BOLD}Running mini-simulation...${RESET}`);
   const profileArgs = profileIds
-    .map((p) => `npx tsx simulations/src/cli.ts ${p} --sessions ${sessions} --seed ${seed}`)
+    .map((p) => `npx tsx audit/learner-simulations/src/cli.ts ${p} --sessions ${sessions} --seed ${seed}`)
     .join(" && ");
   try {
     execSync(profileArgs, { stdio: "inherit", cwd: process.cwd() });
@@ -549,7 +549,7 @@ function createCheckpoint(): void {
     `  ${DIM}Commit: ${commitHash}${RESET}`
   );
   console.log(
-    `\n${DIM}To commit checkpoint: git add simulations/ && git commit -m "feat(heal): checkpoint ${checkpointNumber} — ${latest.systemsPassCount}/${latest.evaluationResult.systems.length} systems passing"${RESET}\n`
+    `\n${DIM}To commit checkpoint: git add audit/ && git commit -m "feat(heal): checkpoint ${checkpointNumber} — ${latest.systemsPassCount}/${latest.evaluationResult.systems.length} systems passing"${RESET}\n`
   );
 }
 

@@ -3,14 +3,14 @@
  * permanent filesystem storage, solving the 90-day TTL problem.
  *
  * Usage:
- *   npx tsx tools/rollup-effectiveness.ts              # Rollup from deployed API
- *   npx tsx tools/rollup-effectiveness.ts --json       # JSON only to stdout
+ *   npx tsx audit/rollup-effectiveness.ts              # Rollup from deployed API
+ *   npx tsx audit/rollup-effectiveness.ts --json       # JSON only to stdout
  *
  * Requires: AUDIT_API_URL and optionally AUDIT_API_TOKEN env vars.
  */
 import { writeFileSync, existsSync, mkdirSync } from "fs";
 import { join } from "path";
-import type { EffectivenessRollup } from "./audit-types.js";
+import type { EffectivenessRollup } from "./types.js";
 
 async function fetchAPI(baseUrl: string, path: string, token?: string): Promise<any | null> {
   try {
@@ -92,7 +92,7 @@ if (isCLI) {
     }
 
     // Save to filesystem
-    const rollupsDir = join(process.cwd(), "simulations", "reports", "effectiveness-rollups");
+    const rollupsDir = join(process.cwd(), "audit", "reports", "effectiveness-rollups");
     if (!existsSync(rollupsDir)) mkdirSync(rollupsDir, { recursive: true });
 
     const date = new Date().toISOString().split("T")[0];

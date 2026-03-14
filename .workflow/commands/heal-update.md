@@ -26,9 +26,9 @@ Analyzes recent codebase changes and proposes updates to targets, profiles, and 
 ## Prerequisites
 
 ```bash
-ls simulations/targets.json          # Target definitions exist
-ls simulations/src/detect-changes.ts # Change detection exists
-ls simulations/src/evaluate.ts       # Evaluation engine exists
+ls audit/learner-simulations/targets.json          # Target definitions exist
+ls audit/learner-simulations/src/detect-changes.ts # Change detection exists
+ls audit/learner-simulations/src/evaluate.ts       # Evaluation engine exists
 ```
 
 ---
@@ -40,7 +40,7 @@ ls simulations/src/evaluate.ts       # Evaluation engine exists
 Run change detection to understand what's different since the last healing epoch:
 
 ```bash
-npx tsx simulations/src/detect-changes.ts
+npx tsx audit/learner-simulations/src/detect-changes.ts
 ```
 
 Read the output. It will show:
@@ -68,7 +68,7 @@ For each detected change, determine the impact:
    - New topics may change topic counts in existing targets
    - New question types may need new cognitive demand targets
 
-4. **Simulation changes** (`simulations/`)
+4. **Simulation changes** (`audit/learner-simulations/`)
    - New profiles need profile expectations added to `targets.json`
    - Changed profiles may need updated expectations
    - Changed evaluation logic should be reviewed for correctness
@@ -101,13 +101,13 @@ For each proposed change, present a structured diff:
 After presenting all proposals, ask: "Apply these updates? (y/n/partial)"
 
 For each approved update:
-1. Update `simulations/targets.json` with new/modified targets
+1. Update `audit/learner-simulations/targets.json` with new/modified targets
 2. Bump the `version` field
 3. Update `lastUpdated` and `lastUpdatedReason`
-4. Create new profile files in `simulations/profiles/` if needed
-5. Update `simulations/src/evaluate.ts` if new metric computation is needed
-6. Append to `simulations/targets-changelog.md`
-7. Run `npx tsx simulations/src/load-targets.ts` to validate the updated targets
+4. Create new profile files in `audit/learner-simulations/profiles/` if needed
+5. Update `audit/learner-simulations/src/evaluate.ts` if new metric computation is needed
+6. Append to `audit/learner-simulations/targets-changelog.md`
+7. Run `npx tsx audit/learner-simulations/src/load-targets.ts` to validate the updated targets
 
 ### Step 5: Expansion Checklists
 
@@ -118,10 +118,10 @@ Run the appropriate checklist based on discipline type.
 #### Adding a New Subject (all disciplines)
 
 1. Identify discipline type from `content/<subject>/graph.json` → look for `discipline` and `progressionModel`
-2. Create subject-specific profiles in `simulations/profiles/`:
+2. Create subject-specific profiles in `audit/learner-simulations/profiles/`:
    - At minimum: strong, average, struggling variants with ability curves for the new content
    - Set appropriate misconceptions for the subject domain
-3. Add profile expectations to `targets.json` `profile_expectations`
+3. Add profile expectations to `audit/learner-simulations/targets.json` `profile_expectations`
 4. Check if discipline type introduces new evaluation dimensions:
    - **Mastery-gated:** Standard targets apply. Verify prerequisite graph is strict.
    - **Context-layered:** Add `depth_progression` target (students advance through survey → contextual → analytical). Adjust mastery thresholds (softer gates). Consider rubric-based scoring targets.
@@ -134,7 +134,7 @@ Run the appropriate checklist based on discipline type.
 
 1. Check if the type affects cognitive demand distribution (update `cognitive_demand_entropy` target if needed)
 2. Check if it changes difficulty calibration expectations (update `content_quality` thresholds)
-3. Verify `simulations/src/answer-engine.ts` can handle the new type
+3. Verify `audit/learner-simulations/src/answer-engine.ts` can handle the new type
 4. Update content quality thresholds if the type has different accuracy expectations
 
 #### Adding Cross-Discipline Prerequisites
@@ -176,4 +176,5 @@ Content-signal targets should output advisory warnings, not FAIL status, until t
 - Strict TypeScript, no `any`
 - Run `just test` (never `pnpm vitest run` directly)
 - Target derivation methodology is documented in `docs/simulation-targets.md`
+
 - Every target must cite a learning science finding or architectural requirement

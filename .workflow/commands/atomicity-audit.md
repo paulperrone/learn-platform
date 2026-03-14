@@ -23,14 +23,14 @@ Run the context assembler to gather topic data, MA cross-references, and problem
 CONTEXT_ARGS=""
 # If --strand was passed, add it
 # If --topic was passed, add it
-# If previous results exist and --force not passed, add --previous docs/audits/atomicity-latest.json
+# If previous results exist and --force not passed, add --previous audit/reports/atomicity-latest.json
 
-npx tsx tools/atomicity-context.ts $CONTEXT_ARGS --output docs/audits/context.json
+npx tsx audit/content/atomicity-context.ts $CONTEXT_ARGS --output audit/reports/context.json
 ```
 
 ### 2. Read the Context
 
-Read `docs/audits/context.json`. It contains:
+Read `audit/reports/context.json`. It contains:
 - Per-topic: name, description, grade, strand, sample problems, prerequisites, dependents, encompassing edges, strand neighbors, MA matches
 - Graph stats: density metrics, strand counts
 - The 5 heuristics to apply
@@ -70,7 +70,7 @@ This keeps context focused and prevents assessment drift across unrelated strand
 
 ### 5. Write Results
 
-Write the audit results to `docs/audits/atomicity-{timestamp}.json`:
+Write the audit results to `audit/reports/atomicity-{timestamp}.json`:
 
 ```json
 {
@@ -116,11 +116,11 @@ Write the audit results to `docs/audits/atomicity-{timestamp}.json`:
 }
 ```
 
-Also copy the JSON to `docs/audits/atomicity-latest.json` so future runs can skip assessed topics.
+Also copy the JSON to `audit/reports/atomicity-latest.json` so future runs can skip assessed topics.
 
 ### 6. Write Markdown Report
 
-Write a human-readable report to `docs/audits/atomicity-{timestamp}.md` with:
+Write a human-readable report to `audit/reports/atomicity-{timestamp}.md` with:
 
 - Summary table (verdict counts, heuristic fail rates)
 - Split recommendations table (topic, proposed sub-topics, evidence)
@@ -140,7 +140,7 @@ After writing files, print a summary:
 
 Remove the temporary context file:
 ```bash
-rm -f docs/audits/context.json
+rm -f audit/reports/context.json
 ```
 
 ## Guidelines

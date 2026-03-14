@@ -4,7 +4,7 @@
  * handling, system evaluation). This is a CODE TEST — it validates that
  * the evaluation tool works correctly, not that the system meets targets.
  *
- * Usage: npx tsx simulations/src/__tests__/evaluate.test.ts
+ * Usage: npx tsx audit/learner-simulations/src/__tests__/evaluate.test.ts
  */
 import {
   classifyResult,
@@ -150,7 +150,7 @@ console.log("\n4. All 10 system targets produce valid classification");
 
 console.log("\n5. Evaluate runs against existing simulation data");
 {
-  const runsDir = join(process.cwd(), "simulations", "runs");
+  const runsDir = join(process.cwd(), "audit", "learner-simulations", "runs");
   if (existsSync(runsDir)) {
     const { targets } = loadTargets();
 
@@ -206,7 +206,7 @@ console.log("\n6. Graceful handling of missing runs directory");
 
 console.log("\n7. Report JSON is parseable");
 {
-  const jsonPath = join(process.cwd(), "simulations", "reports", "evaluation.json");
+  const jsonPath = join(process.cwd(), "audit", "reports", "evaluation.json");
   if (existsSync(jsonPath)) {
     const raw = readFileSync(jsonPath, "utf-8");
     const parsed = JSON.parse(raw);
@@ -224,7 +224,7 @@ console.log("\n7. Report JSON is parseable");
 
 console.log("\n8. Markdown report generates correctly");
 {
-  const mdPath = join(process.cwd(), "simulations", "reports", "evaluation.md");
+  const mdPath = join(process.cwd(), "audit", "reports", "evaluation.md");
   if (existsSync(mdPath)) {
     const content = readFileSync(mdPath, "utf-8");
     assert(content.includes("# Evaluation Report"), "Has title");

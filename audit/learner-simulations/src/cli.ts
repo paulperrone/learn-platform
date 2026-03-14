@@ -3,8 +3,8 @@
  * Simulation CLI — run synthetic learners through the learning engine.
  *
  * Usage:
- *   npx tsx simulations/src/cli.ts <profile> [--sessions N] [--seed S]
- *   npx tsx simulations/src/cli.ts --all [--sessions N] [--seed S]
+ *   npx tsx audit/learner-simulations/src/cli.ts <profile> [--sessions N] [--seed S]
+ *   npx tsx audit/learner-simulations/src/cli.ts --all [--sessions N] [--seed S]
  */
 import { readFileSync, readdirSync, existsSync, statSync } from "fs";
 import { join } from "path";
@@ -12,7 +12,7 @@ import { SimulationRunner } from "./runner.js";
 import type { LearnerProfile, SimulationConfig } from "./types.js";
 
 function loadProfile(profileId: string): LearnerProfile {
-  const profilePath = join(process.cwd(), "simulations", "profiles", `${profileId}.json`);
+  const profilePath = join(process.cwd(), "audit", "learner-simulations", "profiles", `${profileId}.json`);
   if (!existsSync(profilePath)) {
     throw new Error(`Profile not found: ${profilePath}`);
   }
@@ -20,7 +20,7 @@ function loadProfile(profileId: string): LearnerProfile {
 }
 
 function loadAllProfiles(): LearnerProfile[] {
-  const profilesDir = join(process.cwd(), "simulations", "profiles");
+  const profilesDir = join(process.cwd(), "audit", "learner-simulations", "profiles");
   if (!existsSync(profilesDir)) {
     throw new Error(`Profiles directory not found: ${profilesDir}`);
   }
@@ -65,12 +65,12 @@ async function main() {
   const { profiles, sessions, seed, all, schedule, discipline } = parseArgs();
 
   if (!all && profiles.length === 0) {
-    console.log("Usage: npx tsx simulations/src/cli.ts <profile> [--sessions N] [--seed S] [--schedule TYPE] [--discipline DISCIPLINE]");
-    console.log("       npx tsx simulations/src/cli.ts --all [--sessions N] [--seed S] [--schedule TYPE] [--discipline DISCIPLINE]");
+    console.log("Usage: npx tsx audit/learner-simulations/src/cli.ts <profile> [--sessions N] [--seed S] [--schedule TYPE] [--discipline DISCIPLINE]");
+    console.log("       npx tsx audit/learner-simulations/src/cli.ts --all [--sessions N] [--seed S] [--schedule TYPE] [--discipline DISCIPLINE]");
     console.log("\nSchedule types: daily, irregular, weekday, gap-and-return, burst, weekend-only, decay, completion-break");
     console.log("\nDiscipline: math (default), ela, history, or comma-separated for multi-discipline");
     console.log("\nAvailable profiles:");
-    const profilesDir = join(process.cwd(), "simulations", "profiles");
+    const profilesDir = join(process.cwd(), "audit", "learner-simulations", "profiles");
     if (existsSync(profilesDir)) {
       for (const f of readdirSync(profilesDir).filter((f) => f.endsWith(".json"))) {
         const p: LearnerProfile = JSON.parse(readFileSync(join(profilesDir, f), "utf-8"));
@@ -133,14 +133,14 @@ async function main() {
 
   // Report runs directory size
   const totalSize = getRunsDirSize();
-  console.log(`\nTotal simulations/runs/ size: ${formatBytes(totalSize)}`);
+  console.log(`\nTotal audit/learner-simulations/runs/ size: ${formatBytes(totalSize)}`);
   if (totalSize > 500 * 1024 * 1024) {
     console.warn(`⚠ Runs directory exceeds 500MB. Run: just simulate-clean`);
   }
 }
 
 function getRunsDirSize(): number {
-  const runsDir = join(process.cwd(), "simulations", "runs");
+  const runsDir = join(process.cwd(), "audit", "learner-simulations", "runs");
   if (!existsSync(runsDir)) return 0;
   let size = 0;
   const walk = (dir: string) => {

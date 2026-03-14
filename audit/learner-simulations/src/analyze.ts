@@ -6,12 +6,12 @@
  * generates HTML charts, snapshots baselines, and analyzes content quality.
  *
  * Usage:
- *   npx tsx simulations/src/analyze.ts [run-dir]           # Analyze specific run
- *   npx tsx simulations/src/analyze.ts --all-latest         # Analyze latest run per profile
- *   npx tsx simulations/src/analyze.ts --baseline           # Snapshot metrics to baseline.json
- *   npx tsx simulations/src/analyze.ts --compare <baseline> # Compare current vs baseline
- *   npx tsx simulations/src/analyze.ts --content-quality    # Content quality signals
- *   npx tsx simulations/src/analyze.ts --report             # Full combined report
+ *   npx tsx audit/learner-simulations/src/analyze.ts [run-dir]           # Analyze specific run
+ *   npx tsx audit/learner-simulations/src/analyze.ts --all-latest         # Analyze latest run per profile
+ *   npx tsx audit/learner-simulations/src/analyze.ts --baseline           # Snapshot metrics to baseline.json
+ *   npx tsx audit/learner-simulations/src/analyze.ts --compare <baseline> # Compare current vs baseline
+ *   npx tsx audit/learner-simulations/src/analyze.ts --content-quality    # Content quality signals
+ *   npx tsx audit/learner-simulations/src/analyze.ts --report             # Full combined report
  */
 import {
   readFileSync,
@@ -70,7 +70,8 @@ function loadDiagnosticResult(runDir: string): DiagnosticRunResult | null {
 function loadProfile(profileId: string): LearnerProfile | null {
   const path = join(
     process.cwd(),
-    "simulations",
+    "audit",
+    "learner-simulations",
     "profiles",
     `${profileId}.json`
   );
@@ -1014,9 +1015,9 @@ function generateContentQualityReport(cq: ContentQualityReport): string {
 
 async function main() {
   const args = process.argv.slice(2);
-  const runsDir = join(process.cwd(), "simulations", "runs");
-  const reportsDir = join(process.cwd(), "simulations", "reports");
-  const baselinePath = join(process.cwd(), "simulations", "baseline.json");
+  const runsDir = join(process.cwd(), "audit", "learner-simulations", "runs");
+  const reportsDir = join(process.cwd(), "audit", "reports");
+  const baselinePath = join(process.cwd(), "audit", "learner-simulations", "baseline.json");
   mkdirSync(reportsDir, { recursive: true });
 
   const doBaseline = args.includes("--baseline");

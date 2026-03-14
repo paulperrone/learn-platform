@@ -3,10 +3,10 @@
  * Simulation run cleanup tool.
  *
  * Usage:
- *   npx tsx simulations/src/clean.ts                      # Keep latest run per profile
- *   npx tsx simulations/src/clean.ts --keep 3             # Keep 3 most recent per profile
- *   npx tsx simulations/src/clean.ts --older-than 7d      # Delete runs older than 7 days
- *   npx tsx simulations/src/clean.ts --dry-run             # Show what would be deleted
+ *   npx tsx audit/learner-simulations/src/clean.ts                      # Keep latest run per profile
+ *   npx tsx audit/learner-simulations/src/clean.ts --keep 3             # Keep 3 most recent per profile
+ *   npx tsx audit/learner-simulations/src/clean.ts --older-than 7d      # Delete runs older than 7 days
+ *   npx tsx audit/learner-simulations/src/clean.ts --dry-run             # Show what would be deleted
  */
 import { readdirSync, statSync, rmSync, existsSync } from "fs";
 import { join } from "path";
@@ -68,7 +68,7 @@ function formatBytes(bytes: number): string {
 
 function main() {
   const { keep, olderThanMs, dryRun } = parseArgs();
-  const runsDir = join(process.cwd(), "simulations", "runs");
+  const runsDir = join(process.cwd(), "audit", "learner-simulations", "runs");
 
   if (!existsSync(runsDir)) {
     console.log("No runs directory found.");
@@ -157,7 +157,7 @@ function main() {
 function printSize(runsDir: string) {
   if (existsSync(runsDir)) {
     const totalSize = getDirSize(runsDir);
-    console.log(`\nTotal simulations/runs/ size: ${formatBytes(totalSize)}`);
+    console.log(`\nTotal audit/learner-simulations/runs/ size: ${formatBytes(totalSize)}`);
     if (totalSize > 500 * 1024 * 1024) {
       console.warn(`⚠ Runs directory exceeds 500MB. Consider running: just simulate-clean`);
     }

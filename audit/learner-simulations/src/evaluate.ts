@@ -6,14 +6,14 @@
  *           compareAgainstTargets() → generateReport()
  *
  * Usage:
- *   npx tsx simulations/src/evaluate.ts                              # evaluate latest runs
- *   npx tsx simulations/src/evaluate.ts --runs-dir <dir>             # evaluate specific directory
- *   npx tsx simulations/src/evaluate.ts --profiles average-older,strong-older
- *   npx tsx simulations/src/evaluate.ts --json                       # JSON-only output
- *   npx tsx simulations/src/evaluate.ts --run-fire                    # run FIRe comparison (disabled by default)
- *   npx tsx simulations/src/evaluate.ts --fire-isolation              # run FIRe isolation diagnostic (4 modes × 3 profiles)
- *   npx tsx simulations/src/evaluate.ts --level l2                   # tag report with maturity level + save baseline
- *   npx tsx simulations/src/evaluate.ts --compare-levels             # compare baselines across maturity levels
+ *   npx tsx audit/learner-simulations/src/evaluate.ts                              # evaluate latest runs
+ *   npx tsx audit/learner-simulations/src/evaluate.ts --runs-dir <dir>             # evaluate specific directory
+ *   npx tsx audit/learner-simulations/src/evaluate.ts --profiles average-older,strong-older
+ *   npx tsx audit/learner-simulations/src/evaluate.ts --json                       # JSON-only output
+ *   npx tsx audit/learner-simulations/src/evaluate.ts --run-fire                    # run FIRe comparison (disabled by default)
+ *   npx tsx audit/learner-simulations/src/evaluate.ts --fire-isolation              # run FIRe isolation diagnostic (4 modes × 3 profiles)
+ *   npx tsx audit/learner-simulations/src/evaluate.ts --level l2                   # tag report with maturity level + save baseline
+ *   npx tsx audit/learner-simulations/src/evaluate.ts --compare-levels             # compare baselines across maturity levels
  */
 import {
   readFileSync,
@@ -74,7 +74,7 @@ function loadDiagnosticResult(runDir: string): DiagnosticRunResult | null {
 }
 
 function loadProfile(profileId: string): LearnerProfile | null {
-  const path = join(process.cwd(), "simulations", "profiles", `${profileId}.json`);
+  const path = join(process.cwd(), "audit", "learner-simulations", "profiles", `${profileId}.json`);
   if (!existsSync(path)) return null;
   return JSON.parse(readFileSync(path, "utf-8"));
 }
@@ -1066,7 +1066,7 @@ function saveLevelBaseline(
   seed: number,
   sessionCount: number,
 ): void {
-  const baselineDir = join(process.cwd(), "simulations", "baselines");
+  const baselineDir = join(process.cwd(), "audit", "learner-simulations", "baselines");
   mkdirSync(baselineDir, { recursive: true });
 
   const baseline: LevelBaseline = {
@@ -1088,11 +1088,11 @@ function saveLevelBaseline(
     join(baselineDir, `${level}.json`),
     JSON.stringify(baseline, null, 2) + "\n"
   );
-  console.log(`Baseline saved: simulations/baselines/${level}.json`);
+  console.log(`Baseline saved: audit/learner-simulations/baselines/${level}.json`);
 }
 
 function compareLevels(): void {
-  const baselineDir = join(process.cwd(), "simulations", "baselines");
+  const baselineDir = join(process.cwd(), "audit", "learner-simulations", "baselines");
   const levels: MaturityLevel[] = ["l1", "l2", "l3", "l4", "l5"];
   const loaded: LevelBaseline[] = [];
 
@@ -1190,7 +1190,7 @@ async function computeFIReEfficiency(
   evaluationSessions?: number
 ): Promise<{ actual: number; contributing: string[] }> {
   const { SimulationRunner } = await import("./runner.js");
-  const profilesDir = join(process.cwd(), "simulations", "profiles");
+  const profilesDir = join(process.cwd(), "audit", "learner-simulations", "profiles");
   // Profiles that exercise FIRe credit: moderate ability (topics stay in Review
   // state long enough for virtual reviews), not too strong (topics mastered too
   // quickly → FIRe skips → butterfly effect noise dominates the measurement).
@@ -1271,7 +1271,7 @@ type FIReProfileResult = Record<FIReIsolationMode, FIReModeResult>;
 
 async function computeFIReIsolation(seed: number = 42): Promise<void> {
   const { SimulationRunner } = await import("./runner.js");
-  const profilesDir = join(process.cwd(), "simulations", "profiles");
+  const profilesDir = join(process.cwd(), "audit", "learner-simulations", "profiles");
   const testProfileIds = ["average-older", "misconception-fractions", "fast-learner"];
   const sessionCount = 15;
   const modes: { id: FIReIsolationMode; label: string; fireMode: "both" | "credit-only" | "ordering-only" | "neither" }[] = [
@@ -1352,7 +1352,7 @@ async function computeFIReIsolation(seed: number = 42): Promise<void> {
   }
 
   // Write results to a JSON file for Phase 5.5 reference
-  const reportsDir = join(process.cwd(), "simulations", "reports");
+  const reportsDir = join(process.cwd(), "audit", "reports");
   mkdirSync(reportsDir, { recursive: true });
   const isolationReport = {
     date: new Date().toISOString(),
@@ -1660,7 +1660,7 @@ async function main() {
   const runsDirIdx = args.indexOf("--runs-dir");
   const runsDir = runsDirIdx >= 0
     ? args[runsDirIdx + 1]
-    : join(process.cwd(), "simulations", "runs");
+    : join(process.cwd(), "audit", "learner-simulations", "runs");
 
   const profilesIdx = args.indexOf("--profiles");
   const filterProfiles = profilesIdx >= 0
@@ -1748,7 +1748,7 @@ async function main() {
   );
 
   // Output
-  const reportsDir = join(process.cwd(), "simulations", "reports");
+  const reportsDir = join(process.cwd(), "audit", "reports");
   mkdirSync(reportsDir, { recursive: true });
 
   // JSON output

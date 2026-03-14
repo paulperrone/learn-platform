@@ -4,7 +4,7 @@
  * convergence detection, checkpoint generation). This is a CODE TEST —
  * it validates that the healing tool works correctly, not system health.
  *
- * Usage: npx tsx simulations/src/__tests__/heal-loop.test.ts
+ * Usage: npx tsx audit/learner-simulations/src/__tests__/heal-loop.test.ts
  */
 import {
   computeDelta,

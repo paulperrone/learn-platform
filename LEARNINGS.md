@@ -335,7 +335,7 @@ The diagnostic's binary search has two related issues revealed by simulation acr
 
 2. **Bounds lock-in:** Once `searchLow = searchHigh`, incorrect answers at that grade can't lower searchHigh (since `Math.min(searchHigh, topicGrade)` is a no-op). All 10 profiles converge to `searchLow = searchHigh` by completion. The diagnostic stops at exactly 8 questions (MIN_QUESTIONS) every time — it converges quickly but potentially prematurely.
 
-**Impact:** The learning session's adaptive difficulty targeting and remediation partially compensate, but struggling students may face initial frustration from inflated placement. Specific fix suggestions documented in `simulations/reports/diagnostic.md` for Phase 6.
+**Impact:** The learning session's adaptive difficulty targeting and remediation partially compensate, but struggling students may face initial frustration from inflated placement. Specific fix suggestions documented in `audit/reports/diagnostic.md` for Phase 6.
 
 ---
 
@@ -533,7 +533,7 @@ When presentation weights are snapped (values below `snapThreshold` redistribute
 **Source:** Plan 017.5 Phase 5
 **Area:** Testing / schema migrations
 
-Adding a column to `schema.ts` and generating a D1 migration is not enough. The vitest workers (miniflare) use hardcoded CREATE TABLE statements in `packages/api/src/__tests__/helpers.ts`, and simulations use a separate copy in `simulations/src/db-setup.ts`. Both must be updated manually when schema changes. Forgetting either causes "no such column" errors only visible at test/simulation runtime.
+Adding a column to `schema.ts` and generating a D1 migration is not enough. The vitest workers (miniflare) use hardcoded CREATE TABLE statements in `packages/api/src/__tests__/helpers.ts`, and simulations use a separate copy in `audit/learner-simulations/src/db-setup.ts`. Both must be updated manually when schema changes. Forgetting either causes "no such column" errors only visible at test/simulation runtime.
 
 ---
 
@@ -587,7 +587,7 @@ Simulation scripts run via `npx tsx` default to CJS output format. Top-level `aw
 **Source:** Plan 017.7 Phase 5
 **Area:** Simulation tooling
 
-`loadTargets()` in `simulations/src/load-targets.ts` returns `{ targets, errors, warnings }` (type `LoadResult`), not a raw `TargetFile`. Code consuming targets must destructure: `const { targets } = loadTargets()`. This tripped up `detect-changes.ts` which tried to call `Object.entries(targets.systems)` on the wrapper object.
+`loadTargets()` in `audit/learner-simulations/src/load-targets.ts` returns `{ targets, errors, warnings }` (type `LoadResult`), not a raw `TargetFile`. Code consuming targets must destructure: `const { targets } = loadTargets()`. This tripped up `detect-changes.ts` which tried to call `Object.entries(targets.systems)` on the wrapper object.
 
 ---
 
@@ -776,7 +776,7 @@ When designing context-layered subjects (history), foundational skill topics (e.
 **Source:** Plan 018 Phase 6
 **Area:** Simulation / DB setup
 
-`simulations/src/db-setup.ts` has hardcoded CREATE TABLE statements (not generated from Drizzle schema). When Phase 3.5 added the `source` column to `assessment_content`, the simulation DDL wasn't updated, causing "no such column: source" errors. Fix: manually added the column. Future schema migrations that add columns used by services must also update `db-setup.ts SCHEMA_STATEMENTS`.
+`audit/learner-simulations/src/db-setup.ts` has hardcoded CREATE TABLE statements (not generated from Drizzle schema). When Phase 3.5 added the `source` column to `assessment_content`, the simulation DDL wasn't updated, causing "no such column: source" errors. Fix: manually added the column. Future schema migrations that add columns used by services must also update `db-setup.ts SCHEMA_STATEMENTS`.
 
 ---
 
@@ -862,7 +862,7 @@ Removing encompassing edges for the "without FIRe" comparison changes TWO things
 
 Isolation experiments (4 modes × 3 profiles) show that `applyFIReCredit()` virtual FSRS reviews are the primary cause of negative FIRe efficiency at 15 sessions (-25.5% avg across profiles). The credit extends child topic stability, which delays their natural mastery through actual reviews. Set-cover ordering in `compressReviews()` is neutral for 2/3 profiles — it selects the same topics as simple most-overdue at this horizon. Large non-additive interactions (+29.6% for fast-learner) mean the mechanisms partially cancel each other when combined.
 
-**Context:** FIRe diagnostic available via `npx tsx simulations/src/evaluate.ts --fire-isolation`. `FireDiagnosticConfig` (`disableCredit`, `disableOrdering`) passed through `createSessionService` → `createSRSService` — optional params that default to current production behavior.
+**Context:** FIRe diagnostic available via `npx tsx audit/learner-simulations/src/evaluate.ts --fire-isolation`. `FireDiagnosticConfig` (`disableCredit`, `disableOrdering`) passed through `createSessionService` → `createSRSService` — optional params that default to current production behavior.
 
 ---
 
@@ -973,7 +973,7 @@ The `problems-generated/` directory has 207 files (one per topic with < 15 hand-
 
 At 705 topics (MA-comparable density), the atomicity audit found 27.9% "should-merge" (197 topics). This is expected — the Wave 1-3 expansion deliberately added fine-grained sub-skill topics (slope-from-graph, slope-from-table, calculate-slope; add-fractions-like-denom, subtract-fractions-like-denom separately). The dominant merge pattern is **operation sub-splits**: separate add/subtract variants of the same operation already covered by a combined parent. Secondary patterns: skip-counting sub-topics (count-by-2s/5s/10s), fluency variants (fluent-level topics duplicate base topics), and statistics individual measures (mean, median, mode duplicating measures-of-center). Only 2.4% should-split. At this density, over-granularity is the more common failure mode, not under-granularity.
 
-**Context:** Audit results in `docs/audits/atomicity-latest.json`. Merges deferred to Plan 022 (post-expansion validation).
+**Context:** Audit results in `audit/reports/atomicity-latest.json`. Merges deferred to Plan 022 (post-expansion validation).
 
 ---
 
@@ -1026,7 +1026,7 @@ The mastery convergence metric ("≥50% of non-struggling profiles reach 50% tot
 **Source:** User session — Plan 022 Phase 3
 **Area:** Simulation / maturity levels
 
-`simulate-l4` and `simulate-l5` run only the 7 key profiles (average-older, fast-learner-older, struggling-older, returning-after-gap, misconception-fractions, strong-highschool, multi-math-strong). But `just evaluate` reads the latest run for ALL profiles found in `simulations/runs/`. This means if you ran L3 (all profiles) before L4, many L3 profile runs will still be present and will be evaluated alongside the 7 fresh L4 runs — the session counts will be mixed (some 180, some 90). The L4/L5 maturity level label and `maxSessions` will be computed from all runs, not just the 7 you just ran. To get a clean L4/L5 evaluation: run `just simulate-clean --keep 1` first, OR accept that mixed-session metrics are filtered by the evaluation code (L3+ metrics use runs from the longest sessions only).
+`simulate-l4` and `simulate-l5` run only the 7 key profiles (average-older, fast-learner-older, struggling-older, returning-after-gap, misconception-fractions, strong-highschool, multi-math-strong). But `just evaluate` reads the latest run for ALL profiles found in `audit/learner-simulations/runs/`. This means if you ran L3 (all profiles) before L4, many L3 profile runs will still be present and will be evaluated alongside the 7 fresh L4 runs — the session counts will be mixed (some 180, some 90). The L4/L5 maturity level label and `maxSessions` will be computed from all runs, not just the 7 you just ran. To get a clean L4/L5 evaluation: run `just simulate-clean --keep 1` first, OR accept that mixed-session metrics are filtered by the evaluation code (L3+ metrics use runs from the longest sessions only).
 
 **Context:** The evaluate.ts `computeL3Metrics` uses `nonStruggling` runs but doesn't filter by session count. Mixed-session runs inflate or deflate some averages. Pragmatic workaround: the L4/L5 baselines in practice reflect mixed data, which is fine for trend comparison.
 
@@ -1119,4 +1119,4 @@ When adding new columns to existing tables, `drizzle-kit generate` may prompt "I
 
 To make a `npx tsx` script importable as a module: (1) wrap all computation in an exported function, (2) guard CLI output with `const isCLI = process.argv[1]?.includes('script-name'); if (isCLI) { ... }`. This prevents the script from executing on import while keeping `npx tsx tools/script.ts` working. Don't use `import.meta.url` comparison — it doesn't work reliably with tsx.
 
-**Context:** Any time you need to import logic from an existing CLI tool. See content-status.ts, content-gaps.ts, content-report.ts for examples.
+**Context:** Any time you need to import logic from an existing CLI tool. See audit/content/status.ts, audit/content/gaps.ts, audit/content/report.ts for examples.

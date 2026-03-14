@@ -72,7 +72,7 @@ validate-content-strict:
 
 # Fast simulation regression check (~15s, 3 profiles × 5 sessions)
 regression *args:
-    npx tsx simulations/src/regression.ts {{args}}
+    npx tsx audit/learner-simulations/src/regression.ts {{args}}
 
 # Full pre-commit validation gate (typecheck + tests + content + regression)
 validate: typecheck test validate-content regression
@@ -112,15 +112,15 @@ build-web:
 
 # Content health scoring (per-topic analysis)
 content-status *args:
-    npx tsx tools/content-status.ts {{args}}
+    npx tsx audit/content/status.ts {{args}}
 
 # Content gap detection (ranked by impact)
 content-gaps *args:
-    npx tsx tools/content-gaps.ts {{args}}
+    npx tsx audit/content/gaps.ts {{args}}
 
 # Content density and coverage report
 content-report *args:
-    npx tsx tools/content-report.ts {{args}}
+    npx tsx audit/content/report.ts {{args}}
 
 # Unified system audit (graph + content + simulation + LLM tracking + media + review)
 # Pass --check to run relevance guard first (shows which sections may be stale)
@@ -132,20 +132,20 @@ audit *args:
     for arg in {{args}}; do
         if [ "$arg" = "--check" ]; then
             echo "── Audit Relevance Check ──"
-            npx tsx tools/audit-relevance.ts --content-dir "{{content_dir}}"
+            npx tsx audit/relevance.ts --content-dir "{{content_dir}}"
             echo ""
             echo "── Full Audit Report ──"
             break
         fi
     done
-    # Filter out --check before passing to audit.ts
+    # Filter out --check before passing to orchestrator.ts
     filtered_args=""
     for arg in {{args}}; do
         if [ "$arg" != "--check" ]; then
             filtered_args="$filtered_args $arg"
         fi
     done
-    npx tsx tools/audit.ts $filtered_args
+    npx tsx audit/orchestrator.ts $filtered_args
 
 # Comprehensive audit: simulate + evaluate + audit report
 audit-all sessions="30" seed="42":
@@ -158,61 +158,61 @@ audit-check:
     #!/usr/bin/env bash
     set -euo pipefail
     export CONTENT_DIR="{{content_dir}}"
-    npx tsx tools/audit-relevance.ts --content-dir "{{content_dir}}"
+    npx tsx audit/relevance.ts --content-dir "{{content_dir}}"
 
 # Effectiveness rollup from Analytics Engine
 rollup-effectiveness *args:
     #!/usr/bin/env bash
     set -euo pipefail
-    npx tsx tools/rollup-effectiveness.ts {{args}}
+    npx tsx audit/rollup-effectiveness.ts {{args}}
 
 # Atomicity audit context assembler (use /atomicity-audit command for full audit)
 atomicity-context *args:
-    npx tsx tools/atomicity-context.ts {{args}}
+    npx tsx audit/content/atomicity-context.ts {{args}}
 
 # ── Simulations (auditing) ──
 # Run synthetic learners through the engine to evaluate system behavior.
 
 # Run simulation for a single profile
 simulate profile sessions="5" seed="42":
-    npx tsx simulations/src/cli.ts {{profile}} --sessions {{sessions}} --seed {{seed}}
+    npx tsx audit/learner-simulations/src/cli.ts {{profile}} --sessions {{sessions}} --seed {{seed}}
 
 # Run simulation for all profiles
 simulate-all sessions="5" seed="42":
-    npx tsx simulations/src/cli.ts --all --sessions {{sessions}} --seed {{seed}}
+    npx tsx audit/learner-simulations/src/cli.ts --all --sessions {{sessions}} --seed {{seed}}
 
 # Run diagnostic analysis for all profiles
 simulate-diagnostic seed="42":
-    npx tsx simulations/src/diagnostic-analysis.ts --seed {{seed}}
+    npx tsx audit/learner-simulations/src/diagnostic-analysis.ts --seed {{seed}}
 
 # Analyze trajectories from latest simulation runs
 simulate-trajectories:
-    npx tsx simulations/src/trajectory-analysis.ts --all-latest
+    npx tsx audit/learner-simulations/src/trajectory-analysis.ts --all-latest
 
 # Analyze trajectory from a specific run directory
 simulate-trajectory run-dir:
-    npx tsx simulations/src/trajectory-analysis.ts {{run-dir}}
+    npx tsx audit/learner-simulations/src/trajectory-analysis.ts {{run-dir}}
 
 # Analyze adaptive systems (Phase 4) from latest simulation runs
 simulate-adaptive:
-    npx tsx simulations/src/adaptive-analysis.ts --all-latest
+    npx tsx audit/learner-simulations/src/adaptive-analysis.ts --all-latest
 
 # Run FIRe comparison simulations (with vs without encompassing edges)
 simulate-fire seed="42":
-    npx tsx simulations/src/adaptive-analysis.ts --all-latest --run-fire-comparison --seed {{seed}}
+    npx tsx audit/learner-simulations/src/adaptive-analysis.ts --all-latest --run-fire-comparison --seed {{seed}}
 
 # Analyze simulation runs: summary + charts
 simulate-analyze *args:
-    npx tsx simulations/src/analyze.ts --all-latest {{args}}
+    npx tsx audit/learner-simulations/src/analyze.ts --all-latest {{args}}
 
 # Compare current simulation metrics against baseline (flags >10% regression)
-simulate-compare baseline="simulations/baseline.json":
-    npx tsx simulations/src/analyze.ts --all-latest --compare {{baseline}}
+simulate-compare baseline="audit/learner-simulations/baseline.json":
+    npx tsx audit/learner-simulations/src/analyze.ts --all-latest --compare {{baseline}}
 
 # Run all profiles, analyze, and produce combined report + content quality
 simulate-report sessions="30" seed="42":
     just simulate-all {{sessions}} {{seed}}
-    npx tsx simulations/src/analyze.ts --report --baseline --content-quality
+    npx tsx audit/learner-simulations/src/analyze.ts --report --baseline --content-quality
 
 # Maturity level simulations (all profiles at each session count)
 simulate-l1 seed="42":
@@ -226,27 +226,27 @@ simulate-l3 seed="42":
 
 # L4: 7 key profiles × 180 sessions (semester simulation)
 simulate-l4 seed="42":
-    npx tsx simulations/src/cli.ts average-older fast-learner-older struggling-older returning-after-gap misconception-fractions strong-highschool multi-math-strong --sessions 180 --seed {{seed}}
+    npx tsx audit/learner-simulations/src/cli.ts average-older fast-learner-older struggling-older returning-after-gap misconception-fractions strong-highschool multi-math-strong --sessions 180 --seed {{seed}}
 
 # L5: 7 key profiles × 360 sessions (full-year simulation)
 simulate-l5 seed="42":
-    npx tsx simulations/src/cli.ts average-older fast-learner-older struggling-older returning-after-gap misconception-fractions strong-highschool multi-math-strong --sessions 360 --seed {{seed}}
+    npx tsx audit/learner-simulations/src/cli.ts average-older fast-learner-older struggling-older returning-after-gap misconception-fractions strong-highschool multi-math-strong --sessions 360 --seed {{seed}}
 
 # Standalone simulation regression check (also available as `just regression`)
 simulate-regression seed="42":
-    npx tsx simulations/src/regression.ts --seed {{seed}}
+    npx tsx audit/learner-simulations/src/regression.ts --seed {{seed}}
 
 # Clean up old simulation runs (keep latest per profile by default)
 simulate-clean *args:
-    npx tsx simulations/src/clean.ts {{args}}
+    npx tsx audit/learner-simulations/src/clean.ts {{args}}
 
 # Show simulation runs disk usage
 simulate-size:
-    npx tsx simulations/src/clean.ts --dry-run --keep 999999
+    npx tsx audit/learner-simulations/src/clean.ts --dry-run --keep 999999
 
 # Evaluate simulation runs against targets.json (includes FIRe compression by default)
 evaluate *args:
-    npx tsx simulations/src/evaluate.ts {{args}}
+    npx tsx audit/learner-simulations/src/evaluate.ts {{args}}
 
 # Evaluate at a specific maturity level (runs simulation + evaluation + saves baseline)
 evaluate-l1 seed="42":
@@ -271,23 +271,23 @@ evaluate-l5 seed="42":
 
 # Compare metrics across maturity levels (requires baselines)
 evaluate-compare-levels:
-    npx tsx simulations/src/evaluate.ts --compare-levels
+    npx tsx audit/learner-simulations/src/evaluate.ts --compare-levels
 
 # Run single healing epoch (simulate all → evaluate → report)
 heal-epoch sessions="30" seed="42":
-    npx tsx simulations/src/heal-loop.ts --epoch --sessions {{sessions}} --seed {{seed}}
+    npx tsx audit/learner-simulations/src/heal-loop.ts --epoch --sessions {{sessions}} --seed {{seed}}
 
 # Verify a fix against a specific system target
 heal-verify system profiles="all" sessions="10" seed="42":
-    npx tsx simulations/src/heal-loop.ts --verify-fix --system {{system}} --profiles {{profiles}} --sessions {{sessions}} --seed {{seed}}
+    npx tsx audit/learner-simulations/src/heal-loop.ts --verify-fix --system {{system}} --profiles {{profiles}} --sessions {{sessions}} --seed {{seed}}
 
 # Show healing loop status and history
 heal-status:
-    npx tsx simulations/src/heal-loop.ts --status
+    npx tsx audit/learner-simulations/src/heal-loop.ts --status
 
 # Force a healing checkpoint
 heal-checkpoint:
-    npx tsx simulations/src/heal-loop.ts --checkpoint
+    npx tsx audit/learner-simulations/src/heal-loop.ts --checkpoint
 
 # ── Deployment ──
 

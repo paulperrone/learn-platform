@@ -3,9 +3,9 @@
  * Advisory only: prints recommendations, doesn't block anything.
  *
  * Usage:
- *   npx tsx tools/audit-relevance.ts                       # Check uncommitted changes
- *   npx tsx tools/audit-relevance.ts --content-dir <path>  # Override content dir
- *   npx tsx tools/audit-relevance.ts --files file1 file2   # Check specific files
+ *   npx tsx audit/relevance.ts                       # Check uncommitted changes
+ *   npx tsx audit/relevance.ts --content-dir <path>  # Override content dir
+ *   npx tsx audit/relevance.ts --files file1 file2   # Check specific files
  */
 import { execSync } from "child_process";
 import { existsSync } from "fs";
@@ -94,28 +94,28 @@ const MAPPING_RULES: MappingRule[] = [
     recommendations: ["just audit", "/content-review"],
   },
   {
-    pattern: /simulations\/targets\.json$/,
+    pattern: /audit\/learner-simulations\/targets\.json$/,
     sections: [3],
     reason: "simulation targets changed",
     recommendations: ["just evaluate"],
   },
   {
-    pattern: /simulations\/profiles\/[^/]+\.json$/,
+    pattern: /audit\/learner-simulations\/profiles\/[^/]+\.json$/,
     sections: [3],
     reason: "simulation profile changed",
     recommendations: ["just regression"],
   },
   {
-    pattern: /tools\/audit[^/]*\.ts$/,
+    pattern: /audit\/[^/]*\.ts$/,
     sections: [1, 2, 3, 4, 5, 6, 7, 8],
     reason: "audit tool code changed",
     recommendations: ["just audit"],
   },
   {
-    pattern: /tools\/content-[^/]*\.ts$/,
-    sections: [2],
-    reason: "content tool code changed",
-    recommendations: ["just audit"],
+    pattern: /audit\/content\/[^/]*\.ts$/,
+    sections: [2, 8],
+    reason: "content audit code changed",
+    recommendations: ["just audit", "/content-review"],
   },
   {
     pattern: /packages\/api\/src\/db\/schema\.ts$/,
@@ -269,7 +269,7 @@ function formatOutput(result: AuditRelevance): string {
 
 // ── CLI entry ──
 
-const isCLI = process.argv[1]?.endsWith("audit-relevance.ts");
+const isCLI = process.argv[1]?.endsWith("relevance.ts");
 
 if (isCLI) {
   const args = process.argv.slice(2);

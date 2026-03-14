@@ -29,13 +29,13 @@ Consolidate all audit infrastructure under a top-level `audit/` directory organi
 
 ## Progress
 
-**Completed:** —
+**Completed:** Phase 1
 **In Progress:** —
-**Next:** Phase 1
+**Next:** Phase 2
 
 ---
 
-## Phase 1: Directory Restructure
+## Phase 1: Directory Restructure ✓
 
 **Goal:** Move all audit infrastructure under `audit/`, organize by the three pillars, update all references. No new functionality — purely mechanical reorganization.
 
@@ -199,7 +199,7 @@ All `npx tsx tools/content-status.ts` → `npx tsx audit/content/status.ts` (sim
 
 ### Steps
 
-1. [ ] [IMP] Create directory structure and move all files:
+1. [x] [IMP] Create directory structure and move all files:
    - Create `audit/`, `audit/content/`, `audit/learner-simulations/`, `audit/reports/`, `audit/__tests__/`
    - Move simulation infrastructure: `simulations/src/`, `simulations/profiles/`, `simulations/targets.json`, `simulations/baseline.json`, `simulations/regression-baseline.json`, `simulations/baselines/`, `simulations/runs/` → `audit/learner-simulations/`
    - Move reports: all files from `simulations/reports/` → `audit/reports/`; rename `audit-latest.json` → `latest.json`; rename `audits/` → `snapshots/`
@@ -210,7 +210,7 @@ All `npx tsx tools/content-status.ts` → `npx tsx audit/content/status.ts` (sim
    - Move data collection: `tools/rollup-effectiveness.ts` → `audit/rollup-effectiveness.ts`
    - Clean up empty directories: verify `simulations/` and `docs/audits/` are empty, then remove
 
-2. [ ] [IMP] Update all imports in moved files:
+2. [x] [IMP] Update all imports in moved files:
    - Update audit orchestration imports per the table above (orchestrator.ts has ~6 import changes)
    - Update content evaluation imports (`../../tools/content-dir.js` for status, gaps, report, atomicity-context)
    - Update simulation imports: `runner.ts` and `db-setup.ts` need `../../../packages/api/` (one more `../`)
@@ -218,7 +218,7 @@ All `npx tsx tools/content-status.ts` → `npx tsx audit/content/status.ts` (sim
    - Update all `isCLI` guards for renamed files
    - Update relevance mapping rules (regex patterns referencing `tools/audit*` and `tools/content-*`)
 
-3. [ ] [IMP] Update all hardcoded paths in source code:
+3. [x] [IMP] Update all hardcoded paths in source code:
    - Simulation files (14 files): `join(process.cwd(), "simulations", ...)` → `join(process.cwd(), "audit", "learner-simulations", ...)`
    - Report output paths: `join(process.cwd(), "simulations", "reports", ...)` → `join(process.cwd(), "audit", "reports", ...)`
    - `heal-loop.ts`: update module-level `LEARNER_SIM_DIR` and `REPORTS_DIR` constants; **also** update 2 `execSync` calls with literal `npx tsx simulations/src/cli.ts` (lines 241, 428) → `npx tsx audit/learner-simulations/src/cli.ts`
@@ -230,7 +230,7 @@ All `npx tsx tools/content-status.ts` → `npx tsx audit/content/status.ts` (sim
    - `content/atomicity-context.ts`: output path (`docs/audits/` → `audit/reports/`)
    - Verify: `grep -r "simulations/" . --include="*.ts" | grep -v node_modules | grep -v .git | grep -v __tests__` shows no stale path references (except in-code comments or strings that are descriptive, not paths)
 
-4. [ ] [IMP] Update justfile recipes:
+4. [x] [IMP] Update justfile recipes:
    - All `npx tsx simulations/src/` → `npx tsx audit/learner-simulations/src/` (~20 recipes)
    - All `npx tsx tools/audit.ts` → `npx tsx audit/orchestrator.ts`
    - `npx tsx tools/audit-relevance.ts` → `npx tsx audit/relevance.ts`
@@ -242,7 +242,7 @@ All `npx tsx tools/content-status.ts` → `npx tsx audit/content/status.ts` (sim
    - `simulate-compare` baseline: `simulations/baseline.json` → `audit/learner-simulations/baseline.json`
    - Verify: `just --list` shows all recipes without parse errors
 
-5. [ ] [DOC] Update all documentation, slash commands, and .gitignore:
+5. [x] [DOC] Update all documentation, slash commands, and .gitignore:
    - `CLAUDE.md`: Structure section (update directory tree to show `audit/`), Commands section (update any path references)
    - `AGENTS.md`: mirrors CLAUDE.md changes
    - `.claude/commands/atomicity-audit.md`: tool path and output path
@@ -254,7 +254,7 @@ All `npx tsx tools/content-status.ts` → `npx tsx audit/content/status.ts` (sim
    - `.gitignore`: update all `simulations/` entries to `audit/` equivalents
    - LEARNINGS.md, DECISIONS.md: check for stale path references
 
-6. [ ] [TST] Verify everything works:
+6. [x] [TST] Verify everything works:
    - `just typecheck` passes
    - `just test` passes (vitest — no audit path changes in packages/api tests)
    - `just regression` runs standalone

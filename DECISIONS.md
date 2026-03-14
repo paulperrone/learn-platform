@@ -1893,7 +1893,7 @@ Post-implementation results:
 **Decision:** Refactored tools to export functions and use `process.argv[1]?.includes('tool-name')` guard for CLI entry points. For validate-graph.ts (577 lines, deeply procedural), computed graph metrics directly in audit.ts instead of refactoring.
 
 **Why:**
-- Keeps existing CLI behavior intact (`npx tsx tools/content-status.ts` still works)
+- Keeps existing CLI behavior intact (`npx tsx audit/content/status.ts` still works)
 - Allows `import { generateContentStatus } from "./content-status.js"` without side effects
 - Refactoring validate-graph.ts would be high-risk for low value — audit only needs a subset of its metrics
 - Direct graph computation in audit.ts is ~80 lines vs refactoring 577 lines
