@@ -29,6 +29,9 @@ let errors = 0;
 let warnings = 0;
 let totalProblems = 0;
 let totalExamples = 0;
+let totalLessons = 0;
+
+const VALID_SECTION_TYPES = ["explanation", "worked-example", "diagram", "video", "practice"];
 
 // Valid dimension values
 const VALID_FLAVORS = ["classic", "story", "game", "visual", "adventure", "space"];
@@ -226,6 +229,80 @@ if (existsSync(examplesDir)) {
   }
 }
 
+// Validate lessons
+const lessonsDir = join(contentDir, "lessons");
+if (existsSync(lessonsDir)) {
+  const files = readdirSync(lessonsDir).filter((f) => f.endsWith(".json"));
+  console.log(`Validating ${files.length} lesson files...`);
+
+  for (const file of files) {
+    const lessons = JSON.parse(readFileSync(join(lessonsDir, file), "utf-8"));
+    for (const lesson of lessons) {
+      totalLessons++;
+      if (!lesson.id) { console.error(`ERROR: Missing id in lesson ${file}`); errors++; }
+      if (!lesson.topicId) { console.error(`ERROR: Missing topicId in lesson ${file} (${lesson.id})`); errors++; }
+      if (!lesson.title?.trim()) { console.error(`ERROR: Empty title in lesson ${file} (${lesson.id})`); errors++; }
+      if (!lesson.sections || lesson.sections.length === 0) {
+        console.error(`ERROR: No sections in lesson ${file} (${lesson.id})`);
+        errors++;
+      }
+      // Validate topicId matches graph
+      if (lesson.topicId && graphTopicIds.size > 0 && !graphTopicIds.has(lesson.topicId)) {
+        console.error(`ERROR: Lesson topicId "${lesson.topicId}" not found in graph topics (${lesson.id} in ${file})`);
+        errors++;
+      }
+      // Dimension validation
+      validateDimensions(lesson, `lesson ${lesson.id} in ${file}`, "example");
+      // Per-section validation
+      for (let i = 0; i < (lesson.sections ?? []).length; i++) {
+        const section = lesson.sections[i];
+        const ctx = `lesson ${lesson.id} section ${i}`;
+        if (!VALID_SECTION_TYPES.includes(section.type)) {
+          console.error(`ERROR: Invalid section type "${section.type}" in ${ctx}`);
+          errors++;
+        }
+        if (section.type === "explanation") {
+          if (!section.content?.trim()) {
+            console.error(`ERROR: Empty content in explanation section (${ctx})`);
+            errors++;
+          }
+          checkPlatformCompatibility(section.content ?? "", ctx);
+        }
+        if (section.type === "worked-example") {
+          if (!section.example || !section.example.steps || section.example.steps.length === 0) {
+            console.error(`ERROR: worked-example section missing example with steps (${ctx})`);
+            errors++;
+          }
+          if (section.example?.steps) {
+            for (let j = 0; j < section.example.steps.length; j++) {
+              const step = section.example.steps[j];
+              checkPlatformCompatibility(step.instruction ?? "", `${ctx} step ${j} instruction`);
+              checkPlatformCompatibility(step.work ?? "", `${ctx} step ${j} work`);
+            }
+          }
+        }
+        if (section.type === "practice") {
+          if (!section.problems || section.problems.length === 0) {
+            console.error(`ERROR: practice section has no problems (${ctx})`);
+            errors++;
+          }
+          for (const p of section.problems ?? []) {
+            if (!p.question?.trim()) {
+              console.error(`ERROR: Empty question in practice problem (${ctx})`);
+              errors++;
+            }
+            if (!p.answer?.toString().trim()) {
+              console.error(`ERROR: Empty answer in practice problem (${ctx})`);
+              errors++;
+            }
+            checkPlatformCompatibility(p.question ?? "", `${ctx} practice problem`);
+          }
+        }
+      }
+    }
+  }
+}
+
 // Check graph topics have content
 const graphPath = join(contentDir, "graph.json");
 if (existsSync(graphPath)) {
@@ -265,6 +342,23 @@ if (existsSync(graphPath)) {
     if (missingExamples.length > 10) console.log(`  ... and ${missingExamples.length - 10} more`);
   }
 
+  // Check lesson coverage
+  const lessonTopics = new Set(
+    existsSync(lessonsDir)
+      ? readdirSync(lessonsDir)
+          .filter((f) => f.endsWith(".json"))
+          .map((f) => f.replace(".json", ""))
+      : []
+  );
+  const missingLessons = graph.topics.filter((t: any) => !lessonTopics.has(t.id));
+  if (missingLessons.length > 0 && missingLessons.length < graph.topics.length) {
+    console.log(`\nTopics missing lessons (${missingLessons.length}/${graph.topics.length}):`);
+    for (const t of missingLessons.slice(0, 10)) {
+      console.log(`  - ${t.id}`);
+    }
+    if (missingLessons.length > 10) console.log(`  ... and ${missingLessons.length - 10} more`);
+  }
+
   // Validate collections
   if (graph.collections && graph.collections.length > 0) {
     const graphTopicSet = new Set(graph.topics.map((t: any) => t.id));
@@ -290,6 +384,7 @@ if (existsSync(graphPath)) {
 console.log(`\n${"=".repeat(40)}`);
 console.log(`Problems validated: ${totalProblems}`);
 console.log(`Examples validated: ${totalExamples}`);
+console.log(`Lessons validated:  ${totalLessons}`);
 console.log(`Errors: ${errors}`);
 console.log(`Warnings: ${warnings}`);
 process.exit(errors > 0 ? 1 : 0);

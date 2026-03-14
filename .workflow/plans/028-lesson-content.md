@@ -160,9 +160,9 @@ confidenceAccuracy, lastReview
 
 ## Progress
 
-**Completed:** Phase 1
+**Completed:** Phase 1, Phase 2
 **In Progress:** —
-**Next:** Phase 2
+**Next:** Phase 3
 
 ---
 
@@ -226,7 +226,7 @@ Tracked per problem attempt. `none` = pure review (full SRS credit). Any scaffol
 
 ---
 
-## Phase 2: Content Format & Pipeline
+## Phase 2: Content Format & Pipeline ✓
 
 **Goal:** Lessons can be authored in learn-content, validated, bundled, and deployed through the existing pipeline. No API or frontend changes yet.
 
@@ -244,7 +244,7 @@ The pipeline currently processes `problems/` and `examples/` directories per dis
 
 ### Steps
 
-1. [ ] [IMP] Add lesson discovery and validation to `tools/validate-content.ts`:
+1. [x] [IMP] Add lesson discovery and validation to `tools/validate-content.ts`:
    - Discover `<contentDir>/lessons/` directory (same pattern as problems: `readdirSync.filter(f => f.endsWith(".json"))`)
    - Validate required fields: `id`, `topicId`, `title`, `sections` (non-empty array)
    - Per section: validate `type` is one of the allowed `LessonSectionType` values
@@ -255,7 +255,7 @@ The pipeline currently processes `problems/` and `examples/` directories per dis
    - Run `checkPlatformCompatibility` on all text content in sections (explanation content, worked-example instructions/work, practice problem questions/hints/solutions)
    - Validate `topicId` matches a topic in `graph.json`
 
-2. [ ] [IMP] Add lesson bundling to `tools/generate-bundles.ts`:
+2. [x] [IMP] Add lesson bundling to `tools/generate-bundles.ts`:
    - Read `<disciplineDir>/lessons/<topicId>.json` for each topic (same pattern as examples, lines 223-229)
    - Define `BundledLesson = Lesson & { flavor: string; locale: string; presentation: string; contentDepth: string }` — apply same dimension defaults as examples
    - Write `lessons.json` to the bundle output directory alongside `problems.json` and `examples.json`
@@ -264,17 +264,17 @@ The pipeline currently processes `problems/` and `examples/` directories per dis
    - Update `dimensions` to include lesson presentations/depths/locales/flavors
    - Topics with no lessons should still bundle fine (lessons array is empty, `items.lessons.count = 0`)
 
-3. [ ] [IMP] Add lesson upload to `tools/upload-bundles.ts`:
+3. [x] [IMP] Add lesson upload to `tools/upload-bundles.ts`:
    - Add `lessons.json` to the file upload loop (line 120-127). Only upload if the file exists (topics without lessons won't have it).
    - R2 key: `{discipline}/{topicId}/lessons.json`
 
-4. [ ] [IMP] Add `lessonsCount` to D1 schema and update deploy:
+4. [x] [IMP] Add `lessonsCount` to D1 schema and update deploy:
    - Add `lessonsCount: integer("lessons_count").notNull().default(0)` to `topicContentVersions` in `schema.ts`
    - Run `just db-generate` to create migration
    - Update `tools/upload-bundles.ts` `updateD1ContentVersion` function (lines 53-64) to include `lessons_count` in the INSERT OR REPLACE
    - Read `manifest.items.lessons.count` for the value (default 0 if `items.lessons` is undefined — backward compat with old manifests)
 
-5. [ ] [IMP] Update `/generate-content` slash command (`.workflow/commands/generate-content.md`):
+5. [x] [IMP] Update `/generate-content` slash command (`.workflow/commands/generate-content.md`):
    - Add lesson authoring section (Section 5b, after worked examples)
    - Define lesson structure rules per discipline:
      - Mastery-gated (math): explanation → worked-example → practice (2-3 problems). Explanation teaches the core concept concisely. Worked example demonstrates the procedure. Practice lets them try with the lesson visible.
@@ -283,7 +283,7 @@ The pipeline currently processes `problems/` and `examples/` directories per dis
    - Quality gates: every topic must have at least 1 lesson with 3+ sections
    - Platform-medium constraints apply to all lesson text
 
-6. [ ] [TST] Validate the pipeline end-to-end with a test lesson:
+6. [x] [TST] Validate the pipeline end-to-end with a test lesson:
    - Author 1 test lesson: `../learn-content/math/lessons/count-to-10.json`
    - Run `just validate-content` — should pass
    - Run `just generate-bundles` — output should include `lessons.json` in the bundle

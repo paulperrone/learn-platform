@@ -20,6 +20,7 @@ type Manifest = {
   items: {
     problems: { count: number };
     examples: { count: number };
+    lessons?: { count: number };
   };
 };
 
@@ -56,7 +57,8 @@ function updateD1ContentVersion(
   env: string
 ): void {
   const envFlag = env === "production" ? "--env production" : "";
-  const sql = `INSERT OR REPLACE INTO topic_content_versions (topic_id, content_hash, bundle_version, problems_count, examples_count, generated_at, uploaded_at) VALUES ('${topicId}', '${manifest.contentHash}', ${manifest.version}, ${manifest.items.problems.count}, ${manifest.items.examples.count}, '${manifest.generatedAt}', '${new Date().toISOString()}')`;
+  const lessonsCount = manifest.items.lessons?.count ?? 0;
+  const sql = `INSERT OR REPLACE INTO topic_content_versions (topic_id, content_hash, bundle_version, problems_count, examples_count, lessons_count, generated_at, uploaded_at) VALUES ('${topicId}', '${manifest.contentHash}', ${manifest.version}, ${manifest.items.problems.count}, ${manifest.items.examples.count}, ${lessonsCount}, '${manifest.generatedAt}', '${new Date().toISOString()}')`;
   execSync(
     `npx wrangler d1 execute learn-db --remote ${envFlag} --command "${sql}"`,
     { stdio: "pipe" }
@@ -117,7 +119,7 @@ function main() {
 
       try {
         // Upload bundle files to R2
-        const files = ["manifest.json", "problems.json", "examples.json"];
+        const files = ["manifest.json", "problems.json", "examples.json", "lessons.json"];
         for (const file of files) {
           const localPath = join(topicDir, file);
           if (existsSync(localPath)) {

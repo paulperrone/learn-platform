@@ -67,6 +67,17 @@ type WorkedExample = {
   contentDepth?: string;
 };
 
+type Lesson = {
+  id: string;
+  topicId: string;
+  title: string;
+  sections: unknown[];
+  flavor?: string;
+  locale?: string;
+  presentation?: string;
+  contentDepth?: string;
+};
+
 type Manifest = {
   version: number;
   contentHash: string;
@@ -82,6 +93,10 @@ type Manifest = {
       demands: Record<string, number>;
     };
     examples: {
+      count: number;
+      hash: string;
+    };
+    lessons: {
       count: number;
       hash: string;
     };
@@ -141,6 +156,24 @@ function applyExampleDefaults(example: WorkedExample): WorkedExample {
   return result;
 }
 
+function applyLessonDefaults(lesson: Lesson): Lesson {
+  const result = { ...lesson };
+  const missing: string[] = [];
+  if (!result.flavor) { result.flavor = "classic"; missing.push("flavor"); }
+  if (!result.locale) { result.locale = "en"; missing.push("locale"); }
+  if (!result.presentation) { result.presentation = "standard"; missing.push("presentation"); }
+  if (!result.contentDepth) { result.contentDepth = "survey"; missing.push("contentDepth"); }
+  if (missing.length > 0) {
+    totalDefaultsApplied += missing.length;
+    if (!lenientMode) {
+      for (const field of missing) {
+        console.warn(`WARN: ${lesson.id} missing ${field}, defaulting to ${(result as Record<string, unknown>)[field]}`);
+      }
+    }
+  }
+  return result;
+}
+
 function countBy<T>(items: T[], key: (item: T) => string): Record<string, number> {
   const counts: Record<string, number> = {};
   for (const item of items) {
@@ -187,19 +220,21 @@ function processDiscipline(
   disciplineId: string,
   outDir: string,
   dryRun: boolean
-): { topics: number; problems: number; examples: number; bytes: number } {
+): { topics: number; problems: number; examples: number; lessons: number; bytes: number } {
   const graphPath = join(contentDir, disciplineId, "graph.json");
   if (!existsSync(graphPath)) {
     console.error(`  No graph.json found for ${disciplineId}, skipping.`);
-    return { topics: 0, problems: 0, examples: 0, bytes: 0 };
+    return { topics: 0, problems: 0, examples: 0, lessons: 0, bytes: 0 };
   }
 
   const graph: GraphDefinition = JSON.parse(readFileSync(graphPath, "utf-8"));
   const problemsDir = join(contentDir, disciplineId, "problems");
   const examplesDir = join(contentDir, disciplineId, "examples");
+  const lessonsDir = join(contentDir, disciplineId, "lessons");
 
   let totalProblems = 0;
   let totalExamples = 0;
+  let totalLessons = 0;
   let totalBytes = 0;
   let topicsProcessed = 0;
 
@@ -228,16 +263,26 @@ function processDiscipline(
       examples = raw.map(applyExampleDefaults);
     }
 
+    // Read lessons
+    const lessonsPath = join(lessonsDir, `${topic.id}.json`);
+    let lessons: Lesson[] = [];
+    if (existsSync(lessonsPath)) {
+      const raw: Lesson[] = JSON.parse(readFileSync(lessonsPath, "utf-8"));
+      lessons = raw.map(applyLessonDefaults);
+    }
+
     // Skip topics with no content
-    if (problems.length === 0 && examples.length === 0) {
+    if (problems.length === 0 && examples.length === 0 && lessons.length === 0) {
       continue;
     }
 
     const problemsJson = JSON.stringify(problems, null, 2);
     const examplesJson = JSON.stringify(examples, null, 2);
+    const lessonsJson = JSON.stringify(lessons, null, 2);
     const problemsHash = sha256(problemsJson);
     const examplesHash = sha256(examplesJson);
-    const contentHash = sha256(problemsJson + examplesJson);
+    const lessonsHash = sha256(lessonsJson);
+    const contentHash = sha256(problemsJson + examplesJson + lessonsJson);
 
     const manifest: Manifest = {
       version: 1,
@@ -257,20 +302,24 @@ function processDiscipline(
           count: examples.length,
           hash: examplesHash,
         },
+        lessons: {
+          count: lessons.length,
+          hash: lessonsHash,
+        },
         media: [],
       },
       dimensions: {
         presentations: unique(
-          [...problems.map((p) => p.presentation), ...examples.map((e) => e.presentation)]
+          [...problems.map((p) => p.presentation), ...examples.map((e) => e.presentation), ...lessons.map((l) => l.presentation)]
         ),
         depths: unique(
-          [...problems.map((p) => p.contentDepth), ...examples.map((e) => e.contentDepth)]
+          [...problems.map((p) => p.contentDepth), ...examples.map((e) => e.contentDepth), ...lessons.map((l) => l.contentDepth)]
         ),
         locales: unique(
-          [...problems.map((p) => p.locale), ...examples.map((e) => e.locale)]
+          [...problems.map((p) => p.locale), ...examples.map((e) => e.locale), ...lessons.map((l) => l.locale)]
         ),
         flavors: unique(
-          [...problems.map((p) => p.flavor), ...examples.map((e) => e.flavor)]
+          [...problems.map((p) => p.flavor), ...examples.map((e) => e.flavor), ...lessons.map((l) => l.flavor)]
         ),
       },
     };
@@ -282,16 +331,20 @@ function processDiscipline(
       writeFileSync(join(topicOutDir, "manifest.json"), manifestJson);
       writeFileSync(join(topicOutDir, "problems.json"), problemsJson);
       writeFileSync(join(topicOutDir, "examples.json"), examplesJson);
+      if (lessons.length > 0) {
+        writeFileSync(join(topicOutDir, "lessons.json"), lessonsJson);
+      }
     }
 
-    const bundleBytes = manifestJson.length + problemsJson.length + examplesJson.length;
+    const bundleBytes = manifestJson.length + problemsJson.length + examplesJson.length + (lessons.length > 0 ? lessonsJson.length : 0);
     totalBytes += bundleBytes;
     totalProblems += problems.length;
     totalExamples += examples.length;
+    totalLessons += lessons.length;
     topicsProcessed++;
   }
 
-  return { topics: topicsProcessed, problems: totalProblems, examples: totalExamples, bytes: totalBytes };
+  return { topics: topicsProcessed, problems: totalProblems, examples: totalExamples, lessons: totalLessons, bytes: totalBytes };
 }
 
 function main() {
@@ -319,15 +372,17 @@ function main() {
   let grandTotalTopics = 0;
   let grandTotalProblems = 0;
   let grandTotalExamples = 0;
+  let grandTotalLessons = 0;
   let grandTotalBytes = 0;
 
   for (const disc of disciplines) {
     console.log(`--- ${disc} ---`);
     const stats = processDiscipline(contentDir, disc, outDir, dryRun);
-    console.log(`  Topics: ${stats.topics}, Problems: ${stats.problems}, Examples: ${stats.examples}, Size: ${(stats.bytes / 1024).toFixed(0)} KB`);
+    console.log(`  Topics: ${stats.topics}, Problems: ${stats.problems}, Examples: ${stats.examples}, Lessons: ${stats.lessons}, Size: ${(stats.bytes / 1024).toFixed(0)} KB`);
     grandTotalTopics += stats.topics;
     grandTotalProblems += stats.problems;
     grandTotalExamples += stats.examples;
+    grandTotalLessons += stats.lessons;
     grandTotalBytes += stats.bytes;
   }
 
@@ -337,6 +392,7 @@ function main() {
   console.log(`Topics:      ${grandTotalTopics}`);
   console.log(`Problems:    ${grandTotalProblems}`);
   console.log(`Examples:    ${grandTotalExamples}`);
+  console.log(`Lessons:     ${grandTotalLessons}`);
   console.log(`Total size:  ${(grandTotalBytes / 1024 / 1024).toFixed(2)} MB`);
 
   if (totalDefaultsApplied > 0) {

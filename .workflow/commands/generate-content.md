@@ -9,6 +9,7 @@ Generate problems, worked examples, or full content for a subject. Encodes disci
 /generate-content <subject> --graph-only
 /generate-content <subject> --problems-only
 /generate-content <subject> --examples-only
+/generate-content <subject> --lessons-only
 /generate-content <subject> --dry-run
 ```
 
@@ -16,6 +17,7 @@ Generate problems, worked examples, or full content for a subject. Encodes disci
 - `--graph-only`: Only design/update the knowledge graph (`graph.json`)
 - `--problems-only`: Only author problems for existing topics
 - `--examples-only`: Only author worked examples for existing topics
+- `--lessons-only`: Only author lessons for existing topics
 - `--dry-run`: Describe what would be generated without writing files
 
 ## Workflow
@@ -131,6 +133,82 @@ For every topic, generate 2+ worked examples with step-by-step breakdowns:
 
 Save to `../learn-content/<subject>/examples/<topic-id>.json`.
 
+### 5b. Author Lessons
+
+For every topic, generate 1+ lesson with 3+ sections. A lesson is the primary teaching vehicle — it replaces standalone worked examples as the instruction delivery mechanism. Worked examples are now one section type within a lesson.
+
+**Structure per discipline:**
+
+**Mastery-gated (math, CS):**
+```
+explanation → worked-example → practice (2-3 problems)
+```
+Explanation teaches the core concept concisely. Worked example demonstrates the procedure. Practice lets them try with the lesson visible.
+
+**Context-layered (history, philosophy):**
+```
+explanation (multi-depth treatment) → primary sources/perspectives → practice
+```
+
+**Flexible (vocabulary, geography):**
+```
+explanation (definition + context) → practice
+```
+
+**Lesson JSON format:**
+
+```json
+[
+  {
+    "id": "<topic-id>-lesson-1",
+    "topicId": "<topic-id>",
+    "title": "Lesson title",
+    "presentation": "<from topic defaultPresentation>",
+    "contentDepth": "<from topic contentDepth>",
+    "locale": "en",
+    "flavor": "classic",
+    "sections": [
+      {
+        "type": "explanation",
+        "title": "Section title",
+        "content": "Prose text teaching the concept. Markdown supported."
+      },
+      {
+        "type": "worked-example",
+        "title": "Example title",
+        "content": "Introduction text for the example.",
+        "example": {
+          "id": "<topic-id>-ex-lesson",
+          "topicId": "<topic-id>",
+          "title": "Example title",
+          "steps": [
+            { "subgoalLabel": "Step", "instruction": "What to do", "work": "Result", "explanation": "Why" }
+          ]
+        }
+      },
+      {
+        "type": "practice",
+        "title": "Try It",
+        "content": "Practice what you've learned.",
+        "problems": [
+          { "id": "...", "topicId": "...", "question": "...", "answer": "...", "hints": [...], "solution": "..." }
+        ]
+      }
+    ]
+  }
+]
+```
+
+Save to `../learn-content/<subject>/lessons/<topic-id>.json`.
+
+See `docs/lesson-format.md` for the full schema reference.
+
+**Quality gates:**
+- Every topic must have at least 1 lesson with 3+ sections
+- Lessons must start with an explanation and end with practice
+- All text follows platform-medium constraints
+- Dimension fields match topic defaults
+
 ### Dimension Field Rules
 
 Every problem MUST include these dimension and metadata fields:
@@ -187,6 +265,7 @@ just import-content   # Load into local D1 — verify source column populated
 | Hand-authored problems | `../learn-content/<subject>/problems/<topic-id>.json` |
 | Generated problems | `../learn-content/<subject>/problems-generated/<topic-id>.json` |
 | Worked examples | `../learn-content/<subject>/examples/<topic-id>.json` |
+| Lessons | `../learn-content/<subject>/lessons/<topic-id>.json` |
 | Procedural generators | `tools/generators/` |
 | Validation | `tools/validate-content.ts`, `tools/validate-graph.ts` |
 

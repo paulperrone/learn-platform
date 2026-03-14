@@ -58,6 +58,7 @@ export const topicContentVersions = sqliteTable("topic_content_versions", {
   bundleVersion: integer("bundle_version").notNull().default(1),
   problemsCount: integer("problems_count").notNull().default(0),
   examplesCount: integer("examples_count").notNull().default(0),
+  lessonsCount: integer("lessons_count").notNull().default(0),
   generatedAt: text("generated_at").notNull(),
   uploadedAt: text("uploaded_at"),
 });
