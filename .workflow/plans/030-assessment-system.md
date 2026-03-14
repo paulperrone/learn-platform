@@ -1,0 +1,363 @@
+# Plan 030: Assessment System & Proof of Skill
+
+> **Created:** 2026-03-15T00:00:00Z
+> **Completed:** —
+>
+> For project context, see [CLAUDE.md](../../CLAUDE.md)
+> For product vision, see [SPEC.md](./SPEC.md)
+> For decisions, see [DECISIONS.md](../../DECISIONS.md)
+
+## Summary
+
+Build a separate assessment mode distinct from learning sessions. Mixed-topic tests that sample from mastered content, map to grade-level standards, and produce scored results. Standards-based reporting gives parents and teachers verifiable evidence of learning progress. Oral assessment mode leverages existing STT infrastructure for presentation-based evaluation. Concludes with simulation and audit updates to validate the assessment system end-to-end.
+
+**Motivation:** The learning session engine validates mastery per-topic via FSRS, but there's no way to produce a "proof of skill" — a holistic assessment that demonstrates a student has learned a body of knowledge. Parents and teachers need report cards, not SRS statistics. Standardized test prep (SAT, state assessments) requires mixed-topic timed tests, not single-topic review. The diagnostic places students but doesn't produce a score. The assessment system fills this gap.
+
+**Key distinctions from learning sessions:**
+- **Learning session:** Single-topic focus, SRS-driven scheduling, adaptive difficulty, scaffolding available, no time pressure, goal is to learn
+- **Assessment session:** Multi-topic, examiner-defined scope, no scaffolding, optional time limit, goal is to measure and prove
+
+**Depends on:** Plan 029 (content generators — need reliable content to assess against). Assessment quality depends on problem quality, which generators guarantee.
+
+## Progress
+
+**Completed:** None yet
+**In Progress:** —
+**Next:** Phase 1
+
+---
+
+## Phase 1: Assessment Session Model
+
+**Goal:** Define the assessment session type, topic sampling algorithm, scoring model, and D1 schema. The assessment session is a first-class session type alongside learning sessions and diagnostic sessions.
+
+### Context for Execution
+
+The platform currently has two session types:
+- **Learn session** (`learnSessions` table): Adaptive learning with SRS, single-topic phases (lesson/review/remediation)
+- **Diagnostic session** (`diagnosticSessions` table): Placement test using adaptive binary search, materializes mastery estimates
+
+The assessment session is distinct from both:
+- Not adaptive — questions are pre-determined at session start (not chosen based on response correctness)
+- Multi-topic — samples from a defined scope (grade band, strand, collection, or custom set)
+- Scored — produces a percentage score, per-strand breakdown, and standard alignment
+- Optionally timed — countdown timer, auto-submit on expiry
+- No scaffolding — no hints, no lesson reference, no LLM tutoring during assessment
+- No SRS impact — assessment results don't directly affect FSRS scheduling (they're a measurement, not a learning activity)
+
+**Assessment scoping options:**
+- Grade band: "Grade 3 Math" — sample from all mastered grade 3 topics
+- Strand: "Fractions" — sample from all mastered fraction topics
+- Collection: "K-2 Addition" — sample from a defined collection's topics
+- Custom: teacher/parent selects specific topics
+- "Everything mastered" — comprehensive assessment of all mastered material
+
+**Topic sampling algorithm:**
+- Start with scope (topics the student has mastered or is learning)
+- Weight by: (1) recency of last review (more recent = more likely), (2) strand coverage (ensure all strands in scope get representation), (3) prerequisite depth (mix easy and hard topics)
+- Ensure no two consecutive problems from the same topic
+- For timed assessments: front-load easier topics (lower prerequisite depth) to reduce anxiety
+
+**Scoring model:**
+- Raw score: correct / total
+- Per-strand score: correct / total within each strand represented
+- Standard alignment: map topic correctness to Common Core standard codes (`topic.standardCode`)
+- Mastery classification per standard: "proficient" (≥80%), "developing" (50-79%), "needs support" (<50%)
+
+### Steps
+
+1. [ ] [IMP] Define assessment types in `packages/shared/src/types.ts`:
+   - `AssessmentSessionConfig = { scope: AssessmentScope; questionCount: number; timeLimitMinutes?: number; shuffleOrder?: boolean }`
+   - `AssessmentScope = { type: "grade-band" | "strand" | "collection" | "custom" | "comprehensive"; gradeLevel?: number; strandId?: string; collectionId?: string; topicIds?: string[] }`
+   - `AssessmentResult = { sessionId; userId; scope; startedAt; completedAt; totalQuestions; totalCorrect; rawScore; strandScores: Record<string, { correct, total, score }>; standardScores: Record<string, { standard, correct, total, classification }> }`
+   - `AssessmentItem = { questionNumber; totalQuestions; topicId; topicName; problem: Problem; timeRemainingMs?: number }`
+   - `StandardClassification = "proficient" | "developing" | "needs-support"`
+
+2. [ ] [IMP] Add D1 schema for assessment sessions:
+   - `assessmentSessions` table: id, userId, scope (JSON), config (JSON), status ("active" | "completed" | "timed-out"), questionsAsked, questionsCorrect, rawScore, strandScoresJson, standardScoresJson, startedAt, completedAt, timeLimitMinutes
+   - `assessmentResponses` table: id, assessmentSessionId, questionNumber, topicId, problemId, answer, correct, responseMs, createdAt
+   - Generate D1 migration, update test helpers SCHEMA_STATEMENTS
+
+3. [ ] [IMP] Build the topic sampling algorithm in `packages/api/src/services/assessment.ts`:
+   - `createAssessmentService(db, contentBucket)` factory function
+   - `sampleTopics(userId, scope, count): Promise<{ topicId, strandId, standardCode, problem: Problem }[]>`
+   - Weighted sampling: recency (exponential decay from lastReview), strand coverage (ensure diversity), depth mixing
+   - No consecutive same-topic problems
+   - For timed mode: sort by ascending prerequisite depth (easier first)
+   - Fall back gracefully if scope has fewer topics than requested count
+
+4. [ ] [IMP] Build assessment session lifecycle:
+   - `startAssessment(userId, config): Promise<{ sessionId, firstItem: AssessmentItem }>`
+   - `respondToAssessment(sessionId, { answer, responseMs }): Promise<{ correct, nextItem?: AssessmentItem, result?: AssessmentResult }>`
+   - `getAssessmentResult(sessionId): Promise<AssessmentResult>`
+   - Session state: pre-determined question sequence (not adaptive), current position, accumulated responses
+   - On completion: compute strand scores, standard classifications, persist result
+
+5. [ ] [IMP] Add assessment API routes in `packages/api/src/routes/assessment.ts`:
+   - `POST /api/assessments/start` — start assessment with config
+   - `POST /api/assessments/:id/respond` — submit answer
+   - `GET /api/assessments/:id/result` — get completed result
+   - `GET /api/assessments/history` — list past assessments with scores
+   - Wire into Hono app router
+
+6. [ ] [TST] Write tests for assessment service:
+   - Test: topic sampling produces diverse strand coverage
+   - Test: no consecutive same-topic problems
+   - Test: scoring produces correct per-strand breakdown
+   - Test: timed assessment auto-completes on expiry
+   - Test: standard classification thresholds (≥80% proficient, 50-79% developing, <50% needs support)
+   - `just test` — all pass
+
+**Validation:** Assessment service creates sessions, samples topics correctly, scores results with strand breakdown and standard alignment. API routes work. Tests pass. `just typecheck` passes.
+
+---
+
+## Phase 2: Assessment UI & Experience
+
+**Goal:** Build the frontend for starting, taking, and reviewing assessments. Timed mode with countdown. Results page with visual score breakdown.
+
+### Context for Execution
+
+The assessment UI is separate from the learning UI (`learn.vue`). It should feel like a test — clean, focused, no distractions. No hints button, no lesson reference, no "Show Lesson" panel. Progress indicator shows question X of Y.
+
+**Key UX decisions:**
+- Assessment lives at `/assess` (new page)
+- Start screen: choose scope (grade, strand, collection), configure (question count, time limit)
+- Taking the test: one question at a time, progress bar, optional countdown timer
+- Results: score summary, per-strand breakdown with bar charts, standard alignment table
+- History: past assessments with scores and dates, trend over time
+
+### Steps
+
+1. [ ] [IMP] Create assessment start page (`packages/web/src/pages/assess.vue`):
+   - Scope selector: grade band dropdown, strand dropdown, collection dropdown, or "comprehensive"
+   - Question count selector: 10, 20, 30, 50
+   - Time limit toggle: untimed, 15min, 30min, 60min
+   - Start button → calls `POST /api/assessments/start`
+   - If no mastered topics in scope: show message "You haven't mastered any topics in this area yet"
+
+2. [ ] [IMP] Create assessment question view (`packages/web/src/components/AssessmentQuestion.vue`):
+   - Renders `ProblemView` without hints, confidence slider, or lesson reference
+   - Progress bar: "Question 7 of 20"
+   - Timer display (if timed): countdown with color change at <5min, <1min
+   - No back button (can't revisit previous questions)
+   - Auto-advance on submit
+   - Auto-submit remaining questions on timer expiry
+
+3. [ ] [IMP] Create assessment results page (`packages/web/src/components/AssessmentResults.vue`):
+   - Overall score: large percentage with pass/fail color (green ≥80%, yellow ≥50%, red <50%)
+   - Per-strand breakdown: horizontal bar chart (strand name, X/Y correct, percentage)
+   - Standards alignment table: standard code, description, classification badge (proficient/developing/needs-support)
+   - "Topics to Review" section: list topics where answers were wrong, with link to learning session
+   - Share button (generates shareable result URL — future, stub for now)
+
+4. [ ] [IMP] Create assessment history view (`packages/web/src/pages/assess-history.vue` or section in `/assess`):
+   - List past assessments: date, scope, score, question count
+   - Click to view full result
+   - Score trend chart (if 3+ assessments in same scope)
+
+5. [ ] [IMP] Wire routing and navigation:
+   - Add `/assess` route to Vue Router
+   - Add assessment link to navigation/dashboard
+   - Add "Take a Test" CTA on progress page
+   - Add `useApi` methods for assessment endpoints
+
+6. [ ] [TST] Manual testing in dev:
+   - `just dev` — start servers
+   - Navigate to `/assess`, configure a grade-band assessment
+   - Take the test — verify questions render correctly, timer works, progress updates
+   - Complete — verify results page shows correct scores and strand breakdown
+   - Check history — verify past assessment appears
+   - `just typecheck` — passes
+
+**Validation:** Full assessment flow works in the browser: start → take → score → review. Timed mode counts down and auto-submits. Results show per-strand breakdown and standard alignment. History tracks past assessments.
+
+---
+
+## Phase 3: Standards Alignment & Reporting
+
+**Goal:** Map topic mastery to Common Core standards. Produce standards-based report cards viewable by parents and teachers. Exportable reports.
+
+### Context for Execution
+
+Topics already have a `standardCode` field (e.g., "K.CC.4", "RF.K.1d") in graph.json and the D1 `topics` table. This phase builds the reporting layer on top of assessment results and ongoing learning mastery.
+
+**Report types:**
+- **Assessment report:** Generated after each assessment session — standards tested, classification per standard
+- **Progress report:** Ongoing — standards mastered vs. in-progress vs. not-started, based on `user_topic_state` mastery
+- **Parent/teacher report:** Summary of child's/student's learning trajectory — mastery rate, assessment scores, areas of strength/weakness
+
+**Standard hierarchy (Common Core):**
+- Domain: "Counting and Cardinality" (K.CC)
+- Cluster: "Know number names and the count sequence" (K.CC.A)
+- Standard: "Count to 100 by ones and by tens" (K.CC.1)
+- Our `standardCode` maps to individual standards. Multiple topics may share a standard code.
+
+### Steps
+
+1. [ ] [IMP] Build standards mapping service (`packages/api/src/services/standards.ts`):
+   - `getStandardsForTopics(topicIds: string[]): Record<string, { standard, domain, cluster, topics[] }>`
+   - Parse standard codes to extract domain (first characters + number) and cluster
+   - Aggregate: for each standard, which topics contribute, how many are mastered
+   - `getStandardsMastery(userId, disciplineId): Promise<StandardsReport>` — query `user_topic_state` + `topics.standardCode`, compute per-standard and per-domain mastery percentages
+
+2. [ ] [IMP] Build report generation:
+   - `generateProgressReport(userId, disciplineId): Promise<ProgressReport>` — comprehensive learning progress against standards
+   - `ProgressReport = { discipline, generatedAt, overallMastery, domainScores: DomainScore[], recentAssessments: AssessmentSummary[], topicsToFocus: Topic[] }`
+   - `DomainScore = { domain, domainName, standardCount, masteredCount, percentage, classification }`
+
+3. [ ] [IMP] Add reporting API routes:
+   - `GET /api/reports/progress/:disciplineId` — standards-based progress report for authenticated user
+   - `GET /api/reports/progress/:disciplineId/:userId` — teacher/parent view (requires account link)
+   - `GET /api/assessments/:id/report` — detailed assessment report with standards alignment
+
+4. [ ] [IMP] Build report UI:
+   - Progress report page (`packages/web/src/pages/report.vue`): domain-level mastery bars, expandable to standard level, recent assessment scores, topics to focus
+   - Teacher/parent view: accessible via account links, read-only version of student's report
+   - Print/PDF-friendly layout (CSS `@media print`)
+
+5. [ ] [TST] Validate reporting:
+   - Test: standards mapping correctly aggregates topics by standard code
+   - Test: mastery percentages match user_topic_state counts
+   - Test: teacher can view linked student's report
+   - `just test` — passes
+
+**Validation:** Standards-based progress reports work for students, parents, and teachers. Assessment results map to Common Core standards with proficiency classifications. Reports are printable. Tests pass.
+
+---
+
+## Phase 4: Oral Assessment (STT-Based Evaluation)
+
+**Goal:** Add an oral assessment mode where students explain concepts verbally. Speech-to-text captures the explanation, and LLM evaluates it against a rubric. This is the "presentation" proof of skill — the student demonstrates understanding, not just answer recall.
+
+### Context for Execution
+
+The platform already has STT infrastructure:
+- **Browser TTS** for reading problems aloud (K-2 audience)
+- **Workers AI Whisper** for speech-to-text input (`packages/api/src/routes/learn.ts` has STT endpoint)
+- **LLM self-explanation evaluation** exists in the tutoring flow — student types explanation, LLM evaluates quality
+
+Oral assessment extends this: instead of typing, the student speaks. Instead of evaluating a typed self-explanation within a learning session, we evaluate a spoken explanation within an assessment session.
+
+**Oral assessment flow:**
+1. Assessment presents a topic and prompt: "Explain how you would add 47 + 35 using regrouping"
+2. Student speaks into microphone (browser MediaRecorder → Workers AI Whisper → text)
+3. LLM evaluates transcribed text against a rubric:
+   - Did the student identify the key concept? (e.g., "carrying" or "regrouping")
+   - Did the student explain the procedure correctly?
+   - Did the student demonstrate understanding (not just memorization)?
+4. Rubric score: 4-point scale (advanced, proficient, developing, beginning)
+5. Result includes: transcribed text, rubric score, LLM feedback
+
+**Constraints:**
+- Requires paid tier (LLM + STT = AI features)
+- Graceful degradation: if STT unavailable, fall back to text input
+- Rubric must be pre-defined per topic (not ad-hoc LLM judgment)
+
+### Steps
+
+1. [ ] [IMP] Define oral assessment types:
+   - `OralPrompt = { topicId; promptText: string; rubric: RubricCriterion[] }`
+   - `RubricCriterion = { criterion: string; weight: number; levels: { score: 1|2|3|4; description: string }[] }`
+   - `OralResponse = { transcribedText: string; rubricScores: { criterion, score, feedback }[]; overallScore: number }`
+   - Add `oralPrompts` to generator output (optional — generators can include oral prompts for topics)
+
+2. [ ] [IMP] Build oral assessment mode in assessment service:
+   - New assessment type: `"oral"` alongside default `"written"`
+   - Oral assessment presents prompts instead of problems
+   - Response flow: capture audio → STT → LLM evaluation → rubric score
+   - LLM evaluation prompt: structured prompt with rubric criteria, expected concepts, scoring instructions
+
+3. [ ] [IMP] Build oral assessment UI:
+   - Recording interface: mic button, waveform visualization, recording timer
+   - Transcription display: show what was captured (student can re-record)
+   - Submit → LLM evaluation → show rubric scores with feedback
+   - Overall result: aggregate rubric scores across all oral prompts
+
+4. [ ] [IMP] Generate oral prompts for pilot topics:
+   - Start with counting-cardinality and basic operations (~30 topics)
+   - Prompts should test explanation ability, not just recall
+   - Include rubric with 3-4 criteria per topic
+   - Add to generator shared utilities: `OralPromptBuilder`
+
+5. [ ] [TST] Test oral assessment:
+   - Test: STT captures speech and produces text
+   - Test: LLM evaluation produces rubric scores
+   - Test: graceful fallback to text input when STT unavailable
+   - Manual test: speak an explanation, verify scoring makes sense
+   - `just test` — passes
+
+**Validation:** Oral assessment mode works: student speaks, system transcribes, LLM evaluates against rubric, score is produced. Graceful text fallback. Pilot topics have oral prompts.
+
+---
+
+## Phase 5: Simulation & Audit Updates
+
+**Goal:** Update simulation and audit infrastructure for the assessment system. Simulate assessment sessions to validate scoring, topic sampling, and standard alignment. Establish baselines.
+
+### Steps
+
+1. [ ] [IMP] Add assessment simulation to the simulation runner:
+   - New simulation mode: `--mode assessment` (alongside existing `--mode learning`)
+   - Simulate: start assessment → answer questions (use learner profile accuracy) → complete → check scores
+   - Verify: scores match expected accuracy for the learner profile
+   - Verify: strand coverage in sampled questions is diverse
+
+2. [ ] [IMP] Update audit orchestrator for assessment metrics:
+   - New audit section: Assessment System Health
+   - Metrics: topics with oral prompts, average assessment score by profile, strand coverage in sampling
+   - Add to `render.ts` and `types.ts`
+
+3. [ ] [IMP] Update evaluation targets:
+   - Add assessment-specific targets to `targets.json`
+   - Target: assessment scores correlate with mastery state (proficient students score ≥80%)
+   - Target: strand coverage in 20-question assessment covers ≥3 strands
+
+4. [ ] [TST] Run full validation:
+   - `just typecheck && just test` — pass
+   - `just regression` — pass (may need new baseline)
+   - `just audit` — includes assessment section
+
+5. [ ] [DOC] Document the assessment system:
+   - Update CLAUDE.md: assessment session type, oral assessment
+   - Update SPEC.md: add assessment system to product description
+   - Create `docs/assessment-system.md`: architecture, scoring model, standard alignment, oral assessment rubrics
+   - Update DECISIONS.md: assessment design decisions
+
+**Validation:** Assessment simulation runs. Audit reports assessment health. Regression passes. Documentation complete.
+
+---
+
+## Deferred Features (Future Expansion)
+
+The following were considered for 030 but deferred to future plans:
+
+### Proof of Skill Certificates
+- Certificate generation on collection/grade-band mastery completion
+- Verifiable certificate page with unique URL and anti-tamper hash
+- Social sharing (image generation, email, download)
+- Milestone tracking: "Completed K-2 Mathematics" with date and score
+- **Why deferred:** Depends on assessment system being stable and validated. Certificate trust requires proven scoring accuracy.
+
+### Assessment Type Expansion
+- `equation-builder` implementation (drag-and-drop equation construction) — type defined in shared types, component not built
+- Interactive problem types: geometry canvas (draw/measure), graphing calculator (plot functions), data entry (create charts)
+- Free-response with LLM grading extended to assessments (currently only in tutoring flow)
+- **Why deferred:** Each new type needs a dedicated Vue component + grading logic. High per-type effort. Current text-qa and numerical-input cover K-8 math well.
+
+---
+
+## Future Beyond 030
+
+These are capability areas that don't belong in any current plan but should be on the roadmap:
+
+- **Locale/flavor content authoring** — Spanish content, themed content (story, adventure, game flavors). Infrastructure exists (7-tier fallback handles it), needs content.
+- **Interpretive discipline content at scale** — Using 029 P7 prompt-templates to generate ELA, history, philosophy content. Requires completing the prompt-template PoC first.
+- **Cross-discipline assessments** — Tests spanning math + ELA (word problems that test both reading comprehension and math skill). Requires cross-discipline edges to be fully leveraged.
+- **Adaptive learning path optimization** — ML/RL-based path optimization using accumulated user data. Requires months of usage data before viable.
+- **Media pipeline** — Real diagrams (not text placeholders), animations (manim-style step-by-step), interactive simulations (canvas-based). Each media type needs its own production pipeline.
+- **Web game section types** — Games as worked examples or practice within lessons. A fraction-bar drag-and-drop game replaces a text worked example. Needs per-game Vue component.
+- **Social features / leaderboards** — Classroom leaderboards, peer challenges, collaborative learning. Careful design needed to avoid negative motivation effects.
+- **Gamification layer** — XP, badges, streaks (beyond current daily goals), level-up animations. Low-effort high-engagement but must not undermine intrinsic motivation.
+- **Offline mode** — Service worker + IndexedDB for learning without internet. Content bundles cached locally. SRS state synced on reconnect.
+- **Mobile app** — Capacitor or native wrapper. Current PWA works but native provides better STT, push notifications, and App Store presence.
