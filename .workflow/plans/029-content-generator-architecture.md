@@ -63,9 +63,9 @@ OutputWriter (shared):
 
 ## Progress
 
-**Completed:** Phase 0 (Graph Audit & Expansion: 705 → 772 topics)
+**Completed:** Phase 0 (Graph Audit & Expansion), Phase 1 (Generator Architecture & Shared Utilities)
 **In Progress:** —
-**Next:** Phase 1
+**Next:** Phase 2
 
 **Model assignments:**
 - Phases 0-2: Opus (architecture, research, design)
@@ -147,7 +147,7 @@ The graph was expanded from 207 → 705 topics in plan 021 using the expansion-m
 
 ---
 
-## Phase 1: Generator Architecture & Shared Utilities
+## Phase 1: Generator Architecture & Shared Utilities ✓
 
 **Goal:** Define the generator interface, shared utility stack (ProblemBuilder, ExampleBuilder, LessonBuilder), registry, output pipeline, and the "generate → verify → commit" workflow. The shared utilities are the backbone — they handle formatting, dimensions, hints, demand, and lesson assembly so that per-topic generators stay small and focused on mathematical correctness.
 
@@ -219,14 +219,14 @@ OutputWriter (shared)
 
 ### Steps
 
-1. [ ] [RSH] Analyze existing `tools/generators/` to extract common patterns and identify what works well vs. what's missing:
+1. [x] [RSH] Analyze existing `tools/generators/` to extract common patterns and identify what works well vs. what's missing:
    - Review `types.ts` (Generator, Problem, SeededRng interfaces)
    - Review 2-3 generator files to understand the pattern (k5-arithmetic.ts, k5-fractions.ts, middle-algebra.ts)
    - Identify gaps: no example generation, no lesson generation, no hint generation, no cognitive demand variation, all labeled `source: "generated"` with `cognitiveDemand: "procedural"`, difficulty-based
    - Document findings for the new architecture design
    - Catalog which math-utils functions to preserve vs replace
 
-2. [ ] [IMP] Define the new generator types in `learn-content/math/generators/types.ts`:
+2. [x] [IMP] Define the new generator types in `learn-content/math/generators/types.ts`:
    - `RawProblem`: `{ question: string; answer: string | number; solution: string; steps?: string[]; variant?: string }`
    - `TopicGenerator`: `{ topicId: string; generate: (rng: SeededRng) => RawProblem; conceptText?: string }`
    - `TopicMeta`: `{ id, name, description, gradeLevel, strand, defaultPresentation, contentDepth }` (loaded from graph.json)
@@ -237,7 +237,7 @@ OutputWriter (shared)
    - Export `SeededRng` and `createRng` (port from existing `tools/generators/types.ts`)
    - `defineGenerator(config: { topicId: string; generate: (rng: SeededRng) => RawProblem; conceptText?: string }): TopicGenerator` — convenience factory
 
-3. [ ] [IMP] Build the shared utility stack at `learn-content/math/generators/builders/`:
+3. [x] [IMP] Build the shared utility stack at `learn-content/math/generators/builders/`:
    - `builders/problem-builder.ts`: `buildProblems(generator, meta, config) → Problem[]` — runs generator N times, deduplicates, applies dimensions/hints/demand/type/IDs
    - `builders/example-builder.ts`: `buildExamples(problems, meta, count) → WorkedExample[]` — selects representative problems, converts to step-by-step format
    - `builders/lesson-builder.ts`: `buildLesson(meta, examples, problems) → Lesson` — assembles explanation + example + practice sections
@@ -245,19 +245,19 @@ OutputWriter (shared)
    - `builders/hint-generator.ts`: `generateHints(question, answer, solution, steps?) → string[]` — template-based progressive hints
    - `builders/answer-verifier.ts`: `verifyAnswer(raw: RawProblem) → { valid, issue? }` — re-parses answers, checks for NaN/Infinity, validates non-empty
 
-4. [ ] [IMP] Create the generator registry and runner:
+4. [x] [IMP] Create the generator registry and runner:
    - `index.ts`: Static registry — each generator file exports a `TopicGenerator`, `index.ts` imports them explicitly into `Record<string, TopicGenerator>`. Type-safe, no dynamic imports.
    - `run.ts`: CLI runner — `npx tsx learn-content/math/generators/run.ts [--topic <id>] [--strand <name>] [--grade <n>] [--count 15] [--seed 42] [--verify] [--dry-run]`
    - For each topic: `ProblemBuilder → ExampleBuilder → LessonBuilder → OutputWriter`
    - Output summary: topics generated, problems/examples/lessons per topic, verification results
 
-5. [ ] [IMP] Port math utility library to `learn-content/math/generators/math-utils.ts`:
+5. [x] [IMP] Port math utility library to `learn-content/math/generators/math-utils.ts`:
    - Port from existing `tools/generators/math-utils.ts`: gcd, lcm, simplifyFraction, fractionToString, isPrime, primeFactors, allFactors, randomFraction, randomProperFraction, roundTo
    - Add: `formatAnswer(value, format: "fraction" | "decimal" | "integer" | "mixed-number"): string`
    - Add: `mixedNumberToString(whole, num, den): string`
    - Add: `evaluateExpression(expr: string): number` — basic arithmetic expression evaluator for self-check
 
-6. [ ] [IMP] Port one existing generator as a reference implementation:
+6. [x] [IMP] Port one existing generator as a reference implementation:
    - Choose `equivalent-fractions-3` (simple, well-understood, existing generator in `k5-fractions.ts`)
    - Create `learn-content/math/generators/equivalent-fractions-3.ts` as the canonical example
    - Generator should be ~30 lines: produce `{ question, answer, solution, steps }` only
@@ -265,7 +265,7 @@ OutputWriter (shared)
    - Run the pipeline, verify output matches expected format
    - Compare quality against existing hand-authored content
 
-7. [ ] [DOC] Document the generator architecture at `docs/generator-architecture.md`:
+7. [x] [DOC] Document the generator architecture at `docs/generator-architecture.md`:
    - Architecture overview: per-topic generators + shared utility stack
    - The `RawProblem` → `Problem` → `WorkedExample` → `Lesson` flow
    - Per-topic generator file convention and `defineGenerator` usage
@@ -276,7 +276,7 @@ OutputWriter (shared)
    - Prompt-template spec for interpretive disciplines (design, not implementation — detailed in Phase 7)
    - Migration plan: existing content → generated content
 
-8. [ ] [IMP] Update `/generate-content` slash command (`.workflow/commands/generate-content.md`):
+8. [x] [IMP] Update `/generate-content` slash command (`.workflow/commands/generate-content.md`):
    - Add generator-first workflow: check if a generator exists for the topic before LLM-authoring
    - For topics with generators: run the generator pipeline (shared utilities handle everything)
    - For topics without generators: write a generator first (using Claude Code), then run it

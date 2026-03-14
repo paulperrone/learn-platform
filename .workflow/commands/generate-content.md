@@ -51,20 +51,19 @@ Read `progressionModel` from `graph.json` (or from the discipline definition):
 - Depth levels map to skill progression — each level builds directly on the previous
 - Content at depth N can assume mastery of all content at depths 0 through N-1
 
-**Problem generation:**
-1. Check if procedural generators exist (`tools/generators/index.ts` registry)
-2. For topics with generators: `just generate-problems --topic <topic-id> --count 50 --seed 42`
-3. For topics without generators or below 20 total problems: LLM-author supplementary problems
-   - 15 per topic, mix of conceptual/application/reasoning/error-analysis demands
-   - All get `"source": "supplementary"` in JSON
-4. If generators were run AND supplementary content was added, re-run generators to ensure generated files weren't overwritten
+**Problem generation (generator-first workflow):**
+1. Check if a per-topic generator exists (`learn-content/math/generators/<topic-id>.ts`)
+2. **If generator exists:** Run it — `npx tsx math/generators/run.ts --topic <topic-id> --seed 42`
+   - Generators produce 15 problems + 2 worked examples + 1 lesson via shared builders
+   - All output gets `"source": "generated"`
+3. **If no generator exists:** Write a generator first using `defineGenerator()`, then run it
+   - See `docs/generator-architecture.md` for the generator pattern
+   - Generator should be ~20-50 lines of pure math logic
+   - Add it to `learn-content/math/generators/index.ts`
+4. For topics that need supplementary LLM-authored content beyond the generator: add it separately
+   - All supplementary content gets `"source": "supplementary"` in JSON
 
-**Difficulty distribution:** 30% easy / 40% medium / 30% hard
-
-**Cognitive demand targets by grade:**
-- K-2: 60% procedural, 20% conceptual, 15% application, 5% reasoning
-- 3-5: 40% procedural, 20% conceptual, 20% application, 15% reasoning, 5% error-analysis
-- 6-8: 30% procedural, 20% conceptual, 20% application, 20% reasoning, 10% error-analysis
+**Cognitive demand:** Assigned automatically by ProblemBuilder using `DEMAND_PROFILES[presentation]`. No manual difficulty distribution needed — difficulty field has been removed.
 
 #### 3b. Context-Layered (History, Philosophy)
 
@@ -263,10 +262,12 @@ just import-content   # Load into local D1 — verify source column populated
 |---|---|
 | Knowledge graph | `../learn-content/<subject>/graph.json` |
 | Hand-authored problems | `../learn-content/<subject>/problems/<topic-id>.json` |
-| Generated problems | `../learn-content/<subject>/problems-generated/<topic-id>.json` |
+| Generated problems | `../learn-content/<subject>/problems/<topic-id>.json` (overwritten by generators) |
+| Legacy generated problems | `../learn-content/<subject>/problems-generated/<topic-id>.json` (deprecated) |
 | Worked examples | `../learn-content/<subject>/examples/<topic-id>.json` |
 | Lessons | `../learn-content/<subject>/lessons/<topic-id>.json` |
-| Procedural generators | `tools/generators/` |
+| Per-topic generators | `../learn-content/math/generators/<topic-id>.ts` (new, preferred) |
+| Legacy generators | `tools/generators/` (deprecated, will be removed in Phase 7) |
 | Validation | `tools/validate-content.ts`, `tools/validate-graph.ts` |
 
 ## Source Tracking

@@ -1916,3 +1916,21 @@ Post-implementation results:
 **Reasoning:** Content review of fractions (66 topics) and expressions-equations (55 topics) found 56 error-level findings in 121 topics (46% error rate). The dominant issue: answer fields contradicting their own solutions (23 wrong answers). These are LLM authoring copy-paste mistakes that a deterministic generator prevents entirely. Secondary issues (unsimplified answers, drafting artifacts, inconsistent ordering) are also eliminated. Per-topic generators provide direct provenance and are independently modifiable.
 
 **Plan:** 029 (Content Generator Architecture) — Phases 1-4 build math generators, Phase 5 specs prompt-templates for interpretive disciplines.
+
+## 2026-03-14: Generator architecture — minimal per-topic generators + shared builder stack
+
+**Source:** User session — Plan 029 Phase 1
+
+**Context:** Building the generator infrastructure for 772 math topics. Existing generators in `tools/generators/` produced fully-formed Problem objects (~80 lines each), with every generator manually constructing IDs, hints, dimensions, cognitive demand, and source fields.
+
+**Decision:** Generators produce only `RawProblem = { question, answer, solution, steps?, variant? }` (~20-50 lines). Shared builders (`ProblemBuilder`, `ExampleBuilder`, `LessonBuilder`) handle all formatting: IDs, progressive hints, cognitive demand assignment per DEMAND_PROFILES, assessment type inference, dimension defaults from graph.json, worked example assembly, and lesson composition. Generators live in `learn-content/math/generators/` (co-located with content), not in `learn-platform/tools/`.
+
+**Why:**
+- Spec changes propagate automatically — adding a required field to Problem changes ProblemBuilder once, not 800+ generators
+- Hint strategy, demand mixing, lesson structure are centralized — change once, apply everywhere
+- Per-topic generators are auditable — 20 lines of math is easy to verify vs 200 lines of formatting + math
+- Co-location with content provides direct provenance (`problems/add-fractions.json` ← `generators/add-fractions.ts`)
+
+**Alternatives rejected:**
+- Parameterized generators (one "fraction arithmetic" generator for 30 topics) — changing one topic risks breaking others
+- Generators producing full Problem objects (current pattern) — formatting logic duplicated in every generator, spec drift inevitable
