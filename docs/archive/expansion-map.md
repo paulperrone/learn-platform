@@ -996,3 +996,72 @@ When implementing each wave, verify:
 4. Every strand has at least 1 capstone with encompassing children
 5. Prereq density stays in 1.5-2.5 range per topic
 6. All topic IDs follow kebab-case convention, unique across entire graph
+
+---
+
+## Plan 029 Phase 0 Expansion (705 → 772 topics)
+
+> **Date:** 2026-03-14
+> **Method:** MathAcademy K-8 comparison (courses 75, 30, 99, 113, 111; ~955 unique topics)
+> **Script:** `tools/expand-graph.py`
+
+### Compound Topic Splits (+7 net topics)
+
+Compound topics violating the testable-in-isolation heuristic were split:
+
+| Old Topic | New Topics | Heuristic |
+|-----------|------------|-----------|
+| `add-subtract-rationals` | `add-rationals`, `subtract-rationals` | testable-in-isolation: addition vs subtraction are distinct skills |
+| `multiply-divide-rationals` | `multiply-rationals`, `divide-rationals` | testable-in-isolation: sign rules for mult vs reciprocal for div |
+| `compare-order-integers` | `compare-integers`, `order-integers` | testable-in-isolation: pairwise comparison vs sequence ordering |
+| `compare-order-rationals` | `compare-rationals`, `order-rationals-6` | testable-in-isolation: same as integers but with fractions/decimals |
+| `add-subtract-polynomials` | `add-polynomials`, `subtract-polynomials` | testable-in-isolation: distributing negative sign is a distinct skill |
+| `add-subtract-radicals` | `add-radicals`, `subtract-radicals` | testable-in-isolation |
+| `gcf-lcm-applications` | `gcf-applications`, `lcm-applications` | remediation-useful: GCF (grouping) vs LCM (scheduling) are distinct contexts |
+
+### New Topics Added (+60 topics)
+
+| Strand | Count | Key Additions |
+|--------|-------|---------------|
+| statistics-probability | +6 | quartiles-iqr, compare-data-center, compare-data-spread, symmetry-skew-data, dot-plot-measures, variance-std-dev |
+| geometry-advanced | +11 | segment-bisectors, congruent-segments, congruent-angles, midpoints, midpoints-coordinate, triangle-inequality-theorem, exterior-angles-triangles, collinear-points, segment-addition-postulate, nets-polyhedrons, faces-vertices-edges |
+| operations-division | +5 | interpreting-remainders, division-area-model, division-partial-quotients, divide-by-two-digit, divide-larger-numbers |
+| measurement-data | +8 | units-of-length, units-of-volume-capacity, convert-customary-length, convert-metric-length, convert-units-mass, convert-units-volume, convert-units-time, convert-units-area |
+| operations-multiplication | +3 | multiply-place-value, multiply-ending-zeros, multiply-repeated-addition |
+| ratios-proportions | +4 | equivalent-ratios-advanced, graphing-ratios, find-original-from-percent-increase, find-original-from-percent-decrease |
+| expressions-equations | +4 | equations-unknown-coefficients, equations-clearing-fractions, interval-notation, equations-trial-error |
+| linear-functions | +3 | modeling-linear-equations, consistency-dependency-systems, two-variable-equations-solutions |
+| counting-cardinality | +3 | count-forward-from, count-by-twos, count-by-fives |
+| algebra-thinking | +3 | represent-comparisons-equations, generating-patterns, graphing-patterns |
+| rational-numbers | +3 | natural-integers-rationals, reciprocals-intro, divisibility-rules-3-6-9 |
+| exponents-radicals | +2 | larger-exponents, exponents-whole-expressions |
+| statistics-probability | +4 | sample-spaces-events, experimental-probability-data, complement-events, venn-diagrams-probability |
+| polynomials-intro | +1 | polynomial-expressions |
+
+### Post-Expansion Stats
+
+| Metric | Before | After |
+|--------|--------|-------|
+| Total topics | 705 | 772 |
+| Prerequisite edges | 1,001 | 1,130 |
+| Encompassing edges | 711 | 738 |
+| Prereq density | 1.42/topic | 1.46/topic |
+| Encompassing density | 1.01/topic | 0.96/topic |
+
+### Compound Topics Retained as Consolidation
+
+The following compound topics were NOT split because they already have separate child topics as dependents/encompassed, serving as consolidation practice nodes:
+- `add-subtract-fractions` (has `add-fractions-like-denom` + `subtract-fractions-like-denom`)
+- `add-subtract-mixed-numbers` (has `add-mixed-numbers-like-denom` + `subtract-mixed-numbers-like-denom`)
+- `add-subtract-fractions-unlike` (has `add-fractions-unlike-denom` + `subtract-fractions-unlike-denom`)
+- `dot-plots-histograms` (has `dot-plots` + `histograms`)
+- `decimal-operations` (has individual decimal op topics)
+- `factors-multiples` (has `greatest-common-factor` + `least-common-multiple`)
+
+### MA Topics Intentionally Excluded
+
+- Trigonometry (52 MA topics) — beyond grade 8
+- Calculus intro (30 topics) — beyond grade 8
+- Complex numbers, logarithms, sequences — beyond grade 8
+- Model-based variants (e.g., "Using Models" for every operation) — model is the same skill with a visual aid
+- Per-digit-count progressions beyond 3 levels (2-digit, 3-digit, multi-digit is sufficient)

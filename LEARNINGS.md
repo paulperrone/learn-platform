@@ -1120,3 +1120,14 @@ When adding new columns to existing tables, `drizzle-kit generate` may prompt "I
 To make a `npx tsx` script importable as a module: (1) wrap all computation in an exported function, (2) guard CLI output with `const isCLI = process.argv[1]?.includes('script-name'); if (isCLI) { ... }`. This prevents the script from executing on import while keeping `npx tsx tools/script.ts` working. Don't use `import.meta.url` comparison — it doesn't work reliably with tsx.
 
 **Context:** Any time you need to import logic from an existing CLI tool. See audit/content/status.ts, audit/content/gaps.ts, audit/content/report.ts for examples.
+
+---
+
+### 2026-03-14: Splitting compound topics in graph.json requires stale edge cleanup and collection updates
+
+**Source:** User session — Plan 029 Phase 0
+**Area:** Content pipeline / graph management
+
+When removing a compound topic and replacing it with split topics: (1) rewire prerequisite edges from/to the old topic to the new topics, (2) clean up stale edges referencing deleted topic IDs, (3) update collection `topicIds` arrays to reference new IDs, (4) check if the old topic already had the split topics as dependents/encompassed children — if so, the compound is a consolidation parent, not a split candidate. The `dot-plots-histograms` case: the graph already had separate `dot-plots` and `histograms` topics as children — splitting would create duplicate IDs and self-loops.
+
+**Context:** Any time you modify graph.json by splitting/removing topics. Script at `tools/expand-graph.py` handles this programmatically.
