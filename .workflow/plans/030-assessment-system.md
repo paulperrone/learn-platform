@@ -9,7 +9,7 @@
 
 ## Summary
 
-Build a separate assessment mode distinct from learning sessions. Mixed-topic tests that sample from mastered content, map to grade-level standards, and produce scored results. Standards-based reporting gives parents and teachers verifiable evidence of learning progress. Oral assessment mode leverages existing STT infrastructure for presentation-based evaluation. Concludes with simulation and audit updates to validate the assessment system end-to-end.
+Build a separate assessment mode distinct from learning sessions. Mixed-topic tests that sample from mastered content, map to grade-level standards, and produce scored results. Standards-based reporting gives parents and teachers verifiable evidence of learning progress. Oral assessment mode leverages existing STT infrastructure for presentation-based evaluation. Concludes with a unified simulation/audit/analytics phase that covers both Plan 029 (generator/lesson changes) and Plan 030 (assessment) in a single pass.
 
 **Motivation:** The learning session engine validates mastery per-topic via FSRS, but there's no way to produce a "proof of skill" — a holistic assessment that demonstrates a student has learned a body of knowledge. Parents and teachers need report cards, not SRS statistics. Standardized test prep (SAT, state assessments) requires mixed-topic timed tests, not single-topic review. The diagnostic places students but doesn't produce a score. The assessment system fills this gap.
 
@@ -291,40 +291,70 @@ Oral assessment extends this: instead of typing, the student speaks. Instead of 
 
 ---
 
-## Phase 5: Simulation & Audit Updates
+## Phase 5: Simulation, Audit & Platform Updates
 
-**Goal:** Update simulation and audit infrastructure for the assessment system. Simulate assessment sessions to validate scoring, topic sampling, and standard alignment. Establish baselines.
+**Goal:** Unified simulation/audit/analytics update for both Plan 029 (generators, simplified learning loop) and Plan 030 (assessment system). Wire up orphaned analytics from Plan 028. Add missing D1 columns. Simulate assessment sessions. Establish new baselines for everything. Single documentation pass.
+
+**Depends on:** Plan 029 Phases 3-7 complete (generated content available). Plan 030 Phases 1-4 complete.
+
+### Context for Execution
+
+The simulation runner (`audit/learner-simulations/src/runner.ts`) drives synthetic learners through the session engine. Changes needed from 029: handle `type: "lesson"` items, remove old-phase logic. Changes needed from 030: simulate assessment sessions, validate scoring.
+
+**Analytics gaps from 028 (carried from 029-P8):**
+- `recordLessonView` event type is defined in `analytics.ts` but never called from `session.ts`
+- `ReviewScaffolding` is tracked in frontend state and sent to API but not persisted in `review_log`
 
 ### Steps
 
-1. [ ] [IMP] Add assessment simulation to the simulation runner:
+1. [ ] [IMP] Update simulation runner for simplified phase model (from 029):
+   - In `runner.ts`: handle `type: "lesson"` session items — simulate viewing all sections and completing practice
+   - Remove phase-specific logic for `pretest`, `instruction`, `guided`, `independent`
+   - Update `StateSnapshot` to remove phase-specific fields
+
+2. [ ] [IMP] Wire up `recordLessonView` analytics (from 029):
+   - In `session.ts` `respond()`: when lesson phase completes, call `analytics.recordLessonView()`
+   - Verify the event writes to AE correctly
+
+3. [ ] [IMP] Add `scaffolding` column to `review_log` (from 029):
+   - D1 migration: `ALTER TABLE review_log ADD COLUMN scaffolding TEXT`
+   - Update review_log INSERT in session.ts to include scaffolding value
+   - Update test helpers `SCHEMA_STATEMENTS`
+
+4. [ ] [IMP] Add assessment simulation to the simulation runner:
    - New simulation mode: `--mode assessment` (alongside existing `--mode learning`)
    - Simulate: start assessment → answer questions (use learner profile accuracy) → complete → check scores
    - Verify: scores match expected accuracy for the learner profile
    - Verify: strand coverage in sampled questions is diverse
 
-2. [ ] [IMP] Update audit orchestrator for assessment metrics:
+5. [ ] [IMP] Update audit orchestrator for lesson coverage + assessment metrics:
+   - Add lesson counts to Content Quality section: "X/Y topics have lessons (Z%)"
+   - Update content review rubric: add Lesson Quality criterion, replace Difficulty Calibration with Problem Equivalence
    - New audit section: Assessment System Health
    - Metrics: topics with oral prompts, average assessment score by profile, strand coverage in sampling
-   - Add to `render.ts` and `types.ts`
+   - Update `render.ts` and `types.ts`
 
-3. [ ] [IMP] Update evaluation targets:
-   - Add assessment-specific targets to `targets.json`
-   - Target: assessment scores correlate with mastery state (proficient students score ≥80%)
-   - Target: strand coverage in 20-question assessment covers ≥3 strands
+6. [ ] [IMP] Update evaluation targets and establish unified baselines:
+   - Review `targets.json` — remove/update targets referencing old phases or difficulty
+   - Add assessment-specific targets (scores correlate with mastery, strand coverage ≥3 strands in 20-question assessment)
+   - Run `just simulate-all 30 42` to generate new data
+   - Run `just evaluate` to establish performance
+   - Save new baselines
 
-4. [ ] [TST] Run full validation:
+7. [ ] [TST] Run full test and regression suite:
    - `just typecheck && just test` — pass
    - `just regression` — pass (may need new baseline)
-   - `just audit` — includes assessment section
+   - `just audit` — includes lesson coverage and assessment sections
 
-5. [ ] [DOC] Document the assessment system:
-   - Update CLAUDE.md: assessment session type, oral assessment
+8. [ ] [DOC] Unified documentation pass:
+   - Update CLAUDE.md: learning loop phases, content conventions, graph stats, assessment session type, oral assessment
    - Update SPEC.md: add assessment system to product description
+   - Update `docs/content-system.md`: lesson content type, simplified phases, generator architecture reference
    - Create `docs/assessment-system.md`: architecture, scoring model, standard alignment, oral assessment rubrics
-   - Update DECISIONS.md: assessment design decisions
+   - Update DECISIONS.md: learning loop simplification, generator migration, difficulty removal, assessment design decisions
+   - Update LEARNINGS.md with gotchas
 
-**Validation:** Assessment simulation runs. Audit reports assessment health. Regression passes. Documentation complete.
+**Validation:** `just regression` passes with updated baselines. `just audit` reports lesson coverage and assessment health. `recordLessonView` fires on lesson completion. `scaffolding` persists in review_log. Assessment simulation runs and scores correlate with mastery. All tests pass. Documentation reflects both 029 and 030 changes.
 
 ---
 

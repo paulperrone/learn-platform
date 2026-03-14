@@ -10,7 +10,9 @@
 
 ## Summary
 
-Audit and expand the math knowledge graph to proper atomic granularity using MathAcademy's K-8 topology as reference, then build a bespoke generator function for every topic that produces mathematically correct content (problems, worked examples, and lessons) with full provenance. Generators are small and focused — they produce the mathematical core (question, answer, solution steps), while a shared utility layer handles formatting, hints, cognitive demand variation, worked example assembly, and lesson composition. All existing hand-authored content is regenerated. Concludes with difficulty field removal, prompt-template spec for interpretive disciplines, and simulation/audit updates.
+Audit and expand the math knowledge graph to proper atomic granularity using MathAcademy's K-8 topology as reference, then build a bespoke generator function for every topic that produces mathematically correct content (problems, worked examples, and lessons) with full provenance. Generators are small and focused — they produce the mathematical core (question, answer, solution steps), while a shared utility layer handles formatting, hints, cognitive demand variation, worked example assembly, and lesson composition. All existing hand-authored content is regenerated. Concludes with difficulty field removal and legacy cleanup.
+
+**Phase ordering:** Phases 0-2 are architecture/design (Opus). Phases 3-7 are bulk generator writing and cleanup (Sonnet via `/workflow-run`). Simulation/audit updates are merged into Plan 030 Phase 5.
 
 **Motivation:** Content review of fractions (66 topics) and expressions-equations (55 topics) found 56 error-level findings. The dominant issue: answer fields contradicting their own solutions (23 wrong answers across the two strands). These are LLM authoring mistakes that a deterministic generator would prevent entirely. Secondary issues (unsimplified answers, drafting artifacts in answer fields, inconsistent difficulty ordering) are also eliminated when code produces the content.
 
@@ -64,6 +66,10 @@ OutputWriter (shared):
 **Completed:** None yet
 **In Progress:** —
 **Next:** Phase 0
+
+**Model assignments:**
+- Phases 0-2: Opus (architecture, research, design)
+- Phases 3-7: Sonnet (bulk generator writing, cleanup)
 
 ---
 
@@ -280,9 +286,52 @@ OutputWriter (shared)
 
 ---
 
-## Phase 2: Math Generators — K-2 Strands (counting, arithmetic, place-value)
+## Phase 2: Prompt-Template Spec for Interpretive Disciplines
+
+**Goal:** Design and document the prompt-template generator pattern for non-deterministic disciplines (history, ELA, philosophy, vocabulary). Build one PoC. This completes the architecture design work before bulk generator writing begins.
+
+### Context for Execution
+
+Interpretive disciplines can't use deterministic generators — there's no code that computes "the correct interpretation of the American Revolution." But the generator concept still applies: a structured prompt template constrains the LLM's output, ensuring:
+- Questions are grounded in declared facts/sources (not hallucinated)
+- Answer rubrics are explicit and consistent
+- Depth levels are respected (survey vs analytical vs synthesis)
+- Prerequisite assumptions are honored
+
+### Steps
+
+1. [ ] [RSH] Study the content-system.md rules for context-layered and flexible disciplines:
+   - How depth levels work (survey/contextual/analytical/synthesis)
+   - How presentation levels interact with depth for interpretive content
+   - What "rubric-based scoring" means for the platform's grading
+
+2. [ ] [IMP] Define the prompt-template generator types (already sketched in Phase 1 types):
+   - Flesh out `PromptTemplate` with concrete fields for fact anchoring, source requirements, perspective count targets
+   - Define `FactAnchor = { claim: string; source: string; confidence: "established" | "debated" | "interpretive" }`
+   - Define `DepthConstraint` per depth level: what the LLM must/must not include
+   - Define the review pass: how the generator self-checks its output against the template constraints
+
+3. [ ] [IMP] Build one PoC prompt-template generator:
+   - Choose a discipline (e.g., a small history or ELA topic)
+   - Write the template with fact anchors, depth constraints, and rubric
+   - Run it to produce problems + examples + lessons
+   - Validate output quality manually
+
+4. [ ] [DOC] Complete the prompt-template section of `docs/generator-architecture.md`:
+   - Full specification with examples
+   - How prompt templates interact with `/generate-content`
+   - Quality gates for prompt-template-generated content
+   - Comparison table: deterministic vs prompt-template generators
+
+**Validation:** Prompt-template generator spec is complete and documented. One PoC discipline has a working prompt-template generator. The pattern is ready for future discipline buildout.
+
+---
+
+## Phase 3: Math Generators — K-2 Strands (counting, arithmetic, place-value)
 
 **Goal:** Write bespoke generators for all K-2 math topics (topic count determined by Phase 0 expansion — currently ~85, may grow). Port existing bulk generators into per-topic files. Each generator produces problems + examples + lessons via the shared utility stack.
+
+**Note:** This is the first Sonnet phase. The architecture, types, shared utilities, reference implementation, and prompt-template spec are all complete from Phases 0-2. From here through Phase 7, execution is formulaic: write per-topic generators using `defineGenerator` and the shared utility stack.
 
 ### Context for Execution
 
@@ -324,7 +373,7 @@ The existing `tools/generators/` has generators for many K-5 topics but they're 
 
 ---
 
-## Phase 3: Math Generators — 3-5 Strands (fractions, measurement, data)
+## Phase 4: Math Generators — 3-5 Strands (fractions, measurement, data)
 
 **Goal:** Write bespoke generators for all grade 3-5 math topics. Port existing fraction and arithmetic generators, fill gaps in measurement and data-statistics.
 
@@ -368,7 +417,7 @@ The content review found fractions have 19 error findings (unsimplified answers,
 
 ---
 
-## Phase 4: Math Generators — 6-8 Algebra & Equations
+## Phase 5: Math Generators — 6-8 Algebra & Equations
 
 **Goal:** Write generators for expressions-equations, ratios-proportions, and rational-numbers topics. These are the highest-error strands.
 
@@ -403,7 +452,7 @@ The content review found expressions-equations had 37 error findings (most criti
 
 ---
 
-## Phase 5: Math Generators — 6-8 Geometry, Stats, Functions
+## Phase 6: Math Generators — 6-8 Geometry, Stats, Functions
 
 **Goal:** Complete generators for remaining grade 6-8 math topics.
 
@@ -441,19 +490,18 @@ The content review found expressions-equations had 37 error findings (most criti
 
 ---
 
-## Phase 6: Full Regeneration, Difficulty Removal & Cleanup
+## Phase 7: Full Regeneration, Difficulty Removal & Cleanup
 
 **Goal:** Regenerate ALL math content from generators. Remove the difficulty field entirely from the type system, validation, pipeline, and analytics. Remove legacy generator infrastructure. Establish quality baselines.
 
 ### Context for Execution
 
-After Phases 2-5, every math topic has a generator. This phase runs them all at once, validates comprehensively, and performs the full cleanup of deprecated patterns.
+After Phases 3-6, every math topic has a generator. This phase runs them all at once, validates comprehensively, and performs the full cleanup of deprecated patterns.
 
 **Difficulty removal scope:**
 - `packages/shared/src/types.ts`: Remove `ProblemDifficulty` type, remove `difficulty` from `Problem`, remove `@deprecated` JSDoc
 - `tools/validate-content.ts`: Remove difficulty validation (lines 162-166 warning on missing/invalid difficulty)
 - `tools/generate-bundles.ts`: Remove `difficulties` from manifest `items.problems` (line 91, 297)
-- `packages/api/src/services/session.ts`: Remove `DifficultyBias` type, `computeDifficultyBias`, `applyDifficultyBias` exports (dead code since 028)
 - `packages/api/src/services/analytics.ts`: Set `difficulty` blob to empty string in `ProblemAttemptEvent` (backward-compatible)
 - `.workflow/commands/generate-content.md`: Remove "Difficulty distribution: 30% easy / 40% medium / 30% hard"
 
@@ -475,7 +523,6 @@ After Phases 2-5, every math topic has a generator. This phase runs them all at 
    - Remove `difficulty` field from `Problem` type entirely
    - Remove difficulty validation from `tools/validate-content.ts`
    - Remove `difficulties` from manifest type and computation in `tools/generate-bundles.ts`
-   - Remove `DifficultyBias`, `computeDifficultyBias`, `applyDifficultyBias` from `session.ts`
    - Set analytics `difficulty` blob to `""` — backward-compatible
    - Remove difficulty distribution targets from `/generate-content` command
    - Run `just typecheck && just test` — fix any type errors or test references
@@ -496,102 +543,9 @@ After Phases 2-5, every math topic has a generator. This phase runs them all at 
 
 **Validation:** All math topics have generator-produced content (problems + examples + lessons). Content review shows dramatic quality improvement. Difficulty field fully removed. Legacy generator code removed. `just typecheck && just test` pass. Decisions documented.
 
----
 
-## Phase 7: Prompt-Template Spec for Interpretive Disciplines (Deprioritized)
 
-**Goal:** Design and document the prompt-template generator pattern for non-deterministic disciplines (history, ELA, philosophy, vocabulary). Build one PoC. This phase can be deferred until interpretive disciplines need content at scale.
-
-### Context for Execution
-
-Interpretive disciplines can't use deterministic generators — there's no code that computes "the correct interpretation of the American Revolution." But the generator concept still applies: a structured prompt template constrains the LLM's output, ensuring:
-- Questions are grounded in declared facts/sources (not hallucinated)
-- Answer rubrics are explicit and consistent
-- Depth levels are respected (survey vs analytical vs synthesis)
-- Prerequisite assumptions are honored
-
-### Steps
-
-1. [ ] [RSH] Study the content-system.md rules for context-layered and flexible disciplines:
-   - How depth levels work (survey/contextual/analytical/synthesis)
-   - How presentation levels interact with depth for interpretive content
-   - What "rubric-based scoring" means for the platform's grading
-
-2. [ ] [IMP] Define the prompt-template generator types (already sketched in Phase 1 types):
-   - Flesh out `PromptTemplate` with concrete fields for fact anchoring, source requirements, perspective count targets
-   - Define `FactAnchor = { claim: string; source: string; confidence: "established" | "debated" | "interpretive" }`
-   - Define `DepthConstraint` per depth level: what the LLM must/must not include
-   - Define the review pass: how the generator self-checks its output against the template constraints
-
-3. [ ] [IMP] Build one PoC prompt-template generator:
-   - Choose a discipline (e.g., a small history or ELA topic)
-   - Write the template with fact anchors, depth constraints, and rubric
-   - Run it to produce problems + examples + lessons
-   - Validate output quality manually
-
-4. [ ] [DOC] Complete the prompt-template section of `docs/generator-architecture.md`:
-   - Full specification with examples
-   - How prompt templates interact with `/generate-content`
-   - Quality gates for prompt-template-generated content
-   - Comparison table: deterministic vs prompt-template generators
-
-**Validation:** Prompt-template generator spec is complete and documented. One PoC discipline has a working prompt-template generator. The pattern is ready for future discipline buildout.
-
----
-
-## Phase 8: Simulation & Audit Updates
-
-**Goal:** Update simulation runner, evaluation system, and audit infrastructure for the simplified learning loop (028) and generator-produced content (029). Wire up orphaned analytics. Add missing D1 columns. Establish new baselines.
-
-**Depends on:** Plan 028 complete ✓. Phases 2-6 complete (generated content available).
-
-### Context for Execution
-
-The simulation runner (`audit/learner-simulations/src/runner.ts`) drives synthetic learners through the session engine. Changes needed: handle `type: "lesson"` items, remove old-phase logic, update targets.
-
-**Analytics gaps from 028:**
-- `recordLessonView` event type is defined in `analytics.ts` but never called
-- `ReviewScaffolding` is tracked in frontend state and sent to API but not persisted in `review_log`
-
-### Steps
-
-1. [ ] [IMP] Update simulation runner for simplified phase model:
-   - In `runner.ts`: handle `type: "lesson"` session items — simulate viewing all sections and completing practice
-   - Remove phase-specific logic for `pretest`, `instruction`, `guided`, `independent`
-   - Update `StateSnapshot` to remove phase-specific fields
-
-2. [ ] [IMP] Wire up `recordLessonView` analytics:
-   - In `session.ts` `respond()`: when lesson phase completes, call `analytics.recordLessonView()`
-   - Verify the event writes to AE correctly
-
-3. [ ] [IMP] Add `scaffolding` column to `review_log`:
-   - D1 migration: `ALTER TABLE review_log ADD COLUMN scaffolding TEXT`
-   - Update review_log INSERT in session.ts to include scaffolding value
-   - Update test helpers `SCHEMA_STATEMENTS`
-
-4. [ ] [IMP] Update evaluation targets and baselines:
-   - Review `targets.json` — remove/update targets referencing old phases or difficulty
-   - Run `just simulate-all 30 42` to generate new data
-   - Run `just evaluate` to establish performance
-   - Save new baselines
-
-5. [ ] [IMP] Update audit orchestrator for lesson coverage:
-   - Add lesson counts to Content Quality section
-   - Add "X/Y topics have lessons (Z%)" metric
-   - Update content review rubric: add Lesson Quality criterion, replace Difficulty Calibration with Problem Equivalence
-   - Update `render.ts` and `types.ts`
-
-6. [ ] [TST] Run full test and regression suite:
-   - `just typecheck && just test` — pass
-   - `just regression` — pass (may need new baseline)
-
-7. [ ] [DOC] Document changes:
-   - Update CLAUDE.md: learning loop phases, content conventions, graph stats
-   - Update `docs/content-system.md`: lesson content type, simplified phases, generator architecture reference
-   - Update DECISIONS.md: learning loop simplification, generator migration, difficulty removal
-   - Update LEARNINGS.md with gotchas
-
-**Validation:** `just regression` passes with updated baselines. `just audit` reports lesson coverage. `recordLessonView` fires on lesson completion. `scaffolding` persists in review_log. All tests pass. Documentation reflects new model.
+> **Note:** Simulation & audit updates (previously Phase 8) have been merged into Plan 030 Phase 5 for a single unified pass across both generator and assessment changes.
 
 ---
 
