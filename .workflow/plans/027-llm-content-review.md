@@ -29,9 +29,9 @@ Consolidate all audit infrastructure under a top-level `audit/` directory organi
 
 ## Progress
 
-**Completed:** Phase 1
+**Completed:** Phase 1, Phase 2
 **In Progress:** —
-**Next:** Phase 2
+**Next:** Phase 3
 
 ---
 
@@ -273,7 +273,7 @@ All `npx tsx tools/content-status.ts` → `npx tsx audit/content/status.ts` (sim
 
 ---
 
-## Phase 2: Core Review System
+## Phase 2: Core Review System ✓
 
 **Goal:** Build the `/content-review` slash command that uses Claude Code sonnet subagents to review content against a codified rubric. Absorbs atomicity assessment as criterion 7. Produces a report for human review.
 
@@ -346,14 +346,14 @@ Each criterion produces a finding: `pass`, `warn`, `error`, or `skip`.
 
 ### Steps
 
-1. [ ] [IMP] Define review types (`audit/content/review-types.ts`):
+1. [x] [IMP] Define review types (`audit/content/review-types.ts`):
    - `ReviewFinding`: `{ criterion: string; status: "pass" | "warn" | "error" | "skip"; detail: string; evidence?: string; problemId?: string; confidence?: "high" | "low" }`
    - `TopicReview`: `{ topicId: string; discipline: string; timestamp: string; findings: ReviewFinding[]; overallGrade: "A" | "B" | "C" | "D" | "F"; summary: string; contentHash: string }`
    - `TopicReviewCache`: `{ contentHash: string; reviews: TopicReview[] }` (up to 3 reviews per hash)
    - `ReviewReport`: `{ timestamp: string; discipline: string | "all"; topicsReviewed: number; gradeDistribution: Record<string, number>; highConfidenceFindings: number; lowConfidenceFindings: number; topicReviews: TopicReview[] }`
    - `TopicContext`: `{ topicId: string; discipline: string; name: string; description: string; strand: string; gradeLevel: number; progressionModel: string; prerequisites: { id: string; name: string; description: string }[]; encompassingEdges: { parentId: string; childId: string; weight: number }[]; problems: any[]; examples: any[]; presentation: string; contentDepth: string }`
 
-2. [ ] [IMP] Build context assembler (`audit/content/review-context.ts`):
+2. [x] [IMP] Build context assembler (`audit/content/review-context.ts`):
    - Absorbs logic from `audit/content/atomicity-context.ts` (parameterized by discipline, not hardcoded math)
    - `assembleTopicContext(topicId: string, discipline: string): TopicContext`
    - Reads graph.json for topic metadata (gradeLevel, strand, progressionModel, defaultPresentation, contentDepth)
@@ -365,7 +365,7 @@ Each criterion produces a finding: `pass`, `warn`, `error`, or `skip`.
    - CLI entry: `npx tsx audit/content/review-context.ts [--discipline <name>] [--topic <id>] [--strand <name>] --output <file>`
    - Outputs JSON array of `TopicContext` objects
 
-3. [ ] [IMP] Build review rubric document (`audit/content/review-rubric.md`):
+3. [x] [IMP] Build review rubric document (`audit/content/review-rubric.md`):
    - Human-readable rubric included in subagent prompts
    - 7 criteria with priority levels, descriptions, pass/warn/error definitions
    - Criterion 7 (atomicity): assess topic scope using description, prerequisite count, encompassing edges, problem diversity
@@ -375,7 +375,7 @@ Each criterion produces a finding: `pass`, `warn`, `error`, or `skip`.
    - Expected output format: JSON array of `ReviewFinding` objects
    - Scope note: "You are reviewing TEXT content only. Ignore references to future media."
 
-4. [ ] [IMP] Build review cache (`audit/content/review-cache.ts`):
+4. [x] [IMP] Build review cache (`audit/content/review-cache.ts`):
    - Cache directory: `audit/reports/content-reviews/{discipline}/`
    - Per-topic file: `{topic-id}.json` containing `TopicReviewCache` (content hash + up to 3 reviews)
    - `getCache(topicId, discipline): TopicReviewCache | null`
@@ -385,7 +385,7 @@ Each criterion produces a finding: `pass`, `warn`, `error`, or `skip`.
    - `loadAllCached(discipline: string): TopicReviewCache[]`
    - `aggregateFindings(cache: TopicReviewCache): ReviewFinding[]` (dedup, mark confidence: 2+ runs = high, 1 = low)
 
-5. [ ] [IMP] Build `/content-review` slash command (`.claude/commands/content-review.md`):
+5. [x] [IMP] Build `/content-review` slash command (`.claude/commands/content-review.md`):
    - Usage:
      - `/content-review` — review all disciplines (comprehensive)
      - `/content-review <discipline>` — review one discipline
@@ -404,7 +404,7 @@ Each criterion produces a finding: `pass`, `warn`, `error`, or `skip`.
      7. Present summary: grade distribution, high-confidence findings by criterion, worst topics
      8. "Review the report — approved findings can be fed into /generate-content for targeted fixes."
 
-6. [ ] [TST] Test context assembler and cache (`audit/content/__tests__/review.test.ts`):
+6. [x] [TST] Test context assembler and cache (`audit/content/__tests__/review.test.ts`):
    - Add clarifying comment: "Tests the review tool code (context assembly, cache logic, finding aggregation), not content quality"
    - Unit test: context assembler loads math topic with prerequisites and encompassing edges
    - Unit test: context assembler parameterized by discipline (not hardcoded math)

@@ -4,8 +4,8 @@ dist/
 .dev.vars
 *.local
 .DS_Store
-# Content lives in separate learn-content repo
-content/
+# Content lives in separate learn-content repo (top-level only)
+/content/
 tools/visualize-graph.html
 audit/learner-simulations/runs/
 audit/reports/evaluation.json
