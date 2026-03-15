@@ -234,6 +234,7 @@ export const reviewLog = sqliteTable("review_log", {
   contentVersion: text("content_version"),
   llmAssisted: integer("llm_assisted", { mode: "boolean" }).default(false),
   hintSource: text("hint_source"), // 'static' | 'llm' | null
+  scaffolding: text("scaffolding"), // ReviewScaffolding: 'none' | 'example' | 'hints-only' | 'solution' | null
   createdAt: text("created_at").notNull().$defaultFn(() => new Date().toISOString()),
 }, (table) => [
   index("review_user_idx").on(table.userId),

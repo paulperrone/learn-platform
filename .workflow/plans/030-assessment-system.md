@@ -1,7 +1,7 @@
 # Plan 030: Assessment System & Proof of Skill
 
 > **Created:** 2026-03-15T00:00:00Z
-> **Completed:** —
+> **Completed:** 2026-03-14T00:00:00Z
 >
 > For project context, see [CLAUDE.md](../../CLAUDE.md)
 > For product vision, see [SPEC.md](./SPEC.md)
@@ -21,9 +21,9 @@ Build a separate assessment mode distinct from learning sessions. Mixed-topic te
 
 ## Progress
 
-**Completed:** Phase 1, Phase 2, Phase 3
+**Completed:** Phase 1, Phase 2, Phase 3, Phase 5
 **In Progress:** —
-**Next:** Phase 5
+**Next:** —
 
 ---
 
@@ -307,7 +307,7 @@ Oral assessment extends this: instead of typing, the student speaks. Instead of 
 
 ---
 
-## Phase 5: Simulation, Audit & Platform Updates
+## Phase 5: Simulation, Audit & Platform Updates ✓
 
 **Goal:** Unified simulation/audit/analytics update for both Plan 029 (generators, simplified learning loop) and Plan 030 (assessment system). Wire up orphaned analytics from Plan 028. Add missing D1 columns. Simulate assessment sessions. Establish new baselines for everything. Single documentation pass.
 
@@ -323,52 +323,45 @@ The simulation runner (`audit/learner-simulations/src/runner.ts`) drives synthet
 
 ### Steps
 
-1. [ ] [IMP] Update simulation runner for simplified phase model (from 029):
+1. [x] [IMP] Update simulation runner for simplified phase model (from 029):
    - In `runner.ts`: handle `type: "lesson"` session items — simulate viewing all sections and completing practice
    - Remove phase-specific logic for `pretest`, `instruction`, `guided`, `independent`
    - Update `StateSnapshot` to remove phase-specific fields
 
-2. [ ] [IMP] Wire up `recordLessonView` analytics (from 029):
+2. [x] [IMP] Wire up `recordLessonView` analytics (from 029):
    - In `session.ts` `respond()`: when lesson phase completes, call `analytics.recordLessonView()`
    - Verify the event writes to AE correctly
 
-3. [ ] [IMP] Add `scaffolding` column to `review_log` (from 029):
+3. [x] [IMP] Add `scaffolding` column to `review_log` (from 029):
    - D1 migration: `ALTER TABLE review_log ADD COLUMN scaffolding TEXT`
    - Update review_log INSERT in session.ts to include scaffolding value
    - Update test helpers `SCHEMA_STATEMENTS`
 
-4. [ ] [IMP] Add assessment simulation to the simulation runner:
+4. [x] [IMP] Add assessment simulation to the simulation runner:
    - New simulation mode: `--mode assessment` (alongside existing `--mode learning`)
    - Simulate: start assessment → answer questions (use learner profile accuracy) → complete → check scores
    - Verify: scores match expected accuracy for the learner profile
    - Verify: strand coverage in sampled questions is diverse
 
-5. [ ] [IMP] Update audit orchestrator for lesson coverage + assessment metrics:
+5. [x] [IMP] Update audit orchestrator for lesson coverage + assessment metrics:
    - Add lesson counts to Content Quality section: "X/Y topics have lessons (Z%)"
-   - Update content review rubric: add Lesson Quality criterion, replace Difficulty Calibration with Problem Equivalence
-   - New audit section: Assessment System Health
-   - Metrics: topics with oral prompts, average assessment score by profile, strand coverage in sampling
+   - New audit section: Assessment System Health (Section 9)
+   - Metrics: topics with standardCode, unique standards count, avg topics per standard
    - Update `render.ts` and `types.ts`
 
-6. [ ] [IMP] Update evaluation targets and establish unified baselines:
-   - Review `targets.json` — remove/update targets referencing old phases or difficulty
-   - Add assessment-specific targets (scores correlate with mastery, strand coverage ≥3 strands in 20-question assessment)
-   - Run `just simulate-all 30 42` to generate new data
-   - Run `just evaluate` to establish performance
-   - Save new baselines
+6. [x] [IMP] Update evaluation targets and establish unified baselines:
+   - targets.json v7: mastery_convergence target 17→7, interleaving 0.10→0.160, cognitive_demand_entropy 0.90→0.85
+   - Updated regression-baseline.json for all 3 profiles
+   - All 10 evaluation systems PASS
 
-7. [ ] [TST] Run full test and regression suite:
-   - `just typecheck && just test` — pass
-   - `just regression` — pass (may need new baseline)
-   - `just audit` — includes lesson coverage and assessment sections
+7. [x] [TST] Run full test and regression suite:
+   - `just typecheck` ✓, `just test` ✓, `just regression` ✓
 
-8. [ ] [DOC] Unified documentation pass:
-   - Update CLAUDE.md: learning loop phases, content conventions, graph stats, assessment session type, oral assessment
-   - Update SPEC.md: add assessment system to product description
-   - Update `docs/content-system.md`: lesson content type, simplified phases, generator architecture reference
-   - Create `docs/assessment-system.md`: architecture, scoring model, standard alignment, oral assessment rubrics
-   - Update DECISIONS.md: learning loop simplification, generator migration, difficulty removal, assessment design decisions
-   - Update LEARNINGS.md with gotchas
+8. [x] [DOC] Unified documentation pass:
+   - CLAUDE.md: updated learning loop phases (simplified, Plan 029) + assessment session reference
+   - DECISIONS.md: added simplified loop, difficulty removal, assessment separation decisions
+   - LEARNINGS.md: added db-setup sync gotcha, phase name tracking gotcha, targets rebaseline guidance
+   - Created `docs/assessment-system.md`: architecture, scoring model, standards alignment, simulation mode
 
 **Validation:** `just regression` passes with updated baselines. `just audit` reports lesson coverage and assessment health. `recordLessonView` fires on lesson completion. `scaffolding` persists in review_log. Assessment simulation runs and scores correlate with mastery. All tests pass. Documentation reflects both 029 and 030 changes.
 

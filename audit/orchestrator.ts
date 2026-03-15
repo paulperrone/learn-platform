@@ -19,7 +19,7 @@ import type {
   AuditReport, ItemStatus, StatusItem,
   GraphIntegritySection, ContentQualitySection, SimulationResultsSection,
   ContentEffectivenessSection, LLMTrackingSection, MediaReadinessSection,
-  MultiDisciplineSection, ContentReviewSection, SimulationSystem,
+  MultiDisciplineSection, ContentReviewSection, AssessmentHealthSection, SimulationSystem,
   ManifestSummary, DimensionCoverage, ContentVersionStatus,
   AuditThresholds, ThresholdLevel, AuditDelta,
 } from "./types.js";
@@ -417,6 +417,7 @@ function auditContentQuality(subject: string, thresholds: AuditThresholds): Cont
       healthDistribution: { below50: 0, below70: 0, above70: 0, average: 0 },
       gapSummary: { total: 0, critical: 0, high: 0, medium: 0, low: 0 },
       topGaps: [], demandDiversity: 0,
+      lessonCoverage: { topicsWithLessons: 0, totalTopics: 0, pct: 0 },
       dimensionCoverage: null, manifestCount: 0, staleDeployCount: 0, contentVersions: [],
     };
   }
@@ -466,6 +467,11 @@ function auditContentQuality(subject: string, thresholds: AuditThresholds): Cont
     totalTopics: statusResult.topicCount,
     healthDistribution: { below50, below70, above70, average: statusResult.averageHealth },
     gapSummary, topGaps, demandDiversity: avgDemandDiversity,
+    lessonCoverage: {
+      topicsWithLessons: topicsWithExamples,
+      totalTopics: statusResult.topicCount,
+      pct: statusResult.topicCount > 0 ? Math.round(topicsWithExamples / statusResult.topicCount * 100) : 0,
+    },
     dimensionCoverage: manifests.length > 0 ? dimensionCoverage : null,
     manifestCount: manifests.length,
     staleDeployCount: staleCount,
@@ -926,6 +932,64 @@ function auditContentReview(): ContentReviewSection {
   };
 }
 
+// ── Assessment health ──
+
+function auditAssessmentHealth(subject: string): AssessmentHealthSection {
+  const contentDir = getContentDir();
+  const graphPath = join(contentDir, subject, "graph.json");
+
+  if (!existsSync(graphPath)) {
+    return {
+      status: "pending",
+      items: [{ label: "Graph", status: "pending", detail: `${subject}/graph.json not found` }],
+      topicsWithStandardCode: 0, totalTopics: 0, standardCodePct: 0,
+      uniqueStandards: 0, topicsPerStandardAvg: 0,
+    };
+  }
+
+  const graph = JSON.parse(readFileSync(graphPath, "utf-8"));
+  const topics: any[] = graph.topics ?? [];
+  const totalTopics = topics.length;
+
+  const topicsWithCode = topics.filter((t: any) => t.standardCode && t.standardCode.trim() !== "");
+  const topicsWithStandardCode = topicsWithCode.length;
+  const standardCodePct = totalTopics > 0 ? Math.round(topicsWithStandardCode / totalTopics * 100) : 0;
+
+  const standardCounts = new Map<string, number>();
+  for (const t of topicsWithCode) {
+    const code = t.standardCode as string;
+    standardCounts.set(code, (standardCounts.get(code) ?? 0) + 1);
+  }
+  const uniqueStandards = standardCounts.size;
+  const topicsPerStandardAvg = uniqueStandards > 0
+    ? Math.round((topicsWithStandardCode / uniqueStandards) * 10) / 10
+    : 0;
+
+  const items: StatusItem[] = [
+    {
+      label: "Topics with standard code",
+      status: standardCodePct >= 90 ? "pass" : standardCodePct >= 50 ? "warn" : "fail",
+      value: `${topicsWithStandardCode}/${totalTopics} (${standardCodePct}%)`,
+    },
+    {
+      label: "Unique standards covered",
+      status: uniqueStandards > 0 ? "pass" : "warn",
+      value: uniqueStandards,
+    },
+    {
+      label: "Avg topics per standard",
+      status: "info",
+      value: topicsPerStandardAvg,
+    },
+  ];
+
+  const failItems = items.filter(i => i.status === "fail");
+  const warnItems = items.filter(i => i.status === "warn");
+  const status: ItemStatus = failItems.length > 0 ? "fail" : warnItems.length > 0 ? "warn" : "pass";
+
+  return { status, items, topicsWithStandardCode, totalTopics, standardCodePct, uniqueStandards, topicsPerStandardAvg };
+}
+
 // ── Main orchestrator ──
 
 export async function runAudit(opts: {
@@ -950,6 +1014,7 @@ export async function runAudit(opts: {
   const mediaReadiness = auditMediaReadiness();
   const multiDiscipline = auditMultiDiscipline();
   const contentReview = auditContentReview();
+  const assessmentHealth = auditAssessmentHealth(primarySubject);
 
   // Overall status
   const sectionStatuses = [
@@ -985,6 +1050,7 @@ export async function runAudit(opts: {
       mediaReadiness,
       multiDiscipline,
       contentReview,
+      assessmentHealth,
     },
   };
 

@@ -29,7 +29,7 @@ function loadAllProfiles(): LearnerProfile[] {
     .map((f) => JSON.parse(readFileSync(join(profilesDir, f), "utf-8")));
 }
 
-function parseArgs(): { profiles: string[]; sessions: number; seed: number; all: boolean; schedule: string | undefined; discipline: string | undefined } {
+function parseArgs(): { profiles: string[]; sessions: number; seed: number; all: boolean; schedule: string | undefined; discipline: string | undefined; mode: "learning" | "assessment" } {
   const args = process.argv.slice(2);
   let profiles: string[] = [];
   let sessions = 5;
@@ -37,6 +37,7 @@ function parseArgs(): { profiles: string[]; sessions: number; seed: number; all:
   let all = false;
   let schedule: string | undefined;
   let discipline: string | undefined;
+  let mode: "learning" | "assessment" = "learning";
 
   for (let i = 0; i < args.length; i++) {
     if (args[i] === "--all") {
@@ -53,22 +54,26 @@ function parseArgs(): { profiles: string[]; sessions: number; seed: number; all:
     } else if (args[i] === "--discipline" && args[i + 1]) {
       discipline = args[i + 1];
       i++;
+    } else if (args[i] === "--mode" && args[i + 1]) {
+      mode = args[i + 1] as "learning" | "assessment";
+      i++;
     } else if (!args[i].startsWith("--")) {
       profiles.push(args[i]);
     }
   }
 
-  return { profiles, sessions, seed, all, schedule, discipline };
+  return { profiles, sessions, seed, all, schedule, discipline, mode };
 }
 
 async function main() {
-  const { profiles, sessions, seed, all, schedule, discipline } = parseArgs();
+  const { profiles, sessions, seed, all, schedule, discipline, mode } = parseArgs();
 
   if (!all && profiles.length === 0) {
-    console.log("Usage: npx tsx audit/learner-simulations/src/cli.ts <profile> [--sessions N] [--seed S] [--schedule TYPE] [--discipline DISCIPLINE]");
-    console.log("       npx tsx audit/learner-simulations/src/cli.ts --all [--sessions N] [--seed S] [--schedule TYPE] [--discipline DISCIPLINE]");
+    console.log("Usage: npx tsx audit/learner-simulations/src/cli.ts <profile> [--sessions N] [--seed S] [--schedule TYPE] [--discipline DISCIPLINE] [--mode MODE]");
+    console.log("       npx tsx audit/learner-simulations/src/cli.ts --all [--sessions N] [--seed S] [--schedule TYPE] [--discipline DISCIPLINE] [--mode MODE]");
     console.log("\nSchedule types: daily, irregular, weekday, gap-and-return, burst, weekend-only, decay, completion-break");
     console.log("\nDiscipline: math (default), ela, history, or comma-separated for multi-discipline");
+    console.log("\nMode: learning (default), assessment (adds assessment verification after learning sessions)");
     console.log("\nAvailable profiles:");
     const profilesDir = join(process.cwd(), "audit", "learner-simulations", "profiles");
     if (existsSync(profilesDir)) {
@@ -105,6 +110,7 @@ async function main() {
       disciplines: disciplines.length > 1 ? disciplines : undefined,
       sessionCount: sessions,
       seed,
+      mode,
     };
 
     const runner = new SimulationRunner(config);

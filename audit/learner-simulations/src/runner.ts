@@ -4,6 +4,7 @@
 import type { DB } from "../../../packages/api/src/db/index.js";
 import { createSessionService } from "../../../packages/api/src/services/session.js";
 import { createDiagnosticService, IMPLICIT_MASTERY_THRESHOLD } from "../../../packages/api/src/services/diagnostic.js";
+import { createAssessmentService } from "../../../packages/api/src/services/assessment.js";
 import { createSRSService } from "../../../packages/api/src/services/srs.js";
 import { createFileContentBucket } from "../../../packages/api/src/services/content-r2.js";
 import { createSimulationDb, createSimulationDbMulti, createSimUser, resolveContentDir } from "./db-setup.js";
@@ -11,6 +12,7 @@ import { resolveAnswer } from "./answer-engine.js";
 import { EventLogger } from "./event-logger.js";
 import { SeededRNG } from "./prng.js";
 import type { SimulationConfig, SimulationResult, SimulationEvent, LearnerProfile, DiagnosticRunResult, SessionSummary, StateSnapshot, TopicStateSnapshot, PresentationSnapshot, TimeSchedule } from "./types.js";
+import type { AssessmentItem, AssessmentResult } from "../../../packages/shared/src/types.js";
 import { join } from "path";
 import { eq, and, desc } from "drizzle-orm";
 import { writeFileSync, readFileSync } from "fs";
@@ -198,6 +200,11 @@ export class SimulationRunner {
       // Snapshot state and compute session summary after each session
       await this.takeStateSnapshot(i + 1);
       this.computeSessionSummary(i + 1);
+    }
+
+    // Assessment verification pass (--mode assessment)
+    if (this.config.mode === "assessment") {
+      await this.runAssessmentVerification();
     }
 
     // Restore real Date and Math.random
@@ -484,6 +491,45 @@ export class SimulationRunner {
 
     while (currentItem.type !== "complete" && currentItem.type !== "error" && interactions < MAX_INTERACTIONS) {
       interactions++;
+
+      if (currentItem.type === "lesson") {
+        // Lesson item — simulate viewing the lesson then completing practice problems
+        this.logger.log({
+          sessionNumber,
+          phase: "lesson",
+          topicId: currentItem.topicId,
+          problemId: null,
+          difficulty: null,
+          cognitiveDemand: null,
+          presentation: currentItem.presentationLevel ?? null,
+          contentDepth: null,
+          correct: null,
+          confidence: null,
+          hintsUsed: null,
+          rating: null,
+          stabilityBefore: null,
+          stabilityAfter: null,
+          difficultyBefore: null,
+          difficultyAfter: null,
+          masteredBefore: null,
+          masteredAfter: null,
+          frontierBefore: null,
+          frontierAfter: null,
+          rollingAccuracy: null,
+          presentationWeights: null,
+          remediationTarget: null,
+          fireCreditApplied: null,
+          fadingLevel: null,
+          interleaveStrand: null,
+        });
+
+        // Respond to lesson phase — pass through to advance to next topic
+        currentItem = await sessionSvc.respond(sessionId, {
+          correct: true,
+          responseMs: 15000, // Simulate reading time
+        });
+        continue;
+      }
 
       if (currentItem.type === "instruction") {
         // Worked example — just acknowledge it, no answer needed
@@ -863,10 +909,11 @@ export class SimulationRunner {
       }
 
       // Track reviews vs new
+      // "review" = FSRS-scheduled review; "lesson" = new topic introduction (simplified loop)
       if (event.phase === "review") {
         reviewsCompleted++;
       }
-      if (event.phase === "pretest") {
+      if (event.phase === "lesson" || event.phase === "pretest") {
         newTopicsIntroduced++;
       }
 
@@ -918,5 +965,93 @@ export class SimulationRunner {
     };
 
     this.sessionSummaries.push(summary);
+  }
+
+  /**
+   * Run an assessment verification pass after learning sessions.
+   * Starts a comprehensive 10-question assessment, answers using profile accuracy,
+   * and logs score + strand coverage to verify the assessment service is working.
+   */
+  private async runAssessmentVerification(): Promise<void> {
+    setSimulatedTime(this.simulatedTimeMs);
+
+    const assessmentSvc = createAssessmentService(this.db, this.contentBucket);
+
+    let totalQuestions = 0;
+    let sessionId: string;
+    let firstItem: AssessmentItem | null;
+
+    try {
+      const startResult = await assessmentSvc.startAssessment(this.userId, {
+        scope: { type: "comprehensive" },
+        questionCount: 10,
+      });
+      sessionId = startResult.sessionId;
+      firstItem = startResult.firstItem;
+      totalQuestions = startResult.totalQuestions;
+    } catch (err: unknown) {
+      console.log(`[sim] Assessment verification skipped: ${(err as Error).message}`);
+      return;
+    }
+
+    if (!firstItem) {
+      console.log("[sim] Assessment verification: no mastered topics available");
+      return;
+    }
+
+    console.log(`[sim] Assessment verification: ${totalQuestions} questions`);
+
+    let currentItem: AssessmentItem | undefined = firstItem;
+    let result: AssessmentResult | undefined;
+
+    while (currentItem) {
+      const topicId = currentItem.topicId;
+      const gradeLevel = this.topicGradeLevels.get(topicId) ?? 0;
+      const problem = currentItem.problem;
+
+      const answerResult = resolveAnswer(
+        this.rng,
+        this.config.profile,
+        { id: topicId, gradeLevel, disciplineId: this.topicDisciplines.get(topicId) },
+        "medium",
+        (problem as any).cognitiveDemand ?? null,
+        "independent",
+        0,
+      );
+
+      const answerText = answerResult.correct ? problem.answer : "__wrong__";
+      const resp = await assessmentSvc.respondToAssessment(sessionId, {
+        answer: answerText,
+        responseMs: answerResult.responseMs,
+      });
+
+      if (resp.result) {
+        result = resp.result;
+        break;
+      }
+      currentItem = resp.nextItem;
+    }
+
+    if (!result) {
+      result = await assessmentSvc.getAssessmentResult(sessionId);
+    }
+
+    const strandCount = Object.keys(result.strandScores).length;
+    console.log(
+      `[sim] Assessment: ${result.totalCorrect}/${result.totalQuestions} (${(result.rawScore * 100).toFixed(1)}%), ${strandCount} strand(s) covered`,
+    );
+
+    // Correlation check: score vs mastery
+    const finalSnapshot = this.stateSnapshots[this.stateSnapshots.length - 1];
+    if (finalSnapshot && this.totalTopicCount > 0) {
+      const masteryPct = finalSnapshot.masteryCount / this.totalTopicCount;
+      console.log(
+        `[sim] Score vs mastery: score=${(result.rawScore * 100).toFixed(1)}%, mastered=${(masteryPct * 100).toFixed(1)}%`,
+      );
+    }
+
+    if (totalQuestions >= 10 && strandCount < 2) {
+      console.warn(`[sim] WARNING: only ${strandCount} strand(s) covered in ${totalQuestions}-question assessment (expected ≥2)`);
+    }
   }
 }

@@ -2059,3 +2059,60 @@ Post-implementation results:
 - Aligns with how standards-based grading works: domain mastery means proficiency on the standards in that domain, not topic-count arithmetic
 - Avoids inflation from standards with many topics vs. standards with few — each standard counts equally
 - `DomainScore.masteredCount` is labeled "standards proficient", which is interpretable by parents/teachers
+
+---
+
+## 2026-03-14: Simplified learning loop — lesson → independent → review (Plan 029)
+
+**Source:** User session — Plan 029
+
+**Context:** The original 6-phase learning loop (pretest → instruction → guided → independent → review → remediation) was complex to implement, audit, and explain. The pretest phase was generating low-value data; the instruction/guided phases were thin wrappers.
+
+**Decision:** Replace the 6-phase loop with a 3-phase model: `lesson` (worked example exposure) → `independent` (problem practice, FSRS-scheduled) → `review` (SRS review items). Remediation remains as a subpath within the loop, not a standalone phase. Sessions have a single `SessionItem` type with `phase: "lesson" | "independent" | "review" | "remediation"`.
+
+**Why:**
+- Fewer phases = simpler session engine, simpler frontend rendering, simpler audit
+- The pretest was mostly duplicating information the diagnostic already provided
+- Lesson + independent practice maps directly to the worked-example effect literature
+- SRS review items use the same problem infrastructure — no separate content type needed
+
+**Alternatives rejected:**
+- Keep 6-phase loop: High complexity, low marginal benefit over 3-phase. Pretest phase added session startup latency with little new signal.
+
+---
+
+## 2026-03-14: Difficulty removed from content model (Plan 029)
+
+**Source:** User session — Plan 029
+
+**Context:** Problems had an `easy/medium/hard` difficulty field used for progression within a topic. After expanding to 15+ problems per topic, difficulty became unreliable — LLMs assign difficulty inconsistently, and the same problem can be easy or hard depending on the learner.
+
+**Decision:** Remove the `difficulty` field from assessment_content. Use FSRS-scheduled retrieval as the primary difficulty regulator: a problem that is consistently answered correctly gets scheduled less frequently; a problem answered incorrectly triggers shorter re-review intervals. Topic ordering via prerequisites handles macro-level progression.
+
+**Why:**
+- FSRS implicitly captures per-learner difficulty — no need to encode it in the content
+- Removing difficulty eliminates inconsistent LLM labeling and prevents hardcoded difficulty gates
+- Simpler schema; generators no longer need to produce difficulty distributions
+- Matches research: desirable difficulties emerge from spacing and retrieval, not from content labeling
+
+**Alternatives rejected:**
+- Keep difficulty, fix labeling: Requires manual review of thousands of problems; still doesn't handle per-learner variation
+
+---
+
+## 2026-03-14: Assessment sessions are separate from learning sessions (Plan 030)
+
+**Source:** User session — Plan 030
+
+**Context:** Adding multi-topic assessments for standards-based reporting. Two approaches: extend the learning session with an "assessment mode" flag, or create a distinct session type with its own service and routes.
+
+**Decision:** Assessment sessions are fully separate from learning sessions. `createAssessmentService()` manages assessment state independently. Assessment items have no scaffolding, no hints, and no lesson phase — they are scored output only. Results feed the standards reporting service (`createStandardsService()`), not the SRS engine.
+
+**Why:**
+- Clean separation of concerns: learning sessions optimize for mastery acquisition, assessments measure current mastery
+- Assessment scoring (strand coverage, alignment to standards) is different from SRS scheduling
+- Prevents conflation: an assessment item answered correctly should not update FSRS state (that would inflate scheduling)
+- Enables separate UX flows: assessment feels different from learning (no hints, timer optional, report at end)
+
+**Alternatives rejected:**
+- Learning session with assessment flag: Would require branching in every session service method; assessment results would contaminate SRS state

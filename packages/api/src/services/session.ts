@@ -511,6 +511,7 @@ export function createSessionService(db: DB, fireDiagnostic?: FireDiagnosticConf
           versionRow?.contentHash,
           state.llmAssistedThisProblem ?? false,
           state.hintSourceThisProblem ?? null,
+          response.scaffolding ?? null,
         );
 
         // Detect new mastery → find unlocked topics
@@ -593,6 +594,27 @@ export function createSessionService(db: DB, fireDiagnostic?: FireDiagnosticConf
         } catch {
           // Best-effort — don't fail the session response
         }
+      }
+
+      // Record lesson view analytics when completing the lesson phase
+      if (analytics && state.currentPhase === "lesson" && state.currentTopicId) {
+        const [vRow] = await db
+          .select({ contentHash: schema.topicContentVersions.contentHash })
+          .from(schema.topicContentVersions)
+          .where(eq(schema.topicContentVersions.topicId, state.currentTopicId));
+        analytics.recordLessonView({
+          userId: state.userId,
+          topicId: state.currentTopicId,
+          lessonId: (response as any).lessonId ?? "",
+          contentVersion: vRow?.contentHash ?? null,
+          presentation: state.lastServedPresentation ?? "standard",
+          contentDepth: (response as any).contentDepth ?? "survey",
+          sectionsViewed: (response as any).sectionsViewed ?? 0,
+          totalSections: (response as any).totalSections ?? 0,
+          totalTimeMs: response.responseMs ?? 0,
+          practiceProblemsAttempted: (response as any).practiceProblemsAttempted ?? 0,
+          practiceProblemsCorrect: (response as any).practiceProblemsCorrect ?? 0,
+        });
       }
 
       // Record example view analytics when completing an instruction phase

@@ -179,6 +179,12 @@ export type SimulationConfig = {
   timeSchedule?: TimeSchedule;
   /** Diagnostic: control FIRe credit and ordering independently. Default: "both". */
   fireMode?: FIReMode;
+  /**
+   * Simulation mode.
+   * - "learning" (default): diagnostic + learning sessions
+   * - "assessment": diagnostic + learning sessions + assessment verification pass
+   */
+  mode?: "learning" | "assessment";
 };
 
 export type SimulationResult = {

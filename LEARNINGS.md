@@ -1197,3 +1197,41 @@ The content validator flags any `solution`, `hint`, or lesson text containing wo
 When removing a compound topic and replacing it with split topics: (1) rewire prerequisite edges from/to the old topic to the new topics, (2) clean up stale edges referencing deleted topic IDs, (3) update collection `topicIds` arrays to reference new IDs, (4) check if the old topic already had the split topics as dependents/encompassed children — if so, the compound is a consolidation parent, not a split candidate. The `dot-plots-histograms` case: the graph already had separate `dot-plots` and `histograms` topics as children — splitting would create duplicate IDs and self-loops.
 
 **Context:** Any time you modify graph.json by splitting/removing topics. Script at `tools/expand-graph.py` handles this programmatically.
+
+
+---
+
+### 2026-03-14: Simulation db-setup.ts must mirror full D1 schema (including migration columns)
+
+**Source:** User session — Plan 030 Phase 5
+**Area:** Audit / learner simulations
+
+`audit/learner-simulations/src/db-setup.ts` creates the simulation SQLite schema from raw SQL strings — it does NOT read migration files. When D1 migrations add new columns (e.g., `review_log.llm_assisted`, `review_log.hint_source`, `review_log.scaffolding`), the simulation DB won't have them and all sessions will throw `SqliteError: table review_log has no column named llm_assisted`. Every new column added via a D1 migration must also be manually added to the corresponding CREATE TABLE in `db-setup.ts`. The failure manifests as zero problem events and cascading metric failures (mastery convergence, cognitive demand, review/new balance all break simultaneously).
+
+**Context:** Any time a D1 migration adds columns to tables used by the learning session engine.
+
+---
+
+### 2026-03-14: computeSessionSummary newTopicsIntroduced must track current phase names
+
+**Source:** User session — Plan 030 Phase 5
+**Area:** Audit / learner simulations
+
+`computeSessionSummary()` counts new topics introduced by checking `event.phase`. After the Plan 029 simplification, new topics are introduced in `phase === "lesson"` (not `"pretest"`). If the check is stale (only checks `"pretest"`), `newTopicsIntroduced` stays 0, making `reviewNewBalance = 1.0` (all review, no new items) and failing the balance metric. Always update this check when the learning loop phases change.
+
+**Context:** `audit/learner-simulations/src/runner.ts` `computeSessionSummary()` function.
+
+---
+
+### 2026-03-14: targets.json must be re-baselined when the learning loop changes
+
+**Source:** User session — Plan 030 Phase 5
+**Area:** Audit / evaluation targets
+
+After the Plan 029 simplified loop (lesson → independent → review), evaluation metrics shift materially:
+- **Mastery convergence**: average profiles earn fewer mastered topics per session (FSRS needs 3-5 sessions to earn stable mastery), so the 30-session baseline should be calibrated to the new loop, not the old one
+- **Interleaving**: lesson items naturally cluster same-topic problems (lesson + immediate practice), so same-strand adjacency increases vs. the old loop
+
+When changing the learning loop, run `just regression --update-baseline` and `just evaluate` after verifying the new behavior is intentional, then update `targets.json` with a documented rationale in `lastUpdatedReason`. Treat unexpected metric drops as diagnostic signals before updating baselines.
+
+**Context:** `audit/learner-simulations/targets.json` and `regression-baseline.json`. Run `node audit/learner-simulations/src/regression.ts --update-baseline` to update.

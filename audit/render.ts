@@ -97,6 +97,7 @@ export function renderAuditMarkdown(report: AuditReport): string {
   lines.push(`| Total examples | ${s.contentQuality.totalExamples} |`);
   lines.push(`| Topics with problems | ${s.contentQuality.topicsWithProblems}/${s.contentQuality.totalTopics} |`);
   lines.push(`| Topics with examples | ${s.contentQuality.topicsWithExamples}/${s.contentQuality.totalTopics} |`);
+  lines.push(`| Lesson coverage | ${s.contentQuality.lessonCoverage?.topicsWithLessons ?? s.contentQuality.topicsWithExamples}/${s.contentQuality.totalTopics} (${s.contentQuality.lessonCoverage?.pct ?? 0}%) |`);
   lines.push(`| Average health | ${s.contentQuality.healthDistribution.average}/100 |`);
   lines.push(`| Demand diversity | ${s.contentQuality.demandDiversity} |`);
   if (s.contentQuality.manifestCount > 0) {
@@ -314,6 +315,18 @@ export function renderAuditMarkdown(report: AuditReport): string {
     lines.push(``);
   }
 
+  // Section 9: Assessment Health
+  if (s.assessmentHealth) {
+    lines.push(`## 9. Assessment Health ${statusIcon(s.assessmentHealth.status)}`);
+    lines.push(``);
+    lines.push(`**Assessable topics (with standard code):** ${s.assessmentHealth.topicsWithStandardCode}/${s.assessmentHealth.totalTopics} (${s.assessmentHealth.standardCodePct}%)`);
+    lines.push(`**Unique standards covered:** ${s.assessmentHealth.uniqueStandards}`);
+    lines.push(`**Avg topics per standard:** ${s.assessmentHealth.topicsPerStandardAvg}`);
+    lines.push(``);
+    lines.push(renderItems(s.assessmentHealth.items));
+    lines.push(``);
+  }
+
   // Recommendations
   lines.push(`---`);
   lines.push(`## Recommendations`);
@@ -354,6 +367,10 @@ export function renderAuditMarkdown(report: AuditReport): string {
   }
   if (s.contentReview && s.contentReview.worstTopics.length > 0) {
     recs.push(`${s.contentReview.worstTopics.length} topics graded D/F — review findings and run \`/generate-content\` to fix`);
+  }
+
+  if (s.assessmentHealth && s.assessmentHealth.standardCodePct < 50) {
+    recs.push(`Only ${s.assessmentHealth.standardCodePct}% of topics have standard codes — add standardCode to graph.json topics to enable assessment scoping`);
   }
 
   const incompleteDiscs = s.multiDiscipline.disciplines.filter(d => !d.contentComplete);

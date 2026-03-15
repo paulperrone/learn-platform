@@ -190,6 +190,7 @@ export function createSRSService(db: DB, fireDiagnostic?: FireDiagnosticConfig) 
       contentVersion?: string,
       llmAssisted?: boolean,
       hintSource?: string | null,
+      scaffolding?: string | null,
     ) {
       const state = await this.getOrCreateState(userId, topicId);
       const card = cardFromRow(state);
@@ -316,6 +317,7 @@ export function createSRSService(db: DB, fireDiagnostic?: FireDiagnosticConfig) 
         contentVersion: contentVersion ?? null,
         llmAssisted: llmAssisted ?? false,
         hintSource: hintSource ?? null,
+        scaffolding: scaffolding ?? null,
       });
 
       return {

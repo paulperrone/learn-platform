@@ -125,7 +125,7 @@ just deploy-preview   # Deploy everything to preview
 - Prerequisite edges have types: `required` (hard gate), `recommended` (context), `enriching` (suggestion)
 - Content has depth (`survey`, `contextual`, `analytical`, `synthesis`) and presentation (`primary`, `intermediate`, `standard`, `advanced`) dimensions. See `docs/content-system.md`.
 - FSRS state per user per topic. FIRe (Fractional Implicit Repetition) is disabled — premature at current graph scale (1.01 encompassing edges/topic). Code and edges preserved. See `docs/fire.md`.
-- Learning loop phases: pretest → instruction → guided → independent → review → remediation
+- Learning loop phases (simplified, Plan 029): `lesson → independent → review → remediation`. Assessment sessions (Plan 030) are separate: multi-topic, no scaffolding, scored output. See `docs/assessment-system.md`.
 - Analytics Engine records rich per-problem events (problem attempts, example views) with content version correlation. D1 `review_log` continues as compact SRS history.
 - Tests: co-located `__tests__/` directory, `*.test.ts` naming, `@cloudflare/vitest-pool-workers` for API tests with miniflare D1. New services and routes must include vitest tests. Use helpers from `packages/api/src/__tests__/helpers.ts` for DB setup and seeding.
 

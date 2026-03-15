@@ -101,6 +101,8 @@ export type ContentQualitySection = {
   };
   topGaps: { topicId: string; gapType: string; impact: number; priority: string }[];
   demandDiversity: number; // average across topics
+  // Lesson coverage (lessons use worked examples; same as topicsWithExamples)
+  lessonCoverage: { topicsWithLessons: number; totalTopics: number; pct: number };
   // R2 manifest data (populated when bundles exist)
   dimensionCoverage: DimensionCoverage | null;
   manifestCount: number;
@@ -215,6 +217,18 @@ export type ContentReviewSection = {
   lastReviewTimestamp: string | null;
 };
 
+// ── Section 9: Assessment Health ──
+
+export type AssessmentHealthSection = {
+  status: ItemStatus;
+  items: StatusItem[];
+  topicsWithStandardCode: number;
+  totalTopics: number;
+  standardCodePct: number;
+  uniqueStandards: number;
+  topicsPerStandardAvg: number;
+};
+
 // ── Thresholds ──
 
 export type ThresholdLevel = { warn: number; fail: number };
@@ -306,6 +320,7 @@ export type AuditReport = {
     mediaReadiness: MediaReadinessSection;
     multiDiscipline: MultiDisciplineSection;
     contentReview: ContentReviewSection;
+    assessmentHealth: AssessmentHealthSection;
   };
   delta?: AuditDelta;
 };
