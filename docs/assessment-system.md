@@ -118,6 +118,21 @@ This runs 10 learning sessions then triggers `runAssessmentVerification()`, whic
 - Assessment score vs. mastery percentage (correlation check)
 - Strand coverage (expect ≥2 strands for a 10-question comprehensive assessment)
 
+## Learning Session Architecture (Plan 031)
+
+Learning sessions use a **pull-based atomic model**. Each `startSession()` call covers exactly one topic — the system picks the highest-priority work item via `getNextItem()`:
+
+```
+Priority 1: { type: "assessment" }   ← system-triggered checkpoint (Plan 031 Phase 4)
+Priority 2: { type: "review" }       ← SRS-scheduled retrieval (R dropped below threshold)
+Priority 3: { type: "lesson" }       ← first encounter with a frontier topic
+Priority 4: { type: "complete" }     ← nothing due, nothing new
+```
+
+The frontend calls `startSession()` after each unit completes — this is the pull loop. Each session progresses through one topic's phase sequence (lesson → independent → review → remediation) via `respond()` calls, then returns `{ type: "complete" }`.
+
+Prerequisite-direction FIRe credit (`applyPrereqCredit`) runs automatically after qualifying correct reviews, extending mastered prerequisites' stability without explicit review. See `docs/fire.md` for details.
+
 ## Relationship to Learning Sessions
 
 | Dimension | Learning Session | Assessment Session |

@@ -39,7 +39,7 @@ Absolute targets are preferred — they are self-contained and do not require a 
 - **Target:** ≥17 of 25. Threshold recalibrated from 50% for 705-topic graph (was 207 topics). 15% ≈ 106 topics is meaningful progress in 30 sessions.
 - **Tolerance:** ±3 profiles. Accounts for young/overconfident profiles that progress slower due to ability or calibration.
 - **How to update:** If graph grows significantly (1,500+ topics), the 15% threshold may need lowering. Strong profiles exceed 85% via diagnostic placement — the threshold mainly tests average/moderate profiles.
-- **Red flags:** If fewer than 14 non-struggling profiles reach 15%, check mastery criterion strictness, session mix allocation, and frontier progression.
+- **Red flags:** If fewer than 14 non-struggling profiles reach 15%, check mastery criterion strictness, `getNextItem()` scheduling priority, and frontier progression.
 
 ### 2.2 Mastery Preservation (P0)
 

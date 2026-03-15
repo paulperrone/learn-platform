@@ -493,7 +493,6 @@ export class SimulationRunner {
       }
 
       let currentItem = firstItem;
-      const interactions = 0;
 
       while (currentItem.type !== "complete" && currentItem.type !== "error" && totalInteractions < MAX_INTERACTIONS) {
         totalInteractions++;

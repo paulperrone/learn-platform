@@ -9,7 +9,7 @@ Maturity levels define how many sessions to run and what insights each level rev
 
 | Level | Sessions | Time | What it reveals | When to run |
 |-------|----------|------|----------------|-------------|
-| L1 | 5 | ~15s | Diagnostic placement, initial mastery preservation, session mix warmup | Every code change (via `just test`) |
+| L1 | 5 | ~15s | Diagnostic placement, initial mastery preservation, pull-based scheduling | Every code change (via `just test`) |
 | L2 | 30 | ~2min | Core adaptive behavior — convergence, remediation, interleaving, drift | Per plan phase |
 | L3 | 90 | ~5min | Medium-term scaling — mastery plateau, review queue growth, entropy decay | Per plan |
 | L4 | 180 | ~10min | Semester-length — long-term retention, review efficiency, topic starvation | Quarterly |

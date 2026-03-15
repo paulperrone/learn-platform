@@ -3,6 +3,8 @@
 > **Written:** 2026-03-15
 > **Plan:** 031 Phase 1
 > **Purpose:** Pre-Phase-2 baseline — numbered recommendations are the inputs to Phase 2
+>
+> **Note:** This analysis was written against the pre-Phase-3 architecture (`getSessionMix()` batched model with warmup/stretch blend roles). Plan 031 Phase 3 replaced this with pull-based atomic sessions (`getNextItem()`). Warmup is now handled by prerequisite-direction FIRe credit. The findings data remains valid; the session mix sections describe the superseded model.
 
 ## Section 1: Pipeline Map
 
@@ -368,6 +370,40 @@ state.sessionRemediationCount = (state.sessionRemediationCount ?? 0) + 1;
 
 ---
 
+## Section 8: Post-FIRe Graduation Verification (Plan 031 Phase 3)
+
+**Added:** 2026-03-15
+
+After replacing the warmup tier with prerequisite-direction FIRe credit (Plan 031 Phase 3), we verify the **graduation invariant**: by the time a learner's frontier reaches grade G, all topics at grades ≤ G−2 should have stability ≥ 30d or be implicitly mastered (no user_topic_state = permanent via diagnostic placement).
+
+**Methodology:** 60-session simulations for average-older and strong-older (seed=42). At sessions 20, 30, 40, 60: compute `frontierGrade = median(gradeLevel for topics where reps > 0)`, then check all topics with `gradeLevel ≤ frontierGrade − 2`.
+
+### Results
+
+**average-older** (frontier grade stabilizes at 3):
+
+| Session | Frontier Grade | Topics < FG−2 below 30d | Total topics < FG−2 (materialized) | Implicit (diagnostic) | Status |
+|---------|---------------|-------------------------|------------------------------------|-----------------------|--------|
+| 20 | 3 | 0 | 0 | 45 | PASS |
+| 30 | 3 | 0 | 0 | 45 | PASS |
+| 40 | 3 | 0 | 0 | 45 | PASS |
+| 60 | 3 | 0 | 0 | 43 | PASS |
+
+**strong-older** (frontier grade stabilizes at 8):
+
+| Session | Frontier Grade | Topics < FG−2 below 30d | Total topics < FG−2 (materialized) | Implicit (diagnostic) | Status |
+|---------|---------------|-------------------------|------------------------------------|-----------------------|--------|
+| 20 | 8 | 0 | 0 | 446 | PASS |
+| 30 | 8 | 0 | 0 | 446 | PASS |
+| 40 | 8 | 0 | 0 | 446 | PASS |
+| 60 | 8 | 0 | 0 | 446 | PASS |
+
+**Interpretation:** The invariant holds trivially because K-2 topics (for average-older) and K-6 topics (for strong-older) are all implicitly mastered via diagnostic placement — no `user_topic_state` rows exist for these topics, so they cannot degrade. The `computeFrontier()` fix (excluding implicitly mastered topics from frontier) ensures they are never introduced as lessons, preserving their implicit mastery indefinitely.
+
+FIRe prereq credit serves as a safety net for topics that DO have explicit user_topic_state entries (i.e., topics the learner has actually practiced). For these topics, backward credit from practicing dependent topics extends stability and pushes out due dates, reducing the need for explicit warmup reviews.
+
+---
+
 ## Validation
 
 - [x] Section 1: Pipeline map complete — all functions traced with call graph
@@ -377,3 +413,4 @@ state.sessionRemediationCount = (state.sessionRemediationCount ?? 0) + 1;
 - [x] Section 5: Session mix analysis — review/new ratio in target range; warmup random sampling noted
 - [x] Section 6: Implicit mastery analysis — threshold assessment complete
 - [x] Section 7: 6 numbered recommendations with specific values, rationale, and measurable success criteria
+- [x] Section 8: Post-FIRe graduation verification — invariant passes at all checkpoints for both profiles
