@@ -91,12 +91,20 @@ const LEVELS = ["primary", "intermediate", "standard", "advanced"] as const;
   <div>
     <div class="flex items-center justify-between mb-6">
       <h1 class="text-3xl font-bold">{{ t('progress.title') }}</h1>
-      <RouterLink
-        to="/assess"
-        class="rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 transition-colors"
-      >
-        Take a Test
-      </RouterLink>
+      <div class="flex gap-2">
+        <RouterLink
+          to="/report/math"
+          class="rounded-lg border border-gray-200 px-4 py-2 text-sm font-medium text-gray-700 hover:border-gray-300 transition-colors"
+        >
+          View Report
+        </RouterLink>
+        <RouterLink
+          to="/assess"
+          class="rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 transition-colors"
+        >
+          Take a Test
+        </RouterLink>
+      </div>
     </div>
 
     <!-- Loading -->

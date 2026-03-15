@@ -586,6 +586,37 @@ export type AssessmentSummary = {
   rawScore: number | null;
 };
 
+// === Standards & Reporting Types ===
+
+export type DomainScore = {
+  domain: string;
+  domainName: string;
+  standardCount: number;
+  masteredCount: number;
+  percentage: number;
+  classification: StandardClassification;
+};
+
+export type StandardDetail = {
+  standard: string;
+  domain: string;
+  domainName: string;
+  topicCount: number;
+  masteredCount: number;
+  percentage: number;
+  classification: StandardClassification;
+};
+
+export type ProgressReport = {
+  disciplineId: string;
+  userId: string;
+  generatedAt: string;
+  overallMastery: number;
+  domainScores: DomainScore[];
+  standardDetails: StandardDetail[];
+  topicsToFocus: { topicId: string; topicName: string; standardCode: string | null }[];
+};
+
 // === Onboarding Types ===
 
 export type OnboardingStep = 0 | 1 | 2 | 3 | 4;

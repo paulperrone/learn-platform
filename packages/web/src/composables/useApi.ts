@@ -1,6 +1,6 @@
 import { authClient } from "./useAuth";
 import { useToast } from "./useToast";
-import type { SpeechSettings, Discipline, Topic, Problem, WorkedExample, DiagnosticResult, TodayProgress, WeeklySummary, DailyGoalConfig, DailyActivityDay, StreakInfo, CompletionEstimate, AssessmentSessionConfig, AssessmentItem, AssessmentResult, AssessmentSummary } from "@learn/shared";
+import type { SpeechSettings, Discipline, Topic, Problem, WorkedExample, DiagnosticResult, TodayProgress, WeeklySummary, DailyGoalConfig, DailyActivityDay, StreakInfo, CompletionEstimate, AssessmentSessionConfig, AssessmentItem, AssessmentResult, AssessmentSummary, ProgressReport } from "@learn/shared";
 
 const API_BASE = "/api";
 
@@ -519,5 +519,13 @@ export function useApi() {
       request<AssessmentResult>(`/assessments/${sessionId}/result`),
     getAssessmentHistory: () =>
       request<{ assessments: AssessmentSummary[] }>("/assessments/history"),
+
+    // Reports
+    getProgressReport: (disciplineId: string) =>
+      request<ProgressReport>(`/reports/progress/${disciplineId}`),
+    getProgressReportForUser: (disciplineId: string, userId: string) =>
+      request<ProgressReport>(`/reports/progress/${disciplineId}/${userId}`),
+    getAssessmentReport: (sessionId: string) =>
+      request<AssessmentResult>(`/reports/assessment/${sessionId}`),
   };
 }

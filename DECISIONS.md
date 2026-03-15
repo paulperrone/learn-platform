@@ -2026,3 +2026,36 @@ Post-implementation results:
 - Frontier topics represent active learning — students should be able to test their current knowledge even before FSRS marks them mastered
 - Prevents "no eligible topics" for newer users who haven't mastered anything yet
 - Parent-facing assessments are more useful if they show current learning state, not just completed state
+
+---
+
+## 2026-03-14: Standard code parsing scoped to CCSS Math format only
+
+**Source:** User session — Plan 030 Phase 3
+
+**Context:** Building the standards mapping service. CCSS Math codes (`K.CC.4`, `3.OA.1`) and ELA codes (`RF.K.1d`) have different structures. Implementing a parser for both would require a lookup table for ELA domain names.
+
+**Decision:** Parse only CCSS Math format (`Grade.Domain.Standard`, matched by `/^([K0-8])\.([A-Z]{1,3})\.\d/`). Topics with non-Math standard codes (e.g., ELA) pass through with the raw code used as the domain label. Documented as a scope limitation.
+
+**Why:**
+- Math is the only discipline with content at launch; ELA parsing can be added when needed
+- CCSS Math codes are structurally uniform — a single regex handles K-8
+- ELA codes vary by strand type (`RF`, `RI`, `W`, `L`) and require a separate lookup table to produce readable domain names
+
+**Alternatives rejected:**
+- Parse all formats upfront: no ELA content yet, premature complexity
+
+---
+
+## 2026-03-14: Domain mastery = fraction of proficient standards
+
+**Source:** User session — Plan 030 Phase 3
+
+**Context:** Designing the domain-level aggregation for the standards report. A domain (e.g., "K.CC") contains multiple standards; each standard contains multiple topics. Two aggregation levels: count mastered topics or count proficient standards.
+
+**Decision:** A domain is scored as the fraction of its standards that are "proficient" (≥80% of that standard's topics mastered). Domain `masteredCount` = count of proficient standards, not count of mastered topics.
+
+**Why:**
+- Aligns with how standards-based grading works: domain mastery means proficiency on the standards in that domain, not topic-count arithmetic
+- Avoids inflation from standards with many topics vs. standards with few — each standard counts equally
+- `DomainScore.masteredCount` is labeled "standards proficient", which is interpretable by parents/teachers

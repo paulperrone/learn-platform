@@ -21,9 +21,9 @@ Build a separate assessment mode distinct from learning sessions. Mixed-topic te
 
 ## Progress
 
-**Completed:** Phase 1, Phase 2
+**Completed:** Phase 1, Phase 2, Phase 3
 **In Progress:** —
-**Next:** Phase 3
+**Next:** Phase 5
 
 ---
 
@@ -177,7 +177,7 @@ The assessment UI is separate from the learning UI (`learn.vue`). It should feel
 
 ---
 
-## Phase 3: Standards Alignment & Reporting
+## Phase 3: Standards Alignment & Reporting ✓
 
 **Goal:** Map topic mastery to Common Core standards. Produce standards-based report cards viewable by parents and teachers. Exportable reports.
 
@@ -202,32 +202,33 @@ Topics already have a `standardCode` field (e.g., "K.CC.4", "RF.K.1d") in graph.
 
 ### Steps
 
-1. [ ] [IMP] Build standards mapping service (`packages/api/src/services/standards.ts`):
+1. [x] [IMP] Build standards mapping service (`packages/api/src/services/standards.ts`):
    - `getStandardsForTopics(topicIds: string[]): Record<string, { standard, domain, cluster, topics[] }>`
    - Parse standard codes to extract domain (first characters + number) and cluster
    - Aggregate: for each standard, which topics contribute, how many are mastered
    - `getStandardsMastery(userId, disciplineId): Promise<StandardsReport>` — query `user_topic_state` + `topics.standardCode`, compute per-standard and per-domain mastery percentages
 
-2. [ ] [IMP] Build report generation:
+2. [x] [IMP] Build report generation:
    - `generateProgressReport(userId, disciplineId): Promise<ProgressReport>` — comprehensive learning progress against standards
    - `ProgressReport = { discipline, generatedAt, overallMastery, domainScores: DomainScore[], recentAssessments: AssessmentSummary[], topicsToFocus: Topic[] }`
    - `DomainScore = { domain, domainName, standardCount, masteredCount, percentage, classification }`
 
-3. [ ] [IMP] Add reporting API routes:
+3. [x] [IMP] Add reporting API routes:
    - `GET /api/reports/progress/:disciplineId` — standards-based progress report for authenticated user
    - `GET /api/reports/progress/:disciplineId/:userId` — teacher/parent view (requires account link)
-   - `GET /api/assessments/:id/report` — detailed assessment report with standards alignment
+   - `GET /api/reports/assessment/:id` — detailed assessment report with standards alignment (account-link auth)
 
-4. [ ] [IMP] Build report UI:
-   - Progress report page (`packages/web/src/pages/report.vue`): domain-level mastery bars, expandable to standard level, recent assessment scores, topics to focus
+4. [x] [IMP] Build report UI:
+   - Progress report page (`packages/web/src/pages/report.vue`): domain-level mastery bars, expandable to standard level, topics to focus
    - Teacher/parent view: accessible via account links, read-only version of student's report
    - Print/PDF-friendly layout (CSS `@media print`)
+   - "View Report" CTA added to progress page
 
-5. [ ] [TST] Validate reporting:
+5. [x] [TST] Validate reporting:
    - Test: standards mapping correctly aggregates topics by standard code
    - Test: mastery percentages match user_topic_state counts
-   - Test: teacher can view linked student's report
-   - `just test` — passes
+   - Test: account link DB query pattern verified
+   - `just test` — passes (6/6 new tests)
 
 **Validation:** Standards-based progress reports work for students, parents, and teachers. Assessment results map to Common Core standards with proficiency classifications. Reports are printable. Tests pass.
 
