@@ -133,8 +133,9 @@ Mastery tiers: practicing (<4d), recently-mastered (4–30d), solidly-mastered (
 
 3. [ ] [IMP] Implement Rec 2 — stuck-topic escape hatch:
    - In `getDueTopics()`, after the `rows.filter((r) => r.reps > 0)` filter, add a second filter: skip topics with `reps > 20 AND stability < 0.5 AND consecutiveCorrectReviews === 0`
-   - Add a cooldown reset: for filtered topics, update `due = now + 90d` in the DB (one-time cleanup per topic; check `dueResetCount` or simply check `stability < 0.5 AND reps > 20`)
-   - This is an `async` operation; can be done lazily on read or proactively in a scheduled cleanup
+   - **Reset strategy: lazy write inside `getDueTopics()`** — when filtering a stuck topic, immediately update `due = now + 90d` in the DB. Filter-only (no write) doesn't work: stability ≈ 0 means FSRS sets `due ≈ now` every time, so the topic re-enters the filter every session and silently disappears with no recovery path. The write is intentional and idempotent (running it twice is harmless).
+   - Add a clear code comment in `getDueTopics()` noting this intentional side effect
+   - Optionally add a `stuckResetAt TEXT` column to `userTopicState` to make the event queryable and prevent redundant resets — but this is a nice-to-have, not required for correctness
 
 4. [ ] [IMP] Implement Rec 3 — fix mastery convergence metric:
    - In `audit/learner-simulations/src/evaluate.ts`, update the `mastery_convergence_count` computation to use `masteryCount` (total incl. implicit) instead of `materializedMasteryCount`
@@ -254,15 +255,18 @@ Credit is logged in `reviewLog` with `phase: "fire-prereq"` for auditability. Th
    - Gates (skip the topic if ANY of these fail): `state.mastered === true`, `computeRetrievability(state) >= 0.5`
    - Edge type multiplier: `required → 1.0`, `recommended → 0.5`, `enriching → skip`
    - Credit mechanics: compute `fullBoost = scheduling[Rating.Good].card.stability − state.stability`; apply `boost = fullBoost × credit_fraction`; update `stability` and `due` only — do NOT update `reps`, `consecutiveCorrectReviews`, `mastered`, or `lastReview`
-   - Log each credit event to `reviewLog` with `phase = "fire-prereq"`, `correct = null`, `rating = null` — marks it as implicit, not a direct review
+   - **Logging: add `implicit INTEGER DEFAULT 0` column to `review_log` via D1 migration** — `reviewLog.correct` and `reviewLog.rating` are NOT NULL and cannot be set to null for FIRe events. Do not make them nullable. Instead, log FIRe events as `correct = true, rating = Rating.Good, implicit = 1, responseMs = 0, phase = "fire-prereq"`. This keeps existing NOT NULL constraints intact, and `implicit = 1` unambiguously identifies system-generated credit events. The migration is additive (existing rows get `implicit = 0` default) with no backfill required.
    - Export `FIRE_PREREQ_ENABLED = true` constant alongside `FIRE_ENABLED` (encompassing FIRe remains disabled separately)
 
 5. [ ] [IMP] Update `session.ts` — session represents one atomic unit:
+   - **One unit = one full topic sequence** for one topic: a lesson walks through all phase steps (pretest → instruction → guided → independent) across multiple `respond()` calls; a review is typically one `respond()` call. The existing `advancePhase()` machinery is preserved entirely — it still drives phase progression within the unit. What changes is that a session covers exactly one topic, not a blended queue of many topics.
    - `startSession()` calls `getNextItem()` to determine the unit; session state stores `{ topicId, phase: NextItem["type"] }` — not a blended queue
    - Remove `sessionMix` cache from session state
    - Remove warmup-related fields (`currentBlendRole`, warmup tracking) from `SessionState`
-   - On `respond()` completing the unit, call `endSession()` automatically — client does not need to explicitly close a completed session
+   - When `advancePhase()` would previously call `nextTopic()` to advance within the queue, it now returns `{ type: "complete" }` — the topic sequence is done, the session ends
+   - On `respond()` returning `type: "complete"`, call `endSession()` automatically — client does not need to explicitly close a completed unit
    - Retain explicit `endSession()` for timeout/abandonment cases
+   - `learn.vue` loop: frontend calls `startSession()` after each `complete` to pull the next unit — this is the pull loop
 
 6. [ ] [IMP] Update `learn.vue` — pull-based loop:
    - On page load and after each interaction completes: call `POST /api/learn/start` → receive single `NextItem` → render appropriate component
@@ -277,8 +281,9 @@ Credit is logged in `reviewLog` with `phase: "fire-prereq"` for auditability. Th
 
 8. [ ] [TST] Verify graduation invariant — foundational topics at long-term mastery before dependents:
    - Run a 60-session simulation for `average-older` and `strong-older` profiles
-   - For each session snapshot at sessions 20, 30, 40, 60: for all topics at grade ≤ (learner's current frontier grade − 2), assert that `stability ≥ 30d` (solidly-mastered threshold) OR the topic has never been introduced (reps=0)
-   - The invariant: a learner working at grade 4+ should not have grade K-2 topics at `stability < 30d` unless they were recently introduced (reps ≤ 3)
+   - **"Frontier grade" definition: median `gradeLevel` of all topics with `reps > 0`** — topics the learner has actually been introduced to (not just theoretically unlocked). Median is robust to outlier high-grade topics in the frontier. This value is directly computable from `topicStates[]` in each snapshot.
+   - For each session snapshot at sessions 20, 30, 40, 60: compute `frontierGrade = median(gradeLevel for topics where reps > 0)`; then assert that all topics with `gradeLevel ≤ frontierGrade − 2` have `stability ≥ 30d` (solidly-mastered threshold) OR `reps = 0`
+   - The invariant: a learner whose introduced topics center around grade 4 should not have grade K-2 topics at `stability < 30d`
    - If invariant fails: investigate whether FIRe credit is propagating back far enough, or whether Phase 2's stuck-topic escape hatch is needed first for a specific topic
    - Document graduation rates in `docs/mastery-system-analysis.md` (append Section 8: Post-FIRe validation)
 
@@ -324,7 +329,7 @@ The pacing factor modulates how eagerly `getNextItem()` returns new lessons vs r
 2. [ ] [IMP] Assessment trigger — fire in `respond()` on lesson completion for a new topic:
    - "New topic" = lesson-phase session where topic had no prior `user_topic_state` row (or `reps === 0`)
    - On completion: increment `topics_introduced_since_assessment` in `user_learning_state`
-   - Trigger condition: `topics_introduced / frontier_size >= ASSESSMENT_TRIGGER_RATIO` (constant, start at 0.25)
+   - Trigger condition: `frontier_size > 0 AND topics_introduced / frontier_size >= ASSESSMENT_TRIGGER_RATIO` (constant, start at 0.25) — guard against division by zero when frontier is empty (early diagnostic phase)
    - Also trigger if `last_assessment_at` is null AND `topics_introduced >= MIN_TOPICS_BEFORE_FIRST_ASSESSMENT` (suggest 5)
    - When triggered: `assessmentSvc.startAssessment(userId, { scope: { type: "comprehensive" }, questionCount: 10 })`, write `pending_assessment_id`, reset counter to 0
    - Never trigger if `pending_assessment_id` already set
