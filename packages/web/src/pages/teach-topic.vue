@@ -277,7 +277,7 @@ function printProblems(withAnswers: boolean) {
 ${problems
   .map(
     (p, i) => `<div class="problem">
-  <span class="problem-num">${i + 1}.</span><span class="difficulty">[${p.difficulty}]</span>
+  <span class="problem-num">${i + 1}.</span>
   <div class="question">${p.question}</div>
   ${withAnswers ? `<div class="answer">Answer: ${formatAnswer(p)}</div><div class="solution">${p.solution}</div>` : '<div class="answer-line"></div>'}
 </div>`,
@@ -415,9 +415,6 @@ ${problems
             <div class="flex items-center gap-2">
               <span class="text-gray-400 font-medium">{{ i + 1 }}</span>
               <span class="flex-1 text-gray-700 truncate">{{ problem.question }}</span>
-              <span class="text-xs px-2 py-0.5 rounded-full font-medium" :class="difficultyColor(problem.difficulty)">
-                {{ problem.difficulty }}
-              </span>
               <span v-if="problem.type && problem.type !== 'text-qa'" class="text-xs text-gray-400">
                 {{ typeLabel(problem.type) }}
               </span>
@@ -576,9 +573,6 @@ ${problems
           <div class="text-sm text-gray-400">
             Problem {{ currentProblemIndex + 1 }}/{{ topic.problems.length }}
             <span class="mx-2">&middot;</span>
-            <span class="px-2 py-0.5 rounded-full text-xs font-medium" :class="difficultyColor(currentProblem.difficulty)">
-              {{ currentProblem.difficulty }}
-            </span>
             <span v-if="currentProblem.type && currentProblem.type !== 'text-qa'" class="ml-2 text-xs text-gray-400">
               {{ typeLabel(currentProblem.type) }}
             </span>

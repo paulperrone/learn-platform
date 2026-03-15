@@ -238,19 +238,9 @@ export function createGroupSessionService(db: DB, contentBucket?: ContentBucket)
       const problems = await getTopicProblems(topicId);
       if (problems.length === 0) return null;
 
-      // Select difficulty based on participant's FSRS state
-      let difficulty = "medium";
-      if (participant.userId) {
-        const state = await srs.getOrCreateState(participant.userId, topicId);
-        if (state.reps === 0) difficulty = "easy";
-        else if (state.stability > 10) difficulty = "hard";
-      }
+      const problem = problems[Math.floor(Math.random() * problems.length)];
 
-      const byDifficulty = problems.filter((p) => p.difficulty === difficulty);
-      const pool = byDifficulty.length > 0 ? byDifficulty : problems;
-      const problem = pool[Math.floor(Math.random() * pool.length)];
-
-      return { problem, topicId, difficulty };
+      return { problem, topicId };
     },
 
     /**

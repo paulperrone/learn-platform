@@ -1954,3 +1954,41 @@ Post-implementation results:
 - Automated LLM pipeline (generate at build time via OpenRouter) — loses iteration quality, can't self-review, contradicts project convention
 - Free-form prompting per session (no template) — inconsistent quality, fact drift, no provenance tracking
 - `postProcess` callback pattern (parse LLM output into structured types) — premature abstraction; Claude Code already produces correctly formatted JSON when given the output spec
+
+---
+
+## 2026-03-15: Remove difficulty field from Problem type
+
+**Source:** User session — Plan 029 Phase 7
+
+**Context:** All problems now come from per-topic generators. The `difficulty: "easy" | "medium" | "hard"` field was a legacy concept from hand-authored content that pre-dated proper graph decomposition.
+
+**Decision:** Remove `ProblemDifficulty` type and `difficulty` field from `Problem` entirely. Remove validation check in `validate-content.ts`. Remove `difficulties` from bundle manifest. Set analytics `difficulty` blob to `""`.
+
+**Why:**
+- Per-topic difficulty is a graph decomposition smell: if a topic truly has "easy" and "hard" problems testing different skills, it should be split into two topics
+- All problems within a properly atomic topic test the same skill at the same cognitive level; difficulty variation is an illusion caused by problem wording, not topic complexity
+- Removes a field that was `@deprecated` with no clear migration path
+- The FSRS `difficulty` parameter on `UserTopicState` is separate (a float 0-10) and remains — that's the learner model difficulty, not problem classification
+
+**Alternatives rejected:**
+- Keep field as optional — perpetuates the decomposition smell and confuses future generators about whether to populate it
+- Rename to `cognitiveLevel` — same concept, same problem; `cognitiveDemand` already handles cognitive variation correctly
+
+---
+
+## 2026-03-15: Remove legacy tools/generators/ and generate-problems.ts
+
+**Source:** User session — Plan 029 Phase 7
+
+**Context:** Phase 029 migrated all generators to `learn-content/math/generators/` (per-topic TypeScript files). The old `tools/generators/` directory had 9 files organized by strand with a different generator interface.
+
+**Decision:** Delete `tools/generators/` (9 files), `tools/generate-problems.ts` (legacy runner), and the `just generate-problems` recipe.
+
+**Why:**
+- All 743 math topic generators now live in `learn-content/math/generators/` — the old infrastructure is superseded
+- `just generate-content` delegates to the new runner (`node run.js` via esbuild bundle) — the old recipe was dead
+- Keeping dead code creates confusion about which system to use
+
+**Alternatives rejected:**
+- Keep as fallback — no value; generators produce different output formats and registries would diverge

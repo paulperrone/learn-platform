@@ -46,7 +46,6 @@ const PROBLEMS: BundledProblem[] = [
   {
     id: "r2-p1",
     topicId: "r2-topic",
-    difficulty: "easy",
     question: "What is 1+1?",
     answer: "2",
     hints: ["Think about counting"],
@@ -59,7 +58,6 @@ const PROBLEMS: BundledProblem[] = [
   {
     id: "r2-p2",
     topicId: "r2-topic",
-    difficulty: "medium",
     question: "What is 2+3?",
     answer: "5",
     hints: ["Count on from 2"],
@@ -72,7 +70,6 @@ const PROBLEMS: BundledProblem[] = [
   {
     id: "r2-p3",
     topicId: "r2-topic",
-    difficulty: "hard",
     question: "What is 7+8?",
     answer: "15",
     hints: ["Make a 10 first"],

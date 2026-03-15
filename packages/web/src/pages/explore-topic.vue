@@ -75,10 +75,7 @@ function difficultyColor(d: string) {
 
 const problemsByDifficulty = computed(() => {
   if (!topic.value) return [];
-  const order = ["easy", "medium", "hard"];
-  return [...topic.value.problems].sort(
-    (a, b) => order.indexOf(a.difficulty) - order.indexOf(b.difficulty)
-  );
+  return [...topic.value.problems];
 });
 
 function toggleProblem(id: string) {
@@ -225,9 +222,6 @@ function toggleExample(id: string) {
             >
               <span class="text-sm font-medium text-gray-400 w-6">{{ i + 1 }}</span>
               <span class="flex-1 text-gray-900">{{ problem.question }}</span>
-              <span class="text-xs px-2 py-0.5 rounded-full font-medium" :class="difficultyColor(problem.difficulty)">
-                {{ problem.difficulty }}
-              </span>
               <svg
                 class="w-4 h-4 text-gray-400 transition-transform"
                 :class="{ 'rotate-180': expandedProblem === problem.id }"

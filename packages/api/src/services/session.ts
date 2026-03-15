@@ -552,7 +552,7 @@ export function createSessionService(db: DB, fireDiagnostic?: FireDiagnosticConf
             problemId: (response as any).problemId ?? "",
             contentVersion: versionRow?.contentHash ?? null,
             phase: state.currentPhase,
-            difficulty: (response as any).difficulty ?? "medium",
+            difficulty: "",
             cognitiveDemand: (response as any).cognitiveDemand ?? "procedural",
             presentation: state.lastServedPresentation ?? "standard",
             contentDepth: (response as any).contentDepth ?? "survey",
@@ -1324,7 +1324,6 @@ function makeFallbackProblem(topic: { id: string; name: string; description: str
   return {
     id: `fallback-${topic.id}`,
     topicId: topic.id,
-    difficulty: "medium",
     question: `Practice problem for: ${topic.name}\n\n${topic.description}\n\n(Content will be generated via the content pipeline.)`,
     answer: "",
     hints: ["Think about what you've learned about this topic."],

@@ -6,7 +6,6 @@ function makeProblem(overrides: Partial<Problem> = {}): Problem {
   return {
     id: "test-1",
     topicId: "topic-1",
-    difficulty: "medium",
     question: "What is 2 + 2?",
     answer: "4",
     hints: [],

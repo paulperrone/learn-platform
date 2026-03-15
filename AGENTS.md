@@ -150,7 +150,7 @@ Tooling resolves content via `CONTENT_DIR` env var (default: `../learn-content`)
 All content authoring happens in **Claude Code sessions**. The workflow:
 
 1. **Design the knowledge graph** — Define topics, prerequisites, and encompassing edges in `graph.json`. Follow the discipline's progression model (below) and the encompassing methodology in `docs/content-system.md`. Use `just visualize <discipline>` to inspect the DAG structure.
-2. **Generate problems** — Write `../learn-content/<discipline>/problems/<topic-id>.json` files. 5 problems per topic at 3 difficulty levels. Follow platform-medium constraints (screen + text input only).
+2. **Generate problems** — Write a `../learn-content/<discipline>/generators/<topic-id>.ts` generator for each topic. Generators produce 15 problems per topic. Run `node run.js --seed 42` in learn-content to regenerate. Follow platform-medium constraints (screen + text input only).
 3. **Generate worked examples** — Write `../learn-content/<discipline>/examples/<topic-id>.json` files. 2 examples per topic with step-by-step breakdowns.
 4. **Define collections** — Write `../learn-content/<discipline>/collections/<collection-id>.json` to package topics into grade bands, strands, or tracks.
 5. **Validate** — `just validate-content` checks DAG integrity, topic coverage, and platform-incompatible instructions.

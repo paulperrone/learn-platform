@@ -38,7 +38,6 @@ type GraphDefinition = {
 type Problem = {
   id: string;
   topicId: string;
-  difficulty: string;
   question: string;
   answer: string;
   hints: string[];
@@ -88,7 +87,6 @@ type Manifest = {
     problems: {
       count: number;
       hash: string;
-      difficulties: Record<string, number>;
       types: Record<string, number>;
       demands: Record<string, number>;
     };
@@ -294,7 +292,6 @@ function processDiscipline(
         problems: {
           count: problems.length,
           hash: problemsHash,
-          difficulties: countBy(problems, (p) => p.difficulty),
           types: countBy(problems, (p) => p.type ?? "text-qa"),
           demands: countBy(problems, (p) => p.cognitiveDemand ?? "procedural"),
         },

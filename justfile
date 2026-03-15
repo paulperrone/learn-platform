@@ -91,10 +91,6 @@ db-migrate:
 import-content:
     CONTENT_DIR="{{content_dir}}" npx tsx tools/import-content.ts
 
-# Generate procedural problems (seeded, reproducible)
-generate-problems *args:
-    npx tsx tools/generate-problems.ts {{args}}
-
 # Generate R2 content bundles from learn-content
 generate-bundles *args:
     CONTENT_DIR="{{content_dir}}" npx tsx tools/generate-bundles.ts {{args}}

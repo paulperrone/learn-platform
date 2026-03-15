@@ -161,8 +161,6 @@ export type SessionMix = {
   newTopics: { topicId: string; depth: number }[];
 };
 
-export type ProblemDifficulty = "easy" | "medium" | "hard";
-
 export type CognitiveDemand = "procedural" | "conceptual" | "application" | "reasoning" | "error_analysis" | "recall";
 
 export type ContentSource = "hand-authored" | "generated" | "supplementary";
@@ -219,8 +217,6 @@ export type TypeProperties =
 export type Problem = {
   id: string;
   topicId: string;
-  /** @deprecated Use topic decomposition instead of difficulty levels */
-  difficulty?: ProblemDifficulty;
   question: string;
   answer: string;
   hints: string[];

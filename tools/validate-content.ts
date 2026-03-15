@@ -162,10 +162,6 @@ if (existsSync(problemsDir)) {
       if (!p.topicId) { console.error(`ERROR: Missing topicId in ${file} (${p.id})`); errors++; }
       if (!p.question?.trim()) { console.error(`ERROR: Empty question in ${file} (${p.id})`); errors++; }
       if (!p.answer?.toString().trim()) { console.error(`ERROR: Empty answer in ${file} (${p.id})`); errors++; }
-      if (!p.difficulty || !["easy", "medium", "hard"].includes(p.difficulty)) {
-        console.warn(`WARN: Invalid difficulty "${p.difficulty}" in ${file} (${p.id})`);
-        warnings++;
-      }
       if (!p.hints || p.hints.length === 0) {
         console.warn(`WARN: No hints for ${p.id} in ${file}`);
         warnings++;
