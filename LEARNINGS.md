@@ -1134,6 +1134,28 @@ For counting-objects topics (count-objects-to-5/10/20) on a text-only platform, 
 
 ---
 
+### 2026-03-15: Generator infinite loop: while-dedup loop hangs when range collapses to one value
+
+**Source:** User session — Plan 029 Phase 4
+**Area:** Content generation / generator correctness
+
+A `while (n2 === n1) n2 = rng.int(min, max)` loop hangs forever if `min === max` (only one possible value). Example: `rng.int(1, d-1)` with `d=2` always returns 1, so `n1 === n2` is always true. Fix: ensure the range has ≥2 values before entering the loop — e.g., use `rng.int(3, 10)` for denominator when you need two distinct numerators in [1, d-1]. Also watch for empty while-loop bodies: `while (condition) { }` with no body is a spin-hang, not a guard — use computed construction (derive `total = perGroup * groups`) instead of rejection-sampling.
+
+**Context:** Any generator that uses a rejection-sampling while loop to get two distinct values. Always verify the range has at least 2 distinct elements before using this pattern.
+
+---
+
+### 2026-03-15: Run 291 TypeScript generators via esbuild bundle, not tsx or tsc
+
+**Source:** User session — Plan 029 Phase 4
+**Area:** Content pipeline / TypeScript tooling
+
+`npx tsx math/generators/run.ts` with 291 generator imports hangs for 10+ minutes at 100% CPU — tsx transpiles all 291 files on demand. Compiled `tsc` is also slow (291 ES module imports). Solution: `npx esbuild math/generators/run.ts --bundle --platform=node --outfile=run.js` produces a 716KB bundle in ~15ms that runs instantly. The output filename must match the `isMainModule` guard in run.ts (`process.argv[1]?.endsWith("run.js")`). Run from the learn-content directory: `node run.js --seed 42`.
+
+**Context:** Any time you need to execute the math generator pipeline (Phase 4+). The bundle is a build artifact — don't commit it.
+
+---
+
 ### 2026-03-14: Splitting compound topics in graph.json requires stale edge cleanup and collection updates
 
 **Source:** User session — Plan 029 Phase 0

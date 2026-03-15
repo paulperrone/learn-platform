@@ -63,9 +63,9 @@ OutputWriter (shared):
 
 ## Progress
 
-**Completed:** Phase 0 (Graph Audit & Expansion), Phase 1 (Generator Architecture & Shared Utilities), Phase 2 (Prompt-Template Spec)
+**Completed:** Phase 0 (Graph Audit & Expansion), Phase 1 (Generator Architecture & Shared Utilities), Phase 2 (Prompt-Template Spec), Phase 3 (K-2 Generators), Phase 4 (3-5 Generators)
 **In Progress:** —
-**Next:** Phase 3
+**Next:** Phase 5
 
 **Model assignments:**
 - Phases 0-2: Opus (architecture, research, design)
@@ -416,7 +416,7 @@ The existing `tools/generators/` has generators for many K-5 topics but they're 
 
 ---
 
-## Phase 4: Math Generators — 3-5 Strands (fractions, measurement, data)
+## Phase 4: Math Generators — 3-5 Strands (fractions, measurement, data) ✓
 
 **Goal:** Write bespoke generators for all grade 3-5 math topics. Port existing fraction and arithmetic generators, fill gaps in measurement and data-statistics.
 
@@ -436,7 +436,7 @@ The content review found fractions have 19 error findings (unsimplified answers,
 
 ### Steps
 
-1. [ ] [IMP] Port `tools/generators/k5-fractions.ts` into per-topic files (all fraction topics):
+1. [x] [IMP] Port `tools/generators/k5-fractions.ts` into per-topic files (all fraction topics):
    - One file per topic in `../learn-content/math/generators/`, register each in `index.ts`
    - Specifically address the 19 error findings (wrong answers in fraction-number-sense, fraction-decimal-percent; unsimplified answer patterns; missing prerequisite assumptions)
    - Strip difficulty/hint/dimension logic — shared utilities handle these
@@ -444,19 +444,19 @@ The content review found fractions have 19 error findings (unsimplified answers,
    - Include `conceptText` for each generator
    - Validate: `just validate-content`
 
-2. [ ] [IMP] Port remaining `k5-arithmetic.ts` generators for multiplication-division:
+2. [x] [IMP] Port remaining `k5-arithmetic.ts` generators for multiplication-division:
    - Same per-topic refactoring pattern: strip to pure math, let shared stack handle the rest
    - Register each in `../learn-content/math/generators/index.ts`, include `conceptText`
    - Validate: `just validate-content`
 
-3. [ ] [IMP] Write new generators for measurement-data (~35 topics) and algebra-thinking (~26 topics):
+3. [x] [IMP] Write new generators for measurement-data (~35 topics) and algebra-thinking (~26 topics):
    - No existing generators for these strands — write from scratch
    - Measurement: unit conversion, perimeter, area, volume, time, money
    - Algebra thinking: patterns, equations, unknowns (pre-algebra concepts)
    - Register each in `../learn-content/math/generators/index.ts`, include `conceptText`
    - Validate: `just validate-content`
 
-4. [ ] [VAL] Run generation and validation for 3-5:
+4. [x] [VAL] Run generation and validation for 3-5:
    - `cd ../learn-content && npx tsx math/generators/run.ts --grade 3 --seed 42 && npx tsx math/generators/run.ts --grade 4 --seed 42 && npx tsx math/generators/run.ts --grade 5 --seed 42`
    - `just validate-content` — 0 errors
    - Spot-check 10 topics across strands (prioritize fractions)
