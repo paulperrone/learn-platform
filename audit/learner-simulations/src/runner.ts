@@ -14,7 +14,7 @@ import { SeededRNG } from "./prng.js";
 import type { SimulationConfig, SimulationResult, SimulationEvent, LearnerProfile, DiagnosticRunResult, SessionSummary, StateSnapshot, TopicStateSnapshot, PresentationSnapshot, TimeSchedule } from "./types.js";
 import type { AssessmentItem, AssessmentResult } from "../../../packages/shared/src/types.js";
 import { join } from "path";
-import { eq, and, desc } from "drizzle-orm";
+import { eq, and, desc, sql } from "drizzle-orm";
 import { writeFileSync, readFileSync } from "fs";
 import * as schema from "../../../packages/api/src/db/schema.js";
 
@@ -101,6 +101,7 @@ export class SimulationRunner {
   private totalTopicCount = 0;
   private sessionSummaries: SessionSummary[] = [];
   private stateSnapshots: StateSnapshot[] = [];
+  private firePrereqCumulativeCount = 0; // Running total of fire-prereq events for session delta computation
 
   constructor(config: SimulationConfig) {
     this.config = config;
@@ -199,7 +200,7 @@ export class SimulationRunner {
 
       // Snapshot state and compute session summary after each session
       await this.takeStateSnapshot(i + 1);
-      this.computeSessionSummary(i + 1);
+      await this.computeSessionSummary(i + 1);
     }
 
     // Assessment verification pass (--mode assessment)
@@ -450,47 +451,52 @@ export class SimulationRunner {
     };
     const sessionSvc = createSessionService(this.db, fireDiagnostic, this.contentBucket);
 
-    const { sessionId, firstItem } = await sessionSvc.startSession(this.userId);
+    // Pull-based loop: each startSession() returns one atomic unit (one topic).
+    // Repeat until nothing more to learn or MAX_INTERACTIONS reached.
+    let totalInteractions = 0;
+    const MAX_INTERACTIONS = 100; // Safety limit for entire simulated session
 
-    if (firstItem.type === "complete") {
-      console.log(`[sim]   Session ${sessionNumber}: ${firstItem.message}`);
-      this.logger.log({
-        sessionNumber,
-        phase: "complete",
-        topicId: null,
-        problemId: null,
-        difficulty: null,
-        cognitiveDemand: null,
-        presentation: null,
-        contentDepth: null,
-        correct: null,
-        confidence: null,
-        hintsUsed: null,
-        rating: null,
-        stabilityBefore: null,
-        stabilityAfter: null,
-        difficultyBefore: null,
-        difficultyAfter: null,
-        masteredBefore: null,
-        masteredAfter: null,
-        frontierBefore: null,
-        frontierAfter: null,
-        rollingAccuracy: null,
-        presentationWeights: null,
-        remediationTarget: null,
-        fireCreditApplied: null,
-        fadingLevel: null,
-        interleaveStrand: null,
-      });
-      return;
-    }
+    while (totalInteractions < MAX_INTERACTIONS) {
+      const { sessionId, firstItem } = await sessionSvc.startSession(this.userId);
 
-    let currentItem = firstItem;
-    let interactions = 0;
-    const MAX_INTERACTIONS = 100; // Safety limit
+      if (firstItem.type === "complete") {
+        console.log(`[sim]   Session ${sessionNumber}: all caught up`);
+        this.logger.log({
+          sessionNumber,
+          phase: "complete",
+          topicId: null,
+          problemId: null,
+          difficulty: null,
+          cognitiveDemand: null,
+          presentation: null,
+          contentDepth: null,
+          correct: null,
+          confidence: null,
+          hintsUsed: null,
+          rating: null,
+          stabilityBefore: null,
+          stabilityAfter: null,
+          difficultyBefore: null,
+          difficultyAfter: null,
+          masteredBefore: null,
+          masteredAfter: null,
+          frontierBefore: null,
+          frontierAfter: null,
+          rollingAccuracy: null,
+          presentationWeights: null,
+          remediationTarget: null,
+          fireCreditApplied: null,
+          fadingLevel: null,
+          interleaveStrand: null,
+        });
+        break;
+      }
 
-    while (currentItem.type !== "complete" && currentItem.type !== "error" && interactions < MAX_INTERACTIONS) {
-      interactions++;
+      let currentItem = firstItem;
+      const interactions = 0;
+
+      while (currentItem.type !== "complete" && currentItem.type !== "error" && totalInteractions < MAX_INTERACTIONS) {
+        totalInteractions++;
 
       if (currentItem.type === "lesson") {
         // Lesson item — simulate viewing the lesson then completing practice problems
@@ -640,7 +646,8 @@ export class SimulationRunner {
         fadingLevel: (currentItem as any).fadingLevel ?? null,
         interleaveStrand: null,
       });
-    }
+      } // end inner while (current unit interactions)
+    } // end outer while (pull-based topic loop)
   }
 
   /**
@@ -873,7 +880,7 @@ export class SimulationRunner {
   }
 
   /** Compute session summary from events logged during the session */
-  private computeSessionSummary(sessionNumber: number): void {
+  private async computeSessionSummary(sessionNumber: number): Promise<void> {
     // Read events from the JSONL file for this session
     const eventsPath = join(this.logger.getRunDir(), "events.jsonl");
     const allLines = readFileSync(eventsPath, "utf-8").trim().split("\n").filter(Boolean);
@@ -948,6 +955,25 @@ export class SimulationRunner {
     const latestSnapshot = this.stateSnapshots[this.stateSnapshots.length - 1];
     const presentationCenter = latestSnapshot?.presentation?.centerLevel ?? null;
 
+    // Count FIRe prereq credit events logged to DB this session
+    // (review_log rows with phase="fire-prereq" and implicit=1)
+    const firePrereqRows = await this.db
+      .select({ count: sql<number>`count(*)` })
+      .from(schema.reviewLog)
+      .where(
+        and(
+          eq(schema.reviewLog.userId, this.userId),
+          eq(schema.reviewLog.phase, "fire-prereq"),
+          eq(schema.reviewLog.implicit, 1),
+        )
+      );
+    // Subtract previously counted events (this session's events only)
+    const prevSummary = this.sessionSummaries[this.sessionSummaries.length - 1];
+    const totalFirePrereqSoFar = firePrereqRows[0]?.count ?? 0;
+    const prevFirePrereq = prevSummary ? (this.firePrereqCumulativeCount ?? 0) : 0;
+    const firePrereqCreditEvents = totalFirePrereqSoFar - prevFirePrereq;
+    this.firePrereqCumulativeCount = totalFirePrereqSoFar;
+
     const summary: SessionSummary = {
       sessionNumber,
       day: this.getSimulatedDay(),
@@ -959,6 +985,7 @@ export class SimulationRunner {
       averageAccuracy: totalProblems > 0 ? correctCount / totalProblems : 0,
       presentationCenter,
       fireReviewsSkipped,
+      firePrereqCreditEvents,
       fadingLevels,
       cognitiveDemandDistribution: demandDist,
       errors,

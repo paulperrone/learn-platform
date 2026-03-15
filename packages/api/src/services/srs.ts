@@ -4,6 +4,7 @@ import type { DB } from "../db/index.js";
 import * as schema from "../db/schema.js";
 import { createGraphService } from "./graph.js";
 import { IMPLICIT_MASTERY_THRESHOLD } from "./diagnostic.js";
+import type { NextItem } from "@learn/shared";
 
 const defaultParams = generatorParameters({ enable_fuzz: true });
 const defaultFsrs = fsrs(defaultParams);
@@ -16,6 +17,12 @@ const OPTIMIZATION_STALENESS_DAYS = 7;
 // meaningful compression. Re-enable when density ≥ 1.5 and graph ≥ 1,500 topics.
 // See docs/fire.md for full analysis.
 export const FIRE_ENABLED = false;
+
+// Prerequisite-direction FIRe: when a learner correctly answers topic B,
+// apply fractional stability credit to B's prerequisites. This replaces the
+// warmup tier — foundational topics are kept alive implicitly through normal
+// practice on dependent topics. See docs/fire.md §Prerequisite-Direction FIRe.
+export const FIRE_PREREQ_ENABLED = true;
 
 // Graduated mastery tiers based on FSRS stability (days).
 // Topics progress through tiers as stability grows, keeping them in
@@ -319,6 +326,12 @@ export function createSRSService(db: DB, fireDiagnostic?: FireDiagnosticConfig) 
         hintSource: hintSource ?? null,
         scaffolding: scaffolding ?? null,
       });
+
+      // Apply prerequisite-direction FIRe credit when qualifying correct answer.
+      // Fires after FSRS update so state.mastered reflects the current review.
+      if (isActuallyCorrect) {
+        await this.applyPrereqCredit(userId, topicId, adjustedRating, newConsecutiveCorrect);
+      }
 
       return {
         card: adjustedCard,
@@ -1017,6 +1030,150 @@ export function createSRSService(db: DB, fireDiagnostic?: FireDiagnosticConfig) 
       return row
         ? { requestRetention: row.requestRetention, reviewCount: row.reviewCount, computedAt: row.computedAt }
         : { requestRetention: 0.9, reviewCount: 0, computedAt: null };
+    },
+
+    /**
+     * Determine the next atomic learning unit for a user.
+     * Priority order:
+     *   1. Pending assessment (Phase 4 hook — always returns null until implemented)
+     *   2. Due reviews (SRS-scheduled retrieval)
+     *   3. New lesson (next unlocked topic from frontier)
+     *   4. Complete (nothing due, nothing new)
+     *
+     * The warmup tier from getSessionMix() is NOT ported here.
+     * Foundational topics are kept alive by applyPrereqCredit() (prereq-direction FIRe).
+     * Mastered topics that genuinely need review appear in getDueTopics() when their
+     * retrievability drops — no separate random-warmup pass needed.
+     */
+    async getNextItem(userId: string): Promise<NextItem> {
+      // Priority 1: pending assessment — placeholder until Phase 4
+      // (Phase 4 will check user_learning_state.pending_assessment_id here)
+
+      // Priority 2: due reviews
+      const dueTopics = await this.getDueTopics(userId);
+      if (dueTopics.length > 0) {
+        // Take the most overdue topic (getDueTopics returns ordered by due ASC)
+        return { type: "review", topicId: dueTopics[0].topicId };
+      }
+
+      // Priority 3: new lesson from frontier
+      const frontier = await graph.computeFrontier(userId);
+      if (frontier.topics.length > 0) {
+        // Sort by depth (shallowest first) to respect prerequisite order
+        const sorted = [...frontier.topics].sort((a, b) => a.depth - b.depth || a.gradeLevel - b.gradeLevel);
+        return { type: "lesson", topicId: sorted[0].id };
+      }
+
+      // Priority 4: nothing available
+      return { type: "complete" };
+    },
+
+    /**
+     * Apply prerequisite-direction FIRe credit after a qualifying correct review.
+     *
+     * When a learner correctly answers topic B (rating >= Good, consecutiveCorrect >= 2),
+     * this extends the FSRS stability of B's mastered prerequisites — implicitly refreshing
+     * their due dates without explicit reviews. This replaces the warmup tier.
+     *
+     * Gates per prerequisite topic:
+     *   - Must be mastered (still being learned = needs direct reviews)
+     *   - Retrievability >= 0.5 (too stale = needs a real review, not implicit credit)
+     *
+     * Credit fraction by hop (geometric decay):
+     *   hop 1 (direct prereqs):       BASE_FRACTION = 0.30
+     *   hop 2 (prereq's prereqs):     BASE_FRACTION × 0.5 = 0.15
+     *   hop 3 (grandparent prereqs):  BASE_FRACTION × 0.25 = 0.075
+     *
+     * Edge type multiplier:
+     *   "required"    → 1.0 (full credit)
+     *   "recommended" → 0.5 (half credit)
+     *   "enriching"   → skip (weak coupling, no credit)
+     *
+     * Logged with phase="fire-prereq", implicit=1 (NOT a real review).
+     * Does NOT affect reps, consecutiveCorrectReviews, or mastered status.
+     */
+    async applyPrereqCredit(
+      userId: string,
+      topicId: string,
+      rating: Grade,
+      consecutiveCorrect: number,
+    ): Promise<void> {
+      if (!FIRE_PREREQ_ENABLED) return;
+      if (rating < Rating.Good) return;
+      if (consecutiveCorrect < 2) return;
+
+      const MAX_HOPS = 3;
+      const BASE_FRACTION = 0.30;
+      const userFsrs = await getUserFsrs(userId);
+
+      // BFS through prerequisite edges up to MAX_HOPS
+      const visited = new Set<string>();
+      const queue: { topicId: string; hop: number }[] = [{ topicId, hop: 0 }];
+
+      while (queue.length > 0) {
+        const { topicId: currentId, hop } = queue.shift()!;
+        if (hop >= MAX_HOPS) continue;
+
+        const prereqs = await graph.getDirectPrerequisites(currentId);
+        for (const prereq of prereqs) {
+          if (prereq.type === "enriching") continue; // skip weak edges
+          if (visited.has(prereq.fromTopicId)) continue;
+          visited.add(prereq.fromTopicId);
+
+          const state = await db.query.userTopicState.findFirst({
+            where: and(
+              eq(schema.userTopicState.userId, userId),
+              eq(schema.userTopicState.topicId, prereq.fromTopicId),
+            ),
+          });
+
+          // Gate 1: must be mastered (still learning = needs direct reviews)
+          if (!state?.mastered) continue;
+
+          // Gate 2: retrievability >= 0.5 (genuinely stale = needs a real review)
+          const R = computeRetrievability(state);
+          if (R < 0.5) continue;
+
+          // Compute credit fraction: BASE × 0.5^(hop) × edge_type_multiplier
+          const hopFraction = BASE_FRACTION * Math.pow(0.5, hop);
+          const edgeMultiplier = prereq.type === "recommended" ? 0.5 : 1.0;
+          const creditFraction = hopFraction * edgeMultiplier;
+
+          // Compute stability boost: fraction of what a Good rating would give
+          const card = cardFromRow(state);
+          const scheduling = userFsrs.repeat(card, new Date());
+          const fullBoost = scheduling[Rating.Good].card.stability - state.stability;
+          if (fullBoost <= 0) continue;
+
+          const boost = fullBoost * creditFraction;
+          const newStability = state.stability + boost;
+          const newDue = new Date(Date.now() + newStability * 24 * 60 * 60 * 1000);
+
+          // Update stability and due only — do NOT touch reps, consecutiveCorrect, mastered
+          await db
+            .update(schema.userTopicState)
+            .set({
+              stability: newStability,
+              due: newDue.toISOString(),
+            })
+            .where(eq(schema.userTopicState.id, state.id));
+
+          // Log as implicit FIRe event (NOT a real review)
+          await db.insert(schema.reviewLog).values({
+            id: crypto.randomUUID(),
+            userId,
+            topicId: prereq.fromTopicId,
+            rating: Rating.Good,
+            correct: true,
+            responseMs: 0,
+            phase: "fire-prereq",
+            implicit: 1,
+          });
+
+          // Continue BFS to next hop
+          queue.push({ topicId: prereq.fromTopicId, hop: hop + 1 });
+        }
+      }
     },
   };
 }

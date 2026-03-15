@@ -1,8 +1,8 @@
 # FIRe: Fractional Implicit Repetition
 
-> **Status:** Disabled as of Plan 022 Phase 4.5 (2026-03-12). Code and encompassing edges preserved for future re-enablement.
->
-> **Re-enablement criteria:** Encompassing density ≥ 1.5 edges/topic AND graph ≥ 1,500 topics. Set `FIRE_ENABLED = true` in `packages/api/src/services/srs.ts`.
+> **Status:** Two independent mechanisms:
+> - **Encompassing-direction** (`FIRE_ENABLED`): Disabled as of Plan 022 Phase 4.5 (2026-03-12). Code and edges preserved. Re-enablement criteria: encompassing density ≥ 1.5 edges/topic AND graph ≥ 1,500 topics.
+> - **Prerequisite-direction** (`FIRE_PREREQ_ENABLED`): Enabled as of Plan 031 Phase 3 (2026-03-15). Replaces the warmup tier. Practicing topic B credits B's mastered prerequisites via BFS (up to 3 hops). See "Prerequisite-Direction FIRe" section below.
 
 ---
 
@@ -41,7 +41,40 @@ At 705 topics with ~1.01 encompassing edges/topic, FIRe consistently produces ne
 
 ---
 
-## Architecture (Preserved)
+## Prerequisite-Direction FIRe (Plan 031)
+
+Complementary to the encompassing-direction mechanism, prerequisite-direction FIRe flows *backward* through prerequisite edges. When a learner correctly answers topic B (rating ≥ Good, consecutiveCorrect ≥ 2), fractional FSRS stability credit is applied to B's mastered prerequisites.
+
+**Epistemological model:** Correctly solving `long division` deploys knowledge of `multiplication`, `subtraction`, and `place value`. A correct answer is evidence those prerequisites are still known.
+
+**Why this replaces warmup:** Foundational topics (K-2) are prerequisites for most of the graph. Normal practice on grade 3-4+ content propagates backward through the prerequisite chain, continuously refreshing K-2 stability. The warmup tier did this randomly; FIRe prereq credit does it structurally.
+
+### Credit Mechanism
+
+```
+applyPrereqCredit(userId, topicId, rating, consecutiveCorrect):
+  if rating < Good → return        // Not enough evidence
+  if consecutiveCorrect < 2 → return  // Lucky guess guard
+
+  BFS through prerequisite edges, max_hops = 3:
+    hop 1: credit = 0.30
+    hop 2: credit = 0.15  (× 0.5 decay)
+    hop 3: credit = 0.075 (× 0.25 decay)
+
+  Per prerequisite:
+    if !mastered → skip (needs direct reviews)
+    if R < 0.5 → skip (too stale, needs real review)
+    newStability = current + (fullBoost × credit × edgeMultiplier)
+    Log with phase: "fire-prereq", implicit: 1
+```
+
+### Code Locations
+- `packages/api/src/services/srs.ts` — `FIRE_PREREQ_ENABLED`, `applyPrereqCredit()`
+- `packages/api/src/db/schema.ts` — `review_log.implicit` column (1 = FIRe credit, 0 = real review)
+
+---
+
+## Architecture (Preserved, Encompassing-Direction)
 
 ### Code Locations
 - `packages/api/src/services/srs.ts` — `FIRE_ENABLED` constant, `applyFIReCredit()`, `compressReviews()`, `computeFIReCoverage()`, `applyUpwardPenalty()`

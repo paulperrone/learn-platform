@@ -235,6 +235,7 @@ export const reviewLog = sqliteTable("review_log", {
   llmAssisted: integer("llm_assisted", { mode: "boolean" }).default(false),
   hintSource: text("hint_source"), // 'static' | 'llm' | null
   scaffolding: text("scaffolding"), // ReviewScaffolding: 'none' | 'example' | 'hints-only' | 'solution' | null
+  implicit: integer("implicit").notNull().default(0), // 1 = system-generated credit event (FIRe prereq), 0 = real review
   createdAt: text("created_at").notNull().$defaultFn(() => new Date().toISOString()),
 }, (table) => [
   index("review_user_idx").on(table.userId),

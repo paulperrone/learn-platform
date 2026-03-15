@@ -157,22 +157,44 @@ describe("session-activity integration", () => {
     expect(activity!.minutesActive).toBeGreaterThanOrEqual(1);
   });
 
-  it("multiple responds in same session accumulate activity", async () => {
-    const { db, user } = await setupGraph();
+  it("multiple atomic sessions in a day accumulate activity", async () => {
+    const { db, user, discipline } = await setupGraph();
 
-    // Seed counting as mastered so addition is frontier too
+    // Add a third topic so there are two frontier topics after counting is mastered
+    await seedTopic(discipline.id, { id: "subtraction", name: "Subtraction", depth: 1 });
+    await seedPrerequisite("counting", "subtraction");
+    for (const diff of ["easy", "medium", "hard"] as const) {
+      await seedAssessmentContent("subtraction", {
+        id: `subtraction-${diff}`, difficulty: diff,
+        question: `${diff} subtraction?`, answer: "1",
+        hintsJson: JSON.stringify(["Hint 1"]),
+        solution: "subtraction solution",
+      });
+    }
+    await seedInstructionalContent("subtraction", {
+      id: "subtraction-ex", title: "Subtraction Example",
+      stepsJson: JSON.stringify([
+        { subgoalLabel: "Step", instruction: "Subtract", work: "3-1=2", explanation: "Math." },
+      ]),
+    });
+
+    // Seed counting as mastered so addition+subtraction are both frontier
     await seedUserTopicState(user.id, "counting", {
       mastered: true, stability: 10, reps: 5, state: 2,
       due: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString(),
     });
 
+    // In the pull-based model, each startSession() is one atomic unit (one topic).
+    // Multiple sessions in a day accumulate into daily activity.
     const session = createSessionService(db, undefined, getTestR2Bucket());
-    const { sessionId } = await session.startSession(user.id);
 
-    // Respond to lesson (instruction fallback) for first topic → advances to next topic
-    await session.respond(sessionId, { correct: true, responseMs: 5000 });
-    // Respond to lesson for second topic → advances
-    await session.respond(sessionId, { correct: true, responseMs: 5000 });
+    // First atomic unit: start + respond to first frontier topic
+    const { sessionId: s1 } = await session.startSession(user.id);
+    await session.respond(s1, { correct: true, responseMs: 5000 });
+
+    // Second atomic unit: start + respond to second frontier topic
+    const { sessionId: s2 } = await session.startSession(user.id);
+    await session.respond(s2, { correct: true, responseMs: 5000 });
 
     const today = new Date().toISOString().slice(0, 10);
     const activity = await db
@@ -185,7 +207,7 @@ describe("session-activity integration", () => {
       .get();
 
     expect(activity).toBeDefined();
-    // 2 responds = 2 problems recorded
+    // 2 responds across 2 atomic sessions = 2 problems recorded
     expect(activity!.problemsCompleted).toBeGreaterThanOrEqual(2);
   });
 

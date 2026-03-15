@@ -126,8 +126,10 @@ export function createGraphService(db: DB) {
           return ALL_DEPTHS.some((d) => !completedDepths.has(d));
         }
 
-        // Non-context-layered: exclude started topics, but include
-        // diagnostic frontier topics (materialized but never studied)
+        // Non-context-layered: exclude already-mastered topics (explicit or implicit)
+        if (masteredIds.has(topic.id)) return false;
+        // Exclude started topics, but include diagnostic frontier topics
+        // (materialized but never studied — reps=0, not mastered)
         if (startedIds.has(topic.id) && !diagnosticFrontierIds.has(topic.id)) return false;
         const prereqs = prereqMap.get(topic.id) ?? [];
         if (prereqs.length === 0) return true;

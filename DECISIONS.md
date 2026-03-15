@@ -2190,6 +2190,26 @@ Post-implementation results:
 
 ---
 
+## 2026-03-15: Pull-based atomic sessions replace batched getSessionMix (Plan 031 Phase 3)
+
+**Source:** User session — Plan 031 Phase 3
+
+**Context:** `getSessionMix()` pre-built a blended queue of 10 items (warmup + reviews + new topics) with strand interleaving. This required complex blend-role logic, warmup sampling, stretch slots, and review caps — all of which had subtle interaction bugs (remediation storms, stuck topics, warmup consuming review slots).
+
+**Decision:** Replace with `getNextItem()` — a stateless priority function returning one atomic unit at a time: assessment > review > lesson > complete. Each `startSession()` covers exactly one topic. Frontend calls `startSession()` repeatedly (pull loop). Warmup tier replaced by prerequisite-direction FIRe credit.
+
+**Why:**
+- Eliminates blend-role complexity (warmup/stretch/main distinctions gone)
+- Assessment gate (Phase 4) becomes trivial: just return assessment as priority 1
+- Strand interleaving is no longer needed — each session is one topic, so there's no queue to interleave
+- FIRe prereq credit structurally maintains prerequisite stability instead of random warmup sampling
+
+**Alternatives rejected:**
+- Patching `getSessionMix()` to add assessment priority: Would add more complexity to already-complex blending logic
+- Keeping warmup tier alongside FIRe credit: Redundant — if prerequisite retrievability drops, `getDueTopics()` surfaces it as a review; if it doesn't, warmup was unnecessary
+
+---
+
 ## 2026-03-15: Stuck-topic escape hatch — 90-day cooldown (Plan 031 Phase 2)
 
 **Source:** User session — Plan 031 Phase 2

@@ -130,12 +130,8 @@ async function handleProblemSubmit(data: {
     if (result.masteryEvent) {
       masteryEvent.value = result.masteryEvent;
     }
-    currentItem.value = result;
     scaffolding.value = "none";
     lessonPanelOpen.value = false;
-    if (result.type === "complete") {
-      sessionActive.value = false;
-    }
     // Track anonymous progress client-side
     if (isAnonymous.value && data.answer) {
       anon.recordAttempt(currentItem.value?.topicId ?? "", data.correct);
@@ -143,6 +139,14 @@ async function handleProblemSubmit(data: {
     // Update goal progress from server response
     if (result.goalProgress) {
       goalProgress.value = result.goalProgress;
+    }
+    if (result.type === "complete") {
+      // Pull-based model: auto-start next unit when current topic completes.
+      // A "session" is now one atomic unit (one topic). The frontend loops by
+      // calling startSession() again immediately to get the next item.
+      await startSession();
+    } else {
+      currentItem.value = result;
     }
   }
   loading.value = false;
@@ -165,9 +169,10 @@ async function handleLessonDone() {
     if (result.goalProgress) {
       goalProgress.value = result.goalProgress;
     }
-    currentItem.value = result;
     if (result.type === "complete") {
-      sessionActive.value = false;
+      await startSession();
+    } else {
+      currentItem.value = result;
     }
   }
   loading.value = false;
@@ -201,9 +206,10 @@ async function handleExampleDone() {
     if (result.goalProgress) {
       goalProgress.value = result.goalProgress;
     }
-    currentItem.value = result;
     if (result.type === "complete") {
-      sessionActive.value = false;
+      await startSession();
+    } else {
+      currentItem.value = result;
     }
   }
   loading.value = false;

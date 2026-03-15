@@ -27,7 +27,7 @@ type SessionState = {
   totalAttempts: number;
   lastServedPresentation?: PresentationLevel;
   lastServedDisciplineId?: string;
-  currentBlendRole?: BlendRole;
+  currentBlendRole?: BlendRole; // Always "main" in the pull-based model (warmup/stretch removed)
   rollingResults: boolean[]; // Sliding window of last N problem correctness results (for adaptive difficulty)
   lastProblemId?: string; // Last problem ID responded to (for targeted remediation lookup)
   remediationTargetTopicId?: string; // Prerequisite topic being remediated (targeted remediation)
@@ -36,7 +36,6 @@ type SessionState = {
   sessionFailures?: Record<string, number>; // Per-topic failure count within this session (for remediation trigger)
   servedDemands?: CognitiveDemand[]; // Cognitive demands served this session (for demand mixing)
   totalResponseMs?: number; // Accumulated response time for activity minutes recording
-  sessionMix?: { topicId: string; type: "review" | "new"; blendRole: BlendRole }[]; // Cached session mix from getSessionMix
   remediatedTopics?: string[]; // Topics that have already been remediated this session (prevent re-entry)
   sessionRemediationCount?: number; // Budget cap: max 15 remediations per session (prevent runaway remediation loops)
   llmAssistedThisProblem?: boolean; // Set by LLM routes when any LLM feature used on current problem
@@ -148,15 +147,6 @@ export function createSessionService(db: DB, fireDiagnostic?: FireDiagnosticConf
     if (!state.isAnonymous) {
       presentation = await content.resolvePresentation(state.userId, disciplineId);
       contentDepth = await content.resolveContentDepth(state.userId, topicId, disciplineId);
-    }
-
-    // Blend role depth overrides
-    if (state.currentBlendRole === "warmup") {
-      contentDepth = "survey";
-    } else if (state.currentBlendRole === "stretch") {
-      const depths: ContentDepthLevel[] = ["survey", "contextual", "analytical", "synthesis"];
-      const idx = depths.indexOf(contentDepth);
-      if (idx < depths.length - 1) contentDepth = depths[idx + 1];
     }
 
     // Track served presentation for drift nudging in respond()
@@ -282,12 +272,10 @@ export function createSessionService(db: DB, fireDiagnostic?: FireDiagnosticConf
         await this.endSession(stale.id);
       }
 
-      // Get session mix
-      const mix = await srs.getSessionMix(userId, 10);
+      // Determine next atomic learning unit (pull-based model)
+      const nextItem = await srs.getNextItem(userId);
 
-      // Pick first topic
-      const firstTopic = mix.items[0];
-      if (!firstTopic) {
+      if (nextItem.type === "complete") {
         // No topics available — everything mastered or no content
         await db.insert(schema.learnSessions).values({
           id: sessionId,
@@ -301,20 +289,20 @@ export function createSessionService(db: DB, fireDiagnostic?: FireDiagnosticConf
         };
       }
 
+      const topicId = nextItem.type === "lesson" || nextItem.type === "review" ? nextItem.topicId : null;
       const state: SessionState = {
         sessionId,
         userId,
-        currentTopicId: firstTopic.topicId,
-        currentPhase: firstTopic.type === "review" ? "review" : "lesson",
+        currentTopicId: topicId,
+        currentPhase: nextItem.type === "review" ? "review" : "lesson",
         phaseIndex: 0,
         hintIndex: 0,
         topicsCompleted: [],
         reviewsCompleted: 0,
         totalCorrect: 0,
         totalAttempts: 0,
-        currentBlendRole: firstTopic.blendRole,
+        currentBlendRole: "main", // Always main in pull-based model (warmup/stretch removed)
         rollingResults: [],
-        sessionMix: mix.items.map((i) => ({ topicId: i.topicId, type: i.type, blendRole: i.blendRole })),
       };
       activeSessions.set(sessionId, state);
 
@@ -691,15 +679,12 @@ export function createSessionService(db: DB, fireDiagnostic?: FireDiagnosticConf
       }
 
       // Check if remediation should trigger based on accumulated failures (2+ for any topic).
-      // Skip remediation for warmup topics (quick recall, not deep practice).
       // Skip if this topic was already remediated this session (prevent infinite loops).
-      const isWarmup = state.currentBlendRole === "warmup";
       const alreadyRemediated = state.remediatedTopics?.includes(state.currentTopicId!) ?? false;
       const shouldRemediate = !wasCorrect
         && state.currentTopicId
         && state.currentPhase !== "remediation"
         && state.currentPhase !== "instruction"
-        && !isWarmup
         && !alreadyRemediated
         && (state.sessionFailures?.[state.currentTopicId] ?? 0) >= 2
         && (state.sessionRemediationCount ?? 0) < 15;
@@ -785,12 +770,6 @@ export function createSessionService(db: DB, fireDiagnostic?: FireDiagnosticConf
           state.topicsCompleted.push(state.currentTopicId!);
           return await this.nextTopic(state);
         }
-        // Warmup topics: single question, move on after any failure
-        if (state.currentBlendRole === "warmup") {
-          state.reviewsCompleted++;
-          state.topicsCompleted.push(state.currentTopicId!);
-          return await this.nextTopic(state);
-        }
         // Failed review — give one retry before moving on (remediation triggers on 2nd failure via sessionFailures)
         const topicFailures = state.sessionFailures?.[state.currentTopicId!] ?? 0;
         if (topicFailures < 2) {
@@ -825,41 +804,24 @@ export function createSessionService(db: DB, fireDiagnostic?: FireDiagnosticConf
     },
 
     /**
-     * Move to the next topic in the session mix.
+     * Complete the current atomic unit and end the session.
+     *
+     * In the pull-based model, a session covers exactly one topic.
+     * When that topic's sequence is done, the session ends automatically.
+     * The frontend calls startSession() again to pull the next unit.
      */
     async nextTopic(state: SessionState): Promise<SessionItem> {
       if (state.isAnonymous) {
         return await this.nextAnonymousTopic(state);
       }
 
-      // Use cached session mix (computed once at session start) to preserve
-      // interleaving order and avoid re-computing the mix each topic transition.
-      // Fall back to fresh mix if cache is missing (legacy sessions).
-      const mixItems = state.sessionMix
-        ?? (await srs.getSessionMix(state.userId, 10)).items;
-
-      // Find a topic we haven't completed in this session
-      const next = mixItems.find(
-        (item) => !state.topicsCompleted.includes(item.topicId)
-      );
-
-      if (!next) {
-        // Session complete
-        await this.endSession(state.sessionId);
-        return {
-          type: "complete",
-          message: `Session complete! Topics studied: ${state.topicsCompleted.length}, Reviews: ${state.reviewsCompleted}, Accuracy: ${state.totalAttempts > 0 ? Math.round((state.totalCorrect / state.totalAttempts) * 100) : 0}%`,
-        };
-      }
-
-      state.currentTopicId = next.topicId;
-      state.currentPhase = next.type === "review" ? "review" : "lesson";
-      state.phaseIndex = 0;
-      state.currentBlendRole = next.blendRole;
-      state.llmAssistedThisProblem = false;
-      state.hintSourceThisProblem = null;
-
-      return await this.buildPhaseItem(state);
+      // Session covers one topic — auto-end and signal complete.
+      // Frontend will call startSession() to pull the next unit.
+      await this.endSession(state.sessionId);
+      return {
+        type: "complete",
+        message: `Topic complete! Reviews: ${state.reviewsCompleted}, Accuracy: ${state.totalAttempts > 0 ? Math.round((state.totalCorrect / state.totalAttempts) * 100) : 0}%`,
+      };
     },
 
     async nextAnonymousTopic(state: SessionState): Promise<SessionItem> {
@@ -1120,12 +1082,6 @@ export function createSessionService(db: DB, fireDiagnostic?: FireDiagnosticConf
           const p = withVisuals(problem ?? makeFallbackProblem(topic));
           trackDemand(p);
           const blendRole = state.currentBlendRole ?? "main";
-          let reviewMessage = "Review time! Let's see if you remember.";
-          if (blendRole === "warmup") {
-            reviewMessage = "Quick review!";
-          } else if (blendRole === "stretch") {
-            reviewMessage = "Challenge question — give it your best shot, it's okay to be unsure.";
-          }
           return {
             type: "problem",
             phase: "review",
@@ -1135,12 +1091,12 @@ export function createSessionService(db: DB, fireDiagnostic?: FireDiagnosticConf
             availableHints: getAvailableHints(p, "review", state.hintIndex),
             showSolution: shouldShowSolution(p, state.currentPhase, state.hintIndex),
             hintsRevealed: state.hintIndex,
-            askConfidence: blendRole !== "warmup",
+            askConfidence: true,
             scaffolding: "none" as ReviewScaffolding,
             presentationLevel: state.lastServedPresentation,
             blendRole,
             difficultyBias: "on-target",
-            message: reviewMessage,
+            message: "Review time! Let's see if you remember.",
           };
         }
 

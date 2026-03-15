@@ -23,9 +23,9 @@ Wire assessments into the learning scheduler as a system-triggered calibration l
 
 ## Progress
 
-**Completed:** Phase 1 (Mastery System Deep Diagnostic)
+**Completed:** Phase 1 (Mastery System Deep Diagnostic), Phase 2 (Threshold & Session Mix Calibration), Phase 3 (Atomic Pull-Based Session Architecture + Prerequisite FIRe)
 **In Progress:** —
-**Next:** Phase 2
+**Next:** Phase 4
 
 ---
 
@@ -110,13 +110,13 @@ Mastery tiers: practicing (<4d), recently-mastered (4–30d), solidly-mastered (
 
 ---
 
-## Phase 2: Threshold & Session Mix Calibration
+## Phase 2: Threshold & Session Mix Calibration ✓
 
 **Goal:** Apply the specific recommendations from Phase 1. This phase's steps are intentionally not fully pre-written — they depend on the Phase 1 findings document. The structure below is a template; actual steps will be inserted after Phase 1 is complete.
 
 ### Steps
 
-1. [ ] [RSH] Review Phase 1 recommendations — decisions already made in `docs/mastery-system-analysis.md` Section 7:
+1. [x] [RSH] Review Phase 1 recommendations — decisions already made in `docs/mastery-system-analysis.md` Section 7:
    - **Rec 1 (implement)**: Add session-level remediation budget cap (max 15 remediations/session)
    - **Rec 2 (implement)**: Add stuck-topic escape hatch for topics with reps > 20, stability < 0.5, consecutiveCorrect = 0
    - **Rec 3 (implement)**: Fix mastery convergence metric to use total mastery (materialized + implicit) in evaluate.ts and targets.json
@@ -125,29 +125,29 @@ Mastery tiers: practicing (<4d), recently-mastered (4–30d), solidly-mastered (
    - **Rec 6 (defer to Phase 3)**: Warmup pool retrievability selection belongs in `getNextItem()` design
    - Document these decisions in DECISIONS.md
 
-2. [ ] [IMP] Implement Rec 1 — session remediation budget cap:
+2. [x] [IMP] Implement Rec 1 — session remediation budget cap:
    - Add `sessionRemediationCount?: number` to `SessionState` type (`session.ts`)
    - In `advancePhase()`, add `&& (state.sessionRemediationCount ?? 0) < 15` to `shouldRemediate`
    - Increment `state.sessionRemediationCount` when entering remediation phase
    - Update `db-setup.ts` if any DB schema changes needed (none expected — pure session state)
 
-3. [ ] [IMP] Implement Rec 2 — stuck-topic escape hatch:
+3. [x] [IMP] Implement Rec 2 — stuck-topic escape hatch:
    - In `getDueTopics()`, after the `rows.filter((r) => r.reps > 0)` filter, add a second filter: skip topics with `reps > 20 AND stability < 0.5 AND consecutiveCorrectReviews === 0`
    - **Reset strategy: lazy write inside `getDueTopics()`** — when filtering a stuck topic, immediately update `due = now + 90d` in the DB. Filter-only (no write) doesn't work: stability ≈ 0 means FSRS sets `due ≈ now` every time, so the topic re-enters the filter every session and silently disappears with no recovery path. The write is intentional and idempotent (running it twice is harmless).
    - Add a clear code comment in `getDueTopics()` noting this intentional side effect
    - Optionally add a `stuckResetAt TEXT` column to `userTopicState` to make the event queryable and prevent redundant resets — but this is a nice-to-have, not required for correctness
 
-4. [ ] [IMP] Implement Rec 3 — fix mastery convergence metric:
+4. [x] [IMP] Implement Rec 3 — fix mastery convergence metric:
    - In `audit/learner-simulations/src/evaluate.ts`, update the `mastery_convergence_count` computation to use `masteryCount` (total incl. implicit) instead of `materializedMasteryCount`
    - Update `targets.json`: raise target for `mastery_convergence` to reflect new metric, update `lastUpdatedReason`
 
-5. [ ] [TST] Re-run simulation suite and validate fixes:
+5. [x] [TST] Re-run simulation suite and validate fixes:
    - `just regression` — verify no regressions in other metrics
    - Check that sessions with 0 remediation-loop events (no session > 15 remediations)
    - Check that stuck topics (reps > 20, stability < 0.5) no longer appear in session 30 snapshots
    - Under new metric: mastery_convergence_count should improve
 
-6. [ ] [VAL] Update `targets.json` and document:
+6. [x] [VAL] Update `targets.json` and document:
    - Update `mastery_convergence` target based on new metric (total mastery; expect higher profile count)
    - Update `lastUpdatedReason` with specific changes made
    - Run `just regression` to capture new baseline
@@ -158,7 +158,7 @@ Mastery tiers: practicing (<4d), recently-mastered (4–30d), solidly-mastered (
 
 ---
 
-## Phase 3: Atomic Pull-Based Session Architecture + Prerequisite FIRe
+## Phase 3: Atomic Pull-Based Session Architecture + Prerequisite FIRe ✓
 
 **Goal:** Replace the batched `getSessionMix()` model with a pull-based `getNextItem()` model — the canonical scheduling entry point going forward. Simultaneously introduce prerequisite-direction FIRe credit (`applyPrereqCredit`) so that practicing a topic implicitly maintains its prerequisite foundations, eliminating the need for a warmup tier. Every interaction is a single atomic unit: one topic, one phase (lesson, review, worked example, or assessment). After each unit completes, the frontend asks "what's next?" and the system resolves the next one.
 
@@ -227,13 +227,13 @@ Credit is logged in `reviewLog` with `phase: "fire-prereq"` for auditability. Th
 
 ### Steps
 
-1. [ ] [RSH] Audit all callers of `getSessionMix()`, `startSession()`, `respond()`, `endSession()` in `session.ts`, route handlers, simulation runner, and `learn.vue`:
+1. [x] [RSH] Audit all callers of `getSessionMix()`, `startSession()`, `respond()`, `endSession()` in `session.ts`, route handlers, simulation runner, and `learn.vue`:
    - What does each caller expect the session/mix to contain?
    - What cached state needs to change? (`sessionMix` at `session.ts:39` caches the full blended queue — this is removed)
    - What frontend assumptions about receiving multiple items at session start need to change?
    - Document any warmup-related code paths that will be removed
 
-2. [ ] [IMP] Define `NextItem` type in `packages/shared/src/`:
+2. [x] [IMP] Define `NextItem` type in `packages/shared/src/`:
    ```ts
    type NextItem =
      | { type: "lesson"; topicId: string }
@@ -243,13 +243,13 @@ Credit is logged in `reviewLog` with `phase: "fire-prereq"` for auditability. Th
      | { type: "complete" }
    ```
 
-3. [ ] [IMP] Implement `getNextItem(userId)` in `srs.ts` — no warmup tier:
+3. [x] [IMP] Implement `getNextItem(userId)` in `srs.ts` — no warmup tier:
    - Priority order: (1) pending assessment — placeholder hook only, always skipped until Phase 4; (2) due reviews via `getDueTopics()`, oldest due first; (3) new lesson — next unlocked topic from `computeFrontier()` sorted by depth; (4) `{ type: "complete" }`
    - **Do not port the warmup tier.** Warmup is replaced by FIRe prereq credit (step 4). The review queue (Priority 2) already captures any mastered topic whose retrievability has genuinely dropped — no separate random-warmup pass needed.
    - `getSessionMix()` is deprecated — leave in place until callers are migrated in steps 5–7
    - Returns a single `NextItem`
 
-4. [ ] [IMP] Implement `applyPrereqCredit(userId, topicId, rating, consecutiveCorrect)` in `srs.ts`:
+4. [x] [IMP] Implement `applyPrereqCredit(userId, topicId, rating, consecutiveCorrect)` in `srs.ts`:
    - Call from `scheduleReview()` after the FSRS update, when `isActuallyCorrect && consecutiveCorrect >= 2 && rating >= Rating.Good`
    - BFS through prerequisite edges up to `MAX_HOPS = 3`; credit fraction at hop h = `BASE_FRACTION × 0.5^(h−1)` where `BASE_FRACTION = 0.30`
    - Gates (skip the topic if ANY of these fail): `state.mastered === true`, `computeRetrievability(state) >= 0.5`
@@ -258,7 +258,7 @@ Credit is logged in `reviewLog` with `phase: "fire-prereq"` for auditability. Th
    - **Logging: add `implicit INTEGER DEFAULT 0` column to `review_log` via D1 migration** — `reviewLog.correct` and `reviewLog.rating` are NOT NULL and cannot be set to null for FIRe events. Do not make them nullable. Instead, log FIRe events as `correct = true, rating = Rating.Good, implicit = 1, responseMs = 0, phase = "fire-prereq"`. This keeps existing NOT NULL constraints intact, and `implicit = 1` unambiguously identifies system-generated credit events. The migration is additive (existing rows get `implicit = 0` default) with no backfill required.
    - Export `FIRE_PREREQ_ENABLED = true` constant alongside `FIRE_ENABLED` (encompassing FIRe remains disabled separately)
 
-5. [ ] [IMP] Update `session.ts` — session represents one atomic unit:
+5. [x] [IMP] Update `session.ts` — session represents one atomic unit:
    - **One unit = one full topic sequence** for one topic: a lesson walks through all phase steps (pretest → instruction → guided → independent) across multiple `respond()` calls; a review is typically one `respond()` call. The existing `advancePhase()` machinery is preserved entirely — it still drives phase progression within the unit. What changes is that a session covers exactly one topic, not a blended queue of many topics.
    - `startSession()` calls `getNextItem()` to determine the unit; session state stores `{ topicId, phase: NextItem["type"] }` — not a blended queue
    - Remove `sessionMix` cache from session state
@@ -268,18 +268,18 @@ Credit is logged in `reviewLog` with `phase: "fire-prereq"` for auditability. Th
    - Retain explicit `endSession()` for timeout/abandonment cases
    - `learn.vue` loop: frontend calls `startSession()` after each `complete` to pull the next unit — this is the pull loop
 
-6. [ ] [IMP] Update `learn.vue` — pull-based loop:
+6. [x] [IMP] Update `learn.vue` — pull-based loop:
    - On page load and after each interaction completes: call `POST /api/learn/start` → receive single `NextItem` → render appropriate component
    - Remove any logic that iterates a pre-fetched queue
    - Handle `{ type: "complete" }` with an "All caught up" state
 
-7. [ ] [TST] Update simulation runner (`runner.ts`):
+7. [x] [TST] Update simulation runner (`runner.ts`):
    - Replace `getSessionMix()` call with repeated `getNextItem()` calls (via `startSession()`) until `complete` or interaction-count limit reached
    - Track `firePrereqCreditEvents` in `SessionSummary` (count from reviewLog where `phase = "fire-prereq"`)
    - Retain session/interaction count tracking
    - `just regression` must pass
 
-8. [ ] [TST] Verify graduation invariant — foundational topics at long-term mastery before dependents:
+8. [x] [TST] Verify graduation invariant — foundational topics at long-term mastery before dependents:
    - Run a 60-session simulation for `average-older` and `strong-older` profiles
    - **"Frontier grade" definition: median `gradeLevel` of all topics with `reps > 0`** — topics the learner has actually been introduced to (not just theoretically unlocked). Median is robust to outlier high-grade topics in the frontier. This value is directly computable from `topicStates[]` in each snapshot.
    - For each session snapshot at sessions 20, 30, 40, 60: compute `frontierGrade = median(gradeLevel for topics where reps > 0)`; then assert that all topics with `gradeLevel ≤ frontierGrade − 2` have `stability ≥ 30d` (solidly-mastered threshold) OR `reps = 0`
@@ -287,7 +287,7 @@ Credit is logged in `reviewLog` with `phase: "fire-prereq"` for auditability. Th
    - If invariant fails: investigate whether FIRe credit is propagating back far enough, or whether Phase 2's stuck-topic escape hatch is needed first for a specific topic
    - Document graduation rates in `docs/mastery-system-analysis.md` (append Section 8: Post-FIRe validation)
 
-9. [ ] [DOC] Update architecture documentation:
+9. [x] [DOC] Update architecture documentation:
    - `CLAUDE.md`: Replace "Learning loop phases (simplified, Plan 029)" section with atomic pull-based model description — unit of learning is `(topic, phase)`, not a blended session; note FIRe prereq credit as the warmup replacement
    - `docs/assessment-system.md`: Add atomic session model section
    - `docs/fire.md`: Add section on prerequisite-direction FIRe — distinguish from encompassing-direction FIRe (still disabled); document the graduation invariant and the R-floor safety valve
@@ -326,7 +326,7 @@ The pacing factor modulates how eagerly `getNextItem()` returns new lessons vs r
    ```
    - D1 migration + schema.ts + Drizzle types
 
-2. [ ] [IMP] Assessment trigger — fire in `respond()` on lesson completion for a new topic:
+2. [x] [IMP] Assessment trigger — fire in `respond()` on lesson completion for a new topic:
    - "New topic" = lesson-phase session where topic had no prior `user_topic_state` row (or `reps === 0`)
    - On completion: increment `topics_introduced_since_assessment` in `user_learning_state`
    - Trigger condition: `frontier_size > 0 AND topics_introduced / frontier_size >= ASSESSMENT_TRIGGER_RATIO` (constant, start at 0.25) — guard against division by zero when frontier is empty (early diagnostic phase)
@@ -334,11 +334,11 @@ The pacing factor modulates how eagerly `getNextItem()` returns new lessons vs r
    - When triggered: `assessmentSvc.startAssessment(userId, { scope: { type: "comprehensive" }, questionCount: 10 })`, write `pending_assessment_id`, reset counter to 0
    - Never trigger if `pending_assessment_id` already set
 
-3. [ ] [IMP] Gate in `getNextItem()`:
+3. [x] [IMP] Gate in `getNextItem()`:
    - At priority position 1 (before reviews): load `user_learning_state`; if `pending_assessment_id` set → return `{ type: "assessment", assessmentSessionId: pending_assessment_id }`
    - Reviews remain accessible via direct review API — learner always has something to do
 
-4. [ ] [IMP] Pacing factor feedback — `finishAssessment()` applies and records:
+4. [x] [IMP] Pacing factor feedback — `finishAssessment()` applies and records:
    - Score ≥ 0.80: `pacing = min(pacing * 1.15, 2.0)` — ready for more new material
    - Score 0.60–0.80: no change — on track
    - Score < 0.60: `pacing = max(pacing * 0.80, 0.5)` — consolidate before advancing
@@ -373,13 +373,13 @@ The pacing factor modulates how eagerly `getNextItem()` returns new lessons vs r
    - `GET /api/learn/session-status` returns `{ assessmentPending: boolean, assessmentSessionId?: string, reviewsDue: number, newTopicsAvailable: number, pacingFactor: number }`
    - Frontend calls this on `/learn` page load to decide what to show
 
-2. [ ] [IMP] Assessment-ready prompt in `learn.vue`:
+2. [x] [IMP] Assessment-ready prompt in `learn.vue`:
    - When `assessmentPending === true`: show a milestone card ("You've covered enough new material for a checkpoint — take a 10-question assessment to unlock what's next")
    - Primary CTA: "Start Checkpoint" → navigates to `/assess/:assessmentSessionId`
    - Secondary: "Review first" → starts a review-only interaction (still gates new lessons)
    - Framing is milestone/reward, not blocker/penalty
 
-3. [ ] [IMP] Post-assessment result feedback in `assess.vue`:
+3. [x] [IMP] Post-assessment result feedback in `assess.vue`:
    - After `finishAssessment()`, result page shows pacing impact:
      - Score ≥ 80%: "Strong performance — your learning pace is increasing"
      - Score 60–80%: "Solid — continuing at current pace"

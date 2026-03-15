@@ -239,6 +239,17 @@ export type ContentDepthLevel = "survey" | "contextual" | "analytical" | "synthe
 
 export type BlendRole = "warmup" | "main" | "stretch";
 
+/**
+ * Atomic scheduling unit returned by getNextItem().
+ * Priority order: assessment > review > lesson > complete
+ */
+export type NextItem =
+  | { type: "lesson"; topicId: string }
+  | { type: "review"; topicId: string }
+  | { type: "worked-example"; topicId: string }
+  | { type: "assessment"; assessmentSessionId: string }
+  | { type: "complete" };
+
 export type ContentDimensions = {
   flavor: string;
   locale: string;

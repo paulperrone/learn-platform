@@ -1264,6 +1264,19 @@ Fix (Plan 031 Phase 2): In `getDueTopics()`, skip topics with `reps > 20 AND sta
 
 ---
 
+### 2026-03-15: computeFrontier must exclude implicitly mastered topics from frontier
+
+**Source:** User session — Plan 031 Phase 3
+**Area:** Graph service / diagnostic mastery / session scheduling
+
+`computeFrontier()` uses `masteredIds` (which includes diagnostic implicit mastery) for prerequisite checks, but does NOT exclude implicitly mastered topics from the frontier results. A topic with P(mastery) >= 0.75 from diagnostic estimates but no `user_topic_state` row will appear as a frontier candidate. When `getNextItem()` picks it as a lesson, `scheduleReview()` creates a `user_topic_state` row with `mastered: false`. This topic is now: (a) excluded from implicit mastery count (it has a materialized row), AND (b) not counted as materialized mastery (mastered=false). Net effect: total mastery drops.
+
+The impact scales with how many frontier topics are processed per session. The old batched model (10 topics/session) masked this bug; the new pull-based model (processes all frontier topics in one session) caused a 17-47% mastery drop. Fix: add `if (masteredIds.has(topic.id)) return false` before the `startedIds` check in `computeFrontier()`.
+
+**Context:** `graph.ts computeFrontier()`. Discovered during Plan 031 Phase 3 regression — `finalMasteryPercent` dropped significantly for all profiles when switching to pull-based sessions.
+
+---
+
 ### 2026-03-15: Path B mastery (consecutiveCorrect >= 3, any state) can fire at very low stability
 
 **Source:** User session — Plan 031 Phase 1

@@ -111,6 +111,7 @@ export type SessionSummary = {
   averageAccuracy: number;
   presentationCenter: string | null;
   fireReviewsSkipped: number;
+  firePrereqCreditEvents: number; // Count of prereq-direction FIRe credit events logged this session
   fadingLevels: Record<string, number>;
   cognitiveDemandDistribution: Record<string, number>;
   errors: number;
