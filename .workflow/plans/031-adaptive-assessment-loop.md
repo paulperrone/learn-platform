@@ -157,11 +157,11 @@ Mastery tiers: practicing (<4d), recently-mastered (4–30d), solidly-mastered (
 
 ---
 
-## Phase 3: Atomic Pull-Based Session Architecture
+## Phase 3: Atomic Pull-Based Session Architecture + Prerequisite FIRe
 
-**Goal:** Replace the batched `getSessionMix()` model with a pull-based `getNextItem()` model — the canonical scheduling entry point going forward. Every interaction is a single atomic unit: one topic, one phase (lesson, review, worked example, or assessment). After each unit completes, the frontend asks "what's next?" and the system resolves the next one. This is the architectural foundation for Phase 4's assessment gate and the correct mental model for the learning journey.
+**Goal:** Replace the batched `getSessionMix()` model with a pull-based `getNextItem()` model — the canonical scheduling entry point going forward. Simultaneously introduce prerequisite-direction FIRe credit (`applyPrereqCredit`) so that practicing a topic implicitly maintains its prerequisite foundations, eliminating the need for a warmup tier. Every interaction is a single atomic unit: one topic, one phase (lesson, review, worked example, or assessment). After each unit completes, the frontend asks "what's next?" and the system resolves the next one.
 
-### Context for Execution
+### Context: Pull-Based Architecture
 
 The current architecture is push-based: `startSession()` calls `getSessionMix()` to pre-build a blended queue of N items across multiple topics, which the frontend walks through until empty. The new model inverts this: complete one interaction → call "next item" → render it → complete → repeat.
 
@@ -169,14 +169,60 @@ An atomic unit is a `NextItem` — a discriminated union with a fixed priority o
 
 ```
 Priority 1: { type: "assessment", assessmentSessionId }  ← when checkpoint is pending (Phase 4)
-Priority 2: { type: "review", topicId }                  ← SRS-scheduled retrieval
+Priority 2: { type: "review", topicId }                  ← SRS-scheduled retrieval (R dropped below threshold)
 Priority 3: { type: "lesson", topicId }                  ← first encounter with a topic
 Priority 4: { type: "complete" }                         ← nothing due, nothing new
 ```
 
 The existing session lifecycle (`startSession`, `respond`, `endSession`) is retained as a lightweight wrapper — a session now represents a single in-progress atomic unit. `startSession()` calls `getNextItem()` to determine that unit. This minimizes route handler and test infrastructure changes while achieving the pull-based model.
 
-Phase 1 Step 5 findings (warmup analysis, review cadence) should inform the priority logic and thresholds inside `getNextItem()` — session mix structure changes belong here, not patched into the old blended model.
+**The warmup tier is not ported forward.** The current `getSessionMix()` warmup randomly samples mastered topics to prevent retention decay. In the pull-based model, this function is replaced entirely by FIRe credit (described below) — mastered prerequisites stay alive implicitly through normal practice on dependent topics. Explicit reviews for mastered topics only appear in the review queue when their retrievability actually drops below threshold, meaning they genuinely need a review. This is demand-driven rather than random-sampled.
+
+### Context: Prerequisite-Direction FIRe Credit
+
+The existing FIRe implementation (`applyFIReCredit`, disabled) flows *downward* through encompassing edges: practicing a parent topic credits its encompassed children. This phase introduces a second, complementary mechanism flowing *backward* through prerequisite edges: when you correctly answer topic B, the system applies fractional stability credit to B's prerequisites.
+
+**The epistemological model:** Correctly solving `long division` requires deploying knowledge of `multiplication`, `subtraction`, and `place value`. A correct answer on `long division` is meaningful evidence that those prerequisites are still known. Each such event extends the FSRS-projected stability of those prerequisites by a fraction of what a direct review would have given, pushing out their due dates.
+
+**Why this replaces warmup:** Foundational topics (grade K-2 content) are prerequisites for a large fraction of the graph. A Grade 4 learner practices grade 3-4 content in every session. Each correct answer on grade 3-4 content propagates backward through the prerequisite chain, continuously refreshing grade K-2 stability. These foundational topics accumulate implicit credit far faster than they decay, keeping them permanently above the review threshold without ever appearing in the explicit review queue. The warmup tier was doing this job manually (and noisily, via random sampling); FIRe credit does it structurally.
+
+**Why multi-hop credit is largely self-correcting:** The concern with multi-hop credit (hop 3+: Grade 4 practitioner crediting Grade K-0 content) is that the credit might be unwarranted — succeeding at `long division` only weakly implies you remember how to `count to 10`. But this concern is mostly theoretical: by the time a learner is doing Grade 4 work, Grade K topics have been practiced directly hundreds of times and should have FSRS stability in the 90+ day range (permanently mastered tier). At 90d stability, retrievability after 30 days with no direct review is R ≈ 0.96 — the topic hasn't decayed at all and its due date is far in the future. These topics will not appear in `getDueTopics()` and will not receive credit because their stability is already so high that the marginal credit (geometrically decayed by 2-3 hops) produces negligible change.
+
+The geometric hop-decay is still included as a correctness safeguard against edge cases (e.g., a topic that somehow escaped to low stability despite being a deep prerequisite — the Phase 2 stuck-topic escape hatch should prevent this, but defense-in-depth). The R-floor gate (`R < 0.5 → skip, needs real review`) is the more important safety valve: a prerequisite that has genuinely been forgotten should receive an explicit review, not implicit credit that masks the forgetting.
+
+**The graduation invariant:** For the warmup removal to be safe, there must be a verifiable property: by the time a learner's frontier reaches grade G, all topics at grades < G−1 should be at `solidly-mastered` stability (≥ 30 days). If this invariant holds, FIRe credit from grade-G practice is sufficient to maintain grade G−2 and below without warmup. If it does not hold (a learner has a grade K-0 topic at low stability while working on grade 4 content), that topic needs an explicit review — and the `getDueTopics()` query will surface it naturally once its due date is reached. The simulation verification step below checks this invariant directly.
+
+**Credit mechanism design:**
+
+```
+applyPrereqCredit(userId, topicId, rating, consecutiveCorrect):
+
+  if rating < Rating.Good → return   // Hard/Again: not enough evidence
+  if consecutiveCorrect < 2 → return // Lucky guess guard
+
+  BFS through prerequisite edges, up to max_hops = 3:
+    hop 1 (direct prereqs):    credit_fraction = 0.30
+    hop 2 (prereq's prereqs):  credit_fraction = 0.15
+    hop 3 (grandparent prereqs): credit_fraction = 0.075
+
+  For each prerequisite at each hop:
+    if !state.mastered → skip (still being learned, needs direct reviews)
+    R = computeRetrievability(state)
+    if R < 0.5 → skip (too stale, needs real review not implicit credit)
+
+    boost = (scheduling[Rating.Good].card.stability − state.stability) × credit_fraction
+    newStability = state.stability + boost
+    newDue = now + newStability × MS_PER_DAY  // push due date forward
+
+    UPDATE userTopicState SET stability=newStability, due=newDue
+
+  Edge type weighting:
+    "required" edge  → full credit_fraction at that hop
+    "recommended"    → credit_fraction × 0.5
+    "enriching"      → skip entirely (weak conceptual coupling)
+```
+
+Credit is logged in `reviewLog` with `phase: "fire-prereq"` for auditability. The credit does not increment `reps` or affect `consecutiveCorrectReviews` — it only extends stability and due date. Mastery state is unaffected (mastered topics remain mastered; unmastere topics don't gain mastery from implicit credit).
 
 ### Steps
 
@@ -184,6 +230,7 @@ Phase 1 Step 5 findings (warmup analysis, review cadence) should inform the prio
    - What does each caller expect the session/mix to contain?
    - What cached state needs to change? (`sessionMix` at `session.ts:39` caches the full blended queue — this is removed)
    - What frontend assumptions about receiving multiple items at session start need to change?
+   - Document any warmup-related code paths that will be removed
 
 2. [ ] [IMP] Define `NextItem` type in `packages/shared/src/`:
    ```ts
@@ -195,34 +242,53 @@ Phase 1 Step 5 findings (warmup analysis, review cadence) should inform the prio
      | { type: "complete" }
    ```
 
-3. [ ] [IMP] Implement `getNextItem(userId)` in `srs.ts`:
-   - Priority order: (1) pending assessment — placeholder hook only here, always skipped until Phase 4; (2) due reviews, oldest due first; (3) new lesson — next unlocked topic from `computeFrontier()`; (4) `{ type: "complete" }`
-   - Apply any session mix structure changes recommended in Phase 1 Step 5 findings (e.g., remove warmup tier, adjust review threshold) as part of this priority logic
+3. [ ] [IMP] Implement `getNextItem(userId)` in `srs.ts` — no warmup tier:
+   - Priority order: (1) pending assessment — placeholder hook only, always skipped until Phase 4; (2) due reviews via `getDueTopics()`, oldest due first; (3) new lesson — next unlocked topic from `computeFrontier()` sorted by depth; (4) `{ type: "complete" }`
+   - **Do not port the warmup tier.** Warmup is replaced by FIRe prereq credit (step 4). The review queue (Priority 2) already captures any mastered topic whose retrievability has genuinely dropped — no separate random-warmup pass needed.
+   - `getSessionMix()` is deprecated — leave in place until callers are migrated in steps 5–7
    - Returns a single `NextItem`
-   - `getSessionMix()` is deprecated — leave in place until callers are migrated in steps 4–6
 
-4. [ ] [IMP] Update `session.ts` — session represents one atomic unit:
+4. [ ] [IMP] Implement `applyPrereqCredit(userId, topicId, rating, consecutiveCorrect)` in `srs.ts`:
+   - Call from `scheduleReview()` after the FSRS update, when `isActuallyCorrect && consecutiveCorrect >= 2 && rating >= Rating.Good`
+   - BFS through prerequisite edges up to `MAX_HOPS = 3`; credit fraction at hop h = `BASE_FRACTION × 0.5^(h−1)` where `BASE_FRACTION = 0.30`
+   - Gates (skip the topic if ANY of these fail): `state.mastered === true`, `computeRetrievability(state) >= 0.5`
+   - Edge type multiplier: `required → 1.0`, `recommended → 0.5`, `enriching → skip`
+   - Credit mechanics: compute `fullBoost = scheduling[Rating.Good].card.stability − state.stability`; apply `boost = fullBoost × credit_fraction`; update `stability` and `due` only — do NOT update `reps`, `consecutiveCorrectReviews`, `mastered`, or `lastReview`
+   - Log each credit event to `reviewLog` with `phase = "fire-prereq"`, `correct = null`, `rating = null` — marks it as implicit, not a direct review
+   - Export `FIRE_PREREQ_ENABLED = true` constant alongside `FIRE_ENABLED` (encompassing FIRe remains disabled separately)
+
+5. [ ] [IMP] Update `session.ts` — session represents one atomic unit:
    - `startSession()` calls `getNextItem()` to determine the unit; session state stores `{ topicId, phase: NextItem["type"] }` — not a blended queue
    - Remove `sessionMix` cache from session state
+   - Remove warmup-related fields (`currentBlendRole`, warmup tracking) from `SessionState`
    - On `respond()` completing the unit, call `endSession()` automatically — client does not need to explicitly close a completed session
    - Retain explicit `endSession()` for timeout/abandonment cases
 
-5. [ ] [IMP] Update `learn.vue` — pull-based loop:
+6. [ ] [IMP] Update `learn.vue` — pull-based loop:
    - On page load and after each interaction completes: call `POST /api/learn/start` → receive single `NextItem` → render appropriate component
    - Remove any logic that iterates a pre-fetched queue
    - Handle `{ type: "complete" }` with an "All caught up" state
 
-6. [ ] [TST] Update simulation runner (`runner.ts`):
+7. [ ] [TST] Update simulation runner (`runner.ts`):
    - Replace `getSessionMix()` call with repeated `getNextItem()` calls (via `startSession()`) until `complete` or interaction-count limit reached
+   - Track `firePrereqCreditEvents` in `SessionSummary` (count from reviewLog where `phase = "fire-prereq"`)
    - Retain session/interaction count tracking
    - `just regression` must pass
 
-7. [ ] [DOC] Update architecture documentation:
-   - `CLAUDE.md`: Replace "Learning loop phases (simplified, Plan 029)" section with atomic pull-based model description — the unit of learning is `(topic, phase)`, not a blended session
-   - `docs/assessment-system.md`: Add atomic session model section
-   - Any references to "session mix", "blended sessions", or `getSessionMix()` in docs
+8. [ ] [TST] Verify graduation invariant — foundational topics at long-term mastery before dependents:
+   - Run a 60-session simulation for `average-older` and `strong-older` profiles
+   - For each session snapshot at sessions 20, 30, 40, 60: for all topics at grade ≤ (learner's current frontier grade − 2), assert that `stability ≥ 30d` (solidly-mastered threshold) OR the topic has never been introduced (reps=0)
+   - The invariant: a learner working at grade 4+ should not have grade K-2 topics at `stability < 30d` unless they were recently introduced (reps ≤ 3)
+   - If invariant fails: investigate whether FIRe credit is propagating back far enough, or whether Phase 2's stuck-topic escape hatch is needed first for a specific topic
+   - Document graduation rates in `docs/mastery-system-analysis.md` (append Section 8: Post-FIRe validation)
 
-**Validation:** `learn.vue` renders one atomic unit at a time with no pre-fetched queue. `getNextItem()` is the single scheduling entry point. Simulation runner uses the pull loop. `just regression` passes. Docs reflect the new architecture with no references to the old batched model.
+9. [ ] [DOC] Update architecture documentation:
+   - `CLAUDE.md`: Replace "Learning loop phases (simplified, Plan 029)" section with atomic pull-based model description — unit of learning is `(topic, phase)`, not a blended session; note FIRe prereq credit as the warmup replacement
+   - `docs/assessment-system.md`: Add atomic session model section
+   - `docs/fire.md`: Add section on prerequisite-direction FIRe — distinguish from encompassing-direction FIRe (still disabled); document the graduation invariant and the R-floor safety valve
+   - Remove any references to "session mix", "blended sessions", "warmup tier", or `getSessionMix()` in docs
+
+**Validation:** `learn.vue` renders one atomic unit at a time with no pre-fetched queue. `getNextItem()` is the single scheduling entry point with no warmup tier. `applyPrereqCredit` fires on every qualifying correct review; `reviewLog` records `fire-prereq` events. Graduation invariant passes for 60-session simulations: grade K-2 topics are at solidly-mastered stability (≥30d) by the time the learner's frontier reaches grade 4. `just regression` passes. Docs updated with no references to the old batched/warmup model.
 
 ---
 
