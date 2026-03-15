@@ -1992,3 +1992,37 @@ Post-implementation results:
 
 **Alternatives rejected:**
 - Keep as fallback — no value; generators produce different output formats and registries would diverge
+
+---
+
+## 2026-03-15: Assessment sessions pre-determine all questions at start
+
+**Source:** User session — Plan 030 Phase 1
+
+**Context:** Designing the assessment session model. Two approaches: adaptive (choose next question based on prior response) vs. pre-determined (full sequence fixed at start).
+
+**Decision:** Assessment sessions store the full question sequence as `questions_json` at session start. Questions are not adaptive — the sequence is determined once, upfront, and stored in D1.
+
+**Why:**
+- Consistent with "measurement, not learning" principle: assessment is a fixed test, not a tutoring session
+- Enables time-to-answer tracking without ambiguity about what was asked
+- Simpler re-entry logic: current question position = `questions_asked`
+- Makes timed expiry clean: expired session can be scored against all remaining questions as unanswered without any ambiguity about what would have been served next
+
+**Alternatives rejected:**
+- Adaptive per-response (like diagnostic): adds complexity without benefit for assessments; assessment should measure what you know, not dynamically adjust difficulty
+
+---
+
+## 2026-03-15: Assessment scope includes frontier topics (not mastered-only)
+
+**Source:** User session — Plan 030 Phase 1
+
+**Context:** Deciding which user topics are "eligible" for assessment — mastered only, or also include topics currently being learned.
+
+**Decision:** Assessment eligible pool = mastered topics + frontier topics (currently being learned). Users at any stage can take assessments, not just those who've completed topics.
+
+**Why:**
+- Frontier topics represent active learning — students should be able to test their current knowledge even before FSRS marks them mastered
+- Prevents "no eligible topics" for newer users who haven't mastered anything yet
+- Parent-facing assessments are more useful if they show current learning state, not just completed state

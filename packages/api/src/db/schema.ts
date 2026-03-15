@@ -478,3 +478,40 @@ export const onboardingState = sqliteTable("onboarding_state", {
   completedAt: text("completed_at"),
   createdAt: text("created_at").notNull().$defaultFn(() => new Date().toISOString()),
 });
+
+// === Assessment Sessions ===
+
+export const assessmentSessions = sqliteTable("assessment_sessions", {
+  id: text("id").primaryKey(),
+  userId: text("user_id").notNull().references(() => users.id),
+  scopeJson: text("scope_json").notNull(), // JSON: AssessmentScope
+  configJson: text("config_json").notNull(), // JSON: AssessmentSessionConfig
+  status: text("status").notNull().default("active"), // 'active' | 'completed' | 'timed-out'
+  questionsAsked: integer("questions_asked").notNull().default(0),
+  questionsCorrect: integer("questions_correct").notNull().default(0),
+  rawScore: real("raw_score"),
+  strandScoresJson: text("strand_scores_json"), // JSON: Record<string, {correct,total,score}>
+  standardScoresJson: text("standard_scores_json"), // JSON: Record<string, {standard,correct,total,classification}>
+  questionsJson: text("questions_json").notNull(), // JSON: pre-determined question sequence [{topicId,topicName,topicStrand,topicStandardCode,problem}]
+  timeLimitMinutes: integer("time_limit_minutes"),
+  startedAt: text("started_at").notNull().$defaultFn(() => new Date().toISOString()),
+  completedAt: text("completed_at"),
+}, (table) => [
+  index("as_user_idx").on(table.userId),
+  index("as_status_idx").on(table.userId, table.status),
+]);
+
+export const assessmentResponses = sqliteTable("assessment_responses", {
+  id: integer("id").primaryKey({ autoIncrement: true }),
+  assessmentSessionId: text("assessment_session_id").notNull().references(() => assessmentSessions.id),
+  questionNumber: integer("question_number").notNull(),
+  topicId: text("topic_id").notNull(),
+  problemId: text("problem_id").notNull(),
+  answer: text("answer").notNull(),
+  correct: integer("correct", { mode: "boolean" }).notNull(),
+  responseMs: integer("response_ms"),
+  createdAt: text("created_at").notNull().$defaultFn(() => new Date().toISOString()),
+}, (table) => [
+  index("ar_session_idx").on(table.assessmentSessionId),
+  uniqueIndex("ar_session_qnum_idx").on(table.assessmentSessionId, table.questionNumber),
+]);

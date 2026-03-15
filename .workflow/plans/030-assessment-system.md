@@ -21,15 +21,20 @@ Build a separate assessment mode distinct from learning sessions. Mixed-topic te
 
 ## Progress
 
-**Completed:** None yet
+**Completed:** Phase 1
 **In Progress:** —
-**Next:** Phase 1
+**Next:** Phase 2
 
 ---
 
-## Phase 1: Assessment Session Model
+## Phase 1: Assessment Session Model ✓
 
 **Goal:** Define the assessment session type, topic sampling algorithm, scoring model, and D1 schema. The assessment session is a first-class session type alongside learning sessions and diagnostic sessions.
+
+**Preflight context (2026-03-14):**
+- **Timed expiry:** Server-enforced via check-on-next-request. Every call to `/respond` and `/result` computes `expiresAt = startedAt + timeLimitMinutes * 60s`. If `now > expiresAt` and session is still `active`, the server scores what's been answered, marks remaining questions unanswered, sets status `"timed-out"`, persists result, and returns the completed result. `/history` endpoint also lazily expires stale active sessions on load. No cron or background worker needed.
+- **Standard code parsing:** Scope to CCSS Math format only for now (`Grade.Domain.Standard`, e.g., `K.CC.4`). ELA standard codes (e.g., `RF.K.1d`) have a different structure — parsing for those is deferred.
+- **`assessmentSessions` / `assessmentResponses` tables:** Do not exist yet — create them in this phase as specified.
 
 ### Context for Execution
 
@@ -66,19 +71,19 @@ The assessment session is distinct from both:
 
 ### Steps
 
-1. [ ] [IMP] Define assessment types in `packages/shared/src/types.ts`:
+1. [x] [IMP] Define assessment types in `packages/shared/src/types.ts`:
    - `AssessmentSessionConfig = { scope: AssessmentScope; questionCount: number; timeLimitMinutes?: number; shuffleOrder?: boolean }`
    - `AssessmentScope = { type: "grade-band" | "strand" | "collection" | "custom" | "comprehensive"; gradeLevel?: number; strandId?: string; collectionId?: string; topicIds?: string[] }`
    - `AssessmentResult = { sessionId; userId; scope; startedAt; completedAt; totalQuestions; totalCorrect; rawScore; strandScores: Record<string, { correct, total, score }>; standardScores: Record<string, { standard, correct, total, classification }> }`
    - `AssessmentItem = { questionNumber; totalQuestions; topicId; topicName; problem: Problem; timeRemainingMs?: number }`
    - `StandardClassification = "proficient" | "developing" | "needs-support"`
 
-2. [ ] [IMP] Add D1 schema for assessment sessions:
+2. [x] [IMP] Add D1 schema for assessment sessions:
    - `assessmentSessions` table: id, userId, scope (JSON), config (JSON), status ("active" | "completed" | "timed-out"), questionsAsked, questionsCorrect, rawScore, strandScoresJson, standardScoresJson, startedAt, completedAt, timeLimitMinutes
    - `assessmentResponses` table: id, assessmentSessionId, questionNumber, topicId, problemId, answer, correct, responseMs, createdAt
    - Generate D1 migration, update test helpers SCHEMA_STATEMENTS
 
-3. [ ] [IMP] Build the topic sampling algorithm in `packages/api/src/services/assessment.ts`:
+3. [x] [IMP] Build the topic sampling algorithm in `packages/api/src/services/assessment.ts`:
    - `createAssessmentService(db, contentBucket)` factory function
    - `sampleTopics(userId, scope, count): Promise<{ topicId, strandId, standardCode, problem: Problem }[]>`
    - Weighted sampling: recency (exponential decay from lastReview), strand coverage (ensure diversity), depth mixing
@@ -86,21 +91,22 @@ The assessment session is distinct from both:
    - For timed mode: sort by ascending prerequisite depth (easier first)
    - Fall back gracefully if scope has fewer topics than requested count
 
-4. [ ] [IMP] Build assessment session lifecycle:
+4. [x] [IMP] Build assessment session lifecycle:
    - `startAssessment(userId, config): Promise<{ sessionId, firstItem: AssessmentItem }>`
    - `respondToAssessment(sessionId, { answer, responseMs }): Promise<{ correct, nextItem?: AssessmentItem, result?: AssessmentResult }>`
    - `getAssessmentResult(sessionId): Promise<AssessmentResult>`
    - Session state: pre-determined question sequence (not adaptive), current position, accumulated responses
    - On completion: compute strand scores, standard classifications, persist result
+   - **Timed expiry:** At the top of both `respondToAssessment` and `getAssessmentResult`, check if `timeLimitMinutes` is set and `now > startedAt + timeLimitMinutes * 60s`. If so, auto-complete the session (score answered questions, mark remaining as unanswered, set status `"timed-out"`). Return result immediately without processing the incoming answer.
 
-5. [ ] [IMP] Add assessment API routes in `packages/api/src/routes/assessment.ts`:
+5. [x] [IMP] Add assessment API routes in `packages/api/src/routes/assessment.ts`:
    - `POST /api/assessments/start` — start assessment with config
    - `POST /api/assessments/:id/respond` — submit answer
    - `GET /api/assessments/:id/result` — get completed result
    - `GET /api/assessments/history` — list past assessments with scores
    - Wire into Hono app router
 
-6. [ ] [TST] Write tests for assessment service:
+6. [x] [TST] Write tests for assessment service:
    - Test: topic sampling produces diverse strand coverage
    - Test: no consecutive same-topic problems
    - Test: scoring produces correct per-strand breakdown
@@ -115,6 +121,10 @@ The assessment session is distinct from both:
 ## Phase 2: Assessment UI & Experience
 
 **Goal:** Build the frontend for starting, taking, and reviewing assessments. Timed mode with countdown. Results page with visual score breakdown.
+
+**Preflight context (2026-03-14):**
+- **Charting:** Install `chart.js` + `vue-chartjs` (MIT, Vue 3 native, excellent browser support). Use for the score trend line chart (step 4 history view). Per-strand breakdown bars use pure CSS/Tailwind (`width: X%`) — no library needed there. Do NOT use ChartGPU (no Vue bindings, requires WebGPU, overkill for this use case).
+- **Timed expiry (client side):** The countdown timer is UI-only. When the timer hits zero, call `POST /api/assessments/:id/respond` with the current answer (or an empty answer if no response was in progress) — the server will detect expiry and return a completed result. Client should also call this on page unload/visibility change if a timed session is in progress.
 
 ### Context for Execution
 
@@ -154,7 +164,7 @@ The assessment UI is separate from the learning UI (`learn.vue`). It should feel
 4. [ ] [IMP] Create assessment history view (`packages/web/src/pages/assess-history.vue` or section in `/assess`):
    - List past assessments: date, scope, score, question count
    - Click to view full result
-   - Score trend chart (if 3+ assessments in same scope)
+   - Score trend chart (if 3+ assessments in same scope): use `vue-chartjs` line chart (`npm install chart.js vue-chartjs`)
 
 5. [ ] [IMP] Wire routing and navigation:
    - Add `/assess` route to Vue Router
@@ -177,6 +187,10 @@ The assessment UI is separate from the learning UI (`learn.vue`). It should feel
 ## Phase 3: Standards Alignment & Reporting
 
 **Goal:** Map topic mastery to Common Core standards. Produce standards-based report cards viewable by parents and teachers. Exportable reports.
+
+**Preflight context (2026-03-14):**
+- **Standard code parsing:** Implement for CCSS Math format only: `Grade.Domain.Standard` (e.g., `K.CC.4` → domain `K.CC`, cluster via first letter suffix like `K.CC.A`). ELA codes (`RF.K.1d`) have different structure — skip or return raw code for non-math formats. Document this scope limitation.
+- **Account links:** `account-links.ts` route exists — teacher/parent permission check can reuse that system.
 
 ### Context for Execution
 
@@ -228,7 +242,15 @@ Topics already have a `standardCode` field (e.g., "K.CC.4", "RF.K.1d") in graph.
 
 ## Phase 4: Oral Assessment (STT-Based Evaluation)
 
+> **Status: DEFERRED** — Phase 4 is out of scope for the current 030 execution. Phases 1-3 deliver the core assessment system. Phase 4 is a future plan enhancement. The design notes below are preserved for when this phase is picked up.
+
 **Goal:** Add an oral assessment mode where students explain concepts verbally. Speech-to-text captures the explanation, and LLM evaluates it against a rubric. This is the "presentation" proof of skill — the student demonstrates understanding, not just answer recall.
+
+**Preflight context (2026-03-14) — decisions made for when this is picked up:**
+- **Oral prompt as Problem variant (chosen architecture):** Extend `Problem` with `type: "written" | "oral"` as a discriminated union. Oral problems have `rubric: RubricCriterion[]` and `expectedConcepts: string[]` instead of a definite `answer`. Stored in the same `problems.json` R2 bundle per topic. Generators emit 15 written + 2-3 oral problems per topic (additive). Learning sessions filter to `type === "written"` only. This architecture naturally extends to `type: "audio" | "image"` in future.
+- **Grading path:** `respondToAssessment` checks `problem.type` — oral problems route to LLM rubric evaluation, written problems route to existing answer matching. Oral assessment is paid-tier (LLM dependency).
+- **`RubricCriterion` vs `RubricDimension`:** Check `packages/shared/src/types.ts` at implementation time for any existing rubric type from Plan 029 P2 and unify rather than adding a parallel type.
+- **Waveform visualization:** Skip real waveform (requires `AudioContext.createAnalyser()` complexity). Use a CSS pulsing animation on the mic button during recording instead — sufficient for K-8 audience.
 
 ### Context for Execution
 
@@ -295,7 +317,7 @@ Oral assessment extends this: instead of typing, the student speaks. Instead of 
 
 **Goal:** Unified simulation/audit/analytics update for both Plan 029 (generators, simplified learning loop) and Plan 030 (assessment system). Wire up orphaned analytics from Plan 028. Add missing D1 columns. Simulate assessment sessions. Establish new baselines for everything. Single documentation pass.
 
-**Depends on:** Plan 029 Phases 3-7 complete (generated content available). Plan 030 Phases 1-4 complete.
+**Depends on:** Plan 029 complete ✓ (archived 2026-03-15 — all phases done). Plan 030 Phases 1-3 complete (Phase 4 deferred).
 
 ### Context for Execution
 

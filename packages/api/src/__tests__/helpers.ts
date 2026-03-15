@@ -24,6 +24,8 @@ export async function applyMigrations() {
 export async function resetDb() {
   // Drop in reverse FK order
   const tables = [
+    "assessment_responses",
+    "assessment_sessions",
     "daily_activity",
     "group_session_participants",
     "group_sessions",
@@ -754,4 +756,14 @@ const SCHEMA_STATEMENTS = [
   'CREATE TABLE group_session_participants (id text PRIMARY KEY NOT NULL, group_session_id text NOT NULL, user_id text, anonymous_token text, display_name text, role text DEFAULT \'student\' NOT NULL, current_topic_id text, current_phase text, total_correct integer DEFAULT 0 NOT NULL, total_attempts integer DEFAULT 0 NOT NULL, joined_at text NOT NULL, left_at text, FOREIGN KEY (group_session_id) REFERENCES group_sessions(id), FOREIGN KEY (user_id) REFERENCES users(id), FOREIGN KEY (current_topic_id) REFERENCES topics(id))',
   'CREATE INDEX gsp_session_idx ON group_session_participants (group_session_id)',
   'CREATE INDEX gsp_user_idx ON group_session_participants (user_id)',
+
+  // assessment_sessions (FK → users)
+  'CREATE TABLE assessment_sessions (id text PRIMARY KEY NOT NULL, user_id text NOT NULL, scope_json text NOT NULL, config_json text NOT NULL, status text DEFAULT \'active\' NOT NULL, questions_asked integer DEFAULT 0 NOT NULL, questions_correct integer DEFAULT 0 NOT NULL, raw_score real, strand_scores_json text, standard_scores_json text, questions_json text NOT NULL, time_limit_minutes integer, started_at text NOT NULL, completed_at text, FOREIGN KEY (user_id) REFERENCES users(id))',
+  'CREATE INDEX as_user_idx ON assessment_sessions (user_id)',
+  'CREATE INDEX as_status_idx ON assessment_sessions (user_id, status)',
+
+  // assessment_responses (FK → assessment_sessions)
+  'CREATE TABLE assessment_responses (id integer PRIMARY KEY AUTOINCREMENT NOT NULL, assessment_session_id text NOT NULL, question_number integer NOT NULL, topic_id text NOT NULL, problem_id text NOT NULL, answer text NOT NULL, correct integer NOT NULL, response_ms integer, created_at text NOT NULL, FOREIGN KEY (assessment_session_id) REFERENCES assessment_sessions(id))',
+  'CREATE INDEX ar_session_idx ON assessment_responses (assessment_session_id)',
+  'CREATE UNIQUE INDEX ar_session_qnum_idx ON assessment_responses (assessment_session_id, question_number)',
 ];

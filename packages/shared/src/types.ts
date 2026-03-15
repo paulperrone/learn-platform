@@ -520,6 +520,72 @@ export type DiagnosticResult = {
   topicEstimates: Record<string, number>;
 };
 
+// === Assessment Types ===
+
+export type StandardClassification = "proficient" | "developing" | "needs-support";
+
+export type AssessmentScope = {
+  type: "grade-band" | "strand" | "collection" | "custom" | "comprehensive";
+  gradeLevel?: number;
+  strandId?: string;
+  collectionId?: string;
+  topicIds?: string[];
+};
+
+export type AssessmentSessionConfig = {
+  scope: AssessmentScope;
+  questionCount: number;
+  timeLimitMinutes?: number;
+  shuffleOrder?: boolean;
+};
+
+export type AssessmentItem = {
+  questionNumber: number;
+  totalQuestions: number;
+  topicId: string;
+  topicName: string;
+  problem: Problem;
+  timeRemainingMs?: number;
+};
+
+export type AssessmentStrandScore = {
+  correct: number;
+  total: number;
+  score: number;
+};
+
+export type AssessmentStandardScore = {
+  standard: string;
+  correct: number;
+  total: number;
+  classification: StandardClassification;
+};
+
+export type AssessmentResult = {
+  sessionId: string;
+  userId: string;
+  scope: AssessmentScope;
+  startedAt: string;
+  completedAt: string;
+  status: "completed" | "timed-out";
+  totalQuestions: number;
+  totalCorrect: number;
+  rawScore: number;
+  strandScores: Record<string, AssessmentStrandScore>;
+  standardScores: Record<string, AssessmentStandardScore>;
+};
+
+export type AssessmentSummary = {
+  sessionId: string;
+  scope: AssessmentScope;
+  startedAt: string;
+  completedAt: string | null;
+  status: "active" | "completed" | "timed-out";
+  totalQuestions: number;
+  totalCorrect: number;
+  rawScore: number | null;
+};
+
 // === Onboarding Types ===
 
 export type OnboardingStep = 0 | 1 | 2 | 3 | 4;
