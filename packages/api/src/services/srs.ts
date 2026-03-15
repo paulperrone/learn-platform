@@ -349,7 +349,36 @@ export function createSRSService(db: DB, fireDiagnostic?: FireDiagnosticConfig) 
       // Exclude diagnostic frontier topics that were never actually reviewed.
       // These have reps=0 and should be introduced as new topics via computeFrontier,
       // not treated as reviews.
-      return rows.filter((r) => r.reps > 0);
+      const eligible = rows.filter((r) => r.reps > 0);
+
+      // Stuck-topic escape hatch: topics with reps > 20, stability < 0.5, and zero
+      // consecutive correct answers have been reviewed many times without progress.
+      // Push their due date 90 days out so they cool down; the learner may gain
+      // prerequisite mastery in the interim that makes future attempts productive.
+      // This write is intentional and idempotent — stability ≈ 0 means FSRS sets
+      // due ≈ now every session, so filter-only (no write) would cause re-entry
+      // every session with no recovery path.
+      const stuckTopics = eligible.filter(
+        (r) => r.reps > 20 && r.stability < 0.5 && r.consecutiveCorrectReviews === 0
+      );
+      if (stuckTopics.length > 0) {
+        const cooldownDue = new Date(Date.now() + 90 * 24 * 60 * 60 * 1000).toISOString();
+        for (const topic of stuckTopics) {
+          await db
+            .update(schema.userTopicState)
+            .set({ due: cooldownDue })
+            .where(
+              and(
+                eq(schema.userTopicState.userId, userId),
+                eq(schema.userTopicState.topicId, topic.topicId)
+              )
+            );
+        }
+      }
+
+      return eligible.filter(
+        (r) => !(r.reps > 20 && r.stability < 0.5 && r.consecutiveCorrectReviews === 0)
+      );
     },
 
     /**

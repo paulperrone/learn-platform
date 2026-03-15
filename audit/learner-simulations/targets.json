@@ -1,19 +1,19 @@
 {
-  "version": 7,
+  "version": 8,
   "lastUpdated": "2026-03-15T00:00:00Z",
-  "lastUpdatedReason": "Plan 029/030 unified baseline: simplified learning loop (lesson → independent → review replaces pretest/guided/independent). Mastery convergence target lowered to 7 — simplified loop takes more sessions per topic (lesson overhead + FSRS pacing), so strong/gifted profiles dominate 30-session mastery. Interleaving target relaxed to 0.160 — lesson items cluster same-topic problems (expected behavior). Cognitive demand entropy target relaxed to 0.85. newTopicsIntroduced counter updated to track 'lesson' phase (not 'pretest'). db-setup.ts review_log schema updated with llm_assisted/hint_source/scaffolding columns.",
+  "lastUpdatedReason": "Plan 031 Phase 2: (1) mastery_convergence target raised from 7→15 — metric now correctly uses total mastery (materialized + implicit diagnostic estimates) per Rec 3 from mastery-system-analysis.md; strong-older and misconception-fractions profiles now correctly count as passing since they have 77.5% and 46% total mastery respectively. (2) session remediation cap (max 15/session) fixes runaway remediation loops that consumed 98/100 events in some sessions. (3) stuck-topic escape hatch in getDueTopics() pushes topics with reps>20, stability<0.5, consecutiveCorrect=0 out 90 days, preventing indefinite session-capacity drain.",
   "systems": {
     "mastery_convergence": {
       "name": "Mastery Convergence",
       "description": "Non-struggling profiles should reach ≥15% mastery by session 30, demonstrating the system drives genuine learning progression on a 772-topic graph",
       "priority": "P0",
       "metric": "mastery_convergence_count",
-      "target": 7,
+      "target": 15,
       "tolerance": 2,
       "unit": "count",
       "direction": "higher_better",
       "science_ref": "Bloom 1984 (2-sigma problem); Kulik et al. 1990 (~0.5-1.0 SD effect for mastery learning)",
-      "rationale": "≥7 of 19 evaluation profiles reaching 15% mastery at session 30. Recalibrated for simplified learning loop (Plan 029): lesson + 2-3 independent practice replaces pretest/guided/independent. Topics take 3-5 sessions to master via FSRS scheduling, so 30 sessions yields strong mastery only for profiles with high diagnostic placement (gifted/strong/misconception). Average profiles reach 8-12% at 30 sessions. Future tuning should increase this number. Tolerance of 2 accounts for stochastic variance.",
+      "rationale": "≥15 of 19 non-struggling profiles reaching 15% total mastery by session 30. Metric uses masteryPercent = (materialized + implicit diagnostic mastery) / totalTopics. Profiles with high diagnostic placement (strong-older: 77.5%, misconception-fractions: 46%, gifted/strong profiles) all exceed 15% easily via implicit mastery. Average profiles reach 8-12% materialized but may have higher total mastery from diagnostic estimates. Tolerance of 2 accounts for stochastic variance. Target raised from 7 (Plan 029 baseline that used materialized-only mastery) to 15 per Plan 031 Phase 1 Rec 3 findings.",
       "source_files": [
         "packages/api/src/services/srs.ts",
         "packages/api/src/services/session.ts"

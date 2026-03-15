@@ -2175,3 +2175,29 @@ Post-implementation results:
 **Alternatives rejected:**
 - Keep materialized metric, raise target: Materializing implicit mastery is bounded by how fast FSRS schedules topics — doesn't reflect learner knowledge
 - Separate metrics for low vs. high placement profiles: Over-engineering; total mastery unifies both cases correctly
+
+---
+
+## 2026-03-15: Session remediation cap at 15 per session (Plan 031 Phase 2)
+
+**Source:** User session — Plan 031 Phase 2
+
+**Context:** Phase 1 mastery analysis found sessions 5/27/29 in average-older simulation had 98/100 events be remediation events. The existing `remediatedTopics` guard prevents re-entry per topic but doesn't cap total remediations across all topics in a session.
+
+**Decision:** Add `sessionRemediationCount` to SessionState; cap `shouldRemediate` at 15 remediations per session. When budget is exhausted, the learner moves forward to the next topic rather than drilling prerequisites indefinitely.
+
+**Why 15:** Sessions typically have 20-30 events total. 15 remediations = ~50-75% of a session devoted to prerequisite drilling, which is already aggressive. Beyond 15, the learner isn't benefiting from additional prerequisite drill without a fundamentals reset.
+
+---
+
+## 2026-03-15: Stuck-topic escape hatch — 90-day cooldown (Plan 031 Phase 2)
+
+**Source:** User session — Plan 031 Phase 2
+
+**Context:** Phase 1 analysis found two topics in average-older with 92 and 200 reps at stability ≈ 0, consuming session capacity every session. FSRS naturally sets due ≈ now when stability ≈ 0, so filter-only would cause re-entry every session with no recovery path.
+
+**Decision:** In getDueTopics(), detect topics with reps > 20 AND stability < 0.5 AND consecutiveCorrectReviews = 0, push their due date 90 days out (lazy write). This is intentional and idempotent — running it twice is harmless. The topic will re-enter the queue after 90 days when prerequisite mastery may have improved.
+
+**Why 90 days:** Long enough for substantial prerequisite progress via FSRS (solidly-mastered tier = 30-90d stability). Short enough that if the learner genuinely recovers, the topic re-enters at a reasonable cadence.
+
+**Alternative considered (deferred):** Phase 3's getNextItem() can de-prioritize stuck topics more elegantly by sorting due topics by retrievability and stuck-factor. The 90-day cooldown is a correctness fix for now.

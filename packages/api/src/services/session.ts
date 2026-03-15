@@ -38,6 +38,7 @@ type SessionState = {
   totalResponseMs?: number; // Accumulated response time for activity minutes recording
   sessionMix?: { topicId: string; type: "review" | "new"; blendRole: BlendRole }[]; // Cached session mix from getSessionMix
   remediatedTopics?: string[]; // Topics that have already been remediated this session (prevent re-entry)
+  sessionRemediationCount?: number; // Budget cap: max 15 remediations per session (prevent runaway remediation loops)
   llmAssistedThisProblem?: boolean; // Set by LLM routes when any LLM feature used on current problem
   hintSourceThisProblem?: "static" | "llm" | null; // Hint source for current problem
 };
@@ -700,7 +701,8 @@ export function createSessionService(db: DB, fireDiagnostic?: FireDiagnosticConf
         && state.currentPhase !== "instruction"
         && !isWarmup
         && !alreadyRemediated
-        && (state.sessionFailures?.[state.currentTopicId] ?? 0) >= 2;
+        && (state.sessionFailures?.[state.currentTopicId] ?? 0) >= 2
+        && (state.sessionRemediationCount ?? 0) < 15;
 
       if (shouldRemediate) {
         const originalTopicId = state.currentTopicId!;
@@ -711,6 +713,8 @@ export function createSessionService(db: DB, fireDiagnostic?: FireDiagnosticConf
 
         // Track that this topic has been remediated to prevent re-entry
         if (!state.remediatedTopics) state.remediatedTopics = [];
+        // Increment session remediation budget
+        state.sessionRemediationCount = (state.sessionRemediationCount ?? 0) + 1;
         state.remediatedTopics.push(originalTopicId);
 
         // Identify the key prerequisite to target (skip for anonymous — no persistent state)
