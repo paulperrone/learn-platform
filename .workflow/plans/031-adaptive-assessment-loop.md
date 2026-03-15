@@ -25,7 +25,7 @@ Wire assessments into the learning scheduler as a system-triggered calibration l
 
 **Completed:** Phase 1 (Mastery System Deep Diagnostic), Phase 2 (Threshold & Session Mix Calibration), Phase 3 (Atomic Pull-Based Session Architecture + Prerequisite FIRe)
 **In Progress:** —
-**Next:** Phase 4
+**Next:** Phase 3.5 (Quality Gate)
 
 ---
 
@@ -294,6 +294,64 @@ Credit is logged in `reviewLog` with `phase: "fire-prereq"` for auditability. Th
    - Remove any references to "session mix", "blended sessions", "warmup tier", or `getSessionMix()` in docs
 
 **Validation:** `learn.vue` renders one atomic unit at a time with no pre-fetched queue. `getNextItem()` is the single scheduling entry point with no warmup tier. `applyPrereqCredit` fires on every qualifying correct review; `reviewLog` records `fire-prereq` events. Graduation invariant passes for 60-session simulations: grade K-2 topics are at solidly-mastered stability (≥30d) by the time the learner's frontier reaches grade 4. `just regression` passes. Docs updated with no references to the old batched/warmup model.
+
+---
+
+## Phase 3.5: Quality Gate — Tests, Docs, and Graduation Verification
+
+**Goal:** Address gaps identified in the Opus-level audit of Phases 1-3. The two core Phase 3 functions (`getNextItem`, `applyPrereqCredit`) have no dedicated unit tests — they're only exercised indirectly through integration tests and simulation regression. Documentation deliverables from Phase 3 Step 9 were partially completed. The graduation invariant (Step 8) used a weaker verification methodology than specified.
+
+### Steps
+
+1. [ ] [TST] Unit tests for `getNextItem()` priority ordering (`srs.test.ts`):
+   - Test: when assessment pending → returns assessment type (placeholder for Phase 4, but structure the test)
+   - Test: when topics are due for review → returns review with most overdue topicId
+   - Test: when no reviews due but frontier available → returns lesson with shallowest-depth topic
+   - Test: when multiple frontier topics at same depth → secondary sort by gradeLevel
+   - Test: when no reviews due and frontier empty → returns `{ type: "complete" }`
+   - Test: when both reviews and frontier available → review takes priority over lesson
+   - Seed via helpers: create user_topic_state rows with specific due dates, seed frontier topics with specific depths
+
+2. [ ] [TST] Unit tests for `applyPrereqCredit()` (`srs.test.ts`):
+   - Test: rating < Good → no credit applied (no review_log entries with implicit=1)
+   - Test: consecutiveCorrect < 2 → no credit applied
+   - Test: direct prerequisite receives credit (hop 1, fraction = 0.30)
+   - Test: hop 2 prerequisite receives credit at 0.15 fraction
+   - Test: hop 3 prerequisite receives credit at 0.075 fraction
+   - Test: hop 4+ prerequisite receives NO credit (MAX_HOPS = 3)
+   - Test: unmastered prerequisite skipped (mastered gate)
+   - Test: prerequisite with R < 0.5 skipped (retrievability gate)
+   - Test: "enriching" edge type skipped, "recommended" edge gets 0.5 multiplier
+   - Test: credit only updates stability and due — reps, consecutiveCorrectReviews, mastered unchanged
+   - Test: negative boost guard — prerequisite with stability > Good scheduling stability gets no credit
+   - Test: review_log entry has implicit=1, phase="fire-prereq", responseMs=0
+   - Test: BFS visited set prevents duplicate processing (diamond prerequisite graph)
+   - All tests gated behind `describe.skipIf(!FIRE_PREREQ_ENABLED)` for consistency
+
+3. [ ] [DOC] Update `docs/assessment-system.md` — add atomic session model section:
+   - Explain `getNextItem()` as the scheduling entry point
+   - Priority ordering: assessment > review > lesson > complete
+   - Session lifecycle: `startSession()` → one topic → `respond()` × N → `{ type: "complete" }` → `startSession()` again
+   - Relationship to assessment gate (Phase 4 will wire into priority 1)
+
+4. [ ] [DOC] Clean stale references in docs:
+   - `docs/mastery-system-analysis.md`: Update Section 5 header and references to note that `getSessionMix()` is deprecated; warmup replaced by FIRe prereq credit. Keep the analysis data intact (it's Phase 1 findings), but add a note at the top of Section 5 that the session mix model was replaced in Phase 3.
+   - `docs/simulation-targets.md`: Update "session mix allocation" reference
+   - `docs/simulation-maturity.md`: Update "session mix warmup" reference
+   - Do NOT rewrite the Phase 1 analysis sections — they are historical findings. Add "(Superseded by Plan 031 Phase 3: pull-based atomic sessions)" notes where relevant.
+
+5. [ ] [TST] Proper graduation invariant verification:
+   - Run 60-session simulations for average-older and strong-older (seed=42)
+   - At session snapshots 20, 30, 40, 60: compute `frontierGrade = median(gradeLevel for topics where reps > 0)` from `topicStates[]`
+   - Assert: all topics with `gradeLevel ≤ frontierGrade − 2` have `stability ≥ 30d` OR `reps = 0` (never introduced)
+   - If topics are implicitly mastered (no user_topic_state), they trivially pass (no stability to decay)
+   - Append Section 8 ("Post-FIRe Graduation Verification") to `docs/mastery-system-analysis.md` with the results
+   - Include a table: session → frontierGrade → topics below threshold → pass/fail
+
+6. [ ] [FIX] Remove dead variable in runner.ts:
+   - Line 496: `const interactions = 0;` — remove this unused variable
+
+**Validation:** `just test` passes (all new unit tests green). `getNextItem` has ≥6 unit tests covering priority ordering. `applyPrereqCredit` has ≥12 unit tests covering gates, credit formula, edge weighting, and logging. `docs/assessment-system.md` has atomic session section. No stale getSessionMix/warmup references in docs (except clearly marked historical analysis). Graduation invariant documented with per-session data in mastery-system-analysis.md Section 8.
 
 ---
 
