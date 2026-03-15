@@ -1123,6 +1123,17 @@ To make a `npx tsx` script importable as a module: (1) wrap all computation in a
 
 ---
 
+### 2026-03-14: Text-only counting generators use item listing, not visual representations
+
+**Source:** User session — Plan 029 Phase 3
+**Area:** Content generation / K-2 math generators
+
+For counting-objects topics (count-objects-to-5/10/20) on a text-only platform, represent the "count this set" problem by listing the item names: "Count the objects: apple, apple, apple. How many apples?" This looks redundant but is pedagogically correct — it mirrors the real task of counting one-to-one. An alternative (story) variant describes the scenario narratively. Both avoid images while preserving the counting skill.
+
+**Context:** Any K-early elementary generator that asks students to count a set of objects on screen.
+
+---
+
 ### 2026-03-14: Splitting compound topics in graph.json requires stale edge cleanup and collection updates
 
 **Source:** User session — Plan 029 Phase 0

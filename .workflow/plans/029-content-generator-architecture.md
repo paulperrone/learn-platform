@@ -338,7 +338,7 @@ Interpretive disciplines can't use deterministic generators — there's no code 
 
 ---
 
-## Phase 3: Math Generators — K-2 Strands (counting, arithmetic, place-value)
+## Phase 3: Math Generators — K-2 Strands (counting, arithmetic, place-value) ✓
 
 **Goal:** Write bespoke generators for all K-2 math topics (topic count determined by Phase 0 expansion — currently ~85, may grow). Port existing bulk generators into per-topic files. Each generator produces problems + examples + lessons via the shared utility stack.
 
@@ -382,7 +382,7 @@ The existing `tools/generators/` has generators for many K-5 topics but they're 
 
 ### Steps
 
-1. [ ] [IMP] Write generators for counting-cardinality (all topics in strand):
+1. [x] [IMP] Write generators for counting-cardinality (all topics in strand):
    - One file per topic under `../learn-content/math/generators/`, each using `defineGenerator`
    - Add each generator's import to `../learn-content/math/generators/index.ts` registry
    - No existing generators for this strand — write from scratch
@@ -392,7 +392,7 @@ The existing `tools/generators/` has generators for many K-5 topics but they're 
    - Run: `cd ../learn-content && npx tsx math/generators/run.ts --strand counting-cardinality`
    - Validate: `just validate-content`
 
-2. [ ] [IMP] Port `tools/generators/k5-arithmetic.ts` into per-topic files for addition + subtraction:
+2. [x] [IMP] Port `tools/generators/k5-arithmetic.ts` into per-topic files for addition + subtraction:
    - One file per topic under `../learn-content/math/generators/`
    - Add each to `../learn-content/math/generators/index.ts` registry
    - Strip difficulty logic — generators no longer differentiate easy/medium/hard
@@ -401,12 +401,12 @@ The existing `tools/generators/` has generators for many K-5 topics but they're 
    - Add `conceptText` for each generator
    - Validate: `just validate-content`
 
-3. [ ] [IMP] Port `tools/generators/k5-numbers.ts` place-value generators into per-topic files:
+3. [x] [IMP] Port `tools/generators/k5-numbers.ts` place-value generators into per-topic files:
    - Same refactoring pattern: strip everything except math, let shared utilities handle the rest
    - Add each to `../learn-content/math/generators/index.ts` registry, include `conceptText`
    - Validate: `just validate-content`
 
-4. [ ] [VAL] Run generation and validation for K-2:
+4. [x] [VAL] Run generation and validation for K-2:
    - `cd ../learn-content && npx tsx math/generators/run.ts --grade 0 --seed 42 && npx tsx math/generators/run.ts --grade 1 --seed 42 && npx tsx math/generators/run.ts --grade 2 --seed 42`
    - `just validate-content` — 0 errors
    - Spot-check 5 topics across strands: verify problems are correct, examples make sense, lessons are coherent
