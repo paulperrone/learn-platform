@@ -30,6 +30,13 @@ const masteryEvent = ref<{ topicId: string; topicName: string; unlockedTopics: {
 const scaffolding = ref<"none" | "lesson-referenced" | "llm-assisted" | "lesson-and-llm">("none");
 const lessonPanelOpen = ref(false);
 const showLessonWarning = ref(false);
+const sessionStatus = ref<{
+  assessmentPending: boolean;
+  assessmentSessionId?: string;
+  reviewsDue: number;
+  newTopicsAvailable: number;
+  pacingFactor: number;
+} | null>(null);
 const goalProgress = ref<{
   problemsCompleted: number;
   minutesActive: number;
@@ -61,6 +68,13 @@ onMounted(async () => {
   });
 
   if (auth.isAuthenticated.value) {
+    // Fetch session status (assessment gate, review count, etc.)
+    const status = await withErrorToast(
+      () => api.getSessionStatus(),
+      t("errors.failedToLoad", { resource: "status" })
+    );
+    if (status) sessionStatus.value = status;
+
     // Authenticated user — check for active session
     const result = await withErrorToast(
       () => api.getActiveSession(),
@@ -236,6 +250,33 @@ async function handleExampleDone() {
         <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
       </svg>
       <span>{{ t('learn.checkingSession') }}</span>
+    </div>
+
+    <!-- Assessment milestone card -->
+    <div v-else-if="!sessionId && sessionStatus?.assessmentPending" class="py-12">
+      <div class="bg-indigo-50 border border-indigo-200 rounded-xl p-8 text-center mb-6">
+        <div class="text-4xl mb-3">&#x1F3AF;</div>
+        <h2 class="text-2xl font-bold text-indigo-900 mb-2">{{ t('learn.checkpointReady') }}</h2>
+        <p class="text-indigo-700 mb-6">{{ t('learn.checkpointDescription') }}</p>
+        <div class="flex gap-4 justify-center">
+          <RouterLink
+            :to="`/assess/${sessionStatus.assessmentSessionId}`"
+            class="px-8 py-3 bg-indigo-600 text-white rounded-lg text-lg font-semibold hover:bg-indigo-700"
+          >
+            {{ t('learn.startCheckpoint') }}
+          </RouterLink>
+          <button
+            @click="startSession"
+            :disabled="loading"
+            class="px-6 py-3 border border-indigo-300 text-indigo-700 rounded-lg font-medium hover:bg-indigo-100"
+          >
+            {{ t('learn.reviewFirst') }}
+          </button>
+        </div>
+      </div>
+      <p class="text-center text-sm text-gray-500">
+        {{ t('learn.checkpointHint', { reviews: sessionStatus.reviewsDue }) }}
+      </p>
     </div>
 
     <!-- Not started -->

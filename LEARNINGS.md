@@ -1285,3 +1285,38 @@ The impact scales with how many frontier topics are processed per session. The o
 Path B of the mastery criterion (`consecutiveCorrect >= 3` in any FSRS state) can trigger while a topic is still in Learning state with stability < 2 days. Example observed: `order-numbers-to-20` mastered with stabilityAfter=1.37d. The topic is correct by design — 1.37d stability still means ~89% retention at that exact moment — but the topic will decay quickly and may need early re-review. This is distinct from Path A (requires `stability >= 4d after update`), which provides a stronger durability guarantee. Path B is the correct safety net for topics stuck in Learning/Relearning state.
 
 **Context:** srs.ts `scheduleReview()` lines 252-254. Affects any topic with 3 consecutive correct answers before graduating to Review state — most common for K-0 content served to advanced learners with a high diagnostic placement.
+
+---
+
+### 2026-03-15: cardFromRow sets elapsed_days=0 — FSRS repeat() computes same-day review
+
+**Source:** User session — Plan 031 Phase 3.5
+**Area:** FSRS / SRS service / Testing
+
+`cardFromRow()` hardcodes `elapsed_days: 0` and `scheduled_days: 0`. When `userFsrs.repeat(card, new Date())` is called for a Review-state card with stability 10d, FSRS interprets this as a same-day review and computes new stability ≈ current stability (no meaningful improvement). This makes `fullBoost = scheduling[Good].card.stability - state.stability` ≈ 0, triggering the `fullBoost <= 0` guard and silently skipping credit.
+
+**Fix for tests:** Seed `lastReview` to a past date (e.g., 7 days ago) so `computeRetrievability()` returns a reasonable R value AND FSRS computes a meaningful stability increase for the Good rating. Without `lastReview`, the fallback `lastReview = now` produces `elapsedDays = 0`.
+
+**Context:** Discovered when `applyPrereqCredit()` unit tests showed zero stability change on mastered prerequisites. The function's logic was correct — the issue was test seed data lacking `lastReview`.
+
+---
+
+### 2026-03-15: getDueTopics() only returns mastered=false topics — don't seed mastered=true for review tests
+
+**Source:** User session — Plan 031 Phase 4
+**Area:** SRS service / testing
+
+`getDueTopics()` filters `mastered === false` — mastered topics are never considered "due for review" regardless of their `due` date. This is by design: mastered topics only lose mastery on 2+ consecutive incorrect answers, at which point they become unmastered and re-enter the review queue. Tests that seed topics as `mastered: true` with past-due dates will NOT get review items from `getNextItem()` — they'll get lessons for frontier topics instead.
+
+**Context:** `srs.ts getDueTopics()` line 367. Discovered when Phase 4 pacing test expected a review for a mastered topic but got a lesson.
+
+---
+
+### 2026-03-15: session-status endpoint must precede /sessions/:id route to avoid param capture
+
+**Source:** User session — Plan 031 Phase 5
+**Area:** Hono routing
+
+In Hono, `GET /learn/sessions/:id` captures any path segment after `/sessions/`. A new `GET /learn/session-status` route must be registered **before** the parameterized route, or `session-status` gets captured as `:id`. The learn routes file already has this pattern (`/sessions/active` before `/:id`), so `session-status` follows the same placement.
+
+**Context:** `packages/api/src/routes/learn.ts` — route ordering is load-bearing.

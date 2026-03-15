@@ -2221,3 +2221,62 @@ Post-implementation results:
 **Why 90 days:** Long enough for substantial prerequisite progress via FSRS (solidly-mastered tier = 30-90d stability). Short enough that if the learner genuinely recovers, the topic re-enters at a reasonable cadence.
 
 **Alternative considered (deferred):** Phase 3's getNextItem() can de-prioritize stuck topics more elegantly by sorting due topics by retrievability and stuck-factor. The 90-day cooldown is a correctness fix for now.
+
+---
+
+## 2026-03-15: Pacing factor modulates lesson availability via skip threshold (Plan 031 Phase 4)
+
+**Source:** User session — Plan 031 Phase 4
+
+**Context:** The assessment calibration loop adjusts a per-user `pacing_factor` (0.5–2.0) based on checkpoint scores. This factor needs to affect the lesson/review balance in `getNextItem()` without breaking the existing "reviews first" default.
+
+**Decision:** Pacing modulates a skip threshold: `skipReviewThreshold = floor((pacing - 1) * 5)`. When `dueCount <= skipReviewThreshold`, a new lesson is served even though reviews are pending. At pacing=1.0 (default), threshold=0 → reviews always come first (unchanged behavior). At pacing=1.5, threshold=2 → 1-2 pending reviews are skipped for a new lesson. At pacing=0.5, threshold=-2 → reviews always come first (same as default). If reviews are skipped but no frontier topics are available, falls back to serving the review.
+
+**Why:**
+- Preserves backward compatibility: pacing=1.0 is identical to pre-Phase-4 behavior
+- Simple and predictable: linear relationship between pacing and skip count
+- Conservative by default: only increases lesson aggression after a high-score assessment proves the learner is ready
+
+**Alternatives rejected:**
+- Probabilistic review skipping (random chance per pacing): Non-deterministic, hard to reason about
+- Modulating review retrieval threshold (lower R threshold = fewer reviews): Changes FSRS semantics, could harm retention
+
+---
+
+## 2026-03-15: Assessment trigger is ratio-based with minimum count floor (Plan 031 Phase 4)
+
+**Source:** User session — Plan 031 Phase 4
+
+**Context:** Need a trigger condition for when the system schedules an assessment checkpoint during learning. Must scale gracefully from small frontiers (early learning) to large graphs (advanced learners).
+
+**Decision:** Two trigger conditions (OR): (1) `topics_introduced_since_assessment / frontier_size >= ASSESSMENT_TRIGGER_RATIO` (0.25) when frontier > 0, or (2) `last_assessment_at IS NULL AND topics_introduced >= MIN_TOPICS_BEFORE_FIRST_ASSESSMENT` (5) for the first-ever assessment. Counter resets to 0 when assessment fires. Never triggers if `pending_assessment_id` is already set.
+
+**Why:**
+- Ratio-based scales naturally: a learner with frontier=20 triggers every 5 new topics; frontier=100 triggers every 25
+- Minimum count prevents premature first assessment (need enough material to assess meaningfully)
+- Division-by-zero guard (frontier_size > 0) prevents assessment spam when frontier is exhausted
+
+**Alternatives rejected:**
+- Fixed count trigger (every N topics): Doesn't scale — 5-topic trigger is too frequent for advanced learners, too infrequent for beginners
+- Time-based trigger (every N sessions): Doesn't correlate with learning progress — a learner doing only reviews wouldn't benefit from an assessment
+
+---
+
+## 2026-03-15: Assessment gate UX — milestone framing, not blocker (Plan 031 Phase 5)
+
+**Source:** User session — Plan 031 Phase 5
+
+**Context:** The assessment calibration loop (Phase 4) creates a hard gate: `getNextItem()` returns `{ type: "assessment" }` as Priority 1, blocking all new lessons until the checkpoint is taken. The UX must frame this as a positive milestone, not a punitive wall.
+
+**Decision:** The `/learn` page checks `GET /api/learn/session-status` on mount. When `assessmentPending === true`, a milestone card replaces the normal "Start Session" button:
+- Primary CTA: "Start Checkpoint" → navigates to `/assess/:assessmentSessionId`
+- Secondary: "Review First" → starts a review-only session (assessment still gates new lessons)
+- Copy emphasizes achievement: "You've covered enough new material for a checkpoint"
+
+Post-assessment feedback (already in Phase 5, Step 3) shows pacing impact: score >= 80% → "pace increasing", 60–80% → "continuing", < 60% → "consolidating".
+
+**Why milestone framing:** Research on self-determination theory (Ryan & Deci 2000) shows autonomy-supportive framing ("you've earned this") produces better engagement than controlling framing ("you must do this before continuing"). The gate is functionally identical but the framing changes the learner's relationship to it.
+
+**Alternatives rejected:**
+- Soft gate (assessment suggested but skippable): Defeats the calibration purpose — learners who skip assessments accumulate inaccurate pacing factors
+- Modal popup: Feels interruptive; a full-page card gives the learner time to process and decide whether to review first

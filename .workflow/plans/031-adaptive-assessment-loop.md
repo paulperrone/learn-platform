@@ -421,13 +421,13 @@ The pacing factor modulates how eagerly `getNextItem()` returns new lessons vs r
 
 ---
 
-## Phase 5: UX Surface + Documentation
+## Phase 5: UX Surface + Documentation ✓
 
 **Goal:** Make the calibration loop visible and intentional in the user experience. The checkpoint should feel like a milestone earned, not a wall encountered.
 
 ### Steps
 
-1. [ ] [IMP] Session status endpoint — surface scheduler state before starting:
+1. [x] [IMP] Session status endpoint — surface scheduler state before starting:
    - `GET /api/learn/session-status` returns `{ assessmentPending: boolean, assessmentSessionId?: string, reviewsDue: number, newTopicsAvailable: number, pacingFactor: number }`
    - Frontend calls this on `/learn` page load to decide what to show
 
@@ -445,7 +445,7 @@ The pacing factor modulates how eagerly `getNextItem()` returns new lessons vs r
    - Show which strands need attention (from strand breakdown in AssessmentResult)
    - CTA: "Continue Learning" → back to `/learn`
 
-4. [ ] [DOC] Documentation pass:
+4. [x] [DOC] Documentation pass:
    - Update `docs/assessment-system.md`: add calibration loop section (trigger, gate, pacing factor)
    - Update `DECISIONS.md`: trigger ratio design, pacing factor bounds, gate framing decisions
    - Update `LEARNINGS.md` with any gotchas from Phase 4 implementation

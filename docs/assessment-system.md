@@ -133,6 +133,32 @@ The frontend calls `startSession()` after each unit completes — this is the pu
 
 Prerequisite-direction FIRe credit (`applyPrereqCredit`) runs automatically after qualifying correct reviews, extending mastered prerequisites' stability without explicit review. See `docs/fire.md` for details.
 
+## Calibration Loop (Plan 031 Phase 4)
+
+The assessment system includes an automatic calibration loop that gates new lessons behind periodic checkpoints.
+
+**Trigger:** When `topicsIntroducedSinceAssessment / frontierSize >= 0.25` (after a minimum of 5 topics), the system creates a pending assessment and sets `pendingAssessmentId` in `user_learning_state`. `getNextItem()` returns `{ type: "assessment" }` as Priority 1, gating all new lessons.
+
+**Pacing factor:** Assessment scores adjust a per-user `pacingFactor` (bounds: 0.5–2.0):
+- Score >= 80%: `pacingFactor *= 1.15` (faster learner, allow more lessons vs reviews)
+- Score 60–80%: no change
+- Score < 60%: `pacingFactor *= 0.80` (consolidate with more reviews)
+
+The pacing factor modulates lesson availability via `skipReviewThreshold = floor((pacing - 1) * 5)` in `getNextItem()`. At pacing=1.0 (default), reviews always come first. At pacing=1.5, up to 2 pending reviews can be skipped for a new lesson.
+
+**Session status endpoint:** `GET /api/learn/session-status?userId=...` surfaces scheduler state before starting a session:
+```json
+{
+  "assessmentPending": true,
+  "assessmentSessionId": "abc-123",
+  "reviewsDue": 3,
+  "newTopicsAvailable": 12,
+  "pacingFactor": 1.15
+}
+```
+
+The frontend uses this on `/learn` page load to show a milestone card when an assessment is pending, framing it as a checkpoint earned rather than a blocker.
+
 ## Relationship to Learning Sessions
 
 | Dimension | Learning Session | Assessment Session |

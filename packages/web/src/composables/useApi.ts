@@ -85,6 +85,16 @@ export function useApi() {
     },
 
     // Sessions
+    getSessionStatus: async () => {
+      const userId = await getUserId();
+      return request<{
+        assessmentPending: boolean;
+        assessmentSessionId?: string;
+        reviewsDue: number;
+        newTopicsAvailable: number;
+        pacingFactor: number;
+      }>(`/learn/session-status?userId=${userId}`);
+    },
     getActiveSession: async () => {
       const userId = await getUserId();
       return request<any>(`/learn/sessions/active?userId=${userId}`);

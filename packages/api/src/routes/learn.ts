@@ -4,10 +4,39 @@ import type { Env } from "../index.js";
 import { getDb } from "../db/index.js";
 import * as schema from "../db/schema.js";
 import { createSessionService } from "../services/session.js";
+import { createSRSService } from "../services/srs.js";
+import { createGraphService } from "../services/graph.js";
 import { createAnalyticsService } from "../services/analytics.js";
 import { createDiagnosticService } from "../services/diagnostic.js";
 
 export const learnRoutes = new Hono<Env>();
+
+// Session status — surfaces scheduler state before starting a session
+learnRoutes.get("/session-status", async (c) => {
+  const db = getDb(c.env.DB);
+  const userId = c.req.query("userId");
+  if (!userId) return c.json({ error: "userId required" }, 400);
+
+  const learningState = await db.query.userLearningState.findFirst({
+    where: eq(schema.userLearningState.userId, userId),
+  });
+
+  const srs = createSRSService(db);
+  const graph = createGraphService(db);
+
+  const [dueTopics, frontier] = await Promise.all([
+    srs.getDueTopics(userId),
+    graph.computeFrontier(userId),
+  ]);
+
+  return c.json({
+    assessmentPending: !!learningState?.pendingAssessmentId,
+    assessmentSessionId: learningState?.pendingAssessmentId ?? undefined,
+    reviewsDue: dueTopics.length,
+    newTopicsAvailable: frontier.topics.length,
+    pacingFactor: learningState?.pacingFactor ?? 1.0,
+  });
+});
 
 // Must be before /sessions/:id to avoid param capture
 learnRoutes.get("/sessions/active", async (c) => {
