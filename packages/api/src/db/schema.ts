@@ -517,3 +517,14 @@ export const assessmentResponses = sqliteTable("assessment_responses", {
   index("ar_session_idx").on(table.assessmentSessionId),
   uniqueIndex("ar_session_qnum_idx").on(table.assessmentSessionId, table.questionNumber),
 ]);
+
+// === User Learning State (Assessment Calibration Loop) ===
+
+export const userLearningState = sqliteTable("user_learning_state", {
+  userId: text("user_id").primaryKey().references(() => users.id),
+  pendingAssessmentId: text("pending_assessment_id").references(() => assessmentSessions.id),
+  topicsIntroducedSinceAssessment: integer("topics_introduced_since_assessment").notNull().default(0),
+  pacingFactor: real("pacing_factor").notNull().default(1.0),
+  lastAssessmentAt: text("last_assessment_at"),
+  updatedAt: text("updated_at").notNull().$defaultFn(() => new Date().toISOString()),
+});

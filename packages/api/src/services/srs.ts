@@ -24,6 +24,15 @@ export const FIRE_ENABLED = false;
 // practice on dependent topics. See docs/fire.md §Prerequisite-Direction FIRe.
 export const FIRE_PREREQ_ENABLED = true;
 
+// Assessment calibration loop constants (Plan 031 Phase 4)
+// Trigger an assessment when topics_introduced / frontier_size >= this ratio
+export const ASSESSMENT_TRIGGER_RATIO = 0.25;
+// Minimum topics introduced before first-ever assessment triggers
+export const MIN_TOPICS_BEFORE_FIRST_ASSESSMENT = 5;
+// Pacing factor bounds
+export const PACING_FACTOR_MIN = 0.5;
+export const PACING_FACTOR_MAX = 2.0;
+
 // Graduated mastery tiers based on FSRS stability (days).
 // Topics progress through tiers as stability grows, keeping them in
 // FIRe's scope and the review queue longer than binary mastery.
@@ -1046,12 +1055,25 @@ export function createSRSService(db: DB, fireDiagnostic?: FireDiagnosticConfig) 
      * retrievability drops — no separate random-warmup pass needed.
      */
     async getNextItem(userId: string): Promise<NextItem> {
-      // Priority 1: pending assessment — placeholder until Phase 4
-      // (Phase 4 will check user_learning_state.pending_assessment_id here)
+      // Priority 1: pending assessment gate
+      const learningState = await db.query.userLearningState.findFirst({
+        where: eq(schema.userLearningState.userId, userId),
+      });
+      if (learningState?.pendingAssessmentId) {
+        return { type: "assessment", assessmentSessionId: learningState.pendingAssessmentId };
+      }
 
-      // Priority 2: due reviews
+      // Priority 2: due reviews (modulated by pacing factor)
       const dueTopics = await this.getDueTopics(userId);
-      if (dueTopics.length > 0) {
+
+      // Pacing factor modulates lesson availability when reviews are pending.
+      // At pacing=1.0 (default): reviews always come first (threshold=0).
+      // At pacing>1.0: allow new lessons if review queue is small enough.
+      // threshold = floor((pacing - 1) * 5), e.g. pacing=1.5 → skip reviews if ≤2 pending.
+      const pacing = learningState?.pacingFactor ?? 1.0;
+      const skipReviewThreshold = Math.floor((pacing - 1) * 5);
+
+      if (dueTopics.length > 0 && dueTopics.length > skipReviewThreshold) {
         // Take the most overdue topic (getDueTopics returns ordered by due ASC)
         return { type: "review", topicId: dueTopics[0].topicId };
       }
@@ -1062,6 +1084,11 @@ export function createSRSService(db: DB, fireDiagnostic?: FireDiagnosticConfig) 
         // Sort by depth (shallowest first) to respect prerequisite order
         const sorted = [...frontier.topics].sort((a, b) => a.depth - b.depth || a.gradeLevel - b.gradeLevel);
         return { type: "lesson", topicId: sorted[0].id };
+      }
+
+      // If we skipped reviews due to high pacing but no frontier available, serve review
+      if (dueTopics.length > 0) {
+        return { type: "review", topicId: dueTopics[0].topicId };
       }
 
       // Priority 4: nothing available

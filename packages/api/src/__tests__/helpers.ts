@@ -24,6 +24,7 @@ export async function applyMigrations() {
 export async function resetDb() {
   // Drop in reverse FK order
   const tables = [
+    "user_learning_state",
     "assessment_responses",
     "assessment_sessions",
     "daily_activity",
@@ -766,4 +767,7 @@ const SCHEMA_STATEMENTS = [
   'CREATE TABLE assessment_responses (id integer PRIMARY KEY AUTOINCREMENT NOT NULL, assessment_session_id text NOT NULL, question_number integer NOT NULL, topic_id text NOT NULL, problem_id text NOT NULL, answer text NOT NULL, correct integer NOT NULL, response_ms integer, created_at text NOT NULL, FOREIGN KEY (assessment_session_id) REFERENCES assessment_sessions(id))',
   'CREATE INDEX ar_session_idx ON assessment_responses (assessment_session_id)',
   'CREATE UNIQUE INDEX ar_session_qnum_idx ON assessment_responses (assessment_session_id, question_number)',
+
+  // user_learning_state (FK → users, assessment_sessions)
+  'CREATE TABLE user_learning_state (user_id text PRIMARY KEY NOT NULL, pending_assessment_id text, topics_introduced_since_assessment integer NOT NULL DEFAULT 0, pacing_factor real NOT NULL DEFAULT 1.0, last_assessment_at text, updated_at text NOT NULL DEFAULT \'\', FOREIGN KEY (user_id) REFERENCES users(id), FOREIGN KEY (pending_assessment_id) REFERENCES assessment_sessions(id))',
 ];

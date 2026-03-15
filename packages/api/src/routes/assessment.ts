@@ -65,6 +65,13 @@ assessmentRoutes.post("/:id/respond", async (c) => {
       answer: body.answer,
       responseMs: body.responseMs,
     });
+
+    // When assessment completes, clear the gate and apply pacing factor
+    if (result.result) {
+      const userId = c.get("user").id;
+      await assessment.finishAssessmentGate(userId, sessionId, result.result.rawScore ?? 0);
+    }
+
     return c.json(result);
   } catch (err) {
     const message = err instanceof Error ? err.message : "Failed to record response";

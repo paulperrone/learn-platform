@@ -502,3 +502,235 @@ describe.skipIf(!FIRE_PREREQ_ENABLED)("applyPrereqCredit", () => {
     expect(logs.length).toBe(1);
   });
 });
+
+/**
+ * Phase 4: Assessment calibration loop tests
+ * - getNextItem() assessment gate
+ * - Pacing factor modulation
+ * - finishAssessmentGate pacing feedback
+ */
+describe("assessment calibration loop", () => {
+  beforeEach(async () => {
+    await resetDb();
+    await applyMigrations();
+  });
+
+  async function setupWithLearningState(overrides: Partial<typeof schema.userLearningState.$inferInsert> = {}) {
+    const db = getTestDb();
+    const user = await seedUser();
+    const discipline = await seedDiscipline({ id: "math" });
+
+    await seedTopic(discipline.id, { id: "t1", name: "Topic 1", depth: 0 });
+    await seedTopic(discipline.id, { id: "t2", name: "Topic 2", depth: 1 });
+    await seedPrerequisite("t1", "t2");
+
+    for (const topicId of ["t1", "t2"]) {
+      await seedAssessmentContent(topicId, {
+        id: `${topicId}-q`, difficulty: "easy",
+        question: `Q ${topicId}?`, answer: "1",
+        hintsJson: JSON.stringify(["H"]),
+        solution: "s",
+      });
+      await seedInstructionalContent(topicId, {
+        id: `${topicId}-ex`, title: `${topicId} Ex`,
+        stepsJson: JSON.stringify([
+          { subgoalLabel: "S", instruction: "D", work: "w", explanation: "e" },
+        ]),
+      });
+    }
+
+    // Always create a user_learning_state row
+    await db.insert(schema.userLearningState).values({
+      userId: user.id,
+      topicsIntroducedSinceAssessment: 0,
+      pacingFactor: 1.0,
+      updatedAt: new Date().toISOString(),
+      ...overrides,
+    });
+
+    return { db, user, discipline };
+  }
+
+  it("returns assessment when pending_assessment_id is set", async () => {
+    const { db, user } = await setupWithLearningState();
+    // Create a fake assessment session
+    await db.insert(schema.assessmentSessions).values({
+      id: "assess-1",
+      userId: user.id,
+      scopeJson: JSON.stringify({ type: "comprehensive" }),
+      configJson: JSON.stringify({ scope: { type: "comprehensive" }, questionCount: 5 }),
+      questionsJson: JSON.stringify([]),
+      startedAt: new Date().toISOString(),
+    });
+    // Set pending assessment
+    await db.update(schema.userLearningState)
+      .set({ pendingAssessmentId: "assess-1" })
+      .where(eq(schema.userLearningState.userId, user.id));
+
+    const srs = createSRSService(db);
+    const item = await srs.getNextItem(user.id);
+    expect(item.type).toBe("assessment");
+    if (item.type === "assessment") {
+      expect(item.assessmentSessionId).toBe("assess-1");
+    }
+  });
+
+  it("returns review/lesson normally when no assessment pending", async () => {
+    const { db, user } = await setupWithLearningState();
+
+    const srs = createSRSService(db);
+    const item = await srs.getNextItem(user.id);
+    expect(item.type).toBe("lesson"); // no assessment pending, frontier available
+  });
+
+  it("assessment gate takes priority over due reviews", async () => {
+    const { db, user } = await setupWithLearningState();
+
+    // t1 is due for review
+    await seedUserTopicState(user.id, "t1", {
+      mastered: false, stability: 1, reps: 3, state: 2,
+      due: new Date(Date.now() - 60000).toISOString(),
+    });
+
+    // Set pending assessment
+    await db.insert(schema.assessmentSessions).values({
+      id: "assess-2",
+      userId: user.id,
+      scopeJson: JSON.stringify({ type: "comprehensive" }),
+      configJson: JSON.stringify({ scope: { type: "comprehensive" }, questionCount: 5 }),
+      questionsJson: JSON.stringify([]),
+      startedAt: new Date().toISOString(),
+    });
+    await db.update(schema.userLearningState)
+      .set({ pendingAssessmentId: "assess-2" })
+      .where(eq(schema.userLearningState.userId, user.id));
+
+    const srs = createSRSService(db);
+    const item = await srs.getNextItem(user.id);
+    expect(item.type).toBe("assessment"); // assessment > review
+  });
+
+  it("pacing factor > 1 allows lessons when few reviews pending", async () => {
+    const { db, user } = await setupWithLearningState({ pacingFactor: 2.0 });
+
+    // t1 due for review (only 1 review pending)
+    await seedUserTopicState(user.id, "t1", {
+      mastered: false, stability: 1, reps: 3, state: 2,
+      due: new Date(Date.now() - 60000).toISOString(),
+    });
+
+    const srs = createSRSService(db);
+    const item = await srs.getNextItem(user.id);
+    // pacing=2.0 → skipThreshold=floor((2-1)*5)=5, only 1 due review < 5 → serve lesson
+    // But t2 requires t1 which isn't mastered, so frontier is empty → falls back to review
+    // Need to make t1 mastered but due
+    await db.update(schema.userTopicState)
+      .set({ mastered: true })
+      .where(and(
+        eq(schema.userTopicState.userId, user.id),
+        eq(schema.userTopicState.topicId, "t1"),
+      ));
+
+    const item2 = await srs.getNextItem(user.id);
+    // Now t1 is mastered+due, t2 is in frontier. pacing=2.0 skips 1 review → lesson
+    expect(item2.type).toBe("lesson");
+    if (item2.type === "lesson") {
+      expect(item2.topicId).toBe("t2");
+    }
+  });
+
+  it("pacing factor = 1 (default) serves reviews before lessons", async () => {
+    const { db, user } = await setupWithLearningState({ pacingFactor: 1.0 });
+
+    // t1 not mastered, due for review (getDueTopics filters mastered=false)
+    await seedUserTopicState(user.id, "t1", {
+      mastered: false, stability: 1, reps: 5, state: 2,
+      due: new Date(Date.now() - 60000).toISOString(),
+    });
+
+    const srs = createSRSService(db);
+    const item = await srs.getNextItem(user.id);
+    // pacing=1.0 → skipThreshold=0, 1 due > 0 → serve review
+    expect(item.type).toBe("review");
+    if (item.type === "review") {
+      expect(item.topicId).toBe("t1");
+    }
+  });
+
+  it("pacing factor stays within bounds", async () => {
+    const { db, user } = await setupWithLearningState({ pacingFactor: 1.0 });
+
+    // Import finishAssessmentGate
+    const { createAssessmentService } = await import("../../services/assessment.js");
+    const { PACING_FACTOR_MIN, PACING_FACTOR_MAX } = await import("../../services/srs.js");
+    const assessmentSvc = createAssessmentService(db);
+
+    // Simulate many low-score assessments to try to push below floor
+    for (let i = 0; i < 20; i++) {
+      await assessmentSvc.finishAssessmentGate(user.id, `assess-${i}`, 0.30);
+    }
+
+    const state = await db.query.userLearningState.findFirst({
+      where: eq(schema.userLearningState.userId, user.id),
+    });
+    expect(state!.pacingFactor).toBeGreaterThanOrEqual(PACING_FACTOR_MIN);
+
+    // Reset and simulate many high-score assessments
+    await db.update(schema.userLearningState)
+      .set({ pacingFactor: 1.0 })
+      .where(eq(schema.userLearningState.userId, user.id));
+
+    for (let i = 0; i < 20; i++) {
+      await assessmentSvc.finishAssessmentGate(user.id, `assess-high-${i}`, 0.95);
+    }
+
+    const state2 = await db.query.userLearningState.findFirst({
+      where: eq(schema.userLearningState.userId, user.id),
+    });
+    expect(state2!.pacingFactor).toBeLessThanOrEqual(PACING_FACTOR_MAX);
+  });
+
+  it("finishAssessmentGate clears pending and applies pacing for high score", async () => {
+    const { db, user } = await setupWithLearningState({ pendingAssessmentId: null });
+
+    const { createAssessmentService } = await import("../../services/assessment.js");
+    const assessmentSvc = createAssessmentService(db);
+
+    await assessmentSvc.finishAssessmentGate(user.id, "assess-done", 0.85);
+
+    const state = await db.query.userLearningState.findFirst({
+      where: eq(schema.userLearningState.userId, user.id),
+    });
+    expect(state!.pendingAssessmentId).toBeNull();
+    expect(state!.pacingFactor).toBeCloseTo(1.15, 2); // 1.0 * 1.15
+    expect(state!.lastAssessmentAt).toBeTruthy();
+  });
+
+  it("finishAssessmentGate keeps pacing unchanged for mid-range score", async () => {
+    const { db, user } = await setupWithLearningState({});
+
+    const { createAssessmentService } = await import("../../services/assessment.js");
+    const assessmentSvc = createAssessmentService(db);
+
+    await assessmentSvc.finishAssessmentGate(user.id, "assess-mid", 0.70);
+
+    const state = await db.query.userLearningState.findFirst({
+      where: eq(schema.userLearningState.userId, user.id),
+    });
+    expect(state!.pacingFactor).toBe(1.0); // unchanged
+  });
+
+  it("finishAssessmentGate decreases pacing for low score", async () => {
+    const { db, user } = await setupWithLearningState({});
+
+    const { createAssessmentService } = await import("../../services/assessment.js");
+    const assessmentSvc = createAssessmentService(db);
+
+    await assessmentSvc.finishAssessmentGate(user.id, "assess-low", 0.45);
+
+    const state = await db.query.userLearningState.findFirst({
+      where: eq(schema.userLearningState.userId, user.id),
+    });
+    expect(state!.pacingFactor).toBeCloseTo(0.80, 2); // 1.0 * 0.80
+  });
+});

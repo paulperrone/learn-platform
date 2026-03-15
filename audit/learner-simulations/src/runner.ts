@@ -492,6 +492,14 @@ export class SimulationRunner {
         break;
       }
 
+      // Assessment gate: complete the pending assessment and continue
+      if (firstItem.type === "assessment") {
+        console.log(`[sim]   Session ${sessionNumber}: assessment gate — completing checkpoint`);
+        await this.completeSimulatedAssessment(firstItem.assessmentSessionId, sessionNumber);
+        totalInteractions++;
+        continue; // Next iteration will get the next learning item
+      }
+
       let currentItem = firstItem;
 
       while (currentItem.type !== "complete" && currentItem.type !== "error" && totalInteractions < MAX_INTERACTIONS) {
@@ -1079,5 +1087,80 @@ export class SimulationRunner {
     if (totalQuestions >= 10 && strandCount < 2) {
       console.warn(`[sim] WARNING: only ${strandCount} strand(s) covered in ${totalQuestions}-question assessment (expected ≥2)`);
     }
+  }
+
+  /**
+   * Complete a pending assessment triggered by the calibration gate.
+   * Answers all questions using the profile's accuracy, then calls
+   * finishAssessmentGate to update pacing factor.
+   */
+  private async completeSimulatedAssessment(assessmentSessionId: string, sessionNumber: number): Promise<void> {
+    const assessmentSvc = createAssessmentService(this.db, this.contentBucket);
+
+    // Load the assessment session to get question count
+    const session = await this.db.query.assessmentSessions.findFirst({
+      where: eq(schema.assessmentSessions.id, assessmentSessionId),
+    });
+    if (!session || session.status !== "active") return;
+
+    const questions = JSON.parse(session.questionsJson) as { topicId: string; problem: { id: string; answer: string } }[];
+    let result: AssessmentResult | undefined;
+
+    for (let i = 0; i < questions.length; i++) {
+      const q = questions[i];
+      // Determine answer based on profile accuracy
+      const isCorrect = this.rng.next() < (this.config.profile.baseAccuracy ?? 0.7);
+      const answer = isCorrect ? q.problem.answer : "wrong_answer";
+
+      const resp = await assessmentSvc.respondToAssessment(assessmentSessionId, {
+        answer,
+        responseMs: 3000 + Math.floor(this.rng.next() * 5000),
+      });
+
+      if (resp.result) {
+        result = resp.result;
+        break;
+      }
+    }
+
+    if (!result) {
+      result = await assessmentSvc.getAssessmentResult(assessmentSessionId);
+    }
+
+    // Apply pacing factor feedback
+    await assessmentSvc.finishAssessmentGate(this.userId, assessmentSessionId, result.rawScore ?? 0);
+
+    this.logger.log({
+      sessionNumber,
+      phase: "assessment-gate" as any,
+      topicId: null,
+      problemId: null,
+      difficulty: null,
+      cognitiveDemand: null,
+      presentation: null,
+      contentDepth: null,
+      correct: null,
+      confidence: null,
+      hintsUsed: null,
+      rating: null,
+      stabilityBefore: null,
+      stabilityAfter: null,
+      difficultyBefore: null,
+      difficultyAfter: null,
+      masteredBefore: null,
+      masteredAfter: null,
+      frontierBefore: null,
+      frontierAfter: null,
+      rollingAccuracy: null,
+      presentationWeights: null,
+      remediationTarget: null,
+      fireCreditApplied: null,
+      fadingLevel: null,
+      interleaveStrand: null,
+    });
+
+    console.log(
+      `[sim]   Assessment gate: ${result.totalCorrect}/${result.totalQuestions} (${((result.rawScore ?? 0) * 100).toFixed(1)}%)`,
+    );
   }
 }

@@ -3,7 +3,8 @@ import { Rating, type Grade } from "ts-fsrs";
 import type { DB } from "../db/index.js";
 import * as schema from "../db/schema.js";
 import { createGraphService } from "./graph.js";
-import { createSRSService, type FireDiagnosticConfig } from "./srs.js";
+import { createSRSService, type FireDiagnosticConfig, ASSESSMENT_TRIGGER_RATIO, MIN_TOPICS_BEFORE_FIRST_ASSESSMENT } from "./srs.js";
+import { createAssessmentService } from "./assessment.js";
 import { createContentService, type ContentQuery } from "./content.js";
 import type { ContentBucket } from "./content-r2.js";
 import type { AnalyticsService } from "./analytics.js";
@@ -40,6 +41,7 @@ type SessionState = {
   sessionRemediationCount?: number; // Budget cap: max 15 remediations per session (prevent runaway remediation loops)
   llmAssistedThisProblem?: boolean; // Set by LLM routes when any LLM feature used on current problem
   hintSourceThisProblem?: "static" | "llm" | null; // Hint source for current problem
+  isNewTopicSession?: boolean; // True when this session introduces a new topic (lesson), false for reviews
 };
 
 // In-memory cache — D1 is the source of truth
@@ -289,6 +291,24 @@ export function createSessionService(db: DB, fireDiagnostic?: FireDiagnosticConf
         };
       }
 
+      if (nextItem.type === "assessment") {
+        // Assessment gate is active — direct learner to checkpoint
+        await db.insert(schema.learnSessions).values({
+          id: sessionId,
+          userId,
+          endedAt: new Date().toISOString(),
+        });
+
+        return {
+          sessionId,
+          firstItem: {
+            type: "assessment",
+            assessmentSessionId: nextItem.assessmentSessionId,
+            message: "Time for a checkpoint! Complete this assessment to continue learning.",
+          },
+        };
+      }
+
       const topicId = nextItem.type === "lesson" || nextItem.type === "review" ? nextItem.topicId : null;
       const state: SessionState = {
         sessionId,
@@ -303,6 +323,7 @@ export function createSessionService(db: DB, fireDiagnostic?: FireDiagnosticConf
         totalAttempts: 0,
         currentBlendRole: "main", // Always main in pull-based model (warmup/stretch removed)
         rollingResults: [],
+        isNewTopicSession: nextItem.type === "lesson",
       };
       activeSessions.set(sessionId, state);
 
@@ -815,6 +836,12 @@ export function createSessionService(db: DB, fireDiagnostic?: FireDiagnosticConf
         return await this.nextAnonymousTopic(state);
       }
 
+      // Assessment trigger: when a lesson (new topic) session completes,
+      // increment the counter and check if an assessment should fire.
+      if (state.isNewTopicSession) {
+        await this.checkAssessmentTrigger(state.userId);
+      }
+
       // Session covers one topic — auto-end and signal complete.
       // Frontend will call startSession() to pull the next unit.
       await this.endSession(state.sessionId);
@@ -822,6 +849,68 @@ export function createSessionService(db: DB, fireDiagnostic?: FireDiagnosticConf
         type: "complete",
         message: `Topic complete! Reviews: ${state.reviewsCompleted}, Accuracy: ${state.totalAttempts > 0 ? Math.round((state.totalCorrect / state.totalAttempts) * 100) : 0}%`,
       };
+    },
+
+    /**
+     * Check if an assessment should be triggered after a new topic introduction.
+     * Increments the topics_introduced counter and fires an assessment when
+     * the ratio threshold is met.
+     */
+    async checkAssessmentTrigger(userId: string): Promise<void> {
+      // Upsert user_learning_state — increment topics_introduced counter
+      const existing = await db.query.userLearningState.findFirst({
+        where: eq(schema.userLearningState.userId, userId),
+      });
+
+      if (!existing) {
+        await db.insert(schema.userLearningState).values({
+          userId,
+          topicsIntroducedSinceAssessment: 1,
+          pacingFactor: 1.0,
+          updatedAt: new Date().toISOString(),
+        });
+        // First topic — can't trigger yet (need MIN_TOPICS_BEFORE_FIRST_ASSESSMENT)
+        return;
+      }
+
+      // Don't trigger if an assessment is already pending
+      if (existing.pendingAssessmentId) return;
+
+      const newCount = existing.topicsIntroducedSinceAssessment + 1;
+      await db.update(schema.userLearningState)
+        .set({
+          topicsIntroducedSinceAssessment: newCount,
+          updatedAt: new Date().toISOString(),
+        })
+        .where(eq(schema.userLearningState.userId, userId));
+
+      // Check trigger conditions
+      const frontier = await graph.computeFrontier(userId);
+      const frontierSize = frontier.topics.length;
+
+      const ratioMet = frontierSize > 0 && newCount / frontierSize >= ASSESSMENT_TRIGGER_RATIO;
+      const firstAssessmentMet = !existing.lastAssessmentAt && newCount >= MIN_TOPICS_BEFORE_FIRST_ASSESSMENT;
+
+      if (!ratioMet && !firstAssessmentMet) return;
+
+      // Fire assessment
+      const assessmentSvc = createAssessmentService(db, contentBucket);
+      try {
+        const { sessionId: assessmentSessionId } = await assessmentSvc.startAssessment(userId, {
+          scope: { type: "comprehensive" },
+          questionCount: 10,
+        });
+
+        await db.update(schema.userLearningState)
+          .set({
+            pendingAssessmentId: assessmentSessionId,
+            topicsIntroducedSinceAssessment: 0,
+            updatedAt: new Date().toISOString(),
+          })
+          .where(eq(schema.userLearningState.userId, userId));
+      } catch {
+        // Assessment creation can fail if no content is available — don't block learning
+      }
     },
 
     async nextAnonymousTopic(state: SessionState): Promise<SessionItem> {
@@ -1299,6 +1388,7 @@ export type SessionItem =
       message: string;
     } & MasteryEventField & GoalProgressField)
   | ({ type: "complete"; message: string } & MasteryEventField & GoalProgressField)
+  | { type: "assessment"; assessmentSessionId: string; message: string }
   | { type: "error"; message: string };
 
 // Fallbacks when no pre-generated content exists

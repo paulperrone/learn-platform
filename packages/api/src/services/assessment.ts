@@ -4,6 +4,7 @@ import * as schema from "../db/schema.js";
 import { createContentService } from "./content.js";
 import type { ContentBucket } from "./content-r2.js";
 import { gradeProblem } from "./grading.js";
+import { PACING_FACTOR_MIN, PACING_FACTOR_MAX } from "./srs.js";
 import type {
   AssessmentScope,
   AssessmentSessionConfig,
@@ -594,10 +595,41 @@ export function createAssessmentService(db: DB, contentBucket?: ContentBucket) {
     });
   }
 
+  /**
+   * Clear the assessment gate and apply pacing factor feedback.
+   * Called when an assessment completes (last question answered).
+   * Score ≥ 0.80 → increase pacing (learn faster)
+   * Score 0.60–0.80 → no change
+   * Score < 0.60 → decrease pacing (consolidate more)
+   */
+  async function finishAssessmentGate(userId: string, assessmentSessionId: string, rawScore: number): Promise<void> {
+    const existing = await db.query.userLearningState.findFirst({
+      where: eq(schema.userLearningState.userId, userId),
+    });
+    if (!existing) return;
+
+    let newPacing = existing.pacingFactor;
+    if (rawScore >= 0.80) {
+      newPacing = Math.min(newPacing * 1.15, PACING_FACTOR_MAX);
+    } else if (rawScore < 0.60) {
+      newPacing = Math.max(newPacing * 0.80, PACING_FACTOR_MIN);
+    }
+
+    await db.update(schema.userLearningState)
+      .set({
+        pendingAssessmentId: null,
+        pacingFactor: newPacing,
+        lastAssessmentAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+      })
+      .where(eq(schema.userLearningState.userId, userId));
+  }
+
   return {
     startAssessment,
     respondToAssessment,
     getAssessmentResult,
     listAssessmentHistory,
+    finishAssessmentGate,
   };
 }

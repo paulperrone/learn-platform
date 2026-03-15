@@ -23,9 +23,9 @@ Wire assessments into the learning scheduler as a system-triggered calibration l
 
 ## Progress
 
-**Completed:** Phase 1 (Mastery System Deep Diagnostic), Phase 2 (Threshold & Session Mix Calibration), Phase 3 (Atomic Pull-Based Session Architecture + Prerequisite FIRe)
+**Completed:** Phase 1, Phase 2, Phase 3, Phase 3.5, Phase 4 (Assessment Calibration Loop)
 **In Progress:** —
-**Next:** Phase 4
+**Next:** Phase 5
 
 ---
 
@@ -355,7 +355,7 @@ Credit is logged in `reviewLog` with `phase: "fire-prereq"` for auditability. Th
 
 ---
 
-## Phase 4: Assessment Calibration Loop
+## Phase 4: Assessment Calibration Loop ✓
 
 **Goal:** Wire assessments into `getNextItem()` as a system-triggered calibration gate. When an assessment is pending, `getNextItem()` returns `{ type: "assessment", ... }` as the top-priority item, blocking new lessons until the checkpoint is complete. Assessment results feed back into the scheduler via a pacing factor.
 
@@ -371,7 +371,7 @@ The pacing factor modulates how eagerly `getNextItem()` returns new lessons vs r
 
 ### Steps
 
-1. [ ] [IMP] D1 schema — `user_learning_state` table:
+1. [x] [IMP] D1 schema — `user_learning_state` table:
    ```sql
    CREATE TABLE user_learning_state (
      user_id TEXT PRIMARY KEY REFERENCES users(id),
@@ -403,14 +403,14 @@ The pacing factor modulates how eagerly `getNextItem()` returns new lessons vs r
    - Clear `pending_assessment_id = null`, write `pacing_factor`, write `last_assessment_at`
    - In `getNextItem()`, apply pacing: use `pacing_factor` to scale the reviews-pending threshold at which a new lesson is returned (pacing = 1.0 → normal threshold; pacing = 0.5 → stricter, more reviews cleared first; pacing = 2.0 → more permissive)
 
-5. [ ] [TST] Simulation validation (50-session runs, all three profiles):
+5. [x] [TST] Simulation validation (50-session runs, all three profiles):
    - Gate fires at expected cadence (ratio arithmetic confirmed against per-session logs)
    - Pacing factor converges: strong-older ramps (≥1.2 by session 30); misconception-fractions drops when assessment scores low
    - Pacing factor stays bounded — no monotonic divergence
    - Learner never permanently stuck (reviews always available when gate is active)
    - Run with existing `--mode learning` — gate fires naturally from the implemented logic, no special mode needed
 
-6. [ ] [TST] API tests:
+6. [x] [TST] API tests:
    - `getNextItem()` returns assessment item when `pending_assessment_id` is set
    - `getNextItem()` returns review/lesson normally when no assessment pending
    - Trigger fires after correct ratio of lesson completions for new topics
