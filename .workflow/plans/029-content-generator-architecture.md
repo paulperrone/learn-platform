@@ -63,9 +63,9 @@ OutputWriter (shared):
 
 ## Progress
 
-**Completed:** Phase 0 (Graph Audit & Expansion), Phase 1 (Generator Architecture & Shared Utilities), Phase 2 (Prompt-Template Spec), Phase 3 (K-2 Generators), Phase 4 (3-5 Generators)
+**Completed:** Phase 0 (Graph Audit & Expansion), Phase 1 (Generator Architecture & Shared Utilities), Phase 2 (Prompt-Template Spec), Phase 3 (K-2 Generators), Phase 4 (3-5 Generators), Phase 5 (6-8 Algebra & Equations)
 **In Progress:** —
-**Next:** Phase 5
+**Next:** Phase 6
 
 **Model assignments:**
 - Phases 0-2: Opus (architecture, research, design)
@@ -466,7 +466,7 @@ The content review found fractions have 19 error findings (unsimplified answers,
 
 ---
 
-## Phase 5: Math Generators — 6-8 Algebra & Equations
+## Phase 5: Math Generators — 6-8 Algebra & Equations ✓
 
 **Goal:** Write generators for expressions-equations, ratios-proportions, and rational-numbers topics. These are the highest-error strands.
 
@@ -483,7 +483,7 @@ The content review found expressions-equations had 37 error findings (most criti
 
 ### Steps
 
-1. [ ] [IMP] Port `tools/generators/middle-algebra.ts` and `middle-rational.ts` into per-topic files:
+1. [x] [IMP] Port `tools/generators/middle-algebra.ts` and `middle-rational.ts` into per-topic files:
    - One file per topic in `../learn-content/math/generators/`, register each in `index.ts`
    - Specifically address the 37 error findings (wrong answer fields in equations-variables-both-sides, multi-step-equations-combining, combining-exponent-rules, etc.)
    - For topics involving symbolic algebra: generators produce the equation/expression structure, compute the answer, then template the question text
@@ -491,12 +491,12 @@ The content review found expressions-equations had 37 error findings (most criti
    - Include `conceptText` for each generator
    - Validate: `just validate-content`
 
-2. [ ] [IMP] Write generators for ratios-proportions:
+2. [x] [IMP] Write generators for ratios-proportions:
    - Port existing generators where available, write new ones for gaps
    - Register each in `../learn-content/math/generators/index.ts`, include `conceptText`
    - Validate: `just validate-content`
 
-3. [ ] [VAL] Run generation and validation:
+3. [x] [VAL] Run generation and validation:
    - `cd ../learn-content && npx tsx math/generators/run.ts --strand expressions-equations --seed 42 && npx tsx math/generators/run.ts --strand ratios-proportions --seed 42 && npx tsx math/generators/run.ts --strand rational-numbers --seed 42`
    - `just validate-content` — 0 errors
    - Run `/content-review math --strand expressions-equations` on generated content

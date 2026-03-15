@@ -1145,6 +1145,28 @@ A `while (n2 === n1) n2 = rng.int(min, max)` loop hangs forever if `min === max`
 
 ---
 
+### 2026-03-15: Generator index.ts auto-generation: camelCase regex must handle digit suffixes
+
+**Source:** User session — Plan 029 Phase 5
+**Area:** Content pipeline / TypeScript tooling
+
+When auto-generating `index.ts` imports from filenames, the camelCase regex `/-([a-z])/g` only capitalizes letters after dashes — it leaves `-1`, `-2`, etc. intact, producing invalid identifiers like `addSubtractWordProblems-1`. Use `/-([a-z0-9])/g` instead, which handles both: lowercase letters become uppercase (e.g., `-w` → `W`) and digits stay as-is (e.g., `-1` → `1`).
+
+**Context:** The `node` script that generates `math/generators/index.ts` from filenames. See the `toCamel()` function in the generation script.
+
+---
+
+### 2026-03-15: "Draw" instruction in generator solutions triggers platform-incompatible validation
+
+**Source:** User session — Plan 029 Phase 5
+**Area:** Content generation / validation
+
+The content validator flags any `solution`, `hint`, or lesson text containing words like "draw" as platform-incompatible (screen + text input only). For visual topics (number lines, graphs, geometry), use "place", "mark", "indicate", "locate", or "show" instead. Example: `inequalities-on-number-line` used "Draw a circle at..." → changed to "Place a circle at...". The `conceptText` lesson explanation is also checked.
+
+**Context:** Any generator for topics involving visual representation (number lines, graphs, coordinate planes). Run `just validate-content` after writing to catch these.
+
+---
+
 ### 2026-03-15: Run 291 TypeScript generators via esbuild bundle, not tsx or tsc
 
 **Source:** User session — Plan 029 Phase 4
