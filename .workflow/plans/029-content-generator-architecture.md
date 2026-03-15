@@ -63,9 +63,9 @@ OutputWriter (shared):
 
 ## Progress
 
-**Completed:** Phase 0 (Graph Audit & Expansion), Phase 1 (Generator Architecture & Shared Utilities), Phase 2 (Prompt-Template Spec), Phase 3 (K-2 Generators), Phase 4 (3-5 Generators), Phase 5 (6-8 Algebra & Equations)
+**Completed:** Phase 0 (Graph Audit & Expansion), Phase 1 (Generator Architecture & Shared Utilities), Phase 2 (Prompt-Template Spec), Phase 3 (K-2 Generators), Phase 4 (3-5 Generators), Phase 5 (6-8 Algebra & Equations), Phase 6 (6-8 Geometry, Stats, Functions)
 **In Progress:** —
-**Next:** Phase 6
+**Next:** Phase 7
 
 **Model assignments:**
 - Phases 0-2: Opus (architecture, research, design)
@@ -506,7 +506,7 @@ The content review found expressions-equations had 37 error findings (most criti
 
 ---
 
-## Phase 6: Math Generators — 6-8 Geometry, Stats, Functions
+## Phase 6: Math Generators — 6-8 Geometry, Stats, Functions ✓
 
 **Goal:** Complete generators for remaining grade 6-8 math topics.
 
@@ -524,25 +524,9 @@ The content review found expressions-equations had 37 error findings (most criti
 
 ### Steps
 
-1. [ ] [IMP] Port `tools/generators/middle-geometry.ts` into per-topic files for geometry + geometry-advanced:
-   - One file per topic in `../learn-content/math/generators/`, register each in `index.ts`
-   - Same per-topic refactoring pattern: `defineGenerator`, `conceptText`, `steps[]`, `variant`
-   - Geometry generators may need additional math-utils: area formulas, Pythagorean theorem, trig ratios — add to `../learn-content/math/generators/math-utils.ts`
-   - Validate: `just validate-content`
-
-2. [ ] [IMP] Write generators for statistics-probability, exponents-radicals, polynomials-intro, linear-functions:
-   - Port existing generators where available, write new ones for gaps
-   - Register each in `../learn-content/math/generators/index.ts`, include `conceptText`
-   - Statistics: mean, median, mode, range, probability, data representation
-   - Exponents: rules of exponents, scientific notation, radicals
-   - Polynomials: basic polynomial operations, factoring
-   - Linear functions: slope, intercept, graphing, systems
-   - Validate after each strand: `just validate-content`
-
-3. [ ] [VAL] Run generation and validation for all 6-8:
-   - `cd ../learn-content && npx tsx math/generators/run.ts --grade 6 --seed 42 && npx tsx math/generators/run.ts --grade 7 --seed 42 && npx tsx math/generators/run.ts --grade 8 --seed 42`
-   - `just validate-content` — 0 errors
-   - Spot-check 10 topics across strands
+1. [x] [IMP] Port `tools/generators/middle-geometry.ts` into per-topic files for geometry + geometry-advanced
+2. [x] [IMP] Write generators for statistics-probability, exponents-radicals, polynomials-intro, linear-functions
+3. [x] [VAL] Run generation and validation for all 6-8 — 743 topics, 11,058 problems, 0 errors
 
 **Validation:** All 6-8 math topics have generators. Generated content passes validation.
 

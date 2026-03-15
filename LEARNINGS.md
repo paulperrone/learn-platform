@@ -1145,6 +1145,17 @@ A `while (n2 === n1) n2 = rng.int(min, max)` loop hangs forever if `min === max`
 
 ---
 
+### 2026-03-15: Generator index.ts: filenames starting with a digit produce invalid JS identifiers
+
+**Source:** User session — Plan 029 Phase 6
+**Area:** Content pipeline / TypeScript tooling
+
+`3d-shape-nets.ts` converted by camelCase → `3dShapeNets`, which starts with a digit — invalid in JS/TS. esbuild catches this at bundle time. Fix: prefix any identifier that starts with a digit with `_` (e.g., `_3dShapeNets`). Add to the `toCamel()` function: `if (/^[0-9]/.test(name)) name = '_' + name;`.
+
+**Context:** The `index.ts` generation script in `learn-content/math/generators/`. Any topic ID starting with a digit (e.g., `3d-...`) will trigger this.
+
+---
+
 ### 2026-03-15: Generator index.ts auto-generation: camelCase regex must handle digit suffixes
 
 **Source:** User session — Plan 029 Phase 5
