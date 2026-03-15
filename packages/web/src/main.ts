@@ -10,6 +10,7 @@ const router = createRouter({
   routes: [
     { path: "/", component: () => import("./pages/index.vue"), meta: { requiresAuth: true } },
     { path: "/learn", component: () => import("./pages/learn.vue") },
+    { path: "/assess", component: () => import("./pages/assess.vue"), meta: { requiresAuth: true } },
     { path: "/try", component: () => import("./pages/try.vue") },
     { path: "/onboarding", component: () => import("./pages/onboarding.vue"), meta: { requiresAuth: true } },
     { path: "/diagnostic/:disciplineId", component: () => import("./pages/diagnostic.vue") },

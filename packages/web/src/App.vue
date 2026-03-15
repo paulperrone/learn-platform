@@ -23,6 +23,7 @@ async function handleLogout() {
         <RouterLink to="/" class="text-xl font-bold text-blue-600" :class="{ 'text-2xl': childMode.enabled.value }">{{ t('nav.brand') }}</RouterLink>
         <template v-if="isAuthenticated">
           <RouterLink to="/learn" class="text-gray-600 hover:text-gray-900" :class="{ 'text-lg py-1 px-2': childMode.enabled.value }">{{ t('nav.study') }}</RouterLink>
+          <RouterLink to="/assess" class="text-gray-600 hover:text-gray-900" :class="{ 'text-lg py-1 px-2': childMode.enabled.value }">Test</RouterLink>
           <RouterLink to="/progress" class="text-gray-600 hover:text-gray-900" :class="{ 'text-lg py-1 px-2': childMode.enabled.value }">{{ t('nav.progress') }}</RouterLink>
           <RouterLink v-if="!childMode.enabled.value" to="/explore" class="text-gray-600 hover:text-gray-900">{{ t('nav.explore') }}</RouterLink>
           <RouterLink v-if="!childMode.enabled.value" to="/teach" class="text-gray-600 hover:text-gray-900">{{ t('nav.teach') }}</RouterLink>

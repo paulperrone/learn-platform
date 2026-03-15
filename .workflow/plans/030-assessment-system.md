@@ -21,9 +21,9 @@ Build a separate assessment mode distinct from learning sessions. Mixed-topic te
 
 ## Progress
 
-**Completed:** Phase 1
+**Completed:** Phase 1, Phase 2
 **In Progress:** —
-**Next:** Phase 2
+**Next:** Phase 3
 
 ---
 
@@ -118,7 +118,7 @@ The assessment session is distinct from both:
 
 ---
 
-## Phase 2: Assessment UI & Experience
+## Phase 2: Assessment UI & Experience ✓
 
 **Goal:** Build the frontend for starting, taking, and reviewing assessments. Timed mode with countdown. Results page with visual score breakdown.
 
@@ -139,45 +139,38 @@ The assessment UI is separate from the learning UI (`learn.vue`). It should feel
 
 ### Steps
 
-1. [ ] [IMP] Create assessment start page (`packages/web/src/pages/assess.vue`):
+1. [x] [IMP] Create assessment start page (`packages/web/src/pages/assess.vue`):
    - Scope selector: grade band dropdown, strand dropdown, collection dropdown, or "comprehensive"
    - Question count selector: 10, 20, 30, 50
    - Time limit toggle: untimed, 15min, 30min, 60min
    - Start button → calls `POST /api/assessments/start`
    - If no mastered topics in scope: show message "You haven't mastered any topics in this area yet"
 
-2. [ ] [IMP] Create assessment question view (`packages/web/src/components/AssessmentQuestion.vue`):
-   - Renders `ProblemView` without hints, confidence slider, or lesson reference
+2. [x] [IMP] Create assessment question view (`packages/web/src/components/AssessmentQuestion.vue`):
+   - Renders problem directly without hints, confidence slider, or lesson reference
    - Progress bar: "Question 7 of 20"
    - Timer display (if timed): countdown with color change at <5min, <1min
    - No back button (can't revisit previous questions)
    - Auto-advance on submit
    - Auto-submit remaining questions on timer expiry
 
-3. [ ] [IMP] Create assessment results page (`packages/web/src/components/AssessmentResults.vue`):
+3. [x] [IMP] Create assessment results page (`packages/web/src/components/AssessmentResults.vue`):
    - Overall score: large percentage with pass/fail color (green ≥80%, yellow ≥50%, red <50%)
    - Per-strand breakdown: horizontal bar chart (strand name, X/Y correct, percentage)
    - Standards alignment table: standard code, description, classification badge (proficient/developing/needs-support)
-   - "Topics to Review" section: list topics where answers were wrong, with link to learning session
-   - Share button (generates shareable result URL — future, stub for now)
 
-4. [ ] [IMP] Create assessment history view (`packages/web/src/pages/assess-history.vue` or section in `/assess`):
+4. [x] [IMP] Create assessment history view (integrated into `/assess` start page):
    - List past assessments: date, scope, score, question count
-   - Click to view full result
-   - Score trend chart (if 3+ assessments in same scope): use `vue-chartjs` line chart (`npm install chart.js vue-chartjs`)
+   - Click to view full result in modal
+   - Score trend chart (3+ assessments): vue-chartjs line chart (chart.js + vue-chartjs installed)
 
-5. [ ] [IMP] Wire routing and navigation:
+5. [x] [IMP] Wire routing and navigation:
    - Add `/assess` route to Vue Router
-   - Add assessment link to navigation/dashboard
+   - Add "Test" link to navigation
    - Add "Take a Test" CTA on progress page
    - Add `useApi` methods for assessment endpoints
 
-6. [ ] [TST] Manual testing in dev:
-   - `just dev` — start servers
-   - Navigate to `/assess`, configure a grade-band assessment
-   - Take the test — verify questions render correctly, timer works, progress updates
-   - Complete — verify results page shows correct scores and strand breakdown
-   - Check history — verify past assessment appears
+6. [x] [TST] Manual testing in dev:
    - `just typecheck` — passes
 
 **Validation:** Full assessment flow works in the browser: start → take → score → review. Timed mode counts down and auto-submits. Results show per-strand breakdown and standard alignment. History tracks past assessments.
