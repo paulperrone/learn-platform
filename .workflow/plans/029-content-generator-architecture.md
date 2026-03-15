@@ -232,8 +232,8 @@ OutputWriter (shared)
    - `TopicMeta`: `{ id, name, description, gradeLevel, strand, defaultPresentation, contentDepth }` (loaded from graph.json)
    - `GenerateConfig`: `{ problemCount: number; exampleCount: number; seed: number }`
    - `GeneratedContent`: `{ problems: Problem[]; examples: WorkedExample[]; lessons: Lesson[] }`
-   - `PromptTemplateGenerator` interface (for interpretive disciplines, future): `{ topicId: string; discipline: string; template: PromptTemplate; postProcess: (llmOutput: string) => GeneratedContent }`
-   - `PromptTemplate`: `{ systemPrompt: string; factAnchors: string[]; depthConstraints: Record<ContentDepthLevel, string>; rubric?: string[] }`
+   - `PromptTemplateGenerator` interface (for interpretive disciplines, initial sketch): `{ topicId: string; discipline: string; template: PromptTemplate; postProcess: (llmOutput: string) => GeneratedContent }` — later refined in Phase 2: removed `postProcess`, added `conceptText`, `reviewChecklist`, `Perspective`, `RubricDimension` types
+   - `PromptTemplate`: `{ systemPrompt: string; factAnchors: string[]; depthConstraints: Record<ContentDepthLevel, string>; rubric?: string[] }` — later extended in Phase 2 with `perspectives`, `rubricDimensions`, `sourceRequirements`
    - Export `SeededRng` and `createRng` (port from existing `tools/generators/types.ts`)
    - `defineGenerator(config: { topicId: string; generate: (rng: SeededRng) => RawProblem; conceptText?: string }): TopicGenerator` — convenience factory
 
@@ -273,7 +273,7 @@ OutputWriter (shared)
    - Shared utility API reference (ProblemBuilder, ExampleBuilder, LessonBuilder)
    - The generate → verify → commit workflow
    - How generators interact with `/generate-content` slash command
-   - Prompt-template spec for interpretive disciplines (design, not implementation — detailed in Phase 7)
+   - Prompt-template spec for interpretive disciplines (initial sketch — completed in Phase 2)
    - Migration plan: existing content → generated content
 
 8. [x] [IMP] Update `/generate-content` slash command (`.workflow/commands/generate-content.md`):

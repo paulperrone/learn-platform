@@ -382,7 +382,7 @@ The following were considered for 030 but deferred to future plans:
 These are capability areas that don't belong in any current plan but should be on the roadmap:
 
 - **Locale/flavor content authoring** — Spanish content, themed content (story, adventure, game flavors). Infrastructure exists (7-tier fallback handles it), needs content.
-- **Interpretive discipline content at scale** — Using 029 P7 prompt-templates to generate ELA, history, philosophy content. Requires completing the prompt-template PoC first.
+- **Interpretive discipline content at scale** — Using 029 P2 prompt-template generators to produce ELA, history, philosophy content. PoC complete (history `causes-of-revolution`); needs per-topic templates for remaining topics and disciplines. Note: 030 P4 `RubricCriterion` type overlaps with 029 P2 `RubricDimension` — unify during implementation.
 - **Cross-discipline assessments** — Tests spanning math + ELA (word problems that test both reading comprehension and math skill). Requires cross-discipline edges to be fully leveraged.
 - **Adaptive learning path optimization** — ML/RL-based path optimization using accumulated user data. Requires months of usage data before viable.
 - **Media pipeline** — Real diagrams (not text placeholders), animations (manim-style step-by-step), interactive simulations (canvas-based). Each media type needs its own production pipeline.
