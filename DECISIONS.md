@@ -2116,3 +2116,62 @@ Post-implementation results:
 
 **Alternatives rejected:**
 - Learning session with assessment flag: Would require branching in every session service method; assessment results would contaminate SRS state
+
+---
+
+## 2026-03-15: FSRS mastery thresholds are correctly calibrated — no change (Plan 031 Phase 1)
+
+**Source:** User session — Plan 031 Phase 1
+
+**Context:** Phase 1 of Plan 031 required a deep diagnostic of the mastery system before any threshold changes. Specific investigation: is the 4-day stability threshold for Path A defensible? Is the 2-consecutive-correct (Path A) / 3-consecutive-correct (Path B) split right?
+
+**Decision:** Keep FSRS thresholds unchanged: stability >= 4d (Path A), consecutiveCorrect >= 2 for Path A and >= 3 for Path B. No change to mastery criterion in srs.ts.
+
+**Why:**
+- 4d stability corresponds to ~89% retention probability (FSRS power law: R = (1 + t/9s)^-1). This is the standard mastery bar.
+- At daily session cadence, stability naturally reaches >= 4d on the 3rd Good rating — so Path A fires simultaneously with Path B anyway. Lowering to 2d would permit mastery after 2 reviews (too aggressive); raising to 7d would require 4-5 reviews, causing frontier starvation.
+- Path B (3 consecutive in any state) correctly handles topics stuck in Learning/Relearning state, providing a meaningful safety net without undermining the stability requirement.
+- Simulation data: topics mastered via Path B at low stability (e.g., 1.37d) are K-0 level content for advanced learners — appropriate behavior.
+
+**Alternatives rejected:**
+- Lower stability to 2d: Too aggressive; would master topics after only 2 reviews when retention is still ~89% but material is very fresh
+- Raise stability to 7d: Causes frontier starvation in early sessions; topics block prerequisite unlocking for too long
+
+---
+
+## 2026-03-15: Implicit mastery threshold stays at 0.75 (Plan 031 Phase 1)
+
+**Source:** User session — Plan 031 Phase 1
+
+**Context:** Diagnostic estimates in [0.60, 0.75) represent borderline topics — especially for high-placement profiles (strong-older had 147 topics in this range). Question: should threshold be lowered to 0.70 to expand implicit mastery for strong profiles?
+
+**Decision:** Keep IMPLICIT_MASTERY_THRESHOLD at 0.75. Do not change. Revisit after Phase 4 (assessment calibration loop) provides actual performance evidence on borderline topics.
+
+**Why:**
+- The 0.75 threshold correctly produces well-separated implicit mastery: estimates cluster at 0.75+ (clearly mastered) or below 0.60 (clearly not). Only 1 topic in [0.60, 0.75) for average-older — almost no ambiguity.
+- For strong-older's 147 borderline topics: these represent topics where the diagnostic had insufficient evidence, not "clearly mastered" topics. The assessment loop (Phase 4) will provide actual performance data on these.
+- Lowering to 0.70 for strong-older would push 771/772 topics to implicit mastery, causing "all caught up" immediately — defeating the purpose of the learning system.
+
+**Alternatives rejected:**
+- Lower to 0.70: Would almost completely exhaust the K-8 content for grade-8-placed profiles; risk of false positives on borderline topics
+- Profile-adaptive threshold: Premature; wait for Phase 4 assessment data before profile-adaptive calibration
+
+---
+
+## 2026-03-15: Mastery convergence metric should use total mastery, not materialized only (Plan 031 Phase 1)
+
+**Source:** User session — Plan 031 Phase 1
+
+**Context:** The `mastery_convergence` evaluation target ("≥7 of 19 profiles reaching ≥15% mastery at session 30") measures materialized mastery (SRS-confirmed, in user_topic_state). Strong profiles with high diagnostic placement have massive implicit mastery from the diagnostic that is NOT counted.
+
+**Decision:** Change mastery convergence evaluation to use `masteryCount / totalTopics` (total mastery including implicit from diagnostic) instead of `materializedMasteryCount / totalTopics`. Update targets.json accordingly.
+
+**Why:**
+- strong-older at session 30: 11.5% materialized but 77.5% total mastery — the system correctly treats this learner as highly advanced, but the metric calls it a failure
+- misconception-fractions: 10.1% materialized but 46.0% total mastery — same problem
+- The metric was designed to detect "is the system driving genuine learning progression?" — total mastery answers this correctly
+- MaterializedMasteryCount measures SRS confirmation speed, not learning state
+
+**Alternatives rejected:**
+- Keep materialized metric, raise target: Materializing implicit mastery is bounded by how fast FSRS schedules topics — doesn't reflect learner knowledge
+- Separate metrics for low vs. high placement profiles: Over-engineering; total mastery unifies both cases correctly

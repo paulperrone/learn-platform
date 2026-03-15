@@ -1235,3 +1235,40 @@ After the Plan 029 simplified loop (lesson → independent → review), evaluati
 When changing the learning loop, run `just regression --update-baseline` and `just evaluate` after verifying the new behavior is intentional, then update `targets.json` with a documented rationale in `lastUpdatedReason`. Treat unexpected metric drops as diagnostic signals before updating baselines.
 
 **Context:** `audit/learner-simulations/targets.json` and `regression-baseline.json`. Run `node audit/learner-simulations/src/regression.ts --update-baseline` to update.
+
+---
+
+### 2026-03-15: Remediation loop has no session-level cap — can consume entire session
+
+**Source:** User session — Plan 031 Phase 1
+**Area:** Session engine / remediation logic
+
+`advancePhase()` tracks `remediatedTopics` to prevent re-entering remediation for the **original topic** within a session, but the prerequisite chain has no session-level budget. When a stuck topic (high reps, low accuracy) fails → triggers remediation → prereq A fails → triggers remediation of prereq A → prereq B tried (even if mastered) → cycles back. Observed: sessions with 98 remediation events out of 100 total session events, leaving only 2 actual reviews completed. The student effectively experiences 98 prerequisite drill attempts with no progress.
+
+Fix (Plan 031 Phase 2): Add `sessionRemediationCount` to `SessionState`, cap at 15 per session.
+
+**Context:** `session.ts advancePhase()`. Triggered when a stuck topic (consistently wrong answers) appears in the session mix.
+
+---
+
+### 2026-03-15: Topics with near-zero stability and high reps spin indefinitely in the review queue
+
+**Source:** User session — Plan 031 Phase 1
+**Area:** Session engine / FSRS scheduling
+
+FSRS has no mechanism to stop scheduling a topic that consistently gets `Rating.Again`. Each failure brings the next due date closer to "now" (learning steps: 1m, 10m, then 1d), so a failing topic appears in every session. Observed: two topics with reps=92 and reps=200 (stability≈0) in average-older's session 30 — they consumed review slots every session for 30 sessions without achieving mastery. The topic is still in `getDueTopics()` results daily.
+
+Fix (Plan 031 Phase 2): In `getDueTopics()`, skip topics with `reps > 20 AND stability < 0.5 AND consecutiveCorrect = 0`. Set `due = +90 days` for cooldown, re-introduce via lesson phase.
+
+**Context:** `srs.ts getDueTopics()`. Typically affects above-grade-level topics introduced when a learner's diagnostic placement was generous, combined with the learner's actual accuracy being 30-40%.
+
+---
+
+### 2026-03-15: Path B mastery (consecutiveCorrect >= 3, any state) can fire at very low stability
+
+**Source:** User session — Plan 031 Phase 1
+**Area:** Mastery criterion / FSRS edge cases
+
+Path B of the mastery criterion (`consecutiveCorrect >= 3` in any FSRS state) can trigger while a topic is still in Learning state with stability < 2 days. Example observed: `order-numbers-to-20` mastered with stabilityAfter=1.37d. The topic is correct by design — 1.37d stability still means ~89% retention at that exact moment — but the topic will decay quickly and may need early re-review. This is distinct from Path A (requires `stability >= 4d after update`), which provides a stronger durability guarantee. Path B is the correct safety net for topics stuck in Learning/Relearning state.
+
+**Context:** srs.ts `scheduleReview()` lines 252-254. Affects any topic with 3 consecutive correct answers before graduating to Review state — most common for K-0 content served to advanced learners with a high diagnostic placement.
