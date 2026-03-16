@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, computed } from "vue";
+import { ref, onMounted, computed, watch } from "vue";
 import { useApi, withErrorToast } from "@/composables/useApi";
 import { useAuth } from "@/composables/useAuth";
 import { useToast } from "@/composables/useToast";
@@ -7,6 +7,8 @@ import { useToast } from "@/composables/useToast";
 const api = useApi();
 const auth = useAuth();
 const toast = useToast();
+const disciplines = ref<any[]>([]);
+const selectedDiscipline = ref("");
 const topics = ref<any[]>([]);
 const loading = ref(true);
 const error = ref(false);
@@ -15,13 +17,30 @@ const prereqs = ref<string[]>([]);
 const masteredIds = ref<Set<string>>(new Set());
 const inProgressIds = ref<Set<string>>(new Set());
 
-onMounted(async () => {
+async function loadDisciplineTopics(disciplineId: string) {
+  selectedTopic.value = null;
+  prereqs.value = [];
   const result = await withErrorToast(
-    () => api.getTopics("math-foundations"),
+    () => api.getTopics(disciplineId),
     "Failed to load topics"
   );
   if (result) {
     topics.value = result.topics;
+  }
+}
+
+onMounted(async () => {
+  const discResult = await withErrorToast(
+    () => api.getDisciplines(),
+    "Failed to load disciplines"
+  );
+  if (discResult) {
+    disciplines.value = discResult.disciplines;
+    const first = disciplines.value[0];
+    if (first) {
+      selectedDiscipline.value = first.id;
+      await loadDisciplineTopics(first.id);
+    }
   } else {
     error.value = true;
   }
@@ -38,6 +57,10 @@ onMounted(async () => {
     } catch { /* non-critical */ }
   }
   loading.value = false;
+});
+
+watch(selectedDiscipline, async (id) => {
+  if (id) await loadDisciplineTopics(id);
 });
 
 const maxDepth = computed(() =>
@@ -77,7 +100,22 @@ function depthColor(depth: number) {
 <template>
   <div>
     <h1 class="text-3xl font-bold mb-2">Knowledge Graph Explorer</h1>
-    <p class="text-gray-500 mb-6">{{ topics.length }} topics across {{ maxDepth + 1 }} depth levels</p>
+    <p class="text-gray-500 mb-4">{{ topics.length }} topics across {{ maxDepth + 1 }} depth levels</p>
+
+    <!-- Discipline Tabs -->
+    <div v-if="disciplines.length > 1" class="flex gap-2 mb-6">
+      <button
+        v-for="d in disciplines"
+        :key="d.id"
+        @click="selectedDiscipline = d.id"
+        class="px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+        :class="selectedDiscipline === d.id
+          ? 'bg-blue-600 text-white'
+          : 'bg-gray-100 text-gray-600 hover:bg-gray-200'"
+      >
+        {{ d.name }}
+      </button>
+    </div>
 
     <!-- Loading -->
     <div v-if="loading" class="flex items-center gap-3 text-gray-400 py-12">

@@ -116,6 +116,16 @@ const progressMilestone = computed(() => {
   if (!est?.milestoneReached) return null;
   return t(`completion.milestone${est.milestoneReached}`);
 });
+
+// Phase 2: Filter to only disciplines with content
+const activeEstimates = computed(() =>
+  completionEstimates.value.filter((est) => est.total > 0)
+);
+
+// Phase 1: First discipline for diagnostic link
+const firstDisciplineId = computed(() =>
+  activeEstimates.value[0]?.disciplineId ?? "math-foundations"
+);
 </script>
 
 <template>
@@ -263,7 +273,7 @@ const progressMilestone = computed(() => {
       <!-- Progress Bar -->
       <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-5 mb-8">
         <div class="flex justify-between text-sm text-gray-600 mb-2">
-          <span>{{ t('dashboard.mathProgress') }}</span>
+          <span>{{ t('dashboard.overallProgress') }}</span>
           <span>{{ stats.mastered }}/{{ stats.total }}</span>
         </div>
         <div class="w-full bg-gray-200 rounded-full h-3">
@@ -275,8 +285,8 @@ const progressMilestone = computed(() => {
       </div>
 
       <!-- Completion Estimate -->
-      <div v-if="completionEstimates.length > 0" class="bg-white rounded-lg shadow-sm border border-gray-200 p-5 mb-8">
-        <div v-for="est in completionEstimates" :key="est.disciplineId">
+      <div v-if="activeEstimates.length > 0" class="bg-white rounded-lg shadow-sm border border-gray-200 p-5 mb-8">
+        <div v-for="est in activeEstimates" :key="est.disciplineId">
           <div class="flex justify-between items-baseline mb-2">
             <span class="font-semibold text-gray-800">{{ est.disciplineName }}</span>
             <span class="text-sm text-gray-500">
@@ -316,7 +326,7 @@ const progressMilestone = computed(() => {
           <p class="text-sm text-blue-700 mt-1">{{ t('dashboard.diagnosticDescription') }}</p>
         </div>
         <RouterLink
-          to="/diagnostic/math-foundations"
+          :to="`/diagnostic/${firstDisciplineId}`"
           class="shrink-0 bg-blue-600 text-white px-5 py-2 rounded-lg text-sm font-semibold hover:bg-blue-700 transition-colors"
         >
           {{ t('dashboard.takeDiagnostic') }}
@@ -326,7 +336,7 @@ const progressMilestone = computed(() => {
       <!-- Start Learning -->
       <div class="flex gap-4 mb-8">
         <RouterLink
-          to="/learn"
+          to="/queue"
           class="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-colors"
         >
           {{ t('dashboard.startLearning') }}

@@ -95,15 +95,25 @@ export function useApi() {
         pacingFactor: number;
       }>(`/learn/session-status?userId=${userId}`);
     },
+    getQueue: async (disciplineId?: string) => {
+      const userId = await getUserId();
+      const qs = disciplineId ? `&disciplineId=${disciplineId}` : "";
+      return request<{
+        assessment?: { sessionId: string };
+        reviews: { topicId: string; topicName: string; due: string; overdueDays: number }[];
+        newTopics: { topicId: string; topicName: string; description: string; gradeLevel: number; depth: number }[];
+        completed: boolean;
+      }>(`/learn/queue?userId=${userId}${qs}`);
+    },
     getActiveSession: async () => {
       const userId = await getUserId();
       return request<any>(`/learn/sessions/active?userId=${userId}`);
     },
-    startSession: async () => {
+    startSession: async (opts?: { topicId?: string }) => {
       const userId = await getUserId();
       return request<any>("/learn/sessions", {
         method: "POST",
-        body: JSON.stringify({ userId }),
+        body: JSON.stringify({ userId, topicId: opts?.topicId }),
       });
     },
     respondToSession: (sessionId: string, response: any) =>

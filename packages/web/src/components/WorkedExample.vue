@@ -45,6 +45,10 @@ const evaluation = ref<{
 
 checkLLM();
 
+const isFallback = computed(() =>
+  props.example.steps.length === 1 && (props.example as any).id?.startsWith("fallback-")
+);
+
 const stepSpeechText = computed(() => {
   const step = props.example.steps[currentStep.value];
   return `${step.instruction}. ${step.work}`;
@@ -110,7 +114,23 @@ function nextStep() {
 </script>
 
 <template>
-  <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+  <!-- Fallback intro view (no self-explanation flow) -->
+  <div v-if="isFallback" class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+    <h3 class="text-lg font-semibold mb-4">{{ example.title }}</h3>
+    <div class="bg-blue-50 rounded-lg p-4 mb-4">
+      <p class="text-gray-700">{{ currentStepData.instruction }}</p>
+    </div>
+    <p class="text-sm text-gray-500 mb-4">{{ currentStepData.work }}</p>
+    <button
+      @click="emit('done')"
+      class="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm hover:bg-blue-700"
+    >
+      {{ t('example.continue') }}
+    </button>
+  </div>
+
+  <!-- Full worked example with self-explanation -->
+  <div v-else class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
     <div class="flex items-center justify-between mb-4">
       <h3 class="text-lg font-semibold">{{ example.title }}</h3>
       <SpeakButton :text="stepSpeechText" :convert-math="true" />

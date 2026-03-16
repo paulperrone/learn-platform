@@ -1,10 +1,12 @@
 <script setup lang="ts">
-import { ref, onMounted, computed } from "vue";
+import { ref, onMounted, computed, watch } from "vue";
 import { useApi, withErrorToast } from "@/composables/useApi";
 import { useI18n } from "vue-i18n";
 
 const api = useApi();
 const { t } = useI18n();
+const disciplines = ref<any[]>([]);
+const selectedDiscipline = ref("");
 const topics = ref<any[]>([]);
 const allTopics = ref<any[]>([]);
 const distributions = ref<any[]>([]);
@@ -17,26 +19,41 @@ const calibration = ref<{
 const loading = ref(true);
 const error = ref(false);
 
+async function loadDisciplineData(disciplineId: string) {
+  const topicsData = await api.getTopics(disciplineId);
+  allTopics.value = topicsData.topics;
+}
+
 onMounted(async () => {
   const result = await withErrorToast(async () => {
-    const [statesData, topicsData, presData, calData] = await Promise.all([
+    const [discData, statesData, presData, calData] = await Promise.all([
+      api.getDisciplines(),
       api.getTopicStates(),
-      api.getTopics("math"),
       api.getPresentationDistributions(),
       api.getCalibration(),
     ]);
-    return { statesData, topicsData, presData, calData };
+    return { discData, statesData, presData, calData };
   }, t("errors.failedToLoad", { resource: "progress" }));
 
   if (result) {
+    disciplines.value = result.discData.disciplines;
     topics.value = result.statesData.topics;
-    allTopics.value = result.topicsData.topics;
     distributions.value = result.presData?.distributions ?? [];
     calibration.value = result.calData;
+    // Default to first discipline with topics
+    const first = disciplines.value[0];
+    if (first) {
+      selectedDiscipline.value = first.id;
+      await loadDisciplineData(first.id);
+    }
   } else {
     error.value = true;
   }
   loading.value = false;
+});
+
+watch(selectedDiscipline, async (id) => {
+  if (id) await loadDisciplineData(id);
 });
 
 const stateMap = computed(() => {
@@ -93,7 +110,7 @@ const LEVELS = ["primary", "intermediate", "standard", "advanced"] as const;
       <h1 class="text-3xl font-bold">{{ t('progress.title') }}</h1>
       <div class="flex gap-2">
         <RouterLink
-          to="/report/math"
+          :to="`/report/${selectedDiscipline}`"
           class="rounded-lg border border-gray-200 px-4 py-2 text-sm font-medium text-gray-700 hover:border-gray-300 transition-colors"
         >
           View Report
@@ -105,6 +122,21 @@ const LEVELS = ["primary", "intermediate", "standard", "advanced"] as const;
           Take a Test
         </RouterLink>
       </div>
+    </div>
+
+    <!-- Discipline Tabs -->
+    <div v-if="disciplines.length > 1" class="flex gap-2 mb-6">
+      <button
+        v-for="d in disciplines"
+        :key="d.id"
+        @click="selectedDiscipline = d.id"
+        class="px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+        :class="selectedDiscipline === d.id
+          ? 'bg-blue-600 text-white'
+          : 'bg-gray-100 text-gray-600 hover:bg-gray-200'"
+      >
+        {{ d.name }}
+      </button>
     </div>
 
     <!-- Loading -->
