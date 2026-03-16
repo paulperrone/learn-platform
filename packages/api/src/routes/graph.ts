@@ -1,5 +1,5 @@
 import { Hono } from "hono";
-import { eq, and } from "drizzle-orm";
+import { eq, and, sql } from "drizzle-orm";
 import type { Env } from "../index.js";
 import { getDb } from "../db/index.js";
 import { createGraphService } from "../services/graph.js";
@@ -11,7 +11,19 @@ graphRoutes.get("/disciplines", async (c) => {
   const db = getDb(c.env.DB);
   const graph = createGraphService(db);
   const disciplines = await graph.getDisciplines();
-  return c.json({ disciplines });
+
+  // Only return disciplines that have topics (content)
+  const topicCounts = await db
+    .select({
+      disciplineId: schema.topics.disciplineId,
+      count: sql<number>`count(*)`,
+    })
+    .from(schema.topics)
+    .groupBy(schema.topics.disciplineId);
+  const countMap = new Map(topicCounts.map((r) => [r.disciplineId, r.count]));
+
+  const active = disciplines.filter((d) => (countMap.get(d.id) ?? 0) > 0);
+  return c.json({ disciplines: active });
 });
 
 graphRoutes.get("/collections", async (c) => {

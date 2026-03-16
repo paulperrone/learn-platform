@@ -5,7 +5,7 @@ import { getDb } from "../db/index.js";
 import { createGraphService } from "../services/graph.js";
 import { createContentService } from "../services/content.js";
 import * as schema from "../db/schema.js";
-import { eq, and, inArray } from "drizzle-orm";
+import { eq, and, inArray, sql } from "drizzle-orm";
 
 export const publicRoutes = new Hono<Env>();
 
@@ -136,19 +136,43 @@ publicRoutes.use("/graph/*", rateLimit(RATE_LIMITS.graph, "graph"));
 // Everything else gets default rate limit
 publicRoutes.use("*", rateLimit(RATE_LIMITS.default, "api"));
 
-// GET /api/public/disciplines — list all disciplines
+// GET /api/public/disciplines — list disciplines that have content (topics > 0)
 publicRoutes.get("/disciplines", async (c) => {
   const db = getDb(c.env.DB);
   const graph = createGraphService(db);
   const disciplines = await graph.getDisciplines();
-  return c.json({
-    disciplines: disciplines.map((d) => ({
-      id: d.id,
-      name: d.name,
-      description: d.description,
-      progressionModel: d.progressionModel,
-    })),
-  });
+
+  // Count topics and compute grade range per discipline
+  const topicStats = await db
+    .select({
+      disciplineId: schema.topics.disciplineId,
+      count: sql<number>`count(*)`,
+      minGrade: sql<number>`min(${schema.topics.gradeLevel})`,
+      maxGrade: sql<number>`max(${schema.topics.gradeLevel})`,
+    })
+    .from(schema.topics)
+    .groupBy(schema.topics.disciplineId);
+  const statsMap = new Map(topicStats.map((s) => [s.disciplineId, s]));
+
+  // Only return disciplines that have topics
+  const active = disciplines
+    .filter((d) => (statsMap.get(d.id)?.count ?? 0) > 0)
+    .map((d) => {
+      const stats = statsMap.get(d.id)!;
+      const gradeRange = stats.minGrade === stats.maxGrade
+        ? (stats.minGrade === 0 ? "K" : `Grade ${stats.minGrade}`)
+        : `${stats.minGrade === 0 ? "K" : stats.minGrade}–${stats.maxGrade}`;
+      return {
+        id: d.id,
+        name: d.name,
+        description: d.description,
+        progressionModel: d.progressionModel,
+        topicCount: stats.count,
+        gradeRange,
+      };
+    });
+
+  return c.json({ disciplines: active });
 });
 
 // GET /api/public/disciplines/:id/topics — topics for a discipline

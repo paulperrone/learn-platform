@@ -31,13 +31,16 @@ describe("Public API - /api/public", () => {
     });
 
     it("returns disciplines without auth", async () => {
-      await seedDiscipline({ id: "math-foundations", name: "Foundational Mathematics", description: "Elementary math" });
+      const disc = await seedDiscipline({ id: "math-foundations", name: "Foundational Mathematics", description: "Elementary math" });
+      // Discipline must have at least one topic to appear
+      await seedTopic(disc.id, { id: "count-10", name: "Count to 10", depth: 0, gradeLevel: 0 });
       const res = await request("/api/public/disciplines");
       expect(res.status).toBe(200);
-      const body = await json<{ disciplines: Array<{ id: string; name: string }> }>(res);
+      const body = await json<{ disciplines: Array<{ id: string; name: string; topicCount: number }> }>(res);
       expect(body.disciplines).toHaveLength(1);
       expect(body.disciplines[0].id).toBe("math-foundations");
       expect(body.disciplines[0].name).toBe("Foundational Mathematics");
+      expect(body.disciplines[0].topicCount).toBe(1);
     });
   });
 
