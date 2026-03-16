@@ -30,9 +30,15 @@ reportRoutes.get("/progress/:disciplineId", async (c) => {
   const user = c.get("user");
   const disciplineId = c.req.param("disciplineId");
   const db = getDb(c.env.DB);
-  const svc = createStandardsService(db);
-  const report = await svc.generateProgressReport(user.id, disciplineId);
-  return c.json(report);
+  try {
+    const svc = createStandardsService(db);
+    const report = await svc.generateProgressReport(user.id, disciplineId);
+    return c.json(report);
+  } catch (err) {
+    const message = err instanceof Error ? err.message : "Failed to generate report";
+    console.error("Progress report error:", message);
+    return c.json({ error: message }, 500);
+  }
 });
 
 // GET /api/reports/progress/:disciplineId/:userId — teacher/parent view (requires account link)

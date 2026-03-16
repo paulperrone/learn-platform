@@ -18,7 +18,6 @@ const loading = ref(true);
 const error = ref(false);
 const selectedGrade = ref<number | null>(null);
 const topicStatusMap = ref<Map<string, "not-started" | "in-progress" | "mastered" | "frontier">>(new Map());
-const masterySummary = ref<{ total: number; mastered: number; inProgress: number; frontier: number; progress: number } | null>(null);
 
 onMounted(async () => {
   const [graphResult, topicsResult] = await Promise.all([
@@ -36,11 +35,10 @@ onMounted(async () => {
       description: `Browse ${graphResult.topics.length} topics in ${graphResult.discipline.name}. See prerequisites, grade levels, and how topics connect.`,
     });
 
-    // Load user mastery state if authenticated
+    // Load user mastery state for topic status badges (authenticated only)
     if (auth.isAuthenticated.value) {
       const userState = await api.getUserGraphState(disciplineId).catch(() => null);
       if (userState) {
-        masterySummary.value = userState.summary;
         for (const t of userState.topics) {
           topicStatusMap.value.set(t.id, t.status);
         }
@@ -143,33 +141,6 @@ function statusBorderClass(topicId: string) {
           <span>{{ topics.length }} topics</span>
           <span>{{ discipline.gradeRange }}</span>
           <span>{{ prerequisites.length }} prerequisite connections</span>
-        </div>
-      </div>
-
-      <!-- Mastery progress bar (authenticated only) -->
-      <div v-if="masterySummary" class="mb-6 bg-white rounded-lg border border-gray-200 p-4">
-        <div class="flex items-center justify-between mb-2">
-          <span class="text-sm font-medium text-gray-700">Your Progress</span>
-          <span class="text-sm text-gray-500">
-            {{ masterySummary.mastered }}/{{ masterySummary.total }} mastered
-          </span>
-        </div>
-        <div class="h-2.5 bg-gray-100 rounded-full overflow-hidden">
-          <div
-            class="h-full bg-green-500 rounded-full transition-all duration-500"
-            :style="{ width: `${Math.round(masterySummary.progress * 100)}%` }"
-          />
-        </div>
-        <div class="flex gap-4 mt-2 text-xs text-gray-500">
-          <span class="flex items-center gap-1">
-            <span class="w-2 h-2 rounded-full bg-green-500" /> {{ masterySummary.mastered }} mastered
-          </span>
-          <span class="flex items-center gap-1">
-            <span class="w-2 h-2 rounded-full bg-blue-500" /> {{ masterySummary.inProgress }} in progress
-          </span>
-          <span class="flex items-center gap-1">
-            <span class="w-2 h-2 rounded-full bg-amber-500" /> {{ masterySummary.frontier }} ready to learn
-          </span>
         </div>
       </div>
 

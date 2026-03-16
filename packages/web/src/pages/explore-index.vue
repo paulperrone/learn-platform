@@ -1,46 +1,25 @@
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
 import { useApi, withErrorToast } from "@/composables/useApi";
-import { useAuth } from "@/composables/useAuth";
 import { useMeta } from "@/composables/useMeta";
 import { useI18n } from "vue-i18n";
 import type { Discipline } from "@learn/shared";
 
 const api = useApi();
-const auth = useAuth();
 const { t } = useI18n();
 const disciplines = ref<(Discipline & { gradeRange?: string; topicCount?: number })[]>([]);
 const loading = ref(true);
 const error = ref(false);
-const disciplineProgress = ref<Map<string, { mastered: number; total: number; progress: number }>>(new Map());
 
 onMounted(async () => {
   useMeta({
     title: "Explore Curriculum",
-    description: "Browse our free, open math curriculum. See every topic, problem, and worked example — full transparency into how we teach.",
+    description: "Browse our free, open curriculum. See every topic, problem, and worked example — full transparency into how we teach.",
   });
 
   const result = await withErrorToast(() => api.getPublicDisciplines(), "Failed to load disciplines");
   if (result) {
     disciplines.value = result.disciplines;
-
-    // Load per-discipline mastery for authenticated users
-    if (auth.isAuthenticated.value) {
-      const statePromises = result.disciplines.map((s) =>
-        api.getUserGraphState(s.id).catch(() => null)
-      );
-      const states = await Promise.all(statePromises);
-      for (let i = 0; i < result.disciplines.length; i++) {
-        const state = states[i];
-        if (state) {
-          disciplineProgress.value.set(result.disciplines[i].id, {
-            mastered: state.summary.mastered,
-            total: state.summary.total,
-            progress: state.summary.progress,
-          });
-        }
-      }
-    }
   } else {
     error.value = true;
   }
@@ -107,18 +86,6 @@ function gradeLabel(range: string) {
             {{ discipline.topicCount }} topics
           </span>
           <span class="text-blue-600 group-hover:underline ml-auto">Browse &rarr;</span>
-        </div>
-        <!-- User progress (authenticated only) -->
-        <div v-if="disciplineProgress.get(discipline.id)" class="mt-3 pt-3 border-t border-gray-100">
-          <div class="flex items-center gap-2 text-xs text-gray-500 mb-1">
-            <span>{{ disciplineProgress.get(discipline.id)!.mastered }}/{{ disciplineProgress.get(discipline.id)!.total }} mastered</span>
-          </div>
-          <div class="h-1.5 bg-gray-100 rounded-full overflow-hidden">
-            <div
-              class="h-full bg-green-500 rounded-full transition-all"
-              :style="{ width: `${Math.round(disciplineProgress.get(discipline.id)!.progress * 100)}%` }"
-            />
-          </div>
         </div>
       </RouterLink>
     </div>
