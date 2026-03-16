@@ -180,8 +180,8 @@ const hasStarted = computed(() =>
             <p v-else class="text-sm text-gray-500 mt-1">
               {{ t('dashboard.goalProgress', {
                 current: todayProgress.current,
-                target: todayProgress.goal.target,
-                unit: t(todayProgress.goal.type === 'minutes' ? 'dashboard.goalMinutes' : 'dashboard.goalProblems')
+                target: todayProgress.dailyXpGoal,
+                unit: 'XP'
               }) }}
             </p>
             <RouterLink to="/settings" class="text-xs text-blue-500 hover:underline mt-2 inline-block">{{ t('dashboard.configureGoal') }}</RouterLink>

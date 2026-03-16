@@ -671,7 +671,7 @@ const SCHEMA_STATEMENTS = [
   'CREATE INDEX utd_user_topic_idx ON user_topic_depth (user_id, topic_id)',
 
   // review_log (FK → users, topics)
-  'CREATE TABLE review_log (id text PRIMARY KEY NOT NULL, user_id text NOT NULL, topic_id text NOT NULL, assessment_content_id text, rating integer NOT NULL, confidence integer, correct integer NOT NULL, response_ms integer NOT NULL, phase text NOT NULL, hints_used integer, misconception integer, content_version text, llm_assisted integer DEFAULT 0, hint_source text, scaffolding text, implicit integer NOT NULL DEFAULT 0, created_at text NOT NULL, FOREIGN KEY (user_id) REFERENCES users(id), FOREIGN KEY (topic_id) REFERENCES topics(id))',
+  'CREATE TABLE review_log (id text PRIMARY KEY NOT NULL, user_id text NOT NULL, topic_id text NOT NULL, assessment_content_id text, rating integer NOT NULL, confidence integer, correct integer NOT NULL, response_ms integer NOT NULL, phase text NOT NULL, hints_used integer, misconception integer, content_version text, llm_assisted integer DEFAULT 0, hint_source text, scaffolding text, implicit integer NOT NULL DEFAULT 0, xp_earned integer NOT NULL DEFAULT 0, created_at text NOT NULL, FOREIGN KEY (user_id) REFERENCES users(id), FOREIGN KEY (topic_id) REFERENCES topics(id))',
   'CREATE INDEX review_user_idx ON review_log (user_id)',
   'CREATE INDEX review_topic_idx ON review_log (topic_id)',
   'CREATE INDEX review_assessment_idx ON review_log (assessment_content_id)',
@@ -696,7 +696,7 @@ const SCHEMA_STATEMENTS = [
   'CREATE INDEX pdl_user_discipline_idx ON presentation_drift_log (user_id, discipline_id)',
 
   // user_preferences (FK → users)
-  'CREATE TABLE user_preferences (user_id text PRIMARY KEY NOT NULL, tts_enabled integer DEFAULT true NOT NULL, tts_rate real DEFAULT 0.9 NOT NULL, tts_voice_name text, tts_auto_read integer DEFAULT false NOT NULL, stt_enabled integer DEFAULT true NOT NULL, presentation_override text, daily_goal_type text DEFAULT \'minutes\' NOT NULL, daily_goal_target integer DEFAULT 20 NOT NULL, created_at text NOT NULL, updated_at text NOT NULL, FOREIGN KEY (user_id) REFERENCES users(id))',
+  'CREATE TABLE user_preferences (user_id text PRIMARY KEY NOT NULL, tts_enabled integer DEFAULT true NOT NULL, tts_rate real DEFAULT 0.9 NOT NULL, tts_voice_name text, tts_auto_read integer DEFAULT false NOT NULL, stt_enabled integer DEFAULT true NOT NULL, presentation_override text, daily_xp_goal integer DEFAULT 20 NOT NULL, created_at text NOT NULL, updated_at text NOT NULL, FOREIGN KEY (user_id) REFERENCES users(id))',
 
   // user_fsrs_params (FK → users)
   'CREATE TABLE user_fsrs_params (user_id text PRIMARY KEY NOT NULL, request_retention real DEFAULT 0.9 NOT NULL, w_json text, review_count integer DEFAULT 0 NOT NULL, computed_at text, created_at text NOT NULL, updated_at text NOT NULL, FOREIGN KEY (user_id) REFERENCES users(id))',
@@ -749,7 +749,7 @@ const SCHEMA_STATEMENTS = [
   'CREATE INDEX gs_status_idx ON group_sessions (facilitator_id, status)',
 
   // daily_activity (FK → users)
-  'CREATE TABLE daily_activity (id integer PRIMARY KEY AUTOINCREMENT NOT NULL, user_id text NOT NULL, date text NOT NULL, minutes_active integer DEFAULT 0 NOT NULL, problems_completed integer DEFAULT 0 NOT NULL, topics_mastered integer DEFAULT 0 NOT NULL, goal_met integer DEFAULT 0 NOT NULL, updated_at text NOT NULL, FOREIGN KEY (user_id) REFERENCES users(id))',
+  'CREATE TABLE daily_activity (id integer PRIMARY KEY AUTOINCREMENT NOT NULL, user_id text NOT NULL, date text NOT NULL, minutes_active integer DEFAULT 0 NOT NULL, problems_completed integer DEFAULT 0 NOT NULL, topics_mastered integer DEFAULT 0 NOT NULL, daily_xp integer DEFAULT 0 NOT NULL, goal_met integer DEFAULT 0 NOT NULL, updated_at text NOT NULL, FOREIGN KEY (user_id) REFERENCES users(id))',
   'CREATE UNIQUE INDEX da_user_date_idx ON daily_activity (user_id, date)',
   'CREATE INDEX da_user_goal_idx ON daily_activity (user_id, goal_met)',
 

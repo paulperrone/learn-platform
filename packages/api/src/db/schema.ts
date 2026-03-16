@@ -236,6 +236,7 @@ export const reviewLog = sqliteTable("review_log", {
   hintSource: text("hint_source"), // 'static' | 'llm' | null
   scaffolding: text("scaffolding"), // ReviewScaffolding: 'none' | 'example' | 'hints-only' | 'solution' | null
   implicit: integer("implicit").notNull().default(0), // 1 = system-generated credit event (FIRe prereq), 0 = real review
+  xpEarned: integer("xp_earned").notNull().default(0), // XP awarded for this problem response
   createdAt: text("created_at").notNull().$defaultFn(() => new Date().toISOString()),
 }, (table) => [
   index("review_user_idx").on(table.userId),
@@ -269,8 +270,7 @@ export const userPreferences = sqliteTable("user_preferences", {
   ttsAutoRead: integer("tts_auto_read", { mode: "boolean" }).notNull().default(false),
   sttEnabled: integer("stt_enabled", { mode: "boolean" }).notNull().default(true),
   presentationOverride: text("presentation_override"), // 'primary' | 'intermediate' | 'standard' | 'advanced' — overrides age-based default
-  dailyGoalType: text("daily_goal_type").notNull().default("minutes"), // 'minutes' | 'problems'
-  dailyGoalTarget: integer("daily_goal_target").notNull().default(20), // 20 minutes or N problems
+  dailyXpGoal: integer("daily_xp_goal").notNull().default(20), // XP target per day (1 XP ≈ 1 min focused effort)
   createdAt: text("created_at").notNull().$defaultFn(() => new Date().toISOString()),
   updatedAt: text("updated_at").notNull().$defaultFn(() => new Date().toISOString()),
 });
@@ -464,6 +464,7 @@ export const dailyActivity = sqliteTable("daily_activity", {
   minutesActive: integer("minutes_active").notNull().default(0),
   problemsCompleted: integer("problems_completed").notNull().default(0),
   topicsMastered: integer("topics_mastered").notNull().default(0),
+  dailyXp: integer("daily_xp").notNull().default(0), // Total XP earned this day
   goalMet: integer("goal_met", { mode: "boolean" }).notNull().default(false),
   updatedAt: text("updated_at").notNull().$defaultFn(() => new Date().toISOString()),
 }, (table) => [

@@ -78,23 +78,23 @@ Review vs New:
 
 ## Progress
 
-**Completed:** None yet
+**Completed:** Phase 1
 **In Progress:** —
-**Next:** Phase 1
+**Next:** Phase 2
 
 ---
 
-## Phase 1: Schema + XP Engine
+## Phase 1: Schema + XP Engine ✓
 **Goal:** Add XP columns to DB, define XP formulas, build the core XP calculation functions
 
-1. [ ] [IMP] Add `xpEarned` (integer) column to `review_log` table — records XP per problem response
-2. [ ] [IMP] Add `dailyXp` (integer, default 0) column to `daily_activity` table — replaces minutes as the primary effort metric
-3. [ ] [IMP] Replace `dailyGoalType` + `dailyGoalTarget` in `userPreferences` with `dailyXpGoal` (integer, default 20) — XP is the only goal type
-4. [ ] [CFG] Generate and apply D1 migration with `just db-generate` / `just db-migrate`. Remember: add `DEFAULT` manually to generated SQL for NOT NULL columns.
-5. [ ] [IMP] Update shared types: remove `DailyGoalType` enum, replace `DailyGoalConfig` with `{ dailyXpGoal: number }`, add `dailyXp` to `DailyActivityDay`, add `totalXp` to `WeeklySummary`
-6. [ ] [IMP] Create `packages/api/src/services/xp.ts` — pure functions: `computeProblemXP(params)`, `computeSessionBonus(results)`, `detectRushing(responseMs, problemType)`, `computeSessionXP(responses)`
-7. [ ] [TST] Unit tests for XP engine — verify formula correctness: base XP per type, perfect bonus, rushing penalty, edge cases (empty session, all wrong, all rushed)
-8. [ ] [DOC] Add XP formula documentation to `docs/xp-system.md`
+1. [x] [IMP] Add `xpEarned` (integer) column to `review_log` table — records XP per problem response
+2. [x] [IMP] Add `dailyXp` (integer, default 0) column to `daily_activity` table — replaces minutes as the primary effort metric
+3. [x] [IMP] Replace `dailyGoalType` + `dailyGoalTarget` in `userPreferences` with `dailyXpGoal` (integer, default 20) — XP is the only goal type
+4. [x] [CFG] Generate and apply D1 migration with `just db-generate` / `just db-migrate`. Remember: add `DEFAULT` manually to generated SQL for NOT NULL columns.
+5. [x] [IMP] Update shared types: remove `DailyGoalType` enum, replace `DailyGoalConfig` with `{ dailyXpGoal: number }`, add `dailyXp` to `DailyActivityDay`, add `totalXp` to `WeeklySummary`
+6. [x] [IMP] Create `packages/api/src/services/xp.ts` — pure functions: `computeProblemXP(params)`, `computeSessionBonus(results)`, `detectRushing(responseMs, problemType)`, `computeSessionXP(responses)`
+7. [x] [TST] Unit tests for XP engine — verify formula correctness: base XP per type, perfect bonus, rushing penalty, edge cases (empty session, all wrong, all rushed)
+8. [x] [DOC] Add XP formula documentation to `docs/xp-system.md`
 
 **Validation:** `just test` passes, XP engine returns correct values for all test cases
 

@@ -66,6 +66,7 @@ export type ReviewLog = {
   correct: boolean;
   responseMs: number;
   phase: SessionPhase;
+  xpEarned: number;
   createdAt: string;
 };
 
@@ -432,8 +433,8 @@ export type PeerPairState = {
 
 // === Daily Activity Types ===
 
+// Deprecated — removed in Plan 032. Kept as alias until Phase 4 cleanup.
 export type DailyGoalType = "minutes" | "problems";
-
 export type DailyGoalConfig = {
   type: DailyGoalType;
   target: number;
@@ -444,11 +445,12 @@ export type DailyActivityDay = {
   minutesActive: number;
   problemsCompleted: number;
   topicsMastered: number;
+  dailyXp: number;
   goalMet: boolean;
 };
 
 export type TodayProgress = DailyActivityDay & {
-  goal: DailyGoalConfig;
+  dailyXpGoal: number;
   current: number;
   progress: number; // 0-1
 };
@@ -461,6 +463,7 @@ export type WeeklySummary = {
   totalMinutes: number;
   totalProblems: number;
   totalTopicsMastered: number;
+  totalXp: number;
   days: DailyActivityDay[];
 };
 

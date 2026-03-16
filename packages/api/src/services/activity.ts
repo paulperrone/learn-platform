@@ -4,12 +4,7 @@ import type { DrizzleD1Database } from "drizzle-orm/d1";
 
 type DB = DrizzleD1Database<typeof schema>;
 
-export type DailyGoalConfig = {
-  type: "minutes" | "problems";
-  target: number;
-};
-
-const DEFAULT_GOAL: DailyGoalConfig = { type: "minutes", target: 20 };
+const DEFAULT_XP_GOAL = 20;
 
 const STREAK_MILESTONES = [100, 66, 30, 7] as const;
 
@@ -40,17 +35,13 @@ function calcLongest(goalMetDates: Set<string>): number {
 
 export function createActivityService(db: DB) {
 
-  async function getDailyGoal(userId: string): Promise<DailyGoalConfig> {
+  async function getDailyXpGoal(userId: string): Promise<number> {
     const row = await db
-      .select({
-        type: schema.userPreferences.dailyGoalType,
-        target: schema.userPreferences.dailyGoalTarget,
-      })
+      .select({ dailyXpGoal: schema.userPreferences.dailyXpGoal })
       .from(schema.userPreferences)
       .where(eq(schema.userPreferences.userId, userId))
       .get();
-    if (!row) return DEFAULT_GOAL;
-    return { type: row.type as "minutes" | "problems", target: row.target };
+    return row?.dailyXpGoal ?? DEFAULT_XP_GOAL;
   }
 
   async function getOrCreateToday(userId: string, date: string) {
@@ -78,10 +69,11 @@ export function createActivityService(db: DB) {
 
   async function recordProblemCompleted(userId: string, date: string): Promise<{ goalMet: boolean; goalJustCompleted: boolean }> {
     const activity = await getOrCreateToday(userId, date);
-    const goal = await getDailyGoal(userId);
     const newCount = activity.problemsCompleted + 1;
     const wasGoalMet = activity.goalMet;
-    const isGoalMet = wasGoalMet || (goal.type === "problems" && newCount >= goal.target);
+    // Goal check is now XP-based — problemsCompleted alone doesn't trigger goal
+    // XP recording happens in Phase 2 via recordXP()
+    const isGoalMet = wasGoalMet;
 
     await db
       .update(schema.dailyActivity)
@@ -107,17 +99,30 @@ export function createActivityService(db: DB) {
       .where(eq(schema.dailyActivity.id, activity.id));
   }
 
-  async function recordMinutes(userId: string, date: string, minutes: number): Promise<{ goalMet: boolean; goalJustCompleted: boolean }> {
+  async function recordMinutes(userId: string, date: string, minutes: number): Promise<void> {
     const activity = await getOrCreateToday(userId, date);
-    const goal = await getDailyGoal(userId);
     const newMinutes = activity.minutesActive + minutes;
-    const wasGoalMet = activity.goalMet;
-    const isGoalMet = wasGoalMet || (goal.type === "minutes" && newMinutes >= goal.target);
 
     await db
       .update(schema.dailyActivity)
       .set({
         minutesActive: newMinutes,
+        updatedAt: new Date().toISOString(),
+      })
+      .where(eq(schema.dailyActivity.id, activity.id));
+  }
+
+  async function recordXP(userId: string, date: string, xp: number): Promise<{ goalMet: boolean; goalJustCompleted: boolean }> {
+    const activity = await getOrCreateToday(userId, date);
+    const goal = await getDailyXpGoal(userId);
+    const newXp = activity.dailyXp + xp;
+    const wasGoalMet = activity.goalMet;
+    const isGoalMet = wasGoalMet || newXp >= goal;
+
+    await db
+      .update(schema.dailyActivity)
+      .set({
+        dailyXp: newXp,
         goalMet: isGoalMet,
         updatedAt: new Date().toISOString(),
       })
@@ -128,18 +133,19 @@ export function createActivityService(db: DB) {
 
   async function getTodayProgress(userId: string, date: string) {
     const activity = await getOrCreateToday(userId, date);
-    const goal = await getDailyGoal(userId);
+    const dailyXpGoal = await getDailyXpGoal(userId);
 
-    const current = goal.type === "minutes" ? activity.minutesActive : activity.problemsCompleted;
-    const progress = Math.min(current / goal.target, 1);
+    const current = activity.dailyXp;
+    const progress = dailyXpGoal > 0 ? Math.min(current / dailyXpGoal, 1) : 1;
 
     return {
       date: activity.date,
       minutesActive: activity.minutesActive,
       problemsCompleted: activity.problemsCompleted,
       topicsMastered: activity.topicsMastered,
+      dailyXp: activity.dailyXp,
       goalMet: activity.goalMet,
-      goal,
+      dailyXpGoal,
       current,
       progress,
     };
@@ -167,7 +173,8 @@ export function createActivityService(db: DB) {
     const totalMinutes = weekDays.reduce((s, d) => s + d.minutesActive, 0);
     const totalProblems = weekDays.reduce((s, d) => s + d.problemsCompleted, 0);
     const totalTopicsMastered = weekDays.reduce((s, d) => s + d.topicsMastered, 0);
-    const activeDays = weekDays.filter(d => d.minutesActive > 0 || d.problemsCompleted > 0).length;
+    const totalXp = weekDays.reduce((s, d) => s + d.dailyXp, 0);
+    const activeDays = weekDays.filter(d => d.minutesActive > 0 || d.problemsCompleted > 0 || d.dailyXp > 0).length;
     const goalMetDays = weekDays.filter(d => d.goalMet).length;
 
     return {
@@ -178,11 +185,13 @@ export function createActivityService(db: DB) {
       totalMinutes,
       totalProblems,
       totalTopicsMastered,
+      totalXp,
       days: weekDays.map(d => ({
         date: d.date,
         minutesActive: d.minutesActive,
         problemsCompleted: d.problemsCompleted,
         topicsMastered: d.topicsMastered,
+        dailyXp: d.dailyXp,
         goalMet: d.goalMet,
       })),
     };
@@ -250,11 +259,12 @@ export function createActivityService(db: DB) {
   }
 
   return {
-    getDailyGoal,
+    getDailyXpGoal,
     getOrCreateToday,
     recordProblemCompleted,
     recordTopicMastered,
     recordMinutes,
+    recordXP,
     getTodayProgress,
     getWeeklySummary,
     getActivityHistory,

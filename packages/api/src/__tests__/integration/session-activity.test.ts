@@ -117,8 +117,7 @@ describe("session-activity integration", () => {
     expect((result as any).goalProgress).toBeDefined();
     const gp = (result as any).goalProgress;
     expect(gp.problemsCompleted).toBeGreaterThanOrEqual(1);
-    expect(gp.goalType).toBeDefined();
-    expect(gp.goalTarget).toBeGreaterThan(0);
+    expect(gp.dailyXpGoal).toBeGreaterThan(0);
     expect(typeof gp.progress).toBe("number");
   });
 

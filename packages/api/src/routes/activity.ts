@@ -68,23 +68,22 @@ activityRoutes.get("/goal", async (c) => {
   const user = c.get("user");
   const db = getDb(c.env.DB);
   const activity = createActivityService(db);
-  const goal = await activity.getDailyGoal(user.id);
-  return c.json(goal);
+  const dailyXpGoal = await activity.getDailyXpGoal(user.id);
+  return c.json({ dailyXpGoal });
 });
 
-// PUT /api/activity/goal — update daily goal config
+// PUT /api/activity/goal — update daily XP goal
 activityRoutes.put("/goal", async (c) => {
   const user = c.get("user");
   const db = getDb(c.env.DB);
-  const body = await c.req.json<{ type?: "minutes" | "problems"; target?: number }>();
+  const body = await c.req.json<{ dailyXpGoal?: number }>();
   const { eq } = await import("drizzle-orm");
   const { userPreferences } = await import("../db/schema.js");
 
-  const goalType = body.type ?? "minutes";
-  const goalTarget = body.target ?? 20;
+  const dailyXpGoal = body.dailyXpGoal ?? 20;
 
-  if (goalTarget < 1 || goalTarget > 120) {
-    return c.json({ error: "Target must be between 1 and 120" }, 400);
+  if (dailyXpGoal < 5 || dailyXpGoal > 100) {
+    return c.json({ error: "Daily XP goal must be between 5 and 100" }, 400);
   }
 
   const now = new Date().toISOString();
@@ -97,19 +96,18 @@ activityRoutes.put("/goal", async (c) => {
   if (existing.length === 0) {
     await db.insert(userPreferences).values({
       userId: user.id,
-      dailyGoalType: goalType,
-      dailyGoalTarget: goalTarget,
+      dailyXpGoal,
       createdAt: now,
       updatedAt: now,
     });
   } else {
     await db
       .update(userPreferences)
-      .set({ dailyGoalType: goalType, dailyGoalTarget: goalTarget, updatedAt: now })
+      .set({ dailyXpGoal, updatedAt: now })
       .where(eq(userPreferences.userId, user.id));
   }
 
-  return c.json({ type: goalType, target: goalTarget });
+  return c.json({ dailyXpGoal });
 });
 
 // POST /api/activity/record — manual activity recording (for session end)
@@ -123,9 +121,7 @@ activityRoutes.post("/record", async (c) => {
   let goalJustCompleted = false;
 
   if (body.minutes && body.minutes > 0) {
-    const result = await activity.recordMinutes(user.id, body.date, body.minutes);
-    goalMet = result.goalMet;
-    goalJustCompleted = result.goalJustCompleted;
+    await activity.recordMinutes(user.id, body.date, body.minutes);
   }
 
   if (body.problems && body.problems > 0) {

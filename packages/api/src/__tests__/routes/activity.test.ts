@@ -51,96 +51,92 @@ describe("Activity Routes", () => {
         date: "2026-03-07",
         minutesActive: 0,
         problemsCompleted: 0,
+        dailyXp: 0,
         goalMet: false,
-        goal: { type: "minutes", target: 20 },
+        dailyXpGoal: 20,
         progress: 0,
       });
     });
 
     it("returns existing activity for date", async () => {
-      await seedDailyActivity(userId, "2026-03-07", { minutesActive: 12, problemsCompleted: 5 });
+      await seedDailyActivity(userId, "2026-03-07", { minutesActive: 12, problemsCompleted: 5, dailyXp: 8 });
       const res = await request("/api/activity/today?date=2026-03-07", { headers });
       const data = await json<any>(res);
       expect(data.minutesActive).toBe(12);
       expect(data.problemsCompleted).toBe(5);
-      expect(data.current).toBe(12);
-      expect(data.progress).toBeCloseTo(0.6);
+      expect(data.dailyXp).toBe(8);
+      expect(data.current).toBe(8);
+      expect(data.progress).toBeCloseTo(0.4);
     });
   });
 
   describe("GET /api/activity/weekly", () => {
     it("returns weekly summary", async () => {
-      await seedDailyActivity(userId, "2026-03-05", { minutesActive: 20, goalMet: true });
-      await seedDailyActivity(userId, "2026-03-06", { minutesActive: 15, problemsCompleted: 8 });
+      await seedDailyActivity(userId, "2026-03-05", { minutesActive: 20, dailyXp: 25, goalMet: true });
+      await seedDailyActivity(userId, "2026-03-06", { minutesActive: 15, problemsCompleted: 8, dailyXp: 18 });
 
       const res = await request("/api/activity/weekly?date=2026-03-07", { headers });
       expect(res.status).toBe(200);
       const data = await json<any>(res);
       expect(data.activeDays).toBe(2);
       expect(data.totalMinutes).toBe(35);
+      expect(data.totalXp).toBe(43);
       expect(data.goalMetDays).toBe(1);
     });
   });
 
   describe("PUT /api/activity/goal", () => {
-    it("creates goal config when none exists", async () => {
+    it("creates XP goal when none exists", async () => {
       const res = await request("/api/activity/goal", {
         method: "PUT",
         headers: { ...headers, "Content-Type": "application/json" },
-        body: JSON.stringify({ type: "problems", target: 15 }),
+        body: JSON.stringify({ dailyXpGoal: 30 }),
       });
       expect(res.status).toBe(200);
       const data = await json<any>(res);
-      expect(data).toEqual({ type: "problems", target: 15 });
+      expect(data).toEqual({ dailyXpGoal: 30 });
     });
 
     it("updates existing goal config", async () => {
       await request("/api/activity/goal", {
         method: "PUT",
         headers: { ...headers, "Content-Type": "application/json" },
-        body: JSON.stringify({ type: "minutes", target: 30 }),
+        body: JSON.stringify({ dailyXpGoal: 30 }),
       });
 
       const res = await request("/api/activity/goal", {
         method: "PUT",
         headers: { ...headers, "Content-Type": "application/json" },
-        body: JSON.stringify({ type: "problems", target: 10 }),
+        body: JSON.stringify({ dailyXpGoal: 50 }),
       });
       const data = await json<any>(res);
-      expect(data).toEqual({ type: "problems", target: 10 });
+      expect(data).toEqual({ dailyXpGoal: 50 });
 
       const getRes = await request("/api/activity/goal", { headers });
       const goal = await json<any>(getRes);
-      expect(goal).toEqual({ type: "problems", target: 10 });
+      expect(goal).toEqual({ dailyXpGoal: 50 });
     });
 
     it("rejects invalid target", async () => {
       const res = await request("/api/activity/goal", {
         method: "PUT",
         headers: { ...headers, "Content-Type": "application/json" },
-        body: JSON.stringify({ type: "minutes", target: 0 }),
+        body: JSON.stringify({ dailyXpGoal: 3 }),
       });
       expect(res.status).toBe(400);
     });
   });
 
   describe("POST /api/activity/record", () => {
-    it("records activity and detects goal completion", async () => {
-      await request("/api/activity/goal", {
-        method: "PUT",
-        headers: { ...headers, "Content-Type": "application/json" },
-        body: JSON.stringify({ type: "minutes", target: 10 }),
-      });
-
+    it("records activity", async () => {
       const res = await request("/api/activity/record", {
         method: "POST",
         headers: { ...headers, "Content-Type": "application/json" },
-        body: JSON.stringify({ date: "2026-03-07", minutes: 12 }),
+        body: JSON.stringify({ date: "2026-03-07", minutes: 12, problems: 2 }),
       });
       expect(res.status).toBe(200);
       const data = await json<any>(res);
-      expect(data.goalMet).toBe(true);
-      expect(data.goalJustCompleted).toBe(true);
+      expect(data.goalMet).toBe(false);
     });
   });
 

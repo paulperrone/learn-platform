@@ -667,10 +667,10 @@ export function createSessionService(db: DB, fireDiagnostic?: FireDiagnosticConf
             problemsCompleted: progress.problemsCompleted,
             minutesActive: progress.minutesActive,
             topicsMastered: progress.topicsMastered,
+            dailyXp: progress.dailyXp,
             goalMet: progress.goalMet,
             goalJustCompleted: problemResult.goalJustCompleted,
-            goalType: progress.goal.type,
-            goalTarget: progress.goal.target,
+            dailyXpGoal: progress.dailyXpGoal,
             progress: progress.progress,
           };
         } catch {
@@ -1392,10 +1392,10 @@ export type GoalProgress = {
   problemsCompleted: number;
   minutesActive: number;
   topicsMastered: number;
+  dailyXp: number;
   goalMet: boolean;
   goalJustCompleted: boolean;
-  goalType: "minutes" | "problems";
-  goalTarget: number;
+  dailyXpGoal: number;
   progress: number; // 0-1
 };
 
