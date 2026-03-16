@@ -9,6 +9,7 @@ const router = createRouter({
   history: createWebHistory(),
   routes: [
     { path: "/", component: () => import("./pages/index.vue"), meta: { requiresAuth: true } },
+    { path: "/queue", component: () => import("./pages/queue.vue"), meta: { requiresAuth: true } },
     { path: "/learn", component: () => import("./pages/learn.vue") },
     { path: "/assess", component: () => import("./pages/assess.vue"), meta: { requiresAuth: true } },
     { path: "/report/:disciplineId", component: () => import("./pages/report.vue"), meta: { requiresAuth: true } },

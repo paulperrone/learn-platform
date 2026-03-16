@@ -11,7 +11,10 @@ import LessonView from "@/components/LessonView.vue";
 import MasteryCelebration from "@/components/MasteryCelebration.vue";
 import { useI18n } from "vue-i18n";
 
+import { useRoute } from "vue-router";
+
 const api = useApi();
+const route = useRoute();
 const auth = useAuth();
 const anon = useAnonymous();
 const speech = useSpeech();
@@ -84,6 +87,12 @@ onMounted(async () => {
       sessionId.value = result.sessionId;
       currentItem.value = result.currentItem;
       sessionActive.value = true;
+    } else {
+      // No active session — auto-start with topicId from query param if present
+      const topicIdParam = route.query.topicId as string | undefined;
+      if (topicIdParam) {
+        await startSessionForTopic(topicIdParam);
+      }
     }
   } else {
     // Anonymous user — check for active anonymous session
@@ -101,7 +110,15 @@ onMounted(async () => {
   recovering.value = false;
 });
 
+async function startSessionForTopic(topicId?: string) {
+  return _startSession(topicId);
+}
+
 async function startSession() {
+  return _startSession();
+}
+
+async function _startSession(topicId?: string) {
   loading.value = true;
   let result;
   if (isAnonymous.value) {
@@ -111,7 +128,7 @@ async function startSession() {
     );
   } else {
     result = await withErrorToast(
-      () => api.startSession(),
+      () => api.startSession(topicId ? { topicId } : undefined),
       t("errors.failedToStart", { action: "session" })
     );
   }
