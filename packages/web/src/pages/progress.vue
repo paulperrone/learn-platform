@@ -20,27 +20,35 @@ const loading = ref(true);
 const error = ref(false);
 
 async function loadDisciplineData(disciplineId: string) {
-  const topicsData = await api.getTopics(disciplineId);
-  allTopics.value = topicsData.topics;
+  const result = await withErrorToast(
+    () => api.getTopics(disciplineId),
+    t("errors.failedToLoad", { resource: "topics" })
+  );
+  if (result) allTopics.value = result.topics;
 }
 
 onMounted(async () => {
   const result = await withErrorToast(async () => {
-    const [discData, statesData, presData, calData] = await Promise.all([
+    const [discData, estData, statesData, presData, calData] = await Promise.all([
       api.getDisciplines(),
+      api.getCompletionEstimates(),
       api.getTopicStates(),
       api.getPresentationDistributions(),
       api.getCalibration(),
     ]);
-    return { discData, statesData, presData, calData };
+    return { discData, estData, statesData, presData, calData };
   }, t("errors.failedToLoad", { resource: "progress" }));
 
   if (result) {
-    disciplines.value = result.discData.disciplines;
+    // Filter to disciplines with actual content
+    const activeDisciplineIds = new Set(
+      result.estData.estimates.filter((e: any) => e.total > 0).map((e: any) => e.disciplineId)
+    );
+    disciplines.value = result.discData.disciplines.filter((d: any) => activeDisciplineIds.has(d.id));
     topics.value = result.statesData.topics;
     distributions.value = result.presData?.distributions ?? [];
     calibration.value = result.calData;
-    // Default to first discipline with topics
+    // Default to first discipline with content
     const first = disciplines.value[0];
     if (first) {
       selectedDiscipline.value = first.id;
@@ -94,6 +102,11 @@ function gradeName(level: number) {
   return level === 0 ? t("progress.kindergarten") : t("progress.grade", { level });
 }
 
+// Filter presentation distributions to selected discipline
+const filteredDistributions = computed(() =>
+  distributions.value.filter((d) => d.disciplineId === selectedDiscipline.value)
+);
+
 const levelColors: Record<string, string> = {
   primary: "bg-amber-400",
   intermediate: "bg-sky-400",
@@ -108,20 +121,13 @@ const LEVELS = ["primary", "intermediate", "standard", "advanced"] as const;
   <div>
     <div class="flex items-center justify-between mb-6">
       <h1 class="text-3xl font-bold">{{ t('progress.title') }}</h1>
-      <div class="flex gap-2">
-        <RouterLink
-          :to="`/report/${selectedDiscipline}`"
-          class="rounded-lg border border-gray-200 px-4 py-2 text-sm font-medium text-gray-700 hover:border-gray-300 transition-colors"
-        >
-          View Report
-        </RouterLink>
-        <RouterLink
-          to="/assess"
-          class="rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 transition-colors"
-        >
-          Take a Test
-        </RouterLink>
-      </div>
+      <RouterLink
+        v-if="selectedDiscipline"
+        :to="`/report/${selectedDiscipline}`"
+        class="rounded-lg border border-gray-200 px-4 py-2 text-sm font-medium text-gray-700 hover:border-gray-300 transition-colors"
+      >
+        View Report
+      </RouterLink>
     </div>
 
     <!-- Discipline Tabs -->
@@ -177,12 +183,12 @@ const LEVELS = ["primary", "intermediate", "standard", "advanced"] as const;
         </div>
       </div>
 
-      <!-- Presentation Distribution -->
-      <div v-if="distributions.length > 0" class="mb-8">
+      <!-- Presentation Distribution (filtered to current discipline) -->
+      <div v-if="filteredDistributions.length > 0" class="mb-8">
         <h2 class="text-lg font-semibold text-gray-800 mb-3">{{ t('progress.presentationLevel') }}</h2>
         <div class="space-y-3">
           <div
-            v-for="dist in distributions"
+            v-for="dist in filteredDistributions"
             :key="dist.disciplineId"
             class="bg-white rounded-lg border border-gray-200 p-4"
           >
