@@ -126,6 +126,11 @@ const activeEstimates = computed(() =>
 const firstDisciplineId = computed(() =>
   activeEstimates.value[0]?.disciplineId ?? "math-foundations"
 );
+
+// Has the user done any learning?
+const hasStarted = computed(() =>
+  stats.value.mastered > 0 || stats.value.inProgress > 0 || stats.value.dueForReview > 0
+);
 </script>
 
 <template>
@@ -249,12 +254,11 @@ const firstDisciplineId = computed(() =>
         {{ milestoneMessage }}
       </div>
 
-      <!-- Stats Cards -->
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+      <!-- Stats Cards (only when user has started learning) -->
+      <div v-if="hasStarted" class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
         <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-5">
           <p class="text-sm text-gray-500">{{ t('dashboard.mastered') }}</p>
           <p class="text-3xl font-bold text-green-600">{{ stats.mastered }}</p>
-          <p class="text-xs text-gray-400 mt-1">{{ t('dashboard.ofTopics', { total: stats.total }) }}</p>
         </div>
         <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-5">
           <p class="text-sm text-gray-500">{{ t('dashboard.inProgress') }}</p>
@@ -267,20 +271,6 @@ const firstDisciplineId = computed(() =>
         <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-5">
           <p class="text-sm text-gray-500">{{ t('dashboard.overallProgress') }}</p>
           <p class="text-3xl font-bold text-purple-600">{{ progressPercent() }}%</p>
-        </div>
-      </div>
-
-      <!-- Progress Bar -->
-      <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-5 mb-8">
-        <div class="flex justify-between text-sm text-gray-600 mb-2">
-          <span>{{ t('dashboard.overallProgress') }}</span>
-          <span>{{ stats.mastered }}/{{ stats.total }}</span>
-        </div>
-        <div class="w-full bg-gray-200 rounded-full h-3">
-          <div
-            class="bg-green-500 h-3 rounded-full transition-all duration-500"
-            :style="{ width: progressPercent() + '%' }"
-          />
         </div>
       </div>
 

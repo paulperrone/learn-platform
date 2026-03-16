@@ -10,12 +10,24 @@ const route = useRoute();
 const disciplineId = route.params.disciplineId as string;
 const report = ref<ProgressReport | null>(null);
 const loading = ref(true);
+const loadError = ref(false);
 const expandedDomains = ref<Set<string>>(new Set());
 
 onMounted(async () => {
   const res = await withErrorToast(() => api.getProgressReport(disciplineId), "Failed to load report");
-  if (res) report.value = res;
+  if (res) {
+    report.value = res;
+  } else {
+    loadError.value = true;
+  }
   loading.value = false;
+});
+
+// Has the user done any learning at all?
+const hasData = computed(() => {
+  if (!report.value) return false;
+  return report.value.standardDetails.some((s) => s.masteredCount > 0) ||
+    report.value.topicsToFocus.length > 0;
 });
 
 function toggleDomain(domain: string) {
@@ -29,19 +41,19 @@ function toggleDomain(domain: string) {
 function classColor(cls: string) {
   if (cls === "proficient") return "text-green-700 bg-green-50 border-green-200";
   if (cls === "developing") return "text-yellow-700 bg-yellow-50 border-yellow-200";
-  return "text-red-700 bg-red-50 border-red-200";
+  return "text-gray-600 bg-gray-50 border-gray-200";
 }
 
 function classLabel(cls: string) {
   if (cls === "proficient") return "Proficient";
   if (cls === "developing") return "Developing";
-  return "Needs Support";
+  return "Not Started";
 }
 
 function barColor(cls: string) {
   if (cls === "proficient") return "bg-green-500";
   if (cls === "developing") return "bg-yellow-400";
-  return "bg-red-400";
+  return "bg-gray-300";
 }
 
 const overallPercent = computed(() =>
@@ -52,7 +64,7 @@ const overallColor = computed(() => {
   if (!report.value) return "text-gray-900";
   if (overallPercent.value >= 80) return "text-green-600";
   if (overallPercent.value >= 50) return "text-yellow-600";
-  return "text-red-600";
+  return "text-gray-900";
 });
 
 type StandardDetailItem = NonNullable<typeof report.value>["standardDetails"][number];
@@ -86,6 +98,7 @@ const standardsByDomain = computed(() => {
             </p>
           </div>
           <button
+            v-if="hasData"
             class="text-sm text-gray-500 hover:text-gray-700 print:hidden"
             @click="printReport"
           >
@@ -103,7 +116,30 @@ const standardsByDomain = computed(() => {
         <span>Loading report...</span>
       </div>
 
-      <template v-else-if="report">
+      <!-- Load error -->
+      <div v-else-if="loadError" class="text-center py-12">
+        <p class="text-gray-500 mb-2">Unable to load the report right now.</p>
+        <button @click="$router.go(0)" class="text-blue-600 hover:underline text-sm">Retry</button>
+      </div>
+
+      <!-- No learning data yet -->
+      <div v-else-if="report && !hasData" class="text-center py-16">
+        <div class="text-5xl mb-4">&#x1F4DA;</div>
+        <h2 class="text-xl font-semibold text-gray-800 mb-2">Your report will appear here</h2>
+        <p class="text-gray-500 mb-6 max-w-md mx-auto">
+          As you learn and master topics, this report will show your progress
+          across standards and domains. Start learning to see your results!
+        </p>
+        <RouterLink
+          to="/queue"
+          class="inline-block bg-blue-600 text-white px-6 py-2.5 rounded-lg font-medium hover:bg-blue-700"
+        >
+          Start Learning
+        </RouterLink>
+      </div>
+
+      <!-- Report with data -->
+      <template v-else-if="report && hasData">
 
         <!-- Overall score card -->
         <div class="bg-white rounded-xl border border-gray-200 p-6 mb-6 shadow-sm">
@@ -152,7 +188,7 @@ const standardsByDomain = computed(() => {
                     <span class="text-xs border rounded px-1.5 py-0.5 font-medium" :class="classColor(domain.classification)">
                       {{ classLabel(domain.classification) }}
                     </span>
-                    <span class="text-sm font-semibold text-gray-700">{{ Math.round(domain.percentage * 100) }}%</span>
+                    <span v-if="domain.percentage > 0" class="text-sm font-semibold text-gray-700">{{ Math.round(domain.percentage * 100) }}%</span>
                   </div>
                 </div>
                 <!-- Bar -->
@@ -160,7 +196,7 @@ const standardsByDomain = computed(() => {
                   <div
                     class="h-full rounded-full transition-all duration-300"
                     :class="barColor(domain.classification)"
-                    :style="{ width: `${Math.round(domain.percentage * 100)}%` }"
+                    :style="{ width: `${Math.max(Math.round(domain.percentage * 100), domain.percentage > 0 ? 2 : 0)}%` }"
                   />
                 </div>
                 <div class="text-xs text-gray-400 mt-0.5 text-right">
@@ -215,17 +251,7 @@ const standardsByDomain = computed(() => {
           </div>
         </div>
 
-        <!-- Empty state: no standards coverage -->
-        <div v-if="report.standardDetails.length === 0" class="bg-white rounded-xl border border-gray-200 p-6 text-center text-gray-500 text-sm">
-          No standards data yet. Complete more topics to see your progress against Common Core standards.
-        </div>
-
       </template>
-
-      <!-- No data state -->
-      <div v-else class="text-center py-12 text-gray-500 text-sm">
-        Failed to load report. Please try again.
-      </div>
 
     </div>
   </div>
