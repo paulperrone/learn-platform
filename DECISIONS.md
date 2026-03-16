@@ -2280,3 +2280,31 @@ Post-assessment feedback (already in Phase 5, Step 3) shows pacing impact: score
 **Alternatives rejected:**
 - Soft gate (assessment suggested but skippable): Defeats the calibration purpose — learners who skip assessments accumulate inaccurate pacing factors
 - Modal popup: Feels interruptive; a full-page card gives the learner time to process and decide whether to review first
+
+---
+
+## 2026-03-15: XP is ephemeral effort currency, not lifetime accumulator (Plan 032)
+
+**Source:** Design discussion — Plan 032 preflight
+
+**Context:** MathAcademy uses XP as ~1 minute of focused effort, with weekly leagues. Plan 032 initially proposed a `totalXp` column on `user_learning_state`. The question arose: what happens when a student places into 8th grade via diagnostic — do they get lifetime XP for placed-out topics?
+
+**Decision:** XP is an **effort-quality currency**, not a knowledge metric. It measures quality practice on the platform, weighted by performance. No lifetime total is stored.
+
+- **Mastery** = what you know (knowledge graph + FSRS — placement grants this)
+- **XP** = effort invested on this platform (placement grants zero — correct and intentional)
+- All meaningful XP scopes are time-bounded: per-problem (`review_log.xpEarned`), per-day (`daily_activity.dailyXp`), per-week (derived sum)
+- Lifetime total is derivable via `SUM(daily_activity.dailyXp)` if ever needed as a vanity stat, but is not stored
+
+**Daily goal type is XP-only.** The `DailyGoalType` enum (`"minutes" | "problems"`) is removed. A single `dailyXpGoal` (integer, default 20) replaces `dailyGoalType` + `dailyGoalTarget`. XP is a proxy for engaged, quality practice — or at minimum, volume of practice.
+
+**Why no lifetime total:**
+- It's not knowledge (mastery tracks that), not consistency (streaks track that), not progression (topics completed tracks that)
+- It penalizes efficient learners who place in high (less total XP than someone who ground from K)
+- Eliminates accumulation bugs, sync issues, and the awkward "what about placed students" question
+- Every use case (daily goals, streaks, weekly summaries, session feedback, future leagues) works with time-bounded aggregation
+
+**Alternatives rejected:**
+- Lifetime `totalXp` column with placement backfill: Conflates effort with achievement, adds complexity for no clear user benefit
+- Multiple goal types (`minutes | problems | xp`): Unnecessary complexity — XP subsumes both (it's quality-weighted time × volume)
+- XP as knowledge proxy (placement grants XP): Makes XP redundant with mastery, muddies what the number means

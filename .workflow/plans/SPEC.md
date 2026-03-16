@@ -1,8 +1,8 @@
 # SPEC: Learn Platform
 
-> **Version:** 1.2
+> **Version:** 1.3
 > **Created:** 2026-03-04T03:35:01Z
-> **Updated:** 2026-03-06
+> **Updated:** 2026-03-15
 > **Status:** Active
 
 ## Vision
@@ -61,27 +61,33 @@ These optimizations could cut per-user infrastructure cost by 50-70%, but are un
 
 ## MVP Scope
 
-**Foundational Mathematics** as first subject — 71 topics aligned to Common Core, covering counting through early algebra.
+**Foundational Mathematics** as first subject — 772 topics across 18 strands (K-8, MA-caliber density), aligned to Common Core and Massachusetts frameworks.
 
 ### Core Systems
 
-1. **Knowledge Graph Engine** — DAG of prerequisite relationships between atomic learning topics. Frontier computation, traversal, depth assignment, validation.
+1. **Knowledge Graph Engine** — DAG of prerequisite relationships between atomic learning topics. Frontier computation, traversal, depth assignment, validation. Prereq density 1.46/topic, encompassing density 0.96/topic. Cross-discipline prerequisite edges supported.
 
-2. **SRS Engine** — ts-fsrs spaced repetition with FIRe (Fractional Implicit Repetition) credit via virtual FSRS reviews. Per-user per-topic FSRS card state. Session mix: ~60% review, ~40% new.
+2. **SRS Engine** — ts-fsrs spaced repetition with FIRe (Fractional Implicit Repetition) prerequisite-direction credit: practicing a topic applies fractional stability credit to its mastered prerequisites via BFS (up to 3 hops). Per-user per-topic FSRS card state.
 
-3. **Adaptive Diagnostic** — Binary-search placement test that finds a student's level by jumping through the knowledge graph. Starts at middle grade, adapts based on answers, refines near the boundary. Materializes mastery estimates into SRS state on completion. Supports retake from dashboard.
+3. **Adaptive Diagnostic** — Binary-search placement test that finds a student's level by jumping through the knowledge graph. Starts at middle grade, adapts based on answers, refines near the boundary. Materializes mastery estimates into `user_topic_state` for placement grade and above; topics below placement are implicitly mastered via `diagnosticSessions.topicEstimatesJson`. Supports retake from dashboard.
 
-4. **Learning Loop** — Simplified lesson/review model: diagnostic places the student → first encounter with a topic serves a **lesson** (explanation + worked example + guided practice) → subsequent encounters are **reviews** (problems only, with optional lesson reference as scaffolding) → **remediation** serves a prerequisite's lesson when a student struggles. Per-topic difficulty levels are eliminated — all problems within a properly atomic topic test the same skill. Scaffolding during review is tracked (`none`, `lesson-referenced`, `llm-assisted`, `lesson-and-llm`) and affects SRS credit.
+4. **Learning Loop** — Pull-based atomic sessions. Each `startSession()` covers one topic via `getNextItem()` priority: assessment > review > lesson > complete. Frontend calls `startSession()` repeatedly. Phases within a topic: lesson → independent → review → remediation. Assessment sessions are separate: multi-topic checkpoint triggered by assessment calibration loop, no scaffolding, scored output. Scaffolding during review is tracked (`none`, `lesson-referenced`, `llm-assisted`, `lesson-and-llm`) and affects SRS credit.
 
-5. **LLM Integration** — Runtime: Socratic tutoring, self-explanation evaluation, response grading. Offline: content generation pipeline (graph, problems, examples). Platform-medium constraints ensure screen-native content.
+5. **Assessment Calibration** — Periodic multi-topic checkpoints triggered when `topicsIntroducedSinceAssessment / frontierSize ≥ 0.25` (ratio-based, scales naturally). Adjusts `pacingFactor` (0.5–2.0) to control review/new topic mix. Gates new lessons until checkpoint is taken; UX frames as milestone, not blocker.
 
-6. **Speech** — Browser TTS for reading problems aloud (K-2 audience). Workers AI Whisper for speech-to-text input. Graceful degradation when AI binding unavailable.
+6. **XP System** — Quality-weighted effort currency (not a knowledge metric). 1 XP ≈ 1 minute of focused effort, scaled by performance (perfect bonus ×1.2, rushing penalty -1 XP). Powers daily goals, streaks, weekly summaries, session feedback, and future leagues. No lifetime total stored — all meaningful scopes are time-bounded (daily, weekly). Mastery tracked separately by knowledge graph. Placement grants mastery but zero XP.
 
-7. **Frontend** — Dashboard with diagnostic CTA, learning session UI, progress visualization, knowledge graph explorer, admin dashboard with content matrix.
+7. **LLM Integration** — Runtime: Socratic tutoring, self-explanation evaluation, response grading via OpenRouter (model-agnostic). Offline: content generation pipeline via Claude Code sessions (graph, problems, examples, generators). Platform-medium constraints ensure screen-native content.
+
+8. **Content Delivery** — R2 stores content bundles (problems.json, examples.json per topic). D1 stores graph structure + user state only. Content service uses `ContentBucket` abstraction (R2 in production, filesystem adapter in dev/audit). Cache API for edge caching. Analytics Engine records rich per-problem events with content version correlation.
+
+9. **Speech** — Browser TTS for reading problems aloud (K-2 audience). Workers AI Whisper for speech-to-text input. Graceful degradation when AI binding unavailable.
+
+10. **Frontend** — Dashboard with daily XP goal ring, streak tracking, contribution graph. Learning session UI with real-time XP feedback. Study queue with XP previews. Progress visualization, knowledge graph explorer, admin dashboard with content matrix. Assessment milestone UX.
 
 ### Content Model
 
-All content — lessons, problems, worked examples, and graph structure — is **pre-generated offline** by LLMs, **human-reviewed**, and **imported**. Lessons are section-based (explanation, worked-example, diagram, video, practice) and serve as the primary instructional vehicle per topic. Runtime LLM is only for interactive tutoring/grading.
+All content — lessons, problems, worked examples, and graph structure — is **authored in Claude Code sessions**, validated, and deployed. Problems are produced by TypeScript generators (`learn-content/<discipline>/generators/<topic-id>.ts`) that output deterministic content from a seed. Lessons are section-based (explanation, worked-example, diagram, video, practice) and serve as the primary instructional vehicle per topic. Content is bundled to R2 (problems, examples per topic) and graph structure is imported to D1. Runtime LLM is only for interactive tutoring/grading.
 
 ### Disciplines & Progression Models
 
@@ -122,7 +128,7 @@ Content depth maps roughly to educational stages, but the meaning of "depth" var
 
 - Multiple subjects (post-MVP — but graph architecture supports cross-subject prerequisites)
 - Video generation
-- Social features / leaderboards
+- Weekly leagues / leaderboards (future — XP infrastructure supports this)
 - Dynamic learning path optimization (RL)
 
 ## Tech Stack
@@ -135,23 +141,27 @@ Content depth maps roughly to educational stages, but the meaning of "depth" var
 | Auth | Better-Auth |
 | Frontend | Vue 3 + Vite + Tailwind CSS v4 |
 | SRS | ts-fsrs v5 |
-| LLM | OpenRouter |
+| LLM (runtime) | OpenRouter (model-agnostic) — tutoring/grading only |
+| Content Storage | R2 (content bundles) + D1 (graph structure) |
+| Analytics | Cloudflare Analytics Engine |
 | Monorepo | pnpm workspaces |
 | Deploy | Cloudflare Pages |
 
 ## Users
 
-- **Young learners** (K-5, ages 5-11) working through math fundamentals
+- **Young learners** (K-8, ages 5-14) working through math fundamentals
 - **Parents/guardians** setting up and managing family accounts, controlling billing and teacher sharing
 - **Teachers/tutors** (free accounts) viewing linked students' progress — school teachers, homeschool co-ops, private tutors, after-school programs
 - **Self-directed adult learners** reviewing foundations
 
 ## Success Criteria
 
-- Full learning session works end-to-end (lesson through review)
-- 71 Foundational Mathematics topics with validated problem banks and worked examples
+- Full learning session works end-to-end (diagnostic → lesson → review → assessment checkpoint)
+- 772 Mathematics topics (K-8) with generator-produced problem banks and worked examples
 - SRS scheduling produces correct review intervals
-- FIRe credit reduces review burden measurably
+- FIRe prerequisite-direction credit reduces review burden measurably
+- Assessment calibration adjusts pacing based on checkpoint performance
+- XP system tracks effort quality across daily goals, streaks, and session feedback
 - Auth flow works for account creation and login
 - Deployed and accessible on the public internet
 
@@ -159,7 +169,7 @@ Content depth maps roughly to educational stages, but the meaning of "depth" var
 
 Future capability areas, in recommended priority order. Each should become its own epic via `/workflow-intake`.
 
-1. **Math 6-12 Content Expansion** — Extend from 71 K-5 topics to full K-12 math. Subjects should form continuous connected graphs (K-5 → pre-algebra → algebra, etc.), not isolated silos. The diagnostic should place across the full connected graph. Requires parameterized content pipeline, support for more complex problem types, and graph structure scaling.
+1. **Math 9-12 Content Expansion** — Extend from 772 K-8 topics to full K-12 math (algebra II, trigonometry, pre-calculus, calculus). Generator architecture (Plan 029) supports this. Requires more complex problem types and graph structure scaling at the upper end.
 
 2. **Cross-Subject Prerequisites** — Reading comprehension is a prerequisite for math word problems. Algebra is a prerequisite for physics. Disciplines and progression models are implemented. The prerequisites table supports `required`/`recommended`/`enriching` edge types. Content and diagnostic still need to leverage cross-subject edges.
 
@@ -176,3 +186,8 @@ Future capability areas, in recommended priority order. Each should become its o
 - **Parent Dashboard + Role System** — Family accounts, child profiles, progress viewing, budget controls
 - **Speech/TTS** — Browser TTS for problem reading, Workers AI Whisper for speech-to-text input
 - **Adaptive Diagnostic** — Binary-search placement test with mastery materialization
+- **Math K-8 Content Expansion** — 71 → 772 topics across 18 strands with generator architecture (Plan 029)
+- **R2 Content Architecture** — Content bundles on R2, graph structure on D1, Analytics Engine events (Plan 023)
+- **Learning Loop Simplification** — Pull-based atomic sessions replacing 6-phase loop (Plan 031)
+- **Assessment Calibration** — Periodic checkpoint system with pacing adjustment (Plans 030/031)
+- **Content Generators** — TypeScript generators producing deterministic content from seed (Plan 029)
