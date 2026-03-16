@@ -26,6 +26,13 @@ graphRoutes.get("/disciplines", async (c) => {
   return c.json({ disciplines: active });
 });
 
+graphRoutes.get("/disciplines/:id/topics", async (c) => {
+  const db = getDb(c.env.DB);
+  const graph = createGraphService(db);
+  const topics = await graph.getDisciplineTopics(c.req.param("id"));
+  return c.json({ topics });
+});
+
 graphRoutes.get("/collections", async (c) => {
   const db = getDb(c.env.DB);
   const graph = createGraphService(db);

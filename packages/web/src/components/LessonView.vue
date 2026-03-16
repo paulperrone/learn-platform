@@ -194,7 +194,7 @@ function handleStandalonePracticeSubmit(data: { answer: string; correct: boolean
           <ProblemView
             :problem="currentSection.problems[practiceIndex]"
             :topic-name="topicName"
-            :available-hints="currentSection.problems[practiceIndex].hints ?? []"
+            :available-hints="[]"
             :show-solution="false"
             :hints-revealed="0"
             :ask-confidence="false"
@@ -220,7 +220,7 @@ function handleStandalonePracticeSubmit(data: { answer: string; correct: boolean
         v-if="practiceProblems[practiceIndex]"
         :problem="practiceProblems[practiceIndex]"
         :topic-name="topicName"
-        :available-hints="practiceProblems[practiceIndex].hints ?? []"
+        :available-hints="[]"
         :show-solution="false"
         :hints-revealed="0"
         :ask-confidence="false"
