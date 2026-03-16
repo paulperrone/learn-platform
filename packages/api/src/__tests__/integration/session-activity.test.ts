@@ -270,4 +270,63 @@ describe("session-activity integration", () => {
       expect(activity!.topicsMastered).toBeGreaterThanOrEqual(1);
     }
   });
+
+  it("records XP in review_log and daily_activity after respond()", async () => {
+    const { db, user } = await setupGraph();
+    const session = createSessionService(db, undefined, getTestR2Bucket());
+
+    const { sessionId } = await session.startSession(user.id);
+
+    const result = await session.respond(sessionId, {
+      answer: "1",
+      correct: true,
+      responseMs: 5000, // Not rushing (>3s)
+    });
+
+    // Check xpEarned is in the response
+    expect((result as any).xpEarned).toBeGreaterThan(0);
+    expect((result as any).sessionXp).toBeGreaterThan(0);
+
+    // Check review_log has XP
+    const reviews = await db
+      .select({ xpEarned: schema.reviewLog.xpEarned })
+      .from(schema.reviewLog)
+      .where(eq(schema.reviewLog.userId, user.id));
+
+    expect(reviews.length).toBeGreaterThanOrEqual(1);
+    expect(reviews[0].xpEarned).toBeGreaterThan(0);
+
+    // Check daily_activity has XP
+    const today = new Date().toISOString().slice(0, 10);
+    const activity = await db
+      .select()
+      .from(schema.dailyActivity)
+      .where(and(
+        eq(schema.dailyActivity.userId, user.id),
+        eq(schema.dailyActivity.date, today),
+      ))
+      .get();
+
+    expect(activity).toBeDefined();
+    expect(activity!.dailyXp).toBeGreaterThan(0);
+  });
+
+  it("goalProgress includes XP fields", async () => {
+    const { db, user } = await setupGraph();
+    const session = createSessionService(db, undefined, getTestR2Bucket());
+
+    const { sessionId } = await session.startSession(user.id);
+
+    const result = await session.respond(sessionId, {
+      answer: "1",
+      correct: true,
+      responseMs: 5000,
+    });
+
+    const gp = (result as any).goalProgress;
+    expect(gp).toBeDefined();
+    expect(gp.dailyXp).toBeGreaterThan(0);
+    expect(gp.dailyXpGoal).toBe(20); // default
+    expect(typeof gp.progress).toBe("number");
+  });
 });

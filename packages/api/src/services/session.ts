@@ -12,6 +12,7 @@ import type { Problem, WorkedExample, Lesson, SessionPhase, ReviewScaffolding, A
 import { DEMAND_PROFILES } from "@learn/shared";
 import { gradeProblem } from "./grading.js";
 import { createActivityService } from "./activity.js";
+import { computeProblemXP, detectRushing } from "./xp.js";
 
 type SessionState = {
   sessionId: string;
@@ -42,6 +43,8 @@ type SessionState = {
   llmAssistedThisProblem?: boolean; // Set by LLM routes when any LLM feature used on current problem
   hintSourceThisProblem?: "static" | "llm" | null; // Hint source for current problem
   isNewTopicSession?: boolean; // True when this session introduces a new topic (lesson), false for reviews
+  sessionXp?: number; // Accumulated XP for this session (sum of per-problem XP)
+  sessionResults?: Array<{ correct: boolean; hintsUsed: number }>; // For session bonus calculation
 };
 
 // In-memory cache — D1 is the source of truth
@@ -572,6 +575,17 @@ export function createSessionService(db: DB, fireDiagnostic?: FireDiagnosticConf
         rating = Math.min(rating, Rating.Good) as Grade;
       }
 
+      // Compute XP for this problem
+      const problemXp = computeProblemXP({
+        phase: state.currentPhase,
+        correct: isCorrect,
+      });
+      const isRushing = detectRushing({ responseMs: response.responseMs });
+      const xpEarned = Math.max(0, problemXp - (isRushing ? 1 : 0));
+      state.sessionXp = (state.sessionXp ?? 0) + xpEarned;
+      if (!state.sessionResults) state.sessionResults = [];
+      state.sessionResults.push({ correct: isCorrect, hintsUsed });
+
       // Record review (skip for anonymous — no persistent SRS state)
       let masteryEvent: MasteryEvent | undefined;
       if (!state.isAnonymous) {
@@ -594,6 +608,7 @@ export function createSessionService(db: DB, fireDiagnostic?: FireDiagnosticConf
           state.llmAssistedThisProblem ?? false,
           state.hintSourceThisProblem ?? null,
           response.scaffolding ?? null,
+          xpEarned,
         );
 
         // Detect new mastery → find unlocked topics
@@ -658,10 +673,12 @@ export function createSessionService(db: DB, fireDiagnostic?: FireDiagnosticConf
       if (!state.isAnonymous) {
         const today = new Date().toISOString().slice(0, 10);
         try {
-          const problemResult = await activity.recordProblemCompleted(state.userId, today);
+          await activity.recordProblemCompleted(state.userId, today);
           if (masteryEvent) {
             await activity.recordTopicMastered(state.userId, today);
           }
+          // Record XP earned for this problem
+          const xpResult = await activity.recordXP(state.userId, today, xpEarned);
           const progress = await activity.getTodayProgress(state.userId, today);
           goalProgress = {
             problemsCompleted: progress.problemsCompleted,
@@ -669,7 +686,7 @@ export function createSessionService(db: DB, fireDiagnostic?: FireDiagnosticConf
             topicsMastered: progress.topicsMastered,
             dailyXp: progress.dailyXp,
             goalMet: progress.goalMet,
-            goalJustCompleted: problemResult.goalJustCompleted,
+            goalJustCompleted: xpResult.goalJustCompleted,
             dailyXpGoal: progress.dailyXpGoal,
             progress: progress.progress,
           };
@@ -729,6 +746,10 @@ export function createSessionService(db: DB, fireDiagnostic?: FireDiagnosticConf
       }
       if (goalProgress && result.type !== "error") {
         (result as any).goalProgress = goalProgress;
+      }
+      if (result.type !== "error") {
+        (result as any).xpEarned = xpEarned;
+        (result as any).sessionXp = state.sessionXp ?? 0;
       }
 
       // Write-through: persist after every phase transition
@@ -1366,13 +1387,28 @@ export function createSessionService(db: DB, fireDiagnostic?: FireDiagnosticConf
 
       activeSessions.delete(sessionId);
 
-      // Record accumulated session minutes (best-effort)
+      // Record accumulated session minutes and session XP bonus (best-effort)
       if (!state.isAnonymous) {
         const totalMs = state.totalResponseMs ?? 0;
         const minutes = Math.ceil(totalMs / 60_000);
+        const today = new Date().toISOString().slice(0, 10);
         if (minutes > 0) {
-          const today = new Date().toISOString().slice(0, 10);
           activity.recordMinutes(state.userId, today, minutes).catch(() => {});
+        }
+
+        // Compute and record session bonus XP
+        const results = state.sessionResults ?? [];
+        if (results.length > 0) {
+          const { computeSessionBonus } = await import("./xp.js");
+          const bonusMultiplier = computeSessionBonus(results);
+          const baseXp = state.sessionXp ?? 0;
+          // Bonus is the delta between multiplied total and base
+          // (base XP was already recorded per-problem, so only add the bonus/penalty difference)
+          const adjustedTotal = Math.max(0, Math.round(baseXp * (1 + bonusMultiplier)));
+          const bonusXp = adjustedTotal - baseXp;
+          if (bonusXp !== 0) {
+            activity.recordXP(state.userId, today, bonusXp).catch(() => {});
+          }
         }
       }
 

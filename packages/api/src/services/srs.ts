@@ -207,6 +207,7 @@ export function createSRSService(db: DB, fireDiagnostic?: FireDiagnosticConfig) 
       llmAssisted?: boolean,
       hintSource?: string | null,
       scaffolding?: string | null,
+      xpEarned?: number,
     ) {
       const state = await this.getOrCreateState(userId, topicId);
       const card = cardFromRow(state);
@@ -334,6 +335,7 @@ export function createSRSService(db: DB, fireDiagnostic?: FireDiagnosticConfig) 
         llmAssisted: llmAssisted ?? false,
         hintSource: hintSource ?? null,
         scaffolding: scaffolding ?? null,
+        xpEarned: xpEarned ?? 0,
       });
 
       // Apply prerequisite-direction FIRe credit when qualifying correct answer.

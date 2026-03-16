@@ -78,9 +78,9 @@ Review vs New:
 
 ## Progress
 
-**Completed:** Phase 1
+**Completed:** Phase 1, Phase 2
 **In Progress:** —
-**Next:** Phase 2
+**Next:** Phase 3
 
 ---
 
@@ -100,15 +100,15 @@ Review vs New:
 
 ---
 
-## Phase 2: XP Recording + Session Integration
+## Phase 2: XP Recording + Session Integration ✓
 **Goal:** Record XP on every problem response, accumulate per-session, wire into activity service
 
-1. [ ] [IMP] In `session.ts` `respond()`: after grading, call `computeProblemXP()` and store `xpEarned` in `review_log` insert
-2. [ ] [IMP] Accumulate session XP in `SessionState` (new `sessionXp` field) — sum of all problem XP
-3. [ ] [IMP] In `endSession()`: compute session bonus via `computeSessionBonus()`, add to `daily_activity.dailyXp`
-4. [ ] [IMP] Update `activity.ts` `recordProblemCompleted()` to also accept and record XP
-5. [ ] [IMP] Update `goalProgress` response to include `xpEarned` (session so far) and `dailyXpGoal`
-6. [ ] [TST] Integration tests: complete a session, verify XP recorded in `review_log` and `daily_activity`
+1. [x] [IMP] In `session.ts` `respond()`: after grading, call `computeProblemXP()` and store `xpEarned` in `review_log` insert
+2. [x] [IMP] Accumulate session XP in `SessionState` (new `sessionXp` field) — sum of all problem XP
+3. [x] [IMP] In `endSession()`: compute session bonus via `computeSessionBonus()`, add to `daily_activity.dailyXp`
+4. [x] [IMP] Update `activity.ts` `recordProblemCompleted()` to also accept and record XP
+5. [x] [IMP] Update `goalProgress` response to include `xpEarned` (session so far) and `dailyXpGoal`
+6. [x] [TST] Integration tests: complete a session, verify XP recorded in `review_log` and `daily_activity`
 
 **Validation:** After a learning session, XP values appear in review_log and daily_activity with correct formula application
 
