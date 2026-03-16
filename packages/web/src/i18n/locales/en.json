@@ -381,5 +381,19 @@
     "notAuthenticated": "Not authenticated",
     "mergeProgress": "Failed to merge guest progress",
     "budgetExceeded": "Budget limit reached"
+  },
+  "queue": {
+    "title": "Study Queue",
+    "loading": "Loading your queue...",
+    "error": "Unable to load your study queue.",
+    "retry": "Retry",
+    "assessmentTitle": "Assessment Checkpoint",
+    "assessmentDescription": "Complete this checkpoint to unlock more topics.",
+    "startAssessment": "Start",
+    "reviewsDue": "Reviews Due",
+    "newTopics": "New Topics",
+    "allCaughtUp": "All caught up!",
+    "nothingToDo": "No reviews due and no new topics available right now.",
+    "backToDashboard": "Back to Dashboard"
   }
 }

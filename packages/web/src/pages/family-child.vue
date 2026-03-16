@@ -27,11 +27,14 @@ const childSttEnabled = ref(true);
 
 onMounted(async () => {
   const result = await withErrorToast(async () => {
-    const [progressData, topicsData, familyData] = await Promise.all([
+    const [progressData, discData, familyData] = await Promise.all([
       api.getChildProgress(childId.value),
-      api.getTopics("math-foundations"),
+      api.getDisciplines(),
       api.getFamily(),
     ]);
+    // Load topics from first available discipline
+    const firstDisc = discData.disciplines[0];
+    const topicsData = firstDisc ? await api.getTopics(firstDisc.id) : { topics: [] };
     return { progressData, topicsData, familyData };
   }, "Failed to load child progress");
 

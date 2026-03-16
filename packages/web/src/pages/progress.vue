@@ -157,7 +157,7 @@ const LEVELS = ["primary", "intermediate", "standard", "advanced"] as const;
     <!-- Empty state -->
     <div v-else-if="allTopics.length === 0" class="text-center py-12">
       <p class="text-gray-500 mb-4">{{ t('progress.noTopics') }}</p>
-      <RouterLink to="/learn" class="text-blue-600 hover:underline text-sm">{{ t('progress.startLearning') }}</RouterLink>
+      <RouterLink to="/queue" class="text-blue-600 hover:underline text-sm">{{ t('progress.startLearning') }}</RouterLink>
     </div>
 
     <template v-else>

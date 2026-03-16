@@ -177,7 +177,7 @@ onMounted(loadFamily);
       <div class="text-center max-w-sm">
         <h1 class="text-2xl font-bold text-gray-900 mb-2">No Family Yet</h1>
         <p class="text-sm text-gray-500 mb-4">Your parent hasn't added you to a family yet. In the meantime, keep learning!</p>
-        <RouterLink to="/learn" class="inline-block bg-blue-600 text-white px-6 py-2.5 rounded-lg text-sm font-medium hover:bg-blue-700">
+        <RouterLink to="/queue" class="inline-block bg-blue-600 text-white px-6 py-2.5 rounded-lg text-sm font-medium hover:bg-blue-700">
           Start Learning
         </RouterLink>
       </div>
@@ -478,7 +478,7 @@ onMounted(loadFamily);
             You're part of the <strong>{{ family.name }}</strong> family.
           </p>
           <div class="mt-4">
-            <RouterLink to="/learn" class="text-blue-600 hover:underline text-sm font-medium">
+            <RouterLink to="/queue" class="text-blue-600 hover:underline text-sm font-medium">
               Continue Learning
             </RouterLink>
           </div>
