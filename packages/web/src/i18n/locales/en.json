@@ -242,7 +242,7 @@
     "tutorSays": "Tutor says:"
   },
   "example": {
-    "explainPrompt": "Explain in your own words: why does this step work?",
+    "explainPrompt": "In your own words, what is happening in this step and why?",
     "explainPlaceholder": "Type your explanation...",
     "checkExplanation": "Check Explanation",
     "evaluating": "Evaluating...",

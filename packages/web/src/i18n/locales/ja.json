@@ -194,7 +194,7 @@
     "tutorSays": "チューター："
   },
   "example": {
-    "explainPrompt": "自分の言葉で説明してください：なぜこのステップは正しいですか？",
+    "explainPrompt": "このステップで何が起きていて、なぜそうするのか、自分の言葉で説明してください。",
     "explainPlaceholder": "説明を入力...",
     "checkExplanation": "説明を確認",
     "evaluating": "評価中...",

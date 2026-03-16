@@ -194,7 +194,7 @@
     "tutorSays": "يقول المعلم:"
   },
   "example": {
-    "explainPrompt": "اشرح بكلماتك: لماذا تعمل هذه الخطوة؟",
+    "explainPrompt": "بكلماتك الخاصة، ماذا يحدث في هذه الخطوة ولماذا؟",
     "explainPlaceholder": "اكتب شرحك...",
     "checkExplanation": "تحقق من الشرح",
     "evaluating": "جاري التقييم...",

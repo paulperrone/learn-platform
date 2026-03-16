@@ -194,7 +194,7 @@
     "tutorSays": "El tutor dice:"
   },
   "example": {
-    "explainPrompt": "Explica con tus propias palabras: ¿por qué funciona este paso?",
+    "explainPrompt": "Con tus propias palabras, ¿qué está pasando en este paso y por qué?",
     "explainPlaceholder": "Escribe tu explicación...",
     "checkExplanation": "Verificar Explicación",
     "evaluating": "Evaluando...",

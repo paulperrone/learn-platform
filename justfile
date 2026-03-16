@@ -314,6 +314,10 @@ heal-checkpoint:
 
 # ── Deployment ──
 
+# Deploy content to local R2 + D1 (for local dev)
+deploy-content-local *args:
+    CONTENT_DIR="{{content_dir}}" npx tsx tools/deploy-content-local.ts {{args}}
+
 # Deploy content to R2 + D1 (production)
 deploy-content:
     CONTENT_DIR="{{content_dir}}" npx tsx tools/deploy-content.ts --env production
