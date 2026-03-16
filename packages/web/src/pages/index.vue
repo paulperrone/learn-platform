@@ -204,6 +204,9 @@ const hasStarted = computed(() =>
             <div>
               <p class="text-gray-500">{{ t('dashboard.weeklyProblems', { count: weeklySummary.totalProblems }) }}</p>
             </div>
+            <div>
+              <p class="text-gray-500">{{ weeklySummary.totalXp }} XP</p>
+            </div>
           </div>
           <p v-if="weeklySummary.totalTopicsMastered > 0" class="text-sm text-green-600 mt-2 font-medium">
             {{ t('dashboard.weeklyTopics', { count: weeklySummary.totalTopicsMastered }) }}

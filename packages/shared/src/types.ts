@@ -433,13 +433,6 @@ export type PeerPairState = {
 
 // === Daily Activity Types ===
 
-// Deprecated — removed in Plan 032. Kept as alias until Phase 4 cleanup.
-export type DailyGoalType = "minutes" | "problems";
-export type DailyGoalConfig = {
-  type: DailyGoalType;
-  target: number;
-};
-
 export type DailyActivityDay = {
   date: string;
   minutesActive: number;

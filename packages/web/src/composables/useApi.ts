@@ -1,6 +1,6 @@
 import { authClient } from "./useAuth";
 import { useToast } from "./useToast";
-import type { SpeechSettings, Discipline, Topic, Problem, WorkedExample, DiagnosticResult, TodayProgress, WeeklySummary, DailyGoalConfig, DailyActivityDay, StreakInfo, CompletionEstimate, AssessmentSessionConfig, AssessmentItem, AssessmentResult, AssessmentSummary, ProgressReport } from "@learn/shared";
+import type { SpeechSettings, Discipline, Topic, Problem, WorkedExample, DiagnosticResult, TodayProgress, WeeklySummary, DailyActivityDay, StreakInfo, CompletionEstimate, AssessmentSessionConfig, AssessmentItem, AssessmentResult, AssessmentSummary, ProgressReport } from "@learn/shared";
 
 const API_BASE = "/api";
 
@@ -472,9 +472,9 @@ export function useApi() {
       const qs = date ? `?date=${date}` : "";
       return request<StreakInfo>(`/activity/streak${qs}`);
     },
-    getDailyGoal: () => request<DailyGoalConfig>("/activity/goal"),
-    updateDailyGoal: (data: Partial<DailyGoalConfig>) =>
-      request<DailyGoalConfig>("/activity/goal", {
+    getDailyGoal: () => request<{ dailyXpGoal: number }>("/activity/goal"),
+    updateDailyGoal: (data: { dailyXpGoal: number }) =>
+      request<{ dailyXpGoal: number }>("/activity/goal", {
         method: "PUT",
         body: JSON.stringify(data),
       }),

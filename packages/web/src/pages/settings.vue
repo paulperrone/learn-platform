@@ -4,10 +4,12 @@ import { useSpeechPrefs } from "@/composables/useSpeechPrefs";
 import { useSpeech } from "@/composables/useSpeech";
 import { useChildMode } from "@/composables/useChildMode";
 import { useToast } from "@/composables/useToast";
+import { useApi } from "@/composables/useApi";
 import { useLocale } from "@/composables/useLocale";
 import { useI18n } from "vue-i18n";
 
 const toast = useToast();
+const api = useApi();
 const prefs = useSpeechPrefs();
 const childMode = useChildMode();
 const { supported: ttsSupported, voices } = useSpeech();
@@ -23,6 +25,7 @@ const ttsRate = ref(0.9);
 const ttsVoiceName = ref<string | null>(null);
 const ttsAutoRead = ref(false);
 const sttEnabled = ref(true);
+const dailyXpGoal = ref(20);
 
 const filteredVoices = computed(() =>
   voices.value.filter((v) => v.lang.startsWith(currentLocale.value))
@@ -42,18 +45,27 @@ onMounted(async () => {
   ttsVoiceName.value = prefs.ttsVoiceName.value;
   ttsAutoRead.value = prefs.ttsAutoRead.value;
   sttEnabled.value = prefs.sttEnabled.value;
+  try {
+    const goal = await api.getDailyGoal();
+    if (goal?.dailyXpGoal) {
+      dailyXpGoal.value = goal.dailyXpGoal;
+    }
+  } catch { /* use default */ }
   loading.value = false;
 });
 
 async function handleSave() {
   saving.value = true;
-  await prefs.save({
-    ttsEnabled: ttsEnabled.value,
-    ttsRate: ttsRate.value,
-    ttsVoiceName: ttsVoiceName.value,
-    ttsAutoRead: ttsAutoRead.value,
-    sttEnabled: sttEnabled.value,
-  });
+  await Promise.all([
+    prefs.save({
+      ttsEnabled: ttsEnabled.value,
+      ttsRate: ttsRate.value,
+      ttsVoiceName: ttsVoiceName.value,
+      ttsAutoRead: ttsAutoRead.value,
+      sttEnabled: sttEnabled.value,
+    }),
+    api.updateDailyGoal({ dailyXpGoal: dailyXpGoal.value }),
+  ]);
   saving.value = false;
   toast.success(t("settings.saved"));
 }
@@ -185,6 +197,32 @@ async function handleSave() {
           </label>
           <p class="text-xs text-gray-500 ml-7">
             {{ t('settings.childModeHint') }}
+          </p>
+        </div>
+      </fieldset>
+
+      <!-- Daily XP Goal -->
+      <fieldset class="bg-white rounded-lg border border-gray-200 p-6">
+        <legend class="text-lg font-semibold text-gray-800 px-2">{{ t('settings.dailyGoal', 'Daily Goal') }}</legend>
+        <div class="mt-2">
+          <label for="xp-goal" class="block text-sm font-medium text-gray-700 mb-1">
+            {{ t('settings.dailyXpGoal', 'Daily XP target') }}: {{ dailyXpGoal }} XP
+          </label>
+          <input
+            id="xp-goal"
+            type="range"
+            v-model.number="dailyXpGoal"
+            min="5"
+            max="100"
+            step="5"
+            class="w-full"
+          />
+          <div class="flex justify-between text-xs text-gray-400 mt-1">
+            <span>5 XP</span>
+            <span>100 XP</span>
+          </div>
+          <p class="text-xs text-gray-500 mt-2">
+            {{ t('settings.xpGoalHint', '1 XP ≈ 1 minute of focused practice. 20 XP/day is recommended.') }}
           </p>
         </div>
       </fieldset>

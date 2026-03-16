@@ -78,9 +78,9 @@ Review vs New:
 
 ## Progress
 
-**Completed:** Phase 1, Phase 2, Phase 3
+**Completed:** Phase 1, Phase 2, Phase 3, Phase 4
 **In Progress:** —
-**Next:** Phase 4
+**Next:** Phase 5
 
 ---
 
@@ -126,17 +126,17 @@ Review vs New:
 
 ---
 
-## Phase 4: Dashboard + Goal Overhaul
+## Phase 4: Dashboard + Goal Overhaul ✓
 **Goal:** Replace minutes-based goals/streaks with XP-based, redesign dashboard to center on XP
 
-1. [ ] [IMP] Update `activity.ts` — `getDailyGoal()` returns `dailyXpGoal` from userPreferences (no more goal type logic)
-2. [ ] [IMP] Update `activity.ts` — `getTodayProgress()` returns XP progress: `current = dailyXp`, `goal = dailyXpGoal`, `progress = dailyXp / dailyXpGoal`
-3. [ ] [IMP] Update `activity.ts` — `getStreakInfo()` counts streak based on days where `dailyXp > 0`
-4. [ ] [IMP] Update `activity.ts` — `getWeeklySummary()` includes `totalXp` for the week (sum of daily rows)
-5. [ ] [IMP] Update `index.vue` dashboard — daily goal ring shows XP progress, weekly summary shows XP totals, streak counter based on XP days
-6. [ ] [IMP] Update `settings.vue` — daily goal is a single XP number slider (default 20, range 5-100), no goal type selector
-7. [ ] [IMP] Remove dead code: `DailyGoalType`, minutes-based goal logic, `dailyGoalType`/`dailyGoalTarget` references
-8. [ ] [TST] Verify dashboard displays XP correctly for users with and without learning history
+1. [x] [IMP] Update `activity.ts` — `getDailyGoal()` returns `dailyXpGoal` from userPreferences (no more goal type logic)
+2. [x] [IMP] Update `activity.ts` — `getTodayProgress()` returns XP progress: `current = dailyXp`, `goal = dailyXpGoal`, `progress = dailyXp / dailyXpGoal`
+3. [x] [IMP] Update `activity.ts` — `getStreakInfo()` counts streak based on days where `dailyXp > 0`
+4. [x] [IMP] Update `activity.ts` — `getWeeklySummary()` includes `totalXp` for the week (sum of daily rows)
+5. [x] [IMP] Update `index.vue` dashboard — daily goal ring shows XP progress, weekly summary shows XP totals, streak counter based on XP days
+6. [x] [IMP] Update `settings.vue` — daily goal is a single XP number slider (default 20, range 5-100), no goal type selector
+7. [x] [IMP] Remove dead code: `DailyGoalType`, minutes-based goal logic, `dailyGoalType`/`dailyGoalTarget` references
+8. [x] [TST] Verify dashboard displays XP correctly for users with and without learning history
 
 **Validation:** Dashboard shows XP goal ring, XP-based streak, XP weekly summary. Settings show XP goal slider.
 
