@@ -60,10 +60,17 @@ export function createStandardsService(db: DB) {
   async function getStandardsForTopics(topicIds: string[]): Promise<Record<string, StandardEntry>> {
     if (topicIds.length === 0) return {};
 
-    const rows = await db
-      .select({ id: schema.topics.id, standardCode: schema.topics.standardCode })
-      .from(schema.topics)
-      .where(inArray(schema.topics.id, topicIds));
+    // Batch to avoid D1 SQL variable limit
+    const BATCH = 200;
+    const rows: { id: string; standardCode: string | null }[] = [];
+    for (let i = 0; i < topicIds.length; i += BATCH) {
+      const batch = topicIds.slice(i, i + BATCH);
+      const batchRows = await db
+        .select({ id: schema.topics.id, standardCode: schema.topics.standardCode })
+        .from(schema.topics)
+        .where(inArray(schema.topics.id, batch));
+      rows.push(...batchRows);
+    }
 
     const result: Record<string, StandardEntry> = {};
     for (const row of rows) {
@@ -99,6 +106,9 @@ export function createStandardsService(db: DB) {
     const topicsWithStd = allTopics.filter((t) => t.standardCode !== null);
     const topicIds = topicsWithStd.map((t) => t.id);
 
+    // Query all mastered states for the user and filter in memory.
+    // Avoids D1 SQL variable limit (inArray with 700+ topic IDs fails).
+    const topicIdSet = new Set(topicIds);
     const masteredSet = new Set<string>();
     if (topicIds.length > 0) {
       const states = await db
@@ -108,10 +118,11 @@ export function createStandardsService(db: DB) {
           and(
             eq(schema.userTopicState.userId, userId),
             eq(schema.userTopicState.mastered, true),
-            inArray(schema.userTopicState.topicId, topicIds),
           ),
         );
-      for (const s of states) masteredSet.add(s.topicId);
+      for (const s of states) {
+        if (topicIdSet.has(s.topicId)) masteredSet.add(s.topicId);
+      }
     }
 
     // Aggregate per standard

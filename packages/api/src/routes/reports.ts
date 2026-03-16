@@ -35,9 +35,8 @@ reportRoutes.get("/progress/:disciplineId", async (c) => {
     const report = await svc.generateProgressReport(user.id, disciplineId);
     return c.json(report);
   } catch (err) {
-    const message = err instanceof Error ? err.message : "Failed to generate report";
-    console.error("Progress report error:", message);
-    return c.json({ error: message }, 500);
+    console.error("Progress report error:", err instanceof Error ? err.message : err);
+    return c.json({ error: "Failed to generate report" }, 500);
   }
 });
 
