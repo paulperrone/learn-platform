@@ -12,8 +12,8 @@ const disciplines = ref<any[]>([]);
 const selectedDiscipline = ref("");
 const queue = ref<{
   assessment?: { sessionId: string };
-  reviews: { topicId: string; topicName: string; due: string; overdueDays: number }[];
-  newTopics: { topicId: string; topicName: string; description: string; gradeLevel: number; depth: number }[];
+  reviews: { topicId: string; topicName: string; due: string; overdueDays: number; estimatedXp: number }[];
+  newTopics: { topicId: string; topicName: string; description: string; gradeLevel: number; depth: number; estimatedXp: number }[];
   completed: boolean;
 } | null>(null);
 const loading = ref(true);
@@ -153,6 +153,7 @@ function gradeName(level: number) {
                 <span class="font-medium text-gray-800">{{ review.topicName }}</span>
               </div>
               <div class="flex items-center gap-2">
+                <span class="text-xs text-emerald-600 font-medium">+{{ review.estimatedXp }} XP</span>
                 <span v-if="review.overdueDays > 0" class="text-xs text-orange-600 font-medium">
                   {{ review.overdueDays }}d overdue
                 </span>
@@ -192,7 +193,10 @@ function gradeName(level: number) {
                 </div>
                 <p v-if="topic.description" class="text-sm text-gray-500 mt-1 ml-5 truncate">{{ topic.description }}</p>
               </div>
-              <div class="shrink-0 ml-3">
+              <div class="flex items-center gap-2 shrink-0 ml-3">
+                <span class="text-xs text-emerald-600 font-medium">+{{ topic.estimatedXp }} XP</span>
+              </div>
+              <div class="shrink-0 ml-1">
                 <svg v-if="starting === topic.topicId" class="animate-spin h-4 w-4 text-blue-500" viewBox="0 0 24 24" fill="none">
                   <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
                   <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />

@@ -129,3 +129,15 @@ export function computeSessionXP(input: SessionXPInput): SessionXPResult {
 }
 
 export const LESSON_COMPLETE_XP = BASE_XP.lessonComplete;
+
+// Average problems per topic session (for XP estimates in queue)
+const TYPICAL_PROBLEMS_PER_SESSION = 5;
+
+/**
+ * Estimate XP for a topic session (used in queue preview).
+ * Assumes typical performance (no bonus/penalty).
+ */
+export function estimateTopicXP(isReview: boolean): number {
+  const basePerProblem = isReview ? BASE_XP.review : BASE_XP.independent;
+  return TYPICAL_PROBLEMS_PER_SESSION * basePerProblem;
+}

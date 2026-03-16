@@ -100,8 +100,8 @@ export function useApi() {
       const qs = disciplineId ? `&disciplineId=${disciplineId}` : "";
       return request<{
         assessment?: { sessionId: string };
-        reviews: { topicId: string; topicName: string; due: string; overdueDays: number }[];
-        newTopics: { topicId: string; topicName: string; description: string; gradeLevel: number; depth: number }[];
+        reviews: { topicId: string; topicName: string; due: string; overdueDays: number; estimatedXp: number }[];
+        newTopics: { topicId: string; topicName: string; description: string; gradeLevel: number; depth: number; estimatedXp: number }[];
         completed: boolean;
       }>(`/learn/queue?userId=${userId}${qs}`);
     },

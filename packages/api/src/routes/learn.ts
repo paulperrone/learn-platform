@@ -68,6 +68,8 @@ learnRoutes.get("/queue", async (c) => {
     }
   }
 
+  const { estimateTopicXP } = await import("../services/xp.js");
+
   const now = Date.now();
   const reviews = dueTopics.map((t) => {
     const topic = topicDetailsMap.get(t.topicId);
@@ -78,6 +80,7 @@ learnRoutes.get("/queue", async (c) => {
       topicName: topic?.name ?? t.topicId,
       due: t.due,
       overdueDays,
+      estimatedXp: estimateTopicXP(true),
     };
   });
 
@@ -88,6 +91,7 @@ learnRoutes.get("/queue", async (c) => {
     description: t.description ?? "",
     gradeLevel: t.gradeLevel,
     depth: t.depth,
+    estimatedXp: estimateTopicXP(false),
   }));
 
   return c.json({

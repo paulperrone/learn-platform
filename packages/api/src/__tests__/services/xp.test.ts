@@ -4,6 +4,7 @@ import {
   detectRushing,
   computeSessionBonus,
   computeSessionXP,
+  estimateTopicXP,
   LESSON_COMPLETE_XP,
 } from "../../services/xp.js";
 
@@ -182,5 +183,15 @@ describe("computeSessionXP", () => {
     });
     // base: 15, bonus: ×0.2 → 3
     expect(result.totalXP).toBe(3);
+  });
+});
+
+describe("estimateTopicXP", () => {
+  it("returns 25 XP for review topics (5 problems x 5 XP)", () => {
+    expect(estimateTopicXP(true)).toBe(25);
+  });
+
+  it("returns 25 XP for new topics (5 problems x 5 XP)", () => {
+    expect(estimateTopicXP(false)).toBe(25);
   });
 });

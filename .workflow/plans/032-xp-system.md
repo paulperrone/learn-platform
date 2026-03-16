@@ -78,9 +78,9 @@ Review vs New:
 
 ## Progress
 
-**Completed:** Phase 1, Phase 2
+**Completed:** Phase 1, Phase 2, Phase 3
 **In Progress:** —
-**Next:** Phase 3
+**Next:** Phase 4
 
 ---
 
@@ -114,13 +114,13 @@ Review vs New:
 
 ---
 
-## Phase 3: Queue XP Previews
+## Phase 3: Queue XP Previews ✓
 **Goal:** Show estimated XP per item in the study queue
 
-1. [ ] [IMP] Add `estimateTopicXP(topicId, isReview)` to XP service — estimate based on problem count from content service × base XP per type
-2. [ ] [IMP] Update `GET /learn/queue` response to include `estimatedXp` per review and new topic item
-3. [ ] [IMP] Update `queue.vue` to display XP badge on each topic card (e.g., "+15 XP")
-4. [ ] [TST] Verify queue endpoint returns reasonable XP estimates
+1. [x] [IMP] Add `estimateTopicXP(topicId, isReview)` to XP service — estimate based on problem count from content service × base XP per type
+2. [x] [IMP] Update `GET /learn/queue` response to include `estimatedXp` per review and new topic item
+3. [x] [IMP] Update `queue.vue` to display XP badge on each topic card (e.g., "+15 XP")
+4. [x] [TST] Verify queue endpoint returns reasonable XP estimates
 
 **Validation:** Queue page shows XP estimates next to each topic. Values are proportional to topic size.
 
