@@ -355,7 +355,7 @@ export function createSRSService(db: DB, fireDiagnostic?: FireDiagnosticConfig) 
      * Get topics due for review.
      * Returns unmastered topics only.
      */
-    async getDueTopics(userId: string) {
+    async getDueTopics(userId: string, disciplineId?: string) {
       const now = new Date().toISOString();
       const rows = await db
         .select()
@@ -398,9 +398,18 @@ export function createSRSService(db: DB, fireDiagnostic?: FireDiagnosticConfig) 
         }
       }
 
-      return eligible.filter(
+      let result = eligible.filter(
         (r) => !(r.reps > 20 && r.stability < 0.5 && r.consecutiveCorrectReviews === 0)
       );
+
+      // Optional discipline filter
+      if (disciplineId && result.length > 0) {
+        const topicRows = await db.select({ id: schema.topics.id, disciplineId: schema.topics.disciplineId }).from(schema.topics);
+        const topicDisciplineMap = new Map(topicRows.map((t) => [t.id, t.disciplineId]));
+        result = result.filter((r) => topicDisciplineMap.get(r.topicId) === disciplineId);
+      }
+
+      return result;
     },
 
     /**

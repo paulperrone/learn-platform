@@ -257,7 +257,7 @@ export function createSessionService(db: DB, fireDiagnostic?: FireDiagnosticConf
     /**
      * Start a new learning session.
      */
-    async startSession(userId: string): Promise<{
+    async startSession(userId: string, opts?: { topicId?: string }): Promise<{
       sessionId: string;
       firstItem: SessionItem;
     }> {
@@ -272,6 +272,78 @@ export function createSessionService(db: DB, fireDiagnostic?: FireDiagnosticConf
       });
       if (stale) {
         await this.endSession(stale.id);
+      }
+
+      // If a specific topic was requested, validate it's in frontier or review queue
+      if (opts?.topicId) {
+        // Check assessment gate first
+        const learningState = await db.query.userLearningState.findFirst({
+          where: eq(schema.userLearningState.userId, userId),
+        });
+        if (learningState?.pendingAssessmentId) {
+          // Assessment gate blocks — still allow reviews but not new topics
+          const dueTopics = await srs.getDueTopics(userId);
+          const isDueReview = dueTopics.some((t) => t.topicId === opts.topicId);
+          if (!isDueReview) {
+            return {
+              sessionId,
+              firstItem: {
+                type: "assessment",
+                assessmentSessionId: learningState.pendingAssessmentId,
+                message: "Complete your assessment checkpoint before starting new topics.",
+              },
+            };
+          }
+        }
+
+        // Determine if it's a review or new topic
+        const topicState = await db.query.userTopicState.findFirst({
+          where: and(
+            eq(schema.userTopicState.userId, userId),
+            eq(schema.userTopicState.topicId, opts.topicId),
+          ),
+        });
+        const isReview = topicState && topicState.reps > 0;
+
+        // Validate: topic must be in review queue or frontier
+        if (!isReview) {
+          const frontier = await graph.computeFrontier(userId);
+          const inFrontier = frontier.topics.some((t) => t.id === opts.topicId);
+          if (!inFrontier) {
+            return {
+              sessionId,
+              firstItem: { type: "error", message: "This topic is not available yet. Complete its prerequisites first." },
+            };
+          }
+        }
+
+        const state: SessionState = {
+          sessionId,
+          userId,
+          currentTopicId: opts.topicId,
+          currentPhase: isReview ? "review" : "lesson",
+          phaseIndex: 0,
+          hintIndex: 0,
+          topicsCompleted: [],
+          reviewsCompleted: 0,
+          totalCorrect: 0,
+          totalAttempts: 0,
+          currentBlendRole: "main",
+          rollingResults: [],
+          isNewTopicSession: !isReview,
+        };
+        activeSessions.set(sessionId, state);
+
+        await db.insert(schema.learnSessions).values({
+          id: sessionId,
+          userId,
+          stateJson: JSON.stringify(state),
+        });
+
+        return {
+          sessionId,
+          firstItem: await this.buildPhaseItem(state),
+        };
       }
 
       // Determine next atomic learning unit (pull-based model)
@@ -1396,10 +1468,10 @@ function makeFallbackProblem(topic: { id: string; name: string; description: str
   return {
     id: `fallback-${topic.id}`,
     topicId: topic.id,
-    question: `Practice problem for: ${topic.name}\n\n${topic.description}\n\n(Content will be generated via the content pipeline.)`,
+    question: `${topic.name}: ${topic.description}`,
     answer: "",
     hints: ["Think about what you've learned about this topic."],
-    solution: "This is a placeholder. Content generation coming in Phase 5.",
+    solution: "Content for this topic is under development.",
   };
 }
 
@@ -1410,10 +1482,10 @@ function makeFallbackExample(topic: { id: string; name: string; description: str
     title: topic.name,
     steps: [
       {
-        subgoalLabel: "Understand the concept",
+        subgoalLabel: "About this topic",
         instruction: topic.description,
-        work: "See the description above.",
-        explanation: "This is a placeholder worked example.",
+        work: "Let's practice with some examples.",
+        explanation: "You'll learn this topic through worked examples and practice problems.",
       },
     ],
   };

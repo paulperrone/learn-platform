@@ -10,7 +10,7 @@ export function createGraphService(db: DB) {
     /**
      * Topics where all prerequisites are mastered and topic is not yet started.
      */
-    async computeFrontier(userId: string) {
+    async computeFrontier(userId: string, disciplineId?: string) {
       // Get all mastered topic IDs for this user
       const masteredRows = await db
         .select({ topicId: schema.userTopicState.topicId })
@@ -143,8 +143,10 @@ export function createGraphService(db: DB) {
           .every((p) => masteredIds.has(p.fromTopicId));
       });
 
+      const filtered = disciplineId ? frontier.filter((t) => t.disciplineId === disciplineId) : frontier;
+
       return {
-        topics: frontier,
+        topics: filtered,
         totalMastered: masteredIds.size,
         totalTopics: allTopics.length,
       };
