@@ -44,12 +44,14 @@ const goalProgress = ref<{
   problemsCompleted: number;
   minutesActive: number;
   topicsMastered: number;
+  dailyXp: number;
   goalMet: boolean;
   goalJustCompleted: boolean;
-  goalType: "minutes" | "problems";
-  goalTarget: number;
+  dailyXpGoal: number;
   progress: number;
 } | null>(null);
+const lastXpEarned = ref<number | null>(null);
+const sessionXp = ref(0);
 
 // Auto-read problem when it appears and ttsAutoRead is enabled
 watch(
@@ -167,9 +169,15 @@ async function handleProblemSubmit(data: {
     if (isAnonymous.value && data.answer) {
       anon.recordAttempt(currentItem.value?.topicId ?? "", data.correct);
     }
-    // Update goal progress from server response
+    // Update goal progress and XP from server response
     if (result.goalProgress) {
       goalProgress.value = result.goalProgress;
+    }
+    if (result.xpEarned != null) {
+      lastXpEarned.value = result.xpEarned;
+      sessionXp.value = result.sessionXp ?? sessionXp.value;
+      // Clear XP toast after 2s
+      setTimeout(() => { lastXpEarned.value = null; }, 2000);
     }
     if (result.type === "complete") {
       // Pull-based model: auto-start next unit when current topic completes.
@@ -342,7 +350,7 @@ async function handleExampleDone() {
 
     <!-- Active session -->
     <div v-else>
-      <!-- Goal progress indicator -->
+      <!-- XP progress indicator -->
       <div v-if="goalProgress && !isAnonymous" class="mb-4 flex items-center gap-3 text-sm text-gray-600">
         <div class="flex-1 bg-gray-200 rounded-full h-2 overflow-hidden">
           <div
@@ -352,14 +360,15 @@ async function handleExampleDone() {
           />
         </div>
         <span class="whitespace-nowrap">
-          <template v-if="goalProgress.goalType === 'problems'">
-            {{ goalProgress.problemsCompleted }}/{{ goalProgress.goalTarget }} {{ t('learn.problems') }}
-          </template>
-          <template v-else>
-            {{ goalProgress.minutesActive }}/{{ goalProgress.goalTarget }} {{ t('learn.minutes') }}
-          </template>
+          {{ goalProgress.dailyXp }}/{{ goalProgress.dailyXpGoal }} XP
           <span v-if="goalProgress.goalMet" class="text-green-600 font-medium ml-1">{{ t('learn.goalMet') }}</span>
         </span>
+        <!-- Per-problem XP toast -->
+        <transition name="fade">
+          <span v-if="lastXpEarned != null && lastXpEarned > 0" class="text-emerald-600 font-semibold animate-bounce">
+            +{{ lastXpEarned }} XP
+          </span>
+        </transition>
       </div>
 
       <!-- Topic header -->

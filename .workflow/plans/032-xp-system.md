@@ -78,9 +78,8 @@ Review vs New:
 
 ## Progress
 
-**Completed:** Phase 1, Phase 2, Phase 3, Phase 4
-**In Progress:** —
-**Next:** Phase 5
+**Completed:** Phase 1, Phase 2, Phase 3, Phase 4, Phase 5
+**Completed:** 2026-03-15
 
 ---
 
@@ -142,12 +141,12 @@ Review vs New:
 
 ---
 
-## Phase 5: Session XP Feedback
+## Phase 5: Session XP Feedback ✓
 **Goal:** Show XP earned in real-time during learning sessions
 
-1. [ ] [IMP] Update `respond()` API response to include `xpEarned` for the problem just completed
-2. [ ] [IMP] Update `learn.vue` — show XP earned per problem (small "+5 XP" toast or inline indicator after submission)
-3. [ ] [IMP] Update `learn.vue` — show running session XP total in the goal progress bar (replace minutes)
-4. [ ] [TST] End-to-end: complete problems, verify XP feedback appears, accumulates, and matches dashboard after session
+1. [x] [IMP] Update `respond()` API response to include `xpEarned` for the problem just completed
+2. [x] [IMP] Update `learn.vue` — show XP earned per problem (small "+5 XP" toast or inline indicator after submission)
+3. [x] [IMP] Update `learn.vue` — show running session XP total in the goal progress bar (replace minutes)
+4. [x] [TST] End-to-end: complete problems, verify XP feedback appears, accumulates, and matches dashboard after session
 
 **Validation:** During a session, each problem shows XP earned. Session total is visible. After session, dashboard reflects earned XP.
