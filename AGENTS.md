@@ -124,8 +124,8 @@ just deploy-preview   # Deploy everything to preview
 - Collections are packaging views (grade bands, strands, exam-prep tracks) — they don't own topics. Math has 3 grade-band (K-2, 3-5, 6-8) + 18 strand collections.
 - Prerequisite edges have types: `required` (hard gate), `recommended` (context), `enriching` (suggestion)
 - Content has depth (`survey`, `contextual`, `analytical`, `synthesis`) and presentation (`primary`, `intermediate`, `standard`, `advanced`) dimensions. See `docs/content-system.md`.
-- FSRS state per user per topic. FIRe (Fractional Implicit Repetition) is disabled — premature at current graph scale (1.01 encompassing edges/topic). Code and edges preserved. See `docs/fire.md`.
-- Learning loop phases (simplified, Plan 029): `lesson → independent → review → remediation`. Assessment sessions (Plan 030) are separate: multi-topic, no scaffolding, scored output. See `docs/assessment-system.md`.
+- FSRS state per user per topic. FIRe encompasses-direction is disabled (premature at current encompassing density). FIRe prereq-direction is enabled (Plan 031): practicing a topic applies fractional stability credit to its mastered prerequisites via BFS (up to 3 hops), replacing the warmup tier. See `docs/fire.md`.
+- Learning loop: pull-based atomic sessions (Plan 031). Each `startSession()` covers one topic via `getNextItem()` priority: assessment > review > lesson > complete. Frontend calls `startSession()` repeatedly. Phases within a topic: `lesson → independent → review → remediation`. Assessment sessions (Plan 030) are separate: multi-topic, no scaffolding, scored output. See `docs/assessment-system.md`.
 - Analytics Engine records rich per-problem events (problem attempts, example views) with content version correlation. D1 `review_log` continues as compact SRS history.
 - Tests: co-located `__tests__/` directory, `*.test.ts` naming, `@cloudflare/vitest-pool-workers` for API tests with miniflare D1. New services and routes must include vitest tests. Use helpers from `packages/api/src/__tests__/helpers.ts` for DB setup and seeding.
 
