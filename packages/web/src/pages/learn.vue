@@ -92,8 +92,9 @@ onMounted(async () => {
     } else {
       // No active session — auto-start with topicId from query param if present
       const topicIdParam = route.query.topicId as string | undefined;
+      const disciplineIdParam = route.query.disciplineId as string | undefined;
       if (topicIdParam) {
-        await startSessionForTopic(topicIdParam);
+        await startSessionForTopic(topicIdParam, disciplineIdParam);
       }
     }
   } else {
@@ -112,15 +113,16 @@ onMounted(async () => {
   recovering.value = false;
 });
 
-async function startSessionForTopic(topicId?: string) {
-  return _startSession(topicId);
+async function startSessionForTopic(topicId?: string, disciplineId?: string) {
+  return _startSession(topicId, disciplineId);
 }
 
 async function startSession() {
-  return _startSession();
+  const disciplineIdParam = route.query.disciplineId as string | undefined;
+  return _startSession(undefined, disciplineIdParam);
 }
 
-async function _startSession(topicId?: string) {
+async function _startSession(topicId?: string, disciplineId?: string) {
   loading.value = true;
   let result;
   if (isAnonymous.value) {
@@ -130,7 +132,7 @@ async function _startSession(topicId?: string) {
     );
   } else {
     result = await withErrorToast(
-      () => api.startSession(topicId ? { topicId } : undefined),
+      () => api.startSession({ topicId, disciplineId }),
       t("errors.failedToStart", { action: "session" })
     );
   }
@@ -147,11 +149,14 @@ async function handleProblemSubmit(data: {
   correct: boolean;
   confidence?: number;
   responseMs: number;
+  hintsUsed: number;
+  problemId: string;
 }) {
   if (!sessionId.value) return;
   loading.value = true;
   const submitData = {
     ...data,
+    topicId: currentItem.value?.topicId,
     scaffolding: scaffolding.value,
   };
   const result = await withErrorToast(

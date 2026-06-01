@@ -26,7 +26,7 @@ const props = defineProps<{
 }>();
 
 const emit = defineEmits<{
-  submit: [data: { answer: string; correct: boolean; confidence?: number; responseMs: number; hintsUsed: number }];
+  submit: [data: { answer: string; correct: boolean; confidence?: number; responseMs: number; hintsUsed: number; problemId: string }];
 }>();
 
 const api = useApi();
@@ -130,6 +130,7 @@ function submitAndContinue() {
     confidence: props.askConfidence ? confidence.value : undefined,
     responseMs: Date.now() - startTime,
     hintsUsed: hintLevel.value,
+    problemId: props.problem.id,
   });
 }
 

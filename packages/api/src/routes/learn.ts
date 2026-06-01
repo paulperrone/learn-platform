@@ -142,7 +142,10 @@ learnRoutes.post("/sessions", async (c) => {
   }
 
   if (!body.userId) return c.json({ error: "userId or anonymousToken required" }, 400);
-  const result = await session.startSession(body.userId, body.topicId ? { topicId: body.topicId } : undefined);
+  const result = await session.startSession(body.userId, {
+    topicId: body.topicId,
+    disciplineId: body.disciplineId,
+  });
   return c.json(result);
 });
 
@@ -164,6 +167,8 @@ learnRoutes.post("/sessions/:id/respond", async (c) => {
     responseMs: number;
     selfExplanation?: string;
     hintsUsed?: number;
+    problemId?: string;
+    topicId?: string;
     scaffolding?: "none" | "lesson-referenced" | "llm-assisted" | "lesson-and-llm";
   }>();
   const result = await session.respond(c.req.param("id"), body);

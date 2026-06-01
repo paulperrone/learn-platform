@@ -2308,3 +2308,30 @@ Post-assessment feedback (already in Phase 5, Step 3) shows pacing impact: score
 - Lifetime `totalXp` column with placement backfill: Conflates effort with achievement, adds complexity for no clear user benefit
 - Multiple goal types (`minutes | problems | xp`): Unnecessary complexity — XP subsumes both (it's quality-weighted time × volume)
 - XP as knowledge proxy (placement grants XP): Makes XP redundant with mastery, muddies what the number means
+
+---
+
+## 2026-05-31: K-2 learners need guided mode, not just easier content
+
+**Source:** User product review of live `/learn` sessions with K-level math and early ELA content.
+
+**Context:** The current learning workflow is intentionally close to MathAcademy: queue-driven, mastery sequenced, lesson/review/remediation phases, worked examples, hints, and XP feedback. That model is strong for sequencing and mastery, but live testing exposed a developmental mismatch for kindergarten and early elementary learners. K students may not read instructions independently, may not understand abstract session states, may struggle with typing, and often cannot recover from confusing UI without an adult.
+
+Math Academy's public course catalog validates this breakpoint: their lowest entry point is 4th Grade Math, and they describe it as appropriate for students who know multiplication tables up to 12s and can read independently.
+
+**Decision:** Treat the current MathAcademy-style workflow as a **self-directed grade 4+ learner surface**. Treat K-3 as **guided/co-piloted**, not as the same self-directed workflow with easier topics.
+
+Approximate self-direction bands:
+- **K-1 / ages 5-7:** adult-guided. Needs audio-first directions, large tap/drag interactions, very short tasks, minimal typing, no queue/remediation complexity exposed, and one obvious next action.
+- **Grade 2-3 / ages 7-9:** transitional. Can self-direct inside a familiar constrained activity, but still needs read-aloud, videos/animations, and simple navigation.
+- **Grade 4-5 / ages 9-11:** emerging self-direction. Many students can use queue -> lesson -> practice -> feedback independently if reading level and UI are appropriate.
+- **Grade 6+ / ages 11-12+:** generally compatible with the current self-directed mastery workflow.
+
+**Product implications:**
+- K-2 needs a separate learner experience: "watch/listen -> try one -> tap/drag/say answer -> next" rather than the full queue/session/remediation flow.
+- Videos/narrated mini-lessons are not optional polish for K-2; they are likely required for independent use.
+- Primary content should avoid self-explanation prompts, abstract worked-example framing, and text-heavy instructions unless adult/teacher mode is active.
+- The platform should distinguish **mastery engine** from **learner surface**: the graph/SRS/session engine can remain shared, but the K-2 UI/content presentation must be age-specific.
+- The self-directed MVP should focus on grade 4+ math; K-3 content can remain in the graph/content system but should be hidden or explicitly labeled guided until a primary learner mode exists.
+
+**Why:** A self-directed mastery system assumes reading fluency, navigation fluency, metacognitive awareness, and frustration recovery. Those assumptions are weak for K-2 and become reasonable only around grades 4-5 for many learners.

@@ -4,7 +4,7 @@ import type { VisualAsset } from "@learn/shared";
 import SpeakButton from "./SpeakButton.vue";
 import VisualAid from "./visuals/VisualAid.vue";
 import VoiceMicButton from "./VoiceMicButton.vue";
-import { useApi, withErrorToast } from "../composables/useApi";
+import { useApi } from "../composables/useApi";
 import { useLLMStatus } from "../composables/useLLMStatus";
 import { useI18n } from "vue-i18n";
 
@@ -18,6 +18,7 @@ const props = defineProps<{
       explanation: string;
     }[];
     visuals?: VisualAsset[];
+    presentation?: string;
   };
   topicName?: string;
   topicId?: string;
@@ -56,6 +57,19 @@ const stepSpeechText = computed(() => {
 
 const currentStepData = computed(() => props.example.steps[currentStep.value]);
 
+const shouldAskSelfExplanation = computed(() => {
+  if (props.example.presentation === "primary") return false;
+
+  const step = currentStepData.value;
+  const prompt = `${step.instruction} ${step.work}`;
+  return prompt.includes("?")
+    || prompt.includes("→")
+    || prompt.includes("=")
+    || /[0-9]\s*[+\-*/]\s*[0-9]/.test(prompt);
+});
+
+const explanationVisible = computed(() => showExplanation.value || !shouldAskSelfExplanation.value);
+
 const qualityColor = computed(() => {
   if (!evaluation.value) return "";
   switch (evaluation.value.quality) {
@@ -82,16 +96,17 @@ async function checkExplanation() {
   // If LLM available and student typed something, evaluate with LLM
   if (llmAvailable.value && selfExplanation.value.trim()) {
     evaluating.value = true;
-    const result = await withErrorToast(
-      () =>
-        api.evaluateExplanation({
-          topicName: props.topicName ?? "Math",
-          topicId: props.topicId,
-          stepDescription: `${currentStepData.value.subgoalLabel}: ${currentStepData.value.instruction} → ${currentStepData.value.work}`,
-          studentExplanation: selfExplanation.value,
-        }),
-      "Explanation evaluation"
-    );
+    let result = null;
+    try {
+      result = await api.evaluateExplanation({
+        topicName: props.topicName ?? "Math",
+        topicId: props.topicId,
+        stepDescription: `${currentStepData.value.subgoalLabel}: ${currentStepData.value.instruction} → ${currentStepData.value.work}`,
+        studentExplanation: selfExplanation.value,
+      });
+    } catch {
+      result = null;
+    }
     evaluating.value = false;
     if (result) {
       evaluation.value = result;
@@ -159,7 +174,7 @@ function nextStep() {
         {{ currentStepData.work }}
       </div>
 
-      <div v-if="!showExplanation" class="space-y-3">
+      <div v-if="!explanationVisible && shouldAskSelfExplanation" class="space-y-3">
         <p class="text-sm text-gray-600">{{ t('example.explainPrompt') }}</p>
         <div class="flex items-start gap-2">
           <textarea

@@ -1320,3 +1320,18 @@ Path B of the mastery criterion (`consecutiveCorrect >= 3` in any FSRS state) ca
 In Hono, `GET /learn/sessions/:id` captures any path segment after `/sessions/`. A new `GET /learn/session-status` route must be registered **before** the parameterized route, or `session-status` gets captured as `:id`. The learn routes file already has this pattern (`/sessions/active` before `/:id`), so `session-status` follows the same placement.
 
 **Context:** `packages/api/src/routes/learn.ts` — route ordering is load-bearing.
+
+---
+
+### 2026-05-31: Current self-directed workflow should start around grade 4, not K
+
+**Source:** Live `/learn` testing with K-level math and early ELA content; Math Academy public course catalog reference.
+**Area:** Product scope / learner UX / content strategy
+
+The current workflow assumes independent reading, keyboard/mouse fluency, tolerance for abstract learning states, and the ability to recover when a step is confusing. K-3 learners often cannot do this without an adult, even if the underlying topic is age-appropriate. Live testing showed early ELA examples and K math lessons can feel strange or unusable when presented through a MathAcademy-style queue/session/worked-example flow.
+
+Math Academy appears to draw the same boundary: its lowest public course entry point is 4th Grade Math, with prerequisites of multiplication table mastery through 12s and independent reading ability.
+
+Practical implication: do not treat K-3 as merely "easier content." Treat it as a separate guided/co-piloted learner surface. The self-directed MVP should emphasize grade 4+ math until primary guided mode exists.
+
+Immediate follow-up: Plan 033 should gate or label K-3 self-directed content, scope `/learn` by discipline, remove primary self-explanation prompts, audit early content, and define a future primary guided mode.

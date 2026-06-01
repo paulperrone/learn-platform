@@ -13,6 +13,7 @@ type LessonSection = {
     title: string;
     steps: { subgoalLabel: string; instruction: string; work: string; explanation: string }[];
     visuals?: VisualAsset[];
+    presentation?: string;
   };
   problems?: Problem[];
   mediaAlt?: string;
@@ -50,6 +51,14 @@ const isLastSection = computed(() => currentSectionIndex.value >= totalSections.
 const hasPractice = computed(() =>
   currentSection.value?.type === "practice" && (currentSection.value.problems?.length ?? 0) > 0
 );
+
+function renderInlineMarkdown(text: string) {
+  const escaped = text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+  return escaped.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+}
 
 function nextSection() {
   if (isLastSection.value) {
@@ -118,7 +127,10 @@ function handleStandalonePracticeSubmit(data: { answer: string; correct: boolean
         <h3 v-if="currentSection.title" class="text-lg font-semibold text-gray-800 mb-3">
           {{ currentSection.title }}
         </h3>
-        <div class="text-gray-700 leading-relaxed whitespace-pre-line">{{ currentSection.content }}</div>
+        <div
+          class="text-gray-700 leading-relaxed whitespace-pre-line"
+          v-html="renderInlineMarkdown(currentSection.content)"
+        />
 
         <button
           @click="nextSection"

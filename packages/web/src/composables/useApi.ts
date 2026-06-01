@@ -109,11 +109,11 @@ export function useApi() {
       const userId = await getUserId();
       return request<any>(`/learn/sessions/active?userId=${userId}`);
     },
-    startSession: async (opts?: { topicId?: string }) => {
+    startSession: async (opts?: { topicId?: string; disciplineId?: string }) => {
       const userId = await getUserId();
       return request<any>("/learn/sessions", {
         method: "POST",
-        body: JSON.stringify({ userId, topicId: opts?.topicId }),
+        body: JSON.stringify({ userId, topicId: opts?.topicId, disciplineId: opts?.disciplineId }),
       });
     },
     respondToSession: (sessionId: string, response: any) =>

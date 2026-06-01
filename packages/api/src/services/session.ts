@@ -260,7 +260,7 @@ export function createSessionService(db: DB, fireDiagnostic?: FireDiagnosticConf
     /**
      * Start a new learning session.
      */
-    async startSession(userId: string, opts?: { topicId?: string }): Promise<{
+    async startSession(userId: string, opts?: { topicId?: string; disciplineId?: string }): Promise<{
       sessionId: string;
       firstItem: SessionItem;
     }> {
@@ -350,7 +350,7 @@ export function createSessionService(db: DB, fireDiagnostic?: FireDiagnosticConf
       }
 
       // Determine next atomic learning unit (pull-based model)
-      const nextItem = await srs.getNextItem(userId);
+      const nextItem = await srs.getNextItem(userId, opts?.disciplineId);
 
       if (nextItem.type === "complete") {
         // No topics available — everything mastered or no content
@@ -512,6 +512,8 @@ export function createSessionService(db: DB, fireDiagnostic?: FireDiagnosticConf
         responseMs: number;
         selfExplanation?: string;
         hintsUsed?: number;
+        problemId?: string;
+        topicId?: string;
         scaffolding?: ReviewScaffolding;
       }
     ): Promise<SessionItem> {
@@ -530,15 +532,25 @@ export function createSessionService(db: DB, fireDiagnostic?: FireDiagnosticConf
 
       state.totalAttempts++;
       state.totalResponseMs = (state.totalResponseMs ?? 0) + (response.responseMs ?? 0);
-      if ((response as any).problemId) {
-        state.lastProblemId = (response as any).problemId;
+      const responseProblemId = response.problemId;
+      const responseTopicId = response.topicId;
+      const gradingTopicId =
+        responseTopicId
+        ?? (state.currentPhase === "remediation" && state.remediationTargetTopicId
+          ? state.remediationTargetTopicId
+          : state.currentTopicId);
+
+      if (responseProblemId) {
+        state.lastProblemId = responseProblemId;
       }
 
       // Server-side grading when answer is provided
       let isCorrect = response.correct ?? false;
       if (response.answer != null) {
-        const problems = await getAllTopicProblems(state.currentTopicId);
-        const problem = problems.find((p) => p.id === (response as any).problemId) ?? problems[0];
+        const problems = await getAllTopicProblems(gradingTopicId);
+        const problem = responseProblemId
+          ? problems.find((p) => p.id === responseProblemId)
+          : undefined;
         if (problem) {
           const gradeResult = gradeProblem(problem, response.answer);
           isCorrect = gradeResult.correct;

@@ -63,11 +63,14 @@ watch(selectedDiscipline, async (id) => {
 async function startTopic(topicId: string) {
   starting.value = topicId;
   const result = await withErrorToast(
-    () => api.startSession({ topicId }),
+    () => api.startSession({ topicId, disciplineId: selectedDiscipline.value || undefined }),
     t("errors.failedToStart", { action: "session" })
   );
   if (result) {
-    router.push("/learn");
+    router.push({
+      path: "/learn",
+      query: selectedDiscipline.value ? { disciplineId: selectedDiscipline.value } : undefined,
+    });
   }
   starting.value = null;
 }

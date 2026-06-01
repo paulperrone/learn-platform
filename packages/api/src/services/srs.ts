@@ -1065,7 +1065,7 @@ export function createSRSService(db: DB, fireDiagnostic?: FireDiagnosticConfig) 
      * Mastered topics that genuinely need review appear in getDueTopics() when their
      * retrievability drops — no separate random-warmup pass needed.
      */
-    async getNextItem(userId: string): Promise<NextItem> {
+    async getNextItem(userId: string, disciplineId?: string): Promise<NextItem> {
       // Priority 1: pending assessment gate
       const learningState = await db.query.userLearningState.findFirst({
         where: eq(schema.userLearningState.userId, userId),
@@ -1075,7 +1075,7 @@ export function createSRSService(db: DB, fireDiagnostic?: FireDiagnosticConfig) 
       }
 
       // Priority 2: due reviews (modulated by pacing factor)
-      const dueTopics = await this.getDueTopics(userId);
+      const dueTopics = await this.getDueTopics(userId, disciplineId);
 
       // Pacing factor modulates lesson availability when reviews are pending.
       // At pacing=1.0 (default): reviews always come first (threshold=0).
@@ -1090,7 +1090,7 @@ export function createSRSService(db: DB, fireDiagnostic?: FireDiagnosticConfig) 
       }
 
       // Priority 3: new lesson from frontier
-      const frontier = await graph.computeFrontier(userId);
+      const frontier = await graph.computeFrontier(userId, disciplineId);
       if (frontier.topics.length > 0) {
         // Sort by depth (shallowest first) to respect prerequisite order
         const sorted = [...frontier.topics].sort((a, b) => a.depth - b.depth || a.gradeLevel - b.gradeLevel);
