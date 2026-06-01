@@ -59,7 +59,7 @@ OutputWriter (shared):
 
 **Depends on:** Plan 028 complete (lesson types, pipeline, engine, frontend). ✓ Completed 2026-03-14.
 
-**Reference data:** MathAcademy graph at `~/source/mathacademy-graph/` — 3,688 topics, 5,622 edges. K-8 equivalent: ~955 unique topics across 4th Grade, 5th Grade, Prealgebra, Mathematical Foundations I-II. Our current graph: 705 topics, 1,001 prerequisite edges, 711 encompassing edges.
+**Reference data:** Private Math Academy benchmark analysis — 3,688 topics, 5,622 edges. K-8 equivalent: ~955 unique topics across 4th Grade, 5th Grade, Prealgebra, Mathematical Foundations I-II. Our current graph: 705 topics, 1,001 prerequisite edges, 711 encompassing edges.
 
 ## Progress
 
@@ -82,7 +82,7 @@ OutputWriter (shared):
 The graph was expanded from 207 → 705 topics in plan 021 using the expansion-map (`docs/archive/expansion-map.md`). That expansion applied the 5 split heuristics to Wave 1 strands (counting, operations). Remaining strands (fractions, geometry, algebra) may still have topics that are too coarse.
 
 **MathAcademy K-8 reference:**
-- `~/source/mathacademy-graph/mathacademy.db` — SQLite with 3,688 topics, 5,622 edges
+- Private benchmark database — SQLite with 3,688 topics, 5,622 edges
 - K-8 equivalent courses: 4th Grade (137 topics), 5th Grade (132), Prealgebra (205), MF1 (352), MF2 (357)
 - ~955 unique topics across those courses (but includes some beyond grade 8: logarithms, quadratic functions, etc.)
 - Our 705 topics is in the right ballpark but may lack granularity in specific strands
@@ -102,7 +102,7 @@ The graph was expanded from 207 → 705 topics in plan 021 using the expansion-m
 ### Steps
 
 1. [x] [RSH] Extract MA's K-8 topic set and build a comparison map:
-   - Queried `mathacademy.db` for 955 unique topics across courses 75, 30, 99, 113, 111
+   - Queried private benchmark data for 955 unique topics across relevant grade-band courses
    - Filtered ~134 topics beyond grade 8 (trig, calculus, complex numbers, etc.)
    - Built strand-level comparison: our topics vs MA equivalent coverage by unit
 

@@ -4,7 +4,7 @@
 >
 > **Created:** 2026-03-10
 > **Context:** Plan 019 Phase 2.6 — after replacing the FIRe compression metric with an efficiency metric (reviews per mastered topic)
-> **Sources:** "The Math Academy Way" (Skycak, 2026), Ausubel et al. (1957), Math Academy knowledge graph analysis (`~/source/mathacademy-graph/analysis.md`), platform learning-science.md, FSRS documentation
+> **Sources:** "The Math Academy Way" (Skycak, 2026), Ausubel et al. (1957), Math Academy knowledge graph analysis (`private Math Academy benchmark analysis`), platform learning-science.md, FSRS documentation
 
 ---
 

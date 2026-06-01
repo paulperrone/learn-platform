@@ -82,13 +82,13 @@ for (const dir of [join(contentDir, "problems"), join(contentDir, "problems-gene
   }
 }
 
-// Load MA graph
-const maGraphPath = resolve(process.env.HOME ?? "~", "source/mathacademy-graph/export/graph.json");
+// Optionally load a private benchmark graph for local comparison.
+const maGraphPath = process.env.MA_GRAPH_PATH ? resolve(process.env.MA_GRAPH_PATH) : "";
 let maNodes: MANode[] = [];
-if (existsSync(maGraphPath)) {
+if (maGraphPath && existsSync(maGraphPath)) {
   const ma = JSON.parse(readFileSync(maGraphPath, "utf-8"));
   maNodes = ma.nodes;
-  console.error(`Loaded MA graph: ${maNodes.length} topics`);
+  console.error(`Loaded benchmark graph: ${maNodes.length} topics`);
 }
 
 // Load previous audit results

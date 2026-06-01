@@ -44,7 +44,6 @@ app.use(
     origin: [
       "http://localhost:5173",
       "https://learn.perrone.dev",
-      "https://learn-platform-api-production.papetest.workers.dev",
     ],
     credentials: true,
   })

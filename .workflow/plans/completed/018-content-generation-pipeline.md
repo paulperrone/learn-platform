@@ -64,7 +64,7 @@ Topic (graph node)
 - Procedural generators most urgent for high-volume computation topics (addition, subtraction, multiplication, division strands)
 - Presentation fallback frequency data available in simulation logs — prioritize primary-level content for topics where young profiles experience >30% fallbacks
 
-**MathAcademy reference data** (from `/Users/paulperrone/source/mathacademy-graph/`):
+**MathAcademy reference data** (from `private Math Academy benchmark data`):
 - 3,688 topics, 5,622 prerequisite edges across 50 courses (grades 4 through university)
 - Grade 4-5: ~130-140 topics per grade; Prealgebra: ~205 topics; Algebra I: ~230 topics
 - Our K-8 expansion targets ~200-240 topics — deliberately smaller but sufficient for year-long sim validation

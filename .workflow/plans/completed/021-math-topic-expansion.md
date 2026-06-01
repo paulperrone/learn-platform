@@ -11,7 +11,7 @@
 
 Expand the math knowledge graph from 207 → ~800-1000 atomic skill topics, reaching Math Academy-caliber granularity for K-8 content. Each topic should represent one independently placeable, teachable, and remediable skill — the level where a learner could pass one skill and fail the adjacent one.
 
-The expansion uses Math Academy's knowledge graph (`~/source/mathacademy-graph/`) as a **reference baseline**, not a copy target. MA has ~1277 unique topics across their K-8-relevant courses (Foundations I/II/III + 4th/5th Grade + Prealgebra), but ~40% of those are high-school content (trig, calculus, linear algebra, conic sections) included in their "Foundations" pathway. Our target scope is genuine K-8 skills, putting the realistic target at ~800-1000 topics.
+The expansion uses Math Academy's knowledge graph (`private Math Academy benchmark data`) as a **reference baseline**, not a copy target. MA has ~1277 unique topics across their K-8-relevant courses (Foundations I/II/III + 4th/5th Grade + Prealgebra), but ~40% of those are high-school content (trig, calculus, linear algebra, conic sections) included in their "Foundations" pathway. Our target scope is genuine K-8 skills, putting the realistic target at ~800-1000 topics.
 
 **Approach:** For each strand, cross-reference MA's topic decomposition to identify splits we're missing, then apply our own split heuristics to decide which to adopt, adapt, or skip. We're building our own graph informed by MA's density, not importing theirs.
 
@@ -23,7 +23,7 @@ The expansion uses Math Academy's knowledge graph (`~/source/mathacademy-graph/`
 
 ## Reference: Math Academy K-8 Graph
 
-**Source:** `~/source/mathacademy-graph/export/graph.json` (3688 nodes, 5622 edges)
+**Source:** `private Math Academy benchmark analysis` (3688 nodes, 5622 edges)
 
 | Metric | MA (full) | MA (K-8 courses) | Our Current | Our Target |
 |--------|-----------|-------------------|-------------|------------|
@@ -105,7 +105,7 @@ Targets calibrated against MA unit sizes, adjusted for our K-8 scope (excluding 
 
 **Process per strand:**
 1. List all our current topics
-2. Load MA topics from the equivalent unit(s) via `~/source/mathacademy-graph/export/graph.json`
+2. Load MA topics from the equivalent unit(s) via `private Math Academy benchmark analysis`
 3. For each MA topic, classify: **adopt** (we're missing this atomic skill), **adapt** (similar concept but our framing differs), **skip** (out of K-8 scope or doesn't match our pedagogy)
 4. Apply our split heuristics to any of our topics that MA doesn't decompose but we should
 5. Draft new topic IDs, names, descriptions, prerequisite edges, encompassing edges

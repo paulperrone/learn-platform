@@ -10,8 +10,7 @@
       "Edit(../learn-content/**)",
       "Glob(../learn-content/**)",
       "Grep(../learn-content/**)",
-      "Bash(cd ../learn-content:*)",
-      "Bash(cd /Users/paulperrone/source/learn-content:*)"
+      "Bash(cd ../learn-content:*)"
     ]
   },
   "providers": {

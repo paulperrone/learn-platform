@@ -9,7 +9,7 @@ Distinct from:
 
 ---
 
-## 2026-03-03: Learning science synthesis (from ~/source/mathacademy-graph/analysis.md)
+## 2026-03-03: Learning science synthesis (from private Math Academy benchmark analysis)
 
 Key principles driving the platform design:
 
@@ -676,7 +676,7 @@ Math Academy's approach: topics stay in SRS with growing intervals. FIRe credit 
 **Context:** Plan 021 uses Math Academy K-8 as a density benchmark. We needed to know how many topics MA actually has in genuine K-8 content vs. HS content embedded in their "Foundations" courses.
 
 **Discovery:**
-MA's graph JSON (`~/source/mathacademy-graph/export/graph.json`) has 3688 total topics and 5622 edges. The `courses` field on each node is a list of objects with `course_name` and `unit_name`. Filtering by K-8 course names alone gives 1277 topics — but ~584 of those are HS-level units (Trigonometry: 104, Linear Algebra: 74, Differentiation: 57, Integration: 59, Conic Sections: 54, etc.) that MA includes in their "Foundations" curriculum for accelerated learners. Filtering to exclude those HS units yields **693 genuine K-8 topics** — matching our 705-topic expanded graph at 102% coverage.
+MA's graph JSON (`private Math Academy benchmark analysis`) has 3688 total topics and 5622 edges. The `courses` field on each node is a list of objects with `course_name` and `unit_name`. Filtering by K-8 course names alone gives 1277 topics — but ~584 of those are HS-level units (Trigonometry: 104, Linear Algebra: 74, Differentiation: 57, Integration: 59, Conic Sections: 54, etc.) that MA includes in their "Foundations" curriculum for accelerated learners. Filtering to exclude those HS units yields **693 genuine K-8 topics** — matching our 705-topic expanded graph at 102% coverage.
 
 **HS units to exclude from K-8 courses:** Trigonometry, Linear Algebra, Integration Techniques, Differentiation, Conic Sections, Vectors, Limits & Continuity, Contextual Applications of Calculus, Definite Integrals, Quadratics, Complex Numbers, Exponentials & Logarithms, Introduction to Calculus, Parametric & Polar Coordinates, Radical & Rational Functions, Exponential Functions, Differential Equations, Radical & Rational Expressions, Sequences and Series, Probability & Combinatorics, Finite Series, Number Systems, Absolute Value, Inequalities.
 

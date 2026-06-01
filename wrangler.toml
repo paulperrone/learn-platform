@@ -63,7 +63,7 @@ dataset = "learn-analytics"
 [env.production]
 
 [env.production.vars]
-BETTER_AUTH_URL = "https://learn-platform-api-production.papetest.workers.dev"
+BETTER_AUTH_URL = "https://learn.perrone.dev"
 
 [[env.production.d1_databases]]
 binding = "DB"

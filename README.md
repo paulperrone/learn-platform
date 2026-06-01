@@ -71,7 +71,8 @@ Set up the content repo next to this one if you have access:
 
 ```bash
 cd ..
-git clone https://github.com/paulperrone/learn-content.git
+# Clone or copy the learn-content repository here.
+# The default CONTENT_DIR is ../learn-content.
 cd learn-platform
 ```
 

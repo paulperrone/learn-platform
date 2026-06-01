@@ -58,7 +58,6 @@ export function createAuth(env: Env["Bindings"]) {
       "http://localhost:5173",
       "http://localhost:8787",
       "https://learn.perrone.dev",
-      "https://learn-platform-api-production.papetest.workers.dev",
     ],
     emailAndPassword: { enabled: true },
     user: {

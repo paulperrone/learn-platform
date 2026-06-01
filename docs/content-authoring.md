@@ -29,7 +29,7 @@ Content JSON files in `learn-content` are the source of truth. The deploy pipeli
 
 ## Content Structure
 
-Content lives in a separate repo: [`paulperrone/learn-content`](https://github.com/paulperrone/learn-content) (sibling directory `../learn-content/`).
+Content lives in a separate repo at sibling directory `../learn-content/`. Set `CONTENT_DIR` if your local checkout lives elsewhere.
 
 ```
 ../learn-content/<subject>/
